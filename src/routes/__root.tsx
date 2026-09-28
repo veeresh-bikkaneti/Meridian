@@ -1,9 +1,10 @@
+import { BRAND } from "@/game/brand";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Waymark";
+const APP_NAME = BRAND.name;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -13,7 +14,7 @@ export const Route = createRootRoute({
       { title: APP_NAME },
       {
         name: "description",
-        content: "A daily geography game from Lincoln to the world. Nothing you play is stored on a server.",
+        content: "Five places, once a day. Drop a pin on a map that never leaves your browser.",
       },
       { name: "theme-color", content: "#101211" },
     ],

@@ -1,3 +1,4 @@
+import { BRAND } from "@/game/brand";
 import { Compass, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AtlasMap } from "@/components/atlas-map";
@@ -29,7 +30,7 @@ function useReducedMotion() {
   return reduced;
 }
 
-export function WaymarkApp() {
+export function GameApp() {
   const booted = useSession((state) => state.booted);
   const screen = useSession((state) => state.screen);
   const theme = useSession((state) => state.theme);
@@ -55,7 +56,7 @@ export function WaymarkApp() {
     return (
       <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-end px-5 py-10">
         <p className="text-sm tracking-wide text-muted uppercase">Daily geography</p>
-        <h1 className="mt-2 font-display text-5xl text-fg">Waymark</h1>
+        <h1 className="mt-2 font-display text-5xl text-fg">{BRAND.name}</h1>
       </main>
     );
   }
@@ -81,10 +82,8 @@ function Welcome() {
           <Mark />
           Daily geography
         </p>
-        <h1 className="mt-4 font-display text-5xl leading-tight text-fg">Waymark</h1>
-        <p className="mt-4 max-w-md text-lg text-muted">
-          Five places, once a day. Lincoln first, then the state, the country, and the world.
-        </p>
+        <h1 className="mt-4 font-display text-5xl leading-tight text-fg">{BRAND.name}</h1>
+        <p className="mt-4 max-w-md text-lg text-muted">{BRAND.tagline} Lincoln first, then the state, the country, and the world.</p>
       </header>
       <form
         className="mt-10 flex flex-col gap-4"
@@ -281,7 +280,7 @@ function EditionCard({
 function Rules() {
   return (
     <div className="mt-4 grid gap-3 text-sm text-muted">
-      <p>The map has no names until you lock a guess. Tap to drop a pin, then tap the pin or press Confirm.</p>
+      <p>Press and the pin floats above your finger. Release to drop it. Drag the pin to adjust, then tap the pin or press Confirm.</p>
       <p>Arrow keys slide the map. Enter drops a pin at the center, and Enter again confirms it.</p>
       <p>
         Each round scores 0–100 on the same curve{" "}
@@ -382,8 +381,8 @@ function Play({ reduced }: { reduced: boolean }) {
           <div className="mt-3 flex flex-col gap-3">
             <p className="text-sm text-muted">
               {run.pending
-                ? "Tap the pin again, or confirm. The guess is not locked yet."
-                : "Tap the map to drop a pin. Names stay hidden until you confirm."}
+                ? "Drag the pin to adjust it, then tap the pin or confirm."
+                : "Press the map and release to drop a pin. Names stay hidden until you confirm."}
             </p>
             <div className="flex flex-wrap gap-2">
               <Button onClick={confirmGuess} disabled={!run.pending}>
@@ -511,7 +510,10 @@ function Results() {
           );
         })}
       </ol>
-      <div className="mt-6 flex flex-col gap-2">
+      <pre className="mt-6 whitespace-pre-wrap rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+        {shareText(payload)}
+      </pre>
+      <div className="mt-4 flex flex-col gap-2">
         <Button
           onClick={async () => {
             try {
@@ -534,7 +536,7 @@ function Results() {
               const url = URL.createObjectURL(blob);
               const link = document.createElement("a");
               link.href = url;
-              link.download = `waymark-${run.edition}-${run.dateKey}.png`;
+              link.download = `meridian-${run.edition}-${run.dateKey}.png`;
               link.click();
               URL.revokeObjectURL(url);
             });
@@ -550,7 +552,7 @@ function Results() {
         </Button>
       </div>
       <p className="mt-4 text-sm text-subtle">
-        The copied result has each round’s score, its weight, and any country or continent lift. No place names.
+        The copied result is the daily line: each round’s score, and the weighted total. No place names.
       </p>
     </main>
   );

@@ -1,3 +1,4 @@
+import { BRAND } from "./brand.ts";
 import { create } from "zustand";
 import { PLACES_BY_ID } from "./catalog.ts";
 import { buildPuzzle, dateKeyFor } from "./daily.ts";
@@ -6,8 +7,8 @@ import { SCORING_VERSION, gradeRound } from "./score.ts";
 import { bonusFor } from "./territory.ts";
 import type { Edition, Guess, HomeChoice, LonLat, MapStyle, Run, ThemeChoice } from "./types.ts";
 
-const STORAGE_KEY = "waymark.session.v2";
-const LEGACY_KEYS = ["waymark.session.v1", STORAGE_KEY];
+const STORAGE_KEY = BRAND.storageKey;
+const LEGACY_KEYS = [...BRAND.legacyStorageKeys, STORAGE_KEY];
 
 export type Screen = "welcome" | "today" | "play" | "results";
 
@@ -51,11 +52,11 @@ function emptyPersisted(): Persisted {
 }
 
 function cookiePresent(): boolean {
-  return document.cookie.split("; ").some((part) => part.startsWith("waymark_session="));
+  return document.cookie.split("; ").some((part) => part.startsWith(`${BRAND.cookie}=`));
 }
 
 function mintCookie() {
-  document.cookie = "waymark_session=1; Path=/; SameSite=Lax";
+  document.cookie = `${BRAND.cookie}=1; Path=/; SameSite=Lax`;
 }
 
 function wipeDeviceSession() {
@@ -67,7 +68,10 @@ function wipeDeviceSession() {
   } catch {
     /* private mode */
   }
-  document.cookie = "waymark_session=; Path=/; Max-Age=0; SameSite=Lax";
+  document.cookie = `${BRAND.cookie}=; Path=/; Max-Age=0; SameSite=Lax`;
+  for (const name of BRAND.legacyCookies) {
+    document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax`;
+  }
 }
 
 function validRun(run: Run | undefined): run is Run {

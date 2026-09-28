@@ -52,8 +52,8 @@ test("only world and United States rounds keep a country lift", () => {
   assert.equal(usa.weight, 3);
 });
 
-test("share text keeps the weighted total and no place names", () => {
-  const scores = [100, 90, 97, 85, 63];
+test("share text is a spoiler-free daily line", () => {
+  const scores = [86, 80, 93, 82, 79];
   const weights = [1, 1, 2, 3, 3];
   const guesses = scores.map((score, index) => {
     const guess: Guess = {
@@ -69,15 +69,23 @@ test("share text keeps the weighted total and no place names", () => {
     };
     return guess;
   });
-  const text = shareText({ edition: "world", dateKey: "2026-06-18", guesses });
+  const text = shareText({
+    edition: "world",
+    dateKey: "2026-09-28",
+    guesses,
+    now: new Date(2026, 8, 28),
+  });
   assert.equal(text.includes("Taj"), false);
-  assert.match(text, /100🎯 90🏆 97🔥 85🌟 63🤨/);
-  assert.match(text, /×1 ×1 ×2 ×3 ×3/);
-  assert.match(text, /100 \+ 90 \+ 194 \+ 255 \+ 189/);
-  assert.match(text, /Final score: 828 \/ 1000/);
-  assert.equal(text.includes("Before lift"), false);
+  assert.equal(text, "meridian September 28\n86🎓 80👏 93🏆 82🌟 79👏\nFinal score: 835");
   assert.equal(scoreMark(0), "·");
-  assert.equal(scoreMark(63), "🤨");
+  assert.equal(scoreMark(100), "🎯");
+  const home = shareText({
+    edition: "home",
+    dateKey: "2025-06-18",
+    guesses,
+    now: new Date(2026, 8, 28),
+  });
+  assert.match(home, /^meridian · Home · June 18, 2025/);
 });
 
 test("stories stay within 60 words and ids are unique", () => {

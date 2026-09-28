@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { WaymarkApp } from "@/components/waymark-app";
+import { GameApp } from "@/components/game-app";
 
 export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
-  return <WaymarkApp />;
+  return <GameApp />;
 }
