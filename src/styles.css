@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #101211;
+  --fg: #f3f4f2;
+  --muted: #a7b0ab;
+  --subtle: #7e8983;
+  --surface: #181c1a;
+  --surface-2: #212724;
+  --line: color-mix(in oklab, var(--fg) 14%, transparent);
+  --accent: #d7ddd9;
+  --accent-fg: #101211;
+  --font-body: "Avenir Next", "Segoe UI", sans-serif;
+  --font-display-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  --map-water: #10262e;
+  --map-lake: #1c5160;
+  --map-land: #3c4a3c;
+  --map-park: #1f4d36;
+  --map-road: #ddd6c8;
+  --map-highway: #f3efe4;
+  --map-road-case: #241f1a;
+  --map-river: #3c8496;
+  --map-border: #24302c;
+  --map-coast: #0c1816;
+  --map-lit: #6e9084;
+  --map-pin: #f4f1ea;
+  --map-answer: #8fb8c6;
+  --map-arc: #f4f1ea;
+  --map-cross: #d7ddd9;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="night"]) {
+    --bg: #f4f1ea;
+    --fg: #1c2420;
+    --muted: #5c6762;
+    --subtle: #6e7873;
+    --surface: #fffdf8;
+    --surface-2: #e7e2d6;
+    --line: color-mix(in oklab, var(--fg) 14%, transparent);
+    --accent: #1c2420;
+    --accent-fg: #f4f1ea;
+    --map-water: #b5d0dc;
+    --map-lake: #8eb9cb;
+    --map-land: #e3ecd4;
+    --map-park: #8eae6c;
+    --map-road: #fffdf8;
+    --map-highway: #f7f3e8;
+    --map-road-case: #6d655a;
+    --map-river: #5b90a6;
+    --map-border: #c9c0b0;
+    --map-coast: #7f9aa2;
+    --map-lit: #d5e4ea;
+    --map-pin: #1c2420;
+    --map-answer: #1d4e63;
+    --map-arc: #3e4c46;
+    --map-cross: #1c2420;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="paper"] {
+  --bg: #f4f1ea;
+  --fg: #1c2420;
+  --muted: #5c6762;
+  --subtle: #6e7873;
+  --surface: #fffdf8;
+  --surface-2: #e7e2d6;
+  --line: color-mix(in oklab, var(--fg) 14%, transparent);
+  --accent: #1c2420;
+  --accent-fg: #f4f1ea;
+  --map-water: #b5d0dc;
+  --map-lake: #8eb9cb;
+  --map-land: #e3ecd4;
+  --map-park: #8eae6c;
+  --map-road: #fffdf8;
+  --map-highway: #f7f3e8;
+  --map-road-case: #6d655a;
+  --map-river: #5b90a6;
+  --map-border: #c9c0b0;
+  --map-coast: #7f9aa2;
+  --map-lit: #d5e4ea;
+  --map-pin: #1c2420;
+  --map-answer: #1d4e63;
+  --map-arc: #3e4c46;
+  --map-cross: #1c2420;
+  color-scheme: light;
+}
+
+:root[data-theme="night"] {
+  --bg: #101211;
+  --fg: #f3f4f2;
+  --muted: #a7b0ab;
+  --subtle: #7e8983;
+  --surface: #181c1a;
+  --surface-2: #212724;
+  --line: color-mix(in oklab, var(--fg) 14%, transparent);
+  --accent: #d7ddd9;
+  --accent-fg: #101211;
+  --map-water: #10262e;
+  --map-lake: #1c5160;
+  --map-land: #3c4a3c;
+  --map-park: #1f4d36;
+  --map-road: #ddd6c8;
+  --map-highway: #f3efe4;
+  --map-road-case: #241f1a;
+  --map-river: #3c8496;
+  --map-border: #24302c;
+  --map-coast: #0c1816;
+  --map-lit: #6e9084;
+  --map-pin: #f4f1ea;
+  --map-answer: #8fb8c6;
+  --map-arc: #f4f1ea;
+  --map-cross: #d7ddd9;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display-family);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
