@@ -3,19 +3,81 @@ import test from "node:test";
 import { PLACES } from "./catalog.ts";
 import { buildPuzzle } from "./daily.ts";
 import { distanceKm, pointInRing, wordCount } from "./geo.ts";
-import { scoreDistance } from "./score.ts";
+import { applyBonus, distanceScore, gradeRound, weightedTotal } from "./score.ts";
+import { scoreMark, shareText } from "./share.ts";
+import { bonusFor, missingContinents } from "./territory.ts";
+import type { Guess } from "./types.ts";
 
-test("half-credit distances match the ring curves", () => {
-  assert.equal(scoreDistance(0.25, "lincoln"), 100);
-  assert.equal(scoreDistance(1.29, "lincoln"), 50);
-  assert.equal(scoreDistance(1, "region"), 100);
-  assert.equal(scoreDistance(6.54, "region"), 50);
-  assert.equal(scoreDistance(3, "nebraska"), 100);
-  assert.equal(scoreDistance(23.8, "nebraska"), 50);
-  assert.equal(scoreDistance(10, "usa"), 100);
-  assert.equal(scoreDistance(114, "usa"), 50);
-  assert.equal(scoreDistance(25, "world"), 100);
-  assert.equal(scoreDistance(857, "world"), 50);
+test("world curve matches the MapTap landmarks", () => {
+  assert.equal(distanceScore(0, "world"), 100);
+  assert.equal(distanceScore(22, "world"), 100);
+  assert.equal(distanceScore(500, "world"), 90);
+  assert.equal(distanceScore(1000, "world"), 81);
+  assert.equal(distanceScore(4000, "world"), 42);
+  assert.equal(distanceScore(10000, "world"), 12);
+  assert.equal(distanceScore(16250, "world"), 0);
+  assert.equal(distanceScore(20000, "world"), 0);
+});
+
+test("a country lift turns 12 into 34 and never lowers a high score", () => {
+  assert.equal(applyBonus(12, "country"), 34);
+  assert.equal(applyBonus(90, "country"), 90);
+  assert.equal(applyBonus(100, "country"), 100);
+  assert.equal(applyBonus(0, "country"), 25);
+  assert.equal(applyBonus(0, "continent"), 10);
+  assert.equal(applyBonus(12, "none"), 12);
+  assert.equal(applyBonus(12, "continent"), 21);
+});
+
+test("round weights match published MapTap totals", () => {
+  assert.equal(weightedTotal([100, 90, 97, 85, 63]), 828);
+  assert.equal(weightedTotal([93, 80, 93, 84, 96]), 899);
+  assert.equal(weightedTotal([92, 96, 95, 100, 91]), 951);
+  assert.equal(weightedTotal([100, 92, 99, 100, 100]), 990);
+});
+
+test("only world and United States rounds keep a country lift", () => {
+  const local = gradeRound(10, "lincoln", "country", 0);
+  assert.equal(local.bonus, "none");
+  assert.equal(local.weight, 1);
+  assert.ok(local.score < 100);
+  assert.equal(local.score, local.distanceScore);
+  const world = gradeRound(10000, "world", "country", 2);
+  assert.equal(world.distanceScore, 12);
+  assert.equal(world.score, 34);
+  assert.equal(world.weight, 2);
+  assert.equal(world.bonus, "country");
+  const usa = gradeRound(0, "usa", "continent", 4);
+  assert.equal(usa.score, 100);
+  assert.equal(usa.weight, 3);
+});
+
+test("share text keeps the weighted total and no place names", () => {
+  const scores = [100, 90, 97, 85, 63];
+  const weights = [1, 1, 2, 3, 3];
+  const guesses = scores.map((score, index) => {
+    const guess: Guess = {
+      lon: 0,
+      lat: 0,
+      distanceKm: 0,
+      distanceScore: score,
+      score,
+      weight: weights[index],
+      bonus: "none",
+      knew: null,
+      scoringVersion: 2,
+    };
+    return guess;
+  });
+  const text = shareText({ edition: "world", dateKey: "2026-06-18", guesses });
+  assert.equal(text.includes("Taj"), false);
+  assert.match(text, /100🎯 90🏆 97🔥 85🌟 63🤨/);
+  assert.match(text, /×1 ×1 ×2 ×3 ×3/);
+  assert.match(text, /100 \+ 90 \+ 194 \+ 255 \+ 189/);
+  assert.match(text, /Final score: 828 \/ 1000/);
+  assert.equal(text.includes("Before lift"), false);
+  assert.equal(scoreMark(0), "·");
+  assert.equal(scoreMark(63), "🤨");
 });
 
 test("stories stay within 60 words and ids are unique", () => {
@@ -58,4 +120,13 @@ test("a pin inside a neighborhood scores as a direct hit", () => {
   assert.ok(havelock && havelock.shape.kind === "polygon");
   if (!havelock || havelock.shape.kind !== "polygon") return;
   assert.equal(pointInRing(havelock.reveal, havelock.shape.coordinates), true);
+});
+
+test("country and continent bonuses follow the atlas", () => {
+  assert.deepEqual(missingContinents(), []);
+  assert.equal(bonusFor([78.0421, 27.1751], [77.209, 28.6139]), "country");
+  assert.equal(bonusFor([2.3522, 48.8566], [78.0421, 27.1751]), "none");
+  assert.equal(bonusFor([116.4074, 39.9042], [78.0421, 27.1751]), "continent");
+  assert.equal(bonusFor([0, 0], [78.0421, 27.1751]), "none");
+  assert.equal(bonusFor([-96.69972, 40.80806], [-95.99799, 41.2565]), "country");
 });

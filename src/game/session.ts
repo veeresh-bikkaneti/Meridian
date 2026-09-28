@@ -2,10 +2,12 @@ import { create } from "zustand";
 import { PLACES_BY_ID } from "./catalog.ts";
 import { buildPuzzle, dateKeyFor } from "./daily.ts";
 import { distanceToPlaceKm } from "./geo.ts";
-import { SCORING_VERSION, scoreDistance } from "./score.ts";
+import { SCORING_VERSION, gradeRound } from "./score.ts";
+import { bonusFor } from "./territory.ts";
 import type { Edition, Guess, HomeChoice, LonLat, MapStyle, Run, ThemeChoice } from "./types.ts";
 
-const STORAGE_KEY = "waymark.session.v1";
+const STORAGE_KEY = "waymark.session.v2";
+const LEGACY_KEYS = ["waymark.session.v1", STORAGE_KEY];
 
 export type Screen = "welcome" | "today" | "play" | "results";
 
@@ -58,8 +60,10 @@ function mintCookie() {
 
 function wipeDeviceSession() {
   try {
-    sessionStorage.removeItem(STORAGE_KEY);
-    localStorage.removeItem(STORAGE_KEY);
+    for (const key of LEGACY_KEYS) {
+      sessionStorage.removeItem(key);
+      localStorage.removeItem(key);
+    }
   } catch {
     /* private mode */
   }
@@ -70,6 +74,7 @@ function validRun(run: Run | undefined): run is Run {
   if (!run || !Array.isArray(run.placeIds) || run.placeIds.length !== 5) return false;
   if (!run.placeIds.every((id) => PLACES_BY_ID[id])) return false;
   if (!Array.isArray(run.guesses) || run.guesses.length !== 5) return false;
+  if (!run.guesses.every((guess) => guess === null || guess.scoringVersion === SCORING_VERSION)) return false;
   return run.phase === "aim" || run.phase === "reveal";
 }
 
@@ -199,11 +204,17 @@ export const useSession = create<State>((set, get) => ({
     if (!place) return;
     const [lon, lat] = run.pending;
     const distanceKm = distanceToPlaceKm([lon, lat], place);
+    const bonus =
+      place.ring === "world" || place.ring === "usa" ? bonusFor([lon, lat], place.reveal) : "none";
+    const graded = gradeRound(distanceKm, place.ring, bonus, run.index);
     const guess: Guess = {
       lon,
       lat,
       distanceKm,
-      score: scoreDistance(distanceKm, place.ring),
+      distanceScore: graded.distanceScore,
+      score: graded.score,
+      weight: graded.weight,
+      bonus: graded.bonus,
       knew: null,
       scoringVersion: SCORING_VERSION,
     };

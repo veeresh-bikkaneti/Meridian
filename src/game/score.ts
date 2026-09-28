@@ -1,21 +1,65 @@
-import type { RingId } from "./types.ts";
+import type { BonusKind, RingId } from "./types.ts";
 
-export const SCORING_VERSION = 1 as const;
+export const SCORING_VERSION = 2 as const;
 
-export const RINGS: Record<
-  RingId,
-  { r0: number; s: number; label: string; halfKm: number }
-> = {
-  lincoln: { r0: 0.25, s: 1.5, label: "Lincoln", halfKm: 1.3 },
-  region: { r0: 1, s: 8, label: "Around Lincoln", halfKm: 6.5 },
-  nebraska: { r0: 3, s: 30, label: "Nebraska", halfKm: 24 },
-  usa: { r0: 10, s: 150, label: "United States", halfKm: 114 },
-  world: { r0: 25, s: 1200, label: "World", halfKm: 860 },
+/** MapTap's live distance curve. https://maptap.gg/faq */
+export const DECAY = 3.5;
+export const WORLD_SPAN_KM = 16250;
+export const COUNTRY_FLOOR = 25;
+export const CONTINENT_FLOOR = 10;
+export const SCORE_CAP = 80;
+export const ROUND_WEIGHTS = [1, 1, 2, 3, 3] as const;
+export const MAX_TOTAL = 1000;
+
+export const RINGS: Record<RingId, { spanKm: number; label: string }> = {
+  lincoln: { spanKm: 80, label: "Lincoln" },
+  region: { spanKm: 250, label: "Around Lincoln" },
+  nebraska: { spanKm: 900, label: "Nebraska" },
+  usa: { spanKm: 4500, label: "United States" },
+  world: { spanKm: WORLD_SPAN_KM, label: "World" },
 };
 
-export function scoreDistance(distanceKm: number, ring: RingId): number {
-  const { r0, s } = RINGS[ring];
-  if (distanceKm <= r0) return 100;
-  const raw = 100 * Math.exp(-(distanceKm - r0) / s);
-  return Math.max(0, Math.min(100, Math.round(raw)));
+export function distancePoints(distanceKm: number, spanKm: number): number {
+  if (!(spanKm > 0) || distanceKm >= spanKm) return 0;
+  if (distanceKm <= 0) return 100;
+  return 100 * Math.exp(-(distanceKm / spanKm) * DECAY);
+}
+
+export function distanceScore(distanceKm: number, ring: RingId): number {
+  return Math.round(distancePoints(distanceKm, RINGS[ring].spanKm));
+}
+
+/** Country and continent lifts. A 12 in the right country becomes 34. Never lowers a score. */
+export function applyBonus(raw: number, bonus: BonusKind): number {
+  if (bonus === "none") return raw;
+  const floor = bonus === "country" ? COUNTRY_FLOOR : CONTINENT_FLOOR;
+  const boosted = floor + (raw / 100) * (100 - floor);
+  return Math.round(Math.max(raw, Math.min(boosted, SCORE_CAP)));
+}
+
+export function gradeRound(
+  distanceKm: number,
+  ring: RingId,
+  bonus: BonusKind,
+  roundIndex: number,
+): { distanceScore: number; score: number; weight: number; bonus: BonusKind } {
+  const fromDistance = distanceScore(distanceKm, ring);
+  const allowed = ring === "world" || ring === "usa" ? bonus : "none";
+  const weight = ROUND_WEIGHTS[roundIndex] ?? 1;
+  return {
+    distanceScore: fromDistance,
+    score: applyBonus(fromDistance, allowed),
+    weight,
+    bonus: allowed,
+  };
+}
+
+export function weightedTotal(scores: readonly number[]): number {
+  return scores.reduce((sum, score, index) => sum + score * (ROUND_WEIGHTS[index] ?? 0), 0);
+}
+
+export function totalFromGuesses(
+  guesses: readonly ({ score: number; weight: number } | null)[],
+): number {
+  return guesses.reduce((sum, guess) => sum + (guess ? guess.score * guess.weight : 0), 0);
 }

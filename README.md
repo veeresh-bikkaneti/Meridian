@@ -9,7 +9,7 @@ This is the open-source cut of a larger plan. It is deliberately small.
 - **World**, five places on a globe, the same set for every player on a local date.
 - **Home Turf**, five places that widen from Lincoln to the surrounding lakes, Nebraska, and the United States. Players outside Lincoln get Nebraska and the United States until another city is added.
 - The map has **no labels** until a guess is locked. Roads can be turned off.
-- Scoring is on the device. A short miss is costly in Lincoln and ordinary on a world map.
+- Scoring follows the [MapTap](https://maptap.gg/faq) curve: an exponential drop to 0 at 16,250 km, a country or continent lift on World and United States rounds, then round weights ×1 ×1 ×2 ×3 ×3 out of 1,000. Home Turf uses the same curve on a shorter reach. The share text includes each score, its weight, and any lift, and never a place name.
 - **No account.** Your name and guesses stay in this tab (`sessionStorage`). A reload, or the end of the browser session, treats you as a new player. Guesses are not sent to a server, and the session cookie stores no name or location.
 
 ## What was left out on purpose

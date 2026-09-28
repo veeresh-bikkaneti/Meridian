@@ -25,13 +25,20 @@ export type MapStyle = "roads" | "bare";
 
 export type ThemeChoice = "system" | "night" | "paper";
 
+export type BonusKind = "country" | "continent" | "none";
+
 export type Guess = {
   lon: number;
   lat: number;
   distanceKm: number;
+  /** Rounded distance curve, before a country or continent lift. */
+  distanceScore: number;
+  /** Rounded score after the lift. This is what the round weight multiplies. */
   score: number;
+  weight: number;
+  bonus: BonusKind;
   knew: boolean | null;
-  scoringVersion: 1;
+  scoringVersion: 2;
 };
 
 export type Run = {

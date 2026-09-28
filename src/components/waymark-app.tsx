@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PLACES_BY_ID } from "@/game/catalog";
 import { dateKeyFor, displayDate, homeDateKey, worldDateKey } from "@/game/daily";
 import { formatDistance } from "@/game/geo";
-import { RINGS } from "@/game/score";
+import { RINGS, totalFromGuesses } from "@/game/score";
 import { activeRun, useSession, writeSession } from "@/game/session";
 import { drawShareCard, shareText } from "@/game/share";
 import type { Edition, Guess, Run, ThemeChoice } from "@/game/types";
@@ -261,7 +261,7 @@ function EditionCard({
 }) {
   const today = dateKeyFor(edition);
   const live = run && run.dateKey === today ? run : undefined;
-  const total = live?.guesses.reduce((sum, guess) => sum + (guess?.score ?? 0), 0) ?? 0;
+  const total = live?.done ? totalFromGuesses(live.guesses) : 0;
   const action = !live ? "Play" : live.done ? "Results" : "Resume";
   return (
     <article className="flex flex-col rounded-xl border border-line bg-surface p-5">
@@ -269,7 +269,7 @@ function EditionCard({
       <h2 className="mt-2 font-display text-3xl text-fg">{title === "World" ? "The globe" : "Home turf"}</h2>
       <p className="mt-2 flex-1 text-sm text-muted">{detail}</p>
       <p className="mt-4 text-sm tabular-nums text-fg">
-        {!live ? "Not started" : live.done ? `${total} / 500` : `Round ${live.index + 1} of 5`}
+        {!live ? "Not started" : live.done ? `${total} / 1,000` : `Round ${live.index + 1} of 5`}
       </p>
       <Button className="mt-4" onClick={action === "Results" ? onResults : onPlay}>
         {action}
@@ -283,14 +283,28 @@ function Rules() {
     <div className="mt-4 grid gap-3 text-sm text-muted">
       <p>The map has no names until you lock a guess. Tap to drop a pin, then tap the pin or press Confirm.</p>
       <p>Arrow keys slide the map. Enter drops a pin at the center, and Enter again confirms it.</p>
-      <ul className="grid gap-1">
-        {(["lincoln", "region", "nebraska", "usa", "world"] as const).map((ring) => (
-          <li key={ring}>
-            {RINGS[ring].label}: full marks within {RINGS[ring].r0} km, about half at {RINGS[ring].halfKm} km.
-          </li>
-        ))}
-      </ul>
-      <p>A lake or neighborhood counts in full if your pin lands inside it. Roads are the easier map. Bare is water and parks only.</p>
+      <p>
+        Each round scores 0–100 on the same curve{" "}
+        <a className="underline" href="https://maptap.gg/faq" target="_blank" rel="noreferrer">
+          MapTap
+        </a>{" "}
+        uses. On the world map, about 23 km still rounds to 100, 500 km is 90, 1,000 km is 81, 4,000 km is 42,
+        10,000 km is 12, and {RINGS.world.spanKm.toLocaleString("en-US")} km is 0.
+      </p>
+      <p>
+        Home Turf uses that curve on a shorter reach, so a miss still costs: Lincoln {RINGS.lincoln.spanKm} km,
+        around Lincoln {RINGS.region.spanKm} km, Nebraska {RINGS.nebraska.spanKm} km, the United States{" "}
+        {RINGS.usa.spanKm.toLocaleString("en-US")} km.
+      </p>
+      <p>
+        On World and United States rounds, the right country lifts a low score — a 12 becomes 34 — but the lift
+        stops at 80 unless the distance score was already higher. The right continent is a smaller lift. Lincoln,
+        the region, and Nebraska stay on distance alone, because the whole board is one country.
+      </p>
+      <p>
+        The five rounds then count ×1, ×1, ×2, ×3, and ×3. A perfect day is 1,000. A lake or neighborhood is a
+        direct hit if the pin lands inside it.
+      </p>
     </div>
   );
 }
@@ -352,7 +366,7 @@ function Play({ reduced }: { reduced: boolean }) {
         <h1 className="mt-1 font-display text-3xl text-fg">{place.name}</h1>
         <p className="sr-only" aria-live="polite">
           {revealed && guess
-            ? `${place.name}. ${formatDistance(guess.distanceKm)}. Score ${guess.score} of 100.`
+            ? `${place.name}. ${formatDistance(guess.distanceKm)}. Score ${guess.score} of 100, times ${guess.weight}.`
             : `Find ${place.name}. ${run.pending ? "Pin placed, not confirmed." : "No pin yet."}`}
         </p>
         {revealed && guess ? (
@@ -389,6 +403,32 @@ function Play({ reduced }: { reduced: boolean }) {
   );
 }
 
+function scoreDetail(guess: Guess): string {
+  const adds = `${guess.score * guess.weight} toward 1,000`;
+  const weight = `This round counts ×${guess.weight}, so it adds ${adds}.`;
+  if (guess.bonus === "none" || guess.score === guess.distanceScore) {
+    const where =
+      guess.bonus === "country"
+        ? " Right country, but the distance score was already higher, so it stays."
+        : guess.bonus === "continent"
+          ? " Right continent, but the distance score was already higher, so it stays."
+          : "";
+    return `Distance score ${guess.distanceScore}.${where} ${weight}`;
+  }
+  const where = guess.bonus === "country" ? "the right country" : "the right continent";
+  return `Distance score ${guess.distanceScore}, lifted to ${guess.score} for ${where}. ${weight}`;
+}
+
+function roundBreakdown(guess: Guess): string {
+  const points =
+    guess.bonus !== "none" && guess.score !== guess.distanceScore
+      ? `${guess.distanceScore} → ${guess.score}`
+      : String(guess.score);
+  const why =
+    guess.bonus === "country" ? "same country" : guess.bonus === "continent" ? "same continent" : "no lift";
+  return `${points} · ${why} · ×${guess.weight} = ${guess.score * guess.weight}`;
+}
+
 function Reveal({
   guess,
   story,
@@ -410,6 +450,7 @@ function Reveal({
         {guess.score}
         <span className="ml-2 text-lg text-muted">/ 100 · {formatDistance(guess.distanceKm)}</span>
       </p>
+      <p className="text-sm text-muted">{scoreDetail(guess)}</p>
       <p className="max-w-prose text-sm text-fg">{story}</p>
       <a className="text-sm text-muted underline" href={source.href} target="_blank" rel="noreferrer">
         {source.label}
@@ -440,7 +481,7 @@ function Results() {
     );
   }
   const places = run.placeIds.map((id) => PLACES_BY_ID[id]);
-  const total = run.guesses.reduce((sum, guess) => sum + (guess?.score ?? 0), 0);
+  const total = totalFromGuesses(run.guesses);
   const other: Edition = run.edition === "world" ? "home" : "world";
   const payload = { edition: run.edition, dateKey: run.dateKey, guesses: run.guesses };
 
@@ -448,7 +489,7 @@ function Results() {
     <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 py-8">
       <p className="text-sm text-muted">{run.edition === "world" ? "World" : "Home Turf"} · {run.dateKey}</p>
       <h1 className="mt-2 font-display text-5xl tabular-nums text-fg">{total}</h1>
-      <p className="text-muted">out of 500</p>
+      <p className="text-muted">out of 1,000</p>
       <ol className="mt-6 flex flex-col gap-3">
         {places.map((place, index) => {
           const guess = run.guesses[index];
@@ -457,11 +498,14 @@ function Results() {
             <li key={place.id} className="rounded-lg border border-line bg-surface px-4 py-3">
               <div className="flex items-baseline justify-between gap-3">
                 <span className="font-medium text-fg">{place.name}</span>
-                <span className="tabular-nums text-fg">{guess?.score ?? 0}</span>
+                <span className="tabular-nums text-fg">
+                  {guess ? guess.score * guess.weight : 0}
+                  <span className="text-muted"> / {100 * (guess?.weight ?? 1)}</span>
+                </span>
               </div>
               <p className="text-sm text-muted">
                 {RINGS[place.ring].label}
-                {guess ? ` · ${formatDistance(guess.distanceKm)}` : ""}
+                {guess ? ` · ${formatDistance(guess.distanceKm)} · ${roundBreakdown(guess)}` : ""}
               </p>
             </li>
           );
@@ -505,7 +549,9 @@ function Results() {
           Back to today
         </Button>
       </div>
-      <p className="mt-4 text-sm text-subtle">The share text has scores only. No place names.</p>
+      <p className="mt-4 text-sm text-subtle">
+        The copied result has each round’s score, its weight, and any country or continent lift. No place names.
+      </p>
     </main>
   );
 }
