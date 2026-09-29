@@ -37,6 +37,24 @@ function prefersReducedMotion(): boolean {
   );
 }
 
+/** Reveal camera: ONE single beat framing pin + spot (M8), 2-2.5s. */
+const REVEAL_CAMERA_MS = 2200;
+
+/**
+ * Named bottom-padding constant (M8): the floating result card sits at the
+ * bottom of the viewport, so the reveal framing reserves room for it and the
+ * pin + spot are never hidden behind chrome.
+ */
+const REVEAL_CARD_PADDING_PX = 120;
+
+/** Keeps the pre-existing padding-80 intent on the other three edges. */
+const REVEAL_EDGE_PADDING_PX = 80;
+
+/** Cubic ease-in-out for the reveal beat (M8). */
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
 function markerElement(tone: MapMark["tone"]): HTMLDivElement {
   const spot = tone === "spot";
   const el = document.createElement("div");
@@ -396,12 +414,26 @@ export function SatelliteMap(props: {
     const eastEdge = Math.max(variation.pin.lon, variation.spot.lon);
     const southEdge = Math.min(variation.pin.lat, variation.spot.lat);
     const northEdge = Math.max(variation.pin.lat, variation.spot.lat);
+    // M8: ONE camera beat per arrival (not a choreographed sequence): a single
+    // fitBounds framing pin + spot, 2.2s easeInOut, with card-aware bottom
+    // padding. Reduced motion -> instant jump. `essential` is omitted:
+    // scripted moves never claim it (only user-invoked zoom does).
     map.fitBounds(
       [
         [westEdge, southEdge],
         [eastEdge, northEdge],
       ],
-      { padding: 80, duration: 800, maxZoom: mode === "globe" ? 4 : 8 },
+      {
+        padding: {
+          top: REVEAL_EDGE_PADDING_PX,
+          bottom: REVEAL_CARD_PADDING_PX,
+          left: REVEAL_EDGE_PADDING_PX,
+          right: REVEAL_EDGE_PADDING_PX,
+        },
+        duration: prefersReducedMotion() ? 0 : REVEAL_CAMERA_MS,
+        easing: easeInOutCubic,
+        maxZoom: mode === "globe" ? 4 : 8,
+      },
     );
   }
 
