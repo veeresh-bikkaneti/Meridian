@@ -380,8 +380,7 @@ function Play({
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
   // Stash for the M1 double-tap revert: the pin that existed before the latest
-  // tap. The onDoubleTap/onClearAim props are NOT wired to <SatelliteMap> yet —
-  // that lands after P0-02 declares them (optional) on SatelliteMap.
+  // tap. Wired to <SatelliteMap> via the onDoubleTap/onClearAim props below.
   const aimBeforeTap = useRef<{ lon: number; lat: number } | null>(null);
 
   useEffect(() => {
@@ -393,8 +392,8 @@ function Play({
 
   // M5: Escape dismisses the result card when committed, and toggles the
   // question bubble when aiming with no pin (AIM_EMPTY). Pin clearing (AIM_PIN)
-  // is handled by satellite-map via onClearAim once wired; the AIM_PIN guard
-  // below keeps this listener from double-handling it.
+  // is handled by satellite-map via onClearAim; the AIM_PIN guard below keeps
+  // this listener from double-handling it.
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key !== "Escape") return;
@@ -505,6 +504,8 @@ function Play({
           bounds={bounds}
           onAim={onAim}
           onConfirm={onConfirm}
+          onDoubleTap={onDoubleTap}
+          onClearAim={onClearAim}
           marks={marks}
           variation={variation}
         />
