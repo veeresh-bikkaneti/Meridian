@@ -24,6 +24,19 @@ export type MapVariation = {
 
 const EMPTY = { type: "FeatureCollection" as const, features: [] };
 
+/**
+ * Reduced-motion gate (P0-02): scripted camera moves become instant jumps.
+ * Guarded for SSR / no-window. MapLibre also honors this internally when
+ * `essential` is omitted (camera.ts), but the gate is explicit per design.
+ */
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
 function markerElement(tone: MapMark["tone"]): HTMLDivElement {
   const spot = tone === "spot";
   const el = document.createElement("div");
@@ -36,6 +49,19 @@ function markerElement(tone: MapMark["tone"]): HTMLDivElement {
   el.style.pointerEvents = "none";
   if (!spot) el.style.transform = "rotate(-45deg)";
   el.setAttribute("aria-label", spot ? "The spot" : "Your pin");
+  if (tone === "aim") {
+    // P0-02: pin-drop animation + exactly one pulse ring. The drop animates
+    // the CSS `translate` property (never `transform`): MapLibre rewrites the
+    // marker element's inline transform on every position update
+    // (maplibre-gl marker.ts `_update`), while `translate` composes
+    // independently of it. Reduced motion kills both via the P0-02 section
+    // of styles.css (plus the global base-layer reduce rule).
+    el.classList.add("meridian-pin-drop");
+    const ring = document.createElement("div");
+    ring.className = "meridian-pulse-ring";
+    ring.setAttribute("aria-hidden", "true");
+    el.appendChild(ring);
+  }
   return el;
 }
 
@@ -306,7 +332,12 @@ export function SatelliteMap(props: {
       });
       map.resize();
       setZoom(Math.round(map.getZoom()));
-      if (bounds) map.fitBounds(bounds, { padding: 28, duration: 700, animate: true });
+      if (bounds)
+        map.fitBounds(bounds, {
+          padding: 28,
+          duration: prefersReducedMotion() ? 0 : 700,
+          animate: true,
+        });
       paintVariation(map, variationRef.current ?? null, props.mode);
       setReady(true);
     });
