@@ -4,7 +4,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
-import { imageryView } from "./imagery.ts";
+import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { TOUCH_LIFT_PX, isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { createTapTracker } from "./tap-tracker.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
@@ -517,9 +517,11 @@ export function SatelliteMap(props: {
         />
       )}
       {/* M7: the full-width attribution strip becomes a compact bottom-left
-          chip so it never collides with the bottom-right zoom controls. */}
-      <p className="pointer-events-none absolute bottom-2 left-2 z-10 m-0 max-w-[46%] rounded-full bg-black/60 px-2.5 py-1 text-left text-[10px] leading-snug text-white/90">
-        {view.attribution}
+          chip so it never collides with the bottom-right zoom controls.
+          The pin-privacy notice (IMAGERY_NOTICE) rides along so the
+          client-side privacy guarantee stays visible in the UI. */}
+      <p className="pointer-events-none absolute bottom-2 left-2 z-10 m-0 max-w-[46%] rounded-full bg-black/70 px-2.5 py-1 text-left text-[10px] leading-snug text-white/90">
+        {view.attribution} · {IMAGERY_NOTICE}
       </p>
       <ZoomControls zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
       {/* The Drop pin button is the ONLY commit path. Hidden once committed
