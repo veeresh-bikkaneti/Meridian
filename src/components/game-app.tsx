@@ -375,6 +375,10 @@ function Play({
   );
   const place = placeAt(ordered, run.index);
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
+  // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
+  // screen-reader users get feedback for place/move/clear. Cleared whenever
+  // the phase changes, at which point phase messaging takes over.
+  const [aimAnnouncement, setAimAnnouncement] = useState<string | null>(null);
   const [drop, setDrop] = useState<Drop | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
@@ -459,6 +463,11 @@ function Play({
   function onAim(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
     aimBeforeTap.current = aim; // stash BEFORE setAim (M1 revert target)
+    setAimAnnouncement(
+      aim
+        ? "Pin moved. Press Drop pin to lock in your guess."
+        : "Pin placed. Press Drop pin to lock in your guess.",
+    );
     setAim({ lon, lat });
   }
 
@@ -466,13 +475,16 @@ function Play({
   // null = no pin, so "double-tap on empty map places zero pins" holds.
   function onDoubleTap() {
     if (run.phase !== "aim") return;
-    setAim(aimBeforeTap.current);
+    const reverted = aimBeforeTap.current;
+    setAim(reverted);
+    setAimAnnouncement(reverted ? "Pin moved back." : "Pin cleared.");
   }
 
   // M5: Escape with a pin clears it and resets the revert stash.
   function onClearAim() {
     if (run.phase !== "aim") return;
     aimBeforeTap.current = null;
+    setAimAnnouncement("Pin cleared.");
     setAim(null);
   }
 
@@ -484,12 +496,14 @@ function Play({
         ? radiusKm("globe", 0)
         : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
     setAim(null);
+    setAimAnnouncement(null);
     setDrop({ lon, lat, distanceKm: distance, placeId: place.id });
     onRun(dropPin(run, distance, radius));
   }
 
   function onContinue() {
     setDrop(null);
+    setAimAnnouncement(null);
     onRun(continueRun(run, ordered.length));
   }
 
@@ -520,9 +534,7 @@ function Play({
       </div>
       <p className="sr-only" aria-live="polite">
         {run.phase === "aim"
-          ? place
-            ? `Find ${place.name}.`
-            : null
+          ? (aimAnnouncement ?? (place ? `Find ${place.name}.` : null))
           : run.phase === "story" && place
             ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.`
             : place
