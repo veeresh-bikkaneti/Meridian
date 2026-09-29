@@ -11,6 +11,7 @@ import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-m
 import { Compass } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 
 const RUN_KEY = "meridian.run";
 
@@ -382,6 +383,7 @@ function Play({
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   const [drop, setDrop] = useState<Drop | null>(null);
   const [story, setStory] = useState<string | null>(null);
+  const [bubble, setBubble] = useState<BubbleViewState>("open");
   // Stash for the M1 double-tap revert: the pin that existed before the latest
   // tap. The onDoubleTap/onClearAim props are NOT wired to <SatelliteMap> yet —
   // that lands after P0-02 declares them (optional) on SatelliteMap.
@@ -389,8 +391,25 @@ function Play({
 
   useEffect(() => {
     setAim(null);
+    setBubble("open");
     aimBeforeTap.current = null;
   }, [place?.id]);
+
+  // M5: Escape with no pin toggles the question bubble (AIM_EMPTY). Pin
+  // clearing (AIM_PIN) is handled by satellite-map via onClearAim once wired;
+  // the AIM_PIN guard below keeps this listener from double-handling it.
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      if (run.phase !== "aim") return;
+      if (aim !== null) return;
+      setBubble((view) =>
+        view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed",
+      );
+    }
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
+  }, [run.phase, aim]);
 
   useEffect(() => {
     if (place || run.phase === "done") return;
@@ -498,25 +517,40 @@ function Play({
           </p>
         </div>
       </div>
-      {/* Interim: the aim/reveal panel floats over the full-bleed map until the
-          question bubble (P0-03 commit 2) and result card (commit 3) take over. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20">
-        <section className="pointer-events-auto max-h-[46dvh] overflow-y-auto bg-surface px-4 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))]">
-          <p className="text-xs tracking-wide text-subtle uppercase">{run.regionName}</p>
-          {place ? (
-            <Round
-              run={run}
-              place={place}
-              drop={drop}
-              story={story}
-              aiming={aim !== null}
-              onContinue={onContinue}
-            />
-          ) : (
-            <Finished run={run} empty={ordered.length === 0} />
-          )}
-        </section>
-      </div>
+      <p className="sr-only" aria-live="polite">
+        {run.phase === "aim"
+          ? place
+            ? `Find ${place.name}.`
+            : null
+          : run.phase === "story" && place
+            ? `${place.name}. ${drop ? formatDistance(drop.distanceKm) : "Hit"}.`
+            : place
+              ? `${place.name} missed. The run is over.`
+              : null}
+      </p>
+      {run.phase === "aim" && place ? (
+        <QuestionBubble
+          regionName={run.regionName}
+          placeName={place.name}
+          hasPin={aim !== null}
+          view={bubble}
+          onViewChange={setBubble}
+        />
+      ) : null}
+      {/* Interim: the reveal panel floats over the full-bleed map until the
+          result card (P0-03 commit 3) takes over. */}
+      {run.phase !== "aim" ? (
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20">
+          <section className="pointer-events-auto max-h-[46dvh] overflow-y-auto bg-surface px-4 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))]">
+            <p className="text-xs tracking-wide text-subtle uppercase">{run.regionName}</p>
+            {place ? (
+              <Round run={run} place={place} drop={drop} story={story} onContinue={onContinue} />
+            ) : (
+              <Finished run={run} empty={ordered.length === 0} />
+            )}
+          </section>
+        </div>
+      ) : null}
     </main>
   );
 }
@@ -526,34 +560,18 @@ function Round({
   place,
   drop,
   story,
-  aiming,
   onContinue,
 }: {
   run: Run;
   place: Starter;
   drop: Drop | null;
   story: string | null;
-  aiming: boolean;
   onContinue: () => void;
 }) {
   const revealed = run.phase !== "aim" && drop?.placeId === place.id;
   return (
     <>
       <h1 className="mt-1 font-display text-3xl text-fg">{place.name}</h1>
-      <p className="sr-only" aria-live="polite">
-        {run.phase === "aim"
-          ? `Find ${place.name}.`
-          : run.phase === "story"
-            ? `${place.name}. ${drop ? formatDistance(drop.distanceKm) : "Hit"}.`
-            : `${place.name} missed. The run is over.`}
-      </p>
-      {run.phase === "aim" ? (
-        <p className="mt-3 text-sm text-muted">
-          {aiming
-            ? "Double-tap the pin to drop it. Tap elsewhere to move it."
-            : "Tap the map to place a pin. Double-tap that pin to drop it."}
-        </p>
-      ) : null}
       {run.phase === "story" ? (
         <div className="mt-3 flex flex-col gap-3">
           <p className="font-display text-4xl tabular-nums text-fg">
