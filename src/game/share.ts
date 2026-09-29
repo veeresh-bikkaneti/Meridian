@@ -24,20 +24,17 @@ export function shareDateLabel(dateKey: string, now = new Date()): string {
     month: "long",
     timeZone: "UTC",
   }).format(new Date(Date.UTC(year, month - 1, day)));
-  return now.getFullYear() === year ? `${monthName} ${day}` : `${monthName} ${day}, ${year}`;
+  return now.getUTCFullYear() === year ? `${monthName} ${day}` : `${monthName} ${day}, ${year}`;
 }
 
 export function shareText(input: {
-  edition: Edition;
+  regionName: string;
   dateKey: string;
-  guesses: (Guess | null)[];
+  hits: number;
   now?: Date;
 }): string {
-  const scores = input.guesses.map((guess) => guess?.score ?? 0);
-  const total = totalFromGuesses(input.guesses);
   const when = shareDateLabel(input.dateKey, input.now ?? new Date());
-  const head = input.edition === "world" ? `${BRAND.shareHost} ${when}` : `${BRAND.shareHost} · Home · ${when}`;
-  return [head, scores.map((score) => `${score}${scoreMark(score)}`).join(" "), `Final score: ${total}`].join("\n");
+  return `${BRAND.shareHost} ${when}\n${input.regionName} · ${input.hits}`;
 }
 
 export function drawShareCard(

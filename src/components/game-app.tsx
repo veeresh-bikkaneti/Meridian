@@ -483,6 +483,11 @@ function Results() {
   const total = totalFromGuesses(run.guesses);
   const other: Edition = run.edition === "world" ? "home" : "world";
   const payload = { edition: run.edition, dateKey: run.dateKey, guesses: run.guesses };
+  const line = shareText({
+    regionName: run.edition === "world" ? "World" : "Home Turf",
+    dateKey: run.dateKey,
+    hits: run.guesses.filter((guess) => guess !== null).length,
+  });
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 py-8">
@@ -511,13 +516,13 @@ function Results() {
         })}
       </ol>
       <pre className="mt-6 whitespace-pre-wrap rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
-        {shareText(payload)}
+        {line}
       </pre>
       <div className="mt-4 flex flex-col gap-2">
         <Button
           onClick={async () => {
             try {
-              await navigator.clipboard.writeText(shareText(payload));
+              await navigator.clipboard.writeText(line);
               setCopied(true);
             } catch {
               setCopied(false);
