@@ -1,35 +1,74 @@
 # Meridian
 
-A daily geography game you can play in the browser. Lincoln is the first home edition. The world game is open to everyone.
+Pin the place. The run lasts until the pin misses.
 
-This is the open-source cut of a larger plan. It is deliberately small.
+Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.github.io/Meridian/). The capital M is part of the address. The lowercase path is not this site.
 
-## What this version is
+## How a round goes
 
-- **World**, five places on a globe, the same set for every player on a local date.
-- **Home Turf**, five places that widen from Lincoln to the surrounding lakes, Nebraska, and the United States. Players outside Lincoln get Nebraska and the United States until another city is added.
-- The map has **no labels** until a guess is locked. Roads can be turned off.
-- Press the map and the pin sits above your finger. Release to drop it, drag the pin to adjust, tap it to confirm. Where the browser offers WebGPU, panning a city map and turning the globe stay on the GPU. Otherwise the same gestures use canvas. Nothing is requested from a tile server.
-- Scoring follows the [MapTap](https://maptap.gg/faq) curve: an exponential drop to 0 at 16,250 km, a country or continent lift on World and United States rounds, then round weights ×1 ×1 ×2 ×3 ×3 out of 1,000. Home Turf uses the same curve on a shorter reach. The share line is the day’s scores and the final total, never a place name:
+You pick **State**, **Country**, or **Globe**. A state is any of the 50. A country is one of thirteen. The globe is one shared trail.
 
-  ```
-  meridian September 28
-  86🎓 80👏 93🏆 82🌟 79👏
-  Final score: 835
-  ```
+The prompt is a place name. The map is unlabeled satellite imagery, locked to the region you opened. You drop one pin. Inside the close-enough radius, a short story appears and the next name follows. Outside it, the run ends and the real spot is marked. There is no fifth round. If the list runs out, the run ends with the count you already earned.
 
-- **No account.** Your name and guesses stay in this tab (`sessionStorage`). A reload, or the end of the browser session, treats you as a new player. Guesses are not sent to a server, and the session cookie stores no name or location.
+The same region on the same UTC date starts in the same order for everyone. A reload in the same tab resumes. A new visit starts at the beginning. There is no account.
 
-## What was left out on purpose
+The share line is how far you got, not a score out of 1,000:
 
-Login, friends, streaks that survive a reload, server-side scoring, hosted map tiles, and in-browser model quizzes. Those need accounts or third parties. This build keeps the puzzle on the device so a deploy can be a static site, including GitHub Pages.
+```
+meridian September 28
+Nebraska · 14
+```
 
-Map shapes for the world and the United States come from [Natural Earth](https://www.naturalearthdata.com/) via the `world-atlas` and `us-atlas` packages (public domain). Lincoln streets, parks, and the rivers around the city are simplified [OpenStreetMap](https://www.openstreetmap.org/copyright) extracts bundled with the app (ODbL). Nothing is requested from a tile server while you play, so a guess is not sent anywhere. Stories are original and short. Place coordinates are geographic facts. The game code in this repository is MIT; the bundled OpenStreetMap extract is not.
+## Inspired by MapTap, not a copy
 
-## Play
+[MapTap](https://maptap.gg/) is the daily that suggested a pin on a map and a line you can share. Meridian keeps that feeling and leaves the rest.
+
+| | MapTap | Meridian |
+|---|---|---|
+| Length | Five rounds, then the card is over | Until the first miss, or the list ends |
+| Result | Weighted scores and an emoji row | How many places you placed |
+| Prompt | A clue, then the map | The place name, then the story |
+| Where | One daily world (and practice sets) | Any state, a short country list, or the globe |
+| Map | MapTap's globe | Live satellite, unlabeled, locked to the region |
+| Same puzzle | Yes, for that day's five | Yes, for that region on that UTC date |
+
+MapTap's places are a checked atlas. Meridian's are too. A model does not invent the next place, so Safari and DuckDuckGo play the same trail as Chrome. If Chrome already has Gemini Nano installed, it may rewrite the story after a hit, using only the facts already written. It does not download a model, and it does not change the pin or the count.
+
+## Architecture
+
+The game in the browser is four pieces.
+
+- **Atlas.** `src/game/starters.ts` is the whole trail: name, coordinate, story, and a source link. At least five places for each state and launch country, and twelve for the globe.
+- **Rules.** `src/game/radius.ts` decides the close-enough circle. `src/game/trail.ts` orders a region's places from the UTC date. `src/game/run.ts` continues until a miss or the end of the list. `src/game/share.ts` writes the share line.
+- **Map.** `src/map/satellite-map.tsx` draws Esri World Imagery with MapLibre. State and country cameras stay inside that region's box. The globe is the same imagery on a sphere. Tiles are requested by the browser. They are not bundled. The pin is not sent anywhere.
+- **Story rewrite.** `src/game/rewrite.ts` asks Gemini Nano only when the browser reports the model is already available. Otherwise the written story is what you read.
+
+Nothing about a guess is stored on a server. The in-progress run lives in `sessionStorage`.
+
+## Design
+
+The radius is 12% of the region's greater side: 25–160 km for a state, 40–450 km for a country, and 750 km on the globe. A pin exactly on the radius counts. Landing outside the border does not end the run by itself.
+
+Latitude is 110.574 km per degree. Longitude is 111.32 km per degree times the cosine of the center latitude. The greater of those two sides is the one the percentage is taken from.
+
+The order is a seeded shuffle of that region's authored places. Two people who open Nebraska on the same UTC date begin at the same place.
+
+Stories are original and short. They are shown after a hit, not before the pin. United States country places are country-scale features, not a second copy of the state names.
+
+The written design is `docs/superpowers/specs/2026-09-28-state-editions-design.md`. The build steps are `docs/superpowers/plans/2026-09-28-state-editions.md`.
+
+## Deployment
+
+The public site is GitHub Pages, from a static build. `GITHUB_PAGES=1` sets the asset and router base to `/Meridian/`, turns on a static shell, and skips the server. `.github/workflows/pages.yml` runs that build on `main`, copies the shell to `index.html` and `404.html`, and publishes it.
+
+`npm run build` is a different path. It still produces the server build. The live preview uses that. Pages does not.
+
+MapLibre's worker is a sibling file the bundler would otherwise drop. The Pages build copies `maplibre-gl-worker.mjs` and `maplibre-gl-shared.mjs` into `assets/` so the map can start. Without those files the canvas is blank.
 
 ```sh
 npm run dev
+npm test
+npm run build:pages
 ```
 
-The app serves the game for local development. `npm run build` produces the static bundle.
+Imagery: `Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community`. The imagery host sees the area on screen. Your pin stays on the device.
