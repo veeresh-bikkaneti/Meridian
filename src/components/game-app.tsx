@@ -4,18 +4,18 @@ import { radiusKm } from "@/game/radius";
 import { COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { continueRun, dropPin, resumeRun, type Edition, type Run, type RunPhase } from "@/game/run";
-import { shareText } from "@/game/share";
 import { STARTERS, type Starter } from "@/game/starters";
 import { orderPlaces, placeAt } from "@/game/trail";
-import { IMAGERY_NOTICE } from "@/map/imagery";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { QuestionBubble, type BubbleViewState } from "./question-bubble";
+import { ResultCard } from "./result-card";
 
 const RUN_KEY = "meridian.run";
 
-type Drop = { lon: number; lat: number; distanceKm: number; placeId: string };
+export type Drop = { lon: number; lat: number; distanceKm: number; placeId: string };
 
 type ModelAvailability = "available" | "downloadable" | "downloading" | "unavailable";
 
@@ -174,12 +174,6 @@ async function revealStory(placeId: string, authored: string): Promise<string> {
   });
   if (result.store !== null) writeCachedStory(placeId, result.store);
   return result.text;
-}
-
-function formatSpot(lon: number, lat: number): string {
-  const ns = lat >= 0 ? "N" : "S";
-  const ew = lon >= 0 ? "E" : "W";
-  return `${Math.abs(lat).toFixed(2)}° ${ns}, ${Math.abs(lon).toFixed(2)}° ${ew}`;
 }
 
 export function GameApp() {
@@ -381,12 +375,44 @@ function Play({
   );
   const place = placeAt(ordered, run.index);
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
+  // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
+  // screen-reader users get feedback for place/move/clear. Cleared whenever
+  // the phase changes, at which point phase messaging takes over.
+  const [aimAnnouncement, setAimAnnouncement] = useState<string | null>(null);
   const [drop, setDrop] = useState<Drop | null>(null);
   const [story, setStory] = useState<string | null>(null);
+  const [bubble, setBubble] = useState<BubbleViewState>("open");
+  const [cardDismissed, setCardDismissed] = useState(false);
+  // Stash for the M1 double-tap revert: the pin that existed before the latest
+  // tap. Wired to <SatelliteMap> via the onDoubleTap/onClearAim props below.
+  const aimBeforeTap = useRef<{ lon: number; lat: number } | null>(null);
 
   useEffect(() => {
     setAim(null);
+    setBubble("open");
+    setCardDismissed(false);
+    aimBeforeTap.current = null;
   }, [place?.id]);
+
+  // M5: Escape dismisses the result card when committed, and toggles the
+  // question bubble when aiming with no pin (AIM_EMPTY). Pin clearing (AIM_PIN)
+  // is handled by satellite-map via onClearAim; the AIM_PIN guard below keeps
+  // this listener from double-handling it.
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      if (run.phase !== "aim") {
+        setCardDismissed(true);
+        return;
+      }
+      if (aim !== null) return;
+      setBubble((view) =>
+        view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed",
+      );
+    }
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
+  }, [run.phase, aim]);
 
   useEffect(() => {
     if (place || run.phase === "done") return;
@@ -436,7 +462,30 @@ function Play({
 
   function onAim(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
+    aimBeforeTap.current = aim; // stash BEFORE setAim (M1 revert target)
+    setAimAnnouncement(
+      aim
+        ? "Pin moved. Press Drop pin to lock in your guess."
+        : "Pin placed. Press Drop pin to lock in your guess.",
+    );
     setAim({ lon, lat });
+  }
+
+  // M1: a classified double-tap zooms and reverts the first tap's placement.
+  // null = no pin, so "double-tap on empty map places zero pins" holds.
+  function onDoubleTap() {
+    if (run.phase !== "aim") return;
+    const reverted = aimBeforeTap.current;
+    setAim(reverted);
+    setAimAnnouncement(reverted ? "Pin moved back." : "Pin cleared.");
+  }
+
+  // M5: Escape with a pin clears it and resets the revert stash.
+  function onClearAim() {
+    if (run.phase !== "aim") return;
+    aimBeforeTap.current = null;
+    setAimAnnouncement("Pin cleared.");
+    setAim(null);
   }
 
   function onConfirm(lon: number, lat: number) {
@@ -447,30 +496,55 @@ function Play({
         ? radiusKm("globe", 0)
         : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
     setAim(null);
+    setAimAnnouncement(null);
     setDrop({ lon, lat, distanceKm: distance, placeId: place.id });
     onRun(dropPin(run, distance, radius));
   }
 
   function onContinue() {
     setDrop(null);
+    setAimAnnouncement(null);
     onRun(continueRun(run, ordered.length));
+  }
+
+  // Miss-card replay: the same resumeRun chain as openRun (a done run always
+  // restarts via startRun). Local state is reset explicitly because a
+  // same-day replay yields the same first place, so the [place?.id] effect
+  // above will not fire.
+  function onReplay() {
+    setAim(null);
+    setAimAnnouncement(null);
+    setDrop(null);
+    setBubble("open");
+    setCardDismissed(false);
+    aimBeforeTap.current = null;
+    onRun(
+      resumeRun(run, {
+        edition: run.edition,
+        regionId: run.regionId,
+        regionName: run.regionName,
+        dateKey: trailDate(),
+      }),
+    );
   }
 
   const mode = run.edition === "globe" ? "globe" : "flat";
   const bounds = run.edition === "globe" ? undefined : boundsFor(run);
 
   return (
-    <main className="flex h-dvh flex-col bg-bg">
-      <div className="relative min-h-0 flex-1">
+    <main className="relative h-dvh bg-bg">
+      <div className="absolute inset-0">
         <SatelliteMap
           mode={mode}
           bounds={bounds}
           onAim={onAim}
           onConfirm={onConfirm}
+          onDoubleTap={onDoubleTap}
+          onClearAim={onClearAim}
           marks={marks}
           variation={variation}
         />
-        <div className="pointer-events-none absolute top-3 right-3 left-3 flex items-start justify-between gap-3">
+        <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
           <Button variant="secondary" className="pointer-events-auto" onClick={onLeave}>
             Editions
           </Button>
@@ -479,131 +553,37 @@ function Play({
           </p>
         </div>
       </div>
-      <p className="border-t border-line bg-surface px-4 py-2 text-xs text-muted">
-        {IMAGERY_NOTICE}
-      </p>
-      <section className="max-h-[46dvh] overflow-y-auto bg-surface px-4 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))]">
-        <p className="text-xs tracking-wide text-subtle uppercase">{run.regionName}</p>
-        {place ? (
-          <Round
-            run={run}
-            place={place}
-            drop={drop}
-            story={story}
-            aiming={aim !== null}
-            onContinue={onContinue}
-          />
-        ) : (
-          <Finished run={run} empty={ordered.length === 0} />
-        )}
-      </section>
-    </main>
-  );
-}
-
-function Round({
-  run,
-  place,
-  drop,
-  story,
-  aiming,
-  onContinue,
-}: {
-  run: Run;
-  place: Starter;
-  drop: Drop | null;
-  story: string | null;
-  aiming: boolean;
-  onContinue: () => void;
-}) {
-  const revealed = run.phase !== "aim" && drop?.placeId === place.id;
-  return (
-    <>
-      <h1 className="mt-1 font-display text-3xl text-fg">{place.name}</h1>
       <p className="sr-only" aria-live="polite">
         {run.phase === "aim"
-          ? `Find ${place.name}.`
-          : run.phase === "story"
-            ? `${place.name}. ${drop ? formatDistance(drop.distanceKm) : "Hit"}.`
-            : `${place.name} missed. The run is over.`}
+          ? (aimAnnouncement ?? (place ? `Find ${place.name}.` : null))
+          : run.phase === "story" && place
+            ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.`
+            : place
+              ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : ""}. ${place.name} missed. The run is over.`
+              : `${run.regionName} finished.`}
       </p>
-      {run.phase === "aim" ? (
-        <p className="mt-3 text-sm text-muted">
-          {aiming
-            ? "Double-tap the pin to drop it. Tap elsewhere to move it."
-            : "Tap the map to place a pin. Double-tap that pin to drop it."}
-        </p>
+      {run.phase === "aim" && place ? (
+        <QuestionBubble
+          regionName={run.regionName}
+          placeName={place.name}
+          hasPin={aim !== null}
+          view={bubble}
+          onViewChange={setBubble}
+        />
       ) : null}
-      {run.phase === "story" ? (
-        <div className="mt-3 flex flex-col gap-3">
-          <p className="font-display text-4xl tabular-nums text-fg">
-            {drop ? formatDistance(drop.distanceKm) : "Hit"}
-          </p>
-          <p className="text-sm text-muted">
-            The line is your pin to the spot. The circle is close enough.
-          </p>
-          <p className="max-w-prose text-sm text-fg">{story ?? place.story}</p>
-          <a
-            className="text-sm text-muted underline"
-            href={place.sourceHref}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {place.sourceLabel}
-          </a>
-          <Button onClick={onContinue}>Next place</Button>
-        </div>
+      {run.phase !== "aim" ? (
+        <ResultCard
+          run={run}
+          place={place}
+          drop={drop}
+          story={story}
+          empty={ordered.length === 0}
+          dismissed={cardDismissed}
+          onDismissedChange={setCardDismissed}
+          onContinue={onContinue}
+          onReplay={onReplay}
+        />
       ) : null}
-      {run.phase === "done" ? (
-        <div className="mt-3 flex flex-col gap-3">
-          <p className="text-sm text-muted">That pin is outside the radius. The run ends.</p>
-          {revealed ? (
-            <p className="text-sm text-fg">
-              Your pin was {formatSpot(drop.lon, drop.lat)}, {formatDistance(drop.distanceKm)} away.
-              The spot is {formatSpot(place.lon, place.lat)}.
-            </p>
-          ) : (
-            <p className="text-sm text-fg">The spot is {formatSpot(place.lon, place.lat)}.</p>
-          )}
-          <ShareResult run={run} />
-        </div>
-      ) : null}
-    </>
-  );
-}
-
-function Finished({ run, empty }: { run: Run; empty: boolean }) {
-  return (
-    <div className="mt-3 flex flex-col gap-3">
-      <h1 className="font-display text-3xl text-fg">{run.regionName}</h1>
-      <p className="text-sm text-muted">
-        {empty
-          ? "This trail has no places yet."
-          : "You placed every place on the trail. It does not repeat."}
-      </p>
-      <ShareResult run={run} />
-    </div>
-  );
-}
-
-function ShareResult({ run }: { run: Run }) {
-  const [copied, setCopied] = useState(false);
-  const line = shareText({ regionName: run.regionName, dateKey: run.dateKey, hits: run.hits });
-  return (
-    <div className="flex flex-col gap-3">
-      <pre className="whitespace-pre-wrap rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
-        {line}
-      </pre>
-      <Button
-        onClick={() => {
-          void navigator.clipboard.writeText(line).then(
-            () => setCopied(true),
-            () => setCopied(false),
-          );
-        }}
-      >
-        {copied ? "Copied" : "Copy result"}
-      </Button>
-    </div>
+    </main>
   );
 }

@@ -8,7 +8,7 @@ Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.gith
 
 You pick **State**, **Country**, or **Globe**. A state is any of the 50. A country is one of thirteen. The globe is one shared trail.
 
-The prompt is a place name. The map is unlabeled satellite imagery, locked to the region you opened. Tap once to place a pin, then double-tap that pin to drop it. A single tap only moves it. Inside the close-enough radius, a short story appears and the next name follows. Outside it, the run ends. Either way the map draws the line from your pin to the spot, labels the distance, and shows the close-enough circle. There is no fifth round. If the list runs out, the run ends with the count you already earned.
+The prompt is a place name. The map is unlabeled satellite imagery, locked to the region you opened. Tap to place a pin — tap again to move it. Pinch or double-tap to zoom. When you're sure, press **Drop pin**: that's your one guess, and the pin locks in. Inside the close-enough radius, a short story appears and the next name follows. Outside it, the run ends. Either way the map draws the line from your pin to the spot, labels the distance, and shows the close-enough circle. There is no fifth round. If the list runs out, the run ends with the count you already earned.
 
 The same region on the same UTC date starts in the same order for everyone. A reload in the same tab resumes. A new visit starts at the beginning. There is no account.
 
