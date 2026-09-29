@@ -125,10 +125,10 @@ function setFeature(map: Map, id: string, coordinates: number[][] | null) {
 }
 
 /**
- * Live Esri imagery. A tap places (or moves) a pin — taps never commit.
- * The Drop pin button is the only commit path. Double-tap / double-click
- * zooms only; the second tap of the pair reverts the first tap's placement
- * via onDoubleTap so a double-tap leaves zero pins behind.
+ * Live Esri imagery. A tap places (or moves) a pin — propose only, never
+ * commit. Double-tap / double-click drops the pin: the second tap's point
+ * becomes the pin location, then it commits exactly like the Drop pin
+ * button. The Drop pin button stays as the explicit, accessible commit path.
  * After the drop, a line shows how far the pin is from the spot.
  */
 export function SatelliteMap(props: {
@@ -136,8 +136,6 @@ export function SatelliteMap(props: {
   bounds?: [number, number, number, number]; // west, south, east, north
   onAim?: (lon: number, lat: number) => void;
   onConfirm?: (lon: number, lat: number) => void;
-  /** Double-tap/double-click zoom detected: parent reverts the last tap's placement (M1). */
-  onDoubleTap?: () => void;
   /** Keyboard Escape with a pin placed: parent clears the aim (M5). */
   onClearAim?: () => void;
   marks?: readonly MapMark[];
@@ -150,7 +148,6 @@ export function SatelliteMap(props: {
   const labelRef = useRef<Marker | null>(null);
   const onAimRef = useRef(props.onAim);
   const onConfirmRef = useRef(props.onConfirm);
-  const onDoubleTapRef = useRef(props.onDoubleTap);
   const onClearAimRef = useRef(props.onClearAim);
   const marksRef = useRef(props.marks);
   const variationRef = useRef(props.variation);
@@ -175,7 +172,6 @@ export function SatelliteMap(props: {
   }, [props.variation]);
   onAimRef.current = props.onAim;
   onConfirmRef.current = props.onConfirm;
-  onDoubleTapRef.current = props.onDoubleTap;
   onClearAimRef.current = props.onClearAim;
   marksRef.current = props.marks;
   variationRef.current = props.variation;
@@ -201,8 +197,9 @@ export function SatelliteMap(props: {
   };
 
   // User-invoked zoom: essential: true so it animates even under
-  // prefers-reduced-motion (UX 4.6). MapLibre's own dblclick/pinch/wheel zoom
-  // keeps its default (also user-invoked) behavior.
+  // prefers-reduced-motion (UX 4.6). MapLibre's own pinch/wheel zoom keeps
+  // its default (also user-invoked) behavior; dblclick zoom is disabled —
+  // double-tap / double-click commits the pin instead.
   const handleZoomIn = () => mapRef.current?.zoomIn({ essential: true });
   const handleZoomOut = () => mapRef.current?.zoomOut({ essential: true });
 
@@ -340,7 +337,11 @@ export function SatelliteMap(props: {
     });
 
     if (props.mode === "flat") map.touchZoomRotate.disableRotation();
-    // doubleClickZoom stays enabled: double-click / double-tap zooms, never commits.
+    // Double-click / double-tap COMMITS the pin now (user-directed reversal
+    // of the P0-02 "never commits" rule), so MapLibre's double-click zoom —
+    // which also handles touch double-tap via synthesized dblclick — stays
+    // disabled. Pinch/wheel zoom are unaffected.
+    map.doubleClickZoom.disable();
     // M6: MapLibre's built-in keyboard handler is disabled; arrows drive the
     // crosshair (never pan), implemented in onMapKeyDown below.
     map.keyboard.disable();
@@ -370,15 +371,13 @@ export function SatelliteMap(props: {
       dispatchTile({ type: "map-idle" });
     });
 
-    // Per map instance: classifies a tap pair as one double-tap zoom gesture.
+    // Per map instance: classifies a tap pair as one double-tap COMMIT gesture.
     const tracker = createTapTracker();
 
-    // Tap detection lives on raw pointerup, NOT click (P0-02 Option B): touch
-    // double-tap zoom suppresses the second tap's compatibility click, so a
-    // click-based tracker never observes tap two on touch. pointerup is not a
-    // compatibility event — it fires for both taps — and its pointerType is
-    // reliable per-event (resolves the old R2 as well). No preventDefault
-    // anywhere: MapLibre keeps its drag/pinch/dblclick-zoom.
+    // Tap detection lives on raw pointerup, NOT click: pointerup is not a
+    // compatibility event — it fires for both taps of a double-tap — and its
+    // pointerType is reliable per-event. No preventDefault anywhere:
+    // MapLibre keeps its drag/pinch/wheel zoom.
     const canvasContainer = map.getCanvasContainer();
     const activePointers = new Set<number>();
     let gestureDown: PointerTapEndpoint | null = null;
@@ -418,18 +417,23 @@ export function SatelliteMap(props: {
       const up = toEndpoint(e);
       if (!isTap(down, up)) return;
       const tap = { x: up.x, y: up.y, t: up.t };
-      if (tracker.register(tap) === "double-tap") {
-        // Second half of a zoom gesture: place nothing, revert the first tap.
-        onDoubleTapRef.current?.();
-        return;
-      }
       // M3: the 42px lift applies to the PLACEMENT coordinate (port of
-      // gesture.ts:3 TOUCH_LIFT via aimPoint), so the committed guess is the
-      // point the player actually sees under their fingertip. Lift unless mouse.
+      // gesture.ts:3 TOUCH_LIFT via aimPoint), so the pin lands on the point
+      // the player actually sees under their fingertip. Lift unless mouse.
       const lift = up.pointerType === "mouse" ? 0 : TOUCH_LIFT_PX;
       const at = map.unproject([tap.x, tap.y - lift]);
       if (typeof navigator.vibrate === "function") navigator.vibrate(10);
       setCrosshair(null); // pointer/touch takes over from the keyboard crosshair
+      if (tracker.register(tap) === "double-tap") {
+        // Double-tap / double-click COMMITS (user-directed reversal of the
+        // P0-02 "never commits" rule): the second tap's point becomes the pin
+        // location, then it commits exactly like the Drop pin button — one
+        // commit, no double-place. handleDrop's M12 guard still applies: with
+        // no live aim mark there is no commit.
+        onAimRef.current?.(at.lng, at.lat);
+        handleDrop(at.lng, at.lat);
+        return;
+      }
       onAimRef.current?.(at.lng, at.lat);
     };
     const onPointerCancel = (e: PointerEvent) => {
@@ -446,7 +450,9 @@ export function SatelliteMap(props: {
     canvasContainer.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("pointerup", onPointerUp);
     window.addEventListener("pointercancel", onPointerCancel);
-    // No dblclick handler: MapLibre must receive it to zoom. Never preventDefault it.
+    // No dblclick handler of our own: the commit comes from the pointerup
+    // pair classifier above, and MapLibre's doubleClickZoom is disabled, so
+    // a dblclick neither zooms nor double-commits. Never preventDefault it.
 
     // Track zoom for the +/- controls' aria-live announcements (M10).
     map.on("zoomend", () => setZoom(Math.round(map.getZoom())));
@@ -728,7 +734,8 @@ export function SatelliteMap(props: {
         </div>
       )}
       <ZoomControls zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
-      {/* The Drop pin button is the ONLY commit path. Hidden once committed
+      {/* The Drop pin button is the explicit, accessible commit path
+          (double-tap / double-click also commits). Hidden once committed
           (variation != null); the result card takes its place. Overlay root is
           pointer-events-none so taps around the chrome still reach the map. */}
       {!props.variation && (

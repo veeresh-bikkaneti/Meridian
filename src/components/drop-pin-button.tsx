@@ -4,11 +4,12 @@ import type { JSX } from "react";
 export type DropPinAim = { lon: number; lat: number };
 
 /**
- * The ONLY commit path (P0-02 locked model). Floating bottom-center pill,
- * rendered by SatelliteMap as a map overlay.
+ * The explicit, accessible commit path (double-tap / double-click also
+ * commits). Floating bottom-center pill, rendered by SatelliteMap as a map
+ * overlay.
  *
  * - Visible but disabled until a pin is placed (M12): discoverability of the
- *   only commit path beats hiding it; disabled-until-placed teaches tap-then-drop.
+ *   commit path beats hiding it; disabled-until-placed teaches tap-then-drop.
  * - Native <button>: Tab-reachable, Enter/Space activates, >=44px hit area.
  * - Press: vibrate(10) (guarded) + :active scale(0.98); the commit itself is
  *   answered by the reveal camera + result card.

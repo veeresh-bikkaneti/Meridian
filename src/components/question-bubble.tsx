@@ -7,9 +7,10 @@ export type BubbleViewState = "open" | "collapsed" | "dismissed";
 const CHROME =
   "backdrop-blur-[14px] bg-[rgba(10,12,16,0.72)] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]";
 
-// UX §6.1 — replaces the stale "Double-tap the pin…" lines.
-const HINT_EMPTY = "Tap the map to place your pin. Pinch or double-tap to zoom.";
-const HINT_PIN = "Tap to move the pin. When you're sure, press Drop pin — that's your one guess.";
+// UX §6.1 — gesture hints for the current model: tap proposes,
+// double-tap / double-click drops the pin, pinch zooms.
+const HINT_EMPTY = "Tap the map to place your pin. Double-tap to drop it. Pinch to zoom.";
+const HINT_PIN = "Tap to move the pin. Double-tap the map or press Drop pin — that's your one guess.";
 
 function usePrefersReducedMotion(): boolean {
   const [reduced, setReduced] = useState(
