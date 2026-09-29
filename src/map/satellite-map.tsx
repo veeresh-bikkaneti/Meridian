@@ -1,46 +1,93 @@
 import { useEffect, useRef, useState, type JSX } from "react";
-import { Map, Marker } from "maplibre-gl";
+import { Map, Marker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { disk } from "@/game/geo";
 import { imageryView } from "./imagery.ts";
+import { classifyTap, type ScreenTap } from "./pin-tap.ts";
+import { variationLine, type MapPoint } from "./variation.ts";
 
 const IMAGERY_SOURCE = "imagery";
+const LINE_SOURCE = "variation-line";
+const RING_SOURCE = "variation-ring";
 
-export type MapMark = { lon: number; lat: number; tone: "pin" | "spot" };
+export type MapMark = { lon: number; lat: number; tone: "aim" | "pin" | "spot" };
 
-function markColor(tone: MapMark["tone"]): string {
-  return tone === "spot" ? "#8fb8c6" : "#f4f1ea";
+export type MapVariation = {
+  pin: MapPoint;
+  spot: MapPoint;
+  kilometers: number;
+  radiusKm: number;
+};
+
+const EMPTY = { type: "FeatureCollection" as const, features: [] };
+
+function markerElement(tone: MapMark["tone"]): HTMLDivElement {
+  const spot = tone === "spot";
+  const el = document.createElement("div");
+  el.style.width = spot ? "16px" : "18px";
+  el.style.height = spot ? "16px" : "18px";
+  el.style.borderRadius = spot ? "999px" : "999px 999px 999px 0";
+  el.style.background = spot ? "#f2c14e" : "#f4f1ea";
+  el.style.border = "2px solid #101211";
+  el.style.boxShadow = "0 1px 4px rgba(0,0,0,0.45)";
+  el.style.pointerEvents = "none";
+  if (!spot) el.style.transform = "rotate(-45deg)";
+  el.setAttribute("aria-label", spot ? "The spot" : "Your pin");
+  return el;
 }
 
-function replaceMarks(
-  map: Map,
-  marks: readonly MapMark[] | undefined,
-  current: Marker[],
-): Marker[] {
+function replaceMarks(map: Map, marks: readonly MapMark[] | undefined, current: Marker[]): Marker[] {
   for (const marker of current) marker.remove();
-  return (marks ?? []).map((mark) =>
-    new Marker({ color: markColor(mark.tone) }).setLngLat([mark.lon, mark.lat]).addTo(map),
+  return (marks ?? []).map(
+    (mark) =>
+      new Marker({
+        element: markerElement(mark.tone),
+        anchor: mark.tone === "spot" ? "center" : "bottom",
+      })
+        .setLngLat([mark.lon, mark.lat])
+        .addTo(map),
+  );
+}
+
+function setFeature(map: Map, id: string, coordinates: number[][] | null) {
+  const source = map.getSource(id) as GeoJSONSource | undefined;
+  if (!source) return;
+  source.setData(
+    coordinates
+      ? {
+          type: "Feature",
+          properties: {},
+          geometry: { type: "LineString", coordinates },
+        }
+      : EMPTY,
   );
 }
 
 /**
- * Live Esri imagery. Flat maps stay inside the region. The globe is the same
- * tiles on a satellite sphere and cannot zoom past 5. Tiles are requested by
- * the browser, never bundled.
+ * Live Esri imagery. A tap places a pin. A second tap on that pin drops it.
+ * After the drop, a line shows how far the pin is from the spot.
  */
 export function SatelliteMap(props: {
   mode: "flat" | "globe";
   bounds?: [number, number, number, number]; // west, south, east, north
-  onPick?: (lon: number, lat: number) => void;
+  onAim?: (lon: number, lat: number) => void;
+  onConfirm?: (lon: number, lat: number) => void;
   marks?: readonly MapMark[];
+  variation?: MapVariation | null;
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
   const markersRef = useRef<Marker[]>([]);
-  const onPickRef = useRef(props.onPick);
+  const labelRef = useRef<Marker | null>(null);
+  const onAimRef = useRef(props.onAim);
+  const onConfirmRef = useRef(props.onConfirm);
   const marksRef = useRef(props.marks);
+  const variationRef = useRef(props.variation);
   const [ready, setReady] = useState(false);
-  onPickRef.current = props.onPick;
+  onAimRef.current = props.onAim;
+  onConfirmRef.current = props.onConfirm;
   marksRef.current = props.marks;
+  variationRef.current = props.variation;
   const view = imageryView(props.mode);
   const west = props.bounds?.[0];
   const south = props.bounds?.[1];
@@ -49,6 +96,9 @@ export function SatelliteMap(props: {
   const markKey = (props.marks ?? [])
     .map((mark) => `${mark.tone}:${mark.lon}:${mark.lat}`)
     .join("|");
+  const variationKey = props.variation
+    ? `${props.variation.pin.lon}:${props.variation.pin.lat}:${props.variation.spot.lon}:${props.variation.spot.lat}:${props.variation.kilometers}`
+    : "";
 
   useEffect(() => {
     const container = containerRef.current;
@@ -81,13 +131,7 @@ export function SatelliteMap(props: {
             attribution: view.attribution,
           },
         },
-        layers: [
-          {
-            id: IMAGERY_SOURCE,
-            type: "raster",
-            source: IMAGERY_SOURCE,
-          },
-        ],
+        layers: [{ id: IMAGERY_SOURCE, type: "raster", source: IMAGERY_SOURCE }],
       },
       center,
       zoom: props.mode === "globe" ? 1.5 : 2,
@@ -101,15 +145,55 @@ export function SatelliteMap(props: {
     });
 
     if (props.mode === "flat") map.touchZoomRotate.disableRotation();
-    map.on("load", () => {
-      map.resize();
-      if (bounds) map.fitBounds(bounds, { padding: 28, duration: 700, animate: true });
-      setReady(true);
-    });
+    map.doubleClickZoom.disable();
+
+    let placed: (ScreenTap & { lon: number; lat: number }) | null = null;
+
+    const confirm = () => {
+      if (!placed) return;
+      onConfirmRef.current?.(placed.lon, placed.lat);
+      placed = null;
+    };
 
     map.on("click", (event) => {
+      const next = { x: event.point.x, y: event.point.y, t: performance.now() };
+      if (classifyTap(placed, next) === "confirm") {
+        confirm();
+        return;
+      }
       const at = map.unproject(event.point);
-      onPickRef.current?.(at.lng, at.lat);
+      placed = { ...next, lon: at.lng, lat: at.lat };
+      onAimRef.current?.(at.lng, at.lat);
+    });
+    map.on("dblclick", (event) => {
+      event.preventDefault();
+      confirm();
+    });
+
+    map.on("load", () => {
+      map.addSource(LINE_SOURCE, { type: "geojson", data: EMPTY });
+      map.addSource(RING_SOURCE, { type: "geojson", data: EMPTY });
+      map.addLayer({
+        id: RING_SOURCE,
+        type: "line",
+        source: RING_SOURCE,
+        paint: {
+          "line-color": "#f4f1ea",
+          "line-width": 1.5,
+          "line-opacity": 0.85,
+          "line-dasharray": [2, 2],
+        },
+      });
+      map.addLayer({
+        id: LINE_SOURCE,
+        type: "line",
+        source: LINE_SOURCE,
+        paint: { "line-color": "#f2c14e", "line-width": 3 },
+      });
+      map.resize();
+      if (bounds) map.fitBounds(bounds, { padding: 28, duration: 700, animate: true });
+      paintVariation(map, variationRef.current ?? null, props.mode);
+      setReady(true);
     });
 
     mapRef.current = map;
@@ -118,6 +202,8 @@ export function SatelliteMap(props: {
     return () => {
       for (const marker of markersRef.current) marker.remove();
       markersRef.current = [];
+      labelRef.current?.remove();
+      labelRef.current = null;
       mapRef.current = null;
       setReady(false);
       map.remove();
@@ -129,6 +215,49 @@ export function SatelliteMap(props: {
     if (!map) return;
     markersRef.current = replaceMarks(map, marksRef.current, markersRef.current);
   }, [markKey]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map?.isStyleLoaded()) return;
+    paintVariation(map, props.variation ?? null, props.mode);
+  }, [props.mode, variationKey, props.variation]);
+
+  function paintVariation(map: Map, variation: MapVariation | null, mode: "flat" | "globe") {
+    labelRef.current?.remove();
+    labelRef.current = null;
+    if (!variation) {
+      setFeature(map, LINE_SOURCE, null);
+      setFeature(map, RING_SOURCE, null);
+      return;
+    }
+    const line = variationLine(variation.pin, variation.spot, variation.kilometers);
+    setFeature(map, LINE_SOURCE, line.coordinates);
+    setFeature(map, RING_SOURCE, disk(variation.spot.lon, variation.spot.lat, variation.radiusKm));
+    const label = document.createElement("div");
+    label.textContent = line.label;
+    label.style.background = "#101211";
+    label.style.color = "#f4f1ea";
+    label.style.border = "1px solid #f2c14e";
+    label.style.borderRadius = "999px";
+    label.style.padding = "2px 8px";
+    label.style.fontSize = "12px";
+    label.style.fontWeight = "600";
+    label.style.pointerEvents = "none";
+    labelRef.current = new Marker({ element: label, anchor: "center" })
+      .setLngLat(line.midpoint)
+      .addTo(map);
+    const westEdge = Math.min(variation.pin.lon, variation.spot.lon);
+    const eastEdge = Math.max(variation.pin.lon, variation.spot.lon);
+    const southEdge = Math.min(variation.pin.lat, variation.spot.lat);
+    const northEdge = Math.max(variation.pin.lat, variation.spot.lat);
+    map.fitBounds(
+      [
+        [westEdge, southEdge],
+        [eastEdge, northEdge],
+      ],
+      { padding: 80, duration: 800, maxZoom: mode === "globe" ? 4 : 8 },
+    );
+  }
 
   return (
     <div className="satellite-map relative h-full min-h-64 w-full">

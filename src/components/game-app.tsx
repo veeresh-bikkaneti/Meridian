@@ -8,7 +8,7 @@ import { shareText } from "@/game/share";
 import { STARTERS, type Starter } from "@/game/starters";
 import { orderPlaces, placeAt } from "@/game/trail";
 import { IMAGERY_NOTICE } from "@/map/imagery";
-import { SatelliteMap, type MapMark } from "@/map/satellite-map";
+import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -380,8 +380,13 @@ function Play({
     [places, run.dateKey, run.edition, run.regionId],
   );
   const place = placeAt(ordered, run.index);
+  const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   const [drop, setDrop] = useState<Drop | null>(null);
   const [story, setStory] = useState<string | null>(null);
+
+  useEffect(() => {
+    setAim(null);
+  }, [place?.id]);
 
   useEffect(() => {
     if (place || run.phase === "done") return;
@@ -406,20 +411,42 @@ function Play({
   }, [place, run.phase]);
 
   const marks = useMemo<readonly MapMark[] | undefined>(() => {
-    if (!drop || !place || drop.placeId !== place.id || run.phase === "aim") return undefined;
+    if (run.phase === "aim") {
+      return aim ? [{ lon: aim.lon, lat: aim.lat, tone: "aim" }] : undefined;
+    }
+    if (!drop || !place || drop.placeId !== place.id) return undefined;
     return [
       { lon: drop.lon, lat: drop.lat, tone: "pin" },
       { lon: place.lon, lat: place.lat, tone: "spot" },
     ];
-  }, [drop, place, run.phase]);
+  }, [aim, drop, place, run.phase]);
 
-  function onPick(lon: number, lat: number) {
+  const variation = useMemo<MapVariation | null>(() => {
+    if (run.phase === "aim" || !drop || !place || drop.placeId !== place.id) return null;
+    return {
+      pin: { lon: drop.lon, lat: drop.lat },
+      spot: { lon: place.lon, lat: place.lat },
+      kilometers: drop.distanceKm,
+      radiusKm:
+        run.edition === "globe"
+          ? radiusKm("globe", 0)
+          : radiusKm(run.edition, greaterSideKm(boundsFor(run))),
+    };
+  }, [drop, place, run]);
+
+  function onAim(lon: number, lat: number) {
+    if (run.phase !== "aim" || !place) return;
+    setAim({ lon, lat });
+  }
+
+  function onConfirm(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
     const distance = distanceKm([lon, lat], [place.lon, place.lat]);
     const radius =
       run.edition === "globe"
         ? radiusKm("globe", 0)
         : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
+    setAim(null);
     setDrop({ lon, lat, distanceKm: distance, placeId: place.id });
     onRun(dropPin(run, distance, radius));
   }
@@ -435,7 +462,14 @@ function Play({
   return (
     <main className="flex h-dvh flex-col bg-bg">
       <div className="relative min-h-0 flex-1">
-        <SatelliteMap mode={mode} bounds={bounds} onPick={onPick} marks={marks} />
+        <SatelliteMap
+          mode={mode}
+          bounds={bounds}
+          onAim={onAim}
+          onConfirm={onConfirm}
+          marks={marks}
+          variation={variation}
+        />
         <div className="pointer-events-none absolute top-3 right-3 left-3 flex items-start justify-between gap-3">
           <Button variant="secondary" className="pointer-events-auto" onClick={onLeave}>
             Editions
@@ -451,7 +485,14 @@ function Play({
       <section className="max-h-[46dvh] overflow-y-auto bg-surface px-4 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))]">
         <p className="text-xs tracking-wide text-subtle uppercase">{run.regionName}</p>
         {place ? (
-          <Round run={run} place={place} drop={drop} story={story} onContinue={onContinue} />
+          <Round
+            run={run}
+            place={place}
+            drop={drop}
+            story={story}
+            aiming={aim !== null}
+            onContinue={onContinue}
+          />
         ) : (
           <Finished run={run} empty={ordered.length === 0} />
         )}
@@ -465,12 +506,14 @@ function Round({
   place,
   drop,
   story,
+  aiming,
   onContinue,
 }: {
   run: Run;
   place: Starter;
   drop: Drop | null;
   story: string | null;
+  aiming: boolean;
   onContinue: () => void;
 }) {
   const revealed = run.phase !== "aim" && drop?.placeId === place.id;
@@ -486,13 +529,18 @@ function Round({
       </p>
       {run.phase === "aim" ? (
         <p className="mt-3 text-sm text-muted">
-          Tap the map to drop a pin. The map has no place names.
+          {aiming
+            ? "Double-tap the pin to drop it. Tap elsewhere to move it."
+            : "Tap the map to place a pin. Double-tap that pin to drop it."}
         </p>
       ) : null}
       {run.phase === "story" ? (
         <div className="mt-3 flex flex-col gap-3">
           <p className="font-display text-4xl tabular-nums text-fg">
             {drop ? formatDistance(drop.distanceKm) : "Hit"}
+          </p>
+          <p className="text-sm text-muted">
+            The line is your pin to the spot. The circle is close enough.
           </p>
           <p className="max-w-prose text-sm text-fg">{story ?? place.story}</p>
           <a
