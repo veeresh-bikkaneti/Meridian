@@ -143,6 +143,11 @@ export function SatelliteMap(props: {
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  // Z3/Z4 zoom-space (design §2): starfield host. The sibling crew's
+  // src/map/starfield.ts (not yet landed) provides
+  // mountStarfield(container): { destroy }; it mounts its canvas into this
+  // div (see the marked call site in the map-construction effect below).
+  const starfieldRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
   const markersRef = useRef<Marker[]>([]);
   const labelRef = useRef<Marker | null>(null);
@@ -336,6 +341,13 @@ export function SatelliteMap(props: {
       renderWorldCopies: props.mode === "flat",
     });
 
+    // Z3/Z4 zoom-space starfield mount point (design §2): when the sibling
+    // crew's src/map/starfield.ts lands, mount here —
+    //   const starfield = mountStarfield(starfieldRef.current!);
+    // ...and call starfield.destroy() in the effect cleanup below. The host
+    // div (JSX below) stays empty until then; the wrapper's bg-[#0a1c26] is
+    // the fallback backdrop — never white (design §2 fallback).
+
     if (props.mode === "flat") map.touchZoomRotate.disableRotation();
     // Double-click / double-tap COMMITS the pin now (user-directed reversal
     // of the P0-02 "never commits" rule), so MapLibre's double-click zoom —
@@ -505,6 +517,8 @@ export function SatelliteMap(props: {
 
     return () => {
       window.clearTimeout(watchdog);
+      // Z3/Z4 zoom-space: starfield.destroy() goes here once
+      // src/map/starfield.ts lands (see the mount point above).
       canvasContainer.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("pointerup", onPointerUp);
       window.removeEventListener("pointercancel", onPointerCancel);
@@ -620,6 +634,22 @@ export function SatelliteMap(props: {
       aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin."
       onKeyDown={onMapKeyDown}
     >
+      {/*
+        Z3/Z4 zoom-space starfield host (design §2): a static 2D canvas drawn
+        once by the sibling crew's mountStarfield(), layered BEHIND the map
+        container div (DOM order; both absolute inset-0, no z-index). The
+        MapLibre canvas is alpha:true with no background layer, so the stars
+        show through wherever no tile/earth paints. pointer-events:none so it
+        never intercepts input; aria-hidden (decorative). Reduced-motion
+        twinkle handling lives inside mountStarfield. Until that module
+        lands this div is empty and the wrapper's bg-[#0a1c26] is the
+        fallback backdrop.
+      */}
+      <div
+        ref={starfieldRef}
+        aria-hidden="true"
+        className="meridian-starfield pointer-events-none absolute inset-0"
+      />
       {/*
         The inline position below is load-bearing — it is NOT redundant with
         the `absolute` Tailwind class. MapLibre adds its own `maplibregl-map`
