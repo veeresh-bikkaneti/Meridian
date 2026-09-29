@@ -236,3 +236,25 @@
     animation: none;
   }
 }
+
+/* =====================================================================
+ * Must-fix #2 (UI review): tile-loading spinner. The loading pill in
+ * satellite-map.tsx renders .meridian-spinner; reduced motion kills the
+ * spin (static ring + text remains, announced via role="status").
+ * ===================================================================== */
+
+@keyframes meridian-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.meridian-spinner {
+  animation: meridian-spin 900ms linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meridian-spinner {
+    animation: none;
+  }
+}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type JSX, type KeyboardEvent } from "react";
+import { useEffect, useReducer, useRef, useState, type JSX, type KeyboardEvent } from "react";
 import { Info } from "lucide-react";
 import { Map, Marker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -8,6 +8,7 @@ import { disk } from "@/game/geo";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { TOUCH_LIFT_PX, isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { createTapTracker } from "./tap-tracker.ts";
+import { INITIAL_TILE_STATUS, tileStatusReducer } from "./tile-status.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
 
 const IMAGERY_SOURCE = "imagery";
@@ -60,6 +61,13 @@ const REVEAL_EDGE_PADDING_PX = 80;
 function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
+
+/**
+ * Must-fix #2: how long the style may take to load before the tile lifecycle
+ * is declared failed. Covers a style that never loads at all (dead DNS /
+ * blocked host) — without it the spinner would spin forever.
+ */
+const TILE_LOAD_TIMEOUT_MS = 15000;
 
 function markerElement(tone: MapMark["tone"]): HTMLDivElement {
   const spot = tone === "spot";
@@ -148,6 +156,13 @@ export function SatelliteMap(props: {
   const variationRef = useRef(props.variation);
   const [ready, setReady] = useState(false);
   const [zoom, setZoom] = useState(props.mode === "globe" ? 1.5 : 2);
+  // Must-fix #2: tile loading/failure UX. The reducer (tile-status.ts) is the
+  // single source of truth for whether the initial tile set is loading,
+  // ready, or failed; MapLibre events in the effect below map onto TileEvents
+  // per that module's wiring contract. `mapAttempt` remounts the map for
+  // Retry (the effect teardown removes the old instance).
+  const [tileStatus, dispatchTile] = useReducer(tileStatusReducer, INITIAL_TILE_STATUS);
+  const [mapAttempt, setMapAttempt] = useState(0);
   // Keyboard crosshair (M6): null = hidden. Shown on first arrow press at
   // viewport center; hidden again as soon as pointer/touch is used.
   const [crosshair, setCrosshair] = useState<{ x: number; y: number } | null>(null);
@@ -267,6 +282,12 @@ export function SatelliteMap(props: {
     const container = containerRef.current;
     if (!container) return;
 
+    // Must-fix #2: every (re)mount starts a fresh tile lifecycle — a new map
+    // instance means a new tile set, so reset even when the previous state
+    // was ready/failed (mode switches, tile URL changes, Retry bumps).
+    // On first mount this is a no-op (already the initial state).
+    dispatchTile({ type: "retry" });
+
     const locked =
       props.mode === "flat" &&
       west !== undefined &&
@@ -276,9 +297,20 @@ export function SatelliteMap(props: {
     const bounds = locked
       ? ([west, south, east, north] as [number, number, number, number])
       : undefined;
-    const center: [number, number] = bounds
-      ? [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2]
-      : [0, 0];
+    // Consume a stashed retry viewport once (set by handleRetryTiles): a
+    // retry after panning/zooming reopens on the player's view instead of
+    // jumping home. Bounds-locked flat mode always wins (fitBounds on load
+    // reframes anyway).
+    const retryView = retryViewRef.current;
+    retryViewRef.current = null;
+    const center: [number, number] =
+      retryView && !bounds
+        ? retryView.center
+        : bounds
+          ? [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2]
+          : [0, 0];
+    const initialZoom =
+      retryView && !bounds ? retryView.zoom : props.mode === "globe" ? 1.5 : 2;
 
     const map = new Map({
       container,
@@ -297,7 +329,7 @@ export function SatelliteMap(props: {
         layers: [{ id: IMAGERY_SOURCE, type: "raster", source: IMAGERY_SOURCE }],
       },
       center,
-      zoom: props.mode === "globe" ? 1.5 : 2,
+      zoom: initialZoom,
       maxZoom: props.mode === "globe" ? 5 : undefined,
       maxBounds: bounds,
       attributionControl: false,
@@ -312,6 +344,31 @@ export function SatelliteMap(props: {
     // M6: MapLibre's built-in keyboard handler is disabled; arrows drive the
     // crosshair (never pan), implemented in onMapKeyDown below.
     map.keyboard.disable();
+
+    // Must-fix #2: tile load lifecycle (see tile-status.ts wiring contract).
+    // Only TILE failures feed it: the "error" event also fires for
+    // sprites/glyphs/sources, and a flaky glyph URL must never flip a
+    // healthy map to failed. (ErrorEvent carries the failing tile at
+    // runtime; it is not in the public type, hence the narrow cast.)
+    // "load" fires when the style parses but tiles are still in flight
+    // (NOT success); the first "idle" is the verdict on the initial tile
+    // set. The watchdog covers a style that never loads at all
+    // (dead DNS / blocked host).
+    map.on("error", (e) => {
+      if ((e as { tile?: unknown }).tile) dispatchTile({ type: "tile-error" });
+    });
+    // `let`: re-armed once the style parses (see the load handler below) so
+    // the tile phase gets its own full budget.
+    let watchdog = window.setTimeout(() => {
+      dispatchTile({ type: "load-timeout" });
+    }, TILE_LOAD_TIMEOUT_MS);
+    map.on("idle", () => {
+      // First idle is the verdict; later idles (every camera move) are
+      // no-ops in the reducer — it returns the identical state, so React
+      // bails out of re-rendering. Clearing the watchdog here is hygiene.
+      window.clearTimeout(watchdog);
+      dispatchTile({ type: "map-idle" });
+    });
 
     // Per map instance: classifies a tap pair as one double-tap zoom gesture.
     const tracker = createTapTracker();
@@ -395,6 +452,17 @@ export function SatelliteMap(props: {
     map.on("zoomend", () => setZoom(Math.round(map.getZoom())));
 
     map.on("load", () => {
+      // Must-fix #2: style parsed, tiles in flight — not a verdict either
+      // way (the reducer treats map-load as a no-op; the first idle
+      // decides). Recorded for contract fidelity with tile-status.ts.
+      dispatchTile({ type: "map-load" });
+      // The style parsed; the tile phase gets its own full watchdog budget
+      // from here — a slow connection that trickles tiles must not trip
+      // the style watchdog and declare failure over a healthy map.
+      window.clearTimeout(watchdog);
+      watchdog = window.setTimeout(() => {
+        dispatchTile({ type: "load-timeout" });
+      }, TILE_LOAD_TIMEOUT_MS);
       map.addSource(LINE_SOURCE, { type: "geojson", data: EMPTY });
       map.addSource(RING_SOURCE, { type: "geojson", data: EMPTY });
       map.addLayer({
@@ -430,6 +498,7 @@ export function SatelliteMap(props: {
     markersRef.current = replaceMarks(map, marksRef.current, markersRef.current);
 
     return () => {
+      window.clearTimeout(watchdog);
       canvasContainer.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("pointerup", onPointerUp);
       window.removeEventListener("pointercancel", onPointerCancel);
@@ -441,7 +510,35 @@ export function SatelliteMap(props: {
       setReady(false);
       map.remove();
     };
-  }, [east, north, props.mode, south, view.attribution, view.projection, view.tiles, west]);
+  }, [east, north, props.mode, south, view.attribution, view.projection, view.tiles, west, mapAttempt]);
+
+  // Must-fix #2: Retry resets the tile lifecycle and remounts the map (the
+  // effect teardown above removes the old instance; `mapAttempt` retriggers
+  // it). The overlay's own dispatch flips the UI back to the spinner
+  // immediately; the effect-top reset is the belt-and-braces path.
+  // Mash guard: recreating a WebGL map per click is expensive, so clicks
+  // faster than human retry rhythm are ignored (security review).
+  const retryAtRef = useRef(0);
+  // Stashed viewport for the remounted map (architect review): retry keeps
+  // the player's pan/zoom instead of jumping home.
+  const retryViewRef = useRef<{ center: [number, number]; zoom: number } | null>(null);
+  const handleRetryTiles = () => {
+    const now = Date.now();
+    if (now - retryAtRef.current < 800) return;
+    retryAtRef.current = now;
+    // Remember where the player was looking so the remounted map reopens
+    // on the same viewport.
+    const map = mapRef.current;
+    if (map) {
+      retryViewRef.current = { center: map.getCenter().toArray(), zoom: map.getZoom() };
+    }
+    dispatchTile({ type: "retry" });
+    setMapAttempt((n) => n + 1);
+    // The error card unmounts under the focused Retry button; move focus to
+    // the map wrapper so keyboard/screen-reader users stay oriented while
+    // the loading status announces.
+    wrapperRef.current?.focus();
+  };
 
   useEffect(() => {
     const map = mapRef.current;
@@ -509,7 +606,7 @@ export function SatelliteMap(props: {
   return (
     <div
       ref={wrapperRef}
-      className="satellite-map relative h-full min-h-64 w-full"
+      className="satellite-map relative h-full min-h-64 w-full bg-[#0a1c26]"
       tabIndex={0}
       role="application"
       data-zoom={zoom}
@@ -521,6 +618,47 @@ export function SatelliteMap(props: {
         ref={containerRef}
         className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${ready ? "opacity-100" : "opacity-0"}`}
       />
+      {/* Must-fix #2: tile loading / failure UX. A dead imagery connection
+          must never look like a working game. Both overlays sit at z-10:
+          above the map canvas, below the Drop overlay (z-20), the crosshair
+          (z-20), and the attribution pill (z-10 but later in the DOM) — so
+          the game stays usable while the notice is shown. The roots are
+          pointer-events-none (only the error card takes events) so taps
+          around the chrome still reach the map. */}
+      {tileStatus.kind === "loading" && (
+        <div
+          role="status"
+          className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center"
+        >
+          <div
+            className={`flex items-center gap-2.5 rounded-full py-2.5 pl-3.5 pr-5 text-sm font-medium text-white ${CHROME}`}
+          >
+            <span
+              aria-hidden="true"
+              className="meridian-spinner block h-4 w-4 rounded-full border-2 border-white/25 border-t-white"
+            />
+            Loading satellite imagery…
+          </div>
+        </div>
+      )}
+      {tileStatus.kind === "failed" && (
+        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-[rgba(4,10,14,0.55)] p-4">
+          <div
+            role="alert"
+            className={`pointer-events-auto w-full max-w-sm rounded-2xl p-5 text-center text-white ${CHROME}`}
+          >
+            <p className="m-0 text-sm font-semibold">Couldn't load satellite imagery.</p>
+            <p className="m-0 mt-1 text-sm text-white/80">Check your connection and try again.</p>
+            <button
+              type="button"
+              onClick={handleRetryTiles}
+              className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#0a1c26] transition-transform active:scale-95"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      )}
       {/* M6: keyboard crosshair ring at viewport center; pointer/touch hides it. */}
       {crosshair && (
         <div
