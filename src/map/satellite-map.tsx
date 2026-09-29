@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type JSX } from "react";
 import { Map, Marker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { DropPinButton } from "@/components/drop-pin-button.tsx";
+import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
 import { imageryView } from "./imagery.ts";
 import { TOUCH_LIFT_PX } from "./pin-tap.ts";
@@ -95,6 +96,7 @@ export function SatelliteMap(props: {
   const marksRef = useRef(props.marks);
   const variationRef = useRef(props.variation);
   const [ready, setReady] = useState(false);
+  const [zoom, setZoom] = useState(props.mode === "globe" ? 1.5 : 2);
   onAimRef.current = props.onAim;
   onConfirmRef.current = props.onConfirm;
   onDoubleTapRef.current = props.onDoubleTap;
@@ -121,6 +123,12 @@ export function SatelliteMap(props: {
     if (!live) return;
     onConfirmRef.current?.(lon, lat);
   };
+
+  // User-invoked zoom: essential: true so it animates even under
+  // prefers-reduced-motion (UX 4.6). MapLibre's own dblclick/pinch/wheel zoom
+  // keeps its default (also user-invoked) behavior.
+  const handleZoomIn = () => mapRef.current?.zoomIn({ essential: true });
+  const handleZoomOut = () => mapRef.current?.zoomOut({ essential: true });
   const variationKey = props.variation
     ? `${props.variation.pin.lon}:${props.variation.pin.lat}:${props.variation.spot.lon}:${props.variation.spot.lat}:${props.variation.kilometers}`
     : "";
@@ -196,6 +204,9 @@ export function SatelliteMap(props: {
     });
     // No dblclick handler: MapLibre must receive it to zoom. Never preventDefault it.
 
+    // Track zoom for the +/- controls' aria-live announcements (M10).
+    map.on("zoomend", () => setZoom(Math.round(map.getZoom())));
+
     map.on("load", () => {
       map.addSource(LINE_SOURCE, { type: "geojson", data: EMPTY });
       map.addSource(RING_SOURCE, { type: "geojson", data: EMPTY });
@@ -217,6 +228,7 @@ export function SatelliteMap(props: {
         paint: { "line-color": "#f2c14e", "line-width": 3 },
       });
       map.resize();
+      setZoom(Math.round(map.getZoom()));
       if (bounds) map.fitBounds(bounds, { padding: 28, duration: 700, animate: true });
       paintVariation(map, variationRef.current ?? null, props.mode);
       setReady(true);
@@ -291,9 +303,12 @@ export function SatelliteMap(props: {
         ref={containerRef}
         className={`absolute inset-0 transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0"}`}
       />
-      <p className="pointer-events-none absolute inset-x-0 bottom-0 z-10 m-0 bg-black/60 px-2 py-1 text-left text-[11px] leading-snug text-white">
+      {/* M7: the full-width attribution strip becomes a compact bottom-left
+          chip so it never collides with the bottom-right zoom controls. */}
+      <p className="pointer-events-none absolute bottom-2 left-2 z-10 m-0 max-w-[46%] rounded-full bg-black/60 px-2.5 py-1 text-left text-[10px] leading-snug text-white/90">
         {view.attribution}
       </p>
+      <ZoomControls zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
       {/* The Drop pin button is the ONLY commit path. Hidden once committed
           (variation != null); the result card takes its place. Overlay root is
           pointer-events-none so taps around the chrome still reach the map. */}
