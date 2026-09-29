@@ -614,9 +614,25 @@ export function SatelliteMap(props: {
       aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin."
       onKeyDown={onMapKeyDown}
     >
+      {/*
+        The inline position below is load-bearing — it is NOT redundant with
+        the `absolute` Tailwind class. MapLibre adds its own `maplibregl-map`
+        class to this div, and maplibre-gl.css declares
+        `.maplibregl-map { position: relative; overflow: hidden }` outside any
+        cascade layer; unlayered author CSS beats Tailwind v4's layered
+        `.absolute`, so the computed position becomes `relative`, this div's
+        height collapses to 0 (all children are absolutely positioned), and the
+        canvas is clipped invisible. Worse, MapLibre's native gesture handlers
+        (wheel zoom, drag pan, pinch zoom) attach to the canvas container: real
+        input hits the outer wrapper instead, so every native gesture dies
+        while the app-level controls (+/- buttons, keyboard) keep working. An
+        inline style outranks every stylesheet, layered or not — keep the
+        inline style; do not merge it into the className.
+      */}
       <div
         ref={containerRef}
         className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${ready ? "opacity-100" : "opacity-0"}`}
+        style={{ position: "absolute" }}
       />
       {/* Must-fix #2: tile loading / failure UX. A dead imagery connection
           must never look like a working game. Both overlays sit at z-10:
