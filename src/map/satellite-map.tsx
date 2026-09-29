@@ -3,7 +3,8 @@ import { Map, Marker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { disk } from "@/game/geo";
 import { imageryView } from "./imagery.ts";
-import { classifyTap, type ScreenTap } from "./pin-tap.ts";
+import { TOUCH_LIFT_PX } from "./pin-tap.ts";
+import { createTapTracker } from "./tap-tracker.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
 
 const IMAGERY_SOURCE = "imagery";
@@ -64,7 +65,10 @@ function setFeature(map: Map, id: string, coordinates: number[][] | null) {
 }
 
 /**
- * Live Esri imagery. A tap places a pin. A second tap on that pin drops it.
+ * Live Esri imagery. A tap places (or moves) a pin — taps never commit.
+ * The Drop pin button is the only commit path. Double-tap / double-click
+ * zooms only; the second tap of the pair reverts the first tap's placement
+ * via onDoubleTap so a double-tap leaves zero pins behind.
  * After the drop, a line shows how far the pin is from the spot.
  */
 export function SatelliteMap(props: {
@@ -72,6 +76,10 @@ export function SatelliteMap(props: {
   bounds?: [number, number, number, number]; // west, south, east, north
   onAim?: (lon: number, lat: number) => void;
   onConfirm?: (lon: number, lat: number) => void;
+  /** Double-tap/double-click zoom detected: parent reverts the last tap's placement (M1). */
+  onDoubleTap?: () => void;
+  /** Keyboard Escape with a pin placed: parent clears the aim (M5). */
+  onClearAim?: () => void;
   marks?: readonly MapMark[];
   variation?: MapVariation | null;
 }): JSX.Element {
@@ -81,11 +89,15 @@ export function SatelliteMap(props: {
   const labelRef = useRef<Marker | null>(null);
   const onAimRef = useRef(props.onAim);
   const onConfirmRef = useRef(props.onConfirm);
+  const onDoubleTapRef = useRef(props.onDoubleTap);
+  const onClearAimRef = useRef(props.onClearAim);
   const marksRef = useRef(props.marks);
   const variationRef = useRef(props.variation);
   const [ready, setReady] = useState(false);
   onAimRef.current = props.onAim;
   onConfirmRef.current = props.onConfirm;
+  onDoubleTapRef.current = props.onDoubleTap;
+  onClearAimRef.current = props.onClearAim;
   marksRef.current = props.marks;
   variationRef.current = props.variation;
   const view = imageryView(props.mode);
@@ -145,30 +157,31 @@ export function SatelliteMap(props: {
     });
 
     if (props.mode === "flat") map.touchZoomRotate.disableRotation();
-    map.doubleClickZoom.disable();
+    // doubleClickZoom stays enabled: double-click / double-tap zooms, never commits.
 
-    let placed: (ScreenTap & { lon: number; lat: number }) | null = null;
-
-    const confirm = () => {
-      if (!placed) return;
-      onConfirmRef.current?.(placed.lon, placed.lat);
-      placed = null;
-    };
+    // Per map instance: classifies a tap pair as one double-tap zoom gesture.
+    const tracker = createTapTracker();
 
     map.on("click", (event) => {
-      const next = { x: event.point.x, y: event.point.y, t: performance.now() };
-      if (classifyTap(placed, next) === "confirm") {
-        confirm();
+      const tap = { x: event.point.x, y: event.point.y, t: performance.now() };
+      if (tracker.register(tap) === "double-tap") {
+        // Second half of a zoom gesture: place nothing, revert the first tap.
+        onDoubleTapRef.current?.();
         return;
       }
-      const at = map.unproject(event.point);
-      placed = { ...next, lon: at.lng, lat: at.lat };
+      // R2: pointerType on the click's originalEvent is the reliable touch
+      // signal — verified in Playwright touch emulation (compat click arrives
+      // as a PointerEvent with pointerType "touch"; no touchstart-flag fallback).
+      const touch =
+        (event.originalEvent as PointerEvent | undefined)?.pointerType === "touch";
+      // M3: the 42px lift applies to the PLACEMENT coordinate (port of
+      // gesture.ts:3 TOUCH_LIFT via aimPoint), so the committed guess is the
+      // point the player actually sees under their fingertip.
+      const at = map.unproject([tap.x, touch ? tap.y - TOUCH_LIFT_PX : tap.y]);
+      if (typeof navigator.vibrate === "function") navigator.vibrate(10);
       onAimRef.current?.(at.lng, at.lat);
     });
-    map.on("dblclick", (event) => {
-      event.preventDefault();
-      confirm();
-    });
+    // No dblclick handler: MapLibre must receive it to zoom. Never preventDefault it.
 
     map.on("load", () => {
       map.addSource(LINE_SOURCE, { type: "geojson", data: EMPTY });
