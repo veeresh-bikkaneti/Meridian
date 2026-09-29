@@ -1,7 +1,7 @@
 # Meridian editions: state, country, globe
 
 Date: 2026-09-28
-Status: awaiting spec review
+Status: approved 2026-09-28
 
 Lincoln was a sample of scale, not the product. This design replaces city and street play, the five-round card, and the MapTap-style weighted share.
 
