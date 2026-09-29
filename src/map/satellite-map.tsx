@@ -501,7 +501,7 @@ export function SatelliteMap(props: {
       role="application"
       data-zoom={zoom}
       aria-roledescription="map"
-      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter places the pin. Escape clears the pin."
+      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin."
       onKeyDown={onMapKeyDown}
     >
       <div
