@@ -507,6 +507,27 @@ function Play({
     onRun(continueRun(run, ordered.length));
   }
 
+  // Miss-card replay: the same resumeRun chain as openRun (a done run always
+  // restarts via startRun). Local state is reset explicitly because a
+  // same-day replay yields the same first place, so the [place?.id] effect
+  // above will not fire.
+  function onReplay() {
+    setAim(null);
+    setAimAnnouncement(null);
+    setDrop(null);
+    setBubble("open");
+    setCardDismissed(false);
+    aimBeforeTap.current = null;
+    onRun(
+      resumeRun(run, {
+        edition: run.edition,
+        regionId: run.regionId,
+        regionName: run.regionName,
+        dateKey: trailDate(),
+      }),
+    );
+  }
+
   const mode = run.edition === "globe" ? "globe" : "flat";
   const bounds = run.edition === "globe" ? undefined : boundsFor(run);
 
@@ -560,6 +581,7 @@ function Play({
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
           onContinue={onContinue}
+          onReplay={onReplay}
         />
       ) : null}
     </main>

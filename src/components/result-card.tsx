@@ -80,7 +80,7 @@ function formatSpot(lon: number, lat: number): string {
   return `${Math.abs(lat).toFixed(2)}° ${ns}, ${Math.abs(lon).toFixed(2)}° ${ew}`;
 }
 
-function ShareResult({ run }: { run: Run }) {
+function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?: "primary" | "secondary" }) {
   const [copied, setCopied] = useState(false);
   const line = shareText({ regionName: run.regionName, dateKey: run.dateKey, hits: run.hits });
   return (
@@ -89,6 +89,7 @@ function ShareResult({ run }: { run: Run }) {
         {line}
       </pre>
       <Button
+        variant={copyVariant}
         onClick={() => {
           void navigator.clipboard.writeText(line).then(
             () => setCopied(true),
@@ -111,6 +112,7 @@ export function ResultCard({
   dismissed,
   onDismissedChange,
   onContinue,
+  onReplay,
 }: {
   run: Run;
   place: Starter | null;
@@ -120,6 +122,7 @@ export function ResultCard({
   dismissed: boolean;
   onDismissedChange: (dismissed: boolean) => void;
   onContinue: () => void;
+  onReplay: () => void;
 }) {
   const reduced = usePrefersReducedMotion();
 
@@ -205,7 +208,8 @@ export function ResultCard({
               ) : (
                 <p className="text-sm">The spot is {formatSpot(place.lon, place.lat)}.</p>
               )}
-              <ShareResult run={run} />
+              <Button onClick={onReplay}>Play again</Button>
+              <ShareResult run={run} copyVariant="secondary" />
             </div>
           ) : null}
 
