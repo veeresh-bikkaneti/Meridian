@@ -541,7 +541,12 @@ export function SatelliteMap(props: {
         <div
           className="pointer-events-none absolute bottom-2 left-2 z-10"
           onKeyDown={(e) => {
-            if (e.key === "Escape") setAttrOpen(false);
+            // Close only when open, and don't let the keypress bubble to the
+            // map root handler (which would also clear a placed aim pin).
+            if (e.key === "Escape" && attrOpen) {
+              e.stopPropagation();
+              setAttrOpen(false);
+            }
           }}
         >
           <button
