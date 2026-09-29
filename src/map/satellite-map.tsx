@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type JSX } from "react";
+import { useEffect, useRef, useState, type JSX, type KeyboardEvent } from "react";
 import { Map, Marker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { DropPinButton } from "@/components/drop-pin-button.tsx";
@@ -86,6 +86,7 @@ export function SatelliteMap(props: {
   variation?: MapVariation | null;
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
   const markersRef = useRef<Marker[]>([]);
   const labelRef = useRef<Marker | null>(null);
@@ -97,6 +98,9 @@ export function SatelliteMap(props: {
   const variationRef = useRef(props.variation);
   const [ready, setReady] = useState(false);
   const [zoom, setZoom] = useState(props.mode === "globe" ? 1.5 : 2);
+  // Keyboard crosshair (M6): null = hidden. Shown on first arrow press at
+  // viewport center; hidden again as soon as pointer/touch is used.
+  const [crosshair, setCrosshair] = useState<{ x: number; y: number } | null>(null);
   onAimRef.current = props.onAim;
   onConfirmRef.current = props.onConfirm;
   onDoubleTapRef.current = props.onDoubleTap;
@@ -129,6 +133,75 @@ export function SatelliteMap(props: {
   // keeps its default (also user-invoked) behavior.
   const handleZoomIn = () => mapRef.current?.zoomIn({ essential: true });
   const handleZoomOut = () => mapRef.current?.zoomOut({ essential: true });
+
+  // --- Keyboard aiming (M6: UX 2.5 wins over arch 3.5) ---
+  // Arrows move a crosshair (16px, Shift+arrows 64px), clamped to the
+  // viewport. Enter/Space places at the crosshair; the crosshair alone never
+  // enables the Drop button (only onAim placements create the aim mark).
+  const crosshairCenter = () => {
+    const el = wrapperRef.current;
+    return { x: (el?.clientWidth ?? 0) / 2, y: (el?.clientHeight ?? 0) / 2 };
+  };
+  const clampCrosshair = (p: { x: number; y: number }) => {
+    const el = wrapperRef.current;
+    const w = el?.clientWidth ?? 0;
+    const h = el?.clientHeight ?? 0;
+    return { x: Math.min(w, Math.max(0, p.x)), y: Math.min(h, Math.max(0, p.y)) };
+  };
+
+  const onMapKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    // Buttons handle their own keys: Space/Enter on the Drop button must not
+    // also place a pin via the bubbled keydown.
+    if ((e.target as HTMLElement | null)?.closest?.("button")) return;
+    const map = mapRef.current;
+    const step = e.shiftKey ? 64 : 16;
+    switch (e.key) {
+      case "ArrowUp":
+      case "ArrowDown":
+      case "ArrowLeft":
+      case "ArrowRight": {
+        e.preventDefault();
+        setCrosshair((prev) => {
+          const c = prev ?? crosshairCenter();
+          const dx = e.key === "ArrowLeft" ? -step : e.key === "ArrowRight" ? step : 0;
+          const dy = e.key === "ArrowUp" ? -step : e.key === "ArrowDown" ? step : 0;
+          return clampCrosshair({ x: c.x + dx, y: c.y + dy });
+        });
+        break;
+      }
+      case "Enter":
+      case " ": {
+        e.preventDefault();
+        if (!map) break;
+        const c = clampCrosshair(crosshair ?? crosshairCenter());
+        setCrosshair(c);
+        const at = map.unproject([c.x, c.y]);
+        if (typeof navigator.vibrate === "function") navigator.vibrate(10);
+        onAimRef.current?.(at.lng, at.lat);
+        break;
+      }
+      case "Escape": {
+        // M5: pin placed -> clear it via onClearAim. No pin -> nothing here;
+        // the AIM_EMPTY bubble toggle is P0-03 chrome and can observe this
+        // same keydown as it bubbles past the map wrapper.
+        if ((marksRef.current ?? []).some((mark) => mark.tone === "aim")) {
+          e.preventDefault();
+          onClearAimRef.current?.();
+        }
+        break;
+      }
+      case "+":
+      case "=":
+        e.preventDefault();
+        map?.zoomIn({ essential: true });
+        break;
+      case "-":
+      case "_":
+        e.preventDefault();
+        map?.zoomOut({ essential: true });
+        break;
+    }
+  };
   const variationKey = props.variation
     ? `${props.variation.pin.lon}:${props.variation.pin.lat}:${props.variation.spot.lon}:${props.variation.spot.lat}:${props.variation.kilometers}`
     : "";
@@ -179,6 +252,9 @@ export function SatelliteMap(props: {
 
     if (props.mode === "flat") map.touchZoomRotate.disableRotation();
     // doubleClickZoom stays enabled: double-click / double-tap zooms, never commits.
+    // M6: MapLibre's built-in keyboard handler is disabled; arrows drive the
+    // crosshair (never pan), implemented in onMapKeyDown below.
+    map.keyboard.disable();
 
     // Per map instance: classifies a tap pair as one double-tap zoom gesture.
     const tracker = createTapTracker();
@@ -200,6 +276,7 @@ export function SatelliteMap(props: {
       // point the player actually sees under their fingertip.
       const at = map.unproject([tap.x, touch ? tap.y - TOUCH_LIFT_PX : tap.y]);
       if (typeof navigator.vibrate === "function") navigator.vibrate(10);
+      setCrosshair(null); // pointer/touch takes over from the keyboard crosshair
       onAimRef.current?.(at.lng, at.lat);
     });
     // No dblclick handler: MapLibre must receive it to zoom. Never preventDefault it.
@@ -298,11 +375,27 @@ export function SatelliteMap(props: {
   }
 
   return (
-    <div className="satellite-map relative h-full min-h-64 w-full">
+    <div
+      ref={wrapperRef}
+      className="satellite-map relative h-full min-h-64 w-full"
+      tabIndex={0}
+      role="application"
+      aria-roledescription="map"
+      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter places the pin. Escape clears the pin."
+      onKeyDown={onMapKeyDown}
+    >
       <div
         ref={containerRef}
-        className={`absolute inset-0 transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0"}`}
+        className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${ready ? "opacity-100" : "opacity-0"}`}
       />
+      {/* M6: keyboard crosshair ring at viewport center; pointer/touch hides it. */}
+      {crosshair && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute z-20 h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-[0_0_0_2px_rgba(0,0,0,0.55)]"
+          style={{ left: crosshair.x, top: crosshair.y }}
+        />
+      )}
       {/* M7: the full-width attribution strip becomes a compact bottom-left
           chip so it never collides with the bottom-right zoom controls. */}
       <p className="pointer-events-none absolute bottom-2 left-2 z-10 m-0 max-w-[46%] rounded-full bg-black/60 px-2.5 py-1 text-left text-[10px] leading-snug text-white/90">
