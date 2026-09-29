@@ -1,4 +1,4 @@
-import { useEffect, useRef, type JSX } from "react";
+import { useEffect, useRef, useState, type JSX } from "react";
 import { Map, Marker } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { imageryView } from "./imagery.ts";
@@ -38,6 +38,7 @@ export function SatelliteMap(props: {
   const markersRef = useRef<Marker[]>([]);
   const onPickRef = useRef(props.onPick);
   const marksRef = useRef(props.marks);
+  const [ready, setReady] = useState(false);
   onPickRef.current = props.onPick;
   marksRef.current = props.marks;
   const view = imageryView(props.mode);
@@ -100,7 +101,11 @@ export function SatelliteMap(props: {
     });
 
     if (props.mode === "flat") map.touchZoomRotate.disableRotation();
-    if (bounds) map.fitBounds(bounds, { padding: 0, animate: false });
+    map.on("load", () => {
+      map.resize();
+      if (bounds) map.fitBounds(bounds, { padding: 28, duration: 700, animate: true });
+      setReady(true);
+    });
 
     map.on("click", (event) => {
       const at = map.unproject(event.point);
@@ -114,6 +119,7 @@ export function SatelliteMap(props: {
       for (const marker of markersRef.current) marker.remove();
       markersRef.current = [];
       mapRef.current = null;
+      setReady(false);
       map.remove();
     };
   }, [east, north, props.mode, south, view.attribution, view.projection, view.tiles, west]);
@@ -126,7 +132,10 @@ export function SatelliteMap(props: {
 
   return (
     <div className="satellite-map relative h-full min-h-64 w-full">
-      <div ref={containerRef} className="absolute inset-0" />
+      <div
+        ref={containerRef}
+        className={`absolute inset-0 transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0"}`}
+      />
       <p className="pointer-events-none absolute inset-x-0 bottom-0 z-10 m-0 bg-black/60 px-2 py-1 text-left text-[11px] leading-snug text-white">
         {view.attribution}
       </p>

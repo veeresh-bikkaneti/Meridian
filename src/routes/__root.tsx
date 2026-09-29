@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       { title: APP_NAME },
       {
         name: "description",
-        content: "Five places, once a day. Drop a pin on a map that never leaves your browser.",
+        content: "Pin the place. The run lasts until the pin misses.",
       },
       { name: "theme-color", content: "#101211" },
     ],

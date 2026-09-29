@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Plugin } from "vite";
 import { defineConfig } from "vite";
@@ -30,6 +30,25 @@ function hasGlobbedMigrations(root: string): boolean {
  * migrations — no schema to apply — skips it entirely rather than paying for a
  * PGLite instance it never queries.
  */
+function maplibreWorkerPlugin(): Plugin {
+  return {
+    name: "maplibre-worker-files",
+    apply: "build",
+    generateBundle() {
+      const environment = (this as { environment?: { name?: string } }).environment?.name;
+      if (environment && environment !== "client") return;
+      const dir = join("node_modules", "maplibre-gl", "dist");
+      for (const name of ["maplibre-gl-worker.mjs", "maplibre-gl-shared.mjs"]) {
+        this.emitFile({
+          type: "asset",
+          fileName: `assets/${name}`,
+          source: readFileSync(join(dir, name)),
+        });
+      }
+    },
+  };
+}
+
 function pgliteBootstrapPlugin(): Plugin {
   return {
     name: "app-builder:pglite-bootstrap",
@@ -186,5 +205,6 @@ export default defineConfig(({ command, isPreview }) => ({
           ]
         : []),
     viteReact(),
+    maplibreWorkerPlugin(),
   ],
 }));
