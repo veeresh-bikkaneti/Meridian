@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type JSX, type KeyboardEvent } from "react";
+import { Info } from "lucide-react";
 import { Map, Marker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { DropPinButton } from "@/components/drop-pin-button.tsx";
@@ -12,6 +13,11 @@ import { variationLine, type MapPoint } from "./variation.ts";
 const IMAGERY_SOURCE = "imagery";
 const LINE_SOURCE = "variation-line";
 const RING_SOURCE = "variation-ring";
+
+// Frosted chrome token shared by the floating aim/reveal chrome (mirrors
+// question-bubble.tsx / result-card.tsx).
+const CHROME =
+  "backdrop-blur-[14px] bg-[rgba(10,12,16,0.72)] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]";
 
 export type MapMark = { lon: number; lat: number; tone: "aim" | "pin" | "spot" };
 
@@ -145,6 +151,13 @@ export function SatelliteMap(props: {
   // Keyboard crosshair (M6): null = hidden. Shown on first arrow press at
   // viewport center; hidden again as soon as pointer/touch is used.
   const [crosshair, setCrosshair] = useState<{ x: number; y: number } | null>(null);
+  // Attribution pill: collapsed "© Esri · ⓘ" expands to a popover with the
+  // full attribution + pin-privacy notice. Closed whenever the reveal chrome
+  // takes over (variation != null hides the pill entirely — see below).
+  const [attrOpen, setAttrOpen] = useState(false);
+  useEffect(() => {
+    if (props.variation) setAttrOpen(false);
+  }, [props.variation]);
   onAimRef.current = props.onAim;
   onConfirmRef.current = props.onConfirm;
   onDoubleTapRef.current = props.onDoubleTap;
@@ -516,13 +529,45 @@ export function SatelliteMap(props: {
           style={{ left: crosshair.x, top: crosshair.y }}
         />
       )}
-      {/* M7: the full-width attribution strip becomes a compact bottom-left
-          chip so it never collides with the bottom-right zoom controls.
-          The pin-privacy notice (IMAGERY_NOTICE) rides along so the
-          client-side privacy guarantee stays visible in the UI. */}
-      <p className="pointer-events-none absolute bottom-2 left-2 z-10 m-0 max-w-[46%] rounded-full bg-black/70 px-2.5 py-1 text-left text-[10px] leading-snug text-white/90">
-        {view.attribution} · {IMAGERY_NOTICE}
-      </p>
+      {/* Attribution as a collapsed "© Esri · ⓘ" pill that expands into a
+          popover with the full attribution + pin-privacy notice. The old
+          full-text bottom-left chip underlapped the Drop pin overlay and the
+          result card (z-20), truncating the notice mid-word — a tiny pill
+          provably cannot collide with anything, and the popover text wraps
+          normally so it is never cut. Hidden while the reveal chrome is up
+          (variation != null covers the result card AND its dismissed
+          "Result" restore pill, both bottom-anchored z-20). */}
+      {!props.variation && (
+        <div
+          className="pointer-events-none absolute bottom-2 left-2 z-10"
+          onKeyDown={(e) => {
+            if (e.key === "Escape") setAttrOpen(false);
+          }}
+        >
+          <button
+            type="button"
+            aria-expanded={attrOpen}
+            aria-controls="meridian-attribution-popover"
+            aria-label="Map attribution and privacy notice"
+            onClick={() => setAttrOpen((v) => !v)}
+            className={`pointer-events-auto flex h-11 items-center gap-1.5 rounded-full px-3.5 text-xs font-medium text-white ${CHROME}`}
+          >
+            <span aria-hidden="true">© Esri</span>
+            <Info aria-hidden="true" size={16} />
+          </button>
+          {attrOpen && (
+            <div
+              id="meridian-attribution-popover"
+              role="region"
+              aria-label="Map attribution and privacy notice"
+              className={`pointer-events-auto absolute bottom-full left-0 mb-6 w-[300px] max-w-[calc(100vw-24px)] rounded-2xl p-4 text-xs leading-relaxed text-white sm:mb-2 ${CHROME}`}
+            >
+              <p className="m-0">{view.attribution}</p>
+              <p className="m-0 mt-2 text-white/80">{IMAGERY_NOTICE}</p>
+            </div>
+          )}
+        </div>
+      )}
       <ZoomControls zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
       {/* The Drop pin button is the ONLY commit path. Hidden once committed
           (variation != null); the result card takes its place. Overlay root is
