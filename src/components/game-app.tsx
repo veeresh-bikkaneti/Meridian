@@ -5,6 +5,7 @@ import { COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from
 import { rewriteStory } from "@/game/rewrite";
 import { continueRun, dropPin, resumeRun, type Edition, type Run, type RunPhase } from "@/game/run";
 import { shareText } from "@/game/share";
+import { STARTERS, type Starter } from "@/game/starters";
 import { orderPlaces, placeAt } from "@/game/trail";
 import { IMAGERY_NOTICE } from "@/map/imagery";
 import { SatelliteMap, type MapMark } from "@/map/satellite-map";
@@ -13,18 +14,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const RUN_KEY = "meridian.run";
-
-type TrailPlace = {
-  id: string;
-  edition: Edition;
-  regionId: string;
-  name: string;
-  lon: number;
-  lat: number;
-  story: string;
-  sourceLabel: string;
-  sourceHref: string;
-};
 
 type Drop = { lon: number; lat: number; distanceKm: number; placeId: string };
 
@@ -40,64 +29,12 @@ type LanguageModelGlobal = {
   create: () => Promise<NanoSession>;
 };
 
-// Task 8 replaces this with STARTERS
-const FIXTURE: TrailPlace[] = [
-  {
-    id: "chimney-rock",
-    edition: "state",
-    regionId: "nebraska",
-    name: "Chimney Rock",
-    lon: -103.348,
-    lat: 41.704,
-    story:
-      "A clay spire stands over the North Platte. Wagon trains used it to count the days still ahead.",
-    sourceLabel: "National Park Service",
-    sourceHref: "https://www.nps.gov/places/chimney-rock.htm",
-  },
-  {
-    id: "scotts-bluff",
-    edition: "state",
-    regionId: "nebraska",
-    name: "Scotts Bluff",
-    lon: -103.707,
-    lat: 41.831,
-    story:
-      "The bluff rises beside the river road. Travelers took the pass at its foot rather than the open prairie.",
-    sourceLabel: "National Park Service",
-    sourceHref: "https://www.nps.gov/scbl/",
-  },
-  {
-    id: "giza",
-    edition: "globe",
-    regionId: "globe",
-    name: "Giza Plateau",
-    lon: 31.134,
-    lat: 29.979,
-    story:
-      "Three stone pyramids sit on the desert edge of Cairo. They were already old when the city around them was young.",
-    sourceLabel: "UNESCO",
-    sourceHref: "https://whc.unesco.org/en/list/86/",
-  },
-  {
-    id: "uluru",
-    edition: "globe",
-    regionId: "globe",
-    name: "Uluru",
-    lon: 131.037,
-    lat: -25.345,
-    story:
-      "A sandstone monolith stands in the middle of Australia. The rock is older than the dunes around its base.",
-    sourceLabel: "UNESCO",
-    sourceHref: "https://whc.unesco.org/en/list/447/",
-  },
-];
-
 function trailDate(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-function placesFor(edition: Edition, regionId: string): TrailPlace[] {
-  return FIXTURE.filter((place) => place.edition === edition && place.regionId === regionId);
+function placesFor(edition: Edition, regionId: string): Starter[] {
+  return STARTERS.filter((place) => place.edition === edition && place.regionId === regionId);
 }
 
 function boundsFor(run: Run): RegionBounds {
@@ -531,7 +468,7 @@ function Round({
   onContinue,
 }: {
   run: Run;
-  place: TrailPlace;
+  place: Starter;
   drop: Drop | null;
   story: string | null;
   onContinue: () => void;
