@@ -1,13 +1,13 @@
 import { isDoubleTap, type ScreenTap } from "./pin-tap.ts";
 
 /**
- * A tap/double-tap is one zoom gesture, never a commit.
+ * A tap proposes a pin location; a double-tap commits it (drops the pin).
  */
 export type TapKind = "tap" | "double-tap";
 
 /**
  * Stateful pair-consumption so a triple-tap classifies as tap, double-tap, tap —
- * the double-tap consumes its pair and can never double-revert.
+ * the double-tap consumes its pair and can never double-commit.
  */
 export function createTapTracker() {
   let previous: ScreenTap | null = null;

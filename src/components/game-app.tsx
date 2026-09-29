@@ -383,15 +383,11 @@ function Play({
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
-  // Stash for the M1 double-tap revert: the pin that existed before the latest
-  // tap. Wired to <SatelliteMap> via the onDoubleTap/onClearAim props below.
-  const aimBeforeTap = useRef<{ lon: number; lat: number } | null>(null);
 
   useEffect(() => {
     setAim(null);
     setBubble("open");
     setCardDismissed(false);
-    aimBeforeTap.current = null;
   }, [place?.id]);
 
   // M5: Escape dismisses the result card when committed, and toggles the
@@ -462,28 +458,17 @@ function Play({
 
   function onAim(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
-    aimBeforeTap.current = aim; // stash BEFORE setAim (M1 revert target)
     setAimAnnouncement(
       aim
-        ? "Pin moved. Press Drop pin to lock in your guess."
-        : "Pin placed. Press Drop pin to lock in your guess.",
+        ? "Pin moved. Double-tap the map or press Drop pin to lock in your guess."
+        : "Pin placed. Double-tap the map or press Drop pin to lock in your guess.",
     );
     setAim({ lon, lat });
   }
 
-  // M1: a classified double-tap zooms and reverts the first tap's placement.
-  // null = no pin, so "double-tap on empty map places zero pins" holds.
-  function onDoubleTap() {
-    if (run.phase !== "aim") return;
-    const reverted = aimBeforeTap.current;
-    setAim(reverted);
-    setAimAnnouncement(reverted ? "Pin moved back." : "Pin cleared.");
-  }
-
-  // M5: Escape with a pin clears it and resets the revert stash.
+  // M5: Escape with a pin clears it.
   function onClearAim() {
     if (run.phase !== "aim") return;
-    aimBeforeTap.current = null;
     setAimAnnouncement("Pin cleared.");
     setAim(null);
   }
@@ -517,7 +502,6 @@ function Play({
     setDrop(null);
     setBubble("open");
     setCardDismissed(false);
-    aimBeforeTap.current = null;
     onRun(
       resumeRun(run, {
         edition: run.edition,
@@ -539,7 +523,6 @@ function Play({
           bounds={bounds}
           onAim={onAim}
           onConfirm={onConfirm}
-          onDoubleTap={onDoubleTap}
           onClearAim={onClearAim}
           marks={marks}
           variation={variation}

@@ -1,17 +1,17 @@
 /**
- * Tap-window constants and the double-tap classifier for the P0-02 gesture model.
+ * Tap-window constants and the double-tap classifier for the gesture model.
  *
- * Locked model: a single tap places/moves the pin and NEVER confirms; the Drop
- * pin button is the only commit path; double-tap/double-click is zoom ONLY.
- * The old `classifyTap` "confirm" return was the accidental-commit hazard and is
- * deleted. This module only answers "is this tap the second half of a zoom
- * gesture?" so the caller can revert the first tap's placement (M1).
+ * Locked model (user-directed, supersedes P0-02): a single tap places/moves
+ * the pin — propose only, NEVER commit; double-tap/double-click COMMITS the
+ * selection exactly like the Drop pin button (the second tap's point becomes
+ * the pin location). This module answers "is this tap the second half of a
+ * double-tap commit gesture?" so the caller can commit instead of proposing.
  */
 
-/** Two taps this close in time may be one double-tap zoom gesture. */
+/** Two taps this close in time may be one double-tap commit gesture. */
 export const TAP_WINDOW_MS = 500;
 
-/** Two taps this close in space may be one double-tap zoom gesture. */
+/** Two taps this close in space may be one double-tap commit gesture. */
 export const TAP_WINDOW_PX = 48;
 
 /**
@@ -23,7 +23,7 @@ export const TOUCH_LIFT_PX = 42;
 
 export type ScreenTap = { x: number; y: number; t: number };
 
-/** True when `next` continues `previous` as one double-tap zoom gesture. */
+/** True when `next` continues `previous` as one double-tap commit gesture. */
 export function isDoubleTap(previous: ScreenTap | null, next: ScreenTap): boolean {
   if (!previous) return false;
   const dt = next.t - previous.t;
@@ -58,9 +58,8 @@ export type PointerTapEndpoint = {
  *
  * Multi-touch and pointercancel suppression are the caller's job (gesture
  * state, not a pure predicate): pointerup is NOT a compatibility event, so it
- * fires for both taps of a touch double-tap even when MapLibre's tap-zoom
- * suppresses the second tap's click — which is exactly why tap detection
- * lives on pointerup instead of click.
+ * fires for both taps of a touch double-tap — which is why tap detection
+ * lives on pointerup instead of click. Its pointerType is reliable per-event.
  */
 export function isTap(down: PointerTapEndpoint, up: PointerTapEndpoint): boolean {
   if (down.pointerId !== up.pointerId) return false;

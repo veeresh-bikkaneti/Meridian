@@ -18,7 +18,7 @@ test("a triple-tap classifies as tap, double-tap, tap (pair consumed)", () => {
   assert.equal(tracker.register({ x: 40, y: 80, t: 1_000 }), "tap");
   assert.equal(tracker.register({ x: 41, y: 81, t: 1_150 }), "double-tap");
   // the pair is consumed: the third tap starts a fresh pair, it cannot
-  // double-revert the already-reverted placement
+  // double-commit the already-committed placement
   assert.equal(tracker.register({ x: 42, y: 82, t: 1_300 }), "tap");
 });
 
