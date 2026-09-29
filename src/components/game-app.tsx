@@ -7,10 +7,9 @@ import { continueRun, dropPin, resumeRun, type Edition, type Run, type RunPhase 
 import { shareText } from "@/game/share";
 import { STARTERS, type Starter } from "@/game/starters";
 import { orderPlaces, placeAt } from "@/game/trail";
-import { IMAGERY_NOTICE } from "@/map/imagery";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const RUN_KEY = "meridian.run";
@@ -383,9 +382,14 @@ function Play({
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   const [drop, setDrop] = useState<Drop | null>(null);
   const [story, setStory] = useState<string | null>(null);
+  // Stash for the M1 double-tap revert: the pin that existed before the latest
+  // tap. The onDoubleTap/onClearAim props are NOT wired to <SatelliteMap> yet —
+  // that lands after P0-02 declares them (optional) on SatelliteMap.
+  const aimBeforeTap = useRef<{ lon: number; lat: number } | null>(null);
 
   useEffect(() => {
     setAim(null);
+    aimBeforeTap.current = null;
   }, [place?.id]);
 
   useEffect(() => {
@@ -436,7 +440,22 @@ function Play({
 
   function onAim(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
+    aimBeforeTap.current = aim; // stash BEFORE setAim (M1 revert target)
     setAim({ lon, lat });
+  }
+
+  // M1: a classified double-tap zooms and reverts the first tap's placement.
+  // null = no pin, so "double-tap on empty map places zero pins" holds.
+  function onDoubleTap() {
+    if (run.phase !== "aim") return;
+    setAim(aimBeforeTap.current);
+  }
+
+  // M5: Escape with a pin clears it and resets the revert stash.
+  function onClearAim() {
+    if (run.phase !== "aim") return;
+    aimBeforeTap.current = null;
+    setAim(null);
   }
 
   function onConfirm(lon: number, lat: number) {
@@ -460,8 +479,8 @@ function Play({
   const bounds = run.edition === "globe" ? undefined : boundsFor(run);
 
   return (
-    <main className="flex h-dvh flex-col bg-bg">
-      <div className="relative min-h-0 flex-1">
+    <main className="relative h-dvh bg-bg">
+      <div className="absolute inset-0">
         <SatelliteMap
           mode={mode}
           bounds={bounds}
@@ -470,7 +489,7 @@ function Play({
           marks={marks}
           variation={variation}
         />
-        <div className="pointer-events-none absolute top-3 right-3 left-3 flex items-start justify-between gap-3">
+        <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
           <Button variant="secondary" className="pointer-events-auto" onClick={onLeave}>
             Editions
           </Button>
@@ -479,24 +498,25 @@ function Play({
           </p>
         </div>
       </div>
-      <p className="border-t border-line bg-surface px-4 py-2 text-xs text-muted">
-        {IMAGERY_NOTICE}
-      </p>
-      <section className="max-h-[46dvh] overflow-y-auto bg-surface px-4 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))]">
-        <p className="text-xs tracking-wide text-subtle uppercase">{run.regionName}</p>
-        {place ? (
-          <Round
-            run={run}
-            place={place}
-            drop={drop}
-            story={story}
-            aiming={aim !== null}
-            onContinue={onContinue}
-          />
-        ) : (
-          <Finished run={run} empty={ordered.length === 0} />
-        )}
-      </section>
+      {/* Interim: the aim/reveal panel floats over the full-bleed map until the
+          question bubble (P0-03 commit 2) and result card (commit 3) take over. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20">
+        <section className="pointer-events-auto max-h-[46dvh] overflow-y-auto bg-surface px-4 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))]">
+          <p className="text-xs tracking-wide text-subtle uppercase">{run.regionName}</p>
+          {place ? (
+            <Round
+              run={run}
+              place={place}
+              drop={drop}
+              story={story}
+              aiming={aim !== null}
+              onContinue={onContinue}
+            />
+          ) : (
+            <Finished run={run} empty={ordered.length === 0} />
+          )}
+        </section>
+      </div>
     </main>
   );
 }
