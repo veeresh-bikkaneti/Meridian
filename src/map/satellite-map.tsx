@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type JSX } from "react";
 import { Map, Marker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { disk } from "@/game/geo";
 import { imageryView } from "./imagery.ts";
 import { TOUCH_LIFT_PX } from "./pin-tap.ts";
@@ -108,6 +109,18 @@ export function SatelliteMap(props: {
   const markKey = (props.marks ?? [])
     .map((mark) => `${mark.tone}:${mark.lon}:${mark.lat}`)
     .join("|");
+  // The Drop pin button commits the live aim mark; null until a pin is placed.
+  const aimMark = (props.marks ?? []).find((mark) => mark.tone === "aim");
+  const aim = aimMark ? { lon: aimMark.lon, lat: aimMark.lat } : null;
+
+  const handleDrop = (lon: number, lat: number) => {
+    // Guard in the commit path (M12): only a live aim mark can commit, so a
+    // rapid double-press can never commit twice (the first commit clears the
+    // aim; the game-app phase guard is the second line of defense).
+    const live = (marksRef.current ?? []).find((mark) => mark.tone === "aim");
+    if (!live) return;
+    onConfirmRef.current?.(lon, lat);
+  };
   const variationKey = props.variation
     ? `${props.variation.pin.lon}:${props.variation.pin.lat}:${props.variation.spot.lon}:${props.variation.spot.lat}:${props.variation.kilometers}`
     : "";
@@ -281,6 +294,19 @@ export function SatelliteMap(props: {
       <p className="pointer-events-none absolute inset-x-0 bottom-0 z-10 m-0 bg-black/60 px-2 py-1 text-left text-[11px] leading-snug text-white">
         {view.attribution}
       </p>
+      {/* The Drop pin button is the ONLY commit path. Hidden once committed
+          (variation != null); the result card takes its place. Overlay root is
+          pointer-events-none so taps around the chrome still reach the map. */}
+      {!props.variation && (
+        <div className="pointer-events-none absolute inset-0 z-20">
+          <div
+            className="absolute left-1/2 -translate-x-1/2"
+            style={{ bottom: "max(20px, calc(env(safe-area-inset-bottom, 0px) + 12px))" }}
+          >
+            <DropPinButton aim={aim} onDrop={handleDrop} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
