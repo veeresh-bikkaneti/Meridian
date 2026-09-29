@@ -1,0 +1,50 @@
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build:pages
+      - name: Static site directory
+        id: site
+        run: |
+          if [ -f dist/client/_shell.html ]; then
+            dir=dist/client
+          elif [ -f dist/_shell.html ]; then
+            dir=dist
+          else
+            echo "Pages build did not emit _shell.html" >&2
+            find dist -name '*.html' >&2 || true
+            exit 1
+          fi
+          cp "$dir/_shell.html" "$dir/index.html"
+          cp "$dir/_shell.html" "$dir/404.html"
+          echo "dir=$dir" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ steps.site.outputs.dir }}
+      - id: deployment
+        uses: actions/deploy-pages@v4
