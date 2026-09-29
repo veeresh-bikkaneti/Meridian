@@ -145,7 +145,12 @@ function authPopupPlugin(): Plugin {
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
+// GitHub Pages is a second, static build. The preview and the Vercel build
+// stay on `/` with the Nitro server.
+const githubPages = process.env.GITHUB_PAGES === "1";
+
 export default defineConfig(({ command, isPreview }) => ({
+  base: githubPages ? "/Meridian/" : "/",
   server: {
     host: "0.0.0.0",
     port: 8080,
@@ -166,18 +171,20 @@ export default defineConfig(({ command, isPreview }) => ({
     // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
     grokPwaPlugin(),
     tailwindcss(),
-    tanstackStart(),
-    ...(command === "build" || isPreview
-      ? [
-          nitro({
-            preset: "vercel",
-            // Auto-registers server/middleware/* (the PWA install page +
-            // manifest + head-tag middleware). Nitro v3 defaults serverDir to
-            // false, so removing this silently unwires /?install=1 on deploys.
-            serverDir: "./server",
-          }),
-        ]
-      : []),
+    tanstackStart(githubPages ? { spa: { enabled: true } } : undefined),
+    ...(githubPages
+      ? []
+      : command === "build" || isPreview
+        ? [
+            nitro({
+              preset: "vercel",
+              // Auto-registers server/middleware/* (the PWA install page +
+              // manifest + head-tag middleware). Nitro v3 defaults serverDir to
+              // false, so removing this silently unwires /?install=1 on deploys.
+              serverDir: "./server",
+            }),
+          ]
+        : []),
     viteReact(),
   ],
 }));

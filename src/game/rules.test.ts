@@ -6,7 +6,6 @@ import { distanceKm, pointInRing, wordCount } from "./geo.ts";
 import { applyBonus, distanceScore, gradeRound, weightedTotal } from "./score.ts";
 import { scoreMark, shareText } from "./share.ts";
 import { bonusFor, missingContinents } from "./territory.ts";
-import type { Guess } from "./types.ts";
 
 test("world curve matches the MapTap landmarks", () => {
   assert.equal(distanceScore(0, "world"), 100);
@@ -53,39 +52,24 @@ test("only world and United States rounds keep a country lift", () => {
 });
 
 test("share text is a spoiler-free daily line", () => {
-  const scores = [86, 80, 93, 82, 79];
-  const weights = [1, 1, 2, 3, 3];
-  const guesses = scores.map((score, index) => {
-    const guess: Guess = {
-      lon: 0,
-      lat: 0,
-      distanceKm: 0,
-      distanceScore: score,
-      score,
-      weight: weights[index],
-      bonus: "none",
-      knew: null,
-      scoringVersion: 2,
-    };
-    return guess;
-  });
   const text = shareText({
-    edition: "world",
+    regionName: "Nebraska",
     dateKey: "2026-09-28",
-    guesses,
-    now: new Date(2026, 8, 28),
+    hits: 14,
+    now: new Date(Date.UTC(2026, 8, 28)),
   });
   assert.equal(text.includes("Taj"), false);
-  assert.equal(text, "meridian September 28\n86🎓 80👏 93🏆 82🌟 79👏\nFinal score: 835");
+  assert.equal(text.includes("🎓"), false);
+  assert.equal(text, "meridian September 28\nNebraska · 14");
   assert.equal(scoreMark(0), "·");
   assert.equal(scoreMark(100), "🎯");
-  const home = shareText({
-    edition: "home",
+  const older = shareText({
+    regionName: "Japan",
     dateKey: "2025-06-18",
-    guesses,
-    now: new Date(2026, 8, 28),
+    hits: 0,
+    now: new Date(Date.UTC(2026, 8, 28)),
   });
-  assert.match(home, /^meridian · Home · June 18, 2025/);
+  assert.equal(older, "meridian June 18, 2025\nJapan · 0");
 });
 
 test("stories stay within 60 words and ids are unique", () => {

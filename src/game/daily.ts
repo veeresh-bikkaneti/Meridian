@@ -33,7 +33,7 @@ export function displayDate(timeZone: string, now = new Date()): string {
   }).format(now);
 }
 
-function hashString(value: string): number {
+export function hashString(value: string): number {
   let h = 2166136261;
   for (let i = 0; i < value.length; i++) {
     h ^= value.charCodeAt(i);
@@ -42,7 +42,7 @@ function hashString(value: string): number {
   return h >>> 0;
 }
 
-function mulberry32(seed: number): () => number {
+export function mulberry32(seed: number): () => number {
   let a = seed >>> 0;
   return () => {
     a |= 0;
