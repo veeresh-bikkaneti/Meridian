@@ -5,7 +5,7 @@ import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
 import { imageryView } from "./imagery.ts";
-import { TOUCH_LIFT_PX } from "./pin-tap.ts";
+import { TOUCH_LIFT_PX, isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { createTapTracker } from "./tap-tracker.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
 
@@ -303,26 +303,79 @@ export function SatelliteMap(props: {
     // Per map instance: classifies a tap pair as one double-tap zoom gesture.
     const tracker = createTapTracker();
 
-    map.on("click", (event) => {
-      const tap = { x: event.point.x, y: event.point.y, t: performance.now() };
+    // Tap detection lives on raw pointerup, NOT click (P0-02 Option B): touch
+    // double-tap zoom suppresses the second tap's compatibility click, so a
+    // click-based tracker never observes tap two on touch. pointerup is not a
+    // compatibility event — it fires for both taps — and its pointerType is
+    // reliable per-event (resolves the old R2 as well). No preventDefault
+    // anywhere: MapLibre keeps its drag/pinch/dblclick-zoom.
+    const canvasContainer = map.getCanvasContainer();
+    const activePointers = new Set<number>();
+    let gestureDown: PointerTapEndpoint | null = null;
+    let gestureClean = true;
+
+    const toEndpoint = (e: PointerEvent): PointerTapEndpoint => {
+      const rect = canvasContainer.getBoundingClientRect();
+      return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+        t: performance.now(),
+        pointerId: e.pointerId,
+        button: e.button,
+        isPrimary: e.isPrimary,
+        pointerType: e.pointerType,
+      };
+    };
+    const onPointerDown = (e: PointerEvent) => {
+      if (activePointers.size === 0) {
+        gestureDown = toEndpoint(e);
+        gestureClean = true;
+      } else {
+        // A second concurrent pointer (pinch) voids the tap gesture.
+        gestureClean = false;
+      }
+      activePointers.add(e.pointerId);
+    };
+    const onPointerUp = (e: PointerEvent) => {
+      const down = gestureDown;
+      const clean = gestureClean;
+      activePointers.delete(e.pointerId);
+      if (activePointers.size === 0) {
+        gestureDown = null;
+        gestureClean = true;
+      }
+      if (!down || !clean) return;
+      const up = toEndpoint(e);
+      if (!isTap(down, up)) return;
+      const tap = { x: up.x, y: up.y, t: up.t };
       if (tracker.register(tap) === "double-tap") {
         // Second half of a zoom gesture: place nothing, revert the first tap.
         onDoubleTapRef.current?.();
         return;
       }
-      // R2: pointerType on the click's originalEvent is the reliable touch
-      // signal — verified in Playwright touch emulation (compat click arrives
-      // as a PointerEvent with pointerType "touch"; no touchstart-flag fallback).
-      const touch =
-        (event.originalEvent as PointerEvent | undefined)?.pointerType === "touch";
       // M3: the 42px lift applies to the PLACEMENT coordinate (port of
       // gesture.ts:3 TOUCH_LIFT via aimPoint), so the committed guess is the
-      // point the player actually sees under their fingertip.
-      const at = map.unproject([tap.x, touch ? tap.y - TOUCH_LIFT_PX : tap.y]);
+      // point the player actually sees under their fingertip. Lift unless mouse.
+      const lift = up.pointerType === "mouse" ? 0 : TOUCH_LIFT_PX;
+      const at = map.unproject([tap.x, tap.y - lift]);
       if (typeof navigator.vibrate === "function") navigator.vibrate(10);
       setCrosshair(null); // pointer/touch takes over from the keyboard crosshair
       onAimRef.current?.(at.lng, at.lat);
-    });
+    };
+    const onPointerCancel = (e: PointerEvent) => {
+      activePointers.delete(e.pointerId);
+      gestureClean = false;
+      if (activePointers.size === 0) {
+        gestureDown = null;
+        gestureClean = true;
+      }
+    };
+    // pointerdown is scoped to the map canvas; pointerup/pointercancel ride on
+    // window so a release outside the canvas (MapLibre sets no pointer
+    // capture) still closes the gesture instead of poisoning the next one.
+    canvasContainer.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener("pointercancel", onPointerCancel);
     // No dblclick handler: MapLibre must receive it to zoom. Never preventDefault it.
 
     // Track zoom for the +/- controls' aria-live announcements (M10).
@@ -364,6 +417,9 @@ export function SatelliteMap(props: {
     markersRef.current = replaceMarks(map, marksRef.current, markersRef.current);
 
     return () => {
+      canvasContainer.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerCancel);
       for (const marker of markersRef.current) marker.remove();
       markersRef.current = [];
       labelRef.current?.remove();
@@ -443,6 +499,7 @@ export function SatelliteMap(props: {
       className="satellite-map relative h-full min-h-64 w-full"
       tabIndex={0}
       role="application"
+      data-zoom={zoom}
       aria-roledescription="map"
       aria-label="Satellite map. Arrow keys move the aim crosshair. Enter places the pin. Escape clears the pin."
       onKeyDown={onMapKeyDown}

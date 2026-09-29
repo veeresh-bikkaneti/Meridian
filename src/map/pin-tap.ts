@@ -35,3 +35,39 @@ export function isDoubleTap(previous: ScreenTap | null, next: ScreenTap): boolea
     dx * dx + dy * dy <= TAP_WINDOW_PX * TAP_WINDOW_PX
   );
 }
+
+/**
+ * One endpoint of a pointer gesture (pointerdown or pointerup), in container
+ * CSS pixels. Plain data — no DOM types — so the classifier stays
+ * unit-testable in node.
+ */
+export type PointerTapEndpoint = {
+  x: number;
+  y: number;
+  t: number;
+  pointerId: number;
+  button: number;
+  isPrimary: boolean;
+  pointerType: string;
+};
+
+/**
+ * True when a pointerdown/pointerup pair is a tap: a primary button-0 press
+ * by the same pointer, released within TAP_WINDOW_MS with at most
+ * TAP_WINDOW_PX of movement.
+ *
+ * Multi-touch and pointercancel suppression are the caller's job (gesture
+ * state, not a pure predicate): pointerup is NOT a compatibility event, so it
+ * fires for both taps of a touch double-tap even when MapLibre's tap-zoom
+ * suppresses the second tap's click — which is exactly why tap detection
+ * lives on pointerup instead of click.
+ */
+export function isTap(down: PointerTapEndpoint, up: PointerTapEndpoint): boolean {
+  if (down.pointerId !== up.pointerId) return false;
+  if (!up.isPrimary || up.button !== 0) return false;
+  const dt = up.t - down.t;
+  if (dt < 0 || dt > TAP_WINDOW_MS) return false;
+  const dx = up.x - down.x;
+  const dy = up.y - down.y;
+  return dx * dx + dy * dy <= TAP_WINDOW_PX * TAP_WINDOW_PX;
+}
