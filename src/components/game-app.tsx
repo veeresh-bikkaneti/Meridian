@@ -6,8 +6,7 @@ import { rewriteStory } from "@/game/rewrite";
 import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
 import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
-import { STARTERS } from "@/game/starters";
-import { buildRegionPool } from "@/game/pool";
+import { placesFor, fullCatalog } from "@/game/generated-places";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
@@ -270,7 +269,7 @@ type Menu =
 /** Lenient pool-size check for the picker lists (the strict fail-closed gate runs at deal time). */
 function poolSize(edition: Edition, regionId: string): number {
   let count = 0;
-  for (const place of STARTERS) {
+  for (const place of fullCatalog()) {
     if (place.edition === edition && place.regionId === regionId) count++;
   }
   return count;
@@ -309,7 +308,7 @@ export function GameApp() {
     (edition: Edition, regionId: string, regionName: string) => {
       const dateKey = trailDate();
       const { poolIds, prevLastId } = poolForRunStart(
-        buildRegionPool(STARTERS, edition, regionId),
+        placesFor(edition, regionId),
         edition,
         regionId,
       );
@@ -540,7 +539,7 @@ function Play({
   onLeave: () => void;
 }) {
   const places = useMemo(
-    () => buildRegionPool(STARTERS, run.edition, run.regionId),
+    () => placesFor(run.edition, run.regionId),
     [run.edition, run.regionId],
   );
   // Session pool: the catalog filtered to this run's persisted poolIds.

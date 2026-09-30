@@ -8,6 +8,9 @@
     ],
     "module": "ESNext",
     "moduleResolution": "bundler",
+    // F6b: the generated place dataset is a checked-in JSON module imported
+    // statically by src/game/generated-places.ts.
+    "resolveJsonModule": true,
     "jsx": "react-jsx",
     "strict": true,
     "isolatedModules": true,
