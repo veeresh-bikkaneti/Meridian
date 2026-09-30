@@ -29,6 +29,15 @@ export function distanceScore(distanceKm: number, ring: RingId): number {
   return Math.round(distancePoints(distanceKm, RINGS[ring].spanKm));
 }
 
+/**
+ * Which ring calibrates the distance curve for an edition's summary total.
+ * State trails score against the Nebraska span, country against the USA span,
+ * globe against the world span.
+ */
+export function scoreRingForEdition(edition: "state" | "country" | "globe"): RingId {
+  return edition === "state" ? "nebraska" : edition === "country" ? "usa" : "world";
+}
+
 /** Country and continent lifts. A 12 in the right country becomes 34. Never lowers a score. */
 export function applyBonus(raw: number, bonus: BonusKind): number {
   if (bonus === "none") return raw;

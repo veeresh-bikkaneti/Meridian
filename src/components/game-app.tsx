@@ -4,9 +4,9 @@ import { radiusKm } from "@/game/radius";
 import { COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { continueRun, dropPin, endRun, resumeRun, type Edition, type Run, type RunPhase, type RunSummary } from "@/game/run";
-import { distanceScore } from "@/game/score";
+import { distanceScore, scoreRingForEdition } from "@/game/score";
 import { STARTERS, type Starter } from "@/game/starters";
-import { orderPlaces, placeAt } from "@/game/trail";
+import { orderPlaces, dealPlace } from "@/game/trail";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -376,7 +376,7 @@ function Play({
     () => orderPlaces(places, run.dateKey, run.edition, run.regionId),
     [places, run.dateKey, run.edition, run.regionId],
   );
-  const place = ordered.length > 0 ? placeAt(ordered, run.index % ordered.length) : null;
+  const place = dealPlace(ordered, run.index);
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
   // screen-reader users get feedback for place/move/clear. Cleared whenever
@@ -489,10 +489,7 @@ function Play({
       run.edition === "globe"
         ? radiusKm("globe", 0)
         : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
-    const score = distanceScore(
-      distance,
-      run.edition === "state" ? "nebraska" : run.edition === "country" ? "usa" : "world",
-    );
+    const score = distanceScore(distance, scoreRingForEdition(run.edition));
     setAim(null);
     setAimAnnouncement(null);
     setDrop({ lon, lat, distanceKm: distance, placeId: place.id });
