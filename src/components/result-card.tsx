@@ -1,6 +1,6 @@
 import { formatDistance } from "@/game/geo";
 import { summarizeRun, type Run } from "@/game/run";
-import { formatBreakdown } from "@/game/scoring";
+import { formatBreakdown, comboForStreak, formatFactor } from "@/game/scoring";
 import { shareText } from "@/game/share";
 import type { Starter } from "@/game/starters";
 import { Button } from "@/components/ui/button";
@@ -221,7 +221,8 @@ export function ResultCard({
               <p className="text-sm text-white/70">That pin is outside the radius.</p>
               {drop && drop.streakBefore >= 2 ? (
                 <p className="text-sm text-amber-100">
-                  🔥 {drop.streakBefore}-place streak reset — combo back to 1.05x.
+                  🔥 {drop.streakBefore}-place streak reset — combo back to{" "}
+                  {formatFactor(comboForStreak(1))}x.
                 </p>
               ) : null}
               {drop && drop.placeId === place.id ? (
