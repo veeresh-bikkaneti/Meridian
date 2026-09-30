@@ -16,3 +16,5 @@ attachments
 !.env.example
 .DS_Store
 .node_modules.lock
+playwright-report/
+test-results/
