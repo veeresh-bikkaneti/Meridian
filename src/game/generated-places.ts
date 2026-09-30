@@ -65,6 +65,23 @@ function toStarter(place: GeneratedPlaceRecord & { edition: Edition; regionId: s
 }
 
 /**
+ * Fail-closed narrowing: the JSON is data, not types — a hand-edited record
+ * with a bad edition/regionId must throw loudly here, never sail through a
+ * cast into the dealing pool. (The prebuild gate + unit tests validate the
+ * checked-in data, so reaching this throw means the gate itself was bypassed.)
+ */
+function assertAssigned(
+  place: GeneratedPlaceRecord,
+): asserts place is GeneratedPlaceRecord & { edition: Edition; regionId: string } {
+  if (place.edition !== "state" && place.edition !== "country" && place.edition !== "globe") {
+    throw new Error(`generated place ${place.id}: invalid edition ${JSON.stringify(place.edition)}`);
+  }
+  if (typeof place.regionId !== "string" || place.regionId.length === 0) {
+    throw new Error(`generated place ${place.id}: invalid regionId ${JSON.stringify(place.regionId)}`);
+  }
+}
+
+/**
  * Generated starters for one edition+region, in dataset order.
  * Curated refs (`curated: true`) are skipped — `starters.ts` is the source of
  * truth for curated places, so they can never double-count.
@@ -73,8 +90,9 @@ export function generatedStartersFor(edition: Edition, regionId: string): Starte
   const out: Starter[] = [];
   for (const place of dataset.places) {
     if (place.curated) continue;
+    assertAssigned(place);
     if (place.edition !== edition || place.regionId !== regionId) continue;
-    out.push(toStarter(place as GeneratedPlaceRecord & { edition: Edition; regionId: string }));
+    out.push(toStarter(place));
   }
   return out;
 }
