@@ -39,7 +39,7 @@ export function cycleSeed(sessionSeed: number, cycle: number): number {
   return hashString(`${sessionSeed >>> 0}:${cycle}`);
 }
 
-/** Persistence for the per-day seen place IDs (the no-repeat history). */
+/** Persistence for the seen place IDs (the no-repeat history). */
 export type SeenStore = {
   read: () => string[];
   write: (ids: string[]) => void;
@@ -56,10 +56,52 @@ export function memorySeenStore(): SeenStore {
   };
 }
 
-const SEEN_KEY_PREFIX = "meridian:seen:v1:";
+const SEEN_KEY_PREFIX = "meridian:seen:v2:";
+const LEGACY_SEEN_KEY_PREFIX = "meridian:seen:v1:";
 
-function seenKey(dayKey: string, edition: string, regionId: string): string {
-  return `${SEEN_KEY_PREFIX}${dayKey}:${edition}:${regionId}`;
+function seenKey(edition: string, regionId: string): string {
+  return `${SEEN_KEY_PREFIX}${edition}:${regionId}`;
+}
+
+/** Read a JSON string-array storage entry, tolerating missing or corrupt data. */
+function readIdList(
+  storage: Pick<Storage, "getItem">,
+  key: string,
+): string[] {
+  try {
+    const raw = storage.getItem(key);
+    const parsed: unknown = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((id): id is string => typeof id === "string");
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Fold one legacy v1 day-keyed entry (`meridian:seen:v1:<day>:<edition>:<region>`)
+ * into its v2 counterpart, unioning the surviving history. Malformed keys or
+ * entries are skipped (the key is still pruned by the caller).
+ */
+function migrateV1Entry(
+  storage: Pick<Storage, "getItem" | "setItem">,
+  v1key: string,
+): void {
+  const rest = v1key.slice(LEGACY_SEEN_KEY_PREFIX.length).split(":");
+  if (rest.length < 3) return;
+  const [day, edition, ...regionParts] = rest as [string, string, ...string[]];
+  const regionId = regionParts.join(":");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !edition || !regionId) return;
+  const legacyIds = readIdList(storage, v1key);
+  if (legacyIds.length === 0) return;
+  const v2key = seenKey(edition, regionId);
+  const merged = new Set([...readIdList(storage, v2key), ...legacyIds]);
+  try {
+    storage.setItem(v2key, JSON.stringify([...merged]));
+  } catch {
+    // Quota or blocked storage: the v1 key is still pruned; the game
+    // continues in memory.
+  }
 }
 
 function safeStorage(): Pick<
@@ -74,15 +116,19 @@ function safeStorage(): Pick<
 }
 
 /**
- * localStorage-backed seen store, scoped to one day/edition/region. A new
- * dayKey naturally starts with an empty history. Writes prune other days'
- * entries so storage stays bounded. Falls back to memory when storage is
- * unavailable.
+ * localStorage-backed seen store, scoped to one edition/region and persistent
+ * across days, reloads, and restarts on this device. This is the no-repeat
+ * history: a place is never dealt again until every other place in the
+ * region's pool has been dealt (a full cycle), no matter how many days pass.
+ * Writes migrate-then-prune legacy v1 day-keyed entries (one-time migration);
+ * the history itself is only cleared when a cycle completes (see
+ * poolForNewRun), so storage stays bounded by the region catalog's size.
+ * Falls back to memory when storage is unavailable.
  */
-export function seenStoreFor(dayKey: string, edition: string, regionId: string): SeenStore {
+export function seenStoreFor(edition: string, regionId: string): SeenStore {
   const storage = safeStorage();
   if (!storage) return memorySeenStore();
-  const key = seenKey(dayKey, edition, regionId);
+  const key = seenKey(edition, regionId);
   return {
     read: () => {
       try {
@@ -99,21 +145,68 @@ export function seenStoreFor(dayKey: string, edition: string, regionId: string):
     write: (ids: string[]) => {
       try {
         storage.setItem(key, JSON.stringify(ids));
-        // Prune other days: only today's entries are relevant.
-        const todayPrefix = `${SEEN_KEY_PREFIX}${dayKey}:`;
+        // One-time migration: fold any surviving legacy v1 day-keyed entries
+        // (meridian:seen:v1:<day>:<edition>:<region>) into their v2
+        // counterparts, so players keep their current no-repeat history
+        // across the upgrade instead of re-seeing today's places. Then prune
+        // the v1 keys. Idempotent: after the first pass no v1 keys remain.
         const doomed: string[] = [];
         for (let i = 0; i < storage.length; i++) {
           const k = storage.key(i);
-          if (k && k.startsWith(SEEN_KEY_PREFIX) && !k.startsWith(todayPrefix)) {
+          if (k && k.startsWith(LEGACY_SEEN_KEY_PREFIX)) {
             doomed.push(k);
           }
         }
-        for (const k of doomed) storage.removeItem(k);
+        for (const v1key of doomed) {
+          migrateV1Entry(storage, v1key);
+          storage.removeItem(v1key);
+        }
       } catch {
         // Quota or blocked storage: the game continues in memory.
       }
     },
   };
+}
+
+export type NewRunPool = {
+  /** Place IDs available to the new run, in catalog order. */
+  poolIds: string[];
+  /**
+   * ID of the most recently dealt place in the previous cycle (null on a
+   * brand-new history). Handed to the dealer so it can avoid dealing the
+   * same place twice across the cycle boundary.
+   */
+  prevLastId: string | null;
+};
+
+/**
+ * Build the dealing pool for a new run: the region catalog minus the
+ * device's persistent no-repeat history for this edition/region. When every
+ * place has been dealt (the history covers the catalog), the cycle is
+ * complete: the history resets and the new run deals a freshly shuffled full
+ * catalog. Never returns an empty pool for a non-empty catalog (fail-closed
+ * dealing is the dealer's job: an empty pool deals nothing).
+ *
+ * The history outlives days, reloads, and restarts — "tomorrow" is just
+ * another session over the same persistent history.
+ */
+export function poolForNewRun<T extends { id: string }>(
+  catalog: T[],
+  store: SeenStore = memorySeenStore(),
+): NewRunPool {
+  const seenOrder = store.read();
+  const seen = new Set(seenOrder);
+  let fresh = catalog.filter((place) => !seen.has(place.id));
+  const prevLastId =
+    seenOrder.length > 0 ? seenOrder[seenOrder.length - 1]! : null;
+  if (fresh.length === 0 && catalog.length > 0) {
+    // Full cycle complete: reset the persistent history so the next cycle
+    // deals every place again, in a new order. prevLastId is kept — it is
+    // the previous cycle's final deal, used for the boundary check.
+    store.write([]);
+    fresh = [...catalog];
+  }
+  return { poolIds: fresh.map((place) => place.id), prevLastId };
 }
 
 export type Dealer<T extends { id: string }> = {
@@ -124,9 +217,10 @@ export type Dealer<T extends { id: string }> = {
    * Returns null when the pool is empty.
    *
    * The pool is fixed for the dealer's lifetime: it is computed once per
-   * session (catalog minus the day's seen history) and persisted on the run,
-   * so a reload rebuilds the identical pool and `at(position)` is stable
-   * across reloads. The store is only written (never read for filtering).
+   * run (catalog minus the persistent no-repeat history) and persisted on
+   * the run, so a reload rebuilds the identical pool and `at(position)` is
+   * stable across reloads. The store is only written (never read for
+   * filtering).
    */
   at: (position: number) => T | null;
   /**
@@ -142,12 +236,19 @@ export type Dealer<T extends { id: string }> = {
  * no-repeat history. Seen places are skipped until the pool is exhausted,
  * at which point the history resets with a fresh shuffle.
  *
- * `pool` is the session's fixed place list (catalog minus the day's seen
- * history, computed once at session start and persisted on the run). The
- * dealer shuffles this pool deterministically from the session seed, so
- * every position maps to the same place for the session's lifetime —
- * including across reloads. The store receives dealt IDs (for future
- * sessions' no-repeat) but is never read for pool filtering.
+ * `pool` is the run's fixed place list (catalog minus the persistent
+ * no-repeat history at run start, computed once by poolForNewRun and
+ * persisted on the run). The dealer shuffles this pool deterministically
+ * from the session seed, so every position maps to the same place for the
+ * run's lifetime — including across reloads. The store receives dealt IDs
+ * (for future runs' no-repeat) but is never read for pool filtering, which
+ * keeps resume-after-reload exact.
+ *
+ * `prevLastId` is the previous cycle's final deal (null on a brand-new
+ * history). The first cycle avoids opening with it, and every later cycle
+ * avoids opening with the previous cycle's last deal, so a place never
+ * repeats across a cycle boundary. Persist it on the run alongside the pool
+ * and seed — a resumed run must make the identical boundary decision.
  *
  * `startPosition` is the run index the dealer is created at (0 for a fresh
  * run, the resumed index after a reload): earlier positions were dealt by a
@@ -159,11 +260,15 @@ export function createDealer<T extends { id: string }>(
   sessionSeed: number,
   store: SeenStore = memorySeenStore(),
   startPosition = 0,
+  prevLastId: string | null = null,
 ): Dealer<T> {
   const places = [...pool];
   const seen = new Set<string>();
   const cycles: T[][] = [];
   const cycleEnds: number[] = []; // cumulative exclusive end position per cycle
+  // Most recent deal before the current cycle: prevLastId for the first
+  // cycle, then each built cycle's last place. Used for the boundary check.
+  let boundaryId: string | null = prevLastId;
 
   function buildCycle(): T[] {
     let cyclePool = places.filter((place) => !seen.has(place.id));
@@ -172,7 +277,23 @@ export function createDealer<T extends { id: string }>(
       seen.clear();
       cyclePool = [...places];
     }
-    return shufflePlaces(cyclePool, cycleSeed(sessionSeed, cycles.length));
+    const cycle = shufflePlaces(cyclePool, cycleSeed(sessionSeed, cycles.length));
+    if (
+      cycle.length > 1 &&
+      boundaryId !== null &&
+      cycle[0]!.id === boundaryId
+    ) {
+      // Avoid an immediate boundary repeat: swap the first place with the
+      // last. Cycle IDs are unique, so the last slot cannot also hold
+      // boundaryId — after the swap the cycle provably opens with a
+      // different place.
+      const last = cycle.length - 1;
+      const first = cycle[0]!;
+      cycle[0] = cycle[last]!;
+      cycle[last] = first;
+    }
+    if (cycle.length > 0) boundaryId = cycle[cycle.length - 1]!.id;
+    return cycle;
   }
 
   function ensureThrough(position: number): void {

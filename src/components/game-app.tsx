@@ -8,7 +8,7 @@ import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { STARTERS } from "@/game/starters";
 import { buildRegionPool } from "@/game/pool";
-import { createDealer, seenStoreFor, mintSeed } from "@/game/trail";
+import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -136,6 +136,9 @@ function readRun(): Run | null {
       poolIds: Array.isArray(record.poolIds)
         ? record.poolIds.filter((id): id is string => typeof id === "string")
         : [],
+      // Runs saved before the persistent no-repeat history get no boundary
+      // id (null disables the swap), preserving their exact deal order.
+      prevLastId: typeof record.prevLastId === "string" ? record.prevLastId : null,
     };
   } catch {
     return null;
@@ -151,20 +154,20 @@ function writeRun(run: Run) {
 }
 
 /**
- * The session's dealing pool: catalog places minus today's seen history
- * (the cross-session no-repeat rule). Computed once when a session starts
- * and persisted on the run, so a reload rebuilds the identical pool.
- * Falls back to the full catalog when everything was seen today.
+ * The run's dealing pool: catalog places minus the device's persistent
+ * no-repeat history (the cross-session no-repeat rule). Computed once when
+ * a run starts and persisted on the run, so a reload rebuilds the identical
+ * pool. A place never repeats until every other place in the region has
+ * been dealt — across days, reloads, and restarts. Side effect: when the
+ * full cycle is exhausted, poolForNewRun clears the persistent history so
+ * the new run starts a fresh shuffled cycle.
  */
-function computePoolIds(
+function poolForRunStart(
   allPlaces: { id: string }[],
-  dateKey: string,
   edition: Edition,
   regionId: string,
-): string[] {
-  const seen = new Set(seenStoreFor(dateKey, edition, regionId).read());
-  const fresh = allPlaces.filter((p) => !seen.has(p.id)).map((p) => p.id);
-  return fresh.length > 0 ? fresh : allPlaces.map((p) => p.id);
+): { poolIds: string[]; prevLastId: string | null } {
+  return poolForNewRun(allPlaces, seenStoreFor(edition, regionId));
 }
 
 function isLanguageModel(value: unknown): value is LanguageModelGlobal {
@@ -305,10 +308,16 @@ export function GameApp() {
   const openRun = useCallback(
     (edition: Edition, regionId: string, regionName: string) => {
       const dateKey = trailDate();
+      const { poolIds, prevLastId } = poolForRunStart(
+        buildRegionPool(STARTERS, edition, regionId),
+        edition,
+        regionId,
+      );
       const next = resumeRun(
         readRun(),
         { edition, regionId, regionName, dateKey },
-        computePoolIds(buildRegionPool(STARTERS, edition, regionId), dateKey, edition, regionId),
+        poolIds,
+        prevLastId,
       );
       commit(next);
       setMenu(null);
@@ -555,11 +564,12 @@ function Play({
       createDealer(
         pool,
         run.seed,
-        seenStoreFor(run.dateKey, run.edition, run.regionId),
+        seenStoreFor(run.edition, run.regionId),
         run.index,
+        run.prevLastId,
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pool, run.seed, run.dateKey, run.edition, run.regionId],
+    [pool, run.seed, run.dateKey, run.edition, run.regionId, run.prevLastId],
   );
   const place = dealer.at(run.index);
   // Record dealt places into the no-repeat history as the run advances.
@@ -742,6 +752,11 @@ function Play({
     // Fresh map instance for the replayed run (see mapKey above).
     setMapKey((k) => k + 1);
     const replayDateKey = trailDate();
+    const { poolIds: replayPoolIds, prevLastId: replayPrevLastId } = poolForRunStart(
+      places,
+      run.edition,
+      run.regionId,
+    );
     onRun(
       resumeRun(
         run,
@@ -751,7 +766,8 @@ function Play({
           regionName: run.regionName,
           dateKey: replayDateKey,
         },
-        computePoolIds(places, replayDateKey, run.edition, run.regionId),
+        replayPoolIds,
+        replayPrevLastId,
       ),
     );
   }

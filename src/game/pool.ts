@@ -26,6 +26,7 @@ import type { Starter } from "./starters.ts";
  */
 export function buildRegionPool(catalog: Starter[], edition: Edition, regionId: string): Starter[] {
   const pool: Starter[] = [];
+  const seenIds = new Set<string>();
   for (const place of catalog) {
     if (place.regionId !== regionId) continue;
     if (place.edition !== edition) {
@@ -34,6 +35,13 @@ export function buildRegionPool(catalog: Starter[], edition: Edition, regionId: 
           `(expected "${edition}"). The catalog is mis-assigned; refusing to deal.`,
       );
     }
+    if (seenIds.has(place.id)) {
+      throw new Error(
+        `buildRegionPool: duplicate place id "${place.id}" in region "${regionId}". ` +
+          `Duplicate ids break the no-repeat dealing guarantee; refusing to deal.`,
+      );
+    }
+    seenIds.add(place.id);
     pool.push(place);
   }
   return pool;

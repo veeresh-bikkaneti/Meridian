@@ -47,6 +47,29 @@ test("a mislabeled place fails closed instead of dealing silently", () => {
   assert.throws(() => buildRegionPool([...STARTERS, impostor], "state", "nebraska"), /nebraska-impostor/);
 });
 
+test("a duplicate place id fails closed instead of dealing silently", () => {
+  const original = buildRegionPool(STARTERS, "state", "nebraska")[0]!;
+  const duplicate: Starter = {
+    ...original,
+    name: "A deliberately duplicated place used to prove the pool fails closed.",
+    story: "A deliberately duplicated place used to prove the pool fails closed.",
+    sourceLabel: "Test",
+    sourceHref: "https://example.com",
+  };
+  assert.throws(
+    () => buildRegionPool([...STARTERS, duplicate], "state", "nebraska"),
+    new RegExp(`duplicate place id "${original.id}"`),
+  );
+});
+
+test("the starters catalog has no duplicate place ids", () => {
+  const ids = new Set<string>();
+  for (const place of STARTERS) {
+    assert.ok(!ids.has(place.id), `duplicate starter id: ${place.id}`);
+    ids.add(place.id);
+  }
+});
+
 test("dealing never leaves the region across full cycles", () => {
   const pool = buildRegionPool(STARTERS, "state", "nebraska");
   const dealer = createDealer(pool, mintSeed(), memorySeenStore());

@@ -56,11 +56,18 @@ export type Run = {
   seed: number;
   /**
    * Place IDs available to this session, in catalog order. Computed once at
-   * session start (catalog minus the day's seen history) and persisted so a
-   * reload rebuilds the identical pool — the resumed run keeps dealing the
-   * same session's order, not a reshuffled smaller pool.
+   * session start (catalog minus the persistent no-repeat history) and
+   * persisted so a reload rebuilds the identical pool — the resumed run
+   * keeps dealing the same session's order, not a reshuffled smaller pool.
    */
   poolIds: string[];
+  /**
+   * The previous cycle's final deal at run start (null on a brand-new
+   * history). The dealer avoids opening its first cycle with this place so
+   * a location never repeats across the cycle boundary. Persisted so a
+   * reload makes the identical boundary decision.
+   */
+  prevLastId: string | null;
 };
 
 export function startRun(
@@ -71,6 +78,7 @@ export function startRun(
     dateKey: string;
   },
   poolIds: string[],
+  prevLastId: string | null = null,
 ): Run {
   return {
     edition: input.edition,
@@ -85,6 +93,7 @@ export function startRun(
     results: [],
     seed: mintSeed(),
     poolIds: [...poolIds],
+    prevLastId,
   };
 }
 
@@ -192,6 +201,7 @@ export function resumeRun(
   saved: Run | null,
   today: { edition: Edition; regionId: string; regionName: string; dateKey: string },
   poolIds: string[] = [],
+  prevLastId: string | null = null,
 ): Run {
   if (isResumable(saved, today)) {
     // Backfill results for runs saved before endless mode, the dealing
@@ -209,7 +219,11 @@ export function resumeRun(
       poolIds: Array.isArray(saved.poolIds)
         ? saved.poolIds.filter((id): id is string => typeof id === "string")
         : [...poolIds],
+      // Runs saved before the persistent no-repeat history get no boundary
+      // id (null disables the swap), preserving their exact deal order.
+      prevLastId:
+        typeof saved.prevLastId === "string" ? saved.prevLastId : null,
     };
   }
-  return startRun(today, poolIds);
+  return startRun(today, poolIds, prevLastId);
 }
