@@ -68,6 +68,10 @@ export default defineConfig({
       testMatch: /endless-game\.spec\.ts/,
     },
     {
+      name: "question-randomization",
+      testMatch: /question-randomization\.spec\.ts/,
+    },
+    {
       name: "pinch-zoom",
       testMatch: /pinch-zoom\.spec\.ts/,
       use: {

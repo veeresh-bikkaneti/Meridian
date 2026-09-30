@@ -3,10 +3,10 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { radiusKm } from "@/game/radius";
 import { COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
-import { continueRun, dropPin, endRun, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
+import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
 import { distanceScore, scoreRingForEdition } from "@/game/score";
 import { STARTERS, type Starter } from "@/game/starters";
-import { orderPlaces, dealPlace } from "@/game/trail";
+import { createDealer, seenStoreFor, mintSeed } from "@/game/trail";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -81,6 +81,21 @@ function readRun(): Run | null {
     ) {
       return null;
     }
+    // Range-check the restored numbers: a tampered sessionStorage index
+    // (e.g. 1e15) would otherwise send the dealer spinning through billions
+    // of cycles; a non-finite seed is meaningless. The cap is 20k (not 1M):
+    // the dealer's resume re-derive is O(N^2/pool), measured ~52ms at 20k
+    // but ~130s at 1M. Fail closed to null.
+    if (
+      !Number.isInteger(record.index) ||
+      record.index < 0 ||
+      record.index > 20_000 ||
+      !Number.isInteger(record.hits) ||
+      record.hits < 0 ||
+      record.hits > 20_000
+    ) {
+      return null;
+    }
     return {
       edition: record.edition,
       regionId: record.regionId,
@@ -91,6 +106,14 @@ function readRun(): Run | null {
       phase: record.phase,
       results: Array.isArray(record.results)
         ? record.results.filter(isPlaceResult)
+        : [],
+      // Runs saved before per-session shuffle get a fresh seed; resumeRun
+      // keeps a valid one.
+      seed: typeof record.seed === "number" ? record.seed : mintSeed(),
+      // Runs saved before pool persistence get [] here; resumeRun backfills
+      // from the freshly computed pool.
+      poolIds: Array.isArray(record.poolIds)
+        ? record.poolIds.filter((id): id is string => typeof id === "string")
         : [],
     };
   } catch {
@@ -104,6 +127,23 @@ function writeRun(run: Run) {
   } catch {
     // The run still lives in memory when storage is blocked.
   }
+}
+
+/**
+ * The session's dealing pool: catalog places minus today's seen history
+ * (the cross-session no-repeat rule). Computed once when a session starts
+ * and persisted on the run, so a reload rebuilds the identical pool.
+ * Falls back to the full catalog when everything was seen today.
+ */
+function computePoolIds(
+  allPlaces: { id: string }[],
+  dateKey: string,
+  edition: Edition,
+  regionId: string,
+): string[] {
+  const seen = new Set(seenStoreFor(dateKey, edition, regionId).read());
+  const fresh = allPlaces.filter((p) => !seen.has(p.id)).map((p) => p.id);
+  return fresh.length > 0 ? fresh : allPlaces.map((p) => p.id);
 }
 
 function isLanguageModel(value: unknown): value is LanguageModelGlobal {
@@ -204,25 +244,30 @@ export function GameApp() {
   useEffect(() => {
     const saved = readRun();
     if (saved) {
-      const restored = resumeRun(saved, {
+      const today = {
         edition: saved.edition,
         regionId: saved.regionId,
         regionName: saved.regionName,
         dateKey: trailDate(),
-      });
-      if (restored === saved) setRun(saved);
+      };
+      // resumeRun mints a fresh run when the saved one is not resumable — a
+      // page load must not auto-start a run, so only resumable sessions are
+      // restored. (The old `restored === saved` check could never pass:
+      // resumeRun always returns a new object, so reloads silently dropped
+      // to the menu instead of resuming.)
+      if (isResumable(saved, today)) commit(resumeRun(saved, today));
     }
     setReady(true);
-  }, []);
+  }, [commit]);
 
   const openRun = useCallback(
     (edition: Edition, regionId: string, regionName: string) => {
-      const next = resumeRun(readRun(), {
-        edition,
-        regionId,
-        regionName,
-        dateKey: trailDate(),
-      });
+      const dateKey = trailDate();
+      const next = resumeRun(
+        readRun(),
+        { edition, regionId, regionName, dateKey },
+        computePoolIds(placesFor(edition, regionId), dateKey, edition, regionId),
+      );
       commit(next);
       setMenu(null);
     },
@@ -297,7 +342,7 @@ function Choose({
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <EditionCard
           title="State"
-          detail="All 50 states. The same trail for that state on this UTC date."
+          detail="All 50 states. Every visit shuffles the trail with a fresh seed."
           action="Choose a state"
           onClick={onState}
         />
@@ -384,11 +429,38 @@ function Play({
   onLeave: () => void;
 }) {
   const places = useMemo(() => placesFor(run.edition, run.regionId), [run.edition, run.regionId]);
-  const ordered = useMemo(
-    () => orderPlaces(places, run.dateKey, run.edition, run.regionId),
-    [places, run.dateKey, run.edition, run.regionId],
+  // Session pool: the catalog filtered to this run's persisted poolIds.
+  // Computed once at session start and saved on the run, so a reload
+  // rebuilds the identical pool (not a reshuffled smaller one).
+  const pool = useMemo(() => {
+    const ids = new Set(run.poolIds);
+    const filtered = places.filter((p) => ids.has(p.id));
+    // Legacy runs (or a tampered pool): fall back to the full catalog rather
+    // than an empty pool.
+    return filtered.length > 0 ? filtered : places;
+  }, [places, run.poolIds]);
+  // Endless dealer: per-session shuffle (fresh seed per run, so restarts no
+  // longer deterministically repeat the same first question), per-cycle
+  // reseed, and a persistent no-repeat history in localStorage. The dealer
+  // is created once per run
+  // identity (seed); run.index advances within it. A reload restores the same
+  // seed and pool, so the resumed run keeps dealing the same session's order.
+  const dealer = useMemo(
+    () =>
+      createDealer(
+        pool,
+        run.seed,
+        seenStoreFor(run.dateKey, run.edition, run.regionId),
+        run.index,
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [pool, run.seed, run.dateKey, run.edition, run.regionId],
   );
-  const place = dealPlace(ordered, run.index);
+  const place = dealer.at(run.index);
+  // Record dealt places into the no-repeat history as the run advances.
+  useEffect(() => {
+    dealer.markDealtThrough(run.index);
+  }, [dealer, run.index]);
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
   // screen-reader users get feedback for place/move/clear. Cleared whenever
@@ -530,10 +602,11 @@ function Play({
     onReplay();
   }
 
-  // Miss-card replay: the same resumeRun chain as openRun (a done run always
-  // restarts via startRun). Local state is reset explicitly because a
-  // same-day replay yields the same first place, so the [place?.id] effect
-  // above will not fire.
+  // Play-again replay: the same resumeRun chain as openRun. A finished run
+  // (phase "summary") always restarts via startRun with a fresh dealing seed,
+  // so the replayed run opens on a different first question. Local state is
+  // reset explicitly because the [place?.id] effect below only fires when the
+  // dealt place actually changes.
   function onReplay() {
     setAim(null);
     setAimAnnouncement(null);
@@ -542,13 +615,18 @@ function Play({
     setCardDismissed(false);
     // Fresh map instance for the replayed run (see mapKey above).
     setMapKey((k) => k + 1);
+    const replayDateKey = trailDate();
     onRun(
-      resumeRun(run, {
-        edition: run.edition,
-        regionId: run.regionId,
-        regionName: run.regionName,
-        dateKey: trailDate(),
-      }),
+      resumeRun(
+        run,
+        {
+          edition: run.edition,
+          regionId: run.regionId,
+          regionName: run.regionName,
+          dateKey: replayDateKey,
+        },
+        computePoolIds(places, replayDateKey, run.edition, run.regionId),
+      ),
     );
   }
 
@@ -616,7 +694,7 @@ function Play({
           place={place}
           drop={drop}
           story={story}
-          empty={ordered.length === 0}
+          empty={places.length === 0}
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
           onContinue={onContinue}

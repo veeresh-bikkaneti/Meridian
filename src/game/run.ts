@@ -1,4 +1,5 @@
 import { isHit } from "./radius.ts";
+import { mintSeed } from "./trail.ts";
 
 export type Edition = "state" | "country" | "globe";
 export type RunPhase = "aim" | "story" | "done" | "summary";
@@ -31,14 +32,31 @@ export type Run = {
   phase: RunPhase;
   /** Every scored place, in order. Grows unbounded in endless mode. */
   results: PlaceResult[];
+  /**
+   * Per-session dealing seed, minted by startRun. A fresh run deals a
+   * freshly shuffled order, so restarts no longer deterministically repeat
+   * the same first question. Persisted so a reload keeps dealing the same
+   * session's order.
+   */
+  seed: number;
+  /**
+   * Place IDs available to this session, in catalog order. Computed once at
+   * session start (catalog minus the day's seen history) and persisted so a
+   * reload rebuilds the identical pool — the resumed run keeps dealing the
+   * same session's order, not a reshuffled smaller pool.
+   */
+  poolIds: string[];
 };
 
-export function startRun(input: {
-  edition: Edition;
-  regionId: string;
-  regionName: string;
-  dateKey: string;
-}): Run {
+export function startRun(
+  input: {
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    dateKey: string;
+  },
+  poolIds: string[],
+): Run {
   return {
     edition: input.edition,
     regionId: input.regionId,
@@ -48,6 +66,8 @@ export function startRun(input: {
     hits: 0,
     phase: "aim",
     results: [],
+    seed: mintSeed(),
+    poolIds: [...poolIds],
   };
 }
 
@@ -96,22 +116,44 @@ export function summarizeRun(run: Run): RunSummary {
   return { placesPlayed, hits: run.hits, totalScore, averageDistanceKm, bestDistanceKm };
 }
 
-export function resumeRun(
+/**
+ * Whether a saved run resumes into today's session: same edition, region,
+ * and day, and not parked on the summary screen (a summary must be dismissed
+ * before reset, and must not auto-restore on page load).
+ */
+export function isResumable(
   saved: Run | null,
-  today: { edition: Edition; regionId: string; regionName: string; dateKey: string },
-): Run {
-  if (
-    saved &&
+  today: { edition: Edition; regionId: string; dateKey: string },
+): saved is Run {
+  return (
+    !!saved &&
     saved.phase !== "summary" &&
     saved.edition === today.edition &&
     saved.regionId === today.regionId &&
     saved.dateKey === today.dateKey
-  ) {
-    // Backfill results for runs saved before endless mode.
+  );
+}
+
+export function resumeRun(
+  saved: Run | null,
+  today: { edition: Edition; regionId: string; regionName: string; dateKey: string },
+  poolIds: string[] = [],
+): Run {
+  if (isResumable(saved, today)) {
+    // Backfill results for runs saved before endless mode, the dealing
+    // seed for runs saved before per-session shuffle, and the pool for runs
+    // saved before pool persistence (best effort: the current computed pool).
     // "done" is resumable: it is now a transient per-place state (miss card
     // awaiting Next place), not an ended run — dropping it would silently
     // lose the whole session's accumulated results.
-    return { ...saved, results: saved.results ?? [] };
+    return {
+      ...saved,
+      results: saved.results ?? [],
+      seed: typeof saved.seed === "number" ? saved.seed : mintSeed(),
+      poolIds: Array.isArray(saved.poolIds)
+        ? saved.poolIds.filter((id): id is string => typeof id === "string")
+        : [...poolIds],
+    };
   }
-  return startRun(today);
+  return startRun(today, poolIds);
 }

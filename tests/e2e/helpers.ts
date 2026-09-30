@@ -76,7 +76,12 @@ export async function serveBuiltArtifact(context: BrowserContext): Promise<void>
     if (p === "/Meridian" || p === "/Meridian/") p = "/_shell.html";
     else if (p.startsWith(BASE)) p = p.slice(BASE.length);
     if (p.endsWith("/")) p += "_shell.html";
-    const file = path.join(DIST, p);
+    // Clamp to the dist dir: a crafted pathname like /../../etc/passwd must
+    // 403, not serve files outside the built artifact.
+    const file = path.normalize(path.join(DIST, p));
+    if (!file.startsWith(DIST + path.sep) && file !== DIST) {
+      return route.fulfill({ status: 403, body: "forbidden" });
+    }
     try {
       const body = await readFile(file);
       const ext = path.extname(file).toLowerCase();
@@ -100,19 +105,36 @@ export async function startGlobeRun(page: Page): Promise<void> {
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   // The map's zoomend handler writes Math.round(getZoom()) into data-zoom,
   // so the initial 1.5 settles to "2" once the first zoomend fires. Wait for
-  // the value to stabilize rather than asserting an exact racy value.
+  // the value to stabilize rather than asserting an exact racy value. The
+  // generous timeout/gap tolerate very slow software rendering where the
+  // intro dive can take many seconds.
   const map = page.locator(".satellite-map");
   await expect
     .poll(
       async () => {
         const a = await map.getAttribute("data-zoom");
-        await page.waitForTimeout(400);
+        await page.waitForTimeout(800);
         const b = await map.getAttribute("data-zoom");
         return a === b ? a : null;
       },
-      { timeout: 20_000 },
+      { timeout: 30_000 },
     )
     .not.toBeNull();
+}
+
+/**
+ * The map's 15 s tile-load watchdog can fire on very slow machines (first
+ * idle arrives after the budget), raising the full-screen "Couldn't load
+ * satellite imagery" overlay. That overlay swallows map clicks, so before
+ * any map interaction, dismiss it via its Retry button — exactly what a
+ * user on a flaky connection would do. No-op when the overlay is absent.
+ */
+export async function dismissTileOverlayIfPresent(page: Page): Promise<void> {
+  const overlay = page.getByText("Couldn't load satellite imagery");
+  if (await overlay.isVisible()) {
+    await page.getByRole("button", { name: "Retry" }).click();
+    await expect(overlay).toBeHidden({ timeout: 10_000 });
+  }
 }
 
 export async function readPhase(page: Page): Promise<string | null> {
