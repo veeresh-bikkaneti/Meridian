@@ -14,13 +14,6 @@ export const TAP_WINDOW_MS = 500;
 /** Two taps this close in space may be one double-tap commit gesture. */
 export const TAP_WINDOW_PX = 48;
 
-/**
- * Touch taps land above the fingertip so the pin stays visible under it.
- * Faithful port of gesture.ts:3 (TOUCH_LIFT) via its aimPoint behavior:
- * the lift applies to the PLACEMENT coordinate (M3), not just the marker.
- */
-export const TOUCH_LIFT_PX = 42;
-
 export type ScreenTap = { x: number; y: number; t: number };
 
 /** True when `next` continues `previous` as one double-tap commit gesture. */
