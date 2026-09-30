@@ -134,8 +134,10 @@ import { greaterSideKm } from "../game/regions.ts";
 export const Z_GLOBE_OUT = 2.2;
 /** T_IN arm: SPACE→REGION relock fires only above this zoom. */
 export const Z_FLAT_IN = 3.2;
-/** Intro spin speed, degrees/second — one stately revolution per minute. Tunable in QA. */
-export const SPIN_SPEED_DPS = 6;
+/** Intro spin speed, degrees/second. 30 dps turns 36° over the 1200 ms intro —
+ *  one revolution per 12 s: clearly alive, still comfortable (0.5°/frame @60fps).
+ *  (Was 6 dps = 7.2° — imperceptible; F3 tune, 2026-09-30.) */
+export const SPIN_SPEED_DPS = 30;
 /** Adapter arms this timer on `spin {active: true}`; expiry → onSpinTimer(). */
 export const SPIN_DURATION_MS = 1200;
 /** Narrow-in flyTo duration. */
