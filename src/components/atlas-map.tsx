@@ -561,7 +561,15 @@ export function AtlasMap({
         aria-label="Label-free map. Press to aim a pin, release to drop it. Drag the pin to adjust, tap it to confirm. Arrow keys move the view, Enter drops a pin at the center, and Enter again confirms."
       />
       <p className="pointer-events-none absolute bottom-3 left-3 max-w-[16rem] text-[10px] leading-snug text-muted">
-        Natural Earth · © OpenStreetMap · Place data: GeoNames (CC-BY 4.0)
+        Natural Earth · © OpenStreetMap · Place data: GeoNames{" "}
+        <a
+          href="https://creativecommons.org/licenses/by/4.0/"
+          target="_blank"
+          rel="noreferrer"
+          className="pointer-events-auto underline"
+        >
+          CC-BY 4.0
+        </a>
         {engine ? ` · ${engine}` : ""}
       </p>
       <div className="absolute right-3 bottom-3 flex flex-col gap-2">

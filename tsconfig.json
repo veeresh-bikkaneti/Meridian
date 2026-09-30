@@ -8,8 +8,10 @@
     ],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    // F6b: the generated place dataset is a checked-in JSON module imported
-    // statically by src/game/generated-places.ts.
+    // The GeoNames manifest (src/game/data/geonames/manifest.json) is the only
+    // generated-data file statically imported (by src/game/generated-places.ts).
+    // Per-region chunks load lazily via dynamic import() and stay out of the
+    // initial bundle.
     "resolveJsonModule": true,
     "jsx": "react-jsx",
     "strict": true,
