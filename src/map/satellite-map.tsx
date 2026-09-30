@@ -6,7 +6,7 @@ import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
-import { TOUCH_LIFT_PX, isTap, type PointerTapEndpoint } from "./pin-tap.ts";
+import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
 import {
   buildRegionIndex,
@@ -934,11 +934,11 @@ export function SatelliteMap(props: {
       const up = toEndpoint(e);
       if (!isTap(down, up)) return;
       const tap = { x: up.x, y: up.y, t: up.t };
-      // M3: the 42px lift applies to the PLACEMENT coordinate (port of
-      // gesture.ts:3 TOUCH_LIFT via aimPoint), so the pin lands on the point
-      // the player actually sees under their fingertip. Lift unless mouse.
-      const lift = up.pointerType === "mouse" ? 0 : TOUCH_LIFT_PX;
-      const at = map.unproject([tap.x, tap.y - lift]);
+      // The tap point IS the answer: no touch lift. The old 42px lift
+      // (pin visible under the fingertip) did not survive scrutiny — at
+      // pointerup the finger is leaving the screen, so the pin was never
+      // hidden, and every touch answer landed 42px above the fingertip.
+      const at = map.unproject([tap.x, tap.y]);
       if (typeof navigator.vibrate === "function") navigator.vibrate(10);
       setCrosshair(null); // pointer/touch takes over from the keyboard crosshair
       if (tracker.register(tap) === "double-tap") {
