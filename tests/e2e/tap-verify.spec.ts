@@ -19,13 +19,7 @@ import path from "node:path";
  * checkout or worktree.
  */
 
-const DIST = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "..",
-  "dist",
-  "client",
-);
+const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "dist", "client");
 const BASE = "/Meridian/";
 const RUN_KEY = "meridian.run";
 
@@ -84,11 +78,29 @@ async function readResultsLength(page: Page): Promise<number> {
   }, RUN_KEY);
 }
 
+/**
+ * The tile-failure overlay is production behavior (any tile error before the
+ * first idle marks the initial tile set "failed") and its card sits over the
+ * map, swallowing taps. Under this VM's load a tile request can transiently
+ * fail even with the PNG stub in place. If the overlay is up, hit Retry until
+ * it clears so the tap points actually reach the map. Not F5's concern to
+ * change the overlay itself.
+ */
+async function clearTileErrorOverlay(page: Page): Promise<void> {
+  const alert = page.getByRole("alert").filter({ hasText: "Couldn't load satellite imagery" });
+  for (let i = 0; i < 3; i++) {
+    if (!(await alert.isVisible())) return;
+    await page.getByRole("button", { name: "Retry" }).click();
+    await alert.waitFor({ state: "hidden", timeout: 15_000 });
+  }
+}
+
 async function startGlobeRun(page: Page): Promise<void> {
   await page.goto("http://127.0.0.1:4123/Meridian/");
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expect(page.locator(".satellite-map")).toBeVisible();
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  await clearTileErrorOverlay(page);
 }
 
 /**
@@ -167,9 +179,7 @@ test("touch: single tap shows a hollow preview pin and records nothing; double-t
 
   // 3. Double-tap at one point: commits the answer at the tap point.
   await touchDoubleTap(page, 250, 500);
-  await expect
-    .poll(() => readPhase(page), { timeout: 20_000 })
-    .toMatch(/^(story|done)$/);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toMatch(/^(story|done)$/);
 
   // Exactly one result recorded — the commit, not the earlier taps.
   expect(await readResultsLength(page)).toBe(1);
