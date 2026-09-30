@@ -394,6 +394,16 @@ export function SatelliteMap(props: {
   // ≈ 11 m) for E2E drag assertions. data-zoom stays rounded for the existing
   // zoom-control consumers.
   const [center, setCenter] = useState({ lng: 0, lat: 0 });
+  // moveend fires after every gesture — including pure zooms that leave the
+  // center untouched. A fresh object on each firing would re-render on every
+  // moveend; keep the previous state when the rounded DOM-contract values are
+  // unchanged, matching the zoom mirror's bail-out behavior above.
+  const setCenterIfMoved = (lng: number, lat: number) =>
+    setCenter((prev) =>
+      prev.lng.toFixed(4) === lng.toFixed(4) && prev.lat.toFixed(4) === lat.toFixed(4)
+        ? prev
+        : { lng, lat },
+    );
   // Design §7: the wrapper is aria-hidden + inert for the whole intro beat,
   // released at narrow completion.
   const [introActive, setIntroActive] = useState(true);
@@ -1064,7 +1074,7 @@ export function SatelliteMap(props: {
     map.on("moveend", () => {
       // Re-entrancy guard (see zoomend).
       const c = map.getCenter();
-      setCenter({ lng: c.lng, lat: c.lat });
+      setCenterIfMoved(c.lng, c.lat);
       if (dispatchingIntentsRef.current) return;
       const ctl = controllerRef.current;
       if (!ctl) return;
@@ -1117,7 +1127,7 @@ export function SatelliteMap(props: {
       map.resize();
       setZoom(Math.round(map.getZoom()));
       const initialCenter = map.getCenter();
-      setCenter({ lng: initialCenter.lng, lat: initialCenter.lat });
+      setCenterIfMoved(initialCenter.lng, initialCenter.lat);
       paintVariationLayers(map, variationRef.current ?? null, labelRef);
       if (isRestore && dtoRef.current) {
         // Tile-Retry re-opens mid-SPACE (design §8): the highlight repaints
