@@ -665,12 +665,17 @@ export function SatelliteMap(props: {
             break;
           }
           case "jump-to": {
-            const run = () => {
-              if (!alive) return;
-              map.jumpTo({ center: intent.center, zoom: intent.zoom });
-            };
-            if (!map.isStyleLoaded()) map.once("load", run);
-            else run();
+            // No style-load gate: Camera#jumpTo is transform-only (verified
+            // against the vendored maplibre-gl 6.11.2 — it touches the
+            // transform and fires movement events, never the style). Gating
+            // it on isStyleLoaded() caused a never-fires race: the
+            // reduced-motion intro emits jump-to synchronously after
+            // `new Map()`, the deferred `once("load")` handler never ran, and
+            // the map stayed at zoom 1 while the live region announced the
+            // region view. Only set-projection / addSource / addLayer need
+            // the gate (they throw pre-load).
+            if (!alive) return;
+            map.jumpTo({ center: intent.center, zoom: intent.zoom });
             break;
           }
           case "paint-highlight": {

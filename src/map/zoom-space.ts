@@ -74,10 +74,15 @@
  * - Reveal hold: on the `reveal-hold` intent, arm the REVEAL_HOLD_MS timer;
  *   on expiry call `onRevealHoldTimer()` (starts the settle beat). Skipped
  *   under reduced motion (the controller jumps instead).
- * - Narrow beat style load: the fly-to/jump-to (and set-projection) intents
- *   may fire before the style is loaded — set-projection throws before style
- *   load. If `map.isStyleLoaded()` is false when the 1200 ms spin timer
- *   fires, defer executing those camera intents until the style `load` event.
+ * - Narrow beat style load: set-projection throws before style load, so the
+ *   adapter gates every projection swap on `map.isStyleLoaded()`, deferring
+ *   to the style `load` event. Camera intents are transform-only and must NOT
+ *   be gated on style load: gating jump-to caused a never-fires race in the
+ *   reduced-motion intro (the intent is emitted synchronously after
+ *   `new Map()`; the deferred `once("load")` handler never ran and the map
+ *   stayed at zoom 1 while the live region announced the region view).
+ *   fly-to/ease-to keep their historical gate — they fire ~1200 ms into the
+ *   intro when the style is loaded in practice, and that path is verified.
  * - Gate every set-projection on `map.isStyleLoaded()` (it throws otherwise);
  *   treat set-projection as idempotent (a redundant swap is a no-op).
  * - The controller updates its tracked projection optimistically when it emits
