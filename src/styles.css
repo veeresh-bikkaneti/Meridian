@@ -230,9 +230,26 @@
   animation: meridian-pulse-ring 600ms ease-out forwards;
 }
 
+/* Drop-pin "ready" pulse: one 600ms gold glow when the button enables. */
+@keyframes meridian-ready-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(242, 193, 78, 0.55);
+    border-color: rgba(242, 193, 78, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(242, 193, 78, 0);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.meridian-ready-pulse {
+  animation: meridian-ready-pulse 600ms ease-out forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .meridian-pin-drop,
-  .meridian-pulse-ring {
+  .meridian-pulse-ring,
+  .meridian-ready-pulse {
     animation: none;
   }
 }
