@@ -1,11 +1,12 @@
 import { BRAND } from "@/game/brand";
 import { distanceKm, formatDistance } from "@/game/geo";
 import { radiusKm } from "@/game/radius";
-import { COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
+import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
 import { distanceScore, scoreRingForEdition } from "@/game/score";
-import { STARTERS, type Starter } from "@/game/starters";
+import { STARTERS } from "@/game/starters";
+import { buildRegionPool } from "@/game/pool";
 import { createDealer, seenStoreFor, mintSeed } from "@/game/trail";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
@@ -35,13 +36,13 @@ function trailDate(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-function placesFor(edition: Edition, regionId: string): Starter[] {
-  return STARTERS.filter((place) => place.edition === edition && place.regionId === regionId);
-}
-
 function boundsFor(run: Run): RegionBounds {
-  const regions = run.edition === "state" ? STATES : COUNTRIES;
-  return regions.find((region) => region.id === run.regionId)?.bounds ?? [0, 0, 0, 0];
+  if (run.edition === "state") {
+    // States can drill from any country that maps subdivisions; look across all of them.
+    const regions = Object.values(ADMIN1_BY_COUNTRY).flat();
+    return regions.find((region) => region.id === run.regionId)?.bounds ?? [0, 0, 0, 0];
+  }
+  return COUNTRIES.find((region) => region.id === run.regionId)?.bounds ?? [0, 0, 0, 0];
 }
 
 function isEdition(value: unknown): value is Edition {
@@ -231,10 +232,28 @@ async function revealStory(placeId: string, authored: string): Promise<string> {
   return result.text;
 }
 
+/**
+ * Where the player is in the edition picker. The picker drills down
+ * Globe -> Country -> State: `countries` lists the playable countries, and
+ * `admin1` lists one country's states/provinces (each level is playable).
+ * The run's `Edition` type is unchanged — only the menu needs the extra
+ * level.
+ */
+type Menu = { kind: "countries" } | { kind: "admin1"; countryId: string; countryName: string };
+
+/** Lenient pool-size check for the picker lists (the strict fail-closed gate runs at deal time). */
+function poolSize(edition: Edition, regionId: string): number {
+  let count = 0;
+  for (const place of STARTERS) {
+    if (place.edition === edition && place.regionId === regionId) count++;
+  }
+  return count;
+}
+
 export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
-  const [menu, setMenu] = useState<Edition | null>(null);
+  const [menu, setMenu] = useState<Menu | null>(null);
 
   const commit = useCallback((next: Run) => {
     writeRun(next);
@@ -266,7 +285,7 @@ export function GameApp() {
       const next = resumeRun(
         readRun(),
         { edition, regionId, regionName, dateKey },
-        computePoolIds(placesFor(edition, regionId), dateKey, edition, regionId),
+        computePoolIds(buildRegionPool(STARTERS, edition, regionId), dateKey, edition, regionId),
       );
       commit(next);
       setMenu(null);
@@ -296,33 +315,51 @@ export function GameApp() {
     );
   }
 
-  if (menu === "state" || menu === "country") {
-    const regions = menu === "state" ? STATES : COUNTRIES;
+  if (menu?.kind === "countries") {
+    // Only countries with a playable pool — never a dead end.
+    const regions = COUNTRIES.filter((country) => poolSize("country", country.id) > 0);
     return (
       <RegionList
-        title={menu === "state" ? "State" : "Country"}
+        title="Country"
+        subtitle="Play a country whole — or drill into its states where available."
         regions={regions}
         onBack={() => setMenu(null)}
-        onChoose={(region) => openRun(menu, region.id, region.name)}
+        onChoose={(region) => {
+          const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
+          if (subdivisions.length > 0) {
+            setMenu({ kind: "admin1", countryId: region.id, countryName: region.name });
+          } else {
+            openRun("country", region.id, region.name);
+          }
+        }}
       />
     );
   }
 
-  return (
-    <Choose
-      onState={() => setMenu("state")}
-      onCountry={() => setMenu("country")}
-      onGlobe={() => openRun("globe", "globe", "Globe")}
-    />
-  );
+  if (menu?.kind === "admin1") {
+    const regions = ADMIN1_BY_COUNTRY[menu.countryId] ?? [];
+    return (
+      <RegionList
+        title={menu.countryName}
+        subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
+        regions={regions}
+        headerAction={{
+          label: `Play entire ${menu.countryName}`,
+          onClick: () => openRun("country", menu.countryId, menu.countryName),
+        }}
+        onBack={() => setMenu({ kind: "countries" })}
+        onChoose={(region) => openRun("state", region.id, region.name)}
+      />
+    );
+  }
+
+  return <Choose onCountry={() => setMenu({ kind: "countries" })} onGlobe={() => openRun("globe", "globe", "Globe")} />;
 }
 
 function Choose({
-  onState,
   onCountry,
   onGlobe,
 }: {
-  onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
 }) {
@@ -335,26 +372,20 @@ function Choose({
         </p>
         <h1 className="mt-3 font-display text-5xl text-fg">{BRAND.name}</h1>
         <p className="mt-4 max-w-md text-lg text-muted">
-          Pick a state, a country, or the globe. A place name, then one pin. The run lasts until the
-          pin misses.
+          Pick the globe or a country — drill into its states where available. A place name, then
+          one pin. The run goes until you choose to end it.
         </p>
       </header>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
-        <EditionCard
-          title="State"
-          detail="All 50 states. Every visit shuffles the trail with a fresh seed."
-          action="Choose a state"
-          onClick={onState}
-        />
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
         <EditionCard
           title="Country"
-          detail="A short launch list, in the same order for everyone."
+          detail="Play a country whole, or drill into its states where available."
           action="Choose a country"
           onClick={onCountry}
         />
         <EditionCard
           title="Globe"
-          detail="The whole earth. Nothing else to pick."
+          detail="The whole earth. Continent outlines at a distance, countries as you close in."
           action="Play the globe"
           onClick={onGlobe}
         />
@@ -387,12 +418,16 @@ function EditionCard({
 
 function RegionList({
   title,
+  subtitle,
   regions,
+  headerAction,
   onBack,
   onChoose,
 }: {
   title: string;
+  subtitle?: string;
   regions: Region[];
+  headerAction?: { label: string; onClick: () => void };
   onBack: () => void;
   onChoose: (region: Region) => void;
 }) {
@@ -402,6 +437,12 @@ function RegionList({
         Editions
       </Button>
       <h1 className="mt-4 font-display text-4xl text-fg">{title}</h1>
+      {subtitle ? <p className="mt-2 text-muted">{subtitle}</p> : null}
+      {headerAction ? (
+        <Button variant="secondary" className="mt-6 w-full" onClick={headerAction.onClick}>
+          {headerAction.label}
+        </Button>
+      ) : null}
       <ul className="mt-6 flex flex-col gap-2">
         {regions.map((region) => (
           <li key={region.id}>
@@ -428,7 +469,10 @@ function Play({
   onRun: (run: Run) => void;
   onLeave: () => void;
 }) {
-  const places = useMemo(() => placesFor(run.edition, run.regionId), [run.edition, run.regionId]);
+  const places = useMemo(
+    () => buildRegionPool(STARTERS, run.edition, run.regionId),
+    [run.edition, run.regionId],
+  );
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
   // rebuilds the identical pool (not a reshuffled smaller one).
