@@ -1065,7 +1065,10 @@ export class ZoomSpaceController {
     }
     this.beatActiveFlag = true;
     this.beatKindFlag = "return";
-    intents.push({ type: "tap-handlers", enabled: false });
+    // Tap handlers stay armed: the user can place the next pin while the
+    // camera eases back; a mid-return commit queues behind the beat and
+    // flushes on completion. Gestures stay off so drags don't fight the
+    // animation.
     intents.push({
       type: "ease-to",
       center: target.center,
