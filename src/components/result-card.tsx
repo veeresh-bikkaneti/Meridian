@@ -221,7 +221,7 @@ export function ResultCard({
               <p className="text-sm text-white/70">That pin is outside the radius.</p>
               {drop && drop.streakBefore >= 2 ? (
                 <p className="text-sm text-amber-100">
-                  🔥 {drop.streakBefore} streak reset — back to 1.05x.
+                  🔥 {drop.streakBefore}-place streak reset — combo back to 1.05x.
                 </p>
               ) : null}
               {drop && drop.placeId === place.id ? (

@@ -70,7 +70,7 @@ test("worked example: 120 km, diff 4, globe, 6th straight hit, right country = 2
   assert.equal(scored.regionBonus, 15);
   assert.equal(scored.regionBonusLabel, "country");
   assert.equal(scored.score, 267);
-  assert.equal(formatBreakdown(scored), "97 × 2.0 × 1.3 + 15 country = 267");
+  assert.equal(formatBreakdown(scored), "97 × 2.0 × 1.3 + 15 country bonus = 267");
 });
 
 test("same place, first hit after a miss, wrong country: no bonus, no streak", () => {

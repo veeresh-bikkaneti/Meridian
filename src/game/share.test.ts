@@ -23,7 +23,7 @@ test("share text is the v3 endless summary line", () => {
       averagePerPlace: 208,
       bestStreak: 14,
     }),
-    "meridian September 28\n12,480 over 60 places · 208 avg · 🔥14 best streak · Nebraska",
+    "meridian September 28\n12,480 over 60 places · 208 avg/place · 🔥14 best streak · Nebraska",
   );
   assert.equal(
     endless({
@@ -33,7 +33,7 @@ test("share text is the v3 endless summary line", () => {
       averagePerPlace: 158,
       bestStreak: 5,
     }),
-    "meridian September 28\n3,150 over 20 places · 158 avg · 🔥5 best streak · Globe",
+    "meridian September 28\n3,150 over 20 places · 158 avg/place · 🔥5 best streak · Globe",
   );
 });
 
@@ -46,7 +46,7 @@ test("a short streak is not worth bragging about", () => {
       averagePerPlace: 95,
       bestStreak: 1,
     }),
-    "meridian September 28\n190 over 2 places · 95 avg · Nebraska",
+    "meridian September 28\n190 over 2 places · 95 avg/place · Nebraska",
   );
 });
 

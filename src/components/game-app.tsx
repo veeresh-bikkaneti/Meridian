@@ -781,6 +781,7 @@ function Play({
           <div className="flex flex-col items-end gap-2">
             <p
               data-testid="score-total"
+              role="status"
               className="rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
             >
               SCORE {run.results.reduce((sum, r) => sum + r.score, 0).toLocaleString("en-US")}
@@ -789,9 +790,11 @@ function Play({
               <p
                 data-testid="streak-flame"
                 className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm tabular-nums text-fg"
-                aria-label={`${run.streak} place streak`}
               >
-                🔥 {run.streak}
+                <span role="img" aria-label={`${run.streak}-place streak`}>
+                  🔥
+                </span>{" "}
+                {run.streak}
               </p>
             ) : null}
             <p className="rounded-md border border-line bg-surface px-3 py-2 text-sm text-fg">
@@ -813,7 +816,7 @@ function Play({
         {run.phase === "aim"
           ? (aimAnnouncement ?? (place ? `Find ${place.name}.` : null))
           : run.phase === "story" && place
-            ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.`
+            ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
             : run.phase === "summary" && summary
               ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}, average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
               : place

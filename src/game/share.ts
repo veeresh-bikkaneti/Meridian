@@ -39,6 +39,6 @@ export function shareText(input: {
   return (
     `${BRAND.shareHost} ${when}\n` +
     `${input.totalScore.toLocaleString("en-US")} over ${input.placesPlayed} places · ` +
-    `${input.averagePerPlace} avg${streak} · ${input.regionName}`
+    `${input.averagePerPlace} avg/place${streak} · ${input.regionName}`
   );
 }

@@ -173,12 +173,12 @@ export function scorePlace(input: {
   return { base, difficulty: input.difficulty, diffMult, streak, combo, regionBonus, regionBonusLabel, score };
 }
 
-/** The transparent arithmetic shown on every reveal, e.g. "97 × 2.0 × 1.3 + 15 country = 267". */
+/** The transparent arithmetic shown on every reveal, e.g. "97 × 2.0 × 1.3 + 15 country bonus = 267". */
 export function formatBreakdown(scored: ScoredPlace): string {
   const factors = `${scored.base} × ${formatFactor(scored.diffMult)} × ${formatFactor(scored.combo)}`;
   const bonus =
     scored.regionBonus > 0 && scored.regionBonusLabel
-      ? ` + ${scored.regionBonus} ${scored.regionBonusLabel}`
+      ? ` + ${scored.regionBonus} ${scored.regionBonusLabel} bonus`
       : "";
   return `${factors}${bonus} = ${scored.score}`;
 }
