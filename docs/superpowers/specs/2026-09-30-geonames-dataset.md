@@ -147,3 +147,94 @@ The thin tail (NV, AK, ND, …) is a **source-data limitation**, not a pipeline 
 - **Game wiring** (loading chunks, merging with the F6b catalog, dealing) — separate integration step.
 - **Attribution UI** — GeoNames is CC-BY 4.0; the app must credit GeoNames. Integration step's job.
 - **Polygon gate** — needs Veeresh's approval on the Natural Earth 50m admin-1 download (audit above).
+
+## Integration: game wiring (2026-09-30, `feat/geonames-100k`)
+
+The pipeline above produced the data; this section records how the game
+consumes it. Code: `src/game/generated-places.ts` (rewritten),
+`src/components/game-app.tsx` (async boundary), `src/components/atlas-map.tsx`
+(attribution). F6b's superseded files (`src/game/data/generated-places.json`,
+`src/game/data/country-boxes.json`, `scripts/assign-place-editions.mjs`) were
+deleted.
+
+### Chunk-loading design
+
+- **No static dataset import.** The 0.85 MB F6b JSON import is gone. The only
+  generated-data file in the initial bundle is the ~7 KB `manifest.json`
+  (statically imported, inlined).
+- **Lazy per-region chunks.** `loadRegionChunk(regionId)` fetches the region's
+  chunk with a dynamic `import()` on first use and caches it in memory for
+  the session. The bundler emits one lazy asset per chunk (64 files, e.g.
+  `texas-<hash>.js` 183 KB, `globe-<hash>.js` 11.4 MB / 59,423 places).
+- **Nothing fetched before region selection.** Verified in the built
+  `dist/client` output: the initial bundle (`routes-<hash>.js`) contains zero
+  `gn-<id>` place records — only the dynamic-import specifier map (path
+  strings). `_shell.html` references no chunk.
+- **Picker counts from the manifest.** `poolSizeFor(edition, regionId)` =
+  curated starters + manifest generated count — chunks are never loaded just
+  to count. A unit test locks `poolSizeFor` to the real `placesFor` pool size
+  for state/country/globe regions.
+- **Fail-closed loading.** Unknown region ids (also a path-traversal guard —
+  only manifest-listed regions can become import paths), missing chunks, and
+  a single malformed record all reject the whole chunk load. One bad record
+  poisons its chunk; partial pools never deal.
+- **Dealing contract unchanged.** Curated-first ordering (STARTERS lead),
+  F8 `buildRegionPool` fail-closed routing, and `assertAssigned`-style record
+  narrowing are preserved; `placesFor(edition, regionId)` is now async.
+  `fullCatalog()` / `allGeneratedStarters()` were removed — they required the
+  whole 24 MB catalog in memory, which lazy loading exists to avoid.
+
+### Async boundary (game-app)
+
+Region selection is the async boundary: choosing a region shows a "Loading
+places" state while its chunk fetches. **A load failure never starts a run**
+— the player stays on the menu with an error (fail-closed), never with a
+partial/missing pool. The in-run `Play` component also awaits the chunk
+(normally an instant cache hit; a fresh fetch after a page reload) with its
+own loading and fail-closed error screens.
+
+### Build-time gate
+
+`scripts/check-generated-places.mjs` (still wired as `prebuild` /
+`prebuild:pages`) re-validates **100% of shipped chunk places** — 124,690
+places in 64 chunks, ~1.4 s — on every build:
+
+- id uniqueness across all chunks (and no collision with curated starter ids,
+  locked in unit tests too);
+- edition/regionId validity, match against chunk meta + manifest, and
+  membership in `regions.ts` STATES/COUNTRIES;
+- manifest counts equal real chunk contents;
+- **Hyderabad coordinate check** via the real F7 `validateGeneratedPlace`:
+  state places against US state boxes parsed from `regions.ts` STATES bounds
+  (+0.15° margin, same derivation as the pipeline); country/globe places
+  against the checked-in derived per-country box for the place's own `iso2`
+  (`src/game/data/geonames/country-boxes.json` — the padded boxes derived
+  from all GeoNames P rows, **not** F6b's tight boxes; antimeridian-wrapped
+  countries handled in the 0–360 frame). Chunk records carry `iso2` as the
+  gate key for exactly this re-check.
+
+Negative-tested: a tampered coordinate and a truncated chunk both fail the
+build (exit 1); the clean tree passes with 0 violations.
+
+### Attribution (CC-BY 4.0, mandatory)
+
+- **Visible credit:** the map attribution line in `src/components/atlas-map.tsx`
+  now reads "Natural Earth · © OpenStreetMap · **Place data: GeoNames (CC-BY 4.0)**"
+  (same tiny muted footer style).
+- **Per-place credit:** every generated starter carries `sourceLabel:
+  "GeoNames"` / `sourceHref: "https://www.geonames.org/"`, rendered as the
+  source link on the result card (`GENERATED_SOURCE_LABEL/HREF` updated from
+  Natural Earth).
+
+### Bundle / load impact
+
+| | F6b | GeoNames integration |
+|---|---|---|
+| Initial bundle generated-data | 0.85 MB static JSON inlined | 0 place records; ~7 KB manifest inlined |
+| Region data | all in initial bundle | 64 lazy chunk assets, fetched on region selection only |
+| Largest chunk | — | globe: 59,423 places, 11.4 MB emitted JS (~1.8 MB gzip), parsed once then session-cached |
+| Typical state chunk | — | e.g. texas: 841 places, 183 KB (27 KB gzip) |
+
+Loading the globe chunk is the worst case and happens at most once per
+session, only when the player picks Globe. E2E (built artifact, disk-served)
+starts a globe run in ~7 s including the 11 MB parse.
