@@ -686,6 +686,9 @@ function PlayLoaded({
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
+  // Cinematic tour: the result card stays hidden until the map's tour
+  // reaches its end state (`tour-done` → onTourComplete). Reset per place.
+  const [tourDone, setTourDone] = useState(false);
   // Z3/Z4 zoom-space: replay remounts the map (fresh intro + fresh
   // controller). Replaying the same region must not reuse the old map
   // instance — its controller is terminal (revealDone) and its highlight
@@ -820,6 +823,7 @@ function PlayLoaded({
   function onContinue() {
     setDrop(null);
     setAimAnnouncement(null);
+    setTourDone(false);
     onRun(continueRun(run));
   }
 
@@ -850,6 +854,7 @@ function PlayLoaded({
     setDrop(null);
     setBubble("open");
     setCardDismissed(false);
+    setTourDone(false);
     // Fresh map instance for the replayed run (see mapKey above).
     setMapKey((k) => k + 1);
     const replayDateKey = trailDate();
@@ -890,6 +895,7 @@ function PlayLoaded({
           onClearAim={onClearAim}
           marks={marks}
           variation={variation}
+          onTourComplete={() => setTourDone(true)}
         />
         <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
           <Button variant="secondary" className="pointer-events-auto" onClick={onLeave}>
@@ -950,7 +956,7 @@ function PlayLoaded({
           onViewChange={setBubble}
         />
       ) : null}
-      {run.phase !== "aim" && run.phase !== "summary" ? (
+      {run.phase !== "aim" && run.phase !== "summary" && tourDone ? (
         <ResultCard
           run={run}
           place={place}

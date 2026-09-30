@@ -230,6 +230,23 @@
   animation: meridian-pulse-ring 600ms ease-out forwards;
 }
 
+/* Cinematic tour beat 2: the spot marker's ring throbs continuously (gold)
+ * until the tour ends or is skipped. Reuses the pulse-ring keyframes. */
+.meridian-tour-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 2px solid #f2c14e;
+  pointer-events: none;
+  animation: meridian-pulse-ring 1200ms ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meridian-tour-pulse {
+    animation: none;
+  }
+}
+
 /* Drop-pin "ready" pulse: one 600ms gold glow when the button enables. */
 @keyframes meridian-ready-pulse {
   0% {
