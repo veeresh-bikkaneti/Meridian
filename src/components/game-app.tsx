@@ -1,16 +1,17 @@
 import { BRAND } from "@/game/brand";
 import { distanceKm, formatDistance } from "@/game/geo";
 import { isHit, radiusKm } from "@/game/radius";
+import { placesFor, poolSizeFor } from "@/game/generated-places";
+import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
 import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
-import { placesFor, fullCatalog } from "@/game/generated-places";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
@@ -266,19 +267,16 @@ type Menu =
   | { kind: "states" }
   | { kind: "admin1"; countryId: string; countryName: string; from: "countries" | "states" };
 
-/** Lenient pool-size check for the picker lists (the strict fail-closed gate runs at deal time). */
-function poolSize(edition: Edition, regionId: string): number {
-  let count = 0;
-  for (const place of fullCatalog()) {
-    if (place.edition === edition && place.regionId === regionId) count++;
-  }
-  return count;
-}
-
 export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  // Region-selection async boundary: the GeoNames chunk for the chosen
+  // region loads here, before any run exists. `starting` shows the loading
+  // state; `startError` is fail-closed — the run is never started when the
+  // chunk cannot be loaded, and the player stays on the menu.
+  const [starting, setStarting] = useState<{ regionName: string } | null>(null);
+  const [startError, setStartError] = useState<string | null>(null);
 
   const commit = useCallback((next: Run) => {
     writeRun(next);
@@ -305,21 +303,31 @@ export function GameApp() {
   }, [commit]);
 
   const openRun = useCallback(
-    (edition: Edition, regionId: string, regionName: string) => {
-      const dateKey = trailDate();
-      const { poolIds, prevLastId } = poolForRunStart(
-        placesFor(edition, regionId),
-        edition,
-        regionId,
-      );
-      const next = resumeRun(
-        readRun(),
-        { edition, regionId, regionName, dateKey },
-        poolIds,
-        prevLastId,
-      );
-      commit(next);
-      setMenu(null);
+    async (edition: Edition, regionId: string, regionName: string) => {
+      setStarting({ regionName });
+      setStartError(null);
+      try {
+        // The region's chunk loads here — never eagerly, never partial.
+        const places = await placesFor(edition, regionId);
+        const dateKey = trailDate();
+        const { poolIds, prevLastId } = poolForRunStart(places, edition, regionId);
+        const next = resumeRun(
+          readRun(),
+          { edition, regionId, regionName, dateKey },
+          poolIds,
+          prevLastId,
+        );
+        commit(next);
+        setMenu(null);
+      } catch (err) {
+        // Fail closed: no chunk, no run. The player stays on the menu with
+        // an explanation instead of starting with a partial/missing pool.
+        setStartError(
+          `Could not load places for ${regionName}: ${err instanceof Error ? err.message : String(err)}`,
+        );
+      } finally {
+        setStarting(null);
+      }
     },
     [commit],
   );
@@ -346,14 +354,35 @@ export function GameApp() {
     );
   }
 
+  // Chunk loading state: the region's places are being fetched. The menu is
+  // replaced (no double-taps) until the load resolves or fails closed.
+  if (starting) {
+    return (
+      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+        <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
+        <h1 className="mt-2 font-display text-4xl text-fg">{starting.regionName}</h1>
+        <p className="mt-4 max-w-md text-lg text-muted" role="status">
+          Fetching this region&rsquo;s places&hellip;
+        </p>
+      </main>
+    );
+  }
+
+  const loadNotice = startError ? (
+    <p role="alert" className="mb-4 rounded-xl border border-line bg-surface p-4 text-sm text-fg">
+      {startError} Please try again.
+    </p>
+  ) : null;
+
   if (menu?.kind === "countries") {
     // Only countries with a playable pool — never a dead end.
-    const regions = COUNTRIES.filter((country) => poolSize("country", country.id) > 0);
+    const regions = COUNTRIES.filter((country) => poolSizeFor("country", country.id) > 0);
     return (
       <RegionList
         title="Country"
         subtitle="Play a country whole — or drill into its states where available."
         regions={regions}
+        notice={loadNotice}
         onBack={() => setMenu(null)}
         onChoose={(region) => {
           const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
@@ -398,6 +427,7 @@ export function GameApp() {
         title={menu.countryName}
         subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
         regions={regions}
+        notice={loadNotice}
         headerAction={{
           label: `Play entire ${menu.countryName}`,
           onClick: () => openRun("country", menu.countryId, menu.countryName),
@@ -413,6 +443,7 @@ export function GameApp() {
       onState={() => setMenu({ kind: "states" })}
       onCountry={() => setMenu({ kind: "countries" })}
       onGlobe={() => openRun("globe", "globe", "Globe")}
+      notice={loadNotice}
     />
   );
 }
@@ -421,13 +452,16 @@ function Choose({
   onState,
   onCountry,
   onGlobe,
+  notice,
 }: {
   onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
+  notice?: ReactNode;
 }) {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+      {notice}
       <header>
         <p className="flex items-center gap-2 text-sm text-muted">
           <Compass className="size-5" aria-hidden="true" />
@@ -490,6 +524,7 @@ function RegionList({
   subtitle,
   regions,
   headerAction,
+  notice,
   onBack,
   onChoose,
 }: {
@@ -497,11 +532,13 @@ function RegionList({
   subtitle?: string;
   regions: Region[];
   headerAction?: { label: string; onClick: () => void };
+  notice?: ReactNode;
   onBack: () => void;
   onChoose: (region: Region) => void;
 }) {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 py-8">
+      {notice}
       <Button variant="ghost" className="self-start" onClick={onBack}>
         Editions
       </Button>
@@ -529,6 +566,12 @@ function RegionList({
   );
 }
 
+/**
+ * Async boundary for an in-progress run: the region's chunk loads here
+ * (normally a cache hit from region selection; a fresh fetch after a page
+ * reload). Shows a loading state while fetching and FAILS CLOSED on error —
+ * the run never plays with a partial or missing pool.
+ */
 function Play({
   run,
   onRun,
@@ -538,10 +581,69 @@ function Play({
   onRun: (run: Run) => void;
   onLeave: () => void;
 }) {
-  const places = useMemo(
-    () => placesFor(run.edition, run.regionId),
-    [run.edition, run.regionId],
-  );
+  const [places, setPlaces] = useState<Starter[] | null>(null);
+  const [poolError, setPoolError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setPlaces(null);
+    setPoolError(null);
+    placesFor(run.edition, run.regionId).then(
+      (loaded) => {
+        if (!cancelled) setPlaces(loaded);
+      },
+      (err: unknown) => {
+        if (!cancelled) {
+          setPoolError(err instanceof Error ? err.message : String(err));
+        }
+      },
+    );
+    return () => {
+      cancelled = true;
+    };
+  }, [run.edition, run.regionId]);
+
+  if (poolError) {
+    return (
+      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+        <p className="text-sm tracking-wide text-muted uppercase">Couldn&rsquo;t load places</p>
+        <h1 className="mt-2 font-display text-4xl text-fg">{run.regionName}</h1>
+        <p role="alert" className="mt-4 max-w-md text-lg text-muted">
+          {poolError} The run was not started with a partial pool — pick the region again to retry.
+        </p>
+        <div className="mt-6">
+          <Button onClick={onLeave}>Back to editions</Button>
+        </div>
+      </main>
+    );
+  }
+
+  if (!places) {
+    return (
+      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+        <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
+        <h1 className="mt-2 font-display text-4xl text-fg">{run.regionName}</h1>
+        <p className="mt-4 max-w-md text-lg text-muted" role="status">
+          Fetching this region&rsquo;s places&hellip;
+        </p>
+      </main>
+    );
+  }
+
+  return <PlayLoaded run={run} places={places} onRun={onRun} onLeave={onLeave} />;
+}
+
+function PlayLoaded({
+  run,
+  places,
+  onRun,
+  onLeave,
+}: {
+  run: Run;
+  places: Starter[];
+  onRun: (run: Run) => void;
+  onLeave: () => void;
+}) {
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
   // rebuilds the identical pool (not a reshuffled smaller one).

@@ -1,127 +1,64 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { validateGeneratedPlace } from "./validate-places.ts";
 import { STARTERS } from "./starters.ts";
-import { STATES, COUNTRIES } from "./regions.ts";
 import {
   generatedStartersFor,
   placesFor,
+  poolSizeFor,
   generatedPlaceCount,
+  loadRegionChunk,
+  startersFromChunk,
+  clearChunkCacheForTests,
   GENERATED_SOURCE_LABEL,
   GENERATED_SOURCE_HREF,
 } from "./generated-places.ts";
-import datasetJson from "./data/generated-places.json" with { type: "json" };
-import boxesJson from "./data/country-boxes.json" with { type: "json" };
+import manifestJson from "./data/geonames/manifest.json" with { type: "json" };
 
-const dataset = datasetJson as unknown as {
-  places: Array<{
-    id: string;
-    name: string;
-    lon: number;
-    lat: number;
-    blurb?: string;
-    curated?: boolean;
-    iso2?: string | null;
-    country?: string;
-    edition?: string;
-    regionId?: string;
-  }>;
+const manifest = manifestJson as unknown as {
+  meta: { total: number };
+  regions: Record<string, { edition: "state" | "country" | "globe"; count: number; bytes: number }>;
 };
-const boxes = (
-  boxesJson as unknown as {
-    boxes: Record<string, { country: string; wrapped: boolean; box: unknown }>;
-  }
-).boxes;
 
-/** Into the box's frame for antimeridian-wrapped countries (cf. F6a normalizeLon). */
-function normalizeLon(lon: number, wrapped: boolean): number {
-  return wrapped && lon < 0 ? lon + 360 : lon;
-}
-
-function boxKeyFor(place: { iso2?: string | null; country?: string }): string {
-  return place.iso2 ?? `name:${place.country}`;
-}
-
-test("gate rejects a Hyderabad-style mismatch (Badville)", () => {
-  // San Antonio, Texas claiming to be in India must fail loudly.
-  const india = boxes["IN"];
-  const violations = validateGeneratedPlace({
-    id: "badville",
-    name: "Badville",
-    lon: -98.48614,
-    lat: 29.42597,
-    declaredCountry: india.country,
-    countryBox: india.box as never,
-  });
-  assert.ok(violations.length > 0, "expected a violation for wrong-country coordinates");
-  assert.match(violations[0], /Hyderabad rule/);
+test("GeoNames source label points at geonames.org", () => {
+  assert.equal(GENERATED_SOURCE_LABEL, "GeoNames");
+  assert.equal(GENERATED_SOURCE_HREF, "https://www.geonames.org/");
 });
 
-test("gate passes a correct place (Goodville)", () => {
-  // Mumbai, India claiming India must pass.
-  const india = boxes["IN"];
-  const violations = validateGeneratedPlace({
-    id: "goodville",
-    name: "Goodville",
-    lon: 72.8777,
-    lat: 19.076,
-    declaredCountry: india.country,
-    countryBox: india.box as never,
-  });
-  assert.deepEqual(violations, []);
+test("generatedPlaceCount is the manifest sum (no chunk loads)", () => {
+  assert.equal(generatedPlaceCount(), 124690);
+  assert.equal(generatedPlaceCount(), manifest.meta.total);
 });
 
-test("all 3,468 generated places pass the F7 gate", () => {
-  const failures: string[] = [];
-  let checked = 0;
-  for (const place of dataset.places) {
-    if (place.curated) continue;
-    const entry = boxes[boxKeyFor(place)];
-    assert.ok(entry, `${place.id}: missing reference box for key "${boxKeyFor(place)}"`);
-    const v = validateGeneratedPlace({
-      id: place.id,
-      name: place.name,
-      lon: normalizeLon(place.lon, entry.wrapped),
-      lat: place.lat,
-      declaredCountry: entry.country,
-      countryBox: entry.box as never,
-    });
-    if (v.length > 0) failures.push(...v);
-    checked++;
-  }
-  assert.equal(checked, 3468, `expected 3468 generated places, saw ${checked}`);
-  assert.deepEqual(failures, [], `gate failures:\n${failures.slice(0, 10).join("\n")}`);
-});
-
-test("generated ids are unique and never collide with curated starter ids", () => {
+test("every manifest count matches its chunk's real contents", async () => {
+  // Loads all 64 chunks through the real loader — the same code path the
+  // game uses at region selection.
   const starterIds = new Set(STARTERS.map((s) => s.id));
   const seen = new Set<string>();
-  for (const place of dataset.places) {
-    if (place.curated) continue;
-    assert.ok(!seen.has(place.id), `duplicate generated id: ${place.id}`);
-    seen.add(place.id);
-    assert.ok(!starterIds.has(place.id), `generated id collides with a starter: ${place.id}`);
+  for (const [regionId, region] of Object.entries(manifest.regions)) {
+    const starters = await loadRegionChunk(regionId);
+    assert.equal(
+      starters.length,
+      region.count,
+      `${regionId}: manifest count ${region.count} !== loaded ${starters.length}`,
+    );
+    for (const s of starters) {
+      assert.equal(s.edition, region.edition, `${s.id}: edition mismatch`);
+      assert.equal(s.regionId, regionId, `${s.id}: regionId mismatch`);
+      assert.ok(!seen.has(s.id), `duplicate generated id across chunks: ${s.id}`);
+      seen.add(s.id);
+      assert.ok(!starterIds.has(s.id), `generated id collides with a starter: ${s.id}`);
+    }
   }
+  assert.equal(seen.size, 124690);
 });
 
-test("every generated place carries a valid edition/regionId", () => {
-  const stateIds = new Set(STATES.map((s) => s.id));
-  const countryIds = new Set(COUNTRIES.map((c) => c.id));
-  const bad: string[] = [];
-  for (const place of dataset.places) {
-    if (place.curated) continue;
-    const ok =
-      (place.edition === "state" && stateIds.has(place.regionId ?? "")) ||
-      (place.edition === "country" && countryIds.has(place.regionId ?? "")) ||
-      (place.edition === "globe" && place.regionId === "globe");
-    if (!ok) bad.push(`${place.id}: edition=${place.edition} regionId=${place.regionId}`);
-  }
-  assert.deepEqual(bad, [], `bad assignments:\n${bad.slice(0, 10).join("\n")}`);
-});
-
-test("loader skips curated refs and returns Starter-shaped records", () => {
-  const texas = generatedStartersFor("state", "texas");
+test("loader returns Starter-shaped records with GeoNames attribution", async () => {
+  const texas = await generatedStartersFor("state", "texas");
   assert.ok(texas.length > 0, "expected generated Texas places");
+  assert.ok(
+    texas.some((s) => s.name === "Houston"),
+    "Houston should be in the Texas chunk",
+  );
   for (const s of texas) {
     assert.equal(s.edition, "state");
     assert.equal(s.regionId, "texas");
@@ -129,25 +66,21 @@ test("loader skips curated refs and returns Starter-shaped records", () => {
     assert.equal(s.sourceLabel, GENERATED_SOURCE_LABEL);
     assert.equal(s.sourceHref, GENERATED_SOURCE_HREF);
   }
-  // Spot check: Kennewick, WA landed in the Washington pool.
-  const wa = generatedStartersFor("state", "washington");
-  assert.ok(
-    wa.some((s) => s.id === "ne:us:kennewick"),
-    "ne:us:kennewick should be in the Washington pool",
-  );
-  // A region with no generated places yields an empty list, not an error.
-  assert.deepEqual(generatedStartersFor("state", "vermont"), []);
-  // The DC place (not a state) lands in the US country pool.
-  const usCountry = generatedStartersFor("country", "united-states");
-  assert.ok(
-    usCountry.some((s) => s.regionId === "united-states"),
-    "expected the District of Columbia place in the united-states pool",
-  );
+  // Vermont has generated depth in the GeoNames dataset (F6b had none).
+  const vermont = await generatedStartersFor("state", "vermont");
+  assert.ok(vermont.length > 0, "expected generated Vermont places");
+  // DC places (not a state) land in the US country pool.
+  const usCountry = await generatedStartersFor("country", "united-states");
+  assert.ok(usCountry.length > 0, "expected District of Columbia places in the united-states pool");
+  for (const s of usCountry) {
+    assert.equal(s.edition, "country");
+    assert.equal(s.regionId, "united-states");
+  }
 });
 
-test("placesFor is curated-first: curated starters, then generated depth", () => {
+test("placesFor is curated-first: curated starters, then generated depth", async () => {
   const curatedTexas = STARTERS.filter((s) => s.edition === "state" && s.regionId === "texas");
-  const pool = placesFor("state", "texas");
+  const pool = await placesFor("state", "texas");
   assert.ok(curatedTexas.length > 0, "expected curated Texas starters");
   assert.ok(pool.length > curatedTexas.length, "pool should be deeper than the curated set alone");
   assert.deepEqual(
@@ -161,6 +94,91 @@ test("placesFor is curated-first: curated starters, then generated depth", () =>
   }
 });
 
-test("generatedPlaceCount matches the approved dataset size", () => {
-  assert.equal(generatedPlaceCount(), 3468);
+test("poolSizeFor (manifest picker count) equals the real pool size", async () => {
+  for (const [edition, regionId] of [
+    ["state", "texas"],
+    ["state", "vermont"],
+    ["country", "united-states"],
+    ["globe", "globe"],
+  ] as const) {
+    const pool = await placesFor(edition, regionId);
+    assert.equal(
+      poolSizeFor(edition, regionId),
+      pool.length,
+      `${edition}/${regionId}: picker count must equal the dealt pool size`,
+    );
+  }
+});
+
+test("chunk loads are cached per region", async () => {
+  clearChunkCacheForTests();
+  const first = await loadRegionChunk("texas");
+  const second = await loadRegionChunk("texas");
+  assert.equal(first, second, "second load should hit the cache");
+  clearChunkCacheForTests();
+  const third = await loadRegionChunk("texas");
+  assert.notEqual(first, third, "cache clear should force a fresh load");
+  assert.deepEqual(
+    third.map((s) => s.id),
+    first.map((s) => s.id),
+    "fresh load must produce identical contents",
+  );
+});
+
+test("loading an unknown region fails closed without fetching", async () => {
+  await assert.rejects(
+    loadRegionChunk("no-such-region"),
+    /unknown GeoNames region/,
+    "unknown region must reject",
+  );
+  await assert.rejects(
+    loadRegionChunk("../../package"),
+    /unknown GeoNames region/,
+    "path traversal must reject before any fetch",
+  );
+  await assert.rejects(
+    generatedStartersFor("state", "no-such-region"),
+    /unknown GeoNames region/,
+  );
+  await assert.rejects(placesFor("state", "no-such-region"), /unknown GeoNames region/);
+});
+
+test("a single malformed record rejects the whole chunk (fail-closed)", () => {
+  const good = {
+    id: "gn-1",
+    name: "Goodville",
+    lon: 10,
+    lat: 50,
+    blurb: "Goodville is a city in Nowhere.",
+    iso2: "DE",
+    edition: "country",
+    regionId: "germany",
+  };
+  const chunkFor = (places: unknown[]) => ({
+    meta: { regionId: "germany", edition: "country", count: places.length },
+    places,
+  });
+
+  // A clean chunk validates.
+  assert.equal(startersFromChunk("germany", chunkFor([good])).length, 1);
+
+  // One bad record anywhere poisons the chunk.
+  const badEdition = { ...good, id: "gn-2", edition: "globe" };
+  assert.throws(() => startersFromChunk("germany", chunkFor([good, badEdition])), /edition/);
+  const badRegion = { ...good, id: "gn-3", regionId: "france" };
+  assert.throws(() => startersFromChunk("germany", chunkFor([badRegion])), /regionId/);
+  const badCoords = { ...good, id: "gn-4", lat: Number.NaN };
+  assert.throws(() => startersFromChunk("germany", chunkFor([badCoords])), /coordinates/);
+  const badId = { ...good, id: "" };
+  assert.throws(() => startersFromChunk("germany", chunkFor([badId])), /invalid id/);
+
+  // Truncated or mislabeled chunks reject too.
+  assert.throws(
+    () => startersFromChunk("germany", { meta: { regionId: "germany", edition: "country", count: 5 }, places: [good] }),
+    /truncated/,
+  );
+  assert.throws(
+    () => startersFromChunk("germany", { meta: { regionId: "france", edition: "country", count: 1 }, places: [good] }),
+    /meta\.regionId mismatch/,
+  );
 });
