@@ -79,13 +79,15 @@ function narrowToRegion(
   const start = c.requestNarrow(region, settleZoom);
   if (c.state === "REGION") return; // reduced motion: synchronous narrow-in.
   assert.equal(start[1]?.type, "spin");
-  c.onSpinTimer();
-  if (settleZoom >= Z_FLAT_IN) {
-    const crossed = c.onMove(snap(settleZoom, "globe"));
-    assert.deepEqual(crossed, [
-      { type: "set-projection", projection: "mercator" },
-    ]);
-  }
+  // The narrow beat swaps to mercator synchronously at beat start (no
+  // mid-flight crossing): the swap intent is part of onSpinTimer's output.
+  const chained = c.onSpinTimer();
+  assert.ok(
+    chained.some(
+      (i) => i.type === "set-projection" && i.projection === "mercator",
+    ),
+    "narrow beat should swap to mercator at beat start",
+  );
   const done = c.onMoveEnd(snap(settleZoom, "mercator", region.center));
   assert.ok(
     done.some((i) => i.type === "announce"),
@@ -124,7 +126,7 @@ test("requestNarrow is single-shot; second call is a no-op", () => {
   assert.deepEqual(c.requestNarrow(NEBRASKA, 4.5), []);
 });
 
-test("spin timer chains into the narrow beat (crossing-armed path)", () => {
+test("spin timer chains into the narrow beat (synchronous swap at beat start)", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5);
   assert.deepEqual(c.onSpinTimer(), [
@@ -132,6 +134,9 @@ test("spin timer chains into the narrow beat (crossing-armed path)", () => {
     // Tile-honesty re-arm opens the narrow phase (full watchdog budget from
     // narrow start, not from the intro spin).
     { type: "rearm-tiles" },
+    // Synchronous swap for all cases: the mid-flight crossing was racy, so
+    // the beat swaps at start, masked by the flight's initial motion.
+    { type: "set-projection", projection: "mercator" },
     {
       type: "fly-to",
       center: NEBRASKA.center,
@@ -142,28 +147,27 @@ test("spin timer chains into the narrow beat (crossing-armed path)", () => {
     },
   ]);
   assert.equal(c.beatKind, "narrow");
-  // No synchronous swap on the standard path — the crossing is armed instead.
-  assert.equal(c.projection, "globe");
+  assert.equal(c.projection, "mercator");
 });
 
-test("narrow crossing swap fires one-shot at Z_FLAT_IN via onMove", () => {
+test("narrow beat: no mid-flight crossing swap — onMove never swaps", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5);
   c.onSpinTimer();
+  // Mid-flight moves at any zoom are plain tracking; the swap already
+  // happened at beat start.
   assert.deepEqual(c.onMove(snap(2.5, "globe")), []);
-  assert.deepEqual(c.onMove(snap(3.4, "globe")), [
-    { type: "set-projection", projection: "mercator" },
-  ]);
+  assert.deepEqual(c.onMove(snap(3.4, "globe")), []);
   assert.deepEqual(c.onMove(snap(4.0, "mercator")), []);
+  assert.equal(c.projection, "mercator");
 });
 
-test("narrow completion locks, highlights, enables, announces (crossing path)", () => {
+test("narrow completion locks, highlights, enables, announces", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5);
   c.onSpinTimer();
   c.onMove(snap(4.5, "mercator"));
   assert.deepEqual(c.onMoveEnd(snap(4.5, "mercator", NEBRASKA.center)), [
-    { type: "set-max-bounds", bounds: NEBRASKA.bounds },
     { type: "paint-highlight", feature: NEBRASKA },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
@@ -174,21 +178,18 @@ test("narrow completion locks, highlights, enables, announces (crossing path)", 
   assert.equal(c.beatActive, false);
 });
 
-test("narrow completion belt-and-braces: swap+lock when crossing never fired", () => {
+test("narrow completion belt-and-braces: swap when crossing never fired", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5);
   c.onSpinTimer();
   // No onMove ≥ 3.2 was ever forwarded: projection is still globe.
   const done = c.onMoveEnd(snap(4.5, "globe", NEBRASKA.center));
   assert.deepEqual(done[0], { type: "set-projection", projection: "mercator" });
-  assert.deepEqual(done[1], {
-    type: "set-max-bounds",
-    bounds: NEBRASKA.bounds,
-  });
+  // Note: set-max-bounds is intentionally NOT emitted — it blocks zoomOut().
   assert.equal(c.state, "REGION");
 });
 
-test("large-country path: synchronous swap at narrow beat start", () => {
+test("sub-2.2 settle: synchronous swap at narrow beat start, no duplicate at completion", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 1.9);
   assert.deepEqual(c.onSpinTimer(), [
@@ -258,7 +259,9 @@ test("T_IN starts the relock beat; trailing moveend does not complete it", () =>
   c.onZoomEnd(snap(1.5, "globe"));
   c.onMoveEnd(snap(1.5, "globe"));
   assert.equal(c.state, "SPACE");
-  // Pinch in past 3.2 with the center outside the region (Paris).
+  // Pinch in past 3.2 with the center outside the region (Paris), and below
+  // the region framing: the relock beat eases home AND up to the framing, so
+  // the lock lands snap-free.
   c.onMove(snap(1.5, "globe", PARIS));
   assert.deepEqual(c.onZoomEnd(snap(3.6, "globe", PARIS)), [
     { type: "gestures", enabled: false },
@@ -266,6 +269,7 @@ test("T_IN starts the relock beat; trailing moveend does not complete it", () =>
     {
       type: "ease-to",
       center: NEBRASKA.center,
+      zoom: 4.5,
       durationMs: 600,
       easing: "easeInOutCubic",
     },
@@ -276,7 +280,6 @@ test("T_IN starts the relock beat; trailing moveend does not complete it", () =>
   assert.equal(c.beatActive, true);
   // The ease's own moveend: completion — lock, swap, re-enable, announce.
   assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", NEBRASKA.center)), [
-    { type: "set-max-bounds", bounds: NEBRASKA.bounds },
     { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
@@ -285,17 +288,52 @@ test("T_IN starts the relock beat; trailing moveend does not complete it", () =>
   assert.equal(c.state, "REGION");
 });
 
-test("T_IN is zero-length when the center is already in-bounds", () => {
+test("T_IN eases up to the region framing when below it (snap-safe relock)", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
   c.onMove(snap(1.5, "globe"));
   c.onZoomEnd(snap(1.5, "globe"));
   c.onMoveEnd(snap(1.5, "globe"));
+  // Pinch in past 3.2 with the center already in-bounds but the zoom below
+  // the region framing: locking maxBounds here would snap via
+  // constrainInternal(), so the relock beat eases up to the framing first.
   c.onMove(snap(1.5, "globe", NEBRASKA.center));
   assert.deepEqual(c.onZoomEnd(snap(3.6, "globe", NEBRASKA.center)), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
-    { type: "set-max-bounds", bounds: NEBRASKA.bounds },
+    {
+      type: "ease-to",
+      center: NEBRASKA.center,
+      zoom: 4.5,
+      durationMs: 600,
+      easing: "easeInOutCubic",
+    },
+  ]);
+  assert.equal(c.beatKind, "relock");
+  // The gesture's trailing moveend: consumed, beat stays active.
+  assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", NEBRASKA.center)), []);
+  assert.equal(c.beatActive, true);
+  // The ease's own moveend: completion — lock lands snap-free at the framing.
+  assert.deepEqual(c.onMoveEnd(snap(4.5, "globe", NEBRASKA.center)), [
+    { type: "set-projection", projection: "mercator" },
+    { type: "gestures", enabled: true },
+    { type: "tap-handlers", enabled: true },
+    { type: "announce", message: "Nebraska view" },
+  ]);
+  assert.equal(c.state, "REGION");
+});
+
+test("T_IN is zero-length when the camera is already at/above the framing", () => {
+  const c = flatController();
+  narrowToRegion(c, 4.5);
+  c.onMove(snap(1.5, "globe"));
+  c.onZoomEnd(snap(1.5, "globe"));
+  c.onMoveEnd(snap(1.5, "globe"));
+  // One fast gesture from space to zoom 5 (above the 4.5 framing), center home.
+  c.onMove(snap(1.5, "globe", NEBRASKA.center));
+  assert.deepEqual(c.onZoomEnd(snap(5, "globe", NEBRASKA.center)), [
+    { type: "gestures", enabled: false },
+    { type: "tap-handlers", enabled: false },
     { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
@@ -304,7 +342,53 @@ test("T_IN is zero-length when the center is already in-bounds", () => {
   assert.equal(c.beatActive, false);
   assert.equal(c.state, "REGION");
   // Trailing gesture moveend: plain no-op.
-  assert.deepEqual(c.onMoveEnd(snap(3.6, "mercator", NEBRASKA.center)), []);
+  assert.deepEqual(c.onMoveEnd(snap(5, "mercator", NEBRASKA.center)), []);
+});
+
+test("onZoomStart releases the region maxBounds so T_OUT is reachable", () => {
+  const c = flatController();
+  narrowToRegion(c, 7);
+  assert.equal(c.state, "REGION");
+  // A zoom gesture begins: the lock releases before any zoom delta, so
+  // MapLibre's defaultConstrain cannot pin the zoom at the bounds' fit floor.
+  assert.deepEqual(c.onZoomStart(), [
+    { type: "set-max-bounds", bounds: null },
+  ]);
+  // The gesture zooms out past Z_GLOBE_OUT: T_OUT fires as designed, and its
+  // own null-bounds emit is idempotent after the zoomstart release.
+  c.onMove(snap(7, "mercator", NEBRASKA.center));
+  assert.deepEqual(c.onZoomEnd(snap(1.5, "mercator", NEBRASKA.center)), [
+    { type: "set-projection", projection: "globe" },
+    { type: "set-max-bounds", bounds: null },
+    { type: "announce", message: "Space view" },
+  ]);
+  assert.equal(c.state, "SPACE");
+});
+
+test("onZoomStart is inert outside the user-zoom REGION case", () => {
+  // During a beat (a beat's own flyTo/easeTo also fires zoomstart).
+  const c = flatController();
+  c.requestNarrow(NEBRASKA, 7);
+  assert.deepEqual(c.onZoomStart(), []);
+  // Globe edition never sets region bounds.
+  const g = new ZoomSpaceController({
+    edition: "globe",
+    prefersReducedMotion: false,
+  });
+  assert.deepEqual(g.onZoomStart(), []);
+  // SPACE state: already released, nothing to do.
+  const s = flatController();
+  narrowToRegion(s, 7);
+  s.onZoomStart();
+  s.onMove(snap(7, "mercator", NEBRASKA.center));
+  s.onZoomEnd(snap(1.5, "mercator", NEBRASKA.center));
+  assert.equal(s.state, "SPACE");
+  assert.deepEqual(s.onZoomStart(), []);
+  // Post-reveal: thresholds are terminally inert, bounds untouched.
+  const r = flatController();
+  narrowToRegion(r, 7);
+  r.requestReveal(REVEAL_REQUEST);
+  assert.deepEqual(r.onZoomStart(), []);
 });
 
 test("a beat's own zoomend is ignored (fires before its moveend)", () => {
@@ -328,9 +412,9 @@ test("requestReveal during the intro beats is queued, not dropped", () => {
   assert.deepEqual(c.requestReveal(REVEAL_REQUEST), []);
   // The narrow beat completes; the queued reveal flushes as the standard
   // settle beat (paint-variation + ease-to present, beat armed).
+  // Note: the projection swap is now synchronous at narrow start (not via
+  // the racy mid-flight crossing), so onMove does not emit set-projection.
   c.onSpinTimer();
-  const crossed = c.onMove(snap(4.5, "globe"));
-  assert.deepEqual(crossed, [{ type: "set-projection", projection: "mercator" }]);
   const done = c.onMoveEnd(snap(4.5, "mercator", NEBRASKA.center));
   assert.ok(
     done.some((i) => i.type === "paint-variation"),
@@ -361,7 +445,6 @@ test("requestReveal during relock beat is queued, not dropped", () => {
   // The ease's own moveend completes the relock, then the queued reveal
   // flushes: lock + swap + re-enable, then the standard settle beat.
   assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", NEBRASKA.center)), [
-    { type: "set-max-bounds", bounds: NEBRASKA.bounds },
     { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
@@ -439,12 +522,26 @@ test("resetForNextPlace: T_OUT/T_IN evaluate again for the next place", () => {
   c.onMoveEnd(snap(1.5, "globe"));
   assert.equal(c.state, "SPACE");
 
-  // T_IN fires again: zero-length relock, center already in-bounds.
+  // T_IN fires again: the camera is below the framing, so the relock beat
+  // eases up to it instead of snapping the lock on.
   c.onMove(snap(1.5, "globe", NEBRASKA.center));
   assert.deepEqual(c.onZoomEnd(snap(3.6, "globe", NEBRASKA.center)), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
-    { type: "set-max-bounds", bounds: NEBRASKA.bounds },
+    {
+      type: "ease-to",
+      center: NEBRASKA.center,
+      zoom: 4.5,
+      durationMs: 600,
+      easing: "easeInOutCubic",
+    },
+  ]);
+  assert.equal(c.beatKind, "relock");
+  // The gesture's trailing moveend: consumed, beat stays active.
+  assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", NEBRASKA.center)), []);
+  assert.equal(c.beatActive, true);
+  // The ease's own moveend: completion — lock lands snap-free at the framing.
+  assert.deepEqual(c.onMoveEnd(snap(4.5, "globe", NEBRASKA.center)), [
     { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
@@ -620,7 +717,6 @@ test("reduced motion: no spin, synchronous jump + immediate completion", () => {
     { type: "rearm-tiles" },
     { type: "set-projection", projection: "mercator" },
     { type: "jump-to", center: NEBRASKA.center, zoom: 4.5 },
-    { type: "set-max-bounds", bounds: NEBRASKA.bounds },
     { type: "paint-highlight", feature: NEBRASKA },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },

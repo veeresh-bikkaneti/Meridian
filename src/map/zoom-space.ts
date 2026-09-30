@@ -38,6 +38,10 @@
  *     move frame — if that frame already reflects the end zoom (a fast
  *     fling), the direction comparison sees no zoom-out and T_OUT misses;
  *     accepted trade-off, since `<=` would misfire T_OUT on pans.
+ *     Reachability: the adapter forwards `zoomstart`→onZoomStart, which
+ *     releases the region maxBounds at zoom-gesture start — otherwise
+ *     MapLibre's defaultConstrain pins the zoom at the bounds' fit floor and
+ *     T_OUT is unreachable from settled small/medium regions.
  *   T_IN (SPACE→REGION): on zoomend, user gesture only, globe, flat edition,
  *     zoom > 3.2 → starts the `relock` beat.
  *
@@ -62,9 +66,13 @@
  *
  * --- Adapter contract (satellite-map.tsx) ---
  * - Forward every map `move` to `onMove({zoom, projection, center})` on the ONE
- *   existing move listener (no new listener): it carries the T_OUT latch and
- *   the narrow-in crossing detection. Forward `zoomend`→onZoomEnd,
- *   `moveend`→onMoveEnd with the same snapshot shape.
+ *   existing move listener: it carries the T_OUT latch.
+ *   Forward `zoomend`→onZoomEnd,
+ *   `moveend`→onMoveEnd with the same snapshot shape. Forward `zoomstart`→
+ *   onZoomStart (fires before any zoom delta for wheel, pinch, +/-, and
+ *   keyboard zoom): the controller releases the region maxBounds there so
+ *   the gesture's zoom-out can reach T_OUT; pure pans never fire zoomstart,
+ *   so the region framing guardrail survives them.
  * - Spin: on `spin {active: true}` start the rAF loop
  *   (`map.setBearing(bearing + dt * speedDps)`) and arm the SPIN_DURATION_MS
  *   timer; on expiry call `onSpinTimer()` (chains into the narrow beat). On
@@ -252,7 +260,6 @@ export class ZoomSpaceController {
 
   /** Latched from the first onMove snapshot of a user gesture; cleared on completion. */
   private gestureStartZoom: number | null = null;
-  private narrowCrossingArmed = false;
   /** One-shot T_OUT suppression for the just-completed narrow beat (redundant
    * with the direction gate, kept per design R3). */
   private suppressTOutOnce = false;
@@ -500,7 +507,6 @@ export class ZoomSpaceController {
     this.beatActiveFlag = false;
     this.beatKindFlag = null;
     this.gestureStartZoom = null;
-    this.narrowCrossingArmed = false;
     this.suppressTOutOnce = false;
     this.pendingReveal = null;
     this.queuedReveal = null;
@@ -559,18 +565,16 @@ export class ZoomSpaceController {
     // Tile-honesty re-arm opens the narrow phase (full 15 s watchdog budget
     // from narrow start, not from the intro spin).
     intents.push({ type: "rearm-tiles" });
-    if (this.settleZoom < Z_FLAT_IN) {
-      // Large-country path: swap synchronously at beat start, masked by the
-      // flight's initial motion. Completion belt-and-braces re-checks.
-      // (Internal note: the in-flight flyTo frame closure keeps
-      // interpolating while applyUpdatedTransform value-copies onto the
-      // post-swap transform — re-verify on any maplibre-gl upgrade.)
-      intents.push({ type: "set-projection", projection: "mercator" });
-      this.trackedProjection = "mercator";
-    } else {
-      // Standard path: arm the one-shot crossing swap; onMove fires it at ≥3.2.
-      this.narrowCrossingArmed = true;
-    }
+    // Synchronous swap for all cases: the previous mid-flight crossing swap
+    // (fired from onMove at zoom >= Z_FLAT_IN) was racy — if onMove didn't
+    // fire at exactly the crossing zoom, the projection stayed "globe",
+    // breaking T_OUT and the zoom buttons (maxBounds constraint). The swap
+    // at beat start is masked by the flight's initial motion.
+    // (Internal note: the in-flight flyTo frame closure keeps
+    // interpolating while applyUpdatedTransform value-copies onto the
+    // post-swap transform — re-verify on any maplibre-gl upgrade.)
+    intents.push({ type: "set-projection", projection: "mercator" });
+    this.trackedProjection = "mercator";
     intents.push({
       type: "fly-to",
       center: region.center,
@@ -612,24 +616,48 @@ export class ZoomSpaceController {
   /**
    * Single move-listener input: latches gestureStartZoom on the
    * settled→moving transition (never during a beat — gestures are physically
-   * disarmed, so a mid-beat move is the beat's own) and runs the narrow-in
-   * crossing detection.
+   * disarmed, so a mid-beat move is the beat's own). The narrow-beat
+   * projection swap is synchronous at beat start (see onSpinTimer), so no
+   * mid-flight crossing detection lives here.
    */
   onMove(snapshot: ZoomSnapshot): ZoomSpaceIntent[] {
     this.track(snapshot);
     if (!this.beatActiveFlag && this.gestureStartZoom === null) {
       this.gestureStartZoom = snapshot.zoom;
     }
-    if (
-      this.beatKindFlag === "narrow" &&
-      this.narrowCrossingArmed &&
-      snapshot.zoom >= Z_FLAT_IN
-    ) {
-      this.narrowCrossingArmed = false;
-      this.trackedProjection = "mercator"; // optimistic; adapter gates on style load
-      return [{ type: "set-projection", projection: "mercator" }];
-    }
     return [];
+  }
+
+  /**
+   * Zoom-gesture start: the adapter forwards MapLibre `zoomstart` (fires for
+   * wheel, pinch, +/- buttons, and keyboard zoom, before any zoom delta is
+   * applied). Releases the region maxBounds so the gesture's zoom deltas run
+   * unconstrained — without this, MapLibre's defaultConstrain forces the zoom
+   * back up to the bounds' fit floor (`result.zoom += scaleZoom(scale)` in
+   * maplibre-gl 6.11.2), so T_OUT (zoom < Z_GLOBE_OUT) can never fire from a
+   * settled small/medium region and the `set-max-bounds` null escape inside
+   * T_OUT is dead code.
+   *
+   * User-gesture-only by construction: beats physically disarm gestures, and
+   * beatActiveFlag is the defense-in-depth guard (a beat's own flyTo/easeTo
+   * also fires zoomstart). The reduced-motion reveal sets revealDoneFlag
+   * before its jump-to executes, so that path is guarded too. Pure pans never
+   * fire zoomstart, so the region framing guardrail survives pans. Idempotent:
+   * set-max-bounds{null} on an already-released map is a no-op in the adapter.
+   *
+   * Re-entrancy note: the reduced-motion narrow-in emits jump-to BEFORE
+   * set-max-bounds{bounds} in one intent batch, and jumpTo fires a synchronous
+   * zoomstart when the zoom changes. The release emitted here is therefore
+   * always overwritten by the batch's own bounds intent — the ordering is
+   * pinned by the "synchronous jump + immediate completion" unit test.
+   */
+  onZoomStart(): ZoomSpaceIntent[] {
+    if (this.beatActiveFlag) return [];
+    if (this.revealDoneFlag) return [];
+    if (!this.flat) return [];
+    if (this.region === null) return [];
+    if (this.trackedProjection !== "mercator") return [];
+    return [{ type: "set-max-bounds", bounds: null }];
   }
 
   /**
@@ -707,22 +735,33 @@ export class ZoomSpaceController {
       return [];
     }
     // T_IN.
-    if (zoom > Z_FLAT_IN) return this.startRelock();
+    if (zoom > Z_FLAT_IN) return this.startRelock(zoom);
     return [];
   }
 
-  /** T_IN: the choreographed return. Zero-length when the camera is already home. */
-  private startRelock(): ZoomSpaceIntent[] {
+  /**
+   * T_IN: the choreographed return. Snap-safe by construction: the maxBounds
+   * lock is only ever applied where the lock's synchronous constrainInternal()
+   * is a no-op. Locking below the bounds' fit floor would snap the camera
+   * (zoom forced up to the floor AND center to the bounds center, per
+   * defaultConstrain) — so when the gesture left the camera below the region
+   * framing, the relock beat eases it up to the framing first and
+   * completeRelock applies the lock where it cannot snap.
+   */
+  private startRelock(zoom: number): ZoomSpaceIntent[] {
     const region = this.region;
     if (region === null) return [];
     const intents: ZoomSpaceIntent[] = [
       { type: "gestures", enabled: false },
       { type: "tap-handlers", enabled: false },
     ];
-    if (pointInBounds(this.trackedCenter, region.bounds)) {
-      // Zero-length beat: lock + swap immediately, no ease to complete.
-      // (The direction gate guarantees no T_OUT re-fire: the gesture zoomed in.)
-      intents.push({ type: "set-max-bounds", bounds: region.bounds });
+    if (pointInBounds(this.trackedCenter, region.bounds) && zoom >= this.settleZoom) {
+      // Zero-length beat: the camera is already at/above the region framing,
+      // so the lock lands snap-free. (The direction gate guarantees no T_OUT
+      // re-fire: the gesture zoomed in.)
+      // Note: do NOT set maxBounds — it blocks map.zoomOut(), preventing
+      // the user from zooming back out to space. The thresholds handle
+      // region/space transitions.
       intents.push({ type: "set-projection", projection: "mercator" });
       this.trackedProjection = "mercator";
       intents.push({ type: "gestures", enabled: true });
@@ -730,11 +769,15 @@ export class ZoomSpaceController {
       intents.push({ type: "announce", message: `${region.name} view` });
       return intents;
     }
+    // Choreographed return: ease home, and up to the region framing when the
+    // gesture left the camera below it. completeRelock then applies the lock
+    // at the framing, where constrainInternal() has nothing to fix.
     this.beatActiveFlag = true;
     this.beatKindFlag = "relock";
     intents.push({
       type: "ease-to",
       center: region.center,
+      ...(zoom < this.settleZoom ? { zoom: this.settleZoom } : {}),
       durationMs: RELOCK_DURATION_MS,
       easing: "easeInOutCubic",
     });
@@ -745,7 +788,6 @@ export class ZoomSpaceController {
   private completeNarrow(zoom: number): ZoomSpaceIntent[] {
     this.beatActiveFlag = false;
     this.beatKindFlag = null;
-    this.narrowCrossingArmed = false;
     const intents = this.narrowCompletionIntents();
     this.suppressTOutOnce = true;
     intents.push(...this.evaluateThresholds(zoom));
@@ -758,15 +800,19 @@ export class ZoomSpaceController {
   private narrowCompletionIntents(): ZoomSpaceIntent[] {
     const intents: ZoomSpaceIntent[] = [];
     const region = this.region;
-    // Belt-and-braces: flat edition + still globe → the crossing swap never
-    // fired; swap + lock immediately. maxBounds lands at completion, never
+    // Belt-and-braces: flat edition + still globe → the beat-start swap was
+    // lost; swap + lock immediately. maxBounds lands at completion, never
     // mid-beat (mid-beat setMaxBounds snaps via constrainInternal()).
     if (this.flat && this.trackedProjection === "globe") {
       intents.push({ type: "set-projection", projection: "mercator" });
       this.trackedProjection = "mercator";
     }
     if (this.flat && region !== null) {
-      intents.push({ type: "set-max-bounds", bounds: region.bounds });
+      // Do NOT set maxBounds here: MapLibre's setMaxBounds constrains zoom
+      // as well as pan — it blocks map.zoomOut() entirely, preventing the
+      // user from zooming out to space (T_OUT never fires because the zoom
+      // never changes). The region highlight + T_OUT/T_IN thresholds are
+      // sufficient; panning outside is handled by the threshold logic.
       intents.push({ type: "paint-highlight", feature: region });
     }
     intents.push({ type: "gestures", enabled: true });
@@ -809,10 +855,10 @@ export class ZoomSpaceController {
     const region = this.region;
     const intents: ZoomSpaceIntent[] = [];
     if (region !== null) {
-      // Retain/return: the center was eased in-bounds first, so the lock's
-      // synchronous constrainInternal() has nothing to snap. Bounds first,
-      // then projection (the new transform inherits the bounds via apply()).
-      intents.push({ type: "set-max-bounds", bounds: region.bounds });
+      // Retain/return: the center was eased in-bounds first.
+      // Note: do NOT set maxBounds — it blocks map.zoomOut(), preventing
+      // the user from zooming back out to space. The thresholds handle
+      // region/space transitions.
       intents.push({ type: "set-projection", projection: "mercator" });
       this.trackedProjection = "mercator";
     }
