@@ -163,7 +163,7 @@ function loadAdmin1Names() {
  * (same convention as F6b's country-boxes.json); candidates are normalized
  * into that frame before the containment check.
  *
- * Why not F6b's checked-in country-boxes.json? Those boxes were derived from
+ * Why not the old F6b checked-in country-boxes.json? Those boxes were derived from
  * the NE 10m populated-places dataset (a few thousand sparse points) and are
  * systematically too tight at geographic extremes: a trial run rejected 74
  * genuinely-correct places — Easter Island (CL), Bornholm (DK), Okinawa's
@@ -172,7 +172,8 @@ function loadAdmin1Names() {
  * Marquesas (PF), Batanes (PH), Flores/Azores (PT), Rodrigues (MU),
  * Annobón (GQ), and more. GeoNames' own 5.2M places are two orders of
  * magnitude denser, so the derived boxes cover the real extremes.
- * country-boxes.json itself is untouched (it still gates F6b's dataset).
+ * (F6b's country-boxes.json was removed with the F6b dataset; the build-time
+ * gate now reads the checked-in copy these boxes write into the repo.)
  *
  * The boxes are written to scratch (regenerated every run) and recorded in
  * the manifest. They are independent of this script's mapping decisions —
@@ -364,7 +365,9 @@ function loadGatePolygons() {
 }
 
 // ---------------------------------------------------------------------------
-// Mapping: GeoNames row → edition + regionId (extends assign-place-editions.mjs)
+// Mapping: GeoNames row → edition + regionId
+// (US postal → 50 state slugs; DC → country/united-states; 12 ISO2 → country
+// ids; everything else → globe/globe; unmappable rows are quarantined.)
 // ---------------------------------------------------------------------------
 
 function assignRegion(cc, admin1, geonameid) {

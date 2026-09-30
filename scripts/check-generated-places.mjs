@@ -1,111 +1,193 @@
 #!/usr/bin/env node
 /**
- * check-generated-places.mjs — F6b/F7 import gate for the generated place dataset.
+ * check-generated-places.mjs — GeoNames 100k+ import gate (Hyderabad rule).
  *
- * Re-validates every generated place in `src/game/data/generated-places.json`
- * against its declared reference country box (`src/game/data/country-boxes.json`)
- * through the REAL F7 gate (`validateGeneratedPlace`). Any Hyderabad-rule
- * mismatch fails the build loudly (non-zero exit) — never silently.
+ * Re-validates 100% of shipped chunk places
+ * (`src/game/data/geonames/chunks/<regionId>.json`, 64 chunks) on every
+ * build. Any violation fails the build loudly (non-zero exit) — never
+ * silently.
  *
  * Wired as `prebuild` / `prebuild:pages` in package.json, so `npm run build`
  * and `npm run build:pages` cannot ship a bad dataset.
  *
- * Antimeridian note: boxes for wrapped countries (RU, NZ, AQ) are stored in
- * the 0–360 frame; longitudes are normalized into that frame before
- * validating, exactly like the F6a pipeline's verify gate
- * (cf. normalizeLon in the F6a verify-places.mjs).
+ * Per place:
+ *  - id uniqueness across ALL chunks
+ *  - edition ∈ {state, country, globe} and regionId match the chunk's meta
+ *    and the manifest; manifest counts match real chunk contents
+ *  - regionId membership in `src/game/regions.ts` (state → STATES ids,
+ *    country → COUNTRIES ids, globe → "globe")
+ *  - Hyderabad coordinate check through the REAL F7 gate
+ *    (`validateGeneratedPlace`):
+ *      - state places: US state box from regions.ts STATES bounds (+0.15°
+ *        margin) — the same derivation the dataset pipeline used
+ *      - country/globe places: the derived per-country box for the place's
+ *        own iso2 (`src/game/data/geonames/country-boxes.json`)
+ *
+ * The reference boxes are the padded boxes derived from ALL GeoNames
+ * populated-place rows — deliberately NOT the tight F6b boxes (those were
+ * derived from a sparse dataset and falsely rejected 74 genuinely-correct
+ * places: Easter Island, Bornholm, …). Antimeridian-wrapped countries
+ * (RU, NZ, …) are stored in the 0–360 frame; longitudes are normalized into
+ * that frame before validating, exactly like the pipeline.
  *
  * Node standard library only. No network.
  */
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateGeneratedPlace } from "../src/game/validate-places.ts";
 import { COUNTRIES, STATES } from "../src/game/regions.ts";
 
 const REPO = dirname(dirname(fileURLToPath(import.meta.url)));
+const CHUNKS_DIR = join(REPO, "src", "game", "data", "geonames", "chunks");
 const VALID_EDITIONS = new Set(["state", "country", "globe"]);
-// regionId-vs-regions.ts membership is enforced here, not just in the unit
-// tests: a regionId that matches no real region must fail the build loudly.
+// Same derivation as scripts/build-geonames-dataset.mjs loadStateBoxes:
+// STATES bounds, generous by design (the gate catches "wrong state", not
+// survey-grade imprecision).
+const STATE_BOX_MARGIN_DEG = 0.15;
+
 const STATE_IDS = new Set(STATES.map((s) => s.id));
 const COUNTRY_IDS = new Set(COUNTRIES.map((c) => c.id));
+const STATE_BOXES = new Map(
+  STATES.map((s) => [
+    s.id,
+    {
+      minLon: s.bounds[0] - STATE_BOX_MARGIN_DEG,
+      minLat: s.bounds[1] - STATE_BOX_MARGIN_DEG,
+      maxLon: s.bounds[2] + STATE_BOX_MARGIN_DEG,
+      maxLat: s.bounds[3] + STATE_BOX_MARGIN_DEG,
+    },
+  ]),
+);
 
-function boxKeyFor(place) {
-  return place.iso2 ?? `name:${place.country}`;
-}
-
-/** Into the box's frame for antimeridian-wrapped countries (cf. F6a normalizeLon). */
+/** Into the box's frame for antimeridian-wrapped countries (cf. the pipeline's normalizeLon). */
 function normalizeLon(lon, entry) {
   return entry.wrapped && lon < 0 ? lon + 360 : lon;
 }
 
 function main() {
-  const dataset = JSON.parse(
-    readFileSync(join(REPO, "src", "game", "data", "generated-places.json"), "utf8"),
+  const manifest = JSON.parse(
+    readFileSync(join(REPO, "src", "game", "data", "geonames", "manifest.json"), "utf8"),
   );
   const { boxes } = JSON.parse(
-    readFileSync(join(REPO, "src", "game", "data", "country-boxes.json"), "utf8"),
+    readFileSync(join(REPO, "src", "game", "data", "geonames", "country-boxes.json"), "utf8"),
   );
 
   const violations = [];
   const seenIds = new Set();
   let checked = 0;
-  let curatedSkipped = 0;
 
-  for (const place of dataset.places) {
-    if (place.curated) {
-      curatedSkipped++;
-      continue; // starters.ts owns curated places; the F7 unit tests lock those in.
-    }
-    if (seenIds.has(place.id)) {
-      violations.push(`${place.id}: duplicate generated id`);
-    }
-    seenIds.add(place.id);
+  const chunkFiles = readdirSync(CHUNKS_DIR).filter((f) => f.endsWith(".json")).sort();
+  const manifestIds = new Set(Object.keys(manifest.regions));
 
-    if (!VALID_EDITIONS.has(place.edition)) {
-      violations.push(`${place.id}: invalid edition "${place.edition}"`);
+  for (const file of chunkFiles) {
+    const regionId = file.slice(0, -".json".length);
+    if (!manifestIds.has(regionId)) {
+      violations.push(`chunk "${file}" has no manifest entry`);
+      continue;
     }
-    if (typeof place.regionId !== "string" || place.regionId.length === 0) {
-      violations.push(`${place.id}: missing regionId`);
+    const expected = manifest.regions[regionId];
+    const chunk = JSON.parse(readFileSync(join(CHUNKS_DIR, file), "utf8"));
+
+    if (chunk.meta?.regionId !== regionId) {
+      violations.push(`chunk "${file}": meta.regionId ${JSON.stringify(chunk.meta?.regionId)} !== "${regionId}"`);
     }
-    const regionOk =
-      (place.edition === "state" && STATE_IDS.has(place.regionId ?? "")) ||
-      (place.edition === "country" && COUNTRY_IDS.has(place.regionId ?? "")) ||
-      (place.edition === "globe" && place.regionId === "globe");
-    if (!regionOk) {
+    if (chunk.meta?.edition !== expected.edition) {
       violations.push(
-        `${place.id}: regionId "${place.regionId}" is not a regions.ts id for edition "${place.edition}"`,
+        `chunk "${file}": meta.edition ${JSON.stringify(chunk.meta?.edition)} !== manifest "${expected.edition}"`,
+      );
+    }
+    if (!Array.isArray(chunk.places)) {
+      violations.push(`chunk "${file}": places is not an array`);
+      continue;
+    }
+    if (chunk.meta?.count !== chunk.places.length) {
+      violations.push(
+        `chunk "${file}": meta.count ${JSON.stringify(chunk.meta?.count)} !== places.length ${chunk.places.length} (manifest count ${expected.count})`,
+      );
+    }
+    if (expected.count !== chunk.places.length) {
+      violations.push(
+        `chunk "${file}": manifest count ${expected.count} !== places.length ${chunk.places.length}`,
       );
     }
 
-    const key = boxKeyFor(place);
-    const entry = boxes[key];
-    if (!entry) {
-      violations.push(`${place.id}: no reference country box for key "${key}"`);
-      continue;
+    for (const place of chunk.places) {
+      const tag = `${place.id} (${file})`;
+      if (seenIds.has(place.id)) {
+        violations.push(`${tag}: duplicate id across chunks`);
+      }
+      seenIds.add(place.id);
+
+      if (!VALID_EDITIONS.has(place.edition) || place.edition !== expected.edition) {
+        violations.push(`${tag}: invalid edition ${JSON.stringify(place.edition)}`);
+      }
+      if (place.regionId !== regionId) {
+        violations.push(`${tag}: regionId ${JSON.stringify(place.regionId)} !== chunk "${regionId}"`);
+      }
+      const regionOk =
+        (place.edition === "state" && STATE_IDS.has(place.regionId)) ||
+        (place.edition === "country" && COUNTRY_IDS.has(place.regionId)) ||
+        (place.edition === "globe" && place.regionId === "globe");
+      if (!regionOk) {
+        violations.push(
+          `${tag}: regionId "${place.regionId}" is not a regions.ts id for edition "${place.edition}"`,
+        );
+      }
+      if (typeof place.iso2 !== "string" || place.iso2.length === 0) {
+        violations.push(`${tag}: missing iso2 (gate key)`);
+        continue;
+      }
+
+      // --- Hyderabad rule: coordinates must match the claimed location
+      let entry;
+      let declared;
+      if (place.edition === "state") {
+        const box = STATE_BOXES.get(place.regionId);
+        if (!box) {
+          violations.push(`${tag}: no state box for regionId "${place.regionId}"`);
+          continue;
+        }
+        entry = { box, wrapped: false };
+        declared = `US state ${place.regionId}`;
+      } else {
+        entry = boxes[place.iso2];
+        if (!entry) {
+          violations.push(`${tag}: no reference country box for iso2 "${place.iso2}"`);
+          continue;
+        }
+        declared = place.iso2;
+      }
+      const v = validateGeneratedPlace({
+        id: place.id,
+        name: place.name,
+        lon: normalizeLon(place.lon, entry),
+        lat: place.lat,
+        declaredCountry: declared,
+        countryBox: entry.box,
+      });
+      if (v.length > 0) violations.push(...v.map((m) => `${file}: ${m}`));
+      checked++;
     }
-    const v = validateGeneratedPlace({
-      id: place.id,
-      name: place.name,
-      lon: normalizeLon(place.lon, entry),
-      lat: place.lat,
-      declaredCountry: entry.country,
-      countryBox: entry.box,
-    });
-    if (v.length > 0) violations.push(...v);
-    checked++;
+  }
+
+  for (const regionId of manifestIds) {
+    if (!chunkFiles.includes(`${regionId}.json`)) {
+      violations.push(`manifest region "${regionId}" has no chunk file`);
+    }
   }
 
   if (violations.length > 0) {
     console.error(
-      `F6b PLACE GATE FAILED: ${violations.length} violation(s) across ${checked} generated places — build rejected.`,
+      `GEONAMES PLACE GATE FAILED: ${violations.length} violation(s) across ${checked} chunk places — build rejected.`,
     );
     for (const v of violations.slice(0, 50)) console.error(`  - ${v}`);
     if (violations.length > 50) console.error(`  … and ${violations.length - 50} more`);
     process.exit(1);
   }
   console.log(
-    `F6b place gate OK: ${checked} generated places validated against their country boxes, 0 violations (${curatedSkipped} curated refs skipped).`,
+    `GeoNames place gate OK: ${checked} places in ${chunkFiles.length} chunks validated ` +
+      `(id uniqueness, edition/regionId membership, manifest counts, Hyderabad coordinates), 0 violations.`,
   );
 }
 
