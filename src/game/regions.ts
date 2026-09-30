@@ -83,6 +83,25 @@ export const COUNTRIES: Region[] = [
   region("Australia", [113.1, -43.7, 153.7, -10.4]),
 ];
 
+/**
+ * First-level administrative subdivisions (states/provinces) per country,
+ * keyed by the country's Region id.
+ *
+ * A country drills into its subdivisions in the picker only when it maps to
+ * a non-empty list here — a non-empty list means "we have playable place
+ * pools for these subdivisions". Countries mapping to [] (or absent) start
+ * a country-overall run directly; they are never listed as drill targets
+ * because that would be a dead end.
+ *
+ * The USA is currently the only entry: it is the only country with a
+ * complete curated admin-1 place catalog. Additional countries plug in here
+ * once their subdivision place data lands (the paused F6b dataset track);
+ * until then they stay playable as countries overall.
+ */
+export const ADMIN1_BY_COUNTRY: Record<string, Region[]> = {
+  "united-states": STATES,
+};
+
 /** Greater of the latitude side and the longitude side, in kilometers. */
 export function greaterSideKm(bounds: RegionBounds): number {
   const [west, south, east, north] = bounds;
