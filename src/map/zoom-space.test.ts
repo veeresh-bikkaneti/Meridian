@@ -1113,3 +1113,25 @@ test("return: globe edition restores the maxZoom cap at completion", () => {
     "globe return should restore the maxZoom cap",
   );
 });
+
+test("return: mid-return commit queues and flushes on completion", () => {
+  const c = flatController();
+  narrowToRegion(c, 4.5);
+  // Place 1: reveal → tour → done.
+  c.requestReveal(REVEAL_REQUEST);
+  c.onMoveEnd(snap(6, "mercator", NEBRASKA.center));
+  completeTour(c, REVEAL_REQUEST.spot);
+  // Continue → return beat starts.
+  c.resetForNextPlace();
+  c.beginReturn();
+  assert.equal(c.beatKind, "return");
+  // Fast player commits mid-return: queued, not dropped.
+  assert.deepEqual(c.requestReveal(REVEAL_REQUEST), []);
+  // Return completes: the queued reveal flushes into a fresh settle beat.
+  const done = c.onMoveEnd(snap(4.5, "mercator", NEBRASKA.center));
+  assert.ok(
+    done.some((i) => i.type === "settle" || i.type === "ease-to"),
+    "queued reveal should flush as a new beat",
+  );
+  assert.equal(c.beatKind, "settle");
+});
