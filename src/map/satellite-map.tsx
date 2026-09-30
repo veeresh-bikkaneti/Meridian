@@ -242,14 +242,18 @@ function markerElement(tone: MapMark["tone"]): HTMLDivElement {
   el.style.boxShadow = "0 1px 4px rgba(0,0,0,0.45)";
   el.style.pointerEvents = "none";
   if (!spot) el.style.transform = "rotate(-45deg)";
-  el.setAttribute("aria-label", spot ? "The spot" : "Your pin");
+  el.setAttribute("aria-label", spot ? "The spot" : tone === "aim" ? "Preview pin" : "Your pin");
   if (tone === "aim") {
-    // P0-02: pin-drop animation + exactly one pulse ring. The drop animates
-    // the CSS `translate` property (never `transform`): MapLibre rewrites the
-    // marker element's inline transform on every position update
-    // (maplibre-gl marker.ts `_update`), while `translate` composes
-    // independently of it. Reduced motion kills both via the P0-02 section
-    // of styles.css (plus the global base-layer reduce rule).
+    // F5: the preview pin is hollow/ghosted so it reads as a draft, visually
+    // distinct from the solid committed pin. The drop animation + pulse ring
+    // are transient affordances only (reduced motion kills both).
+    el.style.background = "transparent";
+    el.style.border = "2px dashed #f4f1ea";
+    // The drop animates the CSS `translate` property (never `transform`):
+    // MapLibre rewrites the marker element's inline transform on every
+    // position update (maplibre-gl marker.ts `_update`), while `translate`
+    // composes independently of it. Reduced motion kills both via the P0-02
+    // section of styles.css (plus the global base-layer reduce rule).
     el.classList.add("meridian-pin-drop");
     const ring = document.createElement("div");
     ring.className = "meridian-pulse-ring";
