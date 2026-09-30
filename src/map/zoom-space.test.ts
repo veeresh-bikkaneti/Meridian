@@ -1130,7 +1130,7 @@ test("return: mid-return commit queues and flushes on completion", () => {
   // Return completes: the queued reveal flushes into a fresh settle beat.
   const done = c.onMoveEnd(snap(4.5, "mercator", NEBRASKA.center));
   assert.ok(
-    done.some((i) => i.type === "settle" || i.type === "ease-to"),
+    done.some((i) => i.type === "ease-to"),
     "queued reveal should flush as a new beat",
   );
   assert.equal(c.beatKind, "settle");
