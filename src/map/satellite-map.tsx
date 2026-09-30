@@ -598,19 +598,29 @@ export function SatelliteMap(props: {
         switch (intent.type) {
           case "set-projection": {
             // REQUIRED COMMENT (design §7): setProjection throws before
-            // style load, so the adapter gates every swap on
-            // isStyleLoaded(). The mid-beat swap below relies on MapLibre
-            // 6.11.2's undocumented flyTo-transform closure behaviour — the
-            // in-flight animation's transform closure reads the new
-            // projection, so the camera continues to the same destination
-            // instead of snapping. MUST be re-verified on every upgrade.
+            // the style is PARSED (Style#_checkLoaded checks _loaded only),
+            // not before tiles finish. isStyleLoaded() is tile-dependent:
+            // when tile requests hang (dead DNS / captive portal), the
+            // map's load event never fires and a deferred once("load")
+            // handler never runs, wedging the intro mid-beat. Try the swap
+            // immediately; defer only if the style truly isn't parsed yet
+            // (impossible for our inline style — parsed synchronously in
+            // `new Map()` — but safe for any future remote style).
+            // The mid-beat swap below relies on MapLibre 6.11.2's
+            // undocumented flyTo-transform closure behaviour — the in-flight
+            // animation's transform closure reads the new projection, so the
+            // camera continues to the same destination instead of snapping.
+            // MUST be re-verified on every upgrade.
             const apply = () => {
               if (!alive) return;
               map.setProjection({ type: intent.projection });
               projectionRef.current = intent.projection;
             };
-            if (!map.isStyleLoaded()) map.once("load", apply);
-            else apply();
+            try {
+              apply();
+            } catch {
+              map.once("load", apply);
+            }
             break;
           }
           case "set-max-bounds": {
@@ -630,38 +640,38 @@ export function SatelliteMap(props: {
             break;
           }
           case "fly-to": {
-            // Narrow-beat style load (sibling contract): the fly-to may fire
-            // before the style is loaded — defer the camera intent to the
-            // style load event. The controller is already in the narrow beat;
-            // no move/moveend can fire before the camera moves, so the beat
-            // cannot complete early.
-            const run = () => {
-              if (!alive) return;
-              map.flyTo({
-                center: intent.center,
-                zoom: intent.zoom,
-                bearing: intent.bearing,
-                duration: intent.durationMs,
-                easing: easeInOutCubic,
-              });
-            };
-            if (!map.isStyleLoaded()) map.once("load", run);
-            else run();
+            // No style-load gate: Camera#flyTo is transform-only (verified
+            // against the vendored maplibre-gl 6.11.2 — it touches the
+            // camera transform and fires movement events, never the style).
+            // Gating it on the tile-dependent isStyleLoaded() caused a
+            // never-fires stall: when tile requests hang, the map's load
+            // event never fires, the deferred once("load") handler never
+            // runs, and the narrow beat never starts — the intro wedges at
+            // zoom 1 with the screen owned forever. The controller is already
+            // in the narrow beat; no move/moveend can fire before the camera
+            // moves, so the beat cannot complete early.
+            if (!alive) return;
+            map.flyTo({
+              center: intent.center,
+              zoom: intent.zoom,
+              bearing: intent.bearing,
+              duration: intent.durationMs,
+              easing: easeInOutCubic,
+            });
             break;
           }
           case "ease-to": {
-            const run = () => {
-              if (!alive) return;
-              map.easeTo({
-                center: intent.center,
-                ...(intent.zoom !== undefined ? { zoom: intent.zoom } : {}),
-                ...(intent.bearing !== undefined ? { bearing: intent.bearing } : {}),
-                duration: intent.durationMs,
-                easing: easeInOutCubic,
-              });
-            };
-            if (!map.isStyleLoaded()) map.once("load", run);
-            else run();
+            // No style-load gate: same rationale as fly-to above —
+            // Camera#easeTo is transform-only. The tile-dependent gate
+            // wedged pull-back/settle/relock beats when tiles hang.
+            if (!alive) return;
+            map.easeTo({
+              center: intent.center,
+              ...(intent.zoom !== undefined ? { zoom: intent.zoom } : {}),
+              ...(intent.bearing !== undefined ? { bearing: intent.bearing } : {}),
+              duration: intent.durationMs,
+              easing: easeInOutCubic,
+            });
             break;
           }
           case "jump-to": {
