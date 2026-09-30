@@ -86,7 +86,7 @@ test("endRun produces the summary; summary phase is terminal", () => {
   assert.equal(empty.bestDistanceKm, null);
 });
 
-test("resumeRun restores endless runs; summary/done are not resumable", () => {
+test("resumeRun restores endless runs; done (miss card) is resumable, summary is not", () => {
   const today = {
     edition: "state" as const,
     regionId: "nebraska",
@@ -97,6 +97,19 @@ test("resumeRun restores endless runs; summary/done are not resumable", () => {
   const mid = { ...startRun(today), index: 4, hits: 3, phase: "aim" as const };
   const withResults = dropPin(mid, 15, 25, 85);
   assert.equal(resumeRun(withResults, today).results.length, 1);
+
+  // A miss card ("done") resumes with accumulated results intact — a reload
+  // there must not silently lose the session.
+  const miss = dropPin(
+    { ...startRun(today), index: 2, hits: 1, phase: "aim" as const, results: [{ distanceKm: 10, hit: true, score: 90 }] },
+    500, 25, 0,
+  );
+  assert.equal(miss.phase, "done");
+  const resumed = resumeRun(miss, today);
+  assert.equal(resumed.phase, "done");
+  assert.equal(resumed.index, 2);
+  assert.equal(resumed.hits, 1);
+  assert.equal(resumed.results.length, 2); // prior hit + this miss, all intact
 
   // A run saved before endless mode (no results) backfills.
   const legacy = { ...startRun(today), results: undefined as never };

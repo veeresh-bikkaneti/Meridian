@@ -211,12 +211,10 @@ export function ResultCard({
             </div>
           ) : null}
 
-          {run.phase === "done" && !place ? (
+          {run.phase === "done" && empty ? (
             <div className="mt-3 flex flex-col gap-3">
               <p className="text-sm text-white/70">
-                {empty
-                  ? "This trail has no places yet."
-                  : "You placed every place on the trail. It does not repeat."}
+                This trail has no places yet.
               </p>
               <ShareResult run={run} />
             </div>

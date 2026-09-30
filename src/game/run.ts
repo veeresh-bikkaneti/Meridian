@@ -102,13 +102,15 @@ export function resumeRun(
 ): Run {
   if (
     saved &&
-    saved.phase !== "done" &&
     saved.phase !== "summary" &&
     saved.edition === today.edition &&
     saved.regionId === today.regionId &&
     saved.dateKey === today.dateKey
   ) {
     // Backfill results for runs saved before endless mode.
+    // "done" is resumable: it is now a transient per-place state (miss card
+    // awaiting Next place), not an ended run — dropping it would silently
+    // lose the whole session's accumulated results.
     return { ...saved, results: saved.results ?? [] };
   }
   return startRun(today);
