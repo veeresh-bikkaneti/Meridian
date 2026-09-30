@@ -90,6 +90,10 @@ export default defineConfig({
       },
     },
     {
+      name: "drilldown",
+      testMatch: /edition-drilldown\.spec\.ts/,
+    },
+    {
       name: "highlight",
       testMatch: /highlight\.spec\.ts/,
     },
