@@ -67,6 +67,10 @@ export default defineConfig({
       name: "endless-game",
       testMatch: /endless-game\.spec\.ts/,
     },
+    {
+      name: "highlight",
+      testMatch: /highlight\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],

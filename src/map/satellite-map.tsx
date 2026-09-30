@@ -626,8 +626,9 @@ export function SatelliteMap(props: {
             // map's load event never fires and a deferred once("load")
             // handler never runs, wedging the intro mid-beat. Try the swap
             // immediately; defer only if the style truly isn't parsed yet
-            // (impossible for our inline style — parsed synchronously in
-            // `new Map()` — but safe for any future remote style).
+            // (expected for our inline style on the first tick — MapLibre
+            // 6.11.2 defers _load() through browser.frameAsync — but safe
+            // for any future remote style too).
             // The mid-beat swap below relies on MapLibre 6.11.2's
             // undocumented flyTo-transform closure behaviour — the in-flight
             // animation's transform closure reads the new projection, so the

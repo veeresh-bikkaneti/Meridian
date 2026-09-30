@@ -170,12 +170,12 @@ export function paintRegionHighlight(
   options?: { instant?: boolean },
 ): void {
   // NOTE on the style-load gate: addSource/addLayer throw "Style is not done
-  // loading" if the style isn't parsed yet. The map style is inline, so it
-  // parses synchronously in `new Map()` in practice — but the reduced-motion
-  // path paints synchronously in the same tick, and MapLibre may not have
-  // flipped the loaded flag yet. We therefore attempt the paint and let the
-  // caller retry on failure, rather than gating on the tile-dependent
-  // isStyleLoaded() (which lost paints: diagnosed 2026-09-30).
+  // loading" if the style isn't parsed yet. MapLibre 6.11.2 defers the
+  // inline style's _load() through browser.frameAsync, so the style is NOT
+  // parsed synchronously in `new Map()` — a same-tick paint always throws.
+  // We therefore attempt the paint and let the caller retry on failure,
+  // rather than gating on the tile-dependent isStyleLoaded() (which lost
+  // paints: diagnosed 2026-09-30).
   const instant = options?.instant ?? false;
   cancelReveal(map);
 
@@ -194,7 +194,12 @@ export function paintRegionHighlight(
   map.addSource(SOURCE_ID, { type: "geojson", data: highlightFeature(dto) });
 
   // No transition key when instant: the setPaintProperty calls below then
-  // apply synchronously (reduced-motion path).
+  // apply synchronously (reduced-motion path). The keys must be ABSENT, not
+  // undefined — a present-but-undefined transition value fails MapLibre's
+  // style-spec validation, and Style#addLayer silently drops the layer on
+  // validation failure (fires an ErrorEvent, never throws). Diagnosed
+  // 2026-09-30: under prefers-reduced-motion the source was created but all
+  // three layers were missing, so the highlight never appeared.
   const transition = instant ? undefined : { duration: REVEAL_MS, delay: 0 };
 
   map.addLayer({
@@ -204,7 +209,7 @@ export function paintRegionHighlight(
     paint: {
       "fill-color": GOLD,
       "fill-opacity": 0,
-      "fill-opacity-transition": transition,
+      ...(transition ? { "fill-opacity-transition": transition } : {}),
     },
   });
   map.addLayer({
@@ -214,9 +219,9 @@ export function paintRegionHighlight(
     paint: {
       "line-color": CASING_COLOR,
       "line-width": 0,
-      "line-width-transition": transition,
+      ...(transition ? { "line-width-transition": transition } : {}),
       "line-opacity": 0,
-      "line-opacity-transition": transition,
+      ...(transition ? { "line-opacity-transition": transition } : {}),
     },
   });
   map.addLayer({
@@ -226,9 +231,9 @@ export function paintRegionHighlight(
     paint: {
       "line-color": GOLD,
       "line-width": 0,
-      "line-width-transition": transition,
+      ...(transition ? { "line-width-transition": transition } : {}),
       "line-opacity": 0,
-      "line-opacity-transition": transition,
+      ...(transition ? { "line-opacity-transition": transition } : {}),
     },
   });
 
