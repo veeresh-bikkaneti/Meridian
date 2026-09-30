@@ -433,6 +433,32 @@ export class ZoomSpaceController {
   }
 
   /**
+   * Per-place reset for continue-to-next-place. Multi-place runs share one
+   * map instance (only replay/leave remounts), so the terminal revealDone
+   * latch must not leak into the next place's aim phase: without this, the
+   * T_OUT / T_IN auto-thresholds stay inert after the first reveal and
+   * zoom-to-space morphing silently stops working for places 2+.
+   *
+   * Clears the per-place transient state — the revealDone latch, beat flags,
+   * gesture direction latch, and one-shot suppressions — and returns no
+   * intents (pure state reset; the adapter's existing clear-variation and
+   * tap re-arm intents cover the DOM side). Preserves run-scoped state: the
+   * region (and its painted highlight), projection tracking, and camera
+   * continuity. The intro cannot re-fire: hasRequestedNarrow stays latched
+   * and the spin→narrow chain is only ever entered via requestNarrow().
+   */
+  resetForNextPlace(): ZoomSpaceIntent[] {
+    this.revealDoneFlag = false;
+    this.beatActiveFlag = false;
+    this.beatKindFlag = null;
+    this.gestureStartZoom = null;
+    this.narrowCrossingArmed = false;
+    this.suppressTOutOnce = false;
+    this.pendingReveal = null;
+    return [];
+  }
+
+  /**
    * Design §6 big-miss predicate: pin→spot > 500 km, or > 1.5 × the region's
    * greater side in km. No region (globe edition) is never a big miss — the
    * camera is already in space.

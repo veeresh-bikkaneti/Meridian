@@ -1070,14 +1070,11 @@ export function SatelliteMap(props: {
   // A non-null → null transition is the continue-to-next-place (or
   // run-done/menu) handoff: the documented ungated clear path
   // (clearReveal), plus re-arming the aim gesture model for the next place.
-  //
-  // NOTE (multi-place gap — flagged for the design/sibling crew): the
-  // controller's revealDone latch is terminal per design §6, so the T_OUT /
-  // T_IN auto-thresholds stay inert after the first reveal until
-  // replay/leave remounts the map. The per-place aim loop (tap → commit →
-  // reveal) keeps working — only the auto space-view / relock during aim is
-  // degraded for places 2+. A sibling per-place reset API would restore
-  // full behavior.
+  // The controller's per-place transient state is also reset here
+  // (resetForNextPlace): the terminal revealDone latch must not leak into
+  // the next place's aim phase, or the T_OUT / T_IN auto-thresholds would
+  // stay inert after the first reveal. Run-scoped state — region, painted
+  // highlight, projection tracking, camera continuity — is preserved.
   useEffect(() => {
     const map = mapRef.current;
     const controller = controllerRef.current;
@@ -1087,6 +1084,11 @@ export function SatelliteMap(props: {
     if (!props.variation) {
       executeIntentsRef.current(controller.clearReveal());
       if (prev) {
+        // Continue → next place: reset the controller's per-place transient
+        // state so the T_OUT / T_IN auto-thresholds evaluate again for the
+        // new place's aim phase. Camera, region, highlight, and projection
+        // tracking are preserved by the reset.
+        executeIntentsRef.current(controller.resetForNextPlace());
         // Continue → next place: re-arm the tap pipeline for the aim phase.
         // (Tap attach/detach is adapter-owned DOM wiring; gestures were
         // re-enabled at settle completion.)

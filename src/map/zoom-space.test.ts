@@ -2,7 +2,8 @@
  * Unit tests for the zoom-space state machine — pure, node-testable like
  * `tile-status.test.ts`. The adapter (satellite-map.tsx) is exercised by E2E;
  * here we pin the transition logic: directed thresholds, the hysteresis band,
- * beat choreography, and the terminal reveal latch.
+ * beat choreography, and the reveal latch (terminal per place, reset on
+ * continue-to-next-place).
  */
 import assert from "node:assert/strict";
 import test from "node:test";
@@ -354,6 +355,106 @@ test("standard reveal: single settle beat, terminal latch, thresholds inert", ()
   c.onMove(snap(6));
   assert.deepEqual(c.onZoomEnd(snap(1.0)), []);
   c.onMoveEnd(snap(1.0, "globe"));
+});
+
+test("resetForNextPlace: T_OUT/T_IN evaluate again for the next place", () => {
+  const c = flatController();
+  narrowToRegion(c, 4.5);
+  // Place 1: standard reveal → terminal latch, thresholds inert.
+  c.requestReveal(REVEAL_REQUEST);
+  c.onMoveEnd(snap(6, "mercator", NEBRASKA.center));
+  assert.equal(c.revealDone, true);
+  c.onMove(snap(6, "mercator", NEBRASKA.center));
+  assert.deepEqual(c.onZoomEnd(snap(1.0, "mercator")), []);
+  c.onMoveEnd(snap(1.0, "mercator"));
+
+  // Continue → next place: per-place reset, no intents of its own.
+  assert.deepEqual(c.resetForNextPlace(), []);
+  assert.equal(c.revealDone, false);
+  assert.equal(c.beatActive, false);
+  assert.equal(c.beatKind, null);
+
+  // T_OUT fires again on a genuine zoom-out below 2.2.
+  c.onMove(snap(6, "mercator", NEBRASKA.center));
+  assert.deepEqual(c.onZoomEnd(snap(1.5, "mercator")), [
+    { type: "set-projection", projection: "globe" },
+    { type: "set-max-bounds", bounds: null },
+    { type: "announce", message: "Space view" },
+  ]);
+  c.onMoveEnd(snap(1.5, "globe"));
+  assert.equal(c.state, "SPACE");
+
+  // T_IN fires again: zero-length relock, center already in-bounds.
+  c.onMove(snap(1.5, "globe", NEBRASKA.center));
+  assert.deepEqual(c.onZoomEnd(snap(3.6, "globe", NEBRASKA.center)), [
+    { type: "gestures", enabled: false },
+    { type: "tap-handlers", enabled: false },
+    { type: "set-max-bounds", bounds: NEBRASKA.bounds },
+    { type: "set-projection", projection: "mercator" },
+    { type: "gestures", enabled: true },
+    { type: "tap-handlers", enabled: true },
+    { type: "announce", message: "Nebraska view" },
+  ]);
+  assert.equal(c.state, "REGION");
+});
+
+test("resetForNextPlace: intro cannot re-fire", () => {
+  const c = flatController();
+  narrowToRegion(c, 4.5);
+  c.requestReveal(REVEAL_REQUEST);
+  c.onMoveEnd(snap(6, "mercator", NEBRASKA.center));
+  c.resetForNextPlace();
+  // The intro stays single-shot per run: spin→narrow is requestNarrow-only.
+  assert.deepEqual(c.requestNarrow(NEBRASKA, 4.5), []);
+  assert.equal(c.beatActive, false);
+  assert.equal(c.beatKind, null);
+  assert.equal(c.state, "REGION");
+});
+
+test("resetForNextPlace: region + projection survive — place 2 big-miss still pulls back", () => {
+  const c = flatController();
+  narrowToRegion(c, 6, SMALL_REGION);
+  // Pin→spot ≈ 221 km: under the 500 km absolute line, but SMALL_REGION's
+  // greater side is ≈ 111 km so 1.5 × 111 ≈ 167 km is crossed → big miss.
+  const place1: RevealRequest = {
+    variation: { label: "miss-line" },
+    pin: [0, 0] as LngLat,
+    spot: [0, 2] as LngLat,
+    settleCenter: [0.5, 1] as LngLat,
+    settleZoom: 6,
+    tileFailed: false,
+    projection: "mercator",
+  };
+  // Place 1: big miss → release, pull-back, hold, settle (camera left in space).
+  c.requestReveal(place1);
+  assert.equal(c.beatKind, "pullback");
+  c.onMoveEnd(snap(2.0, "globe"));
+  c.onRevealHoldTimer();
+  c.onMoveEnd(snap(6, "globe"));
+  assert.equal(c.revealDone, true);
+  assert.equal(c.projection, "globe");
+  assert.equal(c.state, "SPACE");
+
+  c.resetForNextPlace();
+  // Camera continuity + projection tracking preserved …
+  assert.equal(c.projection, "globe");
+  assert.equal(c.state, "SPACE");
+  // … and the region is still known: place 2's identical miss (now from the
+  // space view, as the adapter would report) still runs the pull-back beat.
+  const place2: RevealRequest = { ...place1, projection: "globe" };
+  assert.deepEqual(c.requestReveal(place2), [
+    { type: "gestures", enabled: false },
+    { type: "tap-handlers", enabled: false },
+    { type: "paint-variation", variation: place2.variation },
+    {
+      type: "ease-to",
+      center: [0, 1],
+      zoom: 2.0,
+      durationMs: 1400,
+      easing: "easeInOutCubic",
+    },
+  ]);
+  assert.equal(c.beatKind, "pullback");
 });
 
 test("big-miss reveal: release + pull-back, hold, settle", () => {
