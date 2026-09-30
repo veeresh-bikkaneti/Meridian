@@ -64,6 +64,15 @@ export default defineConfig({
       testMatch: /zoom-space\.spec\.ts/,
     },
     {
+      name: "tap-verify",
+      testMatch: /tap-verify\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+        hasTouch: true,
+        isMobile: true,
+      },
+    },
+    {
       name: "endless-game",
       testMatch: /endless-game\.spec\.ts/,
     },
