@@ -76,6 +76,10 @@ export default defineConfig({
         isMobile: true,
       },
     },
+    {
+      name: "highlight",
+      testMatch: /highlight\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],

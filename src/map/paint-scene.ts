@@ -83,6 +83,36 @@ function drawTerrain(
   }
 }
 
+/**
+ * Region boundary emphasis (Track 2): a dark casing under a bold gold
+ * stroke around the lit region, matching the satellite-map highlight
+ * language (region-highlight.ts). `alpha` follows the lit ramp so the
+ * boundary fades in with the fill instead of popping.
+ */
+function strokeLitRegion(
+  context: CanvasRenderingContext2D,
+  path: ReturnType<typeof geoPath>,
+  feature: unknown,
+  alpha: number,
+  colors: Colors,
+) {
+  if (alpha <= 0) return;
+  context.save();
+  context.globalAlpha = Math.min(1, alpha);
+  context.lineJoin = "round";
+  context.beginPath();
+  path(feature as never);
+  context.strokeStyle = colors.coast;
+  context.lineWidth = 5;
+  context.stroke();
+  context.beginPath();
+  path(feature as never);
+  context.strokeStyle = colors.highlight;
+  context.lineWidth = 2.5;
+  context.stroke();
+  context.restore();
+}
+
 /** Static geography. Pins and the route are painted separately so a pan can slide this layer. */
 export function paintBasemap(
   context: CanvasRenderingContext2D,
@@ -120,8 +150,10 @@ export function paintBasemap(
       path(feat as never);
       const id = String(feat.id ?? "");
       const base = tone(id || "land", colors.land);
-      context.fillStyle = litId && id === litId ? mix(base, colors.lit, lit) : base;
+      const isLit = litId != null && id === litId;
+      context.fillStyle = isLit ? mix(base, colors.lit, lit) : base;
       context.fill();
+      if (isLit) strokeLitRegion(context, path, feat, lit, colors);
     }
     drawTerrain(context, path, terrainFor("world"), colors, false);
     context.beginPath();
@@ -188,6 +220,7 @@ export function paintBasemap(
       const on = scope === "usa" && litId === id;
       context.fillStyle = on ? mix(base, colors.lit, lit) : base;
       context.fill();
+      if (on) strokeLitRegion(context, path, feat, lit, colors);
     }
     if (mapStyle === "roads") {
       context.beginPath();
@@ -210,8 +243,10 @@ export function paintBasemap(
         if (county) {
           context.beginPath();
           path(county as never);
-          context.fillStyle = mix(colors.land, colors.lit, Math.max(lit, 0.15));
+          const countyLit = Math.max(lit, 0.15);
+          context.fillStyle = mix(colors.land, colors.lit, countyLit);
           context.fill();
+          strokeLitRegion(context, path, county, countyLit, colors);
         }
       }
       if (nebraska) {

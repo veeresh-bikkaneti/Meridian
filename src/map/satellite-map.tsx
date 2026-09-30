@@ -8,6 +8,7 @@ import { disk } from "@/game/geo";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
+import { bandForZoom, clearBoundaryBands, paintBoundaryBand } from "./boundary-bands.ts";
 import {
   buildRegionIndex,
   lookupRegion,
@@ -625,8 +626,9 @@ export function SatelliteMap(props: {
             // map's load event never fires and a deferred once("load")
             // handler never runs, wedging the intro mid-beat. Try the swap
             // immediately; defer only if the style truly isn't parsed yet
-            // (impossible for our inline style — parsed synchronously in
-            // `new Map()` — but safe for any future remote style).
+            // (expected for our inline style on the first tick — MapLibre
+            // 6.11.2 defers _load() through browser.frameAsync — but safe
+            // for any future remote style too).
             // The mid-beat swap below relies on MapLibre 6.11.2's
             // undocumented flyTo-transform closure behaviour — the in-flight
             // animation's transform closure reads the new projection, so the
@@ -726,10 +728,27 @@ export function SatelliteMap(props: {
             const paint = () => {
               if (alive) paintRegionHighlight(map, feature, { instant });
             };
-            // addSource/addLayer throw before style load (and the painter
-            // no-ops there by design), so a slow style defers the paint.
-            if (!map.isStyleLoaded()) map.once("load", paint);
-            else paint();
+            // If the style isn't parsed yet (reduced-motion path paints in
+            // the same tick as `new Map()`), addSource throws "Style is not
+            // done loading". In that case the map's one-shot `load` has NOT
+            // fired yet (it fires after style parse), so `once("load", paint)`
+            // is safe and faster than `idle` (which waits for tiles). If the
+            // style IS parsed (animated path), paint immediately — we do NOT
+            // gate on the tile-dependent isStyleLoaded(), which lost paints
+            // when `load` had already fired (diagnosed 2026-09-30). The
+            // painter is idempotent. Only the style-not-loaded error is
+            // deferred; other errors (e.g. malformed DTO) rethrow.
+            try {
+              paint();
+            } catch (e) {
+              if (!alive) break;
+              const msg = e instanceof Error ? e.message : String(e);
+              if (msg.includes("Style is not done loading")) {
+                map.once("load", paint);
+              } else {
+                throw e;
+              }
+            }
             break;
           }
           case "clear-highlight": {
@@ -1015,6 +1034,17 @@ export function SatelliteMap(props: {
     map.on("zoomend", () => {
       // Track zoom for the +/- controls' aria-live announcements (M10).
       setZoom(Math.round(map.getZoom()));
+      // Progressive boundary reveal (F2): update the admin-boundary band
+      // for the new zoom. Static — no transitions (reduced-motion safe).
+      try {
+        paintBoundaryBand(map, bandForZoom(map.getZoom()));
+      } catch (e) {
+        // Style not ready yet — the band paints on the next zoomend.
+        // Persistent failures (corrupt data, API misuse) are logged in dev.
+        if (import.meta.env.DEV) {
+          console.warn("[boundary-bands] paint failed on zoomend:", e);
+        }
+      }
       // Re-entrancy guard: a nested zoomend fired while an intent batch is
       // executing (e.g. from the projection-swap zoom restore) must not
       // re-enter the controller with a transitional camera state.
@@ -1037,6 +1067,16 @@ export function SatelliteMap(props: {
       // way (the reducer treats map-load as a no-op; the first idle
       // decides). Recorded for contract fidelity with tile-status.ts.
       dispatchTile({ type: "map-load" });
+      // Progressive boundary reveal (F2): paint the initial band for the
+      // opening zoom. The style is parsed now, so addSource/addLayer are safe.
+      try {
+        paintBoundaryBand(map, bandForZoom(map.getZoom()));
+      } catch (e) {
+        // Non-fatal — the band paints on the next zoomend. Log in dev.
+        if (import.meta.env.DEV) {
+          console.warn("[boundary-bands] initial paint failed:", e);
+        }
+      }
       // The style parsed; the tile phase gets its own full watchdog budget
       // from here — a slow connection that trickles tiles must not trip
       // the style watchdog and declare failure over a healthy map.
@@ -1116,6 +1156,11 @@ export function SatelliteMap(props: {
       labelRef.current = null;
       mapRef.current = null;
       setReady(false);
+      try {
+        clearBoundaryBands(map);
+      } catch {
+        // Map already torn down — nothing to clear.
+      }
       map.remove();
     };
   }, [props.edition, props.regionName, props.mode, props.bounds, mapAttempt]);
