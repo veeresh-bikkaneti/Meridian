@@ -169,21 +169,28 @@ export function paintRegionHighlight(
   dto: RegionGeometryDTO,
   options?: { instant?: boolean },
 ): void {
-  // Belt-and-braces: addSource/addLayer throw before style load. The adapter
-  // only paints post-load (narrow-in beat), so this is unreachable in
-  // practice — it guards a torn-down style mid-beat, not a logic error.
-  if (!map.isStyleLoaded()) return;
+  // NOTE on the style-load gate: addSource/addLayer throw "Style is not done
+  // loading" if the style isn't parsed yet. The map style is inline, so it
+  // parses synchronously in `new Map()` in practice — but the reduced-motion
+  // path paints synchronously in the same tick, and MapLibre may not have
+  // flipped the loaded flag yet. We therefore attempt the paint and let the
+  // caller retry on failure, rather than gating on the tile-dependent
+  // isStyleLoaded() (which lost paints: diagnosed 2026-09-30).
   const instant = options?.instant ?? false;
   cancelReveal(map);
 
-  const existing = map.getSource(SOURCE_ID) as GeoJSONSource | undefined;
-  if (existing) {
-    existing.setData(highlightFeature(dto));
+  // Idempotency is keyed on the layers, not the source: if a previous paint
+  // was interrupted between addSource and addLayer (style not ready), the
+  // source exists without layers — remove it and rebuild from scratch.
+  if (map.getLayer(FILL_LAYER_ID)) {
+    const existing = map.getSource(SOURCE_ID) as GeoJSONSource | undefined;
+    if (existing) existing.setData(highlightFeature(dto));
     // Re-assert the resting values synchronously: a reveal that was
     // mid-flight for the previous region must not land flash values here.
     applyRestingValues(map);
     return;
   }
+  if (map.getSource(SOURCE_ID)) map.removeSource(SOURCE_ID);
   map.addSource(SOURCE_ID, { type: "geojson", data: highlightFeature(dto) });
 
   // No transition key when instant: the setPaintProperty calls below then

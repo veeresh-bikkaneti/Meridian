@@ -726,10 +726,19 @@ export function SatelliteMap(props: {
             const paint = () => {
               if (alive) paintRegionHighlight(map, feature, { instant });
             };
-            // addSource/addLayer throw before style load (and the painter
-            // no-ops there by design), so a slow style defers the paint.
-            if (!map.isStyleLoaded()) map.once("load", paint);
-            else paint();
+            // If the style isn't parsed yet (reduced-motion path paints in
+            // the same tick as `new Map()`), addSource throws "Style is not
+            // done loading". In that case the map is definitely not idle,
+            // so `once("idle", paint)` will fire. If the style IS parsed
+            // (animated path), paint immediately — we do NOT gate on the
+            // tile-dependent isStyleLoaded(), which lost paints when `load`
+            // had already fired (diagnosed 2026-09-30). The painter is
+            // idempotent.
+            try {
+              paint();
+            } catch {
+              if (alive) map.once("idle", paint);
+            }
             break;
           }
           case "clear-highlight": {
