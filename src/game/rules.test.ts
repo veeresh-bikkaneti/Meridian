@@ -38,7 +38,7 @@ test("share text is a spoiler-free endless line", () => {
   assert.equal(text.includes("🎓"), false);
   assert.equal(
     text,
-    "meridian September 28\n12,480 over 60 places · 208 avg · 🔥14 best streak · Nebraska",
+    "meridian September 28\n12,480 over 60 places · 208 avg/place · 🔥14 best streak · Nebraska",
   );
   assert.equal(scoreMark(0), "·");
   assert.equal(scoreMark(100), "🎯");
