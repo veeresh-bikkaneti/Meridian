@@ -340,10 +340,16 @@ export function GameApp() {
   }
 
   if (menu?.kind === "states") {
-    // Only countries that actually have states/provinces — never a dead end.
-    // Today that is just the United States; more countries appear here as
-    // admin-1 pools land, with no USA hardcoding in the picker itself.
-    const regions = COUNTRIES.filter((country) => (ADMIN1_BY_COUNTRY[country.id] ?? []).length > 0);
+    // Only countries with a playable pool AND states/provinces — never a dead end.
+    // The poolSize half matches the Country list's invariant (line above): a country
+    // whose admin-1 map lands before its question pool must not be listed, or every
+    // state click would hit the fail-closed deal-time gate. Today that is just the
+    // United States; more countries appear here as admin-1 pools land, with no USA
+    // hardcoding in the picker itself.
+    const regions = COUNTRIES.filter(
+      (country) =>
+        poolSize("country", country.id) > 0 && (ADMIN1_BY_COUNTRY[country.id] ?? []).length > 0,
+    );
     return (
       <RegionList
         title="State"
