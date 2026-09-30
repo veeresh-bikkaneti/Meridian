@@ -37,8 +37,8 @@ The United States country pack is country-scale places (a river system, a range,
 2. The player drops one pin on the satellite map.
 3. Distance is measured in kilometers.
 4. If the distance is less than or equal to that place's radius, the pin is a hit. The story is shown, then the next name.
-5. If the distance is greater than the radius, the run ends. The real spot is marked. No further places are offered.
-6. If the list has no further place, the run ends with the count already earned. It does not repeat an earlier place.
+5. If the distance is greater than the radius, that place is over — the real spot is marked, then the next name follows. The run itself never ends on a miss.
+6. The trail is endless: after the last place, it cycles back to the start of the day's order and continues. There is no final round. The player ends the game explicitly via the End game control, which shows a summary (total score, places played, hits, average distance, best pin) before the game closes.
 
 Landing outside the state or country does not end the run by itself. A border place can be hit from across the line when the pin is still inside the radius. Leaving the border only matters when that also means leaving the radius.
 
