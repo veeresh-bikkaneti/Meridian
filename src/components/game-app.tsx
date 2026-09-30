@@ -3,7 +3,8 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { radiusKm } from "@/game/radius";
 import { COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
-import { continueRun, dropPin, resumeRun, type Edition, type Run, type RunPhase } from "@/game/run";
+import { continueRun, dropPin, endRun, resumeRun, type Edition, type Run, type RunPhase, type RunSummary } from "@/game/run";
+import { distanceScore } from "@/game/score";
 import { STARTERS, type Starter } from "@/game/starters";
 import { orderPlaces, placeAt } from "@/game/trail";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
@@ -12,6 +13,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
+import { RunSummaryCard } from "./run-summary";
 
 const RUN_KEY = "meridian.run";
 
@@ -47,7 +49,7 @@ function isEdition(value: unknown): value is Edition {
 }
 
 function isPhase(value: unknown): value is RunPhase {
-  return value === "aim" || value === "story" || value === "done";
+  return value === "aim" || value === "story" || value === "done" || value === "summary";
 }
 
 function readRun(): Run | null {
@@ -77,6 +79,7 @@ function readRun(): Run | null {
       index: record.index,
       hits: record.hits,
       phase: record.phase,
+      results: Array.isArray(record.results) ? record.results : [],
     };
   } catch {
     return null;
@@ -373,7 +376,7 @@ function Play({
     () => orderPlaces(places, run.dateKey, run.edition, run.regionId),
     [places, run.dateKey, run.edition, run.regionId],
   );
-  const place = placeAt(ordered, run.index);
+  const place = ordered.length > 0 ? placeAt(ordered, run.index % ordered.length) : null;
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
   // screen-reader users get feedback for place/move/clear. Cleared whenever
@@ -388,6 +391,7 @@ function Play({
   // instance — its controller is terminal (revealDone) and its highlight
   // belongs to the previous run.
   const [mapKey, setMapKey] = useState(0);
+  const [summary, setSummary] = useState<RunSummary | null>(null);
 
   useEffect(() => {
     setAim(null);
@@ -416,7 +420,7 @@ function Play({
   }, [run.phase, aim]);
 
   useEffect(() => {
-    if (place || run.phase === "done") return;
+    if (place || run.phase === "done" || run.phase === "summary") return;
     onRun({ ...run, phase: "done" });
   }, [onRun, place, run]);
 
@@ -485,16 +489,36 @@ function Play({
       run.edition === "globe"
         ? radiusKm("globe", 0)
         : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
+    const score = distanceScore(
+      distance,
+      run.edition === "state" ? "nebraska" : run.edition === "country" ? "usa" : "world",
+    );
     setAim(null);
     setAimAnnouncement(null);
     setDrop({ lon, lat, distanceKm: distance, placeId: place.id });
-    onRun(dropPin(run, distance, radius));
+    onRun(dropPin(run, distance, radius, score));
   }
 
   function onContinue() {
     setDrop(null);
     setAimAnnouncement(null);
-    onRun(continueRun(run, ordered.length));
+    onRun(continueRun(run));
+  }
+
+  function onEndGame() {
+    const { run: ended, summary: final } = endRun(run);
+    setSummary(final);
+    onRun(ended);
+  }
+
+  function onSummaryDone() {
+    setSummary(null);
+    onLeave();
+  }
+
+  function onSummaryPlayAgain() {
+    setSummary(null);
+    onReplay();
   }
 
   // Miss-card replay: the same resumeRun chain as openRun (a done run always
@@ -541,9 +565,20 @@ function Play({
           <Button variant="secondary" className="pointer-events-auto" onClick={onLeave}>
             Editions
           </Button>
-          <p className="rounded-md border border-line bg-surface px-3 py-2 text-sm text-fg">
-            {run.hits} placed
-          </p>
+          <div className="flex flex-col items-end gap-2">
+            <p className="rounded-md border border-line bg-surface px-3 py-2 text-sm text-fg">
+              {run.hits} placed
+            </p>
+            {run.phase !== "summary" ? (
+              <button
+                type="button"
+                onClick={onEndGame}
+                className="pointer-events-auto rounded-md border border-white/10 bg-[rgba(10,12,16,0.72)] px-3 py-1.5 text-xs text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+              >
+                End game
+              </button>
+            ) : null}
+          </div>
         </div>
       </div>
       <p className="sr-only" aria-live="polite">
@@ -551,9 +586,11 @@ function Play({
           ? (aimAnnouncement ?? (place ? `Find ${place.name}.` : null))
           : run.phase === "story" && place
             ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.`
-            : place
-              ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : ""}. ${place.name} missed. The run is over.`
-              : `${run.regionName} finished.`}
+            : run.phase === "summary" && summary
+              ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}.`
+              : place
+                ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : ""}. ${place.name} missed.`
+                : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
         <QuestionBubble
@@ -564,7 +601,7 @@ function Play({
           onViewChange={setBubble}
         />
       ) : null}
-      {run.phase !== "aim" ? (
+      {run.phase !== "aim" && run.phase !== "summary" ? (
         <ResultCard
           run={run}
           place={place}
@@ -574,7 +611,14 @@ function Play({
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
           onContinue={onContinue}
-          onReplay={onReplay}
+        />
+      ) : null}
+      {run.phase === "summary" && summary ? (
+        <RunSummaryCard
+          summary={summary}
+          regionName={run.regionName}
+          onDone={onSummaryDone}
+          onPlayAgain={onSummaryPlayAgain}
         />
       ) : null}
     </main>
