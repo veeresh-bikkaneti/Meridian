@@ -120,12 +120,16 @@ function setGameGestures(map: Map, edition: "state" | "country" | "globe", enabl
 
 /**
  * Backside dimming hook (design §5): while the projection is globe, markers
- * on the far side of the planet get the `is-backside` class. `map.transform`
- * is absent from the public Map$1 declarations (it lives on the runtime
- * Camera base class) while `isLocationOccluded` itself is public
- * (d.ts:6985) — hence the narrow structural cast. Re-verify on upgrades.
- * The dimming rule for `.is-backside` lives in the app CSS; the class toggle
- * alone is the adapter's contract.
+ * on the far side of the planet get the `is-backside` class. MapLibre v6
+ * moved the transform off the public Map surface onto the internal camera
+ * (Map#zoomIn delegates to `map._camera`), while `isLocationOccluded` itself
+ * is public on the transform — hence the narrow structural cast. Re-verify
+ * on upgrades. This must never throw: it runs inside map event handlers,
+ * and a throw orphans the in-flight camera ease (observed: the first zoom-in
+ * after the mercator→globe swap became a no-op because the ease's render
+ * callback died on the first `move` event). The dimming rule for
+ * `.is-backside` lives in the app CSS; the class toggle alone is the
+ * adapter's contract.
  */
 function updateMarkerOcclusion(
   map: Map,
@@ -133,11 +137,17 @@ function updateMarkerOcclusion(
   projection: "globe" | "mercator",
 ): void {
   const globe = projection === "globe";
-  const camera = map as unknown as {
-    transform: { isLocationOccluded(lngLat: LngLat): boolean };
-  };
+  // v6: the transform lives on the internal camera, not on Map itself.
+  const transform = (
+    map as unknown as {
+      _camera?: { transform?: { isLocationOccluded(lngLat: LngLat): boolean } };
+    }
+  )._camera?.transform;
   for (const marker of markers) {
-    const occluded = globe && camera.transform.isLocationOccluded(marker.getLngLat());
+    const occluded =
+      globe && transform
+        ? transform.isLocationOccluded(marker.getLngLat())
+        : false;
     marker.getElement().classList.toggle("is-backside", occluded);
   }
 }
@@ -357,6 +367,13 @@ export function SatelliteMap(props: {
   // instance via `resetForNextPlace()` for the next aim phase.
   const controllerRef = useRef<ZoomSpaceController | null>(null);
   const projectionRef = useRef<"globe" | "mercator">("globe");
+  // Re-entrancy guard: while an intent batch is executing, MapLibre may
+  // synchronously emit nested map events (projection migration perturbs the
+  // camera transform). Those carry a half-applied camera state and must not
+  // reach the controller — the batch's own snapshots reconverge tracking
+  // when it completes. Set only via withoutControllerEvents (nesting-safe
+  // save/restore + try/finally); the four map listeners check it directly.
+  const dispatchingIntentsRef = useRef(false);
   const maxBoundsRef = useRef<[number, number, number, number] | null>(null);
   const dtoRef = useRef<RegionGeometryDTO | null>(null);
   const reducedMotionRef = useRef(false);
@@ -418,8 +435,12 @@ export function SatelliteMap(props: {
   // prefers-reduced-motion (UX 4.6). MapLibre's own pinch/wheel zoom keeps
   // its default (also user-invoked) behavior; dblclick zoom is disabled —
   // double-tap / double-click commits the pin instead.
-  const handleZoomIn = () => mapRef.current?.zoomIn({ essential: true });
-  const handleZoomOut = () => mapRef.current?.zoomOut({ essential: true });
+  const handleZoomIn = () => {
+    mapRef.current?.zoomIn({ essential: true });
+  };
+  const handleZoomOut = () => {
+    mapRef.current?.zoomOut({ essential: true });
+  };
 
   // --- Keyboard aiming (M6: UX 2.5 wins over arch 3.5) ---
   // Arrows move a crosshair (16px, Shift+arrows 64px), clamped to the
@@ -592,7 +613,7 @@ export function SatelliteMap(props: {
      * intent the adapter does not know is a type error, never a silent
      * no-op.
      */
-    const executeIntents = (intents: ZoomSpaceIntent[]) => {
+    const executeIntentsInner = (intents: ZoomSpaceIntent[]) => {
       if (!alive) return;
       for (const intent of intents) {
         switch (intent.type) {
@@ -613,7 +634,18 @@ export function SatelliteMap(props: {
             // MUST be re-verified on every upgrade.
             const apply = () => {
               if (!alive) return;
-              map.setProjection({ type: intent.projection });
+              // Preserve the user's gesture position across the swap:
+              // capture the pre-swap zoom and reassert it if migration
+              // perturbed it. (Verified bit-identical on the clean path,
+              // so this is a no-op there.) Guarded, so any nested map
+              // events from the swap or the restore never reach the
+              // controller — this also covers the deferred once("load")
+              // path, which runs outside executeIntents' own guard.
+              const preSwapZoom = map.getZoom();
+              withoutControllerEvents(() => {
+                map.setProjection({ type: intent.projection });
+                if (map.getZoom() !== preSwapZoom) map.setZoom(preSwapZoom);
+              });
               projectionRef.current = intent.projection;
             };
             try {
@@ -757,6 +789,34 @@ export function SatelliteMap(props: {
           }
         }
       }
+    };
+    /**
+     * Run `fn` with controller event forwarding suspended (nesting-safe:
+     * save/restore, so an inner use never clears an outer guard early;
+     * try/finally, so an exception can never leave it stuck). While the
+     * flag is set, the four map listeners skip controller forwarding —
+     * MapLibre may synchronously emit nested events with a half-applied
+     * camera state (projection migration perturbs the transform), and those
+     * must never re-enter the controller.
+     */
+    const withoutControllerEvents = (fn: () => void) => {
+      const prev = dispatchingIntentsRef.current;
+      dispatchingIntentsRef.current = true;
+      try {
+        fn();
+      } finally {
+        dispatchingIntentsRef.current = prev;
+      }
+    };
+    /**
+     * Guarded entry point: while an intent batch executes, the four map
+     * listeners below skip controller forwarding (see
+     * withoutControllerEvents), so a half-applied camera state can never
+     * re-enter the controller. The batch's own snapshots reconverge
+     * tracking when it completes.
+     */
+    const executeIntents = (intents: ZoomSpaceIntent[]) => {
+      withoutControllerEvents(() => executeIntentsInner(intents));
     };
     executeIntentsRef.current = executeIntents;
 
@@ -921,8 +981,8 @@ export function SatelliteMap(props: {
 
     // The ONE move listener (design §1): it carries the controller's T_OUT
     // direction latch, the narrow-in crossing swap, and the globe backside
-    // occlusion. Thresholds are never evaluated mid-gesture; the controller
-    // decides on zoomend/moveend.
+    // occlusion. Thresholds are never evaluated
+    // mid-gesture; the controller decides on zoomend/moveend.
     //
     // The zoomstart listener beside it is the T_OUT reachability fix: it fires
     // for wheel, pinch, +/- buttons, and keyboard zoom BEFORE any zoom delta
@@ -937,21 +997,34 @@ export function SatelliteMap(props: {
       center: map.getCenter().toArray(),
     });
     map.on("zoomstart", () => {
+      // Re-entrancy guard: a nested zoomstart fired while an intent batch
+      // is executing carries a half-applied camera state — never forward it.
+      if (dispatchingIntentsRef.current) return;
       const c = controllerRef.current;
       if (c) executeIntents(c.onZoomStart());
     });
     map.on("move", () => {
-      const c = controllerRef.current;
-      if (c) executeIntents(c.onMove(snapshot()));
+      // Same guard for the controller half; marker occlusion is a pure
+      // visual sync and still runs.
+      if (!dispatchingIntentsRef.current) {
+        const c = controllerRef.current;
+        if (c) executeIntents(c.onMove(snapshot()));
+      }
       updateMarkerOcclusion(map, markersRef.current, projectionRef.current);
     });
     map.on("zoomend", () => {
       // Track zoom for the +/- controls' aria-live announcements (M10).
       setZoom(Math.round(map.getZoom()));
+      // Re-entrancy guard: a nested zoomend fired while an intent batch is
+      // executing (e.g. from the projection-swap zoom restore) must not
+      // re-enter the controller with a transitional camera state.
+      if (dispatchingIntentsRef.current) return;
       const c = controllerRef.current;
       if (c) executeIntents(c.onZoomEnd(snapshot()));
     });
     map.on("moveend", () => {
+      // Re-entrancy guard (see zoomend).
+      if (dispatchingIntentsRef.current) return;
       const c = controllerRef.current;
       if (!c) return;
       executeIntents(c.onMoveEnd(snapshot()));
