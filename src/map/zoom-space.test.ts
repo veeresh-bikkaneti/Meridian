@@ -1041,9 +1041,10 @@ test("return: continue eases back to the region framing, re-arms taps", () => {
   // Continue → next place.
   assert.deepEqual(c.resetForNextPlace(), []);
   assert.equal(c.revealDone, false);
-  // Tap handlers stay armed during the return (the user can place the next
-  // pin while the camera eases back); only gestures are held.
+  // Tap handlers re-arm immediately on continue (the tour left them
+  // detached); the user can place the next pin while the camera eases back.
   assert.deepEqual(c.beginReturn(), [
+    { type: "tap-handlers", enabled: true },
     {
       type: "ease-to",
       center: NEBRASKA.center,

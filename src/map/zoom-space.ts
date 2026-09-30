@@ -1065,10 +1065,12 @@ export class ZoomSpaceController {
     }
     this.beatActiveFlag = true;
     this.beatKindFlag = "return";
-    // Tap handlers stay armed: the user can place the next pin while the
-    // camera eases back; a mid-return commit queues behind the beat and
-    // flushes on completion. Gestures stay off so drags don't fight the
-    // animation.
+    // Re-arm tap handlers immediately: the tour left them detached (aim was
+    // over), and the next question's aim phase starts now. The user can place
+    // the next pin while the camera eases back; a mid-return commit queues
+    // behind the beat and flushes on completion. Gestures stay off so drags
+    // don't fight the animation.
+    intents.push({ type: "tap-handlers", enabled: true });
     intents.push({
       type: "ease-to",
       center: target.center,
