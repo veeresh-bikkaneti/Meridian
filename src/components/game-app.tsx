@@ -414,7 +414,7 @@ function Choose({
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <EditionCard
           title="State"
-          detail="Pick a country, then one of its states. Each state plays on its own."
+          detail="Pick a country, then one of its states. Each state is its own run."
           action="Choose a state"
           onClick={onState}
         />
