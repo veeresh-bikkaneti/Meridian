@@ -14,12 +14,12 @@ import path from "node:path";
  *
  * Imagery tiles: server.arcgisonline.com is unreachable from this VM (TCP
  * connects time out 100% — measured 2026-09-30; other hosts work), so tile
- * requests are fulfilled with a 1x1 PNG stub. This restores the nominal
+ * requests are fulfilled with a 256x256 PNG stub. This restores the nominal
  * "network works" condition: it does not change any app behavior, it only
  * lets MapLibre's style "load" event fire so the intro camera beats run.
  * Every zoom-space assertion measures camera/projection/announcement/pin
  * state — tile pixels are irrelevant to all of them — and the tile
- * loading/failure UX itself is covered by the 41 unit tests in
+ * loading/failure UX itself is covered by the 13 unit tests in
  * src/map/tile-status.test.ts, not by these specs. If real tile egress
  * returns, delete the stub and the pass-through below suffices.
  */
@@ -164,17 +164,6 @@ export async function spotMarkerCenter(page: Page): Promise<{ x: number; y: numb
   return box ? { x: box.x + box.width / 2, y: box.y + box.height / 2 } : null;
 }
 
-/**
- * Screen point of Oia (deterministic first globe target: lon 25.376, lat
- * 36.461) at the initial camera (center [0,0], zoom 1.5). Computed with the
- * app's own MapLibre GlobeTransform projection (maplibre-gl, same version
- * as the bundle): project2.mjs in the QA work dir. Sanity-checked: the
- * viewport center projects to (0,0) exactly, and projecting back is the
- * transform's own inverse.
- */
-export const OIA_DESKTOP = { x: 795.9, y: 319.1 }; // 1440x900
-export const OIA_MOBILE = { x: 270.7, y: 291.5 }; // 390x844
-
 /** The tap point IS the answer: no lift, no pre-compensation. */
 
 export async function focusedName(page: Page): Promise<string> {
@@ -199,43 +188,6 @@ export async function tabUntil(
     await page.keyboard.press("Tab");
   }
   return focusedName(page);
-}
-
-/**
- * Pin the page calendar to 2026-09-29 (UTC).
- *
- * NOTE (F4 question randomization): the globe place order is NO LONGER
- * date-shuffled — each run mints a per-session seed, so the first question
- * is random even on a frozen date and the OIA_* tap points no longer pin a
- * deterministic first target. This freeze now only pins `dateKey`, which
- * scopes the persistent no-repeat history (seen places) in localStorage.
- * This installs an init script that freezes the page's Date (no-arg
- * construction and Date.now()) to that day. Timers, requestAnimationFrame,
- * and performance.now() are untouched, so animations and timeouts behave
- * normally. Production date logic is unit-tested (daily/trail tests); the
- * freeze only makes the E2E calendar deterministic.
- *
- * MUST be called before startGlobeRun — addInitScript only affects
- * navigations that happen after it is installed.
- */
-export async function freezeOiaPuzzle(page: Page): Promise<void> {
-  await page.addInitScript(() => {
-    const FIXED = Date.UTC(2026, 8, 29, 12, 0, 0);
-    const RealDate = Date;
-    class FrozenDate extends RealDate {
-      constructor(...args: never[]) {
-        if (args.length === 0) {
-          super(FIXED);
-        } else {
-          super(...(args as unknown as ConstructorParameters<DateConstructor>));
-        }
-      }
-      static now(): number {
-        return FIXED;
-      }
-    }
-    window.Date = FrozenDate as unknown as DateConstructor;
-  });
 }
 
 export async function evidencePath(name: string): Promise<string> {  await mkdir(EVIDENCE, { recursive: true });

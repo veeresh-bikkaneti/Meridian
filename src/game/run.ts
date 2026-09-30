@@ -33,9 +33,10 @@ export type Run = {
   /** Every scored place, in order. Grows unbounded in endless mode. */
   results: PlaceResult[];
   /**
-   * Per-session dealing seed, minted by startRun. A fresh run always deals a
-   * fresh order, so restarts never repeat the same first question. Persisted
-   * so a reload keeps dealing the same session's order.
+   * Per-session dealing seed, minted by startRun. A fresh run deals a
+   * freshly shuffled order, so restarts no longer deterministically repeat
+   * the same first question. Persisted so a reload keeps dealing the same
+   * session's order.
    */
   seed: number;
   /**
@@ -136,7 +137,7 @@ export function isResumable(
 export function resumeRun(
   saved: Run | null,
   today: { edition: Edition; regionId: string; regionName: string; dateKey: string },
-  poolIds: string[],
+  poolIds: string[] = [],
 ): Run {
   if (isResumable(saved, today)) {
     // Backfill results for runs saved before endless mode, the dealing

@@ -123,3 +123,23 @@ test("at returns null for an empty pool or a negative position", () => {
   assert.equal(other.at(-1), null);
   assert.equal(other.at(0)!.id, "a");
 });
+
+test("resume at a cycle boundary preserves the full no-repeat history", () => {
+  const places = [{ id: "a" }, { id: "b" }, { id: "c" }, { id: "d" }];
+  const store = memorySeenStore();
+  const seed = 42;
+  // Deal a full cycle (positions 0-3) and mark them.
+  const before = createDealer(places, seed, store, 0);
+  before.markDealtThrough(3);
+  assert.deepEqual(new Set(store.read()), new Set(["a", "b", "c", "d"]));
+  // Resume at the cycle boundary (position 4): the store must still hold
+  // all 4 ids after marking — the union-write preserves history instead of
+  // collapsing it to just the newly dealt ids.
+  const after = createDealer(places, seed, store, 4);
+  after.markDealtThrough(4);
+  assert.deepEqual(new Set(store.read()), new Set(["a", "b", "c", "d", after.at(4)!.id]));
+  // And the resumed order matches the pre-reload order.
+  const orderBefore = [0, 1, 2, 3, 4, 5].map((i) => before.at(i)!.id);
+  const orderAfter = [0, 1, 2, 3, 4, 5].map((i) => after.at(i)!.id);
+  assert.deepEqual(orderAfter, orderBefore);
+});

@@ -33,7 +33,7 @@ export function shufflePlaces<T>(places: T[], seed: number): T[] {
 
 /**
  * Per-cycle seed: the cycle number is folded into the session seed so
- * consecutive cycles deal different orders. Pure.
+ * consecutive cycles normally deal different orders. Pure.
  */
 export function cycleSeed(sessionSeed: number, cycle: number): number {
   return hashString(`${sessionSeed >>> 0}:${cycle}`);

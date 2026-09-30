@@ -83,14 +83,16 @@ function readRun(): Run | null {
     }
     // Range-check the restored numbers: a tampered sessionStorage index
     // (e.g. 1e15) would otherwise send the dealer spinning through billions
-    // of cycles; a non-finite seed is meaningless. Fail closed to null.
+    // of cycles; a non-finite seed is meaningless. The cap is 20k (not 1M):
+    // the dealer's resume re-derive is O(N^2/pool), measured ~52ms at 20k
+    // but ~130s at 1M. Fail closed to null.
     if (
       !Number.isInteger(record.index) ||
       record.index < 0 ||
-      record.index > 1_000_000 ||
+      record.index > 20_000 ||
       !Number.isInteger(record.hits) ||
       record.hits < 0 ||
-      record.hits > 1_000_000
+      record.hits > 20_000
     ) {
       return null;
     }
@@ -252,9 +254,8 @@ export function GameApp() {
       // page load must not auto-start a run, so only resumable sessions are
       // restored. (The old `restored === saved` check could never pass:
       // resumeRun always returns a new object, so reloads silently dropped
-      // to the menu instead of resuming.) The fallback pool is unused here:
-      // a resumable saved run carries its own persisted poolIds.
-      if (isResumable(saved, today)) commit(resumeRun(saved, today, []));
+      // to the menu instead of resuming.)
+      if (isResumable(saved, today)) commit(resumeRun(saved, today));
     }
     setReady(true);
   }, [commit]);
@@ -341,7 +342,7 @@ function Choose({
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <EditionCard
           title="State"
-          detail="All 50 states. The same trail for that state on this UTC date."
+          detail="All 50 states. Every visit shuffles the trail with a fresh seed."
           action="Choose a state"
           onClick={onState}
         />
@@ -438,9 +439,10 @@ function Play({
     // than an empty pool.
     return filtered.length > 0 ? filtered : places;
   }, [places, run.poolIds]);
-  // Endless dealer: per-session shuffle (fresh seed per run, so restarts never
-  // repeat the same first question), per-cycle reseed, and a persistent
-  // no-repeat history in localStorage. The dealer is created once per run
+  // Endless dealer: per-session shuffle (fresh seed per run, so restarts no
+  // longer deterministically repeat the same first question), per-cycle
+  // reseed, and a persistent no-repeat history in localStorage. The dealer
+  // is created once per run
   // identity (seed); run.index advances within it. A reload restores the same
   // seed and pool, so the resumed run keeps dealing the same session's order.
   const dealer = useMemo(
