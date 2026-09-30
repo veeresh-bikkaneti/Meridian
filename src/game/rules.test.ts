@@ -51,7 +51,7 @@ test("share text is a spoiler-free endless line", () => {
     bestStreak: 0,
     now: new Date(Date.UTC(2026, 8, 28)),
   });
-  assert.equal(noStreak, "meridian June 18, 2025\n0 over 0 places · 0 avg · Japan");
+  assert.equal(noStreak, "meridian June 18, 2025\n0 over 0 places · 0 avg/place · Japan");
 });
 
 test("stories stay within 60 words and ids are unique", () => {
