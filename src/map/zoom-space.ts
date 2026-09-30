@@ -961,6 +961,9 @@ export class ZoomSpaceController {
     }
     this.beatActiveFlag = true;
     this.beatKindFlag = "tour";
+    // Announce the tour for screen readers: the 7s animation is otherwise
+    // silent, and the card appears without warning at the end.
+    intents.push({ type: "announce", message: "Showing the answer." });
     if (!this.flat) {
       // Lift the globe-edition maxZoom cap for the rooftop dive; restored by
       // the return beat (beginReturn/completeReturn).
@@ -1095,6 +1098,9 @@ export class ZoomSpaceController {
       intents.push({ type: "set-max-zoom", maxZoom: GLOBE_MAX_ZOOM });
     }
     intents.push(...this.evaluateThresholds(zoom));
+    // A commit that landed mid-return (taps are armed during the ease)
+    // flushes now — otherwise the round soft-locks with a placed pin.
+    intents.push(...this.flushQueuedReveal());
     return intents;
   }
 

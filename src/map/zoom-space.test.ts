@@ -508,6 +508,7 @@ test("standard reveal: single settle beat chains into the tour, terminal at tour
   // Settle completion is no longer terminal — it chains into the tour.
   assert.deepEqual(c.onMoveEnd(snap(6, "mercator")), [
     { type: "gestures", enabled: true },
+    { type: "announce", message: "Showing the answer." },
     { type: "flash-region", feature: NEBRASKA },
     { type: "pulse-spot", center: REVEAL_REQUEST.spot },
     { type: "tour-hold", durationMs: 1200 },
@@ -982,6 +983,7 @@ test("tour: globe edition lifts maxZoom, skips the region flash", () => {
   const tourStart = c.onMoveEnd(snap(6, "globe"));
   assert.deepEqual(tourStart, [
     { type: "gestures", enabled: true },
+    { type: "announce", message: "Showing the answer." },
     { type: "set-max-zoom", maxZoom: 14 },
     { type: "pulse-spot", center: REVEAL_REQUEST.spot },
     { type: "tour-hold", durationMs: 1200 },
