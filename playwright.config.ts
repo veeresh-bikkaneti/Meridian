@@ -71,6 +71,19 @@ export default defineConfig({
       name: "question-randomization",
       testMatch: /question-randomization\.spec\.ts/,
     },
+    {
+      name: "pinch-zoom",
+      testMatch: /pinch-zoom\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+        hasTouch: true,
+        isMobile: true,
+      },
+    },
+    {
+      name: "highlight",
+      testMatch: /highlight\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
