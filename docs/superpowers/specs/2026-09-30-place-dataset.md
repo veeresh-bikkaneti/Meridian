@@ -26,17 +26,17 @@ flowchart LR
     LOADER --> DEALER["F4 createDealer<br/>(unchanged shuffle/history)"]
     DATA --> GATE["scripts/check-generated-places.mjs<br/>prebuild gate — fails the build"]
     CDATA --> GATE
-    GATE -.->|"any violation → exit 1"| BUILDOUT["vite build"]
+    GATE -.->|"any violation → build rejected"| BUILDOUT["vite build"]
 ```
 
 ## Dealing-pool assignment
 
 | Generated places | Edition | RegionId |
 |---|---|---|
-| US place (via NE `ADM1NAME` join, authoritative — no border guessing) | `state` | state slug, e.g. `texas` (284 places, 48 states) |
+| US place (via the state name on the Natural Earth record, authoritative — no border guessing) | `state` | state slug, e.g. `texas` (284 places, 48 states) |
 | District of Columbia (not a state) | `country` | `united-states` |
 | Place in a country-edition country (CA/MX/BR/GB/FR/DE/IT/EG/IN/CN/JP/AU) | `country` | country slug, e.g. `japan` (1,059 places) |
-| Everything else (208 ISO codes incl. Somaliland/Kosovo) | `globe` | `globe` (2,125 places) |
+| Everything else (196 countries/territories incl. Somaliland/Kosovo) | `globe` | `globe` (2,125 places) |
 
 Delaware and Vermont have no generated places and keep their curated-only pools.
 
@@ -60,8 +60,8 @@ Every generated place is re-validated against its declared country box on every
 build through the real F7 gate (`validateGeneratedPlace`):
 
 - `scripts/check-generated-places.mjs` — wired as `prebuild` and
-  `prebuild:pages`; any mismatch exits non-zero and **rejects the build loudly**.
-  Antimeridian-wrapped countries (RU, NZ, AQ) are normalized into the 0–360 box
+  `prebuild:pages`; any mismatch **rejects the build loudly**.
+  Countries straddling the date line (RU, NZ, AQ) are normalized into the 0–360 box
   frame before validating, exactly like the F6a verify gate.
 - `src/game/generated-places.test.ts` — unit tests: Badville/Goodville fixtures
   prove the gate has teeth, the full 3,468-place dataset passes, ids are unique
@@ -74,7 +74,9 @@ build through the real F7 gate (`validateGeneratedPlace`):
 - `src/game/data/country-boxes.json` — reference boxes for the gate (~33 KB)
 - `src/game/generated-places.ts` — loader + `placesFor()` pool assembly
 - `scripts/assign-place-editions.mjs` — one-time landing/enrichment script
-  (fails loudly on unassignable places; needs the scratch raw files to re-run)
+  (fails loudly on unassignable places; re-running needs the scratch inputs —
+  defaults to the repo sibling `~/workspace/meridian-place-dataset`,
+  override with the `MERIDIAN_PLACE_SCRATCH` env var)
 - `scripts/check-generated-places.mjs` — build-failing import gate
 - `src/game/generated-places.test.ts` — unit tests
 
