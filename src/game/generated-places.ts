@@ -144,7 +144,7 @@ function assertValidRecord(
  * a regionId that is not a real chunk name can never become a file path.
  */
 function manifestRegionFor(regionId: string): ManifestRegion {
-  const region = manifest.regions[regionId];
+  const region = Object.hasOwn(manifest.regions, regionId) ? manifest.regions[regionId] : undefined;
   if (!region) {
     throw new Error(`unknown GeoNames region "${regionId}" — refusing to load a chunk`);
   }
@@ -249,7 +249,7 @@ export function poolSizeFor(edition: Edition, regionId: string): number {
   for (const s of STARTERS) {
     if (s.edition === edition && s.regionId === regionId) count++;
   }
-  const region = manifest.regions[regionId];
+  const region = Object.hasOwn(manifest.regions, regionId) ? manifest.regions[regionId] : undefined;
   if (region && region.edition === edition) count += region.count;
   return count;
 }
