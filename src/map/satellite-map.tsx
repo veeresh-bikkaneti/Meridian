@@ -1,15 +1,31 @@
 import { useEffect, useReducer, useRef, useState, type JSX, type KeyboardEvent } from "react";
 import { Info } from "lucide-react";
-import { Map, Marker, type GeoJSONSource } from "maplibre-gl";
+import { Map, Marker, type GeoJSONSource, type LngLat } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
+import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
+import {
+  buildRegionIndex,
+  lookupRegion,
+  type RegionGeometryDTO,
+} from "./region-index.ts";
+import { mountStarfield } from "./starfield.ts";
 import { createTapTracker } from "./tap-tracker.ts";
-import { INITIAL_TILE_STATUS, tileStatusReducer } from "./tile-status.ts";
+import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
+import {
+  GLOBE_HOME,
+  SPIN_DURATION_MS,
+  SPIN_SPEED_DPS,
+  ZoomSpaceController,
+  type RevealRequest,
+  type ZoomSnapshot,
+  type ZoomSpaceIntent,
+} from "./zoom-space.ts";
 
 const IMAGERY_SOURCE = "imagery";
 const LINE_SOURCE = "variation-line";
@@ -44,9 +60,6 @@ function prefersReducedMotion(): boolean {
   );
 }
 
-/** Reveal camera: ONE single beat framing pin + spot (M8), 2-2.5s. */
-const REVEAL_CAMERA_MS = 2200;
-
 /**
  * Named bottom-padding constant (M8): the floating result card sits at the
  * bottom of the viewport, so the reveal framing reserves room for it and the
@@ -57,7 +70,7 @@ const REVEAL_CARD_PADDING_PX = 120;
 /** Keeps the pre-existing padding-80 intent on the other three edges. */
 const REVEAL_EDGE_PADDING_PX = 80;
 
-/** Cubic ease-in-out for the reveal beat (M8). */
+/** Cubic ease-in-out for scripted camera beats (M8). */
 function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
@@ -68,6 +81,155 @@ function easeInOutCubic(t: number): number {
  * blocked host) — without it the spinner would spin forever.
  */
 const TILE_LOAD_TIMEOUT_MS = 15000;
+
+/**
+ * Region atlas index, built once per page load (design §3). The geometry
+ * resolution (TopoJSON → RegionGeometryDTO) is the sibling crew's
+ * region-index.ts; this cache just avoids rebuilding it per map mount.
+ */
+let regionIndexCache: globalThis.Map<string, RegionGeometryDTO> | null = null;
+function getRegionIndex(): globalThis.Map<string, RegionGeometryDTO> {
+  if (!regionIndexCache) regionIndexCache = buildRegionIndex();
+  return regionIndexCache;
+}
+
+/**
+ * Physical gesture model (design §7). The map constructs with
+ * `interactive: false` so every handler starts disabled; the controller's
+ * `gestures` intents re-arm exactly this set. `doubleClickZoom` stays
+ * disabled (double-tap / double-click commits the pin) and MapLibre's
+ * keyboard stays disabled (M6 crosshair owns the keys); `boxZoom` is
+ * intentionally left out — it was never part of the game gesture model.
+ * `pitchWithRotate` is absent from the public MapLibre 6.11.2 declarations,
+ * so globe rotate/pitch is `dragRotate` + `touchPitch` (same effective
+ * gestures the old `interactive: true` construction enabled).
+ */
+function setGameGestures(map: Map, edition: "state" | "country" | "globe", enabled: boolean): void {
+  const handlers: { enable(): void; disable(): void }[] = [
+    map.dragPan,
+    map.scrollZoom,
+    map.touchZoomRotate,
+  ];
+  if (edition === "globe") handlers.push(map.dragRotate, map.touchPitch);
+  for (const handler of handlers) {
+    if (enabled) handler.enable();
+    else handler.disable();
+  }
+  if (enabled && edition !== "globe") map.touchZoomRotate.disableRotation();
+}
+
+/**
+ * Backside dimming hook (design §5): while the projection is globe, markers
+ * on the far side of the planet get the `is-backside` class. MapLibre v6
+ * moved the transform off the public Map surface onto the internal camera
+ * (Map#zoomIn delegates to `map._camera`), while `isLocationOccluded` itself
+ * is public on the transform — hence the narrow structural cast. Re-verify
+ * on upgrades. This must never throw: it runs inside map event handlers,
+ * and a throw orphans the in-flight camera ease (observed: the first zoom-in
+ * after the mercator→globe swap became a no-op because the ease's render
+ * callback died on the first `move` event). The dimming rule for
+ * `.is-backside` lives in the app CSS; the class toggle alone is the
+ * adapter's contract.
+ */
+function updateMarkerOcclusion(
+  map: Map,
+  markers: readonly Marker[],
+  projection: "globe" | "mercator",
+): void {
+  const globe = projection === "globe";
+  // v6: the transform lives on the internal camera, not on Map itself.
+  const transform = (
+    map as unknown as {
+      _camera?: { transform?: { isLocationOccluded(lngLat: LngLat): boolean } };
+    }
+  )._camera?.transform;
+  for (const marker of markers) {
+    const occluded =
+      globe && transform
+        ? transform.isLocationOccluded(marker.getLngLat())
+        : false;
+    marker.getElement().classList.toggle("is-backside", occluded);
+  }
+}
+
+/**
+ * Intro settle framing (design §4): fit the region bounds with 15% viewport
+ * padding, capped per edition — never floored at 3.2, so large countries
+ * settle below Z_GLOBE_OUT without bouncing. Camera math uses the game's
+ * regions.ts box (the established game truth, passed in), not the atlas
+ * DTO's naive dateline-spanning scan (Alaska's would fit a ~359° box).
+ */
+function computeSettleZoom(
+  map: Map,
+  bounds: [number, number, number, number],
+  edition: "state" | "country",
+): number {
+  const cap = edition === "state" ? 6.5 : 5.0;
+  map.resize();
+  const el = map.getContainer();
+  const pad = Math.max(0, Math.round(Math.min(el.clientWidth, el.clientHeight) * 0.15));
+  const camera = map.cameraForBounds(bounds, { padding: pad, maxZoom: cap });
+  return Math.min(camera?.zoom ?? cap, cap);
+}
+
+/**
+ * Reveal choreography inputs (design §6). The controller — never the caller
+ * — classifies "big miss" from pin/spot geometry, so this only computes the
+ * adapter-owned final framing: the existing M8 framing (card-aware padding,
+ * maxZoom caps) translated to the center+zoom the controller consumes. The
+ * variation payload is opaque to the controller; the adapter casts it back
+ * to its own Variation type when executing paint-variation (design §1).
+ */
+function buildRevealRequest(
+  map: Map,
+  variation: MapVariation,
+  mode: "flat" | "globe",
+  tileStatus: TileStatus,
+  projection: "globe" | "mercator",
+): RevealRequest {
+  const westEdge = Math.min(variation.pin.lon, variation.spot.lon);
+  const southEdge = Math.min(variation.pin.lat, variation.spot.lat);
+  const eastEdge = Math.max(variation.pin.lon, variation.spot.lon);
+  const northEdge = Math.max(variation.pin.lat, variation.spot.lat);
+  const camera = map.cameraForBounds(
+    [
+      [westEdge, southEdge],
+      [eastEdge, northEdge],
+    ],
+    {
+      padding: {
+        top: REVEAL_EDGE_PADDING_PX,
+        bottom: REVEAL_CARD_PADDING_PX,
+        left: REVEAL_EDGE_PADDING_PX,
+        right: REVEAL_EDGE_PADDING_PX,
+      },
+      maxZoom: mode === "globe" ? 4 : 8,
+    },
+  );
+  const fallbackCenter: [number, number] = [(westEdge + eastEdge) / 2, (southEdge + northEdge) / 2];
+  // cameraForBounds types center as LngLatLike (possibly undefined);
+  // normalize to a plain tuple for the controller.
+  const rawCenter = camera?.center;
+  const settleCenter: [number, number] = !rawCenter
+    ? fallbackCenter
+    : Array.isArray(rawCenter)
+      ? [rawCenter[0], rawCenter[1]]
+      : "lng" in rawCenter
+        ? [rawCenter.lng, rawCenter.lat]
+        : [rawCenter.lon, rawCenter.lat];
+  return {
+    variation,
+    pin: [variation.pin.lon, variation.pin.lat],
+    spot: [variation.spot.lon, variation.spot.lat],
+    settleCenter,
+    settleZoom: camera?.zoom ?? map.getZoom(),
+    // Honesty gate: no choreography over the error overlay.
+    tileFailed: tileStatus.kind === "failed",
+    // Camera truth at request time (resyncs the controller's tracked
+    // projection).
+    projection,
+  };
+}
 
 function markerElement(tone: MapMark["tone"]): HTMLDivElement {
   const spot = tone === "spot";
@@ -125,14 +287,62 @@ function setFeature(map: Map, id: string, coordinates: number[][] | null) {
 }
 
 /**
+ * Variation painting only (design §6): the gold line, the dashed radius ring
+ * and the distance label. The M8 camera beat used to live here; it now goes
+ * through the controller's reveal beat (`requestReveal`), so this function
+ * never touches the camera.
+ */
+function paintVariationLayers(
+  map: Map,
+  variation: MapVariation | null,
+  labelRef: { current: Marker | null },
+): void {
+  labelRef.current?.remove();
+  labelRef.current = null;
+  if (!variation) {
+    setFeature(map, LINE_SOURCE, null);
+    setFeature(map, RING_SOURCE, null);
+    return;
+  }
+  const line = variationLine(variation.pin, variation.spot, variation.kilometers);
+  setFeature(map, LINE_SOURCE, line.coordinates);
+  setFeature(map, RING_SOURCE, disk(variation.spot.lon, variation.spot.lat, variation.radiusKm));
+  const label = document.createElement("div");
+  label.textContent = line.label;
+  label.style.background = "#101211";
+  label.style.color = "#f4f1ea";
+  label.style.border = "1px solid #f2c14e";
+  label.style.borderRadius = "999px";
+  label.style.padding = "2px 8px";
+  label.style.fontSize = "12px";
+  label.style.fontWeight = "600";
+  label.style.pointerEvents = "none";
+  labelRef.current = new Marker({ element: label, anchor: "center" })
+    .setLngLat(line.midpoint)
+    .addTo(map);
+}
+
+/**
  * Live Esri imagery. A tap places (or moves) a pin — propose only, never
  * commit. Double-tap / double-click drops the pin: the second tap's point
  * becomes the pin location, then it commits exactly like the Drop pin
  * button. The Drop pin button stays as the explicit, accessible commit path.
  * After the drop, a line shows how far the pin is from the spot.
+ *
+ * Z3/Z4 zoom-space (design §1/§4/§6): the map is a thin adapter over the
+ * sibling crew's `ZoomSpaceController` (`src/map/zoom-space.ts`). The
+ * controller owns the intro / narrow-in / threshold / reveal choreography and
+ * emits a closed intent vocabulary; the adapter executes it (camera moves,
+ * gesture arming, highlight painting, announcements) and feeds back one
+ * `move` listener (+ `zoomend` / `moveend`). The adapter never makes camera
+ * decisions of its own.
  */
 export function SatelliteMap(props: {
   mode: "flat" | "globe";
+  /** Game edition — drives the controller's thresholds and gesture model. */
+  edition: "state" | "country" | "globe";
+  /** Region display name, resolved against the vendored atlas index. */
+  regionName: string;
   bounds?: [number, number, number, number]; // west, south, east, north
   onAim?: (lon: number, lat: number) => void;
   onConfirm?: (lon: number, lat: number) => void;
@@ -151,8 +361,35 @@ export function SatelliteMap(props: {
   const onClearAimRef = useRef(props.onClearAim);
   const marksRef = useRef(props.marks);
   const variationRef = useRef(props.variation);
+  // Zoom-space adapter refs. The controller instance lives here (not in the
+  // construction effect's closure) so the shared map listeners keep talking
+  // to the current one across the continue-reset, which resets this same
+  // instance via `resetForNextPlace()` for the next aim phase.
+  const controllerRef = useRef<ZoomSpaceController | null>(null);
+  const projectionRef = useRef<"globe" | "mercator">("globe");
+  // Re-entrancy guard: while an intent batch is executing, MapLibre may
+  // synchronously emit nested map events (projection migration perturbs the
+  // camera transform). Those carry a half-applied camera state and must not
+  // reach the controller — the batch's own snapshots reconverge tracking
+  // when it completes. Set only via withoutControllerEvents (nesting-safe
+  // save/restore + try/finally); the four map listeners check it directly.
+  const dispatchingIntentsRef = useRef(false);
+  const maxBoundsRef = useRef<[number, number, number, number] | null>(null);
+  const dtoRef = useRef<RegionGeometryDTO | null>(null);
+  const reducedMotionRef = useRef(false);
+  const editionRef = useRef<"state" | "country" | "globe">(props.edition);
+  const tapHandlersRef = useRef<{ attach(): void; detach(): void } | null>(null);
+  const executeIntentsRef = useRef<(intents: ZoomSpaceIntent[]) => void>(() => {});
+  const prevVariationRef = useRef<MapVariation | null>(null);
   const [ready, setReady] = useState(false);
-  const [zoom, setZoom] = useState(props.mode === "globe" ? 1.5 : 2);
+  // The intro opens at zoom 1.0 (Earth from space); zoomend keeps this fresh.
+  const [zoom, setZoom] = useState(1);
+  // Design §7: the wrapper is aria-hidden + inert for the whole intro beat,
+  // released at narrow completion.
+  const [introActive, setIntroActive] = useState(true);
+  // Zoom-space announcements (design §1): the controller's `announce`
+  // intents post here, reusing the M10 sr-only live-region pattern.
+  const [announcement, setAnnouncement] = useState("");
   // Must-fix #2: tile loading/failure UX. The reducer (tile-status.ts) is the
   // single source of truth for whether the initial tile set is loading,
   // ready, or failed; MapLibre events in the effect below map onto TileEvents
@@ -175,11 +412,9 @@ export function SatelliteMap(props: {
   onClearAimRef.current = props.onClearAim;
   marksRef.current = props.marks;
   variationRef.current = props.variation;
+  const tileStatusRef = useRef(tileStatus);
+  tileStatusRef.current = tileStatus;
   const view = imageryView(props.mode);
-  const west = props.bounds?.[0];
-  const south = props.bounds?.[1];
-  const east = props.bounds?.[2];
-  const north = props.bounds?.[3];
   const markKey = (props.marks ?? [])
     .map((mark) => `${mark.tone}:${mark.lon}:${mark.lat}`)
     .join("|");
@@ -200,8 +435,12 @@ export function SatelliteMap(props: {
   // prefers-reduced-motion (UX 4.6). MapLibre's own pinch/wheel zoom keeps
   // its default (also user-invoked) behavior; dblclick zoom is disabled —
   // double-tap / double-click commits the pin instead.
-  const handleZoomIn = () => mapRef.current?.zoomIn({ essential: true });
-  const handleZoomOut = () => mapRef.current?.zoomOut({ essential: true });
+  const handleZoomIn = () => {
+    mapRef.current?.zoomIn({ essential: true });
+  };
+  const handleZoomOut = () => {
+    mapRef.current?.zoomOut({ essential: true });
+  };
 
   // --- Keyboard aiming (M6: UX 2.5 wins over arch 3.5) ---
   // Arrows move a crosshair (16px, Shift+arrows 64px), clamped to the
@@ -285,35 +524,53 @@ export function SatelliteMap(props: {
     // On first mount this is a no-op (already the initial state).
     dispatchTile({ type: "retry" });
 
-    const locked =
-      props.mode === "flat" &&
-      west !== undefined &&
-      south !== undefined &&
-      east !== undefined &&
-      north !== undefined;
-    const bounds = locked
-      ? ([west, south, east, north] as [number, number, number, number])
-      : undefined;
+    const edition = props.edition;
+    const reducedMotion = prefersReducedMotion();
+    reducedMotionRef.current = reducedMotion;
+    editionRef.current = edition;
+
     // Consume a stashed retry viewport once (set by handleRetryTiles): a
-    // retry after panning/zooming reopens on the player's view instead of
-    // jumping home. Bounds-locked flat mode always wins (fitBounds on load
-    // reframes anyway).
+    // tile-Retry re-opens the SAME zoom-space state (design §8) — projection
+    // and camera are restored, never replayed from the intro.
     const retryView = retryViewRef.current;
     retryViewRef.current = null;
-    const center: [number, number] =
-      retryView && !bounds
-        ? retryView.center
-        : bounds
-          ? [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2]
-          : [0, 0];
-    const initialZoom =
-      retryView && !bounds ? retryView.zoom : props.mode === "globe" ? 1.5 : 2;
+    const isRestore = retryView != null;
+
+    // Resolve the atlas entry once per map instance. The polygon feeds the
+    // highlight; camera math (settle framing, max bounds, big-miss) uses the
+    // game's regions.ts box — the established game truth — because the
+    // atlas DTO's naive bounds span the dateline for Alaska.
+    let dto: RegionGeometryDTO | null = lookupRegion(getRegionIndex(), props.regionName);
+    if (!dto && props.bounds) {
+      const [west, south, east, north] = props.bounds;
+      dto = {
+        id: props.regionName,
+        name: props.regionName,
+        bounds: props.bounds,
+        center: [(west + east) / 2, (south + north) / 2],
+        polygonCoords: { type: "MultiPolygon", coordinates: [] as number[][][][] },
+      };
+    }
+    if (dto && props.bounds) dto = { ...dto, bounds: props.bounds };
+    dtoRef.current = dto;
+
+    // Design §8: the restore path re-opens mid-SPACE. Projection and
+    // maxBounds are constructor inputs (the style declares the projection —
+    // setProjection throws before load, so it cannot run here) — the camera
+    // is below. maxBounds re-lands from the game's regions.ts box when the
+    // restored projection is flat; the intro path starts unbounded and the
+    // narrow beat lands maxBounds at completion.
+    const initialProjection = isRestore ? retryView.projection : "globe";
+    const initialMaxBounds =
+      isRestore && retryView.projection === "mercator" ? (dto?.bounds ?? undefined) : undefined;
 
     const map = new Map({
       container,
       style: {
         version: 8,
-        projection: { type: view.projection },
+        // Design §4: every edition opens from space — globe projection,
+        // zoom 1.0. The flat editions swap to mercator mid-narrow-in.
+        projection: { type: initialProjection },
         sources: {
           [IMAGERY_SOURCE]: {
             type: "raster",
@@ -325,18 +582,277 @@ export function SatelliteMap(props: {
         },
         layers: [{ id: IMAGERY_SOURCE, type: "raster", source: IMAGERY_SOURCE }],
       },
-      center,
-      zoom: initialZoom,
-      maxZoom: props.mode === "globe" ? 5 : undefined,
-      maxBounds: bounds,
+      center: isRestore ? retryView.center : [0, 0],
+      zoom: isRestore ? retryView.zoom : 1,
+      maxZoom: edition === "globe" ? 5 : undefined,
+      maxBounds: initialMaxBounds,
       attributionControl: false,
-      dragRotate: props.mode === "globe",
-      pitchWithRotate: props.mode === "globe",
-      touchPitch: props.mode === "globe",
+      // Design §7: no gesture owns the map until the controller arms it.
+      interactive: false,
       renderWorldCopies: props.mode === "flat",
     });
+    projectionRef.current = initialProjection;
+    maxBoundsRef.current = initialMaxBounds ?? null;
+    mapRef.current = map;
 
-    if (props.mode === "flat") map.touchZoomRotate.disableRotation();
+    // Design §2: the starfield mounts behind the map container (first child
+    // of the wrapper, own absolute positioning + dark fallback, canvases
+    // pointer-events-none). The MapLibre canvas is alpha:true with no
+    // background layer, so the stars show through wherever no tile paints.
+    const destroyStarfield = mountStarfield(wrapperRef.current!);
+
+    const controller = new ZoomSpaceController({ edition, prefersReducedMotion: reducedMotion });
+    controllerRef.current = controller;
+
+    let alive = true;
+    let holdTimer = 0;
+
+    /**
+     * The closed intent vocabulary (design §1) — the only thing the
+     * controller may ask the map to do. The switch is exhaustive: a new
+     * intent the adapter does not know is a type error, never a silent
+     * no-op.
+     */
+    const executeIntentsInner = (intents: ZoomSpaceIntent[]) => {
+      if (!alive) return;
+      for (const intent of intents) {
+        switch (intent.type) {
+          case "set-projection": {
+            // REQUIRED COMMENT (design §7): setProjection throws before
+            // the style is PARSED (Style#_checkLoaded checks _loaded only),
+            // not before tiles finish. isStyleLoaded() is tile-dependent:
+            // when tile requests hang (dead DNS / captive portal), the
+            // map's load event never fires and a deferred once("load")
+            // handler never runs, wedging the intro mid-beat. Try the swap
+            // immediately; defer only if the style truly isn't parsed yet
+            // (impossible for our inline style — parsed synchronously in
+            // `new Map()` — but safe for any future remote style).
+            // The mid-beat swap below relies on MapLibre 6.11.2's
+            // undocumented flyTo-transform closure behaviour — the in-flight
+            // animation's transform closure reads the new projection, so the
+            // camera continues to the same destination instead of snapping.
+            // MUST be re-verified on every upgrade.
+            const apply = () => {
+              if (!alive) return;
+              // Preserve the user's gesture position across the swap:
+              // capture the pre-swap zoom and reassert it if migration
+              // perturbed it. (Verified bit-identical on the clean path,
+              // so this is a no-op there.) Guarded, so any nested map
+              // events from the swap or the restore never reach the
+              // controller — this also covers the deferred once("load")
+              // path, which runs outside executeIntents' own guard.
+              const preSwapZoom = map.getZoom();
+              withoutControllerEvents(() => {
+                map.setProjection({ type: intent.projection });
+                if (map.getZoom() !== preSwapZoom) map.setZoom(preSwapZoom);
+              });
+              projectionRef.current = intent.projection;
+            };
+            try {
+              apply();
+            } catch {
+              map.once("load", apply);
+            }
+            break;
+          }
+          case "set-max-bounds": {
+            // Lands only at beat completion, never mid-beat: a mid-beat
+            // setMaxBounds snaps via constrainInternal() (design §4).
+            map.setMaxBounds(intent.bounds);
+            maxBoundsRef.current = intent.bounds;
+            break;
+          }
+          case "gestures": {
+            setGameGestures(map, editionRef.current, intent.enabled);
+            break;
+          }
+          case "tap-handlers": {
+            if (intent.enabled) tapHandlersRef.current?.attach();
+            else tapHandlersRef.current?.detach();
+            break;
+          }
+          case "fly-to": {
+            // No style-load gate: Camera#flyTo is transform-only (verified
+            // against the vendored maplibre-gl 6.11.2 — it touches the
+            // camera transform and fires movement events, never the style).
+            // Gating it on the tile-dependent isStyleLoaded() caused a
+            // never-fires stall: when tile requests hang, the map's load
+            // event never fires, the deferred once("load") handler never
+            // runs, and the narrow beat never starts — the intro wedges at
+            // zoom 1 with the screen owned forever. The controller is already
+            // in the narrow beat; no move/moveend can fire before the camera
+            // moves, so the beat cannot complete early.
+            if (!alive) return;
+            map.flyTo({
+              center: intent.center,
+              zoom: intent.zoom,
+              bearing: intent.bearing,
+              duration: intent.durationMs,
+              easing: easeInOutCubic,
+            });
+            break;
+          }
+          case "ease-to": {
+            // No style-load gate: same rationale as fly-to above —
+            // Camera#easeTo is transform-only. The tile-dependent gate
+            // wedged pull-back/settle/relock beats when tiles hang.
+            if (!alive) return;
+            map.easeTo({
+              center: intent.center,
+              ...(intent.zoom !== undefined ? { zoom: intent.zoom } : {}),
+              ...(intent.bearing !== undefined ? { bearing: intent.bearing } : {}),
+              duration: intent.durationMs,
+              easing: easeInOutCubic,
+            });
+            break;
+          }
+          case "jump-to": {
+            // No style-load gate: Camera#jumpTo is transform-only (verified
+            // against the vendored maplibre-gl 6.11.2 — it touches the
+            // transform and fires movement events, never the style). Gating
+            // it on isStyleLoaded() caused a never-fires race: the
+            // reduced-motion intro emits jump-to synchronously after
+            // `new Map()`, the deferred `once("load")` handler never ran, and
+            // the map stayed at zoom 1 while the live region announced the
+            // region view. Only set-projection / addSource / addLayer need
+            // the gate (they throw pre-load).
+            if (!alive) return;
+            map.jumpTo({ center: intent.center, zoom: intent.zoom });
+            break;
+          }
+          case "paint-highlight": {
+            const feature = intent.feature;
+            const instant = reducedMotionRef.current;
+            const paint = () => {
+              if (alive) paintRegionHighlight(map, feature, { instant });
+            };
+            // addSource/addLayer throw before style load (and the painter
+            // no-ops there by design), so a slow style defers the paint.
+            if (!map.isStyleLoaded()) map.once("load", paint);
+            else paint();
+            break;
+          }
+          case "clear-highlight": {
+            clearRegionHighlight(map);
+            break;
+          }
+          case "paint-variation": {
+            // The payload is opaque to the controller; the adapter cast it
+            // back to its own Variation type (design §1).
+            paintVariationLayers(map, intent.variation as MapVariation | null, labelRef);
+            break;
+          }
+          case "clear-variation": {
+            paintVariationLayers(map, null, labelRef);
+            break;
+          }
+          case "rearm-tiles": {
+            // Design §8: the spin loads low-zoom world tiles; the narrow-in
+            // must not inherit their verdict. The region's tile set gets its
+            // own verdict + full 15 s watchdog budget — same producers as
+            // the Retry button (see tile-status.ts).
+            dispatchTile({ type: "retry" });
+            window.clearTimeout(watchdog);
+            watchdog = window.setTimeout(() => {
+              dispatchTile({ type: "load-timeout" });
+            }, TILE_LOAD_TIMEOUT_MS);
+            break;
+          }
+          case "a11y-intro": {
+            setIntroActive(intent.active);
+            break;
+          }
+          case "announce": {
+            setAnnouncement(intent.message);
+            break;
+          }
+          case "spin": {
+            if (intent.active) startSpin(intent.speedDps ?? SPIN_SPEED_DPS);
+            else stopSpin();
+            break;
+          }
+          case "reveal-hold": {
+            // Design §6: the pull-back's moveend arms this one-shot hold; on
+            // expiry the settle beat starts. beatActive stays set through
+            // the hold, so a stray input cannot wedge the choreography.
+            window.clearTimeout(holdTimer);
+            holdTimer = window.setTimeout(() => {
+              if (!alive) return;
+              const c = controllerRef.current;
+              if (c) executeIntents(c.onRevealHoldTimer());
+            }, intent.durationMs);
+            break;
+          }
+          default: {
+            const _exhaustive: never = intent;
+            throw new Error(`Unknown zoom-space intent: ${(_exhaustive as { type: string }).type}`);
+          }
+        }
+      }
+    };
+    /**
+     * Run `fn` with controller event forwarding suspended (nesting-safe:
+     * save/restore, so an inner use never clears an outer guard early;
+     * try/finally, so an exception can never leave it stuck). While the
+     * flag is set, the four map listeners skip controller forwarding —
+     * MapLibre may synchronously emit nested events with a half-applied
+     * camera state (projection migration perturbs the transform), and those
+     * must never re-enter the controller.
+     */
+    const withoutControllerEvents = (fn: () => void) => {
+      const prev = dispatchingIntentsRef.current;
+      dispatchingIntentsRef.current = true;
+      try {
+        fn();
+      } finally {
+        dispatchingIntentsRef.current = prev;
+      }
+    };
+    /**
+     * Guarded entry point: while an intent batch executes, the four map
+     * listeners below skip controller forwarding (see
+     * withoutControllerEvents), so a half-applied camera state can never
+     * re-enter the controller. The batch's own snapshots reconverge
+     * tracking when it completes.
+     */
+    const executeIntents = (intents: ZoomSpaceIntent[]) => {
+      withoutControllerEvents(() => executeIntentsInner(intents));
+    };
+    executeIntentsRef.current = executeIntents;
+
+    // --- Intro spin: the adapter owns the rAF loop + the 1200 ms timer ---
+    // (design §4). Each setBearing fires a synchronous moveend (jumpTo
+    // path); those arrive while beatKind is "spin" and the controller
+    // ignores them.
+    let spinRaf = 0;
+    let spinTimer = 0;
+    const stopSpin = () => {
+      if (spinRaf) cancelAnimationFrame(spinRaf);
+      if (spinTimer) window.clearTimeout(spinTimer);
+      spinRaf = 0;
+      spinTimer = 0;
+    };
+    const startSpin = (speedDps: number) => {
+      stopSpin();
+      let lastT = performance.now();
+      const frame = (t: number) => {
+        if (!alive) return;
+        const dt = Math.max(0, (t - lastT) / 1000);
+        lastT = t;
+        map.setBearing(map.getBearing() + dt * speedDps);
+        spinRaf = requestAnimationFrame(frame);
+      };
+      spinRaf = requestAnimationFrame(frame);
+      spinTimer = window.setTimeout(() => {
+        if (!alive) return;
+        // Sibling contract: the 1200 ms timer always calls onSpinTimer();
+        // the camera intents it returns (fly-to / set-projection) self-gate
+        // on style load in the executor, and the rAF loop is already stopped
+        // (the spin {active:false} intent executes immediately).
+        executeIntents(controller.onSpinTimer());
+      }, SPIN_DURATION_MS);
+    };
+
     // Double-click / double-tap COMMITS the pin now (user-directed reversal
     // of the P0-02 "never commits" rule), so MapLibre's double-click zoom —
     // which also handles touch double-tap via synthesized dblclick — stays
@@ -352,9 +868,9 @@ export function SatelliteMap(props: {
     // healthy map to failed. (ErrorEvent carries the failing tile at
     // runtime; it is not in the public type, hence the narrow cast.)
     // "load" fires when the style parses but tiles are still in flight
-    // (NOT success); the first "idle" is the verdict on the initial tile
-    // set. The watchdog covers a style that never loads at all
-    // (dead DNS / blocked host).
+    // (NOT success); the first idle after the most recent retry is the
+    // verdict on that tile set. The watchdog covers a style that never
+    // loads at all (dead DNS / blocked host).
     map.on("error", (e) => {
       if ((e as { tile?: unknown }).tile) dispatchTile({ type: "tile-error" });
     });
@@ -364,9 +880,10 @@ export function SatelliteMap(props: {
       dispatchTile({ type: "load-timeout" });
     }, TILE_LOAD_TIMEOUT_MS);
     map.on("idle", () => {
-      // First idle is the verdict; later idles (every camera move) are
-      // no-ops in the reducer — it returns the identical state, so React
-      // bails out of re-rendering. Clearing the watchdog here is hygiene.
+      // First idle after the most recent retry is the verdict; later idles
+      // (every camera move) are no-ops in the reducer — it returns the
+      // identical state, so React bails out of re-rendering. Clearing the
+      // watchdog here is hygiene.
       window.clearTimeout(watchdog);
       dispatchTile({ type: "map-idle" });
     });
@@ -444,18 +961,76 @@ export function SatelliteMap(props: {
         gestureClean = true;
       }
     };
-    // pointerdown is scoped to the map canvas; pointerup/pointercancel ride on
-    // window so a release outside the canvas (MapLibre sets no pointer
-    // capture) still closes the gesture instead of poisoning the next one.
-    canvasContainer.addEventListener("pointerdown", onPointerDown);
-    window.addEventListener("pointerup", onPointerUp);
-    window.addEventListener("pointercancel", onPointerCancel);
-    // No dblclick handler of our own: the commit comes from the pointerup
-    // pair classifier above, and MapLibre's doubleClickZoom is disabled, so
-    // a dblclick neither zooms nor double-commits. Never preventDefault it.
+    // The DOM pointer listeners attach only while the controller's
+    // `tap-handlers` intent enables them (design §1/N1): never during the
+    // intro beats, never after a terminal reveal. No dblclick handler of our
+    // own: the commit comes from the pointerup pair classifier above, and
+    // MapLibre's doubleClickZoom is disabled, so a dblclick neither zooms
+    // nor double-commits. Never preventDefault it.
+    const attachTapHandlers = () => {
+      canvasContainer.addEventListener("pointerdown", onPointerDown);
+      window.addEventListener("pointerup", onPointerUp);
+      window.addEventListener("pointercancel", onPointerCancel);
+    };
+    const detachTapHandlers = () => {
+      canvasContainer.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("pointercancel", onPointerCancel);
+    };
+    tapHandlersRef.current = { attach: attachTapHandlers, detach: detachTapHandlers };
 
-    // Track zoom for the +/- controls' aria-live announcements (M10).
-    map.on("zoomend", () => setZoom(Math.round(map.getZoom())));
+    // The ONE move listener (design §1): it carries the controller's T_OUT
+    // direction latch, the narrow-in crossing swap, and the globe backside
+    // occlusion. Thresholds are never evaluated
+    // mid-gesture; the controller decides on zoomend/moveend.
+    //
+    // The zoomstart listener beside it is the T_OUT reachability fix: it fires
+    // for wheel, pinch, +/- buttons, and keyboard zoom BEFORE any zoom delta
+    // is applied, so the controller's maxBounds release lands before
+    // MapLibre's defaultConstrain can pin the zoom at the bounds' fit floor.
+    // Pure pans never fire zoomstart, so the region framing guardrail
+    // survives them.
+    const snapshot = (): ZoomSnapshot => ({
+      zoom: map.getZoom(),
+      projection: projectionRef.current,
+      // The sibling's LngLat is a plain tuple; the map's is a class.
+      center: map.getCenter().toArray(),
+    });
+    map.on("zoomstart", () => {
+      // Re-entrancy guard: a nested zoomstart fired while an intent batch
+      // is executing carries a half-applied camera state — never forward it.
+      if (dispatchingIntentsRef.current) return;
+      const c = controllerRef.current;
+      if (c) executeIntents(c.onZoomStart());
+    });
+    map.on("move", () => {
+      // Same guard for the controller half; marker occlusion is a pure
+      // visual sync and still runs.
+      if (!dispatchingIntentsRef.current) {
+        const c = controllerRef.current;
+        if (c) executeIntents(c.onMove(snapshot()));
+      }
+      updateMarkerOcclusion(map, markersRef.current, projectionRef.current);
+    });
+    map.on("zoomend", () => {
+      // Track zoom for the +/- controls' aria-live announcements (M10).
+      setZoom(Math.round(map.getZoom()));
+      // Re-entrancy guard: a nested zoomend fired while an intent batch is
+      // executing (e.g. from the projection-swap zoom restore) must not
+      // re-enter the controller with a transitional camera state.
+      if (dispatchingIntentsRef.current) return;
+      const c = controllerRef.current;
+      if (c) executeIntents(c.onZoomEnd(snapshot()));
+    });
+    map.on("moveend", () => {
+      // Re-entrancy guard (see zoomend).
+      if (dispatchingIntentsRef.current) return;
+      const c = controllerRef.current;
+      if (!c) return;
+      executeIntents(c.onMoveEnd(snapshot()));
+      // The reveal hold is armed by the `reveal-hold` intent the pull-back's
+      // moveend returns (executor case above) — not here.
+    });
 
     map.on("load", () => {
       // Must-fix #2: style parsed, tiles in flight — not a verdict either
@@ -490,24 +1065,51 @@ export function SatelliteMap(props: {
       });
       map.resize();
       setZoom(Math.round(map.getZoom()));
-      if (bounds)
-        map.fitBounds(bounds, {
-          padding: 28,
-          duration: prefersReducedMotion() ? 0 : 700,
-          animate: true,
-        });
-      paintVariation(map, variationRef.current ?? null, props.mode);
+      paintVariationLayers(map, variationRef.current ?? null, labelRef);
+      if (isRestore && dtoRef.current) {
+        // Tile-Retry re-opens mid-SPACE (design §8): the highlight repaints
+        // instantly — there is no narrow beat to paint it.
+        paintRegionHighlight(map, dtoRef.current, { instant: true });
+      }
       setReady(true);
     });
 
-    mapRef.current = map;
-    markersRef.current = replaceMarks(map, marksRef.current, markersRef.current);
+    if (isRestore) {
+      // Design §8: restore the exact zoom-space state — the camera,
+      // projection, and maxBounds are already constructor inputs above, so
+      // only the gesture model and tap handlers re-arm here. Never replays
+      // the intro.
+      setGameGestures(map, edition, true);
+      // Post-commit the aim phase is over (design N1): a tile-Retry that
+      // remounts mid-reveal (variation != null) must not re-arm the taps.
+      if (!variationRef.current) attachTapHandlers();
+      setIntroActive(false);
+    } else if (edition === "globe") {
+      // Degenerate narrow-in: spin, then ease home. No region, no swap, no
+      // highlight — the controller owns the whole beat.
+      executeIntents(controller.requestNarrow(null, GLOBE_HOME.zoom));
+    } else if (dto) {
+      const settleZoom = computeSettleZoom(map, dto.bounds, edition);
+      executeIntents(controller.requestNarrow(dto, settleZoom));
+      // Paint-highlight is emitted by the controller at narrow completion
+      // (not at 70% of the beat — one fewer timer input per the sibling
+      // contract); the 700 ms paint transition still lands the highlight as
+      // the camera settles ("narrow → highlight → stop").
+    }
+    // else: flat edition with no resolvable region — degenerate; the map
+    // sits non-interactive at globe zoom 1.0. Unreachable in practice
+    // (game-app always supplies bounds for flat editions).
 
     return () => {
+      alive = false;
+      executeIntentsRef.current = () => {};
+      controllerRef.current = null;
+      tapHandlersRef.current = null;
       window.clearTimeout(watchdog);
-      canvasContainer.removeEventListener("pointerdown", onPointerDown);
-      window.removeEventListener("pointerup", onPointerUp);
-      window.removeEventListener("pointercancel", onPointerCancel);
+      window.clearTimeout(holdTimer);
+      stopSpin();
+      destroyStarfield.destroy();
+      detachTapHandlers();
       for (const marker of markersRef.current) marker.remove();
       markersRef.current = [];
       labelRef.current?.remove();
@@ -516,7 +1118,7 @@ export function SatelliteMap(props: {
       setReady(false);
       map.remove();
     };
-  }, [east, north, props.mode, south, view.attribution, view.projection, view.tiles, west, mapAttempt]);
+  }, [props.edition, props.regionName, props.mode, props.bounds, mapAttempt]);
 
   // Must-fix #2: Retry resets the tile lifecycle and remounts the map (the
   // effect teardown above removes the old instance; `mapAttempt` retriggers
@@ -525,18 +1127,27 @@ export function SatelliteMap(props: {
   // Mash guard: recreating a WebGL map per click is expensive, so clicks
   // faster than human retry rhythm are ignored (security review).
   const retryAtRef = useRef(0);
-  // Stashed viewport for the remounted map (architect review): retry keeps
-  // the player's pan/zoom instead of jumping home.
-  const retryViewRef = useRef<{ center: [number, number]; zoom: number } | null>(null);
+  // Stashed zoom-space state for the remounted map (design §8): a tile-Retry
+  // re-opens mid-SPACE — center, zoom AND projection — instead of replaying
+  // the intro. maxBounds re-derives from the projection + region bounds.
+  const retryViewRef = useRef<{
+    center: [number, number];
+    zoom: number;
+    projection: "globe" | "mercator";
+  } | null>(null);
   const handleRetryTiles = () => {
     const now = Date.now();
     if (now - retryAtRef.current < 800) return;
     retryAtRef.current = now;
-    // Remember where the player was looking so the remounted map reopens
-    // on the same viewport.
+    // Remember where the player was looking so the remounted map re-opens
+    // on the same viewport and projection.
     const map = mapRef.current;
     if (map) {
-      retryViewRef.current = { center: map.getCenter().toArray(), zoom: map.getZoom() };
+      retryViewRef.current = {
+        center: map.getCenter().toArray(),
+        zoom: map.getZoom(),
+        projection: projectionRef.current,
+      };
     }
     dispatchTile({ type: "retry" });
     setMapAttempt((n) => n + 1);
@@ -550,64 +1161,51 @@ export function SatelliteMap(props: {
     const map = mapRef.current;
     if (!map) return;
     markersRef.current = replaceMarks(map, marksRef.current, markersRef.current);
+    updateMarkerOcclusion(map, markersRef.current, projectionRef.current);
   }, [markKey]);
 
+  // Reveal routing (design §6): variation arrival goes through the
+  // controller's reveal beat — the controller classifies big-miss from
+  // pin/spot geometry and emits pull-back + hold + settle (or a direct
+  // settle); the camera beat is the controller's, not a local fitBounds.
+  // A non-null → null transition is the continue-to-next-place (or
+  // run-done/menu) handoff: the documented ungated clear path
+  // (clearReveal), plus re-arming the aim gesture model for the next place.
+  // The controller's per-place transient state is also reset here
+  // (resetForNextPlace): the terminal revealDone latch must not leak into
+  // the next place's aim phase, or the T_OUT / T_IN auto-thresholds would
+  // stay inert after the first reveal. Run-scoped state — region, painted
+  // highlight, projection tracking, camera continuity — is preserved.
   useEffect(() => {
     const map = mapRef.current;
-    if (!map?.isStyleLoaded()) return;
-    paintVariation(map, props.variation ?? null, props.mode);
-  }, [props.mode, variationKey, props.variation]);
-
-  function paintVariation(map: Map, variation: MapVariation | null, mode: "flat" | "globe") {
-    labelRef.current?.remove();
-    labelRef.current = null;
-    if (!variation) {
-      setFeature(map, LINE_SOURCE, null);
-      setFeature(map, RING_SOURCE, null);
+    const controller = controllerRef.current;
+    const prev = prevVariationRef.current;
+    prevVariationRef.current = props.variation ?? null;
+    if (!map || !controller) return;
+    if (!props.variation) {
+      executeIntentsRef.current(controller.clearReveal());
+      if (prev) {
+        // Continue → next place: reset the controller's per-place transient
+        // state so the T_OUT / T_IN auto-thresholds evaluate again for the
+        // new place's aim phase. Camera, region, highlight, and projection
+        // tracking are preserved by the reset.
+        executeIntentsRef.current(controller.resetForNextPlace());
+        // Continue → next place: re-arm the tap pipeline for the aim phase.
+        // (Tap attach/detach is adapter-owned DOM wiring; gestures were
+        // re-enabled at settle completion.)
+        executeIntentsRef.current([{ type: "tap-handlers", enabled: true }]);
+      }
       return;
     }
-    const line = variationLine(variation.pin, variation.spot, variation.kilometers);
-    setFeature(map, LINE_SOURCE, line.coordinates);
-    setFeature(map, RING_SOURCE, disk(variation.spot.lon, variation.spot.lat, variation.radiusKm));
-    const label = document.createElement("div");
-    label.textContent = line.label;
-    label.style.background = "#101211";
-    label.style.color = "#f4f1ea";
-    label.style.border = "1px solid #f2c14e";
-    label.style.borderRadius = "999px";
-    label.style.padding = "2px 8px";
-    label.style.fontSize = "12px";
-    label.style.fontWeight = "600";
-    label.style.pointerEvents = "none";
-    labelRef.current = new Marker({ element: label, anchor: "center" })
-      .setLngLat(line.midpoint)
-      .addTo(map);
-    const westEdge = Math.min(variation.pin.lon, variation.spot.lon);
-    const eastEdge = Math.max(variation.pin.lon, variation.spot.lon);
-    const southEdge = Math.min(variation.pin.lat, variation.spot.lat);
-    const northEdge = Math.max(variation.pin.lat, variation.spot.lat);
-    // M8: ONE camera beat per arrival (not a choreographed sequence): a single
-    // fitBounds framing pin + spot, 2.2s easeInOut, with card-aware bottom
-    // padding. Reduced motion -> instant jump. `essential` is omitted:
-    // scripted moves never claim it (only user-invoked zoom does).
-    map.fitBounds(
-      [
-        [westEdge, southEdge],
-        [eastEdge, northEdge],
-      ],
-      {
-        padding: {
-          top: REVEAL_EDGE_PADDING_PX,
-          bottom: REVEAL_CARD_PADDING_PX,
-          left: REVEAL_EDGE_PADDING_PX,
-          right: REVEAL_EDGE_PADDING_PX,
-        },
-        duration: prefersReducedMotion() ? 0 : REVEAL_CAMERA_MS,
-        easing: easeInOutCubic,
-        maxZoom: mode === "globe" ? 4 : 8,
-      },
+    const request = buildRevealRequest(
+      map,
+      props.variation,
+      props.mode,
+      tileStatusRef.current,
+      projectionRef.current,
     );
-  }
+    executeIntentsRef.current(controller.requestReveal(request));
+  }, [variationKey, props.mode, props.bounds]);
 
   return (
     <div
@@ -618,6 +1216,12 @@ export function SatelliteMap(props: {
       data-zoom={zoom}
       aria-roledescription="map"
       aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin."
+      // Design §7: the intro beat owns the screen — the wrapper is hidden
+      // from assistive tech and uninteractable until narrow completion
+      // releases it (the `announce` intent then fires through the live
+      // region below).
+      aria-hidden={introActive || undefined}
+      inert={introActive}
       onKeyDown={onMapKeyDown}
     >
       {/*
@@ -734,6 +1338,12 @@ export function SatelliteMap(props: {
         </div>
       )}
       <ZoomControls zoom={zoom} onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
+      {/* Zoom-space announcements (design §1): the controller's `announce`
+          intents post here — "Space view" / "<Region> view" at the threshold
+          crossings — reusing the M10 sr-only live-region pattern. */}
+      <div aria-live="polite" className="sr-only">
+        {announcement}
+      </div>
       {/* The Drop pin button is the explicit, accessible commit path
           (double-tap / double-click also commits). Hidden once committed
           (variation != null); the result card takes its place. Overlay root is

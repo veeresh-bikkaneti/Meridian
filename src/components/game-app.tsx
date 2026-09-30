@@ -383,6 +383,11 @@ function Play({
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
+  // Z3/Z4 zoom-space: replay remounts the map (fresh intro + fresh
+  // controller). Replaying the same region must not reuse the old map
+  // instance — its controller is terminal (revealDone) and its highlight
+  // belongs to the previous run.
+  const [mapKey, setMapKey] = useState(0);
 
   useEffect(() => {
     setAim(null);
@@ -502,6 +507,8 @@ function Play({
     setDrop(null);
     setBubble("open");
     setCardDismissed(false);
+    // Fresh map instance for the replayed run (see mapKey above).
+    setMapKey((k) => k + 1);
     onRun(
       resumeRun(run, {
         edition: run.edition,
@@ -519,7 +526,10 @@ function Play({
     <main className="relative h-dvh bg-bg">
       <div className="absolute inset-0">
         <SatelliteMap
+          key={mapKey}
           mode={mode}
+          edition={run.edition}
+          regionName={run.regionName}
           bounds={bounds}
           onAim={onAim}
           onConfirm={onConfirm}

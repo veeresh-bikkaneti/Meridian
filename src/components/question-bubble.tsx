@@ -114,7 +114,7 @@ export function QuestionBubble({
                 aria-label={expanded ? "Collapse question" : "Expand question"}
                 aria-expanded={expanded}
                 onClick={() => onViewChange(expanded ? "collapsed" : "open")}
-                className="flex size-11 items-center justify-center rounded-full text-white/80 transition-colors hover:text-white"
+                className="flex size-11 items-center justify-center rounded-full text-white/80 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-95"
               >
                 <ChevronDown
                   className={`size-5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
@@ -125,7 +125,7 @@ export function QuestionBubble({
                 type="button"
                 aria-label="Hide question"
                 onClick={() => onViewChange("dismissed")}
-                className="flex size-11 items-center justify-center rounded-full text-white/80 transition-colors hover:text-white"
+                className="flex size-11 items-center justify-center rounded-full text-white/80 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-95"
               >
                 <X className="size-5" aria-hidden="true" />
               </button>
