@@ -21,7 +21,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "prebuild": "node --experimental-strip-types scripts/check-generated-places.mjs",
-    "prebuild:pages": "node --experimental-strip-types scripts/check-generated-places.mjs"
+    "prebuild:pages": "node --experimental-strip-types scripts/check-generated-places.mjs",
+    "prebuild:dev": "node --experimental-strip-types scripts/check-generated-places.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",
