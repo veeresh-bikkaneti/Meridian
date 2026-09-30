@@ -14,6 +14,8 @@ export type Colors = {
   answer: string;
   arc: string;
   cross: string;
+  /** Region highlight gold — matches the satellite-map highlight (region-highlight.ts). */
+  highlight: string;
 };
 
 export function readColors(): Colors {
@@ -35,6 +37,7 @@ export function readColors(): Colors {
     answer: pick("--map-answer", "#8fb8c6"),
     arc: pick("--map-arc", "#f4f1ea"),
     cross: pick("--map-cross", "#d7ddd9"),
+    highlight: pick("--map-highlight", "#f2c14e"),
   };
 }
 
