@@ -729,16 +729,24 @@ export function SatelliteMap(props: {
             };
             // If the style isn't parsed yet (reduced-motion path paints in
             // the same tick as `new Map()`), addSource throws "Style is not
-            // done loading". In that case the map is definitely not idle,
-            // so `once("idle", paint)` will fire. If the style IS parsed
-            // (animated path), paint immediately — we do NOT gate on the
-            // tile-dependent isStyleLoaded(), which lost paints when `load`
-            // had already fired (diagnosed 2026-09-30). The painter is
-            // idempotent.
+            // done loading". In that case the map's one-shot `load` has NOT
+            // fired yet (it fires after style parse), so `once("load", paint)`
+            // is safe and faster than `idle` (which waits for tiles). If the
+            // style IS parsed (animated path), paint immediately — we do NOT
+            // gate on the tile-dependent isStyleLoaded(), which lost paints
+            // when `load` had already fired (diagnosed 2026-09-30). The
+            // painter is idempotent. Only the style-not-loaded error is
+            // deferred; other errors (e.g. malformed DTO) rethrow.
             try {
               paint();
-            } catch {
-              if (alive) map.once("idle", paint);
+            } catch (e) {
+              if (!alive) break;
+              const msg = e instanceof Error ? e.message : String(e);
+              if (msg.includes("Style is not done loading")) {
+                map.once("load", paint);
+              } else {
+                throw e;
+              }
             }
             break;
           }
@@ -1029,8 +1037,12 @@ export function SatelliteMap(props: {
       // for the new zoom. Static — no transitions (reduced-motion safe).
       try {
         paintBoundaryBand(map, bandForZoom(map.getZoom()));
-      } catch {
+      } catch (e) {
         // Style not ready yet — the band paints on the next zoomend.
+        // Persistent failures (corrupt data, API misuse) are logged in dev.
+        if (import.meta.env.DEV) {
+          console.warn("[boundary-bands] paint failed on zoomend:", e);
+        }
       }
       // Re-entrancy guard: a nested zoomend fired while an intent batch is
       // executing (e.g. from the projection-swap zoom restore) must not
@@ -1058,8 +1070,11 @@ export function SatelliteMap(props: {
       // opening zoom. The style is parsed now, so addSource/addLayer are safe.
       try {
         paintBoundaryBand(map, bandForZoom(map.getZoom()));
-      } catch {
-        // Non-fatal — the band paints on the next zoomend.
+      } catch (e) {
+        // Non-fatal — the band paints on the next zoomend. Log in dev.
+        if (import.meta.env.DEV) {
+          console.warn("[boundary-bands] initial paint failed:", e);
+        }
       }
       // The style parsed; the tile phase gets its own full watchdog budget
       // from here — a slow connection that trickles tiles must not trip

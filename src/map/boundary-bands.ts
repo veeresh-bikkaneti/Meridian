@@ -1,31 +1,41 @@
 /**
  * Progressive boundary reveal — admin boundaries in zoom bands.
  *
- * As the user zooms, context boundaries fade in by band:
+ * As the user zooms, context boundaries switch by band:
  *   z < 3          → continent outlines (Natural Earth land-110m)
  *   3 ≤ z < 6      → country boundaries (Natural Earth countries-50m)
  *   z ≥ 6          → state/province boundaries (US states-10m + NE admin-1
- *                    for AU/BR/CA/CN/IN; other countries keep country lines)
+ *                    for AU/BR/CA/CN/IN) PLUS country boundaries (so regions
+ *                    without admin-1 data still show context)
  *
  * Design constraints (Veeresh, 2026-09-30):
  * - NO text labels at any zoom/mode — naming things is the game.
  * - Boundaries are subtle context only; the quiz region highlight stays
- *   dominant (gold, 4.5px). Boundary lines are thin gray.
+ *   dominant (gold, 4.5px). Boundary lines are thin gray, rendered beneath
+ *   the highlight layers.
  * - Zero-cost data: all bundled (world-atlas, us-atlas, vendored NE 50m).
  * - Reduced-motion: bands render statically, no animated transitions.
  *
- * The module is pure except for the MapLibre paint calls, which are
- * idempotent — calling paintBoundaryBand with the same band twice is a
- * no-op, and switching bands removes the old layers.
+ * The module is pure except for the MapLibre paint calls and the memoized
+ * TopoJSON conversions (module-level caches, invisible to callers). The
+ * paint functions are idempotent — calling paintBoundaryBand with the same
+ * band twice is a no-op, and switching bands removes the old layers.
+ *
+ * Data provenance: ne-50m-admin-1.json vendored from
+ * https://github.com/nvkelso/natural-earth-vector (public domain),
+ * geojson/ne_50m_admin_1_states_provinces.geojson, filtered to AU/BR/CA/CN/IN
+ * (116 features, 1.2MB). The 50m admin-1 dataset only includes 9 countries
+ * total; the others fall back to country boundaries.
  */
 
 import type { Map } from "maplibre-gl";
 import { feature } from "topojson-client";
-import type { FeatureCollection, Geometry } from "geojson";
-import land110m from "world-atlas/land-110m.json";
-import countries50m from "world-atlas/countries-50m.json";
-import states10m from "us-atlas/states-10m.json";
-import neAdmin1 from "./data/ne-50m-admin-1.json";
+import type { Feature, FeatureCollection, Geometry } from "geojson";
+
+// All data is loaded via dynamic import (lazy). No static JSON imports —
+// this keeps the 1.2MB NE admin-1 (and the other datasets) out of the
+// initial bundle, and lets the module run under Node's test runner
+// (which requires import attributes for static JSON).
 
 /** Zoom band for boundary reveal. */
 export type BoundaryBand = "continents" | "countries" | "admin1";
@@ -62,38 +72,57 @@ const BOUNDARY_WIDTH = 1;
  * same band twice does nothing; switching bands removes the old layers.
  *
  * No labels are ever added — boundaries are line layers only.
+ *
+ * Boundary layers are inserted beneath the quiz highlight layers (if present)
+ * so the gold highlight stays dominant regardless of paint order.
  */
 export function paintBoundaryBand(map: Map, band: BoundaryBand): void {
-  const want = new Set<string>();
-  if (band === "continents") {
-    want.add(CONTINENTS_LAYER_ID);
-    ensureLineLayer(map, CONTINENTS_SOURCE_ID, CONTINENTS_LAYER_ID, getLand110m());
-  } else if (band === "countries") {
-    want.add(COUNTRIES_LAYER_ID);
-    ensureLineLayer(map, COUNTRIES_SOURCE_ID, COUNTRIES_LAYER_ID, getCountries50m());
-  } else {
-    want.add(US_STATES_LAYER_ID);
-    want.add(NE_ADMIN1_LAYER_ID);
-    ensureLineLayer(map, US_STATES_SOURCE_ID, US_STATES_LAYER_ID, getUsStates10m());
-    ensureLineLayer(map, NE_ADMIN1_SOURCE_ID, NE_ADMIN1_LAYER_ID, getNeAdmin1());
-  }
+  // Kick off the async paint; the module handles idempotency internally.
+  void paintBoundaryBandAsync(map, band);
+}
 
-  // Remove layers for bands we're not showing.
-  for (const id of [CONTINENTS_LAYER_ID, COUNTRIES_LAYER_ID, US_STATES_LAYER_ID, NE_ADMIN1_LAYER_ID]) {
-    if (!want.has(id) && map.getLayer(id)) {
-      map.removeLayer(id);
+async function paintBoundaryBandAsync(map: Map, band: BoundaryBand): Promise<void> {
+  const want = new Set<string>();
+  try {
+    if (band === "continents") {
+      want.add(CONTINENTS_LAYER_ID);
+      ensureLineLayer(map, CONTINENTS_SOURCE_ID, CONTINENTS_LAYER_ID, await getLand110m());
+    } else if (band === "countries") {
+      want.add(COUNTRIES_LAYER_ID);
+      ensureLineLayer(map, COUNTRIES_SOURCE_ID, COUNTRIES_LAYER_ID, await getCountries50m());
+    } else {
+      // Admin1 band: US states + NE admin-1 for 5 countries, PLUS country
+      // boundaries so regions without admin-1 data (e.g. France, Japan)
+      // still show context. The country layer is cached from the countries
+      // band, so this is cheap.
+      want.add(COUNTRIES_LAYER_ID);
+      want.add(US_STATES_LAYER_ID);
+      want.add(NE_ADMIN1_LAYER_ID);
+      ensureLineLayer(map, COUNTRIES_SOURCE_ID, COUNTRIES_LAYER_ID, await getCountries50m());
+      ensureLineLayer(map, US_STATES_SOURCE_ID, US_STATES_LAYER_ID, await getUsStates10m());
+      ensureLineLayer(map, NE_ADMIN1_SOURCE_ID, NE_ADMIN1_LAYER_ID, await getNeAdmin1());
     }
-  }
-  // Remove orphaned sources (no layer references them).
-  for (const [sourceId, layerId] of [
-    [CONTINENTS_SOURCE_ID, CONTINENTS_LAYER_ID],
-    [COUNTRIES_SOURCE_ID, COUNTRIES_LAYER_ID],
-    [US_STATES_SOURCE_ID, US_STATES_LAYER_ID],
-    [NE_ADMIN1_SOURCE_ID, NE_ADMIN1_LAYER_ID],
-  ] as const) {
-    if (!want.has(layerId) && map.getSource(sourceId)) {
-      map.removeSource(sourceId);
+
+    // Remove layers for bands we're not showing.
+    for (const id of [CONTINENTS_LAYER_ID, COUNTRIES_LAYER_ID, US_STATES_LAYER_ID, NE_ADMIN1_LAYER_ID]) {
+      if (!want.has(id) && map.getLayer(id)) {
+        map.removeLayer(id);
+      }
     }
+    // Remove orphaned sources (no layer references them).
+    for (const [sourceId, layerId] of [
+      [CONTINENTS_SOURCE_ID, CONTINENTS_LAYER_ID],
+      [COUNTRIES_SOURCE_ID, COUNTRIES_LAYER_ID],
+      [US_STATES_SOURCE_ID, US_STATES_LAYER_ID],
+      [NE_ADMIN1_SOURCE_ID, NE_ADMIN1_LAYER_ID],
+    ] as const) {
+      if (!want.has(layerId) && map.getSource(sourceId)) {
+        map.removeSource(sourceId);
+      }
+    }
+  } catch {
+    // Non-fatal: the band simply doesn't paint. The next zoomend retries.
+    // (Callers log in dev if needed.)
   }
 }
 
@@ -113,13 +142,16 @@ function ensureLineLayer(
   map: Map,
   sourceId: string,
   layerId: string,
-  data: FeatureCollection<Geometry>,
+  data: FeatureCollection<Geometry> | Feature<Geometry>,
 ): void {
   if (map.getLayer(layerId)) return; // Already painted — idempotent.
   if (!map.getSource(sourceId)) {
-    map.addSource(sourceId, { type: "geojson", data });
+    map.addSource(sourceId, { type: "geojson", data: data as any });
   }
-  map.addLayer({
+  // Insert beneath the quiz highlight layers (if present) so the gold
+  // highlight stays dominant regardless of paint order.
+  const beforeId = getHighlightLayerId(map);
+  const layerSpec: any = {
     id: layerId,
     type: "line",
     source: sourceId,
@@ -128,36 +160,67 @@ function ensureLineLayer(
       "line-opacity": BOUNDARY_OPACITY,
       "line-width": BOUNDARY_WIDTH,
     },
-  });
-}
-
-// --- Data accessors (TopoJSON → GeoJSON via topojson-client) ---
-
-let land110mCache: FeatureCollection<Geometry> | null = null;
-function getLand110m(): FeatureCollection<Geometry> {
-  if (!land110mCache) {
-    land110mCache = feature(land110m as any, (land110m as any).objects.land) as unknown as FeatureCollection<Geometry>;
+  };
+  if (beforeId) {
+    map.addLayer(layerSpec, beforeId);
+  } else {
+    map.addLayer(layerSpec);
   }
-  return land110mCache;
 }
 
-let countries50mCache: FeatureCollection<Geometry> | null = null;
-function getCountries50m(): FeatureCollection<Geometry> {
-  if (!countries50mCache) {
-    countries50mCache = feature(countries50m as any, (countries50m as any).objects.countries) as unknown as FeatureCollection<Geometry>;
+/**
+ * Returns the ID of the first highlight layer, if present. Boundary layers
+ * are inserted before it to keep the quiz highlight on top.
+ */
+function getHighlightLayerId(map: Map): string | undefined {
+  // From region-highlight.ts — the three highlight layer IDs.
+  for (const id of ["region-highlight-fill", "region-highlight-casing", "region-highlight-outline"]) {
+    if (map.getLayer(id)) return id;
   }
-  return countries50mCache;
+  return undefined;
 }
 
-let usStates10mCache: FeatureCollection<Geometry> | null = null;
-function getUsStates10m(): FeatureCollection<Geometry> {
-  if (!usStates10mCache) {
-    usStates10mCache = feature(states10m as any, (states10m as any).objects.states) as unknown as FeatureCollection<Geometry>;
+// --- Data accessors (lazy via dynamic import) ---
+
+let land110mPromise: Promise<FeatureCollection<Geometry> | Feature<Geometry>> | null = null;
+function getLand110m(): Promise<FeatureCollection<Geometry> | Feature<Geometry>> {
+  if (!land110mPromise) {
+    land110mPromise = import("world-atlas/land-110m.json", { with: { type: "json" } }).then((mod) => {
+      const topo = mod.default as unknown as { objects: { land: unknown } };
+      return feature(topo, topo.objects.land) as unknown as Feature<Geometry>;
+    });
   }
-  return usStates10mCache;
+  return land110mPromise;
 }
 
-function getNeAdmin1(): FeatureCollection<Geometry> {
-  // Already GeoJSON (vendored from Natural Earth).
-  return neAdmin1 as unknown as FeatureCollection<Geometry>;
+let countries50mPromise: Promise<FeatureCollection<Geometry> | Feature<Geometry>> | null = null;
+function getCountries50m(): Promise<FeatureCollection<Geometry> | Feature<Geometry>> {
+  if (!countries50mPromise) {
+    countries50mPromise = import("world-atlas/countries-50m.json", { with: { type: "json" } }).then((mod) => {
+      const topo = mod.default as unknown as { objects: { countries: unknown } };
+      return feature(topo, topo.objects.countries) as unknown as Feature<Geometry>;
+    });
+  }
+  return countries50mPromise;
+}
+
+let usStates10mPromise: Promise<FeatureCollection<Geometry> | Feature<Geometry>> | null = null;
+function getUsStates10m(): Promise<FeatureCollection<Geometry> | Feature<Geometry>> {
+  if (!usStates10mPromise) {
+    usStates10mPromise = import("us-atlas/states-10m.json", { with: { type: "json" } }).then((mod) => {
+      const topo = mod.default as unknown as { objects: { states: unknown } };
+      return feature(topo, topo.objects.states) as unknown as Feature<Geometry>;
+    });
+  }
+  return usStates10mPromise;
+}
+
+let neAdmin1Promise: Promise<FeatureCollection<Geometry>> | null = null;
+function getNeAdmin1(): Promise<FeatureCollection<Geometry>> {
+  if (!neAdmin1Promise) {
+    neAdmin1Promise = import("./data/ne-50m-admin-1.json", { with: { type: "json" } }).then(
+      (mod) => mod.default as unknown as FeatureCollection<Geometry>
+    );
+  }
+  return neAdmin1Promise;
 }
