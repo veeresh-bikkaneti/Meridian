@@ -41,6 +41,18 @@ export function RunSummaryCard(props: {
             <dd className="tabular-nums">{summary.hits}</dd>
           </div>
           <div className="flex justify-between">
+            <dt className="text-white/60">Average per place</dt>
+            <dd data-testid="summary-avg" className="tabular-nums">
+              {summary.averagePerPlace}
+            </dd>
+          </div>
+          <div className="flex justify-between">
+            <dt className="text-white/60">Best streak</dt>
+            <dd data-testid="summary-best-streak" className="tabular-nums">
+              {summary.bestStreak >= 2 ? `🔥 ${summary.bestStreak}` : "—"}
+            </dd>
+          </div>
+          <div className="flex justify-between">
             <dt className="text-white/60">Average distance</dt>
             <dd className="tabular-nums">{formatDistance(summary.averageDistanceKm)}</dd>
           </div>

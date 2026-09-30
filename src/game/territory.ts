@@ -2,7 +2,7 @@ import { geoContains } from "d3-geo";
 import { feature } from "topojson-client";
 import world from "world-atlas/countries-50m.json" with { type: "json" };
 import { CONTINENT_BY_KEY, type Continent } from "./continents.ts";
-import type { BonusKind, LonLat } from "./types.ts";
+import type { LonLat } from "./types.ts";
 
 type CountryFeature = {
   id?: string | number;
@@ -39,15 +39,6 @@ export function territoryAt(point: LonLat): Territory | null {
     };
   }
   return null;
-}
-
-export function bonusFor(guess: LonLat, target: LonLat): BonusKind {
-  const here = territoryAt(guess);
-  const there = territoryAt(target);
-  if (!here || !there || !here.key || !there.key) return "none";
-  if (here.key === there.key) return "country";
-  if (here.continent && here.continent === there.continent) return "continent";
-  return "none";
 }
 
 export function missingContinents(): string[] {

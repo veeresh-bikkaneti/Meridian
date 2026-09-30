@@ -1,5 +1,6 @@
 import { formatDistance } from "@/game/geo";
-import type { Run } from "@/game/run";
+import { summarizeRun, type Run } from "@/game/run";
+import { formatBreakdown, comboForStreak, formatFactor } from "@/game/scoring";
 import { shareText } from "@/game/share";
 import type { Starter } from "@/game/starters";
 import { Button } from "@/components/ui/button";
@@ -82,7 +83,15 @@ function formatSpot(lon: number, lat: number): string {
 
 function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?: "primary" | "secondary" }) {
   const [copied, setCopied] = useState(false);
-  const line = shareText({ regionName: run.regionName, dateKey: run.dateKey, hits: run.hits });
+  const summary = summarizeRun(run);
+  const line = shareText({
+    regionName: run.regionName,
+    dateKey: run.dateKey,
+    totalScore: summary.totalScore,
+    placesPlayed: summary.placesPlayed,
+    averagePerPlace: summary.averagePerPlace,
+    bestStreak: run.bestStreak,
+  });
   return (
     <div className="flex flex-col gap-3">
       <pre className="whitespace-pre-wrap rounded-lg border border-white/10 bg-black/30 px-4 py-3 font-sans text-sm leading-relaxed text-white">
@@ -176,6 +185,19 @@ export function ResultCard({
               <p className="font-display text-4xl tabular-nums">
                 {drop ? formatDistance(drop.distanceKm) : "Hit"}
               </p>
+              {drop?.breakdown ? (
+                <p
+                  data-testid="score-breakdown"
+                  data-base={drop.breakdown.base}
+                  data-mult={drop.breakdown.diffMult}
+                  data-combo={drop.breakdown.combo}
+                  data-bonus={drop.breakdown.regionBonus}
+                  data-score={drop.breakdown.score}
+                  className="rounded-lg border border-white/10 bg-black/30 px-3 py-2 font-mono text-sm tabular-nums text-amber-100"
+                >
+                  {formatBreakdown(drop.breakdown)}
+                </p>
+              ) : null}
               <p className="text-sm text-white/70">
                 The line is your pin to the spot. The circle is close enough.
               </p>
@@ -197,6 +219,12 @@ export function ResultCard({
           {run.phase === "done" && place ? (
             <div className="mt-3 flex flex-col gap-3">
               <p className="text-sm text-white/70">That pin is outside the radius.</p>
+              {drop && drop.streakBefore >= 2 ? (
+                <p className="text-sm text-amber-100">
+                  🔥 {drop.streakBefore}-place streak reset — combo back to{" "}
+                  {formatFactor(comboForStreak(1))}x.
+                </p>
+              ) : null}
               {drop && drop.placeId === place.id ? (
                 <p className="text-sm">
                   Your pin was {formatSpot(drop.lon, drop.lat)},{" "}

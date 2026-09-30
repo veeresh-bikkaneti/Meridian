@@ -3,9 +3,9 @@ import test from "node:test";
 import { PLACES } from "./catalog.ts";
 import { buildPuzzle } from "./daily.ts";
 import { distanceKm, pointInRing, wordCount } from "./geo.ts";
-import { applyBonus, distanceScore, gradeRound, weightedTotal } from "./score.ts";
+import { distanceScore } from "./score.ts";
 import { scoreMark, shareText } from "./share.ts";
-import { bonusFor, missingContinents } from "./territory.ts";
+import { missingContinents } from "./territory.ts";
 
 test("world curve matches the MapTap landmarks", () => {
   assert.equal(distanceScore(0, "world"), 100);
@@ -18,58 +18,40 @@ test("world curve matches the MapTap landmarks", () => {
   assert.equal(distanceScore(20000, "world"), 0);
 });
 
-test("a country lift turns 12 into 34 and never lowers a high score", () => {
-  assert.equal(applyBonus(12, "country"), 34);
-  assert.equal(applyBonus(90, "country"), 90);
-  assert.equal(applyBonus(100, "country"), 100);
-  assert.equal(applyBonus(0, "country"), 25);
-  assert.equal(applyBonus(0, "continent"), 10);
-  assert.equal(applyBonus(12, "none"), 12);
-  assert.equal(applyBonus(12, "continent"), 21);
-});
 
-test("round weights match published MapTap totals", () => {
-  assert.equal(weightedTotal([100, 90, 97, 85, 63]), 828);
-  assert.equal(weightedTotal([93, 80, 93, 84, 96]), 899);
-  assert.equal(weightedTotal([92, 96, 95, 100, 91]), 951);
-  assert.equal(weightedTotal([100, 92, 99, 100, 100]), 990);
-});
 
-test("only world and United States rounds keep a country lift", () => {
-  const local = gradeRound(10, "lincoln", "country", 0);
-  assert.equal(local.bonus, "none");
-  assert.equal(local.weight, 1);
-  assert.ok(local.score < 100);
-  assert.equal(local.score, local.distanceScore);
-  const world = gradeRound(10000, "world", "country", 2);
-  assert.equal(world.distanceScore, 12);
-  assert.equal(world.score, 34);
-  assert.equal(world.weight, 2);
-  assert.equal(world.bonus, "country");
-  const usa = gradeRound(0, "usa", "continent", 4);
-  assert.equal(usa.score, 100);
-  assert.equal(usa.weight, 3);
-});
 
-test("share text is a spoiler-free daily line", () => {
+
+
+
+test("share text is a spoiler-free endless line", () => {
   const text = shareText({
     regionName: "Nebraska",
     dateKey: "2026-09-28",
-    hits: 14,
+    totalScore: 12480,
+    placesPlayed: 60,
+    averagePerPlace: 208,
+    bestStreak: 14,
     now: new Date(Date.UTC(2026, 8, 28)),
   });
   assert.equal(text.includes("Taj"), false);
   assert.equal(text.includes("🎓"), false);
-  assert.equal(text, "meridian September 28\nNebraska · 14");
+  assert.equal(
+    text,
+    "meridian September 28\n12,480 over 60 places · 208 avg/place · 🔥14 best streak · Nebraska",
+  );
   assert.equal(scoreMark(0), "·");
   assert.equal(scoreMark(100), "🎯");
-  const older = shareText({
+  const noStreak = shareText({
     regionName: "Japan",
     dateKey: "2025-06-18",
-    hits: 0,
+    totalScore: 0,
+    placesPlayed: 0,
+    averagePerPlace: 0,
+    bestStreak: 0,
     now: new Date(Date.UTC(2026, 8, 28)),
   });
-  assert.equal(older, "meridian June 18, 2025\nJapan · 0");
+  assert.equal(noStreak, "meridian June 18, 2025\n0 over 0 places · 0 avg/place · Japan");
 });
 
 test("stories stay within 60 words and ids are unique", () => {
@@ -114,11 +96,6 @@ test("a pin inside a neighborhood scores as a direct hit", () => {
   assert.equal(pointInRing(havelock.reveal, havelock.shape.coordinates), true);
 });
 
-test("country and continent bonuses follow the atlas", () => {
+test("every continent has at least one country", () => {
   assert.deepEqual(missingContinents(), []);
-  assert.equal(bonusFor([78.0421, 27.1751], [77.209, 28.6139]), "country");
-  assert.equal(bonusFor([2.3522, 48.8566], [78.0421, 27.1751]), "none");
-  assert.equal(bonusFor([116.4074, 39.9042], [78.0421, 27.1751]), "continent");
-  assert.equal(bonusFor([0, 0], [78.0421, 27.1751]), "none");
-  assert.equal(bonusFor([-96.69972, 40.80806], [-95.99799, 41.2565]), "country");
 });
