@@ -16,8 +16,9 @@
  *                                          provenance.json (authoritative; no
  *                                          point-in-box guessing at borders).
  *  - District of Columbia (not a state)   → edition "country", regionId "united-states".
- *  - Places in the 13 country-edition     → edition "country", regionId = country slug.
- *    countries (CA/MX/BR/GB/FR/DE/IT/EG/IN/CN/JP/AU)
+ *  - Places in the 12 ISO-mapped country-edition → edition "country", regionId = country slug.
+ *    countries (CA/MX/BR/GB/FR/DE/IT/EG/IN/CN/JP/AU) — the 13th
+ *    country-edition country, the US, is handled by the state/DC rules above.
  *  - Everything else                       → edition "globe", regionId "globe".
  *
  * The script FAILS LOUDLY (non-zero exit) on any unassignable place, any place
@@ -78,7 +79,7 @@ function main() {
   const refBoxes = JSON.parse(readFileSync(join(SCRATCH, "country-boxes.json"), "utf8"));
 
   const counts = { state: 0, country: 0, globe: 0, curatedRefs: 0 };
-  const perState = {};
+  const perState = Object.create(null);
   const seen = new Set();
   const out = [];
 
@@ -130,7 +131,7 @@ function main() {
 
   // Flatten the reference boxes to the gate's join key: iso2, or name:<country>
   // for disputed territories with no ISO code.
-  const boxes = {};
+  const boxes = Object.create(null);
   for (const [k, entry] of Object.entries(refBoxes.boxes)) {
     const flatKey = entry.iso2 ?? `name:${entry.country}`;
     if (flatKey !== k) {
