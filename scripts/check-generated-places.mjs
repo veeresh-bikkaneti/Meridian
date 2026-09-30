@@ -21,9 +21,14 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateGeneratedPlace } from "../src/game/validate-places.ts";
+import { COUNTRIES, STATES } from "../src/game/regions.ts";
 
 const REPO = dirname(dirname(fileURLToPath(import.meta.url)));
 const VALID_EDITIONS = new Set(["state", "country", "globe"]);
+// regionId-vs-regions.ts membership is enforced here, not just in the unit
+// tests: a regionId that matches no real region must fail the build loudly.
+const STATE_IDS = new Set(STATES.map((s) => s.id));
+const COUNTRY_IDS = new Set(COUNTRIES.map((c) => c.id));
 
 function boxKeyFor(place) {
   return place.iso2 ?? `name:${place.country}`;
@@ -62,6 +67,15 @@ function main() {
     }
     if (typeof place.regionId !== "string" || place.regionId.length === 0) {
       violations.push(`${place.id}: missing regionId`);
+    }
+    const regionOk =
+      (place.edition === "state" && STATE_IDS.has(place.regionId ?? "")) ||
+      (place.edition === "country" && COUNTRY_IDS.has(place.regionId ?? "")) ||
+      (place.edition === "globe" && place.regionId === "globe");
+    if (!regionOk) {
+      violations.push(
+        `${place.id}: regionId "${place.regionId}" is not a regions.ts id for edition "${place.edition}"`,
+      );
     }
 
     const key = boxKeyFor(place);
