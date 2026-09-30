@@ -16,7 +16,7 @@ function fakeScored(score: number, streak = 1): ScoredPlace {
   };
 }
 
-function v3Result(overrides: Partial<ScoredPlace> = {}) {
+function v3Result(overrides: { scoringVersion?: number } = {}) {
   return {
     distanceKm: 10,
     hit: true,
