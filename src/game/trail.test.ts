@@ -272,18 +272,59 @@ test("seenStoreFor uses a day-independent key and migrates v1 entries", () => {
     const store = seenStoreFor("globe", "globe");
     assert.deepEqual(store.read(), []);
     store.write(["x", "y"]);
-    assert.deepEqual(store.read(), ["x", "y"]);
-    // The v2 key carries no day...
-    assert.equal(backing.get("meridian:seen:v2:globe:globe"), JSON.stringify(["x", "y"]));
-    // ...and the legacy v1 keys were pruned on write.
+    // The surviving v1 history is unioned into v2 (not dropped), so today's
+    // places keep their no-repeat protection across the upgrade.
+    assert.deepEqual(store.read(), ["x", "y", "a", "b"]);
+    assert.equal(
+      backing.get("meridian:seen:v2:globe:globe"),
+      JSON.stringify(["x", "y", "a", "b"]),
+    );
+    // ...and the legacy v1 keys were pruned after migration.
     assert.ok(
       ![...backing.keys()].some((k) => k.startsWith("meridian:seen:v1:")),
       "legacy v1 keys pruned",
     );
     // A later "day" reads the same persistent history.
-    assert.deepEqual(seenStoreFor("globe", "globe").read(), ["x", "y"]);
+    assert.deepEqual(seenStoreFor("globe", "globe").read(), ["x", "y", "a", "b"]);
     // Other editions/regions are independent.
     assert.deepEqual(seenStoreFor("country", "in").read(), []);
+  } finally {
+    if (prev === undefined) delete g.localStorage;
+    else g.localStorage = prev;
+  }
+});
+
+test("v1 migration routes each entry to its own edition/region", () => {
+  const backing = new Map<string, string>();
+  const fakeStorage = {
+    getItem: (k: string) => (backing.has(k) ? backing.get(k)! : null),
+    setItem: (k: string, v: string) => {
+      backing.set(k, v);
+    },
+    removeItem: (k: string) => {
+      backing.delete(k);
+    },
+    get length() {
+      return backing.size;
+    },
+    key: (i: number) => [...backing.keys()][i] ?? null,
+  };
+  const g = globalThis as { localStorage?: unknown };
+  const prev = g.localStorage;
+  g.localStorage = fakeStorage;
+  try {
+    backing.set("meridian:seen:v1:2026-09-30:country:in", JSON.stringify(["mumbai"]));
+    backing.set("meridian:seen:v1:not-a-day", JSON.stringify(["junk"]));
+    backing.set("meridian:seen:v2:country:in", JSON.stringify(["delhi"]));
+    seenStoreFor("globe", "globe").write(["x"]);
+    // country:in's v2 history is the union of its existing v2 ids and the
+    // migrated v1 ids; globe's history is untouched.
+    assert.deepEqual(seenStoreFor("country", "in").read(), ["delhi", "mumbai"]);
+    assert.deepEqual(seenStoreFor("globe", "globe").read(), ["x"]);
+    assert.ok(
+      ![...backing.keys()].some((k) => k.startsWith("meridian:seen:v1:")),
+      "legacy v1 keys pruned",
+    );
   } finally {
     if (prev === undefined) delete g.localStorage;
     else g.localStorage = prev;

@@ -39,7 +39,7 @@ export function cycleSeed(sessionSeed: number, cycle: number): number {
   return hashString(`${sessionSeed >>> 0}:${cycle}`);
 }
 
-/** Persistence for the per-day seen place IDs (the no-repeat history). */
+/** Persistence for the seen place IDs (the no-repeat history). */
 export type SeenStore = {
   read: () => string[];
   write: (ids: string[]) => void;
@@ -63,6 +63,47 @@ function seenKey(edition: string, regionId: string): string {
   return `${SEEN_KEY_PREFIX}${edition}:${regionId}`;
 }
 
+/** Read a JSON string-array storage entry, tolerating missing or corrupt data. */
+function readIdList(
+  storage: Pick<Storage, "getItem">,
+  key: string,
+): string[] {
+  try {
+    const raw = storage.getItem(key);
+    const parsed: unknown = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((id): id is string => typeof id === "string");
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Fold one legacy v1 day-keyed entry (`meridian:seen:v1:<day>:<edition>:<region>`)
+ * into its v2 counterpart, unioning the surviving history. Malformed keys or
+ * entries are skipped (the key is still pruned by the caller).
+ */
+function migrateV1Entry(
+  storage: Pick<Storage, "getItem" | "setItem">,
+  v1key: string,
+): void {
+  const rest = v1key.slice(LEGACY_SEEN_KEY_PREFIX.length).split(":");
+  if (rest.length < 3) return;
+  const [day, edition, ...regionParts] = rest as [string, string, ...string[]];
+  const regionId = regionParts.join(":");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !edition || !regionId) return;
+  const legacyIds = readIdList(storage, v1key);
+  if (legacyIds.length === 0) return;
+  const v2key = seenKey(edition, regionId);
+  const merged = new Set([...readIdList(storage, v2key), ...legacyIds]);
+  try {
+    storage.setItem(v2key, JSON.stringify([...merged]));
+  } catch {
+    // Quota or blocked storage: the v1 key is still pruned; the game
+    // continues in memory.
+  }
+}
+
 function safeStorage(): Pick<
   Storage,
   "getItem" | "setItem" | "removeItem" | "length" | "key"
@@ -79,9 +120,9 @@ function safeStorage(): Pick<
  * across days, reloads, and restarts on this device. This is the no-repeat
  * history: a place is never dealt again until every other place in the
  * region's pool has been dealt (a full cycle), no matter how many days pass.
- * Writes prune legacy v1 day-keyed entries (one-time migration); the history
- * itself is only cleared when a cycle completes (see poolForNewRun), so
- * storage stays bounded by the pool size.
+ * Writes migrate-then-prune legacy v1 day-keyed entries (one-time migration);
+ * the history itself is only cleared when a cycle completes (see
+ * poolForNewRun), so storage stays bounded by the region catalog's size.
  * Falls back to memory when storage is unavailable.
  */
 export function seenStoreFor(edition: string, regionId: string): SeenStore {
@@ -104,9 +145,11 @@ export function seenStoreFor(edition: string, regionId: string): SeenStore {
     write: (ids: string[]) => {
       try {
         storage.setItem(key, JSON.stringify(ids));
-        // One-time migration: drop legacy v1 day-keyed entries
-        // (meridian:seen:v1:<day>:<edition>:<region>), whose per-day history
-        // the persistent v2 store supersedes.
+        // One-time migration: fold any surviving legacy v1 day-keyed entries
+        // (meridian:seen:v1:<day>:<edition>:<region>) into their v2
+        // counterparts, so players keep their current no-repeat history
+        // across the upgrade instead of re-seeing today's places. Then prune
+        // the v1 keys. Idempotent: after the first pass no v1 keys remain.
         const doomed: string[] = [];
         for (let i = 0; i < storage.length; i++) {
           const k = storage.key(i);
@@ -114,7 +157,10 @@ export function seenStoreFor(edition: string, regionId: string): SeenStore {
             doomed.push(k);
           }
         }
-        for (const k of doomed) storage.removeItem(k);
+        for (const v1key of doomed) {
+          migrateV1Entry(storage, v1key);
+          storage.removeItem(v1key);
+        }
       } catch {
         // Quota or blocked storage: the game continues in memory.
       }

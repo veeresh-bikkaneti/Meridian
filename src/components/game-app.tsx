@@ -138,7 +138,9 @@ function writeRun(run: Run) {
  * no-repeat history (the cross-session no-repeat rule). Computed once when
  * a run starts and persisted on the run, so a reload rebuilds the identical
  * pool. A place never repeats until every other place in the region has
- * been dealt — across days, reloads, and restarts.
+ * been dealt — across days, reloads, and restarts. Side effect: when the
+ * full cycle is exhausted, poolForNewRun clears the persistent history so
+ * the new run starts a fresh shuffled cycle.
  */
 function poolForRunStart(
   allPlaces: { id: string }[],
