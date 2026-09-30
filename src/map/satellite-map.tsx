@@ -8,6 +8,7 @@ import { disk } from "@/game/geo";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
+import { bandForZoom, clearBoundaryBands, paintBoundaryBand } from "./boundary-bands.ts";
 import {
   buildRegionIndex,
   lookupRegion,
@@ -1024,6 +1025,13 @@ export function SatelliteMap(props: {
     map.on("zoomend", () => {
       // Track zoom for the +/- controls' aria-live announcements (M10).
       setZoom(Math.round(map.getZoom()));
+      // Progressive boundary reveal (F2): update the admin-boundary band
+      // for the new zoom. Static — no transitions (reduced-motion safe).
+      try {
+        paintBoundaryBand(map, bandForZoom(map.getZoom()));
+      } catch {
+        // Style not ready yet — the band paints on the next zoomend.
+      }
       // Re-entrancy guard: a nested zoomend fired while an intent batch is
       // executing (e.g. from the projection-swap zoom restore) must not
       // re-enter the controller with a transitional camera state.
@@ -1046,6 +1054,13 @@ export function SatelliteMap(props: {
       // way (the reducer treats map-load as a no-op; the first idle
       // decides). Recorded for contract fidelity with tile-status.ts.
       dispatchTile({ type: "map-load" });
+      // Progressive boundary reveal (F2): paint the initial band for the
+      // opening zoom. The style is parsed now, so addSource/addLayer are safe.
+      try {
+        paintBoundaryBand(map, bandForZoom(map.getZoom()));
+      } catch {
+        // Non-fatal — the band paints on the next zoomend.
+      }
       // The style parsed; the tile phase gets its own full watchdog budget
       // from here — a slow connection that trickles tiles must not trip
       // the style watchdog and declare failure over a healthy map.
@@ -1125,6 +1140,11 @@ export function SatelliteMap(props: {
       labelRef.current = null;
       mapRef.current = null;
       setReady(false);
+      try {
+        clearBoundaryBands(map);
+      } catch {
+        // Map already torn down — nothing to clear.
+      }
       map.remove();
     };
   }, [props.edition, props.regionName, props.mode, props.bounds, mapAttempt]);
