@@ -81,6 +81,19 @@ function readRun(): Run | null {
     ) {
       return null;
     }
+    // Range-check the restored numbers: a tampered sessionStorage index
+    // (e.g. 1e15) would otherwise send the dealer spinning through billions
+    // of cycles; a non-finite seed is meaningless. Fail closed to null.
+    if (
+      !Number.isInteger(record.index) ||
+      record.index < 0 ||
+      record.index > 1_000_000 ||
+      !Number.isInteger(record.hits) ||
+      record.hits < 0 ||
+      record.hits > 1_000_000
+    ) {
+      return null;
+    }
     return {
       edition: record.edition,
       regionId: record.regionId,
@@ -95,6 +108,11 @@ function readRun(): Run | null {
       // Runs saved before per-session shuffle get a fresh seed; resumeRun
       // keeps a valid one.
       seed: typeof record.seed === "number" ? record.seed : mintSeed(),
+      // Runs saved before pool persistence get [] here; resumeRun backfills
+      // from the freshly computed pool.
+      poolIds: Array.isArray(record.poolIds)
+        ? record.poolIds.filter((id): id is string => typeof id === "string")
+        : [],
     };
   } catch {
     return null;
@@ -107,6 +125,23 @@ function writeRun(run: Run) {
   } catch {
     // The run still lives in memory when storage is blocked.
   }
+}
+
+/**
+ * The session's dealing pool: catalog places minus today's seen history
+ * (the cross-session no-repeat rule). Computed once when a session starts
+ * and persisted on the run, so a reload rebuilds the identical pool.
+ * Falls back to the full catalog when everything was seen today.
+ */
+function computePoolIds(
+  allPlaces: { id: string }[],
+  dateKey: string,
+  edition: Edition,
+  regionId: string,
+): string[] {
+  const seen = new Set(seenStoreFor(dateKey, edition, regionId).read());
+  const fresh = allPlaces.filter((p) => !seen.has(p.id)).map((p) => p.id);
+  return fresh.length > 0 ? fresh : allPlaces.map((p) => p.id);
 }
 
 function isLanguageModel(value: unknown): value is LanguageModelGlobal {
@@ -217,20 +252,21 @@ export function GameApp() {
       // page load must not auto-start a run, so only resumable sessions are
       // restored. (The old `restored === saved` check could never pass:
       // resumeRun always returns a new object, so reloads silently dropped
-      // to the menu instead of resuming.)
-      if (isResumable(saved, today)) commit(resumeRun(saved, today));
+      // to the menu instead of resuming.) The fallback pool is unused here:
+      // a resumable saved run carries its own persisted poolIds.
+      if (isResumable(saved, today)) commit(resumeRun(saved, today, []));
     }
     setReady(true);
   }, [commit]);
 
   const openRun = useCallback(
     (edition: Edition, regionId: string, regionName: string) => {
-      const next = resumeRun(readRun(), {
-        edition,
-        regionId,
-        regionName,
-        dateKey: trailDate(),
-      });
+      const dateKey = trailDate();
+      const next = resumeRun(
+        readRun(),
+        { edition, regionId, regionName, dateKey },
+        computePoolIds(placesFor(edition, regionId), dateKey, edition, regionId),
+      );
       commit(next);
       setMenu(null);
     },
@@ -392,21 +428,31 @@ function Play({
   onLeave: () => void;
 }) {
   const places = useMemo(() => placesFor(run.edition, run.regionId), [run.edition, run.regionId]);
+  // Session pool: the catalog filtered to this run's persisted poolIds.
+  // Computed once at session start and saved on the run, so a reload
+  // rebuilds the identical pool (not a reshuffled smaller one).
+  const pool = useMemo(() => {
+    const ids = new Set(run.poolIds);
+    const filtered = places.filter((p) => ids.has(p.id));
+    // Legacy runs (or a tampered pool): fall back to the full catalog rather
+    // than an empty pool.
+    return filtered.length > 0 ? filtered : places;
+  }, [places, run.poolIds]);
   // Endless dealer: per-session shuffle (fresh seed per run, so restarts never
   // repeat the same first question), per-cycle reseed, and a persistent
   // no-repeat history in localStorage. The dealer is created once per run
   // identity (seed); run.index advances within it. A reload restores the same
-  // seed, so the resumed run keeps dealing the same session's order.
+  // seed and pool, so the resumed run keeps dealing the same session's order.
   const dealer = useMemo(
     () =>
       createDealer(
-        places,
+        pool,
         run.seed,
         seenStoreFor(run.dateKey, run.edition, run.regionId),
         run.index,
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [places, run.seed, run.dateKey, run.edition, run.regionId],
+    [pool, run.seed, run.dateKey, run.edition, run.regionId],
   );
   const place = dealer.at(run.index);
   // Record dealt places into the no-repeat history as the run advances.
@@ -567,13 +613,18 @@ function Play({
     setCardDismissed(false);
     // Fresh map instance for the replayed run (see mapKey above).
     setMapKey((k) => k + 1);
+    const replayDateKey = trailDate();
     onRun(
-      resumeRun(run, {
-        edition: run.edition,
-        regionId: run.regionId,
-        regionName: run.regionName,
-        dateKey: trailDate(),
-      }),
+      resumeRun(
+        run,
+        {
+          edition: run.edition,
+          regionId: run.regionId,
+          regionName: run.regionName,
+          dateKey: replayDateKey,
+        },
+        computePoolIds(places, replayDateKey, run.edition, run.regionId),
+      ),
     );
   }
 

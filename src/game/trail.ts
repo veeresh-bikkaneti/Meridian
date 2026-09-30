@@ -122,6 +122,11 @@ export type Dealer<T extends { id: string }> = {
    * lazily: each new cycle shuffles the still-unseen pool (or the full pool
    * after exhaustion) with a per-cycle seed, so consecutive cycles differ.
    * Returns null when the pool is empty.
+   *
+   * The pool is fixed for the dealer's lifetime: it is computed once per
+   * session (catalog minus the day's seen history) and persisted on the run,
+   * so a reload rebuilds the identical pool and `at(position)` is stable
+   * across reloads. The store is only written (never read for filtering).
    */
   at: (position: number) => T | null;
   /**
@@ -130,38 +135,44 @@ export type Dealer<T extends { id: string }> = {
    * incarnation of this run (e.g. before a reload) and are already recorded.
    */
   markDealtThrough: (position: number) => void;
-  /** Current seen IDs, for tests. */
-  seenIds: () => string[];
 };
 
 /**
  * Endless dealer: per-session shuffle, per-cycle reseed, persistent
  * no-repeat history. Seen places are skipped until the pool is exhausted,
- * at which point the history resets with a fresh shuffle. The history
- * survives reloads and restarts via the store; a new dayKey starts fresh.
+ * at which point the history resets with a fresh shuffle.
+ *
+ * `pool` is the session's fixed place list (catalog minus the day's seen
+ * history, computed once at session start and persisted on the run). The
+ * dealer shuffles this pool deterministically from the session seed, so
+ * every position maps to the same place for the session's lifetime —
+ * including across reloads. The store receives dealt IDs (for future
+ * sessions' no-repeat) but is never read for pool filtering.
  *
  * `startPosition` is the run index the dealer is created at (0 for a fresh
  * run, the resumed index after a reload): earlier positions were dealt by a
- * previous incarnation and must not be re-marked.
+ * previous incarnation and must not be re-marked, but their IDs are
+ * restored into the turnover accounting so cycle resets stay correct.
  */
 export function createDealer<T extends { id: string }>(
-  places: T[],
+  pool: T[],
   sessionSeed: number,
   store: SeenStore = memorySeenStore(),
   startPosition = 0,
 ): Dealer<T> {
-  const seen = new Set<string>(store.read());
+  const places = [...pool];
+  const seen = new Set<string>();
   const cycles: T[][] = [];
   const cycleEnds: number[] = []; // cumulative exclusive end position per cycle
 
   function buildCycle(): T[] {
-    let pool = places.filter((place) => !seen.has(place.id));
-    if (pool.length === 0 && places.length > 0) {
-      // Pool exhausted: reset the day's history with a fresh shuffle.
+    let cyclePool = places.filter((place) => !seen.has(place.id));
+    if (cyclePool.length === 0 && places.length > 0) {
+      // Pool exhausted: reset with a fresh shuffle.
       seen.clear();
-      pool = [...places];
+      cyclePool = [...places];
     }
-    return shufflePlaces(pool, cycleSeed(sessionSeed, cycles.length));
+    return shufflePlaces(cyclePool, cycleSeed(sessionSeed, cycles.length));
   }
 
   function ensureThrough(position: number): void {
@@ -187,17 +198,34 @@ export function createDealer<T extends { id: string }>(
     return cycles[ci]![position - start] ?? null;
   }
 
+  // Restore turnover accounting for positions dealt before a reload: at()
+  // is deterministic over the fixed pool+seed, so re-deriving their IDs is
+  // exact. (markDealtThrough's startPosition guard already prevents
+  // re-persisting them.)
+  for (let i = 0; i < Math.max(0, startPosition); i++) {
+    const place = at(i);
+    if (place) seen.add(place.id);
+  }
+
   function markDealtThrough(position: number): void {
-    let changed = false;
+    const newlyMarked: string[] = [];
     for (let i = Math.max(0, startPosition); i <= position; i++) {
       const place = at(i);
       if (place && !seen.has(place.id)) {
         seen.add(place.id);
-        changed = true;
+        newlyMarked.push(place.id);
       }
     }
-    if (changed) store.write([...seen]);
+    if (newlyMarked.length > 0) {
+      // Persist the union of the newly dealt IDs with any previous
+      // sessions' history already in the store. Positions below
+      // startPosition were dealt (and persisted) by a previous incarnation
+      // and are never re-marked.
+      const known = new Set(store.read());
+      for (const id of newlyMarked) known.add(id);
+      store.write([...known]);
+    }
   }
 
-  return { at, markDealtThrough, seenIds: () => [...seen] };
+  return { at, markDealtThrough };
 }

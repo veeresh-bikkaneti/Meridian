@@ -38,14 +38,24 @@ export type Run = {
    * so a reload keeps dealing the same session's order.
    */
   seed: number;
+  /**
+   * Place IDs available to this session, in catalog order. Computed once at
+   * session start (catalog minus the day's seen history) and persisted so a
+   * reload rebuilds the identical pool — the resumed run keeps dealing the
+   * same session's order, not a reshuffled smaller pool.
+   */
+  poolIds: string[];
 };
 
-export function startRun(input: {
-  edition: Edition;
-  regionId: string;
-  regionName: string;
-  dateKey: string;
-}): Run {
+export function startRun(
+  input: {
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    dateKey: string;
+  },
+  poolIds: string[],
+): Run {
   return {
     edition: input.edition,
     regionId: input.regionId,
@@ -56,6 +66,7 @@ export function startRun(input: {
     phase: "aim",
     results: [],
     seed: mintSeed(),
+    poolIds: [...poolIds],
   };
 }
 
@@ -125,10 +136,12 @@ export function isResumable(
 export function resumeRun(
   saved: Run | null,
   today: { edition: Edition; regionId: string; regionName: string; dateKey: string },
+  poolIds: string[],
 ): Run {
   if (isResumable(saved, today)) {
-    // Backfill results for runs saved before endless mode, and the dealing
-    // seed for runs saved before per-session shuffle.
+    // Backfill results for runs saved before endless mode, the dealing
+    // seed for runs saved before per-session shuffle, and the pool for runs
+    // saved before pool persistence (best effort: the current computed pool).
     // "done" is resumable: it is now a transient per-place state (miss card
     // awaiting Next place), not an ended run — dropping it would silently
     // lose the whole session's accumulated results.
@@ -136,7 +149,10 @@ export function resumeRun(
       ...saved,
       results: saved.results ?? [],
       seed: typeof saved.seed === "number" ? saved.seed : mintSeed(),
+      poolIds: Array.isArray(saved.poolIds)
+        ? saved.poolIds.filter((id): id is string => typeof id === "string")
+        : [...poolIds],
     };
   }
-  return startRun(today);
+  return startRun(today, poolIds);
 }
