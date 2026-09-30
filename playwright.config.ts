@@ -94,6 +94,10 @@ export default defineConfig({
       testMatch: /edition-drilldown\.spec\.ts/,
     },
     {
+      name: "desktop-gestures",
+      testMatch: /desktop-gestures\.spec\.ts/,
+    },
+    {
       name: "highlight",
       testMatch: /highlight\.spec\.ts/,
     },

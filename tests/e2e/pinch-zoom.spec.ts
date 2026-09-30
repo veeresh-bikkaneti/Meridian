@@ -112,12 +112,15 @@ async function startRun(page, edition: "state" | "country" | "globe", region: st
     .waitFor({ state: "visible", timeout: MENU_TIMEOUT });
   if (edition === "globe") {
     await page.getByRole("button", { name: "Play the globe" }).click();
+  } else if (edition === "state") {
+    // State edition goes Choose → country (with states) → state.
+    await page.getByRole("button", { name: "Choose a state" }).click();
+    // United States is currently the only country with admin-1 pools; the
+    // picker lists exactly the countries that have subdivisions.
+    await page.getByRole("button", { name: "United States" }).click();
+    await page.getByRole("button", { name: region! }).click();
   } else {
-    await page
-      .getByRole("button", {
-        name: edition === "state" ? "Choose a state" : "Choose a country",
-      })
-      .click();
+    await page.getByRole("button", { name: "Choose a country" }).click();
     await page.getByRole("button", { name: region! }).click();
   }
   await page.locator(".maplibregl-canvas").waitFor({ timeout: CANVAS_TIMEOUT });
