@@ -15,7 +15,7 @@ import {
 import type { LngLat, RegionGeometryDTO } from "./region-index.ts";
 import type {
   ProjectionType,
-  RevealDetails,
+  RevealRequest,
   ZoomSnapshot,
 } from "./zoom-space.ts";
 
@@ -44,7 +44,7 @@ function flatController(reducedMotion = false): ZoomSpaceController {
   });
 }
 
-const REVEAL_DETAILS: RevealDetails = {
+const REVEAL_REQUEST: RevealRequest = {
   variation: { label: "miss-line" },
   pin: [-99.0, 41.0] as LngLat,
   spot: [-98.0, 42.0] as LngLat,
@@ -54,14 +54,30 @@ const REVEAL_DETAILS: RevealDetails = {
   projection: "mercator",
 };
 
+/** Pin→spot Nebraska→Paris ≈ 7500 km: trips the 500 km big-miss rule. */
+const BIG_MISS_REQUEST: RevealRequest = {
+  ...REVEAL_REQUEST,
+  spot: PARIS,
+};
+
+/** ~1°×1° region (greater side ≈ 111 km) for the big-miss ratio branch. */
+const SMALL_REGION: RegionGeometryDTO = {
+  id: "t1",
+  name: "Tiny",
+  bounds: [0, 0, 1, 1],
+  center: [0.5, 0.5],
+  polygonCoords: { type: "Polygon", coordinates: [] },
+};
+
 /** Drive requestNarrow → spin → narrow to REGION, via the crossing swap. */
 function narrowToRegion(
   c: ZoomSpaceController,
   settleZoom = 4.5,
+  region: RegionGeometryDTO = NEBRASKA,
 ): void {
-  const start = c.requestNarrow(NEBRASKA, settleZoom);
+  const start = c.requestNarrow(region, settleZoom);
   if (c.state === "REGION") return; // reduced motion: synchronous narrow-in.
-  assert.equal(start[2]?.type, "spin");
+  assert.equal(start[1]?.type, "spin");
   c.onSpinTimer();
   if (settleZoom >= Z_FLAT_IN) {
     const crossed = c.onMove(snap(settleZoom, "globe"));
@@ -69,7 +85,7 @@ function narrowToRegion(
       { type: "set-projection", projection: "mercator" },
     ]);
   }
-  const done = c.onMoveEnd(snap(settleZoom, "mercator", NEBRASKA.center));
+  const done = c.onMoveEnd(snap(settleZoom, "mercator", region.center));
   assert.ok(
     done.some((i) => i.type === "announce"),
     "narrow-in should complete",
@@ -91,11 +107,10 @@ test("fresh controller is INTRO with no beat", () => {
   assert.equal(c.revealDone, false);
 });
 
-test("requestNarrow emits disarm + tile re-arm + spin (uniform first intent)", () => {
+test("requestNarrow emits disarm + spin; narrow phase re-arms tiles", () => {
   const c = flatController();
   assert.deepEqual(c.requestNarrow(NEBRASKA, 4.5), [
     { type: "gestures", enabled: false },
-    { type: "rearm-tiles" },
     { type: "spin", active: true, speedDps: SPIN_SPEED_DPS },
   ]);
   assert.equal(c.beatActive, true);
@@ -113,6 +128,9 @@ test("spin timer chains into the narrow beat (crossing-armed path)", () => {
   c.requestNarrow(NEBRASKA, 4.5);
   assert.deepEqual(c.onSpinTimer(), [
     { type: "spin", active: false },
+    // Tile-honesty re-arm opens the narrow phase (full watchdog budget from
+    // narrow start, not from the intro spin).
+    { type: "rearm-tiles" },
     {
       type: "fly-to",
       center: NEBRASKA.center,
@@ -174,6 +192,7 @@ test("large-country path: synchronous swap at narrow beat start", () => {
   c.requestNarrow(NEBRASKA, 1.9);
   assert.deepEqual(c.onSpinTimer(), [
     { type: "spin", active: false },
+    { type: "rearm-tiles" },
     { type: "set-projection", projection: "mercator" },
     {
       type: "fly-to",
@@ -313,13 +332,14 @@ test("onSpinHalt stops the spin without chaining (variant-A surface)", () => {
 test("standard reveal: single settle beat, terminal latch, thresholds inert", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
-  assert.deepEqual(c.requestReveal("standard", REVEAL_DETAILS), [
+  // REVEAL_REQUEST pin→spot ≈ 139 km: under both big-miss branches → standard.
+  assert.deepEqual(c.requestReveal(REVEAL_REQUEST), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
-    { type: "paint-variation", variation: REVEAL_DETAILS.variation },
+    { type: "paint-variation", variation: REVEAL_REQUEST.variation },
     {
       type: "ease-to",
-      center: REVEAL_DETAILS.settleCenter,
+      center: REVEAL_REQUEST.settleCenter,
       zoom: 6,
       durationMs: 2200,
       easing: "easeInOutCubic",
@@ -339,55 +359,107 @@ test("standard reveal: single settle beat, terminal latch, thresholds inert", ()
 test("big-miss reveal: release + pull-back, hold, settle", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
-  assert.deepEqual(c.requestReveal("big-miss", REVEAL_DETAILS), [
+  // BIG_MISS_REQUEST pin→spot ≈ 7500 km: the core classifies the big miss
+  // itself (no kind argument from the caller).
+  assert.deepEqual(c.requestReveal(BIG_MISS_REQUEST), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
     { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
-    { type: "paint-variation", variation: REVEAL_DETAILS.variation },
+    { type: "paint-variation", variation: BIG_MISS_REQUEST.variation },
     {
       type: "ease-to",
-      center: [-98.5, 41.5],
+      center: [-48.325, 44.925],
       zoom: 2.0,
       durationMs: 1400,
       easing: "easeInOutCubic",
     },
   ]);
   assert.equal(c.beatKind, "pullback");
-  // Pull-back moveend: hold — beat stays active, no intents.
-  assert.deepEqual(c.onMoveEnd(snap(2.0, "globe")), []);
+  // Pull-back moveend: the `reveal-hold` intent arms the adapter's hold
+  // timer; the beat stays active through the hold.
+  assert.deepEqual(c.onMoveEnd(snap(2.0, "globe")), [
+    { type: "reveal-hold", durationMs: 500 },
+  ]);
   assert.equal(c.beatActive, true);
-  assert.equal(c.awaitingRevealHold, true);
+  assert.equal(c.beatKind, "pullback");
   // Hold timer expiry: the settle beat.
   assert.deepEqual(c.onRevealHoldTimer(), [
     {
       type: "ease-to",
-      center: REVEAL_DETAILS.settleCenter,
+      center: BIG_MISS_REQUEST.settleCenter,
       zoom: 6,
       durationMs: 2200,
       easing: "easeInOutCubic",
     },
   ]);
   assert.equal(c.beatKind, "settle");
-  assert.equal(c.awaitingRevealHold, false);
   c.onMoveEnd(snap(6, "globe"));
   assert.equal(c.revealDone, true);
 });
 
-test("requestReveal is gated on tile status; clear-variation is ungated", () => {
+test("big-miss ratio branch: 221 km miss on a 111 km region still pulls back", () => {
+  const c = flatController();
+  narrowToRegion(c, 6, SMALL_REGION);
+  // Pin→spot ≈ 221 km: under the 500 km absolute line, but SMALL_REGION's
+  // greater side is ≈ 111 km so 1.5 × 111 ≈ 167 km is crossed → big miss.
+  const request: RevealRequest = {
+    variation: { label: "miss-line" },
+    pin: [0, 0] as LngLat,
+    spot: [0, 2] as LngLat,
+    settleCenter: [0.5, 1] as LngLat,
+    settleZoom: 6,
+    tileFailed: false,
+    projection: "mercator",
+  };
+  const intents = c.requestReveal(request);
+  assert.equal(c.beatKind, "pullback");
+  assert.ok(
+    intents.some(
+      (i) => i.type === "set-projection" && i.projection === "globe",
+    ),
+    "ratio-branch big miss releases to the globe",
+  );
+});
+
+test("globe edition: no region → never a big miss", () => {
+  const c = new ZoomSpaceController({
+    edition: "globe",
+    prefersReducedMotion: false,
+  });
+  c.requestNarrow(null, 0);
+  c.onSpinTimer();
+  c.onMoveEnd(snap(1.5, "globe", [0, 0]));
+  assert.equal(c.state, "GLOBE");
+  // Even a 7500 km pin→spot is a standard settle — the camera is in space.
+  const intents = c.requestReveal(BIG_MISS_REQUEST);
+  assert.equal(c.beatKind, "settle");
+  assert.ok(
+    intents.every((i) => i.type !== "set-projection"),
+    "no release swap in globe edition",
+  );
+});
+
+test("requestReveal is gated on tile status; clearReveal is ungated", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
-  const failed = { ...REVEAL_DETAILS, tileFailed: true };
-  assert.deepEqual(c.requestReveal("standard", failed), []);
-  assert.deepEqual(c.requestReveal("big-miss", failed), []);
+  const failed = { ...REVEAL_REQUEST, tileFailed: true };
+  assert.deepEqual(c.requestReveal(failed), []);
+  assert.deepEqual(c.requestReveal({ ...BIG_MISS_REQUEST, tileFailed: true }), []);
   assert.equal(c.beatActive, false);
-  assert.deepEqual(c.requestReveal("clear"), [{ type: "clear-variation" }]);
+  assert.deepEqual(c.clearReveal(), [{ type: "clear-variation" }]);
+});
+
+test("clearReveal fires even mid-beat", () => {
+  const c = flatController();
+  c.requestNarrow(NEBRASKA, 4.5); // spin beat active
+  assert.deepEqual(c.clearReveal(), [{ type: "clear-variation" }]);
 });
 
 test("requestReveal cannot start mid-beat", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5); // spin beat active
-  assert.deepEqual(c.requestReveal("standard", REVEAL_DETAILS), []);
+  assert.deepEqual(c.requestReveal(REVEAL_REQUEST), []);
 });
 
 test("reduced motion: no spin, synchronous jump + immediate completion", () => {
@@ -413,16 +485,17 @@ test("reduced motion: no spin, synchronous jump + immediate completion", () => {
 test("reduced motion: reveal jumps straight to the final framing", () => {
   const c = flatController(true);
   narrowToRegion(c, 4.5);
-  assert.deepEqual(c.requestReveal("big-miss", REVEAL_DETAILS), [
+  // Big miss (classified by the core) still releases, then jumps — no hold.
+  assert.deepEqual(c.requestReveal(BIG_MISS_REQUEST), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
     { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
-    { type: "paint-variation", variation: REVEAL_DETAILS.variation },
+    { type: "paint-variation", variation: BIG_MISS_REQUEST.variation },
     {
       type: "jump-to",
-      center: REVEAL_DETAILS.settleCenter,
-      zoom: REVEAL_DETAILS.settleZoom,
+      center: BIG_MISS_REQUEST.settleCenter,
+      zoom: BIG_MISS_REQUEST.settleZoom,
     },
     { type: "gestures", enabled: true },
   ]);

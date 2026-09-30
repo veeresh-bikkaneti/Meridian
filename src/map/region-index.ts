@@ -69,7 +69,7 @@ export function normalizeRegionName(name: string): string {
  * Everything else in `src/game/regions.ts` matches the atlas verbatim
  * (guarded by `region-index.test.ts` — atlas naming drift is the top risk).
  */
-export const REGION_NAME_ALIASES: Record<string, string> = {
+export const REGION_NAME_ALIASES: Readonly<Record<string, string>> = {
   "united states": "united states of america",
 };
 

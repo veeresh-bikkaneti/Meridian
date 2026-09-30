@@ -21,6 +21,8 @@ import {
 interface CtxRecord {
   arcs: Array<[number, number, number]>;
   fills: number;
+  clearRects: number;
+  fillRects: number;
   gradientStops: string[];
 }
 
@@ -31,7 +33,13 @@ const windowListeners: Record<string, Array<(...a: any[]) => void>> = {};
 let reduceMotionMatches = false;
 
 function makeCtx(): any {
-  const record: CtxRecord = { arcs: [], fills: 0, gradientStops: [] };
+  const record: CtxRecord = {
+    arcs: [],
+    fills: 0,
+    clearRects: 0,
+    fillRects: 0,
+    gradientStops: [],
+  };
   const ctx: any = {
     fillStyle: "",
     globalAlpha: 1,
@@ -43,7 +51,12 @@ function makeCtx(): any {
     fill() {
       record.fills += 1;
     },
-    fillRect() {},
+    clearRect() {
+      record.clearRects += 1;
+    },
+    fillRect() {
+      record.fillRects += 1;
+    },
     createLinearGradient() {
       return {
         addColorStop(_offset: number, color: string) {
@@ -253,6 +266,23 @@ test("twinkle layer: second canvas + keyframes injected exactly once", () => {
   // Second mount reuses the keyframes element.
   mountStarfield(makeContainer());
   assert.equal(headChildren.length, 1);
+});
+
+test("twinkle layer paints stars only — never an opaque background (regression)", () => {
+  resetStubs();
+  const container = makeContainer();
+  mountStarfield(container);
+  const main = createdCanvases[0];
+  const twinkle = createdCanvases[1];
+  // Main canvas: one opaque gradient background + the 600-star field.
+  assert.equal(main.__ctx.__record.fillRects, 1);
+  assert.equal(main.__ctx.__record.arcs.length, STAR_COUNT);
+  // Twinkle canvas: transparent — cleared, stars drawn, zero background
+  // fills and no gradient. An opaque fill here hides the base field.
+  assert.ok(twinkle.__ctx.__record.clearRects >= 1);
+  assert.equal(twinkle.__ctx.__record.fillRects, 0);
+  assert.deepEqual(twinkle.__ctx.__record.gradientStops, []);
+  assert.equal(twinkle.__ctx.__record.arcs.length, TWINKLE_STAR_COUNT);
 });
 
 test("resize repaints (window resize fallback when ResizeObserver is absent)", () => {

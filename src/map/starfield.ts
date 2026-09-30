@@ -17,10 +17,10 @@
  * skipped entirely under `prefers-reduced-motion`.
  *
  * The wrapper div is `pointer-events: none` (it must never intercept input)
- * and `aria-hidden="true"`. The adapter inserts it as the FIRST child of the
- * `.satellite-map` wrapper so the map container paints above it. The wrapper
- * keeps a dark background so a canvas-2D failure still shows deep space,
- * never white.
+ * and `aria-hidden="true"`. `mountStarfield` inserts the wrapper as the
+ * FIRST child of its `container` (the `.satellite-map` wrapper) so the map
+ * container paints above it. The wrapper keeps a dark background so a
+ * canvas-2D failure still shows deep space, never white.
  */
 
 export interface Star {
@@ -109,11 +109,7 @@ function sizeCanvas(
   canvas.height = Math.max(1, Math.floor(container.clientHeight * dpr));
 }
 
-function paintStars(
-  canvas: HTMLCanvasElement,
-  stars: Star[],
-  dpr: number,
-): void {
+function paintBackground(canvas: HTMLCanvasElement): void {
   const ctx = canvas.getContext("2d");
   if (ctx === null) return;
   const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -121,6 +117,21 @@ function paintStars(
   gradient.addColorStop(1, "#020306");
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+/**
+ * Star layer — TRANSPARENT otherwise: the twinkle canvas sits above the main
+ * field and must never paint an opaque background over it (a shared routine
+ * once did exactly that, hiding the 600-star field behind ~40 twinkles).
+ */
+function paintStarLayer(
+  canvas: HTMLCanvasElement,
+  stars: Star[],
+  dpr: number,
+): void {
+  const ctx = canvas.getContext("2d");
+  if (ctx === null) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (const star of stars) {
     ctx.globalAlpha = star.alpha;
     ctx.fillStyle = star.color;
@@ -188,15 +199,17 @@ export function mountStarfield(container: HTMLElement): StarfieldHandle {
     twinkleStars = generateStars(TWINKLE_STAR_COUNT, rand, true);
   }
 
-  // The adapter inserts the starfield first so the map container paints above.
+  // Insert the starfield first so the map container paints above.
   container.insertBefore(wrapper, container.firstChild);
 
   const repaint = () => {
     sizeCanvas(main, container, dpr);
-    paintStars(main, stars, dpr);
+    paintBackground(main);
+    paintStarLayer(main, stars, dpr);
     if (twinkle !== null) {
       sizeCanvas(twinkle, container, dpr);
-      paintStars(twinkle, twinkleStars, dpr);
+      // Transparent star layer only — the main field shows through.
+      paintStarLayer(twinkle, twinkleStars, dpr);
     }
   };
   repaint();

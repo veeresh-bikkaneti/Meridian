@@ -54,6 +54,8 @@
  *   announce {message} — adapter posts to the M10 live region
  *   spin {active: boolean, speedDps?: number} — adapter owns the rAF loop + 1200 ms
  *     timer; speedDps defaults to the passed value, the adapter never hardcodes a speed
+ *   reveal-hold {durationMs: number} — adapter arms a one-shot hold timer, then
+ *     calls onRevealHoldTimer()
  *
  * --- Adapter contract (satellite-map.tsx) ---
  * - Forward every map `move` to `onMove({zoom, projection, center})` on the ONE
@@ -66,9 +68,13 @@
  *   `spin {active: false}` stop the loop and clear the timer. NOTE: each
  *   setBearing fires a synchronous moveend (jumpTo path) — those arrive while
  *   beatKind is "spin" and are ignored by the controller.
- * - Reveal hold: after onMoveEnd, if `awaitingRevealHold` is true, arm the
- *   REVEAL_HOLD_MS timer; on expiry call `onRevealHoldTimer()` (starts the
- *   settle beat). Skipped under reduced motion (the controller jumps instead).
+ * - Reveal hold: on the `reveal-hold` intent, arm the REVEAL_HOLD_MS timer;
+ *   on expiry call `onRevealHoldTimer()` (starts the settle beat). Skipped
+ *   under reduced motion (the controller jumps instead).
+ * - Narrow beat style load: the fly-to/jump-to (and set-projection) intents
+ *   may fire before the style is loaded — set-projection throws before style
+ *   load. If `map.isStyleLoaded()` is false when the 1200 ms spin timer
+ *   fires, defer executing those camera intents until the style `load` event.
  * - Gate every set-projection on `map.isStyleLoaded()` (it throws otherwise);
  *   treat set-projection as idempotent (a redundant swap is a no-op).
  * - The controller updates its tracked projection optimistically when it emits
@@ -83,12 +89,15 @@
  *   invariants); requestNarrow takes (region, settleZoom). settleZoom is an
  *   adapter-computed input (min(fitZoom(bounds, 15% padding), cap)) because
  *   the swap timing is a function of it and the pure core has no viewport.
- * - requestReveal(kind, details?): kind is "big-miss" | "standard" | "clear";
- *   details carries the choreography inputs (pin/spot, settle framing,
- *   tileFailed, projection) plus the opaque variation payload. "clear" is
- *   ungated and needs no details.
- * - onRevealHoldTimer()/awaitingRevealHold are the hold-timer half of the
- *   spin-timer pattern (design §6 hold has no other controller surface).
+ * - Reveal: `requestReveal(request)` takes one DTO carrying the choreography
+ *   inputs (pin/spot, settle framing, tileFailed, projection) plus the
+ *   opaque variation payload. The CONTROLLER classifies "big miss" from
+ *   pin/spot geometry (design §6: pin→spot > 500 km, or > 1.5 × the region's
+ *   greater side in km), so the choreography rule cannot drift between call
+ *   sites. `clearReveal()` is the ungated clear-variation path.
+ * - Reveal hold: the `reveal-hold {durationMs}` intent arms the hold-timer
+ *   half of the spin-timer pattern (design §6 hold has no other controller
+ *   surface); on expiry the adapter calls `onRevealHoldTimer()`.
  * - paint-highlight is emitted at narrow completion (not at 70% of the beat):
  *   one fewer timer input; the 700 ms paint transition still lands the
  *   highlight as the camera settles ("narrow → highlight → stop").
@@ -118,11 +127,42 @@ export const PULLBACK_DURATION_MS = 1400;
 export const REVEAL_HOLD_MS = 500;
 /** Reveal settle (existing M8 fitBounds beat) duration. */
 export const REVEAL_SETTLE_DURATION_MS = 2200;
+/** Big-miss predicate (design §6): pin→spot farther than this is always a big miss. */
+const BIG_MISS_KM = 500;
+/** Big-miss predicate (design §6): …or farther than this × the region's greater side. */
+const BIG_MISS_REGION_RATIO = 1.5;
 /** Globe-edition home framing (degenerate narrow-in target). */
-export const GLOBE_HOME: { center: LngLat; zoom: number } = {
+export const GLOBE_HOME: { readonly center: LngLat; readonly zoom: number } = {
   center: [0, 0],
   zoom: 1.5,
 };
+
+/** Great-circle distance in km — pure math the core owns (no geo library needed). */
+function haversineKm(a: LngLat, b: LngLat): number {
+  const R = 6371;
+  const dLat = ((b[1] - a[1]) * Math.PI) / 180;
+  const dLon = ((b[0] - a[0]) * Math.PI) / 180;
+  const sinHalfLat = Math.sin(dLat / 2);
+  const sinHalfLon = Math.sin(dLon / 2);
+  const h =
+    sinHalfLat * sinHalfLat +
+    Math.cos((a[1] * Math.PI) / 180) *
+      Math.cos((b[1] * Math.PI) / 180) *
+      sinHalfLon *
+      sinHalfLon;
+  return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+
+/** The longer of the region's width/height in km (for the big-miss ratio branch). */
+function greaterSideKm(bounds: RegionBounds): number {
+  const [w, s, e, n] = bounds;
+  const midLat = (s + n) / 2;
+  const midLon = (w + e) / 2;
+  return Math.max(
+    haversineKm([w, midLat], [e, midLat]),
+    haversineKm([midLon, s], [midLon, n]),
+  );
+}
 
 export type ZoomSpaceState = "INTRO" | "REGION" | "SPACE" | "GLOBE";
 export type BeatKind = "spin" | "narrow" | "pullback" | "settle" | "relock";
@@ -165,11 +205,16 @@ export type ZoomSpaceIntent =
   | { type: "rearm-tiles" }
   | { type: "a11y-intro"; active: boolean }
   | { type: "announce"; message: string }
-  | { type: "spin"; active: boolean; speedDps?: number };
+  | { type: "spin"; active: boolean; speedDps?: number }
+  | { type: "reveal-hold"; durationMs: number };
 
-export type RevealKind = "big-miss" | "standard" | "clear";
-
-export interface RevealDetails {
+/**
+ * The single reveal request DTO. The controller — never the caller —
+ * classifies "big miss" from pin/spot via the design §6 predicate (haversine
+ * > 500 km, or > 1.5 × the region's greater side in km), so the choreography
+ * rule cannot drift between call sites.
+ */
+export interface RevealRequest {
   /** Opaque to the controller — the adapter paints it via its variation layers. */
   variation: unknown;
   pin: LngLat;
@@ -225,11 +270,10 @@ export class ZoomSpaceController {
   /** One-shot T_OUT suppression for the just-completed narrow beat (redundant
    * with the direction gate, kept per design R3). */
   private suppressTOutOnce = false;
-  private holdPending = false;
 
   private region: RegionGeometryDTO | null = null;
   private settleZoom = 0;
-  private pendingReveal: RevealDetails | null = null;
+  private pendingReveal: RevealRequest | null = null;
 
   constructor(options: ZoomSpaceOptions) {
     this.edition = options.edition;
@@ -256,17 +300,6 @@ export class ZoomSpaceController {
 
   get projection(): ProjectionType {
     return this.trackedProjection;
-  }
-
-  /**
-   * True while the pull-back beat has completed its moveend and the settle
-   * beat is waiting on the hold timer. The adapter arms REVEAL_HOLD_MS when
-   * it sees this after onMoveEnd, then calls onRevealHoldTimer().
-   */
-  get awaitingRevealHold(): boolean {
-    return (
-      this.beatActiveFlag && this.beatKindFlag === "pullback" && this.holdPending
-    );
   }
 
   private get flat(): boolean {
@@ -303,12 +336,13 @@ export class ZoomSpaceController {
       // Physical disarm first, at every beat start (uniform even though
       // construction-time `interactive: false` already disarms narrow-in).
       { type: "gestures", enabled: false },
-      // Tile-honesty re-arm opens the narrow phase: the spin loads low-zoom
-      // world tiles; the region's set gets its own verdict + full budget.
-      { type: "rearm-tiles" },
     ];
 
     if (this.reducedMotion) {
+      // Tile-honesty re-arm opens the narrow phase: the region's set gets its
+      // own verdict + full budget. No spin exists on this path, so the re-arm
+      // stays here (the animated path emits it at the narrow beat's start).
+      intents.push({ type: "rearm-tiles" });
       // Respectful, never a frozen mid-spin frame: no spin, no animation.
       if (this.flat && region !== null) {
         intents.push({ type: "set-projection", projection: "mercator" });
@@ -341,18 +375,18 @@ export class ZoomSpaceController {
   }
 
   /**
-   * All camera-beat initiation goes through here (design LOW 16). "clear" is
-   * the ungated clear-variation intent (variation: null). Otherwise the tile
-   * honesty gate applies: no choreography over the error overlay.
+   * Post-commit reveal choreography. The controller — not the caller —
+   * classifies "big miss" from pin/spot geometry (design §6: haversine
+   * > 500 km, or > 1.5 × the region's greater side in km): a big miss pulls
+   * back toward the globe, holds 500 ms (the `reveal-hold` intent arms the
+   * adapter timer), then settles; anything smaller gets a single settle beat.
+   * Under reduced motion both jump straight to the final framing.
+   * Tile-honesty gate: no choreography over the error overlay.
    */
-  requestReveal(
-    kind: RevealKind,
-    details?: RevealDetails,
-  ): ZoomSpaceIntent[] {
-    if (kind === "clear") return [{ type: "clear-variation" }];
-    if (details === undefined || details.tileFailed) return [];
+  requestReveal(request: RevealRequest): ZoomSpaceIntent[] {
+    if (request.tileFailed) return [];
     if (this.beatActiveFlag) return [];
-    this.trackedProjection = details.projection;
+    this.trackedProjection = request.projection;
     // The commit ends any gesture by definition: a stale direction latch must
     // not be mistaken for a trailing moveend by a later beat's completion.
     this.gestureStartZoom = null;
@@ -362,8 +396,9 @@ export class ZoomSpaceController {
       // Post-commit taps can't re-aim during pullback/settle (design N1).
       { type: "tap-handlers", enabled: false },
     ];
+    const bigMiss = this.isBigMiss(request.pin, request.spot);
 
-    if (kind === "big-miss" && this.flat && this.trackedProjection === "mercator") {
+    if (bigMiss && this.flat && this.trackedProjection === "mercator") {
       // REGION→SPACE release at pull-back start: the camera was going to
       // leave the bounds anyway; the release is the honest version of a
       // maxZoom cap. Belt-and-braces order: projection first, then null bounds.
@@ -371,29 +406,29 @@ export class ZoomSpaceController {
       intents.push({ type: "set-max-bounds", bounds: null });
       this.trackedProjection = "globe";
     }
-    intents.push({ type: "paint-variation", variation: details.variation });
+    intents.push({ type: "paint-variation", variation: request.variation });
 
     if (this.reducedMotion) {
       // Pull-back and hold are dropped; instant jump to the final framing.
       // revealDone is still set; tap handlers stay detached (aim phase over).
       intents.push({
         type: "jump-to",
-        center: details.settleCenter,
-        zoom: details.settleZoom,
+        center: request.settleCenter,
+        zoom: request.settleZoom,
       });
       intents.push({ type: "gestures", enabled: true });
       this.revealDoneFlag = true;
-      this.trackedZoom = details.settleZoom;
+      this.trackedZoom = request.settleZoom;
       return intents;
     }
 
-    if (kind === "big-miss") {
+    if (bigMiss) {
       this.beatActiveFlag = true;
       this.beatKindFlag = "pullback";
-      this.pendingReveal = details;
+      this.pendingReveal = request;
       intents.push({
         type: "ease-to",
-        center: midpoint(details.pin, details.spot),
+        center: midpoint(request.pin, request.spot),
         zoom: 2.0,
         durationMs: PULLBACK_DURATION_MS,
         easing: "easeInOutCubic",
@@ -405,13 +440,33 @@ export class ZoomSpaceController {
       this.beatKindFlag = "settle";
       intents.push({
         type: "ease-to",
-        center: details.settleCenter,
-        zoom: details.settleZoom,
+        center: request.settleCenter,
+        zoom: request.settleZoom,
         durationMs: REVEAL_SETTLE_DURATION_MS,
         easing: "easeInOutCubic",
       });
     }
     return intents;
+  }
+
+  /** Ungated: clear the painted variation (menu dismissal, round reset). */
+  clearReveal(): ZoomSpaceIntent[] {
+    return [{ type: "clear-variation" }];
+  }
+
+  /**
+   * Design §6 big-miss predicate, owned by the core: pin→spot haversine
+   * > 500 km, or > 1.5 × the region's greater side in km. No region (globe
+   * edition) is never a big miss — the camera is already in space.
+   */
+  private isBigMiss(pin: LngLat, spot: LngLat): boolean {
+    const region = this.region;
+    if (region === null) return false;
+    const distanceKm = haversineKm(pin, spot);
+    return (
+      distanceKm > BIG_MISS_KM ||
+      distanceKm > BIG_MISS_REGION_RATIO * greaterSideKm(region.bounds)
+    );
   }
 
   /**
@@ -442,6 +497,9 @@ export class ZoomSpaceController {
       this.beatKindFlag = null;
       return intents;
     }
+    // Tile-honesty re-arm opens the narrow phase (full 15 s watchdog budget
+    // from narrow start, not from the intro spin).
+    intents.push({ type: "rearm-tiles" });
     if (this.settleZoom < Z_FLAT_IN) {
       // Large-country path: swap synchronously at beat start, masked by the
       // flight's initial motion. Completion belt-and-braces re-checks.
@@ -473,16 +531,14 @@ export class ZoomSpaceController {
     return [{ type: "spin", active: false }];
   }
 
-  /** The adapter's REVEAL_HOLD_MS timer expired: start the settle beat. */
+  /**
+   * The adapter armed REVEAL_HOLD_MS on the `reveal-hold` intent and its
+   * timer expired: start the settle beat. The pull-back beat is still active
+   * (only its own timer can start the settle), so a stray input cannot wedge
+   * the choreography.
+   */
   onRevealHoldTimer(): ZoomSpaceIntent[] {
-    if (
-      !this.beatActiveFlag ||
-      this.beatKindFlag !== "pullback" ||
-      !this.holdPending
-    ) {
-      return [];
-    }
-    this.holdPending = false;
+    if (!this.beatActiveFlag || this.beatKindFlag !== "pullback") return [];
     const details = this.pendingReveal;
     this.pendingReveal = null;
     if (details === null) {
@@ -541,7 +597,7 @@ export class ZoomSpaceController {
     this.track(snapshot);
     if (!this.beatActiveFlag) {
       // User-gesture moveend: thresholds are zoom-based and zoomend already
-      // handled them. Just clear the direction latch.
+      // handled them — clear the direction latch.
       this.gestureStartZoom = null;
       return [];
     }
@@ -673,10 +729,11 @@ export class ZoomSpaceController {
   /** Pull-back moveend: hold the beat active through the settle pause. */
   private completePullback(zoom: number): ZoomSpaceIntent[] {
     // Explicit evaluation (expect: no trigger — the camera is in SPACE by
-    // design), then the hold. beatActive stays set; the adapter arms
-    // REVEAL_HOLD_MS when it sees awaitingRevealHold.
+    // design), then the `reveal-hold` intent: the adapter arms a one-shot
+    // hold timer and calls onRevealHoldTimer() on expiry. beatActive stays
+    // set through the hold, so a stray input cannot wedge the choreography.
     const intents = this.evaluateThresholds(zoom);
-    this.holdPending = true;
+    intents.push({ type: "reveal-hold", durationMs: REVEAL_HOLD_MS });
     return intents;
   }
 
