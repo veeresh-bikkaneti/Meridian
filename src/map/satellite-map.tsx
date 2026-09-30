@@ -921,13 +921,24 @@ export function SatelliteMap(props: {
 
     // The ONE move listener (design §1): it carries the controller's T_OUT
     // direction latch, the narrow-in crossing swap, and the globe backside
-    // occlusion — no new listeners. Thresholds are never evaluated
-    // mid-gesture; the controller decides on zoomend/moveend.
+    // occlusion. Thresholds are never evaluated mid-gesture; the controller
+    // decides on zoomend/moveend.
+    //
+    // The zoomstart listener beside it is the T_OUT reachability fix: it fires
+    // for wheel, pinch, +/- buttons, and keyboard zoom BEFORE any zoom delta
+    // is applied, so the controller's maxBounds release lands before
+    // MapLibre's defaultConstrain can pin the zoom at the bounds' fit floor.
+    // Pure pans never fire zoomstart, so the region framing guardrail
+    // survives them.
     const snapshot = (): ZoomSnapshot => ({
       zoom: map.getZoom(),
       projection: projectionRef.current,
       // The sibling's LngLat is a plain tuple; the map's is a class.
       center: map.getCenter().toArray(),
+    });
+    map.on("zoomstart", () => {
+      const c = controllerRef.current;
+      if (c) executeIntents(c.onZoomStart());
     });
     map.on("move", () => {
       const c = controllerRef.current;
