@@ -108,9 +108,9 @@ test("seen history persists across reload: no immediate repeats", async ({ page 
   played.push(await readQuestion(page));
   await playOnePlace(page);
 
-  // The no-repeat history is persisted in localStorage, scoped to the day.
-  const dateKey = ((await readRun(page)) as { dateKey: string }).dateKey;
-  const seenKey = `meridian:seen:v1:${dateKey}:globe:globe`;
+  // The no-repeat history is persisted in localStorage, scoped to
+  // edition/region and persistent across days.
+  const seenKey = "meridian:seen:v2:globe:globe";
   const seenBefore = await page.evaluate(
     (key) => JSON.parse(localStorage.getItem(key) ?? "[]") as string[],
     seenKey,
