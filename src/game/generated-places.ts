@@ -106,7 +106,8 @@ export function allGeneratedStarters(): Starter[] {
   const out: Starter[] = [];
   for (const place of dataset.places) {
     if (place.curated) continue;
-    out.push(toStarter(place as GeneratedPlaceRecord & { edition: Edition; regionId: string }));
+    assertAssigned(place);
+    out.push(toStarter(place));
   }
   return out;
 }
