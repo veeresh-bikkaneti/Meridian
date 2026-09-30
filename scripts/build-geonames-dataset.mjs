@@ -30,6 +30,10 @@
  * Outputs (checked in):
  *   src/game/data/geonames/chunks/<regionId>.json
  *   src/game/data/geonames/manifest.json
+ *   src/game/data/geonames/country-boxes.json — the per-country gate boxes
+ *     (same content as the scratch copy, plus provenance meta); the
+ *     build-time gate reads this file, so it must stay in sync with the dump
+ *     the chunks were built from. Regenerate via this script, never hand-edit.
  *
  * Exit codes: 0 = shipped dataset written, gate clean. Non-zero = fail loudly
  * (unmappable row, gate violation shipped, threshold not met, …). Nothing is
@@ -227,7 +231,26 @@ async function deriveCountryBoxes(dumpPath) {
     boxes[cc] = { box: { minLon, minLat, maxLon, maxLat }, wrapped, places: e.n };
   }
   const outPath = join(SCRATCH, "geonames-country-boxes.json");
-  writeFileSync(outPath, JSON.stringify({ generated: new Date().toISOString().slice(0, 10), boxes }) + "\n");
+  const payload = { generated: new Date().toISOString().slice(0, 10), boxes };
+  writeFileSync(outPath, JSON.stringify(payload) + "\n");
+  // The build-time gate (scripts/check-generated-places.mjs) re-validates the
+  // checked-in chunks against THESE boxes on every build, so they are checked
+  // in alongside the dataset (same content + provenance meta). Regenerating
+  // the dataset refreshes this file; never hand-edit it.
+  writeFileSync(
+    join(REPO, "src", "game", "data", "geonames", "country-boxes.json"),
+    JSON.stringify({
+      meta: {
+        source: "GeoNames allCountries dump (CC-BY 4.0) — same dump the dataset was built from",
+        derivedFrom: "all GeoNames feature-class-P rows (this dump)",
+        padDeg: COUNTRY_BOX_PAD_DEG,
+        minDeg: COUNTRY_BOX_MIN_DEG,
+        generated: payload.generated,
+        note: "Reference geometry for the Hyderabad gate. Boxes are intentionally generous (padded).",
+      },
+      boxes,
+    }) + "\n",
+  );
   return boxes;
 }
 
@@ -471,6 +494,10 @@ async function main() {
     const place = {
       id, name, lon, lat,
       blurb: blurbFor(name, admin1Name, countryName, pop, c[15]),
+      // iso2 is the gate key: the build-time gate (scripts/check-generated-places.mjs)
+      // re-validates every shipped place against the derived country box for
+      // its own country code, so the code must travel with the record.
+      iso2: cc,
       edition, regionId, _pop: pop, _gid: Number(geonameid),
     };
 
