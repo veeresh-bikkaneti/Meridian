@@ -73,7 +73,12 @@ export async function serveBuiltArtifact(context: BrowserContext): Promise<void>
     if (p === "/Meridian" || p === "/Meridian/") p = "/_shell.html";
     else if (p.startsWith(BASE)) p = p.slice(BASE.length);
     if (p.endsWith("/")) p += "_shell.html";
-    const file = path.join(DIST, p);
+    // Clamp to the dist dir: a crafted pathname like /../../etc/passwd must
+    // 403, not serve files outside the built artifact.
+    const file = path.normalize(path.join(DIST, p));
+    if (!file.startsWith(DIST + path.sep) && file !== DIST) {
+      return route.fulfill({ status: 403, body: "forbidden" });
+    }
     try {
       const body = await readFile(file);
       const ext = path.extname(file).toLowerCase();
