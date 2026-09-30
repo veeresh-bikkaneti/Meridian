@@ -30,9 +30,10 @@ const BASE = "/Meridian/";
 export const EVIDENCE = "/home/hatch/workspace/meridian-review/evidence";
 export const RUN_KEY = "meridian.run";
 
-// 1x1 transparent PNG (base64) — tile stub, see the header comment.
+// 256x256 PNG (base64) — tile stub, see the header comment. Sized to the
+// source's declared tileSize (256) rather than a 1x1 pixel.
 const TILE_STUB = Buffer.from(
-  "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+  "iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAACwElEQVR4nO3TIQEAIADAMEARhQD0z0YMxLcEN5/73AFV63cA/GQA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQ9otwCZMlETM0AAAAASUVORK5CYII=",
   "base64",
 );
 
@@ -96,19 +97,36 @@ export async function startGlobeRun(page: Page): Promise<void> {
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   // The map's zoomend handler writes Math.round(getZoom()) into data-zoom,
   // so the initial 1.5 settles to "2" once the first zoomend fires. Wait for
-  // the value to stabilize rather than asserting an exact racy value.
+  // the value to stabilize rather than asserting an exact racy value. The
+  // generous timeout/gap tolerate very slow software rendering where the
+  // intro dive can take many seconds.
   const map = page.locator(".satellite-map");
   await expect
     .poll(
       async () => {
         const a = await map.getAttribute("data-zoom");
-        await page.waitForTimeout(400);
+        await page.waitForTimeout(800);
         const b = await map.getAttribute("data-zoom");
         return a === b ? a : null;
       },
-      { timeout: 20_000 },
+      { timeout: 30_000 },
     )
     .not.toBeNull();
+}
+
+/**
+ * The map's 15 s tile-load watchdog can fire on very slow machines (first
+ * idle arrives after the budget), raising the full-screen "Couldn't load
+ * satellite imagery" overlay. That overlay swallows map clicks, so before
+ * any map interaction, dismiss it via its Retry button — exactly what a
+ * user on a flaky connection would do. No-op when the overlay is absent.
+ */
+export async function dismissTileOverlayIfPresent(page: Page): Promise<void> {
+  const overlay = page.getByText("Couldn't load satellite imagery");
+  if (await overlay.isVisible()) {
+    await page.getByRole("button", { name: "Retry" }).click();
+    await expect(overlay).toBeHidden({ timeout: 10_000 });
+  }
 }
 
 export async function readPhase(page: Page): Promise<string | null> {

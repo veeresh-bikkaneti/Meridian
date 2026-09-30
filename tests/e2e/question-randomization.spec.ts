@@ -5,6 +5,7 @@ import {
   readPhase,
   readRun,
   dropButton,
+  dismissTileOverlayIfPresent,
 } from "./helpers";
 import type { Page } from "playwright/test";
 
@@ -28,8 +29,19 @@ async function readQuestion(page: Page): Promise<string> {
 
 /** Drop a pin anywhere, commit, continue to the next place. */
 async function playOnePlace(page: Page): Promise<void> {
+  // Slow VMs can trip the map's tile-load watchdog mid-test; the overlay
+  // swallows map clicks, so clear it the way a user would (Retry). The
+  // watchdog can also fire between the dismiss and the click, so if the
+  // pin didn't land, dismiss once more and re-click.
+  await dismissTileOverlayIfPresent(page);
   await page.mouse.click(500, 400);
-  await expect(dropButton(page)).toBeEnabled();
+  try {
+    await expect(dropButton(page)).toBeEnabled({ timeout: 5_000 });
+  } catch {
+    await dismissTileOverlayIfPresent(page);
+    await page.mouse.click(500, 400);
+    await expect(dropButton(page)).toBeEnabled();
+  }
   await dropButton(page).click();
   await expect
     .poll(() => readPhase(page), { timeout: 20_000 })
@@ -72,6 +84,8 @@ test("restarts deal different first questions with fresh seeds (5-restarts sympt
 });
 
 test("no repeats within a session until the pool turns over", async ({ page }) => {
+  // Six map interactions on software rendering need headroom.
+  test.setTimeout(180_000);
   await startGlobeRun(page);
 
   const questions: string[] = [await readQuestion(page)];
@@ -85,6 +99,8 @@ test("no repeats within a session until the pool turns over", async ({ page }) =
 });
 
 test("seen history persists across reload: no immediate repeats", async ({ page }) => {
+  // Reload + resume on software rendering needs headroom.
+  test.setTimeout(180_000);
   await startGlobeRun(page);
 
   const played: string[] = [await readQuestion(page)];
