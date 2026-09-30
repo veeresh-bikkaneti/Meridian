@@ -77,6 +77,10 @@ export default defineConfig({
       testMatch: /endless-game\.spec\.ts/,
     },
     {
+      name: "scoring-v3",
+      testMatch: /scoring-v3\.spec\.ts/,
+    },
+    {
       name: "question-randomization",
       testMatch: /question-randomization\.spec\.ts/,
     },
