@@ -1,4 +1,5 @@
 import { isHit } from "./radius.ts";
+import { SCORING_VERSION, type ScoredPlace } from "./scoring.ts";
 import { mintSeed } from "./trail.ts";
 
 export type Edition = "state" | "country" | "globe";
@@ -10,6 +11,12 @@ export type PlaceResult = {
   hit: boolean;
   /** Points earned for this place (0 on a miss). */
   score: number;
+  /** Locks the result to the scoring version that produced it. */
+  scoringVersion: number;
+  /** The transparent v3 breakdown; null on a miss. */
+  breakdown: ScoredPlace | null;
+  /** Consecutive hits before this place (the streak the combo built on). */
+  streakBefore: number;
 };
 
 /** Final tally produced by endRun. */
@@ -18,8 +25,12 @@ export type RunSummary = {
   hits: number;
   totalScore: number;
   averageDistanceKm: number;
+  /** Rounded average v3 score per place, 0 when no places were played. */
+  averagePerPlace: number;
   /** Shortest distance across all places, null when no places were played. */
   bestDistanceKm: number | null;
+  /** Longest streak this run. */
+  bestStreak: number;
 };
 
 export type Run = {
@@ -30,6 +41,10 @@ export type Run = {
   index: number;
   hits: number;
   phase: RunPhase;
+  /** Consecutive hits including the latest (0 after a miss). */
+  streak: number;
+  /** Longest streak this run. */
+  bestStreak: number;
   /** Every scored place, in order. Grows unbounded in endless mode. */
   results: PlaceResult[];
   /**
@@ -65,6 +80,8 @@ export function startRun(
     index: 0,
     hits: 0,
     phase: "aim",
+    streak: 0,
+    bestStreak: 0,
     results: [],
     seed: mintSeed(),
     poolIds: [...poolIds],
@@ -76,14 +93,38 @@ export function startRun(
  * the run itself. Endless mode: the player continues place after place until
  * they explicitly end the game via endRun.
  *
- * Pins outside aim do nothing.
+ * Pins outside aim do nothing. A miss scores 0 and resets the streak;
+ * a hit extends it. Stored scores are never recomputed.
  */
-export function dropPin(run: Run, distanceKm: number, radiusKm: number, score: number): Run {
+export function dropPin(
+  run: Run,
+  distanceKm: number,
+  radiusKm: number,
+  scored: ScoredPlace | null,
+): Run {
   if (run.phase !== "aim") return run;
   const hit = isHit(distanceKm, radiusKm);
-  const results = [...run.results, { distanceKm, hit, score: hit ? score : 0 }];
-  if (!hit) return { ...run, results, phase: "done" };
-  return { ...run, hits: run.hits + 1, results, phase: "story" };
+  const streak = hit ? run.streak + 1 : 0;
+  const results = [
+    ...run.results,
+    {
+      distanceKm,
+      hit,
+      score: hit && scored ? scored.score : 0,
+      scoringVersion: SCORING_VERSION,
+      breakdown: hit ? scored : null,
+      streakBefore: run.streak,
+    },
+  ];
+  if (!hit) return { ...run, results, streak, phase: "done" };
+  return {
+    ...run,
+    hits: run.hits + 1,
+    streak,
+    bestStreak: Math.max(run.bestStreak, streak),
+    results,
+    phase: "story",
+  };
 }
 
 /**
@@ -112,14 +153,25 @@ export function summarizeRun(run: Run): RunSummary {
   const distances = run.results.map((r) => r.distanceKm);
   const averageDistanceKm =
     placesPlayed > 0 ? distances.reduce((sum, d) => sum + d, 0) / placesPlayed : 0;
+  const averagePerPlace = placesPlayed > 0 ? Math.round(totalScore / placesPlayed) : 0;
   const bestDistanceKm = placesPlayed > 0 ? Math.min(...distances) : null;
-  return { placesPlayed, hits: run.hits, totalScore, averageDistanceKm, bestDistanceKm };
+  return {
+    placesPlayed,
+    hits: run.hits,
+    totalScore,
+    averageDistanceKm,
+    averagePerPlace,
+    bestDistanceKm,
+    bestStreak: run.bestStreak,
+  };
 }
 
 /**
  * Whether a saved run resumes into today's session: same edition, region,
- * and day, and not parked on the summary screen (a summary must be dismissed
- * before reset, and must not auto-restore on page load).
+ * and day, not parked on the summary screen (a summary must be dismissed
+ * before reset, and must not auto-restore on page load), and scored with the
+ * current scoring version — stored scores are never recomputed, so a version
+ * bump retires old runs instead of mixing scoring systems.
  */
 export function isResumable(
   saved: Run | null,
@@ -130,7 +182,9 @@ export function isResumable(
     saved.phase !== "summary" &&
     saved.edition === today.edition &&
     saved.regionId === today.regionId &&
-    saved.dateKey === today.dateKey
+    saved.dateKey === today.dateKey &&
+    Array.isArray(saved.results) &&
+    saved.results.every((r) => r.scoringVersion === SCORING_VERSION)
   );
 }
 
@@ -149,6 +203,8 @@ export function resumeRun(
     return {
       ...saved,
       results: saved.results ?? [],
+      streak: typeof saved.streak === "number" ? saved.streak : 0,
+      bestStreak: typeof saved.bestStreak === "number" ? saved.bestStreak : 0,
       seed: typeof saved.seed === "number" ? saved.seed : mintSeed(),
       poolIds: Array.isArray(saved.poolIds)
         ? saved.poolIds.filter((id): id is string => typeof id === "string")
