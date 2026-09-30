@@ -42,6 +42,7 @@ test("a mislabeled place fails closed instead of dealing silently", () => {
     story: "A deliberately mis-assigned place used to prove the pool fails closed.",
     sourceLabel: "Test",
     sourceHref: "https://example.com",
+    difficulty: 3,
   };
   assert.throws(() => buildRegionPool([...STARTERS, impostor], "state", "nebraska"), /nebraska-impostor/);
 });

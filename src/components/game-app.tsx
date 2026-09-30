@@ -1,10 +1,11 @@
 import { BRAND } from "@/game/brand";
 import { distanceKm, formatDistance } from "@/game/geo";
-import { radiusKm } from "@/game/radius";
+import { isHit, radiusKm } from "@/game/radius";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
-import { distanceScore, scoreRingForEdition } from "@/game/score";
+import { scoreRingForEdition } from "@/game/score";
+import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { STARTERS } from "@/game/starters";
 import { buildRegionPool } from "@/game/pool";
 import { createDealer, seenStoreFor, mintSeed } from "@/game/trail";
@@ -18,7 +19,16 @@ import { RunSummaryCard } from "./run-summary";
 
 const RUN_KEY = "meridian.run";
 
-export type Drop = { lon: number; lat: number; distanceKm: number; placeId: string };
+export type Drop = {
+  lon: number;
+  lat: number;
+  distanceKm: number;
+  placeId: string;
+  /** The v3 breakdown for the reveal; null on a miss. */
+  breakdown: ScoredPlace | null;
+  /** Consecutive hits before this place (for the miss "streak reset" note). */
+  streakBefore: number;
+};
 
 type ModelAvailability = "available" | "downloadable" | "downloading" | "unavailable";
 
@@ -105,6 +115,16 @@ function readRun(): Run | null {
       index: record.index,
       hits: record.hits,
       phase: record.phase,
+      // Runs saved before the streak engine backfill to 0; the version
+      // gate in isResumable retires their unscored results anyway.
+      streak:
+        Number.isInteger(record.streak) && (record.streak as number) >= 0
+          ? (record.streak as number)
+          : 0,
+      bestStreak:
+        Number.isInteger(record.bestStreak) && (record.bestStreak as number) >= 0
+          ? (record.bestStreak as number)
+          : 0,
       results: Array.isArray(record.results)
         ? record.results.filter(isPlaceResult)
         : [],
@@ -658,11 +678,32 @@ function Play({
       run.edition === "globe"
         ? radiusKm("globe", 0)
         : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
-    const score = distanceScore(distance, scoreRingForEdition(run.edition));
+    const hit = isHit(distance, radius);
+    // v3: the place is scored with the streak engine + difficulty multiplier;
+    // a miss scores 0 and resets the streak (handled in dropPin).
+    const scored = hit
+      ? scorePlace({
+          distanceKm: distance,
+          ring: scoreRingForEdition(run.edition),
+          difficulty: place.difficulty,
+          streakBefore: run.streak,
+          edition: run.edition,
+          regionId: run.regionId,
+          pin: [lon, lat],
+          target: [place.lon, place.lat],
+        })
+      : null;
     setAim(null);
     setAimAnnouncement(null);
-    setDrop({ lon, lat, distanceKm: distance, placeId: place.id });
-    onRun(dropPin(run, distance, radius, score));
+    setDrop({
+      lon,
+      lat,
+      distanceKm: distance,
+      placeId: place.id,
+      breakdown: scored,
+      streakBefore: run.streak,
+    });
+    onRun(dropPin(run, distance, radius, scored));
   }
 
   function onContinue() {
@@ -738,6 +779,21 @@ function Play({
             Editions
           </Button>
           <div className="flex flex-col items-end gap-2">
+            <p
+              data-testid="score-total"
+              className="rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
+            >
+              SCORE {run.results.reduce((sum, r) => sum + r.score, 0).toLocaleString("en-US")}
+            </p>
+            {run.streak >= 2 ? (
+              <p
+                data-testid="streak-flame"
+                className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm tabular-nums text-fg"
+                aria-label={`${run.streak} place streak`}
+              >
+                🔥 {run.streak}
+              </p>
+            ) : null}
             <p className="rounded-md border border-line bg-surface px-3 py-2 text-sm text-fg">
               {run.hits} placed
             </p>
@@ -759,7 +815,7 @@ function Play({
           : run.phase === "story" && place
             ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.`
             : run.phase === "summary" && summary
-              ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}.`
+              ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}, average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
               : place
                 ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : ""}. ${place.name} missed.`
                 : `${run.regionName} finished.`}
@@ -768,6 +824,7 @@ function Play({
         <QuestionBubble
           regionName={run.regionName}
           placeName={place.name}
+          difficulty={place.difficulty}
           hasPin={aim !== null}
           view={bubble}
           onViewChange={setBubble}

@@ -1,5 +1,6 @@
 import { ChevronDown, Target, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { difficultyChip, type Difficulty } from "@/game/scoring";
 
 export type BubbleViewState = "open" | "collapsed" | "dismissed";
 
@@ -61,12 +62,14 @@ function Enter({
 export function QuestionBubble({
   regionName,
   placeName,
+  difficulty,
   hasPin,
   view,
   onViewChange,
 }: {
   regionName: string;
   placeName: string;
+  difficulty: Difficulty;
   hasPin: boolean;
   view: BubbleViewState;
   onViewChange: (view: BubbleViewState) => void;
@@ -103,6 +106,12 @@ export function QuestionBubble({
                   <h2 className="mt-0.5 truncate font-display text-xl leading-tight">
                     {placeName}
                   </h2>
+                  <span
+                    data-testid="difficulty-chip"
+                    className="mt-1.5 inline-block rounded-full border border-amber-200/30 bg-amber-200/10 px-2 py-0.5 text-[11px] font-medium tracking-wide text-amber-100"
+                  >
+                    {difficultyChip(difficulty)}
+                  </span>
                 </>
               ) : (
                 <p className="truncate font-display text-lg leading-tight">{placeName}</p>

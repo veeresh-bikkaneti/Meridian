@@ -35,10 +35,10 @@ test("every difficulty tier has the specified multiplier", () => {
 });
 
 test("difficulty chips are MapTap-style", () => {
-  assert.equal(difficultyChip(1), "Easy · 1.0x");
+  assert.equal(difficultyChip(1), "Easy · 1x");
   assert.equal(difficultyChip(2), "Moderate · 1.25x");
   assert.equal(difficultyChip(3), "Challenging · 1.5x");
-  assert.equal(difficultyChip(4), "Hard · 2.0x");
+  assert.equal(difficultyChip(4), "Hard · 2x");
   assert.equal(difficultyChip(5), "Extreme · 2.5x");
 });
 

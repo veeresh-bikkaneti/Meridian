@@ -44,7 +44,8 @@ export function difficultyTier(difficulty: Difficulty): { name: string; multipli
 /** MapTap-style question-card chip, e.g. "Hard · 2x". */
 export function difficultyChip(difficulty: Difficulty): string {
   const tier = difficultyTier(difficulty);
-  return `${tier.name} · ${formatFactor(tier.multiplier)}x`;
+  const mult = tier.multiplier;
+  return `${tier.name} · ${Number.isInteger(mult) ? mult : mult}x`;
 }
 
 /**
