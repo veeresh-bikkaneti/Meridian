@@ -115,6 +115,18 @@ test("resumeRun restores endless runs; done (miss card) is resumable, summary is
   const legacy = { ...startRun(today), results: undefined as never };
   assert.deepEqual(resumeRun(legacy, today).results, []);
 
+  // A run saved before per-session shuffle (no seed) gets one minted; a run
+  // with a seed keeps dealing the same session's order.
+  const legacySeed = { ...startRun(today), seed: undefined as never };
+  const minted = resumeRun(legacySeed, today);
+  assert.equal(typeof minted.seed, "number");
+  const seeded = { ...startRun(today), seed: 4242 };
+  assert.equal(resumeRun(seeded, today).seed, 4242);
+
+  // Fresh runs mint per-session seeds, so restarts never repeat the same
+  // first question.
+  assert.equal(typeof startRun(today).seed, "number");
+
   // Summary phase starts fresh.
   const { run: ended } = endRun(withResults);
   assert.equal(resumeRun(ended, today).index, 0);

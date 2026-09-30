@@ -6,7 +6,7 @@ import { rewriteStory } from "@/game/rewrite";
 import { continueRun, dropPin, endRun, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
 import { distanceScore, scoreRingForEdition } from "@/game/score";
 import { STARTERS, type Starter } from "@/game/starters";
-import { orderPlaces, dealPlace } from "@/game/trail";
+import { createDealer, seenStoreFor, mintSeed } from "@/game/trail";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -92,6 +92,9 @@ function readRun(): Run | null {
       results: Array.isArray(record.results)
         ? record.results.filter(isPlaceResult)
         : [],
+      // Runs saved before per-session shuffle get a fresh seed; resumeRun
+      // keeps a valid one.
+      seed: typeof record.seed === "number" ? record.seed : mintSeed(),
     };
   } catch {
     return null;
@@ -384,11 +387,27 @@ function Play({
   onLeave: () => void;
 }) {
   const places = useMemo(() => placesFor(run.edition, run.regionId), [run.edition, run.regionId]);
-  const ordered = useMemo(
-    () => orderPlaces(places, run.dateKey, run.edition, run.regionId),
-    [places, run.dateKey, run.edition, run.regionId],
+  // Endless dealer: per-session shuffle (fresh seed per run, so restarts never
+  // repeat the same first question), per-cycle reseed, and a persistent
+  // no-repeat history in localStorage. The dealer is created once per run
+  // identity (seed); run.index advances within it. A reload restores the same
+  // seed, so the resumed run keeps dealing the same session's order.
+  const dealer = useMemo(
+    () =>
+      createDealer(
+        places,
+        run.seed,
+        seenStoreFor(run.dateKey, run.edition, run.regionId),
+        run.index,
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [places, run.seed, run.dateKey, run.edition, run.regionId],
   );
-  const place = dealPlace(ordered, run.index);
+  const place = dealer.at(run.index);
+  // Record dealt places into the no-repeat history as the run advances.
+  useEffect(() => {
+    dealer.markDealtThrough(run.index);
+  }, [dealer, run.index]);
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
   // screen-reader users get feedback for place/move/clear. Cleared whenever
@@ -530,10 +549,11 @@ function Play({
     onReplay();
   }
 
-  // Miss-card replay: the same resumeRun chain as openRun (a done run always
-  // restarts via startRun). Local state is reset explicitly because a
-  // same-day replay yields the same first place, so the [place?.id] effect
-  // above will not fire.
+  // Play-again replay: the same resumeRun chain as openRun. A finished run
+  // (phase "summary") always restarts via startRun with a fresh dealing seed,
+  // so the replayed run opens on a different first question. Local state is
+  // reset explicitly because the [place?.id] effect below only fires when the
+  // dealt place actually changes.
   function onReplay() {
     setAim(null);
     setAimAnnouncement(null);
@@ -616,7 +636,7 @@ function Play({
           place={place}
           drop={drop}
           story={story}
-          empty={ordered.length === 0}
+          empty={places.length === 0}
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
           onContinue={onContinue}

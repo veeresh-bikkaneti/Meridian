@@ -1,4 +1,5 @@
 import { isHit } from "./radius.ts";
+import { mintSeed } from "./trail.ts";
 
 export type Edition = "state" | "country" | "globe";
 export type RunPhase = "aim" | "story" | "done" | "summary";
@@ -31,6 +32,12 @@ export type Run = {
   phase: RunPhase;
   /** Every scored place, in order. Grows unbounded in endless mode. */
   results: PlaceResult[];
+  /**
+   * Per-session dealing seed, minted by startRun. A fresh run always deals a
+   * fresh order, so restarts never repeat the same first question. Persisted
+   * so a reload keeps dealing the same session's order.
+   */
+  seed: number;
 };
 
 export function startRun(input: {
@@ -48,6 +55,7 @@ export function startRun(input: {
     hits: 0,
     phase: "aim",
     results: [],
+    seed: mintSeed(),
   };
 }
 
@@ -107,11 +115,16 @@ export function resumeRun(
     saved.regionId === today.regionId &&
     saved.dateKey === today.dateKey
   ) {
-    // Backfill results for runs saved before endless mode.
+    // Backfill results for runs saved before endless mode, and the dealing
+    // seed for runs saved before per-session shuffle.
     // "done" is resumable: it is now a transient per-place state (miss card
     // awaiting Next place), not an ended run — dropping it would silently
     // lose the whole session's accumulated results.
-    return { ...saved, results: saved.results ?? [] };
+    return {
+      ...saved,
+      results: saved.results ?? [],
+      seed: typeof saved.seed === "number" ? saved.seed : mintSeed(),
+    };
   }
   return startRun(today);
 }
