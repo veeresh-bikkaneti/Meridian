@@ -405,7 +405,7 @@ export function GameApp() {
     // hardcoding in the picker itself.
     const regions = COUNTRIES.filter(
       (country) =>
-        poolSize("country", country.id) > 0 && (ADMIN1_BY_COUNTRY[country.id] ?? []).length > 0,
+        poolSizeFor("country", country.id) > 0 && (ADMIN1_BY_COUNTRY[country.id] ?? []).length > 0,
     );
     return (
       <RegionList
