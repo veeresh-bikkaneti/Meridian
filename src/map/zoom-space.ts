@@ -21,8 +21,8 @@
  *   SPACE   state/country, globe, zoom < Z_FLAT_IN
  *   GLOBE   globe edition — thresholds inert for the whole run
  * Beats are orthogonal flags, not states: `beatActive` + `beatKind`
- * ("spin" | "narrow" | "pullback" | "settle" | "relock"), plus the terminal
- * latch `revealDone`.
+ * ("spin" | "narrow" | "pullback" | "settle" | "tour" | "return" | "relock"),
+ * plus the terminal latch `revealDone`.
  *
  * --- Thresholds (hysteresis band [2.2, 3.2]: hold, no swap either way) ---
  *   Z_GLOBE_OUT = 2.2, Z_FLAT_IN = 3.2
