@@ -784,6 +784,10 @@ export function SatelliteMap(props: {
             // the gate (they throw pre-load).
             if (!alive) return;
             map.jumpTo({ center: intent.center, zoom: intent.zoom });
+            // Sync the zoom state directly: jumpTo doesn't reliably fire
+            // zoomend, and an interrupted fly-to (e.g. skipping mid-dive)
+            // can fire a stale zoomend with the mid-animation zoom.
+            setZoom(Math.round(intent.zoom));
             break;
           }
           case "paint-highlight": {
@@ -1435,6 +1439,7 @@ export function SatelliteMap(props: {
       data-zoom={zoom}
       data-center-lng={center.lng.toFixed(4)}
       data-center-lat={center.lat.toFixed(4)}
+      data-tile-status={tileStatus.kind}
       aria-roledescription="map"
       aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin."
       // Design §7: the intro beat owns the screen — the wrapper is hidden
