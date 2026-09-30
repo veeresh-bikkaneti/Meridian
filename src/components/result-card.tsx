@@ -112,7 +112,6 @@ export function ResultCard({
   dismissed,
   onDismissedChange,
   onContinue,
-  onReplay,
 }: {
   run: Run;
   place: Starter | null;
@@ -122,7 +121,6 @@ export function ResultCard({
   dismissed: boolean;
   onDismissedChange: (dismissed: boolean) => void;
   onContinue: () => void;
-  onReplay: () => void;
 }) {
   const reduced = usePrefersReducedMotion();
 
@@ -198,7 +196,7 @@ export function ResultCard({
 
           {run.phase === "done" && place ? (
             <div className="mt-3 flex flex-col gap-3">
-              <p className="text-sm text-white/70">That pin is outside the radius. The run ends.</p>
+              <p className="text-sm text-white/70">That pin is outside the radius.</p>
               {drop && drop.placeId === place.id ? (
                 <p className="text-sm">
                   Your pin was {formatSpot(drop.lon, drop.lat)},{" "}
@@ -208,17 +206,15 @@ export function ResultCard({
               ) : (
                 <p className="text-sm">The spot is {formatSpot(place.lon, place.lat)}.</p>
               )}
-              <Button onClick={onReplay}>Play again</Button>
+              <Button onClick={onContinue}>Next place</Button>
               <ShareResult run={run} copyVariant="secondary" />
             </div>
           ) : null}
 
-          {run.phase === "done" && !place ? (
+          {run.phase === "done" && empty ? (
             <div className="mt-3 flex flex-col gap-3">
               <p className="text-sm text-white/70">
-                {empty
-                  ? "This trail has no places yet."
-                  : "You placed every place on the trail. It does not repeat."}
+                This trail has no places yet.
               </p>
               <ShareResult run={run} />
             </div>

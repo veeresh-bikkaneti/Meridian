@@ -23,3 +23,13 @@ export function placeAt<T>(ordered: T[], index: number): T | null {
   if (index < 0 || index >= ordered.length) return null;
   return ordered[index] ?? null;
 }
+
+/**
+ * Endless dealing: the trail cycles indefinitely. After the last place,
+ * dealing wraps back to the start of the day's order. Returns null only
+ * when the trail itself is empty.
+ */
+export function dealPlace<T>(ordered: T[], index: number): T | null {
+  if (ordered.length === 0) return null;
+  return placeAt(ordered, index % ordered.length);
+}
