@@ -34,7 +34,8 @@ export function ZoomControls(props: {
   const buttonClass =
     "pointer-events-auto flex h-[44px] w-[44px] items-center justify-center rounded-full " +
     "border border-white/10 bg-[rgba(10,12,16,0.72)] text-white backdrop-blur-[14px] " +
-    "active:scale-[0.98]";
+    "transition-all duration-150 hover:border-white/25 hover:bg-[rgba(20,24,32,0.85)] " +
+    "hover:shadow-[0_0_16px_rgba(242,193,78,0.25)] active:scale-[0.98]";
 
   return (
     <div
