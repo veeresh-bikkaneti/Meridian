@@ -1,5 +1,6 @@
 import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { readFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 /**
@@ -11,11 +12,20 @@ import path from "node:path";
  * the committed pin is solid ("Your pin") so draft vs locked-in is
  * unmistakable.
  *
- * Self-contained: serves the built Pages artifact from this worktree's
- * dist/client straight from disk (same approach as the other E2E suites).
+ * Self-contained by design: the shared tests/e2e/helpers.ts is untracked
+ * (absent from origin/main), so this spec inlines the small subset it needs
+ * (artifact serving, tile stub, session-storage reads) instead of importing
+ * it. DIST is resolved relative to this file so the spec works from any
+ * checkout or worktree.
  */
 
-const DIST = "/home/hatch/workspace/meridian-worktrees/fix-tap-verify/dist/client";
+const DIST = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+  "..",
+  "dist",
+  "client",
+);
 const BASE = "/Meridian/";
 const RUN_KEY = "meridian.run";
 
