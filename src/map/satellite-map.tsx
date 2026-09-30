@@ -396,9 +396,14 @@ export function SatelliteMap(props: {
   const executeIntentsRef = useRef<(intents: ZoomSpaceIntent[]) => void>(() => {});
   // Cinematic tour skip: the construction effect owns the canvas listeners;
   // the reveal routing effect arms/disarms them via this ref.
-  const skipControlRef = useRef<{ arm: () => void; disarm: () => void }>({
+  const skipControlRef = useRef<{
+    arm: () => void;
+    disarm: () => void;
+    trySkip: () => boolean;
+  }>({
     arm: () => {},
     disarm: () => {},
+    trySkip: () => false,
   });
   const prevVariationRef = useRef<MapVariation | null>(null);
   const [ready, setReady] = useState(false);
@@ -524,6 +529,12 @@ export function SatelliteMap(props: {
         break;
       }
       case "Escape": {
+        // Tour skip: if the cinematic tour is playing (skip armed), Escape
+        // jumps to the end state — the keyboard equivalent of tap-to-skip.
+        if (skipControlRef.current.trySkip()) {
+          e.preventDefault();
+          break;
+        }
         // M5: pin placed -> clear it via onClearAim. No pin -> nothing here;
         // the AIM_EMPTY bubble toggle is P0-03 chrome and can observe this
         // same keydown as it bubbles past the map wrapper.
@@ -1032,7 +1043,18 @@ export function SatelliteMap(props: {
       container.removeEventListener("pointerdown", onSkipPointerDown);
       container.removeEventListener("pointerup", onSkipPointerUp);
     };
-    skipControlRef.current = { arm: armSkip, disarm: disarmSkip };
+    // Keyboard skip: Escape (or any key the wrapper routes here) during the
+    // armed window jumps to the tour's end state. Returns true if a skip ran.
+    const trySkip = (): boolean => {
+      if (!skipArmed || !alive) return false;
+      const c = controllerRef.current;
+      if (!c) return false;
+      const intents = c.skipChoreography();
+      if (intents.length === 0) return false;
+      executeIntents(intents);
+      return true;
+    };
+    skipControlRef.current = { arm: armSkip, disarm: disarmSkip, trySkip };
 
     // Must-fix #2: tile load lifecycle (see tile-status.ts wiring contract).
     // Only TILE failures feed it: the "error" event also fires for
@@ -1300,7 +1322,7 @@ export function SatelliteMap(props: {
     return () => {
       alive = false;
       executeIntentsRef.current = () => {};
-      skipControlRef.current = { arm: () => {}, disarm: () => {} };
+      skipControlRef.current = { arm: () => {}, disarm: () => {}, trySkip: () => false };
       controllerRef.current = null;
       tapHandlersRef.current = null;
       window.clearTimeout(watchdog);
@@ -1441,7 +1463,7 @@ export function SatelliteMap(props: {
       data-center-lat={center.lat.toFixed(4)}
       data-tile-status={tileStatus.kind}
       aria-roledescription="map"
-      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin."
+      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the answer tour while it plays."
       // Design §7: the intro beat owns the screen — the wrapper is hidden
       // from assistive tech and uninteractable until narrow completion
       // releases it (the `announce` intent then fires through the live

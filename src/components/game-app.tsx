@@ -938,13 +938,15 @@ function PlayLoaded({
       <p className="sr-only" aria-live="polite">
         {run.phase === "aim"
           ? (aimAnnouncement ?? (place ? `Find ${place.name}.` : null))
-          : run.phase === "story" && place
+          : run.phase === "story" && place && tourDone
             ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
-            : run.phase === "summary" && summary
-              ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}, average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
-              : place
-                ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : ""}. ${place.name} missed.`
-                : `${run.regionName} finished.`}
+            : run.phase === "story" && place
+              ? "Showing the answer."
+              : run.phase === "summary" && summary
+                ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}, average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
+                : place
+                  ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : ""}. ${place.name} missed.`
+                  : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
         <QuestionBubble
