@@ -1,9 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { PLACES } from "./catalog.ts";
+import { STARTERS } from "./starters.ts";
 import {
   validatePlaceCoordinates,
   validateGeneratedPlace,
+  validateStarterCoordinates,
+  STARTER_GLOBE_COUNTRY_BOXES,
   WORLD_COUNTRY_BOXES,
 } from "./validate-places.ts";
 
@@ -67,4 +70,45 @@ test("generated-place gate passes matching imports", () => {
     countryBox: { minLon: 68.0, minLat: 6.0, maxLon: 98.0, maxLat: 36.0 },
   });
   assert.deepEqual(violations, []);
+});
+
+test("all 327 starters pass coordinate validation (Hyderabad rule)", () => {
+  const allViolations: string[] = [];
+  for (const starter of STARTERS) {
+    allViolations.push(...validateStarterCoordinates(starter));
+  }
+  assert.deepEqual(allViolations, [], `starter violations:\n${allViolations.join("\n")}`);
+});
+
+test("every globe-edition starter has a declared country box", () => {
+  const missing = STARTERS.filter(
+    (s) => s.edition === "globe" && !STARTER_GLOBE_COUNTRY_BOXES[s.name],
+  ).map((s) => `${s.name} (${s.id})`);
+  assert.deepEqual(missing, [], `globe starters without a country box: ${missing.join(", ")}`);
+});
+
+test("starter validator catches a wrong-state mismatch", () => {
+  // A place claiming Texas with Seattle coordinates must fail.
+  const violations = validateStarterCoordinates({
+    id: "texas-space-needle",
+    name: "Space Needle",
+    edition: "state",
+    regionId: "texas",
+    lon: -122.3493,
+    lat: 47.6205,
+  });
+  assert.ok(violations.length > 0, "expected a violation for wrong-state coordinates");
+  assert.match(violations[0], /Hyderabad rule/);
+});
+
+test("starter validator fails closed on unknown regionId", () => {
+  const violations = validateStarterCoordinates({
+    id: "atlantis-foo",
+    name: "Atlantis",
+    edition: "state",
+    regionId: "atlantis",
+    lon: 0,
+    lat: 0,
+  });
+  assert.ok(violations.length > 0, "expected a violation for unknown regionId");
 });
