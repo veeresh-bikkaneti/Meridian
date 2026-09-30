@@ -322,12 +322,67 @@ test("per-frame spin moveends (setBearing jumpTo path) never complete the spin",
   assert.equal(c.beatKind, "spin");
 });
 
-test("onSpinHalt stops the spin without chaining (variant-A surface)", () => {
+test("requestReveal during the intro beats is queued, not dropped", () => {
   const c = flatController();
-  c.requestNarrow(NEBRASKA, 4.5);
-  assert.deepEqual(c.onSpinHalt(), [{ type: "spin", active: false }]);
-  assert.equal(c.beatActive, false);
-  assert.deepEqual(c.onSpinTimer(), []);
+  c.requestNarrow(NEBRASKA, 4.5); // spin beat active
+  assert.deepEqual(c.requestReveal(REVEAL_REQUEST), []);
+  // The narrow beat completes; the queued reveal flushes as the standard
+  // settle beat (paint-variation + ease-to present, beat armed).
+  c.onSpinTimer();
+  const crossed = c.onMove(snap(4.5, "globe"));
+  assert.deepEqual(crossed, [{ type: "set-projection", projection: "mercator" }]);
+  const done = c.onMoveEnd(snap(4.5, "mercator", NEBRASKA.center));
+  assert.ok(
+    done.some((i) => i.type === "paint-variation"),
+    "queued reveal flushes at narrow completion",
+  );
+  assert.equal(c.beatKind, "settle");
+});
+
+test("requestReveal during relock beat is queued, not dropped", () => {
+  const c = flatController();
+  narrowToRegion(c, 4.5);
+  // Aim in SPACE, then pinch back in past 3.2 with the center outside the
+  // region (Paris) → the 600 ms relock beat starts.
+  c.onMove(snap(1.5, "globe"));
+  c.onZoomEnd(snap(1.5, "globe"));
+  c.onMoveEnd(snap(1.5, "globe"));
+  assert.equal(c.state, "SPACE");
+  c.onMove(snap(1.5, "globe", PARIS));
+  c.onZoomEnd(snap(3.6, "globe", PARIS));
+  assert.equal(c.beatKind, "relock");
+  // The gesture's trailing moveend arrives; the beat stays active.
+  assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", PARIS)), []);
+  assert.equal(c.beatActive, true);
+  // Drop pin lands mid-beat (the adapter passes the live "globe"
+  // projection): nothing emitted — but nothing dropped either.
+  const midBeat = { ...REVEAL_REQUEST, projection: "globe" as ProjectionType };
+  assert.deepEqual(c.requestReveal(midBeat), []);
+  // The ease's own moveend completes the relock, then the queued reveal
+  // flushes: lock + swap + re-enable, then the standard settle beat.
+  assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", NEBRASKA.center)), [
+    { type: "set-max-bounds", bounds: NEBRASKA.bounds },
+    { type: "set-projection", projection: "mercator" },
+    { type: "gestures", enabled: true },
+    { type: "tap-handlers", enabled: true },
+    { type: "announce", message: "Nebraska view" },
+    { type: "gestures", enabled: false },
+    { type: "tap-handlers", enabled: false },
+    { type: "paint-variation", variation: midBeat.variation },
+    {
+      type: "ease-to",
+      center: midBeat.settleCenter,
+      zoom: 6,
+      durationMs: 2200,
+      easing: "easeInOutCubic",
+    },
+  ]);
+  assert.equal(c.beatKind, "settle");
+  // The reveal recovers fully: the settle beat completes terminally.
+  assert.deepEqual(c.onMoveEnd(snap(6, "mercator")), [
+    { type: "gestures", enabled: true },
+  ]);
+  assert.equal(c.revealDone, true);
 });
 
 test("standard reveal: single settle beat, terminal latch, thresholds inert", () => {
@@ -555,12 +610,6 @@ test("clearReveal fires even mid-beat", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5); // spin beat active
   assert.deepEqual(c.clearReveal(), [{ type: "clear-variation" }]);
-});
-
-test("requestReveal cannot start mid-beat", () => {
-  const c = flatController();
-  c.requestNarrow(NEBRASKA, 4.5); // spin beat active
-  assert.deepEqual(c.requestReveal(REVEAL_REQUEST), []);
 });
 
 test("reduced motion: no spin, synchronous jump + immediate completion", () => {

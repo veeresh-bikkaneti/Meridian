@@ -353,8 +353,8 @@ export function SatelliteMap(props: {
   const variationRef = useRef(props.variation);
   // Zoom-space adapter refs. The controller instance lives here (not in the
   // construction effect's closure) so the shared map listeners keep talking
-  // to the current one across the continue-reset, which swaps in a fresh
-  // controller for the next aim phase.
+  // to the current one across the continue-reset, which resets this same
+  // instance via `resetForNextPlace()` for the next aim phase.
   const controllerRef = useRef<ZoomSpaceController | null>(null);
   const projectionRef = useRef<"globe" | "mercator">("globe");
   const maxBoundsRef = useRef<[number, number, number, number] | null>(null);
@@ -981,7 +981,9 @@ export function SatelliteMap(props: {
       // only the gesture model and tap handlers re-arm here. Never replays
       // the intro.
       setGameGestures(map, edition, true);
-      attachTapHandlers();
+      // Post-commit the aim phase is over (design N1): a tile-Retry that
+      // remounts mid-reveal (variation != null) must not re-arm the taps.
+      if (!variationRef.current) attachTapHandlers();
       setIntroActive(false);
     } else if (edition === "globe") {
       // Degenerate narrow-in: spin, then ease home. No region, no swap, no

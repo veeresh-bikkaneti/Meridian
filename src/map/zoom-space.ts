@@ -34,7 +34,10 @@
  *     detects the settled→moving transition internally and clears the latch
  *     on gesture completion). The direction gate fixes the wrong-direction
  *     fire: a zoom-IN pinch from a sub-2.2 settle (USA ≈ z1.8–2.05) never
- *     fires T_OUT.
+ *     fires T_OUT. Known limitation: the latch reads the gesture's FIRST
+ *     move frame — if that frame already reflects the end zoom (a fast
+ *     fling), the direction comparison sees no zoom-out and T_OUT misses;
+ *     accepted trade-off, since `<=` would misfire T_OUT on pans.
  *   T_IN (SPACE→REGION): on zoomend, user gesture only, globe, flat edition,
  *     zoom > 3.2 → starts the `relock` beat.
  *
@@ -252,6 +255,13 @@ export class ZoomSpaceController {
   private region: RegionGeometryDTO | null = null;
   private settleZoom = 0;
   private pendingReveal: RevealRequest | null = null;
+  /**
+   * A commit that landed while a beat was active (see requestReveal).
+   * Distinct from pendingReveal — that is the big-miss hold payload the
+   * pull-back beat carries into the settle; this is a whole reveal request
+   * deferred to the next beat completion.
+   */
+  private queuedReveal: RevealRequest | null = null;
 
   constructor(options: ZoomSpaceOptions) {
     this.edition = options.edition;
@@ -363,12 +373,44 @@ export class ZoomSpaceController {
    */
   requestReveal(request: RevealRequest): ZoomSpaceIntent[] {
     if (request.tileFailed) return [];
-    if (this.beatActiveFlag) return [];
+    if (this.beatActiveFlag) {
+      // A commit landed mid-beat (reachable: Drop pin inside the 600 ms
+      // relock beat — the canvas tap handlers are detached there, but the
+      // DropPinButton stays rendered). Queue it instead of dropping the
+      // reveal with no recovery: the beat's completion flushes it (see
+      // flushQueuedReveal). Latest request wins. The gesture latch is left
+      // alone — the in-flight beat still needs it to recognize its own
+      // trailing moveend.
+      this.queuedReveal = request;
+      return [];
+    }
     this.trackedProjection = request.projection;
     // The commit ends any gesture by definition: a stale direction latch must
     // not be mistaken for a trailing moveend by a later beat's completion.
     this.gestureStartZoom = null;
+    return this.revealIntents(request);
+  }
 
+  /**
+   * Flush a request queued by a mid-beat commit. Called only from beat
+   * completions that clear the beat flags, so the tracked projection is the
+   * post-beat truth — the flush must NOT resync it from the request's stale
+   * projection snapshot the way requestReveal does.
+   */
+  private flushQueuedReveal(): ZoomSpaceIntent[] {
+    const queued = this.queuedReveal;
+    this.queuedReveal = null;
+    if (queued === null) return [];
+    this.gestureStartZoom = null;
+    return this.revealIntents(queued);
+  }
+
+  /**
+   * The reveal intent builder shared by requestReveal and the mid-beat queue
+   * flush. Assumes the beat flags are clear on entry (both call sites
+   * guarantee it) and arms the pullback/settle beat on exit.
+   */
+  private revealIntents(request: RevealRequest): ZoomSpaceIntent[] {
     const intents: ZoomSpaceIntent[] = [
       { type: "gestures", enabled: false },
       // Post-commit taps can't re-aim during pullback/settle (design N1).
@@ -440,12 +482,13 @@ export class ZoomSpaceController {
    * zoom-to-space morphing silently stops working for places 2+.
    *
    * Clears the per-place transient state — the revealDone latch, beat flags,
-   * gesture direction latch, and one-shot suppressions — and returns no
-   * intents (pure state reset; the adapter's existing clear-variation and
-   * tap re-arm intents cover the DOM side). Preserves run-scoped state: the
-   * region (and its painted highlight), projection tracking, and camera
-   * continuity. The intro cannot re-fire: hasRequestedNarrow stays latched
-   * and the spin→narrow chain is only ever entered via requestNarrow().
+   * gesture direction latch, one-shot suppressions, and any queued mid-beat
+   * reveal — and returns no intents (pure state reset; the adapter's
+   * existing clear-variation and tap re-arm intents cover the DOM side).
+   * Preserves run-scoped state: the region (and its painted highlight),
+   * projection tracking, and camera continuity. The intro cannot re-fire:
+   * hasRequestedNarrow stays latched and the spin→narrow chain is only ever
+   * entered via requestNarrow().
    */
   resetForNextPlace(): ZoomSpaceIntent[] {
     this.revealDoneFlag = false;
@@ -455,6 +498,7 @@ export class ZoomSpaceController {
     this.narrowCrossingArmed = false;
     this.suppressTOutOnce = false;
     this.pendingReveal = null;
+    this.queuedReveal = null;
     return [];
   }
 
@@ -513,7 +557,7 @@ export class ZoomSpaceController {
     if (this.settleZoom < Z_FLAT_IN) {
       // Large-country path: swap synchronously at beat start, masked by the
       // flight's initial motion. Completion belt-and-braces re-checks.
-      // (Undocumented-internal pin: the in-flight flyTo frame closure keeps
+      // (Internal note: the in-flight flyTo frame closure keeps
       // interpolating while applyUpdatedTransform value-copies onto the
       // post-swap transform — re-verify on any maplibre-gl upgrade.)
       intents.push({ type: "set-projection", projection: "mercator" });
@@ -531,14 +575,6 @@ export class ZoomSpaceController {
       easing: "easeInOutCubic",
     });
     return intents;
-  }
-
-  /** Variant-A pointer-stop only: spin off, no chaining into narrow. */
-  onSpinHalt(): ZoomSpaceIntent[] {
-    if (!this.beatActiveFlag || this.beatKindFlag !== "spin") return [];
-    this.beatActiveFlag = false;
-    this.beatKindFlag = null;
-    return [{ type: "spin", active: false }];
   }
 
   /**
@@ -708,6 +744,9 @@ export class ZoomSpaceController {
     const intents = this.narrowCompletionIntents();
     this.suppressTOutOnce = true;
     intents.push(...this.evaluateThresholds(zoom));
+    // A commit that landed mid-beat (queued by requestReveal) runs now —
+    // the relock window is the realistic case, the others are harmless.
+    intents.push(...this.flushQueuedReveal());
     return intents;
   }
 
@@ -753,7 +792,10 @@ export class ZoomSpaceController {
     this.beatKindFlag = null;
     this.revealDoneFlag = true;
     // Tap handlers stay detached — the aim phase is over (design N1).
-    return [{ type: "gestures", enabled: true }];
+    const intents: ZoomSpaceIntent[] = [{ type: "gestures", enabled: true }];
+    // A commit that landed mid-beat (queued by requestReveal) chains here.
+    intents.push(...this.flushQueuedReveal());
+    return intents;
   }
 
   private completeRelock(zoom: number): ZoomSpaceIntent[] {
@@ -776,6 +818,10 @@ export class ZoomSpaceController {
       message: region !== null ? `${region.name} view` : "Region view",
     });
     intents.push(...this.evaluateThresholds(zoom));
+    // The realistic mid-beat commit lands here: Drop pin inside the 600 ms
+    // relock beat queues the reveal, and it flushes now — lock + swap +
+    // re-enable first, then the reveal's own disarm + paint + settle beat.
+    intents.push(...this.flushQueuedReveal());
     return intents;
   }
 }

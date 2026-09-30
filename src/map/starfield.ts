@@ -21,6 +21,11 @@
  * FIRST child of its `container` (the `.satellite-map` wrapper) so the map
  * container paints above it. The wrapper keeps a dark background so a
  * canvas-2D failure still shows deep space, never white.
+ *
+ * Module shape: the helpers (`createStarPRNG`, `generateStars`) are pure
+ * and node-testable; `mountStarfield` is the effectful view leaf that owns
+ * the DOM (canvases, resize observation). This module is a self-contained
+ * view-effect leaf — not pure core.
  */
 
 export interface Star {

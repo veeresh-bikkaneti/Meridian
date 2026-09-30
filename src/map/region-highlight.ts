@@ -1,4 +1,5 @@
 import type { GeoJSONSource, Map } from "maplibre-gl";
+import type { RegionGeometryDTO } from "./region-index.ts";
 
 /**
  * Region highlight painter — Z3/Z4 zoom-space (design §3).
@@ -13,41 +14,16 @@ import type { GeoJSONSource, Map } from "maplibre-gl";
  * SOLID split (design §3, Appendix): the pure geometry resolution lives in
  * the sibling crew's `src/map/region-index.ts` (`buildRegionIndex()`); this
  * module never touches TopoJSON — it receives the resolved
- * `RegionGeometryDTO` and paints it. The `RegionGeometryDTO` interface below
- * is the design-Appendix contract, structurally identical to the sibling
- * module's export, so the adapter can pass that DTO straight in.
+ * `RegionGeometryDTO`, imported from that module (one definition, no
+ * structural duplicate), so the adapter can pass that DTO straight in.
  *
  * Lifecycle (owned by the satellite-map intent adapter, design §1/§4):
- * painted during the narrow-in beat's final third (700 ms fade), persists
- * through SPACE (regional context is never lost — it becomes "the
- * gold-outlined region on the globe"), cleared on leave/replay/edition
- * change. Globe edition: the adapter never paints (no region).
+ * painted at narrow completion via the `paint-highlight` intent (the 700 ms
+ * fade still lands as the camera settles), persists through SPACE (regional
+ * context is never lost — it becomes "the gold-outlined region on the
+ * globe"), cleared on leave/replay/edition change. Globe edition: the
+ * adapter never paints (no region).
  */
-
-export type RegionGeometryDTO = {
-  id: string;
-  name: string;
-  /** west, south, east, north — feeds the camera math. */
-  bounds: [number, number, number, number];
-  /** lon, lat — feeds the camera math. */
-  center: [number, number];
-  /**
-   * Feeds the painter. Accepts the design-Appendix raw-coordinates shape
-   * (`number[][][] | number[][][][]`) AND the tagged struct the sibling
-   * crew's `region-index.ts` produces
-   * (`{ type: "Polygon" | "MultiPolygon", coordinates }`) — the struct is a
-   * member of this union, so their DTO passes straight in with zero
-   * friction; the tag is trusted when present, otherwise the depth probe
-   * below distinguishes Polygon from MultiPolygon.
-   */
-  polygonCoords:
-    | number[][][]
-    | number[][][][]
-    | {
-        type: "Polygon" | "MultiPolygon";
-        coordinates: number[][][] | number[][][][];
-      };
-};
 
 const SOURCE_ID = "region-highlight";
 const FILL_LAYER_ID = "region-fill";
@@ -71,11 +47,13 @@ const OUTLINE_WIDTH_PX = 2.5;
 const OUTLINE_OPACITY = 0.95;
 
 /**
- * Normalizes Polygon or MultiPolygon coordinates (raw or tagged struct) to
- * MultiPolygon. A Polygon's ring array wrapped once is a valid single-polygon
- * MultiPolygon, so the painter never needs to know which shape the atlas
- * produced (us-atlas states and world-atlas countries are MultiPolygons in
- * practice; the normalization keeps the contract honest either way).
+ * Normalizes the tagged-struct coordinates to MultiPolygon. A Polygon's ring
+ * array wrapped once is a valid single-polygon MultiPolygon, so the painter
+ * never needs to know which shape the atlas produced (us-atlas states and
+ * world-atlas countries are MultiPolygons in practice; the normalization
+ * keeps the contract honest either way). Raw (untagged) coordinate arrays
+ * are still tolerated at runtime via the depth probe below — belt-and-braces
+ * for callers outside the typed contract.
  */
 function asMultiPolygon(coords: RegionGeometryDTO["polygonCoords"]): number[][][][] {
   // Tagged struct (sibling region-index.ts): trust the tag.

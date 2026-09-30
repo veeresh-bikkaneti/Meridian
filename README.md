@@ -8,7 +8,9 @@ Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.gith
 
 You pick **State**, **Country**, or **Globe**. A state is any of the 50. A country is one of thirteen. The globe is one shared trail.
 
-The prompt is a place name. The map is unlabeled satellite imagery, locked to the region you opened. Tap to place a pin — tap again to move it. Double-tap (or double-click) to drop the pin, or press **Drop pin** when you're sure: that's your one guess, and the pin locks in. Pinch to zoom. Inside the close-enough radius, a short story appears and the next name follows. Outside it, the run ends. Either way the map draws the line from your pin to the spot, labels the distance, and shows the close-enough circle. There is no fifth round. If the list runs out, the run ends with the count you already earned.
+The prompt is a place name. The map is unlabeled satellite imagery. It opens on your region — pinch out any time for the whole Earth, pinch back in and the map locks onto the region again. Tap to place a pin — tap again to move it. Double-tap (or double-click) to drop the pin, or press **Drop pin** when you're sure: that's your one guess, and the pin locks in. Pinch to zoom. Inside the close-enough radius, a short story appears and the next name follows. Outside it, the run ends. Either way the map draws the line from your pin to the spot, labels the distance, and shows the close-enough circle. There is no fifth round. If the list runs out, the run ends with the count you already earned.
+
+Every round opens the same way: the globe spins once in the dark, then the camera dives onto your region and the region lights up gold. Pinch out any time for Earth from space — the gold outline stays on your region so you never lose it. Pinch back in and it re-locks.
 
 The same region on the same UTC date starts in the same order for everyone. A reload in the same tab resumes. A new visit starts at the beginning. There is no account.
 
@@ -29,7 +31,7 @@ Nebraska · 14
 | Result | Weighted scores and an emoji row | How many places you placed |
 | Prompt | A clue, then the map | The place name, then the story |
 | Where | One daily world (and practice sets) | Any state, a short country list, or the globe |
-| Map | MapTap's globe | Live satellite, unlabeled, locked to the region |
+| Map | MapTap's globe | Live satellite, unlabeled — zoom out to space, zoom back to the region |
 | Same puzzle | Yes, for that day's five | Yes, for that region on that UTC date |
 
 MapTap's places are a checked atlas. Meridian's are too. A model does not invent the next place, so Safari and DuckDuckGo play the same trail as Chrome. If Chrome already has Gemini Nano installed, it may rewrite the story after a hit, using only the facts already written. It does not download a model, and it does not change the pin or the count.
@@ -40,7 +42,7 @@ The game in the browser is four pieces.
 
 - **Atlas.** `src/game/starters.ts` is the whole trail: name, coordinate, story, and a source link. At least five places for each state and launch country, and twelve for the globe.
 - **Rules.** `src/game/radius.ts` decides the close-enough circle. `src/game/trail.ts` orders a region's places from the UTC date. `src/game/run.ts` continues until a miss or the end of the list. `src/game/share.ts` writes the share line.
-- **Map.** `src/map/satellite-map.tsx` draws Esri World Imagery with MapLibre. State and country cameras stay inside that region's box. The globe is the same imagery on a sphere. Tiles are requested by the browser. They are not bundled. The pin is not sent anywhere.
+- **Map.** `src/map/satellite-map.tsx` draws Esri World Imagery with MapLibre. State and country cameras open inside that region's box — pinch out and the box releases to a full Earth-from-space view, pinch back in and it re-locks. The globe is the same imagery on a sphere. Tiles are requested by the browser. They are not bundled. The pin is not sent anywhere.
 - **Story rewrite.** `src/game/rewrite.ts` asks Gemini Nano only when the browser reports the model is already available. Otherwise the written story is what you read.
 
 Nothing about a guess is stored on a server. The in-progress run lives in `sessionStorage`.
