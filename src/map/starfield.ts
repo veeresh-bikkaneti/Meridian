@@ -123,6 +123,9 @@ function paintBackground(canvas: HTMLCanvasElement): void {
  * Star layer — TRANSPARENT otherwise: the twinkle canvas sits above the main
  * field and must never paint an opaque background over it (a shared routine
  * once did exactly that, hiding the 600-star field behind ~40 twinkles).
+ * No clearRect here: repaint() always runs sizeCanvas() first, and assigning
+ * a canvas's width/height resets its bitmap — the surface is already clean.
+ * (The main canvas needs no clear either: paintBackground fills it opaquely.)
  */
 function paintStarLayer(
   canvas: HTMLCanvasElement,
@@ -131,7 +134,6 @@ function paintStarLayer(
 ): void {
   const ctx = canvas.getContext("2d");
   if (ctx === null) return;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (const star of stars) {
     ctx.globalAlpha = star.alpha;
     ctx.fillStyle = star.color;

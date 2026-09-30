@@ -276,10 +276,12 @@ test("twinkle layer paints stars only — never an opaque background (regression
   const twinkle = createdCanvases[1];
   // Main canvas: one opaque gradient background + the 600-star field.
   assert.equal(main.__ctx.__record.fillRects, 1);
+  assert.deepEqual(main.__ctx.__record.gradientStops, ["#05070c", "#020306"]);
   assert.equal(main.__ctx.__record.arcs.length, STAR_COUNT);
-  // Twinkle canvas: transparent — cleared, stars drawn, zero background
-  // fills and no gradient. An opaque fill here hides the base field.
-  assert.ok(twinkle.__ctx.__record.clearRects >= 1);
+  // Twinkle canvas: transparent — stars drawn, zero background fills and no
+  // gradient. An opaque fill here hides the base field. (No clearRect is
+  // needed: sizeCanvas's bitmap reset precedes every paint.)
+  assert.equal(twinkle.__ctx.__record.clearRects, 0);
   assert.equal(twinkle.__ctx.__record.fillRects, 0);
   assert.deepEqual(twinkle.__ctx.__record.gradientStops, []);
   assert.equal(twinkle.__ctx.__record.arcs.length, TWINKLE_STAR_COUNT);

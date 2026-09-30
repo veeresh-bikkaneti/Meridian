@@ -108,6 +108,11 @@ import type {
   RegionBounds,
   RegionGeometryDTO,
 } from "./region-index.ts";
+// Big-miss predicate reuses the existing game helpers (design §6): one
+// source of truth shared with the scoring radius. Precedent: globe-mesh.ts
+// and paint-scene.ts already import runtime values from ../game/.
+import { distanceKm } from "../game/geo.ts";
+import { greaterSideKm } from "../game/regions.ts";
 
 /** T_OUT arm: REGION→SPACE release fires only below this zoom (and zooming out). */
 export const Z_GLOBE_OUT = 2.2;
@@ -136,33 +141,6 @@ export const GLOBE_HOME: { readonly center: LngLat; readonly zoom: number } = {
   center: [0, 0],
   zoom: 1.5,
 };
-
-/** Great-circle distance in km — pure math the core owns (no geo library needed). */
-function haversineKm(a: LngLat, b: LngLat): number {
-  const R = 6371;
-  const dLat = ((b[1] - a[1]) * Math.PI) / 180;
-  const dLon = ((b[0] - a[0]) * Math.PI) / 180;
-  const sinHalfLat = Math.sin(dLat / 2);
-  const sinHalfLon = Math.sin(dLon / 2);
-  const h =
-    sinHalfLat * sinHalfLat +
-    Math.cos((a[1] * Math.PI) / 180) *
-      Math.cos((b[1] * Math.PI) / 180) *
-      sinHalfLon *
-      sinHalfLon;
-  return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
-}
-
-/** The longer of the region's width/height in km (for the big-miss ratio branch). */
-function greaterSideKm(bounds: RegionBounds): number {
-  const [w, s, e, n] = bounds;
-  const midLat = (s + n) / 2;
-  const midLon = (w + e) / 2;
-  return Math.max(
-    haversineKm([w, midLat], [e, midLat]),
-    haversineKm([midLon, s], [midLon, n]),
-  );
-}
 
 export type ZoomSpaceState = "INTRO" | "REGION" | "SPACE" | "GLOBE";
 export type BeatKind = "spin" | "narrow" | "pullback" | "settle" | "relock";
@@ -378,8 +356,8 @@ export class ZoomSpaceController {
    * Post-commit reveal choreography. The controller — not the caller —
    * classifies "big miss" from pin/spot geometry (design §6: haversine
    * > 500 km, or > 1.5 × the region's greater side in km): a big miss pulls
-   * back toward the globe, holds 500 ms (the `reveal-hold` intent arms the
-   * adapter timer), then settles; anything smaller gets a single settle beat.
+   * back toward the globe, holds REVEAL_HOLD_MS (the `reveal-hold` intent arms
+   * the adapter timer), then settles; anything smaller gets a single settle beat.
    * Under reduced motion both jump straight to the final framing.
    * Tile-honesty gate: no choreography over the error overlay.
    */
@@ -455,17 +433,23 @@ export class ZoomSpaceController {
   }
 
   /**
-   * Design §6 big-miss predicate, owned by the core: pin→spot haversine
-   * > 500 km, or > 1.5 × the region's greater side in km. No region (globe
-   * edition) is never a big miss — the camera is already in space.
+   * Design §6 big-miss predicate: pin→spot > 500 km, or > 1.5 × the region's
+   * greater side in km. No region (globe edition) is never a big miss — the
+   * camera is already in space.
+   *
+   * The geometry comes from the shared game helpers (geo.distanceKm,
+   * regions.greaterSideKm) — one source of truth with the scoring radius, so
+   * the choreography predicate can never drift from it. The west<east
+   * assumption inside greaterSideKm is safe for the shipped atlas (no region
+   * crosses the antimeridian).
    */
   private isBigMiss(pin: LngLat, spot: LngLat): boolean {
     const region = this.region;
     if (region === null) return false;
-    const distanceKm = haversineKm(pin, spot);
+    const distance = distanceKm(pin, spot);
     return (
-      distanceKm > BIG_MISS_KM ||
-      distanceKm > BIG_MISS_REGION_RATIO * greaterSideKm(region.bounds)
+      distance > BIG_MISS_KM ||
+      distance > BIG_MISS_REGION_RATIO * greaterSideKm(region.bounds)
     );
   }
 
