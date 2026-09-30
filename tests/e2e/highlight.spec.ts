@@ -52,6 +52,11 @@ async function startStateRun(page: Page, region: string): Promise<void> {
     page.getByRole("button", { name: "Choose a state" }),
   ).toBeVisible({ timeout: 20_000 });
   await page.getByRole("button", { name: "Choose a state" }).click();
+  // State edition drills through the country list first (F8 drill-down).
+  await page.getByRole("button", { name: "United States" }).click();
+  await expect(page.getByRole("heading", { name: "United States" })).toBeVisible({
+    timeout: 20_000,
+  });
   await page.getByRole("button", { name: region }).click();
   await expect(mapEl(page)).toBeVisible({ timeout: 20_000 });
   await expect(page.locator(".maplibregl-canvas")).toBeVisible({

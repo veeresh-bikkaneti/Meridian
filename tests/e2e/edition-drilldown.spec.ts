@@ -11,7 +11,9 @@ import type { Page } from "playwright/test";
  * F8 edition drill-down picker: Globe -> Country -> State, each level
  * playable, plus the fail-closed dealing policy behind it.
  *
- * - Choose screen offers Globe and Country (no USA-default State card).
+ * - Choose screen offers State, Country, and Globe cards.
+ * - "Choose a state" lists only countries that have states/provinces (today
+ *   just the United States) — no dead ends, no USA hardcoding.
  * - Country list lists only countries with a playable pool (no dead ends).
  * - The USA drills into its states; other countries start immediately.
  * - The USA state screen offers "Play entire United States" on top.
@@ -139,4 +141,38 @@ test("back navigation returns one level at a time", async ({ page }) => {
     page.getByRole("button", { name: "Choose a country" }),
   ).toBeVisible();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+});
+
+test("Choose screen offers a State card; State -> country -> state starts a state run", async ({
+  page,
+}) => {
+  await page.goto("http://127.0.0.1:4123/Meridian/");
+  await expect(page.getByRole("button", { name: "Choose a state" })).toBeVisible();
+  await page.getByRole("button", { name: "Choose a state" }).click();
+  await expect(page.getByRole("heading", { name: "State" })).toBeVisible();
+  // Only countries with subdivisions are listed — today just the USA.
+  await page.getByRole("button", { name: "United States" }).click();
+  await expect(page.getByRole("heading", { name: "United States" })).toBeVisible();
+  await page.getByRole("button", { name: "Nebraska" }).click();
+  await expectRunStarted(page);
+  expect(await readRunIdentity(page)).toEqual({
+    edition: "state",
+    regionId: "nebraska",
+  });
+});
+
+test("State path back navigation returns through the state country list", async ({
+  page,
+}) => {
+  await page.goto("http://127.0.0.1:4123/Meridian/");
+  await page.getByRole("button", { name: "Choose a state" }).click();
+  await page.getByRole("button", { name: "United States" }).click();
+  // State list -> state country list (not the full country list).
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("heading", { name: "State" })).toBeVisible();
+  // State country list -> choose screen.
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(
+    page.getByRole("button", { name: "Choose a state" }),
+  ).toBeVisible();
 });

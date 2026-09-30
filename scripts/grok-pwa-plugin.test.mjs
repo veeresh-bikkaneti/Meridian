@@ -105,7 +105,12 @@ test("does not duplicate x:creator tags", () => {
 test("platform chrome overwrites share-card metas and always sets og:title", () => {
   const html =
     '<html><head><title>Hello World</title><meta property="og:title" content="Old"><meta name="twitter:card" content="summary"></head></html>';
-  const out = injectGrokPwaHead(html, { appName: "Wild Race" });
+  const out = injectGrokPwaHead(html, {
+    appName: "Wild Race",
+    // Hermetic: keep the repo's src/lib/og/site.json + public/og.jpg from
+    // leaking in so this tests pristine-template platform-chrome behavior.
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
+  });
   assert.match(out, /name="twitter:card" content="summary_large_image"/);
   assert.match(out, /property="og:title" content="Hello World"/);
   assert.doesNotMatch(out, /content="Old"/);
@@ -246,6 +251,8 @@ test("site title Grok App is a real name, not a sentinel", () => {
 test("published grok.me slug is still a title fallback", () => {
   const out = injectGrokPwaHead("<html><head></head></html>", {
     host: "wild-race.grok.me",
+    // Hermetic: the title must come from the host slug, not the repo's site.json.
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
   });
   assert.match(out, /property="og:title" content="Wild Race"/);
 });
@@ -307,6 +314,9 @@ test("emits og:image for a public host and prefers a custom card", () => {
     appName: "Wild Race",
     host: "wild-race.grok.me",
     site: { title: "Wild Race" },
+    // Hermetic: an empty dir means no public/og.jpg on disk, so the
+    // og.grok.me placeholder (not the repo's real card file) is emitted.
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
   });
   assert.match(
     placeholder,
@@ -318,15 +328,19 @@ test("emits og:image for a public host and prefers a custom card", () => {
     appName: "Wild Race",
     host: "wild-race.grok.me",
     site: { title: "Wild Race", card: "custom", type: "x:game" },
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
   });
   assert.match(custom, /property="og:image" content="https:\/\/wild-race\.grok\.me\/og\.jpg"/);
   assert.match(custom, /property="og:type" content="x:game"/);
 });
 
 test("placeholder og:image appends site.color when it is 6-digit hex", () => {
+  // Hermetic cwd for all three: the repo's real public/og.jpg must not
+  // leak in, so the placeholder vs custom-card logic is tested in isolation.
   const themed = injectGrokPwaHead("<html><head></head></html>", {
     host: "wild-race.grok.me",
     site: { title: "Wild Race", color: "#FF4D2E" },
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
   });
   assert.match(
     themed,
@@ -336,20 +350,23 @@ test("placeholder og:image appends site.color when it is 6-digit hex", () => {
   const invalid = injectGrokPwaHead("<html><head></head></html>", {
     host: "wild-race.grok.me",
     site: { title: "Wild Race", color: "red" },
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
   });
   assert.doesNotMatch(invalid, /color=/);
 
   const custom = injectGrokPwaHead("<html><head></head></html>", {
     host: "wild-race.grok.me",
     site: { title: "Wild Race", card: "custom", color: "FF4D2E" },
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
   });
   assert.doesNotMatch(custom, /color=/);
 });
 
 test("document title entities are not double-escaped on og:title", () => {
-  const out = injectGrokPwaHead(
-    "<html><head><title>Cats &amp; Dogs</title></head></html>",
-  );
+  // Hermetic: og:title must come from the document, not the repo's site.json.
+  const out = injectGrokPwaHead("<html><head><title>Cats &amp; Dogs</title></head></html>", {
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
+  });
   assert.match(out, /property="og:title" content="Cats &amp; Dogs"/);
   assert.doesNotMatch(out, /Cats &amp;amp; Dogs/);
 });
@@ -363,14 +380,22 @@ test("site.json title wins over the host slug", () => {
 });
 
 test("injects into documents with no head element", () => {
-  const out = injectGrokPwaHead("<html><body>hi</body></html>", { appName: "Solo" });
+  const out = injectGrokPwaHead("<html><body>hi</body></html>", {
+    appName: "Solo",
+    // Hermetic: og:title must be the appName, not the repo's site.json title.
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
+  });
   assert.match(out, /<head>/);
   assert.match(out, /property="og:title" content="Solo"/);
   assert.match(out, /<\/head>/);
 });
 
 test("streaming injector matches </HEAD> case-insensitively", () => {
-  const injector = createHeadInjector({ appName: "Wild Race" });
+  // Hermetic: document title "x" must win over the repo's site.json title.
+  const injector = createHeadInjector({
+    appName: "Wild Race",
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
+  });
   const chunks = [
     ...injector.push("<html><HEAD><title>x</title></HE"),
     ...injector.push("AD><body>hello</body></html>"),
@@ -395,7 +420,11 @@ test("is idempotent", () => {
 });
 
 test("uses the app name in the injected title tag", () => {
-  const out = injectGrokPwaHead("<html><head></head></html>", { appName: "Wild Race" });
+  const out = injectGrokPwaHead("<html><head></head></html>", {
+    appName: "Wild Race",
+    // Hermetic: the injected name must be the appName, not the repo's site.json title.
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
+  });
   assert.match(out, /apple-mobile-web-app-title" content="Wild Race"/);
 });
 

@@ -389,6 +389,21 @@ export function SatelliteMap(props: {
   const [ready, setReady] = useState(false);
   // The intro opens at zoom 1.0 (Earth from space); zoomend keeps this fresh.
   const [zoom, setZoom] = useState(1);
+  // Map center mirror for the DOM contract (data-center-lng/lat). Written on
+  // moveend — cheap, stable between gestures, and precise enough (4 decimals
+  // ≈ 11 m) for E2E drag assertions. data-zoom stays rounded for the existing
+  // zoom-control consumers.
+  const [center, setCenter] = useState({ lng: 0, lat: 0 });
+  // moveend fires after every gesture — including pure zooms that leave the
+  // center untouched. A fresh object on each firing would re-render on every
+  // moveend; keep the previous state when the rounded DOM-contract values are
+  // unchanged, matching the zoom mirror's bail-out behavior above.
+  const setCenterIfMoved = (lng: number, lat: number) =>
+    setCenter((prev) =>
+      prev.lng.toFixed(4) === lng.toFixed(4) && prev.lat.toFixed(4) === lat.toFixed(4)
+        ? prev
+        : { lng, lat },
+    );
   // Design §7: the wrapper is aria-hidden + inert for the whole intro beat,
   // released at narrow completion.
   const [introActive, setIntroActive] = useState(true);
@@ -1058,10 +1073,12 @@ export function SatelliteMap(props: {
     });
     map.on("moveend", () => {
       // Re-entrancy guard (see zoomend).
+      const c = map.getCenter();
+      setCenterIfMoved(c.lng, c.lat);
       if (dispatchingIntentsRef.current) return;
-      const c = controllerRef.current;
-      if (!c) return;
-      executeIntents(c.onMoveEnd(snapshot()));
+      const ctl = controllerRef.current;
+      if (!ctl) return;
+      executeIntents(ctl.onMoveEnd(snapshot()));
       // The reveal hold is armed by the `reveal-hold` intent the pull-back's
       // moveend returns (executor case above) — not here.
     });
@@ -1109,6 +1126,8 @@ export function SatelliteMap(props: {
       });
       map.resize();
       setZoom(Math.round(map.getZoom()));
+      const initialCenter = map.getCenter();
+      setCenterIfMoved(initialCenter.lng, initialCenter.lat);
       paintVariationLayers(map, variationRef.current ?? null, labelRef);
       if (isRestore && dtoRef.current) {
         // Tile-Retry re-opens mid-SPACE (design §8): the highlight repaints
@@ -1263,6 +1282,8 @@ export function SatelliteMap(props: {
       tabIndex={0}
       role="application"
       data-zoom={zoom}
+      data-center-lng={center.lng.toFixed(4)}
+      data-center-lat={center.lat.toFixed(4)}
       aria-roledescription="map"
       aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin."
       // Design §7: the intro beat owns the screen — the wrapper is hidden

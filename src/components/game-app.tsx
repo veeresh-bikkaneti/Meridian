@@ -239,7 +239,10 @@ async function revealStory(placeId: string, authored: string): Promise<string> {
  * The run's `Edition` type is unchanged — only the menu needs the extra
  * level.
  */
-type Menu = { kind: "countries" } | { kind: "admin1"; countryId: string; countryName: string };
+type Menu =
+  | { kind: "countries" }
+  | { kind: "states" }
+  | { kind: "admin1"; countryId: string; countryName: string; from: "countries" | "states" };
 
 /** Lenient pool-size check for the picker lists (the strict fail-closed gate runs at deal time). */
 function poolSize(edition: Edition, regionId: string): number {
@@ -327,11 +330,35 @@ export function GameApp() {
         onChoose={(region) => {
           const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
           if (subdivisions.length > 0) {
-            setMenu({ kind: "admin1", countryId: region.id, countryName: region.name });
+            setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "countries" });
           } else {
             openRun("country", region.id, region.name);
           }
         }}
+      />
+    );
+  }
+
+  if (menu?.kind === "states") {
+    // Only countries with a playable pool AND states/provinces — never a dead end.
+    // The poolSize half matches the Country list's invariant (line above): a country
+    // whose admin-1 map lands before its question pool must not be listed, or every
+    // state click would hit the fail-closed deal-time gate. Today that is just the
+    // United States; more countries appear here as admin-1 pools land, with no USA
+    // hardcoding in the picker itself.
+    const regions = COUNTRIES.filter(
+      (country) =>
+        poolSize("country", country.id) > 0 && (ADMIN1_BY_COUNTRY[country.id] ?? []).length > 0,
+    );
+    return (
+      <RegionList
+        title="State"
+        subtitle="Choose a country, then one of its states."
+        regions={regions}
+        onBack={() => setMenu(null)}
+        onChoose={(region) =>
+          setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
+        }
       />
     );
   }
@@ -347,19 +374,27 @@ export function GameApp() {
           label: `Play entire ${menu.countryName}`,
           onClick: () => openRun("country", menu.countryId, menu.countryName),
         }}
-        onBack={() => setMenu({ kind: "countries" })}
+        onBack={() => setMenu({ kind: menu.from })}
         onChoose={(region) => openRun("state", region.id, region.name)}
       />
     );
   }
 
-  return <Choose onCountry={() => setMenu({ kind: "countries" })} onGlobe={() => openRun("globe", "globe", "Globe")} />;
+  return (
+    <Choose
+      onState={() => setMenu({ kind: "states" })}
+      onCountry={() => setMenu({ kind: "countries" })}
+      onGlobe={() => openRun("globe", "globe", "Globe")}
+    />
+  );
 }
 
 function Choose({
+  onState,
   onCountry,
   onGlobe,
 }: {
+  onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
 }) {
@@ -372,11 +407,17 @@ function Choose({
         </p>
         <h1 className="mt-3 font-display text-5xl text-fg">{BRAND.name}</h1>
         <p className="mt-4 max-w-md text-lg text-muted">
-          Pick the globe or a country — drill into its states where available. A place name, then
-          one pin. The run goes until you choose to end it.
+          Pick the globe, a country, or a state. A place name, then one pin. The run goes until
+          you choose to end it.
         </p>
       </header>
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
+      <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <EditionCard
+          title="State"
+          detail="Pick a country, then one of its states. Each state is its own run."
+          action="Choose a state"
+          onClick={onState}
+        />
         <EditionCard
           title="Country"
           detail="Play a country whole, or drill into its states where available."
