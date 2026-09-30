@@ -12,7 +12,7 @@ The prompt is a place name. The map is unlabeled satellite imagery. It opens on 
 
 Every round opens the same way: the globe spins once in the dark, then the camera dives onto your region and the region lights up gold. Pinch out any time for Earth from space — the gold outline stays on your region so you never lose it. Pinch back in and it re-locks.
 
-The same region on the same UTC date starts in the same order for everyone. A reload in the same tab resumes. A new visit starts at the beginning. There is no account.
+Every visit shuffles the trail with a fresh seed, so restarts open on different questions — the same first question never repeats across same-day restarts. Places you've already seen are skipped until the pool is exhausted, then the trail reshuffles and the cycle starts over with a new order. A reload in the same tab resumes the same session's order. A new visit starts at the beginning. There is no account.
 
 The share line is how far you got, not a score out of 1,000:
 

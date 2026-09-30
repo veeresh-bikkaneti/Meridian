@@ -67,6 +67,10 @@ export default defineConfig({
       name: "endless-game",
       testMatch: /endless-game\.spec\.ts/,
     },
+    {
+      name: "question-randomization",
+      testMatch: /question-randomization\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
