@@ -67,6 +67,15 @@ export default defineConfig({
       name: "endless-game",
       testMatch: /endless-game\.spec\.ts/,
     },
+    {
+      name: "pinch-zoom",
+      testMatch: /pinch-zoom\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+        hasTouch: true,
+        isMobile: true,
+      },
+    },
   ],
   reporter: [
     ["list"],
