@@ -16,3 +16,8 @@ attachments
 !.env.example
 .DS_Store
 .node_modules.lock
+
+# F1 lesson (2026-09-30): scratch/probe files must never be committable
+*.tmp.mjs
+playwright-report/
+test-results/
