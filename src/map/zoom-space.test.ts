@@ -8,6 +8,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  SPIN_DURATION_MS,
   SPIN_SPEED_DPS,
   Z_FLAT_IN,
   Z_GLOBE_OUT,
@@ -99,7 +100,16 @@ function narrowToRegion(
 test("threshold and spin constants", () => {
   assert.equal(Z_GLOBE_OUT, 2.2);
   assert.equal(Z_FLAT_IN, 3.2);
-  assert.equal(SPIN_SPEED_DPS, 6);
+  assert.equal(SPIN_SPEED_DPS, 30);
+});
+
+test("intro spin turns a clearly visible angle during the spin beat", () => {
+  // Total rotation over the beat: must read as motion (>= 20°) but stay
+  // comfortable (<= 90° in ~1 s). Guards against regressions to an
+  // imperceptible spin like the old 6 dps (7.2°).
+  const totalDegrees = (SPIN_SPEED_DPS * SPIN_DURATION_MS) / 1000;
+  assert.ok(totalDegrees >= 20, `intro spin ${totalDegrees}° is too subtle`);
+  assert.ok(totalDegrees <= 90, `intro spin ${totalDegrees}° is too fast`);
 });
 
 test("fresh controller is INTRO with no beat", () => {
