@@ -3,7 +3,7 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { radiusKm } from "@/game/radius";
 import { COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
-import { continueRun, dropPin, endRun, resumeRun, type Edition, type Run, type RunPhase, type RunSummary } from "@/game/run";
+import { continueRun, dropPin, endRun, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
 import { distanceScore, scoreRingForEdition } from "@/game/score";
 import { STARTERS, type Starter } from "@/game/starters";
 import { orderPlaces, dealPlace } from "@/game/trail";
@@ -52,6 +52,16 @@ function isPhase(value: unknown): value is RunPhase {
   return value === "aim" || value === "story" || value === "done" || value === "summary";
 }
 
+function isPlaceResult(value: unknown): value is PlaceResult {
+  if (!value || typeof value !== "object") return false;
+  const r = value as Record<string, unknown>;
+  return (
+    typeof r.distanceKm === "number" &&
+    typeof r.hit === "boolean" &&
+    typeof r.score === "number"
+  );
+}
+
 function readRun(): Run | null {
   try {
     if (typeof sessionStorage === "undefined") return null;
@@ -79,7 +89,9 @@ function readRun(): Run | null {
       index: record.index,
       hits: record.hits,
       phase: record.phase,
-      results: Array.isArray(record.results) ? record.results : [],
+      results: Array.isArray(record.results)
+        ? record.results.filter(isPlaceResult)
+        : [],
     };
   } catch {
     return null;
