@@ -3,7 +3,7 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { radiusKm } from "@/game/radius";
 import { COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
-import { continueRun, dropPin, endRun, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
+import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
 import { distanceScore, scoreRingForEdition } from "@/game/score";
 import { STARTERS, type Starter } from "@/game/starters";
 import { createDealer, seenStoreFor, mintSeed } from "@/game/trail";
@@ -207,16 +207,21 @@ export function GameApp() {
   useEffect(() => {
     const saved = readRun();
     if (saved) {
-      const restored = resumeRun(saved, {
+      const today = {
         edition: saved.edition,
         regionId: saved.regionId,
         regionName: saved.regionName,
         dateKey: trailDate(),
-      });
-      if (restored === saved) setRun(saved);
+      };
+      // resumeRun mints a fresh run when the saved one is not resumable — a
+      // page load must not auto-start a run, so only resumable sessions are
+      // restored. (The old `restored === saved` check could never pass:
+      // resumeRun always returns a new object, so reloads silently dropped
+      // to the menu instead of resuming.)
+      if (isResumable(saved, today)) commit(resumeRun(saved, today));
     }
     setReady(true);
-  }, []);
+  }, [commit]);
 
   const openRun = useCallback(
     (edition: Edition, regionId: string, regionName: string) => {

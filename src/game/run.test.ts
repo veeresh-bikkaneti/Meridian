@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { continueRun, dropPin, endRun, resumeRun, startRun, summarizeRun } from "./run.ts";
+import { continueRun, dropPin, endRun, isResumable, resumeRun, startRun, summarizeRun } from "./run.ts";
 
 test("endless mode: a run continues indefinitely until the player ends it", () => {
   const today = {
@@ -84,6 +84,27 @@ test("endRun produces the summary; summary phase is terminal", () => {
   assert.equal(empty.totalScore, 0);
   assert.equal(empty.averageDistanceKm, 0);
   assert.equal(empty.bestDistanceKm, null);
+});
+
+test("isResumable gates reload-restore: resumable sessions restore, summary/fresh do not", () => {
+  const today = {
+    edition: "state" as const,
+    regionId: "nebraska",
+    regionName: "Nebraska",
+    dateKey: "2026-09-28",
+  };
+  const mid = { ...startRun(today), index: 4, phase: "aim" as const };
+  assert.equal(isResumable(mid, today), true);
+
+  // Summary must not auto-restore on page load.
+  const { run: ended } = endRun(dropPin(mid, 15, 25, 85));
+  assert.equal(ended.phase, "summary");
+  assert.equal(isResumable(ended, today), false);
+
+  // A different day, edition, or region starts fresh.
+  assert.equal(isResumable(mid, { ...today, dateKey: "2026-09-29" }), false);
+  assert.equal(isResumable(mid, { ...today, edition: "globe" as const }), false);
+  assert.equal(isResumable(null, today), false);
 });
 
 test("resumeRun restores endless runs; done (miss card) is resumable, summary is not", () => {

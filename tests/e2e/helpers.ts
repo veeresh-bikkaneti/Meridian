@@ -25,7 +25,7 @@ import path from "node:path";
  */
 
 // Repo-relative: the built Pages artifact this branch produced via `npm run build:pages`.
-const DIST = path.join(__dirname, "..", "..", "dist", "client");
+const DIST = path.join(import.meta.dirname, "..", "..", "dist", "client");
 const BASE = "/Meridian/";
 export const EVIDENCE = "/home/hatch/workspace/meridian-review/evidence";
 export const RUN_KEY = "meridian.run";

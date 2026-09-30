@@ -104,17 +104,29 @@ export function summarizeRun(run: Run): RunSummary {
   return { placesPlayed, hits: run.hits, totalScore, averageDistanceKm, bestDistanceKm };
 }
 
-export function resumeRun(
+/**
+ * Whether a saved run resumes into today's session: same edition, region,
+ * and day, and not parked on the summary screen (a summary must be dismissed
+ * before reset, and must not auto-restore on page load).
+ */
+export function isResumable(
   saved: Run | null,
-  today: { edition: Edition; regionId: string; regionName: string; dateKey: string },
-): Run {
-  if (
-    saved &&
+  today: { edition: Edition; regionId: string; dateKey: string },
+): saved is Run {
+  return (
+    !!saved &&
     saved.phase !== "summary" &&
     saved.edition === today.edition &&
     saved.regionId === today.regionId &&
     saved.dateKey === today.dateKey
-  ) {
+  );
+}
+
+export function resumeRun(
+  saved: Run | null,
+  today: { edition: Edition; regionId: string; regionName: string; dateKey: string },
+): Run {
+  if (isResumable(saved, today)) {
     // Backfill results for runs saved before endless mode, and the dealing
     // seed for runs saved before per-session shuffle.
     // "done" is resumable: it is now a transient per-place state (miss card
