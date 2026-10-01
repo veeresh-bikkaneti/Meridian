@@ -320,6 +320,14 @@ test("whole-US pool aggregates all 50 state datasets, not just the DC chunk", as
   assert.equal(houstonInPool.lon, houston.lon);
   assert.equal(houstonInPool.lat, houston.lat);
   assert.equal(houstonInPool.name, houston.name);
+  // The native state survives as a display-only origin so UI labels keep
+  // state-level disambiguation after the dealing re-tag.
+  assert.equal(houstonInPool.originRegionId, "texas");
+  // Country-chunk places (curated national features lead the pool) carry
+  // no origin — they were never re-tagged.
+  for (const p of pool.slice(0, curatedUS.length)) {
+    assert.equal(p.originRegionId, undefined, `${p.id}: country-chunk place should carry no origin`);
+  }
 });
 
 test("whole-country aggregation wiring is fail-closed and non-US regions are untouched", () => {

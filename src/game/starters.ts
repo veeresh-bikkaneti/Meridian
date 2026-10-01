@@ -12,6 +12,15 @@ export type Starter = {
   sourceHref: string;
   /** 1 (iconic) to 5 (deep cut); scored with the v3 difficulty multiplier. */
   difficulty: Difficulty;
+  /**
+   * Display-only origin for places folded into a whole-country pool: a
+   * Texas place dealt in a "whole United States" run keeps
+   * `originRegionId: "texas"` while `regionId` becomes "united-states".
+   * Dealing, pool building, and no-repeat history keying use `regionId`
+   * only; this exists so UI labels (e.g. the sports-AI city query) don't
+   * lose subdivision-level disambiguation after re-tagging.
+   */
+  originRegionId?: string;
 };
 
 function place(

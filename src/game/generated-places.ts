@@ -256,6 +256,10 @@ export function clearChunkCacheForTests(): void {
  * Generated starters for one edition+region, in chunk order.
  * The chunk is homogeneous by construction; the filter is defense in depth
  * (a record that survived validation but mismatches is dropped, never dealt).
+ *
+ * Note: this is the single-chunk accessor (used by tests and tooling).
+ * Whole-country runs must go through `placesFor`, which aggregates
+ * subdivision chunks — this function knows nothing about aggregation.
  */
 export async function generatedStartersFor(edition: Edition, regionId: string): Promise<Starter[]> {
   const starters = await loadRegionChunk(regionId);
@@ -290,7 +294,10 @@ export async function placesFor(edition: Edition, regionId: string): Promise<Sta
         // The country's own chunk: keep the defense-in-depth filter.
         if (starter.edition === edition && starter.regionId === regionId) generated.push(starter);
       } else {
-        generated.push({ ...starter, edition, regionId });
+        // Folded-in subdivision place: keep the native region as a
+        // display-only origin so UI labels (sports-AI city query) retain
+        // state-level disambiguation after the dealing re-tag.
+        generated.push({ ...starter, edition, regionId, originRegionId: starter.regionId });
       }
     }
   }
@@ -314,6 +321,11 @@ export function poolSizeFor(edition: Edition, regionId: string): number {
     const region = Object.hasOwn(regions, chunkId) ? regions[chunkId] : undefined;
     // The primary chunk counts only when its edition matches the request;
     // subdivision chunks are always folded into the whole-country pool.
+    // Invariant: every aggregated chunk id exists in the manifest (locked by
+    // unit test). If a future country lists a subdivision whose chunk is
+    // missing, placesFor fails closed at run start while this count would
+    // skip it — so keep the wiring test green before plugging a new
+    // country into ADMIN1_BY_COUNTRY.
     if (region && (chunkId !== regionId || region.edition === edition)) count += region.count;
   }
   return count;

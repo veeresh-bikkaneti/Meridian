@@ -279,8 +279,9 @@ export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
-  // Region-selection async boundary: the GeoNames chunk for the chosen
-  // region loads here, before any run exists. `starting` shows the loading
+  // Region-selection async boundary: the GeoNames chunk(s) for the chosen
+  // region load here — whole-country runs fetch every subdivision chunk —
+  // before any run exists. `starting` shows the loading
   // state; `startError` is fail-closed — the run is never started when the
   // chunk cannot be loaded, and the player stays on the menu. When the tab
   // is stale (a deploy replaced its hashed chunks), the notice becomes a
@@ -326,7 +327,7 @@ export function GameApp() {
       setStarting({ regionName });
       setStartError(null);
       try {
-        // The region's chunk loads here — never eagerly, never partial.
+        // The region's chunk(s) load here — never eagerly, never partial.
         const places = await placesFor(edition, regionId);
         const dateKey = trailDate();
         const { poolIds, prevLastId } = poolForRunStart(places, edition, regionId);
