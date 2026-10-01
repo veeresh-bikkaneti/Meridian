@@ -8,6 +8,7 @@ import type { Drop } from "./game-app";
 import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
+import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -128,7 +129,14 @@ export function ResultCard({
   onContinue: () => void;
 }) {
   const reduced = usePrefersReducedMotion();
-  const [storyLede, storyRest] = splitLede(story ?? place?.story ?? "");
+  const aiSports = useAiSportsTeams(place);
+  const baseStory = story ?? place?.story ?? "";
+  // AI-first sports line: the on-device model gets first say when it is
+  // available and returns validated teams; the curated blurb underneath is
+  // the instant fallback (and the whole story where there is no AI).
+  const displayStory =
+    aiSports && aiSports.length > 0 ? withSportsLine(baseStory, aiSports) : baseStory;
+  const [storyLede, storyRest] = splitLede(displayStory);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   // Move focus to the card heading when a result appears (phase → story/done).
@@ -236,7 +244,7 @@ export function ResultCard({
                 The line is your pin to the spot. The circle is close enough.
               </p>
               <div className="max-h-44 overflow-y-auto">
-                <p className="text-sm leading-relaxed">{story ?? place.story}</p>
+                <p className="text-sm leading-relaxed">{displayStory}</p>
               </div>
               <a
                 className="text-sm text-white/70 underline"

@@ -18,7 +18,7 @@
       "marginDeg": 0.15
     },
     "total": 124690,
-    "chunkBytes": 26579892,
+    "chunkBytes": 26580164,
     "quarantine": {},
     "duplicatesDropped": 0,
     "rawRows": 13472204,
@@ -133,7 +133,7 @@
     "india": {
       "edition": "country",
       "count": 6990,
-      "bytes": 1418488
+      "bytes": 1418760
     },
     "indiana": {
       "edition": "state",

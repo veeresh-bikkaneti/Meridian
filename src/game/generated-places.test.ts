@@ -129,6 +129,19 @@ test("sports cities get a Big-5 home-teams line in the blurb", async () => {
   assert.ok(!brandon.story.includes("Home of the"), "sports filler on a team-less town");
 });
 
+test("historic places get curated history-first notes (Hyderabad pilot)", async () => {
+  const india = await generatedStartersFor("country", "india");
+  const hyderabad = india.find((s) => s.name === "Hyderabad");
+  assert.ok(hyderabad, "Hyderabad should be in the India chunk");
+  assert.equal(hyderabad.sourceLabel, "GeoNames · Wikipedia");
+  assert.equal(hyderabad.sourceHref, "https://en.wikipedia.org/wiki/Hyderabad");
+  // History before modern identity: Golconda + Charminar, then HITEC + Ramoji.
+  assert.ok(hyderabad.story.includes("Golconda"), "Golconda missing");
+  assert.ok(hyderabad.story.includes("Charminar"), "Charminar missing");
+  assert.ok(hyderabad.story.includes("HITEC City"), "HITEC City missing");
+  assert.ok(hyderabad.story.includes("Ramoji Film City"), "Ramoji missing");
+});
+
 test("placesFor is curated-first: curated starters, then generated depth", async () => {
   const curatedTexas = STARTERS.filter((s) => s.edition === "state" && s.regionId === "texas");
   const pool = await placesFor("state", "texas");
