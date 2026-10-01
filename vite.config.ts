@@ -10,6 +10,28 @@ import { nitro } from "nitro/vite";
 import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
+// @ts-expect-error JS module alongside the TS vite config
+import { resolveBuildId } from "./scripts/build-id.mjs";
+
+/**
+ * Build ID baked into the bundle (see src/game/build-staleness.ts). Prefers
+ * the prebuild-written public/build-meta.json so the baked ID and the served
+ * meta can never disagree; falls back to resolveBuildId() when prebuild has
+ * not run (dev server). This matters in the timestamp-fallback path (no git,
+ * e.g. tarball builds), where two independent resolutions would diverge and
+ * every chunk error would falsely offer a refresh.
+ */
+function buildIdForBundle(): string {
+  try {
+    const meta = JSON.parse(
+      readFileSync(new URL("./public/build-meta.json", import.meta.url), "utf8"),
+    ) as { buildId?: unknown };
+    if (typeof meta.buildId === "string" && meta.buildId.length > 0) return meta.buildId;
+  } catch {
+    // Not written yet (dev) — fall through to a fresh resolution.
+  }
+  return resolveBuildId();
+}
 import { isMigrationFile } from "./scripts/migration-plan.mjs";
 
 /** The files `src/lib/db.ts` globs — same directory, same non-recursive scope. */
@@ -170,6 +192,10 @@ const githubPages = process.env.GITHUB_PAGES === "1";
 
 export default defineConfig(({ command, isPreview }) => ({
   base: githubPages ? "/Meridian/" : "/",
+  define: {
+    // Baked-in build identity for deploy-awareness (see src/game/build-staleness.ts).
+    __MERIDIAN_BUILD_ID__: JSON.stringify(buildIdForBundle()),
+  },
   server: {
     host: "0.0.0.0",
     port: 8080,

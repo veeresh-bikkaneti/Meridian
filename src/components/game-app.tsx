@@ -2,6 +2,7 @@ import { BRAND } from "@/game/brand";
 import { distanceKm, formatDistance } from "@/game/geo";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor } from "@/game/generated-places";
+import { isNewBuildDeployed } from "@/game/build-staleness";
 import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
@@ -16,6 +17,13 @@ import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
+
+/**
+ * Session flag marking that this tab already reloaded for a stale build.
+ * Prevents a refresh loop when a chunk is genuinely missing rather than
+ * merely outdated.
+ */
+const STALE_REFRESH_KEY = "meridian.staleRefresh";
 
 const RUN_KEY = "meridian.run";
 
@@ -274,9 +282,11 @@ export function GameApp() {
   // Region-selection async boundary: the GeoNames chunk for the chosen
   // region loads here, before any run exists. `starting` shows the loading
   // state; `startError` is fail-closed — the run is never started when the
-  // chunk cannot be loaded, and the player stays on the menu.
+  // chunk cannot be loaded, and the player stays on the menu. When the tab
+  // is stale (a deploy replaced its hashed chunks), the notice becomes a
+  // one-tap refresh prompt instead of a dead end.
   const [starting, setStarting] = useState<{ regionName: string } | null>(null);
-  const [startError, setStartError] = useState<string | null>(null);
+  const [startError, setStartError] = useState<{ message: string; staleBuild: boolean } | null>(null);
 
   const commit = useCallback((next: Run) => {
     writeRun(next);
@@ -302,6 +312,15 @@ export function GameApp() {
     setReady(true);
   }, [commit]);
 
+  const refreshForNewBuild = useCallback(() => {
+    try {
+      sessionStorage.setItem(STALE_REFRESH_KEY, "1");
+    } catch {
+      // Storage unavailable — reload anyway; the prompt simply reappears.
+    }
+    window.location.reload();
+  }, []);
+
   const openRun = useCallback(
     async (edition: Edition, regionId: string, regionName: string) => {
       setStarting({ regionName });
@@ -322,9 +341,19 @@ export function GameApp() {
       } catch (err) {
         // Fail closed: no chunk, no run. The player stays on the menu with
         // an explanation instead of starting with a partial/missing pool.
-        setStartError(
-          `Could not load places for ${regionName}: ${err instanceof Error ? err.message : String(err)}`,
-        );
+        // If the tab predates the current deploy (old hashed chunk URLs 404),
+        // offer a refresh instead of the dead-end error. The session flag
+        // stops a reload loop when the chunk is genuinely missing.
+        const message = `Could not load places for ${regionName}: ${err instanceof Error ? err.message : String(err)}`;
+        let staleBuild = false;
+        try {
+          staleBuild =
+            sessionStorage.getItem(STALE_REFRESH_KEY) !== "1" &&
+            (await isNewBuildDeployed());
+        } catch {
+          staleBuild = false;
+        }
+        setStartError({ message, staleBuild });
       } finally {
         setStarting(null);
       }
@@ -369,9 +398,21 @@ export function GameApp() {
   }
 
   const loadNotice = startError ? (
-    <p role="alert" className="mb-4 rounded-xl border border-line bg-surface p-4 text-sm text-fg">
-      {startError} Please try again.
-    </p>
+    startError.staleBuild ? (
+      <div
+        role="alert"
+        className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
+      >
+        <p>A new version of Meridian is available.</p>
+        <Button type="button" onClick={refreshForNewBuild}>
+          Refresh
+        </Button>
+      </div>
+    ) : (
+      <p role="alert" className="mb-4 rounded-xl border border-line bg-surface p-4 text-sm text-fg">
+        {startError.message} Please try again.
+      </p>
+    )
   ) : null;
 
   if (menu?.kind === "countries") {
