@@ -185,3 +185,30 @@ filler. Batch: famous non-capital cities kids meet in quizzes.
   Cambridge" — article: "in 1209, after a townsperson hanged two scholars for
   an alleged murder, a number of Oxford academics fled and founded Cambridge
   University" (L106–108)
+
+## Barry Farms (geonameid 4137672) — https://en.wikipedia.org/wiki/Barry_Farm
+Added 2026-10-01 at Veeresh's direction — the kid-friendly before/after sample
+he approved ("love the kid-friendly rewrite; lets build that"). Same
+claim-by-claim audit as the crew C batch, against the English Wikipedia
+article (lead + History sections) fetched 2026-10-01.
+- "When the Civil War ended, freed families told General Howard exactly what
+  they needed: 'Land! Give us land!'" — article: General Oliver O. Howard
+  "had asked Black migrants squatting in temporary structures at Meridian
+  Hill, what might help them to become self-supporting. They said, 'Land!
+  Give us land!' Howard promised to acquire land near the city" (L35–36)
+- "In 1867 the Freedmen's Bureau bought this 375-acre farm" — article: "In
+  1867, the Freedmen's Bureau… bought a 375-acre farm from Julia Barry"
+  (L33–34)
+- "sold it in one-acre plots families could afford" — article: "The Bureau
+  sub-divided the farm into one-acre plots, which the freedmen could purchase
+  over a period of seven years" (L39)
+- "it grew into Barry Farm, a proud, self-built Black community" — article:
+  "enabling the transformation of Barry's Farm into a thriving, independent
+  community of formerly enslaved and free-born African Americans" (L33–35)
+- "in southeast Washington, D.C." — article: "Barry Farm is a neighborhood
+  in Southeast Washington, D.C." (L20)
+- "it's named for the Barry family who owned the farm — not Mayor Marion
+  Barry. Same spelling, total coincidence!" — article: "The neighborhood
+  name is not a reference to the late former mayor of Washington, D.C.,
+  Marion Barry, but coincidentally has the same spelling" (L26–27); the farm
+  was bought "from Julia Barry" (L33) and is called "Barry's Farm" (L38–39)

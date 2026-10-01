@@ -320,3 +320,35 @@ test("history notes: crew C batch (US non-capitals, India, UK) is audited and ke
     );
   }
 });
+
+test("Barry Farms gets the approved kid-friendly history note", async () => {
+  // The before/after sample Veeresh approved ("love the kid-friendly
+  // rewrite; lets build that"). Audit: history-sources-c.md; merge key
+  // geonameid 4137672 → gn-4137672 in the united-states country chunk.
+  const notable = notableNotesJson as unknown as Record<
+    string,
+    { note: string; wiki: string }
+  >;
+  const entry = notable["4137672"];
+  assert.ok(entry, "notable-notes.json missing the Barry Farms entry (4137672)");
+  assert.equal(entry.wiki, "Barry_Farm", "wiki slug mismatch");
+  assert.ok(entry.note.includes("Land! Give us land!"), "approved hook missing");
+  assert.ok(entry.note.includes("1867"), "purchase year missing");
+  assert.ok(entry.note.includes("375-acre"), "farm size missing");
+  assert.ok(entry.note.includes("one-acre"), "one-acre plots missing");
+  assert.ok(entry.note.includes("Marion Barry"), "name-twist hook missing");
+  const usCountry = await generatedStartersFor("country", "united-states");
+  const barry = usCountry.find((s) => s.id === "gn-4137672");
+  assert.ok(barry, "gn-4137672 should exist in the united-states chunk");
+  assert.equal(barry.name, "Barry Farms", "note would land on the wrong place");
+  assert.equal(barry.sourceLabel, "GeoNames · Wikipedia");
+  assert.equal(barry.sourceHref, "https://en.wikipedia.org/wiki/Barry_Farm");
+  assert.ok(
+    barry.story.includes("Land! Give us land!"),
+    "curated note missing from the shipped blurb",
+  );
+  assert.ok(
+    barry.story.startsWith("Barry Farms is a town in eastern District of Columbia"),
+    "geographic lead should precede the curated note",
+  );
+});
