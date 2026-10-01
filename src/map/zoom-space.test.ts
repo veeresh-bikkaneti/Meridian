@@ -8,14 +8,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  GLOBE_MAX_ZOOM,
   RETURN_DURATION_MS,
+  REVEAL_DURATION_MS,
   SPIN_DURATION_MS,
   SPIN_SPEED_DPS,
-  TOUR_ANNOUNCE_MS,
-  TOUR_DIVE_MS,
-  TOUR_MAX_ZOOM,
-  TOUR_ZOOM,
   Z_FLAT_IN,
   Z_GLOBE_OUT,
   ZoomSpaceController,
@@ -58,9 +54,13 @@ const REVEAL_REQUEST: RevealRequest = {
   spot: [-98.0, 42.0] as LngLat,
   settleCenter: [-98.5, 41.5] as LngLat,
   settleZoom: 6,
+  hit: false,
   tileFailed: false,
   projection: "mercator",
 };
+
+/** A hit: same request shape, scored inside the radius. */
+const HIT_REQUEST: RevealRequest = { ...REVEAL_REQUEST, hit: true };
 
 /** Pin→spot Nebraska→Paris ≈ 7500 km: trips the 500 km big-miss rule. */
 const BIG_MISS_REQUEST: RevealRequest = {
@@ -426,8 +426,8 @@ test("requestReveal during the intro beats is queued, not dropped", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5); // spin beat active
   assert.deepEqual(c.requestReveal(REVEAL_REQUEST), []);
-  // The narrow beat completes; the queued reveal flushes as the standard
-  // settle beat (paint-variation + ease-to present, beat armed).
+  // The narrow beat completes; the queued reveal flushes as the gap-view
+  // reveal beat (paint-variation + ease-to present, beat armed).
   // Note: the projection swap is now synchronous at narrow start (not via
   // the racy mid-flight crossing), so onMove does not emit set-projection.
   c.onSpinTimer();
@@ -436,7 +436,7 @@ test("requestReveal during the intro beats is queued, not dropped", () => {
     done.some((i) => i.type === "paint-variation"),
     "queued reveal flushes at narrow completion",
   );
-  assert.equal(c.beatKind, "settle");
+  assert.equal(c.beatKind, "reveal");
 });
 
 test("requestReveal during relock beat is queued, not dropped", () => {
@@ -459,7 +459,7 @@ test("requestReveal during relock beat is queued, not dropped", () => {
   const midBeat = { ...REVEAL_REQUEST, projection: "globe" as ProjectionType };
   assert.deepEqual(c.requestReveal(midBeat), []);
   // The ease's own moveend completes the relock, then the queued reveal
-  // flushes: lock + swap + re-enable, then the standard settle beat.
+  // flushes: lock + swap + re-enable, then the gap-view reveal beat.
   assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", NEBRASKA.center)), [
     { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
@@ -468,6 +468,7 @@ test("requestReveal during relock beat is queued, not dropped", () => {
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
     { type: "paint-variation", variation: midBeat.variation },
+    { type: "announce", message: "Showing your pin and the true spot." },
     {
       type: "ease-to",
       center: midBeat.settleCenter,
@@ -476,26 +477,28 @@ test("requestReveal during relock beat is queued, not dropped", () => {
       easing: "easeInOutCubic",
     },
   ]);
-  assert.equal(c.beatKind, "settle");
-  // The reveal recovers fully: the settle beat completes and chains into
-  // the tour (no longer terminal at settle).
-  const settleDone = c.onMoveEnd(snap(6, "mercator"));
+  assert.equal(c.beatKind, "reveal");
+  // The reveal recovers fully: the gap-view ease completes and latches
+  // terminal (reveal-done) — no further choreography.
+  const revealDoneIntents = c.onMoveEnd(snap(6, "mercator"));
   assert.ok(
-    settleDone.some((i) => i.type === "tour-hold"),
-    "settle should chain into the tour",
+    revealDoneIntents.some((i) => i.type === "reveal-done"),
+    "reveal beat should complete with reveal-done",
   );
-  assert.equal(c.beatKind, "tour");
-  assert.equal(c.revealDone, false);
+  assert.equal(c.revealDone, true);
+  assert.equal(c.beatActive, false);
 });
 
-test("standard reveal: single settle beat chains into the tour, terminal at tour end", () => {
+test("miss reveal: single gap-view ease to the pin+spot framing, terminal at reveal-done", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
-  // REVEAL_REQUEST pin→spot ≈ 139 km: under both big-miss branches → standard.
+  // REVEAL_REQUEST pin→spot ≈ 139 km: under both big-miss branches → the
+  // gap-view framing from buildRevealRequest (settleCenter/settleZoom).
   assert.deepEqual(c.requestReveal(REVEAL_REQUEST), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
     { type: "paint-variation", variation: REVEAL_REQUEST.variation },
+    { type: "announce", message: "Showing your pin and the true spot." },
     {
       type: "ease-to",
       center: REVEAL_REQUEST.settleCenter,
@@ -504,49 +507,44 @@ test("standard reveal: single settle beat chains into the tour, terminal at tour
       easing: "easeInOutCubic",
     },
   ]);
-  assert.equal(c.beatKind, "settle");
-  // Settle completion is no longer terminal — it chains into the tour.
+  assert.equal(c.beatKind, "reveal");
+  // The gap-view ease's moveend completes the reveal: terminal, latch set.
   assert.deepEqual(c.onMoveEnd(snap(6, "mercator")), [
-    { type: "gestures", enabled: true },
-    { type: "announce", message: "Showing the answer." },
-    { type: "flash-region", feature: NEBRASKA },
-    { type: "pulse-spot", center: REVEAL_REQUEST.spot },
-    { type: "tour-hold", durationMs: 1200 },
-  ]);
-  assert.equal(c.beatKind, "tour");
-  assert.equal(c.revealDone, false);
-  // Tour hold expiry: the Google-Earth-style dive to rooftop level.
-  assert.deepEqual(c.onTourHoldTimer(), [
-    {
-      type: "fly-to",
-      center: REVEAL_REQUEST.spot,
-      zoom: 14,
-      bearing: 0,
-      durationMs: 4000,
-      easing: "easeInOutCubic",
-    },
-  ]);
-  // Dive moveend: terminal. Thresholds stay inert (no auto-return).
-  assert.deepEqual(c.onMoveEnd(snap(14, "mercator", REVEAL_REQUEST.spot)), [
-    { type: "clear-pulse" },
-    { type: "tour-done" },
+    { type: "reveal-done" },
   ]);
   assert.equal(c.revealDone, true);
   assert.equal(c.beatActive, false);
-  c.onMove(snap(14));
+  // Thresholds stay inert after the latch (no auto-return).
+  c.onMove(snap(6));
   assert.deepEqual(c.onZoomEnd(snap(1.0)), []);
   c.onMoveEnd(snap(1.0, "globe"));
+});
+
+test("hit: light confirmation, synchronous, no camera move", () => {
+  const c = flatController();
+  narrowToRegion(c, 4.5);
+  assert.deepEqual(c.requestReveal(HIT_REQUEST), [
+    { type: "gestures", enabled: false },
+    { type: "tap-handlers", enabled: false },
+    { type: "paint-variation", variation: HIT_REQUEST.variation },
+    { type: "announce", message: "Hit." },
+    { type: "reveal-done" },
+  ]);
+  // No beat ever started: the camera stays where the pin landed.
+  assert.equal(c.beatActive, false);
+  assert.equal(c.beatKind, null);
+  assert.equal(c.revealDone, true);
+  // A stale moveend cannot disturb the terminal state.
+  assert.deepEqual(c.onMoveEnd(snap(4.5, "mercator")), []);
 });
 
 test("resetForNextPlace: T_OUT/T_IN evaluate again for the next place", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
-  // Place 1: standard reveal → settle → tour → terminal latch.
+  // Place 1: miss reveal → gap-view ease → terminal latch.
   c.requestReveal(REVEAL_REQUEST);
   c.onMoveEnd(snap(6, "mercator", NEBRASKA.center));
-  completeTour(c, REVEAL_REQUEST.spot);
-  c.onMove(snap(14, "mercator", REVEAL_REQUEST.spot));
-  assert.deepEqual(c.onZoomEnd(snap(1.0, "mercator")), []);
+  assert.equal(c.revealDone, true);
   c.onMoveEnd(snap(1.0, "mercator"));
 
   // Continue → next place: per-place reset, no intents of its own.
@@ -617,17 +615,16 @@ test("resetForNextPlace: region + projection survive — place 2 big-miss still 
     spot: [0, 2] as LngLat,
     settleCenter: [0.5, 1] as LngLat,
     settleZoom: 6,
+    hit: false,
     tileFailed: false,
     projection: "mercator",
   };
-  // Place 1: big miss → release, pull-back, hold, settle → tour (camera
-  // left at the rooftop view in the globe projection).
+  // Place 1: big miss → release, then the single gap-view ease (camera left
+  // at the pin+spot framing in the globe projection).
   c.requestReveal(place1);
-  assert.equal(c.beatKind, "pullback");
-  c.onMoveEnd(snap(2.0, "globe"));
-  c.onRevealHoldTimer();
+  assert.equal(c.beatKind, "reveal");
   c.onMoveEnd(snap(6, "globe"));
-  completeTour(c, place1.spot, "globe");
+  assert.equal(c.revealDone, true);
   assert.equal(c.projection, "globe");
   assert.equal(c.state, "SPACE");
 
@@ -636,52 +633,39 @@ test("resetForNextPlace: region + projection survive — place 2 big-miss still 
   assert.equal(c.projection, "globe");
   assert.equal(c.state, "SPACE");
   // … and the region is still known: place 2's identical miss (now from the
-  // space view, as the adapter would report) still runs the pull-back beat.
+  // space view, as the adapter would report) still releases to the globe and
+  // runs the single gap-view ease.
   const place2: RevealRequest = { ...place1, projection: "globe" };
   assert.deepEqual(c.requestReveal(place2), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
     { type: "paint-variation", variation: place2.variation },
+    { type: "announce", message: "Showing your pin and the true spot." },
     {
       type: "ease-to",
-      center: [0, 1],
-      zoom: 2.0,
-      durationMs: 1400,
+      center: [0.5, 1],
+      zoom: 6,
+      durationMs: 2200,
       easing: "easeInOutCubic",
     },
   ]);
-  assert.equal(c.beatKind, "pullback");
+  assert.equal(c.beatKind, "reveal");
 });
 
-test("big-miss reveal: release + pull-back, hold, settle", () => {
+test("big-miss reveal: release to globe, then the single gap-view ease", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
   // BIG_MISS_REQUEST pin→spot ≈ 7500 km: the core classifies the big miss
-  // itself (no kind argument from the caller).
+  // itself (no kind argument from the caller). A big miss releases to the
+  // globe projection so both points fit honestly, then runs the same single
+  // gap-view ease as a standard miss.
   assert.deepEqual(c.requestReveal(BIG_MISS_REQUEST), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
+    { type: "paint-variation", variation: BIG_MISS_REQUEST.variation },
     { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
-    { type: "paint-variation", variation: BIG_MISS_REQUEST.variation },
-    {
-      type: "ease-to",
-      center: [-48.325, 44.925],
-      zoom: 2.0,
-      durationMs: 1400,
-      easing: "easeInOutCubic",
-    },
-  ]);
-  assert.equal(c.beatKind, "pullback");
-  // Pull-back moveend: the `reveal-hold` intent arms the adapter's hold
-  // timer; the beat stays active through the hold.
-  assert.deepEqual(c.onMoveEnd(snap(2.0, "globe")), [
-    { type: "reveal-hold", durationMs: 500 },
-  ]);
-  assert.equal(c.beatActive, true);
-  assert.equal(c.beatKind, "pullback");
-  // Hold timer expiry: the settle beat.
-  assert.deepEqual(c.onRevealHoldTimer(), [
+    { type: "announce", message: "Showing your pin and the true spot." },
     {
       type: "ease-to",
       center: BIG_MISS_REQUEST.settleCenter,
@@ -690,18 +674,16 @@ test("big-miss reveal: release + pull-back, hold, settle", () => {
       easing: "easeInOutCubic",
     },
   ]);
-  assert.equal(c.beatKind, "settle");
-  // Settle completion chains into the tour (no longer terminal).
-  const tourStart = c.onMoveEnd(snap(6, "globe"));
-  assert.ok(
-    tourStart.some((i) => i.type === "tour-hold"),
-    "settle should chain into the tour",
-  );
-  assert.equal(c.beatKind, "tour");
-  assert.equal(c.revealDone, false);
+  assert.equal(c.beatKind, "reveal");
+  // The gap-view ease's moveend completes the reveal: terminal, latch set.
+  assert.deepEqual(c.onMoveEnd(snap(6, "globe")), [
+    { type: "reveal-done" },
+  ]);
+  assert.equal(c.revealDone, true);
+  assert.equal(c.beatActive, false);
 });
 
-test("big-miss ratio branch: 221 km miss on a 111 km region still pulls back", () => {
+test("big-miss ratio branch: 221 km miss on a 111 km region still releases", () => {
   const c = flatController();
   narrowToRegion(c, 6, SMALL_REGION);
   // Pin→spot ≈ 221 km: under the 500 km absolute line, but SMALL_REGION's
@@ -712,11 +694,12 @@ test("big-miss ratio branch: 221 km miss on a 111 km region still pulls back", (
     spot: [0, 2] as LngLat,
     settleCenter: [0.5, 1] as LngLat,
     settleZoom: 6,
+    hit: false,
     tileFailed: false,
     projection: "mercator",
   };
   const intents = c.requestReveal(request);
-  assert.equal(c.beatKind, "pullback");
+  assert.equal(c.beatKind, "reveal");
   assert.ok(
     intents.some(
       (i) => i.type === "set-projection" && i.projection === "globe",
@@ -734,9 +717,10 @@ test("globe edition: no region → never a big miss", () => {
   c.onSpinTimer();
   c.onMoveEnd(snap(1.5, "globe", [0, 0]));
   assert.equal(c.state, "GLOBE");
-  // Even a 7500 km pin→spot is a standard settle — the camera is in space.
+  // Even a 7500 km pin→spot is a single gap-view ease — the camera is in
+  // space and the framing fits both points.
   const intents = c.requestReveal(BIG_MISS_REQUEST);
-  assert.equal(c.beatKind, "settle");
+  assert.equal(c.beatKind, "reveal");
   assert.ok(
     intents.every((i) => i.type !== "set-projection"),
     "no release swap in globe edition",
@@ -778,28 +762,47 @@ test("reduced motion: no spin, synchronous jump + immediate completion", () => {
   assert.equal(c.state, "REGION");
 });
 
-test("reduced motion: reveal jumps straight to the final framing, then the tour's jump cuts", () => {
+test("reduced motion: miss jumps straight to the gap framing, synchronously complete", () => {
   const c = flatController(true);
   narrowToRegion(c, 4.5);
-  // Big miss (classified by the core) still releases, then jumps — no hold.
-  // The tour's jump cuts run synchronously right after (no timers).
+  // Big miss (classified by the core) still releases to the globe, then a
+  // single jump cut lands the gap framing — no timers, no animation, no
+  // further beats.
   assert.deepEqual(c.requestReveal(BIG_MISS_REQUEST), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
+    { type: "paint-variation", variation: BIG_MISS_REQUEST.variation },
     { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
-    { type: "paint-variation", variation: BIG_MISS_REQUEST.variation },
+    { type: "announce", message: "Showing your pin and the true spot." },
     {
       type: "jump-to",
       center: BIG_MISS_REQUEST.settleCenter,
       zoom: BIG_MISS_REQUEST.settleZoom,
     },
-    { type: "gestures", enabled: true },
-    { type: "jump-to", center: BIG_MISS_REQUEST.spot, zoom: 14 },
-    { type: "tour-done" },
+    { type: "reveal-done" },
   ]);
   assert.equal(c.revealDone, true);
   assert.equal(c.beatActive, false);
+  assert.equal(c.beatKind, null);
+});
+
+test("reduced motion: hit completes synchronously with no camera intent", () => {
+  const c = flatController(true);
+  narrowToRegion(c, 4.5);
+  const intents = c.requestReveal(HIT_REQUEST);
+  assert.deepEqual(intents, [
+    { type: "gestures", enabled: false },
+    { type: "tap-handlers", enabled: false },
+    { type: "paint-variation", variation: HIT_REQUEST.variation },
+    { type: "announce", message: "Hit." },
+    { type: "reveal-done" },
+  ]);
+  assert.ok(
+    !intents.some((i) => i.type === "jump-to" || i.type === "ease-to"),
+    "hit never moves the camera",
+  );
+  assert.equal(c.revealDone, true);
 });
 
 test("globe edition: degenerate narrow-in, thresholds inert", () => {
@@ -852,198 +855,134 @@ function narrowToGlobe(c: ZoomSpaceController): void {
   assert.equal(c.state, "GLOBE");
 }
 
-/** Complete the cinematic tour after its start (hold → dive → tour-done). */
-function completeTour(
+/** Complete the gap-view reveal beat after its start (ease → reveal-done). */
+function completeReveal(
   c: ZoomSpaceController,
-  spot: LngLat,
+  zoom: number,
   projection: ProjectionType = "mercator",
 ): void {
-  assert.equal(c.beatKind, "tour");
-  c.onTourHoldTimer();
-  const done = c.onMoveEnd(snap(14, projection, spot));
+  assert.equal(c.beatKind, "reveal");
+  const done = c.onMoveEnd(snap(zoom, projection));
   assert.ok(
-    done.some((i) => i.type === "tour-done"),
-    "tour should end with tour-done",
+    done.some((i) => i.type === "reveal-done"),
+    "reveal should end with reveal-done",
   );
   assert.equal(c.revealDone, true);
+  assert.equal(c.beatActive, false);
 }
 
-/** Run a standard reveal through settle completion → tour start. */
-function startTour(c: ZoomSpaceController): void {
+/** Run a miss reveal through to the gap-view beat start. */
+function startReveal(c: ZoomSpaceController): void {
   c.requestReveal(REVEAL_REQUEST);
-  c.onMoveEnd(snap(6, "mercator"));
-  assert.equal(c.beatKind, "tour");
+  assert.equal(c.beatKind, "reveal");
 }
 
-test("tour constants", () => {
-  assert.equal(TOUR_ANNOUNCE_MS, 1200);
-  assert.equal(TOUR_DIVE_MS, 4000);
-  assert.equal(TOUR_ZOOM, 14);
-  assert.equal(TOUR_MAX_ZOOM, 14);
-  assert.equal(GLOBE_MAX_ZOOM, 5);
+test("reveal constants", () => {
+  assert.equal(REVEAL_DURATION_MS, 2200);
   assert.equal(RETURN_DURATION_MS, 1200);
 });
 
-test("tour: skip during the settle beat jumps to the end state", () => {
+test("reveal: skip during the gap-view beat jumps to the end state", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
   c.requestReveal(REVEAL_REQUEST);
-  assert.equal(c.beatKind, "settle");
+  assert.equal(c.beatKind, "reveal");
   assert.deepEqual(c.skipChoreography(), [
-    { type: "clear-pulse" },
-    { type: "jump-to", center: REVEAL_REQUEST.spot, zoom: 14 },
-    { type: "tour-done" },
+    {
+      type: "jump-to",
+      center: REVEAL_REQUEST.settleCenter,
+      zoom: REVEAL_REQUEST.settleZoom,
+    },
+    { type: "reveal-done" },
   ]);
   assert.equal(c.revealDone, true);
   assert.equal(c.beatActive, false);
 });
 
-test("tour: skip during the tour jumps to the end state", () => {
-  const c = flatController();
-  narrowToRegion(c, 4.5);
-  startTour(c);
-  // Mid-announce (beats 1+2): skip jumps to the rooftop end state.
-  assert.deepEqual(c.skipChoreography(), [
-    { type: "clear-pulse" },
-    { type: "jump-to", center: REVEAL_REQUEST.spot, zoom: 14 },
-    { type: "tour-done" },
-  ]);
-  assert.equal(c.revealDone, true);
-  c.onTourHoldTimer(); // the armed hold timer is stale — ignored.
-  assert.equal(c.beatActive, false);
-});
-
-test("tour: skip during the big-miss pullback jumps to the end state", () => {
+test("reveal: skip during the big-miss beat jumps to the gap framing", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
   c.requestReveal(BIG_MISS_REQUEST);
-  assert.equal(c.beatKind, "pullback");
+  assert.equal(c.beatKind, "reveal");
   const skipped = c.skipChoreography();
   assert.ok(
-    skipped.some((i) => i.type === "jump-to" && i.zoom === 14),
-    "skip should jump to the rooftop framing",
-  );
-  assert.ok(
-    skipped.some((i) => i.type === "tour-done"),
-    "skip should end the tour",
-  );
-  assert.equal(c.revealDone, true);
-});
-
-test("tour: skip is a no-op outside the choreography beats", () => {
-  const c = flatController();
-  assert.deepEqual(c.skipChoreography(), []);
-  narrowToRegion(c, 4.5);
-  assert.deepEqual(c.skipChoreography(), []);
-  // After the tour completes, skipping does nothing.
-  startTour(c);
-  c.onTourHoldTimer();
-  c.onMoveEnd(snap(14, "mercator", REVEAL_REQUEST.spot));
-  assert.deepEqual(c.skipChoreography(), []);
-});
-
-test("tour: onTourHoldTimer is ignored outside the tour beat", () => {
-  const c = flatController();
-  narrowToRegion(c, 4.5);
-  assert.deepEqual(c.onTourHoldTimer(), []);
-  c.requestReveal(REVEAL_REQUEST);
-  assert.deepEqual(c.onTourHoldTimer(), []); // still settling, not touring
-});
-
-test("tour: reduced motion is synchronous jump cuts, no timers", () => {
-  const c = flatController(true);
-  narrowToRegion(c, 4.5);
-  const intents = c.requestReveal(REVEAL_REQUEST);
-  // Settle framing jump, then the tour's jump cuts — all synchronous.
-  assert.deepEqual(intents, [
-    { type: "gestures", enabled: false },
-    { type: "tap-handlers", enabled: false },
-    { type: "paint-variation", variation: REVEAL_REQUEST.variation },
-    { type: "jump-to", center: REVEAL_REQUEST.settleCenter, zoom: 6 },
-    { type: "gestures", enabled: true },
-    { type: "jump-to", center: REVEAL_REQUEST.spot, zoom: 14 },
-    { type: "tour-done" },
-  ]);
-  assert.equal(c.revealDone, true);
-  assert.equal(c.beatActive, false);
-  assert.ok(
-    !intents.some((i) => i.type === "tour-hold" || i.type === "pulse-spot"),
-    "no animated beats under reduced motion",
-  );
-});
-
-test("tour: globe edition lifts maxZoom, skips the region flash", () => {
-  const c = globeController();
-  narrowToGlobe(c);
-  const globeReveal: RevealRequest = {
-    ...REVEAL_REQUEST,
-    projection: "globe",
-  };
-  c.requestReveal(globeReveal);
-  const tourStart = c.onMoveEnd(snap(6, "globe"));
-  assert.deepEqual(tourStart, [
-    { type: "gestures", enabled: true },
-    { type: "announce", message: "Showing the answer." },
-    { type: "set-max-zoom", maxZoom: 14 },
-    { type: "pulse-spot", center: REVEAL_REQUEST.spot },
-    { type: "tour-hold", durationMs: 1200 },
-  ]);
-  assert.ok(
-    !tourStart.some((i) => i.type === "flash-region"),
-    "globe edition has no region to flash",
-  );
-  const dive = c.onTourHoldTimer();
-  assert.ok(
-    dive.some(
-      (i) => i.type === "fly-to" && i.zoom === 14 && i.durationMs === 4000,
+    skipped.some(
+      (i) =>
+        i.type === "jump-to" &&
+        i.center[0] === BIG_MISS_REQUEST.settleCenter[0] &&
+        i.center[1] === BIG_MISS_REQUEST.settleCenter[1],
     ),
+    "skip should jump to the gap-view framing",
   );
-  assert.deepEqual(c.onMoveEnd(snap(14, "globe", REVEAL_REQUEST.spot)), [
-    { type: "clear-pulse" },
-    { type: "tour-done" },
-  ]);
-  assert.equal(c.revealDone, true);
-});
-
-test("tour: globe reduced motion lifts maxZoom and jump-cuts", () => {
-  const c = globeController(true);
-  narrowToGlobe(c);
-  const intents = c.requestReveal({ ...REVEAL_REQUEST, projection: "globe" });
   assert.ok(
-    intents.some((i) => i.type === "set-max-zoom" && i.maxZoom === 14),
+    skipped.some((i) => i.type === "reveal-done"),
+    "skip should end the reveal",
   );
-  assert.ok(intents.some((i) => i.type === "tour-done"));
   assert.equal(c.revealDone, true);
 });
 
-test("tour: a queued mid-beat commit's settle chains into the tour", () => {
+test("reveal: skip is a no-op outside the reveal beat", () => {
+  const c = flatController();
+  assert.deepEqual(c.skipChoreography(), []);
+  narrowToRegion(c, 4.5);
+  assert.deepEqual(c.skipChoreography(), []);
+  // A hit completes synchronously — no beat to skip.
+  c.requestReveal(HIT_REQUEST);
+  assert.deepEqual(c.skipChoreography(), []);
+  // After the miss reveal completes, skipping does nothing.
+  c.resetForNextPlace();
+  c.requestReveal(REVEAL_REQUEST);
+  c.onMoveEnd(snap(6, "mercator"));
+  assert.deepEqual(c.skipChoreography(), []);
+});
+
+test("reveal: a queued mid-beat commit flushes with no intermediate reveal-done", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
   c.requestReveal(REVEAL_REQUEST);
-  // A commit landing mid-settle queues; the flush starts a fresh reveal.
-  c.requestReveal(BIG_MISS_REQUEST);
-  const completed = c.onMoveEnd(snap(6, "mercator"));
-  // The queued big-miss reveal flushed (pullback beat), so no tour yet —
-  // the tour belongs to the flushed reveal's settle.
+  // A commit landing mid-beat queues; the flush starts a fresh reveal beat
+  // with the latest framing.
+  const second = { ...REVEAL_REQUEST, settleZoom: 7 };
+  c.requestReveal(second);
+  const flushed = c.onMoveEnd(snap(6, "mercator"));
   assert.ok(
-    completed.some((i) => i.type === "ease-to" && i.zoom === 2.0),
-    "queued reveal should flush as a new pullback beat",
+    !flushed.some((i) => i.type === "reveal-done"),
+    "no intermediate reveal-done when a queued reveal flushes",
   );
-  assert.equal(c.beatKind, "pullback");
+  assert.ok(
+    flushed.some((i) => i.type === "ease-to" && i.zoom === 7),
+    "queued reveal flushes as a fresh gap-view beat",
+  );
+  assert.equal(c.beatKind, "reveal");
   assert.equal(c.revealDone, false);
+  // The flushed beat completes terminally on its own moveend.
+  assert.deepEqual(c.onMoveEnd(snap(7, "mercator")), [
+    { type: "reveal-done" },
+  ]);
+  assert.equal(c.revealDone, true);
+  // Skip during the flushed beat targets the latest framing.
+  c.resetForNextPlace();
+  c.requestReveal(REVEAL_REQUEST);
+  c.requestReveal(second);
+  c.onMoveEnd(snap(6, "mercator"));
+  const skipped = c.skipChoreography();
+  assert.ok(
+    skipped.some((i) => i.type === "jump-to" && i.zoom === 7),
+    "skip should jump to the latest reveal framing",
+  );
+  assert.ok(skipped.some((i) => i.type === "reveal-done"));
 });
 
 test("return: continue eases back to the region framing, re-arms taps", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
-  startTour(c);
-  c.onTourHoldTimer();
-  c.onMoveEnd(snap(14, "mercator", REVEAL_REQUEST.spot));
+  startReveal(c);
+  completeReveal(c, 6, "mercator");
   assert.equal(c.revealDone, true);
   // Continue → next place.
   assert.deepEqual(c.resetForNextPlace(), []);
   assert.equal(c.revealDone, false);
-  // Tap handlers re-arm immediately on continue (the tour left them
+  // Tap handlers re-arm immediately on continue (the reveal left them
   // detached); the user can place the next pin while the camera eases back.
   assert.deepEqual(c.beginReturn(), [
     { type: "tap-handlers", enabled: true },
@@ -1069,9 +1008,9 @@ test("return: continue eases back to the region framing, re-arms taps", () => {
   );
   assert.equal(c.beatActive, false);
   assert.equal(c.beatKind, null);
-  // The next reveal still tours.
+  // The next reveal still runs the gap-view beat.
   c.requestReveal(REVEAL_REQUEST);
-  assert.equal(c.beatKind, "settle");
+  assert.equal(c.beatKind, "reveal");
 });
 
 test("return: reduced motion is a jump cut with immediate re-arm", () => {
@@ -1088,13 +1027,11 @@ test("return: reduced motion is a jump cut with immediate re-arm", () => {
   assert.equal(c.beatActive, false);
 });
 
-test("return: globe edition restores the maxZoom cap at completion", () => {
+test("return: globe edition eases home and re-arms on completion", () => {
   const c = globeController();
   narrowToGlobe(c);
   c.requestReveal({ ...REVEAL_REQUEST, projection: "globe" });
-  c.onMoveEnd(snap(6, "globe")); // → tour
-  c.onTourHoldTimer(); // → dive
-  c.onMoveEnd(snap(14, "globe", REVEAL_REQUEST.spot)); // → tour-done
+  completeReveal(c, 6, "globe");
   c.resetForNextPlace();
   const ret = c.beginReturn();
   assert.ok(
@@ -1109,29 +1046,33 @@ test("return: globe edition restores the maxZoom cap at completion", () => {
   );
   const done = c.onMoveEnd(snap(1.5, "globe"));
   assert.ok(
-    done.some((i) => i.type === "set-max-zoom" && i.maxZoom === 5),
-    "globe return should restore the maxZoom cap",
+    done.some((i) => i.type === "tap-handlers" && i.enabled === true),
+    "globe return should re-arm tap handlers",
   );
+  assert.ok(
+    done.some((i) => i.type === "gestures" && i.enabled === true),
+    "globe return should re-enable gestures",
+  );
+  assert.equal(c.beatActive, false);
 });
 
 test("return: mid-return commit queues and flushes on completion", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
-  // Place 1: reveal → tour → done.
+  // Place 1: miss reveal → gap-view beat → done.
   c.requestReveal(REVEAL_REQUEST);
-  c.onMoveEnd(snap(6, "mercator", NEBRASKA.center));
-  completeTour(c, REVEAL_REQUEST.spot);
+  completeReveal(c, 6, "mercator");
   // Continue → return beat starts.
   c.resetForNextPlace();
   c.beginReturn();
   assert.equal(c.beatKind, "return");
   // Fast player commits mid-return: queued, not dropped.
   assert.deepEqual(c.requestReveal(REVEAL_REQUEST), []);
-  // Return completes: the queued reveal flushes into a fresh settle beat.
+  // Return completes: the queued reveal flushes into a fresh gap-view beat.
   const done = c.onMoveEnd(snap(4.5, "mercator", NEBRASKA.center));
   assert.ok(
     done.some((i) => i.type === "ease-to"),
     "queued reveal should flush as a new beat",
   );
-  assert.equal(c.beatKind, "settle");
+  assert.equal(c.beatKind, "reveal");
 });
