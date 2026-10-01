@@ -199,7 +199,7 @@ article (lead + History sections) fetched 2026-10-01.
 - "In 1867 the Freedmen's Bureau bought this 375-acre farm" — article: "In
   1867, the Freedmen's Bureau… bought a 375-acre farm from Julia Barry"
   (L33–34)
-- "sold it in one-acre plots families could afford" — article: "The Bureau
+- "sold it in one-acre pieces families could afford" — article: "The Bureau
   sub-divided the farm into one-acre plots, which the freedmen could purchase
   over a period of seven years" (L39)
 - "it grew into Barry Farm, a proud, self-built Black community" — article:
