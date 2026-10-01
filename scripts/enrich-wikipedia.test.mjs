@@ -9,7 +9,6 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
   normalizeTitle,
-  titlesMatch,
   splitSentences,
   stripParens,
   extractHookSentence,
@@ -18,6 +17,7 @@ import {
   haversineKm,
   buildHistoryForCacheRec,
   isNetError,
+  wikiSlug,
 } from "./enrich-wikipedia.mjs";
 
 describe("normalizeTitle", () => {
@@ -25,22 +25,6 @@ describe("normalizeTitle", () => {
     assert.equal(normalizeTitle("Lancaster, Pennsylvania"), "lancaster, pennsylvania");
     assert.equal(normalizeTitle("Springfield (Illinois)"), "springfield");
     assert.equal(normalizeTitle("Fort_Worth"), "fort worth");
-  });
-});
-
-describe("titlesMatch", () => {
-  it("matches either direction after normalization", () => {
-    assert.ok(titlesMatch("Edna, Texas", "Edna"));
-    assert.ok(titlesMatch("Edna", "Edna"));
-    assert.ok(titlesMatch("Auburn (Nebraska)", "Auburn"));
-  });
-  it("rejects outright different names", () => {
-    // NOTE: "Lancaster, Pennsylvania" vs "Lancaster" matches by containment —
-    // the 10 km geosearch radius is the real disambiguator; the title check
-    // only rejects outright different names.
-    assert.ok(titlesMatch("Lancaster, Pennsylvania", "Lancaster"));
-    assert.ok(!titlesMatch("Springfield", "Riverside"));
-    assert.ok(!titlesMatch("", "Edna"));
   });
 });
 
@@ -121,9 +105,29 @@ describe("extractHookSentence", () => {
     assert.equal(extractHookSentence("").rejected, "empty-extract");
     assert.equal(extractHookSentence("   ").rejected, "empty-extract");
   });
-  it("uses the definitional sentence only as a last resort", () => {
-    const r = extractHookSentence("Montgomery is the capital of Alabama, founded in 1819.");
-    assert.ok(r.sentence.includes("founded in 1819"));
+  it("prefers a historical hook over a modern-identity one", () => {
+    const r = extractHookSentence(
+      "Vance is a town in Alabama. It was founded in 1830 when settlers arrived. It is known for the Mercedes-Benz plant.",
+    );
+    assert.ok(r.sentence.includes("1830"), `picked: ${r.sentence ?? r.rejected}`);
+  });
+  it("still takes a modern hook when no history is present", () => {
+    const r = extractHookSentence(
+      "Vance is a town in Alabama. It is known for the Mercedes-Benz plant.",
+    );
+    assert.ok(r.sentence.includes("Mercedes-Benz"), `picked: ${r.sentence ?? r.rejected}`);
+  });
+  it("rejects violent hooks for a kids' game", () => {
+    const r = extractHookSentence(
+      "Tulsa is a city in Oklahoma. It was the site of the Tulsa race massacre in 1921. It was founded in 1836 by settlers.",
+    );
+    assert.ok(!r.sentence?.toLowerCase().includes("massacre"), `picked: ${r.sentence}`);
+  });
+  it("rejects pure-admin date anchors", () => {
+    const r = extractHookSentence(
+      "Springfield is a city in Illinois. It was incorporated in 1914 by the County Commission.",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
   });
   it("strips parentheticals from the chosen sentence", () => {
     const r = extractHookSentence(
@@ -150,6 +154,16 @@ describe("validateHistory", () => {
       blurb,
     );
     assert.ok(v.some((m) => m.startsWith("fabricated words")));
+  });
+  it("rejects bare population stats", () => {
+    const extract = EXTRACT_FOUNDED + " It is home to 50000 people.";
+    assert.ok(
+      validateHistory("It is home to 50000 people.", extract, blurb).length > 0,
+      "bare headcount teaches nothing (rule 4)",
+    );
+    assert.ok(
+      validateHistory("The population was 12,345 residents.", extract + " The population was 12,345 residents.", blurb).length > 0,
+    );
   });
   it("rejects coordinate/elevation filler", () => {
     assert.ok(
@@ -190,6 +204,18 @@ describe("pickArticle", () => {
   it("returns null when nothing matches", () => {
     assert.equal(pickArticle([{ title: "Somewhere Else" }], "Edna"), null);
     assert.equal(pickArticle([], "Edna"), null);
+  });
+  it("never borrows a county's history for a town", () => {
+    assert.equal(pickArticle([{ title: "Jackson County, Texas" }], "Jackson"), null);
+  });
+  it("never borrows a university's history for its town", () => {
+    assert.equal(pickArticle([{ title: "Auburn University" }], "Auburn"), null);
+  });
+  it("accepts parenthetical disambiguation", () => {
+    assert.equal(
+      pickArticle([{ title: "Auburn (Nebraska)" }], "Auburn").title,
+      "Auburn (Nebraska)",
+    );
   });
 });
 
@@ -273,5 +299,15 @@ describe("runWorkerPool", () => {
     // The pool rejects on the first throw, like Promise.all — callers that
     // must not lose items catch per-item (cmdCrawl does).
     assert.ok(seen.length >= 1);
+  });
+});
+
+describe("wikiSlug", () => {
+  it("encodes titles into URL-safe Wikipedia slugs", () => {
+    assert.equal(wikiSlug("Edna, Texas"), "Edna,_Texas");
+    // Apostrophes stay raw, matching Wikipedia's own canonical URLs
+    // (https://en.wikipedia.org/wiki/Coeur_d'Alene,_Idaho).
+    assert.equal(wikiSlug("Coeur d'Alene, Idaho"), "Coeur_d'Alene,_Idaho");
+    assert.equal(wikiSlug("Truth or Consequences, New Mexico"), "Truth_or_Consequences,_New_Mexico");
   });
 });

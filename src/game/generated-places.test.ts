@@ -471,8 +471,7 @@ test("history hook sentence leads the card (rule 1: history first)", () => {
   assert.equal(s.sourceHref, "https://en.wikipedia.org/wiki/Edna,_Texas");
 });
 
-test("places without history keep the plain blurb card", () => {
-  const chunk = {
+test("places without history keep the plain blurb card", () => {  const chunk = {
     meta: { regionId: "texas", edition: "state", count: 1 },
     places: [
       {
@@ -517,4 +516,24 @@ test("assertValidRecord rejects corrupt history sentences fail-closed", () => {
       /invalid history/,
     );
   }
+});
+
+test("history without a wiki slug is rejected (attribution pairing)", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-9",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        history: "The town is named after a railroad official's daughter.",
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  assert.throws(() => startersFromChunk("texas", chunk), /invalid history hook sentence/);
 });

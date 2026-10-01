@@ -19,7 +19,7 @@
  *   - Extraction: the hook sentence is an actual sentence from the article's
  *     intro, chosen by history-pattern scoring, with parentheticals removed.
  *     No words are ever added — the no-fabrication validator proves every
- *     content word appears in the source extract.
+ *     significant word (4+ characters) appears in the source extract.
  *   - No LLM anywhere: the card is composed by deterministic string
  *     operations only, keeping the "no LLM for place data" invariant.
  *
@@ -76,19 +76,6 @@ export function normalizeTitle(title) {
 }
 
 /**
- * Does the Wikipedia title name the same place? Strict by design: either
- * side must contain the other after normalization. "Lancaster, Pennsylvania"
- * never matches a "Lancaster, Wisconsin" row because resolution is already
- * constrained to a 10 km radius — but the title check is the second lock.
- */
-export function titlesMatch(title, placeName) {
-  const t = normalizeTitle(title);
-  const n = normalizeTitle(placeName);
-  if (!t || !n) return false;
-  return t.includes(n) || n.includes(t);
-}
-
-/**
  * Split plaintext into sentences on terminal punctuation, without breaking
  * on abbreviations ("St. Louis", "Mercedes-Benz U.S. International") — a
  * naive split would shred those into fragments and the hook picker would
@@ -123,8 +110,11 @@ export function stripParens(sentence) {
 }
 
 // Strong hooks: a person, an event, a record, a naming story — the things a
-// kid can retell (rule 3). Each must match a real historical hook.
-const STRONG_HOOKS = [
+// kid can retell (rule 3). Tier 3 is genuinely historical; tier 1 is
+// modern-identity ("known for the Mercedes-Benz plant") — allowed as a last
+// resort before the definitional fallback, but it must never outrank a
+// founding story (rule 1: history first, modern identity second).
+const HISTORICAL_HOOKS = [
   /named\s+(?:after|for)\s+[^.]{2,80}/i,
   /renamed\s+(?:after|for)\s+[^.]{2,80}/i,
   /birthplace\s+of\s+[^.]{2,80}/i,
@@ -132,10 +122,12 @@ const STRONG_HOOKS = [
   /battle\s+of\s+[^.]{2,80}/i,
   /was\s+the\s+first\s+[^.]{2,80}/i,
   /(?:is|was)\s+the\s+oldest\s+[^.]{2,80}/i,
+  /played\s+(?:a\s+)?(?:key|major|central)\s+role\s+in\s+[^.]{2,80}/i,
+];
+const MODERN_HOOKS = [
   /known\s+for\s+[^.]{2,80}/i,
   /famous\s+for\s+[^.]{2,80}/i,
   /home\s+to\s+[^.]{2,80}/i,
-  /played\s+(?:a\s+)?(?:key|major|central)\s+role\s+in\s+[^.]{2,80}/i,
   /hosted\s+[^.]{2,80}/i,
 ];
 // Date anchors only count when the sentence tells more than the date: a
@@ -149,19 +141,42 @@ const DATE_HOOKS = [
   /settled\s+in\s+(?:the\s+)?\d{4}s?/i,
 ];
 const STORY_KEYWORDS =
-  /\b(railroad|railway|gold|silver|oil|cotton|battle|war|trail|fort|mission|mill|mine|mining|canal|port|depot|expedition|revolution|protest|march|boycott|strike|flood|fire|tornado|space|rocket|film|movie|music|jazz|blues|baseball|football)\b/i;
+  /\b(railroad|railway|gold|silver|oil|cotton|battle|war|trail|fort|mission|mill|mine|mining|canal|port|depot|expedition|revolution|protest|march|boycott|strike|flood|fire|tornado|space|rocket|music|jazz|blues|baseball|football|settlers?|pioneer|frontier|homestead)\b/i;
 const PROPER_NOUN_MID_SENTENCE = /\s[A-Z][a-z]{2,}/;
+// Generic admin words don't count as the "proper noun" that makes a date
+// anchor a story: "incorporated in 1914 by the County Commission" is
+// paperwork, not a hook any child could retell.
+const ADMIN_WORDS = /\b(county|commission|council|board|district|city|town|village|municipality|government|department|authority)\b/i;
+// Hooks are verbatim Wikipedia sentences, and some intros lead
+// with violence. A kids' game never leads a card with these — the sentence
+// is rejected and the card keeps its plain blurb.
+const UNSAFE_HOOK_PATTERNS = [
+  /\bmassacre\b/i,
+  /\blynch(?:ing|ed|es)?\b/i,
+  /\bmurder(?:ed|er)?\b/i,
+  /\brape\b/i,
+  /\bKKK\b/,
+  /\bku klux klan\b/i,
+  /\bterrorist\b/i,
+  /\bgenocide\b/i,
+  /\btorture\b/i,
+];
 
 function hookScore(sentence) {
-  for (const re of STRONG_HOOKS) {
-    if (re.test(sentence)) return 2;
+  for (const re of UNSAFE_HOOK_PATTERNS) {
+    if (re.test(sentence)) return -1; // rejected, not just unscored
+  }
+  for (const re of HISTORICAL_HOOKS) {
+    if (re.test(sentence)) return 3;
   }
   for (const re of DATE_HOOKS) {
     if (re.test(sentence)) {
-      const hasStory =
-        STORY_KEYWORDS.test(sentence) || PROPER_NOUN_MID_SENTENCE.test(sentence);
-      return hasStory ? 1 : 0;
+      const properNoun = PROPER_NOUN_MID_SENTENCE.test(sentence) && !ADMIN_WORDS.test(sentence);
+      return STORY_KEYWORDS.test(sentence) || properNoun ? 2 : 0;
     }
+  }
+  for (const re of MODERN_HOOKS) {
+    if (re.test(sentence)) return 1;
   }
   return 0;
 }
@@ -180,12 +195,14 @@ export function extractHookSentence(extractText) {
   }
   const sentences = splitSentences(extractText);
   if (sentences.length === 0) return { rejected: "no-sentences" };
-  // Highest hook score wins; the definitional first sentence ("X is a city
-  // in...") only wins ties when nothing later carries a hook.
+  // Highest hook score wins; unsafe sentences (score -1) can never win, so a
+  // card with only violent hooks keeps its plain blurb. The definitional
+  // first sentence ("X is a city in...") only wins ties when nothing later
+  // carries a hook.
   let best = -1;
   for (let i = 0; i < sentences.length; i++) {
     const score = hookScore(sentences[i]);
-    if (score === 0) continue;
+    if (score <= 0) continue;
     if (best === -1) {
       best = i;
       continue;
@@ -204,7 +221,8 @@ const BANNED_PATTERNS = [
   /°/, // coordinates never belong in a kid's card
   /\b\d[\d,]*\s*(m|ft|feet|metres|meters)\b.*\b(above|elevation|a\.s\.l\.)/i,
   /\belevation\b/i,
-  /\bpopulation\s+of\b/i,
+  /\bpopulation\b/i, // "population of" and bare "population 5,000" alike
+  /\b\d[\d,]*\s*(people|residents|inhabitants|households)\b/i, // bare stats teach nothing
   /\bcensus\b/i,
 ];
 
@@ -266,8 +284,15 @@ export function pickArticle(pages, placeName) {
       return page;
     }
   }
+  // Pass 2 is only for parenthetical disambiguation ("Auburn (Nebraska)" for
+  // "Auburn"). Bare containment would borrow a county's or university's
+  // history for a town ("Jackson County, Texas" for "Jackson") — the header
+  // promise is that a card never does that, so the title must equal the
+  // place name once parentheticals are stripped.
+  const debracket = (title) =>
+    normalizeTitle(title).replace(/\s*\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
   for (const page of pages) {
-    if (page && typeof page.title === "string" && titlesMatch(page.title, placeName)) {
+    if (page && typeof page.title === "string" && debracket(page.title) === want) {
       return page;
     }
   }
@@ -390,7 +415,10 @@ async function pacedFetch(url) {
 /**
  * One polite call per place: nearby articles (<=10 km) with intro extracts
  * and coordinates. Returns { status, title, extract } where status is one of
- * "matched" | "no-article" | "title-mismatch" | "no-extract" | "error".
+ * "matched" | "no-article" | "title-mismatch" | "no-extract" | "too-far" |
+ * "error". "too-far" means the title matched but the article's coordinates
+ * are outside the 10 km radius — kept distinct from "title-mismatch" so the
+ * report shows resolution quality honestly.
  */
 export async function resolvePlace(place) {
   const params = new URLSearchParams({
@@ -558,6 +586,19 @@ async function cmdReport() {
 // Merge driver: validate + patch chunks + refresh manifest bytes
 // ---------------------------------------------------------------------------
 
+/**
+ * Wikipedia article slug for the runtime's source link
+ * (`https://en.wikipedia.org/wiki/${slug}`). Spaces become underscores;
+ * everything else unsafe in a URL path is percent-encoded, while the
+ * characters Wikipedia itself leaves readable (",", ":", "/") are kept.
+ */
+export function wikiSlug(title) {
+  return encodeURIComponent(title.replace(/ /g, "_"))
+    .replace(/%2C/gi, ",")
+    .replace(/%3A/gi, ":")
+    .replace(/%2F/gi, "/");
+}
+
 export function buildHistoryForCacheRec(rec, place) {
   if (rec.status !== "matched" || !rec.extract) return { skipped: rec.status };
   const r = extractHookSentence(rec.extract);
@@ -566,7 +607,7 @@ export function buildHistoryForCacheRec(rec, place) {
   if (violations.length > 0) return { skipped: `invalid: ${violations.join("; ")}` };
   return {
     history: r.sentence,
-    wiki: rec.title.replace(/ /g, "_"),
+    wiki: wikiSlug(rec.title),
   };
 }
 

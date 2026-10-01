@@ -148,13 +148,17 @@ function assertValidRecord(
   // (scripts/enrich-wikipedia.mjs validateHistory) proved each one is a
   // verbatim Wikipedia extract sentence, so this only guards against
   // hand-edited corruption: length bounds, terminal punctuation, and no
-  // coordinate/elevation filler (card rules 2+4).
+  // coordinate/elevation filler (card rules 2+4). A history sentence must
+  // always travel with its wiki slug — unattributed CC BY-SA text would
+  // otherwise render under the plain "GeoNames" label.
   if (record.history !== undefined) {
     const h = record.history;
     const okShape =
       typeof h === "string" && h.length >= 20 && h.length <= 240 && /[.!?]$/.test(h.trim());
     const hasFiller = typeof h === "string" && (/°/.test(h) || /\belevation\b/i.test(h));
-    if (!okShape || hasFiller) {
+    const hasWiki =
+      typeof record.wiki === "string" && record.wiki.length > 0;
+    if (!okShape || hasFiller || !hasWiki) {
       throw new Error(`${where}: invalid history hook sentence`);
     }
   }
