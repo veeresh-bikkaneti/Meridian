@@ -1464,7 +1464,7 @@ export function SatelliteMap(props: {
       data-center-lat={center.lat.toFixed(4)}
       data-tile-status={tileStatus.kind}
       aria-roledescription="map"
-      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the reveal animation while it plays."
+      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the reveal while it plays."
       // Design §7: the intro beat owns the screen — the wrapper is hidden
       // from assistive tech and uninteractable until narrow completion
       // releases it (the `announce` intent then fires through the live
