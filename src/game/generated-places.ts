@@ -61,6 +61,8 @@ interface ChunkPlaceRecord {
   lon: unknown;
   lat: unknown;
   blurb: unknown;
+  /** Optional en.wikipedia.org article slug when the blurb carries a curated notable note. */
+  wiki?: unknown;
   iso2: unknown;
   edition: unknown;
   regionId: unknown;
@@ -68,13 +70,16 @@ interface ChunkPlaceRecord {
 
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
 function toStarter(
-  place: { id: string; name: string; lon: number; lat: number; blurb: string },
+  place: { id: string; name: string; lon: number; lat: number; blurb: string; wiki?: string },
   edition: Edition,
   regionId: string,
 ): Starter {
   // The dataset carries no difficulty signal; generated places default to
   // medium (3) so the v3 multiplier stays neutral for them.
   const difficulty: Difficulty = 3;
+  // Notable notes are curated from Wikipedia; the slug travels in the chunk
+  // so the card can attribute it (GeoNames stays credited app-wide).
+  const hasWiki = typeof place.wiki === "string" && place.wiki.length > 0;
   return {
     id: place.id,
     edition,
@@ -83,8 +88,8 @@ function toStarter(
     lon: place.lon,
     lat: place.lat,
     story: place.blurb,
-    sourceLabel: GENERATED_SOURCE_LABEL,
-    sourceHref: GENERATED_SOURCE_HREF,
+    sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
+    sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
     difficulty,
   };
 }
@@ -106,6 +111,7 @@ function assertValidRecord(
   lon: number;
   lat: number;
   blurb: string;
+  wiki?: string;
   iso2: string;
   edition: Edition;
   regionId: string;
@@ -122,6 +128,9 @@ function assertValidRecord(
   }
   if (typeof record.blurb !== "string" || record.blurb.length === 0) {
     throw new Error(`${where}: invalid blurb`);
+  }
+  if (record.wiki !== undefined && (typeof record.wiki !== "string" || record.wiki.length === 0)) {
+    throw new Error(`${where}: invalid wiki slug`);
   }
   if (typeof record.iso2 !== "string" || record.iso2.length === 0) {
     throw new Error(`${where}: invalid iso2`);
