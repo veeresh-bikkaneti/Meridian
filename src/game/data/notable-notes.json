@@ -201,7 +201,7 @@
   },
   "_comment": "Curated memorable facts for notable GeoNames places, keyed by geonameid. Merged into blurbs at dataset build time (scripts/build-geonames-dataset.mjs). Every note is a verifiable fact in the starters' voice: 1-2 sentences, evocative, no filler. wiki is the en.wikipedia.org article slug for attribution.",
   "1269843": {
-    "note": "Founded in 1591 beyond the fortified Golconda; its Charminar has come to symbolise the city. Since the 1990s it has emerged as an Indian IT hub around HITEC City, and Guinness World Records declared its Ramoji Film City the world's largest film studio.",
+    "note": "Founded in 1591 beyond the fortified Golconda; its Charminar has come to symbolize the city. Since the 1990s it has emerged as an Indian IT hub around HITEC City, and Guinness World Records declared its Ramoji Film City the world's largest film studio.",
     "wiki": "Hyderabad"
   },
   "104515": {
