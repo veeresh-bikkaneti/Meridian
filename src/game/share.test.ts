@@ -62,3 +62,31 @@ test("share text never spoils place names", () => {
     false,
   );
 });
+
+test("per-place scores render a Wordle-style emoji strip", () => {
+  const text = shareText({
+    regionName: "Nebraska",
+    dateKey: "2026-09-28",
+    totalScore: 940,
+    placesPlayed: 6,
+    averagePerPlace: 157,
+    bestStreak: 2,
+    scores: [350, 250, 150, 80, 30, 0],
+    now,
+  });
+  assert.equal(
+    text,
+    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🎯🏆🌟👏🙂💨\n940 over 6 places · 157 avg/place · 🔥 2 best streak · Nebraska",
+  );
+});
+
+test("no strip without per-place scores", () => {
+  const text = endless({
+    regionName: "Nebraska",
+    totalScore: 190,
+    placesPlayed: 2,
+    averagePerPlace: 95,
+    bestStreak: 1,
+  });
+  assert.equal(text.includes("🎯"), false);
+});

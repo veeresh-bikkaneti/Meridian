@@ -40,8 +40,12 @@ test("share text is a spoiler-free endless line", () => {
     text,
     "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
   );
-  assert.equal(scoreMark(0), "·");
-  assert.equal(scoreMark(100), "🎯");
+  assert.equal(scoreMark(0), "💨");
+  assert.equal(scoreMark(415), "🎯");
+  assert.equal(scoreMark(250), "🏆");
+  assert.equal(scoreMark(150), "🌟");
+  assert.equal(scoreMark(80), "👏");
+  assert.equal(scoreMark(30), "🙂");
   const noStreak = shareText({
     regionName: "Japan",
     dateKey: "2025-06-18",
