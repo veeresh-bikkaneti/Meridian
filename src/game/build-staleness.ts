@@ -27,6 +27,9 @@ function baseUrl(): string {
 export interface StalenessDeps {
   fetchFn?: typeof fetch;
   base?: string;
+  /** Abort the meta fetch after this long (default 8s) so a hanging network
+   *  can never delay the error notice indefinitely. */
+  timeoutMs?: number;
 }
 
 /**
@@ -37,8 +40,12 @@ export interface StalenessDeps {
 export async function isNewBuildDeployed(deps: StalenessDeps = {}): Promise<boolean> {
   const fetchFn = deps.fetchFn ?? fetch;
   const base = deps.base ?? baseUrl();
+  const timeoutMs = deps.timeoutMs ?? 8000;
   try {
-    const res = await fetchFn(`${base}build-meta.json`, { cache: "no-store" });
+    const res = await fetchFn(`${base}build-meta.json`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(timeoutMs),
+    });
     if (!res.ok) return false;
     const meta = (await res.json()) as { buildId?: unknown };
     return typeof meta.buildId === "string" && meta.buildId !== CURRENT_BUILD_ID;
