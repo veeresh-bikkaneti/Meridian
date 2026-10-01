@@ -408,7 +408,7 @@ function leadFor(fcode, pop) {
   return { kind: pop >= 50000 ? "city" : "town" };
 }
 
-function blurbFor({ name, admin1Name, countryName, pop, elev, fcode, lon, lat, box, notable }) {
+function blurbFor({ name, admin1Name, countryName, pop, elev, fcode, lon, lat, box, notable, sports }) {
   const popStr = Number(pop).toLocaleString("en-US");
   const where = admin1Name ? `${admin1Name}, ${countryName}` : countryName;
   const lead = leadFor(fcode, pop);
@@ -428,7 +428,22 @@ function blurbFor({ name, admin1Name, countryName, pop, elev, fcode, lon, lat, b
     b += ` It sits at ~${Number(elev).toLocaleString("en-US")} m elevation.`;
   }
   if (notable) b += ` ${notable}`;
+  const sportsLine = sportsSentence(sports);
+  if (sportsLine) b += ` ${sportsLine}`;
   return b;
+}
+
+/**
+ * "Home of the ..." line for a city's Big-5 pro sports teams.
+ * `teams` is [{team, league}] sorted NFL → MLB → NBA → NHL → MLS.
+ * Returns "" when there are no teams (most places) — no filler.
+ */
+function sportsSentence(teams) {
+  if (!teams || teams.length === 0) return "";
+  const parts = teams.map((t) => `${t.team} (${t.league})`);
+  if (parts.length === 1) return `Home of the ${parts[0]}.`;
+  if (parts.length === 2) return `Home of the ${parts[0]} and ${parts[1]}.`;
+  return `Home of the ${parts.slice(0, -1).join(", ")}, and ${parts[parts.length - 1]}.`;
 }
 
 // ---------------------------------------------------------------------------
@@ -453,6 +468,13 @@ async function main() {
   );
   const notableCount = Object.keys(notableNotes).filter((k) => !k.startsWith("_")).length;
   console.log(`loaded ${notableCount} notable-place notes`);
+  // Big-5 pro sports teams keyed by geonameid, merged into blurbs below.
+  // Keys starting with "_" are file comments, not places.
+  const sportsNotes = JSON.parse(
+    readFileSync(join(REPO, "src", "game", "data", "sports-notes.json"), "utf8"),
+  );
+  const sportsCount = Object.keys(sportsNotes).filter((k) => !k.startsWith("_")).length;
+  console.log(`loaded ${sportsCount} sports-team cities`);
   console.log("deriving per-country gate boxes from all GeoNames P rows…");
   const tBox = Date.now();
   const boxes = await deriveCountryBoxes(dumpPath);
@@ -547,12 +569,13 @@ async function main() {
         : boxes[cc]?.box ?? null;
     const cardLon = edition === "state" ? lon : normalizeLon(lon, boxes[cc]);
     const notable = notableNotes[geonameid];
+    const sports = sportsNotes[geonameid];
     const place = {
       id, name, lon, lat,
       blurb: blurbFor({
         name, admin1Name, countryName, pop,
         elev: c[15], fcode: c[7], lon: cardLon, lat,
-        box: cardBox, notable: notable?.note,
+        box: cardBox, notable: notable?.note, sports: sports?.teams,
       }),
       // wiki slug travels so the app can attribute the notable note to
       // Wikipedia (GeoNames stays credited app-wide in the map footer).

@@ -1,0 +1,857 @@
+{
+  "_sources": {
+    "NFL": {
+      "url": "https://www.nfl.com/teams/",
+      "verified": "2026-10-01",
+      "fallback": "https://en.wikipedia.org/wiki/Timeline_of_the_National_Football_League"
+    },
+    "MLB": {
+      "url": "https://www.mlb.com/teams/",
+      "verified": "2026-10-01",
+      "fallback": "https://baseball.fandom.com/wiki/Major_League_Baseball"
+    },
+    "NBA": {
+      "url": "https://www.nba.com/teams",
+      "verified": "2026-10-01",
+      "fallback": "https://www.techbmc.com/list-of-nba-teams/"
+    },
+    "NHL": {
+      "url": "https://www.nhl.com/teams",
+      "verified": "2026-10-01",
+      "fallback": "https://www.statmuse.com/nhl/team/2025-26-utah-mammoth-40/roster/2026"
+    },
+    "MLS": {
+      "url": "https://www.mlssoccer.com/teams/",
+      "verified": "2026-10-01",
+      "fallback": "https://www.mlssoccer.com/news/ranking-all-30-mls-teams-by-tier-for-2025"
+    }
+  },
+  "4140963": {
+    "teams": [
+      {
+        "team": "Washington Commanders",
+        "league": "NFL"
+      },
+      {
+        "team": "Washington Nationals",
+        "league": "MLB"
+      },
+      {
+        "team": "Washington Wizards",
+        "league": "NBA"
+      },
+      {
+        "team": "Washington Capitals",
+        "league": "NHL"
+      },
+      {
+        "team": "D.C. United",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4160021": {
+    "teams": [
+      {
+        "team": "Jacksonville Jaguars",
+        "league": "NFL"
+      }
+    ]
+  },
+  "4164138": {
+    "teams": [
+      {
+        "team": "Miami Dolphins",
+        "league": "NFL"
+      },
+      {
+        "team": "Miami Marlins",
+        "league": "MLB"
+      },
+      {
+        "team": "Miami Heat",
+        "league": "NBA"
+      },
+      {
+        "team": "Florida Panthers",
+        "league": "NHL"
+      },
+      {
+        "team": "Inter Miami CF",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4167147": {
+    "teams": [
+      {
+        "team": "Orlando Magic",
+        "league": "NBA"
+      },
+      {
+        "team": "Orlando City SC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4174757": {
+    "teams": [
+      {
+        "team": "Tampa Bay Buccaneers",
+        "league": "NFL"
+      },
+      {
+        "team": "Tampa Bay Rays",
+        "league": "MLB"
+      },
+      {
+        "team": "Tampa Bay Lightning",
+        "league": "NHL"
+      }
+    ]
+  },
+  "4180439": {
+    "teams": [
+      {
+        "team": "Atlanta Falcons",
+        "league": "NFL"
+      },
+      {
+        "team": "Atlanta Braves",
+        "league": "MLB"
+      },
+      {
+        "team": "Atlanta Hawks",
+        "league": "NBA"
+      },
+      {
+        "team": "Atlanta United FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4259418": {
+    "teams": [
+      {
+        "team": "Indianapolis Colts",
+        "league": "NFL"
+      },
+      {
+        "team": "Indiana Pacers",
+        "league": "NBA"
+      }
+    ]
+  },
+  "4335045": {
+    "teams": [
+      {
+        "team": "New Orleans Saints",
+        "league": "NFL"
+      },
+      {
+        "team": "New Orleans Pelicans",
+        "league": "NBA"
+      }
+    ]
+  },
+  "4347778": {
+    "teams": [
+      {
+        "team": "Baltimore Ravens",
+        "league": "NFL"
+      },
+      {
+        "team": "Baltimore Orioles",
+        "league": "MLB"
+      }
+    ]
+  },
+  "4393217": {
+    "teams": [
+      {
+        "team": "Kansas City Chiefs",
+        "league": "NFL"
+      },
+      {
+        "team": "Kansas City Royals",
+        "league": "MLB"
+      },
+      {
+        "team": "Sporting Kansas City",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4407066": {
+    "teams": [
+      {
+        "team": "St. Louis Cardinals",
+        "league": "MLB"
+      },
+      {
+        "team": "St. Louis Blues",
+        "league": "NHL"
+      },
+      {
+        "team": "St. Louis City SC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4460243": {
+    "teams": [
+      {
+        "team": "Carolina Panthers",
+        "league": "NFL"
+      },
+      {
+        "team": "Charlotte Hornets",
+        "league": "NBA"
+      },
+      {
+        "team": "Charlotte FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4487042": {
+    "teams": [
+      {
+        "team": "Carolina Hurricanes",
+        "league": "NHL"
+      }
+    ]
+  },
+  "4508722": {
+    "teams": [
+      {
+        "team": "Cincinnati Bengals",
+        "league": "NFL"
+      },
+      {
+        "team": "Cincinnati Reds",
+        "league": "MLB"
+      },
+      {
+        "team": "FC Cincinnati",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4509177": {
+    "teams": [
+      {
+        "team": "Columbus Blue Jackets",
+        "league": "NHL"
+      },
+      {
+        "team": "Columbus Crew",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4544349": {
+    "teams": [
+      {
+        "team": "Oklahoma City Thunder",
+        "league": "NBA"
+      }
+    ]
+  },
+  "4560349": {
+    "teams": [
+      {
+        "team": "Philadelphia Eagles",
+        "league": "NFL"
+      },
+      {
+        "team": "Philadelphia Phillies",
+        "league": "MLB"
+      },
+      {
+        "team": "Philadelphia 76ers",
+        "league": "NBA"
+      },
+      {
+        "team": "Philadelphia Flyers",
+        "league": "NHL"
+      },
+      {
+        "team": "Philadelphia Union",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4641239": {
+    "teams": [
+      {
+        "team": "Memphis Grizzlies",
+        "league": "NBA"
+      }
+    ]
+  },
+  "4644585": {
+    "teams": [
+      {
+        "team": "Tennessee Titans",
+        "league": "NFL"
+      },
+      {
+        "team": "Nashville Predators",
+        "league": "NHL"
+      },
+      {
+        "team": "Nashville SC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4671654": {
+    "teams": [
+      {
+        "team": "Austin FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4684888": {
+    "teams": [
+      {
+        "team": "Dallas Cowboys",
+        "league": "NFL"
+      },
+      {
+        "team": "Texas Rangers",
+        "league": "MLB"
+      },
+      {
+        "team": "Dallas Mavericks",
+        "league": "NBA"
+      },
+      {
+        "team": "Dallas Stars",
+        "league": "NHL"
+      },
+      {
+        "team": "FC Dallas",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4699066": {
+    "teams": [
+      {
+        "team": "Houston Texans",
+        "league": "NFL"
+      },
+      {
+        "team": "Houston Astros",
+        "league": "MLB"
+      },
+      {
+        "team": "Houston Rockets",
+        "league": "NBA"
+      },
+      {
+        "team": "Houston Dynamo FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4726206": {
+    "teams": [
+      {
+        "team": "San Antonio Spurs",
+        "league": "NBA"
+      }
+    ]
+  },
+  "4887398": {
+    "teams": [
+      {
+        "team": "Chicago Bears",
+        "league": "NFL"
+      },
+      {
+        "team": "Chicago Cubs",
+        "league": "MLB"
+      },
+      {
+        "team": "Chicago White Sox",
+        "league": "MLB"
+      },
+      {
+        "team": "Chicago Bulls",
+        "league": "NBA"
+      },
+      {
+        "team": "Chicago Blackhawks",
+        "league": "NHL"
+      },
+      {
+        "team": "Chicago Fire FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4930956": {
+    "teams": [
+      {
+        "team": "New England Patriots",
+        "league": "NFL"
+      },
+      {
+        "team": "Boston Red Sox",
+        "league": "MLB"
+      },
+      {
+        "team": "Boston Celtics",
+        "league": "NBA"
+      },
+      {
+        "team": "Boston Bruins",
+        "league": "NHL"
+      },
+      {
+        "team": "New England Revolution",
+        "league": "MLS"
+      }
+    ]
+  },
+  "4990729": {
+    "teams": [
+      {
+        "team": "Detroit Lions",
+        "league": "NFL"
+      },
+      {
+        "team": "Detroit Tigers",
+        "league": "MLB"
+      },
+      {
+        "team": "Detroit Pistons",
+        "league": "NBA"
+      },
+      {
+        "team": "Detroit Red Wings",
+        "league": "NHL"
+      }
+    ]
+  },
+  "5037649": {
+    "teams": [
+      {
+        "team": "Minnesota Vikings",
+        "league": "NFL"
+      },
+      {
+        "team": "Minnesota Twins",
+        "league": "MLB"
+      },
+      {
+        "team": "Minnesota Timberwolves",
+        "league": "NBA"
+      },
+      {
+        "team": "Minnesota Wild",
+        "league": "NHL"
+      },
+      {
+        "team": "Minnesota United FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5101798": {
+    "teams": [
+      {
+        "team": "New Jersey Devils",
+        "league": "NHL"
+      }
+    ]
+  },
+  "5110629": {
+    "teams": [
+      {
+        "team": "Buffalo Bills",
+        "league": "NFL"
+      },
+      {
+        "team": "Buffalo Sabres",
+        "league": "NHL"
+      }
+    ]
+  },
+  "5128581": {
+    "teams": [
+      {
+        "team": "New York Giants",
+        "league": "NFL"
+      },
+      {
+        "team": "New York Jets",
+        "league": "NFL"
+      },
+      {
+        "team": "New York Mets",
+        "league": "MLB"
+      },
+      {
+        "team": "New York Yankees",
+        "league": "MLB"
+      },
+      {
+        "team": "Brooklyn Nets",
+        "league": "NBA"
+      },
+      {
+        "team": "New York Knicks",
+        "league": "NBA"
+      },
+      {
+        "team": "New York Islanders",
+        "league": "NHL"
+      },
+      {
+        "team": "New York Rangers",
+        "league": "NHL"
+      },
+      {
+        "team": "New York City FC",
+        "league": "MLS"
+      },
+      {
+        "team": "New York Red Bulls",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5150529": {
+    "teams": [
+      {
+        "team": "Cleveland Browns",
+        "league": "NFL"
+      },
+      {
+        "team": "Cleveland Guardians",
+        "league": "MLB"
+      },
+      {
+        "team": "Cleveland Cavaliers",
+        "league": "NBA"
+      }
+    ]
+  },
+  "5206379": {
+    "teams": [
+      {
+        "team": "Pittsburgh Steelers",
+        "league": "NFL"
+      },
+      {
+        "team": "Pittsburgh Pirates",
+        "league": "MLB"
+      },
+      {
+        "team": "Pittsburgh Penguins",
+        "league": "NHL"
+      }
+    ]
+  },
+  "5254962": {
+    "teams": [
+      {
+        "team": "Green Bay Packers",
+        "league": "NFL"
+      }
+    ]
+  },
+  "5263045": {
+    "teams": [
+      {
+        "team": "Milwaukee Brewers",
+        "league": "MLB"
+      },
+      {
+        "team": "Milwaukee Bucks",
+        "league": "NBA"
+      }
+    ]
+  },
+  "5308655": {
+    "teams": [
+      {
+        "team": "Arizona Cardinals",
+        "league": "NFL"
+      },
+      {
+        "team": "Arizona Diamondbacks",
+        "league": "MLB"
+      },
+      {
+        "team": "Phoenix Suns",
+        "league": "NBA"
+      }
+    ]
+  },
+  "5323810": {
+    "teams": [
+      {
+        "team": "Anaheim Ducks",
+        "league": "NHL"
+      }
+    ]
+  },
+  "5368361": {
+    "teams": [
+      {
+        "team": "Los Angeles Chargers",
+        "league": "NFL"
+      },
+      {
+        "team": "Los Angeles Rams",
+        "league": "NFL"
+      },
+      {
+        "team": "Los Angeles Angels",
+        "league": "MLB"
+      },
+      {
+        "team": "Los Angeles Dodgers",
+        "league": "MLB"
+      },
+      {
+        "team": "Los Angeles Clippers",
+        "league": "NBA"
+      },
+      {
+        "team": "Los Angeles Lakers",
+        "league": "NBA"
+      },
+      {
+        "team": "Los Angeles Kings",
+        "league": "NHL"
+      },
+      {
+        "team": "LA Galaxy",
+        "league": "MLS"
+      },
+      {
+        "team": "Los Angeles FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5389489": {
+    "teams": [
+      {
+        "team": "Athletics",
+        "league": "MLB"
+      },
+      {
+        "team": "Sacramento Kings",
+        "league": "NBA"
+      }
+    ]
+  },
+  "5391811": {
+    "teams": [
+      {
+        "team": "San Diego Padres",
+        "league": "MLB"
+      },
+      {
+        "team": "San Diego FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5391959": {
+    "teams": [
+      {
+        "team": "San Francisco 49ers",
+        "league": "NFL"
+      },
+      {
+        "team": "San Francisco Giants",
+        "league": "MLB"
+      },
+      {
+        "team": "Golden State Warriors",
+        "league": "NBA"
+      }
+    ]
+  },
+  "5392171": {
+    "teams": [
+      {
+        "team": "San Jose Sharks",
+        "league": "NHL"
+      },
+      {
+        "team": "San Jose Earthquakes",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5419384": {
+    "teams": [
+      {
+        "team": "Denver Broncos",
+        "league": "NFL"
+      },
+      {
+        "team": "Colorado Rockies",
+        "league": "MLB"
+      },
+      {
+        "team": "Denver Nuggets",
+        "league": "NBA"
+      },
+      {
+        "team": "Colorado Avalanche",
+        "league": "NHL"
+      },
+      {
+        "team": "Colorado Rapids",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5506956": {
+    "teams": [
+      {
+        "team": "Las Vegas Raiders",
+        "league": "NFL"
+      },
+      {
+        "team": "Vegas Golden Knights",
+        "league": "NHL"
+      }
+    ]
+  },
+  "5746545": {
+    "teams": [
+      {
+        "team": "Portland Trail Blazers",
+        "league": "NBA"
+      },
+      {
+        "team": "Portland Timbers",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5780993": {
+    "teams": [
+      {
+        "team": "Utah Jazz",
+        "league": "NBA"
+      },
+      {
+        "team": "Utah Mammoth",
+        "league": "NHL"
+      },
+      {
+        "team": "Real Salt Lake",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5809844": {
+    "teams": [
+      {
+        "team": "Seattle Seahawks",
+        "league": "NFL"
+      },
+      {
+        "team": "Seattle Mariners",
+        "league": "MLB"
+      },
+      {
+        "team": "Seattle Kraken",
+        "league": "NHL"
+      },
+      {
+        "team": "Seattle Sounders FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "5913490": {
+    "teams": [
+      {
+        "team": "Calgary Flames",
+        "league": "NHL"
+      }
+    ]
+  },
+  "5946768": {
+    "teams": [
+      {
+        "team": "Edmonton Oilers",
+        "league": "NHL"
+      }
+    ]
+  },
+  "6077243": {
+    "teams": [
+      {
+        "team": "Montreal Canadiens",
+        "league": "NHL"
+      },
+      {
+        "team": "CF Montréal",
+        "league": "MLS"
+      }
+    ]
+  },
+  "6094817": {
+    "teams": [
+      {
+        "team": "Ottawa Senators",
+        "league": "NHL"
+      }
+    ]
+  },
+  "6167865": {
+    "teams": [
+      {
+        "team": "Toronto Blue Jays",
+        "league": "MLB"
+      },
+      {
+        "team": "Toronto Raptors",
+        "league": "NBA"
+      },
+      {
+        "team": "Toronto Maple Leafs",
+        "league": "NHL"
+      },
+      {
+        "team": "Toronto FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "6173331": {
+    "teams": [
+      {
+        "team": "Vancouver Canucks",
+        "league": "NHL"
+      },
+      {
+        "team": "Vancouver Whitecaps FC",
+        "league": "MLS"
+      }
+    ]
+  },
+  "6183235": {
+    "teams": [
+      {
+        "team": "Winnipeg Jets",
+        "league": "NHL"
+      }
+    ]
+  }
+}

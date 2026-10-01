@@ -106,6 +106,29 @@ test("notable capitals get Wikipedia-sourced memorable notes", async () => {
   }
 });
 
+test("sports cities get a Big-5 home-teams line in the blurb", async () => {
+  const wisconsin = await generatedStartersFor("state", "wisconsin");
+  const greenBay = wisconsin.find((s) => s.name === "Green Bay");
+  assert.ok(greenBay, "Green Bay should be in the Wisconsin chunk");
+  assert.ok(
+    greenBay.story.includes("Home of the Green Bay Packers (NFL)."),
+    `sports line missing: ${greenBay.story}`,
+  );
+  // Multi-team city lists teams across leagues, NFL first.
+  const newYork = await generatedStartersFor("state", "new-york");
+  const nyc = newYork.find((s) => s.name === "New York City");
+  assert.ok(nyc, "New York City should be in the New York chunk");
+  assert.ok(nyc.story.includes("New York Giants (NFL)"), "Giants missing");
+  assert.ok(nyc.story.includes("New York Yankees (MLB)"), "Yankees missing");
+  assert.ok(nyc.story.includes("New York Knicks (NBA)"), "Knicks missing");
+  assert.ok(nyc.story.includes("New York Rangers (NHL)"), "Rangers missing");
+  // A town with no Big-5 team gets no sports filler.
+  const sd = await generatedStartersFor("state", "south-dakota");
+  const brandon = sd.find((s) => s.name === "Brandon");
+  assert.ok(brandon, "Brandon should be in the South Dakota chunk");
+  assert.ok(!brandon.story.includes("Home of the"), "sports filler on a team-less town");
+});
+
 test("placesFor is curated-first: curated starters, then generated depth", async () => {
   const curatedTexas = STARTERS.filter((s) => s.edition === "state" && s.regionId === "texas");
   const pool = await placesFor("state", "texas");
