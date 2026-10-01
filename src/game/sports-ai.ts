@@ -322,8 +322,15 @@ function prettyRegion(regionId: string): string {
     .join(" ");
 }
 
-export function cityLabelForPlace(place: { name: string; regionId: string }): string {
-  const region = prettyRegion(place.regionId);
+export function cityLabelForPlace(place: {
+  name: string;
+  regionId: string;
+  originRegionId?: string;
+}): string {
+  // Whole-country runs re-tag subdivision places to the country's region;
+  // prefer the display-only origin so the AI query keeps state-level
+  // disambiguation ("Houston, Texas", not "Houston, United States").
+  const region = prettyRegion(place.originRegionId ?? place.regionId);
   return region ? `${place.name}, ${region}` : place.name;
 }
 
@@ -334,7 +341,7 @@ export function cityLabelForPlace(place: { name: string; regionId: string }): st
  * the model had nothing usable to add).
  */
 export function useAiSportsTeams(
-  place: { id: string; name: string; regionId: string } | null,
+  place: { id: string; name: string; regionId: string; originRegionId?: string } | null,
 ): AiSportsTeam[] | null {
   const [override, setOverride] = useState<AiSportsTeam[] | null>(null);
   const placeId = place?.id ?? null;

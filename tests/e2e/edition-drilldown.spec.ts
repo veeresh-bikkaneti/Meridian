@@ -94,6 +94,11 @@ test("Play entire United States starts a country run for the whole USA", async (
     edition: "country",
     regionId: "united-states",
   });
+  // The whole-US run must actually deal questions (regression: the run
+  // loaded but no questions appeared).
+  await expect(page.locator('p.sr-only[aria-live="polite"]')).toContainText(/^Find .+\.$/, {
+    timeout: 15_000,
+  });
 });
 
 test("a state run deals from that state's pool only", async ({ page }) => {
