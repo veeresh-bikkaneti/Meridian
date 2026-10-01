@@ -243,7 +243,12 @@ export function ResultCard({
               <p className="text-sm text-white/70">
                 The line is your pin to the spot. The circle is close enough.
               </p>
-              <div className="max-h-44 overflow-y-auto">
+              <div
+                className="max-h-44 overflow-y-auto"
+                tabIndex={0}
+                role="region"
+                aria-label="Place story"
+              >
                 <p className="text-sm leading-relaxed">{displayStory}</p>
               </div>
               <a
@@ -283,7 +288,12 @@ export function ResultCard({
                 </p>
               ) : null}
               {storyRest ? (
-                <div className="max-h-44 overflow-y-auto">
+                <div
+                  className="max-h-44 overflow-y-auto"
+                  tabIndex={0}
+                  role="region"
+                  aria-label="Place story, continued"
+                >
                   <p className="text-sm leading-relaxed">{storyRest}</p>
                 </div>
               ) : null}
