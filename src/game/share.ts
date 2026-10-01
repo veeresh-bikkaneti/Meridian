@@ -36,8 +36,11 @@ export function shareText(input: {
 }): string {
   const when = shareDateLabel(input.dateKey, input.now ?? new Date());
   const streak = input.bestStreak >= 2 ? ` · 🔥${input.bestStreak} best streak` : "";
+  // The site URL gets its own line: messaging apps auto-linkify bare URLs,
+  // so the shared score carries a tappable link back to the game.
   return (
     `${BRAND.shareHost} ${when}\n` +
+    `${BRAND.siteUrl}\n` +
     `${input.totalScore.toLocaleString("en-US")} over ${input.placesPlayed} places · ` +
     `${input.averagePerPlace} avg/place${streak} · ${input.regionName}`
   );

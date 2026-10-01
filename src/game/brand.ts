@@ -2,6 +2,7 @@
 export const BRAND = {
   name: "Meridian",
   shareHost: "meridian",
+  siteUrl: "https://veeresh-bikkaneti.github.io/Meridian/",
   tagline: "Five places. Once a day. Drop the pin.",
   storageKey: "meridian.session.v1",
   cookie: "meridian_session",
