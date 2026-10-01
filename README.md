@@ -1,8 +1,30 @@
 # Meridian
 
-Pin the place. The run lasts until the pin misses.
+**Explore the world, one pin at a time—where every guess unlocks a new story**
 
 Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.github.io/Meridian/). The capital M is part of the address. The lowercase path is not this site.
+
+## A learning journey, not just a quiz
+
+Meridian is a geography game with a single job: teach kids history, geography, and general knowledge in a way that sticks — because they *played* it, not because they memorized it.
+
+Every round is a small journey:
+
+- **Guess.** A place name appears over unlabeled satellite imagery. No labels, no hints — naming things is the game. You read the land itself: coastlines, rivers, mountains, cities from above.
+- **Learn — right or wrong.** Every answer reveals a story card about the place. Get it right and the card deepens what you knew. Get it wrong and the camera pulls back to frame your pin and the true spot together, with the distance between them — the mistake becomes the lesson.
+- **Go deeper.** Globe → country → state, every level playable. Curiosity decides how far down you go, and endless play means the journey ends when *you* say so.
+- **Keep it.** No accounts, nothing uploaded — your run lives in your browser. Share your trail with the Wordle-style share line and compare with friends.
+
+### The four principles behind every story card
+
+Every card in Meridian is written to the same four rules:
+
+1. **History first, modern identity second.** What happened here outranks what's here now. Kids remember stories, not statistics.
+2. **Geography you can picture.** Plain-spoken descriptions of the land — never coordinates, never elevation filler. If a child can't picture it, the sentence failed.
+3. **One memorable hook.** A person, a quote, an event, a movie, a record. If a child can't retell it, the card failed.
+4. **Short and story-like.** Numbers appear only when they teach — a record, a first, a biggest.
+
+The bar is simple: the best cards read like the opening of an adventure, not an encyclopedia entry. Curated, source-backed history notes are being added place by place, starting with the places kids ask about most — and every card already follows the four rules above.
 
 ## How a round goes
 
