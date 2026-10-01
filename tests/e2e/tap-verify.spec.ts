@@ -152,6 +152,9 @@ test("touch: single tap shows a hollow preview pin and records nothing; double-t
   await startGlobeRun(page);
 
   // 1. Single tap: preview appears, nothing is recorded.
+  // Re-clear the tile overlay immediately before tapping: under this VM's
+  // load it can (re-)appear after startGlobeRun, and its card swallows taps.
+  await clearTileErrorOverlay(page);
   await page.touchscreen.tap(195, 420);
   const preview = page.getByLabel("Preview pin");
   await expect(preview).toBeVisible();
@@ -171,6 +174,7 @@ test("touch: single tap shows a hollow preview pin and records nothing; double-t
   // 2. Tap elsewhere (after the double-tap window): the preview MOVES,
   // still without committing.
   await page.waitForTimeout(700);
+  await clearTileErrorOverlay(page);
   await page.touchscreen.tap(120, 300);
   await expect(preview).toBeVisible();
   expect(await readPhase(page)).toBe("aim");
@@ -178,6 +182,7 @@ test("touch: single tap shows a hollow preview pin and records nothing; double-t
   expect(await page.locator(".maplibregl-marker").count()).toBe(1);
 
   // 3. Double-tap at one point: commits the answer at the tap point.
+  await clearTileErrorOverlay(page);
   await touchDoubleTap(page, 250, 500);
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toMatch(/^(story|done)$/);
 

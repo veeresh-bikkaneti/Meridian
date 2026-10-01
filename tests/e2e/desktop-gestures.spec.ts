@@ -36,6 +36,11 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
+// startGlobeRun alone can take 40-60s on a loaded VM, and each wheel burst
+// plus zoom-settle adds more: the 90s default is too tight here (wheel zoom
+// itself works — verified 2->5 via a diagnostic). Same budget as scoring-v3.
+test.setTimeout(240_000);
+
 const mapEl = (page: Page) => page.locator(".satellite-map");
 const readZoom = async (page: Page): Promise<number> =>
   Number(await mapEl(page).getAttribute("data-zoom"));
