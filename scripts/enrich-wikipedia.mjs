@@ -472,6 +472,23 @@ function loadPlaces() {
   return places;
 }
 
+/**
+ * Fixed-size worker pool: exactly `concurrency` workers pull items from a
+ * shared cursor until exhausted. Exported for unit tests — the crawl's
+ * correctness (never more than `concurrency` in flight) rests on this.
+ */
+export async function runWorkerPool(items, concurrency, fn) {
+  let cursor = 0;
+  async function worker() {
+    for (;;) {
+      const i = cursor++;
+      if (i >= items.length) return;
+      await fn(items[i], i);
+    }
+  }
+  await Promise.all(Array.from({ length: concurrency }, () => worker()));
+}
+
 async function cmdCrawl(limit = Infinity) {
   mkdirSync(CACHE_DIR, { recursive: true });
   const done = readCache();
@@ -482,19 +499,34 @@ async function cmdCrawl(limit = Infinity) {
   let n = 0;
   const t0 = Date.now();
   const queue = places.slice(0, limit);
-  await Promise.all(
-    queue.map(async (place) => {
-      const rec = { id: place.id, ...(await resolvePlace(place)), at: new Date().toISOString() };
-      // Keep the extract for the merge-time no-fabrication gate.
-      out.write(JSON.stringify(rec) + "\n");
-      counts[rec.status] = (counts[rec.status] ?? 0) + 1;
-      n++;
-      if (n % 500 === 0) {
-        const el = ((Date.now() - t0) / 1000).toFixed(0);
-        console.log(`  ${n}/${queue.length} in ${el}s  ${JSON.stringify(counts)}`);
-      }
-    }),
-  );
+  // Fixed-size worker pool: exactly CONCURRENCY workers pull from a shared
+  // cursor. (A Promise.all(queue.map(…)) here would start all ~124k places
+  // at once — the pacedFetch in-flight check is check-then-act racy across
+  // the await points, so it degrades into a request storm.)
+  await runWorkerPool(queue, CONCURRENCY, async (place) => {
+    let rec;
+    try {
+      rec = { id: place.id, ...(await resolvePlace(place)), at: new Date().toISOString() };
+    } catch (err) {
+      // resolvePlace already retries internally; a throw here is
+      // unexpected — record it as a retriable error, never drop the place.
+      rec = {
+        id: place.id,
+        name: place.name,
+        status: "error",
+        error: String(err?.message ?? err),
+        at: new Date().toISOString(),
+      };
+    }
+    // Keep the extract for the merge-time no-fabrication gate.
+    out.write(JSON.stringify(rec) + "\n");
+    counts[rec.status] = (counts[rec.status] ?? 0) + 1;
+    n++;
+    if (n % 500 === 0) {
+      const el = ((Date.now() - t0) / 1000).toFixed(0);
+      console.log(`  ${n}/${queue.length} in ${el}s  ${JSON.stringify(counts)}`);
+    }
+  });
   out.end();
   await new Promise((r) => out.on("finish", r));
   console.log(`crawl done: ${n} places  ${JSON.stringify(counts)}`);

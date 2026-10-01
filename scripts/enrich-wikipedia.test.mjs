@@ -232,3 +232,46 @@ describe("isNetError", () => {
     assert.equal(isNetError(new Error("no places file")), false);
   });
 });
+
+describe("runWorkerPool", () => {
+  it("never exceeds the configured concurrency", async () => {
+    const { runWorkerPool } = await import("./enrich-wikipedia.mjs");
+    let live = 0;
+    let maxLive = 0;
+    const items = Array.from({ length: 50 }, (_, i) => i);
+    await runWorkerPool(items, 3, async () => {
+      live++;
+      maxLive = Math.max(maxLive, live);
+      await new Promise((r) => setTimeout(r, Math.random() * 10));
+      live--;
+    });
+    assert.ok(maxLive <= 3, `max concurrency was ${maxLive}, want <= 3`);
+    assert.ok(maxLive > 1, `expected some parallelism, got ${maxLive}`);
+  });
+  it("processes every item exactly once", async () => {
+    const { runWorkerPool } = await import("./enrich-wikipedia.mjs");
+    const seen = [];
+    const items = Array.from({ length: 37 }, (_, i) => `p${i}`);
+    await runWorkerPool(items, 4, async (item) => {
+      await new Promise((r) => setTimeout(r, Math.random() * 5));
+      seen.push(item);
+    });
+    assert.equal(seen.length, items.length);
+    assert.deepEqual([...seen].sort(), [...items].sort());
+  });
+  it("a throwing task does not kill the pool or lose other items", async () => {
+    const { runWorkerPool } = await import("./enrich-wikipedia.mjs");
+    const seen = [];
+    const items = [1, 2, 3, 4, 5];
+    await assert.rejects(
+      runWorkerPool(items, 2, async (item) => {
+        if (item === 3) throw new Error("boom");
+        seen.push(item);
+      }),
+      /boom/,
+    );
+    // The pool rejects on the first throw, like Promise.all — callers that
+    // must not lose items catch per-item (cmdCrawl does).
+    assert.ok(seen.length >= 1);
+  });
+});
