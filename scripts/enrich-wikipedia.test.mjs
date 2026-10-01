@@ -17,6 +17,7 @@ import {
   haversineKm,
   buildHistoryForCacheRec,
   isNetError,
+  isDoneRecord,
   wikiSlug,
 } from "./enrich-wikipedia.mjs";
 
@@ -309,5 +310,113 @@ describe("wikiSlug", () => {
     // (https://en.wikipedia.org/wiki/Coeur_d'Alene,_Idaho).
     assert.equal(wikiSlug("Coeur d'Alene, Idaho"), "Coeur_d'Alene,_Idaho");
     assert.equal(wikiSlug("Truth or Consequences, New Mexico"), "Truth_or_Consequences,_New_Mexico");
+  });
+});
+
+describe("hook word boundaries (arch-M1)", () => {
+  it("does not match 'named for' inside 'unnamed'", () => {
+    const r = extractHookSentence("Oakdale is a town. The town was unnamed for decades after a dispute.");
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("does not match 'site of' inside 'website'", () => {
+    const r = extractHookSentence("Oakdale is a town. The official website of the town lists annual events.");
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("does not match 'famous for' inside 'infamous'", () => {
+    const r = extractHookSentence("Oakdale is a town. The town is infamous for its traffic jams.");
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("does not match 'settled' inside 'unsettled'", () => {
+    const r = extractHookSentence("Oakdale is a town. The area was unsettled in the 1880s.");
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+});
+
+describe("date-anchor story guard (arch-M4)", () => {
+  it("rejects a bare date plus state name", () => {
+    const r = extractHookSentence(
+      "Springfield is a city in Illinois. It was incorporated in 1914 in Alabama.",
+      "Springfield",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("rejects a date anchored only by the place's own name", () => {
+    const r = extractHookSentence(
+      "Edna is a city in Texas. It was founded in 1882 in Edna.",
+      "Edna",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("accepts a date anchored by a real person", () => {
+    const r = extractHookSentence(
+      "Oakdale is a town. It was founded in 1830 by John Smith.",
+      "Oakdale",
+    );
+    assert.ok(r.sentence.includes("1830"), `picked: ${r.sentence ?? r.rejected}`);
+  });
+});
+
+describe("isDoneRecord (arch-M5: the resume invariant)", () => {
+  it("treats error records as not done", () => {
+    assert.equal(isDoneRecord({ id: "gn-1", status: "error" }), false);
+  });
+  it("treats matched records as done", () => {
+    assert.equal(isDoneRecord({ id: "gn-1", status: "matched" }), true);
+  });
+  it("treats terminal non-error statuses as done", () => {
+    for (const s of ["no-article", "title-mismatch", "no-extract", "too-far"]) {
+      assert.equal(isDoneRecord({ id: "gn-1", status: s }), true, s);
+    }
+  });
+  it("rejects malformed records", () => {
+    assert.equal(isDoneRecord(null), false);
+    assert.equal(isDoneRecord({ status: "matched" }), false);
+    assert.equal(isDoneRecord({ id: "gn-1" }), false);
+  });
+});
+
+describe("stripParens (arch-m11)", () => {
+  it("removes nested parens fully", () => {
+    assert.equal(stripParens("X (a (b) c) grew."), "X grew.");
+  });
+});
+
+describe("pickArticle disambiguation (arch-m13)", () => {
+  it("accepts a geographic parenthetical disambiguation", () => {
+    const pages = [{ title: "Auburn University" }, { title: "Auburn (Nebraska)" }];
+    assert.equal(pickArticle(pages, "Auburn").title, "Auburn (Nebraska)");
+  });
+  it("rejects a non-geographic parenthetical", () => {
+    const pages = [{ title: "Springfield (band)" }, { title: "Springfield (song)" }];
+    assert.equal(pickArticle(pages, "Springfield"), null);
+  });
+  it("prefers the undisambiguated title over a parenthetical one", () => {
+    const pages = [{ title: "Paris (France)" }, { title: "Paris, Texas" }];
+    assert.equal(pickArticle(pages, "Paris").title, "Paris, Texas");
+  });
+  it("accepts a two-letter state code paren", () => {
+    const pages = [{ title: "Jackson (MS)" }];
+    assert.equal(pickArticle(pages, "Jackson").title, "Jackson (MS)");
+  });
+});
+
+describe("validateHistory geography overlap (arch-M2)", () => {
+  it("no longer rejects a founding story that shares the place name and state", () => {
+    const v = validateHistory(
+      "Edna was founded in 1882 in southeastern Texas.",
+      "Edna was founded in 1882 in southeastern Texas. It is a city.",
+      "Edna is a county seat in southeastern Texas, the United States.",
+      "Edna",
+    );
+    assert.deepEqual(v, []);
+  });
+  it("still rejects a sentence that only restates geography", () => {
+    const v = validateHistory(
+      "Edna is in southeastern Texas.",
+      "Edna is in southeastern Texas. It was founded in 1882.",
+      "Edna is a county seat in southeastern Texas, the United States.",
+      "Edna",
+    );
+    assert.ok(v.includes("restates-geography-blurb"), JSON.stringify(v));
   });
 });

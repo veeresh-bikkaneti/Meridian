@@ -56,7 +56,11 @@ const GEO_RADIUS_M = 10_000;
 // out of a small limit. Two-pass title matching (exact base name first)
 // then picks the right one.
 const GEO_LIMIT = 50;
-const EXTRACT_SENTENCES = 3;
+// History often lives in sentence 4+ of an intro; 6 sentences costs the
+// same request count with slightly larger responses. Merge-time extraction
+// means already-crawled 3-sentence extracts keep working — they just see
+// fewer candidates.
+const EXTRACT_SENTENCES = 6;
 // Pacing: at most one request start per TICK_MS; CONCURRENCY in flight.
 const TICK_MS = 350;
 const CONCURRENCY = 3;
@@ -101,12 +105,20 @@ export function splitSentences(text) {
   return out;
 }
 
-/** Remove parenthesized spans: "X (founded 1854) grew" -> "X grew". */
+/**
+ * Remove parenthesized spans: "X (founded 1854) grew" -> "X grew".
+ * Loops to a fixpoint so nested parens ("X (a (b) c) grew") are fully
+ * removed instead of leaving a stray ")".
+ */
 export function stripParens(sentence) {
-  return sentence
-    .replace(/\s*\([^)]*\)/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  let prev = sentence;
+  for (;;) {
+    // [^()]* matches the innermost pair first; looping to a fixpoint
+    // removes nested parens fully instead of leaving a stray ")".
+    const next = prev.replace(/\s*\([^()]*\)/g, "");
+    if (next === prev) return next.replace(/\s+/g, " ").trim();
+    prev = next;
+  }
 }
 
 // Strong hooks: a person, an event, a record, a naming story — the things a
@@ -115,34 +127,33 @@ export function stripParens(sentence) {
 // resort before the definitional fallback, but it must never outrank a
 // founding story (rule 1: history first, modern identity second).
 const HISTORICAL_HOOKS = [
-  /named\s+(?:after|for)\s+[^.]{2,80}/i,
-  /renamed\s+(?:after|for)\s+[^.]{2,80}/i,
-  /birthplace\s+of\s+[^.]{2,80}/i,
-  /site\s+of\s+(?:the\s+)?[^.]{2,80}/i,
-  /battle\s+of\s+[^.]{2,80}/i,
-  /was\s+the\s+first\s+[^.]{2,80}/i,
-  /(?:is|was)\s+the\s+oldest\s+[^.]{2,80}/i,
-  /played\s+(?:a\s+)?(?:key|major|central)\s+role\s+in\s+[^.]{2,80}/i,
+  /\bnamed\s+(?:after|for)\s+[^.]{2,80}/i,
+  /\brenamed\s+(?:after|for)\s+[^.]{2,80}/i,
+  /\bbirthplace\s+of\s+[^.]{2,80}/i,
+  /\bsite\s+of\s+(?:the\s+)?[^.]{2,80}/i,
+  /\bbattle\s+of\s+[^.]{2,80}/i,
+  /\bwas\s+the\s+first\s+[^.]{2,80}/i,
+  /\b(?:is|was)\s+the\s+oldest\s+[^.]{2,80}/i,
+  /\bplayed\s+(?:a\s+)?(?:key|major|central)\s+role\s+in\s+[^.]{2,80}/i,
 ];
 const MODERN_HOOKS = [
-  /known\s+for\s+[^.]{2,80}/i,
-  /famous\s+for\s+[^.]{2,80}/i,
-  /home\s+to\s+[^.]{2,80}/i,
-  /hosted\s+[^.]{2,80}/i,
+  /\bknown\s+for\s+[^.]{2,80}/i,
+  /\bfamous\s+for\s+[^.]{2,80}/i,
+  /\bhome\s+to\s+[^.]{2,80}/i,
+  /\bhosted\s+[^.]{2,80}/i,
 ];
 // Date anchors only count when the sentence tells more than the date: a
 // proper noun (a person, a railroad, a company) or a story keyword must be
 // present, otherwise "It incorporated in 1914." would pass as a "hook" and
 // no child could retell it.
 const DATE_HOOKS = [
-  /(?:was\s+)?founded\s+in\s+\d{4}/i,
-  /(?:was\s+)?established\s+in\s+\d{4}/i,
-  /(?:was\s+)?incorporated\s+in\s+\d{4}/i,
-  /settled\s+in\s+(?:the\s+)?\d{4}s?/i,
+  /\b(?:was\s+)?founded\s+in\s+\d{4}/i,
+  /\b(?:was\s+)?established\s+in\s+\d{4}/i,
+  /\b(?:was\s+)?incorporated\s+in\s+\d{4}/i,
+  /\bsettled\s+in\s+(?:the\s+)?\d{4}s?/i,
 ];
 const STORY_KEYWORDS =
   /\b(railroad|railway|gold|silver|oil|cotton|battle|war|trail|fort|mission|mill|mine|mining|canal|port|depot|expedition|revolution|protest|march|boycott|strike|flood|fire|tornado|space|rocket|music|jazz|blues|baseball|football|settlers?|pioneer|frontier|homestead)\b/i;
-const PROPER_NOUN_MID_SENTENCE = /\s[A-Z][a-z]{2,}/;
 // Generic admin words don't count as the "proper noun" that makes a date
 // anchor a story: "incorporated in 1914 by the County Commission" is
 // paperwork, not a hook any child could retell.
@@ -162,7 +173,28 @@ const UNSAFE_HOOK_PATTERNS = [
   /\btorture\b/i,
 ];
 
-function hookScore(sentence) {
+// US states/territories: a "proper noun" that is just the state name
+// ("incorporated in 1914 in Alabama") is geography, not a story.
+const US_STATE_NAMES = [
+  "alabama", "alaska", "arizona", "arkansas", "california", "colorado",
+  "connecticut", "delaware", "florida", "georgia", "hawaii", "idaho",
+  "illinois", "indiana", "iowa", "kansas", "kentucky", "louisiana", "maine",
+  "maryland", "massachusetts", "michigan", "minnesota", "mississippi",
+  "missouri", "montana", "nebraska", "nevada", "new hampshire", "new jersey",
+  "new mexico", "new york", "north carolina", "north dakota", "ohio",
+  "oklahoma", "oregon", "pennsylvania", "rhode island", "south carolina",
+  "south dakota", "tennessee", "texas", "utah", "vermont", "virginia",
+  "washington", "west virginia", "wisconsin", "wyoming",
+  "district of columbia", "puerto rico", "guam",
+];
+
+/** First capitalized phrase in the sentence names a US state/territory. */
+function startsWithStateName(phrase) {
+  const p = phrase.toLowerCase();
+  return US_STATE_NAMES.some((s) => p === s || p.startsWith(s + " "));
+}
+
+function hookScore(sentence, nameTokens = new Set()) {
   for (const re of UNSAFE_HOOK_PATTERNS) {
     if (re.test(sentence)) return -1; // rejected, not just unscored
   }
@@ -171,7 +203,17 @@ function hookScore(sentence) {
   }
   for (const re of DATE_HOOKS) {
     if (re.test(sentence)) {
-      const properNoun = PROPER_NOUN_MID_SENTENCE.test(sentence) && !ADMIN_WORDS.test(sentence);
+      // The capitalized phrase must be a story carrier (a person, a
+      // railroad, a company) — not admin paperwork, not the state name
+      // every geographic sentence contains, and not the place's own name.
+      const m = sentence.match(/\s([A-Z][a-z]{2,}(?:\s+[A-Z][a-z]+){0,2})/);
+      const phrase = m ? m[1] : "";
+      const word = phrase.split(" ")[0].toLowerCase();
+      const properNoun =
+        phrase.length > 0 &&
+        !ADMIN_WORDS.test(phrase) &&
+        !startsWithStateName(phrase) &&
+        !nameTokens.has(word);
       return STORY_KEYWORDS.test(sentence) || properNoun ? 2 : 0;
     }
   }
@@ -188,27 +230,26 @@ export const HISTORY_MAX_LEN = 240;
  * Pick the hook sentence from a Wikipedia intro extract. Returns
  * `{ sentence }` or `{ rejected }`. The sentence is verbatim from the
  * extract minus parentheticals — never rewritten, never extended.
+ * `placeName` feeds the date-anchor guard: the place's own name is
+ * geography, not a story carrier.
  */
-export function extractHookSentence(extractText) {
+export function extractHookSentence(extractText, placeName = "") {
   if (typeof extractText !== "string" || extractText.trim().length === 0) {
     return { rejected: "empty-extract" };
   }
+  const nameTokens = new Set(
+    String(placeName).toLowerCase().match(/[a-z]+/g) ?? [],
+  );
   const sentences = splitSentences(extractText);
   if (sentences.length === 0) return { rejected: "no-sentences" };
   // Highest hook score wins; unsafe sentences (score -1) can never win, so a
-  // card with only violent hooks keeps its plain blurb. The definitional
-  // first sentence ("X is a city in...") only wins ties when nothing later
-  // carries a hook.
+  // card with only violent hooks keeps its plain blurb. Ties keep the
+  // earlier sentence — a hook-bearing first sentence is never displaced.
   let best = -1;
   for (let i = 0; i < sentences.length; i++) {
-    const score = hookScore(sentences[i]);
+    const score = hookScore(sentences[i], nameTokens);
     if (score <= 0) continue;
-    if (best === -1) {
-      best = i;
-      continue;
-    }
-    const bestScore = hookScore(sentences[best]);
-    if (score > bestScore || (score === bestScore && best === 0 && i > 0)) best = i;
+    if (best === -1 || score > hookScore(sentences[best], nameTokens)) best = i;
   }
   if (best === -1) return { rejected: "no-hook-pattern" };
   const sentence = stripParens(sentences[best]);
@@ -238,7 +279,7 @@ export function contentWords(text) {
  * filler, and not restate the geography blurb. Returns violation strings
  * (empty = valid).
  */
-export function validateHistory(sentence, extractText, blurb) {
+export function validateHistory(sentence, extractText, blurb, placeName = "") {
   const violations = [];
   if (typeof sentence !== "string" || sentence.length < HISTORY_MIN_LEN) {
     violations.push("too-short");
@@ -257,10 +298,18 @@ export function validateHistory(sentence, extractText, blurb) {
     violations.push(`fabricated words: ${missing.slice(0, 6).join(", ")}`);
   }
   if (typeof blurb === "string" && blurb.length > 0) {
-    const blurbWords = new Set(contentWords(blurb));
-    const sentWords = contentWords(sentence);
+    // The place name and its region words appear in every good hook
+    // ("Edna was founded in 1882 in southeastern Texas") — exclude them
+    // before measuring overlap, or the check eats legitimate history.
+    const nameTokens = new Set(
+      String(placeName).toLowerCase().match(/[a-z0-9]+/g) ?? [],
+    );
+    const blurbWords = new Set(
+      contentWords(blurb).filter((w) => !nameTokens.has(w)),
+    );
+    const sentWords = contentWords(sentence).filter((w) => !nameTokens.has(w));
     const overlap = sentWords.filter((w) => blurbWords.has(w)).length;
-    if (sentWords.length > 0 && overlap / sentWords.length >= 0.6) {
+    if (sentWords.length > 0 && overlap / sentWords.length >= 0.75) {
       violations.push("restates-geography-blurb");
     }
   }
@@ -268,10 +317,12 @@ export function validateHistory(sentence, extractText, blurb) {
 }
 
 /**
- * Choose the article for a place from one geosearch response. Two passes:
- *   1. exact base-name match — "Tuscumbia, Alabama" beats
- *      "Tuscumbia Historic District" for the town of Tuscumbia;
- *   2. containment fallback for articles like "Edna, Texas".
+ * Choose the article for a place from one geosearch response. Three passes:
+ *   1. exact base-name match on a non-disambiguated title — "Tuscumbia,
+ *      Alabama" beats "Tuscumbia Historic District" for Tuscumbia;
+ *   2. parenthetical disambiguation with a geographic paren —
+ *      "Auburn (Nebraska)" for Auburn, but never "Springfield (band)";
+ *   3. (none — fail closed: a card never borrows another article's history).
  * Returns the page object or null. Coordinates are already within
  * GEO_RADIUS_M by construction of the query.
  */
@@ -279,20 +330,40 @@ export function pickArticle(pages, placeName) {
   if (!Array.isArray(pages)) return null;
   const want = normalizeTitle(placeName);
   const baseOf = (title) => normalizeTitle(title).split(",")[0].trim();
+  // Pass 1: exact match, undisambiguated title preferred.
   for (const page of pages) {
-    if (page && typeof page.title === "string" && baseOf(page.title) === want) {
+    if (
+      page &&
+      typeof page.title === "string" &&
+      !page.title.includes("(") &&
+      baseOf(page.title) === want
+    ) {
       return page;
     }
   }
-  // Pass 2 is only for parenthetical disambiguation ("Auburn (Nebraska)" for
-  // "Auburn"). Bare containment would borrow a county's or university's
-  // history for a town ("Jackson County, Texas" for "Jackson") — the header
-  // promise is that a card never does that, so the title must equal the
-  // place name once parentheticals are stripped.
-  const debracket = (title) =>
-    normalizeTitle(title).replace(/\s*\([^)]*\)/g, " ").replace(/\s+/g, " ").trim();
+  // Pass 2: the paren must look geographic (state name, 2-letter code, or
+  // comma-separated "City (State, Country)"). Anything else — a band, a
+  // song, a university — fails closed.
+  const parenOf = (title) => {
+    const m = title.match(/\(([^)]*)\)/);
+    return m ? m[1] : "";
+  };
+  const parenIsGeographic = (paren) => {
+    const p = paren.trim().toLowerCase();
+    return (
+      p.includes(",") ||
+      /^[a-z]{2}$/.test(p) ||
+      startsWithStateName(p) ||
+      US_STATE_NAMES.some((s) => p.includes(s))
+    );
+  };
   for (const page of pages) {
-    if (page && typeof page.title === "string" && debracket(page.title) === want) {
+    if (
+      page &&
+      typeof page.title === "string" &&
+      baseOf(page.title) === want &&
+      parenIsGeographic(parenOf(page.title))
+    ) {
       return page;
     }
   }
@@ -361,6 +432,9 @@ export function isNetError(err) {
 }
 
 async function pacedFetch(url) {
+  // Safety net: the worker pool already caps concurrency at CONCURRENCY, so
+  // this gate is normally open. It only engages if pacedFetch is ever called
+  // outside the pool.
   while (inflight.size >= CONCURRENCY) {
     await new Promise((r) => setTimeout(r, 50));
   }
@@ -369,6 +443,7 @@ async function pacedFetch(url) {
   lastStart = Date.now();
   const p = (async () => {
     let attempt = 0;
+    let throttleRetries = 0;
     for (;;) {
       // 30 s cap per attempt: a tar-pitted or dead connection becomes a
       // retriable "error" instead of hanging the crawl forever.
@@ -380,6 +455,13 @@ async function pacedFetch(url) {
           signal: ctl.signal,
         });
         if (res.status === 429 || res.status === 503) {
+          // Throttling is not a network outage: honor Retry-After, but
+          // count it — a persistently throttled IP must become a retriable
+          // "error" record, not an infinite sleep-retry loop wedging the
+          // worker with no progress log.
+          if (++throttleRetries > 10) {
+            throw new Error(`wikipedia throttled ${res.status} x${throttleRetries}`);
+          }
           const retryAfter = Number(res.headers.get("retry-after") ?? "5");
           await new Promise((r) => setTimeout(r, Math.min(60, retryAfter || 5) * 1000));
           continue;
@@ -459,6 +541,16 @@ export async function resolvePlace(place) {
 // Crawl driver (resumable JSONL cache)
 // ---------------------------------------------------------------------------
 
+/**
+ * Resume invariant: "error" records are transient (network blip, throttling)
+ * and must be retried, never treated as done. Exported for unit tests —
+ * this is the single most important correctness property of the crawl.
+ */
+const DONE_STATUSES = new Set(["matched", "no-article", "title-mismatch", "no-extract", "too-far"]);
+export function isDoneRecord(rec) {
+  return !!rec && typeof rec.id === "string" && DONE_STATUSES.has(rec.status);
+}
+
 function readCache() {
   const done = new Map();
   if (!existsSync(CACHE_PATH)) return done;
@@ -467,9 +559,7 @@ function readCache() {
     if (!line.trim()) continue;
     try {
       const rec = JSON.parse(line);
-      // "error" is transient (network blip, throttling) — never treated as
-      // done, so a resume retries those places instead of skipping them.
-      if (rec && rec.id && rec.status !== "error") done.set(rec.id, rec);
+      if (isDoneRecord(rec)) done.set(rec.id, rec);
     } catch {
       // A torn final line from a killed process is skipped; the place is
       // simply re-crawled. Appends are single-line JSON + "\n".
@@ -478,14 +568,18 @@ function readCache() {
   return done;
 }
 
-function loadPlaces() {
-  const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
+function loadNotableIds() {
   const notable = JSON.parse(readFileSync(NOTABLE_PATH, "utf8"));
-  const notableIds = new Set(
+  return new Set(
     Object.keys(notable)
       .filter((k) => !k.startsWith("_"))
       .map((gid) => `gn-${gid}`),
   );
+}
+
+function loadPlaces() {
+  const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
+  const notableIds = loadNotableIds();
   const places = [];
   for (const regionId of Object.keys(manifest.regions).sort()) {
     const chunk = JSON.parse(readFileSync(join(CHUNKS_DIR, `${regionId}.json`), "utf8"));
@@ -601,9 +695,9 @@ export function wikiSlug(title) {
 
 export function buildHistoryForCacheRec(rec, place) {
   if (rec.status !== "matched" || !rec.extract) return { skipped: rec.status };
-  const r = extractHookSentence(rec.extract);
+  const r = extractHookSentence(rec.extract, place.name);
   if (!r.sentence) return { skipped: r.rejected };
-  const violations = validateHistory(r.sentence, rec.extract, place.blurb);
+  const violations = validateHistory(r.sentence, rec.extract, place.blurb, place.name);
   if (violations.length > 0) return { skipped: `invalid: ${violations.join("; ")}` };
   return {
     history: r.sentence,
@@ -618,6 +712,7 @@ async function cmdMerge() {
     process.exit(1);
   }
   const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
+  const notableIds = loadNotableIds();
   const skipped = {};
   let enriched = 0;
   let totalBytes = 0;
@@ -627,6 +722,9 @@ async function cmdMerge() {
     let changed = false;
     for (const p of chunk.places) {
       if (typeof p.history === "string" && p.history.length > 0) continue;
+      // Curated notable notes win — a stale cache entry never merges a
+      // Wikipedia hook onto a curated-notable place (mirrors loadPlaces).
+      if (notableIds.has(p.id)) continue;
       const rec = done.get(p.id);
       if (!rec) continue;
       const built = buildHistoryForCacheRec(rec, p);
@@ -649,9 +747,12 @@ async function cmdMerge() {
     manifest.regions[regionId].bytes = bytes;
   }
   manifest.meta.chunkBytes = totalBytes;
+  // historySentences accumulates across merge runs (crawl → merge → crawl →
+  // merge), so the manifest never undercounts after a resumed crawl.
+  const prevEnriched = manifest.meta.enrichment?.historySentences ?? 0;
   manifest.meta.enrichment = {
     source: "Wikipedia article intros (CC BY-SA) via the MediaWiki API",
-    historySentences: enriched,
+    historySentences: prevEnriched + enriched,
     generated: new Date().toISOString().slice(0, 10),
   };
   writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + "\n");
