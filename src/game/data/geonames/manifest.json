@@ -18,37 +18,42 @@
       "marginDeg": 0.15
     },
     "total": 124690,
-    "chunkBytes": 23539024,
+    "chunkBytes": 23586487,
     "quarantine": {},
     "duplicatesDropped": 0,
     "rawRows": 13472204,
-    "keptRows": 124690
+    "keptRows": 124690,
+    "enrichment": {
+      "source": "Wikipedia article intros (CC BY-SA) via the MediaWiki API",
+      "historySentences": 285,
+      "generated": "2026-10-01"
+    }
   },
   "regions": {
     "alabama": {
       "edition": "state",
       "count": 261,
-      "bytes": 51011
+      "bytes": 53577
     },
     "alaska": {
       "edition": "state",
       "count": 52,
-      "bytes": 10438
+      "bytes": 11042
     },
     "arizona": {
       "edition": "state",
       "count": 181,
-      "bytes": 36007
+      "bytes": 39132
     },
     "arkansas": {
       "edition": "state",
       "count": 177,
-      "bytes": 35176
+      "bytes": 37597
     },
     "australia": {
       "edition": "country",
       "count": 3299,
-      "bytes": 671386
+      "bytes": 708766
     },
     "brazil": {
       "edition": "country",
@@ -68,7 +73,7 @@
     "china": {
       "edition": "country",
       "count": 3274,
-      "bytes": 576517
+      "bytes": 577420
     },
     "colorado": {
       "edition": "state",
@@ -308,7 +313,7 @@
     "united-states": {
       "edition": "country",
       "count": 55,
-      "bytes": 12724
+      "bytes": 13188
     },
     "utah": {
       "edition": "state",

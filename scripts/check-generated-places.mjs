@@ -167,6 +167,22 @@ function main() {
         countryBox: entry.box,
       });
       if (v.length > 0) violations.push(...v.map((m) => `${file}: ${m}`));
+
+      // History hook sentences (scripts/enrich-wikipedia.mjs): shape gate.
+      // The merge-time no-fabrication proof lives in the pipeline; this
+      // keeps hand-edited or corrupted records out of the build.
+      if (place.history !== undefined) {
+        const h = place.history;
+        const badShape =
+          typeof h !== "string" || h.length < 20 || h.length > 240 || !/[.!?]$/.test(h.trim());
+        const hasFiller = typeof h === "string" && (/°/.test(h) || /\belevation\b/i.test(h));
+        if (badShape || hasFiller) {
+          violations.push(`${tag}: invalid history hook sentence`);
+        }
+        if (typeof h === "string" && (typeof place.wiki !== "string" || place.wiki.length === 0)) {
+          violations.push(`${tag}: history present without wiki attribution slug`);
+        }
+      }
       checked++;
     }
   }
