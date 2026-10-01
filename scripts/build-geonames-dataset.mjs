@@ -43,7 +43,7 @@
 import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
 import { createInterface } from "node:readline";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -388,7 +388,7 @@ function assignRegion(cc, admin1, geonameid) {
  * "southeastern", "central", … — the geographic anchoring the old
  * "populated place" blurb never gave.
  */
-function cardinalInBox(lon, lat, box) {
+export function cardinalInBox(lon, lat, box) {
   const lonF = (lon - box.minLon) / Math.max(1e-9, box.maxLon - box.minLon);
   const latF = (lat - box.minLat) / Math.max(1e-9, box.maxLat - box.minLat);
   const ns = latF > 0.67 ? "north" : latF < 0.33 ? "south" : "";
@@ -399,33 +399,65 @@ function cardinalInBox(lon, lat, box) {
   return "central";
 }
 
-/** Civic-status lead from the GeoNames feature code — capital and county
- *  seats are memorable facts the generic "populated place" buried. */
-function leadFor(fcode, pop) {
+/**
+ * Kid-friendly settlement words, keyed by GeoNames feature code. Each entry
+ * is verified two ways: the official GeoNames definition
+ * (geonames.org/export/codes.html) AND consistent usage across this dump at
+ * the shipped population scale. Codes whose dump usage contradicts the
+ * definition are deliberately NOT mapped — e.g. PPLQ ("abandoned populated
+ * place") labels Sant Martí, ES (pop 235,719) and PPLCH ("historical
+ * capital") labels Bollullos de la Mitación, ES — so they fall through to
+ * the population-based city/town wording rather than teach a wrong word.
+ */
+const SETTLEMENT_WORDS = {
+  PPLX: "neighborhood", // "section of populated place"; dump usage: Dubai districts, city boroughs, …
+  STLMT: "settlement", // "Israeli Settlement"; dump usage: 32/32 rows in IL
+};
+
+/**
+ * Civic-status lead from the GeoNames feature code — capital and county
+ * seats are memorable facts the generic "populated place" buried.
+ * Returns { kind, word }: `word` is the article+noun for the plain
+ * "X is a <word> in …" sentence; the civic kinds build their own sentence.
+ */
+export function leadFor(fcode, pop, cc) {
   if (fcode === "PPLC") return { kind: "capital-country" };
   if (fcode === "PPLA") return { kind: "capital-admin1" };
-  if (fcode === "PPLA2") return { kind: "county-seat" };
-  return { kind: pop >= 50000 ? "city" : "town" };
+  // PPLA2 = "seat of a second-order administrative division". Only in the US
+  // is that division a county, so "county seat" is verifiable for US rows
+  // only (2,385 of 16,657 PPLA2 rows at the shipped scale; the rest are
+  // district/province centers, e.g. Afghanistan). Non-US seats fall through
+  // to city/town rather than wear a civic title the country doesn't use.
+  if (fcode === "PPLA2" && cc === "US") return { kind: "county-seat" };
+  const special = SETTLEMENT_WORDS[fcode];
+  if (special) return { kind: "place", word: `a ${special}` };
+  return { kind: "place", word: pop >= 50000 ? "a city" : "a town" };
 }
 
-function blurbFor({ name, admin1Name, countryName, pop, elev, fcode, lon, lat, box, notable, sports }) {
-  const popStr = Number(pop).toLocaleString("en-US");
+/**
+ * Kid-friendly blurb, template edition. Pipeline data only — no history, no
+ * invented facts. One plain-spoken sentence: civic status where the feature
+ * code verifies one (country capital, state capital, US county seat),
+ * otherwise the settlement word or city/town, anchored by the cardinal
+ * position inside the region box ("in northwestern Texas") — words a kid can
+ * picture. Population and elevation are cut: numbers with no story.
+ * (Population returns only as a within-region rank via applyTopRanks, where
+ * the number itself teaches relative scale.) Curated notable notes and the
+ * roster-validated sports line are appended unchanged.
+ */
+export function blurbFor({ name, admin1Name, countryName, pop, fcode, cc, lon, lat, box, notable, sports }) {
   const where = admin1Name ? `${admin1Name}, ${countryName}` : countryName;
-  const lead = leadFor(fcode, pop);
+  const lead = leadFor(fcode, pop, cc);
+  const card = box ? `${cardinalInBox(lon, lat, box)} ` : "";
   let b;
   if (lead.kind === "capital-country") {
-    b = `${name} is the capital of ${countryName} (population ~${popStr}).`;
+    b = `${name} is the capital of ${countryName}.`;
   } else if (lead.kind === "capital-admin1") {
-    b = `${name} is the capital of ${where} (population ~${popStr}).`;
+    b = `${name} is the capital of ${where}.`;
   } else if (lead.kind === "county-seat") {
-    const card = box ? ` in ${cardinalInBox(lon, lat, box)}` : "";
-    b = `${name} is a county seat${card} ${where} (population ~${popStr}).`;
+    b = `${name} is a county seat in ${card}${where}.`;
   } else {
-    const card = box ? `${cardinalInBox(lon, lat, box)} ` : "";
-    b = `${name} is a ${lead.kind} in ${card}${where} (population ~${popStr}).`;
-  }
-  if (elev !== "" && elev !== undefined && Number.isFinite(Number(elev))) {
-    b += ` It sits at ~${Number(elev).toLocaleString("en-US")} m elevation.`;
+    b = `${name} is ${lead.word} in ${card}${where}.`;
   }
   if (notable) b += ` ${notable}`;
   const sportsLine = sportsSentence(sports);
@@ -434,11 +466,43 @@ function blurbFor({ name, admin1Name, countryName, pop, elev, fcode, lon, lat, b
 }
 
 /**
+ * Population rank, the one stat that teaches: "It's one of Texas's biggest
+ * places." Ranks are computed over the FINAL shipped set (post-dedup,
+ * post-gate) so every rank is honest, and deterministically (population
+ * desc, geonameid asc — same inputs, byte-identical outputs). The
+ * comparison set is the place's own region: the state for state-edition
+ * rows, the country for country-edition rows, and the country for
+ * globe-edition rows (keyed per-country, never the mixed globe pool). DC
+ * rows ship in the united-states chunk, so their honest set is the District
+ * itself. Sets with fewer than minRegionPlaces shipped places get no rank
+ * sentence — "one of the biggest" over a tiny set teaches nothing.
+ */
+export const TOP_RANK_N = 5;
+export const TOP_RANK_MIN_REGION_PLACES = 30;
+
+export function applyTopRanks(places, { topN = TOP_RANK_N, minRegionPlaces = TOP_RANK_MIN_REGION_PLACES } = {}) {
+  const byKey = new Map();
+  for (const p of places) {
+    const arr = byKey.get(p._rankKey);
+    if (arr) arr.push(p);
+    else byKey.set(p._rankKey, [p]);
+  }
+  for (const arr of byKey.values()) {
+    if (arr.length < minRegionPlaces) continue;
+    const ranked = [...arr].sort((a, b) => b._pop - a._pop || a._gid - b._gid);
+    for (let i = 0; i < topN && i < ranked.length; i++) {
+      const p = ranked[i];
+      if (p._regionName) p.blurb += ` It's one of ${p._regionName}'s biggest places.`;
+    }
+  }
+}
+
+/**
  * "Home of the ..." line for a city's Big-5 pro sports teams.
  * `teams` is [{team, league}] sorted NFL → MLB → NBA → NHL → MLS.
  * Returns "" when there are no teams (most places) — no filler.
  */
-function sportsSentence(teams) {
+export function sportsSentence(teams) {
   if (!teams || teams.length === 0) return "";
   const parts = teams.map((t) => `${t.team} (${t.league})`);
   if (parts.length === 1) return `Home of the ${parts[0]}.`;
@@ -574,7 +638,7 @@ async function main() {
       id, name, lon, lat,
       blurb: blurbFor({
         name, admin1Name, countryName, pop,
-        elev: c[15], fcode: c[7], lon: cardLon, lat,
+        fcode: c[7], cc, lon: cardLon, lat,
         box: cardBox, notable: notable?.note, sports: sports?.teams,
       }),
       // wiki slug travels so the app can attribute the notable note to
@@ -585,6 +649,16 @@ async function main() {
       // its own country code, so the code must travel with the record.
       iso2: cc,
       edition, regionId, _pop: pop, _gid: Number(geonameid),
+      // Rank key + display name for the top-population sentence (see
+      // applyTopRanks): states rank within the state, DC rows within the
+      // District (they ship in the united-states chunk), globe rows within
+      // their own country — never against a mixed pool. Deleted before
+      // shipping, like _pop/_gid.
+      _rankKey: edition === "globe" ? `globe:${cc}` : regionId,
+      _regionName:
+        edition === "state" ? (admin1Name ?? countryName)
+        : cc === "US" ? "the District of Columbia"
+        : countryName,
     };
 
     // --- dedup: geonameid is unique; also drop exact name+rounded-coord dupes
@@ -602,11 +676,14 @@ async function main() {
   }
 
   const places = [...byDedupKey.values()].sort((x, y) => x._gid - y._gid);
+  // Top-population rank sentences ("one of Texas's biggest places") — over
+  // the final shipped set, so ranks are honest. See applyTopRanks.
+  applyTopRanks(places);
   for (const p of places) {
     let e = perRegion.get(p.regionId);
     if (!e) { e = { edition: p.edition, count: 0 }; perRegion.set(p.regionId, e); }
     e.count++;
-    delete p._pop; delete p._gid;
+    delete p._pop; delete p._gid; delete p._rankKey; delete p._regionName;
   }
 
   if (places.length < MIN_SHIPPED) {
@@ -692,7 +769,12 @@ async function main() {
   console.log(`wrote ${perRegion.size} chunks + manifest.json`);
 }
 
-main().catch((err) => {
-  console.error(`FATAL: ${err.stack ?? err}`);
-  process.exit(1);
-});
+// Importable for unit tests (scripts/build-geonames-blurb.test.mjs):
+// importing this module must not run the build. The build runs only when
+// the file is executed directly.
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
+  main().catch((err) => {
+    console.error(`FATAL: ${err.stack ?? err}`);
+    process.exit(1);
+  });
+}
