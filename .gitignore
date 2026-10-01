@@ -21,6 +21,7 @@ attachments
 *.tmp.mjs
 playwright-report/
 test-results/
+.scratch/
 
 # Generated at build time (prebuild) — never commit
 public/build-meta.json

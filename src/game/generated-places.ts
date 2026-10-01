@@ -64,6 +64,14 @@ interface ChunkPlaceRecord {
   lon: unknown;
   lat: unknown;
   blurb: unknown;
+  /**
+   * Optional history-first hook sentence (Veeresh's card rule 1+3), sourced
+   * from the Wikipedia article intro by scripts/enrich-wikipedia.mjs. It is
+   * a verbatim extract sentence minus parentheticals — never rewritten —
+   * and the merge-time no-fabrication gate proves every content word came
+   * from the source article.
+   */
+  history?: unknown;
   /** Optional en.wikipedia.org article slug when the blurb carries a curated notable note. */
   wiki?: unknown;
   iso2: unknown;
@@ -73,7 +81,7 @@ interface ChunkPlaceRecord {
 
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
 function toStarter(
-  place: { id: string; name: string; lon: number; lat: number; blurb: string; wiki?: string },
+  place: { id: string; name: string; lon: number; lat: number; blurb: string; history?: string; wiki?: string },
   edition: Edition,
   regionId: string,
 ): Starter {
@@ -83,6 +91,9 @@ function toStarter(
   // Notable notes are curated from Wikipedia; the slug travels in the chunk
   // so the card can attribute it (GeoNames stays credited app-wide).
   const hasWiki = typeof place.wiki === "string" && place.wiki.length > 0;
+  // Card rule 1: history first, modern identity second. The hook sentence
+  // leads; the plain-geography blurb anchors it.
+  const hasHistory = typeof place.history === "string" && place.history.length > 0;
   return {
     id: place.id,
     edition,
@@ -90,7 +101,7 @@ function toStarter(
     name: place.name,
     lon: place.lon,
     lat: place.lat,
-    story: place.blurb,
+    story: hasHistory ? `${place.history} ${place.blurb}` : place.blurb,
     sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
     sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
     difficulty,
@@ -114,6 +125,7 @@ function assertValidRecord(
   lon: number;
   lat: number;
   blurb: string;
+  history?: string;
   wiki?: string;
   iso2: string;
   edition: Edition;
@@ -131,6 +143,20 @@ function assertValidRecord(
   }
   if (typeof record.blurb !== "string" || record.blurb.length === 0) {
     throw new Error(`${where}: invalid blurb`);
+  }
+  // History hook sentences are shape-checked here; the merge-time gate
+  // (scripts/enrich-wikipedia.mjs validateHistory) proved each one is a
+  // verbatim Wikipedia extract sentence, so this only guards against
+  // hand-edited corruption: length bounds, terminal punctuation, and no
+  // coordinate/elevation filler (card rules 2+4).
+  if (record.history !== undefined) {
+    const h = record.history;
+    const okShape =
+      typeof h === "string" && h.length >= 20 && h.length <= 240 && /[.!?]$/.test(h.trim());
+    const hasFiller = typeof h === "string" && (/°/.test(h) || /\belevation\b/i.test(h));
+    if (!okShape || hasFiller) {
+      throw new Error(`${where}: invalid history hook sentence`);
+    }
   }
   if (record.wiki !== undefined && (typeof record.wiki !== "string" || record.wiki.length === 0)) {
     throw new Error(`${where}: invalid wiki slug`);

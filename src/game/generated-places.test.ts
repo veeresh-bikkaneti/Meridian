@@ -443,3 +443,78 @@ test("poolSizeFor counts the aggregated whole-US pool (picker gate stays honest)
   assert.equal(poolSizeFor("state", "texas"), (await placesFor("state", "texas")).length);
   assert.equal(poolSizeFor("country", "canada"), (await placesFor("country", "canada")).length);
 });
+
+test("history hook sentence leads the card (rule 1: history first)", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-1",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        history: "The town is named after a railroad official's daughter.",
+        wiki: "Edna,_Texas",
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  const [s] = startersFromChunk("texas", chunk);
+  assert.equal(
+    s.story,
+    "The town is named after a railroad official's daughter. Edna is a county seat in southeastern Texas, the United States.",
+  );
+  assert.equal(s.sourceLabel, "GeoNames · Wikipedia");
+  assert.equal(s.sourceHref, "https://en.wikipedia.org/wiki/Edna,_Texas");
+});
+
+test("places without history keep the plain blurb card", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-2",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  const [s] = startersFromChunk("texas", chunk);
+  assert.equal(s.story, "Edna is a county seat in southeastern Texas, the United States.");
+  assert.equal(s.sourceLabel, "GeoNames");
+});
+
+test("assertValidRecord rejects corrupt history sentences fail-closed", () => {
+  const base = {
+    id: "gn-3",
+    name: "Edna",
+    lon: -96.6,
+    lat: 28.9,
+    blurb: "Edna is a county seat in southeastern Texas, the United States.",
+    wiki: "Edna,_Texas",
+    iso2: "US",
+    edition: "state",
+    regionId: "texas",
+  };
+  const bad = [
+    { ...base, history: "too short." },
+    { ...base, history: "x".repeat(241) },
+    { ...base, history: "No terminal punctuation here and it is long enough to pass length" },
+    { ...base, history: "It sits at 35° north and has a long enough sentence here." },
+    { ...base, history: "Its elevation is 500 meters and this sentence is long enough." },
+  ];
+  for (const place of bad) {
+    assert.throws(
+      () => startersFromChunk("texas", { meta: { regionId: "texas", edition: "state", count: 1 }, places: [place] }),
+      /invalid history/,
+    );
+  }
+});
