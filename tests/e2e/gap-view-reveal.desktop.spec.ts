@@ -10,6 +10,8 @@ import {
   commitPin,
   commitMiss,
   commitHit,
+  spotViewportPoint,
+  tapHitsMap,
   nextPlaceButton,
   clickNextPlace,
   resultCard,
