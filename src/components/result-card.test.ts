@@ -54,4 +54,22 @@ describe("splitLede — miss-card subscript contract", () => {
     assert.equal(lede, "");
     assert.equal(rest, "");
   });
+
+  it("does not split on abbreviations like St.", () => {
+    const [lede, rest] = splitLede("St. Petersburg was founded in 1703. It is beautiful.");
+    assert.equal(lede, "St. Petersburg was founded in 1703.");
+    assert.equal(rest, "It is beautiful.");
+  });
+
+  it("does not split on decimals like 3.5", () => {
+    const [lede, rest] = splitLede("It is 3.5 km away. Nice view.");
+    assert.equal(lede, "It is 3.5 km away.");
+    assert.equal(rest, "Nice view.");
+  });
+
+  it("does not split on single-capital initials", () => {
+    const [lede, rest] = splitLede("Founded by J. Smith in 1900. It grew fast.");
+    assert.equal(lede, "Founded by J. Smith in 1900.");
+    assert.equal(rest, "It grew fast.");
+  });
 });

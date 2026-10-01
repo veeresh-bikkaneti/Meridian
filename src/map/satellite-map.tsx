@@ -189,9 +189,16 @@ function buildRevealRequest(
   tileStatus: TileStatus,
   projection: "globe" | "mercator",
 ): RevealRequest {
-  const westEdge = Math.min(variation.pin.lon, variation.spot.lon);
+  // Antimeridian-aware longitude span: a pin/spot pair straddling ±180°
+  // (Fiji, Tonga, the Aleutians) must frame the short way around, not the
+  // ~358° the naive min/max would produce.
+  let westEdge = Math.min(variation.pin.lon, variation.spot.lon);
+  let eastEdge = Math.max(variation.pin.lon, variation.spot.lon);
+  if (eastEdge - westEdge > 180) {
+    westEdge = Math.max(variation.pin.lon, variation.spot.lon);
+    eastEdge = Math.min(variation.pin.lon, variation.spot.lon) + 360;
+  }
   const southEdge = Math.min(variation.pin.lat, variation.spot.lat);
-  const eastEdge = Math.max(variation.pin.lon, variation.spot.lon);
   const northEdge = Math.max(variation.pin.lat, variation.spot.lat);
   const camera = map.cameraForBounds(
     [
@@ -798,6 +805,11 @@ export function SatelliteMap(props: {
               bearing: intent.bearing,
               duration: intent.durationMs,
               easing: easeInOutCubic,
+              // The controller owns the reduced-motion policy (it emits jump-to
+              // when the OS prefers reduced motion). MapLibre would otherwise
+              // zero the duration behind the controller's back if the setting
+              // changes mid-run, desyncing the beat lifecycle.
+              essential: true,
             });
             break;
           }
@@ -812,6 +824,11 @@ export function SatelliteMap(props: {
               ...(intent.bearing !== undefined ? { bearing: intent.bearing } : {}),
               duration: intent.durationMs,
               easing: easeInOutCubic,
+              // The controller owns the reduced-motion policy (it emits jump-to
+              // when the OS prefers reduced motion). MapLibre would otherwise
+              // zero the duration behind the controller's back if the setting
+              // changes mid-run, desyncing the beat lifecycle.
+              essential: true,
             });
             break;
           }
@@ -1410,9 +1427,11 @@ export function SatelliteMap(props: {
       // A reveal beat is running (animated miss): arm tap-to-skip. The hit
       // and reduced-motion paths complete synchronously — reveal-done already
       // fired in the same batch, so there is no beat left to skip and the
-      // skip listener must not stay armed into the next aim phase. A near
-      // miss whose ease-to is a no-op also completes synchronously via an
-      // immediate moveend — beatKind is already clear, so no arming.
+      // skip listener must not stay armed into the next aim phase. Note:
+      // synchronous moveends fired during intent execution are swallowed by
+      // the controller's event guard, so beatKind cannot clear before this
+      // check — the hit/reduced-motion paths are the only ones that complete
+      // synchronously, and they do so by emitting reveal-done directly.
       skipControlRef.current.arm();
     }
   }, [variationKey, props.mode, props.bounds]);
