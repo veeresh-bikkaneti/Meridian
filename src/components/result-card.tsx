@@ -86,6 +86,7 @@ function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?:
     placesPlayed: summary.placesPlayed,
     averagePerPlace: summary.averagePerPlace,
     bestStreak: run.bestStreak,
+    scores: run.results.map((r) => r.score),
   });
   return (
     <div className="flex flex-col gap-3">

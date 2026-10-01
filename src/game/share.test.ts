@@ -23,7 +23,7 @@ test("share text is the v3 endless summary line", () => {
       averagePerPlace: 208,
       bestStreak: 14,
     }),
-    "meridian September 28\n12,480 over 60 places · 208 avg/place · 🔥14 best streak · Nebraska",
+    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
   );
   assert.equal(
     endless({
@@ -33,7 +33,7 @@ test("share text is the v3 endless summary line", () => {
       averagePerPlace: 158,
       bestStreak: 5,
     }),
-    "meridian September 28\n3,150 over 20 places · 158 avg/place · 🔥5 best streak · Globe",
+    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n3,150 over 20 places · 158 avg/place · 🔥 5 best streak · Globe",
   );
 });
 
@@ -46,7 +46,7 @@ test("a short streak is not worth bragging about", () => {
       averagePerPlace: 95,
       bestStreak: 1,
     }),
-    "meridian September 28\n190 over 2 places · 95 avg/place · Nebraska",
+    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n190 over 2 places · 95 avg/place · Nebraska",
   );
 });
 
@@ -61,4 +61,32 @@ test("share text never spoils place names", () => {
     }).includes("Capitol"),
     false,
   );
+});
+
+test("per-place scores render a Wordle-style emoji strip", () => {
+  const text = shareText({
+    regionName: "Nebraska",
+    dateKey: "2026-09-28",
+    totalScore: 940,
+    placesPlayed: 6,
+    averagePerPlace: 157,
+    bestStreak: 2,
+    scores: [350, 250, 150, 80, 30, 0],
+    now,
+  });
+  assert.equal(
+    text,
+    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🎯🏆🌟👏🙂💨\n940 over 6 places · 157 avg/place · 🔥 2 best streak · Nebraska",
+  );
+});
+
+test("no strip without per-place scores", () => {
+  const text = endless({
+    regionName: "Nebraska",
+    totalScore: 190,
+    placesPlayed: 2,
+    averagePerPlace: 95,
+    bestStreak: 1,
+  });
+  assert.equal(text.includes("🎯"), false);
 });
