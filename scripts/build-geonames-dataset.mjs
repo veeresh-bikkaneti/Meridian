@@ -429,7 +429,10 @@ export function countryDisplayName(countryName) {
  */
 export function rankRegionName({ edition, admin1Name, countryName, cc }) {
   if (edition === "state") return admin1Name ?? countryName;
-  if (cc === "US") return "the District of Columbia";
+  // DC rows ship in the united-states country chunk; require both the country
+  // code and the District so a future US row elsewhere still ranks against
+  // its own country instead of the District.
+  if (cc === "US" && admin1Name === "District of Columbia") return "the District of Columbia";
   return countryDisplayName(countryName);
 }
 
@@ -480,10 +483,10 @@ export function leadFor(fcode, pop, cc) {
  * roster-validated sports line are appended unchanged.
  */
 export function blurbFor({ name, admin1Name, countryName, pop, fcode, cc, lon, lat, box, notable, sports }) {
-  // Country name stands alone only when there is no admin1 (city-states) and
-  // in the capital sentence — both need the article ("the United States");
-  // after a comma ("Texas, United States") it correctly takes none.
-  const where = admin1Name ? `${admin1Name}, ${countryName}` : countryDisplayName(countryName);
+  // The country name keeps its article ("the") in every position: standalone
+  // ("the United States"), in the capital sentence, and after a comma
+  // ("Texas, the United States"; "Eastern Visayas, the Philippines").
+  const where = admin1Name ? `${admin1Name}, ${countryDisplayName(countryName)}` : countryDisplayName(countryName);
   const lead = leadFor(fcode, pop, cc);
   const card = box ? `${cardinalInBox(lon, lat, box)} ` : "";
   let b;

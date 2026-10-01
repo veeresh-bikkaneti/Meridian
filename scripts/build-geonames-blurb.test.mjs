@@ -43,7 +43,7 @@ describe("blurbFor — kid-friendly template", () => {
     // Columbia, United States (population ~4,129). It sits at ~50 m elevation."
     assert.equal(
       blurbFor(barryFarms),
-      "Barry Farms is a town in southeastern District of Columbia, United States.",
+      "Barry Farms is a town in southeastern District of Columbia, the United States.",
     );
   });
 
@@ -72,13 +72,35 @@ describe("blurbFor — kid-friendly template", () => {
     );
   });
 
-  it("state-capital list form keeps no article after the comma: Austin", () => {
+  it("state-capital list form keeps the article after the comma: Austin", () => {
     assert.equal(
       blurbFor({
         name: "Austin", admin1Name: "Texas", countryName: "United States",
         pop: 974447, fcode: "PPLA", cc: "US", lon: -97.74, lat: 30.27, box: null,
       }),
-      "Austin is the capital of Texas, United States.",
+      "Austin is the capital of Texas, the United States.",
+    );
+  });
+
+  it("article countries keep 'the' after a comma: the Philippines, the United Kingdom", () => {
+    // ~8k shipped rows sit in article-countries (the Philippines 4,243;
+    // the United Kingdom 3,392; the Maldives, the Gambia, ...). The comma
+    // form must not drop the article.
+    const PH_BOX = box(117.0, 126.5, 5.0, 18.5);
+    assert.equal(
+      blurbFor({
+        name: "Zumarraga", admin1Name: "Eastern Visayas", countryName: "Philippines",
+        pop: 16000, fcode: "PPL", cc: "PH", lon: 124.5, lat: 11.6, box: PH_BOX,
+      }),
+      "Zumarraga is a town in eastern Eastern Visayas, the Philippines.",
+    );
+    const WALES_BOX = box(-5.5, -2.5, 51.3, 53.5);
+    assert.equal(
+      blurbFor({
+        name: "Ystalyfera", admin1Name: "Wales", countryName: "United Kingdom",
+        pop: 9000, fcode: "PPL", cc: "GB", lon: -3.78, lat: 51.76, box: WALES_BOX,
+      }),
+      "Ystalyfera is a town in southern Wales, the United Kingdom.",
     );
   });
 
@@ -88,7 +110,7 @@ describe("blurbFor — kid-friendly template", () => {
         name: "Bay Minette", admin1Name: "Alabama", countryName: "United States",
         pop: 9118, fcode: "PPLA2", cc: "US", lon: -87.78, lat: 30.88, box: ALABAMA_BOX,
       }),
-      "Bay Minette is a county seat in southwestern Alabama, United States.",
+      "Bay Minette is a county seat in southwestern Alabama, the United States.",
     );
   });
 
@@ -98,7 +120,7 @@ describe("blurbFor — kid-friendly template", () => {
         name: "Edna", admin1Name: "Texas", countryName: "United States",
         pop: 5792, fcode: "PPLA2", cc: "US", lon: -96.65, lat: 28.98, box: null,
       }),
-      "Edna is a county seat in Texas, United States.",
+      "Edna is a county seat in Texas, the United States.",
     );
   });
 
@@ -108,7 +130,7 @@ describe("blurbFor — kid-friendly template", () => {
         name: "Lubbock", admin1Name: "Texas", countryName: "United States",
         pop: 263930, fcode: "PPL", cc: "US", lon: -101.88, lat: 33.58, box: TEXAS_BOX,
       }),
-      "Lubbock is a city in northern Texas, United States.",
+      "Lubbock is a city in northern Texas, the United States.",
     );
   });
 
@@ -118,7 +140,7 @@ describe("blurbFor — kid-friendly template", () => {
         name: "Edna", admin1Name: "Texas", countryName: "United States",
         pop: 5792, fcode: "PPL", cc: "US", lon: -96.65, lat: 28.98, box: null,
       }),
-      "Edna is a town in Texas, United States.",
+      "Edna is a town in Texas, the United States.",
     );
   });
 
@@ -128,7 +150,7 @@ describe("blurbFor — kid-friendly template", () => {
         name: "Dayrah", admin1Name: "Dubai", countryName: "United Arab Emirates",
         pop: 400000, fcode: "PPLX", cc: "AE", lon: 55.32, lat: 25.27, box: null,
       }),
-      "Dayrah is a neighborhood in Dubai, United Arab Emirates.",
+      "Dayrah is a neighborhood in Dubai, the United Arab Emirates.",
     );
   });
 
@@ -187,7 +209,7 @@ describe("blurbFor — kid-friendly template", () => {
         pop: 974447, fcode: "PPLA", cc: "US", lon: -97.74, lat: 30.27, box: null,
         notable: "Founded in 1839 and named for Stephen F. Austin.",
       }),
-      "Austin is the capital of Texas, United States. Founded in 1839 and named for Stephen F. Austin.",
+      "Austin is the capital of Texas, the United States. Founded in 1839 and named for Stephen F. Austin.",
     );
   });
 
@@ -198,7 +220,7 @@ describe("blurbFor — kid-friendly template", () => {
         pop: 263930, fcode: "PPL", cc: "US", lon: -101.88, lat: 33.58, box: TEXAS_BOX,
         sports: [{ team: "Dallas Cowboys", league: "NFL" }],
       }),
-      "Lubbock is a city in northern Texas, United States. Home of the Dallas Cowboys (NFL).",
+      "Lubbock is a city in northern Texas, the United States. Home of the Dallas Cowboys (NFL).",
     );
   });
 });
