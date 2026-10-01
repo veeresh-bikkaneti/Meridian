@@ -4,7 +4,9 @@ import {
   applyTopRanks,
   blurbFor,
   cardinalInBox,
+  countryDisplayName,
   leadFor,
+  rankRegionName,
   sportsSentence,
 } from "./build-geonames-dataset.mjs";
 
@@ -60,7 +62,17 @@ describe("blurbFor — kid-friendly template", () => {
     );
   });
 
-  it("state capital: Austin", () => {
+  it("country capital takes the article where English needs it: London", () => {
+    assert.equal(
+      blurbFor({
+        name: "London", admin1Name: "England", countryName: "United Kingdom",
+        pop: 8961989, fcode: "PPLC", cc: "GB", lon: -0.13, lat: 51.5, box: null,
+      }),
+      "London is the capital of the United Kingdom.",
+    );
+  });
+
+  it("state-capital list form keeps no article after the comma: Austin", () => {
     assert.equal(
       blurbFor({
         name: "Austin", admin1Name: "Texas", countryName: "United States",
@@ -187,6 +199,43 @@ describe("blurbFor — kid-friendly template", () => {
         sports: [{ team: "Dallas Cowboys", league: "NFL" }],
       }),
       "Lubbock is a city in northern Texas, United States. Home of the Dallas Cowboys (NFL).",
+    );
+  });
+});
+
+describe("countryDisplayName — the definite article", () => {
+  it("adds 'the' where English needs it, leaves the rest alone", () => {
+    assert.equal(countryDisplayName("United States"), "the United States");
+    assert.equal(countryDisplayName("United Kingdom"), "the United Kingdom");
+    assert.equal(countryDisplayName("Gambia"), "the Gambia");
+    assert.equal(countryDisplayName("Maldives"), "the Maldives");
+    assert.equal(countryDisplayName("The Netherlands"), "the Netherlands");
+    assert.equal(countryDisplayName("France"), "France");
+    assert.equal(countryDisplayName("Texas"), "Texas");
+    assert.equal(
+      countryDisplayName("Democratic Republic of the Congo"),
+      "Democratic Republic of the Congo",
+    );
+  });
+});
+
+describe("rankRegionName — the comparison set reads correctly", () => {
+  it("states rank within the state; DC within the District; countries take the article", () => {
+    assert.equal(
+      rankRegionName({ edition: "state", admin1Name: "Texas", countryName: "United States", cc: "US" }),
+      "Texas",
+    );
+    assert.equal(
+      rankRegionName({ edition: "country", admin1Name: "District of Columbia", countryName: "United States", cc: "US" }),
+      "the District of Columbia",
+    );
+    assert.equal(
+      rankRegionName({ edition: "country", admin1Name: null, countryName: "United Kingdom", cc: "GB" }),
+      "the United Kingdom",
+    );
+    assert.equal(
+      rankRegionName({ edition: "globe", admin1Name: null, countryName: "Nigeria", cc: "NG" }),
+      "Nigeria",
     );
   });
 });

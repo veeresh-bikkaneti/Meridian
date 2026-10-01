@@ -400,6 +400,40 @@ export function cardinalInBox(lon, lat, box) {
 }
 
 /**
+ * Country names that take the definite article in standard English
+ * ("the United States", "the Gambia"). Matched against the GeoNames
+ * countryInfo.txt names the pipeline uses for `countryName`. Names not
+ * listed — including ones that already contain "the", like "Democratic
+ * Republic of the Congo" — render as-is.
+ */
+const COUNTRIES_NEEDING_THE = new Set([
+  "United Arab Emirates", "Bahamas", "Central African Republic",
+  "Dominican Republic", "United Kingdom", "Gambia", "Comoros",
+  "Marshall Islands", "Philippines", "Solomon Islands", "United States",
+  "Czech Republic", "Cook Islands", "Falkland Islands", "Faroe Islands",
+  "Cayman Islands", "British Virgin Islands", "U.S. Virgin Islands",
+  "Northern Mariana Islands", "Turks and Caicos Islands", "Maldives",
+  "Seychelles", "Aland Islands", "Netherlands",
+]);
+
+/** "United States" → "the United States"; "France" → "France". */
+export function countryDisplayName(countryName) {
+  const base = countryName.replace(/^The /, ""); // "The Netherlands" → "the Netherlands"
+  return COUNTRIES_NEEDING_THE.has(base) ? `the ${base}` : countryName;
+}
+
+/**
+ * Display name of the comparison set for the top-rank sentence ("one of
+ * the United Kingdom's biggest places"). DC rows ship in the
+ * united-states chunk, so their honest set is the District itself.
+ */
+export function rankRegionName({ edition, admin1Name, countryName, cc }) {
+  if (edition === "state") return admin1Name ?? countryName;
+  if (cc === "US") return "the District of Columbia";
+  return countryDisplayName(countryName);
+}
+
+/**
  * Kid-friendly settlement words, keyed by GeoNames feature code. Each entry
  * is verified two ways: the official GeoNames definition
  * (geonames.org/export/codes.html) AND consistent usage across this dump at
@@ -446,12 +480,15 @@ export function leadFor(fcode, pop, cc) {
  * roster-validated sports line are appended unchanged.
  */
 export function blurbFor({ name, admin1Name, countryName, pop, fcode, cc, lon, lat, box, notable, sports }) {
-  const where = admin1Name ? `${admin1Name}, ${countryName}` : countryName;
+  // Country name stands alone only when there is no admin1 (city-states) and
+  // in the capital sentence — both need the article ("the United States");
+  // after a comma ("Texas, United States") it correctly takes none.
+  const where = admin1Name ? `${admin1Name}, ${countryName}` : countryDisplayName(countryName);
   const lead = leadFor(fcode, pop, cc);
   const card = box ? `${cardinalInBox(lon, lat, box)} ` : "";
   let b;
   if (lead.kind === "capital-country") {
-    b = `${name} is the capital of ${countryName}.`;
+    b = `${name} is the capital of ${countryDisplayName(countryName)}.`;
   } else if (lead.kind === "capital-admin1") {
     b = `${name} is the capital of ${where}.`;
   } else if (lead.kind === "county-seat") {
@@ -655,10 +692,7 @@ async function main() {
       // their own country — never against a mixed pool. Deleted before
       // shipping, like _pop/_gid.
       _rankKey: edition === "globe" ? `globe:${cc}` : regionId,
-      _regionName:
-        edition === "state" ? (admin1Name ?? countryName)
-        : cc === "US" ? "the District of Columbia"
-        : countryName,
+      _regionName: rankRegionName({ edition, admin1Name, countryName, cc }),
     };
 
     // --- dedup: geonameid is unique; also drop exact name+rounded-coord dupes

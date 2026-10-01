@@ -18,7 +18,7 @@
       "marginDeg": 0.15
     },
     "total": 124690,
-    "chunkBytes": 23448500,
+    "chunkBytes": 23449004,
     "quarantine": {},
     "duplicatesDropped": 0,
     "rawRows": 13472204,
@@ -113,7 +113,7 @@
     "globe": {
       "edition": "globe",
       "count": 59423,
-      "bytes": 10976279
+      "bytes": 10976751
     },
     "hawaii": {
       "edition": "state",
@@ -303,12 +303,12 @@
     "united-kingdom": {
       "edition": "country",
       "count": 3394,
-      "bytes": 674457
+      "bytes": 674485
     },
     "united-states": {
       "edition": "country",
       "count": 55,
-      "bytes": 12504
+      "bytes": 12508
     },
     "utah": {
       "edition": "state",
