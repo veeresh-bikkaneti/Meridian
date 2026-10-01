@@ -282,3 +282,16 @@ test("cityLabelForPlace prettifies the region", () => {
   );
   assert.equal(cityLabelForPlace({ name: "Paris", regionId: "globe" }), "Paris");
 });
+
+test("cityLabelForPlace prefers the whole-country origin over the re-tagged region", () => {
+  // A Texas place folded into a whole-US run is dealt as united-states but
+  // the AI query should still disambiguate at the state level.
+  assert.equal(
+    cityLabelForPlace({ name: "Houston", regionId: "united-states", originRegionId: "texas" }),
+    "Houston, Texas",
+  );
+  assert.equal(
+    cityLabelForPlace({ name: "Springfield", regionId: "united-states", originRegionId: "illinois" }),
+    "Springfield, Illinois",
+  );
+});

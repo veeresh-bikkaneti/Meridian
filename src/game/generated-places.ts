@@ -13,7 +13,9 @@
  * Loading design: chunks are NEVER imported statically. The chunk for the
  * player's chosen region is fetched with a dynamic `import()` the first
  * time it is needed (region selection), then cached in memory for the
- * session. The bundler emits one lazy asset per chunk; nothing is fetched
+ * session. Whole-country runs ("Play the whole United States") additionally
+ * fetch every subdivision chunk in parallel — see aggregateChunkIds. The
+ * bundler emits one lazy asset per chunk; nothing is fetched
  * before region selection. Picker counts come from the small
  * statically-imported manifest — chunks are never loaded just to count.
  *
@@ -34,6 +36,7 @@
 import type { Edition } from "./run.ts";
 import { STARTERS, type Starter } from "./starters.ts";
 import { buildRegionPool } from "./pool.ts";
+import { ADMIN1_BY_COUNTRY } from "./regions.ts";
 import type { Difficulty } from "./scoring.ts";
 // Import attribute: required by Node's module loader (unit tests run under
 // node --experimental-strip-types); bundlers accept it as well. The manifest
@@ -191,6 +194,30 @@ export function startersFromChunk(regionId: string, chunk: unknown): Starter[] {
 }
 
 /**
+ * Whole-country aggregation: which chunk files make up one edition+region's
+ * generated pool.
+ *
+ * "Play the whole <country>" deals from the country's own chunk PLUS every
+ * subdivision dataset — never the country chunk alone. The united-states
+ * country chunk holds 55 generated places, 54 of them District of Columbia
+ * neighborhoods; a whole-US run drawn from it alone is overwhelmingly
+ * DC-centric. Folding in the 50 state chunks (14,201 places) makes the
+ * national run actually national. The subdivision list is the picker's own
+ * drill-down source of truth (ADMIN1_BY_COUNTRY), so the pool and the menu
+ * can never disagree about what "the whole country" contains.
+ *
+ * Fail-closed: every listed chunk id must exist in the manifest — a missing
+ * subdivision chunk rejects the whole pool (via loadRegionChunk) instead of
+ * dealing a silently partial country. A unit test locks this wiring.
+ */
+export function aggregateChunkIds(edition: Edition, regionId: string): string[] {
+  if (edition !== "country") return [regionId];
+  const subdivisions = ADMIN1_BY_COUNTRY[regionId] ?? [];
+  if (subdivisions.length === 0) return [regionId];
+  return [regionId, ...subdivisions.map((s) => s.id)];
+}
+
+/**
  * Per-region chunk cache: regionId → in-flight or resolved load.
  * A failed load is evicted so a later retry re-attempts the fetch instead
  * of serving a cached rejection.
@@ -229,6 +256,10 @@ export function clearChunkCacheForTests(): void {
  * Generated starters for one edition+region, in chunk order.
  * The chunk is homogeneous by construction; the filter is defense in depth
  * (a record that survived validation but mismatches is dropped, never dealt).
+ *
+ * Note: this is the single-chunk accessor (used by tests and tooling).
+ * Whole-country runs must go through `placesFor`, which aggregates
+ * subdivision chunks — this function knows nothing about aggregation.
  */
 export async function generatedStartersFor(edition: Edition, regionId: string): Promise<Starter[]> {
   const starters = await loadRegionChunk(regionId);
@@ -241,15 +272,42 @@ export async function generatedStartersFor(edition: Edition, regionId: string): 
  * and a mis-assigned place throws instead of dealing out-of-region
  * questions. This is what `createDealer` draws from — unchanged F4
  * shuffle/history semantics over a deeper pool.
+ *
+ * Whole-country runs aggregate subdivision chunks (see aggregateChunkIds):
+ * subdivision places are re-tagged to the country's edition/regionId so the
+ * fail-closed pool build accepts them. Identity (id, coordinates, blurb,
+ * source) is untouched; chunk ids are globally unique (build-time gate +
+ * unit tests), so re-tagging cannot collide, duplicate, or misplace a
+ * question. The Hyderabad rule holds: coordinates still match the claimed
+ * location because re-tagging only widens the region to the true parent.
  */
 export async function placesFor(edition: Edition, regionId: string): Promise<Starter[]> {
-  const generated = await generatedStartersFor(edition, regionId);
+  const chunkIds = aggregateChunkIds(edition, regionId);
+  // All chunks load in parallel; one missing/malformed chunk rejects the
+  // whole pool — never a partial country.
+  const chunks = await Promise.all(chunkIds.map((id) => loadRegionChunk(id)));
+  const generated: Starter[] = [];
+  for (let i = 0; i < chunkIds.length; i++) {
+    const chunkId = chunkIds[i];
+    for (const starter of chunks[i]) {
+      if (chunkId === regionId) {
+        // The country's own chunk: keep the defense-in-depth filter.
+        if (starter.edition === edition && starter.regionId === regionId) generated.push(starter);
+      } else {
+        // Folded-in subdivision place: keep the native region as a
+        // display-only origin so UI labels (sports-AI city query) retain
+        // state-level disambiguation after the dealing re-tag.
+        generated.push({ ...starter, edition, regionId, originRegionId: starter.regionId });
+      }
+    }
+  }
   return buildRegionPool([...STARTERS, ...generated], edition, regionId);
 }
 
 /**
  * Lenient picker count for one edition+region: curated starters plus the
- * manifest's generated count. The manifest is the static index — this never
+ * manifest's generated count — summed over every aggregated chunk for
+ * whole-country runs. The manifest is the static index — this never
  * loads a chunk. The build-time gate + unit tests lock manifest counts to
  * real chunk contents, so this equals the true pool size.
  */
@@ -258,8 +316,18 @@ export function poolSizeFor(edition: Edition, regionId: string): number {
   for (const s of STARTERS) {
     if (s.edition === edition && s.regionId === regionId) count++;
   }
-  const region = Object.hasOwn(manifest.regions, regionId) ? manifest.regions[regionId] : undefined;
-  if (region && region.edition === edition) count += region.count;
+  const regions = manifest.regions;
+  for (const chunkId of aggregateChunkIds(edition, regionId)) {
+    const region = Object.hasOwn(regions, chunkId) ? regions[chunkId] : undefined;
+    // The primary chunk counts only when its edition matches the request;
+    // subdivision chunks are always folded into the whole-country pool.
+    // Invariant: every aggregated chunk id exists in the manifest (locked by
+    // unit test). If a future country lists a subdivision whose chunk is
+    // missing, placesFor fails closed at run start while this count would
+    // skip it — so keep the wiring test green before plugging a new
+    // country into ADMIN1_BY_COUNTRY.
+    if (region && (chunkId !== regionId || region.edition === edition)) count += region.count;
+  }
   return count;
 }
 
