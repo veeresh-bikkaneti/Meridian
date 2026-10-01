@@ -17,6 +17,10 @@ import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
+import {
+  REVEAL_WATCHDOG_MS,
+  shouldArmRevealWatchdog,
+} from "./reveal-watchdog";
 
 /**
  * Session flag marking that this tab already reloaded for a stale build.
@@ -742,6 +746,34 @@ function PlayLoaded({
     setBubble("open");
     setCardDismissed(false);
   }, [place?.id]);
+
+  // Reveal watchdog (deadlock fail-safe): the result card renders only after
+  // the map's reveal reaches its end state (`reveal-done` → onRevealComplete).
+  // If that signal is ever lost — a stuck controller beat, a swallowed
+  // moveend, an exception in the reveal dispatch, a mid-beat commit whose beat
+  // never completes — the run would strand in "Showing the answer." with no
+  // result card, no Next place, and drop-pin disabled. That is a hard
+  // game-flow deadlock, so it can never be left to the map alone: while the
+  // story phase is showing an unrevealed place, arm a one-shot timer that
+  // forces the reveal complete. The real `reveal-done` always wins the race
+  // (the timeout is far longer than the 2.2 s reveal beat), and the timer is
+  // cleared the moment the reveal completes or the place changes. The
+  // console warning leaves a trace for future diagnosis, and the existing
+  // sr-only live region announces the card exactly as it does for a normal
+  // reveal, so screen-reader users get the same feedback.
+  useEffect(() => {
+    if (!shouldArmRevealWatchdog(run.phase, place != null, revealDone)) return;
+    const placeId = place!.id;
+    const timer = window.setTimeout(() => {
+      console.warn(
+        `[meridian] reveal watchdog fired for place "${placeId}": ` +
+          "the map never emitted reveal-done; forcing the result card so " +
+          "the game cannot deadlock in \"Showing the answer.\".",
+      );
+      setRevealDone(true);
+    }, REVEAL_WATCHDOG_MS);
+    return () => window.clearTimeout(timer);
+  }, [run.phase, place?.id, revealDone]);
 
   // M5: Escape dismisses the result card when committed, and toggles the
   // question bubble when aiming with no pin (AIM_EMPTY). Pin clearing (AIM_PIN)
