@@ -146,13 +146,41 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
+/**
+ * Tap and wait for the preview pin, retrying through the tile overlay.
+ * Under this VM's load the "Couldn't load satellite imagery" card can
+ * (re-)appear at any moment — even in the gap between an overlay clear and
+ * the tap — and its card swallows taps aimed at the map (confirmed via the
+ * failure screenshot: overlay up, tap never reached the map). Retries tap
+ * the SAME point, so they can only move the preview, never commit (single
+ * taps never commit). This works around a test-environment tile-stub flake,
+ * not app behavior: the overlay + Retry card is production behavior for
+ * real tile failures.
+ */
+async function tapUntilPreview(page: Page, x: number, y: number): Promise<void> {
+  const preview = page.getByLabel("Preview pin");
+  for (let attempt = 0; attempt < 5; attempt++) {
+    await clearTileErrorOverlay(page);
+    await page.touchscreen.tap(x, y);
+    try {
+      await preview.waitFor({ state: "visible", timeout: 3_000 });
+      return;
+    } catch {
+      // The tap was swallowed (overlay came up) — clear and tap again.
+    }
+  }
+  await expect(preview).toBeVisible({ timeout: 10_000 });
+}
+
 test("touch: single tap shows a hollow preview pin and records nothing; double-tap commits", async ({
   page,
 }) => {
   await startGlobeRun(page);
 
   // 1. Single tap: preview appears, nothing is recorded.
-  await page.touchscreen.tap(195, 420);
+  // Retries through the tile overlay: under this VM's load it can
+  // (re-)appear after startGlobeRun, and its card swallows taps.
+  await tapUntilPreview(page, 195, 420);
   const preview = page.getByLabel("Preview pin");
   await expect(preview).toBeVisible();
 
@@ -171,13 +199,14 @@ test("touch: single tap shows a hollow preview pin and records nothing; double-t
   // 2. Tap elsewhere (after the double-tap window): the preview MOVES,
   // still without committing.
   await page.waitForTimeout(700);
-  await page.touchscreen.tap(120, 300);
+  await tapUntilPreview(page, 120, 300);
   await expect(preview).toBeVisible();
   expect(await readPhase(page)).toBe("aim");
   expect(await readResultsLength(page)).toBe(0);
   expect(await page.locator(".maplibregl-marker").count()).toBe(1);
 
   // 3. Double-tap at one point: commits the answer at the tap point.
+  await clearTileErrorOverlay(page);
   await touchDoubleTap(page, 250, 500);
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toMatch(/^(story|done)$/);
 

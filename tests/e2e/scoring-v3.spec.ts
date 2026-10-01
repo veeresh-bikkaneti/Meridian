@@ -4,7 +4,7 @@ import {
   startGlobeRun,
   dismissTileOverlayIfPresent,
   readPhase,
-  dropButton,
+  commitHit,
 } from "./helpers";
 
 /**
@@ -40,27 +40,13 @@ async function clickNextPlace(page: import("playwright/test").Page): Promise<voi
   await nextPlace.click();
 }
 
-/** Play places until one hits (bounded); returns after the reveal shows. */
+/** Play places until one hits (bounded); returns after the reveal shows.
+ *  Deterministic: taps the true spot via the __spotScreen hook — no geo luck,
+ *  so the test can't starve on an unlucky date-shuffled deal order. */
 async function playUntilHit(page: import("playwright/test").Page): Promise<void> {
-  for (let attempt = 0; attempt < 10; attempt++) {
-    await dismissTileOverlayIfPresent(page);
-    await page.mouse.click(500, 400);
-    await expect(dropButton(page)).toBeEnabled();
-    await dropButton(page).click();
-    // Capture the phase inside the poll: a separate readPhase after the
-    // poll can race the transition it just observed.
-    let phase: string | null = null;
-    await expect
-      .poll(async () => {
-        phase = await readPhase(page);
-        return phase;
-      }, { timeout: 20_000 })
-      .toMatch(/^(story|done)$/);
-    if (phase === "story") return;
-    await clickNextPlace(page);
-    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
-  }
-  throw new Error("no hit in 10 attempts");
+  await dismissTileOverlayIfPresent(page);
+  await commitHit(page);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("story");
 }
 
 test("scoring v3: chip, running SCORE, transparent breakdown, summary stats", async ({

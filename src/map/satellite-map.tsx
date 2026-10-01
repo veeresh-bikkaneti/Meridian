@@ -1411,29 +1411,46 @@ export function SatelliteMap(props: {
       }
       return;
     }
-    const request = buildRevealRequest(
-      map,
-      props.variation,
-      props.mode,
-      tileStatusRef.current,
-      projectionRef.current,
-    );
-    executeIntentsRef.current(controller.requestReveal(request));
-    if (request.tileFailed) {
-      // Honesty gate: no choreography over the error overlay — the reveal is
-      // vacuous, so complete it immediately and show the result card.
+    // Reveal dispatch. Wrapped so a controller/dispatch exception can never
+    // strand the game in "Showing the answer.": on any error the reveal is
+    // completed immediately so the result card (and Next place) stays
+    // reachable. The game-app reveal watchdog is the second net for the case
+    // where dispatch succeeds but the beat itself never completes.
+    try {
+      const request = buildRevealRequest(
+        map,
+        props.variation,
+        props.mode,
+        tileStatusRef.current,
+        projectionRef.current,
+      );
+      executeIntentsRef.current(controller.requestReveal(request));
+      if (request.tileFailed) {
+        // Honesty gate: no choreography over the error overlay — the reveal is
+        // vacuous, so complete it immediately and show the result card.
+        onRevealCompleteRef.current?.();
+      } else if (controller.beatKind === "reveal") {
+        // A reveal beat is running (animated miss): arm tap-to-skip. The hit
+        // and reduced-motion paths complete synchronously — reveal-done already
+        // fired in the same batch, so there is no beat left to skip and the
+        // skip listener must not stay armed into the next aim phase. Note:
+        // synchronous moveends fired during intent execution are swallowed by
+        // the controller's event guard, so beatKind cannot clear before this
+        // check — the hit/reduced-motion paths are the only ones that complete
+        // synchronously, and they do so by emitting reveal-done directly.
+        skipControlRef.current.arm();
+      }
+    } catch (error) {
+      console.error(
+        "[meridian] reveal dispatch failed; completing the reveal so the " +
+          "game cannot deadlock in \"Showing the answer.\"",
+        error,
+      );
       onRevealCompleteRef.current?.();
-    } else if (controller.beatKind === "reveal") {
-      // A reveal beat is running (animated miss): arm tap-to-skip. The hit
-      // and reduced-motion paths complete synchronously — reveal-done already
-      // fired in the same batch, so there is no beat left to skip and the
-      // skip listener must not stay armed into the next aim phase. Note:
-      // synchronous moveends fired during intent execution are swallowed by
-      // the controller's event guard, so beatKind cannot clear before this
-      // check — the hit/reduced-motion paths are the only ones that complete
-      // synchronously, and they do so by emitting reveal-done directly.
-      skipControlRef.current.arm();
     }
+    // Effect deps: variationKey embeds the pin AND the true spot, so a new
+    // place always produces a new key and triggers a reveal attempt — the
+    // key cannot stay stale across places.
   }, [variationKey, props.mode, props.bounds]);
 
   return (

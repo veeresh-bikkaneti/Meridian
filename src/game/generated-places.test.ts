@@ -15,6 +15,7 @@ import {
 } from "./generated-places.ts";
 import { ADMIN1_BY_COUNTRY } from "./regions.ts";
 import manifestJson from "./data/geonames/manifest.json" with { type: "json" };
+import notableNotesJson from "./data/notable-notes.json" with { type: "json" };
 
 const manifest = manifestJson as unknown as {
   meta: { total: number };
@@ -273,6 +274,84 @@ test("a single malformed record rejects the whole chunk (fail-closed)", () => {
   assert.throws(
     () => startersFromChunk("germany", { meta: { regionId: "france", edition: "country", count: 1 }, places: [good] }),
     /meta\.regionId mismatch/,
+  );
+});
+
+test("history notes: crew C batch (US non-capitals, India, UK) is audited and keyed to real chunk places", async () => {
+  // Crew C curated 12 Wikipedia-audited notes (claim-by-claim audit in
+  // history-sources-c.md). Notes merge into chunk blurbs at dataset build
+  // time (scripts/build-geonames-dataset.mjs); this test pins the merge
+  // key — geonameid → the named place in the region chunk — so a future
+  // rebuild lands every note on the right place.
+  const notable = notableNotesJson as unknown as Record<
+    string,
+    { note: string; wiki: string }
+  >;
+  const cases = [
+    { id: "5128581", name: "New York City", edition: "state", region: "new-york", marker: "Duke of York", wiki: "New_York_City" },
+    { id: "4887398", name: "Chicago", edition: "state", region: "illinois", marker: "BACKWARD", wiki: "Chicago" },
+    { id: "5368361", name: "Los Angeles", edition: "state", region: "california", marker: "world capital of film", wiki: "Los_Angeles" },
+    { id: "5391959", name: "San Francisco", edition: "state", region: "california", marker: "three-quarters", wiki: "San_Francisco" },
+    { id: "4335045", name: "New Orleans", edition: "state", region: "louisiana", marker: "Congo Square", wiki: "New_Orleans" },
+    { id: "4164138", name: "Miami", edition: "state", region: "florida", marker: "mother of Miami", wiki: "Miami" },
+    { id: "1275339", name: "Mumbai", edition: "country", region: "india", marker: "wedding dowry", wiki: "Mumbai" },
+    { id: "1269515", name: "Jaipur", edition: "country", region: "india", marker: "Pink City", wiki: "Jaipur" },
+    { id: "1279259", name: "Agra", edition: "country", region: "india", marker: "Mumtaz Mahal", wiki: "Agra" },
+    { id: "2650225", name: "Edinburgh", edition: "country", region: "united-kingdom", marker: "Athens of the North", wiki: "Edinburgh" },
+    { id: "2643123", name: "Manchester", edition: "country", region: "united-kingdom", marker: "Cottonopolis", wiki: "Manchester" },
+    { id: "2640729", name: "Oxford", edition: "country", region: "united-kingdom", marker: "ford of the oxen", wiki: "Oxford" },
+  ] as const;
+  assert.equal(cases.length, 12);
+  for (const c of cases) {
+    const entry = notable[c.id];
+    assert.ok(entry, `notable-notes.json missing crew C entry for ${c.name} (${c.id})`);
+    assert.equal(typeof entry.note, "string", `${c.id}: note must be a string`);
+    assert.ok(entry.note.length > 0, `${c.id}: empty note`);
+    assert.equal(entry.wiki, c.wiki, `${c.id}: wiki slug mismatch`);
+    assert.ok(
+      entry.note.includes(c.marker),
+      `${c.id}: note should include its audited hook (marker: ${c.marker})`,
+    );
+    const starters = await generatedStartersFor(c.edition, c.region);
+    const place = starters.find((s) => s.id === `gn-${c.id}`);
+    assert.ok(place, `gn-${c.id} should exist in the ${c.region} chunk`);
+    assert.equal(
+      place.name,
+      c.name,
+      `gn-${c.id} resolves to "${place.name}", not ${c.name} — note would land on the wrong place`,
+    );
+  }
+});
+
+test("Barry Farms gets the approved kid-friendly history note", async () => {
+  // The before/after sample Veeresh approved ("love the kid-friendly
+  // rewrite; lets build that"). Audit: history-sources-c.md; merge key
+  // geonameid 4137672 → gn-4137672 in the united-states country chunk.
+  const notable = notableNotesJson as unknown as Record<
+    string,
+    { note: string; wiki: string }
+  >;
+  const entry = notable["4137672"];
+  assert.ok(entry, "notable-notes.json missing the Barry Farms entry (4137672)");
+  assert.equal(entry.wiki, "Barry_Farm", "wiki slug mismatch");
+  assert.ok(entry.note.includes("Land! Give us land!"), "approved hook missing");
+  assert.ok(entry.note.includes("1867"), "purchase year missing");
+  assert.ok(entry.note.includes("375-acre"), "farm size missing");
+  assert.ok(entry.note.includes("one-acre"), "one-acre plots missing");
+  assert.ok(entry.note.includes("Marion Barry"), "name-twist hook missing");
+  const usCountry = await generatedStartersFor("country", "united-states");
+  const barry = usCountry.find((s) => s.id === "gn-4137672");
+  assert.ok(barry, "gn-4137672 should exist in the united-states chunk");
+  assert.equal(barry.name, "Barry Farms", "note would land on the wrong place");
+  assert.equal(barry.sourceLabel, "GeoNames · Wikipedia");
+  assert.equal(barry.sourceHref, "https://en.wikipedia.org/wiki/Barry_Farm");
+  assert.ok(
+    barry.story.includes("Land! Give us land!"),
+    "curated note missing from the shipped blurb",
+  );
+  assert.ok(
+    barry.story.startsWith("Barry Farms is a town in eastern District of Columbia"),
+    "geographic lead should precede the curated note",
   );
 });
 
