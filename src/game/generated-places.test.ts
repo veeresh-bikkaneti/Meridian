@@ -63,8 +63,19 @@ test("loader returns Starter-shaped records with GeoNames attribution", async ()
     assert.equal(s.edition, "state");
     assert.equal(s.regionId, "texas");
     assert.ok(s.story && s.story.length > 0, `${s.id}: empty story`);
-    assert.equal(s.sourceLabel, GENERATED_SOURCE_LABEL);
-    assert.equal(s.sourceHref, GENERATED_SOURCE_HREF);
+    // Notable places (e.g. Austin) carry a curated Wikipedia note.
+    assert.ok(
+      s.sourceLabel === GENERATED_SOURCE_LABEL || s.sourceLabel === "GeoNames · Wikipedia",
+      `${s.id}: unexpected sourceLabel ${s.sourceLabel}`,
+    );
+    if (s.sourceLabel === "GeoNames · Wikipedia") {
+      assert.ok(
+        s.sourceHref.startsWith("https://en.wikipedia.org/wiki/"),
+        `${s.id}: Wikipedia attribution must link the article`,
+      );
+    } else {
+      assert.equal(s.sourceHref, GENERATED_SOURCE_HREF);
+    }
   }
   // Vermont has generated depth in the GeoNames dataset (F6b had none).
   const vermont = await generatedStartersFor("state", "vermont");
@@ -75,6 +86,23 @@ test("loader returns Starter-shaped records with GeoNames attribution", async ()
   for (const s of usCountry) {
     assert.equal(s.edition, "country");
     assert.equal(s.regionId, "united-states");
+  }
+});
+
+test("notable capitals get Wikipedia-sourced memorable notes", async () => {
+  const texas = await generatedStartersFor("state", "texas");
+  const austin = texas.find((s) => s.name === "Austin");
+  assert.ok(austin, "Austin should be in the Texas chunk");
+  assert.equal(austin.sourceLabel, "GeoNames · Wikipedia");
+  assert.equal(austin.sourceHref, "https://en.wikipedia.org/wiki/Austin,_Texas");
+  assert.ok(austin.story.includes("the capital of Texas"), "capital lead missing");
+  assert.ok(austin.story.includes("Stephen F. Austin"), "notable note missing");
+  // A non-notable place keeps the plain GeoNames attribution and the new
+  // geographic blurb shape (cardinal + town/city, no "populated place").
+  const brandonTx = texas.find((s) => s.name === "Brandon");
+  if (brandonTx) {
+    assert.equal(brandonTx.sourceLabel, GENERATED_SOURCE_LABEL);
+    assert.ok(!brandonTx.story.includes("populated place"), "generic phrasing survived");
   }
 });
 

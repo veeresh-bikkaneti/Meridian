@@ -383,13 +383,51 @@ function assignRegion(cc, admin1, geonameid) {
   return { edition: "globe", regionId: "globe" };
 }
 
-function blurbFor(name, admin1Name, countryName, pop, elev) {
+/**
+ * Cardinal position of a point inside a bounding box: "northern",
+ * "southeastern", "central", … — the geographic anchoring the old
+ * "populated place" blurb never gave.
+ */
+function cardinalInBox(lon, lat, box) {
+  const lonF = (lon - box.minLon) / Math.max(1e-9, box.maxLon - box.minLon);
+  const latF = (lat - box.minLat) / Math.max(1e-9, box.maxLat - box.minLat);
+  const ns = latF > 0.67 ? "north" : latF < 0.33 ? "south" : "";
+  const ew = lonF > 0.67 ? "east" : lonF < 0.33 ? "west" : "";
+  if (ns && ew) return `${ns}${ew}ern`; // northeastern, southwestern…
+  if (ns) return `${ns}ern`;
+  if (ew) return `${ew}ern`;
+  return "central";
+}
+
+/** Civic-status lead from the GeoNames feature code — capital and county
+ *  seats are memorable facts the generic "populated place" buried. */
+function leadFor(fcode, pop) {
+  if (fcode === "PPLC") return { kind: "capital-country" };
+  if (fcode === "PPLA") return { kind: "capital-admin1" };
+  if (fcode === "PPLA2") return { kind: "county-seat" };
+  return { kind: pop >= 50000 ? "city" : "town" };
+}
+
+function blurbFor({ name, admin1Name, countryName, pop, elev, fcode, lon, lat, box, notable }) {
   const popStr = Number(pop).toLocaleString("en-US");
   const where = admin1Name ? `${admin1Name}, ${countryName}` : countryName;
-  let b = `${name} is a populated place in ${where} (population ~${popStr}).`;
+  const lead = leadFor(fcode, pop);
+  let b;
+  if (lead.kind === "capital-country") {
+    b = `${name} is the capital of ${countryName} (population ~${popStr}).`;
+  } else if (lead.kind === "capital-admin1") {
+    b = `${name} is the capital of ${where} (population ~${popStr}).`;
+  } else if (lead.kind === "county-seat") {
+    const card = box ? ` in ${cardinalInBox(lon, lat, box)}` : "";
+    b = `${name} is a county seat${card} ${where} (population ~${popStr}).`;
+  } else {
+    const card = box ? `${cardinalInBox(lon, lat, box)} ` : "";
+    b = `${name} is a ${lead.kind} in ${card}${where} (population ~${popStr}).`;
+  }
   if (elev !== "" && elev !== undefined && Number.isFinite(Number(elev))) {
     b += ` It sits at ~${Number(elev).toLocaleString("en-US")} m elevation.`;
   }
+  if (notable) b += ` ${notable}`;
   return b;
 }
 
@@ -408,6 +446,13 @@ async function main() {
   const countryNames = loadCountryNames();
   const admin1Names = loadAdmin1Names();
   const stateBoxes = loadStateBoxes();
+  // Curated memorable facts for notable places (keyed by geonameid), merged
+  // into blurbs below. Keys starting with "_" are file comments, not places.
+  const notableNotes = JSON.parse(
+    readFileSync(join(REPO, "src", "game", "data", "notable-notes.json"), "utf8"),
+  );
+  const notableCount = Object.keys(notableNotes).filter((k) => !k.startsWith("_")).length;
+  console.log(`loaded ${notableCount} notable-place notes`);
   console.log("deriving per-country gate boxes from all GeoNames P rows…");
   const tBox = Date.now();
   const boxes = await deriveCountryBoxes(dumpPath);
@@ -494,9 +539,24 @@ async function main() {
     if (!gateOk) { q(`hyderabad-gate-reject (${edition}/${regionId})`, id); continue; }
 
     keptRows++;
+    // Cardinal box for the blurb: the state's box for state-edition rows,
+    // the country's box otherwise (lon normalized for antimeridian wrap).
+    const cardBox =
+      edition === "state" && stateBoxes[regionId]
+        ? stateBoxes[regionId]
+        : boxes[cc]?.box ?? null;
+    const cardLon = edition === "state" ? lon : normalizeLon(lon, boxes[cc]);
+    const notable = notableNotes[geonameid];
     const place = {
       id, name, lon, lat,
-      blurb: blurbFor(name, admin1Name, countryName, pop, c[15]),
+      blurb: blurbFor({
+        name, admin1Name, countryName, pop,
+        elev: c[15], fcode: c[7], lon: cardLon, lat,
+        box: cardBox, notable: notable?.note,
+      }),
+      // wiki slug travels so the app can attribute the notable note to
+      // Wikipedia (GeoNames stays credited app-wide in the map footer).
+      ...(notable ? { wiki: notable.wiki } : {}),
       // iso2 is the gate key: the build-time gate (scripts/check-generated-places.mjs)
       // re-validates every shipped place against the derived country box for
       // its own country code, so the code must travel with the record.
