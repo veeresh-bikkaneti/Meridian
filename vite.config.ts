@@ -10,6 +10,8 @@ import { nitro } from "nitro/vite";
 import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
+// @ts-expect-error JS module alongside the TS vite config
+import { resolveBuildId } from "./scripts/build-id.mjs";
 import { isMigrationFile } from "./scripts/migration-plan.mjs";
 
 /** The files `src/lib/db.ts` globs — same directory, same non-recursive scope. */
@@ -170,6 +172,10 @@ const githubPages = process.env.GITHUB_PAGES === "1";
 
 export default defineConfig(({ command, isPreview }) => ({
   base: githubPages ? "/Meridian/" : "/",
+  define: {
+    // Baked-in build identity for deploy-awareness (see src/game/build-staleness.ts).
+    __MERIDIAN_BUILD_ID__: JSON.stringify(resolveBuildId()),
+  },
   server: {
     host: "0.0.0.0",
     port: 8080,
