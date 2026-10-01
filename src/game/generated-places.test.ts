@@ -9,10 +9,13 @@ import {
   loadRegionChunk,
   startersFromChunk,
   clearChunkCacheForTests,
+  aggregateChunkIds,
   GENERATED_SOURCE_LABEL,
   GENERATED_SOURCE_HREF,
 } from "./generated-places.ts";
+import { ADMIN1_BY_COUNTRY } from "./regions.ts";
 import manifestJson from "./data/geonames/manifest.json" with { type: "json" };
+import notableNotesJson from "./data/notable-notes.json" with { type: "json" };
 
 const manifest = manifestJson as unknown as {
   meta: { total: number };
@@ -272,4 +275,131 @@ test("a single malformed record rejects the whole chunk (fail-closed)", () => {
     () => startersFromChunk("germany", { meta: { regionId: "france", edition: "country", count: 1 }, places: [good] }),
     /meta\.regionId mismatch/,
   );
+});
+
+test("whole-US pool aggregates all 50 state datasets, not just the DC chunk", async () => {
+  const pool = await placesFor("country", "united-states");
+  const curatedUS = STARTERS.filter((s) => s.edition === "country" && s.regionId === "united-states");
+  const expectedGenerated = Object.entries(manifest.regions)
+    .filter(([id, r]) => id === "united-states" || r.edition === "state")
+    .reduce((n, [, r]) => n + r.count, 0);
+  assert.equal(
+    pool.length,
+    curatedUS.length + expectedGenerated,
+    `whole-US pool should be curated (${curatedUS.length}) + US chunk + 50 states (${expectedGenerated})`,
+  );
+  assert.ok(pool.length > 14000, `whole-US pool should be national-scale, got ${pool.length}`);
+
+  // Fail-closed dealing contract: every place claims the selected region.
+  for (const p of pool) {
+    assert.equal(p.edition, "country", `${p.id}: edition must be country`);
+    assert.equal(p.regionId, "united-states", `${p.id}: regionId must be united-states`);
+  }
+  // No duplicate ids — the no-repeat guarantee survives aggregation.
+  assert.equal(new Set(pool.map((p) => p.id)).size, pool.length, "duplicate ids in whole-US pool");
+
+  // Genuinely national: places from far-apart states, not just DC.
+  const texas = await generatedStartersFor("state", "texas");
+  const california = await generatedStartersFor("state", "california");
+  const poolIds = new Set(pool.map((p) => p.id));
+  assert.ok(poolIds.has(texas[0].id), "expected a Texas place in the whole-US pool");
+  assert.ok(poolIds.has(california[0].id), "expected a California place in the whole-US pool");
+
+  // Curated national features still lead the pool (approach C: curated-first).
+  assert.deepEqual(
+    pool.slice(0, curatedUS.length).map((p) => p.id),
+    curatedUS.map((p) => p.id),
+    "curated US starters must lead the whole-US pool",
+  );
+
+  // Re-tagged places keep their identity: coordinates still match the
+  // claimed location (Hyderabad rule) — only the region label widened.
+  const houston = texas.find((s) => s.name === "Houston");
+  assert.ok(houston, "expected Houston in the Texas chunk");
+  const houstonInPool = pool.find((p) => p.id === houston.id);
+  assert.ok(houstonInPool, "expected Houston in the whole-US pool");
+  assert.equal(houstonInPool.lon, houston.lon);
+  assert.equal(houstonInPool.lat, houston.lat);
+  assert.equal(houstonInPool.name, houston.name);
+});
+
+test("whole-country aggregation wiring is fail-closed and non-US regions are untouched", () => {
+  const usChunks = aggregateChunkIds("country", "united-states");
+  // The country's own chunk plus one chunk per drill-down subdivision.
+  assert.equal(usChunks[0], "united-states");
+  assert.deepEqual(
+    usChunks.slice(1),
+    ADMIN1_BY_COUNTRY["united-states"].map((s) => s.id),
+    "aggregation must follow the picker's drill-down list",
+  );
+  for (const id of usChunks) {
+    assert.ok(
+      Object.hasOwn(manifest.regions, id),
+      `aggregated chunk missing from manifest (would fail closed at load): ${id}`,
+    );
+  }
+  // No other edition/region aggregates — their pools are byte-identical.
+  assert.deepEqual(aggregateChunkIds("state", "texas"), ["texas"]);
+  assert.deepEqual(aggregateChunkIds("state", "united-states"), ["united-states"]);
+  assert.deepEqual(aggregateChunkIds("country", "canada"), ["canada"]);
+  assert.deepEqual(aggregateChunkIds("country", "india"), ["india"]);
+  assert.deepEqual(aggregateChunkIds("globe", "globe"), ["globe"]);
+});
+
+test("poolSizeFor counts the aggregated whole-US pool (picker gate stays honest)", async () => {
+  const pool = await placesFor("country", "united-states");
+  assert.equal(
+    poolSizeFor("country", "united-states"),
+    pool.length,
+    "picker count must equal the aggregated whole-US pool size",
+  );
+  // Unaffected regions still agree.
+  assert.equal(poolSizeFor("state", "texas"), (await placesFor("state", "texas")).length);
+  assert.equal(poolSizeFor("country", "canada"), (await placesFor("country", "canada")).length);
+});
+
+test("history notes: crew C batch (US non-capitals, India, UK) is audited and keyed to real chunk places", async () => {
+  // Crew C curated 12 Wikipedia-audited notes (claim-by-claim audit in
+  // history-sources-c.md). Notes merge into chunk blurbs at dataset build
+  // time (scripts/build-geonames-dataset.mjs); this test pins the merge
+  // key — geonameid → the named place in the region chunk — so a future
+  // rebuild lands every note on the right place.
+  const notable = notableNotesJson as unknown as Record<
+    string,
+    { note: string; wiki: string }
+  >;
+  const cases = [
+    { id: "5128581", name: "New York City", edition: "state", region: "new-york", marker: "Duke of York", wiki: "New_York_City" },
+    { id: "4887398", name: "Chicago", edition: "state", region: "illinois", marker: "BACKWARD", wiki: "Chicago" },
+    { id: "5368361", name: "Los Angeles", edition: "state", region: "california", marker: "world capital of film", wiki: "Los_Angeles" },
+    { id: "5391959", name: "San Francisco", edition: "state", region: "california", marker: "three-quarters", wiki: "San_Francisco" },
+    { id: "4335045", name: "New Orleans", edition: "state", region: "louisiana", marker: "Congo Square", wiki: "New_Orleans" },
+    { id: "4164138", name: "Miami", edition: "state", region: "florida", marker: "mother of Miami", wiki: "Miami" },
+    { id: "1275339", name: "Mumbai", edition: "country", region: "india", marker: "wedding dowry", wiki: "Mumbai" },
+    { id: "1269515", name: "Jaipur", edition: "country", region: "india", marker: "Pink City", wiki: "Jaipur" },
+    { id: "1279259", name: "Agra", edition: "country", region: "india", marker: "Mumtaz Mahal", wiki: "Agra" },
+    { id: "2650225", name: "Edinburgh", edition: "country", region: "united-kingdom", marker: "Athens of the North", wiki: "Edinburgh" },
+    { id: "2643123", name: "Manchester", edition: "country", region: "united-kingdom", marker: "Cottonopolis", wiki: "Manchester" },
+    { id: "2640729", name: "Oxford", edition: "country", region: "united-kingdom", marker: "ford of the oxen", wiki: "Oxford" },
+  ] as const;
+  assert.equal(cases.length, 12);
+  for (const c of cases) {
+    const entry = notable[c.id];
+    assert.ok(entry, `notable-notes.json missing crew C entry for ${c.name} (${c.id})`);
+    assert.equal(typeof entry.note, "string", `${c.id}: note must be a string`);
+    assert.ok(entry.note.length > 0, `${c.id}: empty note`);
+    assert.equal(entry.wiki, c.wiki, `${c.id}: wiki slug mismatch`);
+    assert.ok(
+      entry.note.includes(c.marker),
+      `${c.id}: note should include its audited hook (marker: ${c.marker})`,
+    );
+    const starters = await generatedStartersFor(c.edition, c.region);
+    const place = starters.find((s) => s.id === `gn-${c.id}`);
+    assert.ok(place, `gn-${c.id} should exist in the ${c.region} chunk`);
+    assert.equal(
+      place.name,
+      c.name,
+      `gn-${c.id} resolves to "${place.name}", not ${c.name} — note would land on the wrong place`,
+    );
+  }
 });
