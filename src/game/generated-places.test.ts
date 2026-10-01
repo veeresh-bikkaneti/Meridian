@@ -129,6 +129,33 @@ test("sports cities get a Big-5 home-teams line in the blurb", async () => {
   assert.ok(!brandon.story.includes("Home of the"), "sports filler on a team-less town");
 });
 
+test("history notes: curated history-first notes render for historic cities", async () => {
+  // Representative sample across the crew A/B batches; full per-city
+  // source audits live in history-sources-a.md / history-sources-b.md.
+  const cases = [
+    { country: "italy", name: "Rome", marker: "Eternal City" }, // crew A batch
+    { country: "japan", name: "Kyoto", marker: "imperial capital" }, // crew B batch
+    { country: "egypt", name: "Cairo", marker: "Fatimid" }, // crew A batch
+    { country: "india", name: "Delhi", marker: "Mughal" }, // crew B batch
+  ];
+  for (const c of cases) {
+    const starters = await generatedStartersFor("country", c.country);
+    const place = starters.find((s) => s.name === c.name);
+    assert.ok(place, `${c.name} should be in the ${c.country} chunk`);
+    assert.ok(
+      place.story.includes(c.marker),
+      `${c.name} story should include its history note (marker: ${c.marker})`,
+    );
+    assert.equal(place.sourceLabel, "GeoNames · Wikipedia");
+  }
+  // Cusco lives in the globe chunk (no Peru-specific chunk).
+  const globe = await generatedStartersFor("globe", "globe");
+  const cusco = globe.find((s) => s.name === "Cusco");
+  assert.ok(cusco, "Cusco should be in the globe chunk");
+  assert.ok(cusco.story.includes("Inca"), "Cusco story should include its history note");
+  assert.equal(cusco.sourceLabel, "GeoNames · Wikipedia");
+});
+
 test("historic places get curated history-first notes (Hyderabad pilot)", async () => {
   const india = await generatedStartersFor("country", "india");
   const hyderabad = india.find((s) => s.name === "Hyderabad");

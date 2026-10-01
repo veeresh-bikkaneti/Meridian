@@ -18,7 +18,7 @@
       "marginDeg": 0.15
     },
     "total": 124690,
-    "chunkBytes": 26580164,
+    "chunkBytes": 26588212,
     "quarantine": {},
     "duplicatesDropped": 0,
     "rawRows": 13472204,
@@ -68,7 +68,7 @@
     "china": {
       "edition": "country",
       "count": 3274,
-      "bytes": 646459
+      "bytes": 646773
     },
     "colorado": {
       "edition": "state",
@@ -88,7 +88,7 @@
     "egypt": {
       "edition": "country",
       "count": 257,
-      "bytes": 52764
+      "bytes": 53289
     },
     "florida": {
       "edition": "state",
@@ -98,7 +98,7 @@
     "france": {
       "edition": "country",
       "count": 6293,
-      "bytes": 1344246
+      "bytes": 1344555
     },
     "georgia": {
       "edition": "state",
@@ -113,7 +113,7 @@
     "globe": {
       "edition": "globe",
       "count": 59423,
-      "bytes": 12285451
+      "bytes": 12290220
     },
     "hawaii": {
       "edition": "state",
@@ -133,7 +133,7 @@
     "india": {
       "edition": "country",
       "count": 6990,
-      "bytes": 1418760
+      "bytes": 1419316
     },
     "indiana": {
       "edition": "state",
@@ -148,12 +148,12 @@
     "italy": {
       "edition": "country",
       "count": 5234,
-      "bytes": 1189951
+      "bytes": 1190784
     },
     "japan": {
       "edition": "country",
       "count": 2057,
-      "bytes": 408242
+      "bytes": 408486
     },
     "kansas": {
       "edition": "state",
@@ -188,7 +188,7 @@
     "mexico": {
       "edition": "country",
       "count": 5724,
-      "bytes": 1238727
+      "bytes": 1238972
     },
     "michigan": {
       "edition": "state",
@@ -303,7 +303,7 @@
     "united-kingdom": {
       "edition": "country",
       "count": 3394,
-      "bytes": 742974
+      "bytes": 743227
     },
     "united-states": {
       "edition": "country",
