@@ -6,7 +6,8 @@ import type { Starter } from "@/game/starters";
 import { Button } from "@/components/ui/button";
 import type { Drop } from "./game-app";
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { splitLede } from "./story-lede";
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -75,12 +76,6 @@ function Fade({
   );
 }
 
-function formatSpot(lon: number, lat: number): string {
-  const ns = lat >= 0 ? "N" : "S";
-  const ew = lon >= 0 ? "E" : "W";
-  return `${Math.abs(lat).toFixed(2)}° ${ns}, ${Math.abs(lon).toFixed(2)}° ${ew}`;
-}
-
 function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?: "primary" | "secondary" }) {
   const [copied, setCopied] = useState(false);
   const summary = summarizeRun(run);
@@ -132,6 +127,18 @@ export function ResultCard({
   onContinue: () => void;
 }) {
   const reduced = usePrefersReducedMotion();
+  const [storyLede, storyRest] = splitLede(story ?? place?.story ?? "");
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  // Move focus to the card heading when a result appears (phase → story/done).
+  // The commit control the user activated is gone by then; without this,
+  // keyboard and screen-reader users lose their place.
+  const phase = run.phase;
+  useEffect(() => {
+    if ((phase === "story" || phase === "done") && !dismissed) {
+      headingRef.current?.focus({ preventScroll: true });
+    }
+  }, [phase, dismissed, place?.name]);
 
   if (dismissed) {
     return (
@@ -164,10 +171,22 @@ export function ResultCard({
                   <p className="text-[11px] tracking-wider text-white/60 uppercase">
                     {run.regionName}
                   </p>
-                  <h2 className="mt-0.5 font-display text-2xl leading-tight">{place.name}</h2>
+                  <h2
+                    ref={headingRef}
+                    tabIndex={-1}
+                    className="mt-0.5 font-display text-2xl leading-tight outline-none"
+                  >
+                    {place.name}
+                  </h2>
                 </>
               ) : (
-                <h2 className="font-display text-2xl leading-tight">{run.regionName}</h2>
+                <h2
+                  ref={headingRef}
+                  tabIndex={-1}
+                  className="font-display text-2xl leading-tight outline-none"
+                >
+                  {run.regionName}
+                </h2>
               )}
             </div>
             <button
@@ -218,22 +237,37 @@ export function ResultCard({
 
           {run.phase === "done" && place ? (
             <div className="mt-3 flex flex-col gap-3">
-              <p className="text-sm text-white/70">That pin is outside the radius.</p>
+              <p className="font-display text-4xl tabular-nums">
+                {drop ? `${formatDistance(drop.distanceKm)} off` : "Miss"}
+              </p>
+              <p
+                data-testid="miss-subscript"
+                className="text-xs leading-relaxed text-white/70 line-clamp-2"
+                title={`White pin is your guess · gold is the true spot. ${storyLede}`}
+              >
+                White pin is your guess · gold is the true spot.
+                <br />
+                {storyLede}
+              </p>
               {drop && drop.streakBefore >= 2 ? (
                 <p className="text-sm text-amber-100">
                   🔥 {drop.streakBefore}-place streak reset — combo back to{" "}
                   {formatFactor(comboForStreak(1))}x.
                 </p>
               ) : null}
-              {drop && drop.placeId === place.id ? (
-                <p className="text-sm">
-                  Your pin was {formatSpot(drop.lon, drop.lat)},{" "}
-                  {formatDistance(drop.distanceKm)} away. The spot is{" "}
-                  {formatSpot(place.lon, place.lat)}.
-                </p>
-              ) : (
-                <p className="text-sm">The spot is {formatSpot(place.lon, place.lat)}.</p>
-              )}
+              {storyRest ? (
+                <div className="max-h-44 overflow-y-auto">
+                  <p className="text-sm leading-relaxed">{storyRest}</p>
+                </div>
+              ) : null}
+              <a
+                className="text-sm text-white/70 underline"
+                href={place.sourceHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {place.sourceLabel}
+              </a>
               <Button onClick={onContinue}>Next place</Button>
               <ShareResult run={run} copyVariant="secondary" />
             </div>
