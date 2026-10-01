@@ -7,6 +7,12 @@ import {
   dropButton,
   aimMarkerCenter,
   spotMarkerCenter,
+  commitPin,
+  commitMiss,
+  commitHit,
+  nextPlaceButton,
+  clickNextPlace,
+  resultCard,
 } from "./helpers";
 
 /**
@@ -32,143 +38,6 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
-type Page = import("playwright/test").Page;
-
-/** Commit a pin at (x, y); resolves with the landed phase and commit time. */
-async function commitPin(
-  page: Page,
-  x: number,
-  y: number,
-): Promise<{ phase: string | null; committedAt: number }> {
-  // The tile watchdog can fire on slow machines, and the reveal only plays
-  // over healthy tiles (tile failure shows the card at once). Dismiss the
-  // overlay as a user would, then wait for tiles to be ready.
-  await dismissTileOverlayIfPresent(page);
-  const map = page.locator(".satellite-map");
-  await expect
-    .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
-    .toBe("ready");
-  await page.mouse.click(x, y);
-  await expect(dropButton(page)).toBeEnabled();
-  await dropButton(page).click();
-  const committedAt = Date.now();
-  // Capture the phase inside the poll: a separate readPhase after the poll
-  // can race the transition it just observed.
-  let phase: string | null = null;
-  await expect
-    .poll(async () => {
-      phase = await readPhase(page);
-      return phase;
-    }, { timeout: 20_000 })
-    .toMatch(/^(story|done)$/);
-  return { phase, committedAt };
-}
-
-/** Viewport coords of the current place's true spot, or null when the spot
- *  is unknown. Uses the app's own live projection (no luck involved).
- *  Rounded to integers: Playwright's synthetic mouse with fractional
- *  coordinates does not reliably trip the app's pointer tap classifier
- *  (observed in this harness; physical-device verification remains open). */
-async function spotViewportPoint(
-  page: Page,
-): Promise<{ x: number; y: number } | null> {
-  return page.locator(".satellite-map").evaluate((el) => {
-    const hook = (
-      el as unknown as {
-        __spotScreen?: () => { x: number; y: number } | null;
-      }
-    ).__spotScreen;
-    const s = hook?.();
-    if (!s) return null;
-    const r = el.getBoundingClientRect();
-    return { x: Math.round(r.left + s.x), y: Math.round(r.top + s.y) };
-  });
-}
-
-/** True when a tap at (x, y) would hit the map canvas (not chrome like the
- *  question bubble floating over it). */
-async function tapHitsMap(
-  page: Page,
-  x: number,
-  y: number,
-): Promise<boolean> {
-  return page.evaluate(
-    ({ px, py }) => {
-      const el = document.elementFromPoint(px, py);
-      return !!el?.closest?.(".satellite-map");
-    },
-    { px: x, py: y },
-  );
-}
-
-const nextPlaceButton = (page: Page) =>
-  page.getByRole("button", { name: "Next place" });
-
-/** The result card is a scrollable sheet (max-h-45dvh); pre-scroll the
- *  button with instant behavior because Chromium's scrollIntoViewIfNeeded
- *  (which Playwright's click uses) is pathologically slow inside this
- *  MapLibre layout. Real users scroll the sheet by touch/wheel, so this
- *  masks no production behavior. */
-async function clickNextPlace(page: Page): Promise<void> {
-  const btn = nextPlaceButton(page);
-  await expect(btn).toBeVisible({ timeout: 10_000 });
-  await btn.evaluate((el) =>
-    el.scrollIntoView({ block: "nearest", behavior: "instant" as ScrollBehavior }),
-  );
-  await btn.click();
-}
-
-const resultCard = (page: Page) =>
-  page.getByRole("region", { name: "Result" });
-
-/**
- * Commit a guaranteed miss: tap (500, 400); on the ~1% chance it lands
- * inside the 750 km hit radius, advance and retry.
- */
-async function commitMiss(
-  page: Page,
-): Promise<{ committedAt: number }> {
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const { phase, committedAt } = await commitPin(page, 500, 400);
-    if (phase === "done") return { committedAt };
-    // Rare hit: move on and try the next place.
-    await clickNextPlace(page);
-    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
-  }
-  throw new Error("commitMiss: (500, 400) hit three places in a row");
-}
-
-/**
- * Commit a guaranteed hit: tap the true spot's exact screen point. When the
- * spot is on the far side of the globe (or under chrome), burn the place
- * with a miss and advance.
- */
-async function commitHit(
-  page: Page,
-): Promise<{ committedAt: number }> {
-  for (let attempt = 0; attempt < 10; attempt++) {
-    const spot = await spotViewportPoint(page);
-    const inView =
-      spot &&
-      spot.x >= 0 &&
-      spot.x <= 1440 &&
-      spot.y >= 0 &&
-      spot.y <= 900;
-    if (inView && (await tapHitsMap(page, spot.x, spot.y))) {
-      const { phase, committedAt } = await commitPin(page, spot.x, spot.y);
-      if (phase === "story") return { committedAt };
-      // Tapped the projected spot but missed: the spot is on the globe's
-      // far side (project() returns a viewport point even for occluded
-      // locations). Burn this place and try the next.
-    } else {
-      // Spot not tappable: burn this place with a miss, move on.
-      await commitMiss(page);
-    }
-    await clickNextPlace(page);
-    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
-  }
-  throw new Error("commitHit: no tappable spot in 10 attempts");
-}
 
 test("miss: the gap view frames pin + spot; card leads with distance, subscript, story, source", async ({
   page,
