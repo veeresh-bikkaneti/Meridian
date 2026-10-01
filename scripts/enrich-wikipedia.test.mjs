@@ -17,6 +17,7 @@ import {
   pickArticle,
   haversineKm,
   buildHistoryForCacheRec,
+  isNetError,
 } from "./enrich-wikipedia.mjs";
 
 describe("normalizeTitle", () => {
@@ -213,5 +214,21 @@ describe("buildHistoryForCacheRec", () => {
   it("skips non-matched records with the reason", () => {
     const built = buildHistoryForCacheRec({ status: "no-article" }, { blurb: "x" });
     assert.equal(built.skipped, "no-article");
+  });
+});
+
+describe("isNetError", () => {
+  it("classifies undici fetch failures and aborts as network errors", () => {
+    assert.equal(isNetError(new TypeError("fetch failed")), true);
+    const abort = new Error("This operation was aborted");
+    abort.name = "AbortError";
+    assert.equal(isNetError(abort), true);
+    assert.equal(isNetError(new Error("getaddrinfo EAI_AGAIN en.wikipedia.org")), true);
+    assert.equal(isNetError(new Error("connect ECONNREFUSED 1.2.3.4:443")), true);
+  });
+  it("does not classify HTTP/application errors as network errors", () => {
+    assert.equal(isNetError(new Error("wikipedia 429 for https://…")), false);
+    assert.equal(isNetError(new Error("wikipedia 500 for https://…")), false);
+    assert.equal(isNetError(new Error("no places file")), false);
   });
 });

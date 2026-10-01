@@ -290,6 +290,50 @@ export function haversineKm(aLat, aLon, bLat, bLon) {
 
 let lastStart = 0;
 const inflight = new Set();
+let consecutiveNetErrors = 0;
+let cooldownPromise = null;
+const NET_ERROR_COOLDOWN_AT = 25; // consecutive network failures before pausing
+
+// Circuit breaker: when the network (or Wikipedia) is down, fail-fast error
+// records would burn through the whole queue in minutes and leave everything
+// for a resume pass. Instead, park all workers on one shared cooldown probe
+// until Wikipedia answers again, then continue where we left off.
+async function waitForNetworkRecovery() {
+  if (cooldownPromise) return cooldownPromise;
+  cooldownPromise = (async () => {
+    console.error("[crawl] network failing — pausing until Wikipedia responds…");
+    for (;;) {
+      await new Promise((r) => setTimeout(r, 30_000));
+      try {
+        const ctl = new AbortController();
+        const timer = setTimeout(() => ctl.abort(), 15_000);
+        try {
+          const res = await fetch(
+            "https://en.wikipedia.org/w/api.php?action=query&meta=siteinfo&format=json",
+            { headers: { "User-Agent": USER_AGENT }, signal: ctl.signal },
+          );
+          if (res.ok) break;
+        } finally {
+          clearTimeout(timer);
+        }
+      } catch {
+        // Still down — keep waiting.
+      }
+    }
+    consecutiveNetErrors = 0;
+    cooldownPromise = null;
+    console.error("[crawl] network recovered — resuming");
+  })();
+  return cooldownPromise;
+}
+
+export function isNetError(err) {
+  return (
+    err instanceof TypeError ||
+    err?.name === "AbortError" ||
+    /fetch failed|network|econn|enotfound|etimedout|eai_again/i.test(String(err?.message ?? err))
+  );
+}
 
 async function pacedFetch(url) {
   while (inflight.size >= CONCURRENCY) {
@@ -299,7 +343,8 @@ async function pacedFetch(url) {
   if (wait > 0) await new Promise((r) => setTimeout(r, wait));
   lastStart = Date.now();
   const p = (async () => {
-    for (let attempt = 0; attempt < 4; attempt++) {
+    let attempt = 0;
+    for (;;) {
       // 30 s cap per attempt: a tar-pitted or dead connection becomes a
       // retriable "error" instead of hanging the crawl forever.
       const ctl = new AbortController();
@@ -315,16 +360,24 @@ async function pacedFetch(url) {
           continue;
         }
         if (!res.ok) throw new Error(`wikipedia ${res.status} for ${url.slice(0, 120)}`);
+        consecutiveNetErrors = 0;
         return res.json();
       } catch (err) {
-        if (attempt === 3) throw err;
-        // Transient network failure — back off, then retry the attempt.
-        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+        if (isNetError(err)) {
+          consecutiveNetErrors++;
+          if (consecutiveNetErrors >= NET_ERROR_COOLDOWN_AT) {
+            await waitForNetworkRecovery();
+            continue; // retry the same attempt after recovery
+          }
+        }
+        attempt++;
+        if (attempt >= 4) throw err;
+        // Transient failure — back off, then retry the attempt.
+        await new Promise((r) => setTimeout(r, 2000 * attempt));
       } finally {
         clearTimeout(timer);
       }
     }
-    throw new Error(`wikipedia: retries exhausted for ${url.slice(0, 120)}`);
   })();
   inflight.add(p);
   try {
