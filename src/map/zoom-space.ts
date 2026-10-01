@@ -385,11 +385,11 @@ export class ZoomSpaceController {
   /**
    * Post-commit reveal choreography. The controller — not the caller —
    * classifies "big miss" from pin/spot geometry (design §6: haversine
-   * > 500 km, or > 1.5 × the region's greater side in km): a big miss pulls
-   * back toward the globe, holds REVEAL_HOLD_MS (the `reveal-hold` intent arms
-   * the adapter timer), then settles; anything smaller gets a single settle beat.
-   * Under reduced motion both jump straight to the final framing.
-   * Tile-honesty gate: no choreography over the error overlay.
+   * > 500 km, or > 1.5 × the region's greater side in km): a big miss
+   * releases back to the globe projection first so the pin+spot fit is
+   * honest, then the single gap-view ease runs. Under reduced motion the
+   * gap framing is a synchronous jump cut. Tile-honesty gate: no
+   * choreography over the error overlay.
    */
   requestReveal(request: RevealRequest): ZoomSpaceIntent[] {
     if (request.tileFailed) return [];

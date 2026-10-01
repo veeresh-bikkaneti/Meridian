@@ -5,6 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
+import { isHit } from "@/game/radius";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
@@ -224,6 +225,8 @@ function buildRevealRequest(
     spot: [variation.spot.lon, variation.spot.lat],
     settleCenter,
     settleZoom: camera?.zoom ?? map.getZoom(),
+    // Hit vs miss drives the controller's light-confirmation vs gap-view branch.
+    hit: isHit(variation.kilometers, variation.radiusKm),
     // Honesty gate: no choreography over the error overlay.
     tileFailed: tileStatus.kind === "failed",
     // Camera truth at request time (resyncs the controller's tracked
@@ -356,12 +359,22 @@ export function SatelliteMap(props: {
   marks?: readonly MapMark[];
   variation?: MapVariation | null;
   /**
-   * Cinematic tour: the controller emits `tour-done` when the answer-reveal
-   * tour reaches its end state (or is skipped) — the app shows the result
-   * card over the rooftop view. Never fires before the tour; the card must
-   * not appear mid-choreography.
+   * E2E hook (DOM contract, follows the data-zoom/data-tile-status pattern):
+   * the current place's true-spot coordinates. The adapter exposes
+   * `__spotScreen()` on the wrapper element, projecting the spot to
+   * wrapper-relative CSS pixels through the live camera so specs can tap
+   * exact spots deterministically (e.g. a guaranteed hit). Null when there
+   * is no active place.
    */
-  onTourComplete?: () => void;
+  spot?: { lon: number; lat: number } | null;
+  /**
+   * Gap-view reveal: the controller emits `reveal-done` when the reveal
+   * reaches its end state (played or skipped) — the app shows the result
+   * card over the pin+spot framing (a hit leaves the camera where the pin
+   * landed). Never fires before the reveal; the card must not appear
+   * mid-choreography.
+   */
+  onRevealComplete?: () => void;
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -371,8 +384,10 @@ export function SatelliteMap(props: {
   const onAimRef = useRef(props.onAim);
   const onConfirmRef = useRef(props.onConfirm);
   const onClearAimRef = useRef(props.onClearAim);
-  const onTourCompleteRef = useRef(props.onTourComplete);
-  onTourCompleteRef.current = props.onTourComplete;
+  const onRevealCompleteRef = useRef(props.onRevealComplete);
+  onRevealCompleteRef.current = props.onRevealComplete;
+  const spotRef = useRef<{ lon: number; lat: number } | null>(null);
+  spotRef.current = props.spot ?? null;
   const marksRef = useRef(props.marks);
   const variationRef = useRef(props.variation);
   // Zoom-space adapter refs. The controller instance lives here (not in the
@@ -394,7 +409,7 @@ export function SatelliteMap(props: {
   const editionRef = useRef<"state" | "country" | "globe">(props.edition);
   const tapHandlersRef = useRef<{ attach(): void; detach(): void } | null>(null);
   const executeIntentsRef = useRef<(intents: ZoomSpaceIntent[]) => void>(() => {});
-  // Cinematic tour skip: the construction effect owns the canvas listeners;
+  // Reveal skip: the construction effect owns the canvas listeners;
   // the reveal routing effect arms/disarms them via this ref.
   const skipControlRef = useRef<{
     arm: () => void;
@@ -529,7 +544,7 @@ export function SatelliteMap(props: {
         break;
       }
       case "Escape": {
-        // Tour skip: if the cinematic tour is playing (skip armed), Escape
+        // Reveal skip: if the gap-view reveal is playing (skip armed), Escape
         // jumps to the end state — the keyboard equivalent of tap-to-skip.
         if (skipControlRef.current.trySkip()) {
           e.preventDefault();
@@ -641,6 +656,29 @@ export function SatelliteMap(props: {
     maxBoundsRef.current = initialMaxBounds ?? null;
     mapRef.current = map;
 
+    // E2E hook (DOM contract): project the current spot to wrapper-relative
+    // CSS pixels through the live camera. Specs use it to tap exact spots
+    // deterministically (e.g. a guaranteed hit). Returns null when there is
+    // no active place. The closure reads spotRef/mapRef so it always sees
+    // the current place and camera.
+    const wrapperEl = wrapperRef.current!;
+    (
+      wrapperEl as unknown as {
+        __spotScreen?: () => { x: number; y: number } | null;
+      }
+    ).__spotScreen = () => {
+      const spot = spotRef.current;
+      const liveMap = mapRef.current;
+      if (!spot || !liveMap) return null;
+      const p = liveMap.project([spot.lon, spot.lat]);
+      const containerRect = liveMap.getCanvasContainer().getBoundingClientRect();
+      const wrapperRect = wrapperEl.getBoundingClientRect();
+      return {
+        x: p.x + (containerRect.left - wrapperRect.left),
+        y: p.y + (containerRect.top - wrapperRect.top),
+      };
+    };
+
     // Design §2: the starfield mounts behind the map container (first child
     // of the wrapper, own absolute positioning + dark fallback, canvases
     // pointer-events-none). The MapLibre canvas is alpha:true with no
@@ -651,14 +689,9 @@ export function SatelliteMap(props: {
     controllerRef.current = controller;
 
     let alive = true;
-    let holdTimer = 0;
-    let tourTimer = 0;
-    // Cinematic tour: the throbbing spot marker (beat 2). Adapter-owned DOM;
-    // created on `pulse-spot`, removed on `clear-pulse` / tour end / unmount.
-    let pulseMarker: Marker | null = null;
-    // Cinematic tour skip: tap-to-skip is armed while the post-commit
-    // choreography (reveal beat + tour) can run, disarmed on `tour-done`.
-    // The controller's skipChoreography() is a no-op outside those beats, so
+    // Gap-view reveal skip: tap-to-skip is armed while the post-commit
+    // reveal beat can run, disarmed on `reveal-done`.
+    // The controller's skipChoreography() is a no-op outside that beat, so
     // a stray tap can never wedge the state machine.
     let skipArmed = false;
     let skipDown: { x: number; y: number } | null = null;
@@ -671,9 +704,8 @@ export function SatelliteMap(props: {
      */
     const executeIntentsInner = (intents: ZoomSpaceIntent[]) => {
       if (!alive) return;
-      // Shared by `paint-highlight` (narrow completion) and `flash-region`
-      // (tour beat 1): the painter is idempotent, so re-painting replays the
-      // gold flash. Same style-load discipline as the original case below.
+      // Shared by `paint-highlight` (narrow completion): the painter is
+      // idempotent, so re-painting replays the gold flash. Same style-load
       const paintHighlight = (feature: RegionGeometryDTO) => {
         const instant = reducedMotionRef.current;
         const paint = () => {
@@ -772,7 +804,7 @@ export function SatelliteMap(props: {
           case "ease-to": {
             // No style-load gate: same rationale as fly-to above —
             // Camera#easeTo is transform-only. The tile-dependent gate
-            // wedged pull-back/settle/relock beats when tiles hang.
+            // wedged reveal/relock beats when tiles hang.
             if (!alive) return;
             map.easeTo({
               center: intent.center,
@@ -836,7 +868,14 @@ export function SatelliteMap(props: {
             break;
           }
           case "announce": {
-            setAnnouncement(intent.message);
+            // Clear-then-set: consecutive identical messages (e.g. two
+            // misses in a row) would not re-announce if the text node
+            // never changes.
+            setAnnouncement("");
+            requestAnimationFrame(() => {
+              if (!alive) return;
+              setAnnouncement(intent.message);
+            });
             break;
           }
           case "spin": {
@@ -844,59 +883,13 @@ export function SatelliteMap(props: {
             else stopSpin();
             break;
           }
-          case "reveal-hold": {
-            // Design §6: the pull-back's moveend arms this one-shot hold; on
-            // expiry the settle beat starts. beatActive stays set through
-            // the hold, so a stray input cannot wedge the choreography.
-            window.clearTimeout(holdTimer);
-            holdTimer = window.setTimeout(() => {
-              if (!alive) return;
-              const c = controllerRef.current;
-              if (c) executeIntents(c.onRevealHoldTimer());
-            }, intent.durationMs);
-            break;
-          }
-          case "tour-hold": {
-            // Cinematic tour: beats 1+2 (region flash + spot pulse) hold for
-            // TOUR_ANNOUNCE_MS; on expiry the dive (beat 3) starts. Same
-            // one-shot pattern as reveal-hold.
-            window.clearTimeout(tourTimer);
-            tourTimer = window.setTimeout(() => {
-              if (!alive) return;
-              const c = controllerRef.current;
-              if (c) executeIntents(c.onTourHoldTimer());
-            }, intent.durationMs);
-            break;
-          }
-          case "flash-region": {
-            // Tour beat 1: re-flash the region highlight in gold. The painter
-            // is idempotent — re-painting replays the flash transition.
-            paintHighlight(intent.feature);
-            break;
-          }
-          case "pulse-spot": {
-            // Tour beat 2: throbbing marker at the answer's exact spot.
-            setPulseMarker(intent.center);
-            break;
-          }
-          case "clear-pulse": {
-            setPulseMarker(null);
-            break;
-          }
-          case "tour-done": {
-            // The tour reached its end state (played or skipped): the app
-            // shows the result card over the rooftop view. Disarm skip —
-            // the choreography is over.
+          case "reveal-done": {
+            // The reveal reached its end state (played or skipped): the app
+            // shows the result card over the pin+spot framing (a hit leaves
+            // the camera where the pin landed). Disarm skip — the
+            // choreography is over.
             disarmSkip();
-            onTourCompleteRef.current?.();
-            break;
-          }
-          case "set-max-zoom": {
-            // Globe edition: lift the maxZoom cap for the tour's rooftop
-            // dive; the return beat restores it. Transform-adjacent but not
-            // camera motion — safe to apply immediately.
-            if (!alive) return;
-            map.setMaxZoom(intent.maxZoom);
+            onRevealCompleteRef.current?.();
             break;
           }
           default: {
@@ -978,35 +971,8 @@ export function SatelliteMap(props: {
     // crosshair (never pan), implemented in onMapKeyDown below.
     map.keyboard.disable();
 
-    // --- Cinematic tour: pulse marker + tap-to-skip ---
-    // The pulse marker is a gold dot with a continuously throbbing ring at
-    // the answer's spot (tour beat 2). It sits above the variation's spot
-    // marker and is removed when the tour ends or is skipped.
-    const setPulseMarker = (center: [number, number] | null) => {
-      pulseMarker?.remove();
-      pulseMarker = null;
-      if (!alive || center === null) return;
-      const el = document.createElement("div");
-      el.style.position = "relative";
-      el.style.width = "18px";
-      el.style.height = "18px";
-      el.setAttribute("aria-hidden", "true");
-      const dot = document.createElement("div");
-      dot.style.position = "absolute";
-      dot.style.inset = "0";
-      dot.style.borderRadius = "999px";
-      dot.style.background = "#f2c14e";
-      dot.style.border = "2px solid rgba(10, 12, 16, 0.85)";
-      const ring = document.createElement("div");
-      ring.className = "meridian-tour-pulse";
-      el.appendChild(dot);
-      el.appendChild(ring);
-      pulseMarker = new Marker({ element: el, anchor: "center" })
-        .setLngLat(center)
-        .addTo(map);
-    };
     // Tap-to-skip: a tap (not a drag) on the map canvas during the
-    // post-commit choreography jumps to the tour's end state. Taps on
+    // post-commit reveal beat jumps to the reveal's end state. Taps on
     // interactive chrome (zoom buttons, etc.) are real controls, never skip.
     // The canvas container holds only the canvas + markers, so the guard is
     // belt-and-braces.
@@ -1044,7 +1010,7 @@ export function SatelliteMap(props: {
       container.removeEventListener("pointerup", onSkipPointerUp);
     };
     // Keyboard skip: Escape (or any key the wrapper routes here) during the
-    // armed window jumps to the tour's end state. Returns true if a skip ran.
+    // armed window jumps to the reveal's end state. Returns true if a skip ran.
     const trySkip = (): boolean => {
       if (!skipArmed || !alive) return false;
       const c = controllerRef.current;
@@ -1235,8 +1201,9 @@ export function SatelliteMap(props: {
       const ctl = controllerRef.current;
       if (!ctl) return;
       executeIntents(ctl.onMoveEnd(snapshot()));
-      // The reveal hold is armed by the `reveal-hold` intent the pull-back's
-      // moveend returns (executor case above) — not here.
+      // A flushed queued reveal beat starts here (not via the React effect),
+      // so arm tap-to-skip for it as well.
+      if (ctl.beatKind === "reveal") skipControlRef.current.arm();
     });
 
     map.on("load", () => {
@@ -1326,11 +1293,7 @@ export function SatelliteMap(props: {
       controllerRef.current = null;
       tapHandlersRef.current = null;
       window.clearTimeout(watchdog);
-      window.clearTimeout(holdTimer);
-      window.clearTimeout(tourTimer);
       disarmSkip();
-      pulseMarker?.remove();
-      pulseMarker = null;
       stopSpin();
       destroyStarfield.destroy();
       detachTapHandlers();
@@ -1394,17 +1357,17 @@ export function SatelliteMap(props: {
   }, [markKey]);
 
   // Reveal routing (design §6): variation arrival goes through the
-  // controller's reveal beat — the controller classifies big-miss from
-  // pin/spot geometry and emits pull-back + hold + settle (or a direct
-  // settle); the camera beat is the controller's, not a local fitBounds.
-  // The settle chains into the cinematic answer-reveal tour (region flash →
-  // spot pulse → rooftop dive); `tour-done` tells the app to show the
-  // result card. A tap on the canvas during the choreography skips it.
+  // controller's reveal beat — a hit completes synchronously (light
+  // confirmation, no camera move); a miss eases to the pin+spot fit framing
+  // (the gap view) and `reveal-done` tells the app to show the result card.
+  // The camera beat is the controller's, not a local fitBounds. A tap on the
+  // canvas during the miss beat skips it.
   // A non-null → null transition is the continue-to-next-place (or
   // run-done/menu) handoff: the documented ungated clear path
   // (clearReveal), the controller's per-place reset (resetForNextPlace),
   // then the return beat (beginReturn) easing the camera back out to the
-  // region framing so the next question doesn't start at rooftop zoom.
+  // region framing so the next question doesn't start at the gap-view
+  // framing.
   // The controller's per-place transient state is also reset here
   // (resetForNextPlace): the terminal revealDone latch must not leak into
   // the next place's aim phase, or the T_OUT / T_IN auto-thresholds would
@@ -1440,14 +1403,16 @@ export function SatelliteMap(props: {
     );
     executeIntentsRef.current(controller.requestReveal(request));
     if (request.tileFailed) {
-      // Honesty gate: no choreography over the error overlay — the tour is
-      // vacuous, so complete it immediately and show the result card (the
-      // pre-tour behavior).
-      onTourCompleteRef.current?.();
-    } else {
-      // Arm tap-to-skip for the post-commit choreography (reveal beat +
-      // tour). The reduced-motion path completes synchronously — `tour-done`
-      // disarms in the same batch, so the arm is a no-op there.
+      // Honesty gate: no choreography over the error overlay — the reveal is
+      // vacuous, so complete it immediately and show the result card.
+      onRevealCompleteRef.current?.();
+    } else if (controller.beatKind === "reveal") {
+      // A reveal beat is running (animated miss): arm tap-to-skip. The hit
+      // and reduced-motion paths complete synchronously — reveal-done already
+      // fired in the same batch, so there is no beat left to skip and the
+      // skip listener must not stay armed into the next aim phase. A near
+      // miss whose ease-to is a no-op also completes synchronously via an
+      // immediate moveend — beatKind is already clear, so no arming.
       skipControlRef.current.arm();
     }
   }, [variationKey, props.mode, props.bounds]);
@@ -1463,7 +1428,7 @@ export function SatelliteMap(props: {
       data-center-lat={center.lat.toFixed(4)}
       data-tile-status={tileStatus.kind}
       aria-roledescription="map"
-      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the answer tour while it plays."
+      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the reveal animation while it plays."
       // Design §7: the intro beat owns the screen — the wrapper is hidden
       // from assistive tech and uninteractable until narrow completion
       // releases it (the `announce` intent then fires through the live

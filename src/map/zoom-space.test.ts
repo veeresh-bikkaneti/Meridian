@@ -836,7 +836,7 @@ test("globe edition: degenerate narrow-in, thresholds inert", () => {
   assert.equal(c.state, "GLOBE");
 });
 
-/* --- Cinematic answer-reveal tour --- */
+/* --- Gap-view answer reveal --- */
 
 function globeController(reducedMotion = false): ZoomSpaceController {
   return new ZoomSpaceController({
