@@ -4,9 +4,10 @@
  * dead-end error.
  *
  * `__MERIDIAN_BUILD_ID__` is baked into the bundle by vite.config.ts
- * (`resolveBuildId()` in scripts/build-id.mjs); `public/build-meta.json`
- * carries the same ID on the server, written by scripts/write-build-meta.mjs
- * during `prebuild`/`prebuild:pages`. A mismatch means the deploy moved on
+ * (`buildIdForBundle()`: prebuild-written `public/build-meta.json` first,
+ * `resolveBuildId()` fallback in scripts/build-id.mjs); the same meta file
+ * is served on the server, written by scripts/write-build-meta.mjs during
+ * `prebuild`/`prebuild:pages`. A mismatch means the deploy moved on
  * while this tab was open — the old content-hashed chunk URLs 404.
  */
 
