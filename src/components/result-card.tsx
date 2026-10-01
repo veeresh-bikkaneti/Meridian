@@ -142,17 +142,31 @@ export function ResultCard({
   }, [phase, dismissed, place?.name]);
 
   if (dismissed) {
+    // Dismissing the card must never strand the run: the restore pill keeps
+    // company with the continue action, so hiding the card can't funnel the
+    // player into "End game" as the only visible way forward.
     return (
       <div className="pointer-events-none absolute bottom-[max(16px,env(safe-area-inset-bottom))] left-2.5 z-20">
         <Fade reduced={reduced}>
-          <button
-            type="button"
-            aria-label="Show result"
-            onClick={() => onDismissedChange(false)}
-            className={`pointer-events-auto flex h-11 items-center rounded-full px-4 text-sm font-medium text-white ${CHROME}`}
-          >
-            Result
-          </button>
+          <div className="pointer-events-auto flex items-center gap-2">
+            <button
+              type="button"
+              aria-label="Show result"
+              onClick={() => onDismissedChange(false)}
+              className={`flex h-11 items-center rounded-full px-4 text-sm font-medium text-white ${CHROME}`}
+            >
+              Result
+            </button>
+            {place ? (
+              <button
+                type="button"
+                onClick={onContinue}
+                className="flex h-11 items-center rounded-full bg-fg px-4 text-sm font-medium text-bg transition-opacity hover:opacity-90"
+              >
+                Next place
+              </button>
+            ) : null}
+          </div>
         </Fade>
       </div>
     );
@@ -243,12 +257,16 @@ export function ResultCard({
               </p>
               <p
                 data-testid="miss-subscript"
-                className="text-xs leading-relaxed text-white/70 line-clamp-2"
+                className="text-xs leading-relaxed text-white/70"
                 title={`White pin is your guess · gold is the true spot. ${storyLede}`}
               >
-                White pin is your guess · gold is the true spot.
+                <span className="text-white/60">
+                  White pin is your guess · gold is the true spot.
+                </span>
                 <br />
-                {storyLede}
+                <span className="mt-1 block text-sm leading-relaxed text-white/85">
+                  {storyLede}
+                </span>
               </p>
               {drop && drop.streakBefore >= 2 ? (
                 <p className="text-sm text-amber-100">
