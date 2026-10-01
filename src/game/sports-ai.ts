@@ -84,11 +84,14 @@ export function buildSportsSentence(teams: AiSportsTeam[]): string {
 export function withSportsLine(story: string, teams: AiSportsTeam[]): string {
   const sentence = buildSportsSentence(teams);
   // Period-tolerant: team names like "D.C. United" and "St. Louis City SC"
-  // contain periods, so [^.] can never span the sentence — match everything
-  // from "Home of the" to the final period at end of string instead. The
-  // anchor means only a trailing sports sentence can match.
-  if (/ Home of the .+\.\s*$/.test(story)) {
-    return story.replace(/ Home of the .+\.\s*$/, ` ${sentence}`);
+  // contain periods, so [^.] can never span the sentence. Anchor on the LAST
+  // "Home of the" occurrence and require the parenthesized league before the
+  // final period — every baked/AI sports sentence ends "(LEAGUE)." — so a
+  // trailing non-sports sentence, or an earlier "Home of the" mention, can
+  // never be eaten by a greedy match.
+  const idx = story.lastIndexOf(" Home of the ");
+  if (idx !== -1 && / \([A-Z]+\)\.\s*$/.test(story)) {
+    return `${story.slice(0, idx)} ${sentence}`;
   }
   return `${story} ${sentence}`;
 }

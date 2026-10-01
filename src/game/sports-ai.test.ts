@@ -203,6 +203,23 @@ test("withSportsLine replaces sentences with periods in team names (D.C., St. Lo
   ]);
 });
 
+test("withSportsLine never eats a trailing non-sports sentence or an earlier mention", () => {
+  // Greedy-match regression: a mid-story "Home of the" followed by trailing
+  // text must fail closed (append), never swallow the trailing sentence.
+  const trailing =
+    "Green Bay is a county seat in eastern Wisconsin. Home of the Green Bay Packers (NFL). It is nice.";
+  assert.equal(
+    withSportsLine(trailing, [{ team: "Green Bay Packers", league: "NFL" }]),
+    `${trailing} Home of the Green Bay Packers (NFL).`,
+  );
+  // Two occurrences: replacement starts at the LAST "Home of the".
+  const twice = "Home of the brave. Home of the Green Bay Packers (NFL).";
+  assert.equal(
+    withSportsLine(twice, [{ team: "Milwaukee Bucks", league: "NBA" }]),
+    "Home of the brave. Home of the Milwaukee Bucks (NBA).",
+  );
+});
+
 test("geonameIdOf parses chunk ids", () => {
   assert.equal(geonameIdOf("gn-5254962"), "5254962");
   assert.equal(geonameIdOf("nope"), null);
