@@ -12,11 +12,15 @@
  *      downloaded (availability() === "available"), we ask it for the city's
  *      current Big-5 teams. The AI answer takes precedence when valid.
  *   3. The answer is validated before it ever reaches the DOM: it must parse
- *      as JSON, every league must be NFL/MLB/NBA/NHL/MLS, and every team name
- *      must appear in the verified 154-team roster (sports-notes.json).
- *      Unknown teams are dropped; if nothing valid remains, the curated line
- *      stands. An empty AI answer is also treated as "nothing to add", never
- *      as proof a city has no teams.
+ *      as JSON, every league must be NFL/MLB/NBA/NHL/MLS, every team name
+ *      must appear in the verified 154-team roster (sports-notes.json) with
+ *      its official league, AND every team must belong to the queried city
+ *      per the curated city mapping. A real team from the wrong city, or a
+ *      right team with the wrong league, is dropped. If nothing valid
+ *      remains, the curated line stands. An empty AI answer is treated as
+ *      "nothing to add", never as proof a city has no teams. The AI can only
+ *      ever confirm teams the city verifiably has — it can never invent
+ *      teams, move teams between cities, or change a team's league.
  *   4. Valid results are cached per device (localStorage, 180-day TTL) so the
  *      model is consulted at most twice a year per place.
  *
@@ -35,22 +39,34 @@ export interface AiSportsTeam {
 const LEAGUE_ORDER = ["NFL", "MLB", "NBA", "NHL", "MLS"] as const;
 const LEAGUES = new Set<string>(LEAGUE_ORDER);
 
-/** Verified roster: every official Big-5 team name, lowercase, for validation. */
-const ROSTER_NAMES: Set<string> = (() => {
-  const names = new Set<string>();
+/**
+ * Verified rosters, built once from sports-notes.json (keyed by GeoNames id).
+ * - TEAM_LEAGUE: every official Big-5 team name (lowercase) -> its league.
+ * - CITY_TEAMS: GeoNames id -> the curated team names (lowercase) for that city.
+ * Validation is city-scoped: a team must be in the queried city's set, so a
+ * real team from the wrong city can never reach the DOM.
+ */
+const { TEAM_LEAGUE, CITY_TEAMS } = (() => {
+  const leagues = new Map<string, string>();
+  const cities = new Map<string, Set<string>>();
   const data = sportsNotesJson as unknown as Record<
     string,
     { teams?: Array<{ team?: unknown; league?: unknown }> }
   >;
   for (const [key, entry] of Object.entries(data)) {
     if (key.startsWith("_")) continue;
+    const set = new Set<string>();
     for (const t of entry.teams ?? []) {
-      if (typeof t.team === "string" && t.team.length > 0) {
-        names.add(t.team.toLowerCase());
+      if (typeof t.team !== "string" || t.team.length === 0) continue;
+      const name = t.team.toLowerCase();
+      set.add(name);
+      if (typeof t.league === "string" && t.league.length > 0 && !leagues.has(name)) {
+        leagues.set(name, t.league);
       }
     }
+    cities.set(key, set);
   }
-  return names;
+  return { TEAM_LEAGUE: leagues, CITY_TEAMS: cities };
 })();
 
 /** "Home of the Green Bay Packers (NFL)." — same shape as the build-time blurb. */
@@ -67,8 +83,12 @@ export function buildSportsSentence(teams: AiSportsTeam[]): string {
  */
 export function withSportsLine(story: string, teams: AiSportsTeam[]): string {
   const sentence = buildSportsSentence(teams);
-  if (/ Home of the [^.]+\.\s*$/.test(story)) {
-    return story.replace(/ Home of the [^.]+\.\s*$/, ` ${sentence}`);
+  // Period-tolerant: team names like "D.C. United" and "St. Louis City SC"
+  // contain periods, so [^.] can never span the sentence — match everything
+  // from "Home of the" to the final period at end of string instead. The
+  // anchor means only a trailing sports sentence can match.
+  if (/ Home of the .+\.\s*$/.test(story)) {
+    return story.replace(/ Home of the .+\.\s*$/, ` ${sentence}`);
   }
   return `${story} ${sentence}`;
 }
@@ -87,12 +107,18 @@ export function parseAiJson(text: string): unknown {
 }
 
 /**
- * Validate a parsed AI answer. Keeps only entries with a known league and a
- * team name from the verified roster; dedupes; sorts NFL → MLB → NBA → NHL →
- * MLS. Returns [] when nothing survives (caller treats that as "no override").
+ * Validate a parsed AI answer against the queried city's curated roster.
+ * Keeps only entries with a known league, a team name from the verified
+ * global roster, the team's official league, and membership in the city's
+ * team set; dedupes; sorts NFL → MLB → NBA → NHL → MLS. Returns [] when
+ * nothing survives or the city is unknown (caller treats that as "no
+ * override"). The AI can only confirm teams the city verifiably has — a
+ * wrong-city team or a league mismatch never survives.
  */
-export function validateAiTeams(raw: unknown): AiSportsTeam[] {
+export function validateAiTeams(raw: unknown, geonameId: string | null): AiSportsTeam[] {
   if (!Array.isArray(raw)) return [];
+  const cityTeams = geonameId ? CITY_TEAMS.get(geonameId) : undefined;
+  if (!cityTeams) return [];
   const seen = new Set<string>();
   const out: AiSportsTeam[] = [];
   for (const item of raw) {
@@ -102,8 +128,10 @@ export function validateAiTeams(raw: unknown): AiSportsTeam[] {
     const name = team.trim();
     if (name.length === 0 || name.length > 60) continue;
     if (!LEAGUES.has(league)) continue;
-    if (!ROSTER_NAMES.has(name.toLowerCase())) continue;
     const key = name.toLowerCase();
+    const officialLeague = TEAM_LEAGUE.get(key);
+    if (!officialLeague || officialLeague !== league) continue;
+    if (!cityTeams.has(key)) continue;
     if (seen.has(key)) continue;
     seen.add(key);
     out.push({ team: name, league });
@@ -151,7 +179,7 @@ export function readCachedTeams(geonameId: string): AiSportsTeam[] | null {
       s.removeItem(CACHE_PREFIX + geonameId);
       return null;
     }
-    const teams = validateAiTeams(parsed.teams);
+    const teams = validateAiTeams(parsed.teams, geonameId);
     // validateAiTeams([]) === [] — but we must distinguish "cached empty"
     // from "corrupt entry". Re-check the raw shape for the empty case.
     if (teams.length === 0 && !Array.isArray(parsed.teams)) return null;
@@ -241,11 +269,13 @@ const QUERY_TIMEOUT_MS = 30_000;
 /**
  * Ask the on-device model for a city's teams. `openSession` is injectable for
  * tests; by default it creates a real Prompt API session at temperature 0.
- * Returns the validated teams, or null when the model is unusable / says
- * nothing usable. Never throws.
+ * The answer is validated against the city's curated roster (city-scoped, so
+ * a wrong-city team can never survive). Returns the validated teams, or null
+ * when the model is unusable / says nothing usable. Never throws.
  */
 export async function queryAiTeams(
   cityLabel: string,
+  geonameId: string | null,
   openSession?: () => Promise<PromptSession>,
 ): Promise<AiSportsTeam[] | null> {
   const open = openSession ?? (async () => {
@@ -258,19 +288,21 @@ export async function queryAiTeams(
     }
   });
   let session: PromptSession | null = null;
+  let timer: ReturnType<typeof setTimeout> | undefined;
   try {
     session = await open();
     const reply = await Promise.race([
       session.prompt(buildPrompt(cityLabel)),
-      new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error("ai query timeout")), QUERY_TIMEOUT_MS),
-      ),
+      new Promise<never>((_, reject) => {
+        timer = setTimeout(() => reject(new Error("ai query timeout")), QUERY_TIMEOUT_MS);
+      }),
     ]);
-    const teams = validateAiTeams(parseAiJson(reply));
+    const teams = validateAiTeams(parseAiJson(reply), geonameId);
     return teams.length > 0 ? teams : null;
   } catch {
     return null;
   } finally {
+    if (timer !== undefined) clearTimeout(timer);
     try {
       session?.destroy();
     } catch {
@@ -319,7 +351,7 @@ export function useAiSportsTeams(
 
     (async () => {
       if (!(await browserAiAvailable())) return;
-      const teams = await queryAiTeams(cityLabelForPlace(place));
+      const teams = await queryAiTeams(cityLabelForPlace(place), gid);
       if (cancelled) return;
       // Cache the outcome either way (empty = "checked, nothing to add") so
       // we don't wake the model on every view of the same place.
