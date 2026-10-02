@@ -102,6 +102,9 @@ function toStarter(
     lon: place.lon,
     lat: place.lat,
     story: hasHistory ? `${place.history} ${place.blurb}` : place.blurb,
+    // The history hook travels separately so the AI story fallback can tell
+    // enriched cards (skip) from blurb-only cards (fire).
+    history: hasHistory ? place.history : undefined,
     sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
     sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
     difficulty,

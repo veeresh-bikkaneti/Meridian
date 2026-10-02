@@ -13,6 +13,24 @@ export type Starter = {
   /** 1 (iconic) to 5 (deep cut); scored with the v3 difficulty multiplier. */
   difficulty: Difficulty;
   /**
+   * Optional history-first hook sentence (generated places only, from the
+   * Wikipedia enrichment). Present means the card already teaches — the
+   * on-device AI story fallback stays asleep.
+   */
+  history?: string;
+  /**
+   * Forward-compat for the build-time fact ladder's `fact` field. Undefined
+   * on main until the ladder merges; the AI fallback treats a non-empty
+   * fact the same as history (skip).
+   */
+  fact?: string | null;
+  /**
+   * True for hand-authored curated starters. The on-device AI fallback
+   * never fires for curated places — explicit positive discriminator so the
+   * guarantee doesn't rest on id-format coincidence.
+   */
+  curated?: boolean;
+  /**
    * Display-only origin for places folded into a whole-country pool: a
    * Texas place dealt in a "whole United States" run keeps
    * `originRegionId: "texas"` while `regionId` becomes "united-states".
@@ -45,6 +63,7 @@ function place(
     sourceLabel: "Wikipedia",
     sourceHref: `https://en.wikipedia.org/wiki/${wiki}`,
     difficulty,
+    curated: true,
   };
 }
 
