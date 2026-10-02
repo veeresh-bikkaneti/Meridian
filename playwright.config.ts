@@ -105,6 +105,15 @@ export default defineConfig({
       name: "highlight",
       testMatch: /highlight\.spec\.ts/,
     },
+    {
+      name: "geodetective",
+      testMatch: /geodetective\.spec\.ts/,
+    },
+    {
+      name: "geodetective-reduced",
+      testMatch: /geodetective\.reduced\.spec\.ts/,
+      use: { reducedMotion: "reduce" },
+    },
   ],
   reporter: [
     ["list"],
