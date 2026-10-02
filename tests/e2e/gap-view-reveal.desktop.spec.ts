@@ -21,9 +21,10 @@ import {
  * Educational gap-view reveal (desktop, animated).
  *
  * - Miss: one ease to the pin+spot framing (the gap view). The result card
- *   appears only when the beat completes (~2.2 s) — never instantly — and
- *   leads with the miss distance, a 2-line explanatory subscript, the place
- *   story, and the source.
+ *   normally appears only when the beat completes (~2.2 s) — a near-miss
+ *   no-op fit or tile-failure path can show it sooner — and leads with the
+ *   miss distance, a 2-line explanatory subscript, the place story, and the
+ *   source.
  * - Hit: light confirmation — no camera move; the card appears promptly.
  * - A tap on the map canvas during the miss beat skips to the end state.
  *
