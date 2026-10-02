@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
+import { LoopScreen } from "@/game/loop/LoopScreen";
 import {
   REVEAL_WATCHDOG_MS,
   shouldArmRevealWatchdog,
@@ -355,6 +356,10 @@ export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  // The Daily Loop mounts its own screen outside the endless-run state
+  // machine; it persists under meridian.loop.v1 and never touches the
+  // run/drop keys.
+  const [loopOpen, setLoopOpen] = useState(false);
   // Region-selection async boundary: the GeoNames chunk(s) for the chosen
   // region load here — whole-country runs fetch every subdivision chunk —
   // before any run exists. `starting` shows the loading
@@ -461,6 +466,10 @@ export function GameApp() {
     );
   }
 
+  if (loopOpen) {
+    return <LoopScreen onLeave={() => setLoopOpen(false)} />;
+  }
+
   // Chunk loading state: the region's places are being fetched. The menu is
   // replaced (no double-taps) until the load resolves or fails closed.
   if (starting) {
@@ -562,6 +571,7 @@ export function GameApp() {
       onState={() => setMenu({ kind: "states" })}
       onCountry={() => setMenu({ kind: "countries" })}
       onGlobe={() => openRun("globe", "globe", "Globe")}
+      onLoop={() => setLoopOpen(true)}
       notice={loadNotice}
     />
   );
@@ -571,11 +581,13 @@ function Choose({
   onState,
   onCountry,
   onGlobe,
+  onLoop,
   notice,
 }: {
   onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
+  onLoop: () => void;
   notice?: ReactNode;
 }) {
   return (
@@ -592,7 +604,7 @@ function Choose({
           you choose to end it.
         </p>
       </header>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <EditionCard
           title="State"
           detail="Pick a country, then one of its states. Each state is its own run."
@@ -610,6 +622,12 @@ function Choose({
           detail="The whole earth. Continent outlines at a distance, countries as you close in."
           action="Play the globe"
           onClick={onGlobe}
+        />
+        <EditionCard
+          title="Daily Loop"
+          detail="Five guesses, one mystery place. Each guess unlocks a clue — a new puzzle at midnight UTC."
+          action="Play today's loop"
+          onClick={onLoop}
         />
       </div>
     </main>
