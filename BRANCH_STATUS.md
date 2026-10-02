@@ -16,7 +16,7 @@ PWA wiring for Meridian (GitHub Pages static build). Base: `origin/main` @ `fe76
 - [x] External PWA kit URLs (genspark) returned HTTP 403 via direct fetch — implementation recreated from verified requirements
 
 ## Pending
-- [ ] Focused unit tests for `src/lib/pwa.ts` (waiting detection, prompt-once, no auto-reload, unmount cleanup)
+- [x] Focused unit tests for `src/lib/pwa.ts` (12 tests: waiting detection, prompt-once, no auto-reload, unmount cleanup) — all pass; added to `npm test`
 - [ ] Kit retrieval attempt via live browser (likely still 403; then document in PR)
 - [ ] Technical-architect review + tone/docs/accessibility review; fix findings
 - [ ] Playwright E2E on built Pages artifact (registration, update prompt, no auto-reload, game survives reload, offline fallback)

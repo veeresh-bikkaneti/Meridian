@@ -27,8 +27,8 @@ function viteEnv(): { PROD?: boolean; BASE_URL?: string } {
   return env ?? {};
 }
 
-function swUrl(): string {
-  const base = viteEnv().BASE_URL ?? "/";
+function swUrl(baseUrl: string | undefined): string {
+  const base = baseUrl ?? "/";
   const normalized = base.endsWith("/") ? base : `${base}/`;
   return `${normalized}sw.js`;
 }
@@ -37,19 +37,26 @@ function swUrl(): string {
  * Register the service worker and poll for updates in the background.
  * Resolves with a handle once a waiting worker exists, or null when service
  * workers are unavailable / registration is skipped (dev, insecure context).
+ *
+ * `testEnv` is a test seam: under `node --test`, `import.meta.env` is
+ * undefined, so unit tests inject `{ PROD: true, BASE_URL: ... }` here.
+ * Production callers omit it.
  */
-export async function registerServiceWorker(): Promise<{
+export async function registerServiceWorker(testEnv?: {
+  PROD?: boolean;
+  BASE_URL?: string;
+}): Promise<{
   waiting: ServiceWorker;
   handle: PwaUpdateHandle;
 } | null> {
   if (typeof window === "undefined") return null;
-  const env = viteEnv();
+  const env = testEnv ?? viteEnv();
   if (!env.PROD) return null;
   if (!("serviceWorker" in navigator)) return null;
 
   let registration: ServiceWorkerRegistration;
   try {
-    registration = await navigator.serviceWorker.register(swUrl(), {
+    registration = await navigator.serviceWorker.register(swUrl(env.BASE_URL), {
       scope: env.BASE_URL ?? "/",
     });
   } catch {
