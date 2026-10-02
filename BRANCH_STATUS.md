@@ -17,8 +17,11 @@ PWA wiring for Meridian (GitHub Pages static build). Base: `origin/main` @ `fe76
 - [x] Kit re-attempt via browser text-fetch: still HTTP 403 access-denied — kit is not retrievable; will document in PR (live-browser attempt left for parent agent if desired)
 
 ## Pending
-- [x] Focused unit tests for `src/lib/pwa.ts` (12 tests: waiting detection, prompt-once, no auto-reload, unmount cleanup) — all pass; added to `npm test`
+- [x] Focused unit tests for `src/lib/pwa.ts` (13 tests: waiting detection, prompt-once, no auto-reload incl. first-claim case, unmount cleanup) — all pass; added to `npm test`
 - [x] Kit retrieval attempt via live browser (likely still 403; then document in PR)
-- [ ] Technical-architect review + tone/docs/accessibility review; fix findings
-- [x] Playwright E2E on built Pages artifact (registration, update prompt, no auto-reload, game survives reload, offline fallback) — spec written, running
+- [x] Technical-architect review: NEEDS-CHANGES (2 P1s, details pending from handoff) — must fix
+- [x] Tone/docs/accessibility review: approve-with-notes — fix notes
+- [x] Playwright E2E on built Pages artifact: 5/5 green (registration + no bounce, toast + no auto-reload, Update reloads once, game survives with score, offline shell fallback)
+- [x] Fixed product bug found by E2E: controllerchange reloaded on ANY control change (incl. first-install claim) — now reloads only after player taps Update
+- [ ] Fix review findings, re-verify (unit + E2E)
 - [ ] Rebase onto latest `origin/main`, open PR, merge if all gates green
