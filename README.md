@@ -2,7 +2,7 @@
 
 **Explore the world, one pin at a time—where every guess unlocks a new story**
 
-Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.github.io/Meridian/). The capital M is part of the address. The lowercase path is not this site.
+Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.github.io/Meridian/).
 
 ## A learning journey, not just a quiz
 
@@ -24,24 +24,55 @@ Every card in Meridian is written to the same four rules:
 3. **One memorable hook.** A person, a quote, an event, a movie, a record. If a child can't retell it, the card failed.
 4. **Short and story-like.** Numbers appear only when they teach — a record, a first, a biggest.
 
-The bar is simple: the best cards read like the opening of an adventure, not an encyclopedia entry. Curated, source-backed history notes are being added place by place, starting with the places kids ask about most — and every card already follows the four rules above.
+The bar is simple: the best cards read like the opening of an adventure, not an encyclopedia entry.
 
 ## How a round goes
 
-You pick **State**, **Country**, or **Globe**. A state is any of the 50. A country is one of thirteen. The globe is one shared trail.
+You pick **Globe**, **Country**, or **State** — each level is playable, and countries with states drill down further. A prompt names a place. The map is unlabeled satellite imagery, opened on your region. Tap to place a pin, tap again to move it. Double-tap (or double-click) to drop the pin, or press **Drop pin** when you're sure: that's your one guess, and the pin locks in. Pinch to zoom.
 
-The prompt is a place name. The map is unlabeled satellite imagery. It opens on your region — pinch out any time for the whole Earth, pinch back in and the map locks onto the region again. Tap to place a pin — tap again to move it. Double-tap (or double-click) to drop the pin, or press **Drop pin** when you're sure: that's your one guess, and the pin locks in. Pinch to zoom. Inside the close-enough radius, a short story appears and the next name follows. Outside it, that place is over and the next name follows — the game never ends by itself. Either way the map draws the line from your pin to the spot, labels the distance, and shows the close-enough circle. There is no final round; the trail cycles and you keep playing place after place until you choose **End game** (top-right, away from the map). Ending shows your summary — total score, places played, hits, average distance, best pin — and only after you dismiss it does the game close.
+Inside the close-enough radius, it's a hit — points, a short story, and the next name follows. Outside it, the miss card leads with your distance, draws the line from your pin to the true spot, and tells the place's story anyway: every reveal teaches, right or wrong. Then the next name follows. There is no final round and no game-over on a miss; the trail cycles and you keep playing place after place until you choose **End game**. Ending shows your summary — total score, places played, hits, average distance, best pin.
 
-Every round opens the same way: the globe spins once in the dark, then the camera dives onto your region and the region lights up gold. Pinch out any time for Earth from space — the gold outline stays on your region so you never lose it. Pinch back in and it re-locks.
+Every visit shuffles the trail with a fresh seed, so restarts open on different questions. Places you've already seen are skipped until the pool is exhausted, then the trail reshuffles and the cycle starts over. A reload in the same tab resumes the same session — including mid-reveal, where the answer card reappears instead of stranding the game. There is no account.
 
-Every visit shuffles the trail with a fresh seed, so restarts open on different questions — the same first question no longer repeats deterministically across same-day restarts. Places you've already seen are skipped until the pool is exhausted, then the trail reshuffles and the cycle starts over with a new order. A reload in the same tab resumes the same session's order. A new visit starts at the beginning. There is no account.
+### Scoring
 
-The share line is how far you got, not a score out of 1,000:
+Points follow scoring v3: a distance-based base (MapTap's curve) multiplied by the place's difficulty tier (1x / 1.25x / 1.5x / 2x / 2.5x) and a streak combo, plus a flat +15 region bonus, capped at 400 per place. Misses score 0 and reset the streak. The breakdown is shown on every hit card — no hidden math.
+
+The share line carries the trail, not just a number:
 
 ```
-meridian September 28
-Nebraska · 14
+meridian October 2
+https://veeresh-bikkaneti.github.io/Meridian/
+🎯🏆🌟👏🙂
+1,240 over 14 places · 89 avg/place · 🔥 3 best streak · Nebraska
 ```
+
+## Where the stories come from
+
+Story cards are built by pipelines, not written by hand at play time. Two are in flight:
+
+**Wikipedia enrichment** (`scripts/enrich-wikipedia.mjs`, merged). A resumable, rate-limited crawler resolves each place to its Wikipedia article and extracts hook sentences matching the four principles — named-after stories, birthplaces, battles, foundings, firsts. Every candidate passes a no-fabrication validator: each content word must appear in the source extract, and coordinate/elevation/population/census patterns are banned outright. CLI: `node scripts/enrich-wikipedia.mjs <crawl [limit]|merge|report>`. Honest status: 285 places merged so far; the crawl is still running and further merges follow as it completes. Most cards still show the plain geographic blurb until then.
+
+**Fact pipeline, Phase 1** (infrastructure on feature branches, not yet merged). Five tracks building the next layer: `feat/facts-qid-join` (map all 124,690 places to Wikidata IDs), `feat/facts-wikidata-extract` (pull referenced "named after" / "inception" statements via SPARQL), `feat/facts-wiki-text` (structured named-after/founded facts from article leads), `feat/facts-validator` (hardened no-fabrication gate: relational checks, hedge preservation, date-predicate binding), `feat/facts-eb1911` (1911 Encyclopaedia Britannica supplement for UK/IE places, public domain). Two independent research passes verified the bet: **Wikidata as the ID spine + Wikipedia text as the fact source** — with the honest caveat that structured facts cover only low single digits of small towns on a first pass, so a fallback fact ladder is part of the design.
+
+## Architecture
+
+The game in the browser is four pieces.
+
+- **Atlas.** `src/game/data/geonames/chunks/` holds 124,690 GeoNames places in 64 lazy-loaded region chunks (CC-BY 4.0, attributed in-app), plus a curated starters set. Each place carries name, coordinates, a blurb, difficulty tier, and optional `history`/`wiki` enrichment.
+- **Rules.** `src/game/radius.ts` decides the close-enough circle. `src/game/run.ts` is the endless run state machine (aim → story/done → aim, until explicit End game). `src/game/scoring.ts` is scoring v3. `src/game/share.ts` writes the share line. `src/game/trail.ts` + `src/game/pool.ts` deal fail-closed from the selected region's pool with persistent no-repeat.
+- **Map.** `src/map/satellite-map.tsx` draws Esri World Imagery with MapLibre. State and country cameras open inside that region's box — pinch out and the box releases to a full Earth-from-space view, pinch back in and it re-locks. Tiles are requested by the browser. They are not bundled. The pin is not sent anywhere.
+- **Story.** `src/game/generated-places.ts` composes each card as `history + blurb` when enrichment exists, falling back to the plain blurb. `src/game/rewrite.ts` asks Gemini Nano only when the browser reports the model is already available — a missing model never blocks play. For places with no authored story at all, `src/game/story-ai.ts` may ask Nano for one validated story sentence: the blurb shows immediately and the AI sentence arrives later with a small "AI" badge. Otherwise the written story is what you read.
+
+Nothing about a guess is stored on a server. The in-progress run lives in `sessionStorage`; reloading mid-reveal restores the answer card (or fails safe to the next question) instead of soft-locking.
+
+### Invariants a contributor must know
+
+- **Every place's coordinates must match its claimed location.** Enforced by a build-time gate (`src/game/validate-places.ts`). No exceptions.
+- **Dealing is fail-closed to the selected region.** Questions always come from the selected region's pool; a region that can't load its places doesn't start.
+- **No repeats before pool exhaustion.** Per-session shuffle plus a persistent no-repeat history across visits.
+- **Missing on-device AI must never block question loading or reveal.** The Nano paths are strictly enhancement.
+- **Nothing deploys to production without thorough E2E testing.** Playwright specs in `tests/e2e/` are the gate.
 
 ## Inspired by MapTap, not a copy
 
@@ -49,38 +80,35 @@ Nebraska · 14
 
 | | MapTap | Meridian |
 |---|---|---|
-| Length | Five rounds, then the card is over | Until the first miss, or the list ends |
-| Result | Weighted scores and an emoji row | How many places you placed |
+| Length | Five rounds, then the card is over | Endless — ends only when you choose End game |
+| Result | Weighted scores and an emoji row | Scored per place (v3), emoji strip, running total |
 | Prompt | A clue, then the map | The place name, then the story |
-| Where | One daily world (and practice sets) | Any state, a short country list, or the globe |
+| Where | One daily world (and practice sets) | Globe, countries, and states — every level playable |
 | Map | MapTap's globe | Live satellite, unlabeled — zoom out to space, zoom back to the region |
-| Same puzzle | Yes, for that day's five | Yes, for that region on that UTC date |
+| Same puzzle | Yes, for that day's five | Fresh shuffle every visit; no-repeat until the pool cycles |
 
 MapTap's places are a checked atlas. Meridian's are too. A model does not invent the next place, so Safari and DuckDuckGo play the same trail as Chrome. If Chrome already has Gemini Nano installed, it may rewrite the story after a hit, using only the facts already written. It does not download a model, and it does not change the pin or the count.
 
-## Architecture
-
-The game in the browser is four pieces.
-
-- **Atlas.** `src/game/starters.ts` is the whole trail: name, coordinate, story, and a source link. At least five places for each state and launch country, and twelve for the globe.
-- **Rules.** `src/game/radius.ts` decides the close-enough circle. `src/game/trail.ts` orders a region's places from the UTC date. `src/game/run.ts` continues until a miss or the end of the list. `src/game/share.ts` writes the share line.
-- **Map.** `src/map/satellite-map.tsx` draws Esri World Imagery with MapLibre. State and country cameras open inside that region's box — pinch out and the box releases to a full Earth-from-space view, pinch back in and it re-locks. The globe is the same imagery on a sphere. Tiles are requested by the browser. They are not bundled. The pin is not sent anywhere.
-- **Story rewrite.** `src/game/rewrite.ts` asks Gemini Nano only when the browser reports the model is already available. Otherwise the written story is what you read.
-- **Story fallback.** `src/game/story-ai.ts` asks Gemini Nano for one story sentence when a place has only the generic blurb (no history hook, no ladder fact). The blurb shows immediately; the AI sentence arrives later with a small "AI" badge. Nothing is downloaded and nothing is sent anywhere.
-
-Nothing about a guess is stored on a server. The in-progress run lives in `sessionStorage`.
-
 ## Design
 
-The radius is 12% of the region's greater side: 25–160 km for a state, 40–450 km for a country, and 750 km on the globe. A pin exactly on the radius counts. Landing outside the border does not end the run by itself.
+The radius is 12% of the region's greater side: 25–160 km for a state, 40–450 km for a country, and 750 km on the globe. A pin exactly on the radius counts.
 
-Latitude is 110.574 km per degree. Longitude is 111.32 km per degree times the cosine of the center latitude. The greater of those two sides is the one the percentage is taken from.
+The order is a per-session seeded shuffle of that region's places — restarts open on different questions, and a reload resumes the same session's order.
 
-The order is a seeded shuffle of that region's authored places. Two people who open Nebraska on the same UTC date begin at the same place.
+Stories are short. They are shown on every reveal, right or wrong. The written design history is `docs/superpowers/specs/` and `docs/superpowers/plans/`.
 
-Stories are original and short. They are shown after a hit, not before the pin. United States country places are country-scale features, not a second copy of the state names.
+## Contributing
 
-The written design is `docs/superpowers/specs/2026-09-28-state-editions-design.md`. The build steps are `docs/superpowers/plans/2026-09-28-state-editions.md`.
+Direct pushes to `main` are blocked — all work goes through branches and pull requests. The expected gates on a PR:
+
+```sh
+npx tsc --noEmit        # typecheck must be clean
+npm test                # unit + pipeline tests must pass
+npm run build:pages     # production build must succeed
+npx playwright test     # full E2E suite must pass
+```
+
+Every code change goes through two reviews: a technical-architecture review and a tone/docs/accessibility review. Nothing merges with a failing gate. Stage named files only (`git add -A` is banned while background jobs may be writing into the tree); push branches promptly — the VM is not durable storage for unpushed work.
 
 ## Deployment
 
@@ -96,4 +124,4 @@ npm test
 npm run build:pages
 ```
 
-Imagery: `Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community`. The imagery host sees the area on screen. Your pin stays on the device.
+Imagery: `Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community`. The imagery host sees the area on screen. Your pin stays on the device. Place data: GeoNames (CC-BY 4.0). Wikipedia-derived history notes: CC BY-SA, via the in-app source links.
