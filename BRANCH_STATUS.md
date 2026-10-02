@@ -22,7 +22,7 @@ Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 
 - [ ] Full coverage: 124,312 crawl-eligible places (124,690 dataset denominator)
 - [ ] Final report (unique IDs / extracts / hook candidates) — from `node scripts/enrich-wikipedia.mjs report` when the crawl completes
-- [x] Push to `origin/feat/wikipedia-crawl` — **DONE** via `gh`-authenticated git push (see Done). Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protect this status file and any script work; the cache survives VM replacement in `~/workspace` and is resumable. Latest crawl snapshot (2026-10-02 15:32 CDT): 5,650 records cached; log at 5,500/124,312 — matched 4,426, title-mismatch 281, no-article 100, no-extract 693.
+- [x] Push to `origin/feat/wikipedia-crawl` — **DONE** via `gh`-authenticated git push (see Done). Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protect this status file and any script work; the cache survives VM replacement in `~/workspace` and is resumable. Latest crawl snapshot (2026-10-02 16:33 CDT): process alive (PID 4724, elapsed ~1h33m); `report` — unique non-error IDs 17,809 / 124,312, matched extracts 11,881, hook candidates 1,367; breakdown: matched 11,881, title-mismatch 3,268, no-article 1,439, no-extract 1,221; log at 17,500/124,312.
 
 ## Blockers
 
