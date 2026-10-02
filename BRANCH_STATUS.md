@@ -1,6 +1,6 @@
 # BRANCH_STATUS.md — feat/pwa-wiring
 
-PWA wiring for Meridian (GitHub Pages static build). Base: `origin/main` @ `fe766a2` (rebase to latest before PR).
+PWA wiring for Meridian (GitHub Pages static build). Base: `origin/main` @ `7593a87`.
 
 ## Done
 - [x] App icons generated: `public/icons/icon-192.png`, `icon-512.png`, `icon-512-maskable.png`

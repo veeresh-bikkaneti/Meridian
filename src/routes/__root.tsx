@@ -38,17 +38,26 @@ function PwaUpdateToast() {
   }, []);
 
   if (!handle || dismissed) return null;
+  const dismiss = () => {
+    setDismissed(true);
+    // The toast unmounts, which would drop a keyboard user's focus to
+    // <body>. Hand focus to the main landmark instead (no-op if absent).
+    requestAnimationFrame(() => {
+      const main = document.querySelector("main");
+      if (main instanceof HTMLElement) {
+        if (!main.hasAttribute("tabindex")) main.setAttribute("tabindex", "-1");
+        main.focus({ preventScroll: true });
+      }
+    });
+  };
   return (
-    <div
-      role="status"
-      className="fixed inset-x-4 bottom-4 z-50 mx-auto flex max-w-md items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg shadow-lg"
-    >
-      <p>A new version of Meridian is available.</p>
+    <div className="fixed inset-x-4 bottom-4 z-50 mx-auto flex max-w-md items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg shadow-lg">
+      <p role="status">A new version of Meridian is available.</p>
       <div className="flex shrink-0 items-center gap-2">
         <button
           type="button"
           className="rounded-full px-3 py-1.5 text-sm text-muted hover:text-fg"
-          onClick={() => setDismissed(true)}
+          onClick={dismiss}
         >
           Later
         </button>
@@ -57,7 +66,7 @@ function PwaUpdateToast() {
           className="rounded-full bg-accent px-4 py-1.5 text-sm font-medium text-accent-fg"
           onClick={() => handle.applyUpdate()}
         >
-          Update
+          Update now
         </button>
       </div>
     </div>

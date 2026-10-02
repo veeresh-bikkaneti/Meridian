@@ -210,7 +210,7 @@ test("PWA: tapping Update activates the worker and reloads exactly once", async 
   await triggerWaitingUpdate(page);
   const loads = await loadCount(page);
 
-  await page.getByRole("button", { name: "Update" }).click();
+  await page.getByRole("button", { name: "Update now" }).click();
   // Exactly one reload, then stability (no reload loop).
   expect(loads).not.toBeNull();
   await expectStableLoads(page, (loads as number) + 1);
@@ -249,7 +249,7 @@ test("PWA: an active game survives the update reload with its score", async ({
   await expect.poll(() => readPhase(page), { timeout: 10_000 }).toBe("aim");
 
   // The player chooses Update: the game must come back intact.
-  await page.getByRole("button", { name: "Update" }).click();
+  await page.getByRole("button", { name: "Update now" }).click();
   expect(loads).not.toBeNull();
   await expectStableLoads(page, (loads as number) + 1);
 
