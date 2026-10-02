@@ -101,7 +101,7 @@ export function GuessInput({ onPick }: { onPick: (entry: LoopNameEntry) => void 
         type="text"
         role="combobox"
         aria-expanded={showSuggestions}
-        aria-controls={listboxId}
+        aria-controls={showSuggestions ? listboxId : undefined}
         aria-activedescendant={
           activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined
         }

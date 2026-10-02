@@ -40,6 +40,13 @@ export interface LoopDayState {
 export type LoopStore = Record<string, LoopDayState>;
 
 export const LOOP_STORAGE_KEY = "meridian.loop.v1";
+/**
+ * Separate key in the same namespace: whether the GeoDetective was the
+ * open screen when the tab closed/reloaded. Lets a mid-game reload reopen
+ * the loop screen (whose day state persists under `meridian.loop.v1`)
+ * instead of dropping the player back at the editions menu.
+ */
+export const LOOP_OPEN_KEY = "meridian.loop.open";
 export const LOOP_MAX_GUESSES = 5;
 
 /** Shape of public/loop/clues/{index}.json. NEVER contains the place name or region tags. */

@@ -1,5 +1,6 @@
 import {
   LOOP_MAX_GUESSES,
+  LOOP_OPEN_KEY,
   LOOP_STORAGE_KEY,
   type LoopDayState,
   type LoopGuess,
@@ -140,4 +141,37 @@ export function saveDayState(dateKey: string, state: LoopDayState, now = new Dat
   const store = readLoopStore();
   store[dateKey] = state;
   writeLoopStore(store, now);
+}
+
+function storageAvailable(): boolean {
+  try {
+    return typeof localStorage !== "undefined";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Whether the loop screen was open when the tab last closed/reloaded.
+ * Namespaced alongside the day store so a mid-game reload reopens the
+ * screen instead of dropping the player at the editions menu.
+ */
+export function readLoopOpen(): boolean {
+  if (!storageAvailable()) return false;
+  try {
+    return localStorage.getItem(LOOP_OPEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+/** Record the loop screen's open state (fail-silent when storage is blocked). */
+export function writeLoopOpen(open: boolean): void {
+  if (!storageAvailable()) return;
+  try {
+    if (open) localStorage.setItem(LOOP_OPEN_KEY, "1");
+    else localStorage.removeItem(LOOP_OPEN_KEY);
+  } catch {
+    /* private-mode storage: the loop screen still works for the session */
+  }
 }

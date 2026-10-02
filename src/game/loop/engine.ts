@@ -1,4 +1,5 @@
 import { distanceKm, initialBearing, octantOf } from "../geo.ts";
+import { evaluateGuess } from "./evaluate.ts";
 import {
   LOOP_MAX_GUESSES,
   type LoopDayState,
@@ -44,22 +45,21 @@ export interface LoopGuessPick {
 
 /**
  * Build a fully-formed LoopGuess from the picked place and the day's
- * target (from the clue file): haversine distance, octant toward the
- * target, and warmer/colder against the previous guess (null for the
- * first guess).
+ * target (from the clue file). Delegates the distance/octant/warmer math
+ * to evaluateGuess — the engine never re-implements it.
  */
 export function buildLoopGuess(
   pick: LoopGuessPick,
   target: { lon: number; lat: number },
   prevGuess: LoopGuess | null,
 ): LoopGuess {
-  const distKm = distanceKm([pick.lon, pick.lat], [target.lon, target.lat]);
   return {
     name: pick.name,
-    placeId: pick.placeId,
-    distKm,
-    octant: octantFor(pick.lon, pick.lat, target.lon, target.lat),
-    warmer: prevGuess === null ? null : distKm < prevGuess.distKm,
+    ...evaluateGuess(
+      { id: pick.placeId, lon: pick.lon, lat: pick.lat },
+      target,
+      prevGuess === null ? null : prevGuess.distKm,
+    ),
   };
 }
 
@@ -67,9 +67,10 @@ export function buildLoopGuess(
  * Append a guess to the day state. Win when the guess's placeId matches
  * the clue file's target placeId; loss when all 5 guesses are used.
  * `cluesRevealed` tracks guesses: min(5, 1 + guesses.length) — one new
- * clue card per guess. Submitting on a finished day, or past the guess
- * cap, returns the state unchanged (warmer is re-derived from the
- * previous guess so the engine — not the input — is authoritative).
+ * clue card per guess. Submitting on a finished day, past the guess cap,
+ * or a place that was already guessed returns the state unchanged (a
+ * repeated pick is never a wasted guess). Warmer is re-derived from the
+ * previous guess so the engine — not the input — is authoritative.
  */
 export function submitGuess(
   state: LoopDayState,
@@ -78,6 +79,7 @@ export function submitGuess(
 ): LoopDayState {
   if (state.status !== "playing") return state;
   if (state.guesses.length >= LOOP_MAX_GUESSES) return state;
+  if (state.guesses.some((g) => g.placeId === guess.placeId)) return state;
   const prev = state.guesses[state.guesses.length - 1] ?? null;
   const next: LoopGuess = {
     ...guess,

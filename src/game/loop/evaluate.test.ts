@@ -173,3 +173,19 @@ test("isDuplicateGuess matches on placeId", () => {
   assert.equal(isDuplicateGuess("geonames:9", guesses), false);
   assert.equal(isDuplicateGuess("geonames:1", []), false);
 });
+
+test("rankLoopSuggestions: a non-matching alias never swallows the canonical name", () => {
+  // Real-world shape: "big apple" sorts before "new york city" in the
+  // index and shares its place id. Typing "new york" must still surface
+  // the city — match first, dedupe second.
+  const index: LoopNameEntry[] = [
+    entry({ n: "big apple", id: "geonames:5128581", r: "New York, United States", p: 8804190 }),
+    entry({ n: "new york city", id: "geonames:5128581", r: "New York, United States", p: 8804190 }),
+    entry({ n: "east new york", id: "geonames:5115985", r: "New York, United States", p: 173198 }),
+  ];
+  const out = rankLoopSuggestions(index, "new york");
+  assert.deepEqual(
+    out.map((e) => e.n),
+    ["new york city", "east new york"],
+  );
+});

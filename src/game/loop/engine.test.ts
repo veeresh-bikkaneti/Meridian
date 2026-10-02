@@ -69,11 +69,11 @@ test("submitGuess: win when placeId matches the clue file target", () => {
 test("submitGuess: loss on the fifth wrong guess", () => {
   let state: LoopDayState = freshLoopDayState();
   for (let i = 0; i < 4; i++) {
-    state = submitGuess(state, guess({ name: `Wrong ${i}`, distKm: 500 + i }), TARGET);
+    state = submitGuess(state, guess({ placeId: `geonames:wrong${i}`, name: `Wrong ${i}`, distKm: 500 + i }), TARGET);
     assert.equal(state.status, "playing");
   }
   assert.equal(state.cluesRevealed, 5);
-  const lost = submitGuess(state, guess({ name: "Wrong 4", distKm: 10 }), TARGET);
+  const lost = submitGuess(state, guess({ placeId: "geonames:wrong4", name: "Wrong 4", distKm: 10 }), TARGET);
   assert.equal(lost.status, "lost");
   assert.equal(lost.guesses.length, 5);
   assert.equal(lost.cluesRevealed, 5);
@@ -83,16 +83,34 @@ test("submitGuess: no-ops once the day is won or lost", () => {
   const won = submitGuess(freshLoopDayState(), guess({ placeId: TARGET }), TARGET);
   assert.equal(submitGuess(won, guess(), TARGET), won);
   let lost: LoopDayState = freshLoopDayState();
-  for (let i = 0; i < 5; i++) lost = submitGuess(lost, guess(), TARGET);
+  for (let i = 0; i < 5; i++) lost = submitGuess(lost, guess({ placeId: `geonames:lost${i}` }), TARGET);
   assert.equal(lost.status, "lost");
-  assert.equal(submitGuess(lost, guess(), TARGET), lost);
+  assert.equal(submitGuess(lost, guess({ placeId: "geonames:extra" }), TARGET), lost);
 });
 
 test("submitGuess: warmer is re-derived from the previous guess", () => {
-  const s1 = submitGuess(freshLoopDayState(), guess({ distKm: 1000, warmer: true }), TARGET);
+  const s1 = submitGuess(freshLoopDayState(), guess({ placeId: "geonames:1", distKm: 1000, warmer: true }), TARGET);
   assert.equal(s1.guesses[0]!.warmer, null, "first guess is always null");
-  const s2 = submitGuess(s1, guess({ distKm: 900, warmer: false }), TARGET);
+  const s2 = submitGuess(s1, guess({ placeId: "geonames:2", distKm: 900, warmer: false }), TARGET);
   assert.equal(s2.guesses[1]!.warmer, true, "engine overrides a wrong input value");
-  const s3 = submitGuess(s2, guess({ distKm: 950 }), TARGET);
+  const s3 = submitGuess(s2, guess({ placeId: "geonames:3", distKm: 950 }), TARGET);
   assert.equal(s3.guesses[2]!.warmer, false);
+});
+
+test("submitGuess: a repeated placeId is rejected without consuming a guess", () => {
+  const first = submitGuess(freshLoopDayState(), guess(), TARGET);
+  assert.equal(first.guesses.length, 1);
+  const dup = submitGuess(first, guess({ distKm: 5 }), TARGET);
+  // Same state object identity: nothing appended, no extra clue revealed.
+  assert.equal(dup, first);
+  assert.equal(dup.guesses.length, 1);
+  assert.equal(dup.cluesRevealed, 2);
+  assert.equal(dup.status, "playing");
+});
+
+test("submitGuess: a repeated placeId that would win still wins on the first submission", () => {
+  const won = submitGuess(freshLoopDayState(), guess({ placeId: TARGET }), TARGET);
+  assert.equal(won.status, "won");
+  const again = submitGuess(won, guess({ placeId: TARGET }), TARGET);
+  assert.equal(again, won);
 });

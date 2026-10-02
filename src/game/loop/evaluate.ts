@@ -55,9 +55,13 @@ export function rankLoopSuggestions(
   const seen = new Set<string>();
   const matches: LoopNameEntry[] = [];
   for (const entry of entries) {
+    // Match first, dedupe second: the index holds several aliases per
+    // place id ("big apple" before "new york city"), and checking the id
+    // first would let a non-matching alias swallow the canonical name.
+    if (!entry.n.includes(q)) continue;
     if (seen.has(entry.id)) continue;
     seen.add(entry.id);
-    if (entry.n.includes(q)) matches.push(entry);
+    matches.push(entry);
   }
   matches.sort((a, b) => b.p - a.p);
   return matches.slice(0, limit);
@@ -136,9 +140,13 @@ export function clearLoopIndexCache(): void {
  * `warmer` compares against the previous guess's distance; null for the
  * first guess. Unknown/duplicate guesses are rejected by the caller —
  * see isDuplicateGuess.
+ *
+ * This is the single evaluation implementation: engine.buildLoopGuess
+ * delegates here so distance/octant/warmer can never drift between the
+ * input surface and the state machine.
  */
 export function evaluateGuess(
-  entry: LoopNameEntry,
+  entry: { id: string; lon: number; lat: number },
   target: { lon: number; lat: number },
   prevDistKm: number | null,
 ): Omit<LoopGuess, "name"> {

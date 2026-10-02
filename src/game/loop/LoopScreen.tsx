@@ -5,7 +5,7 @@ import { isNewBuildDeployed } from "@/game/build-staleness";
 import { displayDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { GuessInput } from "./guess-input";
-import { displayLoopName } from "./evaluate";
+import { displayLoopName, fetchLoopIndex, isDuplicateGuess } from "./evaluate";
 import { loopDateKey, loopDayIndex, loopNowFromSearch } from "./day";
 import { getDayState, saveDayState } from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
@@ -58,11 +58,16 @@ function Rise({ children, reduced }: { children: React.ReactNode; reduced: boole
     const frame = requestAnimationFrame(() => setEntered(true));
     return () => cancelAnimationFrame(frame);
   }, []);
+  const stateClass = entered
+    ? reduced
+      ? "opacity-100"
+      : "translate-y-0 opacity-100"
+    : reduced
+      ? "opacity-0"
+      : "translate-y-4 opacity-0";
   return (
     <div
-      className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        entered ? "translate-y-0 opacity-100" : reduced ? "opacity-0" : "translate-y-4 opacity-0"
-      }`}
+      className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] ${stateClass}`}
       style={{ transitionDuration: reduced ? "150ms" : "500ms" }}
     >
       {children}
@@ -129,6 +134,9 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
   // Reload-restore (PR #31 pattern): restore the in-progress day state
   // from the store on mount — never reset it.
   const [dayState, setDayState] = useState<LoopDayState>(() => getDayState(dateKey));
+  // Friendly, screen-reader-announced feedback for rejected picks
+  // (duplicates). Never consumes a guess.
+  const [pickNotice, setPickNotice] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -175,6 +183,13 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
 
   const onPick = (entry: LoopNameEntry) => {
     if (load.phase !== "ready" || dayState.status !== "playing") return;
+    if (isDuplicateGuess(entry.id, dayState.guesses)) {
+      // A repeated pick is never a wasted guess: say so, announce it,
+      // and leave the day state (and the persisted store) untouched.
+      setPickNotice(`You already guessed ${displayLoopName(entry)} — try another place.`);
+      return;
+    }
+    setPickNotice(null);
     const prev = dayState.guesses[dayState.guesses.length - 1] ?? null;
     const next = submitGuess(
       dayState,
@@ -243,6 +258,7 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
           dayState={dayState}
           dateKey={dateKey}
           reduced={reduced}
+          notice={pickNotice}
           onPick={onPick}
           onLeave={onLeave}
         />
@@ -256,6 +272,7 @@ function LoopGame({
   dayState,
   dateKey,
   reduced,
+  notice,
   onPick,
   onLeave,
 }: {
@@ -263,6 +280,7 @@ function LoopGame({
   dayState: LoopDayState;
   dateKey: string;
   reduced: boolean;
+  notice: string | null;
   onPick: (entry: LoopNameEntry) => void;
   onLeave: () => void;
 }) {
@@ -278,7 +296,9 @@ function LoopGame({
             tier={CLUE_TIERS[i]!}
             index={i}
             text={text}
-            revealed={i < dayState.cluesRevealed}
+            // When the day is over there is no "next guess" — reveal every
+            // clue so the locked cards never promise one.
+            revealed={finished || i < dayState.cluesRevealed}
             reduced={reduced}
           />
         ))}
@@ -291,6 +311,11 @@ function LoopGame({
             {guessesLeft <= 2 ? ` — ${guessesLeft} left` : ""}
           </p>
           <GuessInput onPick={onPick} />
+          {notice ? (
+            <p role="status" className="text-sm text-fg">
+              {notice}
+            </p>
+          ) : null}
         </section>
       ) : null}
 
@@ -307,6 +332,7 @@ function LoopGame({
                 <span className="flex shrink-0 items-center gap-2 text-sm text-muted">
                   <span className="tabular-nums">{formatDistance(g.distKm)}</span>
                   <span
+                    role="img"
                     title="Direction from your guess toward the target"
                     aria-label={`target is ${g.octant} of your guess`}
                   >
@@ -465,11 +491,9 @@ function useAnswerName(
     setName(winName);
     if (status !== "lost") return;
     let cancelled = false;
-    fetch(`${assetBase()}loop/names.json`, { cache: "force-cache" })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json() as Promise<LoopNameEntry[]>;
-      })
+    // Reuse the guess input's cached index (a second network fetch is
+    // pointless — the player already loaded it to make their guesses).
+    fetchLoopIndex()
       .then((entries) => {
         if (cancelled) return;
         const entry = entries.find((e) => e.id === clue.placeId);

@@ -18,6 +18,7 @@ import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { LoopScreen } from "@/game/loop/LoopScreen";
+import { readLoopOpen, writeLoopOpen } from "@/game/loop/store";
 import {
   REVEAL_WATCHDOG_MS,
   shouldArmRevealWatchdog,
@@ -358,8 +359,9 @@ export function GameApp() {
   const [menu, setMenu] = useState<Menu | null>(null);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v1 and never touches the
-  // run/drop keys.
-  const [loopOpen, setLoopOpen] = useState(false);
+  // run/drop keys. The open flag (meridian.loop.open) restores the screen
+  // after a reload so a mid-game refresh resumes the day, not the menu.
+  const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
   // Region-selection async boundary: the GeoNames chunk(s) for the chosen
   // region load here — whole-country runs fetch every subdivision chunk —
   // before any run exists. `starting` shows the loading
@@ -467,7 +469,7 @@ export function GameApp() {
   }
 
   if (loopOpen) {
-    return <LoopScreen onLeave={() => setLoopOpen(false)} />;
+    return <LoopScreen onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }} />;
   }
 
   // Chunk loading state: the region's places are being fetched. The menu is
@@ -571,7 +573,7 @@ export function GameApp() {
       onState={() => setMenu({ kind: "states" })}
       onCountry={() => setMenu({ kind: "countries" })}
       onGlobe={() => openRun("globe", "globe", "Globe")}
-      onLoop={() => setLoopOpen(true)}
+      onLoop={() => { writeLoopOpen(true); setLoopOpen(true); }}
       notice={loadNotice}
     />
   );
