@@ -258,7 +258,7 @@ export function extractHookSentence(extractText, placeName = "") {
   return { sentence };
 }
 
-const BANNED_PATTERNS = [
+export const BANNED_PATTERNS = [
   /°/, // coordinates never belong in a kid's card
   /\b\d[\d,]*\s*(m|ft|feet|metres|meters)\b.*\b(above|elevation|a\.s\.l\.)/i,
   /\belevation\b/i,
