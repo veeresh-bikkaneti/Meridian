@@ -5,6 +5,12 @@
  * user-approved activation, NEVER an aggressive cache clear or forced
  * reload. Active game states survive until the player taps "Update".
  *
+ * VERSION carries the build id, stamped in by scripts/fingerprint-sw.mjs
+ * (postbuild:pages) — never edit the __BUILD_ID__ placeholder by hand.
+ * Browsers detect SW updates by byte-comparing this file, so a fresh
+ * VERSION per deploy is what makes the update toast fire at all. It also
+ * versions the cache names, so each deploy gets clean caches.
+ *
  * Strategy:
  * - install: precache the app shell + offline page under a VERSIONED cache.
  *   No skipWaiting here — the new worker waits until the user approves.
@@ -21,7 +27,7 @@
  *   the in-app "Update available" toast after the user taps it.
  */
 
-const VERSION = "meridian-v1";
+const VERSION = "meridian-__BUILD_ID__";
 const SHELL_CACHE = `meridian-shell-${VERSION}`;
 const ASSET_CACHE = `meridian-assets-${VERSION}`;
 const OFFLINE_URL = "/Meridian/offline.html";
@@ -94,8 +100,12 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(SHELL_CACHE).then((c) => c.put(START_URL, copy));
+          // Only cache successful responses — a 404 shell must never
+          // become the offline fallback.
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(SHELL_CACHE).then((c) => c.put(START_URL, copy));
+          }
           return res;
         })
         .catch(() =>

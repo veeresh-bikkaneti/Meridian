@@ -22,7 +22,8 @@
     "format": "prettier --write .",
     "prebuild": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs",
     "prebuild:pages": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs",
-    "prebuild:dev": "node --experimental-strip-types scripts/check-generated-places.mjs"
+    "prebuild:dev": "node --experimental-strip-types scripts/check-generated-places.mjs",
+    "postbuild:pages": "node scripts/fingerprint-sw.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",

@@ -52,7 +52,7 @@ function PwaUpdateToast() {
   };
   return (
     <div className="fixed inset-x-4 bottom-4 z-50 mx-auto flex max-w-md items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg shadow-lg">
-      <p role="status">A new version of Meridian is available.</p>
+      <p role="status">A new version is ready to install.</p>
       <div className="flex shrink-0 items-center gap-2">
         <button
           type="button"

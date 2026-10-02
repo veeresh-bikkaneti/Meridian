@@ -33,22 +33,23 @@ import {
 const DIST = path.resolve("dist/client");
 const APP_URL = "http://127.0.0.1:4123/Meridian/";
 
-let swVersion = "v1";
-
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
-  swVersion = "v1";
   const base = await readFile(path.join(DIST, "sw.js"), "utf8");
-  // The app's own registration URL. Serves v1 until the test bumps it.
+  // Bump VERSION to simulate a new deploy. The built file carries
+  // `meridian-<buildId>` (stamped by fingerprint-sw); match it loosely.
+  const bump = (src: string, version: string) =>
+    src.replace(/const VERSION = "meridian-[^"]*"/, `const VERSION = "meridian-${version}"`);
+  // The app's own registration URL. Serves the built worker as-is.
   await context.route("**/sw.js", async (route) => {
     await route.fulfill({
       status: 200,
-      body: base.replace("meridian-v1", `meridian-${swVersion}`),
+      body: base,
       contentType: "text/javascript; charset=utf-8",
     });
   });
   // The "new deploy": byte-different worker for the same scope.
-  const v2 = base.replace("meridian-v1", "meridian-v2");
+  const v2 = bump(base, "v2");
   await context.route("**/sw2.js", async (route) => {
     await route.fulfill({
       status: 200,
@@ -116,7 +117,7 @@ async function expectStableLoads(
 }
 
 const updateToast = (page: import("playwright/test").Page) =>
-  page.getByText("A new version of Meridian is available.");
+  page.getByText("A new version is ready to install.");
 
 /** Install a byte-different worker for the same scope; it waits behind v1. */
 async function triggerWaitingUpdate(page: import("playwright/test").Page) {
@@ -203,9 +204,6 @@ test("PWA: tapping Update activates the worker and reloads exactly once", async 
 }) => {
   await page.goto(APP_URL);
   await waitForControlled(page);
-  // Serve v2 bytes at sw.js too, so the post-reload re-registration finds a
-  // byte-identical script and installs nothing further.
-  swVersion = "v2";
 
   await triggerWaitingUpdate(page);
   const loads = await loadCount(page);
@@ -230,7 +228,6 @@ test("PWA: an active game survives the update reload with its score", async ({
 }) => {
   await startGlobeRun(page);
   await waitForControlled(page);
-  swVersion = "v2";
 
   // Bank a score in the session, then leave a place in progress.
   await dismissTileOverlayIfPresent(page);
