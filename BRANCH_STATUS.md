@@ -11,6 +11,7 @@ Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 - [x] Tests verified: `node --test scripts/enrich-wikipedia.test.mjs` — 56 tests, 56 pass, 0 fail
 - [x] Typecheck verified: `npx tsc --noEmit` — exit 0, no errors (run in the primary clone after `npm ci` from `package-lock.json`; no new dependencies added)
 - [x] Place count confirmed: 124,690 places — `src/game/data/geonames/manifest.json` `meta.total` / `meta.keptRows` = 124,690, and the sum of `places` across the 64 chunk files in `src/game/data/geonames/chunks/` = 124,690
+- [x] Crawl-eligible count (verified by executing `loadPlaces()`'s filtering logic): 124,312 — `loadPlaces()` excludes 93 curated notable places (`src/game/data/notable-notes.json`) and 285 places already carrying a `history` string (PR #30), with 0 overlap. A crawl on this clone would print `places to crawl: 124,312 (0 cached)`. 124,690 remains the dataset denominator.
 
 ## Pending
 
