@@ -67,6 +67,7 @@ export async function registerServiceWorker(testEnv?: {
   let disposed = false;
   let notified = false;
   let reloaded = false;
+  let updateRequested = false;
   let lastVisibilityCheck = 0;
   let notifyWaiting: ((w: ServiceWorker) => void) | null = null;
 
@@ -113,11 +114,13 @@ export async function registerServiceWorker(testEnv?: {
   document.addEventListener("visibilitychange", onVisibility);
 
   // The new worker takes control after SKIP_WAITING — reload exactly once so
-  // the player gets the fresh shell. Guarded: a reload loop would need the
-  // new bundle to immediately find *another* waiting worker, which cannot
-  // happen from a single update.
+  // the player gets the fresh shell. The reload is gated on updateRequested:
+  // controllerchange also fires for the first-install claim (null -> worker)
+  // and when another tab activates an update — neither may bounce this page.
+  // A reload loop would need the new bundle to immediately find *another*
+  // waiting worker, which cannot happen from a single update.
   const onControllerChange = () => {
-    if (reloaded || disposed) return;
+    if (reloaded || disposed || !updateRequested) return;
     reloaded = true;
     window.location.reload();
   };
@@ -127,6 +130,9 @@ export async function registerServiceWorker(testEnv?: {
     applyUpdate: () => {
       const w = waiting;
       if (!w) return;
+      // The player chose to update — mark it so the controllerchange that
+      // follows activation reloads this page exactly once.
+      updateRequested = true;
       // Ask politely; the worker activates on its own terms, then
       // controllerchange fires and we reload once.
       w.postMessage({ type: "SKIP_WAITING" });

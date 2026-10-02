@@ -313,6 +313,27 @@ describe("registerServiceWorker — applyUpdate", () => {
     result.handle.dispose();
   });
 
+  it("does not reload on controllerchange before the player requests an update", async () => {
+    // First-install claim (null -> worker) and another tab's activation both
+    // fire controllerchange — neither may bounce this page.
+    const dom = installDom();
+    const w = makeWorker();
+    w.state = "installed";
+    const origRegister = dom.sw.register;
+    (dom.sw as Record<string, unknown>).register = async (url: string, o: { scope: string }) => {
+      const reg = await (origRegister as typeof origRegister).call(dom.sw, url, o);
+      (reg as ReturnType<typeof makeRegistration>).waiting = w;
+      return reg;
+    };
+    const result = await registerServiceWorker(PROD);
+    assert.ok(result);
+    // No applyUpdate call: the player has not chosen anything.
+    dom.sw.fire("controllerchange");
+    dom.sw.fire("controllerchange");
+    assert.equal(dom.reloads, 0);
+    result.handle.dispose();
+  });
+
   it("applyUpdate is safe to call twice — the worker is only nudged", async () => {
     const dom = installDom();
     const w = makeWorker();
