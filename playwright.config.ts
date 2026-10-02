@@ -109,6 +109,10 @@ export default defineConfig({
       name: "session-score",
       testMatch: /session-score\.spec\.ts/,
     },
+    {
+      name: "pwa",
+      testMatch: /pwa\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
