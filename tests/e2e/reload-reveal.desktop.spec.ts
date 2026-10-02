@@ -78,8 +78,8 @@ test("reload during reveal: result card re-renders with Next place", async ({
 
   // …and the rehydrated drop must carry the real distance (the bug showed
   // the broken "Pin dropped. ." with an empty distance).
-  const heading = card.locator("p").first();
-  await expect(heading).toContainText("off", { timeout: 5_000 });
+  const distancePara = card.locator("p.font-display").first();
+  await expect(distancePara).toContainText("off", { timeout: 5_000 });
 
   // …and Next place must advance to a fresh question, not strand.
   await clickNextPlace(page);
