@@ -222,6 +222,10 @@ export default defineConfig({
       name: "offline-content",
       testMatch: /offline-content\.spec\.ts/,
     },
+    {
+      name: "facts-ladder-pilot",
+      testMatch: /facts-ladder-pilot\.spec\.ts/,
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });
