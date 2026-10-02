@@ -168,13 +168,16 @@ function main() {
       });
       if (v.length > 0) violations.push(...v.map((m) => `${file}: ${m}`));
 
-      // History hook sentences (scripts/enrich-wikipedia.mjs): shape gate.
-      // The merge-time no-fabrication proof lives in the pipeline; this
-      // keeps hand-edited or corrupted records out of the build.
+      // History hook sentences: shape gate. Wikipedia-extract histories were
+      // proved verbatim by the merge-time gate; curated notable notes
+      // (src/game/data/notable-notes.json) are Veeresh-approved instead.
+      // The length bound fits the longest curated note (512 chars) — it
+      // guards against hand-edited corruption, not brevity. Keep in sync
+      // with assertValidRecord in src/game/generated-places.ts.
       if (place.history !== undefined) {
         const h = place.history;
         const badShape =
-          typeof h !== "string" || h.length < 20 || h.length > 240 || !/[.!?]$/.test(h.trim());
+          typeof h !== "string" || h.length < 20 || h.length > 600 || !/[.!?]$/.test(h.trim());
         const hasFiller = typeof h === "string" && (/°/.test(h) || /\belevation\b/i.test(h));
         if (badShape || hasFiller) {
           violations.push(`${tag}: invalid history hook sentence`);
