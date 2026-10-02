@@ -480,10 +480,12 @@ export function leadFor(fcode, pop, cc) {
  * position inside the region box ("in northwestern Texas") — words a kid can
  * picture. Population and elevation are cut: numbers with no story.
  * (Population returns only as a within-region rank via applyTopRanks, where
- * the number itself teaches relative scale.) Curated notable notes and the
- * roster-validated sports line are appended unchanged.
+ * the number itself teaches relative scale.) The roster-validated sports
+ * line is appended unchanged. Curated notable notes are NOT embedded here —
+ * they travel as the first-class `history` field on the place record so the
+ * runtime composes the card history-first; the blurb stays pure geography.
  */
-export function blurbFor({ name, admin1Name, countryName, pop, fcode, cc, lon, lat, box, notable, sports }) {
+export function blurbFor({ name, admin1Name, countryName, pop, fcode, cc, lon, lat, box, sports }) {
   // The country name keeps its article ("the") in every position: standalone
   // ("the United States"), in the capital sentence, and after a comma
   // ("Texas, the United States"; "Eastern Visayas, the Philippines").
@@ -500,7 +502,6 @@ export function blurbFor({ name, admin1Name, countryName, pop, fcode, cc, lon, l
   } else {
     b = `${name} is ${lead.word} in ${card}${where}.`;
   }
-  if (notable) b += ` ${notable}`;
   const sportsLine = sportsSentence(sports);
   if (sportsLine) b += ` ${sportsLine}`;
   return b;
@@ -676,26 +677,27 @@ async function main() {
     const notable = notableNotes[geonameid];
     const sports = sportsNotes[geonameid];
     // The generator emits only the plain-spoken geographic anchor — it has
-    // no history or fact-ladder facts. composeCardStory() marks the record
-    // hook-missing truthfully, unless a curated notable note already supplies
-    // the hook (audited separately; embedded in the blurb). The enrichment
-    // merge (history) and the fact ladder (fact) clear the marker when they
-    // add a hook, and the on-main Nano fallback covers the runtime gap for
-    // marked records.
+    // no history or fact-ladder facts of its own. The curated notable note,
+    // when present, travels as the first-class `history` field (never inside
+    // the blurb) so composeCardStory() renders it history-first. The
+    // enrichment merge (history) and the fact ladder (fact) clear the
+    // hook-missing marker when they add a hook, and the on-main Nano fallback
+    // covers the runtime gap for marked records.
     const geoBlurb = blurbFor({
       name, admin1Name, countryName, pop,
       fcode: c[7], cc, lon: cardLon, lat,
-      box: cardBox, notable: notable?.note, sports: sports?.teams,
+      box: cardBox, sports: sports?.teams,
     });
-    const composed = composeCardStory({ blurb: geoBlurb });
-    const hookMissing = composed.hookMissing && !notable?.note;
+    const composed = composeCardStory({ history: notable?.note, blurb: geoBlurb });
+    const hookMissing = composed.hookMissing;
     const place = {
       id, name, lon, lat,
       blurb: geoBlurb,
       ...(hookMissing ? { hookMissing: true } : {}),
-      // wiki slug travels so the app can attribute the notable note to
-      // Wikipedia (GeoNames stays credited app-wide in the map footer).
-      ...(notable ? { wiki: notable.wiki } : {}),
+      // The curated notable note is history-first by construction, and the
+      // wiki slug travels so the app can attribute it to Wikipedia
+      // (GeoNames stays credited app-wide in the map footer).
+      ...(notable ? { history: notable.note, wiki: notable.wiki } : {}),
       // iso2 is the gate key: the build-time gate (scripts/check-generated-places.mjs)
       // re-validates every shipped place against the derived country box for
       // its own country code, so the code must travel with the record.

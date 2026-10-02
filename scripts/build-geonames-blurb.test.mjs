@@ -202,14 +202,16 @@ describe("blurbFor — kid-friendly template", () => {
     }
   });
 
-  it("appends the curated notable note unchanged", () => {
+  it("does NOT embed the curated notable note in the blurb", () => {
+    // The notable note travels as the first-class `history` field on the
+    // place record, never inside the blurb (history-first by construction).
     assert.equal(
       blurbFor({
         name: "Austin", admin1Name: "Texas", countryName: "United States",
         pop: 974447, fcode: "PPLA", cc: "US", lon: -97.74, lat: 30.27, box: null,
         notable: "Founded in 1839 and named for Stephen F. Austin.",
       }),
-      "Austin is the capital of Texas, the United States. Founded in 1839 and named for Stephen F. Austin.",
+      "Austin is the capital of Texas, the United States.",
     );
   });
 
