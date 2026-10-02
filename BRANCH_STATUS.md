@@ -20,7 +20,7 @@ PWA wiring for Meridian (GitHub Pages static build). Base: `origin/main` @ `7593
 - [x] Focused unit tests for `src/lib/pwa.ts` (13 tests: waiting detection, prompt-once, no auto-reload incl. first-claim case, unmount cleanup) — all pass; added to `npm test`
 - [x] Kit retrieval attempt via live browser (likely still 403; then document in PR)
 - [x] Technical-architect review: NEEDS-CHANGES (2 P1s, details pending from handoff) — must fix
-- [x] Tone/docs/accessibility review: approve-with-notes — fix notes
+- [x] Tone/docs/accessibility review: approve-with-notes — all notes fixed (role=status on <p>, "Update now", focus to <main> on dismiss, offline :focus-visible, README PWA section, base ref); E2E 5/5 re-verified
 - [x] Playwright E2E on built Pages artifact: 5/5 green (registration + no bounce, toast + no auto-reload, Update reloads once, game survives with score, offline shell fallback)
 - [x] Fixed product bug found by E2E: controllerchange reloaded on ANY control change (incl. first-install claim) — now reloads only after player taps Update
 - [ ] Fix review findings, re-verify (unit + E2E)
