@@ -15,17 +15,19 @@ Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 - [x] Fresh-start decision (Liz, 2026-10-02): start the crawl from 0 on this VM and forget the old `gap-view-reveal` cache — the seed step is superseded, not pending.
 - [x] **Crawl RUNNING** — PID 4724, started 2026-10-02 ~15:00 CDT, `node scripts/enrich-wikipedia.mjs crawl`, log at `.scratch/wikipedia-enrichment/crawl.log`. Startup line: `places to crawl: 124,312 (0 cached)`. First progress snapshot (15:10 CDT): 1,500+ places in ~9 min (~2.8/s), cache ~1,890 records and growing. Resumable: killing/restarting loses nothing — the JSONL cache is the resume point.
 - [x] GitHub App connected (Liz, via Muse connector): OAuth authorized as `veeresh-bikkaneti`; Meridian read access verified via API (`get_file_contents` on `scripts/enrich-wikipedia.mjs`). Standing instruction (Liz, 2026-10-02): keep pushing progressively to the remote branch so a VM crash loses no work.
+- [x] **`gh` CLI authenticated (Liz, device flow, 2026-10-02)** as `veeresh-bikkaneti` (scopes: repo, read:org, gist); `gh auth setup-git` done — plain `git push` now works from this VM.
+- [x] **Branch PUSHED** to `origin/feat/wikipedia-crawl` (first push 2026-10-02 ~15:31 CDT, remote at `80f1faa`). Progressive pushes continue at milestones. No PR opened (Veeresh decides).
 
 ## Pending
 
 - [ ] Full coverage: 124,312 crawl-eligible places (124,690 dataset denominator)
 - [ ] Final report (unique IDs / extracts / hook candidates) — from `node scripts/enrich-wikipedia.mjs report` when the crawl completes
-- [ ] Push to `origin/feat/wikipedia-crawl` — **in progress via the GitHub App API** (the VM's git CLI has no credentials; the connector is the push path). First write attempt (`create_branch`) timed out awaiting its approval card and was NOT performed; no pending approval remains. Every connector write pops a fresh approval card that must be approved promptly. Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protect this status file and any script work; the cache survives VM replacement in `~/workspace` and is resumable.
+- [x] Push to `origin/feat/wikipedia-crawl` — **DONE** via `gh`-authenticated git push (see Done). Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protect this status file and any script work; the cache survives VM replacement in `~/workspace` and is resumable. Latest crawl snapshot (2026-10-02 15:32 CDT): 5,650 records cached; log at 5,500/124,312 — matched 4,426, title-mismatch 281, no-article 100, no-extract 693.
 
 ## Blockers
 
 1. ~~Seed cache absent~~ — **resolved by decision**: Liz directed a fresh start from 0 (2026-10-02); the old cache is forgone.
-2. **Push path is approval-gated.** Git CLI push from this VM still has no credentials. The GitHub App connector can write (create branch, push files) but each write requires a fresh user approval; the first attempt expired unapproved. Until a write is approved, commits stay local on this branch (currently ahead of `origin/main`).
+2. ~~Push path~~ — **resolved**: the GitHub App API path was approval-gated and its branch creation got a 403 (app installation lacks Meridian repo selection — that selection is still outstanding for the *connector*, but no longer needed for pushing). Liz instead authenticated the `gh` CLI (device flow), which is now the working push path.
 
 ## Guardrails honoured
 
