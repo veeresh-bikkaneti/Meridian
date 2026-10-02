@@ -22,12 +22,24 @@ inside geography-first blurbs. Veeresh authorized.
 - [x] Tier 2 gate green on migrated records (`node scripts/lint-cards.mjs` → GATE PASSED,
       124,690 records, 0 curated-note violations)
 - [x] Pipeline unit tests green (build-geonames-blurb + card-compose: 45/45)
+- [x] Linter hardening (`18d5f62`): Tier 2 chunk audit hard-fails
+      `curated-history-missing` + `embedded-history-bypass` regardless of
+      grandfathering (`loadCuratedNotes`/`checkCuratedRecord`, `_`-keys skipped);
+      Tier 1 fixture gate gains 2 good + 3 bad curated fixtures over a synthetic
+      notes map — a missed bite fails the build. Pre-migration data FAILS the
+      gate (94 records × both codes, old gate passed = bypass proven);
+      post-migration data PASSES (124,690 records, 0 curated-note violations,
+      124,311 legacy still grandfathered)
 
 ## Pending
-- [ ] Harden `lint-cards.mjs`: hard-fail curated-without-history + embedded-note bypass (linter worker, in progress)
 - [ ] Gates: `tsc`, unit suite, prebuild, both reviews, Playwright E2E (history-first cards)
+      — unit suite RED: 10 generated-places failures; 30 migrated `history`
+      values exceed the runtime 240-char cap (`assertValidRecord`,
+      src/game/generated-places.ts:196). Data-side fix needed (shorten notes
+      or raise the cap) — flagged for data-migration worker
 - [ ] Open PR (merge only when all gates green)
 
 ## Active work
 - data-migration worker: audit + generator fix + chunk migration — DONE, pushed
-- linter worker: gate hardening + fixtures
+- linter worker: gate hardening + fixtures — DONE, pushed (`18d5f62`)
+- OPEN: 30 migrated histories > 240 chars → 10 unit-test failures (data-migration worker to resolve)
