@@ -339,7 +339,7 @@ export function hookRung(place) {
 export function factForPlace(place, inputs) {
   const trace = [];
   const wd = wikidataRung(place, inputs);
-  trace.push({ rung: "wikidata", reason: wd.reason ?? "hit", notes: wd.notes });
+  trace.push({ rung: "wikidata", reason: wd.reason ?? "hit", notes: wd.notes, violations: wd.violations });
   if (wd.fact) return { fact: wd.fact, rung: "wikidata", trace };
   const wt = wikitextRung(place, inputs);
   trace.push({ rung: "wikitext", reason: wt.reason ?? "hit", rejected: wt.rejected });
@@ -392,6 +392,10 @@ export function withFact(place, fact) {
     }
   }
   if (!inserted) out.fact = fact;
+  // Card-pipeline contract (card-compose.mjs): the fact is the card's lede
+  // now, so the hook-missing marker is cleared — same as enrich-wikipedia.mjs
+  // does when merging a history hook. Fact-less records keep the marker.
+  delete out.hookMissing;
   return out;
 }
 

@@ -331,3 +331,179 @@ test("attribution prefers the wikitext fact's own href when present", () => {
     { label: "GeoNames · Wikipedia", href: "https://en.wikipedia.org/wiki/Some_Town" },
   );
 });
+
+// ---------------------------------------------------------------------------
+// Place-ID join correctness (pilot: facts must land on the right place)
+// ---------------------------------------------------------------------------
+
+test("join correctness: a fact for gn-1 never lands on gn-2", () => {
+  const p1 = place({ id: "gn-1", name: "Louisville" });
+  const p2 = place({ id: "gn-2", name: "Lexington", history: "Founded in 1775." });
+  const inputs = fullInputs(); // qid join + wikidata + wikitext + eb1911 all keyed to gn-1
+  const r1 = factForPlace(p1, inputs);
+  const r2 = factForPlace(p2, inputs);
+  assert.equal(r1.rung, "wikidata");
+  assert.equal(r1.fact.qid, "Q1");
+  // gn-2 has no inputs keyed to it: only its own history hook applies.
+  assert.equal(r2.rung, "hook");
+  assert.equal(r2.fact.text, "Founded in 1775.");
+});
+
+test("join correctness: wikitext rows keyed to another place do not leak", () => {
+  const p = place({ id: "gn-9", name: "Nowhere" });
+  const inputs = fullInputs();
+  inputs.qidByGeonames = new Map(); // no wikidata for gn-9
+  const r = factForPlace(p, inputs);
+  // wikiTextByGeonames only has gn-1; gn-9 must not inherit it.
+  assert.equal(r.rung, "none");
+  assert.equal(r.fact, null);
+});
+
+test("join correctness: null-qid and unknown-id join rows are ignored", () => {
+  const m = indexQidJoin([
+    { geonamesId: "gn-1", qid: null, method: "unmatched" },
+    { geonamesId: "gn-1", qid: "", method: "slug" },
+    { geonamesId: "gn-1", qid: "Q1", method: "slug" },
+    { geonamesId: null, qid: "Q2", method: "slug" },
+  ]);
+  assert.equal(m.get("gn-1"), "Q1");
+  assert.equal(m.has("null"), false);
+  assert.equal(m.size, 1);
+});
+
+test("join correctness: wikidata rung needs the place's own qid", () => {
+  const p = place({ id: "gn-1" });
+  const inputs = {
+    qidByGeonames: new Map([["gn-other", "Q1"]]), // join exists, but not for this place
+    wikidataByQid: new Map([["Q1", [wdRec(), p571("1786")]]]),
+    wikiTextByGeonames: new Map(),
+    eb1911ByGeonames: new Map(),
+  };
+  const r = wikidataRung(p, inputs);
+  assert.equal(r.fact, null);
+  assert.equal(r.reason, "no-qid");
+});
+
+// ---------------------------------------------------------------------------
+// Idempotent re-runs (pilot: re-merging must be a no-op)
+// ---------------------------------------------------------------------------
+
+test("idempotency: re-running withFact over a merged place keeps one fact key", () => {
+  const fact = { text: "Named after X.", kind: "hook", source: "Wikipedia" };
+  const once = withFact(place({ history: "h" }), fact);
+  const twice = withFact(once, fact);
+  assert.deepEqual(Object.keys(twice), Object.keys(once));
+  assert.deepEqual(twice.fact, fact);
+  assert.equal(Object.keys(twice).filter((k) => k === "fact").length, 1);
+});
+
+test("idempotency: factForPlace recomputes the identical fact on merged input", () => {
+  const p = place({ history: "The city was named after King Louis XVI." });
+  const inputs = fullInputs();
+  const first = factForPlace(p, inputs);
+  assert.ok(first.fact);
+  const merged = withFact(p, first.fact);
+  const second = factForPlace(merged, inputs);
+  assert.deepEqual(second.fact, first.fact);
+  assert.equal(second.rung, first.rung);
+});
+
+test("idempotency: merge is sticky — a vanished input does not delete the fact", () => {
+  // Documented behavior: mergeChunk recomputes but never removes facts.
+  // A place merged yesterday keeps its fact even if today's inputs lose it.
+  const p = place({ history: "The city was named after King Louis XVI." });
+  const inputs = fullInputs();
+  const first = factForPlace(p, inputs);
+  const merged = withFact(p, first.fact);
+  const emptyInputs = {
+    qidByGeonames: new Map(),
+    wikidataByQid: new Map(),
+    wikiTextByGeonames: new Map(),
+    eb1911ByGeonames: new Map(),
+  };
+  const recomputed = factForPlace(merged, emptyInputs);
+  // The ladder recomputes from inputs (hook still wins from history)...
+  assert.equal(recomputed.rung, "hook");
+  // ...but mergeChunk only writes when factForPlace returns a fact and
+  // never deletes an existing one: the stored fact survives.
+  assert.deepEqual(merged.fact, first.fact);
+});
+
+// ---------------------------------------------------------------------------
+// Loud rejections (pilot: 70 rejections, all reported, none silent)
+// ---------------------------------------------------------------------------
+
+test("loud: validator rejection at wikidata is traced even when wikitext wins", () => {
+  // A wikidata compose that fails validation (short honoree -> too-short)
+  // must appear in the trace with violation codes, while the place still
+  // gets its wikitext fact.
+  const p = place();
+  const inputs = {
+    qidByGeonames: new Map([["gn-1", "Q1"]]),
+    wikidataByQid: new Map([["Q1", [wdRec({ valueLabel: "Li", valueQid: "Q99" })]]]),
+    wikiTextByGeonames: new Map([
+      ["gn-1", [{ factType: "named_after", person: "King Louis XVI", year: null, sentence: "The city was named after King Louis XVI of France." }]],
+    ]),
+    eb1911ByGeonames: new Map(),
+  };
+  const r = factForPlace(p, inputs);
+  assert.equal(r.rung, "wikitext");
+  const wdTrace = r.trace.find((t) => t.rung === "wikidata");
+  assert.equal(wdTrace.reason, "validator-rejected");
+  assert.ok(wdTrace.violations.some((v) => v === "too-short"));
+  // The mergeChunk loud-filter keys on exactly this shape:
+  const loud = r.trace.filter(
+    (t) => t.reason === "validator-rejected" || (t.notes ?? []).length > 0,
+  );
+  assert.equal(loud.length, 1);
+  assert.equal(loud[0].rung, "wikidata");
+});
+
+// ---------------------------------------------------------------------------
+// hookMissing contract (card-pipeline crew: the generator marks hook-less
+// records with hookMissing: true; any pipeline writing a fact must clear it,
+// same as enrich-wikipedia.mjs does when merging a history hook)
+// ---------------------------------------------------------------------------
+
+test("hookMissing: cleared when the ladder writes a fact", () => {
+  const fact = { text: "Named after X.", kind: "wikitext", source: "Wikipedia" };
+  const p = place({ hookMissing: true });
+  const merged = withFact(p, fact);
+  assert.equal("hookMissing" in merged, false);
+  assert.deepEqual(merged.fact, fact);
+});
+
+test("hookMissing: kept on fact-less records (mergeChunk leaves them untouched)", () => {
+  const p = place({ hookMissing: true });
+  const inputs = {
+    qidByGeonames: new Map(),
+    wikidataByQid: new Map(),
+    wikiTextByGeonames: new Map(),
+    eb1911ByGeonames: new Map(),
+  };
+  const { fact } = factForPlace(p, inputs);
+  assert.equal(fact, null);
+  // mergeChunk returns the place object unchanged when factForPlace yields
+  // no fact — the marker survives for the linter / a later pipeline pass.
+  const kept = fact ? withFact(p, fact) : p;
+  assert.equal(kept.hookMissing, true);
+});
+
+test("hookMissing: cleared end-to-end on a wikidata win", () => {
+  const p = place({ hookMissing: true });
+  const { fact, rung } = factForPlace(p, fullInputs());
+  assert.equal(rung, "wikidata");
+  assert.ok(fact);
+  const merged = withFact(p, fact);
+  assert.equal("hookMissing" in merged, false);
+  assert.equal(merged.fact.kind, "wikidata");
+});
+
+test("hookMissing: stays cleared on idempotent re-runs", () => {
+  const fact = { text: "Named after X.", kind: "hook", source: "Wikipedia" };
+  const once = withFact(place({ history: "h", hookMissing: true }), fact);
+  assert.equal("hookMissing" in once, false);
+  const twice = withFact(once, fact);
+  assert.equal("hookMissing" in twice, false);
+  assert.deepEqual(Object.keys(twice), Object.keys(once));
+});

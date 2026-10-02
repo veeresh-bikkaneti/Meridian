@@ -105,6 +105,10 @@ export default defineConfig({
       name: "highlight",
       testMatch: /highlight\.spec\.ts/,
     },
+    {
+      name: "facts-ladder-pilot",
+      testMatch: /facts-ladder-pilot\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
