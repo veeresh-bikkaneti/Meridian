@@ -77,6 +77,7 @@ interface ChunkPlaceRecord {
    * Optional fact-ladder hook (scripts/facts-ladder.mjs): { text, kind,
    * source, qid?, href? }. Takes precedence over `history` in the card
    * composition (see toStarter); the AI fallback treats it like history.
+   * Per-kind attribution (Wikidata / EB1911 links) via factAttribution().
    */
   fact?: unknown;
   /**
@@ -121,6 +122,41 @@ function factText(fact: unknown): string | null {
     return t.length >= 20 ? t : null;
   }
   return null;
+
+/**
+ * Per-kind source attribution for a fact-ladder fact. Tolerant by design:
+ * returns null unless the fact is a well-formed wikidata/eb1911 object, in
+ * which case the caller links the actual source (Wikidata entity /
+ * Wikisource page). wikitext/hook kinds and anything unrecognized fall
+ * through to the caller's default Wikipedia attribution. Never throws —
+ * the build-time gate (scripts/check-generated-places.mjs) is the strict
+ * layer; the runtime stays fail-closed.
+ */
+function factAttribution(
+  fact: unknown,
+  wiki: string | undefined,
+): { sourceLabel: string; sourceHref: string } | null {
+  if (!fact || typeof fact !== "object") return null;
+  const f = fact as { kind?: unknown; qid?: unknown; href?: unknown };
+  if (
+    f.kind === "wikidata" &&
+    typeof f.qid === "string" &&
+    /^Q\d+$/.test(f.qid)
+  ) {
+    return {
+      sourceLabel: "Wikidata",
+      sourceHref: `https://www.wikidata.org/wiki/${f.qid}`,
+    };
+  }
+  if (
+    f.kind === "eb1911" &&
+    typeof f.href === "string" &&
+    f.href.startsWith("https://en.wikisource.org/")
+  ) {
+    return { sourceLabel: "EB1911", sourceHref: f.href };
+  }
+  return null;
+}
 }
 
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
@@ -148,8 +184,7 @@ function toStarter(
      * non-empty string — the label builder fails closed otherwise.
      */
     subdivision?: unknown;
-  },
-  edition: Edition,
+  },  edition: Edition,
   regionId: string,
 ): Starter {
   // Difficulty: prefer the pipeline-stamped tier when it is a valid integer
@@ -172,8 +207,7 @@ function toStarter(
   // leads; the plain-geography blurb anchors it. Precedence: fact-ladder
   // fact > Wikipedia history hook > bare geographic blurb (same order as
   // composeCardStory() in scripts/card-compose.mjs).
-  const hook = factText(place.fact) ?? (typeof place.history === "string" && place.history.length > 0 ? place.history : null);
-  const hasHistory = typeof place.history === "string" && place.history.length > 0;
+  const hook = factText(place.fact) ?? (typeof place.history === "string" && place.history.length > 0 ? place.history : null);  const hasHistory = typeof place.history === "string" && place.history.length > 0;
   return {
     id: place.id,
     edition,
@@ -188,9 +222,14 @@ function toStarter(
     // The fact text travels too — the AI fallback treats a non-empty fact
     // the same as history (skip). Null when absent, never the raw object.
     fact: factText(place.fact),
-    sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
-    sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
-    difficulty,
+    // Per-kind attribution: a well-formed wikidata/eb1911 fact links its
+    // actual source; everything else keeps the existing Wikipedia behavior.
+    ...(factAttribution(place.fact, place.wiki) ?? {
+      sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
+      sourceHref: hasWiki
+        ? `https://en.wikipedia.org/wiki/${place.wiki}`
+        : GENERATED_SOURCE_HREF,
+    }),    difficulty,
     // The subdivision display name travels only when the pipeline stamped a
     // real one — absent means unknown, and the label builder fails closed.
     ...(subdivision !== undefined ? { subdivision } : {}),
@@ -217,8 +256,7 @@ function assertValidRecord(
   blurb: string;
   history?: string;
   fact?: unknown;
-  hookMissing?: boolean;
-  wiki?: string;
+  hookMissing?: boolean;  wiki?: string;
   /**
    * Optional build-time difficulty tier (1–5). Validated shape-wise by the
    * prebuild gate (scripts/check-generated-places.mjs); toStarter falls
@@ -271,6 +309,11 @@ function assertValidRecord(
     if (!okShape || hasFiller || !hasWiki) {
       throw new Error(`${where}: invalid history hook sentence`);
     }
+  }
+  // Merged facts (scripts/facts-ladder.mjs): the merge-time no-fabrication
+  // gate proved each one; this only guards against hand-edited corruption.
+  if (record.fact !== undefined) {
+    assertValidFact(record.fact, record.wiki, where);
   }
   if (record.wiki !== undefined && (typeof record.wiki !== "string" || record.wiki.length === 0)) {
     throw new Error(`${where}: invalid wiki slug`);

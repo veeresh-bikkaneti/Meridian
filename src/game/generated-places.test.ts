@@ -726,3 +726,168 @@ test("toStarter passes through a valid subdivision, drops missing/invalid", () =
     );
   }
 });
+test("merged fact leads the card (rule 1: history first)", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-10",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        history: "The town is named after a railroad official's daughter.",
+        wiki: "Edna,_Texas",
+        fact: {
+          text: "Founded in 1882 and named after Edna, the railroad official's daughter.",
+          kind: "wikitext",
+          source: "Wikipedia",
+        },
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  const [s] = startersFromChunk("texas", chunk);
+  // The ladder's merged fact outranks the legacy history hook.
+  assert.equal(
+    s.story,
+    "Founded in 1882 and named after Edna, the railroad official's daughter. Edna is a county seat in southeastern Texas, the United States.",
+  );
+  assert.equal(s.sourceLabel, "GeoNames · Wikipedia");
+  assert.equal(s.sourceHref, "https://en.wikipedia.org/wiki/Edna,_Texas");
+});
+
+test("fact source attribution per kind", () => {
+  const mkChunk = (fact: {
+    text: string;
+    kind: "wikidata" | "wikitext" | "eb1911" | "hook";
+    source: string;
+    qid?: string;
+    href?: string;
+  }) => ({
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-11",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        wiki: "Edna,_Texas",
+        fact,
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  });
+  const [wd] = startersFromChunk(
+    "texas",
+    mkChunk({ text: "Named after King Louis XVI of France.", kind: "wikidata", source: "Wikidata", qid: "Q7732" }),
+  );
+  assert.equal(wd.sourceLabel, "Wikidata");
+  assert.equal(wd.sourceHref, "https://www.wikidata.org/wiki/Q7732");
+  assert.ok(wd.story.startsWith("Named after King Louis XVI of France."));
+
+  const [eb] = startersFromChunk(
+    "texas",
+    mkChunk({
+      text: "The town was founded in 1204 by King John in this long sentence.",
+      kind: "eb1911",
+      source: "EB1911",
+      href: "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Edna",
+    }),
+  );
+  assert.equal(eb.sourceLabel, "EB1911");
+  assert.equal(eb.sourceHref, "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Edna");
+
+  const [hk] = startersFromChunk(
+    "texas",
+    mkChunk({ text: "The town is named after a railroad official's daughter.", kind: "hook", source: "Wikipedia" }),
+  );
+  assert.equal(hk.sourceLabel, "GeoNames · Wikipedia");
+  assert.equal(hk.sourceHref, "https://en.wikipedia.org/wiki/Edna,_Texas");
+});
+
+test("invalid fact fields are tolerated fail-closed (never throw at runtime)", () => {
+  const base = {
+    id: "gn-12",
+    name: "Edna",
+    lon: -96.6,
+    lat: 28.9,
+    blurb: "Edna is a county seat in southeastern Texas, the United States.",
+    wiki: "Edna,_Texas",
+    iso2: "US",
+    edition: "state",
+    regionId: "texas",
+  };
+  const mk = (fact: unknown, wiki: string | undefined = "Edna,_Texas") =>
+    startersFromChunk("texas", {
+      meta: { regionId: "texas", edition: "state", count: 1 },
+      places: [{ ...base, wiki, fact }],
+    })[0];
+  // Too short to be a hook: dropped, card falls back to the bare blurb.
+  // Never throws — the build-time gate is the strict layer.
+  const short = mk({ text: "too short.", kind: "hook", source: "Wikipedia" });
+  assert.equal(short.fact, null);
+  assert.equal(short.story, "Edna is a county seat in southeastern Texas, the United States.");
+  // Over-long / unpunctuated / unknown-kind facts: text still extracted
+  // (tolerant), because the gate — not the runtime — enforces shape.
+  const long = mk({ text: "x".repeat(241), kind: "hook", source: "Wikipedia" });
+  assert.equal(long.fact, "x".repeat(241));
+  const nopunct = mk({ text: "No terminal punctuation here and it is long enough", kind: "hook", source: "Wikipedia" });
+  assert.equal(nopunct.fact, "No terminal punctuation here and it is long enough");
+  // Bad kind / missing qid / bad qid / missing href: text extracted, but
+  // per-kind attribution falls back to the default Wikipedia credit.
+  const badKind = mk({ text: "Named after King Louis XVI of France.", kind: "bogus", source: "Wikidata" });
+  assert.equal(badKind.fact, "Named after King Louis XVI of France.");
+  assert.equal(badKind.sourceLabel, "GeoNames · Wikipedia");
+  const noQid = mk({ text: "Named after King Louis XVI of France.", kind: "wikidata", source: "Wikidata" });
+  assert.equal(noQid.sourceLabel, "GeoNames · Wikipedia");
+  const badQid = mk({ text: "Named after King Louis XVI of France.", kind: "wikidata", source: "Wikidata", qid: "not-a-qid" });
+  assert.equal(badQid.sourceLabel, "GeoNames · Wikipedia");
+  const noHref = mk({ text: "The town was founded in 1204 by King John here today.", kind: "eb1911", source: "EB1911" });
+  assert.equal(noHref.sourceLabel, "GeoNames · Wikipedia");
+  // Wikipedia-sourced fact without the wiki slug: same fallback.
+  const noWiki = mk(
+    { text: "Named after King Louis XVI of France here.", kind: "wikitext", source: "Wikipedia" },
+    undefined,
+  );
+  assert.equal(noWiki.sourceHref, "https://www.geonames.org/");
+});
+
+test("places without a fact keep current behavior (blurb or history hook)", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 2 },
+    places: [
+      {
+        id: "gn-13",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+      {
+        id: "gn-14",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        history: "The town is named after a railroad official's daughter.",
+        wiki: "Edna,_Texas",
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  const [plain, hooked] = startersFromChunk("texas", chunk);
+  assert.equal(plain.story, "Edna is a county seat in southeastern Texas, the United States.");
+  assert.equal(plain.sourceLabel, "GeoNames");
+  assert.ok(hooked.story.startsWith("The town is named after a railroad official's daughter."));
+});

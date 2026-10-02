@@ -222,6 +222,26 @@ function main() {
       ) {
         violations.push(`${tag}: wiki attribution slug present without history extract`);
       }
+      // Merged facts (scripts/facts-ladder.mjs): shape gate for the optional
+      // fact field. The merge-time no-fabrication proof lives in the ladder;
+      // this keeps hand-edited or corrupted records out of the build.
+      if (place.fact !== undefined) {
+        const f = place.fact;
+        const kinds = new Set(["wikidata", "wikitext", "eb1911", "hook"]);
+        const badShape =
+          typeof f !== "object" || f === null ||
+          typeof f.text !== "string" || f.text.length < 20 || f.text.length > 240 ||
+          !/[.!?]$/.test(f.text.trim()) ||
+          !kinds.has(f.kind) ||
+          typeof f.source !== "string" || f.source.length === 0;
+        const badQid = f?.kind === "wikidata" && !(typeof f.qid === "string" && /^Q\d+$/.test(f.qid));
+        const badHref = f?.kind === "eb1911" && !(typeof f.href === "string" && f.href.startsWith("https://en.wikisource.org/"));
+        const badWiki = (f?.kind === "wikitext" || f?.kind === "hook") &&
+          !(typeof place.wiki === "string" && place.wiki.length > 0);
+        if (badShape || badQid || badHref || badWiki) {
+          violations.push(`${tag}: invalid fact field`);
+        }
+      }
       checked++;
     }
   }
