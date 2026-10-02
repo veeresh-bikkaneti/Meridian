@@ -4,6 +4,7 @@ import {
   readPhase,
   dismissTileOverlayIfPresent,
   commitMiss,
+  commitHit,
   clickNextPlace,
   resultCard,
   nextPlaceButton,
@@ -66,6 +67,9 @@ test("reload during reveal: result card re-renders with Next place", async ({
   // The reveal card is showing pre-reload (sanity: the bug needs a card).
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const indexBefore = await runIndex(page);
+  // commitMiss may burn a place on a lucky hit; the invariant is that
+  // reload + Next place neither scores nor loses a result.
+  const resultsBefore = await runResultsLength(page);
 
   // Reload mid-reveal — this used to strand the run.
   await page.reload();
@@ -85,7 +89,7 @@ test("reload during reveal: result card re-renders with Next place", async ({
   await clickNextPlace(page);
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   expect(await runIndex(page)).toBe(indexBefore + 1);
-  expect(await runResultsLength(page)).toBe(1);
+  expect(await runResultsLength(page)).toBe(resultsBefore);
 });
 
 test("reload during reveal with no saved drop: fails safe to next question", async ({
@@ -95,7 +99,7 @@ test("reload during reveal with no saved drop: fails safe to next question", asy
   await commitMiss(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const indexBefore = await runIndex(page);
-  expect(await runResultsLength(page)).toBe(1);
+  const resultsBefore = await runResultsLength(page);
 
   // Simulate a missing/corrupted drop (e.g. storage cleared, tampered).
   await page.evaluate(() => sessionStorage.removeItem("meridian.drop"));
@@ -107,12 +111,43 @@ test("reload during reveal with no saved drop: fails safe to next question", asy
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   expect(await runIndex(page)).toBe(indexBefore + 1);
 
-  // The interrupted place was already scored pre-reload: exactly one
-  // result, no duplicate, no loss.
-  expect(await runResultsLength(page)).toBe(1);
+  // The interrupted place was already scored pre-reload: no duplicate, no loss.
+  expect(await runResultsLength(page)).toBe(resultsBefore);
 
   // And the run keeps working from there.
   await commitMiss(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
-  expect(await runResultsLength(page)).toBe(2);
+  expect(await runResultsLength(page)).toBeGreaterThan(resultsBefore);
+});
+
+test("reload during story phase: hit card re-renders with score breakdown", async ({
+  page,
+}) => {
+  await startNebraskaStateRun(page);
+  await commitHit(page);
+
+  // The hit card is showing pre-reload (sanity: the bug needs a card).
+  await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
+  const indexBefore = await runIndex(page);
+  // commitHit may burn a place on an occluded spot; the invariant is that
+  // reload + Next place neither scores nor loses a result.
+  const resultsBefore = await runResultsLength(page);
+
+  // Reload mid-reveal — this used to strand the run.
+  await page.reload();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 20_000 });
+
+  // The hit card must re-render with the score breakdown visible…
+  const card = resultCard(page);
+  await expect(card).toBeVisible({ timeout: 15_000 });
+  await expect(card.getByTestId("score-breakdown")).toBeVisible({
+    timeout: 10_000,
+  });
+  await expect(nextPlaceButton(page)).toBeVisible({ timeout: 10_000 });
+
+  // …and Next place must advance to a fresh question, not strand.
+  await clickNextPlace(page);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  expect(await runIndex(page)).toBe(indexBefore + 1);
+  expect(await runResultsLength(page)).toBe(resultsBefore);
 });

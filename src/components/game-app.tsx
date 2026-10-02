@@ -35,7 +35,7 @@ const RUN_KEY = "meridian.run";
  * Persisted pin-drop for the in-progress place. `drop`/`revealDone` are
  * React state only, so a page reload during the result card used to strand
  * the run (phase "done"/"story" restored, but no card and no Next place).
- * The drop is written on pin commit and cleared on continue/replay/end;
+ * The drop is written on pin commit and cleared on continue/replay/end/leave;
  * on reload the mount restore rehydrates it when it matches the dealt
  * place, else fails safe by advancing (the result is already scored).
  */
@@ -453,6 +453,7 @@ export function GameApp() {
         run={run}
         onRun={commit}
         onLeave={() => {
+          clearDrop();
           setRun(null);
           setMenu(null);
         }}
@@ -800,6 +801,7 @@ function PlayLoaded({
   // screen-reader users get feedback for place/move/clear. Cleared whenever
   // the phase changes, at which point phase messaging takes over.
   const [aimAnnouncement, setAimAnnouncement] = useState<string | null>(null);
+  // Pairing rule: every writeDrop/setDrop site must pair with clearDrop — see RUN_DROP_KEY.
   const [drop, setDrop] = useState<Drop | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
@@ -1125,7 +1127,7 @@ function PlayLoaded({
               : run.phase === "summary" && summary
                 ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}, average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
                 : place
-                  ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : ""}. ${place.name} missed.`
+                  ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${place.name} missed.`
                   : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
