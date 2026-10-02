@@ -9,7 +9,7 @@ import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
-import { useAiStory, withStoryLine, AI_STORY_BADGE } from "@/game/story-ai";
+import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -80,14 +80,17 @@ function Fade({
 
 /**
  * Subtle disclosure for on-device AI story content. Non-interactive —
- * kids first, disclosure second. The title/aria-label carry the full
- * explanation for hover and assistive tech.
+ * disclosure that doesn't interrupt kids. `role="img"` makes the
+ * accessible name ("Written with on-device AI") programmatically
+ * reachable: `aria-label` on a plain span is unreliable per ARIA, and
+ * `title` tooltips never fire on touch devices.
  */
 function AiStoryBadge() {
   return (
     <span
-      title={AI_STORY_BADGE.title}
+      role="img"
       aria-label={AI_STORY_BADGE.title}
+      title={AI_STORY_BADGE.title}
       className="ml-1.5 inline-flex items-center rounded border border-white/20 bg-white/10 px-1 py-px align-middle text-[10px] font-medium tracking-wide text-white/70"
     >
       {AI_STORY_BADGE.label}
@@ -150,17 +153,21 @@ export function ResultCard({
   const aiSports = useAiSportsTeams(place);
   const baseStory = story ?? place?.story ?? "";
   // On-device AI story fallback (story-ai.ts): fires only for generated
-  // places with no build-time enrichment (no history hook, no ladder fact).
+  // places with no build-time enrichment (no history hook, no ladder fact,
+  // not curated). No Wikipedia extract is passed at this wiring stage, so
+  // validation runs length + banned-pattern checks with prompt-only
+  // grounding ("reply EMPTY rather than guess") — accepted deliberately;
+  // the extract-fetch upgrade is a tracked follow-up, not a blocker.
   // The generic blurb is already on screen — the AI sentence upgrades it
   // when (and only when) it arrives validated. Null = blurb stands, no UI.
   const aiStory = useAiStory(place);
-  const withAi = aiStory ? withStoryLine(baseStory, aiStory) : baseStory;
-  // AI-first sports line: the on-device model gets first say when it is
-  // available and returns validated teams; the curated blurb underneath is
-  // the instant fallback (and the whole story where there is no AI).
-  const displayStory =
-    aiSports && aiSports.length > 0 ? withSportsLine(withAi, aiSports) : withAi;
-  const [storyLede, storyRest] = splitLede(displayStory);
+  // Composition order is deliberately blurb-first, deviating from card
+  // rule 1 (history first): the blurb must paint instantly with no reflow
+  // when the AI sentence lands seconds later, and the AI sentence stays
+  // last so its badge unambiguously labels it (never the sports line).
+  const withSports =
+    aiSports && aiSports.length > 0 ? withSportsLine(baseStory, aiSports) : baseStory;
+  const [storyLede, storyRest] = splitLede(withSports);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   // Move focus to the card heading when a result appears (phase → story/done).
@@ -274,8 +281,17 @@ export function ResultCard({
                 aria-label="Place story"
               >
                 <p className="text-sm leading-relaxed">
-                  {displayStory}
-                  {aiStory ? <AiStoryBadge /> : null}
+                  {withSports}
+                  {/* Dedicated live element: only the new AI sentence is
+                      announced, never a full-paragraph re-read. */}
+                  <span aria-live="polite">
+                    {aiStory ? (
+                      <>
+                        {" "}{aiStory}
+                        <AiStoryBadge />
+                      </>
+                    ) : null}
+                  </span>
                 </p>
               </div>
               <a
@@ -314,19 +330,28 @@ export function ResultCard({
                   {formatFactor(comboForStreak(1))}x.
                 </p>
               ) : null}
-              {storyRest || aiStory ? (
+              {storyRest ? (
                 <div
                   className="max-h-44 overflow-y-auto"
                   tabIndex={0}
                   role="region"
                   aria-label="Place story, continued"
                 >
-                  <p className="text-sm leading-relaxed">
-                    {storyRest}
-                    {aiStory ? <AiStoryBadge /> : null}
-                  </p>
+                  <p className="text-sm leading-relaxed">{storyRest}</p>
                 </div>
               ) : null}
+              {/* AI sentence as its own announced paragraph: the miss-card
+                  lede keeps the blurb's first sentence; the hook — often
+                  the only memorable fact on a blurb-only card — arrives
+                  here and is announced once via the polite live region. */}
+              <div aria-live="polite">
+                {aiStory ? (
+                  <p className="text-sm leading-relaxed">
+                    {aiStory}
+                    <AiStoryBadge />
+                  </p>
+                ) : null}
+              </div>
               <a
                 className="text-sm text-white/70 underline"
                 href={place.sourceHref}

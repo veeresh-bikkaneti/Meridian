@@ -6,6 +6,7 @@ import { isNewBuildDeployed } from "@/game/build-staleness";
 import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
+import { shouldFireAiStory } from "@/game/story-ai";
 import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
 import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
@@ -910,6 +911,11 @@ function PlayLoaded({
     const placeId = place.id;
     const authored = place.story;
     setStory(authored);
+    // Blurb-only generated places skip the stylistic rewrite: the result
+    // card's useAiStory owns Nano enrichment for them (one model wake,
+    // badged sentence). Waking the model twice per reveal — rewrite plus
+    // story query — costs battery for no added teaching.
+    if (shouldFireAiStory(place)) return;
     void revealStory(placeId, authored).then((text) => {
       if (!cancel) setStory(text);
     });

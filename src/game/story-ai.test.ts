@@ -402,6 +402,11 @@ test("shouldFireAiStory fires only for blurb-only generated places", () => {
     false,
     "curated (non-gn-) place → skip",
   );
+  assert.equal(
+    shouldFireAiStory({ ...base, curated: true }),
+    false,
+    "explicit curated flag → skip even with gn- id",
+  );
 });
 
 function Probe({ place }: { place: StoryPlace | null }) {
@@ -437,11 +442,14 @@ test("withStoryLine appends the AI story or leaves the base untouched", () => {
   assert.equal(withStoryLine("", NICOLET_STORY), NICOLET_STORY);
 });
 
-test("card upgrade path: blurb-only place → validated AI story → composed display + badge", async () => {
+test("card upgrade path: blurb-only place → validated AI story → separate live element + badge", async () => {
   // This mirrors exactly what ResultCard does:
   //   const aiStory = useAiStory(place);   // hook (Probe-tested above)
-  //   const withAi = aiStory ? withStoryLine(baseStory, aiStory) : baseStory;
-  //   {aiStory ? <AiStoryBadge /> : null}
+  //   const withSports = withSportsLine(baseStory, aiSports);  // base text
+  //   <span aria-live="polite">{aiStory ? <> {aiStory}<AiStoryBadge /></> : null}</span>
+  // The AI sentence is NEVER baked into the base string: it renders as its
+  // own announced element so screen readers hear only the new sentence, and
+  // the badge sits adjacent to the sentence it labels (never the sports line).
   const blurbOnly: StoryPlace = { id: "gn-5254962", name: "Green Bay", regionId: "wisconsin" };
   assert.equal(shouldFireAiStory(blurbOnly), true, "blurb-only generated place fires");
 
@@ -451,13 +459,13 @@ test("card upgrade path: blurb-only place → validated AI story → composed di
   });
   assert.equal(aiStory, NICOLET_STORY);
 
-  // Card composition: blurb renders first, AI sentence upgrades it.
+  // Card composition: base text paints instantly; the AI sentence arrives
+  // as a separate unit. Badge visibility rule: badge renders iff aiStory.
   const baseStory = "Green Bay is a city in northeastern Wisconsin, the United States.";
-  const displayStory = aiStory ? withStoryLine(baseStory, aiStory) : baseStory;
-  assert.equal(displayStory, `${baseStory} ${NICOLET_STORY}`);
-  // Badge visibility rule: badge renders iff the AI story arrived.
-  assert.equal(aiStory !== null, true, "badge shows when the AI story arrives");
-  assert.equal(withStoryLine(baseStory, null) === baseStory, true);
+  const showBadge = aiStory !== null;
+  assert.equal(showBadge, true, "badge shows when the AI story arrives");
+  assert.equal(baseStory.includes(NICOLET_STORY), false, "base text never contains the AI sentence");
+  assert.equal(withStoryLine(baseStory, null), baseStory, "null AI story leaves the base untouched");
 });
 
 test("card upgrade path: enriched place never reaches Nano", () => {

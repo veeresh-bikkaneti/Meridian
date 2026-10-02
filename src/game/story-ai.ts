@@ -564,17 +564,21 @@ export interface StoryPlace {
   fact?: string | null;
   history?: string | null;
   wiki?: string | null;
+  /** True for hand-authored curated starters — Nano never fires for these. */
+  curated?: boolean;
 }
 
 /**
  * Pure firing decision, unit-tested: Nano may fire only for a real GENERATED
- * place (GeoNames `gn-<digits>` id, same gate useAiSportsTeams uses — curated
- * starters carry hand-authored stories and never need the fallback) with NO
- * build-time enrichment. Missing, null, and empty-string facts/history all
- * count as "no enrichment" — an empty string teaches nothing.
+ * place (GeoNames `gn-<digits>` id, same gate useAiSportsTeams uses) with NO
+ * build-time enrichment and NO curated flag. Missing, null, and empty-string
+ * facts/history all count as "no enrichment" — an empty string teaches
+ * nothing. The curated flag is the explicit discriminator; the id-format
+ * check is defense-in-depth for places from other datasets.
  */
 export function shouldFireAiStory(place: StoryPlace | null): boolean {
   if (!place || typeof place.id !== "string" || place.id.length === 0) return false;
+  if (place.curated === true) return false;
   if (geonameIdOf(place.id) === null) return false;
   if (typeof place.fact === "string" && place.fact.length > 0) return false;
   if (typeof place.history === "string" && place.history.length > 0) return false;

@@ -25,6 +25,12 @@ export type Starter = {
    */
   fact?: string | null;
   /**
+   * True for hand-authored curated starters. The on-device AI fallback
+   * never fires for curated places — explicit positive discriminator so the
+   * guarantee doesn't rest on id-format coincidence.
+   */
+  curated?: boolean;
+  /**
    * Display-only origin for places folded into a whole-country pool: a
    * Texas place dealt in a "whole United States" run keeps
    * `originRegionId: "texas"` while `regionId` becomes "united-states".
@@ -57,6 +63,7 @@ function place(
     sourceLabel: "Wikipedia",
     sourceHref: `https://en.wikipedia.org/wiki/${wiki}`,
     difficulty,
+    curated: true,
   };
 }
 

@@ -66,6 +66,7 @@ The game in the browser is four pieces.
 - **Rules.** `src/game/radius.ts` decides the close-enough circle. `src/game/trail.ts` orders a region's places from the UTC date. `src/game/run.ts` continues until a miss or the end of the list. `src/game/share.ts` writes the share line.
 - **Map.** `src/map/satellite-map.tsx` draws Esri World Imagery with MapLibre. State and country cameras open inside that region's box — pinch out and the box releases to a full Earth-from-space view, pinch back in and it re-locks. The globe is the same imagery on a sphere. Tiles are requested by the browser. They are not bundled. The pin is not sent anywhere.
 - **Story rewrite.** `src/game/rewrite.ts` asks Gemini Nano only when the browser reports the model is already available. Otherwise the written story is what you read.
+- **Story fallback.** `src/game/story-ai.ts` asks Gemini Nano for one story sentence when a place has only the generic blurb (no history hook, no ladder fact). The blurb shows immediately; the AI sentence arrives later with a small "AI" badge. Nothing is downloaded and nothing is sent anywhere.
 
 Nothing about a guess is stored on a server. The in-progress run lives in `sessionStorage`.
 
