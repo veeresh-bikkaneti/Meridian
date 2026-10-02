@@ -1,15 +1,16 @@
 import type { JSX } from "react";
 import { formatDistance } from "@/game/geo";
-import type { RunSummary } from "@/game/run";
+import { EDITION_LABELS, type SessionSummary } from "@/game/session";
 import { Button } from "@/components/ui/button";
 
 /**
- * End-of-run summary (endless mode). Shown after the player explicitly ends
- * the game via endRun — never auto-shown. Grand total first, then the
- * natural stats. The total is announced via the aria-live region.
+ * End-of-game summary (endless mode). Shown after the player explicitly ends
+ * the game — never auto-shown. The totals span the whole session (every
+ * edition played since the game started), with a per-edition score
+ * breakdown. The total is announced via the aria-live region.
  */
 export function RunSummaryCard(props: {
-  summary: RunSummary;
+  summary: SessionSummary;
   regionName: string;
   onDone: () => void;
   onPlayAgain: () => void;
@@ -31,7 +32,24 @@ export function RunSummaryCard(props: {
           <p className="mt-1 text-sm text-white/60">total score</p>
         </div>
 
-        <dl className="mt-6 space-y-2 text-sm">
+        <div data-testid="summary-edition-breakdown" className="mt-4 rounded-xl border border-white/10 bg-black/30 p-3">
+          <p className="text-[11px] tracking-wider text-white/60 uppercase">Score by edition</p>
+          <dl className="mt-2 space-y-1.5 text-sm">
+            {summary.byEdition.map((b) => (
+              <div key={b.edition} className="flex justify-between">
+                <dt className="text-white/60">
+                  {EDITION_LABELS[b.edition]}{" "}
+                  <span className="text-white/40">
+                    · {b.places} {b.places === 1 ? "place" : "places"}
+                  </span>
+                </dt>
+                <dd className="tabular-nums">{b.score.toLocaleString("en-US")}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <dl className="mt-4 space-y-2 text-sm">
           <div className="flex justify-between">
             <dt className="text-white/60">Places played</dt>
             <dd className="tabular-nums">{summary.placesPlayed}</dd>
