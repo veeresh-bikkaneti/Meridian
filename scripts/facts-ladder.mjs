@@ -392,16 +392,18 @@ export function mergeChunk(chunkId, inputs, { dryRun = false } = {}) {
   chunk.places = chunk.places.map((place) => {
     const { fact, rung, trace } = factForPlace(place, inputs);
     counts[rung]++;
-    if (fact) {
-      wrote++;
-      return withFact(place, fact);
-    }
-    // Loud rejections: validator failures and dropped Wikidata parts.
+    // Loud rejections: validator failures and dropped Wikidata parts are
+    // reported even when a lower rung caught the place — a rejected fact is
+    // never a silent downgrade.
     const loud = (trace ?? []).filter(
       (t) => t.reason === "validator-rejected" || (t.notes ?? []).length > 0,
     );
     if (loud.length > 0) {
-      rejections.push({ id: place.id, name: place.name, loud });
+      rejections.push({ id: place.id, name: place.name, won: rung, loud });
+    }
+    if (fact) {
+      wrote++;
+      return withFact(place, fact);
     }
     return place;
   });
