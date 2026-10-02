@@ -184,17 +184,20 @@ function assertValidRecord(
   if (typeof record.blurb !== "string" || record.blurb.length === 0) {
     throw new Error(`${where}: invalid blurb`);
   }
-  // History hook sentences are shape-checked here; the merge-time gate
-  // (scripts/enrich-wikipedia.mjs validateHistory) proved each one is a
-  // verbatim Wikipedia extract sentence, so this only guards against
-  // hand-edited corruption: length bounds, terminal punctuation, and no
-  // coordinate/elevation/population filler (card rules 2+4). A history
+  // History hook sentences are shape-checked here. Wikipedia-extract
+  // histories were proved verbatim by the merge-time gate
+  // (scripts/enrich-wikipedia.mjs validateHistory); curated notable notes
+  // (src/game/data/notable-notes.json) are Veeresh-approved instead. Both
+  // travel in `history`, so the length bound fits the longest curated note
+  // (512 chars) rather than a single extract sentence: it guards against
+  // hand-edited corruption (bounds, terminal punctuation, no filler), not
+  // brevity — brevity is the curator's and the linter's job. A history
   // sentence must always travel with its wiki slug — unattributed CC BY-SA
   // text would otherwise render under the plain "GeoNames" label.
   if (record.history !== undefined) {
     const h = record.history;
     const okShape =
-      typeof h === "string" && h.length >= 20 && h.length <= 240 && /[.!?]$/.test(h.trim());
+      typeof h === "string" && h.length >= 20 && h.length <= 600 && /[.!?]$/.test(h.trim());
     const hasFiller =
       typeof h === "string" &&
       (/°/.test(h) || /\belevation\b/i.test(h) || /\bpopulation\b/i.test(h) || /\bcensus\b/i.test(h));

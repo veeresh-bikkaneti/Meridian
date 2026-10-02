@@ -347,11 +347,22 @@ test("Barry Farms gets the approved kid-friendly history note", async () => {
   assert.equal(barry.sourceHref, "https://en.wikipedia.org/wiki/Barry_Farm");
   assert.ok(
     barry.story.includes("Land! Give us land!"),
-    "curated note missing from the shipped blurb",
+    "curated note missing from the shipped story",
+  );
+  // Rule 1 (history first): the curated note leads the card; the plain
+  // geographic blurb follows. The note must not be duplicated.
+  assert.ok(
+    barry.story.startsWith(entry.note),
+    "history note should lead the card (rule 1: history first, geography second)",
   );
   assert.ok(
-    barry.story.startsWith("Barry Farms is a town in eastern District of Columbia"),
-    "geographic lead should precede the curated note",
+    barry.story.includes("Barry Farms is a town in eastern District of Columbia"),
+    "geographic blurb should follow the history note",
+  );
+  assert.equal(
+    barry.story.split(entry.note).length - 1,
+    1,
+    "curated note must appear exactly once (no embedded duplication)",
   );
 });
 
