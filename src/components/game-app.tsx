@@ -31,6 +31,16 @@ const STALE_REFRESH_KEY = "meridian.staleRefresh";
 
 const RUN_KEY = "meridian.run";
 
+/**
+ * Persisted pin-drop for the in-progress place. `drop`/`revealDone` are
+ * React state only, so a page reload during the result card used to strand
+ * the run (phase "done"/"story" restored, but no card and no Next place).
+ * The drop is written on pin commit and cleared on continue/replay/end/leave;
+ * on reload the mount restore rehydrates it when it matches the dealt
+ * place, else fails safe by advancing (the result is already scored).
+ */
+const RUN_DROP_KEY = "meridian.drop";
+
 export type Drop = {
   lon: number;
   lat: number;
@@ -162,6 +172,68 @@ function writeRun(run: Run) {
     sessionStorage.setItem(RUN_KEY, JSON.stringify(run));
   } catch {
     // The run still lives in memory when storage is blocked.
+  }
+}
+
+/** Loose ScoredPlace shape check: enough to render the reveal card. */
+function isScoredPlace(value: unknown): value is ScoredPlace {
+  if (!value || typeof value !== "object") return false;
+  const b = value as Record<string, unknown>;
+  return (
+    typeof b.base === "number" &&
+    typeof b.diffMult === "number" &&
+    typeof b.combo === "number" &&
+    typeof b.streak === "number" &&
+    typeof b.score === "number"
+  );
+}
+
+function isDrop(value: unknown): value is Drop {
+  if (!value || typeof value !== "object") return false;
+  const d = value as Record<string, unknown>;
+  return (
+    typeof d.lon === "number" &&
+    Number.isFinite(d.lon) &&
+    typeof d.lat === "number" &&
+    Number.isFinite(d.lat) &&
+    typeof d.distanceKm === "number" &&
+    Number.isFinite(d.distanceKm) &&
+    d.distanceKm >= 0 &&
+    typeof d.placeId === "string" &&
+    d.placeId.length > 0 &&
+    typeof d.streakBefore === "number" &&
+    Number.isInteger(d.streakBefore) &&
+    d.streakBefore >= 0 &&
+    (d.breakdown === null || isScoredPlace(d.breakdown))
+  );
+}
+
+/** Fail closed to null on anything malformed or tampered. */
+function readDrop(): Drop | null {
+  try {
+    if (typeof sessionStorage === "undefined") return null;
+    const raw = sessionStorage.getItem(RUN_DROP_KEY);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    return isDrop(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeDrop(drop: Drop) {
+  try {
+    sessionStorage.setItem(RUN_DROP_KEY, JSON.stringify(drop));
+  } catch {
+    // The drop still lives in memory when storage is blocked.
+  }
+}
+
+function clearDrop() {
+  try {
+    sessionStorage.removeItem(RUN_DROP_KEY);
+  } catch {
+    // Absent or blocked storage: nothing to clear.
   }
 }
 
@@ -381,6 +453,7 @@ export function GameApp() {
         run={run}
         onRun={commit}
         onLeave={() => {
+          clearDrop();
           setRun(null);
           setMenu(null);
         }}
@@ -728,6 +801,7 @@ function PlayLoaded({
   // screen-reader users get feedback for place/move/clear. Cleared whenever
   // the phase changes, at which point phase messaging takes over.
   const [aimAnnouncement, setAimAnnouncement] = useState<string | null>(null);
+  // Pairing rule: every writeDrop/setDrop site must pair with clearDrop — see RUN_DROP_KEY.
   const [drop, setDrop] = useState<Drop | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
@@ -741,6 +815,32 @@ function PlayLoaded({
   // belongs to the previous run.
   const [mapKey, setMapKey] = useState(0);
   const [summary, setSummary] = useState<RunSummary | null>(null);
+
+  // Reload-mid-reveal restore: `drop`/`revealDone` are in-memory only, so a
+  // page reload during the result card used to strand the run — phase
+  // "done"/"story" restored from sessionStorage, but no card and no Next
+  // place button. Rehydrate the persisted drop when it matches the dealt
+  // place (the reveal animation already played pre-reload, so the card
+  // shows immediately); otherwise fail safe by advancing to the next
+  // question — the interrupted place's result is already in run.results
+  // (dropPin appends it), so this loses nothing and never double-scores.
+  const didRestoreRef = useRef(false);
+  useEffect(() => {
+    if (didRestoreRef.current) return;
+    didRestoreRef.current = true;
+    if (run.phase !== "done" && run.phase !== "story") return;
+    const saved = readDrop();
+    const dealt = dealer.at(run.index);
+    if (saved && dealt && saved.placeId === dealt.id) {
+      setDrop(saved);
+      setRevealDone(true);
+    } else {
+      clearDrop();
+      onRun(continueRun(run));
+    }
+    // Mount-once: dealer/run/onRun are the initial restored values.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     setAim(null);
@@ -883,19 +983,24 @@ function PlayLoaded({
       : null;
     setAim(null);
     setAimAnnouncement(null);
-    setDrop({
+    const nextDrop: Drop = {
       lon,
       lat,
       distanceKm: distance,
       placeId: place.id,
       breakdown: scored,
       streakBefore: run.streak,
-    });
+    };
+    setDrop(nextDrop);
+    // Persisted so a reload during the result card can rehydrate it; the
+    // mount restore validates the shape and the place match before use.
+    writeDrop(nextDrop);
     onRun(dropPin(run, distance, radius, scored));
   }
 
   function onContinue() {
     setDrop(null);
+    clearDrop();
     setAimAnnouncement(null);
     setRevealDone(false);
     onRun(continueRun(run));
@@ -904,6 +1009,7 @@ function PlayLoaded({
   function onEndGame() {
     const { run: ended, summary: final } = endRun(run);
     setSummary(final);
+    clearDrop();
     onRun(ended);
   }
 
@@ -926,6 +1032,7 @@ function PlayLoaded({
     setAim(null);
     setAimAnnouncement(null);
     setDrop(null);
+    clearDrop();
     setBubble("open");
     setCardDismissed(false);
     setRevealDone(false);
@@ -1020,7 +1127,7 @@ function PlayLoaded({
               : run.phase === "summary" && summary
                 ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}, average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
                 : place
-                  ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : ""}. ${place.name} missed.`
+                  ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${place.name} missed.`
                   : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
