@@ -17,16 +17,26 @@
  *   fails. This gates the template as code: any future change to the
  *   composition rules must keep the fixtures green.
  *
- *   TIER 2 — chunk audit (HARD FAIL only on post-pipeline records). Every
- *   shipped chunk record is composed and linted, but failures are hard
- *   errors ONLY when the record carries a `fact` or `history` field — i.e.
- *   it went through the enrichment/fact-ladder pipeline and must obey the
- *   rules. Records are otherwise classified, never failed:
+ *   TIER 2 — chunk audit (HARD FAIL on post-pipeline records AND on
+ *   curated-note bypasses). Every shipped chunk record is composed and
+ *   linted, but rule failures are hard errors ONLY when the record carries
+ *   a `fact` or `history` field — i.e. it went through the
+ *   enrichment/fact-ladder pipeline and must obey the rules. Records are
+ *   otherwise classified, never failed:
  *     - hookMissing: true → "awaiting hook" (informational; the on-main
  *       Nano fallback covers the runtime gap).
  *     - no hook fields, no marker → LEGACY, grandfathered. Counted and
  *       reported, never failed. These are the 119k flat blurbs; they age
  *       out as enrichment/fact-ladder runs cover them.
+ *
+ *   EXEMPTION: the two curated-note checks (curated-history-missing,
+ *   embedded-history-bypass) hard-fail REGARDLESS of grandfathering. A
+ *   curated notable note (src/game/data/notable-notes.json, keyed by
+ *   GeoNames ID) embedded inside a geography-first blurb with no `history`
+ *   field is a pipeline-era record — the generator merged notes into
+ *   blurbs at build time — not legacy backlog, so the grandfather clause
+ *   does not cover it. Curated notes must live in first-class `history`
+ *   fields, never only in the blurb, and never duplicated inside it.
  *
  * This way a regression in the generator, the enrichment merge, or the
  * fact ladder breaks the build LOUDLY, while the legacy backlog can never
@@ -40,6 +50,15 @@
  *   geo-stats-leak  — hook-less geographic text carries stats filler
  *   coordinate-leak — raw coordinates anywhere in the card text
  *   empty-story     — nothing to show
+ *
+ * VIOLATION CODES (Tier 2 chunk audit only, from checkCuratedRecord —
+ * these bypass the legacy grandfathering, see TIER 2 above):
+ *   curated-history-missing — record's GeoNames ID has a curated notable
+ *     note but the record carries no non-empty `history` field. Curated
+ *     notes must live in `history`, never only in the blurb.
+ *   embedded-history-bypass — the record's blurb contains its curated note
+ *     text verbatim. The note must not be duplicated inside the blurb,
+ *     even when `history` is also present.
  *
  * Usage: node scripts/lint-cards.mjs [--chunks <dir>] [--quiet]
  * Exit 0 when the gate passes; exit 1 with violation details otherwise.
@@ -63,6 +82,56 @@ const FACT = {
 };
 const HISTORY =
   "In 1908 a race riot here shocked the nation and spurred the founding of the NAACP.";
+
+const NOTABLE_NOTES_PATH = join(REPO, "src", "game", "data", "notable-notes.json");
+
+/**
+ * Load the curated notable notes, keyed by bare GeoNames ID string.
+ * Keys starting with "_" are file comments, not places. Notes that are
+ * missing or whitespace-only are skipped (nothing to enforce verbatim).
+ * Node stdlib only.
+ */
+export function loadCuratedNotes(notesPath = NOTABLE_NOTES_PATH) {
+  const raw = JSON.parse(readFileSync(notesPath, "utf8"));
+  const notes = new Map();
+  for (const [key, entry] of Object.entries(raw)) {
+    if (key.startsWith("_")) continue;
+    const note = entry && typeof entry.note === "string" ? entry.note : "";
+    if (note.trim().length > 0) notes.set(key, note);
+  }
+  return notes;
+}
+
+/**
+ * checkCuratedRecord() — the two Tier 2 curated-note checks.
+ *
+ * A curated notable note embedded inside a geography-first blurb with no
+ * `history` field sailed through the old audit as "grandfathered legacy",
+ * because the old audit only hard-failed records carrying `fact`/`history`.
+ * That was a bypass, not legacy: the generator merged these notes into
+ * blurbs at build time, so the records are pipeline-era. These checks close
+ * it and apply regardless of the legacy grandfathering.
+ *
+ * Returns { ok: true } or { ok: false, violations: [codes] } with codes:
+ *   curated-history-missing — the record's GeoNames ID (chunk ids are
+ *     "gn-<geonameid>") is in the curated notes but the record has no
+ *     non-empty `history` field.
+ *   embedded-history-bypass — the record's blurb contains its curated note
+ *     text verbatim. Fires even when `history` is present: the note must
+ *     not be duplicated inside the blurb.
+ */
+export function checkCuratedRecord(record, curatedNotes) {
+  const violations = [];
+  const id = record && typeof record.id === "string" ? record.id : "";
+  const geonamesId = id.startsWith("gn-") ? id.slice("gn-".length) : id;
+  const note = curatedNotes.get(geonamesId);
+  if (note === undefined) return { ok: true, violations };
+  const history = typeof record.history === "string" ? record.history.trim() : "";
+  if (history.length === 0) violations.push("curated-history-missing");
+  const blurb = typeof record.blurb === "string" ? record.blurb : "";
+  if (note.length > 0 && blurb.includes(note)) violations.push("embedded-history-bypass");
+  return violations.length === 0 ? { ok: true, violations } : { ok: false, violations };
+}
 
 // ---------------------------------------------------------------------------
 // Tier 1: fixture gate
@@ -166,6 +235,69 @@ function checkFixtures() {
     }
   }
 
+  // Curated-note checks (Tier 2 logic, checkCuratedRecord). Exercised here
+  // with a synthetic notes map so the gate stays hermetic — the wiring to
+  // the real notable-notes.json is exercised by the chunk audit below.
+  const CURATED_GID = "9999999";
+  const CURATED_NOTE =
+    "In 1969 this fictional town hosted the first interstellar pie contest, judged by visiting astronauts.";
+  const fixtureNotes = new Map([[CURATED_GID, CURATED_NOTE]]);
+
+  const curatedGood = [
+    {
+      name: "curated record with history and clean blurb",
+      record: { id: `gn-${CURATED_GID}`, name: "Fixtureton", history: CURATED_NOTE, blurb: GEO },
+    },
+    {
+      name: "non-curated record untouched by curated checks",
+      record: { id: "gn-12345", name: "Ordinary", blurb: GEO },
+    },
+  ];
+
+  for (const f of curatedGood) {
+    const r = checkCuratedRecord(f.record, fixtureNotes);
+    if (!r.ok) {
+      failures.push(`GOOD fixture "${f.name}": curated check failed [${r.violations.join(",")}]`);
+    }
+  }
+
+  // Deliberately bad curated records — the checks MUST bite on every one.
+  const curatedBad = [
+    {
+      name: "curated ID without history, note embedded in blurb",
+      record: { id: `gn-${CURATED_GID}`, name: "Fixtureton", blurb: `${GEO} ${CURATED_NOTE}` },
+      want: ["curated-history-missing", "embedded-history-bypass"],
+    },
+    {
+      name: "curated ID without history, clean blurb",
+      record: { id: `gn-${CURATED_GID}`, name: "Fixtureton", blurb: GEO },
+      want: ["curated-history-missing"],
+    },
+    {
+      name: "curated note duplicated in blurb despite history",
+      record: {
+        id: `gn-${CURATED_GID}`,
+        name: "Fixtureton",
+        history: CURATED_NOTE,
+        blurb: `${GEO} ${CURATED_NOTE}`,
+      },
+      want: ["embedded-history-bypass"],
+    },
+  ];
+
+  for (const b of curatedBad) {
+    const r = checkCuratedRecord(b.record, fixtureNotes);
+    if (r.ok) {
+      failures.push(`BAD fixture "${b.name}": curated check did NOT bite (expected ${b.want.join(",")})`);
+    } else {
+      for (const w of b.want) {
+        if (!r.violations.includes(w)) {
+          failures.push(`BAD fixture "${b.name}": missing violation ${w}, got [${r.violations.join(",")}]`);
+        }
+      }
+    }
+  }
+
   return failures;
 }
 
@@ -175,13 +307,23 @@ function checkFixtures() {
 
 function auditChunks(chunksDir) {
   const files = readdirSync(chunksDir).filter((f) => f.endsWith(".json"));
-  const stats = { total: 0, withHook: 0, hookMissing: 0, legacy: 0 };
+  const curatedNotes = loadCuratedNotes();
+  const stats = { total: 0, withHook: 0, hookMissing: 0, legacy: 0, curated: 0 };
   const hardFailures = [];
 
   for (const file of files) {
     const chunk = JSON.parse(readFileSync(join(chunksDir, file), "utf8"));
     for (const p of chunk.places ?? []) {
       stats.total++;
+      // Curated-note checks run FIRST and regardless of grandfathering: an
+      // embedded curated note is a pipeline-era record, not legacy backlog.
+      const cr = checkCuratedRecord(p, curatedNotes);
+      if (!cr.ok) {
+        stats.curated++;
+        hardFailures.push(
+          `${file} ${p.id} (${p.name}): [${cr.violations.join(",")}] — curated notable note must live in \`history\`, never only in the blurb`,
+        );
+      }
       const hasHookField =
         (typeof p.fact === "string" && p.fact.trim().length > 0) ||
         (p.fact && typeof p.fact === "object") ||
@@ -233,7 +375,8 @@ function main() {
   const { stats, hardFailures } = auditChunks(chunksDir);
   log(
     `lint-cards: chunk audit — ${stats.total} records: ` +
-      `${stats.withHook} with hook, ${stats.hookMissing} hook-missing, ${stats.legacy} legacy (grandfathered)`,
+      `${stats.withHook} with hook, ${stats.hookMissing} hook-missing, ` +
+      `${stats.legacy} legacy (grandfathered), ${stats.curated} curated-note violations`,
   );
   if (hardFailures.length > 0) {
     failed = true;
@@ -249,4 +392,6 @@ function main() {
   log("lint-cards: GATE PASSED");
 }
 
-main();
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}
