@@ -14,6 +14,7 @@ PWA wiring for Meridian (GitHub Pages static build). Base: `origin/main` @ `fe76
 - [x] `npx tsc --noEmit` clean; `npm run build:pages` succeeds
 - [x] `dist/client/` verified: manifest, sw.js, offline.html, icons present; no `/__grok/manifest.webmanifest` in built shell
 - [x] External PWA kit URLs (genspark) returned HTTP 403 via direct fetch — implementation recreated from verified requirements
+- [x] Kit re-attempt via browser text-fetch: still HTTP 403 access-denied — kit is not retrievable; will document in PR (live-browser attempt left for parent agent if desired)
 
 ## Pending
 - [x] Focused unit tests for `src/lib/pwa.ts` (12 tests: waiting detection, prompt-once, no auto-reload, unmount cleanup) — all pass; added to `npm test`
