@@ -105,6 +105,10 @@ export default defineConfig({
       name: "highlight",
       testMatch: /highlight\.spec\.ts/,
     },
+    {
+      name: "session-score",
+      testMatch: /session-score\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],

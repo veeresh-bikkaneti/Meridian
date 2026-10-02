@@ -7,7 +7,26 @@ import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
-import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
+import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
+import {
+  bankPlace,
+  clearSession,
+  EDITION_LABELS,
+  endSession,
+  IDLE_TIMEOUT_MS,
+  idleTimeoutFromSearch,
+  idleWarnMsFor,
+  isIdleExpired,
+  isSessionLive,
+  readSession,
+  seedSessionFromRun,
+  startSession,
+  summarizeSession,
+  touchSession,
+  writeSession,
+  type Session,
+  type SessionSummary,
+} from "@/game/session";
 import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
@@ -352,6 +371,31 @@ type Menu =
   | { kind: "states" }
   | { kind: "admin1"; countryId: string; countryName: string; from: "countries" | "states" };
 
+/**
+ * Session state: the score accumulator that survives edition switches.
+ * All mutations go through `update`/`replace`, which persist to
+ * sessionStorage and keep `ref` (the read-current-value handle for event
+ * handlers and the idle timer) in sync with the rendered state.
+ */
+function useSessionState() {
+  const [session, setSession] = useState<Session | null>(null);
+  const ref = useRef<Session | null>(null);
+  const persist = useCallback((next: Session | null) => {
+    ref.current = next;
+    if (next) writeSession(next);
+    else clearSession();
+    setSession(next);
+  }, []);
+  const update = useCallback(
+    (fn: (prev: Session | null) => Session | null) => {
+      persist(fn(ref.current));
+    },
+    [persist],
+  );
+  const get = useCallback(() => ref.current, []);
+  return { session, update, replace: persist, get };
+}
+
 export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
@@ -365,30 +409,96 @@ export function GameApp() {
   // one-tap refresh prompt instead of a dead end.
   const [starting, setStarting] = useState<{ regionName: string } | null>(null);
   const [startError, setStartError] = useState<{ message: string; staleBuild: boolean } | null>(null);
+  // Session score: survives edition switches until End game or the idle
+  // timeout. The HUD and the summary read from here, never from the run.
+  const { session, update: updateSession, replace: replaceSession, get: getSession } = useSessionState();
+  // Idle UX: a non-blocking "still there?" warning, and a one-shot notice
+  // on the home screen after the idle kill.
+  const [idleWarn, setIdleWarn] = useState(false);
+  const [idleEndedNote, setIdleEndedNote] = useState(false);
+  // E2E seam: ?idle-ms=<n> shortens the 2-minute timeout (see session.ts).
+  const idleTimeoutMs = useMemo(
+    () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
+    [],
+  );
+  const idleWarnMs = useMemo(() => idleWarnMsFor(idleTimeoutMs), [idleTimeoutMs]);
 
   const commit = useCallback((next: Run) => {
     writeRun(next);
     setRun(next);
   }, []);
 
+  /**
+   * Adopt the stored session when it is still live (same day, not ended),
+   * otherwise start a fresh one. A fresh session seeded from a run that
+   * already has results backfills exactly once: those places were never
+   * banked into any live session.
+   */
+  const ensureSession = useCallback(
+    (nextRun: Run | null) => {
+      const now = Date.now();
+      const dateKey = trailDate();
+      updateSession((prev) => {
+        if (isSessionLive(prev, dateKey) && !isIdleExpired(prev, now, idleTimeoutMs)) {
+          return touchSession(prev, now);
+        }
+        let fresh = startSession(dateKey, now);
+        if (nextRun && nextRun.results.length > 0) {
+          fresh = seedSessionFromRun(fresh, nextRun);
+        }
+        return fresh;
+      });
+    },
+    [updateSession, idleTimeoutMs],
+  );
+
+  /** Idle kill: end the session and return the player to the home screen. */
+  const killIdleSession = useCallback(() => {
+    clearDrop();
+    try {
+      sessionStorage.removeItem(RUN_KEY);
+    } catch {
+      // Storage blocked; the in-memory run is dropped below regardless.
+    }
+    setRun(null);
+    setMenu(null);
+    replaceSession(null);
+    setIdleWarn(false);
+    setIdleEndedNote(true);
+  }, [replaceSession]);
+
   useEffect(() => {
     const saved = readRun();
+    const now = Date.now();
+    const dateKey = trailDate();
+    const savedSession = readSession();
+    // A session that idled out while the tab was closed counts as expired:
+    // kill it (and the run it banked) instead of silently resuming.
+    if (savedSession && isSessionLive(savedSession, dateKey) && isIdleExpired(savedSession, now, idleTimeoutMs)) {
+      killIdleSession();
+      setReady(true);
+      return;
+    }
     if (saved) {
       const today = {
         edition: saved.edition,
         regionId: saved.regionId,
         regionName: saved.regionName,
-        dateKey: trailDate(),
+        dateKey,
       };
       // resumeRun mints a fresh run when the saved one is not resumable — a
       // page load must not auto-start a run, so only resumable sessions are
       // restored. (The old `restored === saved` check could never pass:
       // resumeRun always returns a new object, so reloads silently dropped
       // to the menu instead of resuming.)
-      if (isResumable(saved, today)) commit(resumeRun(saved, today));
+      if (isResumable(saved, today)) {
+        const restored = resumeRun(saved, today);
+        commit(restored);
+        ensureSession(restored);
+      }
     }
     setReady(true);
-  }, [commit]);
+  }, [commit, ensureSession, killIdleSession, idleTimeoutMs]);
 
   const refreshForNewBuild = useCallback(() => {
     try {
@@ -415,6 +525,9 @@ export function GameApp() {
           prevLastId,
         );
         commit(next);
+        // Switching editions keeps the session (and its score) alive: a new
+        // session starts only when none is live.
+        ensureSession(next);
         setMenu(null);
       } catch (err) {
         // Fail closed: no chunk, no run. The player stays on the menu with
@@ -436,8 +549,109 @@ export function GameApp() {
         setStarting(null);
       }
     },
-    [commit],
+    [commit, ensureSession],
   );
+
+  // Bank one scored place into the session (exactly-once: called only from
+  // the pin-commit path, which appends exactly one result per commit).
+  const bankScoredPlace = useCallback(
+    (input: { edition: Edition; score: number; hit: boolean; distanceKm: number; streakAfter: number }) => {
+      const dateKey = trailDate();
+      updateSession((prev) => {
+        // Sessions are date-scoped like runs: a UTC-midnight rollover starts
+        // a fresh session rather than silently dropping banks into a stale one.
+        if (!prev || prev.ended) return prev;
+        const base = prev.dateKey === dateKey ? prev : startSession(dateKey, Date.now());
+        return bankPlace(base, input);
+      });
+    },
+    [updateSession],
+  );
+
+  // End game: the session's totals (not the run's) become the summary, and
+  // the session ends — the next game starts a fresh one.
+  const handleEndGame = useCallback((): SessionSummary | null => {
+    const dateKey = trailDate();
+    const now = Date.now();
+    let summary: SessionSummary | null = null;
+    updateSession((prev) => {
+      const base =
+        prev && isSessionLive(prev, dateKey) ? prev : startSession(dateKey, now);
+      summary = summarizeSession(base);
+      const ended = endSession(base);
+      return ended;
+    });
+    return summary;
+  }, [updateSession]);
+
+  // Any interaction keeps the session alive; also dismisses the idle warning.
+  useEffect(() => {
+    const onActivity = () => {
+      const now = Date.now();
+      const dateKey = trailDate();
+      updateSession((prev) => {
+        if (!isSessionLive(prev, dateKey)) return prev;
+        // Throttle storage writes: interaction bursts don't need per-event persistence.
+        if (now - prev.lastActivityAt < 2000) return prev;
+        return touchSession(prev, now);
+      });
+      setIdleWarn(false);
+    };
+    const events = ["pointerdown", "keydown", "touchstart", "wheel"] as const;
+    for (const name of events) {
+      window.addEventListener(name, onActivity, { passive: true });
+    }
+    return () => {
+      for (const name of events) {
+        window.removeEventListener(name, onActivity);
+      }
+    };
+  }, [updateSession]);
+
+  // Idle watchdog: warn shortly before the timeout, then kill the session
+  // and return the player to the home screen. Wall-clock based — a tab left
+  // open but untouched still expires.
+  useEffect(() => {
+    const check = () => {
+      const s = getSession();
+      const dateKey = trailDate();
+      if (!isSessionLive(s, dateKey)) {
+        setIdleWarn(false);
+        return;
+      }
+      const now = Date.now();
+      const idleMs = now - s.lastActivityAt;
+      if (idleMs > idleTimeoutMs) {
+        killIdleSession();
+      } else if (idleMs > idleWarnMs) {
+        setIdleWarn(true);
+      }
+    };
+    const id = window.setInterval(check, 5000);
+    // Check immediately when the tab becomes visible again: timers throttle
+    // in background tabs, so the kill would otherwise lag the return.
+    const onVisible = () => {
+      if (document.visibilityState === "visible") check();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      window.clearInterval(id);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [getSession, killIdleSession, idleTimeoutMs, idleWarnMs]);
+
+  // Non-blocking idle warning. Rendered on EVERY screen where a session
+  // can be live — in-game and the edition picker alike — so the 2-minute
+  // kick never surprises. (The "Editions" button leaves the run while the
+  // session stays alive, so picker-only rendering would miss it.)
+  const idleToast = idleWarn ? (
+    <div
+      role="status"
+      className="fixed inset-x-4 top-16 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl"
+    >
+      Still there? Your game ends after 2 minutes of no activity — do anything to keep playing.
+    </div>
+  ) : null;
 
   if (!ready) {
     return (
@@ -450,15 +664,35 @@ export function GameApp() {
 
   if (run) {
     return (
-      <Play
-        run={run}
-        onRun={commit}
-        onLeave={() => {
-          clearDrop();
-          setRun(null);
-          setMenu(null);
-        }}
-      />
+      <>
+        <Play
+          run={run}
+          session={session}
+          onRun={commit}
+          onBankPlace={bankScoredPlace}
+          onEndGame={handleEndGame}
+          onEditions={() => {
+            // Back to the picker WITHOUT ending the game: the session (and
+            // its score) stays alive across the edition switch.
+            clearDrop();
+            setRun(null);
+            setMenu(null);
+          }}
+          onSummaryDone={() => {
+            // End game already ended the session; drop it and go home.
+            clearDrop();
+            setRun(null);
+            setMenu(null);
+            replaceSession(null);
+          }}
+          onReplayed={() => {
+            // Play again after End game: the old session ended with the
+            // summary, so the replay starts a brand-new session.
+            replaceSession(startSession(trailDate(), Date.now()));
+          }}
+        />
+        {idleToast}
+      </>
     );
   }
 
@@ -466,6 +700,7 @@ export function GameApp() {
   // replaced (no double-taps) until the load resolves or fails closed.
   if (starting) {
     return (
+      <>
       <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
         <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
         <h1 className="mt-2 font-display text-4xl text-fg">{starting.regionName}</h1>
@@ -473,6 +708,8 @@ export function GameApp() {
           Fetching this region&rsquo;s places&hellip;
         </p>
       </main>
+      {idleToast}
+      </>
     );
   }
 
@@ -494,10 +731,24 @@ export function GameApp() {
     )
   ) : null;
 
+  // Shown once on the home screen after the idle kill.
+  const idleNotice = idleEndedNote ? (
+    <div
+      role="status"
+      className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
+    >
+      <p>Your game ended after 2 minutes of inactivity. Pick an edition to start a new game.</p>
+      <Button type="button" variant="secondary" onClick={() => setIdleEndedNote(false)}>
+        Dismiss
+      </Button>
+    </div>
+  ) : null;
+
   if (menu?.kind === "countries") {
     // Only countries with a playable pool — never a dead end.
     const regions = COUNTRIES.filter((country) => poolSizeFor("country", country.id) > 0);
     return (
+      <>
       <RegionList
         title="Country"
         subtitle="Play a country whole — or drill into its states where available."
@@ -513,6 +764,8 @@ export function GameApp() {
           }
         }}
       />
+      {idleToast}
+      </>
     );
   }
 
@@ -528,6 +781,7 @@ export function GameApp() {
         poolSizeFor("country", country.id) > 0 && (ADMIN1_BY_COUNTRY[country.id] ?? []).length > 0,
     );
     return (
+      <>
       <RegionList
         title="State"
         subtitle="Choose a country, then one of its states."
@@ -537,12 +791,15 @@ export function GameApp() {
           setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
         }
       />
+      {idleToast}
+      </>
     );
   }
 
   if (menu?.kind === "admin1") {
     const regions = ADMIN1_BY_COUNTRY[menu.countryId] ?? [];
     return (
+      <>
       <RegionList
         title={menu.countryName}
         subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
@@ -555,16 +812,26 @@ export function GameApp() {
         onBack={() => setMenu({ kind: menu.from })}
         onChoose={(region) => openRun("state", region.id, region.name)}
       />
+      {idleToast}
+      </>
     );
   }
 
   return (
+    <>
     <Choose
       onState={() => setMenu({ kind: "states" })}
       onCountry={() => setMenu({ kind: "countries" })}
       onGlobe={() => openRun("globe", "globe", "Globe")}
-      notice={loadNotice}
+      notice={
+        <>
+          {idleNotice}
+          {loadNotice}
+        </>
+      }
     />
+    {idleToast}
+    </>
   );
 }
 
@@ -589,8 +856,9 @@ function Choose({
         </p>
         <h1 className="mt-3 font-display text-5xl text-fg">{BRAND.name}</h1>
         <p className="mt-4 max-w-md text-lg text-muted">
-          Pick the globe, a country, or a state. A place name, then one pin. The run goes until
-          you choose to end it.
+          Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
+          adding up across editions until you choose to end the game, or if you&rsquo;re idle for
+          2 minutes.
         </p>
       </header>
       <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -694,12 +962,32 @@ function RegionList({
  */
 function Play({
   run,
+  session,
   onRun,
-  onLeave,
+  onBankPlace,
+  onEndGame,
+  onEditions,
+  onSummaryDone,
+  onReplayed,
 }: {
   run: Run;
+  session: Session | null;
   onRun: (run: Run) => void;
-  onLeave: () => void;
+  onBankPlace: (input: {
+    edition: Edition;
+    score: number;
+    hit: boolean;
+    distanceKm: number;
+    streakAfter: number;
+  }) => void;
+  /** Ends the session and returns its summary (null when there is no session). */
+  onEndGame: () => SessionSummary | null;
+  /** Back to the edition picker mid-run; the session stays alive. */
+  onEditions: () => void;
+  /** Summary dismissed after End game; the session is already ended. */
+  onSummaryDone: () => void;
+  /** A fresh run started via Play again; starts a fresh session. */
+  onReplayed: (run: Run) => void;
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
@@ -732,7 +1020,7 @@ function Play({
           {poolError} The run was not started with a partial pool — pick the region again to retry.
         </p>
         <div className="mt-6">
-          <Button onClick={onLeave}>Back to editions</Button>
+          <Button onClick={onEditions}>Back to editions</Button>
         </div>
       </main>
     );
@@ -750,19 +1038,47 @@ function Play({
     );
   }
 
-  return <PlayLoaded run={run} places={places} onRun={onRun} onLeave={onLeave} />;
+  return (
+    <PlayLoaded
+      run={run}
+      places={places}
+      session={session}
+      onRun={onRun}
+      onBankPlace={onBankPlace}
+      onEndGame={onEndGame}
+      onEditions={onEditions}
+      onSummaryDone={onSummaryDone}
+      onReplayed={onReplayed}
+    />
+  );
 }
 
 function PlayLoaded({
   run,
   places,
+  session,
   onRun,
-  onLeave,
+  onBankPlace,
+  onEndGame: requestEndGame,
+  onEditions,
+  onSummaryDone: finishSummary,
+  onReplayed,
 }: {
   run: Run;
   places: Starter[];
+  session: Session | null;
   onRun: (run: Run) => void;
-  onLeave: () => void;
+  onBankPlace: (input: {
+    edition: Edition;
+    score: number;
+    hit: boolean;
+    distanceKm: number;
+    streakAfter: number;
+  }) => void;
+  onEndGame: () => SessionSummary | null;
+  onEditions: () => void;
+  onSummaryDone: () => void;
+  onReplayed: (run: Run) => void;
 }) {
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
@@ -815,7 +1131,24 @@ function PlayLoaded({
   // instance — its controller is terminal (revealDone) and its highlight
   // belongs to the previous run.
   const [mapKey, setMapKey] = useState(0);
-  const [summary, setSummary] = useState<RunSummary | null>(null);
+  const [summary, setSummary] = useState<SessionSummary | null>(null);
+  // Session score: the HUD total accumulates across edition switches until
+  // End game. Falls back to the run's own results when no session exists
+  // (defensive; openRun always ensures one).
+  const sessionTotal =
+    session?.totalScore ?? run.results.reduce((sum, r) => sum + r.score, 0);
+  const [showBreakdown, setShowBreakdown] = useState(false);
+
+  // Escape closes the score breakdown for keyboard users (it holds no
+  // focusables, so focus never enters it; the toggle button re-opens it).
+  useEffect(() => {
+    if (!showBreakdown) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowBreakdown(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [showBreakdown]);
 
   // Reload-mid-reveal restore: `drop`/`revealDone` are in-memory only, so a
   // page reload during the result card used to strand the run — phase
@@ -1001,7 +1334,21 @@ function PlayLoaded({
     // Persisted so a reload during the result card can rehydrate it; the
     // mount restore validates the shape and the place match before use.
     writeDrop(nextDrop);
-    onRun(dropPin(run, distance, radius, scored));
+    const bankedBefore = run.results.length;
+    const nextRun = dropPin(run, distance, radius, scored);
+    onRun(nextRun);
+    // Bank the scored place into the session exactly once: dropPin appends
+    // exactly one result per aim-phase commit, so the length check guards
+    // the (unreachable here) no-op path.
+    if (nextRun.results.length > bankedBefore) {
+      onBankPlace({
+        edition: run.edition,
+        score: hit && scored ? scored.score : 0,
+        hit,
+        distanceKm: distance,
+        streakAfter: nextRun.streak,
+      });
+    }
   }
 
   function onContinue() {
@@ -1013,15 +1360,17 @@ function PlayLoaded({
   }
 
   function onEndGame() {
-    const { run: ended, summary: final } = endRun(run);
+    // The summary tallies the whole session (every edition played), not
+    // just this run; the session ends here.
+    const final = requestEndGame();
     setSummary(final);
     clearDrop();
-    onRun(ended);
+    onRun(endRun(run).run);
   }
 
   function onSummaryDone() {
     setSummary(null);
-    onLeave();
+    finishSummary();
   }
 
   function onSummaryPlayAgain() {
@@ -1050,19 +1399,21 @@ function PlayLoaded({
       run.edition,
       run.regionId,
     );
-    onRun(
-      resumeRun(
-        run,
-        {
-          edition: run.edition,
-          regionId: run.regionId,
-          regionName: run.regionName,
-          dateKey: replayDateKey,
-        },
-        replayPoolIds,
-        replayPrevLastId,
-      ),
+    const freshRun = resumeRun(
+      run,
+      {
+        edition: run.edition,
+        regionId: run.regionId,
+        regionName: run.regionName,
+        dateKey: replayDateKey,
+      },
+      replayPoolIds,
+      replayPrevLastId,
     );
+    onRun(freshRun);
+    // Play again after End game: the old session ended with the summary, so
+    // the replay starts a brand-new session.
+    onReplayed(freshRun);
   }
 
   const mode = run.edition === "globe" ? "globe" : "flat";
@@ -1086,18 +1437,47 @@ function PlayLoaded({
           onRevealComplete={() => setRevealDone(true)}
         />
         <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
-          <Button variant="secondary" className="pointer-events-auto" onClick={onLeave}>
+          <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
             Editions
           </Button>
           <div className="flex flex-col items-end gap-2">
-            <p
-              data-testid="score-total"
-              role="status"
-              className="rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
-            >
-              SCORE {run.results.reduce((sum, r) => sum + r.score, 0).toLocaleString("en-US")}
-            </p>
+            <div className="relative">
+              <button
+                type="button"
+                data-testid="score-total"
+                aria-expanded={showBreakdown}
+                aria-controls="session-score-breakdown"
+                aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition.`}
+                onClick={() => setShowBreakdown((v) => !v)}
+                className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
+              >
+                SCORE {sessionTotal.toLocaleString("en-US")}
+              </button>
+              {showBreakdown && session ? (
+                <div
+                  id="session-score-breakdown"
+                  data-testid="session-score-breakdown"
+                  className="pointer-events-auto absolute top-full right-0 z-40 mt-1 w-44 rounded-md border border-line bg-surface p-2 text-xs shadow-lg"
+                >
+                  {summarizeSession(session).byEdition.map((b) => (
+                    <div key={b.edition} className="flex items-center justify-between py-1">
+                      <span className="text-muted">{EDITION_LABELS[b.edition]}</span>
+                      <span className="font-semibold tabular-nums text-fg">
+                        {b.score.toLocaleString("en-US")}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <span className="sr-only" role="status">
+              Session score {sessionTotal.toLocaleString("en-US")}
+            </span>
             {run.streak >= 2 ? (
+              // The flame celebrates the LIVE streak in this run (each
+              // edition is a fresh run with its own combo); the summary's
+              // "best streak" is session-wide and may come from another
+              // edition. Both labels are honest about what they measure.
               <p
                 data-testid="streak-flame"
                 className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm tabular-nums text-fg"
@@ -1131,7 +1511,9 @@ function PlayLoaded({
             : run.phase === "story" && place
               ? "Showing the answer."
               : run.phase === "summary" && summary
-                ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore}, average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
+                ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore.toLocaleString("en-US")} — ${summary.byEdition
+                    .map((b) => `${EDITION_LABELS[b.edition]} ${b.score.toLocaleString("en-US")}`)
+                    .join(", ")}. Average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
                 : place
                   ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${place.name} missed.`
                   : `${run.regionName} finished.`}
