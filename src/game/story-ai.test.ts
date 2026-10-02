@@ -379,7 +379,7 @@ test("story cache is a safe no-op without localStorage (node)", () => {
 // Firing condition + hook
 // ---------------------------------------------------------------------------
 
-test("shouldFireAiStory fires only when no build-time fact exists", () => {
+test("shouldFireAiStory fires only for blurb-only generated places", () => {
   const base: StoryPlace = { id: "gn-1", name: "X", regionId: "globe" };
   assert.equal(shouldFireAiStory(null), false);
   assert.equal(shouldFireAiStory({ ...base, id: "" }), false);
@@ -387,6 +387,21 @@ test("shouldFireAiStory fires only when no build-time fact exists", () => {
   assert.equal(shouldFireAiStory({ ...base, fact: null }), true);
   assert.equal(shouldFireAiStory(base), true, "missing fact counts as no fact");
   assert.equal(shouldFireAiStory({ ...base, fact: "" }), true, "empty fact counts as no fact");
+  assert.equal(
+    shouldFireAiStory({ ...base, history: "A history hook." }),
+    false,
+    "history hook present → skip",
+  );
+  assert.equal(
+    shouldFireAiStory({ ...base, history: "" }),
+    true,
+    "empty history counts as no enrichment",
+  );
+  assert.equal(
+    shouldFireAiStory({ ...base, id: "alabama-vulcan" }),
+    false,
+    "curated (non-gn-) place → skip",
+  );
 });
 
 function Probe({ place }: { place: StoryPlace | null }) {
@@ -420,6 +435,43 @@ test("withStoryLine appends the AI story or leaves the base untouched", () => {
   assert.equal(withStoryLine(base, NICOLET_STORY), `${base} ${NICOLET_STORY}`);
   assert.equal(withStoryLine(base, null), base);
   assert.equal(withStoryLine("", NICOLET_STORY), NICOLET_STORY);
+});
+
+test("card upgrade path: blurb-only place → validated AI story → composed display + badge", async () => {
+  // This mirrors exactly what ResultCard does:
+  //   const aiStory = useAiStory(place);   // hook (Probe-tested above)
+  //   const withAi = aiStory ? withStoryLine(baseStory, aiStory) : baseStory;
+  //   {aiStory ? <AiStoryBadge /> : null}
+  const blurbOnly: StoryPlace = { id: "gn-5254962", name: "Green Bay", regionId: "wisconsin" };
+  assert.equal(shouldFireAiStory(blurbOnly), true, "blurb-only generated place fires");
+
+  // Mocked Nano session returns the validated story (extract-grounded).
+  const aiStory = await queryAiStory("Green Bay, Wisconsin", NICOLET_EXTRACT, {
+    openSession: async () => fakeSession(NICOLET_STORY),
+  });
+  assert.equal(aiStory, NICOLET_STORY);
+
+  // Card composition: blurb renders first, AI sentence upgrades it.
+  const baseStory = "Green Bay is a city in northeastern Wisconsin, the United States.";
+  const displayStory = aiStory ? withStoryLine(baseStory, aiStory) : baseStory;
+  assert.equal(displayStory, `${baseStory} ${NICOLET_STORY}`);
+  // Badge visibility rule: badge renders iff the AI story arrived.
+  assert.equal(aiStory !== null, true, "badge shows when the AI story arrives");
+  assert.equal(withStoryLine(baseStory, null) === baseStory, true);
+});
+
+test("card upgrade path: enriched place never reaches Nano", () => {
+  const withHistory: StoryPlace = {
+    id: "gn-1",
+    name: "X",
+    regionId: "globe",
+    history: "A history hook.",
+  };
+  const withFact: StoryPlace = { id: "gn-2", name: "Y", regionId: "globe", fact: "A fact." };
+  const curated: StoryPlace = { id: "alabama-vulcan", name: "Vulcan Park", regionId: "alabama" };
+  for (const place of [withHistory, withFact, curated]) {
+    assert.equal(shouldFireAiStory(place), false, `${place.id} must not fire Nano`);
+  }
 });
 
 test("AI_STORY_BADGE carries the disclosure copy", () => {

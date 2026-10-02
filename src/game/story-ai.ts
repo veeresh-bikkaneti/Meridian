@@ -10,10 +10,12 @@
  * Flow per place:
  *   1. The card renders the generic blurb IMMEDIATELY. Nothing here ever
  *      blocks or delays it.
- *   2. Only when the place has no build-time `fact` (missing, null, or
- *      empty) AND the browser exposes an already-downloaded on-device model
+ *   2. Only when the place is a generated (GeoNames) place with no build-time
+ *      enrichment — no `fact` (ladder) and no `history` (PR #30 hook) — AND
+ *      the browser exposes an already-downloaded on-device model
  *      (browserAiAvailable(), same guard as sports-ai.ts) do we ask Nano
- *      for one story sentence.
+ *      for one story sentence. Curated starters carry hand-authored stories;
+ *      Nano never fires for them.
  *   3. The prompt enforces Veeresh's four card principles: (1) history
  *      first, modern identity second; (2) plain-spoken geography, no
  *      coords/elevation; (3) one memorable person/event/quote/movie/record —
@@ -551,36 +553,44 @@ export function writeCachedStory(placeId: string, story: string): void {
 // ---------------------------------------------------------------------------
 
 /** Structural place view the hook needs. `fact` is the build-time ladder's
- *  optional field (owned by the ladder worker in generated-places.ts). */
+ *  optional field (owned by the ladder worker in generated-places.ts);
+ *  `history` is the Wikipedia hook sentence already merged on main (PR #30).
+ *  Either one present means the card already teaches — Nano stays asleep. */
 export interface StoryPlace {
   id: string;
   name: string;
   regionId: string;
   originRegionId?: string;
   fact?: string | null;
+  history?: string | null;
   wiki?: string | null;
 }
 
 /**
- * Pure firing decision, unit-tested: Nano may fire only for a real place
- * with NO build-time fact. Missing, null, and empty-string facts all count
- * as "no fact" — an empty fact teaches nothing.
+ * Pure firing decision, unit-tested: Nano may fire only for a real GENERATED
+ * place (GeoNames `gn-<digits>` id, same gate useAiSportsTeams uses — curated
+ * starters carry hand-authored stories and never need the fallback) with NO
+ * build-time enrichment. Missing, null, and empty-string facts/history all
+ * count as "no enrichment" — an empty string teaches nothing.
  */
 export function shouldFireAiStory(place: StoryPlace | null): boolean {
   if (!place || typeof place.id !== "string" || place.id.length === 0) return false;
+  if (geonameIdOf(place.id) === null) return false;
   if (typeof place.fact === "string" && place.fact.length > 0) return false;
+  if (typeof place.history === "string" && place.history.length > 0) return false;
   return true;
 }
 
 /**
  * React hook: the on-device AI story fallback for one place.
  * Returns the validated Nano story sentence (render with withStoryLine), or
- * null when the generic blurb should stand — no build-time fact is missing,
+ * null when the generic blurb should stand — build-time enrichment present,
  * no on-device AI, the cache says "nothing usable", or the model had
  * nothing valid to add.
  *
- * The hook never fires when place.fact is a non-empty string, never fires
- * during E2E (browserAiAvailable() is false in the test Chromium), and is
+ * The hook never fires when place.fact or place.history is a non-empty
+ * string, never fires for curated (non-`gn-`) places, never fires during
+ * E2E (browserAiAvailable() is false in the test Chromium), and is
  * cancelled on place change via AbortController + the cancelled flag.
  */
 export function useAiStory(place: StoryPlace | null, extract?: string | null): string | null {

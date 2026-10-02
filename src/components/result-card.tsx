@@ -9,6 +9,7 @@ import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
+import { useAiStory, withStoryLine, AI_STORY_BADGE } from "@/game/story-ai";
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -77,6 +78,23 @@ function Fade({
   );
 }
 
+/**
+ * Subtle disclosure for on-device AI story content. Non-interactive —
+ * kids first, disclosure second. The title/aria-label carry the full
+ * explanation for hover and assistive tech.
+ */
+function AiStoryBadge() {
+  return (
+    <span
+      title={AI_STORY_BADGE.title}
+      aria-label={AI_STORY_BADGE.title}
+      className="ml-1.5 inline-flex items-center rounded border border-white/20 bg-white/10 px-1 py-px align-middle text-[10px] font-medium tracking-wide text-white/70"
+    >
+      {AI_STORY_BADGE.label}
+    </span>
+  );
+}
+
 function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?: "primary" | "secondary" }) {
   const [copied, setCopied] = useState(false);
   const summary = summarizeRun(run);
@@ -131,11 +149,17 @@ export function ResultCard({
   const reduced = usePrefersReducedMotion();
   const aiSports = useAiSportsTeams(place);
   const baseStory = story ?? place?.story ?? "";
+  // On-device AI story fallback (story-ai.ts): fires only for generated
+  // places with no build-time enrichment (no history hook, no ladder fact).
+  // The generic blurb is already on screen — the AI sentence upgrades it
+  // when (and only when) it arrives validated. Null = blurb stands, no UI.
+  const aiStory = useAiStory(place);
+  const withAi = aiStory ? withStoryLine(baseStory, aiStory) : baseStory;
   // AI-first sports line: the on-device model gets first say when it is
   // available and returns validated teams; the curated blurb underneath is
   // the instant fallback (and the whole story where there is no AI).
   const displayStory =
-    aiSports && aiSports.length > 0 ? withSportsLine(baseStory, aiSports) : baseStory;
+    aiSports && aiSports.length > 0 ? withSportsLine(withAi, aiSports) : withAi;
   const [storyLede, storyRest] = splitLede(displayStory);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
@@ -249,7 +273,10 @@ export function ResultCard({
                 role="region"
                 aria-label="Place story"
               >
-                <p className="text-sm leading-relaxed">{displayStory}</p>
+                <p className="text-sm leading-relaxed">
+                  {displayStory}
+                  {aiStory ? <AiStoryBadge /> : null}
+                </p>
               </div>
               <a
                 className="text-sm text-white/70 underline"
@@ -287,14 +314,17 @@ export function ResultCard({
                   {formatFactor(comboForStreak(1))}x.
                 </p>
               ) : null}
-              {storyRest ? (
+              {storyRest || aiStory ? (
                 <div
                   className="max-h-44 overflow-y-auto"
                   tabIndex={0}
                   role="region"
                   aria-label="Place story, continued"
                 >
-                  <p className="text-sm leading-relaxed">{storyRest}</p>
+                  <p className="text-sm leading-relaxed">
+                    {storyRest}
+                    {aiStory ? <AiStoryBadge /> : null}
+                  </p>
                 </div>
               ) : null}
               <a
