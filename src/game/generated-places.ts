@@ -72,6 +72,15 @@ interface ChunkPlaceRecord {
    * from the source article.
    */
   history?: unknown;
+  /**
+   * Optional merged fact from scripts/facts-ladder.mjs (Phase 2): the
+   * winning rung of wikidata > wikitext > eb1911 > hook, as
+   * { text, kind: 'wikidata'|'wikitext'|'eb1911'|'hook',
+   *   source: 'Wikidata'|'Wikipedia'|'EB1911', qid?, href? }.
+   * Every composed fact passed the facts-validate.mjs no-fabrication gate
+   * at merge time; this only guards against hand-edited corruption.
+   */
+  fact?: unknown;
   /** Optional en.wikipedia.org article slug when the blurb carries a curated notable note. */
   wiki?: unknown;
   iso2: unknown;
@@ -79,9 +88,53 @@ interface ChunkPlaceRecord {
   regionId: unknown;
 }
 
+/** One merged fact as written by scripts/facts-ladder.mjs (narrowed by assertValidRecord). */
+export interface ChunkFact {
+  text: string;
+  kind: "wikidata" | "wikitext" | "eb1911" | "hook";
+  source: string;
+  /** Wikidata QID — present exactly when kind === 'wikidata'. */
+  qid?: string;
+  /** Wikisource page URL — present exactly when kind === 'eb1911'. */
+  href?: string;
+}
+
+const FACT_KINDS = new Set(["wikidata", "wikitext", "eb1911", "hook"]);
+
+/** Fail-closed narrowing for the fact field: bad shape throws, never sails through. */
+function assertValidFact(fact: unknown, wiki: unknown, where: string): asserts fact is ChunkFact {
+  const f = fact as Partial<ChunkFact> | null;
+  const okShape =
+    typeof f === "object" &&
+    f !== null &&
+    typeof f.text === "string" &&
+    f.text.length >= 20 &&
+    f.text.length <= 240 &&
+    /[.!?]$/.test(f.text.trim()) &&
+    typeof f.kind === "string" &&
+    FACT_KINDS.has(f.kind) &&
+    typeof f.source === "string" &&
+    f.source.length > 0;
+  // wikidata facts must carry a QID for the attribution link.
+  const okQid =
+    f?.kind !== "wikidata" || (typeof f.qid === "string" && /^Q\d+$/.test(f.qid));
+  // eb1911 facts must carry their Wikisource page URL.
+  const okHref =
+    f?.kind !== "eb1911" ||
+    (typeof f.href === "string" && f.href.startsWith("https://en.wikisource.org/"));
+  // Wikipedia-sourced facts (wikitext/hook) must travel with the wiki slug —
+  // unattributed CC BY-SA text would otherwise render under the wrong label.
+  const okWiki =
+    (f?.kind !== "wikitext" && f?.kind !== "hook") ||
+    (typeof wiki === "string" && wiki.length > 0);
+  if (!okShape || !okQid || !okHref || !okWiki) {
+    throw new Error(`${where}: invalid fact field`);
+  }
+}
+
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
 function toStarter(
-  place: { id: string; name: string; lon: number; lat: number; blurb: string; history?: string; wiki?: string },
+  place: { id: string; name: string; lon: number; lat: number; blurb: string; history?: string; wiki?: string; fact?: ChunkFact },
   edition: Edition,
   regionId: string,
 ): Starter {
@@ -91,9 +144,25 @@ function toStarter(
   // Notable notes are curated from Wikipedia; the slug travels in the chunk
   // so the card can attribute it (GeoNames stays credited app-wide).
   const hasWiki = typeof place.wiki === "string" && place.wiki.length > 0;
-  // Card rule 1: history first, modern identity second. The hook sentence
-  // leads; the plain-geography blurb anchors it.
+  // Card rule 1: history first, modern identity second. The ladder's merged
+  // fact (already precedence-ordered: wikidata > wikitext > eb1911 > hook)
+  // leads when present; the plain-geography blurb anchors it. Otherwise the
+  // legacy history hook leads, else the bare blurb.
+  const hasFact = place.fact !== undefined;
   const hasHistory = typeof place.history === "string" && place.history.length > 0;
+  const story = hasFact
+    ? `${place.fact!.text} ${place.blurb}`
+    : hasHistory
+      ? `${place.history} ${place.blurb}`
+      : place.blurb;
+  // Source attribution follows the fact kind: wikidata facts link the
+  // Wikidata entity, eb1911 facts link their Wikisource page, and
+  // Wikipedia-sourced facts keep the existing Wikipedia behavior.
+  const { sourceLabel, sourceHref } = hasFact
+    ? factSource(place.fact!, place.wiki)
+    : hasWiki
+      ? { sourceLabel: "GeoNames · Wikipedia", sourceHref: `https://en.wikipedia.org/wiki/${place.wiki}` }
+      : { sourceLabel: GENERATED_SOURCE_LABEL, sourceHref: GENERATED_SOURCE_HREF };
   return {
     id: place.id,
     edition,
@@ -101,11 +170,31 @@ function toStarter(
     name: place.name,
     lon: place.lon,
     lat: place.lat,
-    story: hasHistory ? `${place.history} ${place.blurb}` : place.blurb,
-    sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
-    sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
+    story,
+    sourceLabel,
+    sourceHref,
     difficulty,
   };
+}
+
+/**
+ * Card attribution for one merged fact. Mirrors factAttribution() in
+ * scripts/facts-ladder.mjs — keep the two in sync.
+ */
+function factSource(fact: ChunkFact, wiki: string | undefined): { sourceLabel: string; sourceHref: string } {
+  switch (fact.kind) {
+    case "wikidata":
+      return { sourceLabel: "Wikidata", sourceHref: `https://www.wikidata.org/wiki/${fact.qid}` };
+    case "eb1911":
+      return { sourceLabel: "EB1911", sourceHref: fact.href as string };
+    case "wikitext":
+    case "hook":
+    default:
+      return {
+        sourceLabel: "GeoNames · Wikipedia",
+        sourceHref: `https://en.wikipedia.org/wiki/${wiki}`,
+      };
+  }
 }
 
 /**
@@ -126,6 +215,7 @@ function assertValidRecord(
   lat: number;
   blurb: string;
   history?: string;
+  fact?: ChunkFact;
   wiki?: string;
   iso2: string;
   edition: Edition;
@@ -163,6 +253,11 @@ function assertValidRecord(
     if (!okShape || hasFiller || !hasWiki) {
       throw new Error(`${where}: invalid history hook sentence`);
     }
+  }
+  // Merged facts (scripts/facts-ladder.mjs): the merge-time no-fabrication
+  // gate proved each one; this only guards against hand-edited corruption.
+  if (record.fact !== undefined) {
+    assertValidFact(record.fact, record.wiki, where);
   }
   if (record.wiki !== undefined && (typeof record.wiki !== "string" || record.wiki.length === 0)) {
     throw new Error(`${where}: invalid wiki slug`);
