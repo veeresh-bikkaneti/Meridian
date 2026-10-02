@@ -45,6 +45,7 @@ import { createInterface } from "node:readline";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
+import { composeCardStory } from "./card-compose.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = dirname(HERE);
@@ -674,13 +675,24 @@ async function main() {
     const cardLon = edition === "state" ? lon : normalizeLon(lon, boxes[cc]);
     const notable = notableNotes[geonameid];
     const sports = sportsNotes[geonameid];
+    // The generator emits only the plain-spoken geographic anchor — it has
+    // no history or fact-ladder facts. composeCardStory() marks the record
+    // hook-missing truthfully, unless a curated notable note already supplies
+    // the hook (audited separately; embedded in the blurb). The enrichment
+    // merge (history) and the fact ladder (fact) clear the marker when they
+    // add a hook, and the on-main Nano fallback covers the runtime gap for
+    // marked records.
+    const geoBlurb = blurbFor({
+      name, admin1Name, countryName, pop,
+      fcode: c[7], cc, lon: cardLon, lat,
+      box: cardBox, notable: notable?.note, sports: sports?.teams,
+    });
+    const composed = composeCardStory({ blurb: geoBlurb });
+    const hookMissing = composed.hookMissing && !notable?.note;
     const place = {
       id, name, lon, lat,
-      blurb: blurbFor({
-        name, admin1Name, countryName, pop,
-        fcode: c[7], cc, lon: cardLon, lat,
-        box: cardBox, notable: notable?.note, sports: sports?.teams,
-      }),
+      blurb: geoBlurb,
+      ...(hookMissing ? { hookMissing: true } : {}),
       // wiki slug travels so the app can attribute the notable note to
       // Wikipedia (GeoNames stays credited app-wide in the map footer).
       ...(notable ? { wiki: notable.wiki } : {}),

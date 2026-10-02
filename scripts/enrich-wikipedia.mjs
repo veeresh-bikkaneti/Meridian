@@ -731,6 +731,9 @@ async function cmdMerge() {
       if (built.history) {
         p.history = built.history;
         p.wiki = built.wiki;
+        // The card now has its hook — clear the hook-missing marker so the
+        // linter stops flagging it (card-compose.mjs contract).
+        delete p.hookMissing;
         enriched++;
         changed = true;
       } else {
