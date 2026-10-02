@@ -50,7 +50,9 @@ inert otherwise and production play always uses the real clock.
   (`YYYY-MM-DD`). The Loop **never** reads or writes `meridian.run` /
   `meridian.drop` (the endless-run keys).
 - Reload mid-day restores the in-progress state (PR #31 pattern: restore
-  on mount, never reset).
+  on mount, never reset). A separate `meridian.loop.open` flag records
+  whether the GeoDetective screen was open, so a mid-game reload reopens
+  the screen — while an explicit "leave to editions" stays on the menu.
 - The archive prunes to the last 30 days on write.
 
 ## Share text

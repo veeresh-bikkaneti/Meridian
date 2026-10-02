@@ -159,6 +159,29 @@ test("unknown guess consumes nothing; no-match message is friendly", async ({ pa
   expect(await guessCount(page)).toBe(0);
 });
 
+test("explicit leave stays on the menu after reload (no hijack)", async ({ page }) => {
+  await openLoop(page, "2026-10-03");
+  await guess(page, "paris");
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+
+  // Leave explicitly, then reload: the menu stays, the day is not hijacked.
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("button", { name: "Solve today's mystery" })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole("button", { name: "Solve today's mystery" })).toBeVisible({
+    timeout: 30_000,
+  });
+  // The loop screen (not the menu's edition card) is closed: no guess input.
+  await expect(page.getByRole("combobox", { name: "Guess the place" })).toHaveCount(0);
+
+  // The day state itself survived — reopening resumes mid-game.
+  await page.getByRole("button", { name: "Solve today's mystery" }).click();
+  await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({
+    timeout: 30_000,
+  });
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+});
+
 test("loop state is namespaced: endless-run keys untouched", async ({ page }) => {
   await openLoop(page, "2026-10-03");
   await guess(page, "paris");
