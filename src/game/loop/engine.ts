@@ -1,4 +1,4 @@
-import { distanceKm } from "../geo.ts";
+import { distanceKm, initialBearing, octantOf } from "../geo.ts";
 import {
   LOOP_MAX_GUESSES,
   type LoopDayState,
@@ -11,17 +11,6 @@ import {
  * state and a guess, produce the next day state. The screen persists the
  * result via the loop store.
  */
-
-const OCTANTS: Octant[] = [
-  "north",
-  "north-east",
-  "east",
-  "south-east",
-  "south",
-  "south-west",
-  "west",
-  "north-west",
-];
 
 /** Direction arrow per octant, for the guess-history feedback line. */
 export const OCTANT_ARROWS: Record<Octant, string> = {
@@ -38,15 +27,11 @@ export const OCTANT_ARROWS: Record<Octant, string> = {
 /**
  * Bearing from (lon1, lat1) toward (lon2, lat2), snapped to 8 winds.
  * The LoopGuess octant is the direction FROM the guess TOWARD the target.
+ * Delegates to geo.ts (shared with Worker 3's evaluate module) so there is
+ * exactly one bearing/octant implementation.
  */
 export function octantFor(lon1: number, lat1: number, lon2: number, lat2: number): Octant {
-  const φ1 = (lat1 * Math.PI) / 180;
-  const φ2 = (lat2 * Math.PI) / 180;
-  const Δλ = ((lon2 - lon1) * Math.PI) / 180;
-  const y = Math.sin(Δλ) * Math.cos(φ2);
-  const x = Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
-  const deg = ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
-  return OCTANTS[Math.round(deg / 45) % 8]!;
+  return octantOf(initialBearing([lon1, lat1], [lon2, lat2]));
 }
 
 /** A place the player picked in the guess input, before feedback is attached. */
