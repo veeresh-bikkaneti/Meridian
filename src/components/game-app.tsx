@@ -1423,7 +1423,7 @@ function PlayLoaded({
                 type="button"
                 data-testid="score-total"
                 aria-expanded={showBreakdown}
-                aria-controls="score-breakdown"
+                aria-controls="session-score-breakdown"
                 aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition.`}
                 onClick={() => setShowBreakdown((v) => !v)}
                 className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
@@ -1432,8 +1432,8 @@ function PlayLoaded({
               </button>
               {showBreakdown && session ? (
                 <div
-                  id="score-breakdown"
-                  data-testid="score-breakdown"
+                  id="session-score-breakdown"
+                  data-testid="session-score-breakdown"
                   className="pointer-events-auto absolute top-full right-0 z-40 mt-1 w-44 rounded-md border border-line bg-surface p-2 text-xs shadow-lg"
                 >
                   {summarizeSession(session).byEdition.map((b) => (

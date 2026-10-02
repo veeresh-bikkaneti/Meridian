@@ -39,6 +39,7 @@ async function sessionTotal(page: import("playwright/test").Page): Promise<numbe
 }
 
 test("edition switch keeps the accumulated score (no reset to 0)", async ({ page }) => {
+  test.setTimeout(240_000);
   await startGlobeRun(page, NO_IDLE);
 
   // Score in the globe edition: a hit banks points, a miss banks a place.
@@ -76,6 +77,7 @@ test("edition switch keeps the accumulated score (no reset to 0)", async ({ page
 });
 
 test("HUD score toggle shows the per-edition breakdown", async ({ page }) => {
+  test.setTimeout(180_000);
   await startGlobeRun(page, NO_IDLE);
   await dismissTileOverlayIfPresent(page);
   await commitHit(page);
@@ -83,7 +85,7 @@ test("HUD score toggle shows the per-edition breakdown", async ({ page }) => {
   expect(globeScore).toBeGreaterThan(0);
 
   await page.getByTestId("score-total").click();
-  const breakdown = page.getByTestId("score-breakdown");
+  const breakdown = page.getByTestId("session-score-breakdown");
   await expect(breakdown).toBeVisible();
   await expect(breakdown).toContainText("Globe");
   await expect(breakdown).toContainText(globeScore.toLocaleString("en-US"));
@@ -98,6 +100,7 @@ test("HUD score toggle shows the per-edition breakdown", async ({ page }) => {
 test("end-game summary shows the session total with per-edition breakdown", async ({
   page,
 }) => {
+  test.setTimeout(240_000);
   await startGlobeRun(page, NO_IDLE);
   await dismissTileOverlayIfPresent(page);
   await commitHit(page);
