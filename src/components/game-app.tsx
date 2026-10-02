@@ -680,7 +680,7 @@ export function GameApp() {
             role="status"
             className="fixed inset-x-4 top-16 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl"
           >
-            Still there? Your session ends after 2 minutes of inactivity — tap anywhere to keep
+            Still there? Your game ends after 2 minutes of no activity — do anything to keep
             playing.
           </div>
         ) : null}
@@ -726,7 +726,7 @@ export function GameApp() {
       role="status"
       className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
     >
-      <p>Your session ended after 2 minutes of inactivity. Pick an edition to start a new game.</p>
+      <p>Your game ended after 2 minutes of inactivity. Pick an edition to start a new game.</p>
       <Button type="button" variant="secondary" onClick={() => setIdleEndedNote(false)}>
         Dismiss
       </Button>
@@ -834,7 +834,8 @@ function Choose({
         <h1 className="mt-3 font-display text-5xl text-fg">{BRAND.name}</h1>
         <p className="mt-4 max-w-md text-lg text-muted">
           Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
-          adding up across editions until you choose to end the game — or after 2 minutes idle.
+          adding up across editions until you choose to end the game, or if you&rsquo;re idle for
+          2 minutes.
         </p>
       </header>
       <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -1114,6 +1115,17 @@ function PlayLoaded({
   const sessionTotal =
     session?.totalScore ?? run.results.reduce((sum, r) => sum + r.score, 0);
   const [showBreakdown, setShowBreakdown] = useState(false);
+
+  // Escape closes the score breakdown for keyboard users (it holds no
+  // focusables, so focus never enters it; the toggle button re-opens it).
+  useEffect(() => {
+    if (!showBreakdown) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowBreakdown(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [showBreakdown]);
 
   // Reload-mid-reveal restore: `drop`/`revealDone` are in-memory only, so a
   // page reload during the result card used to strand the run — phase
@@ -1411,7 +1423,8 @@ function PlayLoaded({
                 type="button"
                 data-testid="score-total"
                 aria-expanded={showBreakdown}
-                aria-label={`Session score ${sessionTotal}. Toggle score breakdown by edition.`}
+                aria-controls="score-breakdown"
+                aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition.`}
                 onClick={() => setShowBreakdown((v) => !v)}
                 className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
               >
@@ -1419,6 +1432,7 @@ function PlayLoaded({
               </button>
               {showBreakdown && session ? (
                 <div
+                  id="score-breakdown"
                   data-testid="score-breakdown"
                   className="pointer-events-auto absolute top-full right-0 z-40 mt-1 w-44 rounded-md border border-line bg-surface p-2 text-xs shadow-lg"
                 >
@@ -1434,7 +1448,7 @@ function PlayLoaded({
               ) : null}
             </div>
             <span className="sr-only" role="status">
-              Session score {sessionTotal}
+              Session score {sessionTotal.toLocaleString("en-US")}
             </span>
             {run.streak >= 2 ? (
               <p
@@ -1470,8 +1484,8 @@ function PlayLoaded({
             : run.phase === "story" && place
               ? "Showing the answer."
               : run.phase === "summary" && summary
-                ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore} — ${summary.byEdition
-                    .map((b) => `${EDITION_LABELS[b.edition]} ${b.score}`)
+                ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore.toLocaleString("en-US")} — ${summary.byEdition
+                    .map((b) => `${EDITION_LABELS[b.edition]} ${b.score.toLocaleString("en-US")}`)
                     .join(", ")}. Average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
                 : place
                   ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${place.name} missed.`

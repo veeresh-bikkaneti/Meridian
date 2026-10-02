@@ -17,8 +17,6 @@ export const SESSION_KEY = "meridian.session";
 
 /** Two minutes of no interaction kills the session (player back to home). */
 export const IDLE_TIMEOUT_MS = 2 * 60 * 1000;
-/** Warn shortly before the idle timeout so the kick never surprises. */
-export const IDLE_WARN_MS = 90 * 1000;
 
 /** Score accumulated for one edition within the session. */
 export type EditionScore = {

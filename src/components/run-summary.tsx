@@ -33,7 +33,7 @@ export function RunSummaryCard(props: {
         </div>
 
         <div data-testid="summary-edition-breakdown" className="mt-4 rounded-xl border border-white/10 bg-black/30 p-3">
-          <p className="text-[11px] tracking-wider text-white/60 uppercase">Score by edition</p>
+          <h3 className="text-[11px] font-normal tracking-wider text-white/60 uppercase">Score by edition</h3>
           <dl className="mt-2 space-y-1.5 text-sm">
             {summary.byEdition.map((b) => (
               <div key={b.edition} className="flex justify-between">

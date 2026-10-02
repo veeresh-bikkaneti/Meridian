@@ -155,7 +155,7 @@ test("idle timeout kills the session and returns to the home screen", async ({
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
     timeout: 20_000,
   });
-  await expect(page.getByText("Your session ended after 2 minutes of inactivity.")).toBeVisible();
+  await expect(page.getByText("Your game ended after 2 minutes of inactivity.")).toBeVisible();
   expect(
     await page.evaluate(() => sessionStorage.getItem("meridian.session")),
   ).toBeNull();
