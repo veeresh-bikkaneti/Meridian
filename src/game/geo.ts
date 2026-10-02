@@ -1,4 +1,5 @@
 import type { LonLat, Place, Shape } from "./types.ts";
+import type { Octant } from "./loop/types.ts";
 
 const EARTH_KM = 6371.0088;
 
@@ -9,6 +10,42 @@ export function distanceKm(a: LonLat, b: LonLat): number {
   const Δλ = ((b[0] - a[0]) * Math.PI) / 180;
   const sin = Math.sin(Δφ / 2) ** 2 + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
   return 2 * EARTH_KM * Math.asin(Math.min(1, Math.sqrt(sin)));
+}
+
+/**
+ * Initial great-circle bearing from `a` toward `b`, in degrees clockwise
+ * from true north, normalized to [0, 360). 0 = due north, 90 = due east.
+ * Used by the Daily Loop edition to point the player from their guess
+ * toward the target.
+ */
+export function initialBearing(a: LonLat, b: LonLat): number {
+  const φ1 = (a[1] * Math.PI) / 180;
+  const φ2 = (b[1] * Math.PI) / 180;
+  const Δλ = ((b[0] - a[0]) * Math.PI) / 180;
+  const y = Math.sin(Δλ) * Math.cos(φ2);
+  const x = Math.cos(φ1) * Math.sin(φ2) - Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+}
+
+const OCTANTS: Octant[] = [
+  "north",
+  "north-east",
+  "east",
+  "south-east",
+  "south",
+  "south-west",
+  "west",
+  "north-west",
+];
+
+/**
+ * Snap a bearing in degrees to the nearest of the 8 winds. North covers
+ * [337.5, 360) ∪ [0, 22.5); each following wind covers a 45° sector
+ * centered on its direction (NE = [22.5, 67.5), etc.).
+ */
+export function octantOf(degrees: number): Octant {
+  const norm = ((degrees % 360) + 360) % 360;
+  return OCTANTS[Math.floor(((norm + 22.5) % 360) / 45)];
 }
 
 export function pointInRing(point: LonLat, ring: LonLat[]): boolean {
