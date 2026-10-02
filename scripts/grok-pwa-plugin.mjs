@@ -166,10 +166,28 @@ export function grokPwaPlugin() {
       return `export const grokOgIdentity = ${JSON.stringify(snapshotOgIdentity(root))};`;
     },
     transformIndexHtml(html) {
-      return injectGrokPwaHead(html, {
+      const out = injectGrokPwaHead(html, {
         host: process.env.VITE_PUBLIC_HOSTNAME ?? "",
         cwd: root,
       });
+      if (process.env.GITHUB_PAGES === "1") {
+        // Static Pages build: /__grok/manifest.webmanifest is served by the
+        // dev/preview middleware (configureServer), which never runs on
+        // GitHub Pages — the injected link 404s on the live site. The app
+        // ships its own static public/manifest.webmanifest instead. Strip
+        // the dead middleware links; everything else the injector adds
+        // (OG tags, extensions.js branding) is left untouched.
+        return out
+          .replaceAll(
+            '<link rel="manifest" href="/__grok/manifest.webmanifest">',
+            "",
+          )
+          .replaceAll(
+            '<link rel="apple-touch-icon" href="/__grok/icon-180.png">',
+            "",
+          );
+      }
+      return out;
     },
     configureServer(server) {
       // Registered directly (not in a returned post-hook) so both run BEFORE

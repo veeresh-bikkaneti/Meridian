@@ -124,4 +124,8 @@ npm test
 npm run build:pages
 ```
 
+### Installable (PWA)
+
+Meridian ships a web manifest, app icons, and an offline page, so it can be installed from the browser. Updates never interrupt play: when a new version is detected, a toast offers "Update now" (applies the update and reloads once) or "Later" (dismisses; the update applies on the next fresh load). The service worker registers in production builds only.
+
 Imagery: `Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community`. The imagery host sees the area on screen. Your pin stays on the device. Place data: GeoNames (CC-BY 4.0). Wikipedia-derived history notes: CC BY-SA, via the in-app source links.
