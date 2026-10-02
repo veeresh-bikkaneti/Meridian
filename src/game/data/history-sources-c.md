@@ -207,8 +207,14 @@ article (lead + History sections) fetched 2026-10-01.
   community of formerly enslaved and free-born African Americans" (L33–35)
 - "in southeast Washington, D.C." — article: "Barry Farm is a neighborhood
   in Southeast Washington, D.C." (L20)
-- "it's named for the Barry family who owned the farm — not Mayor Marion
-  Barry. Same spelling, total coincidence!" — article: "The neighborhood
-  name is not a reference to the late former mayor of Washington, D.C.,
-  Marion Barry, but coincidentally has the same spelling" (L26–27); the farm
-  was bought "from Julia Barry" (L33) and is called "Barry's Farm" (L38–39)
+- "it's named for James Barry, the merchant and councilman who owned this
+  farm — not Mayor Marion Barry (he chose the name "Barry" himself back in
+  college). Same spelling, total coincidence!" — CORRECTED 2026-10-02 per
+  verified facts: the farm was James Barry's (Washington City merchant and
+  councilman), not "the Barry family" generically; Marion Barry adopted the
+  name "Barry" himself while in college — the claim that his father chose
+  it is false. Article confirms the name "is not a reference to the late
+  former mayor of Washington, D.C., Marion Barry, but coincidentally has
+  the same spelling" (L26–27); the farm was bought "from Julia Barry" (L33)
+  and is called "Barry's Farm" (L38–39). The 1867 Freedmen's Bureau
+  375-acre purchase history is unchanged and verified above.

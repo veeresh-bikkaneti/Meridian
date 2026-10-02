@@ -8,7 +8,7 @@
     "wiki": "Little_Rock,_Arkansas"
   },
   "4137672": {
-    "note": "When the Civil War ended, freed families told General Howard exactly what they needed: \"Land! Give us land!\" In 1867 the Freedmen's Bureau bought this 375-acre farm in southeast Washington, D.C. and sold it in one-acre pieces families could afford — it grew into Barry Farm, a proud, self-built Black community. 🎉 Fun twist: it's named for the Barry family who owned the farm — not Mayor Marion Barry. Same spelling, total coincidence!",
+    "note": "When the Civil War ended, freed families told General Howard exactly what they needed: \"Land! Give us land!\" In 1867 the Freedmen's Bureau bought this 375-acre farm in southeast Washington, D.C. and sold it in one-acre pieces families could afford — it grew into Barry Farm, a proud, self-built Black community. 🎉 Fun twist: it's named for James Barry, the merchant and councilman who owned this farm — not Mayor Marion Barry (he chose the name \"Barry\" himself back in college). Same spelling, total coincidence!",
     "wiki": "Barry_Farm"
   },
   "4142290": {
@@ -16,7 +16,7 @@
     "wiki": "Dover,_Delaware"
   },
   "4174715": {
-    "note": "Chosen as capital in 1824 as the midpoint between St. Augustine and Pensacola. Its name is Muskogean for 'old town.'",
+    "note": "Chosen as capital in 1824 as the midpoint between St. Augustine and Pensacola. Its name is Muskogean for 'old town'.",
     "wiki": "Tallahassee,_Florida"
   },
   "4180439": {
@@ -48,11 +48,11 @@
     "wiki": "Annapolis,_Maryland"
   },
   "4392388": {
-    "note": "Named for Thomas Jefferson while he was still alive. Its 1836–2004 state penitentiary was the oldest operating prison west of the Mississippi — 'the bloodiest 47 acres in America.'",
+    "note": "Named for Thomas Jefferson while he was still alive. Its 1836–2004 state penitentiary was the oldest operating prison west of the Mississippi — 'the bloodiest 47 acres in America'.",
     "wiki": "Jefferson_City,_Missouri"
   },
   "4431410": {
-    "note": "Named for Andrew Jackson and burned three times in the Civil War — Sherman's men called it 'Chimneyville.'",
+    "note": "Named for Andrew Jackson and burned three times in the Civil War — Sherman's men called it 'Chimneyville'.",
     "wiki": "Jackson,_Mississippi"
   },
   "4487042": {
@@ -72,7 +72,7 @@
     "wiki": "Columbia,_South_Carolina"
   },
   "4644585": {
-    "note": "Music City — the Grand Ole Opry has broadcast here since 1925. Its full-scale Parthenon replica earned it 'Athens of the South.'",
+    "note": "Music City — the Grand Ole Opry has broadcast here since 1925. Its full-scale Parthenon replica earned it 'Athens of the South'.",
     "wiki": "Nashville,_Tennessee"
   },
   "4671654": {
@@ -176,7 +176,7 @@
     "wiki": "Helena,_Montana"
   },
   "5688025": {
-    "note": "Named for Germany's Otto von Bismarck to lure railroad investment. Its 19-story Capitol is the 'Skyscraper on the Prairie.'",
+    "note": "Named for Germany's Otto von Bismarck to lure railroad investment. Its 19-story Capitol is the 'Skyscraper on the Prairie'.",
     "wiki": "Bismarck,_North_Dakota"
   },
   "5750162": {
@@ -209,7 +209,7 @@
     "wiki": "Hyderabad"
   },
   "104515": {
-    "note": "Considered the birthplace of Islam and the holiest city in the faith, it is home to the Kaaba, the direction of prayer for Muslims worldwide. Pilgrims more than triple its population each year during the Ḥajj, the pilgrimage every Muslim must make at least once in life.",
+    "note": "Considered the birthplace of Islam and the holiest city in the faith, it is home to the Kaaba, the direction of prayer for Muslims worldwide. Pilgrims more than triple the number of people in the city each year during the Ḥajj, the pilgrimage every Muslim must make at least once in life.",
     "wiki": "Mecca"
   },
   "170654": {
@@ -345,7 +345,7 @@
     "wiki": "New_Orleans"
   },
   "4164138": {
-    "note": "The only major U.S. city founded by a woman — citrus grower Julia Tuttle, 'the mother of Miami,' who talked a railroad tycoon into bringing his train here in 1896. It grew so fast winter visitors said it was like magic — hence 'Magic City.'",
+    "note": "The only major U.S. city founded by a woman — citrus grower Julia Tuttle, 'the mother of Miami,' who talked a railroad tycoon into bringing his train here in 1896. It grew so fast winter visitors said it was like magic — hence 'Magic City'.",
     "wiki": "Miami"
   },
   "1275339": {
@@ -371,5 +371,9 @@
   "2640729": {
     "note": "'Oxford' means 'ford of the oxen' — a river crossing for cattle. It's home to the University of Oxford, the oldest university in the English-speaking world, teaching since the 11th century — and a 1209 town-vs-scholars feud sent fleeing academics off to found Cambridge.",
     "wiki": "Oxford"
+  },
+  "4915989": {
+    "note": "This South Side Chicago neighborhood started as a railroad crossing called Junction Grove, settled by German and Swedish farmers in the 1840s. After the Great Chicago Fire of 1871, families fleeing the burned city rebuilt their lives here — and in 1889, Chicago annexed the whole town.",
+    "wiki": "West_Englewood,_Chicago"
   }
 }

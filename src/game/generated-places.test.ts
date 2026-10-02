@@ -347,11 +347,22 @@ test("Barry Farms gets the approved kid-friendly history note", async () => {
   assert.equal(barry.sourceHref, "https://en.wikipedia.org/wiki/Barry_Farm");
   assert.ok(
     barry.story.includes("Land! Give us land!"),
-    "curated note missing from the shipped blurb",
+    "curated note missing from the shipped story",
+  );
+  // Rule 1 (history first): the curated note leads the card; the plain
+  // geographic blurb follows. The note must not be duplicated.
+  assert.ok(
+    barry.story.startsWith(entry.note),
+    "history note should lead the card (rule 1: history first, geography second)",
   );
   assert.ok(
-    barry.story.startsWith("Barry Farms is a town in eastern District of Columbia"),
-    "geographic lead should precede the curated note",
+    barry.story.includes("Barry Farms is a town in eastern District of Columbia"),
+    "geographic blurb should follow the history note",
+  );
+  assert.equal(
+    barry.story.split(entry.note).length - 1,
+    1,
+    "curated note must appear exactly once (no embedded duplication)",
   );
 });
 
@@ -489,6 +500,103 @@ test("places without history keep the plain blurb card", () => {  const chunk = 
   const [s] = startersFromChunk("texas", chunk);
   assert.equal(s.story, "Edna is a county seat in southeastern Texas, the United States.");
   assert.equal(s.sourceLabel, "GeoNames");
+});
+
+test("fact-ladder fact leads the card and outranks history (card rule 1)", () => {
+  const fact = {
+    text: "Named for President Abraham Lincoln, who practiced law here before the White House.",
+    kind: "wikidata",
+    source: "Wikidata",
+    qid: "Q123",
+  };
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-4",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        history: "The town is named after a railroad official's daughter.",
+        wiki: "Edna,_Texas",
+        fact,
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  const [s] = startersFromChunk("texas", chunk);
+  assert.ok(
+    s.story.startsWith(fact.text),
+    `fact must lead the card, got: ${s.story.slice(0, 80)}…`,
+  );
+  assert.equal(s.fact, fact.text, "fact text travels on the Starter for the AI fallback");
+  assert.equal(s.history, "The town is named after a railroad official's daughter.");
+});
+
+test("plain-string fact is tolerated and leads the card", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-5",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        fact: "Founded in 1882 as a railroad town, it never grew beyond its depot dreams.",
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  const [s] = startersFromChunk("texas", chunk);
+  assert.ok(s.story.startsWith("Founded in 1882"));
+});
+
+test("hookMissing marker is accepted (pipeline truth signal, not corruption)", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-6",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        hookMissing: true,
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  const [s] = startersFromChunk("texas", chunk);
+  assert.equal(s.story, "Edna is a county seat in southeastern Texas, the United States.");
+});
+
+test("assertValidRecord rejects corrupt fact hooks fail-closed", () => {
+  const base = {
+    id: "gn-7",
+    name: "Edna",
+    lon: -96.6,
+    lat: 28.9,
+    blurb: "Edna is a county seat in southeastern Texas, the United States.",
+    iso2: "US",
+    edition: "state",
+    regionId: "texas",
+  };
+  assert.throws(
+    () => startersFromChunk("texas", { meta: { regionId: "texas", edition: "state", count: 1 }, places: [{ ...base, fact: { kind: "wikidata" } }] }),
+    /invalid fact hook/,
+  );
+  assert.throws(
+    () => startersFromChunk("texas", { meta: { regionId: "texas", edition: "state", count: 1 }, places: [{ ...base, hookMissing: "yes" }] }),
+    /invalid hookMissing marker/,
+  );
 });
 
 test("assertValidRecord rejects corrupt history sentences fail-closed", () => {

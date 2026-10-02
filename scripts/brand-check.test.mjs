@@ -321,9 +321,16 @@ function assertNamesMarkerPathAndBound(rel, doc) {
   assert.ok(bound.test(doc), `${rel}: staleness bound`);
 }
 
-test("AGENTS.md names the marker path and bound this script uses", () => {
-  assertNamesMarkerPathAndBound("AGENTS.md", readDoc("AGENTS.md"));
-});
+test(
+  "AGENTS.md names the marker path and bound this script uses",
+  // The brand pipeline (and its .grok/ scaffold) is not part of Meridian;
+  // AGENTS.md documents Meridian's own gates instead. Skip like the SKILL.md
+  // checks rather than pinning template documentation that doesn't apply.
+  { skip: SKIP_WHEN_SCAFFOLD_ABSENT },
+  () => {
+    assertNamesMarkerPathAndBound("AGENTS.md", readDoc("AGENTS.md"));
+  },
+);
 
 test(
   "SKILL.md names the marker path and bound this script uses",
@@ -378,9 +385,15 @@ function assertProhibitionNeverAffirmsWait(section) {
   }
 }
 
-test("the AGENTS.md section owning the brand-task prohibition never affirms a wait", () => {
-  assertProhibitionNeverAffirmsWait(PROHIBITION_SECTIONS[1]);
-});
+test(
+  "the AGENTS.md section owning the brand-task prohibition never affirms a wait",
+  // Same as above: no brand pipeline in Meridian, so AGENTS.md carries no
+  // brand-task prohibition to pin.
+  { skip: SKIP_WHEN_SCAFFOLD_ABSENT },
+  () => {
+    assertProhibitionNeverAffirmsWait(PROHIBITION_SECTIONS[1]);
+  },
+);
 
 test(
   "the SKILL.md section owning the brand-task prohibition never affirms a wait",
