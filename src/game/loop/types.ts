@@ -1,4 +1,4 @@
-// Shared contract for the Daily Loop edition.
+// Shared contract for the GeoDetective edition.
 //
 // Written by the build coordinator BEFORE the workers started, so Workers 2
 // (game mechanics) and 3 (guess input) build against identical definitions.

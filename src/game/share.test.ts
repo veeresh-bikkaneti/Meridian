@@ -116,7 +116,7 @@ test("loop share text: three lines, spoiler-free, solved in 3", () => {
   });
   assert.equal(
     text,
-    "meridian loop October 2\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟧🟧🟩⬜⬜ solved in 3",
+    "meridian geodetective October 2\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟧🟧🟩⬜⬜ solved in 3",
   );
   // Spoiler-free: no names, no distances leak into the shared text.
   assert.equal(text.includes("Springfield"), false);
@@ -140,7 +140,7 @@ test("loop share text: distance tiers and unused slots", () => {
   });
   assert.equal(
     text,
-    "meridian loop October 2\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟨🟧🟧🟥🟥 not solved",
+    "meridian geodetective October 2\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟨🟧🟧🟥🟥 not solved",
   );
 });
 
@@ -151,7 +151,7 @@ test("loop share text: cross-year date label", () => {
     dateKey: "2025-10-02",
     now,
   });
-  assert.ok(text.startsWith("meridian loop October 2, 2025\n"));
+  assert.ok(text.startsWith("meridian geodetective October 2, 2025\n"));
 });
 
 test("loop share text: winning guess is green even with residual distance", () => {

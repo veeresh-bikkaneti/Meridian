@@ -52,7 +52,7 @@ export function shareText(input: {
 }
 
 /**
- * Grade one Daily Loop guess for the share-text strip. The winning guess
+ * Grade one GeoDetective guess for the share-text strip. The winning guess
  * (the last guess of a won day) is always green, regardless of residual
  * distance; every other guess grades by distance. Spoiler-free: no names,
  * no distances.
@@ -65,8 +65,8 @@ function loopGuessMark(guess: LoopGuess, isWinningGuess: boolean): string {
 }
 
 /**
- * Daily Loop share text, in the same three-line shape as shareText:
- *   line 1: "meridian loop <date label>"
+ * GeoDetective share text, in the same three-line shape as shareText:
+ *   line 1: "meridian geodetective <date label>"
  *   line 2: the site URL on its own line (auto-linkified by messaging apps)
  *   line 3: the emoji strip (one slot per guess, ⬜ for unused guesses)
  *            plus the result ("solved in N" / "not solved").
@@ -85,5 +85,5 @@ export function shareLoopText(input: {
   );
   while (marks.length < LOOP_MAX_GUESSES) marks.push("⬜");
   const result = input.status === "won" ? `solved in ${input.guesses.length}` : "not solved";
-  return `${BRAND.shareHost} loop ${when}\n${BRAND.siteUrl}\n${marks.join("")} ${result}`;
+  return `${BRAND.shareHost} geodetective ${when}\n${BRAND.siteUrl}\n${marks.join("")} ${result}`;
 }

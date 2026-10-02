@@ -20,7 +20,7 @@ import {
 } from "./types";
 
 /**
- * The Daily Loop edition screen. Mounts OUTSIDE the endless-run state
+ * The GeoDetective edition screen. Mounts OUTSIDE the endless-run state
  * machine: it fetches the day's clue file lazily, restores the day's
  * progress from the loop store, and persists every guess there. It never
  * reads or writes `meridian.run` / `meridian.drop`.
@@ -203,7 +203,7 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
         <p className="text-sm text-muted">{displayDate("UTC", now)} · UTC</p>
       </div>
       <header className="mt-4">
-        <h1 className="font-display text-5xl text-fg">Daily Loop</h1>
+        <h1 className="font-display text-5xl text-fg">GeoDetective</h1>
         <p className="mt-3 max-w-md text-lg text-muted">
           Five guesses, one mystery place. Each guess unlocks another clue — and tells you how
           far off you were, and in which direction.
@@ -212,7 +212,7 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
 
       {load.phase === "loading" ? (
         <p className="mt-10 text-lg text-muted" role="status">
-          Loading today&rsquo;s loop&hellip;
+          Loading today&rsquo;s mystery&hellip;
         </p>
       ) : null}
 
@@ -229,7 +229,7 @@ export function LoopScreen({ onLeave }: { onLeave: () => void }) {
           </div>
         ) : (
           <div role="alert" className="mt-10 rounded-xl border border-line bg-surface p-5">
-            <p className="text-fg">Couldn&rsquo;t load today&rsquo;s loop: {load.message}</p>
+            <p className="text-fg">Couldn&rsquo;t load today&rsquo;s mystery: {load.message}</p>
             <Button className="mt-4" onClick={() => setReloadKey((k) => k + 1)}>
               Retry
             </Button>
@@ -423,7 +423,7 @@ function LoopReveal({
         <p className="mt-2 text-sm text-muted">
           {won
             ? `Solved in ${dayState.guesses.length} ${dayState.guesses.length === 1 ? "guess" : "guesses"}.`
-            : "Better luck with tomorrow's loop — a new puzzle lands at midnight UTC."}
+            : "Better luck with tomorrow's mystery — a new puzzle lands at midnight UTC."}
         </p>
         <div className="mt-4">
           <ShareLoop dateKey={dateKey} dayState={dayState} />

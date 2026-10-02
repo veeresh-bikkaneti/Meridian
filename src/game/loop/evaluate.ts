@@ -1,7 +1,7 @@
 import { distanceKm, initialBearing, octantOf } from "../geo.ts";
 import type { LoopGuess, LoopNameEntry } from "./types.ts";
 
-// Pure logic behind the Daily Loop guess input (Worker 3). Kept in a plain
+// Pure logic behind the GeoDetective guess input (Worker 3). Kept in a plain
 // TS module so it is unit-testable without a DOM/React; guess-input.tsx is
 // the thin interactive combobox shell around these helpers.
 

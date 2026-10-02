@@ -1,5 +1,5 @@
 /**
- * Tests for the Daily Loop data pipeline (scripts/build-loop.mjs).
+ * Tests for the GeoDetective data pipeline (scripts/build-loop.mjs).
  *
  * Covers: name normalization, the (name, region) dedupe policy, the
  * day-index contract shared with the Loop runtime, seed guardrails

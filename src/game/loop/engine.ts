@@ -7,7 +7,7 @@ import {
 } from "./types.ts";
 
 /**
- * The Daily Loop's 5-guess state machine. Pure functions: given a day
+ * The GeoDetective's 5-guess state machine. Pure functions: given a day
  * state and a guess, produce the next day state. The screen persists the
  * result via the loop store.
  */

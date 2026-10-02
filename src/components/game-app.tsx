@@ -356,7 +356,7 @@ export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
-  // The Daily Loop mounts its own screen outside the endless-run state
+  // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v1 and never touches the
   // run/drop keys.
   const [loopOpen, setLoopOpen] = useState(false);
@@ -624,9 +624,9 @@ function Choose({
           onClick={onGlobe}
         />
         <EditionCard
-          title="Daily Loop"
+          title="GeoDetective"
           detail="Five guesses, one mystery place. Each guess unlocks a clue — a new puzzle at midnight UTC."
-          action="Play today's loop"
+          action="Solve today's mystery"
           onClick={onLoop}
         />
       </div>

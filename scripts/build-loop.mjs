@@ -1,5 +1,5 @@
 /**
- * Daily Loop data pipeline.
+ * GeoDetective data pipeline.
  *
  * Reads the hand-authored seed clue sets in scripts/loop-seed.json and the
  * 124,690 GeoNames places in src/game/data/geonames/chunks/*.json, and emits:

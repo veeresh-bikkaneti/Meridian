@@ -10,7 +10,7 @@ import {
 import { loopDateKey } from "./day.ts";
 
 /**
- * localStorage persistence for the Daily Loop, namespaced under
+ * localStorage persistence for the GeoDetective, namespaced under
  * `meridian.loop.v1`. The Loop NEVER reads or writes `meridian.run` /
  * `meridian.drop` (the endless-run reload-restore keys) — separate
  * namespace only.

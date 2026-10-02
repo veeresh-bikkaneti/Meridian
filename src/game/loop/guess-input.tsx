@@ -12,7 +12,7 @@ export { normalizeLoopName } from "./evaluate.ts";
 type LoadState = "idle" | "loading" | "ready" | "error";
 
 /**
- * Constrained typeahead for the Daily Loop edition (WAI-ARIA 1.2 combobox).
+ * Constrained typeahead for the GeoDetective edition (WAI-ARIA 1.2 combobox).
  *
  * - The name index (public/loop/names.json) is fetched lazily on first
  *   focus and never ships in the main bundle.

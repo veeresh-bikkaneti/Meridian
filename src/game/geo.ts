@@ -15,7 +15,7 @@ export function distanceKm(a: LonLat, b: LonLat): number {
 /**
  * Initial great-circle bearing from `a` toward `b`, in degrees clockwise
  * from true north, normalized to [0, 360). 0 = due north, 90 = due east.
- * Used by the Daily Loop edition to point the player from their guess
+ * Used by the GeoDetective edition to point the player from their guess
  * toward the target.
  */
 export function initialBearing(a: LonLat, b: LonLat): number {
