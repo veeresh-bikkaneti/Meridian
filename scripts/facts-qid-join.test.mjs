@@ -15,6 +15,7 @@ import {
   haversineKm,
   interleaveRoundRobin,
   parseArgs,
+  parseCountryQid,
   parseCrawlCache,
   parseResume,
   slugToTitle,
@@ -187,6 +188,23 @@ test("parseResume: empty input gives an empty set", () => {
   const { done, malformed } = parseResume([]);
   assert.equal(done.size, 0);
   assert.equal(malformed, 0);
+});
+
+// ---------------------------------------------------------------------------
+// parseCountryQid (WDQS ?item binding -> QID)
+// ---------------------------------------------------------------------------
+
+test("parseCountryQid extracts the QID from the /entity/ URI form", () => {
+  const data = {
+    results: { bindings: [{ item: { type: "uri", value: "http://www.wikidata.org/entity/Q30" } }] },
+  };
+  assert.equal(parseCountryQid(data), "Q30");
+});
+
+test("parseCountryQid returns null on empty/malformed bindings", () => {
+  assert.equal(parseCountryQid({ results: { bindings: [] } }), null);
+  assert.equal(parseCountryQid({}), null);
+  assert.equal(parseCountryQid(null), null);
 });
 
 // ---------------------------------------------------------------------------

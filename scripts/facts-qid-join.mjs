@@ -377,17 +377,28 @@ export async function entityData(qid) {
 }
 
 const countryQidCache = new Map();
-/** iso2 -> Wikidata country QID via P298 (ISO 3166-1 alpha-2). Null on failure => check skipped. */
+
+/**
+ * Extract a QID from a WDQS `?item` binding URI.
+ * WDQS returns http://www.wikidata.org/entity/Q30 (not /wiki/…).
+ */
+export function parseCountryQid(sparqlData) {
+  const uri = sparqlData?.results?.bindings?.[0]?.item?.value;
+  const m = typeof uri === "string" ? uri.match(/\/entity\/(Q\d+)$/) : null;
+  return m ? m[1] : null;
+}
+
+/**
+ * iso2 -> Wikidata country QID via P297 (ISO 3166-1 alpha-2). Note: P298 is
+ * the alpha-3 code, not alpha-2. Null on failure => country check skipped.
+ */
 export async function resolveCountryQid(iso2) {
   if (countryQidCache.has(iso2)) return countryQidCache.get(iso2);
-  const sparql = `SELECT ?item WHERE { ?item wdt:P298 "${iso2}" } LIMIT 1`;
+  const sparql = `SELECT ?item WHERE { ?item wdt:P297 "${iso2}" } LIMIT 1`;
   const url = `${WD_SPARQL}?${new URLSearchParams({ query: sparql, format: "json" })}`;
   let qid = null;
   try {
-    const data = await pacedFetchJson(url);
-    const uri = data?.results?.bindings?.[0]?.item?.value;
-    const m = typeof uri === "string" ? uri.match(/\/wiki\/(Special:EntityPage\/)?(Q\d+)$/) : null;
-    if (m) qid = m[2];
+    qid = parseCountryQid(await pacedFetchJson(url));
   } catch (err) {
     console.error(`[qid-join] country lookup for ${iso2} failed (${err.message}); country check skipped`);
   }
