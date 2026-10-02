@@ -96,10 +96,14 @@ export async function serveBuiltArtifact(context: BrowserContext): Promise<void>
   });
 }
 
+/** Effectively disables the idle watchdog for tests that cover other behavior. */
+export const NO_IDLE = 3_600_000;
+
 /** Load the built app, start a globe run, wait for the aim phase + map.
- *  `idleMs` forwards `?idle-ms=` (see session.ts): pass a large value to
- *  keep the idle watchdog out of slow-harness scenarios. */
-export async function startGlobeRun(page: Page, idleMs?: number): Promise<void> {
+ *  `idleMs` forwards `?idle-ms=` (see session.ts). It defaults to an hour:
+ *  on the slow harness the map/chunk startup alone can outlast the real
+ *  2-minute timeout, so only the idle-timeout specs opt into short values. */
+export async function startGlobeRun(page: Page, idleMs: number = NO_IDLE): Promise<void> {
   const url =
     idleMs && idleMs > 0
       ? `http://127.0.0.1:4123/Meridian/?idle-ms=${idleMs}`

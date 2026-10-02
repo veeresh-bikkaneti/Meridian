@@ -7,6 +7,7 @@ import {
   commitMiss,
   clickNextPlace,
   dismissTileOverlayIfPresent,
+  NO_IDLE,
 } from "./helpers";
 
 /**
@@ -23,9 +24,6 @@ import {
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
-
-/** Effectively disables the idle watchdog for tests that cover other behavior. */
-const NO_IDLE = 3_600_000;
 
 async function scoreText(page: import("playwright/test").Page): Promise<string> {
   return (await page.getByTestId("score-total").textContent()) ?? "";

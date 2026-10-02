@@ -7,7 +7,7 @@ import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
-import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type RunSummary, type PlaceResult } from "@/game/run";
+import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
 import {
   bankPlace,
   clearSession,
@@ -558,8 +558,11 @@ export function GameApp() {
     (input: { edition: Edition; score: number; hit: boolean; distanceKm: number; streakAfter: number }) => {
       const dateKey = trailDate();
       updateSession((prev) => {
-        if (!isSessionLive(prev, dateKey)) return prev;
-        return bankPlace(prev, input);
+        // Sessions are date-scoped like runs: a UTC-midnight rollover starts
+        // a fresh session rather than silently dropping banks into a stale one.
+        if (!prev || prev.ended) return prev;
+        const base = prev.dateKey === dateKey ? prev : startSession(dateKey, Date.now());
+        return bankPlace(base, input);
       });
     },
     [updateSession],
@@ -637,6 +640,19 @@ export function GameApp() {
     };
   }, [getSession, killIdleSession, idleTimeoutMs, idleWarnMs]);
 
+  // Non-blocking idle warning. Rendered on EVERY screen where a session
+  // can be live — in-game and the edition picker alike — so the 2-minute
+  // kick never surprises. (The "Editions" button leaves the run while the
+  // session stays alive, so picker-only rendering would miss it.)
+  const idleToast = idleWarn ? (
+    <div
+      role="status"
+      className="fixed inset-x-4 top-16 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl"
+    >
+      Still there? Your game ends after 2 minutes of no activity — do anything to keep playing.
+    </div>
+  ) : null;
+
   if (!ready) {
     return (
       <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-end px-5 py-10">
@@ -675,15 +691,7 @@ export function GameApp() {
             replaceSession(startSession(trailDate(), Date.now()));
           }}
         />
-        {idleWarn ? (
-          <div
-            role="status"
-            className="fixed inset-x-4 top-16 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl"
-          >
-            Still there? Your game ends after 2 minutes of no activity — do anything to keep
-            playing.
-          </div>
-        ) : null}
+        {idleToast}
       </>
     );
   }
@@ -692,6 +700,7 @@ export function GameApp() {
   // replaced (no double-taps) until the load resolves or fails closed.
   if (starting) {
     return (
+      <>
       <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
         <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
         <h1 className="mt-2 font-display text-4xl text-fg">{starting.regionName}</h1>
@@ -699,6 +708,8 @@ export function GameApp() {
           Fetching this region&rsquo;s places&hellip;
         </p>
       </main>
+      {idleToast}
+      </>
     );
   }
 
@@ -737,6 +748,7 @@ export function GameApp() {
     // Only countries with a playable pool — never a dead end.
     const regions = COUNTRIES.filter((country) => poolSizeFor("country", country.id) > 0);
     return (
+      <>
       <RegionList
         title="Country"
         subtitle="Play a country whole — or drill into its states where available."
@@ -752,6 +764,8 @@ export function GameApp() {
           }
         }}
       />
+      {idleToast}
+      </>
     );
   }
 
@@ -767,6 +781,7 @@ export function GameApp() {
         poolSizeFor("country", country.id) > 0 && (ADMIN1_BY_COUNTRY[country.id] ?? []).length > 0,
     );
     return (
+      <>
       <RegionList
         title="State"
         subtitle="Choose a country, then one of its states."
@@ -776,12 +791,15 @@ export function GameApp() {
           setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
         }
       />
+      {idleToast}
+      </>
     );
   }
 
   if (menu?.kind === "admin1") {
     const regions = ADMIN1_BY_COUNTRY[menu.countryId] ?? [];
     return (
+      <>
       <RegionList
         title={menu.countryName}
         subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
@@ -794,10 +812,13 @@ export function GameApp() {
         onBack={() => setMenu({ kind: menu.from })}
         onChoose={(region) => openRun("state", region.id, region.name)}
       />
+      {idleToast}
+      </>
     );
   }
 
   return (
+    <>
     <Choose
       onState={() => setMenu({ kind: "states" })}
       onCountry={() => setMenu({ kind: "countries" })}
@@ -809,6 +830,8 @@ export function GameApp() {
         </>
       }
     />
+    {idleToast}
+    </>
   );
 }
 
@@ -1451,6 +1474,10 @@ function PlayLoaded({
               Session score {sessionTotal.toLocaleString("en-US")}
             </span>
             {run.streak >= 2 ? (
+              // The flame celebrates the LIVE streak in this run (each
+              // edition is a fresh run with its own combo); the summary's
+              // "best streak" is session-wide and may come from another
+              // edition. Both labels are honest about what they measure.
               <p
                 data-testid="streak-flame"
                 className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm tabular-nums text-fg"

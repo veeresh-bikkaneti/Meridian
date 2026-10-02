@@ -207,7 +207,9 @@ export function seedSessionFromRun(session: Session, run: Run): Session {
 /**
  * E2E seam: `?idle-ms=<n>` overrides the idle timeout (default 2 minutes).
  * Mirrors the `?loop-date=` deterministic-date precedent. Non-numeric,
- * missing, or non-positive values fall back to the default.
+ * missing, or non-positive values fall back to the default. Note: the
+ * user-facing copy ("2 minutes") does not follow the override — it is
+ * written for production, where the override never appears.
  */
 export function idleTimeoutFromSearch(
   search: string,
