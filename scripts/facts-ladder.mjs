@@ -267,13 +267,13 @@ export function wikidataRung(place, inputs) {
 // Wiki-text rung (verbatim Wikipedia sentences)
 // ---------------------------------------------------------------------------
 
-/** Rung 2: wiki-text triples. Attribution requires the chunk's wiki slug. */
+/** Rung 2: wiki-text triples. Attribution needs the chunk's wiki slug, or the
+ *  fact's own sourceSlug as a fallback href (the sentence came from that
+ *  article verbatim). */
 export function wikitextRung(place, inputs) {
   const facts = inputs.wikiTextByGeonames.get(place.id) ?? [];
   if (facts.length === 0) return { fact: null, rung: "wikitext", reason: "none" };
-  if (typeof place.wiki !== "string" || !place.wiki) {
-    return { fact: null, rung: "wikitext", reason: "no-wiki-slug" };
-  }
+  const wiki = typeof place.wiki === "string" && place.wiki ? place.wiki : null;
   const rejected = [];
   const ordered = [...facts].sort(
     (a, b) => (a.factType === "named_after" ? 0 : 1) - (b.factType === "named_after" ? 0 : 1),
@@ -281,8 +281,19 @@ export function wikitextRung(place, inputs) {
   for (const f of ordered) {
     const draft = { factType: f.factType, person: f.person, year: f.year, sentence: f.sentence };
     const built = buildValidatedFact("wikitext", "Wikipedia", draft, f.sentence);
-    if (built.ok) return { fact: built.fact, rung: "wikitext" };
-    rejected.push({ factType: f.factType, violations: built.violations });
+    if (!built.ok) {
+      rejected.push({ factType: f.factType, violations: built.violations });
+      continue;
+    }
+    const fact = { ...built.fact };
+    if (!wiki) {
+      // No chunk wiki slug: attribute via the fact's own source article.
+      if (typeof f.sourceSlug !== "string" || !f.sourceSlug) {
+        return { fact: null, rung: "wikitext", reason: "no-wiki-slug" };
+      }
+      fact.href = `https://en.wikipedia.org/wiki/${f.sourceSlug}`;
+    }
+    return { fact, rung: "wikitext" };
   }
   return { fact: null, rung: "wikitext", reason: "validator-rejected", rejected };
 }
@@ -350,6 +361,11 @@ export function factAttribution(fact, placeWiki) {
     case "eb1911":
       return { label: "EB1911", href: fact.href };
     case "wikitext":
+      // Attribution via the chunk wiki slug when present, else the fact's
+      // own source-article href (set by the ladder when the slug is absent).
+      return fact.href
+        ? { label: "GeoNames · Wikipedia", href: fact.href }
+        : { label: "GeoNames · Wikipedia", href: `https://en.wikipedia.org/wiki/${placeWiki}` };
     case "hook":
     default:
       return { label: "GeoNames · Wikipedia", href: `https://en.wikipedia.org/wiki/${placeWiki}` };

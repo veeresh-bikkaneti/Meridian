@@ -122,11 +122,17 @@ function assertValidFact(fact: unknown, wiki: unknown, where: string): asserts f
   const okHref =
     f?.kind !== "eb1911" ||
     (typeof f.href === "string" && f.href.startsWith("https://en.wikisource.org/"));
-  // Wikipedia-sourced facts (wikitext/hook) must travel with the wiki slug —
-  // unattributed CC BY-SA text would otherwise render under the wrong label.
+  // Wikipedia-sourced facts must be attributable: hook facts travel with the
+  // chunk's wiki slug; wikitext facts may instead carry their own
+  // source-article href (set by the ladder when the chunk has no wiki slug).
+  // Unattributed CC BY-SA text would otherwise render under the wrong label.
   const okWiki =
-    (f?.kind !== "wikitext" && f?.kind !== "hook") ||
-    (typeof wiki === "string" && wiki.length > 0);
+    f?.kind === "hook"
+      ? typeof wiki === "string" && wiki.length > 0
+      : f?.kind === "wikitext"
+        ? (typeof wiki === "string" && wiki.length > 0) ||
+          (typeof f.href === "string" && f.href.startsWith("https://en.wikipedia.org/wiki/"))
+        : true;
   if (!okShape || !okQid || !okHref || !okWiki) {
     throw new Error(`${where}: invalid fact field`);
   }
@@ -188,6 +194,12 @@ function factSource(fact: ChunkFact, wiki: string | undefined): { sourceLabel: s
     case "eb1911":
       return { sourceLabel: "EB1911", sourceHref: fact.href as string };
     case "wikitext":
+      // Attribution via the chunk wiki slug when present, else the fact's
+      // own source-article href (set by the ladder when the slug is absent).
+      return {
+        sourceLabel: "GeoNames · Wikipedia",
+        sourceHref: fact.href ?? `https://en.wikipedia.org/wiki/${wiki}`,
+      };
     case "hook":
     default:
       return {
