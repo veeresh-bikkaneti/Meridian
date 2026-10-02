@@ -12,23 +12,24 @@ Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 - [x] Typecheck verified: `npx tsc --noEmit` — exit 0, no errors (run in the primary clone after `npm ci` from `package-lock.json`; no new dependencies added)
 - [x] Place count confirmed: 124,690 places — `src/game/data/geonames/manifest.json` `meta.total` / `meta.keptRows` = 124,690, and the sum of `places` across the 64 chunk files in `src/game/data/geonames/chunks/` = 124,690
 - [x] Crawl-eligible count (verified by executing `loadPlaces()`'s filtering logic): 124,312 — `loadPlaces()` excludes 93 curated notable places (`src/game/data/notable-notes.json`) and 285 places already carrying a `history` string (PR #30), with 0 overlap. A crawl on this clone would print `places to crawl: 124,312 (0 cached)`. 124,690 remains the dataset denominator.
+- [x] Fresh-start decision (Liz, 2026-10-02): start the crawl from 0 on this VM and forget the old `gap-view-reveal` cache — the seed step is superseded, not pending.
+- [x] **Crawl RUNNING** — PID 4724, started 2026-10-02 ~15:00 CDT, `node scripts/enrich-wikipedia.mjs crawl`, log at `.scratch/wikipedia-enrichment/crawl.log`. Startup line: `places to crawl: 124,312 (0 cached)`. First progress snapshot (15:10 CDT): 1,500+ places in ~9 min (~2.8/s), cache ~1,890 records and growing. Resumable: killing/restarting loses nothing — the JSONL cache is the resume point.
+- [x] GitHub App connected (Liz, via Muse connector): OAuth authorized as `veeresh-bikkaneti`; Meridian read access verified via API (`get_file_contents` on `scripts/enrich-wikipedia.mjs`). Standing instruction (Liz, 2026-10-02): keep pushing progressively to the remote branch so a VM crash loses no work.
 
 ## Pending
 
-- [ ] Cache seeded from gap-view-reveal worktree — **PENDING, 0 entries seeded (not 15,156)**. The source cache at `~/workspace/meridian-worktrees/gap-view-reveal/.scratch/wikipedia-enrichment/crawl-cache.jsonl` is not present on this VM; no `crawl-cache.jsonl` exists anywhere on this VM (searched home + `/tmp` on 2026-10-02). See Blockers.
-- [ ] Crawl running — **NOT started** (no PID, no start time). Deliberately not started: starting fresh from 0 would duplicate the ~15,156 places already crawled elsewhere and could conflict with seeding the real cache later. That decision belongs to Veeresh.
-- [ ] Full 124,690-place coverage
-- [ ] Final report (unique IDs / extracts / hook candidates) — no report numbers yet: cache is empty on this VM (0 unique cached IDs, 0 matched extracts, 0 hook candidates locally)
-- [ ] Push to `origin/feat/wikipedia-crawl` — **PENDING auth**. See Blockers.
+- [ ] Full coverage: 124,312 crawl-eligible places (124,690 dataset denominator)
+- [ ] Final report (unique IDs / extracts / hook candidates) — from `node scripts/enrich-wikipedia.mjs report` when the crawl completes
+- [ ] Push to `origin/feat/wikipedia-crawl` — **in progress via the GitHub App API** (the VM's git CLI has no credentials; the connector is the push path). First write attempt (`create_branch`) timed out awaiting its approval card and was NOT performed; no pending approval remains. Every connector write pops a fresh approval card that must be approved promptly. Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protect this status file and any script work; the cache survives VM replacement in `~/workspace` and is resumable.
 
 ## Blockers
 
-1. **Seed cache absent on this VM.** The delegation prompt states a cache with 15,156 unique entries exists in a `gap-view-reveal` worktree; that worktree and file do not exist on this machine. The crawl must not be started from scratch until Veeresh decides: supply/copy the real cache, or explicitly approve a fresh start.
-2. **No GitHub push auth on this VM.** `gh auth status` = "You are not logged into any GitHub hosts", no `GH_`/`GITHUB` token environment variables, no `~/.config/gh`. The repo was cloned anonymously over HTTPS (readable), but pushing will fail until auth is provided by Veeresh. No PAT was requested or invented.
+1. ~~Seed cache absent~~ — **resolved by decision**: Liz directed a fresh start from 0 (2026-10-02); the old cache is forgone.
+2. **Push path is approval-gated.** Git CLI push from this VM still has no credentials. The GitHub App connector can write (create branch, push files) but each write requires a fresh user approval; the first attempt expired unapproved. Until a write is approved, commits stay local on this branch (currently ahead of `origin/main`).
 
 ## Guardrails honoured
 
 - `merge` was NOT run. No PR opened.
 - No changes to `src/components` or `src/game`.
-- No cache file created, edited, or compacted; no crawl started.
-- Only this file (`BRANCH_STATUS.md`) is staged/committed on this branch, by name — never `git add -A`.
+- The cache is append-only via the script; it was created by this fresh crawl run (not edited or compacted by hand).
+- Only this file (`BRANCH_STATUS.md`) is staged/committed on this branch, by name — never `git add -A`, including while the crawl writes into the tree.
