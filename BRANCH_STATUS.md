@@ -22,7 +22,7 @@ Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 
 - [ ] Full coverage: 124,312 crawl-eligible places (124,690 dataset denominator)
 - [ ] Final report (unique IDs / extracts / hook candidates) — from `node scripts/enrich-wikipedia.mjs report` when the crawl completes
-- [x] Push to `origin/feat/wikipedia-crawl` — **DONE** via `gh`-authenticated git push (see Done). Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protect this status file and any script work; the cache survives VM replacement in `~/workspace` and is resumable. Latest crawl snapshot (2026-10-02 17:34 CDT): **RESTARTED** — process found dead (log last at 18,500/124,312, last write ~16:37 CDT), restarted losslessly at 17:34 CDT as PID 3863; log shows it resuming: `places to crawl: 105,655 (18,657 cached)`. `report` — unique non-error IDs 18,657 / 124,312, matched extracts 12,479, hook candidates 1,409; breakdown: matched 12,479, title-mismatch 3,284, no-article 1,439, no-extract 1,455.
+- [x] Push to `origin/feat/wikipedia-crawl` — **DONE** via `gh`-authenticated git push (see Done). Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protect this status file and any script work; the cache survives VM replacement in `~/workspace` and is resumable. Latest crawl snapshot (2026-10-02 18:33 CDT): process **ALIVE** — PID 3863 (restarted 17:34 CDT), log at 5,500/105,655 in this run (`places to crawl: 105,655 (18,657 cached)` at restart). `report` — unique non-error IDs 24,230 / 124,312, matched extracts 16,889, hook candidates 1,710; breakdown: matched 16,889, title-mismatch 3,606, no-article 1,439, no-extract 2,296.
 
 ## Blockers
 
