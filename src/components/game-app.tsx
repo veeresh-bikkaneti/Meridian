@@ -678,7 +678,7 @@ export function GameApp() {
         {idleWarn ? (
           <div
             role="status"
-            className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl"
+            className="fixed inset-x-4 top-16 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl"
           >
             Still there? Your session ends after 2 minutes of inactivity — tap anywhere to keep
             playing.
@@ -833,8 +833,8 @@ function Choose({
         </p>
         <h1 className="mt-3 font-display text-5xl text-fg">{BRAND.name}</h1>
         <p className="mt-4 max-w-md text-lg text-muted">
-          Pick the globe, a country, or a state. A place name, then one pin. The run goes until
-          you choose to end it.
+          Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
+          adding up across editions until you choose to end the game — or after 2 minutes idle.
         </p>
       </header>
       <div className="mt-8 grid gap-4 md:grid-cols-3">

@@ -96,9 +96,15 @@ export async function serveBuiltArtifact(context: BrowserContext): Promise<void>
   });
 }
 
-/** Load the built app, start a globe run, wait for the aim phase + map. */
-export async function startGlobeRun(page: Page): Promise<void> {
-  await page.goto("http://127.0.0.1:4123/Meridian/");
+/** Load the built app, start a globe run, wait for the aim phase + map.
+ *  `idleMs` forwards `?idle-ms=` (see session.ts): pass a large value to
+ *  keep the idle watchdog out of slow-harness scenarios. */
+export async function startGlobeRun(page: Page, idleMs?: number): Promise<void> {
+  const url =
+    idleMs && idleMs > 0
+      ? `http://127.0.0.1:4123/Meridian/?idle-ms=${idleMs}`
+      : "http://127.0.0.1:4123/Meridian/";
+  await page.goto(url);
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expect(page.locator(".satellite-map")).toBeVisible();
   await expect(page.locator(".maplibregl-canvas")).toBeVisible();
