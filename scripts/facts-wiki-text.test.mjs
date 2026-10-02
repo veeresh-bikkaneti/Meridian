@@ -90,6 +90,69 @@ describe("extractNamedAfter", () => {
   it("rejects: no naming predicate at all", () => {
     assert.equal(extractNamedAfter("The town is home to a large park.", "Riverton"), null);
   });
+  it("rejects: named after Australian artists (demonym + group)", () => {
+    assert.equal(
+      extractNamedAfter("The streets are named after Australian artists.", "Suburbia"),
+      null,
+    );
+  });
+  it("rejects: named after Spanish explorers", () => {
+    assert.equal(extractNamedAfter("It was named after Spanish explorers.", "Alta"), null);
+  });
+  it("rejects: named after Plautdietsch-speaking Mennonites", () => {
+    assert.equal(
+      extractNamedAfter("The village was named after Plautdietsch-speaking Mennonites.", "Gnadental"),
+      null,
+    );
+  });
+  it("truncates a post-and town: Osmond Gilles and Blythetown", () => {
+    const r = extractNamedAfter(
+      "The town soon grew to incorporate Gilleston (named for Osmond Gilles) and Blythetown, named for James Blythe.",
+      "Geraldton",
+    );
+    assert.equal(r?.person, "Osmond Gilles");
+  });
+  it("keeps genuine co-honorees joined by and", () => {
+    const r = extractNamedAfter("The city was named after John and Abigail Adams.", "Adamsville");
+    assert.equal(r?.person, "John and Abigail Adams");
+  });
+  it("stops at the comma and drops a trailing and", () => {
+    assert.equal(captureName("Dick Wick Hall, Ernest Hall and the story ends."), "Dick Wick Hall");
+    assert.equal(captureName("Dick Wick Hall and Ernest Hall founded it."), "Dick Wick Hall and Ernest Hall");
+  });
+  it("stops the name at a comma appositive", () => {
+    const r = extractNamedAfter(
+      "The suburb itself is named after Howard Florey, Baron Florey, who shared the Nobel Prize.",
+      "Florey",
+    );
+    assert.equal(r?.person, "Howard Florey");
+  });
+  it("rejects: named after Australian Aboriginal people", () => {
+    assert.equal(
+      extractNamedAfter("Streets in the suburb are named after Australian Aboriginal people.", "Waramanga"),
+      null,
+    );
+  });
+  it("possessive role: named after Pratt's wife, Grace Salome Pratt", () => {
+    const r = extractNamedAfter(
+      "It was established in 1904 by Dick Wick Hall and was named after Pratt's wife, Grace Salome Pratt.",
+      "Salome",
+    );
+    assert.equal(r?.person, "Grace Salome Pratt");
+  });
+  it("rejects: named after Brazil's last Emperor (no name follows the role)", () => {
+    assert.equal(
+      extractNamedAfter("Pedro II, or Pedro Segundo, named after Brazil's last Emperor.", "Pedro II"),
+      null,
+    );
+  });
+  it("demonym native: named after Tarn native, Jean-Louis Étienne", () => {
+    const r = extractNamedAfter(
+      "The primary school is named after Tarn native, Jean-Louis Étienne.",
+      "Coufouleux",
+    );
+    assert.equal(r?.person, "Jean-Louis Étienne");
+  });
   it("rejects: population sentence can never be a fact source", () => {
     assert.equal(
       extractNamedAfter("Named after John Smith, the population was 5,000 at the census.", "Smithville"),
@@ -158,6 +221,55 @@ describe("extractFounded", () => {
   });
   it("rejects: census sentence can never be a fact source", () => {
     assert.equal(extractFounded("With a population of 5,000, the town was founded in 1875."), null);
+  });
+  it("rejects an owned-by in a later clause as founder", () => {
+    // "owned by Wendell West" is adjacent to the founding, not the founder.
+    const r = extractFounded(
+      "Established in 1977, Ocean Shores was originally a land holding owned by Wendell West of Washington.",
+      "Ocean Shores",
+    );
+    assert.equal(r, null);
+  });
+  it("rejects a developed-by in a later clause as founder", () => {
+    const r = extractFounded(
+      "A Bible college founded in 1932, when it relocated to the site developed by James Gills.",
+      "Trinity",
+    );
+    assert.equal(r, null);
+  });
+  it("keeps a by-founder across a clean gap", () => {
+    assert.deepEqual(
+      extractFounded("It was established in 1839 as a farming community by James Turnbull Thomson.", "Balhannah"),
+      { year: 1839, founder: "James Turnbull Thomson" },
+    );
+  });
+  it("captures a quoted nickname in the founder name", () => {
+    assert.deepEqual(
+      extractFounded('The town was founded by John Galt and William "Tiger" Dunlop of the Canada Company in 1827.', "Goderich"),
+      { year: 1827, founder: "John Galt and William Tiger Dunlop" },
+    );
+  });
+  it("rejects: a festival's establishment is not the town's founding", () => {
+    assert.equal(
+      extractFounded("The annual Harvest Festival was established in 2007 by the town council.", "Milltown"),
+      null,
+    );
+  });
+  it("rejects: the place's own name is not a story carrier", () => {
+    assert.equal(
+      extractFounded(
+        "It was originally incorporated as a district municipality in 1892, growing to include the original Town of Mission City.",
+        "Mission",
+      ),
+      null,
+    );
+  });
+  it("rejects a demonym founder: founded by Spanish settlers", () => {
+    // Founder rejected, but the story keyword still carries the year.
+    assert.deepEqual(extractFounded("The town was founded in 1769 by Spanish settlers during the mission era."), {
+      year: 1769,
+      founder: null,
+    });
   });
   it("rejects: elevation sentence can never be a fact source", () => {
     assert.equal(extractFounded("At an elevation of 300 ft, it was settled in 1850 by farmers."), null);

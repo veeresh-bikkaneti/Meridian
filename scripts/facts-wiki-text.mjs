@@ -46,7 +46,7 @@ import { fileURLToPath } from "node:url";
 import { splitSentences } from "./enrich-wikipedia.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const REPO = dirname(HERE);
+const REPO = "/home/hatch/workspace/meridian-worktrees/gap-view-reveal";
 const CACHE_PATH = join(REPO, ".scratch", "wikipedia-enrichment", "crawl-cache.jsonl");
 const FACTS_DIR = join(REPO, ".scratch", "facts");
 const FACTS_PATH = join(FACTS_DIR, "wiki-text-facts.jsonl");
@@ -89,6 +89,22 @@ export function isFactSentence(sentence) {
 const ADMIN_NOUNS =
   /\b(county|counties|commission|council|board|committee|district|department|government|municipality|authorit(y|ies)|legislature|bureau|township|precinct|ward|state|nation|country|territory|city|town|village|hamlet|parish)\b/i;
 
+// Demonyms and group nouns are not honorees: "named after Australian
+// artists" or "named after Spanish explorers" names a people, not a person.
+// Checked against the last token of a captured name (and the whole name).
+const NOT_A_PERSON = new Set([
+  "spanish", "french", "british", "english", "irish", "scottish", "welsh",
+  "dutch", "german", "italian", "portuguese", "russian", "polish",
+  "swedish", "norwegian", "danish", "finnish", "greek", "turkish",
+  "chinese", "japanese", "korean", "indian", "indians", "australian",
+  "canadian", "mexican", "american", "african", "european", "asian",
+  "pomeranian", "vikings", "aztecs", "mayans", "incas",
+  "artist", "artists", "explorer", "explorers", "settler", "settlers",
+  "pioneer", "pioneers", "people", "peoples", "men", "women", "children",
+  "natives", "mennonite", "mennonites", "amish", "quaker", "quakers",
+  "mormon", "mormons", "aboriginal", "aborigines",
+]);
+
 // Story carriers: the vocabulary of a tellable founding — a person, an
 // enterprise, a rush, a war, a trail. A founded triple without one is
 // just a date anchor.
@@ -120,13 +136,17 @@ export function captureName(text) {
   for (let i = 0; i < raw.length && tokens.length < 6; i++) {
     // Trailing punctuation is stripped, including the sentence-final
     // period — but never the interior dots of "E."-style initials.
-    let tok = raw[i];
+    let tok = raw[i].replace(/^["“”'([{]+/, "");
+    const commaStop = /[,;:]$/.test(raw[i]);
     const isInitial = /^[A-Za-z]\.$/.test(tok);
     tok = tok.replace(/[,;:!?)"”'\]}]+$/, "").replace(/['’]s$/i, "");
     if (!isInitial) tok = tok.replace(/\.$/, "");
     if (!tok) break;
     if (isCapitalized(tok)) {
       tokens.push(tok);
+      // An appositive follows the comma — "Howard Florey, Baron Florey"
+      // names one person, and the title is not part of the name.
+      if (commaStop) break;
       continue;
     }
     const nextRaw = raw[i + 1];
@@ -136,6 +156,11 @@ export function captureName(text) {
       continue;
     }
     break;
+  }
+  // A trailing connector means the name ran into a clause boundary
+  // ("Dick Wick Hall, Ernest Hall and ...") — drop it.
+  while (tokens.length > 0 && isConnector(tokens[tokens.length - 1])) {
+    tokens.pop();
   }
   return tokens.join(" ");
 }
@@ -170,6 +195,13 @@ const NAMED_BY = /\bnamed\s+by\b/i;
 // "named after its founder, X" / "named for his wife, Mary" — the honoree
 // hides behind a role noun.
 const ROLE_NOUN = /^(?:its|the|their|his|her)\s+(founder|wife|husband|son|daughter|father|mother|brother|sister|namesake)[,\s]+/i;
+// "named after Pratt's wife, Grace Salome Pratt" — the possessive names the
+// relation, the actual honoree follows the role noun. One lowercase
+// adjective may intervene ("Brazil's last Emperor").
+const POSSESSIVE_ROLE = /^([A-Z][\w.'’-]*['’]s)\s+(?:[a-z]+\s+)?(wife|husband|son|daughter|father|mother|brother|sister|emperor|empress|king|queen|czar|chief)\b[,\s]*/i;
+// "named after Tarn native, Jean-Louis Étienne" — a demonym/adjective plus
+// "native"/"resident" introduces the real name after the comma.
+const DEMONYM_NATIVE = /^([A-Z][\w.'’-]*)\s+(native|resident)\b[,\s]+/i;
 
 /**
  * Extract a named_after fact from one sentence. Returns `{ person }`
@@ -186,15 +218,36 @@ export function extractNamedAfter(sentence, placeBase = "") {
     return null;
   }
   if (/\b(itself|themselves)\b/i.test(rest.split(/[.,;]/)[0])) return null;
-  let name = captureName(rest);
-  if (!name) {
-    // "named for its founder, Thomas Hart Benton" / "named after his wife Mary"
-    const fm = rest.match(ROLE_NOUN);
-    if (fm) name = captureName(rest.slice(fm[0].length));
+  let name = "";
+  const relM = rest.match(POSSESSIVE_ROLE) || rest.match(DEMONYM_NATIVE);
+  if (relM) {
+    // The honoree follows the role noun. When nothing name-like follows
+    // ("named after Brazil's last Emperor."), reject outright — never fall
+    // back to the possessive word ("Brazil").
+    name = captureName(rest.slice(relM[0].length));
+    if (!isValidName(name)) return null;
+  } else {
+    name = captureName(rest);
+    if (!name) {
+      // "named for its founder, Thomas Hart Benton" / "named after his wife Mary"
+      const fm = rest.match(ROLE_NOUN);
+      if (fm) name = captureName(rest.slice(fm[0].length));
+    }
   }
   if (!isValidName(name)) return null;
   if (isSelfName(name, placeBase)) return null;
   if (ADMIN_NOUNS.test(name)) return null;
+  // "named for Osmond Gilles) and Blythetown, named for James Blythe" —
+  // the post-"and" word is a different town, not a co-honoree.
+  const andIdx = name.lastIndexOf(" and ");
+  if (andIdx !== -1) {
+    const tail = name.slice(andIdx + 5);
+    if (!tail.includes(" ") && /(town|ville|burg|burgh|city|borough|mouth|haven|shire|port)$/i.test(tail)) {
+      name = name.slice(0, andIdx);
+    }
+  }
+  const lastTok = name.split(/\s+/).pop().toLowerCase().replace(/\.$/, "");
+  if (NOT_A_PERSON.has(lastTok) || NOT_A_PERSON.has(name.toLowerCase())) return null;
   return { person: name };
 }
 
@@ -213,7 +266,7 @@ const RECORD_CREATION =
 const REGISTER_LISTING = /\badded\s+to\s+the\s+(national\s+)?register\b/i;
 // The predicate belongs to a post office, school, church… not the place.
 const NON_PLACE_SUBJECT =
-  /\b(post\s+office|railroad\s+station|depot|school|church|mission)\s+(was\s+)?(established|founded)\b/i;
+  /\b(post\s+office|railroad\s+station|depot|school|church|mission|day|festival|event|award|prize|holiday|company|corporation|organization|university|college|band|team)\s+(was\s+)?(established|founded)\b/i;
 
 /**
  * Extract a founded fact from one sentence. Returns `{ year, founder }`
@@ -221,27 +274,67 @@ const NON_PLACE_SUBJECT =
  * has a story carrier: a named founder, or a story keyword in the
  * sentence.
  */
-export function extractFounded(sentence) {
+export function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+export function extractFounded(sentence, placeBase = "") {
   if (!isFactSentence(sentence)) return null;
   if (FIRST_MENTIONED.test(sentence)) return null;
   if (RECORD_CREATION.test(sentence)) return null;
   if (REGISTER_LISTING.test(sentence)) return null;
   if (NON_PLACE_SUBJECT.test(sentence)) return null;
-  const m = sentence.match(FOUNDING_PREDICATE) ?? sentence.match(FOUNDING_PREDICATE_LOOSE);
+  // Strict word order first ("founded in 1854"); the loose pattern
+  // ("founded by X in 1854", "founded as a boomtown in 1850") only runs
+  // when strict finds nothing.
+  let m = sentence.match(FOUNDING_PREDICATE);
+  let isLoose = false;
+  if (!m) {
+    m = sentence.match(FOUNDING_PREDICATE_LOOSE);
+    isLoose = true;
+  }
   if (!m) return null;
   const year = Number(m[2]);
   if (!Number.isInteger(year) || year < MIN_YEAR || year > MAX_YEAR) return null;
-  // Optional founder: the capitalized name after "by".
+  // Optional founder: the capitalized name after a "by" that belongs to
+  // the founding clause. "owned by", "developed by", "backed by" in a later
+  // clause name someone adjacent to the founding, not the founder — so the
+  // stretch between the year and the "by" must be clause-clean (no comma,
+  // no competing verb).
   let founder = null;
-  const byM = sentence.slice(m.index).match(/\bby\s+(the\s+)?/i);
+  // Loose matches span predicate..year, so the founder's "by" lives
+  // inside the match; strict matches end at the year, so it lives after.
+  const searchFrom = isLoose ? m[0].slice(m[1].length) : sentence.slice(m.index + m[0].length);
+  const byM = searchFrom.match(/\bby\s+(the\s+)?/i);
   if (byM) {
-    const cand = captureName(sentence.slice(m.index + byM.index + byM[0].length));
-    if (isValidName(cand) && !ADMIN_NOUNS.test(cand)) founder = cand;
+    const gap = searchFrom.slice(0, byM.index);
+    const gapClean = !/[,;]/.test(gap) && !/\b(was|were|is|are|owned|led|built|operated|developed)\b/i.test(gap);
+    if (gapClean) {
+      const cand = captureName(searchFrom.slice(byM.index + byM[0].length));
+      if (isValidName(cand) && !ADMIN_NOUNS.test(cand)) {
+        const lastTok = cand.split(/\s+/).pop().toLowerCase().replace(/\.$/, "");
+        if (!NOT_A_PERSON.has(lastTok) && !NOT_A_PERSON.has(cand.toLowerCase())) {
+          founder = cand;
+        }
+      }
+    }
   }
   // Story-carrier rule: a founder or a tellable keyword, else this is a
   // bare date anchor ("incorporated in 1914", "incorporated in 1914 by
-  // the County Commission") — paperwork, not a fact.
-  if (!founder && !STORY_KEYWORDS.test(sentence)) return null;
+  // the County Commission") — paperwork, not a fact. The place's own name
+  // tokens are blanked first, so "Mission, BC ... Mission City" cannot
+  // carry itself on the word "mission".
+  let carrierText = sentence;
+  if (placeBase) {
+    const toks = placeBase.toLowerCase().match(/[a-z]+/g) ?? [];
+    if (toks.length > 0) {
+      carrierText = sentence.replace(
+        new RegExp(`\\b(${toks.map(escapeRegExp).join("|")})\\b`, "gi"),
+        " ",
+      );
+    }
+  }
+  if (!founder && !STORY_KEYWORDS.test(carrierText)) return null;
   return { year, founder };
 }
 
@@ -264,7 +357,7 @@ export function extractFacts(extractText, placeBase = "") {
         facts.push({ factType: "named_after", person: na.person, year: null, sentence });
       }
     }
-    const fo = extractFounded(sentence);
+    const fo = extractFounded(sentence, placeBase);
     if (fo) {
       const key = `founded|${fo.year}|${(fo.founder ?? "").toLowerCase()}`;
       if (!seen.has(key)) {
