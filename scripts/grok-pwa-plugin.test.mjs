@@ -533,3 +533,36 @@ test("vite plugin bakes og identity as a virtual module", () => {
   assert.match(plugin, /snapshotOgIdentity/);
 });
 
+
+test("transformIndexHtml strips dead /__grok/ PWA links on GITHUB_PAGES builds", async () => {
+  const { grokPwaPlugin } = await import("./grok-pwa-plugin.mjs");
+  const html = "<!doctype html><html><head><title>T</title></head><body></body></html>";
+  const prev = process.env.GITHUB_PAGES;
+  try {
+    process.env.GITHUB_PAGES = "1";
+    const out = grokPwaPlugin().transformIndexHtml(html);
+    assert.doesNotMatch(out, /href="\/__grok\/manifest\.webmanifest"/);
+    assert.doesNotMatch(out, /href="\/__grok\/icon-180\.png"/);
+    // Platform chrome stays: branding script and OG tags are untouched.
+    assert.match(out, /grok-app-builder\/extensions\.js/);
+    assert.match(out, /og:title/);
+  } finally {
+    if (prev === undefined) delete process.env.GITHUB_PAGES;
+    else process.env.GITHUB_PAGES = prev;
+  }
+});
+
+test("transformIndexHtml keeps /__grok/ links off the Pages gate (dev)", async () => {
+  const { grokPwaPlugin } = await import("./grok-pwa-plugin.mjs");
+  const html = "<!doctype html><html><head><title>T</title></head><body></body></html>";
+  const prev = process.env.GITHUB_PAGES;
+  try {
+    delete process.env.GITHUB_PAGES;
+    const out = grokPwaPlugin().transformIndexHtml(html);
+    // Dev/preview middleware serves these, so they stay.
+    assert.match(out, /href="\/__grok\/manifest\.webmanifest"/);
+  } finally {
+    if (prev === undefined) delete process.env.GITHUB_PAGES;
+    else process.env.GITHUB_PAGES = prev;
+  }
+});

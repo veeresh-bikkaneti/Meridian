@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101211" />
+    <title>Meridian — offline</title>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        margin: 0; min-height: 100vh; display: grid; place-items: center;
+        background: #101211; color: #e8ecef;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        text-align: center; padding: 24px;
+      }
+      .card { max-width: 26rem; }
+      h1 { font-size: 1.6rem; margin: 0 0 0.5rem; }
+      p { color: #9aa4ab; line-height: 1.5; }
+      button {
+        margin-top: 1rem; padding: 0.7rem 1.4rem; font-size: 1rem;
+        border: 0; border-radius: 999px; cursor: pointer;
+        background: #2f7f8f; color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>You're offline</h1>
+      <p>Meridian needs a connection to load new places. Your saved game is safe — reconnect and keep exploring.</p>
+      <button onclick="location.reload()">Try again</button>
+    </div>
+  </body>
+</html>
