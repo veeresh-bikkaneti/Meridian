@@ -38,6 +38,12 @@ Every visit shuffles the trail with a fresh seed, so restarts open on different 
 
 Points follow scoring v3: a distance-based base (MapTap's curve) multiplied by the place's difficulty tier (1x / 1.25x / 1.5x / 2x / 2.5x) and a streak combo, plus a flat +15 region bonus, capped at 400 per place. Misses score 0 and reset the streak. The breakdown is shown on every hit card — no hidden math.
 
+### GeoDetective — the daily edition *(in development)*
+
+A fourth edition alongside Globe → Country → State: one mystery place per UTC day, five guesses. Clues unlock in a fixed ladder — Geography → Climate → History → Hook → Giveaway — one new clue per guess. Each guess is typed into a constrained typeahead (no free-text penalties: unknown or repeated picks never cost a guess) and answered with the distance, the direction toward the target, and warmer/colder against the previous guess. Progress persists per day under `meridian.loop.v1` (30-day archive), so a reload mid-game restores the board; the endless-run state is never touched. The share line reads `meridian geodetective <date>` with a proximity-graded emoji grid — no place names, no distances, no spoilers.
+
+Status: the game mechanics are built and E2E-tested, but the daily puzzle ships with 12 hand-written seed places only. Production launch is blocked on the content gate — **≥365 human-reviewed, validated clue sets** — tracked on the feature PR.
+
 The share line carries the trail, not just a number:
 
 ```
