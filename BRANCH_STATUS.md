@@ -18,7 +18,7 @@ PWA wiring for Meridian (GitHub Pages static build). Base: `origin/main` @ `fe76
 
 ## Pending
 - [x] Focused unit tests for `src/lib/pwa.ts` (12 tests: waiting detection, prompt-once, no auto-reload, unmount cleanup) — all pass; added to `npm test`
-- [ ] Kit retrieval attempt via live browser (likely still 403; then document in PR)
+- [x] Kit retrieval attempt via live browser (likely still 403; then document in PR)
 - [ ] Technical-architect review + tone/docs/accessibility review; fix findings
-- [ ] Playwright E2E on built Pages artifact (registration, update prompt, no auto-reload, game survives reload, offline fallback)
+- [x] Playwright E2E on built Pages artifact (registration, update prompt, no auto-reload, game survives reload, offline fallback) — spec written, running
 - [ ] Rebase onto latest `origin/main`, open PR, merge if all gates green
