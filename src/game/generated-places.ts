@@ -72,6 +72,18 @@ interface ChunkPlaceRecord {
    * from the source article.
    */
   history?: unknown;
+  /**
+   * Optional fact-ladder hook (scripts/facts-ladder.mjs): { text, kind,
+   * source, qid?, href? }. Takes precedence over `history` in the card
+   * composition (see toStarter); the AI fallback treats it like history.
+   */
+  fact?: unknown;
+  /**
+   * True when the pipeline produced no hook for this record (neither fact
+   * nor history, and no curated notable note). The linter flags it; the
+   * on-device Nano fallback covers the runtime gap.
+   */
+  hookMissing?: unknown;
   /** Optional en.wikipedia.org article slug when the blurb carries a curated notable note. */
   wiki?: unknown;
   iso2: unknown;
@@ -79,9 +91,26 @@ interface ChunkPlaceRecord {
   regionId: unknown;
 }
 
+/**
+ * Extract the hook sentence from the fact ladder's `fact` field. Mirrors
+ * factText() in scripts/card-compose.mjs — the object contract is
+ * { text, kind, source, qid?, href? }; a plain string is tolerated.
+ */
+function factText(fact: unknown): string | null {
+  if (typeof fact === "string") {
+    const t = fact.trim();
+    return t.length >= 20 ? t : null;
+  }
+  if (fact && typeof fact === "object" && "text" in fact && typeof (fact as { text: unknown }).text === "string") {
+    const t = ((fact as { text: string }).text).trim();
+    return t.length >= 20 ? t : null;
+  }
+  return null;
+}
+
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
 function toStarter(
-  place: { id: string; name: string; lon: number; lat: number; blurb: string; history?: string; wiki?: string },
+  place: { id: string; name: string; lon: number; lat: number; blurb: string; history?: string; wiki?: string; fact?: unknown },
   edition: Edition,
   regionId: string,
 ): Starter {
@@ -92,7 +121,10 @@ function toStarter(
   // so the card can attribute it (GeoNames stays credited app-wide).
   const hasWiki = typeof place.wiki === "string" && place.wiki.length > 0;
   // Card rule 1: history first, modern identity second. The hook sentence
-  // leads; the plain-geography blurb anchors it.
+  // leads; the plain-geography blurb anchors it. Precedence: fact-ladder
+  // fact > Wikipedia history hook > bare geographic blurb (same order as
+  // composeCardStory() in scripts/card-compose.mjs).
+  const hook = factText(place.fact) ?? (typeof place.history === "string" && place.history.length > 0 ? place.history : null);
   const hasHistory = typeof place.history === "string" && place.history.length > 0;
   return {
     id: place.id,
@@ -101,10 +133,13 @@ function toStarter(
     name: place.name,
     lon: place.lon,
     lat: place.lat,
-    story: hasHistory ? `${place.history} ${place.blurb}` : place.blurb,
+    story: hook ? `${hook} ${place.blurb}` : place.blurb,
     // The history hook travels separately so the AI story fallback can tell
     // enriched cards (skip) from blurb-only cards (fire).
     history: hasHistory ? place.history : undefined,
+    // The fact text travels too — the AI fallback treats a non-empty fact
+    // the same as history (skip). Null when absent, never the raw object.
+    fact: factText(place.fact),
     sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
     sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
     difficulty,
@@ -129,6 +164,8 @@ function assertValidRecord(
   lat: number;
   blurb: string;
   history?: string;
+  fact?: unknown;
+  hookMissing?: boolean;
   wiki?: string;
   iso2: string;
   edition: Edition;
@@ -169,6 +206,22 @@ function assertValidRecord(
   }
   if (record.wiki !== undefined && (typeof record.wiki !== "string" || record.wiki.length === 0)) {
     throw new Error(`${where}: invalid wiki slug`);
+  }
+  // The fact-ladder field is { text, kind, source, qid?, href? } (or a plain
+  // string, tolerated). Guard against hand-edited corruption; the ladder's
+  // own validator proved the text before merge.
+  if (record.fact !== undefined && record.fact !== null) {
+    const f = record.fact;
+    const text = typeof f === "string" ? f : typeof f === "object" && f !== null && "text" in f ? (f as { text: unknown }).text : undefined;
+    if (typeof text !== "string" || text.trim().length < 20) {
+      throw new Error(`${where}: invalid fact hook`);
+    }
+  }
+  // hookMissing is a pipeline marker (scripts/card-compose.mjs): boolean
+  // true only. Its absence on legacy records is grandfathered, never an
+  // error.
+  if (record.hookMissing !== undefined && record.hookMissing !== true) {
+    throw new Error(`${where}: invalid hookMissing marker`);
   }
   if (typeof record.iso2 !== "string" || record.iso2.length === 0) {
     throw new Error(`${where}: invalid iso2`);
