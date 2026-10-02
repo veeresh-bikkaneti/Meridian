@@ -300,18 +300,34 @@ test("withFact inserts the fact after history (or blurb)", () => {
   assert.deepEqual(Object.keys(b), ["id", "blurb", "fact", "iso2"]);
 });
 
-test("wikitext rung requires the wiki slug for attribution", () => {
+test("wikitext rung falls back to the fact's source article when the chunk has no wiki slug", () => {
   const p = place();
   delete p.wiki;
-  const inputs = {
+  const mkInputs = (facts) => ({
     qidByGeonames: new Map(),
     wikidataByQid: new Map(),
-    wikiTextByGeonames: new Map([
-      ["gn-1", [{ factType: "named_after", person: "X", year: null, sentence: "Named after X." }]],
-    ]),
+    wikiTextByGeonames: new Map([["gn-1", facts]]),
     eb1911ByGeonames: new Map(),
-  };
-  const r = wikitextRung(p, inputs);
-  assert.equal(r.fact, null);
-  assert.equal(r.reason, "no-wiki-slug");
+  });
+  // With a sourceSlug, the fact is kept and attributed to its article.
+  const r1 = wikitextRung(
+    p,
+    mkInputs([{ factType: "named_after", person: "X", year: null, sentence: "The town was named after explorer X.", sourceSlug: "Some_Town" }]),
+  );
+  assert.equal(r1.fact.text, "The town was named after explorer X.");
+  assert.equal(r1.fact.href, "https://en.wikipedia.org/wiki/Some_Town");
+  // With neither a wiki slug nor a sourceSlug, the rung is skipped loudly.
+  const r2 = wikitextRung(
+    p,
+    mkInputs([{ factType: "named_after", person: "X", year: null, sentence: "The town was named after explorer X." }]),
+  );
+  assert.equal(r2.fact, null);
+  assert.equal(r2.reason, "no-wiki-slug");
+});
+
+test("attribution prefers the wikitext fact's own href when present", () => {
+  assert.deepEqual(
+    factAttribution({ kind: "wikitext", href: "https://en.wikipedia.org/wiki/Some_Town" }, undefined),
+    { label: "GeoNames · Wikipedia", href: "https://en.wikipedia.org/wiki/Some_Town" },
+  );
 });

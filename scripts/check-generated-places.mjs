@@ -236,8 +236,12 @@ function main() {
           typeof f.source !== "string" || f.source.length === 0;
         const badQid = f?.kind === "wikidata" && !(typeof f.qid === "string" && /^Q\d+$/.test(f.qid));
         const badHref = f?.kind === "eb1911" && !(typeof f.href === "string" && f.href.startsWith("https://en.wikisource.org/"));
-        const badWiki = (f?.kind === "wikitext" || f?.kind === "hook") &&
-          !(typeof place.wiki === "string" && place.wiki.length > 0);
+        const badWiki = f?.kind === "hook"
+          ? !(typeof place.wiki === "string" && place.wiki.length > 0)
+          : f?.kind === "wikitext"
+            ? !((typeof place.wiki === "string" && place.wiki.length > 0) ||
+                (typeof f.href === "string" && f.href.startsWith("https://en.wikipedia.org/wiki/")))
+            : false;
         if (badShape || badQid || badHref || badWiki) {
           violations.push(`${tag}: invalid fact field`);
         }

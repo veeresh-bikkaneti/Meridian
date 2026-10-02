@@ -891,3 +891,31 @@ test("places without a fact keep current behavior (blurb or history hook)", () =
   assert.equal(plain.sourceLabel, "GeoNames");
   assert.ok(hooked.story.startsWith("The town is named after a railroad official's daughter."));
 });
+
+test("wikitext fact without a chunk wiki slug attributes via its own article href", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 1 },
+    places: [
+      {
+        id: "gn-15",
+        name: "Edna",
+        lon: -96.6,
+        lat: 28.9,
+        blurb: "Edna is a county seat in southeastern Texas, the United States.",
+        fact: {
+          text: "The town was named after explorer X in this sentence here.",
+          kind: "wikitext",
+          source: "Wikipedia",
+          href: "https://en.wikipedia.org/wiki/Some_Town",
+        },
+        iso2: "US",
+        edition: "state",
+        regionId: "texas",
+      },
+    ],
+  };
+  const [s] = startersFromChunk("texas", chunk);
+  assert.ok(s.story.startsWith("The town was named after explorer X"));
+  assert.equal(s.sourceLabel, "GeoNames · Wikipedia");
+  assert.equal(s.sourceHref, "https://en.wikipedia.org/wiki/Some_Town");
+});

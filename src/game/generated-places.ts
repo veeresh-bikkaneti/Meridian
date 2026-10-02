@@ -115,8 +115,7 @@ interface ChunkPlaceRecord {
 function factText(fact: unknown): string | null {
   if (typeof fact === "string") {
     const t = fact.trim();
-    return t.length >= 20 ? t : null;
-  }
+    return t.length >= 20 ? t : null;  }
   if (fact && typeof fact === "object" && "text" in fact && typeof (fact as { text: unknown }).text === "string") {
     const t = ((fact as { text: string }).text).trim();
     return t.length >= 20 ? t : null;
