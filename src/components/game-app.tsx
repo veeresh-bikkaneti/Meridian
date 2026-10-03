@@ -36,9 +36,10 @@ import {
 import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
-import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
+import type { MapMark, MapVariation } from "@/map/satellite-map";
+import { MapErrorBoundary } from "./map-error-boundary";
 import { Compass } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
@@ -71,6 +72,44 @@ const RUN_KEY = "meridian.run";
  * place, else fails safe by advancing (the result is already scored).
  */
 const RUN_DROP_KEY = "meridian.drop";
+
+/**
+ * The satellite map (maplibre-gl + the atlas payloads) is the heaviest
+ * module in the app and is only needed once a run starts. Loading it lazily
+ * keeps it out of the boot bundle, so the menu paints on a fraction of the
+ * JS (P0 Safari launch fix: the 2.57 MB synchronously-evaluated boot bundle
+ * is the prime iOS-jetsam suspect). The Play path wraps it in Suspense (the
+ * existing loading-spinner styling) and MapErrorBoundary (chunk-load
+ * failure → retry UI, never a blank page). The boundary's "Try again"
+ * reloads the page: re-rendering a React.lazy after a chunk failure
+ * rethrows its cached rejection, and even a fresh import() of the same
+ * failed URL is negatively cached by the browser for the life of the
+ * document — only a reload genuinely re-fetches the chunk. The run is
+ * restored from sessionStorage on boot, so the game survives the reload.
+ */
+const SatelliteMap = lazy(() => import("@/map/satellite-map"));
+
+/**
+ * Suspense fallback while the lazy satellite-map chunk downloads. Mirrors
+ * the in-map tile-loading pill's spinner styling (`.meridian-spinner`).
+ */
+function MapLoadingFallback() {
+  return (
+    <div
+      role="status"
+      data-testid="map-loading"
+      className="absolute inset-0 flex items-center justify-center bg-bg"
+    >
+      <div className="flex items-center gap-2.5 rounded-full border border-line bg-surface py-2.5 pr-5 pl-3.5 text-sm font-medium text-fg">
+        <span
+          aria-hidden="true"
+          className="meridian-spinner block h-4 w-4 rounded-full border-2 border-muted/40 border-t-fg"
+        />
+        Loading map&hellip;
+      </div>
+    </div>
+  );
+}
 
 export type Drop = {
   lon: number;
@@ -1485,20 +1524,24 @@ function PlayLoaded({
   return (
     <main className="relative h-dvh bg-bg">
       <div className="absolute inset-0">
-        <SatelliteMap
-          key={mapKey}
-          mode={mode}
-          edition={run.edition}
-          regionName={run.regionName}
-          bounds={bounds}
-          onAim={onAim}
-          onConfirm={onConfirm}
-          onClearAim={onClearAim}
-          marks={marks}
-          variation={variation}
-          spot={place ? { lon: place.lon, lat: place.lat } : null}
-          onRevealComplete={() => setRevealDone(true)}
-        />
+        <MapErrorBoundary>
+          <Suspense fallback={<MapLoadingFallback />}>
+            <SatelliteMap
+              key={mapKey}
+              mode={mode}
+              edition={run.edition}
+              regionName={run.regionName}
+              bounds={bounds}
+              onAim={onAim}
+              onConfirm={onConfirm}
+              onClearAim={onClearAim}
+              marks={marks}
+              variation={variation}
+              spot={place ? { lon: place.lon, lat: place.lat } : null}
+              onRevealComplete={() => setRevealDone(true)}
+            />
+          </Suspense>
+        </MapErrorBoundary>
         <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
           <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
             Editions
