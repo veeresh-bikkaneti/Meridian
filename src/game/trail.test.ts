@@ -3,11 +3,13 @@ import test from "node:test";
 import {
   createDealer,
   cycleSeed,
+  difficultyWeight,
   memorySeenStore,
   mintSeed,
   poolForNewRun,
   seenStoreFor,
   shufflePlaces,
+  weightedShufflePlaces,
 } from "./trail.ts";
 
 const ids = (places: { id: string }[]) => places.map((p) => p.id);
@@ -113,11 +115,16 @@ test("markDealtThrough persists the no-repeat history for future runs", () => {
   const dealer = createDealer(places, 5, store, 0, run1.prevLastId);
   dealer.markDealtThrough(1);
   assert.equal(store.read().length, 2);
-  // A new run builds its pool minus the persisted history.
+  const dealt = [dealer.at(0)!.id, dealer.at(1)!.id];
+  // A new run builds its pool minus the persisted history: exactly the one
+  // unseen place remains (which one depends on the deal order, so this is
+  // order-agnostic by design).
   const run2 = poolForNewRun(places, store);
+  assert.equal(run2.poolIds.length, 1);
   const pool2 = places.filter((p) => run2.poolIds.includes(p.id));
   const next = createDealer(pool2, 6, store, 0, run2.prevLastId);
-  assert.equal(next.at(0)!.id, "c");
+  assert.equal(next.at(0)!.id, run2.poolIds[0]);
+  assert.ok(!dealt.includes(next.at(0)!.id), "new run must deal the unseen place");
 });
 
 test("startPosition skips re-marking a resumed run's earlier places", () => {
@@ -336,4 +343,161 @@ test("poolForNewRun on an empty catalog yields an empty pool (fail closed)", () 
   assert.deepEqual(poolIds, []);
   assert.equal(prevLastId, null);
   assert.equal(createDealer([], 5, memorySeenStore()).at(0), null);
+});
+
+test("difficultyWeight maps tiers to weights and defaults missing/invalid difficulty to tier 3", () => {
+  assert.equal(difficultyWeight({ difficulty: 1 }), 5);
+  assert.equal(difficultyWeight({ difficulty: 2 }), 4);
+  assert.equal(difficultyWeight({ difficulty: 3 }), 3);
+  assert.equal(difficultyWeight({ difficulty: 4 }), 2);
+  assert.equal(difficultyWeight({ difficulty: 5 }), 1);
+  // Back-compat: missing or invalid difficulty behaves as tier 3 (w = 3).
+  const invalid: { difficulty?: unknown }[] = [
+    {},
+    { difficulty: undefined },
+    { difficulty: null },
+    { difficulty: 0 },
+    { difficulty: 6 },
+    { difficulty: -1 },
+    { difficulty: 2.5 },
+    { difficulty: "3" },
+    { difficulty: NaN },
+  ];
+  for (const place of invalid) {
+    assert.equal(difficultyWeight(place), 3, `place ${JSON.stringify(place)}`);
+  }
+});
+
+test("weightedShufflePlaces is deterministic and deals each place exactly once", () => {
+  const places = [
+    { id: "a", difficulty: 1 },
+    { id: "b", difficulty: 5 },
+    { id: "c" },
+    { id: "d", difficulty: 3 },
+  ];
+  const first = weightedShufflePlaces(places, 42, (p) => difficultyWeight(p));
+  const second = weightedShufflePlaces(places, 42, (p) => difficultyWeight(p));
+  assert.deepEqual(ids(first), ids(second), "same seed must deal identically");
+  // No repeats within a cycle, full coverage per cycle.
+  assert.deepEqual(ids(first).sort(), ["a", "b", "c", "d"]);
+  assert.equal(new Set(ids(first)).size, 4);
+  // Input is not mutated.
+  assert.deepEqual(ids(places), ["a", "b", "c", "d"]);
+  // Different seeds deal different orders across a seed sweep.
+  const orders = new Set<string>();
+  for (let seed = 0; seed < 10; seed++) {
+    orders.add(ids(weightedShufflePlaces(places, seed, (p) => difficultyWeight(p))).join(","));
+  }
+  assert.ok(orders.size > 1, "weighted shuffle must vary with the seed");
+});
+
+test("weighted dealing skews famous places earlier (statistical, fixed seed set)", () => {
+  // 20 tier-1 (weight 5) vs 20 tier-5 (weight 1). Uniform dealing would put
+  // ~5 of each in the first 10 positions; the weighted deal must put far
+  // more famous places there. Fixed seeds keep this fully deterministic.
+  const famous = Array.from({ length: 20 }, (_, i) => ({ id: `f${i}`, difficulty: 1 }));
+  const obscure = Array.from({ length: 20 }, (_, i) => ({ id: `o${i}`, difficulty: 5 }));
+  const pool = [...famous, ...obscure];
+  const SEEDS = 50;
+  let famousFirst10 = 0;
+  let obscureFirst10 = 0;
+  for (let seed = 0; seed < SEEDS; seed++) {
+    const cycle = weightedShufflePlaces(pool, cycleSeed(seed, 0), (p) => difficultyWeight(p));
+    assert.equal(new Set(ids(cycle)).size, 40, `seed ${seed}: repeats or missing places`);
+    const first10 = cycle.slice(0, 10);
+    famousFirst10 += first10.filter((p) => p.id.startsWith("f")).length;
+    obscureFirst10 += first10.filter((p) => p.id.startsWith("o")).length;
+  }
+  const famousAvg = famousFirst10 / SEEDS; // observed 8.1; uniform would be 5.0
+  const obscureAvg = obscureFirst10 / SEEDS; // observed 1.9; uniform would be 5.0
+  assert.ok(famousAvg >= 6.5, `expected famous-first-10 avg >= 6.5, got ${famousAvg}`);
+  assert.ok(obscureAvg <= 3.5, `expected obscure-first-10 avg <= 3.5, got ${obscureAvg}`);
+  assert.ok(
+    famousAvg >= 2.5 * obscureAvg,
+    `expected famous to dominate early positions, got ${famousAvg} vs ${obscureAvg}`,
+  );
+});
+
+test("same seed yields identical deal order across dealer instances (reload determinism)", () => {
+  const places = Array.from({ length: 12 }, (_, i) => ({
+    id: `p${i}`,
+    difficulty: (i % 5) + 1,
+  }));
+  const seed = 20261003;
+  const first = createDealer(places, seed, memorySeenStore(), 0, "p7");
+  const second = createDealer(places, seed, memorySeenStore(), 0, "p7");
+  // Two full cycles, 24 positions: every position must match.
+  const orderFirst = Array.from({ length: 24 }, (_, i) => first.at(i)!.id);
+  const orderSecond = Array.from({ length: 24 }, (_, i) => second.at(i)!.id);
+  assert.deepEqual(orderSecond, orderFirst);
+  // No repeats within either cycle and no boundary repeat.
+  assert.equal(new Set(orderFirst.slice(0, 12)).size, 12);
+  assert.equal(new Set(orderFirst.slice(12, 24)).size, 12);
+  assert.notEqual(orderFirst[12], orderFirst[11]);
+});
+
+test("weighted cycles never open with the boundary id, even when it is the heaviest place", () => {
+  const places = [
+    { id: "heavy", difficulty: 1 }, // weight 5: most likely to open the cycle
+    ...Array.from({ length: 9 }, (_, i) => ({ id: `p${i}`, difficulty: 5 })),
+  ];
+  for (let seed = 0; seed < 100; seed++) {
+    const dealer = createDealer(places, seed, memorySeenStore(), 0, "heavy");
+    assert.notEqual(dealer.at(0)!.id, "heavy", `seed ${seed}: boundary repeat`);
+    // The boundary swap preserves full coverage: all 10 dealt exactly once.
+    const cycle = Array.from({ length: 10 }, (_, i) => dealer.at(i)!.id);
+    assert.equal(new Set(cycle).size, 10, `seed ${seed}: coverage broken`);
+  }
+});
+
+test("pool exhaustion reshuffles all places into a fresh weighted cycle", () => {
+  const places = Array.from({ length: 6 }, (_, i) => ({
+    id: `p${i}`,
+    difficulty: (i % 5) + 1,
+  }));
+  const dealer = createDealer(places, 4242, memorySeenStore());
+  const cycle0 = Array.from({ length: 6 }, (_, i) => dealer.at(i)!.id);
+  dealer.markDealtThrough(5);
+  const cycle1 = Array.from({ length: 6 }, (_, i) => dealer.at(6 + i)!.id);
+  // Both cycles cover the full pool exactly once...
+  assert.deepEqual([...cycle0].sort(), ["p0", "p1", "p2", "p3", "p4", "p5"]);
+  assert.deepEqual([...cycle1].sort(), ["p0", "p1", "p2", "p3", "p4", "p5"]);
+  // ...the new cycle is a fresh reseed, not a copy of the old order...
+  assert.notDeepEqual(cycle1, cycle0);
+  // ...and it does not open with the previous cycle's last deal.
+  assert.notEqual(cycle1[0], cycle0[5]);
+});
+
+test("places without difficulty deal exactly like tier-3 places (back-compat)", () => {
+  const plain = [{ id: "a" }, { id: "b" }, { id: "c" }, { id: "d" }, { id: "e" }];
+  const asTier3 = plain.map((p) => ({ ...p, difficulty: 3 }));
+  for (let seed = 0; seed < 30; seed++) {
+    const plainOrder = ids(
+      weightedShufflePlaces(plain, cycleSeed(seed, 0), (p) => difficultyWeight(p)),
+    );
+    const tier3Order = ids(
+      weightedShufflePlaces(asTier3, cycleSeed(seed, 0), (p) => difficultyWeight(p)),
+    );
+    assert.deepEqual(plainOrder, tier3Order, `seed ${seed}`);
+  }
+});
+
+test("the dealer deals famous places earlier on average (weighted end-to-end)", () => {
+  const places = [
+    { id: "famous", difficulty: 1 },
+    ...Array.from({ length: 9 }, (_, i) => ({ id: `o${i}`, difficulty: 5 })),
+  ];
+  // Weight 5 vs nine weight-1 places: ~77% chance the famous place lands in
+  // the first 3. Uniform dealing would give 30%.
+  let earlyCount = 0;
+  const SEEDS = 40;
+  for (let seed = 0; seed < SEEDS; seed++) {
+    const dealer = createDealer(places, seed, memorySeenStore());
+    const first3 = [dealer.at(0)!.id, dealer.at(1)!.id, dealer.at(2)!.id];
+    if (first3.includes("famous")) earlyCount++;
+  }
+  assert.ok(
+    earlyCount >= 20,
+    `expected famous in first 3 for >= 20/40 seeds, got ${earlyCount}`,
+  );
 });
