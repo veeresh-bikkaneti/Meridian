@@ -7,7 +7,8 @@ import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
-import { continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
+import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
+import { filterByTier, isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
 import {
   bankPlace,
   clearSession,
@@ -120,6 +121,31 @@ function isPlaceResult(value: unknown): value is PlaceResult {
   );
 }
 
+const DIFFICULTY_KEY = "meridian.difficulty";
+
+/**
+ * The picker's difficulty choice, persisted across page loads. Invalid or
+ * missing values fall back to "medium" — the choice applies across
+ * Globe → Country → State and survives edition switches.
+ */
+function readDifficultyChoice(): PickerDifficulty {
+  try {
+    if (typeof localStorage === "undefined") return "medium";
+    const raw = localStorage.getItem(DIFFICULTY_KEY);
+    return isPickerDifficulty(raw) ? raw : "medium";
+  } catch {
+    return "medium";
+  }
+}
+
+function writeDifficultyChoice(choice: PickerDifficulty) {
+  try {
+    localStorage.setItem(DIFFICULTY_KEY, choice);
+  } catch {
+    // Storage blocked: the in-memory choice still applies this session.
+  }
+}
+
 function readRun(): Run | null {
   try {
     if (typeof sessionStorage === "undefined") return null;
@@ -159,6 +185,9 @@ function readRun(): Run | null {
       regionId: record.regionId,
       regionName: record.regionName,
       dateKey: record.dateKey,
+      // Runs saved before the difficulty picker backfill to the default
+      // band; resumeRun keeps a valid choice.
+      difficultyChoice: backfillDifficultyChoice(record.difficultyChoice),
       index: record.index,
       hits: record.hits,
       phase: record.phase,
@@ -405,6 +434,13 @@ export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  // Difficulty picker: one choice applies across Globe → Country → State and
+  // survives edition switches. Persisted so it survives reloads too.
+  const [difficultyChoice, setDifficultyChoiceState] = useState<PickerDifficulty>(readDifficultyChoice);
+  const setDifficultyChoice = useCallback((choice: PickerDifficulty) => {
+    setDifficultyChoiceState(choice);
+    writeDifficultyChoice(choice);
+  }, []);
   // Region-selection async boundary: the GeoNames chunk(s) for the chosen
   // region load here — whole-country runs fetch every subdivision chunk —
   // before any run exists. `starting` shows the loading
@@ -490,6 +526,9 @@ export function GameApp() {
         regionId: saved.regionId,
         regionName: saved.regionName,
         dateKey,
+        // A changed difficulty choice never resumes: switching bands starts
+        // a fresh run instead.
+        difficultyChoice,
       };
       // resumeRun mints a fresh run when the saved one is not resumable — a
       // page load must not auto-start a run, so only resumable sessions are
@@ -503,7 +542,7 @@ export function GameApp() {
       }
     }
     setReady(true);
-  }, [commit, ensureSession, killIdleSession, idleTimeoutMs]);
+  }, [commit, ensureSession, killIdleSession, idleTimeoutMs, difficultyChoice]);
 
   const refreshForNewBuild = useCallback(() => {
     try {
@@ -515,17 +554,21 @@ export function GameApp() {
   }, []);
 
   const openRun = useCallback(
-    async (edition: Edition, regionId: string, regionName: string) => {
+    async (edition: Edition, regionId: string, regionName: string, choice: PickerDifficulty) => {
       setStarting({ regionName });
       setStartError(null);
       try {
         // The region's chunk(s) load here — never eagerly, never partial.
         const places = await placesFor(edition, regionId);
         const dateKey = trailDate();
-        const { poolIds, prevLastId } = poolForRunStart(places, edition, regionId);
+        // The picker's difficulty band narrows the catalog BEFORE the dealer
+        // pool is built. Fail-closed: an empty band yields an empty pool,
+        // never a widened one.
+        const banded = filterByTier(places, choice);
+        const { poolIds, prevLastId } = poolForRunStart(banded, edition, regionId);
         const next = resumeRun(
           readRun(),
-          { edition, regionId, regionName, dateKey },
+          { edition, regionId, regionName, dateKey, difficultyChoice: choice },
           poolIds,
           prevLastId,
         );
@@ -765,7 +808,7 @@ export function GameApp() {
           if (subdivisions.length > 0) {
             setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "countries" });
           } else {
-            openRun("country", region.id, region.name);
+            openRun("country", region.id, region.name, difficultyChoice);
           }
         }}
       />
@@ -812,10 +855,10 @@ export function GameApp() {
         notice={loadNotice}
         headerAction={{
           label: `Play entire ${menu.countryName}`,
-          onClick: () => openRun("country", menu.countryId, menu.countryName),
+          onClick: () => openRun("country", menu.countryId, menu.countryName, difficultyChoice),
         }}
         onBack={() => setMenu({ kind: menu.from })}
-        onChoose={(region) => openRun("state", region.id, region.name)}
+        onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
       />
       {idleToast}
       </>
@@ -827,7 +870,9 @@ export function GameApp() {
     <Choose
       onState={() => setMenu({ kind: "states" })}
       onCountry={() => setMenu({ kind: "countries" })}
-      onGlobe={() => openRun("globe", "globe", "Globe")}
+      onGlobe={() => openRun("globe", "globe", "Globe", difficultyChoice)}
+      difficultyChoice={difficultyChoice}
+      onDifficultyChoice={setDifficultyChoice}
       notice={
         <>
           {idleNotice}
@@ -840,16 +885,27 @@ export function GameApp() {
   );
 }
 
+/** Kid-friendly hints for each difficulty band, shown under the picker. */
+const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
+  easy: "Famous places you'll probably know. A gentle start.",
+  medium: "A friendly mix — some you'll know, some will make you think.",
+  hard: "Deep cuts for geography whizzes. Bring your best guesses!",
+};
+
 function Choose({
   onState,
   onCountry,
   onGlobe,
   notice,
+  difficultyChoice,
+  onDifficultyChoice,
 }: {
   onState: () => void;
   onCountry: () => void;
   onGlobe: () => void;
   notice?: ReactNode;
+  difficultyChoice: PickerDifficulty;
+  onDifficultyChoice: (choice: PickerDifficulty) => void;
 }) {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
@@ -865,6 +921,44 @@ function Choose({
           adding up across editions until you choose to end the game, or if you&rsquo;re idle for
           2 minutes.
         </p>
+        <div className="mt-6">
+          <p id="difficulty-label" className="text-sm font-medium text-fg">
+            How tricky should the places be?
+          </p>
+          <div
+            role="group"
+            aria-labelledby="difficulty-label"
+            className="mt-2 inline-flex rounded-full border border-line bg-surface p-1"
+          >
+            {(
+              [
+                { value: "easy", label: "Easy" },
+                { value: "medium", label: "Medium" },
+                { value: "hard", label: "Hard" },
+              ] as const
+            ).map((option) => {
+              const selected = difficultyChoice === option.value;
+              return (
+                <button
+                  key={option.value}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => onDifficultyChoice(option.value)}
+                  className={
+                    selected
+                      ? "rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
+                      : "rounded-full px-5 py-2 text-sm font-medium text-muted hover:text-fg"
+                  }
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-sm text-muted" aria-live="polite">
+            {DIFFICULTY_HINTS[difficultyChoice]}
+          </p>
+        </div>
       </header>
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         <EditionCard
@@ -1426,8 +1520,11 @@ function PlayLoaded({
     // Fresh map instance for the replayed run (see mapKey above).
     setMapKey((k) => k + 1);
     const replayDateKey = trailDate();
+    // Play again replays under the SAME difficulty band the run started with:
+    // the pool is re-filtered from run.difficultyChoice — never silently
+    // widened back to the full catalog.
     const { poolIds: replayPoolIds, prevLastId: replayPrevLastId } = poolForRunStart(
-      places,
+      filterByTier(places ?? [], run.difficultyChoice),
       run.edition,
       run.regionId,
     );
@@ -1438,6 +1535,7 @@ function PlayLoaded({
         regionId: run.regionId,
         regionName: run.regionName,
         dateKey: replayDateKey,
+        difficultyChoice: run.difficultyChoice,
       },
       replayPoolIds,
       replayPrevLastId,

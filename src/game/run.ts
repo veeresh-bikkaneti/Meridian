@@ -1,9 +1,19 @@
 import { isHit } from "./radius.ts";
 import { SCORING_VERSION, type ScoredPlace } from "./scoring.ts";
+import { isPickerDifficulty, type PickerDifficulty } from "./tier-filter.ts";
 import { mintSeed } from "./trail.ts";
 
 export type Edition = "state" | "country" | "globe";
 export type RunPhase = "aim" | "story" | "done" | "summary";
+
+/**
+ * Backfill for runs saved before the difficulty picker: an absent or
+ * invalid stored choice reads as "medium" (the default band). Shared by
+ * startRun, resumeRun, and the sessionStorage reader so every path agrees.
+ */
+export function backfillDifficultyChoice(value: unknown): PickerDifficulty {
+  return isPickerDifficulty(value) ? value : "medium";
+}
 
 /** Per-place result accumulated for the endless-run summary. */
 export type PlaceResult = {
@@ -38,6 +48,12 @@ export type Run = {
   regionId: string;
   regionName: string;
   dateKey: string;
+  /**
+   * The difficulty band the player picked when this run started
+   * ("easy" | "medium" | "hard" — the picker choice, not the 1–5 per-place
+   * tier). Runs saved before the picker existed backfill to "medium".
+   */
+  difficultyChoice: PickerDifficulty;
   index: number;
   hits: number;
   phase: RunPhase;
@@ -76,6 +92,7 @@ export function startRun(
     regionId: string;
     regionName: string;
     dateKey: string;
+    difficultyChoice: PickerDifficulty;
   },
   poolIds: string[],
   prevLastId: string | null = null,
@@ -85,6 +102,7 @@ export function startRun(
     regionId: input.regionId,
     regionName: input.regionName,
     dateKey: input.dateKey,
+    difficultyChoice: backfillDifficultyChoice(input.difficultyChoice),
     index: 0,
     hits: 0,
     phase: "aim",
@@ -177,14 +195,16 @@ export function summarizeRun(run: Run): RunSummary {
 
 /**
  * Whether a saved run resumes into today's session: same edition, region,
- * and day, not parked on the summary screen (a summary must be dismissed
- * before reset, and must not auto-restore on page load), and scored with the
- * current scoring version — stored scores are never recomputed, so a version
- * bump retires old runs instead of mixing scoring systems.
+ * day, and difficulty choice; not parked on the summary screen (a summary
+ * must be dismissed before reset, and must not auto-restore on page load);
+ * and scored with the current scoring version — stored scores are never
+ * recomputed, so a version bump retires old runs instead of mixing scoring
+ * systems. A changed difficulty choice never resumes — switching bands
+ * starts a FRESH run (fresh seed, fresh no-repeat accounting).
  */
 export function isResumable(
   saved: Run | null,
-  today: { edition: Edition; regionId: string; dateKey: string },
+  today: { edition: Edition; regionId: string; dateKey: string; difficultyChoice: PickerDifficulty },
 ): saved is Run {
   return (
     !!saved &&
@@ -192,6 +212,7 @@ export function isResumable(
     saved.edition === today.edition &&
     saved.regionId === today.regionId &&
     saved.dateKey === today.dateKey &&
+    saved.difficultyChoice === today.difficultyChoice &&
     Array.isArray(saved.results) &&
     saved.results.every((r) => r.scoringVersion === SCORING_VERSION)
   );
@@ -199,7 +220,13 @@ export function isResumable(
 
 export function resumeRun(
   saved: Run | null,
-  today: { edition: Edition; regionId: string; regionName: string; dateKey: string },
+  today: {
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    dateKey: string;
+    difficultyChoice: PickerDifficulty;
+  },
   poolIds: string[] = [],
   prevLastId: string | null = null,
 ): Run {
@@ -223,6 +250,10 @@ export function resumeRun(
       // id (null disables the swap), preserving their exact deal order.
       prevLastId:
         typeof saved.prevLastId === "string" ? saved.prevLastId : null,
+      // Runs saved before the difficulty picker backfill to the default
+      // band. A mismatched choice can never reach here: isResumable fails
+      // first and startRun mints a fresh run instead.
+      difficultyChoice: backfillDifficultyChoice(saved.difficultyChoice),
     };
   }
   return startRun(today, poolIds, prevLastId);

@@ -195,3 +195,33 @@ test("negative or fractional streakBefore is sanitized", () => {
   assert.equal(scored.streak, 1);
   assert.equal(scored.combo, 1.05);
 });
+
+test("picker tiers flow through the real scorePlace path: tier 1 multiplies by 1, tier 5 by 2.5", () => {
+  // Same attempt, only the per-place difficulty differs — proving the
+  // already-wired game-app -> scorePlace path honors the tier multiplier.
+  const attempt = {
+    distanceKm: 120,
+    ring: "world" as const,
+    streakBefore: 5,
+    edition: "globe" as const,
+    regionId: "globe",
+    pin: NEAR_ORLEANS,
+    target: PARIS,
+  };
+  const tier1 = scorePlace({ ...attempt, difficulty: 1 });
+  const tier5 = scorePlace({ ...attempt, difficulty: 5 });
+  assert.equal(tier1.diffMult, 1);
+  assert.equal(tier5.diffMult, 2.5);
+  // Everything else is identical across the two attempts …
+  assert.equal(tier1.base, tier5.base);
+  assert.equal(tier1.combo, tier5.combo);
+  assert.equal(tier1.regionBonus, tier5.regionBonus);
+  // … so the wired multiplier carries through to the final score:
+  // min(400, round(97 × 2.5 × 1.3)) + 15 = 330.
+  assert.equal(
+    tier5.score,
+    Math.min(PLACE_SCORE_CAP, Math.round(tier1.base * 2.5 * tier1.combo)) + tier1.regionBonus,
+  );
+  assert.equal(tier5.score, 330);
+  assert.equal(tier1.score, 141);
+});
