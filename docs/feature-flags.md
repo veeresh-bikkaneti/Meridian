@@ -113,6 +113,7 @@ killed feature by a stale flags.json.
 
 ## Current catalog
 
-| Flag             | Default | Off behavior                                             |
-| ---------------- | ------- | -------------------------------------------------------- |
-| `pwaUpdateToast` | `true`  | Unregisters any live SW; no registration, no update toast |
+| Flag               | Default | Off behavior                                             |
+| ------------------ | ------- | -------------------------------------------------------- |
+| `pwaUpdateToast`   | `true`  | Unregisters any live SW; no registration, no update toast |
+| `learningOutcomes` | `false` | No learning records, no growth UI — today's app exactly |

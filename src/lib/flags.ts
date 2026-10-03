@@ -31,7 +31,7 @@
  */
 
 /** The flag catalog. Grow it by extending this union and `FLAG_DEFAULTS`. */
-export type FlagName = "pwaUpdateToast";
+export type FlagName = "pwaUpdateToast" | "learningOutcomes";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -42,6 +42,9 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // PWA service-worker registration + "Update available" toast.
   // true = today's behavior; false = plain web app (no SW, no toast).
   pwaUpdateToast: true,
+  // Learning-outcomes prototype (per-place learning records + growth UI).
+  // false = today's behavior: no records, no growth surfaces, no storage.
+  learningOutcomes: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;
