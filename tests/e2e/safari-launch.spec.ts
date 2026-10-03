@@ -116,6 +116,40 @@ test("starting a run lazy-loads the map chunk; pin drop + reveal work", async ({
   ).toBeVisible({ timeout: 20_000 });
 });
 
+test("chunk-load failure shows the retry card; Try again re-fetches the chunk and the map mounts", async ({
+  page,
+}) => {
+  // Fail the satellite-map chunk's first fetch: the lazy import rejects and
+  // the error boundary must show the retry card (never a blank page).
+  // Page-level routes take precedence over the context-level artifact
+  // server registered in beforeEach.
+  await page.route("**/satellite-map*.js", (route) => route.abort("failed"));
+  await page.goto(APP_URL_NO_IDLE);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  const alert = page.getByRole("alert");
+  await expect(alert).toContainText("Couldn't load the map.", {
+    timeout: 20_000,
+  });
+  // Focus moves to the alert so screen-reader and keyboard users land on
+  // the recovery UI instead of a silent blank.
+  await expect(alert).toBeFocused();
+
+  // Let the chunk load now. "Try again" must mint a FRESH lazy component:
+  // React.lazy caches the factory's rejected promise per component type, so
+  // retrying the SAME lazy() would throw the cached error without any
+  // network request and the card would reappear instantly. The map mounting
+  // below proves the import was actually re-attempted.
+  await page.unroute("**/satellite-map*.js");
+  await page.getByRole("button", { name: "Try again" }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 20_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible();
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+});
+
 test("?nosw=1 unregisters the SW, purges meridian-* caches, strips the param", async ({
   page,
 }) => {

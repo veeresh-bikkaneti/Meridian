@@ -32,11 +32,18 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
   - Boot JS: 2,574,296 B → 1,395,446 B (index 424 KB + routes 939 KB); maplibre +
     atlas payloads in separate `satellite-map-*.js` chunk (1.18 MB), zero maplibre
     in boot chunks (verified in built output)
-  - region-index.ts: deviation — kept sync; the whole module (incl. its static
-    atlas JSON imports) now ships in the lazy map chunk, so no atlas JSON is
-    fetched/parsed until the map chunk loads (first map use). Converting to
-    dynamic import() would have forced an async API through satellite-map's
-    sync init path + node tests; the chunk-level deferral achieves the goal.
+  - region-index.ts: deviation — kept sync; the module (incl. its static
+    atlas JSON imports) ships in the lazy map chunk. BUT the "no atlas JSON
+    is parsed until the map chunk loads" claim was WRONG: countries-50m
+    (~750 KB) is ALSO statically imported by src/game/territory.ts, which
+    rides the BOOT routes chunk via src/game/scoring.ts (verified in the
+    built artifact: countries-50m-*.js re-exports from routes-*.js, and the
+    routes chunk contains the topojson arcs). Only states-10m rides the lazy
+    satellite-map chunk. The territory feature() walk is lazy+memoized (runs
+    at the first pin drop, not boot), but the ~750 KB JSON.parse still runs
+    at module evaluation in the boot chunk — the largest remaining
+    import-time allocation, and a known residual risk under the jetsam
+    hypothesis (not a blocker: menu boot is still 1.40 MB vs 2.57 MB).
   - question-bubble/result-card/run-summary: NOT lazy-loaded (deliberate) —
     small, game-path-only, needed immediately when a run starts
 - [x] `?nosw` hatch: `scripts/nosw-hatch.mjs` (testable, 8 tests green) +
@@ -57,15 +64,45 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
 ## Pending (for coordinator)
 - [ ] Technical-architect review + tone/docs/a11y review
 - [ ] PR → merge per standing auth → live Pages verification (build id)
-- [ ] Field answers from Veeresh (iOS versions, private-tab test, ?nosw test post-ship)
+- [ ] ?nosw-hatch validation on a real iOS device post-ship (crew-side; per Veeresh's 2026-10-03 bar: no device census and no user-side troubleshooting required — field intel is not a gate)
 
 ## Pending
+- [x] Review-notes fix crew — DONE (all 8 items addressed, gates re-run):
+  - Blocker: "Try again" now mints a FRESH React.lazy per attempt
+    (`mapAttempt` state + useMemo in PlayLoaded; boundary takes `onRetry`);
+    false "remounting re-invokes the factory" comment removed. New E2E
+    retry-path test: abort the satellite-map chunk → error card + focus on
+    the alert → unblock → Try again → map mounts (proves the import is
+    actually re-attempted, which the old code could never do).
+  - `unregister()` now scoped to registrations whose scope is under the app
+    base (derived from the shell's own directory; BASE_URL="/Meridian/");
+    sibling projects on the shared origin untouched. Cache deletion was
+    already `meridian-*`-prefixed. Unit tests updated + extended.
+  - Plugin buildApp handler now FAILS Pages builds (`GITHUB_PAGES=1`) when
+    the shell is missing or the marker is absent (non-Pages builds keep the
+    non-fatal warn). New scripts/nosw-hatch-plugin.test.mjs (6 tests).
+  - A11y: error fallback focuses the `role="alert"` container
+    (`tabIndex={-1}`) on mount/update.
+  - `?nosw` operator note added to the scripts/nosw-hatch.mjs module
+    docstring (durable, ships with the code).
+  - Copy reworded per tone reviewer: "Your game is safe — the map just
+    didn't finish loading. Check your connection, then try again."
+    (accurate for both chunk-load failures and post-load render errors).
+  - Fail-open is loop-proof: ran-flag + post-strip check — if
+    history.replaceState threw, the hatch navigates to the stripped URL via
+    location.replace instead of reloading with `?nosw=1` intact. Unit-tested.
+  - Record corrected (see fix-crew progress above): countries-50m (~750 KB)
+    is hoisted into the BOOT routes chunk (scoring.ts → territory.ts static
+    JSON import); only states-10m rides the lazy chunk. The feature() walk
+    is deferred but the JSON.parse still runs at boot-chunk module
+    evaluation — largest remaining import-time allocation, known residual
+    jetsam risk, not a blocker.
 - [x] Fix implementation crew — DONE (commits 5774a33, e2465c9, 3ab442d, pushed). Boot JS 2,574,296 B → 1,395,446 B (−46%); satellite-map 1,180,740 B lazy chunk, zero maplibre in boot chunks; territory feature() lazy+memoized (156 ms import-time removed); ?nosw inline hatch verified in built _shell.html. Gates: tsc clean, 396/396 src + 308 script tests pass, lint-cards GATE PASSED, build:pages green, E2E 3/3 (menu boot under 1.8 MB ceiling, lazy map run, ?nosw purge+strip+boot).
 - [x] Tone/docs/a11y review — DONE: **PASS-WITH-NOTES**. Copy at Veeresh's bar ("Couldn't load the map / Your game is safe — only the map download failed"), "Your game is safe" verified accurate (sessionStorage restore). One should-fix: focus management on the error-boundary fallback (move focus to alert/Try-again on appearance). One nit: durable 3-line `?nosw` usage note for phone support. Nothing user-visible wrong with the hatch.
 - [x] Technical-architect review — DONE: **FAIL** — 1 blocker: "Try again" can't re-invoke the dynamic import (React.lazy caches the rejected promise per component type; retry re-renders the same lazy() → throws cached error). 2 should-fix: (a) `unregister()` is origin-wide — scope to app base; (b) plugin buildApp handler silently skips if TanStack changes hooks — add build-time assertion for Pages builds. Nits: countries-50m (~750KB) rides the BOOT chunk (record correction + residual jetsam risk), copy scoping, fail-open ran-flag. Verified independently: split is real in built artifact, hatch well-tested, deviations sound, zero new deps.
-- [ ] Review-notes fix crew (spawned) → re-run full gates
+- [x] Review-notes fix crew — DONE (all 8 items addressed; gates re-run green; committed as this revision)
 - [ ] Re-verify reviews' blockers cleared → PR → merge per standing auth → live Pages verification (build id)
-- [ ] Field answers from Veeresh (iOS versions, private-tab test, ?nosw test post-ship)
+- [ ] ?nosw-hatch validation on a real iOS device post-ship (crew-side; per Veeresh's 2026-10-03 bar: no device census and no user-side troubleshooting required — field intel is not a gate)
 
 ## Rules
 - Minimal launch fix only. Do NOT ship anything that strands users further.

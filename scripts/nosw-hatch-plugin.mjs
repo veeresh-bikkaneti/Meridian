@@ -21,6 +21,11 @@ import { renderNoswHatchScript } from "./nosw-hatch.mjs";
 const MARKER = "meridian-nosw-hatch";
 const SHELL = "_shell.html";
 
+/** True for the GitHub Pages production build (`npm run build:pages`). */
+function isPagesBuild() {
+  return process.env.GITHUB_PAGES === "1";
+}
+
 function inject(html) {
   if (html.includes(MARKER)) return html;
   const script = renderNoswHatchScript();
@@ -44,6 +49,39 @@ function patchShellFile(dir) {
     // rather than not shipping at all.
     console.warn("[meridian:nosw-hatch] injection skipped:", err);
     return false;
+  }
+}
+
+/** Does this out dir hold an emitted shell file at all? */
+function shellExists(dir) {
+  try {
+    return !!dir && existsSync(join(dir, SHELL));
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Fail closed on Pages builds: the hatch marker must be present in the
+ * emitted shell. A silent skip here (TanStack changes hook order, renames
+ * the shell, or the </head> anchor moves) would otherwise ship the P0 fix's
+ * escape hatch as a no-op. Non-Pages builds (dev/preview/Vercel) keep the
+ * old non-fatal behavior — the hatch is Pages-specific.
+ */
+function assertHatchPresent(dir) {
+  if (!isPagesBuild()) return;
+  let html = "";
+  try {
+    html = readFileSync(join(dir, SHELL), "utf8");
+  } catch {
+    /* fall through to the throw below */
+  }
+  if (!html.includes(MARKER)) {
+    throw new Error(
+      "[meridian:nosw-hatch] marker absent from the emitted _shell.html — " +
+        "the ?nosw escape hatch did not land in the Pages build; refusing " +
+        "to ship the artifact without it.",
+    );
   }
 }
 
@@ -94,7 +132,20 @@ export function noswHatchPlugin() {
       order: "post",
       async handler() {
         for (const dir of outDirs) {
-          if (patchShellFile(dir)) return;
+          patchShellFile(dir); // idempotent; no-op when absent or already patched
+          if (shellExists(dir)) {
+            // The shell was emitted: the hatch must be in it (Pages builds
+            // fail the build outright rather than shipping without the hatch).
+            assertHatchPresent(dir);
+            return;
+          }
+        }
+        if (isPagesBuild()) {
+          throw new Error(
+            "[meridian:nosw-hatch] _shell.html not found post-build — the " +
+              "?nosw escape hatch has nowhere to land; refusing to ship the " +
+              "Pages artifact without it.",
+          );
         }
         console.warn("[meridian:nosw-hatch] _shell.html not found post-build");
       },

@@ -46,21 +46,39 @@ test("stripNoswParam removes the param and keeps everything else", () => {
   );
 });
 
-/** Minimal fake browser host for the orchestration harness. */
-function fakeHost({ search = "?nosw=1", regs = 2, cacheKeys = ["meridian-v1", "other", "meridian-assets"] } = {}) {
+/**
+ * Minimal fake browser host for the orchestration harness. `regScopes`
+ * overrides the scopes of the fake registrations (null entries simulate a
+ * registration without a scope, which must be left alone).
+ */
+function fakeHost({
+  search = "?nosw=1",
+  regs = 2,
+  regScopes = null,
+  cacheKeys = ["meridian-v1", "other", "meridian-assets"],
+} = {}) {
   const calls = {
     unregistered: 0,
+    unregisteredScopes: [],
     deletedCaches: [],
     replaceState: [],
+    replaced: [],
     reloads: 0,
     stored: {},
   };
+  const scopes =
+    regScopes ??
+    Array.from({ length: regs }, () => "https://x.test/Meridian/");
   const host = {
     location: {
       search,
+      pathname: "/Meridian/",
       href: `https://x.test/Meridian/${search}`,
       reload() {
         calls.reloads += 1;
+      },
+      replace(url) {
+        calls.replaced.push(url);
       },
     },
     history: {
@@ -72,9 +90,11 @@ function fakeHost({ search = "?nosw=1", regs = 2, cacheKeys = ["meridian-v1", "o
       serviceWorker: {
         getRegistrations() {
           return Promise.resolve(
-            Array.from({ length: regs }, () => ({
+            scopes.map((scope) => ({
+              scope,
               unregister() {
                 calls.unregistered += 1;
+                calls.unregisteredScopes.push(scope);
                 return Promise.resolve(true);
               },
             })),
@@ -121,10 +141,36 @@ test("hatch unregisters SWs, deletes meridian-* caches, strips param, reloads on
   assert.deepEqual(calls.deletedCaches, ["meridian-v1", "meridian-assets"]);
   assert.deepEqual(calls.replaceState, ["/Meridian/"]);
   assert.equal(calls.reloads, 1);
+  assert.deepEqual(calls.replaced, []);
   const marker = JSON.parse(calls.stored["meridian.noswHatch"]);
   assert.equal(marker.ran, true);
   assert.equal(marker.swUnregistered, 2);
   assert.deepEqual(marker.cachesDeleted, ["meridian-v1", "meridian-assets"]);
+});
+
+test("hatch only unregisters registrations scoped under the app base", async () => {
+  const { host, calls } = fakeHost({
+    regScopes: [
+      "https://x.test/Meridian/", // ours — unregistered
+      "https://x.test/Meridian/sw.js", // file URL under our base — unregistered
+      "https://x.test/other/", // sibling project — left alone
+      "https://x.test/", // origin root — left alone
+      null, // no scope — left alone (defensive)
+    ],
+  });
+  noswHatchMain(isNoswRequest, stripNoswParam, host);
+  await flush();
+  await flush();
+  assert.equal(calls.unregistered, 2);
+  assert.deepEqual(calls.unregisteredScopes, [
+    "https://x.test/Meridian/",
+    "https://x.test/Meridian/sw.js",
+  ]);
+  const marker = JSON.parse(calls.stored["meridian.noswHatch"]);
+  assert.equal(marker.swUnregistered, 2);
+  // The page still strips the param and reloads exactly once.
+  assert.deepEqual(calls.replaceState, ["/Meridian/"]);
+  assert.equal(calls.reloads, 1);
 });
 
 test("hatch is inert without the param", async () => {
@@ -135,6 +181,7 @@ test("hatch is inert without the param", async () => {
   assert.deepEqual(calls.deletedCaches, []);
   assert.deepEqual(calls.replaceState, []);
   assert.equal(calls.reloads, 0);
+  assert.deepEqual(calls.replaced, []);
 });
 
 test("hatch degrades when service workers are unsupported", async () => {
@@ -174,6 +221,42 @@ test("stalled cleanup still reloads via the backstop timer", async () => {
   calls.timer();
   assert.equal(calls.reloads, 1);
   assert.deepEqual(calls.replaceState, ["/Meridian/"]);
+});
+
+test("replaceState failure cannot cause a reload loop: navigates to the stripped URL once", async () => {
+  const { host, calls } = fakeHost();
+  host.history.replaceState = () => {
+    throw new Error("replaceState blocked");
+  };
+  noswHatchMain(isNoswRequest, stripNoswParam, host);
+  await flush();
+  await flush();
+  // replaceState threw, so the param is still in the URL: the hatch must
+  // NOT bare-reload (that would re-run the hatch forever). It navigates to
+  // the stripped URL instead — exactly once.
+  assert.deepEqual(calls.replaced, ["/Meridian/"]);
+  assert.equal(calls.reloads, 0);
+  assert.deepEqual(calls.replaceState, []);
+});
+
+test("replaceState failure + stalled cleanup: backstop navigates once, never loops", async () => {
+  const { host, calls } = fakeHost();
+  host.history.replaceState = () => {
+    throw new Error("replaceState blocked");
+  };
+  host.navigator.serviceWorker.getRegistrations = () => new Promise(() => {});
+  noswHatchMain(isNoswRequest, stripNoswParam, host);
+  await flush();
+  assert.deepEqual(calls.replaced, [], "no navigation before the backstop fires");
+  assert.equal(calls.reloads, 0);
+  calls.timer();
+  assert.deepEqual(calls.replaced, ["/Meridian/"]);
+  assert.equal(calls.reloads, 0);
+  // The ran-flag holds even if the backstop fires again: one navigation
+  // per hatch run, never a loop.
+  calls.timer();
+  assert.deepEqual(calls.replaced, ["/Meridian/"]);
+  assert.equal(calls.reloads, 0);
 });
 
 test("renderNoswHatchScript emits a single self-contained inline script", () => {

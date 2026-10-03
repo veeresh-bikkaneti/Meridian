@@ -9,12 +9,21 @@
  * bundle code.
  *
  * Behavior: when `location.search` contains `nosw=1`, unregister every
- * service-worker registration, delete every `meridian-*` cache, strip the
- * param with history.replaceState, record what was cleaned in
- * sessionStorage (`meridian.noswHatch`, so the cleanup is observable and
- * E2E-verifiable even though the app re-registers its worker on the clean
- * reload), then reload exactly once. Everything is guarded: any throw
- * anywhere fails open to "strip the param and reload anyway".
+ * service-worker registration scoped under this app's base (NOT the whole
+ * origin — sibling projects share veeresh-bikkaneti.github.io), delete
+ * every `meridian-*` cache, strip the param with history.replaceState,
+ * record what was cleaned in sessionStorage (`meridian.noswHatch`, so the
+ * cleanup is observable and E2E-verifiable even though the app re-registers
+ * its worker on the clean reload), then reload exactly once. Everything is
+ * guarded: any throw anywhere fails open to "strip the param and reload
+ * anyway", and the strip is loop-proof — if replaceState threw, the hatch
+ * navigates to the stripped URL instead of reloading with `?nosw=1` intact
+ * (which would re-run the hatch forever).
+ *
+ * Operator note (phone support): to clear a stuck client, send the user a
+ * link ending in `?nosw=1`; it unregisters Meridian-scoped SWs, purges
+ * `meridian-*` caches, strips the param, reloads once, and records
+ * `sessionStorage['meridian.noswHatch']`.
  *
  * The logic is written against an injected `host` (location/history/
  * navigator/caches/sessionStorage/setTimeout) so node --test can exercise
@@ -48,8 +57,34 @@ export function noswHatchMain(isNoswRequestFn, stripNoswParamFn, host) {  var lo
     if (!isNoswRequestFn(loc.search)) return;
 
     var finished = false;
+    var reloaded = false;
+    var paramStripped = false;
     var swUnregistered = 0;
     var cachesDeleted = [];
+
+    // The app registers its worker with scope = BASE_URL (see src/lib/pwa.ts);
+    // the shell's own directory is that base. Only registrations scoped
+    // under it are ours — getRegistrations() is origin-wide, and sibling
+    // projects share this origin on GitHub Pages.
+    var basePath = (loc.pathname || "/").replace(/[^/]*$/, "") || "/";
+
+    function scopePathOf(reg) {
+      var scope = reg && reg.scope;
+      if (typeof scope !== "string" || scope === "") return null;
+      try {
+        return new URL(scope, loc.href).pathname;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function underAppBase(reg) {
+      var scopePath = scopePathOf(reg);
+      if (scopePath === null) return false;
+      return (
+        scopePath.indexOf(basePath) === 0 || scopePath + "/" === basePath
+      );
+    }
 
     function record(result) {
       try {
@@ -59,31 +94,50 @@ export function noswHatchMain(isNoswRequestFn, stripNoswParamFn, host) {  var lo
       }
     }
 
-    // Fail-open: strip the param and reload even if cleanup throws.
-    function failOpen() {
+    function stripParam() {
       try {
         hist.replaceState(null, "", stripNoswParamFn(loc.href));
+        paramStripped = true;
       } catch (e) {
-        /* reload anyway below */
+        /* reloadOnce() below navigates to the stripped URL instead */
+      }
+    }
+
+    // Airtight fail-open: at most one navigation, and it can never carry
+    // ?nosw=1. If replaceState threw, a bare reload() would fire with the
+    // param intact and the hatch would re-run forever — navigate to the
+    // stripped URL instead, where the param is gone by construction.
+    function reloadOnce() {
+      if (reloaded) return;
+      reloaded = true;
+      if (!paramStripped && isNoswRequestFn(loc.search)) {
+        try {
+          loc.replace(stripNoswParamFn(loc.href));
+          return;
+        } catch (e) {
+          /* fall through: reload anyway rather than strand the page */
+        }
       }
       loc.reload();
+    }
+
+    // Fail-open: strip the param and reload even if cleanup throws.
+    function failOpen() {
+      stripParam();
+      reloadOnce();
     }
 
     function finish() {
       if (finished) return;
       finished = true;
-      try {
-        hist.replaceState(null, "", stripNoswParamFn(loc.href));
-      } catch (e) {
-        /* fail-open: reload anyway */
-      }
+      stripParam();
       record({
         ran: true,
         at: Date.now(),
         swUnregistered: swUnregistered,
         cachesDeleted: cachesDeleted,
       });
-      loc.reload();
+      reloadOnce();
     }
 
     var nav = host.navigator;
@@ -96,14 +150,16 @@ export function noswHatchMain(isNoswRequestFn, stripNoswParamFn, host) {  var lo
             .getRegistrations()
             .then(function (regs) {
               return Promise.all(
-                regs.map(function (reg) {
-                  return reg
-                    .unregister()
-                    .then(function (ok) {
-                      if (ok) swUnregistered += 1;
-                    })
-                    .catch(function () {});
-                }),
+                regs
+                  .filter(underAppBase)
+                  .map(function (reg) {
+                    return reg
+                      .unregister()
+                      .then(function (ok) {
+                        if (ok) swUnregistered += 1;
+                      })
+                      .catch(function () {});
+                  }),
               );
             })
             .catch(function () {}),
@@ -153,12 +209,17 @@ export function noswHatchMain(isNoswRequestFn, stripNoswParamFn, host) {  var lo
     );
   } catch (e) {
     // Fail-open for anything unexpected above (e.g. host.location missing).
+    // Strip via navigation rather than replaceState+reload: replaceState may
+    // be the thing that threw, and a reload with ?nosw=1 intact would loop.
     try {
-      host.history.replaceState(null, "", stripNoswParamFn(host.location.href));
+      host.location.replace(stripNoswParamFn(host.location.href));
     } catch (e2) {
-      /* reload anyway */
+      try {
+        host.location.reload();
+      } catch (e3) {
+        /* nothing left to try */
+      }
     }
-    host.location.reload();
   }
 }
 
