@@ -68,10 +68,13 @@ no background polling. Skipping `registerServiceWorker()` alone would leave
 an already-active SW controlling the page, which is not a kill-switch.
 
 One irony to keep in mind: the deploy that flips the PWA kill-switch itself
-ships a new SW version, and the clients it is meant to quiet can no longer
-be told via the toast. They pick the new version up anyway: navigation
-requests are network-first, so the next load installs and activates the new
-worker (which then finds the flag off and stays quiet) — no toast required.
+ships a new SW version, which then sits *waiting* — the normal activation
+path is the update toast, the exact thing the kill-switch kills. No toast is
+required anyway: clients don't need the new worker to learn the kill
+decision. The active old worker passes `flags.json` through to the network
+(the new network-first rule does the same once it activates), so the remote
+off reaches them whenever they're online — the next boot finds the flag off,
+unregisters the live SW, and stays quiet.
 
 Fail-closed everywhere else, too: unknown flag names and non-boolean values
 in the remote payload are ignored, and any fetch failure (timeout, network
