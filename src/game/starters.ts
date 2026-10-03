@@ -39,6 +39,15 @@ export type Starter = {
    * lose subdivision-level disambiguation after re-tagging.
    */
   originRegionId?: string;
+  /**
+   * ISO-3166-1 alpha-2 country code. Always present on generated places
+   * (threaded from the chunk record by toStarter); present on the curated
+   * globe starters, whose regionId is the literal "globe" and therefore
+   * can't resolve a country via the regions table. Absent on other curated
+   * starters, whose country resolves via regionId (see countryNameForRegionId
+   * in question-label.ts).
+   */
+  iso2?: string;
 };
 
 function place(
@@ -51,6 +60,13 @@ function place(
   story: string,
   wiki: string,
   difficulty: Difficulty,
+  /**
+   * ISO-3166-1 alpha-2 country code. Only the curated globe starters carry
+   * one: their regionId is the literal "globe", so the label builder can't
+   * resolve a country from the regions table (country/state starters
+   * resolve via regionId instead).
+   */
+  iso2?: string,
 ): Starter {
   return {
     id: `${regionId}-${slug}`,
@@ -64,6 +80,7 @@ function place(
     sourceHref: `https://en.wikipedia.org/wiki/${wiki}`,
     difficulty,
     curated: true,
+    ...(iso2 ? { iso2 } : {}),
   };
 }
 
@@ -3543,6 +3560,7 @@ export const STARTERS: Starter[] = [
     "Three stone pyramids sit on the desert edge of Cairo. They were already old when the city around them was young.",
     "Giza_pyramid_complex",
     1,
+    "EG",
   ),
   place(
     "globe",
@@ -3554,6 +3572,7 @@ export const STARTERS: Starter[] = [
     "A sandstone monolith stands in the middle of Australia. The rock is older than the dunes around its base.",
     "Uluru",
     1,
+    "AU",
   ),
   place(
     "globe",
@@ -3565,6 +3584,7 @@ export const STARTERS: Starter[] = [
     "Stone terraces and temples cling to a ridge above the Urubamba River. The Inca estate was left behind and stayed out of Spanish records.",
     "Machu_Picchu",
     1,
+    "PE",
   ),
   place(
     "globe",
@@ -3576,6 +3596,7 @@ export const STARTERS: Starter[] = [
     "Facades cut into rose sandstone line a hidden valley in southern Jordan. The treasury appears suddenly at the end of a narrow slot canyon.",
     "Petra",
     1,
+    "JO",
   ),
   place(
     "globe",
@@ -3587,6 +3608,7 @@ export const STARTERS: Starter[] = [
     "A temple mountain of galleries and towers rises inside a wide moat. Bas-reliefs along the walls tell episodes from Hindu epic poems.",
     "Angkor_Wat",
     1,
+    "KH",
   ),
   place(
     "globe",
@@ -3598,6 +3620,9 @@ export const STARTERS: Starter[] = [
     "Mount Everest is the highest point on Earth, on the Nepal-China border. Routes approach from both sides, and the summit is a narrow crest of snow and rock.",
     "Mount_Everest",
     1,
+    // The card's own story places the summit on the Nepal-China border;
+    // NP is the conventional single-country attribution (south-side routes).
+    "NP",
   ),
   place(
     "globe",
@@ -3609,6 +3634,9 @@ export const STARTERS: Starter[] = [
     "The Zambezi drops into a narrow gorge in one broad sheet of water. Spray rises high enough that the falls can be spotted from far off in the wet season.",
     "Victoria_Falls",
     1,
+    // Curated coordinates (25.858, -17.924) are the Zimbabwe-side town;
+    // the falls themselves straddle the Zambia-Zimbabwe border.
+    "ZW",
   ),
   place(
     "globe",
@@ -3620,6 +3648,7 @@ export const STARTERS: Starter[] = [
     "Fifteen moai stand in a row on a stone platform at Ahu Tongariki. The statues were toppled and later raised again on the largest ceremonial site of Rapa Nui.",
     "Ahu_Tongariki",
     2,
+    "CL",
   ),
   place(
     "globe",
@@ -3631,6 +3660,7 @@ export const STARTERS: Starter[] = [
     "Whitewashed rooms stack down a cliff on the rim of a flooded caldera. Sunset at Oia looks across the water toward the other islands of the group.",
     "Oia,_Greece",
     2,
+    "GR",
   ),
   place(
     "globe",
@@ -3642,6 +3672,7 @@ export const STARTERS: Starter[] = [
     "Puerto Ayora is the main town on Santa Cruz in the Galapagos. The research station nearby still cares for giant tortoises from several islands.",
     "Puerto_Ayora",
     5,
+    "EC",
   ),
   place(
     "globe",
@@ -3653,6 +3684,7 @@ export const STARTERS: Starter[] = [
     "Wildebeest cross the grass plains of the Serengeti in a yearly circuit. The ecosystem runs from wooded hills to the open short-grass sea without a hard edge.",
     "Serengeti",
     1,
+    "TZ",
   ),
   place(
     "globe",
@@ -3664,5 +3696,6 @@ export const STARTERS: Starter[] = [
     "A broad glacial river drops in two steps into a canyon at Gullfoss. Spray soaks the overlook when the wind blows back up the gorge.",
     "Gullfoss",
     3,
+    "IS",
   ),
 ];

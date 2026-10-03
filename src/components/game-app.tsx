@@ -38,6 +38,11 @@ import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import {
+  buildCollisionCounts,
+  buildQuestionLabel,
+  hasNameCollision,
+} from "@/game/question-label";
+import {
   REVEAL_WATCHDOG_MS,
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
@@ -1090,6 +1095,14 @@ function PlayLoaded({
     // than an empty pool.
     return filtered.length > 0 ? filtered : places;
   }, [places, run.poolIds]);
+  // Question disambiguation: same-name/same-country collision counts over
+  // the dealt pool, built once per pool (O(n)). Globe edition only — the
+  // whole pool is one country in country edition, and state edition shows
+  // the bare name.
+  const collisionCounts = useMemo(
+    () => (run.edition === "globe" ? buildCollisionCounts(pool) : null),
+    [pool, run.edition],
+  );
   // Endless dealer: per-session shuffle (fresh seed per run, so restarts no
   // longer deterministically repeat the same first question), per-cycle
   // reseed, and a persistent no-repeat history in localStorage. The dealer
@@ -1109,6 +1122,25 @@ function PlayLoaded({
     [pool, run.seed, run.dateKey, run.edition, run.regionId, run.prevLastId],
   );
   const place = dealer.at(run.index);
+  // The qualified question label ("Manhattan, Nebraska, United States" in
+  // globe; "Manhattan, Nebraska" in country; bare name in state). Computed
+  // once per place and shared by the question bubble and the result card so
+  // what you were asked matches what you're shown. Fail-closed inside
+  // buildQuestionLabel: unresolvable parents fall back to the bare name.
+  const questionLabel = useMemo(
+    () =>
+      place
+        ? buildQuestionLabel({
+            edition: run.edition,
+            place,
+            countryRegionId: run.edition === "country" ? run.regionId : null,
+            hasCollision: collisionCounts
+              ? hasNameCollision(place, collisionCounts)
+              : false,
+          })
+        : "",
+    [place, run.edition, run.regionId, collisionCounts],
+  );
   // Record dealt places into the no-repeat history as the run advances.
   useEffect(() => {
     dealer.markDealtThrough(run.index);
@@ -1505,9 +1537,9 @@ function PlayLoaded({
       </div>
       <p className="sr-only" aria-live="polite">
         {run.phase === "aim"
-          ? (aimAnnouncement ?? (place ? `Find ${place.name}.` : null))
+          ? (aimAnnouncement ?? (place ? `Find ${questionLabel}.` : null))
           : run.phase === "story" && place && revealDone
-            ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
+            ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${questionLabel}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
             : run.phase === "story" && place
               ? "Showing the answer."
               : run.phase === "summary" && summary
@@ -1515,13 +1547,13 @@ function PlayLoaded({
                     .map((b) => `${EDITION_LABELS[b.edition]} ${b.score.toLocaleString("en-US")}`)
                     .join(", ")}. Average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
                 : place
-                  ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${place.name} missed.`
+                  ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${questionLabel} missed.`
                   : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
         <QuestionBubble
           regionName={run.regionName}
-          placeName={place.name}
+          placeName={questionLabel}
           difficulty={place.difficulty}
           hasPin={aim !== null}
           view={bubble}
@@ -1532,6 +1564,7 @@ function PlayLoaded({
         <ResultCard
           run={run}
           place={place}
+          placeLabel={questionLabel}
           drop={drop}
           story={story}
           empty={places.length === 0}

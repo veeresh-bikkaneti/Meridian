@@ -113,6 +113,10 @@ export default defineConfig({
       name: "pwa",
       testMatch: /pwa\.spec\.ts/,
     },
+    {
+      name: "question-labels",
+      testMatch: /question-labels\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
