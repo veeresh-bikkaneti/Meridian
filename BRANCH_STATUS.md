@@ -7,7 +7,7 @@ Make learning real, measurable, and visible in Meridian — per Veeresh's standi
 
 ## Plan
 - [x] Worktree + branch `feat/learning-outcomes` from origin/main; node_modules symlinked (never npm install); AGENTS.md read
-- [ ] Phase 1 — design doc `docs/learning-outcomes.md`: metrics, mastery rule, per-place learning record model, player-facing growth concept. Judgment calls marked for Veeresh.
+- [x] Phase 1 — design doc `docs/learning-outcomes.md`: metrics, mastery rule, per-place learning record model, player-facing growth concept. Judgment calls marked for Veeresh. (2026-10-03)
 - [ ] Phase 2 — prototype behind `learningOutcomes` feature flag: instrument answer events, client-side-only (localStorage) per-place records, mastery computation, minimal growth surface, kid-friendly copy.
 - [ ] Gates: unit → typecheck → build → tech-arch review → tone/docs/a11y review → E2E → PR → merge → live verify.
 
