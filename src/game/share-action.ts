@@ -36,7 +36,10 @@ export async function shareScore(input: {
       // A dismissed share sheet throws AbortError — the user changed their
       // mind, so surface nothing. Any other failure (not supported for the
       // payload, secure-context issue, …) falls through to the clipboard.
-      if (err instanceof DOMException && err.name === "AbortError") {
+      // Name-only check (no DOMException gating): polyfills and embedded
+      // webviews may reject with a plain Error named AbortError rather than
+      // a DOMException, and both must stay silent.
+      if ((err as { name?: string } | null)?.name === "AbortError") {
         return "cancelled";
       }
     }

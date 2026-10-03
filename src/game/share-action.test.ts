@@ -74,6 +74,36 @@ describe("shareScore — Web Share path", () => {
     assert.equal(clipboardCalled, false, "no auto-copy after a user-initiated cancel");
   });
 
+  it("a plain-Error AbortError (non-DOMException, e.g. polyfill/embedded webview) reports cancelled and stays quiet", async () => {
+    let clipboardCalled = false;
+    const err = new Error("user dismissed");
+    err.name = "AbortError";
+    assert.ok(!(err instanceof DOMException), "test setup: must be a plain Error");
+    setNavigator({
+      share: async () => {
+        throw err;
+      },
+      clipboard: {
+        writeText: async () => {
+          clipboardCalled = true;
+        },
+      },
+    });
+    const outcome = await shareScore({ title: "t", text: "x", url: SHARE_URL });
+    assert.equal(outcome, "cancelled");
+    assert.equal(clipboardCalled, false, "no auto-copy after a user-initiated cancel");
+  });
+
+  it("an entirely undefined navigator (SSR guard path) reports failed", async () => {
+    Object.defineProperty(globalThis, "navigator", {
+      value: undefined,
+      configurable: true,
+      writable: true,
+    });
+    const outcome = await shareScore({ title: "t", text: "the text", url: SHARE_URL });
+    assert.equal(outcome, "failed");
+  });
+
   it("a non-abort share failure falls through to the clipboard", async () => {
     const written: string[] = [];
     setNavigator({

@@ -25,11 +25,17 @@ native share sheet where available, clipboard fallback elsewhere. Per-place
       "Play again"; `dateKey` threaded from `run.dateKey` via `game-app.tsx`
 - [x] Per-place "Copy result" upgraded to "Share result" (`result-card.tsx`)
       via the same helper; keeps the preview `<pre>` and emoji strip
-- [x] Unit tests (`src/game/share-action.test.ts`, 9 tests): exact share
-      payload / AbortError-cancelled / non-abort-fallback / clipboard
-      fallback / clipboard-failure → failed / session payload contract
-      (URL present, no strip, no distances, no place names)
-- [x] All quality gates green: `npx tsc --noEmit` clean, `npm test` 383/383
+- [x] Unit tests (`src/game/share-action.test.ts`, 11 tests): exact share
+      payload / AbortError-cancelled / plain-Error-AbortError-cancelled (no
+      DOMException gating, clipboard never touched) / navigator-undefined
+      SSR guard → failed / non-abort-fallback / clipboard fallback /
+      clipboard-failure → failed / session payload contract (URL present, no
+      strip, no distances, no place names)
+- [x] Review findings applied: name-only AbortError check, pending guard on
+      double-click in ShareButton, direction-neutral failure message ("Copy
+      the text from the preview." — correct whether the preview is above or
+      below), BRANCH_STATUS a11y note and README share-delivery sentence
+- [x] All quality gates green: `npx tsc --noEmit` clean, `npm test` 385/385
       (27 suites), `node scripts/lint-cards.mjs` GATE PASSED,
       `npm run build:pages` green
 
@@ -42,5 +48,5 @@ native share sheet where available, clipboard fallback elsewhere. Per-place
 - Do NOT change the `shareText()` format itself — reuse it exactly.
 - `navigator.share` needs a user gesture (button click) and HTTPS; guard with
   `typeof navigator.share === "function"`.
-- A11y: accessible button label, focus-visible styling, "Copied" announced via
-  live region.
+- A11y: accessible button label, focus-visible styling, "Shared ✓"/"Copied ✓"
+  announced via live region.

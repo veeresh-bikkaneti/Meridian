@@ -47,6 +47,8 @@ https://veeresh-bikkaneti.github.io/Meridian/
 1,240 over 14 places · 89 avg/place · 🔥 3 best streak · Nebraska
 ```
 
+Sharing uses the device's native share sheet where available and falls back to the clipboard otherwise; the end-game summary screen shares session totals instead of the trail.
+
 ## Where the stories come from
 
 Story cards are built by pipelines, not written by hand at play time. Two are in flight:
