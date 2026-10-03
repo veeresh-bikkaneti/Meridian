@@ -31,6 +31,7 @@ import {
 import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
+import { resolveRunPool } from "@/game/pool";
 import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
 import { Compass } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
@@ -1181,14 +1182,13 @@ function PlayLoaded({
 }) {
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
-  // rebuilds the identical pool (not a reshuffled smaller one).
-  const pool = useMemo(() => {
-    const ids = new Set(run.poolIds);
-    const filtered = places.filter((p) => ids.has(p.id));
-    // Legacy runs (or a tampered pool): fall back to the full catalog rather
-    // than an empty pool.
-    return filtered.length > 0 ? filtered : places;
-  }, [places, run.poolIds]);
+  // rebuilds the identical pool (not a reshuffled smaller one). An empty
+  // band stays empty — resolveRunPool only widens to the full catalog for
+  // legacy/tampered pools, never for a deliberately empty band.
+  const pool = useMemo(
+    () => resolveRunPool(places, run.poolIds),
+    [places, run.poolIds],
+  );
   // Question disambiguation: same-name/same-country collision counts over
   // the dealt pool, built once per pool (O(n)). Globe edition only — the
   // whole pool is one country in country edition, and state edition shows
@@ -1657,6 +1657,17 @@ function PlayLoaded({
           view={bubble}
           onViewChange={setBubble}
         />
+      ) : run.phase === "aim" && pool.length === 0 ? (
+        <div
+          data-testid="empty-band"
+          className="pointer-events-auto absolute inset-x-3 top-16 z-30 mx-auto max-w-md rounded-xl border border-line bg-surface p-5 text-center shadow-lg"
+        >
+          <p className="text-sm tracking-wide text-muted uppercase">No places on this path</p>
+          <p className="mt-2 text-lg text-fg">
+            This learning path has no places here yet. Try a different path &mdash; or a
+            different edition &mdash; to keep exploring.
+          </p>
+        </div>
       ) : null}
       {run.phase !== "aim" && run.phase !== "summary" && revealDone ? (
         <ResultCard

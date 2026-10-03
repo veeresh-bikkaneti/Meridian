@@ -456,6 +456,10 @@ export function tierFor(pop, fcode) {
   else if (pop >= 25000 || fcode === "PPLA") tier = 2;
   else if (pop >= 6000) tier = 3;
   else if (pop >= 2500) tier = 4;
+  // Editorial edge, conscious call: pop = 0 or missing lands in tier 5.
+  // Absent population is a data gap, not proof of obscurity — but tiering
+  // it Hard (rather than guessing famous) is the fail-closed choice: a
+  // place with no population signal should never deal as Easy.
   else tier = 5;
   if (fcode === "PPLX") tier = Math.max(tier, 3);
   return tier;
@@ -594,6 +598,14 @@ export const PRESERVED_EXTRA_KEYS = ["fact", "history", "wiki"];
  * Apply carry-forward: for every rebuilt record whose id exists in the
  * previous chunks, copy preserved extra keys the fresh record lacks.
  * Mutates `records` in place.
+ *
+ * Pairing invariant: `history` is the verbatim extract of the `wiki`
+ * article — they must travel as a unit. Never ship a history without its
+ * wiki attribution slug, and never ship a wiki slug without its extract;
+ * the build-time gate (scripts/check-generated-places.mjs) fails the
+ * dataset on either unpaired direction. The fresh build writes them
+ * together (notable notes, enrichment merge), and this carry-forward keeps
+ * them together.
  */
 export function applyPreservedExtras(records, prevById) {
   for (const p of records) {
@@ -768,6 +780,11 @@ async function main() {
     });
     const composed = composeCardStory({ history: notable?.note, blurb: geoBlurb });
     const hookMissing = composed.hookMissing;
+    // hookMissing is the enrichment pipeline's hook-candidate marker:
+    // scripts/enrich-wikipedia.mjs clears it when it writes a hook, and
+    // scripts/card-compose.mjs documents it. It MUST survive dataset
+    // rebuilds — stripping it here would sabotage the Wikipedia merge by
+    // hiding which records still need a hook. KEEP.
     const place = {
       id, name, lon, lat,
       blurb: geoBlurb,
@@ -866,8 +883,20 @@ async function main() {
     totalBytes += bytes;
     manifestRegions[regionId] = { edition, count, bytes };
   }
+  // Read-merge-write: the fresh build sets its fixed key set, but any
+  // meta keys the build doesn't set are carried forward from the previous
+  // manifest — a rebuild must never silently drop enrichment metadata
+  // (e.g. the Wikipedia merge's `enrichment` block). Fresh keys win.
+  const manifestPath = join(dirname(OUT_DIR), "manifest.json");
+  let prevMeta = {};
+  try {
+    prevMeta = JSON.parse(readFileSync(manifestPath, "utf8")).meta ?? {};
+  } catch {
+    // First build: no previous manifest to carry forward from.
+  }
   const manifest = {
     meta: {
+      ...prevMeta,
       source: "GeoNames (CC-BY 4.0) — attribution required (see integration step)",
       generated,
       script: "scripts/build-geonames-dataset.mjs",
@@ -896,7 +925,7 @@ async function main() {
     },
     regions: manifestRegions,
   };
-  writeFileSync(join(dirname(OUT_DIR), "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
+  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 
   // --- report
   const mins = ((Date.now() - t0) / 60000).toFixed(1);

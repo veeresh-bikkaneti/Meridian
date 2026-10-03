@@ -36,6 +36,7 @@
 import type { Edition } from "./run.ts";
 import { STARTERS, type Starter } from "./starters.ts";
 import { buildRegionPool } from "./pool.ts";
+import { asFameTier } from "./tier-filter.ts";
 import { ADMIN1_BY_COUNTRY } from "./regions.ts";
 import type { Difficulty } from "./scoring.ts";
 // Import attribute: required by Node's module loader (unit tests run under
@@ -153,10 +154,9 @@ function toStarter(
 ): Starter {
   // Difficulty: prefer the pipeline-stamped tier when it is a valid integer
   // 1–5. Anything else — missing on legacy chunks, hand-edited, or corrupt
-  // — falls back to medium (3) so the v3 multiplier stays neutral.
-  const d = place.difficulty;
-  const difficulty: Difficulty =
-    Number.isInteger(d) && (d as number) >= 1 && (d as number) <= 5 ? (d as Difficulty) : 3;
+  // — falls back to medium (3) so the v3 multiplier stays neutral. The
+  // guard lives in tier-filter.ts (asFameTier): one field, one semantic.
+  const difficulty: Difficulty = asFameTier(place.difficulty);
   // Subdivision: the pipeline stamps the resolved display name ("Nebraska",
   // "Madhya Pradesh") for the PR #38 label rules. Pass it through only when
   // it is a non-empty string; missing/blank/hand-edited values are dropped

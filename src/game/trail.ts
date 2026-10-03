@@ -1,4 +1,5 @@
 import { hashString } from "./daily.ts";
+import { asFameTier } from "./tier-filter.ts";
 
 /**
  * Mint a per-session random seed. Crypto-backed when available; Math.random
@@ -71,9 +72,7 @@ export type DifficultyTiered = {
  */
 export function difficultyWeight(place: object): number {
   const d = (place as DifficultyTiered).difficulty;
-  const tier =
-    typeof d === "number" && Number.isInteger(d) && d >= 1 && d <= 5 ? d : 3;
-  return 6 - tier;
+  return 6 - asFameTier(d);
 }
 
 /**

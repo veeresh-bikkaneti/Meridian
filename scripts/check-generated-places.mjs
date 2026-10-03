@@ -212,6 +212,16 @@ function main() {
           violations.push(`${tag}: history present without wiki attribution slug`);
         }
       }
+      // Pairing invariant (both directions): a wiki attribution slug with no
+      // history extract is an unpaired record — the slug must travel with
+      // the extract it attributes. history-without-wiki is gated above.
+      if (
+        typeof place.wiki === "string" &&
+        place.wiki.length > 0 &&
+        (typeof place.history !== "string" || place.history.length === 0)
+      ) {
+        violations.push(`${tag}: wiki attribution slug present without history extract`);
+      }
       checked++;
     }
   }

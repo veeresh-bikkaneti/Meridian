@@ -79,6 +79,16 @@ function place(
   /**
    * Resolved subdivision display name (state/province), e.g. "Nebraska".
    * Only set where certain — omitted, never guessed, when uncertain.
+   *
+   * Unicode-canonical decision (2026-10-03): curated values use the Unicode
+   * display form ("Yucatán", "Île-de-France") to match what the pipeline
+   * stamps — scripts/build-geonames-dataset.mjs reads column 1 (the Unicode
+   * name column) of admin1CodesASCII.txt, and the shipped chunks carry
+   * "Yucatán"/"Ma’an"/etc. One invisible exception: curated "Ma'an" uses
+   * the ASCII apostrophe (U+0027) where the pipeline stamps U+2019 —
+   * display-identical, subdivision strings are never joined on. A
+   * "normalize to ASCII" pass must change BOTH sides together or the
+   * curated and generated subdivisions diverge.
    */
   subdivision?: string,
 ): Starter {

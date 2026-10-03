@@ -4,10 +4,17 @@ import type { Difficulty } from "./scoring.ts";
  * The learning path the player picks on the edition screen — which fame
  * tiers deal into their run. Framed as scaffolding, not gamer difficulty:
  * Easy is the curriculum core (famous places every kid should know), Hard
- * is obscure corners for explorers. Deliberately distinct from the
- * per-place 1–5 `Difficulty` in scoring.ts: one kid-friendly pick maps to
- * an INCLUSIVE band of tiers. The bands overlap on purpose so no pool ever
+ * is obscure corners for explorers. What's distinct here is the 3-choice
+ * `PickerDifficulty` UX: one kid-friendly pick maps to an INCLUSIVE band of
+ * the shared 1–5 fame tier. The bands overlap on purpose so no pool ever
  * starves.
+ *
+ * Shared-semantic warning: the 1–5 fame tier is ONE field — the per-place
+ * `difficulty` in scoring.ts — driving scoring multipliers, these picker
+ * bands, and the dealing weights in trail.ts. A future scoring retune does
+ * not only touch scores; it silently moves these bands too. Retune (or
+ * re-verify) all three together. Use asFameTier() for the shared
+ * "integer 1–5 else 3" guard so the semantic stays in one place.
  */
 export type PickerDifficulty = "easy" | "medium" | "hard";
 
@@ -25,14 +32,19 @@ export const TIER_BANDS: Record<PickerDifficulty, [number, number][]> = {
   hard: [[4, 5]],
 };
 
-/** Missing or invalid `difficulty` reads as tier 3 (back-compat). */
-function tierOf(difficulty: unknown): Difficulty {
-  return difficulty === 1 ||
-    difficulty === 2 ||
-    difficulty === 3 ||
-    difficulty === 4 ||
-    difficulty === 5
-    ? difficulty
+/**
+ * Shared fame-tier guard: a valid integer 1–5 tier, else medium (3).
+ * One field drives scoring multipliers, picker bands, and dealing
+ * weights — so one guard. Missing, hand-edited, or corrupt values read as
+ * tier 3 (back-compat: pre-tier catalogs and legacy chunks stay neutral).
+ */
+export function asFameTier(value: unknown): Difficulty {
+  return value === 1 ||
+    value === 2 ||
+    value === 3 ||
+    value === 4 ||
+    value === 5
+    ? value
     : 3;
 }
 
@@ -50,5 +62,5 @@ export function filterByTier<T extends { difficulty?: unknown }>(
   choice: PickerDifficulty,
 ): T[] {
   const band = TIER_BANDS[choice] ?? TIER_BANDS.medium;
-  return places.filter((place) => inBand(tierOf(place.difficulty), band));
+  return places.filter((place) => inBand(asFameTier(place.difficulty), band));
 }

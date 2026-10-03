@@ -243,6 +243,13 @@ export function resumeRun(
       streak: typeof saved.streak === "number" ? saved.streak : 0,
       bestStreak: typeof saved.bestStreak === "number" ? saved.bestStreak : 0,
       seed: typeof saved.seed === "number" ? saved.seed : mintSeed(),
+      // poolIds backfill. NOTE: a run saved before the difficulty picker
+      // existed (but after pool persistence) resumes once with its original
+      // UNFILTERED poolIds under the backfilled "medium" choice — a one-run
+      // upgrade artifact. It self-heals on replay, which re-filters from the
+      // backfilled choice (see the replay path in game-app.tsx). Deliberately
+      // not re-plumbed: the mismatch can only exist for exactly one resumed
+      // run per player.
       poolIds: Array.isArray(saved.poolIds)
         ? saved.poolIds.filter((id): id is string => typeof id === "string")
         : [...poolIds],
