@@ -19,8 +19,20 @@ Easy/Medium/Hard picker at run start + fame-weighted dealing within the pool.
   - LAUNCH-BLOCKING: all generated places are tier 3 today — a strict Easy=1 filter would empty pools. Use inclusive bands (Easy=1–2, Medium=2–4, Hard=4–5) until the dataset carries real tiers.
   - Breakage risks: `onReplay` must re-apply the tier filter; `isResumable` must compare the difficulty choice (a switch starts a fresh run).
 
+- [x] Data-pipeline design complete (worker A). DECISIONS:
+  - Stamp `difficulty` (1–5) per place at build time in `scripts/build-geonames-dataset.mjs`; +1.78 MB (+7.9%) on 22.5 MB chunks — sidecar rejected (larger + join hazard).
+  - Cutoffs from real dump quantiles (124,690 kept): T1 pop≥100k or PPLC (~5%); T2 pop≥25k or PPLA (~13%); T3 pop≥6k (~32%); T4 pop≥2.5k (~30%); T5 pop<2.5k (~20%). PPLX neighborhoods floored at tier 3 (never Easy/Moderate).
+  - Build preserves optional `fact`/`history`/`wiki` from existing chunks by place id (defensive; no-op on current main). Sequencing: land difficulty-tiers BEFORE facts-ladder merges broadly, so the ladder re-merges onto stamped chunks.
+  - 12 curated starters (`curated: true`) pinned to tier 1 — data-only edit in `starters.ts`.
+  - `toStarter()` prefers `record.difficulty` when integer 1–5, else backfills 3.
+
 ## Pending
-- [ ] Research: dataset build script — tier-cutoff proposal from real population distribution, chunk-size impact (worker A, running)
+- [ ] IMPLEMENTATION (3 crews running in parallel):
+  - [ ] Crew 1 — dataset: build-script tier stamping + chunk rebuild + `toStarter()` preference + curated pin + gates
+  - [ ] Crew 2 — picker + run plumbing: `run.ts`, tier-filter helper, `game-app.tsx` picker/openRun/onReplay/readRun, scoring-path proof test
+  - [ ] Crew 3 — weighted dealer: Efraimidis–Spirakis in `trail.ts` `buildCycle` + distribution/no-repeat/determinism tests
+- [ ] E2E (after all 3 crews): picker renders; Easy deals famous; Hard can deal obscure; multipliers apply; resume keeps tier
+- [ ] Gates: technical-architect review → tone/docs review (picker copy) → PR → merge → live verify
 - [ ] Design sign-off: tier cutoffs + picker UX (kid-friendly, one tap)
 - [ ] Implement: dataset rebuild with per-place difficulty tiers
 - [ ] Implement: weighted dealer (fame-weighted shuffle without replacement) in trail.ts + tests
