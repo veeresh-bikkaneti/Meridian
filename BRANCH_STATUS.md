@@ -108,7 +108,8 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
 - [x] Tone/docs/a11y review — DONE: **PASS-WITH-NOTES**. Copy at Veeresh's bar ("Couldn't load the map / Your game is safe — only the map download failed"), "Your game is safe" verified accurate (sessionStorage restore). One should-fix: focus management on the error-boundary fallback (move focus to alert/Try-again on appearance). One nit: durable 3-line `?nosw` usage note for phone support. Nothing user-visible wrong with the hatch.
 - [x] Technical-architect review — DONE: **FAIL** — 1 blocker: "Try again" can't re-invoke the dynamic import (React.lazy caches the rejected promise per component type; retry re-renders the same lazy() → throws cached error). 2 should-fix: (a) `unregister()` is origin-wide — scope to app base; (b) plugin buildApp handler silently skips if TanStack changes hooks — add build-time assertion for Pages builds. Nits: countries-50m (~750KB) rides the BOOT chunk (record correction + residual jetsam risk), copy scoping, fail-open ran-flag. Verified independently: split is real in built artifact, hatch well-tested, deviations sound, zero new deps.
 - [x] Review-notes fix crew — DONE (all 8 items addressed; gates re-run green; committed as this revision)
-- [ ] Re-verify reviews' blockers cleared → PR → merge per standing auth → live Pages verification (build id)
+- [x] Consolidated re-review of redesigned retry + items 2–8 (spawned)
+- [ ] PR → merge per standing auth → live Pages verification (build id)
 - [ ] ?nosw-hatch validation on a real iOS device post-ship (crew-side; per Veeresh's 2026-10-03 bar: no device census and no user-side troubleshooting required — field intel is not a gate)
 
 ## Rules
