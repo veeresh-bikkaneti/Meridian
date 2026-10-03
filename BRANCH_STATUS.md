@@ -29,9 +29,9 @@ Easy/Medium/Hard picker at run start + fame-weighted dealing within the pool.
 ## Pending
 - [ ] IMPLEMENTATION (3 crews running in parallel):
   - [x] Crew 3 — weighted dealer DONE (commit `ae0da32`): Efraimidis–Spirakis in `buildCycle`, `w = 6 − difficulty`, mulberry32 seeded from `cycleSeed`, determinism/no-repeat/boundary/exhaustion preserved; 8 new tests incl. statistical skew proof; full suite 400/400 green
-  - [ ] Crew 1 — dataset: build-script tier stamping + chunk rebuild + `toStarter()` preference + curated pin + gates (running; NEW: also stamping `subdivision` per place from admin1CodesASCII — one rebuild total)
-  - [ ] Crew 2 — picker + run plumbing (running)
-  - [ ] Crew 4 — subdivision labels: `Starter.subdivision`, `question-label.ts` wiring per #38 rules (Country → `{Place}, {Subdivision}`; Globe collision → three-part), curated-starter subdivisions, label tests + India E2E spec (spawned)
+  - [x] Crew 2 — picker + run plumbing DONE (commit `3329c3c`): `tier-filter.ts` (Easy 1–2 / Medium 2–4 / Hard 4–5), `Run.difficultyChoice`, `isResumable` choice gate, segmented picker ("How tricky should the places be?") in GameApp state + `localStorage`, `openRun`/`onReplay` filter, scoring-path proof (tier1 → ×1.0, tier5 → ×2.5); suite 410/410 green
+  - [ ] Crew 1 — dataset: difficulty stamped + committed (in 4634d69 — note: my docs commit swept Crew 1's staged files due to a dirty shared index; content is correct, message is misleading; lesson recorded). Subdivision stamping in progress per interrupt → second rebuild → commit → push (running)
+  - [ ] Crew 4 — subdivision labels (running)
 - [ ] E2E (after all 3 crews): picker renders; Easy deals famous; Hard can deal obscure; multipliers apply; resume keeps tier
 - [ ] Gates: technical-architect review → tone/docs review (picker copy) → PR → merge → live verify
 - [ ] Design sign-off: tier cutoffs + picker UX (kid-friendly, one tap)
