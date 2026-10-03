@@ -10,15 +10,15 @@ import {
 import type { Page } from "playwright/test";
 
 /**
- * DRAFT — skipped until Crew 1 rebuilds the chunks with the `subdivision`
- * field stamped (branch feat/difficulty-tiers). Unskip once
- * src/game/data/geonames/chunks/india.json carries subdivision display
- * names; the target record gn-1257851 sits at 14.16°N, 75.03°E (Sagara,
- * Shimoga district, Karnataka), so the expected label is "Sāgar, Karnataka".
+ * Subdivision labels in globe edition (Veeresh's live-play call): the state
+ * is a pin-down clue on EVERY globe question, not just on same-name
+ * collisions — so the label is always "{Place}, {Subdivision}, {Country}"
+ * when subdivision data exists, and the honest "{Place}, {Country}" when
+ * it doesn't.
  *
- * Motivation (Veeresh's live report): "Sāgar" in the India edition is
- * ambiguous — Sagar in Madhya Pradesh vs Sagara in Karnataka. The country
- * edition label must carry the subdivision: "{Place}, {Subdivision}".
+ * Covers both subdivision sources: a curated starter (subdivision hand-set
+ * in starters.ts) and a generated chunk place (subdivision stamped by the
+ * dataset pipeline, threaded through toStarter).
  *
  * Determinism: the no-repeat seen store (localStorage
  * `meridian:seen:v2:<edition>:<regionId>`) is pre-seeded with every pool id
@@ -102,31 +102,27 @@ function expectCleanConsole(errors: string[]): void {
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
-test.skip("country: India edition shows 'Sāgar, {Subdivision}'", async ({ page }) => {
+test("globe: curated starter shows '{Place}, {Subdivision}, {Country}'", async ({
+  page,
+}) => {
   const errors = collectErrors(page);
-  const targetId = "gn-1257851"; // Sāgar
-  const allIds = [...curatedIds("country", "india"), ...chunkIds("india")];
+  const allIds = [...curatedIds("globe", "globe"), ...chunkIds("globe")];
 
   await page.goto(APP);
-  await seedSeenExcept(page, "country", "india", targetId, allIds);
-  await page.getByRole("button", { name: "Choose a country" }).click();
-  await page.getByRole("button", { name: "India" }).click();
-  await page.getByRole("button", { name: "Play entire India" }).click();
+  await seedSeenExcept(page, "globe", "globe", "globe-oia", allIds);
+  await page.getByRole("button", { name: "Play the globe" }).click();
   await expectAim(page);
 
-  // The question bubble carries the subdivision qualifier — bare "Sāgar"
-  // is the ambiguity Veeresh reported, so assert the two-part shape with
-  // a non-empty subdivision, not just a prefix match.
-  const heading = page.getByRole("heading", { name: /^Sāgar, / });
-  await expect(heading).toBeVisible({ timeout: 15_000 });
-  const label = (((await heading.textContent()) ?? "").trim());
-  expect(label, "question bubble must show {Place}, {Subdivision}").toMatch(
-    /^Sāgar, \S.+$/,
-  );
+  // The question bubble (sighted) and the live region (screen reader)
+  // agree on the three-part label.
+  const label = "Oia, South Aegean, Greece";
+  await expect(page.getByRole("heading", { name: label })).toBeVisible({
+    timeout: 15_000,
+  });
   expect(await readLiveQuestion(page)).toBe(`Find ${label}.`);
 
-  // What you were asked matches what you're shown: the result card title
-  // carries the same qualified label (both come from buildQuestionLabel).
+  // What you were asked matches what you're shown: drop a pin anywhere and
+  // the result card title carries the same qualified label.
   await dismissTileOverlayIfPresent(page);
   await page.mouse.click(500, 400);
   await expect(dropButton(page)).toBeEnabled({ timeout: 10_000 });
@@ -138,6 +134,28 @@ test.skip("country: India edition shows 'Sāgar, {Subdivision}'", async ({ page 
   await expect(card.getByRole("heading", { name: label })).toBeVisible({
     timeout: 60_000,
   });
+
+  expectCleanConsole(errors);
+});
+
+test("globe: generated chunk place shows '{Place}, {Subdivision}, {Country}'", async ({
+  page,
+}) => {
+  const errors = collectErrors(page);
+  // gn-1225 "Kordlar" — globe chunk record with pipeline-stamped
+  // subdivision "East Azerbaijan", iso2 IR.
+  const allIds = [...curatedIds("globe", "globe"), ...chunkIds("globe")];
+
+  await page.goto(APP);
+  await seedSeenExcept(page, "globe", "globe", "gn-1225", allIds);
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expectAim(page);
+
+  const label = "Kordlar, East Azerbaijan, Iran";
+  await expect(page.getByRole("heading", { name: label })).toBeVisible({
+    timeout: 15_000,
+  });
+  expect(await readLiveQuestion(page)).toBe(`Find ${label}.`);
 
   expectCleanConsole(errors);
 });

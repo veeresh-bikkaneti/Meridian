@@ -11,7 +11,8 @@ import type { Page } from "playwright/test";
 
 /**
  * Question disambiguation labels (Veeresh's spec):
- * - globe:   "Oia, Greece"        (place + country)
+ * - globe:   "Oia, South Aegean, Greece"  (place + state + country;
+ *            subdivision is a pin-down clue on every globe question)
  * - country: "Austin, Texas"      (place + state, whole-US run)
  * - state:   "Omaha"              (bare name, unchanged)
  *
@@ -108,7 +109,7 @@ function expectCleanConsole(errors: string[]): void {
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
-test("globe: bubble and result card show 'Oia, Greece'", async ({ page }) => {
+test("globe: bubble and result card show 'Oia, South Aegean, Greece'", async ({ page }) => {
   const errors = collectErrors(page);
   const allIds = [...curatedIds("globe", "globe"), ...chunkIds("globe")];
 
@@ -119,9 +120,9 @@ test("globe: bubble and result card show 'Oia, Greece'", async ({ page }) => {
 
   // The question bubble (sighted) and the live region (screen reader) agree.
   await expect(
-    page.getByRole("heading", { name: "Oia, Greece" }),
+    page.getByRole("heading", { name: "Oia, South Aegean, Greece" }),
   ).toBeVisible({ timeout: 15_000 });
-  expect(await readLiveQuestion(page)).toBe("Find Oia, Greece.");
+  expect(await readLiveQuestion(page)).toBe("Find Oia, South Aegean, Greece.");
 
   // What you were asked matches what you're shown: drop a pin anywhere and
   // the result card title carries the same qualified label.
@@ -133,7 +134,7 @@ test("globe: bubble and result card show 'Oia, Greece'", async ({ page }) => {
     .poll(() => readPhase(page), { timeout: 30_000 })
     .toMatch(/^(story|done)$/);
   const card = resultCard(page);
-  await expect(card.getByRole("heading", { name: "Oia, Greece" })).toBeVisible({
+  await expect(card.getByRole("heading", { name: "Oia, South Aegean, Greece" })).toBeVisible({
     timeout: 60_000,
   });
 

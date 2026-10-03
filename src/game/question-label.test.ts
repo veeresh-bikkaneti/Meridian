@@ -149,12 +149,14 @@ test("globe edition resolves curated country starters via regionId", () => {
 });
 
 test("globe edition resolves curated state starters via reverse ADMIN1 lookup", () => {
+  // regionId "nebraska" resolves the subdivision through the id path, so
+  // the globe label is 3-part even without a stamped subdivision.
   assert.equal(
     buildQuestionLabel({
       edition: "globe",
       place: { name: "Chimney Rock", regionId: "nebraska" },
     }),
-    "Chimney Rock, United States",
+    "Chimney Rock, Nebraska, United States",
   );
 });
 
@@ -393,6 +395,28 @@ test("country edition without subdivision: bare name (today's behavior)", () => 
   );
 });
 
+test("globe with subdivision, no collision: 3-part label", () => {
+  // Veeresh's live-play call: the subdivision is a pin-down clue on EVERY
+  // globe question, not just on same-name collisions.
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "Madhya Pradesh" },
+    }),
+    "Sāgar, Madhya Pradesh, India",
+  );
+});
+
+test("globe without subdivision, no collision: 2-part label", () => {
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN" },
+    }),
+    "Sāgar, India",
+  );
+});
+
 test("globe collision with stamped subdivisions: 3-part label", () => {
   const pool: LabelPlace[] = [
     { name: "Sāgar", iso2: "IN", subdivision: "Madhya Pradesh" },
@@ -456,6 +480,23 @@ test("blank subdivisions fail closed: no dangling comma, never 'undefined'", () 
     }),
     "Omaha, Nebraska",
   );
+  // Blank subdivision in globe: the honest 2-part label, never a dangling
+  // comma or an "undefined" qualifier.
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "" },
+    }),
+    "Sāgar, India",
+  );
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "   " },
+      hasCollision: true,
+    }),
+    "Sāgar, India",
+  );
 });
 
 test("question and reveal labels agree: buildQuestionLabel is deterministic", () => {
@@ -483,6 +524,14 @@ test("question and reveal labels agree: buildQuestionLabel is deterministic", ()
       edition: "globe",
       place: { name: "Sāgar", iso2: "IN", subdivision: "Madhya Pradesh" },
       hasCollision: true,
+    },
+    {
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "Madhya Pradesh" },
+    },
+    {
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN" },
     },
     {
       edition: "globe",
@@ -543,5 +592,13 @@ test("curated starters: stamped subdivisions produce qualified country labels", 
       countryRegionId: "australia",
     }),
     "Sydney Opera House, New South Wales",
+  );
+  // The globe E2E spec (tests/e2e/subdivision-labels.spec.ts) pins this
+  // exact label for the "Play the globe" run.
+  const oia = byId.get("globe-oia");
+  assert.equal(oia?.subdivision, "South Aegean");
+  assert.equal(
+    buildQuestionLabel({ edition: "globe", place: oia! }),
+    "Oia, South Aegean, Greece",
   );
 });

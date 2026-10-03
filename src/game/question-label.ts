@@ -9,16 +9,20 @@ import type { Edition } from "./run.ts";
  * groups exist in the chunks). Labels now qualify the name:
  *
  * - globe:   "{place}, {country}"                        → "Toronto, Canada"
- * - globe, same-name collision in the dealt pool: "{place}, {state}, {country}"
- *                                                      → "Manhattan, Nebraska, United States"
+ * - globe, subdivision known: "{place}, {state}, {country}"
+ *                                                      → "Sāgar, Madhya Pradesh, India"
  * - country: "{place}, {state}"                         → "Manhattan, Nebraska"
  * - state:   "{place}" (unchanged)
  *
+ * Veeresh's live-play call: in globe edition the subdivision is a pin-down
+ * clue on EVERY question, not just on same-name collisions — so the 3-part
+ * globe label applies whenever subdivision data exists, collision or not.
+ *
  * Fail-closed: when a parent name can't be resolved the label falls back to
  * the bare place name — never a raw id, "undefined", or an empty qualifier.
- * The one honest exception: a globe collision whose state can't be resolved
- * keeps the 2-part "{place}, {country}" label (the collision is still
- * visible), because the country IS known there.
+ * The one honest exception: a globe place whose subdivision can't be
+ * resolved keeps the 2-part "{place}, {country}" label, because the country
+ * IS known there.
  *
  * Subdivision data arrives on `LabelPlace.subdivision` — a resolved display
  * name stamped per-record by the chunk pipeline (generated places) or
@@ -246,7 +250,10 @@ export function buildQuestionLabel(input: {
   countryRegionId?: string | null;
   /**
    * True when another place in the dealt pool shares this place's name in
-   * the same country (globe edition only). Drives the 3-part label.
+   * the same country. Retained for the collision map (used by the dealer
+   * and kept as a tested export); it no longer drives the globe label —
+   * Veeresh's live-play call puts the subdivision in every globe question,
+   * collision or not.
    */
   hasCollision?: boolean;
 }): string {
@@ -265,13 +272,9 @@ export function buildQuestionLabel(input: {
     return stateName ? `${name}, ${stateName}` : name;
   }
 
-  // Globe edition.
-  if (input.hasCollision) {
-    const stateName = stateNameForPlace(place, null, countryName);
-    if (stateName) return `${name}, ${stateName}, ${countryName}`;
-    // State unresolvable but the country IS known: the honest 2-part
-    // label still shows the collision ("Manhattan, United States").
-    return `${name}, ${countryName}`;
-  }
-  return `${name}, ${countryName}`;
+  // Globe edition: the subdivision is a pin-down clue on EVERY question
+  // (Veeresh's live-play call), not just on same-name collisions. Known
+  // subdivision → 3-part label; unknown → the honest 2-part label.
+  const stateName = stateNameForPlace(place, null, countryName);
+  return stateName ? `${name}, ${stateName}, ${countryName}` : `${name}, ${countryName}`;
 }
