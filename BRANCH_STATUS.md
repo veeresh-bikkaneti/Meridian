@@ -60,8 +60,9 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
 - [ ] Field answers from Veeresh (iOS versions, private-tab test, ?nosw test post-ship)
 
 ## Pending
-- [ ] Fix implementation crew → full gates (unit, tsc, lint-cards, build, E2E incl. boot-chunk-size assertion + full run + ?nosw path)
-- [ ] Technical-architect review + tone/docs/a11y review
+- [x] Fix implementation crew — DONE (commits 5774a33, e2465c9, 3ab442d, pushed). Boot JS 2,574,296 B → 1,395,446 B (−46%); satellite-map 1,180,740 B lazy chunk, zero maplibre in boot chunks; territory feature() lazy+memoized (156 ms import-time removed); ?nosw inline hatch verified in built _shell.html. Gates: tsc clean, 396/396 src + 308 script tests pass, lint-cards GATE PASSED, build:pages green, E2E 3/3 (menu boot under 1.8 MB ceiling, lazy map run, ?nosw purge+strip+boot).
+- [ ] Technical-architect review (spawned)
+- [ ] Tone/docs/a11y review (spawned)
 - [ ] PR → merge per standing auth → live Pages verification (build id)
 - [ ] Field answers from Veeresh (iOS versions, private-tab test, ?nosw test post-ship)
 
