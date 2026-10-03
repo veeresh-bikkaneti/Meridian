@@ -292,9 +292,9 @@ test("collision map keys are case-insensitive and trimmed, scoped to country", (
     p("Toronto", "CA"),
   ];
   const counts = buildCollisionCounts(pool);
-  assert.equal(counts.get("manhattan|US"), 3);
-  assert.equal(counts.get("manhattan|CA"), 1);
-  assert.equal(counts.get("toronto|CA"), 1);
+  assert.equal(counts.get("manhattan|united states"), 3);
+  assert.equal(counts.get("manhattan|canada"), 1);
+  assert.equal(counts.get("toronto|canada"), 1);
   assert.ok(hasNameCollision(pool[0], counts));
   assert.ok(hasNameCollision(pool[1], counts));
   assert.ok(!hasNameCollision(pool[3], counts), "cross-country must not collide");
@@ -308,9 +308,9 @@ test("collision map skips places with no resolvable country", () => {
   assert.ok(!hasNameCollision(pool[0], counts));
 });
 
-test("countryKeyForPlace prefers iso2, falls back to resolved country name", () => {
-  assert.equal(countryKeyForPlace(p("X", "US")), "US");
-  assert.equal(countryKeyForPlace(p("X", " us ")), "US");
+test("countryKeyForPlace resolves both funnels to the same key", () => {
+  assert.equal(countryKeyForPlace(p("X", "US")), "united states");
+  assert.equal(countryKeyForPlace(p("X", " us ")), "united states");
   assert.equal(countryKeyForPlace(p("X", undefined, "canada")), "canada");
   assert.equal(countryKeyForPlace(p("X", undefined, "nebraska")), "united states");
   assert.equal(countryKeyForPlace(p("X", undefined, "globe")), null);

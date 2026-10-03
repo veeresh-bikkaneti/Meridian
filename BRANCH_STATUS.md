@@ -1,17 +1,16 @@
 # BRANCH_STATUS.md — feat/question-disambiguation
 
 Question disambiguation: qualify place names in the question bubble and
-result card so same-name places are distinguishable ("Manhattan, Nebraska,
-United States" instead of "GLOBE / Manhattan").
+result card so same-name places are distinguishable ("Manhattan, Nebraska"
+instead of "GLOBE / Manhattan").
 
 ## Done
-- [x] Explored wiring: `src/components/game-app.tsx` (pool ~L1086, place
-      ~L1113, `<QuestionBubble>` ~L1522, `<ResultCard>` ~L1532),
-      `src/components/question-bubble.tsx`, `src/components/result-card.tsx`
-      (~L233 title), `src/game/run.ts` (Edition), `src/game/regions.ts`
-      (COUNTRIES, ADMIN1_BY_COUNTRY), `src/game/generated-places.ts`
-      (toStarter drops iso2 — confirmed), `src/game/starters.ts` (327
-      curated starters, no iso2).
+- [x] Explored wiring: `src/components/game-app.tsx` (pool, place,
+      `<QuestionBubble>`, `<ResultCard>`), `src/components/question-bubble.tsx`,
+      `src/components/result-card.tsx` (title), `src/game/run.ts` (Edition),
+      `src/game/regions.ts` (COUNTRIES, ADMIN1_BY_COUNTRY),
+      `src/game/generated-places.ts` (toStarter dropped iso2 — confirmed),
+      `src/game/starters.ts` (327 curated starters, no iso2).
 - [x] Verified data facts: 64 chunks (50 state / 13 country / 1 globe),
       235 distinct iso2 codes; 12 curated globe starters carry
       regionId "globe" (NOT a country id — regionId path alone can't resolve
@@ -23,41 +22,38 @@ United States" instead of "GLOBE / Manhattan").
       share text + GeoDetective untouched.
 - [x] `src/game/question-label.ts` — pure label builder + fail-closed
       iso2→name resolver (Intl.DisplayNames, no hand table) + collision-map
-      helpers.
+      helpers. Collision key unified on the resolved country name (review P3).
 - [x] `src/game/starters.ts` — `iso2?: string` on `Starter`; optional iso2
       param on `place()`; iso2 populated on the 12 curated globe starters
       (EG/AU/PE/JO/KH/NP/ZW/CL/GR/EC/TZ/IS — grounded in card stories/coords).
 - [x] `src/game/generated-places.ts` — `toStarter` threads `iso2` through.
 - [x] `src/components/game-app.tsx` — collision-map `useMemo` (globe only),
       `questionLabel` memo; passed to `<QuestionBubble placeName>` and
-      `<ResultCard placeLabel>`.
+      `<ResultCard placeLabel>`; screen-reader live-region announcements
+      (aim + story/miss) use `questionLabel` too (review P2).
 - [x] `src/components/result-card.tsx` — `placeLabel` prop on the title;
       region small-caps line unchanged.
+- [x] `src/components/question-bubble.tsx` — `title={placeName}` on both
+      title elements so a truncated qualifier is visible on hover (review).
+- [x] `README.md` — one line noting prompts carry country/state qualifiers.
 - [x] `src/game/question-label.test.ts` — 22 tests, all green, incl. iso2
       coverage over all 64 chunks (124k+ places) and all 12 curated globe
       starters; registered in `npm test`.
+- [x] Technical-architect review: approve-with-notes (P2 live-region fixed;
+      P3s: collision-key unification applied; 3-part string gate, iso2 shape
+      gate, module-level Intl noted as latent/advisory).
+- [x] Tone/docs/accessibility review: approve-with-notes (BRANCH_STATUS
+      corrected; truncation guard + README line applied; Victoria Falls story
+      border mention declined as card-content churn).
+- [x] Gates: `npm run typecheck` clean; `npm test` green (incl. 22 new
+      question-label tests); `npm run build:pages` green (prebuild: GeoNames
+      gate OK 124,690 places / 64 chunks, lint-cards GATE PASSED).
 
 ## Pending
-- [ ] `src/game/question-label.ts` — pure label builder + iso2→name resolver
-      + collision-map helpers (no React).
-- [ ] `src/game/starters.ts` — add `iso2?: string` to `Starter`; optional
-      iso2 param on `place()`; populate iso2 on the 12 curated globe starters
-      (regionId "globe" can't resolve a country — see Notes).
-- [ ] `src/game/generated-places.ts` — thread `iso2` through `toStarter`.
-- [ ] `src/components/game-app.tsx` — collision-map `useMemo` over pool;
-      compute label; pass to `<QuestionBubble placeName>` and `<ResultCard>`.
-- [ ] `src/components/result-card.tsx` — accept `placeLabel` prop for the
-      title (region small-caps line unchanged).
-- [ ] `src/game/question-label.test.ts` — unit tests incl. iso2 coverage over
-      all 64 chunks; register in `npm test` script.
-- [x] Gates: `npm run typecheck` clean; `npm test` green (307 scripts +
-      370 src tests, 0 failures — incl. 22 new question-label tests);
-      `npm run build:pages` green (prebuild: GeoNames gate OK 124,690
-      places / 64 chunks, lint-cards GATE PASSED); eslint on touched files:
-      0 errors, 1 pre-existing warning (reveal-watchdog useEffect, untouched).
-- [x] Commit + push early and often (named files only, never `git add -A`).
-      Branch head: `d829f4e` on `feat/question-disambiguation`, pushed.
-- [ ] Report to coordinator (no merge, no PR — coordinator handles it).
+- [ ] Playwright E2E on the built artifact (globe/country/state label
+      assertions + clean console).
+- [ ] Open PR, merge to main per standing auto-merge authorization, verify
+      live Pages build, remove worktree.
 
 ## Notes / decisions
 - No hand-maintained 235-entry iso2 table: `Intl.DisplayNames(["en"],
@@ -69,3 +65,6 @@ United States" instead of "GLOBE / Manhattan").
   anyway; falls back to the honest 2-part label when the state is unresolvable.
 - Country edition with unresolvable state falls back to bare name per the
   fail-closed clause (the region line already names the country).
+- Everest→NP and Victoria Falls→ZW are conventional single-country
+  attributions, annotated in code (Everest story itself says Nepal-China
+  border; Victoria Falls curated coords are the Zimbabwe-side town).

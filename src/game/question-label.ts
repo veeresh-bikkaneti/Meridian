@@ -98,21 +98,20 @@ export function countryNameForRegionId(
 }
 
 /**
- * The country key used for collision grouping: the normalized iso2 when
- * present (most reliable), else the resolved country name lowercased.
- * Null when no country can be determined — such places are skipped by the
- * collision map rather than grouped by name alone (a bare-name group would
- * false-positive across countries).
+ * The country key used for collision grouping: the place's resolved country
+ * name, lowercased. iso2-backed places resolve via CLDR, curated places via
+ * the regions table — both funnels produce the same key for the same
+ * country, so a mixed pool can never miss a real collision (or merge two
+ * different countries). Null when no country can be determined — such
+ * places are skipped by the collision map rather than grouped by name
+ * alone (a bare-name group would false-positive across countries).
  */
 export function countryKeyForPlace(place: LabelPlace): string | null {
-  if (typeof place.iso2 === "string") {
-    const code = place.iso2.trim().toUpperCase();
-    if (/^[A-Z]{2}$/.test(code)) return code;
-  }
-  const fromRegion =
+  const countryName =
+    countryNameForIso2(place.iso2) ??
     countryNameForRegionId(place.regionId) ??
     countryNameForRegionId(place.originRegionId);
-  return fromRegion ? fromRegion.toLowerCase() : null;
+  return countryName ? countryName.toLowerCase() : null;
 }
 
 /** Collision-map key: case-insensitive, whitespace-trimmed name + country key. */

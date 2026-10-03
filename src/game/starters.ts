@@ -80,7 +80,7 @@ function place(
     sourceHref: `https://en.wikipedia.org/wiki/${wiki}`,
     difficulty,
     curated: true,
-    ...(iso2 ? { iso2 } : null),
+    ...(iso2 ? { iso2 } : {}),
   };
 }
 

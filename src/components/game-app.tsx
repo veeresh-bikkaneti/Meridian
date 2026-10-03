@@ -1537,9 +1537,9 @@ function PlayLoaded({
       </div>
       <p className="sr-only" aria-live="polite">
         {run.phase === "aim"
-          ? (aimAnnouncement ?? (place ? `Find ${place.name}.` : null))
+          ? (aimAnnouncement ?? (place ? `Find ${questionLabel}.` : null))
           : run.phase === "story" && place && revealDone
-            ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${place.name}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
+            ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${questionLabel}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
             : run.phase === "story" && place
               ? "Showing the answer."
               : run.phase === "summary" && summary
@@ -1547,7 +1547,7 @@ function PlayLoaded({
                     .map((b) => `${EDITION_LABELS[b.edition]} ${b.score.toLocaleString("en-US")}`)
                     .join(", ")}. Average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
                 : place
-                  ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${place.name} missed.`
+                  ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${questionLabel} missed.`
                   : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
