@@ -180,6 +180,20 @@ function main() {
         }
       }
 
+      // Subdivision display name: optional on legacy records, but any
+      // present value must be a non-empty string — fail closed on anything
+      // else. Stamped at build time from the row's admin1 code
+      // (admin1CodesASCII.txt); the label builder fails closed to the bare
+      // place name when it is absent.
+      if (place.subdivision !== undefined) {
+        const s = place.subdivision;
+        if (typeof s !== "string" || s.trim().length === 0) {
+          violations.push(
+            `${tag}: invalid subdivision ${JSON.stringify(s)} — must be a non-empty string`,
+          );
+        }
+      }
+
       // History hook sentences: shape gate. Wikipedia-extract histories were
       // proved verbatim by the merge-time gate; curated notable notes
       // (src/game/data/notable-notes.json) are Veeresh-approved instead.

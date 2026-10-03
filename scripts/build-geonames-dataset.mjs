@@ -780,6 +780,14 @@ async function main() {
       // re-validates every shipped place against the derived country box for
       // its own country code, so the code must travel with the record.
       iso2: cc,
+      // Resolved subdivision display name (state/province), e.g. "Nebraska"
+      // or "Madhya Pradesh" — the pin-down clue for PR #38's label rules
+      // ("Manhattan, Nebraska"; same-name collisions "{Place}, {State},
+      // {Country}"). Resolved from the row's admin1 code via
+      // admin1CodesASCII.txt; the DISPLAY NAME ships, never the code.
+      // Omitted when the code is missing or unresolvable — the label
+      // builder (question-label.ts) fails closed to the bare name.
+      ...(admin1Name ? { subdivision: admin1Name } : {}),
       edition, regionId, _pop: pop, _gid: Number(geonameid),
       // Per-place difficulty tier (1 = most famous, 5 = deep cut) stamped
       // at build time from population + feature code (see tierFor). The

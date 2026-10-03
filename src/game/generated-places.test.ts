@@ -688,3 +688,41 @@ test("toStarter prefers the stamped difficulty, backfills 3 for missing/invalid"
     assert.equal(byId.get(id)?.difficulty, 3, `${id} must backfill to 3`);
   }
 });
+test("toStarter passes through a valid subdivision, drops missing/invalid", () => {
+  // Subdivision (dataset crew): the pipeline stamps the resolved admin1
+  // display name ("Nebraska", "Madhya Pradesh") for the PR #38 label rules.
+  // toStarter must pass a non-empty string through and drop anything else —
+  // absent means unknown, and question-label.ts fails closed to the bare
+  // place name.
+  const base = {
+    name: "Sagar",
+    lon: 78.78,
+    lat: 23.84,
+    blurb: "Sagar is a city in central Madhya Pradesh, India.",
+    iso2: "IN",
+    edition: "country",
+    regionId: "india",
+  };
+  const chunkFor = (places: unknown[]) => ({
+    meta: { regionId: "india", edition: "country", count: places.length },
+    places,
+  });
+  const records = [
+    { ...base, id: "gn-s1", subdivision: "Madhya Pradesh" },
+    { ...base, id: "gn-s2" },
+    { ...base, id: "gn-s3", subdivision: "" },
+    { ...base, id: "gn-s4", subdivision: "   " },
+    { ...base, id: "gn-s5", subdivision: 42 },
+    { ...base, id: "gn-s6", subdivision: null },
+  ];
+  const starters = startersFromChunk("india", chunkFor(records));
+  const byId = new Map(starters.map((s) => [s.id, s]));
+  assert.equal(byId.get("gn-s1")?.subdivision, "Madhya Pradesh");
+  for (const id of ["gn-s2", "gn-s3", "gn-s4", "gn-s5", "gn-s6"]) {
+    assert.equal(
+      byId.get(id)?.subdivision,
+      undefined,
+      `${id}: invalid subdivision must be dropped`,
+    );
+  }
+});

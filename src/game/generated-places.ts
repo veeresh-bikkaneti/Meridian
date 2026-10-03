@@ -92,6 +92,14 @@ interface ChunkPlaceRecord {
    * toStarter backfills 3 for missing/hand-edited/bad values.
    */
   difficulty?: unknown;
+  /**
+   * Optional resolved subdivision display name (state/province), e.g.
+   * "Nebraska" or "Madhya Pradesh", stamped by
+   * scripts/build-geonames-dataset.mjs from the row's admin1 code.
+   * toStarter passes it through only when a non-empty string; the label
+   * builder (question-label.ts) fails closed to the bare name otherwise.
+   */
+  subdivision?: unknown;
   iso2: unknown;
   edition: unknown;
   regionId: unknown;
@@ -133,6 +141,12 @@ function toStarter(
      * backfills 3 for missing/hand-edited/bad values.
      */
     difficulty?: unknown;
+    /**
+     * Optional resolved subdivision display name (state/province) stamped
+     * by scripts/build-geonames-dataset.mjs. Passed through only when a
+     * non-empty string — the label builder fails closed otherwise.
+     */
+    subdivision?: unknown;
   },
   edition: Edition,
   regionId: string,
@@ -143,6 +157,14 @@ function toStarter(
   const d = place.difficulty;
   const difficulty: Difficulty =
     Number.isInteger(d) && (d as number) >= 1 && (d as number) <= 5 ? (d as Difficulty) : 3;
+  // Subdivision: the pipeline stamps the resolved display name ("Nebraska",
+  // "Madhya Pradesh") for the PR #38 label rules. Pass it through only when
+  // it is a non-empty string; missing/blank/hand-edited values are dropped
+  // so question-label.ts fails closed to the bare place name.
+  const subdivision =
+    typeof place.subdivision === "string" && place.subdivision.trim().length > 0
+      ? place.subdivision
+      : undefined;
   // Notable notes are curated from Wikipedia; the slug travels in the chunk
   // so the card can attribute it (GeoNames stays credited app-wide).
   const hasWiki = typeof place.wiki === "string" && place.wiki.length > 0;
@@ -169,6 +191,9 @@ function toStarter(
     sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
     sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
     difficulty,
+    // The subdivision display name travels only when the pipeline stamped a
+    // real one — absent means unknown, and the label builder fails closed.
+    ...(subdivision !== undefined ? { subdivision } : {}),
     iso2: place.iso2,
   };
 }
@@ -201,6 +226,12 @@ function assertValidRecord(
    * grandfathered, never a hard error here.
    */
   difficulty?: unknown;
+  /**
+   * Optional resolved subdivision display name. Shape-checked by the
+   * prebuild gate; toStarter drops anything that isn't a non-empty string,
+   * so this is grandfathered, never a hard error here.
+   */
+  subdivision?: unknown;
   iso2: string;
   edition: Edition;
   regionId: string;
