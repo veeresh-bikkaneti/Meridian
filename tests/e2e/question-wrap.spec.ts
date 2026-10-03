@@ -36,11 +36,25 @@ function chunkIds(regionId: string): string[] {
   return d.places.map((p) => p.id);
 }
 
+/** Curated starter ids for one edition+region (id = `${regionId}-${slug}`). */
+function curatedIds(edition: string, regionId: string): string[] {
+  const src = readFileSync("src/game/starters.ts", "utf8");
+  const out: string[] = [];
+  const re = /place\(\s*\n\s*"(\w+)",\s*\n\s*"([a-z0-9-]+)",\s*\n\s*"([a-z0-9-]+)",/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(src)) !== null) {
+    if (m[1] === edition && m[2] === regionId) out.push(`${m[2]}-${m[3]}`);
+  }
+  return out;
+}
+
 function usCountryPoolIds(): string[] {
   const manifest = JSON.parse(
     readFileSync("src/game/data/geonames/manifest.json", "utf8"),
   ) as { regions: Record<string, { edition: string }> };
-  const ids: string[] = [];
+  // Curated country starters are part of the dealt pool too — leaving them
+  // out of the seen store makes the seeding non-deterministic.
+  const ids = [...curatedIds("country", "united-states")];
   for (const [rid, r] of Object.entries(manifest.regions)) {
     if (r.edition === "state" || rid === "united-states") ids.push(...chunkIds(rid));
   }
