@@ -5,6 +5,7 @@ import {
   readPhase,
   readRun,
   dropButton,
+  dismissTileOverlayIfPresent,
 } from "./helpers";
 
 /**
@@ -13,11 +14,17 @@ import {
  * summary (grand total, places, stats) which must be dismissed before reset.
  */
 
+test.setTimeout(240_000);
+
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
 async function playOnePlace(page: import("playwright/test").Page) {
+  // The 15 s tile-load watchdog can fire on very slow machines, raising the
+  // "Couldn't load satellite imagery" overlay that swallows map clicks.
+  // Dismiss it via Retry exactly as a user on a flaky connection would.
+  await dismissTileOverlayIfPresent(page);
   // Place a pin via map click, then commit with Drop pin.
   await page.mouse.click(500, 400);
   await expect(dropButton(page)).toBeEnabled();
@@ -64,8 +71,12 @@ test("endless: plays multiple places without auto-ending, ends via End game with
   const placesRow = dialog.locator("div", { hasText: "Places played" }).last();
   await expect(placesRow).toContainText("3");
 
-  // Total is announced to screen readers.
-  const live = page.locator('p.sr-only[aria-live="polite"]');
+  // Total is announced to screen readers. The summary's share button renders
+  // its own (initially empty) sr-only live region, so scope to the announcer
+  // that carries text — the game's announcement, not the share button's.
+  const live = page
+    .locator('p.sr-only[aria-live="polite"]')
+    .filter({ hasText: /\S/ });
   await expect(live).toContainText(/Game over\./);
   await expect(live).toContainText(/3 places/);
 

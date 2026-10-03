@@ -125,6 +125,14 @@ export default defineConfig({
       name: "endgame-share",
       testMatch: /endgame-share\.spec\.ts/,
     },
+    {
+      name: "subdivision-labels",
+      testMatch: /subdivision-labels\.spec\.ts/,
+    },
+    {
+      name: "difficulty-picker",
+      testMatch: /difficulty-picker\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
