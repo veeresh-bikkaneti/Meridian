@@ -14,10 +14,10 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
 - [x] Field questions drafted → sent to parent as first handoff
 
 ## In progress (4 parallel crews)
+- [x] Crew D: bisect — DONE. All builds boot fine on desktop (3c32085 + 8f81e13, clean console, byte-identical heavy assets) → trigger is iOS-only. Ranked suspects: (1) stale SW on real iPhones, (2) jetsam memory kill at boot, (3) iOS API breakage #38–#41, (4) WebGL init, (5) iOS-version-specific. Bisect worktrees cleaned up.
 - [ ] Crew A: boot-path audit (Safari-unsafe APIs, top-level side effects, SW timing, session/score restore, live map on menu)
 - [ ] Crew B: map-on-boot hypothesis (SatelliteMap/WebGL/Esri init failure modes; what changed in map init recently)
 - [ ] Crew C: SW update catch-22 + escape hatch design
-- [ ] Crew D: bisect pre-#38/#39/#40 builds in WebKit Playwright
 
 ## Pending
 - [ ] Root cause → fix through full gates (unit, tsc, lint-cards, build, tech-arch review, tone/docs/a11y review, E2E incl. Safari-boot) → PR → merge → live verify
