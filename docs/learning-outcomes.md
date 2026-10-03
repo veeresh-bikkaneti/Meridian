@@ -1,6 +1,12 @@
 # Learning outcomes — design (Phase 1)
 
-**Status:** design doc; no implementation. Phase 2 builds from this spec.
+**Status:** design doc; Phase 2 prototype implemented on `feat/learning-outcomes`
+behind the `learningOutcomes` flag (default `false`) — see `src/game/learning.ts`,
+the hook in `onConfirm()` (`src/components/game-app.tsx`), and the growth
+surfaces (`ResultCard` growth line, `RunSummaryCard` "My growth" section).
+Decisions marked `[DECISION — Veeresh to rule]` were built at this doc's
+recommendations (coordinator directive, 2026-10-03); Veeresh's rulings may
+revise them.
 **Branch:** `feat/learning-outcomes` · **flag:** `learningOutcomes` (ships dark, default `false`).
 
 > **Product philosophy (Veeresh, 2026-10-03):** "user experience, user engagement,
