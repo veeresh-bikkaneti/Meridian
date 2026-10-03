@@ -50,9 +50,13 @@ United States" instead of "GLOBE / Manhattan").
       title (region small-caps line unchanged).
 - [ ] `src/game/question-label.test.ts` — unit tests incl. iso2 coverage over
       all 64 chunks; register in `npm test` script.
-- [ ] Gates: `npx tsc --noEmit`, `npm test`, `npm run build:pages`
-      (runs prebuild: write-build-meta + check-generated-places + lint-cards).
-- [ ] Commit + push early and often (named files only, never `git add -A`).
+- [x] Gates: `npm run typecheck` clean; `npm test` green (307 scripts +
+      370 src tests, 0 failures — incl. 22 new question-label tests);
+      `npm run build:pages` green (prebuild: GeoNames gate OK 124,690
+      places / 64 chunks, lint-cards GATE PASSED); eslint on touched files:
+      0 errors, 1 pre-existing warning (reveal-watchdog useEffect, untouched).
+- [x] Commit + push early and often (named files only, never `git add -A`).
+      Branch head: `d829f4e` on `feat/question-disambiguation`, pushed.
 - [ ] Report to coordinator (no merge, no PR — coordinator handles it).
 
 ## Notes / decisions
