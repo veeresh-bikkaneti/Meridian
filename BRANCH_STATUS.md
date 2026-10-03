@@ -50,8 +50,9 @@ instead of "GLOBE / Manhattan").
       gate OK 124,690 places / 64 chunks, lint-cards GATE PASSED).
 
 ## Pending
-- [ ] Playwright E2E on the built artifact (globe/country/state label
-      assertions + clean console).
+- [x] Playwright E2E on the built artifact: 3/3 green (globe "Oia, Greece"
+      in bubble + live region + result card; country "Austin, Texas";
+      state bare "Omaha"; clean console).
 - [ ] Open PR, merge to main per standing auto-merge authorization, verify
       live Pages build, remove worktree.
 
