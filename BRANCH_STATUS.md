@@ -28,9 +28,9 @@ Easy/Medium/Hard picker at run start + fame-weighted dealing within the pool.
 
 ## Pending
 - [ ] IMPLEMENTATION (3 crews running in parallel):
-  - [ ] Crew 1 — dataset: build-script tier stamping + chunk rebuild + `toStarter()` preference + curated pin + gates
-  - [ ] Crew 2 — picker + run plumbing: `run.ts`, tier-filter helper, `game-app.tsx` picker/openRun/onReplay/readRun, scoring-path proof test
-  - [ ] Crew 3 — weighted dealer: Efraimidis–Spirakis in `trail.ts` `buildCycle` + distribution/no-repeat/determinism tests
+  - [x] Crew 3 — weighted dealer DONE (commit `ae0da32`): Efraimidis–Spirakis in `buildCycle`, `w = 6 − difficulty`, mulberry32 seeded from `cycleSeed`, determinism/no-repeat/boundary/exhaustion preserved; 8 new tests incl. statistical skew proof; full suite 400/400 green
+  - [ ] Crew 1 — dataset: build-script tier stamping + chunk rebuild + `toStarter()` preference + curated pin + gates (running)
+  - [ ] Crew 2 — picker + run plumbing (running)
 - [ ] E2E (after all 3 crews): picker renders; Easy deals famous; Hard can deal obscure; multipliers apply; resume keeps tier
 - [ ] Gates: technical-architect review → tone/docs review (picker copy) → PR → merge → live verify
 - [ ] Design sign-off: tier cutoffs + picker UX (kid-friendly, one tap)
