@@ -104,7 +104,7 @@ export function QuestionBubble({
                 <>
                   <p className="text-[11px] tracking-wider text-white/60 uppercase">{regionName}</p>
                   <h2
-                    className="mt-0.5 truncate font-display text-xl leading-tight"
+                    className="mt-0.5 line-clamp-3 font-display text-xl leading-tight"
                     title={placeName}
                   >
                     {placeName}
@@ -117,7 +117,10 @@ export function QuestionBubble({
                   </span>
                 </>
               ) : (
-                <p className="truncate font-display text-lg leading-tight" title={placeName}>
+                <p
+                  className="line-clamp-3 font-display text-lg leading-tight"
+                  title={placeName}
+                >
                   {placeName}
                 </p>
               )}
