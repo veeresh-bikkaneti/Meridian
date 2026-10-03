@@ -80,12 +80,14 @@ const RUN_DROP_KEY = "meridian.drop";
  * JS (P0 Safari launch fix: the 2.57 MB synchronously-evaluated boot bundle
  * is the prime iOS-jetsam suspect). The Play path wraps it in Suspense (the
  * existing loading-spinner styling) and MapErrorBoundary (chunk-load
- * failure → retry UI, never a blank page). The lazy component itself is
- * created inside PlayLoaded (see mapAttempt): React.lazy caches the
- * factory's rejected promise per component type, so "Try again" must mint a
- * fresh lazy() — re-rendering the module-level one would throw the cached
- * rejection forever.
+ * failure → retry UI, never a blank page). The boundary's "Try again"
+ * reloads the page: re-rendering a React.lazy after a chunk failure
+ * rethrows its cached rejection, and even a fresh import() of the same
+ * failed URL is negatively cached by the browser for the life of the
+ * document — only a reload genuinely re-fetches the chunk. The run is
+ * restored from sessionStorage on boot, so the game survives the reload.
  */
+const SatelliteMap = lazy(() => import("@/map/satellite-map"));
 
 /**
  * Suspense fallback while the lazy satellite-map chunk downloads. Mirrors
@@ -1231,18 +1233,6 @@ function PlayLoaded({
   // instance — its controller is terminal (revealDone) and its highlight
   // belongs to the previous run.
   const [mapKey, setMapKey] = useState(0);
-  // Chunk-retry attempt counter (P0 Safari launch fix): React.lazy caches
-  // the factory's REJECTED promise per component type (the factory runs only
-  // while the payload is still pending), so after a chunk-load failure
-  // re-rendering the same lazy() throws the cached rejection forever. Each
-  // bump mints a FRESH lazy component whose factory re-invokes the dynamic
-  // import — this is what the error boundary's "Try again" triggers.
-  const [mapAttempt, setMapAttempt] = useState(0);
-  const SatelliteMap = useMemo(
-    () => lazy(() => import("@/map/satellite-map")),
-    [mapAttempt],
-  );
-  const retryMapChunk = useCallback(() => setMapAttempt((a) => a + 1), []);
   const [summary, setSummary] = useState<SessionSummary | null>(null);
   // Session score: the HUD total accumulates across edition switches until
   // End game. Falls back to the run's own results when no session exists
@@ -1534,7 +1524,7 @@ function PlayLoaded({
   return (
     <main className="relative h-dvh bg-bg">
       <div className="absolute inset-0">
-        <MapErrorBoundary onRetry={retryMapChunk}>
+        <MapErrorBoundary>
           <Suspense fallback={<MapLoadingFallback />}>
             <SatelliteMap
               key={mapKey}

@@ -68,12 +68,19 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
 
 ## Pending
 - [x] Review-notes fix crew — DONE (all 8 items addressed, gates re-run):
-  - Blocker: "Try again" now mints a FRESH React.lazy per attempt
-    (`mapAttempt` state + useMemo in PlayLoaded; boundary takes `onRetry`);
-    false "remounting re-invokes the factory" comment removed. New E2E
-    retry-path test: abort the satellite-map chunk → error card + focus on
-    the alert → unblock → Try again → map mounts (proves the import is
-    actually re-attempted, which the old code could never do).
+  - Blocker: "Try again" now reloads the page instead of the dead
+    in-place retry. Design correction during implementation: the prescribed
+    fresh-lazy-per-attempt fix was PROVEN INSUFFICIENT by experiment — the
+    browser negatively caches the failed module fetch per document, so even
+    a brand-new lazy()'s import() of the same URL rejects with zero network
+    activity (verified on Chromium for abort AND 404, with and without the
+    SW and Vite's preload wrapper). Only a reload gets a fresh module map
+    and genuinely re-fetches the chunk — and it is also the sole recovery
+    for the stale-deploy 404 case. The run restores from sessionStorage on
+    boot, so the game survives intact. New E2E retry-path test: abort the
+    satellite-map chunk (context.route — the SW's cache-first asset fetch
+    is invisible to page.route) → error card appears + focus moves to the
+    alert → unblock → Try again → reload → map mounts, run resumed.
   - `unregister()` now scoped to registrations whose scope is under the app
     base (derived from the shell's own directory; BASE_URL="/Meridian/");
     sibling projects on the shared origin untouched. Cache deletion was

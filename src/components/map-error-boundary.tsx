@@ -8,19 +8,22 @@ import { Button } from "@/components/ui/button";
  * must never strand the player on a blank page: this renders a
  * user-friendly retry card instead.
  *
- * "Try again" is NOT a plain state reset: React.lazy caches the factory's
- * rejected promise per component type (the factory runs only while the
- * payload is still pending, so after a rejection every render of the same
- * lazy() throws the cached error). The parent therefore passes `onRetry`,
- * which mints a FRESH React.lazy component whose factory re-invokes the
- * dynamic import; the boundary clears its own error state alongside. (If
- * `onRetry` is omitted, retry only clears the state — a chunk failure would
- * then re-throw the cached rejection, so always pass it for lazy chunks.)
- * "Reload" falls back to a full page reload. The run state is untouched —
- * retrying never loses the game in progress.
+ * "Try again" reloads the whole page — deliberately NOT an in-place
+ * re-import. Two platform facts force this: (1) React.lazy caches the
+ * factory's rejected promise per component type, so re-rendering the same
+ * lazy() rethrows the cached error without any network request; (2) even a
+ * FRESH import() of the same failed URL rejects without re-fetching — the
+ * browser negatively caches the failed module fetch for the life of the
+ * document (verified empirically on Chromium: abort and 404 alike; a
+ * second import() of the same URL rejects with zero network activity).
+ * Minting a new lazy() per attempt therefore cannot recover. A reload gets
+ * a fresh module map and genuinely re-fetches the chunk — and it is also
+ * the only recovery for the stale-deploy case (the old hashed URL is gone
+ * for good; only a fresh shell has the new one). The run is restored from
+ * sessionStorage on boot, so retrying never loses the game in progress.
  */
 export class MapErrorBoundary extends Component<
-  { children: ReactNode; onRetry?: () => void },
+  { children: ReactNode },
   { error: Error | null }
 > {
   state = { error: null as Error | null };
@@ -37,7 +40,7 @@ export class MapErrorBoundary extends Component<
   }
 
   componentDidUpdate(
-    _prevProps: { children: ReactNode; onRetry?: () => void },
+    _prevProps: { children: ReactNode },
     prevState: { error: Error | null },
   ): void {
     // When the fallback appears, move focus to it so screen-reader and
@@ -55,14 +58,9 @@ export class MapErrorBoundary extends Component<
   }
 
   private retry = (): void => {
-    // onRetry first: the parent mints the fresh lazy component, then the
-    // boundary clears its error so the new component renders (React batches
-    // both updates into one pass).
-    this.props.onRetry?.();
-    this.setState({ error: null });
-  };
-
-  private reload = (): void => {
+    // Reload: the only recovery that actually re-fetches the chunk (see the
+    // doc comment above). The boot restores the run from sessionStorage, so
+    // the player's game survives the reload intact.
     window.location.reload();
   };
 
@@ -83,12 +81,9 @@ export class MapErrorBoundary extends Component<
               Your game is safe &mdash; the map just didn&rsquo;t finish
               loading. Check your connection, then try again.
             </p>
-            <div className="mt-4 flex justify-center gap-2">
+            <div className="mt-4 flex justify-center">
               <Button type="button" onClick={this.retry}>
                 Try again
-              </Button>
-              <Button type="button" variant="secondary" onClick={this.reload}>
-                Reload
               </Button>
             </div>
           </div>
