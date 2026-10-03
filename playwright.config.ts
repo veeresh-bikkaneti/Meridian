@@ -121,6 +121,10 @@ export default defineConfig({
       name: "question-wrap",
       testMatch: /question-wrap\.spec\.ts/,
     },
+    {
+      name: "endgame-share",
+      testMatch: /endgame-share\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],

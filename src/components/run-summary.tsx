@@ -1,7 +1,9 @@
 import type { JSX } from "react";
 import { formatDistance } from "@/game/geo";
 import { EDITION_LABELS, type SessionSummary } from "@/game/session";
+import { SHARE_URL, sessionShareText } from "@/game/share-action";
 import { Button } from "@/components/ui/button";
+import { ShareButton } from "./share-button";
 
 /**
  * End-of-game summary (endless mode). Shown after the player explicitly ends
@@ -12,10 +14,15 @@ import { Button } from "@/components/ui/button";
 export function RunSummaryCard(props: {
   summary: SessionSummary;
   regionName: string;
+  /** The session's date key, for the share text's date line. */
+  dateKey: string;
   onDone: () => void;
   onPlayAgain: () => void;
 }): JSX.Element {
-  const { summary, regionName, onDone, onPlayAgain } = props;
+  const { summary, regionName, dateKey, onDone, onPlayAgain } = props;
+  // Session totals only — no per-place emoji strip; the session banks
+  // totals, never per-place scores (see sessionShareText).
+  const text = sessionShareText({ summary, regionName, dateKey });
   return (
     <div
       className="pointer-events-auto absolute inset-0 z-40 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
@@ -85,6 +92,18 @@ export function RunSummaryCard(props: {
         </dl>
 
         <div className="mt-6 flex flex-col gap-2">
+          <ShareButton
+            title="Meridian score"
+            text={text}
+            url={SHARE_URL}
+            label="Share score"
+            className="w-full"
+            failureFallback={
+              <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-left font-sans text-sm leading-relaxed text-white">
+                {text}
+              </pre>
+            }
+          />
           <Button className="w-full" onClick={onPlayAgain}>
             Play again
           </Button>
