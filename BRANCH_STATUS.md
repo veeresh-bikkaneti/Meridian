@@ -1,52 +1,21 @@
-# BRANCH_STATUS.md — feat/endgame-share
+# BRANCH_STATUS.md — crash-investigation (P0)
 
-**Branch:** `feat/endgame-share` · **Base:** `origin/main` @ `1152076`
-**Task:** End-game sharing — "Share score" on the summary screen using the
-native share sheet where available, clipboard fallback elsewhere. Per-place
-"Copy result" upgraded to the same helper. Veeresh ordered; ships independently.
+**Branch:** `crash-investigation` · **Base:** `origin/main` @ `eee96c8`
+**Incident:** Veeresh on iPhone Safari gets "A problem repeatedly occurred on https://veeresh-bikkaneti.github.io/Meridian/" (iOS killed the web content process) when entering **Arkansas** (state edition). Crash repeats on reload. Last good game: country edition on the pre-#38 build.
 
 ## Done
-- [x] Worktree created from origin/main @ 1152076; node_modules symlinked
-- [x] Verified the gap: `shareText()` (`src/game/share.ts`) exists in Veeresh's
-      approved 3-line format; `run-summary.tsx` has no share action;
-      `result-card.tsx` ShareResult is clipboard-only
-- [x] Design decision: session share uses `shareText()` with session totals,
-      no emoji strip (the session banks totals only, never per-place scores;
-      the strip is optional in the approved format — omitting it keeps this
-      change out of session persistence/scoring)
-- [x] Shared share helper (`src/game/share-action.ts`): `shareScore()` —
-      native share sheet where available (AbortError → `cancelled`, silent;
-      other errors → clipboard), clipboard fallback → `copied`, both failed
-      → `failed`; plus `sessionShareText()` (session totals, no per-place
-      data) and `SHARE_URL`. `src/components/share-button.tsx` wraps it:
-      accessible label, "Shared ✓"/"Copied ✓" via aria-live, global
-      `:focus-visible` styling, optional failure fallback
-- [x] "Share score" button on the end-game summary (`run-summary.tsx`), above
-      "Play again"; `dateKey` threaded from `run.dateKey` via `game-app.tsx`
-- [x] Per-place "Copy result" upgraded to "Share result" (`result-card.tsx`)
-      via the same helper; keeps the preview `<pre>` and emoji strip
-- [x] Unit tests (`src/game/share-action.test.ts`, 11 tests): exact share
-      payload / AbortError-cancelled / plain-Error-AbortError-cancelled (no
-      DOMException gating, clipboard never touched) / navigator-undefined
-      SSR guard → failed / non-abort-fallback / clipboard fallback /
-      clipboard-failure → failed / session payload contract (URL present, no
-      strip, no distances, no place names)
-- [x] Review findings applied: name-only AbortError check, pending guard on
-      double-click in ShareButton, direction-neutral failure message ("Copy
-      the text from the preview." — correct whether the preview is above or
-      below), BRANCH_STATUS a11y note and README share-delivery sentence
-- [x] All quality gates green: `npx tsc --noEmit` clean, `npm test` 385/385
-      (27 suites), `node scripts/lint-cards.mjs` GATE PASSED,
-      `npm run build:pages` green
+- [x] Worktree created at `~/workspace/meridian-worktrees/crash-investigation` on `crash-investigation` @ `eee96c8` (replaced stale endgame-share BRANCH_STATUS.md inherited via the #40 merge)
+- [x] `node_modules` symlinked from sibling worktree (no download)
+- [x] System Chromium located at `/opt/meta-chromium/chrome` for Playwright repro
 
 ## Pending
-- [ ] Technical-architect review + tone/docs/accessibility review
-- [x] Playwright E2E (clipboard assertion + mocked navigator.share, clean console) — 2/2 green ×2 runs: `tests/e2e/endgame-share.spec.ts` (new `endgame-share` project in `playwright.config.ts`). Clipboard path asserts the exact session share text on the clipboard (starts `meridian <date>`, site URL on its own line, screen-total match, no place name) + "Copied ✓" button/live-region; native path asserts the stub was called exactly once with `{ title, text, url }` and the clipboard sentinel untouched + "Shared ✓"; both runs console-clean (only the pre-existing React #418 filter).
-- [ ] PR opened → merged → live build verified → worktree removed
+- [ ] Repro: build:pages + Playwright Arkansas state-edition flow (Chromium); bisect vs build `1152076` if needed
+- [ ] Entry-path audit: `startRun` → chunk load → pool build → deal → camera animation; state vs country edition diff
+- [ ] Data audit: Arkansas chunk vs other state chunks for pathological records
+- [ ] Live-site check: production URL load, console errors, build-meta vs origin/main
+- [ ] iOS-only suspects enumerated (SW lifecycle, Intl.DisplayNames fallback option, MapLibre memory) + phone-side isolation steps for Veeresh
+- [ ] Root cause → fix PR through full gates → merge → live verification, OR written ruled-out report
 
-## Notes / decisions
-- Do NOT change the `shareText()` format itself — reuse it exactly.
-- `navigator.share` needs a user gesture (button click) and HTTPS; guard with
-  `typeof navigator.share === "function"`.
-- A11y: accessible button label, focus-visible styling, "Shared ✓"/"Copied ✓"
-  announced via live region.
+## Rules
+- Minimal crash fix only. No game-behavior, scoring, or data changes beyond the fix.
+- Push early and often; stage named files only, never `git add -A`.
