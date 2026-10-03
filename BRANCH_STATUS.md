@@ -1,71 +1,51 @@
-# BRANCH_STATUS.md — feat/question-disambiguation
+# BRANCH_STATUS.md — feat/question-wrap
 
-Question disambiguation: qualify place names in the question bubble and
-result card so same-name places are distinguishable ("Manhattan, Nebraska"
-instead of "GLOBE / Manhattan").
+**Branch:** `feat/question-wrap` · **Base:** `origin/main` @ `9ec79ec`
+**Task:** Fix question-bubble truncation — long qualified place names
+("Fairchild Air Force Base, Washington") were single-line-ellipsized
+("Fairchild Air Forc..."). Gameplay bug: an unreadable question is an
+unfair game. Reported by Veeresh with a screenshot.
 
 ## Done
-- [x] Explored wiring: `src/components/game-app.tsx` (pool, place,
-      `<QuestionBubble>`, `<ResultCard>`), `src/components/question-bubble.tsx`,
-      `src/components/result-card.tsx` (title), `src/game/run.ts` (Edition),
-      `src/game/regions.ts` (COUNTRIES, ADMIN1_BY_COUNTRY),
-      `src/game/generated-places.ts` (toStarter dropped iso2 — confirmed),
-      `src/game/starters.ts` (327 curated starters, no iso2).
-- [x] Verified data facts: 64 chunks (50 state / 13 country / 1 globe),
-      235 distinct iso2 codes; 12 curated globe starters carry
-      regionId "globe" (NOT a country id — regionId path alone can't resolve
-      them, see Notes); `Intl.DisplayNames` with `fallback:"none"` resolves
-      every chunk iso2 in this runtime (Node 24 + Chromium full ICU).
-- [x] Contract locked (Veeresh's spec): globe `{place}, {country}`;
-      globe collision + resolvable state `{place}, {state}, {country}`;
-      country `{place}, {state}`; state bare; fail closed to bare name;
-      share text + GeoDetective untouched.
-- [x] `src/game/question-label.ts` — pure label builder + fail-closed
-      iso2→name resolver (Intl.DisplayNames, no hand table) + collision-map
-      helpers. Collision key unified on the resolved country name (review P3).
-- [x] `src/game/starters.ts` — `iso2?: string` on `Starter`; optional iso2
-      param on `place()`; iso2 populated on the 12 curated globe starters
-      (EG/AU/PE/JO/KH/NP/ZW/CL/GR/EC/TZ/IS — grounded in card stories/coords).
-- [x] `src/game/generated-places.ts` — `toStarter` threads `iso2` through.
-- [x] `src/components/game-app.tsx` — collision-map `useMemo` (globe only),
-      `questionLabel` memo; passed to `<QuestionBubble placeName>` and
-      `<ResultCard placeLabel>`; screen-reader live-region announcements
-      (aim + story/miss) use `questionLabel` too (review P2).
-- [x] `src/components/result-card.tsx` — `placeLabel` prop on the title;
-      region small-caps line unchanged.
-- [x] `src/components/question-bubble.tsx` — `title={placeName}` on both
-      title elements so a truncated qualifier is visible on hover (review).
-- [x] `README.md` — one line noting prompts carry country/state qualifiers.
-- [x] `src/game/question-label.test.ts` — 22 tests, all green, incl. iso2
-      coverage over all 64 chunks (124k+ places) and all 12 curated globe
-      starters; registered in `npm test`.
-- [x] Technical-architect review: approve-with-notes (P2 live-region fixed;
-      P3s: collision-key unification applied; 3-part string gate, iso2 shape
-      gate, module-level Intl noted as latent/advisory).
-- [x] Tone/docs/accessibility review: approve-with-notes (BRANCH_STATUS
-      corrected; truncation guard + README line applied; Victoria Falls story
-      border mention declined as card-content churn).
-- [x] Gates: `npm run typecheck` clean; `npm test` green (incl. 22 new
-      question-label tests); `npm run build:pages` green (prebuild: GeoNames
-      gate OK 124,690 places / 64 chunks, lint-cards GATE PASSED).
+- [x] Worktree created from `origin/main` (9ec79ec), node_modules symlinked
+- [x] `src/components/question-bubble.tsx`: replaced `truncate` with
+      `line-clamp-3` on the place name in BOTH expanded (h2, text-xl) and
+      collapsed (p, text-lg) views; kept `title={placeName}` tooltips.
+      Bubble width unchanged (`max-w-[min(320px,calc(100vw-20px))]`); chip,
+      buttons, and hints untouched.
+- [x] `src/components/result-card.tsx`: checked — result-card title
+      (`placeLabel`) has no truncation, wraps naturally; no change needed.
+- [x] Accessibility: live region announces the same `questionLabel` the
+      bubble renders — visible text matches the announcement; nothing to fix.
+- [x] Regression test `src/components/question-bubble.test.ts` (4 tests)
+      wired into `npm test`: asserts no `truncate`/`whitespace-nowrap` on
+      either name element, `line-clamp-3` present, tooltips preserved.
 
 ## Pending
-- [x] Playwright E2E on the built artifact: 3/3 green (globe "Oia, Greece"
-      in bubble + live region + result card; country "Austin, Texas";
-      state bare "Omaha"; clean console).
-- [ ] Open PR, merge to main per standing auto-merge authorization, verify
-      live Pages build, remove worktree.
+- [ ] `npx tsc --noEmit` clean
+- [ ] `npm run build:pages` green
+- [ ] Technical-architect review + tone/docs/accessibility review
+- [x] Playwright E2E `tests/e2e/question-wrap.spec.ts`: 2/2 green (repeat-each=2,
+      deterministic after including curated starters in pool seeding). Seeds
+      Fairchild Air Force Base (gn-7261152, Washington chunk, whole-US country
+      run), asserts the full label visible in expanded AND collapsed views
+      (no ellipsis via scrollWidth/clientWidth + computed style), clean console.
+      Evidence: `evidence/question-wrap-bubble.png` (full name wraps 2 lines).
+- [x] `npx tsc --noEmit` clean; `npm run build:pages` green
+- [x] Full unit suite: 681 tests, 0 failures (incl. 4 new question-bubble tests)
+- [x] Technical-architect review: **approve-with-notes** (no P1s; P2s are accepted
+      tradeoffs — names beyond 3 lines still cap silently on touch, documented;
+      result-card needs no change confirmed; zero-cost confirmed)
+- [x] Tone/docs/accessibility review: **approve-with-notes** (visible text matches
+      live-region announcement; no copy/layout changes needed; BRANCH_STATUS
+      accurate; no README churn)
+
+## Pending
+- [ ] Open PR → merge per standing auto-merge auth → verify live Pages build
+      serves the merge commit → remove worktree
 
 ## Notes / decisions
-- No hand-maintained 235-entry iso2 table: `Intl.DisplayNames(["en"],
-  {type:"region", fallback:"none"})` is the mapping — smallest correct,
-  self-maintaining as data grows, fail-closed (malformed/unknown → null,
-  never throws, never surfaces the raw code or "Unknown Region").
-- Globe 3-part label is unreachable with current data (globe pools only hold
-  regionId "globe" places, none with state info) — implemented per contract
-  anyway; falls back to the honest 2-part label when the state is unresolvable.
-- Country edition with unresolvable state falls back to bare name per the
-  fail-closed clause (the region line already names the country).
-- Everest→NP and Victoria Falls→ZW are conventional single-country
-  attributions, annotated in code (Everest story itself says Nepal-China
-  border; Victoria Falls curated coords are the Zimbabwe-side town).
+- `line-clamp-3` (not unlimited wrap): the bubble floats over the map, so a
+  3-line cap keeps extreme names from swallowing the viewport. Longest real
+  qualified names wrap in 2 lines at text-xl within 320px.
+- Label-building logic (`src/game/question-label.ts`) untouched; no data changes.

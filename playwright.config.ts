@@ -117,6 +117,10 @@ export default defineConfig({
       name: "question-labels",
       testMatch: /question-labels\.spec\.ts/,
     },
+    {
+      name: "question-wrap",
+      testMatch: /question-wrap\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],
