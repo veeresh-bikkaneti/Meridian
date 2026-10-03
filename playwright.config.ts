@@ -114,6 +114,10 @@ export default defineConfig({
       testMatch: /pwa\.spec\.ts/,
     },
     {
+      name: "feature-flags",
+      testMatch: /feature-flags\.spec\.ts/,
+    },
+    {
       name: "question-labels",
       testMatch: /question-labels\.spec\.ts/,
     },
