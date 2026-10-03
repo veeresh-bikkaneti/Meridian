@@ -86,6 +86,12 @@ interface ChunkPlaceRecord {
   hookMissing?: unknown;
   /** Optional en.wikipedia.org article slug when the blurb carries a curated notable note. */
   wiki?: unknown;
+  /**
+   * Optional build-time difficulty tier (1–5) stamped by
+   * scripts/build-geonames-dataset.mjs. Validated by the prebuild gate;
+   * toStarter backfills 3 for missing/hand-edited/bad values.
+   */
+  difficulty?: unknown;
   iso2: unknown;
   edition: unknown;
   regionId: unknown;
@@ -121,13 +127,22 @@ function toStarter(
     fact?: unknown;
     /** ISO-3166-1 alpha-2 country code — validated non-empty by assertValidRecord; threaded onto the Starter for question disambiguation labels. */
     iso2: string;
+    /**
+     * Optional build-time difficulty tier (1–5) stamped by
+     * scripts/build-geonames-dataset.mjs. Preferred when valid; toStarter
+     * backfills 3 for missing/hand-edited/bad values.
+     */
+    difficulty?: unknown;
   },
   edition: Edition,
   regionId: string,
 ): Starter {
-  // The dataset carries no difficulty signal; generated places default to
-  // medium (3) so the v3 multiplier stays neutral for them.
-  const difficulty: Difficulty = 3;
+  // Difficulty: prefer the pipeline-stamped tier when it is a valid integer
+  // 1–5. Anything else — missing on legacy chunks, hand-edited, or corrupt
+  // — falls back to medium (3) so the v3 multiplier stays neutral.
+  const d = place.difficulty;
+  const difficulty: Difficulty =
+    Number.isInteger(d) && (d as number) >= 1 && (d as number) <= 5 ? (d as Difficulty) : 3;
   // Notable notes are curated from Wikipedia; the slug travels in the chunk
   // so the card can attribute it (GeoNames stays credited app-wide).
   const hasWiki = typeof place.wiki === "string" && place.wiki.length > 0;
@@ -179,6 +194,13 @@ function assertValidRecord(
   fact?: unknown;
   hookMissing?: boolean;
   wiki?: string;
+  /**
+   * Optional build-time difficulty tier (1–5). Validated shape-wise by the
+   * prebuild gate (scripts/check-generated-places.mjs); toStarter falls
+   * back to 3 for any non-integer/out-of-range value, so this is
+   * grandfathered, never a hard error here.
+   */
+  difficulty?: unknown;
   iso2: string;
   edition: Edition;
   regionId: string;

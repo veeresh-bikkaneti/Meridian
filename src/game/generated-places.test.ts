@@ -645,3 +645,46 @@ test("history without a wiki slug is rejected (attribution pairing)", () => {
   };
   assert.throws(() => startersFromChunk("texas", chunk), /invalid history hook sentence/);
 });
+test("toStarter prefers the stamped difficulty, backfills 3 for missing/invalid", () => {
+  // Difficulty tiers (dataset crew): the build script stamps an integer 1–5
+  // on every chunk record. toStarter must prefer it and backfill medium (3)
+  // for anything missing or hand-edited — a bad value must never poison the
+  // v3 multiplier.
+  const base = {
+    name: "Tierville",
+    lon: 10,
+    lat: 50,
+    blurb: "Tierville is a city in Nowhere.",
+    iso2: "DE",
+    edition: "country",
+    regionId: "germany",
+  };
+  const chunkFor = (places: unknown[]) => ({
+    meta: { regionId: "germany", edition: "country", count: places.length },
+    places,
+  });
+  const records = [
+    { ...base, id: "gn-t1", difficulty: 1 },
+    { ...base, id: "gn-t2", difficulty: 2 },
+    { ...base, id: "gn-t4", difficulty: 4 },
+    { ...base, id: "gn-t5", difficulty: 5 },
+    { ...base, id: "gn-missing" },
+    { ...base, id: "gn-zero", difficulty: 0 },
+    { ...base, id: "gn-six", difficulty: 6 },
+    { ...base, id: "gn-float", difficulty: 2.5 },
+    { ...base, id: "gn-string", difficulty: "3" },
+    { ...base, id: "gn-null", difficulty: null },
+  ];
+  const starters = startersFromChunk("germany", chunkFor(records));
+  const byId = new Map(starters.map((s) => [s.id, s]));
+  // Stamped integers 1–5 survive untouched.
+  assert.equal(byId.get("gn-t1")?.difficulty, 1);
+  assert.equal(byId.get("gn-t2")?.difficulty, 2);
+  assert.equal(byId.get("gn-t4")?.difficulty, 4);
+  assert.equal(byId.get("gn-t5")?.difficulty, 5);
+  // Missing or invalid backfills to medium (3) — back-compat for legacy
+  // chunks and hand-edited records.
+  for (const id of ["gn-missing", "gn-zero", "gn-six", "gn-float", "gn-string", "gn-null"]) {
+    assert.equal(byId.get(id)?.difficulty, 3, `${id} must backfill to 3`);
+  }
+});

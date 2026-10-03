@@ -29,8 +29,9 @@ Easy/Medium/Hard picker at run start + fame-weighted dealing within the pool.
 ## Pending
 - [ ] IMPLEMENTATION (3 crews running in parallel):
   - [x] Crew 3 — weighted dealer DONE (commit `ae0da32`): Efraimidis–Spirakis in `buildCycle`, `w = 6 − difficulty`, mulberry32 seeded from `cycleSeed`, determinism/no-repeat/boundary/exhaustion preserved; 8 new tests incl. statistical skew proof; full suite 400/400 green
-  - [ ] Crew 1 — dataset: build-script tier stamping + chunk rebuild + `toStarter()` preference + curated pin + gates (running)
+  - [ ] Crew 1 — dataset: build-script tier stamping + chunk rebuild + `toStarter()` preference + curated pin + gates (running; NEW: also stamping `subdivision` per place from admin1CodesASCII — one rebuild total)
   - [ ] Crew 2 — picker + run plumbing (running)
+  - [ ] Crew 4 — subdivision labels: `Starter.subdivision`, `question-label.ts` wiring per #38 rules (Country → `{Place}, {Subdivision}`; Globe collision → three-part), curated-starter subdivisions, label tests + India E2E spec (spawned)
 - [ ] E2E (after all 3 crews): picker renders; Easy deals famous; Hard can deal obscure; multipliers apply; resume keeps tier
 - [ ] Gates: technical-architect review → tone/docs review (picker copy) → PR → merge → live verify
 - [ ] Design sign-off: tier cutoffs + picker UX (kid-friendly, one tap)

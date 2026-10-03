@@ -168,6 +168,18 @@ function main() {
       });
       if (v.length > 0) violations.push(...v.map((m) => `${file}: ${m}`));
 
+      // Difficulty tier: optional on legacy records, but any present value
+      // must be an integer 1–5 — fail closed on anything else. Stamped at
+      // build time by scripts/build-geonames-dataset.mjs (tierFor).
+      if (place.difficulty !== undefined) {
+        const d = place.difficulty;
+        if (!Number.isInteger(d) || d < 1 || d > 5) {
+          violations.push(
+            `${tag}: invalid difficulty ${JSON.stringify(d)} — must be an integer 1–5`,
+          );
+        }
+      }
+
       // History hook sentences: shape gate. Wikipedia-extract histories were
       // proved verbatim by the merge-time gate; curated notable notes
       // (src/game/data/notable-notes.json) are Veeresh-approved instead.

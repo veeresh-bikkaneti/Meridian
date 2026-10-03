@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "GeoNames (CC-BY 4.0) — attribution required (see integration step)",
-    "generated": "2026-10-01",
+    "generated": "2026-10-03",
     "script": "scripts/build-geonames-dataset.mjs",
     "populationThreshold": 1500,
     "gate": "hyderabad",
@@ -18,337 +18,332 @@
       "marginDeg": 0.15
     },
     "total": 124690,
-    "chunkBytes": 23586487,
+    "chunkBytes": 27825708,
     "quarantine": {},
     "duplicatesDropped": 0,
     "rawRows": 13472204,
-    "keptRows": 124690,
-    "enrichment": {
-      "source": "Wikipedia article intros (CC BY-SA) via the MediaWiki API",
-      "historySentences": 285,
-      "generated": "2026-10-01"
-    }
+    "keptRows": 124690
   },
   "regions": {
     "alabama": {
       "edition": "state",
       "count": 261,
-      "bytes": 53577
+      "bytes": 62444
     },
     "alaska": {
       "edition": "state",
       "count": 52,
-      "bytes": 11042
+      "bytes": 12803
     },
     "arizona": {
       "edition": "state",
       "count": 181,
-      "bytes": 39132
+      "bytes": 45279
     },
     "arkansas": {
       "edition": "state",
       "count": 177,
-      "bytes": 37597
+      "bytes": 43608
     },
     "australia": {
       "edition": "country",
       "count": 3299,
-      "bytes": 708766
+      "bytes": 820932
     },
     "brazil": {
       "edition": "country",
       "count": 5719,
-      "bytes": 1093836
+      "bytes": 1288282
     },
     "california": {
       "edition": "state",
       "count": 1014,
-      "bytes": 206429
+      "bytes": 240884
     },
     "canada": {
       "edition": "country",
       "count": 2462,
-      "bytes": 484077
+      "bytes": 567785
     },
     "china": {
       "edition": "country",
       "count": 3274,
-      "bytes": 577420
+      "bytes": 688729
     },
     "colorado": {
       "edition": "state",
       "count": 182,
-      "bytes": 36326
+      "bytes": 42507
     },
     "connecticut": {
       "edition": "state",
       "count": 171,
-      "bytes": 35114
+      "bytes": 40921
     },
     "delaware": {
       "edition": "state",
       "count": 42,
-      "bytes": 8754
+      "bytes": 10175
     },
     "egypt": {
       "edition": "country",
       "count": 257,
-      "bytes": 47941
+      "bytes": 56665
     },
     "florida": {
       "edition": "state",
       "count": 741,
-      "bytes": 147205
+      "bytes": 172385
     },
     "france": {
       "edition": "country",
       "count": 6293,
-      "bytes": 1216607
+      "bytes": 1430562
     },
     "georgia": {
       "edition": "state",
       "count": 319,
-      "bytes": 62786
+      "bytes": 73625
     },
     "germany": {
       "edition": "country",
       "count": 6308,
-      "bytes": 1191199
+      "bytes": 1405671
     },
     "globe": {
       "edition": "globe",
       "count": 59423,
-      "bytes": 10996183
+      "bytes": 13016464
     },
     "hawaii": {
       "edition": "state",
       "count": 219,
-      "bytes": 44334
+      "bytes": 51773
     },
     "idaho": {
       "edition": "state",
       "count": 74,
-      "bytes": 14723
+      "bytes": 17232
     },
     "illinois": {
       "edition": "state",
       "count": 640,
-      "bytes": 127394
+      "bytes": 149454
     },
     "india": {
       "edition": "country",
       "count": 6990,
-      "bytes": 1272943
+      "bytes": 1510561
     },
     "indiana": {
       "edition": "state",
       "count": 285,
-      "bytes": 55913
+      "bytes": 65596
     },
     "iowa": {
       "edition": "state",
       "count": 207,
-      "bytes": 39243
+      "bytes": 46274
     },
     "italy": {
       "edition": "country",
       "count": 5234,
-      "bytes": 967149
+      "bytes": 1145084
     },
     "japan": {
       "edition": "country",
       "count": 2057,
-      "bytes": 361864
+      "bytes": 431795
     },
     "kansas": {
       "edition": "state",
       "count": 149,
-      "bytes": 29170
+      "bytes": 34229
     },
     "kentucky": {
       "edition": "state",
       "count": 212,
-      "bytes": 42500
+      "bytes": 49701
     },
     "louisiana": {
       "edition": "state",
       "count": 234,
-      "bytes": 47048
+      "bytes": 54990
     },
     "maine": {
       "edition": "state",
       "count": 165,
-      "bytes": 31664
+      "bytes": 37267
     },
     "maryland": {
       "edition": "state",
       "count": 446,
-      "bytes": 89693
+      "bytes": 104850
     },
     "massachusetts": {
       "edition": "state",
       "count": 429,
-      "bytes": 88756
+      "bytes": 103335
     },
     "mexico": {
       "edition": "country",
       "count": 5724,
-      "bytes": 1113798
+      "bytes": 1308407
     },
     "michigan": {
       "edition": "state",
       "count": 366,
-      "bytes": 72880
+      "bytes": 85317
     },
     "minnesota": {
       "edition": "state",
       "count": 300,
-      "bytes": 59920
+      "bytes": 70113
     },
     "mississippi": {
       "edition": "state",
       "count": 159,
-      "bytes": 32598
+      "bytes": 37997
     },
     "missouri": {
       "edition": "state",
       "count": 308,
-      "bytes": 61088
+      "bytes": 71553
     },
     "montana": {
       "edition": "state",
       "count": 73,
-      "bytes": 14947
+      "bytes": 17422
     },
     "nebraska": {
       "edition": "state",
       "count": 81,
-      "bytes": 16479
+      "bytes": 19226
     },
     "nevada": {
       "edition": "state",
       "count": 50,
-      "bytes": 10382
+      "bytes": 12075
     },
     "new-hampshire": {
       "edition": "state",
       "count": 137,
-      "bytes": 28483
+      "bytes": 33134
     },
     "new-jersey": {
       "edition": "state",
       "count": 520,
-      "bytes": 104904
+      "bytes": 122577
     },
     "new-mexico": {
       "edition": "state",
       "count": 110,
-      "bytes": 22782
+      "bytes": 26515
     },
     "new-york": {
       "edition": "state",
       "count": 907,
-      "bytes": 181595
+      "bytes": 212419
     },
     "north-carolina": {
       "edition": "state",
       "count": 379,
-      "bytes": 79230
+      "bytes": 92109
     },
     "north-dakota": {
       "edition": "state",
       "count": 36,
-      "bytes": 7983
+      "bytes": 9200
     },
     "ohio": {
       "edition": "state",
       "count": 577,
-      "bytes": 109699
+      "bytes": 129310
     },
     "oklahoma": {
       "edition": "state",
       "count": 177,
-      "bytes": 34806
+      "bytes": 40817
     },
     "oregon": {
       "edition": "state",
       "count": 186,
-      "bytes": 36512
+      "bytes": 42829
     },
     "pennsylvania": {
       "edition": "state",
       "count": 915,
-      "bytes": 189101
+      "bytes": 220204
     },
     "rhode-island": {
       "edition": "state",
       "count": 45,
-      "bytes": 9765
+      "bytes": 11288
     },
     "south-carolina": {
       "edition": "state",
       "count": 216,
-      "bytes": 45523
+      "bytes": 52860
     },
     "south-dakota": {
       "edition": "state",
       "count": 51,
-      "bytes": 11084
+      "bytes": 12811
     },
     "tennessee": {
       "edition": "state",
       "count": 251,
-      "bytes": 50577
+      "bytes": 59104
     },
     "texas": {
       "edition": "state",
       "count": 841,
-      "bytes": 159901
+      "bytes": 188488
     },
     "united-kingdom": {
       "edition": "country",
       "count": 3394,
-      "bytes": 688053
+      "bytes": 803421
     },
     "united-states": {
       "edition": "country",
       "count": 55,
-      "bytes": 13188
+      "bytes": 15131
     },
     "utah": {
       "edition": "state",
       "count": 146,
-      "bytes": 27965
+      "bytes": 32922
     },
     "vermont": {
       "edition": "state",
       "count": 52,
-      "bytes": 10707
+      "bytes": 12468
     },
     "virginia": {
       "edition": "state",
       "count": 276,
-      "bytes": 55296
+      "bytes": 64673
     },
     "washington": {
       "edition": "state",
       "count": 361,
-      "bytes": 73253
+      "bytes": 85520
     },
     "west-virginia": {
       "edition": "state",
       "count": 109,
-      "bytes": 23066
+      "bytes": 26765
     },
     "wisconsin": {
       "edition": "state",
       "count": 327,
-      "bytes": 65146
+      "bytes": 76257
     },
     "wyoming": {
       "edition": "state",
       "count": 45,
-      "bytes": 9391
+      "bytes": 10914
     }
   }
 }
