@@ -133,6 +133,7 @@ function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?:
 export function ResultCard({
   run,
   place,
+  placeLabel,
   drop,
   story,
   empty,
@@ -142,6 +143,13 @@ export function ResultCard({
 }: {
   run: Run;
   place: Starter | null;
+  /**
+   * The qualified question label ("Manhattan, Nebraska, United States"),
+   * computed by the parent via buildQuestionLabel so the reveal card title
+   * matches what the question bubble asked. Falls back to the bare place
+   * name when disambiguation can't resolve.
+   */
+  placeLabel: string;
   drop: Drop | null;
   story: string | null;
   empty: boolean;
@@ -230,7 +238,7 @@ export function ResultCard({
                     tabIndex={-1}
                     className="mt-0.5 font-display text-2xl leading-tight outline-none"
                   >
-                    {place.name}
+                    {placeLabel}
                   </h2>
                 </>
               ) : (

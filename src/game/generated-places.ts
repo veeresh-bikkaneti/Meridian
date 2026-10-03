@@ -110,7 +110,18 @@ function factText(fact: unknown): string | null {
 
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
 function toStarter(
-  place: { id: string; name: string; lon: number; lat: number; blurb: string; history?: string; wiki?: string; fact?: unknown },
+  place: {
+    id: string;
+    name: string;
+    lon: number;
+    lat: number;
+    blurb: string;
+    history?: string;
+    wiki?: string;
+    fact?: unknown;
+    /** ISO-3166-1 alpha-2 country code — validated non-empty by assertValidRecord; threaded onto the Starter for question disambiguation labels. */
+    iso2: string;
+  },
   edition: Edition,
   regionId: string,
 ): Starter {
@@ -143,6 +154,7 @@ function toStarter(
     sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
     sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
     difficulty,
+    iso2: place.iso2,
   };
 }
 
