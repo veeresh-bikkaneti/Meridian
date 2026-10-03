@@ -125,6 +125,10 @@ export default defineConfig({
       name: "endgame-share",
       testMatch: /endgame-share\.spec\.ts/,
     },
+    {
+      name: "crash-loop-breaker",
+      testMatch: /crash-loop-breaker\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],

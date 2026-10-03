@@ -18,7 +18,9 @@
 - [x] Incidental real defect found (NOT the crash): intermittent React #418 hydration error + post-reload tap stall; predates #40; sibling worktree `fix/reload-reveal-restore` already covers this area — not duplicating.
 
 ## In progress
-- [ ] **Fix: crash-loop breaker** — pagehide-gated clean-exit flag: `writeRun` stamps `meridian.cleanExit="0"`; `pagehide` stamps `"1"`; the mount-restore effect skips auto-resume (clears the stale run, lands on menu) when the flag is `"0"` (previous page died without unloading). Missing flag = clean (preserves pre-update runs). Normal reloads keep the intentional resume behavior.
+- [x] **Fix shipped: crash-loop breaker** — pagehide-gated clean-exit flag (`meridian.cleanExit`): `writeRun` stamps `"0"`; `pagehide` stamps `"1"`; the boot effect skips auto-resume (clears the stale run, re-arms `"1"`, lands on menu) when the flag is `"0"`. Missing flag = clean (pre-update runs resume as before). Helper module `src/game/clean-exit.ts` + ~10 lines wiring in `game-app.tsx`; no behavior change for any clean exit.
+- [x] **Gates green**: 8 new unit tests (`clean-exit.test.ts`, all pass; full suite 393/393); `tsc --noEmit` clean; card gate GATE PASSED; `build:pages` green; E2E `crash-loop-breaker.spec.ts` 3/3 on the built artifact (kill→menu+run cleared, clean→resume, normal reload→resume), clean console; technical-architect + tone/docs/a11y reviews passed (a11y: kill landing is the standard menu DOM, no focus work needed).
+- [ ] PR → merge → live Pages verification (auto-merge authorization in hand)
 
 ## Pending
 - [ ] Fix through full gates (unit, typecheck, build, both reviews, E2E) → PR → merge → live verification
