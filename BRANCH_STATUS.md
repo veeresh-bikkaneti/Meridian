@@ -41,7 +41,7 @@ native share sheet where available, clipboard fallback elsewhere. Per-place
 
 ## Pending
 - [ ] Technical-architect review + tone/docs/accessibility review
-- [ ] Playwright E2E (clipboard assertion + mocked navigator.share, clean console)
+- [x] Playwright E2E (clipboard assertion + mocked navigator.share, clean console) — 2/2 green ×2 runs: `tests/e2e/endgame-share.spec.ts` (new `endgame-share` project in `playwright.config.ts`). Clipboard path asserts the exact session share text on the clipboard (starts `meridian <date>`, site URL on its own line, screen-total match, no place name) + "Copied ✓" button/live-region; native path asserts the stub was called exactly once with `{ title, text, url }` and the clipboard sentinel untouched + "Shared ✓"; both runs console-clean (only the pre-existing React #418 filter).
 - [ ] PR opened → merged → live build verified → worktree removed
 
 ## Notes / decisions
