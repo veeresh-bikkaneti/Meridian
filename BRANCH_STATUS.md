@@ -17,12 +17,14 @@ Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 - [x] GitHub App connected (Liz, via Muse connector): OAuth authorized as `veeresh-bikkaneti`; Meridian read access verified via API (`get_file_contents` on `scripts/enrich-wikipedia.mjs`). Standing instruction (Liz, 2026-10-02): keep pushing progressively to the remote branch so a VM crash loses no work.
 - [x] **`gh` CLI authenticated (Liz, device flow, 2026-10-02)** as `veeresh-bikkaneti` (scopes: repo, read:org, gist); `gh auth setup-git` done — plain `git push` now works from this VM.
 - [x] **Branch PUSHED** to `origin/feat/wikipedia-crawl` (first push 2026-10-02 ~15:31 CDT, remote at `80f1faa`). Progressive pushes continue at milestones. No PR opened (Veeresh decides).
+- [x] **CRAWL COMPLETE — 2026-10-03 ~09:55 CDT.** The final segment's log line: `crawl done: 2797 places`. Final `report` (verified first-hand by the parent agent): **124,312 unique cached IDs** (the full crawl-eligible set; 124,690 dataset denominator, 378 places excluded upstream as 93 notable + 285 already carrying history), **71,957 matched extracts**, **9,129 hook candidates**. Full breakdown: matched 71,957, title-mismatch 41,425, no-article 5,234, no-extract 5,696 (sums to 124,312). Cache: `.scratch/wikipedia-enrichment/crawl-cache.jsonl`, 36 MB, on this VM (gitignored by design — it was never committed; it lives in the worktree for the merge decision). The crawl process died and was restarted losslessly by the watch cron many times across 2026-10-02–03 (runtime/VM restarts); every restart resumed from the cache with zero data loss. No crawl process is running now — none is needed.
 
 ## Pending
 
-- [ ] Full coverage: 124,312 crawl-eligible places (124,690 dataset denominator)
-- [ ] Final report (unique IDs / extracts / hook candidates) — from `node scripts/enrich-wikipedia.mjs report` when the crawl completes
-- [x] Push to `origin/feat/wikipedia-crawl` — **DONE** via `gh`-authenticated git push (see Done). Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protect this status file and any script work; the cache survives VM replacement in `~/workspace` and is resumable. Latest crawl snapshot (2026-10-03 09:37 CDT): process RUNNING — PID 7708 (verified via ps aux after restart this run; previous process was dead — confirmed by ps showing no node crawl process). Restarted losslessly: log shows `places to crawl: 2,797 (121,515 cached)`. `report` — unique non-error IDs 121,515 / 124,312, matched extracts 69,589, hook candidates 8,728; breakdown: matched 69,589, title-mismatch 41,184, no-article 5,234, no-extract 5,508.
+- [x] Full coverage: 124,312 crawl-eligible places (124,690 dataset denominator) — **DONE, see above**
+- [x] Final report (unique IDs / extracts / hook candidates) — **DONE: 124,312 / 71,957 / 9,129**
+- [ ] **The `merge` step — Veeresh's decision, deliberately NOT done.** `node scripts/enrich-wikipedia.mjs merge` patches the 124k-place chunk dataset and was out of scope for this branch per the delegation prompt. The cache is ready in the worktree when he decides.
+- [x] Push to `origin/feat/wikipedia-crawl` — **DONE** via `gh`-authenticated git push (see Done). Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protected this status file throughout; the cache survived every VM replacement in `~/workspace` and was resumable.
 
 ## Blockers
 
