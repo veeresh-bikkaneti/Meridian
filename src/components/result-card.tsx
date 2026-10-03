@@ -2,6 +2,8 @@ import { formatDistance } from "@/game/geo";
 import { summarizeRun, type Run } from "@/game/run";
 import { formatBreakdown, comboForStreak, formatFactor } from "@/game/scoring";
 import { shareText } from "@/game/share";
+import { SHARE_URL } from "@/game/share-action";
+import { ShareButton } from "./share-button";
 import type { Starter } from "@/game/starters";
 import { Button } from "@/components/ui/button";
 import type { Drop } from "./game-app";
@@ -99,7 +101,6 @@ function AiStoryBadge() {
 }
 
 function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?: "primary" | "secondary" }) {
-  const [copied, setCopied] = useState(false);
   const summary = summarizeRun(run);
   const line = shareText({
     regionName: run.regionName,
@@ -115,17 +116,13 @@ function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?:
       <pre className="whitespace-pre-wrap rounded-lg border border-white/10 bg-black/30 px-4 py-3 font-sans text-sm leading-relaxed text-white">
         {line}
       </pre>
-      <Button
+      <ShareButton
+        title="Meridian score"
+        text={line}
+        url={SHARE_URL}
+        label="Share result"
         variant={copyVariant}
-        onClick={() => {
-          void navigator.clipboard.writeText(line).then(
-            () => setCopied(true),
-            () => setCopied(false),
-          );
-        }}
-      >
-        {copied ? "Copied" : "Copy result"}
-      </Button>
+      />
     </div>
   );
 }
