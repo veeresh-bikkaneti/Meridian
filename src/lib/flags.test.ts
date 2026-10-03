@@ -1,4 +1,4 @@
-import { describe, it, beforeEach } from "node:test";
+import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import {
   FLAG_DEFAULTS,
@@ -243,5 +243,106 @@ describe("flags — never throws / never rejects", () => {
       assert.equal(isEnabled(undefined as unknown as FlagName), false);
       assert.equal(isEnabled(null as unknown as FlagName), false);
     });
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Production-path tests: the memoized load promise, the await-before-check
+// ordering the __root.tsx kill-switch relies on, and the SSR early return.
+//
+// Under node --test there is no window, so the production path early-returns;
+// these tests install a fake window (and a fake global fetch) to reach it.
+// The afterEach below restores the originals so the testEnv-based suites
+// above are unaffected.
+// ---------------------------------------------------------------------------
+
+const ORIG_FETCH = (globalThis as Record<string, unknown>).fetch;
+
+function installProdDom(
+  fetchFn: (url: string, init?: RequestInit) => Promise<Response>,
+) {
+  const g = globalThis as Record<string, unknown>;
+  g.window = {};
+  g.fetch = fetchFn;
+}
+
+afterEach(() => {
+  const g = globalThis as Record<string, unknown>;
+  delete g.window;
+  g.fetch = ORIG_FETCH;
+});
+
+describe("flags — memoized production load", () => {
+  it("concurrent callers share one fetch (the memoized promise)", async () => {
+    const { fn, seen } = fakeFetch(
+      okResponse({ flags: { pwaUpdateToast: false } }),
+      50,
+    );
+    installProdDom(fn);
+    const p1 = loadFlags();
+    const p2 = loadFlags();
+    assert.equal(p1, p2, "concurrent calls must share the memoized promise");
+    assert.equal(
+      isEnabled("pwaUpdateToast"),
+      true,
+      "sync read before the await sees the baked-in default",
+    );
+    await p1;
+    assert.equal(
+      isEnabled("pwaUpdateToast"),
+      false,
+      "awaiting the shared load applies the remote value — the kill-switch ordering",
+    );
+    assert.deepEqual(seen, ["/flags.json"]);
+  });
+
+  it("a later call after the load settles re-fetches (no stale promise)", async () => {
+    const { fn, seen } = fakeFetch(okResponse({ flags: {} }));
+    installProdDom(fn);
+    await loadFlags();
+    await loadFlags();
+    assert.equal(seen.length, 2);
+  });
+
+  it("the testEnv seam always runs fresh, bypassing the memoized promise", async () => {
+    const prod = fakeFetch(okResponse({ flags: { pwaUpdateToast: false } }), 100);
+    const seam = fakeFetch(okResponse({ flags: { pwaUpdateToast: true } }));
+    installProdDom(prod.fn);
+    const pending = loadFlags(); // memoized, in flight
+    await loadFlags({ ...BASE, fetch: seam.fn }); // testEnv: always its own fetch
+    assert.equal(
+      seam.seen.length,
+      1,
+      "the test seam must not share the in-flight production promise",
+    );
+    await pending;
+    assert.equal(prod.seen.length, 1);
+  });
+
+  it("resetFlags clears the in-flight promise so the next call re-fetches", async () => {
+    const { fn, seen } = fakeFetch(
+      okResponse({ flags: { pwaUpdateToast: false } }),
+      100,
+    );
+    installProdDom(fn);
+    const pending = loadFlags();
+    resetFlags();
+    const retry = loadFlags();
+    assert.notEqual(pending, retry);
+    await Promise.all([pending, retry]);
+    assert.equal(seen.length, 2);
+  });
+
+  it("resolves without fetching when there is no window (SSR) — defaults win", async () => {
+    const g = globalThis as Record<string, unknown>;
+    delete g.window;
+    let calls = 0;
+    g.fetch = async () => {
+      calls++;
+      throw new Error("must not fetch in SSR");
+    };
+    await loadFlags(); // no testEnv → production path
+    assert.equal(calls, 0, "no fetch may happen server-side");
+    assert.equal(isEnabled("pwaUpdateToast"), true);
   });
 });

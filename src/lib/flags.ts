@@ -1,17 +1,24 @@
 /**
  * Feature flags — zero-cost, dependency-free kill-switches for Meridian.
  *
- * Why: experimental tracks merge behind flags, dark in production until
- * proven. A remote `public/flags.json` can flip a flag off without a new
- * deploy; baked-in defaults always equal current production behavior, so
- * the safe fallback is byte-identical to today's app.
+ * Why: experimental tracks merge behind flags, disabled in production until
+ * proven. A redeployed `public/flags.json` flips a flag off without a new
+ * client release — the change reaches clients on their next boot, never
+ * waiting on a pending service-worker update; baked-in defaults always
+ * equal current production behavior, so the safe fallback is byte-identical
+ * to today's app.
  *
- * Boot-time, not reactive: `loadFlags()` is kicked off fire-and-forget at
- * boot in parallel with rendering. `isEnabled()` is a synchronous read —
- * calls made before `loadFlags()` resolves see the baked-in defaults.
- * Gated systems therefore read their flag once, before they initialize
- * (not on every render), and treat the boot-time value as authoritative
- * for the session. There is intentionally no subscription mechanism.
+ * Boot-time, not reactive: `loadFlags()` memoizes the production fetch, so
+ * concurrent callers share one request. Kill-switches MUST await the shared
+ * promise before checking the flag — the `__root.tsx` pattern is
+ * `loadFlags().then(() => { if (!isEnabled("x")) return; ... })`. The ~1.5s
+ * timeout bounds the delay and never blocks first paint (first paint is
+ * unaffected: gating happens post-commit in an effect). Pure UI gates may
+ * keep the synchronous read, accepting the baked-in defaults until the load
+ * resolves. Gate inside an init/effect function, never at module scope —
+ * module scope always reads the baked-in defaults. Gated systems treat the
+ * boot-time value as authoritative for the session; there is intentionally
+ * no subscription mechanism.
  *
  * Safety contract:
  * - `isEnabled()` never throws and never returns a non-boolean.
@@ -44,11 +51,20 @@ const FLAGS_FILE = "flags.json";
 let overrides: Partial<Record<FlagName, boolean>> = {};
 
 /**
- * Test-only reset: restores the pre-load state (no remote overrides).
- * Production code never calls this.
+ * Memoized production load promise: concurrent `loadFlags()` callers share
+ * one fetch. Cleared when the load settles, so a later explicit call
+ * re-fetches rather than returning a stale promise. The `testEnv` seam
+ * bypasses this entirely (always fresh) to preserve test semantics.
+ */
+let inflight: Promise<void> | null = null;
+
+/**
+ * Test-only reset: restores the pre-load state (no remote overrides, no
+ * shared in-flight load). Production code never calls this.
  */
 export function resetFlags(): void {
   overrides = {};
+  inflight = null;
 }
 
 function viteBaseUrl(): string | undefined {
@@ -115,21 +131,36 @@ function applyPayload(data: unknown): void {
 }
 
 /**
- * Load remote flag overrides. Network-first with a timeout; fire-and-forget
- * in parallel with boot — it never blocks first paint and never rejects.
- * On timeout / network failure / offline / invalid payload, the baked-in
- * defaults win silently.
+ * Load remote flag overrides. Network-first with a timeout — never blocks
+ * first paint and never rejects. On timeout / network failure / offline /
+ * invalid payload, the baked-in defaults win silently.
  *
- * `testEnv` is a test seam: under `node --test`, `import.meta.env` is
- * undefined, so unit tests inject `BASE_URL`, a fake `fetch`, and a
- * `timeoutMs` here. Production callers omit it.
+ * Kill-switches MUST await this before checking the flag; the production
+ * promise is memoized so the boot-time kickoff and every gated effect share
+ * one fetch. (`testEnv` is a test seam: under `node --test`,
+ * `import.meta.env` is undefined, so unit tests inject `BASE_URL`, a fake
+ * `fetch`, and a `timeoutMs` here — and that path always runs fresh, never
+ * sharing the memoized promise.) Production callers omit it.
  */
-export async function loadFlags(testEnv?: LoadFlagsEnv): Promise<void> {
-  const fetchFn =
-    testEnv?.fetch ?? (typeof fetch === "function" ? fetch : undefined);
-  if (!fetchFn) return; // no fetch available (SSR without polyfill) — defaults win
+export function loadFlags(testEnv?: LoadFlagsEnv): Promise<void> {
+  if (testEnv) return doLoad(testEnv);
+  // SSR without a DOM: no fetch is safe to share across modules — defaults win.
+  if (typeof window === "undefined") return Promise.resolve();
+  if (!inflight) {
+    inflight = doLoad().finally(() => {
+      inflight = null;
+    });
+  }
+  return inflight;
+}
 
-  const timeoutMs = testEnv?.timeoutMs ?? FLAGS_FETCH_TIMEOUT_MS;
+/** One load attempt: fetch, validate, and merge the remote payload. */
+async function doLoad(env: LoadFlagsEnv = {}): Promise<void> {
+  const fetchFn =
+    env.fetch ?? (typeof fetch === "function" ? fetch : undefined);
+  if (!fetchFn) return; // no fetch available — defaults win
+
+  const timeoutMs = env.timeoutMs ?? FLAGS_FETCH_TIMEOUT_MS;
   const controller =
     typeof AbortController === "function" ? new AbortController() : null;
   const timer =
@@ -138,7 +169,7 @@ export async function loadFlags(testEnv?: LoadFlagsEnv): Promise<void> {
       : null;
 
   try {
-    const res = await fetchFn(flagsUrl(testEnv?.BASE_URL ?? viteBaseUrl()), {
+    const res = await fetchFn(flagsUrl(env.BASE_URL ?? viteBaseUrl()), {
       signal: controller?.signal,
       // The SW serves flags.json network-first with its own small cache;
       // no-store here keeps the browser HTTP cache out of the kill path.

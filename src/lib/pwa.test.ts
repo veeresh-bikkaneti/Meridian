@@ -1,6 +1,6 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { registerServiceWorker } from "./pwa.ts";
+import { registerServiceWorker, unregisterServiceWorker } from "./pwa.ts";
 
 /**
  * Focused lifecycle tests for the PWA update policy:
@@ -90,8 +90,14 @@ function installDom(opts: {
   serviceWorker?: boolean;
   controller?: boolean;
   registerImpl?: () => Promise<unknown>;
+  getRegistrationImpl?: () => Promise<unknown>;
 } = {}) {
-  const { serviceWorker = true, controller = true, registerImpl } = opts;
+  const {
+    serviceWorker = true,
+    controller = true,
+    registerImpl,
+    getRegistrationImpl,
+  } = opts;
   const intervals = new Map<number, () => void>();
   let nextId = 1;
   const cleared: number[] = [];
@@ -101,6 +107,7 @@ function installDom(opts: {
   let registerUrl = "";
   let registerScope = "";
   let registerCalls = 0;
+  let getRegistrationCalls = 0;
 
   const fakeWindow = {
     setInterval(fn: () => void) {
@@ -142,6 +149,11 @@ function installDom(opts: {
       if (registerImpl) return registerImpl();
       return registration;
     },
+    async getRegistration() {
+      getRegistrationCalls++;
+      if (getRegistrationImpl) return getRegistrationImpl();
+      return null;
+    },
     addEventListener(type: string, fn: Listener) {
       swListeners.set(type, [...(swListeners.get(type) ?? []), fn]);
     },
@@ -178,6 +190,9 @@ function installDom(opts: {
     },
     get registerCalls() {
       return registerCalls;
+    },
+    get getRegistrationCalls() {
+      return getRegistrationCalls;
     },
   };
 }
@@ -423,5 +438,68 @@ describe("registerServiceWorker — polling", () => {
     tick();
     assert.equal(dom.registration.updateCalls, before + 1);
     result.handle.dispose();
+  });
+});
+
+describe("unregisterServiceWorker — kill-switch cleanup", () => {
+  it("returns false when no registration exists", async () => {
+    const dom = installDom();
+    assert.equal(await unregisterServiceWorker(PROD), false);
+    assert.equal(dom.getRegistrationCalls, 1);
+  });
+
+  it("unregisters a live registration and never reloads the page", async () => {
+    let unregistered = 0;
+    const reg = {
+      async unregister() {
+        unregistered++;
+        return true;
+      },
+    };
+    const dom = installDom({ getRegistrationImpl: async () => reg });
+    assert.equal(await unregisterServiceWorker(PROD), true);
+    assert.equal(unregistered, 1);
+    // The kill-switch never bounces the page: the current document keeps
+    // its controller until the next navigation.
+    assert.equal(dom.reloads, 0);
+  });
+
+  it("returns false outside production", async () => {
+    const dom = installDom({
+      getRegistrationImpl: async () => ({ unregister: async () => true }),
+    });
+    assert.equal(await unregisterServiceWorker(), false);
+    assert.equal(dom.getRegistrationCalls, 0);
+  });
+
+  it("returns false when service workers are unavailable", async () => {
+    installDom({ serviceWorker: false });
+    assert.equal(await unregisterServiceWorker(PROD), false);
+  });
+
+  it("returns false when getRegistration throws — never breaks the app", async () => {
+    installDom({
+      getRegistrationImpl: async () => {
+        throw new Error("denied");
+      },
+    });
+    assert.equal(await unregisterServiceWorker(PROD), false);
+  });
+
+  it("returns false when unregister throws — never breaks the app", async () => {
+    installDom({
+      getRegistrationImpl: async () => ({
+        async unregister() {
+          throw new Error("gone");
+        },
+      }),
+    });
+    assert.equal(await unregisterServiceWorker(PROD), false);
+  });
+
+  it("returns false without a window (SSR)", async () => {
+    const g = globalThis as Record<string, unknown>;
+    delete g.window;
+    assert.equal(await unregisterServiceWorker(PROD), false);
   });
 });

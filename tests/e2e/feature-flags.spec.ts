@@ -16,10 +16,11 @@ import { serveBuiltArtifact } from "./helpers";
  *    - flags.json missing / slow / network-failing → baked-in defaults,
  *      boot unaffected.
  *
- * flags.json is route-intercepted per test. The app's module-scope
- * loadFlags() fires before the PwaUpdateToast effect commits, so the
- * intercepted value wins the boot-time read deterministically with local
- * (sub-ms) route fulfillment.
+ * flags.json is route-intercepted per test. The PwaUpdateToast effect AWAITS
+ * the memoized loadFlags() promise before reading the flag, so the kill
+ * decision wins the boot-time race deterministically — the "flag off" spec
+ * below proves it on a REALISTIC network (500ms flags.json latency), not
+ * via sub-ms route rigging.
  */
 
 const APP_URL = "http://127.0.0.1:4123/Meridian/";
@@ -144,26 +145,69 @@ test("SW: flags.json falls back to the cache only when the network fails", async
   }
 });
 
-test("consumer: flag off → no SW registration, no toast", async ({
+test("consumer: flag off → no SW registration, no toast (realistic latency)", async ({
   page,
   context,
 }) => {
-  await fulfillFlagsJson(context, flagsBody(false));
+  // 500ms flags.json latency — under the old sync-read wiring this spec
+  // FAILED: the effect read the baked-in default (true) before the fetch
+  // resolved and registered the SW. The await pattern must win the race.
+  await fulfillFlagsJson(context, flagsBody(false), { delayMs: 500 });
 
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
 
   await page.goto(APP_URL);
+  // Boot is unaffected: first paint happens while flags.json is in flight.
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
 
-  // Give the (skipped) registration path time it would have used, then
-  // assert nothing was registered and no toast can ever appear.
+  // Give the kill path time to run past the 500ms fetch, then assert
+  // nothing was registered and no toast can ever appear.
   await page.waitForTimeout(3000);
   expect(await swRegistered(page)).toBe(false);
   await expect(
     page.getByText("A new version is ready to install."),
   ).toBeHidden();
   expect(relevantErrors(errors)).toEqual([]);
+});
+
+test("consumer: flag off with a live registration → unregisters, no reload", async ({
+  page,
+  context,
+}) => {
+  // Boot 1: flag on — the SW registers and takes control.
+  await fulfillFlagsJson(context, flagsBody(true));
+  await page.goto(APP_URL);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  await waitForControlled(page);
+  expect(await swRegistered(page)).toBe(true);
+
+  // Boot 2: the kill decision lands (500ms latency). The page must NOT
+  // reload itself — the kill-switch never bounces a live session.
+  await context.unroute(FLAGS_PATTERN);
+  await fulfillFlagsJson(context, flagsBody(false), { delayMs: 500 });
+
+  await page.reload();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+
+  let unexpectedNavigations = 0;
+  page.on("framenavigated", () => unexpectedNavigations++);
+
+  // The registration is removed once the awaited load applies the kill...
+  await expect
+    .poll(() => swRegistered(page), { timeout: 15_000 })
+    .toBe(false);
+  // ...and the kill path never reloaded the page to do it.
+  expect(unexpectedNavigations).toBe(0);
+
+  // Boot 3: subsequent boots are SW-free — no registration, no controller.
+  await page.reload();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  await page.waitForTimeout(2000);
+  expect(await swRegistered(page)).toBe(false);
+  expect(
+    await page.evaluate(() => !!navigator.serviceWorker.controller),
+  ).toBe(false);
 });
 
 test("consumer: flag on → today's behavior (SW registers)", async ({

@@ -2,18 +2,18 @@ import { BRAND } from "@/game/brand";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
-import { registerServiceWorker, type PwaUpdateHandle } from "@/lib/pwa";
+import { registerServiceWorker, unregisterServiceWorker, type PwaUpdateHandle } from "@/lib/pwa";
 import { isEnabled, loadFlags } from "@/lib/flags";
 import { useEffect, useState } from "react";
 import appCss from "../styles.css?url";
 
 const APP_NAME = BRAND.name;
 
-// Feature-flag overrides load network-first in parallel with boot —
-// fire-and-forget: it never blocks first paint and never rejects.
-// Flag checks run BEFORE gated systems initialize, so the PwaUpdateToast
-// effect below always sees either the remote value (fast network) or the
-// baked-in defaults. Flags are boot-time, not reactive.
+// Feature-flag overrides load network-first in parallel with boot. The
+// production load is memoized, so this kickoff and the PwaUpdateToast
+// effect below share one fetch — it never blocks first paint and never
+// rejects. The effect awaits the shared promise before reading the flag,
+// so a remote kill decision wins the boot-time race deterministically.
 void loadFlags();
 
 /**
@@ -29,19 +29,32 @@ function PwaUpdateToast() {
   useEffect(() => {
     let active = true;
     let current: PwaUpdateHandle | null = null;
-    // Kill-switch: when the flag is off, the PWA layer is disabled entirely
-    // — no service-worker registration, no update toast. The safe fallback
-    // is a plain web app. Default (true) is today's behavior, byte-identical.
-    if (!isEnabled("pwaUpdateToast")) return;
-    registerServiceWorker().then((result) => {
-      if (!active) {
-        result?.handle.dispose();
+    // Kill-switch: await the shared flags load BEFORE reading the flag, so
+    // a remote off wins the boot-time race deterministically (a synchronous
+    // read here would always see the baked-in default while the fetch is in
+    // flight). The ~1.5s timeout bounds the delay; first paint is
+    // unaffected — the effect runs post-commit and only SW registration
+    // defers on a hanging network.
+    loadFlags().then(() => {
+      if (!active) return;
+      if (!isEnabled("pwaUpdateToast")) {
+        // Make the kill-switch real: unregister any live registration so
+        // the app actually becomes SW-free. No reload — the current page
+        // keeps its controller until the next navigation (no-forced-reload
+        // policy); subsequent boots have no service worker at all.
+        void unregisterServiceWorker();
         return;
       }
-      if (result) {
-        current = result.handle;
-        setHandle(result.handle);
-      }
+      registerServiceWorker().then((result) => {
+        if (!active) {
+          result?.handle.dispose();
+          return;
+        }
+        if (result) {
+          current = result.handle;
+          setHandle(result.handle);
+        }
+      });
     });
     return () => {
       active = false;
