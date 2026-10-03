@@ -1577,6 +1577,7 @@ function PlayLoaded({
         <RunSummaryCard
           summary={summary}
           regionName={run.regionName}
+          dateKey={run.dateKey}
           onDone={onSummaryDone}
           onPlayAgain={onSummaryPlayAgain}
         />
