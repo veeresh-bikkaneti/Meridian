@@ -9,6 +9,8 @@ import { nitro } from "nitro/vite";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
+import { noswHatchPlugin } from "./scripts/nosw-hatch-plugin.mjs";
+// @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
 // @ts-expect-error JS module alongside the TS vite config
 import { resolveBuildId } from "./scripts/build-id.mjs";
@@ -217,6 +219,10 @@ export default defineConfig(({ command, isPreview }) => ({
     grokPwaPlugin(),
     tailwindcss(),
     tanstackStart(githubPages ? { spa: { enabled: true } } : undefined),
+    // ?nosw=1 escape hatch AFTER tanstackStart: its buildApp post hook must
+    // run after TanStack's prerender wrote _shell.html (same post order +
+    // post enforce → later registration wins). See scripts/nosw-hatch-plugin.mjs.
+    noswHatchPlugin(),
     ...(githubPages
       ? []
       : command === "build" || isPreview

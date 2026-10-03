@@ -1610,3 +1610,10 @@ export function SatelliteMap(props: {
     </div>
   );
 }
+
+/**
+ * Default export for React.lazy (see game-app.tsx). The lazy map chunk
+ * keeps maplibre-gl and the atlas payloads out of the boot bundle (P0
+ * Safari launch fix); the named export stays for existing importers.
+ */
+export default SatelliteMap;

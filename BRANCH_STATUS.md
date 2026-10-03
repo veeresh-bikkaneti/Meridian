@@ -21,10 +21,18 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
 2. **iOS SW intercepting navigation/boot assets before page JS runs** — PWA wiring landed 2026-10-02, the day before the P0; the one place the in-page breaker can't reach. Recovery/diagnostic → the `?nosw` hatch below. (Note: one crew's "iOS 18.4 = first SW support" claim is shaky — iOS has had SW since 11.3 — but the interception mechanism doesn't depend on it. iOS version from field data is the discriminator.)
 3. **Whole-document `hydrateRoot` + known-flaky React #418** — amplifies suspect 1's spike; weakest standalone.
 
-## Fix plan (in implementation)
+## Fix plan (in implementation — fix crew active 2026-10-03)
 1. **Code-split the boot bundle:** `React.lazy` for `SatelliteMap` (+ other game-only modules), lazy-init the territory `feature()` conversion off module top-level, error boundary + retry around the lazy map import. Menu must boot on a fraction of current JS.
 2. **`?nosw` escape hatch:** tiny inline `<script>` in the shell HTML — on `?nosw=1`, unregister all SWs, delete `meridian-*` caches, strip param via replaceState, reload once. Works with zero functioning app JS; doubles as the SW diagnostic.
 - NOT doing: SW kill-switch (violates no-forced-update), pre-React staleness banner (follow-up).
+
+## Fix-crew progress
+- [ ] territory.ts: lazy memoized `feature()` conversion + unit test
+- [ ] game-app.tsx: `React.lazy(SatelliteMap)` + Suspense + error boundary w/ retry
+- [ ] region-index.ts: stays sync; moves to lazy map chunk (documented deviation)
+- [ ] `?nosw` hatch: `scripts/nosw-hatch.mjs` (testable) + vite build plugin + unit tests
+- [ ] E2E: boot-chunk-size assertion, lazy map run, `?nosw` path
+- [ ] Gates: tsc, npm test, lint-cards, build:pages, Playwright
 
 ## Pending
 - [ ] Fix implementation crew → full gates (unit, tsc, lint-cards, build, E2E incl. boot-chunk-size assertion + full run + ?nosw path)
