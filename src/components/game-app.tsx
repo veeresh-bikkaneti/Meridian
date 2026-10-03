@@ -885,11 +885,11 @@ export function GameApp() {
   );
 }
 
-/** Kid-friendly hints for each difficulty band, shown under the picker. */
+/** Kid-friendly hints for each learning path, shown under the picker. */
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
-  easy: "Famous places you'll probably know. A gentle start.",
-  medium: "A friendly mix — some you'll know, some will make you think.",
-  hard: "Deep cuts for geography whizzes. Bring your best guesses!",
+  easy: "Famous places — the must-know spots every explorer starts with.",
+  medium: "A little of everything — grow your map one discovery at a time.",
+  hard: "Hidden corners of the world — for explorers ready to discover more.",
 };
 
 function Choose({
@@ -923,7 +923,7 @@ function Choose({
         </p>
         <div className="mt-6">
           <p id="difficulty-label" className="text-sm font-medium text-fg">
-            How tricky should the places be?
+            How do you want to grow your map today?
           </p>
           <div
             role="group"

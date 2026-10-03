@@ -1,12 +1,13 @@
 import type { Difficulty } from "./scoring.ts";
 
 /**
- * The difficulty the player picks on the edition screen — how tricky the
- * places should be. Deliberately distinct from the per-place 1–5
- * `Difficulty` in scoring.ts: one kid-friendly pick maps to an INCLUSIVE
- * band of tiers. The bands overlap on purpose — until the dataset rebuild
- * lands, generated places all read as tier 3, so a strict partition (e.g.
- * easy = tier 1 only) would starve the Easy and Hard pools.
+ * The learning path the player picks on the edition screen — which fame
+ * tiers deal into their run. Framed as scaffolding, not gamer difficulty:
+ * Easy is the curriculum core (famous places every kid should know), Hard
+ * is obscure corners for explorers. Deliberately distinct from the
+ * per-place 1–5 `Difficulty` in scoring.ts: one kid-friendly pick maps to
+ * an INCLUSIVE band of tiers. The bands overlap on purpose so no pool ever
+ * starves.
  */
 export type PickerDifficulty = "easy" | "medium" | "hard";
 

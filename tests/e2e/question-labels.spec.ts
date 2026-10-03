@@ -21,6 +21,11 @@ import type { Page } from "playwright/test";
  * EXCEPT the target, so poolForNewRun deals the target first. The pool is
  * computed from the same source files the app ships, so the seeding can
  * never silently diverge from the dealt pool.
+ *
+ * Difficulty: the targets below (Austin, Omaha) are tier 1, so the tests
+ * pick the Easy band (tiers 1–2) before starting the run — with the default
+ * Medium band (2–4) the tier filter removes tier-1 places before the
+ * dealer's pool is built and the seeding trick cannot force them first.
  */
 
 test.setTimeout(240_000);
@@ -146,6 +151,11 @@ test("country: whole-US run shows 'Austin, Texas'", async ({ page }) => {
 
   await page.goto(APP);
   await seedSeenExcept(page, "country", "united-states", "gn-4671654", usCountryPoolIds());
+  // Austin is tier 1: the Easy band (1–2) keeps it in the dealt pool.
+  await page
+    .getByRole("group", { name: "How do you want to grow your map today?" })
+    .getByRole("button", { name: "Easy" })
+    .click();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "United States" }).click();
   await page.getByRole("button", { name: "Play entire United States" }).click();
@@ -165,6 +175,11 @@ test("state: Nebraska run shows the bare name 'Omaha'", async ({ page }) => {
 
   await page.goto(APP);
   await seedSeenExcept(page, "state", "nebraska", "gn-5074472", allIds);
+  // Omaha is tier 1: the Easy band (1–2) keeps it in the dealt pool.
+  await page
+    .getByRole("group", { name: "How do you want to grow your map today?" })
+    .getByRole("button", { name: "Easy" })
+    .click();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "United States" }).click();
   await page.getByRole("button", { name: "Nebraska" }).click();
