@@ -887,7 +887,7 @@ export function GameApp() {
 
 /** Kid-friendly hints for each learning path, shown under the picker. */
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
-  easy: "Famous places — the must-know spots every explorer starts with.",
+  easy: "Famous places — the spots every explorer starts with.",
   medium: "A little of everything — grow your map one discovery at a time.",
   hard: "Hidden corners of the world — for explorers ready to discover more.",
 };

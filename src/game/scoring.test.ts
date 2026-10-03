@@ -35,11 +35,11 @@ test("every difficulty tier has the specified multiplier", () => {
 });
 
 test("difficulty chips are MapTap-style", () => {
-  assert.equal(difficultyChip(1), "Easy · 1x");
-  assert.equal(difficultyChip(2), "Moderate · 1.25x");
-  assert.equal(difficultyChip(3), "Challenging · 1.5x");
-  assert.equal(difficultyChip(4), "Hard · 2x");
-  assert.equal(difficultyChip(5), "Extreme · 2.5x");
+  assert.equal(difficultyChip(1), "Famous · 1x");
+  assert.equal(difficultyChip(2), "Well-known · 1.25x");
+  assert.equal(difficultyChip(3), "Everyday · 1.5x");
+  assert.equal(difficultyChip(4), "Lesser-known · 2x");
+  assert.equal(difficultyChip(5), "Hidden · 2.5x");
 });
 
 test("combo grows 5% per streak hit and caps at 20", () => {
