@@ -3,10 +3,18 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { registerServiceWorker, type PwaUpdateHandle } from "@/lib/pwa";
+import { isEnabled, loadFlags } from "@/lib/flags";
 import { useEffect, useState } from "react";
 import appCss from "../styles.css?url";
 
 const APP_NAME = BRAND.name;
+
+// Feature-flag overrides load network-first in parallel with boot —
+// fire-and-forget: it never blocks first paint and never rejects.
+// Flag checks run BEFORE gated systems initialize, so the PwaUpdateToast
+// effect below always sees either the remote value (fast network) or the
+// baked-in defaults. Flags are boot-time, not reactive.
+void loadFlags();
 
 /**
  * Non-blocking "update available" toast. Appears only after the player has
@@ -21,6 +29,10 @@ function PwaUpdateToast() {
   useEffect(() => {
     let active = true;
     let current: PwaUpdateHandle | null = null;
+    // Kill-switch: when the flag is off, the PWA layer is disabled entirely
+    // — no service-worker registration, no update toast. The safe fallback
+    // is a plain web app. Default (true) is today's behavior, byte-identical.
+    if (!isEnabled("pwaUpdateToast")) return;
     registerServiceWorker().then((result) => {
       if (!active) {
         result?.handle.dispose();
