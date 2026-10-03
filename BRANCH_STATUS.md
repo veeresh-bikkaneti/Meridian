@@ -23,7 +23,8 @@ Veeresh's intent: experimental tracks merge behind flags, disabled in prod until
 - [x] Gates re-run: `npx tsc --noEmit` clean · `npm test` 423/423 pass (411 + 12 new: 5 memoized-promise/await-ordering/SSR + 7 unregister) · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green · E2E 8/8 feature-flags (flag-off spec now proves the await pattern on 500ms realistic latency; new spec: live registration removed with zero page reloads) + 5/5 pwa specs against the built artifact
 
 ## Pending
-- [ ] Technical-architect review (re-run) + tone/docs review (re-run)
+- [x] Technical-architect re-review: PASS — all 3 findings verified fixed in code (memoized shared promise, realistic-network race proof, honest unregister); tests genuinely prove claims
+- [x] Tone/docs re-review: all 4 fixes verified; 1 new docs-accuracy note (kill-switch irony note overstated SW activation — "installs and activates" contradicts the no-auto-activation policy) fixed verbatim per reviewer's rewrite as `eab90cd`
 - [ ] PR → merge → live verification
 
 ## Out of scope (by design)
