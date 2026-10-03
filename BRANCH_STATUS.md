@@ -49,8 +49,15 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
   - Note: tile-status "ready" waits avoided — 15 s tile watchdog is a known
     flake under VM CPU contention (sibling crews running Chromium concurrently);
     overlay root is pointer-events-none so the game loop is testable regardless
-- [ ] Full gates: tsc, npm test, lint-cards, build:pages (final re-run)
-- [ ] Push + final BRANCH_STATUS update
+- [x] Full gates: tsc clean, npm test green (scripts 315: 308 pass / 7 pre-existing
+  skips / 0 fail; src 396/396), lint-cards GATE PASSED, build:pages green,
+  safari-launch E2E 3/3 green against the final build artifact
+- [x] Pushed: 5774a33 (fix) + e2465c9 (E2E) on origin/fix/safari-launch-outage
+
+## Pending (for coordinator)
+- [ ] Technical-architect review + tone/docs/a11y review
+- [ ] PR → merge per standing auth → live Pages verification (build id)
+- [ ] Field answers from Veeresh (iOS versions, private-tab test, ?nosw test post-ship)
 
 ## Pending
 - [ ] Fix implementation crew → full gates (unit, tsc, lint-cards, build, E2E incl. boot-chunk-size assertion + full run + ?nosw path)
