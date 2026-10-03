@@ -1,52 +1,32 @@
-# BRANCH_STATUS.md — feat/endgame-share
+# BRANCH_STATUS.md — crash-investigation (P0)
 
-**Branch:** `feat/endgame-share` · **Base:** `origin/main` @ `1152076`
-**Task:** End-game sharing — "Share score" on the summary screen using the
-native share sheet where available, clipboard fallback elsewhere. Per-place
-"Copy result" upgraded to the same helper. Veeresh ordered; ships independently.
+**Branch:** `crash-investigation` · **Base:** `origin/main` @ `eee96c8`
+**Incident:** Veeresh on iPhone Safari gets "A problem repeatedly occurred on https://veeresh-bikkaneti.github.io/Meridian/" (iOS killed the web content process) when entering **Arkansas** (state edition). Crash repeats on reload. Last good game: country edition on the pre-#38 build.
 
 ## Done
-- [x] Worktree created from origin/main @ 1152076; node_modules symlinked
-- [x] Verified the gap: `shareText()` (`src/game/share.ts`) exists in Veeresh's
-      approved 3-line format; `run-summary.tsx` has no share action;
-      `result-card.tsx` ShareResult is clipboard-only
-- [x] Design decision: session share uses `shareText()` with session totals,
-      no emoji strip (the session banks totals only, never per-place scores;
-      the strip is optional in the approved format — omitting it keeps this
-      change out of session persistence/scoring)
-- [x] Shared share helper (`src/game/share-action.ts`): `shareScore()` —
-      native share sheet where available (AbortError → `cancelled`, silent;
-      other errors → clipboard), clipboard fallback → `copied`, both failed
-      → `failed`; plus `sessionShareText()` (session totals, no per-place
-      data) and `SHARE_URL`. `src/components/share-button.tsx` wraps it:
-      accessible label, "Shared ✓"/"Copied ✓" via aria-live, global
-      `:focus-visible` styling, optional failure fallback
-- [x] "Share score" button on the end-game summary (`run-summary.tsx`), above
-      "Play again"; `dateKey` threaded from `run.dateKey` via `game-app.tsx`
-- [x] Per-place "Copy result" upgraded to "Share result" (`result-card.tsx`)
-      via the same helper; keeps the preview `<pre>` and emoji strip
-- [x] Unit tests (`src/game/share-action.test.ts`, 11 tests): exact share
-      payload / AbortError-cancelled / plain-Error-AbortError-cancelled (no
-      DOMException gating, clipboard never touched) / navigator-undefined
-      SSR guard → failed / non-abort-fallback / clipboard fallback /
-      clipboard-failure → failed / session payload contract (URL present, no
-      strip, no distances, no place names)
-- [x] Review findings applied: name-only AbortError check, pending guard on
-      double-click in ShareButton, direction-neutral failure message ("Copy
-      the text from the preview." — correct whether the preview is above or
-      below), BRANCH_STATUS a11y note and README share-delivery sentence
-- [x] All quality gates green: `npx tsc --noEmit` clean, `npm test` 385/385
-      (27 suites), `node scripts/lint-cards.mjs` GATE PASSED,
-      `npm run build:pages` green
+- [x] Worktree created at `~/workspace/meridian-worktrees/crash-investigation` on `crash-investigation` @ `eee96c8` (replaced stale endgame-share BRANCH_STATUS.md inherited via the #40 merge)
+- [x] `node_modules` symlinked from sibling worktree (no download)
+- [x] System Chromium located at `/opt/meta-chromium/chrome` for Playwright repro
+- [x] **Repro (Chromium): NO REPRO** — full Arkansas flow (picker → US → Arkansas → answer → next), mobile viewport, tile-stubbed, cold load 60s: no crash, no hang, no pageerror. Heap peaked ~50MB, GC'd clean. `1152076` equally clean → not a #38/#39/#40 regression in desktop Chromium.
+- [x] **Data audit: CLEAN** — all 177 Arkansas records valid; all 64 chunks zero anomalies; Arkansas bounds sane; manifest consistent.
+- [x] **Live site: CLEAN** — build-meta `eee96c8185d4` == origin/main; assets all 200; sw.js current (not stale).
+- [x] **PRs #38/#39/#40 ruled out on the entry path** — question-label returns bare name for state edition before touching Intl; line-clamp is CSS; share never loads in entry path.
+- [x] **Intl.DisplayNames `fallback:"none"` ruled out** — unknown options are ignored per ECMA-402, never throw; a throw would be a JS exception, not a process kill; runs at boot for all editions (not Arkansas-specific).
+- [x] **JS-engine differences ruled out** — exceptions are contained by try/catch; cannot kill the WebContent process.
+- [x] **Confirmed crash-loop amplifier** (`src/components/game-app.tsx`): `commit()` persists `meridian.run` to sessionStorage BEFORE the game screen mounts; the mount effect auto-restores any resumable run; no error boundary around `Play`. Any mid-flight process kill → reload replays the identical heavy path → killed again = "repeatedly occurred".
+- [x] **State-differentiated suspects identified** (his last good game was country): S1 projection-swap racing the 2.4s flyTo (code's own comments flag the risk); S2 admin1 boundary band at z≥6 (state settles 6.5, country 5.0) — 1.2MB JSON + topojson + 4 layers at narrow completion.
+- [x] Incidental real defect found (NOT the crash): intermittent React #418 hydration error + post-reload tap stall; predates #40; sibling worktree `fix/reload-reveal-restore` already covers this area — not duplicating.
+
+## In progress
+- [x] **Fix shipped: crash-loop breaker** — pagehide-gated clean-exit flag (`meridian.cleanExit`): `writeRun` stamps `"0"`; `pagehide` stamps `"1"`; the boot effect skips auto-resume (clears the stale run, re-arms `"1"`, lands on menu) when the flag is `"0"`. Missing flag = clean (pre-update runs resume as before). Helper module `src/game/clean-exit.ts` + ~10 lines wiring in `game-app.tsx`; no behavior change for any clean exit.
+- [x] **Gates green**: 8 new unit tests (`clean-exit.test.ts`, all pass; full suite 393/393); `tsc --noEmit` clean; card gate GATE PASSED; `build:pages` green; E2E `crash-loop-breaker.spec.ts` 3/3 on the built artifact (kill→menu+run cleared, clean→resume, normal reload→resume), clean console; technical-architect + tone/docs/a11y reviews passed (a11y: kill landing is the standard menu DOM, no focus work needed).
+- [ ] PR → merge → live Pages verification (auto-merge authorization in hand)
 
 ## Pending
-- [ ] Technical-architect review + tone/docs/accessibility review
-- [x] Playwright E2E (clipboard assertion + mocked navigator.share, clean console) — 2/2 green ×2 runs: `tests/e2e/endgame-share.spec.ts` (new `endgame-share` project in `playwright.config.ts`). Clipboard path asserts the exact session share text on the clipboard (starts `meridian <date>`, site URL on its own line, screen-total match, no place name) + "Copied ✓" button/live-region; native path asserts the stub was called exactly once with `{ title, text, url }` and the clipboard sentinel untouched + "Shared ✓"; both runs console-clean (only the pre-existing React #418 filter).
-- [ ] PR opened → merged → live build verified → worktree removed
+- [ ] Fix through full gates (unit, typecheck, build, both reviews, E2E) → PR → merge → live verification
+- [ ] Phone-side isolation steps for Veeresh (in final report): cold-load test, Arkansas-specificity (Nebraska? country on current build?), update-toast involvement, private-tab test (disables SW + no resume), close-all-tabs memory test, iOS version
+- [ ] Follow-ups (NOT this fix): S1/S2 map-timing hardening needs iOS repro first; latent `boundsFor` degenerate `[0,0,0,0]` fallback; boundary layers painting over gold highlight (layer-name mismatch); React #418 hydration (other crew's area)
 
-## Notes / decisions
-- Do NOT change the `shareText()` format itself — reuse it exactly.
-- `navigator.share` needs a user gesture (button click) and HTTPS; guard with
-  `typeof navigator.share === "function"`.
-- A11y: accessible button label, focus-visible styling, "Shared ✓"/"Copied ✓"
-  announced via live region.
+## Rules
+- Minimal crash fix only. No game-behavior, scoring, or data changes beyond the fix.
+- Push early and often; stage named files only, never `git add -A`.

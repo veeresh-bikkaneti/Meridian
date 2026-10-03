@@ -3,6 +3,12 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
+import {
+  clearRunAfterUncleanShutdown,
+  handlePageHide,
+  isUncleanShutdown,
+  stampCleanExitDirty,
+} from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
@@ -195,6 +201,10 @@ function readRun(): Run | null {
 function writeRun(run: Run) {
   try {
     sessionStorage.setItem(RUN_KEY, JSON.stringify(run));
+    // Crash-loop breaker: this page now holds unsaved-crash state. If the
+    // process is killed without unloading, the next boot must not
+    // auto-resume; `pagehide` clears this flag on every clean unload.
+    stampCleanExitDirty();
   } catch {
     // The run still lives in memory when storage is blocked.
   }
@@ -473,6 +483,27 @@ export function GameApp() {
   }, [replaceSession]);
 
   useEffect(() => {
+    // Crash-loop breaker: a normal unload (reload, tab close, navigation)
+    // fires pagehide; a jetsam/WebKit process kill never does. The flag
+    // this leaves behind tells the boot effect whether the saved run is
+    // safe to auto-resume. handlePageHide takes no event, so it is wrapped
+    // here rather than registered directly.
+    const onPageHide = () => handlePageHide();
+    window.addEventListener("pagehide", onPageHide);
+    return () => window.removeEventListener("pagehide", onPageHide);
+  }, []);
+
+  useEffect(() => {
+    // Crash-loop breaker: the previous page wrote a run but never unloaded
+    // — the process was killed mid-game. Clear the stale run and land on
+    // the menu instead of replaying the identical heavy path. A missing
+    // flag (runs saved before this fix) counts as clean and resumes as
+    // before.
+    if (isUncleanShutdown()) {
+      clearRunAfterUncleanShutdown(RUN_KEY);
+      setReady(true);
+      return;
+    }
     const saved = readRun();
     const now = Date.now();
     const dateKey = trailDate();
