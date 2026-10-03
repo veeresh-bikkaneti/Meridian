@@ -62,8 +62,9 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
 ## Pending
 - [x] Fix implementation crew — DONE (commits 5774a33, e2465c9, 3ab442d, pushed). Boot JS 2,574,296 B → 1,395,446 B (−46%); satellite-map 1,180,740 B lazy chunk, zero maplibre in boot chunks; territory feature() lazy+memoized (156 ms import-time removed); ?nosw inline hatch verified in built _shell.html. Gates: tsc clean, 396/396 src + 308 script tests pass, lint-cards GATE PASSED, build:pages green, E2E 3/3 (menu boot under 1.8 MB ceiling, lazy map run, ?nosw purge+strip+boot).
 - [x] Tone/docs/a11y review — DONE: **PASS-WITH-NOTES**. Copy at Veeresh's bar ("Couldn't load the map / Your game is safe — only the map download failed"), "Your game is safe" verified accurate (sessionStorage restore). One should-fix: focus management on the error-boundary fallback (move focus to alert/Try-again on appearance). One nit: durable 3-line `?nosw` usage note for phone support. Nothing user-visible wrong with the hatch.
-- [ ] Technical-architect review (running)
-- [ ] Address review notes → PR → merge per standing auth → live Pages verification (build id)
+- [x] Technical-architect review — DONE: **FAIL** — 1 blocker: "Try again" can't re-invoke the dynamic import (React.lazy caches the rejected promise per component type; retry re-renders the same lazy() → throws cached error). 2 should-fix: (a) `unregister()` is origin-wide — scope to app base; (b) plugin buildApp handler silently skips if TanStack changes hooks — add build-time assertion for Pages builds. Nits: countries-50m (~750KB) rides the BOOT chunk (record correction + residual jetsam risk), copy scoping, fail-open ran-flag. Verified independently: split is real in built artifact, hatch well-tested, deviations sound, zero new deps.
+- [ ] Review-notes fix crew (spawned) → re-run full gates
+- [ ] Re-verify reviews' blockers cleared → PR → merge per standing auth → live Pages verification (build id)
 - [ ] Field answers from Veeresh (iOS versions, private-tab test, ?nosw test post-ship)
 
 ## Rules
