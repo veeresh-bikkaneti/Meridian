@@ -25,9 +25,22 @@ unfair game. Reported by Veeresh with a screenshot.
 - [ ] `npx tsc --noEmit` clean
 - [ ] `npm run build:pages` green
 - [ ] Technical-architect review + tone/docs/accessibility review
-- [ ] Playwright E2E `tests/e2e/question-wrap.spec.ts`: seed Fairchild Air
-      Force Base (Washington chunk, country edition), screenshot the bubble,
-      assert the full name is visible (no ellipsis); clean console
+- [x] Playwright E2E `tests/e2e/question-wrap.spec.ts`: 2/2 green (repeat-each=2,
+      deterministic after including curated starters in pool seeding). Seeds
+      Fairchild Air Force Base (gn-7261152, Washington chunk, whole-US country
+      run), asserts the full label visible in expanded AND collapsed views
+      (no ellipsis via scrollWidth/clientWidth + computed style), clean console.
+      Evidence: `evidence/question-wrap-bubble.png` (full name wraps 2 lines).
+- [x] `npx tsc --noEmit` clean; `npm run build:pages` green
+- [x] Full unit suite: 681 tests, 0 failures (incl. 4 new question-bubble tests)
+- [x] Technical-architect review: **approve-with-notes** (no P1s; P2s are accepted
+      tradeoffs — names beyond 3 lines still cap silently on touch, documented;
+      result-card needs no change confirmed; zero-cost confirmed)
+- [x] Tone/docs/accessibility review: **approve-with-notes** (visible text matches
+      live-region announcement; no copy/layout changes needed; BRANCH_STATUS
+      accurate; no README churn)
+
+## Pending
 - [ ] Open PR → merge per standing auto-merge auth → verify live Pages build
       serves the merge commit → remove worktree
 
