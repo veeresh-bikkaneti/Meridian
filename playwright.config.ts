@@ -129,6 +129,10 @@ export default defineConfig({
       name: "crash-loop-breaker",
       testMatch: /crash-loop-breaker\.spec\.ts/,
     },
+    {
+      name: "safari-launch",
+      testMatch: /safari-launch\.spec\.ts/,
+    },
   ],
   reporter: [
     ["list"],

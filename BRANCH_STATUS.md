@@ -27,12 +27,30 @@ P0: Safari users CANNOT LAUNCH https://veeresh-bikkaneti.github.io/Meridian/ —
 - NOT doing: SW kill-switch (violates no-forced-update), pre-React staleness banner (follow-up).
 
 ## Fix-crew progress
-- [ ] territory.ts: lazy memoized `feature()` conversion + unit test
-- [ ] game-app.tsx: `React.lazy(SatelliteMap)` + Suspense + error boundary w/ retry
-- [ ] region-index.ts: stays sync; moves to lazy map chunk (documented deviation)
-- [ ] `?nosw` hatch: `scripts/nosw-hatch.mjs` (testable) + vite build plugin + unit tests
-- [ ] E2E: boot-chunk-size assertion, lazy map run, `?nosw` path
-- [ ] Gates: tsc, npm test, lint-cards, build:pages, Playwright
+- [x] territory.ts: lazy memoized `feature()` conversion + unit test (3 tests green)
+- [x] game-app.tsx: `React.lazy(SatelliteMap)` + Suspense + MapErrorBoundary w/ retry
+  - Boot JS: 2,574,296 B → 1,395,446 B (index 424 KB + routes 939 KB); maplibre +
+    atlas payloads in separate `satellite-map-*.js` chunk (1.18 MB), zero maplibre
+    in boot chunks (verified in built output)
+  - region-index.ts: deviation — kept sync; the whole module (incl. its static
+    atlas JSON imports) now ships in the lazy map chunk, so no atlas JSON is
+    fetched/parsed until the map chunk loads (first map use). Converting to
+    dynamic import() would have forced an async API through satellite-map's
+    sync init path + node tests; the chunk-level deferral achieves the goal.
+  - question-bubble/result-card/run-summary: NOT lazy-loaded (deliberate) —
+    small, game-path-only, needed immediately when a run starts
+- [x] `?nosw` hatch: `scripts/nosw-hatch.mjs` (testable, 8 tests green) +
+  `scripts/nosw-hatch-plugin.mjs` (buildApp-post injection into _shell.html,
+  verified: marker present, before </head>, before bundle scripts, node --check clean)
+- [x] E2E `tests/e2e/safari-launch.spec.ts` (project `safari-launch`): 3/3 green
+  - menu boots w/o satellite-map chunk + under 1.8 MB boot-JS ceiling
+  - run start lazy-loads map chunk; pin drop → reveal → Next place works
+  - ?nosw=1: SW unregistered, meridian-* cache purged, param stripped, clean boot
+  - Note: tile-status "ready" waits avoided — 15 s tile watchdog is a known
+    flake under VM CPU contention (sibling crews running Chromium concurrently);
+    overlay root is pointer-events-none so the game loop is testable regardless
+- [ ] Full gates: tsc, npm test, lint-cards, build:pages (final re-run)
+- [ ] Push + final BRANCH_STATUS update
 
 ## Pending
 - [ ] Fix implementation crew → full gates (unit, tsc, lint-cards, build, E2E incl. boot-chunk-size assertion + full run + ?nosw path)
