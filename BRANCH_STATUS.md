@@ -1,6 +1,6 @@
 # BRANCH_STATUS.md — feat/geodetective-clues (GeoDetective clue-set production)
 
-**Branch:** `feat/geodetective-clues` · **Base:** `origin/main` @ `3c32085`
+**Branch:** `feat/geodetective-clues` · **Base:** `origin/main` @ `de9b7a8` (rebased 2026-10-04 for Phase 2; Phase 1 base was `3c32085`)
 **Worktree:** `~/workspace/meridian-worktrees/geodetective-clues`
 **Mission:** Produce ≥365 validated 5-tier clue sets for GeoDetective's curated famous-place pool — content pipeline only. Deliverable = this branch: clue JSONs in `public/loop/clues/`, composer + validator scripts with tests, and a validation report. No merge, no PR — Veeresh decides. The human-reviewed gate stays Veeresh's (expect sampling review).
 
@@ -11,15 +11,16 @@
 - [x] `docs/geodetective.md` (on feat/meridian-loop) confirms the ladder Geography → Climate → History → Hook → Giveaway (positional), climate non-redundant vs geography, tier 5 = giveaway not summary, clue file never contains the place name, ≥365 validated-set gate.
 - [x] Wikipedia crawl complete on `feat/wikipedia-crawl` (remote `a9c8bb9`): 124,312 unique cached IDs, 71,957 matched extracts, 9,129 hook candidates. Chitti's merge of that data is NOT on main yet (main still `3c32085`, verified 2026-10-03 16:22 CDT).
 
-## Open spec items (do not redesign around these)
+## Spec items — resolved 2026-10-04
 
-- [ ] **Design record** `meridian-loop-brainstorm/synthesis.md` — lives on Chitti's VM; not on this VM. Requested.
-- [ ] **Content team's rewritten 5-tier generation prompt** — not on this VM, not in the repo on any branch. Per the brief it is adopted **verbatim** and nothing is generated until it is adopted. The composer therefore loads the prompt from `scripts/clues/generation-prompt.md` (to be dropped in verbatim on arrival); the build proceeds around that socket. Production generation stays gated on adoption.
+- [x] **Generation prompt ADOPTED VERBATIM** — `scripts/clues/generation-prompt.md` is now a byte-identical copy of the FINAL prompt v1 (locked by Veeresh 2026-10-04), sha256 `7f19d3c5857639473b653e8495eb2088ef320ff77b69ca143c1bc0e3c3d2920a`. It supersedes the Phase 1 provisional schema: records follow prompt §10 (`meridian.loop.clues.v1`), difficulty = guessability int 1–5, strict substring+diacritic leak rule (LOCKED), reading age ~10 (LOCKED), set-level fail-closed rejection (LOCKED).
+- [x] **Wikipedia merge is LIVE on main** (`de9b7a8`; manifest `enrichment.historySentences = 8420`). Full extracts for generation inputs come from the crawl cache (`~/workspace/meridian-worktrees/wikipedia-crawl/.scratch/wikipedia-enrichment/crawl-cache.jsonl`, read-only — never staged/committed).
+- [ ] **Design record** `meridian-loop-brainstorm/synthesis.md` — still only on Chitti's VM; the locked prompt implements it and is the operative spec for this run.
 
 ## Plan
 
 - [x] **Phase 1 (done 2026-10-03, commit `c70923a`):** composer + hardened validator built to the brief's validation bar and proven on the 12 seed places. See "Phase 1 results" below.
-- [ ] **Phase 2 (blocked on Chitti's signal):** full production pass against the **merged** dataset on main (History/Hook tiers draw on the real merged hooks — never generate the 365 from the pre-merge dataset). Output: ≥365 validator-passing sets in `public/loop/clues/*.json` + validation report (generated / accepted / rejected with reasons).
+- [ ] **Phase 2 (IN PROGRESS 2026-10-04):** validator aligned to prompt v1 → deterministic pool derivation (cache-matched extracts + fame ranking on live main) → generation in tranches → assembly. Output: ≥365 validator-passing sets in `public/loop/clues/*.json` + full §10 audit records + validation report (generated / accepted / rejected with reasons). **Rebase note:** rebasing onto `de9b7a8` conflicted only in this file (kept ours). Phase 1 suites on the new base: 36/38 — the 2 failures are the placeholder-gate tests, which now fail *because* the prompt is adopted (they asserted the shipped socket is a placeholder); they are rewritten against fixture prompt files in the alignment stage.
 - [ ] Veeresh's human review + merge decision.
 
 ## Phase 1 results (2026-10-03, verified by the coordinator's own gate runs)
