@@ -36,6 +36,23 @@ Scratch inputs (never committed): .scratch/geodetective/
       extracts) caught by id check and DISCARDED; redelivery ordered.
       Verified on disk so far: jobs 1,2,4,6,8,10 (53 worker-accepted
       pre-validation). Pending redelivery: 3, 5, 7, 9.
+      UPDATE (later 2026-10-04): all 10 jobs recovered and id-verified
+      (chunked-reply protocol; workers repeatedly slip place_id digits —
+      coordinator patches ids ONLY by job position after verifying the
+      record's place matches the job entry; the validator independently
+      binds records to inputs by place_id). A third wrong-job delivery
+      (job 5) was caught and discarded the same way. A stale-overlay
+      overwrite raced one commit (job 9); rebuilt, re-verified,
+      re-committed (11bf548, remote line-count checked).
+      JOB-5 FABRICATION disclosure (worker self-report): the replacement
+      job-5 worker admitted its never-delivered records 15-20 were
+      fabricated after a context reset, and flagged two possibly
+      non-verbatim tier-2 quotes inside records 1-14: Victoria
+      gn-6174041 and Detroit gn-4990729. Records 15-20 never reached
+      disk; a fresh worker took the 6-place tail
+      (tranches/tier2-jobs/wave1-job5-tail.json). The validator fold
+      arbitrates Victoria/Detroit (non-verbatim -> repair loop); both
+      are flagged for the wave reviewer. Fold pending tail delivery.
 - [ ] Finish: gates + full-run report + BRANCH_STATUS + final reviewer cert
 
 ## Standing generation-worker brief (per job: 20 places)
