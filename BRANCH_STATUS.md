@@ -1,70 +1,40 @@
-# feat/reveal-pin-compare — status
+# feat/wikipedia-crawl — status
 
-Veeresh's request: on a wrong-answer reveal, name BOTH locations — "Your pin: Nebraska · True spot: District of Columbia." Today the card shows distance + pins but never names the player's pick.
+Base: `origin/main` at `7593a87288727ce3930c336db7c6ddb31c697718`; **rebased onto `origin/main` `e18c3cf` (PR #46) on 2026-10-03** — the branch's only tracked change vs its old base was this file, so the rebase carried this file onto the new main in a single commit (`258c5c3`), then the merge commit follows.
+Primary clone: `~/workspace/meridian-worktrees/meridian`
+Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 
-Base: `origin/main` at `aa69434`.
+## Done
 
-## Plan
-- [x] Worktree + branch `feat/reveal-pin-compare`; node_modules symlinked (never npm install); AGENTS.md read
-- [x] Exploration: ResultCard miss block (`run.phase === "done"`), `Drop` has player pin lon/lat, `place` has true spot lon/lat, `territoryAt()` exists for country lookup, admin-1 data vendored (us-atlas states-10m, src/map/data/ne-50m-admin-1.json for AU/BR/CA/CN/IN)
-- [x] Worker A: `src/game/reverse-geocode.ts` — `preloadAdmin1Boundaries()`, `resolvePin()`, `pinCompareLine()` + unit tests (11 tests green; data verified: DC present in us-atlas; world-atlas names the USA "United States of America")
-- [x] Worker B: result-card wiring + `openRun` preload hook + card tests (result-card.tsx: `pinLine` useMemo + `data-testid="pin-compare-line"` under the miss distance `<p>`, fail-closed on null; game-app.tsx: `void preloadAdmin1Boundaries()` in `openRun` after `setMenu(null)`; 4 new renderToString card tests green — Nebraska/DC line, same-state line, null fail-closed, no line on hit. Gates: tsc clean, 490/490 unit tests, build:pages green)
-- [ ] Gates: typecheck ✓ → build ✓ → tech-arch review ✓ PASS-WITH-NOTES → tone/docs/a11y review ✓ PASS-WITH-NOTES → E2E ✓ (2026-10-04) → PR → merge → live verify
+- [x] Branch + worktree created from origin/main (`git worktree add ~/workspace/meridian-worktrees/wikipedia-crawl -b feat/wikipedia-crawl origin/main`, from an anonymous HTTPS clone — see Blockers)
+- [x] Script verified on origin/main: `scripts/enrich-wikipedia.mjs` exists (781 lines) with `crawl [limit]`, `merge`, and `report` subcommands; Hyderabad title-match rule (`pickArticle`: exact normalized base-name match, then geographic-parenthetical pass, fail-closed) and `isDoneRecord` logic (only `matched` / `no-article` / `title-mismatch` / `no-extract` / `too-far` count as done; `error` records are never done and are retried; torn lines are skipped in `readCache`) confirmed by reading the code
+- [x] Tests verified: `node --test scripts/enrich-wikipedia.test.mjs` — 56 tests, 56 pass, 0 fail
+- [x] Typecheck verified: `npx tsc --noEmit` — exit 0, no errors (run in the primary clone after `npm ci` from `package-lock.json`; no new dependencies added)
+- [x] Place count confirmed: 124,690 places — `src/game/data/geonames/manifest.json` `meta.total` / `meta.keptRows` = 124,690, and the sum of `places` across the 64 chunk files in `src/game/data/geonames/chunks/` = 124,690
+- [x] Crawl-eligible count (verified by executing `loadPlaces()`'s filtering logic): 124,312 — `loadPlaces()` excludes 93 curated notable places (`src/game/data/notable-notes.json`) and 285 places already carrying a `history` string (PR #30), with 0 overlap. A crawl on this clone would print `places to crawl: 124,312 (0 cached)`. 124,690 remains the dataset denominator.
+- [x] Fresh-start decision (Liz, 2026-10-02): start the crawl from 0 on this VM and forget the old `gap-view-reveal` cache — the seed step is superseded, not pending.
+- [x] **Crawl RUNNING** — PID 4724, started 2026-10-02 ~15:00 CDT, `node scripts/enrich-wikipedia.mjs crawl`, log at `.scratch/wikipedia-enrichment/crawl.log`. Startup line: `places to crawl: 124,312 (0 cached)`. First progress snapshot (15:10 CDT): 1,500+ places in ~9 min (~2.8/s), cache ~1,890 records and growing. Resumable: killing/restarting loses nothing — the JSONL cache is the resume point.
+- [x] GitHub App connected (Liz, via Muse connector): OAuth authorized as `veeresh-bikkaneti`; Meridian read access verified via API (`get_file_contents` on `scripts/enrich-wikipedia.mjs`). Standing instruction (Liz, 2026-10-02): keep pushing progressively to the remote branch so a VM crash loses no work.
+- [x] **`gh` CLI authenticated (Liz, device flow, 2026-10-02)** as `veeresh-bikkaneti` (scopes: repo, read:org, gist); `gh auth setup-git` done — plain `git push` now works from this VM.
+- [x] **Branch PUSHED** to `origin/feat/wikipedia-crawl` (first push 2026-10-02 ~15:31 CDT, remote at `80f1faa`). Progressive pushes continue at milestones. No PR opened (Veeresh decides).
+- [x] **CRAWL COMPLETE — 2026-10-03 ~09:55 CDT.** The final segment's log line: `crawl done: 2797 places`. Final `report` (verified first-hand by the parent agent): **124,312 unique cached IDs** (the full crawl-eligible set; 124,690 dataset denominator, 378 places excluded upstream as 93 notable + 285 already carrying history), **71,957 matched extracts**, **9,129 hook candidates**. Full breakdown: matched 71,957, title-mismatch 41,425, no-article 5,234, no-extract 5,696 (sums to 124,312). Cache: `.scratch/wikipedia-enrichment/crawl-cache.jsonl`, 36 MB, on this VM (gitignored by design — it was never committed; it lives in the worktree for the merge decision). The crawl process died and was restarted losslessly by the watch cron many times across 2026-10-02–03 (runtime/VM restarts); every restart resumed from the cache with zero data loss. No crawl process is running now — none is needed.
 
-## E2E — `tests/e2e/reveal-pin-compare.desktop.spec.ts` (2026-10-04, 4/4 green)
-- miss in another country → card shows `pin-compare-line` = "Your pin: Bahia · True spot: Colombia" (seeded deal: El Tambo, Colombia; Bahia pin at 580,490)
-- hit → no `pin-compare-line` element
-- mid-ocean miss → no line; card otherwise identical (distance, subscript, source link)
-- same-state miss (Nebraska drill-down) → "Right state, wrong town!"
-- Determinism: globe deal is a per-session shuffle, so the spec seeds Date + Math.random + crypto.getRandomValues (mulberry32) via addInitScript — first place stable as "El Tambo, Colombia" across runs. Miss pins are fixed viewport points probed against the live camera/tap path; assertions use auto-retrying expect (line appears once the admin-1 preload resolves), no sleeps.
-- Harness note: the shared VM runs several crews' Playwright suites concurrently (load avg 8–13); the spec uses a local `startGlobeRunPatient` (60 s map-mount waits, helpers.ts untouched) to stay deterministic under contention. The reveal camera was not touched (sibling crew owns it).
-- Regression: `gap-view-reveal.desktop.spec.ts` re-run 2026-10-04 → 1 passed / 2 failed; both failures are camera/reveal-timing assertions (zoom level "2" vs "1"; phase timeout on tap-skip), not card content — the "hit" card test passed, so the pin-compare card changes are not the cause. Noted for the camera crew, not fixed here.
+## Pending
 
-## Review dispositions (both PASS, no blockers — 2026-10-04)- Tech-arch: lon/lat ordering verified correct at every boundary; same-admin1 branch airtight (caches are country-disjoint); fail-closed everywhere; jetsam constraint honored (no import-time JSON; ne-50m emitted as its own 1.4 MB lazy chunk). Notes: (1) loader duplication with `src/map/boundary-bands.ts` — genuine DRY note, deferred as tech debt (both lazy/post-boot, no crash risk; a shared loader would touch the sibling crew's map area); (2) inaccurate "done phase" comment — fixed; (3) card-test mock reimplements `pinCompareLine` — declined with reason: exact copy strings are asserted against the real module in `reverse-geocode.test.ts`, so drift is caught at the module boundary; component tests correctly mock at the module seam; (4) antimeridian/poles untested — guarded by try/catch, coverage note only; (5) US "Georgia" pin vs country Georgia → "Your pin: Georgia · True spot: Georgia" — odd, not incorrect, left as-is.
-- Tone: "Right state, wrong town!" reads as a lesson, not a taunt; "United States of America" acceptable kid-facing copy (normalization, if ever wanted, lives in `reverse-geocode.ts` only, never `territory.ts`); placement/reading order correct; no live region needed; no new contrast debt.
+- [x] Full coverage: 124,312 crawl-eligible places (124,690 dataset denominator) — **DONE, see above**
+- [x] Final report (unique IDs / extracts / hook candidates) — **DONE: 124,312 / 71,957 / 9,129**
+- [x] **MERGE RUN — 2026-10-03 ~20:45 CDT, on Liz's explicit directive** (superseding the delegation prompt's "merge is Veeresh's separate decision" hold: the decision was made on Veeresh/Chitti's side; only this VM holds the cache, so only this team could run it; Chitti's review gates + PR to main start from this push). Pre-merge `report` re-verified live: cached 124,312 {matched 71,957, title-mismatch 41,425, no-article 5,234, no-extract 5,696}, 9,129 hook candidates. `node scripts/enrich-wikipedia.mjs merge` → **8,579 places enriched**. Skipped: no-hook-pattern 62,712, title-mismatch 41,425, no-article 5,234, no-extract 5,696, too-long 325, banned-pattern invalids 339 total (population 169, people-count 134, census 14, measurement 12, elevation 6, ° 4), too-short 1. Changed files: exactly 65 — the 64 chunk JSONs + `manifest.json`, which now records `enrichment: {source: "Wikipedia article intros (CC BY-SA) via the MediaWiki API", historySentences: 8579, generated: "2026-10-04"}` (UTC date). Spot-check verified first-hand: Birmingham, Alabama (gn-4049979) carries the exact hook sentence + `wiki: "Birmingham,_Alabama"`. Gates after merge, all run first-hand: enrich tests **56/56**, `lint-cards` **GATE PASSED** (chunk audit: 124,690 records, 8,958 with hook, 115,732 hook-missing, **0 violations**), full `npm test` **515 pass / 0 fail**, `tsc --noEmit` clean. (8,958 with-hook = 8,579 new + 379 pre-existing hooks among the 378 crawl-excluded places — a 1-place category overlap, consistent with the merge skip-sum; no records corrupted, audit clean.)
+- [ ] **Chitti's part (starts from the merge push):** review gates + PR from `feat/wikipedia-crawl` to main. Not opened by this team.
+- [x] Push to `origin/feat/wikipedia-crawl` — **DONE** via `gh`-authenticated git push (see Done). Note: the crawl cache itself is gitignored by design and can never be committed — progressive pushes protected this status file throughout; the cache survived every VM replacement in `~/workspace` and was resumable.
 
-## API contract (workers A and B build to this)
-```ts
-// src/game/reverse-geocode.ts
-export type ResolvedPin = { admin1: string | null; country: string | null };
-export function preloadAdmin1Boundaries(): Promise<void>; // idempotent, fire-and-forget in app, awaited in tests
-export function resolvePin(lat: number, lon: number): ResolvedPin | null; // sync, never throws
-export function pinCompareLine(player: ResolvedPin | null, truth: ResolvedPin | null): string | null;
-```
-- `pinCompareLine` returns null (render nothing) when either side unresolvable — fail closed.
-- Same admin1 (+same country) → "Right state, wrong town!"; same country only → "Right country, wrong town!"; else "Your pin: {X} · True spot: {Y}" (admin1 preferred, country fallback).
+## Blockers
 
-## Constraints
-- Admin-1 JSONs load ONLY via dynamic import inside preload (never static import — Safari jetsam lesson). `resolvePin` never triggers loading; unloaded → admin1 null.
-- Do NOT touch the reveal camera / satellite-map / motion code — sibling crew `fix/wrong-answer-reveal-zoomout` owns it. Read-only.
-- New test files must be registered in the `npm test` script list in package.json.
-- Kid-friendly tone, no shaming, on every new word.
+1. ~~Seed cache absent~~ — **resolved by decision**: Liz directed a fresh start from 0 (2026-10-02); the old cache is forgone.
+2. ~~Push path~~ — **resolved**: the GitHub App API path was approval-gated and its branch creation got a 403 (app installation lacks Meridian repo selection — that selection is still outstanding for the *connector*, but no longer needed for pushing). Liz instead authenticated the `gh` CLI (device flow), which is now the working push path.
 
-## Rebase onto current main (2026-10-04)
-- Rebased onto `origin/main` `0b83c2e` (PRs #46 difficulty-tiers, #47/#48 attribution credits landed meanwhile).
-- Conflicts resolved: `package.json` (kept both `tier-filter.test.ts` and `reverse-geocode.test.ts` in the test list), `BRANCH_STATUS.md` (kept this branch's status).
-- Post-rebase fix: `result-card.test.ts` mock Run gained required `difficultyChoice: "medium"` (new required field from the difficulty merge).
-- Gates re-verified: tsc clean, 530/530 unit green.
+## Guardrails honoured
 
-## E2E on rebased branch (2026-10-04)
-- `reveal-pin-compare.desktop.spec.ts`: 4/4 green across runs (one full run
-  3/4 + targeted re-run of the tile-flaked same-state test → green).
-- Post-rebase fix: seeded first globe deal moved Colombia → Hungary
-  (difficulty-tiers fame-weighted dealer); spec expectation updated.
-- Remaining flakes are environmental (satellite-tile CDN "failed", camera
-  settle timeouts under VM load) in setup steps, never in feature
-  assertions; gap-view-reveal verified identical to baseline aa69434
-  (same single pre-existing camera-timing failure on both).
-- Gates: tsc clean, 530/530 unit green, lint-cards GATE PASSED,
-  build:pages green.
-
-## Preload timing fix (2026-10-04)
-- Root cause found: firing the ~2 MB admin-1 JSON preload during map mount
-  starves tile requests (net::ERR_ABORTED), flipping tile-status to failed.
-  Proven: preload disabled → tiles "ready"; 10 s delayed preload → "ready".
-- Fix: `openRun` now defers `preloadAdmin1Boundaries()` by 10 s via
-  setTimeout (requestIdleCallback was racy). resolvePin fails closed to
-  country-only until the cache populates.
-- Final E2E: 4/4 green (cross-country "Your pin: Bahia · True spot: Hungary",
-  hit no line, ocean no line, same-state "Right state, wrong town!").
-- Gates: tsc clean, 534/534 unit green, lint-cards GATE PASSED, build green.
+- `merge` was NOT run during the crawl phase. It was run once, on 2026-10-03, only after Liz's explicit directive that the decision had been made and this push is what Chitti's review + PR start from. No PR opened by this team.
+- No changes to `src/components`; the merge's writes are confined to `src/game/data/geonames/` chunks + manifest, produced by the repo's own verified pipeline script.
+- The cache is append-only via the script; it was created by this fresh crawl run (not edited or compacted by hand).
+- Only this file (`BRANCH_STATUS.md`) is staged/committed on this branch, by name — never `git add -A`, including while the crawl writes into the tree.
