@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 10106,
+    "place_id": "gn-7303211",
+    "input": {
+      "place": {
+        "place_id": "gn-7303211",
+        "name": "Magnetic Island",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -19.15514,
+        "lon": 146.8485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Magnetic Island",
+          "url": "https://en.wikipedia.org/wiki/Magnetic_Island",
+          "text": "Magnetic Island (Wulguru: Yunbenun) is an island 8 kilometres (5 mi) offshore from the city of Townsville, Queensland, Australia. This 52 km2 (20.1 sq mi) mountainous island in Cleveland Bay has effectively become a suburb of Townsville. The island is accessible from Townsville Breakwater to Nelly Bay Harbour by ferry. There is a 39.5 km2 (15.3 sq mi) national park and bird sanctuary, and walking tracks can be taken both between the populated bays and to a number of tourist destinations, such as the World War II forts.\nThe island is a holiday destination, with many hotels and several resorts in operation to cater for all levels of service. The public facilities and infrastructure on the island are managed by the Townsville City Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "magnetic island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "magnetic",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10109,
+    "place_id": "gn-11592138",
+    "input": {
+      "place": {
+        "place_id": "gn-11592138",
+        "name": "Cruden Bay",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.41797,
+        "lon": -1.85313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cruden Bay",
+          "url": "https://en.wikipedia.org/wiki/Cruden_Bay",
+          "text": "Cruden Bay is a small village in Scotland, on the north coast of the Bay of Cruden in Aberdeenshire, 26 miles (42 km) north of Aberdeen.\nJust west of Slains Castle, local tradition associates Cruden Bay with a supposed battle in which the Scots under King Malcolm II are said to have defeated the Danes in 1012; however, such accounts are regarded by historians as unsubstantiated and derive from much later sources. A traditional but unsubstantiated folk etymology derives the name from the Gaelic Croch Dain ('slaughter of Danes').\nToday, Cruden Bay attracts tourists with its hotels and golf course. It has a long, unspoiled, beach made famous by Norwegian aviator Tryggve Gran who made the first solo flight across the North Sea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "cruden bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cruden",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10118,
+    "place_id": "gn-4110119",
+    "input": {
+      "place": {
+        "place_id": "gn-4110119",
+        "name": "Eureka Springs",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.40118,
+        "lon": -93.73797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eureka Springs, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Eureka_Springs,_Arkansas",
+          "text": "Eureka Springs is a city in Carroll County, Arkansas, United States, and one of two county seats for the county. It is located in the Ozark Mountains of northwest Arkansas, near the border with Missouri. As of the 2020 census, the city population was 2,166.\nIn 1970, the entire city, as of its borders at that time, was listed on the National Register of Historic Places as the Eureka Springs Historic District. Eureka Springs has been selected as one of America's Distinctive Destinations by the National Trust for Historic Preservation. Eureka Springs was originally called \"The Magic City\", \"Little Switzerland of the Ozarks\", and later the \"Stairstep Town\" because of its mountainous terrain and the winding, up-and-down paths of its streets and walkways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "eureka springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eureka",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10119,
+    "place_id": "gn-5087114",
+    "input": {
+      "place": {
+        "place_id": "gn-5087114",
+        "name": "Hampton Beach",
+        "country": "United States",
+        "subdivision": "New Hampshire",
+        "lat": 42.90731,
+        "lon": -70.812
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hampton Beach, New Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Hampton_Beach,_New_Hampshire",
+          "text": "Hampton Beach is a village district, census-designated place, and beach resort in the town of Hampton, New Hampshire, United States, along the Atlantic Ocean. Its population at the 2020 census was 2,598. Hampton Beach is in Rockingham County, approximately 15 miles (24 km) south of Portsmouth. The community is a popular tourist destination and the busiest beach community in New Hampshire. Ocean Boulevard, the main street along the beach, includes a boardwalk, many shops and businesses, several seasonal hotels, and the Hampton Beach Casino Ballroom, which hosts national acts in the summer. Hampton Beach State Park was named one of four \"Superstar\" beaches in the United States in 2011, for having had perfect water-quality testing results in each of the previous three years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "hampton beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hampton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10123,
+    "place_id": "gn-9973058",
+    "input": {
+      "place": {
+        "place_id": "gn-9973058",
+        "name": "Hazelwood Park",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.93947,
+        "lon": 138.65879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hazelwood Park, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Hazelwood_Park,_South_Australia",
+          "text": "Hazelwood Park is an upper class suburb in the City of Burnside, Adelaide, South Australia with a census area population of 1,717 people. The suburb is about 5 kilometres east of the Central business district. Hazelwood Park, a suburban park inside the suburb, is the major attraction in the suburb and is the start of the flat country of the Adelaide Plains at the bottom of the Adelaide Hills. Adjacent Howard Terrace is considered to be the end of the Plains and the start of the foothills. Hazelwood Park includes the Burnside Swimming Centre, a popular site in the summer. Much of the remainder of the suburb is residential but there is a small shopping area along Glynburn Road on the eastern edge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "hazelwood park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hazelwood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10124,
+    "place_id": "gn-146472",
+    "input": {
+      "place": {
+        "place_id": "gn-146472",
+        "name": "Kissonerga",
+        "country": "Cyprus",
+        "subdivision": "Pafos",
+        "lat": 34.82279,
+        "lon": 32.40131
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kissonerga",
+          "url": "https://en.wikipedia.org/wiki/Kissonerga",
+          "text": "Kissonerga is a village in southwest Cyprus, about 8 km north of Paphos, in a region notable its banana plantations  in an area known as the Ktima Lowlands. In 1980, the village had a population of 700 people.\nKissonerga is about eight kilometres down the main road from Paphos towards Coral Bay.  Along the coast road are several hotels, mini-markets, numerous bars and taverns, as well as small complexes of shops mainly catering for tourists. The village is located 112 metres above sea level.\nAway from the coast road, Kissonerga village has a main street where there are restaurants, several mini-markets, two banks, two coffee shops (one of which also operates as a sub post office), a bookshop, florist, chemist and hairdressers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "kissonerga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10129,
+    "place_id": "gn-2976387",
+    "input": {
+      "place": {
+        "place_id": "gn-2976387",
+        "name": "Sallertaine",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 46.85963,
+        "lon": -1.95709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sallertaine",
+          "url": "https://en.wikipedia.org/wiki/Sallertaine",
+          "text": "Sallertaine (French pronunciation: [salɛʁtɛn]) is a commune in the Vendée department in the Pays de la Loire region in western France.\nApart from the two historical churches, the village is well known as an arts and crafts community due to the number of independent craftsmen and women who occupy various outlets, often in former homes, during the summer months. These range from potters and painters to jewellers and purveyors of fine, local foods. There is also a bread making museum that uses multi-lingual audio-commentary to illustrate how French artisan bakers make their famous products. It is possible for visitors to try their hand at bread making. On several evenings during the summer the village has live entertainment attracting French and foreign visitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "sallertaine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10141,
+    "place_id": "gn-725295",
+    "input": {
+      "place": {
+        "place_id": "gn-725295",
+        "name": "Zlataritsa",
+        "country": "Bulgaria",
+        "subdivision": "Veliko Tarnovo",
+        "lat": 43.05,
+        "lon": 25.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zlataritsa",
+          "url": "https://en.wikipedia.org/wiki/Zlataritsa",
+          "text": "Zlataritsa  (Bulgarian: Златарица [zɫɐˈtarit͡sɐ]) is a small town situated in the central northern part of Bulgaria, located in Veliko Tarnovo Province and close to the towns of Elena, Lyaskovets, Strazhitsa, and Antonovo, and to Rodina village, Veliko Tarnovo district. The city is the administrative center of the Zlataritsa Municipality. The climate of Zlataritsa is characteristic for its location north of the Balkan Mountains, which is typically continental. As of December 2009, the town has a population of 2,558 inhabitants.\nLunna Dolina (Moon Valley) is located in Ribartsi, within the Sredno Selo area of the Balkan Mountains. During the Second Bulgarian Empire when nearby Veliko Tarnovo was the capital of Bulgaria, Moon Valley may have been the summer residence of the ruling tsars."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "zlataritsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10142,
+    "place_id": "gn-967542",
+    "input": {
+      "place": {
+        "place_id": "gn-967542",
+        "name": "Orania",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -29.81381,
+        "lon": 24.41205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orania",
+          "url": "https://en.wikipedia.org/wiki/Orania",
+          "text": "Orania (Afrikaans pronunciation: [uəˈrɑːnia]) is a white separatist South African town founded by Afrikaners. It is located along the Orange River in the Karoo region of the Northern Cape province. The town is situated on the R369 highway, and is 871 kilometres (541 mi) from Cape Town and approximately 680 kilometres (420 mi) from Pretoria. Its climate is arid.\nThe town was founded with the goal of creating a white ethnostate for the Afrikaner minority group, the Afrikaans language and the Afrikaner culture through the creation of an Afrikaner state known as a Volkstaat. The town is generally described by outside observers and scholars as \"Whites-only\" or de facto segregated and as an attempt to revive apartheid, although the community denies this."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "orania",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10145,
+    "place_id": "gn-2189338",
+    "input": {
+      "place": {
+        "place_id": "gn-2189338",
+        "name": "Kaharoa",
+        "country": "New Zealand",
+        "subdivision": "Bay of Plenty",
+        "lat": -37.99513,
+        "lon": 176.23467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaharoa",
+          "url": "https://en.wikipedia.org/wiki/Kaharoa",
+          "text": "Kaharoa is a rural area of New Zealand approximately 20 kilometres (12 miles) from Rotorua and 45 km (28 mi) from Tauranga in the North Island. At its highest point the area is approx. 500 m (1,600 ft) above sea level, with some areas able to see towards the coastline of the eastern Bay of Plenty.\nThe New Zealand Ministry for Culture and Heritage gives a translation of \"large net\" for Kaharoa. \nIn the main the area is used for farming, formerly dry stock, but increasingly this is being converted to dairy. Some areas have been used for small blocks of forestry and there are areas of native bush, preserved to maintain and support the North Island kōkako, a native bird."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "kaharoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10171,
+    "place_id": "gn-5455650",
+    "input": {
+      "place": {
+        "place_id": "gn-5455650",
+        "name": "Arenas Valley",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 32.79396,
+        "lon": -108.18421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arenas Valley, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Arenas_Valley,_New_Mexico",
+          "text": "Arenas Valley is a census-designated place in Grant County, New Mexico, United States. As of the 2020 census, Arenas Valley had a population of 1,291. Arenas Valley had a post office from January 1, 1946, to March 7, 1987; it still has its own ZIP code, 88022. It was named because it was near the Rio de Arenas, a normally dry arroyo or gully, but residents have long referred to it as \"Whiskey Creek,\" based on the local legend that a heavy rain in the nearby Piños Altos Mountains flooded an illegal still and whiskey barrels floated down another arroyo, designated \"Whiskey Creek\" on maps that show drainages from the Pinos Altos Range arroyo, and passed through the \"built-up\" area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "arenas valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arenas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10176,
+    "place_id": "gn-12594159",
+    "input": {
+      "place": {
+        "place_id": "gn-12594159",
+        "name": "Isla de Cañas",
+        "country": "Argentina",
+        "subdivision": "Salta",
+        "lat": -22.89914,
+        "lon": -64.6652
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Isla de Cañas, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Isla_de_Cañas,_Argentina",
+          "text": "Isla de Cañas is a village and rural municipality in Salta Province in northwestern Argentina. It is located at 610 meters above sea level, on the eastern slopes of the Sierra de Santa Victoria, 307 km from the capital of Salta. The municipality of Isla de Cañas is only accessible from Oran, there are no bus services, only private shuttles that travel from Oran to Isla de Cañas three times a week; these shuttles are only available before 5pm on Mondays, Wednesdays and Fridays.\nFrom Isla de Cañas, one can travel to Iruya, though this is only possible during winter (June through mid-November). Travel to Iruya and back to Isla de Cañas is restricted to tractors or 4x4 trucks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "isla de canas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "isla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "canas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10177,
+    "place_id": "gn-2641213",
+    "input": {
+      "place": {
+        "place_id": "gn-2641213",
+        "name": "North Wootton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.78333,
+        "lon": 0.43333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Wootton, Norfolk",
+          "url": "https://en.wikipedia.org/wiki/North_Wootton,_Norfolk",
+          "text": "North Wootton is a village, civil parish and electoral ward near the town of King's Lynn in Norfolk, England.\nIt covers an area of 32.33 km2 (12.48 sq mi) and had a population of 2,387 in 935 households at the 2001 census, the population including Babingley and increasing to 2,445 at the 2011 Census.\nFor the purposes of local government, it falls within the district of King's Lynn and West Norfolk.\nIt is close to the Norfolk coast, and is slightly smaller than the nearby South Wootton. North Wootton is near the village of Castle Rising, and both were owned by the Howard family, who are patrons of both parish churches. Former marshland links the village to the coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "north wootton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wootton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10189,
+    "place_id": "gn-2644172",
+    "input": {
+      "place": {
+        "place_id": "gn-2644172",
+        "name": "Llanberis",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.11809,
+        "lon": -4.12923
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Llanberis",
+          "url": "https://en.wikipedia.org/wiki/Llanberis",
+          "text": "Llanberis (Welsh: [ɬanˈbɛrɪs] ) is a village, community and electoral division in Gwynedd, northwest Wales, on the southern shore of Llyn Padarn and at the foot of Snowdon, the highest mountain in Wales. It is a centre for outdoor activities in Snowdonia, including walking, mountaineering, climbing, mountain biking and pony trekking, as well as water sports such as scuba diving.\nThe community includes Nant Peris or Old Llanberis, a hamlet about 2 miles (3 km) south-east of Llanberis, beyond Llyn Peris and at the foot of the Llanberis Pass which carries the A4086 through the mountains.\nLlanberis takes its name from Saint Peris, an early Welsh saint. It is twinned with the Italian town of Morbegno in Lombardy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "llanberis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10190,
+    "place_id": "gn-2986715",
+    "input": {
+      "place": {
+        "place_id": "gn-2986715",
+        "name": "Plombières-les-Bains",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 47.96337,
+        "lon": 6.45758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plombières-les-Bains",
+          "url": "https://en.wikipedia.org/wiki/Plombières-les-Bains",
+          "text": "Plombières-les-Bains (French pronunciation: [plɔ̃bjɛʁ le bɛ̃] ) is a commune in the Vosges department in Grand Est in eastern France. It was the seat of the former canton of Plombières-les-Bains.\nLes bains refers to the hot springs in the area, whose properties were first discovered by the Romans.  In succeeding centuries, its baths were visited by Montaigne, Voltaire, the Dukes of Guise, the Dukes of Lorraine, Beaumarchais, Napoleon Bonaparte, Joséphine de Beauharnais, Charles XIV John, Napoléon III, Berlioz, Lamartine and Alfred de Musset. It is still a spa town with many buildings from the Second French Empire including the Church Saint Amé built with the financial support of Napoléon III.\nThe commune is listed as a Village étape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "plombieres les bains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "plombieres",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10193,
+    "place_id": "gn-3191631",
+    "input": {
+      "place": {
+        "place_id": "gn-3191631",
+        "name": "Risan",
+        "country": "Montenegro",
+        "subdivision": "Kotor",
+        "lat": 42.515,
+        "lon": 18.69556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Risan",
+          "url": "https://en.wikipedia.org/wiki/Risan",
+          "text": "Risan (Montenegrin: Рисан, pronounced [rîsan]) is a town in the Bay of Kotor, Montenegro. It traces its origins to the ancient settlement of Rhizon, the oldest settlement in the Bay of Kotor.\nLying in the innermost portion of the bay, the settlement was protected from the interior by inaccessible limestone cliffs of the Orjen mountain which are the highest range of eastern Adriatic, and through several following narrow straits in the Bay of Kotor from the open sea.\nWhile the Krivošije karst plateau that hangs steep above the narrow shores of Risan bay receives over 5000 mm rain annually (European record), several strong karst springs that form a short brook collect in the narrow cultivable belt at Risan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "risan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10199,
+    "place_id": "gn-733153",
+    "input": {
+      "place": {
+        "place_id": "gn-733153",
+        "name": "Boboshevo",
+        "country": "Bulgaria",
+        "subdivision": "Kyustendil",
+        "lat": 42.15323,
+        "lon": 23.00037
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boboshevo",
+          "url": "https://en.wikipedia.org/wiki/Boboshevo",
+          "text": "Boboshevo (Bulgarian: Бобошево [ˈbɔboʃɛvo]) is a town in Western Bulgaria. It is located in Kyustendil Province and is close to the towns of Kocherinovo and Rila.\nThe town of Boboshevo is situated about 75 km (47 mi) to the south of Sofia and 65 km (40 mi) from Bulgaria's prime skiing destination, Bansko. It is approximately 4 km away from Boboshevo is the main road that connects Sofia with the Greek border.\nBoboshevo lies in the lowest part of the southwestern ridge of the Rila Mountains, in the fertile valley of the Struma River (where it meets with the German River). Thanks to its favourable location and mild climate, the area of Boboshevo has been populated since antiquity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "boboshevo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10204,
+    "place_id": "gn-2514570",
+    "input": {
+      "place": {
+        "place_id": "gn-2514570",
+        "name": "Los Nietos",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 37.64876,
+        "lon": -0.78484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Nietos",
+          "url": "https://en.wikipedia.org/wiki/Los_Nietos",
+          "text": "Los Nietos is a town which is classed as a pedanía within the municipal territory of Cartagena that is subsequently in the autonomous community of the Region of Murcia in Spain.\nIt has its own individual marina  on the Mar Menor, which began as a very small fishing settlement later being urbanised to allow more holiday homes by the Mar Menor.  As of 2026 it’s a busy community with many visitors, especially during summertime, with local events at other times particularly at the Yacht Club on the marina. Many foreigners, mainly British, live there however post brexit the numbers of British have dwindled. Los Nietos is at the eastern terminus of the Cartagena–Los Nietos commuter railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "los nietos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nietos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10209,
+    "place_id": "gn-2926402",
+    "input": {
+      "place": {
+        "place_id": "gn-2926402",
+        "name": "Fladungen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.52054,
+        "lon": 10.14581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fladungen",
+          "url": "https://en.wikipedia.org/wiki/Fladungen",
+          "text": "Fladungen (German pronunciation: [ˈflaːdʊŋən] ) is a town in the Rhön-Grabfeld district, in Bavaria, Germany. It is situated in the Rhön Mountains, 11 km northwest of Ostheim, 20 km west of Meiningen, and 33 km east of Fulda.  It is the northernmost town in Bavaria, bordering Hesse to the northwest and Thuringia to the northeast.\nFladungen lies at the southern edge of the Rhön Mountains, and the Rhön Biosphere Reserve begins a few kilometers outside of town.  It is at the head of the river Streu, which flows southeast through it to join the Franconian Saale near Bad Neustadt.  The region around the town is popular for hiking and cycling, especially in the summer and early autumn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "fladungen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10214,
+    "place_id": "gn-5227802",
+    "input": {
+      "place": {
+        "place_id": "gn-5227802",
+        "name": "Flandreau",
+        "country": "United States",
+        "subdivision": "South Dakota",
+        "lat": 44.04942,
+        "lon": -96.59532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flandreau, South Dakota",
+          "url": "https://en.wikipedia.org/wiki/Flandreau,_South_Dakota",
+          "text": "Flandreau  FLAN-droo is a city in and county seat of Moody County, South Dakota, United States. The population was 2,372 at the 2020 census. It was named in honor of Charles Eugene Flandrau, a judge in the territory and state of Minnesota. He is credited with saving the community of New Ulm, Minnesota, from destruction during conflict with the Sioux tribe in 1862.\nIn 2015, the nearby federally recognized Flandreau Indian Reservation of Santee Sioux had planned to open the nation's first recreational marijuana lounge in a former bowling alley, close to its existing Royal River Casino and Hotel. Any tourists or non-tribal members using marijuana on tribal land risked state prosecution, so they abandoned the plan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "flandreau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

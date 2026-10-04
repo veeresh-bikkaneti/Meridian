@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 9992,
+    "place_id": "gn-2645778",
+    "input": {
+      "place": {
+        "place_id": "gn-2645778",
+        "name": "Keresley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.45156,
+        "lon": -1.53319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keresley",
+          "url": "https://en.wikipedia.org/wiki/Keresley",
+          "text": "Keresley is a suburban village and civil parish in the City of Coventry, West Midlands, England, about 4.5 miles (7 km) north of Coventry city centre and 3.5 miles (6 km) southwest of Bedworth. According to the 2001 census, the parish had a population of 791 falling to 713 at the 2011 Census, although the 2018 population was estimated at 783.\nKeresley and Keresley End are two separate areas; Keresley is in Coventry, whilst Keresley End, also known as Keresley Village or Keresley Newlands, is in Warwickshire, with the exception of Thompsons Road in the village, which lies within the Coventry boundary. The village features two grocers shops, two bus stops, a beauty salon, primary school, doctors surgery, a fish and chip shop, a small church, a post office, library, park, garden centre and community centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "keresley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10003,
+    "place_id": "gn-3028976",
+    "input": {
+      "place": {
+        "place_id": "gn-3028976",
+        "name": "Campan",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.01676,
+        "lon": 0.17741
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campan",
+          "url": "https://en.wikipedia.org/wiki/Campan",
+          "text": "Campan (French pronunciation: [kɑ̃pɑ̃]; Occitan: Campan) is a French commune located in the center of the Hautes-Pyrénées department, in the Occitanie region. Historically and culturally, the commune is in the province of Haut-Adour, formerly included in the old county of Bigorre. It is in the Bagnères-de-Bigorre urban area and is part of the Bagnères-de-Bigorre catchment area.\nThis mountainous area consists of the western extensions of the Néouvielle and Arbizon massifs. Experiencing a mountain climate, it is drained by the Adour, Adour de Gripp, Adour de Lesponne, Gaoube, Gaoubole, Garet, the Arizes stream, and various other small rivers. Included in the Pyrénées National Park, the commune boasts a remarkable natural heritage: a Natura 2000 site (\"Liset de Hount Blanque\"), a protected area (\"Adour and tributaries\"), and sixteen natural areas of ecological, faunal, and floristic interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "campan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10009,
+    "place_id": "gn-2641965",
+    "input": {
+      "place": {
+        "place_id": "gn-2641965",
+        "name": "Mundford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.5093,
+        "lon": 0.64991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mundford",
+          "url": "https://en.wikipedia.org/wiki/Mundford",
+          "text": "Mundford is a village and civil parish in the English county of Norfolk. It is situated at the intersection of two major routes, the A134 Colchester to King's Lynn road and the A1065 Mildenhall to Fakenham road,  about 8 miles (13 km) north west of Thetford. The village is 35 miles (56 km) from the city of Norwich and 88 miles (142 km) from London.\nThe village's name means 'Munda's ford'.\nThe civil parish, in 1845, had 437 inhabitants, and 1609 acres of land, exclusive of a common of 190 acres, and also 90 acres of heath, where the parishioners had the right of fuel and rabbits, but no pasturage. Today it has an area of 2,060 acres (830 ha) and in the 2001 census had a population of 1,591 in 669 households."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "mundford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10010,
+    "place_id": "gn-2839229",
+    "input": {
+      "place": {
+        "place_id": "gn-2839229",
+        "name": "Schillig",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.70356,
+        "lon": 8.02267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schillig",
+          "url": "https://en.wikipedia.org/wiki/Schillig",
+          "text": "Schillig (German pronunciation: [ˈʃɪlɪç]) is a village in the Friesland district of Lower Saxony in Germany. It is situated on the west coast of Jade Bay and is 20 km (12 mi) north of the town of Wilhelmshaven. As of 2011 the population was 113.\nThe approaches to the Bay and Willhelmshaven are known in English as the Schillig Roads.\nOn arrival in Schillig by car, one chooses from two routes; to the left (North West), on the land-side of the sea barrier, are a farm and farm land, a few houses, small blocks of flats, one or two hotels and shops and foot access to the top of the sea barrier and beyond. To the right (North East) the road leads over the sea barrier towards the camping, beach and parking areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "schillig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10011,
+    "place_id": "gn-463738",
+    "input": {
+      "place": {
+        "place_id": "gn-463738",
+        "name": "Zelyony Gorod",
+        "country": "Russia",
+        "subdivision": "Nizhny Novgorod Oblast",
+        "lat": 56.17833,
+        "lon": 44.0744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zelyony Gorod",
+          "url": "https://en.wikipedia.org/wiki/Zelyony_Gorod",
+          "text": "Zelyony Gorod (Russian: Зелёный Го́род, lit. green city) is an urban locality (a resort settlement under the administrative jurisdiction of the city of oblast significance of Nizhny Novgorod) in Nizhny Novgorod Oblast, Russia, located in a forested area to the southeast of Nizhny Novgorod and surrounded by the territory of Kstovsky District. Population:  2,716 (2010 census); 2,437 (2002 census); 4,234 (1989 Soviet census).\nThe forested area around the settlement is a  surviving part of a much larger forest area that existed here centuries ago. Geographically, it is located\nNizhny Novgorod and Kstovo, and is bounded roughly by Highway M-7 and Pavlovo-Royka-Zeletsino railway from the north and the Kudma River in the south.\nMany resort facilities and children's summer camps, originally built by the Soviet state or labor unions, are located in the settlement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "zelyony gorod",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "zelyony",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gorod",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10012,
+    "place_id": "gn-10054920",
+    "input": {
+      "place": {
+        "place_id": "gn-10054920",
+        "name": "Eglinton",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.58677,
+        "lon": 115.68878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eglinton, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Eglinton,_Western_Australia",
+          "text": "Eglinton is a locality in the Western Australian capital city of Perth, approximately 44 kilometres (27 mi) north of Perth's central business district on the Indian Ocean. For the most part, the suburb is covered in native banksia woodland, scrubland, and heath typical of the Swan Coastal Plain. However, in recent years, there has been growth in residential estates, with a town centre to be built in the near future.\nPart of the City of Wanneroo local government area, it is bounded to the north by Yanchep, to the east by Carabooda, and to the south by Alkimos. \nThe area is part of the Alkimos-Eglinton region being developed by the state government as future satellite city. Eglinton is now being developed with the Amberton estate from Stockland and Allara Estate from Satterley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "eglinton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10013,
+    "place_id": "gn-2144044",
+    "input": {
+      "place": {
+        "place_id": "gn-2144044",
+        "name": "Westbury",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -41.52914,
+        "lon": 146.83914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westbury, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Westbury,_Tasmania",
+          "text": "Westbury is a town in the central north of Tasmania, Australia. It lies 30 km west of Launceston on the Bass Highway, and at the 2021 census had a population of 2,272. It is part of, and the headquarters of, the Meander Valley Council area.\nThe town of Westbury uses its location, within 2 hours drive of most tourist attractions in north and north west Tasmania, and its heritage buildings and scenery to promote the concept of Westbury as a unique place for tourists to stay in Northern Tasmania.\nWestbury has a range of accommodation providers from high quality bed and breakfast style, colonial inn style and country hotel style.\nThe St Patrick's Festival is a major annual cultural activity that celebrates the historical links with Westbury and its early Irish community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "westbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10017,
+    "place_id": "gn-2639470",
+    "input": {
+      "place": {
+        "place_id": "gn-2639470",
+        "name": "Rhayader",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 52.30154,
+        "lon": -3.51146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rhayader",
+          "url": "https://en.wikipedia.org/wiki/Rhayader",
+          "text": "Rhayader (; Welsh: Rhaeadr Gwy; pronounced [ˈr̥əɪadar ˈɡʊi̯]) is a market town and community in Powys, Wales, within the historic county of Radnorshire. The town is 20 miles (32 km) from the source of the River Wye on Plynlimon, the highest point of the Cambrian Mountains, and is located at the junction of the A470 road and the A44 road 13 miles (21 km) north of Builth Wells and 30 miles (48 km) east of Aberystwyth.\nThe 2011 census recorded the population at 2,088, with 55% of the community having some form of Welsh identity. The community is the largest in Wales by area, with 137.31 km2 (53.02 sq mi). It includes the Elan Valley.\nRhayader holds the record for the lowest-ever temperature recorded in Wales, -23.3 °C on 21 January 1940."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "rhayader",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10025,
+    "place_id": "gn-3015661",
+    "input": {
+      "place": {
+        "place_id": "gn-3015661",
+        "name": "Gordes",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.9129,
+        "lon": 5.19892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gordes",
+          "url": "https://en.wikipedia.org/wiki/Gordes",
+          "text": "Gordes (French pronunciation: [ɡɔʁd]; Occitan: Gòrda) is a commune in the Vaucluse department in the Provence-Alpes-Côte d'Azur region in southeastern France. The residents are known as Gordiens. The nearest big city is Avignon; smaller settlements nearby include Cavaillon, L'Isle-sur-la-Sorgue and Apt.\nThe town is one of the most visited villages in the Luberon Regional Natural Park. It is located on the outskirts of the Park in the Monts de Vaucluse, which faces the northern slope of the Luberon mountain.\nThe town is a member of Les Plus Beaux Villages de France (The Most Beautiful Villages of France) Association due to its heritage: two abbeys, a castle, many old hamlets, hundreds of dry stone huts (bories), several windmills and water-mills, fountains, wash houses, and bories, a type of basin chiseled in rock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "gordes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10029,
+    "place_id": "gn-5552905",
+    "input": {
+      "place": {
+        "place_id": "gn-5552905",
+        "name": "Beaver Dam",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 36.89942,
+        "lon": -113.93274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaver Dam, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Beaver_Dam,_Arizona",
+          "text": "Beaver Dam is an unincorporated community and census-designated place (CDP) in Mohave County, Arizona, United States, that is located in the Arizona Strip region and was settled on December 2, 1863. It is located along Interstate 15 approximately 10 miles (16 km) northeast of Mesquite, Nevada. It is located in the 86432 ZIP Code. It had a population of 1,552 as of the 2020 census, a decline from the figure of 1,962 tabulated in 2010.\nBeaver Dam and the neighboring communities of Littlefield, Scenic and Desert Springs have the distinction of being the only towns in Arizona along I-15. Owing to their location in the Arizona Strip, northwest of the Grand Canyon and west of the Virgin River, they are isolated by hundreds of miles from the rest of the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "beaver dam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "beaver",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10030,
+    "place_id": "gn-5946276",
+    "input": {
+      "place": {
+        "place_id": "gn-5946276",
+        "name": "Eau Claire",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.05062,
+        "lon": -114.08006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eau Claire, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Eau_Claire,_Calgary",
+          "text": "The neighbourhood of Eau Claire in Calgary, Alberta, Canada is located immediately north of Downtown, and south of the Bow River and north of 4th Avenue. A mix of riverside condominiums, shopping, restaurants, hotels, a large public plaza and urban parkland make Eau Claire one of Calgary's most popular areas. Contained within Eau Claire is the city's Festival District.\nThe area, which was developed from reclaimed industrial land, fronts the Bow River and sits immediately north of 3rd Avenue South. North of Eau Claire is Prince's Island Park, a large urban park on an island in the Bow River and the site of many summer festivals, including the Calgary Folk Music Festival, Carifest, Shakespeare in the Park and various busking happenings. Within Eau Claire is a variety of pubs and restaurants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "eau claire",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "claire",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10034,
+    "place_id": "gn-2073985",
+    "input": {
+      "place": {
+        "place_id": "gn-2073985",
+        "name": "Coober Pedy",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -29.01415,
+        "lon": 134.75495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coober Pedy",
+          "url": "https://en.wikipedia.org/wiki/Coober_Pedy",
+          "text": "Coober Pedy () is a town in northern South Australia, 846 km (526 mi) north of Adelaide on the Stuart Highway.  The town is sometimes referred to as the \"opal capital of the world\" because of the quantity of precious opals mined there. A blower truck is raised above the town sign, representing the importance of opal mining to the town's history. Coober Pedy is also renowned for its below-ground dwellings, called \"dugouts\", which are built in this fashion due to the scorching daytime heat.\nThe name \"Coober Pedy\" is thought to derive from the Kokatha-Barngarla term kupa-piti, which translates to \"whitefellas' hole\", but in 1975 the local Aboriginal people of the town adopted the name Umoona, which means \"long life\" and is also their name for the mulga tree."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "coober pedy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coober",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10036,
+    "place_id": "gn-2652941",
+    "input": {
+      "place": {
+        "place_id": "gn-2652941",
+        "name": "Clare",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.07861,
+        "lon": 0.58167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clare, Suffolk",
+          "url": "https://en.wikipedia.org/wiki/Clare,_Suffolk",
+          "text": "Clare is a market town and civil parish on the north bank of the River Stour in the West Suffolk district, in the county of Suffolk, England. Clare is in southwest Suffolk, 14 miles (23 km) from Bury St Edmunds and 9 miles (14 km) from Sudbury. Clare won Village of the Year in 2010 and Anglia in Bloom award for Best Large Village 2011 for its floral displays in 2011. In March 2015, The Sunday Times and Zoopla placed Clare amongst the top 50 UK rural locations, having \"period properties and rich history without the chocolate-box perfection – and the coach trips\". In 2011 it had a population of 2,028.\nClare and its vicinity has evidence of human habitation throughout prehistory, through the Norman Conquest, to the present day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "clare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10037,
+    "place_id": "gn-2960252",
+    "input": {
+      "place": {
+        "place_id": "gn-2960252",
+        "name": "Moutfort",
+        "country": "Luxembourg",
+        "subdivision": "Luxembourg",
+        "lat": 49.58528,
+        "lon": 6.25556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moutfort",
+          "url": "https://en.wikipedia.org/wiki/Moutfort",
+          "text": "Moutfort (Luxembourgish: Mutfert, German: Mutfort) is a village in the commune of Contern, in south-eastern Luxembourg, on both sides of the road from the city of Luxembourg to the German border. As of 2025, the village of Moutfort had a population of 1,583 inhabitants, and the associated village of Medingen had 127 inhabitants.\nIt is usual to speak four or five languages in daily life, even for many children.The Places where it’s commonly found for this Experience are Maison de jeunes Moutfort, the Soccer club “US Moutfort-Medingen”, and in Summer the “Kultur Summer”.[1] \nMoutfort is situated in the valley of the Syr, which flows into the Moselle at Wasserbillig.\n\nMoutfort and the commune of Contern, which also comprises the villages of Medingen and Oetrange, are rich in forests and agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "moutfort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10043,
+    "place_id": "gn-645672",
+    "input": {
+      "place": {
+        "place_id": "gn-645672",
+        "name": "Muonio",
+        "country": "Finland",
+        "subdivision": "Lapland",
+        "lat": 67.95546,
+        "lon": 23.68258
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muonio",
+          "url": "https://en.wikipedia.org/wiki/Muonio",
+          "text": "Muonio (previously called Muonionniska; Northern Sami: Muoná) is a municipality of Finland. The  town is located in fell-region of far northern Finland above the Arctic Circle on the country's western border with Sweden, the Muonio River.  It lies within the area of the former Lappi (Lapland) province in the Fell Lapland subregion.  The next closest Finnish municipalities are Enontekiö to the north, Kittilä on the east, and Kolari to the south.  Southwest of the town, a road bridge crosses the Muonio River, across the river, in Sweden, lies the nearby hamlet of Muoniovaara (\"Muonio hill\") in northern Pajala Municipality in Norrbotten County.\nThe area has been occupied by humans for at least 10,000 years; their arrival is thought to have coincided with deglaciation at the end of the Younger Dryas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "muonio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10053,
+    "place_id": "gn-5211637",
+    "input": {
+      "place": {
+        "place_id": "gn-5211637",
+        "name": "Shamokin Dam",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.8487,
+        "lon": -76.81969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shamokin Dam, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Shamokin_Dam,_Pennsylvania",
+          "text": "Shamokin Dam is a borough in Snyder County, Pennsylvania, United States. The population was 1,647 at the 2020 census.\n\"Shamokin\" , or \"Shahëmokink\" in the Delaware language, and Schahamokink in another Algonquian language, means \"place of eels.\" The borough name is also derived from a 10-foot-tall (3.0 m) dam that was built across the Susquehanna River in the 19th century. The dam supported steamboat ferries run by Ira T. Clement, which transported goods and people between Shamokin Dam and the city of Sunbury on the Northumberland County side of the river. These ferries operated from 1772 until the Bainbridge Street Bridge was built in 1907. The dam also provided water to the Susquehanna Division of the Pennsylvania Canal System, which was constructed on the western bank of the river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "shamokin dam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "shamokin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10054,
+    "place_id": "gn-6232088",
+    "input": {
+      "place": {
+        "place_id": "gn-6232088",
+        "name": "Eastern Beach",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8682,
+        "lon": 174.90019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eastern Beach, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Eastern_Beach,_New_Zealand",
+          "text": "Eastern Beach is a suburb of Auckland, New Zealand. Located on the eastern city of the city centre, the suburb is in the Howick ward, one of the thirteen administrative divisions of Auckland City. Its most common attraction is a popular white-sand palm fringed beach, also called Eastern Beach, with summer temperatures attracting thousands of people from neighbouring suburbs to the beach to enjoy the shallow waters, and shops and parks within close vicinity. At the southern end of the beach is a boat ramp giving high-medium tide access to the dedicated water skiing zone adjacent to the beach. This was a popular area for gathering Pipi and Cockles, but overuse has seen a rāhui or ban placed on the beach. It is part of the Bucklands Beach peninsula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "eastern beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eastern",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10060,
+    "place_id": "gn-2644624",
+    "input": {
+      "place": {
+        "place_id": "gn-2644624",
+        "name": "Lenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.23705,
+        "lon": 0.71892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lenham",
+          "url": "https://en.wikipedia.org/wiki/Lenham",
+          "text": "Lenham is a market village and civil parish in the Maidstone district, in Kent, England, situated on the southern edge of the North Downs, 9 miles (14 km) east of Maidstone. The picturesque square in the village has two public houses (one of which is a hotel), a couple of restaurants, and a tea-room. The parish has a population of 3,370 according to the 2011 Census.\nLenham railway station is on the Maidstone East Line.\nThe village is at the main source of the Great Stour and the Stour Valley Walk starts here, heading to Ashford and on to Canterbury and the English Channel near Sandwich. It is also the source of the River Len, which flows in a westerly direction to join the River Medway at Maidstone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "lenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10089,
+    "place_id": "gn-2948292",
+    "input": {
+      "place": {
+        "place_id": "gn-2948292",
+        "name": "Bischofsgrün",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.05122,
+        "lon": 11.79997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bischofsgrün",
+          "url": "https://en.wikipedia.org/wiki/Bischofsgrün",
+          "text": "Bischofsgrün is a municipality in the district of Bayreuth in Bavaria in Germany.\nBischofsgrün is situated in the Fichtel Mountains between the range's two largest mountains; Schneeberg (1051 m) and the Ochsenkopf (1024 m). The Ochsenkopf North Chairlift starts in Bischofsgrün and is one of two chair lifts that climb to the summit of the Ochsenkopf, making the town an ideal location for outdoor recreation year round. During the winter months tourists flock to the area for alpine skiing, cross country skiing, and sledding.  During the summer, mountain biking and hiking are popular.\nBischofsgrün has a lasting history of glassworks, with the industry possibly practiced in the region as early as the 12th or 13th century, though few records earlier than the 15th century remain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "bischofsgrun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10098,
+    "place_id": "gn-2649737",
+    "input": {
+      "place": {
+        "place_id": "gn-2649737",
+        "name": "Fairlight",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.87802,
+        "lon": 0.65669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairlight, East Sussex",
+          "url": "https://en.wikipedia.org/wiki/Fairlight,_East_Sussex",
+          "text": "Fairlight is a village in East Sussex, England within Rother district, three miles (5 km) to the east of Hastings. Fairlight is also the name of the civil parish forming part of the Rother district which includes the villages of Fairlight and the much larger Fairlight Cove.\nThe village of Fairlight lies on a minor road between Ore, Pett and Winchelsea.\nSt Andrew's Church (built 1845) has a tall tower and beacon turret, and can be seen for some distance around. The church is one of three in the United Benefice of Fairlight, Guestling and Pett. Richard D'Oyly Carte, founder of the Savoy Theatre, Savoy Hotel, and D'Oyly Carte Opera Company, which produced the Gilbert and Sullivan light operas, is buried in the churchyard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "fairlight",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
