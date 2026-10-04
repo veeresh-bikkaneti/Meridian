@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 4091,
+    "attempt": 4061,
+    "place_id": "gn-2646807",
+    "input": {
+      "place": {
+        "place_id": "gn-2646807",
+        "name": "Hoddesdon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.76148,
+        "lon": -0.01144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoddesdon",
+          "url": "https://en.wikipedia.org/wiki/Hoddesdon",
+          "text": "Hoddesdon ( )  is a town in the Borough of Broxbourne, Hertfordshire, lying entirely within the London Metropolitan Area and Greater London Urban Area. The area is on the River Lea and the Lee Navigation along with the New River.\nHoddesdon is the second most populated town in Broxbourne with a population of 42,253 according to the United Kingdom's 2011 census.\nIt borders Ware to the north, Nazeing in Essex to the east, and Broxbourne to the south. The Prime Meridian passes just to the east of Hoddesdon. The town is served by Rye House railway station and nearby Broxbourne railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "hoddesdon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4092,
+    "attempt": 4062,
+    "place_id": "gn-2654730",
+    "input": {
+      "place": {
+        "place_id": "gn-2654730",
+        "name": "Bridgwater",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.12837,
+        "lon": -3.00356
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridgwater",
+          "url": "https://en.wikipedia.org/wiki/Bridgwater",
+          "text": "Bridgwater is a historic market town and civil parish in Somerset, England. It lies on the River Parrett at the edge of the Somerset Levels. The parish had a population of 38,310, at the time of the 2021 census, while the wider built-up area had a population of 47,860. The town plays host to an annual carnival in November, the largest of the Somerset carnivals.\nA town was already established here by the time of the Domesday Book, great survey. It first became a borough and a castle was built in 1200, although the castle was destroyed after the English Civil War. The town had a politically radical tendency and the Battle of Sedgemoor was fought nearby in 1685, ending the Monmouth Rebellion. \nAt one time it was the largest port in Somerset. It developed as an industrial centre with brick and tile works, ship building and railway engineering. Its many notable buildings include the Church of St Mary, which played a part in the Battle of Sedgemoor, and the Blake Museum, which was the birthplace of Admiral Blake in 1598."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "bridgwater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4093,
+    "attempt": 4063,
+    "place_id": "gn-2655664",
+    "input": {
+      "place": {
+        "place_id": "gn-2655664",
+        "name": "Billingham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.58881,
+        "lon": -1.29034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Billingham",
+          "url": "https://en.wikipedia.org/wiki/Billingham",
+          "text": "Billingham is a town and civil parish in County Durham, England. The town is on the north side of the River Tees and is governed as part of the Borough of Stockton-on-Tees unitary authority. It had a population of 33,927, in the 2021 census.\nThe settlement has existed since Anglo-Saxon times as a village. A post-Second World War town centre was built north of the old village centre on the town's grange. It was a township, with an urban district, from 1923, until 1968, when it was absorbed into the County Borough of Teesside, and later part of the county of Cleveland.\nBillingham is home to the Billingham Manufacturing Plant which is a major producer of chemicals for agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "billingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4094,
+    "attempt": 4064,
+    "place_id": "gn-2701715",
+    "input": {
+      "place": {
+        "place_id": "gn-2701715",
+        "name": "Karlskoga",
+        "country": "Sweden",
+        "subdivision": "Örebro",
+        "lat": 59.32667,
+        "lon": 14.52386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karlskoga",
+          "url": "https://en.wikipedia.org/wiki/Karlskoga",
+          "text": "Karlskoga (Swedish pronunciation: [kaɭˈskûːɡa] ) is a locality and the seat of Karlskoga Municipality, Sweden. It is located within Örebro County, 45 km (28 mi) west of Örebro, and 10 km (6 mi) north of Degerfors. With a 2020 population of 27,386 distributed over 10.55 square miles (27.33 km2), Karlskoga is the second-largest city in both Örebro County and the historical province of Värmland.\nKarlskoga straddles the northern shore of Lake Möckeln. Among the city's main topographical features are the two rivers, Timsälven and Svartälven. Other features include an esker, Rävåsen, designated as a nature reserve, and contiguous with the city center.\nThe broader Karlskoga area distinguishes itself from its surrounding regions, e.g. the Närke Plain, with its abundant woodlands and hills, which made it better suited for activities beyond agriculture, such as the ironwork industry.\nKarlskoga evolved around the arms manufacturer Bofors, and by 1970, it counted almost 10,000 employees. The many jobs in the arms industry during the 1900s multiplied Karlskoga's population. Today, Karlskoga is still a thriving center of the arms industry, but its economy is more diverse than during the peak-Bofors era.\nKarlskoga is home to the Björkborn Manor, on the property of the Björkborn Works, where Alfred Nobel lived. His residency there is the reason his will was adjudicated in Karlskoga at Karlshall, establishing the Nobel Prize. Other landmarks include the Nobel Laboratory, the Karlskoga Church, Mässen, and the Bofors Hotel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "karlskoga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4095,
+    "attempt": 4065,
+    "place_id": "gn-2756767",
+    "input": {
+      "place": {
+        "place_id": "gn-2756767",
+        "name": "Doetinchem",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.965,
+        "lon": 6.28889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doetinchem",
+          "url": "https://en.wikipedia.org/wiki/Doetinchem",
+          "text": "Doetinchem (Dutch pronunciation: [ˈdutɪŋxəm] ; Low Saxon: Deutekem) is a city and municipality in the east of the Netherlands. It is situated along the Oude IJssel (Old IJssel) river in a part of the province of Gelderland called the Achterhoek. The municipality had a population of 58,270 in 2021 and consists of an area of 79.66 km2 (30.76 sq mi) of which 0.61 km2 (0.24 sq mi) is water. This makes Doetinchem the largest town (by population) in the Achterhoek.\nOn 1 January 2005, a municipal restructuring merged the neighbouring municipality of Wehl as well as the Zelhelmse Broek area with Doetinchem."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "doetinchem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4096,
+    "attempt": 4066,
+    "place_id": "gn-2813635",
+    "input": {
+      "place": {
+        "place_id": "gn-2813635",
+        "name": "Wattenscheid",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.48057,
+        "lon": 7.14251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wattenscheid",
+          "url": "https://en.wikipedia.org/wiki/Wattenscheid",
+          "text": "Wattenscheid (German pronunciation: [ˈvatn̩ˌʃaɪ̯t] ) is a Stadtbezirk (urban district) of the German city of Bochum, in the Ruhr area of North Rhine-Westphalia. Until its incorporation into Bochum in 1975, Wattenscheid was an independent town with a long history dating back to its first recorded mention in 880. In the Middle Ages, it was a member of the Hanseatic League and later became known as a coal mining center during the industrialization of the Ruhr region. The last local coal mine closed in 1973.\nAs of 2025, Wattenscheid has about 74,000 inhabitants. It consists of residential areas and historic churches, including St. Gertrud von Brabant. The district also has a strong sporting tradition, serving as the base for the football club SG Wattenscheid 09, the athletics club TV Wattenscheid 01, and the chess club SV Wattenscheid."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "wattenscheid",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4097,
+    "attempt": 4067,
+    "place_id": "gn-2885237",
+    "input": {
+      "place": {
+        "place_id": "gn-2885237",
+        "name": "Köthen",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 51.75185,
+        "lon": 11.97093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Köthen",
+          "url": "https://en.wikipedia.org/wiki/Köthen",
+          "text": "Köthen ([ˈkøːtn̩] ) is a town in Germany. It is the capital of the district of Anhalt-Bitterfeld in Saxony-Anhalt, about 30 km (19 mi) north of Halle.\nKöthen is the location of the main campus and the administrative centre of the regional university, Anhalt University of Applied Sciences/Hochschule Anhalt which is especially strong in information technology. The city is conveniently located at the hub of the Magdeburg–Leipzig, Dessau–Köthen and Köthen–Aschersleben railways.\nKöthen is situated in a fertile area with rich black soil suitable to the cultivation of sugar-beets. Industry includes high-tech engineering, manufacture of cranes, as well as chemicals, printing, and foodstuffs.\nIn English, the name of the city is often spelt anachronistically as Cöthen, a practice that has become standard in the literature relating to the life and work of Johann Sebastian Bach, who resided and worked there from 1717 to 1723."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "kothen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4098,
+    "attempt": 4068,
+    "place_id": "gn-2980340",
+    "input": {
+      "place": {
+        "place_id": "gn-2980340",
+        "name": "Saintes",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.74742,
+        "lon": -0.63489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saintes, Charente-Maritime",
+          "url": "https://en.wikipedia.org/wiki/Saintes,_Charente-Maritime",
+          "text": "Saintes (French: [sɛ̃t] ; Poitevin-Saintongeais: Sénte) is a commune and historic town in western France, in the Charente-Maritime department of which it is a sub-prefecture, in Nouvelle-Aquitaine. Saintes is the second-largest city in Charente-Maritime, with 25,518 inhabitants in 2021. The city's immediate surroundings form the second-most populous metropolitan area in the department, with 56,598 inhabitants. While a majority of the surrounding landscape consists of fertile, productive fields, a significant minority of the region remains forested, its natural state.\nIn Roman times, Saintes was known as Mediolanum Santonum. During much of its history, the name of the city was spelled Xaintes or Xainctes.\nPrimarily built on the left bank of the Charente, Saintes became the first Roman capital of Aquitaine. Later it was designated as the capital of the province of Saintonge under the Ancien Régime. Following the French Revolution, it briefly became the prefecture of the department (then called Charente-Inférieure) during the territorial reorganization of 1790, until La Rochelle was designated and superseded it in 1810. Although it had the status only of a subprefecture, Saintes was allowed to remain the judicial centre of the department. In the late 19th century, Saintes was chosen as the seat of the VIIIth arrondissement of the Chemins de Fer de l'État, railways, which enabled an era of economic and demographic growth.\nToday, Saintes remains the economic heart of the centre of the department, and it is an important transport hub. A few major industrial businesses operate (in electronics, rail repair, construction of hoists). The city's commerce and service sector is large, featuring the headquarters of Co-op Atlantique, and administrative functions of state, courts, and legal services; banks, schools, and a hospital. Beyond this, property maintenance, retail, and tourism sectors provide large numbers of jobs.\nBecause of its noteworthy Gallo-Roman, medieval and classical heritage, Saintes is a tourist destination. It has been a member of the French Towns and Lands of Art and History since 1990. It has several museums, a theater, cinemas, and organizes numerous festivals. A European centre of musical research and practice is based in its Abbaye aux Dames."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 348
+    },
+    "banned_terms": [
+      {
+        "term": "saintes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4099,
+    "attempt": 4069,
+    "place_id": "gn-3040132",
+    "input": {
+      "place": {
+        "place_id": "gn-3040132",
+        "name": "la Massana",
+        "country": "Andorra",
+        "subdivision": "La Massana",
+        "lat": 42.54499,
+        "lon": 1.51483
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Massana",
+          "url": "https://en.wikipedia.org/wiki/La_Massana",
+          "text": "La Massana (Catalan pronunciation: [la maˈsana]; originally La Maçana) is one of the seven parishes of the Principality of Andorra. It is located in the northwest of the country. La Massana is also the name of the main town of the parish. The name Massana derives from the Latin name mattianam for a variety of apple. Other settlements in the parish are Pal, Arinsal, Erts, Sispony, Anyós, L'Aldosa de la Massana, Puiol del Pui, Escàs, Els Plans, Mas de Ribafeta, Xixerella and Pui.\nThe parish is extremely mountainous and contains the highest mountain in Andorra, Coma Pedrosa (2,942 m or 9,652 ft). Its western side limits with Tor, Pallars municipal term, in the border with Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "la massana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "massana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4100,
+    "attempt": 4070,
+    "place_id": "gn-3055685",
+    "input": {
+      "place": {
+        "place_id": "gn-3055685",
+        "name": "Baja",
+        "country": "Hungary",
+        "subdivision": "Bács-Kiskun",
+        "lat": 46.18299,
+        "lon": 18.95307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baja, Hungary",
+          "url": "https://en.wikipedia.org/wiki/Baja,_Hungary",
+          "text": "Baja (Hungarian pronunciation: [ˈbɒjɒ]) is a city with county rights in Bács-Kiskun County, southern Hungary. It is the second-largest city in the county, after the county seat of Kecskemét, and is home to some 35,000 people. Baja is the seat of Baja Municipality.\nThe Baja region has been continuously inhabited since the end of the Iron Age, but there is evidence of human presence since prehistoric times. The settlement itself was most likely established in the 14th century. After the Ottoman Empire conquered Hungary, it grew to prominence more than the other nearby settlements, and it was granted town rights in 1696.\nToday, Baja plays an important role in the life of Northern Bácska as a local commercial centre and the provider of public services such as education and healthcare. It has several roads and a railway connection to other parts of the country and also offers local public transport for its residents. Being close to the Danube and the forest of Gemenc and having its own cultural sights, Baja has become a candidate for tourism, which, however, is not well established yet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "baja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4101,
+    "attempt": 4071,
+    "place_id": "gn-306112",
+    "input": {
+      "place": {
+        "place_id": "gn-306112",
+        "name": "Kozan",
+        "country": "Türkiye",
+        "subdivision": "Adana",
+        "lat": 37.45517,
+        "lon": 35.81573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kozan, Adana",
+          "url": "https://en.wikipedia.org/wiki/Kozan,_Adana",
+          "text": "Kozan, formerly Sis (Armenian: Սիս), is a municipality and district of Adana Province, Turkey. Its area is 1,903 km2, and its population is 132,703 (2022). It is 68 kilometres (42 miles) northeast of Adana, in the northern section of the Çukurova plain. The Kilgen River, a tributary of the Ceyhan, flows through Kozan and crosses the plain south into the Mediterranean. The Taurus Mountains rise up sharply behind the town.\nSis was the capital of the Armenian Kingdom of Cilicia, today's Sis (ancient city), now called Kozan Kalesi, was built on a long rocky ridge in the center of the modern city.\nThe population of the city has grown rapidly in recent years, from 15,159 in 1960, to 54,451 in 1990, to 72,463 in 2007 and to 74,521 in 2009 (census figures)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "kozan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4102,
+    "attempt": 4072,
+    "place_id": "gn-3353811",
+    "input": {
+      "place": {
+        "place_id": "gn-3353811",
+        "name": "Otjiwarongo",
+        "country": "Namibia",
+        "subdivision": "Otjozondjupa Region",
+        "lat": -20.46369,
+        "lon": 16.64772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Otjiwarongo",
+          "url": "https://en.wikipedia.org/wiki/Otjiwarongo",
+          "text": "Otjiwarongo (Herero for \"beautiful place\") is a city of 49,000 inhabitants in Namibia. It is the capital of Otjozondjupa Region, and it also houses the constituency office of the Otjiwarongo electoral constituency.\nOtjiwarongo is situated in central-north Namibia on the TransNamib railway. It is the biggest business centre in the Otjozondjupa Region. Otjiwarongo is located on the B1 road and its links to the capital Windhoek, the Golden Triangle of Otavi, Tsumeb and Grootfontein, and Etosha National Park. It is one of Namibia's fast-growing towns, with a neat and peaceful quality environment and many excellent facilities, including supermarkets, banks, lodges, and hotels. Some of Namibia's best-known private game farms and nature reserves are located in and around the town.\nOtjiwarongo is one of Namibia's towns with a large population of German-speaking people. German influence is also evident in its Germanic buildings. The school \"Donatus School Otjiwarongo\" (D.S.O.) was once known as \"Deutsche Schule Otjiwarongo\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "otjiwarongo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4103,
+    "attempt": 4073,
+    "place_id": "gn-3361934",
+    "input": {
+      "place": {
+        "place_id": "gn-3361934",
+        "name": "Saldanha",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.01167,
+        "lon": 17.9442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saldanha, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Saldanha,_South_Africa",
+          "text": "Saldanha (Afrikaans: [sal'dana]), also known as Saldanha Bay, is a town of 21,636 people, located 110 kilometres (70 mi) north of Cape Town on the northern shore of Saldanha Bay, in the Western Cape province of South Africa. Its situation as a natural sheltered harbour has led to development as a port for the export of iron ore from Sishen in the Northern Cape, which is transported on the Sishen–Saldanha railway line. The port is one of the largest exporting ports of ore in the whole of Africa, and it is able to handle ships as large as 200 000 tons deadweight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "saldanha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4104,
+    "attempt": 4074,
+    "place_id": "gn-3408274",
+    "input": {
+      "place": {
+        "place_id": "gn-3408274",
+        "name": "Afogados da Ingazeira",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -7.75083,
+        "lon": -37.63917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Afogados da Ingazeira",
+          "url": "https://en.wikipedia.org/wiki/Afogados_da_Ingazeira",
+          "text": "Afogados da Ingazeira (Central northeastern portuguese pronunciation: [ɐfɔˈɡadu(s) dɐ ĩɡɐˈzeɾɐ]) is a Brazilian municipality in the state of Pernambuco. The estimated population in 2025 according to the IBGE was 42,672, and the total area is 378.031 square kilometres (145.959 mi2). It has a population density of 97 inhabitants per square kilometer. In 2000, Afogados da Ingazeira had the second highest Human Development Index (HDI) in the Alto do Pajeú sertão region of Pernambuco state.  Nonetheless, its score (0.683) was still below the state (0.718) and national (0.789) averages. The city is the seat of the Roman Catholic Diocese of Afogados da Ingazeira.\nAfogados da ingazeira have one sister city\n\n Tabira, Brazil"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "afogados da ingazeira",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "afogados",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ingazeira",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4105,
+    "attempt": 4075,
+    "place_id": "gn-3435103",
+    "input": {
+      "place": {
+        "place_id": "gn-3435103",
+        "name": "Curuzú Cuatiá",
+        "country": "Argentina",
+        "subdivision": "Corrientes",
+        "lat": -29.79145,
+        "lon": -58.0499
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curuzú Cuatiá",
+          "url": "https://en.wikipedia.org/wiki/Curuzú_Cuatiá",
+          "text": "Curuzú Cuatiá is a city in the south of the province of Corrientes in the Argentine Mesopotamia. It had about 34,000 inhabitants at the 2010 census [INDEC], and is the head town of the Curuzú Cuatiá Department.\nThe area has an undulated terrain, with many small rivers and streams that empty into the Paraná River in the west, or into the Uruguay River in the east. The climate is wet subtropical, with uniformly distributed annual rainfall of 1,200 mm on average. The average temperatures are 14.5 °C (winter) and 26 °C (summer), with recorded extremes of −3 °C and 44 °C respectively.\nThe city is served by an airport (IATA: UZU, ICAO: SATU), located at 29°47′S 58°1′W."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "curuzu cuatia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "curuzu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cuatia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4106,
+    "attempt": 4076,
+    "place_id": "gn-3436124",
+    "input": {
+      "place": {
+        "place_id": "gn-3436124",
+        "name": "Barranqueras",
+        "country": "Argentina",
+        "subdivision": "Chaco",
+        "lat": -27.48132,
+        "lon": -58.93925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barranqueras",
+          "url": "https://en.wikipedia.org/wiki/Barranqueras",
+          "text": "Barranqueras is a city in the southeast of the province of Chaco, Argentina, on a small tributary river on the right-hand-side (western) shore of the Paraná River, only 7 km from the provincial capital Resistencia and within its metropolitan area. It has over 50,000 inhabitants according to the 2001 census [INDEC], being the third most populated city in the province.\nBarranqueras is located in a commercial node of the Mercosur, and has a port on Kilometer 1,198 of the Paraná, managed by the provincial state since 1991.\nAlicia Azula was elected Mayor of Barranqueras in 2003 and she was re-elected twice more."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "barranqueras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4107,
+    "attempt": 4077,
+    "place_id": "gn-3445596",
+    "input": {
+      "place": {
+        "place_id": "gn-3445596",
+        "name": "Valença",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.24556,
+        "lon": -43.70028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valença, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Valença,_Rio_de_Janeiro",
+          "text": "Valença (Portuguese pronunciation: [vaˈlẽsɐ]) is a municipality located in the Brazilian state of Rio de Janeiro. Its population was estimated at 76,869 in 2020 and its area is 1,305 square kilometres (504 sq mi).  The city is the seat of the Roman Catholic Diocese of Valença.\nValença has five districts: Conservatória (\"City of Serenades\"), Barão de Juparanã (\"City of the Barons), Parapeúna, Santa Isabel do Rio Preto and Pentagna.\nToday its economy is geared especially for agriculture and the existing university center in the municipal headquarters.\nThe municipality contains part of the 5,952-hectare (14,710-acre) Serra da Concórdia State Park, created in 2002."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "valenca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4108,
+    "attempt": 4078,
+    "place_id": "gn-3461017",
+    "input": {
+      "place": {
+        "place_id": "gn-3461017",
+        "name": "Irati",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.46722,
+        "lon": -50.65111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irati, Paraná",
+          "url": "https://en.wikipedia.org/wiki/Irati,_Paraná",
+          "text": "Irati is a municipality in the state of Paraná in Brazil, located in the southeastern region of the state. Its population at the 2022 census was 59,250. The main ethnicities are especially Poles and Ukrainians, who seek to maintain customs and traditions of their ancestors.\nIrati sprang up in the 1890s as a railroad town along the São Paulo – Rio Grande do Sul railroad line. The name, Irati, comes from the Tupi language and reportedly means \"river of honey\"  (apparently there were many bees in the region).\nA distinguishing feature of many small towns in southern Brazil is the municipal anthem."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "irati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4109,
+    "attempt": 4079,
+    "place_id": "gn-3472638",
+    "input": {
+      "place": {
+        "place_id": "gn-3472638",
+        "name": "Alegrete",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.78306,
+        "lon": -55.79194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alegrete",
+          "url": "https://en.wikipedia.org/wiki/Alegrete",
+          "text": "Alegrete (Portuguese: [a.leˈɡɾe.t͡ʃi] ) is a municipality in Rio Grande do Sul located in southern Brazil. Its medium altitude is 102 m (335 ft). Its estimated population in 2020 was 73,028 inhabitants and its total area is 7,803.967 km2 (3,013.129 sq mi), making it the largest municipality by area in southern Brazil. Its inhabitants are called Alegretenses.\n\nAlegrete was settled in 1816 and became a municipality in 1857. It is the hometown of the abolitionist leader Franklin Gomes Souto, of the politician, diplomat and statesman Osvaldo Aranha, first President of the United Nations General Assembly, and of the Brazilian poet Mário Quintana. Every 20 September (Ragamuffin War Day), about 8,000 young, adult and old horsemen and horsewomen parade through its streets, using their native costumes and riding their horses with trappings.\nAlegrete is served by Gaudêncio Machado Ramos Airport.\nThe municipality contains part of the 351 hectares (870 acres) Ibirapuitã Biological Reserve, a fully protected conservation unit created in 1982 to preserve an area of the pampas biome."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "alegrete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4110,
+    "attempt": 4080,
+    "place_id": "gn-3526657",
+    "input": {
+      "place": {
+        "place_id": "gn-3526657",
+        "name": "Izúcar de Matamoros",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 18.60157,
+        "lon": -98.46152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Izúcar de Matamoros",
+          "url": "https://en.wikipedia.org/wiki/Izúcar_de_Matamoros",
+          "text": "Izúcar de Matamoros is a city in Izúcar de Matamoros Municipality located in the southwestern part of the Mexican state of Puebla. The city serves as the municipal seat of the municipality. At the census of 2005 the city had a population of 41,042 inhabitants, while the municipality had a population of 69,413. The municipality has an area of 514.11 km2 (198.5 sq mi), and stands at 1100 m above sea level. Its largest other communities are the towns of La Galarza and San Juan Raboso. It has many sights like the portales, and Santo Domingo, the biggest church in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "izucar de matamoros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "izucar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "matamoros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

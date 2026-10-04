@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 4131,
+    "attempt": 4101,
+    "place_id": "gn-2562504",
+    "input": {
+      "place": {
+        "place_id": "gn-2562504",
+        "name": "Siġġiewi",
+        "country": "Malta",
+        "subdivision": "Is-Siġġiewi",
+        "lat": 35.85547,
+        "lon": 14.43611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siġġiewi",
+          "url": "https://en.wikipedia.org/wiki/Siġġiewi",
+          "text": "Siġġiewi (Maltese: Is-Siġġiewi [ɪsːɪˈd͡ʒːɪːwɪ]), also called by its title Città Ferdinand, is a city and a local council in the Western Region of Malta.The island of Filfla is part of the village. It is the third largest council in Malta by surface area, after Rabat and Mellieħa. Siġġiewi is situated on a plateau approximately 5 kilometers (3 miles) away from Mdina (the ancient capital city of Malta) and 10 kilometres (6 miles) away from Valletta, the contemporary capital.\nThe population of Siġġiewi was 9,697 in July 2024. This included 4,895 males and 4,802 females; 8,947 Maltese nationals and 750 foreign nationals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "siggiewi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4132,
+    "attempt": 4102,
+    "place_id": "gn-2562693",
+    "input": {
+      "place": {
+        "place_id": "gn-2562693",
+        "name": "Munxar",
+        "country": "Malta",
+        "subdivision": "Il-Munxar",
+        "lat": 36.03048,
+        "lon": 14.23469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Munxar",
+          "url": "https://en.wikipedia.org/wiki/Munxar",
+          "text": "Munxar (Maltese: Il-Munxar) is an administrative unit of Malta, which lies on the southern side of the island of Gozo. The population of Munxar was 1,872 in July 2024. This included 1,002 males and 870 females; 1,098 Maltese nationals and 774 foreign nationals.\n\nClose to this village, there is Xlendi Bay, a popular tourist resort engulfed in a fjord-like inlet amongst high cliffs. Xlendi Bay is a small fishing village, but is also an ideal bathing and diving resort especially in summer. Otherwise, foreigners and locals enjoy the late spring and early autumn sunsets often captured by artists or keen photographers.\nThe parish church, a small baroque building built from the typical Maltese stone, is dedicated to St. Paul. It was built between 1914 and 1925 and was consecrated on 18 October 1925. Bishop Giuseppe Pace established it as a parish church on 12 December 1957. As a result, Munxar was the last village in Gozo to become an autonomous parish. The feast officially falls on 10 February which is also a national public holiday; however, the outside festivities are celebrated on the third Sunday of each May.\nOne of the people of note to have been born and lived in this village is Professor Joseph Aquilina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "munxar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4133,
+    "attempt": 4103,
+    "place_id": "gn-2644319",
+    "input": {
+      "place": {
+        "place_id": "gn-2644319",
+        "name": "Littlehampton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.81137,
+        "lon": -0.54078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Littlehampton",
+          "url": "https://en.wikipedia.org/wiki/Littlehampton",
+          "text": "Littlehampton is a town, seaside resort and civil parish in the Arun District of West Sussex, England. It lies on the English Channel on the eastern bank of the mouth of the River Arun. It is 52 miles (84 km) south south-west of London, 19 miles (31 km) west of Brighton and 10 miles (16 km) east of Chichester.\nThe parish covers an area of 11.35 km2 (4 sq mi). The suburban area of the town has a population of approximately 55,000. The conurbation includes other settlements: Wick in the north west; Lyminster to the north; and Rustington to the east. Wick and Toddington, which has a large business park, became part of the town in 1901. Nearby towns include Bognor Regis to the west and Worthing to the east.\nThe town is also the westernmost settlement of the 15th largest urban area in England and Wales, the Brighton/Worthing/Littlehampton conurbation, a region encompassing 474,485 people (2011 census). The South Downs National Park commences 3 miles (4.8 km) north of the town: Littlehampton links to Amberley and Arundel by footpaths and railway as well as by roads."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "littlehampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4134,
+    "attempt": 4104,
+    "place_id": "gn-2645889",
+    "input": {
+      "place": {
+        "place_id": "gn-2645889",
+        "name": "Keighley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.86791,
+        "lon": -1.90664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keighley",
+          "url": "https://en.wikipedia.org/wiki/Keighley",
+          "text": "Keighley (  KEETH-lee) is a market town and a civil parish\nin the City of Bradford Borough of West Yorkshire, England. It is the second-largest settlement in the borough, after Bradford.\nKeighley is 8 miles (13 kilometres) north-west of Bradford, 4 mi (6.5 km) north-west of Bingley, 11 mi (18 km) north of Halifax and 8 mi (13 km) south-east of Skipton. It is governed by Keighley Town Council and Bradford City Council. Keighley is in West Yorkshire, close to the borders of North Yorkshire and Lancashire. Historically in the West Riding of Yorkshire, it lies between Airedale and Keighley Moors. At the 2011 census, Keighley had a population of 56,348."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "keighley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4135,
+    "attempt": 4105,
+    "place_id": "gn-2649571",
+    "input": {
+      "place": {
+        "place_id": "gn-2649571",
+        "name": "Feltham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.4462,
+        "lon": -0.41388
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Feltham",
+          "url": "https://en.wikipedia.org/wiki/Feltham",
+          "text": "Feltham () is a town in West London, England, 13.5 miles (21.7 km) from Charing Cross. Historically part of Middlesex, it became part of the London Borough of Hounslow in 1965. The parliamentary constituency of Feltham and Heston has been held by Labour Party MPs since 1992. In 2011, the population of the combined census area of Feltham, Bedfont and Hanworth was 63,368.\nThe economy of the town was largely agrarian until the early twentieth century, when it was transformed by the expansion of the London urban area. Most of the original High Street was demolished in the 1960s and 1970s. Further redevelopment in the early 2000s created the current shopping centre, which opened in 2006.\nHeathrow Airport is to the north west of the town and is a major centre of employment for local residents. Feltham railway station is on the Waterloo to Reading line, between Twickenham and Staines-upon-Thames."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "feltham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4136,
+    "attempt": 4106,
+    "place_id": "gn-2657613",
+    "input": {
+      "place": {
+        "place_id": "gn-2657613",
+        "name": "Airdrie",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.86602,
+        "lon": -3.98025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Airdrie, North Lanarkshire",
+          "url": "https://en.wikipedia.org/wiki/Airdrie,_North_Lanarkshire",
+          "text": "Airdrie (; Scots: Airdrie; Scottish Gaelic: An t-Àrd Ruigh) is a town in North Lanarkshire, Scotland. It lies on a plateau 400 ft (130 m) above sea level, 12 miles (19 km) east of Glasgow. In 2022, The town had a population of 35,846.\nAirdrie developed as a market town in the late 17th century following the passing of an act of Parliament, the Airdrie Fairs and Market Act 1695 (c. 94 (S)) allowing it to hold a weekly market. It later grew in prominence as a centre for weaving and manufacturing, as well as being the settlement near several coalmines. In the mid 19th century, the town expanded greatly as a result of immigration and the development of iron works and railway links. The first public library in Scotland was established in Airdrie in 1853.\nDuring the 20th century, industrial decline took place in Airdrie, with heavy industry closing down across much of the town. In the 21st century, Airdrie has continued as a regional centre for services and retail, as well as being a commuter settlement within the Central Belt. Historically part of Lanarkshire, Airdrie forms a conurbation with its neighbour Coatbridge, in what was formerly the Monklands district, with a population of approximately 90,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "airdrie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4137,
+    "attempt": 4107,
+    "place_id": "gn-2732773",
+    "input": {
+      "place": {
+        "place_id": "gn-2732773",
+        "name": "Viana do Castelo",
+        "country": "Portugal",
+        "subdivision": "Viana do Castelo",
+        "lat": 41.69323,
+        "lon": -8.83287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viana do Castelo",
+          "url": "https://en.wikipedia.org/wiki/Viana_do_Castelo",
+          "text": "Viana do Castelo, officially the City of Viana do Castelo,  is a city, municipality and seat of the district of Viana do Castelo in Northern Portugal. The population in 2021 was 85,778, in an area of 319.02 square kilometres (123.17 mi2). The urbanized area of the municipality, comprising the city, has a population of approximately 36,148 inhabitants, although the extended densely populated region reaches surrounding municipalities like Caminha and Ponte de Lima with a population above 150,000 inhabitants. It is located at the mouth of the Lima river, on the Portuguese Way path, an alternative path of the Camino de Santiago."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "viana do castelo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "viana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "castelo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4138,
+    "attempt": 4108,
+    "place_id": "gn-2787413",
+    "input": {
+      "place": {
+        "place_id": "gn-2787413",
+        "name": "Saint-Gilles",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.82763,
+        "lon": 4.34389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Gilles, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Saint-Gilles,_Belgium",
+          "text": "Saint-Gilles (French, pronounced [sɛ̃ ʒil] ) or Sint-Gillis (Dutch, pronounced [sɪntˈxɪlɪs] ) is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the southern part of the region, it is bordered by the City of Brussels, Anderlecht, Forest and Ixelles. Like all municipalities in Brussels, it is officially bilingual (French–Dutch).\nSaint-Gilles has a multicultural identity stemming from its diverse population. The housing stock varies from semi-derelict tenements near Brussels-South railway station in the north, to elegant bourgeois houses on the southern borders with Uccle and Ixelles, to tourist hotels at the inner end of the Chaussée de Charleroi/Charleroisesteenweg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "saint gilles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gilles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4139,
+    "attempt": 4109,
+    "place_id": "gn-2897216",
+    "input": {
+      "place": {
+        "place_id": "gn-2897216",
+        "name": "Hürth",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 50.87079,
+        "lon": 6.86761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hürth",
+          "url": "https://en.wikipedia.org/wiki/Hürth",
+          "text": "Hürth (German pronunciation: [hʏʁt] ) is a town in the Rhein-Erft-Kreis, North Rhine-Westphalia, Germany. Hürth shares borders with the city of Cologne and is about 6 km to the southwest of Cologne city centre, at the northeastern slope of the natural preserve Kottenforst-Ville. The town consists of thirteen districts, once independent villages, and is distributed over a relatively large area. The municipal area is interspersed with lakes and stretches of forest.\nIn former times, the Eifel Aqueduct, a Roman aqueduct which supplied the city of Cologne with drinking water, went through Hürth. Remnants of various aqueducts can still be found underground. It is also famous as the birthplace of Michael and Ralf Schumacher."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "hurth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4140,
+    "attempt": 4110,
+    "place_id": "gn-3032213",
+    "input": {
+      "place": {
+        "place_id": "gn-3032213",
+        "name": "Blois",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.59432,
+        "lon": 1.32912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blois",
+          "url": "https://en.wikipedia.org/wiki/Blois",
+          "text": "Blois ( BLWAH; French: [blwa] ) is a commune and the capital city of Loir-et-Cher department, in Centre-Val de Loire, France, on the banks of the lower Loire river between Orléans and Tours.\nWith 47,219 inhabitants in 2023, Blois is the most populated city of the department, and the 4th of the region.\nHistorically, the city was the capital of the County of Blois, created in 832 until its integration into the Royal domain in 1498, when Count Louis II of Orléans became King Louis XII of France. During the Renaissance, Blois was the official residence of the King of France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "blois",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4141,
+    "attempt": 4111,
+    "place_id": "gn-3091232",
+    "input": {
+      "place": {
+        "place_id": "gn-3091232",
+        "name": "Mysłowice",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.20745,
+        "lon": 19.16668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mysłowice",
+          "url": "https://en.wikipedia.org/wiki/Mysłowice",
+          "text": "Mysłowice [mɨswɔˈvʲit͡sɛ]  (German: Myslowitz; Silesian: Myslowicy) is a city in Silesia in Poland, bordering Katowice. The population of the city as of 2022 is 72,124.\nIt is located in the core of the Metropolis GZM in the Silesian Highlands, on the Przemsza and Brynica rivers (tributaries of the Vistula). It is situated in the Silesian Voivodeship since its formation in 1999, previously in the Katowice Voivodeship, and before then, the Autonomous Silesian Voivodeship. Mysłowice is one of the cities comprising the 2.7 million conurbation – Katowice urban area and within the greater Katowice-Ostrava metropolitan area with a population of about 5,294,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "mys owice",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mys",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "owice",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4142,
+    "attempt": 4112,
+    "place_id": "gn-3177400",
+    "input": {
+      "place": {
+        "place_id": "gn-3177400",
+        "name": "Empoli",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.71795,
+        "lon": 10.94758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Empoli",
+          "url": "https://en.wikipedia.org/wiki/Empoli",
+          "text": "Empoli (Italian pronunciation: [ˈempoli]) is a town and comune in the Metropolitan City of Florence, Tuscany, Italy, about 30 km (20 miles) southwest of Florence, to the south of the Arno in a plain formed by the river. The plain has been usable for agriculture since Roman times.  The commune's territory becomes hilly as it departs from the river. Empoli is on the main railway line from Florence to Pisa, and is the point of divergence of a line to Siena.\nEmpoli has an enduring tradition as an agricultural centre. It has given its name to a local variety of artichoke."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "empoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4143,
+    "attempt": 4113,
+    "place_id": "gn-332746",
+    "input": {
+      "place": {
+        "place_id": "gn-332746",
+        "name": "Korem",
+        "country": "Ethiopia",
+        "subdivision": "Tigray",
+        "lat": 12.50583,
+        "lon": 39.52278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Korem",
+          "url": "https://en.wikipedia.org/wiki/Korem",
+          "text": "Korem (Tigrinya: ኮረም) (alternative forms include Ofla, Kworem, Quoram) is a town and separate woreda in Tigray, Ethiopia. Located on the eastern edge of the Ethiopian Highlands in the Southern Zone of the Tigray Region, this town has a latitude and longitude of 12°30′N 39°31′E with an elevation of 2539 meters above sea level and is located along Ethiopian Highway 2. Korem is located in the endorheic basin of the Afar Triangle. The streams near Korem do not reach the ocean. Lake Ashenge is located six kilometers to the north of Korem. The town of Korem is surrounded by Wefla woreda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "korem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4144,
+    "attempt": 4114,
+    "place_id": "gn-3445630",
+    "input": {
+      "place": {
+        "place_id": "gn-3445630",
+        "name": "Vacaria",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -28.51222,
+        "lon": -50.93389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vacaria",
+          "url": "https://en.wikipedia.org/wiki/Vacaria",
+          "text": "Vacaria is a municipality in the northeast of the southern Brazilian state of Rio Grande do Sul.\nIt is located at a latitude of 28° 30' 44\" South and a longitude of 50° 56' 02\" west, with an altitude of 971 meters. Its population in 2020 was estimated to be 66,575 inhabitants. The total area of the city is 2105.6 km2. The city is known in Brazil for its climate and its production of apples.\nIts Catedral Nossa Senhora da Oliveira is the episcopal see of the Roman Catholic Diocese of Vacaria, which was founded in 1937 as a territorial prelature."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "vacaria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4145,
+    "attempt": 4115,
+    "place_id": "gn-3457991",
+    "input": {
+      "place": {
+        "place_id": "gn-3457991",
+        "name": "Mangaratiba",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.95972,
+        "lon": -44.04056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mangaratiba",
+          "url": "https://en.wikipedia.org/wiki/Mangaratiba",
+          "text": "Mangaratiba (Portuguese pronunciation: [mɐ̃gaɾɐˈtʃibɐ]) is a municipality located in the Brazilian state of Rio de Janeiro. Its population is 45,220 (2020) and its area is 352 km2.\nPart of the Sylvester Stallone film The Expendables was shot in the central part of the city. The pier that is exploded in the film is the pier that the main ferry to Ilha Grande uses as its base of operation.\nMany large bulk carriers enter the port of Mangaratiba, fetching heavy loads of iron ore bound for especially European ports. As such, the port of Mangaratiba is one of the largest in Brazil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "mangaratiba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4146,
+    "attempt": 4116,
+    "place_id": "gn-3527879",
+    "input": {
+      "place": {
+        "place_id": "gn-3527879",
+        "name": "Emiliano Zapata",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.84103,
+        "lon": -99.18373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emiliano Zapata, Morelos",
+          "url": "https://en.wikipedia.org/wiki/Emiliano_Zapata,_Morelos",
+          "text": "Emiliano Zapata is a city in the west-central part of the Mexican state of Morelos. It stands at 18°52′N 99°09′W. The city serves as the county seat (sede municipal) for the surrounding municipality of the same name. The municipality is the sixth largest in the state of Morelos, with a 2020 census population of 107,053 inhabitants, and has it an area of 64.983 km2 (25.09 sq mi). The city of Emiliano Zapata had 64,084 inhabitants in 2020. The city was previously known as both San Francisco Zacualpan and San Vicente Zacualpan. It was renamed in honor of Mexican Revolutionary Emiliano Zapata.\nSubsidiary county seats (ayudantias) are: Tres de Mayo, (population 20,950); known principally for its ceramic, Tezoyuca (population 5,501); where a cement factory and a water park are located, Tetecalita (population 3,963), Tepetzingo (population 2,292) and Tetecalita (population 3,963)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "emiliano zapata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "emiliano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zapata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4148,
+    "attempt": 4117,
+    "place_id": "gn-3985621",
+    "input": {
+      "place": {
+        "place_id": "gn-3985621",
+        "name": "San Luis de la Paz",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 21.29845,
+        "lon": -100.51485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Luis de la Paz",
+          "url": "https://en.wikipedia.org/wiki/San_Luis_de_la_Paz",
+          "text": "San Luis de la Paz is a city, and the surrounding municipality of the same name, located in the northeastern part of the state of Guanajuato in Mexico. San Luis de la Paz was founded on August 25, 1552, as a defensive town on the Spanish Silver Road, which linked the Zacatecas mines with Mexico City during the Spanish domination. It owes its name to the peace treaty between Otomi Indians, who were Spaniard allies, and the native Chichimecas, on the day of Saint Louis of France, August 25. San Luis de la Paz is also known as the Chichimeca Nation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "san luis de la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "luis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4149,
+    "attempt": 4118,
+    "place_id": "gn-4499389",
+    "input": {
+      "place": {
+        "place_id": "gn-4499389",
+        "name": "Wilson",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.72127,
+        "lon": -77.91554
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wilson, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Wilson,_North_Carolina",
+          "text": "Wilson is a city in and the county seat of Wilson County, North Carolina, United States. It is the 23rd most populous city in North Carolina. Located approximately 40 mi (64 km) east of the capital city of Raleigh, it is served by the interchange of Interstate 95 and U.S. Route 264. As of the 2020 census, Wilson had a population of 47,851. It is also an anchor city of the Rocky Mount-Wilson-Roanoke Rapids CSA, with a total population of 297,726 as of 2018.\nIn the early 21st century, Wilson was ranked as 18th in size among North Carolina's 500-plus municipalities. From 1990 to 2010, the city population increased by more than 40 percent, primarily due to construction of new subdivisions that attracted many new residents. This has been accompanied by new retail and shopping construction, primarily in the northwestern parts of the city. Wilson is a diverse community; in 2012, the US Census estimated that 48% of the population identified as African American, and 43% as Whites; the remaining 9% includes Latinos and Asians, such as Vietnamese, Chinese and Indians. The U.S. Census Bureau estimated in 2012 that nearly 5,000 county residents (7.5 percent) were foreign-born. Of those, nearly 3,000 people, or 62 percent, had entered the U.S. since 2000.\nOnce a center of tobacco cultivation, the city was widely known as \"The World's Greatest Tobacco Market\" in the 19th century. In the 21st century, Wilson enjoys a diverse economy based on agriculture, manufacturing, commercial, and service businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "wilson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4150,
+    "attempt": 4119,
+    "place_id": "gn-4566687",
+    "input": {
+      "place": {
+        "place_id": "gn-4566687",
+        "name": "Peñuelas",
+        "country": "Puerto Rico",
+        "subdivision": "Peñuelas",
+        "lat": 18.05635,
+        "lon": -66.72156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peñuelas, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Peñuelas,_Puerto_Rico",
+          "text": "Peñuelas (Spanish pronunciation: [peˈɲwelas], locally [peˈɲwelaʔ]) is a town and municipality in Puerto Rico located in the Peñuelas Valley on the southern coast of the island, south of Adjuntas, east of Guayanilla, west of Ponce and north of the Caribbean Sea. Peñuelas is spread over 12 barrios and Peñuelas Pueblo (the downtown area and the administrative center of the city). It is part of the Yauco Metropolitan Statistical Area. Peñuelas is known as \"La Capital del Güiro\" (The Güiro Capital) and \"El Valle de los Flamboyanes\" (The Valley of the Royal Poinciana trees). In 2020, Peñuelas had a population of 20,399."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "penuelas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4151,
+    "attempt": 4120,
+    "place_id": "gn-4568212",
+    "input": {
+      "place": {
+        "place_id": "gn-4568212",
+        "name": "Santa Isabel",
+        "country": "Puerto Rico",
+        "subdivision": "Santa Isabel",
+        "lat": 17.96608,
+        "lon": -66.40489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Isabel, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Santa_Isabel,_Puerto_Rico",
+          "text": "Santa Isabel (Spanish pronunciation: [ˈsantajsaˈβel]) is a town and municipality of Puerto Rico located in the southern coast of the island, south of Coamo; east of Juana Díaz; and west of Salinas. Santa Isabel is spread over 7 barrios and Santa Isabel Pueblo (the downtown area and the administrative center). It is the principal city of the Santa Isabel Micropolitan Statistical Area and is part of the Ponce-Yauco-Coamo Combined Statistical Area.\nSanta Isabel is known as The Capital of Agriculture, La Ciudad de los Potros (\"City of Colts\") due to the number of potreros (or racehorse stud farms) in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "santa isabel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "isabel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

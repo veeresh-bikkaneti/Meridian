@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 4071,
+    "attempt": 4041,
+    "place_id": "gn-3456138",
+    "input": {
+      "place": {
+        "place_id": "gn-3456138",
+        "name": "Nova Odessa",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.7775,
+        "lon": -47.29583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nova Odessa",
+          "url": "https://en.wikipedia.org/wiki/Nova_Odessa",
+          "text": "Nova Odessa (literally \"New Odesa\") is a Brazilian municipality in the state of São Paulo. It is part of the Metropolitan Region of Campinas. The population is 62,019 (2022 est.) in an area of 73.79 km2. Nova Odessa was founded on May 24, 1905, by Carlos José de Arruda Botelho, Secretary of Agriculture of the state of São Paulo, and then settled by Jewish–Ukrainians and Latvians; Its name is due to a visit Carlos Botelho made to the city of Odesa, Ukraine, from where he brought the style of its streets, and not because the first settlers were mostly from Ukraine and Russia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "nova odessa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "odessa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4072,
+    "attempt": 4042,
+    "place_id": "gn-3642390",
+    "input": {
+      "place": {
+        "place_id": "gn-3642390",
+        "name": "Elorza",
+        "country": "Venezuela",
+        "subdivision": "Apure",
+        "lat": 7.06088,
+        "lon": -69.49765
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elorza",
+          "url": "https://en.wikipedia.org/wiki/Elorza",
+          "text": "Elorza is a town in the Apure State in Venezuela. Elorza is on the region of the Venezuelan Llanos and it had 26.800 inhabitants as of 2012. It is the capital of the Rómulo Gallegos Municipality. The current mayor is Pedro Guerra.\nThis town had shared its urban area with the neighboring Colombia until the government of Eleazar López Contreras. Back then the Venezuelan part was called Elorza, honoring the Venezuelan hero Andrés Elorza, and the Colombian part was called El Viento (The Wind)\nIn August 2001, Venezuela completed a nationwide conversion of land-line phones to three-digit area codes and seven-digit local numbers. Elorza, Mantecal and Bruzual now have the area code 240."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "elorza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4073,
+    "attempt": 4043,
+    "place_id": "gn-3666570",
+    "input": {
+      "place": {
+        "place_id": "gn-3666570",
+        "name": "Turbo",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 8.09263,
+        "lon": -76.72822
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Turbo, Colombia",
+          "url": "https://en.wikipedia.org/wiki/Turbo,_Colombia",
+          "text": "Turbo is a port city in Antioquia Department, Colombia. Part of the Urabá Antioquia sub-region, it is located on the coast of Gulf of Urabá, 340 km north of Medellín (the department capital and second largest city). Serving as the capital of the Urabá region within Antioquia. Historically, the area now known as Turbo was once called Pisisi, but the name Turbo was in use by 1741. On May 11, 1839, the central government allocated one thousand pesos for the construction of military service barracks in Turbo. In 1840, the republican president assigned one thousand fanegas of uncultivated lands for the new population. Turbo was officially established as a municipality in 1847.\nTurbo lies near the southeastern tip of the Darién Gap and is the northern terminus of the main route of the Pan-American Highway in South America. There is currently no road connecting through the region to Yaviza, Panama, where the highway continues through Central and North America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "turbo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4074,
+    "attempt": 4044,
+    "place_id": "gn-3712076",
+    "input": {
+      "place": {
+        "place_id": "gn-3712076",
+        "name": "Colón",
+        "country": "Panama",
+        "subdivision": "Colón",
+        "lat": 9.36025,
+        "lon": -79.90019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colón, Panama",
+          "url": "https://en.wikipedia.org/wiki/Colón,_Panama",
+          "text": "Colón (Spanish pronunciation: [koˈlon]) is a city and seaport in Panama, beside the Caribbean Sea, lying near the Atlantic entrance to the Panama Canal. It is the capital of Panama's Colón Province and has traditionally been known as Panama's second city. City proper located entirely on Manzanillo Peninsula (former island), surrounded by Limon Bay, Manzanillo Bay, and the Folks River. Since the disestablishment of the Panama Canal Zone, suburban corregimiento of Cristobal to include Fort Gulick, a former U.S. Army base, as well as the towns of Cristobal and Margarita; and recent corregimiento of Cristóbal Este now include the town of Coco Solo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "colon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4075,
+    "attempt": 4045,
+    "place_id": "gn-4018348",
+    "input": {
+      "place": {
+        "place_id": "gn-4018348",
+        "name": "Arandas",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.70551,
+        "lon": -102.34514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arandas, Jalisco",
+          "url": "https://en.wikipedia.org/wiki/Arandas,_Jalisco",
+          "text": "Arandas is a municipality of the Altos Sur region of the state of Jalisco in Mexico. Arandas is also the name of the municipality's main township and the center of the municipal government. The city centre is located approximately 86 miles (138 km) east of Guadalajara, the state capital. Arandas is accessible to residents of Guadalajara by the Mexican Federal Highway 80D and Jalisco State Highway 314.\nThe population of the town of Arandas was 59,648 as of the 2020 census. The town's main plaza is named Plaza Hidalgo after Miguel Hidalgo y Costilla, known as the father of Mexico's war of independence. The municipality's population as of the census of 2015 was 77,116 and its area was 949.9 km2 (366.8 sq mi); however, both of these figures have been significantly reduced since 2007 with the creation of the municipality of San Ignacio Cerro Gordo from the western part of what was formerly part of the Arandas municipality. San Ignacio Cerro Gordo was the second-largest community in the municipality before the split, with a population of 9,485 inhabitants, but the largest remaining community besides the city of Arandas is Santa María del Valle, with a population of 4,285 (2020 census).\nArandas is situated on the Mesa Central at an elevation of 6,762 feet (2,061 metres). Arandas is commonly known among Mexicans as the commercial and manufacturing centre for agricultural products (typically beans and wheat) and its pastoral environment, which allows the city to produce various commercial products such as linseed oil, tequila, pottery, woollen blankets, and straw hats."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "arandas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4076,
+    "attempt": 4046,
+    "place_id": "gn-4615145",
+    "input": {
+      "place": {
+        "place_id": "gn-4615145",
+        "name": "Cookeville",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.16284,
+        "lon": -85.50164
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cookeville, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Cookeville,_Tennessee",
+          "text": "Cookeville is the county seat of and the largest city in Putnam County, Tennessee, United States. As of the 2020 United States census, its population was reported to be 34,842. It is recognized as one of the country's micropolitan areas, smaller cities that function as significant regional economic hubs. Of Tennessee's 20 micropolitan areas, Cookeville is the largest.\nAt the 2020 census, the Cookeville micropolitan area's population was 141,333. The U.S. Census Bureau ranked the Cookeville micropolitan area as the 4th largest-gaining micropolitan area in the country between 2022 and 2023, with a one-year gain of 2,748 and a 2023 population of 148,226. The city is a college town, home to Tennessee Technological University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "cookeville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4077,
+    "attempt": 4047,
+    "place_id": "gn-4740629",
+    "input": {
+      "place": {
+        "place_id": "gn-4740629",
+        "name": "Weslaco",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 26.15952,
+        "lon": -97.99084
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weslaco, Texas",
+          "url": "https://en.wikipedia.org/wiki/Weslaco,_Texas",
+          "text": "Weslaco ( WESS-lə-koh) is a city in Hidalgo County, Texas, United States. As of the 2020 census the population was 41,103, Studies from 2023 show the population is 43,053  and in 2020 the estimated population was 40,160. It is at the southern tip of Texas in the Rio Grande Valley near the Mexican border, across the Rio Grande from the city of Nuevo Progreso, Rio Bravo, Tamaulipas.\nWeslaco derives its name from the W.E. Stewart Land Company. It was the hometown of Harlon Block, one of the Marines photographed raising the flag at Iwo Jima, and of film and television actor David Spielberg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "weslaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4078,
+    "attempt": 4048,
+    "place_id": "gn-4902476",
+    "input": {
+      "place": {
+        "place_id": "gn-4902476",
+        "name": "Moline",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.5067,
+        "lon": -90.51513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moline, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Moline,_Illinois",
+          "text": "Moline ( moh-LEEN) is a city in Rock Island County, Illinois, United States. The population was 42,985 as of the 2020 census, and was estimated at 42,362 in 2025. It is the largest city in Rock Island County and the 36th-most populous in Illinois outside the Chicago metropolitan area. Moline is one of the Quad Cities at the confluence of the Rock and Mississippi rivers, along with neighboring East Moline and Rock Island in Illinois and the cities of Davenport and Bettendorf in Iowa. The Quad Cities metropolitan area had a population of approximately 380,452 as of 2025.\nMoline was established in 1843. The name derives from the French moulin meaning \"mill [town]\". The corporate headquarters of Deere & Company is located in Moline, as was Montgomery Elevator; its acquirer Kone has its U.S. division headquartered in Moline. Quad Cities International Airport, Black Hawk College, and the Quad Cities campus of Western Illinois University-Quad Cities are located in Moline. It is a retail hub for the Illinois Quad Cities, as South Park Mall and numerous big-box shopping plazas are located in the city. Moline's downtown serves as one of the civic and recreational hubs of the region as many events take place at the 12,000-seat Vibrant Arena at The MARK and at John Deere Commons."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "moline",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4079,
+    "attempt": 4049,
+    "place_id": "gn-5404915",
+    "input": {
+      "place": {
+        "place_id": "gn-5404915",
+        "name": "Upland",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.09751,
+        "lon": -117.64839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Upland, California",
+          "url": "https://en.wikipedia.org/wiki/Upland,_California",
+          "text": "Upland is a city in the Inland Empire region of San Bernardino County, California, United States, on the border with neighboring Los Angeles County. The municipality is located at an elevation of 1,242 feet (379 m). As of the 2020 census, the city had a population of 79,040, up from 73,732 at the 2010 census.\nUpland was incorporated as a city on May 15, 1906; it was previously named North Ontario. Upland is located at the foot of the highest part of the San Gabriel Mountains and is part of the Inland Empire, a metropolitan area situated directly east of Los Angeles County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "upland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4080,
+    "attempt": 4050,
+    "place_id": "gn-6049388",
+    "input": {
+      "place": {
+        "place_id": "gn-6049388",
+        "name": "Langford",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.44963,
+        "lon": -123.50261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Langford, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Langford,_British_Columbia",
+          "text": "Langford is a city on southern Vancouver Island in the province of British Columbia, Canada. Langford is one of the 13 component municipalities of Greater Victoria and is within the Capital Regional District. Langford was incorporated in 1992 and has a population of over 40,000 people, the largest municipality in the Western Communities, and third-largest in the Capital Regional District after Saanich and Victoria.\nIts motto is \"Golden in setting, determined in Spirit,\" containing a reference to the natural beauty of the City of Langford, specifically Goldstream Provincial Park, and a comment on the community's drive to enhance Langford's special character and future."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "langford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4081,
+    "attempt": 4051,
+    "place_id": "gn-6089125",
+    "input": {
+      "place": {
+        "place_id": "gn-6089125",
+        "name": "Norfolk County",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.8334,
+        "lon": -80.38297
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norfolk County, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Norfolk_County,_Ontario",
+          "text": "Norfolk County ( NOR-fohk) is a rural single-tier municipality on the north shore of Lake Erie in Southwestern Ontario, Canada with a 2023 population of 73,015. Despite its name, it is no longer a county by definition, as all municipal services are handled by a single level of government. The largest community in Norfolk County is Simcoe, whose 2021 population was 16,121. The other population centres are Port Dover, Delhi, Waterford and Port Rowan, and there are many smaller communities. For several years in the late 20th century, the county was merged with Haldimand County but the merged entity was dissolved in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "norfolk county",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "norfolk",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "county",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4082,
+    "attempt": 4052,
+    "place_id": "gn-6301965",
+    "input": {
+      "place": {
+        "place_id": "gn-6301965",
+        "name": "Palmerston",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -12.48602,
+        "lon": 130.9833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palmerston, Northern Territory",
+          "url": "https://en.wikipedia.org/wiki/Palmerston,_Northern_Territory",
+          "text": "Palmerston is a planned satellite city of Darwin, the capital and largest city of Australia's Northern Territory. The city is situated approximately 20 kilometres from the Darwin central business district and 10 kilometres from Howard Springs and the surrounding rural areas. Palmerston had a population of 33,695 at the 2016 census, making it the second largest city in the Northern Territory. According to the 2021 census, the population grew to 37,247 people.\nThere are eighteen suburbs in Palmerston, ten of which are close to the Palmerston city centre. Palmerston is mostly residential with two light industrial areas in the north of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "palmerston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4083,
+    "attempt": 4053,
+    "place_id": "gn-7106456",
+    "input": {
+      "place": {
+        "place_id": "gn-7106456",
+        "name": "Asau",
+        "country": "Samoa",
+        "subdivision": "Vaisigano",
+        "lat": -13.51963,
+        "lon": -172.63784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asau, Samoa",
+          "url": "https://en.wikipedia.org/wiki/Asau,_Samoa",
+          "text": "Asau is a village situated on the north west coast of Savai'i island in Samoa. It is the capital village of the Vaisigano political district and serves as the main business centre at the west end of the island. The population in 2016 was 1133, a decrease from 1207 in 2011.\nThe eastern part of the village was destroyed by a lava flow from Mauga Afi in the mid 18th century. Its name is derived from two words: a (what) and sau (come), and may be a linguistic trace of the eruption.\nThe Asau Airport is an airstrip primarily used for chartered flights. In 2008, an American development company, South Pacific Development, based in Honolulu, made plans to expand Asau Airport and harbour. The company has obtained a 120-year lease for 600 acres (2.4 km2) of prime oceanfront customary land in Sasina village, to build a luxury resort estimated to cost $450 – $500 million US dollars.\nThe breakwater protecting the bay is an old American airstrip from World War II.\nIn 1998, bushfires destroyed 30,000 hectares (300 km2) in the area. A further series of fires in September 2008 destroyed more than two thousand acres (8 km2)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "asau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4084,
+    "attempt": 4054,
+    "place_id": "gn-765749",
+    "input": {
+      "place": {
+        "place_id": "gn-765749",
+        "name": "Łuków",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.929,
+        "lon": 22.37956
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Łuków",
+          "url": "https://en.wikipedia.org/wiki/Łuków",
+          "text": "Łuków [ˈwukuf]  is a town in the Lublin Voivodeship in eastern Poland with 30,727 inhabitants (as of January 1, 2005). It is the capital of Łuków County.\nThe town has an area of 35.75 km2 (13.80 sq mi), of which forests make up 13%. Łuków is located on the Southern Krzna river, at approximately 160 meters above sea level. For 500 years Łuków, together with neighboring towns Siedlce and Radzyń Podlaski, was part of Lesser Poland, and was located in the extreme northeastern corner of the province. Some time in the 19th century, it became associated with another historical region of Poland, Podlasie."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "ukow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4085,
+    "attempt": 4055,
+    "place_id": "gn-1061335",
+    "input": {
+      "place": {
+        "place_id": "gn-1061335",
+        "name": "Mananjary",
+        "country": "Madagascar",
+        "subdivision": "Vatovavy Region",
+        "lat": -21.23034,
+        "lon": 48.34173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mananjary",
+          "url": "https://en.wikipedia.org/wiki/Mananjary",
+          "text": "Mananjary is a city on the East coast of Madagascar with a population of 25,222 inhabitants in 2018.\nIt is the chief town of the Mananjary district and the Vatovavy region.\nIt contains a town of the same name, situated on the southern part of the east coast, where the Mananjary River flows into the Indian Ocean. There's a small port and an airport.\nMananjary is situated 130 km south of Nosy Varika on the RN 11 and 167 km north of Manakara by the National road 12 and National road 25.\nThe Canal des Pangalanes divides the town into two sections.  \nIn 2022 Cyclone Batsirai made landfall at Mananjary, leaving the city 90% destroyed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "mananjary",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4086,
+    "attempt": 4056,
+    "place_id": "gn-1855540",
+    "input": {
+      "place": {
+        "place_id": "gn-1855540",
+        "name": "Naze",
+        "country": "Japan",
+        "subdivision": "Kagoshima",
+        "lat": 28.36667,
+        "lon": 129.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naze, Kagoshima",
+          "url": "https://en.wikipedia.org/wiki/Naze,_Kagoshima",
+          "text": "Naze (名瀬市, Naze-shi; Amami:Naze) was a city located on Amami Ōshima in Kagoshima Prefecture, Japan. The city was founded on July 1, 1946.\nAs of 2003, the city had an estimated population of 41,778 and the density of 327.31 persons per km2. The total area was 127.64 km2.\nOn March 20, 2006, Naze, along with the town of Kasari, and the village of Sumiyō (both from Ōshima District), was merged to create the city of Amami. Although the town no longer exists as a legal entity, Naze is still referred to locally as the port and main urban district of Amami city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "naze",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4087,
+    "attempt": 4057,
+    "place_id": "gn-1898359",
+    "input": {
+      "place": {
+        "place_id": "gn-1898359",
+        "name": "Mudu",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 31.25597,
+        "lon": 120.51857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mudu",
+          "url": "https://en.wikipedia.org/wiki/Mudu",
+          "text": "Mudu (simplified Chinese: 木渎; traditional Chinese: 木瀆; pinyin: Mùdú; Suzhounese: ⁸moq-doq₈, Wu Chinese pronunciation: [moʔ˧ doʔ˦]) is a town in Wuzhong District, Suzhou, Jiangsu Province, China. It takes about 1.5 hours to drive from the downtown in Suzhou to Mudu. Mudu is a small town which is famous for its history. During the Qing dynasty, the Qianlong Emperor visited Mudu six times when he traveled around the country. Nowadays, many teleplay groups also come to Mudu frequently to film television series. Due to this, many outlanders came to Mudu to make their business by renting out costumes and taking photos for visitors. There is a famous street in Suzhou named Shantang Street, Mudu also has one. It is shorter than the one in Suzhou downtown, but if you go straight along the street, one can approach to the Linyan Mountain. Many visitors will first visit this  mountain when they visit Mudu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "mudu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4088,
+    "attempt": 4058,
+    "place_id": "gn-2202064",
+    "input": {
+      "place": {
+        "place_id": "gn-2202064",
+        "name": "Nadi",
+        "country": "Fiji",
+        "subdivision": "Western",
+        "lat": -17.80309,
+        "lon": 177.41617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nadi",
+          "url": "https://en.wikipedia.org/wiki/Nadi",
+          "text": "Nadi (Fijian: [ˈnandi]  nan-DEE, Hindi: नंदी) is the third-largest city in Fiji, after Suva and Lautoka. It is located on the western side of the main island of Viti Levu, and had a population of 59,707 at the most recent census, in 2017. Nadi is multiracial with many of its inhabitants Asians, Indian or Indigenous Fijians, along with a large transient population of foreign tourists. Along with sugar cane production, tourism is a mainstay of the local economy.\nThe Nadi region has Fiji's highest concentration of hotels and motels. With its large Indo-Fijian population, Nadi is a centre for Hinduism in Fiji. It has the largest Hindu temple in the Southern hemisphere, a site for pilgrims called Sri Siva Subramaniya Temple.\n\nNadi International Airport, located 9 kilometres (5.6 mi) from Nadi, is the largest airport in Fiji. Thus, Nadi is the principal port of entry for air travelers to Fiji, even though it is on the opposite (western) side of the island of Viti Levu from the nation's capital and largest city, Suva."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "nadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4089,
+    "attempt": 4059,
+    "place_id": "gn-243590",
+    "input": {
+      "place": {
+        "place_id": "gn-243590",
+        "name": "Iriba",
+        "country": "Chad",
+        "subdivision": "Wadi Fira",
+        "lat": 15.11667,
+        "lon": 22.25
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iriba",
+          "url": "https://en.wikipedia.org/wiki/Iriba",
+          "text": "Iriba (Arabic: هريبا) is a small town in the Wadi Fira Region of Chad. It is known as part of the Kobé Department as well as having its own prefecture and area court. It is currently being served by the Iriba Airport.\nIriba has a desert climate with two distinct periods, dry and rainy seasons. During the rainy season, considerable rainfall occurs in the area, which disappears rapidly in the seasonal rivers named \"Wadi\". The winters (from December to February) can be quite cold, and the summertime is extremely hot and dry, with water shortage being a chronic problem in the area.\nThe ethnicity of the Iriban people is referred to as \"Zaghawa\". The ethnic group lives on both sides of the border in Chad and Sudan, with the local language being Zaghawa, a Nilo-Saharan language. The formal languages of the area are Arabic and French. The Zaghawas have their traditional leadership, under the Sultan of Zaghawa.\nA large number of the refugees fled from the Darfur area to the general vicinity of Iriba in the year 2004. The refugees are mainly from the same ethnicity and live in three large refugee camps in the area; namely Iridimi, Touloum, and Amnabak. The three camps accommodate over sixty thousand refugees. The refugee influx required extensive international presence for assistance and protection of the displaced population. UNHCR is the leading international agency in the area while WFP and many other NGOs help with the different aspects of life for the refugees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "iriba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4090,
+    "attempt": 4060,
+    "place_id": "gn-2527915",
+    "input": {
+      "place": {
+        "place_id": "gn-2527915",
+        "name": "Tinghir",
+        "country": "Morocco",
+        "subdivision": "Drâa-Tafilalet",
+        "lat": 31.51472,
+        "lon": -5.53278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tinghir",
+          "url": "https://en.wikipedia.org/wiki/Tinghir",
+          "text": "Tinghir is a city in the region of Drâa-Tafilalet, south of the High Atlas and north of Saghro. It is the capital of Tinghir Province.\nLush palm trees cover about 38 km on tracts 500 to 1500 metre wide along the Wadi Todgha. After the Todra Gorge, Wadi Todgha has a difficult passage along the southern slopes of the Atlas Mountains (Tizgi); it then flows across the plain, meandering slightly over 20 kilometres (12 mi) to Ferkla. The palm oasis, dense and widespread, is irrigated by a network of pipes and irrigation canals. Occasional heavy rains are absorbed in a few days.\nThe city has a population of 44,239 according to the 2024 Moroccan census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "tinghir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
