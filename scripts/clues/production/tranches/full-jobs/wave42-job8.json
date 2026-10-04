@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 8399,
+    "attempt": 8341,
+    "place_id": "gn-668815",
+    "input": {
+      "place": {
+        "place_id": "gn-668815",
+        "name": "Râu de Mori",
+        "country": "Romania",
+        "subdivision": "Hunedoara County",
+        "lat": 45.48333,
+        "lon": 22.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Râu de Mori",
+          "url": "https://en.wikipedia.org/wiki/Râu_de_Mori",
+          "text": "Râu de Mori (Hungarian: Malomvíz, German: Mühlendorf) is a commune in Hunedoara County, Transylvania, Romania. It is composed of eleven villages: Brazi (Gureny), Clopotiva (Klopotiva), Ohaba-Sibișel (Ohábasibisel), Ostrov (Nagyosztró), Ostrovel (Osztrovel), Ostrovu Mic (Kisosztró), Râu de Mori, Sibișel (Sebeshely), Suseni (Malomvízszuszény), Unciuc (Uncsukfalva), and Valea Dâljii (Vályadilsi).\nThe commune is situated at a mean altitude of 506 m (1,660 ft), at the foot of the Retezat Mountains. It lies on the banks of the Râul Mare and its right tributaries, the Râușor and the Sibișel. The Gura Apelor Dam forms a reservoir, from which water is piped to the Râul Mare Hydroelectric Power Station, that generates 650 GWh of electricity per year. \nRâu de Mori is located at the southeastern extremity of Hunedoara County, 54 km (34 mi) south of the county seat, Deva, on the border with Caraș-Severin and Gorj counties. It is situated in the historical and ethnographical area known as Țara Hațegului, about 17 km (11 mi) southeast of its hub, the town of Hațeg.\nAt the 2021 census, the commune had a population of 2,991; of those, 91.64% were Romanians and 1.71% Roma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "rau de mori",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mori",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8400,
+    "attempt": 8342,
+    "place_id": "gn-672151",
+    "input": {
+      "place": {
+        "place_id": "gn-672151",
+        "name": "Novaci",
+        "country": "Romania",
+        "subdivision": "Gorj County",
+        "lat": 45.18333,
+        "lon": 23.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Novaci, Romania",
+          "url": "https://en.wikipedia.org/wiki/Novaci,_Romania",
+          "text": "Novaci is a town in Gorj County, Oltenia, Romania, situated at the foothills of the Parâng Mountains, on the river Gilort. It administers four villages: Bercești, Hirișești, Pociovaliștea, and Sitești.\nThe river traditionally divided the Oltenian settlement of Novacii Români from Novacii Străini, populated mainly by shepherds coming from over the mountains, from Sibiu County in Transylvania. The differences between the two segments of the town are obvious in the traditional vernacular architecture: the low fences of Oltenia are replaced by tall gates and hidden-away courtyards in the Novacii Străini.\nThe population has been steadily decreasing since the 1990s, mainly because of the migration of the young, educated inhabitants to bigger cities.\nOnly 12 km (7.5 mi) from Novaci, passing the Transalpina (DN67C) road is Rânca (1,600 m (5,200 ft) altitude), a newly developed resort surrounded by mountain peaks and tremendous beauty. From this place is a view of the Parângu Mare peak and when the weather is good you can see the Peleaga peak of the Retezat Mountains. During winter there are two ski slopes with low and medium difficulty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "novaci",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8401,
+    "attempt": 8343,
+    "place_id": "gn-726114",
+    "input": {
+      "place": {
+        "place_id": "gn-726114",
+        "name": "Ugarchin",
+        "country": "Bulgaria",
+        "subdivision": "Lovech",
+        "lat": 43.1,
+        "lon": 24.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ugarchin",
+          "url": "https://en.wikipedia.org/wiki/Ugarchin",
+          "text": "Ugarchin (Bulgarian: Угърчин [oɡɐrˈt͡ʃin]) is a town located along the Kamenitsa river in the Lovech Province in central northern Bulgaria. It is the administrative centre of the homonymous Ugarchin Municipality. The town is about 30 kilometers away in the west from the main centre of the province (Lovech). As of December 2009, it had a population of 2,832 inhabitants which sunk to 2,354 by end of 2018.\nUgarchin is situated in the northern part of the Balkan Mountains at the foot the high peaks and down the river Kamenitsa and its minor tributaries: Lepetora, Sveta, Greshki Dol and others. It is situated in a basin rounded with small hills: Ivan Dyal hill to the south; Visokata Mogila (Chukara) to the east; to the north are Beli Kamak, Sredno Bardo and Zabiti Kamak hills; and to the west are Goli Rat and Chukata.\nThe Ugarchin town holiday takes place every year on 22 March and the traditional Autumn Fair is every 22 September. The President of Bulgaria Georgi Parvanov visited the town of Ugarchin on 22 March 2006 for the annual football tournament.\nOther places in Ugarchin municipality include Dragana, Golets, Kalenik, Katunets, Kirchevo, Kirkova mahala, Lesidren, Mikre, Orlyane, Slavshitsa, Sopot, and Vasilkovska mahala."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "ugarchin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8402,
+    "attempt": 8344,
+    "place_id": "gn-8310780",
+    "input": {
+      "place": {
+        "place_id": "gn-8310780",
+        "name": "Thursday Island",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -10.58257,
+        "lon": 142.21949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thursday Island",
+          "url": "https://en.wikipedia.org/wiki/Thursday_Island",
+          "text": "Thursday Island, colloquially known as TI, or in the Kawrareg dialect, Waiben or Waibene, is an island of the Torres Strait Islands, an archipelago of at least 274 small islands in the Torres Strait. Thursday Island is located approximately 39 kilometres (24 miles) north of Cape York Peninsula in Far North Queensland, Australia. \nThursday Island is also the name of the town in the south and west of the island, formerly known as Port Kennedy, and also the name of the locality which contains the island within the Shire of Torres. The town of Rose Hill (known as Abednego until 7 September 1991) is located on the north-eastern tip of the island (10.5698°S 142.2250°E﻿ / -10.5698; 142.2250﻿ (Rose Hill, Queensland)).\nIn the 2021 census, the locality of Thursday Island had a population of 2,805 people, of whom 69.1% identify as Indigenous Australians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "thursday island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thursday",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8403,
+    "attempt": 8345,
+    "place_id": "gn-8347991",
+    "input": {
+      "place": {
+        "place_id": "gn-8347991",
+        "name": "Fern Bay",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -32.86428,
+        "lon": 151.81307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fern Bay, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Fern_Bay,_New_South_Wales",
+          "text": "Fern Bay is the southernmost suburb of the Port Stephens local government area in the Hunter Region of New South Wales, Australia. It is located just north of Stockton, which is the only suburb of Newcastle that lies north of the Hunter River and to the east of the north arm of the Hunter River at the entrance to Fullerton Cove, a large body of water. To the east is the Tasman Sea. Despite the suburb only being 6 kilometres (3.7 mi) in a direct line from Newcastle, the need to cross the Hunter River results in Fern Bay being 16 km (9.9 mi) by road from the centre of the city.\nThe area is undergoing a residential expansion program with a large development being built between Nelson Bay Road and Stockton Beach on land formerly used as a military weapons range."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "fern bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fern",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8404,
+    "attempt": 8346,
+    "place_id": "gn-8379299",
+    "input": {
+      "place": {
+        "place_id": "gn-8379299",
+        "name": "Data Kakus",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 2.65465,
+        "lon": 113.62249
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Data Kakus",
+          "url": "https://en.wikipedia.org/wiki/Data_Kakus",
+          "text": "Data Kakus (a.k.a. Apau Data) is a remote Kenyah Badeng village settlement in the hilly interior of the Ulu Kakus Tatau division of Sarawak, Malaysia elevates to 650 metres, not far from Tubau and Belaga district. To be exact, Data Kakus is located at the upstream of Sungai Burok and Sungai Nyabet. The highest peak in Ulu Kakus is called Gunung Lumut about 828m located on the peak of Lumut Range not too far from Sungai Bekuyat and Sungai Kakus.\nTravel to Data Kakus involves a five hours 4WD drive from Bintulu or Belaga, to get to Data Kakus one has to take the Bintulu-Bakun road and look for the junction to KTS camp from KTS camp to Simpang Jonat. It takes about 60 km using the logging road and from simpang Jonat it takes another 18 km to reach Data Kakus. It is also possible to trek Data Kakus from Belaga and it takes five to seven hours trekking from Long Sungai Pelaran (Sg. Sanan baan Kenyah), Sungai Ngajah from Rajang river then conquer Gunung Ngajah about 444m. The Kakus River, also known as Batang Tatau, originates as a stream in upper Data Kakus named Alo Nyabet, e-iut Nyabet, or Sungai Burok, and flows through Data Kakus valley, where small boats like can easily navigate. It is also easy to travel downriver from Data Kakus to Long Beyak then to Tatau town by longboat; however, the journey takes about a day due to the river's shallow, twisting, and narrow width."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "data kakus",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "data",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kakus",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8405,
+    "attempt": 8347,
+    "place_id": "gn-2147150",
+    "input": {
+      "place": {
+        "place_id": "gn-2147150",
+        "name": "Temora",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.44834,
+        "lon": 147.53558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Temora, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Temora,_New_South_Wales",
+          "text": "Temora () is a town in the north-east  of the Riverina area of New South Wales, 418 kilometres (260 mi) south-west of the state capital, Sydney. At the 2021 census the population of Temora was 4,016.\nTemora was named by John Donald McCansh. In September 1880 he told the Warwick Argus:\n\nI took up the country for a sheep run in 1847, my sole companion being Valentine Lawler, who was then lessee of a station ('Nimbi') on Cunningham Creek. We could not ascertain the native name of the place as there were no blacks about, and rather than give it an English name, I called it 'Temora', the native name of a property near which I lived some years previously in another part of the Colony. I gave the station the name specially because it was aboriginal and I liked it. I did not know at that time, nor for years afterwards, that Temora was a name in Ossian's poems.\nNeither the Wiradjuri Dictionary (2010) nor the Macquarie Dictionary of Aboriginal Words (2006) lists \"temora\" or any words similar to it, but the Dharug language dictionary online defines \"temora\" as \"a tree standing alone\". Alternatively, in the Celtic language it is derived from a term which means \"an eminence commanding a wide view."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "temora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8406,
+    "attempt": 8348,
+    "place_id": "gn-2529923",
+    "input": {
+      "place": {
+        "place_id": "gn-2529923",
+        "name": "Tarfaya",
+        "country": "Morocco",
+        "subdivision": "Laayoune-Sakia El Hamra",
+        "lat": 27.9392,
+        "lon": -12.92604
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarfaya",
+          "url": "https://en.wikipedia.org/wiki/Tarfaya",
+          "text": "Tarfaya (Arabic: طرفاية - Ṭarfāya; Berber languages: ⵟⵔⴼⴰⵢⴰ) is a coastal Moroccan town, located at the level of Cape Juby, in western Morocco, on the Atlantic coast. It is located about 890 km southwest of the capital Rabat, and around 100 km from both Laayoune and Lanzarote, in the far east of the Canary Islands. During the colonial era, Tarfaya was a Spanish colony known as Villa Bens. It was unified with Morocco in 1958 after the Ifni War, which started one year after the independence of other regions of Morocco.\nTarfaya is the capital and main town in the Tarfaya Province, and counts a population of 8,027 inhabitants according to the 2014 census. Although founded in the twentieth century, the city has great symbolic significance in Moroccan history, dating back to the era of the Green March in November 1975.\nThe region of Tarfaya has been linked to relations with foreign powers, following several incursions conducted at its coasts (Spanish, Portuguese, British and French). This blending gave the city a special cultural dimension in its history. The French writer and aviator Antoine de Saint-Exupéry (1900–1944) lived in Tarfaya for two years (1927–1928) before writing his masterpiece The Little Prince that was later translated to more than 300 languages and dialects. He served as station manager here during his career as an airmail pilot. In 2004, the Antoine de Saint-Exupery Museum was opened in Tarfaya.\nTarfaya is home to a number of economic projects, including the largest wind farm in Africa, called Tarfaya Wind Farm, and Casamar, also known as Port Victoria, that was founded by the Scottish trader and traveler Donald McKenzie in 1882. It is the meeting area of Atlantic coast with stretching sand dunes.\nSebkha Tah, the lowest altitude point in Morocco (55 meters below sea level) is located in Tarfaya province. Tarfaya is also the closest city to the Khenifiss National Park, added to the UNESCO World Heritage Tentative list, an ecological site home to hundreds of different kinds of migratory birds each year. It is estimated that more than 20,000 birds from 211 different species breed, nest and feed regularly in the park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 358
+    },
+    "banned_terms": [
+      {
+        "term": "tarfaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8407,
+    "attempt": 8349,
+    "place_id": "gn-2635680",
+    "input": {
+      "place": {
+        "place_id": "gn-2635680",
+        "name": "Topsham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.68596,
+        "lon": -3.46696
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Topsham, Devon",
+          "url": "https://en.wikipedia.org/wiki/Topsham,_Devon",
+          "text": "Topsham (, also ) is a town in the Exeter district, in Devon, England, located on the east side of the River Exe, immediately north of its confluence with the River Clyst and the former's estuary, between Exeter and Exmouth. Topsham is a historic port and was designated a town by a 1300 royal charter granted by Edward I; it was formally amalgamated into the City of Exeter in 1966. The population of the town, recorded at the 2021 census, is 4,146.\nThe town is served by Topsham railway station, about midway on the branch line from Exeter Central to Exmouth, now called the Avocet Line. 2011 saw the 150th anniversary of the railway coming to Topsham.\nThe electoral ward of Topsham extends further northwest and includes the east half of Countess Wear as well as the new suburb of Newcourt. The population of the ward, recorded at the 2021 census, is 10,038.\nTopsham’s picturesque setting, range of independent shops, and lively community life makes it is one of the most desirable places to live in the South West of England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "topsham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8408,
+    "attempt": 8350,
+    "place_id": "gn-2772635",
+    "input": {
+      "place": {
+        "place_id": "gn-2772635",
+        "name": "Leonding",
+        "country": "Austria",
+        "subdivision": "Upper Austria",
+        "lat": 48.27965,
+        "lon": 14.2533
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leonding",
+          "url": "https://en.wikipedia.org/wiki/Leonding",
+          "text": "Leonding (German pronunciation: [ˈleːɔ̯nd̥iŋ] ) is a town southwest of Linz in the Austrian state of Upper Austria. It borders Puchenau and the river Danube in the north, Wilhering and Pasching in the west, Traun in the south and Linz in the east. Leonding is the most populous town of the Linz-Land district and the fourth most populous town in Upper Austria.\nIt is very close to Linz and offers views of the Alps and therefore attracts the upper social classes for living without providing much infrastructure on its own. Due to the proximity of Linz and transport connections (like West railway, Westautobahn, B1 Wiener Straße or Linz Airport) it attracts companies like Rosenbauer, Ebner Industrieofenbau, Poloplast and Neuson. Other major employers are the UNO Shopping Centre (approximately 850 jobs) as well as the Plus City Shopping Centre (approximately 2200 jobs).\nFrom 1898 to 1905 Adolf Hitler lived in Leonding where he attended the local primary school and later a grammar school in nearby Linz. The graves of his parents Alois and Klara are in Leonding. His brother Edmund, who died of measles, was buried there too. A delegation of Passau National Socialists visited the family's grave illegally. Hitler visited the grave in 1938. In 2012, when a relative of Alois Hitler's first wife, Anna, did not renew the lease, the grave was dissolved.\nIn 1903, Hitler's father died when drinking a glass of wine in a guesthouse in Leonding.\nLeonding is split up into 22 localities: Aichberg, Alharting, Berg, Bergham, Buchberg, Doppl, Enzenwinkl, Felling, Friesenegg, Gaumberg, Haag, Hart, Holzheim, Imberg, Jetzing, Leonding, Reith, Rufling, St. Isidor, Staudach, Untergaumberg and Zaubertal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "leonding",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8409,
+    "attempt": 8351,
+    "place_id": "gn-3176808",
+    "input": {
+      "place": {
+        "place_id": "gn-3176808",
+        "name": "Fontanellato",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.88187,
+        "lon": 10.17631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fontanellato",
+          "url": "https://en.wikipedia.org/wiki/Fontanellato",
+          "text": "Fontanellato (Parmigiano: Funtanlè) is a small town in the province of Parma, in northern Italy.  It lies on the plains of the River Po near the A1 autostrada, about 20 kilometres (12 mi) west of Parma towards Piacenza.\nThe town was built up in the 15th century around the moated and fortified house of the Sanvitale family, the Rocca Sanvitale, on the borders of the domain of the Dukes of Parma. The house was occupied by the family until 1951, when it was sold to the commune. One notable feature of the Rocca Sanvitale is a room which serves as a large camera obscura in which a small hole acts as a lens causing an image of an outside scene to be projected inside the room.\nThe shrine to the Madonna del Rosario commemorates a succession of miracles beginning in 1628.\nOne of the main attractions of the town is the Labirinto della Masone, once the largest maze in the world, built by native son Franco Maria Ricci totally from Bamboo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "fontanellato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8410,
+    "attempt": 8352,
+    "place_id": "gn-4936174",
+    "input": {
+      "place": {
+        "place_id": "gn-4936174",
+        "name": "Falmouth",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.5515,
+        "lon": -70.61475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falmouth, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Falmouth,_Massachusetts",
+          "text": "Falmouth ( FAL-məth) is a town on Cape Cod in Massachusetts. The population was 32,517 at the 2020 census, making Falmouth the second-largest municipality on Cape Cod after Barnstable. The terminal for the Steamship Authority ferries to Martha's Vineyard is located in the village of Woods Hole in Falmouth. Woods Hole also contains several scientific organizations such as the Woods Hole Oceanographic Institution (WHOI), the Marine Biological Laboratory (MBL), the Woodwell Climate Research Center, NOAA's Woods Hole Science Aquarium, and the scientific institutions' various museums.\nFor geographic and demographic information on specific parts of the town of Falmouth, please see the articles on East Falmouth, Falmouth Village, North Falmouth, Teaticket, West Falmouth, and Woods Hole. Falmouth also encompasses the villages of Hatchville and Waquoit, which are not census-designated places and fall within the village of East Falmouth based on postal service."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "falmouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8411,
+    "attempt": 8353,
+    "place_id": "gn-5112735",
+    "input": {
+      "place": {
+        "place_id": "gn-5112735",
+        "name": "City Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.84732,
+        "lon": -73.78652
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "City Island, Bronx",
+          "url": "https://en.wikipedia.org/wiki/City_Island,_Bronx",
+          "text": "City Island is a neighborhood in the northeastern Bronx, New York City, located on an island of the same name approximately 1.5 miles (2.4 km) long by 0.5 miles (0.80 km) wide. City Island is located at the extreme western end of Long Island Sound, south of Pelham Bay Park and east of Eastchester Bay.\nAt one time the island was incorporated within the boundaries of the town of Pelham in Westchester County, New York, but the island has been part of New York City since the late 19th century. City Island is part of the Pelham Islands, a group of islands that once belonged to Thomas Pell. The body of water between City Island and the even smaller, uninhabited Hart Island to the east is known as City Island Harbor. The small island adjacent to the northeast is High Island. The Stepping Stones Light, marking the main shipping channel into New York, is off the southern tip of City Island, near the Long Island shore.\nAs of the 2020 census, the island had a population of 4,417. Its land area is 0.395 square miles (1.02 km2). The island is part of Bronx Community District 10, and its ZIP Code is 10464."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "city island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8412,
+    "attempt": 8354,
+    "place_id": "gn-5139465",
+    "input": {
+      "place": {
+        "place_id": "gn-5139465",
+        "name": "Stapleton",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.62649,
+        "lon": -74.07764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stapleton, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Stapleton,_Staten_Island",
+          "text": "Stapleton is a neighborhood in northeastern Staten Island in New York City, United States. It is located along the waterfront of Upper New York Bay, roughly bounded on the north by Tompkinsville at Grant Street, on the south by Clifton at Vanderbilt Avenue, and on the west by St. Paul's Avenue and Van Duzer Street, which form the border with the community of Grymes Hill.\nStapleton is one of the older waterfront neighborhoods of the borough, built in the 1830s on land once owned by the Vanderbilt family. It was a long-time commercial center of the island, but has struggled to revive after several decades of neglect following the 1964 construction of the Verrazzano–Narrows Bridge, which shifted the commercial development of the island to its interior.\nStapleton is part of Staten Island Community District 1 and its ZIP Code is 10304. Stapleton is patrolled by the 120th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "stapleton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8413,
+    "attempt": 8355,
+    "place_id": "gn-5952370",
+    "input": {
+      "place": {
+        "place_id": "gn-5952370",
+        "name": "Fernie",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.49996,
+        "lon": -115.06871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fernie, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Fernie,_British_Columbia",
+          "text": "Fernie is a city in the Elk Valley area of the East Kootenay region of southeastern British Columbia, Canada, located on BC Highway 3 on the western approaches to the Crowsnest Pass through the Rocky Mountains. Founded in 1898 and incorporated as the City of Fernie in July 1904, the municipality has a population of over 5,000 with an additional 2,000 outside city limits in communities under the jurisdiction of the Regional District of East Kootenay. A substantial seasonal population swells the city during the winter months.\nFernie lies on the Elk River, along Canada's southernmost east-west transportation corridor through the Rockies that crosses the range via the Crowsnest Pass, 40 kilometres (25 miles) to the east. As the largest and longest-established community between Cranbrook and Lethbridge, Fernie serves as a minor regional centre, particularly for its fellow Elk Valley communities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "fernie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8414,
+    "attempt": 8356,
+    "place_id": "gn-6166987",
+    "input": {
+      "place": {
+        "place_id": "gn-6166987",
+        "name": "Tisdale",
+        "country": "Canada",
+        "subdivision": "Saskatchewan",
+        "lat": 52.85002,
+        "lon": -104.05096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tisdale, Saskatchewan",
+          "url": "https://en.wikipedia.org/wiki/Tisdale,_Saskatchewan",
+          "text": "Tisdale is the business centre for the rich agricultural boreal forest area in central Saskatchewan, Canada. This town is in the Rural Municipality of Tisdale No. 427.\nLocated at the junction of Highway 35 and Highway 3, and serviced by both the Canadian National Railway and the Canadian Pacific Railway, Tisdale is the grain handling centre of the region with five inland grain terminals, and is the centre of regional industry.\nThe intersection of Highways 3 and 35 has traffic volumes of 11,200 vehicles per day and is the location of the largest 7-Eleven in Canada (by floor space) and the 4.9-metre (16 ft) long roadside statue of \"The World's Largest Honey Bee\" (the Giant Bee in Falher, is actually bigger at 6.91 m (22 ft 8 in)).\nThis town is the administrative office of the Kinistin Saulteaux Nation band government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "tisdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8415,
+    "attempt": 8357,
+    "place_id": "gn-9972415",
+    "input": {
+      "place": {
+        "place_id": "gn-9972415",
+        "name": "Westmeadows",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.67604,
+        "lon": 144.88701
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westmeadows",
+          "url": "https://en.wikipedia.org/wiki/Westmeadows",
+          "text": "Westmeadows is a suburb in Melbourne, Victoria, Australia, 16 km (9.9 mi) north-west of Melbourne's Central Business District, located within the City of Hume local government area. Westmeadows recorded a population of 6,502 at the 2021 census.\nMainly a residential suburb, Westmeadows includes the areas east and west of Mickleham Road. It borders include Yuroke Creek between Johnstone Street and Barry Road (the eastern limit), the border with Attwood (the water pipes path parallel to Toora Drive and Linga and Kenny Streets) as well as the Moonee Ponds Creek east of Mickleham Road (the northern limits) and just before the Cleanaway Landfill (the western limit). The area north of residential Westmeadows (still part of Westmeadows) contains the east–west flight path for the Melbourne Airport, Tullamarine. The land under the flight path has been kept undeveloped and is the Broadmeadows Valley Park. It contains two streams which flow into the Moonee Ponds Creek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "westmeadows",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8416,
+    "attempt": 8358,
+    "place_id": "gn-1697072",
+    "input": {
+      "place": {
+        "place_id": "gn-1697072",
+        "name": "Opol",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.52139,
+        "lon": 124.57111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Opol",
+          "url": "https://en.wikipedia.org/wiki/Opol",
+          "text": "Opol, officially the Municipality of Opol (Cebuano: Lungsod sa Opol; Tagalog: Bayan ng Opol), is a municipality in the province of Misamis Oriental, Philippines. According to the 2024 census, it has a population of 66,836 people.\nHistorically, Opol was a more rural area focused on agriculture and fishing, which later attracted migrants from Luzon and Visayas in the area by the turn of 20th century. Over the years, however, the municipality is gradually becoming more urbanized, as a result of local population growth and the expansion of nearby Cagayan de Oro, due to another wave of migrants from Luzon and Visayas in the area. The subdivision of rural land for new residential housing is a matter of some controversy amongst locals. The current Mayor, Jayfrancis D. Bago (commonly known as \"Jay Bago\"), has held office in Opol after Maximo Seno."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "opol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8417,
+    "attempt": 8359,
+    "place_id": "gn-1712240",
+    "input": {
+      "place": {
+        "place_id": "gn-1712240",
+        "name": "Guipos",
+        "country": "Philippines",
+        "subdivision": "Zamboanga Peninsula",
+        "lat": 7.7161,
+        "lon": 123.3219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guipos",
+          "url": "https://en.wikipedia.org/wiki/Guipos",
+          "text": "Guipos, officially the Municipality of Guipos (Cebuano: Lungsod sa Guipos; Subanen: Benwa Guipos; Chavacano: Municipalidad de Guipos; Tagalog: Bayan ng Guipos), is a municipality in the province of Zamboanga del Sur, Philippines. According to the 2024 census, it has a population of 22,173 people.\nThe town was officially established on October 7, 1991, by virtue of Republic Act No. 7159, signed by President Corazon C. Aquino. It was formed from barangays Guipos, Katipunan, Bagong Oroquieta, and Dalapang of the municipality of San Miguel; barangays Datagan, Dagohoy, Balongating, Baguitan, Magting, Sikatuna, Dacsol, Guling, and Canunan of the municipality of Dumalinao; barangays Lintum, Singclot and Litan of the municipality of Dinas; and barangay Regla of the municipality of San Pablo.\nThrough Presidential Proclamation 682, October 7, 2024 was declared a special non-working day in Guipos to commemorate the 33rd Araw ng Guipos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "guipos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8418,
+    "attempt": 8360,
+    "place_id": "gn-2514120",
+    "input": {
+      "place": {
+        "place_id": "gn-2514120",
+        "name": "Marinaleda",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.3712,
+        "lon": -4.95949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marinaleda",
+          "url": "https://en.wikipedia.org/wiki/Marinaleda",
+          "text": "Marinaleda (Spanish pronunciation: [maɾinaˈleða]) is a Spanish municipality of the province of Seville that belongs to the region of Sierra Sur, located in the basin of Genil, in the autonomous community of Andalusia. It has an area of 24.8 km2 (9.6 sq mi) and a population of 2,778 inhabitants according to the 2011 census, with a population density of 112.01 inhabitants per square kilometre (290.1/sq mi). It belongs to the judicial district of Estepa.\nMarinaleda is a predominantly agricultural municipality and this makes up the bulk of its economy. It is noted for its left-leaning principles based on a leftist ideology led by Juan Manuel Sánchez Gordillo, mayor from 1979 to 2023 and a member of the Unitarian Candidacy of Workers (CUT). Local workers and peasants have achieved a high rate of development and practically full employment for its people. The development of an alternative economic mode has achieved notable results, even during the economic crisis that began in 2008.\nCritics claim that this economic and social progress is due in part to the fact that almost 66% of the income received by the City of Marinaleda is from administrative superiors such as the state, the autonomous community, and the Provincial Council of Seville. In reality, Marinaleda receives less than the average remittance received by municipalities in Andalusia (in 2011 it received around 6.61% less than the regional average).\nMarinaleda is part of the \"Network of Municipalities for the Third Republic\" and the tricolor flag is present in civil buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "marinaleda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

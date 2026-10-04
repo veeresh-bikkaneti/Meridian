@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 8579,
+    "attempt": 8521,
+    "place_id": "gn-729322",
+    "input": {
+      "place": {
+        "place_id": "gn-729322",
+        "name": "Malko Tarnovo",
+        "country": "Bulgaria",
+        "subdivision": "Burgas",
+        "lat": 41.97958,
+        "lon": 27.52477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malko Tarnovo",
+          "url": "https://en.wikipedia.org/wiki/Malko_Tarnovo",
+          "text": "Malko Tarnovo (Bulgarian: Малко Търново [ˈmaɫko ˈtɤrnovo], \"Little Tarnovo\"; as opposed to Veliko Tarnovo) is a town in Burgas Province, southeastern Bulgaria, 5 km from the Turkish border. It is the only town in the interior of the Bulgarian Strandzha Mountains and lies in Strandzha Nature Park. Malko Tarnovo is the administrative centre of the homonymous Malko Tarnovo Municipality. As of December 2024, the town had 1,576 inhabitants.\n\nChristianity is the dominant religion in the town, where an Eastern Orthodox and an Eastern Rite Catholic church exist. According to Lyubomir Miletich's demographic survey of the Ottoman province of Edirne in The Destruction of Thracian Bulgarians in 1913, published in 1918, before the wars Malko Tarnovo was a district centre inhabited by 1,200 Bulgarian Exarchist families and 80 Eastern Catholic Bulgarian families.\nBefore the Balkan Wars (1912–1913), Malko Tarnovo was a township (kaza) of the Kırklareli sanjak in Edirne vilayet as \"Tırnovacık\" that was ceded to Bulgaria following the wars.\nSince 25 October 1913, it has been within the borders of Bulgaria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "malko tarnovo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "malko",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tarnovo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8580,
+    "attempt": 8522,
+    "place_id": "gn-952869",
+    "input": {
+      "place": {
+        "place_id": "gn-952869",
+        "name": "Springs",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.25837,
+        "lon": 28.47173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springs, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Springs,_South_Africa",
+          "text": "Springs is a former independent city that is now part of the City of Ekurhuleni, based in the east of Johannesburg (East Rand), in Gauteng Province, South Africa. It lies 50 km (31 mi) east of Johannesburg and 72 km (45 mi) southeast from Pretoria. Its name is probably derived  from the large number of springs in the area, and its estimated population is more than 121,610 in 2011. It is situated at 1,628 m (5,341 ft) above sea level.\nDuring the apartheid-era, the city was racially segregated under the Group Areas Act. These consisted of middle and upper-income white suburbs around the city centre and the Indian area of Bakerton east of the CBD. A community of black Africans were living in a \"black spot\" of Springs known as Payneville. The Town Council ordered the creation of a new black township to relieve overcrowding in Payneville. In the 1950s, the residents were forcibly removed and relocated to the newly created, KwaThema, southwest of the CBD.\nSprings has a high concentration of Art Deco architecture. After Miami in Florida, it has the highest number of small-scale Art Deco buildings in the world.\nNadine Gordimer (1923–2014), the first South African Nobel Laureate in Literature (1991), was born and raised in Springs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8581,
+    "attempt": 8523,
+    "place_id": "gn-9973324",
+    "input": {
+      "place": {
+        "place_id": "gn-9973324",
+        "name": "Brooklyn Park",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.92847,
+        "lon": 138.53631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brooklyn Park, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Brooklyn_Park,_South_Australia",
+          "text": "Brooklyn Park is a western suburb of the South Australian capital of Adelaide. It is located immediately north-east of Adelaide Airport and the Australian Federal Police (AFP) base on Sir Donald Bradman Drive (the Boulevard of Honour) . It is bound on the north by Henley Beach Road, on the east by Marion Road, and on the west by the Kooyonga Golf Club on May Terrace.\nBrooklyn Park is approximately 6 kilometres (3.7 mi) from the Adelaide coast (West Beach and Henley Beach) and 5.5 kilometres (3.4 mi) from the Adelaide Central Business District. Lockleys Post Office opened on 1 September 1904 and was renamed Brooklyn Park in 1967. Brooklyn Park now includes a subdivision that was originally named Bismarck; it was changed by the Nomenclature Committee to \"Weeroopa\" in 1918.\nThe intersection of Marion Road and Sir Donald Bradman Drive (in the southeast corner of Brooklyn Park) was allocated 45 million dollars by the Federal and State Governments for upgrades in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "brooklyn park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brooklyn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8582,
+    "attempt": 8524,
+    "place_id": "gn-2146482",
+    "input": {
+      "place": {
+        "place_id": "gn-2146482",
+        "name": "Tocumwal",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.8115,
+        "lon": 145.56922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tocumwal",
+          "url": "https://en.wikipedia.org/wiki/Tocumwal",
+          "text": "Tocumwal ( TOH-kəm-wawl) is a town in the southern Riverina region of New South Wales, Australia, in the Berrigan Shire local government area. The town, 270 kilometres (170 mi) north of the city of Melbourne, lies on the northern bank of the Murray River, which forms the border with Victoria.\nThe Newell Highway and Murray Valley Highway join at the Murray River, and form part of the main road route National Highway between Brisbane and Melbourne. At the 2021 census, Tocumwal had a population of 2,862.\nThe name of the town is probably a corruption of the local Pangerang indigenous word, \"Tucumiva\" (or \"Tucumival\"), meaning \"deep hole\". Near Tocumwal is a 25-metre-deep hole in granite rock, now known as \"The Blowhole\", which is linked underground to the nearby Murray River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "tocumwal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8583,
+    "attempt": 8525,
+    "place_id": "gn-2519319",
+    "input": {
+      "place": {
+        "place_id": "gn-2519319",
+        "name": "Cómpeta",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.83352,
+        "lon": -3.9743
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cómpeta",
+          "url": "https://en.wikipedia.org/wiki/Cómpeta",
+          "text": "Cómpeta is a town and municipality in the comarca of Axarquía, and province of Málaga, part of the autonomous community of Andalusia in southern Spain. The municipality is situated approximately 18 kilometres from the coast (Costa del Sol), and 52 kilometres from Málaga, the provincial capital. It is situated at 638 metres above sea level in the foothills of La Maroma (the highest peak of the Sierra de Tejeda). The population is spread over the southern slopes of the Sierra de Almijara.\nCómpeta has a population of approximately 4,000 residents and the natives are called competeños. Cómpeta residents are diverse in both culture and nationality, with many residents originating from other countries across Europe such as the UK and other Northern European countries including Germany, Denmark, The Netherlands and Norway.\nCómpeta's patron saint is San Sebastian. During the last weekend in July, Cómpeta celebrates its patron saint by holding a fiesta (fair).\nOn 15 August of every year (Assumption Day), Cómpeta celebrates the 'Noche del Vino' ('night of the wine'), which is a festival declared of tourist interest by official government decree ('Declaración de Interés Turístico National de Andalucia').\nIt takes approximately one hour to reach the village from Málaga Airport, along the coastal motorway and then inland via the well maintained mountain road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "competa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8584,
+    "attempt": 8526,
+    "place_id": "gn-2636438",
+    "input": {
+      "place": {
+        "place_id": "gn-2636438",
+        "name": "Swanmore",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.94404,
+        "lon": -1.18021
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Swanmore",
+          "url": "https://en.wikipedia.org/wiki/Swanmore",
+          "text": "Swanmore is a rural village and civil parish situated in the Meon Valley, Hampshire, England, close to Bishop's Waltham.\nSwanmore was originally set up to provide homes for workers in local brickworks. As such, the houses in the village are mainly early and mid-Victorian brick buildings, although there are some older houses, especially in the hamlet of Upper Swanmore, which is located only 1/4 mile north of the main village. The village continued to thrive after the closure of these brickworks, and at one time had many shops and services, however many of these closed with the advent of easier transport to nearby towns, but Swanmore does still have a village shop, post office and hairdresser.\nHill Place is a grade II listed Georgian country villa located in the parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "swanmore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8585,
+    "attempt": 8527,
+    "place_id": "gn-2641610",
+    "input": {
+      "place": {
+        "place_id": "gn-2641610",
+        "name": "Newmilns",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.60751,
+        "lon": -4.32416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newmilns",
+          "url": "https://en.wikipedia.org/wiki/Newmilns",
+          "text": "Newmilns (Scottish Gaelic: Am Muileann Ùr) is a village in the burgh of Newmilns and Greenholm, in East Ayrshire, Scotland. It has a population of 3,057 people (2001 census) and lies on the A71, around seven miles east of Kilmarnock and twenty-five miles southwest of Glasgow. It is situated in a valley through which the River Irvine runs and, with the neighbouring towns of Darvel and Galston, forms an area known as the Upper Irvine Valley (locally referred to as The Valley).\nAs the name suggests, the burgh exists in two parts – Newmilns to the north of the river and Greenholm to the south. The river also divides the parishes of Loudoun and Galston, which is why the burgh, although generally referred to as Newmilns, has retained both names."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "newmilns",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8586,
+    "attempt": 8528,
+    "place_id": "gn-2656792",
+    "input": {
+      "place": {
+        "place_id": "gn-2656792",
+        "name": "Audley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.05,
+        "lon": -2.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Audley, Staffordshire",
+          "url": "https://en.wikipedia.org/wiki/Audley,_Staffordshire",
+          "text": "Audley is a large village and former civil parish, now in the parish of Audley Rural, in the Newcastle-under-Lyme district, in Staffordshire, England. It is the centre of Audley Rural parish, approximately four miles (6 km) north west of Newcastle-under-Lyme and 3 miles (5 km) from Alsager near the Staffordshire-Cheshire border.\nAudley is located on the B5500, the former A52 road. Just south of the A500, the village is approximately five minutes from the M6 motorway.\nThe first mention of Audley is in the Domesday Book of 1086, when it was called Aldidelege, when the lands were held by a Saxon called Gamel. At this time, the area was very sparsely populated, and because of its distance from the major towns of Stafford and Chester there was little outside contact. There was a medieval castle at Audley Castle Hill during the late 13th century; only a low earthwork remains of the former motte. Excavations have yielded some stonework."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "audley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8587,
+    "attempt": 8529,
+    "place_id": "gn-2745872",
+    "input": {
+      "place": {
+        "place_id": "gn-2745872",
+        "name": "Valkenburg",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.18,
+        "lon": 4.43194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valkenburg, South Holland",
+          "url": "https://en.wikipedia.org/wiki/Valkenburg,_South_Holland",
+          "text": "Valkenburg (Dutch pronunciation: [ˈvɑlkə(m)bʏr(ə)x] ) is a village and former municipality in the province of South Holland, in the western Netherlands. Valkenburg is now part of the municipality Katwijk and had a population of 3,900 in 2006.\nOn 1 January 2006, Valkenburg and Rijnsburg were merged into the municipality of Katwijk. The former municipality of Valkenburg had about 3878 inhabitants (1 June 2005) and a surface area of 15.74 km2 (6.08 sq mi) of which 0.23 km2 (0.09 sq mi) is water.\nOn the second Wednesday in September there is a horse market, the oldest in the Netherlands. The market origins are believed to be around the year 840, and a painting princes Maurits and Frederik Hendrik visiting the market in the 17th century hangs in the 'Rijksmuseum' in Amsterdam.\nThe former Valkenburg Naval Air Base, which was situated here since 1936, was closed in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "valkenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8588,
+    "attempt": 8530,
+    "place_id": "gn-3192682",
+    "input": {
+      "place": {
+        "place_id": "gn-3192682",
+        "name": "Portorož",
+        "country": "Slovenia",
+        "subdivision": "Municipality of Piran",
+        "lat": 45.51429,
+        "lon": 13.59206
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portorož",
+          "url": "https://en.wikipedia.org/wiki/Portorož",
+          "text": "Portorož (pronounced [pɔɾtɔˈɾóːʃ] ; Italian: Portorose) is a Slovenian Adriatic seaside resort and spa settlement located in the Municipality of Piran in southwestern Slovenia. Its modern development began in the late 19th century with the vogue for the first health resorts. In the early 20th century Portorož became one of the grandest seaside resorts in the Adriatic, along with Opatija, Lido and Grado, then as part of the Austrian Littoral. It is now one of Slovenia's major tourist areas. Located in the centre is the Palace Hotel, once one of the most important resorts for the Austro-Hungarian monarchy, and currently one of the finest hotels between Venice and Dubrovnik.\nThe settlement and its surrounding areas are served by Portorož International Airport which is located in the nearby village of Sečovlje."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "portoroz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8589,
+    "attempt": 8531,
+    "place_id": "gn-3209408",
+    "input": {
+      "place": {
+        "place_id": "gn-3209408",
+        "name": "Novi Zagreb",
+        "country": "Croatia",
+        "subdivision": "Zagreb",
+        "lat": 45.78333,
+        "lon": 15.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Novi Zagreb",
+          "url": "https://en.wikipedia.org/wiki/Novi_Zagreb",
+          "text": "Novi Zagreb (lit. 'New Zagreb') is the part of the city of Zagreb located south of the Sava river. Novi Zagreb forms a distinct whole because it is separated from the northern part of the city both by the river and by the levees around Sava, esp. those built in 1979, following the 1964 flood. At the same time, the name usually refers to urban parts, while there are also older rural settlements south of the Sava that are administered as part of Novi Zagreb.\nIt is mostly residential, consisting of blocks of flats and tower blocks that were built during the Socialist era (1945–1990). Although it is not as prestigious as downtown Zagreb, it has been praised for its good road network, public transportation connections and abundance of parks.\nSince 2009, Novi Zagreb is divided into three administrative city districts (\"četvrti\"): Novi Zagreb - istok (East Novi Zagreb), Novi Zagreb - zapad (West Novi Zagreb) and Brezovica.\nExpansion of Novi Zagreb was started by the Zagreb mayor Većeslav Holjevac, when he moved the Zagreb Fair from the downtown Savska Road to the southern bank of the Sava river in 1953. In 1957, first plans for developing Novi Zagreb were introduced, depicting what would later be known as Savski Gaj. The first complete solution for habitation with public and commercial contents was made for the neighborhood Trnsko by urbanists Zdenko Kolacio, Mirko Maretić and Josip Uhlik with horticulturist Mira Wenzler-Halambek in 1959–60. It was followed by plans for the neighborhood Zapruđe in 1962–1963, also made by Josip Uhlik.\nThe Zagreb Hippodrome has been a horse racing field since 1950, as well as a concert venue esp. in more recent times. Across the road from the hippodrome is the Bundek park and lake, north of Zapruđe and Središće. It underwent a complete renovation in 2005. The site later hosted yearly festivals. Other locations in Novi Zagreb have been the site of major city projects. The new building of the Museum of Modern Art was opened in Središće in 2009, after the Avenue Mall shopping center was opened across the interchange in Siget in 2007. In 2008, the Arena Zagreb sports and event hall was built in the Lanište neighborhood. The Arena Centar shopping and entertainment complex was opened in 2010, as well and the numerous adjacent new residential and commercial buildings, parks and plazas. The \"Bundek Centar\" residential and commercial complex was opened in Središće in 2012.\nA new hospital center in Blato was first started in 1982, but then stalled in 1992. Its completion is still planned. The construction of a new bridge spanning the Sava and connecting the Jarun neighborhood with Novi Zagreb has been planned since 2007. The public transportation network expansion with new tram lines is likewise planned in several areas, including over the Jarun bridge in the west and on Sarajevska street in the east.\nZagreb's Remetinec prison is also located in Novi Zagreb since 1987."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 490
+    },
+    "banned_terms": [
+      {
+        "term": "novi zagreb",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "novi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zagreb",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8590,
+    "attempt": 8532,
+    "place_id": "gn-3472868",
+    "input": {
+      "place": {
+        "place_id": "gn-3472868",
+        "name": "Águas de São Pedro",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.59944,
+        "lon": -47.87611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Águas de São Pedro",
+          "url": "https://en.wikipedia.org/wiki/Águas_de_São_Pedro",
+          "text": "Águas de São Pedro (Brazilian Portuguese pronunciation: [ˈaɡwɐz dʒi sɐ̃w ˈpedɾu] ) is a Brazilian municipality in the state of São Paulo located 184 kilometres (114 miles) from the state capital. At only 3.61 square kilometres (1.39 square miles), it is the second-smallest Brazilian municipality in terms of area, and had an estimated population of 3,521 as of 2020. Águas de São Pedro means \"Waters of Saint Peter\". Its name is derived from the mineral springs in its territory and their location, which before the city's founding were part of the municipality of São Pedro (Saint Peter).\nThe average annual temperature in the city is 22.4 degrees Celsius (72.3 degrees Fahrenheit), and most of the municipality's vegetation consists of reforested area. In 2016 there were 2,491 vehicles in the city. Exclusively an urban area, with no rural areas, the city had four health facilities in 2009. Its Human Development Index (HDI) is 0.854, the second highest in the state of São Paulo, as well as the second highest in Brazil, surpassed only by São Caetano do Sul.\nÁguas de São Pedro was incorporated in the 1940s. The city is known for its mineral waters of medicinal value, their natural sources popular tourist attractions. One of the springs, Fonte Juventude, has the second most highly sulfurous water in the world. It also has two large parks, Dr. Octavio Moura Andrade Park and the Parque das Águas \"José Benedito Zani\", and the municipal mini-garden, all important green areas of the city.\nThe municipality is located in the region of Itaqueri Ridge – Portuguese: Serra do Itaqueri; Itaqueri means \"lying stone\" in Tupí–Guaraní – in the south-central part of the state of São Paulo. It is a planned city and since its founding has been a tourist destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 295
+    },
+    "banned_terms": [
+      {
+        "term": "aguas de sao pedro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "aguas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8591,
+    "attempt": 8533,
+    "place_id": "gn-3612801",
+    "input": {
+      "place": {
+        "place_id": "gn-3612801",
+        "name": "Duyure",
+        "country": "Honduras",
+        "subdivision": "Choluteca Department",
+        "lat": 13.63333,
+        "lon": -86.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duyure",
+          "url": "https://en.wikipedia.org/wiki/Duyure",
+          "text": "Duyure is a municipality located in the Honduran department of Choluteca.\nThe municipality borders Nicaragua to the east, the department of El Paraíso to the north, the municipality of Morolica to the west, and the municipality of San Marcos de Colón to the south.  The Choluteca River runs along the northern and western limits of the municipality.  The town center is located 32 kilometers North of the city of San Marcos de Colón via a dirt road connected to the Pan-American Highway.\nLocated in the center of the municipality is the town center which is surrounded by seven satellite villages and several small housing clusters.  The seven satellite villages located outside of the urban center are named: Apasupo, Liraqui, Tierras Coloradas, Carrizal Prieto, El Horno, Alto Pino, and San Lorenzo.  Each village contains a public school that educates children ranging from kindergarten to sixth grade.  The town center has both a primary school and a high school."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "duyure",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8592,
+    "attempt": 8534,
+    "place_id": "gn-5106548",
+    "input": {
+      "place": {
+        "place_id": "gn-5106548",
+        "name": "Woodcliff Lake",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.02343,
+        "lon": -74.06653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodcliff Lake, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Woodcliff_Lake,_New_Jersey",
+          "text": "Woodcliff Lake is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 6,128, an increase of 398 (+6.9%) from the 2010 census count of 5,730, which in turn reflected a decline of 15 (−0.3%) from the 5,745 counted in the 2000 census. Most of the borough mandates a minimum lot size of 22,500 square feet (2,090 m2) for single-family homes, with portions on the borough's east zoned for 15,000 square feet (1,400 m2) and portions of the borough's northwest and southwest zoned for 30,000 square feet (2,800 m2) lots.\nWoodcliff Lake is also the name of the reservoir that lies predominantly within the borough, with a small portion at the southeastern edge located in neighboring Hillsdale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "woodcliff lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woodcliff",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8593,
+    "attempt": 8535,
+    "place_id": "gn-5397196",
+    "input": {
+      "place": {
+        "place_id": "gn-5397196",
+        "name": "Sorrento Valley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.89991,
+        "lon": -117.19451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sorrento Valley, San Diego",
+          "url": "https://en.wikipedia.org/wiki/Sorrento_Valley,_San_Diego",
+          "text": "Sorrento Valley is a neighborhood of San Diego, California. It is roughly bounded by Interstate 5 and Interstate 805, Camino Santa Fe to the east, the Los Peñasquitos Canyon Preserve to the north and Miramar Road to the south, as shown on the San Diego Police Department's neighborhood map. It encompasses Sorrento Mesa and is part of San Diego Unified School District.\nWhile originally envisioned and zoned for industrial use, Sorrento Valley is now home to over 5,000 residents spread across three major single family home and condominium developments. Sorrento Valley is known as a center for high tech, biotech and scientific research, aided by its close proximity to the University of California, San Diego. It is part of the city's Mira Mesa, Torrey Pines, and University community planning areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "sorrento valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sorrento",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8594,
+    "attempt": 8536,
+    "place_id": "gn-670257",
+    "input": {
+      "place": {
+        "place_id": "gn-670257",
+        "name": "Podu Turcului",
+        "country": "Romania",
+        "subdivision": "Bacău County",
+        "lat": 46.2,
+        "lon": 27.38333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Podu Turcului",
+          "url": "https://en.wikipedia.org/wiki/Podu_Turcului",
+          "text": "Podu Turcului is a commune in Bacău County, Western Moldavia, Romania. It is composed of ten villages: Bălănești, Căbești, Fichitești, Giurgioana, Hanța, Lehancea, Plopu, Podu Turcului, Răcușana, and Sârbi.\nThe commune is situated on the Bârlad Plateau, at an altitude of 155 m (509 ft), on the banks of the rivers Zeletin, Pereschiv, and Pereschivul Mic. It is located in the southeastern extremity of the county, about 70 km (43 mi) from the county seat, Bacău, on the border with Vrancea and Vaslui counties. Podu Turcului is crossed by national road DN11A, which connects it to Bârlad, 30 km (19 mi) to the east and to Onești, 60 km (37 mi) to the west.\nDuring the interwar period, the commune was the seat of plasa Podu Turcului, in Tecuci County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "podu turcului",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "podu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "turcului",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8595,
+    "attempt": 8537,
+    "place_id": "gn-7290162",
+    "input": {
+      "place": {
+        "place_id": "gn-7290162",
+        "name": "Nusa Dua",
+        "country": "Indonesia",
+        "subdivision": "Bali",
+        "lat": -8.80047,
+        "lon": 115.23341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nusa Dua",
+          "url": "https://en.wikipedia.org/wiki/Nusa_Dua",
+          "text": "Nusa Dua is a resort area built in the 1970s in the southern part of Bali, Indonesia. Known as an enclave of large five-star resorts, it covers 350 hectares of land and encloses more than 20 resorts. It is located 22 kilometers from Denpasar, the provincial capital of Bali, and is administered as part of Benoa urban village (kelurahan) in South Kuta District of Badung Regency. Nusa Dua means two islands (nusa 'island', dua 'two'), because there are two islands in the bay of the Indonesia Tourism Development Corporation (ITDC) area. On the southern side lies Peninsula Island, and on the northern side lies Nusa Dharma Island, which is smaller but shadier, and which contains the Pura/Temple Nusa Dharma.\nThe core area of ITDC Nusa Dua is a gated community. There are security checkpoints, and visitors are charged a fee to enter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "nusa dua",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nusa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dua",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8596,
+    "attempt": 8538,
+    "place_id": "gn-12489700",
+    "input": {
+      "place": {
+        "place_id": "gn-12489700",
+        "name": "Blimea",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.27247,
+        "lon": -5.58984
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blimea",
+          "url": "https://en.wikipedia.org/wiki/Blimea",
+          "text": "Blimea is the most eastern parish of the San Martín del Rey Aurelio council. By Decree Law December 2007, the town of Blimea joins El Entrego and Sotrondio to form the town of San Martín, being the town of Blimea one of its districts.\nBlimea is a place name emerged from many Asturian words with different phonetic variants translated into Castilian word \"wicker\" such as bima, blima, brima, blimba or bilma. From the etymological point of view, wicker part of Latin \"vimen - viminis\" and in the Asturian case is influenced belime, \"wheat residue\" and bilimia, \"drill\", \"Beria\". It would therefore be an area where blima was abundant.\nNalón river divides into two large halves and forms a broad plain which is where Blimea, capital of the parish rises.\nIt is 9.66 km2 (3.73 sq mi) in size, with a population of 3,867 inhabitants (INE 2005)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "blimea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8597,
+    "attempt": 8539,
+    "place_id": "gn-2634985",
+    "input": {
+      "place": {
+        "place_id": "gn-2634985",
+        "name": "Ventnor",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.59449,
+        "lon": -1.20672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ventnor",
+          "url": "https://en.wikipedia.org/wiki/Ventnor",
+          "text": "Ventnor () is a seaside resort town and civil parish established in the Victorian era on the southeast coast of the Isle of Wight, England, 11 miles (18 km) from Newport. It is situated south of St Boniface Down, and built on steep slopes leading down to the sea. The higher part is referred to as Upper Ventnor (officially Lowtherville); the lower part, where most amenities are located, is known as Ventnor. Ventnor is sometimes taken to include the adjacent older settlements of St Lawrence and Bonchurch, which are covered by its town council.  The population is 5,567 according to the 2021 Census.\nVentnor became extremely fashionable as both a health and holiday resort in the late 19th century, described as the 'English Mediterranean' and 'Mayfair by the Sea'. Medical advances during the early twentieth century reduced its role as a health resort and, like other British seaside resorts, its summer holiday trade suffered from the changing nature of travel during the latter part of the century.\nIts relatively sheltered location beneath the hilly chalk downland and south-facing orientation towards the English Channel produces a microclimate with more sunny days and fewer frosts than the rest of the island. This allows many species of subtropical plant to flourish; Ventnor Botanic Garden is particularly notable."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "ventnor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8598,
+    "attempt": 8540,
+    "place_id": "gn-2645761",
+    "input": {
+      "place": {
+        "place_id": "gn-2645761",
+        "name": "Kessingland",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.41987,
+        "lon": 1.70878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kessingland",
+          "url": "https://en.wikipedia.org/wiki/Kessingland",
+          "text": "Kessingland is a village and civil parish in the East Suffolk district of the English county of Suffolk. It is located around 4 miles (6 km) south of Lowestoft on the east coast of the United Kingdom. It is of interest to archaeologists as Palaeolithic and Neolithic implements have been found here; the remains of an ancient forest lie buried on the seabed. It also lays a claim to being the most easterly village in England.\nThe parish, which had a population of 4,327 at the 2011 United Kingdom census, borders the parishes of Gisleham, Henstead with Hulver Street and Benacre. It extends from the edge of the Pontins holiday park south of Pakefield in the north to the Hundred River which marks the southern border of the parish. The main A12 road cuts through the parish, bypassing the main built up area of the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "kessingland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

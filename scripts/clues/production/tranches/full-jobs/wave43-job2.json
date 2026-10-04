@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 8479,
+    "attempt": 8421,
+    "place_id": "gn-2265472",
+    "input": {
+      "place": {
+        "place_id": "gn-2265472",
+        "name": "Odemira",
+        "country": "Portugal",
+        "subdivision": "Beja",
+        "lat": 37.59798,
+        "lon": -8.63972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Odemira",
+          "url": "https://en.wikipedia.org/wiki/Odemira",
+          "text": "Odemira (pronounced [ɔðɨˈmiɾɐ] ), officially the Town of Odemira (Portuguese: Vila de Odemira), is a town and a municipality in Beja District in the Portuguese region of Alentejo. The population in 2021 was 29,538, in an area of 1,720.6 square kilometres (664.3 mi2), making it the largest municipality of Portugal by area, but one of the least densely populated.\nIt is famous for its wild beaches and for being home to a significant immigrant community, comprising 28.2% of the municipality's population as of 2021. The village of Zambujeira do Mar is home to the Festival do Sudoeste, one of the biggest rock festivals in Europe.\nThe municipality of Odemira has two large economic activities, tourism and export-oriented agriculture. It is home to major operations of national and international agricultural companies such as Driscoll's and Vitacress.\nThe present mayor is Hélder António Guerreiro, elected by the Socialist Party in 2021. The municipal holiday is 8 September."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "odemira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8480,
+    "attempt": 8422,
+    "place_id": "gn-2510313",
+    "input": {
+      "place": {
+        "place_id": "gn-2510313",
+        "name": "Torre de la Horadada",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 37.8697,
+        "lon": -0.7584
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torre de la Horadada",
+          "url": "https://en.wikipedia.org/wiki/Torre_de_la_Horadada",
+          "text": "Torre de la Horadada is a Spanish town, located on the Mediterranean Sea, with an estimated population of 2,676 inhabitants. It comes under the jurisdiction of Pilar de la Horadada, which in turn has a total population of 22,967, according to the National Statistics Institute. Both of these towns are located in the most southern point of the Alicante province in the southeast of Spain, and therefore share a border with the province of Murcia. The name of the town has its origin in two factors: the first, the 16th century watchtower; and the second, the site where the tower is found: the point of Horadada (el horadada), which comes from the Spanish word for \"bore through\" as it is situated on rocks made up of small caves, developed by the water boring the rock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "torre de la horadada",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "torre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "horadada",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8481,
+    "attempt": 8423,
+    "place_id": "gn-2525773",
+    "input": {
+      "place": {
+        "place_id": "gn-2525773",
+        "name": "Acquedolci",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.05708,
+        "lon": 14.5855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acquedolci",
+          "url": "https://en.wikipedia.org/wiki/Acquedolci",
+          "text": "Acquedolci (Sicilian: Acquaduci) is an Italian town and comune in the Metropolitan City of Messina in Sicily.\nIts name, that can be translated in English as \"sweet waters\", probably came from the fresh water springs which are part of the town territory. The inhabited centre was founded in 1922, following a landslide which damaged the town of San Fratello, forcing a large part of the population to relocate there. Acquedolci, which was a frazione of San Fratello, obtained comune status in 1969.\nThe history of Acquedolci has ancient origins that date back to Roman times. The name itself seems to derive from the fact that the ancient Romans, during the First Punic War, between 264 and 241 BC, identified an underwater spring off the coast that allowed them to supply water directly into the sea. During the Roman era, Acquedolci, crossed by the Consular Valeria, was a resting place where it was possible to change mules and exchange mail. The locality became part of the \"Tavola Peutingeriana\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "acquedolci",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8482,
+    "attempt": 8424,
+    "place_id": "gn-2633609",
+    "input": {
+      "place": {
+        "place_id": "gn-2633609",
+        "name": "Wool",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.67966,
+        "lon": -2.2189
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wool, Dorset",
+          "url": "https://en.wikipedia.org/wiki/Wool,_Dorset",
+          "text": "Wool is a large village, civil parish and electoral ward in south Dorset, England. In the 2011 census the parish – which includes Bovington Camp army base to the north – had 2,015 households and a population of 5,310. The village lies at a historic bridging point on the River Frome, halfway between Dorchester and Wareham. Woolbridge Manor House, a 17th-century building, is a prominent feature just outside the village and the location of Tess's honeymoon in Thomas Hardy's Tess of the D'Urbervilles.  Other prominent features of the village include the medieval church of Holy Rood, the railway station on the South West Main Line from London Waterloo to Weymouth, and the thatched cottages along Spring Street.\nThe place-name 'Wool' is first attested in Anglo-Saxon Writs from 1002 to 1012, where it appears as Wyllon. In the Domesday Book of 1086 it appears as Wille and Welle, and as Welles in 1212 in the Book of Fees. The name means 'springs' in the sense of the related word wells.\nNear Wool, to the east of the village, are the ruins of Bindon Abbey, which was demolished in the Dissolution of the Monasteries of 1539, the stone being used to build castles in Portland, Lulworth and Sandsfoot.\nA small single-lane hump-backed stone bridge, a Grade II* listed structure about 200m north from the railway station, is no longer used for vehicular traffic. The place name Wullebrigg, recorded in 1244, indicates a crossing here in the thirteenth century and there is an extant record from 1343 of a bridge crossing the River Frome at this point. It has a stone half-way along it stating that those who deface or damage the bridge will be transported (sent to Australia or another penal colony) for the rest of their lives. In January 2018 one of the bridge's stone parapets collapsed, undermined by floodwater, but the arches remained undamaged.\nLocal places of interest include The Tank Museum and Monkey World. Nearby hamlets include East Burton and Giddy Green."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 333
+    },
+    "banned_terms": [
+      {
+        "term": "wool",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8483,
+    "attempt": 8425,
+    "place_id": "gn-2634550",
+    "input": {
+      "place": {
+        "place_id": "gn-2634550",
+        "name": "Wem",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.85835,
+        "lon": -2.71826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wem",
+          "url": "https://en.wikipedia.org/wiki/Wem",
+          "text": "Wem is a market town in the civil parish of Wem Urban, in Shropshire, England, 9 miles (14 km) north of Shrewsbury and 9 miles (14 km) south of Whitchurch.\nThe name is derived from the Old English term wamm, meaning \"marsh\".\nAs a caput of a barony and a large manor and parish Wem was a centre for justice and local government for centuries, and the headquarters of the North Shropshire District Council until Shropshire became a unitary authority. From the 12th century revisions to the hundreds of Shropshire, Wem was within the North Division of Bradford Hundred until the end of the 19th century.\nIt is considered that the landscape around the town may be the inspiration for Shakespeare's play As You Like It, a belief reflected in cultural programming in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "wem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8484,
+    "attempt": 8426,
+    "place_id": "gn-2643714",
+    "input": {
+      "place": {
+        "place_id": "gn-2643714",
+        "name": "Long Buckby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.3026,
+        "lon": -1.08113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Buckby",
+          "url": "https://en.wikipedia.org/wiki/Long_Buckby",
+          "text": "Long Buckby is a large village and civil parish in West Northamptonshire, England. In the 2021 census the parish of Long Buckby, which includes the hamlet of Long Buckby Wharf, was recorded as having a population of 4,511.\nLong Buckby is a hill top village, located around 4.5 miles (7.2 km) north-east of the town of Daventry, and roughly midway between Northampton and Rugby, with each being around 9 miles (14 km) to the south-east and north-west respectively. The west of the parish has the A5 road, Grand Union Canal, West Coast Main Line railway and M1 motorway all passing through the Watford Gap, with Watford, Northamptonshire being the next village to the north.\nJust south of the village is  Long Buckby railway station on the Northampton Loop corollary of the West Coast Main Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "long buckby",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buckby",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8485,
+    "attempt": 8427,
+    "place_id": "gn-2745012",
+    "input": {
+      "place": {
+        "place_id": "gn-2745012",
+        "name": "Warmond",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.19667,
+        "lon": 4.50278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warmond",
+          "url": "https://en.wikipedia.org/wiki/Warmond",
+          "text": "Warmond (Dutch pronunciation: [ˈʋɑrmɔnt] ) is a village and former municipality in the Western Netherlands, north of Leiden in the province of South Holland. The municipality covered an area of 14.42 km2 (5.57 sq mi), of which 4.42 km2 (1.71 sq mi) is water; had a population of 4,977 in 2004. Together with Sassenheim and Voorhout, it became part of the Teylingen municipality on 1 January 2006. Warmond, which is located in an area called the \"Dune and Bulb Region\" (Duin- en Bollenstreek), is notable for being very affluent.\nWarmond is situated on a lake system called Kagerplassen and has several marinas which make it a popular recreational area for boating and other water sports.\nAn 18th-century mansion called \"Huys te Warmond\" (\"House at Warmond\") is located north of the village along the main road.\nThe Major Seminary, Warmond, was founded here in 1799. Located in a converted in the former French Boarding School, it provided training for Priests until 1967. The only known surviving copy of Joos Lambrecht Dutch-French dictionary, the Naembouck, was discovered by Wytze Hellinga in the library here shortly after it was closed.\nThe first railway accident in the Netherlands occurred near Warmond on 10 March 1843. 1 person was killed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "warmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8486,
+    "attempt": 8428,
+    "place_id": "gn-3051280",
+    "input": {
+      "place": {
+        "place_id": "gn-3051280",
+        "name": "Hosszúhetény",
+        "country": "Hungary",
+        "subdivision": "Baranya",
+        "lat": 46.16414,
+        "lon": 18.35077
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hosszúhetény",
+          "url": "https://en.wikipedia.org/wiki/Hosszúhetény",
+          "text": "Hosszúhetény (Croatian: Hetinj, Etinj, Hetin, Jetin, German: Hetting, Heting, Langheting) is the most populous village in Baranya county, southwest Hungary, a significant centre of village tourism.\nIt is located 18 kilometres northeast to Pécs, the county capital, in a valley between the feet of Zengő, the highest peak of the Mecsek mountains and the peak called Hármashegy.\nIt has a population of 3424 (as of 1 January 2010) and an area of 45.27 km2 (17 sq mi).\nThe valley has been inhabited since the Stone Age. Two other nearby villages belong to the administration of Hosszúhetény: Püspökszentlászló and Kisújbánya.\nLocated in an environmentally protected area, a special microclimate producing rare flower species like Paeonia officinalis ssp, among picturesque mountains, the three villages are popular among tourists who arrive from all parts of Hungary and abroad. One of the main sites is the arboretum of the episcopal castle in Püspökszentlászló.\nTourism gives an increasing portion of the villagers' revenues after the decline of coal mining which flourished in the region between the 1950s and 1990."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "hosszuheteny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8487,
+    "attempt": 8429,
+    "place_id": "gn-3135124",
+    "input": {
+      "place": {
+        "place_id": "gn-3135124",
+        "name": "Svelvik",
+        "country": "Norway",
+        "subdivision": "Buskerud",
+        "lat": 59.6137,
+        "lon": 10.40872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Svelvik",
+          "url": "https://en.wikipedia.org/wiki/Svelvik",
+          "text": "[ˈsvæ̀ɽviːk] is a town in Drammen Municipality in Buskerud county, Norway. The town is located along the west shore of the Drammensfjorden, about 20 kilometres (12 mi) to the southeast of the town of Drammen and about 8 kilometres (5.0 mi) north of the village of Berger. The village of Klokkarstua (in Asker Municipality) lies about 2 kilometres (1.2 mi) to the east, across the fjord.\nThe 2.33-square-kilometre (580-acre) town has a population (2023) of 4,256 and a population density of 1,825 inhabitants per square kilometre (4,730/sq mi). The town lies mostly in Drammen Municipality, but a small part of the urban area of Svelvik lies on the other side of the fjord (which is only 200 metres (660 ft) wide at that point). About 130 people live right across the fjord in Asker Municipality.\nThe newspaper Svelviksposten has been published in Svelvik since 1983."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "svelvik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8488,
+    "attempt": 8430,
+    "place_id": "gn-3182744",
+    "input": {
+      "place": {
+        "place_id": "gn-3182744",
+        "name": "Asiago",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.87588,
+        "lon": 11.51223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asiago, Veneto",
+          "url": "https://en.wikipedia.org/wiki/Asiago,_Veneto",
+          "text": "Asiago (Italian: [aˈzjaːɡo]; Venetian: Axiago, Cimbrian: Slege, German: Schlägen [ˈʃlɛːɡn̩]) is a minor township (population roughly 6,500) with the title of city in the surrounding plateau region (the Altopiano di Asiago or Altopiano dei Sette Comuni, Asiago plateau) in the Province of Vicenza in the Veneto region of Northeastern Italy. It is near the border between the Veneto and Trentino-Alto Adige/Südtirol regions in the foothills of the Alps, approximately equidistant (60 km) from Trento to the west and Vicenza to the south. The Asiago region is the origin of Asiago cheese.  The town was the site of a major battle between Austrian and Italian forces on the Alpine Front of World War I.  It is a major ski resort destination, and the site of the Astrophysical Observatory of Asiago, operated by the University of Padua."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "asiago",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8489,
+    "attempt": 8431,
+    "place_id": "gn-3190159",
+    "input": {
+      "place": {
+        "place_id": "gn-3190159",
+        "name": "Srebrenica",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Srpska",
+        "lat": 44.10748,
+        "lon": 19.29669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Srebrenica",
+          "url": "https://en.wikipedia.org/wiki/Srebrenica",
+          "text": "Srebrenica (Serbian Cyrillic: Сребреница, pronounced [srêbrenitsa]) is a town and municipality in Bosnia and Herzegovina, located in the Republika Srpska entity. It is a small mountain town, with its main industry being salt mining and a nearby spa.\nDuring the Bosnian War in 1995, Srebrenica was the site of genocidal killing of more than 8,000 Bosniak men and boys, which was subsequently designated as an act of genocide by the ICTY and the International Court of Justice. It was perpetrated by units of the Bosnian Serb Army of Republika Srpska under Ratko Mladić, though the Serb paramilitary unit Scorpions also participated.\nAs of 2013, the town has a population of 2,607 inhabitants, while the municipality has 13,409 inhabitants. Before the war, the municipality's Bosniak population was 27,542 (75.12%) and the Serb population was 8,315 (22.68%). As of 2013, the equivalent figures were 7,248 Bosniaks (54.05%) and 6,028 Serbs (44.95%)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "srebrenica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8490,
+    "attempt": 8432,
+    "place_id": "gn-505019",
+    "input": {
+      "place": {
+        "place_id": "gn-505019",
+        "name": "Priyutnoye",
+        "country": "Russia",
+        "subdivision": "Kalmykiya Republic",
+        "lat": 46.10104,
+        "lon": 43.51092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Priyutnoye, Republic of Kalmykia",
+          "url": "https://en.wikipedia.org/wiki/Priyutnoye,_Republic_of_Kalmykia",
+          "text": "Priyutnoye (Russian: Прию́тное Prijutnoe; Kalmyk: Әмтә Нур, Ämtä Nur) is a settlement and the administrative center of Priyutnensky District and Iki-Burulsky rural locality of the Republic of Kalmykia in the Russia. It is located on the R216 highway, 58 kilometres (36 mi) southwest of the Kalmyk capital of Elista near the Nain Shara River, a tributary of the Manych River. In 2021, its population was 5,182 souls.\nAn 1848 imperial decree to create settled villages in ethnically Kalmyk areas led to the 1850 founding of a settlement of Russians near the lake of Amtya-Nur (Амтя-Нур, from the Kalmyk Әмтә Нур Ämtä Nur, lit. \"sweet lake\"). Noted scientist Karl Ernst von Baer visited the area in 1856 and tried unsuccessfully to convince the inhabitants to move from the area due to lime concentrations in the lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "priyutnoye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8491,
+    "attempt": 8433,
+    "place_id": "gn-5095312",
+    "input": {
+      "place": {
+        "place_id": "gn-5095312",
+        "name": "Atlantic Highlands",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.40789,
+        "lon": -74.03431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atlantic Highlands, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Atlantic_Highlands,_New_Jersey",
+          "text": "Atlantic Highlands is a borough in Monmouth County in the U.S. state of New Jersey, in the Bayshore Region. As of the 2020 United States census, the borough's population was 4,414, an increase of 29 (+0.7%) from the 2010 census count of 4,385, which in turn reflected a decline of 320 (−6.8%) from the 4,705 in the 2000 census.\nAtlantic Highlands contains Mount Mitchill, the highest point on the eastern seaboard south of Maine, rising 266 feet (81 m) above sea level. The borough's name comes from its location overlooking the Atlantic Ocean.\nAtlantic Highlands was incorporated as a borough by an act of the New Jersey Legislature on February 28, 1887, from portions of Middletown Township, based on the results of a referendum held that day. The borough was reincorporated on September 1, 1891.\nAtlantic Highlands was part of the Bayshore Regional Strategic Plan, an effort by nine municipalities in northern Monmouth County to reinvigorate the area's economy by emphasizing the traditional downtowns, dense residential neighborhoods, maritime history, and the natural beauty of the Raritan Bayshore coastline. The plan has since been integrated into the county's 2016 Master Plan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "atlantic highlands",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "atlantic",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "highlands",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8492,
+    "attempt": 8434,
+    "place_id": "gn-5097677",
+    "input": {
+      "place": {
+        "place_id": "gn-5097677",
+        "name": "Englewood Cliffs",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.88538,
+        "lon": -73.95236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Englewood Cliffs, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Englewood_Cliffs,_New_Jersey",
+          "text": "Englewood Cliffs is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 5,342, an increase of 61 (+1.2%) from the 2010 census count of 5,281, which in turn reflected a decline of 41 (-0.8%) from the 5,322 counted in the 2000 census.\nThe borough houses the world headquarters of CNBC (Versant), the North American headquarters of South Korean conglomerate LG Corp, and the American headquarters of global CPG conglomerate Unilever, and was home to both Ferrari and Maserati North America.\nThe borough was formed in 1895, having seceded from Englewood Township, with William Outis Allison serving as the new municipality's first mayor,} as part of the \"Boroughitis\" then sweeping Bergen County, with 26 boroughs formed in the county in 1894 alone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "englewood cliffs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "englewood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cliffs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8493,
+    "attempt": 8435,
+    "place_id": "gn-5119290",
+    "input": {
+      "place": {
+        "place_id": "gn-5119290",
+        "name": "Green Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.74424,
+        "lon": -73.69151
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Green Island, New York",
+          "url": "https://en.wikipedia.org/wiki/Green_Island,_New_York",
+          "text": "Green Island is a coterminous town-village in Albany County, New York, United States, some 8 miles (13 km) north of Albany. Green Island is one of only five such town-village amalgamations in New York. The population was 2,934 at the 2020 census, and the ZIP code is 12183. While the town of Green Island was once an island, it was connected to the mainland on the west side of the Hudson River in the 1960s.\nGreen Island is also the smallest town, by area, in New York, covering 0.7 square miles (1.8 km2); by contrast, the largest towns in the state by area are Brookhaven, which covers an area of 531.5 square miles (1,377 km2) (though much of that is water), and Webb, which has the largest land area at 483 square miles (1,250 km2)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "green island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8494,
+    "attempt": 8436,
+    "place_id": "gn-5937073",
+    "input": {
+      "place": {
+        "place_id": "gn-5937073",
+        "name": "Deep River",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 46.10012,
+        "lon": -77.49949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deep River, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Deep_River,_Ontario",
+          "text": "Deep River is a town in Renfrew County, Ontario, Canada. Located along the Ottawa River, it lies about 200 kilometres (120 mi) north-west of Ottawa on the Trans-Canada Highway. Deep River is opposite the Laurentian Mountains and the Province of Quebec.\nThe name \"Deep River\" purportedly derives from the notion that the Ottawa River reaches its greatest depth of 402 feet (123 m) just outside the township. Although this is not official, the Ottawa River reaches a depth of 565 feet (172 m) in Moose Bay, which is located on the Holden Lake reservoir from the Des Joachim dam, west of Deux-Rivières.\nThe primary industry centres on research at the Chalk River location of Canadian Nuclear Laboratories (CNL), a facility of the Chalk River Laboratories about 10 km east of Deep River on Highway 17. The facility is named for and primarily accessed via the nearby town of Chalk River although the site is technically in Deep River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "deep river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "deep",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8495,
+    "attempt": 8437,
+    "place_id": "gn-6244802",
+    "input": {
+      "place": {
+        "place_id": "gn-6244802",
+        "name": "Hataitai",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.30431,
+        "lon": 174.7942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hataitai",
+          "url": "https://en.wikipedia.org/wiki/Hataitai",
+          "text": "Hataitai is an inner-city suburb of Wellington, the capital of New Zealand, 3.5 kilometres southeast of the city centre.  The suburb extends over the southeastern flank of Mount Victoria and down a valley between the Town Belt and a ridge along the shoreline of Evans Bay. Hataitai is bounded by Hepara Street, Grafton Road and the suburb of Roseneath in the north, Wellington Harbour in the east, Cobham Drive, Wellington Road and Crawford Road in the south, and Alexandra Road in the west.\nHataitai is on important transport links between the central city and Wellington Airport, to the south of Evans Bay on the isthmus at Rongotai. It is at the eastern end of the Mount Victoria Tunnel and the bus-only Hataitai Tunnel, built in 1907 for trams, making Hataitai a popular place to live."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "hataitai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8496,
+    "attempt": 8438,
+    "place_id": "gn-769345",
+    "input": {
+      "place": {
+        "place_id": "gn-769345",
+        "name": "Kazimierz Dolny",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.31911,
+        "lon": 21.95502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kazimierz Dolny",
+          "url": "https://en.wikipedia.org/wiki/Kazimierz_Dolny",
+          "text": "Kazimierz Dolny (Polish pronunciation: [kaˈʑimjɛʐ ˈdɔlnɨ]) is a small historic town in eastern Poland, on the right (eastern) bank of the Vistula river, 50 km (31 mi) from Lublin, in Puławy County, Lublin Voivodeship. Historically it belongs to Lesser Poland, and in the past it was one of the most important cities of the province.\nNow a tourist destination, the town enjoyed its greatest prosperity in the 16th and the first half of the 17th century, due to the trade in grain conducted along the Vistula. It became an economic backwater after that trade declined, and this freeze in economic development enabled the town to preserve its Renaissance urban plan and appearance. Since the 19th century it has become a holiday destination, attracting artists and summer residents.\nKazimierz Dolny is an art center in Poland. Many painters retreat to this small town to paint and sell their work. Galleries can be found in almost every street, offering for sale sculptures, stained-glass, folk art, and fine art.\nThe town is one of Poland's official national Historic Monuments (Pomnik historii), as designated September 16, 1994 and tracked by the National Heritage Board of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "kazimierz dolny",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kazimierz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dolny",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8497,
+    "attempt": 8439,
+    "place_id": "gn-2165596",
+    "input": {
+      "place": {
+        "place_id": "gn-2165596",
+        "name": "Gilgandra",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.71173,
+        "lon": 148.66252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gilgandra, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Gilgandra,_New_South_Wales",
+          "text": "Gilgandra is a country town in the Orana region of New South Wales, Australia, and services the surrounding agricultural area where wheat is grown extensively together with other cereal crops, and sheep and beef cattle are raised. The town is the administrative seat of the Gilgandra Shire.\nSited at the junction of the Newell, Oxley and Castlereagh highways, Gilgandra is located in a wide bend of the Castlereagh River, downstream from its source near Coonabarabran, directly downstream from Mendooran, and upstream from Gulargambone and Coonamble. It is 432 km north-west of Sydney (about six hours' driving time), and is located approximately half way along the inland route from Melbourne to Brisbane. It is known as the town of windmills and the home of the \"Coo-ees\", and is a gateway to the Warrumbungles National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "gilgandra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8498,
+    "attempt": 8440,
+    "place_id": "gn-2521938",
+    "input": {
+      "place": {
+        "place_id": "gn-2521938",
+        "name": "Almadén",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 38.77541,
+        "lon": -4.83156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Almadén",
+          "url": "https://en.wikipedia.org/wiki/Almadén",
+          "text": "Almadén (Spanish pronunciation: [almaˈðen]) is a town and municipality in the Spanish province of Ciudad Real, within the autonomous community of Castile-La Mancha. The town is located at 4° 49' W and 38° 46' N and is 589 meters (1,932 ft) above sea level. Almadén is in the Sierra Morena. The name Almadén is from the Arabic: المعدن, romanized: al-maʻdin, lit. 'the metal', 'the mineral' or 'lode', and so by extension, the place where these are excavated, 'the mine'. Originally a Roman, and later, a Moorish mining settlement when taken from the Visigoths, the town was captured by the Christians in 1151 under king Alfonso VII and given to the Knights of the Order of Calatrava.\nThe mercury deposits of Almadén account for the largest quantity of liquid mercury metal produced in the world. Approximately  250,000 metric tons (280,000 short tons) of mercury have been produced there in the past 2000 years. Due to the toxicity of mercury and its byproducts to humans, the mine has variously employed penal labour, slave labour, and prisoners of war over its long history. Almadén mine stopped working in 2002, due to the European mercury mining prohibition. In 2006, the mine opened to the public who can visit the first level, 50 metres (160 ft) underground.\nIn 2012, Almadén and Idrija (Slovenia) were declared World Heritage Sites, with the nomination \"Heritage of Mercury\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "almaden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

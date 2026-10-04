@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 8619,
+    "attempt": 8561,
+    "place_id": "gn-2754719",
+    "input": {
+      "place": {
+        "place_id": "gn-2754719",
+        "name": "Hedel",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.74802,
+        "lon": 5.26134
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hedel",
+          "url": "https://en.wikipedia.org/wiki/Hedel",
+          "text": "Hedel (Dutch pronunciation: [ˈɦeːdəl]) is a town in the Dutch province of Gelderland. It is a part of the municipality of Maasdriel, and lies about 7 km northwest of 's-Hertogenbosch.\nHedel was a separate municipality until 1999, when it was merged with Maasdriel.\nIn World War II, there were a lot of fights in Hedel, especially during the month April 1945 when the armies of the Princess Irene Brigade came to  liberate the town. Hedel has a very strategic location, it lies on the border of Gelderland and North Brabant and on the Maas. Almost the whole town of Hedel was destroyed during World War II.\nA monument to 12 members of the Princess Irene Brigade killed between April 23rd and April 26th, 1945 was erected in Hedel.\nHedel has its own harbour named 't Stik. There is also an excavation of the castle of Hedel. The excavations lie in the Historic Museum in Hedel. A clock Museum and a mini-zoo with snowy owls, goats, pheasants, parrots, chickens, ducks and other animals can also be found in Hedel.\nHedel has got both a Reformed and a Catholic church. The reformed church was built in 1640, but it was destroyed during World War II and rebuilt in the original style several years later.\nOn the first Monday of November after 1 November, there is a horse market. This is the biggest horse market in the Netherlands and one of the biggest horse markets in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "hedel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8620,
+    "attempt": 8562,
+    "place_id": "gn-3126237",
+    "input": {
+      "place": {
+        "place_id": "gn-3126237",
+        "name": "Carracedelo",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 42.55602,
+        "lon": -6.73317
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carracedelo",
+          "url": "https://en.wikipedia.org/wiki/Carracedelo",
+          "text": "Carracedelo (Spanish pronunciation: [karaθeˈðelo]) is a village and municipality located in the region of El Bierzo (province of León, Castile and León, Spain). According to the 2010 census (INE), the municipality has a population of 3,658 inhabitants. The partially restored ruins of the Monastery of Saint Mary of Carracedo are nearby.\nThe populated places of this municipality include Carracedo proper, Carracedo del Monasterio, Posada del Bierzo, Villadepalos, Villamartín de la Abadía and Villaverde de la Abadía.\nIt is one of the towns of El Bierzo where the population also speaks Leonese, but this language is extinguishing because the Junta of Castilla y León does not preserve Leonese culture in this zone. For these reasons Leonese is not taught in schools; it is an optional subject in the syllabus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "carracedelo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8621,
+    "attempt": 8563,
+    "place_id": "gn-3362755",
+    "input": {
+      "place": {
+        "place_id": "gn-3362755",
+        "name": "Pofadder",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -29.1283,
+        "lon": 19.39492
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pofadder, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Pofadder,_South_Africa",
+          "text": "Pofadder (Afrikaans for \"puff adder\") is a small town in the Northern Cape province of South Africa. In spite of its small size, it is an important local centre in the region known in South Africa as Bushmanland. The surrounding districts are arid, sparsely populated, rugged and picturesque. There is little in the way of cropping and local farmers run sheep or goats for a living. As a tourist destination, it is not sufficiently spectacular to rival the spring flowers of the coastal regions of Namaqualand, but it has its attractions for biologists and conservationists and those with an interest in its remarkable diversity of often-tiny xerophytes and animal life. In recent years, the town economy has been boosted by the construction and operation of solar power stations.\n\nSome claim that Pofadder was named after Klaas Pofadder, a local Koranna (Koi-Koi) tribal leader. Others maintain that this is an exercise in latter-day political correctness and that no record exists to prove that the village was not named after the venomous snake that is common enough in the district.\nThe settlement is situated on the N14 national road from Upington to Springbok and lies 50 km from the Onseepkans border post on the Namibian border, along the R358. Pofadder is near to the Ritchie Falls, the second highest waterfall on the Orange River, after the Augrabies Falls. Ritchie Falls are in a pristine wilderness area, only accessible after a two-day hike or by rafting down from Onseepkans. Guided hikes and rafting trips are available.\nLike Kalamazoo and Timbuktu, the name \"Pofadder\" is used to represent somewhere very remote, far away and out of the mainstream of the world. This usage is most common in South Africa, while Timbuktu is used in most of the Commonwealth for this purpose and Kalamazoo in the United States. Putsonderwater is used in a similar way."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "pofadder",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8622,
+    "attempt": 8564,
+    "place_id": "gn-3374346",
+    "input": {
+      "place": {
+        "place_id": "gn-3374346",
+        "name": "Ponta do Sol",
+        "country": "Cape Verde",
+        "subdivision": "Ribeira Grande",
+        "lat": 17.20171,
+        "lon": -25.09217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponta do Sol, Cape Verde",
+          "url": "https://en.wikipedia.org/wiki/Ponta_do_Sol,_Cape_Verde",
+          "text": "Ponta do Sol (formerly: Vila Dona Maria Pia) is the northernmost city on the island of Santo Antão and Cape Verde. It is situated on the coast, 4 km northwest of Ribeira Grande and 20 km north of the island capital Porto Novo. It is the seat of Ribeira Grande municipality.\n\nPonta do Sol is divided into the neighbourhoods Casinhas, Cavouquinho das Tintas, Chã de Cemitério, Chã de Ponta do Sol, Lombinho, Lombo da Cruz, Lombo de Paço, Os Órgãos, Ponta do Sol and Ribeira da Ponta do Sol.\nPonta do Sol takes its name from the nearby headland Ponta do Sol, the northernmost point of Cape Verde. The former name Vila Dona María Pia refers to Maria Pia of Savoy, queen of Portugal between 1862 and 1889. Urban development of Ponta do Sol started in the 1880s; before, it was  a small fishing village. The church Nossa Senhora do Livramento was built in 1894. There is a Jewish cemetery in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "ponta do sol",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ponta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sol",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8623,
+    "attempt": 8565,
+    "place_id": "gn-4687151",
+    "input": {
+      "place": {
+        "place_id": "gn-4687151",
+        "name": "Dublin",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.08514,
+        "lon": -98.34199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dublin, Texas",
+          "url": "https://en.wikipedia.org/wiki/Dublin,_Texas",
+          "text": "Dublin is a city located in southwestern Erath County in Central Texas, United States. Its population was 3,359 at the  2020 census, down from 3,654 at the 2010 census.\nThe town is the former home of the world's oldest Dr Pepper bottling plant (see Dublin Dr Pepper). The plant was for many years the only U.S. source for Dr Pepper made with real cane sugar (from Texas-based Imperial Sugar), instead of less expensive high-fructose corn syrup. Contractual requirements limited the plant's distribution range to a 40-mile (64 km) radius of Dublin, an area encompassing Stephenville, Tolar, Comanche, and Hico.\nDublin was the southern terminus of the Wichita Falls and Southern Railroad, one of the properties of Frank Kell, Joseph A. Kemp, and later Orville Bullington of Wichita Falls. The line was abandoned in 1954.\nDublin was the boyhood home of legendary golfer Ben Hogan, who was born on August 13, 1912, at the hospital in nearby Stephenville. Hogan lived in Dublin until 1921, when he and his family relocated to Fort Worth.\nAmerican jurist and 1924 Texas Republican gubernatorial nominee George C. Butte married and resided in Dublin for several years and is interred there at Live Oak Cemetery.\nDublin is the birthplace of Lt. Col. George Andrew Davis, Jr., who was awarded the Medal of Honor for conspicuous gallantry and intrepidity at the risk of his life above and beyond the call of duty on 10 February 1952, near the Sinuiju-Yalu River area in North Korea. Davis ranks 16th on the list of most highly decorated U.S. military personnel of all time who received the Medal of Honor.\nThe city is named after Dublin, Ireland. In 2005, Governor Rick Perry signed a bill that designated Dublin as the official Irish Capital of Texas. Thus, Dublin is known to be home to many people of Irish American descent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "dublin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8624,
+    "attempt": 8566,
+    "place_id": "gn-5321088",
+    "input": {
+      "place": {
+        "place_id": "gn-5321088",
+        "name": "Willcox",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 32.25285,
+        "lon": -109.83201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willcox, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Willcox,_Arizona",
+          "text": "Willcox is a city in Cochise County, Arizona, United States. As of the 2020 census, Willcox had a population of 3,213. The city is located in the Sulphur Springs Valley, a flat and sparsely populated drainage basin dotted with seasonal lakes. The city is surrounded by Arizona's most prominent mountain ranges, including the Pinaleño Mountains and the Chiricahua Mountains.\nSix of Arizona's ten largest mountains are located within a 70-mile radius including Mount Graham (31 miles north), which is Arizona's most prominent mountain, Chiricahua Peak (42 miles southeast), Mount Lemmon (57 miles west), Miller Peak (65 miles southwest), Mica Mountain (41 miles west), and Mount Wrightson (70 miles southwest). Scores of birds, including sandhill cranes, winter in the area, with some migrating from as far away as Siberia. A very large dry lakebed, the Willcox Playa, is located five miles south of the city. It is the remnant of the Ice Age-era Lake Cochise.\nWillcox's high desert climate gives it large diurnal temperature variation, making it ideal for wine cultivation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "willcox",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8625,
+    "attempt": 8567,
+    "place_id": "gn-5889167",
+    "input": {
+      "place": {
+        "place_id": "gn-5889167",
+        "name": "Baden",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.4001,
+        "lon": -80.6497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baden, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Baden,_Ontario",
+          "text": "Baden  ( BAY-den) is a community and unincorporated place in Township of Wilmot, Regional Municipality of Waterloo in Southwestern Ontario, Canada. It was named after Baden-Baden, Germany; the approximate population as of 2015, as per township statistics, is 4,940.\nThe area is the site of Baden Tower, a television, radio, and communications tower located on top of one of the Baden Hills, which is the transmitter for CKCO-DT, the CTV affiliate for Kitchener, as well as CFCA-FM and CHYM-FM, which have studios in Kitchener.\nMuch of the area consists of farmlands and pine forests are in the area. The local high school, Waterloo-Oxford District Secondary School, is located just outside the town and the statue park Prime Ministers Path is located on the grounds adjacent to Castle Kilbride."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "baden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8626,
+    "attempt": 8568,
+    "place_id": "gn-5964230",
+    "input": {
+      "place": {
+        "place_id": "gn-5964230",
+        "name": "Grand Bank",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 47.09995,
+        "lon": -55.76504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grand Bank",
+          "url": "https://en.wikipedia.org/wiki/Grand_Bank",
+          "text": "Grand Bank is a small rural town in the Canadian province of Newfoundland and Labrador with a population of 2,580. It is located on the southern tip or \"toe\" of the Burin Peninsula (also known as \"the boot\"), 360 km from the provincial capital of St. John's.\nGrand Bank was inhabited by French fishermen as early as 1640 and began as a fishing settlement with about seven families. It was given the name \"Grand Banc\" by its original French inhabitants because of the high bank that extends from Admiral's Cove to the water's edge on the west side of the harbour.\nThe Town of Grand Bank can attribute much of its past and present growth and prosperity to its proximity to the fishing grounds and its ice-free harbour. Original settlers thrived on trade with the French and a vigorous inshore fishing industry. Grand Bank became the nucleus of the bank fishing industry for Newfoundland and a service centre for Fortune Bay. With the decline of the salt fish industry, the town's emphasis quickly shifted to fresh fish production. Enterprising businessmen and town planners prepared the way for a fresh fish plant (present day Grand Bank Seafoods Inc.) and a fleet of trawlers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "grand bank",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bank",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8627,
+    "attempt": 8569,
+    "place_id": "gn-6535779",
+    "input": {
+      "place": {
+        "place_id": "gn-6535779",
+        "name": "Osio Sopra",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.62908,
+        "lon": 9.58465
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osio Sopra",
+          "url": "https://en.wikipedia.org/wiki/Osio_Sopra",
+          "text": "Osio Sopra (Bergamasque: Öss de Sura) is a comune (municipality) of 5,306 inhabitants in the province of Bergamo, Lombardy, Italy. The history of Osio Sopra has significant links to Osio Sotto's.\nEarly settlements can be traced to Ancient Roman times, when an important communication road linked Milan to Bergamo passing through the bridge 'Ponte Corvo' in the Marne locality. In Bergamo, the last section of this road was in-fact named 'via Osio', highlighting the importance of the location.\nDuring those times, Osio underwent an important process of centuriation, with which a first development of the 'pagus' took place; the name 'Osio' originates from the Patrician 'gens Otia' (or gens Oxia).\nAmong Osio Sopra's landmarks, the medieval Catholic church of San Zenone features good quality paintings of Lombard artists. Legend has it that this sacred church was built with materials from an ancient castle.\nThe Santuario della Madonna della Scopa is a chapel located on the border Osio Sopra shares with Osio Sotto. Built in the fifteenth century, it was initially much smaller than it is today, with the most recent extension added at the beginning of the twentieth century. Religious frescoes cover its inner walls. According to the legend, the name of the chapel ('Madonna della scopa' is Italian for 'Madonna of the broom') is due to a miraculous apparition in which the Virgin Mary intervened to clean up this chapel at a time in which it had been abandoned.\nFinally, Palazzo Camozzi-Andreani, also known as Villa Andreani or more colloquially as Palazzo delle Gigine, was built during the eighteenth century as a library.\nOsio Sopra's western border consists of the river Brembo; along its shore, a number of natural reserves such as Bosco Astori are frequented by locals and visitors for recreational purposes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "osio sopra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "osio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sopra",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8628,
+    "attempt": 8570,
+    "place_id": "gn-662533",
+    "input": {
+      "place": {
+        "place_id": "gn-662533",
+        "name": "Voila",
+        "country": "Romania",
+        "subdivision": "Brașov County",
+        "lat": 45.81839,
+        "lon": 24.84215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Voila, Brașov",
+          "url": "https://en.wikipedia.org/wiki/Voila,_Brașov",
+          "text": "Voila (German: Wolldorf; Hungarian: Voila) is a commune in Brașov County, Transylvania, Romania. It is composed of six villages: Cincșor (Kleinschenk; Kissink), Dridif (Dridif), Ludișor (Ludisor), Sâmbăta de Jos (Untermühlendorf; Alsószombatfalva), Voila, and Voivodeni (Nagyvajdafalva). It included Sâmbăta de Sus and Stațiunea Climaterică Sâmbăta villages until 2003, when these were split off to form Sâmbăta de Sus commune.\nThe Voila commune is located in the western part of the county, in the historic Țara Făgărașului region, on the left bank of the river Olt. The rivers Breaza and Sâmbăta discharge into the Olt at Voila. The Voila Hydropower Plant on the Olt River has a reservoir with a capacity of 10.3 million cubic metres (13.5×10^6 cu yd) of water, which covers an area of 281.5 hectares (696 acres).\nThe commune is traversed by the DN1 road; it is 11 km (6.8 mi) west of Făgăraș and 67 km (42 mi) east of Sibiu. Of note is the Cincșor fortified church, which dates from the 13th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "voila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8629,
+    "attempt": 8571,
+    "place_id": "gn-680786",
+    "input": {
+      "place": {
+        "place_id": "gn-680786",
+        "name": "Cornereva",
+        "country": "Romania",
+        "subdivision": "Caraș-Severin County",
+        "lat": 45.06667,
+        "lon": 22.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cornereva",
+          "url": "https://en.wikipedia.org/wiki/Cornereva",
+          "text": "Cornereva (Hungarian: Somosréve) is a commune in Caraș-Severin County, western Romania with a population of 2,707 inhabitants as of 2021. It is composed of forty villages: Arsuri, Bogâltin (Bogoltény), Bojia, Borugi, Camena (Kamenavölgy), Cireșel, Costiș, Cozia, Cracu Mare, Cracu Teiului, Cornereva, Dobraia, Dolina, Gruni (Grúny), Hora Mare, Hora Mică, Ineleț (Inelec), Izvor, Lunca Florii, Lunca Zaicii, Mesteacăn, Negiudin, Obița, Pogara, Pogara de Sus, Poiana Lungă, Prisăcina, Prislop, Ruștin, Scărișoara, Strugasca, Studena, Sub Crâng, Sub Plai, Topla (Topla), Țațu, Zănogi, Zbegu, Zmogotin, and Zoina.\n\nAccording to the 2002 census, the commune had a population of 3,403; of those, 99.97% of the population were ethnic Romanians, and 99.9% were Romanian Orthodox.  At the 2021 census, the population had decreased to 2,707, of which 97.19% were Romanians and 97.04% Romanian Orthodox."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "cornereva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8630,
+    "attempt": 8572,
+    "place_id": "gn-729530",
+    "input": {
+      "place": {
+        "place_id": "gn-729530",
+        "name": "Loznitsa",
+        "country": "Bulgaria",
+        "subdivision": "Razgrad",
+        "lat": 43.36667,
+        "lon": 26.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loznitsa",
+          "url": "https://en.wikipedia.org/wiki/Loznitsa",
+          "text": "Loznitsa (Bulgarian: Лозница, pronounced [ˈɫɔznit͡sɐ]; also transliterated Loznica or Loznitza; Turkish: Kubadın) is a small town in northeastern Bulgaria, part of Razgrad Province, located in the geographic region of Ludogorie. It is the administrative centre of the homonymous Loznitsa Municipality, which lies in the southernmost part of the Province. As of December 2009, the town had a population of 2,409.\nIn Antiquity, Thracians Romans and Byzantines inhabited the area; there are also traces of a Bulgarian settlement dating to the 7th-11th century, the time of the First Bulgarian Empire. The old Ottoman Turkish name of Loznitsa was Kubadın and it was first mentioned in a register in 1573. Around the time of the Liberation of Bulgaria, present Loznitsa was a village of 66 households according to Russian data. In the early 20th century, Bulgarians from the Balkan Mountains settled in the village. A school was built in 1908, and the local community centre (chitalishte) Probuda was founded in 1912.\nIn 1934, the old Turkish name was changed to the Bulgarian Loznitsa, honouring the region's viticultural traditions (\"loza\" means \"vine\" in Bulgarian). On 4 September 1974, the village was proclaimed a town. Loznitsa has a mixed population of Bulgarians, Turks,  and Romani. The town is twinned with the Küçükçekmece suburb of Istanbul, Turkey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "loznitsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8631,
+    "attempt": 8573,
+    "place_id": "gn-8480034",
+    "input": {
+      "place": {
+        "place_id": "gn-8480034",
+        "name": "Lake Holiday",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.61292,
+        "lon": -88.67209
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Holiday, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Lake_Holiday,_Illinois",
+          "text": "Lake Holiday is a census-designated place located on Lake Holiday in Northville Township, LaSalle County, Illinois, United States. Its population was 5,687 as of the 2020 census.\nThe homes on the western banks of the lake are served by the Somonauk Fire Department/EMS and the Somonauk School District, while the eastern banks of the lake are covered by Sandwich municipal services (Fire/EMS, CUSD 430). However, due to the community's location south of the LaSalle-DeKalb county line, neither Sandwich Police nor Somonauk Police have any jurisdiction. Instead, the area is patrolled by local security, which has limited authority. For serious matters, the community is covered by the LaSalle County Sheriff's Department, which has a substation in the Northville Township Building, a few miles to the south of Lake Holiday.\nThe Lake Holiday CDP includes the neighborhoods surrounding Lake Holiday as well as neighboring Wildwood, which sits to the east of County Highway 3. Lake Holiday was created in the mid-1960s as a lake resort community, with its property owners association being incorporated on July 2, 1965. Wildwood was created around the same time, as a modular home community just across the highway. Starting in the early 1990s, an annex to Wildwood known as \"Wildwood South\" or \"New Wildwood\" was created, with completion around 2002. Both subdivisions share a gas station and a small retail area, with a restaurant having been built in 2006-2007 farther north, just south of the county line.\nLake Holiday was created by damming up Somonauk Creek in 1965, on its path south toward its confluence with the Fox River just north of Sheridan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "lake holiday",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "holiday",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8632,
+    "attempt": 8574,
+    "place_id": "gn-1728196",
+    "input": {
+      "place": {
+        "place_id": "gn-1728196",
+        "name": "Balibago",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 15.1624,
+        "lon": 120.5954
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balibago",
+          "url": "https://en.wikipedia.org/wiki/Balibago",
+          "text": "Balibago is one of the barangays of Angeles City, Philippines, famously known as the city's \"entertainment district\" because many of its establishments is tied to a red-light district. It ranks among the wealthiest barangays, due to its historical proximity to the former U.S. Clark Air Base.\nSituated about 80 km (50 mi) north of the nation's capital Manila, Balibago is a commercial and entertainment area containing restaurants, shopping malls, and a casino along MacArthur Highway. \nBeginning at its intersection with MacArthur Highway, Fields Avenue which contains the area's \"main bar strip\" extends toward Clark Perimeter Road (Friendship Road), where numerous go-go bars and hostess bars are located. Although prostitution is illegal in the Philippines, it is known to occur in the Fields Avenue strip of the barangay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "balibago",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8633,
+    "attempt": 8575,
+    "place_id": "gn-2636031",
+    "input": {
+      "place": {
+        "place_id": "gn-2636031",
+        "name": "Theydon Bois",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.67426,
+        "lon": 0.09781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Theydon Bois",
+          "url": "https://en.wikipedia.org/wiki/Theydon_Bois",
+          "text": "Theydon Bois ( THAY-dən BOYZ, -⁠ BOYSS) is a village and civil parish in the Epping Forest district of Essex, England. It is 1 mile (1.6 km) south of Epping, 1 mile (1.6 km) north-east of Loughton and 6 miles (9.7 km) south of Harlow. At the 2021 census the parish had a population of 4,186 and the built up area had a population of 3,419.\nTheydon Bois is inside the M25 London orbital motorway, near its junction with the M11 motorway. It is served by Theydon Bois tube station on the Central line of the London Underground, and has one primary school, Theydon Bois Primary School. It lies on the edge of Epping Forest, and is well known in the area for having no street lights."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "theydon bois",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "theydon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bois",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8634,
+    "attempt": 8576,
+    "place_id": "gn-2645483",
+    "input": {
+      "place": {
+        "place_id": "gn-2645483",
+        "name": "Kingsbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.56106,
+        "lon": -1.67936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingsbury, Warwickshire",
+          "url": "https://en.wikipedia.org/wiki/Kingsbury,_Warwickshire",
+          "text": "Kingsbury is a large village and civil parish in the North Warwickshire district of the county of Warwickshire, in the West Midlands region of England. The civil parish population at the 2021 census was 7,562.\nThe village is situated close to the Staffordshire border between Tamworth and Birmingham, which is 5.5 miles (9 km) to the north, and overlooks the River Tame.  The A51 to Chester starts from here; as does the A4097, which runs through Curdworth and Minworth before joining the A38.  This continues to Junction 6 of the M6 (Spaghetti Junction) giving access to the motorway network of the Midlands and the City of Birmingham. Kingsbury is notable for the Kingsbury Water Park, a shooting range and a large oil storage depot to the north-east. The church of Saint Peter and Saint Paul dates from the 12th century and is a grade II* listed building."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "kingsbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8635,
+    "attempt": 8577,
+    "place_id": "gn-2649775",
+    "input": {
+      "place": {
+        "place_id": "gn-2649775",
+        "name": "Eynsford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.36765,
+        "lon": 0.21132
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eynsford",
+          "url": "https://en.wikipedia.org/wiki/Eynsford",
+          "text": "Eynsford ( or ) is a village and civil parish in the Sevenoaks District of Kent, England. It is located 3.3 miles (5 km) south east of Swanley, and 7 miles (11 km) south of Dartford, which is the village's postal town. Eynsford forms part of the London commuter belt.\nThe village including its farmland and woods occupies the northern half of the triangle formed by three motorways in west Kent barring its very northernmost part which is Farningham. This area is undulating and has a large minority of woodland. In the south of the parish is Lullingstone, much of which was owned for many centuries by the large, late medieval Lullingstone Castle, whereas other parts of the village were owned by Eynsford Castle, which is older. Well before the founding of the Kingdom of England, Lullingstone Roman villa was founded in this part of the parish, which is open to the public today. The Darent Valley Path takes in a cross-section of the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "eynsford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8636,
+    "attempt": 8578,
+    "place_id": "gn-2653818",
+    "input": {
+      "place": {
+        "place_id": "gn-2653818",
+        "name": "Cardigan",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 52.08373,
+        "lon": -4.66228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cardigan, Ceredigion",
+          "url": "https://en.wikipedia.org/wiki/Cardigan,_Ceredigion",
+          "text": "Cardigan (Welsh: Aberteifi, pronounced [abɛrˈtei̯vi] ) is a town and community in the county of Ceredigion, Wales. It is positioned on the tidal part of the River Teifi on the border with Pembrokeshire, and had a population of 4,216 at the 2021 census.\nA castle was established at what would become Cardigan by the Anglo-Norman Gilbert Fitz Richard in 1110; a castle built following an earlier incursion in 1093 was short-lived. Cardigan was recaptured by the Welsh in 1164 or 1165, and the castle was rebuilt in stone by Rhys ap Gruffudd c. 1171–76. Rhys held a gathering of bards at Cardigan in 1176 that was later recognised as the first eisteddfod. The town came under English rule for the final time in the early thirteenth century. A weekly market was established in 1277, and a borough charter was granted in 1284.\nCardigan lent its name to the historic county of Cardiganshire, which was established in 1283. It became the administrative centre of the county and hosted the courts of assize from 1536. Cardigan Castle was used as a courtroom and prison until it was replaced by a new Shire Hall in 1764, and county gaol in 1793, the latter to designs by John Nash. The town, which had always engaged in maritime trade, was successful as a port from the seventeenth to the early twentieth centuries; at its height the Port of Cardigan had jurisdiction over Newport, Fishguard, Aberaeron, Aberporth and Newquay and had 291 registered vessels. The town is no longer the county's administrative centre, Ceredigion County Council being based in Aberaeron, but the council maintains offices in Cardigan.\nThe town is bypassed to the east by the A487 road, which links Haverfordwest with Bangor. It has a junction with the A478 road to Tenby immediately south of the suburb of Bridgend, on the south side of the Teifi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "cardigan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8637,
+    "attempt": 8579,
+    "place_id": "gn-2666264",
+    "input": {
+      "place": {
+        "place_id": "gn-2666264",
+        "name": "Hjärup",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 55.6688,
+        "lon": 13.13931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hjärup",
+          "url": "https://en.wikipedia.org/wiki/Hjärup",
+          "text": "Hjärup (Swedish pronunciation: [ˈjɛ̌ːrɵp]) is, with its more than 4,250 inhabitants, the second largest locality in Staffanstorp Municipality, Scania, Sweden.\nHjärup has a station on the Pågatågen system. The locality has a suburban character with semi-detached houses initially built in the 1960s–1970s on Lundaslätten, the fertile plain south of Lund, initially on land sold off from the farm Hjerup. Hjärup was until the 1990s confined in between the railway and the main road Malmö–Lund. On the other side of the railway, adjacent to Hjärup's station, a district called Jakriborg is now growing.\nHjärup consists of about 1,600 households (2005) with public services chiefly limited to preschools, schools, health care center and old people's home, as virtually all inhabitants commute to work in the Greater Malmö metropolitan area. 400 of the dwellings are in the housing estate Jakriborg.\nThe distance to Lund is 5 km by bike, bus or car — or 3 minutes by train.\nThe distance to Malmö is about 15 km — or 10 minutes by train."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "hjarup",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8638,
+    "attempt": 8580,
+    "place_id": "gn-2673076",
+    "input": {
+      "place": {
+        "place_id": "gn-2673076",
+        "name": "Stora Höga",
+        "country": "Sweden",
+        "subdivision": "Västra Götaland",
+        "lat": 58.01667,
+        "lon": 11.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stora Höga",
+          "url": "https://en.wikipedia.org/wiki/Stora_Höga",
+          "text": "Stora Höga is a locality situated in Stenungsund Municipality, Västra Götaland County, Sweden with 2,751 inhabitants in 2010.\nStora Höga is part of the Jörlanda parish in Stenungsund, and is situated between a railroad station originally known as Vallen. The Vallen railroad station later changed its name to Stora Höga after a nearby farm by the same name. Some of the other original farms in the old Stora Höga are Lilla Höga, Anrås, and Bråland.\nOn the ocean side is an old steam boat pier known as Getskär, nowadays used as a dock for small boats and also with a small beach that is popular during the summer months.\nDuring the mid- and late 2000s, Stora Höga has expanded rapidly leading to an influx of new residents. The rapid expansion has led to some social conflicts in recent time, with many personal bankruptcies and foreclosures on homes that the owners couldn't really afford.\nTwo simultaneous motorcycle gang-related murders in 2009, where the bodies were found in Stora Höga, received national media attention."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "stora hoga",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stora",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hoga",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

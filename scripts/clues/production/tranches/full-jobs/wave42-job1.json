@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 8258,
+    "attempt": 8201,
+    "place_id": "gn-3114942",
+    "input": {
+      "place": {
+        "place_id": "gn-3114942",
+        "name": "Orio",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.2787,
+        "lon": -2.12537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orio, Spain",
+          "url": "https://en.wikipedia.org/wiki/Orio,_Spain",
+          "text": "Orio is a fishing town located in the province of Gipuzkoa in the Basque Autonomous Community, northern Spain, with the town nucleus lying on the river Oria, roughly one mile away from its mouth by the Bay of Biscay. Orio had a population of 5,901 inhabitants as of 2016.\nTraditionally a town attached to the sea and the fishing industry, this sector is losing ground to the more profitable and less demanding tourism, rapidly developing after marshes between the town and the beach were drained with a view to building up new tourist oriented housing. The most widely known and conspicuous sport activity in Orio is the rowing regatta typical of the Basque and Cantabric coastal area, featuring a team represented by the yellow colour.\nThe town is served by Euskotren Trena's coastal line, the N-634 road and the A-8 motorway (since 2010).\nA festival representing the last catch of North Atlantic right whales within Basque whaling in 1901, have been held on every 5 years. This catch also reflected in a folk poem popularized by singer-songwriter Benito Lertxundi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "orio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8259,
+    "attempt": 8202,
+    "place_id": "gn-3834403",
+    "input": {
+      "place": {
+        "place_id": "gn-3834403",
+        "name": "Tilcara",
+        "country": "Argentina",
+        "subdivision": "Jujuy",
+        "lat": -23.57817,
+        "lon": -65.39516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tilcara",
+          "url": "https://en.wikipedia.org/wiki/Tilcara",
+          "text": "San Francisco de Tilcara (usually referred to as Tilcara) is a city in the province of Jujuy, Argentina, and the head town of the Tilcara Department. It had 6,249 inhabitants at the 2010 census [INDEC]. Traces of human habitation in the area date back more than 10,000 years, making it one of the oldest continuously inhabited settlements of Argentina.\nTilcara is located 84 km from the provincial capital, San Salvador de Jujuy, beside National Route 9, at about 2,500 m above sea level, well within the first heights of the Andes.\nThe area features dramatic mountainous landscapes and rich aboriginal traditions, which make it a major tourist attraction in northwestern Argentina, with several nearby hiking tracks also attracting visitors.\nPossibly the biggest attraction in Tilcara is the nearby Pucará de Tilcara, the partially reconstructed ruins of a pre-Inca pukara, Quechua for \"fortress\", located a few kilometers away from the city of Tilcara on a hill with an impressive view of the valley of the Río Grande.\nThe city is known in Argentina for hosting the Argentina national football team in a pre-World Cup camp in January 1986. Tilcara was chosen in order to train in altitude, in conditions similar to the ones Argentina would have face in Mexico that summer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "tilcara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8260,
+    "attempt": 8203,
+    "place_id": "gn-668320",
+    "input": {
+      "place": {
+        "place_id": "gn-668320",
+        "name": "Săcel",
+        "country": "Romania",
+        "subdivision": "Maramureş",
+        "lat": 47.63333,
+        "lon": 24.43333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Săcel, Maramureș",
+          "url": "https://en.wikipedia.org/wiki/Săcel,_Maramureș",
+          "text": "Săcel (Hungarian: Izaszacsal (after 1901), Szacsal (until 1901); Yiddish: סיטשל, romanized: Sicsel or Sitshl) is a commune in Maramureș County, Maramureș, Romania. Composed of a single village, Săcel, it is the last locality up the Iza River Valley. From here one can get to the Vișeu Valley through Dealul Moiseiului Pass (towards the northeast) and to Transylvania (specifically Năsăud, towards the south) through Dealul Ștefăniței Pass, which separates the Țibleș and Rodna mountains.\nThe commune is located in the southeastern part of Maramureș County, on the border with Bistrița-Năsăud County and the Romuli commune. It also borders the Moisei commune, the town of Vișeu de Sus and the town of Săliștea de Sus. It lies 60 km (37 mi) southeast of Sighetu Marmației and 100 km (62 mi) east of the county seat, Baia Mare, and is crossed by national road DN17C, which starts in Bistrița, 72 km (45 mi) to the south and ends in DN18 near Moisei, 10 km (6.2 mi) to the northeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "sacel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8261,
+    "attempt": 8204,
+    "place_id": "gn-11979899",
+    "input": {
+      "place": {
+        "place_id": "gn-11979899",
+        "name": "Inner Harbor",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.28356,
+        "lon": -76.6063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inner Harbor",
+          "url": "https://en.wikipedia.org/wiki/Inner_Harbor",
+          "text": "The Inner Harbor is a historic seaport, tourist attraction, and landmark in Baltimore, Maryland. It was described by the Urban Land Institute in 2009 as \"the model for post-industrial waterfront redevelopment around the world\". The Inner Harbor is located at the mouth of Jones Falls, creating the wide and short northwest branch of the Patapsco River, whose tidal waters flow into the Chesapeake Bay.  The district includes any water west of a line drawn between the foot of President Street and the American Visionary Art Museum.\nThe name \"Inner Harbor\" is used not just for the water but for the surrounding area of the city, with approximate street boundaries of President Street to the east, Lombard Street to the north, Greene Street to the west, and Key Highway on the south. The harbor is within walking distance of Oriole Park at Camden Yards and M&T Bank Stadium – as well as the city's prominent Federal Hill Park and the adjacent pocket park, Robert Baker Park. A water taxi connects passengers to Fells Point, Canton, and Fort McHenry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "inner harbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "inner",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8262,
+    "attempt": 8205,
+    "place_id": "gn-3091861",
+    "input": {
+      "place": {
+        "place_id": "gn-3091861",
+        "name": "Mieszkowice",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 52.7873,
+        "lon": 14.49346
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mieszkowice",
+          "url": "https://en.wikipedia.org/wiki/Mieszkowice",
+          "text": "Mieszkowice [mʲɛʂkɔˈvʲit͡sɛ] (German: Bärwalde in der Neumark) is a town in Gryfino County, West Pomeranian Voivodeship in western Poland, about 15 km (9.3 mi) east of the Oder river and the border with Germany. It is the administrative seat of the urban-rural gmina (municipality) of Mieszkowice.\nWith origins as a medieval settlement within the borders of the Kingdom of Poland, it developed into a town in the late 13th century during the Ostsiedlung, after the annexation of the area by Brandenburg, the town was the site of death of the last Ascanian margrave in 1319, a center of the Waldensians movement in the 14th century, and the site of the conclusion of a Franco-Swedish alliance during the Thirty Years' War, which else virtually depopulated the town. After the war, the town slowly recovered, retaining a rural character. In the late 19th century, it was connected to the railroad. During World War II the town largely escaped destruction, and in 1945 became again part of Poland. It was renamed Barwice, then Mieszkowice after Mieszko I of Poland, the first historic ruler of Poland, who first included the area within the emerging Polish state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "mieszkowice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8263,
+    "attempt": 8206,
+    "place_id": "gn-3671901",
+    "input": {
+      "place": {
+        "place_id": "gn-3671901",
+        "name": "Pore",
+        "country": "Colombia",
+        "subdivision": "Casanare Department",
+        "lat": 5.72792,
+        "lon": -71.99266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pore, Casanare",
+          "url": "https://en.wikipedia.org/wiki/Pore,_Casanare",
+          "text": "Pore is a town and municipality in the Department of Casanare, Colombia. \nPore, which played a vital role during the independence movement, was the 18th town to be declared a Pueblo Patrimonio de Colombia (Heritage Town of Colombia) on March 1, 2021. It is the first municipality east of the Andes to be inducted into the Pueblo Patrimonio network.\nHistory\nPore was founded on November 5, 1644, by Adriano Vargas and Francisco Enciso. In that same century, the Jesuits managed to organize solid farms that, focused on cattle production, offered the region great economic development, a situation that, together with the commercial relations that it maintained with Venezuela and Tunja, in addition to the particular conditions of the national independence, led to its being assigned the title of capital of the province of Nueva Granada in 1818.\nPore was also the scene where Bolívar's troops met those of Santander to head towards the Boyacá bridge, where victory was achieved in the decisive battle for freedom.\nThrough Law 936 of December 30, 2004, it was declared a historical and cultural heritage of the nation.3"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "pore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8264,
+    "attempt": 8207,
+    "place_id": "gn-5106129",
+    "input": {
+      "place": {
+        "place_id": "gn-5106129",
+        "name": "Watchung",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.63788,
+        "lon": -74.45099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Watchung, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Watchung,_New_Jersey",
+          "text": "Watchung () is a borough in Somerset County, in the U.S. state of New Jersey, located approximately 29 miles (47 km) west of New York City. As of the 2020 United States census, the borough's population was 6,449, an increase of 648 (+11.2%) from the 2010 census count of 5,801, which in turn reflected an increase of 188 (+3.3%) from the 5,613 counted in the 2000 census. It is located within the Raritan Valley region.\nWatchung was incorporated as a borough by an act of the New Jersey Legislature on May 23, 1926, from portions of North Plainfield Township (now Green Brook Township) based on the results of a referendum held on April 20, 1926. The name \"Watchung\" comes from the Lenni Lenape Native Americans, meaning \"high hills\" or from \"watschu,\" meaning \"hill.\"\nIn 2012, Forbes.com listed Watchung as 384th in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $767,507.\nThe borough is one of the state's highest-income communities. Based on data from the American Community Survey (ACS) for 2014–2018, Watchung residents had a median household income of $153,341, almost double the statewide median of $79,363."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "watchung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8265,
+    "attempt": 8208,
+    "place_id": "gn-3194355",
+    "input": {
+      "place": {
+        "place_id": "gn-3194355",
+        "name": "Novi Vinodolski",
+        "country": "Croatia",
+        "subdivision": "Primorje-Gorski Kotar",
+        "lat": 45.12806,
+        "lon": 14.78889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Novi Vinodolski",
+          "url": "https://en.wikipedia.org/wiki/Novi_Vinodolski",
+          "text": "Novi Vinodolski (pronounced [nɔ̂v̞iː v̞ǐnɔdɔːlskiː]), often also called Novi, and known in Italian as Novi del Vinodol or Novi in Valdivino, is a town on the Adriatic coast of Croatia, located south of Crikvenica, Selce and Bribir, and north of Senj. In the 2021 census, the settlement of Novi Vinodolski had a population of 3,336, while the administrative area of the town had 4,328 inhabitants.\nThe area came under the control of the Frankopan family in the 13th century, a period associated with some of its most important cultural heritage, including the Vinodol Statute of 1288. The hinterland is dominated by the Vinodol Valley, which is used for agriculture and viticulture. \nTourism is the principal sector of the local economy as the town is situated in an area largely unaffected by other types of industry and offers a wide variety of tourist amenities. The Vinodol Valley is also associated with the Vinodol Hydroelectric Power Plant, which uses water collected in reservoirs in Gorski Kotar. Transport connections are centred largely on nearby Rijeka, the principal transport hub of the wider region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "novi vinodolski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "novi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vinodolski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8266,
+    "attempt": 8209,
+    "place_id": "gn-2523808",
+    "input": {
+      "place": {
+        "place_id": "gn-2523808",
+        "name": "Piana degli Albanesi",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.99372,
+        "lon": 13.28464
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piana degli Albanesi",
+          "url": "https://en.wikipedia.org/wiki/Piana_degli_Albanesi",
+          "text": "Piana degli Albanesi (Arbëreshë Albanian: Hora e Arbëreshëvet or Hora, Sheshi) is a town and comune in Sicily, Italy. The town is situated on a mountainous plateau and encircled by high mountains, on the eastern side of the imposing Mount Pizzuta, the city, which is mirrored on a large lake. It is located around 24 kilometres (15 mi) from Palermo and is administered as part of the Metropolitan City of Palermo. In 2018, the comune had a population of 6,128.\nThe town is the most important centre of the Arbëresh community of Sicily, as well as the largest and most populous settlement of Arbëreshe (Italo-Albanian or Albanians of Italy) and it is the episcopal see of the Eparchy of Piana degli Albanesi, constituency of the Italo-Albanian Church whose jurisdiction covers all Albanians of Sicily who practice the Byzantine rite.\nThe community, founded five centuries ago, has maintained many ethnic elements of Albanian culture such as language, religious rituals, traditional costumes, music and folklore. Piana degli Albanesi has contributed greatly to the advancement of Albanian culture and literature with a large group of intellectuals. It is considered the place of origin of Arbëreshe literature, the birthplace of the first work of the Albanian diaspora (1592), and initiator – in the early 16th century – of the first European school in which Albanian was taught. The founders of the Albanian Language and Literature departments of the universities of Naples and Palermo come from the town, and it is the headquarters of the Italo-Albanian Seminary, which was founded in Palermo in 1734 and moved to the town in 1945. Its traditional music and Byzantine songs are part of the Intangible Heritage Registry of Sicily recognized by UNESCO. The municipal government uses bilingual documents and road signs in Albanian and Italian under existing Italian legislation on protecting ethnic and linguistic minorities.\nThe Arbëreshe are the descendants of Albanian families, including nobles and relatives of Skanderbeg, that settled in Southern Italy during the Ottoman Turkish conquest of the Balkans. It had a significant role in the revolutionary uprisings for the unification of Italy, for the Albanian National Awakening in the Albanian movement for secession from Ottoman rule, and for regional movements of the Fasci Siciliani dei Lavoratori; furthermore, it is also infamous for the Portella della Ginestra massacre (1947). Between late 1944 and early 1945, Piana degli Albanesi became an independent people's republic, which lasted fifty days.\nThe main economic activities are the primary sector, agriculture, pastoralism, crafts, and tourism. Its intangible heritage was nominated for the European Heritage Label in 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 427
+    },
+    "banned_terms": [
+      {
+        "term": "piana degli albanesi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "piana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "degli",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "albanesi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8267,
+    "attempt": 8210,
+    "place_id": "gn-3106166",
+    "input": {
+      "place": {
+        "place_id": "gn-3106166",
+        "name": "Venta de Baños",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 41.9211,
+        "lon": -4.49089
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Venta de Baños",
+          "url": "https://en.wikipedia.org/wiki/Venta_de_Baños",
+          "text": "Venta de Baños is a small town and municipality of about 6,400 inhabitants located in the Cerrato district of the province of Palencia, part of the autonomous community of Castile and León in central Spain. It lies some 10 km south of the provincial capital, Palencia. Noteworthy monuments include the medieval Church of San Juan Bautista (St John the Baptist) which is believed to be Visigothic.\nRenfe (Spanish National Railways) and the Cerealto food-sector company are the main employers in the municipality.\nIn popular culture and among Spanish railway travellers, Venta de Baños has traditionally had the same sort of iconic status as other great railway junctions of the world, such as Crewe in the UK. Before the advent of dedicated high-speed rail routes and cheaper air travel, it was the principal transfer point for travellers between the north-east and north-west regions of Spain and the south. Generations of railway passengers have memories of the waiting rooms and cafeteria at Venta de Baños.\nThe town hosts an annual international cross country running competition, the Cross Internacional de Venta de Baños, which has featured some of the world's foremost cross country athletes including Kenenisa Bekele and Palencian-born Marta Domínguez."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "venta de banos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "venta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "banos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8268,
+    "attempt": 8211,
+    "place_id": "gn-3218998",
+    "input": {
+      "place": {
+        "place_id": "gn-3218998",
+        "name": "Fiesso d'Artico",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.42139,
+        "lon": 12.02944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fiesso d'Artico",
+          "url": "https://en.wikipedia.org/wiki/Fiesso_d'Artico",
+          "text": "Fiesso d'Artico (Venetian: Fieso) is a town in the Metropolitan City of Venice, Veneto, Italy. The town is connected by the SR11, and is part of the Riviera del Brenta.\nFiesso d'Artico has almost reached the remarkable age of one thousand years of official life: it is already mentioned, in fact, in documents dated 1025/1028.\nIt is a village of 6.31 square kilometres (2.44 mi2) (it has the smaller territory of the province of Venice) on the left bank of the Brenta river, halfway between Padua and Venice.\nInitially, the town was called just Fiesso, from the Latin Flexum, meaning a curve formed by the river anciently called the \"Medoacus\" (currently known as Brenta).\nThe second name Artico was added later on, in honour of the lawyer Angelo Maria Artico, the creator of the last great deviation of the river which was necessary to safeguard the town from floods as the breaking of the levees by the river Brenta happened very often, before.\nIn the past, this town was important as a religious center: it is recorded that a priest was appointed even by the bishop of Nicosia, in Cyprus, that was a dependence of the Republic of Venice, at the time.\nThe territory was divided in two large parts inclusive of many other lands which nowadays belong to nearby municipalities, such as Dolo, Stra, Vigonza.\nDue to the short distance from Padua, Fiesso d'Artico was involved in many wars as a result of the struggle for the succession of several lordships in that city.\nFinally Fiesso d'Artico was included in the Republic of Venice, in the fifteenth century.\nUnder the rule of the Republic of Venice, beautiful villas were built by the noble and rich Venetian merchants for their summer holidays and many of them still exist.\nFiesso d'Artico was connected with Venice by a boat called the \"Burchiello\" through navigable river ways directly up to the Grand Canal.\nThe citizens of Fiesso took an active role in the struggles for the independence of Veneto from the Austro-Hungarian Empire, as well as those for the liberation of Italy from Nazi-fascism during World War II.\nFiesso d'Artico offers views of the Riviera del Brenta, an area noted for its historic architecture and artistic heritage.\nIt is known internationally for it's shoe-making businesses, particularly for women. There are currently around 200 shoe-manufacturing units, of which around 100 are involved in the proper construction of shoes, while the remainder are engaged in related aspects of the footwear industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 416
+    },
+    "banned_terms": [
+      {
+        "term": "fiesso d artico",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fiesso",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "artico",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8269,
+    "attempt": 8212,
+    "place_id": "gn-505795",
+    "input": {
+      "place": {
+        "place_id": "gn-505795",
+        "name": "Poyakonda",
+        "country": "Russia",
+        "subdivision": "Murmansk",
+        "lat": 66.59428,
+        "lon": 32.82088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poyakonda",
+          "url": "https://en.wikipedia.org/wiki/Poyakonda",
+          "text": "Poyakonda (Russian: Поя́конда) is a rural locality (an inhabited locality) in Kandalakshsky District of Murmansk Oblast, Russia, located beyond the Arctic Circle at a height of 6 meters (20 ft) above sea level.\nOn November 17, 1987, the Presidium of the Supreme Soviet of the Russian SFSR decreed to transfer the settlement of the railway station of Poyakonda from Tedinsky Selsoviet of Loukhsky District of the Karelian ASSR to Murmansk Oblast. By the Decision of the Murmansk Oblast Executive Committee of January 20, 1988, the settlement was merged with the inhabited locality of Poyakonda on the territory in jurisdiction of the town of Kandalaksha. The transfer marked the only time the external borders of Murmansk Oblast changed between 1947 and present.\nAs February 2018, the hamlet had 50 residents, most working at the White Sea Biological Station bioscience research facility run by the Moscow State University on the White Sea coast. In December 2017, Russian Railways removed the railway station from their Murmansk-St. Petersburg service. Services were resumed when it was realised a 14-year-old girl relied on the service to travel to school, which came to international attention."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "poyakonda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8270,
+    "attempt": 8213,
+    "place_id": "gn-8348745",
+    "input": {
+      "place": {
+        "place_id": "gn-8348745",
+        "name": "Saratoga",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.47564,
+        "lon": 151.35207
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saratoga, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Saratoga,_New_South_Wales",
+          "text": "Saratoga is a residential south-eastern village and suburb of the Central Coast region of New South Wales, Australia, located on a peninsula of Brisbane Water and part of the Central Coast Council local government area. The suburb is characterised by its largely settled shoreline, with houses extending up coastal slopes to the base of the tall hills that comprise the core of the peninsula.\nThe village of Saratoga occupies the central portion of its peninsula, bordered towards the point by Davistown and toward the mainland by Yattalunga.\nInitially utilised by indigenous peoples, the area of Saratoga was first used by European settlers for citrus orchards, after John Bourke and his family settled in the area in 1863. Bourke went on to become a pioneer in commercial citrus growing in the area of Brisbane Water. Sporadic building occurred thereafter, including the notable Federation-style house 'Rosemount', built in 1917 and surviving on 0.5 ha of land at the corner of Village Road and Brooklyn Road. In recent decades, housing development has transformed most of Saratoga into an outer residential suburb of Gosford. Bordered on three sides by water, Saratoga has also become a favourite haunt of fishermen and sports people.\nMost residents commute to Gosford, Kincumber or Erina for their daily needs, with few working in the suburb itself. Saratoga has a small shopping centre located on Village Road, which includes a petrol station, a general store, a hairdresser, a newsagency, a liquor outlet, a pharmacy, two takeaway shops, a bakery and a jeweller.\nBrisbania Public School [1] stands at the corner of High Street and Davistown Road.\nSaratoga is the home of the Saratoga Hawks, a Junior Australian Football Club established in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "saratoga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8271,
+    "attempt": 8214,
+    "place_id": "gn-5103335",
+    "input": {
+      "place": {
+        "place_id": "gn-5103335",
+        "name": "Riverton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.0115,
+        "lon": -75.01489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riverton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Riverton,_New_Jersey",
+          "text": "Riverton is a borough located in Burlington County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 2,764, a decrease of 15 (−.5%) from the 2010 census count of 2,779, which in turn reflected an increase of 20 (+0.7%) from the 2,759 counted in the 2000 census. The borough, and all of Burlington County, is a part of the Philadelphia metropolitan area.\nRiverton was incorporated as a borough by an act of the New Jersey Legislature on December 18, 1893, from portions of Cinnaminson Township, based on the results of a referendum held six days earlier. Portions of the borough were taken to form Palmyra Township on April 19, 1894. The borough's name is derived from The Riverton Improvement Company, which was established after a group of ten purchased a 120-acre (49 ha) that would be the site of a planned community with homes erected for many of the founders along the riverfront.\nIt is a dry town, where alcohol cannot be sold legally. The borough's dry status was an early character of the borough, with a clause inserted starting in 1952 by the Riverton Improvement Company into deeds for all properties in the community that prohibited the sale or manufacture of alcoholic beverages.\nThe borough is located on the Delaware River and is pedestrian-friendly, with sidewalks, gas lamps, and Victorian architecture. Riverton is home to the Riverton Yacht Club, one of the oldest active yacht clubs in the country. Many residents' sailboats make their home at this landmark."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "riverton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8272,
+    "attempt": 8215,
+    "place_id": "gn-6534731",
+    "input": {
+      "place": {
+        "place_id": "gn-6534731",
+        "name": "Samolaco",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 46.24249,
+        "lon": 9.39404
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samolaco",
+          "url": "https://en.wikipedia.org/wiki/Samolaco",
+          "text": "Samolaco (Lombard: Samolegh or Samolagh) is a comune (municipality) in the Province of Sondrio in the Italian region Lombardy, located about 90 kilometres (56 mi) north of the regional capital Milan and about 40 kilometres (25 mi) northwest of Sondrio. As of 31 December 2005, it had a population of 2,913 and an area of 44.5 square kilometres (17.2 mi2).\nThe territory of the comune, mostly mountainous, includes of a number of small centres of population, notably Casenda, Era, Giumello, San Pietro and Somaggia. All of these lie in the valley known as the Piano di Chiavenna, just to the north of the small lake Lago di Mezzola, which itself lies to the north of Lake Como. There is no centre called Samolaco, although the community centre, a grocery store, a bank, two bars, a farm supply store and an artisan honey producer lie in the Samolaco area.\nSamolaco borders the following municipalities: Gordona, Livo, Montemezzo, Novate Mezzola, Prata Camportaccio, Sorico, Vercana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "samolaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8273,
+    "attempt": 8216,
+    "place_id": "gn-5100809",
+    "input": {
+      "place": {
+        "place_id": "gn-5100809",
+        "name": "Manasquan",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.12623,
+        "lon": -74.0493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manasquan, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Manasquan,_New_Jersey",
+          "text": "Manasquan (, man-ə-SKWAHN) is a borough in southern Monmouth County, in the U.S. state of New Jersey, on the Jersey Shore. As of the 2020 United States census, the borough's population was 5,938, an increase of 41 (+0.7%) from the 2010 census count of 5,897, which in turn reflected a decline of 413 (−6.5%) from the 6,310 counted in the 2000 census.\nThe borough's name is of Lenape Native American origin, deriving from \"Mënàskunk\" meaning \"Place to Gather Grass or Reeds\". The borough's name has also been described as deriving from \"Man-A-Squaw-Han\" meaning \"stream of the island of squaws\", \"an island with enclosure for squans\", \"island door\" or \"point\" / \"top\". Manasquan, Maniquan, Mannisquan, Manasquam, Squan, and Squan Village are variations on the original pronunciation and spelling.\nManasquan was formed as a borough by an act of the New Jersey Legislature on December 30, 1887, from portions of Wall Township, based on the results of a referendum held the previous day.\nNew Jersey Monthly magazine ranked Manasquan as its 22nd best place to live in its 2008 rankings of the \"Best Places To Live\" in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "manasquan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8274,
+    "attempt": 8217,
+    "place_id": "gn-676478",
+    "input": {
+      "place": {
+        "place_id": "gn-676478",
+        "name": "Gura Teghii",
+        "country": "Romania",
+        "subdivision": "Buzău County",
+        "lat": 45.48333,
+        "lon": 26.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gura Teghii",
+          "url": "https://en.wikipedia.org/wiki/Gura_Teghii",
+          "text": "Gura Teghii is a commune in Buzău County, Muntenia, Romania, located in the north-westernmost part of the county in its mountain region, near the limit of Covasna and Vrancea counties, in the Curvature Carpathians. Gura Teghii made up of seven mountain villages (Furtunești, Gura Teghii, Nemertea, Păltiniș, Secuiu, Vadu Oii, Varlaam) on the valley of the river Bâsca Roziliei and of its tributaries, Bâsca Mică and Bâsca Mare.\nMentioned in documents starting with the 16th century, these settlements were founded by the yeomen from Sibiciu area, who had owned those lands before they were taken over by wealthy boyar landowners. The locals have kept their old Wallachian traditions with Transylvanian influences well into the modern era. At first, they bred cattle, then they became coopers and carpenters passing their trade from generation to generation, while mostly illiterate. The first schools in the commune appeared towards the end of the 19th century, when a major lumber mill was opened in nearby Nehoiu. Skilled workers from Gura Teghii were hired in the lumber mill. While some landowners attempted to start businesses in tourism, but during the Communist era, this activity went into decline, being revigorated nowadays only by a few bed and breakfasts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "gura teghii",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gura",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "teghii",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8275,
+    "attempt": 8218,
+    "place_id": "gn-1262926",
+    "input": {
+      "place": {
+        "place_id": "gn-1262926",
+        "name": "Mohana",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 19.44273,
+        "lon": 84.26128
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mohana",
+          "url": "https://en.wikipedia.org/wiki/Mohana",
+          "text": "Mohana is a hill valley census town and community development block (CD block) headquarters located in the Gajapati district of the Indian state of Odisha. Serving as the headquarters of the geographically largest block by territorial area in Gajapati district, Mohana operates under the local governance of the Mohana Panchayat Samiti and falls under the administrative jurisdiction of the Mohana Police Station.\nStructurally situated within the mountain-clad ranges of the Eastern Ghats, the town serves as a transit and logistic checkpoint along National Highway 326 (NH-326), a major socioeconomic corridor connecting southern Odisha's tribal regions. At the town level, the urban area covers 2.51 km² and recorded a population of 5,197 during the 2011 census across 1,121 households with a baseline literacy rate of 88.55%. The entire surrounding community development block accommodates a collective population estimated at 182,679 people across a vast territorial expanse of 1,636.51 km². Politically, the town falls within the Scheduled Tribe reserved Mohana Assembly constituency (Sl. No. 136) of the Odisha Legislative Assembly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "mohana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8276,
+    "attempt": 8219,
+    "place_id": "gn-2144583",
+    "input": {
+      "place": {
+        "place_id": "gn-2144583",
+        "name": "Warrandyte",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.75,
+        "lon": 145.23333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warrandyte",
+          "url": "https://en.wikipedia.org/wiki/Warrandyte",
+          "text": "Warrandyte (  WORR-ən-dyte) is a suburb of Melbourne, Victoria, Australia, 24 km north-east of Melbourne's Central Business District, located within the City of Manningham local government area. It is built on the lands of the Wurundjeri people of the Woiworung language group of the Kulin Nation. Warrandyte recorded a population of 5,541 at the 2021 census.\nWarrandyte is bounded in the west by the Mullum Mullum Creek and Target Road, in the north by the Yarra River, in the east by Jumping Creek and Anzac Road, and in the south by an irregular line from Reynolds Road, north of Donvale, Park Orchards and Warrandyte South.\n\nWarrandyte was founded as a Victorian town, located in the once gold-rich rolling hills east of Melbourne, and is now on the north-eastern boundary of suburban Melbourne. Gold was first discovered in the town in 1851 and together, with towns like Bendigo and Ballarat, led the way in gold discoveries during the Victorian gold rush. Today Warrandyte retains much of its past in its surviving buildings of the Colonial period and remains a twin community with North Warrandyte, which borders the Yarra River to its north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "warrandyte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8277,
+    "attempt": 8220,
+    "place_id": "gn-2657684",
+    "input": {
+      "place": {
+        "place_id": "gn-2657684",
+        "name": "Adderbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.0169,
+        "lon": -1.31192
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adderbury",
+          "url": "https://en.wikipedia.org/wiki/Adderbury",
+          "text": "Adderbury is a linear village and rural civil parish located in Oxfordshire, England, 4 miles south of Banbury and 3 miles north of Deddington. As of the 2021 census, Adderbury has a population of 3,318. Its name comes from Anglo-Saxon Eadburgesbyrig or Edburgberie, meaning \"Eadburg's town\", honoring Saint Eadburga, a daughter of the 7th-century King of Mercia.\nThe settlement has five sections: the new Milton Road housing Development and West Adderbury, towards the southwest; East Adderbury to the centre, with a village green and a manor house; the new housing Development on the Aynho Road; the northeast, which is known as Twyford, named after a small outlying settlement by a forked section of the River Cherwell.\nEast and West Adderbury are divided by the south- then east-flowing Sor Brook, a tributary of the Cherwell. Sor Brook rises at Ratley and Upton in Warwickshire and joins the Cherwell between Adderbury and Aynho, Northamptonshire, the latter river being the eastern parish boundary. The Oxford Canal and beyond which the Cherwell characterise the far east of the parish. The M40 motorway passes close to the northeast of Adderbury near Twyford wharf. Banbury Business Park and Banbury Golf Course are also in the eastern parta of the parish. Railways briefly pass through the easternmost river meander, the combined Chiltern Main and Cherwell Valley Lines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "adderbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
