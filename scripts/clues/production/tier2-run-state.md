@@ -182,3 +182,23 @@ input; quotes verbatim (start after pronunciation parentheticals);
 plain short sentences from the start; SELF-VALIDATE every record with
 the shipped validateRecord against the job inputs and fix before
 delivering; deliver via muse.write + read-back, chunked reply fallback.
+
+## WAVE 2 — generation + fold + assembly complete, pending certification
+10 workers x 20 (pool ranks 218-425), hardened brief + mandatory
+self-validation with the shipped validator before delivery. Every out
+file verified on disk position-by-position against its job file
+(10/10 exact). Fold (shipped validator, FIRST pass, no repair loop
+needed): attempted 200, accepted 69, workerRejected 131,
+validatorRejected 0, malformed 0, pipeline issues []. Worker
+rejection tiers: climate 87, history 41, hook 3.
+Assembly: union accepted 389 (320 + 69); manifest 389; assembler leak
+scan 0 hits / 1,945 clue texts. 389 >= 365 gate with a 24-set buffer.
+Worker-flagged borderline accepts for the milestone-2 reviewer:
+Gaziantep gn-314830 (snow stats beyond label), Magnitogorsk
+gn-532288 (severe-winters-for-latitude paradox; tier 3 = planned
+settlement establishment), Guarapuava gn-3461879 (dated temperature
+records), Varna gn-726050 + Bishkek gn-1528675 (moderation
+mechanisms), Mostar gn-3194828 + Varna tier 3 (defining-event/origin
+details rather than dated foundings), Palmas gn-3474574 (summer =
+rainiest AND coldest paradox), Pyeongtaek gn-1838343 (tier 2 from
+province records). Pool remaining after wave 2: 7,397.
