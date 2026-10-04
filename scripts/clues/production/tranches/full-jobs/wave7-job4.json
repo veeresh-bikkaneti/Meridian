@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 1273,
+    "attempt": 1261,
+    "place_id": "gn-64435",
+    "input": {
+      "place": {
+        "place_id": "gn-64435",
+        "name": "Berbera",
+        "country": "Somalia",
+        "subdivision": "Woqooyi Galbeed",
+        "lat": 10.43959,
+        "lon": 45.01432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berbera",
+          "url": "https://en.wikipedia.org/wiki/Berbera",
+          "text": "Berbera (burr-burr-AH; Somali: Berbera, Arabic: بربرة) is the capital of the Sahil region of Somaliland and is the main sea port of the country, located approximately 160 km from the national capital, Hargeisa. Berbera is a coastal city and was the former capital of the British Somaliland protectorate before Hargeisa. It also served as a major port of the Ifat, Adal and Isaaq sultanates from the 13th to 19th centuries.\nIn antiquity, Berbera was part of a chain of commercial port cities along the Somali seaboard. During the early modern period, Berbera was the most important place of trade in the Somali Peninsula. It later served as the capital of the British Somaliland protectorate from 1884 to 1941, when it was replaced by Hargeisa. In 1960, the British Somaliland protectorate gained independence as the State of Somaliland and, five days later, united with the Trust Territory of Somalia (the former Italian Somalia) to form the Somali Republic. Located strategically on the oil route, the city has a deep seaport, which serves as the region's main commercial harbour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "berbera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1274,
+    "attempt": 1262,
+    "place_id": "gn-1271476",
+    "input": {
+      "place": {
+        "place_id": "gn-1271476",
+        "name": "Guwahati",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 26.1844,
+        "lon": 91.7458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guwahati",
+          "url": "https://en.wikipedia.org/wiki/Guwahati",
+          "text": "Guwahati (Assamese: [ɡua.ɦa.ti]), formerly known as Gauhati, is the largest city of the Indian state of Assam, and also the largest metropolis in northeastern India. Dispur, the capital of Assam, is in the circuit city region located within Guwahati and is the seat of the Government of Assam. The Lokpriya Gopinath Bordoloi International Airport is the 10th busiest in India, and the busiest in the Assam and North-East of the country. A major riverine port city along with hills, and one of the fastest growing cities in India, Guwahati is situated on the south bank of the Brahmaputra. Guwahati is divided into two separate revenue districts:-Kamrup Metropolitan district and Kamrup Rural district. The city is known as the \"gateway to North East India\".\nThe ancient cities of Pragjyotishpura and Durjaya (North Guwahati) were the capitals of the ancient state of Kamarupa.\nMany ancient Hindu temples like the Kamakhya Temple, Ugratara Temple, Basistha Temple, Doul Govinda Temple, Umananda Temple, Navagraha Temple, Sukreswar Temple, Rudreswar Temple, Manikarneswar Devalaya, Aswaklanta Temple, Dirgheshwari Temple, Lankeshwar Temple, Bhubaneswari Temple, Shree Ganesh Mandir, Shree Panchayatana Temple, Noonmati, and the like, are situated in the city, giving it the title of \"The City of Temples\". The noted Madan Kamdev is situated 30 kilometres (19 miles) from Guwahati.\nGuwahati lies between the banks of the Brahmaputra River and the foothills of the Shillong plateau, with LGB International Airport to the west and the town of Narengi to the east. The North Guwahati area, to the northern bank of the Brahmaputra, is being gradually incorporated into the city limits. The Guwahati Municipal Corporation, the city's local government, administers an area of 523 square kilometres (202 sq mi). At the same time, the Guwahati Metropolitan Development Authority (GMDA) is the planning and development body of Greater Guwahati Metropolitan Area. Guwahati is the largest city in Northeast India.\nThe Guwahati region hosts diverse wildlife including rare animals such as Asian elephants, pythons, tigers, rhinoceros, gaurs, primate species, and endangered birds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "guwahati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1275,
+    "attempt": 1263,
+    "place_id": "gn-1514581",
+    "input": {
+      "place": {
+        "place_id": "gn-1514581",
+        "name": "Angren",
+        "country": "Uzbekistan",
+        "subdivision": "Tashkent Region",
+        "lat": 41.01667,
+        "lon": 70.14361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angren, Uzbekistan",
+          "url": "https://en.wikipedia.org/wiki/Angren,_Uzbekistan",
+          "text": "Angren (Uzbek: Angren/Ангрен; Tajik: Ангрен) is a district-level city in Tashkent Region, eastern Uzbekistan. The city is located on the Angren River 70 mi (110 km) to the east of Tashkent. The City of Angren was created in 1946 from the villages of Jigariston, Jartepa, Teshiktosh, and Qoʻyxona which had emerged in the rich Angren coal basin during World War II. It has an area of 150 km2 (58 sq mi) and the population of the city is 191,300 (2021).\nThere were several large coal mines and factories in Angren during Soviet times. Following the collapse of the USSR, the majority of these factories were abandoned. A lack of professionals and machinery, mismanagement, and falling income levels — all contributed to this downfall. While Angren was once an important industrial center, the collapse caused it to turn into a ghost town for a while. However, in the recent days, Angren has developed and still is developing.\nStill, Angren has retained some of its industrial importance. The city is home to a once considerable and still functioning coal mining industry. It also has a large construction-materials industry, a rubber processing plant, and a power station.\nThere are a few supermarkets across the town. Angren University was founded in January, 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "angren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1276,
+    "attempt": 1264,
+    "place_id": "gn-160263",
+    "input": {
+      "place": {
+        "place_id": "gn-160263",
+        "name": "Dar es Salaam",
+        "country": "Tanzania",
+        "subdivision": "Dar es Salaam Region",
+        "lat": -6.82349,
+        "lon": 39.26951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dar es Salaam",
+          "url": "https://en.wikipedia.org/wiki/Dar_es_Salaam",
+          "text": "Dar es Salaam (English: , Swahili: [ɗɑr‿ɛs‿sɑˈlɑːm] ; from Arabic: دَار السَّلَام, romanised: Dār as-Salām, lit. 'Abode of Peace') is the largest city and financial hub of Tanzania and capital of the Dar es Salaam Region. It is located on the Swahili coast. With a population of over 7 million people, Dar es Salaam is the largest city in East Africa by population and the fifth-largest in Africa. Dar es Salaam remains an important economic centre and one of the fastest-growing cities in the world. Experts predict that the city's population will grow to over 10 million before 2030.\nThe city was founded in the mid-19th century and served as the main administrative and commercial centre of German East Africa, Tanganyika and Tanzania. The decision was made in 1974 to move the capital to Dodoma which was officially completed in 1996.\nDar es Salaam is Tanzania's most prominent city for arts, fashion, media, film, television and finance. It is the capital of the co-extensive Dar es Salaam Region, one of Tanzania's 31 administrative regions and consists of five districts: Kinondoni in the north; Ilala in the centre; Ubungo and Temeke in the south; and Kigamboni in the east across the Kurasini estuary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "dar es salaam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "es",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "salaam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1277,
+    "attempt": 1265,
+    "place_id": "gn-1805844",
+    "input": {
+      "place": {
+        "place_id": "gn-1805844",
+        "name": "Jieshou",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 33.26338,
+        "lon": 115.36108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jieshou",
+          "url": "https://en.wikipedia.org/wiki/Jieshou",
+          "text": "Jieshou (Chinese: 界首; pinyin: Jièshǒu) is a county-level city under the administration of Fuyang City, located on the Huang-Huai Plain in northwestern Anhui province, People's Republic of China. Jieshou, an important commercial port and gateway, borders Henan Province on the west and the Ying River, a major tributary of the Huai River flows in a southeasterly direction across the county to Fuyang. According to the \"China Statistical Yearbook\" the population of Jieshou city stood at 109,103 in 2010, while GeoNames, puts the population at over 140,000 inhabitants. Covering a total area of 667 square kilometers, the county-level city comprises three urban sub-districts of Jieshou, and in the surrounding rural area a further 15 towns and townships make up the total population of 740,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "jieshou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1278,
+    "attempt": 1266,
+    "place_id": "gn-1807689",
+    "input": {
+      "place": {
+        "place_id": "gn-1807689",
+        "name": "Huaihua",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.56337,
+        "lon": 110.00404
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huaihua",
+          "url": "https://en.wikipedia.org/wiki/Huaihua",
+          "text": "Huaihua (simplified Chinese: 怀化市; traditional Chinese: 懷化市; pinyin: Huáihuà Shì) is a prefecture-level city in western Hunan province, China. It is known as the \"Western Gate\" of Hunan and is the largest prefecture-level city by area in the province. It covers 27,564 km2 (10,643 sq mi) and is bordered by Xiangxi to the northwest, Zhangjiajie and Changde to the north, Yiyang, Loudi and Shaoyang to the east, Guilin and Liuzhou of Guangxi to the south, and Qiandongnan and Tongren of Guizhou to the southwest. It has a population of 4,741,948 (2010 census), accounting for 7.22% of the provincial population. According to the 2010 Census, 2,909,574 people, or 61.4% of the population, are Han Chinese. Minorities constitute 38.6% of the population, with 1,832,289 people. The Dong, Miao, Tujia, Yao and Bai are major native minority groups. Huaihua is the central region of the Dong ethnic population, home to nearly 28.35% of the Chinese Dong ethnic group.\nHuaihua is located in the center of the border area of Hunan, Hubei, Chongqing, Guizhou and Guangxi provinces. It is at the core intersection of a cross on the map of China and is known as the \"Gateway to Guizhou and Yunnan\" and the \"Throat of the Whole Chu\".\nHuaihua is very mountainous, being located between the Wuyi and Xuefeng mountain ranges. The Yuan river runs from the south to the north. The forest coverage reached 70.8% in 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "huaihua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1279,
+    "attempt": 1267,
+    "place_id": "gn-1808956",
+    "input": {
+      "place": {
+        "place_id": "gn-1808956",
+        "name": "Changzhi",
+        "country": "China",
+        "subdivision": "Shanxi",
+        "lat": 36.18389,
+        "lon": 113.10528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Changzhi",
+          "url": "https://en.wikipedia.org/wiki/Changzhi",
+          "text": "Changzhi (Chinese: 长治; pinyin: Chángzhì) is a prefecture-level city in the southeast of Shanxi Province, China, bordering the provinces of Hebei and Henan to the northeast and east, respectively. Historically, the city was one of the 36 administrative areas (see Administrative Divisions of Qin Dynasty) extant under the reign of Qin Shi Huang.\nChangzhi is a transportation centre in Shanxi. Transportation is facilitated by four controlled-access highways (Taiyuan-Changzhi, Changzhi-Jincheng, Changzhi-Linfen, and Changzhi-Handan); two railways (Taiyuan–Jiaozuo Railway and Handan–Changzhi Railway); three national highways (China National Highway 207, 208 and 309); and Changzhi Wangcun Airport (ITAT Code: CIH, ICAO Code: ZBCZ). Internal transportation also includes a bus and taxi network.\nThe city is a rising commercial and industrial centre in the southeastern area of Shanxi. In 2011, its GDP ranked 1st out of 11 prefecture-level cities in the province. According to the latest census, in 2020 the city was home to 3,180,884 residents whom 1,214,940 lived in the built-up (or metro) area made of Luzhou and Shangdang Districts. The other two urban districts Tunliu and Lucheng are not conurbated yet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "changzhi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1280,
+    "attempt": 1268,
+    "place_id": "gn-2034834",
+    "input": {
+      "place": {
+        "place_id": "gn-2034834",
+        "name": "Shuangcheng",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 45.3798,
+        "lon": 126.30711
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shuangcheng, Harbin",
+          "url": "https://en.wikipedia.org/wiki/Shuangcheng,_Harbin",
+          "text": "Shuangcheng District (simplified Chinese: 双城区; traditional Chinese: 雙城區; pinyin: Shuāngchéng Qū) is one of nine districts of the prefecture-level city of Harbin, the capital of Heilongjiang Province, Northeast China, covering part of the southwestern suburbs. The district was approved to establish from the former Shuangcheng City (双城市) by the Chinese State Council on May 2, 2014. It sits approximately 42 kilometres (26 mi) south-southwest of downtown Harbin. Formerly a county-level city until 15 May 2014. The westernmost county-level division of Harbin City, it borders Daoli District to the north, Nangang and Pingfang Districts to the northeast, Acheng District to the east, and Wuchang to the southeast, as well as the Jilin prefecture-level divisions of Changchun to the south and Songyuan to the southwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "shuangcheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1281,
+    "attempt": 1269,
+    "place_id": "gn-2036581",
+    "input": {
+      "place": {
+        "place_id": "gn-2036581",
+        "name": "Jiamusi",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 46.79711,
+        "lon": 130.31118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jiamusi",
+          "url": "https://en.wikipedia.org/wiki/Jiamusi",
+          "text": "Jiamusi (Manchu: ᡤᡳᠶᠠᠮᡠᠰᡳ Chinese: 佳木斯; pinyin: Jiāmùsī [ˌtɕiá.mû.sí]; Russian: Цзямусы; formerly Kiamusze) is a prefecture-level city in eastern Heilongjiang province, People's Republic of China. Located along the middle and lower reaches of the Songhua River, it faces Russia's Khabarovsk Krai across the Ussuri River and the Heilongjiang. In 2018, Jiamusi had a GDP of RMB 101.2 billion with a 4.3% growth rate. Its population was 2,156,505 at the 2020 census of whom 862,555 lived in the built-up area comprising 4 urban districts. At the end of 2024, the total registered population of the city was 2.213 million, a decrease of 22,000 from the previous year. Among them, the urban population is 1.145 million, and the urbanization rate of the registered population is 51.7%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "jiamusi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1282,
+    "attempt": 1270,
+    "place_id": "gn-2147714",
+    "input": {
+      "place": {
+        "place_id": "gn-2147714",
+        "name": "Sydney",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.86785,
+        "lon": 151.20732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sydney",
+          "url": "https://en.wikipedia.org/wiki/Sydney",
+          "text": "Sydney is the capital of the state of New South Wales and the largest city in Australia. The metropolis surrounds Sydney Harbour and extends about 80 kilometres (50 mi) from the Pacific Ocean in the east to the Blue Mountains in the west, and about 80 kilometres (50 mi) from Ku-ring-gai Chase National Park and the Hawkesbury River in the north and north-west, to the Royal National Park and Macarthur in the south and south-west. Greater Sydney consists of 658 suburbs, spread across 33 local government areas. Residents of the city are colloquially known as \"Sydneysiders\". The estimated population in June 2025 was 5,638,830, which is about 66% of the state's population. The city's nicknames include the Emerald City and the Harbour City.\nThere is evidence that Aboriginal Australians inhabited the Greater Sydney region at least 30,000 years ago, and their engravings and cultural sites are common. The traditional custodians of the land on which modern Sydney stands are the clans of the Darug, Dharawal and Eora. During his first Pacific voyage in 1770, James Cook charted the eastern coast of Australia, making landfall at Botany Bay. In 1788, the First Fleet of convicts, led by Arthur Phillip, founded Sydney as a British penal colony, the first European settlement in Australia. After World War II, Sydney experienced mass migration and by 2021 over 40 per cent of the population was born overseas. Foreign countries of birth with the greatest representation are mainland China, India, the United Kingdom, Vietnam and the Philippines.\nDespite being one of the most expensive cities in the world, Sydney frequently ranks in the top ten most liveable cities. It is classified as an Alpha+ city by the Globalization and World Cities Research Network, indicating its influence in the region and throughout the world. Ranked eleventh in the world for economic opportunity, Sydney has an advanced market economy with strengths in education, finance, manufacturing and tourism. The University of Sydney and the University of New South Wales are ranked 18th and 19th in the world respectively.\nSydney has hosted major international sporting events such as the 2000 Summer Olympics, the 2003 Rugby World Cup Final, and the 2023 FIFA Women's World Cup Final. The city is among the top fifteen most-visited cities worldwide, with millions of tourists coming each year to see the city's landmarks. The city has over 1,000,000 hectares (2,500,000 acres) of nature reserves and parks, and its notable natural features include Sydney Harbour and Royal National Park. The Sydney Harbour Bridge and the World Heritage-listed Sydney Opera House are major tourist attractions. Central Station is the hub of Sydney's suburban train, metro and light rail networks and longer-distance services. The main passenger airport serving the city is Kingsford Smith Airport, one of the world's oldest continually operating airports."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 464
+    },
+    "banned_terms": [
+      {
+        "term": "sydney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1283,
+    "attempt": 1271,
+    "place_id": "gn-2751283",
+    "input": {
+      "place": {
+        "place_id": "gn-2751283",
+        "name": "Maastricht",
+        "country": "Netherlands",
+        "subdivision": "Limburg",
+        "lat": 50.84833,
+        "lon": 5.68889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maastricht",
+          "url": "https://en.wikipedia.org/wiki/Maastricht",
+          "text": "Maastricht ( MAH-strikht, US also  mah-STRIKHT, Dutch: [maːˈstrɪxt] ; Limburgish: Mestreech [məˈstʀeːx]) is a city and a municipality in the southeastern Netherlands. It is the capital and largest city of the province of Limburg. Maastricht is located on both sides of the Meuse (Dutch: Maas), at the point where the river is joined by the Jeker. Mount Saint Peter (Sint-Pietersberg) is largely situated within the city's municipal borders. Maastricht is adjacent to the border with Belgium and is part of the Meuse-Rhine Euroregion, an international metropolis with a population of about 3.9 million, which includes the nearby German and Belgian cities of Aachen, Liège, and Hasselt.\nMaastricht developed from a Roman settlement (Trajectum ad Mosam) to a medieval river trade and religious centre. In the 16th century it became a garrison town and in the 19th century an early industrial centre. Today, the city is a thriving cultural and regional hub. It became well known through the Maastricht Treaty and as the birthplace of the euro. Maastricht has 1,677 national heritage buildings (rijksmonumenten), the second highest number in the Netherlands, after Amsterdam. The city is visited by tourists for shopping and recreation, and has a large international student population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "maastricht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1284,
+    "attempt": 1272,
+    "place_id": "gn-3095049",
+    "input": {
+      "place": {
+        "place_id": "gn-3095049",
+        "name": "Koszalin",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 54.19438,
+        "lon": 16.17222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Koszalin",
+          "url": "https://en.wikipedia.org/wiki/Koszalin",
+          "text": "Koszalin (Polish: [kɔˈʂalin] ; Kashubian: Kòszalëno; German: Köslin, pronounced [kœsˈliːn]) is a city in northwestern Poland, in West Pomerania. It is located 12 kilometres (7 miles) south of the Baltic Sea coast, and intersected by the river Dzierżęcinka. Koszalin is also a county-status city and capital of Koszalin County of West Pomeranian Voivodeship.\nFounded in the Middle Ages, Koszalin was a seaport until the 17th century, and one of the main cities of Central Pomerania (along with Kołobrzeg and Słupsk). From 1950 to 1998 it was the administrative capital of Central Pomerania, as the Koszalin Voivodeship, and remains its largest city. Located on the main highway and railroad between the Tricity and Szczecin, Koszalin is an important regional industrial, cultural and educational center. It is home to the Koszalin University of Technology, Polish Air Force Training Center and the Polish Border Guard Academy. Its Gothic Cathedral serves as the seat of the Roman Catholic Diocese of Koszalin–Kołobrzeg. Koszalin is the host city of an annual festival of choirs of the Polish diaspora from various parts of the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "koszalin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1285,
+    "attempt": 1273,
+    "place_id": "gn-3099759",
+    "input": {
+      "place": {
+        "place_id": "gn-3099759",
+        "name": "Elbląg",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 54.1522,
+        "lon": 19.40884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elbląg",
+          "url": "https://en.wikipedia.org/wiki/Elbląg",
+          "text": "Elbląg (Polish: [ˈɛlblɔŋk] ; German: Elbing [ˈɛlbɪŋ] ) is a city in the Warmian-Masurian Voivodeship, in northern Poland, located in the eastern edge of the Żuławy region with 127,390 inhabitants, as of December 2021. It is the capital of Elbląg County.\nElbląg is one of the oldest cities in the province, founded in 1237. As a member of the Hanseatic League, the city was linked to other major ports of northern and central Europe. Elbląg joined Poland in 1454, and then was one of the country's chief ports, and a major port for English–Polish trade, until the First Partition of Poland in 1772, when it was annexed by Prussia. Its trading role greatly weakened, until the era of industrialization in the 19th century. It was then that the famous Elbląg Canal was commissioned. A tourist site and important engineering monument, it has been named one of the Seven Wonders of Poland and a Historic Monument of Poland. During World War II, it suffered severe destruction of the Old Town district, and after the war it became again part of Poland.\nToday, Elbląg has over 120,000 inhabitants and is a \"vibrant city with an attractive tourist base\". It serves as an academic and financial center and among its numerous historic monuments is the Market Gate from 1309 and St. Nicholas Cathedral. Elbląg is also known for its archaeological sites, museums and the country's largest brewery, founded in 1872."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "elblag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1286,
+    "attempt": 1274,
+    "place_id": "gn-3196359",
+    "input": {
+      "place": {
+        "place_id": "gn-3196359",
+        "name": "Ljubljana",
+        "country": "Slovenia",
+        "subdivision": "Ljubljana",
+        "lat": 46.05108,
+        "lon": 14.50513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ljubljana",
+          "url": "https://en.wikipedia.org/wiki/Ljubljana",
+          "text": "Ljubljana (spoken Slovene: Lublana; also known by other historical names) is the capital and largest city of Slovenia, located along a trade route between the northern Adriatic Sea and the Danube region, north of the country's largest marsh, it has been inhabited since prehistoric times. It is the country's cultural, educational, economic, political and administrative centre and the seat of the Urban Municipality of Ljubljana.\nDuring antiquity, a Roman city called Emona stood in the area. The city was first mentioned in the first half of the 12th century. It was the historical capital of Carniola, one of the Slovene-inhabited parts of the Habsburg monarchy. It was under Habsburg rule from the Middle Ages until the dissolution of the Austro-Hungarian Empire in 1918. After World War II, Ljubljana became the capital of the Socialist Republic of Slovenia, part of the Socialist Federal Republic of Yugoslavia. The city retained this status until Slovenia became independent in 1991 and Ljubljana became the capital of the newly formed state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "ljubljana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1287,
+    "attempt": 1275,
+    "place_id": "gn-3515463",
+    "input": {
+      "place": {
+        "place_id": "gn-3515463",
+        "name": "Tláhuac",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.28689,
+        "lon": -99.00507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tláhuac",
+          "url": "https://en.wikipedia.org/wiki/Tláhuac",
+          "text": "Tláhuac is one of the sixteen boroughs (demarcación territorial) of Mexico City, located at the southeastern edge of the metropolitan area. Though Tláhuac still contains rural communities within its borders, mostly in the southern and eastern portions, the borough has undergone massive urbanization in the 20th century, especially in the northwest. Tláhuac has experienced the fastest rate of population growth in Mexico City since the 1960s.\nMuch of the borough's area is former lakebed where Lake Chalco and Lake Xochimilco met, with the town of San Pedro Tláhuac originally on an island. There are still some lake areas in the present day, along with four major canals and wetlands, also under conservation status. The urbanization has led to serious traffic and transportation problems. In 2012, Line 12 of the Mexico City Metro was completed with a terminal in the borough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "tlahuac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1288,
+    "attempt": 1276,
+    "place_id": "gn-426272",
+    "input": {
+      "place": {
+        "place_id": "gn-426272",
+        "name": "Gitega",
+        "country": "Burundi",
+        "subdivision": "Gitega",
+        "lat": -3.42708,
+        "lon": 29.92463
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gitega",
+          "url": "https://en.wikipedia.org/wiki/Gitega",
+          "text": "Gitega (French pronunciation: [ɡiteɡa]), formerly Kitega, is the political capital of Burundi. Located in the centre of the country, in the Burundian central plateau roughly 62 kilometres (39 mi) east of Bujumbura, the largest city and former political capital, Gitega is the country's fourth largest city and former royal capital of the Kingdom of Burundi until its abolition in 1966. In December 2018, former President of Burundi Pierre Nkurunziza announced that he would follow on a 2007 promise to return Gitega its former political capital status, with Bujumbura remaining as economic capital and centre of commerce. A vote in the Parliament of Burundi made the change official on 16 January 2019, with all branches of government expected to move in over three years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "gitega",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1289,
+    "attempt": 1277,
+    "place_id": "gn-480562",
+    "input": {
+      "place": {
+        "place_id": "gn-480562",
+        "name": "Tula",
+        "country": "Russia",
+        "subdivision": "Tula Oblast",
+        "lat": 54.19609,
+        "lon": 37.61822
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tula, Russia",
+          "url": "https://en.wikipedia.org/wiki/Tula,_Russia",
+          "text": "Tula (Russian: Ту́ла, IPA: [ˈtulə]) is the largest city and the administrative center of Tula Oblast in Russia, located 193 kilometers (120 mi) south of Moscow. Tula is located in the northern Central Russian Upland on the banks of the Upa River, a tributary of the Oka. At the 2010 census, Tula had a population of 501,169, an increase from 481,216 in 2002, making it the 32nd-largest city in Russia by population.\n\nA primarily industrial city, Tula was a fortress at the border of the Principality of Ryazan. The city was seized by Ivan Bolotnikov in 1606 during the Time of Troubles and withstood a four-month siege by the Tsar's army. Historically, Tula has been a major centre for the manufacture of armaments. The Demidov family built the first armament factory in Russia in the city, in what would become the Tula Arms Plant, which still operates to this day.\nTula is home to the Klokovo air base, Tula State University, the Tula Kremlin, Tula State Museum of Weapons, and Kazanskaya Embankment. Tula has a historical association with the samovar, a metal container used to heat and boil water; the city was a major center of Russian samovar production. Yasnaya Polyana, the former home of the writer Leo Tolstoy, is located 12 kilometres (7.5 mi) southwest of Tula. Additionally, Tula is known for its imprinted gingerbread (pryanik), which has been made in Tula since the 17th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "tula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1290,
+    "attempt": 1278,
+    "place_id": "gn-4994358",
+    "input": {
+      "place": {
+        "place_id": "gn-4994358",
+        "name": "Grand Rapids",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.96336,
+        "lon": -85.66809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grand Rapids, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Grand_Rapids,_Michigan",
+          "text": "Grand Rapids is a city in and the county seat of Kent County, Michigan. The city had a population of 198,917 at the 2020 census and an estimated population of 201,183 in 2025. Grand Rapids is the second-most populated municipality in the state after Detroit. It is the central city of the Grand Rapids metropolitan area, which has a population of around 1.2 million and is the 49th-largest metropolitan area in the United States. \nGrand Rapids is situated along the Grand River approximately 25 miles (40 km) east of Lake Michigan, and is considered the economic and cultural hub of West Michigan. Originally inhabited by the Hopewell and later Odawa people, the area was settled by European Americans in the early 19th century. Grand Rapids incorporated as a village in 1838 and as a city in 1850. It gained prominence as the \"Furniture City\" due to its thriving furniture manufacturing industry that remains prominent in the area. Corewell Health, Meijer, and Steelcase are now notable businesses within the region.\nCulturally, Grand Rapids is home to several museums, including the Grand Rapids Art Museum and Grand Rapids Public Museum. The city also hosts the annual ArtPrize, an international art competition, and the Frederik Meijer Gardens & Sculpture Park, a premier horticultural and artistic destination. As a result of the numerous craft breweries in the city, including Founders Brewing Company, Grand Rapids is also known as \"Beer City USA\". Grand Rapids was the childhood home of U.S. President Gerald Ford, who is buried with his wife Betty on the grounds of the Gerald R. Ford Presidential Museum in the city. The city's Gerald R. Ford International Airport and Gerald R. Ford Freeway are named after him."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "grand rapids",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rapids",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1291,
+    "attempt": 1279,
+    "place_id": "gn-958724",
+    "input": {
+      "place": {
+        "place_id": "gn-958724",
+        "name": "Rustenburg",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -25.66756,
+        "lon": 27.24208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rustenburg",
+          "url": "https://en.wikipedia.org/wiki/Rustenburg",
+          "text": "Rustenburg (; Afrikaans pronunciation: [ˈrœstənbœrχ], Afrikaans and Dutch: Town of Rest) is a City at the foot of the Magaliesberg mountain range. Rustenburg is the most populous city in North West province, South Africa (549,575 in 2011 and 626,522 in the 2016 census). In 2017, the city's Gross Domestic Product (GDP) reached ZAR 63.8 billion, accounting for 21.1% of the GDP of the North West Province, and 1.28% of the GDP of South Africa.  Rustenburg was one of the official host cities of the 2010 FIFA World Cup, being in close proximity to Phokeng, the capital of the Royal Bafokeng Nation, where the Royal Bafokeng Stadium is located. The England national football team also used this as their base camp for the tournament."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "rustenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1292,
+    "attempt": 1280,
+    "place_id": "gn-1167528",
+    "input": {
+      "place": {
+        "place_id": "gn-1167528",
+        "name": "Quetta",
+        "country": "Pakistan",
+        "subdivision": "Balochistan",
+        "lat": 30.18414,
+        "lon": 67.00141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quetta",
+          "url": "https://en.wikipedia.org/wiki/Quetta",
+          "text": "Quetta is the capital and largest city of the Pakistani province of Balochistan. It is the ninth largest city in Pakistan with an estimated population of over 1.7 million in 2024. It is situated in the south-west of the country, lying in the Quetta Valley region surrounded by mountains on all sides. Quetta is at an average elevation of 1,680 metres (5,510 feet) above sea level, making it Pakistan's highest-altitude major city. \nThe city is sometimes referred to as the \"Fruit Garden of Pakistan\" because of its numerous fruit orchards and the variety of fresh and dried fruits produced in the region. Like Karachi, Quetta is considered a \"melting pot\" as it is one of the most ethnically diverse cities in Pakistan. \nLocated in northern Balochistan near the Pakistan-Afghanistan border and the road across to Kandahar, Quetta is a trade and communication centre between the two countries. The city is near the Bolan Pass, which was on a major gateway from Central Asia to South Asia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "quetta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
