@@ -346,3 +346,33 @@ describe("flags — memoized production load", () => {
     assert.equal(isEnabled("pwaUpdateToast"), true);
   });
 });
+
+describe("learningOutcomes flag", () => {
+  beforeEach(() => resetFlags());
+
+  it("defaults to false — current production behavior (no records, no growth UI)", () => {
+    assert.equal(FLAG_DEFAULTS.learningOutcomes, false);
+    assert.equal(isEnabled("learningOutcomes"), false);
+  });
+
+  it("remote payloads can flip it on; unknown names and non-booleans are ignored", async () => {
+    const seam = fakeFetch(
+      okResponse({
+        flags: {
+          learningOutcomes: true,
+          unknownExperiment: true,
+          pwaUpdateToast: "yes",
+        },
+      }),
+    );
+    await loadFlags({ ...BASE, fetch: seam.fn });
+    assert.equal(isEnabled("learningOutcomes"), true);
+    assert.equal(isEnabled("pwaUpdateToast"), true, "non-boolean ignored → default wins");
+  });
+
+  it("fail-closed: unreachable flags.json keeps the dark default", async () => {
+    const { fn } = fakeFetch(failedResponse());
+    await loadFlags({ ...BASE, fetch: fn });
+    assert.equal(isEnabled("learningOutcomes"), false);
+  });
+});

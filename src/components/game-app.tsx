@@ -53,6 +53,16 @@ import {
   REVEAL_WATCHDOG_MS,
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
+import { isEnabled, loadFlags } from "@/lib/flags";
+import {
+  emptyLearningStore,
+  growthLineFor,
+  growthSummary,
+  readLearningStore,
+  recordAnswer,
+  writeLearningStore,
+  type LearningStore,
+} from "@/game/learning";
 
 /**
  * Session flag marking that this tab already reloaded for a stale build.
@@ -1234,6 +1244,26 @@ function PlayLoaded({
   // belongs to the previous run.
   const [mapKey, setMapKey] = useState(0);
   const [summary, setSummary] = useState<SessionSummary | null>(null);
+  // Learning outcomes (flag-gated, observational). The store is read once
+  // at boot after the shared flags load resolves; the boot-time flag value
+  // is authoritative for the session (no mid-game surprises). Flag off =
+  // no reads, no writes, no traces — dealing/scoring/session byte-identical.
+  const [learningEnabled, setLearningEnabled] = useState(false);
+  const [learningStore, setLearningStore] = useState<LearningStore | null>(null);
+  useEffect(() => {
+    let active = true;
+    // Kill-switch-style track (writes persistent data): await the shared
+    // load so a remote decision wins the boot-time race deterministically.
+    loadFlags().then(() => {
+      if (!active) return;
+      const on = isEnabled("learningOutcomes");
+      setLearningEnabled(on);
+      if (on) setLearningStore(readLearningStore() ?? emptyLearningStore());
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
   // Session score: the HUD total accumulates across edition switches until
   // End game. Falls back to the run's own results when no session exists
   // (defensive; openRun always ensures one).
@@ -1450,6 +1480,34 @@ function PlayLoaded({
         distanceKm: distance,
         streakAfter: nextRun.streak,
       });
+      // Learning record: observational, flag-gated, fail closed. Runs
+      // *beside* bankPlace — never inside dropPin/bankPlace — and can never
+      // throw into the pin-commit path or corrupt the session. The growth
+      // line on the reveal card is derived from the stored record at render
+      // time, so it survives a reload exactly like the drop does.
+      if (learningEnabled) {
+        try {
+          setLearningStore((prev) => {
+            const next = recordAnswer(prev ?? emptyLearningStore(), {
+              placeId: place.id,
+              edition: run.edition,
+              regionId: run.regionId,
+              regionName: run.regionName,
+              distanceKm: distance,
+              radiusKm: radius,
+              hit,
+              score: hit && scored ? scored.score : 0,
+              at: Date.now(),
+            });
+            // recordAnswer is pure (same input → same output), so even if
+            // React re-invokes this updater the write is idempotent.
+            writeLearningStore(next.store);
+            return next.store;
+          });
+        } catch {
+          // Storage failure must never break the game.
+        }
+      }
     }
   }
 
@@ -1645,6 +1703,14 @@ function PlayLoaded({
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
           onContinue={onContinue}
+          // The growth line is derived from the place's recorded attempts
+          // (including the commit that just revealed it), so it recomputes
+          // identically after a reload. Null when the flag is off.
+          growthLine={
+            learningEnabled && place
+              ? growthLineFor(learningStore?.records[place.id]?.attempts ?? [])
+              : null
+          }
         />
       ) : null}
       {run.phase === "summary" && summary ? (
@@ -1652,6 +1718,11 @@ function PlayLoaded({
           summary={summary}
           regionName={run.regionName}
           dateKey={run.dateKey}
+          growth={
+            learningEnabled
+              ? growthSummary(learningStore ?? emptyLearningStore(), Date.now())
+              : null
+          }
           onDone={onSummaryDone}
           onPlayAgain={onSummaryPlayAgain}
         />

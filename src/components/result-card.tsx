@@ -100,8 +100,25 @@ function AiStoryBadge() {
   );
 }
 
-function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?: "primary" | "secondary" }) {
-  const summary = summarizeRun(run);
+/**
+ * Learning-outcomes growth line (flag-gated). One kid-friendly sentence
+ * below the place story — encouragement about the player's own progress,
+ * never a grade and never a comparison. Renders nothing when the flag is
+ * off (the line is null then).
+ */
+function GrowthLine({ line }: { line: string | null | undefined }) {
+  if (!line) return null;
+  return (
+    <p data-testid="growth-line" className="text-sm leading-relaxed text-emerald-100/90">
+      <span role="img" aria-label="growing plant">
+        🌱
+      </span>{" "}
+      {line}
+    </p>
+  );
+}
+
+function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?: "primary" | "secondary" }) {  const summary = summarizeRun(run);
   const line = shareText({
     regionName: run.regionName,
     dateKey: run.dateKey,
@@ -137,6 +154,7 @@ export function ResultCard({
   dismissed,
   onDismissedChange,
   onContinue,
+  growthLine,
 }: {
   run: Run;
   place: Starter | null;
@@ -153,6 +171,12 @@ export function ResultCard({
   dismissed: boolean;
   onDismissedChange: (dismissed: boolean) => void;
   onContinue: () => void;
+  /**
+   * Kid-friendly growth note (learning-outcomes track, flag-gated). Never
+   * replaces the place blurb — that shows on every reveal, right or wrong —
+   * and sits below it, small. Null when the flag is off.
+   */
+  growthLine?: string | null;
 }) {
   const reduced = usePrefersReducedMotion();
   const aiSports = useAiSportsTeams(place);
@@ -299,6 +323,8 @@ export function ResultCard({
                   </span>
                 </p>
               </div>
+              {/* Growth line sits below the blurb, never replacing it. */}
+              <GrowthLine line={growthLine} />
               <a
                 className="text-sm text-white/70 underline"
                 href={place.sourceHref}
@@ -357,6 +383,8 @@ export function ResultCard({
                   </p>
                 ) : null}
               </div>
+              {/* Growth line sits below the story, never replacing it. */}
+              <GrowthLine line={growthLine} />
               <a
                 className="text-sm text-white/70 underline"
                 href={place.sourceHref}
