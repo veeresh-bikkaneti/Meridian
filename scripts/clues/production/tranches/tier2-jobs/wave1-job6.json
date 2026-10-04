@@ -1,0 +1,882 @@
+[
+  {
+    "rank": 108,
+    "place_id": "gn-1702540",
+    "input": {
+      "place": {
+        "place_id": "gn-1702540",
+        "name": "Malolos",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.8443,
+        "lon": 120.81039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malolos",
+          "url": "https://en.wikipedia.org/wiki/Malolos",
+          "text": "Malolos [maˈlɔlɔs], officially the City of Malolos (Filipino: Lungsod ng Malolos;  Kapampangan: Ciudad/Lakanbalen ning Malolos), is a  component city and capital of the province of Bulacan, Philippines. According to the 2024 census, it has a population of 269,809 people. It is the capital city of the province of Bulacan as the seat of the provincial government.\nIt was the site of the constitutional convention of 1898, known as the Malolos Convention, that led to the establishment of the First Philippine Republic led by Emilio Aguinaldo, at the sanctuary of the Barasoain Church. The convent of the Malolos Cathedral served as the presidential palace at that time. The First Philippine Republic is sometimes characterized as the first proper constitutional republic in Asia, although there were several Asian republics predating it – for example, the Mahajanapadas of ancient India, the Lanfang Republic, the Republic of Formosa, or the Republic of Ezo. Aguinaldo himself had led a number of governments prior to Malolos, like those established at Tejeros and Biak-na-Bato which both styled themselves República de Filipinas (\"Republic of the Philippines\"). Unlike the founding documents of those governments, however, the Malolos Constitution was duly approved by a partially elected congress and called for a true representative democracy."
+        },
+        {
+          "article": "Malolos (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Malolos#Climate",
+          "text": "Under the Köppen climate classification system, Malolos has a tropical wet and dry climate (Köppen Aw). Malolos belongs to Type 1 category of the Philippine Climate Corona Classification, which has two pronounced seasons, i.e., wet and dry seasons: wet during the months of June to November and dry from December to May.\nThe northwest monsoon prevails over the area from October to January bringing in moderate and light rains, the last trade winds predominate from February to April but the high Sierra Madre Mountains interfere with the free circulation of making the area dry with almost no rains during the period, while from May to September the southwest monsoon prevail with strong winds and abundant rainfall, and generally associated with strong typhoon."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 122,
+      "leadWords": 204,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes the provincial capital role and the 1898 convention and First Philippine Republic but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainy-season, typhoon, heat, or rainfall pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "malolos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 110,
+    "place_id": "gn-3099230",
+    "input": {
+      "place": {
+        "place_id": "gn-3099230",
+        "name": "Gliwice",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.29761,
+        "lon": 18.67658
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gliwice",
+          "url": "https://en.wikipedia.org/wiki/Gliwice",
+          "text": "Gliwice (Polish: [ɡliˈvit͡sɛ] ; Silesian: Glywice/Glajwic, Czech: Hlivice/Glivice; German: Gleiwitz) is a city in Upper Silesia, in southern Poland. The city is located in the Silesian Highlands, on the Kłodnica river (a tributary of the Oder).\nGliwice is the westernmost city of the Metropolis GZM, a conurbation of 2.0 million people, and is the third-largest city of this area, with 175,102 permanent residents as of 2021. It also lies within the larger Katowice-Ostrava metropolitan area which has a population of about 5.3 million people and spans across most of eastern Upper Silesia, western Lesser Poland and the Moravian-Silesian Region in the Czech Republic. Gliwice is bordered by three other cities and towns of the metropolitan area: Zabrze, Knurów and Pyskowice. It is one of the major college towns in Poland, thanks to the Silesian University of Technology, which was founded in 1945 by academics of Lwów University of Technology. Over 20,000 people study in Gliwice. Gliwice is an important industrial center of Poland. Following an economic transformation in the 1990s, Gliwice shifted from steelworks and coal mining to automotive and machine industry.\nFounded in the 13th century, Gliwice is one of the oldest cities in Upper Silesia, with a preserved Old Town core. Gliwice's most historical structures include St Bartholomew's Church (15th century), Gliwice Castle and city walls (14th century), Armenian Church (originally a hospital, 15th century) and All Saints Old Town Church (15th century). Gliwice is also known for its Radio Tower, where the Gleiwitz incident took place shortly before the outbreak of World War II and which is thought to be the world's tallest wooden construction, as well as Weichmann Textile House, one of the first buildings designed by world-renowned architect Erich Mendelsohn. Gliwice hosted the Junior Eurovision Song Contest 2019 which took place on 24 November 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 300,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers highlands and river location, industry shift, old churches, castle, and the radio tower incident but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated winter, rainfall, wind, or temperature pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "gliwice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 111,
+    "place_id": "gn-1625084",
+    "input": {
+      "place": {
+        "place_id": "gn-1625084",
+        "name": "Tangerang",
+        "country": "Indonesia",
+        "subdivision": "Banten",
+        "lat": -6.17806,
+        "lon": 106.63
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tangerang",
+          "url": "https://en.wikipedia.org/wiki/Tangerang",
+          "text": "Tangerang (Indonesian pronunciation: [ˈt̪aŋəɾaŋ] ) is the city with the largest population in the province of Banten, Indonesia. Located on the western border of Jakarta and bordered with South Tangerang city, Tangerang is the sixth largest city proper in the nation (excluding Jakarta, which is classed as a province containing five administrative cities and one regency). Tangerang is home to Soekarno–Hatta International Airport, the primary airport serving the Jakarta metropolitan area.\nThe city is an industrial and manufacturing hub for the island of Java and is home to over 1,000 factories. It has an area of 164.55 km2 (63.53 sq mi) and an official 2010 Census population of 1,798,601, which had risen to 1,895,486 at the 2020 Census, making it the eighth most populated suburb in the world at the latter date. In 2024, the population was estimated to be 1,927,815, consisting of 968,776 men and 959,039 women.\nAs one of the cities around Jakarta, Tangerang partly functions as a dormitory city with numerous residents commuting to Jakarta for work. Many high-class and middle-class satellite cities have been developed in Tangerang, complete with their own shopping malls, private schools and convenience centers. The government is working on expanding the toll road system to accommodate more traffic flow to and from the area. However, the city also contains many industrial areas, such as Jatake, and business districts, such as Alam Sutera, in its own right.\nSince the 2000s, property developers and investors have favored Tangerang to create new economic and commercial centers. Recent and ongoing developments within and around Tangerang City include BSD City, Gading Serpong, Alam Sutera, Modernland, and Lippo Village. Some of those areas are the locations of prominent private universities, such as Bina Nusantara and Bunda Mulia campuses in Alam Sutera area. The Indonesia campus of Monash University is located in BSD area. The British School Jakarta (in South Tangerang City) is located not far from the border of Tangerang City. Moreover, the first IKEA in Indonesia is also operating in Tangerang."
+        },
+        {
+          "article": "Tangerang (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tangerang#Climate",
+          "text": "Situated in the alluvial lowland, Tangerang City has a tropical rainforect climate (Köppen: Af) bordering upon a tropical monsoon climate (Am), with moderate rainfall from May to October and heavy rainfall from November to April."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 35,
+      "leadWords": 334,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes location west of Jakarta, the airport, factories, commuting, and new developments but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainy-season, flood, heat, or monsoon pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "tangerang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 112,
+    "place_id": "gn-1809152",
+    "input": {
+      "place": {
+        "place_id": "gn-1809152",
+        "name": "Guyuan",
+        "country": "China",
+        "subdivision": "Ningxia",
+        "lat": 36.00667,
+        "lon": 106.28083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guyuan",
+          "url": "https://en.wikipedia.org/wiki/Guyuan",
+          "text": "Guyuan (Chinese: 固原; pinyin: Gùyuán ), formerly known as Xihaigu (Chinese: 西海固; pinyin: xīhǎigù, Xiao'erjing: قُ‌يُوًا شِ) or Dayuan (大原), is a prefecture-level city in the Ningxia Hui Autonomous Region of the People's Republic of China. It occupies the southernmost section of the region, bordering Gansu province to the east, south, and due west. This is also the site of Mount Sumeru Grottoes (须弥山), which is among the ten most famous grottoes in China. As of the end of 2018, the total resident population in Guyuan was 1,124,200. At the end of 2024, the city's resident population was 1,140,800, a decrease of 6,900 compared with the end of the previous year. Among them, the resident population in urban areas was 535,600, accounting for 46.95% of the resident population (the urbanization rate of the resident population), an increase of 1.29 percentage points over the end of the previous year."
+        },
+        {
+          "article": "Guyuan (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Guyuan#Geography_and_climate",
+          "text": "Guyuan has a monsoon-influenced humid continental climate (Köppen Dwb), with long, cold, dry winters, and warm, rainier summers. With temperatures cooled by the elevation that exceeds , highs average slightly below freezing in January and reach only in July. Much of the year's precipitation is delivered from June to September."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 50,
+      "leadWords": 148,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers southernmost location in the region, borders, grottoes, and population figures but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated dryness, rainfall, wind, or temperature pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "guyuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 113,
+    "place_id": "gn-2312393",
+    "input": {
+      "place": {
+        "place_id": "gn-2312393",
+        "name": "Moanda",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Bas-Congo",
+        "lat": -5.92753,
+        "lon": 12.37148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moanda, Democratic Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Moanda,_Democratic_Republic_of_the_Congo",
+          "text": "Moanda or Muanda is a town and territory lying on the Atlantic Ocean coast of the Democratic Republic of the Congo at the mouth of the Congo River. It is situated in Kongo Central Province, and has a population of 90,812 as of 2012. The town has an airport and is known for its beaches, and has a few limited tourist facilities, but tourism is incidental to the main economic activities of the town.\nThe town of Muanda is 8 kilometres (5.0 mi) north-west of the small port of Banana in the mouth of the Congo, and 6.5 kilometres (4.0 mi) southeast of Point Kipundji. The Moanda Oil Terminal, consisting of various platforms, pipelines and a permanent tanker, lies 10 miles southwest of Point Kipundji. Some 100 km upstream from Muanda, on the north bank of the Congo River, lies the city of Boma, DR Congo's second-largest port. The great width and depth of the Congo River allow seagoing vessels to reach Boma and the largest port, Matadi, despite their distance from the coast."
+        },
+        {
+          "article": "Moanda, Democratic Republic of the Congo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Moanda,_Democratic_Republic_of_the_Congo#Climate",
+          "text": "The Köppen-Geiger climate classification system classifies Moanda‘s climate as tropical wet and dry (Aw), although it is only marginally wet enough to avoid being classed as a hot semi-arid climate (BSh)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 31,
+      "leadWords": 174,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes the Atlantic coast at the mouth of a great river, beaches, oil terminal, and upstream ports but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record; coast and beaches alone are not climate",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainfall, heat, seasonal, or storm pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "moanda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 114,
+    "place_id": "gn-2954172",
+    "input": {
+      "place": {
+        "place_id": "gn-2954172",
+        "name": "Augsburg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.37154,
+        "lon": 10.89851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Augsburg",
+          "url": "https://en.wikipedia.org/wiki/Augsburg",
+          "text": "Augsburg (UK:  OWGZ-burg, also US:  AWGZ-; German: [ˈaʊksbʊʁk] ; Swabian German: Ougschburg) is a city in the Bavarian part of Swabia, Germany, around 50 kilometres (31 mi) west of the Bavarian capital Munich. It is a university town and the regional seat of the Regierungsbezirk Swabia with a well-preserved Altstadt (historical city centre). Augsburg is an urban district and home to the institutions of the Landkreis Augsburg. It is the third-largest city in Bavaria (after Munich and Nuremberg), with a population of 304,000 and 885,000 in its metropolitan area.\nAfter Neuss, Trier, Worms, Cologne and Xanten, Augsburg is one of Germany's oldest cities, founded in 15 BC by the Romans as Augusta Vindelicorum and named after the Roman emperor Augustus. It was a Free Imperial City from 1276 to 1803 and the home of the patrician Fugger and Welser families that dominated European banking in the 16th century. According to Behringer, in the sixteenth century it became \"the dominant centre of early capitalism\", having benefited from being part of the Kaiserliche Reichspost system as \"the location of the most important post office within the Holy Roman Empire\" and the city's close connection to Maximilian I. The city played a leading role in the Reformation as the site of the 1530 Augsburg Confession and the 1555 Peace of Augsburg. The Fuggerei, the oldest social housing complex in the world, was founded in 1513 by Jakob Fugger.\nIn 2019, UNESCO recognised the Water Management System of Augsburg as a World Heritage Site because of its unique medieval canals and water towers and its testimony to the development of hydraulic engineering."
+        },
+        {
+          "article": "Augsburg (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Augsburg#Climate",
+          "text": "Augsburg has an oceanic climate (Köppen climate classification: Cfb) or, following the 0 °C isotherm, a humid continental climate (Dfb)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 20,
+      "leadWords": 268,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers Roman founding in 15 BC, banking families, Reformation sites, social housing, and water management heritage but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainfall, temperature, fog, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "augsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 115,
+    "place_id": "gn-5339111",
+    "input": {
+      "place": {
+        "place_id": "gn-5339111",
+        "name": "Concord",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.97798,
+        "lon": -122.03107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Concord, California",
+          "url": "https://en.wikipedia.org/wiki/Concord,_California",
+          "text": "Concord is the most populous city in Contra Costa County, California, United States. According to an estimate completed by the United States Census Bureau, the city had a population of 123,261 in 2025, making it the tenth most populous city in the San Francisco Bay Area. Founded in 1869 as Todos Santos by Don Salvio Pacheco II, a noted Californio ranchero, the name was later changed to Concord. The city is a major regional suburban East Bay center within the San Francisco Bay Area, and is 29 miles (47 kilometers) east of San Francisco.\nThe United States Census Bureau defines an urban area in the East Bay which is separated from the San Francisco–Oakland urban area and with Concord as the principal city: the Concord–Walnut Creek, CA urban area had a population of 538,583 as of the 2020 census, making it the 80th largest in the United States."
+        },
+        {
+          "article": "Concord, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Concord,_California#Climate",
+          "text": "Concord has a warm-summer Mediterranean climate (Köppen Csb), with warm, dry summers and cool, wet winters.\nOfficial data from the National Weather Service cooperative station in Concord shows average January temperatures are a maximum of and a minimum of . Average July temperatures are a maximum of and a minimum of . There are an average of 45.0 days with highs of or higher and 3.8 days with lows of or lower. The highest recorded temperature was on September 1, 2017. The lowest record temperature was on December 23, 1998.\nAverage annual precipitation is , falling on an average of 71 days annually. The wettest year was 1995, with and the driest year was 2007, with . The most rainfall in one month was in December 2005, which included the 24-hour maximum rainfall of on December 31."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 137,
+      "leadWords": 148,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes East Bay location east of San Francisco, founding in 1869 as Todos Santos, and population figures but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated summer heat, fog, rainfall, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "concord",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 116,
+    "place_id": "gn-1253184",
+    "input": {
+      "place": {
+        "place_id": "gn-1253184",
+        "name": "Vijayawada",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.50745,
+        "lon": 80.6466
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vijayawada",
+          "url": "https://en.wikipedia.org/wiki/Vijayawada",
+          "text": "Vijayawada (  Vijay-uh-waw-duh), also called as Bezawada, is the second largest city and a major commercial hub in the Indian state of Andhra Pradesh. The city forms an integral part of the Andhra Pradesh Capital Region and is situated on the banks of the Krishna River, flanked by the Eastern Ghats and the Indrakeeladri Hills.\nVijayawada is an important agricultural trade hub in the state of Andhra Pradesh, particularly for mango commerce. The city's surrounding regions, including Nunna and Nuzvid, are well known for extensive mango cultivation and wholesale trading. The mango-growing belt around Vijayawada produces popular varieties such as Banganapalle, Totapuri, Cheruku Rasalu, and Suvarnarekha, which are distributed to several Indian states and export markets.Vijayawada is known for mango trade due to the Nunna mango market. \nIt is renowned for its iconic Kanaka Durga Temple, an important Hindu shrine that attracts millions of devotees each year. Geographically positioned near the centre of the state, Vijayawada is popularly described as the commercial, political, cultural, and educational capital of Andhra Pradesh. It also serves as the administrative headquarters of the newly formed NTR district. The Prakasam Barrage across the Krishna River is a pivotal infrastructure asset that connects NTR and Guntur districts.\nVijayawada is recognised as one of India's fastest growing urban areas. The 2023 Oxford Economics report ranked it among the top 10 fastest growing cities in the world.\nVijayawada is considered to be a sacred place due to it being home to one of the most visited and famous temples in Andhra Pradesh and India, the Kanaka Durga Temple of the Hindu Goddess Durga residing on the Indrakeeladri hill. It also serves as the ritual host of Pushkaram (a river worshipping ritual in India) of the River Krishna. There is a legend which says that Arjuna, one of the heroes of the Indian epic Mahabharata, prayed on top of the Indrakeeladri Hill in the city and won the blessings of the Lord Shiva to get the Pashupatastra to win the Kurukshetra War. It was called Vijayavatika (meaning Land of Victory in Telugu) when Goddess Durga killed the demon Mahishasura and rested on the Indrakeeladri Hill by the River Krishna establishing the victory over evil hence the place got its name Vijayavatika, \"Vijaya\" meaning victory, and \"Vatika\" meaning place or land in Telugu.\nThe city is the third most densely populated urban built-up area in the world. and is classified as a Y-grade city by the Sixth Central Pay Commission. The city is the second most populous in the state with a population of more than one million. It was recognised as a \"Global City of the Future\" by McKinsey Quarterly, which expected an increase to GDP of $17 billion by 2025. In October 2018, it was awarded with ISO 37120 platinum level certification and has been added to the \"Global Cities Registry\".\nDue to the presence of several well-known educational institutions, the city has emerged as a major educational hub in recent times, with many of the nation's students studying in the city. It is predicted to be the world's, and India's, tenth fastest growing city economy through 2035 by an Oxford Economics report. Due to its high ratings in entertainment, construction, food, education, health care, and transport, it is ranked as India's ninth most liveable city as per Ease of Living Index 2018, and the Ministry of Housing and Urban Affairs and the second most liveable city in the state of Andhra Pradesh.\nThe Vijayawada Junction railway station is one of the busiest in the country. It is the tenth busiest railway junction in the country."
+        },
+        {
+          "article": "Vijayawada (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Vijayawada#Climate",
+          "text": "Vijayawada has a tropical wet and dry climate (Köppen Aw). The annual mean temperatures range between ; with maximum temperatures often crossing in the month of May and the minimum in December and January. The highest maximum temperature ever recorded was in May 2002. May is the hottest and January is the coldest month of the year. It receives rainfall from the South-west and North-east monsoons"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 66,
+      "leadWords": 598,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers river banks, hills, mango trade and cultivation, temples, and growth rankings but contains no stated climate mechanism, extreme, paradox, seasonal rhythm, or record; mango growing alone does not trace a climate mechanism in the extract",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated heat, monsoon rainfall, or seasonal pattern linked to the place"
+    },
+    "banned_terms": [
+      {
+        "term": "vijayawada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 117,
+    "place_id": "gn-1529531",
+    "input": {
+      "place": {
+        "place_id": "gn-1529531",
+        "name": "Dunhuang",
+        "country": "China",
+        "subdivision": "Gansu",
+        "lat": 40.16667,
+        "lon": 94.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunhuang",
+          "url": "https://en.wikipedia.org/wiki/Dunhuang",
+          "text": "Dunhuang () is a county-level city in northwestern Gansu Province, Northwestern China. According to the 2010 Chinese census, the city has a population of 186,027, though 2019 estimates put the city's population at about 191,800. Known as Sachu (沙洲), it was a major stop on the ancient Silk Road and is best known for the nearby Mogao Caves.\nDunhuang is situated in an oasis containing Crescent Lake and the Singing Sand Dunes. Dunhuang commands a strategic position at the crossroads of the ancient Southern Silk Route and the main road leading from India via Lhasa to Mongolia and southern Siberia, and also controls the entrance to the narrow Hexi Corridor, which leads straight to the heart of the north Chinese plains and the ancient capitals of Chang'an (today known as Xi'an) and Luoyang.\nAdministratively, the county-level city of Dunhuang is part of the prefecture-level city of Jiuquan. Historically, the city and/or its surrounding region has also been known by the names Shazhou (prefecture of sand) or Guazhou (prefecture of melons). In the modern era, the two alternative names have been assigned respectively to Shazhou zhen (Shazhou town) which serves as Dunhuang's seat of government, and to the neighboring Guazhou County."
+        },
+        {
+          "article": "Dunhuang (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Dunhuang#Climate",
+          "text": "Dunhuang has a cool arid climate (Köppen BWk), with an annual total precipitation of , the majority of which occurs in summer; precipitation occurs only in trace amounts and quickly evaporates. Winters are long and freezing, with a 24-hour average temperature of in January, while summers are hot, with a July average of ; the annual mean is . The diurnal temperature variation averages annually. With monthly percent possible sunshine ranging from 69% in March to 82% in October, the city receives 3,258 hours of bright sunshine annually, making it one of the sunniest nationwide.\nThe Gansu Dunhuang Solar Park was built in the southwest suburbs of the city to harvest the abundant solar energy."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 115,
+      "leadWords": 200,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes an oasis with Crescent Lake and Singing Sand Dunes and a Silk Road crossroads position but states no climate mechanism, extreme, paradox, seasonal rhythm, or record; oasis and dunes are geography, not a sourced climate pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated desert dryness, heat, rainfall, or wind pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "dunhuang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 118,
+    "place_id": "gn-1817993",
+    "input": {
+      "place": {
+        "place_id": "gn-1817993",
+        "name": "Anqing",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 30.51365,
+        "lon": 117.04723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anqing",
+          "url": "https://en.wikipedia.org/wiki/Anqing",
+          "text": "Anqing (simplified Chinese: 安庆; traditional Chinese: 安慶; pinyin: Ānqìng, also Yicheng, Nganking and formerly Hwaining, now the name of Huaining County) is a prefecture-level city in the southwest of Anhui province, People's Republic of China. Its population was 4,165,284 as of the 2020 census, with 728,501 living in the built-up (or metro) area made up of three urban districts. Anqing is famous as the birthplace of Chen Duxiu, one of the founding fathers of the Chinese Communist Party, who served as the first General Secretary of the Chinese Communist Party from 1921 to 1928. Huangmei opera, a renowned Chinese opera style, originated in the city of Anqing. This captivating art form gained immense popularity since the 1950s, largely attributed to the exceptional talents of local actors and actresses from Anqing. Huangmei opera is a significant cultural treasure that defines the rich heritage of the city of Anqing."
+        },
+        {
+          "article": "Anqing (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Anqing#Climate",
+          "text": "Anqing has a four-season, monsoon-influenced humid subtropical climate (Köppen Cfa), with chilly, damp winters and very hot, humid summers. Cold northwesterly winds from Siberia can occasionally cause nightly temperatures to drop below freezing (although snow is uncommon), while summer can see extended periods of + days. The monthly 24-hour average temperature ranges from in January to in July, while the annual mean is . Precipitation tends to reach a maximum in tandem with the meiyu (plum rains) while wintertime rainfall is generally light. With monthly percent possible sunshine ranging from 30% in March to 54% in August, the city receives 1,831 hours of bright sunshine annually."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 106,
+      "leadWords": 147,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers location in southwest Anhui, population, a famous birthplace, and the origin of Huangmei opera but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainfall, flood, heat, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "anqing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 119,
+    "place_id": "gn-3182884",
+    "input": {
+      "place": {
+        "place_id": "gn-3182884",
+        "name": "Arezzo",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.46276,
+        "lon": 11.88068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arezzo",
+          "url": "https://en.wikipedia.org/wiki/Arezzo",
+          "text": "Arezzo (UK:  ə-RET-soh, arr-ET-soh, US:  ar-ET-soh; Italian: [aˈrettso]) is a city and comune in Italy and the capital of the province of the same name located in Tuscany. Arezzo is about 80 kilometres (50 miles) southeast of Florence at an elevation of 296 metres (971 ft) above sea level. As of 2022, the population was about 97,000.\nKnown as the city of gold and of the high fashion, Arezzo was home to artists and poets such as Giorgio Vasari, Guido of Arezzo and Guittone d'Arezzo and in its province to Renaissance artist Michelangelo. In the artistic field, the city is famous for the frescoes by Piero della Francesca inside the Basilica of San Francesco, and the crucifix by Cimabue inside the Basilica of San Domenico. The city is also known for the important Giostra del Saracino, a game of chivalry that dates back to the Middle Ages."
+        },
+        {
+          "article": "Arezzo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Arezzo#Climate",
+          "text": "Arezzo has a humid subtropical climate (Köppen Cfa) with hot and dry summers combined with mild and rainy winters. The annual average temperature is , the hottest month in August is , and the coldest month is in January. The annual precipitation is , of which November is the wettest with , while July is the driest with only ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 60,
+      "leadWords": 147,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes location southeast of Florence, elevation, gold and fashion reputation, artists, frescoes, and a medieval chivalry game but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated summer heat, rainfall, wind, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "arezzo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 120,
+    "place_id": "gn-323779",
+    "input": {
+      "place": {
+        "place_id": "gn-323779",
+        "name": "Antakya",
+        "country": "Türkiye",
+        "subdivision": "Hatay",
+        "lat": 36.20655,
+        "lon": 36.15722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antakya",
+          "url": "https://en.wikipedia.org/wiki/Antakya",
+          "text": "Antakya (Turkish pronunciation: [anˈtakja]), Turkish form of Antioch, is a municipality and the capital district of Hatay Province, Turkey, with an area of 703 km2 (271 sq mi) and a population of around 400,000 people as of 2022. It is in the Hatay Province, which is the southernmost region of Turkey. The city is located in a well-watered and fertile valley on the Orontes River, about 20 kilometres (12 mi) from the Levantine Sea.\nToday's city stands partly on the site of the ancient Antiochia (also known as \"Antioch on the Orontes\"), which was founded in the fourth century BC by the Seleucid Empire. Antioch later became one of the Roman Empire's largest cities and was made the capital of the provinces of Syria and Coele-Syria. It was also an influential early center of Christianity; the New Testament asserts that the name \"Christian\" first emerged in Antioch. The city gained much ecclesiastical importance during the times of the Byzantine Empire. Captured by Umar ibn al-Khattab in the seventh century AD, the medieval Antakiyah was conquered or re-conquered several times: by the Byzantines in 969, the Seljuks in 1084, the Crusaders in 1098, the Mamluks in 1268, and eventually the Ottomans in 1517, who would integrate it to the Aleppo Eyalet then to the Aleppo Vilayet. The city joined the Hatay State under the French Mandate before joining the Turkish Republic.\nOn 6 February 2023, the city was heavily damaged by two powerful earthquakes with their epicenter in Kahramanmaraş. Some of the historical sites, including the Church of St Paul, were destroyed. The earthquakes destroyed several neighborhoods in the city and left thousands homeless. The death toll in Hatay Province, which includes Antakya, was estimated at over 20,000."
+        },
+        {
+          "article": "Antakya (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Antakya#Climate",
+          "text": "Antakya's climate is classified as hot-summer Mediterranean (Köppen: Csa) or dry-summer humid subtropical (Trewartha: Cf or wet Cs). The city experiences hot, dry summers, and mild, wet winters; though its higher altitude allows for lower temperatures than the coast.\nHighest recorded temperature: on 13 August 2023 Lowest recorded temperature: on 14 January 1950"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 53,
+      "leadWords": 287,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a well-watered fertile valley on a river near the sea and a long ancient history, plus 2023 earthquake damage, but states no climate mechanism, extreme, paradox, seasonal rhythm, or record; a one-off earthquake and fertile valley are not climate, and well-watered is not a mechanism",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainfall, summer heat, drought, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "antakya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 121,
+    "place_id": "gn-491422",
+    "input": {
+      "place": {
+        "place_id": "gn-491422",
+        "name": "Sochi",
+        "country": "Russia",
+        "subdivision": "Krasnodar Krai",
+        "lat": 43.59699,
+        "lon": 39.72477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sochi",
+          "url": "https://en.wikipedia.org/wiki/Sochi",
+          "text": "Sochi (Russian: Сочи, IPA: [ˈsotɕɪ] , from Ubykh: Шъуача – seaside) is the largest resort city in Russia. The city is situated on the Sochi River, along the Black Sea in the North Caucasus of Southern Russia, with a population of 466,078 residents, and up to 600,000 residents in the urban area. The city covers an area of 176.77 square kilometers (68.25 sq mi), while the Greater Sochi Area covers over 3,502 square kilometers (1,352 sq mi). Sochi stretches across 145 kilometers (90 mi), and is the longest city in Europe (territorially), the fifth-largest city in the Southern Federal District, the second-largest city in Krasnodar Krai, and the sixth-largest city on the Black Sea.\nSochi hosted the XXII Olympic Winter Games and XI Paralympic Winter Games in 2014. It hosted the alpine and Nordic Olympic events at the nearby ski resort of Rosa Khutor in Krasnaya Polyana. It also hosted the Formula 1 Russian Grand Prix from 2014 until 2021. It was also one of the host cities for the 2018 FIFA World Cup."
+        },
+        {
+          "article": "Sochi (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sochi#Climate",
+          "text": "Sochi has a humid subtropical climate (Köppen climate classification Cfa),\nSochi is situated on the same latitude as Nice but strong cold winds from the north make winters less warm. In fact, temperatures drop below freezing every winter. The highest temperature recorded was , on July 30, 2000, and the lowest temperature recorded was on January 25, 1892. Sochi lies at 8b/9a hardiness zone, so the city supports different types of palm trees. Examples of palms that are common in Sochi are the Sabal palmetto, Trachycarpus fortunei, and Phoenix canariensis."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 90,
+      "leadWords": 174,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a Black Sea resort city, its length and population, and hosting the 2014 Winter Games, Formula 1, and the 2018 World Cup but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record for the city itself; hosting winter events at a nearby ski resort is not a sourced city climate pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated mild winter, rainfall, heat, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "sochi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 122,
+    "place_id": "gn-1233369",
+    "input": {
+      "place": {
+        "place_id": "gn-1233369",
+        "name": "Negombo",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 7.2083,
+        "lon": 79.8358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Negombo",
+          "url": "https://en.wikipedia.org/wiki/Negombo",
+          "text": "Negombo (Sinhala: මීගමුව, romanized: Mîgamuwa, IPA: [miːɡəmuʋə], Tamil: நீர்கொழும்பு, romanized: Nīrkoḻumpu, IPA: [n̪iːɾxoɻumbɯ]), also known as Punchi Romaya (Little Rome) and Mîpura (city of bees), is a major city in Sri Lanka, situated on the west coast and at the mouth of the Negombo Lagoon, in the Western Province, 38 km (24 mi) from Colombo via the Colombo–Katunayake Expressway and the nearest major city from the Bandaranaike International Airport (about 9 km distance).\nNegombo is a major commercial centre in the country and the largest city in Gampaha District, and is also the administrative centre of Negombo Division.  Negombo has a population of about 142,136 within its divisional secretariat division. Negombo municipal boundary is fully extended throughout its Divisional Secretariat area.\nNegombo is known for its long sandy beaches and centuries old fishing industry. Negombo has a large bilingual (Sinhala/Tamil) population with a large Christian majority."
+        },
+        {
+          "article": "Negombo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Negombo#Climate",
+          "text": "Negombo features a tropical rainforest climate under the Köppen climate classification. The city receives rainfall mainly from the Southwestern monsoons from May to August and October to January. During the remaining months there is a little precipitation due to Convective rains. The average annual precipitation is about . The average temperature varies to , and there are high humidity levels from February to April."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 64,
+      "leadWords": 146,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers west coast lagoon location, distance from Colombo and the airport, sandy beaches, and the fishing industry but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record; beaches alone are not climate",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated monsoon, rainfall, heat, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "negombo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 123,
+    "place_id": "gn-1735102",
+    "input": {
+      "place": {
+        "place_id": "gn-1735102",
+        "name": "Bayan Lepas",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.29992,
+        "lon": 100.26052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayan Lepas",
+          "url": "https://en.wikipedia.org/wiki/Bayan_Lepas",
+          "text": "Bayan Lepas is a suburb of George Town in the Malaysian state of Penang. Located near the southeastern tip of Penang Island, 15 km (9.3 mi) south of the city centre, it is home to the Penang International Airport, the third busiest airport in Malaysia, as well as one of the oldest free industrial zones in the country.It is the birthplace of Tun Abdullah Ahmad Badawi, Malaysia’s 5th Prime Minister.\nEstablished sometime in the 19th century, Bayan Lepas had been an agricultural village, with rice production as its mainstay. The British built what is now the Penang International Airport in 1935, but it was only in the 1970s when Bayan Lepas witnessed widescale transformation with the creation of the eponymous free industrial zone.\nToday, electronics manufacturing and logistics have replaced agriculture as the major economic sectors at Bayan Lepas, while residential and commercial developments have accelerated, including Queensbay Mall, one of the largest shopping malls in George Town."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 158,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a suburb near the southeastern tip of an island, the airport, a free industrial zone, rice-growing past, and electronics present but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record; rice production alone does not trace a climate mechanism in the extract",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainfall, heat, monsoon, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "bayan lepas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bayan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lepas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 124,
+    "place_id": "gn-2516548",
+    "input": {
+      "place": {
+        "place_id": "gn-2516548",
+        "name": "Huelva",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.26638,
+        "lon": -6.94004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huelva",
+          "url": "https://en.wikipedia.org/wiki/Huelva",
+          "text": "Huelva (US:  WHEL-və, Spanish: [ˈwelβa] , locally [ˈɡweɾβa]) is a municipality of Spain and the capital of the province of Huelva, in the autonomous community of Andalusia. Located in the southwest of the Iberian Peninsula, it sits between the estuaries of the Odiel and Tinto rivers on the Atlantic coast of the Gulf of Cádiz. According to the 2010 census, the city had a population of 149,410.\nWhile the existence of an earlier pre-Phoenician settlement within the current urban limits since c. 1250 BC has been tentatively defended by scholars, Phoenicians established a stable colony roughly by the 9th century BC. Modern economic activity conformed to copper and pyrite extraction upstream funded by British capital and to the role of its port, as well as with the later development of a petrochemical industry.\nHuelva is home to Recreativo de Huelva, the oldest football club in Spain."
+        },
+        {
+          "article": "Huelva (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Huelva#Climate",
+          "text": "Huelva and its metropolitan area experience a Mediterranean climate (Köppen: Csa), characterized by mild, wet winters and long, hot, dry summers. The average annual temperature is approximately 18.1 °C (64.6 °F), with average highs reaching 25.5 °C (77.9 °F) in August and lows of 11.4 °C (52.5 °F) in January. Annual precipitation is around per year, typically spread across 53 rainy days, with December being the wettest month. Extreme temperatures have included a high of 43.9 °C (111.0 °F) recorded on 25 July 2022 and a low of -3.2 °C (29 °F) recorded in January. While Huelva experiences milder conditions near the coastline, its location near the river delta slightly amplifies summer warmth.\nSnowfall is an extremely rare phenomenon in the city of Huelva. The most significant snowfalls recorded occurred in February 1954 and January 1991, with snow depths reaching up to 10 cm (4 in) and 15 cm (6 in), respectively, causing notable disruptions due to the region's lack of preparedness for such events. Huelva's climate is further influenced by being on the Atlantic Ocean, which moderates temperatures, particularly in coastal areas.\nThe Sierra de Huelva's unique microclimate also contributes to its occasional snowfalls yearly, making it a distinct feature compared to the otherwise temperate lowlands."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 207,
+      "leadWords": 146,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives geography between the Odiel and Tinto estuaries, Phoenician settlement, copper and port activity, and football, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "huelva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 125,
+    "place_id": "gn-5379439",
+    "input": {
+      "place": {
+        "place_id": "gn-5379439",
+        "name": "Ontario",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.06334,
+        "lon": -117.65089
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ontario, California",
+          "url": "https://en.wikipedia.org/wiki/Ontario,_California",
+          "text": "Ontario is a city in southwestern San Bernardino County, California, United States, 35 miles (56 km) east of downtown Los Angeles and 23 miles (37 km) west of downtown San Bernardino, the county seat. Located in the western part of the Inland Empire metropolitan area, it lies just east of Los Angeles County and is part of the Los Angeles metropolitan area. As of the 2020 census, the city had a population of 175,265.\nThe city is home to Ontario International Airport, which is the 8th-busiest airport in the United States by cargo carried, as of 2026. Ontario handles the mass of freight traffic between the ports of Los Angeles and Long Beach and the rest of the country.\nIt takes its name from the Ontario Model Colony development established in 1882 by the Canadian engineer George Chaffey and his brothers, William Chaffey and Charles Chaffey. They named the settlement after their home province of Ontario, Canada's most populous province."
+        },
+        {
+          "article": "Ontario, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ontario,_California#Climate",
+          "text": "The climate of Ontario is influenced by BSh semi-arid conditions, with hot summers and mild winters. Santa Ana Winds hit the area frequently in autumn and winter. Extremes range from down to . According to the Köppen Climate Classification system, Ontario has a hot-summer Mediterranean climate, abbreviated \"Csa\" on climate maps."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 51,
+      "leadWords": 160,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location east of Los Angeles, cargo airport importance, and the 1882 naming story, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ontario",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 126,
+    "place_id": "gn-5405380",
+    "input": {
+      "place": {
+        "place_id": "gn-5405380",
+        "name": "Vallejo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.10409,
+        "lon": -122.25664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vallejo, California",
+          "url": "https://en.wikipedia.org/wiki/Vallejo,_California",
+          "text": "Vallejo ( və-LAY-(h)oh; Spanish pronunciation: [baˈʎexo] ) is a city in Solano County, California, United States, and the second largest city in the North Bay region of the Bay Area. Located on the shores of San Pablo Bay, the city had a population of 126,090 at the 2020 United States census. Vallejo is home to the Cal Poly Maritime Academy, Touro University California, and Six Flags Discovery Kingdom.\nVallejo is named after Mariano Guadalupe Vallejo, the famed Californio general and statesman. The city was founded in 1851 on General Vallejo's Rancho Suscol to serve as the capital city of California, which it was from 1852 to 1853, after which the Californian government moved to neighboring Benicia, named in honor of Vallejo's wife Benicia Carrillo de Vallejo. The Mare Island Naval Shipyard was founded in 1854, and defined Vallejo's economy until the turn of the 21st century."
+        },
+        {
+          "article": "Vallejo, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Vallejo,_California#Climate",
+          "text": "Vallejo has a mild, coastal Mediterranean climate and can be an average of cooler than nearby inland cities. Vallejo is influenced by its position on the northeastern shore of San Pablo Bay, but is less sheltered from heatwaves than areas directly on or nearer the Pacific Ocean/Golden Gate such as San Francisco and Oakland. Although slightly less marine, average temperatures range between in January and in July. However, summer is very long with June–September being almost equal in historical average temperatures. This seasonal lag sees October averages being higher than in May in spite of it being after the equinox (meaning less daylight than darkness)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 105,
+      "leadWords": 146,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location on San Pablo Bay, the 1851 founding and brief time as state capital, and the naval shipyard, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "vallejo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 127,
+    "place_id": "gn-5881791",
+    "input": {
+      "place": {
+        "place_id": "gn-5881791",
+        "name": "Abbotsford",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.05798,
+        "lon": -122.25257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbotsford, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Abbotsford,_British_Columbia",
+          "text": "Abbotsford (, A-buts-furd) is a city in British Columbia next to the Canada–United States border, Greater Vancouver, and the Fraser River. With a census population of 153,569 people (2021), it is the most populous municipality in the province outside metropolitan Vancouver. Abbotsford–Mission has the third-highest proportion of visible minorities among census metropolitan areas in Canada, after the Greater Toronto Area and the Greater Vancouver CMA. It is home to Tradex, the University of the Fraser Valley, and Abbotsford International Airport.\nAs of the 2021 census, it is the largest municipality of the Fraser Valley Regional District and the fifth-largest municipality of British Columbia. The Abbotsford–Mission metropolitan area of around 195,726 inhabitants as of the 2021 census is the 23rd-largest census metropolitan area in Canada. It has also been named by Statistics Canada as Canada's most generous city in terms of charitable donations for nine consecutive years.\nThe community of 375.55 square kilometres (145.00 sq mi) is the largest city by area in British Columbia. The municipality's southern boundary is the Canada–United States border. In Canada, it is bordered by the Township of Langley to the west, the City of Mission to the north, and the City of Chilliwack to the east. Abbotsford borders the town of Sumas, Washington, to the south. Much of Abbotsford has views of Mount Baker (to the southeast, in Washington) and the Coast Mountains (to the north)."
+        },
+        {
+          "article": "Abbotsford, British Columbia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Abbotsford,_British_Columbia#Climate",
+          "text": "Abbotsford has an oceanic climate (Köppen climate type: Cfb), with just enough summer precipitation not to be classified as warm-summer mediterranean. Summers are generally warm and drier than at other times of the year and winters are rainy and very mild by Canadian standards. Snowfall can be heavy but usually not very long lasting, on average falling mostly in December and January.\nThe record high temperature was recorded June 28, 2021. The record high daily minimum was recorded July 30, 2009. The record highest dew point was recorded July 19, 1956. The most humid month was July 1998 with an average dew point of . The warmest month was July 1958 with an average mean temperature of and an average daily maximum of . August 2004 recorded the month with the highest average monthly daily minimum of . August 2017 set a record of no maximum temperature below for the entire month; July 2015 with no temperature below , and July 1998 with no dew point below .\nThe lowest yearly maximum dew point is recorded in 1989. The lowest yearly maximum daily minimum temperature is recorded in 1955. The lowest yearly maximum temperature is recorded in 1954.\nThe average yearly maximum dew point is and the average yearly maximum daily minimum temperature is ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 215,
+      "leadWords": 231,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location by the border, Greater Vancouver, and the Fraser River, plus census and airport facts, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "abbotsford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 129,
+    "place_id": "gn-1842030",
+    "input": {
+      "place": {
+        "place_id": "gn-1842030",
+        "name": "Gunpo",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 37.3675,
+        "lon": 126.94694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gunpo",
+          "url": "https://en.wikipedia.org/wiki/Gunpo",
+          "text": "Gunpo (Korean: 군포; Korean pronunciation: [kun.pʰo]), formerly romanized as Kunp'o, is a city in Gyeonggi Province, South Korea. It is south of Seoul and in the Seoul National Capital Area. It borders Anyang to the north, Uiwang to the east, and Ansan to the south and west, and is connected to its neighbors and to Seoul by lines 1 and 4 of the Seoul Metropolitan Subway. Gunpo is also home to three stops on the Gyeongbu Line, a national railway that links it to the rest of the country. Although 73.2% of the city is greenspace, owing largely to Surisan and various smaller mountains, Gunpo is home to over 286,000 residents in several urban areas. The city's downtown core is Sanbon New Town, a commercial hub which centers on a pedestrian \"street of culture\" that Gunpo has designated as one of its eight scenic locations.\nGunpo was promoted from town to city in 1989 due to the rapid urban and industrial growth of Seoul, and large-scale housing projects were immediately begun. Hansei University, a Christian institute of post-secondary learning, is in the city, as are forty-four other public schools and a number of private academies. With eighty-three percent of its citizens holding public library memberships, Gunpo touts itself as a book-reading city, and it also promotes itself as being environmentally friendly and in harmony with nature. Its residents include 2010 Olympic figure skating gold medalist Yuna Kim, who grew up in Gunpo after moving there at the age of six. Sightseeing locations around the city include the Banwol reservoir and the Royal Azaleas Hill, and Surisan is a hiking destination."
+        },
+        {
+          "article": "Gunpo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gunpo#Climate",
+          "text": "Gunpo has a humid continental climate (Köppen: Dwa), but can be considered a borderline humid subtropical climate (Köppen: Cwa) using the isotherm."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 22,
+      "leadWords": 270,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location south of Seoul, subway and railway links, greenspace and mountains, and 1989 promotion to city, but no climate mechanism, extreme, paradox, or seasonal rhythm at all",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox, or seasonal rhythm verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "gunpo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

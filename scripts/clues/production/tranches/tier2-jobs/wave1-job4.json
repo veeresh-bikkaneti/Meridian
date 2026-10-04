@@ -1,0 +1,902 @@
+[
+  {
+    "rank": 66,
+    "place_id": "gn-1270498",
+    "input": {
+      "place": {
+        "place_id": "gn-1270498",
+        "name": "Haldwani",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.22254,
+        "lon": 79.5286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haldwani",
+          "url": "https://en.wikipedia.org/wiki/Haldwani",
+          "text": "Haldwani (Kumaoni: Haldvānī) is the largest city of Kumaon, and the third most populous city in the Indian state of Uttarakhand. Haldwani is said to be the financial capital of Uttarakhand, having the most commercial, economic and industrial activities of the state. Haldwani is located in the Nainital District, and is one of its thirteen subdivisions. Being situated in the immediate foothills of Kumaon Himalayas, the Kathgodam neighbourhood of Haldwani is known as the Gateway to Kumaon.\nLocated in the Bhabhar region in the Himalayan foothills on the banks of the Gaula River, the town of Haldwani was established in 1834, as a mart for hill people who visited Bhabar during the cold season. The establishment of the Bareilly–Nainital provincial road in 1882 and the Bhojeepura–Kathgodam railway line by Rohilkund and Kumaon Railway in 1884 helped develop the town into a major trading post and then a hub between the hilly regions of Kumaon and the Indo-Gangetic Plains.\nHaldwani hosted National Games 2025 (Gaulapar)."
+        },
+        {
+          "article": "Haldwani (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Haldwani#Climate",
+          "text": "Haldwani features a humid subtropical climate (Köppen: Cwa), heavily influenced by its location at the immediate foothills of the Himalayas. The city experiences distinct seasonal variations marked by hot, humid summers and cool winters, with the vast majority of its annual rainfall occurring during the southwest monsoon season from July to September."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 52,
+      "leadWords": 164,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Himalayan foothills and river location and says hill people visited a mart during the cold season, but describes no climate mechanism, extreme, paradox, or weather pattern for this place",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "haldwani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 67,
+    "place_id": "gn-1648637",
+    "input": {
+      "place": {
+        "place_id": "gn-1648637",
+        "name": "Bitung",
+        "country": "Indonesia",
+        "subdivision": "North Sulawesi",
+        "lat": 1.44059,
+        "lon": 125.12824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bitung",
+          "url": "https://en.wikipedia.org/wiki/Bitung",
+          "text": "Bitung, officially the City of Bitung (Indonesian: Kota Bitung), is a coastal city at the north-eastern edge of the island of Sulawesi in Indonesia.  Bitung is located in the province of North Sulawesi (Sulawesi Utara), and faces Lembeh Island (which forms two districts of the city), and the Lembeh Strait, which is known for its colourful marine life, in particular sea slugs.  Bitung has a population of 187,932 at the 2010 Census, making it the second most populated city in the province after the capital Manado, rising to 225,134 at the 2020 Census; the official estimate as at mid 2025 was 217,504 (comprising 110,606 males and 106,898 females).\nA number of development projects have been completed, or are currently undergoing centring around the city; these include the Bitung Special Economic Zone (SEZ), Manado–Bitung Toll Road, Bitung International Ocean Going Ship Port, and the Makassar-Bitung rail track; which will automatically make the city a gateway to the Pacific region."
+        },
+        {
+          "article": "Bitung (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bitung#Climate",
+          "text": "Bitung has a tropical rainforest climate (Af) with heavy to very heavy rainfall year-round."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 14,
+      "leadWords": 158,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a coastal location facing an island and strait known for marine life, plus development projects, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bitung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 68,
+    "place_id": "gn-3033123",
+    "input": {
+      "place": {
+        "place_id": "gn-3033123",
+        "name": "Besançon",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 47.24878,
+        "lon": 6.01815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Besançon",
+          "url": "https://en.wikipedia.org/wiki/Besan%C3%A7on",
+          "text": "Besançon (UK: , US: ; French: [bəzɑ̃sɔ̃] , Franco-Provençal: [bəzɑ̃ˈsɔ̃]; archaic German: Bisanz; Latin: Vesontio) is a French city that serves as the capital of the department of Doubs in the region of Bourgogne-Franche-Comté. The city is located in Eastern France, close to the Jura Mountains and the border with Switzerland.\nCapital of the historic and cultural region of Franche-Comté, Besançon is home to the Bourgogne-Franche-Comté regional council headquarters, and is an important administrative centre in the region. It is also the seat of one of the fifteen French ecclesiastical provinces and one of the two divisions of the French Army.\nThe city has a population of about 120,000, and is the centre of a metropolitan area of about 285,000 inhabitants, the second in the region in terms of population (after Dijon).\nEstablished in a meander of the river Doubs, the city was already important during the Gallo-Roman era under the name of Vesontio, capital of the Sequani. Its geography and specific history turned it into a military stronghold, a garrison city, a political centre, and a religious capital.\nBesançon is the historical capital of watchmaking in France. This has led it to become a centre for innovative companies in the fields of microtechnology, micromechanics, and biomedical engineering. Its university, founded in 1423, has an enrollment of nearly 30,000 students, including around 4,000 trainees from all over the world within its Centre for Applied Linguistics (CLA).\nThe greenest city in France, it enjoys a quality of life recognized in Europe. Thanks to its rich historical and cultural heritage and its unique architecture, Besançon has been labeled a \"Town of Art and History\" since 1986. Its fortifications, designed by Vauban, have been listed as a UNESCO World Heritage Site since 2008. The city has preserved numerous historical elements dating from Antiquity to the 19th century."
+        },
+        {
+          "article": "Besançon (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Besan%C3%A7on#Climate",
+          "text": "Besançon has an oceanic climate (Köppen: Cfb, Trewartha: Do), with cool to cold winters, warm summers, and frequent precipitation year-round. The year-round average is . The warmest month is July with an average temperature of , and the coldest is January, with an average temperature of . Besançon receives about of precipitation per year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 54,
+      "leadWords": 304,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives eastern France location near mountains and a border, a river meander, watchmaking, and green-city status, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "besancon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 69,
+    "place_id": "gn-3598132",
+    "input": {
+      "place": {
+        "place_id": "gn-3598132",
+        "name": "Guatemala City",
+        "country": "Guatemala",
+        "subdivision": "Guatemala",
+        "lat": 14.64072,
+        "lon": -90.51327
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guatemala City",
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City",
+          "text": "Guatemala City (Spanish: Ciudad de Guatemala), also known colloquially by the nickname Guate, is the national capital and largest city of the Republic of Guatemala. It serves as the municipal capital of the surrounding Guatemala Department. Its metropolitan area is also the largest in Central America. The city is located in a mountain valley called Valle de la Ermita (English: 'Hermitage Valley') in the south-central part of the country.\nGuatemala City is the site of the native Mayan city of Kaminaljuyu in Mesoamerica, which was occupied primarily between 1500 BCE and 1200 CE. The present city was founded by the Spanish after their colonial capital, now called Antigua Guatemala, was destroyed by the devastating 1773 Santa Marta earthquake and its aftershocks. It became the third royal capital of the surrounding Captaincy General of Guatemala; which itself was part of the larger Viceroyalty of New Spain in imperial Spanish America and remained under colonial rule until the nineteenth century.\nIn September 1821, Guatemala City was the site of the famous Act of Independence of Central America, which declared the independence of the region from the Spanish Empire. It was ratified and enacted on 15 September, now celebrated annually as Guatemala's independence day and called the Dias Patrios. For the next several decades, Guatemala City was the federation capital of the newly established and independent government of the United Provinces of Central America, which was later reorganized and renamed the Federal Republic of Central America. In August 1847, Guatemala declared itself an independent republic, separate from the larger federation, and Guatemala City became its national capital.\nGuatemala City and the surrounding region were almost completely destroyed by the 1917–1918 Guatemala earthquakes and months of continued aftershocks. Reconstructions since have resulted in a more modern architectural landscape, including wider streets and a grid lay-out for new developments, inspired by post-18th century designs of architects in other national capital cities such as Paris, France and Washington, D.C.\nToday, Guatemala City is the political, cultural, religious and economic center of the Republic of Guatemala and exerts a wide financial, commercial, and cultural influence on the Central America region and beyond, throughout Latin America."
+        },
+        {
+          "article": "Guatemala City (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City#Climate",
+          "text": "As it is in the tropics, Guatemala City has a tropical savannah climate (Köppen Aw) bordering on a more temperate humid subtropical climate (Cwa/Cwb) due to its relatively high altitude. Guatemala City is generally very warm, almost springlike, throughout the year.\nIt occasionally gets hot during the dry season, although not as hot and humid as other cities in Central America at sea level. The hottest month is April. The rainy season extends from May to October, coinciding with the tropical storm and hurricane season in the western Atlantic Ocean and Caribbean Sea, while the dry season extends from November to April. The city can at times be windy, which also leads to lower ambient temperatures.\nThe city's average annual temperature ranges are during the day and at night; its average relative humidity is 82% in the morning and 58% in the evening; and its average dew point is ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 150,
+      "leadWords": 358,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a mountain valley location and a long history shaped by earthquakes, which are not climate, but no climate mechanism, extreme, paradox, or seasonal weather pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "guatemala city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "guatemala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 70,
+    "place_id": "gn-498677",
+    "input": {
+      "place": {
+        "place_id": "gn-498677",
+        "name": "Saratov",
+        "country": "Russia",
+        "subdivision": "Saratov Oblast",
+        "lat": 51.54048,
+        "lon": 45.9901
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saratov",
+          "url": "https://en.wikipedia.org/wiki/Saratov",
+          "text": "Saratov is the largest city and administrative center of Saratov Oblast, Russia, and a major port on the Volga River. As of the 2021 Census, Saratov had a population of 901,361, making it the 17th-largest city in Russia by population. Saratov is 389 kilometres (242 mi) north of Volgograd, 442 kilometres (275 mi) south of Samara, and 858 kilometres (533 mi) southeast of Moscow.\nThe city stands near the site of Uvek, a city of the Golden Horde. Tsar Feodor I of Russia likely developed Saratov as a fortress to secure Russia's southeastern border. Saratov developed as a shipping port along the Volga and was historically important to the Volga Germans, who settled in large numbers in the city before they were expelled before and during World War II.\nSaratov is home to a number of cultural and educational institutions, including the Saratov Drama Theater, Saratov Conservatory, Radishchev Art Museum, Saratov State Technical University, and Saratov State University."
+        },
+        {
+          "article": "Saratov (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Saratov#Climate",
+          "text": "Saratov has a moderately continental climate with warm summers, relatively dry climate and an abundance of sunny days. The warmest month is July with daily mean temperature near ; the coldest is February, at .\nSummers are hot and in Saratov daytime temperatures of or higher are commonplace, up to during a heat wave in 2010.\nSnow and ice are dominant during the winter season. Days well above freezing and nights below both occur in the winter."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 77,
+      "leadWords": 158,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a Volga River port location, distances to other cities, fortress origins, and cultural institutions, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "saratov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 71,
+    "place_id": "gn-1263780",
+    "input": {
+      "place": {
+        "place_id": "gn-1263780",
+        "name": "Mangaluru",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 12.91723,
+        "lon": 74.85603
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mangaluru",
+          "url": "https://en.wikipedia.org/wiki/Mangaluru",
+          "text": "Mangaluru (Kannada: [mɐŋɡɐɭuːru]), formerly called Mangalore ( MANG-gə-lor, -⁠LOR), is a major industrial port city in the Indian state of Karnataka and on the west coast of India. It is located between the Arabian Sea and the Western Ghats about 352 km (219 mi) west of Bengaluru, the state capital, 14 km (8+1⁄2 mi) north of the Karnataka–Kerala border and 297 km (185 mi) south of Goa. Mangaluru is the state's only city to have all four modes of transport—air, road, rail and sea. The population of the urban agglomeration was 619,664 according to the 2011 national census of India. It is known for being one of the locations of the Indian strategic petroleum reserves.\nThe city developed as a port in the Laccadive Sea during ancient times, and after Independence a new port was constructed in 1968 and has since become a major port of India that handles 75 percent of India's coffee and cashew exports. It is also the country's seventh largest container port. Mangaluru has been ruled by several major powers, including the Mauryan empire, Kadambas, Alupas, Vijayanagara Empire, and Keladi Nayaks. The city was a source of contention between the British and the Kingdom of Mysore rulers Hyder Ali and Tipu Sultan, and was eventually annexed by the British in 1799. Mangaluru remained part of the Madras Presidency until India's independence in 1947 and was unified with Mysore State (now called Karnataka) in 1956.\nMangaluru is one of the fastest developing cities in India. The Dakshina Kannada district, with its administrative headquarters at Mangaluru, has the highest per capita income and gross state domestic product in Karnataka after Bengaluru. It is a commercial, industrial, business, educational, healthcare, and startup hub. Mangaluru City Corporation is responsible for the civic administration which manages the 60 wards of the city. Its landscape is characterised by rolling hills, coconut palms, rivers, and hard laterite soil.\nMangaluru is included as one of the cities in the Smart Cities Mission list and is among the 100 smart cities to be developed in India. It has an average elevation of 22 m (72 ft) above mean sea level. It has a tropical monsoon climate and is under the influence of the southwest monsoon. It has its own international airport which is around 15 km (9.3 mi) from the city centre."
+        },
+        {
+          "article": "Mangaluru (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Mangaluru#Climate",
+          "text": "Under the Köppen climate classification, Mangaluru has a tropical monsoon climate and is under the direct influence of the Laccadive Sea branch of the southwest monsoon. It receives about 95 percent of its total annual rainfall between May and September but remains extremely dry from December to March. The maximum average humidity is 93 percent in July and average minimum humidity is 56 percent in January. The driest and least humid months are from December to February. During this time of year temperatures during the day stay below and drop to about at night. The lowest temperature recorded at Panambur is on 8 January 1992 and at Bajpe it is on 19 November 1974. According to the India Meteorological Department (IMD), the temperature in Mangaluru has never reached . The summer gives way to the monsoon season, when the city experiences the highest precipitation of all urban centres in India due to the influence of the Western Ghats. The rains subside in September but there is occasional rainfall in October. The highest rainfall recorded in a 24-hour period is on 22 June 2003."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 183,
+      "leadWords": 387,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states only a tropical monsoon climate under the influence of the southwest monsoon, a bare classification with no described mechanism, extreme, paradox, or rainfall pattern",
+      "priorMissing": "description of how the monsoon works here, its rains or seasons, or a climate extreme or paradox beyond the classification"
+    },
+    "banned_terms": [
+      {
+        "term": "mangaluru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 72,
+    "place_id": "gn-3827409",
+    "input": {
+      "place": {
+        "place_id": "gn-3827409",
+        "name": "Cuauhtémoc",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.44506,
+        "lon": -99.14612
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuauhtémoc, Mexico City",
+          "url": "https://en.wikipedia.org/wiki/Cuauht%C3%A9moc,_Mexico_City",
+          "text": "Cuauhtémoc (Spanish pronunciation: [kwawˈtemok] ) is a borough of Mexico City. Named after the 16th-century Aztec ruler Cuauhtémoc, it contains the oldest parts of the city, extending over what was the entire urban core of Mexico City in the 1920s.\nCuauhtémoc is the historic and cultural center of Mexico City, although it is not the geographical center. While it ranks only sixth in population, it generates about a third of the entire city's GDP, mostly through commerce and services. It is home to the Mexican Stock Exchange, the important tourist attractions of the historic center and Zona Rosa, and various skyscrapers, such as the Torre Mayor and the Mexican headquarters of HSBC. It also contains numerous museums, libraries, government offices, markets, and other commercial centers, which can bring in as many as 5 million people each day to work, shop, or visit cultural sites.\nThis area has had problems with urban decay, especially in the historic center. Efforts to revitalize the historic center and some other areas have been going on since the 1990s, by both government and private entities. Such efforts have resulted in better public parks, such as the Alameda Central, which was renovated, and the modification of streets such as 16 de Septiembre and Madero that have become car-free for pedestrians (zona peatonal)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 216,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a historic borough centre, commerce, museums, and city renewal, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cuauhtemoc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 73,
+    "place_id": "gn-5399020",
+    "input": {
+      "place": {
+        "place_id": "gn-5399020",
+        "name": "Stockton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.9577,
+        "lon": -121.29078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stockton, California",
+          "url": "https://en.wikipedia.org/wiki/Stockton,_California",
+          "text": "Stockton is a city in and the county seat of San Joaquin County, California, United States. It is the most populous city in the county, the 11th-most populous city in California and the 60th-most populous city in the U.S., with 320,804 residents at the 2020 census. The city is located on the San Joaquin River in the northern San Joaquin Valley, within California's Central Valley. It lies at the southeastern corner of a large inland river delta that separates it from other nearby cities, such as Sacramento and the San Francisco Bay Area.\nStockton was founded by Charles Maria Weber during the California Gold Rush in 1849, after he acquired Rancho Campo de los Franceses to capitalize on its strategic location on the San Joaquin River. The city is named after famed Mexican–American War commodore Robert F. Stockton, and it was the first community in California to have a name not of Spanish or Native American origin. With the introduction of irrigation, railroad connections, and the opening of the Port of Stockton in 1933, the city developed as a logistics and commercial hub. Notable attractions in the city include the Haggin Museum and the Gurdwara Sahib of Stockton, the first Sikh house of worship established in the U.S. The University of the Pacific, chartered in 1851, is the oldest university in California and has been located in Stockton since 1923."
+        },
+        {
+          "article": "Stockton, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Stockton,_California#Climate",
+          "text": "]]\nStockton's climate lies right on the boundary of, and fluctuates between, hot-summer Mediterranean (Köppen: Csa) and cool semi-arid (BSk). Stockton is characterized by very hot, arid summer and cool, wet winter. In an average year, nearly 95% of the of precipitation falls from October through April.\nAt the airport, the highest recorded temperature was on July 23, 2006, and September 6, 2022, and the lowest was on January 11, 1949. There are an average of 88 afternoons annually with high temperatures of or higher, and 19 afternoons of or above; 19 mornings see low temperatures at or below freezing. The wettest \"rain year\" was from July 1982 to June 1983 with and the driest from July 1975 to June 1976 with ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 123,
+      "leadWords": 230,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a river and valley location, Gold Rush founding, port and rail growth, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "stockton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 74,
+    "place_id": "gn-7290718",
+    "input": {
+      "place": {
+        "place_id": "gn-7290718",
+        "name": "Barra da Tijuca",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.99835,
+        "lon": -43.36545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barra da Tijuca",
+          "url": "https://en.wikipedia.org/wiki/Barra_da_Tijuca",
+          "text": "Barra da Tijuca (Brazilian Portuguese pronunciation: [ˈbaʁɐ dɐ tʃiˈʒukɐ]), usually known as just Barra, is an upper-middle class neighborhood (or bairro) in the Southwest Zone of Rio de Janeiro, Brazil, located in the western portion of the city on the Atlantic Ocean. Barra is well known for its beaches, its many lakes and rivers, and its lifestyle. This neighbourhood represents 4.7% of the city population and 13% of the total area of Rio de Janeiro.\nBarra da Tijuca is classified as one of the most developed places in Brazil, with one of the highest Human Development Indexes (HDI) in the country, as measured in the 2000 Brazil Census. Unlike the South and Central Zones, Barra da Tijuca follows Modernist standards, with large boulevards creating the major transit axis. The area's masterplan was designed by Lúcio Costa, known for his work on Brasília, and creates a region filled with many gardens, shopping malls, apartment buildings, and large mansions. In recent years, due to the rapid development of the Brazilian economy, Barra's population has increased by over 100,000, as a large number of residents and companies search for cheaper real estate as an alternative to the densely populated South Zone of Rio. Demographic data indicates that the region is the fastest-growing neighborhood in Rio: 98,851 in 1991, 174,353 in 2000, and 300,823 in 2010.\nBarra natives and residents are known as Barristas, or more popularly, Barrenses. The neighborhood is a cultural, economic, and administrative hub of the city, and is believed to be the safest of Rio's upper-class neighbourhoods because of its lack of favelas and plentiful private and public security. It is the home of several celebrities and football players, such as the singer Anitta. Home to the Barra Olympic Park, Barra hosted a large number of venues for the 2016 Summer Olympics, the first held in South America."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 308,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes beaches, lakes, rivers, modern boulevards, growth, and Olympic venues, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "barra da tijuca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tijuca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 75,
+    "place_id": "gn-1177662",
+    "input": {
+      "place": {
+        "place_id": "gn-1177662",
+        "name": "Gujranwala",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.15567,
+        "lon": 74.18705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gujranwala",
+          "url": "https://en.wikipedia.org/wiki/Gujranwala",
+          "text": "Gujranwala is the fourth-largest city in the province of Punjab, serving as the headquarters of its eponymous district and division. It is nicknamed the \"City of Wrestlers\" and is famous for its cuisine and historical significance. Located in the Rachna Doab, it is a major metropolitan hub of northeastern Punjab, and is the fifth-most populous city in Pakistan.\nFounded in the 18th century, Gujranwala is a relatively modern town compared to the several nearby millennia-old cities of northern Punjab. The birthplace of Ranjit Singh, the city served as the capital of the Sukerchakia Misl between 1763 and 1799, and of the Sikh Empire from 1799 to 1801, before it shifted to Lahore.\nGujranwala is Pakistan's third-largest industrial center after Karachi and Faisalabad, It contributes approximately 5% to 9% to the national GDP. The city is part of a network of large urban centres in northeastern Punjab province that forms one of Pakistan's mostly highly industrialized regions. Along with the nearby cities of Sialkot and Gujrat, Gujranwala forms part of the so-called \"Golden Triangle\" of industrial cities with export-oriented economies."
+        },
+        {
+          "article": "Gujranwala (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gujranwala#Climate",
+          "text": "Gujranwala has a hot semi-arid climate (BSh), according to the Köppen-Geiger system, and changes throughout the year. During summer (June to September), the temperature reaches . The coolest months are usually November to February when the temperature can drop to an average of . The highest precipitation months are usually July and August when the monsoon reaches Punjab. During the other months, the average rainfall is about . October to May have little rainfall."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 74,
+      "leadWords": 179,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a northeastern Punjab location, wrestler nickname, food, 18th-century founding, and industry, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "gujranwala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 76,
+    "place_id": "gn-1787746",
+    "input": {
+      "place": {
+        "place_id": "gn-1787746",
+        "name": "Yancheng",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 33.3575,
+        "lon": 120.1573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yancheng",
+          "url": "https://en.wikipedia.org/wiki/Yancheng",
+          "text": "Yancheng (simplified Chinese: 盐城; traditional Chinese: 鹽城; pinyin: Yánchéng), formerly known as Yandu, is a prefecture-level city in the eastern coastal Jiangsu province, People's Republic of China. As the city with the largest jurisdictional area in Jiangsu, Yancheng borders Lianyungang to the north, Huai'an to the west, Yangzhou and Taizhou to the southwest, Nantong to the south, and the Yellow Sea to the east. Formerly a county, the current Yancheng city was founded on January 18, 1983.\nYancheng, literally \"Salt City\", is named after the salt harvest fields surrounding the city. According to historical records, collection and production of sea salt in the region began as early as 119 BC, during the Western Han dynasty, when the settlement on the current location of Yancheng was named Yandu County (盐渎县). According to the 2020 census, Yancheng had a registered population of 6,709,629, with 1,733,591 inhabitants in its built up area comprising the districts of Tinghu and Yandu."
+        },
+        {
+          "article": "Yancheng (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Yancheng#Climate",
+          "text": "Typical of northern and central Jiangsu, Yancheng has a humid subtropical climate (Köppen Cfa/Cwa), strongly influenced by the East Asian Monsoon. The normal monthly mean temperature ranges from in January to in July, with the annual mean at . A majority of the mean annual precipitation of is distributed in June thru August."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 53,
+      "leadWords": 156,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives an eastern coastal location by the Yellow Sea and salt harvest fields, but salt production is not a described climate mechanism, extreme, paradox, or seasonal weather pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "yancheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 77,
+    "place_id": "gn-3118594",
+    "input": {
+      "place": {
+        "place_id": "gn-3118594",
+        "name": "Leganés",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.32718,
+        "lon": -3.7635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leganés",
+          "url": "https://en.wikipedia.org/wiki/Legan%C3%A9s",
+          "text": "Leganés (Spanish pronunciation: [leɣaˈnes]) is a municipality and a city in Spain, located within the Community of Madrid. It forms part of the Madrid metropolitan area and is situated 11 kilometers southwest of the capital. With a population of 194,084 inhabitants, it is the fourth most populous municipality in the Community of Madrid and the thirty-second largest in Spain, according to the list of Spanish municipalities by population.\nSituated on a plain in the Inner Plateau of the Iberian Peninsula, Leganés is traversed by the Butarque stream, a tributary of the Manzanares River. It borders the Madrid districts of Carabanchel and Latina to the north, Alcorcón to the west, Getafe and the Madrid district of Villaverde to the east, and Fuenlabrada to the south.\nFounded in 1280 as \"Legamar\" during the reign of Alfonso X of Castile, it later adopted its current name and was incorporated as a village into the jurisdiction of Madrid in 1345. In 1627, it became a village under noble jurisdiction when King Philip IV of Spain established the March of Leganés, a status it retained until feudal privileges were abolished in 1820.\nDuring the mid-20th century, like other municipalities near Madrid, Leganés experienced significant population growth due to immigration from other Spanish regions, transforming it into a commuter town where most residents worked in the capital. Over time, Leganés developed its own robust array of public services, industries, and commercial enterprises, becoming a significant contributor to the Community of Madrid.\nThe city is home to historical landmarks such as the former Santa Isabel Psychiatric Hospital, opened in 1851 as one of Spain's first asylums; the Royal Walloon Guards Barracks, designed by Francesco Sabatini in the 18th century and now part of the Charles III University of Madrid; and ecclesiastical heritage, including the Polvoranca Hermitage and a Baroque altarpiece by José de Churriguera. The municipality also encompasses the Polvoranca Park, one of the largest semi-urban parks in the Community of Madrid."
+        },
+        {
+          "article": "Leganés (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Legan%C3%A9s#Climate",
+          "text": "Leganés has a continental Mediterranean climate, typical of Mediterranean regions far from the sea, with more extreme temperatures than coastal areas. Winters are cold, dropping below 5 °C in December and January, with frequent frosts and rare snowfalls. Summers are hot and dry, often exceeding 30 °C in July and August. The daily temperature variation ranges between 10 and 15 °C.\nAnnual precipitation exceeds 400 mm, peaking in autumn and spring due to frequent thunderstorms with significant lightning and rainfall or hail. Other factors include over 2,850 hours of sunshine annually, gentle southwest winds, abundant groundwater, and scarce surface water. Like other Madrid municipalities, air pollution is a concern, particularly during periods without wind or rain, exacerbated by surrounding highways and heavy traffic.\nThe primary natural risks in Leganés are drought, influenced by climate or water reserves, and extreme cold and heat waves. Phenomena such as hurricanes, earthquakes, and tornadoes are extremely rare."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 153,
+      "leadWords": 325,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a plain and stream location near a capital, a 1280 founding, and landmarks, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "leganes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 78,
+    "place_id": "gn-3634922",
+    "input": {
+      "place": {
+        "place_id": "gn-3634922",
+        "name": "La Victoria",
+        "country": "Venezuela",
+        "subdivision": "Aragua",
+        "lat": 10.22677,
+        "lon": -67.33122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Victoria, Aragua",
+          "url": "https://en.wikipedia.org/wiki/La_Victoria,_Aragua",
+          "text": "La Victoria (Spanish pronunciation: [la βiɣˈtoɾja]) is a city in the state of Aragua, Venezuela.\nIt is famous for the independence battle of 12 February 1814, the Battle of La Victoria, where José Félix Ribas led a young and inexperienced army that succeeded in halting the royalist troops of José Tomás Boves at La Victoria. Venezuela celebrates \"Youth Day\" every 12 February in La Victoria, with a ceremony usually presided over by the President of the Republic.\n\nIn 1902, the siege of La Victoria took place when the city was attacked by the forces of the Liberating Revolution led by General Manuel Antonio Matos with the aim of overthrow the government of the general Cipriano Castro. This action involved the personal intervention of General Castro, President of the Republic, who defended his regime. At the end, with the help of General Leopoldo Baptista and the vice-president Juan Vicente Gomez, the outcome was decided in his favor. This battle began on October 11 and ended on November 2 of that year, with the unenviable result of being the war that cost the most lives in Venezuela, including the battles of the War of Independence."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 193,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes independence and siege battles in 1814 and 1902, but no geography-based climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "la victoria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 79,
+    "place_id": "gn-1015621",
+    "input": {
+      "place": {
+        "place_id": "gn-1015621",
+        "name": "Brits",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -25.63473,
+        "lon": 27.78022
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brits, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Brits,_South_Africa",
+          "text": "Brits ()  is a town in the North West Province of South Africa. It is situated in a fertile citrus, vegetable and grain-producing area that is irrigated by the waters of the Hartbeespoort Dam.  It is close to the City of Tshwane Metropolitan Municipality in Gauteng, which includes Pretoria, and it has the same dialling code as Pretoria. In addition to being a centre for agriculture, the city is home to several heavy industries.The city also plays an important role in the South African mining industry: 94% of South Africa's platinum comes from the Rustenburg and Brits districts, which together produce more platinum than any other single area in the world. In addition, there is a large vanadium mine in the district.\nMothotlung, Letlhabile, Maboloka, Bapong, Majakaneng, Tornado, Bethanie and Oukasie are the black townships, with Oukasie founded in 1931 being one of the oldest townships in South Africa.The Indian area in Brits is Primindia. Brits is part of the Madibeng Local Municipality.\nBrits is linked to Sandton by the R511 and to Randburg by the R512, and to Pretoria by the R513, R514 & R566. Freeway access is by the N4 Highway (Bakwena Toll Route), which was constructed in the early 2000s."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 203,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract says farmland is fertile and irrigated by dam water and notes mining, but irrigation is not a climate mechanism and no weather extreme, paradox, or seasonal pattern is described",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "brits",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 80,
+    "place_id": "gn-1625812",
+    "input": {
+      "place": {
+        "place_id": "gn-1625812",
+        "name": "Surakarta",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -7.55611,
+        "lon": 110.83167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surakarta",
+          "url": "https://en.wikipedia.org/wiki/Surakarta",
+          "text": "Surakarta (Javanese: ꦯꦸꦫꦏꦂꦠ, Pegon: سوراكارتا), known colloquially as Solo (Javanese: ꦱꦭ, romanized: Sålå), is a major city in Central Java, Indonesia. The 46.72 km2 (18.04 sq mi) city adjoins Karanganyar Regency and Boyolali Regency to the north, Karanganyar Regency and Sukoharjo Regency to the east and west, and Sukoharjo Regency to the south. On the eastern side of Solo flows Solo River (Bengawan Solo). Its metropolitan area, consisting of Surakarta City and the surrounding six regencies (\"Greater Solo Area\", formerly Special Region of Surakarta), was home to 6,899,402 inhabitants according to the official estimates for mid 2025, 529,079 of whom resided in the city proper (comprising 260,347 males and 268,732 females).\nSurakarta is the birthplace of former President of Indonesia Joko Widodo, as well as his son and current Vice President of Indonesia, Gibran Rakabuming Raka. The former served as Mayor of Surakarta from 2005 to 2012, as did the latter from 2021 to 2024."
+        },
+        {
+          "article": "Surakarta (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Surakarta#Climate",
+          "text": "Surakarta features a tropical monsoon climate (Köppen: Am). with a lengthy wet season spanning from October through May, and a relatively short dry season covering the remaining four months (June through September). On average Surakarta receives just under of rainfall annually, with its wettest months being December, January, and February. As is common in areas featuring a tropical monsoon climate, temperatures are relatively consistent throughout the year. Surakarta's average temperature is roughly 30 °C every month (86 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 78,
+      "leadWords": 155,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a Central Java location, a river on its eastern side, and famous residents, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "surakarta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 81,
+    "place_id": "gn-3449433",
+    "input": {
+      "place": {
+        "place_id": "gn-3449433",
+        "name": "Santos",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.96083,
+        "lon": -46.33361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santos, São Paulo",
+          "url": "https://en.wikipedia.org/wiki/Santos,_S%C3%A3o_Paulo",
+          "text": "Santos (Portuguese pronunciation: [ˈsɐ̃tus] , Saints), officially Municipality of Estância Balneária de Santos, is a city and municipality in the Brazilian state of São Paulo, founded in 1546 by the Portuguese nobleman Brás Cubas. It is located mostly on the island of São Vicente, which harbors both the city of Santos and the city of São Vicente. It is the main city in the metropolitan region of Baixada Santista. Santos has a population of 429,570 (2025 est.) in an area of 280.67 km2 (108.37 sq mi). The city is home to the Coffee Museum, where world coffee prices were once negotiated, as well as the Port of Santos, through which nearly 29% of the country's trade flow passes. Santos also has a football memorial, called Memorial das Conquistas (Memorial of Achievements, in English), which is dedicated to the city's greatest players, which includes Pelé, who spent the majority of his career with Santos Futebol Clube. Its beachfront garden, 5,335 m (5,834 yd) in length, figures in Guinness World Records as the largest beachfront garden in the world."
+        },
+        {
+          "article": "Santos, São Paulo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Santos,_S%C3%A3o_Paulo#Climate",
+          "text": "Despite the fact that it is located just beyond the tropics, Santos has a tropical rainforest climate (Köppen: Af) with no real dry season. Tropical rainforest climates are typically found near the equator, so Santos featuring this type of climate is an exceptional situation. All months of the year average more than 60 mm of rainfall during the course of the year. Santos features warm weather throughout the year, though June in Santos is somewhat cooler (and drier) than January. Mean temperatures in the city are around 19 °C during wintertime and around 25 °C in the summer months. Precipitation in Santos is very high, amounting to around annually. Santos lies in one of the few isolated regions of Brazil outside of the tropical Amazon Basin that receive more than of total average precipitation annually, although nearby Ubatuba, approximately to the east-northeast, is considerably wetter than Santos, receiving an average of of precipitation annually."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 154,
+      "leadWords": 177,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives an island location, 1546 founding, coffee trade, a port, and a record beachfront garden, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "santos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 82,
+    "place_id": "gn-4762894",
+    "input": {
+      "place": {
+        "place_id": "gn-4762894",
+        "name": "Hampton",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.02987,
+        "lon": -76.34522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hampton, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Hampton,_Virginia",
+          "text": "Hampton is an independent city in Virginia, United States. The population was 137,148 at the 2020 census, making it the seventh-most populous city in Virginia. Hampton is included in the Hampton Roads metropolitan area (sometimes called \"Tidewater\"), which has more than 1.8 million inhabitants and is the 37th-largest metropolitan area in the U.S.\nHampton traces its origins to Old Point Comfort, the site of Fort Monroe, named by English explorers led by Christopher Newport in 1607 during the founding of Jamestown. Following the American Civil War, Hampton University was established on the opposite bank of the Hampton River to educate newly freed African Americans and local Native Americans. In the 20th century, the city became home to Langley Air Force Base, NASA's Langley Research Center, and the Virginia Air and Space Science Center.\nSince consolidation by a mutual agreement in 1952, Hampton has included the former Elizabeth City County and the incorporated town of Phoebus. The city features a wide array of business and industrial enterprises, retail and residential areas, historical sites, and other points of interest, such as a NASCAR short track, the oldest Anglican parish in the Americas (1610), and a moated, six-sided, historical bastion fort. Hampton is also known for its extensive waterfront and beaches."
+        },
+        {
+          "article": "Hampton, Virginia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Hampton,_Virginia#Climate",
+          "text": "Hampton has a humid subtropical climate (Köppen: Cfa) characteristic of the Southeast United States. The weather in Hampton is temperate and seasonal with hot and humid summers and mild winters. The mean annual temperature is , with an average annual snowfall of and an average annual rainfall of . The wettest month by average rainfall is August with an average of 2.4 inches of rain falling on 11–12 days, although in March it typically rains on more days with 2.3 inches of rain falling in 12 to 13 days. The hottest day on record was August 1, 1980, when the temperature hit . The lowest recorded temperature of was recorded on January 21, 1985."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 114,
+      "leadWords": 208,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes waterfront, beaches, a fort, a university, and air and space sites, but no climate mechanism, extreme, paradox, or seasonal pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal weather pattern described in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "hampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 83,
+    "place_id": "gn-1234569",
+    "input": {
+      "place": {
+        "place_id": "gn-1234569",
+        "name": "Dehiwala-Mount Lavinia",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 6.84019,
+        "lon": 79.87116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dehiwala-Mount Lavinia",
+          "url": "https://en.wikipedia.org/wiki/Dehiwala-Mount_Lavinia",
+          "text": "Dehiwala-Mount Lavinia (Sinhala: දෙහිවල-ගල්කිස්ස, romanized: Dehivala-Galkissa; Tamil: தெஹிவளை-கல்கிசை, romanized: Tehivaḷai-Kalkicai), population 245,974 (2012), is a large municipality in Sri Lanka, covering 2,109 ha (5,210 acres). It lies south of the Colombo Municipal Council area and is separated from it by the Dehiwala canal which forms the northern boundary of DMMC. Its southern limits lie in Borupana Road and the eastern boundary is Weras Ganga with its canal system and it includes some areas to its east (Pepiliyana, Gangodawila and Kohuwala). This town has experienced extensive population growth and rapid industrialisation and urbanisation in recent years. It is home to Sri Lanka's National Zoological Gardens, which remains one of Asia's largest. Colombo South Teaching Hospital, Kalubowila and Colombo Airport, Ratmalana are some important landmarks in this area. Dehiwela-Mount Lavinia and Sri Jayawardenapura Kotte being two large suburban centres of the city of Colombo function together as one large urban agglomeration in the Region (Western Province). The overspill from the City in residential and commercial uses of land has rapidly urbanised these suburban centres. Dehiwela-Mount Lavinia and Sri Jayawardenpaura along with Colombo Municipal Council form the most urbanised part of the core area of the Colombo Metropolitan Region. Dehiwala and Mount Lavinia lie along the Galle Road artery, which runs along the coast to the south of the country."
+        },
+        {
+          "article": "Dehiwala-Mount Lavinia (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Dehiwala-Mount_Lavinia#Geography",
+          "text": "As the Dehiwala-Mount Lavinia area lies on the coastal plain the land is mostly flat and undulating towards the inland areas. A significant feature is the large extent of wetlands around the Weras Ganga (river) and Bolgoda Lake, the two major water bodies. The Bellanwila and Attidiya marshes are noteworthy for their biodiversity and as such are considered as an ecological protected zone. Lying in the wet zone, the Dehiwala-Mount Lavinia area receives an average annual rainfall between mainly during the southwest monsoon and the intermonsoon periods. The mean average day temperature is around and the average maximum between 30.5 and 31 °C. The minimum night temperature varies from 26 °C to 27 °C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 114,
+      "leadWords": 217,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a coastal location south of Colombo, a canal, a zoo and landmarks, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "dehiwala mount lavinia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dehiwala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lavinia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 84,
+    "place_id": "gn-1800163",
+    "input": {
+      "place": {
+        "place_id": "gn-1800163",
+        "name": "Nanchang",
+        "country": "China",
+        "subdivision": "Jiangxi",
+        "lat": 28.68396,
+        "lon": 115.85306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanchang",
+          "url": "https://en.wikipedia.org/wiki/Nanchang",
+          "text": "Nanchang is the capital of Jiangxi, China. Located in the north-central part of the province and in the hinterland of Poyang Lake Plain, it is bounded on the west by the Jiuling Mountains, and on the east by Poyang Lake. Because of its strategic location connecting the prosperous East and South China, it has become a major railway hub in Southern China in recent decades.\nAs the Nanchang Uprising in 1927 is distinctively recognized by the ruling Communist Party as \"firing the first gunshot against the Nationalists\", the current government has therefore named the city since 1949 \"the place where the People's Liberation Army was born\", and the most widely known \"place where the military banner of the People's Liberation Army was first raised\".\nNanchang is also a major city, appearing among the top 100 cities in the world by scientific research outputs, as tracked by the Nature Index and home to Nanchang University."
+        },
+        {
+          "article": "Nanchang (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Nanchang#Climate",
+          "text": "Nanchang has a humid subtropical climate (Köppen Cfa) with four\ndistinct seasons. Winters are short and cool with occasional frosts; it begins somewhat sunny and dry but becomes progressively wetter and more overcast. Spring begins especially gloomy, and from April to June, each month has more than of rainfall. Summer is long and humid, with amongst the highest temperatures of any Chinese provincial capital, and with the sun shining close to 60 percent of the time in July and August, is the sunniest time of year. Autumn is warm to mild with the lowest rainfall levels of the year. The monthly 24-hour average temperature ranges from in January to in July, while the annual mean is . Annual precipitation stands at around ; with monthly percent possible sunshine ranging from 27 percent in March to 56 percent in August, the city receives 1,809 hours of sunshine annually in average. Extremes since 1951 have ranged from on 29 December 1991 to on 23 July 1961.\nAs of the 2020 Chinese census, Nanchang had a population of 6,255,007, of which 5,382,162 lived in built-up (urbanized) area consisting of 6 urban districts plus Nanchang County largely being urbanized. 37 ethnic groups were counted amongst its prefecture divisions while 99.2% are Han chinese. The sex ratio in Nanchang is approximately 109 males to 100 females. The aged group (above 60) counts for 14.97% of the entire population."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 233,
+      "leadWords": 154,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a lake-plain location and a 1927 uprising history, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "nanchang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 85,
+    "place_id": "gn-1804879",
+    "input": {
+      "place": {
+        "place_id": "gn-1804879",
+        "name": "Kaifeng",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.7986,
+        "lon": 114.30742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaifeng",
+          "url": "https://en.wikipedia.org/wiki/Kaifeng",
+          "text": "Kaifeng (Chinese: 开封; pinyin: Kāifēng) is a prefecture-level city in east-central Henan province, China. It is one of the Eight Ancient Capitals of China, having been the capital eight times in history.\nAs of the 2020 census, 4,824,016 people lived in Kaifeng's Prefecture, of whom 1,735,581 lived in the metropolitan area consisting of Xiangfu, Longting, Shunhe Hui, Gulou and Yuwantai Districts. Located along the Yellow River's southern bank, it borders the provincial capital of Zhengzhou to the west, Xinxiang to the northwest, Shangqiu to the east, Zhoukou to the southeast, Xuchang to the southwest, and Heze of Shandong to the northeast.\nKaifeng is a major city for research in central China, ranking as the world's 138th top city by scientific output as tracked by the Nature Index. The city is home to a campus of Henan University, one of the national key universities in the Double First Class University Plan."
+        },
+        {
+          "article": "Kaifeng (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kaifeng#Climate",
+          "text": "Kaifeng has a monsoon-influenced humid subtropical climate (Köppen Cwa) that borders on a humid continental climate, with four distinct seasons. Winters are cool and mostly dry while summers are hot and humid; spring is warm and sees some, but not much rainfall, while autumn weather is crisp and drier. Precipitation mainly occurs from June to September. Extreme temperatures in the city since 1951 have ranged from on December 27, 1971, to on June 19, 1966."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 75,
+      "leadWords": 150,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a Yellow River location and ancient-capital history, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "kaifeng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
