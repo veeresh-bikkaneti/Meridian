@@ -57,3 +57,14 @@ export function pinCompareLine(player: ResolvedPin | null, truth: ResolvedPin | 
   (same single pre-existing camera-timing failure on both).
 - Gates: tsc clean, 530/530 unit green, lint-cards GATE PASSED,
   build:pages green.
+
+## Preload timing fix (2026-10-04)
+- Root cause found: firing the ~2 MB admin-1 JSON preload during map mount
+  starves tile requests (net::ERR_ABORTED), flipping tile-status to failed.
+  Proven: preload disabled → tiles "ready"; 10 s delayed preload → "ready".
+- Fix: `openRun` now defers `preloadAdmin1Boundaries()` by 10 s via
+  setTimeout (requestIdleCallback was racy). resolvePin fails closed to
+  country-only until the cache populates.
+- Final E2E: 4/4 green (cross-country "Your pin: Bahia · True spot: Hungary",
+  hit no line, ocean no line, same-state "Right state, wrong town!").
+- Gates: tsc clean, 534/534 unit green, lint-cards GATE PASSED, build green.
