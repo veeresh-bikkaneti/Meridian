@@ -153,13 +153,29 @@ test("fleschKincaidGrade: plain text grades below convoluted text", () => {
 // Leak machinery (prompt §4 LOCKED rule)
 // ---------------------------------------------------------------------------
 
-test("buildLeakTerms: multi-word name yields full term, substring parts, token-only short parts", () => {
+test("buildLeakTerms: multi-word name yields full term + substring parts; function-word parts excluded", () => {
   const terms = buildLeakTerms({ name: "Rio de Janeiro", aliases: [] });
   const byTerm = new Map(terms.map((t) => [t.term, t]));
   assert.ok(byTerm.has("rio de janeiro"));
   assert.equal(byTerm.get("rio").tokenOnly, false);
   assert.equal(byTerm.get("janeiro").tokenOnly, false);
-  assert.equal(byTerm.get("de").tokenOnly, true);
+  assert.equal(byTerm.has("de"), false, "function-word part 'de' must not be a term");
+});
+
+test("buildLeakTerms: 'The Hague' does not ban the word 'the'", () => {
+  const terms = buildLeakTerms({ name: "The Hague", aliases: [] });
+  assert.ok(!terms.some((t) => t.term === "the"));
+  assert.equal(findLeaks("The road over the hills is long.", terms).length, 0);
+  assert.ok(findLeaks("Everyone calls it the hague of the north.", terms).length > 0);
+});
+
+test("buildLeakTerms: aliases are enforced whole, never decomposed into parts", () => {
+  const terms = buildLeakTerms({ name: "Baguio", aliases: ["City of Pines"] });
+  assert.ok(terms.some((t) => t.term === "city of pines"));
+  assert.ok(!terms.some((t) => t.term === "city"), "alias part 'city' must not be a term");
+  assert.ok(!terms.some((t) => t.term === "pines"), "alias part 'pines' must not be a term");
+  assert.equal(findLeaks("A city of hills and pine woods.", terms).length, 0);
+  assert.ok(findLeaks("They call it the city of pines.", terms).length > 0);
 });
 
 test("findLeaks: derived form hits the base name as substring", () => {
@@ -175,8 +191,9 @@ test("findLeaks: diacritic folding — folded clue text still leaks", () => {
 });
 
 test("findLeaks: short part is token-only (no hit inside unrelated words)", () => {
-  const terms = buildLeakTerms({ name: "Rio de Janeiro", aliases: [] });
-  const hits = findLeaks("A description of the harbour and its modern defences.", terms);
+  const terms = buildLeakTerms({ name: "Po Alta", aliases: [] });
+  assert.equal(terms.find((t) => t.term === "po")?.tokenOnly, true);
+  const hits = findLeaks("The pond by the post office is deep.", terms);
   assert.equal(hits.length, 0);
 });
 
@@ -361,6 +378,14 @@ test("climate clue with no weather signal -> CLIMATE_NO_SIGNAL", () => {
   record.clues[1].text =
     "The hills behind the town are green all year. Old stone walls line the quiet lanes near the harbour.";
   expectCode(record, "CLIMATE_NO_SIGNAL");
+});
+
+test("climate signal accepts inflected forms (wettest / sunniest)", () => {
+  const record = validRecord();
+  record.clues[1].text =
+    "It is one of the wettest cities in Europe, yet also one of the sunniest. It gets more than two thousand hours of sun each year.";
+  const result = validateRecord(record, { input: INPUT });
+  assert.deepEqual(result, { ok: true, reasons: [] });
 });
 
 test("giveaway recapping earlier clues -> TIER5_SUMMARY", () => {

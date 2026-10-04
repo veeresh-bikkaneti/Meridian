@@ -30,17 +30,25 @@
  *   the cited extract (whitespace-collapsed, case-sensitive), at least
  *   LIMITS.MIN_QUOTE_CHARS long — a trivial quote cannot audit a clue.
  * - NAME-LEAK BAN (prompt §4, LOCKED): no clue text may contain, as a
- *   folded substring, the canonical name, any name part of length >= 3,
- *   any alias or alias part of length >= 3, or curated aliases — with
- *   diacritic folding, so "paris" catches "Parisian" and "sao" catches
- *   "São". Name parts shorter than 3 characters ("de", "al") are
- *   enforced as whole tokens only: as raw substrings they occur inside
- *   unrelated common words ("de" in "describe") and would make every
- *   clue for such places unwritable, which is a broken rule rather
- *   than a strict one. Indirect wordplay patterns ("rhymes with",
- *   "sounds like", letter-spelling) are banned by pattern (proxy).
- *   Name-meaning translations as a clue's payload are NOT mechanically
- *   decidable and remain human-review territory (documented gap).
+ *   folded substring, the canonical name or any alias — plus, for the
+ *   canonical name only, its space-separated parts (prompt §4(a):
+ *   "the canonical name or any part of it"; §4(b) bans a recorded
+ *   alias as such, so alias phrases are enforced whole, never
+ *   decomposed — decomposing "City of Pines" would ban "city" and
+ *   "pines" across all English prose, which is the alias's fragments,
+ *   not the alias). Name parts shorter than 3 characters are whole-
+ *   token terms only, and function-word parts (articles/prepositions:
+ *   "the", "de", "las", …) are not terms at all — they are enforced
+ *   through the full-name term only, since as fragments they occur
+ *   inside unrelated common words ("de" in "describe", "the" in
+ *   "other") and would make such places unwritable rather than
+ *   merely strict. Derived/demonym forms are caught because they
+ *   contain the full name or alias string ("parisian" ⊃ "paris",
+ *   "bombayite" ⊃ "bombay"). Indirect wordplay patterns ("rhymes
+ *   with", "sounds like", letter-spelling) are banned by pattern
+ *   (proxy). Name-meaning translations as a clue's payload are NOT
+ *   mechanically decidable and remain human-review territory
+ *   (documented gap).
  * - universal writing-rule bans (prompt §3 rule 2), mechanical subset:
  *   census filler (census/population-count phrasing, statistical-area
  *   terms), coordinate/elevation vocabulary in every tier, plus a
@@ -95,16 +103,27 @@ export const STOPWORDS = new Set([
   "near",
 ]);
 
-/** Climate-signal lexicon (proxy): weather / season words. */
-export const CLIMATE_LEXICON = new Set([
-  "rain", "snow", "winter", "summer", "spring", "autumn", "fall",
-  "wind", "winds", "storm", "storms", "monsoon", "dry", "wet", "humid",
-  "humidity", "hot", "cold", "warm", "cool", "freeze", "freezing",
-  "frost", "drought", "typhoon", "hurricane", "temperatures",
-  "temperature", "climate", "seasons", "seasonal", "rainfall", "sunny",
-  "cloudy", "fog", "fogs", "heat", "chill", "mild", "damp", "arid",
-  "breezy",
-]);
+/**
+ * Climate-signal roots (proxy): the climate clue must contain at
+ * least one token starting with one of these roots, so inflected
+ * forms count ("wettest" → wet, "sunniest" → sun, "rains" → rain).
+ * Exact-token matching against a fixed word list false-flagged
+ * genuinely climatic phrasing in Wave 1 (a "wettest and sunniest"
+ * clue); root-prefix matching measures the same signal honestly.
+ * This is a floor check only — whether the clue cites a real
+ * mechanism/extreme/paradox is semantic (worker duty + human review).
+ */
+export const CLIMATE_ROOTS = [
+  "rain", "snow", "sun", "wind", "storm", "cloud", "fog", "freez",
+  "frost", "drought", "monsoon", "humid", "weather", "heat", "chill",
+  "damp", "arid", "breez", "wet", "dry", "hot", "cold", "warm",
+  "cool", "mild", "winter", "summer", "spring", "autumn", "fall",
+  "season", "climate", "temperatur", "hurrican", "typhoon",
+];
+
+export function hasClimateSignal(text) {
+  return rawTokens(text).some((tok) => CLIMATE_ROOTS.some((root) => tok.startsWith(root)));
+}
 
 /**
  * Syllable-count heuristic (proxy for Flesch-Kincaid): count groups of
@@ -186,10 +205,24 @@ function jaccard(setA, setB) {
 // ---------------------------------------------------------------------------
 
 /**
- * Build the leak-term list for a place: folded canonical name, folded
- * aliases, folded curated aliases — each as a full term plus its
- * space-separated parts. Parts of length >= 3 are substring terms;
- * shorter parts are whole-token terms only (see header note).
+ * Function-word name parts: articles / prepositions / conjunctions
+ * that appear inside multi-word place names ("The Hague", "Rio de
+ * Janeiro", "Las Vegas"). They are never leak terms on their own —
+ * enforced only through the full-name term (see header note).
+ */
+export const FUNCTION_WORD_PARTS = new Set([
+  "the", "of", "and", "de", "di", "da", "das", "do", "dos", "du",
+  "des", "el", "la", "le", "les", "los", "las", "al", "von", "van",
+  "der", "den", "ten",
+]);
+
+/**
+ * Build the leak-term list for a place (prompt §4):
+ * - canonical name: the full folded name, plus its space-separated
+ *   parts — parts of length >= 3 are substring terms, shorter parts
+ *   are whole-token terms, function-word parts are skipped entirely.
+ * - aliases and curated aliases: the full folded phrase only, as a
+ *   substring term (never decomposed into parts).
  *
  * @returns {Array<{term: string, tokenOnly: boolean, source: string}>}
  */
@@ -202,21 +235,20 @@ export function buildLeakTerms(answer, curatedAliases = []) {
       byTerm.set(folded, { term: folded, tokenOnly, source });
     }
   };
-  const addName = (raw, source) => {
-    const folded = foldText(raw);
-    if (!folded) return;
-    addTerm(folded, false, source);
+  if (answer && isNonEmptyString(answer.name)) {
+    const folded = foldText(answer.name);
+    addTerm(folded, false, "name");
     for (const part of folded.split(" ")) {
-      if (!part) continue;
-      addTerm(part, part.length < 3, `${source} part`);
+      if (!part || FUNCTION_WORD_PARTS.has(part)) continue;
+      addTerm(part, part.length < 3, "name part");
     }
-  };
-  if (answer && isNonEmptyString(answer.name)) addName(answer.name, "name");
+  }
+  const addAlias = (raw, source) => addTerm(foldText(raw), false, source);
   if (answer && Array.isArray(answer.aliases)) {
-    for (const a of answer.aliases) if (typeof a === "string") addName(a, "alias");
+    for (const a of answer.aliases) if (typeof a === "string") addAlias(a, "alias");
   }
   if (Array.isArray(curatedAliases)) {
-    for (const a of curatedAliases) if (typeof a === "string") addName(a, "curated alias");
+    for (const a of curatedAliases) if (typeof a === "string") addAlias(a, "curated alias");
   }
   return [...byTerm.values()];
 }
@@ -500,7 +532,7 @@ export function validateRecord(record, ctx = {}) {
     if (grade > LIMITS.MAX_FK_GRADE) {
       push(
         "READING_LEVEL",
-        `Flesch-Kincaid grade ${grade.toFixed(1)} exceeds max ${LIMITS.MAX_FK_GRADE}`,
+        `Flesch-Kincaid grade ${grade.toFixed(2)} exceeds max ${LIMITS.MAX_FK_GRADE}`,
         tier,
       );
     }
@@ -518,8 +550,8 @@ export function validateRecord(record, ctx = {}) {
         2,
       );
     }
-    if (!rawTokens(climateText).some((tok) => CLIMATE_LEXICON.has(tok))) {
-      push("CLIMATE_NO_SIGNAL", "climate clue contains no token from the climate lexicon", 2);
+    if (!hasClimateSignal(climateText)) {
+      push("CLIMATE_NO_SIGNAL", "climate clue contains no climate-signal token (root-prefix lexicon)", 2);
     }
   }
 

@@ -3,7 +3,7 @@
 //
 // Run: node scripts/clues/production/validate-production.mjs
 //
-// Reads:  pool.jsonl, tranches/*.jsonl (worker outputs, filename order)
+// Reads:  pool.jsonl, tranches/out/*.jsonl (worker outputs, filename order)
 // Writes: records.jsonl          — one record per attempted place, in
 //                                  pool rank order: validator-passed
 //                                  accepted records verbatim, §6
@@ -34,7 +34,7 @@ import {
 } from "../validate-clues.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const TRANCHES_DIR = join(HERE, "tranches");
+const TRANCHES_DIR = join(HERE, "tranches", "out");
 
 function readJsonLines(path) {
   return readFileSync(path, "utf8").split("\n").filter((l) => l.trim());

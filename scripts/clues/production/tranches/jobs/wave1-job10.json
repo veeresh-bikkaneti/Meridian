@@ -1,0 +1,717 @@
+[
+  {
+    "rank": 181,
+    "place_id": "gn-2984114",
+    "input": {
+      "place": {
+        "place_id": "gn-2984114",
+        "name": "Reims",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.26526,
+        "lon": 4.02853
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reims",
+          "url": "https://en.wikipedia.org/wiki/Reims",
+          "text": "Reims ( REEMZ; French: [ʁɛ̃s] ; also spelled Rheims in English) is the most populous city in the French department of Marne, and the 12th most populous city in France. The city lies 129 km (80 mi) northeast of Paris on the Vesle river, a tributary of the Aisne.\nFounded by the Gauls, Reims became a major city in the Roman Empire. Reims later played a prominent ceremonial role in French monarchical history as the traditional site of the coronation of the kings of France. The royal anointing was performed at the Cathedral of Reims, which housed the Holy Ampulla of chrism allegedly brought by a white dove at the baptism of Frankish king Clovis I in 496. For this reason, Reims is often referred to in French as la cité des sacres (\"the Coronation City\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "reims",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 182,
+    "place_id": "gn-3660689",
+    "input": {
+      "place": {
+        "place_id": "gn-3660689",
+        "name": "Ambato",
+        "country": "Ecuador",
+        "subdivision": "Tungurahua Province",
+        "lat": -1.24908,
+        "lon": -78.61675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ambato, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Ambato,_Ecuador",
+          "text": "Ambato (Spanish pronunciation: [amˈbato]; full form, San Juan de Ambato; Quechua: Ampatu Llaqta) is a city located in the central Andean valley of Ecuador. Lying on the banks of the Ambato River, the city also sits beneath several tall mountains. It is the capital city of the Tungurahua Province, situated at an elevation of 2,577 meters above sea level. It is variously nicknamed \"City of Flowers and Fruits\", \"Land of the Three Juans\", and \"Garden of Ecuador.\" Ambato's inhabitants are called Ambateños or Guaytambos (after a type of native peach that the valley is famous for producing). The current mayor of Ambato is Diana Caiza.\nThe city has been fully or partially destroyed by earthquakes several times in its history, most recently on August 5, 1949, when the city and its cathedral were almost completely devastated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "ambato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 183,
+    "place_id": "gn-379252",
+    "input": {
+      "place": {
+        "place_id": "gn-379252",
+        "name": "Khartoum",
+        "country": "Sudan",
+        "subdivision": "Khartoum",
+        "lat": 15.55177,
+        "lon": 32.53241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khartoum",
+          "url": "https://en.wikipedia.org/wiki/Khartoum",
+          "text": "Khartoum, also spelled Khartum, is the capital and most populous city of Sudan as well as Khartoum State. With an estimated population of 7.1 million people, Greater Khartoum is the largest urban area in Sudan.\nKhartoum is located at the confluence of the White Nile – flowing north from Lake Victoria – and the Blue Nile, flowing west from Lake Tana in Ethiopia. Divided by these two parts of the Nile, the Khartoum metropolitan area is a tripartite metropolis consisting of Khartoum proper and linked by bridges to Khartoum North (الخرطوم بحري al-Kharṭūm Baḥrī) and Omdurman (أم درمان Umm Durmān) to the west. The place where the two Niles meet is known as al-Mogran or al-Muqran (المقرن; English: \"The Confluence\").\n\"Khartoum\" was founded in 1821 by Muhammad Ali Pasha, north of the ancient city of Soba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "khartoum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 184,
+    "place_id": "gn-3985710",
+    "input": {
+      "place": {
+        "place_id": "gn-3985710",
+        "name": "Cabo San Lucas",
+        "country": "Mexico",
+        "subdivision": "Baja California Sur",
+        "lat": 22.89088,
+        "lon": -109.91238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabo San Lucas",
+          "url": "https://en.wikipedia.org/wiki/Cabo_San_Lucas",
+          "text": "Cabo San Lucas (Spanish pronunciation: [ˈkaβo san ˈlukas], 'Saint Luke Cape'), also known simply as Cabo, is a resort city at the southern tip of the Baja California peninsula, in the Mexican state of Baja California Sur. As of the 2020 Census, the population of the city was 202,694. Cabo San Lucas and the neighboring San José del Cabo are collectively known as Los Cabos. Together, they form a metropolitan area of 351,111 inhabitants.\nRated as one of Mexico's top tourist destinations, Cabo San Lucas is known for its beaches, scuba diving locations, Balnearios, the sea arch El Arco de Cabo San Lucas, and marine life. The Los Cabos Corridor has become a heavily trafficked vacation destination for tourists, with numerous resorts and timeshares along the coast between Cabo San Lucas and San José del Cabo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "cabo san lucas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cabo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lucas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 185,
+    "place_id": "gn-4560349",
+    "input": {
+      "place": {
+        "place_id": "gn-4560349",
+        "name": "Philadelphia",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.95238,
+        "lon": -75.16362
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Philadelphia",
+          "text": "Philadelphia (  FIL-ə-DEL-fee-ə), colloquially referred to as Philly, is the most populous city in the U.S. state of Pennsylvania and the sixth-most populous city in the United States. Its population was 1.60 million at the 2020 census and estimated at 1.57 million in 2025. The Philadelphia metropolitan area, also known as the Delaware Valley, is located in both the Mid-Atlantic and northeastern United States; home to 6.33 million residents, it is the nation's ninth-largest metropolitan area. Philadelphia is known for its culture, cuisine, and history, maintaining contemporary influence in technology and business, sports, and music.\nPhiladelphia was founded in 1682 by William Penn, an English Quaker and advocate of religious freedom, and served as the capital of the colonial era Province of Pennsylvania. It then played a vital role during the American Revolution and Revolutionary War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "philadelphia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 186,
+    "place_id": "gn-7279746",
+    "input": {
+      "place": {
+        "place_id": "gn-7279746",
+        "name": "Noida",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 28.58,
+        "lon": 77.33
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noida",
+          "url": "https://en.wikipedia.org/wiki/Noida",
+          "text": "Noida, short for New Okhla Industrial Development Authority, is a city located in Gautam Buddha Nagar district in the Indian state of Uttar Pradesh. It is a part of the National Capital Region (NCR). Situated in the floodplain region between the Yamuna and the Hindon rivers, the city was established in 1976, and is regarded as one of the most systematically planned cities in India. It was designed under the NCR planning strategy to decentralise growth from Delhi. The Gautam Buddha Nagar District, which includes the cities of Noida, Greater Noida and YEIDA City contributes, over 10% to the Uttar Pradesh GSDP, more than 2.5 times the state capital district of Lucknow, which contributes 4%.\nNoida is frequently ranked as one of India's greenest cities, boasting over 50% green cover, including botanical gardens and biodiversity parks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "noida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 187,
+    "place_id": "gn-747158",
+    "input": {
+      "place": {
+        "place_id": "gn-747158",
+        "name": "Fatih",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.0225,
+        "lon": 28.94083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fatih",
+          "url": "https://en.wikipedia.org/wiki/Fatih",
+          "text": "Fatih (Turkish pronunciation: [ˈfaːtih]) or the Historical peninsula (in Turkish: Tarihi Yarımada),  is a municipality and district of Istanbul Province, Turkey. Its area is 15 km2 (5.8 sq mi), and its population is 368,227 as of 2022. It is home to almost all of the provincial authorities (including the mayor's office, police headquarters, metropolitan municipality and tax office) but not the courthouse. It encompasses the historical peninsula, coinciding with old Constantinople. In 2009, the district of Eminönü, which had been a separate municipality located at the tip of the peninsula, was once again remerged into Fatih because of its small population. Fatih is bordered by the Golden Horn to the north and the Sea of Marmara to the south, while the Western border is demarked by the Theodosian wall and the east by the Bosphorus Strait."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "fatih",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 188,
+    "place_id": "gn-1253986",
+    "input": {
+      "place": {
+        "place_id": "gn-1253986",
+        "name": "Udaipur",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 24.58584,
+        "lon": 73.71346
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Udaipur",
+          "url": "https://en.wikipedia.org/wiki/Udaipur",
+          "text": "Udaipur (Hindi: IPA: [ʊdəjpʊɾ], ) (ISO 15919: Udayapura) is a city in the north-western Indian state of Rajasthan, about 415 km (258 mi) south of the state capital Jaipur. It serves as the administrative headquarters of Udaipur district. It is the historic capital of the kingdom of Mewar in the former Rajputana Agency. It was founded in 1559 by Udai Singh II of the Sisodia clan of Rajputs, when he shifted his capital from the city of Chittorgarh to Udaipur after Chittorgarh was besieged by Akbar. It remained as the capital city till 1818 when Mewar became a British princely state, and thereafter the Mewar province became a part of Rajasthan when India gained independence in 1947. It is also known as the City of Lakes, as it is surrounded by five major artificial lakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "udaipur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 189,
+    "place_id": "gn-1583992",
+    "input": {
+      "place": {
+        "place_id": "gn-1583992",
+        "name": "Da Nang",
+        "country": "Vietnam",
+        "subdivision": "Da Nang City",
+        "lat": 16.06778,
+        "lon": 108.22083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Da Nang",
+          "url": "https://en.wikipedia.org/wiki/Da_Nang",
+          "text": "Da Nang (Vietnamese: Đà Nẵng, pronounced [ɗa˨˩ naŋ˨˩˦ˀ], also written unspaced as Danang), is the fourth largest city in Vietnam by population and the second largest by geographical area and located in the South Central Coast and Central Highlands. As one of the country's nine centrally-governed city, it falls under the administration of the central government. Da Nang's port and its location on National Route 1 and the North–South Railway makes it a transport hub. APEC 2017 was hosted in Da Nang. Da Nang has a Human Development Index of 0.800 (very high), ranking fifth among all municipalities and provinces of Vietnam. \nThe city was known as Cửa Hàn (Hàn River Estuary) during Đại Việt period when it was a small settlement, and as Tourane (or Turon) during French colonial rule between 1884 and 1945."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "da nang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "da",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "nang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 190,
+    "place_id": "gn-1692565",
+    "input": {
+      "place": {
+        "place_id": "gn-1692565",
+        "name": "Pulilan",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.90167,
+        "lon": 120.84917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pulilan",
+          "url": "https://en.wikipedia.org/wiki/Pulilan",
+          "text": "Pulilan, officially the Municipality of Pulilan (Tagalog: Bayan ng Pulilan, Kapampangan: Balen ning Pulilan), is a  municipality in the province of Bulacan, Philippines. According to the 2024 census, it has a population of 111,384 people.\nThe town is famous for its Carabao Festival where carabaos are paraded and kneel as they pass through San Isidro Labrador Parish Church, in honor to the town's patron saint, San Isidro Labrador.\nMany years ago, Pulilan was primarily a little-known rural town in the northern part of Bulacan where its economy heavily dependent on farming and poultry raising. Most of the population committed their entire lives on farming as their livelihood. Today, the town is moving towards commercialization and industrialization as it is becoming one of the major growth-rate area and center of commerce and industry in the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "pulilan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 191,
+    "place_id": "gn-1714201",
+    "input": {
+      "place": {
+        "place_id": "gn-1714201",
+        "name": "Dumaguete",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.30646,
+        "lon": 123.30769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dumaguete",
+          "url": "https://en.wikipedia.org/wiki/Dumaguete",
+          "text": "Dumaguete, officially the City of Dumaguete (Tagalog: [dʊmɐˈgɛtɛ]; Cebuano: Dakbayan sa Dumaguete; Filipino: Lungsod ng Dumaguete), is a component city and capital of the province of Negros Oriental, Philippines. According to the 2024 census, it has a population of 142,171 people. It is the most populous city and the smallest city by land area in Negros Oriental, as well as one of the two regional centers in Negros Island Region (the other one is Bacolod).\nDumaguete is a university city with four large universities and several colleges, attracting students from the province and across the country, mostly from the Visayas and Mindanao. The city is best known for Silliman University, the first Protestant and American university in the country and in Asia. Schools in Dumaguete include 18 public elementary schools and 10 public high schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "dumaguete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 192,
+    "place_id": "gn-1732811",
+    "input": {
+      "place": {
+        "place_id": "gn-1732811",
+        "name": "Kluang",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 2.03046,
+        "lon": 103.31689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kluang",
+          "url": "https://en.wikipedia.org/wiki/Kluang",
+          "text": "Kluang, formerly spelled Keluang, is a town and the district capital of Kluang District, Johor, Malaysia. Founded in 1915 by the British as the administrative capital for central Johor, Kluang is situated in the central geographical core of the state and lies within a 90-minute drive of major urban hubs across Johor.\nCombined with neighboring Batu Pahat, central Johor encompasses a total market catchment exceeding 700,000 residents. Throughout the 20th century, Kluang's agricultural economy transitioned from natural rubber cultivation to large-scale palm oil production. In recent decades, it has developed a major organic farming sector alongside ecotourism destinations such as Zenxin Organic Park, UK Agro Farm, and Kahang Organic Eco Rice Farm. The district also houses a significant industrial base, particularly in ceramic tile manufacturing, earning it a reputation as the \"tile capital of Malaysia\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "kluang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 193,
+    "place_id": "gn-2666199",
+    "input": {
+      "place": {
+        "place_id": "gn-2666199",
+        "name": "Uppsala",
+        "country": "Sweden",
+        "subdivision": "Uppsala",
+        "lat": 59.85882,
+        "lon": 17.63889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uppsala",
+          "url": "https://en.wikipedia.org/wiki/Uppsala",
+          "text": "Uppsala ( up-SAH-lə; Swedish: [ˈɵ̂pːˌsɑːla] ; archaically spelled Upsala) is the capital of Uppsala County and the fourth-largest city in Sweden, after Stockholm, Gothenburg, and Malmö. It had 177,074 inhabitants in 2019.\nLocated 71 km (44 mi) north of the capital Stockholm, it is also the seat of Uppsala Municipality. Since 1164, Uppsala has been the ecclesiastical centre of Sweden, being the seat of the Archbishop of the Church of Sweden. Uppsala is home to Scandinavia's largest cathedral – Uppsala Cathedral, which was the frequent site of the coronation of the Swedish monarch until the late 19th century.\nUppsala Castle, built by King Gustav Vasa, served as one of the royal residences of the Swedish monarchs, and was expanded several times over its history, making Uppsala the secondary capital of Sweden during its greatest extent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "uppsala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 194,
+    "place_id": "gn-3547398",
+    "input": {
+      "place": {
+        "place_id": "gn-3547398",
+        "name": "Matanzas",
+        "country": "Cuba",
+        "subdivision": "Matanzas Province",
+        "lat": 23.04388,
+        "lon": -81.58284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matanzas",
+          "url": "https://en.wikipedia.org/wiki/Matanzas",
+          "text": "Matanzas (Latin American Spanish: [maˈtansas]; Lucumi: Ayá Áta) is the capital of the Cuban province of Matanzas. Known for its poets, culture, and Afro-Cuban folklore, it is located on the northern shore of the island of Cuba, on the Bay of Matanzas (Spanish Bahia de Matanzas), 102 kilometres (63 mi) east of the capital Havana and 32 kilometres (20 mi) west of the resort town of Varadero.\nMatanzas is called the City of Bridges, for the seventeen bridges that cross the three rivers that traverse the city (Rio Yumuri, San Juan, and Canimar). For this reason it was referred to as the \"Venice of Cuba.\" It was also called \"La Atenas de Cuba\" (\"The Athens of Cuba\") for its poets.\nMatanzas is known as the birthplace of the music and dance traditions danzón and rumba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "matanzas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 195,
+    "place_id": "gn-3838583",
+    "input": {
+      "place": {
+        "place_id": "gn-3838583",
+        "name": "Rosario",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -32.94682,
+        "lon": -60.63932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosario",
+          "url": "https://en.wikipedia.org/wiki/Rosario",
+          "text": "Rosario, officially the Autonomous City of Rosario, is a city in central Argentina, in the south of the province of Santa Fe. Located 300 km (186 mi) northwest of Buenos Aires on the west bank of the Paraná River, it is the country's third-most populous city after Buenos Aires and Córdoba. With a growing and important metropolitan area, Greater Rosario has an estimated population of 1,750,000 as of 2020. One of its main attractions includes the neoclassical, Art Nouveau, and Art Deco architecture that has been preserved in hundreds of residences, houses and public buildings. The city is also famous for being the birthplace of revolutionary Marxist Che Guevara and footballer Lionel Messi.\nRosario is the head city of the Rosario Department and is located at the heart of the major industrial corridor in Argentina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "rosario",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 196,
+    "place_id": "gn-5336899",
+    "input": {
+      "place": {
+        "place_id": "gn-5336899",
+        "name": "Chula Vista",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.64005,
+        "lon": -117.0842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chula Vista, California",
+          "url": "https://en.wikipedia.org/wiki/Chula_Vista,_California",
+          "text": "Chula Vista ( CHOO-lə VIST-ə; Spanish for 'Beautiful/Pretty View', Spanish pronunciation: [ˈtʃula ˈβista] ) is a city in San Diego County, California, United States. It is the second-most populous city in the San Diego metropolitan area, the seventh-most populous city in Southern California, the 15th-most populous city in the state of California, and the 81st-most populous city in the United States. The population was 275,487 as of the 2020 census, up from 243,916 as of the 2010 census. It is located in the South Bay, about halfway—7.5 miles (12.1 km)—between the two downtowns of the San Diego–Tijuana region. Chula Vista is named for its scenic location between San Diego Bay and coastal mountain foothills.\nThe area, along with San Diego, was inhabited by the Kumeyaay before contact from the Spanish, who later claimed the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "chula vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chula",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 197,
+    "place_id": "gn-1856177",
+    "input": {
+      "place": {
+        "place_id": "gn-1856177",
+        "name": "Nagasaki",
+        "country": "Japan",
+        "subdivision": "Nagasaki",
+        "lat": 32.75,
+        "lon": 129.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagasaki",
+          "url": "https://en.wikipedia.org/wiki/Nagasaki",
+          "text": "Nagasaki (長崎, Nagasaki; Japanese pronunciation: [na.ɡaꜜ.sa.kʲi, na.ŋa-], lit. 'Long Cape'), officially Nagasaki City (長崎市, Nagasaki-shi; [na.ɡa.sa.kʲi̥ꜜ.ɕi, na.ɡa.saꜜ.kʲi̥.ɕi, na.ŋa-]), is the capital and the largest city of Nagasaki Prefecture on the island of Kyushu in Japan.\nFounded by the Portuguese, the port of Nagasaki became the sole port used for trade with the Portuguese and Dutch during the 16th through 19th centuries. The Hidden Christian Sites in the Nagasaki Region have been recognized and included in the UNESCO World Heritage Sites list. Part of Nagasaki was home to a major Imperial Japanese Navy base during the First Sino-Japanese War and Russo-Japanese War. Near the end of World War II, the American atomic bombings of Hiroshima and Nagasaki made Nagasaki the second city in the world to experience a nuclear attack. The city was later rebuilt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "nagasaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 198,
+    "place_id": "gn-2562305",
+    "input": {
+      "place": {
+        "place_id": "gn-2562305",
+        "name": "Valletta",
+        "country": "Malta",
+        "subdivision": "Valletta",
+        "lat": 35.89968,
+        "lon": 14.5148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valletta",
+          "url": "https://en.wikipedia.org/wiki/Valletta",
+          "text": "Valletta ( ; Maltese: il-Belt Valletta, lit. 'the city [of] Valletta', pronounced [ɪlˈbɛlt vɐˈlːɛtːɐ]), also known as Città Umilissima (transl. the Humblest City), is the capital city of Malta and one of its 68 council areas. Located between the Grand Harbour to the east and Marsamxett Harbour to the west, its population as of 2021 was 5,157. As Malta's capital city, it is a commercial centre for shopping, bars, dining, and café life. It is also the southernmost capital of Europe, and, at just 0.61 square kilometres (0.24 sq mi), it is the European Union's smallest capital city. \nValletta's 16th-century buildings were constructed by the Knights Hospitaller. The city was named after the Frenchman Jean Parisot de Valette, who succeeded in defending the island against an Ottoman invasion during the Great Siege of Malta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "valletta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 199,
+    "place_id": "gn-3183875",
+    "input": {
+      "place": {
+        "place_id": "gn-3183875",
+        "name": "Tirana",
+        "country": "Albania",
+        "subdivision": "Tirana",
+        "lat": 41.32744,
+        "lon": 19.81866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tirana",
+          "url": "https://en.wikipedia.org/wiki/Tirana",
+          "text": "Tirana (  tih-RAH-nə; Albanian pronunciation: [tiˈɾana]; Gheg Albanian: Tirona) is the capital and largest city of Albania. It is located in the centre of the country, enclosed by mountains and hills, with Dajti rising to the east and a slight valley to the northwest overlooking the Adriatic Sea in the distance. It is among the wettest and sunniest cities in Europe, with 2,544 hours of sun per year.\nTirana was founded in 1614 by Ottoman Albanian nobleman Sylejman Pasha Bargjini, centered on the Old Mosque and türbe. The site of present-day Tirana has been continuously inhabited since the Iron Age and was likely the core of the Illyrian kingdom of the Taulantii, which in classical antiquity was centred in the hinterland of Epidamnus. Following the Illyrian Wars, it was annexed by the Roman Empire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "tirana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 200,
+    "place_id": "gn-3632308",
+    "input": {
+      "place": {
+        "place_id": "gn-3632308",
+        "name": "Mérida",
+        "country": "Venezuela",
+        "subdivision": "Mérida",
+        "lat": 8.57899,
+        "lon": -71.16922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mérida, Mérida",
+          "url": "https://en.wikipedia.org/wiki/M%C3%A9rida,_M%C3%A9rida",
+          "text": "Mérida, officially known as Santiago de los Caballeros de Mérida, is the capital of the municipality of Libertador and the state of Mérida, and is one of the main cities of the Venezuelan Andes. It was founded in 1558 by Captain Juan Rodríguez Suárez, forming part of Nueva Granada, but later became part of the Captaincy General of Venezuela and played an active role in the War of Independence.\nThe capital city's population is 199,878 inhabitants, and the metropolitan area (including the municipalities of Libertador, Campo Elías, Sucre, and Santos Marquina) reaches 392,751 people (2011 census). The city accounts for 24% of the total population of Mérida State. It is home to the University of Los Andes and the Archdiocese of Mérida. It also has the highest and longest cable car in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "merida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
