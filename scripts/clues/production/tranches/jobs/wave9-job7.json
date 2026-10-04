@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 9113,
+    "place_id": "gn-2986248",
+    "input": {
+      "place": {
+        "place_id": "gn-2986248",
+        "name": "Pont-de-Larn",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.50447,
+        "lon": 2.40582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pont-de-Larn",
+          "url": "https://en.wikipedia.org/wiki/Pont-de-Larn",
+          "text": "Pont-de-Larn (French pronunciation: [pɔ̃ də laʁn]; Occitan: Lo Pont de L'Arn) is a commune in the Tarn department in southern France. It is 2 kilometers from Mazamet in the Occitanie region.\nThe town is situated on the river Arn (a tributary of the Thoré) in the Haut-Languedoc Regional Nature Park at the foot of the Montagne Noire.\nOn the sunny side of the Thoré valley, Pont-de-Larn offers residents and guests the ambience of a \"country town\". There are guest houses and lodges in the vicinity, and marked hiking trails.\nThere is also a tennis club, stadiums, bowling and one of the oldest golf courses in the region, de la Barouge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "pont de larn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "larn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9117,
+    "place_id": "gn-3471807",
+    "input": {
+      "place": {
+        "place_id": "gn-3471807",
+        "name": "Arantina",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.91111,
+        "lon": -44.25583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arantina",
+          "url": "https://en.wikipedia.org/wiki/Arantina",
+          "text": "Arantina is a Brazilian municipality located in the state of Minas Gerais. Its population as of 2020 is estimated to be 2,787 people living in a total area of 89.382 km2 (34.511 sq mi). The city belongs to the mesoregion of Sul and Sudoeste de Minas and to the microregion of Andrelândia.\nThe municipality has an average annual median temperature of 21.2 °C and the vegetation is predominantly that of the South American Atlantic Forest. With 98% of the population living within the urban area, the city had two health facilities in 2009. The Human Development Index (HDI) of the municipality is 0.736, considered average in relation to the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "arantina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9119,
+    "place_id": "gn-3516253",
+    "input": {
+      "place": {
+        "place_id": "gn-3516253",
+        "name": "Tapijulapa",
+        "country": "Mexico",
+        "subdivision": "Tabasco",
+        "lat": 17.45977,
+        "lon": -92.77903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tapijulapa",
+          "url": "https://en.wikipedia.org/wiki/Tapijulapa",
+          "text": "Tapijulapa (Spanish: [tapixuˈlapa] ) is a community in the municipality of Tacotalpa, Tabasco. It is a mountain community ninety kilometres from the state capital of Villahermosa, named a Pueblo Mágico (Magical Town) for its white houses with red tiles roofs along cobblestone streets, along with abundant vegetation. Its main landmark is the town church called Santiago Apóstol (Apostle James) as well as an ecological park called Kolem Jaá, one of the largest of its kind in Latin America. Nearby is the Cueva de Villa Luz, a cave that is a popular tourist destination. The town is also noted for a festival in honor of Chaac, the Maya god of rain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "tapijulapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9120,
+    "place_id": "gn-3531816",
+    "input": {
+      "place": {
+        "place_id": "gn-3531816",
+        "name": "Calderitas",
+        "country": "Mexico",
+        "subdivision": "Quintana Roo",
+        "lat": 18.55564,
+        "lon": -88.25518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calderitas, Quintana Roo",
+          "url": "https://en.wikipedia.org/wiki/Calderitas,_Quintana_Roo",
+          "text": "Calderitas is a city in the municipality of Othón P. Blanco, which is part of the Mexican state of Quintana Roo. It is situated on the east coast of the Yucatán Peninsula, in Chetumal Bay, just northeast of the city of Chetumal.\nBecause of its close proximity to the Caribbean coastline, it is vulnerable to hurricanes. Hurricane Janet and Hurricane Dean, both Category 5 storms, made landfall near Calderitas in 1955 and 2007 respectively.\nThere are beaches and a boat ramp, many restaurants, bars, beach resorts and other types of lodging in Calderitas, and the archaeological zone of Oxtankah is located 8 kilometers (5.0 mi) from the center of town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "calderitas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9128,
+    "place_id": "gn-5330810",
+    "input": {
+      "place": {
+        "place_id": "gn-5330810",
+        "name": "Brisbane",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.68077,
+        "lon": -122.39997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brisbane, California",
+          "url": "https://en.wikipedia.org/wiki/Brisbane,_California",
+          "text": "Brisbane (pron.  BRIZ-bayn) is a small city in San Mateo County, California, located on the lower slopes of the San Bruno Mountain. The city is on the northeastern edge of San Mateo County, located immediately south of the San Francisco city limits on the San Francisco Bay. The population was 4,851 as of the 2020 census.\nBrisbane is called \"The City of Stars\" because of a holiday tradition dating back to 1939. At the start of the Christmas/Hanukkah season, many residents and business owners place large, illuminated stars, some as big as 10 feet (3.0 m) or more in diameter, on the downhill sides of homes and offices throughout Brisbane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "brisbane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9140,
+    "place_id": "gn-996256",
+    "input": {
+      "place": {
+        "place_id": "gn-996256",
+        "name": "Hluhluwe",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.01895,
+        "lon": 32.26762
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hluhluwe",
+          "url": "https://en.wikipedia.org/wiki/Hluhluwe",
+          "text": "Hluhluwe (locally  shloo-SHLOO-way; Zulu pronunciation: [ɬuɬuw'e]) is a small town in northern KwaZulu-Natal, South Africa. It is situated between iSimangaliso Wetland Park and Hluhluwe–iMfolozi Park on the banks of the Hluhluwe River. Hluhluwe is situated on the elephant coast, an area known for its national parks, natural diversity and cultural heritage. Although relatively undeveloped the area is of growing interest to international tourists and travelers. Several local and international movies have been filmed in Hluhluwe, such as I Dreamed of Africa, Ghost Son, and documentaries filmed in the surrounding national parks.\nTimber, sugar, and pineapples are intensively grown in the area, which produces over 95% of South Africa's queen pineapples."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "hluhluwe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9146,
+    "place_id": "gn-2145404",
+    "input": {
+      "place": {
+        "place_id": "gn-2145404",
+        "name": "Uralla",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -30.6411,
+        "lon": 151.50069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uralla, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Uralla,_New_South_Wales",
+          "text": "Uralla is a town on the Northern Tablelands, New South Wales, Australia. It is located at the intersection of the New England Highway and Thunderbolts Way, 465 kilometres (289 mi) north of Sydney and about 23 kilometres (14 mi) south-west of the city of Armidale. At the 2016 census, the township of Uralla had a population of 2,388. According to the 2021 census, the population of Uralla had increased to 2,728.\nAt more than 1,000 metres (3,300 ft) above sea level, Uralla's high altitude makes for cool to cold winters and mild summers.\nUralla has maintained significant heritage characteristics, with more than 50 buildings and sites of heritage significance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "uralla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9148,
+    "place_id": "gn-2524379",
+    "input": {
+      "place": {
+        "place_id": "gn-2524379",
+        "name": "Lipari",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.46743,
+        "lon": 14.95398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lipari",
+          "url": "https://en.wikipedia.org/wiki/Lipari",
+          "text": "Lipari ( LIP-ər-ee, Italian: [ˈliːpari]; Sicilian: Lìpari; Latin: Lipara or Meligūnis; Ancient Greek: Μελιγουνίς, romanized: Meligounís, or Λιπάρα, Lipára) is the largest of the seven Aeolian Islands, located in the Tyrrhenian Sea off the northern coast of the Sicily in southern Italy, and a comune (municipality) including six of them (Lipari, Vulcano, Panarea, Stromboli, Filicudi and Alicudi); it is administratively part of Metropolitan City of Messina. It has 12,794 permanent residents, but during the May to September tourist season, the total population may reach up to 20,000. It is also the name of the biggest island in the archipelago, where the main urban area of the municipality is located."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "lipari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9156,
+    "place_id": "gn-2968984",
+    "input": {
+      "place": {
+        "place_id": "gn-2968984",
+        "name": "Villard-de-Lans",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.07156,
+        "lon": 5.55637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villard-de-Lans",
+          "url": "https://en.wikipedia.org/wiki/Villard-de-Lans",
+          "text": "Villard-de-Lans (French pronunciation: [vilˈaʁ də lˈɑ̃s], literally Villard of Lans; Vivaro-Alpine: Lo Vilar de Lanç) is a commune in the Isère department of the Auvergne-Rhône-Alpes region in southeastern France. The town is also situated in the Vercors Massif. It was the administrative centre of the eponymous canton until the departmental elections of 2015. After the elections, Villard-de-Lans and the communes of its former canton were all incorporated into the new canton of Fontaine-Vercors. The town remains the seat of the Community of Communes in the Vercors Massif (CCMV).\nThe town is a centre for skiing in winter, as well as hiking and hot air ballooning during the other seasons."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "villard de lans",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villard",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lans",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9162,
+    "place_id": "gn-4361547",
+    "input": {
+      "place": {
+        "place_id": "gn-4361547",
+        "name": "Manchester",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.66121,
+        "lon": -76.88498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manchester, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Manchester,_Maryland",
+          "text": "Manchester is a small incorporated town in northeastern Carroll County, Maryland, United States, located just south of the Pennsylvania state line and north of Baltimore. As of the 2020 census, Manchester had a population of 5,408.\nManchester was incorporated in 1833 and is the second oldest incorporated area in Carroll County after Westminster, which was incorporated in 1818. The town was originally formed as a part of Baltimore County, before the creation of Carroll County in 1837. It is governed by an elected mayor and an elected five-person town council.\nManchester lies in the humid continental climate region, marked by cold and snowy winters but humid and hot summers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "manchester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9177,
+    "place_id": "gn-8219734",
+    "input": {
+      "place": {
+        "place_id": "gn-8219734",
+        "name": "Bonny Hills",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.59061,
+        "lon": 152.83908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bonny Hills",
+          "url": "https://en.wikipedia.org/wiki/Bonny_Hills",
+          "text": "Bonny Hills is a town in New South Wales, Australia on the Tasman Sea coast about 18 km south of Port Macquarie.\nThe Wauchope–Bonny Hills Surf Life Saving Club is the longest established organisation within the town and has been continuously operating since 1958. The Surf Club built a new club house at their headquarters of Rainbow Beach in 2009 replacing the original building which was built by voluntary local efforts in 1959.\nBonny Hills has a service station, local Tavern, local beach, two holiday parks, post office and a fire station.\nThe Birpai (also known as Birrbay) people have lived in this area for more than 40,000 years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "bonny hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bonny",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9192,
+    "place_id": "gn-2679920",
+    "input": {
+      "place": {
+        "place_id": "gn-2679920",
+        "name": "Särö",
+        "country": "Sweden",
+        "subdivision": "Halland",
+        "lat": 57.50577,
+        "lon": 11.9321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Särö",
+          "url": "https://en.wikipedia.org/wiki/Särö",
+          "text": "Särö () is an area in Kungsbacka Municipality, Halland County, Sweden, with 3,165 inhabitants in 2010. It is located south of Gothenburg on the Särö peninsula. Geographically, the peninsula marks the transition from the Bohuslän archipelago in the north and the long, flat Halland coast in the south. The nature reserve Särö Västerskog is located nearby.\nOriginally an agricultural area, Särö became most popular during the end of the 19th century when the middle class of nearby Gothenburg started to use the peninsula as a summer resort. A railway from central Gothenburg was built, and the kings Oscar II and Gustav V frequented the area during the summer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "saro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9193,
+    "place_id": "gn-2709214",
+    "input": {
+      "place": {
+        "place_id": "gn-2709214",
+        "name": "Hagfors",
+        "country": "Sweden",
+        "subdivision": "Värmland",
+        "lat": 60.02378,
+        "lon": 13.67214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hagfors",
+          "url": "https://en.wikipedia.org/wiki/Hagfors",
+          "text": "Hagfors is a locality and the seat of Hagfors Municipality, Värmland County, Sweden with 10,125 inhabitants in 2010.\nIts history is traced to 1873, when it was decided to build two blast furnaces at the location.\nThe town of Hagfors used to play host to the Swedish Rally, a car rally, every February, which provided a significant annual economic windfall for the region.\nHagfors was one of the last places in Sweden to receive the formal title of a city, when it was detached from Norra Råda in 1950. The designated coat of arms was a tribute to the furnaces. At that time the town had 6,501 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "hagfors",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9204,
+    "place_id": "gn-3412093",
+    "input": {
+      "place": {
+        "place_id": "gn-3412093",
+        "name": "Vestmannaeyjar",
+        "country": "Iceland",
+        "subdivision": "South",
+        "lat": 63.44273,
+        "lon": -20.27339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vestmannaeyjar",
+          "url": "https://en.wikipedia.org/wiki/Vestmannaeyjar",
+          "text": "Vestmannaeyjar (Icelandic pronunciation: [ˈvɛstˌmanːaˌeiːjar̥] , sometimes anglicised as Westman Islands) is a municipality and archipelago off the south coast of Iceland.\nThe largest island, Heimaey, has a population of 4,537, most of whom live in the archipelago's main town, Vestmannaeyjabær. The other islands are uninhabited, although six have single hunting cabins. Vestmannaeyjar came to international attention in 1973 with the eruption of the Eldfell volcano, which destroyed many buildings and forced a month-long evacuation of the entire population to mainland Iceland. Approximately one-fifth of the town was destroyed before the lava flow was halted by the application of 6.8 billion litres (1.8 billion US gallons) of cold seawater."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "vestmannaeyjar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9205,
+    "place_id": "gn-3690572",
+    "input": {
+      "place": {
+        "place_id": "gn-3690572",
+        "name": "Acandí",
+        "country": "Colombia",
+        "subdivision": "Chocó",
+        "lat": 8.51158,
+        "lon": -77.27719
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acandí",
+          "url": "https://en.wikipedia.org/wiki/Acandí",
+          "text": "Acandí is a town in Colombia at the northern extremity of the department of Chocó in the northwest of Colombia, bordering Panama and the Caribbean Sea. It is 366 km (227 mi) from the department's capital, Quibdó. Its average temperature is 28 degrees Celsius (82 °F). It was founded around 1887, and it became a municipality in 1905, previously being part of Turbo. The name \"Acandí\" is a corruption of the indigenous word \"Acanti\", which means \"River of Stone\".\nIt is one of the constituent territories of the region of Darién, together with the towns of Unguía, Juradó and the municipality of Riosucio west of the Atrato River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "acandi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9215,
+    "place_id": "gn-6220369",
+    "input": {
+      "place": {
+        "place_id": "gn-6220369",
+        "name": "Avondale",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.49833,
+        "lon": 172.69013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avondale, Christchurch",
+          "url": "https://en.wikipedia.org/wiki/Avondale,_Christchurch",
+          "text": "Avondale ( AY-vən-dayl) is a suburb of Christchurch in the South Island of New Zealand. It is located 6 kilometres (3.7 mi) northeast of the city center, and is close to the Avon River / Ōtākaro, four kilometres to the northwest of its estuary.  The suburb is centred on Avondale Road and so named due to its proximity to the Avon River. It has a good sized park on Mervyn Drive called Avondale Park. This park has a kids playground, a tennis court, basketball court, and a football field in winter. There is ample vacant red zone land in Avondale for activities such as leisure and dog walking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "avondale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9233,
+    "place_id": "gn-2778439",
+    "input": {
+      "place": {
+        "place_id": "gn-2778439",
+        "name": "Gmünd",
+        "country": "Austria",
+        "subdivision": "Lower Austria",
+        "lat": 48.7683,
+        "lon": 14.9808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gmünd, Lower Austria",
+          "url": "https://en.wikipedia.org/wiki/Gmünd,_Lower_Austria",
+          "text": "Gmünd is a town in the Waldviertel region of Lower Austria, on the border with the Czech Republic. It is the administrative centre of Gmünd District, the north-westernmost district of Lower Austria. The municipality had 5,139 inhabitants on 1 January 2026.\nThe town lies opposite České Velenice, with which it has developed extensive cross-border connections. The two municipalities are legally and administratively separate and do not constitute a divided city. Their present relationship reflects the development of the railway junction in the 19th century, the Austrian–Czechoslovak border settlement after the First World War, the closure of the border during the Cold War and renewed cooperation since 1989."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "gmund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9253,
+    "place_id": "gn-685078",
+    "input": {
+      "place": {
+        "place_id": "gn-685078",
+        "name": "Berceni",
+        "country": "Romania",
+        "subdivision": "Ilfov",
+        "lat": 44.31417,
+        "lon": 26.18556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berceni, Ilfov",
+          "url": "https://en.wikipedia.org/wiki/Berceni,_Ilfov",
+          "text": "Berceni is a commune in the southeastern part of Ilfov County, Muntenia, Romania, composed of a single village, Berceni.\nThe commune is located at the southern edge of Bucharest, about 15 km (9.3 mi) from the city center, to which it is connected by the Berceni Road and the DJ401 county road. On its northwestern side, the commune abuts the Berceni neighborhood of Bucharest, while on its southeastern side it abuts Giurgiu County.\nFrom 1957 to 2016, Stadionul Berceni was the home ground for the football club ACS Berceni. In the summer of 2016, the team moved to Buftea after clashing with the local administration of Berceni."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "berceni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9257,
+    "place_id": "gn-7261214",
+    "input": {
+      "place": {
+        "place_id": "gn-7261214",
+        "name": "Malmstrom Air Force Base",
+        "country": "United States",
+        "subdivision": "Montana",
+        "lat": 47.50549,
+        "lon": -111.18302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malmstrom Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Malmstrom_Air_Force_Base",
+          "text": "Malmstrom Air Force Base is a United States Air Force base in Cascade County, Montana, United States, adjacent to the city of Great Falls. It was named in honor of World War II POW Colonel Einar Axel Malmstrom. Malmstrom AFB is the largest of three US Air Force Bases that maintain and operate the Minuteman III intercontinental ballistic missile. It is the home of the 341st Missile Wing (341 MW) of the Air Force Global Strike Command (AFGSC). For statistical purposes, the United States Census Bureau has defined Malmstrom Air Force Base as a census-designated place (CDP). It had a population of 3,472 at the 2010 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "malmstrom air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "malmstrom",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9258,
+    "place_id": "gn-760166",
+    "input": {
+      "place": {
+        "place_id": "gn-760166",
+        "name": "Ruciane-Nida",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 53.64161,
+        "lon": 21.53964
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruciane-Nida",
+          "url": "https://en.wikipedia.org/wiki/Ruciane-Nida",
+          "text": "Ruciane-Nida [ruˈt͡ɕanɛ ˈɲida] is a town in Pisz County, Warmian-Masurian Voivodeship, Poland. The town was formed in 1966 by the merger of three smaller settlements: Ruciane (German: Rudczanny, renamed Niedersee in 1938), Nida (German: Nieden) and Wola Ratajowa. It is located within the ethnographic region of Masuria.\nThe town of Ruciane-Nida is a well-known tourist centre within the Masurian Lake District, with a popular railway line running through it: a D29-219 line – Olsztyn – Szczytno – Świętajno – Pisz – Ełk. In the summer, it becomes the furthermost Southern station of the Masurian Recreational Navigation system.\nAs of 2004, the town had a population of 4,934."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "ruciane nida",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ruciane",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nida",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 8984,
+    "place_id": "gn-4839141",
+    "input": {
+      "place": {
+        "place_id": "gn-4839141",
+        "name": "Mystic",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.35427,
+        "lon": -71.96646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mystic, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Mystic,_Connecticut",
+          "text": "Mystic is a village and census-designated place (CDP) in Groton and Stonington, Connecticut.\nMystic was a significant Connecticut seaport with more than 600 ships built over 135 years starting in 1784.  Mystic Seaport, located in the village, is the largest maritime museum in the United States and has preserved a number of sailing ships, such as the whaling ship Charles W. Morgan. The village is located on the Mystic River which flows into Fishers Island Sound. The Mystic River Bascule Bridge crosses the river in the center of the village.  The name \"Mystic\" is derived from the Pequot term \"missi-tuk\" describing a large river whose waters are driven into waves by tides or wind."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "mystic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8986,
+    "place_id": "gn-5129770",
+    "input": {
+      "place": {
+        "place_id": "gn-5129770",
+        "name": "Old Westbury",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.78871,
+        "lon": -73.59957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Old Westbury, New York",
+          "url": "https://en.wikipedia.org/wiki/Old_Westbury,_New_York",
+          "text": "Old Westbury is a village in the towns of North Hempstead and Oyster Bay in Nassau County, on the North Shore of Long Island, in New York, United States. The population was 4,289 at the time of the 2020 census.\nThe Incorporated Village of Old Westbury is one of the nation's wealthiest municipalities and is the second-richest zip code in the state of New York – topped only by Harrison in Westchester County. In 2007, Business Week dubbed Old Westbury as New York's most expensive suburb.  Old Westbury Gardens – located within the village – has been recognized as one of the three best public gardens in the world by Four Seasons Hotels magazine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "old westbury",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "old",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "westbury",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8989,
+    "place_id": "gn-6232210",
+    "input": {
+      "place": {
+        "place_id": "gn-6232210",
+        "name": "Te Papapa",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.9182,
+        "lon": 174.80019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Te Papapa",
+          "url": "https://en.wikipedia.org/wiki/Te_Papapa",
+          "text": "Te Papapa is a suburb of Auckland, New Zealand. It is located nine kilometres to the southeast of Auckland city centre, on the northern shore of Māngere Inlet, an arm of the Manukau Harbour. The residential and light-industrial suburb lies between the suburbs of Onehunga, Penrose, and Southdown, and is at the northern end of the Māngere Bridge which connects it with the South Auckland suburb of Māngere. Train services on the Onehunga Line run through the suburb on the Onehunga Branch line, which reopened in 2010. Services at Te Papapa station commenced on 19 September 2010. Carter Holt Harvey's head office is located at 173 Captain Springs Road in the Te Papapa area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "te papapa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "te",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "papapa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8992,
+    "place_id": "gn-6692470",
+    "input": {
+      "place": {
+        "place_id": "gn-6692470",
+        "name": "Los Gigantes",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.24361,
+        "lon": -16.84153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Gigantes",
+          "url": "https://en.wikipedia.org/wiki/Los_Gigantes",
+          "text": "Los Gigantes is a resort town in the Santiago del Teide municipality on the west coast of the Canary Island Tenerife. Its main feature are the giant rock formations, Acantilados de Los Gigantes, that rise from the sea to a height of 500–800 metres (1,640–2,625 ft) after which the town has been named.  Los Gigantes means \"The Giants\".\n\nNearby to the south are the resorts of Puerto de Santiago and Playa de la Arena. Three kilometres (1.9 mi) to the north is the village of Masca which can be reached by boat or car.\nThe town has a marina surrounded by concrete walls to dampen the effect of the rough seas around the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "los gigantes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gigantes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8997,
+    "place_id": "gn-8347688",
+    "input": {
+      "place": {
+        "place_id": "gn-8347688",
+        "name": "Calala",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.17356,
+        "lon": 150.98059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calala, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Calala,_New_South_Wales",
+          "text": "Calala is a suburb of the Northern New South Wales city of Tamworth, administered by Tamworth Regional Council. In the 2016 census, Calala had a population of 3,927.\nThe suburb is 4.5 km southeast of the CBD of Tamworth and is connected to the city by Calala Lane, which continues through the suburb to form its main street. Calala Lane often becomes flooded in times of heavy rain, usually isolating the residents from the rest of the city but generally only for several hours at a time. Further along Calala Lane past the residential area of Calala is Farrer Memorial Agricultural High School and the New South Wales Department of Agriculture plant research institute."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "calala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9020,
+    "place_id": "gn-5121230",
+    "input": {
+      "place": {
+        "place_id": "gn-5121230",
+        "name": "Hoosick Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.90119,
+        "lon": -73.3515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoosick Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/Hoosick_Falls,_New_York",
+          "text": "Hoosick Falls is a village in Rensselaer County, New York, United States. As of the 2020 census, Hoosick Falls had a population of 3,216. During its peak, in 1900, the village had a population of approximately 7,000.\nThe village of Hoosick Falls is near the center of the town of Hoosick on NY 22. The village center, listed on the National Register of Historic Places as Hoosick Falls Historic District, has a thriving early-20th century downtown commercial district, and many of the buildings have been restored. Recent commercial additions include a bakery/sandwich shop, a French restaurant, a coffee roastery, an art gallery and bistro, and a barbecue joint with a live music venue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "hoosick falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hoosick",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9022,
+    "place_id": "gn-5521905",
+    "input": {
+      "place": {
+        "place_id": "gn-5521905",
+        "name": "Friona",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 34.64173,
+        "lon": -102.7241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Friona, Texas",
+          "url": "https://en.wikipedia.org/wiki/Friona,_Texas",
+          "text": "Friona is a city in Parmer County, Texas, United States. The population was 4,171 at the 2020 census. Friona was established as a small community in 1898 by XIT Ranch, originally called Frio, which is also the word for \"cold\" in Spanish.\nThe community served as a shipping point for the Pecos and Northern Texas Railroads. In 1906, the George G. Wright Land CO. chose the community for a colonization project, promising settlers of fertile soil, and a healthful climate. The community then became known as Friona after the opening of a post office in March 16, 1907 and started to construct various buildings, which were a hotel, livery stable and a bank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "friona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9027,
+    "place_id": "gn-1283018",
+    "input": {
+      "place": {
+        "place_id": "gn-1283018",
+        "name": "Nagarkot",
+        "country": "Nepal",
+        "subdivision": "Bagmati Province",
+        "lat": 27.71522,
+        "lon": 85.52075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagarkot",
+          "url": "https://en.wikipedia.org/wiki/Nagarkot",
+          "text": "Nagarkot (Nepali: नगरकोट)  is a serene hill station perched on the eastern rim of the Kathmandu Valley, located in Bhaktapur District of Bagmati Province, Nepal. It is renowned for its panoramic views of the Himalayas—including Mount Everest on clear days. Situated just 32 km from Kathmandu, Nagarkot offers a peaceful retreat from the city's bustle and is a favorite among sunrise chasers, nature lovers, and weekend wanderers.\nAt the time of the 2021 census it had a population of 5,234 and had 1,084 houses in it. At an elevation of 2,195 meters, it is considered one of the most scenic spots in Bhaktapur District. Nagarkot also offers views of the Kathmandu Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "nagarkot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9032,
+    "place_id": "gn-2651492",
+    "input": {
+      "place": {
+        "place_id": "gn-2651492",
+        "name": "Datchet",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.4839,
+        "lon": -0.57893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Datchet",
+          "url": "https://en.wikipedia.org/wiki/Datchet",
+          "text": "Datchet is a village and civil parish in the Royal Borough of Windsor and Maidenhead in Berkshire, England, on the north bank of the River Thames. Historically part of Buckinghamshire, and the Stoke Hundred, the village was eventually transferred to Berkshire, under the Local Government Act 1972. The village developed because of its proximity to Windsor and the ferry service which connected it to the main London Road across the River Thames. The ferry was later replaced by a road bridge at the foot of High Street. The bridge was rebuilt three times. There is also a rail bridge approaching Windsor across the river, and road bridges above and below the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "datchet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9054,
+    "place_id": "gn-5966050",
+    "input": {
+      "place": {
+        "place_id": "gn-5966050",
+        "name": "Greendale",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.11667,
+        "lon": -122.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greendale, Chilliwack",
+          "url": "https://en.wikipedia.org/wiki/Greendale,_Chilliwack",
+          "text": "Greendale is a primarily agricultural settlement within Chilliwack, British Columbia, Canada, located 92 kilometres (57 mi) east of the City of Vancouver. Greendale is located on the west side of Chilliwack, bordering the east side of the City of Abbotsford. The Vedder River forms the border between Greendale and Yarrow which lies to the South. Greendale was originally called Sumas, but got renamed in 1951 to avoid confusion with the adjoining municipality, the District of Sumas (now part of the City of Abbotsford), as well as Sumas, Washington. The area was once a 10,000 acres (4,000 ha) lake at the base of Sumas Mountain. Sumas Lake was drained in the early 1920s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "greendale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9072,
+    "place_id": "gn-2177100",
+    "input": {
+      "place": {
+        "place_id": "gn-2177100",
+        "name": "Ballan",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.59987,
+        "lon": 144.2289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballan, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Ballan,_Victoria",
+          "text": "Ballan ( ) is a town in Victoria, Australia. At the 2021 census, Ballan had a population of 3,392.\nIt is the second largest administrative centre, behind Bacchus Marsh, in the Shire of Moorabool local government area. Ballan is a small country regional town but also not too far from Melbourne City which takes a one-hour drive. Ballan Town is located in between Melbourne - Ballarat Western Freeway and had a major train stop in between these two cities. Ballan's facilities include a hospital, primary schools, railway station, police station, post office, church, banks, ATM, public play grounds, golf club, hotel, pub, caravan park, fuel station, restaurants, supermarket and other shops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "ballan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9073,
+    "place_id": "gn-2633651",
+    "input": {
+      "place": {
+        "place_id": "gn-2633651",
+        "name": "Woodhall Spa",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.15215,
+        "lon": -0.21453
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodhall Spa",
+          "url": "https://en.wikipedia.org/wiki/Woodhall_Spa",
+          "text": "Woodhall Spa is a former spa town and civil parish in the East Lindsey district of Lincolnshire, most commonly known as the Blackpool of Lincolnshire England, on the southern edge of the Lincolnshire Wolds, 6 miles (10 km) south-west of Horncastle, 23 miles (37 km) west of Skegness, 15 miles (24 km) east-south-east of Lincoln and 17 miles (27 km) north-west of Boston. It is noted for its mineral springs, historic cinema and its Second World War association with the RAF 617 Squadron, commonly referred to as 'The Dambusters'. \nMuch of the village's Victorian elegance remains, with large parts of the centre being designated as a conservation area since January 1991."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "woodhall spa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woodhall",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9078,
+    "place_id": "gn-2654915",
+    "input": {
+      "place": {
+        "place_id": "gn-2654915",
+        "name": "Brampton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.95,
+        "lon": -2.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brampton, Cumberland",
+          "url": "https://en.wikipedia.org/wiki/Brampton,_Cumberland",
+          "text": "Brampton is a market town and civil parish in the Cumberland unitary authority area of Cumbria, England. It is 9 miles (14 km) east of Carlisle and 2 miles (3.2 km) south of Hadrian's Wall. Historically part of Cumberland, it is situated off the A69 road which bypasses it. In 2021 the parish had a population of 4,545. The parish of Brampton also covers the nearby hamlets of Milton and Naworth.\nSt Martin's Church is famous as the only church designed by the Pre-Raphaelite architect Philip Webb, and contains one of the most exquisite sets of stained glass windows designed by Sir Edward Burne-Jones, and executed in the William Morris studio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "brampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9086,
+    "place_id": "gn-3880108",
+    "input": {
+      "place": {
+        "place_id": "gn-3880108",
+        "name": "Melipeuco",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -38.85243,
+        "lon": -71.69334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melipeuco",
+          "url": "https://en.wikipedia.org/wiki/Melipeuco",
+          "text": "Melipeuco (Spanish pronunciation: [meliˈpewko]) is a town and commune (Spanish: comuna) in Chile, located at the foot of the Andes, in the Province of Cautín, Araucanía Region. Melipeuco is 12 km (7 mi) from the southern entrance of the Conguillío National Park. The Nevados de Sollipulli, an ice-filled volcanic caldera surrounded by numerous hot water springs and geysers, lie south of the town. Lake Carilafquén is also located in this area. At the edge of the Nevados de Sollipulli, at the Alpehue intersection 33 km (21 mi) away, there are several hot springs with water from 40 to 70 °C (104 to 158 °F), even in the middle of glacier blocks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "melipeuco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9090,
+    "place_id": "gn-5107812",
+    "input": {
+      "place": {
+        "place_id": "gn-5107812",
+        "name": "Ballston Spa",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.00091,
+        "lon": -73.84901
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballston Spa, New York",
+          "url": "https://en.wikipedia.org/wiki/Ballston_Spa,_New_York",
+          "text": "Ballston Spa is a village in and the county seat of Saratoga County, New York, United States, located southwest of Saratoga Springs. It is part of the Capital Region. The population of the village, named after Rev. Eliphalet Ball, a Congregationalist clergyman and an early settler, was 5,111 at the 2020 census. Ballston Spa lies on the border of two towns, situated partly in the Town of Ballston and partly in the Town of Milton. The Ballston Spa School District encompassing most of the combined towns of Milton, Malta, and Ballston is often referred to locally as ‘Ballston Spa’ with the village proper being referred to as ‘The Village’ or 'Town'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "ballston spa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ballston",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9092,
+    "place_id": "gn-5327003",
+    "input": {
+      "place": {
+        "place_id": "gn-5327003",
+        "name": "Bear Valley Springs",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 35.15913,
+        "lon": -118.62842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bear Valley Springs, California",
+          "url": "https://en.wikipedia.org/wiki/Bear_Valley_Springs,_California",
+          "text": "Bear Valley Springs is a guarded-gate community in Kern County, California, United States. The unincorporated community is in the Tehachapi Mountains and is part of the greater Tehachapi area. The elevation ranges from 4,121 feet (1,256 m) to 6,934 feet (2,113 m) (Bear Mountain). The population fluctuates between a low during the winter months when snow is common, to a high in the summer months when its elevation keeps it much cooler than surrounding areas and major cities. The population was 5,592 at the 2020 census, up from 5,172 at the 2010 census. For statistical purposes, the United States Census Bureau has defined Bear Valley Springs as a census-designated place (CDP)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "bear valley springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bear",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9096,
+    "place_id": "gn-675530",
+    "input": {
+      "place": {
+        "place_id": "gn-675530",
+        "name": "Ion Roată",
+        "country": "Romania",
+        "subdivision": "Ialomița County",
+        "lat": 44.66667,
+        "lon": 26.76667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ion Roată, Ialomița",
+          "url": "https://en.wikipedia.org/wiki/Ion_Roată,_Ialomița",
+          "text": "Ion Roată is a commune in Ialomița County, Muntenia, Romania. It is composed of two villages, Broșteni and Ion Roată.\nThe commune stretches for some 5 km (3 mi) along the Ialomița River valley; Ion Roată village is to the east and Broșteni to the west. It lies in the center of the Bărăgan Plain, and the terrain is largely flat and arid. About 86.5% of the surface area is arable land, 6.5% forests, 3% waters, 2% buildings, 1.5% roads, and 0.5% unproductive terrain. Valea Măcrișului is to the north; to the south, the river forms the border with Axintele; Sfântu Gheorghe is to the east and Alexeni to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "ion roata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ion",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "roata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9102,
+    "place_id": "gn-2151650",
+    "input": {
+      "place": {
+        "place_id": "gn-2151650",
+        "name": "Richmond",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.59956,
+        "lon": 150.75142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richmond, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Richmond,_New_South_Wales",
+          "text": "Richmond is a historic town in northwest Sydney in New South Wales, Australia. Richmond is in the local government area of the City of Hawkesbury and is part of the Sydney metropolitan area. It is located 19 metres above sea level on the alluvial Hawkesbury River flats, at the foot of the Blue Mountains. It is about 62 km by road from the Sydney CBD, 22 km from Penrith, 25 km from Blacktown, 39 km from Parramatta, 78 km from Lithgow and 7 km from Windsor. Richmond is now part of the Sydney urban area, with access to various amenities including Supermarkets, Cafe, Railway, Shopping Mall, Schools, TAFE and University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9108,
+    "place_id": "gn-2692349",
+    "input": {
+      "place": {
+        "place_id": "gn-2692349",
+        "name": "Matfors",
+        "country": "Sweden",
+        "subdivision": "Västernorrland",
+        "lat": 62.34864,
+        "lon": 17.03173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matfors",
+          "url": "https://en.wikipedia.org/wiki/Matfors",
+          "text": "Matfors is a locality situated in Sundsvall Municipality, Västernorrland County, Sweden with 3,201 inhabitants in 2010.\nThe river Ljungan runs through Matfors. It is situated about 15 kilometers west of Sundsvall, a city with about 45,000 inhabitants. In Matfors there used to be two schools: Sköle Skola and Matfors Skola, both sharing the same school yard; they later rejoined to form Matfors Skola in 2009 after being split up in 2002.\nMatfors is said to have got its name from the rich supply of salmon (Swedish: lax) in the river Ljungan, by which the town was built. The name Matfors consists of two parts: mat (food) and fors (river stream)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "matfors",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9111,
+    "place_id": "gn-2973424",
+    "input": {
+      "place": {
+        "place_id": "gn-2973424",
+        "name": "Taninges",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.10883,
+        "lon": 6.59231
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taninges",
+          "url": "https://en.wikipedia.org/wiki/Taninges",
+          "text": "Taninges (French pronunciation: [tanɛ̃ʒ]; Savoyard: Tanyinzhe) is a commune in the Haute-Savoie department in the Auvergne-Rhône-Alpes region in south-eastern France.\n\nTaninges is a pleasant town of over 3000 people in the French Alps, about 35 km directly east-southeast of Geneva and close to the commune of Cluses. It dates back to Roman times, and some Roman cobblestone mountain tracks are still in existence.\nThe town has hotels, restaurants, cinema, municipal campsite, supermarket and petrol station. A river runs through the town, and there are many walking and cycling tracks in the area. There is also a tourist information centre with internet and multi-lingual staff in the centre of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "taninges",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

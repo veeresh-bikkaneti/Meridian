@@ -1,0 +1,717 @@
+[
+  {
+    "rank": 8471,
+    "place_id": "gn-2660498",
+    "input": {
+      "place": {
+        "place_id": "gn-2660498",
+        "name": "Grindelwald",
+        "country": "Switzerland",
+        "subdivision": "Bern",
+        "lat": 46.62396,
+        "lon": 8.03601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grindelwald",
+          "url": "https://en.wikipedia.org/wiki/Grindelwald",
+          "text": "Grindelwald (Swiss Standard German pronunciation: [ˈɡrɪndl̩ˌvald]) is a village and municipality in the Interlaken-Oberhasli administrative district in the canton of Berne. In addition to the village of Grindelwald, the municipality also includes the settlements of Alpiglen, Burglauenen, Grund, Itramen, Mühlebach, Schwendi, Tschingelberg and Wargistal.\nGrindelwald village is 1,034 m (3,392 ft) above sea level. Mentioned for the first time in 1146, it has become an important tourist destination of both Switzerland and the Alps since the golden age of alpinism in the 19th century. It is overlooked by a section of the Bernese Alps from the Wetterhorn to the Eiger, which creates a natural barrier. Together with the adjacent valley of Lauterbrunnen, the valley of Grindelwald forms part of the Jungfrau Region of the Bernese Oberland, between Interlaken and the main crest of the Bernese Alps."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "grindelwald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8472,
+    "place_id": "gn-3099634",
+    "input": {
+      "place": {
+        "place_id": "gn-3099634",
+        "name": "Frombork",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 54.35766,
+        "lon": 19.68029
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frombork",
+          "url": "https://en.wikipedia.org/wiki/Frombork",
+          "text": "Frombork (Polish: [ˈfrɔmbɔrk] ; German: Frauenburg [ˈfʁaʊənbʊʁk] ) is a town in northern Poland, situated on the Vistula Lagoon in Braniewo County, within Warmian–Masurian Voivodeship. As of December 2021, it has a population of 2,260.\nFirst mentioned in a 13th-century document, Frombork is one of the oldest and historically most important towns of the historical region of Warmia. In the early 16th century it was the residence of the astronomer Nicolaus Copernicus, who used it as a site for several of his observations.\nThe town and its 14th-century cathedral were badly damaged in World War II. After the war the cathedral complex was meticulously reconstructed and is again a popular tourist destination, listed as a Historic Monument of Poland. It contains the grave of Copernicus and is the seat of the Roman Catholic Archdiocese of Warmia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "frombork",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8473,
+    "place_id": "gn-3388446",
+    "input": {
+      "place": {
+        "place_id": "gn-3388446",
+        "name": "São José de Espinharas",
+        "country": "Brazil",
+        "subdivision": "Paraíba",
+        "lat": -6.84722,
+        "lon": -37.32583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São José de Espinharas",
+          "url": "https://en.wikipedia.org/wiki/São_José_de_Espinharas",
+          "text": "São José de Espinharas is a town in the state of Paraíba, Northeastern Brazil.\nLocated on the banks of the lower Espinharas River, about 30 km to the North of Patos, this small town has its economy based on extensive cattle and goat raising and subsistence agriculture. Its relief is somewhat irregular, with large igneous rock outcrops and small mountains and granite inselbergs. The soil is generally poor (\"tabuleiros\") and covered by the caatinga vegetation, interspersed with small valleys (\"baixios\") with fertile soils that support agricultural activities and are propitious to the building of small and medium-sized dams that store rain-water flowing in temporary creeks. The natural vegetation on the \"tabuleiros\" is well preserved as of 2005.\nOnce a prosperous region, the lower Espinharas valley had cotton production as its main agricultural activity until about 1980."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "sao jose de espinharas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "espinharas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8478,
+    "place_id": "gn-10055097",
+    "input": {
+      "place": {
+        "place_id": "gn-10055097",
+        "name": "Hilton",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.06208,
+        "lon": 115.78049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hilton, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Hilton,_Western_Australia",
+          "text": "Hilton is a suburb of Perth, Western Australia, located within the City of Fremantle.\nThe suburb has an eclectic mixture of weatherboard, fibro and brick dwellings. The suburb is undergoing extensive urban renewal and recently more three and four-bedroom, two-bathroom homes have been built.\nIts post-World War II design was under a state government initiative known as \"garden suburbs\" which meant wide verges and single homes on large blocks.\nThe northern precinct of Hilton contains a number of laneways and the village centre (on the north side of South Street) comprising a greengrocer, giftware emporium, newsagent, printers, chemist, butcher, a hair salon, squash courts, builders, veterinarian surgery and a café.\nSouth Street, Paget Street and Carrington Street contain most of the remaining retail activity in Hilton, including a public bar, pizzeria and a post office."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "hilton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8481,
+    "place_id": "gn-2525773",
+    "input": {
+      "place": {
+        "place_id": "gn-2525773",
+        "name": "Acquedolci",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.05708,
+        "lon": 14.5855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acquedolci",
+          "url": "https://en.wikipedia.org/wiki/Acquedolci",
+          "text": "Acquedolci (Sicilian: Acquaduci) is an Italian town and comune in the Metropolitan City of Messina in Sicily.\nIts name, that can be translated in English as \"sweet waters\", probably came from the fresh water springs which are part of the town territory. The inhabited centre was founded in 1922, following a landslide which damaged the town of San Fratello, forcing a large part of the population to relocate there. Acquedolci, which was a frazione of San Fratello, obtained comune status in 1969.\nThe history of Acquedolci has ancient origins that date back to Roman times. The name itself seems to derive from the fact that the ancient Romans, during the First Punic War, between 264 and 241 BC, identified an underwater spring off the coast that allowed them to supply water directly into the sea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "acquedolci",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8482,
+    "place_id": "gn-2633609",
+    "input": {
+      "place": {
+        "place_id": "gn-2633609",
+        "name": "Wool",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.67966,
+        "lon": -2.2189
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wool, Dorset",
+          "url": "https://en.wikipedia.org/wiki/Wool,_Dorset",
+          "text": "Wool is a large village, civil parish and electoral ward in south Dorset, England. In the 2011 census the parish – which includes Bovington Camp army base to the north – had 2,015 households and a population of 5,310. The village lies at a historic bridging point on the River Frome, halfway between Dorchester and Wareham. Woolbridge Manor House, a 17th-century building, is a prominent feature just outside the village and the location of Tess's honeymoon in Thomas Hardy's Tess of the D'Urbervilles.  Other prominent features of the village include the medieval church of Holy Rood, the railway station on the South West Main Line from London Waterloo to Weymouth, and the thatched cottages along Spring Street.\nThe place-name 'Wool' is first attested in Anglo-Saxon Writs from 1002 to 1012, where it appears as Wyllon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "wool",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8485,
+    "place_id": "gn-2745012",
+    "input": {
+      "place": {
+        "place_id": "gn-2745012",
+        "name": "Warmond",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.19667,
+        "lon": 4.50278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warmond",
+          "url": "https://en.wikipedia.org/wiki/Warmond",
+          "text": "Warmond (Dutch pronunciation: [ˈʋɑrmɔnt] ) is a village and former municipality in the Western Netherlands, north of Leiden in the province of South Holland. The municipality covered an area of 14.42 km2 (5.57 sq mi), of which 4.42 km2 (1.71 sq mi) is water; had a population of 4,977 in 2004. Together with Sassenheim and Voorhout, it became part of the Teylingen municipality on 1 January 2006. Warmond, which is located in an area called the \"Dune and Bulb Region\" (Duin- en Bollenstreek), is notable for being very affluent.\nWarmond is situated on a lake system called Kagerplassen and has several marinas which make it a popular recreational area for boating and other water sports.\nAn 18th-century mansion called \"Huys te Warmond\" (\"House at Warmond\") is located north of the village along the main road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "warmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8496,
+    "place_id": "gn-769345",
+    "input": {
+      "place": {
+        "place_id": "gn-769345",
+        "name": "Kazimierz Dolny",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.31911,
+        "lon": 21.95502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kazimierz Dolny",
+          "url": "https://en.wikipedia.org/wiki/Kazimierz_Dolny",
+          "text": "Kazimierz Dolny (Polish pronunciation: [kaˈʑimjɛʐ ˈdɔlnɨ]) is a small historic town in eastern Poland, on the right (eastern) bank of the Vistula river, 50 km (31 mi) from Lublin, in Puławy County, Lublin Voivodeship. Historically it belongs to Lesser Poland, and in the past it was one of the most important cities of the province.\nNow a tourist destination, the town enjoyed its greatest prosperity in the 16th and the first half of the 17th century, due to the trade in grain conducted along the Vistula. It became an economic backwater after that trade declined, and this freeze in economic development enabled the town to preserve its Renaissance urban plan and appearance. Since the 19th century it has become a holiday destination, attracting artists and summer residents.\nKazimierz Dolny is an art center in Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "kazimierz dolny",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kazimierz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dolny",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8497,
+    "place_id": "gn-2165596",
+    "input": {
+      "place": {
+        "place_id": "gn-2165596",
+        "name": "Gilgandra",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.71173,
+        "lon": 148.66252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gilgandra, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Gilgandra,_New_South_Wales",
+          "text": "Gilgandra is a country town in the Orana region of New South Wales, Australia, and services the surrounding agricultural area where wheat is grown extensively together with other cereal crops, and sheep and beef cattle are raised. The town is the administrative seat of the Gilgandra Shire.\nSited at the junction of the Newell, Oxley and Castlereagh highways, Gilgandra is located in a wide bend of the Castlereagh River, downstream from its source near Coonabarabran, directly downstream from Mendooran, and upstream from Gulargambone and Coonamble. It is 432 km north-west of Sydney (about six hours' driving time), and is located approximately half way along the inland route from Melbourne to Brisbane. It is known as the town of windmills and the home of the \"Coo-ees\", and is a gateway to the Warrumbungles National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "gilgandra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8499,
+    "place_id": "gn-2655618",
+    "input": {
+      "place": {
+        "place_id": "gn-2655618",
+        "name": "Birdwell",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.51398,
+        "lon": -1.47929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birdwell, South Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Birdwell,_South_Yorkshire",
+          "text": "Birdwell is a village in the Metropolitan Borough of Barnsley in South Yorkshire, England and is located approximately 3.5 miles (6 km) south of Barnsley, 10.5 miles (17 km) north-east of Sheffield. Birdwell currently falls within the Rockingham Ward of the Barnsley Metropolitan Council, although plans to add most of Birdwell to the Worsbrough Ward were proposed again in 2024.\nNeighbouring areas of Birdwell include Worsbrough Village, Tankersley and Hoyland Common.\nThe A61 (Sheffield Road) passes north–south through the length of Birdwell, and at the southern end is Birdwell Roundabout which is the junction between the M1 motorway at Junction 36 and the A61. The roundabout also marks the start of the Dearne Valley Parkway, a relatively new dual carriageway which links the M1 at Junction 36 to the A1 at Marr (near Doncaster)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "birdwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8500,
+    "place_id": "gn-282489",
+    "input": {
+      "place": {
+        "place_id": "gn-282489",
+        "name": "Ofra",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 31.95633,
+        "lon": 35.26008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ofra",
+          "url": "https://en.wikipedia.org/wiki/Ofra",
+          "text": "Ofra (Hebrew: עֹפְרָה) is an Israeli settlement located in the northern Israeli-occupied West Bank. Located on the main road between Jerusalem and Nablus (Route 60), it falls under the jurisdiction of Mateh Binyamin Regional Council. In 2024 it had a population of 3,110.\nThe international community considers Israeli settlements in the West Bank illegal under international law. According to human rights organization B'Tselem, the state of Israel itself acknowledges that much of the Ofra civilian settlement is built on privately owned Palestinian land, which is unlawful according to Israeli law.\nIn August 2016, the military governorate admitted to the Israeli High Court of Justice that a large portion of Ofra, totalling 45 dunams, was built on land privately owned by Palestinians prior to the occupation, including areas \"located in the heart of the settlement\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "ofra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8505,
+    "place_id": "gn-2999981",
+    "input": {
+      "place": {
+        "place_id": "gn-2999981",
+        "name": "Lespignan",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.27364,
+        "lon": 3.17193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lespignan",
+          "url": "https://en.wikipedia.org/wiki/Lespignan",
+          "text": "Lespignan (French pronunciation: [lɛspiɲɑ̃]; Occitan: Lespinhan) is a commune in the Hérault département in the Occitanie region in southern France.\nExperiencing a Mediterranean climate, it is drained by the Aude River and various other small streams. The commune boasts a remarkable natural heritage: three Natura 2000 sites (the \"Lower Plain of the Aude,\" the \"Lower Course of the Aude,\" and the \"Hills of Narbonnais\"), two protected areas (the \"Lower Plain of the Aude and Collines d'Enserune\" and the \"Lower Plain of the Aude\"), and eight natural areas of ecological, faunal, and floristic interest.\nLespignan is a rural commune with 3,355 inhabitants in 2022, having experienced a significant population increase since 1962. It is located within the Lespignan urban area and is part of the Béziers catchment area. Its inhabitants are called Lespignanais or Lespignanaises."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "lespignan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8508,
+    "place_id": "gn-6094665",
+    "input": {
+      "place": {
+        "place_id": "gn-6094665",
+        "name": "Osoyoos",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.032,
+        "lon": -119.468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osoyoos",
+          "url": "https://en.wikipedia.org/wiki/Osoyoos",
+          "text": "Osoyoos (, historically ) is the southernmost town in the Okanagan Valley in British Columbia between Penticton and Omak. The town is 3.6 km (2.2 mi) north of the United States border in Washington and is adjacent to the Osoyoos Indian reserve. The origin of the name Osoyoos was the word sw̓iw̓s (pronounced \"soo-yoos\") meaning \"narrowing of the waters\" in the local Okanagan language (Syilx'tsn). The \"O-\" prefix is not indigenous in origin and was attached by settler-promoters wanting to harmonize the name with other place names beginning with O in the Okanagan region (Oliver, Omak, Oroville, Okanogan). There was a local newspaper, the Osoyoos Times, but merged with the Oliver Chronicle and became the Times Chronicle in May 2020.\nThe town's population of 5,556 (2021) swells in the summer months with seasonal visitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "osoyoos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8509,
+    "place_id": "gn-686003",
+    "input": {
+      "place": {
+        "place_id": "gn-686003",
+        "name": "Azuga",
+        "country": "Romania",
+        "subdivision": "Prahova",
+        "lat": 45.45,
+        "lon": 25.55
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Azuga",
+          "url": "https://en.wikipedia.org/wiki/Azuga",
+          "text": "Azuga is a small resort town in the mountains of Prahova County in the historical region of Muntenia, Romania. It is located at the foot of the Baiu Mountains and contains several ski slopes, including the longest ski run in Romania, the Sorica. Once heavily industrialized, Azuga contains a bottled water factory, (a leftover from a notable beer factory that brewed Azuga Beer, now produced elsewhere in Romania under license), a sparkling wine factory, wine tasting, and lodging (Cramele Rhein, owned by Halewood International). The town offers a view over the Bucegi Mountains, from street level to the top of the Sorica mountain, where a gondola arrival station is located. Azuga is one of the most famous mountain resorts of Prahova Valley.\nUntil the winter of 2002, Azuga was known as an industrial town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "azuga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8511,
+    "place_id": "gn-1716573",
+    "input": {
+      "place": {
+        "place_id": "gn-1716573",
+        "name": "Culasi",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 11.42721,
+        "lon": 122.05601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Culasi",
+          "url": "https://en.wikipedia.org/wiki/Culasi",
+          "text": "Culasi, officially the Municipality of Culasi (Kinaray-a: Banwa kang Culasi; Hiligaynon: Banwa sang Culasi; Tagalog: Bayan ng Culasi), is a 1st class municipality in the province of Antique, Philippines. According to the 2024 census, it has a population of 46,442 people, making it fourth most populous municipality in the province of Antique and third largest municipality in terms of land area, with a total area of 228.56 square kilometers.\nIt is known as the home of majestic Mount Madja-as, the highest peak in Panay. It is also famous for its mossy forest, sea of clouds and 14 waterfalls, with an elevation of 6,946 ft (2,117 m) above sea level. Madja-as is an enchanted mountain sacred to ancient Visayans as it is home to the god of death, Sidapa, and god of meteors, Bulalakaw."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "culasi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8514,
+    "place_id": "gn-2208327",
+    "input": {
+      "place": {
+        "place_id": "gn-2208327",
+        "name": "Paeroa",
+        "country": "New Zealand",
+        "subdivision": "Waikato Region",
+        "lat": -37.36667,
+        "lon": 175.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paeroa",
+          "url": "https://en.wikipedia.org/wiki/Paeroa",
+          "text": "Paeroa is a town in the Hauraki District of the Waikato Region in the North Island of New Zealand. Located at the base of the Coromandel Peninsula, it is close to the junction of the Waihou River and Ohinemuri River, and is approximately 20 kilometres (12.4 miles) south of the Firth of Thames.\nNew Zealanders know the town for its mineral springs, which in the past provided the water used in a local soft drink, \"Lemon & Paeroa\".\nThe town stands at the intersection of State Highways 2 and 26, and is the central service location for the Hauraki District. The town is about halfway between Auckland and Tauranga, and acts as the southern gateway to the Coromandel Peninsula, and as the western gateway to the Karangahake Gorge and the Bay of Plenty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "paeroa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8516,
+    "place_id": "gn-2633849",
+    "input": {
+      "place": {
+        "place_id": "gn-2633849",
+        "name": "Windlesham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.36509,
+        "lon": -0.65476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windlesham",
+          "url": "https://en.wikipedia.org/wiki/Windlesham",
+          "text": "Windlesham is a geographically-large village in the Surrey Heath borough of Surrey, England, approximately 25 miles (40 km) south west of central London. Its name derives from the Windle Brook, which runs south of the village into Chobham, and the common suffix 'ham', the Old English word for 'homestead'. The village of Windlesham has a population of around 4,000, while the civil parish of Windlesham has a population of 17,000 and includes the much larger neighbouring villages of Bagshot and Lightwater.\nWindlesham Arboretum, which covers an area of approximately 1 km2 (0.39 sq mi), is on the south side of the M3 motorway. Access to the motorway is via Junction 3. The nearest railway stations are Sunningdale and Bagshot, with Sunningdale offering the most frequent services for London Waterloo on the Waterloo–Reading line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "windlesham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8518,
+    "place_id": "gn-2640718",
+    "input": {
+      "place": {
+        "place_id": "gn-2640718",
+        "name": "Oxshott",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33217,
+        "lon": -0.3562
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oxshott",
+          "url": "https://en.wikipedia.org/wiki/Oxshott",
+          "text": "Oxshott is a suburban village in the borough of Elmbridge in Surrey, England. Oxshott includes hilly acidic heath which is partly wooded (see Esher Commons and Prince's Coverts) and occupies the land between the large towns of Esher and Leatherhead. The Oxshott section of the single carriageway north-south A244 runs through its middle and briefly forms its high street, centred two miles (three kilometres) from the A3 (Portsmouth Road) and the M25 (London Orbital motorway).\nBefore about 1912, there was an equally-used alternative spelling, Ockshot. Oxshott was part of Stoke D'Abernon parish until 1912, when Oxshott gained its first place of worship. The Prince's Coverts remains part of the Crown Estate, albeit decreased by some privatisation; and the public land of the village has been protected by inclusion in the Metropolitan Green Belt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "oxshott",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8519,
+    "place_id": "gn-2647343",
+    "input": {
+      "place": {
+        "place_id": "gn-2647343",
+        "name": "Hatfield Peverel",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.77591,
+        "lon": 0.59489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hatfield Peverel",
+          "url": "https://en.wikipedia.org/wiki/Hatfield_Peverel",
+          "text": "Hatfield Peverel is a village and civil parish at the centre of Essex, England.  It is located 6 miles (10 km) north-east from Chelmsford, the nearest large city, to which it is connected by road and rail. The parish includes the hamlets of Nounsley and Mowden. Hatfield means a 'heathery space in the forest'; Peverel refers to William Peverel, the Norman knight granted lands in the area by William the Conqueror after the Norman invasion of 1066. Sited on high ground east of the River Ter, between Boreham and Witham on the A12, it is situated in the southern extremity of the Braintree District Council area (to which it elects two members).\nAt the 2021 census the parish had a population of 4,285 and the built up area had a population of 3,797."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "hatfield peverel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hatfield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "peverel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8537,
+    "place_id": "gn-2647291",
+    "input": {
+      "place": {
+        "place_id": "gn-2647291",
+        "name": "Hawkhurst",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.0479,
+        "lon": 0.51095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hawkhurst",
+          "url": "https://en.wikipedia.org/wiki/Hawkhurst",
+          "text": "Hawkhurst is a village and civil parish in the borough of Tunbridge Wells in Kent, England. The village is located close to the border with East Sussex, around 12 miles (19 km) south-east of Royal Tunbridge Wells and within the High Weald Area of Outstanding Natural Beauty.\nHawkhurst is virtually two villages: The Moor, to the south, consists mainly of cottages clustered around a large triangular green, while Highgate, to the north, features a colonnade of independent shops, two country pubs, hotels, a digital cinema in a converted lecture hall, and Waitrose and Tesco supermarkets.\nThere are four designated conservation areas in Hawkhurst parish – one at Sawyers Green, two in Highgate (Highgate and All Saints' Church) and one at The Moor. There are also over 200 listed buildings across the parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "hawkhurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

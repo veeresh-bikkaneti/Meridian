@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 9360,
+    "place_id": "gn-2509841",
+    "input": {
+      "place": {
+        "place_id": "gn-2509841",
+        "name": "Valverde",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 27.80628,
+        "lon": -17.91578
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valverde, Santa Cruz de Tenerife",
+          "url": "https://en.wikipedia.org/wiki/Valverde,_Santa_Cruz_de_Tenerife",
+          "text": "Valverde (Spanish pronunciation: [balˈβeɾðe]; lit. 'Greenvalley') is a municipality in the Canary Islands in the province of Santa Cruz de Tenerife. It is located on the northeast part of El Hierro (the rest of the island being the municipalities of Frontera and El Pinar). The town of the same name serves as the island's official capital. It is both the smallest Canarian capital and the only one not located by the sea. The town's airport and seaport are both several kilometres away on the island's east coast.\nPastureland and smallholdings dominate the central plateau area with pine and cloud forest at progressively higher elevations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "valverde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9362,
+    "place_id": "gn-2621448",
+    "input": {
+      "place": {
+        "place_id": "gn-2621448",
+        "name": "Give",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.84523,
+        "lon": 9.23769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Give, Denmark",
+          "url": "https://en.wikipedia.org/wiki/Give,_Denmark",
+          "text": "Give is a small railway town, with a population of 5,215 (1 January 2026), in Denmark 30 km northwest of Vejle. As a result of \"The Municipal Reform\" of  2007 Give Municipality was forced to join Vejle Municipality by the Løkke government.\nThe town is served by Give railway station which used to be the last stop going northwest from Vejle. Later the railway line would be continued to Herning and Holstebro.\nGive Church was erected in the 12th century close by a sacred spring. The village of Give has since expanded and grew to prominence in 1892 when the Vejle–Give railway was opened."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "give",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9373,
+    "place_id": "gn-2893721",
+    "input": {
+      "place": {
+        "place_id": "gn-2893721",
+        "name": "Kallmünz",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.16094,
+        "lon": 11.96051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kallmünz",
+          "url": "https://en.wikipedia.org/wiki/Kallmünz",
+          "text": "Kallmünz is a municipality in the district of Regensburg in Bavaria, Germany. Located on Naab River about 25 km north of Regensburg, Kallmünz has preserved a beautiful medieval center. The main attractions are the ruins of the Kallmünz Castle above the town on a cliff and the old stone bridge over the Naab River. The Russian painter Wassily Kandinsky and the German expressionist painter Gabriele Münter met in Kallmünz during the summer of 1903. Since then, Kallmünz has been the constant home of a small art colony.\nKallmünz Castle, the seat of the former Counts of Kallmünz, has been fortified since the Bronze Age."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "kallmunz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9381,
+    "place_id": "gn-3229248",
+    "input": {
+      "place": {
+        "place_id": "gn-3229248",
+        "name": "Sundby",
+        "country": "Denmark",
+        "subdivision": "Zealand",
+        "lat": 54.76711,
+        "lon": 11.84979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sundby, Lolland",
+          "url": "https://en.wikipedia.org/wiki/Sundby,_Lolland",
+          "text": "Sundby (Danish pronunciation: [ˈsɔnˌpyˀ]) is a town with a population of 3,236 (1 January 2026) on the east coast of the Danish island of Lolland located at the western shore of Guldborgsund just opposite the town of Nykøbing Falster on Falster. It formed the western part of the now former Nykøbing Falster municipality before the municipal mergers 1 January 2007. Since 1 January 2007, the town is a part of Guldborgsund Municipality in Region Zealand.\nThe main attraction of Sundby and Nykøbing Falster is Middelaldercentret (The Medieval Centre), an experimental living history museum, located at the shore of Guldborgsund just north of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "sundby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9383,
+    "place_id": "gn-3589577",
+    "input": {
+      "place": {
+        "place_id": "gn-3589577",
+        "name": "San Rafael Pie de la Cuesta",
+        "country": "Guatemala",
+        "subdivision": "San Marcos",
+        "lat": 14.93052,
+        "lon": -91.91388
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Rafael Pie de la Cuesta",
+          "url": "https://en.wikipedia.org/wiki/San_Rafael_Pie_de_la_Cuesta",
+          "text": "San Rafael Pie de la Cuesta (Spanish pronunciation: [san rafaˈel pje ðe la ˈkwesta]) is a municipality in the San Marcos department of Guatemala.\nA small town of 4,320 residents. Red tiled roofs and abundant flowering trees are found there. It is located 13 km southwest of San Marcos. The English translation of the town's name is \"At the foot of the steep slope.\"  That is because the town is found along a winding, steep road from San Rafael which rises from 900 meters to 2500 meters in only 15 km. The town is in the northern department of San Marcos, Guatemala, bordering Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "san rafael pie de la cuesta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rafael",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pie",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cuesta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9385,
+    "place_id": "gn-4177450",
+    "input": {
+      "place": {
+        "place_id": "gn-4177450",
+        "name": "Warm Mineral Springs",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.05978,
+        "lon": -82.26009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warm Mineral Springs, Florida",
+          "url": "https://en.wikipedia.org/wiki/Warm_Mineral_Springs,_Florida",
+          "text": "Warm Mineral Springs is a census-designated place (CDP) in Sarasota County, Florida, United States. The population was 5,442 at the 2020 census, up from 5,061 at the 2010 census. It is part of the North Port–Bradenton–Sarasota, Florida Metropolitan Statistical Area.\nThe Warm Mineral Springs locale is notable for a free-flowing artesian spring. A large portion of the area was annexed by the municipality of North Port, and is now part of that city. The Warm Mineral Springs Motel designed by modernist architect Victor Lundy, one of the architects associated with the Sarasota School of Architecture, is listed on the National Register of Historic Places."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "warm mineral springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "warm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mineral",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9397,
+    "place_id": "gn-8348382",
+    "input": {
+      "place": {
+        "place_id": "gn-8348382",
+        "name": "North Haven",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.78825,
+        "lon": 138.49162
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Haven, South Australia",
+          "url": "https://en.wikipedia.org/wiki/North_Haven,_South_Australia",
+          "text": "North Haven is a north-western suburb of Adelaide, in the state of South Australia, Australia. It is located 20 km from the Central Business District (CBD), and falls under the City of Port Adelaide Enfield. It is adjacent to Osborne and Outer Harbour. It is bounded to the north and east by Oliver Rogers and Victoria Road, to the south by Marmora Terrace and to the west by Gulf St Vincent. The postal code for North Haven is 5018.\nThe small residential area north of the Gulf Point Marina is a part of Outer Harbour, although it lies within the boundaries of North Haven."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "north haven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9399,
+    "place_id": "gn-10062591",
+    "input": {
+      "place": {
+        "place_id": "gn-10062591",
+        "name": "West Moonah",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -42.84996,
+        "lon": 147.28181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Moonah",
+          "url": "https://en.wikipedia.org/wiki/West_Moonah",
+          "text": "West Moonah is a residential suburb of Hobart, Tasmania, Australia. It is part of the City of Glenorchy local government area, with about 5% being in the Hobart LGA. At the 2016 Australian census, the suburb recorded a population of approximately 1,000.\n\nFormerly known as Springfield, the area is fast becoming acceptable because of its closeness to the city. The West Moonah Community Centre is a hub for community activities in the community. Located next to a park, the Community Centre offers a community preschool, playgroups, community garden, community computer lab, craft classes, walking and other community activities.\nWest Moonah has two schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "west moonah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moonah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9400,
+    "place_id": "gn-10103950",
+    "input": {
+      "place": {
+        "place_id": "gn-10103950",
+        "name": "Windale",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -32.99277,
+        "lon": 151.68167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windale",
+          "url": "https://en.wikipedia.org/wiki/Windale",
+          "text": "Windale is a suburb of the city of Lake Macquarie, in the Newcastle metropolitan area. It is located west of the junction of the Pacific Highway and Newcastle Inner City Bypass, covering an area of 1.7 km2 (0.7 sq mi). Windale is a lower socio-economic area consisting largely of public housing homes, and has historically been known for its high rates of alcoholism, crime and unemployment, however recent local government efforts to regenerate the area have been somewhat successful. The suburb was listed as one of the most socially disadvantaged areas in the State according to the 2015 Dropping Off The Edge report."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "windale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9411,
+    "place_id": "gn-2640332",
+    "input": {
+      "place": {
+        "place_id": "gn-2640332",
+        "name": "Petworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.98669,
+        "lon": -0.61
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petworth",
+          "url": "https://en.wikipedia.org/wiki/Petworth",
+          "text": "Petworth is a town and civil parish in the Chichester District of West Sussex, England. It is located at the junction of the A272 east–west road from Heathfield to Winchester and the A283 Milford to Shoreham-by-Sea road.\nThe parish includes the settlements of Byworth and Hampers Green and covers an area of 2,690 hectares (6,600 acres). Twelve miles (19 km) to the south west of Petworth along the A285 road lies Chichester and the south-coast. In 2001 the population of the parish was 2,775 persons living in 1,200 households of whom 1,326 were economically active. At the 2011 Census the population was 3,027."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "petworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9414,
+    "place_id": "gn-2649528",
+    "input": {
+      "place": {
+        "place_id": "gn-2649528",
+        "name": "Fernhill Heath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.23002,
+        "lon": -2.19659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fernhill Heath",
+          "url": "https://en.wikipedia.org/wiki/Fernhill_Heath",
+          "text": "Fernhill Heath is a village in Worcestershire, England. It is in the civil parish of North Claines in Wychavon district. Its built-up area population was 3,297 in 2021.\nFernhill Heath is located on the A38 main road on the north-side of the City of Worcester and is approximately 3 miles (5 km) north of Worcester and 3 miles (5 km)  south of Droitwich. The population of Fernhill Heath is around 3,000 people. The village features two public houses, \"The White Hart\" and \"The Bull\", a sub-post office, three shops, a primary school, a Baptist church, a war memorial hall and a community centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "fernhill heath",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fernhill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heath",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9415,
+    "place_id": "gn-2651788",
+    "input": {
+      "place": {
+        "place_id": "gn-2651788",
+        "name": "Cuckfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.01073,
+        "lon": -0.14068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuckfield",
+          "url": "https://en.wikipedia.org/wiki/Cuckfield",
+          "text": "Cuckfield ( KUUK-feeld) is a village and civil parish in the Mid Sussex District of West Sussex, England, on the southern slopes of the Weald. It lies 34 miles (55 km) south of London, 13 miles (21 km) north of Brighton, and 31 miles (50 km) east northeast of the county town of Chichester. Nearby towns include Haywards Heath to the southeast and Burgess Hill to the south. It is surrounded on the other sides by the parish of Ansty and Staplefield formerly known as Cuckfield Rural.\nAumale in Normandy has been a twin town since 1993 and Karlstadt in Bavaria since 1998."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "cuckfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9420,
+    "place_id": "gn-2779595",
+    "input": {
+      "place": {
+        "place_id": "gn-2779595",
+        "name": "Fieberbrunn",
+        "country": "Austria",
+        "subdivision": "Tyrol",
+        "lat": 47.47626,
+        "lon": 12.54347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fieberbrunn",
+          "url": "https://en.wikipedia.org/wiki/Fieberbrunn",
+          "text": "Fieberbrunn is a market town in the Austrian state of Tyrol in the Kitzbühel district. It is located at 47°28′N 12°33′E, in the Kitzbühel Alps. Fieberbrunn is the most populous municipality in the Pillerseetal valley.\nAccording to a legend, the fountain near its church, and later also the market town received the name Fieberbrunn (fever well) when Tyrolean Countess Margarete Maultasch was healed from fever after drinking from it. Previously the market town was named Pramau.\nFieberbrunn is a winter sports resort and venue of international snowboarding events (like Lords of the Boards), as well as a hiking and mountaineering resort in summer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "fieberbrunn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9433,
+    "place_id": "gn-4598865",
+    "input": {
+      "place": {
+        "place_id": "gn-4598865",
+        "name": "Travelers Rest",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 34.96762,
+        "lon": -82.44345
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Travelers Rest, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Travelers_Rest,_South_Carolina",
+          "text": "Travelers Rest is a city in Greenville County, South Carolina, United States. Its population was 7,788 at the 2020 census. The city is located 10 miles (16 km) north of Greenville and around 20 miles (32 km) south of the North Carolina border, and is part of Upstate South Carolina.\nTravelers Rest was founded by J.W. Donaldson, founder of a bloodstock cattle empire. Initially built as a reprieve for his oxen and coach herd, the family eventually did yoke and axle repair for settlers headed out on the Oregon Trail. Later, the Dry Goods Warehouse became the start to the Swamp Rabbit Trail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "travelers rest",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "travelers",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rest",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9436,
+    "place_id": "gn-5142073",
+    "input": {
+      "place": {
+        "place_id": "gn-5142073",
+        "name": "Vails Gate",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.45426,
+        "lon": -74.05764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vails Gate, New York",
+          "url": "https://en.wikipedia.org/wiki/Vails_Gate,_New_York",
+          "text": "Vails Gate is a hamlet (and census-designated place) in Orange County, New York, United States. The population was 3,368 at the 2020 census. It is part of the Kiryas Joel–Poughkeepsie–Newburgh, NY Metropolitan Statistical Area as well as the larger New York–Newark–Bridgeport, NY-NJ-CT-New York metropolitan area.\nVails Gate is in the southern part of the Town of New Windsor, located on Route 32. It is defined largely by the junction of that highway with Routes 94 and 300, a busy commercial center which has the ZIP code 12584. Part of that also spills into adjacent regions of the Town of Cornwall to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "vails gate",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vails",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gate",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9439,
+    "place_id": "gn-5906690",
+    "input": {
+      "place": {
+        "place_id": "gn-5906690",
+        "name": "Bowen Island",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.3847,
+        "lon": -123.33622
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bowen Island",
+          "url": "https://en.wikipedia.org/wiki/Bowen_Island",
+          "text": "Bowen Island (Squamish: Nex̱wlélex̱wm; Squamish pronunciation: [nəχʷˈlələχʷm], Halkomelem: c̓əw̓c̓əw̓ʔiqən̓), British Columbia, is an island municipality that is part of Metro Vancouver, and within the jurisdiction of the Islands Trust. Located in Howe Sound, it is approximately 6 kilometres (3.7 mi) wide by 12 kilometres (7.5 mi) long, and at its closest point is about 3 kilometres (1.9 mi) west of the mainland. There is regular ferry service from Horseshoe Bay provided by BC Ferries, and semi-regular water taxi services. The population of 4,256 is supplemented in the summer by about 1,500 visitors. It has a land area of 50.12 km2 (19.35 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "bowen island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bowen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9441,
+    "place_id": "gn-5948770",
+    "input": {
+      "place": {
+        "place_id": "gn-5948770",
+        "name": "Enderby",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.5498,
+        "lon": -119.15234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enderby, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Enderby,_British_Columbia",
+          "text": "The City of Enderby is in the North Okanagan region of the Canadian province of British Columbia, between Armstrong and Salmon Arm. It is approximately 80 km north of Kelowna and 130 km east of Kamloops. Highway 97A passes through Enderby and the Shuswap River marks the eastern and northeastern limits of the City. There are two major schools in Enderby: M.V. Beattie Elementary School and A.L. Fortune Secondary School. M.V. Beattie Elementary School was rebuilt in 2012.\nThe rural area surrounding Enderby is made up of the communities of Ashton Creek, Grandview Bench, Grindrod, Kingfisher, Mara, Splatsin Reserve, Springbend and Trinity Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "enderby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9449,
+    "place_id": "gn-7115300",
+    "input": {
+      "place": {
+        "place_id": "gn-7115300",
+        "name": "Aylesham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.22539,
+        "lon": 1.20157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aylesham",
+          "url": "https://en.wikipedia.org/wiki/Aylesham",
+          "text": "Aylesham  is a village and civil parish in the Dover district of Kent, England. The village is 6.5 miles (10.5 km) south-east of the cathedral city of Canterbury, and 8.5 miles (13.7 km) north-west of the town and port of Dover. According to the 2001 Census, the parish had a population of 3,884 including Drellingore and Snowdown; it increased to 3,999 at the 2011 Census.\nThe village was built in the 1920s to accommodate workers at nearby coal mines. The parish also includes the village of Snowdown. Both villages are served by railway stations on the Dover branch of the Chatham Main Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "aylesham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9451,
+    "place_id": "gn-8199392",
+    "input": {
+      "place": {
+        "place_id": "gn-8199392",
+        "name": "Talmon",
+        "country": "Israel",
+        "subdivision": "Israel",
+        "lat": 31.93927,
+        "lon": 35.13539
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Talmon",
+          "url": "https://en.wikipedia.org/wiki/Talmon",
+          "text": "Talmon (Hebrew: טַלְמוֹן) is an Israeli settlement in the West Bank located 8 km  from Ramallah, next to the Palestinian villages of Al-Janiya, Al-Ittihad, and Al-Zaitounah – part of whose lands were confiscated for the construction of Talmon. The international community considers Israeli settlements in the West Bank illegal under international law, but the Israeli government disputes this.\nLocated at an elevation of nearly 600 metres and 18 km east of Modiin, it is organised as a community settlement and falls under the jurisdiction of Mateh Binyamin Regional Council. It was established in 1989 and in 2024 it had a population of 6,039."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "talmon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9454,
+    "place_id": "gn-11776771",
+    "input": {
+      "place": {
+        "place_id": "gn-11776771",
+        "name": "Niseko",
+        "country": "Japan",
+        "subdivision": "Hokkaido",
+        "lat": 42.80894,
+        "lon": 140.68596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niseko, Hokkaido",
+          "url": "https://en.wikipedia.org/wiki/Niseko,_Hokkaido",
+          "text": "Niseko (Japanese: ニセコ町, Niseko-chō, [ɲ̟iseko tɕoː]) is a town located in Shiribeshi Subprefecture, Hokkaido, Japan. Niseko as a resort area refers to the Niseko tourism zone (ニセコ観光圏), which consists of the three towns of Kutchan, Niseko, and Rankoshi at the foot of Niseko Annupuri.\nThe name Niseko is derived from the Nisekoanbetsu River (ニセコアンベツ川), meaning \"river toward the cliff\" in the Ainu language.\nThe Niseko town's main income sources are agriculture and tourism. The resort itself, Niseko United, is part of the Mountain Collective. Moreover, the town is renowned for its quality powder snow and world-class facilities, including traditional onsen and restaurants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "niseko",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
