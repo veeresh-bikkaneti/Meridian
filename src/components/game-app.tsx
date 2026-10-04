@@ -352,20 +352,28 @@ function clearDrop() {
 }
 
 /**
- * The run's dealing pool: catalog places minus the device's persistent
- * no-repeat history (the cross-session no-repeat rule). Computed once when
- * a run starts and persisted on the run, so a reload rebuilds the identical
- * pool. A place never repeats until every other place in the region has
- * been dealt — across days, reloads, and restarts. Side effect: when the
- * full cycle is exhausted, poolForNewRun clears the persistent history so
- * the new run starts a fresh shuffled cycle.
+ * The run's dealing pool: the band-filtered catalog minus the device's
+ * persistent no-repeat history (the cross-session no-repeat rule, tracked
+ * per edition/region/difficulty band). Computed once when a run starts and
+ * persisted on the run, so a reload rebuilds the identical pool. A place
+ * never repeats until every other place in the band's pool has been dealt —
+ * across days, reloads, and restarts. Side effect: when the band's full
+ * cycle is exhausted, poolForNewRun clears that band's persistent history
+ * so the new run starts a fresh shuffled cycle (other bands untouched).
+ *
+ * The band scope is the fix for "repeat mode": the pool is band-filtered
+ * but the old history was shared across bands, so one band's dealt places
+ * shrank another band's pool into rapid cycling. Each band now keeps its
+ * own history; the pre-band history migrates lazily into the first band
+ * touched (see seenStoreFor).
  */
 function poolForRunStart(
   allPlaces: { id: string }[],
   edition: Edition,
   regionId: string,
+  choice: PickerDifficulty,
 ): { poolIds: string[]; prevLastId: string | null } {
-  return poolForNewRun(allPlaces, seenStoreFor(edition, regionId));
+  return poolForNewRun(allPlaces, seenStoreFor(edition, regionId, choice));
 }
 
 function isLanguageModel(value: unknown): value is LanguageModelGlobal {
@@ -646,7 +654,7 @@ export function GameApp() {
         // pool is built. Fail-closed: an empty band yields an empty pool,
         // never a widened one.
         const banded = filterByTier(places, choice);
-        const { poolIds, prevLastId } = poolForRunStart(banded, edition, regionId);
+        const { poolIds, prevLastId } = poolForRunStart(banded, edition, regionId, choice);
         const next = resumeRun(
           readRun(),
           { edition, regionId, regionName, dateKey, difficultyChoice: choice },
@@ -1288,7 +1296,7 @@ function PlayLoaded({
       createDealer(
         pool,
         run.seed,
-        seenStoreFor(run.edition, run.regionId),
+        seenStoreFor(run.edition, run.regionId, run.difficultyChoice),
         run.index,
         run.prevLastId,
       ),
@@ -1655,6 +1663,7 @@ function PlayLoaded({
       filterByTier(places ?? [], run.difficultyChoice),
       run.edition,
       run.regionId,
+      run.difficultyChoice,
     );
     const freshRun = resumeRun(
       run,

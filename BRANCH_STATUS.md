@@ -1,24 +1,46 @@
-# feat/difficulty-tiers — status
+# BRANCH_STATUS.md — fix/easy-repeat-band-pools
 
-Difficulty tiers + fame-weighted dealing + subdivision labels. All feature work
-gated green on this branch (see log below); parked at the wiki-merge gate per
-the 2026-10-03 architectural directive.
+## Problem (Veeresh, live play-test 2026-10-04)
+Easy mode in the State edition falls into "repeat mode": the same few
+questions cycle over and over.
 
-## 2026-10-03 — merge order flipped by Veeresh's call
-Veeresh: question details (state/country labels) must ship now, not wait for
-Liz's Wikipedia push. Architectural update: THIS branch merges FIRST; the
-Wikipedia merge rebases onto the new main afterward (its merge script is
-idempotent and matches by stable place ID, so either order is safe).
+## Root cause
+The dealing pool is band-filtered (Easy = fame tiers 1–2 narrows the catalog
+BEFORE the pool is built), but the persistent no-repeat history
+(`meridian:seen:v2:<edition>:<region>`) was shared across all difficulty
+bands. One band's dealt places shrank the other bands' pools:
+- Tier-2 places dealt on Medium were already "seen" when opening Easy, so
+  the Easy pool opened small.
+- Each Easy run shrank it further; the cycle reset only fires at exactly 0,
+  so the pool could sit at 1–3 places for many runs — the dealer then cycled
+  those few places ("repeat mode").
+- The reset at 0 also wiped the other bands' history as collateral.
 
-## Merge resolution (origin/main = aa69434, PRs #44 learning-outcomes + #45 flag flip)
-- `package.json`: union of test lists (main's `learning.test.ts` + branch's `tier-filter.test.ts`).
-- `playwright.config.ts`: all four project entries (subdivision-labels, difficulty-picker, crash-loop-breaker, safari-launch).
-- `src/components/game-app.tsx`: single import conflict — kept branch's `resolveRunPool`, main's lazy `SatelliteMap` + `MapErrorBoundary` (JSX already merged: lazy map inside the boundary).
-- No chunk conflicts (main did not touch chunk data).
-- Post-merge verification: tsc + full unit suite + build:pages re-run (below).
+## Fix
+- `seenStoreFor(edition, regionId, choice)` — history key is now
+  `meridian:seen:v2:<edition>:<region>:<choice>`. Each band cycles
+  independently; a band's cycle reset clears only its own history.
+- One-time lazy migration: the first touch of a band's store folds the
+  pre-band unscoped key into it and prunes the key (fail-open).
+- Legacy v1 day-keyed entries now route to the medium band (the pre-picker
+  backfill default) instead of the orphaned unscoped key.
+- `poolForRunStart` and the dealer construction in game-app.tsx thread the
+  difficulty choice through.
 
-## Log (feature work — all gated before parking)
-- 2026-10-03: dataset rebuild — difficulty (1-5) + subdivision stamped for 124,690 places, additive-preservative (byte-verified history/wiki/blurb, 0 mismatches); 12 curated starters pinned tier 1.
-- 2026-10-03: learning-path picker (Easy/Medium/Hard), fame-weighted Efraimidis-Spirakis dealing, real 1x-2.5x scoring, subdivision labels (country `{Place}, {Subdivision}`; globe always 3-part).
-- 2026-10-03: 425/425 unit green, tsc clean, lint-cards GATE PASSED, build:pages green, E2E (picker 5/5, subdivision 2/2, labels 3/3 + regression) green; tech-arch APPROVE WITH NOTES (applied); tone/docs/a11y APPROVE WITH NOTES (applied).
-- 2026-10-03: PR #46 opened → merge conflicts with aa69434 resolved (this file) → merged.
+## Status
+- [x] Fix implemented (src/game/trail.ts, src/components/game-app.tsx)
+- [x] trail.test.ts: existing seen-store tests updated to 3-arg calls
+- [x] 4 new regression tests (band independence, lazy migration, the
+  repeat-mode scenario end-to-end, v1 routing)
+- [x] Full unit suite green: 519/519
+- [ ] `npx tsc --noEmit` clean
+- [ ] `npm run build:pages` green
+- [ ] Card gate GATE PASSED
+- [ ] Playwright E2E (band-switch no-repeat)
+- [ ] Technical-architect review + tone/docs review
+- [ ] PR → merge → live verification
+
+## Notes
+- Easy Arkansas is 20 places (tiers 1–2 of 177); after the fix it deals the
+  full 20 per cycle instead of collapsing to a handful.
+- No dataset changes; no label/scoring changes.
