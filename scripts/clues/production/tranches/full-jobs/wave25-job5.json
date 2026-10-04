@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 4917,
+    "attempt": 4881,
+    "place_id": "gn-4889959",
+    "input": {
+      "place": {
+        "place_id": "gn-4889959",
+        "name": "Dixon",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.83892,
+        "lon": -89.47955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dixon, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Dixon,_Illinois",
+          "text": "Dixon is a city in Lee County, Illinois, United States, and its county seat. The population was 15,274 as of the 2020 census. The city is named after founder John Dixon, who operated a rope ferry service across the Rock River, which runs through the city. The Illinois General Assembly designated Dixon as \"Petunia Capital of Illinois\" in 1999 and \"The Catfish Capital of Illinois\" in 2009.\nDixon was the boyhood home of former U.S. President Ronald Reagan. The city is also the site of the Lincoln Monument State Memorial, marking the spot where Abraham Lincoln joined the Illinois militia at Fort Dixon in 1832 during the Black Hawk War. The memorial is located on the west side of Dixon's main north–south street, Galena Avenue (U.S. Route 52, also Illinois Route 26), north of the Rock River. The city is also the site of the Dixon Bridge Disaster of 1873, the worst road bridge disaster in American history. A marker for the disaster stands near the Lincoln Statue, on the north bank of the river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "dixon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4918,
+    "attempt": 4882,
+    "place_id": "gn-4952355",
+    "input": {
+      "place": {
+        "place_id": "gn-4952355",
+        "name": "Suffolk Downs Station",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.38982,
+        "lon": -70.99783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suffolk Downs station",
+          "url": "https://en.wikipedia.org/wiki/Suffolk_Downs_station",
+          "text": "Suffolk Downs station is a rapid transit station on the Massachusetts Bay Transportation Authority (MBTA) Blue Line, located on the east side of Orient Heights in East Boston, Massachusetts, United States. It is named for the now-defunct Suffolk Downs racetrack, located just to the north. Suffolk Downs station has two side platforms, with a footbridge structure of brick, concrete, and steel connecting them. The station is accessible. With just 521 daily boardings in FY 2019, Suffolk Downs is the least-used fare-controlled station on the MBTA subway system.\nTwo previous stations at the site were operated by the Boston, Revere Beach and Lynn Railroad, which opened through East Boston in 1875. The railroad opened Waldemar station in 1894 to serve a nearby development; it was soon renamed Belle Isle. The station closed in the 1920s, but a new station named Suffolk Downs station opened on the site in 1935 to serve the new racetrack. Service on the line ended in 1940. Electric streetcar service on a parallel line operated from 1893 to 1952; a spur line directly to the racetrack was operated from 1935 to 1952.\nThe Metropolitan Transportation Authority (MTA) purchased the abandoned right-of-way in 1941 to extend the East Boston Tunnel rapid transit line. The MTA opened its Suffolk Downs station with a single platform in 1952; it was expanded with a second platform in 1954 as part of the second phase of the Revere Extension. After a 1976 fire, only the inbound platform remained open until a 1982–1984 renovation. The station was renovated further in 1994–95, and further improvements are planned as part of a redevelopment of the racetrack site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "suffolk downs station",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "suffolk",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "downs",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "station",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4919,
+    "attempt": 4883,
+    "place_id": "gn-4997281",
+    "input": {
+      "place": {
+        "place_id": "gn-4997281",
+        "name": "Ishpeming",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 46.48855,
+        "lon": -87.66764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ishpeming, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Ishpeming,_Michigan",
+          "text": "Ishpeming ( ISH-pə-ming)  is a city in Marquette County, Michigan, United States. Located in the Upper Peninsula, the population was 6,140 at the 2020 census, less than it was in the 1950s and 1960s when the iron ore mines employed more workers. A statue of a Native American figure, erected in 1884 in the small town square, is referred to as Old Ish.\nIshpeming Township is located to the northwest of the city but is administratively autonomous. Ishpeming is considered the birthplace of organized skiing in the United States and is home to the National Ski Hall of Fame. The city was also prominently featured in the 2010 documentary Catfish.\nThe name Ishpeming comes from Ojibwa  ishpiming 'above, in the air, on high'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "ishpeming",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4920,
+    "attempt": 4884,
+    "place_id": "gn-5175079",
+    "input": {
+      "place": {
+        "place_id": "gn-5175079",
+        "name": "Van Wert",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.86949,
+        "lon": -84.58412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Van Wert, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Van_Wert,_Ohio",
+          "text": "Van Wert is a city in Van Wert County, Ohio, United States, and its county seat. It is located in northwestern Ohio approximately 77 miles (124 km) southwest of Toledo and 34 miles (55 km) southeast of Fort Wayne, Indiana. The population was 11,092 at the 2020 census. It is the principal city of the Van Wert micropolitan area, which is included in the Lima–Van Wert–Wapakoneta combined statistical area.\nVan Wert is named for Isaac Van Wart, one of the captors of Major John André in the American Revolutionary War. A center of peony cultivation, Van Wert has hosted the annual Van Wert Peony Festival on and off since 1902. Van Wert is home to the first county library in the United States, the Brumback Library."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "van wert",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wert",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4921,
+    "attempt": 4885,
+    "place_id": "gn-5346462",
+    "input": {
+      "place": {
+        "place_id": "gn-5346462",
+        "name": "Emeryville",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.83132,
+        "lon": -122.28525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emeryville, California",
+          "url": "https://en.wikipedia.org/wiki/Emeryville,_California",
+          "text": "Emeryville is a city in northwestern Alameda County, California, United States. It lies in a corridor between the cities of Berkeley and Oakland, with a border on the shore of San Francisco Bay. The resident population was 12,905 as of 2020. Its proximity to San Francisco, the Bay Bridge, the University of California, Berkeley, and Silicon Valley has been a catalyst for recent economic growth.\nIt is the home to Pixar Animation Studios, Peet's Coffee, the Center for Investigative Reporting, Alternative Tentacles and Clif Bar. In addition, several well-known tech and software companies are located in Emeryville: LeapFrog, Sendmail, MobiTV, Novartis (formerly Chiron before April 2006), and BigFix (now HCL). Emeryville attracts many weekday commuters due to its position as a regional employment center.\nEmeryville has some features of an edge city; however, it is located within the inner urban core of Oakland/the greater East Bay. It was industrialized before the First World War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "emeryville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4922,
+    "attempt": 4886,
+    "place_id": "gn-580218",
+    "input": {
+      "place": {
+        "place_id": "gn-580218",
+        "name": "Avtury",
+        "country": "Russia",
+        "subdivision": "Chechnya",
+        "lat": 43.16345,
+        "lon": 46.00152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avtury",
+          "url": "https://en.wikipedia.org/wiki/Avtury",
+          "text": "Avtury (Russian: Автуры; Chechen: Эвтара, Evtara) is a rural locality (a selo) in Shalinsky District of the Chechen Republic, Russia, located on the Khulkhulau River, 6 kilometers (3.7 mi) east of Shali. Population: 14,988 (2010 census); 18,330 (2002 census).\nIt was supposedly founded in the 14th century, soon after the area was abandoned by the Mongols and Tatars. During the Caucasian War, Avtury was a combat area between Imam Shamil and the Russian troops.\nThe locality is noted for being the alleged birthplace of Abdulkhakim Ismailov. He was a Soviet soldier who was identified as one of the two men in the 1945 photograph Raising a Flag over the Reichstag."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "avtury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4923,
+    "attempt": 4887,
+    "place_id": "gn-640276",
+    "input": {
+      "place": {
+        "place_id": "gn-640276",
+        "name": "Raahe",
+        "country": "Finland",
+        "subdivision": "North Ostrobothnia",
+        "lat": 64.68333,
+        "lon": 24.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raahe",
+          "url": "https://en.wikipedia.org/wiki/Raahe",
+          "text": "Raahe (Finnish: [ˈrɑːhe]; Swedish: Brahestad; Finland Swedish: [brɑːheˌstɑːd]) is a town in Finland, located on the western coast of the country. Raahe is situated in the North Ostrobothnia region, along the Gulf of Bothnia. The population of Raahe is approximately 23,000, while the sub-region has a population of approximately 31,000. It is the 43rd most populous municipality in Finland.\nFounded in 1649 by the Swedish statesman and Governor General of Finland, Count Per Brahe the Younger, it is one of 10 remaining historic wooden towns (or town centres) in Finland. Examples of other historic wooden towns in Finland are Kaskinen (Kaskö), Old Rauma, Porvoo (Borgå), Jakobstad (Pietarsaari) and Vaasa (Vasa). After a devastating fire in 1810, Raahe was rebuilt according to new design principles that minimised the risk of fire and enlarged some of the civic spaces. Old Raahe (or \"Wooden Raahe\") is notable for its Renaissance-inspired rectilinear town plan with an unusual central square (called Pekkatori) with closed corners.\nRaahe is located 75 kilometres (47 mi) southwest of Oulu and 126 kilometres (78 mi) northeast of Kokkola, and covers an area of 1,889.00 square kilometres (729.35 sq mi) of which 870.77 km2 (336.21 sq mi) is water. The population density is 23.09/km2 (59.8/sq mi).. Historically an agricultural and maritime region, Ostrobothnia supplied the largest number of immigrants from Finland to the USA and other countries such as Canada and Australia during the Great Migration of the late 19th and early 20th centuries.\nThe neighbouring municipalities of Raahe are Haapavesi, Oulainen, Pyhäjoki, Siikajoki and Siikalatva. Founded as a Swedish- and Finnish-speaking town, the municipality is now unilingually Finnish.\nThree parishes have been merged with Raahe: Saloinen in 1973, Pattijoki in 2003 and Vihanti in 2013.\nThe asteroid 1786 Raahe was named after the town and the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 297
+    },
+    "banned_terms": [
+      {
+        "term": "raahe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4924,
+    "attempt": 4888,
+    "place_id": "gn-667453",
+    "input": {
+      "place": {
+        "place_id": "gn-667453",
+        "name": "Segarcea",
+        "country": "Romania",
+        "subdivision": "Dolj",
+        "lat": 44.1,
+        "lon": 23.75
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Segarcea",
+          "url": "https://en.wikipedia.org/wiki/Segarcea",
+          "text": "Segarcea is a small town in Dolj County, Oltenia, Romania. It has 7,356 inhabitants (2021 census), in an area of 12,008 ha (29,670 acres).\nThe town is located towards the western end of the Wallachian Plain, about 30 km (19 mi) north of the Danube and 25 km (16 mi) south of Craiova, the county seat. Situated in the east-central part of Dolj County, Segarcea belongs to the Craiova metropolitan area.\nThe town is famous for its white wines. The Segarcea vineyard belongs to the Romanian Crown Estate; it has gained fame for wines produced and exported to many countries of the world under the trade name \"The Crown Domain\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "segarcea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4925,
+    "attempt": 4889,
+    "place_id": "gn-691255",
+    "input": {
+      "place": {
+        "place_id": "gn-691255",
+        "name": "Trostyanets",
+        "country": "Ukraine",
+        "subdivision": "Sumy",
+        "lat": 50.48478,
+        "lon": 34.96567
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trostyanets",
+          "url": "https://en.wikipedia.org/wiki/Trostyanets",
+          "text": "Trostyanets or Trostianets (Ukrainian: Тростянець, pronounced [trosʲtʲɐˈnɛtsʲ] ; Russian: Тростянец) is a city in Okhtyrka Raion of Sumy Oblast of northeastern Ukraine. It was the administrative center of Trostyanets Raion until it was abolished on 18 July 2020. The city lies on the Boromlya River, 59 km (37 mi) from Sumy. Landmarks include a neo-Gothic \"Round Courtyard\" (1749), the late Baroque Church of the Annunciation (1744–1750), the 18th-century Galitzine Palace, and the \"Grotto of the Nymphs\" (an 1809 centenary memorial to the Battle of Poltava). The city has a population of 19,544 (2022 estimate).\nMany were killed and the city was badly damaged during the 2022 Russian invasion of Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "trostyanets",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4926,
+    "attempt": 4890,
+    "place_id": "gn-6941039",
+    "input": {
+      "place": {
+        "place_id": "gn-6941039",
+        "name": "Kensal Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53068,
+        "lon": -0.2253
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kensal Green",
+          "url": "https://en.wikipedia.org/wiki/Kensal_Green",
+          "text": "Kensal Green, also known as Kensal Rise, is an area shared between the London Borough of Brent and the Royal Borough of Kensington and Chelsea. \nThe area is focussed on Harrow Road and situated about 4.4 miles (7.1 km) miles north-west of Charing Cross. Together with Kensal Town, it forms part of the northern part of North Kensington.\nTo the west lies Harlesden, to the east are Maida Hill and Westbourne. Queen's Park and Brondesbury are to the north-east, Willesden is to the north-west, and Notting Hill lies to the south.\nKensal Green is best known for the Grade I listed Kensal Green Cemetery, one of London's 'Magnificent Seven cemeteries'. The cemetery, which is still used for new burials, includes several chapels and the West London Crematorium."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "kensal green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kensal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4927,
+    "attempt": 4891,
+    "place_id": "gn-8347945",
+    "input": {
+      "place": {
+        "place_id": "gn-8347945",
+        "name": "Beeliar",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.13339,
+        "lon": 115.80637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beeliar, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Beeliar,_Western_Australia",
+          "text": "Beeliar is a suburb of Perth, Western Australia, located within the City of Cockburn. The name refers to the Beeliar people, a group of Aboriginal Australians who had land rights over the southern half of Perth's metropolitan area.  The suburb contains the Thomsons Lake Nature Reserve.\n\"Beeliar\" is a Noongar word that translates to \"river\" or \"water running through\". The suburb was named after an early settler-colonialist, Robert Menli Lyon, who recorded and interacted with the local Aboriginal group in the area circa the nineteenth century. Before European contact, the suburb was occupied by the Beeliar group of the Whadjuk nation, who are part of the broader Noongar language region. The Noongar peoples have Dreaming stories related to the creation of the landforms in Beeliar and had lore that outlined the maintenance and care of the land. Oral history records and archaeology account for the Beeliar-Noongar belonging to the Beeliar suburb and its neighbouring areas.\nThe region of Beeliar was also included in the Swan River Colony, which was the first colony not established for convicts. The suburb was first governed by Captain James Stirling. Following Stirling's retirement, Beeliar was part of the frontier wars. Beeliar was home to Yagan and his father, Midjegoorong, who were notable figures during this period.\nFrom the twentieth century, the suburban boundaries of Beeliar were modified gradually. Bibra Lake, which was still a feature within the Beeliar boundary during this time, was a site for the Australian Women's Army Service station during World War Two.\nSince the post-war era, Beeliar has undergone several council projects, such as the Wetlands Education Centre of Cockburn (established in the 1980s), and gradually developed into a modern metropolitan suburb by the 1990s. The 1990s were when the most modern changes to the Beeliar boundaries occurred, which partially split Beeliar's region into a new suburb, Yangebup.\nSince the 1990s, environmental and land rights concerns have been a local geopolitical issue. Beeliar citizens have voiced their concerns to the council about protecting the suburban geographic features, such as the various wetlands (including Thomsons Lake)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "beeliar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4928,
+    "attempt": 4892,
+    "place_id": "gn-965581",
+    "input": {
+      "place": {
+        "place_id": "gn-965581",
+        "name": "Petrusburg",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -29.11597,
+        "lon": 25.41435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petrusburg",
+          "url": "https://en.wikipedia.org/wiki/Petrusburg",
+          "text": "Petrusburg is a small mixed farming town in the Free State province of South Africa. It started out as a Dutch Reformed Church serving the farms in 1891. When it became a town, it was originally started on a farm close to \"Emmaus\", a railway station on the line between Bloemfontein and Kimberley. The original foundations are still there, but they ran out of water, and had to move to the present location where a strong fountain was available. So much so that the first houses had free running water from the fountain for irrigation. The town was named after Petrus Albertus Venter, whose farm, Diepfontein, provided the original land. It is situated on the N8 National Route between Bloemfontein (80 km east) and Kimberley (80 km west).\nEvery year in March, a big music festival is held called the Aartappelfees (Potato Festival). The main street in town is Pretorius Street, but the busiest street is Ossewa street.\nA. J. C. Jooste High School is a coeducational boarding high school. Together with the associated primary school it is known as the AJC Jooste Combined School.\nThe town is facing significant poverty issues, with a substantial number of its population unemployed. The agricultural sector is the primary source of employment in the area.\nThe town's squatter camp, Bolokanang, is home to around 8,300 people, with Boiketlo Street being the main point of entry to the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "petrusburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4929,
+    "attempt": 4893,
+    "place_id": "gn-973527",
+    "input": {
+      "place": {
+        "place_id": "gn-973527",
+        "name": "Tlokoeng",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -30.69268,
+        "lon": 28.5061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlokoeng",
+          "url": "https://en.wikipedia.org/wiki/Tlokoeng",
+          "text": "Tlokoeng, formerly Mount Fletcher, is a town in Joe Gqabi District Municipality in the Eastern Cape province of South Africa, 69 km north-north-east of Maclear. It is a birthplace of both political activities Epainette Mbeki and Oscar Mpetha.\nFounded in 1882, Mount Fletcher takes its name from the mountain nearby. This was probably named after the Reverend John Fletcher of Madeley in England, a friend of John Wesley, although it is stated to have been named after a Captain Fletcher who was stationed there.\nIn 2022, the town was officially renamed Tlokoeng, which \"means place of the Tlokoa clan\" in Sesotho.  The provincial hospital in Tlokoeng is named Tayler Bequest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "tlokoeng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4931,
+    "attempt": 4894,
+    "place_id": "gn-1015776",
+    "input": {
+      "place": {
+        "place_id": "gn-1015776",
+        "name": "Bredasdorp",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -34.53215,
+        "lon": 20.04031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bredasdorp",
+          "url": "https://en.wikipedia.org/wiki/Bredasdorp",
+          "text": "Bredasdorp is a town in the Southern Overberg region of the Western Cape, South Africa, and the main economic and service hub of that region. It lies on the northern edge of the Agulhas Plain, about 160 kilometres (100 mi) south-east of Cape Town and 35 kilometres (22 mi) north of Cape Agulhas, the southernmost tip of Africa.\nTourist attractions of Bredasdorp include the Heuningberg Nature Reserve, many historical churches, and art galleries and craft shops.\nBredasdorp is also home to the Shipwreck Museum which tells the stories of the 150 wrecks along the nearby Agulhas Reef. It is the only museum of its kind in the southern hemisphere."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "bredasdorp",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4932,
+    "attempt": 4895,
+    "place_id": "gn-1520885",
+    "input": {
+      "place": {
+        "place_id": "gn-1520885",
+        "name": "Kurchatov",
+        "country": "Kazakhstan",
+        "subdivision": "Abai Region",
+        "lat": 50.75617,
+        "lon": 78.54188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kurchatov, Kazakhstan",
+          "url": "https://en.wikipedia.org/wiki/Kurchatov,_Kazakhstan",
+          "text": "Kurchatov (in Kazakh and Russian: Курча́тов) is a town in Abai Region in north-east Kazakhstan.  Named after Soviet nuclear physicist Igor Kurchatov, the town was once the centre of operations for the adjoining Semipalatinsk Test Site.  With the cessation of nuclear testing and the decommissioning of the test site, Kurchatov's population has fallen from over 20,000 to around 8,000.  In its heyday, Kurchatov (which was known by its postal code Semipalatinsk-21) was a closed city, one of the most secretive and restricted places in the Soviet Union. The nuclear facilities at Kurchatov are managed by the Kazakhstan Institute of Atomic Energy, a division of the country's National Nuclear Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "kurchatov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4933,
+    "attempt": 4896,
+    "place_id": "gn-2154720",
+    "input": {
+      "place": {
+        "place_id": "gn-2154720",
+        "name": "Nunawading",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.82043,
+        "lon": 145.17308
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nunawading, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Nunawading,_Victoria",
+          "text": "Nunawading () is an eastern suburb of Melbourne, Victoria, Australia, 18 km (11 miles) east of Melbourne's Central Business District, located within the City of Whitehorse and City of Manningham local government areas. Nunawading recorded a population of 12,413 at the 2021 census.\nMost of Nunawading is located in the City of Whitehorse, although the City of Manningham governs part of it. It is centred at the intersection of Whitehorse Road and Springvale Road, in Melbourne's eastern suburbs and is the site of the main office of the City of Whitehorse, as well as large retail (e.g. furniture, auto dealerships, hardware, and electrical) and wholesale businesses, along Whitehorse Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "nunawading",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4934,
+    "attempt": 4897,
+    "place_id": "gn-2641661",
+    "input": {
+      "place": {
+        "place_id": "gn-2641661",
+        "name": "New Cross",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.47534,
+        "lon": -0.03837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Cross",
+          "url": "https://en.wikipedia.org/wiki/New_Cross",
+          "text": "New Cross  is an area in south-east London, England, 4.5 miles (7.2 km) south-east of Charing Cross in the London Borough of Lewisham and the SE14 postcode district. New Cross is near St Johns, Telegraph Hill, Nunhead, Peckham, Brockley, Deptford and Greenwich. It is home to Goldsmiths, University of London; Haberdashers' Hatcham College, and Addey and Stanhope School.\nNew Cross Gate, on the west of New Cross, is named after the New Cross tollgate, established in 1718 by the New Cross Turnpike Trust. It is the location of New Cross station and New Cross Gate station. New Cross Gate corresponds to the manor and district formerly known as Hatcham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "new cross",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cross",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4935,
+    "attempt": 4898,
+    "place_id": "gn-2794856",
+    "input": {
+      "place": {
+        "place_id": "gn-2794856",
+        "name": "Jupille-sur-Meuse",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.64587,
+        "lon": 5.63307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jupille-sur-Meuse",
+          "url": "https://en.wikipedia.org/wiki/Jupille-sur-Meuse",
+          "text": "Jupille or Jupille-sur-Meuse (French pronunciation: [ʒypij syʁ møz], literally Jupille on Meuse; Walloon: Djoupeye) is a sub-municipality of the city of Liège located in the province of Liège, Wallonia, Belgium. It was a separate municipality until 1977. On 1 January 1977, it was merged into Liège.\n\nJupille is the location of the brewery Piedbœuf (InBev group), where Jupiler is made.  It is also the death place of Pepin of Herstal. It has also been proposed as the birthplace of Pepin the Short, King of the Franks (751-768) and perhaps even of his son Charlemagne, Emperor and king of the Franks, but there is no sure proof for these suppositions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "jupille sur meuse",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jupille",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "meuse",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4936,
+    "attempt": 4899,
+    "place_id": "gn-3037943",
+    "input": {
+      "place": {
+        "place_id": "gn-3037943",
+        "name": "Ambérieu-en-Bugey",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.95932,
+        "lon": 5.3516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ambérieu-en-Bugey",
+          "url": "https://en.wikipedia.org/wiki/Amb%C3%A9rieu-en-Bugey",
+          "text": "Ambérieu-en-Bugey (French pronunciation: [ɑ̃beʁjø ɑ̃ byʒɛ, byʒe] ; Arpitan: Ambèriô) is a commune in the Ain department, Auvergne-Rhône-Alpes region, France. With 14,288 inhabitants (2020), it is one of the largest towns of the historical region of Bugey.\nIt is the largest town in the arrondissement of Belley and the seat of the canton of Ambérieu-en-Bugey which consists of 18 communes. Its urban area has 17,301 inhabitants (2020). The town was officially simply called Ambérieu until 31 March 1955 when it became Ambérieu-en-Bugey.\nThe town is known for being an important railway junction (around Ambérieu station), but also for winning the Croix de guerre 1939-1945 with citation at the Liberation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "amberieu en bugey",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "amberieu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "en",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "bugey",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4937,
+    "attempt": 4900,
+    "place_id": "gn-3124963",
+    "input": {
+      "place": {
+        "place_id": "gn-3124963",
+        "name": "Ciudad Rodrigo",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 40.6,
+        "lon": -6.53333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Rodrigo",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Rodrigo",
+          "text": "Ciudad Rodrigo (Spanish: [θjuˈðað roˈðɾiɣo] ) is a small cathedral city in the province of Salamanca, in western Spain, with a population in 2016 of 12,896. It is also the seat of a judicial district.\nThe site of Ciudad Rodrigo, perched atop a rocky rise on the right bank of the River Águeda, has been occupied since the Neolithic Age. Known also as Mirobriga by those who wish to associate the city with an ancient Celtic village in the outskirts of the modern city.\nA key border fortress between Spain and Portugal, it was the site of a 10-day siege by the Duke of Wellington during the Peninsular War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad rodrigo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rodrigo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

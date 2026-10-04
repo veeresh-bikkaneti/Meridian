@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 4836,
+    "attempt": 4801,
+    "place_id": "gn-3025132",
+    "input": {
+      "place": {
+        "place_id": "gn-3025132",
+        "name": "Chinon",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.16701,
+        "lon": 0.24284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinon",
+          "url": "https://en.wikipedia.org/wiki/Chinon",
+          "text": "Chinon (French pronunciation: [ʃinɔ̃] ) is a commune in the Indre-et-Loire department, Centre-Val de Loire, France.\nThe traditional province around Chinon, Touraine, became a favorite resort of French kings and their nobles beginning in the late 15th and early 16th centuries. The Renaissance châteaux which they built new or erected on the foundations of old fortresses earned this part of the Loire Valley the nickname  \"The Garden of France.\" Chinon played an important and strategic role during the Middle Ages, serving both French and English kings.\nChinon is known for its wine, castle, and historic town. Its part of the Loire Valley has been registered as a UNESCO World Heritage Site since 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "chinon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4837,
+    "attempt": 4802,
+    "place_id": "gn-3075605",
+    "input": {
+      "place": {
+        "place_id": "gn-3075605",
+        "name": "Holešovice",
+        "country": "Czechia",
+        "subdivision": "Prague",
+        "lat": 50.10468,
+        "lon": 14.44946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holešovice",
+          "url": "https://en.wikipedia.org/wiki/Hole%C5%A1ovice",
+          "text": "Holešovice (Czech pronunciation: [ˈɦolɛʃovɪtsɛ]) is a district in the north of Prague situated on a meander of the River Vltava, which makes up the main part of the district Prague 7 (an insignificant part belongs to Prague 1). In the past Holešovice was a heavily industrial suburb; today it is home to the main site of the Prague's National Gallery with the Trade Fair Palace (Veletržní palác), and the National Technical Museum.\nIn 1928, the Libeň Bridge was opened on the site of a wooden temporary bridge from 1903, and is still the longest river bridge in Prague. In 2020, The Guardian named Holešovice as one of the 10 coolest neighborhoods in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "holesovice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4838,
+    "attempt": 4803,
+    "place_id": "gn-3172101",
+    "input": {
+      "place": {
+        "place_id": "gn-3172101",
+        "name": "Oggiono",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.79133,
+        "lon": 9.34815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oggiono",
+          "url": "https://en.wikipedia.org/wiki/Oggiono",
+          "text": "Oggiono (Brianzöö: Ugiòn) is a comune (municipality) in the Province of Lecco in the Italian region Lombardy, located about 40 kilometres (25 mi) northeast of Milan and about 8 kilometres (5 mi) southwest of Lecco.\nAs of 31 December 2004, it had a population of 8,194 and an area of 7.9 square kilometres (3.1 mi2).\nThe municipality of Oggiono contains the frazioni (subdivisions, mainly villages and hamlets) Bagnolo, Imberido, Laguccio, Miravalle and Peslago.\nOggiono borders the following municipalities: Annone di Brianza, Dolzago, Ello, Galbiate, Molteno and Sirone.\nLago di Annone is located on its borders.\nIt was the eponymous birthplace of the renaissance painter Marco d'Oggiono, a chief pupil of Leonardo da Vinci."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "oggiono",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4839,
+    "attempt": 4804,
+    "place_id": "gn-3353871",
+    "input": {
+      "place": {
+        "place_id": "gn-3353871",
+        "name": "Otjimbingwe",
+        "country": "Namibia",
+        "subdivision": "Erongo Region",
+        "lat": -22.35536,
+        "lon": 16.12883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Otjimbingwe",
+          "url": "https://en.wikipedia.org/wiki/Otjimbingwe",
+          "text": "Otjimbingwe (also: Otjimbingue) is a settlement in the Erongo Region of central Namibia. Otjimbingwe has approximately 8,000 inhabitants and belongs to the Karibib electoral constituency.\nOtjimbingwe was an important settlement in South West Africa. In the 1860s, the Herero people, facing an imminent attack from the Nama people, united here and elected Maharero first their military commander, and later their first paramount chief. Situated on the Old Bay Road, an ox wagon track leading from Windhoek to Walvis Bay, the settlement was also an economic and cultural centre. Karl Johan Andersson had his trading headquarters here, the Augustineum seminary was situated in town, and it hosted the headquarters of the Rhenish Mission Society. When the territory became the German colony of German South West Africa, Otjimbingwe was the de facto capital. \nAt the end of the 19th century, the settlement began to lose its importance. The Augustineum was relocated to Okahandja, the German administration moved to Windhoek, and the railway between Swakopmund and Windhoek, built in 1900, bypassed Otjimbingwe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "otjimbingwe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4840,
+    "attempt": 4805,
+    "place_id": "gn-3361618",
+    "input": {
+      "place": {
+        "place_id": "gn-3361618",
+        "name": "Simon's Town",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -34.1934,
+        "lon": 18.43585
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Simon's Town",
+          "url": "https://en.wikipedia.org/wiki/Simon's_Town",
+          "text": "Simon's Town (Afrikaans: Simonstad), sometimes spelled Simonstown, is a town in the Western Cape, and a suburb of the City of Cape Town, South Africa. It is home to Naval Base Simon's Town, the South African Navy's largest naval base. It is located on the shores of Simon's Bay in False Bay, on the eastern side of the Cape Peninsula, and forms part of the Southern Peninsula region of Cape Town.\nFor more than two centuries, Simon's Town has been a naval base and harbour, first for the British Royal Navy and now the South African Navy. The town is named after Simon van der Stel, an early governor of the Cape Colony."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "simon s town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "simon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4841,
+    "attempt": 4806,
+    "place_id": "gn-3526473",
+    "input": {
+      "place": {
+        "place_id": "gn-3526473",
+        "name": "Jocotitlán",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.70991,
+        "lon": -99.78867
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jocotitlán",
+          "url": "https://en.wikipedia.org/wiki/Jocotitl%C3%A1n",
+          "text": "Jocotitlán is a municipality located in the northwestern part of the State of Mexico on the central highlands of the country of Mexico. The municipal seat is the town of Jocotitlán and is located at the foot of the Jocotitlán or Xocotépetl volcano, while most of the rest of the municipality is in the Ixtlahuaca Valley. The area has culturally been Mazahua since the pre-Hispanic period, with this indigenous group's traditions strongest in a number of smaller communities in the municipality. Jocotitlán is also home to the Pasteje Industrial Park, which was established in the 1960s, and began the industrialization of the economy. Today, about half of the municipality is employed in industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "jocotitlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4842,
+    "attempt": 4807,
+    "place_id": "gn-3532525",
+    "input": {
+      "place": {
+        "place_id": "gn-3532525",
+        "name": "Ayapango",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.12692,
+        "lon": -98.79988
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ayapango",
+          "url": "https://en.wikipedia.org/wiki/Ayapango",
+          "text": "Ayapango is one of 125 municipalities located in the southeast portion of the State of Mexico, southeast of Mexico City. Its municipal seat and largest town is Ayapango de Gabriel Ramos Millán. Despite the fact that this municipality is distinctly rural, it falls within the Mexico City Metropolitan Area. The town is known for its \"French style\" (Spanish afrancesado) houses built early in the last century which have names which reflect something of their characteristics. The name Ayapango is derived from \"eyapanco\" which roughly translates to \"place where three irrigation ditches meet.\" This town has been designated as a \"Pueblo con Encanto\" (Town with Charm) by the government of the State of Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "ayapango",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4843,
+    "attempt": 4808,
+    "place_id": "gn-3665616",
+    "input": {
+      "place": {
+        "place_id": "gn-3665616",
+        "name": "Zambrano",
+        "country": "Colombia",
+        "subdivision": "Bolívar",
+        "lat": 9.7474,
+        "lon": -74.81572
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zambrano, Bolívar",
+          "url": "https://en.wikipedia.org/wiki/Zambrano,_Bol%C3%ADvar",
+          "text": "Zambrano is a town and municipality located in the Bolívar Department, northern Colombia. It was founded in 1770 By Don Alvaro de Zambrano in what was once Territories which belonged to the native Malibùes. It is located Two and a half Hours from the Departmental capital, Cartagena, Bolivar. During the War for independence, Zambrano played a very important role in the support for Simon Bolivar and for independence from the Kingdom of Spain by many Brave troops fighting for the Colombian Independence movement. In fact, Simon Bolivar stayed one night in Zambrano and was housed by the Campillo Family. The economy is largely agricultural and thanks to its location on the Magdalena River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "zambrano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4844,
+    "attempt": 4809,
+    "place_id": "gn-4009697",
+    "input": {
+      "place": {
+        "place_id": "gn-4009697",
+        "name": "El Grullo",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 19.80665,
+        "lon": -104.21626
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Grullo",
+          "url": "https://en.wikipedia.org/wiki/El_Grullo",
+          "text": "El Grullo is a town and municipality, in Jalisco in central-western Mexico. The municipality covers an area of 157.2 km2. It is named for a color, used for horses and grass, called grullo, used as the name of an Hacienda established there: \"La Hacienda del Zacate Grullo\".  \nAs of 2005, the municipality had a total population of 21,825.\nIn recent years, the town of El Grullo has begun expanding and now has begun to construct suburban-style housing developments on the outer limits of the town. There have also been new points of interest adding in the town center such as an obelisk, a larger city hall, and accessible WiFi throughout the town center.  As of 2014, there are about 30,000 residents living in the developing city limits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "el grullo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grullo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4845,
+    "attempt": 4810,
+    "place_id": "gn-4851163",
+    "input": {
+      "place": {
+        "place_id": "gn-4851163",
+        "name": "Charles City",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 43.06636,
+        "lon": -92.67241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charles City, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Charles_City,_Iowa",
+          "text": "Charles City is a city in and the county seat of Floyd County, Iowa, United States.  The population was 7,396 at the 2020 census. Charles City is a significant commercial, industrial, and transportation center for the area. U.S. Routes 18, 218 (the Avenue of the Saints), and Iowa Highway 14 converge in the city. The nearest population centers are Mason City (35 miles to the west), Waterloo-Cedar Falls (45 miles to the southeast), and the state capital of Des Moines is located 150 miles to the southwest.\nCharles City is known for its history in agricultural manufacturing, and is where the term \"tractor\" was first conied by the former Hart-Parr Gasoline Engine Company. Other sites of interest include the Alvin Miller House, a Usonian home designed by Frank Lloyd Wright, the Art Deco Charles Theatre, and the Floyd County Museum. The Cedar River divides the town flowing to the southeast, and located downtown is the first whitewater park developed in Iowa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "charles city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "charles",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4846,
+    "attempt": 4811,
+    "place_id": "gn-5012521",
+    "input": {
+      "place": {
+        "place_id": "gn-5012521",
+        "name": "Trenton",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.13949,
+        "lon": -83.17826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trenton, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Trenton,_Michigan",
+          "text": "Trenton is a city in Wayne County in the U.S. state of Michigan. A Downriver suburb of Detroit, Trenton is located roughly 18 miles (29.0 km) southwest of downtown Detroit. As of the 2020 census, the city had a population of 18,544.\nA Shawnee village was built in the area by legendary war chief Blue Jacket after the 1795 Treaty of Greenville. The area later became the site of the Battle of Monguagon between Americans and a British-Indian coalition during the War of 1812. The battle is commemorated with a Michigan State Historical Site marker in present-day Elizabeth Park, which was the first county park in Michigan when it was established in 1919. Portions of the Detroit River International Wildlife Refuge are within the southern portion of Trenton.\nThe area was once part of the now-defunct Monguagon Township. Trenton was incorporated as a village in 1855 and again as a city in 1957. Trenton is known for its waterfront and growing boating community. Major industries include Stellantis-Chrysler's Trenton Engine Plant, Solutia, and the DTE Energy Trenton Channel Power Plant. Corewell Health Trenton Hospital is located within city limits and has 203 beds. The former McLouth Steel plant is also located in the city. The city operates the 21,000-square-foot (2,000 m2) Trenton Veterans Memorial Library and a historical museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "trenton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4847,
+    "attempt": 4812,
+    "place_id": "gn-5117378",
+    "input": {
+      "place": {
+        "place_id": "gn-5117378",
+        "name": "Flatbush",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.65205,
+        "lon": -73.95903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flatbush",
+          "url": "https://en.wikipedia.org/wiki/Flatbush",
+          "text": "Flatbush is a neighborhood in the New York City borough of Brooklyn. The neighborhood consists of several subsections in central Brooklyn and is generally bounded by Prospect Park to the north, East Flatbush to the east, Midwood to the south, and Kensington and Parkville to the west. The modern neighborhood includes or borders several institutions of note, including Brooklyn College.\nThe area was home to the Canarsee people before contact with Europeans; many of the tribe's paths would become important roads through the region. Flatbush was originally chartered as the Dutch Nieuw Nederland colony town of Midwout, also called Vlachte Bos. It was one of the six original European towns on Long Island. The town remained primarily Dutch and rural in character until the latter half of the 19th century, when increasing rail and road connectivity to other parts of New York made it an attractive suburb to Brooklyn and New York City. The town was consolidated into the City of Greater New York in 1898 and was further connected to the rest of the city with the development of the New York City Subway in the early 20th century. Post-World War II, the neighborhood underwent tremendous demographic shifts, becoming home to increasing numbers of immigrants from the Caribbean, Asia, and elsewhere. In the late 20th century and 21st century it has continued to see changes due to gentrification and new immigrants.\nFlatbush is part of Brooklyn Community District 14. It is patrolled by the 67th and 70th Precincts of the New York City Police Department. Politically, Flatbush is represented by the New York City Council's 40th and 45th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "flatbush",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4848,
+    "attempt": 4813,
+    "place_id": "gn-5699404",
+    "input": {
+      "place": {
+        "place_id": "gn-5699404",
+        "name": "Scottsbluff",
+        "country": "United States",
+        "subdivision": "Nebraska",
+        "lat": 41.86663,
+        "lon": -103.66717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scottsbluff, Nebraska",
+          "url": "https://en.wikipedia.org/wiki/Scottsbluff,_Nebraska",
+          "text": "Scottsbluff is a city in Scotts Bluff County, Nebraska, United States, in the Great Plains region. The population was 14,436 at the 2020 census. Scottsbluff is the largest city in the Nebraska Panhandle, and the 13th-most-populous city in Nebraska.\nScottsbluff was founded in 1899 across the North Platte River from its namesake, a bluff that is now protected by the National Park Service as Scotts Bluff National Monument. The monument was named after Hiram Scott, a fur trader with the Rocky Mountain Fur Company who was found dead in the vicinity on the return trip from a fur expedition. The smaller town of Gering had been founded south of the river in 1887. The two cities have since grown together to form the 7th-largest urban area (the Scottsbluff Micropolitan Statistical Area) in Nebraska."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "scottsbluff",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4849,
+    "attempt": 4814,
+    "place_id": "gn-5884492",
+    "input": {
+      "place": {
+        "place_id": "gn-5884492",
+        "name": "Amherstview",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.22327,
+        "lon": -76.64538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amherstview, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Amherstview,_Ontario",
+          "text": "Amherstview is an unincorporated community in the township of Loyalist, Ontario.\nIt is located on the north shore of Lake Ontario and has a population of approximately 7,959 as of 2016. It is adjacent to the city of Kingston and is considered part of the Greater Kingston area. Amherstview is named for Amherst Island, directly to the south in Lake Ontario. When the community was first established in the 1950s, the spelling was generally \"Amherst View\".\nAmherst is a common place name found in many parts of Canada commemorating Lord Jeffrey Amherst (1717–97), Field-Marshal of the British Army, Commander-in-Chief in North America, and Governor General of British North America from 1760 to 1763.\nThe community is the eastern end of the Loyalist Parkway, a stretch of Highway 33 that travels along Lake Ontario, in an area in which many United Empire Loyalists settled.  Amherstview is home to Fairfield House which is itself situated in Fairfield Park on the shore of Lake Ontario.  Fairfield House was constructed in 1793 by the Fairfield family who were among the first Loyalists to settle the area.  It served as the family home and a portion of the building was also used as a tavern for some time.  The impressive wood-frame building is now a museum exhibiting period artifacts and furniture and offering guided tours.\nSince Amherstview is part of Loyalist Township, it has no legal boundaries. General boundaries are Lake Ontario to the south, Taylor Kidd Boulevard to the north, Coronation Boulevard to the east (the City of Kingston boundary), and Lennox and Addington County Road 6 to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "amherstview",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4850,
+    "attempt": 4815,
+    "place_id": "gn-653252",
+    "input": {
+      "place": {
+        "place_id": "gn-653252",
+        "name": "Kempele",
+        "country": "Finland",
+        "subdivision": "North Ostrobothnia",
+        "lat": 64.91314,
+        "lon": 25.50339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kempele",
+          "url": "https://en.wikipedia.org/wiki/Kempele",
+          "text": "Kempele is a municipality 11 kilometres (6.8 mi) south of the city of Oulu and 7 kilometres (4.3 mi) east of the Oulu Airport in Northern Finland. Historically it was in the province of Oulu, but today it is in the region of North Ostrobothnia. The population of Kempele is 19,702 (31 December 2025) and the municipality covers an area of  110.32 square kilometres (42.59 sq mi) (excluding sea), of which 0.21 square kilometres (0.081 sq mi) is inland waters (2018-01-01). The population density is 179 inhabitants per square kilometre (460/sq mi) (31 December 2025). The municipality of Kempele was founded in 1867.\nKempele is the birthplace of former NHL goaltender Pekka Rinne.\nThe neighbouring municipalities are Liminka, Oulu and Tyrnävä."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "kempele",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4851,
+    "attempt": 4816,
+    "place_id": "gn-666958",
+    "input": {
+      "place": {
+        "place_id": "gn-666958",
+        "name": "Sânpetru",
+        "country": "Romania",
+        "subdivision": "Brașov County",
+        "lat": 45.71082,
+        "lon": 25.63678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sânpetru",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A2npetru",
+          "text": "Sânpetru (German: Petersberg; Hungarian: Barcaszentpéter) is a commune in Brașov County, Transylvania, Romania, located just north of the county seat, Brașov. It is composed of a single village, Sânpetru.\nThe commune is located in the Burzenland ethnographic area, in the eastern part of the county, at the foot of the Carpathian Mountains.\nThis area was home to many Transylvanian Saxons, although after the Romanian Revolution of 1989 much of this community emigrated to Germany. The center of the village was built by this group and shows the influence of German architecture.  Separate from this there is a Romanian-built area featuring a small church and houses dating at least to the early 19th century. A new center was built closer to Brașov during the communist era to house migrating workers for the tractor and bus factories in the city. Since 1989, new, more luxurious houses have been built on the outskirts of the village, slowly linking it with Brașov."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "sanpetru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4852,
+    "attempt": 4817,
+    "place_id": "gn-7535681",
+    "input": {
+      "place": {
+        "place_id": "gn-7535681",
+        "name": "Saint-Augustin-de-Desmaures",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.74064,
+        "lon": -71.45131
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Augustin-de-Desmaures",
+          "url": "https://en.wikipedia.org/wiki/Saint-Augustin-de-Desmaures",
+          "text": "Saint-Augustin-de-Desmaures (French pronunciation: [sɛ̃t‿oɡystɛ̃ də demɔʁ]) is a city in central Quebec, Canada, on the Saint Lawrence River, adjacent to Quebec City.\nThe town was founded in 1691 by three families (Desroches, Racette, Couture). It was merged with Quebec City on January 1, 2002 as part of the 2000–2006 municipal reorganization in Quebec and became part of the Laurentien borough of that city. However, together with various other former municipalities in the Province, after a 2004 referendum it was re-established as a separate city on January 1, 2006.\nThe local post office was previously named Saint-Augustin-de-Portneuf from 1852, then Saint-Augustin-de-Québec from 1918 until this was renamed to the community's current name in 1986."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "saint augustin de desmaures",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "augustin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "desmaures",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4853,
+    "attempt": 4818,
+    "place_id": "gn-768216",
+    "input": {
+      "place": {
+        "place_id": "gn-768216",
+        "name": "Konstancin-Jeziorna",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.0938,
+        "lon": 21.11761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Konstancin-Jeziorna",
+          "url": "https://en.wikipedia.org/wiki/Konstancin-Jeziorna",
+          "text": "Konstancin-Jeziorna [kɔnˈstaɲt͡ɕin jɛˈʑɔrna] is a spa town in Piaseczno County, Masovian Voivodeship, Poland, with 17,566 inhabitants (as of March 2011, according to GUS). It is located about 20 km (12 mi) south of downtown Warsaw and is a part of the Warsaw metropolitan area.\nThe town was created in 1969 through combining neighbouring towns: holiday resort Skolimów-Konstancin and industrial Jeziorna with a number of villages.\nThe town, a 19th-century health spa, sits on the administrative border of the capital city, Warsaw. The town is known for its historic villas as well as newly built mansions, a shopping center in a restored 19th-century mill and is the home of the American School of Warsaw."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "konstancin jeziorna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "konstancin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jeziorna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4854,
+    "attempt": 4819,
+    "place_id": "gn-779683",
+    "input": {
+      "place": {
+        "place_id": "gn-779683",
+        "name": "Hammerfest",
+        "country": "Norway",
+        "subdivision": "Finnmark",
+        "lat": 70.66313,
+        "lon": 23.68092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hammerfest",
+          "url": "https://en.wikipedia.org/wiki/Hammerfest",
+          "text": "Hammerfest  or Hámmárfeasta is a town/city that is also the administrative centre of Hammerfest Municipality in Finnmark county, Norway. It is located on the northwestern coast of the island of Kvaløya, just north of the village of Rypefjord and southwest of the village of Forsøl. The 3.02-square-kilometre (750-acre) town has a population (2023) of 7,882 which gives the city a population density of 2,610 inhabitants per square kilometre (6,800/sq mi).\nThe town has an ice-free harbour, including the nearby island of Melkøya, which is home to a natural gas processing station. It processes gas from the Snøhvit gas field in the Barents Sea. Rypefjord is a suburb to the south of the city. The main church for the city and municipality is Hammerfest Church. The \"midnight sun\" is above the horizon from 15 May to 31 July, and the period with continuous daylight lasts a bit longer. Polar night, on the other hand, lasts from 23 November to 19 January. The town is visited by cruise ships from all over the world each summer. In 2016, there were about 19,000 tourists who visited the city of Hammerfest. The town also attracts winter visitors seeking northern lights experiences during the polar night season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "hammerfest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4855,
+    "attempt": 4820,
+    "place_id": "gn-8348266",
+    "input": {
+      "place": {
+        "place_id": "gn-8348266",
+        "name": "Alexander Heights",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.82758,
+        "lon": 115.86501
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alexander Heights, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Alexander_Heights,_Western_Australia",
+          "text": "Alexander Heights is a suburb of Perth, Western Australia within the City of Wanneroo.\nOriginally named in 1977 as \"Alinjarra\", an Aboriginal word for \"north\", this suburb was renamed Alexander Heights in 1987. The name is derived from Alexander Drive, the main arterial road into the area, which forms the suburb's eastern boundary. The road was in turn named after Mr S.B. Alexander, a former Wanneroo Road Board member.\nThe suburb contains the Alinjarra Primary School, which covers from kindergarten to year 6. It hosts a range of sports programs and English courses to help the large number of recent immigrants, mostly of African, Arabic, Irish or English descent, moving into the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "alexander heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alexander",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

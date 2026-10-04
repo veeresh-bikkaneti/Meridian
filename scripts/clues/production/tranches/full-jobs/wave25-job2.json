@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 4856,
+    "attempt": 4821,
+    "place_id": "gn-1271939",
+    "input": {
+      "place": {
+        "place_id": "gn-1271939",
+        "name": "Farrukhnagar",
+        "country": "India",
+        "subdivision": "Haryana",
+        "lat": 28.44745,
+        "lon": 76.82391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farrukhnagar",
+          "url": "https://en.wikipedia.org/wiki/Farrukhnagar",
+          "text": "Farrukhnagar is a small town and municipality in Farrukhnagar tehsil of Gurugram district in the Indian state of Haryana. It is situated 21 kilometres (13 mi) from Gurgaon and shares its border with Jhajjar district. \nIt was established in 1732 by Faujdar Khan, the first Nawab of Farrukhnagar and a governor of the Mughal Emperor Farrukhsiyar. Farrukhnagar flourished due to its salt trade until the late 19th century, and was abandoned in the early 20th century, during the British Raj. Today monuments such as Sheesh Mahal, Baoli and Jama Masjid built by Faujdar Khan are popular visitor attractions. The town is connected to Garhi Harsaru, south of Gurugram, by the railway line. The Sultanpur National Park is situated in Farrukhnagar tehsil on the road to Gurgaon. Pataudi Palace, 12 kilometres (7.5 mi) from the town, is the nearest palace."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "farrukhnagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4857,
+    "attempt": 4822,
+    "place_id": "gn-1332363",
+    "input": {
+      "place": {
+        "place_id": "gn-1332363",
+        "name": "Ratannagar",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 28.21337,
+        "lon": 74.95521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ratannagar",
+          "url": "https://en.wikipedia.org/wiki/Ratannagar",
+          "text": "Ratannagar (Heritage city) is a city, near Churu city, and a municipality in Churu district in the Indian state of Rajasthan.\nRatannagar is a small town in the Churu District in the State of Rajasthan, India. It is situated about 8 kilometers south of Churu and has a population of approximately 14,000 people. It is located on the Jaipur road and is famous for its havelis (private mansions). In 1982, Director J.P. Dutta made a motion picture in the village entitled \"Gulami\", starring Dharmendra, Mithun, Nasirudin Shah, Kulbhushan Kharbanda, Smita Patil, Anita Raj and Rina Rai. The main reason the small town was used for the month-long shooting was the noted havelis.\nRatannagar was built by Shah Nand Ram Kedia and Hirawat Family as they moved from shekhwati after some scuffle between them and the then sekhwati rulers.The maharaja of bikaner sri Ganga singhji agreed to provide the land on request by them but he put a condition that the new town to be developed by the Kedia's should be named after his son Sri Ratan singh ji.Hence Ratannagar was built in the style of Jaipur. It is known for its street layout and distinctive scenery.\nAn author (MR.Sukhdev Ji Meena), is clearly and deeply described the whole history of this city in their book “Ratannagar Ka Etihasik Vaibhav”. Mr.Sukhdev ji Meena was a well known personality in Ratannagar.\nCity's street are strait and every street cross to each other. Ratannagar city is famous for \"Ran bankuro\" as like Colonel Jaisingh ji. The Hero of Longewala post in 1965 war with Pakistan.\nThe monumental Gaj Kesari Haveli is situated Ratannagar. This Haveli is widely known for its 1500 wall frescoes and corridors, is the residence of Judge Ram Awtar Soni and family.\nThe Haveli was built in 1899 in all its grandeur and beauty with various architectural styles like Rajput, Shekhawati, Persian, and European Neo Classical. Many famous celebrities such as Edwina Mountbatten and H.H. Maharaja Sri Sadul Singh of Bikaner has visited the palace."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 335
+    },
+    "banned_terms": [
+      {
+        "term": "ratannagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4858,
+    "attempt": 4823,
+    "place_id": "gn-13494725",
+    "input": {
+      "place": {
+        "place_id": "gn-13494725",
+        "name": "Osmania University",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 17.41286,
+        "lon": 78.52633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osmania University",
+          "url": "https://en.wikipedia.org/wiki/Osmania_University",
+          "text": "Osmania University is a collegiate public state university located in Hyderabad, Telangana, India. Mir Osman Ali Khan, the 7th Nizam of Hyderabad, issued a firman calling for its creation on 29 August 1917. It is the third oldest university in southern India, and the first to be established in the erstwhile Kingdom of Hyderabad. \nOsmania University was the first Indian university to use Urdu as a language of instruction, although with English as a compulsory subject. As of 2012, the university hosts 3,700 international students from more than 80 nations. It is also one of the largest university systems in the world with over 300,000 students on its campuses and affiliated colleges. \nOsmania University is a non-profit university which is funded and managed by the Government of Telangana. Admissions into the Bachelors, Masters and Doctoral programs in main campus is on a merit basis, evaluated by national entrance examinations such as TG-EAPCET, TG-CPGET, TG-LAWCET, TG-PGLCET, GATE, Osmania PhD Entrance Exam, DOST, and Osmania University Common Entrance Test for each of the courses offered.\nThe university is accredited by the NAAC with an 'A+' Grade and conferred with the status of 'University with Potential for Excellence' by the UGC, New Delhi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "osmania university",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "osmania",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "university",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4859,
+    "attempt": 4824,
+    "place_id": "gn-1690934",
+    "input": {
+      "place": {
+        "place_id": "gn-1690934",
+        "name": "Salay",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.85917,
+        "lon": 124.78917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salay",
+          "url": "https://en.wikipedia.org/wiki/Salay",
+          "text": "Salay, officially the Municipality of Salay (Cebuano: Lungsod sa Salay; Tagalog: Bayan ng Salay), is a municipality in the province of Misamis Oriental, Philippines. According to the 2024 census, it has a population of 31,128 people. The town is known for its handmade paper and papercrafts, similar to washi, but made with indigenous fibers.\nPoblacion is the center of Salay and had been governed by the Capistrano politicians until the 2007 elections. Lanzones is one of the major source of income among Salayanos aside from commerce at Poblacion and fishing to other people. May 1 is the official feast day of Salay although March feast is also celebrated and is the original.\nSalay Central School provides primary education to the graders in this town while the nearby Salay National High School provides the secondary education, the latter has been nationally recognized for quality education among public schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "salay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4860,
+    "attempt": 4825,
+    "place_id": "gn-1725127",
+    "input": {
+      "place": {
+        "place_id": "gn-1725127",
+        "name": "Binalonan",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 16.0503,
+        "lon": 120.5926
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Binalonan",
+          "url": "https://en.wikipedia.org/wiki/Binalonan",
+          "text": "Binalonan, officially the Municipality of Binalonan (Pangasinan: Baley na Binalonan; Ilocano: Ili ti Binalonan; Tagalog: Bayan ng Binalonan), is a municipality in the province of Pangasinan, Philippines. According to the 2024 census, it has a population of 56,560 people.\nOne of Binalonan's natives is the Filipino-American writer Carlos Bulosan, who wrote brief descriptions of the town's history and people in his semi-autobiographical novel entitled America is in the Heart. The town has a memorial and street named after him just north of the municipal hall and town market.\nIt is also the hometown of Evangelina Guico Macaraeg Macapagal, spouse of 9th President Diosdado Macapagal, and mother of 14th President Gloria Macapagal Arroyo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "binalonan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4861,
+    "attempt": 4826,
+    "place_id": "gn-181735",
+    "input": {
+      "place": {
+        "place_id": "gn-181735",
+        "name": "Othaya",
+        "country": "Kenya",
+        "subdivision": "Nyeri County",
+        "lat": -0.54655,
+        "lon": 36.93178
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Othaya",
+          "url": "https://en.wikipedia.org/wiki/Othaya",
+          "text": "Othaya is a Kenyan town about 120 kilometres north of Nairobi, the capital. As of the 1999 census, Othaya had a population of 21,427, of which 4,108 were classified as core urban; the majority of the residents belong to the Kikuyu ethnic group. Othaya is part of Nyeri County. It has been a traditionally agricultural area with coffee and tea as the main cash crops, with many residents being subsistence farmers. Othaya is home to Chinga dam, the largest water reservoir in Nyeri County.\nMwai Kibaki, the third and former President of Kenya, as well as the third Member of Parliament of Othaya (1974-2013) was born in Gatuyaini, a village in Othaya.\nOthaya forms a town council, which has five wards: Kanyange, Kianganda, Nduye River, Nyamari and Thuti. All of them are part of Othaya Constituency. Othaya serves as the headquarters of Othaya administrative division, which has four locations: Chinga, Iria-Ini, Karima and Mahiga. Othaya division has a population of 88,291 (1999 census). Othaya division shares a border with Othaya constituency, which Mwai Kibaki represented in parliament until 2013. The current member of parliament is Hon. Wambugu Wainaina of UDA, elected in the 2022 general elections. Prominent institutions of education in Othaya town include Othaya Boys' High School, Stellamaris Othaya Girls' High School, Chinga Boys' High School, and several other schools.\nThe Othaya Stadium acts as the town's main public square for social and political meetings, as well as hosting various sporting and entertainment events in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "othaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4862,
+    "attempt": 4827,
+    "place_id": "gn-2411905",
+    "input": {
+      "place": {
+        "place_id": "gn-2411905",
+        "name": "Soma",
+        "country": "Gambia",
+        "subdivision": "Lower River",
+        "lat": 13.43333,
+        "lon": -15.53333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Soma, Gambia",
+          "url": "https://en.wikipedia.org/wiki/Soma,_Gambia",
+          "text": "Soma is a town in The Gambia, lying south of the River Gambia.  It is an important crossroads, where the main east–west road in the country crosses the Trans-Gambia Highway and it also sits between Northern  and Southern Senegal. A vibrant market town and an economic hub of the region, known for its assortments of cooked meat locally known as 'dibitair'. The town has a number of higher learning centers. The town has three Lower Basic Schools; Soma Proper, Soma New and Notre Dame Lower Basic School. Soma Senior Secondary School is located at Sare Mawdo neighborhood of the town and Tahir Senior Secondary School attract thousands of students to the town. \nSoma has seen a robust response from its citizens living abroad and locally by forming associations to initiate developments to the town. Soma Sitaba Foundation for Development and Soma One Big Family are two important charitable organizations in town. Association Of Soma-America that is formed by Soma people in America is also aimed to fulfill similar purposes.  \nThe Kaira Konko Lodge, a scout camp, is located in Soma, on the banks of the River Gambia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "soma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4863,
+    "attempt": 4828,
+    "place_id": "gn-2513406",
+    "input": {
+      "place": {
+        "place_id": "gn-2513406",
+        "name": "Muro",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.73661,
+        "lon": 3.05559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muro, Mallorca",
+          "url": "https://en.wikipedia.org/wiki/Muro,_Mallorca",
+          "text": "Muro (Balearic Catalan: [ˈmuɾo]) is a small municipality on Mallorca, the largest of the Balearic Islands, which are part of Spain. It is located in the north-east of the island. With a history stretching back to prehistoric times, Muro has been shaped by various cultures, including Roman and Muslim influences, before becoming part of the Kingdom of Majorca after the Catalan Conquest in the 13th century. Historically an agricultural hub, the town is known for its production of oranges, lemons, olives, and potatoes, though its agricultural sector faces modern challenges. As of 2024, Muro had a population of 8,136 residents and experiences a significant increase in tourism, particularly during the summer months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "muro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4864,
+    "attempt": 4829,
+    "place_id": "gn-2634124",
+    "input": {
+      "place": {
+        "place_id": "gn-2634124",
+        "name": "Whitchurch",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.96667,
+        "lon": -2.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitchurch, Shropshire",
+          "url": "https://en.wikipedia.org/wiki/Whitchurch,_Shropshire",
+          "text": "Whitchurch is a market town in the civil parish of Whitchurch Urban, in the north of Shropshire, England. It lies 2 miles (3 km) east of the Welsh border, 2 miles south of the Cheshire border, 20 miles (30 km) north of the county town of Shrewsbury, 20 miles (30 km) south of Chester, and 15 miles (24 km) east of Wrexham. At the 2021 census, the population of the Whitchurch Urban parish was 10,141, and the population of the Whitchurch built up area was 9,855. Whitchurch is the oldest continuously inhabited town in Shropshire. Notable people who have lived in Whitchurch include the composer Sir Edward German, and illustrator Randolph Caldecott."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "whitchurch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4865,
+    "attempt": 4830,
+    "place_id": "gn-2807184",
+    "input": {
+      "place": {
+        "place_id": "gn-2807184",
+        "name": "Witzenhausen",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 51.34103,
+        "lon": 9.8554
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Witzenhausen",
+          "url": "https://en.wikipedia.org/wiki/Witzenhausen",
+          "text": "Witzenhausen (German pronunciation: [vɪtsn̩ˈhaʊzn̩] ) is a small town in the Werra-Meißner-Kreis in northeastern Hesse, Germany.\nIt was granted town rights in 1225, and until 1974 was a district seat.\nThe University of Kassel maintains a satellite campus in Witzenhausen, which offers an ecological agricultural sciences programme, putting Witzenhausen among Germany's smallest university towns. There is also a teaching institute (DEULA) for environment and technology, agriculture, horticulture and landscaping. The town is nationally known for the invention of the Biotonne biological refuse container, and is an important cherry-growing area, with a yearly Kesperkirmes or “Cherry Fair” (Kesper is a regional name for the cherry), at which a Cherry Queen (Kirschenkönigin) is chosen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "witzenhausen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4866,
+    "attempt": 4831,
+    "place_id": "gn-2881980",
+    "input": {
+      "place": {
+        "place_id": "gn-2881980",
+        "name": "Ladenburg",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.47307,
+        "lon": 8.60896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ladenburg",
+          "url": "https://en.wikipedia.org/wiki/Ladenburg",
+          "text": "Ladenburg (German pronunciation: [ˈlaːdn̩ˌbʊʁk] ) is a town in northwestern Baden-Württemberg, Germany. It lies on the right bank of the river Neckar, 10 km (6 mi) northwest of Heidelberg and 10 km (6 mi) east of Mannheim.\nThe town's history goes back to the Celtic and Roman Ages, when it was called Lopodunum. Emperor Trajan elevated it to city status ('civitas') in 98 AD. The historic old town and its Fachwerkhäuser date back to the Late Middle Ages when Ladenburg was the capital of the Prince-Bishopric of Worms. Famous residents include Carl Benz, inventor of the first automobile. The Bertha Benz Memorial Route, named after Carl's wife Bertha, runs through the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "ladenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4867,
+    "attempt": 4832,
+    "place_id": "gn-3026194",
+    "input": {
+      "place": {
+        "place_id": "gn-3026194",
+        "name": "Château-Thierry",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 49.04636,
+        "lon": 3.40304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Château-Thierry",
+          "url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau-Thierry",
+          "text": "Château-Thierry (French: [ʃɑto tjeʁi]; Picard: Catieu-Thierry) is a French commune situated in the department of the Aisne, in the administrative region of Hauts-de-France, and in the historic Province of Champagne.\nThe origin of the name of the town is unknown. The local tradition attributes it to Theuderic IV, the penultimate Merovingian king, who was imprisoned  by Charles Martel, without a reliable source. Château-Thierry is the birthplace of Jean de La Fontaine and was the location of the First Battle of the Marne and Second Battle of the Marne. The arrondissement of Château-Thierry is called the country of Omois. Château-Thierry is one of 64 French towns to have received the Legion of Honour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "chateau thierry",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chateau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "thierry",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4868,
+    "attempt": 4833,
+    "place_id": "gn-3179659",
+    "input": {
+      "place": {
+        "place_id": "gn-3179659",
+        "name": "Castellamonte",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.38267,
+        "lon": 7.70886
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castellamonte",
+          "url": "https://en.wikipedia.org/wiki/Castellamonte",
+          "text": "Castellamonte is a comune (municipality) in the Metropolitan City of Turin in the Italian region Piedmont, located about 35 kilometres (22 mi) north of Turin.\nIt is located in the Canavese, at the feet of a hill surmounted by a 14th-century castle, hence the name (meaning \"Castle at the Mount\"). Only traces remain of the latter's original structure, what is visible now dating to an 18th-century renovation. The town is also home to an unfinished rotunda designed by Alessandro Antonelli, the Baroque church of San Rocco; the Sacro Monte di Belmonte is not far, though in the communal territory of Valperga.\nArchitects Carlo and Amedeo di Castellamonte were born in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "castellamonte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4869,
+    "attempt": 4834,
+    "place_id": "gn-3179697",
+    "input": {
+      "place": {
+        "place_id": "gn-3179697",
+        "name": "Castelfidardo",
+        "country": "Italy",
+        "subdivision": "The Marches",
+        "lat": 43.45916,
+        "lon": 13.55044
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castelfidardo",
+          "url": "https://en.wikipedia.org/wiki/Castelfidardo",
+          "text": "Castelfidardo (Marchigiano: Castello) is a town and comune in the province of Ancona, in the Marche  region of central-eastern Italy.\nIt is  remembered for a Piedmontese victory over an army composed of foreign volunteers defending the Papal States, on September 18, 1860. The town's Museum of the Risorgimento, in the palazzo Mordini, commemorates the battle and places it in the wider context of the Risorgimento as a whole.  It houses artifacts and documents of the period, including around 130 loans from private collections or other museums.  In addition, Castelfidardo is home to a number of Renaissance-era buildings, including 'il Palombarone` a 1580 construction which underwent extensive renovations in the early 21st century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "castelfidardo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4870,
+    "attempt": 4835,
+    "place_id": "gn-3188498",
+    "input": {
+      "place": {
+        "place_id": "gn-3188498",
+        "name": "Umag",
+        "country": "Croatia",
+        "subdivision": "Istria",
+        "lat": 45.43139,
+        "lon": 13.52389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Umag",
+          "url": "https://en.wikipedia.org/wiki/Umag",
+          "text": "Umag (pronounced [ûmaɡ]; Italian: Umago; Venetian: Umago) is a coastal town in Istria, Croatia. Located in the northwestern part of Croatia, near the border with Slovenia, situated on the Adriatic Sea in the county of Istria. Umag is known for its historic old town, Mediterranean climate, and tourism industry. The town has a long history dating back to Roman times and developed as an important regional settlement due to its strategic coastal position. \nToday, Umag is recognized as a popular tourist destination, featuring marinas, beaches, and sports facilities, particularly for tennis. It hosts the annual Croatia Open, an ATP Tour international tennis tournament that attracts players and visitors from around the world. The local economy is largely based on tourism, agriculture, fishing, and hospitality services. Its patron saint is St. Peregrine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "umag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4871,
+    "attempt": 4836,
+    "place_id": "gn-3446053",
+    "input": {
+      "place": {
+        "place_id": "gn-3446053",
+        "name": "Treze Tílias",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.00167,
+        "lon": -51.40639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Treze Tílias",
+          "url": "https://en.wikipedia.org/wiki/Treze_T%C3%ADlias",
+          "text": "Treze Tílias (German: Dreizehnlinden, literally \"Thirteen Lindens\") is a municipality located in the state of Santa Catarina, South Region, Brazil. It covers about 185.205 km2 and sits about 470 km from the state capital, Florianópolis. The municipality population estimate for 2020 is 7,991. Treze Tílias was originally created on 13 October 1933, the result of an emigration scheme supported by the Austrian government in Vienna. Dreizehnlinden is known for its maintenance of Austrian culture and language until the present as well as its resistance to Nazi-Germany take-over after Anschluss in 1938.\nFounded by Austrian immigrants, the large majority from Tyrol and Vorarlberg, Treze Tílias exhibits an Alpine-influenced timber framing style of architecture. Most residents speak Portuguese and the southern Austro-Bavarian dialect of Austrian German. The economy of Treze Tílias is based on agriculture, tourism, and woodworking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "treze tilias",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "treze",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tilias",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4873,
+    "attempt": 4837,
+    "place_id": "gn-3844644",
+    "input": {
+      "place": {
+        "place_id": "gn-3844644",
+        "name": "Mayor Buratovich",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -39.26085,
+        "lon": -62.6154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mayor Buratovich",
+          "url": "https://en.wikipedia.org/wiki/Mayor_Buratovich",
+          "text": "Mayor Buratovich is a town in the southwest corner Buenos Aires Province, Argentina, in the partido of Villarino Partido. It is located on National Route 3 (Argentina).\nThe town is named after Croatian military engineer Santiago Buratovich (Jakov Buratović, Hvar, 1846 - Buenos Aires, 1909), who worked on the construction of the Suez Canal. He came to Buenos Aires in 1869, and worked as an engineer, including on telegraph line work, and in military struggles against Indians.  Buratovich advocated for the development of rail service to the area, and a station opened in 1912 where the town developed. In 1913, the station was renamed Mayor Buratovich for Buratovich's services to the country.\nThe rural area's primary economic activity is agricultural, focusing almost exclusively the production on onions for export.  Migrant workers from northern Argentina and Bolivia now perform much of the farm labor.\nThe town is located approximated 58 km south of Médanos (the capital of Villarino Partido), and 92 km south of Bahía Blanca, the nearest major city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "mayor buratovich",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mayor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buratovich",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4874,
+    "attempt": 4838,
+    "place_id": "gn-4457040",
+    "input": {
+      "place": {
+        "place_id": "gn-4457040",
+        "name": "Brevard",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.23345,
+        "lon": -82.73429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brevard, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Brevard,_North_Carolina",
+          "text": "Brevard ( brə-VARD) is a city in and the county seat of Transylvania County, North Carolina, United States, with a population of 7,744 as of the 2020 census.\nBrevard is located at the entrance to Pisgah National Forest and has become a noted tourism, retirement, and cultural center in western North Carolina. A moderate climate, environmental beauty and cultural activities attracts retirees to the area.\nBrevard is also known for its white squirrels. There are several theories of how they came to live there, including an overturned carnival truck and an escaped pet breeding with native squirrels.\nAlong with nearby Asheville and Hendersonville, Brevard forms the Asheville-Brevard, NC CSA combined statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "brevard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4875,
+    "attempt": 4839,
+    "place_id": "gn-4786274",
+    "input": {
+      "place": {
+        "place_id": "gn-4786274",
+        "name": "Smithfield",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 36.98237,
+        "lon": -76.63107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Smithfield, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Smithfield,_Virginia",
+          "text": "Smithfield is a town in Isle of Wight County, in the South Hampton Roads subregion of the Hampton Roads region of Virginia,  United States.  The population was 8,533 at the 2020 census.\nThe town is most famous for the curing and production of the Smithfield ham. The Virginia General Assembly passed a statute defining \"Smithfield ham\" by law in 1926, with one of the requirements that it be processed within the town limits. Smithfield Foods, a Fortune 500 company that owns Smithfield Packing Company and others, is the world's largest pork processor and hog producer. The company, based in Smithfield, raises 12 million hogs and processes 20 million pounds of them annually. The company's largest shareholder is WH Group, a Chinese holding company who purchased the company in 2014 before it went public in 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "smithfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4876,
+    "attempt": 4840,
+    "place_id": "gn-5129572",
+    "input": {
+      "place": {
+        "place_id": "gn-5129572",
+        "name": "Oakwood",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.56399,
+        "lon": -74.11598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oakwood, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Oakwood,_Staten_Island",
+          "text": "Oakwood is a neighborhood located in east central Staten Island, New York City, near the South Shore. It is bordered by Tysens Lane (north); the Atlantic Ocean (east); Great Kills Park (south); Kensico Street, and Clarke Avenue (west).\nThe neighborhood has a coastline on the Lower New York Bay; the coastal area is sometimes referred to as Oakwood Beach, and is the site of a sewage treatment facility.  Bordering this facility on the south is the Staten Island Unit of the Gateway National Recreation Area, also known locally (and formerly, officially) as Great Kills Park.\nOakwood's ZIP Code is 10306, served by a post office in New Dorp, the community's northern neighbor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "oakwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
