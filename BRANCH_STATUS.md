@@ -16,7 +16,7 @@ Base: `origin/main` at `aa69434`.
 - [~] E2E re-runs: BLOCKED by environment, not the fix — (a) sibling crew deleted `difficulty-tiers` worktree, breaking my node_modules symlink (re-pointed to `gap-view-reveal`'s, playwright 1.63.0); (b) sibling `repeat-debug` E2E saturating the VM (load ~11, 0 free RAM) crashed the browser mid-test in 2 attempts. Watchdog queued: re-run globe-miss + reduced-motion once the sibling finishes.
 
 ## Pending
-- [ ] E2E: globe-miss + reduced-motion green (watchdog queued)
+- [x] E2E ALL GREEN (2026-10-04): desktop — warmup, globe miss, country miss, state miss, hit (camera unmoved, gestures live); reduced-motion — instant fit + live wheel. Test-hardening along the way (all harness, none product): warmup test for cold-start map-mount flake, resilient tile-ready wait for tile-watchdog flake, racy zoom-loop fix (poll-for-settle), guaranteed far-miss tap (farthest map-safe point from true spot), 480 s timeout for software-GL slowness.
 - [x] Technical-architect review: PASS-WITH-NOTES — fix correct at right layer, no ordering hazards (revealDone latches before batch executes; batches run in one JS task under `withoutControllerEvents`). Follow-up (pre-existing, out of scope): dispatch-exception catch + watchdog-fire paths still leave gestures off — hardening item for a later pass.
 - [x] Tone/docs/a11y review: PASS-WITH-NOTES — zero user-facing copy changed; no stale docs; keyboard +/- and reduced-motion fine; no focus changes. Two informational notes only.
 - [ ] PR → merge per standing auth → live Pages verification (build-meta.json)
