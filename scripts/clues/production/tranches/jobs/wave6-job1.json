@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 5251,
+    "place_id": "gn-8541977",
+    "input": {
+      "place": {
+        "place_id": "gn-8541977",
+        "name": "Dubai International Financial Centre",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.2106,
+        "lon": 55.27787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubai International Financial Centre",
+          "url": "https://en.wikipedia.org/wiki/Dubai_International_Financial_Centre",
+          "text": "The Dubai International Financial Centre (DIFC) is a special economic zone in Dubai covering 110 ha (272 acres), established in 2004 as a financial hub for companies operating throughout the Middle East, Africa, and South Asia (MEASA) markets.\nDIFC is regulated by the Dubai Financial Services Authority, an independent regulator exclusive to the zone, and by its own court system, DIFC Courts, separate from the Emirate of Dubai's legal system and that of the federal government of the UAE. DIFC follows the common law framework and operates in English.\nDIFC is one of Dubai's independent free zones; it offers companies 100% ownership without the need for a local partner. The freezone houses financial institutions, and wealth funds in addition to retail and hotel space dedicated to the free zones.\nDIFC offers clients a 50-year guarantee of zero taxes on corporate income and profits, complemented by the UAE's network of double taxation treaties.\nIt was reported in 2022 that DIFC had a 19% annual increase in non-financial firms, bringing the total number of international companies, family businesses, and corporate service providers to over 3,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "dubai international financial centre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dubai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "international",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "financial",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "centre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5262,
+    "place_id": "gn-3843843",
+    "input": {
+      "place": {
+        "place_id": "gn-3843843",
+        "name": "Monte Hermoso",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -38.9825,
+        "lon": -61.29472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monte Hermoso",
+          "url": "https://en.wikipedia.org/wiki/Monte_Hermoso",
+          "text": "Monte Hermoso is a town located on the Argentine Atlantic Coast, some 100 km (62 mi) east of the city of Bahía Blanca, in the south of the Province of Buenos Aires. It is the administrative seat of the partido of Monte Hermoso.\nFounded at the beginning of the twentieth century, Monte Hermoso is a family seaside resort with more than 32 km (20 mi) of beach overlooking the Atlantic Ocean and with the unique characteristic in Argentina of having both sunrises and sunsets over the sea.\nThe summer climate of Monte Hermoso is more temperate than that of other major seaside resorts due to the sea breeze effect, while the water itself is warmer, making for a pleasant beach experience.\nMonte Hermoso owes its existence to the 1879 purchase of 4,000 seaside hectares (10,000 acres) by Esteban Dufaur. His son, Sulpicio, created the El Recreo estancia in 1910, and in 1918, began welcoming guests with the inaugural of the Hotel de Madera; the hotel was built by Dafaur with lumber salvaged from a shipwreck on the shore."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "monte hermoso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "monte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hermoso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5266,
+    "place_id": "gn-5234141",
+    "input": {
+      "place": {
+        "place_id": "gn-5234141",
+        "name": "Brattleboro",
+        "country": "United States",
+        "subdivision": "Vermont",
+        "lat": 42.85092,
+        "lon": -72.55787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brattleboro, Vermont",
+          "url": "https://en.wikipedia.org/wiki/Brattleboro,_Vermont",
+          "text": "Brattleboro (), originally Brattleborough, is a town in Windham County, Vermont, United States, located about 10 miles (16 km) north of the Massachusetts state line at the confluence of Vermont's West River and the Connecticut River. With a 2022 Census population of 12,106, it is the most populous municipality abutting Vermont's eastern border with New Hampshire, which is the Connecticut River.\nThe town has been important to the history of Vermont, acting as a gateway for trade on both the Connecticut River and subsequent road and train infrastructure. Moreover, the Whetstone Brook allowed the development of several mill industries that relied on water power. The town rose to national and international recognition because of several major industries in the town during the 19th century: several bookbinding companies, including Brattleboro Typographic Company which produced bibles, and Estey Organ, one of the largest manufacturers of pipe organs in the world. As both industries shrank in the early 20th century, the town came to rely more on its role as an economic hub for more rural communities and Vermont's tourism industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "brattleboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5267,
+    "place_id": "gn-7287910",
+    "input": {
+      "place": {
+        "place_id": "gn-7287910",
+        "name": "Fetcham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.28879,
+        "lon": -0.35582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fetcham",
+          "url": "https://en.wikipedia.org/wiki/Fetcham",
+          "text": "Fetcham is a suburban village in the Mole Valley district, in Surrey, England west of the town of Leatherhead, on the other side of the River Mole and has a mill pond, springs and an associated nature reserve.  The housing, as with adjacent Great Bookham, sits on the lower slopes of the North Downs north of Polesden Lacey (NT).  Fetcham Grove has Leatherhead and the village's main leisure centre and football club, between the two settlements. Fetcham has two short parades of shops and services, several sports teams and parks and a small number of large pubs and food premises.\nNeighbouring Bookham and Leatherhead have railway stations and a junction of the M25 London Orbital Motorway is a 3-mile (4.8-km) journey from it passing alongside the River Mole beyond a brief upland made up of most of Fetcham's remaining farms and wooded Great Bookham Common demarcating Fetcham's northern border.  The northern few square miles and the larger North Downs are protected Green Belt, forming a buffer between Stoke D'Abernon (the south of Cobham post town) and Dorking respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "fetcham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5269,
+    "place_id": "gn-3679660",
+    "input": {
+      "place": {
+        "place_id": "gn-3679660",
+        "name": "La Calera",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 4.72069,
+        "lon": -73.96926
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Calera, Cundinamarca",
+          "url": "https://en.wikipedia.org/wiki/La_Calera,_Cundinamarca",
+          "text": "La Calera is a municipality and town of Colombia in the Guavio Province, part of the department of Cundinamarca.\nLa Calera is a common weekend destination, mainly for the many restaurants, as it is approximately 18 kilometres (11 mi) over land from Bogotá, the capital city of Colombia. La Calera is located in the Eastern Ranges of the Colombian Andes, east of the capital and overlooking part of it. La Calera borders Guasca, Sopó and Chía in the north, Guasca and Junín in the east, Bogotá in the west and Choachí and Fómeque in the south.\nSituated between 2,600 and 3,000 meters above sea level, the area encompasses both cold climate zones and páramo (high-altitude tundra). Its economy is diverse, including:\n\nTraditional agriculture (potatoes, corn, cubios, carrots, etc.)\nLivestock farming (cattle, horses, sheep, goats), trout farming\nLimestone and sand mining\nFormer cement production (Cementos Samper, relocated in 1998), now operated by Cemex\nBottled water production (Manantial Water, by The Coca-Cola Company)\nWithin the municipality lies the San Rafael Reservoir, a key water source for Bogotá's aqueduct system."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "la calera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "calera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5272,
+    "place_id": "gn-3858765",
+    "input": {
+      "place": {
+        "place_id": "gn-3858765",
+        "name": "El Bolsón",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -41.96051,
+        "lon": -71.53336
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Bolsón, Río Negro",
+          "url": "https://en.wikipedia.org/wiki/El_Bolsón,_Río_Negro",
+          "text": "El Bolsón is a town in the southwest of Río Negro Province, Argentina, at the foot of the Piltriquitron Mountain. Due to a series of valleys through the mountains of the Andes to the Pacific Ocean, El Bolsón has an unusually mild climate for its southern location.\nEl Bolsón area's first non-indigenous inhabitants were Chilean farmers Lucas Cárdenas  and Elcira Estrada, a couple who came in 1885 from San Pablo, near Osorno, and established themselves in the then known as \"Valle Nuevo\" (New Valley); in 2018, El Bolsón inaugurated the new Public Clock Square after the couple's names. In the 1970s, hippies from Buenos Aires migrated to El Bolsón; some of them practised horticulture and made handcrafts.\nEl Bolsón has a tourism economy based on an outdoor artisan market, fly fishing, trekking, rafting, climbing, and other outdoor activities in the surrounding lakes and mountains. The nature tourism offers are complemented with the production of cheeses, smoked trout, special brew beer, regional chocolates and ice cream, as well as organic and wild-crafted jams and preserves, particularly elderberries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "el bolson",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bolson",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5273,
+    "place_id": "gn-8349067",
+    "input": {
+      "place": {
+        "place_id": "gn-8349067",
+        "name": "High Wycombe",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.94444,
+        "lon": 116.0034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "High Wycombe, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/High_Wycombe,_Western_Australia",
+          "text": "High Wycombe () is a suburb of Perth, Western Australia, within the City of Kalamunda. High Wycombe lies east of the Perth CBD at the base of the Darling Scarp (commonly referred to as the foothills). Formerly part of Maida Vale, the suburb was officially declared on 2 June 1978; its name, which was first used in 1958 by a subdivider, Western Agencies, refers to the town in Buckinghamshire where one of the partners in the firm was born.\nHigh Wycombe is directly east of Perth Airport, west of Maida Vale, north of Forrestfield, and south of the industrial suburb of Hazelmere.\nHigh Wycombe is a large suburb in area, with its main population centred on roads that connect from Newburn Road, and is bounded by Kalamunda Road to the north, Dundas Road to the west, Maida Vale Road to the south, and Roe Highway to the east. The suburb's growth is mainly in this area, however the estate of Jacaranda Springs, which is based on the northern side of Kalamunda Road, is also experiencing growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "high wycombe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "high",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wycombe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5274,
+    "place_id": "gn-5122520",
+    "input": {
+      "place": {
+        "place_id": "gn-5122520",
+        "name": "Jamaica",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.69149,
+        "lon": -73.80569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jamaica, Queens",
+          "url": "https://en.wikipedia.org/wiki/Jamaica,_Queens",
+          "text": "Jamaica is a neighborhood in the New York City borough of Queens. Jamaica is bordered by Hollis, Queens Village, St. Albans, and Cambria Heights to the east; South Jamaica, Rochdale Village, John F. Kennedy International Airport, and Springfield Gardens to the south; Laurelton and Rosedale to the southeast; Richmond Hill, South Ozone Park, and Aqueduct Racetrack to the west and southwest; Briarwood to the northwest; and Kew Gardens Hills, Jamaica Hills, and Jamaica Estates to the north.\nJamaica may get its name from Yameco, a corruption of a word for \"beaver\" in the Lenape language spoken by the Native Americans who lived in the area at the time of first European contact.  The liquid \"y\" sound of English is spelled with a \"j\" in Dutch, the language of the first people to write about the area; the English retained this Dutch spelling, but, after repeated reading and speaking of \"Jamaica\", slowly replaced the liquid sound with the hard \"j\" of the English pronunciation of the name today. \nJamaica was settled under Dutch rule in 1656."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "jamaica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5276,
+    "place_id": "gn-2638909",
+    "input": {
+      "place": {
+        "place_id": "gn-2638909",
+        "name": "Rye",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.95114,
+        "lon": 0.7337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rye, East Sussex",
+          "url": "https://en.wikipedia.org/wiki/Rye,_East_Sussex",
+          "text": "Rye is a town and civil parish in the Rother district of East Sussex, England, two miles (three kilometres) from the English Channel at the confluence of three rivers: the Rother, the Tillingham and the Brede. In the mid-twelfth century, it was an important member of the mediaeval Cinque Ports confederation, it was at the head of an embayment of the English Channel, and almost entirely surrounded by the sea. Over the subsequent centuries, the coastline has moved further away due to a combination of natural silting up from storm damage, changes in the flow of the River Rother, and tidal changes, along with deliberate land reclamation from the sea.\nAt the 2011 census, Rye had a population of 4,773. Its historical association with the sea has included providing ships for the service of the Crown in time of war, and being involved in smuggling. The notorious Hawkhurst Gang used its ancient inns The Mermaid Inn and The Olde Bell Inn, which are said to be connected to each other by a secret passageway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "rye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5277,
+    "place_id": "gn-6620339",
+    "input": {
+      "place": {
+        "place_id": "gn-6620339",
+        "name": "Karratha",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -20.73765,
+        "lon": 116.84629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karratha, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Karratha,_Western_Australia",
+          "text": "Karratha is a city in the Pilbara region of Western Australia, adjoining the port of Dampier. Located about 140 kilometres (87 mi) east-southeast of the site of three nuclear weapons tests by the British (Operation Hurricane in 1952 and Operation Mosaic in 1956), it was established in 1968 to accommodate the processing and exportation workforce of the Hamersley Iron mining company and, in the 1980s, the petroleum and liquefied natural gas operations of the Woodside-operated North West Shelf Venture located on Murujuga. As of the 2021 census, Karratha had an urban population of 17,013. The city's name comes from the cattle station of the same name, which derives from a word in a local Aboriginal language meaning \"good country\" or \"soft earth\". More recently, Ngarluma people have indicated the name may actually relate to an early interpretation of Gardarra, stemming from the sacred site for the whale, located in the Karratha area, called Gardarrabuga. The city is the seat of government of the City of Karratha, a local government area covering the surrounding region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "karratha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5279,
+    "place_id": "gn-4016734",
+    "input": {
+      "place": {
+        "place_id": "gn-4016734",
+        "name": "Bucerías",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 20.75821,
+        "lon": -105.3362
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bucerías, Nayarit",
+          "url": "https://en.wikipedia.org/wiki/Bucerías,_Nayarit",
+          "text": "Bucerías meaning \"Divers town\" (\"diving\"), is a small Mexican beach resort town in the state of Nayarit on a stretch of Pacific coast known as the Riviera Nayarit, on and in the Bay and municipality of Banderas, between La Cruz de Huanacaxtle and Nuevo Nayarit. Its former name was Santa Julia de las Tablas.\nIn the 2020 census it had a population of 16,161 residents (seasonal influxes double that number) and is a typical town of the region with cobblestone streets, the main square, church, and many services for visiting foreigners, and features a wide array of restaurants. It has an uninterrupted white sand beach that continues north and south for a total of more than 29 kilometres (18 miles) and the city sits at an elevation of 27 metres (89 feet).\nBucerías is bisected by the Arroyo del Indio, a mountain run-off that remains dry most of the year. The Arroyo also serves as an unimproved roadbed under Fed 200 overpasses and can be navigated by car far up into the foothills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "bucerias",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5280,
+    "place_id": "gn-4906500",
+    "input": {
+      "place": {
+        "place_id": "gn-4906500",
+        "name": "Portage Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.95781,
+        "lon": -87.76506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portage Park, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Portage_Park,_Chicago",
+          "text": "Portage Park is one of the 77 community areas of Chicago in Illinois, United States, located on the northwest side of Chicago. Portage Park is bordered by the community areas of Jefferson Park and Forest Glen to the north, Dunning and the suburb of Harwood Heights to the west, Irving Park  to the east and Belmont-Cragin to the south.\nThe area is notable for its Six Corners outdoor shopping district, centered at the intersection of Irving Park Road, Cicero Avenue and the diagonal Milwaukee Avenue, the Portage Theater and for its namesake - Portage Park. The name of the park was taken from the major portage linking the Des Plaines and Chicago rivers along what is today Irving Park Road. The area was so swampy that in wet weather, Native Americans and trappers were easily able to paddle through the area in either direction without leaving their canoes. In those days, the Des Plaines was perhaps the most significant way to the Illinois, and then on to the Mississippi (and to return)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "portage park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "portage",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5284,
+    "place_id": "gn-6355180",
+    "input": {
+      "place": {
+        "place_id": "gn-6355180",
+        "name": "Port el Kantaoui",
+        "country": "Tunisia",
+        "subdivision": "Sousse Governorate",
+        "lat": 35.89239,
+        "lon": 10.59434
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port El Kantaoui",
+          "url": "https://en.wikipedia.org/wiki/Port_El_Kantaoui",
+          "text": "Port El Kantaoui (Arabic: مرسى القنطاوي) is a tourist complex 10 kilometres north of Sousse city in central Tunisia. It was built in 1979 specifically  as a tourist center, around a large artificial harbour that provides mooring with 340 berths for luxury yachts, hosting sporting activities from water skiing to paragliding, and several golf courses. \nThe architecture, although modern and dazzlingly white, has been modeled on the more traditional buildings in Tunisia, complete with narrow streets and arches. The hotels that line the beachfront extend from Sousse itself along miles of sparkling clean sea to the harbor of Port El Kantaoui and to the north of the harbor.\nIn style, the port area Port El Kantaoui is designed as a white and blue Tunisian style village with reproduced medina quarter and cobblestone streets. It is popular with package holiday visitors, families, and first-time visitors, however, its extensive landscaping and detachment from the true Tunisia bring critics; most notably the Rough Guide has described Port El Kantaoui as \"Tunisia without tears ..."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "port el kantaoui",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kantaoui",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5290,
+    "place_id": "gn-3892934",
+    "input": {
+      "place": {
+        "place_id": "gn-3892934",
+        "name": "Curacaví",
+        "country": "Chile",
+        "subdivision": "Santiago Metropolitan",
+        "lat": -33.39762,
+        "lon": -71.12708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curacaví",
+          "url": "https://en.wikipedia.org/wiki/Curacaví",
+          "text": "Curacaví (Spanish pronunciation: [ku.ɾa.ka.ˈβi]) is a city and commune in the Melipilla Province of central Chile's Santiago Metropolitan Region. Its climate is temperate Mediterranean with a long dry season, experiencing high temperatures in summer and low temperatures in winter. Curacaví is located on the Ruta 68 between the coastal conurbation of Viña del Mar and Valparaíso and Santiago which has proved a popular home for expats working in Santiago.\nCuracaví is a commune situated between the hills of the coastal mountain range in central Chile, located in the Metropolitan Region of Santiago, specifically in Melipilla Province, with an area of 693 km2 and borders the following municipalities: Casablanca, Quilpué, Lampa, Pudahuel, Maipú, Padre Hurtado, Melipilla, and Maria Pinto.\nCuracaví is integrated along with the communes of Talagante, Melipilla, Peñaflor, Isla de Maipo, Maria Pinto, El Monte, San Pedro and Alhué in the number 31 Electoral District and also belongs to the 7th Chilean Senate District (Santiago west). The commune covers five districts: Curacaví, Bustamante, Lo Prado, Zapata and Caren."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "curacavi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5298,
+    "place_id": "gn-2262581",
+    "input": {
+      "place": {
+        "place_id": "gn-2262581",
+        "name": "Torres Vedras",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 39.09109,
+        "lon": -9.2586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torres Vedras",
+          "url": "https://en.wikipedia.org/wiki/Torres_Vedras",
+          "text": "Torres Vedras (European Portuguese: [ˈtoʁɨʒ ˈvɛðɾɐʃ] ) is a medium-sized municipality and city in the West area of the Oeste e Vale do Tejo region of Portugal, and in historical Estremadura province, located approximately 50 kilometres (31 mi) north of the national and district capital, Lisbon. Historically a part of Estremadura, it is the most populous municipality of the Oeste intermunicipal community, with 83 072 residents at the time of the 2021 Census, in an area of 407.15 square kilometres (157.20 sq mi). \nOften locally shortened to just Torres, it is a settlement with over a thousand years of history, it is most known as the namesake of the Lines of Torres Vedras during the Peninsular War, as well as its Atlantic coastline popular in the Summer and its yearly Carnival, self-titled \"the Most Portuguese in Portugal\". Its territory is also home to a strong agricultural presence primarily linked to its vineyards and fruit production. It was, alongside neighbouring Alenquer, the European City of Wine in 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "torres vedras",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "torres",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vedras",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5299,
+    "place_id": "gn-3645806",
+    "input": {
+      "place": {
+        "place_id": "gn-3645806",
+        "name": "Chichiriviche",
+        "country": "Venezuela",
+        "subdivision": "Falcón",
+        "lat": 10.92872,
+        "lon": -68.27283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chichiriviche",
+          "url": "https://en.wikipedia.org/wiki/Chichiriviche",
+          "text": "Chichiriviche, also known as Chichiriviche de la Costa, is a Venezuelan city located in Falcón state located on the east coast, 195 km southeast of Coro. It is the capital of Municipality Monseñor Iturriza and has a population of 18,960 inhabitants as of 2011.\nChichiriviche is surrounded by the small cays and islands of fine white sand; to the west by the wetland Cuare Wildlife Refuge and to the south by Cuare Gulf. Its name is a Caribbean word meaning \"place where rises our sun\"\nChichiriviche has achieved a sustained development of its tourism industry, with a service infrastructure that translates into luxury hotels, resorts, inns, restaurants, network of marinas, shops and places of nightlife.\n\nIt is a tourist destination as well as a coconut farming and fishing town. A dish that has recently become common in Chichiriviche is ceviche made with lionfish; the lionfish is an invasive species and thus eating it serves both as a food source and a way of protecting the local environment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "chichiriviche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5300,
+    "place_id": "gn-4004153",
+    "input": {
+      "place": {
+        "place_id": "gn-4004153",
+        "name": "Jalostotitlán",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 21.16813,
+        "lon": -102.46097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jalostotitlán",
+          "url": "https://en.wikipedia.org/wiki/Jalostotitlán",
+          "text": "Jalostotitlán (Nahuatl languages: Xālōztōtitlān, lit. 'place of sandy caves', Nahuatl pronunciation: [ʃaːloːstoːˈtitɬaːn̥]) is a town and municipality located in the northeast corner of the state of Jalisco, Mexico, in a region known as Los Altos.\n\nThe municipality shares its border on the north with the municipality of Teocaltiche, the east with the municipality of San Juan de los Lagos, to the south with the municipality of San Miguel el Alto, to the southwest with the municipality of Valle de Guadalupe, and to the west with the municipality of Cañadas de Obregón.\nThe town is located in a midsection of the country, with semi-desert, arid lands to the north and more fertile lands to the south. Winters are relatively cold and summers are hot and rainy. The municipality also includes the towns of San Nicolás de las Flores, Teocaltitán de Guadalupe, San Gaspar de los Reyes and Mitic. In the center of town are the churches that originate from the 16th century, when the town was first founded."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "jalostotitlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5305,
+    "place_id": "gn-2634217",
+    "input": {
+      "place": {
+        "place_id": "gn-2634217",
+        "name": "Wetherby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.92836,
+        "lon": -1.38672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetherby",
+          "url": "https://en.wikipedia.org/wiki/Wetherby",
+          "text": "Wetherby ( WETH-ə-bee) is a market town and civil parish in the City of Leeds, West Yorkshire, England. It is close to West Yorkshire county's border with North Yorkshire and lies approximately 12 miles (19 kilometres) from Leeds city centre, 12 mi (19 km) from York and 8 mi (13 km) from Harrogate. The town stands on the River Wharfe and, for centuries, it has been a crossing place and staging post on the Great North Road midway between London and Edinburgh.\nWetherby Bridge, which spans the River Wharfe, is a Scheduled Ancient Monument and a Grade II listed structure. The course of the Old Great North Road passes through the town and, as result of its situation on the road, as well as being a major cattle droving route from Scotland to London, many coaching inns were established in Wetherby which are still used by travellers today.\nThe town lies in the Wetherby ward of Leeds City Council and the Wetherby and Easingwold parliamentary constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "wetherby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5306,
+    "place_id": "gn-2640463",
+    "input": {
+      "place": {
+        "place_id": "gn-2640463",
+        "name": "Penistone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.52572,
+        "lon": -1.63027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penistone",
+          "url": "https://en.wikipedia.org/wiki/Penistone",
+          "text": "Penistone ( PEN-iss-tən) is a market town and civil parish in the Metropolitan Borough of Barnsley, South Yorkshire, England, which had a population of 13,270 at the 2021 census. Historically in the ancient Wapentake of Staincross and the West Riding of Yorkshire, it is 7 miles (11 km) west of central Barnsley, 17 miles (27 km) north-east of Glossop, 15 miles (24 km) north-west of Sheffield, 27 miles (43 km) south-west of Leeds and 29 miles (47 km) east of Manchester in the foothills of the Pennines. The town is frequently noted on lists of unusual place names.\nThe highest point, Hartcliffe Tower, is 1,194 ft (364 m) above sea level and has views over the Woodhead bypass and the Dark Peak. The surrounding countryside is predominantly rural with farming on rich well-watered soil on mainly gentle slopes rising to the bleak moorland to the west of the town. Dry stone walls, small hamlets and farms surrounded by fields and livestock are synonymous with the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "penistone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5310,
+    "place_id": "gn-3372988",
+    "input": {
+      "place": {
+        "place_id": "gn-3372988",
+        "name": "Horta",
+        "country": "Portugal",
+        "subdivision": "Azores",
+        "lat": 38.53737,
+        "lon": -28.62615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horta, Azores",
+          "url": "https://en.wikipedia.org/wiki/Horta,_Azores",
+          "text": "Horta, officially the Very Loyal City of Horta, is a city in the Portuguese archipelago of the Azores encompassing the island of Faial with its largely green municipality (Município da Horta) with semi-arid yet fertile hillsides, rising highest away from the city, to the west.  About the narrowest width of the island to the east, facing the settlement is the much larger Pico Island noted for wine production.  The single-island-municipality's population in 2021 was 14,334  spread over 173 square kilometres (67 mi2). The city as an urban to suburban mass of no more than a tenth of the island has a population of about 7,000.\nHorta's marina is a primary stop for yachts crossing the Atlantic Ocean, and its walls and walkways are covered with paintings created by visitors noting the names of their vessels, crews, and the years they visited. Peter's Café Sport is a venue, popular among transatlantic sailers, facing the marina that houses Faial's scrimshaw museum (artifacts carved from whale tooth and jawbone)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "horta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

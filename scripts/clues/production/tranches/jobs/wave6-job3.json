@@ -1,0 +1,727 @@
+[
+  {
+    "rank": 5382,
+    "place_id": "gn-2820775",
+    "input": {
+      "place": {
+        "place_id": "gn-2820775",
+        "name": "Tuntenhausen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.93509,
+        "lon": 12.01518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tuntenhausen",
+          "url": "https://en.wikipedia.org/wiki/Tuntenhausen",
+          "text": "Tuntenhausen (German pronunciation: [tʊntn̩ˈhaʊzn̩]) is a municipality  in the district of Rosenheim in Bavaria in Germany.\nThere are 57 official districts of Tuntenhausen, namely Tuntenhausen itself, Antersberg, Aubenhausen, Bach, Berg, Beyharting, Biberg, Bichl (this Bichl is an Einöde), Bichl (this Bichl is a Weiler (hamlet)), Bolkam, Brettschleipfen, Dettendorf, Eggarten, Eisenbartling, Emling, Fischbach, Fuchsholz, Großrain, Guperding, Haus, Höglhaus, Hohenthann, Holzbichl, Hopfen, Hörmating, Innerthann, Jakobsberg, Karlsried, Knogl, Kronbichl, Lampferding, Mailling, Maxlrain, Moosmühle, Mühlholz, Neureith, Nordhof, Oberrain, Oed, Ostermünchen, Pangraz, Schlafthal, Schmidhausen, Schönau, Schwaig, Schweizerberg, Schweizerting, Seisrain, Sindlhausen, Söhl, Stetten (this Stetten is a Dorf (village)), Stetten (this Stetten is an Einöde), Thal, Unterrain, Voglried, Weiching, Weng.\nOstermünchen is a station of the Munich–Rosenheim railway and served about once per hour by local trains.\nThe town is known best for its church, a destination for Roman Catholic pilgrims in Bavaria.\nThe name of the town translates roughly to \"Sissy Town\" what makes it a notable name for a German town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "tuntenhausen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5391,
+    "place_id": "gn-606086",
+    "input": {
+      "place": {
+        "place_id": "gn-606086",
+        "name": "Gällivare",
+        "country": "Sweden",
+        "subdivision": "Norrbotten",
+        "lat": 67.13387,
+        "lon": 20.65278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gällivare",
+          "url": "https://en.wikipedia.org/wiki/Gällivare",
+          "text": "Gällivare (Swedish: [ˈjɛ̌lːɪvɑːrɛ]; Finnish: Jällivaara; Northern Sami: Jiellevárri or Váhčir; Lule Sami: Jiellevárre or Váhtjer; Meänkieli: Jellivaara) is a locality and the seat of Gällivare Municipality in Norrbotten County, province of Lapland, Sweden with 8,449 inhabitants in 2010. The town was founded in the 17th century. Together with nearby towns Malmberget and Koskullskulle it forms a conurbation with some 15,000 inhabitants.\nGällivare is situated at the northern end of the Inlandsbanan railway line, about 60 kilometres north of the Arctic Circle. Gällivare is located in a major iron ore mining region.\nAdjacent to Gällivare (about five kilometres) is Malmberget, known as a site for iron ore extraction from deep mines by LKAB. In addition Aitik, one of Europe's largest open pit copper mines, is operated just twenty kilometers away by Boliden AB.\nOutside Gällivare lies the ski resort Dundret, which is equipped with six ski lifts and ten groomed slopes along with a conference center and hotel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "gallivare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5399,
+    "place_id": "gn-5915327",
+    "input": {
+      "place": {
+        "place_id": "gn-5915327",
+        "name": "Cap-aux-Meules",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 47.38208,
+        "lon": -61.85968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cap-aux-Meules",
+          "url": "https://en.wikipedia.org/wiki/Cap-aux-Meules",
+          "text": "Cap-aux-Meules (French pronunciation: [kap o møl], \"Grindstone\") is a former village, now a sector of the municipality of Les Îles-de-la-Madeleine, Quebec. It is located on Cap aux Meules Island (Grindstone Island), part of the Magdalen Islands archipelago, in the Gulf of St. Lawrence, Quebec, Canada.\nThe sheltered port of Cap-aux-Meules is an important fishing harbour, as well as a commercial cargo and ferry terminal. The ferry company, Coopérative de Transport Maritime et Aérien (CTMA), operates a ferry service to Souris, Prince Edward Island, as well as a year-round cargo service to Matane and Montreal, Quebec.\nThe village is home to the government services offices of Société de l'assurance automobile du Québec (SAAQ), Transports Quebec, the Ministry of Municipal Affairs and Housing (MAMH), the Ministry of Agriculture, Fisheries and Food (MAPAQ) and the Ministry of the Environment and the Fight Against Climate Change (MELCCFP), also, Parks Canada, Transport Canada, Canadian Coast Guard, and Fisheries and Oceans Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "cap aux meules",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cap",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "meules",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5405,
+    "place_id": "gn-2147864",
+    "input": {
+      "place": {
+        "place_id": "gn-2147864",
+        "name": "Sunshine",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.78333,
+        "lon": 144.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunshine, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Sunshine,_Victoria",
+          "text": "Sunshine is a suburb in Melbourne, Victoria, Australia, 12 km (7.5 mi) west of Melbourne's city centre, located within the City of Brimbank local government area. Sunshine recorded a population of 9,445 at the 2021 census.\nSunshine, initially a town just outside Melbourne, is today a residential suburb with a mix of period and post-War homes, with a town centre that is an important retail centre in Melbourne's west. It is also one of Melbourne's principal places of employment outside the CBD with many industrial companies situated in the area, and is an important public transport hub with both V/Line and Metro services at Sunshine railway station and its adjacent major bus interchange.\nSunshine is both a low-density residential suburb and one of Melbourne's principal places of employment outside the city centre. Many heavy and light industrial companies are situated in and around the area and it is an important retail centre in Melbourne's west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "sunshine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5421,
+    "place_id": "gn-8509567",
+    "input": {
+      "place": {
+        "place_id": "gn-8509567",
+        "name": "Muyu",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 31.47202,
+        "lon": 110.38717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muyu, Hubei",
+          "url": "https://en.wikipedia.org/wiki/Muyu,_Hubei",
+          "text": "Muyu (simplified Chinese: 木鱼; traditional Chinese: 木魚; pinyin: Mùyú; literally, \"Wooden fish\"; sometimes also 木鱼坪, Muyuping) is a town in Shennongjia Forestry District, in the west of Hubei province, People's Republic of China. Located on China National Highway 209, it is the main population and services center of the southern part of the district.\nThe town is stretched along the upper course of Xiang Stream (Xiang Xi) (or perhaps one of its tributaries), which flows from Shennongjia mountains southeast toward the Yangtze. The river valley is paralleled by China National Highway 209.\nServing as the natural \"gateway\" to Shennongjia National Nature Reserve (the entry to which is at Yazikou Junction, some 10 to 15 kilometres (6.2 to 9.3 mi) north of Muyu), Muyu and its vicinity is the location of most of the hotels and tourist services in the southern part of Shennongjia. Regular minibus service connects it to Yichang and Maoping (Zigui County)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "muyu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5422,
+    "place_id": "gn-1283119",
+    "input": {
+      "place": {
+        "place_id": "gn-1283119",
+        "name": "Lobuche",
+        "country": "Nepal",
+        "subdivision": "Koshi",
+        "lat": 27.94806,
+        "lon": 86.81017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lobuche",
+          "url": "https://en.wikipedia.org/wiki/Lobuche",
+          "text": "Lobuche (also spelt Lobuje) is a Nepalese mountain which lies close to the Khumbu Glacier and the settlement of Lobuche. There are two main peaks, Lobuche East and Lobuche West. A permit to climb the mountain is required from the Nepal Mountaineering Association (NMA), which classifies Lobuche East (6,119m) as a \"trekking peak\" and Lobuche West (6,145m) as an \"expedition peak\". The permit is issued by Nepal Mountaineering Association and costs US$350 during spring, US$175 during autumn, and US$175 during winter/summer. The easier, trekking peak, the East peak is climbed far more frequently than the West peak; however, most of those climbers only do so to reach a false summit that is still a few hours from the true summit of Lobuche East. Between the two peaks is a long, deeply notched ridge, with a steep drop and its considerable distance making an approach of the West peak from the East practically impossible."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "lobuche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5431,
+    "place_id": "gn-5133271",
+    "input": {
+      "place": {
+        "place_id": "gn-5133271",
+        "name": "Queens Village",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.72677,
+        "lon": -73.74152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Queens Village, Queens",
+          "url": "https://en.wikipedia.org/wiki/Queens_Village,_Queens",
+          "text": "Queens Village is a mostly residential middle class neighborhood in the eastern part of the New York City borough of Queens. It is bound by Hollis to the west, Cambria Heights to the south, Bellerose, Queens and Elmont, Nassau County to the east, and Oakland Gardens to the north.\nShopping in the community is located along Braddock Avenue, Hillside Avenue, Hempstead Avenue, Jamaica Avenue (NY 25), Francis Lewis Boulevard, and Springfield Boulevard. Located just east of Queens Village, in Elmont, Nassau County, is the Belmont Park race track.\nClose to the neighborhood are Cunningham Park and Alley Pond Park, as well as the historic Long Island Motor Parkway (LIMP), home of the turn of the century racing competition, the Vanderbilt Cup. The LIMP was built by William Kissam Vanderbilt, a descendant of the family that presided over the New York Central Railroad and Western Union; it is now part of the Brooklyn–Queens Greenway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "queens village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "queens",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5434,
+    "place_id": "gn-2641945",
+    "input": {
+      "place": {
+        "place_id": "gn-2641945",
+        "name": "Murton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.81812,
+        "lon": -1.39036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murton, County Durham",
+          "url": "https://en.wikipedia.org/wiki/Murton,_County_Durham",
+          "text": "Murton is a village and civil parish in County Durham, England, eight miles (13 km) east of the city of Durham and six miles (9.7 km) south of Sunderland. It had a population of 4,534, which rose to 7,676 at the 2011 Census.\nIt was originally a rural agricultural hamlet called Morton, but the discovery of coal beneath its fields in the 19th century transformed it into an industrial community. 'Morton became known as Murton Colliery or Murton-in-the-Whins following the sinking of the pit in 1838 by South Hetton Coal Company, and the village was a productive coal mining community for more than a century. The pit employed more than 1000 men at its peak and featured in a Picture Post article showing the 'vesting' of the mine at nationalisation in 1947.\nThe village had the South East Durham Cooperative Bakery and a Northern Bus Company garage as added sources of jobs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "murton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5437,
+    "place_id": "gn-2759687",
+    "input": {
+      "place": {
+        "place_id": "gn-2759687",
+        "name": "Appingedam",
+        "country": "Netherlands",
+        "subdivision": "Groningen",
+        "lat": 53.32167,
+        "lon": 6.85833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Appingedam",
+          "url": "https://en.wikipedia.org/wiki/Appingedam",
+          "text": "Appingedam (Dutch: [ˌɑpɪŋəˈdɑm] ; Gronings: n Daam [n̩ˈdaːm]) is a city and former municipality in the northeastern Netherlands. Although there is no certainty as to the exact age of Appingedam, historical research demonstrates that the place in which the city would eventually be built had been inhabited for over a millennium. Specifically, the area in which the earliest traces of human settlements have been reported is the Wierde, a quarter located in the northern part of the city centre. Today, a narrow, winding street by the same name runs along the waterfront as a living testimony to the times gone by. The characteristic landmarks of the old Wierde are still recognisable today: the historical East-West Canal, called “Diep,” dug to the south of the Wierde, diked on both sides, still defines the unique layout of the downtown Appingedam.\nLittle is known about the exact age and origin of the name of Appingedam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "appingedam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5438,
+    "place_id": "gn-3020996",
+    "input": {
+      "place": {
+        "place_id": "gn-3020996",
+        "name": "Douarnenez",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.09542,
+        "lon": -4.32904
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Douarnenez",
+          "url": "https://en.wikipedia.org/wiki/Douarnenez",
+          "text": "Douarnenez (Breton pronunciation: [duarˈnẽːnɛs], French: [dwaʁnəne]; meaning douar (land) an enez (the island) or land of the island), is a commune in the French department of Finistère, region of Brittany, northwestern France.\nIt is located at the mouth of the Pouldavid River, an estuary on the southern shore of Douarnenez Bay in the Atlantic Ocean, 25 kilometres (16 mi) north-west of Quimper. The population, 14,068 in 2023, has declined since the mid-20th century because of jobs lost from declines in the fishing industry. But it still has fish canning facilities (sardines and mackerel) although sardine fishing, for which the town became famous, has fallen off in recent years.\nDouarnenez has a growing tourist industry, with numerous visitors attracted annually to its pleasant location and warm climate, and also because of its marinas, maritime museum, regattas and sandy beaches. The island of Tristan off Douarnenez can be reached by foot at low tide."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "douarnenez",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5440,
+    "place_id": "gn-4172383",
+    "input": {
+      "place": {
+        "place_id": "gn-4172383",
+        "name": "Sebring",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.49559,
+        "lon": -81.44091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sebring, Florida",
+          "url": "https://en.wikipedia.org/wiki/Sebring,_Florida",
+          "text": "Sebring ( SEE-bring) is a city in and the county seat of Highlands County, Florida, United States. It is nicknamed \"The City on the Circle\", in reference to Circle Drive, the center of the Sebring Downtown Historic District.  As of 2022 United States Census estimates, the population is 11,379 up from 10,729 at the 2020 census. \nSebring became a popular development and tourist destination of the 1920s, hailed as the \"Coral Gables of Central Florida\". Many grandiose Mediterranean buildings of that time period still exist within the city, the most notable being the Harder Hall Hotel and Resort. The broader Sebring metropolitan area had a population estimate of 105,618 in 2022; the disparity in population between the city proper and the metropolitan area is due to the relatively small size of the annexed area of the city, with most all of the landmass west of Lake Jackson technically in unincorporated Highlands County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "sebring",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5442,
+    "place_id": "gn-5097017",
+    "input": {
+      "place": {
+        "place_id": "gn-5097017",
+        "name": "Cranford",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.65844,
+        "lon": -74.29959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cranford, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Cranford,_New_Jersey",
+          "text": "Cranford is a township in Union County, in the U.S. state of New Jersey, located 18 miles (29 km) southwest of New York City. As of the 2020 United States census, the township's population was 23,847, an increase of 1,222 (+5.4%) from the 2010 census count of 22,625, which in turn reflected an increase of 47 (+0.2%) from the 22,578 counted in the 2000 census.\nNJ Transit rail service is available at the Cranford station, along the Raritan Valley Line, with service to Newark Penn Station and to New York Penn Station in via Midtown Direct. It is part of the New York metropolitan area.\nCranford was incorporated as a township by an act of the New Jersey Legislature on March 14, 1871, from portions of the Townships of Clark, Linden, Springfield Township, Union Township and Westfield. Portions of the township were taken to form Garwood (in 1903) and Kenilworth (in 1907)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "cranford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5445,
+    "place_id": "gn-5194590",
+    "input": {
+      "place": {
+        "place_id": "gn-5194590",
+        "name": "Huntingdon",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.4848,
+        "lon": -78.01028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntingdon, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Huntingdon,_Pennsylvania",
+          "text": "Huntingdon is a borough in and county seat of Huntingdon County, Pennsylvania, United States. It lies along the Juniata River about 32 miles (51 km) east of larger Altoona and 92 miles (148 km) west of the state capital of Harrisburg on the  Susquehanna River. With a population of 6,827 in the 2020 U.S. Decennial Census, it is the largest population center near Raystown Lake, a winding, 28-mile-long (45 km) flood-control reservoir managed by the United States Army Corps of Engineers.\nThe borough is on the main line of the Norfolk Southern freight railway (formerly the longtime Pennsylvania Railroad) in an agricultural and outdoor recreational region with extensive forests and scattered deposits of ganister rock, coal, fire clay, and limestone deposits. Historically, the region surrounding Huntingdon was dotted with iron furnaces and forges, consuming limestone, iron ore and wood (for charcoal production) throughout the 19th century. Dairy farms dominate the local agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "huntingdon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5452,
+    "place_id": "gn-2519217",
+    "input": {
+      "place": {
+        "place_id": "gn-2519217",
+        "name": "Corralejo",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.73079,
+        "lon": -13.86749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corralejo",
+          "url": "https://en.wikipedia.org/wiki/Corralejo",
+          "text": "Corralejo (pronounced [koraˈlexo]) is a town and resort located on the northern tip of Fuerteventura, one of the Canary Islands, facing the smaller islet of Lobos. It is in the municipality of La Oliva. \nIt is surrounded to the north and east by the Atlantic Ocean, by dunes to the south and by arid desert land to the west that leads to the western coast and El Cotillo. Once a traditional fishing village, the town has grown significantly and today is one of the two main tourist towns on the island of Fuerteventura. Thanks to the large expat population, the town has a diverse population that varies from the local Spaniard, to the Italian, Irish, British, German and Finnish people who have settled in the resort.\nThe area has 7 miles (11 km) of fine sand starting 2 miles (3.2 km) outside of Corralejo, alongside some smaller bays across the coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "corralejo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5457,
+    "place_id": "gn-3530955",
+    "input": {
+      "place": {
+        "place_id": "gn-3530955",
+        "name": "Chichihualco",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 17.66015,
+        "lon": -99.67739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chichihualco",
+          "url": "https://en.wikipedia.org/wiki/Chichihualco",
+          "text": "Chichihualco is a city in the south of Mexico. It forms the administrative centre of the municipality of Leonardo Bravo\nIt is located in the centre of the state of Guerrero, about 21 kilometres northwest of the state capital, Chilpancingo.\nAccording to Mexico's Instituto Nacional para el Federalismo y el Desarrollo Municipal (National Institute for Federalism and Municipal Development, INAFED), the city was home to 5,164 men and 5,526 women, a total of 10,690 inhabitants in 2010. It is found at an altitude of 1,141 metres above mean sea level, a latitude of 17°39′28″ north and a longitude of 99°40′35″ west.\nIn the local Nahuatl language, the name literally means 'in the bosom', translated as 'place where they suckle' or 'place of the wet nurses'.\nOne source has it that Maria Fermina Rivera died in action in Chichihualco while fighting alongside Vicente Guerrero in February 1821, although another source disputes this."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "chichihualco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5461,
+    "place_id": "gn-5951289",
+    "input": {
+      "place": {
+        "place_id": "gn-5951289",
+        "name": "Fall River",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 44.81685,
+        "lon": -63.6154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fall River, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/Fall_River,_Nova_Scotia",
+          "text": "Fall River is a suburban community located in Nova Scotia, Canada within the Halifax Regional Municipality. It is located north-northeast of the Bedford Basin, northeast of Bedford and Lower Sackville and north of Waverley.\nFall River's name is derived from a stream running between Miller Lake and Lake Thomas which had a waterfall.  These falls supplied water power for several mills during the 19th century as well as a local electrical utility during the early 20th century.  The waterfall was demolished in the late 1950s as a result of the construction of the Bicentennial Highway leading to Halifax;  the waterfall was located where the 4-lane expressway currently runs up the hill from the crossing of Lake Thomas to the interchange with Highway 118 at Miller Lake.  Hydro-electric power is now generated by a tunnel that carries the water from Miller Lake which once flowed through this stream and down the waterfall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "fall river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fall",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5475,
+    "place_id": "gn-6317272",
+    "input": {
+      "place": {
+        "place_id": "gn-6317272",
+        "name": "Ilha Comprida",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -24.74111,
+        "lon": -47.54
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilha Comprida",
+          "url": "https://en.wikipedia.org/wiki/Ilha_Comprida",
+          "text": "Ilha Comprida (Portuguese for \"Long Island\") is a municipality in the state of São Paulo in Brazil. Stretching southwest along the Atlantic coast of the state, it is coextensive with the barrier island of Ilha Comprida, the longest of its kind in the state (74 kilometres [46 mi]). The municipality was founded in 1993 after the merger of the parts of Ilha Comprida that belonged to the city of Cananéia with the sections of the island that were administered by the city of Iguape.\nThe Ilha Comprida has an average annual temperature of 24 °C. The population is 13,419 (2022) in an area of 196.567km2. The island is covered by the Ilha Comprida Environmental Protection Area, which defines zoning and allowable land use in an effort to reduce environmental damage from human occupation. The municipality contains 55% of the 455-hectare (1,120-acre) Guará Area of Relevant Ecological Interest, created in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "ilha comprida",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ilha",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "comprida",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5476,
+    "place_id": "gn-2142316",
+    "input": {
+      "place": {
+        "place_id": "gn-2142316",
+        "name": "Yeppoon",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -23.12683,
+        "lon": 150.74406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yeppoon",
+          "url": "https://en.wikipedia.org/wiki/Yeppoon",
+          "text": "Yeppoon () is a coastal town and locality in the Shire of Livingstone, Queensland, Australia, situated on the traditional lands of the Darumbal people, who are the Indigenous custodians and Native Title holders of the Rockhampton and Capricorn Coast region. The town name \"Yeppoon\" derives from a Darumbal word yappun, meaning \"place where the waters meet\". Yeppoon is renowned for its beaches, tropical climate, and the islands out on the bay. Located 41 kilometres (25 mi) from the city of Rockhampton, Yeppoon is the seat of the Shire of Livingstone and the principal town on the Capricorn Coast, a string of seaside communities stretching more than 150 kilometres (93 mi) from north to south. The beaches and shallow coves provide a destination both for tourists and retirees settling down in Central Queensland. Offshore, there are 27 islands including Great Keppel Island which is 20 kilometres (12 mi) from Yeppoon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "yeppoon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5478,
+    "place_id": "gn-2184943",
+    "input": {
+      "place": {
+        "place_id": "gn-2184943",
+        "name": "Papatowai",
+        "country": "New Zealand",
+        "subdivision": "Otago",
+        "lat": -46.56069,
+        "lon": 169.47068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Papatowai",
+          "url": "https://en.wikipedia.org/wiki/Papatowai",
+          "text": "Papatowai (Māori: Papatōwai) is a small settlement in the Catlins ward of the Clutha District of the southeastern South Island of New Zealand. The settlement is situated half-way between the cities of Dunedin and Invercargill, on the Pacific coast close to the mouth of the Tahakopa River. There is a permanent population of around 40 people, but with most of the houses in the town being holiday homes (locally known as \"cribs\") the population rises significantly during holiday seasons, particularly around New Year's Day and Easter.\nThe Ministry for Culture and Heritage gives a translation of \"tōwai tree flat\" for Papatōwai.\nPapatowai is surrounded by native podocarp forest and there are numerous walks in the area to waterfalls, and sand beaches in addition to bushwalks. There is also a walk to an archaeological site where it is possible to see middens left by early Māori inhabitants of the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "papatowai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5481,
+    "place_id": "gn-2518842",
+    "input": {
+      "place": {
+        "place_id": "gn-2518842",
+        "name": "Dolores",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.14002,
+        "lon": -0.77088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dolores, Spain",
+          "url": "https://en.wikipedia.org/wiki/Dolores,_Spain",
+          "text": "Dolores (Spanish pronunciation: [doˈloɾes]) is a town located in the comarca of Vega Baja del Segura in southern Alicante province, Spain. The town is in the heart of the Segura huerta (vegetable garden) about 10 km (6.2 mi) from the nearest beaches in La Marina and Guardamar. Dolores is readily accessible from the Autovia del Mediterráneo motorway and a new motorway from Elche, and is about 20 minutes away from the Alicante international airport. The town has a population of 7427, an area of 18.25 km2 (7.05 sq mi), and the average monthly temperature varies between 16 °C (61 °F) in December–January and 28 °C (82 °F) in July–August.\nThe most important monument is the 18th-century church, with sculptures by Salcillo and Roque Lopez. The two most important fiestas in Dolores are the Feria de Agosto (August Fair) in early August; and the Fiesta de la Virgen, in mid-September."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "dolores",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
