@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 1775,
+    "attempt": 1761,
+    "place_id": "gn-1135689",
+    "input": {
+      "place": {
+        "place_id": "gn-1135689",
+        "name": "Kunduz",
+        "country": "Afghanistan",
+        "subdivision": "Kunduz",
+        "lat": 36.72895,
+        "lon": 68.857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kunduz",
+          "url": "https://en.wikipedia.org/wiki/Kunduz",
+          "text": "Kunduz, also written as Qunduz, is a city in northern Afghanistan, serving as the capital of Kunduz Province. It is within the jurisdiction of Kunduz District and has an estimated population of 413,996 people as of September 2025.\nMawlavi Gul Mohammad Elyas is the mayor of the city.\nKunduz has a domestic airport and an industrial park, including a growing number of public parks, markets, hospitals, mosques, universities, guesthouses and restaurants. The Kunduz University is located in the middle part of the city.\nKunduz is in the historical Tokharistan region of Bactria, near the confluence of the Kunduz River with the Khanabad River. The city is linked by a road network with Imam Sahib to the north, Taloqan to the east, Baghlan to the south, Mazar-i-Sharif to the west, and Sher Khan Bandar to the northwest. Many foreign tourists coming from Tajikistan pass through the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "kunduz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1776,
+    "attempt": 1762,
+    "place_id": "gn-1173378",
+    "input": {
+      "place": {
+        "place_id": "gn-1173378",
+        "name": "Kot Addu",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 30.46907,
+        "lon": 70.96699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kot Addu",
+          "url": "https://en.wikipedia.org/wiki/Kot_Addu",
+          "text": "Kot Addu (Urdu: کوٹ ادو) is the capital city of newly created Kot Addu District in the Punjab province of Pakistan. The city is subdivided into five Union Councils and has a population of over 104,000, making it the 70th most populous city in Pakistan. It is located just east of the Indus River, about 68Km from Multan and 20Km from Tonsa Barrage.\n\nKot Addu City attracts a large number of tourists every year, due to the Indus river and public gardens, among other things. The city is served by Kot Addu Junction railway station. The Zip code of Kot Addu is 34050."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kot addu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kot",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "addu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1777,
+    "attempt": 1763,
+    "place_id": "gn-1258932",
+    "input": {
+      "place": {
+        "place_id": "gn-1258932",
+        "name": "Rajamahendravaram",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 17.00517,
+        "lon": 81.77784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rajamahendravaram",
+          "url": "https://en.wikipedia.org/wiki/Rajamahendravaram",
+          "text": "Rajamahendravaram (the city of King Mahendra), also known as Rajahmundry ( RAH-juh-mun-dree), is a city in the Indian state of Andhra Pradesh and the district headquarters of the East Godavari district. It is the seventh most populated city in the state. \nDuring British Rule, the district of Rajahmundry was created in the Madras Presidency in 1823. It was reorganised in 1859 and divided into the Godavari and Krishna districts. Rajahmundry was the headquarters of the Godavari district, which was further divided into East Godavari and West Godavari districts in 1925. It is administered under the Rajahmundry revenue division of the East Godavari district. \nThe city's name was derived from Rajaraja Narendra, a ruler of the Chalukya dynasty in the 11th century, who ruled over the city. In 2015, the city was renamed from Rajahmundry to Rajamahendravaram.\nThe city is known for its floriculture, history, Telugu literature, culture, agriculture, economy, tourism, and heritage. It is known as the \"Cultural Capital of Andhra Pradesh\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "rajamahendravaram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1778,
+    "attempt": 1764,
+    "place_id": "gn-1267076",
+    "input": {
+      "place": {
+        "place_id": "gn-1267076",
+        "name": "Khammam",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 17.24767,
+        "lon": 80.14368
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khammam",
+          "url": "https://en.wikipedia.org/wiki/Khammam",
+          "text": "Khammam  is the city in Khammam district of the Indian state of Telangana. It is the fourth largest city in the state. It is the headquarters of the Khammam district and Khammam mandal also. It is located about 193 kilometres (120 mi) east of the state capital, Hyderabad, 61 kilometres (38 mi) from Suryapet, 120 kilometres (75 mi) from Warangal and also it is located about 121 kilometres (75 mi) North of the Andhra Pradesh state capital, Amaravathi. The river Munneru flows on the western side of the city. As of 2011 census of India, Khammam urban agglomeration has a population of 313,504. However, on 19 October 2012, the civic body of Khammam was upgraded to a municipal corporation. Post- upgradation to corporation, the population of  Khammam was approximated to be 3,07,000. During 2014-2023 under BRS regime Khammam got a major changeover, roads expansion, Medical College, Engineering College, ITHub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "khammam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1779,
+    "attempt": 1765,
+    "place_id": "gn-127319",
+    "input": {
+      "place": {
+        "place_id": "gn-127319",
+        "name": "Khorramshahr",
+        "country": "Iran",
+        "subdivision": "Khuzestan",
+        "lat": 30.44079,
+        "lon": 48.18428
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khorramshahr",
+          "url": "https://en.wikipedia.org/wiki/Khorramshahr",
+          "text": "Khorramshahr (Persian: خرمشهر; [xoræmˈʃæhɾ]) is a city in the Central District of Khorramshahr County, Khuzestan province, Iran, serving as capital of both the county and the district. \nKhorramshahr is an inland port city located approximately 10 kilometres (6.2 mi) north of Abadan. The city extends to the right bank of the Shatt Al Arab waterway near its confluence with the Haffar arm of the Karun river. The city was destroyed in the Iran–Iraq War, with the 1986 census recording a population of zero. Khorramshahr was rebuilt after the war, and more recent censuses show that the population has returned to the pre-war level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "khorramshahr",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1780,
+    "attempt": 1766,
+    "place_id": "gn-1275665",
+    "input": {
+      "place": {
+        "place_id": "gn-1275665",
+        "name": "Bikaner",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 28.01762,
+        "lon": 73.31495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bikaner",
+          "url": "https://en.wikipedia.org/wiki/Bikaner",
+          "text": "Bikaner (IPA: [biːkaːneːɾ] ) is a city in the  Indian state of Rajasthan. It is situated approximately 330 kilometres (205 mi) northwest of the state capital, Jaipur, in the Thar Desert region of western Rajasthan. Bikaner serves as the administrative headquarters of Bikaner District and Bikaner division. Formerly the capital of the princely Bikaner State, the city was founded in 1488 CE by Rao Bika, a Rajput chief of the Rathore dynasty. From its small origins it has developed into the fourth largest city in Rajasthan. The Ganga Canal, completed in 1928, and the Indira Gandhi Canal, completed in 1987, facilitated its development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "bikaner",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1781,
+    "attempt": 1767,
+    "place_id": "gn-13353695",
+    "input": {
+      "place": {
+        "place_id": "gn-13353695",
+        "name": "Chūō",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.67004,
+        "lon": 139.77544
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chūō, Tokyo",
+          "url": "https://en.wikipedia.org/wiki/Chūō,_Tokyo",
+          "text": "Chūō (中央区, Chūō-ku; Japanese pronunciation: [tɕɯː.oː, tɕɯː.oꜜː, tɕɯː.oꜜː.kɯ]) is a special ward in the Tokyo Metropolis in Japan. The ward refers to itself in English as Chūō City. It was formed in 1947 as a merger of Kyōbashi and Nihonbashi wards following Tokyo City's transformation into Tokyo Metropolis.\nChūō-ku, as a combination of Kyōbashi and Nihonbashi, is the core of Shitamachi, the original downtown center of Edo-Tokyo. The name Chūō literally means \"Central Ward,\" and it has historically been Tokyo’s main commercial center. However, since the end of World War II, Shinjuku and Shibuya in the west have risen to challenge that position. This is reflected in the fact that Chūō is located entirely outside the Yamanote Line loop, which is now regarded as the inner core of central Tokyo.\nAmong most known districts in Chūō are the Nihonbashi business district, the Ginza shopping district, and the Tsukiji market district.\nAs of October 1, 2020, the ward has a resident population of 169,179, and a population density of 16,569 persons per km2. The total area is 10.21 km2. However, because of the concentration of businesses, offices and retail space, the daytime population swells to an estimated 650,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "chuo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1782,
+    "attempt": 1768,
+    "place_id": "gn-145459",
+    "input": {
+      "place": {
+        "place_id": "gn-145459",
+        "name": "Abadan",
+        "country": "Iran",
+        "subdivision": "Khuzestan",
+        "lat": 30.3392,
+        "lon": 48.3043
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abadan, Iran",
+          "url": "https://en.wikipedia.org/wiki/Abadan,_Iran",
+          "text": "Abadan (Persian: آبادان; pronounced [ʔɒːbɒːˈdɒːn]) is a city in the Central District of Abadan County, Khuzestan province, Iran, serving as capital of both the county and the district. The city is in the southwest of the county. It lies on Abadan Island (68 km or 42 mi long, 3–19 km or 2–12 miles wide). The island is bounded in the west by the Arvand waterway and to the east by the Bahmanshir outlet of the Karun River (the Arvand Rood), 53 kilometres (33 mi) from the Persian Gulf, near the Iran–Iraq border. Abadan is 140 km from the provincial capital city of Ahvaz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "abadan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1783,
+    "attempt": 1769,
+    "place_id": "gn-1633037",
+    "input": {
+      "place": {
+        "place_id": "gn-1633037",
+        "name": "Palopo",
+        "country": "Indonesia",
+        "subdivision": "South Sulawesi",
+        "lat": -2.9925,
+        "lon": 120.19694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palopo",
+          "url": "https://en.wikipedia.org/wiki/Palopo",
+          "text": "Palopo or Kota Palopo (Palopo city) is a city located in South Sulawesi, Indonesia, and the second-largest city in the province. Until it acquired its city autonomy on 10 April 2002, Palopo was the capital of Luwu Regency. The land area of the city is 273.23 km2, and it had a population of 148,033 at the 2010 Census and 184,681 at the 2020 Census, comprising 92,444 males and 92,237 females. The official estimate as at mid 2022 was 190,867 (comprising 95,562 males and 95,305 females), but the mid 2025 official estimate showed a sizeable return to 184,961 (comprising 92,653 males and 92,308 females)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "palopo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1784,
+    "attempt": 1770,
+    "place_id": "gn-1638063",
+    "input": {
+      "place": {
+        "place_id": "gn-1638063",
+        "name": "Lembang",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.81167,
+        "lon": 107.6175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lembang",
+          "url": "https://en.wikipedia.org/wiki/Lembang",
+          "text": "Lembang is a town and an administrative district (kecamatan) of West Bandung Regency in the province of West Java on Java, Indonesia. The town has about 14,000 inhabitants (as at mid 2024). The population of the Lembang District was 173,350 at the 2010 Census and 197,640 at the 2020 Census; the official estimate as at mid 2024 was 209,084 and the land area was 98.22 km2. \nThe district is sub-divided into sixteen administrative villages (desa), all sharing the post code of 40391.\nLembang is situated between 1,312 and 2,084 metres above sea level. Its highest point is on top of Tangkuban Perahu Mt. The temperature usually ranges between 17 and 24 degrees Celsius.\nLembang means \"dent\" in Sundanese."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "lembang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1785,
+    "attempt": 1771,
+    "place_id": "gn-1725863",
+    "input": {
+      "place": {
+        "place_id": "gn-1725863",
+        "name": "Bayambang",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 15.8127,
+        "lon": 120.4557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayambang",
+          "url": "https://en.wikipedia.org/wiki/Bayambang",
+          "text": "Bayambang, officially the Municipality of Bayambang (Pangasinan: Baley na Bayambang; Ilocano: Ili ti Bayambang; Tagalog: Bayan ng Bayambang), is a municipality in the province of Pangasinan, Philippines. According to the 2024 census, it has a population of 129,506 people.\nBaymbang was previously composed of the municipalities of Bautista, Alcala, Santo Tomas, Rosales, Paniqui, Gerona and Camiling. It was founded in the 16th century by Agalet, an Aeta.\nThe town served as a former seat of the 5th Capital of the Revolutionary Philippine Republic. Bayambang celebrates its Malangsi Fishtival [sic] during the first week of April, locally known as \"Kalutan tan Gayaga ed Dalan\". It is also home to the Pangasinan State University and its Colleges of Nursing and Education."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "bayambang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1786,
+    "attempt": 1772,
+    "place_id": "gn-1785781",
+    "input": {
+      "place": {
+        "place_id": "gn-1785781",
+        "name": "Yulin",
+        "country": "China",
+        "subdivision": "Guangxi",
+        "lat": 22.6305,
+        "lon": 110.14686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yulin, Guangxi",
+          "url": "https://en.wikipedia.org/wiki/Yulin,_Guangxi",
+          "text": "Yulin (Chinese: 玉林; pinyin: Yùlín; lit. 'Jade Forest', 鬱林), alternately romanized as Watlam, is one of the fourteen prefecture-level cities of the Guangxi Zhuang Autonomous Region, People's Republic of China. Its Chinese name was changed in 1956 from the historical name \"鬱林\" (pinyin: Yùlín; lit. 'Dense Forest'), which is homophonous in Standard Mandarin, but different in the local dialect of Yue Chinese; \"鬱\" is [uat˥] while \"玉\" is [ȵok˨]. The former romanization follows the pronunciation of the historical name in Yue Chinese. Its built-up area is made of two urban districts, and Beiliu City was home to 2,438,467 inhabitants as of 2020 census. By the end of 2024, the city's resident population is 5,804,200, including 3,051,10 million in urban areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "yulin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1787,
+    "attempt": 1773,
+    "place_id": "gn-1804651",
+    "input": {
+      "place": {
+        "place_id": "gn-1804651",
+        "name": "Kunming",
+        "country": "China",
+        "subdivision": "Yunnan",
+        "lat": 25.03889,
+        "lon": 102.71833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kunming",
+          "url": "https://en.wikipedia.org/wiki/Kunming",
+          "text": "Kunming is the capital and largest city of the province of Yunnan in China. The political, economic, communications and cultural centre of the province, Kunming is also a major tourism centre in China. It is nicknamed the \"City of Eternal Spring\" for its year-round mild climate. During World War II, Kunming was a Chinese military center and the location of the headquarters for the U.S. Army Forces China-Burma-British Raj. Wujiaba Airport served as the home of the First American Volunteer Group (AVG) of the Republic of China Air Force, nicknamed the Flying Tigers. Kunming was also a transport terminus for the Burma Road.\nKunming is at an altitude of 1,900 metres (6,234 feet) above sea level and a latitude just north of the Tropic of Cancer, and is situated in the middle of the Yunnan–Guizhou Plateau.  Kunming is the fourth most populous city in Western China, after Chongqing, Chengdu, and Xi'an, and the third most populous city in Southwestern China after Chongqing and Chengdu. As of the 2020 census, Kunming had a total population of 8,460,088 inhabitants, of whom 5,604,310 lived in its built-up (or metro) area made of all urban districts except Jinning. At the end of 2024, the resident population of the city was 8.687 million. It is at the northern edge of Dian Lake, surrounded by temples and lakes and karst topography.\nKunming consists of an old, previously walled city, several modern commercial districts, residential zones, and university areas. The city is also one of the major centers for scientific research and education in Southwestern China. As of 2024, it was listed among the top 100 cities in the world by scientific research output. The city has an astronomical observatory, and its institutions of higher learning include Yunnan University, Kunming University of Science and Technology, Yunnan University of Finance and Economics, Kunming Medical University, Yunnan Normal University, Yunnan Agricultural University and Southwest Forestry University. Kunming is also home to the Golden Temple, China's largest bronze temple dating from the Ming dynasty.\nKunming is a major economic center in Western China. The city's economic importance derives from its geographical position, as it shares a border with various Southeast Asian countries, serving them as a transportation hub in Southwest China, linking by rail to Vietnam and Laos, and by road to Myanmar and Thailand. This positioning also makes the city an important commercial center of trade in the region. The city also acts as a gateway to Southeast Asia and South Asia, the Kunming Changshui International Airport is one of the top 50-busiest airports in the world. As of 2026, the city is also home to seven consulates from Southeast Asia and South Asia.\nThe headquarters of many of Yunnan's biggest corporations are based in the city, such as Hongta Group, Yunnan Copper Group, Hongyunhonghe Group, Yunnan Power Grid Co, and Fudian Bank. Kunming also houses some manufacturing, chiefly the processing of copper, as well as various chemicals, machinery, textiles, paper and cement. Kunming has a nearly 2,400-year history, but its modern prosperity began in 1910, when the French built the Kunming–Haiphong railway connecting Yunnan to Vietnam. The city has continued to develop rapidly under China's modernization efforts. Kunming was designated a special tourism center and, as such, has experienced a proliferation of high-rises and luxury hotels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 548
+    },
+    "banned_terms": [
+      {
+        "term": "kunming",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1788,
+    "attempt": 1774,
+    "place_id": "gn-1849814",
+    "input": {
+      "place": {
+        "place_id": "gn-1849814",
+        "name": "Toyota",
+        "country": "Japan",
+        "subdivision": "Aichi",
+        "lat": 35.08333,
+        "lon": 137.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toyota, Aichi",
+          "url": "https://en.wikipedia.org/wiki/Toyota,_Aichi",
+          "text": "Toyota (豊田市, Toyota-shi; pronounced [toꜜjota ɕi]), formerly known as Koromo, is a city in Aichi Prefecture, Japan. As of 1 October 2019, the city had an estimated population of 426,162 and a population density of 464 people per km2. The total area was 918.32 square kilometres (354.57 sq mi). It is located about 50 minutes from Nagoya by way of the Meitetsu Toyota Line.\nSeveral of Toyota Motor Corporation's manufacturing plants, including the Tsutsumi plant, are located there. The longstanding ties between the Toyota Motor Corporation and the town of Toyota, formerly known as Koromo (挙母市, Koromo-shi), gave the town its current name. The city's flag (and seal), is a unicursal hexagram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "toyota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1789,
+    "attempt": 1775,
+    "place_id": "gn-1859642",
+    "input": {
+      "place": {
+        "place_id": "gn-1859642",
+        "name": "Kawasaki",
+        "country": "Japan",
+        "subdivision": "Kanagawa",
+        "lat": 35.52056,
+        "lon": 139.71722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kawasaki, Kanagawa",
+          "url": "https://en.wikipedia.org/wiki/Kawasaki,_Kanagawa",
+          "text": "Kawasaki, officially Kawasaki City, is a city in Kanagawa Prefecture, Japan, one of the main cities of the Greater Tokyo Area and Keihin Industrial Area. It is the second most populated city in Kanagawa Prefecture after Yokohama, and the eighth most populated city in Japan (including the Tokyo Metropolitan Area).\nAs of October 1, 2017, the city has an estimated population of 1,503,690, with 716,470 households, and a population density of 10,000 persons per km2. Kawasaki is the only city in Japan with more than one million inhabitants that is not a prefectural capital. The total area is 142.70 km2 (55.10 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kawasaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1790,
+    "attempt": 1776,
+    "place_id": "gn-1886762",
+    "input": {
+      "place": {
+        "place_id": "gn-1886762",
+        "name": "Zhoushan",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 29.98869,
+        "lon": 122.20488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhoushan",
+          "url": "https://en.wikipedia.org/wiki/Zhoushan",
+          "text": "Zhoushan is an urbanized archipelago with the administrative status of a prefecture-level city in the eastern Chinese province of Zhejiang. It consists of an archipelago of islands at the southern mouth of Hangzhou Bay off the mainland city of Ningbo. The prefecture's city proper is Dinghai on Zhoushan Island, now administered as the prefecture's Dinghai District. During the 2020 census, Zhoushan Prefecture's population was 1,157,817, out of whom 882,932 lived in the builtup (or metro) area consisting of two urban districts of Dinghai and Putuo.\nOn July 8, 2011, the central government approved Zhoushan as Zhoushan Archipelago New Area, a state-level new area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "zhoushan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1791,
+    "attempt": 1777,
+    "place_id": "gn-2035196",
+    "input": {
+      "place": {
+        "place_id": "gn-2035196",
+        "name": "Salaqi",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 40.54139,
+        "lon": 110.51083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salaqi",
+          "url": "https://en.wikipedia.org/wiki/Salaqi",
+          "text": "Salaqi (Mongolian: ᠰᠡᠷᠡᠴᠢ, simplified Chinese: 萨拉齐; traditional Chinese: 薩拉齊; pinyin: Sālāqí) is the central town of Tumed Right Banner. It is under the administration of Baotou City, Inner Mongolia, People's Republic of China. \nHistorically, Salaqi was a Ting(zh) (薩拉齊廳) and then a county (薩拉齊縣), ruling Baotou as a town within. After several alterations in mid-20th century, Tumed Right Banner was established and Salaqi became a town; but the name Salaqi is still widely used by people in Hetao area to refer to the accent, the disposition and other features of Salaqi locals.\nSalaqi East  is also a railway station on the Beijing–Baotou railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "salaqi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1792,
+    "attempt": 1778,
+    "place_id": "gn-2366152",
+    "input": {
+      "place": {
+        "place_id": "gn-2366152",
+        "name": "Kara",
+        "country": "Togo",
+        "subdivision": "Kara",
+        "lat": 9.55111,
+        "lon": 1.18611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kara, Togo",
+          "url": "https://en.wikipedia.org/wiki/Kara,_Togo",
+          "text": "Kara is a city in northern Togo, situated in Kara Region, 413 km north of the capital Lomé. Kara is the capital of the Kara Region and, according to the 2010 census, had a population of 94,878. The Kara River flows through the city and is its main resource of water. The city developed from the 1970s onwards from the village originally known as Lama-Kara. Its growth was largely due to the influence of the previous Togolese head of state Gnassingbé Eyadéma; he was born in the nearby village of Pya and understood Kara's strategic position at a crossroads of two trade routes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1793,
+    "attempt": 1779,
+    "place_id": "gn-2787149",
+    "input": {
+      "place": {
+        "place_id": "gn-2787149",
+        "name": "Schaerbeek",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.86935,
+        "lon": 4.37737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schaerbeek",
+          "url": "https://en.wikipedia.org/wiki/Schaerbeek",
+          "text": "Schaerbeek (French, pronounced [skaʁbek, -bɛk] ; former Dutch spelling) or Schaarbeek (modern Dutch, pronounced [ˈsxaːrbeːk] ) is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the north-eastern part of the region, it is bordered by the City of Brussels, Etterbeek, Evere and Saint-Josse-ten-Noode. Like all municipalities in Brussels, it is officially bilingual (French–Dutch).\nSchaerbeek has a multicultural identity stemming from its diverse population. As of 1 January 2022, the municipality had a population of 130,690 inhabitants. The total area is 7.9 km2 (3.1 sq mi), which gives a population density of 16,540/km2 (42,800/sq mi), twice the average of Brussels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "schaerbeek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1794,
+    "attempt": 1780,
+    "place_id": "gn-3130583",
+    "input": {
+      "place": {
+        "place_id": "gn-3130583",
+        "name": "Alcobendas",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.54746,
+        "lon": -3.64197
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alcobendas",
+          "url": "https://en.wikipedia.org/wiki/Alcobendas",
+          "text": "Alcobendas (Spanish: [alkoˈβendas] ) is a municipality of Spain located in the Community of Madrid.\nIt forms an urban continuum with the neighbouring municipality of San Sebastián de los Reyes. The affluent residential area of La Moraleja lies within the municipal limits, segregated from the main urban nucleus by the A-1 highway. The municipality features the Valdelatas nature reserve and a light industrial estate. It also houses a basketball museum organised by the Pedro Ferrándiz Foundation, where the FIBA Hall of Fame is located.\nOnce a working-class area, Alcobendas has become one of the most economically affluent municipalities in the Madrid metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "alcobendas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
