@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 4536,
+    "attempt": 4501,
+    "place_id": "gn-5188546",
+    "input": {
+      "place": {
+        "place_id": "gn-5188546",
+        "name": "Elkins Park",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.07706,
+        "lon": -75.12684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elkins Park, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Elkins_Park,_Pennsylvania",
+          "text": "Elkins Park is an unincorporated community in Montgomery County, Pennsylvania, United States. It is split between Cheltenham and Abington Townships in the northern suburbs outside of Philadelphia, which it borders along Cheltenham Avenue roughly 7 miles (11 km) from Center City. The community is four station stops from Center City on Septa Regional Rail. It was listed as a census-designated place prior to the 2020 census.\nHistorically, Elkins Park was home to Philadelphia's early 20th century business elite, among them John B. Stetson, John Wanamaker, Henry W. Breyer, Jay Cooke, William Lukens Elkins, and Peter A.B. Widener. In the later 20th century, it was home to Ralph J. Roberts, co-founder of Comcast, as well as to the Gimbel family, the founders of Gimbels, founders of the department store chain.\nToday, it remains home to many gilded age mansions such as Lynnewood Hall, a 110-room, neoclassical estate, the Elkins Estate presently being restored as a hotel-spa, distillery and events center and the Henry West Breyer Sr. House, the former residence of the ice cream magnate which now serves as the Cheltenham Township Municipal building.\nIn 2018, New York Magazine described Elkins Park as \"an old, elegant neighborhood of close-clustered homes\". It is notable for its varied architectural styles (among them: Modern, American colonial and Dutch colonial, Queen Anne, English Cottage and Tudor) its wealth of homes designed by renowned 19th and 20th century architects such as Horace Trumbauer, Louis Kahn and Robert A.M. Stern and its diversity of religious institutions. With six synagogues it also makes up the foundation of the \"Old York Road Corridor\" of the Philadelphia area Jewish community, supported by the approximately 25,000 Jews in the Cheltenham-Jenkintown-Abington region. Seasonally Elkins Park hosts a variety of religious and cultural festivals such as the \"Taste of Greece\" food festival, the Romanian food festival, the Serbian food festival, various Jewish festivals such as a multi-congregation Purim celebration, and arts festivals like \"Arts in the Park\".\nThough distinct communities, the neighborhoods of Melrose Park and historic La Mott share a postal code with Elkins Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 343
+    },
+    "banned_terms": [
+      {
+        "term": "elkins park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "elkins",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4537,
+    "attempt": 4502,
+    "place_id": "gn-5975503",
+    "input": {
+      "place": {
+        "place_id": "gn-5975503",
+        "name": "Hinton",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.40009,
+        "lon": -117.58567
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hinton, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Hinton,_Alberta",
+          "text": "Hinton is a town in the foothills of Alberta, Canada, with a population of 9,817. It is in Yellowhead County, 81 km (50 mi) northeast of Jasper and about 284 km (176 mi) west of Alberta's capital city, Edmonton, at the intersection of the Yellowhead and Bighorn Highways. Situated on the south bank of the Athabasca River, Hinton is on Treaty 6 territory.\nThe Town of Hinton is named after its railway station, which in turn was named after William Hinton, a manager for the Grand Trunk Pacific Railway at the time it was built, in 1911. The area has been on Indigenous travel routes for thousands of years, and a fur trade route beginning in 1810. Its first homesteads were established at the end of the 19th Century. Aside from a coal boom in the 1930s, the population around the Hinton station remained low until 1956 when Northwest Pulp and Power built a pulp mill. The new town, with a population over 3,500, was incorporated in 1958."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "hinton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4538,
+    "attempt": 4503,
+    "place_id": "gn-6232302",
+    "input": {
+      "place": {
+        "place_id": "gn-6232302",
+        "name": "Glen Innes",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8682,
+        "lon": 174.86019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glen Innes, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Glen_Innes,_New_Zealand",
+          "text": "Glen Innes is a suburb in East Auckland, New Zealand, located nine kilometres to the east of the city centre, close to the waters of the Tāmaki River estuary.\nGlen Innes was named after a large farm owned by William Innes Taylor in the area. There were four Taylor brothers in Auckland, the sons of a British man who had had a military career in India. Three of the brothers had farms in this area and built houses;  William Innes Taylor at Glen Innes, Richard James Taylor at Glendowie and Charles John Taylor at Glen Orchard (now Saint Heliers). Their brother Allan Kerr Taylor had a farm estate in Mount Albert, whose house was called Alberton.\nGlen Innes is a low-income, working class area with around 1,500 state houses. In an effort to improve the quality of state housing in Glen Innes, the government introduced \"Talbot Park\", an area of higher density housing, consisting of mostly apartment-style housing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "glen innes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "glen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "innes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4539,
+    "attempt": 4504,
+    "place_id": "gn-8435738",
+    "input": {
+      "place": {
+        "place_id": "gn-8435738",
+        "name": "Haabersti",
+        "country": "Estonia",
+        "subdivision": "Harjumaa",
+        "lat": 59.42334,
+        "lon": 24.64654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haabersti",
+          "url": "https://en.wikipedia.org/wiki/Haabersti",
+          "text": "Haabersti (German: Habers) is one of the 8 administrative districts (Estonian: linnaosa) of Tallinn, the capital of Estonia.\nHaabersti is divided into 12 subdistricts (Estonian: asum): Astangu, Haabersti, Kakumäe, Mustjõe, Mäeküla, Õismäe, Pikaliiva, Rocca al Mare, Tiskre, Veskimetsa, Vismeistri and Väike-Õismäe.\nThe most populous part of the district is Väike-Õismäe, a residential area consisting of big panel houses which were mostly built in the 1970s. Lake Harku and an extensive beach area at Kakumäe and the Kopli Bay lie within the boundaries of the district. Since most of the territory has not been previously used for building, new areas with small residential buildings have developed in the last two decades.\nHaabersti is home to the Estonian Open Air Museum, Saku Suurhall, Tallinn Zoo, and Rocca al Mare Shopping Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "haabersti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4540,
+    "attempt": 4505,
+    "place_id": "gn-8532041",
+    "input": {
+      "place": {
+        "place_id": "gn-8532041",
+        "name": "Mission Hill",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.33437,
+        "lon": -71.10845
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mission Hill, Boston",
+          "url": "https://en.wikipedia.org/wiki/Mission_Hill,_Boston",
+          "text": "Mission Hill is a 3⁄4 square mile (2 square km), primarily residential neighborhood of Boston, bordered by Roxbury, Jamaica Plain and Fenway-Kenmore and the town of Brookline. The neighborhood has two main streets, namely Tremont Street and Huntington Avenue. It is served by several stations on the MBTA's Green Line E branch, as well as Roxbury Crossing station on the Orange Line.\nMission Hill is home to several hospitals and universities, including Brigham and Women's Hospital and New England Baptist Hospital. First settled in the 17th century, the neighborhood is known for its brick row houses and triple decker homes of the late 19th century. It is also home to several community centers, several neighborhood groups, one branch of the Boston Public Library, one high school, and one newspaper.\nThe neighborhood's population was estimated at 15,883 in 2011. Of these 42.7% are white, 18.0% are black, 17.5% are Hispanic, 14.1% are Asian, 1.2% are multiracial, and 1.4% identify as \"Other\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "mission hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mission",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4541,
+    "attempt": 4506,
+    "place_id": "gn-11551042",
+    "input": {
+      "place": {
+        "place_id": "gn-11551042",
+        "name": "Crofton Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.45147,
+        "lon": -0.03438
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crofton Park",
+          "url": "https://en.wikipedia.org/wiki/Crofton_Park",
+          "text": "Crofton Park is a predominantly residential suburb in the London Borough of Lewisham.\nIt is the original site of the former agricultural hamlet of Brockley. It is located 5.3 miles (8.5 km) south east of Charing Cross, and is south of Brockley and north of Honor Oak. Major points of interest include the Rivoli Ballroom, the Brockley Jack Theatre and the Arts and Crafts Gothic church of St Hilda.\nCrofton Park Ward is bordered by Brockley and Ladywell Cemeteries to the north, and Garthorne Road Nature Reserve in the west with the London to Brighton railway running along the western boundary of the ward and a section of Ladywell Fields to the south east. The area also offers easy access to South East London Green Chain of walks. Nearby, between Honor Oak and Catford, is Blythe Hill Fields, one of a number of hills in south east London and which provide good views of Canary Wharf and the City of London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "crofton park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "crofton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4542,
+    "attempt": 4507,
+    "place_id": "gn-1255551",
+    "input": {
+      "place": {
+        "place_id": "gn-1255551",
+        "name": "Suket",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 24.64609,
+        "lon": 76.0417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suket",
+          "url": "https://en.wikipedia.org/wiki/Suket",
+          "text": "Suket is a census town, near the city of Kota in Kota district in the Indian state of Rajasthan. It is well known for mining of Kota Stone a yellow or green limestone.  Suket lies on the bank of the Ahu river, a tributary of the river Chambal.\nThe town is also known for its local food culture, including the popularity of Hina Khan's cloud kitchen, which has gained recognition among residents for its non-vegetarian cuisine. The kitchen is especially known for dishes such as pav kebab, biryani, chicken chilli, and fried chicken, which are widely appreciated in the local community. Over time, it has become a notable part of the town's contemporary food scene and contributes to its growing reputation for quality street-style and home-style food offerings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "suket",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4543,
+    "attempt": 4508,
+    "place_id": "gn-1696942",
+    "input": {
+      "place": {
+        "place_id": "gn-1696942",
+        "name": "Oton",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 10.69306,
+        "lon": 122.47361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oton",
+          "url": "https://en.wikipedia.org/wiki/Oton",
+          "text": "Oton, officially the Municipality of Oton ([oˈton]; Kinaray-a: Banwa kang Oton, Hiligaynon: Banwa sang Oton, Tagalog: Bayan ng Oton), is a municipality in the province of Iloilo, Philippines. According to the 2024 census, it has a population of 99,920 people, making it as the most populous town in the province and the entire Panay island. Oton is 11 kilometres (6.8 mi) west of Iloilo City and is part of the Metro Iloilo–Guimaras area.\nThe town is the second oldest Spanish settlement in the Philippines after Cebu. It was founded in 1572 and later became the capital of the islands of Panay, Guimaras, Negros, Tablas, Sibuyan, and Romblon. Oton used to be the home of the gigantic-megalithic Old Oton Church, the grandest of all church complexes in the Visayas. The church and convent were damaged in 1948 and later demolished and replaced by an inferior structure, leading to the town's decline in religious importance. There have been calls for the full authentic restoration of the Old Oton Church Complex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "oton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4544,
+    "attempt": 4509,
+    "place_id": "gn-2172289",
+    "input": {
+      "place": {
+        "place_id": "gn-2172289",
+        "name": "Carlton North",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.78818,
+        "lon": 144.97014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carlton North",
+          "url": "https://en.wikipedia.org/wiki/Carlton_North",
+          "text": "Carlton North is an inner-city suburb in Melbourne, Victoria, Australia, 4 km (2.5 mi) north of Melbourne's Central Business District, located within the Cities of Melbourne and Yarra local government areas. Carlton North recorded a population of 6,177 at the 2021 census.\nThe suburb is bordered by Princes Street and Cemetery Road to the south, Royal Parade to the west, Nicholson Street to the east and Park Street to the north. Carlton North is home to the Melbourne General Cemetery and the Princes Park, which contains the Princes Park stadium.\nIts main commercial area is along Rathdowne Street, which has numerous cafés, restaurants, small fashion boutiques, bookshops and other businesses.\nToday, Carlton North, like other inner-northern suburbs of Melbourne, contains a mixture of white-collar professionals, bureaucrats and academics. The area has become more gentrified than Fitzroy North, Brunswick or Collingwood, resulting in significantly higher median property prices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "carlton north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carlton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4545,
+    "attempt": 4510,
+    "place_id": "gn-2422383",
+    "input": {
+      "place": {
+        "place_id": "gn-2422383",
+        "name": "Dalaba",
+        "country": "Guinea",
+        "subdivision": "Mamou Region",
+        "lat": 10.69249,
+        "lon": -12.24967
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalaba",
+          "url": "https://en.wikipedia.org/wiki/Dalaba",
+          "text": "Dalaba (Pular : 𞤁𞤢𞤤𞤢𞤦𞤢𞥄) is a town and sub-prefecture in the Dalaba Prefecture in the Mamou Region of Guinea.\nIt was once home to a sanatorium, and to Miriam Makeba, who last visited the town in 1988, when she came to see her niece, N'Tombi Makeba, who lived in Miriam's house (a round building dating to the French colonial period, but using the same form as traditional homes in the region) for a number of years in the 1980s. The town is also known for its local strawberries.\nThe town of Dalaba is the highest (in altitude) town in Guinea. It is approximately 200 km by air from the capital Conakry and about 280 km by road. The inhabitants of Dalaba are mostly Fula (French: Peul; Fula: Fulɓe).\nThe market day in Dalaba is Sunday.\nThe women of Dalaba dye cotton damask fabric a rich-hued indigo in detailed tie-dyed patterns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "dalaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4546,
+    "attempt": 4511,
+    "place_id": "gn-2867542",
+    "input": {
+      "place": {
+        "place_id": "gn-2867542",
+        "name": "Munster",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.98538,
+        "lon": 10.08993
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Munster, Lower Saxony",
+          "url": "https://en.wikipedia.org/wiki/Munster,_Lower_Saxony",
+          "text": "Munster (German pronunciation: [ˈmʊnstɐ] ; West Low German: Munste), also called Munster (Örtze) or formerly Munsterlager, is a small town in the district of Heidekreis, in Lower Saxony, Germany almost equidistant from Hamburg and Hanover. The town is home to the German Army's largest garrison and is situated between the two training areas of Munster North and Munster South. It is also the fourth largest garrison in the German Armed Forces. The German Chemical Defence Research Establishment (Wehrwissenschaftliches Institut für Schutztechnologien – ABC-Schutz) and the Society for the disposal of chemical warfare agents and old armaments GmbH (Ltd.) (GEKA) are located in Munster.\nSoldiers and other government employees make up the majority of its population, and the surrounding military zones restrict the town's growth, retaining its rural character."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "munster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4547,
+    "attempt": 4512,
+    "place_id": "gn-3849516",
+    "input": {
+      "place": {
+        "place_id": "gn-3849516",
+        "name": "La Paz",
+        "country": "Argentina",
+        "subdivision": "Mendoza",
+        "lat": -33.4617,
+        "lon": -67.55228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Paz, Mendoza",
+          "url": "https://en.wikipedia.org/wiki/La_Paz,_Mendoza",
+          "text": "La Paz is a department in the province of Mendoza, Argentina, headquartered in the town of the same name, located 145 km (90 mi) from the provincial capital. It limits to the north with the Lavalle department, to the south with San Rafael, to the west with Santa Rosa and to the east with the province of San Luis.\nThe Department of La Paz is a strategic and fundamental site of Mercosur, as its territory is completely crossed by National Route 7 from East to West and by National Route 146. These two roads communicate the region with the rest of the country and are key in the integration of the Southern Common Market. It is the main entrance to the Province of Mendoza, through the Desaguadero Arch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4548,
+    "attempt": 4513,
+    "place_id": "gn-3853350",
+    "input": {
+      "place": {
+        "place_id": "gn-3853350",
+        "name": "Junín de los Andes",
+        "country": "Argentina",
+        "subdivision": "Neuquen",
+        "lat": -39.94931,
+        "lon": -71.07543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Junín de los Andes",
+          "url": "https://en.wikipedia.org/wiki/Jun%C3%ADn_de_los_Andes",
+          "text": "Junín de los Andes is a first category municipality and administrative center of the Huiliches Department  in the province of Neuquén, Argentina. It is located in the south of the province, by the Chimehuin River, on National Route 40, about 35 km (22 mi) north of San Martín de los Andes and 17 km (11 mi) from the Chapelco Airport, which services the area.\nFounded in 1883 as a fortress during the Conquest of the Desert, it is the oldest town in the province. It developed as a cattle border town. A mixture of the native Mapuche people's and the Argentine pioneers' influence can be seen in the local culture. Over the years, it became a tourism center near the Lanín National Park and the surrounding Andean lakes. In spring and summer, it is a common place for birdwatching, fishing and other outdoor activities, being considered Argentina's national trout fishing capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "junin de los andes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "junin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4549,
+    "attempt": 4514,
+    "place_id": "gn-3875367",
+    "input": {
+      "place": {
+        "place_id": "gn-3875367",
+        "name": "Porvenir",
+        "country": "Chile",
+        "subdivision": "Region of Magallanes",
+        "lat": -53.296,
+        "lon": -70.36629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porvenir, Chile",
+          "url": "https://en.wikipedia.org/wiki/Porvenir,_Chile",
+          "text": "Porvenir is the capital of both the homonymous commune and the Chilean Province of Tierra del Fuego of the Magallanes y la Antártica Chilena Region. It is one of Chile's southernmost towns, and has 4,734 inhabitants, including several thousand soldiers. It is the largest settlement in the Chilean half of Isla Grande de Tierra del Fuego.\nPorvenir (Spanish for \"hereafter\" – literally \"yet to come\") was founded in 1883 by immigrants from Croatia and Chiloé in connection to the gold mining that preceded the larger Tierra del Fuego gold rush that started in 1884.\nThe main sources of income are sheep farming and small-scale fishing (wrecks in Porvenir bay prevent larger vessels from mooring). In addition there is a regiment of the Chilean army and a high-security prison.  An abattoir operates for only short periods of the year.\nSome gold deposits remain and are commercially mined. Porvenir also gives access to Cerro Sombrero, an oil town, 125 km (78 mi) north-east of Porvenir."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "porvenir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4550,
+    "attempt": 4515,
+    "place_id": "gn-5219843",
+    "input": {
+      "place": {
+        "place_id": "gn-5219843",
+        "name": "Wissinoming",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.02233,
+        "lon": -75.06323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wissinoming, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Wissinoming,_Philadelphia",
+          "text": "Wissinoming is a neighborhood in the Near Northeast section of Philadelphia, United States. It was the site of locomotive builder Matthias Baldwin's estate \"Wissinoming\", which was located near Tacony and Van Kirk Streets. The current Wissinoming is bordered by Mayfair on the west and Tacony on the north, Bridesburg on the south (below Bridge Street), I-95 and the Delaware River on the east, and Frankford on the southwest (below Bridge Street). Wissinoming has two ZIP codes: 19124 and 19135. Physical boundaries are: Levick Street on the north, Bridge Street on the south, I-95 and the Delaware River on the east, and Frankford Avenue on the west.\nWissinoming Creek, buried in the 1930s, drained a watershed through Wissinoming that included the main stream and another tributary, Little Wissinoming Creek. The name derives its name from a Lenni Lenape term meaning “where the grapes grow”."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "wissinoming",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4551,
+    "attempt": 4516,
+    "place_id": "gn-553099",
+    "input": {
+      "place": {
+        "place_id": "gn-553099",
+        "name": "Kantemirovka",
+        "country": "Russia",
+        "subdivision": "Voronezh Oblast",
+        "lat": 49.70437,
+        "lon": 39.85831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kantemirovka",
+          "url": "https://en.wikipedia.org/wiki/Kantemirovka",
+          "text": "Kantemirovka (Russian: Кантемировка; earlier Konstantinovka, Russian: Константиновка) is an urban locality (an urban-type settlement) in Kantemirovsky District of Voronezh Oblast, Russia. Population: 10,715 (2021 census); 11,943 (2010 census); 12,949 (2002 census); 13,465 (1989 Soviet census).\nIt was founded in the 18th century, and is named after its landowners Constantin Cantemir and his son Dimitrie Cantemir, members of the former ruling family of Moldavia. They sided with Peter the Great's army to free their land from the Ottoman Empire, and when the Russian side lost, moved to Russia and were included in Russian nobility. Dimitrie was a philosopher and writer, as well as a musician, and his son Antioch a prominent Russian author. In the 19th century the village was the center of Konstantinovskaya volost, Bogucharsky Uyezd, Voronezh Governorate.\nIn 1942, during World War II, there was heavy fighting for Kantemirovka's railway station. Kantemirovka was under German occupation from 10 July 1942 until 19 December 1942,  when Red Army tank units of the Southwestern Front finally freed it from German troops. In honour of this victory, the derivative adjective name Kantemirovskaya was awarded to the 4th Guards Tank Division, and 10 years later a street in Leningrad (now Saint Petersburg) was renamed after the victory; in Moscow a  street was named after the division, and a metro station after the street; in Leningrad its street gave name to a large bridge built in 1979–82 at its western end, and in the 21st century, Saint Petersburg planned to build a station of its metro Ring Line on the street near the bridge named Kantemirovskaya."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "kantemirovka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4552,
+    "attempt": 4517,
+    "place_id": "gn-6137579",
+    "input": {
+      "place": {
+        "place_id": "gn-6137579",
+        "name": "Saint-Charles-Borromée",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.05007,
+        "lon": -73.46586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Charles-Borromée",
+          "url": "https://en.wikipedia.org/wiki/Saint-Charles-Borrom%C3%A9e",
+          "text": "Saint-Charles-Borromée (French pronunciation: [sɛ̃ ʃaʁl bɔʁɔme]) (2021 Population 15,285) is a city in southwest-central Quebec, Canada, on the l'Assomption River. In Joliette Regional County Municipality, Saint-Charles-Borromée has the Maison Antoine-Lacombe, a heritage home that hosts many exhibits throughout the year. The town is also home to the Centre Saint-Jean-Bosco, which annually hosts the Mémoires et Racines Festival of folk music from various countries and Quebec.\nThe town takes its name from its original Roman Catholic parish, Saint-Charles-Borromée, which was canonically established in 1683. The parish, in turn, is named after the French form of the name of an Italian Roman Catholic prelate, Charles Borromeo (1538–1584). He was the archbishop of Milan, founded a Roman Catholic order, the Oblates, and became a canonised saint in the Roman Catholic calendar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "saint charles borromee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "charles",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "borromee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4553,
+    "attempt": 4518,
+    "place_id": "gn-6231811",
+    "input": {
+      "place": {
+        "place_id": "gn-6231811",
+        "name": "Forrest Hill",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.76447,
+        "lon": 174.74773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forrest Hill, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Forrest_Hill,_New_Zealand",
+          "text": "Forrest Hill is a suburb located on the North Shore of Auckland, New Zealand.\nForrest Hill is under the local governance of Auckland Council. It was previously governed by the North Shore City Council, which amalgamated into Auckland Council on 1 November 2010.\nForrest Hill Road and (ultimately) the whole suburb of Forrest Hill is named after Lt. Hugh Alexander Forrest, born in Wellington on 30 May 1893, who was killed in action on 12 October 1917, in the First Battle of Passchendaele during World War I. The Takapuna Borough Council renamed Whites Hill Road in his honour at a council meeting on 22 October 1919, and the entire area was named after the road about five decades later. Northern Forrest Hill is also known as Crown Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "forrest hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "forrest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4554,
+    "attempt": 4519,
+    "place_id": "gn-994432",
+    "input": {
+      "place": {
+        "place_id": "gn-994432",
+        "name": "Itsoseng",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -26.08159,
+        "lon": 25.88124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itsoseng",
+          "url": "https://en.wikipedia.org/wiki/Itsoseng",
+          "text": "Itsoseng is a township in the Ngaka Modiri Molema District Municipality in the North West province of South Africa.\nThe township was established in 1963 on the farm De Hoop as a black township, and became part of Bophuthatswana in 1977. At that time, it was then renamed from De Hoop to Itsoseng.\nItsoseng was founded from Phase 1 whereby in those years there was a slogan made of poverty \" pampiri tshwara tshwara, ngwana nnyeee mala korrrrr\" in simple meaning referring to the peace and quietness of the place build on poverty. The developments started happening and the Phases increased until Phase 3.\nItsoseng was also known as \"Mooi Doorpie\" meaning beautiful town, the residents then converted this Afrikaans word to the Setswana word Tlebebe meaning luxury. Before Bophuthatswana uprising Itsoseng was providing a good service to its population and neighbouring villages like Bodibe, Sheila, Springbokpan, Meetmekaar, Matile, Uitkyk and Mooifontein just to name a few."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "itsoseng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4555,
+    "attempt": 4520,
+    "place_id": "gn-2343057",
+    "input": {
+      "place": {
+        "place_id": "gn-2343057",
+        "name": "Etinan",
+        "country": "Nigeria",
+        "subdivision": "Akwa Ibom State",
+        "lat": 4.84262,
+        "lon": 7.85252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Etinan",
+          "url": "https://en.wikipedia.org/wiki/Etinan",
+          "text": "Etinan  is a town located within the South South part of Nigeria and constitutes one of the Local Government Areas in the oil rich Akwa Ibom State. Known for its agricultural and arts craft products, the area forms one of the most peaceful locations in the West African State of Nigeria.\nEtinan is also home to the famous Peacock Paints Industries and NIFOR zonal office.\nWithin Etinan LGA, is the village of Mbioto, home town of the former Akwa Ibom state governor Obong Akpan Isemin, the village of Ikot Udo Abia, which was part of the route of the African slave trade. Ekpene Obom is a village in Etinan where Leprosy Hospital, Nigeria is located.\nAkwa Ibom State College Of Health Technology, is also located in Etinan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "etinan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

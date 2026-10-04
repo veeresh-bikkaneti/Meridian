@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 4436,
+    "attempt": 4401,
+    "place_id": "gn-4194111",
+    "input": {
+      "place": {
+        "place_id": "gn-4194111",
+        "name": "Fair Oaks",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.91649,
+        "lon": -84.54465
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fair Oaks, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Fair_Oaks,_Georgia",
+          "text": "Fair Oaks is an unincorporated community and census-designated place (CDP) in Cobb County, Georgia, United States. The population was 9,028 at the 2020 census.\nFair Oaks lies just outside the city limits of Smyrna and Marietta, and the area uses \"Smyrna\" or \"Marietta\" for its mailing addresses.\nThe area was named for its many mature native oak trees. This, however, is threatened by nearby Dobbins Air Reserve Base and new Federal Aviation Administration regulations regarding flight paths for takeoff and landing. In 2005, the lower house of the Georgia General Assembly passed a resolution in support of the community, which was built in the early 20th century, well before the military base.[1] Fair Oaks Is one of the most Hispanic areas in All of Atlanta Metro with almost 60% of its inhabitants being of Hispanic race."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "fair oaks",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fair",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oaks",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4437,
+    "attempt": 4402,
+    "place_id": "gn-4485272",
+    "input": {
+      "place": {
+        "place_id": "gn-4485272",
+        "name": "Pinehurst",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.19543,
+        "lon": -79.46948
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pinehurst, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Pinehurst,_North_Carolina",
+          "text": "Pinehurst, officially The Village of Pinehurst, is a village in Moore County, North Carolina, United States. As of the 2020 census, the population was 17,581, up from 13,124 in 2010. \"Pinehurst\" refers to both the village and the Pinehurst Resort, a golf resort, which has hosted multiple U.S. Open championships in the sport. A large portion of the central village, including the resort complexes, is a National Historic Landmark District, designated in 1996 for its landscape design by Frederick Law Olmsted and its significance in the history of golf in the United States. Pinehurst has been designated as the \"Home of American Golf\" by the US Golf Association and by the state of North Carolina. The surrounding area is known for its strong equestrian community, including the former Stoneybrook Steeplechase, and the current Pinehurst Harness Track. Fox hunting is also a common sport in the area.\nThe Pinehurst Resort is one of three designated anchor sites for the men's US Open in Golf. Since 1999, the resort has hosted the event four times, most recently in 2024. The US Open will return to Pinehurst in 2029, 2035, 2041, and 2047.\nGolf House Pinehurst, which opened in 2024, hosts the World Golf Hall of Fame. In addition to the Pinehurst Resort, the village is home to the Country Club of North Carolina. In the immediate area surrounding Pinehurst, there are more than 40 other golf courses, including the Pine Needles Lodge and Golf Club in the adjacent town of Southern Pines, which itself has hosted the U.S. Open tournament in women's golf four times.\nFor several years in the late 2010s-early 2020s, the Pinehurst-Southern Pines area was continuously ranked by POLICOM as the best micropolitan area to live in North Carolina, and a top ten micropolitan area nationwide. Contributing factors included the quality of local amenities, as well as the strong medical and golf tourism industries. As of July 2023, Pinehurst and Southern Pines were re-designated as the Pinehurst-Southern Pines Metropolitan Statistical Area by the Office of Management and Budget."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 339
+    },
+    "banned_terms": [
+      {
+        "term": "pinehurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4438,
+    "attempt": 4403,
+    "place_id": "gn-4504186",
+    "input": {
+      "place": {
+        "place_id": "gn-4504186",
+        "name": "Somers Point",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.31762,
+        "lon": -74.5946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Somers Point, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Somers_Point,_New_Jersey",
+          "text": "Somers Point is a city situated on the Jersey Shore that is the oldest settlement in Atlantic County, in the U.S. state of New Jersey. It was settled by Europeans in 1693 and was incorporated as a borough in 1886. Somers Point was incorporated as a city in 1902. The city is located in eastern Atlantic County, southwest of Atlantic City, in the South Jersey region of the state.\nAs of the 2020 United States census, the city's population was 10,469, a decrease of 326 (−3.0%) from the 2010 census count of 10,795, which in turn reflected a decline of 819 (−7.1%) from the 11,614 counted in the 2000 census. Somers Point and all of Atlantic County lie within the Atlantic City-Hammonton metropolitan statistical area, which in turn constitutes part of the Philadelphia-Reading-Camden combined statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "somers point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "somers",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4439,
+    "attempt": 4404,
+    "place_id": "gn-5103159",
+    "input": {
+      "place": {
+        "place_id": "gn-5103159",
+        "name": "Red Bank",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.34705,
+        "lon": -74.06431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Red Bank, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Red_Bank,_New_Jersey",
+          "text": "Red Bank is a borough in Monmouth County, in the U.S. state of New Jersey. Incorporated in 1908, the community is on the Navesink River, the area's original transportation route to the Atlantic Ocean and to other ports. Red Bank is in the New York metropolitan area and is a commuter town of New York City. As of the 2020 United States census, the borough's population was 12,936, its highest decennial census count ever and an increase of 730 (+6.0%) from the 2010 census count of 12,206, which in turn had reflected an increase of 362 (+3.1%) from the 11,844 counted at the 2000 census. In the 2020 census, Red Bank was the fourth-most densely populated municipality in Monmouth County.\nRed Bank was formed as a town on March 17, 1870, from parts of Shrewsbury Township. On February 14, 1879, Red Bank became Shrewsbury City, part of Shrewsbury Township; this lasted until May 15, 1879, when Red Bank regained its independence. On March 10, 1908, Red Bank was formed as a borough by an act of the New Jersey Legislature and was set off from Shrewsbury Township. The borough was named for the red soil along the Navesink River.\nDowntown Red Bank is notable for its many local and well-known businesses including Garmany, Urban Outfitters, and Tiffany & Co. on and around Broad Street. Many annual events happen throughout the year, including the International Beer, Wine & Food Festival, a long-running sidewalk sale, a farmers' market, an indie film festival, the Red Bank Guinness Oyster Festival, a Halloween parade, and a holiday town lighting."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "red bank",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "red",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bank",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4440,
+    "attempt": 4405,
+    "place_id": "gn-5116495",
+    "input": {
+      "place": {
+        "place_id": "gn-5116495",
+        "name": "Elmhurst",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.73649,
+        "lon": -73.87791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elmhurst, Queens",
+          "url": "https://en.wikipedia.org/wiki/Elmhurst,_Queens",
+          "text": "Elmhurst (formerly Newtown) is a neighborhood in the borough of Queens in New York City. It is bounded by Roosevelt Avenue on the north; the Long Island Expressway on the south; Junction Boulevard on the east; and the New York Connecting Railroad on the west.\nThe village, originally named Middleburgh, was established in 1652 by English Puritans, approximately 7 miles (11 km) from New Amsterdam. When the British took over New Netherland in 1664, they renamed it New Town, which was eventually simplified to Newtown. It remained a rural community until the late 1890s, when it was renamed Elmhurst and became part of the City of Greater New York. Elmhurst became heavily developed with residential and commercial structures in the early 20th century, and many immigrants started moving in during the latter part of the century.\nElmhurst is located in Queens Community District 4 and its ZIP Code is 11373. It is patrolled by the New York City Police Department's 110th Precinct. Politically, Elmhurst is represented by the New York City Council's 25th District and small parts of the 21st, 24th, and 29th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "elmhurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4441,
+    "attempt": 4406,
+    "place_id": "gn-12719438",
+    "input": {
+      "place": {
+        "place_id": "gn-12719438",
+        "name": "Braemar Hill",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Eastern District",
+        "lat": 22.28282,
+        "lon": 114.20034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braemar Hill",
+          "url": "https://en.wikipedia.org/wiki/Braemar_Hill",
+          "text": "Braemar Hill (Chinese: 寶馬山; Jyutping: bou2 maa5 saan1; Cantonese Yale: bóumáhsān) is a hill with a height of 200 metres (660 ft) south of Braemar Point on Hong Kong Island, Hong Kong. The hill was likely named after the Scottish village of Braemar by British officials.\nContrary to popular belief, the peak of Braemar Hill lies on the eastern end of Braemar Hill Road instead of the western end, where the ascent towards Red Incense Summit is noticeably steeper. Hikers often misidentify Red Incense Summit and nearby hilltops as the peak of Braemar Hill.\nThe north and western sides of this hill are largely residential, consisting primarily of private upmarket real estate. Because of its convenient location and high real estate prices, Braemar Hill is considered one of the more affluent neighbourhoods in the territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "braemar hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "braemar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4442,
+    "attempt": 4407,
+    "place_id": "gn-2265552",
+    "input": {
+      "place": {
+        "place_id": "gn-2265552",
+        "name": "Nazaré",
+        "country": "Portugal",
+        "subdivision": "Leiria",
+        "lat": 39.60289,
+        "lon": -9.06836
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nazaré, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Nazar%C3%A9,_Portugal",
+          "text": "Nazaré (Portuguese pronunciation: [nɐzɐˈɾɛ] ) is a Portuguese resort town and municipality located in the Oeste region, in the historical province of Estremadura, and in the Leiria District. The municipality has a population of 14,889 in an area of 82.43 km2, while the town itself has around 10,000 inhabitants.\nNazaré is one of the most popular seaside resorts in the Silver Coast (Costa de Prata). It is famous for its huge waves and surfing competitions. As of 2026, the record for the tallest wave ever surfed stands at a wave measured at 26.2 m (86 ft) at Nazaré in 2020, ridden by German surfer Sebastian Steudtner.\nThe town of Nazaré consists of three neighbourhoods: Praia (along the beach), Sítio (an old village, on top of a cliff) and Pederneira (another old village, on a hilltop). Praia and Sítio are linked by the Nazaré Funicular, a funicular railway.\nThe present mayor of Nazaré as of 2026 is Serafim António, a member of the Social Democratic Party. The municipal holiday is on 8 September, as part of the Our Lady Of Nazaré Festival, a ten-day religious and secular celebration with processions, bullfights, fireworks, folk dancing and a fair."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "nazare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4443,
+    "attempt": 4408,
+    "place_id": "gn-2639317",
+    "input": {
+      "place": {
+        "place_id": "gn-2639317",
+        "name": "Risca",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.60799,
+        "lon": -3.10081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Risca",
+          "url": "https://en.wikipedia.org/wiki/Risca",
+          "text": "Risca (Welsh: Rhisga) is a town in the Caerphilly County Borough and within the historic boundaries of Monmouthshire in south-east Wales. It has a population of 11,228.\nThe town lies at the south-eastern edge of the South Wales Coalfield and has been shaped by mining, together with other heavy industries, for many centuries.\nRisca is home to Ty-Sign, a large housing estate built in the early 1960s as a satellite village for the then new Llanwern steelworks.\nRisca has a rural aspect and is surrounded to the east and west by several extensively wooded hills, including Mynydd Machen (1,188 ft; 362 m) and Twmbarlwm (1,375 ft; 419 m), which attract tourists for the hillwalking and mountain bikers to Cwmcarn Forest Drive.\nRisca has a railway station on the Ebbw Valley Railway, reopened in February 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "risca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4444,
+    "attempt": 4409,
+    "place_id": "gn-2642145",
+    "input": {
+      "place": {
+        "place_id": "gn-2642145",
+        "name": "Mossend",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.81667,
+        "lon": -4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mossend",
+          "url": "https://en.wikipedia.org/wiki/Mossend",
+          "text": "Mossend is a village in North Lanarkshire, Scotland, located beside the  town of Bellshill, west of the villages of Holytown and New Stevenston, north of the larger town of Motherwell and south of the Eurocentral industrial park and the M8 motorway. Along with Holytown, it forms a council ward which had a population of 13,480 in 2019, Mossend's estimated population being around half of that total.\nThe town is the site of two railway freight terminals: Mossend International Railfreight Park and Mossend EuroTerminal. The yard is primarily used by DB Cargo UK. Mossend formed around the steel industry, with Clydesdale Steel Works once dominating the east end of the town. It is also home to the Mossend Football Club, a local community football club for children from the age of 6 to 21 years old."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "mossend",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4445,
+    "attempt": 4410,
+    "place_id": "gn-2650776",
+    "input": {
+      "place": {
+        "place_id": "gn-2650776",
+        "name": "Dunbar",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.00062,
+        "lon": -2.51418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunbar",
+          "url": "https://en.wikipedia.org/wiki/Dunbar",
+          "text": "Dunbar ( ) is a coastal town and former royal burgh on the North Sea coast in East Lothian in the south-east of Scotland, approximately 30 miles (48 km) east of Edinburgh and 30 miles (48 km) from the English border north of Berwick-upon-Tweed. It had a population of 10,777 in 2022.\nThe town got its name to an ecclesiastical and civil parish. The parish extends around 7+3⁄4 miles (12 km) east to west and is 3+1⁄2 miles (6 km) deep at its greatest extent, or 11+1⁄4 sq mi (29 km2), and contains the villages of West Barns, Belhaven.\nDunbar has a harbour, dating from 1574, and is home to the Dunbar Lifeboat Station, the second-oldest RNLI station in Scotland. The Dunbar Primary School and Dunbar Grammar School opened in the 1950s and 1960s respectively. The town is the birthplace of the explorer, naturalist, and influential conservationist John Muir."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "dunbar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4446,
+    "attempt": 4411,
+    "place_id": "gn-2871486",
+    "input": {
+      "place": {
+        "place_id": "gn-2871486",
+        "name": "Metzingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.53695,
+        "lon": 9.2833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Metzingen",
+          "url": "https://en.wikipedia.org/wiki/Metzingen",
+          "text": "Metzingen (German: [ˈmɛt͡sɪŋən] ) is a Swabian city with about 22,000 inhabitants, in Reutlingen county, Baden-Württemberg, Germany, 30 km (19 mi) south of Stuttgart. The city of Metzingen is known internationally for its outlets of all kinds of famous companies, centered around Hugo Boss who was one of the first companies that opened a store back in the 1970s. The former quarter of textile factories which was changed to a quarter of outlets is called 'Outlet City', and people from all over the world come here for a shopping experience.\nIn a local context, Metzingen is known for its wine. In the center of the city there is a square with the biggest ensemble of wine pressing houses worldwide. In the entire municipality 11 wine pressing houses and two ancient wooden wine presses are preserved."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "metzingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4447,
+    "attempt": 4412,
+    "place_id": "gn-2954695",
+    "input": {
+      "place": {
+        "place_id": "gn-2954695",
+        "name": "Aue",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.59034,
+        "lon": 12.70657
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aue, Saxony",
+          "url": "https://en.wikipedia.org/wiki/Aue,_Saxony",
+          "text": "Aue (German pronunciation: [ˈaʊ̯ə] ) is a small town in Germany at the outlet of the river Schwarzwasser into the river Zwickauer Mulde in the Ore Mountains, and has roughly 16,000 inhabitants. It was merged into the new town Aue-Bad Schlema in January 2019. Aue was the administrative seat of the former district of Aue-Schwarzenberg in Saxony, and is part of the Erzgebirgskreis since August 2008. It belongs to the Silberberg Town League (Städtebund Silberberg)\nThe mining town has been known for its copper, titanium, and kaolinite. The town was a machine-building and cutlery manufacturing centre in East German times and is now developing tourism, as the Silver Road (Silberstraße) runs through town. The town is also known for the football club FC Erzgebirge Aue, which is currently playing in the 3rd German division (3. Bundesliga)\nAue was until 1991 a centre of the Sowjetisch-Deutsche Aktiengesellschaft Wismut (“Soviet-German Wismut Corporation”, or SDAG Wismut)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "aue",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4448,
+    "attempt": 4413,
+    "place_id": "gn-4209448",
+    "input": {
+      "place": {
+        "place_id": "gn-4209448",
+        "name": "Milledgeville",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.08014,
+        "lon": -83.2321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milledgeville, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Milledgeville,_Georgia",
+          "text": "Milledgeville () is a city in and the county seat of Baldwin County, Georgia, United States. Founded in 1803 along the Oconee River, it served as the state capital of Georgia from 1804 to 1868, including during the American Civil War. The city's layout—modeled after the grid plans of Savannah, Georgia, and Washington, D.C.—reflects Milledgeville's intended role as a seat of government. During its years as the capital, Milledgeville quickly became a hub of political activity and cotton-based commerce before facing significant economic changes after the capital was relocated to Atlanta in 1868.\nToday, Milledgeville lies along the Fall Line Freeway, a major east-west corridor that connects Milledgeville with historically significant cities like Augusta, Macon, and Columbus. Its historic core, including the Old State Capitol, is preserved within the Milledgeville Historic District in downtown Milledgeville.\nMilledgeville is home to a public school district, private K-12 schools, and three colleges: Georgia College & State University, Georgia Military College, and Central Georgia Technical College. These institutions contribute to both the cultural and economic vitality of the city. Other key sectors include healthcare, retail trade, and public administration. Tourism also supports the local economy,  with visitors drawn to features like the city's historic architecture, Lake Sinclair, and Andalusia, the former home of author Flannery O'Connor.\nMilledgeville is the principal city of the Milledgeville micropolitan area, which had a population of 43,799 as of the 2020 United States census. The city itself had a population of 17,070. In recent years, local leaders have prioritized economic diversification and downtown revitalization as part of broader efforts to support growth and attract investment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "milledgeville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4449,
+    "attempt": 4414,
+    "place_id": "gn-5096686",
+    "input": {
+      "place": {
+        "place_id": "gn-5096686",
+        "name": "Cliffside Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.82149,
+        "lon": -73.98764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cliffside Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Cliffside_Park,_New_Jersey",
+          "text": "Cliffside Park is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 25,693, an increase of 2,099 (+8.9%) from the 2010 census count of 23,594, which in turn reflected an increase of 587 (+2.6%) from the 23,007 counted in the 2000 census.\nCliffside Park was formed based on the results of a referendum held on January 15, 1895, from portions of Ridgefield Township. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, as one of two boroughs created in 1895 after 26 boroughs were formed in the county in 1894 alone. The borough was named for its location as a \"Park by the Cliffs\".\nU.S. Senator Frank Lautenberg resided in the borough until his death in 2013. Cliffside Park was home to the former Palisades Amusement Park, part of which was located in adjoining Fort Lee. The 38-acre (15 ha) park operated from 1898 until 1971, remaining one of the most-visited amusement parks in the country until its closure, after which the rides and attractions were removed and the site replaced by high-rise apartment buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "cliffside park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cliffside",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4450,
+    "attempt": 4415,
+    "place_id": "gn-5098242",
+    "input": {
+      "place": {
+        "place_id": "gn-5098242",
+        "name": "Franklin Lakes",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.01676,
+        "lon": -74.2057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Franklin Lakes, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Franklin_Lakes,_New_Jersey",
+          "text": "Franklin Lakes is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 11,079, an increase of 489 (+4.6%) from the 2010 census count of 10,590, which in turn reflected an increase of 168 (+1.6%) from the 10,422 counted in the 2000 census. Becton Dickinson, a Fortune 500 company, is headquartered in Franklin Lakes.\nFranklin Lakes was formed by an act of the New Jersey Legislature on March 11, 1922, from portions of Franklin Township, based on the results of a referendum held on April 11, 1922. The borough was named for William Franklin, the illegitimate son of Benjamin Franklin, a steadfast Loyalist who served as the last colonial governor of New Jersey.\nThe borough is one of the state's highest-income communities. Based on data from the American Community Survey for 2014–2018, Franklin Lakes residents had a median household income of $159,883, more than double the statewide median. In 2010, Forbes ranked Franklin Lakes at 146th in its listing of \"America's Most Expensive ZIP Codes,\" with a median home price of $1,306,546."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "franklin lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "franklin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4451,
+    "attempt": 4416,
+    "place_id": "gn-5106361",
+    "input": {
+      "place": {
+        "place_id": "gn-5106361",
+        "name": "Wharton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.89315,
+        "lon": -74.58183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wharton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wharton,_New_Jersey",
+          "text": "Wharton is a borough in Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 7,241, an increase of 719 (+11.0%) from the 2010 census count of 6,522, which in turn reflected an increase of 224 (+3.6%) from the 6,298 counted in the 2000 census.\nWharton was originally incorporated as the borough Port Oram by an act of the New Jersey Legislature on June 26, 1895, created from portions of Randolph Township and Rockaway Township, subject to the results of a referendum passed on the previous day; the name was changed to Wharton on April 16, 1902, based on a referendum held that day and subject to legislation passed on March 27, 1902. The borough was named for Joseph Wharton of the Wharton Steel Company."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "wharton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4452,
+    "attempt": 4417,
+    "place_id": "gn-5109790",
+    "input": {
+      "place": {
+        "place_id": "gn-5109790",
+        "name": "Borough Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.63399,
+        "lon": -73.99681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borough Park, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Borough_Park,_Brooklyn",
+          "text": "Borough Park (also spelled Boro Park) is a neighborhood in the southwestern part of the borough of Brooklyn, in New York City. The neighborhood is bordered by Bensonhurst to the south, Dyker Heights to the southwest, Sunset Park to the west, Kensington and Green-Wood Cemetery to the north, Flatbush to the east, and Mapleton to the southeast.\nIt is economically diverse and home to one of the largest Orthodox Jewish communities outside Israel, with one of the largest concentrations of Jews in the United States. With Orthodox and Haredi families having an average of 6.72 children, Boro Park is experiencing a sharp growth in population.\nThe neighborhood is part of Brooklyn Community District 12, and its primary ZIP Code is 11219. It is patrolled by the 66th Precinct of the New York City Police Department. Politically, it is represented by the New York City Council's 38th, 39th, and 44th districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "borough park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "borough",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4453,
+    "attempt": 4418,
+    "place_id": "gn-8436479",
+    "input": {
+      "place": {
+        "place_id": "gn-8436479",
+        "name": "Downtown Brooklyn",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.69371,
+        "lon": -73.98596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Downtown Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Downtown_Brooklyn",
+          "text": "Downtown Brooklyn is the third-largest central business district in New York City (after Midtown and Lower Manhattan), and is located in the northwestern section of the borough of Brooklyn. The neighborhood is known for its office and residential buildings, such as several of Brooklyn's tallest buildings and the MetroTech Center office complex.\nSince the rezoning of Downtown Brooklyn in 2004, the area has been undergoing a transformation, with $9 billion of private investment and $300 million in public improvements underway. The area is a growing hub for education. In 2017, New York University announced that it would invest over $500 million to renovate and expand the NYU Tandon School of Engineering and its surrounding Downtown Brooklyn-based campus.\nDowntown Brooklyn is part of Brooklyn Community District 2 and its primary ZIP Codes are 11201 and 11217. It is patrolled by the 84th and 88th Precincts of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "downtown brooklyn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "downtown",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brooklyn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4454,
+    "attempt": 4419,
+    "place_id": "gn-885792",
+    "input": {
+      "place": {
+        "place_id": "gn-885792",
+        "name": "Mount Hampden",
+        "country": "Zimbabwe",
+        "subdivision": "Mashonaland East Province",
+        "lat": -17.74167,
+        "lon": 30.93889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Hampden",
+          "url": "https://en.wikipedia.org/wiki/Mount_Hampden",
+          "text": "Mount Hampden, sometimes called New Harare or Harare New City, is the parliamentary seat of Zimbabwe. It is located in Mashonaland West Province about 18 kilometres (11 mi) northwest of the capital, Harare. It was the original destination of the Pioneer Column of the British South Africa Company; however, the Column eventually settled in the south, in present-day Harare. Mount Hampden was named after English politician John Hampden by the hunter and explorer Frederick Courteney Selous.\nThough Mount Hampden had been a farming community until 2012, urban decay in nearby Harare has led to recent government efforts to construct a new master-planned city supported by foreign investment, with a projected total cost of $60bn. Upon completion, the city is projected to be home to one million residents and expand to an area of 18,863 hectares. As of 2026, the majority of the city plan has yet to be implemented, with development still in an early phase."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "mount hampden",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hampden",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4455,
+    "attempt": 4420,
+    "place_id": "gn-12048432",
+    "input": {
+      "place": {
+        "place_id": "gn-12048432",
+        "name": "Westbourne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.52126,
+        "lon": -0.19378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westbourne, London",
+          "url": "https://en.wikipedia.org/wiki/Westbourne,_London",
+          "text": "Westbourne is an area in West London. It has a manorial history spanning many centuries, within a more broadly defined Paddington, before shedding its association in the mid-19th century. It is named after the west bourne, West Bourne, or River Westbourne, a Thames tributary which was encased in 19th-century London in the 1850s. The spring-fed stream and associated manor have led to the place names Westbourne Green, Westbourne Park and more narrowly: Westbourne Gardens, Westbourne Grove, Westbourne Park Road, Westbourne Park tube station, Westbourne Studios and the name of a public house.\nWestbourne forms or resembles an electoral ward of the local authority which is, since 1965, Westminster City Council, and an ecclesiastical parish in the Church of England. Westbourne Conservation Area is a smaller area, designated by the local authority, in Planning Law."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "westbourne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

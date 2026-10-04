@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 4616,
+    "attempt": 4581,
+    "place_id": "gn-12048071",
+    "input": {
+      "place": {
+        "place_id": "gn-12048071",
+        "name": "Gipsy Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.42742,
+        "lon": -0.092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gipsy Hill",
+          "url": "https://en.wikipedia.org/wiki/Gipsy_Hill",
+          "text": "Gipsy Hill in south London is a hilly neighbourhood spanning the southern parts of the London Boroughs of Lambeth and Southwark. It is known for its views of Dulwich and the City of London.\nHistorically, north of its traditional Westow–Central Hill southern limit, it was split between the southern projections of the West Norwood daughter parish of Lambeth and the St Giles church daughter parish of Camberwell in Surrey, until urban reforms in 1889 created the County of London. It takes in, due to a diagonal, slightly weaving border, somewhat less of the London Borough of Southwark, and it has a ridge-top border along the retail/services/leisure street Westow Hill and residential street Central Hill with Upper Norwood in the London Borough of Croydon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "gipsy hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gipsy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4617,
+    "attempt": 4582,
+    "place_id": "gn-2268436",
+    "input": {
+      "place": {
+        "place_id": "gn-2268436",
+        "name": "Estoril",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.70571,
+        "lon": -9.39773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Estoril",
+          "url": "https://en.wikipedia.org/wiki/Estoril",
+          "text": "Estoril (Portuguese pronunciation: [ɨʃtuˈɾil]) is a town in the civil parish of Cascais e Estoril of the Portuguese Municipality of Cascais, on the Portuguese Riviera.  It is a popular tourist destination known for its hotels, beaches, and the Casino Estoril, and has historically been home to numerous royal families and celebrities. The town has also hosted high-profile events, including the Estoril Open and the Lisbon & Estoril Film Festival.\nEstoril is considered one of the most expensive places to live in Portugal and the Iberian Peninsula. It is home to a sizable foreign community and known for its luxury restaurants, hotels, and entertainment. Cascais is consistently ranked for its high quality of living, making it one of the most livable places in Portugal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "estoril",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4618,
+    "attempt": 4583,
+    "place_id": "gn-2611720",
+    "input": {
+      "place": {
+        "place_id": "gn-2611720",
+        "name": "Tilst",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.19376,
+        "lon": 10.11283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tilst",
+          "url": "https://en.wikipedia.org/wiki/Tilst",
+          "text": "Tilst is a suburban area of Aarhus, Denmark, situated 8 km to the northwest of Aarhus.\nThe Tilst area is marked by big city blocks and large traditional suburban areas. In the surrounding area are several superstores, which mainly serve the inner city population of Aarhus. The area is most commonly known for the Bilka warehouse, the largest in Denmark and the only one of its kind in the Aarhus area.\nThe area is divided by the intercity Viborgvej road, with Tilst on the northern side, and the True and Skjoldhøj area situated to the south, bordering Brabrand and Hasle. Tilst has a relatively high density of immigrants compared to the rest of Aarhus, and the suburb is home to many ethnic groups.\nTilst is divided into several neighbourhoods, each one usually identified by its location or street names. One area for example, a residential one near the lake of Geding Sø in the western parts, is known as Blomsterkvarteret (The Flower Quarter) since all the streets are named after flowers. There is a relatively large industrial park, with mostly light industry, in the eastern outskirts of Tilst.\nThe local public school is Tilst Skole, and the local gymnasium is called Langkær Gymnasium og HF.\nThe local church, Tilst Kirke, founded in the 12th century is among the oldest churches in Scandinavia, but with several additions from the 15th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "tilst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4619,
+    "attempt": 4584,
+    "place_id": "gn-2616235",
+    "input": {
+      "place": {
+        "place_id": "gn-2616235",
+        "name": "Nørresundby",
+        "country": "Denmark",
+        "subdivision": "North Denmark",
+        "lat": 57.05877,
+        "lon": 9.92284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nørresundby",
+          "url": "https://en.wikipedia.org/wiki/N%C3%B8rresundby",
+          "text": "Nørresundby (Danish pronunciation: [nɶɐ̯ɐˈsɔnˌpyˀ]) is a city in Aalborg Municipality, north of Limfjorden, in Vendsyssel, in Denmark. The urban area has a population of 24,831 (1 January 2026). It is located just north of Aalborg, which lies south of Limfjorden. Since 2006, it has been a statistically independent urban area, but it is often still considered part of Aalborg; sometimes the name Greater Aalborg (Stor-Aalborg) is used to describe the concept.\nThe city is connected to Aalborg by the Limfjordsbroen road bridge, and an iron railway bridge, as well as a motorway (E45) passing it to the east and running under the Limfjord.\nNørresundby is the site of the Lindholm Høje settlement and burial ground from the Germanic Iron Age and Viking times. There is also a museum on the site.\nNørresundby has many sports clubs, including football club Nørresundby FB."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "n rresundby",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "n",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rresundby",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4620,
+    "attempt": 4585,
+    "place_id": "gn-2821480",
+    "input": {
+      "place": {
+        "place_id": "gn-2821480",
+        "name": "Travemünde",
+        "country": "Germany",
+        "subdivision": "Schleswig-Holstein",
+        "lat": 53.96304,
+        "lon": 10.8709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Travemünde",
+          "url": "https://en.wikipedia.org/wiki/Travem%C3%BCnde",
+          "text": "Travemünde (German: [tʁaːvəˈmʏndə] ) is a borough of Lübeck, Germany, located at the mouth of the river Trave in Lübeck Bay. It began life as a fortress built by Henry the Lion, Duke of Saxony, in the 12th century to guard the mouth of the Trave, and the Danes subsequently strengthened it. It became a town in 1317 and in 1329 passed into the possession of the free city of Lübeck, to which it has since belonged. Its fortifications were demolished in 1807.\nTravemünde has been a seaside resort since 1802, and is Germany's largest ferry port on the Baltic Sea with connections to Sweden, Finland, Russia, Latvia and Estonia. The lighthouse is the oldest on the German Baltic coast, dating from 1539. Another attraction of Travemünde is the Flying P-Liner Passat, a museum ship anchored in the mouth of the Trave.\nThe annual Travemünder Woche is a traditional sailing race week in Northern Europe. The annual Sand festival in Travemünde is known as the Sand World."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "travemunde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4621,
+    "attempt": 4586,
+    "place_id": "gn-2920926",
+    "input": {
+      "place": {
+        "place_id": "gn-2920926",
+        "name": "Gersfeld",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.45138,
+        "lon": 9.91422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gersfeld",
+          "url": "https://en.wikipedia.org/wiki/Gersfeld",
+          "text": "Gersfeld (German pronunciation: [ˈɡɛʁsfɛlt] ) is a town in the Fulda district of Hesse, Germany, on the Fulda River in the Rhön Mountains, 20 km (12.43 mi) southeast of Fulda. It belonged to the abbey-principality of Fulda before secularisation in 1803. It then belonged to the  Principality of Nassau-Orange-Fulda between 1803 and 1806, to France between 1806 and 1810, and then later to the Grand Duchy of Frankfurt between 1810 and 1813. After the Battle of Leipzig, it was occupied by the Allied troops of the Sixth Coalition between 1813 and 1815. After that, it was ceded to the Kingdom of Bavaria in 1815. During the Austro-Prussian War, it was occupied by Prussia before its annexation in the newly established Hesse Nassau province. It was finally incorporated in the state of Hesse in 1945."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "gersfeld",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4622,
+    "attempt": 4587,
+    "place_id": "gn-2966749",
+    "input": {
+      "place": {
+        "place_id": "gn-2966749",
+        "name": "Ballincollig",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 51.88333,
+        "lon": -8.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballincollig",
+          "url": "https://en.wikipedia.org/wiki/Ballincollig",
+          "text": "Ballincollig (Irish: Baile an Chollaigh) is a suburban town within the administrative area of Cork city in Ireland. It is located on the western side of Cork city, beside the River Lee on the R608 road. In 2016 it was the largest town in County Cork, at which time the Ballincollig Electoral Division had a population of 18,621 people. At around 8 km west of the centre of Cork city, it is located beyond the green belt from the suburbs of Bishopstown and Wilton. Historically home to the Ballincollig Royal Gunpowder Mills which is now a Regional Park, the town has seen much growth in recent years as a satellite of Cork city. In 2024, Ballincollig was named the tidiest town in Ireland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "ballincollig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4623,
+    "attempt": 4588,
+    "place_id": "gn-3104316",
+    "input": {
+      "place": {
+        "place_id": "gn-3104316",
+        "name": "Zarautz",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.28444,
+        "lon": -2.16992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zarautz",
+          "url": "https://en.wikipedia.org/wiki/Zarautz",
+          "text": "Zarautz (Basque: [s̻aɾaut͡s̻] , Spanish: Zarauz) is a coastal town located in central Gipuzkoa, Basque Country, in Spain. It is bordered by Aia to the east and the south and Getaria to the west, located about 15 kilometres (9.3 mi) west of Donostia/San Sebastián. It has four enclaves limiting the aforementioned municipalities: Alkortiaga, Ekano, Sola, and Arbestain. As of 2014, Zarautz has a population of 22,890, which usually swells to about 60,000 in the summer.\nThe Palace of Narros, located adjacent to Zarautz's 2.8 km (1.7 mi) long beach, is where Queen Isabella II and Fabiola of Belgium once spent their summer holidays. The beach is known for being the longest in the Basque Country and one of longest of the Cantabrian cornice.\nThe Mayor of Zarautz since 2015 has been Xabier Txurruka (Basque Nationalist Party)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "zarautz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4624,
+    "attempt": 4589,
+    "place_id": "gn-3174896",
+    "input": {
+      "place": {
+        "place_id": "gn-3174896",
+        "name": "Lendinara",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.08301,
+        "lon": 11.60318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lendinara",
+          "url": "https://en.wikipedia.org/wiki/Lendinara",
+          "text": "Lendinara is a comune in the province of Rovigo, Veneto, northern Italy. It is part of the historical and geographical region of Polesine.\nIt is the birthplace of Domenico Montagnana (1680–1750), one of the world's finest violin and cello makers.  Tenor Domenico Ronconi was also born in the town.\nIn the latter part of the 19th century, it was the home of Jessie White Mario, the English woman who took an active part in the struggle for the Unification of Italy at the side of Mazzini and Garibaldi. Outside of the town stands the Sanctuary of Nostra Signora del Pilastrello (Our Lady of the Pilaster), at the site of a shrine built in the 16th century to house an icon of the Madonna. The abbey and church were reconstructed in the 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "lendinara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4625,
+    "attempt": 4590,
+    "place_id": "gn-3616064",
+    "input": {
+      "place": {
+        "place_id": "gn-3616064",
+        "name": "Ticuantepe",
+        "country": "Nicaragua",
+        "subdivision": "Managua Department",
+        "lat": 12.02263,
+        "lon": -86.20493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ticuantepe",
+          "url": "https://en.wikipedia.org/wiki/Ticuantepe",
+          "text": "Ticuantepe (Nawat: Tēkwāntepēk), is a town and a municipality in the Managua department of Nicaragua with an estimated population of 39,012. The municipality is named after the Nahua chiefdom of Tekwantepek which was located in the modern municipality of Ticuantepe and the surrounding area. According to Spanish conquistador and historian Gonzalo Fernández de Oviedo y Valdés, Tekwantepek was a militarily strong chiefdom that was one of the last to fall to the conquistadors and their central-Mexican allies. The Nahuas chose to settle in Ticuantepe due to its highly rich agriculture. Located on the slopes of the Meseta de los Pueblos, its fertile volcanic soils and cooler microclimate made it an exceptionally productive area for the Nahuas to grow maize, cacao, beans, and avocados."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "ticuantepe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4626,
+    "attempt": 4591,
+    "place_id": "gn-3696509",
+    "input": {
+      "place": {
+        "place_id": "gn-3696509",
+        "name": "Huamachuco",
+        "country": "Peru",
+        "subdivision": "La Libertad",
+        "lat": -7.8,
+        "lon": -78.06667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huamachuco",
+          "url": "https://en.wikipedia.org/wiki/Huamachuco",
+          "text": "Huamachuco (possibly from Quechua waman meaning \"falcon\" or \"variable hawk\", and Culli chuco meaning \"earth\" or \"land\", thus \"land of falcons\") is a town in northern Peru and capital of the province of Sánchez Carrión in La Libertad Region. The city is the seat of the Territorial Prelature of Huamachuco. Lake Sausacocha lies to the northeast.\nAbout 48 kilometres (30 mi) away, within the Huamachuco district, is the significant pre-Columbian archeological site of Marcahuamachuco. It is a complex of monuments that are the remnants of a prehistoric political and religious center of a culture that thrived 350 CE–1100 CE. The ruins of a Wari city, Viracochapampa, are located 3.5 km north of Huamachuco. Additionally there are many other pre-Columbian ruins around the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "huamachuco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4627,
+    "attempt": 4592,
+    "place_id": "gn-4089114",
+    "input": {
+      "place": {
+        "place_id": "gn-4089114",
+        "name": "Selma",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 32.40736,
+        "lon": -87.0211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Selma, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Selma,_Alabama",
+          "text": "Selma is a city in and the county seat of Dallas County, in the Black Belt region of south central Alabama and extending to the west. Located on the banks of the Alabama River, the city has a population of 17,971 as of the 2020 census. About 80% of the population is African-American.\nSelma was a trading center and market town during the antebellum years of King Cotton in the South. It was also an important armaments-manufacturing and iron shipbuilding center for the Confederacy, as well as providing a hospital converted from a Masonic university, during the Civil War, surrounded by miles of earthen fortifications. The Confederate forces were defeated during the Battle of Selma, in the final full month of the war.\nIn modern times, the city is best known for the 1960s civil rights movement and the Selma to Montgomery marches, beginning with \"Bloody Sunday\" in March 1965, when unarmed peaceful protesters were assaulted by county and state highway police.\nBy the end of March 1965, an estimated 25,000 people entered Montgomery to press for voting rights. This activism generated national attention for social justice. That summer, the Voting Rights Act of 1965 was passed by Congress to authorize federal oversight and enforcement of constitutional rights of all American citizens.\nDue to agriculture and industry decline, Selma has lost about a third of its peak population since the 1960s. The city is focusing on heritage tourism, to build on its role as a major influence in civil rights and desegregation.\nSelma is one of Alabama's poorest cities, with an average income of $35,500, which is 30% less than the state average. One in every three residents in Selma lives below the state poverty line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "selma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4628,
+    "attempt": 4593,
+    "place_id": "gn-4997232",
+    "input": {
+      "place": {
+        "place_id": "gn-4997232",
+        "name": "Iron Mountain",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 45.82023,
+        "lon": -88.06596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iron Mountain, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Iron_Mountain,_Michigan",
+          "text": "Iron Mountain is a city in and the county seat of Dickinson County, Michigan, United States. The population was 7,518 at the 2020 census, down from 7,624 at the 2010 census. Located in the Upper Peninsula of Michigan, Iron Mountain was named for the valuable iron ore found in the vicinity. Iron Mountain is the principal city of the Iron Mountain micropolitan area, which includes all of Dickinson County and Florence County, Wisconsin.\nIron Mountain hosts a few points of interest such as the Millie Hill bat cave and the Chapin Mine Steam Pump Engine, and is located adjacent to the Pine Mountain Jump, one of the largest artificial ski jumps in the world. It shares Woodward Avenue with the neighboring town, Kingsford. In addition, Iron Mountain is known for its pasties, bocce ball tournaments, and World Cup ski jumps. Iron Mountain was also named a \"Michigan Main Street\" community by Michigan governor Jennifer Granholm in 2006. It is one of only thirteen such communities in the state of Michigan in 2008. It is also the hometown of Michigan State University men's basketball coach Tom Izzo and former NFL head coach Steve Mariucci."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "iron mountain",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "iron",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mountain",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4629,
+    "attempt": 4594,
+    "place_id": "gn-5101775",
+    "input": {
+      "place": {
+        "place_id": "gn-5101775",
+        "name": "New Providence",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.69843,
+        "lon": -74.40154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Providence, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/New_Providence,_New_Jersey",
+          "text": "New Providence is a borough on the northwestern edge of Union County, in the U.S. state of New Jersey. It is located on the Passaic River, which forms the county boundary with Morris County bordering Chatham Township. As of the 2020 United States census, the borough's population was 13,650, an increase of 1,479 (+12.2%) from the 2010 census count of 12,171, which in turn reflected increase of 264 (+2.2%) from the 11,907 counted in the 2000 census.\nThe borough is home to much of the Murray Hill neighborhood with the remainder lying in neighboring Berkeley Heights. Service on the NJ Transit is available at the New Providence and Murray Hill stations. More than 9% of New Providence's land is publicly-owned and protected parkland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "new providence",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "providence",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4630,
+    "attempt": 4595,
+    "place_id": "gn-5102369",
+    "input": {
+      "place": {
+        "place_id": "gn-5102369",
+        "name": "Palisades Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.84816,
+        "lon": -73.99764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palisades Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Palisades_Park,_New_Jersey",
+          "text": "Palisades Park is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 20,292, an increase of 670 (+3.4%) from the 2010 census count of 19,622, which in turn reflected an increase of 2,549 (+14.9%) from the 17,073 counted in the 2000 census.\nThe borough of Palisades Park was created by an act of the New Jersey Legislature on March 22, 1899, from portions of Ridgefield Township. A portion of its area was annexed by the neighboring borough of Fort Lee in April 1909. The borough was named for its location atop the New Jersey Palisades.\nIt is one of the largest and fastest-growing ethnic Korean enclaves outside of Korea. Koreans comprise the majority (65%) of the population of the borough of Palisades Park, the municipality with the highest density of ethnic Koreans in the Western Hemisphere and the home of both the highest Korean-American density and percentage of any municipality in the United States. It has been called Koreatown on the Hudson and Little Korea. The borough's population has grown by 40% since the 1990 census, accelerated by zoning laws that permit duplex homes on land previously containing a single-family detached home."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "palisades park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palisades",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4631,
+    "attempt": 4596,
+    "place_id": "gn-5606401",
+    "input": {
+      "place": {
+        "place_id": "gn-5606401",
+        "name": "Sandpoint",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 48.27659,
+        "lon": -116.55325
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandpoint, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Sandpoint,_Idaho",
+          "text": "Sandpoint is the largest city in and the county seat of Bonner County, Idaho, United States. Its population was 9,777 as of the 2022 census.\nSandpoint's major economic contributors include forest products, light manufacturing, tourism, recreation and government services. As the largest service center in the two northern Idaho counties (Bonner and Boundary), as well as northwestern Montana, it has an active retail sector.\nSandpoint lies on the shores of Idaho's largest lake, 43-mile-long (69-kilometer) Lake Pend Oreille, and is surrounded by three major mountain ranges, the Selkirk, Cabinet and Bitterroot ranges. It is home to Schweitzer Mountain Resort, Idaho's largest ski resort, and is on the International Selkirk Loop and two National Scenic Byways (Wild Horse Trail and Pend Oreille Scenic Byway). Among other distinctions awarded by national media in the past decade, in 2011 Sandpoint was named the nation's \"Most Beautiful Small Town\" by Rand McNally and USA Today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "sandpoint",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4632,
+    "attempt": 4597,
+    "place_id": "gn-5711847",
+    "input": {
+      "place": {
+        "place_id": "gn-5711847",
+        "name": "Astoria",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 46.18788,
+        "lon": -123.83125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Astoria, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Astoria,_Oregon",
+          "text": "Astoria is a port city in and the county seat of Clatsop County, Oregon, United States. The population was 10,181 at the 2020 census. Founded in 1811, Astoria is the oldest city in the state and was the first permanent American settlement west of the Rocky Mountains. It is located on the south shore of the Columbia River in the northwest corner of Oregon, near where the river flows into the Pacific Ocean.\nAstoria is named for John Jacob Astor, an investor and entrepreneur from New York City whose American Fur Company founded Fort Astoria at the site and established a monopoly in the fur trade in the early 19th century. Astoria was incorporated by the Oregon Legislative Assembly on October 20, 1876. The city has a deepwater port, operated by the Port of Astoria, and lies across Youngs Bay from Astoria Regional Airport in Warrenton. The city is the headquarters of the Columbia River Bar Pilots, which helps vessels navigate the Columbia Bar at the mouth of the Columbia River. Astoria is at the western end of U.S. Route 30 and is served by U.S. Route 101, which travels across the Columbia River on the Astoria–Megler Bridge to neighboring Washington."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "astoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4633,
+    "attempt": 4598,
+    "place_id": "gn-5898265",
+    "input": {
+      "place": {
+        "place_id": "gn-5898265",
+        "name": "Bendale",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.76681,
+        "lon": -79.25326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bendale",
+          "url": "https://en.wikipedia.org/wiki/Bendale",
+          "text": "Bendale, also called Cedarbrae and Midland Park, is a residential neighbourhood in the eastern part of Toronto, Ontario, Canada. It is located in the former suburb of Scarborough. It is centred on the intersection of Lawrence Avenue East and Brimley Road. Its boundaries, as defined by the City, are Midland Avenue from Lawrence, north to Highway 401, east to McCowan, south to Lawrence, east to West Highland Creek, south-west along West Highland Creek, then follow several side streets parallel to the Creek, north to Midland Avenue. The area north of Ellesmere is typically considered the Scarborough City Centre district, and is not considered in this neighbourhood article.\nBendale was shortened from the original name Benlomond in 1881, which was named for Ben Lomond."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "bendale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4634,
+    "attempt": 4599,
+    "place_id": "gn-620214",
+    "input": {
+      "place": {
+        "place_id": "gn-620214",
+        "name": "Vyetka",
+        "country": "Belarus",
+        "subdivision": "Homyel’ Voblasc’",
+        "lat": 52.55428,
+        "lon": 31.18067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vyetka",
+          "url": "https://en.wikipedia.org/wiki/Vyetka",
+          "text": "Vyetka or Vetka (Belarusian: Ветка, romanized: Vietka; Russian: Ветка; Polish: Wietka) is a town in Gomel Region, Belarus. It is situated on the bank of the Sozh River, and serves as the administrative center of Vyetka District. As of 2025, it has a population of 8,580.\nIt was established in 1685 by the Old Believer Priest Group (a branch of the Russian Orthodox Church) who were known as the Theodesians and who had migrated from Central Russia. At the time it was founded, Vyetka was on the territory of the Great Duchy of Lithuania.\nThe town's prosperity brought on the wrath of the Russian Empire and as result, it was gutted twice (1735 and 1764) by the Tsarist army in the 18th century. Vyetka is located on the left bank of the Sozh River, in the area which was highly radioactive due to the nuclear fallout of the Chernobyl disaster that occurred on April 26, 1986."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "vyetka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4635,
+    "attempt": 4600,
+    "place_id": "gn-7303783",
+    "input": {
+      "place": {
+        "place_id": "gn-7303783",
+        "name": "Sydney Mines",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 46.23669,
+        "lon": -60.21767
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sydney Mines",
+          "url": "https://en.wikipedia.org/wiki/Sydney_Mines",
+          "text": "Sydney Mines is a community and former town in Cape Breton Regional Municipality, Nova Scotia, Canada.\n\nFounded in 1784, and incorporated as a town in 1889, Sydney Mines has a rich history in coal production although mining activity has now ceased. Prior to a permanent settlement being established, there was significant activity along the shore. Upon the success of coal mining operations, the Nova Scotia Steel and Coal Company constructed a steel plant in Sydney Mines in 1902. The plant, alongside the steel plant in Sydney owned by the Dominion Iron and Steel Company combined to produce more than 50% of Canada's steel during World War I. The plant was later sold to the British Empire Steel Corporation and ceased operations years later."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "sydney mines",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sydney",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mines",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
