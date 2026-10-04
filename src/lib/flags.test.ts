@@ -3,7 +3,9 @@ import assert from "node:assert/strict";
 import {
   FLAG_DEFAULTS,
   FLAGS_FETCH_TIMEOUT_MS,
+  getObservabilityEndpoint,
   isEnabled,
+  isValidObservabilityEndpoint,
   loadFlags,
   resetFlags,
   type FlagName,
@@ -374,5 +376,32 @@ describe("learningOutcomes flag", () => {
     const { fn } = fakeFetch(failedResponse());
     await loadFlags({ ...BASE, fetch: fn });
     assert.equal(isEnabled("learningOutcomes"), false);
+  });
+});
+
+describe("observabilityEndpoint", () => {
+  beforeEach(() => resetFlags());
+  it("defaults to null (transport disabled — shipped behavior)", async () => {
+    assert.equal(getObservabilityEndpoint(), null);
+  });
+  it("accepts https and root-relative endpoints", async () => {
+    const a = fakeFetch(okResponse({ flags: {}, observabilityEndpoint: "https://obs.example.com/ingest" }));
+    await loadFlags({ ...BASE, fetch: a.fn });
+    assert.equal(getObservabilityEndpoint(), "https://obs.example.com/ingest");
+    resetFlags();
+    const b = fakeFetch(okResponse({ flags: {}, observabilityEndpoint: "/api/observability" }));
+    await loadFlags({ ...BASE, fetch: b.fn });
+    assert.equal(getObservabilityEndpoint(), "/api/observability");
+  });
+  it("rejects http, protocol-relative, non-string and junk endpoints (fail closed to null)", async () => {
+    for (const bad of ["http://obs.example.com/x", "//evil.example/x", "javascript:alert(1)", 42, {}, "not a url", ""]) {
+      resetFlags();
+      const f = fakeFetch(okResponse({ flags: {}, observabilityEndpoint: bad }));
+      await loadFlags({ ...BASE, fetch: f.fn });
+      assert.equal(getObservabilityEndpoint(), null, `bad endpoint ${JSON.stringify(bad)} must be rejected`);
+      assert.equal(isValidObservabilityEndpoint(bad), false);
+    }
+    assert.equal(isValidObservabilityEndpoint("https://obs.example.com/ingest"), true);
+    assert.equal(isValidObservabilityEndpoint("/ingest"), true);
   });
 });
