@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 4816,
+    "attempt": 4781,
+    "place_id": "gn-6138352",
+    "input": {
+      "place": {
+        "place_id": "gn-6138352",
+        "name": "Saint-Hippolyte",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.93338,
+        "lon": -74.0159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Hippolyte, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Saint-Hippolyte,_Quebec",
+          "text": "Saint-Hippolyte (French pronunciation: [sɛ̃t‿ipɔlit] ; historically Abercrombie)is a municipality within La Rivière-du-Nord Regional County Municipality in the Laurentides region of Quebec, Canada, in the Laurentian Mountains about 45 km north of Montreal. The name comes from Saint Hippolytus.\nPart of the town was formerly known as Abercrombie-Est.\nPolice services are provided by the Régie intermunicipale de police de la Rivière-du-Nord, which also serves Piedmont, Prévost and some other communities in the Laurentians.\nThe municipality of Saint-Hippolyte's original name was Abercrombie. The name was pick to honor James Abercrombie, british commander-in-chief of forces in North America during the French and Indian War, best known for the disastrous British losses in the 1758 Battle of Carillon. The municipality changed its name to the current Saint-Hippolyte in 1951. The name was chosen to honor Hippolyte Moreau, titular canon of the Cathedral of Montreal (1854-1880) and vicar general (1873-1880). It was his responsibility to choose the location of the church in the name of Monsignor Ignace Bourget in 1864. The name is a reference to Hippolytus of Rome, one of the most important second-third century Christian theologians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "saint hippolyte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hippolyte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4817,
+    "attempt": 4782,
+    "place_id": "gn-994978",
+    "input": {
+      "place": {
+        "place_id": "gn-994978",
+        "name": "Dutywa",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.09618,
+        "lon": 28.30489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dutywa",
+          "url": "https://en.wikipedia.org/wiki/Dutywa",
+          "text": "Dutywa, also known as Idutywa, is a town in Mbashe Local Municipality, Eastern Cape province, South Africa, that was founded in 1858 as a military fort after a dispute between a Natal Colony raiding party and its local people. It is named after the Dutywa River, a tributary of the Mbhashe River. The name means \"place of disorder\" in the Xhosa language; its spelling was officially changed from \"Idutywa\" to \"Dutywa\" on 16 July 2004. The settlement was laid out in 1884 and was made a municipality in 1913. The town is the birthplace of former South African President, Thabo Mbeki.\nDutywa is home to 11,076 people, 96.6% of who are Black African (Xhosa)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "dutywa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4818,
+    "attempt": 4783,
+    "place_id": "gn-1259412",
+    "input": {
+      "place": {
+        "place_id": "gn-1259412",
+        "name": "Ponnampet",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 12.14473,
+        "lon": 75.94514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponnampet",
+          "url": "https://en.wikipedia.org/wiki/Ponnampet",
+          "text": "Ponnampet or Ponnampete (Kodava: [ponːɐmpeːʈe]) is a taluk headquarters in the southern part of the district of Kodagu in the state of Karnataka. Ponnampet taluk came into existence on 29 November 2020.\nIt was originally named after Diwan Cheppudira Ponnappa as Ponnapett. It was established in the year 1821 in the name of the Late Diwan under the regime of Kodagu Rajas.\nThe town was called notified area in the period of British and later on it was converted into a Municipality and then into a (1st Grade)Village Panchayath. Ponnampet was a Taluk Headquarters during Pre-Independence Period, but was absorbed into Virajpet taluk later, to be again revived recently in the year 2020. The town was upgraded to Town Panchayath in the year 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ponnampet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4819,
+    "attempt": 4784,
+    "place_id": "gn-12719585",
+    "input": {
+      "place": {
+        "place_id": "gn-12719585",
+        "name": "Kwun Lung Lau",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Central and Western",
+        "lat": 22.28044,
+        "lon": 114.12758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kwun Lung Lau",
+          "url": "https://en.wikipedia.org/wiki/Kwun_Lung_Lau",
+          "text": "Kwun Lung Lau is a public housing estate in Kennedy Town, Hong Kong. It is one of the first public housing developments in Hong Kong, built in 1967 to alleviate a housing crisis in the territory. It is on 20 Lung Wah Street.\nIt consists of seven buildings, namely Block A - G. The overall shape was that of a snaking dragon, and hence its name which means Watching Dragon Building in Chinese.\nKwun Lung Lau is also famous for a landslide on 23 July 1994 that killed five people and injured three. Leaking water and heavy rain had built up behind a masonry retaining wall, which was too thin, and subsequently collapsed. This disaster caused a major review of slope safety in Hong Kong."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "kwun lung lau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kwun",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lung",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4820,
+    "attempt": 4785,
+    "place_id": "gn-13353871",
+    "input": {
+      "place": {
+        "place_id": "gn-13353871",
+        "name": "Sandys Parish",
+        "country": "Bermuda",
+        "subdivision": "Sandys",
+        "lat": 32.29637,
+        "lon": -64.86931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandys Parish",
+          "url": "https://en.wikipedia.org/wiki/Sandys_Parish",
+          "text": "Sandys Parish ( \"sands\") is one of the nine parishes of Bermuda. It is named for English aristocrat Sir Edwin Sandys.\nIt is located in the south west of the island chain, occupying the three islands of Ireland Island, Boaz Island, and the larger Somerset Island, as well as a small part of the main island of Bermuda. These islands make up the western coast of the Great Sound, the large expanse of water which dominates the geography of western Bermuda, where it is joined to Southampton parish. Like most other parishes in Bermuda, it covers 2.3 square miles (about 6.0 km2 or 1500 acres). It had a population of 6,983 in 2016.\nNatural features in Sandys include Ely's Harbor, the Cathedral Rocks, Daniel's Head, and Mangrove Bay.\nOther notable features of Sandys include the Somerset Bridge, which links the mainland to Somerset Island, and the old Royal Naval Dockyard on Ireland Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "sandys parish",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sandys",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "parish",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4821,
+    "attempt": 4786,
+    "place_id": "gn-1859462",
+    "input": {
+      "place": {
+        "place_id": "gn-1859462",
+        "name": "Kin",
+        "country": "Japan",
+        "subdivision": "Okinawa",
+        "lat": 26.45222,
+        "lon": 127.91778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kin, Okinawa",
+          "url": "https://en.wikipedia.org/wiki/Kin,_Okinawa",
+          "text": "Kin (Japanese: 金武町, Hepburn: Kin-chō; Kunigami and Okinawan: Chin) is a town located in Kunigami District, Okinawa Prefecture, Japan.\nOn 1 October 2020, the town had an estimated population of 10,806 and a density of 290 persons per km2. The total area of Kin is 37.57 square kilometres (14.51 mi2). 59% of the land area of Kin remains under control of the United States military, the highest percentage of any municipality in Okinawa Prefecture. The population of the town is concentrated on a strip of land on the coast of Kin Bay. Kin is home to Camp Hansen, a military base of the United States Marines, as well as other smaller military installations.\nKin is home to the Dragon Brand of awamori, with a Buddhist shrine built in 1522, and a 270-meter natural cave known as Kin Shonyudo that doubles as both a place of worship and a cellar for aging bottles of the drink. Kin is also claimed to be the origin of taco rice, a dish emblematic of modern Okinawan cuisine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "kin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4822,
+    "attempt": 4787,
+    "place_id": "gn-18918",
+    "input": {
+      "place": {
+        "place_id": "gn-18918",
+        "name": "Protaras",
+        "country": "Cyprus",
+        "subdivision": "Ammochostos",
+        "lat": 35.0125,
+        "lon": 34.05833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Protaras",
+          "url": "https://en.wikipedia.org/wiki/Protaras",
+          "text": "Protaras (Greek: Πρωταράς) is a predominantly tourist resort that falls under the administrative jurisdiction of the Municipality of Paralimni in Cyprus. In ancient times, the area was home to the old city-state of Leukolla. The city had a small, safe harbour where Demetrius Poliorketes sought refuge in 306 BC, lying in wait for Ptolemy, one of the successors of Alexander the Great. In the ensuing battle, Ptolemy was defeated and fled to Egypt, leaving Cyprus briefly in Demetrius's hands. Protaras is also known as \"the land of windmills\" which preserves the nostalgic quality of the past.\nProtaras has clear, sky-blue waters and sandy beaches, the best known of which is Fig Tree Bay. Building on the success of Ayia Napa, located about 10 km (6 mi) to the southwest, it has expanded into a modern holiday resort of considerable size with dozens of high-capacity hotels, hotel apartments, villas, restaurants, pubs and associated facilities. Being quieter than Ayia Napa and having less of a club scene, it has a reputation for catering more to families and domestic Cypriot tourism. Cape Greco is a 10-minute drive from the centre of Protaras.\nProtaras is a popular diving destination. Green Bay is the most popular dive site and features underwater statues for thousands of first-timers divers to enjoy while practising their scuba skills. Other notable dive sites include The Blue Hole, The Chapel,  Decosta Bay, and Malama Bay. Protaras's most famous technical diving site is the Cyclops Bay, located on the border with Ayia Napa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "protaras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4823,
+    "attempt": 4788,
+    "place_id": "gn-195197",
+    "input": {
+      "place": {
+        "place_id": "gn-195197",
+        "name": "Kakuma",
+        "country": "Kenya",
+        "subdivision": "Turkana County",
+        "lat": 3.71363,
+        "lon": 34.8572
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kakuma",
+          "url": "https://en.wikipedia.org/wiki/Kakuma",
+          "text": "Kakuma is a town in northwestern Turkana County, Kenya. It is the site of a UNHCR refugee camp, established in 1992. The population of Kakuma town was 60,000 in 2014, having grown from around 8,000 in 1990. In 1991, the camp was established to host unaccompanied minors who had fled the war in Sudan, Somalia and from camps in Ethiopia. It was estimated that there were 12,000 \"lost boys and girls\" who had fled here via Egypt in 1990/91.\nKakuma is situated in the second poorest region in Kenya and as a result of this poverty, there are ongoing tensions between the refugees and the local community that has occasionally resulted in violence. Compared to the wider region, the Kakuma camp has better health facilities and a higher percentage of children in full-time education, which resulted in a general notion that the refugees were better off than the locals. The host community is composed largely of nomadic pastoralists who stick to their traditions and do not co-operate with refugees. Camp is becoming a normal part of the regional socio-economic landscape and a part of livelihood options available in the region. Kakuma is one of two large refugee camps in Kenya; the second and bigger one is Dadaab.\nMalnutrition, communicable disease outbreaks, and malaria are all ongoing problems, while donor support has faltered due to conflicts in other parts of the world. Many people in Kakuma are long-term refugees, living in hopelessness and desperation. The situation is particularly bad for young people. Many of the refugees hope to leave Kakuma for third country resettlement in another country. For example, the \"Lost Boys of Sudan\" were a special group who were resettled from the camp to the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 287
+    },
+    "banned_terms": [
+      {
+        "term": "kakuma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4824,
+    "attempt": 4789,
+    "place_id": "gn-2228675",
+    "input": {
+      "place": {
+        "place_id": "gn-2228675",
+        "name": "Mamfe",
+        "country": "Cameroon",
+        "subdivision": "South-West",
+        "lat": 5.75132,
+        "lon": 9.3137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mamfe",
+          "url": "https://en.wikipedia.org/wiki/Mamfe",
+          "text": "Mamfe or Mamfé is a city in and the capital of Manyu, a division of the Southwest Region in Cameroon. It is 74 km (46 mi) from the border of Nigeria, on the Manyu River. It has a population of 42,500 (2024 estimates).\nIt is known as a centre for traditional religion (e.g., Obasinjom and Ekpe Society) and traditional medicine. Mamfe used to be known for bad infrastructure within the city limits, especially the roads, but in recent times the roads have been tarred and are currently in good condition. The roads leading in and out of the city have also been tarred e.g., Mamfe - Bamenda, Mamfe - Kumba, Mamfe - Ekok.\nThe Peace Corps has maintained a presence in the Mamfe area since they entered the country in 1962.\n\nSince 2017, Mamfe has been a frequent battleground in the Anglophone Crisis. The city saw heavy fighting in December 2017, when the Cameroonian Army battled the Ambazonia Defence Forces for control over Mamfe and the surroundings. In May 2020, separatist fighters assassinated the newly elected mayor, Ashu Priestly Ojong.\nAs of January 2023, suspected separatist fighters stormed Mamfe and set a Total petrol station on fire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "mamfe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4825,
+    "attempt": 4790,
+    "place_id": "gn-2303258",
+    "input": {
+      "place": {
+        "place_id": "gn-2303258",
+        "name": "Bechem",
+        "country": "Ghana",
+        "subdivision": "Ahafo",
+        "lat": 7.09034,
+        "lon": -2.02498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bechem",
+          "url": "https://en.wikipedia.org/wiki/Bechem",
+          "text": "Bechem is a town and is the capital of the Tano South district of the Ahafo Region of Ghana, and Bechem is the district capital for the Tano South Constituency. Bechem is located close to the capital town of Bono, Sunyani. The town is known for the Bechem Presbyterian Secondary School. The school is a second-cycle institution. The town has one of the best teacher training colleges in the country, known as St Joseph College (JOSCO), and has Bechem School for the Deaf and Blind and Technical Institute for the Deaf. It has two villages known as Techimantia and Derma, which both stand tall when it comes to tomato production in the country.\nIt is the home of Bechem United Football Club, who currently play in the top division in Ghana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "bechem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4826,
+    "attempt": 4791,
+    "place_id": "gn-2304389",
+    "input": {
+      "place": {
+        "place_id": "gn-2304389",
+        "name": "Apam",
+        "country": "Ghana",
+        "subdivision": "Central",
+        "lat": 5.285,
+        "lon": -0.746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Apam",
+          "url": "https://en.wikipedia.org/wiki/Apam",
+          "text": "Apam is a coastal town and capital of Gomoa West District in the Central Region of Ghana, located approximately 45 kilometers east of the Central Region capital, Cape Coast.\nApam is the site of Fort Lijdzaamheid or Fort Patience, a Dutch-built fort which was completed in 1702, which dominates the fishing harbor and town from a rocky peninsula located on the south side of the town. It was a major port prior to independence, but after Tema was built, shipping was forbidden. The current chief of Apam is called Nana Ekow Payne. It is also a major town in the Gomoa Akyempem Paramountcy. There are many fishermen as fishing is the main industry. Apam has a Secondary School called Apam Senior High School, an FM station, Apaman tv, several churches and a salt-winning industry. The Benyah Lagoon is used to produce salt. Apam have the biggest pusuban in Ghana and is located in the central region of Ghana.\nFESTIVAL OF GOMOA APAM\nApam  Akwambo festival [1] is celebrated by the chiefs and peoples of Gomoa  Apam  in the Central region of Ghana. The festival is celebrated in the month of September every year. People in Apam, in the Central Region, celebrate the Akwambo, which literally means \"path-clearing.\"\n\nIn apam   there are traditionally two asafo companies: Tuafo  and Denstifo Each company is headed by a superior captain (\"Supi\") and under the Supi is a captain (\"Safohen\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "apam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4827,
+    "attempt": 4792,
+    "place_id": "gn-243760",
+    "input": {
+      "place": {
+        "place_id": "gn-243760",
+        "name": "Guéréda",
+        "country": "Chad",
+        "subdivision": "Wadi Fira",
+        "lat": 14.51667,
+        "lon": 22.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guéréda",
+          "url": "https://en.wikipedia.org/wiki/Gu%C3%A9r%C3%A9da",
+          "text": "Guéréda (Arabic: غيريدا, romanized: Ḡīrīdā) is a town in the Wadi Fira Region, Chad. It is located at around 14°30′30″N 22°5′13″E.\nAbout 60% of Guéréda residents are Tama but people also come from up to 60 km around.\nGuéréda was the site of fighting between the Chadian army and the Rally of Democratic Forces (RaFD) in early December 2006. On December 1, eleven people were killed and 82 injured in the fighting. On December 13, the FUC took control of the streets of Guéréda, ending almost twenty years of control by the Zaghawa minority. Power dynamics were reversed and FUC rebels organized mass interrogations of civilians who were questioned about their ethnic origins. Zaghawa civilians accused of anti-Tama sentiments were arrested.\nSeventeen expatriate humanitarian staff are located in Guéréda near the large refugee camps at Mile and Kounoungo, where 30,000 Sudanese refugees from the Darfur conflict are located.\nThe town is served by Guéréda Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "guereda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4828,
+    "attempt": 4793,
+    "place_id": "gn-2523942",
+    "input": {
+      "place": {
+        "place_id": "gn-2523942",
+        "name": "Paceco",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.98026,
+        "lon": 12.55766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paceco",
+          "url": "https://en.wikipedia.org/wiki/Paceco",
+          "text": "Paceco (Sicilian: Paceca) is a town and comune in Western Sicily, Italy, administratively part of the province of Trapani, located nearby the Trapani city area, a distance of 5 kilometres (3 mi).\nPaceco is a small rural centre: among its agricultural products there are melons, cereals, olives, grapes, and cheese dairy products. In Paceco are also present some sheep-breedings.\nThe centre was founded in 1607 by the marquis Placido Fardella. The town is however named after his wife, Teresa Paceco of Vigliena. Conceived in conformity with a meditated urban scheme, Paceco's installation is a mesh perfectly orthogonal with some rectangular isolated (ippodomea plan), very recurrent in the inhabited places of the 17th century.\nLocal sights include the Cathedral Church, consecrated to the SS. Crucifix, built in 1623 and placed in the main piazza of the centre. Recently the Church has been entirely restored in order to make it regain the original beauty. In addition, there are the churches of Porto Salvo, Santo Padre, and Santa Lucia.\nThe city is connected via bus services from the neighbouring city of Trapani."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "paceco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4829,
+    "attempt": 4794,
+    "place_id": "gn-2644559",
+    "input": {
+      "place": {
+        "place_id": "gn-2644559",
+        "name": "Lewes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.87398,
+        "lon": 0.0088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lewes",
+          "url": "https://en.wikipedia.org/wiki/Lewes",
+          "text": "Lewes ( ) is the county town of East Sussex, England. The town is the administrative centre of the wider district of the same name. It lies on the River Ouse at the point where the river cuts through the South Downs.\nA traditional market town and centre of communications, in 1264 it was the site of the Battle of Lewes. The town's landmarks include Lewes Castle, Lewes Priory, Bull House (the former home of Thomas Paine), Southover Grange and public gardens, and a 16th-century timber-framed Wealden hall house known as Anne of Cleves House. Other notable features of the area include the Glyndebourne festival, the Lewes Bonfire celebrations and the Lewes Pound."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "lewes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4830,
+    "attempt": 4795,
+    "place_id": "gn-2873340",
+    "input": {
+      "place": {
+        "place_id": "gn-2873340",
+        "name": "Markneukirchen",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.31144,
+        "lon": 12.32951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Markneukirchen",
+          "url": "https://en.wikipedia.org/wiki/Markneukirchen",
+          "text": "Markneukirchen (German pronunciation: [ˌmaʁk.nɔʏˈkɪʁçn̩] ) is a town in the Vogtlandkreis district, in Saxony, Germany, close to the Czech border. It lies in the Elster Mountains (part of the Fichtel Mountains), 24 km (14.9 mi) southeast of Plauen, and 14 km (8.7 mi) northeast of Aš (Czech Republic).\nMarkneukirchen is the main town of the small musical instrument-making region Musikwinkel, known for four centuries for high quality brass, woodwind and string instruments. Within this small locality, 113 different enterprises are involved in making musical instruments. They rely on traditional methods but sell all over the world.\nThe town is home to the Museum of Musical Instruments founded in 1883 by Paul Otto Apian-Bennewitz. It hosts an annual International Instrumental Competition and master classes. [1] Since 1993 the competition has been a member of the World Federation of International Music Competitions. Arnold Voigt worked in the town for most of his life."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "markneukirchen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4831,
+    "attempt": 4796,
+    "place_id": "gn-2880077",
+    "input": {
+      "place": {
+        "place_id": "gn-2880077",
+        "name": "Laupheim",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.22786,
+        "lon": 9.87874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laupheim",
+          "url": "https://en.wikipedia.org/wiki/Laupheim",
+          "text": "Laupheim (German: [ˈlaʊphaɪm] ; Swabian: Laoba) is a major district town in southern Germany in the state of Baden-Württemberg. Laupheim was first mentioned in 778 and gained city rights in 1869. One of the main trading routes, from Ulm to Ravensburg and then on towards Lake Constance ran through Laupheim. Having developed from a rural settlement into a small urban area, Laupheim is home to a number of small to medium-sized industries and businesses. One of the largest employers are the German Armed Forces which maintain an airbase close to Laupheim, Laupheim Air Base.\nLaupheim was the administrative centre of the district of Laupheim from 1842 until 1938 when the district was abolished. The southern parts of it were incorporated into the district of Biberach (including Laupheim itself) whereas the remainders were allocated to the district of Ulm.\nIn the second half of the 19th century Laupheim was home to the largest Jewish community in the Kingdom of Württemberg.\nAfter World War II, Laupheim became part of the French occupation zone in 1945 and became part of the newly founded state of Württemberg-Hohenzollern in 1947.\nLaupheim is the educational centre for the surrounding rural areas particularly with regard to secondary education."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "laupheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4832,
+    "attempt": 4797,
+    "place_id": "gn-2880547",
+    "input": {
+      "place": {
+        "place_id": "gn-2880547",
+        "name": "Langwedel",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.97908,
+        "lon": 9.18433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Langwedel",
+          "url": "https://en.wikipedia.org/wiki/Langwedel",
+          "text": "Langwedel (German pronunciation: [ˈlaŋveːdl̩]) is a municipality in the district of Verden, in Lower Saxony, Germany. It is situated on the right bank of the Weser, approximately 7 km northwest of Verden, and 30 km southeast of Bremen.\n\nLangwedel belonged to the Prince-Bishopric of Verden, established in 1180. In 1648 the Prince-Bishopric was transformed into the Principality of Verden, which was first ruled in personal union by the Swedish Crown - interrupted by a Danish occupation (1712–1715) - and from 1715 on by the Hanoverian Crown. The Kingdom of Hanover incorporated the Principality in a real union and the Princely territory, including Langwedel, became part of the new Stade Region, established in 1823."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "langwedel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4833,
+    "attempt": 4798,
+    "place_id": "gn-2885656",
+    "input": {
+      "place": {
+        "place_id": "gn-2885656",
+        "name": "Köpenick",
+        "country": "Germany",
+        "subdivision": "State of Berlin",
+        "lat": 52.4455,
+        "lon": 13.57455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Köpenick",
+          "url": "https://en.wikipedia.org/wiki/K%C3%B6penick",
+          "text": "Köpenick (German pronunciation: [ˈkøːpənɪk] ) is a historic locality (Ortsteil) in Berlin, situated at the confluence of the rivers Dahme and Spree in the southeast of the German capital. It was formerly known as Copanic and then Cöpenick, only officially adopting the current spelling in 1931.\nPrior to its incorporation into Berlin in 1920, Köpenick had been an independent town. It then became a borough of Berlin, and with an area of 128 km2 (49 sq mi), Berlin's largest. As a result of Berlin's 2001 administrative reform, the borough of Köpenick was merged with that of Treptow to create the current borough of Treptow-Köpenick.\nKöpenick is home to the Bundesliga football club 1. FC Union Berlin, who play at the Stadion An der Alten Försterei. Mellowpark, the largest outdoor skatepark in Europe, is located in the town. Köpenick is also known for the imposter Hauptmann von Köpenick."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "kopenick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4834,
+    "attempt": 4799,
+    "place_id": "gn-3001617",
+    "input": {
+      "place": {
+        "place_id": "gn-3001617",
+        "name": "Lescar",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 43.33358,
+        "lon": -0.43458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lescar",
+          "url": "https://en.wikipedia.org/wiki/Lescar",
+          "text": "Lescar (French pronunciation: [lɛskaʁ] ; Occitan: Lescar) is a commune in the Pyrénées-Atlantiques department and Nouvelle-Aquitaine region of south-western France.\nLescar is the site of the Roman city known variously as Benearnum,  Beneharnum or Civitas Benarnensium, the location providing the name for the later region of Béarn.\nIn 841, Benearnum was razed by the Vikings and Morlaàs became the Béarnaise capital. However, from the twelfth century a new city grew up at Lescar. Lescar Cathedral was built during this period, and was the seat of the Diocese of Lescar until 1801. The remains of the last monarchs of all Navarre Queen Catherine I (†1517) and King John III (†1516) lie at the cathedral.\nToday, Lescar is primarily a suburb of the nearby town of Pau. The commune of Lescar has joined together with 30 neighbouring communes to establish the Communauté d'agglomération Pau Béarn Pyrénées which provides a framework within which local tasks are carried out together."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "lescar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4835,
+    "attempt": 4800,
+    "place_id": "gn-3013173",
+    "input": {
+      "place": {
+        "place_id": "gn-3013173",
+        "name": "Honfleur",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.41985,
+        "lon": 0.23294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Honfleur",
+          "url": "https://en.wikipedia.org/wiki/Honfleur",
+          "text": "Honfleur (French: [ɔ̃flœʁ] ) is a commune in the Calvados department in northwestern France. It is located on the southern bank of the estuary of the Seine across from Le Havre and very close to the exit of the Pont de Normandie. The people that inhabit Honfleur are called Honfleurais.\nIt is especially known for its old port, characterized by its houses with slate-covered frontages, painted frequently by artists. There have been many notable artists, including Gustave Courbet, Eugène Boudin, Claude Monet and Johan Jongkind. They all met at La Ferme Saint Siméon, which is now a five-star hotel, and created the \"Saint Siméon gathering\", contributing to the appearance of the Impressionist movement. The Sainte-Catherine church, which has a bell tower separate from the principal building, is the largest wooden church in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "honfleur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

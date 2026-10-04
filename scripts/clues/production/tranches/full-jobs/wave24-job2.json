@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 4656,
+    "attempt": 4621,
+    "place_id": "gn-2654093",
+    "input": {
+      "place": {
+        "place_id": "gn-2654093",
+        "name": "Caerleon",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.60952,
+        "lon": -2.95378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caerleon",
+          "url": "https://en.wikipedia.org/wiki/Caerleon",
+          "text": "Caerleon ( kər-LEE-ən; Welsh: Caerllion) is a town and community in Newport, Wales. Situated on the River Usk, it lies 5 miles (8 km) northeast of Newport city centre, and 5.5 miles (9 km) southeast of Cwmbran. Caerleon is of archaeological importance, being the site of a notable Roman legionary fortress, Isca Augusta, and an Iron Age hillfort. Close to the remains of Isca Augusta are the National Roman Legion Museum and the Roman Baths Museum. The town also has strong historical and literary associations: Geoffrey of Monmouth elevated the significance of Caerleon as a major centre of British history in his Historia Regum Britanniae (c. 1136), and Alfred Lord Tennyson wrote Idylls of the King (1859–1885) while staying in Caerleon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "caerleon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4657,
+    "attempt": 4622,
+    "place_id": "gn-2655690",
+    "input": {
+      "place": {
+        "place_id": "gn-2655690",
+        "name": "Biggin Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.31329,
+        "lon": 0.03433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biggin Hill",
+          "url": "https://en.wikipedia.org/wiki/Biggin_Hill",
+          "text": "Biggin Hill is a town in the London Borough of Bromley, about 15.2 miles (24.5 km) south-southeast of Charing Cross. It is separated from London's built-up area by the Metropolitan green belt and is located adjacent to the Greater London boundary with Kent and Surrey. Prior to the creation of Greater London in 1965, it was part of Kent. At the 2011 Census, Biggin Hill had a population of 9,951.\nBiggin Hill is one of the highest points of Greater London, rising to over 210 metres (690 ft) above sea level. Biggin Hill Airport occupies land formerly used by RAF Biggin Hill, one of the principal fighter bases protecting London from German bombers during the Battle of Britain and The Blitz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "biggin hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "biggin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4658,
+    "attempt": 4623,
+    "place_id": "gn-2796583",
+    "input": {
+      "place": {
+        "place_id": "gn-2796583",
+        "name": "Hannut",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.67142,
+        "lon": 5.07898
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hannut",
+          "url": "https://en.wikipedia.org/wiki/Hannut",
+          "text": "Hannut (French: [any]; Walloon: Haneu; Dutch: Hannuit [ˈɦɑnœyt]) is a municipality and city of Wallonia located in the province of Liège, Belgium. \nOn January 1, 2006, Hannut had a total population of 14,291. The total area is 86.53 km2 (33.41 sq mi), which gives a population density of 165 inhabitants per square kilometre (430/sq mi).\nThe municipality consists of the following districts: Abolens, Avernas-le-Bauduin, Avin, Bertrée, Blehen, Cras-Avernas, Crehen, Grand-Hallet, Hannut, Lens-Saint-Remy, Merdorp, Moxhe, Petit-Hallet, Poucet, Thisnes, Trognée, Villers-le-Peuplier, and Wansin.\nThe Battle of Hannut, which began May 12, 1940, is credited with being the first battle between tanks of World War II.\nHannut has a water park, many famous chateaus and a few museums. The town center has many restaurants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "hannut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4659,
+    "attempt": 4624,
+    "place_id": "gn-2875846",
+    "input": {
+      "place": {
+        "place_id": "gn-2875846",
+        "name": "Loschwitz",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.05386,
+        "lon": 13.81393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loschwitz",
+          "url": "https://en.wikipedia.org/wiki/Loschwitz",
+          "text": "Loschwitz (German pronunciation: [ˈlɔʃvɪts]) is a borough (Stadtbezirk) of Dresden, Germany, incorporated in 1921. It consists of ten quarters (Stadtteile):\n\nLoschwitz is a villa quarter located at the slopes north of the Elbe river. At the top of the hillside is the quarter of Weißer Hirsch, named after a former inn erected in 1685 by the Saxon kapellmeister Christoph Bernhard, where in 1888 the naturopathic physician Heinrich Lahmann opened a sanatorium. The quarters of Wachwitz and Pillnitz are adjacent in the east and the Rosengarten park in the west. Loschwitz is connected with the borough of Blasewitz south of the Elbe by the Blue Wonder (Blaues Wunder) bridge. Furthermore, the borough encompasses large parts of the Dresden Heath, the city's forest.\nThe old village of Loschwitz, a wine-growing area since the 11th century, was first mentioned in a 1227 deed. About 1660 Elector John George II of Saxony had several vineyards laid out at the hillside, that soon became a fashionable recreational and residential area for the Dresden nobility and wealthy bourgeois like the composer Heinrich Schütz or the goldsmith Johann Melchior Dinglinger. The author Christian Gottfried Körner had a cottage within the vineyards, where his guest Friedrich Schiller wrote the Ode to Joy in 1785. About 1800 James Ogilvy, 7th Earl of Findlater acquired large estates, where from 1850 the Elbschlösser (Elbe Castles) were erected: Albrechtsberg Palace and Villa Stockhausen (Lingnerschloss) of Prince Albert of Prussia as well as Eckberg Castle, finished in 1861.\nThe church is of especial architectural and historical interest, as is the churchyard, for the many burials of notable people. It was full by about 1800 and was replaced by Loschwitz Cemetery.\nA popular place is the restaurant Luisenhof, built in 1895 and named after Crown Princess Luise of Saxony. The \"Dresden balcony\" offers a panoramic view of the city and the Elbe valley. Nearby is the Standseilbahn Dresden funicular railway as well as the Schwebebahn Dresden, the oldest suspension railway of the world, which both are still in use.\nNobility and rich citizens of Dresden used to live in Loschwitz such as Theodor Körner, Carl Maria von Weber and Gerhard von Kügelgen. A famous inhabitant of Weißer Hirsch was the inventor Manfred von Ardenne with his institute for scientific research. One of his neighbours was the retired officer Friedrich Paulus, commander in the Battle of Stalingrad, who died here in 1957. Also a number of famous people stayed in Loschwitz for a short time: Johann Wolfgang von Goethe, Heinrich von Kleist, Ernst Moritz Arndt, Novalis, Ludwig Tieck, Alexander and Wilhelm von Humboldt, Wolfgang Amadeus Mozart, Leopold Auer and Anton Graff. Between the 1920s and 1930s Loschwitz used to be the most expensive living area of all Europe.\nThis is evidenced in the surviving funicular railway, originally placed as an aid purely to residents in ascending the steep slopes of the river valley, and only recently having acquired novelty as a minor tourist attraction.  Recently restored and operated by the local public transportation agency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 499
+    },
+    "banned_terms": [
+      {
+        "term": "loschwitz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4660,
+    "attempt": 4625,
+    "place_id": "gn-3003918",
+    "input": {
+      "place": {
+        "place_id": "gn-3003918",
+        "name": "Le Grau-du-Roi",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.53881,
+        "lon": 4.13559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Grau-du-Roi",
+          "url": "https://en.wikipedia.org/wiki/Le_Grau-du-Roi",
+          "text": "Le Grau-du-Roi (French pronunciation: [lə ɡʁo dy ʁwa]; Occitan: Lo Grau dau Rei) is a commune in the Gard department in southern France. It is the only commune in Gard to have a frontage on the Mediterranean. To the west is the Herault department and La Grande-Motte village, and to the east is the Bouches-du-Rhone department. Using the sea as a vantage point, the commune has four distinct sections: the right beach (Plage de Rive Droite), the Village, the left beach (Plage de Rive Gauche), Port-Camargue and L'Espiguette. Immediately landwards are the large shallow étangs, saline marshes, which separate it from Aigues Mortes, a neighboring mediaeval walled city that used to be a port. The étangs are home to numerous flamingoes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "le grau du roi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "roi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4661,
+    "attempt": 4626,
+    "place_id": "gn-3515040",
+    "input": {
+      "place": {
+        "place_id": "gn-3515040",
+        "name": "Tulum",
+        "country": "Mexico",
+        "subdivision": "Quintana Roo",
+        "lat": 20.21173,
+        "lon": -87.46325
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tulum",
+          "url": "https://en.wikipedia.org/wiki/Tulum",
+          "text": "Tulum (Spanish pronunciation: [tuˈlun]; Yucatec Maya: Tulu'um) is the site of a pre-Columbian Mayan walled city which served as a major port for Coba, in the Mexican state of Quintana Roo. The ruins are situated on 12-meter-tall (39 ft) cliffs along the east coast of the Yucatán Peninsula on the Caribbean Sea. Tulum was one of the last cities built and inhabited by the Maya and achieved its greatest prominence between the 13th and 15th centuries. Maya continued to occupy Tulum for about 70 years after the Spanish began exploring Mexico, but the city was abandoned by the end of the 16th century. Tulum is one of the best-preserved coastal Maya sites, and today it is a popular site for tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "tulum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4662,
+    "attempt": 4627,
+    "place_id": "gn-3719436",
+    "input": {
+      "place": {
+        "place_id": "gn-3719436",
+        "name": "Ouanaminthe",
+        "country": "Haiti",
+        "subdivision": "Nord-Est",
+        "lat": 19.54934,
+        "lon": -71.72475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ouanaminthe",
+          "url": "https://en.wikipedia.org/wiki/Ouanaminthe",
+          "text": "Ouanaminthe (French pronunciation: [wanamɛ̃t]; Haitian Creole: Wanament or Wanamèt; Spanish: Juana Méndez) is a commune or town located in the Nord-Est department of Haiti. It lies along the Massacre River, which forms part of the border between Haiti and the Dominican Republic. Ouanaminthe is the largest commune of northeastern Haiti and of the Nord-Est Department. The bridge connecting Ouanaminthe to the Dominican city of Dajabón is one of the four main border crossings between the two countries. Throughout its history, the city has repeatedly been a site of mediation in international disputes, first between French and Spanish colonists, and in more modern times as part of the long-standing Haitian-Dominican conflict.\nThe population stands at roughly 100,000 people, including the immediate vicinity. Haitians living in Ouanaminthe are allowed to cross the border freely without documents two days per week, mainly for the market on Mondays and Fridays at Dajabón, where they buy and sell goods. In 2010, a new bridge and the new market store, funded by the European Union, was opened."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "ouanaminthe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4663,
+    "attempt": 4628,
+    "place_id": "gn-3992842",
+    "input": {
+      "place": {
+        "place_id": "gn-3992842",
+        "name": "Petatlán",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 17.53819,
+        "lon": -101.26922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petatlán",
+          "url": "https://en.wikipedia.org/wiki/Petatl%C3%A1n",
+          "text": "Petatlán is a city in the municipality of Petatlán located along the Pacific Coast of the Mexican state of Guerrero.  It is part of the Costa Grande region between Zihuatanejo and Acapulco.  The city is known for the Sanctuary of the Padre Jesús de Petatlán, a 17th-century image of Christ that is claimed to have performed religious miracles. The city is the seat of a large municipality, which faces the Pacific Ocean to the south and is bounded by the Sierra Madre del Sur to the north. It contains the La Soledad de Maciel archeological site. The area's recent history has been marked by violence related to the drug trade and to struggles between business and local farmers and environmental groups.  St. Peter, Minnesota is a sister city of Petatlán."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "petatlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4664,
+    "attempt": 4629,
+    "place_id": "gn-4577263",
+    "input": {
+      "place": {
+        "place_id": "gn-4577263",
+        "name": "Easley",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 34.82984,
+        "lon": -82.60152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Easley, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Easley,_South_Carolina",
+          "text": "Easley is a city in Pickens County (with parts extending into Anderson County) in the U.S. state of South Carolina. As of the 2020 census, Easley had a population of 22,921.\nIn 2001, Easley hosted the Big League World Series for the first time, and continued to host the tournament annually until it was disbanded in 2016. In 2017, the Senior League World Series moved to Easley as the host for the annual tournament. \nThe Upper South Carolina State Fair was located in Easley and was held annually in early September. The Upper South Carolina State Fair is no longer held in Easley, as the Greenville-Pickens Speedway, which hosted the fair, is being developed into an industrial park as of 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "easley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4665,
+    "attempt": 4630,
+    "place_id": "gn-4992232",
+    "input": {
+      "place": {
+        "place_id": "gn-4992232",
+        "name": "Escanaba",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 45.74525,
+        "lon": -87.06458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Escanaba, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Escanaba,_Michigan",
+          "text": "Escanaba ( ES-kə-NAH-bə), commonly shortened to Esky, is a port city in and the county seat of Delta County in the U.S. state of Michigan, located on Little Bay de Noc in the state's Upper Peninsula. The population was 12,450 at the 2020 census, making it the third-largest city in the Upper Peninsula after Marquette and Sault Ste. Marie.\nThere is also Escanaba Township, which is north of the city and is not adjacent to it, although a portion of the urban area around the city extends into the township. Both are named for the Escanaba River, which flows into the Little Bay de Noc of Lake Michigan just north of the city. The names are derived from the Ojibwa language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "escanaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4666,
+    "attempt": 4631,
+    "place_id": "gn-5095528",
+    "input": {
+      "place": {
+        "place_id": "gn-5095528",
+        "name": "Bedminster",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.68066,
+        "lon": -74.64544
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedminster, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Bedminster,_New_Jersey",
+          "text": "Bedminster is a township in Somerset County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 8,272, an increase of 107 (+1.3%) from the 2010 census count of 8,165, which in turn reflected a decline of 137 (−1.7%) from the 8,302 counted in the 2000 census. Located within the Raritan Valley region, Bedminster is part of the Somerset Hills of northern Somerset County, bordering both Hunterdon and Morris counties.\nBedminster was settled in 1710 by Dutch, German, and Scots-Irish immigrants. It was named after Bedminster, then in Somerset, England, and now a district of Bristol. Bedminster Township was created by Royal charter on April 4, 1749, from portions of the Northern precinct. It was incorporated formally by an act of the New Jersey Legislature on February 21, 1798. Portions of the township were taken on March 28, 1912, to form Peapack-Gladstone.\nIt is known for having one of the most historic Revolutionary War sites in the United States at what is known as the Pluckemin Continental Artillery Cantonment Site, which has been listed on the National Register of Historic Places. General Henry Knox, chief of the Continental Army artillery, was the leader responsible for building what was the country's first military artillery training academy, the forerunner to the United States Military Academy at West Point.\nIn 2012, Forbes.com listed Bedminster as 486th in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $555,243."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "bedminster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4667,
+    "attempt": 4632,
+    "place_id": "gn-5133667",
+    "input": {
+      "place": {
+        "place_id": "gn-5133667",
+        "name": "Rensselaer",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.64258,
+        "lon": -73.7429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rensselaer, New York",
+          "url": "https://en.wikipedia.org/wiki/Rensselaer,_New_York",
+          "text": "Rensselaer () is a city in Rensselaer County, New York, United States, and is located on the east side of the Hudson River, opposite Albany and on the western border of Rensselaer County. As of the 2020 census, the city population was 9,210.\nThe area now known as the City of Rensselaer was settled by the Dutch in the 17th century, who called it t'Greyn Bos, which became Greenbush in English. Rensselaer was an early center of the U.S. dye industry in the United States and home to the country's first aspirin factory. The city became a railroad hub in the 19th century; in 2020, Albany-Rensselaer was the ninth-busiest Amtrak station in the country and the second-busiest in New York State."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "rensselaer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4668,
+    "attempt": 4633,
+    "place_id": "gn-5409802",
+    "input": {
+      "place": {
+        "place_id": "gn-5409802",
+        "name": "Wilmington",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.78002,
+        "lon": -118.26257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wilmington, Los Angeles",
+          "url": "https://en.wikipedia.org/wiki/Wilmington,_Los_Angeles",
+          "text": "Wilmington is a neighborhood in the South Bay and Harbor region of Los Angeles, California, covering 9.14 square miles (23.7 km2).\nFeaturing a heavy concentration of industry and the third-largest oil field in the continental United States, this neighborhood has a high percentage of Latino and foreign-born residents. Nearly 20 percent of Wilmington’s total land area is taken up by oil refineries — roughly 3.5 times more area than is dedicated to open and accessible green spaces. During the COVID-19 pandemic, Wilmington had one of the highest death rates in all of Los Angeles County, exacerbated by elevated levels of industrial pollution.\nIt is the site of Banning High School, and ten other primary and secondary schools. Wilmington has six parks.\nWilmington was part of a 1784 Spanish land grant. It became a separate city in 1863, and it joined the city of Los Angeles in 1909. Places of interest include the headquarters U.S. Army for Southern California and the Drum Barracks built to protect the nascent Los Angeles harbor during the American Civil War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "wilmington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4669,
+    "attempt": 4634,
+    "place_id": "gn-5558953",
+    "input": {
+      "place": {
+        "place_id": "gn-5558953",
+        "name": "Arcata",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 40.86652,
+        "lon": -124.08284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arcata, California",
+          "url": "https://en.wikipedia.org/wiki/Arcata,_California",
+          "text": "Arcata (; Wiyot: Goudi’ni; Yurok: Oket'oh) is a city adjacent to the Arcata Bay (northern) portion of Humboldt Bay in Humboldt County, California, United States. At the 2020 census, Arcata's population was 18,857. Arcata was first founded in 1850 as Union, was officially established in 1858, and was renamed Arcata in 1860. It is located 280 miles (450 km) north of San Francisco (via Highway 101), and is home to California State Polytechnic University, Humboldt. Arcata is also the location of the Arcata Field Office of the Federal Bureau of Land Management, which is responsible for the administration of natural resources, lands and mineral programs, including the Headwaters Forest, on approximately 200,000 acres (810 km2) of public land in Northwestern California."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "arcata",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4670,
+    "attempt": 4635,
+    "place_id": "gn-5752024",
+    "input": {
+      "place": {
+        "place_id": "gn-5752024",
+        "name": "Silverton",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.00512,
+        "lon": -122.78315
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silverton, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Silverton,_Oregon",
+          "text": "Silverton is a city in Marion County, Oregon, United States. The city is situated along the 45th parallel about 14 miles (23 km) northeast of Salem, in the eastern margins of the broad alluvial plain of the Willamette Valley. The city is named after Silver Creek, which flows through the town from Silver Falls into the Pudding River, and thence into the Willamette River. The community of Milford was founded in 1846 with a sawmill, store and several other buildings two miles upstream from the present location of Silverton. In about 1853 a second sawmill was built on Silver Creek near where the Silverton city hall now stands. In 1854 the town of Silverton was platted and registered with Marion County. Human habitation of the Silverton area extends back approximately 6,000 years before the present. In historical times, the region was dominated by the Kalapuya and Molala peoples, whose seasonal burns of the area made it plow-ready and attractive to early 19th century Euro-American settlers. Farming was Silverton's first major industry, and has been a dominant land-use activity in and around Silverton since the mid-19th century.\nSilverton is part of the Salem Metropolitan Statistical Area, and the population core of the Silver Falls School District. The population was 10,484 at the time of the 2020 census, up from 9,222 in 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "silverton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4671,
+    "attempt": 4636,
+    "place_id": "gn-6246634",
+    "input": {
+      "place": {
+        "place_id": "gn-6246634",
+        "name": "Taradale",
+        "country": "New Zealand",
+        "subdivision": "Hawke's Bay Region",
+        "lat": -39.53333,
+        "lon": 176.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taradale, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Taradale,_New_Zealand",
+          "text": "Taradale is a residential suburb of the city of Napier in the Hawke's Bay region of the North Island of New Zealand. It is located 10 kilometres south-west of the centre of Napier.\nFor hundreds of years, hills overlooking what is now Taradale were the site of villages occupied by Māori people, latterly of the Ngāti Kahungunu tribe. Europeans started settling at Taradale in the 1850s, and it was officially recognised as a town in 1886. It was a town district from 1886 to 1953, and a borough from 1953 to 1968, when it merged with Napier City. The Taradale area is home to some of New Zealand's oldest and finest vineyards and wineries, with wine-making dating back to the 1850s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "taradale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4672,
+    "attempt": 4637,
+    "place_id": "gn-756151",
+    "input": {
+      "place": {
+        "place_id": "gn-756151",
+        "name": "Warka",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 51.7843,
+        "lon": 21.19091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warka",
+          "url": "https://en.wikipedia.org/wiki/Warka",
+          "text": "Warka [ˈvarka] (Yiddish: ווארקע) is a town in east-central Poland, located on the left bank of the Pilica river (60 km or 37 mi south of Warsaw), with 11,858 inhabitants (2013). It has been situated in Grójec County, in the Masovian Voivodeship, since 1999; previously it was in the Radom Voivodeship from 1975 to 1998.\nWarka obtained its city charter in 1321. A village called Winiary, which today is part of Warka, is the countryside residence of Pulaskis family where General Casimir Pulaski spent his childhood and the birthplace of Colonel Piotr Wysocki (September 10, 1797). Warka is also known for its famous brewery (since 1478).\nFor the duration of the UEFA Euro 2012, Warka hosted the Croatia national football team."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "warka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4673,
+    "attempt": 4638,
+    "place_id": "gn-12070058",
+    "input": {
+      "place": {
+        "place_id": "gn-12070058",
+        "name": "Chiaia",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.83255,
+        "lon": 14.22677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chiaia",
+          "url": "https://en.wikipedia.org/wiki/Chiaia",
+          "text": "Chiaia (Italian pronunciation: [ˈkjaːja], Neapolitan pronunciation: [ˈkjɑːjə]) is an affluent quarter on the seafront in Naples, Italy, bounded by Piazza Vittoria on the east and Mergellina on the west. Chiaia is one of the wealthiest districts in Naples, and many luxury brands have shops on its main street. It is also home to a business school and a medical school, as well as other public schools.\nA prominent landmark in Chiaia is the large public park known as the Villa Comunale. It was initially developed in the late 16th and early 17th centuries as the Spanish rulers of Naples opened the city to the west of its historical boundaries.\nThe Renaissance poet Laura Terracina was born and raised in Chiaia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "chiaia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4674,
+    "attempt": 4639,
+    "place_id": "gn-13236510",
+    "input": {
+      "place": {
+        "place_id": "gn-13236510",
+        "name": "Lake of the Woods",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.33422,
+        "lon": -77.75969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake of the Woods, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Lake_of_the_Woods,_Virginia",
+          "text": "Lake of the Woods is a census-designated place in Locust Grove, Orange County, Virginia, United States. It is a gated subdivision covering approximately 2,600 acres with 4,260 lots (850 with lake frontage) distributed among 16 sections (many named after well-known southern names and landmarks). It includes more than 41 miles of paved private roads, and since 2020 has been listed in the Washington–Baltimore combined statistical area.\nLake of the Woods has grown into a bedroom community for Fredericksburg, within the trade area of Spotsylvania County. As of the 2020 census, Lake of the Woods had a population of 8,081.\nFounded as a resort community built around a man-made lake, it now includes  two lakes: the Main Lake and Keaton's Lake. The Main Lake covers 500 acres and is fed by Flat Run and numerous springs. Veterans Memorial Dam, spanning 1,450 feet along the northwestern edge of the Main Lake, was built in 1968. The Main Lake ranges in depth from two feet at the upper southwestern end, where Flat Run feeds the lake, to 45 feet at the upper end near the dam. It has two marinas, seven lake access areas, and eight sand beaches. Keaton's Lake is a 35-acre impoundment approximately seven feet deep, at the northeastern corner of the community, close to Route 3; its dam spans 450 feet.\nLake of the Woods has its own Volunteer Fire and Rescue company.\nLake of the Woods was created in 1967 by Virginia Wildlife Clubs, a subsidiary of U.S. Land, Inc., and subsequently bought and developed into single family owner occupied housing by Boise Cascade Corporation. The Lake of the Woods Association, Inc.  assumed ownership of the common areas and control in 1972.\nLake of the Woods, just outside of Spotsylvania County/Fredericksburg, is in the northern neck of Orange County where the cross-commuting interchange with the Washington Metropolitan Area is high enough to merit inclusion in the Metropolitan Area, although more farther south parts of Orange County are more rural and still cause the overall county-wide commuter interchange to fall below the threshold for inclusion in the Washington Metropolitan Area which is calculated by the county level. In 2020, Lake of the Woods began being listed on US Census data as part of Combined Statistical Area within Washington, DC-Baltimore, MD-Arlington, VA."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 381
+    },
+    "banned_terms": [
+      {
+        "term": "lake of the woods",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "woods",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4675,
+    "attempt": 4640,
+    "place_id": "gn-2153770",
+    "input": {
+      "place": {
+        "place_id": "gn-2153770",
+        "name": "Parkville",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.78333,
+        "lon": 144.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parkville, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Parkville,_Victoria",
+          "text": "Parkville is an inner-city suburb in Melbourne, Victoria, Australia, 3 km (1.9 mi) north of Melbourne's Central Business District, located within the Cities of Melbourne and Merri-bek local government areas. Parkville recorded a population of 7,074 at the 2021 census.\nParkville is bordered by North Melbourne to the south-west, Carlton and Carlton North to the south and east, Brunswick to the north (where a part of Parkville lies within the City of Merri-bek), and Flemington to the west. The suburb includes the postcodes 3052 and 3010 (University).\nThe suburb encompasses Royal Park, an expansive parkland which is notable as home to the Royal Melbourne Zoological Gardens. Parkville was also the location of the athlete's village for the 2006 Commonwealth Games.\nParkville is a major education, research and healthcare precinct and home to the University of Melbourne, Monash University Pharmacy faculty, Royal Melbourne Hospital, Royal Women's Hospital, Royal Children's Hospital, the Victorian Comprehensive Cancer Centre and CSL.\nThe residential areas have a high median house price due to the proximity to the city centre and parkland, Victorian era buildings, terrace houses and tree-lined streets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "parkville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

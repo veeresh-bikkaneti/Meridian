@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 4696,
+    "attempt": 4661,
+    "place_id": "gn-3337504",
+    "input": {
+      "place": {
+        "place_id": "gn-3337504",
+        "name": "Seeheim-Jugenheim",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 49.765,
+        "lon": 8.65194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seeheim-Jugenheim",
+          "url": "https://en.wikipedia.org/wiki/Seeheim-Jugenheim",
+          "text": "Seeheim-Jugenheim is a municipality in the Darmstadt-Dieburg district in Hesse, Germany.  It has a population of approximately 17,000.\nSeeheim-Jugenheim consists of seven villages:\n\nBalkhausen (population 693)\nJugenheim (population 4,448)\nMalchen (population 1,004)\nOber-Beerbach (population 1,269)\nSeeheim (population 9,060)\nSteigerts (population 81)\nStettbach (population 144)\nThe municipality was formed on 1 January 1977 through the unification of the previously separate municipalities of Seeheim and Jugenheim.  Until 1 January 1978 the municipality was known as Seeheim; after that it became known as Seeheim-Jugenheim.\nIt is known for its mountain bike trails to the nearby mountain Melibokus.\nSeeheim-Jugenheim has been home to several notable residents throughout history, including Tsar Nicholas II of Russia as well as writers Georg Kaiser and Helene Christaller.\nFurther it has been an ancient Jewish Community.\nIndustrial and commercial activity in Seeheim-Jugenheim is close to nonexistent; thus, most of its residents work in the nearby cities of Darmstadt, Frankfurt or Heidelberg.\nThe local football team is called Spielvereiningung Seeheim Jugenheim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "seeheim jugenheim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seeheim",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jugenheim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4697,
+    "attempt": 4662,
+    "place_id": "gn-3515479",
+    "input": {
+      "place": {
+        "place_id": "gn-3515479",
+        "name": "Tlacotalpan",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.61333,
+        "lon": -95.6589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlacotalpan",
+          "url": "https://en.wikipedia.org/wiki/Tlacotalpan",
+          "text": "Tlacotalpan is a city in Tlacotalpan Municipality in the Mexican state of Veracruz, declared a World Heritage Site by UNESCO in 1998 primarily for its architecture and colonial-era layout. The town was established in 1550 on what was originally an island in the Papaloapan River. From the colonial era to the 20th century, it was an important port, one of few interior river ports in Latin America. However, with the construction of the railroad, Tlacotalpan's importance faded. Starting in the latter 20th century, efforts to conserve the city's Spanish/Caribbean architecture and layout began, culminating in World Heritage status. Today, its main economic support is fishing and tourism, especially to the annual feast in honor of Our Lady of Candlemas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "tlacotalpan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4698,
+    "attempt": 4663,
+    "place_id": "gn-4371053",
+    "input": {
+      "place": {
+        "place_id": "gn-4371053",
+        "name": "Temple Hills",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.814,
+        "lon": -76.94553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Temple Hills, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Temple_Hills,_Maryland",
+          "text": "Temple Hills is an unincorporated area and census-designated place (CDP) in Prince George's County, Maryland, United States. Temple Hills borders the communities of Hillcrest Heights, Marlow Heights, Camp Springs and Oxon Hill. Per the 2020 census, the population was 8,350.\nThe community was named after Edward Temple, who in the 1860s lived in a home beside Henson Creek known as Moor Park. Within the area are numerous garden apartments, duplexes, and single family communities constructed mostly from the 1950s through 1970s. The adjacent, unincorporated communities of Hillcrest Heights and Marlow Heights, which are home to both the Iverson Mall & Marlow Heights Shopping Center, which both serve the community of Temple Hills, are assigned Temple Hills addresses and zipcodes.\nRosecroft Raceway (since 1949, harness horse racing) is nearby in Oxon Hill, although the racing audience has declined greatly. There are large public indoor and outdoor swimming pools operated by the Maryland-National Capital Park and Planning Commission, and also the private Temple Hills Swim Club. The area is especially convenient to the Capital Beltway (I-95/I-495), the Metrorail Green Line, Joint Base Andrews, the U.S. Census Bureau, and Capitol Hill.\nSince the clogged interstate Woodrow Wilson Bridge was widened in 2008, commuter access to Northern Virginia's job market has improved."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "temple hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "temple",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4699,
+    "attempt": 4664,
+    "place_id": "gn-4787440",
+    "input": {
+      "place": {
+        "place_id": "gn-4787440",
+        "name": "Staunton",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.14991,
+        "lon": -79.0732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Staunton, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Staunton,_Virginia",
+          "text": "Staunton ( STAN-tən) is an independent city in the U.S. Commonwealth of Virginia. As of the 2020 census, the population was 25,750. In Virginia, independent cities are separate jurisdictions from the counties that surround them, so the government offices of Augusta County are in Verona, which is contiguous to Staunton. Staunton is a principal city of the Staunton-Stuarts Draft Metropolitan Statistical Area, which had a 2020 population of 125,433. Staunton is known for being the birthplace of Woodrow Wilson, the 28th U.S. president, and as the home of Mary Baldwin University, historically a women's college. The city is also home to Stuart Hall, a private co-ed preparatory school, as well as the Virginia School for the Deaf and Blind. It was the first city in the United States with a fully defined city manager system."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "staunton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4700,
+    "attempt": 4665,
+    "place_id": "gn-5100477",
+    "input": {
+      "place": {
+        "place_id": "gn-5100477",
+        "name": "Lincoln Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.92427,
+        "lon": -74.30209
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lincoln Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Lincoln_Park,_New_Jersey",
+          "text": "Lincoln Park is a borough in Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 10,915, an increase of 394 (+3.7%) from the 2010 census count of 10,521, which in turn reflected a decline of 409 (−3.7%) from the 10,930 counted in the 2000 census.\nLincoln Park was incorporated as a borough by an act of the New Jersey Legislature on March 11, 1922, from portions of Pequannock Township. The borough was reincorporated on February 26, 1925. The borough was named for President Abraham Lincoln. The borough is situated in the easternmost part of Morris County bordering both Essex and Passaic counties along the Passaic and Pompton rivers.\nNew Jersey Monthly magazine ranked Lincoln Park as its 5th best place to live in its 2008 rankings of the \"Best Places To Live\" in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "lincoln park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lincoln",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4701,
+    "attempt": 4666,
+    "place_id": "gn-5924500",
+    "input": {
+      "place": {
+        "place_id": "gn-5924500",
+        "name": "Coaticook",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.13339,
+        "lon": -71.79907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coaticook",
+          "url": "https://en.wikipedia.org/wiki/Coaticook",
+          "text": "Coaticook (English:  koh-AT-ik-uuk, Quebec French: [kwat͡sɪˈkʊk]) is a town on the Coaticook River, located in southeastern Quebec, Canada. It resides in the region of Estrie, which is often referred to colloquially as the Eastern Townships. \nIt is the seat of the Coaticook Regional County Municipality, and its southern border is also the Canada–United States border.\nThe town of Coaticook was initially settled in the 1820s by British Loyalists coming from New England. The town was incorporated in 1864, and the municipalities of Barnston Township and Barford Township were later merged into Coaticook on December 12, 1998. The absorption of these townships introduced multiple communities to Coaticook that exist to this day, including Baldwin's Mills, Barnston, Ladd's Mills and Stanhope. As of 2021, the population of the municipality of Coaticook was 8,867 with a total area of 222.73 square kilometres (86.00 mi2).\nThe town of Coaticook is principally known for the Laiterie de Coaticook, the Parc de la Gorge de Coaticook and Foresta Lumina, which bring in a majority of the town's tourists.\nThe municipality is named after the Coaticook River. The name “Coaticook” is of Abenaki origin, deriving from the term koatikeku, meaning “where the river is bordered by white pines”."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "coaticook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4702,
+    "attempt": 4667,
+    "place_id": "gn-7257905",
+    "input": {
+      "place": {
+        "place_id": "gn-7257905",
+        "name": "Fort Drum",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 44.05843,
+        "lon": -75.76189
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Drum",
+          "url": "https://en.wikipedia.org/wiki/Fort_Drum",
+          "text": "Fort Drum is a U.S. Army military reservation and a census-designated place (CDP) in Jefferson County, near the western border of northern New York, United States. The population of the CDP portion of the base was 12,955 at the 2010 census. It is home to the 10th Mountain Division.\nFort Drum consists of 107,265 acres (434.09 km2). In the region, winter temperatures can reach as low as −30 °F (−34 °C). Its mission includes command of active component units assigned to the installation, providing administrative and logistical support to tenant units, support to active and reserve units from all services in training at Fort Drum, and planning and support for the mobilization and training of almost 80,000 troops annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "fort drum",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "drum",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4703,
+    "attempt": 4668,
+    "place_id": "gn-753276",
+    "input": {
+      "place": {
+        "place_id": "gn-753276",
+        "name": "Zielonka",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.30376,
+        "lon": 21.16018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zielonka",
+          "url": "https://en.wikipedia.org/wiki/Zielonka",
+          "text": "Zielonka [ʑɛˈlɔnka] is a town in Wołomin County, Masovian Voivodeship, Poland, with 17,398 inhabitants (2013). It is located about 13 km (8 mi) to the north-east of the centre of Warsaw.\nZielonka borders Warsaw and several other towns of the Warsaw metropolitan area: Ząbki and Marki in the west, Kobyłka in the north, and Sulejówek in the south. It was granted town rights in 1960.\nIn August 1920, the Battle of Ossów was fought nearby, as part of the Battle of Warsaw in which the Poles were victorious and repulsed the Soviet invasion. Within the town limits, near the village of Ossów, there is a cemetery of the fallen Polish soldiers with a chapel of Our Lady of Victory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "zielonka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4704,
+    "attempt": 4669,
+    "place_id": "gn-8478264",
+    "input": {
+      "place": {
+        "place_id": "gn-8478264",
+        "name": "Herzliya Pituah",
+        "country": "Israel",
+        "subdivision": "Tel Aviv",
+        "lat": 32.17409,
+        "lon": 34.8028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herzliya Pituah",
+          "url": "https://en.wikipedia.org/wiki/Herzliya_Pituah",
+          "text": "Herzliya Pituah (also, Herzliya Pituach) (Hebrew: הרצליה פיתוח) is an affluent beachfront neighbourhood in the western part of the city of Herzliya, Israel, in the Tel Aviv District. Established in 1925, it has about 10,000 residents. Home to many wealthy Israelis, it is known for its hotels, restaurants and high-tech industry, and has the largest marina in Israel. It is considered one of Israel's most prestigious neighbourhoods.\nMost buildings in the residential areas of Herzliya Pituah are villas, though there are also luxury apartments. Galei Tchelet Street, located on a cliff adjacent to the beach in the north-western part of the neighborhood, is the most expensive street in Israel, and is home to the residences of several foreign ambassadors. Adjacent to the beach is a strip containing several hotels. The Herzliya Medical Center is located in this strip. At the southern end of the hotel strip is the Herzliya Marina, which covers an area of 500 dunams (50 hectares; 120 acres). The marina complex includes the Arena shopping mall and a variety of restaurants overlooking the water. It is the largest marina in Israel.\nIn the southeast part of Herzliya Pituah is the industrial zone. Originally home to factories, it is now a major high-tech center with local headquarters of companies such as Microsoft, Apple, SolarEdge, WeWork, Plarium and many venture capital firms. The area has many restaurants and commercial areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "herzliya pituah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "herzliya",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pituah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4705,
+    "attempt": 4670,
+    "place_id": "gn-1253308",
+    "input": {
+      "place": {
+        "place_id": "gn-1253308",
+        "name": "Velankanni",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.68333,
+        "lon": 79.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Velankanni",
+          "url": "https://en.wikipedia.org/wiki/Velankanni",
+          "text": "Velankanni (Vēḷāṅkaṇṇi) is a special grade town panchayat in Nagapattinam district in the Indian state of Tamil Nadu. It lies on the Coromandel Coast of the Bay of Bengal, 350 km south of Chennai (Madras), 12 km south of Nagapattinam, and 33 km southeast of Thiruvarur.\nA canal built to link this town with Vedaranyam still lies to the west. The Vellayar, a minor branch of the Cauvery River, runs south of the town and discharges into the sea. The town was among the worst hit by the tsunami caused by the 2004 Indian Ocean earthquake.\nThe town is home to one of the most visited Latin Catholic shrines called the Basilica of Our Lady of Good Health.\nVelankanni has been chosen as one of the heritage cities for the Heritage City Development and Augmentation Yojana (HRIDAY) scheme of the Government of India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "velankanni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4706,
+    "attempt": 4671,
+    "place_id": "gn-1731749",
+    "input": {
+      "place": {
+        "place_id": "gn-1731749",
+        "name": "Alabat",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.101,
+        "lon": 122.0125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alabat, Quezon",
+          "url": "https://en.wikipedia.org/wiki/Alabat,_Quezon",
+          "text": "Alabat, officially the Municipality of Alabat (Tagalog: Bayan ng Alabat),  is a municipality in the province of Quezon, Philippines. According to the 2024 census, it has a population of 15,744 people.\nThe town is home to a few speakers of the critically endangered Inagta Alabat language, one of the most endangered languages in the world as listed by UNESCO.\nIt is founded in the year 1882 by a Spanish priest from Gumaca and built an ermita that honours Our Lady of Monte Carmelo. Its first name was Gordo, which means \"fat\", due to the island's shape. It was change to Gordon, Barcelona, and later on Alabat. The formal establishment of the town is in the year of 1900."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "alabat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4707,
+    "attempt": 4672,
+    "place_id": "gn-2516325",
+    "input": {
+      "place": {
+        "place_id": "gn-2516325",
+        "name": "Jerez de los Caballeros",
+        "country": "Spain",
+        "subdivision": "Extremadura",
+        "lat": 38.32063,
+        "lon": -6.7726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jerez de los Caballeros",
+          "url": "https://en.wikipedia.org/wiki/Jerez_de_los_Caballeros",
+          "text": "Jerez de los Caballeros (Spanish: [xeˈɾeθ ðe los kaβaˈʎeɾos] ) is a town of south-western Spain, in the province of Badajoz. It is located on two hills overlooking the River Ardila, a tributary of the Guadiana, 18 km east of the Portuguese border. The old town is surrounded by a Moorish wall with six gates. The town is said to have been founded by Alfonso IX of Leon in 1229; in 1232 it was extended by his son Ferdinand III the Saint, who gave it to the Knights Templar. Hence the name Jerez de los Caballeros, Jerez of the Knights.\nJerez de los Caballeros is the birthplace of the explorers Hernando de Soto and Vasco Núñez de Balboa. On 10 May 1539, Hernando de Soto wrote in his will: \"That a chapel be erected within the Church of San Miguel in Jerez de los Cabelleros, Spain, where De Soto grew up, at a cost of 2,000 ducats, with an altarpiece featuring the Virgin Mary, Our Lady of the Conception, that his tomb be covered in a fine black broadcloth topped by a red cross of the Order of the Knights of Santiago, and on special occasions a pall of black velvet with the De Soto coat of arms be placed on the altar; that a chaplain be hired at the salary of 12,000 maravedis to perform five masses every week for the souls of De Soto, his parents and wife; that thirty masses be said for him the day his body was interred, and twenty for our Lady of the Conception, ten for the Holy Ghost, sixty for souls in purgatory and masses for many others as well; that 150000 maravedis be given annually to his wife Isabel for her needs and an equal amount used yearly to marry off three orphan damsels...the poorest that can be found,\" who would then assist his wife and also serve to burnish the memory of De Soto as a man of charity and substance. However, De Soto ended up dead in the house of an Indian chief at the headwaters of the Arkansas River near present-day McArthur, Arkansas, and died an impoverished defeated man, with \"four Indian slaves, three horses and 700 hogs\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 370
+    },
+    "banned_terms": [
+      {
+        "term": "jerez de los caballeros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jerez",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caballeros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4708,
+    "attempt": 4673,
+    "place_id": "gn-2643933",
+    "input": {
+      "place": {
+        "place_id": "gn-2643933",
+        "name": "Llantwit Major",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.4107,
+        "lon": -3.48632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Llantwit Major",
+          "url": "https://en.wikipedia.org/wiki/Llantwit_Major",
+          "text": "Llantwit Major (Welsh: Llanilltud Fawr) is a town and community in Wales on the Bristol Channel coast. It is one of four towns in the Vale of Glamorgan, with the third largest population (13,366 in 2001) after Barry and Penarth, and ahead of Cowbridge. It is 4+1⁄2 miles (7.2 km) from Cowbridge, 9 miles (14 km) from Bridgend, 10 miles (16 km) from Barry, and 15 miles (24 km) from Cardiff. It had a population of 9,530 in 2021.\nLlanilltud Fawr, named for the Llan (land) of Saint Illtud, was home to the Monastery of Illtud and the college known as Bangor Illtyd. It became one of the most esteemed centres of Christian culture in the Celtic world. At its peak it had over 2,000 students, including princes, eminent clergymen, and revered saints. The institutions were destroyed by the raiding Vikings in 987, but Normans rebuilt the monastery in 1111 and it continued to be a centre of learning until it was disbanded in 1539 during the dissolution of the monasteries. The 13th-century St Illtyd's Church, near the ancient monastery, is a Grade I listed building and one of Wales's oldest parish churches.\nIn the 20th century, the modern town developed rapidly to accommodate Royal Air Force personnel from the St Athan base. Remnants of the medieval cobbled streets can be seen adjacent to the 12th-century Old Swan Inn, and numerous buildings of the 15th and 16th centuries remain.\nColhugh Beach is a popular surfing venue and has the remnants of an Iron Age fort and some of Wales' finest examples of Jurassic fossils. The pebble beach and its clifftops are protected as part of the Glamorgan Heritage Coast, which stretches for 14 miles (23 km) from Gileston to the east to Southerndown and Newton Point to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 299
+    },
+    "banned_terms": [
+      {
+        "term": "llantwit major",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "llantwit",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "major",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4709,
+    "attempt": 4674,
+    "place_id": "gn-2746860",
+    "input": {
+      "place": {
+        "place_id": "gn-2746860",
+        "name": "Stadskanaal",
+        "country": "Netherlands",
+        "subdivision": "Groningen",
+        "lat": 52.98947,
+        "lon": 6.9504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stadskanaal",
+          "url": "https://en.wikipedia.org/wiki/Stadskanaal",
+          "text": "Stadskanaal (Dutch pronunciation: [ˌstɑtskaːˈnaːl] ) is a town and municipality in the province of Groningen in the northeast of the Netherlands. It was named after the canal Stadskanaal which literally means \"City Canal\" and it is a linear village. In the Gronings dialect the town is called \"Knoal\" and the locals are called \"Knoalsters\".\n\nFrom 1800 until 1900 this area was ideal for its peat mining, and so the canal came to ship all the peat to Groningen, the capital of the province. With industrialization, many of Stadskanaal's peat colony features, as well as many of its characteristic shophouses, were lost. The town now has 19,060 inhabitants (2023), making it one of the largest towns in the province. Together with Nieuw-Buinen, located across the provincial Drenthe border (the straight-line Semslinie), it forms a double core with just under 24,000 inhabitants. The Stadskanaal municipality overall has a population of 32,715.\nThe municipality of Stadskanaal was created on 1 January 1969, by merging the former municipality of Onstwedde with part of the former municipality of Wildervank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "stadskanaal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4710,
+    "attempt": 4675,
+    "place_id": "gn-2838502",
+    "input": {
+      "place": {
+        "place_id": "gn-2838502",
+        "name": "Schliersee",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.73621,
+        "lon": 11.85936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schliersee",
+          "url": "https://en.wikipedia.org/wiki/Schliersee",
+          "text": "Schliersee (German pronunciation: [ˈʃliːɐ̯zeː]) is a small town (Markt) and a municipality in the district of Miesbach in Bavaria in Germany. It is named after the nearby Lake Schliersee. It comprises the districts Schliersee (town), Westenhofen, Neuhaus, Fischhausen, Josefsthal and Spitzingsee.\nAmong the points of interest in Schliersee, a climatic health resort, is the St Sixtus church with a Holy Trinity group by Erasmus Grasser and wall and ceiling frescoes by Johann Baptist Zimmermann. The excellent quality of the water in the Schliersee is due in large part to the construction of a system for purifying waste water from the area surrounding the lake, which was supported by the state of Bavaria with large subsidies and low-interest loans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "schliersee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4711,
+    "attempt": 4676,
+    "place_id": "gn-2963848",
+    "input": {
+      "place": {
+        "place_id": "gn-2963848",
+        "name": "Greystones",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.14083,
+        "lon": -6.06306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greystones",
+          "url": "https://en.wikipedia.org/wiki/Greystones",
+          "text": "Greystones (Irish: Na Clocha Liatha) is a coastal town and seaside resort in County Wicklow, Ireland. It lies on Ireland's east coast, 3.5 km (2.2 mi) south of Bray and 24 km (15 mi) south of Dublin city centre and has a population of 22,009, according to the 2022 census. The town is bordered by the Irish Sea to the east, Bray Head to the north and the Wicklow Mountains to the west. It is the second largest town in County Wicklow (after Bray).\nThe town was named after a half-mile or one-kilometre stretch of grey stones between two beaches on the seafront. The harbour area and Greystones railway station are at the northern and southern ends respectively. The North Beach, which begins at the harbour, is a stony beach, and some of its length is overlooked by the southern cliffs of Bray Head, which are subject to erosion. The South Beach is a broad sandy beach about one kilometre long. It is a Blue Flag beach and receives many visitors and tourists, mainly in the summertime.\nIn 2008, Greystones was named as the world's \"most liveable community\" at the LivCom Awards in China. The community received the same award again in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "greystones",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4712,
+    "attempt": 4677,
+    "place_id": "gn-3234498",
+    "input": {
+      "place": {
+        "place_id": "gn-3234498",
+        "name": "East Cowes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.75774,
+        "lon": -1.28815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Cowes",
+          "url": "https://en.wikipedia.org/wiki/East_Cowes",
+          "text": "East Cowes is a town and civil parish in the north of the Isle of Wight, on the east bank of the River Medina, next to its west bank neighbour Cowes. It has a population of 8,428 according to the 2021 Census.\nThe two towns are connected by the Cowes Floating Bridge, a chain ferry operated by the Isle of Wight Council.\nEast Cowes is the site of Norris Castle, and Osborne House, the former summer residence of Queen Victoria and Prince Albert. The Prince had a major influence on the architecture of the area, for example on the building of St Mildred's Church in nearby Whippingham, which features distinctive turrets imitating those found on a German castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "east cowes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cowes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4713,
+    "attempt": 4678,
+    "place_id": "gn-3523436",
+    "input": {
+      "place": {
+        "place_id": "gn-3523436",
+        "name": "Maxcanú",
+        "country": "Mexico",
+        "subdivision": "Yucatán",
+        "lat": 20.58567,
+        "lon": -90.002
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maxcanú",
+          "url": "https://en.wikipedia.org/wiki/Maxcan%C3%BA",
+          "text": "Maxcanú is a large town in the western part of the Mexican state of Yucatán; it  also functions as the seat for the Maxcanú Municipality.  It is located on Federal Highway 180, approximately 62 km (39 mi) south of Mérida.\nThe ancient Maya site of Oxkintok and the caves of Calcehtok are close to Maxcanú, while another ancient Maya settlement, Chunchucmil, is located ca. 25 kilometers west of the town.\nFacilities available in Maxcanú include: internet cafes; grocery stores; fresh produce market; family restaurants; public telephones; hardware stores; bus station (for connections to Mérida and Campeche); and a \"combi\" taxi stand for travelling to local villages. Maxcanú railway station on the Tren Maya is just outside of town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "maxcanu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4714,
+    "attempt": 4679,
+    "place_id": "gn-5085374",
+    "input": {
+      "place": {
+        "place_id": "gn-5085374",
+        "name": "Derry",
+        "country": "United States",
+        "subdivision": "New Hampshire",
+        "lat": 42.88064,
+        "lon": -71.32729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derry, New Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Derry,_New_Hampshire",
+          "text": "Derry is a town in Rockingham County, New Hampshire, United States. The population was 34,317 at the 2020 census. Although it is a town and not a city, Derry is the most populous community in Rockingham County and the 4th most populous in the state. The town's nickname, \"Spacetown\", derives from the fact that Derry is the birthplace of Alan Shepard, the first astronaut from the United States in space. Derry was also for a time the home of the poet Robert Frost and his family.\nThe Derry census-designated place, with a 2020 population of 22,879, occupies the central part of the town, extending from Derry's downtown in the west to the town of Hampstead in the east. The town also includes the village of East Derry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "derry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4715,
+    "attempt": 4680,
+    "place_id": "gn-5104853",
+    "input": {
+      "place": {
+        "place_id": "gn-5104853",
+        "name": "South River",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.44649,
+        "lon": -74.38598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South River, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/South_River,_New_Jersey",
+          "text": "South River is a borough in Middlesex County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 16,118, an increase of 110 (+0.7%) from the 2010 census count of 16,008, which in turn reflected an increase of 686 (+4.5%) from the 15,322 counted in the 2000 census.\nWhat is now South River was originally formed as the town of Washington within East Brunswick Township on February 23, 1870. South River was incorporated as an independent borough by an act of the New Jersey Legislature on February 28, 1898, replacing Washington town. It was named after the Raritan River's South River tributary, which marks the borough's eastern and northeastern boundary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "south river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 4636,
+    "attempt": 4601,
+    "place_id": "gn-790367",
+    "input": {
+      "place": {
+        "place_id": "gn-790367",
+        "name": "Gornji Milanovac",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 44.02603,
+        "lon": 20.46152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gornji Milanovac",
+          "url": "https://en.wikipedia.org/wiki/Gornji_Milanovac",
+          "text": "Gornji Milanovac (Serbian Cyrillic: Гoрњи Милановац, pronounced [ɡôːrɲiː mǐlanoʋats] ) is a town and municipality located in the Moravica District of central Serbia. The population of the town is 23,109, while the population of the municipality is 38,985 (2022 census data).\nThe town was founded in 1853 as Despotovica (Деспотовица), after the river passing by the town. In 1859 the name was changed to Gornji Milanovac at the request of Prince Miloš Obrenović. Its name means Upper Milanovac (there is a Lower Milanovac as well, while Milanovac was named so in honour of revolutionary Milan Obrenović).\nThe microregion of Rudnik–Takovo (Serbian: Рудничко-таковски крај), or simply Takovo (Serbian: Таково, Таковски крај), in the broader sense roughly corresponds to the modern municipality of Gornji Milanovac. It includes the southern foothills of the Rudnik mountain, and northern foothills of Suvobor and Maljen. Some villages in the municipality are part of the Kačer region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "gornji milanovac",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gornji",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "milanovac",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4637,
+    "attempt": 4602,
+    "place_id": "gn-8349323",
+    "input": {
+      "place": {
+        "place_id": "gn-8349323",
+        "name": "Mawson Lakes",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.81589,
+        "lon": 138.60809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mawson Lakes, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Mawson_Lakes,_South_Australia",
+          "text": "Mawson Lakes, on the site of the former sheep breeding establishment known as The Levels, is a northern residential suburb of Adelaide, Australia. It was created in the late 1990s and named in honour of Douglas Mawson, and is located approximately 12 kilometres (7.5 mi) north of the Adelaide central business district. It is also the site and name of a campus of Adelaide University (formerly University of South Australia, originally established as The Levels campus of South Australian Institute of Technology). Similar to the large tidal lake at West Lakes, Mawson Lakes features the 7-hectare (17-acre) Sir Douglas Mawson Lake, a recreation lake which is the centrepiece of the residential portion of the development — and forms part of the suburb's namesake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "mawson lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mawson",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4638,
+    "attempt": 4603,
+    "place_id": "gn-10713706",
+    "input": {
+      "place": {
+        "place_id": "gn-10713706",
+        "name": "Apra",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 31.08628,
+        "lon": 75.87907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Apra, Punjab",
+          "url": "https://en.wikipedia.org/wiki/Apra,_Punjab",
+          "text": "Apra, also known as The Golden City Apra, is a census town in Phillaur Tehsil in Jalandhar district of Punjab State, India. The town is known for gold jewelry and paddy crops which are produced in large amounts. It is located 46 kilometres (29 mi) towards East from Jalandhar, 12 kilometres (7.5 mi) from Phillaur and 110 kilometres (68 mi) from Chandigarh. Apra is the largest town as compared to other surrounding villages and has the main marketplace. The town is administrated by Sarpanch an elected representative of the village.\n\nThe nearest train station is situated 12 kilometres (7.5 mi) away in Phillaur, nearest domestic airport is at Ludhiana and the nearest international airport is 142.5 kilometres (88.5 mi) away in Amritsar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "apra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4639,
+    "attempt": 4604,
+    "place_id": "gn-2634623",
+    "input": {
+      "place": {
+        "place_id": "gn-2634623",
+        "name": "Weaverham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.26018,
+        "lon": -2.57291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weaverham",
+          "url": "https://en.wikipedia.org/wiki/Weaverham",
+          "text": "Weaverham is a village and civil parish in the borough of Cheshire West and Chester and the ceremonial county of Cheshire in England. Just off the A49, it is just to the west of Northwich and south of the River Weaver, and has a population of 6,589, decreasing to 6,391 at the 2011 UK Census.\nWeaverham is also home to the Anglican Church of St Mary, the Roman Catholic church of St Bede and the Methodist church of All Saints.  From September 2011, the Storehouse Church also meets weekly in Weaverham.\nThe schools in Weaverham include the following: three primary schools: St. Bede's Roman Catholic Primary School, Weaverham Forest Primary School and Nursery, and Weaverham Primary Academy, formerly Wallerscote Community Primary School. There is also a SEN school, The Russett School.\nWeaverham is adjacent to Owley Wood, part of the Mersey Forest. The wood extends for over 5 hectares (12 acres) along the River Weaver valley and is named after the tawny owls which inhabit the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "weaverham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4640,
+    "attempt": 4605,
+    "place_id": "gn-2873291",
+    "input": {
+      "place": {
+        "place_id": "gn-2873291",
+        "name": "Marktoberdorf",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.77964,
+        "lon": 10.61713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marktoberdorf",
+          "url": "https://en.wikipedia.org/wiki/Marktoberdorf",
+          "text": "Marktoberdorf (German: [maʁktˈʔoːbɐdɔʁf] ) is the capital of the Bavarian district of Ostallgäu in the Regierungsbezirk of Swabia.\nMarktoberdorf is near the town of Kempten, Füssen, known for the castle Neuschwanstein, Bad Wörishofen, and Schongau. The nearest larger city is Kaufbeuren, eleven kilometers away.\nMarktoberdorf plays host to the International Chamber Choir Competition Marktoberdorf every two years. In computer science, it is known for its hosting of the annual International Summer School Marktoberdorf every year since 1970. This Advanced Study Institute of the NATO Security Through Science Committee (now NATO Science for Peace) and the computer science department of the Technical University of Munich is a two-week course for young computer scientists and mathematicians working in the field of formal systems' development. Students are accommodated in the boarding house of the local high school, Gymnasium Marktoberdorf.\nMarktoberdorf is home to the tractor manufacturer Fendt, where its founder Xaver Fendt was born."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "marktoberdorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4641,
+    "attempt": 4606,
+    "place_id": "gn-3110876",
+    "input": {
+      "place": {
+        "place_id": "gn-3110876",
+        "name": "Sant Andreu",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.43541,
+        "lon": 2.18982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Andreu",
+          "url": "https://en.wikipedia.org/wiki/Sant_Andreu",
+          "text": "Sant Andreu (Catalan pronunciation: [ˌsant ənˈdɾew], in spanish: San Andrés) is one of the ten districts of Barcelona since its redistricting in 1984. It was named after the former municipality of Sant Andreu de Palomar, which was the largest in the area and now makes up the bulk of the neighbourhood bearing its name, as well as part of the neighboring district of Nou Barris.\nIts size is 653 ha. (third district in size) and it had 142,598 inhabitants in 2005. It is in the northern part of the city, bordering the river Besòs, two adjacent towns in the metropolitan area, Sant Adrià de Besòs and Santa Coloma de Gramenet, and three other districts of Barcelona: Nou Barris, Horta-Guinardó and Sant Martí."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "sant andreu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andreu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4642,
+    "attempt": 4607,
+    "place_id": "gn-3123667",
+    "input": {
+      "place": {
+        "place_id": "gn-3123667",
+        "name": "El Astillero",
+        "country": "Spain",
+        "subdivision": "Cantabria",
+        "lat": 43.40094,
+        "lon": -3.82051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Astillero",
+          "url": "https://en.wikipedia.org/wiki/El_Astillero",
+          "text": "El Astillero (English: \"The Shipyard\") is a town and municipality in the province and autonomous community of Cantabria, northern Spain. It is near the provincial capital of Santander, and it is known for its shipyard, and for hosting of Spanish national Rowing Championships. Its location is geographically defined by the estuaries that surround it. It is located between the municipalities of Camargo (formerly part of El Astillero), Villaescusa, Piélagos, Medio Cudeyo and Marina de Cudeyo. Located at the foot of Peña Cabarga, is 7.5 kilometres away from the capital, Santander, and is 20 metres above sea level.\nThe confluence of the rivers and the coast of the bay is a large expanse of wetlands where various migratory birds nest throughout the year. The municipality covers an area of 6.80 km."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "el astillero",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "astillero",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4643,
+    "attempt": 4608,
+    "place_id": "gn-3364208",
+    "input": {
+      "place": {
+        "place_id": "gn-3364208",
+        "name": "Melkbosstrand",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.72614,
+        "lon": 18.44286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melkbosstrand",
+          "url": "https://en.wikipedia.org/wiki/Melkbosstrand",
+          "text": "Melkbosstrand (Afrikaans for \"Milkbush beach\") is a coastal town located on the South West Coast of South Africa, 30 km north of Cape Town. It forms part of the City of Cape Town Metropolitan Municipality, the municipality governing Cape Town and its greater metropolitan area.\nNamed after the species of Euphorbiaceae bushes which grow on the dunes and give off a milky latexlike substance, it is commonly referred to simply as Melkbos. The town and its 7 kilometre stretch of white sand beach is situated on the Atlantic coast with the Blouberg mountain to the east. The beach is popular with surfers. It is one of the landing points for the South Africa-Far East, South Atlantic/West Africa and Equinao submarine cable systems.\nMelkbosstrand is along the Blaauwberg region of the City of Cape Town within which it became incorporated when metropolitan boundaries were redrawn, following the advent of democracy in 1994. Its nearest neighbouring towns are Blouberg to the south and Atlantis to the north-east. Melkbos is protected from urban development owing to its location in an expansive nature conservation zone to the South, insulating it from the Blouberg sprawl, and the security buffer zones of  Koeberg nuclear power station to the North and today it remains a pristine seaside resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "melkbosstrand",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4644,
+    "attempt": 4609,
+    "place_id": "gn-3618411",
+    "input": {
+      "place": {
+        "place_id": "gn-3618411",
+        "name": "La Paz Centro",
+        "country": "Nicaragua",
+        "subdivision": "León Department",
+        "lat": 12.34,
+        "lon": -86.67528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Paz Centro",
+          "url": "https://en.wikipedia.org/wiki/La_Paz_Centro",
+          "text": "La Paz Centro (Spanish pronunciation: [la pas ˈsentɾo]) is a town and a municipality in the León Department of Nicaragua.\nThe town is located along the highway between Managua and León. The small municipality is known for its small shops and pottery. La Paz Centro is the home of the Asososca Lagoon Natural Reserve, which is one of the few water reserves in Nicaragua that remains uncontaminated. For decades, La Paz Centro and the bordering town Nagarote have been in a feud about which town makes the best quesillos.\nThe town was the site of a battle between American Marines and Nicaraguan Liberal rebels in the aftermath of the Nicaraguan Civil War (1926–1927) on May 16, 1927, prior to the Sandino Rebellion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "la paz centro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "centro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4645,
+    "attempt": 4610,
+    "place_id": "gn-5097521",
+    "input": {
+      "place": {
+        "place_id": "gn-5097521",
+        "name": "Edgewater Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.06817,
+        "lon": -74.90072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edgewater Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Edgewater_Park,_New_Jersey",
+          "text": "Edgewater Park is a township in Burlington County, in the U.S. state of New Jersey and a northeastern suburb of Philadelphia within the Philadelphia metropolitan area. As of the 2020 United States census, the township's population was 8,930, an increase of 49 (+0.6%) from the 2010 census count of 8,881, which in turn reflected an increase of 1,017 (+12.9%) from the 7,864 counted in the 2000 census. The township, and all of Burlington County, is a part of the Philadelphia metropolitan area.\nEdgewater Park was incorporated as a township by an act of the New Jersey Legislature on February 26, 1924, from portions of Beverly Township (now known as Delanco Township).} The township was named for its location along the Delaware River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "edgewater park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "edgewater",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4646,
+    "attempt": 4611,
+    "place_id": "gn-5119019",
+    "input": {
+      "place": {
+        "place_id": "gn-5119019",
+        "name": "Grand Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.03311,
+        "lon": -78.96254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grand Island, New York",
+          "url": "https://en.wikipedia.org/wiki/Grand_Island,_New_York",
+          "text": "Grand Island (Seneca: Ga:wé:nö’geh) is an island town in Erie County, New York, United States. As of the 2020 census, the town's population was 21,389 representing an increase of 5.00% from the 2010 census figure. The town's name is derived from the French name La Grande Île; Grand Island is the largest island in the Niagara River and the third largest in New York state. The phrase La Grande Île appears on the town seal.\nGrand Island has been home to the Attawandaron Nation and an acquisition of both French and English colonial pursuits. In 1945, Grand Island was part of a plan to make a new World Peace Capital on the international border between Southern Ontario, Canada, and Western New York. The plan proposed placing the United Nations headquarters on adjacent Navy Island (Ontario), which was considered an ideal location because it lay on the boundary between two peaceful countries. An artist's rendering of the World Peace Capital showed the property with bridges spanning both countries (between Grand Island in the United States and the Canadian mainland). The proposal was turned down in favor of the current U.N. headquarters in New York City.\nThe town of Grand Island is in the northwestern corner of Erie County, and on the Canada–US border, although there is no river crossing to Canada. It is northwest of Buffalo, south of Niagara Falls, and is traversed by Interstate 190 and New York State Route 324."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "grand island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4647,
+    "attempt": 4612,
+    "place_id": "gn-5164582",
+    "input": {
+      "place": {
+        "place_id": "gn-5164582",
+        "name": "Niles",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.18284,
+        "lon": -80.76536
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niles, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Niles,_Ohio",
+          "text": "Niles is a city in Trumbull County, Ohio, United States. The population was 18,443 at the 2020 census. Located at the confluence of the Mahoning River and Mosquito Creek, Niles is a suburb in the Youngstown–Warren metropolitan area, and roughly halfway between the two principal cities.\nNiles is best known as the birthplace of William McKinley, the 25th president of the United States. Located in the Rust Belt, the city's economy focused initially on iron manufacturing but later diversified to include steel and glass production. After the decline of heavy industry in the region in the 1970s, Niles became a retail hub for the northern Mahoning Valley with development centered around the Eastwood Mall complex and along the U.S. Route 422 corridor. The Mahoning Valley Scrappers baseball team plays at 7 17 Credit Union Field at Eastwood in Niles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "niles",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4648,
+    "attempt": 4613,
+    "place_id": "gn-5334799",
+    "input": {
+      "place": {
+        "place_id": "gn-5334799",
+        "name": "Castaic",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.48888,
+        "lon": -118.62287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castaic, California",
+          "url": "https://en.wikipedia.org/wiki/Castaic,_California",
+          "text": "Castaic ( ) (Chumash: Kaštiq; Spanish: Castéc) is an unincorporated community and census-designated place (CDP) in northwestern Los Angeles County, California, United States. As of the 2020 census it had a population of 18,937.\nTens of thousands of motorists pass through Castaic daily as they drive to or from Los Angeles on Interstate 5 (the Golden State Freeway). Castaic Lake is part of the California Water Project and is the site of a hydro-electric power plant. Castaic is 38 miles (61 km) northwest of Los Angeles Union Station and northwest of the city of Santa Clarita.\nThe Castaic Range War went on for decades in the late 19th and early 20th centuries resulting in dozens of deaths before hostilities ceased in 1916."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "castaic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4649,
+    "attempt": 4614,
+    "place_id": "gn-5710669",
+    "input": {
+      "place": {
+        "place_id": "gn-5710669",
+        "name": "Agate Beach",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 44.67734,
+        "lon": -124.06178
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agate Beach, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Agate_Beach,_Oregon",
+          "text": "Agate Beach is an unincorporated community in Lincoln County, Oregon, United States. Agate Beach is named for the agates that are found on the beaches of the Pacific Ocean between Newport and Yaquina Head. Agate Beach post office was established in 1912 and closed in 1971.\nHistorically, the area's most famous citizen was composer Ernest Bloch, who spent his later years in the community. The 1914 Ernest Bloch House is on the National Register of Historic Places and was once owned by the son of Asahel Bush and his family.\nIn June 2012 a 165-ton floating dock dislodged from the March 2011 Japanese tsunami washed up ashore, creating a popular tourist attraction as well as an imperative to remove potential invasive species."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "agate beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "agate",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4650,
+    "attempt": 4615,
+    "place_id": "gn-6179226",
+    "input": {
+      "place": {
+        "place_id": "gn-6179226",
+        "name": "Westmount",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.48341,
+        "lon": -73.59918
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westmount",
+          "url": "https://en.wikipedia.org/wiki/Westmount",
+          "text": "Westmount (French pronunciation: [wɛstmaunt]) is a city on the Island of Montreal, in southwestern Quebec, Canada. Enclaved by the city of Montreal, it had a population of 19,658 in the 2021 Canadian census.\nWestmount is home to schools, an arena, a pool, a public library and a number of parks, including Westmount Park, King George Park (also known as Murray Hill Park) and Westmount Summit. The city operates its own electricity distribution company Westmount Light & Power (Hydro-Westmount).  The city is also the location of two Canadian Forces Primary Reserve units: The Royal Montreal Regiment and 34th Signals Regiment.\nTraditionally, the community of Westmount has been a wealthy and predominantly anglophone enclave, having been at one point the richest community in Canada. It is still the most affluent neighbourhood in Canada outside of Toronto, Vancouver, and Calgary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "westmount",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4651,
+    "attempt": 4616,
+    "place_id": "gn-6180144",
+    "input": {
+      "place": {
+        "place_id": "gn-6180144",
+        "name": "Whistler",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.11817,
+        "lon": -122.95396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whistler, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Whistler,_British_Columbia",
+          "text": "Whistler is a resort municipality in Squamish-Lillooet Regional District, British Columbia, Canada. It is located in the southern Pacific Ranges of the Coast Mountains, approximately 125 km (78 mi) north of Vancouver and 36 km (22 mi) south of Pemberton. It has a permanent population of approximately 13,982 (2021), and 3,241 seasonal residents (estimated). \nOver two million people visit Whistler annually, primarily for alpine skiing and snowboarding and, in the summer, mountain biking at Whistler Blackcomb. Its pedestrian village has won numerous design awards, and Whistler has been voted among the top destinations in North America by major ski magazines since the mid-1990s. During the 2010 Vancouver Winter Olympics, Whistler hosted most of the alpine events, Nordic, luge, skeleton, and bobsled events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "whistler",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4652,
+    "attempt": 4617,
+    "place_id": "gn-13353470",
+    "input": {
+      "place": {
+        "place_id": "gn-13353470",
+        "name": "Cherpu",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 10.43129,
+        "lon": 76.19902
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cherpu",
+          "url": "https://en.wikipedia.org/wiki/Cherpu",
+          "text": "Cherpu  is a suburb of Thrissur city in the Kerala State of South India. It is 12 kilometres south of Thrissur town and is on the Thriprayar road. It is dotted by a number of temples and has quite a few rivers flowing by its vicinity.\nThe village occupies a prominent place in the Kerala's cultural map as Cherpu is one of the main venues of the state's classical percussion ensembles like chenda melam and panchavadyam, staged as they are during temple festivals called pooram. Naturally, Cherpu is the birthplace of many leading (as well as lesser known) practitioners of ethnic Kerala instruments like chenda, ilathalam, kombu, kuzhal, timila, maddalam and edakka.\nCherpu has two major poorams—Peruvanam Pooram and Arattupuzha Pooram. Peruvanam, otherwise traditionally known as one of the leading Namboodiri villages of Kerala, has today many of its people employed in the manufacture of furniture and gold ornaments. Legend has it that Peruvanam village was one of the settlements created by sage Parashuram, the mythical creator of Kerala.\nCherpu was a central place for Mahatma Gandhi's village renaissance. It was known as \"Vardha\" at the time of the Kochi kingdom.\nAs for its temples, Cherpu has the grand-structured Peruvanam temple besides the ones called Arattupuzha, Urakam and Thiruvullakkavu. Thiruvullakkavu temple is famous for initiating children to the world of letters on Vidyarambham, an auspicious day in Hindu tradition.\nFor long, Cherpu had paddy fields that spread as far as Triprayar. The west and east sides of Cherpu were marked by rocks. Cherpu is located in between this rock- and water-covered area. Hence the name Cherpu, which means cherunnidam (joining place) in Malayalam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "cherpu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4653,
+    "attempt": 4618,
+    "place_id": "gn-2270184",
+    "input": {
+      "place": {
+        "place_id": "gn-2270184",
+        "name": "Carcavelos",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.69105,
+        "lon": -9.32215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carcavelos",
+          "url": "https://en.wikipedia.org/wiki/Carcavelos",
+          "text": "Carcavelos (Portuguese pronunciation: [kɐɾkɐˈvɛluʃ]) was, until 2013, a civil parish in the Portuguese municipality of Cascais, about 12 kilometres (7.5 mi) west of Lisbon. In 2013, the parish merged into the new parish Carcavelos e Parede. The parish was known for the Carcavelos wine. With the decline of the winemaking industry in the region, the attractiveness of its beaches have made the parish a destination for surfing, due to the waves here. \nAt the mouth of the Tagus River and east of the main beach is the fortification of Fort of São Julião da Barra. It was used to protect the Tagus from enemy ships, but in the 20th century it became the official summer residence of the Minister of Defense.\nIn the 19th and 20th centuries, Carcavelos was an important landing point in the international telegraph network, providing crucial communication links for the British Empire; most of the links were run by Cable & Wireless company forerunners.\nCarcavelos is home to a number of international schools including Saint Julian's School, and Nova School of Business and Economics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "carcavelos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4654,
+    "attempt": 4619,
+    "place_id": "gn-2520800",
+    "input": {
+      "place": {
+        "place_id": "gn-2520800",
+        "name": "Breña Alta",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.65,
+        "lon": -17.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Breña Alta",
+          "url": "https://en.wikipedia.org/wiki/Bre%C3%B1a_Alta",
+          "text": "Breña Alta (Spanish for Upper Breña) is a municipality on the eastern side of the island of La Palma, in the province of Santa Cruz de Tenerife, in the Canary Islands. The ayuntamiento (municipal office) is in the town of San Pedro, at 350 m above sea-level, and only 9 km south of the island's capital Santa Cruz de la Palma . Breña Alta lies on the main highway encircling the island, just north of La Palma Airport. Until the 17th century the area was known as Breña, but was then divided into Breña Alta and Breña Baja.\nBreña Alta has a fishing port, an artificial beach at Bajamar, and an industrial area. The municipality is known for its tobacco production. There is a 100-year-old dracaena tree near San Isidro. There is also a zoo called Maroparque."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "brena alta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brena",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4655,
+    "attempt": 4620,
+    "place_id": "gn-2619787",
+    "input": {
+      "place": {
+        "place_id": "gn-2619787",
+        "name": "Hornslet",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.3155,
+        "lon": 10.32041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hornslet",
+          "url": "https://en.wikipedia.org/wiki/Hornslet",
+          "text": "Hornslet is a town located in East Jutland, on the southwestern part of the Djursland peninsula, Denmark. It is a commuter town of the city of Aarhus, which lies approximately 28 kilometers to the southwest, and a railway town at Grenaabanen, the railroad between the cities of Aarhus and Grenaa.  Hornslet is located in Syddjurs Municipality, which in turn is part of Region Midtjylland, and has a population of 6,446 (1 January 2026).\nRosenholm Castle, which belongs to the Rosenkrantz family, is located immediately outside the town. The castle was recently best known for having given facilities to DR's julekalender \"Christmas at the Castle\" from 1986.\nIn the past, Hornslet was the largest town in and municipal seat of Rosenholm Municipality. 1. January 2007, it was merged with the neighbouring municipality of Rønde, to form the current Syddjurs Municipality.\nIn 2008 a spectacular collapse of a wind turbine took place, which was filmed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "hornslet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
