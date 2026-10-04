@@ -1,0 +1,23 @@
+{
+  "attempted": 200,
+  "accepted": 53,
+  "workerRejected": 92,
+  "validatorRejected": 55,
+  "malformedWorkerRejections": 0,
+  "validatorReasonHistogram": {
+    "QUOTE_UNTRACEABLE": 216,
+    "ALIAS_UNSOURCED": 1,
+    "READING_LEVEL": 231,
+    "NAME_LEAK": 5,
+    "SENTENCE_TOO_LONG": 1,
+    "SOURCE_ARTICLE_UNKNOWN": 5,
+    "CONTENT_BANNED": 1
+  },
+  "workerRejectionTierHistogram": {
+    "history": 18,
+    "climate": 72,
+    "giveaway": 1,
+    "hook": 1
+  },
+  "pipelineIssues": []
+}
