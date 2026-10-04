@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 2520,
+    "attempt": 2501,
+    "place_id": "gn-6104111",
+    "input": {
+      "place": {
+        "place_id": "gn-6104111",
+        "name": "Pickering",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.90012,
+        "lon": -79.13289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pickering, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Pickering,_Ontario",
+          "text": "Pickering (2021 census population: 99,186) is a city located in Southern Ontario, Canada, immediately east of Toronto in the Regional Municipality of Durham. It is named after the town of Pickering, in North Yorkshire.\nBeginning in the 1770s, the area was settled by primarily British colonists. An increase in population occurred after the American Revolutionary War, when the Crown resettled United Empire Loyalist and encouraged new immigration. Many of the smaller rural communities have been preserved and function as provincially significant historic sites in the Golden Horseshoe and Ontario museums. The city also includes the Pickering Casino Resort, a multi-billion-dollar casino complex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "pickering",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2521,
+    "attempt": 2502,
+    "place_id": "gn-730565",
+    "input": {
+      "place": {
+        "place_id": "gn-730565",
+        "name": "Karlovo",
+        "country": "Bulgaria",
+        "subdivision": "Plovdiv",
+        "lat": 42.63333,
+        "lon": 24.8
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karlovo",
+          "url": "https://en.wikipedia.org/wiki/Karlovo",
+          "text": "Karlovo (Bulgarian: Карлово [ˈkarɫovo]) is a historically important town in central Bulgaria located in a fertile valley along the river Stryama at the southern foot of the Balkan Mountains. It is administratively part of Plovdiv Province and has a population of about 19,373 (as of 2021), the mayor being Dr. Emil Kabaivanov. Karlovo is famous for its rose oil, which is used in producing perfume. Karlovo is also the birthplace of Vasil Levski, the most distinguished Bulgarian to start preparing the national liberation from the Ottoman rule in the late 19th century. There is a museum and large monument dedicated to him. Karlovo is also a popular location for tourism in the region.\nDuring the 2000s, Bulgarian archaeologists made discoveries in Central Bulgaria which were summarized as 'The Valley of the Thracian Kings'. On 19 August 2005, some archaeologists announced they had found the first Thracian capital, which was situated near Karlovo in Bulgaria. Many polished ceramic artifacts (pieces of roof-tiles and Greek-like vases) were discovered revealing the fortune of the town. The Bulgarian Ministry of Culture declared its support to the excavations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "karlovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2522,
+    "attempt": 2503,
+    "place_id": "gn-1164069",
+    "input": {
+      "place": {
+        "place_id": "gn-1164069",
+        "name": "Talagang",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.92766,
+        "lon": 72.41594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Talagang",
+          "url": "https://en.wikipedia.org/wiki/Talagang",
+          "text": "Talagang (Punjabi / Urdu: تلہ گنگ) is a city and the administrative headquarters of Talagang District located in Punjab, Pakistan.\nThe city is located on the Potohar Plateau, north of the Salt Range and east of the Kala Chitta Range.\nTalagang is known for its literary tradition and has produced notable writers and poets including Satyapal Anand. The local economy is largely based on arid agriculture. The region is especially known for peanut production, which is among the highest in the Potohar region.\nThe area is also known for hunting grounds and wildlife including black francolin, white-throated francolin, quail, and hare."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "talagang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2523,
+    "attempt": 2504,
+    "place_id": "gn-1241964",
+    "input": {
+      "place": {
+        "place_id": "gn-1241964",
+        "name": "Kalutara",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 6.5831,
+        "lon": 79.9593
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalutara",
+          "url": "https://en.wikipedia.org/wiki/Kalutara",
+          "text": "Kalutara (Sinhala: කළුතර, Tamil: களுத்துறை) or Kalutota is a major city in Kalutara District, Western Province, Sri Lanka. It is also the administrative capital of Kalutara District. It is located approximately 43 km (27 mi) south of the capital Colombo. The city holds a unique position for one of the four major rivers in Sri Lanka, the Kalu Ganga, which joins the sea at the centre of the city. Kaluthara is known for making rope, baskets, and other articles from the fibre of the coconut palm. The area also produces the Mangosteens, a fruit introduced from Malaysia in the 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kalutara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2524,
+    "attempt": 2505,
+    "place_id": "gn-12503489",
+    "input": {
+      "place": {
+        "place_id": "gn-12503489",
+        "name": "Chanpatia",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 26.94442,
+        "lon": 84.5377
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chanpatia",
+          "url": "https://en.wikipedia.org/wiki/Chanpatia",
+          "text": "Chanpatia is a city in Nagar Panchayat situated on the bank of the Burhi Gandak River. It is the administrative headquarters of the Chanpatia block in Paschim Champaran district near the Indo-Nepal border; 18 km from District headquarters Bettiah, 242 km north-west of the capital Patna in the state of Bihar, India. Chanpatia is well-known for its cuisine, such as Marcha Ka chura (flattened rice), Basmati rice, and Handi kabab.\nThe majority of the population is traditionally dependent upon agriculture. There are also many small-scale industries present in the area. In modern times, Chanpatia is experiencing more rapid growth and development. The Chanpatia startup zone was initiated during lockdown, providing employment and economic opportunities to those in need. Textiles and clothes produced by this startup zone have seen a great deal of interest and demand.\nThe city of Chanpatia is mainly divided into 15 wards. The Chairman of Chanpatia Nagar Panchayat is Smt. Rajni Devi, and the Deputy Chairman of Chanpatia Nagar Panchayat is Sunil Kumar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "chanpatia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2525,
+    "attempt": 2506,
+    "place_id": "gn-1278354",
+    "input": {
+      "place": {
+        "place_id": "gn-1278354",
+        "name": "Arsikere",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 13.31446,
+        "lon": 76.25704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arsikere",
+          "url": "https://en.wikipedia.org/wiki/Arsikere",
+          "text": "Arasikere is a city and taluka in the Hassan district in the state of Karnataka, India. Arsikere also called as Siddara Nadu. It is the second largest city in Hassan district, demographically. Arsikere city municipal council consists of 35 wards. This region is known for its coconut production and is also called as Kalpataru Nadu. Arsikere Junction is a major railway junction in the South Western Railway which links Mangalore, Bangalore and Mysore to North Karnataka and a central place for tourists who visit nearby places that do not have rail access, such as Belur, Halebidu and Shravanabelagola, Harnahalli, and Kodimata."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "arsikere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2526,
+    "attempt": 2507,
+    "place_id": "gn-1526979",
+    "input": {
+      "place": {
+        "place_id": "gn-1526979",
+        "name": "Quva",
+        "country": "Uzbekistan",
+        "subdivision": "Fergana",
+        "lat": 40.52204,
+        "lon": 72.07292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quva",
+          "url": "https://en.wikipedia.org/wiki/Quva",
+          "text": "Quva (Uzbek: Қува, Quva; Persian: قبا, romanized: Qubā; Russian: Кува, romanized: Kuva) is the capital of Quva District in eastern Uzbekistan. Quva is about 450 km east of Tashkent, about 46 km west of Andijan, and less than 17 km from the border with Kyrgyzstan. Its population is 46,400 (2016).\nQuva is the birth city of Abū al-ʿAbbās Aḥmad ibn Muḥammad ibn Kathīr al-Farghānī (800/805–870), also known as Alfraganus in the West. Alfraganus was an astronomer in the Abbasid court in Baghdad, and one of the most famous astronomers of the 9th century. The lunar crater Alfraganus is named after him.\nQuva is famous for its fruits, specifically pomegranates, cherries, and peaches. There is a large water reservoir called \"Karkidon\" (rhinoceros), as well as the South Fergana Canal in the territory of Quva. Quva neighbors the Marhamat District of Andijan Region.\nQuva District is an administrative unit which covers the easternmost region of the Fergana Region of Uzbekistan. The administrative center is the city of Quva. The district was formed as part of the Uzbek SSR on September 29, 1926. In 1939, the village became the district center, and now the city of Quva, which was built on the site of the ancient Buddhist and Muslim center of Qubo.\nThe total area of the district is 437 km2. It borders Fergana in the west and south-west, the Tashlak District of the Fergana Region in the north-west, Boz in the north, the Marhamat District of Andijan Region in the east, and the Osh Region of Kyrgyzstan in the south and southeast. The district's population density exceeds the national average, and the population as of 2004 was about 186,400 people (62.58% of the total population are women). With respect to nationality, the majority are Uzbeks, Tajiks, Tatars, Russians and others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "quva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2527,
+    "attempt": 2508,
+    "place_id": "gn-2295021",
+    "input": {
+      "place": {
+        "place_id": "gn-2295021",
+        "name": "Sunyani",
+        "country": "Ghana",
+        "subdivision": "Bono",
+        "lat": 7.33991,
+        "lon": -2.32676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunyani",
+          "url": "https://en.wikipedia.org/wiki/Sunyani",
+          "text": "Sunyani ( ) is a city and the capital of the Sunyani Municipal District and the Bono Region of Ghana. The city is located about 105 miles (169 km) northwest of Kumasi and 300 miles (480 km) from Accra. It is the sixth-largest city in the country as of the 2010 census, with a population of 75,366 people. Ethnic groups such as the Akan, Northerner, Ewe, and Ga-Adangbe resided in the city along with others. As of 2024, the mayor of the municipality was Ansu Kumi.\nSunyani's economy is largely agrarian, with the city  known for its growing cocoa bean production. The city is home to the Roman Catholic Diocese of Sunyani which is under Bishop Matthew Kwasi Gyamfi. Sunyani is also home to many educational institutions, such as the Sunyani Technical University and the University of Energy and Natural Resources."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "sunyani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2528,
+    "attempt": 2509,
+    "place_id": "gn-2479916",
+    "input": {
+      "place": {
+        "place_id": "gn-2479916",
+        "name": "Sidi Okba",
+        "country": "Algeria",
+        "subdivision": "Biskra",
+        "lat": 34.74512,
+        "lon": 5.89833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sidi Okba",
+          "url": "https://en.wikipedia.org/wiki/Sidi_Okba",
+          "text": "Sidi Okba (Arabic: سيدي عقبة) is a commune in the Biskra Province, Algeria. It was named after the Muslim General Uqba ibn Nafi who died there in 683 AD. The nearest big city is Biskra which is located 18 km away.\nSidi Okba sits on an oasis. In 1911 it was described by Baedeker as \"the religious center of the Zab\". Baedeker stated that the town founded by pilgrims visiting the tomb of Sidi Okba who died in a nearby town called Thouda. The Sidi Okba Mosque, which was built around Okba's tomb, is the oldest Islamic monument in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sidi okba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sidi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "okba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2529,
+    "attempt": 2510,
+    "place_id": "gn-2516452",
+    "input": {
+      "place": {
+        "place_id": "gn-2516452",
+        "name": "Inca",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.7211,
+        "lon": 2.91093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inca, Spain",
+          "url": "https://en.wikipedia.org/wiki/Inca,_Spain",
+          "text": "Inca (Balearic Catalan: [ˈiŋkə]) is a town on the Spanish island of Mallorca. The population of the municipality is 32,137 (2018) in an area of 58.4 km2. \nThere is a junction station on Mallorca's rail network with trains to Palma, the island's capital, to Sa Pobla, and to Manacor. \nInca is home of the footwear company \"Camper\".\nInca was known for its wine cellars. The town, like its neighboring municipality Binissalem, was a mass producer of wine from the 17th to 19th centuries when phylloxera destroyed the industry and its inhabitants turned to other activities such as tanning and leather craftsmanship. Many old wine cellars are being used as restaurants for serving traditional Mallorcan dishes like sopes mallorquines, tombet and gató d'ametlles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "inca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2530,
+    "attempt": 2511,
+    "place_id": "gn-2715459",
+    "input": {
+      "place": {
+        "place_id": "gn-2715459",
+        "name": "Falun",
+        "country": "Sweden",
+        "subdivision": "Dalarna",
+        "lat": 60.60357,
+        "lon": 15.62597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falun",
+          "url": "https://en.wikipedia.org/wiki/Falun",
+          "text": "Falun (Swedish pronunciation: [ˈfɑ̂ːlɵn]) is a city and the seat of Falun Municipality in Dalarna County, Sweden, with 37,291 inhabitants in 2010. It is also the capital of Dalarna County. Falun forms, together with Borlänge, a metropolitan area with just over 100,000 inhabitants.\nFalun was originally famous for its copper mine, and is today an important service and industrial city even though the mine is closed (since 1992).\nFaluån is a river, flowing through the city, separating it into two sides. Falu copper mine is located on one of the sides which during many centuries was one of Sweden's main business. This side of the river was usually called \"the mining side\", where not many plants grew due to the toxic smoke which contaminated the soil. On the other side of the river, where the smoke did not reach, set many large villas, which made this side to be called \"the delightful side\". The centre of Falun consists of classical pedestrian streets with small shops. In 1998, the city claimed the award of \"the city centre of the year\" in Sweden.\nIn 2001, the city, the copper mine, and mining areas of Falun were added to the list of world heritage sites by the United Nations. Dalarna University, with its 18 000 students, has a campus located in Falun ― close to the national ski stadium where the FIS Nordic World Ski Championships has taken place a number of times, most recently in 2015.\nThe name of Falun has influenced the names of some Swedish items associated with the town, such as Falu red (a paint color), Falu rågrut (a type of rye crispbread), Falu ättika (a type of distilled vinegar) and Falukorv."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "falun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2531,
+    "attempt": 2512,
+    "place_id": "gn-3435010",
+    "input": {
+      "place": {
+        "place_id": "gn-3435010",
+        "name": "Don Torcuato",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.49459,
+        "lon": -58.62729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Don Torcuato",
+          "url": "https://en.wikipedia.org/wiki/Don_Torcuato",
+          "text": "Don Torcuato is a town in the Tigre Partido of the urban agglomeration of Greater Buenos Aires, Argentina. It is named after Marcelo Torcuato de Alvear, ex-President of Argentina, as he had his ranch and residency there. Most of the streets are named after his immediate family and his governmental staff.\nDon Torcuato has two train stations on the Belgrano Norte Line with direct connection to Buenos Aires, and also the nearby Pascual Palazzo highway, part of the Pan-American Highway. It formerly had a general aviation airfield, bearing the same name (Don Torcuato - ICAO:SADD), that was closed in January 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "don torcuato",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "don",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "torcuato",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2532,
+    "attempt": 2513,
+    "place_id": "gn-3471061",
+    "input": {
+      "place": {
+        "place_id": "gn-3471061",
+        "name": "Baixo Guandu",
+        "country": "Brazil",
+        "subdivision": "Espírito Santo",
+        "lat": -19.51889,
+        "lon": -41.01583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baixo Guandu",
+          "url": "https://en.wikipedia.org/wiki/Baixo_Guandu",
+          "text": "Baixo Guandu is a municipality located in the Brazilian state of Espírito Santo, that was founded on April 10, 1935 and established as a city on June 8 of the same year. The city's celebration day is April 10. Its population was 31,132 (2020) and its area is 918 km2 (354 sq mi). The area is most well-known for its exports of coffee, especially from the high mountains of the Alto Mutum Preto district. The main watercourse through the municipality is the Rio Doce river (\"Doce\" means sweet in Portuguese), whose basin (of 83,500 square kilometers) is composed of 222 municipalities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "baixo guandu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "baixo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guandu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2533,
+    "attempt": 2514,
+    "place_id": "gn-3471451",
+    "input": {
+      "place": {
+        "place_id": "gn-3471451",
+        "name": "Arraial do Cabo",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.96611,
+        "lon": -42.02778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arraial do Cabo",
+          "url": "https://en.wikipedia.org/wiki/Arraial_do_Cabo",
+          "text": "Arraial do Cabo (Portuguese pronunciation: [ɐʁɐjˈaw du ˈkabu]) is a municipality located in the Brazilian state of Rio de Janeiro. Its population was 30,593 as of 2020 census and its total area is 160 square kilometres (62 sq mi).\nIt was founded in 1503 by the conqueror Amerigo Vespucci. In 1960 a documentary film was made directed by Mário Carneiro and Paulo Cesar Saraceni about the local fishing industry.\nIts geography made Arraial do Cabo an important and dangerous point in the age of sail. From the arrival of the Portuguese Navy in 1503 through the nineteenth century, many shipwrecks occurred. Due to this fact (and other biological factors) Arraial do Cabo is well known as the \"Dive Capital\".\nThe municipality operates the Ilha do Cabo Frio Biological Reserve, a fully protected conservation unit on an Atlantic island in the south east of the municipality.\nIt contains the 56,769 hectares (140,280 acres) Arraial do Cabo Marine Extractive Reserve, created in 1997."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "arraial do cabo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arraial",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cabo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2534,
+    "attempt": 2515,
+    "place_id": "gn-4128894",
+    "input": {
+      "place": {
+        "place_id": "gn-4128894",
+        "name": "Rogers",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.33202,
+        "lon": -94.11854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rogers, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Rogers,_Arkansas",
+          "text": "Rogers is a city in Benton County, Arkansas, United States. The population was 69,908 at the 2020 census, and was estimated at 75,639 in 2024, making it the sixth-most populous city in the state. Located in the Ozarks, it is part of the three-county Northwest Arkansas metropolitan area, which had 546,725 residents in 2020.\nRogers was the location of the first Walmart store, whose corporate headquarters is located in neighboring Bentonville. The city was also the location of the first 7 Brew coffeehouse. Daisy Outdoor Products, known for its air rifles, has both its headquarters and its Airgun Museum in Rogers. The city houses a popular shopping center, the Pinnacle Hills Promenade, and a music venue, the Walmart Arkansas Music Pavilion (a.k.a. Walmart AMP), that has hosted performances by big-name artists and local performers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "rogers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2535,
+    "attempt": 2516,
+    "place_id": "gn-4152890",
+    "input": {
+      "place": {
+        "place_id": "gn-4152890",
+        "name": "DeLand",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 29.02832,
+        "lon": -81.30312
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "DeLand, Florida",
+          "url": "https://en.wikipedia.org/wiki/DeLand,_Florida",
+          "text": "DeLand is a city in and the county seat of Volusia County, Florida, United States. It is a part of the Deltona–Daytona Beach–Ormond Beach metropolitan area. As of the 2020 census, DeLand had a population of 37,351.\nThe city was founded in 1876, and was named for its founder, Henry Addison DeLand. DeLand is home to Stetson University, Florida's oldest private college, as well as the Museum of Art - DeLand. The DeLand Municipal Airport serves as an uncontrolled general-aviation reliever airport to commercial operations at Daytona Beach International Airport (DAB), Orlando Sanford International Airport (SFB), and Orlando International Airport (MCO)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "deland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2536,
+    "attempt": 2517,
+    "place_id": "gn-4736134",
+    "input": {
+      "place": {
+        "place_id": "gn-4736134",
+        "name": "Texas City",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.38385,
+        "lon": -94.9027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Texas City, Texas",
+          "url": "https://en.wikipedia.org/wiki/Texas_City,_Texas",
+          "text": "Texas City is a city in Galveston County, Texas and a suburb of the city of Galveston (with some water area in Chambers County), United States. Located on the southwest shoreline of Galveston Bay, Texas City is a deepwater port on the Gulf Coast and a petroleum refining and petrochemical manufacturing center. Its population was 51,898 at the 2020 census, making it the third-largest city in Galveston County, behind League City and Galveston. It is part of the Houston-Galveston metropolitan area. Texas City was the site of a major explosion in 1947 that demolished much of the city and its port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "texas city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "texas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2537,
+    "attempt": 2518,
+    "place_id": "gn-4937276",
+    "input": {
+      "place": {
+        "place_id": "gn-4937276",
+        "name": "Franklin",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.08343,
+        "lon": -71.39673
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Franklin, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Franklin,_Massachusetts",
+          "text": "The Town of Franklin is a city in Norfolk County, Massachusetts, United States. Franklin is one of thirteen Massachusetts municipalities that have applied for, and been granted, city forms of government but wish to retain \"The town of\" in their official names. As of 2022, the city's population was 36,745, with a growth rate of 15.38% since 2015. It is home to the country's first public library, the Franklin Public Library, its first books having been donated by Benjamin Franklin in 1790. It also contains the largest Catholic parish in the Boston Archdiocese, St. Mary's Catholic church, with some 15,000 members."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "franklin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2538,
+    "attempt": 2519,
+    "place_id": "gn-5392593",
+    "input": {
+      "place": {
+        "place_id": "gn-5392593",
+        "name": "San Ramon",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.77993,
+        "lon": -121.97802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Ramon, California",
+          "url": "https://en.wikipedia.org/wiki/San_Ramon,_California",
+          "text": "San Ramon (Spanish: San Ramón, meaning \"Saint Raymond\") is a city in Contra Costa County, California, United States, located within the San Ramon Valley, and 34 miles (55 km) east of San Francisco. San Ramon's population was 84,605 per the 2020 census, making it the fourth-largest city in Contra Costa County, behind Concord, Richmond, and Antioch.\nSan Ramon is home to the  Cooper Companies, the West Coast headquarters of AT&T, GE Digital, and the San Ramon Medical Center. Major annual events include the Art and Wind Festival on Memorial Day weekend and the Run for Education in October."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 98
+    },
+    "banned_terms": [
+      {
+        "term": "san ramon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ramon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2539,
+    "attempt": 2520,
+    "place_id": "gn-981158",
+    "input": {
+      "place": {
+        "place_id": "gn-981158",
+        "name": "Lydenburg",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.09598,
+        "lon": 30.44393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lydenburg",
+          "url": "https://en.wikipedia.org/wiki/Lydenburg",
+          "text": "Lydenburg, also known as Mashishing, is a town in Thaba Chweu Local Municipality, on the Mpumalanga highveld, South Africa. It is situated on the Sterkspruit/Dorps River tributary of the Lepelle River at the summit of the Long Tom Pass. It has a long, rich history, ranging from AD 500 to the present. The name is derived from the Dutch Lijdenburg, or \"Town of Suffering\", and is named for the experiences of the white settlers. In Northern Sotho, Mashishing means \"long green grass.\" Lydenburg has become the centre of the South African fly-fishing industry and is an agricultural, tourism and mining hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "lydenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

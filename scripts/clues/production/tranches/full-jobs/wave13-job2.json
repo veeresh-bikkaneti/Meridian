@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 2440,
+    "attempt": 2421,
+    "place_id": "gn-713749",
+    "input": {
+      "place": {
+        "place_id": "gn-713749",
+        "name": "Okhtyrka",
+        "country": "Ukraine",
+        "subdivision": "Sumy",
+        "lat": 50.30852,
+        "lon": 34.89468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Okhtyrka",
+          "url": "https://en.wikipedia.org/wiki/Okhtyrka",
+          "text": "Okhtyrka (Ukrainian: Охтирка, IPA: [oxˈtɪrkɐ] ; Russian: Ахтырка, romanized: Akhtyrka) is a city in Sumy Oblast, Ukraine. It serves as the administrative center of Okhtyrka Raion within the oblast.\nOkhtyrka was once home to Hussars and Cossacks. It was also in the past a regional seat of the Sloboda Ukraine Imperial Region and of the Ukrainian SSR. Since the discovery of oil and gas in 1961, Okhtyrka has come to be known as the \"oil capital\" of Ukraine. It is home to the former Okhtyrka air base and other historical and religious sites. Some religious buildings in Okhtyrka were almost destroyed in the Russian invasion of Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "okhtyrka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2441,
+    "attempt": 2422,
+    "place_id": "gn-726418",
+    "input": {
+      "place": {
+        "place_id": "gn-726418",
+        "name": "Dobrich",
+        "country": "Bulgaria",
+        "subdivision": "Dobrich",
+        "lat": 43.56491,
+        "lon": 27.83138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dobrich",
+          "url": "https://en.wikipedia.org/wiki/Dobrich",
+          "text": "Dobrich (Bulgarian: Добрич [ˈdɔbrit͡ʃ]) is the 9th-largest city in Bulgaria, the administrative centre of Dobrich Province and the capital of the region of Southern Dobrudzha. It is located in the northeastern part of the country, 30 km west of the Bulgarian Black Sea Coast, not far from resorts such as Albena, Balchik, and Golden Sands. In January 2012, Dobrich was inhabited by 79,269 people within the city limits. The city is named after the Bulgarian medieval lord of the surrounding region - Dobrotitsa. Agriculture is the most developed branch of the economy. The most popular types of agricultural products in the region are wheat and lavender oil.\nDobrich Knoll on Livingston Island in the South Shetland Islands, Antarctica is named after Dobrich. A point of interest is the Dobrich TV Tower."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "dobrich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2442,
+    "attempt": 2423,
+    "place_id": "gn-1232783",
+    "input": {
+      "place": {
+        "place_id": "gn-1232783",
+        "name": "Nuwara Eliya",
+        "country": "Sri Lanka",
+        "subdivision": "Central Province",
+        "lat": 6.97078,
+        "lon": 80.78286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuwara Eliya",
+          "url": "https://en.wikipedia.org/wiki/Nuwara_Eliya",
+          "text": "Nuwara Eliya (Sinhala: නුවර එළිය [nuwərə ɛlijə]; Tamil: நுவரெலியா [nʉʋəɾɛlɪjɑː]) is a city in the hill country of the Central Province, Sri Lanka. Its name means \"city on the plain (table land)\" or \"city of light\". The city is the administrative capital of Nuwara Eliya District, with a picturesque landscape and temperate climate. It is at an altitude of 1,868 m (6,128 ft) and is considered to be the most important location for tea production in Sri Lanka. The city is overlooked by Pidurutalagala, the tallest mountain in Sri Lanka. Nuwara Eliya is known for its temperate, cool climate – the coolest area in Sri Lanka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "nuwara eliya",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nuwara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eliya",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2443,
+    "attempt": 2424,
+    "place_id": "gn-1254953",
+    "input": {
+      "place": {
+        "place_id": "gn-1254953",
+        "name": "Tanuku",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.75438,
+        "lon": 81.68143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tanuku",
+          "url": "https://en.wikipedia.org/wiki/Tanuku",
+          "text": "Tanuku is a town in West Godavari district of the Indian state of Andhra Pradesh. It is known for its historical administrative role, early educational institutions, and regional commercial significance. Tanuku functioned as a taluk headquarters during the Madras Presidency in Godavari district under British rule in 1850's. The town developed as a local administrative and commercial center in the late 19th and early 20th centuries.\nEducational development in Tanuku dates back to the early 1900s, with the establishment of institutions such as the Zilla Parishad Boys High School in 1902, contributing to literacy and regional education. It is the mandal headquarters of Tanuku mandal . Tanuku is the Third largest in the West Godavari District after Bhimavaram,and Tadepalligudem in terms of population. Tanuku is the Textile Hub  of both  West Godavari district and East Godavari district. There are a Significant number of Large scale and Small scale Spinning Mills\nTanuku serves as a regional service center for surrounding mandals. Its historical administrative role, combined with its educational institutions and judicial presence, contribute to its importance in the district.\nTanuku has a historical association with judicial administration dating back to the British colonial period, when it functioned as a taluk headquarters under the Madras Presidency. During this period, taluk headquarters typically hosted subordinate courts such as Munsif or Magistrate courts, serving local civil and criminal jurisdiction.\nFollowing Indian independence, the judicial system in Tanuku was reorganized under the state judiciary framework, leading to the establishment and expansion of civil and criminal courts to cater to the growing population and administrative needs of the region.\nIn the present day, Tanuku hosts a court complex comprising multiple levels of judiciary, including courts functioning under the jurisdiction of the Andhra Pradesh High Court. These include district-level and subordinate courts that serve Tanuku and surrounding mandals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "tanuku",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2444,
+    "attempt": 2425,
+    "place_id": "gn-1269784",
+    "input": {
+      "place": {
+        "place_id": "gn-1269784",
+        "name": "Ilkal",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 15.95923,
+        "lon": 76.11351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilkal",
+          "url": "https://en.wikipedia.org/wiki/Ilkal",
+          "text": "Ilkal is a City in Bagalkot district in the Indian state of Karnataka. The town is located in a valley that lies in south-east corner of Bagalkot district and is quite close to the borders of Kushtagi taluk of the Koppal district. Now Ilkal city becomes taluk previous the city falls within the jurisdiction of Hungund taluk and lies at a distance of about 12 km (7.5 mi) south of taluk headquarters. Between these two towns, Ilkal is an important centre of trade, commerce, education, and industry. Ilkal is well connected with state and national highways. It is also famous for its hospitality and education institutions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "ilkal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2445,
+    "attempt": 2426,
+    "place_id": "gn-1270021",
+    "input": {
+      "place": {
+        "place_id": "gn-1270021",
+        "name": "Hisua",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 24.8336,
+        "lon": 85.41729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hisua",
+          "url": "https://en.wikipedia.org/wiki/Hisua",
+          "text": "Hisua is a town and a municipality in Nawada district in the India state of Bihar. It is situated on the right bank of the Tilaiya river along Gaya and Nawada road, 9 miles (14 km) west of Nawada and 27 miles (43 km) east of Gaya. The city lies adjacent to the Tilaiya Junction railway station on the Southern Bihar Railway. The primary occupation of Hisua's residents is agriculture, and the town is known for its pottery and local poetry. Hisua is also known for gold jewellery shops. Tilkut, lai, anarsa and khaja are among the traditional sweets from Hisua that are popular in Bihar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "hisua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2446,
+    "attempt": 2427,
+    "place_id": "gn-1699205",
+    "input": {
+      "place": {
+        "place_id": "gn-1699205",
+        "name": "Morong",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.51849,
+        "lon": 121.23778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morong, Rizal",
+          "url": "https://en.wikipedia.org/wiki/Morong,_Rizal",
+          "text": "Morong, officially the Municipality of Morong (Tagalog: Bayan ng Morong), is a municipality located in the province of Rizal, Philippines. According to the 2024 census, it has a population of 72,262 people.\nThe town is also known for promoting education as its priority, with the vision \"Una Ang Edukasyon\" (Education First). During the 1970s until the early-1990s, Morong became a center of education with students from nearby towns of Rizal coming to study in the numerous academic institutions situated in the town.\nSome popular town attraction are the St. Jerome's Parish Church built in the Spanish Era as well as the featuring side dish called balaw-balaw.\nMorong is 28 kilometers (17 mi) from Antipolo and 45 kilometers (28 mi) from Manila."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "morong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2447,
+    "attempt": 2428,
+    "place_id": "gn-2418437",
+    "input": {
+      "place": {
+        "place_id": "gn-2418437",
+        "name": "Kouroussa",
+        "country": "Guinea",
+        "subdivision": "Kankan Region",
+        "lat": 10.65,
+        "lon": -9.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kouroussa",
+          "url": "https://en.wikipedia.org/wiki/Kouroussa",
+          "text": "Kouroussa or Kurussa (N’ko: ߞߙߎ߬ߛߊ߫) is a town located in northeastern Guinea, and is the capital of Kouroussa Prefecture. As of 2014 it had a population of 39,611 people. A trade center and river port from at least the time of the Mali Empire, Kouroussa has long relied upon its position near the upstream limit of navigation of the Niger River to make it an important crossroads for people and goods moving between the Guinea coast and the states of the western Soudan and Niger River valley. The town and surrounding area is a center of Malinke culture, and is known for its Djembe drumming tradition."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "kouroussa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2448,
+    "attempt": 2429,
+    "place_id": "gn-2455216",
+    "input": {
+      "place": {
+        "place_id": "gn-2455216",
+        "name": "Kita",
+        "country": "Mali",
+        "subdivision": "Kayes",
+        "lat": 13.03885,
+        "lon": -9.48817
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kita, Mali",
+          "url": "https://en.wikipedia.org/wiki/Kita,_Mali",
+          "text": "Kita is a town and urban commune in western Mali.  The town is the capital of the Kita Cercle in the Kayes Region. It lies on the eastern slope of Mount Kita (Bambara: \"Kita-kulu\"), known for its caves and rock paintings.  Today, the town is known for its music, its annual Roman Catholic pilgrimage and its role as a processing center for the surrounding cotton- and peanut-growing region.  Kita lies on the Dakar-Niger Railway and is the largest transit hub between Bamako (180 kilometres or 112 miles) and Kayes (330 kilometres or 205 miles). In the 2018 census, the urban commune had a population of 463,787.\nIn November 1955, Kita became a commune of average exercise. On March 2, 1966, Kita became a commune of full exercise. The town grew in the 1990s around the cotton industry, but this has since declined.\nA fictionalized version of Kita features as the setting for Malian author Massa Makan Diabaté's \"Kouta Trilogy\" (Le lieutenant de Kouta, Le coiffeur de Kouta, and Le boucher de Kouta)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "kita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2449,
+    "attempt": 2430,
+    "place_id": "gn-2805761",
+    "input": {
+      "place": {
+        "place_id": "gn-2805761",
+        "name": "Wunstorf",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.42409,
+        "lon": 9.43783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wunstorf",
+          "url": "https://en.wikipedia.org/wiki/Wunstorf",
+          "text": "Wunstorf (German pronunciation: [ˈvʊnsˌtɔʁf] ) is a town in the district of Hanover, in Lower Saxony, Germany. It is situated approximately 22 kilometres (14 mi) west of Hanover. The following localities belong to the town of Wunstorf: Blumenau (with Liethe), Bokeloh, Großenheidorn, Idensen (with Idensermoor and Niengraben), Klein Heidorn, Kolenfeld, Luthe, Mesmerode, Steinhude, and Wunstorf.\nNearby Wunstorf Air Base of the German Air Force, which participated in the Berlin Airlift and is home to Air Transport Wing 62 since 1978 that operates all German A400Ms, is named after Wunstorf. To the west of the city, Steinhude and Großenheidorn are located on the shores of Lake Steinhude."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "wunstorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2450,
+    "attempt": 2431,
+    "place_id": "gn-2965768",
+    "input": {
+      "place": {
+        "place_id": "gn-2965768",
+        "name": "Carlow",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 52.84083,
+        "lon": -6.92611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carlow",
+          "url": "https://en.wikipedia.org/wiki/Carlow",
+          "text": "Carlow ( KAR-loh; Irish: Ceatharlach [ˈcahəɾˠl̪ˠəx]) is the county town of County Carlow, in the south-east of Ireland, 84 km (52 mi) from Dublin. At the 2022 census, it had a population of 27,351, the twelfth-largest urban centre in Ireland.\nThe River Barrow flows through the town and forms the historic boundary between counties Laois and Carlow. However, the Local Government (Ireland) Act 1898 included the town entirely in County Carlow. The settlement of Carlow is thousands of years old and pre-dates written Irish history. The town has played a major role in Irish history, serving as the capital of the country in the 14th century. The town is in a townland and civil parish of the same name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "carlow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2451,
+    "attempt": 2432,
+    "place_id": "gn-3526992",
+    "input": {
+      "place": {
+        "place_id": "gn-3526992",
+        "name": "Huauchinango",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 20.17376,
+        "lon": -98.05491
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huauchinango",
+          "url": "https://en.wikipedia.org/wiki/Huauchinango",
+          "text": "Huauchinango (formally, Huauchinango de Degollado, commemorating 19th-century liberal politician and soldier Santos Degollado) is a city in the far north of the state of Puebla in central Mexico. It is located in the rugged Sierra Norte de Puebla mountain region, filled with peaks, ravines and rivers that form waterfalls. The city is home to a locally venerated image called the Señor del Santo Entierro (Lord of the Holy Burial) and also to the area's main commercial fair, the Feria de las Flores, which promotes the area's flower production, especially that of azaleas. It serves as the municipal seat for the surrounding municipality of the same name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "huauchinango",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2452,
+    "attempt": 2433,
+    "place_id": "gn-3600591",
+    "input": {
+      "place": {
+        "place_id": "gn-3600591",
+        "name": "Trujillo",
+        "country": "Honduras",
+        "subdivision": "Colón Department",
+        "lat": 15.91741,
+        "lon": -85.95263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trujillo, Honduras",
+          "url": "https://en.wikipedia.org/wiki/Trujillo,_Honduras",
+          "text": "Trujillo is a city, with a population of 22,750 (2023 calculation), and a municipality on the northern Caribbean coast of the Honduran department of Colón, of which the city is the capital.\nThe municipality had a population of about 30,000 (2003). The city is located on a bluff overlooking the Bay of Trujillo. Behind the city rise two prominent mountains, Mount Capiro and Mount Calentura. Three Garifuna fishing villages—Santa Fe, San Antonio, and Guadelupe—are located along the beach.\nTrujillo has received plenty of attention as the potential site of a proposed Honduran charter city project, according to an idea originally advocated by American economist Paul Romer. Often referred to as a Hong Kong in Honduras, and advocated by among others the Trujillo-born Honduran president Porfirio Lobo Sosa, the project has also been met with skepticism and controversy, especially due to its supposed disregard for the local Garifuna culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "trujillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2453,
+    "attempt": 2434,
+    "place_id": "gn-3682274",
+    "input": {
+      "place": {
+        "place_id": "gn-3682274",
+        "name": "Fusagasugá",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 4.33646,
+        "lon": -74.36378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fusagasugá",
+          "url": "https://en.wikipedia.org/wiki/Fusagasug%C3%A1",
+          "text": "Fusagasugá (Spanish pronunciation: [fusaɣasuˈɣa]; from Cariban  fusagasuga 'woman who becomes invisible') or Fusa is a city and municipality in the department of Cundinamarca, in central Colombia.  It is located in the warm valley between the rivers Cuja and Panches, a central region of the Andes Mountains in South America.  The municipality has a population of 138,498 and the urban centre a population of 114,722 (2018 census). The municipality itself covers an area of 194 km2 (75 sq mi).\nIt was founded in 1592 by Spanish priests. The town located some 56 kilometers from the capital, Bogotá; borders Pasca, Arbeláez, Tibacuy, Silvania and other municipalities of Sumapaz. Its elevation is 5,669 feet (1,728 m) above sea level, and the average temperature 20 °C (68 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "fusagasuga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2454,
+    "attempt": 2435,
+    "place_id": "gn-4429295",
+    "input": {
+      "place": {
+        "place_id": "gn-4429295",
+        "name": "Hattiesburg",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 31.32712,
+        "lon": -89.29034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hattiesburg, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Hattiesburg,_Mississippi",
+          "text": "Hattiesburg is a city in the U.S. state of Mississippi, located primarily in Forrest County (where it is the county seat and most populous city) and extending west into Lamar County. The city population was 48,730 in 2020, making it the 5th most populous city in Mississippi. Hattiesburg is the principal city of the Hattiesburg Metropolitan Statistical Area, which encompasses Covington, Forrest, Lamar, and Perry counties. The city is the anchor of the Pine Belt region.\nFounded in 1882 by civil engineer William H. Hardy, Hattiesburg was named in honor of Hardy's wife Hattie. The town was incorporated two years later with a population of 400. Development of the interior of Mississippi took place primarily after the American Civil War. Before that time, only properties along the major rivers were developed as plantations.  Hattiesburg's population first expanded as a center of the lumber and railroad industries, from which was derived the nickname \"The Hub City\".\nHattiesburg is a prominent university town, home to the University of Southern Mississippi (founded as Mississippi Normal College, for the training of teachers) and William Carey University (formerly William Carey College). South of Hattiesburg is Camp Shelby, the largest US National Guard training base east of the Mississippi River, which hosts up to 100,000 National Guardsmen and Reservists annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "hattiesburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2455,
+    "attempt": 2436,
+    "place_id": "gn-4894861",
+    "input": {
+      "place": {
+        "place_id": "gn-4894861",
+        "name": "Gurnee",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.3703,
+        "lon": -87.90202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gurnee, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Gurnee,_Illinois",
+          "text": "Gurnee ( ghər-NEE) is a village in Lake County, in the U.S. state of Illinois. As of the 2020 census, its population was 30,706. Located in the Chicago metropolitan area, it borders the city of Waukegan. It is roughly 40 miles (64 km) north of Chicago and 50 miles (80 km) south of Milwaukee. The village was founded in 1928 and is named after former Chicago mayor Walter S. Gurnee.\nThe village is a major regional tourist attraction, home to the Six Flags Great America and Hurricane Harbor Chicago amusement park and water park complex, the Gurnee Mills shopping mall, and the Great Wolf Lodge resort. Attracting more than 23 million visitors annually, Gurnee is accessible via Interstate 94 which runs directly through the village. Gurnee is home to the corporate headquarters of High Sierra Sport Company."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "gurnee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2456,
+    "attempt": 2437,
+    "place_id": "gn-4955336",
+    "input": {
+      "place": {
+        "place_id": "gn-4955336",
+        "name": "Weymouth",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.22093,
+        "lon": -70.93977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weymouth, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Weymouth,_Massachusetts",
+          "text": "Weymouth is a city in Norfolk County, Massachusetts, United States. It is one of 13 municipalities in the state to have city forms of government while retaining \"town of\" in their official names. It is named after Weymouth, Dorset, a coastal town in England, and is the second-oldest settlement in Massachusetts, second only to Plymouth. Weymouth is one of the more affordable towns relative to the South Shore and offers a short commute into Boston, MBTA bus and rail service, and a town beach.\nAt the 2020 census, Weymouth had a total population of 57,437. It also had a crime rate of 12.42 per 1,000 residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "weymouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2457,
+    "attempt": 2438,
+    "place_id": "gn-5178195",
+    "input": {
+      "place": {
+        "place_id": "gn-5178195",
+        "name": "Altoona",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.51868,
+        "lon": -78.39474
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altoona, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Altoona,_Pennsylvania",
+          "text": "Altoona ( al-TOO-nə) is a city in Blair County, Pennsylvania, United States. The population was 43,963 at the time of the 2020 census. It is the principal city of the Altoona metropolitan area, which includes all of Blair County and was recorded as having a population of 122,823.\nAltoona was established in 1849 by the Pennsylvania Railroad. Having grown around the railroad industry, the city has worked to recover from industrial decline and urban decentralization experienced in recent decades. The city is home to the Altoona Curve baseball team of the Eastern League, which is the AA affiliate of the Pittsburgh Pirates Major League Baseball team. They play at Peoples Natural Gas Field in Altoona. The Altoona Symphony Orchestra has called Altoona home since 1928. Prominent landmarks include the Horseshoe Curve, the Railroaders Memorial Museum, the Juniata Shops of the Altoona Works, the Mishler Theatre, the Cathedral of the Blessed Sacrament, and the Jaffa Shrine Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "altoona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2458,
+    "attempt": 2439,
+    "place_id": "gn-11612454",
+    "input": {
+      "place": {
+        "place_id": "gn-11612454",
+        "name": "Minamibōsō",
+        "country": "Japan",
+        "subdivision": "Chiba",
+        "lat": 35.03126,
+        "lon": 139.92651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minamibōsō",
+          "url": "https://en.wikipedia.org/wiki/Minamib%C5%8Ds%C5%8D",
+          "text": "Minamibōsō (南房総市, Minamibōsō-shi) is a city located in Chiba Prefecture, Japan. As of 1 November 2020, the city had an estimated population of  37,143 in 17,175 households and a population density of 160 persons per km2. The total area of the city is 230.22 square kilometres (88.89 sq mi), making it the fifth largest city in Chiba Prefecture in terms of area.\nMinamibōsō is an area of historical relics and shrines. The city's slogan is 「ひと・ゆめ・みらい　地域で創る魅力の郷　南房総」, which translates to \"People, Dreams, Future. A Village With Locally Grown Appeal, Minamibōsō.\" Minamibōsō is known for flowers, uchiwa fans (房州うちわ), loquat fruit, whaling (捕鯨), and surfing. It is currently tied in first place for the city with the most roadside stations selling locally produced goods in Japan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "minamiboso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2459,
+    "attempt": 2440,
+    "place_id": "gn-1182787",
+    "input": {
+      "place": {
+        "place_id": "gn-1182787",
+        "name": "Bhalwal",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.26576,
+        "lon": 72.89809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhalwal",
+          "url": "https://en.wikipedia.org/wiki/Bhalwal",
+          "text": "Bhalwal  (Punjabi and Urdu: بھلوال) is a city and capital of Bhalwal Tehsil of Sargodha District in central Punjab, Pakistan. \nIt is the 99th most populous city of Pakistan, according to 2017 census. The city of Bhalwal lies in an agricultural area, close to the M-2 motorway.\nBhalwal is famous for its oranges.\nIn 2021, the Government of Punjab decided to urbanize 154 small cities and towns in Punjab, as the  result of colossal migration of people from small cities to larger cities like Lahore, Faisalabad, Rawalpindi, Gujranwala, and Islamabad. The master urbanization plan included Bhalwal, due to sharp increase of migration to larger cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "bhalwal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

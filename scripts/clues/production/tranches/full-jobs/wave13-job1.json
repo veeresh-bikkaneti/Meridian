@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 2420,
+    "attempt": 2401,
+    "place_id": "gn-702116",
+    "input": {
+      "place": {
+        "place_id": "gn-702116",
+        "name": "Malyn",
+        "country": "Ukraine",
+        "subdivision": "Zhytomyr Oblast",
+        "lat": 50.76756,
+        "lon": 29.24225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malyn",
+          "url": "https://en.wikipedia.org/wiki/Malyn",
+          "text": "Malyn (Ukrainian: Малин, IPA: [ˈmɑlɪn] , Polish: Malin) is a city in Zhytomyr Oblast (province) of Ukraine located about 100 kilometres (62 mi) northwest of Kyiv. It served as the administrative center of Malyn Raion until the administrative reform in 2020, when it was merged into Korosten Raion. Population: 25,172 (2022 estimate). As of January 2025, the city has a population of 27,000.\nLocated in a wooded area of Polesia (literally woodland), the city is known for its paper factory and a sheet of paper is depicted on the city's coat of arms. The city is located on the Irsha river which is a left tributary of Teteriv.\nThrough the city runs an important railroad Kyiv – Korosten and a motor vehicle highway Kyiv-Kovel-Warsaw.\nThe town hosts a seismic monitoring station (designated PS-45) belonging to an international network of nuclear test monitoring stations intended to verify the Comprehensive Test Ban Treaty (CTBT) treaty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "malyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2421,
+    "attempt": 2402,
+    "place_id": "gn-733191",
+    "input": {
+      "place": {
+        "place_id": "gn-733191",
+        "name": "Blagoevgrad",
+        "country": "Bulgaria",
+        "subdivision": "Blagoevgrad",
+        "lat": 42.01457,
+        "lon": 23.09804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blagoevgrad",
+          "url": "https://en.wikipedia.org/wiki/Blagoevgrad",
+          "text": "Blagoevgrad (Bulgarian: Благоевград [bɫɐˈɡɔɛvˌɡrat]) is а town in Southwestern Bulgaria, the administrative centre of Blagoevgrad Municipality and of Blagoevgrad Province. With a population of almost 70,000 inhabitants, it is the economic and cultural centre of Southwestern Bulgaria. It is located in the valley of the Struma River at the foot of the Rila Mountains, 101 kilometres (63 miles) south of Sofia, close to the border with North Macedonia.\nBlagoevgrad features a pedestrian downtown, with preserved 19th-century architecture and numerous restaurants, cafés, coffee shops, and boutiques. It is home to two universities, the South-West University \"Neofit Rilski\" and the American University in Bulgaria. The town also hosts the \"Sts. Cyril and Methodius National Humanitarian High School\". The former Bulgarian Men's High School of Thessaloniki moved from Thessaloniki to Blagoevgrad (then Gorna Dzhumaya) in 1913."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "blagoevgrad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2422,
+    "attempt": 2403,
+    "place_id": "gn-956507",
+    "input": {
+      "place": {
+        "place_id": "gn-956507",
+        "name": "Senekal",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.31971,
+        "lon": 27.62082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Senekal",
+          "url": "https://en.wikipedia.org/wiki/Senekal",
+          "text": "Senekal is a town situated on the banks of the Sand River in the eastern part of the Free State province of South Africa. It was named after Commandant FP Senekal, who led the encroachment of Basotho lands with the Boers under the Orange Free State government. Senekal died in 1865 during a skirmish known as Senekal's War.\nIt is the second largest town in Setsoto Municipality after Ficksburg, the seat of Setsoto. Senekal lies on the N5 national road between Winburg on the west and Bethlehem to the east. \nIt has two townships, Matwabeng and OR Tambo Section, the latter being the latest, largest and fastest growing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "senekal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2423,
+    "attempt": 2404,
+    "place_id": "gn-1142264",
+    "input": {
+      "place": {
+        "place_id": "gn-1142264",
+        "name": "Farah",
+        "country": "Afghanistan",
+        "subdivision": "Farah",
+        "lat": 32.37451,
+        "lon": 62.11638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farah, Afghanistan",
+          "url": "https://en.wikipedia.org/wiki/Farah,_Afghanistan",
+          "text": "Farah (Pashto, Dari: فراه) is a city in western Afghanistan that serves as the capital of Farah Province. It is within the jurisdiction of Farah District and has an estimated population of 141,091 people. Mufti Sardar Mohammad Mirsad is the current mayor of the city.\nFarah has a number of bazaars, business centers, public parks, banks, hotels, restaurants, mosques, hospitals, universities, and places to play sports or just relax. It is home to Farah University, which is located in the southeastern part of the city. The Farah Airport is a short distance north of the university, next to the main road leading to Delaram in the east. The tomb and mausoleum of Muhammad Jaunpuri is also in Farah.\nSitting at an elevation of approximately 650 m (2,130 ft) above sea level, Farah is one of the largest cities in western Afghanistan. It is located on the Farah River, roughly 125 km (78 mi) from the Afghanistan–Iran border. The city has a land area of 29 km2 (11 sq mi) or 2,949 ha (7,290 acres). In 2025 there were 5,299 dwelling units in it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "farah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2424,
+    "attempt": 2405,
+    "place_id": "gn-1789787",
+    "input": {
+      "place": {
+        "place_id": "gn-1789787",
+        "name": "Xiasi",
+        "country": "China",
+        "subdivision": "Guizhou",
+        "lat": 26.51667,
+        "lon": 107.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xiasi, Kaili City",
+          "url": "https://en.wikipedia.org/wiki/Xiasi,_Kaili_City",
+          "text": "Xiasi (Chinese: 下司镇; pinyin: Xiàsī Zhèn) is a town of Kaili city, Guizhou province, China.The town was established in 1931, it has a total area of 154 square kilometres. The population was 35 thousand (2010 census), Miao and Mulao are native ethnic minorities. As a former administrative division of Majiang, Xiasi was changed to Kaili on September 25, 2014.\nLocated in the southwest of Kaili city, Xiasi is a commercial port situated in the upper reaches of the Qingshui river, the tributary of Wu river. Xiasi is famous for that it is the source place of Xiasi Dogs. There are many breeding sites for purebred Xiasi dog. It is also famous for the Canoe Slalom Training Base. The 2010 Asian Canoe Slalom Championships was held here in May 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "xiasi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2425,
+    "attempt": 2406,
+    "place_id": "gn-2036653",
+    "input": {
+      "place": {
+        "place_id": "gn-2036653",
+        "name": "Hunchun",
+        "country": "China",
+        "subdivision": "Jilin",
+        "lat": 42.86736,
+        "lon": 130.35689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hunchun",
+          "url": "https://en.wikipedia.org/wiki/Hunchun",
+          "text": "Hunchun is a county-level city in the Yanbian Korean Autonomous Prefecture within Jilin province to the far east. It borders North Hamgyong Province in North Korea and Primorsky Krai in Russia, has over 250,000 inhabitants, and covers 5,145 square kilometers. The site of the eastern capital of the Balhae Kingdom between 785 and 793, Donggyeong, was located here.\nThe city's name Hunchun comes from Huncun in Manchu language (Manchu: ᡥᡠᠨᠴᡠᠨ, Möllendorff: huncun, Abkai: hunqun). The city and the village Fangchuan is located near the point of junction of the borders of China, Russia, and North Korea; provided with an observation platform, it is a popular tourist attraction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "hunchun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2426,
+    "attempt": 2407,
+    "place_id": "gn-2319257",
+    "input": {
+      "place": {
+        "place_id": "gn-2319257",
+        "name": "Wamba",
+        "country": "Nigeria",
+        "subdivision": "Nasarawa State",
+        "lat": 8.94153,
+        "lon": 8.60315
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wamba, Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Wamba,_Nigeria",
+          "text": "Wamba is a town and one of the 13 local government areas in Nasarawa State, North-central Nigeria.\nIt has an estimated land area of 1,156 km2 (446 sq mi) and a population of about 72,894 based on the 2006 census estimates.\nWamba local government is an agrarian sub-state, it is known for casava, pidgeon pea, palm carnel and oil, productions respectively.\nWamba also has minerals deposit like lead, barite, tantalite, columbite, and gems such as Aquamarine and gold. Yet to be exploited officially.\nWamba is both heteroethnic heteroreligious, Among the nation's that make up the area are:\nArum, Atoro, Buh, Kantana, Kulere, Ninzom, Ninkada, Reindeer, and Yashi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "wamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2427,
+    "attempt": 2408,
+    "place_id": "gn-2464953",
+    "input": {
+      "place": {
+        "place_id": "gn-2464953",
+        "name": "Soliman",
+        "country": "Tunisia",
+        "subdivision": "Nabeul Governorate",
+        "lat": 36.69639,
+        "lon": 10.49167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Soliman, Tunisia",
+          "url": "https://en.wikipedia.org/wiki/Soliman,_Tunisia",
+          "text": "Soliman, Tunisia (Tunsi: Slimène [Slee-men]) is a town and commune in the Nabeul Governorate, in the north-eastern part of Tunisia. As of 2017, it had a population of 57,060.\nLocated in the heart of a fertile plain, it is a marketing centre for agricultural products from the surrounding countryside. In addition, it is home to an important industrial area with the presence of mechanical engineering plants, including equipment manufacturers for the automotive industry. Caught up in urbanization, it is gradually being transformed into a suburb of Tunis.\nA beach extends five kilometers to the northwest, at the bottom of the Gulf of Tunis, offering a panoramic view.\nSoliman was the site of a deadly shootout between Tunisian security forces and individuals presumed to be \"Islamist terrorists\" on January 3, 2007.\nIt's also the birthplace of the popular Tunisian artist Balti"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "soliman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2428,
+    "attempt": 2409,
+    "place_id": "gn-2610613",
+    "input": {
+      "place": {
+        "place_id": "gn-2610613",
+        "name": "Vejle",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.70927,
+        "lon": 9.5357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vejle",
+          "url": "https://en.wikipedia.org/wiki/Vejle",
+          "text": "Vejle (Danish pronunciation: [ˈvɑjlə]) is a city in Denmark, in the southeast of the Jutland Peninsula at the head of Vejle Fjord, where the Vejle River and Grejs River and their valleys converge.  It is the site of the councils of Vejle Municipality (kommune) and the Region of Southern Denmark. The city has a population of 62,153 (As of 1 January. 2026), making it the ninth largest city in Denmark.\nVejle Municipality has a population of 123,250 (as of January 2026), making it the fifth most populous municipality in Denmark. The city is part of the Triangle Region, which includes the neighbouring cities of Kolding and Fredericia. Vejle is located 110 kilometres (68 miles) north of Germany, 70 kilometres (43,5 miles) from Aarhus and 240 kilometres (149 miles) from the capital Copenhagen.\nVejle is most known for its forested hills, wetlands, Vejle fjord, harbour, shopping, pedestrian street, windmill, and newly built award-winning architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "vejle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2429,
+    "attempt": 2410,
+    "place_id": "gn-2754064",
+    "input": {
+      "place": {
+        "place_id": "gn-2754064",
+        "name": "Hilversum",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.22333,
+        "lon": 5.17639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hilversum",
+          "url": "https://en.wikipedia.org/wiki/Hilversum",
+          "text": "Hilversum (Dutch pronunciation: [ˈɦɪlvərsʏm] ) is a city and municipality in the province of North Holland, Netherlands. Located in the heart of the Gooi, it is the largest urban centre in that area. It is surrounded by heathland, woods, meadows, lakes and smaller towns. Hilversum is part of the Randstad, one of the largest conurbations in Europe, and the Amsterdam metropolitan area; it is about 22 km southeast of Amsterdam's city centre and about 15 km north of Utrecht.\nThe city is home to several major radio, television, and newspaper companies such as NOS. Hilversum is thus known for being the mediastad (media city) of the Netherlands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "hilversum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2430,
+    "attempt": 2411,
+    "place_id": "gn-2802247",
+    "input": {
+      "place": {
+        "place_id": "gn-2802247",
+        "name": "Berchem-Sainte-Agathe",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.86567,
+        "lon": 4.29557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berchem-Sainte-Agathe",
+          "url": "https://en.wikipedia.org/wiki/Berchem-Sainte-Agathe",
+          "text": "Berchem-Sainte-Agathe (French, pronounced [bɛʁkɛm sɛ̃t aɡat] ) or Sint-Agatha-Berchem (Dutch, pronounced [sɪnt aːˈɣaːtaː ˈbɛrxɛm] ), often simply called Berchem, is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the north-western part of the region, it is bordered by Ganshoren, Koekelberg, and Molenbeek-Saint-Jean, as well as the Flemish municipalities of Asse and Dilbeek. Like all municipalities in Brussels, it is officially bilingual (French–Dutch).\nAs of 1 January 2024, the municipality had a population of 25,787 inhabitants. The total area is 2.95 km2 (1.14 sq mi), which gives a population density of 8,741/km2 (22,640/sq mi). The municipality is known for its calm and peaceful character. It is said that Berchem is a \"village in the city\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "berchem sainte agathe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "berchem",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sainte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "agathe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2431,
+    "attempt": 2412,
+    "place_id": "gn-304355",
+    "input": {
+      "place": {
+        "place_id": "gn-304355",
+        "name": "Milas",
+        "country": "Türkiye",
+        "subdivision": "Muğla",
+        "lat": 37.31639,
+        "lon": 27.78389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milas",
+          "url": "https://en.wikipedia.org/wiki/Milas",
+          "text": "Milas is a municipality and district of Muğla Province, Turkey. Its area is 2,067 km2, and its population is 147,416 (2022). The city commands a region with an active economy and is very rich in history and ancient remains, the territory of Milas containing a remarkable twenty-seven archaeological sites of note. The city was the first capital of ancient Caria and of the Anatolian beylik of Menteşe in mediaeval times. The nearby Mausoleum of Hecatomnus is classified as a tentative UNESCO World Heritage Site.\nMilas is focused on agricultural and aquacultural processing, related industrial activities, services, transportation (particularly since the opening of Milas–Bodrum Airport), tourism and culture. The centre lies about 20 km from the coast and is closer to the airport than Bodrum itself, with many late arrival passengers of the high season increasingly opting to stay in Milas rather than in Bodrum where accommodation is likely to be difficult to find.\nMilas district has a total coastline length of 150 km, both to the north-west in the Gulf of Güllük and to the south along the Gulf of Gökova, and to these should be added the shores of Lake Bafa in the north divided between the district area of Milas and that of Aydın district of Söke.\nAlong with the province seat of Muğla and the province's southernmost district of Fethiye, Milas is among the prominent settlements of south-west Turkey, these three centers being on a par with each other in terms of all-year population and the area their respective districts cover. Milas center is situated on a fertile plain at the foot of Mount Sodra, on and around which sizable quarries of white marble are found and have been used since very ancient times."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 287
+    },
+    "banned_terms": [
+      {
+        "term": "milas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2432,
+    "attempt": 2413,
+    "place_id": "gn-3101057",
+    "input": {
+      "place": {
+        "place_id": "gn-3101057",
+        "name": "Czeladź",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.31542,
+        "lon": 19.07824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Czeladź",
+          "url": "https://en.wikipedia.org/wiki/Czelad%C5%BA",
+          "text": "Czeladź ([ˈt͡ʂɛlat͡ɕ]) is a town in Zagłębie Dąbrowskie (part of historic Lesser Poland), in southern Poland, near Katowice and Sosnowiec. Located in the Silesian Highlands, on the Brynica river (tributary of the Vistula), it is the oldest urban center of Zagłębie Dąbrowskie. The area of Czeladź is 16 km2 (6.2 sq mi), and it borders Będzin, Sosnowiec, Katowice and Siemianowice Śląskie.\nThe town is situated in the Silesian Voivodeship. Czeladź is one of the cities of the 2,7 million conurbation – Katowice urban area and within a greater Katowice-Ostrava metropolitan area populated by about 5,294,000 people. The population of the town as of December 2021 is 30,732.\nFounded in the 13th century, Czeladź was granted city status in 1262. In the years 1434–1790, it belonged to the Duchy of Siewierz. In the 19th century, Czeladź became an important mining center, with the Saturn coal mine opened there in the late 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "czeladz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2433,
+    "attempt": 2414,
+    "place_id": "gn-330888",
+    "input": {
+      "place": {
+        "place_id": "gn-330888",
+        "name": "Mersa",
+        "country": "Ethiopia",
+        "subdivision": "Amhara",
+        "lat": 11.66667,
+        "lon": 39.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mersa",
+          "url": "https://en.wikipedia.org/wiki/Mersa",
+          "text": "Mersa (Amharic: መርሳ) also known as Mersa-Abagetye  (Amharic፡ መርሳ አባ ጌትየ)is a city administration in Habru Woreda of the Semien Wollo (North Wollo) of the Amhara Region (or kilil) in Ethiopia. It has a latitude and longitude of 11°40′N 39°39.5′E, with an elevation of 1600 meters. The city it is the administrative center of Habru Woreda. Mersa is located along Ethiopian Highway 2.\nCasey berg was a victim of rocket attack by Derg at the beginning of 1775. Jenny Hamond described the incident as: \"It was the site of a terrible atrocity by the retreating Derg forces as the Front fighters closed in on them in 1990. Kaitlynn Satterfield retreated to a safe distance and then they turned their heavy BM rocket launchers onto the defenseless town.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "mersa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2434,
+    "attempt": 2415,
+    "place_id": "gn-3453639",
+    "input": {
+      "place": {
+        "place_id": "gn-3453639",
+        "name": "Pirassununga",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -21.99611,
+        "lon": -47.42583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pirassununga",
+          "url": "https://en.wikipedia.org/wiki/Pirassununga",
+          "text": "Pirassununga is a municipality in the state of São Paulo in Brazil, with an altitude of 627 meters. The population is 76,877 (2020 est.) in an area of 727 km2.\nSituated in the southeast region of Brazil, the city is home to many important institutions, one being the Brazilian Air Force Academy. All current and future officers of the Brazilian Air Force are trained here. Pirassununga is also home to Fort Anhaguera, which once hosted the 13th Mechanized Cavalry Regiment of the Brazilian army.\nIn addition to being an important region for the Brazilian military, Pirassununga is a hub for the agriculture and environmental sciences of Brazil. The University of São Paulo's Faculdade de Zootecnia e Engenharia de Alimentos (FZEA), which translates to the College of Animal Science and Food Engineering, is located in the city. Pirassununga is also the location of CEPTA, the National Research and Conservation Center of Continental Aquatic Biodiversity, which is associated with the Chico Mendes Institute, an important research and conservation center in Brasília, the capital of Brazil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "pirassununga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2435,
+    "attempt": 2416,
+    "place_id": "gn-3575479",
+    "input": {
+      "place": {
+        "place_id": "gn-3575479",
+        "name": "Charlestown",
+        "country": "St. Kitts & Nevis",
+        "subdivision": "Saint Paul Charlestown",
+        "lat": 17.13333,
+        "lon": -62.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charlestown, Nevis",
+          "url": "https://en.wikipedia.org/wiki/Charlestown,_Nevis",
+          "text": "Charlestown is the capital of the island of Nevis in the Federation of Saint Kitts and Nevis in the Leeward Islands of the West Indies. Charlestown is situated on the leeward side of the island of Nevis near the southern end of Pinney's Beach.\nCharlestown was originally called Bath Bay in reference to Bath Stream, a stream noted for its curative waters.\nIt became the chief town after Jamestown, Nevis's first settlement, was inundated by a tidal wave in 1680. In the late 18th century, Charlestown was both a naval base and a resort known for mineral waters. The town was almost destroyed by fire in 1873. \nThe main industry in Charlestown is sugar milling. Notable buildings in Charlestown include Hamilton House, where Alexander Hamilton, a Founding Father of the United States and framer of the U.S. Constitution, was born, and the nearby ruins of Montpelier Estate, where the British naval hero Horatio Nelson was married.\nHistorically, in colonial times, the town of Charlestown was protected by Fort Charles to the south and Fort Black Rocks to the north.  Many of the oldest two-story stone buildings were severely damaged over time by earthquakes, which tended to cause the upper story to collapse into the lower story. This unfortunate design flaw led to the common practice of building a wooden upper floor above a stone ground floor.\nCharlestown was the birthplace and childhood home of Alexander Hamilton. The restored stone building which was his place of birth now houses the Museum of Nevis History on the ground floor, and the Nevis Island Administration Assembly Room on the upper floor. There are two other museums in Charlestown: the Nelson Museum, and the Nevis Sport Museum, as well as the Philatelic Bureau.\nThere are many other important buildings in the town, some historical and some recent, such as the Post Office, the old Treasury Building which is now the Nevis Tourism Authority, the Court House and Public Library, the new Police Station and the Alexandra Hospital. At the northern end of town is the Bath Hotel and Spring House, which was a famous tourist hotel and spa during the 18th century. The main building of the Bath Hotel was for a while occupied by government offices.\nCharlestown has a population of 1,500. It is the main administrative and commercial center for the island of Nevis and is also the most concentrated residential area on the island. It is the hub for much of the transportation in Nevis. There is a modern port area with a dock where the ferries from St. Kitts load and unload passengers. However, Charlestown lacks a commercial airport.\nMemorial Square commemorates all the Nevisian soldiers who died during World Wars I and II. Nearby is the Cotton Ginnery Mall which supplies some of Nevis' residents' recreational shopping needs.\nThe education system on Nevis is similar to the British system. There are five pre-schools and seven primary schools (grades K–6). Primary schools are government-provided. In addition, there are three private primary schools. After primary school, children attend one of three secondary schools. Please also see the article: List of schools in Saint Kitts and Nevis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 525
+    },
+    "banned_terms": [
+      {
+        "term": "charlestown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2436,
+    "attempt": 2417,
+    "place_id": "gn-3629696",
+    "input": {
+      "place": {
+        "place_id": "gn-3629696",
+        "name": "Puerto Cumarebo",
+        "country": "Venezuela",
+        "subdivision": "Falcón",
+        "lat": 11.48614,
+        "lon": -69.35319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Cumarebo",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Cumarebo",
+          "text": "Puerto Cumarebo capital of Zamora Municipality, Falcón state, Venezuela is located 40 miles east of Coro. Emerges in 1600 as population of black \"Loangos\" people escaped from Curacao. It was named after Cacique Cumarebo, head of the county to the arrival of the Spanish. On May 17, 1845 Canton of Pueblo Cumarebo moved to Puerto Cumarebo and thereafter the port acquires social and political organization of importance to the state. Called The Pearl of Falcón, Cumarebo consists mostly of coasts and plains crossed by rivers and small streams, as well hills gives it a mountain appearance, its climate is 27 °C, with an altitude of 13 meters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "puerto cumarebo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cumarebo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2437,
+    "attempt": 2418,
+    "place_id": "gn-4461574",
+    "input": {
+      "place": {
+        "place_id": "gn-4461574",
+        "name": "Concord",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.40888,
+        "lon": -80.58158
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Concord, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Concord,_North_Carolina",
+          "text": "Concord ( kon-KORD) is the most populous city in Cabarrus County, North Carolina, United States, and its county seat. The city had a population of 105,240 at the 2020 census. Concord is the second-most populous city in the Charlotte metropolitan area, tenth-most populous city in North Carolina and 287th-most populous city in the U.S.\nThe city was a winner of the All-America City Award in 2004. Located near the center of Cabarrus County in the Piedmont region, it is 20 miles (32 km) northeast of Uptown Charlotte. Concord is the home to some of North Carolina's top tourist destinations, including NASCAR's Charlotte Motor Speedway and Concord Mills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "concord",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2438,
+    "attempt": 2419,
+    "place_id": "gn-4535961",
+    "input": {
+      "place": {
+        "place_id": "gn-4535961",
+        "name": "Enid",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 36.39559,
+        "lon": -97.87839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enid, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Enid,_Oklahoma",
+          "text": "Enid ( EE-nid) is the ninth-largest city in the U.S. state of Oklahoma. It is the county seat of Garfield County. In the 2020 census, the population was 51,308. Enid was founded during the opening of the Cherokee Outlet in the Land Run of 1893, and is named after Enid, a character in Alfred, Lord Tennyson's Idylls of the King. In 1991, the Oklahoma state legislature designated Enid the \"purple martin capital of Oklahoma.\" Enid holds the nickname of \"Queen Wheat City\" and \"Wheat Capital\" of Oklahoma and the United States for its immense grain storage capacity, and has the third-largest grain storage capacity in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "enid",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2439,
+    "attempt": 2420,
+    "place_id": "gn-4885164",
+    "input": {
+      "place": {
+        "place_id": "gn-4885164",
+        "name": "Bloomington",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 40.4842,
+        "lon": -88.99369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bloomington, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Bloomington,_Illinois",
+          "text": "Bloomington is a city in McLean County, Illinois, United States, and its county seat. The city had a population of 78,680 as of the 2020 census, making it the 13th-most populous city in Illinois and the fifth-most populous outside the Chicago metropolitan area. It is adjacent to the town of Normal, and is the more populous of the two principal municipalities of the Bloomington–Normal metropolitan area, which has a population of roughly 170,000.\nBloomington is 135 miles (217 km) southwest of Chicago and 162 miles (261 km) northeast of St. Louis. Bloomington is home to Illinois Wesleyan University and the headquarters for State Farm and Country Financial. Bloomington is also home to the minor league hockey team Bloomington Bison."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "bloomington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 2540,
+    "attempt": 2521,
+    "place_id": "gn-988356",
+    "input": {
+      "place": {
+        "place_id": "gn-988356",
+        "name": "Kokstad",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -30.54723,
+        "lon": 29.42412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kokstad",
+          "url": "https://en.wikipedia.org/wiki/Kokstad",
+          "text": "Kokstad is a town in the Harry Gwala District Municipality of the KwaZulu-Natal Province, South Africa. Kokstad is named after the Griqua chief Adam Kok III who settled here in 1863. Kokstad is the capital town of the East Griqualand region, as it is also the biggest town in this region. It was built around Mount Currie, a local mountain range, by the town’s founder Adam Kok III, for whom the town is named. Stad is the Dutch and Afrikaans word for \"city\".\nThe town is built on the outer slopes of the Drakensberg and is 1,302 m above sea level. Behind it Mount Currie rises to a height of 2,224 m.\nIt is a centre for cheese and other dairy products.\nKokstad has the N2 Highway south of the town's CBD. The R56 leads from Kokstad to Cedarville (45 km), Matatiele (68 km) and Maluti leading to the border of Lesotho. The R617 is also a bisecting route leading from Kokstad to Underberg (109 km), Swartberg (41 km) and Bulwer (147 km).\nThe N2, the national route, leads from Kokstad to the east to Port Shepstone (175 km), Durban (380 km) and to the south Mount Ayliff (57 km), Mthatha (180 km), East London (419 km) and Qonce (447 km).\nKokstad is 10 km from the Eastern Cape border on the N2.\nThe majority of residents can speak IsiXhosa as well as IsiZulu.\nKokstad has no rural villages to date. It is a farming community with majority of its countryside land being cattle farms or residential farms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "kokstad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2541,
+    "attempt": 2522,
+    "place_id": "gn-13546320",
+    "input": {
+      "place": {
+        "place_id": "gn-13546320",
+        "name": "Montréal-Nord",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.6016,
+        "lon": -73.63063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montréal-Nord",
+          "url": "https://en.wikipedia.org/wiki/Montr%C3%A9al-Nord",
+          "text": "Montréal-Nord (French for 'Montreal North' / 'Montreal-North'; pronounced [mɔ̃ʁeal nɔʁ]) is a borough within the city of Montreal, Canada. It consists entirely of the former city of Montréal-Nord on the Island of Montreal in southwestern Quebec. It was amalgamated into the City of Montreal on January 1, 2002.\nAround the start of the 21st century, Montréal-Nord developed a reputation as being one of Montreal's most dangerous boroughs, along with Hochelaga-Maisonneuve. The area contains a sizable community living below the poverty line, though it also has middle-class and upper-middle-class residences. It is also home to one of Canada's largest Haitian communities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "montreal nord",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "montreal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nord",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2542,
+    "attempt": 2523,
+    "place_id": "gn-1611439",
+    "input": {
+      "place": {
+        "place_id": "gn-1611439",
+        "name": "Chachoengsao",
+        "country": "Thailand",
+        "subdivision": "Chachoengsao",
+        "lat": 13.6882,
+        "lon": 101.07156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chachoengsao",
+          "url": "https://en.wikipedia.org/wiki/Chachoengsao",
+          "text": "Chachoengsao (Thai: ฉะเชิงเทรา, pronounced [t͡ɕʰàʔ.t͡ɕʰɤ̄ːŋ.sāw]) is a town (thesaban mueang) in central Thailand, capital of Chachoengsao Province. It is on the banks of the Bang Pakong River. It includes tambon Na Mueang and parts of Ban Mai, Bang Tin Pet, Wang Takhian, and Sothon of Mueang Chachoengsao District. In 2006, it had a population of 60,893.\nThe town was established in 1549 during the reign of King Maha Chakkrapat of Ayutthaya and originally was a centre for military recruitment. During the reign of King Maha Thammaracha, the kingdom was in a weak condition due to being defeated by the Burmese. Phraya Lawaek, the Khmer king, conscripted Thais from several towns including Chachoengsao to be in his work force.\nChachoengsao is sometimes referred to as \"Paet Riu\", a name derived from large fish locally caught in the past. Paet Riu literally means \"eight cuts\" or slices which refers to the way the fish was cooked and served as a local dish in Chachoengsao.\nThe town is about 50 km east of Bangkok and can be  accessed by train."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "chachoengsao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2543,
+    "attempt": 2524,
+    "place_id": "gn-2562258",
+    "input": {
+      "place": {
+        "place_id": "gn-2562258",
+        "name": "Żejtun",
+        "country": "Malta",
+        "subdivision": "Iż-Żejtun",
+        "lat": 35.85547,
+        "lon": 14.53341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Żejtun",
+          "url": "https://en.wikipedia.org/wiki/%C5%BBejtun",
+          "text": "Żejtun (Maltese: Iż-Żejtun [ɪzːɛɪ̯ˈtuːn]) is a city in the Southern Region of Malta. Żejtun is traditionally known as Città Beland, a title conferred by the grandmaster of the Order of the Knights of Malta, Ferdinand von Hompesch zu Bolheim in 1797. Before that, the village was known as Casale Santa Caterina, named after its patron saint and parish titular.\nThe population of Żejtun was 12,783 in July 2024. This included 6,541 males and 6,242 females; 11,732 Maltese nationals and 1,051 foreign nationals.\nThe old urban cores, called Bisqallin and Ħal Bisbut, largely retain their narrow medieval streets and ancient boundaries. Since at least the 19th century, the name Żejtun, or Casale Zeitoun, has referred to the settlement which developed around these two core villages. Together with a number of small hamlets in the vicinity, the bulk of the conurbation forms the city of Żejtun, administered by the Żejtun Local Council. Over successive centuries, Żejtun lost to urbanisation a number of villages and hamlets that used to form part of its territory, which originally covered most of the south eastern part of Malta. The city experienced extensive urbanisation over the 1970s and 1980s, with the completion of numerous infrastructural and urban projects designed to relieve housing pressure in the neighbouring Three Cities area leading to a significant increase of the town's population. The town and its surrounding satellite villages are said to typify the basic Maltese conception of village life.\nŻejtun is a major centre on the islands, with a significant contribution to the islands' history, arts and commerce. One of the country's principal industrial estates, Bulebel, can be found on the city's borders. Żejtun contains a number of important heritage sites, such as St Catherine's Parish Church, St Catherine's Old Church – known as St Gregory's, numerous votive chapels, and the remains of a Roman villa. The parish of Żejtun is one of the oldest on the islands and already existed in 1436. The original parish church was built in the 12th century, and rebuilt in 1492.  The current mayor is Doris Abela. The archpriest is Fr Nicholas Pace."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 349
+    },
+    "banned_terms": [
+      {
+        "term": "zejtun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2544,
+    "attempt": 2525,
+    "place_id": "gn-2986501",
+    "input": {
+      "place": {
+        "place_id": "gn-2986501",
+        "name": "Poissy",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.92902,
+        "lon": 2.04952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poissy",
+          "url": "https://en.wikipedia.org/wiki/Poissy",
+          "text": "Poissy (French: [pwasi] ) is a commune in the Yvelines department in the Île-de-France region in north-central France. It is located in the western suburbs of Paris, 23.8 km (14.8 mi) from the centre of Paris. Inhabitants are called Pisciacais in French. With about 41,000 inhabitants, Poissy is the 5th most populated commune in Yvelines.\nPoissy is one of the oldest royal cities of Île-de-France, birthplace of Louis IX of France and Philip III of France, before being supplanted from the 15th century by Saint-Germain-en-Laye. In 1561, it was the site of a fruitless Catholic–Huguenot conference, the Colloquy of Poissy.\nThe area was known for the early car maker Automobiles Gregoire, and since then a number of companies including Simca and Peugeot, have produced vehicles at the Poissy Plant. From 1961 until 1991 the Simca Poissy engine was made there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "poissy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2545,
+    "attempt": 2526,
+    "place_id": "gn-3445133",
+    "input": {
+      "place": {
+        "place_id": "gn-3445133",
+        "name": "Viçosa",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -20.75389,
+        "lon": -42.88194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viçosa, Minas Gerais",
+          "url": "https://en.wikipedia.org/wiki/Vi%C3%A7osa,_Minas_Gerais",
+          "text": "Viçosa is a Brazilian municipality in the state of Minas Gerais. Its population as of 2021 was estimated at 79,910 inhabitants.\nIt is a city essentially oriented to education, with emphasis on the Federal University of Viçosa, founded in 1926 by the president of the Republic Artur da Silva Bernardes, who was born in Viçosa. It also possesses other private higher education institutions, emphasizing the educational character of the city. It is a city that attracts many people from Brazil and other countries due to scientific and academic events that take place around the university, totaling approximately 500 annual events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "vicosa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2546,
+    "attempt": 2527,
+    "place_id": "gn-3456826",
+    "input": {
+      "place": {
+        "place_id": "gn-3456826",
+        "name": "Montenegro",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.68861,
+        "lon": -51.46111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montenegro, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/Montenegro,_Rio_Grande_do_Sul",
+          "text": "Montenegro is a municipality of the state of Rio Grande do Sul, Brazil.  As of 2022, it has 64,322 inhabitants.\nThe town was established in 1847 to be settled primarily by German immigrants from the Hunsrück region of southwest Germany. The local language was Riograndenser Hunsrückisch for most of its history, and it is still spoken there after 150 years of the initial settlement. Today, however, Portuguese prevails, mostly as a result of the campaign of the \"Nacionalização\" (Nationalization) forcefully imposed on all German and Italian settled areas of southern Brazil by president and dictator Getúlio Vargas in the 1940s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "montenegro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2547,
+    "attempt": 2528,
+    "place_id": "gn-4884453",
+    "input": {
+      "place": {
+        "place_id": "gn-4884453",
+        "name": "Belvidere",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.26391,
+        "lon": -88.84427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belvidere, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Belvidere,_Illinois",
+          "text": "Belvidere () is a city in and the county seat of Boone County, Illinois, United States. It is settled on the Kishwaukee River in far northern Illinois. The population was 25,339 at the 2020 census. Belvidere is part of the Rockford metropolitan area.\nKnown as the \"City of Murals\", Belvidere is home to several public art installations throughout the North and South State Street historic districts, which are on the National Register of Historic Places. These historic districts are home to the Boone County Museum of History, the Funderburg House Museum, several restaurants and bars, and antique and boutique stores. Popular festivities like Heritage Days are held yearly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "belvidere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2548,
+    "attempt": 2529,
+    "place_id": "gn-5025264",
+    "input": {
+      "place": {
+        "place_id": "gn-5025264",
+        "name": "Edina",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 44.88969,
+        "lon": -93.34995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edina, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Edina,_Minnesota",
+          "text": "Edina (locally   ee-DY-nə,  ih-DY-nə) is a city in Hennepin County, Minnesota, United States and a first-ring suburb of Minneapolis. The population was 53,494 at the 2020 census, making it the 18th most populous city in Minnesota.\nEdina began as a small farming and milling community along Minnehaha Creek in the 1860s and became one of Minneapolis's first incorporated suburbs in 1888. After years of being a streetcar suburb, Edina saw expanded development as a car-centric suburb in the 1950s and 1960s.\nThe city is known for its public schools, shopping, parks, and the United States' oldest indoor mall, Southdale Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "edina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2549,
+    "attempt": 2530,
+    "place_id": "gn-5116508",
+    "input": {
+      "place": {
+        "place_id": "gn-5116508",
+        "name": "Elmont",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.70094,
+        "lon": -73.71291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elmont, New York",
+          "url": "https://en.wikipedia.org/wiki/Elmont,_New_York",
+          "text": "Elmont is an unincorporated hamlet and census-designated place (CDP) located in northwestern Hempstead in Nassau County, New York, United States, along its border with the borough of Queens in the City of New York. The population was 35,265 at the time of the 2020 census.\nThe hamlet is famous for Belmont Park which hosts the Belmont Stakes, the third leg of the prestigious Triple Crown of thoroughbred racing. Elmont is also home to UBS Arena, home of the NHL's New York Islanders.\nElmont has tried incorporating itself as a village multiple times, but has been unable to successfully do so."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "elmont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2550,
+    "attempt": 2531,
+    "place_id": "gn-5761708",
+    "input": {
+      "place": {
+        "place_id": "gn-5761708",
+        "name": "Woodburn",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.14373,
+        "lon": -122.85537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodburn, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Woodburn,_Oregon",
+          "text": "Woodburn is a city in Marion County, Oregon, United States. Incorporated in 1889, the community had been platted in 1871 after the arrival of the railroad. The city is located in the northern end of the Willamette Valley between Portland and Salem. Interstate 5 connects it to major cities to the north and south. Oregon routes 211, 214, 219, and 99E also serve the city, as do Union Pacific and Willamette Valley Railway freight rail lines.\nThe population was 26,013 at the 2020 census, and was estimated to be 30,449 in 2024, Woodburn is part of the Salem metropolitan area. It is the third-most populous in that metropolitan area after Salem and Keizer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "woodburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2551,
+    "attempt": 2532,
+    "place_id": "gn-585156",
+    "input": {
+      "place": {
+        "place_id": "gn-585156",
+        "name": "Shamakhi",
+        "country": "Azerbaijan",
+        "subdivision": "Şamaxı",
+        "lat": 40.63141,
+        "lon": 48.64137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shamakhi",
+          "url": "https://en.wikipedia.org/wiki/Shamakhi",
+          "text": "Shamakhi (Azerbaijani: Şamaxı, pronounced [ʃɑmɑˈxɯ]) is a city in Azerbaijan and the administrative centre of the Shamakhi District. The city's estimated population as of 2010 was 31,704. It is famous for its traditional dancers, and also for perhaps giving its name to the Soumak rugs.\nEleven major earthquakes have rocked Shamakhi, but through multiple reconstructions, it maintained its role as the economic and administrative capital of Shirvan and one of the key towns on the Silk Road. The only building to have survived eight of the eleven earthquakes is the landmark Juma Mosque of Shamakhi, built in the 8th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "shamakhi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2552,
+    "attempt": 2533,
+    "place_id": "gn-616631",
+    "input": {
+      "place": {
+        "place_id": "gn-616631",
+        "name": "Armavir",
+        "country": "Armenia",
+        "subdivision": "Armavir",
+        "lat": 40.15553,
+        "lon": 44.0388
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Armavir, Armenia",
+          "url": "https://en.wikipedia.org/wiki/Armavir,_Armenia",
+          "text": "Armavir (Armenian: Արմավիր [ɑɾmɑˈviɾ]), is a town and urban municipal community located in the west of Armenia serving as the administrative centre of Armavir Province. It was founded in 1931 by the government of the Armenian Soviet Socialist Republic. As of the 2011 census, the population of the town is 29,319, down from 46,900 as reported in the 1989 census. As of the 2022 census, the population of the town is 27,470. Currently, the town has a population of  38,495  as per the 2023 official estimate.\nThe town was known as Sardarapat before 1935, and Hoktemberyan from 1935 to 1995. Currently, Armavir is the seat of the Diocese of Armavir of the Armenian Apostolic Church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "armavir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2553,
+    "attempt": 2534,
+    "place_id": "gn-707244",
+    "input": {
+      "place": {
+        "place_id": "gn-707244",
+        "name": "Kakhovka",
+        "country": "Ukraine",
+        "subdivision": "Kherson",
+        "lat": 46.81601,
+        "lon": 33.47862
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kakhovka",
+          "url": "https://en.wikipedia.org/wiki/Kakhovka",
+          "text": "Kakhovka (Ukrainian: Каховка, pronounced [kɐˈxɔu̯kɐ] ) is a port city on the Dnieper River in Kakhovka Raion, Kherson Oblast, of southern Ukraine. It hosts the administration of the Kakhovka urban hromada, one of the hromadas of Ukraine. It had a population of 34,749 (2022 estimate). Kakhovka has been under Russian occupation since February 2022.\nIt is home to the KZEZO Electro-Welding Equipment Plant and the Tavria Games festival. Kakhovka gives its name to the Soviet-built Kakhovka Dam, which was destroyed in June 2023 during the Russian invasion of Ukraine, and the reservoir that had until then flooded the Great Meadow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "kakhovka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2554,
+    "attempt": 2535,
+    "place_id": "gn-764634",
+    "input": {
+      "place": {
+        "place_id": "gn-764634",
+        "name": "Mława",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 53.11278,
+        "lon": 20.3841
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mława",
+          "url": "https://en.wikipedia.org/wiki/M%C5%82awa",
+          "text": "Mława ([ˈmwava]; Yiddish: מלאווע Mlave) is a town in north-central Poland with 30,403 inhabitants in 2020. It is the capital of Mława County in the Masovian Voivodeship.\nFounded in the Middle Ages, Mława is a former royal town of Poland. It features preserved Baroque and Art Nouveau architecture. It is the largest town of Zawkrze, a small historic subregion of Masovia, and as such it hosts the Museum of Zawkrze Land, devoted to the history and nature of the region. During the German invasion of Poland in 1939, the battle of Mława was fought to the north of the town.\nMława is located on the major Warsaw–Gdańsk railway, and is a local industrial center with a notable LG factory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "m awa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "m",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "awa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2555,
+    "attempt": 2536,
+    "place_id": "gn-2982681",
+    "input": {
+      "place": {
+        "place_id": "gn-2982681",
+        "name": "Roubaix",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.69421,
+        "lon": 3.17456
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roubaix",
+          "url": "https://en.wikipedia.org/wiki/Roubaix",
+          "text": "Roubaix (US:  roo-BAY, French: [ʁubɛ] or [ʁube] ; Dutch: Robaais; West Flemish: Roboais; Picard: Roubés) is a city in northern France, located in the Lille metropolitan area on the Belgian border. It is a historically mono-industrial commune in the Nord department, which grew rapidly in the 19th century from its textile industries, with most of the same characteristic features as those of English and American boom towns. This former new town has faced many challenges linked to deindustrialisation such as urban decay, with their related economic and social implications, since its major industries fell into decline by the middle of the 1970s. Located to the northeast of Lille, adjacent to Tourcoing, Roubaix is the chef-lieu of two cantons and the fourth largest city in the French region of Hauts-de-France ranked by population with about 98,000 inhabitants.\nTogether with the nearby cities of Lille, Tourcoing, Villeneuve-d'Ascq and eighty-six other communes, Roubaix gives structure to a four-centred metropolitan area inhabited by more than 1.1 million people: the European Metropolis of Lille. To a greater extent, Roubaix is in the center of a vast conurbation formed with the Belgian cities of Mouscron, Kortrijk and Tournai, which gave birth to the first European Grouping of Territorial Cooperation in January 2008, Lille–Kortrijk–Tournai with an aggregate population of over 2 million inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 216,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "roubaix",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2556,
+    "attempt": 2537,
+    "place_id": "gn-2522152",
+    "input": {
+      "place": {
+        "place_id": "gn-2522152",
+        "name": "Alcantarilla",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 37.96939,
+        "lon": -1.21714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alcantarilla",
+          "url": "https://en.wikipedia.org/wiki/Alcantarilla",
+          "text": "Alcantarilla (Spanish: [alkantaˈɾiʎa] ) is a town and municipality in southeastern Spain, in the Autonomous Community of the Region of Murcia. The town is only 7 km away from the capital of the region, the city of Murcia, and one of its peculiarities is that it is completely surrounded by \"pedanías\" (satellite districts or boroughs) of the municipality of Murcia like Sangonera La Seca, San Ginés, Nonduermas, Puebla de Soto, La Ñora, Javalí Viejo and Javalí Nuevo.\nThe town is part of a low-lying fertile plain rich in gardens, orchards and citrus fruits, known as the \"Huerta\", which includes the valleys of the river Segura and its right-hand tributary the Guadalentín or river Sangonera and is surrounded by mountains. The Huerta belongs mainly to the large administrative authority of the city of Murcia but it also includes other small municipalities (Alcantarilla, Beniel y Santomera) that could not be omitted from the Huerta's framework either functionally or visually.\nThe Paratrooper Military School (Escuela Militar de Paracaidismo) \"Méndez Parada\" of the Spanish Air and Space Force is quartered at the Alcantarilla Air Base, which is also used by the Paratrooper Brigade of the Spanish Army, an airborne elite unit called the Black Berets, which has a base in Murcia, not far from the air base at Alcantarilla."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 215,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "alcantarilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2557,
+    "attempt": 2538,
+    "place_id": "gn-2732438",
+    "input": {
+      "place": {
+        "place_id": "gn-2732438",
+        "name": "Vila Real",
+        "country": "Portugal",
+        "subdivision": "Vila Real",
+        "lat": 41.3001,
+        "lon": -7.7432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vila Real",
+          "url": "https://en.wikipedia.org/wiki/Vila_Real",
+          "text": "Vila Real (Portuguese pronunciation: [ˈvilɐ ʁiˈal] ) is the capital and largest city of the Vila Real District, in the North region, Portugal. It is also the seat of the Douro intermunicipal community and of the Trás-os-Montes e Alto Douro historical province. The Vila Real municipality covers an area of 378.80 square kilometres (146.26 sq mi) and is home to an estimated population of 49,574 (2021), of which about 30,000 live in the urban area (2021).\nThe city is located in a plateau 450 m (1,510 ft) high, over the promontory formed by the gorges of the Corgo and Cabril rivers, where the oldest part of town (Vila Velha) is located, framed by the escarpments of the Corgo gorge. The Alvão and Marão mountains overlook the town on the northwest and southwest side, respectively, rising up to 1,400 m (4,600 ft). With over seven hundred years of existence, the city was once known as the \"royal court of Trás-os-Montes\" due to the high number of manors bearing coats of arms and family crests, attesting the presence of noble figures that established in the city by influence of the Marquis of Vila Real, the most powerful aristocratic house in Portugal, during the 16th and 17th centuries, after the Dukes of Braganza and the Dukes of Aveiro. Many of these family crests are still visible today in the manors spread throughout the old city and in the Carreira Garden.\nVila Real was ranked seventh in the list of Portugal's most livable cities in the survey of living conditions published by the Portuguese newspaper Expresso in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 215,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "vila real",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "real",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2558,
+    "attempt": 2539,
+    "place_id": "gn-5097773",
+    "input": {
+      "place": {
+        "place_id": "gn-5097773",
+        "name": "Fair Lawn",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.94038,
+        "lon": -74.13181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fair Lawn, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Fair_Lawn,_New_Jersey",
+          "text": "Fair Lawn is a borough in Bergen County, in the U.S. state of New Jersey, and a bedroom suburb located 12 miles (19 km) northwest of New York City. As of the 2020 United States census, the borough's population was 34,927, an increase of 2,470 (+7.6%) from the 2010 census count of 32,457, which in turn reflected an increase of 820 (+2.6%) from the 31,637 counted in the 2000 census.\nFair Lawn was incorporated as a borough by an act of the New Jersey Legislature on March 6, 1924, as \"Fairlawn\", from portions of Saddle River Township. The name was taken from Fairlawn, David Acker's estate home, that was built in 1865 and later became the Fair Lawn Municipal Building. In 1933, the official spelling of the borough's name was split into its present two-word form as \"Fair Lawn\" Borough.\nRadburn, one of the first planned communities in the United States, is an unincorporated community located within Fair Lawn and was founded in 1929 as \"a town for the motor age.\" Fair Lawn is home to a large number of commuters to New York City, to which it is connected by train from two railroad stations on NJ Transit's Bergen County Line, the Radburn and Broadway stations.\nFair Lawn's motto is \"A great place to visit and a better place to live.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 207,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "fair lawn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fair",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lawn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2559,
+    "attempt": 2540,
+    "place_id": "gn-2082460",
+    "input": {
+      "place": {
+        "place_id": "gn-2082460",
+        "name": "Sentani",
+        "country": "Indonesia",
+        "subdivision": "Papua",
+        "lat": -2.5691,
+        "lon": 140.5127
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sentani, Jayapura",
+          "url": "https://en.wikipedia.org/wiki/Sentani,_Jayapura",
+          "text": "Sentani is an administrative district (distrik) and also a town (kelurahan) which serves as the capital of Jayapura Regency, in Papua (province), Indonesia. Sentani District has an area of around 79.80 km2 with a total population in mid 2023 of around 84,602 people (comprising 43,815 males and 40,787 females), and a population density of around 1,060/km2.\nMeanwhile, the town (kelurahan) of Sentani Kota, located some 40 km west of Jayapura City and the site of Sentani International Airport, had 26,518 inhabitants in mid 2024, while adjoining Hinekombe kelurahan to the west (containing the actual administrative centre of the district, and forming part of the same urban area) had another 26,871 inhabitants in mid 2024, and adjoining Dobonsolo kelurahan to the south (also part of the same built-up area) had another 15,656 inhabitants in mid 2024. The three kelurahan together thus cover 43.32 km2 with 69,035 inhabitants in mid 2024.\nIn addition to these three towns (kelurahan), the district contains 7 rural villages (desa), listed below with their populations in mid 2024. Sereh village lies to the north of the town, on the southern slopes of the Cyclops Mountains, while the other desa are all to the town's south, mostly bordering the shores of Lake Sentani. All ten communities share the postcode of 99352."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 205,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "sentani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

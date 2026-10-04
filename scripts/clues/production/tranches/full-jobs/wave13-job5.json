@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 2500,
+    "attempt": 2481,
+    "place_id": "gn-3117331",
+    "input": {
+      "place": {
+        "place_id": "gn-3117331",
+        "name": "Martorell",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.47402,
+        "lon": 1.93062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Martorell",
+          "url": "https://en.wikipedia.org/wiki/Martorell",
+          "text": "Martorell (Catalan pronunciation: [məɾtuˈɾeʎ]) is a municipality, county, and city that forms part of the Baix Llobregat comarca, in Catalonia, Spain, primarily known for its medieval Devil's bridge. It lies at the confluence of the Llobregat and Anoia rivers.\nIt has three railway stations - one on the Renfe line from Manresa to Sant Vicenç de Calders (via Barcelona and Vilafranca del Penedès) called \"Martorell\", and three on the FGC line from Barcelona to Manresa called \"Martorell-Vila\", \"Martorell-Enllaç\" and \"Martorell-Central\".\nMartorell is home to the SEAT corporate headquarters and automobile factory, where the SEAT Ibiza, Leon, Arona and (formerly) Audi A1 are manufactured."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "martorell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2501,
+    "attempt": 2482,
+    "place_id": "gn-3196681",
+    "input": {
+      "place": {
+        "place_id": "gn-3196681",
+        "name": "Lendava",
+        "country": "Slovenia",
+        "subdivision": "Municipality of Lendava",
+        "lat": 46.56494,
+        "lon": 16.45091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lendava",
+          "url": "https://en.wikipedia.org/wiki/Lendava",
+          "text": "Lendava (pronounced [ˈléːndaʋa] ; formerly Dolnja Lendava, in older sources also Dolenja Lendava; Hungarian: Lendva, formerly Alsólendva; German: Lindau, formerly Unter-Limbach) is a town in Slovenia in the region of Prekmurje. It is the seat of the Municipality of Lendava. It forms part of the border crossing with Hungary at Dolga Vas–Rédics and it is near the border with Croatia at Mursko Središće. Alongside Slovene, Hungarian serves as an official language of the municipality.\nThe town is the centre of the Hungarian minority in Slovenia. It is also known for the monumental theater and Hungarian Community Centre designed by the architect Imre Makovecz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "lendava",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2502,
+    "attempt": 2483,
+    "place_id": "gn-321580",
+    "input": {
+      "place": {
+        "place_id": "gn-321580",
+        "name": "Belek",
+        "country": "Türkiye",
+        "subdivision": "Antalya",
+        "lat": 36.8631,
+        "lon": 31.06541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belek",
+          "url": "https://en.wikipedia.org/wiki/Belek",
+          "text": "Belek is a neighbourhood in the Serik district in Turkey's Antalya Province. As of 2022, it had a population of 9,102. Before the 2013 Turkish local government reorganization, it was a town (Belde).\nBelek is one of the centers of Turkey's tourism industry and is home to more than thirty four-star and five-star hotels and many other accommodation services and entertainment facilities.\nThe town and the surrounding area are famous for their spas and mineral waters received from seven springs.\nBelek was awarded the Best Golf Region of the Year in Europe by the International Association of Golf Tour Operators (IAGTO) in 2008. In 2012 it hosted the Turkish Airlines World Golf Final and in 2013 it hosted the Turkish Airlines Open. Belek also hosts the Antalya Open, the only professional tennis tournament currently held in Turkey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "belek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2503,
+    "attempt": 2484,
+    "place_id": "gn-3688071",
+    "input": {
+      "place": {
+        "place_id": "gn-3688071",
+        "name": "Caicedonia",
+        "country": "Colombia",
+        "subdivision": "Valle del Cauca Department",
+        "lat": 4.33267,
+        "lon": -75.8265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caicedonia",
+          "url": "https://en.wikipedia.org/wiki/Caicedonia",
+          "text": "Caicedonia (Spanish pronunciation: [kajseˈðonja]) is a town and municipality located in the Department of Valle del Cauca, Colombia, situated about 172 km from the capital Cali. Founded in 1910 by Daniel Gutierrez, Juan Bautista Angely and a group of settlers from Antioquia, Caldas, and Tolima, it was named after Lisandro Caicedo and became a municipality in 1923. Mostly mountainous, its economy is based on agriculture and commerce, its main exports are corn, coffee, sugarcane and bananas. Given its location on the border with the Quindío Department, only 35 km from that department's capital, Armenia, Caicedonia belongs ethnographically and culturally to the Paisa region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "caicedonia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2504,
+    "attempt": 2485,
+    "place_id": "gn-4917089",
+    "input": {
+      "place": {
+        "place_id": "gn-4917089",
+        "name": "Woodridge",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.74697,
+        "lon": -88.05034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodridge, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Woodridge,_Illinois",
+          "text": "Woodridge is a village in DuPage County, Illinois, with small portions in Will and Cook counties, and a southwestern suburb of Chicago. Per the 2020 census, the population was 34,158.\nThe village is just north of the I-55 junction with IL-53. Woodridge was incorporated on August 24, 1959, with less than 500 residents. It is named for its location in a wooded area above a steep hillside, locally known as \"The Ridge,\" which overlooks the DuPage River's East Branch and the Des Plaines Valley.\nWoodridge is a young community with the vast majority of its homes, businesses, and churches constructed after the 1950s. Woodridge was founded by a housing developer, Albert Kaufman, who was largely responsible for the creation of the village.\nWoodridge is the location of the Home Run Inn pizzeria chain and was the location of Pabst Brewing Company from 2006 to 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "woodridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2505,
+    "attempt": 2486,
+    "place_id": "gn-5811729",
+    "input": {
+      "place": {
+        "place_id": "gn-5811729",
+        "name": "Spokane Valley",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.67323,
+        "lon": -117.23937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spokane Valley, Washington",
+          "url": "https://en.wikipedia.org/wiki/Spokane_Valley,_Washington",
+          "text": "Spokane Valley is a city in Spokane County, Washington, United States, and the largest suburb of Spokane. It is located east of Spokane, west of Coeur d'Alene, Idaho, and surrounds the city of Millwood on three sides. The city incorporated as the City of Spokane Valley on March 31, 2003. The population was 102,976 at the 2020 census, making it the ninth-most populous city in Washington State. Spokane Valley is named after the valley of the Spokane River, in which it is located. The city and the general area is colloquially referred to as \"The Valley\" by residents of the Spokane–Coeur d'Alene area.\nSpokane Valley hosts a variety of community events such as the Spokane County Interstate Fair, Valleyfest, and the Inland Northwest Craft Beer Festival and is home to the Spokane Valley Heritage Museum and the home ground of the Spokane Indians minor league baseball team."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "spokane valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spokane",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2506,
+    "attempt": 2487,
+    "place_id": "gn-895953",
+    "input": {
+      "place": {
+        "place_id": "gn-895953",
+        "name": "Zambezi",
+        "country": "Zambia",
+        "subdivision": "North-Western",
+        "lat": -13.54323,
+        "lon": 23.10467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zambezi, Zambia",
+          "url": "https://en.wikipedia.org/wiki/Zambezi,_Zambia",
+          "text": "Zambezi is a town in the North-Western Province of Zambia, lying on the Zambezi River, west of Kabompo. It is at the western end of the M8 road. It is known for the palaces of the chiefs of the Lunda and Lovale people. Until about 1966 it was called Balovale after the dominant chief (and his village within the town is still known by that name) but the name was changed in an attempt to defuse tensions between the main groups and the government of the newly independent country. \nThe Chinyingi Suspension Bridge spans the river just to the north-west of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "zambezi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2507,
+    "attempt": 2488,
+    "place_id": "gn-920820",
+    "input": {
+      "place": {
+        "place_id": "gn-920820",
+        "name": "Chambishi",
+        "country": "Zambia",
+        "subdivision": "Copperbelt",
+        "lat": -12.63247,
+        "lon": 28.05367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chambishi",
+          "url": "https://en.wikipedia.org/wiki/Chambishi",
+          "text": "Chambishi is a town in Kalulushi District in the Copperbelt Province of Zambia. According to the 2021 Census its population stands at slightly above 11,000. It is located on the T3 road (Kitwe-Chingola Dual Carriageway) between the cities of Kitwe and Chingola.\nIt was re-established in 1963 as a company township for the mine workers of Chambishi Mine which was under Chibuluma Mine of Kalulushi. This was after an announcement by Sir Ronald Prain, Chairman of Roan Selection Trust, in May 1962 that the company was going to open up the Chambishi open pit-pit mine at a cost of 7.5 million British Pounds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "chambishi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2508,
+    "attempt": 2489,
+    "place_id": "gn-13527317",
+    "input": {
+      "place": {
+        "place_id": "gn-13527317",
+        "name": "Sé",
+        "country": "Macao SAR China",
+        "subdivision": "Macao SAR China",
+        "lat": 22.19089,
+        "lon": 113.54733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sé, Macau",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A9,_Macau",
+          "text": "Sé ([ˈsɛ], lit. 'Cathedral') is a southeast civil parish in the Macau Peninsula of Macau. It is the second largest peninsular district in Macau after the civil parish of Nossa Senhora de Fátima. The parish area is named for the Cathedral of the Nativity of Our Lady, Macau.\nThis parish was one of five in the former Municipality of Macau, one of Macau's two municipalities that were abolished on 31 December 2001 by Law No. 17/2001, following the 1999 transfer of sovereignty over Macau from Portugal to China. While their administrative functions have since been removed, these parishes are still retained nominally.\nIts western part is the historic financial center of Macau. Praia Grande Central Business District (南灣中心商業區) is in the south-central part of the district. All banks (over 20) in Macau have offices here.\nThere are numerous quality restaurants, and 4- and 5-star hotels in this district. High-rise buildings exist on the eastern ZAPE and NAPE zone, which was reclaimed from the sea, with a ferry terminal located on the eastern edge of the parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "se",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2509,
+    "attempt": 2490,
+    "place_id": "gn-1699323",
+    "input": {
+      "place": {
+        "place_id": "gn-1699323",
+        "name": "Monkayo",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 7.81528,
+        "lon": 126.05444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monkayo",
+          "url": "https://en.wikipedia.org/wiki/Monkayo",
+          "text": "Monkayo, officially the Municipality of Monkayo (Cebuano: Lungsod sa Monkayo; Filipino: Bayan ng Monkayo),  is a municipality in the province of Davao de Oro, Philippines. According to the 2024 census, it has a population of 96,405 people, making it the most populous town in the province.\nMonkayo is an agricultural town, with vast tracts of land planted to rice and banana. The municipality is also host to the gold-rich barangay of Mount Diwata, popularly known as \"Diwalwal\" (which in the local dialect means one's tongue is hanging out due to exhaustion), a 1,000-meter high range known for its rich gold ore deposit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "monkayo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2510,
+    "attempt": 2491,
+    "place_id": "gn-2917412",
+    "input": {
+      "place": {
+        "place_id": "gn-2917412",
+        "name": "Griesheim",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 49.86085,
+        "lon": 8.5725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Griesheim, Hesse",
+          "url": "https://en.wikipedia.org/wiki/Griesheim,_Hesse",
+          "text": "Griesheim (German pronunciation: [ˈɡʁiːsˌhaɪm] ) is the largest town of the district Darmstadt-Dieburg in southern Hesse, Germany. It has just over 28,000 inhabitants as of December 2023.\nGriesheim is known for being the location of the first German airfield, which was founded in 1908. More recently, in 2013, news of the Dagger Complex–which emerged as the most important of the NSA's headquarters in Europe in the wake of the global surveillance disclosures–brought Griesheim worldwide attention.\nThe town of Griesheim is also known in the region as \"Onion City,\" a reference to the statue of the Zwiebelfrau (\"Onion Woman\") in the market square."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "griesheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2511,
+    "attempt": 2492,
+    "place_id": "gn-294946",
+    "input": {
+      "place": {
+        "place_id": "gn-294946",
+        "name": "Hadera",
+        "country": "Israel",
+        "subdivision": "Haifa",
+        "lat": 32.44192,
+        "lon": 34.9039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hadera",
+          "url": "https://en.wikipedia.org/wiki/Hadera",
+          "text": "Hadera (Hebrew: חדרה, pronounced [χadeˈʁa]) is a city located in the Haifa District of Israel, in the northern Sharon region, approximately 45 kilometers (28 miles) from the major cities of Tel Aviv and Haifa. The city is located along 7 km (5 mi) of the Israeli coastal plain. The city's population includes a notable community of post-Soviet and Ethiopian aliyah arrivals. In 2024 it had a population of 107,974.\nHadera was established in 1891 as a farming colony by members of the proto-Zionist group Hovevei Zion, from Lithuania and Latvia. By 1948, it was a regional center with a population of 11,800. In 1952, Hadera was declared a city, with jurisdiction over an area of 53,000 dunams. The population significantly increased during the 1990s as a result of immigration from the ex-USSR and from Ethiopia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "hadera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2512,
+    "attempt": 2493,
+    "place_id": "gn-2975525",
+    "input": {
+      "place": {
+        "place_id": "gn-2975525",
+        "name": "Savigny-sur-Orge",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.67677,
+        "lon": 2.34835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Savigny-sur-Orge",
+          "url": "https://en.wikipedia.org/wiki/Savigny-sur-Orge",
+          "text": "Savigny-sur-Orge (French pronunciation: [saviɲi syʁ ɔʁʒ] ; lit. 'Savigny-on-Orge') or simply Savigny is a commune in the southern outer suburbs of Paris, France. It is located in the Essonne department, 19.1 km (11.9 mi) from the centre of Paris.\nIt is home to a renowned high school, the Lycée Jean-Baptiste Corot – Le Château, comprising a 15th-century château, which was the property of Louis-Nicolas Davout, Duke of Auerstaedt, Prince of Eckmühl, a marshal of France under Napoleon. Davout served as mayor, and the city's main square bears his name.\nInhabitants of Savigny-sur-Orge are known as Saviniens (masculine) and Saviniennes (feminine) in French. Writer Patrick Erouart-Siad (born 1955 in Savigny) won the 1993 Prix Ève Delacroix of the Académie Française. During the 2005 civil unrest, Savigny-sur-Orge was the first city to implement a curfew."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "savigny sur orge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "savigny",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "orge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2513,
+    "attempt": 2494,
+    "place_id": "gn-3199171",
+    "input": {
+      "place": {
+        "place_id": "gn-3199171",
+        "name": "Idrija",
+        "country": "Slovenia",
+        "subdivision": "Municipality of Idrija",
+        "lat": 46.00295,
+        "lon": 14.02787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Idrija",
+          "url": "https://en.wikipedia.org/wiki/Idrija",
+          "text": "Idrija (pronounced [ˈìːdɾija] , in older sources Zgornja Idrija; German: (Ober)idria, Italian: Idria) is a town in western Slovenia. It is the seat of the Municipality of Idrija. It is notable for its mercury mine with stores and infrastructure, as well as miners' living quarters, and a miners' theatre. Together with the Spanish mine at Almadén, it has been a UNESCO World Heritage Site since 2012. Idrija is also known for Idrija Lace, a bobbin tape lace which is registered under protected geographical indication by the Slovenian Intellectual Property Office. In 2011, Idrija was given the Alpine Town of the Year award."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "idrija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2514,
+    "attempt": 2495,
+    "place_id": "gn-3542455",
+    "input": {
+      "place": {
+        "place_id": "gn-3542455",
+        "name": "Remedios",
+        "country": "Cuba",
+        "subdivision": "Villa Clara Province",
+        "lat": 22.49493,
+        "lon": -79.54536
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Remedios, Cuba",
+          "url": "https://en.wikipedia.org/wiki/Remedios,_Cuba",
+          "text": "Remedios (Spanish pronunciation: [reˈmeðjos]), also known as San Juan de los Remedios, is a city and municipality located 5 km (3 mi) from the northern coast of Cuba, in the center of the island. It is the oldest Spanish settlement in the former Las Villas province. It is now part of the province of Villa Clara.\nIt was declared a City by Isabella II of Spain, when the island was still a colony. Remedios is known as the Cradle of the Parrandas, possibly the Caribbean's largest and oldest traditional festival. Its patrons are John the Baptist and the Virgin of the Buenviaje."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "remedios",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2515,
+    "attempt": 2496,
+    "place_id": "gn-4166232",
+    "input": {
+      "place": {
+        "place_id": "gn-4166232",
+        "name": "North Miami",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.89009,
+        "lon": -80.18671
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Miami, Florida",
+          "url": "https://en.wikipedia.org/wiki/North_Miami,_Florida",
+          "text": "North Miami is a suburban city located in northeast Miami-Dade County, Florida, United States, about 10 miles (16 km) north of Miami. The city lies on Biscayne Bay and hosts the Biscayne Bay Campus of Florida International University. Originally the \"Town of Arch Creek\", the area was incorporated as the \"Town of Miami Shores\", which was renamed the \"Town of North Miami\" in 1931. It was reincorporated as a city in 1953. The city is part of the Miami metropolitan area of South Florida.\nThe city is also home to the Oleta River State Park, which is the state's largest urban park.\nAs of the 2020 census, North Miami had a population of 60,191. North Miami is the seventh largest city in Miami-Dade County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "north miami",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "miami",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2516,
+    "attempt": 2497,
+    "place_id": "gn-4566270",
+    "input": {
+      "place": {
+        "place_id": "gn-4566270",
+        "name": "Moca",
+        "country": "Puerto Rico",
+        "subdivision": "Moca",
+        "lat": 18.39467,
+        "lon": -67.11324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moca, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Moca,_Puerto_Rico",
+          "text": "Moca (Spanish pronunciation: [ˈmoka]) is a barrio-pueblo and municipality of Puerto Rico, located in the north-western region of the island, north of Añasco; southeast of Aguadilla; east of Aguada; and west of Isabela and San Sebastián. Moca is spread over 12 barrios and Moca Pueblo (the downtown area and the administrative center). It is part of the Aguadilla-Isabela-San Sebastián Metropolitan Statistical Area.\nThe name comes from the Moca tree (Andira inermis) which are very common in this region.\nThe Moca tree was officially adopted as the representative tree of the town on February 19, 1972. Moca is famous for its Mundillo lace. Mundillo is a Puerto Rican-style of handmade bobbin lace. Mundillo almost synonymous with the small town of Moca."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "moca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2517,
+    "attempt": 2498,
+    "place_id": "gn-4893392",
+    "input": {
+      "place": {
+        "place_id": "gn-4893392",
+        "name": "Galesburg",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 40.94782,
+        "lon": -90.37124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Galesburg, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Galesburg,_Illinois",
+          "text": "Galesburg is a city in Knox County, Illinois, United States. The city is 45 miles (72 km) northwest of Peoria. At the 2020 census, its population was 30,052. Galesburg is the home of Knox College, a private four-year liberal arts college, and Carl Sandburg College, a community college named for native-born poet Carl Sandburg.\nGalesburg is the county seat of Knox County and the principal city of the Galesburg Micropolitan Statistical Area, which includes all of Knox and Warren counties. A 496-acre (201 ha) section of the city is listed on the National Register of Historic Places as the Galesburg Historic District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "galesburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2518,
+    "attempt": 2499,
+    "place_id": "gn-4931353",
+    "input": {
+      "place": {
+        "place_id": "gn-4931353",
+        "name": "Brighton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.3501,
+        "lon": -71.15644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brighton, Boston",
+          "url": "https://en.wikipedia.org/wiki/Brighton,_Boston",
+          "text": "Brighton is a former town and current neighborhood of Boston, Massachusetts, United States, located in the northwestern corner of the city. It is named after the English city of Brighton. Initially Brighton was part of Watertown, and was later part of Cambridge, and known as \"Little Cambridge\". Brighton separated from Cambridge in 1807 after a bridge dispute, and was annexed to Boston in 1874. For much of its early history, it was a rural town with a significant commercial center at its eastern end.\nThe neighborhood of Allston was also formerly part of the town of Brighton but is now officially separate. The name Allston–Brighton is still used for the combined area, owing to the neighborhoods' geographic and historical ties.\nBrighton today is known for housing part of the campus of Boston College as well as the corporate headquarters of American multinational corporation New Balance. Brighton is served by the Green Line, the Boston Landing station of the MBTA Commuter Rail, and multiple bus lines.   \nThis historic center of Brighton is the Brighton Center Historic District. The Aberdeen section of Brighton was designated as a local architectural conservation district by the Boston Landmarks Commission in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "brighton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2519,
+    "attempt": 2500,
+    "place_id": "gn-5003132",
+    "input": {
+      "place": {
+        "place_id": "gn-5003132",
+        "name": "Muskegon",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.23418,
+        "lon": -86.24839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muskegon, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Muskegon,_Michigan",
+          "text": "Muskegon ( mə-SKEE-gən) is a city in and the county seat of Muskegon County, Michigan, United States. Situated around a harbor of Lake Michigan, Muskegon is known for fishing, sailing regattas, and boating. It is the most populous city along Lake Michigan's eastern shore. At the 2020 census, the city's population was 38,318. The city is administratively autonomous from adjacent Muskegon Township, and several locations in Muskegon Township and other surrounding townships have Muskegon addresses.\nMuskegon is the center of the Muskegon metropolitan statistical area, which is coextensive with Muskegon County and had a population of 175,824 as of the 2020 census. It is also part of the larger Grand Rapids-Kentwood-Muskegon-combined statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "muskegon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

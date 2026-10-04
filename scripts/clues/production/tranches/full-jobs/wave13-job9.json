@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 2581,
+    "attempt": 2561,
+    "place_id": "gn-176555",
+    "input": {
+      "place": {
+        "place_id": "gn-176555",
+        "name": "Kawambwa",
+        "country": "Zambia",
+        "subdivision": "Luapula Province",
+        "lat": -9.7915,
+        "lon": 29.07913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kawambwa",
+          "url": "https://en.wikipedia.org/wiki/Kawambwa",
+          "text": "Kawambwa is a town in the Zambian province of Luapula located on the edge of the northern Zambian plateau above the Luapula valley at an altitude of 1300 m. It was chosen as an administrative district of the same name by the British colonial authorities who preferred the climate of the plateau rather than the hotter valley where most of the district's population live, and it continues as an administrative district today.\nKawambwa sits at the junction of tarred roads to Nchelenge, Mporokoso, Mushota and Mansa, and Mbereshi linking with the Zambia Way, the main tarred highway of the Luapula Province through Mwansabombwe and Mansa.\nZambia's largest tea plantation is situated 27 km from Kawambwa on the Mporokoso road.\nA camp for refugees of war in the eastern DR Congo was established by United Nations agencies at Kala 24 km north of Kawambwa in 1998, with a capacity for 40,000 refugees.\nNear to Kawambwa are three of Zambia's waterfalls Lumangwe Falls, Kabwelume 50 km to the north-east on the Kalungwishi River and the Ntumbachushi Falls on the Ngona River, 16 km west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "kawambwa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2582,
+    "attempt": 2562,
+    "place_id": "gn-216281",
+    "input": {
+      "place": {
+        "place_id": "gn-216281",
+        "name": "Goma",
+        "country": "Congo - Kinshasa",
+        "subdivision": "North Kivu",
+        "lat": -1.67409,
+        "lon": 29.22845
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goma",
+          "url": "https://en.wikipedia.org/wiki/Goma",
+          "text": "Goma is the capital and largest city of the North Kivu province of the Democratic Republic of the Congo. It is located in the east of the country on the northern shore of Lake Kivu and shares borders with the Bukumu Chiefdom to the north, Rwanda to the east and the Masisi Territory to the west. The city lies in the Albertine Rift, the western branch of the East African Rift, and is only 13–18 km (8.1–11.2 mi) south of the active volcano Mount Nyiragongo. With an approximate area of 75.72 km2 (29.24 sq mi), the city had a population of 782,000 people in 2024,\nwith an additional 500,000 displaced people.\nGoma is administratively divided into two communes: Goma and Karisimbi, which are further subdivided into 18 quarters (quartiers). The city is home to several notable landmarks, including Goma International Airport, the UNESCO World Heritage Site Virunga National Park, the private Christian co-educational school Adventist University of Goma, the University of Goma, and is surrounded by the active Virunga volcanic range, which includes volcanoes Nyamulagira, Nyiragongo, Mikeno, Visoke, Gahinga, Karisimbi, and Sabinyo. Goma hosts the annual Amani Festival, the Free University of the Great Lakes Countries, which supports local development initiatives, and the regional cultural center and art school, Foyer Culturel de Goma.\nThe recent history of Goma has been dominated by the volcano and the Rwandan genocide of 1994, which fueled the First and Second Congo Wars. The aftermath of these events was still having effects on the city and its surroundings in 2010. The city was captured by rebels of the March 23 Movement during the M23 rebellion in late 2012, and then retaken by Congolese government forces. As of January 2025, the city is once again under the control of M23, following a fresh offensive by the group that culminated in the Battle of Goma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "goma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2583,
+    "attempt": 2563,
+    "place_id": "gn-2948825",
+    "input": {
+      "place": {
+        "place_id": "gn-2948825",
+        "name": "Bingen am Rhein",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.96675,
+        "lon": 7.8992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bingen am Rhein",
+          "url": "https://en.wikipedia.org/wiki/Bingen_am_Rhein",
+          "text": "Bingen am Rhein (German pronunciation: [ˈbɪŋən ʔam ˈʁaɪn], lit. 'Bingen on the Rhine') is a town in the Mainz-Bingen district in Rhineland-Palatinate, Germany.\nThe settlement's original name was Bingium, a Celtic word that may have meant \"hole in the rock\", a description of the shoal behind the Mouse Tower (German: Mäuseturm), known as the Binger Loch. Bingen was the starting point for the Via Ausonia, a Roman military road that linked the town with Trier. Bingen is well known for, among other things, the legend about the Mouse Tower, in which Hatto II, the Archbishop of Mainz, was allegedly eaten by mice. Since the 19th century, the legend has increasingly been attributed to Hatto I, a predecessor of Hatto II. Saint Hildegard von Bingen, an important polymath, abbess, mystic and musician, one of the most influential medieval composers and one of the earliest Western composers whose music is widely preserved and performed, was born 40 km away from Bingen, in Bermersheim vor der Höhe. A new museum on the riverside is largely devoted to her and the romance of the Rhine Gorge. Bingen am Rhein was also the birthplace of the poet Stefan George, along with many other influential figures."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "bingen am rhein",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bingen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rhein",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2584,
+    "attempt": 2564,
+    "place_id": "gn-3174638",
+    "input": {
+      "place": {
+        "place_id": "gn-3174638",
+        "name": "Lodi",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.30989,
+        "lon": 9.50085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lodi, Lombardy",
+          "url": "https://en.wikipedia.org/wiki/Lodi,_Lombardy",
+          "text": "Lodi ( LOH-dee, Italian: [ˈlɔːdi] ; Ludesan: Lòd) is a city and comune (municipality), the capital of the province of the same name in the region of Lombardy in Italy. With a population of 45,643, it is the 21st-largest city in Lombardy.\nThe city was founded on 3 August 1158 by Frederick Barbarossa, following the destruction of the ancient village of Laus Pompeia, a former Roman municipium, episcopal see, and free commune. During the Renaissance, Lodi experienced a period of significant artistic and cultural splendor, notably after hosting the signing of the historic treaty between the pre-unification Italian states, known as the Treaty of Lodi, in 1454.\nIn the 21st century, Lodi has become a major industrial hub for cosmetics, crafts, and cheese production. It also serves as a reference point for a region primarily dedicated to agriculture and livestock farming; due to this characteristic, Lodi was chosen as the location for the faculty of veterinary medicine at the University of Milan and the Parco Tecnologico Padano, one of the most qualified research institutes in Europe in the field of agri-food biotechnology.\nThe city also has a well-developed tertiary sector and tourism industry: Lodi is recognized as one of the art cities of the Po Valley and is notable for several important monuments, including the Cathedral, the Civic Temple of the Crowned Virgin, the Church of San Francesco, the Church of Sant'Agnese, and Palazzo Mozzanica."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "lodi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2585,
+    "attempt": 2565,
+    "place_id": "gn-3855974",
+    "input": {
+      "place": {
+        "place_id": "gn-3855974",
+        "name": "Esquel",
+        "country": "Argentina",
+        "subdivision": "Chubut",
+        "lat": -42.91147,
+        "lon": -71.31947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esquel, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Esquel,_Argentina",
+          "text": "Esquel is a town in the northwest of Chubut Province in Argentine Patagonia. It is located in Futaleufú Department, of which it is the government seat. Esquel is the home station for “La Trochita,” a historic narrow gauge railway known in English as “The Old Patagonian Express.” Esquel is also known for its ski area, “La Hoya,” and as a gateway city to Los Alerces National Park, a UNESCO protected reserve featuring some of the oldest trees in South America. The name Esquel derives from one of two Tehuelche words: one meaning \"marsh\" and the other  meaning \"land of burrs\", which refers to the many thorny plants including the pimpinella, and the other meaning herbaceous plants whose fruits, when ripe, turn into prickly burrs that stick to the animals' skins and wool or people's clothes as a way of propagation. According to the late Elvey MacDonald, Esquel was named Tre'r Ysgall (Town of thistles) by the original Welsh settlers. As the Spanish-speaking population of the area increased, they found it difficult pronouncing the word Ysgall, and, over time, Ysgall evolved to Esquel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "esquel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2586,
+    "attempt": 2566,
+    "place_id": "gn-1633308",
+    "input": {
+      "place": {
+        "place_id": "gn-1633308",
+        "name": "Pagar Alam",
+        "country": "Indonesia",
+        "subdivision": "South Sumatra",
+        "lat": -4.02506,
+        "lon": 103.24694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pagar Alam",
+          "url": "https://en.wikipedia.org/wiki/Pagar_Alam",
+          "text": "Pagar Alam (sometimes written as Pagaralam, Jawi: ڤاݢر عالم); Ulu script: ꤶꤱꥑꥆꤾꤸ꥓), is a city in South Sumatra, Indonesia. It was formerly part of Lahat Regency, from which it was separated as an independent city on 21 June 2001; before being established as an independent city, Pagar Alam was an administrative city within Lahat Regency. It has an area of 625.91 km2 and a population of 126,181 at the 2010 Census and 143,844 at the 2020 Census; the official estimate as at mid 2025 was 155,255 (comprising 79,359 males and 75,896 females).\nPagar Alam is located by the Bukit Barisan Mountains, at the foot of Mount Dempo (Gunung Dempo), a volcano and the highest mountain in South Sumatra, which towers to a height of 3,159m to the west of the town. It is 298 km southwest from the province's capital city of Palembang and 60 km southwest of the town of Lahat. The city is bounded by Bengkulu Province to the south, Jarai District to the north, Kota Agung District to the east and Tanjung Sakti Pumi District to the west. Pagar Alam is one of the main suppliers of vegetables in Palembang. Its location in the highland makes the city slightly cooler than many of the other South Sumatra cities; this, together with its astounding landscape, makes the city one of the main tourist destinations in South Sumatra and it is often visited by local tourists, especially from Palembang. Currently, the city is led by Alpian Maskoni as the mayor of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "pagar alam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pagar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2587,
+    "attempt": 2567,
+    "place_id": "gn-3993179",
+    "input": {
+      "place": {
+        "place_id": "gn-3993179",
+        "name": "Pátzcuaro",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.5132,
+        "lon": -101.60995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pátzcuaro",
+          "url": "https://en.wikipedia.org/wiki/Pátzcuaro",
+          "text": "Pátzcuaro (Spanish: [ˈpatskwaɾo] ) is a city and municipality located in the state of Michoacán, Mexico. The town was founded sometime in the 1320s, at first becoming the capital of the Purépecha Empire and later its ceremonial center. After the Spanish took over, Vasco de Quiroga worked to make Pátzcuaro the capital of the New Spain province of Michoacán, but after his death, the capital would be moved to nearby Valladolid (today Morelia). Pátzcuaro has retained its colonial and indigenous character since then, and it has been named one of the 111 \"Pueblos Mágicos\" by the government of Mexico. Pátzcuaro, and the lake region to which it belongs, is well known as a site for Day of the Dead celebrations.\nThere are several possibilities as to the meaning of \"Pátzcuaro.\" The first is \"phascuaro,\" which means \"place dyed in black;\" or \"patatzecuaro,\"  which means \"place  of foundations.\" Another possible meaning is \"petatzimícuaro,\" \"place of bullrushes.\" Other possible meanings are: \"place of weasel,\" \"happy place;\" and \"seat of temples.\" Pátzcuaro received its coat of arms in 1553 from Charles V of Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "patzcuaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2588,
+    "attempt": 2568,
+    "place_id": "gn-5095445",
+    "input": {
+      "place": {
+        "place_id": "gn-5095445",
+        "name": "Bayonne",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.66871,
+        "lon": -74.11431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayonne, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Bayonne,_New_Jersey",
+          "text": "Bayonne ( bay-(Y)OHN) is a city in Hudson County in the U.S. state of New Jersey, in the Gateway Region on Bergen Neck, a peninsula between Newark Bay to the west, the Kill Van Kull to the south, and New York Bay to the east. At the 2020 United States census, it was the state's 15th-most-populous municipality, surpassing Passaic, with a population of 71,686, an increase of 8,662 (+13.7%) from the 2010 census count of 63,024, which in turn reflected an increase of 1,182 (+1.9%) from the 61,842 counted in the 2000 census. The Census Bureau's Population Estimates Program calculated a population of 74,532 for 2024, making it the 517th-most populous municipality in the nation.\nBayonne was formed as a township in 1861, from portions of Bergen Township, and reincorporated as a city by an act of the New Jersey Legislature in 1869. At the time it was formed, Bayonne included the communities of Bergen Point, Constable Hook, Centreville, Pamrapo and Saltersville.\nWhile somewhat diminished, traditional manufacturing, distribution, and maritime activities remain a driving force of the economy of the city. A portion of the Port of New York and New Jersey is located in the city at Port Jersey, as is the Cape Liberty Cruise Port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "bayonne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2589,
+    "attempt": 2569,
+    "place_id": "gn-2867996",
+    "input": {
+      "place": {
+        "place_id": "gn-2867996",
+        "name": "Mühlhausen",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 51.20896,
+        "lon": 10.45275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mühlhausen",
+          "url": "https://en.wikipedia.org/wiki/Mühlhausen",
+          "text": "Mühlhausen (German: [ˈmyːlhaʊzn̩]; officially Mühlhausen/Thüringen) is a town in the northwest of Thuringia, Germany, 5 km (3 miles) north of Niederdorla, the country's geographical centre, 50 km (31 miles) north-west of Erfurt, 65 km (40 miles) east of Kassel and 50 km (31 miles) south-east of Göttingen.\nMühlhausen was first mentioned in 967 and became one of the most important cities in central Germany in the late Middle Ages. In the mid-13th century, it became a Freie Reichsstadt, an independent and republican self-ruled member of the Holy Roman Empire, controlling an area of approximately 220 square kilometres (85 sq mi) and 19 regional villages. Due to its long-distance trade, Mühlhausen was prosperous and influential with a population of 10,000 around 1500. Because it was spared from later destruction, Mühlhausen today has a great variety of historical buildings with one of the largest medieval city centres remaining in Germany, covering a surface of more than 50 hectares within the inner city wall and approximately 200 hectares overall. There are eleven Gothic churches, several patricians’ houses and a nearly completely preserved fortification.\nJohann Sebastian Bach worked as the city's organist in 1707–08. The theologian Thomas Müntzer, a leading person in the German Peasants' War, gave sermons here and was executed outside the city walls. John A. Roebling, the constructor of the Brooklyn Bridge, and Friedrich August Stüler, an influential architect in mid-19th-century Prussia, were born in Mühlhausen.\nMühlhausen is within the Thuringian Basin, a flat and fertile area, on the Unstrut river on the eastern edge of the Hainich hills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 180,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "muhlhausen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2590,
+    "attempt": 2570,
+    "place_id": "gn-3025466",
+    "input": {
+      "place": {
+        "place_id": "gn-3025466",
+        "name": "Cherbourg",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.63984,
+        "lon": -1.61636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cherbourg",
+          "url": "https://en.wikipedia.org/wiki/Cherbourg",
+          "text": "Cherbourg is a former commune and subprefecture located at the northern end of the Cotentin Peninsula in the northwestern French department of Manche. It was merged into the commune of Cherbourg-Octeville on 28 February 2000, which was merged into the new commune of Cherbourg-en-Cotentin on 1 January 2016.\nCherbourg is protected by Cherbourg Harbour, between La Hague and Val de Saire, and the city has been a strategic position over the centuries, disputed between the English and French. Cited as one of the \"keys to the kingdom\" by Vauban, it became, by colossal maritime development work, a first-rate military port under the leadership of Napoleon I, and holds an arsenal of the French Navy. A stopping point for prestigious transatlantic liners in the first half of the 20th century, Cherbourg was the primary goal of US troops during the invasion of Normandy in 1944.\nAlong with its use as a military, fishing and yachting port, it is also a cross-Channel ferry port, with routes to the English ports of Poole and Portsmouth, and to Dublin and Rosslare Harbour in Ireland. Limited by its geographical isolation from being a great commercial port, it is nonetheless an important shipbuilding centre, and a working-class city with a rural hinterland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 180,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "cherbourg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2591,
+    "attempt": 2571,
+    "place_id": "gn-1788869",
+    "input": {
+      "place": {
+        "place_id": "gn-1788869",
+        "name": "Shangmei",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.74278,
+        "lon": 111.29556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shangmei, Hunan",
+          "url": "https://en.wikipedia.org/wiki/Shangmei,_Hunan",
+          "text": "Shangmei Town (Chinese: 上梅镇; pinyin: Shàngméi Zhèn) was a historic town and the former seat of Xinhua County in Hunan, China. The town was reformed through the amalgamation of Liaoyuan Township (燎原乡), Beidu Township (北渡乡), Fenglin Township (枫林乡) and Chengguan Town in 1995.\nThe town was located in the south east of the county, it was bordered by the towns of Caojia and Youjia to the north, by Sangzi Town to the east, by the town of Shichongkou to the south, and by Ketou Township and Luguan Town to the west. In 2017, additional 12 villages and a community from the towns of Caojia, Youjia and Sangzi and Ketou Township were transferred to it, it had an area of 145.63 km2 (56.23 sq mi) with a population of 189,600 (as of 2017). The town had 29 villages and 23 communities under its jurisdiction in 2017, its seat was at Yingbin Road (迎宾路). It ceased to be a separate town on November 6, 2017, the town and Shangdu Office (上渡办事处) were divided into three subdistricts of Shangmei, Shangdu and Fenglin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "shangmei",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2592,
+    "attempt": 2572,
+    "place_id": "gn-2648438",
+    "input": {
+      "place": {
+        "place_id": "gn-2648438",
+        "name": "Glenrothes",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.19514,
+        "lon": -3.17316
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glenrothes",
+          "url": "https://en.wikipedia.org/wiki/Glenrothes",
+          "text": "Glenrothes (  glen-ROTH-iss; Scots: Glenrothes; Scottish Gaelic: Gleann Rathais, pronounced [kʲlən̪ˠˈrˠahɪʃ]) is a town situated in the heart of Fife, in east-central Scotland. It is the administrative capital of Fife, containing the headquarters of both Fife Council and Police Scotland Fife Division and is a major service and employment centre within the area. In the 2022 census, the town had a resident population of 37,468, making it the third-largest settlement in Fife and the 18th most populous locality in Scotland.\nThe name Glenrothes comes from its historical link with the Earl of Rothes, who owned much of the land on which the new town has been built; Glen (Scottish for valley) was added to the name to distinguish it from Rothes in Moray and in recognition that the town lies in a river valley. The motto of Glenrothes is Ex terra vis, meaning \"Strength from the earth\", which dates back to the founding of the town. Planned shortly after World War II as Scotland's second new town, its purpose was to generate economic growth and renewal in central Fife. Initially this was to be done by providing new homes, industries, infrastructure and services needed to support the development of a newly established National Coal Board 'super pit', the Rothes Colliery. The mine closed early in its life and the town's economy thereafter transitioned and diversified, establishing it as an important centre for light industry and playing a significant role in establishing Scotland's Silicon Glen between 1961 and 2000. \nToday, Glenrothes is a centre for excellence within the high-tech electronics and manufacturing industry sectors; several organisations have their global headquarters in Glenrothes. Major employers include Bosch Rexroth (hydraulics manufacturing), CTDI UK (Electronic Repair), Fife College (education), Leviton (fibre optics manufacturing) and Raytheon (defence and electronics). Glenrothes is unique in Fife as much of the town centre floorspace is internalised within Fife's largest shopping centre, the Kingdom Shopping Centre. \nThe town has won multiple horticultural awards in the Beautiful Scotland and Britain in Bloom contests for the quality of its parks and landscaping and features numerous outdoor sculptures and artworks resulting from the appointment of town artists in the early development of the town. Public facilities include a regional sports and leisure centre, two golf courses, major parks, a civic centre and theatre and a college campus. The A92 trunk road provides the principal road access, passing through Glenrothes and connecting it to the wider Scottish motorway and trunk road network. A major bus station is located in the town centre, providing regional and local bus services to surrounding settlements. Glenrothes lies on the edge of the Edinburgh–Dundee line and Fife Circle rail line with railway stations serving the town located at Markinch and Thornton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 453
+    },
+    "banned_terms": [
+      {
+        "term": "glenrothes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2593,
+    "attempt": 2573,
+    "place_id": "gn-8469295",
+    "input": {
+      "place": {
+        "place_id": "gn-8469295",
+        "name": "Randolph",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.84829,
+        "lon": -74.58148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Randolph, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Randolph,_New_Jersey",
+          "text": "Randolph is a township in southwestern Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 26,504, an increase of 770 (+3.0%) from the 2010 census count of 25,734, which in turn reflected an increase of 887 (+3.6%) from the 24,847 counted in the 2000 census.\nAccording to the 2020 Census, Randolph was the 3rd most-populous municipality in Morris County and its 21 square miles (54 km2) land area was the eighth-largest in the county. The New Jersey State Planning Commission designates Randolph as half rural, half suburban. The community maintains a diverse population of nearly 26,000 residents.\nIn 2013, in the Coldwell Banker edition of “Best Places to Live in New Jersey for Booming Suburbs,” Randolph was the number one ranked town in Morris County and fourth overall in the state citing \"job growth, high percentage of home ownership, good schools, access to local shopping and community safety.\" Niche.com ranked Randolph amongst the Top 50 in its 2019 rankings of the \"Best Places to Live\" in New Jersey.\nEstablished in 1968, the County College of Morris is located on more than 220 acres (89 ha) in the northern part of the township along Route 10."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "randolph",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2594,
+    "attempt": 2574,
+    "place_id": "gn-1819577",
+    "input": {
+      "place": {
+        "place_id": "gn-1819577",
+        "name": "Kwun Tong",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Kwun Tong District",
+        "lat": 22.31184,
+        "lon": 114.22176
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kwun Tong",
+          "url": "https://en.wikipedia.org/wiki/Kwun_Tong",
+          "text": "Kwun Tong is an area in the Kwun Tong District of Hong Kong, situated at the eastern part of the Kowloon Peninsula, and its boundary stretches from Lion Rock in the north to Lei Yue Mun in the south, and from the winding paths of Kowloon Peak in the east to the north coast of the former Kai Tak Airport runway in the west.\nOne of the first new towns in Hong Kong, Kwun Tong was, and remains, a major industrial area. Its population has been growing rapidly, and the demand for housing, medical and educational facilities and services has been increasing. In view of this, a number of community development projects, such as the redevelopment of old housing estates and the construction of major parks, have been implemented in recent years. These projects have incorporated a wide range of supporting facilities, like primary and secondary schools, clinics, community centres and open spaces. All these facilities have brought about a new face to the Kwun Tong District, making it a more comfortable place for the people to live."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "kwun tong",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kwun",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tong",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2595,
+    "attempt": 2575,
+    "place_id": "gn-2363908",
+    "input": {
+      "place": {
+        "place_id": "gn-2363908",
+        "name": "Tchamba",
+        "country": "Togo",
+        "subdivision": "Centrale",
+        "lat": 9.03333,
+        "lon": 1.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tchamba",
+          "url": "https://en.wikipedia.org/wiki/Tchamba",
+          "text": "The name Tchamba sometimes spelled Chamba, stands for both a city located in Tchamba Prefecture in the Centrale Region of Togo, and the tribe living in that area.\nTchamba is originally a tribe living in and around the town of Chamba, Ghana in the Northern Region, Ghana of present-day Ghana, on the road from Salaga to Bimbilla. Part of the tribe is still living there; others have migrated to Accra and there is also an ex-pat community of Tchambas in Frankfurt (Main) in Germany.\nThe Tchambas are known as aborigines (indigenous people) of Northern Ghana, once covering an area as large as the present Dagbon. Due to major tribal wars between the Dagomba people and the Kokomba people in the aftermath of the First World War, many of them fled to present-day Tchamba in Northern Togo, while others fled to Accra, but a third group survived in the North of Ghana. The various groups maintain close relations, for example in the Chamba Heritage Society and it is not uncommon for families to live in two of their homelands. The Tchamba language is widely spoken in Togo, Ghana, Benin, and Nigeria. They have linguistical affiliations with Konkonba, Bassari. They are predominantly Moslems.\nIn Togo, the major clans are Imamwa, Congoro, Lari, Dopo, Sangbe, Lambu, Daru, Atarouwa, Nantoh, Ninchey, Kumateh, and others. The Congoros are the origins there, whereby the Laris among others came. The kingship was originally for the Congoros while the Islamic leadership position (Imam) is always held by Imamwa as their name implies. Some of the major towns in Tchamba are Alibi, Kasaleym and Affem Boussou."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "tchamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2596,
+    "attempt": 2576,
+    "place_id": "gn-5105634",
+    "input": {
+      "place": {
+        "place_id": "gn-5105634",
+        "name": "Union City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.77955,
+        "lon": -74.02375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Union City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Union_City,_New_Jersey",
+          "text": "Union City is a city in the northern part of Hudson County, in the U.S. state of New Jersey. As of the 2020 United States census, the city was the state's 18th-most-populous municipality, with a population of 68,589, an increase of 2,134 (+3.2%) from the 2010 census count of 66,455, which in turn had reflected a decline of 633 (−0.9%) from the 67,088 counted in the 2000 census. As of the 2010 Census, among cities with a population of more than 50,000, it was the most densely populated city in the United States, with a density of 54,138 per square mile of land. The Census Bureau's Population Estimates Program calculated that the city's population was 65,366 in 2022, ranking the city the 590th-most-populous in the country.\nUnion City was incorporated as a city by an act of the New Jersey Legislature on June 1, 1925, with the merger of Union Hill and West Hoboken Township.\nTwo major waves of immigration, first of German speakers and then of Spanish speakers, greatly influenced the development and character of Union City. Its two nicknames, \"Embroidery Capital of the United States\" and \"Havana on the Hudson\", reflect important aspects of that history. Thousands visit Union City each year to see the nation's longest-running passion play.\nUnion City is where Mallomars were first sold and the site of the first lunch wagon, built by Jerry and Daniel O'Mahoney and John Hanf, which helped spark New Jersey's golden age of diner manufacturing, for which the state is colloquially referred to by author Richard J.S. Gutman as the \"diner capital of the world\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "union city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "union",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2597,
+    "attempt": 2577,
+    "place_id": "gn-2654308",
+    "input": {
+      "place": {
+        "place_id": "gn-2654308",
+        "name": "Burgess Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.95843,
+        "lon": -0.13287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burgess Hill",
+          "url": "https://en.wikipedia.org/wiki/Burgess_Hill",
+          "text": "Burgess Hill ( ) is a town and civil parish in West Sussex, England, close to the border with East Sussex, on the edge of the South Downs National Park, 39 mi (63 km) south of London, 10 mi (16 km) north of Brighton and Hove, and 29 mi (47 km) northeast of the county town, Chichester. It had an area of 3.7 sq mi (9.6 km2) and a population of 30,635 at the 2011 Census, making it the fourth most populous parish in the county (behind Crawley, Worthing and Horsham) and the most populous in the Mid Sussex District. Other nearby towns include Haywards Heath to the northeast and Lewes, the county town of East Sussex, to the southeast.\nBurgess Hill is just on the West Sussex side of the border dividing the two counties, although parts of the World's End district are across the county boundary in the Lewes district of East Sussex. On its northwest border lies the Bedelands Farm Nature Reserve.\nBurgess Hill is twinned with Schmallenberg in Germany and Abbeville in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "burgess hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "burgess",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2598,
+    "attempt": 2578,
+    "place_id": "gn-3466988",
+    "input": {
+      "place": {
+        "place_id": "gn-3466988",
+        "name": "Caratinga",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.78972,
+        "lon": -42.13917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caratinga",
+          "url": "https://en.wikipedia.org/wiki/Caratinga",
+          "text": "Caratinga is a Brazilian municipality located in the countryside of the state of Minas Gerais in the Southeast Region of Brazil. Situated in the Vale do Rio Doce, it is part of the Vale do Aço metropolitan area, approximately 190 kilometres (120 mi) east of the state capital, Belo Horizonte. The municipality covers an area of 1,258.479 square kilometres (485.901 sq mi), with 17 square kilometres (6.6 sq mi) in the urban area, and its population was estimated at 90,687 inhabitants in 2024.\nThe exploration of the region began in the 16th century with expeditions along the Doce and Caratinga rivers in search of precious metals. However, the area was first settled in the 19th century when Domingos Fernandes Lana explored it for ipecac, a valuable medicinal plant, and reported on the fertile lands and peaceful indigenous population. Subsequently, João Caetano do Nascimento, a friend of Lana, led an expedition to the region, claimed the land, and dedicated it to Saint John, officially founding the settlement on 24 June 1848, in honor of the saint's feast day.\nFavorable agricultural conditions and its strategic location as the only urban center on the right bank of the Caratinga River spurred population growth, leading to emancipation from Manhuaçu in 1890. Despite unplanned urban expansion, development accelerated with the arrival of the Leopoldina Railway and the BR-116 (Rio–Bahia Highway) in the 1930s and 1940s. The coffee industry flourished in the 1950s following the establishment of an office of the Brazilian Coffee Institute, positioning Caratinga as a coffee production hub. Coffee cultivation, alongside commerce, remains a primary source of income, though industry has grown since the 1980s. A new urban nucleus also emerged parallel to the original city center due to the expansion of the Vale do Aço metropolitan area.\nCaratinga is home to significant environmental conservation areas, including the Feliciano Miguel Abdala Private Natural Heritage Reserve, one of Minas Gerais' most important Atlantic Forest remnants, which shelters the northern muriqui, one of the largest primates in the Americas. The reserve attracts researchers from around the world. Other notable landmarks include the Pedra Itaúna, historic farms, waterfalls, and lagoons in the rural areas, and the scenic Cesário Alvim Square, which includes the St. John the Baptist Cathedral, built in 1930. Cultural traditions such as the Folia de Reis, artistic festivals, and June festivals are also prominent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 391
+    },
+    "banned_terms": [
+      {
+        "term": "caratinga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2599,
+    "attempt": 2579,
+    "place_id": "gn-5101717",
+    "input": {
+      "place": {
+        "place_id": "gn-5101717",
+        "name": "New Brunswick",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.48622,
+        "lon": -74.45182
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Brunswick, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/New_Brunswick,_New_Jersey",
+          "text": "New Brunswick is a city in Middlesex County, in the U.S. state of New Jersey. A regional commercial hub for Central New Jersey, the city is both a college town (the main campus of Rutgers University, the state's largest university) and a commuter town for residents working in New York City within the New York metropolitan area. The New Brunswick station is a major stop for NJ Transit on the Northeast Corridor rail line, 33 miles (53 km) southwest of New York Penn Station in Midtown Manhattan. The city is located on the southern banks of the Raritan River, in the heart of the Raritan Valley region.\nAs of the 2020 United States census, the city's population was 55,266, its highest decennial census count ever and an increase of 85 (+0.2%) from the 2010 census count of 55,181, which in turn reflected an increase of 6,608 (+13.6%) from the 48,573 counted in the 2000 census. The Census Bureau's Population Estimates Program calculated a population of 57,487 for 2024, making it the 713th-most populous municipality in the nation. Due to the concentration of medical facilities in the area, including the HELIX, Rutgers Robert Wood Johnson University Hospital and medical school, Hackensack Meridian Health, and Saint Peter's University Hospital, New Brunswick is known as both the Hub City and the Healthcare City. The corporate headquarters and production facilities of several global pharmaceutical companies are situated in the city, including Johnson & Johnson and Bristol Myers Squibb. New Brunswick is continuing to evolve into a major center for the sciences, arts, and cultural activities. Downtown New Brunswick is developing a growing skyline, filling with new high-rise towers.\nNew Brunswick is noted for its ethnic diversity. At one time, one-quarter of the Hungarian population of New Jersey resided in the city, and in the 1930s one out of three city residents was Hungarian. The Hungarian community continues as a cohesive community, with the 3,200 Hungarian residents accounting for 8% of the population of New Brunswick in 1992. Growing Asian and Hispanic communities have developed around French Street near Robert Wood Johnson University Hospital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 349
+    },
+    "banned_terms": [
+      {
+        "term": "new brunswick",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brunswick",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2600,
+    "attempt": 2580,
+    "place_id": "gn-1173302",
+    "input": {
+      "place": {
+        "place_id": "gn-1173302",
+        "name": "Kot Diji",
+        "country": "Pakistan",
+        "subdivision": "Sindh",
+        "lat": 27.34156,
+        "lon": 68.70821
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kot Diji",
+          "url": "https://en.wikipedia.org/wiki/Kot_Diji",
+          "text": "Kot Diji (Sindhi: ڪوٽ ڏیجي; Urdu: کوٹ ڈیجی, IPA: [koːʈ ɖiːdʒiː]) is an ancient site which was part of the Indus Valley Civilisation, estimated to have been occupied around 3300 BCE. Located about 45 km (28 mi) south of Khairpur in the modern-day province of Sindh, Pakistan, it is on the east bank of the Indus River opposite Mohenjo-daro. The remains consist of two parts: the citadel area on the high ground (about 12 m [39 ft]), and the area around it. The Pakistan Department of Archaeology excavated at Kot Diji in 1955 and 1957. The excavation at Kot Diji during 1954-55 by F. A. Khan revealed convincing evidence of the early or formative stage of the Indus civilisation in the cultural assemblage called Kot Dijian.\nThe site is situated at the foot of the Rohri Hills, where Kot Diji Fort was built around 1790 by the Talpur dynasty ruler of Upper Sindh, Mir Suhrab, who reigned from 1783 to 1830 AD. This fort, built on the ridge of a steep narrow hill, is well-preserved."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "kot diji",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kot",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "diji",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
