@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 830,
+    "attempt": 821,
+    "place_id": "gn-4839366",
+    "input": {
+      "place": {
+        "place_id": "gn-4839366",
+        "name": "New Haven",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.30815,
+        "lon": -72.92816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Haven, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/New_Haven,_Connecticut",
+          "text": "New Haven is a city in the U.S. state of Connecticut. It is located on New Haven Harbor on the northern shore of Long Island Sound. With a population of 134,023 at the 2020 census, it is the third-most populous city in Connecticut and the largest in the South Central Connecticut Planning Region, with the Greater New Haven metropolitan area having an estimated 577,000 residents.\nNew Haven was one of the first planned cities in the U.S. A year after its founding by English Puritans in 1638, eight streets were laid out in a three-by-three grid, creating the \"Nine Square Plan\". The central common block is the New Haven Green, a 16-acre (6 ha) square at the center of Downtown New Haven. The Green is now a National Historic Landmark, and the \"Nine Square Plan\" is recognized by the American Planning Association as a National Planning Landmark.\nNew Haven is the home of Yale University, New Haven's biggest taxpayer and employer, and an integral part of the city's economy. Health care, professional and financial services, and retail trade also contribute to the city's economic activity.\nThe city served as co-capital of Connecticut from 1701 to 1873, when sole governance was transferred to the more centrally located city of Hartford. New Haven has since billed itself as the \"Cultural Capital of Connecticut\" for its many theaters, museums, and music venues. New Haven had the first public tree planting program in the U.S., producing a canopy of mature trees (including some large elms) that gave the city the nickname \"The Elm City\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "new haven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 831,
+    "attempt": 822,
+    "place_id": "gn-551487",
+    "input": {
+      "place": {
+        "place_id": "gn-551487",
+        "name": "Kazan",
+        "country": "Russia",
+        "subdivision": "Tatarstan Republic",
+        "lat": 55.78874,
+        "lon": 49.12214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kazan",
+          "url": "https://en.wikipedia.org/wiki/Kazan",
+          "text": "Kazan is the capital and largest city of Tatarstan, Russia. The city lies at the confluence of the Volga and the Kazanka rivers, covering an area of 425.3 square kilometres (164.2 square miles), with a population of over 1.3 million residents, and up to nearly 2 million residents in the greater metropolitan area. Kazan is the fifth-largest city in Russia, being the most populous city on the Volga and within the Volga Federal District.\nHistorically, Kazan was the capital of the Khanate of Kazan, and was conquered by Ivan the Terrible in the 16th century, at which point the city became a part of the Tsardom of Russia. The city was seized (and largely destroyed) during Pugachev's Rebellion (1773–'75), but was later rebuilt during the reign of Catherine the Great. In the following centuries, Kazan grew to become a major industrial, cultural and religious centre of Russia. In 1920, after the Russian SFSR became a part of the Soviet Union, Kazan became the capital of the Tatar Autonomous Soviet Socialist Republic (Tatar ASSR). Following the dissolution of the Soviet Union, Kazan remained the capital of the Republic of Tatarstan.\nKazan is renowned for its vibrant mix of Tatar and Russian cultures. In 2023, 4 million tourists visited Kazan, and Kazan Kremlin, a World Heritage Site, recorded more than 4.5 million visits. In April 2009, the Russian Patent Office granted Kazan the right to refer to itself as the \"Third Capital of Russia\". In 2009, Kazan was chosen as the \"sports capital of Russia\". Kazan hosted the 2013 Summer Universiade, and was one of the host cities of the 2018 FIFA World Cup. Kazan hosted the BRICS Games from 12 to 23 June 2024. Athletes competed in 27 sports."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 288
+    },
+    "banned_terms": [
+      {
+        "term": "kazan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 832,
+    "attempt": 823,
+    "place_id": "gn-7281838",
+    "input": {
+      "place": {
+        "place_id": "gn-7281838",
+        "name": "Logan City",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -27.63917,
+        "lon": 153.10944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Logan City",
+          "url": "https://en.wikipedia.org/wiki/Logan_City",
+          "text": "The City of Logan is a local government area (LGA) located in the south of Greater Brisbane in South East Queensland (SEQ), Australia. Situated between the City of Brisbane to the north and the City of Gold Coast to the south, the City of Logan also borders the Scenic Rim Region, the City of Ipswich, and Redland City LGAs. Logan is divided into 70 suburbs and 12 divisions; a councillor is elected to each of the latter. The council had a population of 326,615 as of June 2018.\nGaining significant area in 2008 from the amalgamation of parts of the Albert and Beaudesert Shires, the City of Logan extends north to Priestdale, south to Mundoolun near the Albert River, east to Carbrook at the Logan River, and west to Lyons. Logan is located across parts of the sub-basin of Oxley Creek, and the Logan and Albert Rivers. The Daisy Hill Koala Centre serves as an example of Logan's prominent bushland, reminiscent of Karawatha Forest, and the Tamborine and Venman Bushland National Parks, that border Logan suburbs.\nThe region is named after Captain Patrick Logan, as is the aforementioned river, alongside the commercial hubs of Logan Central, Shailer Park's Logan Hyperdome, and Browns Plains. Other populous suburbs include Beenleigh, Rochedale South, Meadowbrook, Springwood, Woodridge, Eagleby and the rural towns of Jimboomba and Logan Village. The city facilitates much of the transport between Brisbane and the Gold Coast. Its motorway network is extensive: in the city's north-east, the Logan Motorway joins the Pacific Motorway, while the Mount Lindesay Highway and Sydney–Brisbane rail corridor cross the city along a roughly central north-south axis. New developments are common, particularly those being built at Yarrabilba and Greater Flagstone, while Griffith University has already established a Logan campus in Meadowbrook which is being developed into a specialist area based around health, research and education.\nIn 2016, Luke Smith was elected mayor of Logan. On 2 May 2019, Minister for Local Government Stirling Hinchliffe sacked the Logan City Council after eight of its Councillors and suspended mayor were charged with one count of fraud. The suspended Mayor was also charged with two counts of misconduct. The council was under administration until March 2020 elections.\nIn the 2021 census, the City of Logan had a population of 345,098 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 381
+    },
+    "banned_terms": [
+      {
+        "term": "logan city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "logan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 833,
+    "attempt": 824,
+    "place_id": "gn-1153671",
+    "input": {
+      "place": {
+        "place_id": "gn-1153671",
+        "name": "Chiang Mai",
+        "country": "Thailand",
+        "subdivision": "Chiang Mai",
+        "lat": 18.79038,
+        "lon": 98.98468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chiang Mai",
+          "url": "https://en.wikipedia.org/wiki/Chiang_Mai",
+          "text": "Chiang Mai is the largest city in northern Thailand, the capital of Chiang Mai province and the second-largest city in Thailand by urban population. It is 700 km (435 mi) north of Bangkok in a mountainous region called the Thai highlands, and has a population of approximately 127,000 within the city municipality and an urban population of about 1.2 million as of 2023.\nThe heart of the city is commonly defined by a square area about 1 mile × 1 mile. It is bordered by ancient red brick walls (now only remnants) and has a moat surrounding it. However, the greater urban area, including surrounding districts such as Hang Dong, San Sai, and Saraphi, forms a metropolitan region with an estimated population exceeding 1 million. At the provincial level, Chiang Mai had a projected population of 1.8 million in 2023, according to Thailand's National Statistical Office.\nChiang Mai (meaning \"new city\" in Thai) was founded in 1296 as the new capital of Lan Na, succeeding the former capital, Chiang Rai. The city's location on the Ping River (a major tributary of the Chao Phraya River) and its proximity to major trading routes contributed to its historic importance.\nThe city municipality of Chiang Mai (thesaban nakhon) officially only covers parts (40.2 km2) of the Mueang Chiang Mai district in the city centre and has a population of 127,000. This census area dates back to 1983 when Chiang Mai's municipal area was enlarged for the first and last time since becoming the first City Municipality in Thailand (then under Siam) in 1935. The city's sprawl has since extended into several neighboring districts, namely Hang Dong in the south, Mae Rim in the north, Suthep in the west and San Kamphaeng in the east, forming the Chiang Mai urban area with over a million residents.\nThe city municipality is subdivided into four khwaeng (electoral wards): Nakhon Ping, Sriwichai, Mengrai, and Kawila. The first three are on the west bank of the Ping River, and Kawila is on the east bank. Nakhon Ping District includes the northern part of the city. Sriwichai, Mengrai, and Kawila consist of the western, southern, and eastern parts, respectively. The city center—within the city walls—is mostly within Sriwichai ward.\nChiang Mai was declared by the UNESCO Creative Cities Network for the City of Crafts and Folk Arts in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 390
+    },
+    "banned_terms": [
+      {
+        "term": "chiang mai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chiang",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 834,
+    "attempt": 825,
+    "place_id": "gn-1647142",
+    "input": {
+      "place": {
+        "place_id": "gn-1647142",
+        "name": "Cianjur",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.82222,
+        "lon": 107.13944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cianjur",
+          "url": "https://en.wikipedia.org/wiki/Cianjur",
+          "text": "Cianjur (Sundanese: ᮎᮤᮃᮔ᮪ᮏᮥᮁ) is a town and district in the West Java province of Indonesia, and is the seat of Cianjur Regency. The district of Cianjur is located along one of the main roads between Jakarta (120 km to the northwest) and Bandung (60 km to the east). The population was 158,125 at the 2010 Census and 173,265 at the 2020 Census; the official estimate as of 2025 was 178,798. Because of its location, some of Cianjur's residents commute to work in Bandung.\nThe road on which Cianjur is located used to be the main (extremely busy) road from Jakarta to Bandung but was in effect replaced as the main road link between these two main cities when the Jakarta-Bandung tollroad was fully completed in 2005. However, due to its low traffic, Cianjur returned as one of the alternative routes for travellers from Jakarta and Bandung."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "cianjur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 835,
+    "attempt": 826,
+    "place_id": "gn-1790645",
+    "input": {
+      "place": {
+        "place_id": "gn-1790645",
+        "name": "Xiamen",
+        "country": "China",
+        "subdivision": "Fujian",
+        "lat": 24.47979,
+        "lon": 118.08187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xiamen",
+          "url": "https://en.wikipedia.org/wiki/Xiamen",
+          "text": "Xiamen, historically romanized as Amoy, is a sub-provincial city in southeastern Fujian, People's Republic of China, beside the Taiwan Strait. It is divided into six districts: Huli, Siming, Jimei, Tong'an, Haicang, and Xiang'an. All together, these cover an area of 1,700.61 square kilometers (656.61 sq mi) with a population of 5,163,970 as of 2020 and estimated at 5.365 million as of 31 December 2025. The urbanized area of the city has spread from its original island to include most parts of all six of its districts, as well as 4 Zhangzhou districts (Xiangcheng, Longwen, Longhai and Changtai), which form a built-up area of 7,284,148 inhabitants. This area also connects with Quanzhou in the north, making up a metropolis of nearly ten million people. The Kinmen Islands (Quemoy) administered by the Republic of China (Taiwan) lie less than 6 kilometers (4 mi) away separated by Xiamen Bay. As part of the Opening Up Policy under Deng Xiaoping, Xiamen became one of China's original four special economic zones opened to foreign investment and trade in the early 1980s.\nXiamen Island possesses a major international seaport. The Port of Xiamen is a well-developed first-class trunk line port in the Asia-Pacific region. It is ranked the 7th-largest container port in China and ranks 15th in the world. It is the 4th port in China with the capacity to handle 6th-generation large container ships. On 31 August 2010, Xiamen Port incorporated the neighboring port of Zhangzhou to form the largest port of China's Southeast. Ever since the 12th century, Xiamen was also an important origin for many migrants to Singapore, Malaysia, Indonesia and the Philippines. The overseas Chinese used to support Xiamen's educational and cultural institutions.\nXiamen is one of the top 40 cities in the world by scientific research as tracked by the Nature Index. The city is home to several major universities, including Xiamen University, one of China's most prestigious universities as a member of the Double First Class Universities, Huaqiao, Jimei, Xiamen University of Technology and Xiamen Medical College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "xiamen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 836,
+    "attempt": 827,
+    "place_id": "gn-3433899",
+    "input": {
+      "place": {
+        "place_id": "gn-3433899",
+        "name": "Formosa",
+        "country": "Argentina",
+        "subdivision": "Formosa",
+        "lat": -26.18489,
+        "lon": -58.17313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Formosa, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Formosa,_Argentina",
+          "text": "Formosa (Spanish pronunciation: [foɾˈmosa]) is the capital city of the Argentine province of Formosa, on the banks of the Paraguay River, opposite the Paraguayan town of Alberdi, about 1,200 km (746 mi) north from Buenos Aires, on National Route 11. The city has a population of about 234,000 per the 2010 census [INDEC].\nFormosa is the hub of the provincial industry, that processes the product of its natural resources. The port that serves Paraguay towards the Paraná River is the main transport means for the provincial production.\nNotable sights of the city include the Nuestra Señora del Carmen Cathedral, the Government House, the Torelli Botanic Forest Garden, the Provincial History Museum (Museo Histórico Provincial), the Estadio Centenario (\"Centenary Stadium\") football stadium, the Guaicole fauna reserve,  the shore of the Paraguay River, the Isla de Oro Island, and the Central Square named after José de San Martín."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "formosa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 837,
+    "attempt": 828,
+    "place_id": "gn-3450083",
+    "input": {
+      "place": {
+        "place_id": "gn-3450083",
+        "name": "Santa Maria",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.68417,
+        "lon": -53.80694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Maria, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/Santa_Maria,_Rio_Grande_do_Sul",
+          "text": "Santa Maria is a municipality (município) in the central region of Rio Grande do Sul, the southernmost state of Brazil. In 2025, its population was 282,395 inhabitants in a total area of 1,823 square kilometres (704 sq mi). Santa Maria is the 5th biggest municipality in the state, and the largest in its micro-region.\nSanta Maria is often referred to as the \"heart of Rio Grande\" (from Portuguese: \"Coração do Rio Grande\"), because the city is located in the geographical center of the State.\nSanta Maria is considered a university city, thanks to the Federal University of Santa Maria, created by José Mariano da Rocha Filho, and the Franciscan University, elevated to university center status on March 28, 2018.\nIn the early morning of January 27, 2013, Santa Maria became world-famous due to the fire that occurred in a nightclub in the city, the Kiss nightclub. On that occasion, 242 people, mostly young people, died from smoke inhalation or being trampled, given that there was no emergency exit in the building."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "santa maria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 838,
+    "attempt": 829,
+    "place_id": "gn-3454244",
+    "input": {
+      "place": {
+        "place_id": "gn-3454244",
+        "name": "Pelotas",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -31.76997,
+        "lon": -52.34101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pelotas",
+          "url": "https://en.wikipedia.org/wiki/Pelotas",
+          "text": "Pelotas (Brazilian Portuguese pronunciation: [peˈlɔtɐs]) is a Brazilian city and municipality (município), the fourth most populous in the southern state of Rio Grande do Sul, after Porto Alegre, Caxias do Sul and Canoas. It is located 270 km (168 mi) from Porto Alegre, the state's capital city, and 130 km (80.8 mi) from the Uruguayan border. The Lagoa dos Patos lies to the east and the São Gonçalo Channel lies to the south, separating Pelotas from the municipality of Rio Grande.\nIn the 19th century, Pelotas was Brazil's leading center for the production of dried meat (charque), a staple food made by slaves and destined to feed the slaves of sugarcane, coffee and cocoa plantations across the country.\nCurrently Pelotas hosts two major universities, the Federal University of Pelotas, and the Catholic University of Pelotas. Together, they account for a population of 22,000 higher education students.\nThe city has three football clubs: Esporte Clube Pelotas (founded 1908), Grêmio Esportivo Brasil (also known as Brasil de Pelotas; founded 1911) and Grêmio Atlético Farroupilha (founded 1926)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "pelotas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 839,
+    "attempt": 830,
+    "place_id": "gn-3460522",
+    "input": {
+      "place": {
+        "place_id": "gn-3460522",
+        "name": "Itumbiara",
+        "country": "Brazil",
+        "subdivision": "Goiás",
+        "lat": -18.41917,
+        "lon": -49.21528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itumbiara",
+          "url": "https://en.wikipedia.org/wiki/Itumbiara",
+          "text": "Itumbiara (Portuguese pronunciation: [itũw̃biˈaɾɐ]) is a municipality in Brazil, located in the southern part of the state of Goiás, on the border with Minas Gerais. It is a \"sister city\" to the Minas Gerais municipality of Araporã. The city lies south of the state capital, Goiânia, approximately 204 kilometers away, and 411 kilometers from the federal capital, Brasília. Covering an area of 2,447 square kilometres (945 sq mi), Itumbiara is the thirteenth most populous municipality in Goiás, with a population of 107,970 inhabitants according to the 2022 Census by the Brazilian Institute of Geography and Statistics (IBGE).\nThe history of Itumbiara dates back to the early 1820s, when a road was constructed across the Paranaíba River to connect Uberaba with central Goiás. The influx of settlers, drawn primarily by the road's construction, led to the establishment of a district named Santa Rita do Paranaíba in 1852. Following the Proclamation of the Republic, the municipality was officially established in 1909, still under the name Santa Rita do Paranaíba. The name \"Itumbiara,\" derived from the Tupi language, was proposed by engineer Inácio Pais Leme, who oversaw the road's construction.\nItumbiara is regarded as the gateway to Goiás. It is also one of the state's largest exporters, owing to its proximity to Minas Gerais and São Paulo, which facilitates the distribution of agricultural products from southwestern Goiás to the South and Southeast regions. Key tourist attractions include the Paranaíba River, the Salitre Waterfall, the Beira Rio Lighthouse, and the Affonso Penna Bridge, which connects Goiás and Minas Gerais. Water sports are also popular in the city. The Ranking Connected Smart Cities, which identifies Brazil's most intelligent and high-potential cities, ranked Itumbiara as the 8th most intelligent and high-potential city in the Central-West Region and the 3rd in Goiás in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 297
+    },
+    "banned_terms": [
+      {
+        "term": "itumbiara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 840,
+    "attempt": 831,
+    "place_id": "gn-3893894",
+    "input": {
+      "place": {
+        "place_id": "gn-3893894",
+        "name": "Concepción",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -36.82699,
+        "lon": -73.04977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Concepción, Chile",
+          "url": "https://en.wikipedia.org/wiki/Concepción,_Chile",
+          "text": "Concepción (Spanish pronunciation: [konseβˈsjon] ; originally: Concepción de la Madre Santísima de la Luz, \"Conception of the Blessed Mother of Light\") is a city and commune in south-central Chile, and the geographical and demographic core of the Greater Concepción metropolitan area, it is the second largest city in Chile by urban area and one of the three major conurbations in the country. It has a significant impact on domestic trade being part of the most heavily industrialized region in the country. It is the seat of the Concepción Province and the capital of the Biobío Region. It sits about 500 km south of the nation's capital, Santiago.\nThe city was first settled in the Bay of Concepción, in the zone that would later become the commune of Penco, now part of the Concepción conurbation. The city's demonym, penquista, comes from the place of its original foundation. The city center and historic district is located in the Valle de la Mocha (La Mocha Valley), where it relocated after serious damage left by an earthquake in 1751.\nThe origin of Concepción dates back to 1550, when it was founded by Pedro de Valdivia as part of the Spanish Empire, under the name of Concepción de María Purísima del Nuevo Extremo, and was the capital of the Kingdom of Chile between 1565 and 1573, retaining the unofficial position of military capital for the rest of the colonial period. The city was an important site in the struggle for Chile's independence, with the Chilean declaration of Independence being held at Concepción's Plaza de la Independencia. Until the election of Manuel Montt in 1851 as president, executive power in independent Chile was dominated by Concepción elites.\nThe city is a known college town in Chile, as it is home to numerous educational institutions, including the University of Concepción, the University of the Bío Bío, and the Catholic University of the Most Holy Conception. The commune also contains various historical bridges, murals, parks and lakes, as well as important cultural venues such as the Teatro Biobío, the Casa del Arte, the local Natural History Museum, and the Teatro Universidad de Concepción."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 355
+    },
+    "banned_terms": [
+      {
+        "term": "concepcion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 841,
+    "attempt": 832,
+    "place_id": "gn-5378538",
+    "input": {
+      "place": {
+        "place_id": "gn-5378538",
+        "name": "Oakland",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.80437,
+        "lon": -122.2708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oakland, California",
+          "url": "https://en.wikipedia.org/wiki/Oakland,_California",
+          "text": "Oakland is a city in the East Bay region of the San Francisco Bay Area in the U.S. state of California. It is the county seat of and the most populous city in Alameda County, California, with a population of 440,646 in 2020. A major West Coast port, Oakland is the most populous city in the East Bay, the third most populous city in the Bay Area, and the eighth most populous city in California. It serves as the Bay Area's trade center: the Port of Oakland is the busiest port in Northern California, and the fifth- or sixth-busiest in the United States. A charter city, Oakland was incorporated on May 4, 1852, in the wake of the state's increasing population due to the California gold rush.\nOakland's territory covers what was once a mosaic of California coastal terrace prairie, oak woodland, and north coastal scrub. In the late 18th century, it became part of a large rancho grant in the colony of New Spain, and was known for its plentiful oak tree stands. Its land served as a resource when its hillside oak and redwood timber were logged to build San Francisco. The fertile flatland soils helped it become a prolific agricultural region. In the 1850s, what became the first campus of the University of California was founded in Oakland, and Oakland was selected as the western terminal of the Transcontinental Railroad in 1869. The following year, Oakland's Lake Merritt became the United States' first officially designated wildlife refuge, now a National Historic Landmark. Following the catastrophic 1906 San Francisco earthquake, many San Francisco citizens moved to Oakland, enlarging the population, increasing its housing stock, and improving its infrastructure. It continued to grow in the 20th century with its port, shipyards, and manufacturing industry. In the 21st century, between 2019 and 2023, after the city and county refused requests for hundreds of millions of dollars in benefits to the privately owned teams, Oakland lost three teams of the major North American sports leagues within a span of five years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 340
+    },
+    "banned_terms": [
+      {
+        "term": "oakland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 842,
+    "attempt": 833,
+    "place_id": "gn-680332",
+    "input": {
+      "place": {
+        "place_id": "gn-680332",
+        "name": "Craiova",
+        "country": "Romania",
+        "subdivision": "Dolj",
+        "lat": 44.31667,
+        "lon": 23.8
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Craiova",
+          "url": "https://en.wikipedia.org/wiki/Craiova",
+          "text": "Craiova (, also US: , Romanian: [kraˈjova] ) is the largest city in southwestern Romania, the seventh largest city in the country and the capital of Dolj County, situated near the east bank of the river Jiu in central Oltenia.\nIt is a longstanding political center, and is located at approximately equal distances from the Southern Carpathians (north) and the River Danube (south). Craiova is the chief commercial city west of Bucharest and the most important city of Oltenia. The city prospered as a regional trading centre despite an earthquake in 1790, a plague in 1795, and a Turkish assault in 1802 during which it was burned.\nEight villages are administered by the city: Făcăi, Mofleni, Popoveni, Șimnicu de Jos, Cernele, Cernelele de Sus, Izvoru Rece, and Rovine. The last four were a separate commune called Cernele until 1996, when they were merged into the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "craiova",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 843,
+    "attempt": 834,
+    "place_id": "gn-894701",
+    "input": {
+      "place": {
+        "place_id": "gn-894701",
+        "name": "Bulawayo",
+        "country": "Zimbabwe",
+        "subdivision": "Bulawayo",
+        "lat": -20.15,
+        "lon": 28.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bulawayo",
+          "url": "https://en.wikipedia.org/wiki/Bulawayo",
+          "text": "Bulawayo (, ; Northern Ndebele: Bulawayo) is the second largest city in Zimbabwe, and the largest city in the country's Matabeleland region. The city's population is disputed; the 2022 census listed it at 665,940, while the Bulawayo City Council claimed it to be about 1.2 million. Bulawayo covers an area of 546 square kilometres (211 square miles) in the western part of the country, along the Matsheumhlope River. Along with the capital Harare, Bulawayo is one of two cities in Zimbabwe that are also provinces.\nBulawayo was founded by a group led by Gundwane Ndiweni around 1840 as the kraal of Mzilikazi, the Ndebele king and was known as Gibixhegu. His son, Lobengula, succeeded him in the 1860s, and changed the name to koBulawayo and ruled from Bulawayo until 1893, when the settlement was captured by British South Africa Company soldiers during the First Matabele War. That year, the first white settlers arrived and rebuilt the town. The town was besieged by Ndebele warriors during the Second Matabele War. Bulawayo attained municipality status in 1897, and city status in 1943.\nHistorically, Bulawayo has been the principal industrial centre of Zimbabwe; its factories produce cars and car products, building materials, electronic products, textiles, furniture, and food products. Bulawayo is also the hub of Zimbabwe's rail network and the headquarters of the National Railways of Zimbabwe.\nBulawayo's central business district (CBD) covers 5.4 km2 (2.1 sq mi) in the heart of the city and is surrounded by numerous suburbs. The majority of the city's population belongs to the Ndebele people, with minorities of Shona and other groups, including Coloured and White Zimbabweans. Bulawayo is home to over a dozen colleges and universities, most notably the National University of Science and Technology, Bulawayo Polytechnic College, Zimbabwe School of Mines, Hillside Teachers College, and the United College of Education. The Natural History Museum of Zimbabwe, formerly the National Museum, is located in Bulawayo. The city is close to tourist sites such as Matobo National Park and the Khami World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "bulawayo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 844,
+    "attempt": 835,
+    "place_id": "gn-1018725",
+    "input": {
+      "place": {
+        "place_id": "gn-1018725",
+        "name": "Bloemfontein",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -29.12107,
+        "lon": 26.214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bloemfontein",
+          "url": "https://en.wikipedia.org/wiki/Bloemfontein",
+          "text": "Bloemfontein ( BLOOM-fon-tayn; Afrikaans: [ˈblumfɔntəin]), also known as Bloem, is the capital and the largest city of the Free State province in South Africa. It is often, and has been traditionally, referred to as the country's \"judicial capital\", as it hosts the Supreme Court of Appeal, alongside the legislative capital Cape Town and executive capital Pretoria. However, the highest court in South Africa, the Constitutional Court, has been in Johannesburg since 1994.\nSituated at an elevation of 1,395 m (4,577 ft) above sea level, the city of 256,185  residents (as of 2011) has Mangaung as its municipality, which has a population of 747,431.\nThe city of Bloemfontein contains the Franklin Game Reserve, Naval Hill, the Maselspoort Resort and the Sand du Plessis Theatre. The city hosts numerous museums, including the National Women's Monument, the Anglo-Boer War Museum, the National Museum, and the Oliewenhuis Art Museum. Bloemfontein also hosts the first digital planetarium in the southern hemisphere, the Naval Hill Planetarium, and Boyden Observatory, an astronomical research observatory.\nBloemfontein is popularly and poetically known as \"the city of roses\" for its abundance of these flowers and the annual rose festival held there. The city is situated in the middle of the country; hence it is referred to as \"Central South Africa\". The city's Sesotho name is Mangaung, meaning \"place of cheetahs\". It was one of the host cities for the 2010 FIFA World Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "bloemfontein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 845,
+    "attempt": 836,
+    "place_id": "gn-124665",
+    "input": {
+      "place": {
+        "place_id": "gn-124665",
+        "name": "Mashhad",
+        "country": "Iran",
+        "subdivision": "Razavi Khorasan",
+        "lat": 36.29807,
+        "lon": 59.60567
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mashhad",
+          "url": "https://en.wikipedia.org/wiki/Mashhad",
+          "text": "Mashhad (Persian: مشهد [mæʃˈhæd] ), historically also known as Mashad ( mə-SHAD), Meshhed, or Meshed, is the second-most-populous city in Iran, located in the north-east of the country about 740 kilometres (460 miles) east of Tehran. In the Central District of Mashhad County, it serves as the capital of Razavi Khorasan province, the county, and the district. It has a population of about 3,400,000 (2016 census), which includes the areas of Mashhad Taman and Torqabeh.\nMashhad has been governed by different ethnic groups. A small village, by the 9th century it was known as Sanabad and was located—along with Tus and other villages—on the ancient Silk Road connecting them with Merv to the east. It outgrew surrounding villages and became known by its current name, meaning \"place of martyrdom\", in reference to the Imam Reza shrine, where the eighth Shia Imam, Ali al-Rida, is buried. The Abbasid caliph Harun al-Rashid is also buried within the same shrine. The shrine is the most pilgrimaged site in Islam, visited by nearly 30 million each year.\nMashhad became associated with Ferdowsi, the Persian poet and author of the Shahnameh, who was born in Tus (with many institutions in Mashhad named after him). Mashhad enjoyed relative prosperity in the Mongol period, and continued to grow. Between 1736 and 1796, Mashhad became the capital of Afsharid Iran which was ruled by the Afsharid dynasty founded by Nader Shah, whose tomb is located in the city. In the modern era, Mashhad continued to expand and became the hometown of some of the most significant literary figures and artists of modern Iran, such as the poet Mehdi Akhavan-Sales, and the traditional Iranian singer and composer Mohammad-Reza Shajarian. On 30 October 2009 (the anniversary of Imam Reza's martyrdom), Iran's then-President Mahmoud Ahmadinejad declared Mashhad to be \"The spiritual capital of Iran.\" The city was also named the Capital of Islamic Culture by the Organisation of Islamic Cooperation in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 321
+    },
+    "banned_terms": [
+      {
+        "term": "mashhad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 846,
+    "attempt": 837,
+    "place_id": "gn-1269300",
+    "input": {
+      "place": {
+        "place_id": "gn-1269300",
+        "name": "Jamshedpur",
+        "country": "India",
+        "subdivision": "Jharkhand",
+        "lat": 22.80278,
+        "lon": 86.18545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jamshedpur",
+          "url": "https://en.wikipedia.org/wiki/Jamshedpur",
+          "text": "Jamshedpur (Hindi: [d͡ʒəmˈʃeːd̪pʊɾ] ; Bengali: [ˈd͡ʒamʃedpuɾ]), also known as Tatanagar, is a major industrial city in eastern India. Located on the confluence of the Swarnarekha and Kharkai rivers, the city is surrounded by the Dalma Hills. It is the largest city in the state of Jharkhand. With a population of 629,658 in the city limits and 1.3 million in the wider metropolitan area, Jamshedpur is the third largest metropolitan area in the region and 36th largest urban area in the country and 72nd most populous city in the country.  \nThe modern industrial city of Jamshedpur was built over the village of Sakchi by Dorabji Tata, who chose the location for his father Jamshedji Tata's planned steel city. The project began in 1908, with the steel plant operating by 1912, and the city was formally named Jamshedpur by Lord Chelmsford in 1919 in honor of Jamshedji. During World War I, Tata Steel supplied for British military campaigns across the Middle East and Africa. In World War II, Jamshedpur was a high-value target. This led to the deployment of British and American troops in the region, establishment of air bases to repel potential Japanese attacks, maintain links with mainland China via the Burma Road and participate in the U.S-led bombing campaign in Japan. The city's history is embedded with frequent labor unrest and strikes, visits by well-known figures and independence movements.\nFollowing the independence of India in 1947, Jamshedpur became part of the state of Bihar. It experienced spells of growth and development alongside occasions of unrest, violence and terrorism. The city experienced deadly communal violence in 1964 and 1979 and a spillover of the 1984 anti-Sikh riots. By the 1990s, organized crime increased, and mafia activities emerged in northern Jamshedpur, with notable gang wars and the assassination of well-known figures in political and business circles. The intensity of crime nearly brought about the collapse of industries in Jamshedpur. The state government intervened. Between 1994 and 1996, the city police under Ajoy Kumar, launched a crackdown on gangs, which led to a decline in crime. Subsequently, Jamshedpur became an important stronghold for the statehood movement. Thus on 15 November 2000, the city became part of the state of Jharkhand.\nA major commercial and industrial centre in India, Jamshedpur is home to major heavy industries. It is a demographically diverse city. It has been ranked consistently as one of the cleanest cities in India by Swach Survekshan, 2nd in India in terms of quality of life, one of the fastest-growing global cities in the world and one of the first smart cities in India along with Naya Raipur. It is a local popular tourist destination known for its forests and ancient temples. Jamshedpur is the only million plus city in India without a municipal corporation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 462
+    },
+    "banned_terms": [
+      {
+        "term": "jamshedpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 847,
+    "attempt": 838,
+    "place_id": "gn-1275004",
+    "input": {
+      "place": {
+        "place_id": "gn-1275004",
+        "name": "Kolkata",
+        "country": "India",
+        "subdivision": "West Bengal",
+        "lat": 22.56263,
+        "lon": 88.36304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kolkata",
+          "url": "https://en.wikipedia.org/wiki/Kolkata",
+          "text": "Kolkata, also known as Calcutta (its official name until 2001), is the capital and largest city of the Indian state of West Bengal. It lies on the eastern bank of the Hooghly River, 80 km (50 mi) west of the border with Bangladesh. It is the primary financial and commercial centre of eastern India and one of the gateways to northeastern India. Kolkata is the seventh most populous city in India with an estimated city proper population of 4.5 million while its metropolitan region Kolkata Metropolitan Area is the third most populous metropolitan region of India with a metro population of over 15 million. Kolkata is regarded by many sources as the cultural capital of India and a historically and culturally significant city in the historic region of Bengal.\nThe three villages that predated Calcutta were ruled by the Nawab of Bengal under Mughal suzerainty. After the Nawab granted the East India Company a trading license in 1690, the area was developed by the Company into Fort William. Nawab Siraj ud-Daulah occupied the fort in 1756 but was defeated at the Battle of Plassey in 1757, after his general Mir Jafar mutinied in support of the company, and was later made the Nawab for a brief time. Under company and later crown rule, Calcutta served as the de facto capital of India until 1911. Calcutta was the second largest city in the British Empire, after London, and was the centre of bureaucracy, politics, law, education, science and the arts in India. The city was associated with many of the figures and movements of the Bengali Renaissance. It was the hotbed of the Indian nationalist movement.\nThe partition of Bengal in 1947 affected the fortunes of the city. Following independence in 1947, Kolkata, which was once the premier centre of Indian commerce, culture, and politics, suffered many decades of political violence and economic stagnation before it rebounded. In the late 20th century, the city hosted the government-in-exile of Bangladesh during the Bangladesh Liberation War in 1971. It was also flooded with Hindu refugees from East Bengal (present-day Bangladesh) in the decades following the 1947 partition of India, transforming its landscape and shaping its politics. The city was overtaken by Mumbai (formerly Bombay) as India's largest city.\nA demographically diverse city, the culture of Kolkata features idiosyncrasies that include distinctively close-knit neighbourhoods (paras) and freestyle conversations (adda). Kolkata's architecture includes many imperial landmarks, including the Victoria Memorial, Howrah Bridge and the Grand Hotel. The city's heritage includes India's only Chinatown and remnants of Jewish, Armenian, Greek and Anglo-Indian communities. The city is closely linked with Bhadralok culture and the Zamindars of Bengal, including Bengali Hindu, Bengali Muslim and tribal aristocrats. The city is often regarded as India's cultural capital.\nKolkata is home to institutions of national importance, including the Academy of Fine Arts, the Asiatic Society, the Indian Museum and the National Library of India. The University of Calcutta, the first modern university in South Asia, and its affiliated colleges produced many leading figures of South Asia. It is the centre of the Indian Bengali film industry, which is known as Tollywood. Among scientific institutions, Kolkata hosts the Geological Survey of India, the Botanical Survey of India, the Calcutta Mathematical Society, the Indian Science Congress Association, the Zoological Survey of India, the Horticultural Society, the Institution of Engineers, the Anthropological Survey of India and the Indian Public Health Association. The Port of Kolkata is India's oldest operating port. Four Nobel laureates and two Nobel Memorial Prize winners are associated with the city. Though home to major cricketing venues and franchises, Kolkata stands out in India for being the country's centre of association football. Kolkata is known for its grand celebrations of the Hindu festival of Durga Puja, which is recognized by UNESCO for its importance to world heritage. Kolkata is also known as the  ''City of Joy''."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 645
+    },
+    "banned_terms": [
+      {
+        "term": "kolkata",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 848,
+    "attempt": 839,
+    "place_id": "gn-1631905",
+    "input": {
+      "place": {
+        "place_id": "gn-1631905",
+        "name": "Payakumbuh",
+        "country": "Indonesia",
+        "subdivision": "West Sumatra",
+        "lat": -0.2159,
+        "lon": 100.6334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Payakumbuh",
+          "url": "https://en.wikipedia.org/wiki/Payakumbuh",
+          "text": "Payakumbuh (Minangkabau: Payokumbuah, Jawi: ڤايوكومبواه) is the second largest city in West Sumatra province, Indonesia, with a population of 116,825 at the 2010 Census and 139,576 at the 2020 Census; the official estimate as of mid 2025 was 148,600 (comprising 74,660 males and 73,940 females). It covers an area of 80.43 km2 and is in the Minangkabau Highlands, 120 km by road from the West Sumatran capital city of Padang and 180 km from the Riau capital city of Pekanbaru.\nThe whole area is surrounded on all sides by (but administratively independent from) the Lima Puluh Kota Regency, making it an enclave. It is located near the volcanoes of Mount Merapi, Mount Sago, and Bukit Barisan. Payakumbuh means \"grassy swamp\" in the Minangkabau language, suggesting that the area was originally swampy.\nIn 2011, Payakumbuh had the highest economic growth of any city in West Sumatra. Innovations in sanitation, waste management, healthy traditional markets, street vendors coaching, and urban drainage resulted in this city being awarded the \"Urban Innovation Management\" in 2012. In 2013, Payakumbuh received the \"Adipura\" ('cleanest city') award in the category of small city for the seventh time.\nPayakumbuh is known for flying duck races, foods like batiah (small sweet rice cookies), gelamai (a sweet coconut palm sugared snack) and rendang. Payakumbuh produces a wide range of agriculture products including rice, milk, cattle and palm sugar.\nPayakumbuh and its surrounding villages within Lima Puluh Kota Regency, namely Mungka (in Mungka District), Simalanggang (in Payakumbuh District) and Batuhampar (in Akabiluru District) are the origin of the Negeri Sembilan people of Malaysia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "payakumbuh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 849,
+    "attempt": 840,
+    "place_id": "gn-1795270",
+    "input": {
+      "place": {
+        "place_id": "gn-1795270",
+        "name": "Shijiazhuang",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 38.04139,
+        "lon": 114.47861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shijiazhuang",
+          "url": "https://en.wikipedia.org/wiki/Shijiazhuang",
+          "text": "Shijiazhuang is the capital and most populous city of China's Hebei Province, located 266 kilometres (165 mi) southwest of Beijing. It administers eight districts, three county-level cities and eleven counties, and is east of the Taihang Mountains, which extend over 400 km (250 mi) from north to south with an average elevation of 1,500 to 2,000 m (4,900 to 6,600 ft).\nAt the 2020 census, the city had a population of 11,235,086, with 6,230,709 in the built-up area comprising all urban districts except Jingxing District and Zhengding County, the twelfth largest in mainland China. By the end of 2025, the total resident population of the city will be 11,246,900.\nShijiazhuang experienced dramatic growth after the founding of the People's Republic of China in 1949. The population of the metropolitan area has more than quadrupled in thirty years as a result of industrialization and infrastructural developments. From 2008 to 2011, Shijiazhuang implemented a three-year plan, resulting in an increase of green areas and new buildings and roads. A railway station, airport and subway system have been opened."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "shijiazhuang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

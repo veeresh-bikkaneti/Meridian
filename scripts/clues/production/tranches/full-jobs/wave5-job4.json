@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 870,
+    "attempt": 861,
+    "place_id": "gn-3693528",
+    "input": {
+      "place": {
+        "place_id": "gn-3693528",
+        "name": "Piura",
+        "country": "Peru",
+        "subdivision": "Piura",
+        "lat": -5.18192,
+        "lon": -80.65715
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piura",
+          "url": "https://en.wikipedia.org/wiki/Piura",
+          "text": "Piura is a city in northwestern Peru, located north of the Sechura Desert along the Piura River. It is the capital of the Piura Region and the Piura Province. Its population was 484,475 as of 2017 and it is the 7th most populous city in Peru. The city is located in the central eastern part of the Piura Region, 981 kilometers from the country's capital, Lima and is near to the border with Ecuador.\nIt was here that Spanish Conqueror Francisco Pizarro founded the third Spanish city in South America and first in Peru, under the name of San Miguel de la Nueva Castilla (en: Saint Michael of New Castile) in the Tallán settlement of Tangarará on July or August of 1532. Piura declared its independence from Spain on 4 January 1821, a few months before Peru gained its independence on 28 July 1821. It is the commercial and administrative center of the Department of Piura."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "piura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 871,
+    "attempt": 862,
+    "place_id": "gn-3844421",
+    "input": {
+      "place": {
+        "place_id": "gn-3844421",
+        "name": "Mendoza",
+        "country": "Argentina",
+        "subdivision": "Mendoza",
+        "lat": -32.88946,
+        "lon": -68.84582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mendoza, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Mendoza,_Argentina",
+          "text": "Mendoza (Latin American Spanish: [menˈdosa]), officially the City of Mendoza (Spanish: Ciudad de Mendoza), is the capital of the province of Mendoza in Argentina. It is located in the northern-central part of the province, in a region of foothills and high plains, on the eastern side of the Andes. As of the 2010 census [INDEC], Mendoza had a population of 115,041 with a metropolitan population of 1,055,679, making Greater Mendoza the fourth largest census metropolitan area in the country.\nRuta Nacional 7, the major road running between Buenos Aires and Santiago, runs through Mendoza. The city is a frequent stopover for climbers on their way to Aconcagua (the highest mountain in the Western and Southern Hemispheres) and for adventure travelers interested in mountaineering, hiking, horse riding, rafting, and other sports. In the winter, skiers come to the city for easy access to the Andes.\nTwo of the main industries of the Mendoza area are olive oil production and Argentine wine. The region around Greater Mendoza is the largest wine-producing area in South America. As such, Mendoza is one of the eleven Great Wine Capitals, and the city is an emerging enotourism destination and base for exploring the region's hundreds of wineries located along the Argentina Wine Route."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "mendoza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 872,
+    "attempt": 863,
+    "place_id": "gn-5378771",
+    "input": {
+      "place": {
+        "place_id": "gn-5378771",
+        "name": "Oceanside",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.19587,
+        "lon": -117.37948
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oceanside, California",
+          "url": "https://en.wikipedia.org/wiki/Oceanside,_California",
+          "text": "Oceanside is a beach city in the North County area of San Diego County, California, United States. The city had a population of 174,068 at the 2020 United States census, making it the most populous city in the North County region of San Diego. The city is a popular tourist destination, owing to its historic landmarks, beaches, and architecture.\nOceanside's origins date to 1798, when the Spanish founded the village of San Luis Rey with the establishment of Mission San Luis Rey de Francia by Fermín de Lasuén. During the Spanish period, Mission San Luis Rey grew to be the largest of all the Californian missions, but following the Mexican secularization act of 1833 the mission and its community declined. Following the U.S. conquest of California, the former mission lands were developed into an oceanfront resort and the community's name gradually changed to Oceanside."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "oceanside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 873,
+    "attempt": 864,
+    "place_id": "gn-553915",
+    "input": {
+      "place": {
+        "place_id": "gn-553915",
+        "name": "Kaluga",
+        "country": "Russia",
+        "subdivision": "Kaluga Oblast",
+        "lat": 54.53063,
+        "lon": 36.27
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaluga",
+          "url": "https://en.wikipedia.org/wiki/Kaluga",
+          "text": "Kaluga (Russian: Калу́га, IPA: [kɐˈɫuɡə] ) is a city and the administrative center of Kaluga Oblast, Russia. It stands on the Oka River 150 kilometers (93 mi) southwest of Moscow. Its population was 337,058 at the 2021 census.\nEstablished in the 14th century as a Russian border fortress, Kaluga was notable as a place of exile for political prisoners, leaders and officials of other nations under the Russian Empire, and has served as the seat of regional administration since 1776. Kaluga's most famous resident, the space travel pioneer Konstantin Tsiolkovsky, worked there as a school teacher from 1892 to 1935. The Tsiolkovsky State Museum of the History of Cosmonautics in Kaluga is dedicated to his theoretical achievements and to their practical implementations for modern space research, hence the motto on the city's coat of arms: Колыбель Космонавтики, Kolybélʹ kosmonávtiki (\"The Cradle of Space Exploration\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "kaluga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 874,
+    "attempt": 865,
+    "place_id": "gn-5911606",
+    "input": {
+      "place": {
+        "place_id": "gn-5911606",
+        "name": "Burnaby",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.26636,
+        "lon": -122.95263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burnaby",
+          "url": "https://en.wikipedia.org/wiki/Burnaby",
+          "text": "Burnaby is a city in the Lower Mainland region of British Columbia, Canada. Located in the centre of the Burrard Peninsula, it neighbours the City of Vancouver to the west, the District of North Vancouver across the confluence of the Burrard Inlet with its Indian Arm to the north, Port Moody and Coquitlam to the east, New Westminster and Surrey across the Fraser River to the southeast, and Richmond on Lulu Island to the southwest. It has a population of 249,125 as of the 2021 census.\nBurnaby was incorporated in 1892 and achieved its city status in 1992. A member municipality of Metro Vancouver, it is British Columbia's third-largest city by population (after Vancouver and Surrey), and is the seat of Metro Vancouver's regional district government. 25% of Burnaby's land is designated as parks and open spaces, one of the highest in North America.\nThe main campuses of Simon Fraser University and the British Columbia Institute of Technology are located in Burnaby. It is home to high-tech companies such as Ballard Power (fuel cell), Clio (legal software), D-Wave (quantum computing), and EA Vancouver. Burnaby's Metropolis at Metrotown is the largest mall in British Columbia, the third most visited in Canada and the fifth largest in the nation. Canada's largest film and television production studio and more than 60% of BC's sound stages are in Burnaby, contributing to the growth of Hollywood North.\nThe city is served by SkyTrain's Expo Line and Millennium Line. Metrotown station in Metrotown is the busiest station on weekends and the second-busiest on weekdays in regional Vancouver's urban transit system as of 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "burnaby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 875,
+    "attempt": 866,
+    "place_id": "gn-88319",
+    "input": {
+      "place": {
+        "place_id": "gn-88319",
+        "name": "Benghazi",
+        "country": "Libya",
+        "subdivision": "Banghazi",
+        "lat": 32.11486,
+        "lon": 20.06859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benghazi",
+          "url": "https://en.wikipedia.org/wiki/Benghazi",
+          "text": "Benghazi () (lit. 'Son of Ghazi') is the second-largest city in Libya as well as the largest city in Cyrenaica, with an estimated population of 859,000 in 2023. Located on the Gulf of Sidra in the Mediterranean, Benghazi is also a major seaport.\nA Greek colony named Euesperides had existed in the area from around 525 BC. In the 3rd century BC, it was relocated and refounded as the Ptolemaic city of Berenice. Berenice prospered under the Romans, and after the 3rd century AD it superseded Cyrene and Barca as the centre of Cyrenaica. The city went into decline during the Byzantine period and had already been reduced to a small town before its conquest by the Arabs. After around four centuries of peaceful Ottoman rule, in 1911, Italy captured Benghazi and the rest of Tripolitania from the Ottoman Empire during the Italo-Turkish War. Under Italian rule, Benghazi witnessed a period of extensive development and modernization, particularly in the second half of the 1930s under the Italian Libya colony. The city changed hands several times during World War II and was heavily damaged in the process. After the war Benghazi was rebuilt and became the co-capital of the newly independent Kingdom of Libya. Following the 1969 coup d'état by Muammar Gaddafi, Benghazi lost its capital status and all government offices relocated to Tripoli.\nOn 15 February 2011, an uprising against the government of Muammar Gaddafi occurred in the city. The revolt spread by 17 February to Bayda, Tobruk, Ajdabya, Al Marj in the East and Zintan, Zawiya in the West, calling for the end of the Gaddafi regime. Benghazi was seized by Gaddafi opponents on 21 February, who founded the National Transitional Council (NTC). On 19 March 2011, the city was the site of the turning point of the Libyan Civil War, when the Libyan Army attempted to score a decisive victory against the NTC by attacking Benghazi, but was forced back by local resistance and intervention from the French Air Force authorized by UNSC Resolution 1973 to protect civilians, allowing the rebellion to continue. By 2014, a second civil war broke out in Libya between the House of Representatives and the Government of National Accord, with parts of Libya split between Tobruk- and Tripoli-based governance until a permanent ceasefire led by a unitary government in 2020.\nBenghazi remains a centre of Libyan commerce, industry, transport and culture, and one of the three largest cities in Libya with Tripoli and Misrata. It continues to hold institutions and organizations normally associated with a capital city, including several national government buildings as well as the National Library of Libya."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 437
+    },
+    "banned_terms": [
+      {
+        "term": "benghazi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 876,
+    "attempt": 867,
+    "place_id": "gn-94787",
+    "input": {
+      "place": {
+        "place_id": "gn-94787",
+        "name": "Kirkuk",
+        "country": "Iraq",
+        "subdivision": "Kirkuk",
+        "lat": 35.46806,
+        "lon": 44.39222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkuk",
+          "url": "https://en.wikipedia.org/wiki/Kirkuk",
+          "text": "Kirkuk (Arabic: كركوك, romanized: Kirkūk; Kurdish: کەرکووک, romanized: Kerkûk; Syriac: ܟܪܟܘܟ, romanized: Kerkouk; Turkish: Kerkük) is a major city in northern Iraq, serving as the capital of the Kirkuk Governorate. The city is home to a diverse population of Kurds, Iraqi Turkmens and Arabs. Kirkuk sits on the ruins of the original Kirkuk Citadel which sits near the Khasa River.\nDue to its diverse population, shaped by various forms of demographic engineering such as Arabization, the status of Kirkuk is highly contested and has led to recurring disputes. Jalal Talabani described Kirkuk as \"the Jerusalem of Kurdistan,\" emphasizing its central symbolic and political importance to Kurds, while the government of Iraq has instead portrayed the city as a \"small version of Iraq,\" presenting it as a model for coexistence among the country’s diverse communities. Turkmen, meanwhile, regard Kirkuk as a historic city of theirs. Following the adoption of the 2005 Iraqi Constitution, Kirkuk was designated a disputed territory under Article 140, requiring normalization of demographics, a census, and a referendum to decide whether it belongs to the Kurdistan Region or remains under Iraqi authority. Intended to be completed by 2007, the process remains unresolved, leaving the city's status in limbo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "kirkuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 877,
+    "attempt": 868,
+    "place_id": "gn-13546316",
+    "input": {
+      "place": {
+        "place_id": "gn-13546316",
+        "name": "Le Plateau-Mont-Royal",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.52833,
+        "lon": -73.58081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Plateau-Mont-Royal",
+          "url": "https://en.wikipedia.org/wiki/Le_Plateau-Mont-Royal",
+          "text": "Le Plateau-Mont-Royal (French pronunciation: [lə plato mɔ̃ ʁwajal]) is a borough (arrondissement) of the city of Montreal, Quebec, Canada.\nThe borough takes its name from its location on a plateau, on the eastern side of Mount Royal and overlooking downtown Montreal, across its southern border. The borough is bordered to the south by Sherbrooke Street, to the north and north-east by the Canadian Pacific Railway tracks, and to the west by Hutchison (north of Mount Royal Avenue), Park Avenue (between Mount Royal and Pine Avenue) and University Street (south of Pine Avenue). It is one of the most densely populated boroughs in Canada, with 105,813 people living in an 8.1 square kilometre (3¼ sq. mi.) area.\nThere is a difference between the borough named Plateau-Mont-Royal (which is a political division of the City of Montreal) and the neighbourhood referred to as the Plateau. The borough includes not only the Plateau neighbourhood itself, but also the neighbourhoods of Mile End (bounded by Avenue du Mont-Royal to the south and the Avenue Henri-Julien to the east) and Milton Park (bounded by University, Sherbrooke, Saint-Laurent and Pine). The latter two neighbourhoods are generally considered to be distinct from the Plateau neighbourhood.\nThe Plateau is famous for being a major centre for the arts, with a large concentration of artists, musicians and creative organizations. Many artistic institutions are established in the Plateau, including the National Theatre School of Canada, the Quebec Conservatory of Music in Montreal, Les Grands Ballets Canadiens and many theatres (such as le Rideau vert, le Théâtre de Quat'Sous, La Licorne and le Théâtre d'Aujourd'hui). The Plateau has many parks, including Jeanne-Mance park, La Fontaine park, Sir-Wilfrid-Laurier park, Saint-Louis Square and Gérald-Godin plaza. Mount Royal Park is also accessible from the Plateau-Mont-Royal.\nDue to its large concentration of French immigrants who arrived in the early twenty first century, the neighbourhood has been named the \"French District\", \"Le Petit Paris\", \"La Petite-France\", or ironically \"La Nouvelle-France\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 324
+    },
+    "banned_terms": [
+      {
+        "term": "le plateau mont royal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "plateau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "royal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 878,
+    "attempt": 869,
+    "place_id": "gn-1645528",
+    "input": {
+      "place": {
+        "place_id": "gn-1645528",
+        "name": "Denpasar",
+        "country": "Indonesia",
+        "subdivision": "Bali",
+        "lat": -8.65,
+        "lon": 115.21667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denpasar",
+          "url": "https://en.wikipedia.org/wiki/Denpasar",
+          "text": "Denpasar (Indonesian pronunciation: [denˈpasar]; Balinese: ᬤᬾᬦ᭄ᬧᬲᬃ, Dénpasar) is the capital and the largest city of the province of Bali, Indonesia.\nDenpasar is the largest city in the Lesser Sunda Islands and the second largest city in Eastern Indonesia after Makassar. It is bordered by Badung Regency to its west and north, Gianyar Regency to its east, and the Indian Ocean and the Badung Strait to its south. The growth of the tourism industry on the island of Bali has pushed the city of Denpasar to become a center of business activities, and has positioned the city as an area with high per capita income and growth in Bali. The population of the city at the end of 2024 was 670,210.\nDenpasar is the main gateway to the Bali island, the city is also a hub for other cities in the Lesser Sunda Islands.\nWith the rapid growth of the tourism industry in Bali, Denpasar has encouraged and promoted business activities and ventures, contributing to it having the highest growth rate in Bali Province. The population of Denpasar was 725,314 at the 2020 Census, down from 788,445 at the 2010 Census due to pandemic outflow; the official estimate as of the end of 2024 was 670,210. The Denpasar metropolitan area centred on Denpasar (called Sarbagita) had 2,187,198 residents in end 2024. The COVID-19 pandemic and travel related closures has further exacerbated the population loss."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "denpasar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 879,
+    "attempt": 870,
+    "place_id": "gn-1691444",
+    "input": {
+      "place": {
+        "place_id": "gn-1691444",
+        "name": "Roxas City",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 11.58528,
+        "lon": 122.75111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roxas City",
+          "url": "https://en.wikipedia.org/wiki/Roxas_City",
+          "text": "Roxas (Tagalog pronunciation: [ˈɾohas], Spanish pronunciation: [ˈroxas] ), officially the City of Roxas (Capiznon/Hiligaynon: Dakbanwa sang Roxas; Filipino: Lungsod ng Roxas), is a component city and the capital of the province of Capiz, Philippines. According to the 2024 census, it has a population of 185,236 people, making it the most populous city in Capiz and the second-most populous city in Western Visayas, after Iloilo City.\nOriginally known as the municipality of Capiz (from which the province derives its name), it became a chartered city on May 12, 1951, and was renamed in honor of native Manuel Roxas, the fourth president of the Philippines and the first president of the independent Third Philippine Republic.\nRoxas City is the center of education, trade, economic activity, and logistics in Capiz. The abundance of marine life has earned the city the nickname \"Seafood Capital of the Philippines\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "roxas city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "roxas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 880,
+    "attempt": 871,
+    "place_id": "gn-1734199",
+    "input": {
+      "place": {
+        "place_id": "gn-1734199",
+        "name": "Tawau",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 4.24482,
+        "lon": 117.89115
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tawau",
+          "url": "https://en.wikipedia.org/wiki/Tawau",
+          "text": "Tawau (Malaysian: [ˈta wau]) is the capital of the Tawau District in Sabah, Malaysia. It is the third-largest city (or town) in Sabah, after Kota Kinabalu and Sandakan. It is located on the Semporna Peninsula in the southeast coast of the state in the administrative centre of Tawau Division, which is bordered by the Sulu Sea to the east, the Celebes Sea to the south at Cowie Bay and shares a border with North Kalimantan, Indonesia. The town had an estimated population as of 2010, of 113,809, while the whole municipality area had a population of 397,673 (including 47,466 in Kalabakan, subsequently split off to form a separate district). The municipal area had a population of 372,615 at the 2020 Census.\nBefore the founding of Tawau, the region around it was the subject of dispute between the British and Dutch spheres of influence. In 1893, the first British merchant vessel sailed into Tawau, marking the opening of the town's seaport. In 1898, the British set up a settlement in Tawau. The North Borneo Chartered Company (NBCC) accelerated growth of the settlement's population by encouraging the immigration of Chinese. Consequent to the Japanese occupation of North Borneo, the Allied forces bombed the town in mid-1944, razing it to the ground. After the Japanese surrender in 1945, 2,900 Japanese soldiers in Tawau became prisoners of war and were transferred to Jesselton. Tawau was rebuilt after the war, and by the end of 1947, the economy was restored to its pre-war status. Tawau was also the main point of conflict during the Indonesia–Malaysia confrontation from 1963 to 1966. During that period, it was garrisoned by the British Special Boat Section, and guarded by Australian Destroyers and combat aircraft. In December 1963, Tawau was bombed twice by Indonesia and shootings occurred across the Tawau-Sebatik Island international border. Indonesians were found trying to poison the town's water supply. In January 1965, a curfew was imposed to prevent Indonesian attackers from making contact with Indonesians living in the town. While in June 1965, another attempted invasion by the Indonesian forces was repelled by bombardment by an Australian destroyer. Military conflict finally ended in December 1966.\nAmong the tourist attractions in Tawau are: the Tawau International Cultural Festival, Tawau Bell Tower, Japanese War Cemetery, Confrontation Memorial, Teck Guan Cocoa Museum, Tawau Hills National Park, Bukit Gemok, and Tawau Tanjung Markets. The main economic activities of the town are: timber, cocoa, oil palm plantations, and prawn farming."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 409
+    },
+    "banned_terms": [
+      {
+        "term": "tawau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 881,
+    "attempt": 872,
+    "place_id": "gn-1808857",
+    "input": {
+      "place": {
+        "place_id": "gn-1808857",
+        "name": "Hanzhong",
+        "country": "China",
+        "subdivision": "Shaanxi",
+        "lat": 33.07507,
+        "lon": 107.02214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hanzhong",
+          "url": "https://en.wikipedia.org/wiki/Hanzhong",
+          "text": "Hanzhong (simplified Chinese: 汉中; traditional Chinese: 漢中; lit. 'middle of the Han River'; abbreviation: Han) is a prefecture-level city in the southwest of Shaanxi province, China, bordering the provinces of Sichuan to the south and Gansu to the west.\nThe founder of the Han dynasty, Liu Bang, was once enfeoffed as the king of the Hanzhong region after overthrowing the Qin dynasty. During the Chu-Han contention, Liu Bang shortened his title to the King of Han (漢王), and later used it as the name of his imperial dynasty.  In this way, Hanzhong was responsible for the naming of the Han dynasty, which was later hailed as the first golden age in imperial Chinese history and lends its name to the principal ethnic group in China.\nHanzhong is located at the modern headwater of the Han River, the largest tributary of the Yangtze River. Hanzhong city covers 27,246 square kilometres (10,520 sq mi) and is centered around the Hantai District. The prefecture-level city consists of two urban district and nine rural counties. As of the 2020 census, its population was 3,211,462, of whom 1,084,448 lived in the built-up (or metro) area made of Hantai and Nanzheng districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "hanzhong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 882,
+    "attempt": 873,
+    "place_id": "gn-1927639",
+    "input": {
+      "place": {
+        "place_id": "gn-1927639",
+        "name": "Yueyang",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 29.37455,
+        "lon": 113.09481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yueyang",
+          "url": "https://en.wikipedia.org/wiki/Yueyang",
+          "text": "Yueyang, formerly known as Yuezhou or Baling, is a prefecture-level city on the eastern shores of Dongting Lake and the Yangtze river in the northeastern corner of Hunan Province in the People's Republic of China.\nYueyang has an administrative area of 14,896 km2 (5,751 sq mi) and the city proper, 304 km2 (117 sq mi). The population was 5,051,922 at the 2020 Chinese census whom 1,134,058 lived in the built-up (or metro) area made up of Yueyanglou District and Yunxi District, Junshan District not being conurbated. Yueyang is the only international trade port city in Hunan and a famous port city in China, at the same time, Yueyang's comprehensive economic strength ranks of Hunan second only to Changsha, the provincial capital.\nThe city's most famous attractions are the Yueyang Tower and Dongting Lake. The most famous food is Dongting lake silver fish (洞庭银鱼).\nIn 2021, the city's permanent resident population was 5,051,922, a decrease of 424,162 from the end of last year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "yueyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 883,
+    "attempt": 874,
+    "place_id": "gn-198629",
+    "input": {
+      "place": {
+        "place_id": "gn-198629",
+        "name": "Eldoret",
+        "country": "Kenya",
+        "subdivision": "Uasin Gishu County",
+        "lat": 0.52036,
+        "lon": 35.26993
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eldoret",
+          "url": "https://en.wikipedia.org/wiki/Eldoret",
+          "text": "Eldoret is a city in the Rift Valley region of Kenya. It serves as the capital of Uasin Gishu County. Located in western Kenya and lying south of the Cherang'any Hills, the local elevation varies from about 2,100 metres (6,900 ft) at the Eldoret International Airport to more than 2,700 metres (8,900 ft) in nearby areas.\nAs per the 2019 population census, Eldoret has a population of 475,716 people and is the fifth most populated urban area in the country after Nairobi, Mombasa, Nakuru and Ruiru.\nA long-standing municipality, Eldoret was conferred city status on 15 August 2024, making it the fifth city of Kenya after Nairobi, Mombasa, Kisumu and Nakuru.\nThe city is a significant urban area in Kenya; it is the second largest medical destination in Kenya after Nairobi and hosts the largest university student population outside of the nation's capital. Its international airport is ranked as the nation's second busiest cargo airport after JKIA in Nairobi and has the second largest coverage by financial institutions outside of the capital with over 40 branches in town. The city also hosts a substantial manufacturing sector."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "eldoret",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 884,
+    "attempt": 875,
+    "place_id": "gn-2633521",
+    "input": {
+      "place": {
+        "place_id": "gn-2633521",
+        "name": "Worthing",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.81795,
+        "lon": -0.37538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Worthing",
+          "url": "https://en.wikipedia.org/wiki/Worthing",
+          "text": "Worthing ( WUR-dhing) is a seaside town and borough in West Sussex, England, at the foot of the South Downs, 11 miles (18 km) west of Brighton, and 18 miles (29 km) east of Chichester. With a population of 113,094 and an area of 12.5 square miles (32.4 km2), the borough is the second largest component of the Brighton and Hove built-up area, the 15th most populous urban area in the United Kingdom. Northern parts of the borough, including the Worthing Downland Estate, form part of the South Downs National Park. In 2019, the Art Deco Worthing Pier was dubbed the best in Britain.\nDating from around 4000 BC, the flint mines at Cissbury and nearby Church Hill, Blackpatch and Harrow Hill are amongst the earliest Neolithic monuments in Britain. The Iron Age hill fort of Cissbury Ring is one of Britain's largest. The recorded history of Worthing began with the Domesday Book.  Worthing is historically part of Sussex, mostly in the rape of Bramber; Goring, which forms part of the rape of Arundel, was incorporated in 1929. Worthing was a small mackerel fishing hamlet for many centuries until, in the late 18th century, it developed into an elegant Georgian seaside resort and attracted the well-known and wealthy of the day. In the 19th and 20th centuries, the area was one of Britain's chief market gardening centres.\nModern Worthing has a large service industry, particularly in financial services. It has three theatres and one of Britain's oldest cinemas, the Dome. Writers Oscar Wilde and Harold Pinter lived and worked in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "worthing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 885,
+    "attempt": 876,
+    "place_id": "gn-2638785",
+    "input": {
+      "place": {
+        "place_id": "gn-2638785",
+        "name": "St Helens",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.45,
+        "lon": -2.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "St Helens, Merseyside",
+          "url": "https://en.wikipedia.org/wiki/St_Helens,_Merseyside",
+          "text": "St Helens () is a large town in Merseyside, England, with a population of 117,308. It is the administrative centre of the Metropolitan Borough of St Helens which had a population of 183,200 at the 2021 Census.\nThe town is 6 miles (10 kilometres) north of the River Mersey, in the south-west part of historic Lancashire. The town was initially a small settlement within the historic county's ancient hundred of West Derby in the township of Windle but by the mid-1700s the town had developed into a larger urban area beyond the townships borders. By 1838 the council was formally made responsible for the administration of Windle and the three other townships of Eccleston, Parr and Sutton that were to form the town's traditional shape. In 1868 the town was incorporated as a municipal borough, then later became a county borough in 1887. In 1974 the town was made a metropolitan borough within the new Metropolitan County of Merseyside by the Local Government Act 1972, with an expanded administrative responsibility for several nearby towns and villages.\nThe town was famous for its heavy industry, particularly its role in the coal mining industry, glassmaking, chemicals and copper smelting and sail making that drove its growth throughout the Industrial Revolution. Originally home to a large number of industrial employers such as Beechams, the Gamble Alkali Works, Ravenhead Glass, United Glass Bottles (UGB), Triplex, Daglish Foundry, Greenall's brewery, the glass producer Pilkington is the town's only remaining large industrial employer.\nThe town is today most famous for its Rugby League team St Helens R.F.C. who have won 3 World Club Challenge cups in recent years, and museums such as the North West Museum of Road Transport, the World of Glass and art installations such as Dream."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "st helens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "helens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 886,
+    "attempt": 877,
+    "place_id": "gn-2652221",
+    "input": {
+      "place": {
+        "place_id": "gn-2652221",
+        "name": "Coventry",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.40656,
+        "lon": -1.51217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coventry",
+          "url": "https://en.wikipedia.org/wiki/Coventry",
+          "text": "Coventry (  KOV-ən-tree or rarely  KUV-) is a cathedral city and metropolitan borough in the West Midlands county, in England, on the River Sherbourne. Coventry had been a large settlement for centuries. Founded in the early Middle Ages, its city status was formally recognised in a charter of 1345. The city is governed by Coventry City Council, and the West Midlands Combined Authority.\nFormerly part of Warwickshire until 1451, and again from 1842 to 1974, Coventry had a population of 345,324 at the 2021 census, making it the tenth largest city in England and the 13th largest in the United Kingdom.\nIt is the second largest city in the West Midlands region, after Birmingham, from which it is separated by an area of green belt known as the Meriden Gap; and is the third largest in the wider Midlands after Birmingham and Leicester. The city is part of a larger conurbation known as the Coventry and Bedworth Urban Area, which in 2021 had a population of 389,603.\nCoventry is 19 miles (31 km) east-south-east of Birmingham, 24 miles (39 km) south-west of Leicester, 10 miles (16 km) north of Warwick and 94 miles (151 km) north-west of London. Coventry is also the most central city in England, being only 12 miles (19 km) south-west of the country's geographical centre in Leicestershire.\nCoventry became an important and wealthy city of national importance during the Middle Ages. Later it became an important industrial centre, becoming home to a large bicycle industry in the 19th century. In the 20th century, it became a major centre of the British motor industry; this made it a target for German air raids during the Second World War, and in November 1940, much of the historic city centre was destroyed by a large air raid.\nThe city was rebuilt after the war, and the motor industry thrived until the mid-1970s. However, by the late 1970s and early 1980s, Coventry was in an economic crisis, with one of the country's highest levels of unemployment due to major plant closures and the collapse of the respective local supply-chain. In recent years, it has seen regeneration and an increase in population. The city also has three universities: Coventry University in the city centre, the University of Warwick on the southern outskirts and the smaller private Arden University with its headquarters close to Coventry Airport. In addition, Coventry was awarded UK City of Culture for 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 405
+    },
+    "banned_terms": [
+      {
+        "term": "coventry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 887,
+    "attempt": 878,
+    "place_id": "gn-290030",
+    "input": {
+      "place": {
+        "place_id": "gn-290030",
+        "name": "Doha",
+        "country": "Qatar",
+        "subdivision": "Baladiyat ad Dawhah",
+        "lat": 25.28545,
+        "lon": 51.53096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doha",
+          "url": "https://en.wikipedia.org/wiki/Doha",
+          "text": "Doha is the capital and largest city, and main financial hub of Qatar. Located on the Persian Gulf coast in the east of the country, north of Al Wakrah and south of Al Khor and Lusail, it is home to most of the country's population. It is also Qatar's fastest growing city and over 80% of the nation's population live in Doha or its surrounding suburbs, which are known collectively as the Doha Metropolitan Area.\nDoha was founded in the 1820s as an offshoot of Al Bidda. It was officially declared as the country's capital in 1971, when Qatar gained independence from being a British protectorate. As the commercial capital of Qatar and one of the emergent financial centers in the Middle East, Doha is ranked \"Beta+\" on the Globalization and World Cities Research Network scale of \"integration into the world city network\". Metropolitan Doha includes parts of Al Rayyan such as Education City, an area devoted to research and education, and Hamad Medical City, an administrative area of medical care. It also includes Doha Sports City, or Aspire Zone, an international sports destination that includes Khalifa International Stadium, Hamad Aquatic Centre and the Aspire Dome.\nThe city was host to the first ministerial-level meeting of the Doha Development Round of World Trade Organization negotiations. It was also selected as host city of several sporting events, including the 2006 Asian Games, the 2011 Pan Arab Games, the 2019 World Beach Games, the 2024 World Aquatics Championships, the FIVB Volleyball Club World Championship, the WTA Finals and most of the games at the 2011 AFC Asian Cup. In December 2011, the World Petroleum Council held the 20th World Petroleum Conference in Doha. Additionally, the city hosted the 2012 UNFCCC Climate Negotiations, the 140th  Inter-Parliamentary Union Assembly in 2019 and the 2022 FIFA World Cup. The city will host the 2027 FIBA Basketball World Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 313
+    },
+    "banned_terms": [
+      {
+        "term": "doha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 888,
+    "attempt": 879,
+    "place_id": "gn-3029241",
+    "input": {
+      "place": {
+        "place_id": "gn-3029241",
+        "name": "Caen",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.18585,
+        "lon": -0.35912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caen",
+          "url": "https://en.wikipedia.org/wiki/Caen",
+          "text": "Caen ( or ; French: [kɑ̃] ; Norman: Kaem) is a city and commune 15 km (9.3 mi) inland from the northwestern coast of France. It is the prefecture of the department of Calvados. The city proper has 105,512 inhabitants (as of 2018), while its functional urban area has 470,000, making Caen the second largest urban area in Normandy and the 19th largest in France. It is also the third largest commune in all of Normandy after Le Havre and Rouen.\nCaen is located 200 km (120 mi) northwest of Paris, connected to the South of England by the Caen (Ouistreham) to Portsmouth ferry route through the English Channel. Situated a few kilometres from the coast, the landing beaches, the bustling resorts of Deauville and Cabourg, as well as Norman Switzerland and the Pays d'Auge, Caen is often considered the archetype of Normandy.\nCaen is known for its historical buildings built during the reign of William the Conqueror, who was buried there, and for the Battle for Caen, heavy fighting that took place in and around Caen during the Battle of Normandy in 1944, destroying much of the city. The city has now preserved the memory by erecting a memorial and a museum dedicated to peace, the Mémorial de Caen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "caen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 889,
+    "attempt": 880,
+    "place_id": "gn-3165185",
+    "input": {
+      "place": {
+        "place_id": "gn-3165185",
+        "name": "Trieste",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.64953,
+        "lon": 13.77678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trieste",
+          "url": "https://en.wikipedia.org/wiki/Trieste",
+          "text": "Trieste ( tree-EST; Italian: [triˈɛste] ; Friulian: Triest; Slovene: Trst) is a city and seaport in northeast Italy. It is the capital and largest city of the autonomous region of Friuli-Venezia Giulia, as well as of the regional decentralization entity of Trieste. As of 2026, it has a population of 198,622, making it the 17th-largest city in Italy.\nTrieste is located at the head of the Gulf of Trieste, on a narrow strip of Italian territory lying between the Adriatic Sea and Slovenia; Slovenia lies close, at approximately 8 km (5 mi) east and 10–15 km (6–9 mi) southeast of the city, while Croatia is about 30 km (19 mi) to the south of the city. The city has a long coastline and is surrounded by grassland, forest, and karstic areas.\nTrieste belonged, as Triest, to the Habsburg monarchy from 1382 until 1918. In the 19th century, the monarchy was one of the Great Powers of Europe and Trieste was its most important seaport. As a prosperous trading hub in the Mediterranean region, Trieste grew to become the fourth largest city of the Austro-Hungarian Empire (after Vienna, Budapest, and Prague). At the turn of the 20th century, it emerged as an important hub for literature and music. Trieste underwent an economic revival during the 1930s, and the Free Territory of Trieste became a major site of the struggle between the Eastern and Western blocs after the Second World War.\nA deep-water port, Trieste is a maritime gateway for northern Italy, Germany, Austria and Central Europe. It is considered the end point of the maritime Silk Road, with connections to the Mediterranean, Suez Canal and Atlantic Ocean. Since the 1960s, Trieste has emerged as a prominent research location in Europe because of its many international organisations and institutions. The city lies at the intersection of Latin (due to Italy), Slavic (due to Slovenia and Croatia) and Germanic (due to Austria) cultures, where Central Europe meets the Mediterranean Sea, and is home to diverse ethnic groups and religious communities.\nA scholarly area, Trieste has the highest percentage of researchers, per capita, in Europe. Città della Barcolana (\"City of the Barcolana\"), Città della bora (\"City of the bora\"), Città del vento (\"City of Wind\"), \"Vienna by the sea\" and \"City of Coffee\" are epithets used to describe Trieste."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 385
+    },
+    "banned_terms": [
+      {
+        "term": "trieste",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

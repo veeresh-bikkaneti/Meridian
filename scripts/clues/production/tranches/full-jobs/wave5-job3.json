@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 850,
+    "attempt": 841,
+    "place_id": "gn-2088122",
+    "input": {
+      "place": {
+        "place_id": "gn-2088122",
+        "name": "Port Moresby",
+        "country": "Papua New Guinea",
+        "subdivision": "National Capital",
+        "lat": -9.47723,
+        "lon": 147.15089
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Moresby",
+          "url": "https://en.wikipedia.org/wiki/Port_Moresby",
+          "text": "Port Moresby ( ; Tok Pisin: Pot Mosbi), also referred to as Pom City or simply Moresby, is the capital and largest city of Papua New Guinea. It is one of the largest cities in the southwestern Pacific (along with Jayapura) outside of Australia and New Zealand. It is located on the shores of the  Coral Sea, on the south-western coast of the Papuan  Peninsula of the island of New  Guinea. The city emerged as a trade centre in the second half of the 19th century. During World War II, it was a prime objective for conquest by the Imperial Japanese forces during 1942–1943 as a staging point and air base to cut off Australia from Southeast Asia and the Americas. Due to its population and outsized influence compared to other cities in Papua New Guinea, Port Moresby may be regarded as a primate city.\nAs of the 2011 census, Port Moresby had 364,145 inhabitants. This grew to 756,754 at the 2024 census. The place where the city was founded has been inhabited by the Motu-Koitabu people for centuries. The first Briton to see it was Royal Navy Captain John Moresby in 1873. It was named in honour of his father, Admiral of the Fleet Sir Fairfax Moresby.\nAlthough Port Moresby is surrounded by Central Province, of which it is also the capital, it is not part of that province but instead forms the National Capital District. The traditional landowners, the Motu and Koitabu people, are represented by the Motu Koita Assembly.\nPort Moresby hosted the APEC summit in November 2018. However, there were concerns about security, given the capital's reputation for violent crime."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "port moresby",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moresby",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 851,
+    "attempt": 842,
+    "place_id": "gn-2483668",
+    "input": {
+      "place": {
+        "place_id": "gn-2483668",
+        "name": "Relizane",
+        "country": "Algeria",
+        "subdivision": "Relizane",
+        "lat": 35.73734,
+        "lon": 0.55599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Relizane",
+          "url": "https://en.wikipedia.org/wiki/Relizane",
+          "text": "Relizane or Ghilizan (Tamazight: ⵖⵉⵍⵉⵣⴰⵏ, romanized: Ɣilizan, Arabic: غلیزان, romanized: Ghilīzān) is a city in Algeria. It is the capital city of Relizane Province.In 2008, its population was 130,094, of which 109,689 resided in the city of Relizane itself.\nRelizane is the successor to the historic city of Mina, which witnessed the passage of numerous civilizations and powers, notably the Numidians, Romans, and Vandals, and which reached its peak in the 2nd and 3rd centuries AD.\nRelizane's geographical location is of great strategic importance: it lies at the crossroads of several local and national roads, including the current National Routes 4, 23, and 7, as well as the railway network connecting central and western Algeria.\nThanks to its location on the banks of the Mina Valley and in the Mina Plain, Relizane boasts numerous olive groves and citrus  orchards destined for the food processing industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "relizane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 852,
+    "attempt": 843,
+    "place_id": "gn-2751773",
+    "input": {
+      "place": {
+        "place_id": "gn-2751773",
+        "name": "Leiden",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.15833,
+        "lon": 4.49306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leiden",
+          "url": "https://en.wikipedia.org/wiki/Leiden",
+          "text": "Leiden ( LY-dən; Dutch: [ˈlɛidə(n)] ; in English and archaic Dutch also Leyden) is a city and municipality in the province of South Holland, Netherlands. The municipality of Leiden has a population of 127,046 (31 January 2023), but the city forms one densely connected agglomeration with its suburbs Oegstgeest, Leiderdorp, Voorschoten and Zoeterwoude with 215,602 inhabitants. The Netherlands Central Bureau of Statistics (CBS) further includes Katwijk in the agglomeration which makes the total population of the Leiden urban agglomeration 282,207. Further, Teylingen, Noordwijk, and Noordwijkerhout are included in the larger Leiden urban area, which has 365,913 inhabitants. Leiden is located on the Oude Rijn, at a distance of some 20 km (12 mi) from The Hague to its south and some 40 km (25 mi) from Amsterdam to its north. The recreational area of the Kaag Lakes (Kagerplassen) lies just to the northeast of Leiden.\nA university city since 1575, Leiden has been one of Europe's most prominent scientific centres for more than four centuries. University buildings are scattered throughout the city and the many students from all over the world give the city a bustling, vivid and international atmosphere. Many important scientific discoveries have been made here, giving rise to Leiden's motto: 'City of Discoveries'. The city houses Leiden University, the oldest university of the Netherlands, and Leiden University Medical Center. Leiden University is one of Europe's top universities, with thirteen Nobel Prize winners. It is a member of the League of European Research Universities and positioned highly in all international academic rankings. It is twinned with Oxford, the location of the United Kingdom's oldest university. Leiden University and Leiden University of Applied Sciences (Leidse Hogeschool) together have around 35,000 students. Modern scientific medical research and teaching started in the early 18th century in Leiden with Boerhaave.\nLeiden is a city with a rich cultural heritage, not only in science, but also in the arts. The painter Rembrandt was born and educated in Leiden. Other Leiden painters include Lucas van Leyden, Jan van Goyen and Jan Steen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "leiden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 853,
+    "attempt": 844,
+    "place_id": "gn-3105976",
+    "input": {
+      "place": {
+        "place_id": "gn-3105976",
+        "name": "Vigo",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.23282,
+        "lon": -8.72264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vigo",
+          "url": "https://en.wikipedia.org/wiki/Vigo",
+          "text": "Vigo (Galician: [ˈbiɣʊ], locally [ˈbiħʊ]) is a city and municipality, the capital of the comarca of Vigo in the province of Pontevedra in the autonomous community of Galicia, in Spain. Located in the northwest of the Iberian Peninsula, it sits on the southern shore of an inlet of the Atlantic Ocean, the Ria de Vigo, the southernmost of the Rías Baixas. \nThe municipality, with an area of 109.06 km2 (42.11 sq mi) and a population of 295,523 in 2024 including rural parishes, is the most populous municipality in Galicia, and the 14th-most-populous in Spain. The area of the municipality includes the Cíes Islands, part of the Atlantic Islands of Galicia National Park.\nVigo is one of the region's primary economic agents, owing to the French Stellantis Vigo plant and to its port. Close to the Portugal–Spain border, Vigo is part of the Galicia–North Portugal Euroregion. The European Fisheries Control Agency is headquartered in Vigo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "vigo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 854,
+    "attempt": 845,
+    "place_id": "gn-3401545",
+    "input": {
+      "place": {
+        "place_id": "gn-3401545",
+        "name": "Crato",
+        "country": "Brazil",
+        "subdivision": "Ceará",
+        "lat": -7.23417,
+        "lon": -39.40944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crato, Ceará",
+          "url": "https://en.wikipedia.org/wiki/Crato,_Ceará",
+          "text": "Crato is a city of 130,000 inhabitants on the banks of the river Granjeiro in the south of the state of Ceará, in the northeast of Brazil. It was founded on June 21, 1764, by the Capuchin friar Carlos Maria de Ferrara. Originally it was a small village in which the population were principally native Kariris, it gained official status as a city on October 17, 1817.\nThe Brazilian city of Crato was named in honor to Crato, a Portuguese town which was founded in the 13th century.\nThe people of Crato credit their city's blossoming to a priest, Padre Cicero, who was outcast from the nearby town of Juazeiro do Norte in the late 1800s and settled in Crato with his various followers thereafter. Various images and statues of the priest can be found around Crato as a sign of appreciation for the priest.\nCrato is about 550 km from Fortaleza, the capital of the state of Ceará. Its county has a surface area of approximately 1,117 km2. It is at an altitude of 426m, 07°14′03″S 39°24′34″W. Its population of 110,000 makes it the sixth-largest city in Ceará. The economy is a mix of trading and agriculture; as of 2004, a small industrial park is expanding. The region is rich in minerals, especially gypsum and marble.\nCrato has its Roman Catholic Diocese which has contributed to the educational system of the region with schools in the past. For the most recent data (2007) the city has 5.3 in the classification of the development index of basic education (for primary education, IDEB) - this index ranges from 0 to 10. The national average is 3.8 and that of the state of Ceará is 6.1 (the fourth place in the country).\nIn higher education, in addition to hosting campuses at the Federal University of Cariri (UFCA) and the Federal Institute of Technological Education (IFCE), the city is home to the state institution Universidade Regional do Cariri (URCA), which has around 10,000 students. Several private higher education institutions are active in the city.\nThe city is surrounded by a tropical wood in the Araripe basin (Serra do Araripe) near the border of the state of Pernambuco. the climate is generally mild, with somewhat more rain than is typical of the region.\nCrato is connected to the nearby city of Juazeiro do Norte by a commuter rail line called the Cariri Metro that opened in 2009–2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 403
+    },
+    "banned_terms": [
+      {
+        "term": "crato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 855,
+    "attempt": 846,
+    "place_id": "gn-3439389",
+    "input": {
+      "place": {
+        "place_id": "gn-3439389",
+        "name": "Asunción",
+        "country": "Paraguay",
+        "subdivision": "Asuncion",
+        "lat": -25.28646,
+        "lon": -57.647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asunción",
+          "url": "https://en.wikipedia.org/wiki/Asunción",
+          "text": "Asunción (English: , Spanish: [asunˈsjon] ; Guarani: Paraguay) is the capital and the largest city of Paraguay. The city lies on the eastern bank of the Paraguay River,  immediately north northeast of the confluence where it is joined by the Pilcomayo River. The Paraguay River separates Asunción from the Occidental Region of Paraguay to the northwest, and from Argentina to the southwest.  The eastern part of the city is surrounded by the Central Department.\nAsunción is one of the oldest cities in South America and the longest continually inhabited area in the Río de la Plata Basin; for this reason it is known as \"the Mother of Cities\". From Asunción, Spanish colonial expeditions departed to found other cities, including the second foundation of Buenos Aires, that of other important cities such as Villarrica, Corrientes, Santa Fe, Córdoba, Santa Cruz de la Sierra and 65 more. According to the 2022 Paraguayan Census, Asunción has 462,241 inhabitants, while its metropolitan area (known as Greater Asunción) exceeds 2.3 million inhabitants, making it the most densely populated area in Paraguay, and also the most productive as it concentrates 70% of the National GDP. Asunción is the third most populous \"jurisdiction\" or \"political division\" in the country, after the Central and the Alto Paraná.\nAdministratively, the city forms an autonomous capital district, not a part of any department. The metropolitan area, called Gran Asunción, includes the cities of San Lorenzo, Fernando de la Mora, Lambaré, Luque, Mariano Roque Alonso, Ñemby, San Antonio, Limpio, Capiatá and Villa Elisa, which are part of the Central Department. The Asunción metropolitan area has around two million inhabitants. The Asunción Stock Exchange lists the Municipality of Asunción as BVPASA: MUA. Asunción has been named as one of the best cities for investments, both in construction and services, thus being one of the cities in the region with the highest economic growth, nowadays.\nIt is the headquarters of the three state powers (executive, legislative and judicial), the cultural center of the republic and the different agencies and entities of the state. It used to be the main river port of the country, a function that Villeta occupies today. Despite the situations throughout its history, Asunción continues to be the center of national and cultural activities. From the capital, the main state resolutions and projects are issued, and the banking, economic, cultural, diplomatic, social, union and industrial entities of the country are centralized. Most of the main routes to the main cities of the country begin here. It is the headquarters of the Permanent Review Court of Mercosur. In the metropolitan area of Asunción, the district of Luque is the headquarters of the South American Football Confederation (CONMEBOL). Asunción will host the 2031 Pan American Games.\nIt is located in a strategic area for Mercosur, in the center-north of the Southern Cone, close to cities such as Buenos Aires, Montevideo, Córdoba, Rosario, Curitiba, São Paulo, Porto Alegre and Santa Cruz de la Sierra. It is located about 1,300 km (810 mi) from the Pacific Ocean and about 1,000 km (620 mi) from the Atlantic Ocean, being relatively equidistant between both oceans, a factor that promotes economic growth and disposes it to becoming a regional hub.\nThe Globalization and World Cities Research Network classifies Asunción as a \"Gamma City\". It is the home of the national government, principal port, and the chief industrial, political, economic and cultural center of Paraguay. Asunción ranks as one of the cheapest cities in the world for foreign visitors, and the third-safest capital in Latin America, behind Buenos Aires and Santiago, according to InSight Crime."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 597
+    },
+    "banned_terms": [
+      {
+        "term": "asuncion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 856,
+    "attempt": 847,
+    "place_id": "gn-3988086",
+    "input": {
+      "place": {
+        "place_id": "gn-3988086",
+        "name": "Saltillo",
+        "country": "Mexico",
+        "subdivision": "Coahuila",
+        "lat": 25.42595,
+        "lon": -100.97963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saltillo",
+          "url": "https://en.wikipedia.org/wiki/Saltillo",
+          "text": "Saltillo (Latin American Spanish: [salˈtiʝo] ) is the capital and largest city of the northeastern Mexican state of Coahuila and is also the municipal seat of the municipality of the same name. As of a 2020 census, Saltillo had a population of 879,958 people, while the Saltillo metropolitan area population was 1,031,779, making Saltillo the largest city in the state of Coahuila, and the 14th most populated metropolitan area in the country.\nSaltillo is considered the most competitive city in Mexico for cities with over one million inhabitants. Saltillo's success is due to its strong performance in the Urban Competitiveness Index (ICU), which is developed by the Mexican Institute for Competitiveness (IMCO). The ICU evaluates cities based on 35 indicators, including law, society, infrastructure, labor market, political system, and innovation. Saltillo is also the safest capital city in Mexico, according to INEGI data from 2025.\nSaltillo is one of the most industrialized cities in Mexico and has one of the largest automotive industries in the country, with plants such as Tupy, Grupo Industrial Saltillo, General Motors, Stellantis, Daimler AG, Freightliner Trucks, BorgWarner, Plastic Omnium, Magna, and Nemak operating in the region. The city and its metropolitan area also house a large number of plants providing manufactured goods to various other multinational companies, including Tesla's new plant in Mexico, located less than an hour away in the neighboring Santa Catarina, Nuevo León."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "saltillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 857,
+    "attempt": 848,
+    "place_id": "gn-5282804",
+    "input": {
+      "place": {
+        "place_id": "gn-5282804",
+        "name": "Bridgeport",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.17923,
+        "lon": -73.18945
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridgeport, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Bridgeport,_Connecticut",
+          "text": "Bridgeport is the most populous city in the U.S. state of Connecticut. The population was 148,654 in 2020, making it the fifth-most populous city in New England. It is a port city in eastern Fairfield County at the mouth of the Pequonnock River on Long Island Sound, 60 miles (97 km) from Manhattan and 40 miles (64 km) from The Bronx. Bridgeport and other towns in Fairfield County make up the Greater Bridgeport Planning Region, as well as the Bridgeport–Stamford–Norwalk–Danbury metropolitan statistical area, the second largest metropolitan area in Connecticut and a component of the greater New York metropolitan area.\nInhabited by the Paugussett Native American tribe until English colonisation in the 1600s, Bridgeport was incorporated as a town in 1821 and as a city in 1836. Showman P. T. Barnum was a resident of the city and served as the town's mayor in 1871. Barnum built four houses in Bridgeport and housed his circus in town during winter. In the early 20th century, the city saw an economic and population boom, becoming by all measures Connecticut's chief manufacturing city by 1905.\nBridgeport was the site of the world's first mutual telephone exchange (1877), the first dental hygiene school (1949), and the first bank telephone bill service in the US (1981). Inventor Harvey Hubbell II invented the first American electric plug outlet in Bridgeport in 1912. The Frisbie Pie Company was founded and operated in Bridgeport. The world's first Subway restaurant opened in the city's North End in 1965. After World War II, industrial decline and suburbanization led to the loss of major employers and affluent residents, contributing to poverty and violent crime. Since the early 21st century, however, the city has undertaken significant redevelopment efforts, and its crime rate fell by nearly 50 percent between 2010 and 2018.\nBridgeport is home to three museums; the University of Bridgeport, Housatonic Community College, and part of Sacred Heart University; and the state's only zoo. It is officially nicknamed \"Park City\" due to its 35 public parks, which take up 1,300 acres. Although none are headquartered within the city itself, more than a dozen Fortune 500 companies are based in its metropolitan area. Bridgeport has been consistently ranked by various sites as among the 25 most ethnically and culturally diverse American cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 380
+    },
+    "banned_terms": [
+      {
+        "term": "bridgeport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 858,
+    "attempt": 849,
+    "place_id": "gn-1269317",
+    "input": {
+      "place": {
+        "place_id": "gn-1269317",
+        "name": "Jamnagar",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 22.47292,
+        "lon": 70.06673
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jamnagar",
+          "url": "https://en.wikipedia.org/wiki/Jamnagar",
+          "text": "Jamnagar (Gujarati: Jāmnagar, pronounced [dʒaːmᵊn̪əgəɾᵊ] ) is a city and the headquarters of Jamnagar district in the Indian state of Gujarat. The city lies just to the south of the Gulf of Kutch, some 337 kilometres (209 mi) west of the state capital, Gandhinagar. The city was the capital of Nawanagar princely state during British Raj.\nIndia's largest private company, Reliance Industries, has established the world's largest oil refining and petrochemicals complex in Jamnagar district.\nThe World Health Organization (WHO) and the Government of India signed an agreement to establish the WHO Global Centre for Traditional Medicine in Jamnagar. This global knowledge centre for traditional medicine, supported by an investment of US$250 million from the Government of India, aims to harness the potential of traditional medicine from across the world through modern science and technology to improve the health of people and the planet.\nIndia's largest private company, Reliance Industries is developing the world's largest zoo at a location of 28 km from Jamnagar city.\nJamnagar Municipal Corporation is planning to develop the riverfront on Rangmati – Nagmati river at an approximate cost of around Rs. 500 crores.\nJamnagar is famous for its traditional Bandhani (tie-dye) textiles, intricate silver and brass jewelry, unique handicrafts like agate paperweights, and specific snacks like Dryfruit Kachori and Ghughra, reflecting Gujarat's rich culture and craftsmanship, alongside its status as a major industrial hub for oil refining (Reliance Industries)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "jamnagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 859,
+    "attempt": 850,
+    "place_id": "gn-13118277",
+    "input": {
+      "place": {
+        "place_id": "gn-13118277",
+        "name": "Bandar Utama",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.14818,
+        "lon": 101.61407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bandar Utama",
+          "url": "https://en.wikipedia.org/wiki/Bandar_Utama",
+          "text": "Bandar Utama Damansara is an affluent residential township and suburb located within the Sungai Buloh mukim (subdivision) of the Petaling District in Selangor, Malaysia. Developed by the See Hoy Chan Holdings Group, the township covers approximately 1,000 acres and is characterized by its meticulously planned residential precincts, ranging from BU1 to BU12.\nUntil the early 1990s, the area consisted largely of the Effingham Estate, a vast oil palm plantation. Its transformation into a modern residential suburb was part of a strategic master plan to meet the growing demand for high-end housing in the Klang Valley. Today, it is considered one of the most prestigious addresses in Petaling Jaya. Administratively, Bandar Utama Damansara and the adjacent Kampung Sungai Kayu Ara constitute the PJU 6 section of the city.[1]\nThe township is a major commercial engine for the region, anchored by the 1 Utama Shopping Centre. Consistently ranked among the largest shopping malls in the world, the complex serves as a primary hub for retail, dining, and professional services, attracting millions of visitors annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "bandar utama",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bandar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "utama",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 860,
+    "attempt": 851,
+    "place_id": "gn-1614295",
+    "input": {
+      "place": {
+        "place_id": "gn-1614295",
+        "name": "Pattaya",
+        "country": "Thailand",
+        "subdivision": "Chon Buri",
+        "lat": 12.93333,
+        "lon": 100.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pattaya",
+          "url": "https://en.wikipedia.org/wiki/Pattaya",
+          "text": "Pattaya is a city in Eastern Thailand, the largest city in Chonburi province and the eighth-largest city in Thailand. It is on the east coast of the Gulf of Thailand, about 150 kilometres (93 mi) southeast of Bangkok, and has a population of 351,391 as of 2025.\nPattaya City (Thai: เมืองพัทยา, RTGS: Mueang Phatthaya, pronounced [mɯ̄a̯ŋ pʰát.tʰā.jāː]) is a special local government organization area within Bang Lamung district and has a population of 119,532. It covers the tambons of Nong Prue and Na Klua and parts of Huai Yai and Nong Pla Lai. Pattaya City has grown into all adjacent sub-districts and accounts for the largest population percentage in the district, making it de facto a part of the \"Pattaya-Bang Lamung-Jomtien\" area, otherwise known as \"Greater Pattaya\". \nThe city is in the industrial Eastern seaboard zone, along with Si Racha, Laem Chabang, and Chonburi. Pattaya is at the center of the Pattaya-Chonburi Metropolitan Area (a conurbation in Chonburi Province with a population of 1,000,000), which forms the third largest metropolitan area in Thailand."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "pattaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 861,
+    "attempt": 852,
+    "place_id": "gn-1846326",
+    "input": {
+      "place": {
+        "place_id": "gn-1846326",
+        "name": "Changwon",
+        "country": "South Korea",
+        "subdivision": "Gyeongsangnam-do",
+        "lat": 35.22806,
+        "lon": 128.68111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Changwon",
+          "url": "https://en.wikipedia.org/wiki/Changwon",
+          "text": "Changwon (Korean: 창원; Korean pronunciation: [tɕʰaŋ.wʌn]) is the capital and largest city of South Gyeongsang Province, South Korea (with a population of 1,025,702 as of 2023), and the 11th largest city of the country. A port city, Changwon is bordered by Masan Bay to the south, and the cities of Busan and Gimhae to the east. The city of Miryang lies to the northeast, and Jinju to the west.\nThe region has been inhabited since the Bronze Age, and its urban areas have been renamed and re-organized many times throughout history. In 1974, with the creation of the Changwon National Industrial Complex, the three historically interdependent cities of Masan, Jinhae District, and Changwon began to undergo significant economic development, growing into an important industrial centre. On 1 July 2010, the cities of Changwon, Jinhae, and Masan merged to form the current city of Changwon.\nAs Korea's first planned city, modeled after Canberra, Australia, Changwon uses accessible urban planning including many parks and separate residential and industrial areas. The city has also branded itself an \"environmental capital\" with the municipal government actively participating in climate change conferences and committing to the development of sustainable policies like the globally recognized bike-sharing program, Nubija."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "changwon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 862,
+    "attempt": 853,
+    "place_id": "gn-2501152",
+    "input": {
+      "place": {
+        "place_id": "gn-2501152",
+        "name": "Constantine",
+        "country": "Algeria",
+        "subdivision": "Constantine",
+        "lat": 36.365,
+        "lon": 6.61472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Constantine, Algeria",
+          "url": "https://en.wikipedia.org/wiki/Constantine,_Algeria",
+          "text": "Constantine (Arabic: قسنطينة, romanized: Qusanṭīnah, Tamazight: ⵇⵙⵏⵟⵉⵏⴰ, romanized: Qsnṭina), also spelled Qacentina or Kasantina, is the capital of Constantine Province in northeastern Algeria. During Roman times it was called Cirta and was renamed \"Constantina\" in honour of Emperor Constantine the Great. Located somewhat inland, Constantine is about 80 kilometres (50 miles) from the Mediterranean coast, on the banks of the Rhumel River.\nConstantine is regarded as the capital of eastern Algeria and the commercial centre of its region and has a population of about 450,000 (938,475 with the agglomeration), making it the third largest city in the country after Algiers and Oran. There are several museums and historical sites located around the city. Constantine is often referred to as the \"City of Bridges\" because of the numerous picturesque bridges connecting the various hills, valleys, and ravines that the city is built on and around.\nIn 2015, Constantine was named the \"Arab Capital of Culture\" by the Arab League Educational, Cultural and Scientific Organization (ALESCO)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "constantine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 863,
+    "attempt": 854,
+    "place_id": "gn-2640194",
+    "input": {
+      "place": {
+        "place_id": "gn-2640194",
+        "name": "Plymouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.37153,
+        "lon": -4.14305
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plymouth",
+          "url": "https://en.wikipedia.org/wiki/Plymouth",
+          "text": "Plymouth (  PLIM-əth) is a port city and unitary authority in Devon, England. It is located on the county's south coast between the rivers Plym and Tamar, about 36 miles (58 km) south-west of Exeter and 193 miles (311 km) south-west of London. It is the most populous settlement in Devon.\nPlymouth's history extends back to the Bronze Age, evolving from a trading post at Mount Batten into the thriving market town of Sutton, which was formally renamed Plymouth in 1439 when it was made a borough. The settlement has played a significant role in English history, notably in 1588 when an English fleet based here defeated the Spanish Armada and in 1620 as the departure point for the Pilgrim Fathers to the New World. During the English Civil War, the town was held by the Parliamentarians and was besieged between 1642 and 1646. In 1690, a dockyard was established on the Tamar for the Royal Navy and Plymouth grew as a commercial shipping port throughout the Industrial Revolution.\nAfter absorbing nearby settlements in 1914, the borough was awarded city status in 1928. During World War II, it suffered extensive damage in the Plymouth Blitz, leading to post-war rebuilding that significantly shaped its modern appearance. A further expansion of its boundaries in 1967 contributed to its current status as the 30th-most populous built-up area in the UK and the second-largest city in the South West after Bristol, with a population in 2025 of 271,361.\nPlymouth's economy, historically grounded in shipbuilding and seafaring, has transitioned towards a service-based economy since the 1990s. It maintains strong maritime connections, hosting HMNB Devonport, the largest operational naval base in Western Europe, and offering ferry links to Brittany and Spain. The city is also home to the University of Plymouth, reflecting its educational and cultural significance. Today, the city is governed locally by Plymouth City Council and is represented nationally by three MPs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "plymouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 864,
+    "attempt": 855,
+    "place_id": "gn-2844588",
+    "input": {
+      "place": {
+        "place_id": "gn-2844588",
+        "name": "Rostock",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 54.0887,
+        "lon": 12.14049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rostock",
+          "url": "https://en.wikipedia.org/wiki/Rostock",
+          "text": "Rostock (; German: [ˈʁɔstɔk] ), officially the Hanseatic and University City of Rostock (German: Hanse- und Universitätsstadt Rostock), is the largest city in the German state of Mecklenburg-Western Pomerania and lies in the Mecklenburgian part of the state, close to the border with Pomerania. With around 210,000 inhabitants, it is the third-largest city on the German Baltic coast after Kiel and Lübeck, the eighth-largest city in the area of former East Germany, as well as the 39th-largest city of Germany. Rostock was the largest coastal and most important port city in East Germany.\nRostock stands on the estuary of the River Warnow into the Bay of Mecklenburg of the Baltic Sea. The city stretches for about 16 km (10 mi) along the river. The river flows into the sea in the very north of the city, between the boroughs of Warnemünde and Hohe Düne. The city center lies further upstream, in the very south of the city. Most of Rostock's inhabitants live on the western side of the Warnow; the area east of the river is dominated by the port, industrial estates, and the forested Rostock Heath. The city's coastline east and west of the river mouth is relatively undeveloped, with long sandy beaches prevailing. The name of the city is of Slavic origin.\nRostock is the economic center of Mecklenburg-Western Pomerania and the state's only regiopolis (a city outside the core of a metropolitan area). The port of Rostock is the fourth largest port in Germany after the North Sea ports of Hamburg, Bremen/Bremerhaven, and Wilhelmshaven, and the largest port on the German Baltic coast. The ferry routes linking Rostock to Gedser in Denmark and to Trelleborg in Southern Sweden are among the busiest between Germany and Scandinavia. Rostock–Laage Airport lies in a rural region southeast of the city.\nThe city is home to the oldest university in the Baltic region and one of the oldest universities in the world, the University of Rostock, founded in 1419. The university's hospital, Universitätsmedizin Rostock, is one of two university hospitals in the state, along with Universitätsmedizin Greifswald of the University of Greifswald in Western Pomerania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "rostock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 865,
+    "attempt": 856,
+    "place_id": "gn-3042237",
+    "input": {
+      "place": {
+        "place_id": "gn-3042237",
+        "name": "Douglas",
+        "country": "Isle of Man",
+        "subdivision": "Douglas",
+        "lat": 54.15,
+        "lon": -4.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Douglas, Isle of Man",
+          "url": "https://en.wikipedia.org/wiki/Douglas,_Isle_of_Man",
+          "text": "Douglas (Manx: Doolish, pronounced [ˈdðuːlʲəʃ]) is a port city and the capital of the Isle of Man, situated on the Douglas Bay, near the Irish Sea. It is located at the mouth of the River Douglas, and on a sweeping bay of two miles (three kilometres). The River Douglas forms part of the city's harbour and main commercial port.\nDouglas was a small settlement until it grew rapidly as a result of links with the English port of Liverpool in the 18th century. Further population growth came in the following century, resulting during the 1860s in a staged transfer of the High Courts, the Lieutenant Governor's residence (actually located in nearby Onchan), and finally the seat of the legislature, Tynwald, to Douglas from the ancient capital, Castletown.\nWith a population of 26,677 in 2021, Douglas is the most-populous settlement on the Isle of Man. It was once the largest town on the island, until it was granted city status in 2022, now making Ramsey the most-populous town on the island. The city is the island's main hub for business, finance, legal services, shipping, transport, shopping, and entertainment. The annual Isle of Man TT motorcycle races start and finish in Douglas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "douglas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 866,
+    "attempt": 857,
+    "place_id": "gn-3081368",
+    "input": {
+      "place": {
+        "place_id": "gn-3081368",
+        "name": "Wrocław",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.10286,
+        "lon": 17.03006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wrocław",
+          "url": "https://en.wikipedia.org/wiki/Wrocław",
+          "text": "Wrocław (Polish: [ˈvrɔt͡swaf] ; German: Breslau [ˈbʁɛslaʊ] ; also known by other names) is a city in southwestern Poland, and the capital of the Lower Silesian Voivodeship. It is the largest city and historical capital of the regions of Silesia and Lower Silesia. It lies on the banks of the Oder (Odra) River in the Silesian Lowlands. In 2025, the official population of Wrocław was 672,545, making it the third-largest city in Poland. The population of the Wrocław metropolitan area is around 1.25 million.\nThe history of the city dates back over 1,000 years; throughout history it has been under Polish, Bohemian, Austrian, Prussian and German rule, until it became again part of Poland in 1945 immediately after World War II.\nWrocław is a university city with a student population of over 130,000, making it one of the most youth-oriented cities in the country. Wrocław has numerous historical landmarks, including the Main Market Square, Cathedral Island, Bridge of Love, Wrocław Opera, the National Museum and the Centennial Hall, which is listed as a UNESCO World Heritage Site. The Wrocław's dwarfs are a major tourist attraction and have become a symbol of Wrocław. The city is home to the Wrocław Zoo, the oldest zoological garden in Poland.\nWrocław is classified as a Sufficiency global city by GaWC. It was ranked 1st among all medium and small cities in the 2021 European Cities and Regions of the Future ranking by fDi Intelligence. The city is home to Śląsk Wrocław football club and hosted the 2012 European Football Championship. In 2016, the city was a European Capital of Culture and the World Book Capital, and hosted the Theatre Olympics and the European Film Awards. In 2017, the city was host to the World Games. In 2019, it was named a UNESCO City of Literature."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 301
+    },
+    "banned_terms": [
+      {
+        "term": "wroc aw",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wroc",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aw",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 867,
+    "attempt": 858,
+    "place_id": "gn-3096472",
+    "input": {
+      "place": {
+        "place_id": "gn-3096472",
+        "name": "Katowice",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.2597,
+        "lon": 19.02173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katowice",
+          "url": "https://en.wikipedia.org/wiki/Katowice",
+          "text": "Katowice (/ˌkɑtəˈvitsə/, Polish: [katɔˈvit͡sɛ] ; Silesian: Katowice; German: Kattowitz) is the capital city of the Silesian Voivodeship in southern Poland and the central city of the Katowice urban area. As of 2021, Katowice has an official population of 286,960, and a resident population estimate of around 315,000. The Katowice metropolitan area has a population of 2.5 million, and is part of a larger Katowice–Ostrava metropolitan area that extends into the Czech Republic and has a population of around 5 million people.\nKatowice was founded as a village in the 16th century, whereas several modern districts of Katowice were founded as villages in the Middle Ages. Throughout the mid-18th century, Katowice grew following the discovery of rich coal reserves in the area. In the first half of the 19th century, intensive industrialization transformed local mills and farms into industrial steelworks, mines, foundries and artisan workshops. The city has since reshaped its economy from a heavy industry-based one to professional services, education and healthcare. The entire metropolitan area is the 16th most economically powerful city by GDP in the European Union with an output amounting to $114.5 billion. Katowice Special Economic Zone is ranked fourth on the list of the TOP10 Global Free Zones.\nKatowice has been classified as a Gamma – global city by the Globalization and World Cities Research Network and is a centre of commerce, business, transportation, and culture in southern Poland, with numerous public companies headquartered in the city or in its suburbs including energy group Tauron and metal industry corporation Fasing, important cultural institutions such as Polish National Radio Symphony Orchestra, award-winning music festivals such as Off Festival and Tauron New Music, and transportation infrastructure such as Katowice Korfanty Airport. It also hosts the finals of Intel Extreme Masters, an Esports video game tournament. Katowice is also home to several institutions of higher learning, notably the University of Silesia, the Silesian University of Technology and the Karol Szymanowski Academy of Music. The city is a member of the UNESCO Creative Cities Network having been recognized as a City of Music."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 343
+    },
+    "banned_terms": [
+      {
+        "term": "katowice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 868,
+    "attempt": 859,
+    "place_id": "gn-3386496",
+    "input": {
+      "place": {
+        "place_id": "gn-3386496",
+        "name": "Teresina",
+        "country": "Brazil",
+        "subdivision": "Piauí",
+        "lat": -5.08917,
+        "lon": -42.80194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teresina",
+          "url": "https://en.wikipedia.org/wiki/Teresina",
+          "text": "Teresina is the capital and most populous municipality in the Brazilian state of Piauí. Being located in north-central Piauí 366 km from the coast, it is the only capital in the Brazilian Northeast that is not located on the shores of the Atlantic Ocean. With 902,644 inhabitants, Teresina is the 19th largest city in Brazil, and the 16th largest state capital in the country. Together with Timon in the neighbouring state of Maranhão, it forms a conurbation with a population of about 2,729,527 inhabitants; the entire metropolitan region of Teresina has over 2,893,729 inhabitants. The only natural barrier that separates Teresina from Timon is the Parnaíba River, one of the largest in the Northeast.\nTeresina is the capital with the best quality of life in the North-Northeast according to FIRJANTooltip Industry Federation of the State of Rio de Janeiro and the fourth in Brazil. It is among the 50 cities in the world with the highest murder rates, with 315 homicides in 2017.\nIts motto is the Latin phrase Omnia in Charitatis, which means, in English, \"All for charity\". The city is the birthplace of, among others, Torquato Neto, who belonged to the Tropicalismo movement.\nIts cathedral, Catedral Metropolitana Nossa Senhora das Dores, dedicated to Our Lady of Sorrows, is the archiepiscopal see of the Roman Catholic Archdiocese of Teresina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "teresina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 869,
+    "attempt": 860,
+    "place_id": "gn-3531023",
+    "input": {
+      "place": {
+        "place_id": "gn-3531023",
+        "name": "Chetumal",
+        "country": "Mexico",
+        "subdivision": "Quintana Roo",
+        "lat": 18.51957,
+        "lon": -88.30397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chetumal",
+          "url": "https://en.wikipedia.org/wiki/Chetumal",
+          "text": "Chetumal   (UK: , US: , Spanish: [tʃetuˈmal] ; Yucatec Maya: Chactemàal [tɕʰaktʰe̞mɐː˨˩l], lit. '\"Place of the Red Wood\"') is the capital city of the state of Quintana Roo in Mexico, and the municipal seat of the Municipality of Othón P. Blanco. In 2020 it had a population of 169,028 people, making it the third most-populous city in Quintana Roo, after Cancun and Playa Del Carmen.\nThe city is located on the east coast of the Yucatán Peninsula, situated on the western side of Chetumal Bay, near the mouth of the Río Hondo. Chetumal is an important port for the region and operates as Mexico's main trading gateway with the neighboring country of Belize. Goods are transported via a road connecting Chetumal with Belize City to the south, and also via coastal merchant ships. There is a commercial airport, Chetumal International Airport, with airline service. Because of its location on the Caribbean coastline, it is vulnerable to tropical cyclones; Hurricane Janet and Hurricane Dean, both Category 5 storms, made landfall near Chetumal in 1955 and 2007 respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "chetumal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
