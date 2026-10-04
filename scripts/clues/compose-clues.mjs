@@ -1,52 +1,36 @@
-// compose-clues.mjs — GeoDetective clue-set composer (Phase 1).
+// compose-clues.mjs — GeoDetective clue pipeline support (Phase 2).
 //
 // Library + thin CLI. Plain .mjs, zero dependencies beyond node builtins
-// and the two sibling Workstream A modules:
-//   - ./schema.mjs          (TIERS / LIMITS / DIFFICULTIES / normalizeName)
-//   - ./validate-clues.mjs  (validateClueSet — imported, never reimplemented)
+// and ./schema.mjs.
 //
-// This composer NEVER invents clue text:
-//   - assembleClueSet() is pure, deterministic assembly of caller-supplied
-//     clue drafts ({ text, snippet } pairs) into the production schema.
-//   - runComposer() fails closed: a usable source extract must exist in the
-//     crawl cache, and if generation would be required (no drafts supplied)
-//     it refuses — PROMPT_NOT_ADOPTED while the generation prompt at
-//     scripts/clues/generation-prompt.md is still a placeholder, and
-//     GENERATION_NOT_IMPLEMENTED even after adoption (generation is a later
-//     phase; this module never calls an LLM and never writes clue text).
-//
-// Production clue-set schema (game fields + production fields):
-//   { v: 1, placeId, target: { lon, lat }, clues: [5 strings],
-//     source: { label: "Wikipedia", href },
-//     clueSources: [{ snippet, extractId } x5] (index-aligned with clues;
-//     snippet is a verbatim span of the source extract),
-//     difficulty: "easy" | "medium" | "hard", aliases: string[] }
+// Phase 2 alignment note: Phase 1's assembleClueSet()/runComposer()
+// targeted the provisional Phase 1 schema and the pre-adoption prompt
+// gate; both were superseded when generation prompt v1 was adopted
+// verbatim (scripts/clues/generation-prompt.md, locked by Veeresh
+// 2026-10-04). What survives, unchanged in behavior:
+//   - loadGenerationPrompt() — the prompt socket reader. The shipped
+//     socket now holds the adopted prompt, so `adopted` is true; the
+//     ADOPTION PENDING marker remains the (fixture-tested) refusal
+//     signal for placeholder files.
+//   - loadCacheExtract() — crawl-cache extract lookup (latest JSONL
+//     line wins; only `matched` + non-empty extract is usable).
+// What is new:
+//   - assemblePublishedFile() — prompt §10 assembly: strip the answer
+//     identity from a validated accepted record into the game-side
+//     LoopClueFile shape {v, placeId, target, clues[5], source}.
+//   - buildManifest() — the public/loop/manifest.json shape.
+// Generation itself lives with the worker tranches + the production
+// runner (scripts/clues/production/); this module never invents clue
+// text and never calls an LLM.
 
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-
-import { TIERS, LIMITS, DIFFICULTIES, normalizeName } from "./schema.mjs";
-import { validateClueSet } from "./validate-clues.mjs";
-
-// Re-exported so callers / tests can see the exact schema vocabulary this
-// composer was built against, without importing schema.mjs themselves.
-export { TIERS, LIMITS, DIFFICULTIES, normalizeName, validateClueSet };
 
 export const PLACEHOLDER_MARKER = "ADOPTION PENDING";
 
 export const DEFAULT_PROMPT_PATH = fileURLToPath(
   new URL("./generation-prompt.md", import.meta.url),
 );
-
-// Number of positional tiers. Derived from the schema's TIERS when it is a
-// list (or a keyed object), falling back to the contracted 5.
-const EXPECTED_CLUE_COUNT = (() => {
-  if (Array.isArray(TIERS) && TIERS.length > 0) return TIERS.length;
-  if (TIERS && typeof TIERS === "object" && Object.keys(TIERS).length > 0) {
-    return Object.keys(TIERS).length;
-  }
-  return 5;
-})();
 
 // ---------------------------------------------------------------------------
 // Generation prompt socket
@@ -99,9 +83,8 @@ function isPathLike(value) {
  * The cache is JSONL, append-only: a place may appear on multiple lines.
  * The LATEST line for `gn-<geonamesId>` wins.
  *
- * Signature per spec: loadCacheExtract(cachePath, geonamesId). The argument
- * order is also tolerated reversed (id first, path second), detected by
- * shape, so call sites written either way behave identically.
+ * Signature: loadCacheExtract(cachePath, geonamesId). The argument order
+ * is also tolerated reversed (id first, path second), detected by shape.
  *
  * @returns
  *   { ok: true, record: { id, title, extract } } |
@@ -110,7 +93,6 @@ function isPathLike(value) {
  *   { ok: false, code: "EXTRACT_EMPTY", detail }
  */
 export function loadCacheExtract(cachePath, geonamesId) {
-  // Tolerate the reversed (geonamesId, cachePath) call shape.
   if (isIdLike(cachePath) && isPathLike(geonamesId)) {
     [cachePath, geonamesId] = [geonamesId, cachePath];
   }
@@ -165,182 +147,67 @@ export function loadCacheExtract(cachePath, geonamesId) {
 }
 
 // ---------------------------------------------------------------------------
-// Pure deterministic assembly (creates NO clue text)
+// Assembly (prompt §10): validated record -> published game file
 // ---------------------------------------------------------------------------
 
-function requireNonEmptyString(value, field) {
-  if (typeof value !== "string" || value.trim() === "") {
-    throw new TypeError(`assembleClueSet: ${field} must be a non-empty string`);
-  }
-  return value;
-}
-
 /**
- * Assemble caller-supplied clue drafts into a production-schema clue set.
- *
- * Pure and deterministic: the output's key order is fixed by construction,
- * and two calls with equal input produce deep-equal output.
- *
- * Throws TypeError on structurally invalid input (programmer error). That is
- * deliberately distinct from validation rejections: content-level problems
- * (missing/invalid difficulty, missing aliases, untraceable snippets, name
- * leaks, …) are NOT thrown here — the assembled set is passed to
- * validateClueSet(), which reports them as reason codes. Accordingly,
- * `difficulty` and `aliases` are passed through as supplied (including
- * omitted) so the validator can exercise its DIFFICULTY_MISSING /
- * ALIASES_MISSING rejections; only their *types*, when present, are checked.
- *
- * @param {{ placeId: string, target: { lon: number, lat: number },
- *   sourceHref: string, extractId: string,
- *   clues: [{ text: string, snippet: string }],
- *   difficulty?: string, aliases?: string[] }} input
+ * Strip a validated accepted record into the published LoopClueFile:
+ *   { v: 1, placeId: "geonames:<id>", target: { lon, lat },
+ *     clues: [5 clue texts in ladder order],
+ *     source: { label: "Wikipedia", href: <tier-1 source url> } }
+ * The answer name, aliases, and region tags never reach the published
+ * file (prompt §10 assembly rule). Throws TypeError on structural
+ * problems — assembly runs only on validator-passed records, so a
+ * throw here is a pipeline bug, not a content rejection.
  */
-export function assembleClueSet(input) {
-  if (!input || typeof input !== "object" || Array.isArray(input)) {
-    throw new TypeError("assembleClueSet: input must be an object");
+export function assemblePublishedFile(record) {
+  if (!record || typeof record !== "object" || Array.isArray(record)) {
+    throw new TypeError("assemblePublishedFile: record must be an object");
   }
-
-  const placeId = requireNonEmptyString(input.placeId, "placeId");
-  const sourceHref = requireNonEmptyString(input.sourceHref, "sourceHref");
-  const extractId = requireNonEmptyString(input.extractId, "extractId");
-
-  const target = input.target;
-  if (!target || typeof target !== "object" || Array.isArray(target)) {
-    throw new TypeError("assembleClueSet: target must be an object { lon, lat }");
+  if (record.status !== "accepted") {
+    throw new TypeError("assemblePublishedFile: record.status must be \"accepted\"");
   }
-  if (!Number.isFinite(target.lon) || !Number.isFinite(target.lat)) {
-    throw new TypeError("assembleClueSet: target.lon and target.lat must be finite numbers");
+  if (typeof record.place_id !== "string" || !record.place_id) {
+    throw new TypeError("assemblePublishedFile: record.place_id must be a non-empty string");
   }
-
-  if (!Array.isArray(input.clues) || input.clues.length !== EXPECTED_CLUE_COUNT) {
-    throw new TypeError(
-      `assembleClueSet: clues must be an array of exactly ${EXPECTED_CLUE_COUNT} { text, snippet } entries`,
-    );
+  const numericId = record.place_id.replace(/^gn-/i, "").replace(/^geonames:/i, "");
+  if (!/^\d+$/.test(numericId)) {
+    throw new TypeError(`assemblePublishedFile: cannot derive a GeoNames id from ${JSON.stringify(record.place_id)}`);
   }
-  const clues = [];
-  const clueSources = [];
-  input.clues.forEach((clue, i) => {
-    if (!clue || typeof clue !== "object" || Array.isArray(clue)) {
-      throw new TypeError(`assembleClueSet: clues[${i}] must be an object { text, snippet }`);
+  const answer = record.answer;
+  if (!answer || !Number.isFinite(answer.lon) || !Number.isFinite(answer.lat)) {
+    throw new TypeError("assemblePublishedFile: record.answer must carry finite lon/lat");
+  }
+  if (!Array.isArray(record.clues) || record.clues.length !== 5) {
+    throw new TypeError("assemblePublishedFile: record.clues must contain exactly 5 entries");
+  }
+  const clues = record.clues.map((clue, i) => {
+    if (!clue || typeof clue.text !== "string" || !clue.text) {
+      throw new TypeError(`assemblePublishedFile: clues[${i}].text must be a non-empty string`);
     }
-    if (typeof clue.text !== "string" || typeof clue.snippet !== "string") {
-      throw new TypeError(`assembleClueSet: clues[${i}].text and .snippet must be strings`);
-    }
-    clues.push(clue.text);
-    clueSources.push({ snippet: clue.snippet, extractId });
+    return clue.text;
   });
-
-  if (input.difficulty !== undefined && typeof input.difficulty !== "string") {
-    throw new TypeError("assembleClueSet: difficulty, when present, must be a string");
+  const href = record.clues[0]?.source?.url;
+  if (typeof href !== "string" || !href) {
+    throw new TypeError("assemblePublishedFile: clues[0].source.url must be a non-empty string");
   }
-  if (input.aliases !== undefined && !Array.isArray(input.aliases)) {
-    throw new TypeError("assembleClueSet: aliases, when present, must be an array");
-  }
-  if (Array.isArray(input.aliases)) {
-    input.aliases.forEach((alias, i) => {
-      if (typeof alias !== "string") {
-        throw new TypeError(`assembleClueSet: aliases[${i}] must be a string`);
-      }
-    });
-  }
-
-  // Fixed key order (construction order) — part of the determinism contract.
+  // Fixed key order matching the LoopClueFile seed files.
   return {
     v: 1,
-    placeId,
-    target: { lon: target.lon, lat: target.lat },
+    placeId: `geonames:${numericId}`,
+    target: { lon: answer.lon, lat: answer.lat },
     clues,
-    source: { label: "Wikipedia", href: sourceHref },
-    clueSources,
-    difficulty: input.difficulty,
-    aliases: input.aliases === undefined ? undefined : [...input.aliases],
+    source: { label: "Wikipedia", href },
   };
 }
 
-// ---------------------------------------------------------------------------
-// Full pipeline
-// ---------------------------------------------------------------------------
-
-/**
- * Run the composer pipeline for one place.
- *
- * @param {object} input
- * @param {number|string} input.geonamesId  place id in the crawl cache.
- * @param {string} [input.placeName]        canonical place name (validator ctx).
- * @param {string} [input.placeId]          defaults to `geonames:<geonamesId>`.
- * @param {{ lon: number, lat: number }} [input.target]
- * @param {string} [input.sourceHref]       source URL (or input.source.href /
- *   input.wikipedia as fallbacks).
- * @param {Array<{ text: string, snippet: string }> | null} [input.clues]
- *   Caller-supplied drafts. Absent/null means generation would be required.
- * @param {string} [input.difficulty]
- * @param {string[]} [input.aliases]
- * @param {string[]} [input.bannedTerms]
- * @param {{ cachePath: string, promptPath?: string }} options
- * @returns
- *   { ok: false, stage: "extract", code, detail } |
- *   { ok: false, stage: "generation", code: "PROMPT_NOT_ADOPTED" |
- *       "GENERATION_NOT_IMPLEMENTED", detail } |
- *   { ok, stage: "validate", set, reasons }
- */
-export function runComposer(input, options = {}) {
-  if (!input || typeof input !== "object" || Array.isArray(input)) {
-    throw new TypeError("runComposer: input must be an object");
+/** The public/loop/manifest.json shape: { v: 1, size, generatedAt }. */
+export function buildManifest(size, generatedAt = new Date()) {
+  if (!Number.isInteger(size) || size < 0) {
+    throw new TypeError("buildManifest: size must be a non-negative integer");
   }
-  const { cachePath, promptPath = DEFAULT_PROMPT_PATH } = options ?? {};
-  if (typeof cachePath !== "string" || cachePath === "") {
-    throw new TypeError("runComposer: options.cachePath must be a non-empty string");
-  }
-  if (input.geonamesId === undefined || input.geonamesId === null || input.geonamesId === "") {
-    throw new TypeError("runComposer: input.geonamesId is required");
-  }
-
-  // Stage 1 — source extract (fail closed).
-  const extracted = loadCacheExtract(cachePath, input.geonamesId);
-  if (!extracted.ok) {
-    return { ok: false, stage: "extract", code: extracted.code, detail: extracted.detail };
-  }
-  const { record } = extracted;
-
-  // Stage 2 — generation gate. This composer never invents text.
-  if (input.clues === undefined || input.clues === null) {
-    const prompt = loadGenerationPrompt(promptPath);
-    if (!prompt.adopted) {
-      return {
-        ok: false,
-        stage: "generation",
-        code: "PROMPT_NOT_ADOPTED",
-        detail: prompt.detail ?? "generation prompt is still a placeholder (ADOPTION PENDING)",
-      };
-    }
-    return {
-      ok: false,
-      stage: "generation",
-      code: "GENERATION_NOT_IMPLEMENTED",
-      detail: "generation is a later phase; this composer never invents clue text",
-    };
-  }
-
-  // Stage 3 — assemble caller-supplied drafts, then validate (imported
-  // validator; its rejections are data, returned not thrown).
-  const set = assembleClueSet({
-    placeId: input.placeId ?? `geonames:${normalizeGeonamesId(input.geonamesId)}`,
-    target: input.target,
-    sourceHref: input.sourceHref ?? input.source?.href ?? input.wikipedia,
-    extractId: record.id,
-    clues: input.clues,
-    difficulty: input.difficulty,
-    aliases: input.aliases,
-  });
-
-  const { ok, reasons } = validateClueSet(set, {
-    placeName: input.placeName,
-    aliases: input.aliases,
-    bannedTerms: input.bannedTerms,
-    extractText: record.extract,
-  });
-
-  return { ok, stage: "validate", set, reasons };
+  const when = generatedAt instanceof Date ? generatedAt : new Date(generatedAt);
+  return { v: 1, size, generatedAt: when.toISOString() };
 }
 
 // ---------------------------------------------------------------------------
@@ -352,7 +219,6 @@ function main(argv) {
   if (command === "extract" && cachePath && geonamesId) {
     const result = loadCacheExtract(cachePath, geonamesId);
     if (!result.ok) {
-      // Outcome only — never the extract text.
       console.log(JSON.stringify({ ok: false, code: result.code, detail: result.detail }));
       return 0; // a missing/unusable extract is data, not a CLI failure
     }
