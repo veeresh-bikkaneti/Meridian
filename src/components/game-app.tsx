@@ -59,7 +59,13 @@ import {
   REVEAL_WATCHDOG_MS,
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
-import { isEnabled, loadFlags } from "@/lib/flags";
+import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
+import {
+  initObservability,
+  installGlobalErrorHandlers,
+  recordMilestone,
+  setObservabilityEndpoint,
+} from "@/lib/observability";
 import {
   emptyLearningStore,
   growthLineFor,
@@ -590,6 +596,26 @@ export function GameApp() {
   }, [replaceSession]);
 
   useEffect(() => {
+    // Observability boot — MUST run before the crash-loop breaker effect
+    // below consumes the clean-exit state: initObservability() reads the
+    // previous breadcrumb and, when isUncleanShutdown() is true, queues
+    // exactly one suspected_crash event carrying that trail (see
+    // src/lib/observability.ts — a jetsam kill cannot beacon during the
+    // kill; detection is by asymmetry at next boot). Events queue in
+    // memory until flags resolve and provide the endpoint (possibly
+    // null = transport disabled), then flush. Never throws.
+    initObservability();
+    installGlobalErrorHandlers();
+    void loadFlags().then(() => {
+      setObservabilityEndpoint(getObservabilityEndpoint());
+    });
+  }, []);
+
+  useEffect(() => {
+    if (ready) recordMilestone("boot_ready");
+  }, [ready]);
+
+  useEffect(() => {
     // Crash-loop breaker: a normal unload (reload, tab close, navigation)
     // fires pagehide; a jetsam/WebKit process kill never does. The flag
     // this leaves behind tells the boot effect whether the saved run is
@@ -669,9 +695,12 @@ export function GameApp() {
     ) => {
       setStarting({ regionName });
       setStartError(null);
+      recordMilestone("run_start", { edition, regionId, chunkId: regionId });
       try {
         // The region's chunk(s) load here — never eagerly, never partial.
+        recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
         const places = await placesFor(edition, regionId);
+        recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
         // pool is built. Fail-closed: an empty band yields an empty pool,
@@ -1276,6 +1305,14 @@ function Play({
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
+
+  // Observability: the run is interactive once its places are loaded and
+  // it is in the aim phase — the last milestone of a healthy run start.
+  useEffect(() => {
+    if (places && run.phase === "aim") {
+      recordMilestone("game_loaded", { edition: run.edition, regionId: run.regionId, chunkId: run.regionId });
+    }
+  }, [places, run.phase, run.edition, run.regionId]);
 
   useEffect(() => {
     let cancelled = false;

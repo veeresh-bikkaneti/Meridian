@@ -1,5 +1,6 @@
 import { Component, createRef, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { emitMapError } from "@/lib/observability";
 
 /**
  * Error boundary around the lazily-loaded SatelliteMap (P0 Safari launch
@@ -51,6 +52,10 @@ export class MapErrorBoundary extends Component<
   componentDidCatch(error: Error): void {
     // Leave a trace for diagnosis; the UI below is what the player sees.
     console.error("[meridian] satellite map failed:", error);
+    // Observability: report on the shared endpoint-gated path (name +
+    // truncated message only — see src/lib/observability.ts). No-op
+    // until an endpoint is configured in flags.json.
+    emitMapError(error);
   }
 
   private focusAlert(): void {
