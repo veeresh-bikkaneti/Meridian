@@ -1,5 +1,6 @@
 import { ADMIN1_BY_COUNTRY, COUNTRIES } from "./regions.ts";
 import type { Edition } from "./run.ts";
+import { EDITION_LABELS } from "./session.ts";
 
 /**
  * Question disambiguation labels (Veeresh's spec).
@@ -237,6 +238,21 @@ function countryNameForPlace(place: LabelPlace): string | null {
     countryNameForRegionId(place.regionId) ??
     countryNameForRegionId(place.originRegionId)
   );
+}
+
+/**
+ * Header text for the question bubble: the edition type plus the region
+ * name — "Country · United States", "State · Nebraska". Globe collapses
+ * to just "Globe": the region name already is the edition label there,
+ * so "Globe · Globe" would be noise. Rendered in the bubble's existing
+ * uppercase micro-header style. Pure — unit-testable.
+ */
+export function bubbleHeaderText(
+  edition: Edition,
+  regionName: string,
+): string {
+  if (edition === "globe") return EDITION_LABELS.globe;
+  return `${EDITION_LABELS[edition]} · ${regionName}`;
 }
 
 export function buildQuestionLabel(input: {
