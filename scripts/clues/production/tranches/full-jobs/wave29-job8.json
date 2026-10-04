@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 5784,
+    "attempt": 5741,
+    "place_id": "gn-7870898",
+    "input": {
+      "place": {
+        "place_id": "gn-7870898",
+        "name": "Springbank Hill",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.03254,
+        "lon": -114.19481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springbank Hill, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Springbank_Hill,_Calgary",
+          "text": "Springbank Hill is a large and diverse suburb near the western city limit of Calgary, Alberta in the southwest (SW) quadrant. It is bounded to the north by 17 Avenue SW, to the south by Stoney Trail, to the east by 69 Street SW and to the west by 101 Street SW.\nSpringbank Hill is sometimes confused with the much older unincorporated rural community of Springbank, located to the west of the city in Rocky View County. The Springbank Hill area was once the eastern portion of Springbank. Springbank Hill was established in 1999, on land annexed to the City of Calgary in 1994. The community association was formed in 2001.\nThe community of Springbank Hill is made up of numerous subdivisions, including Springborough, Summit of Montreux, Springbank Hill, The Slopes, Anatapi and Spring Valley.\nSpringbank Hill is home to Ernest Manning High School, which commenced classes in September 2011, and Ambrose University College. The 69 Street station of the West LRT (which began operations on December 10, 2012), is also located in Springbank Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "springbank hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "springbank",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5785,
+    "attempt": 5742,
+    "place_id": "gn-8348181",
+    "input": {
+      "place": {
+        "place_id": "gn-8348181",
+        "name": "Newborough",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.17171,
+        "lon": 146.29264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newborough, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Newborough,_Victoria",
+          "text": "Newborough is a town in the Latrobe Valley in Victoria, Australia which shares a border to its west, mostly along the Narracan Creek, with the town of Moe. It can be divided into three areas, Old Newborough, East Newborough and North Newborough. The latter two areas were developed by the State Electricity Commission of Victoria in the 1950s as residential housing for workers at the nearby Yallourn coal mining, power generation and briquette making works. Newborough now has a higher than average proportion of retirees and aged residents, and it has been suggested that it owes its generally quiet character to this fact. At the 2016 census, Newborough had a population of 6,763.\nThe town's name was chosen in a competition open to local residents, which was won by James Bowman, an elderly Scottish migrant. Bowman suggested ‘Newborough’, which was named after his home town in Scotland.\nNewborough Post Office opened on 1 October 1942 and Newborough East Post Office opened on 1 March 1951. A Newborough North Post Office opened on 1 July 1965 but was closed a little more than a year later.\nThe town is also home to a vibrant artist community, perhaps drawn by the picturesque Gippsland area and the quiet country lifestyle the town offers. Many artists and crafts partisans have set up small businesses.\nNewborough is serviced by the Princes Freeway and is within a few kilometres of the Yallourn Power Station and the township of Yallourn North.\nNewborough is the closest town to Lake Narracan, a storage reservoir for the nearby power stations, but also a popular recreational area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "newborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5786,
+    "attempt": 5743,
+    "place_id": "gn-1260156",
+    "input": {
+      "place": {
+        "place_id": "gn-1260156",
+        "name": "Pataudi",
+        "country": "India",
+        "subdivision": "Haryana",
+        "lat": 28.32547,
+        "lon": 76.77858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pataudi",
+          "url": "https://en.wikipedia.org/wiki/Pataudi",
+          "text": "Pataudi is a town, a tehsil and one of the 4 sub-divisions of Gurugram district, in the Indian state of Haryana, within the boundaries of the National Capital Region of India. It is located 28 km (17.4 mi) southwest of Gurugram city. It was also the seat of ertwhile princely state, Pataudi State, which was established in 1804 by  Faiz Talab Khan through a land grant from Lord Lake, and later it acceeded to the Union of India in 1948.\nGurgaon-Pataudi road, known as Pataudi Road, was a state highway, SH 26, and is being converted to a national highway, NH 352W, in 2023 as an alternative parallel highway to NH 48, the Delhi-Jaipur highway to reduce the congestion on NH 48. The road has been included as the new growth corridors in Gurugram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "pataudi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5787,
+    "attempt": 5744,
+    "place_id": "gn-1714264",
+    "input": {
+      "place": {
+        "place_id": "gn-1714264",
+        "name": "Dulag",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 10.9525,
+        "lon": 125.03167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dulag, Leyte",
+          "url": "https://en.wikipedia.org/wiki/Dulag,_Leyte",
+          "text": "Dulag (IPA: [dʊ'lag]), officially the Municipality of Dulag (Waray: Bungto han Dulag; Tagalog: Bayan ng Dulag), is a municipality in the province of Leyte, Philippines. According to the 2024 census, it has a population of 50,728 people.\nThis coastal town has 11,007 hectares of land and lies 36 kilometres (22 mi) south of the concurrent regional center of Eastern Visayas and the administrative capital of provincial government of Leyte, Tacloban.\nPopularly known as the \"Liberation Town\", Dulag survived and has risen from the ruins of the Second World War and at present time, a thriving coastal town fronting Leyte Gulf.\nIn 1954, the barrios of Mayorga, Andres Bonifacio, Talisay, San Roque, Burgos, Liberty, Union, Ormocay, Wilson, and the southern portion of barrio of Cogon Bingcay was separated to form the town of Mayorga, Leyte."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "dulag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5788,
+    "attempt": 5745,
+    "place_id": "gn-2151649",
+    "input": {
+      "place": {
+        "place_id": "gn-2151649",
+        "name": "Richmond",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.81819,
+        "lon": 145.00176
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richmond, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Richmond,_Victoria",
+          "text": "Richmond is an inner-city suburb in Melbourne, Victoria, Australia, 3 km (1.9 mi) east of the Melbourne central business district, located within the City of Yarra local government area. Richmond recorded a population of 28,587 at the 2021 census, with a median age of 34.\nAlfred Howitt recorded the Kulin/Woiwurrung name for Richmond as Quo-yung with the possible meaning of 'dead trees'.\nThree of the 82 designated major activity centres identified in the Melbourne 2030 Metropolitan Strategy are located in Richmond—the commercial strips of Victoria Street, Bridge Road and Swan Street.\nThe suburb has been the subject of gentrification since the early 1990s and now contains a mix of  converted warehouse residences, public housing high-rise flats and terrace houses from the Victorian-era. The residential segment of the suburb exists among a lively retail sector. Richmond was home to the Nine Network studios, under the callsign of GTV-9, until the studios moved to Docklands in 2011. Dimmeys is long associated with Richmond, although it is located in the neighbouring suburb of Cremorne. The suburb is well known for its factory outlets along Bridge Road, remaining an attraction to the area.\nRichmond is well known for Little Saigon along Victoria Street; however, the area is also recognised for  illicit drug dealing (especially heroin) that occurs in both street-based and domestic contexts.\nThe Richmond District in San Francisco (the area north of Golden Gate Park) was named after Richmond, Victoria, Australia. The designer of the Park's Japanese Tea Garden was from Melbourne and bought land in the yet-undeveloped area and named after the then posh suburb of his hometown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5789,
+    "attempt": 5746,
+    "place_id": "gn-2229267",
+    "input": {
+      "place": {
+        "place_id": "gn-2229267",
+        "name": "Lolodorf",
+        "country": "Cameroon",
+        "subdivision": "South",
+        "lat": 3.23333,
+        "lon": 10.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lolodorf",
+          "url": "https://en.wikipedia.org/wiki/Lolodorf",
+          "text": "Lolodorf is a small town-centred region in the south province of the Republic of Cameroon, near the western coast of Africa. It is between Ngoumou and Bipindi, in a zone of the Atlantic Littoral Evergreen Forest.\n\nIt is notable for being the home of Pygmy clans and their camp settlements and hunting areas, such as those of the Lala and Bakola clans. The Ngumba and Kwassio (speakers of Makaa–Njem languages) and Bagyeli tribes also reside in the area, the Bagyeli having been forced off their lands by the logging industry since the 1960s and the effect of the new oil pipeline since 1999. There are also settled Bantu peoples, who previously 'owned' pygmy clans.\nThe name of Lolodorf is German in origin, and relates to the name of a notable of Bikoui village, Loule-Dorf. In 1897 a Christian mission was opened in Lolodorf. Most of the people in the region are now Christians.\nThe Lokoundje River flows through Lolodorf, said to be \"narrow with fast moving water and numerous waterfalls\", and there is a temporary bridge over the river. Malaria and sleeping sickness are common problems in the humid climate, and there are a variety of natural remedies in which the Pygmy healers are expert.\nThe nearest market is at the coastal port & resort town of Kribi, and there is a dirt road to it from Lolodorf of about 110 km. The trip usually takes around 6 hours.\nThe main occupations are farming, tapping palm wine, gathering fruits and nuts for food, and hunting. There are some cocoa plantations. Coffee was grown here historically, but was abandoned as a crop in the mid-1990s. There is said to be little river fishing. There is some limited tourism, arriving from Kribi; people come to see Pygmy camps, wildlife, and local musicians.\nEight different languages are spoken in the town. There is a volunteer-run French radio station at Lolodorf that began broadcasting in 1997.\nThere has been a weather station in the town for more than 25 years.\nNearby villages are Saballi and Jalalli. There is a seminary at nearby Bibia which trains Presbyterian ministers.\nOil companies aim to run an important pipeline through the area, taking oil from Doba in Chad to an undersea terminal on the sea coast at Kribi. There is a $600,000 'Indigenous Peoples Plan' as compensation to local people, following an intensive study of the area's economy in 1999. Organisations such as Forest Peoples have concerns about the management and distribution of such aid.\nThere is thought to be some illegal mining of diamonds and gold in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 432
+    },
+    "banned_terms": [
+      {
+        "term": "lolodorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5790,
+    "attempt": 5747,
+    "place_id": "gn-2511180",
+    "input": {
+      "place": {
+        "place_id": "gn-2511180",
+        "name": "Santa Cruz de la Palma",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.68351,
+        "lon": -17.76421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz de La Palma",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_de_La_Palma",
+          "text": "Santa Cruz de la Palma (Spanish pronunciation: [ˈsanta ˈkɾuθ ðe la ˈpalma]; literally Holy Cross of La Palma) is a city and a municipality on the east coast of the island of La Palma in the province of Santa Cruz de Tenerife of the Canary Islands. Santa Cruz de la Palma is the second-largest city (after Los Llanos de Aridane) and is the capital of the island. It is along an old lava flow coming from the Caldereta (small caldera), a volcano just south of the city. Santa Cruz de La Palma has the privilege of having the first democratically elected town hall in Spain.\nThe population of the municipality is 16,330 (2013), its area is 43.38 km2.  Around 13,000 people live within the city limits, with the remaining population residing in other settlements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz de la palma",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palma",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5791,
+    "attempt": 5748,
+    "place_id": "gn-2835018",
+    "input": {
+      "place": {
+        "place_id": "gn-2835018",
+        "name": "Schwarzenbach an der Saale",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.22279,
+        "lon": 11.93504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schwarzenbach an der Saale",
+          "url": "https://en.wikipedia.org/wiki/Schwarzenbach_an_der_Saale",
+          "text": "Schwarzenbach an der Saale (German pronunciation: [ˈʃvaʁtsn̩bax ʔan deːɐ̯ ˈzaːlə] , lit. 'Schwarzenbach on the Saale') is a small industrial town in the district of Hof, in Bavaria, Germany. It is situated on the river Saale, 11 km south of Hof.\nWithin the town is the Gedenkstätte Langer Gang, a memorial to the Nazi victims of the Helmbrechts concentration camp, which was near Schwarzenbach an der Saale, and particularly of the victims of the death march from Helmbrechts concentration camp to Volary.\nAfter the war, Erika Fuchs, German translator of Carl Barks's comics, lived and worked in Schwarzenbach for fifty years. A museum in memory of her and her work was opened in the town in 2015, known as Erika-Fuchs-Haus.\n\nGerman Romantic writer Jean Paul also lived in the town, from 1790 to 1794. Schwarzenbach is mentioned in his works."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "schwarzenbach an der saale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "schwarzenbach",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "an",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "saale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5792,
+    "attempt": 5749,
+    "place_id": "gn-3189823",
+    "input": {
+      "place": {
+        "place_id": "gn-3189823",
+        "name": "Stolac",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.084,
+        "lon": 17.95995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stolac",
+          "url": "https://en.wikipedia.org/wiki/Stolac",
+          "text": "Stolac (Serbian Cyrillic: Столац) is an ancient city located in Herzegovina-Neretva Canton of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. It is located in the region of Herzegovina. Stolac is one of the oldest cities in Bosnia and Herzegovina as well as one of the oldest continuously inhabited cities in the World.\nStolac is situated in the area known as Herzegovina Humina on the tourist route crossing Herzegovina and linking the Bosnian mountainous hinterland with the coastal regions of Bosnia and Herzegovina, Dubrovnik, and Montenegro. The road, running from Sarajevo via Mostar, Stolac, Ljubinje, and Trebinje, enables one to reach Dubrovnik in less than 4 hours.\nThanks to the town's favourable natural environment, geological composition, contours, climate, hydrographic and vegetation, Stolac and its area have been settled since antiquity. Its rich hunting-grounds along with other natural benefits attracted prehistoric man, and later the Illyrians, Romans and Slavs, all of whom left a wealth of anthropological evidence.\nIn 2022, a new modern road of 36 km that connected the heart of Herzegovina with the sea,  Stolac with Neum, was completed with support and funding from the World Bank. The road helped the development of tourism between Neum, Stolac and Mostar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "stolac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5793,
+    "attempt": 5750,
+    "place_id": "gn-3676791",
+    "input": {
+      "place": {
+        "place_id": "gn-3676791",
+        "name": "La Victoria",
+        "country": "Colombia",
+        "subdivision": "Valle del Cauca Department",
+        "lat": 4.52483,
+        "lon": -76.03921
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Victoria, Valle del Cauca",
+          "url": "https://en.wikipedia.org/wiki/La_Victoria,_Valle_del_Cauca",
+          "text": "La Victoria is a town and  municipality located in the Department of Valle del Cauca, Colombia, in the northern region. It is located in the right side of the Cauca River, in the valley between the western and central ranges.\nThe town was founded on August 12, 1835 under the name of 'La Cañada' (The Ravine in English), founded very close to a creek called 'Los Micos'. The village was after renamed as 'San José' in the current location of the corregimientos of Holguín and San José, where still exists the Sanctuary of San José, built in 1832. Looking for a better connection with other cities and towns, the village was moved closer to the Cauca River, where currently is located the municipal head. The village was enacted as munipality in December 23, 1850."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "la victoria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5794,
+    "attempt": 5751,
+    "place_id": "gn-4557109",
+    "input": {
+      "place": {
+        "place_id": "gn-4557109",
+        "name": "Chambersburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.93759,
+        "lon": -77.6611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chambersburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Chambersburg,_Pennsylvania",
+          "text": "Chambersburg is a borough in and the county seat of Franklin County, in the South Central region of Pennsylvania, United States. It is in the Cumberland Valley, which is part of the Great Appalachian Valley, and 13 miles (21 km) north of Maryland and the Mason–Dixon line and 52 miles (84 km) southwest of Harrisburg, the state capital. According to the United States Census Bureau, Chambersburg's 2020 population was 21,903. When combined with the surrounding Greene, Hamilton, and Guilford Townships, the population of Greater Chambersburg is 66,340 people. The Chambersburg, PA Metropolitan Statistical Area includes surrounding Franklin County, and in 2010 included 149,618 people.\nAccording to the Pennsylvania Department of Community and Economic Development, Chambersburg Borough is the thirteenth-largest municipality in Pennsylvania and the largest borough as measured by fiscal size as of 2016. Chambersburg Borough is organized under the Pennsylvania Borough Code and is not a home-rule municipality.\nChambersburg's settlement began in 1730, when water mills were built at Conococheague Creek and Falling Spring Creek. The town developed on both sides of these creeks. Its history includes episodes relating to the French and Indian War, the Whiskey Rebellion, John Brown's raid on Harpers Ferry, and the Civil War. The borough was the only major northern community burned down by Confederate forces during the war. Residents charged the Confederates with war crimes.\nChambersburg is served by the Lincoln Highway, U.S. 30, between McConnellsburg and Gettysburg. U.S. 11, the Molly Pitcher Highway, passes through it between Shippensburg, Pennsylvania, and Hagerstown, Maryland. Interstate 81 skirts the borough to its east. The town lies approximately midpoint on US Route 30 between Pittsburgh and Philadelphia. The local topography reflects both flatter areas like Philadelphia and mountainous areas like Pittsburgh. Downtown Chambersburg has occasional events such as Food Truck Festival, Apple Fest, and Icefest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 299
+    },
+    "banned_terms": [
+      {
+        "term": "chambersburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5795,
+    "attempt": 5752,
+    "place_id": "gn-5139927",
+    "input": {
+      "place": {
+        "place_id": "gn-5139927",
+        "name": "Stony Point",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.22954,
+        "lon": -73.98708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stony Point, New York",
+          "url": "https://en.wikipedia.org/wiki/Stony_Point,_New_York",
+          "text": "Stony Point is a town situated in the northeastern corner of Rockland County, New York, located within the Hudson Valley and the New York Metropolitan Area. As of the 2020 United States Census, the town's population was 14,813.\nGeographically, the town is bounded to the north and west by Orange County, to the east by  the Hudson River and Westchester County, and to the south by the Town of Haverstraw. The town's name is derived from a prominent projection into the Hudson River, which served as a significant site during the American Revolution.\nStony Point is characterized as the most rural of the county's five towns. It is served by several major transportation arteries, including U.S. Route 9W, U.S. Route 202, and the Palisades Interstate Parkway, which provides vital north–south access through the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "stony point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stony",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5796,
+    "attempt": 5753,
+    "place_id": "gn-5167293",
+    "input": {
+      "place": {
+        "place_id": "gn-5167293",
+        "name": "Portage Lakes",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.00728,
+        "lon": -81.52706
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portage Lakes",
+          "url": "https://en.wikipedia.org/wiki/Portage_Lakes",
+          "text": "The Portage Lakes are a group of glacial kettle lakes and reservoirs in Northeast Ohio. The name comes from an old Indian portage path that connected the Cuyahoga River flowing north to Lake Erie and the Tuscarawas River, a tributary of the Muskingum River, which flows south to the Ohio River. This proved advantageous for the Indians and early settlers as navigation from Lake Erie to the Ohio was possible with only an eight-mile portage. Portage Lakes State Park lies at one of the highest points of the state and on a major watershed divide in Ohio. Some water from the lakes reaches Lake Erie and some flows to the Ohio River.\nThere is an unincorporated community named Portage Lakes in Summit County, near 41°00′26″N 081°31′37″W Elevation: 1,053 feet (321 m), in the area.\nThe area became an important trading post for settlers and Indians. It was a recognized landmark during the War of 1812, serving as a rendezvous point of American troops. The old Indian portage path was part of the ancient boundary between the Six Nations and the Western Indians.\nThe city of Akron was laid out in 1825 and was first settled by Irish laborers and others working on the Ohio and Erie Canal. Once the canal was completed, the town flourished. Several important industries brought prosperity to the area including stoneware potteries, sewer pipe manufacturing, the match industry and, most recently, the tire and rubber industry. At one time, the Blue Diamond Match Company in Akron used three million board feet (7,100 m3) of white pine lumber per year for the manufacture of its matches.\nSeveral of the Portage Lakes were built as feeder reservoirs for the canals to maintain the required depth of 4 feet (1.2 m). The lakes were used for this purpose until the canals were abandoned in 1913. The lakes were then used to meet the water needs of the local industries. Some portions of the remnant canals in the Akron area can still be boated.\nThe Ohio Department of Public Works maintained the canal lands for recreational purposes until 1949 when the Portage Lakes were transferred to the newly formed Ohio Department of Natural Resources, Division of Parks and Recreation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 369
+    },
+    "banned_terms": [
+      {
+        "term": "portage lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "portage",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5797,
+    "attempt": 5754,
+    "place_id": "gn-5877641",
+    "input": {
+      "place": {
+        "place_id": "gn-5877641",
+        "name": "Wasilla",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 61.5809,
+        "lon": -149.4415
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wasilla, Alaska",
+          "url": "https://en.wikipedia.org/wiki/Wasilla,_Alaska",
+          "text": "Wasilla (Denaʼina: Benteh) is a city in Matanuska-Susitna Borough, Alaska, United States, and the fourth-largest city in Alaska. It is located on the northern point of Cook Inlet in the Matanuska-Susitna Valley of the southcentral part of the state. The city's population was 9,054 at the 2020 census, up from 7,831 in 2010. Wasilla is the largest city in the borough and a part of the Anchorage metropolitan area, which had an estimated population of 398,328 in 2020.\nEstablished at the intersection of the Alaska Railroad and Old Carle Wagon Road, the city prospered at the expense of the nearby mining town of Knik. Historically entrepreneurial, the economic base shifted in the 1970s from small-scale agriculture and recreation to support for workers employed in Anchorage or on Alaska's North Slope oilfields and related infrastructure. The George Parks Highway turned the town into a commuter suburb of Anchorage. The headquarters of the Iditarod Trail Sled Dog Race, a popular and significant sporting event in Alaska, is located in Wasilla.\nWasilla gained international attention when Sarah Palin, who served as Mayor of Wasilla before her election as Governor of Alaska, was chosen by John McCain as his running mate for Vice President of the United States in the 2008 United States presidential election.\nWasilla is named after Chief Wasilla, a local Dena'ina chief. Wasilla is the anglicized spelling of the chief's Russian given name, Василий (Vasilij), which corresponds to the English name Basil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "wasilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5798,
+    "attempt": 5755,
+    "place_id": "gn-634433",
+    "input": {
+      "place": {
+        "place_id": "gn-634433",
+        "name": "Tikkurila",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.29349,
+        "lon": 25.03758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tikkurila",
+          "url": "https://en.wikipedia.org/wiki/Tikkurila",
+          "text": "Tikkurila (Finnish: [ˈtikːurilɑ]; Swedish: Dickursby) is a district and major region of the municipality of Vantaa, Finland. Located in the eastern half of the Helsinki conurbation, some 16 kilometres (10 mi) north of the capital's downtown district, it is the administrative and commercial hub of Vantaa, although Myyrmäki is a rival commercial hub within the municipality.\nTikkurila's most popular attraction is the science center Heureka. Tikkurila railway station is the busiest in Vantaa and third-busiest in Finland. As the nearest mainline station to Helsinki Airport (located 6 km or 3+1⁄2 mi from Tikkurila), it is served by all the high-speed Pendolino trains on the Helsinki to Tampere and Lahti routes as well as other long-distance services.\nSome of the other communities surrounding Tikkurila are Jokiniemi, Simonkylä, Ruskeasanta, Hiekkaharju, and Puistola in the Helsinki municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "tikkurila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5799,
+    "attempt": 5756,
+    "place_id": "gn-652590",
+    "input": {
+      "place": {
+        "place_id": "gn-652590",
+        "name": "Kittilä",
+        "country": "Finland",
+        "subdivision": "Lapland",
+        "lat": 67.66474,
+        "lon": 24.89356
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kittilä",
+          "url": "https://en.wikipedia.org/wiki/Kittilä",
+          "text": "Kittilä (Finnish: [ˈkitːilæ]; Northern Sami: Gihttel, Inari Sami: Kittâl, Skolt Sami: Ǩiʹttel) is a municipality of Finland and a popular holiday resort. It is located in northern Finland north of the Arctic Circle within the Lapland region. The municipality has a population of 6,973 (31 December 2025) and covers an area of 8,262.97 square kilometres (3,190.35 sq mi) of which 168.71 km2 (65.14 sq mi) is water. The population density is 0.86 inhabitants per square kilometre (2.2/sq mi).\nKittilä is famous for being the location of the lowest recorded temperature in Finnish history: −51.5 °C (−60.7 °F), measured in January 1999 in Pokka. The \"midnight sun\" is above the horizon from 29 May to 16 July, and the period with continuous daylight lasts a bit longer, polar night from 14 December to 29 December.\nThe wolverine in the municipal coat of arms refers to the nature of Lapland. The coat of arms was designed by Einari Junttila, and was approved by the Kittilä municipal council at its meeting on 1 July 1963. The Ministry of the Interior confirmed the coat of arms for use on 26 November of the same year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "kittila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5800,
+    "attempt": 5757,
+    "place_id": "gn-729936",
+    "input": {
+      "place": {
+        "place_id": "gn-729936",
+        "name": "Krichim",
+        "country": "Bulgaria",
+        "subdivision": "Plovdiv",
+        "lat": 42.05,
+        "lon": 24.46667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krichim",
+          "url": "https://en.wikipedia.org/wiki/Krichim",
+          "text": "Krichim (Bulgarian: Кричим [ˈkrit͡ʃim]) is a town in Bulgaria, located in the southwestern part of Plovdiv Province close to Perushtitsa. It lies at the foot of the Rhodopes' northern slopes in the plains of Thrace, 20 km southwest of Plovdiv. The river Vacha, an important tributary of the Maritsa, runs through the town. Krichim is the only settlement in Krichim Municipality.\nInhabited since early Byzantine times as evidenced by the remains of two ancient fortresses on both banks of the river in the beginning of its gorge, Krichim was contested by the Byzantine Empire and the Bulgarian Empire during most of the Middle Ages. It was conquered by Tsar Ivan Asen II in 1230 and a stone inscription from this period is preserved, saying 'On this stone sat Tsar Asen, when he conquered Krichim'.\nDuring the early Bulgarian National Revival, the village was one of the few in the region to have a monastery school. Two monasteries, one of the Holy Theotokos and one of St Vrach, worked during the Ottoman rule and helped preserve the Bulgarian culture and language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "krichim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5801,
+    "attempt": 5758,
+    "place_id": "gn-730073",
+    "input": {
+      "place": {
+        "place_id": "gn-730073",
+        "name": "Kotel",
+        "country": "Bulgaria",
+        "subdivision": "Sliven",
+        "lat": 42.88333,
+        "lon": 26.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kotel, Bulgaria",
+          "url": "https://en.wikipedia.org/wiki/Kotel,_Bulgaria",
+          "text": "Kotel (Bulgarian: Котел [ˈkɔtɛɫ]) is a town in central Bulgaria, part of Sliven Province. It is the administrative centre of the homonymous Kotel Municipality. In 2016, the town had a population of 5,329.\nKotel is known for the numerous personalities of the Bulgarian National Revival who are connected to the town in various ways, such as the politicians Alexander Bogoridi and Stefan Bogoridi, the enlighteners Sophronius of Vratsa and Petar Beron, public figure Gavril Krastevich, revolutionary Georgi Rakovski, as well as the World War II prime minister Dobri Bozhilov. It has a well-known music school and a large Romani population who can be found playing in restaurants and orchestras all over Bulgaria. Because of its location in the mountains, Kotel is also a popular health resort for the cure of diseases such as tuberculosis. Kotel has been a centre for carpet making and there is a museum devoted to the craft."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "kotel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5802,
+    "attempt": 5759,
+    "place_id": "gn-2060886",
+    "input": {
+      "place": {
+        "place_id": "gn-2060886",
+        "name": "Subiaco",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.9485,
+        "lon": 115.8268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Subiaco, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Subiaco,_Western_Australia",
+          "text": "Subiaco ( SOO-bee-AK-oh), known colloquially as Subi, is an inner-western suburb of Perth, the capital of Western Australia. It is approximately 3 km (1.9 mi) west of Perth's central business district, in the City of Subiaco local government area. Historically a working-class suburb containing a mixture of industrial and commercial land uses, since the 1990s the area has been one of Australia's most celebrated urban redevelopment projects. It remains a predominantly low-rise, urban village neighbourhood centred around Subiaco train station and Rokeby Road.\nThe suburb has three schools: Subiaco Primary School, Perth Modern School, which is the state's only fully academically selective public school, and Bob Hawke College. Landmarks in Subiaco include Subiaco Oval, which formerly was the largest stadium in Western Australia, King Edward Memorial Hospital for Women, and Subiaco railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "subiaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5803,
+    "attempt": 5760,
+    "place_id": "gn-2066756",
+    "input": {
+      "place": {
+        "place_id": "gn-2066756",
+        "name": "Maylands",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.93097,
+        "lon": 115.89486
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maylands, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Maylands,_Western_Australia",
+          "text": "Maylands is a riverside inner-city suburb approximately 4.5 kilometres (2.8 mi) northeast of Perth centred on the Midland, High Wycombe and Ellenbrook railway lines on the northern bank of the Swan River.\nThe suburb was developed during the 1890s and is an administrative locality within the City of Bayswater (having been mostly within the City of Stirling until 1998), bordered by the suburbs of Mount Lawley, East Perth and Bayswater. Maylands railway station provides easy access to the City centre and beyond. The railway line was originally built in the 1880s, and the railway station was extensively refurbished in 2000. Recently a shared bicycle / pedestrian path was built to link Maylands with neighbouring suburbs via the shoreline of the Swan River. There is also a small yacht club and a golf course.\nMaylands was once a source of clay for brick and tile making at Maylands Brickworks, and the pits from these activities are now part of a golf course and residential area. It was home to Perth's main airport which serviced many kinds of aircraft and even flying boats until the early 1960s, when the airport moved to Perth Airport. The facilities were then converted to a training area for the Western Australian Police Service."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "maylands",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

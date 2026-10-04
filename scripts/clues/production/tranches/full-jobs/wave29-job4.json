@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 5704,
+    "attempt": 5661,
+    "place_id": "gn-3045294",
+    "input": {
+      "place": {
+        "place_id": "gn-3045294",
+        "name": "Solymár",
+        "country": "Hungary",
+        "subdivision": "Pest County",
+        "lat": 47.59246,
+        "lon": 18.93212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solymár",
+          "url": "https://en.wikipedia.org/wiki/Solymár",
+          "text": "Solymár (German: Schaumar) is a village in northwest of Budapest metropolitan area, bordering the 3rd and 2nd districts of the city, as well as Nagykovácsi, Pilisszentiván, Pilisvörösvár, Csobánka, Pilisborosjenő, and Üröm. Its picturesque surroundings (hills to the south and east, the highest point is Zsíroshegy at 424m) and good accessibility the 64, 64A, 64B, 164, 164B, 264, 157 and 964 city buses from Hűvösvölgy, 218 from Óbuda, 831 from Pilisszántó, a train from Budapest Nyugati and Esztergom, and coaches from Árpád-híd made it a desirable destination for affluent city-dwellers moving to suburban homes outside of Budapest from the mid-1990s. Its historical German-speaking majority was depopulated following the Second World War, some non-compulsively, and a great majority by force in a series of deportations, which is solemnly remembered in a commemorative monument erected in the village in 1990."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "solymar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5705,
+    "attempt": 5662,
+    "place_id": "gn-3119779",
+    "input": {
+      "place": {
+        "place_id": "gn-3119779",
+        "name": "l'Escala",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 42.12562,
+        "lon": 3.13261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Escala",
+          "url": "https://en.wikipedia.org/wiki/L'Escala",
+          "text": "L'Escala (Catalan pronunciation: [ləsˈkalə]) is a municipality in the comarca of the Alt Empordà in Girona, Catalonia, Spain. It is situated on the Costa Brava, located between the southern end of the Gulf of Roses and Cala (bay) Montgó. It is an important fishing port and tourist centre, and has a festival dedicated to its famous anchovies. The GE-513 road runs inland from the town.\nThe Alfolí de la Sal, also known as the Pòsit Vell, is a seventeenth-century warehouse formerly used to store the salt necessary to preserve fish landed at the port: it is now a protected historic-artistic monument. The ruins of Empúries are located on the territory of the municipality, with Phoenician and \nRoman remains dating from 580 BC.\nL'Escala is the village of Víctor Català (pseudonym of Caterina Albert, 1869-1966) a famous novelist.\nThe GR 92 long distance footpath, which roughly follows the length of the Mediterranean coast of Spain, passes through L'Escala on its stage between Sant Martí d'Empúries and Torroella de Montgrí."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "l escala",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "escala",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5706,
+    "attempt": 5663,
+    "place_id": "gn-3170963",
+    "input": {
+      "place": {
+        "place_id": "gn-3170963",
+        "name": "Pianiga",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.45708,
+        "lon": 12.00762
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pianiga",
+          "url": "https://en.wikipedia.org/wiki/Pianiga",
+          "text": "Pianiga is a town in the Metropolitan City of Venice, Veneto, Italy. It is east of SR515.\nPianiga is located on the extreme southwestern edge of the Metropolitan City of Venice, in part bordering on the province of Padua and in part with the municipalities of Santa Maria di Sala, Mirano, Mira, Dolo and Fiesso d'Artico.\nUp to the World War II the main occupation of the inhabitants was agriculture which was conducted in accordance with local sharecroppers or tenants who worked the land of large landowners from Venice or Padua.\nFrom World War II onwards and then more definitely from the years of economic boom several companies were established.\nNowadays, the industries present within the municipal area of Pianiga are mostly engaged in building, metalworking and woodworking and in the production of shoes and relevant accessories.\nThere are also some other textile, glass processing and food processing industries.\nEconomic development has generated a clear environmental transformation: the reduction of large tracts of cultivated fields corresponded to an increase in built-up areas; Pianiga got the appearance of a residential centre while productive activities have been located in the closer precincts for example at Cazzago owing to the proximity of the rail station and highway exit and Mellaredo which is crossed by the state road connecting Padua to Treviso.\nRivale is the least densely populated locality of the entire municipality, though, thanks to the establishment of a number of medium and large businesses, a high level of employment is available.\nUnfortunately, the initial urban development has grown spontaneously.\nThe territory, which until a few years ago was used exclusively for farming, still enough recently was showing several examples of different types of country cottages, from mansions to noble villas.\nIn the past, there were some rustic poor houses called the \"casoni\" (big houses) widespread in the territory which were hosting the families of labourers.\nToday none of them exist any longer at Pianiga, because they reminded the humiliating past of poverty, so nothing was done for their conservation and all of them have been deteriorated by weather and lost forever."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 349
+    },
+    "banned_terms": [
+      {
+        "term": "pianiga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5707,
+    "attempt": 5664,
+    "place_id": "gn-3987309",
+    "input": {
+      "place": {
+        "place_id": "gn-3987309",
+        "name": "San Diego de la Unión",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 21.46788,
+        "lon": -100.87298
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Diego de la Unión",
+          "url": "https://en.wikipedia.org/wiki/San_Diego_de_la_Unión",
+          "text": "San Diego de la Unión is a Mexican city (and municipality) located in the Northwest  region of the state of Guanajuato. The municipality has an area of 990.17 square kilometres (3.26% of the surface of the state) and is bordered to the north by San Luis Potosí, to the east by San Luis de la Paz, to the south by Dolores Hidalgo, and to the west by San Felipe. The municipality had 34,088 inhabitants according to the 2005 census.\nThe municipality of San Diego was founded in 1719 under the name of Pueblo de Bizcocho. It received its present name of San Diego de la Unión after San Diego de Alcalá, the Patron saint of Franciscan lay brothers.\nThe municipal president of San Diego de la Unión and its 236 outlying communities is Juan Carlos Castillo Cantero."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "san diego de la union",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "diego",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "union",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5708,
+    "attempt": 5665,
+    "place_id": "gn-4356847",
+    "input": {
+      "place": {
+        "place_id": "gn-4356847",
+        "name": "Greenbelt",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.00455,
+        "lon": -76.87553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenbelt, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Greenbelt,_Maryland",
+          "text": "Greenbelt is a city in Prince George's County, Maryland, United States, and a suburb of Washington, D.C. At the 2020 census, the population was 24,921.\nGreenbelt is the first and the largest of the three experimental New Deal Greenbelt Towns, the others being Greenhills, Ohio, and Greendale, Wisconsin. Greenbelt was planned and built by the federal government as an all-White town. The cooperative community was conceived in 1935 by Undersecretary of Agriculture Rexford Tugwell, whose perceived collectivist ideology attracted opposition to the Greenbelt Towns project throughout its short duration. The project came into legal existence on April 8, 1935, when Congress passed the Emergency Relief Appropriation Act of 1935. Under the authority granted to him by this legislation, President Franklin D. Roosevelt issued an executive order, on May 1, 1935, establishing the United States Resettlement Administration (RA/RRA).\nFirst called Maryland Special Project No. 1, the project was officially named Greenbelt when the Division of Suburban Resettlement of the Resettlement Administration began construction, on January 13, 1936, about eight miles north of Washington. The complete Greenbelt plans were reviewed at the White House by President Roosevelt and First Lady Eleanor Roosevelt on April 30, 1936. The first tenants, after selection in a stringent application process, moved in to the town on September 30, 1937. The construction consisted of structures built in the Art Deco, Streamline Moderne, and Bauhaus architectural styles.\nGreenbelt is credited as a historic milestone in urban development because it was the initial model for the privately constructed suburban Washington, D.C., planned cities of Reston, Virginia, and Columbia, Maryland.\nThe original federally-built core of the city, known locally as Old Greenbelt, was recognized as the Greenbelt Historic District by the Maryland Historical Trust, and is listed on the National Register of Historic Places as a National Historic Landmark District.\nGreenbelt's population, which includes residents of privately built dwellings dating from after the end of the federal government's ownership of the city, was recorded as 23,068 at the 2010 U.S. census and 24,921 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "greenbelt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5709,
+    "attempt": 5666,
+    "place_id": "gn-5198635",
+    "input": {
+      "place": {
+        "place_id": "gn-5198635",
+        "name": "Lock Haven",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 41.13701,
+        "lon": -77.44693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lock Haven, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Lock_Haven,_Pennsylvania",
+          "text": "Lock Haven is a city in and the county seat of Clinton County, in the U.S. state of Pennsylvania. Located near the confluence of the West Branch Susquehanna River and Bald Eagle Creek, it is the principal city of the Lock Haven Micropolitan Statistical Area, itself part of the Williamsport–Lock Haven combined statistical area. At the 2020 census, Lock Haven's population was 8,108.\nBuilt on a site long favored by pre-Columbian peoples, Lock Haven began in 1833 as a timber town and a haven for loggers, boatmen, and other travelers on the river or the West Branch Canal. Resource extraction and efficient transportation financed much of the city's growth through the end of the 19th century. In the 20th century, a light-aircraft factory, a college, and a paper mill, along with many smaller enterprises, drove the economy. Frequent floods, especially in 1972, damaged local industry and led to a high rate of unemployment in the 1980s.\nThe city has three sites on the National Register of Historic Places—Memorial Park Site, a significant pre-Columbian archaeological find; Heisey House, a Victorian-era museum; and Water Street District, an area with a mix of 19th- and 20th-century architecture. A levee, completed in 1995, protects the city from further flooding. While industry remains important to the city, about a third of Lock Haven's workforce is employed in education, health care, or social services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "lock haven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lock",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5710,
+    "attempt": 5667,
+    "place_id": "gn-5369906",
+    "input": {
+      "place": {
+        "place_id": "gn-5369906",
+        "name": "Malibu",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.02577,
+        "lon": -118.7804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malibu, California",
+          "url": "https://en.wikipedia.org/wiki/Malibu,_California",
+          "text": "Malibu (  MAL-ih-boo; Chumash: Humaliwo; Spanish: Malibú) is a beach city in the Santa Monica Mountains region of Los Angeles County, California, United States, about 30 miles (48 km) west of Los Angeles. It is known for its Mediterranean climate, its strip of beaches stretching 21 miles (34 km) along the Pacific coast, and for its longtime status as the home of numerous Hollywood celebrities and executives with several of its residents in the entertainment industry. The Pacific Coast Highway (State Route 1) traverses the city, following along the South Coast of California. As of the 2020 census, the city's population was 10,654. The 2025 Palisades Fire devastated Malibu, with almost all of the beachfront homes in the east of the city being destroyed.\nNicknamed \"The 'Bu\" by surfers and locals, Malibu is noted for its beaches. The many parks within the Santa Monica Mountains National Recreation Area lie along the ridges and valleys near the city.\nThe city is bounded by the Santa Monica Mountains to the north, Topanga to the east, Solromar to the west, and the ocean to the south. The Malibu ZIP Code includes residents of the unincorporated canyon areas as it was assigned before the city incorporated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "malibu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5711,
+    "attempt": 5668,
+    "place_id": "gn-5582371",
+    "input": {
+      "place": {
+        "place_id": "gn-5582371",
+        "name": "Steamboat Springs",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.48498,
+        "lon": -106.83172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steamboat Springs, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Steamboat_Springs,_Colorado",
+          "text": "Steamboat Springs is a home rule municipality that is the county seat of and the most populous municipality in Routt County, Colorado, United States. The population was 13,224 at the 2020 census. Steamboat Springs is the principal city of the Steamboat Springs Micropolitan Statistical Area, and it is the largest city in northwestern Colorado.\nThe city is a winter ski resort destination, including the Steamboat Ski Resort on Mount Werner in the Park Range just east of the town and the much smaller Howelsen Hill Ski Area. Steamboat Springs has produced more athletes for the Winter Olympics than any other town in North America.\nSteamboat Springs – known colloquially as \"The Boat\" – is located in the upper valley of the Yampa River, along U.S. Highway 40, just west of the Continental Divide and Rabbit Ears Pass. It is located approximately 150 miles northwest of Denver, and sits approximately 45 miles south of the Wyoming border. It is served by Steamboat Springs Airport (general aviation) and commercial service at nearby Yampa Valley Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "steamboat springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "steamboat",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5712,
+    "attempt": 5669,
+    "place_id": "gn-5778601",
+    "input": {
+      "place": {
+        "place_id": "gn-5778601",
+        "name": "Mount Olympus",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.6855,
+        "lon": -111.78854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Olympus, Utah",
+          "url": "https://en.wikipedia.org/wiki/Mount_Olympus,_Utah",
+          "text": "Mount Olympus or Olympus Cove is a neighborhood in Millcreek, Utah built on the northwestern slopes of Mount Olympus of the Wasatch Range. It was formerly a census-designated place (CDP), but was consolidated into the Millcreek CDP for census purposes in 2010. Millcreek incorporated as a city in 2016. The commercial center of the neighborhood is the relatively flat area south of the crossing of Mill Creek by Interstate 215, which includes the Olympus Hills Shopping Center, Oakridge Elementary School, Wasatch Junior High (One of the finest Junior High Schools in Utah, with the best Music Program), Skyline High School, a trailhead for non-motorized access to Mill Creek Canyon, and a Utah Transit Authority park and ride lot. As of the 2000 census, the CDP population was 7,103, a slight decrease from the 1990 figure of 7,413."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "mount olympus",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "olympus",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5713,
+    "attempt": 5670,
+    "place_id": "gn-654706",
+    "input": {
+      "place": {
+        "place_id": "gn-654706",
+        "name": "Kallio",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.18427,
+        "lon": 24.95034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kallio",
+          "url": "https://en.wikipedia.org/wiki/Kallio",
+          "text": "Kallio (Finnish: [ˈkɑlːio]; Swedish: Berghäll; literally \"the rock\") is a district and a neighbourhood in Helsinki, the capital of Finland, located on the eastern side of the Helsinki peninsula about one kilometre north from the city centre. It is one of the most densely populated areas in Finland. Kallio is separated from the city centre by the Siltasaarensalmi strait, over which is a bridge called Pitkäsilta (\"long bridge\"). Traditionally, the bridge symbolizes the divide between the affluent centre and the more working class areas around Kallio.\nAfter the forming of the new centre in the 19th century, the city expanded northward. The intense industrialization which began in the 1860s in Helsinki saw the construction of the industrial areas around Sörnäinen harbour and to the workers' district of Kallio, with the area becoming inhabited mostly by factory workers. However, most of the working-class families have long ago been replaced as the most typical Kallio residents by young adults and elderly people living alone, in a process which could be seen as some sort of gentrification. For many people who move into Helsinki from elsewhere in Finland, Kallio is the area where they first settle. Most flats are small, and rents are typically lower than elsewhere in central Helsinki, partly explaining the area's popularity among students and artists. The small flat sizes also mean that Kallio is expected to resist full gentrification. However, the rents have increased as the district has grown more popular and become an increasingly desirable area to live in.\n\nKallio (and Harju, which is often considered a part of Kallio) also has, more than any other district in Helsinki, a reputation as a \"bohemian\" and liberal area. The area has a heterogeneous population and many bars. The area also has a number of sex shops, strip clubs and massage parlors.\nPresident Tarja Halonen was born in Kallio and lived there until she was elected president in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 319
+    },
+    "banned_terms": [
+      {
+        "term": "kallio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5714,
+    "attempt": 5671,
+    "place_id": "gn-6639623",
+    "input": {
+      "place": {
+        "place_id": "gn-6639623",
+        "name": "Erskine",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.9005,
+        "lon": -4.45028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erskine, Renfrewshire",
+          "url": "https://en.wikipedia.org/wiki/Erskine,_Renfrewshire",
+          "text": "Erskine (, Scots: Erskin, Scottish Gaelic: Arasgain) is a town in the council area of Renfrewshire, and historic county of the same name, situated in the West Central Lowlands of Scotland. It lies on the southern bank of the River Clyde, providing the lowest crossing to the north bank of the river at the Erskine Bridge, connecting the town to Old Kilpatrick in West Dunbartonshire. Erskine is a commuter town at the western extent of the Greater Glasgow conurbation, bordering Bishopton to the west and Renfrew, Inchinnan, Paisley and Glasgow Airport to the south. Originally a small village settlement, the town has expanded since the 1960s as the site of development as an overspill town, boosting the population to over 15,000. In 2014, it was rated one of the most attractive postcode areas to live in Scotland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "erskine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5715,
+    "attempt": 5672,
+    "place_id": "gn-709034",
+    "input": {
+      "place": {
+        "place_id": "gn-709034",
+        "name": "Halych",
+        "country": "Ukraine",
+        "subdivision": "Ivano-Frankivsk",
+        "lat": 49.12374,
+        "lon": 24.72748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Halych",
+          "url": "https://en.wikipedia.org/wiki/Halych",
+          "text": "Halych (Ukrainian: Галич, IPA: [ˈɦɑlɪtʃ] ; Romanian: Halici; Polish: Halicz; Russian: Галич, romanized: Galich; German: Halytsch, Halitsch or Galitsch; Yiddish: העליטש, romanized: Heylitsh) is a historic city on the Dniester River in western Ukraine. The city gave its name to the Principality of Halych, the historic province of Galicia (Halychyna), and the Kingdom of Galicia–Volhynia, of which it was the capital until the early 14th century, when the seat of the local rulers moved to Lviv.\nNowadays, Halych is a small town located only on one part of the territory of the former Galician capital, although it has preserved its name. It belongs to Ivano-Frankivsk Raion (district) of Ivano-Frankivsk Oblast (region). It hosts the administration of Halych urban hromada, one of the hromadas of Ukraine. Halych lies 26 km (16 mi) north of the oblast capital, Ivano-Frankivsk. Population: 6,086 (2022 estimate)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "halych",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5716,
+    "attempt": 5673,
+    "place_id": "gn-8349092",
+    "input": {
+      "place": {
+        "place_id": "gn-8349092",
+        "name": "Ocean Reef",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.75871,
+        "lon": 115.73601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean Reef, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Ocean_Reef,_Western_Australia",
+          "text": "Ocean Reef is a suburb in northern Perth, Western Australia. It is located within the City of Joondalup. The name was coined by developers in the 1970s from the line of a reef visible several kilometres offshore. The name was formally adopted in 1974, replacing the prior name of Beaumaris, a name still retained by one of the shopping centres and one primary school.\nThe suburb is divided in two by Hodges Drive, with the development to the south often referred to as 'old' Ocean Reef (there are only a few years between the two). The boat harbour sits on this midway point at the western end of Hodges Drive, and there is a shopping centre in each end of the suburb - Beaumaris Shopping Centre in the north and Ocean Reef Shopping Centre to the south. Roadworks have recently been completed to extend the foreshore road from Hodges Drive (south) to Shenton Ave (north), extending the 'Sunset Coast' drive into the adjacent suburb of Iluka.\nLocated some 8 km (5.0 mi) north of the popular Hillarys Boat Harbour, the Ocean Reef Boat Harbour provides a public launching ramp for boats and a small fishing harbour.  During recent years, the City of Joondalup has prepared concept plans for the development of a world class recreational/residential boating, and tourism marina at the Ocean Reef Boat Harbour site (Ocean Reef Marina).  The proposed development encapsulates high levels of environmental sustainability and community amenity.  In 2009 the City of Joondalup asked the people of Ocean Reef and the surrounding suburbs what they thought of the proposed development.  Out of a total of 11,728 survey respondents, an overwhelming majority - 93.9% - were in favour of developing the site and 95.6% approved of the concept plan.  The Council has endorsed proceeding with the preparation of the necessary Business Case and Structure Plan for government approval.\nOcean Reef is served by three primary schools (Beaumaris Primary, St Simon Peter Catholic Primary, and Ocean Reef Primary).\nA dune walkway and cycle path hugs the coast from south to north, offering access to several small beaches, picnic areas, rest stops, and access paths into the suburb itself. A large protected dune area which is at times around 400 metres (1,300 ft) wide separates the houses from the Indian Ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 382
+    },
+    "banned_terms": [
+      {
+        "term": "ocean reef",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "reef",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5717,
+    "attempt": 5674,
+    "place_id": "gn-1139085",
+    "input": {
+      "place": {
+        "place_id": "gn-1139085",
+        "name": "Jurm",
+        "country": "Afghanistan",
+        "subdivision": "Badakhshan",
+        "lat": 36.86477,
+        "lon": 70.83421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jurm, Afghanistan",
+          "url": "https://en.wikipedia.org/wiki/Jurm,_Afghanistan",
+          "text": "Jurm (also spelled Jorm; Dari: جرم) is a village in Badakhshan province in northeastern Afghanistan. The village is located on the left bank of the Kokcha River, about 7 miles upstream the junction with the Warduj River. Around the turn of the 20th century, it was described as being a large collection of scattered hamlets, with a population of at least 400 families, possibly much more.\nThe name Jorm is said to be derived from the fine Timur Lang imposed on the villagers for an attack on his troops. The village proper lies on the left bank of the river, but its associated hamlets run 3 miles up and downstream from there on both banks. There was a large, ruined fort about half a mile south of the village proper where the hakim of Jurm resided. He commanded the Yamgan-Warduj and Barak sub-districts.\nHuts for those who graze their livestock can be found on both sides of the river up and down stream of Jurm. The location is highly regarded for its fruit and other vegetation, as well as for its fields and pastures. There was also a bazaar held there twice weekly, which specialized in whips.\nAround the turn of the 20th century, there was a wooden bridge crossing the river at Jurm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "jurm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5718,
+    "attempt": 5675,
+    "place_id": "gn-13526886",
+    "input": {
+      "place": {
+        "place_id": "gn-13526886",
+        "name": "Capitol Riverfront",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.87796,
+        "lon": -77.00314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capitol Riverfront",
+          "url": "https://en.wikipedia.org/wiki/Capitol_Riverfront",
+          "text": "The Capitol Riverfront is a business improvement district (BID) located just south of the United States Capitol between Capitol Hill and the Anacostia River in Washington, D.C. It was created by the District of Columbia City Council and approved by Mayor Fenty in August 2007. The BID is a mixed-use neighborhood. It was a former industrial area transformed into a business center, urban neighborhood, entertainment district, and waterfront destination. The project involves adding over 9,000 new apartments, condominiums, lofts, modern office towers, 1,200 hotel rooms, one million square feet of retail amenities, two grocery stores, new restaurants, shops, and cafes. Over 33,900,000 square feet (3,150,000 m2) of office, residential, hotel, and retail space, as well as four new parks, were planned over 10–15 years. The new 5-acre (20,000 m2) riverfront Yards Park opened in fall 2010.\nThe BID is governed by a board of directors composed of twenty property and business owners and seven non-voting community stakeholders. The BID's FY2009 budget was approximately $1.5 million and was funded by an assessment that applied to commercial property (including land and parking lots), residences of ten or more units, and hotels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "capitol riverfront",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "capitol",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "riverfront",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5719,
+    "attempt": 5676,
+    "place_id": "gn-1710705",
+    "input": {
+      "place": {
+        "place_id": "gn-1710705",
+        "name": "Initao",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.49972,
+        "lon": 124.30389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Initao",
+          "url": "https://en.wikipedia.org/wiki/Initao",
+          "text": "Initao, officially the Municipality of Initao (Cebuano: Lungsod sa Initao; Tagalog: Bayan ng Initao), is a 1st class municipality in the province of Misamis Oriental, Philippines based on the new reclassification of Department of Finance DOF-DO-074.2024 (Annex A Page 27). According to the 2024 census, it has a population of 34,445 people.\nIt is seated about 39 kilometres (24 mi) west of the provincial capital of Cagayan de Oro, 29 kilometres (18 mi) east of Iligan City, and about 767 kilometres (477 mi) south-south-east of Philippine capital, Manila. The nearest primary road network is the Butuan–Cagayan de Oro–Iligan Road. The nearest airport is Laguindingan International Airport located 39 minutes away towards Cagayan de Oro.\nHazardHunterPh app assessment on seismic hazard marks the town safe from ground rupture, prone to ground shaking and generally susceptible to liquefaction. Volcanic Hazard assessment mainly identifies it as having no immediate volcanic hazard threat base on its location to the nearest active volcano. However, it has high susceptibility to flooding at 1 to 2 meters flood height and lasting for more than 3 days.\nEconomic activity in the area is mainly dependent on fishing, agriculture, retail, tourism and government services such as The Misamis Oriental Provincial Hospital-Initao, Regional Trial Court Branch 44, Initao-Libertad 8th Municipal Circuit Trial Court, Initao College, the BJMP, DENR, DepEd etc. According to the Bureau of Local Government Finance, the annual regular revenue of Initao for the fiscal year of 2022 was ₱225,963,427.43 and for the first quarter of the fiscal year 2024, Initao has total fund/cash available amounting to ₱200,255,983.98 with ₱11,494,867.01 total payments of prior year/s accounts payable and ₱5,823,799.61 total continuing appropriation which results to ₱182,937,317.36 total fund/cash balance based on the Statement of Receipts and Expenditures (SRE) by LGU for the fiscal year of 2024 Q1.\nTourism sites include the Initao-Libertad Protected Landscape and Seascape which locals simply call \"lasang\" or forest in the local dialect, various beaches dotting its shorelines and recent additions of agritourism sites developed by locals.\nSignificant town celebrations include the town fiesta celebrated by Roman Catholics in honor of the Patron Saint Francis Xavier which is held every December 2 and 3 although the celebration stretches for a week. Various festivals promoting tourism are also being spearheaded by the LGU and the Provincial Government of Misamis Oriental."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 385
+    },
+    "banned_terms": [
+      {
+        "term": "initao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5720,
+    "attempt": 5677,
+    "place_id": "gn-2171945",
+    "input": {
+      "place": {
+        "place_id": "gn-2171945",
+        "name": "Caulfield North",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.8739,
+        "lon": 145.02485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caulfield North",
+          "url": "https://en.wikipedia.org/wiki/Caulfield_North",
+          "text": "Caulfield North is an inner suburb in Melbourne, Victoria, Australia, 8 km south-east of Melbourne's Central Business District, located within the City of Glen Eira local government area. Caulfield North recorded a population of 16,903 at the 2021 census.\nIt is bounded by Orrong Road in the west, Glen Eira Road in the south, Dandenong Road in the north and Kambrook Road in the east. The suburb contains Caulfield Park – a park of approximately 26 hectares (64.25 acres), bounded by Balaclava Road, Inkerman Road, Hawthorn Road, and Park Crescent.\nCaulfield North has a large Jewish population: 8619, representing 41.1% of its population, according to the 2016 census data. The suburb's population has a high level of educational attainment, with 45.6% having a bachelor's degree or above compared to 24.3% for Victoria and 22.0% for Australia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "caulfield north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caulfield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5721,
+    "attempt": 5678,
+    "place_id": "gn-2178378",
+    "input": {
+      "place": {
+        "place_id": "gn-2178378",
+        "name": "Abbotsford",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.8,
+        "lon": 145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbotsford, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Abbotsford,_Victoria",
+          "text": "Abbotsford (Woiwurrung: Carran-carramulk) is an inner-city suburb in Melbourne, Victoria, Australia, 2 km (1.2 mi) north-east of Melbourne's Central Business District, located within the City of Yarra local government area. Abbotsford recorded a population of 9,088 at the 2021 census.\nAbbotsford is bounded by Collingwood, Richmond and Clifton Hill and separated from Kew by the meandering Yarra River. Formerly part of the City of Collingwood, it is now part of the City of Yarra. Victoria Street forms the southern boundary to Abbotsford (with Richmond); Hoddle Street forms the western boundary (with Collingwood); the Eastern Freeway forms the northern boundary (with Clifton Hill) while the Yarra forms the eastern boundary with Kew, in Boroondara.\nSome well-known Abbotsford landmarks include the Skipping Girl Sign, Dights Falls, the former Collingwood Town Hall, Victoria Park Football Stadium and Abbotsford Convent.\nAbbotsford is designated one of the 82 Major Activity centres listed in the Metropolitan Strategy Melbourne 2030.\nAbbotsford takes its name from the estate of John Orr, which in turn is named after a ford in Scotland's Tweed River, used by the abbot of Melrose Abbey. Since World War II the area has become quite ethnically diverse."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "abbotsford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5722,
+    "attempt": 5679,
+    "place_id": "gn-2179756",
+    "input": {
+      "place": {
+        "place_id": "gn-2179756",
+        "name": "Waiuku",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -37.24806,
+        "lon": 174.73489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waiuku",
+          "url": "https://en.wikipedia.org/wiki/Waiuku",
+          "text": "Waiuku is a rural town in the Auckland Region of New Zealand. It is located at the southern end of the Waiuku River, which is an estuarial arm of the Manukau Harbour, and lies on the isthmus of the Āwhitu Peninsula, which extends to the northeast. It is 40 kilometres southwest of Auckland city centre, and 12 kilometres north of the mouth of the Waikato River.\nSettled in the 13th or 14th centuries, the Waiuku area was an important transportation hub, as the Te Pai o Kaiwaka portage was the preferred route for people travelling between the Waikato River and Manukau Harbour. The area became a centre for Ngāti Kahukōkā, a Waiohua hapū, by the 15th century. Ngāti Te Ata developed as a union between Waiohua and Waikato Tainui peoples, around the 17th century at Waiuku.\nWaiuku became a trading port in 1851, facilitating trade between the Waikato River and the port of Onehunga, and Purapura, a Ngāti Te Ata village was established at the navigable head of the Awaroa Creek to the south. After the Invasion of the Waikato in 1863, the port of Waiuku suffered due to the lack of Māori produce being transported. By the end of the 19th century, Waiuku had begun developing into a centre for the dairy industry. In 1922, a railway line branch was constructed to Waiuku, and by 1955 Waiuku had grown enough to become an independent borough. In 1968, the Glenbrook steel mill opened in neighbouring Glenbrook, becoming a major employer in Waiuku."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "waiuku",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5723,
+    "attempt": 5680,
+    "place_id": "gn-2185445",
+    "input": {
+      "place": {
+        "place_id": "gn-2185445",
+        "name": "Orewa",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.581,
+        "lon": 174.679
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orewa",
+          "url": "https://en.wikipedia.org/wiki/Orewa",
+          "text": "Orewa (Māori: Ōrewa) is a settlement in the northern Auckland Region of New Zealand. It is a suburb of the Hibiscus Coast, just north of the base of the Whangaparāoa Peninsula and 40 kilometres (25 mi) north of central Auckland. The Northern Motorway, part of State Highway 1, passes just inland of Orewa and extends through the twin Johnston Hill tunnels to near Puhoi.\nTāmaki Māori settled in the Orewa area since at least the 13th century, utilising the resources of the Ōrewa River and Whangaparāoa Bay, where an important shark fishery was located. After the Kawerau warrior Maki unified many of the Tāmaki Māori people of the northern and western Auckland Region, his younger son Maraeariki settled along the Ōrewa River. Kawerau hapū, including Ngāti Kahu, lived in the Orewa area until the mid-19th century.\nOrewa was a part of the Mahurangi Block, forest sold to the Crown in 1841. Kauri loggers and itinerant kauri gum diggers were among the first Europeans to come to Orewa, with the first permanent residents arriving in the 1840s and 1850s. Orewa House was constructed in 1856, becoming the de Jersey Grut family home for three generations, later run as a boarding house and accommodation by Alice and Edward Eaves. During the 1920s, Orewa became a popular destination for campers and holidayers.\nOrewa rapidly developed suburban housing in the 1950s and 1960s, in part due to the opening of the Auckland Harbour Bridge, with the town centre and Hillary Square developing from 1953. Further major developments at Orewa occurred in the 1980s and 2000s, and Orewa became the administrative centre for the Rodney District from 1989 to 2010. The town gained national press in 2004 when National Party leader Don Brash gave the Orewa Speech, in which he discussed race relations between Māori and Pākehā."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "orewa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
