@@ -1,0 +1,728 @@
+[
+ {
+  "id": "gn-295530",
+  "name": "Beersheba",
+  "codes": [
+   "ALIAS_UNSOURCED@-"
+  ]
+ },
+ {
+  "id": "gn-5358705",
+  "name": "Huntington Beach",
+  "codes": [
+   "READING_LEVEL@1",
+   "NAME_LEAK@3"
+  ]
+ },
+ {
+  "id": "gn-3405870",
+  "name": "Belém",
+  "codes": [
+   "READING_LEVEL@3"
+  ]
+ },
+ {
+  "id": "gn-3448439",
+  "name": "São Paulo",
+  "codes": [
+   "READING_LEVEL@1"
+  ]
+ },
+ {
+  "id": "gn-6354908",
+  "name": "Sydney",
+  "codes": [
+   "READING_LEVEL@1",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-5391811",
+  "name": "San Diego",
+  "codes": [
+   "READING_LEVEL@1",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-4791259",
+  "name": "Virginia Beach",
+  "codes": [
+   "READING_LEVEL@1"
+  ]
+ },
+ {
+  "id": "gn-3172629",
+  "name": "Monza",
+  "codes": [
+   "READING_LEVEL@1"
+  ]
+ },
+ {
+  "id": "gn-993800",
+  "name": "Johannesburg",
+  "codes": [
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2108502",
+  "name": "Honiara",
+  "codes": [
+   "READING_LEVEL@2",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2759661",
+  "name": "Arnhem",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-4685907",
+  "name": "Denton",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "SENTENCE_TOO_LONG@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-5907990",
+  "name": "Brantford",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-6174041",
+  "name": "Victoria",
+  "codes": [
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-4990729",
+  "name": "Detroit",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1692192",
+  "name": "Quezon City",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "NAME_LEAK@1",
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "NAME_LEAK@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "NAME_LEAK@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "NAME_LEAK@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2934246",
+  "name": "Düsseldorf",
+  "codes": [
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2946447",
+  "name": "Bonn",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2651123",
+  "name": "Doncaster",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3181928",
+  "name": "Bologna",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3390760",
+  "name": "Recife",
+  "codes": [
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3204541",
+  "name": "Banja Luka",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3363094",
+  "name": "Paarl",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1176615",
+  "name": "Islamabad",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3665542",
+  "name": "Zipaquirá",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1252948",
+  "name": "Warangal",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1624725",
+  "name": "Tarakan",
+  "codes": [
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2655524",
+  "name": "Blackburn",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3441575",
+  "name": "Montevideo",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-4722625",
+  "name": "Richardson",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-629634",
+  "name": "Brest",
+  "codes": [
+   "SOURCE_ARTICLE_UNKNOWN@1",
+   "READING_LEVEL@1",
+   "SOURCE_ARTICLE_UNKNOWN@2",
+   "READING_LEVEL@2",
+   "SOURCE_ARTICLE_UNKNOWN@3",
+   "READING_LEVEL@3",
+   "SOURCE_ARTICLE_UNKNOWN@4",
+   "READING_LEVEL@4",
+   "SOURCE_ARTICLE_UNKNOWN@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-984998",
+  "name": "Ladysmith",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-4221552",
+  "name": "Savannah",
+  "codes": [
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1688749",
+  "name": "San Pedro",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-184745",
+  "name": "Nairobi",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "CONTENT_BANNED@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3471039",
+  "name": "Balneário Camboriú",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-5393015",
+  "name": "Santa Clara",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3098722",
+  "name": "Gorzów Wielkopolski",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1267995",
+  "name": "Kanpur",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1736309",
+  "name": "Alor Setar",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2229748",
+  "name": "Kumbo",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2653261",
+  "name": "Cheltenham",
+  "codes": [
+   "READING_LEVEL@1",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2984114",
+  "name": "Reims",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3660689",
+  "name": "Ambato",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-379252",
+  "name": "Khartoum",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-3985710",
+  "name": "Cabo San Lucas",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-7279746",
+  "name": "Noida",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-747158",
+  "name": "Fatih",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1253986",
+  "name": "Udaipur",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1583992",
+  "name": "Da Nang",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1692565",
+  "name": "Pulilan",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1714201",
+  "name": "Dumaguete",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-1732811",
+  "name": "Kluang",
+  "codes": [
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "QUOTE_UNTRACEABLE@4",
+   "READING_LEVEL@4",
+   "QUOTE_UNTRACEABLE@5",
+   "READING_LEVEL@5"
+  ]
+ },
+ {
+  "id": "gn-2666199",
+  "name": "Uppsala",
+  "codes": [
+   "QUOTE_UNTRACEABLE@1",
+   "READING_LEVEL@1",
+   "QUOTE_UNTRACEABLE@2",
+   "READING_LEVEL@2",
+   "QUOTE_UNTRACEABLE@3",
+   "READING_LEVEL@3",
+   "READING_LEVEL@4",
+   "READING_LEVEL@5"
+  ]
+ }
+]
