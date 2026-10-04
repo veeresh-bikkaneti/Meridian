@@ -2,8 +2,18 @@
 // against the pool inputs and fold the results into the audit trail.
 //
 // Run: node scripts/clues/production/validate-production.mjs
+//        [--pool <pool.jsonl>] [--inputs <inputs.jsonl>]
+//        [--out-dir <dir>] [--records <records.jsonl>]
+//        [--stats <stats.json>]
 //
-// Reads:  pool.jsonl, tranches/out/*.jsonl (worker outputs, filename order)
+// Defaults reproduce the Phase 2 run exactly (pool.jsonl inputs,
+// tranches/out, records.jsonl, validation-stats.json). The Option A
+// continuation passes the full-lead inputs file and its own out dir
+// / records / stats paths; relative paths resolve against this
+// directory, absolute paths are used as-is.
+//
+// Reads:  pool inputs (for validation), rank order from the pool file,
+//         worker outputs from the out dir (*.jsonl, filename order)
 // Writes: records.jsonl          — one record per attempted place, in
 //                                  pool rank order: validator-passed
 //                                  accepted records verbatim, §6
@@ -23,7 +33,7 @@
 //   in validation-stats.json under pipelineIssues.
 
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, isAbsolute, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { SCHEMA_ID } from "../schema.mjs";
@@ -34,7 +44,16 @@ import {
 } from "../validate-clues.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const TRANCHES_DIR = join(HERE, "tranches", "out");
+
+function argValue(args, name) {
+  const idx = args.indexOf(name);
+  return idx >= 0 ? args[idx + 1] : undefined;
+}
+
+function resolvePath(value, fallback) {
+  const p = value ?? fallback;
+  return isAbsolute(p) ? p : join(HERE, p);
+}
 
 function readJsonLines(path) {
   return readFileSync(path, "utf8").split("\n").filter((l) => l.trim());
@@ -49,12 +68,21 @@ function setRejection(placeId, reason, missing) {
   };
 }
 
-function main() {
+function main(argv = []) {
+  const poolPath = resolvePath(argValue(argv, "--pool"), "pool.jsonl");
+  const inputsPath = resolvePath(argValue(argv, "--inputs"), "pool.jsonl");
+  const outDir = resolvePath(argValue(argv, "--out-dir"), join("tranches", "out"));
+  const recordsPath = resolvePath(argValue(argv, "--records"), "records.jsonl");
+  const statsPath = resolvePath(argValue(argv, "--stats"), "validation-stats.json");
+
   const poolInputs = new Map();
-  const poolRank = new Map();
-  readJsonLines(join(HERE, "pool.jsonl")).forEach((line, idx) => {
+  readJsonLines(inputsPath).forEach((line) => {
     const input = JSON.parse(line);
     poolInputs.set(input.place.place_id, input);
+  });
+  const poolRank = new Map();
+  readJsonLines(poolPath).forEach((line, idx) => {
+    const input = JSON.parse(line);
     poolRank.set(input.place.place_id, idx + 1);
   });
 
@@ -70,11 +98,11 @@ function main() {
   };
   const byPlace = new Map();
 
-  const trancheFiles = readdirSync(TRANCHES_DIR)
+  const trancheFiles = readdirSync(outDir)
     .filter((f) => f.endsWith(".jsonl"))
     .sort();
   for (const file of trancheFiles) {
-    const lines = readJsonLines(join(TRANCHES_DIR, file));
+    const lines = readJsonLines(join(outDir, file));
     lines.forEach((line, lineIdx) => {
       const where = `${file}:${lineIdx + 1}`;
       let record;
@@ -141,13 +169,13 @@ function main() {
 
   const ordered = [...byPlace.entries()].sort((a, b) => poolRank.get(a[0]) - poolRank.get(b[0]));
   writeFileSync(
-    join(HERE, "records.jsonl"),
+    recordsPath,
     ordered.map(([, record]) => JSON.stringify(record)).join("\n") + (ordered.length ? "\n" : ""),
   );
-  writeFileSync(join(HERE, "validation-stats.json"), JSON.stringify(stats, null, 2) + "\n");
+  writeFileSync(statsPath, JSON.stringify(stats, null, 2) + "\n");
   console.log(JSON.stringify(stats, null, 2));
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  main();
+  main(process.argv.slice(2));
 }
