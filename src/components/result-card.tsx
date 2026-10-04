@@ -212,8 +212,8 @@ export function ResultCard({
 
   // Pin-compare line for the miss card: names BOTH locations ("Your pin:
   // Nebraska · True spot: District of Columbia"). Fail closed — null renders
-  // exactly as today (no line). Only computed for the done phase; the hit
-  // card never shows it.
+  // exactly as today (no line). Computed whenever a pin and place exist;
+  // only rendered in the done (miss) block below — the hit card never shows it.
   const pinLine = useMemo(() => {
     if (!drop || !place) return null;
     return pinCompareLine(
