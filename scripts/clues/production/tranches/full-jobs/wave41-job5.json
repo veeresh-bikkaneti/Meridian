@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 8137,
+    "attempt": 8081,
+    "place_id": "gn-3984079",
+    "input": {
+      "place": {
+        "place_id": "gn-3984079",
+        "name": "Santa María del Oro",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 21.33352,
+        "lon": -104.58685
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa María del Oro, Nayarit",
+          "url": "https://en.wikipedia.org/wiki/Santa_Mar%C3%ADa_del_Oro,_Nayarit",
+          "text": "Santa María del Oro is a municipality and municipal seat in the Mexican state of Nayarit.  It is located in the south of the state and has boundaries with the municipalities of El Nayar, Tepic, Ahuacatlán, Jala, San Pedro Lagunillas, La Yesca, and Xalisco.  The population was 21,688 in 2005, with the municipal seat of the same name having 3,314 inhabitants.  The total area was 912.90 km2.\nSant María del Oro is famous for the crater lake of the same name, located east of the town.  This lake has a modest tourist infrastructure and attracts many national and foreign tourists to the area.\nThe economy is based on tourism and agriculture.  Corn, peanuts, and sugarcane are the most important crops.  There is also a sizable cattle herd and the raising of poultry has increased in recent years.\nThe major river Río Grande de Santiago crosses the northern region of the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "santa maria del oro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8138,
+    "attempt": 8082,
+    "place_id": "gn-4168506",
+    "input": {
+      "place": {
+        "place_id": "gn-4168506",
+        "name": "Pine Island Ridge",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.09481,
+        "lon": -80.27394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pine Island Ridge, Florida",
+          "url": "https://en.wikipedia.org/wiki/Pine_Island_Ridge,_Florida",
+          "text": "Pine Island Ridge was a census-designated place (CDP) in Broward County, Florida, United States. The population was 5,199 at the 2000 census. Formerly a part of unincorporated Broward County, Pine Island Ridge was annexed into the town of Davie, Florida on the 15th of September 2006, and is now a neighborhood of that town.\nThe natural area was once the site of hunting camps of the Tequesta Native American tribe, as well as a refuge for the Seminoles during the Second Seminole War (1835-1842).\nBroward County purchased Pine Island Ridge in 1989 as part of the $75 million Environmentally Sensitive Lands Bond Issue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "pine island ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pine",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8139,
+    "attempt": 8083,
+    "place_id": "gn-4599981",
+    "input": {
+      "place": {
+        "place_id": "gn-4599981",
+        "name": "Walhalla",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 34.76482,
+        "lon": -83.06404
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walhalla, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Walhalla,_South_Carolina",
+          "text": "Walhalla is a city in the foothills of the Blue Ridge Mountains in Oconee County, South Carolina, United States. Designated in 1868 as the county seat, it lies within the area of the Blue Ridge Escarpment, an area of transition between mountains and piedmont, and contains numerous waterfalls. It is located 16 miles (26 km) from Clemson University in Clemson, South Carolina.\nThis European-American city was founded in 1850, long after the Indian Removal of the Cherokee in 1838. Early residents were predominantly German immigrants who had been refugees from the German revolutions of 1848-1849. Some English and Scotch-Irish farmers also settled here. During the Reconstruction era, when Oconee County was organized in 1868, the state legislature designated Walhalla as its county seat.\nWhile its population was 4,072 as of the 2020 census, \"Walhalla\" is used both colloquially and practically to refer to a larger area than is within city limits, often being expanded to the whole 29691 zip code. This larger area has a higher, more spread-out population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "walhalla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8140,
+    "attempt": 8084,
+    "place_id": "gn-4954364",
+    "input": {
+      "place": {
+        "place_id": "gn-4954364",
+        "name": "Walpole",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.14177,
+        "lon": -71.2495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walpole, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Walpole,_Massachusetts",
+          "text": "Walpole is a town in Norfolk County, Massachusetts, United States. Walpole Town, as the Census refers to it, is located approximately 18 miles (29 km) south of downtown Boston, Massachusetts, and 30 miles (48 km) north of Providence, Rhode Island. The population of Walpole was 26,383 at the 2020 census. Walpole was first settled in 1659 and was considered a part of Dedham until officially incorporated in 1724. The town was named after Sir Robert Walpole, de facto first prime minister of Great Britain. It also encompasses the entirely distinct entity of Walpole (CDP), with its much smaller area of 2.9 square miles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "walpole",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8141,
+    "attempt": 8085,
+    "place_id": "gn-5127368",
+    "input": {
+      "place": {
+        "place_id": "gn-5127368",
+        "name": "Montrose",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.25232,
+        "lon": -73.93153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montrose, New York",
+          "url": "https://en.wikipedia.org/wiki/Montrose,_New_York",
+          "text": "Montrose is a hamlet (and census-designated place) within the town of Cortlandt, in the northwestern corner of Westchester County, New York, United States. The hamlet is named after the Montross family, most of whom worked nearby in Buchanan at the tannery. It is located near Croton-on-Hudson and Buchanan. The once bucolic character of the hamlet has changed, but is still defined by the Hudson River, numerous wooded hills and steep slopes, wetland areas and streams, while increases in population have designated the area part of the New York—Jersey City—Newark NY—NJ urban area. As of the 2020 census, Montrose had a population of 2,862."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "montrose",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8142,
+    "attempt": 8086,
+    "place_id": "gn-6160739",
+    "input": {
+      "place": {
+        "place_id": "gn-6160739",
+        "name": "Sydenham",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.56679,
+        "lon": -80.79972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sydenham, Grey County, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Sydenham,_Grey_County,_Ontario",
+          "text": "Sydenham was a township community in Grey County, Ontario, Canada, named in part for Lord Sydenham, governor of Canada from 1839 to 1841.  The area is bounded on the north side by Owen Sound, a large inlet of Georgian Bay.\nSydenham Township was surveyed in 1842, with concessions running north to south, and at that time the land consisted mainly of hardwood forest.  Immigrants from Scotland and Ireland began to settle this area at about this time.  The first mill was built in 1846, and the first school section was organized in 1851.\nThe first post office, at Woodford, was established in 1852. In 1853 the residents organized an Agricultural Society. By 1861 there were over 3,000 people living in the township.\nAlthough telephone lines were connecting nearby towns as early as 1886, it was not until 1908 that telephones began to be installed in Sydenham Township.\nSydenham Township included the villages of Leith, Annan, Hoath Head, Bognor, Balaclava, and Woodford."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "sydenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8143,
+    "attempt": 8087,
+    "place_id": "gn-639248",
+    "input": {
+      "place": {
+        "place_id": "gn-639248",
+        "name": "Ristiina",
+        "country": "Finland",
+        "subdivision": "South Savo",
+        "lat": 61.50579,
+        "lon": 27.24643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ristiina",
+          "url": "https://en.wikipedia.org/wiki/Ristiina",
+          "text": "Ristiina (Finnish: [ˈristiːnɑ]; in Swedish also known as Kristina) was a municipality of Finland. It was founded in 1649 and it was named after Kristina Stenbock, the wife of Governor General and Count Per Brahe. From the beginning of the year 2013 Ristiina is a part of Mikkeli city.\nRistiina is located in the province of Eastern Finland and is part of the South Savo region. The municipality has a population of 4,856 (31 December 2012) and covers an area of 742.02 square kilometres (286.50 sq mi) of which 175.87 km2 (67.90 sq mi)\nis water. The population density is 8.5772/km2 (22.2149/sq mi).\nThe municipality is unilingually Finnish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "ristiina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8144,
+    "attempt": 8088,
+    "place_id": "gn-6620367",
+    "input": {
+      "place": {
+        "place_id": "gn-6620367",
+        "name": "Virginia Water",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.40343,
+        "lon": -0.56651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Virginia Water",
+          "url": "https://en.wikipedia.org/wiki/Virginia_Water",
+          "text": "Virginia Water is a commuter village in the Borough of Runnymede in Surrey, England. It is home to the Wentworth Estate and the Wentworth Club. The area has much woodland and occupies a large minority of the Runnymede district. Its name is shared with the lake on its western boundary within Windsor Great Park. Virginia Water has multiple transport links with London–Trumps Green and Thorpe Green touch the M3, Thorpe touches the M25, and Heathrow Airport is 7 miles (11 km) northeast.\nMany of the detached houses are on the Wentworth Estate, the home of the Wentworth Club which has four golf courses. The Ryder Cup was first played there. It is also home to the headquarters of the PGA European Tour, the professional golf tour.\nIn 2011 approximately half of the homes of the postcode district, which is narrower than the current electoral ward, were detached houses. In 2015 Land Registry sales data recorded Virginia Water's single postcode district as the most expensive as to the value of homes nationwide."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "virginia water",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "virginia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "water",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8145,
+    "attempt": 8089,
+    "place_id": "gn-664722",
+    "input": {
+      "place": {
+        "place_id": "gn-664722",
+        "name": "Topraisar",
+        "country": "Romania",
+        "subdivision": "Constanța County",
+        "lat": 44.01667,
+        "lon": 28.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Topraisar",
+          "url": "https://en.wikipedia.org/wiki/Topraisar",
+          "text": "Topraisar (Romanian pronunciation: [tropajˈsar]) is a commune in the Constanța County, Northern Dobruja, Romania.\nThe commune includes four villages:\n\nTopraisar (historical name: Crimean Tatar: Topraysar)\nBiruința (historical name: Crimean Tatar: Muratan, probably rounded out phonetically from Murat Han)\nMovilița (historical name: Crimean Tatar: Musurat, probably rounded out phonetically from Musavvirat; for short periods in the 20th century it has also been named Regele Mihai and Filimon Sîrbu (1948-1964) )\nPotârnichea (historical name: Crimean Tatar: Abdullahköy)\nTopraisar and the surrounding areas were the site of fierce fighting in 1916 during two battles of the World War I: the First and Second Battle of Cobadin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "topraisar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8146,
+    "attempt": 8090,
+    "place_id": "gn-8347880",
+    "input": {
+      "place": {
+        "place_id": "gn-8347880",
+        "name": "Menora",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.91889,
+        "lon": 115.86208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menora, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Menora,_Western_Australia",
+          "text": "Menora is a suburb of Perth, Western Australia. Its local government area is the City of Stirling.\nIn 1954, with the establishment of official suburban boundaries, the new offshoot from Mount Lawley was named Menora in honour of an old theatre of that name which was located within its borders. Further support for the name was provided by the local Jewish community for whom the Menorah holds special significance. From an aerial point of view, a section of the roads are shaped like the Menorah.\nMenora is home to a large Jewish community (8.2%), the heart of which is the Perth Hebrew Congregation. It is close to the Carmel Jewish School, JHub Maccabi Community Centre and other Kosher facilities such as the Kosher Food Centre in Menora and the Kosher Besh Fresh cafe. Jewish worshipers from the Reform/Progressive tradition, are served by Temple David in nearby Mount Lawley.\nIn the 2021 census, Menora had a median age of 57 (as compared with 38 for Australia), children aged 0–14 years made up 12.6% and 41.2% of its population were over 65 years of age. This is likely attributable to a high concentration of retirement villages in the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "menora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8147,
+    "attempt": 8091,
+    "place_id": "gn-13353866",
+    "input": {
+      "place": {
+        "place_id": "gn-13353866",
+        "name": "Hamilton Parish",
+        "country": "Bermuda",
+        "subdivision": "Hamilton",
+        "lat": 32.34221,
+        "lon": -64.73019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamilton Parish",
+          "url": "https://en.wikipedia.org/wiki/Hamilton_Parish",
+          "text": "Hamilton Parish (originally Bedford Parish) is one of the nine parishes of Bermuda. It was renamed for Scottish aristocrat James Hamilton, 2nd Marquess of Hamilton (1589–1625) when he purchased the shares originally held in the Virginia Company by Lucy Russell, Countess of Bedford.\nIt is located in the northeast of the chain's main island, and is split in two by the large Harrington Sound, occupying all but the south and northeastern tip of its coast. The islands within the sound also form part of the parish. It is joined to Smith's Parish in the south, and St. George's Parish in the northeast. As with most of Bermuda's parishes, it covers just over 2.3 square miles (about 6.0 km² or 1500 acres). It had a population of 5,584 in 2016.\nNatural features in Hamilton include Flatt's Inlet, Trunk Island, Shelly Bay, Bailey's Bay, Mangrove Lake, Trott's Pond, Crystal Cave, Castle Harbor, and The Causeway, which links Hamilton with St. George's Parish.\nNotable locations in Hamilton include the Bermuda Aquarium and Museum and the small settlement of Flatt's Village. Historically, the Colony's government had on occasion met in Flatts Village, rather than the then Capital of St. George's. The Village had prospered, in the days when the Colony's economy was seafaring, according to popular accounts, due to its distance from customs officials in St. George's.\nBailey's Bay, on the north shore of the Parish has also long been a thriving community, although it has never attained the status of a municipality. The name is used to denote an area which includes Callan Glen, the shallow depression running North-Eastward from Bailey's Bay (which was named for shipbuilder Claud MacCallan), Coney Island, Walsingham, and that part of the Island running Westward as far as Abbot's Cliff, on the Harrington Sound Shore. The area was long dominated by branches of the Outerbridge family (which includes the MacCallans). Notable landmarks include the Abbot's Cliff, Crystal Caves, and Mount Wyndham, once the location of Admiralty House, and from which the attack on Washington DC in 1815 was planned. Other sites of historical interest in the area include Tom Moore's Tavern (originally a private home, now a restaurant), and the adjacent nature reserve, and the Western end of the Causeway. Other non-municipal 'communal areas' of Hamilton include the area around The Crawl, including Crawl Hill (often referred to by locals as 'Crawl'), and Shelly Bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 397
+    },
+    "banned_terms": [
+      {
+        "term": "hamilton parish",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hamilton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "parish",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8148,
+    "attempt": 8092,
+    "place_id": "gn-2263596",
+    "input": {
+      "place": {
+        "place_id": "gn-2263596",
+        "name": "Salvaterra de Magos",
+        "country": "Portugal",
+        "subdivision": "Santarém",
+        "lat": 39.02788,
+        "lon": -8.7935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salvaterra de Magos",
+          "url": "https://en.wikipedia.org/wiki/Salvaterra_de_Magos",
+          "text": "Salvaterra de Magos (European Portuguese pronunciation: [ˌsalvɐˈtɛʁɐ ðɨ ˈmaɣuʃ] ) is a municipality in the district of Santarém in Portugal. The population in 2011 was 22,159, in an area of 243.93 km2.\nThe present Mayor is Hélder Manuel Ramalho de Sousa Esménio of the PS. The previous mayor Ana Cristina Pardal Ribeiro, had been the only mayor elected by the Left Bloc. The municipal holiday is Ascension Day.\nIt was once home to the Royal Palace of Salvaterra de Magos, a favored royal residence and hunting lodge of the Portuguese royal family. It was destroyed by fire in the early 19th century. Today, only the chapel and the falconry remain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "salvaterra de magos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "salvaterra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "magos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8149,
+    "attempt": 8093,
+    "place_id": "gn-2298453",
+    "input": {
+      "place": {
+        "place_id": "gn-2298453",
+        "name": "Larabanga",
+        "country": "Ghana",
+        "subdivision": "Savannah",
+        "lat": 9.21886,
+        "lon": -1.85961
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Larabanga",
+          "url": "https://en.wikipedia.org/wiki/Larabanga",
+          "text": "Larabanga (Arabic: لارابانجا) is a town in West Gonja district, a district in the Savannah Region of Ghana. It is known for its whitewashed adobe Sahelian mosque and it is called Larabanga Mosque, said to date from 1421, and which, having been built at the height of the trans-Saharan trade, is reputed to be Ghana's oldest mosque and houses a copy of the Qur'an almost as old. The Larabanga Mosque is also referred to as 'Mecca of West Africa'\nThe Town is also known for its Mystic Stone, for its patterned vernacular architecture, and as the entrance to the Mole National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "larabanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8150,
+    "attempt": 8094,
+    "place_id": "gn-2633422",
+    "input": {
+      "place": {
+        "place_id": "gn-2633422",
+        "name": "Yapton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.8209,
+        "lon": -0.613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yapton",
+          "url": "https://en.wikipedia.org/wiki/Yapton",
+          "text": "Yapton is a village and civil parish in the Arun District of West Sussex, England, three miles (4.8 km) north east of Bognor Regis at the intersection of the B2132 and B2233 roads.\nYapton lies on the coastal plain south west of Arundel, between the South Downs and the sea. St Mary the Virgin parish church, 13th century or earlier in origin, is in the centre of the village. It houses a twelfth-century font.  Nearby, Yapton Free Church was built in 1861 as a Congregational chapel but is now Evangelical in character.  Yapton C of E Primary School was founded in 1864.\nOther settlements in the parish include Bilsham and Flansham. The settlement of Bilsham was listed in the Domesday Book of 1086 as having 14 households. Bilsham Chapel is a deconsecrated former chapel of ease to St Mary the Virgin Church; it dates from the 13th–14th century but fell out of use in the mid-16th century.  The building is now a house."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "yapton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8151,
+    "attempt": 8095,
+    "place_id": "gn-2650128",
+    "input": {
+      "place": {
+        "place_id": "gn-2650128",
+        "name": "Elderslie",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.83327,
+        "lon": -4.48598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elderslie, Scotland",
+          "url": "https://en.wikipedia.org/wiki/Elderslie,_Scotland",
+          "text": "Elderslie (Scottish Gaelic: Achadh na Feàrna) is a village in the council area and historic county of Renfrewshire in west central Scotland. It chiefly serves as a commuter village, situated midway between the towns of Paisley and Johnstone, and lies 11 miles (18 km) west of Glasgow city centre.\nElderslie is most famous as the assumed birthplace of Scottish hero Sir William Wallace, a knight born around 1270 who served as a military leader in the Wars of Scottish Independence before being captured and executed. There is a monument to him in the village, alongside what is believed to be his home."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "elderslie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8152,
+    "attempt": 8096,
+    "place_id": "gn-2801147",
+    "input": {
+      "place": {
+        "place_id": "gn-2801147",
+        "name": "Braives",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.62848,
+        "lon": 5.14798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braives",
+          "url": "https://en.wikipedia.org/wiki/Braives",
+          "text": "Braives (French pronunciation: [bʁɛv]; Walloon: Braive) is a municipality of Wallonia located in the province of Liège, Belgium. \nOn January 1, 2006, Braives had a total population of 5,579. The total area is 44.00 km2 which gives a population density of 127 inhabitants per km2.\nThe municipality consists of the following districts: Avennes, Braives, Ciplet, Fallais, Fumal, Latinne, Tourinne, and Ville-en-Hesbaye. \nThere are also three hamlets: Hosdent in Latinne, Pitet in Fallais, and Foncourt in Fumal.\nFallais is famous for its medieval castle and other tourist attractions including a water mill, a former wheelmakershop, the river Méhaigne and the Ravel cycling path."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "braives",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8153,
+    "attempt": 8097,
+    "place_id": "gn-2924862",
+    "input": {
+      "place": {
+        "place_id": "gn-2924862",
+        "name": "Freyburg",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 51.21362,
+        "lon": 11.76804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Freyburg, Germany",
+          "url": "https://en.wikipedia.org/wiki/Freyburg,_Germany",
+          "text": "Freyburg (German pronunciation: [ˈfʁaɪbʊʁk] ) is a town in the Burgenlandkreis district, in Saxony-Anhalt, Germany. It is situated on the river Unstrut, 9 km northwest of Hanseatic Naumburg, 63 km from Leipzig and 231 km from Berlin. It is part of the Verwaltungsgemeinschaft (\"collective municipality\") Unstruttal. On 1 July 2009 it absorbed the former municipalities Pödelist, Schleberoda, Weischütz and Zeuchfeld. Freyburg consists of the Ortsteile (divisions) Dobichau, Freyburg, Nißmitz, Pödelist, Schleberoda, Weischütz, Zeuchfeld and Zscheiplitz.\nThe town is a tourist destination, best known for its vineyards, historic town centre, superb 11th-century castle and associations with Friedrich Ludwig Jahn (founder of modern gymnastics). One of the most prosperous towns in the region, Freyburg is nicknamed \"Tuscany of the North\" It is the headquarters of one of the world's largest wine companies.\nThe town and the castle of Freyburg are part of the World Heritage designation \"Naumburg Cathedral and the High Medieval Cultural Landscape of the Rivers Saale and Unstrut\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "freyburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8154,
+    "attempt": 8098,
+    "place_id": "gn-3047986",
+    "input": {
+      "place": {
+        "place_id": "gn-3047986",
+        "name": "Mogyoród",
+        "country": "Hungary",
+        "subdivision": "Pest County",
+        "lat": 47.59748,
+        "lon": 19.2407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mogyoród",
+          "url": "https://en.wikipedia.org/wiki/Mogyor%C3%B3d",
+          "text": "Mogyoród is a village in Pest County, Hungary. The Battle of Mogyoród took place here on 14 March 1074, between Solomon, King of Hungary and his cousins Géza and Ladislaus, who were claiming rights to the throne. To commemorate the victory, László Benchmarks were installed, establishing a monastery on Klastrom mountain. Among the sights of the village is the Roman Catholic church, built between 1745 and 1749, the statue of St John of Nepomuk, carved from stone, and the Baroque parish built by the Bishop of Vác. The Hungaroring race track is located in the town, home to the Hungarian Grand Prix."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "mogyorod",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8155,
+    "attempt": 8099,
+    "place_id": "gn-3983635",
+    "input": {
+      "place": {
+        "place_id": "gn-3983635",
+        "name": "Santiago Maravatío",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.17293,
+        "lon": -100.99537
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago Maravatío",
+          "url": "https://en.wikipedia.org/wiki/Santiago_Maravat%C3%ADo",
+          "text": "Santiago Maravatío is a Mexican city (and municipality) located in the Bajío (lowlands) of the state of Guanajuato. With an area of 91.760 square kilometres, Santiago Maravatío accounts for less than 1% of the surface of the state.  It is bordered to the north, east and southeast by Salvatierra and to the west by Yuriria.\nSantiago Maravatío was founded on July 25, 1540 and was named after St. James (Apóstol Santiago el Mayor), the patron saint of Spain, in what had been a Chichimeca community (Maravatío in Purepecha means \"Precious Place\").\nThe municipality had a total of 7,151 inhabitants as of 2006. The municipal president of Santiago Maravatío and its ten microregions is Leonel Flores.  The economy of the municipality is mostly based on agriculture and ranching."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "santiago maravatio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maravatio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8156,
+    "attempt": 8100,
+    "place_id": "gn-5215215",
+    "input": {
+      "place": {
+        "place_id": "gn-5215215",
+        "name": "Tarentum",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.60146,
+        "lon": -79.75977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarentum, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Tarentum,_Pennsylvania",
+          "text": "Tarentum is a borough in Allegheny County, Pennsylvania, approximately 22 miles northeast of Pittsburgh, located along the Allegheny River. Incorporated in 1842 and founded by Henry Brackenridge, the borough historically served as an industrial center for glass, paper, steel, and brick manufacturing. The borough is connected to New Kensington via the George D. Stuart Bridge and is served by the Highlands School District.\nThe Pennsylvania Railroad operated a station in Tarentum; its rail line ran through the town. The population was 4,352 at the 2020 census. Two statues of Hebe, the Greek goddess of youth, are displayed by the borough in Tarentum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "tarentum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

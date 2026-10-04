@@ -1,0 +1,857 @@
+[
+  {
+    "rank": 8238,
+    "attempt": 8181,
+    "place_id": "gn-3589795",
+    "input": {
+      "place": {
+        "place_id": "gn-3589795",
+        "name": "San Marcos La Laguna",
+        "country": "Guatemala",
+        "subdivision": "Sololá",
+        "lat": 14.72504,
+        "lon": -91.25844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Marcos La Laguna",
+          "url": "https://en.wikipedia.org/wiki/San_Marcos_La_Laguna",
+          "text": "San Marcos La Laguna is a municipality and village in the Sololá Department of Guatemala, situated along a narrow volcanic cove on the northwestern shore of Lake Atitlán. Located northwest of the San Pedro, Tolimán, and Atitlán volcanoes, the settlement sits at an elevation of 1,585 metres (5,200 ft), descending steep terrain to the lakefront at 1,562 metres (5,125 ft). The local population is predominantly Kaqchikel Maya, maintaining traditional agricultural practices and cultural heritage alongside protected natural sites such as the Cerro Tzankujil Nature Reserve.\nIt is a small village of 2200 inhabitants; the majority of the population are Kaqchikel-speaking indigenous Mayans.\nSan Marcos La Laguna (\"San Marcos\": in honor of its patron saint Marcos Evangelista; \"La Laguna\": due to its geographic location close to Lake Atitlán) is a municipality in the department of Sololá in the south-western region of the Republic of Guatemala.\nIn pre-Columbian times, the first Kachiquel settlers arrived from the area where the modern municipalities of San Lucas Tolimán and Santiago Atitlán are located, specifically from the place called \"Pakip\". During the colonial era it was an encomienda in charge of the descendants of the Spanish conqueror Sancho de Barahona, among whom is the first president of the Federal Republic of Central America, General Manuel José Arce y Fagoaga.\nAfter the Independence of Central America in 1821, it became part of the department of Sololá/Suchitepéquez;6 and in 1838 it was part of the ephemeral State of Los Altos until it was reincorporated into the State of Guatemala by the conservative general Rafael Carrera in 1840. Later, after the Liberal Reform of 1871, on August 12, 1872, the de facto government of provisional president Miguel García Granados created the department of Quiché, to which it awarded a large part of the territory of Sololá, although San Marcos La Laguna remained in the latter.\nAlready in the 21st century, in 2005 the municipality was severely affected by storm Stan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 321
+    },
+    "banned_terms": [
+      {
+        "term": "san marcos la laguna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marcos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "laguna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8239,
+    "attempt": 8182,
+    "place_id": "gn-4015076",
+    "input": {
+      "place": {
+        "place_id": "gn-4015076",
+        "name": "Casas Grandes",
+        "country": "Mexico",
+        "subdivision": "Chihuahua",
+        "lat": 30.3775,
+        "lon": -107.95202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casas Grandes",
+          "url": "https://en.wikipedia.org/wiki/Casas_Grandes",
+          "text": "Casas Grandes (Spanish for Great Houses; also known as Paquimé) is a prehistoric archaeological site in the northern Mexican state of Chihuahua. Construction of the site is attributed to the Mogollon culture. Casas Grandes has been designated a UNESCO World Heritage Site under the purview of INAH and a \"Pueblo Mágico\" since 2015.\nCasas Grandes is one of the largest and most complex Mogollon culture sites in the region. Settlement began after 1130 AD, and the larger buildings developed into multi-storied dwellings after 1350 AD. The community was abandoned approximately in 1450 AD. Casas Grandes is regarded as one of the most significant Mogollon archaeological zones in the northwestern Mexico region, linking it to other sites in Arizona and New Mexico in the United States, and demonstrating the extent of the Mogollon sphere of influence.\nThe Casas Grandes complex is situated in a broad, fertile valley along the Casas Grandes or San Miguel River, approximately 56 kilometres (35 mi) south of Janos and 240 kilometres (150 mi) northwest of the state capital, Chihuahua. The settlement depended on irrigation to sustain its agricultural activities.\nThe archaeological zone is contained within the eponymous modern municipio (municipality) of Casas Grandes. The valley and region have been inhabited by aboriginal groups for millennia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "casas grandes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "casas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grandes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8240,
+    "attempt": 8183,
+    "place_id": "gn-7261152",
+    "input": {
+      "place": {
+        "place_id": "gn-7261152",
+        "name": "Fairchild Air Force Base",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.61879,
+        "lon": -117.64826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairchild Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Fairchild_Air_Force_Base",
+          "text": "Fairchild Air Force Base (AFB) (IATA: SKA, ICAO: KSKA, FAA LID: SKA) is a United States Air Force base, located in the northwest United States in eastern Washington, approximately twelve miles (20 km) southwest of Spokane.\nThe host unit at Fairchild is the 92nd Air Refueling Wing (92 ARW) assigned to the Air Mobility Command's Eighteenth Air Force. The 92 ARW is responsible for providing air refueling, as well as passenger and cargo airlift and aero-medical evacuation missions supporting U.S. and coalition conventional operations as well as U.S. Strategic Command strategic deterrence missions.\nFairchild AFB was established 84 years ago in 1942 as the Spokane Army Air Depot. and is named in honor of General Muir S. Fairchild (1894–1950); a World War I aviator from the state, he was the Vice Chief of Staff of the Air Force at the time of his death.\nDuring the Cold War, Fairchild was a Strategic Air Command (SAC) base for 45 years (1947–1992), with bombers and tankers, as well as missiles for a brief period (1960–1965).\nAs of 2018, the 92d Air Refueling Wing was commanded by Colonel Derek Salmi. Its Command Chief Master Sergeant was Chief Master Sergeant Lee Mills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "fairchild air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fairchild",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8241,
+    "attempt": 8184,
+    "place_id": "gn-5100356",
+    "input": {
+      "place": {
+        "place_id": "gn-5100356",
+        "name": "Lawrenceville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.29733,
+        "lon": -74.7296
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lawrenceville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Lawrenceville,_New_Jersey",
+          "text": "Lawrenceville is an unincorporated community and census-designated place (CDP) within Lawrence Township in Mercer County, in the U.S. state of New Jersey. The community is situated roughly halfway between Princeton and Trenton. Lawrenceville is part of the Trenton–Princeton metropolitan area within the New York combined statistical area; however, the CDP actually is located approximately 15 miles closer to Philadelphia than to New York City, and as with the remainder of Mercer County, lies within the Federal Communications Commission's Philadelphia Designated Market Area. As of the 2020 census, the CDP's population was 3,751, a decrease of 136 (−3.5%) from the 3,887 recorded at the 2010 census, which in turn had reflected a decrease of 194 (−4.8%) from the 4,081 counted in the 2000 census.\nLawrenceville is also known as the \"village of Lawrenceville\". Its core is the Main Street Historic District, which was listed both in the New Jersey Register of Historic Places and National Register of Historic Places in 1972, and was one of the first registered historic districts in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "lawrenceville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8242,
+    "attempt": 8185,
+    "place_id": "gn-5103384",
+    "input": {
+      "place": {
+        "place_id": "gn-5103384",
+        "name": "Rochelle Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.90732,
+        "lon": -74.07514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rochelle Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Rochelle_Park,_New_Jersey",
+          "text": "Rochelle Park is a township in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 5,814, an increase of 284 (+5.1%) from the 2010 census count of 5,530, which in turn reflected an increase of two people (+0.0%) from the 5,528 counted in the 2000 census.\nWhat is now Rochelle Park was originally incorporated as Midland Township on March 7, 1871, from portions of New Barbadoes Township. Portions of the township were taken to form the boroughs of Delford (on March 8, 1894; now Oradell), Maywood (June 30, 1894), Riverside (also June 30, 1894; now River Edge) and Paramus (March 2, 1922). Rochelle Park was formed as a township by an act of the New Jersey Legislature on November 5, 1929, replacing Midland Township, based on the results of a referendum held on that same day that passed by a 503–69 margin. The main impetus behind the change in name was to avoid confusion with the nearby community of Midland Park. The township was named for the port city of La Rochelle, France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "rochelle park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rochelle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8243,
+    "attempt": 8186,
+    "place_id": "gn-2553654",
+    "input": {
+      "place": {
+        "place_id": "gn-2553654",
+        "name": "Bzou",
+        "country": "Morocco",
+        "subdivision": "Beni Mellal-Khenifra",
+        "lat": 32.09171,
+        "lon": -7.04786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bzou",
+          "url": "https://en.wikipedia.org/wiki/Bzou",
+          "text": "Bzou (Arabic: بزو Berber languages: ⴱⵣⵓ)is a town  in the northwest corner of Morocco’s Azilal Province, just off the main road between the major cities of Beni-Mellal and Marrakesh. The sprawling commune of Bzou is composed of various Berber and Arabic-speaking douwars (hamlets) tucked into the foothills of the High Atlas Mountains. The main, Arabic speaking cluster of douwars (Lamdarssa, Aghbalu, Bahi) forms Bzou's heart; on its flanks are an assortment of smaller, generally Berber douwars up in the surrounding mountains and cradling the banks of the river Oued el Abid.\nWith a population of approximately 4,200 people in its center and 14,505 in the commune as a whole, Bzou is regionally and nationally famous for its production of the highest quality fabric used in the tailoring of a specific piece of traditional Moroccan clothing known as Djellaba. Additionally, Bzou produces a considerable amount of olives, olive oil, and honey. Economically speaking, Bzou is heavily dependent on this basic agriculture and the extremely labor-intensive, handmade fabric for which it is famous."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "bzou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8244,
+    "attempt": 8187,
+    "place_id": "gn-2867037",
+    "input": {
+      "place": {
+        "place_id": "gn-2867037",
+        "name": "Nassau",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.31453,
+        "lon": 7.80025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nassau, Rhineland-Palatinate",
+          "url": "https://en.wikipedia.org/wiki/Nassau,_Rhineland-Palatinate",
+          "text": "Nassau ( NASS-aw, also UK:  NASS-ow, US:  NAHSS-ow, German: [ˈnasaʊ] ) is a town located in the German state of Rhineland-Palatinate. It lies on the lower course of the Lahn River, on the mouth of the Mühlbach, between Limburg an der Lahn and the spa town of Bad Ems, and is located in the Nassau Nature Park, surrounded by the Westerwald to the north and the Taunus to the south. The town is on the German-Dutch holiday road, the Orange Route. As of 2021, it had a population of 4,592.\nAs the location of Nassau Castle and the former Stein and Heidenpütz castles, Nassau gave its name to the wider region surrounding it as well as to a prominent aristocratic dynasty, and through it, directly or indirectly to numerous other things worldwide, including a sovereign state; a Prussian province; the Dutch royal house; the Luxembourgish ducal house; the capital of the Bahamas; one of the Cook Islands; and in the US, a county in Florida and a county in New York."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "nassau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8245,
+    "attempt": 8188,
+    "place_id": "gn-3491102",
+    "input": {
+      "place": {
+        "place_id": "gn-3491102",
+        "name": "Cambridge",
+        "country": "Jamaica",
+        "subdivision": "Saint James Parish",
+        "lat": 18.31326,
+        "lon": -77.90252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambridge, Jamaica",
+          "url": "https://en.wikipedia.org/wiki/Cambridge,_Jamaica",
+          "text": "Cambridge is a town in Jamaica. It is the main township of the parish of St James, nestled in mountains, fifteen (15) miles south east of the City of Montego Bay and its hub is historic Wilmot Max Ramsay Square (Jamaica Gleaner, Thursday, 23 October 1986).  Cambridge is located in the County of Cornwall.  The chief \"fruit-basket\" of the parish, Cambridge is also the capital of the upper St James region.\nCambridge students go to traditional high schools—Cornwall College (boys), Mt Alvernia (girls) and Montego Bay High School for Girls—all sited in the City of Montego Bay, the St James Parish Capital.  There are a Basic, an Infant, a Primary and a Secondary High Schools in Cambridge with \"the proposed Marco Brown Public Library.\"\nCantabrigians worship at, primarily, but not limited to: the St Stephen's Anglican Church (State), St Mary's Catholic Church, Jehovah's Witnesses Kingdom Hall, Seventh Day Adventist Church, New Testament Church of God, Christian Fellowship Church, the Gospel Chapel, the Mt Reece Methodist Church and the Shortwood Baptist Church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "cambridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8246,
+    "attempt": 8189,
+    "place_id": "gn-3181832",
+    "input": {
+      "place": {
+        "place_id": "gn-3181832",
+        "name": "Borghetto Santo Spirito",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 44.11187,
+        "lon": 8.24129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borghetto Santo Spirito",
+          "url": "https://en.wikipedia.org/wiki/Borghetto_Santo_Spirito",
+          "text": "Borghetto Santo Spirito is a comune (municipality) in the Province of Savona in the Italian region Liguria, located about 70 kilometres (43 mi) southwest of Genoa and about 30 kilometres (19 mi) southwest of Savona.\nBorghetto Santo Spirito borders the following municipalities: Boissano, Ceriale, Loano, and Toirano.\nThe town is noted in the general context of the Riviera as one of the examples of urban explosion, with tall apartment buildings built in the 1960s and 1970s mainly near the shore. Borghetto Santo Spirito means \"Little Town of the Holy Spirit\" and is crossed by the stream Varatella. Worthy of note are the Borelli Castle above the Monte Piccaro overlooking the Ligurian Sea, the Sanctuary of Saint Anthony of Padua with a relic of the saint, the Church of Saint Matthew the Apostle, and the small Pineland Hill in the inland of the Comune with luxurious housing units. Like all the coastal comuni of the province of Savona it is crossed every year by the Milan - San Remo cycling race."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "borghetto santo spirito",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "borghetto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spirito",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8247,
+    "attempt": 8190,
+    "place_id": "gn-7259430",
+    "input": {
+      "place": {
+        "place_id": "gn-7259430",
+        "name": "Offutt Air Force Base",
+        "country": "United States",
+        "subdivision": "Nebraska",
+        "lat": 41.12024,
+        "lon": -95.92095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Offutt Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Offutt_Air_Force_Base",
+          "text": "Offutt Air Force Base  (IATA: OFF, ICAO: KOFF, FAA LID: OFF) is a U.S. Air Force base south of Omaha, adjacent to Bellevue in Sarpy County, Nebraska. It is the headquarters of the U.S. Strategic Command (USSTRATCOM), the 557th Weather Wing, and the 55th Wing (55 WG) of the Air Combat Command (ACC), the latter serving as the host unit.\nAviation use at Offutt began in September 1918 during World War I as an Army Air Service balloon field. Originally named Fort Crook, it was renamed in honor of World War I pilot and Omaha native 1st Lt. Jarvis Offutt in 1924.\nOffutt AFB's legacy includes the construction of the Enola Gay and Bockscar, the planes that dropped Little Boy and Fat Man over Hiroshima and Nagasaki in World War II. Offutt served over 40 years as the headquarters for the former Strategic Air Command (SAC) and home for its associated ground and aerial command centers for the United States in the case of nuclear war during the Cold War. The population was 8,901 at the 2000 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "offutt air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "offutt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8248,
+    "attempt": 8191,
+    "place_id": "gn-2183413",
+    "input": {
+      "place": {
+        "place_id": "gn-2183413",
+        "name": "Riverhead",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.75,
+        "lon": 174.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riverhead, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Riverhead,_New_Zealand",
+          "text": "Riverhead is a small, historically predominantly working-class town located at the head of the Waitematā Harbour in the north-west of Auckland, New Zealand. It is located on the northwestern shores of the Upper Waitematā Harbour, north-east of the towns of Kumeū and Huapai.\nTraditionally known as Rangitōpuni, the area was an important transportation link for Tāmaki Māori, due to Te Tōangaroa, a portage where waka could be hauled between the Kaipara Harbour and the Waitematā Harbour. European settlement began in 1844 when a kauri mill was established at Riverhead, and the settlement became an important port for reaching the Kaipara Harbour from the 1850s. Riverhead developed as a community in the 1860s around the mill, which had been converted into the largest flour mill in the wider Auckland area. In 1874, a railway between Kumeū and Riverhead along the route of the Te Tōangaroa portage, which helped develop Riverhead and the Kumeū River valley areas, and closed in 1881 when a direct railway between Helensville and Auckland bypassed Riverhead.\nRiverhead became an important centre for the kauri gum trade from the 1880s until the early 20th century, and in 1927,  an exotic Pinus radiata forest called the Riverhead Forest was established to the north of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "riverhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8249,
+    "attempt": 8192,
+    "place_id": "gn-3123801",
+    "input": {
+      "place": {
+        "place_id": "gn-3123801",
+        "name": "Dosrius",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.58333,
+        "lon": 2.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dosrius",
+          "url": "https://en.wikipedia.org/wiki/Dosrius",
+          "text": "Dosrius (Catalan pronunciation: [ˌdozˈriws], lit. 'two rivers') is a municipality in the comarca of Maresme in\nCatalonia, Spain, located in the interior of the comarca on the border with the Eastern Valleys, and is at the head of the Argentona Riera. The original name, first recorded in 963, is \"Duos Rios\". This literally means \"Two Rivers\" and refers to the 2 rivers that join to form the Argentona Riera, and is reflected in the coat of arms.\nThese rivers rarely flow, though they quickly fill during wet weather causing disruption in the village owing to the narrow streets being one way. Newer housing and schools are on the other side of the river, and egress from housing further up the valley frequently takes this route owing to the poor condition of the newly built \"Ronda de Dalt\" (Upper Bypass). A bridge has been built that would alleviate this problem, though this still  hasn't been opened due to the currently suspended construction work that is part of the same development. It is unknown when the bridge will be open to traffic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "dosrius",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8250,
+    "attempt": 8193,
+    "place_id": "gn-3175798",
+    "input": {
+      "place": {
+        "place_id": "gn-3175798",
+        "name": "Gropello Cairoli",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.17707,
+        "lon": 8.99353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gropello Cairoli",
+          "url": "https://en.wikipedia.org/wiki/Gropello_Cairoli",
+          "text": "Gropello Cairoli is a comune (municipality) with a population of 4,235 in the Province of Pavia in the Italian region of Lombardy. It is located in eastern Lomellina, a short distance from the edge of the terrace that overlooks the Ticino river's floodplain, about 35 km (22 mi) southwest of Milan and about 15 km (9.3 mi) west of Pavia.\nThe town of Gropello Cairoli, which gained city status due to historical merit, is mainly centered around the former state road 596 (known as the Cairoli road) leading to Pavia, a route heavily trafficked, especially due to the presence of the A7 highway exit. The town is one of the few examples in Europe of a medieval strassendorf (a village developed along a road). In 2000, a bypass was inaugurated to divert traffic away from the town center.\nA notable feature of Gropello Cairoli is the presence of two churches, San Rocco and the parish church dedicated to San Giorgio, which mark the main road from east to west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "gropello cairoli",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gropello",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cairoli",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8251,
+    "attempt": 8194,
+    "place_id": "gn-4746535",
+    "input": {
+      "place": {
+        "place_id": "gn-4746535",
+        "name": "Belmont",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 39.06483,
+        "lon": -77.50999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belmont, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Belmont,_Virginia",
+          "text": "Belmont is a census-designated place (CDP) in Loudoun County, Virginia, United States. As of the 2020 census, Belmont had a population of 10,268. It is 5 miles (8 km) southeast of Leesburg, the Loudoun county seat, and 31 miles (50 km) northwest of Washington, D.C. The Belmont Manor House, built between 1799 and 1802 by a son of Richard Henry Lee, is in the northeast part of the CDP and is now the clubhouse for a gated golf community.\nThe Belmont CDP is situated along the east side of Belmont Ridge Road (State Route 659) between State Route 7 and State Route 267 (the Dulles Toll Road). The CDP extends north to VA 7 and south to include Middlebury Street and the Washington and Old Dominion Trail, while to the east it is bordered by Stubble Road, Claiborne Parkway, and Ashburn Road. Two major subdivisions make up Belmont: Belmont Country Club in the east is the larger of the two, and Belmont Greene, in the west, is the smaller.\nAccording to the U.S. Census Bureau, the Belmont CDP has a total area of 2.7 square miles (7.1 km2), of which 0.03 square miles (0.08 km2), or 1.20%, are water. The area drains mainly east via several streams toward Broad Run, a north-flowing tributary of the Potomac River, while the westernmost part of the CDP drains west to Goose Creek, which also flows north to the Potomac."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "belmont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8252,
+    "attempt": 8195,
+    "place_id": "gn-5098124",
+    "input": {
+      "place": {
+        "place_id": "gn-5098124",
+        "name": "Flemington",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.51233,
+        "lon": -74.85933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flemington, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Flemington,_New_Jersey",
+          "text": "Flemington is a borough in and the county seat of Hunterdon County, in the U.S. state of New Jersey. Most of the borough is located in the Amwell Valley, a low-lying area of the Newark Basin, and the Raritan Valley, the South Branch of the Raritan River, which flows through the center of Flemington. Northwestern portions of the borough sit on the Hunterdon Plateau. As of the 2020 United States census, the borough's population was 4,876, its highest decennial count ever and an increase of 295 (+6.4%) from the 2010 census count of 4,581, which in turn reflected an increase of 381 (+9.1%) from the 4,200 counted in the 2000 census.\nFlemington is an independent municipality completely surrounded by Raritan Township and is located near the geographic center of the township. Flemington was incorporated as an independent borough by an act of the New Jersey Legislature on April 7, 1910, based on the results of a referendum held on April 26, 1910, and was formally separated from Raritan Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 169,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "flemington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8253,
+    "attempt": 8196,
+    "place_id": "gn-2948229",
+    "input": {
+      "place": {
+        "place_id": "gn-2948229",
+        "name": "Bismark",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 52.66146,
+        "lon": 11.55493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bismark, Germany",
+          "url": "https://en.wikipedia.org/wiki/Bismark,_Germany",
+          "text": "Bismark (Altmark) (German pronunciation: [ˈbɪsmaʁk] ) is a town in the Stendal district, in the historic Altmark region, which is located in the northern part of the state of Saxony-Anhalt, Germany. It is situated approximately 22 km (14 mi) west of Stendal in north-eastern Germany.\nIn the early 12th century, the area then under the rule of Albert the Bear was settled with peasants migrating from the Low Countries. The town's name is derived from the nearby river Biese (after Dutch: bies meaning rush plants); though it may also refer to the bishop's march, a possession of the Havelberg bishops mentioned in a 1209 deed issued by the Ascanian margrave Albert II. With the Altmark, Bismark was part of the Margraviate of Brandenburg until it was adjudicated to the Prussian Province of Saxony after the 1815 Congress of Vienna.\nOne Herbordus of Bismarck was mentioned holding the office of a Schultheiß in Stendal about 1270. His descendant Otto von Bismarck received the honorary citizenship of Bismark in 1895.\nAt an administrative reform that became effective on 1 January 2010, the town of Bismark absorbed the former municipalities of Badingen, Berkau, Büste, Dobberkau, Garlipp, Grassau, Hohenwulsch, Holzhausen, Käthen, Kläden, Könnigde, Kremkau, Meßdorf, Querstedt, Schäplitz, Schernikau, Schorstedt and Steinfeld. Schinne was absorbed on 1 September 2010. These 19 former municipalities and Bismark proper, that had previously co-operated in the  Verwaltungsgemeinschaft Bismark/Kläden, now form the 20 Ortschaften (municipal divisions) of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "bismark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8254,
+    "attempt": 8197,
+    "place_id": "gn-5132152",
+    "input": {
+      "place": {
+        "place_id": "gn-5132152",
+        "name": "Pound Ridge",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.20871,
+        "lon": -73.57485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pound Ridge, New York",
+          "url": "https://en.wikipedia.org/wiki/Pound_Ridge,_New_York",
+          "text": "Pound Ridge is a town in Westchester County, New York, United States. The population was 5,082 at the 2020 census. The town is located toward the eastern end of the county, bordered clockwise to the north and east by Lewisboro, to the south by New Canaan, Connecticut and Stamford, Connecticut, and to the west by North Castle and Bedford.\nWhile much of the town of Pound Ridge is characterized by sprawling estates and rural landscapes, the hamlet of Scotts Corners serves as the town's \"downtown\" area. It contains a quarter-mile stretch of businesses along Westchester Avenue, including boutiques, stores, and essential services.\nThe town’s name is a combination of its physical geography and its early history: the area is characterized by a rugged landscape featuring high ridges, and the \"pound\" part of the name is credited to the indigenous people who lived in the area and built a \"pound\"—an enclosure made of saplings driven into the ground—to keep game like deer alive until it was needed for food. \nThe town's name was commonly spelled as one word, Poundridge, for roughly 250 years before the Town Board officially mandated the two-word spelling in 1948."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "pound ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pound",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8255,
+    "attempt": 8198,
+    "place_id": "gn-5335846",
+    "input": {
+      "place": {
+        "place_id": "gn-5335846",
+        "name": "Channel Islands Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.15806,
+        "lon": -119.22316
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Channel Islands Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Channel_Islands_Beach,_California",
+          "text": "Channel Islands Beach is an unincorporated community in Ventura County, California, United States consisting of three historic neighborhoods: Hollywood Beach, Hollywood by the Sea, and Silver Strand Beach. This densely populated narrow 1.3-mile-long strip (2.1 km) along the coastal edge of the Oxnard Plain was subdivided using the glamor of Hollywood to sell lots in the mid-1920s since the sand dunes had been used for movies. Adjacent development has left this sandy beachfront neighborhood hemmed in by Channel Islands Harbor and Naval Base Ventura County. The harbor mouth separates them into two communities resulting in a round-about travel route around the harbor between them although the Channel Islands Beach Community Services District provides local utilities services to the entire neighborhood. The Special-purpose district has an elected Board of Directors which provides a forum for the unique concerns of the community. Lying immediately adjacent but outside the corporate boundaries of the City of Oxnard and the City of Port Hueneme, they are governed by the county Board of Supervisors.\nThe population of this residential community was 2,870 at the 2020 census, down from 3,103 at the 2010 census. For statistical purposes, the United States Census Bureau has defined Channel Islands Beach as a census-designated place (CDP)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "channel islands beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "channel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "islands",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8256,
+    "attempt": 8199,
+    "place_id": "gn-675629",
+    "input": {
+      "place": {
+        "place_id": "gn-675629",
+        "name": "Ilva Mică",
+        "country": "Romania",
+        "subdivision": "Bistrița-Năsăud County",
+        "lat": 47.31667,
+        "lon": 24.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilva Mică",
+          "url": "https://en.wikipedia.org/wiki/Ilva_Mică",
+          "text": "Ilva Mică (Hungarian: Kisilva) is a commune in Bistrița-Năsăud County, Transylvania, Romania. It is composed of a single village, Ilva Mică.\nThe commune is situated in the western foothills of the Bârgău Mountains, at an altitude of 405 m (1,329 ft), on the banks of the river Someșul Mare and its left tributary, the Ilva. It is located in the central part of Bistrița-Năsăud County, 23 km (14 mi) east of Năsăud and 30 km (19 mi) northeast of the county seat, Bistrița.\nIlva Mică is crossed by the national road DN17D, which starts in Beclean, 48 km (30 mi) to the southwest, crosses the Carpathian Mountains through the Rotunda Pass, and ends in Fluturica, Suceava County, 60 km (37 mi) to the northeast. The Ilva Mică train station is the terminus of two Căile Ferate Române railways: Line 401, which starts in Cluj-Napoca, 131 km (81 mi) to the southwest, and the mountain railway Line 502, which starts in Suceava, 191 km (119 mi) to the east.\n\nAt the 2021 census, the commune had a population of 3,164, of which 95.73% were Romanians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 168,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "ilva mica",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ilva",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mica",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8257,
+    "attempt": 8200,
+    "place_id": "gn-2461667",
+    "input": {
+      "place": {
+        "place_id": "gn-2461667",
+        "name": "Tifariti",
+        "country": "Western Sahara",
+        "subdivision": "Western Sahara",
+        "lat": 26.1579,
+        "lon": -10.55889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tifariti",
+          "url": "https://en.wikipedia.org/wiki/Tifariti",
+          "text": "Tifariti (Arabic: تفاريتي) is an oasis town and the temporary capital of the Sahrawi Arab Democratic Republic, located in north-eastern Western Sahara, east of the Moroccan Berm, 138 km (86 mi) from Smara and 15 km (9 mi) north of the border with Mauritania. It is part of what Polisario Front calls the Liberated Territories and  Morocco calls the Buffer Zone. It has been the de facto temporary capital of the Sahrawi Arab Democratic Republic since the government moved there in 2008 from Bir Lehlou. It is also the headquarters of the 2nd military region of the SADR.\nIt is also the name of a daïra of the wilaya of Smara, in the Sahrawi refugee camps.\nTifariti is located between Smara, the traditional spiritual centre of the Sahara founded by Ma El Ainin, (177 km (110 mi) away) and the Algerian town of Tindouf (320 km (200 mi) away), where the Sahrawi refugee camps are located. In 2024, the population of Tifariti was estimated at 83 people.\nThe government quarter of Tifariti houses the Parliament of the SADR, a hospital, a school, a mosque and a museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "tifariti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

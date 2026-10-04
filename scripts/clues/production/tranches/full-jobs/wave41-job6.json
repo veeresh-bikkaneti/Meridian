@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 8157,
+    "attempt": 8101,
+    "place_id": "gn-5275601",
+    "input": {
+      "place": {
+        "place_id": "gn-5275601",
+        "name": "Thiensville",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 43.23751,
+        "lon": -87.9787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thiensville, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Thiensville,_Wisconsin",
+          "text": "Thiensville is a village in Ozaukee County, Wisconsin, United States. Located on the west bank of a bend in the Milwaukee River, the community is bordered on all sides by the City of Mequon and is a suburb in the Milwaukee metropolitan area. The population was 3,290 at the 2020 census.\nThiensville was the site of a Potawatomi village in the early 19th century before white settlers began arriving in the 1830s and 1840s. Many of the community's earliest settlers were German immigrants who were members of freethinker societies. One prominent freethinker was Joachim Heinrich Thien, for whom the village is named. Thien played a significant role in the Town of Mequon's early politics and organized the Thiensville Volunteer Fire Department. The freethinkers were opposed to organized religion and actively prevented churches from being established in the community for the first eight decades of its history. Thiensville grew and prospered in the late 1800s when it became a railway stop; the community became more urban with stores, mills and services for farmers in the rural Town of Mequon. The Village of Thiensville formally incorporated in 1910.\nBoth Mequon and Thiensville experienced significant development during the suburbanization that followed World War II, with Mequon incorporating as a city in 1957. The two communities have close ties, with a shared chamber of commerce, library, fire and emergency medical services, and school district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "thiensville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8158,
+    "attempt": 8102,
+    "place_id": "gn-5933070",
+    "input": {
+      "place": {
+        "place_id": "gn-5933070",
+        "name": "Crossfield",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.43341,
+        "lon": -114.03528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crossfield, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Crossfield,_Alberta",
+          "text": "Crossfield is a town in the Calgary Metropolitan Region of Alberta, Canada, that is surrounded by Rocky View County. It is on Highway 2A 43 km (27 mi) north of the City of Calgary.\nCrossfield was founded in 1892 as a station on the Calgary and Edmonton Railway (C&E), and named for an engineer with the C&E survey crew. By 1904, the community had a post office, a general store, a hotel and a school. In 1906, the first grain elevator opened and Crossfield was incorporated as a village the following year in 1907. In 1980, Crossfield was incorporated as a town.\nCrossfield is a member of the Calgary Metropolitan Region Board. The town is within the Calgary-Edmonton Corridor and is growing as a result. Crossfield is north of the city of Airdrie and south of the town of Olds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "crossfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8159,
+    "attempt": 8103,
+    "place_id": "gn-6222808",
+    "input": {
+      "place": {
+        "place_id": "gn-6222808",
+        "name": "Frankleigh Park",
+        "country": "New Zealand",
+        "subdivision": "Taranaki Region",
+        "lat": -39.07824,
+        "lon": 174.0602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frankleigh Park",
+          "url": "https://en.wikipedia.org/wiki/Frankleigh_Park",
+          "text": "Frankleigh Park is a suburb of New Plymouth, in the western North Island of New Zealand. It is located to the south of the city centre. The suburb is built around the site of early settler Henry King's farm, Woodleigh, the father of William Cutfield King. \nThe suburb is one of the older and more established suburbs of the city, lying in the valley of the Huatoki River. It lies between the suburbs of Westown to the west, and Vogeltown to the east.\nSome of the main streets include Brois Street, Veale Road, Frankley Road, Fernleigh Street, Govett Avenue, and Ashmore Drive. Frankleigh Park is home to a primary school, a kindergarten and a shopping centre, and has two large parks, Sutherland Park and Ferndale Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "frankleigh park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "frankleigh",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8160,
+    "attempt": 8104,
+    "place_id": "gn-932371",
+    "input": {
+      "place": {
+        "place_id": "gn-932371",
+        "name": "Morija",
+        "country": "Lesotho",
+        "subdivision": "Maseru District",
+        "lat": -29.62982,
+        "lon": 27.51351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morija",
+          "url": "https://en.wikipedia.org/wiki/Morija",
+          "text": "Morija is a town in western Lesotho, located 35 kilometres south of the capital, Maseru.  Morija is one of Lesotho's most important historical and cultural sites, known as the Selibeng sa Thuto— the Well-Spring of Learning. It was the site of the first French Protestant mission in Lesotho, founded in 1833 e.g Thomas Arbouset. The town also houses the Morija Museum and Archives, well known for supporting research and preserving valuable records and documents of Lesotho's history. There is also a college of nursing among the schools within the premises. The centre is home for the Lesotho Evangelical Church in Southern Africa.\nThe town hosts the football team Lijabatho, who won the 2025–26 Lesotho Premier League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "morija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8161,
+    "attempt": 8105,
+    "place_id": "gn-10056976",
+    "input": {
+      "place": {
+        "place_id": "gn-10056976",
+        "name": "Parmelia",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.25784,
+        "lon": 115.82208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parmelia, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Parmelia,_Western_Australia",
+          "text": "Parmelia is a southern suburb of Perth, Western Australia, located in the City of Kwinana.\nParmelia is one of the Kwinana suburbs named after a ship. Parmelia was the first ship to arrive in June 1829 bringing settlers to establish the new colony at the Swan River in Western Australia. Its passengers included the new Governor and his wife, James and Ellen Stirling.\nChisham Avenue is the main residential street which runs through the suburb. It features an array of homes built during the 1970s which were once home to the managers for BP's oil refinery industrial operations and company executives.\nThe suburb is close to schools, public parks, and a new shopping centre which is currently being rebuilt and renovated by new owner Woolworths. The list of parks includes Hunt Park, Peace Park, Morrit Park, Brandon Mews Park, Oakfield Garden POS, Bournan Heights POS, Barney Park and Skottowe Park.\nThere is a recquatic centre which features a gym, swimming pool, spa and sauna, and sports courts for basketball, indoor soccer and other sports. The Kwinana Recquatic is embarking on a $6 million refurbishment project which is set to re-launch the centre as Kwinana's premier fitness and recreation facility.\nParmelia is a family orientated suburb with many young families and retirees.\nThe Metronet project will see the rail line through Parmelia and upgrades to the Kwinana railway station boost liveability in the area. Federal funding for the project was received in May 2017.\nProperty developer, the Meridian group has engaged with the City of Kwinana to design and build detached houses, townhouses, villas and apartments in Parmelia. Construction has begun and a row of double storey houses and townhouses are currently undergoing construction.\nParmelia is at the centre of a $340m city centre revitalisation. The redevelopment includes a $22m library and resource centre, $7.5m youth space, the new Admiral Hotel and a revamp of the Kwinana Marketplace Shopping Centre. The suburb also has some of the most extensive parklands and natural bush reserves in the state.\nThe Kwinana Adventure Park is opposite the Kwinana Marketplace shopping centre. It was built by the City of Kwinana at a cost of $5.2 million, and features 11,000 m2 (120,000 sq ft) of play space, making it one of the largest public playgrounds in Western Australia.\nThe suburb was also home to Australian supermodel and actress Megan Gale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 394
+    },
+    "banned_terms": [
+      {
+        "term": "parmelia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8162,
+    "attempt": 8106,
+    "place_id": "gn-179888",
+    "input": {
+      "place": {
+        "place_id": "gn-179888",
+        "name": "Sotik",
+        "country": "Kenya",
+        "subdivision": "Bomet County",
+        "lat": -0.69069,
+        "lon": 35.11102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sotik",
+          "url": "https://en.wikipedia.org/wiki/Sotik",
+          "text": "Sotik town is an urban centre situated in Sotik Sub-county within Bomet County in the Western region of Kenya and managed by Sotik Town Council. Initially, it was the home of Mugenik Barngetuny Araap Sitonik, a prominent Kipsigis prophet of the late 19th century. Sotik is a metropolitan town with a majority of the residents from the Kipsigis ethnicity and a minority being from other ethnicities from Kenya including Somalis and Indians. The town is home to Kalenjin music artist Philip Yegon; Kenyan athletes Paul Kipsiele Koech and Mercy Cherono; and Kenyan politicians Lorna Laboso and the late Joyce Cherono Laboso."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sotik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8163,
+    "attempt": 8107,
+    "place_id": "gn-2525734",
+    "input": {
+      "place": {
+        "place_id": "gn-2525734",
+        "name": "Altavilla Milicia",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.038,
+        "lon": 13.54947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altavilla Milicia",
+          "url": "https://en.wikipedia.org/wiki/Altavilla_Milicia",
+          "text": "Altavilla Milicia is a comune (municipality) in the Metropolitan City of Palermo in the Italian region Sicily, located about 20 kilometres (12 mi) southeast of Palermo.\nThe Commune is named after the Hauteville family, Norman Settlers who conquered Sicily in the 11th century and later became the ruling dynasty of the island.  The name Altavilla is an Italian translation of the French Hauteville. The feudal Barony and the Duchy of Altavilla later passed into the hands of the Adragna family.\nOne of the sights is the Sanctuary of the \"Madonna della Milicia\".\nAltavilla Milicia borders the municipalities of Casteldaccia and Trabia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "altavilla milicia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "altavilla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "milicia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8164,
+    "attempt": 8108,
+    "place_id": "gn-2720437",
+    "input": {
+      "place": {
+        "place_id": "gn-2720437",
+        "name": "Borgholm",
+        "country": "Sweden",
+        "subdivision": "Kalmar",
+        "lat": 56.8793,
+        "lon": 16.65634
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borgholm",
+          "url": "https://en.wikipedia.org/wiki/Borgholm",
+          "text": "Borgholm (Swedish: [ˈbɔ̂rjhɔlm]) is a city and the seat of Borgholm Municipality, Kalmar County, Sweden with 4,401 inhabitants in 2020. It is located on the island of Öland in the Baltic Sea, at the Kalmar Strait-side of Öland, north of Färjestaden.\nBorgholm is one of Sweden's historical towns with a former city status (stad). The city is best known for its once-magnificent fortress – Borgholm Castle – which is now in ruins. Borgholm is, despite its small population, for historical reasons normally still referred to as a city. Statistics Sweden, however, only counts localities with more than 10,000 inhabitants as cities.\nBorgholm is the main city of Öland, but remains one of the smallest cities in Sweden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "borgholm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8165,
+    "attempt": 8109,
+    "place_id": "gn-4358916",
+    "input": {
+      "place": {
+        "place_id": "gn-4358916",
+        "name": "Indian Head",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.60012,
+        "lon": -77.1622
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Indian Head, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Indian_Head,_Maryland",
+          "text": "Indian Head is a town in Charles County, Maryland, United States. The population was 3,894 at the 2020 U.S. census. It has been the site of a naval base specializing in gun and rocket propellants since 1890.  Production of nitrocellulose and smokeless powder began at the Indian Head Powder Factory in 1900. The name of the base has varied over the years from Indian Head Proving Ground, to Naval Powder Factory, to Naval Propellant Plant, to Naval Ordnance Station, to the present Naval Support Facility Indian Head. The facility's main tenant activity is the Indian Head Naval Surface Warfare Center (NSWC/IH). Advanced research in energetic systems takes place at NSWC/IH. NSWC/IH absorbed the function of the closed Naval Ordnance Laboratory, formerly in White Oak. The base currently employs 3,700 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "indian head",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "indian",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "head",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8166,
+    "attempt": 8110,
+    "place_id": "gn-4365766",
+    "input": {
+      "place": {
+        "place_id": "gn-4365766",
+        "name": "Pocomoke City",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.07568,
+        "lon": -75.56798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pocomoke City, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Pocomoke_City,_Maryland",
+          "text": "Pocomoke City, dubbed \"the friendliest town on the Eastern Shore\", is a city in Worcester County, Maryland, United States. Although renamed in a burst of civic enthusiasm in 1878, the city is regularly referred to by its inhabitants simply as Pocomoke . The population was 4,295 at the 2020 census. It is part of the Salisbury, Maryland-Delaware Metropolitan Statistical Area.  Pocomoke City is a center for commerce on the lower shore, home to an industrial park currently playing host to defense contractors, aerospace engineering, and plastics fabrication. Pocomoke City is located near the Wallops Island Flight Facility in Wallops Island, Virginia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "pocomoke city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pocomoke",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8167,
+    "attempt": 8111,
+    "place_id": "gn-4672479",
+    "input": {
+      "place": {
+        "place_id": "gn-4672479",
+        "name": "Bartlett",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.79491,
+        "lon": -97.42556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bartlett, Texas",
+          "url": "https://en.wikipedia.org/wiki/Bartlett,_Texas",
+          "text": "Bartlett is a city in Bell and Williamson counties in the U.S. state of Texas. The population was 1,633 at the 2020 census.\nBartlett lies in two counties as well as two metropolitan areas. The Bell County portion of the city is part of the Killeen–Temple–Fort Hood Metropolitan Statistical Area, while the Williamson County portion is part of the Austin–Round Rock Metropolitan Statistical Area. Known for its late nineteenth and early twentieth century architecture, Bartlett was the site for the filming of movies including The Stars Fell on Henrietta and The Newton Boys, as well as the NBC television drama Revolution."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bartlett",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8168,
+    "attempt": 8112,
+    "place_id": "gn-4925591",
+    "input": {
+      "place": {
+        "place_id": "gn-4925591",
+        "name": "Roselawn",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 41.1417,
+        "lon": -87.31475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roselawn, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Roselawn,_Indiana",
+          "text": "Roselawn is a census-designated place (CDP) in Newton and Jasper counties in the U.S. state of Indiana. As of the 2020 census, Roselawn had a population of 4,132.\nSince the opening of Club Zoro Nature Park in 1933, Roselawn has been known for its nudist resorts. Today it hosts two such resorts: the Ponderosa Sun Club and Sun Aura. Sun Aura resort was previously known as Naked City, but closed in 1986 after its operator, Dick Drost, encountered significant legal troubles. The resort continued to operate under several different owners and was known as Sunspot resort prior to becoming Sun Aura."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "roselawn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8169,
+    "attempt": 8113,
+    "place_id": "gn-4959908",
+    "input": {
+      "place": {
+        "place_id": "gn-4959908",
+        "name": "Camden",
+        "country": "United States",
+        "subdivision": "Maine",
+        "lat": 44.2098,
+        "lon": -69.06476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camden, Maine",
+          "url": "https://en.wikipedia.org/wiki/Camden,_Maine",
+          "text": "Camden is a town in Knox County, Maine, United States. The population was 5,232 at the 2020 census. Located on Penobscot Bay at the mouth of the Megunticook River, Camden is one of the few places on the Atlantic seaboard where mountains meet the sea.\nThe town was incorporated in 1791 and named after Charles Pratt, 1st Earl Camden, a supporter of American colonial rights. Camden developed as an industrial center in the 19th century, with mills along the Megunticook River supporting shipbuilding, textile manufacturing, and lime production. The local shipyards launched notable vessels including the first six-masted schooner ever built.\nBeginning in the 1880s, Camden transformed into a prominent summer colony, attracting wealthy seasonal residents from northeastern cities who built elaborate mansions along the waterfront. The town has maintained cultural significance as the one-time residence of Pulitzer Prize-winning poet Edna St. Vincent Millay and home to institutions including the Camden International Film Festival. Camden's scenic harbor and historic architecture have made it a popular location for filmmakers across two centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "camden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8170,
+    "attempt": 8114,
+    "place_id": "gn-5100269",
+    "input": {
+      "place": {
+        "place_id": "gn-5100269",
+        "name": "Lakehurst",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.01456,
+        "lon": -74.31126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lakehurst, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Lakehurst,_New_Jersey",
+          "text": "Lakehurst is a borough in Ocean County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 2,636, a decrease of 18 (−0.7%) from the 2010 census count of 2,654, which in turn reflected an increase of 132 (+5.2%) from the 2,522 counted in the 2000 census.\nLakehurst was incorporated as a borough by an act of the New Jersey Legislature on April 7, 1921, from portions of Manchester Township, based on the results of a referendum held on May 24, 1921. The borough is named for its location near lakes and woods."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "lakehurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8171,
+    "attempt": 8115,
+    "place_id": "gn-515098",
+    "input": {
+      "place": {
+        "place_id": "gn-515098",
+        "name": "Orda",
+        "country": "Russia",
+        "subdivision": "Perm Krai",
+        "lat": 57.19197,
+        "lon": 56.90462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orda, Perm Krai",
+          "url": "https://en.wikipedia.org/wiki/Orda,_Perm_Krai",
+          "text": "Orda (Russian: Орда) is a rural locality (a selo) and the administrative center of Ordinsky District of Perm Krai, Russia, located on the Kungur River (a tributary of the Iren River. Population:  5,375 (2010 census); 5,404 (2002 census); 4,850 (1989 Soviet census).\nOrda was first mentioned in written sources in 1662. It has served as the administrative center of Ordinsky District since 1924, with a brief interruption in 1963–1965.\nIt is named for the Ordynka River. \nNear Orda is the only entrance to the Orda Cave, one of the longest underwater caves and the largest underwater gypsum cave in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "orda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8172,
+    "attempt": 8116,
+    "place_id": "gn-5342353",
+    "input": {
+      "place": {
+        "place_id": "gn-5342353",
+        "name": "Del Mar",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.95949,
+        "lon": -117.26531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Del Mar, California",
+          "url": "https://en.wikipedia.org/wiki/Del_Mar,_California",
+          "text": "Del Mar (Spanish pronunciation: [del ˈmaɾ]; Spanish for \"Of the Sea\") is a beach city in San Diego County, California, United States, located on the coast of the Pacific Ocean. It was established in 1885 to build a seaside resort. The annual San Diego County Fair has had a permanent home at the Del Mar Fairgrounds since 1936. Horse racing began at the fairgrounds racetrack the following year and is hosted every summer.  The city incorporated in 1959 aiming to preserve its small town feel. Its population was 3,954 as of the 2020 census, down from 4,161 at the 2010 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "del mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8173,
+    "attempt": 8117,
+    "place_id": "gn-673619",
+    "input": {
+      "place": {
+        "place_id": "gn-673619",
+        "name": "Mehadia",
+        "country": "Romania",
+        "subdivision": "Caraș-Severin County",
+        "lat": 44.90083,
+        "lon": 22.36694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mehadia",
+          "url": "https://en.wikipedia.org/wiki/Mehadia",
+          "text": "Mehadia (Hungarian: Mehádia; German: Mehadia; Turkish: Mehadiye) is a small market town and commune in Caraș-Severin County, Banat, Romania. It lies on the European route E70, in the Cerna River valley. The town is located on the site of the ancient Roman colony Ad Mediam and was noted for its Hercules baths. It had a population of 2,492 in 1900, 4,128 in 2011, and 3,512 in 2021. Fluctuations in populations are partly due to major flooding, to which the area is prone. The 1838 floods destroyed some 2,000 houses in the valley and the 1841 floods in Mehadia were also devastating. It experienced major flooding in May 2005 and September 2014.\nThe commune is composed of four villages: Globurău (Golbor), Mehadia, Plugova (Ekés), and Valea Bolvașnița (Bolvásvölgy)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "mehadia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8174,
+    "attempt": 8118,
+    "place_id": "gn-13156560",
+    "input": {
+      "place": {
+        "place_id": "gn-13156560",
+        "name": "Armavir",
+        "country": "Armenia",
+        "subdivision": "Armavir",
+        "lat": 40.08298,
+        "lon": 44.05777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Armavir, Armenia",
+          "url": "https://en.wikipedia.org/wiki/Armavir,_Armenia",
+          "text": "Armavir (Armenian: Արմավիր [ɑɾmɑˈviɾ]), is a town and urban municipal community located in the west of Armenia serving as the administrative centre of Armavir Province. It was founded in 1931 by the government of the Armenian Soviet Socialist Republic. As of the 2011 census, the population of the town is 29,319, down from 46,900 as reported in the 1989 census. As of the 2022 census, the population of the town is 27,470. Currently, the town has a population of  38,495  as per the 2023 official estimate.\nThe town was known as Sardarapat before 1935, and Hoktemberyan from 1935 to 1995. Currently, Armavir is the seat of the Diocese of Armavir of the Armenian Apostolic Church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "armavir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8175,
+    "attempt": 8119,
+    "place_id": "gn-1740736",
+    "input": {
+      "place": {
+        "place_id": "gn-1740736",
+        "name": "Teluk Bahang",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.45834,
+        "lon": 100.21541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teluk Bahang",
+          "url": "https://en.wikipedia.org/wiki/Teluk_Bahang",
+          "text": "Teluk Bahang is a suburb of George Town within the Malaysian state of Penang. It is located 13.6 km (8.5 mi) west of the city centre near the northwestern tip of Penang Island. Established as a fishing village, Teluk Bahang has evolved into a tourist destination, with a number of attractions built within the suburb. It is also home to the Teluk Bahang Dam, the largest reservoir in George Town.\nTeluk Bahang Forest Reserve is part of Penang Hill Biosphere Reserve, recognised by UNESCO as the third Biosphere Reserve in Malaysia listed in the World Network of Biosphere Reserve (WNBR)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "teluk bahang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "teluk",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bahang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8176,
+    "attempt": 8120,
+    "place_id": "gn-2148431",
+    "input": {
+      "place": {
+        "place_id": "gn-2148431",
+        "name": "Stawell",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.05632,
+        "lon": 142.78088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stawell, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Stawell,_Victoria",
+          "text": "Stawell ( \"stall\"), is a town in the Wimmera region of Victoria, Australia, 237 kilometres (147 mi) west-north-west of the state capital, Melbourne. Located within the Shire of Northern Grampians local government area, it is a seat of local government for the shire and its main administrative centre.  At the 2021 census, Stawell had a population of 6,220.\nIt was founded in 1853 as Pleasant Creek during the Victorian gold rush. It is one of few towns in Victoria retaining an active gold mining industry.\nStawell is famed for the Stawell Gift, a professional foot race that began in 1878. It is also known as the gateway to the Grampians National Park. One of the most significant Aboriginal cultural sites in south-eastern Australia is Bunjil's Shelter, within the Black Range Scenic Reserve, south of Stawell.\nIt is named after Sir William Foster Stawell (1815–89), the Chief Justice of Victoria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "stawell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
