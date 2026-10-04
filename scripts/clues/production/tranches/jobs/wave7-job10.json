@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 7348,
+    "place_id": "gn-950037",
+    "input": {
+      "place": {
+        "place_id": "gn-950037",
+        "name": "Tarkastad",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.00893,
+        "lon": 26.25935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarkastad",
+          "url": "https://en.wikipedia.org/wiki/Tarkastad",
+          "text": "Tarkastad is a Karoo semi-urban settlement situated on the banks of Tarka River in the Eastern Cape province of South Africa. Tarkastad is on a plain to the north of the Winterberg mountain range on the R61 between Cradock and Komani and only three hours from Gqeberha. The name Tarkastad is believed to come from the Khoi-Khoi word Traka (meaning women) or the Celtic word Tarka (meaning otter) and the Afrikaans word Stad (meaning city). The fact that the town is overlooked by Martha and Mary; two peaks which look like two women resting after a hard day's work, also lends to the name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "tarkastad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7349,
+    "place_id": "gn-988290",
+    "input": {
+      "place": {
+        "place_id": "gn-988290",
+        "name": "Komatipoort",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.43321,
+        "lon": 31.95478
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Komatipoort",
+          "url": "https://en.wikipedia.org/wiki/Komatipoort",
+          "text": "Komatipoort is a town situated at the confluence of the Crocodile and Komati Rivers in Mpumalanga province, South Africa.  The town is 8 km from the Crocodile Bridge Gate into the Kruger National Park, just 3 km from the Mozambique border and 65 km from the Eswatini border.\nIt is a small, quiet town within the Lowveld with some attractive tree-lined streets. It is one of the hottest towns in South Africa where temperatures can reach almost 48 °C (47.7 °C (117.9 °F) on 12 December 1944) in the height of summer, but also with a perfect winter climate around 24 °C (75 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "komatipoort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7371,
+    "place_id": "gn-2654255",
+    "input": {
+      "place": {
+        "place_id": "gn-2654255",
+        "name": "Burntisland",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.05865,
+        "lon": -3.23664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burntisland",
+          "url": "https://en.wikipedia.org/wiki/Burntisland",
+          "text": "Burntisland ( , Scots: Bruntisland) is a former Royal burgh and parish in Fife, Scotland, on the northern shore of the Firth of Forth. It was previously known as Wester Kinghorn or Little Kinghorn. The town has a population of 6,269 (2011) 6,254 (2022).\n\nBurntisland is known locally for its award-winning sandy beach, the 15th-century Rossend Castle, as well as the traditional summer fair and Highland games day. To the north of the town there is a hill called the Binn, which is a landmark of the Fife coastline; it is a volcanic plug, and rises 193 metres (632 ft) above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "burntisland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7381,
+    "place_id": "gn-3069465",
+    "input": {
+      "place": {
+        "place_id": "gn-3069465",
+        "name": "Nové Město na Moravě",
+        "country": "Czechia",
+        "subdivision": "Vysocina",
+        "lat": 49.56144,
+        "lon": 16.07418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nové Město na Moravě",
+          "url": "https://en.wikipedia.org/wiki/Nové_Město_na_Moravě",
+          "text": "Nové Město na Moravě (Czech pronunciation: [ˈnovɛː ˈmɲɛsto ˈna moravjɛ] ; German: Neustadt in Mähren) is a town in Žďár nad Sázavou District in the Vysočina Region of the Czech Republic. It has about 9,700 inhabitants. Located in the Křižanov Highlands, Nové Město na Moravě is a winter sports resort, known primarily for hosting biathlon competitions.\nAmong the most important feudal owners of the town were the Pernštejn family, during whose rule in the 16th century the town experienced its greatest prosperity. The historic town centre with Renaissance, Baroque and Neoclassical houses is well preserved and is protected as an urban monument zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "nove mesto na morave",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nove",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mesto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "na",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "morave",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7385,
+    "place_id": "gn-3128272",
+    "input": {
+      "place": {
+        "place_id": "gn-3128272",
+        "name": "Benicàssim",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 40.05,
+        "lon": 0.06667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benicàssim",
+          "url": "https://en.wikipedia.org/wiki/Benicàssim",
+          "text": "Benicàssim, in Valencian (known in Spanish as Benicasim), is a municipality and beach resort located in the province of Castellón, on the Costa del Azahar in Spain. The Desert de les Palmes mountain range further inland shelters the town from the north wind.\nBenicàssim is located 13 km north of the town of Castellón de la Plana, at the north end of the Valencian Community. The town has a population of 18,991 (2021). Its economy is largely based on tourism; the town is well known for its beaches and its music festivals such as Festival Internacional de Benicàssim (FIB) and the Rototom Sunsplash."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "benicassim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7393,
+    "place_id": "gn-3469455",
+    "input": {
+      "place": {
+        "place_id": "gn-3469455",
+        "name": "Bom Jardim de Minas",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.94722,
+        "lon": -44.19111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bom Jardim de Minas",
+          "url": "https://en.wikipedia.org/wiki/Bom_Jardim_de_Minas",
+          "text": "Bom Jardim de Minas is a city of the state of Minas Gerais, Brazil.\nThe name means Good Garden of Minas (Gerais).\nIt is situated in the southern part of Minas Gerais and in the middle of the Mantiqueira Mountains, at 1,200 meters high, which gives the city a mild climate.\nThe only paved road that reaches Bom Jardim de Minas is the BR-267, which connects the city to the southern part of the State of Minas Gerais and the region of Juiz de Fora.\nPopulation: 6,459 inhabitants.\nIt was founded in 1770 with the formation of a farm land in current city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "bom jardim de minas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bom",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jardim",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "minas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7401,
+    "place_id": "gn-3906209",
+    "input": {
+      "place": {
+        "place_id": "gn-3906209",
+        "name": "Rurrenabaque",
+        "country": "Bolivia",
+        "subdivision": "Beni Department",
+        "lat": -14.44125,
+        "lon": -67.52781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rurrenabaque",
+          "url": "https://en.wikipedia.org/wiki/Rurrenabaque",
+          "text": "Rurrenabaque is a small town in the north of Bolivia, on the Beni River. It is the capital of Rurrenabaque Municipality. In recent years, it has become popular with international tourism as it is an easy gateway for visits to Madidi National Park, which is within the Bolivian rainforest. It also provides access to the surrounding pampas. Locals commonly refer to the town by its shortened nickname, \"Rurre.\"\nRurrenabaque is located in José Ballivián Province in Beni Department, Bolivia. Rurrenabaque Municipality, the fourth municipal section of José Ballivián Province, had 19,195 inhabitants as of 2012, of which 13,446 lived in urban Rurrenabaque itself."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "rurrenabaque",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7404,
+    "place_id": "gn-4177465",
+    "input": {
+      "place": {
+        "place_id": "gn-4177465",
+        "name": "Warrington",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.38409,
+        "lon": -87.27497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warrington, Florida",
+          "url": "https://en.wikipedia.org/wiki/Warrington,_Florida",
+          "text": "Warrington is a census-designated place (CDP) in Escambia County, Florida, United States. Warrington is located between downtown Pensacola and the state line with Alabama; it is 6 miles (10 km) away from both.\nThe population was 15,218 at the 2020 census, up from 14,531 at the 2010 census. It is part of the Pensacola–Ferry Pass–Brent, Florida Metropolitan Statistical Area.\nA failed referendum was held in 1975 to incorporate Warrington as a town. Despite falling outside of city limits and having a post office explicitly named \"Warrington\", mail going to the addresses in the Warrington ZIP code (32507) falls under the jurisdiction of Pensacola."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "warrington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7409,
+    "place_id": "gn-5394086",
+    "input": {
+      "place": {
+        "place_id": "gn-5394086",
+        "name": "Seal Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.74141,
+        "lon": -118.10479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seal Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Seal_Beach,_California",
+          "text": "Seal Beach is a coastal city in Orange County, California, United States. It was originally known as Bay City before it was incorporated into Orange County under its current name on October 24, 1915. As of the 2020 census, the population was 25,242, up from 24,168 at the 2010 census.\nSeal Beach is located in the westernmost corner of Orange County. To the northwest, just across the border with Los Angeles County, lies the city of Long Beach and the adjacent San Pedro Bay. To the southeast are Huntington Harbour, a neighborhood of Huntington Beach, and Sunset Beach, also part of Huntington Beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "seal beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7426,
+    "place_id": "gn-8347960",
+    "input": {
+      "place": {
+        "place_id": "gn-8347960",
+        "name": "Wetherill Park",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.84277,
+        "lon": 150.90061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetherill Park",
+          "url": "https://en.wikipedia.org/wiki/Wetherill_Park",
+          "text": "Wetherill Park is a suburb in Greater Western Sydney, in the state of New South Wales, Australia. Wetherill Park is located 34 kilometres west of the Sydney central business district, in the local government area of the City of Fairfield. The area is 11.2 km2. Most residents live in the south-east corner, the larger portion of the suburb being an industrial area. \nWetherill Park sits on the southern border of Prospect Reservoir. Located partially in the suburb, the Smithfield-Wetherill Park Industrial Estate is the largest industrial estate in the southern hemisphere and is the centre of manufacturing and distribution in Greater Western Sydney."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "wetherill park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wetherill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7436,
+    "place_id": "gn-2207618",
+    "input": {
+      "place": {
+        "place_id": "gn-2207618",
+        "name": "Cheltenham",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.96944,
+        "lon": 145.04806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheltenham, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Cheltenham,_Victoria",
+          "text": "Cheltenham is a suburb in Melbourne, Victoria, Australia, 18 km south-east of Melbourne's Central Business District, located within the Cities of Bayside and Kingston local government areas. Cheltenham recorded a population of 23,992 at the 2021 census.\nThe eastern side of the area's metropolitan railway line and Charman Road north is located within the City of Kingston, while the suburb's western region towards extensive golf links, parks and Port Phillip Bay falls within the City of Bayside.\nA significant feature in Cheltenham is Westfield Southland, a major shopping centre which opened in 1968.\nCheltenham is currently undergoing significant gentrification and urban development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "cheltenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7439,
+    "place_id": "gn-2622383",
+    "input": {
+      "place": {
+        "place_id": "gn-2622383",
+        "name": "Faaborg",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.0951,
+        "lon": 10.24226
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faaborg",
+          "url": "https://en.wikipedia.org/wiki/Faaborg",
+          "text": "Faaborg or Fåborg (Danish: [ˈfʌˌpɒˀ]) is an old port town located on Faaborg Fjord in Faaborg-Midtfyn municipality on the island of Funen in Denmark. By road, Faaborg is located 42 kilometres (26 mi) southwest of Odense, 27 kilometres (17 mi) west-northwest of Svendborg, and roughly 70 kilometres (43 mi) southeast of Middelfart, depending upon the route. It has a population of 6,822 (1 January 2026). With its busy port, narrow streets and attractive old houses, the town is popular with tourists, particularly in the summer months. Faaborg was formerly the seat of Faaborg municipality. The seat of the new municipality is Ringe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "faaborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7448,
+    "place_id": "gn-2656992",
+    "input": {
+      "place": {
+        "place_id": "gn-2656992",
+        "name": "Ascot",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41082,
+        "lon": -0.6748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ascot, Berkshire",
+          "url": "https://en.wikipedia.org/wiki/Ascot,_Berkshire",
+          "text": "Ascot () is a town in the Royal Borough of Windsor and Maidenhead, in Berkshire, England. It is 6 miles (9.7 km) south of Windsor, 4 miles (6.4 km) east of Bracknell and 25 miles (40 km) west of London.\nIt is most notable as the location of Ascot Racecourse, home of the Royal Ascot meeting. Its average house price of £1,019,451, as of June 2021, makes it the 13th most expensive town in England. It is also among the ten most expensive towns in Britain to rent a property. The town comprises three areas: Ascot itself, North Ascot and South Ascot."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "ascot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7452,
+    "place_id": "gn-2751729",
+    "input": {
+      "place": {
+        "place_id": "gn-2751729",
+        "name": "Lemmer",
+        "country": "Netherlands",
+        "subdivision": "Friesland",
+        "lat": 52.84618,
+        "lon": 5.70912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lemmer",
+          "url": "https://en.wikipedia.org/wiki/Lemmer",
+          "text": "Lemmer (West Frisian: De Lemmer) is a town in the municipality of De Fryske Marren, in the Dutch province of Friesland. Lemmer lies adjacent to the IJsselmeer and the Frisian Lakes and is one of Friesland's best-known surface water sports locations. Lemmer is a bustling lakeside resort in the summer months and attracts not only day-trippers from surrounding communities such as Emmeloord, Urk, and Joure, but also national and international tourists.\nIn 2017 the town had 10,225 inhabitants. Residents of Lemmer are called Lemsters. Due to its favorable location in relation to the Randstad, Lemmer attracts many new inhabitants from outside Friesland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "lemmer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7453,
+    "place_id": "gn-2794072",
+    "input": {
+      "place": {
+        "place_id": "gn-2794072",
+        "name": "Kortenaken",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.90862,
+        "lon": 5.05968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kortenaken",
+          "url": "https://en.wikipedia.org/wiki/Kortenaken",
+          "text": "Kortenaken (Dutch pronunciation: [ˈkɔrtənaːkə(n)]) is a municipality located in the Belgian province of Flemish Brabant. The municipality comprises the towns of Hoeleden, Kersbeek-Miskom, Kortenaken proper, Ransberg and Waanrode. On January 1, 2014, Kortenaken had a total population of 7,881. The total area is 49.06 km² which gives a population density of 160,63 inhabitants per km².\nEvery year in August there used to be a three-day festival in Kortenaken, named Boerenrock, with electro music on Friday, rock music and a party on Saturday, and on Sunday music aimed at children and their parents. The final edition of this festival took place in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "kortenaken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7456,
+    "place_id": "gn-2848335",
+    "input": {
+      "place": {
+        "place_id": "gn-2848335",
+        "name": "Remagen",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.57879,
+        "lon": 7.22703
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Remagen",
+          "url": "https://en.wikipedia.org/wiki/Remagen",
+          "text": "Remagen (German pronunciation: [ˈʁeːmaːɡn̩] ) is a town in Germany in the state of Rhineland-Palatinate, and district of Ahrweiler. It is about a one-hour drive from Cologne, just south of Bonn, the former West German seat of government, on the left (western) bank of the river Rhine. There is a ferry across the Rhine from Remagen every 10–15 minutes in the summer. Remagen has many notable and well-maintained buildings, churches, castles and monuments.\nOverlooking the west bank of the Rhine just north of the city centre is the Apollinariskirche. It has an observation deck that is only open to parishioners on Sundays."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "remagen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7459,
+    "place_id": "gn-2953548",
+    "input": {
+      "place": {
+        "place_id": "gn-2953548",
+        "name": "Bad Berka",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.89982,
+        "lon": 11.28245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Berka",
+          "url": "https://en.wikipedia.org/wiki/Bad_Berka",
+          "text": "Bad Berka (German: [baːt ˈbɛʁka] ) is a German spa town, situated in the south of Weimar region in the state of Thuringia. With its almost 8,000 inhabitants Bad Berka is the second biggest city in Weimarer Land district (after Apolda, 23,000). The river flowing through the town, which is embedded in new red sandstone, is called Ilm. Since 1 December 2008, the city has incorporated the former municipality of Gutendorf.\nBad Berka is a spa town with an iron-rich spring and Kneipp facilities. In 2002 the award of \"State Recognised Spa with Mineral Spring Health Facility\" was given to the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "bad berka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "berka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7462,
+    "place_id": "gn-3021351",
+    "input": {
+      "place": {
+        "place_id": "gn-3021351",
+        "name": "Dinard",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.63293,
+        "lon": -2.06274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dinard",
+          "url": "https://en.wikipedia.org/wiki/Dinard",
+          "text": "Dinard (French pronunciation: [dinaʁ]; Breton: Dinarzh, [ˈdiːnars]; Gallo: Dinard) is a commune in the Ille-et-Vilaine department, Brittany, northwestern France.\nDinard is on Brittany's Côte d'Émeraude. Its beaches and mild climate make it a holiday destination, and the town has had various famous visitors and residents. The towns of Pleurtuit and Saint-Malo are nearby and the Dinard–Pleurtuit–Saint-Malo Airport is about 4 km to the south.\nWith its international film festival, villas, sumptuous hotels and casino, Dinard is regarded as one of France's most prestigious seaside resorts.\nThe town's official name was Saint-Énogat until 1879, Dinard-Saint-Énogat from 1879 to 1921, and Dinard since 1921."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "dinard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7479,
+    "place_id": "gn-3589770",
+    "input": {
+      "place": {
+        "place_id": "gn-3589770",
+        "name": "San Mateo Ixtatán",
+        "country": "Guatemala",
+        "subdivision": "Huehuetenango",
+        "lat": 15.83194,
+        "lon": -91.47806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Mateo Ixtatán",
+          "url": "https://en.wikipedia.org/wiki/San_Mateo_Ixtatán",
+          "text": "San Mateo Ixtatán is a municipality in the Guatemalan department of Huehuetenango. It is situated at 2,540 metres (8,330 ft) above sea level in the Cuchumatanes mountain range and covers 560 km² (220 sq mi) of terrain. It has a cold climate and is located in a cloud forest. The temperature fluctuates between 0.5 and 20 °C (32.9 and 68.0 °F). The coldest months are from November to January and the warmest months are April and May. The town has a population of 15,090 (2018 census) and is the municipal center for an additional 28,000 people living in the surrounding mountain villages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "san mateo ixtatan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mateo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ixtatan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7480,
+    "place_id": "gn-3663516",
+    "input": {
+      "place": {
+        "place_id": "gn-3663516",
+        "name": "Mâncio Lima",
+        "country": "Brazil",
+        "subdivision": "Acre",
+        "lat": -7.61417,
+        "lon": -72.89583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mâncio Lima",
+          "url": "https://en.wikipedia.org/wiki/Mâncio_Lima",
+          "text": "Mâncio Lima (Brazilian Portuguese pronunciation: [ˈmɐ̃sju ˈlimɐ]) is a municipality in the Brazilian state of Acre. Located deep within the Amazon rainforest, it is the country's westernmost municipality and the state's northernmost. As of 2022, it had a population of 19,294.\nMâncio Lima grew out of a small village named Vila Japiim. The population ballooned with the arrival of settlers from northeast Brazil, who sought a better livelihood in the area amid the Brazilian rubber booms of the 20th century. Vila Japiim became a municipality in 1976 and was renamed Mâncio Lima after one of the settlers who came from the northeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "mancio lima",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mancio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lima",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

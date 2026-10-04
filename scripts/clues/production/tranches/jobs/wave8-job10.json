@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 8364,
+    "place_id": "gn-6354950",
+    "input": {
+      "place": {
+        "place_id": "gn-6354950",
+        "name": "Tofino",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.15314,
+        "lon": -125.90744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tofino",
+          "url": "https://en.wikipedia.org/wiki/Tofino",
+          "text": "Tofino (  tə-FEE-noh, Nuu-chah-nulth: Načiks) is a town of approximately 2,516 residents on the west coast of Vancouver Island in the Canadian province of British Columbia. The District of Tofino is located at the western terminus of Highway 4 on the tip of the Esowista Peninsula at the southern edge of Clayoquot Sound. It is situated in the traditional territory of the Tla-o-qui-aht First Nations, who have occupied Clayoquot Sound for thousands of years. European and American vessels began trading along this coast in the late eighteenth century, and permanent non-Indigenous settlement began in the 1890s; the community took the name Tofino, after nearby Tofino Inlet, in the early 1900s, and its post office opened in 1909. Tofino was incorporated as a municipality in 1932 and as a district in 1982.\nA popular year-round tourism destination, Tofino's summer population swells to many times its winter size."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "tofino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8366,
+    "place_id": "gn-2059470",
+    "input": {
+      "place": {
+        "place_id": "gn-2059470",
+        "name": "Victor Harbor",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -35.55042,
+        "lon": 138.62154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victor Harbor, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Victor_Harbor,_South_Australia",
+          "text": "Victor Harbor is a town in the Australian state of South Australia located within the City of Victor Harbor on the south coast of the Fleurieu Peninsula, about 82 kilometres (51 mi) south of the state capital of Adelaide. The town is the largest population centre on the peninsula, with an economy based upon agriculture, fisheries, and tourism. It is a popular tourist destination, with the area's population greatly expanding during the summer holidays, usually by Adelaide locals looking to escape the summer heat.\nThe coast stretching for around 50 km (31 mi) from west of Victor Harbor along to Goolwa is often referred to as the South Coast, especially among surfers, as many of the beaches on this stretch are popular surfing spots.\nIt is a popular destination with South Australian high school graduates for their end of year celebrations, known colloquially as schoolies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "victor harbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "victor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8383,
+    "place_id": "gn-2654747",
+    "input": {
+      "place": {
+        "place_id": "gn-2654747",
+        "name": "Bridge of Allan",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.15402,
+        "lon": -3.94631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridge of Allan",
+          "url": "https://en.wikipedia.org/wiki/Bridge_of_Allan",
+          "text": "Bridge of Allan (Scots: Brig Allan, Scottish Gaelic: Drochaid Ailein), also known colloquially as Bofa, is a former spa town in the Stirling council area in Scotland, just north of the city of Stirling. \nOverlooked by the National Wallace Monument, it lies on the Allan Water, a northern tributary of the River Forth, built largely on the well-wooded slopes of the Westerton and Airthrey estates, sheltered by the Ochil Hills from the north and east winds. Most of the town is to the east of the river; the bridge is part of the A9, Scotland's longest road, while the railway line and the M9 pass to the west of the river. Bridge of Allan railway station is on the electrified Edinburgh to Dunblane Line and is accessible by train from Stirling in under 5 minutes as well as London in under six hours."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "bridge of allan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bridge",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "allan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8384,
+    "place_id": "gn-3170131",
+    "input": {
+      "place": {
+        "place_id": "gn-3170131",
+        "name": "Porretta Terme",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.16325,
+        "lon": 10.97432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porretta Terme",
+          "url": "https://en.wikipedia.org/wiki/Porretta_Terme",
+          "text": "Porretta Terme (Bolognese: Puràtta) is a spa town and frazione of the comune of Alto Reno Terme, in the Metropolitan City of Bologna, Emilia-Romagna, northern Italy. It lies in the upper valley of the Reno, in the Tuscan-Emilian Apennines, near the border with Tuscany.\nKnown since Roman times for its thermal springs, Porretta developed into one of the historic spa towns of northern Italy. It was an independent municipality until 31 December 2015, when it merged with Granaglione to form the new municipality of Alto Reno Terme.\nAlthough administratively Porretta Terme is a frazione of Alto Reno Terme, the built-up area of Porretta is continuous with neighbouring settlements across the Reno valley floor. On the right bank of the Reno, Berzantina belongs administratively to the municipality of Castel di Casio, while remaining closely connected with Porretta in the local geography of the valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "porretta terme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porretta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8388,
+    "place_id": "gn-6945985",
+    "input": {
+      "place": {
+        "place_id": "gn-6945985",
+        "name": "Dégelis",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 47.54734,
+        "lon": -68.64309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dégelis",
+          "url": "https://en.wikipedia.org/wiki/Dégelis",
+          "text": "Dégelis (French pronunciation: [deʒli]) is a city in Témiscouata Regional County Municipality within the Bas-Saint-Laurent region of Quebec. Its population in the Canada 2021 Census was 2,884. The Madawaska River flows from Lake Témiscouata, through Degelis, to join the Saint John River at 32 kilometres (20 mi) to the east at Edmundston, New Brunswick.\nLocated on the banks of the Madawaska River (Saint John River), the city owes its name to a physical phenomenon: a zone of the river located in front the city, that never freezes. A Dégelis, in Old French, means a zone on the water free of ice (which is the phenomenon observed in Dégelis), a local winter thaw (no apparent reason), meaning an opening in the ice during the seasonal thawing.\nThe area corresponding to Dégelis is named Dégelé (English: thawed) in a report by Joseph Bouchette in 1815."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "degelis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8391,
+    "place_id": "gn-761437",
+    "input": {
+      "place": {
+        "place_id": "gn-761437",
+        "name": "Poronin",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.33781,
+        "lon": 20.00291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poronin",
+          "url": "https://en.wikipedia.org/wiki/Poronin",
+          "text": "Poronin (Polish pronunciation: [pɔˈrɔnin]) is a village in southern Poland. From 1999 it formed part of Tatra County of the Lesser Poland Voivodeship (it was previously in Nowy Sącz Voivodeship from 1975 to 1998).\nPoronin sits on the confluence of rivers Zakopianka and Poroniec, which gives rise to the river Biały Dunajec.\nIn the summers of 1913 and 1914 Vladimir Lenin and Nadezhda Krupskaya rented a holiday home in nearby Biały Dunajec and often stayed in a Poronin inn. The area formed part of Austria-Hungary at that time (as a result of the Partitions of Poland), and when World War I broke out in mid-1914 the Austrian authorities arrested Lenin on suspicion of spying for Russia (August 1914), but deported him to Switzerland soon after (September 1914).\nDuring 1947-1990 there used to be a Lenin Museum in Poronin and a statue of Lenin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "poronin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8398,
+    "place_id": "gn-5099067",
+    "input": {
+      "place": {
+        "place_id": "gn-5099067",
+        "name": "Hightstown",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.26955,
+        "lon": -74.52321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hightstown, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hightstown,_New_Jersey",
+          "text": "Hightstown is a borough in Mercer County, in the U.S. state of New Jersey. Nestled within the Raritan Valley region, Hightstown is an historic, commercial, and cultural hub of Central New Jersey, along with being a diverse outer-ring commuter suburb of New York City in the New York Metropolitan Area. As of the 2020 United States census, the borough's population was 5,900, its highest decennial count ever and an increase of 406 (+7.4%) from the 5,494 recorded at the 2010 census, which in turn reflected an increase of 278 (+5.3%) from the 5,216 counted in the 2000 census.\nHightstown was incorporated as a borough by an act of the New Jersey Legislature on March 5, 1853, within portions of East Windsor Township. The borough became fully independent around 1894. Additional portions of East Windsor Township were annexed in 1913, 1915, and 1927."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "hightstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8401,
+    "place_id": "gn-726114",
+    "input": {
+      "place": {
+        "place_id": "gn-726114",
+        "name": "Ugarchin",
+        "country": "Bulgaria",
+        "subdivision": "Lovech",
+        "lat": 43.1,
+        "lon": 24.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ugarchin",
+          "url": "https://en.wikipedia.org/wiki/Ugarchin",
+          "text": "Ugarchin (Bulgarian: Угърчин [oɡɐrˈt͡ʃin]) is a town located along the Kamenitsa river in the Lovech Province in central northern Bulgaria. It is the administrative centre of the homonymous Ugarchin Municipality. The town is about 30 kilometers away in the west from the main centre of the province (Lovech). As of December 2009, it had a population of 2,832 inhabitants which sunk to 2,354 by end of 2018.\nUgarchin is situated in the northern part of the Balkan Mountains at the foot the high peaks and down the river Kamenitsa and its minor tributaries: Lepetora, Sveta, Greshki Dol and others. It is situated in a basin rounded with small hills: Ivan Dyal hill to the south; Visokata Mogila (Chukara) to the east; to the north are Beli Kamak, Sredno Bardo and Zabiti Kamak hills; and to the west are Goli Rat and Chukata."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "ugarchin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8404,
+    "place_id": "gn-8379299",
+    "input": {
+      "place": {
+        "place_id": "gn-8379299",
+        "name": "Data Kakus",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 2.65465,
+        "lon": 113.62249
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Data Kakus",
+          "url": "https://en.wikipedia.org/wiki/Data_Kakus",
+          "text": "Data Kakus (a.k.a. Apau Data) is a remote Kenyah Badeng village settlement in the hilly interior of the Ulu Kakus Tatau division of Sarawak, Malaysia elevates to 650 metres, not far from Tubau and Belaga district. To be exact, Data Kakus is located at the upstream of Sungai Burok and Sungai Nyabet. The highest peak in Ulu Kakus is called Gunung Lumut about 828m located on the peak of Lumut Range not too far from Sungai Bekuyat and Sungai Kakus.\nTravel to Data Kakus involves a five hours 4WD drive from Bintulu or Belaga, to get to Data Kakus one has to take the Bintulu-Bakun road and look for the junction to KTS camp from KTS camp to Simpang Jonat. It takes about 60 km using the logging road and from simpang Jonat it takes another 18 km to reach Data Kakus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "data kakus",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "data",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kakus",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8410,
+    "place_id": "gn-4936174",
+    "input": {
+      "place": {
+        "place_id": "gn-4936174",
+        "name": "Falmouth",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.5515,
+        "lon": -70.61475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falmouth, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Falmouth,_Massachusetts",
+          "text": "Falmouth ( FAL-məth) is a town on Cape Cod in Massachusetts. The population was 32,517 at the 2020 census, making Falmouth the second-largest municipality on Cape Cod after Barnstable. The terminal for the Steamship Authority ferries to Martha's Vineyard is located in the village of Woods Hole in Falmouth. Woods Hole also contains several scientific organizations such as the Woods Hole Oceanographic Institution (WHOI), the Marine Biological Laboratory (MBL), the Woodwell Climate Research Center, NOAA's Woods Hole Science Aquarium, and the scientific institutions' various museums.\nFor geographic and demographic information on specific parts of the town of Falmouth, please see the articles on East Falmouth, Falmouth Village, North Falmouth, Teaticket, West Falmouth, and Woods Hole. Falmouth also encompasses the villages of Hatchville and Waquoit, which are not census-designated places and fall within the village of East Falmouth based on postal service."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "falmouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8413,
+    "place_id": "gn-5952370",
+    "input": {
+      "place": {
+        "place_id": "gn-5952370",
+        "name": "Fernie",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.49996,
+        "lon": -115.06871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fernie, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Fernie,_British_Columbia",
+          "text": "Fernie is a city in the Elk Valley area of the East Kootenay region of southeastern British Columbia, Canada, located on BC Highway 3 on the western approaches to the Crowsnest Pass through the Rocky Mountains. Founded in 1898 and incorporated as the City of Fernie in July 1904, the municipality has a population of over 5,000 with an additional 2,000 outside city limits in communities under the jurisdiction of the Regional District of East Kootenay. A substantial seasonal population swells the city during the winter months.\nFernie lies on the Elk River, along Canada's southernmost east-west transportation corridor through the Rockies that crosses the range via the Crowsnest Pass, 40 kilometres (25 miles) to the east. As the largest and longest-established community between Cranbrook and Lethbridge, Fernie serves as a minor regional centre, particularly for its fellow Elk Valley communities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "fernie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8425,
+    "place_id": "gn-5124642",
+    "input": {
+      "place": {
+        "place_id": "gn-5124642",
+        "name": "Little Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.0434,
+        "lon": -74.8596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Little Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/Little_Falls,_New_York",
+          "text": "Little Falls is a city in Herkimer County, New York, United States. The population was 4,605 at the time of the 2020 census, which is the second-smallest city population in the state, ahead of only the city of Sherrill. The city is built on both sides of the Mohawk River, at a point at which rapids had impeded travel upriver. Transportation through the valley was improved by construction of the Erie Canal, completed in 1825 and connecting the Great Lakes with the Hudson River.\nThe city is located at the northeastern corner of the town of Little Falls and is east of Utica.\nLittle Falls has a picturesque location on the slope of a narrow and rocky defile, through which the Mohawk River falls 45 feet (14 m) in less than a mile (1.6 km), forming a number of cascades."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "little falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "little",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8428,
+    "place_id": "gn-2466499",
+    "input": {
+      "place": {
+        "place_id": "gn-2466499",
+        "name": "Sidi el Hani",
+        "country": "Tunisia",
+        "subdivision": "Sousse Governorate",
+        "lat": 35.67139,
+        "lon": 10.31583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sidi El Hani",
+          "url": "https://en.wikipedia.org/wiki/Sidi_El_Hani",
+          "text": "Sidi El Hani (or Sidi Al-Hani) (سيدي الهاني) is a town and commune in the Sousse Governorate, Tunisia located at 35.67n, 10.30e. As of 2004 it had a population of 3,058.  It gives its name to the largest lake of the governorate, a natural salt lake or salt pan (sabkha) in dry seasons, the Sebkhet de Sidi El Hani which is shared with between one and two other areas depending on precipitation and its maximum extent forms the official boundary with part of a third, Monastir Governorate.  The town is 30 km south-west of the coast, its straightest connection being by Tunisian Railways, with a secondary connection by road, the P12 road which is a principal road to Kairouan from the A1 a few kilometres to the east. it is 19 km from Kairouan and 26 km from Raqqada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "sidi el hani",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sidi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hani",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8429,
+    "place_id": "gn-2633710",
+    "input": {
+      "place": {
+        "place_id": "gn-2633710",
+        "name": "Woburn Sands",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.01579,
+        "lon": -0.64982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woburn Sands",
+          "url": "https://en.wikipedia.org/wiki/Woburn_Sands",
+          "text": "Woburn Sands () is a town that straddles the border between Buckinghamshire and Bedfordshire in England, and is part of the Milton Keynes urban area. The larger part of the town is in Woburn Sands civil parish, which is in the City of Milton Keynes, The built-up area of the town extends continuously to include much of the neighbouring parishes of Aspley Guise and Aspley Heath (in Central Bedfordshire), with no natural boundaries to set them apart. The meandering boundary between Buckinghamshire and Bedfordshire means the Lower and Middle Schools that serve all of the town are both in Aspley Guise CP. Bedfordshire Police and Thames Valley Police both deal with law enforcement issues in the town. At the 2021 Census, the population of the civil parish (only) was 3.646. The population of the contiguous built-up area was 4,310."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "woburn sands",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woburn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sands",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8431,
+    "place_id": "gn-2780207",
+    "input": {
+      "place": {
+        "place_id": "gn-2780207",
+        "name": "Eisenerz",
+        "country": "Austria",
+        "subdivision": "Styria",
+        "lat": 47.543,
+        "lon": 14.887
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eisenerz",
+          "url": "https://en.wikipedia.org/wiki/Eisenerz",
+          "text": "Eisenerz (German pronunciation: [ˈaɪzn̩ˌʔeːɐ̯ts]; \"Iron ore\") is a market place and old mining town in the Austrian state of Styria, 68 mi (109 km). northwest of Graz by rail. It is situated in the deep Erzbach Valley, dominated on the east by the Pfaffenstein 1,871 m (6,138 ft), on the west by the Kaiserschild 2,084 m (6,837 ft), and on the south by the Erzberg 1,465 m (4,806 ft). It has a medieval fortified church, a Gothic edifice founded by Rudolph of Habsburg in the 13th century and rebuilt in the 16th century.\nAt the turn of the past century the Erzberg (Ore Mountain) furnished such rich ore that it was quarried in the open air like stone, in the summer months. There is documentary evidence of the mines having been worked as far back as the 12th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "eisenerz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8441,
+    "place_id": "gn-2159454",
+    "input": {
+      "place": {
+        "place_id": "gn-2159454",
+        "name": "Lower Plenty",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.73333,
+        "lon": 145.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lower Plenty, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Lower_Plenty,_Victoria",
+          "text": "Lower Plenty is a suburb of Melbourne, Victoria, Australia, 16 km north-east from Melbourne's Central Business District, located within the City of Banyule local government area. Lower Plenty recorded a population of 3,962 at the 2021 census.\nLower Plenty, in earlier times part of Eltham, almost certainly got its name from the Lower Plenty Toll Bridge, built in 1860 to collect tolls across the Plenty River. This bluestone bridge still stands as part of the Lower Plenty Trail. A report of a court case, in The Argus newspaper, dated 1 May 1879, reveals two lads, Corkhill and Hodgson, \"broke the windows of the old tollhouse, Lower Plenty bridge\", some 19 years after the bridge was built.\nThe suburb is bounded by the Plenty River in the west until it joins the Yarra River, which forms the southern boundary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "lower plenty",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lower",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plenty",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8442,
+    "place_id": "gn-2639076",
+    "input": {
+      "place": {
+        "place_id": "gn-2639076",
+        "name": "Rothley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.70916,
+        "lon": -1.13739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rothley",
+          "url": "https://en.wikipedia.org/wiki/Rothley",
+          "text": "Rothley ( ROHTH-lee) is a village and civil parish within the Borough of Charnwood in Leicestershire, England. Situated around one-half mile (800 metres) west of the River Soar and five miles (eight kilometres) north of Leicester, it had a population of 3,612 inhabitants the 2001 census. The population measured at the 2011 census was 3,897.\nRothley centres on two greens, Cross Green and the Town Green, both of which are accessed by a road that leads from the crossroads. The crossroads lies on the old route of the A6 road, which now bypasses the village.\nRothley is one of Leicestershire's most affluent areas based on number of houses worth more than £1 million – especially in some streets such as The Ridgeway, identified in the Sunday Times as the most expensive place to live in the East Midlands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "rothley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8443,
+    "place_id": "gn-2645020",
+    "input": {
+      "place": {
+        "place_id": "gn-2645020",
+        "name": "Lakenheath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.41755,
+        "lon": 0.52211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lakenheath",
+          "url": "https://en.wikipedia.org/wiki/Lakenheath",
+          "text": "Lakenheath is a village and civil parish in the West Suffolk district of Suffolk in eastern England. It has a population of 4,691 according to the 2011 Census,  and is situated close to the county boundaries of both Norfolk and Cambridgeshire, and at the meeting point of The Fens and the Breckland natural environments.\nLakenheath is host to the largest United States Air Force base in the United Kingdom, RAF Lakenheath.\nLakenheath Fen Nature Reserve, created in 1996, restored wetlands from agricultural fields that were growing carrots. In May 2007, it was reported that cranes were nesting in the site for the first time since the fen lands were drained in the 16th century.\nThe village has a single Victorian primary school, constructed in 1878, which was extended in 1969, again in 2004 and most recently in 2010/2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "lakenheath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8451,
+    "place_id": "gn-6153111",
+    "input": {
+      "place": {
+        "place_id": "gn-6153111",
+        "name": "Spaniard's Bay",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 47.61659,
+        "lon": -53.28138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spaniard's Bay",
+          "url": "https://en.wikipedia.org/wiki/Spaniard's_Bay",
+          "text": "Spaniard's Bay is a town in the Canadian province of Newfoundland and Labrador. It is located on the northwest side of Conception Bay and consists of Vokey's Shore, Northern Cove, Mint Cove, Green Head, and Goddenville. The name Spaniard's Bay came from the Basque and Portuguese fishermen who frequented the port in the 16th century and 17th century, and were referred to by the English as ‘Spaniards’.\nOccupation of the area was seasonal at first, as with most of Newfoundland, but gradually English fishermen began to make permanent homes in Spaniard's Bay around 1776.  American Traders were visiting Spaniard's Bay before 1776 and they exchanged salt, rum, and tobacco for cod.  By 1805, there were 400 people living in the area; according to the 1871 Lovell's Directory, the population would rise to 1,182 in less than 70 years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "spaniard s bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spaniard",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8470,
+    "place_id": "gn-2650996",
+    "input": {
+      "place": {
+        "place_id": "gn-2650996",
+        "name": "Dreghorn",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.60807,
+        "lon": -4.62226
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dreghorn",
+          "url": "https://en.wikipedia.org/wiki/Dreghorn",
+          "text": "Dreghorn is a village in North Ayrshire, Scotland, 3.5 kilometres (2+1⁄4 miles) east of Irvine town centre, on the old main road from Irvine to Kilmarnock. It is sited on a ridge between two rivers. As archaeological excavations near the village centre have found a significant neolithic settlement provisionally dated to around 3500 BC, as well as medieval structures, scholars have suggested that Dreghorn could be Britain's oldest continuously inhabited village. Both Irvine and Dreghorn have grown in size and they are now separated by the Annick Valley Park, which incorporates a footpath and National Cycle Route 73 on the route of the disused Irvine to Busby railway line. It had an estimated population of \n3,450 in 2020.\nThe Church of Scotland Dreghorn and Springside Parish Church, at the centre of the village, dates from 1780."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "dreghorn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

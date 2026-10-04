@@ -1,0 +1,202 @@
+[
+ {
+  "place_id": "gn-2803183",
+  "input": {
+   "place": {
+    "place_id": "gn-2803183",
+    "name": "Angleur",
+    "country": "Belgium",
+    "subdivision": "Wallonia",
+    "lat": 50.6113,
+    "lon": 5.59942
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Angleur",
+     "url": "https://en.wikipedia.org/wiki/Angleur",
+     "text": "Angleur (French pronunciation: [ɑ̃ɡlœʁ]; Walloon: Angleûr) is a sub-municipality of the city of Liège located in the province of Liège, Wallonia, Belgium. It was a separate municipality until 1977. On 1 January 1977, it was merged into Liège.\nIt is located at the foot and on the slope of a hill in the southern part of Liège, located between the rivers Ourthe and Meuse. The lower part involves an area known as Renory and a railway station called Gare d'Angleur and the higher part is located around the roundabout of Sart Tilman where the Liège Science Park is located. Two mansions can be found in the lower part of Angleur : the Chateau Péralta and the Chateau Nagelmackers\nOn the 24th of July 2019, during the July 2019 European heat wave, the hottest temperate ever recorded in Belgium at the time was recorded in Angleur, a temperature of 40.2 °C, however this recorded was again broken the next day in the Flemish town of Begijnendijk."
+    }
+   ]
+  },
+  "validator_issues": [
+   {
+    "code": "CLUE_SENTENCES",
+    "tier": 2,
+    "detail": "clue has 3 sentences (allowed 1-2)"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-2803183",
+   "answer": {
+    "name": "Angleur",
+    "aliases": [
+     "Angleûr"
+    ],
+    "country": "Belgium",
+    "subdivision": "Wallonia",
+    "lat": 50.6113,
+    "lon": 5.59942,
+    "difficulty": 3
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This small place lies in the south of Liège in Belgium. It sits at the foot and slope of a hill.",
+     "narrowing": "rules out everything outside southern Belgium",
+     "source": {
+      "article": "Angleur",
+      "url": "https://en.wikipedia.org/wiki/Angleur",
+      "quote": "It is located at the foot and on the slope of a hill in the southern part of Liège, located between the rivers Ourthe and Meuse."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "In July 2019, heat broke a record here. The air hit 40.2 degrees Celsius, then the hottest ever seen in Belgium.",
+     "narrowing": "rules out places with no record-breaking summer heat",
+     "source": {
+      "article": "Angleur",
+      "url": "https://en.wikipedia.org/wiki/Angleur",
+      "quote": "On the 24th of July 2019, during the July 2019 European heat wave, the hottest temperate ever recorded in Belgium at the time was recorded in Angleur, a temperature of 40.2 °C, however this recorded was again broken the next day in the Flemish town of Begijnendijk."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "This place stood on its own until 1977. In that year, it merged into the city of Liège.",
+     "narrowing": "rules out places that did not join a larger city in 1977",
+     "source": {
+      "article": "Angleur",
+      "url": "https://en.wikipedia.org/wiki/Angleur",
+      "quote": "It was a separate municipality until 1977. On 1 January 1977, it was merged into Liège."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Two mansions stand down in its lower part. One is called Péralta, and the other is Nagelmackers.",
+     "narrowing": "rules out places without this pair of named mansions",
+     "source": {
+      "article": "Angleur",
+      "url": "https://en.wikipedia.org/wiki/Angleur",
+      "quote": "Two mansions can be found in the lower part of Angleur : the Chateau Péralta and the Chateau Nagelmackers"
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Find the science park by the roundabout at Sart Tilman. That hilltop park is the mark of its high part.",
+     "narrowing": "confirms the place by its hilltop science park",
+     "source": {
+      "article": "Angleur",
+      "url": "https://en.wikipedia.org/wiki/Angleur",
+      "quote": "The lower part involves an area known as Renory and a railway station called Gare d'Angleur and the higher part is located around the roundabout of Sart Tilman where the Liège Science Park is located."
+     }
+    }
+   ]
+  }
+ },
+ {
+  "place_id": "gn-5807239",
+  "input": {
+   "place": {
+    "place_id": "gn-5807239",
+    "name": "Port Townsend",
+    "country": "United States",
+    "subdivision": "Washington",
+    "lat": 48.11742,
+    "lon": -122.76071
+   },
+   "curated_aliases": [],
+   "extracts": [
+    {
+     "article": "Port Townsend, Washington",
+     "url": "https://en.wikipedia.org/wiki/Port_Townsend,_Washington",
+     "text": "Port Townsend  is a city on the Quimper Peninsula in Jefferson County, Washington, United States. The population was 10,148 at the 2020 United States Census. It is the county seat of, and the only incorporated city in, Jefferson County.\nIn addition to its natural scenery at the northeast tip of the Olympic Peninsula, the city is known for the many Victorian buildings remaining from its late 19th-century heyday, numerous annual cultural events, and as a maritime center for independent boatbuilders and related industries and crafts. The Port Townsend Historic District is a U.S. National Historic Landmark District. It is also significantly drier than the surrounding region due to being in the rainshadow of the Olympic Mountains, receiving only 19 inches or 480 millimeters of rain per year."
+    }
+   ]
+  },
+  "validator_issues": [
+   {
+    "code": "READING_LEVEL",
+    "tier": 1,
+    "detail": "Flesch-Kincaid grade 6.30 exceeds max 6"
+   }
+  ],
+  "record": {
+   "schema": "meridian.loop.clues.v1",
+   "status": "accepted",
+   "place_id": "gn-5807239",
+   "answer": {
+    "name": "Port Townsend",
+    "aliases": [],
+    "country": "United States",
+    "subdivision": "Washington",
+    "lat": 48.11742,
+    "lon": -122.76071,
+    "difficulty": 3
+   },
+   "clues": [
+    {
+     "tier": 1,
+     "tier_name": "geography",
+     "text": "This city sits at the far tip of the Olympic Peninsula. It is in Washington state, in the far west of the United States.",
+     "narrowing": "rules out places outside Washington and the Olympic Peninsula",
+     "source": {
+      "article": "Port Townsend, Washington",
+      "url": "https://en.wikipedia.org/wiki/Port_Townsend,_Washington",
+      "quote": "In addition to its natural scenery at the northeast tip of the Olympic Peninsula, the city is known for the many Victorian buildings remaining from its late 19th-century heyday, numerous annual cultural events, and as a maritime center for independent boatbuilders and related industries and crafts."
+     }
+    },
+    {
+     "tier": 2,
+     "tier_name": "climate",
+     "text": "This place stays much drier than the land around it. High mountains block wet air and steal its rain first.",
+     "narrowing": "rules out wet parts of the coast near the Olympic Mountains",
+     "source": {
+      "article": "Port Townsend, Washington",
+      "url": "https://en.wikipedia.org/wiki/Port_Townsend,_Washington",
+      "quote": "It is also significantly drier than the surrounding region due to being in the rainshadow of the Olympic Mountains, receiving only 19 inches or 480 millimeters of rain per year."
+     }
+    },
+    {
+     "tier": 3,
+     "tier_name": "history",
+     "text": "This town had its best years in the late 1800s. Many grand old buildings from that time still stand here today.",
+     "narrowing": "rules out towns without a late 1800s heyday and old buildings",
+     "source": {
+      "article": "Port Townsend, Washington",
+      "url": "https://en.wikipedia.org/wiki/Port_Townsend,_Washington",
+      "quote": "In addition to its natural scenery at the northeast tip of the Olympic Peninsula, the city is known for the many Victorian buildings remaining from its late 19th-century heyday, numerous annual cultural events, and as a maritime center for independent boatbuilders and related industries and crafts."
+     }
+    },
+    {
+     "tier": 4,
+     "tier_name": "hook",
+     "text": "Small shops here still build boats by hand near the sea. This old craft is a big part of town life today.",
+     "narrowing": "rules out towns without hand boat building by the sea",
+     "source": {
+      "article": "Port Townsend, Washington",
+      "url": "https://en.wikipedia.org/wiki/Port_Townsend,_Washington",
+      "quote": "In addition to its natural scenery at the northeast tip of the Olympic Peninsula, the city is known for the many Victorian buildings remaining from its late 19th-century heyday, numerous annual cultural events, and as a maritime center for independent boatbuilders and related industries and crafts."
+     }
+    },
+    {
+     "tier": 5,
+     "tier_name": "giveaway",
+     "text": "Its old center is a landmark district kept with care. Few towns in the land hold such a prized old heart.",
+     "narrowing": "confirms a town with a landmark old center district",
+     "source": {
+      "article": "Port Townsend, Washington",
+      "url": "https://en.wikipedia.org/wiki/Port_Townsend,_Washington",
+      "quote": "The Port Townsend Historic District is a U.S. National Historic Landmark District."
+     }
+    }
+   ]
+  }
+ }
+]

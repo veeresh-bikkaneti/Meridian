@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 8010,
+    "place_id": "gn-5138847",
+    "input": {
+      "place": {
+        "place_id": "gn-5138847",
+        "name": "South Glens Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.29924,
+        "lon": -73.63512
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Glens Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/South_Glens_Falls,_New_York",
+          "text": "South Glens Falls is a village in northern Saratoga County, New York, United States. The population was 3,744 at the 2020 census. The village is surrounded by Town of Moreau and separated from the City of Glens Falls by the Hudson River.\nCooper's Cave, shown on the village seal, is named after the author James Fenimore Cooper. Cooper was inspired to use the area as a location in his novel, The Last of the Mohicans, after visiting the area. The cave is within the bedrock of the Hudson River, but a viewing platform under the bridge between the village and Glens Falls allow visitors to see it from a unique vantage point."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "south glens falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "glens",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8020,
+    "place_id": "gn-2947120",
+    "input": {
+      "place": {
+        "place_id": "gn-2947120",
+        "name": "Bodenmais",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.06667,
+        "lon": 13.1
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bodenmais",
+          "url": "https://en.wikipedia.org/wiki/Bodenmais",
+          "text": "Bodenmais (German pronunciation: [ˈboːdn̩ˌmaɪs]) is a municipality in the district of Regen in Bavaria, Germany. It lies at one end of the Zeller Valley in the Bavarian Forest.\nThe tourist attractions at the Silberberg mountain, with its former silver mine, include cross-country skiing tracks as well as an alpine skiing hill (about 1,050 m (3,440 ft) above sea level) in winter, doubling in summer as a 600 m (2,000 ft) long alpine slide. There is also a mining museum, reminding of ages of ferro-oxide mining and vitriol production. Some shafts are still accessible.\nThe village itself is known for its glass shops, the most notable being Joska Glasparadies (Joska glass paradise)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "bodenmais",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8038,
+    "place_id": "gn-4004271",
+    "input": {
+      "place": {
+        "place_id": "gn-4004271",
+        "name": "Ixtlán de los Hervores",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 20.16841,
+        "lon": -102.39418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ixtlán de los Hervores",
+          "url": "https://en.wikipedia.org/wiki/Ixtl%C3%A1n_de_los_Hervores",
+          "text": "Ixtlán de los Hervores, also known as Ixtlán, is a city in the Mexican state of Michoacán. It is located 29 kilometres (18 mi) from Jiquilpan by state highway 16 and 26 kilometres (16 mi) to the northeast of the city of Zamora by way of highway 35. It is about 80 miles (130 km) southeast of Guadalajara.\nIxtlán de los Hervores is known for its thermal water springs. In Ixtlán de los Hervores one will find three geysers that surges up from the depths of the earth with tremendous pressure. The jet rises more than 30 metres (98 ft) in height and reaches temperatures of 96 °C (205 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "ixtlan de los hervores",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ixtlan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hervores",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8041,
+    "place_id": "gn-4733103",
+    "input": {
+      "place": {
+        "place_id": "gn-4733103",
+        "name": "South Padre Island",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 26.10369,
+        "lon": -97.16469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Padre Island, Texas",
+          "url": "https://en.wikipedia.org/wiki/South_Padre_Island,_Texas",
+          "text": "South Padre Island is a resort town in Cameron County, Texas, United States. It is part of the Brownsville-Harlingen metropolitan area. The population was 2,066 at the 2020 census. The town is located on South Padre Island, a barrier island with the Laguna Madre situated to the leeward of the island and the Gulf of Mexico on the windward flank, along the Texas Gulf Coast. South Padre Island is named after José Nicolás Ballí (Padre Ballí), a Catholic priest and settler.\nThe island is only accessible via the Queen Isabella Causeway in Port Isabel and has become a popular tourist destination for both the spring, summer and for winter Texans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "south padre island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "padre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8045,
+    "place_id": "gn-2647232",
+    "input": {
+      "place": {
+        "place_id": "gn-2647232",
+        "name": "Heage",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.0505,
+        "lon": -1.44688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heage",
+          "url": "https://en.wikipedia.org/wiki/Heage",
+          "text": "Heage is a village and former civil parish, now in the parish of Ripley, in the Amber Valley district, in the county of Derbyshire, England. It is situated midway between Belper and Ripley. The village is in the Heage and Ambergate ward, which in the 2011 census had a population of 5,013.\nHeage is known for its six-sailed windmill; building work started in 1791 and it was first recorded as working in 1797. Each of the six sails weighs nearly one ton, and the tower is built from local sandstone.\nThe name Heage is derived from the Old English hēah and ecg, and means 'high edge' or 'high ridge'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "heage",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8047,
+    "place_id": "gn-2953399",
+    "input": {
+      "place": {
+        "place_id": "gn-2953399",
+        "name": "Bad Münster am Stein-Ebernburg",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.81159,
+        "lon": 7.84523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Münster am Stein-Ebernburg",
+          "url": "https://en.wikipedia.org/wiki/Bad_M%C3%BCnster_am_Stein-Ebernburg",
+          "text": "Bad Münster am Stein-Ebernburg (German pronunciation: [baːt ˈmʏnstɐ ʔam ˈʃtaɪn ˈʔeːbɐnbʊʁk]) is a spa town of about 4,000 inhabitants (as of 2004) in the Bad Kreuznach district in Rhineland-Palatinate, Germany. Since 1 July 2014, it is part of the town Bad Kreuznach. It was the seat of the former like-named Verbandsgemeinde, but not part of it. Bad Münster am Stein-Ebernburg was granted town rights on 29 April 1978 and is recognized as a mineral spring spa (Mineralheilbad) and a climatic spa (heilklimatischer Kurort). Today the \"Spa\" is famous for its clinics specializing in cardiological and orthopaedic rehabilitation. The many graduation towers form the largest open air inhalatorium in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "bad munster am stein ebernburg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "munster",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "stein",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ebernburg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8054,
+    "place_id": "gn-6159474",
+    "input": {
+      "place": {
+        "place_id": "gn-6159474",
+        "name": "Sundre",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.8001,
+        "lon": -114.63532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sundre",
+          "url": "https://en.wikipedia.org/wiki/Sundre",
+          "text": "Sundre  is a town in central Alberta, Canada, that is surrounded by Mountain View County. It is approximately 100 kilometres (62 mi) northwest of Calgary on the Cowboy Trail in the foothills of the Canadian Rockies.\nSundre takes its name from a town in Norway, the original home of Nels T. Hagen, the town's first postmaster.\nAlthough considered a forestry town, the community is also home to a significant number of oil and gas service businesses. Due to its attractive geographic location, with proximity to vast natural landscapes, camping and recreation-oriented tourism is also a major economic driver.\nBiking, hiking, cross country skiing, and other outdoor activities are popular."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "sundre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8060,
+    "place_id": "gn-3021668",
+    "input": {
+      "place": {
+        "place_id": "gn-3021668",
+        "name": "Deauville",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.357,
+        "lon": 0.06995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deauville",
+          "url": "https://en.wikipedia.org/wiki/Deauville",
+          "text": "Deauville (French pronunciation: [dovil] ) is a commune in the Calvados department, Normandy, northwestern France. Major attractions include its harbour, race course, marinas, conference centre, villas, Grand Casino, and hotels. The first Deauville Asian Film Festival took place in 1999. As the closest seaside resort to Paris, Deauville is one of the most notable seaside resorts in France. The city and its region of the Côte Fleurie (Flowery Coast) have long been home to the French upper class's seaside houses and is often referred to as the Parisian riviera.\nSince the 19th century, the town of Deauville has been a fashionable holiday resort for the international upper class."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "deauville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8066,
+    "place_id": "gn-5102973",
+    "input": {
+      "place": {
+        "place_id": "gn-5102973",
+        "name": "Prospect Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.93704,
+        "lon": -74.17431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prospect Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Prospect_Park,_New_Jersey",
+          "text": "Prospect Park is a borough in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 6,372, an increase of 507 (+8.6%) from the 2010 census count of 5,865, which in turn reflected an increase of 86 (+1.5%) from the 5,779 counted in the 2000 census.\nThe borough of Prospect Park was formed by an act of the New Jersey Legislature on March 13, 1901, from portions of the now-defunct Manchester Township. The borough was named for Prospect Park, Brooklyn.\nIt is a dry town, where alcohol cannot be sold, as affirmed by an ordinance passed in 1978."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "prospect park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "prospect",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8069,
+    "place_id": "gn-1023281",
+    "input": {
+      "place": {
+        "place_id": "gn-1023281",
+        "name": "Alldays",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -22.66392,
+        "lon": 29.09336
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alldays, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Alldays,_South_Africa",
+          "text": "Alldays is a small town in the Limpopo province of South Africa that serves a large area of private game and hunting farms. It has a population of 2,987.\nThe Venetia Diamond Mine is situated close to Alldays, located within the 360 square kilometre Venetia Limpopo Nature Reserve. It is one of De Beers’ six remaining diamond mines in South Africa and the only major diamond mine to be developed in the country during the past 25 years. Citrus farming on the banks of the Limpopo River is an important economic activity in the district.\nThe area of is known for its arid bushveld and Mopane bush."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "alldays",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8070,
+    "place_id": "gn-1724803",
+    "input": {
+      "place": {
+        "place_id": "gn-1724803",
+        "name": "Biri",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 12.68333,
+        "lon": 124.36361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biri, Northern Samar",
+          "url": "https://en.wikipedia.org/wiki/Biri,_Northern_Samar",
+          "text": "Biri, officially the Municipality of Biri (Waray: Bungto han Biri; Tagalog: Bayan ng Biri), is a municipality in the province of Northern Samar, Philippines. According to the 2024 census, it has a population of 11,005 people.\nThe archipelagic town is also known for its inakob, a traditional Waray dish made by first cooking grated root crops (gabi) with coconut milk, condensed milk, eggs, brown sugar, and an herb called anuv. Once cooked, the grated gabi is put inside gabi shells which have been peeled. The dish is then boiled with coconut milk. The dish is traditionally eaten hot by the people of Biri during the rainy months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "biri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8071,
+    "place_id": "gn-2523233",
+    "input": {
+      "place": {
+        "place_id": "gn-2523233",
+        "name": "Saracena",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 39.77862,
+        "lon": 16.15913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saracena",
+          "url": "https://en.wikipedia.org/wiki/Saracena",
+          "text": "Saracena (Greek: Sarakine) is a town and comune in the province of Cosenza in the Calabria region of southern Italy. The town is bordered by Altomonte, Castrovillari, Firmo, Lungro, Morano Calabro, Mormanno, Orsomarso and San Basile and is home to the Church of San Leone, a 12th-century Byzantine church. The town's patron is San Leone di Catania, who is celebrated twice a year, once in the spring, then again in late summer.\nLike Palermo and Tropea, Saracena was renowned for its souk (or street market) during the period of Arab Sicily from the ninth century until the Norman era. Arab-Sicilian influence remained strong until the 13th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "saracena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8073,
+    "place_id": "gn-2659900",
+    "input": {
+      "place": {
+        "place_id": "gn-2659900",
+        "name": "Leysin",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.34183,
+        "lon": 7.01151
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leysin",
+          "url": "https://en.wikipedia.org/wiki/Leysin",
+          "text": "Leysin is a municipality of the canton of Vaud in the Aigle district of Switzerland. It is first mentioned around 1231–32 as Leissins, in 1352 as Leisins.\nLocated in the Vaud Alps, Leysin is a sunny alpine resort village at the eastern end of Lake Geneva in proximity to Montreux, Lausanne, and Geneva. In earlier years, Leysin was known for its TB sanatorias; today it is most famous for spectacular Alpine views across the Rhône Valley towards the Dents du Midi and year-round mountain sports and recreational facilities.\nThe village of Leysin and hamlet of Veyges are a designated part of the Inventory of Swiss Heritage Sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "leysin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8081,
+    "place_id": "gn-6159980",
+    "input": {
+      "place": {
+        "place_id": "gn-6159980",
+        "name": "Sussex",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 45.72266,
+        "lon": -65.50663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sussex, New Brunswick",
+          "url": "https://en.wikipedia.org/wiki/Sussex,_New_Brunswick",
+          "text": "Sussex is a town in Kings County, New Brunswick, Canada.  \nSussex is located in south central New Brunswick, between the province's three largest cities, Saint John, Moncton, and Fredericton.\nSussex straddles the Kennebecasis River, 70 km (43 mi) northeast of Saint John, and is a major dairy product producer in the province. It is home to Atlantic Canada's largest hot air balloon festival.\nOn 1 January 2023, Sussex amalgamated with the village of Sussex Corner and part of the local service district of the parish of Sussex. Revised census figures have not been released, although combining the 2016 census numbers the total population would be approximately 5,900."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "sussex",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8083,
+    "place_id": "gn-8348587",
+    "input": {
+      "place": {
+        "place_id": "gn-8348587",
+        "name": "Morphettville",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.98852,
+        "lon": 138.53979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morphettville, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Morphettville,_South_Australia",
+          "text": "Morphettville is a suburb of Adelaide, South Australia in the City of Marion.\nThe major feature of the suburb is the Morphettville Racecourse (horseracing track). The tram barn storage and maintenance facility is across Morphett Road from the racecourse, in the neighbouring suburb of Glengowrie opening in October 1986. The southern part of the suburb is predominantly residential, with the Sturt River flowing through from south to northwest. The Morphett Arms Hotel is on the western side of Morphett Road, Glengowrie. The Torrens Transit Morphettville Depot is on the corner of Morphett Road and Oaklands road, the former site of Adelaide's largest drive-in cinema, the Metro Drive-in."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "morphettville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8084,
+    "place_id": "gn-12718706",
+    "input": {
+      "place": {
+        "place_id": "gn-12718706",
+        "name": "Osire",
+        "country": "Namibia",
+        "subdivision": "Otjozondjupa Region",
+        "lat": -21.07391,
+        "lon": 17.36599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osire",
+          "url": "https://en.wikipedia.org/wiki/Osire",
+          "text": "Osire is a refugee camp in central Namibia, situated 200 km north of the capital Windhoek next to the main road C30 from Gobabis to Otjiwarongo. It was established in 1992 to accommodate refugees from Angola, Burundi, the Democratic Republic of the Congo, Rwanda and Somalia. The camp grew quickly in its early years, reaching a peak of 20,000 inhabitants in 1998. Since then the refugee population of Osire decreased steadily, approaching 6,500 in 2010, and 3,000 in 2014. Camp numbers rose sharply again with the Western DR Congo clashes.\nThe camp used to be a detention centre during the South African rule over Namibian territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "osire",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8089,
+    "place_id": "gn-2641510",
+    "input": {
+      "place": {
+        "place_id": "gn-2641510",
+        "name": "New Tredegar",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.72051,
+        "lon": -3.2413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Tredegar",
+          "url": "https://en.wikipedia.org/wiki/New_Tredegar",
+          "text": "New Tredegar (Welsh: Tredegar Newydd) is a former mining town and community in the Rhymney Valley, Caerphilly county borough, Wales, within the historic boundaries of Monmouthshire.\nNew Tredegar is home to The Winding House, a county museum which opened in 2008. It is controlled by CCBC Museums service and the Friends of the Winding House community group.\nThe area is rich in the mining heritage of the South Wales mining industry.\nThe area is supported by two primary schools; White Rose Primary school and Phillipstown Primary school. The area also contains a number of religious buildings including; Saint Dingat's Church and the Presbyterian Church of Wales."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "new tredegar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tredegar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8099,
+    "place_id": "gn-6177178",
+    "input": {
+      "place": {
+        "place_id": "gn-6177178",
+        "name": "Wawa",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 47.98877,
+        "lon": -84.77411
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wawa, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Wawa,_Ontario",
+          "text": "Wawa is a township in the Canadian province of Ontario in the Algoma District. Formerly known as the Township of Michipicoten, named after a nearby river of that name, the township was officially renamed in 2007 for its largest and best-known community of Wawa, located on the western shores of Wawa Lake. The lake's original name was Wawungonk, meaning \"place of clear water\" or \"hills covered in clear snow\".\nThis area was first developed for fur trading. In the late 19th century, both gold and iron ore were found and mined, leading to the region's rise as the steel industry developed in Sault Ste. Marie, Ontario."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "wawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8100,
+    "place_id": "gn-10055413",
+    "input": {
+      "place": {
+        "place_id": "gn-10055413",
+        "name": "Kallaroo",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.79098,
+        "lon": 115.75298
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kallaroo, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Kallaroo,_Western_Australia",
+          "text": "Kallaroo is one of the four 'Whitfords' suburbs in Perth that resulted from the Western Australian Government rezoning large areas of coastal land for development in 1969.\nKallaroo was chosen as a suburb name in 1970 and is an Aboriginal word meaning ‘road to the water’. The suburb is home to one primary school, Springfield Primary School, which was named after the original housing estate. The school was established in 1972, with four demountable classrooms and 179 students. A permanent school was built for the 1973 educational year with six classrooms in the main building. Also in the construction was an administrative  and library buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "kallaroo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8101,
+    "place_id": "gn-1703518",
+    "input": {
+      "place": {
+        "place_id": "gn-1703518",
+        "name": "Mainit",
+        "country": "Philippines",
+        "subdivision": "Caraga",
+        "lat": 9.535,
+        "lon": 125.52306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mainit",
+          "url": "https://en.wikipedia.org/wiki/Mainit",
+          "text": "Mainit, officially the Municipality of Mainit (Surigaonon: Lungsod nan Mainit; Cebuano: Lungsod sa Mainit; Tagalog: Bayan ng Mainit), is a municipality in the province of Surigao del Norte, Philippines. According to the 2024 census, it has a population of 29,205 people.\nIt is situated on the north shore of Lake Mainit in the north-eastern part of Mindanao. The word \"mainit\" literally means \"hot\". The other local term for \"mainit\" is \"mapaso.\" Mainit is home to a hot spring, the Mapaso Wellness Resort frequented by locals and visitors from nearby towns and provinces. It is regarded that Mainit got its name from this hot sulfuric spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "mainit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

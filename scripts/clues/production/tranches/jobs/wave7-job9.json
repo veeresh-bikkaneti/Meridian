@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 7190,
+    "place_id": "gn-5386015",
+    "input": {
+      "place": {
+        "place_id": "gn-5386015",
+        "name": "Rancho Mirage",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.73974,
+        "lon": -116.41279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rancho Mirage, California",
+          "url": "https://en.wikipedia.org/wiki/Rancho_Mirage,_California",
+          "text": "Rancho Mirage is a city in Riverside County, California, United States. The city is a low-density desert community with resorts, golf courses, and country clubs within the Colorado Desert section of the Sonoran Desert. Nestled along the foothills of the Santa Rosa Mountains in the south, it is located about ten miles southeast of Palm Springs. The city is adjacent to Cathedral City, Palm Desert, and unincorporated Thousand Palms. The population was 16,999 at the 2020 census, down from 17,218 at the 2010 census, though the seasonal population can exceed 20,000. Incorporated in 1973, Rancho Mirage is one of the nine cities of the Coachella Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "rancho mirage",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rancho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mirage",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7191,
+    "place_id": "gn-5391291",
+    "input": {
+      "place": {
+        "place_id": "gn-5391291",
+        "name": "Salida",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.70576,
+        "lon": -121.08494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salida, California",
+          "url": "https://en.wikipedia.org/wiki/Salida,_California",
+          "text": "Salida (Spanish for \"exit\") is a census-designated place (CDP) in Stanislaus County, California,  United States. As of the 2020 census, the CDP population was 13,886. It is part of the Modesto metropolitan area. Cultivation of almonds has historically been a significant activity in the vicinity, including a major Blue Diamond processing facility nearby. The plant is involved exclusively in processing whole brown almond kernels with a \"dry\" process involving no water, heat or chemicals. Salida is within the East Stanislaus Resource Conservation District, which comprises 984 square miles (2,550 km2) of land area and attends to a variety of environmental conservation and best management agricultural practices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "salida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7192,
+    "place_id": "gn-5551665",
+    "input": {
+      "place": {
+        "place_id": "gn-5551665",
+        "name": "Arizona City",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 32.75589,
+        "lon": -111.67096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arizona City, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Arizona_City,_Arizona",
+          "text": "Arizona City is an unincorporated  census-designated place (CDP) in southwestern Pinal County, Arizona, United States. It is located near the junction of Interstate 8 and Interstate 10 at the midpoint between Phoenix and Tucson, approximately 60 miles (97 km) from the downtown of both cities. The population was 9,868 as of the 2020 United States census, a decrease from 10,475 people from the 2010 United States census. \nArizona City is a rural, primarily residential community that features a 48-acre (19 ha) man-made lake. These attributes make the community a popular snowbird destination, with the population increasing by as much as 5,000 people in the winter months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "arizona city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arizona",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7197,
+    "place_id": "gn-6220359",
+    "input": {
+      "place": {
+        "place_id": "gn-6220359",
+        "name": "Redwood",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.46833,
+        "lon": 172.61013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Redwood, Christchurch",
+          "url": "https://en.wikipedia.org/wiki/Redwood,_Christchurch",
+          "text": "Redwood is a northern suburb of Christchurch, New Zealand, which includes the sub-division of Redwood Springs. It is bordered by the Styx River to the north. Before the area was settled the original forest cover was tōtara and kahikatea. Like much of Christchurch, the early settlers drained the swamps and cut the bush to create farmland.\nThe area was originally part of the Waimairi County but was amalgamated into Christchurch City Council as part of the 1989 New Zealand local government reforms. The Main North Road runs through the suburb, connecting it to both the Christchurch Central City and settlements further north including Belfast and Kaiapoi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "redwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7207,
+    "place_id": "gn-933077",
+    "input": {
+      "place": {
+        "place_id": "gn-933077",
+        "name": "Shakawe",
+        "country": "Botswana",
+        "subdivision": "North-West",
+        "lat": -18.36536,
+        "lon": 21.84219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shakawe",
+          "url": "https://en.wikipedia.org/wiki/Shakawe",
+          "text": "Shakawe is a village located in the northwest corner of Botswana at the beginning of the Okavango Delta, close to Namibia and Angola. Shakawe is awakening from its former status as a sleepy little outpost on the Okavango. For travellers, Shakawe means a Botswana entry or exit stamp or a staging post for a visit to the Tsodilo Hills, a UNESCO World Heritage Site, 40 km away. For Southern African holiday-makers, it is most often the start of a fishing trip in the Okavango Panhandle. It also provides access to the Caprivi Strip. The record high temperature ever registered in Shakawe was 39.6 °C (103.3 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "shakawe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7224,
+    "place_id": "gn-2647021",
+    "input": {
+      "place": {
+        "place_id": "gn-2647021",
+        "name": "Hetton-Le-Hole",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.81667,
+        "lon": -1.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hetton-le-Hole",
+          "url": "https://en.wikipedia.org/wiki/Hetton-le-Hole",
+          "text": "Hetton-le-Hole is a town in the civil parish of Hetton, in Sunderland, England. Until 1974 it was in County Durham. \nThe A182 road runs through the town, between Houghton-le-Spring and Easington Lane which borders the County Durham District, off the A69t and east of the A1(M).\nThe parish includes the villages of Easington Lane and Warden Law, had a population of 14,402 in 2001. The parish also includes Hetton proper, along with East Rainton, Middle Rainton (West Rainton is a separate parish), Low Moorsley and High Moorsley.\nGreat Eppleton Wind Farm, a wind farm originally of four dual-bladed alternators, provides electricity to the National Grid."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "hetton le hole",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hetton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hole",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7225,
+    "place_id": "gn-2647644",
+    "input": {
+      "place": {
+        "place_id": "gn-2647644",
+        "name": "Hale",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.22946,
+        "lon": -0.78908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hale, Surrey",
+          "url": "https://en.wikipedia.org/wiki/Hale,_Surrey",
+          "text": "Hale is a village in Surrey, England. It lies just north of Farnham, towards Aldershot, with Badshot Lea to the east. Some maps show Lower Hale and Upper Hale, but the area between the two is indistinct. Hale in part overlaps Weybourne and Heath End, making it difficult to class them as separate villages –all three share amenities and form a neatly buffered settlement. Hale is on the side of the Farnham clay and sandstone range and is quite elevated, with some housing having views southward towards the Greensand Ridge from Hindhead to Ewhurst. The electoral ward Farnham Upper Hale has a population of 4,241."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "hale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7236,
+    "place_id": "gn-2962785",
+    "input": {
+      "place": {
+        "place_id": "gn-2962785",
+        "name": "Lucan",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.35736,
+        "lon": -6.44859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lucan, Dublin",
+          "url": "https://en.wikipedia.org/wiki/Lucan,_Dublin",
+          "text": "Lucan ( LEW-kən; Irish: Leamhcán) is a suburban village to the west of Dublin, Ireland, located 12 km from Dublin city centre, on the River Liffey. It is near the Strawberry Beds and Lucan Weir, and at the confluence of the River Griffeen. It is mostly in the local government area of South Dublin, with the exception of the North Lucan areas of Laraghcon, Coldblow and Saint Catherine's Park, which are in Fingal. Lucan is in a townland and civil parish of the same name, in the barony of Newcastle. Road access to Lucan is from the N4, and the M50 motorway at Junction 7."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "lucan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7250,
+    "place_id": "gn-3488726",
+    "input": {
+      "place": {
+        "place_id": "gn-3488726",
+        "name": "Runaway Bay",
+        "country": "Jamaica",
+        "subdivision": "Saint Ann Parish",
+        "lat": 18.45962,
+        "lon": -77.3357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Runaway Bay, Jamaica",
+          "url": "https://en.wikipedia.org/wiki/Runaway_Bay,_Jamaica",
+          "text": "Runaway Bay is a town in Saint Ann Parish on the northern coast of Jamaica and is considered one of the most naturally beautiful places on the island. It is a notable tourist destination located 16 km (9.9 mi) west of Ocho Rios, and slightly east of Discovery Bay, where Christopher Columbus landed in 1494. Ocean View Beach is a private beach situated at Runaway Bay. It consists of a series of hotel resort complexes and beaches.\nThe name derives from its having been an escape route for runaway slaves. Arawakan-speaking people were the first Indigenous inhabitants, but they were eventually overpowered by Spanish colonisers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "runaway bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "runaway",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7277,
+    "place_id": "gn-7249307",
+    "input": {
+      "place": {
+        "place_id": "gn-7249307",
+        "name": "Saddlebrooke",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 32.53945,
+        "lon": -110.90057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saddlebrooke, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Saddlebrooke,_Arizona",
+          "text": "Saddlebrooke is a census-designated place (CDP) and retirement community in Pinal County, Arizona, United States. The population was 12,574 at the United States 2020 Census\nThere are two communities managed by homeowner associations within the retirement development; SaddleBrooke One, and SaddleBrooke Two, the latter includes the Preserve subdivision. Eagle Crest is a smaller all age subdivision that is part of the SaddleBrooke (CDP).\nSaddleBrooke, Arizona is located just north of Oro Valley, AZ. and close to Tucson AZ . The 3400 ft elevation in the foothills results in cooler year round temperatures compared to many other Arizona locations. In the foothills of the Catalina Mountains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "saddlebrooke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7281,
+    "place_id": "gn-8310731",
+    "input": {
+      "place": {
+        "place_id": "gn-8310731",
+        "name": "Lennox Head",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -28.79131,
+        "lon": 153.59201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lennox Head, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Lennox_Head,_New_South_Wales",
+          "text": "Lennox Head is a seaside village in the Northern Rivers region of New South Wales, Australia, situated on the stretch of coast between Byron Bay and Ballina in Ballina Shire local government area. It had a population of 7,741 in the 2016 Australian census.\nIt is on the lands of the Bundjalung people, who are the traditional owners of this region.\nCaptain Henry John Rous, on the survey ship Rainbow, named Lennox Head after his friend, Charles Gordon-Lennox, 5th Duke of Richmond in 1828. From 1842, freed convicts who now worked as loggers, formed small colonies in the area which would eventually become the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "lennox head",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lennox",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "head",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7294,
+    "place_id": "gn-2208241",
+    "input": {
+      "place": {
+        "place_id": "gn-2208241",
+        "name": "Mosgiel",
+        "country": "New Zealand",
+        "subdivision": "Otago",
+        "lat": -45.875,
+        "lon": 170.34722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mosgiel",
+          "url": "https://en.wikipedia.org/wiki/Mosgiel",
+          "text": "Mosgiel () is a town on the Taieri Plain in Otago, New Zealand, 17 km (11 mi) west of Dunedin. Since the re-organisation of New Zealand local government in 1989 it has been administered by the Dunedin City Council. Mosgiel has a population of approximately 15,100 as of June 2025. A nickname for Mosgiel is \"The pearl of the plain\". Its low-lying nature does pose problems, making it prone to flooding after heavy rains. Mosgiel takes its name from Mossgiel Farm, Ayrshire, the farm of the poet Robert Burns, the uncle of the co-founder in 1848 of the Otago settlement, the Reverend Thomas Burns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "mosgiel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7298,
+    "place_id": "gn-2519477",
+    "input": {
+      "place": {
+        "place_id": "gn-2519477",
+        "name": "Chipiona",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.73663,
+        "lon": -6.43703
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chipiona",
+          "url": "https://en.wikipedia.org/wiki/Chipiona",
+          "text": "Chipiona is a town and municipality located on the Atlantic coast in the province of Cádiz, Spain. According to the 2012 census, the city has a population of 18,849 inhabitants, but this amount increases greatly during the summer holiday period. The town covers an area of 33 km2. Being in the lower valley of the River Guadalquivir it is very flat with a maximum terrestrial height of 4 metres. It is bordered on the north-west by Sanlúcar de Barrameda and on the south-east by the port of Rota.\nIt is the town of birth of singer Rocío Jurado and where her body now rests."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "chipiona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7310,
+    "place_id": "gn-2760634",
+    "input": {
+      "place": {
+        "place_id": "gn-2760634",
+        "name": "Zell am See",
+        "country": "Austria",
+        "subdivision": "Salzburg",
+        "lat": 47.32306,
+        "lon": 12.79839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zell am See",
+          "url": "https://en.wikipedia.org/wiki/Zell_am_See",
+          "text": "Zell am See  is the administrative capital of the Zell am See District in the Austrian state of Salzburg. Located in the Kitzbühel Alps, the town is an important tourist destination due to its ski resorts and shoreline on Lake Zell. While Zell am See has been a favoured winter and summer resort for the European aristocracy since the 19th century, it is known as a hub of the international jet set today. Today, Zell am See is an internationally renowned holiday destination and one of the most important summer and winter sports resorts in Austria and an important transport hub in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "zell am see",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "zell",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "see",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7312,
+    "place_id": "gn-2953507",
+    "input": {
+      "place": {
+        "place_id": "gn-2953507",
+        "name": "Bad Ems",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.33544,
+        "lon": 7.71369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Ems",
+          "url": "https://en.wikipedia.org/wiki/Bad_Ems",
+          "text": "Bad Ems (German pronunciation: [baːt ˈʔɛms] ) is a town in Rhineland-Palatinate, Germany. It is the administrative seat of the Rhein-Lahn rural district and is well known as a spa on the river Lahn. Bad Ems was the seat of Bad Ems collective municipality, which has been merged into the Bad Ems-Nassau collective municipality. The town has around 9,000 inhabitants.\nIn 2021, the town became part of the transnational UNESCO World Heritage Site under the name \"Great Spa Towns of Europe\", because of its famous hot springs and 18-20th century architecture bearing testimony to the popularity of spa resorts in Europe during that time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "bad ems",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ems",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7314,
+    "place_id": "gn-3167742",
+    "input": {
+      "place": {
+        "place_id": "gn-3167742",
+        "name": "San Sebastiano al Vesuvio",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.84344,
+        "lon": 14.36428
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Sebastiano al Vesuvio",
+          "url": "https://en.wikipedia.org/wiki/San_Sebastiano_al_Vesuvio",
+          "text": "San Sebastiano al Vesuvio (Neapolitan: San Bastiano) is a comune (municipality) in the Metropolitan City of Naples, located on the western slopes of Mount Vesuvius. Its elevation means that it is often a few degrees cooler than the neighbouring metropolis of Naples.\n\nIn 1944 it was destroyed and two children were killed by the eruption of Mount Vesuvius during the Allies' occupation of southern Italy, but has since been rebuilt. The main attraction is the church of San Sebastiano Martire from the 16th century.\nGaetano Filangieri, a Neapolitan jurist, was born in San Sebastiano al Vesuvius. He had an extensive correspondence with Benjamin Franklin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "san sebastiano al vesuvio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sebastiano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vesuvio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7331,
+    "place_id": "gn-5031404",
+    "input": {
+      "place": {
+        "place_id": "gn-5031404",
+        "name": "International Falls",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 48.60105,
+        "lon": -93.41098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "International Falls, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/International_Falls,_Minnesota",
+          "text": "International Falls (sometimes referred to as I-Falls) is a city in and the county seat of Koochiching County, Minnesota, United States. The population was 5,802 at the time of the 2020 census.\nInternational Falls is located on the Rainy River directly across from Fort Frances, Ontario, Canada. The two cities are connected by the Fort Frances–International Falls International Bridge. Voyageurs National Park is located 11 miles east of International Falls. There is a major U.S. Customs and Border Protection Port of Entry on the International Falls side of the toll bridge and a Canadian Customs entry point on the north side of the bridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "international falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "international",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7335,
+    "place_id": "gn-5136433",
+    "input": {
+      "place": {
+        "place_id": "gn-5136433",
+        "name": "Scarsdale",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.0051,
+        "lon": -73.78458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scarsdale, New York",
+          "url": "https://en.wikipedia.org/wiki/Scarsdale,_New_York",
+          "text": "Scarsdale () is a coterminous town and village in Westchester County, New York, United States, 19 miles (31 km) north of New York City. It is on 6.683 square miles (17.31 km2) and is located inland within the Bronx River Valley. Scarsdale includes 17 neighborhoods which are bundled into the geographic regions of Edgewood, Fox Meadow, Greenacres, Heathcote, and Quaker Ridge. It is served by the Scarsdale station of the Metro-North Railroad's Harlem Line. Scarsdale has six entries on the National Register of Historic Places.\nIn the precolonial era, the village's area was inhabited by a band of the Wappinger tribes of Native Americans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "scarsdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7343,
+    "place_id": "gn-6690581",
+    "input": {
+      "place": {
+        "place_id": "gn-6690581",
+        "name": "Belsize Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.54767,
+        "lon": -0.17228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belsize Park",
+          "url": "https://en.wikipedia.org/wiki/Belsize_Park",
+          "text": "Belsize Park is a residential area of Hampstead in the London Borough of Camden, in the inner north-west of London, England.\nThe streets are lined with Georgian and Victorian villas and mews houses. Some nearby localities are Hampstead village to the north and west, Camden Town to the south-east and Primrose Hill to the south.\nThere are restaurants, pubs, cafés, and independent boutiques in Belsize Village, and on Haverstock Hill and England's Lane. Hampstead Heath is close by, and Primrose Hill park is a five-minute walk from England's Lane.\nBelsize Park is in the Hampstead and Highgate constituency whose present MP is Tulip Siddiq."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "belsize park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belsize",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7345,
+    "place_id": "gn-7116406",
+    "input": {
+      "place": {
+        "place_id": "gn-7116406",
+        "name": "Lightwater",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.34846,
+        "lon": -0.67147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lightwater",
+          "url": "https://en.wikipedia.org/wiki/Lightwater",
+          "text": "Lightwater is a village in the Surrey Heath district of Surrey, England, about 27 miles (43 km) southwest of central London. Immediately surrounding towns and villages include Bagshot, Deepcut, Windlesham, Camberley, and West End, Woking. It is bounded to the north-west by the M3 motorway and to the north-east by the \"Lightwater Bypass\" (A322). To the south-east it is bounded by the \"Red Road\" (B311), while to the south-west there are vehicle-testing tracks owned by the Ministry of Defence.\nThe village is adjacent to junction 3 of the M3 motorway. The nearest railway station is at Bagshot, on the line between Ascot and Aldershot."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "lightwater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

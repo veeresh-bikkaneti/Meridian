@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 7085,
+    "place_id": "gn-3113576",
+    "input": {
+      "place": {
+        "place_id": "gn-3113576",
+        "name": "Piera",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.52232,
+        "lon": 1.75076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piera",
+          "url": "https://en.wikipedia.org/wiki/Piera",
+          "text": "Piera (Catalan pronunciation: [piˈeɾə]) is a municipality that covers a large portion of the southeastern corner of the comarca of Anoia in Catalonia, Spain, on the left bank of the Anoia river. The agricultural land, mostly non-irrigated, is used for the cultivation of cereals, grapes, olives and almonds. The town itself hosts a number of light industries: textiles, plastics and construction materials. Tourism during the summer months is also relatively important for the local economy.\nThe FGC railway line R6 from Martorell and Barcelona to Igualada runs through the town, while local roads lead to Capellades and Sant Sadurní d'Anoia.\nNotable monuments include the castle of Fontanet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "piera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7091,
+    "place_id": "gn-3487963",
+    "input": {
+      "place": {
+        "place_id": "gn-3487963",
+        "name": "Yallahs",
+        "country": "Jamaica",
+        "subdivision": "Saint Thomas Parish",
+        "lat": 17.8748,
+        "lon": -76.56245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yallahs",
+          "url": "https://en.wikipedia.org/wiki/Yallahs",
+          "text": "Yallahs is a town on the southeastern coast of Jamaica in the parish of St Thomas, home to 10,274 residents. The town, which was documented as “Yealoth” in a 1662 census, may have derived its name from Captain Yallahs, a privateer from 1671, or vice versa. Another theory suggests that the name Yallahs could have originated from the Spanish word ‘yalos’, meaning ‘frost’, as the high white cliffs in the area might give the impression of frost.\nIn 1822, Yallahs was chosen as the site for the first Baptist church in Jamaica. Despite initial setbacks, Rev. Joshua Tinson established both a church and a school in 1828."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "yallahs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7093,
+    "place_id": "gn-3532576",
+    "input": {
+      "place": {
+        "place_id": "gn-3532576",
+        "name": "Atotonilco de Tula",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 20.00731,
+        "lon": -99.22012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atotonilco de Tula",
+          "url": "https://en.wikipedia.org/wiki/Atotonilco_de_Tula",
+          "text": "Atotonilco de Tula is a city that serves as the municipal seat for one of the 84 municipalities of Hidalgo.  It is located in the southwestern part of the Mexican state of Hidalgo. The municipality lies at a southern pass leading out of the Mezquital Valley, approximately 86 kilometers north of Mexico City and about 180 km northeast of the state capital, Pachuca de Soto. \nThe name comes from Nahuatl and means \"place of hot springs\"; in the Otomi language, it is called Padehe. The municipality covers an area of 31 km2 (12 sq mi). As of the 2010 census, it had a total population of 31,078."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "atotonilco de tula",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "atotonilco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tula",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7095,
+    "place_id": "gn-3669929",
+    "input": {
+      "place": {
+        "place_id": "gn-3669929",
+        "name": "San Estanislao",
+        "country": "Colombia",
+        "subdivision": "Bolívar",
+        "lat": 10.39833,
+        "lon": -75.15111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Estanislao, Bolívar",
+          "url": "https://en.wikipedia.org/wiki/San_Estanislao,_Bolívar",
+          "text": "San Estanislao is a town and municipality located in the Bolívar Department, northern Colombia.\nSan Estanislao is also informally known as Arenal by the locals, Arenal is Spanish for \"sand\", which earned its nickname in result that the town accumulates high amounts of sand during rain and wind.  A mission was established on the present site in 1650.  Access to the town can be challenging as the roads that access the town are unpaved and often water-logged after long periods of rain. Inhabitants of San Estanislao generally support themselves through family farms yielding a variety of produce and meat products, which are they often trade amongst themselves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "san estanislao",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "estanislao",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7097,
+    "place_id": "gn-3706567",
+    "input": {
+      "place": {
+        "place_id": "gn-3706567",
+        "name": "Las Cumbres",
+        "country": "Panama",
+        "subdivision": "Panamá",
+        "lat": 9.09211,
+        "lon": -79.53895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Cumbres",
+          "url": "https://en.wikipedia.org/wiki/Las_Cumbres",
+          "text": "Las Cumbres is a corregimiento in Panamá District, Panamá Province, Panama, with a population of 32,867 as of 2010. Its population as of 1990 was 56,547; its population as of 2000 was 92,519. Neighborhoods in this sector include Villa Campestre, El Lago, Las Cumbrecitas, Las Glorietas, San Andrés, Altavista, El Rocio, Las Lajas, Gonzalillo, Villa Grecia, and Colonial Las Cumbres. \nLas Cumbres is a rural community north of Panama City, developed by businessman Louis Martinz in the 1950s. It is at an average altitude of 1,050 feet (320 m), giving the neighborhood a more temperate, cooler environment. Two lakes were constructed for recreation and selective water supply."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "las cumbres",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cumbres",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7119,
+    "place_id": "gn-6694788",
+    "input": {
+      "place": {
+        "place_id": "gn-6694788",
+        "name": "Whiston",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.41997,
+        "lon": -2.78907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whiston, Merseyside",
+          "url": "https://en.wikipedia.org/wiki/Whiston,_Merseyside",
+          "text": "Whiston is a town and civil parish within the Metropolitan Borough of Knowsley in Merseyside, England. It is located 8 miles (10 km) east of Liverpool. The population was 13,629 in 2001, increasing to 14,263 in 2011.\nWhiston is a town and civil parish in the Metropolitan Borough of Knowsley, Merseyside, England, located to the east of Liverpool. It borders the neighbouring towns and villages of Prescot, Huyton, Tarbock and Rainhill, and is best known as the home of Whiston Hospital, one of the largest teaching hospitals in North West England.\nThe creation of a new village within the town, Halsnead Garden Village, was approved in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "whiston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7123,
+    "place_id": "gn-728108",
+    "input": {
+      "place": {
+        "place_id": "gn-728108",
+        "name": "Pomorie",
+        "country": "Bulgaria",
+        "subdivision": "Burgas",
+        "lat": 42.56326,
+        "lon": 27.62986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pomorie",
+          "url": "https://en.wikipedia.org/wiki/Pomorie",
+          "text": "Pomorie (Bulgarian: Поморие [poˈmɔriɛ]), historically known as Anchialos (Bulgarian: Анхиало, Greek: Αγχίαλος), is a town and seaside resort in southeastern Bulgaria, located on a narrow rocky peninsula in Burgas Bay on the southern Bulgarian Black Sea Coast.\nIt is situated in Burgas Province, 20,5 km away from the city of Burgas and 18 km from the Sunny Beach resort. The ultrasaline lagoon Lake Pomorie, the northernmost of the Burgas Lakes, lies in the immediate proximity. The town is the administrative centre of the eponymous Pomorie Municipality.\nPomorie is an ancient city and today is an important tourist destination. As of 2020, it had a population of 13,926."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "pomorie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7125,
+    "place_id": "gn-7932624",
+    "input": {
+      "place": {
+        "place_id": "gn-7932624",
+        "name": "Blackburn",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.81901,
+        "lon": 145.15326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackburn, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Blackburn,_Victoria",
+          "text": "Blackburn is a suburb of Melbourne, Victoria, Australia, 16 kilometres (9.9 mi) east of Melbourne's Central Business District, located within the City of Whitehorse local government area. Blackburn recorded a population of 14,478 at the 2021 census.\nThe origin of the name Blackburn is not certain, but may have been after an early settler or James Blackburn, who designed Yan Yean Reservoir.\nBlackburn is bounded in the west by Middleborough Road, in the north by Springfield Road, in the east by an irregular line along streets to the east of Blackburn Lake Sanctuary - known as the Bellbird area  - and in the south by Canterbury Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "blackburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7131,
+    "place_id": "gn-1253782",
+    "input": {
+      "place": {
+        "place_id": "gn-1253782",
+        "name": "Una",
+        "country": "India",
+        "subdivision": "Himachal Pradesh",
+        "lat": 31.46493,
+        "lon": 76.26914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Una, Himachal Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Una,_Himachal_Pradesh",
+          "text": "Una is a city with Municipal Council and district headquarter in Una district, in the Indian state of Himachal Pradesh. Una sits on the border with Punjab, Una is one of the gateways to Himachal Pradesh. It lies on the bank of River Swan, a tributary of Sutlej.\nThe city's terrain is a mix of both hilly and plain areas. In fact, the low hilly terrain gradually flattens to merge with the plains, giving Una a tropical climate which gets quite hot in summer months.\nHimachal has 5 Shakti PeethsChintpurni Temple is one of them located in Chintpurni village, about 45 km north of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "una",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7138,
+    "place_id": "gn-2148591",
+    "input": {
+      "place": {
+        "place_id": "gn-2148591",
+        "name": "Springvale",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.94853,
+        "lon": 145.15274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springvale, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Springvale,_Victoria",
+          "text": "Springvale (Boonwurrung: Monite)  is a suburb in Melbourne, Victoria, Australia, 22 km (14 mi) south-east of Melbourne's Central Business District, located within the City of Greater Dandenong local government area. Springvale recorded a population of 22,174 at the 2021 census.\nSpringvale is a large suburb occupying 11.2 km2 (4.3 sq mi), bounded by Westall Road to the west, Princes Highway and Police Road to the north, the Springvale Crematorium and Corrigan Road to the northeast, Heatherton Road to the south and Lawn Road to the southeast. Springvale is linked to the Melbourne CBD by Monash Freeway via the Ferntree Gully Road exit to the suburb's northwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "springvale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7140,
+    "place_id": "gn-2160493",
+    "input": {
+      "place": {
+        "place_id": "gn-2160493",
+        "name": "Lavington",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -36.03976,
+        "lon": 146.93958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lavington, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Lavington,_New_South_Wales",
+          "text": "Lavington is the largest suburb of the city of Albury, New South Wales, Australia. At the 2021 census, Lavington had a population of 13,073.\nLavington is a mostly flat area near Nail Can Hill to the west, and is bordered by Thurgoona to the east, Hamilton Valley to the west, Springdale Heights to the north, and North Albury to the south.\nLavington is mostly residential, but has significant rural areas in the north-west and a commercial area. Features include Lavington Square Shopping Centre, Lavington Swim Centre, Jelbart Park and 5 schools (Lavington East Public, Lavington Public, Hume Public, Holy Spirit School (Catholic) and Murray High School)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "lavington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7149,
+    "place_id": "gn-2654229",
+    "input": {
+      "place": {
+        "place_id": "gn-2654229",
+        "name": "Burry Port",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.68435,
+        "lon": -4.24687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burry Port",
+          "url": "https://en.wikipedia.org/wiki/Burry_Port",
+          "text": "Burry Port (Welsh: Porth Tywyn) is a port town and community in Carmarthenshire, Wales, on the Loughor estuary (Moryd Llwchwr), to the west of Llanelli and south-east of Kidwelly. Its population was recorded at 5,680 in the 2001 census and 6,156 in the 2011 census, and estimated at 5,998 in 2019. The town has a harbour.\nIt is also where Amelia Earhart landed as the first woman to fly across the Atlantic Ocean. Nearby are the Pembrey Burrows sand dune and wetland system, forming a country park, and the Cefn Sidan sands. Its musical heritage includes Burry Port Opera, Male Choir and Burry Port Town Band."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "burry port",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "burry",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7156,
+    "place_id": "gn-2794223",
+    "input": {
+      "place": {
+        "place_id": "gn-2794223",
+        "name": "Knesselare",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.13932,
+        "lon": 3.41282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Knesselare",
+          "url": "https://en.wikipedia.org/wiki/Knesselare",
+          "text": "Knesselare (Dutch pronunciation: [ˈknɛsəˌlaːrə]) is a village and deelgemeente in the municipality of Aalter and a former municipality located in the Belgian province of East Flanders. The municipality comprised the towns of Knesselare proper and Ursel.\nThe municipality's name is derived from the Germanic words \"klisse\" (herb) and \"laar\", (a soggy brushwood terrain), and was first attested in 1128. \nKnesselare became an independent parish in 1171. It was originally a village heerlijkheid, but during the rule of Louis II, Count of Flanders (1330–1384), the area had been split into four different administrations. Until the 19th century, large parts of the municipality still contains forests and heaths."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "knesselare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7159,
+    "place_id": "gn-2854152",
+    "input": {
+      "place": {
+        "place_id": "gn-2854152",
+        "name": "Pfedelbach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.17806,
+        "lon": 9.505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pfedelbach",
+          "url": "https://en.wikipedia.org/wiki/Pfedelbach",
+          "text": "Pfedelbach (German pronunciation: [ˈpfeːdl̩bax]) is a municipality in the district of Hohenlohe in Baden-Württemberg in Germany.\nIn 1472 the town and castle were bought by the counts of Hohenlohe. The present castle was built from 1568 to 1572 by the count of Hohenlohe-Waldenburg. Being regionally most popular for its Fürstenfass (Prince's barrel), Pfedelbach's history dates back to the 11th century.\nNowadays most of the surrounding smaller townships have been suburbanized to Pfedelbach, including Oberohrn, Heuberg/Buchhorn/Gleichen (three small villages counting as one), Harsberg, Untersteinbach and Windischenbach to name but a few.\nA special aspect about the early culture of Pfedelbach is the affiliation to the Yenish language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "pfedelbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7162,
+    "place_id": "gn-298326",
+    "input": {
+      "place": {
+        "place_id": "gn-298326",
+        "name": "Ürgüp",
+        "country": "Türkiye",
+        "subdivision": "Nevşehir Province",
+        "lat": 38.6296,
+        "lon": 34.91199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ürgüp",
+          "url": "https://en.wikipedia.org/wiki/Ürgüp",
+          "text": "Ürgüp (Greek: Προκόπιο Prokópio, Cappadocian Greek: Προκόπι Prokópi, Ottoman Turkish: Burgut Kalesi) is a town in Nevşehir province in the Cappadocia area of Central Anatolia, Turkey. It is the seat of Ürgüp District. Its population is 24,647 (2022). The town lies at an average elevation of 1,044 m (3,425 ft).\nAs elsewhere in Cappadocia, the centre of Ürgüp is full of old stone houses clustered around a central rock formation, in this case Temenni Tepesi (Temenni Hill, Wish Hill).\nÜrgüp got into the boutique-hotel movement early and as a result has a flourishing tourism industry, in part because it has more amenities than other Cappadocian destinations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "urgup",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7168,
+    "place_id": "gn-322817",
+    "input": {
+      "place": {
+        "place_id": "gn-322817",
+        "name": "İbradı",
+        "country": "Türkiye",
+        "subdivision": "Antalya",
+        "lat": 37.09694,
+        "lon": 31.59917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "İbradı",
+          "url": "https://en.wikipedia.org/wiki/İbradı",
+          "text": "İbradı is a municipality and district of Antalya Province, Turkey. Its area is 778 km2, and its population is 2,875 (2022).\nİbradı is a high plain in the Taurus Mountains. In summer the weather is dry and cooler than the nearby Mediterranean coast with a daytime temperature of 30 degrees C and 10 degrees C at night. The mountains are covered with forests of juniper, cedar and pine, watered by mountain streams that eventually form the Manavgat River. The people of İbradı mainly live from grazing goats on the hillsides and from forestry; there is no commercial farming although people have gardens, vineyards and fruit trees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "ibrad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7169,
+    "place_id": "gn-3441074",
+    "input": {
+      "place": {
+        "place_id": "gn-3441074",
+        "name": "Piriápolis",
+        "country": "Uruguay",
+        "subdivision": "Maldonado",
+        "lat": -34.86287,
+        "lon": -55.27471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piriápolis",
+          "url": "https://en.wikipedia.org/wiki/Piriápolis",
+          "text": "Piriápolis is a city in the Maldonado Department of Uruguay. It is an important summer resort in the country, predating the larger and better known resort town of Punta del Este. Because it is mainly used as a resort, it has a relatively small permanent population for a city of its size.\nPiriápolis is also the name of the municipality to which the city belongs. It includes the following zones: Piriápolis, Playa Grande, Playa Hermosa, Playa Verde, Punta Colorada, San Francisco, Punta Negra, Sauce de Portezuelo, Ocean Park, Barra de Portezuelo, La Capuera, Puntas de la Sierra, La Falda, Miramar, Colonia V. Suárez, Sierras del Tirol."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "piriapolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7174,
+    "place_id": "gn-3847836",
+    "input": {
+      "place": {
+        "place_id": "gn-3847836",
+        "name": "Las Rosas",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -32.47547,
+        "lon": -61.57737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Rosas, Santa Fe",
+          "url": "https://en.wikipedia.org/wiki/Las_Rosas,_Santa_Fe",
+          "text": "Las Rosas is a city in the southwest of the province of Santa Fe, Argentina, located 165 km (103 mi) from the provincial capital. It has about 13,689  inhabitants as per the 2010 census [INDEC], and it is the head town of the Belgrano Department, which also comprises the municipalities of Armstrong, Bouquet, Las Parejas, Montes de Oca, and Tortugas.\nLas Rosas was founded in 1889 by Guillermo Kemmis & Dickinson bros, and was officially recognized on January 1, 1882, becoming a city on August 20, 1967.\nSummers there are warm, humid, wet, and mostly clear and the winters are short, cold, dry, and partly cloudy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "las rosas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rosas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7183,
+    "place_id": "gn-4945497",
+    "input": {
+      "place": {
+        "place_id": "gn-4945497",
+        "name": "North Amherst",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.41037,
+        "lon": -72.53092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Amherst, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/North_Amherst,_Massachusetts",
+          "text": "North Amherst is a census-designated place (CDP) in the city of Amherst in Hampshire County, Massachusetts, United States. The population was 6,819 at the 2010 census, up from 6,019 at the 2000 census. It is part of the Springfield, Massachusetts Metropolitan Statistical Area.\nNorth Amherst is located in the northern part of the city of Amherst at 42°24′22″N 72°31′16″W (42.406192, -72.521217). It is bordered to the south by the Amherst Center CDP and to the southwest by the town of Hadley. The CDP border follows the Mill River north from the Hadley town line, then east across Massachusetts Route 116 as far as Massachusetts Route 63."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "north amherst",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amherst",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7188,
+    "place_id": "gn-5204783",
+    "input": {
+      "place": {
+        "place_id": "gn-5204783",
+        "name": "Oxford Circle",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.05011,
+        "lon": -75.07184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oxford Circle, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Oxford_Circle,_Philadelphia",
+          "text": "Oxford Circle is a neighborhood in the lower Northeast section of Philadelphia, Pennsylvania, United States. Its namesake is the much used traffic circle at Roosevelt Boulevard and Oxford Avenue. \nThe Oxford Circle neighborhood has traditionally included the areas up to Rhawnhurst and Mayfair but does not have fixed boundaries, other than in publications about Philadelphia which are of public relations or informational natures.\nOxford Circle is also the colloquial name for the nearby Summerdale neighborhood, which is located west of Roosevelt Boulevard, opposite the city's Frankford section.  However, Summerdale is, for the most part, a different neighborhood than the one that is discussed in this article."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "oxford circle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oxford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "circle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
