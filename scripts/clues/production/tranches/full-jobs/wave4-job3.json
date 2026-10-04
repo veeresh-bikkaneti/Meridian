@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 648,
+    "attempt": 641,
+    "place_id": "gn-3099434",
+    "input": {
+      "place": {
+        "place_id": "gn-3099434",
+        "name": "Gdańsk",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 54.35227,
+        "lon": 18.64912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gdańsk",
+          "url": "https://en.wikipedia.org/wiki/Gdańsk",
+          "text": "Gdańsk (Kashubian: Gduńsk; German: Danzig) is a city on the Baltic coast of northern Poland, and the capital of the Pomeranian Voivodeship. With a population of 486,492, it is Poland's sixth-largest city and its major seaport. Gdańsk lies at the mouth of the Motława River and is situated at the southern edge of Gdańsk Bay, close to the city of Gdynia and the resort town of Sopot; these form a metropolitan area called the Tricity (Trójmiasto), with a population of approximately 1.5 million.\nGdańsk was first mentioned in 997 as part of the Duchy of Poland, and thereafter grew into a trading town under the Piast and Samboride dynasties. Shifting between Polish and Teutonic control during the Middle Ages, it subsequently joined the Hanseatic League and, with considerable autonomy, served as the Polish Crown's principal seaport and largest city until the early 18th century. With the Partitions of Poland, the city was annexed by Prussia in 1793, and was integrated into the German Empire in 1871. It was a free city from 1807 to 1814 and from 1920 to 1939. On 1 September 1939, it was the site of a military clash at Westerplatte, one of the first events of World War II. The contemporary city was shaped by extensive border changes, the flight and expulsion of the German population and Polish resettlement after 1945. In the 1980s, Gdańsk was the birthplace of the Solidarity trade union and movement, which helped precipitate the collapse of communism in Europe.\nThe city is home to the University of Gdańsk, Gdańsk University of Technology, the National Museum, the Gdańsk Shakespeare Theatre, the Museum of the Second World War, the Polish Baltic Philharmonic, the Polish Space Agency and the European Solidarity Centre. Among Gdańsk's most notable historical landmarks are the Town Hall, the Green Gate, Artus Court, Neptune's Fountain, and St. Mary's Church, one of the largest brick churches in the world. The city is served by Gdańsk Lech Wałęsa Airport, the country's third busiest airport and the most important international airport in northern Poland.\nGdańsk is one of the most visited cities in Poland, having received 4.5 million tourists in 2024, especially from Scandinavia and Germany. The city hosts St. Dominic's Fair, which dates back to 1260, and is regarded as one of the biggest trade and cultural events in Europe. In a 2019 quality of life poll, Gdańsk ranked highest among Polish cities. Its historic city centre has been listed as one of Poland's national monuments. In 2025, Gdańsk became a UNESCO City of Literature."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 423
+    },
+    "banned_terms": [
+      {
+        "term": "gdansk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 649,
+    "attempt": 642,
+    "place_id": "gn-4164167",
+    "input": {
+      "place": {
+        "place_id": "gn-4164167",
+        "name": "Miami Gardens",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.94204,
+        "lon": -80.2456
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miami Gardens, Florida",
+          "url": "https://en.wikipedia.org/wiki/Miami_Gardens,_Florida",
+          "text": "Miami Gardens is a city in north-central Miami-Dade County, Florida, United States. It is a suburb of Miami and located 16 miles (26 km) north of downtown Miami with city boundaries that stretch from I-95 and Northeast 2nd Avenue to its east to Northwest 47th and Northwest 57th Avenues to its west, and from the Broward County line to its north to 151st Street to its south. The city's name originated from Florida State Road 860, a major roadway through the area also known as Miami Gardens Drive. It had a population of 111,640 as of 2020.\nMiami Gardens is Florida's most populous city with a majority African American population and also home to the largest percentage of African Americans (66.97 percent) of any city in Florida, according to the U.S. Census Bureau. It is a principal city in the Miami metropolitan area of South Florida, which is the nation's sixth-largest, and world's 65th-largest metropolitan area with a population of 6.158 million people as of 2020. Miami Gardens is the home of Hard Rock Stadium, a 64,767 capacity multi-purpose stadium that serves as the home field for both the Miami Dolphins of the National Football League and the Miami Hurricanes, the University of Miami's college football team."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "miami gardens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "miami",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gardens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 650,
+    "attempt": 643,
+    "place_id": "gn-13680164",
+    "input": {
+      "place": {
+        "place_id": "gn-13680164",
+        "name": "Nusantara",
+        "country": "Indonesia",
+        "subdivision": "East Kalimantan",
+        "lat": -0.97306,
+        "lon": 116.70861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nusantara",
+          "url": "https://en.wikipedia.org/wiki/Nusantara",
+          "text": "Nusantara, officially Nusantara Capital City (Indonesian: Ibu Kota Nusantara, abbreviated IKN), is a city under construction that, upon completion, is planned to be the capital city of Indonesia. It occupies land in the East Kalimantan regencies of Penajam North Paser (where the Main Governmental Zone is being built) and Kutai Kartanegara on the east coast of the island of Borneo. Nusantara is planned to be its own national capital region (Indonesian: daerah khusus ibu kota negara) at the provincial level, replacing Jakarta to save the city from overpopulation and land sinking. Nusantara is adjacent to the port city of Balikpapan, which serves as the main gateway to the new capital.\nAfter being postponed due to the COVID-19 pandemic in Indonesia, construction of the city began in 2022, starting with land clearing and creating access roads. The project is estimated to be worth Rp 523 trillion (US$35 billion) and will be built in five phases lasting until 2045, to coincide with the 100th anniversary of Indonesia. Phase 1, known as the \"Main Governmental Area\" zone, started in August 2022. Around 150,000 to 200,000 workers from around Indonesia participated in this project with an additional workforce around the Nusantara region to ensure the participation of local workers.\nBy the end of Joko Widodo's presidency, many buildings had been completed such as the State Palace, ministry offices, residential buildings, monuments and parks, as well as projects outside the government budget such as hotels, hospitals, and PSSI training centre. On 17 August 2024, Indonesia officially celebrated its Independence Day for the first time in Nusantara. Nusantara has attracted tourism, with daily visitors ranging between 3,000 and 5,000. The project continued during the presidency of Prabowo Subianto, who has allocated Rp 48.8 trillion (US$2.98 billion) for Phase 2 and has decided to include Nusantara as one of Indonesia's 2025–2029 National Strategic Projects.\nThe invested capital was provided by business entities, both domestic and foreign. As of September 2025, private investment outside the state budget (non-APBN) has reached Rp 65.3 trillion (US$4 billion) from 49 business actors (52 cooperation agreements)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "nusantara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 651,
+    "attempt": 644,
+    "place_id": "gn-1735106",
+    "input": {
+      "place": {
+        "place_id": "gn-1735106",
+        "name": "George Town",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.41123,
+        "lon": 100.33543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "George Town, Penang",
+          "url": "https://en.wikipedia.org/wiki/George_Town,_Penang",
+          "text": "George Town is the capital of the Malaysian state of Penang. It is the core city of the George Town Conurbation, Malaysia's second largest metropolitan area with a population of 2.84 million and the second largest metropolitan economy in the country. The city proper spans an area of 306 km2 (118 sq mi) encompassing Penang Island and surrounding islets, and had a population of 794,313 as of 2020.\nClassified as a \"Gamma −\" city, the second highest in Malaysia after Kuala Lumpur, George Town is the commercial centre for northern Malaysia and one of the few high-income economies of the cities outside the Klang Valley. According to Euromonitor International and the Economist Intelligence Unit, George Town has the highest potential for revenue growth among all Malaysian cities and contributed nearly 8 per cent of the country's personal disposable income in 2015, second only to Kuala Lumpur. Its technological sector, anchored by hundreds of multinational companies, has made George Town the top exporter in the country. The Penang International Airport links George Town to several regional cities, while a ferry service and two road bridges connect the city to the rest of Peninsular Malaysia. Swettenham Pier is the busiest cruise terminal in the country.\nEstablished as an entrepôt by Francis Light in 1786, George Town was the first British settlement in Southeast Asia, and its proximity to maritime routes along the Strait of Malacca attracted an influx of immigrants from various parts of Asia. It became the capital of the Straits Settlements in 1826, only to then lose its administrative status to Singapore in 1832. Shortly before Malaya attained independence from Britain in 1957, George Town was declared a city by Queen Elizabeth II, making it the first city in the country's history. In 1974, George Town was merged with the rest of the island, throwing its city status into doubt until 2015, when its jurisdiction was reinstated and expanded to cover the entire island and adjacent islets.\nThe city is described by UNESCO as having a \"unique architectural and cultural townscape\" that is shaped by centuries of intermingling between various cultures and religions. It has also gained a reputation as Malaysia's gastronomical capital for its distinct culinary scene. The preservation of these cultures contributed to the designation of the city centre of George Town as a UNESCO World Heritage Site in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 392
+    },
+    "banned_terms": [
+      {
+        "term": "george town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "george",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 652,
+    "attempt": 645,
+    "place_id": "gn-204405",
+    "input": {
+      "place": {
+        "place_id": "gn-204405",
+        "name": "Uvira",
+        "country": "Congo - Kinshasa",
+        "subdivision": "South Kivu",
+        "lat": -3.39534,
+        "lon": 29.13779
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uvira",
+          "url": "https://en.wikipedia.org/wiki/Uvira",
+          "text": "Uvira is a city strategically located in the South Kivu province of the eastern region of the Democratic Republic of the Congo. Covering approximately 207 square kilometers and with an estimated population of 726,000 as of 2024, it borders Bafuliru Chiefdom and Ruzizi Plain Chiefdom to the north, Bavira Chiefdom to the south, and Lake Tanganyika and the Ruzizi River to the east. These rivers form natural boundaries between the DRC and Burundi. Located in the Ruzizi Plain at a low altitude, the city lies between Burundi's Congo-Nile ridge and the Mitumba mountains.\nUvira is the central hub of the surrounding Uvira Territory, with an economy anchored in trade, fishing, agriculture, and livestock farming, while the port of Kalundu provides regional transport routes across Lake Tanganyika, connecting the city with Kalemie, Kigoma, Mpulungu, and Bujumbura. The city is also an important religious center and served as the episcopal seat of the Roman Catholic Diocese of Uvira, which is a suffragan of the Archdiocese of Bukavu.\nUvira has historically been shaped by waves of migration, Arab-Swahili commercial expansion, and Belgian colonial administration. From the early 1900s, it became a strategic garrison of the Congo Free State, serving as a northernmost entry point from the Indian Ocean via Lake Tanganyika and a base for monitoring German East Africa positions in Ruanda-Urundi and Tanzania mainland. It hosted up to 1,800 troops under Inspector Paul Costermans and became the site of a war council on 17 October 1900, which established the Ruzizi-Kivu Territory with Uvira as its headquarters. By a ministerial decree of 11 September 1911, Uvira became the seat of the Kivu Zone of the Stanleyville District; when Kivu was elevated to district status on 3 November 1913, Uvira briefly served as the district capital until the seat was moved to Rutshuru in 1914. It later gained city status through a presidential decree in 2018, making it the second officially recognized city in South Kivu after Bukavu. Administratively, Uvira is subdivided into three communes: Kalundu, Mulongwe, and Kagando, and is home to a blend of ethnic diversity, dominated by the Fuliiru, Vira, and Bembe, alongside significant expatriate populations from neighboring and overseas countries. The city has also been significantly impacted by long-term conflict and frequent population displacements, which have affected the city and surrounding regions for nearly four decades."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 386
+    },
+    "banned_terms": [
+      {
+        "term": "uvira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 653,
+    "attempt": 646,
+    "place_id": "gn-3102014",
+    "input": {
+      "place": {
+        "place_id": "gn-3102014",
+        "name": "Bydgoszcz",
+        "country": "Poland",
+        "subdivision": "Kujawsko-Pomorskie",
+        "lat": 53.1235,
+        "lon": 18.00762
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bydgoszcz",
+          "url": "https://en.wikipedia.org/wiki/Bydgoszcz",
+          "text": "Bydgoszcz is a city in northern Poland and the largest city in the historical region of Kuyavia. Straddling the confluence of the Vistula River and its left-bank tributary, the Brda, the strategic location of Bydgoszcz has made it an inland port and a vital centre for trade and transportation. With a city population of 339,053 as of December 2021, Bydgoszcz is the eighth-largest city in Poland. Today, it is the seat of Bydgoszcz County and one of the two capitals of the Kuyavian-Pomeranian Voivodeship as a seat of its centrally appointed governor, a voivode.\nBydgoszcz metropolitan area comprising the city and several adjacent communities is inhabited by half a million people, and forms a part of an extended polycentric Bydgoszcz-Toruń metropolitan area with a population of approximately 0.8 million inhabitants. Since the Middle Ages, Bydgoszcz served as a royal city of the Kingdom of Poland until partitions and experienced the industrialisation period bolstered by the construction of the Bydgoszcz Canal in the late 18th century. Its academic and cultural landscape is shaped by Casimir the Great University, Bydgoszcz University of Science and Technology, the Medical College of Nicolaus Copernicus University, Feliks Nowowiejski Music Academy, the Pomeranian Philharmonic, and the Opera Nova. Bydgoszcz also plays a role of the biggest centre of NATO headquarters in Poland. The city is served by an international airport and is a member of Eurocities.\nBydgoszcz is an architecturally rich city, with Gothic, Neoclassicist, Neo-Gothic, Neo-Baroque, Modernist and Art Nouveau styles present, for which, combined with extensive green spaces, it has earned the nickname Little Berlin. The notable granaries on Mill Island and along the riverside belong to one of the most recognized timber-framed landmarks in Poland. In 2023, the city entered the UNESCO Creative Cities Network and was named UNESCO City of Music."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "bydgoszcz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 654,
+    "attempt": 647,
+    "place_id": "gn-3394023",
+    "input": {
+      "place": {
+        "place_id": "gn-3394023",
+        "name": "Natal",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -5.795,
+        "lon": -35.20944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Natal, Rio Grande do Norte",
+          "url": "https://en.wikipedia.org/wiki/Natal,_Rio_Grande_do_Norte",
+          "text": "Natal (Brazilian Portuguese: [naˈtaw]) is a Brazilian municipality and the capital of the state of Rio Grande do Norte, located in the Northeast Region of Brazil. Situated 2,227 kilometers from Brasília, the federal capital, it is the second smallest Brazilian state capital in area, covering an area of approximately 167 km2 (64 sq mi).  With just over 750,000 inhabitants (2022), it is the most populous municipality in its state, the eighth in the Northeast, and the 24th in Brazil. The Greater Natal, composed of thirteen other municipalities in Rio Grande do Norte, has more than 1.5 million inhabitants, making it the fourth largest urban agglomeration in the Northeast and the nineteenth largest in Brazil.\nFounded on Christmas Day in 1599 on the banks of the Potengi River, which separates the North Zone from the others, the city was occupied by the Dutch between 1633 and 1654, during which it was named New Amsterdam. Its growth was slow during the first three centuries of its existence. Only from the 20th century onward did Natal undergo an intense modernization process, and beginning with World War II, its population began to grow at a faster pace, especially throughout the 1970s and 1980s.\nIts location near the \"corner of South America\" caught the attention of the United States Department of War, which considered Natal \"one of the four most strategic points in the world.\" With the start of operations at the first rocket launch base in South America — the Barreira do Inferno Launch Center in Parnamirim — Natal became known as the \"Space Capital of Brazil.\" The construction of the Via Costeira, a coastal highway between the Atlantic Ocean and Natal Dunes State Park that connects the beaches of Areia Preta and Ponta Negra, greatly boosted local tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 295
+    },
+    "banned_terms": [
+      {
+        "term": "natal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 655,
+    "attempt": 648,
+    "place_id": "gn-3453186",
+    "input": {
+      "place": {
+        "place_id": "gn-3453186",
+        "name": "Ponta Grossa",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.095,
+        "lon": -50.16194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponta Grossa",
+          "url": "https://en.wikipedia.org/wiki/Ponta_Grossa",
+          "text": "Ponta Grossa (Portuguese pronunciation: [ˈpõtɐ ˈɡɾɔsɐ] ) is a municipality in the state of Paraná, southern Brazil. The estimated population is 355,336 according to official data from the Brazilian Institute of Geography and Statistics and it is the 4th most populous city in Paraná (76th in Brazil). It is also the largest city close to Greater Curitiba region, so within a radius of 186 miles (300 km) of Ponta Grossa.\nIt is also known as Princesa dos Campos  (in English: Princess of the Fields) and Capital Cívica do Paraná (in English: Civic Capital of Paraná). The city is connected to the Caminho das Tropas (in English: Path of the Troops), being one of the network of routes used by drovers (tropeiros) in the middle of a high hill inside a grassy vegetation. The city is considered of average size, located around a central hill, while most of its growth occurred in the second half of the twentieth century with the weakening of the primary economy.\nPonta Grossa is one of the largest tourist destinations in the Paraná, especially because of the area of natural beauty, Vila Velha State Park which is located within the limits of the municipality. The cup of Vila Velha refers to its location in the collective imagination. The München Fest, a party dedicated to German culture and also known as the Festa Nacional do Chopp Escuro (in English: Dark Chopp National Party), is the biggest event in Paraná and usually lasts a week between November and December.\nIn this city, the industrial sector is fundamental (supported by agriculture). The city hosts the largest concentration of industry in the interior of Paraná. Agroindustry, lumber and metalworking are the major industries. The result is reflected in national GDP with the contribution from this city within the interior of Brazil, being only below Foz do Iguaçu. Municipal GDP increased over the state and national average between 2013 and 2019, this was also seen in the number of registered companies and employees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 332
+    },
+    "banned_terms": [
+      {
+        "term": "ponta grossa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ponta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grossa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 656,
+    "attempt": 649,
+    "place_id": "gn-4158476",
+    "input": {
+      "place": {
+        "place_id": "gn-4158476",
+        "name": "Hialeah",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.8576,
+        "lon": -80.27811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hialeah, Florida",
+          "url": "https://en.wikipedia.org/wiki/Hialeah,_Florida",
+          "text": "Hialeah ( HY-ə-LEE-ə; Latin American Spanish: [xaʝaˈli.a]) is a city in Miami-Dade County, Florida, United States. With a population of 223,109 as of the 2020 census, it is the sixth-largest city in Florida. It is the second largest city by population in Miami-Dade County, in the Miami metropolitan area of South Florida, which was home to an estimated 6,198,782 people at the 2018 census. It is located west-northwest of Miami, and is one of a few places in the county—others being Homestead, Miami Beach, Surfside, Bal Harbour, Sunny Isles Beach, and Golden Beach—to have its own street grid numbered separately from the rest of the county (which is otherwise based on Miami Avenue at Flagler Street in Downtown Miami, the county seat).\nHialeah was incorporated in 1925.\nThe city is notable for its high Hispanic proportion, which was 94% in 2020; this was the second-highest proportion of Hispanic Americans in the contiguous United States, and the highest proportion among incorporated communities outside of Puerto Rico. Hialeah also has the highest proportion of Cuban and Cuban-American residents of any city in the United States, at 84.1% of the population, making them a prominent feature of the city's culture. In 2023, 89.5% of residents reported speaking Spanish at home, and the language is an important part of daily life in the city.\nHialeah is served by the Miami Metrorail at the Okeechobee, Hialeah, and Tri-Rail/Metrorail Transfer stations. The Okeechobee and Hialeah stations serve primarily as park-and-ride commuter stations for commuters and residents going into Downtown Miami, and the Tri-Rail station for Miami International Airport and north to West Palm Beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "hialeah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 657,
+    "attempt": 650,
+    "place_id": "gn-1624494",
+    "input": {
+      "place": {
+        "place_id": "gn-1624494",
+        "name": "Tegal",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -6.8694,
+        "lon": 109.1402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tegal",
+          "url": "https://en.wikipedia.org/wiki/Tegal",
+          "text": "Tegal is a city in the northwest part of the province of Central Java, Indonesia. It is situated on the north coast (or pesisir) of Central Java, about 175 km (109 mi) from Semarang, the capital of the province. It had a population of 239,599 at the 2010 Census and 273,825 at the 2020 Census; the official estimate as of mid-2025 was 297,173 (comprising 149,957 males and 147,216 females). \nThe city is administratively separate from Tegal Regency, which borders it to the south and east; Brebes Regency borders it to the west. As originally calculated, the metropolitan area of the city and surrounding districts within Tegal Regency at the 1990 Census was 719,847 (not including 289,103 inhabitants within Brebes Regency). Its built-up (or metro) area made up of Tegal Municipality and 12 districts spread over Tegal and Brebes Regencies was home to 1,410,124 inhabitants as at the 2010 census and 1,602,546 at the 2020 Census; the official estimate as at mid 2025 was 1,698,092.\nThe Dutch East Indies colonial sugar industry originated in Tegal and the nearby city of Pekalongan, approximately 50 km (31 mi) to the east. Tegal Regency remained a major sugar production center until the mid-20th century. The city served as a port for exporting sugar produced on the nearby plantations. Tegal is famous for its warung, commonly called \"warteg\" or warung tegal. It is also known for its tea products, such as teh botol Sosro, Tong Tji tea, 2 Tang tea, Gopek tea, and other brands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "tegal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 658,
+    "attempt": 651,
+    "place_id": "gn-1801792",
+    "input": {
+      "place": {
+        "place_id": "gn-1801792",
+        "name": "Luoyang",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.67345,
+        "lon": 112.43684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luoyang",
+          "url": "https://en.wikipedia.org/wiki/Luoyang",
+          "text": "Luoyang (simplified Chinese: 洛阳; traditional Chinese: 洛陽; pinyin: Luòyáng) is a city located in the confluence area of the Luo River and the Yellow River in the west of Henan province, China. Governed as a prefecture-level city, it borders the provincial capital of Zhengzhou to the east, Pingdingshan to the southeast, Nanyang to the south, Sanmenxia to the west, Jiyuan to the north, and Jiaozuo to the northeast. As of December 31, 2018, Luoyang had a population of 6,888,500 inhabitants with 2,751,400 people living in the built-up (or metro) area made of the city's five out of six urban districts (except the Jili District not continuously urbanized) and Yanshi District, later being conurbated. By the end of 2022, Luoyang Municipality had jurisdiction over 7 municipal districts, 7 counties and 1 development zone. The permanent population was 7.079 million as of 2022.\nSituated on the central plain of China, Luoyang is among the oldest cities in China and one of the cradles of Chinese civilization. It is the earliest of the Four Great Ancient Capitals of China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "luoyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 659,
+    "attempt": 652,
+    "place_id": "gn-1853909",
+    "input": {
+      "place": {
+        "place_id": "gn-1853909",
+        "name": "Osaka",
+        "country": "Japan",
+        "subdivision": "Osaka",
+        "lat": 34.69379,
+        "lon": 135.50107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osaka",
+          "url": "https://en.wikipedia.org/wiki/Osaka",
+          "text": "Osaka (Japanese: 大阪市, Hepburn: Ōsaka-shi; pronounced [òó.sá.ká.ɕì, óó.-]; commonly just 大阪, Ōsaka [òó.sá.ká, óó.-] ) is a designated city in the Kansai region of Honshu in Japan. It is the capital of and most populous city in Osaka Prefecture, and the second biggest prefectural city, third-most populous city proper in Japan, following the special wards of Tokyo and Yokohama. With an estimated population of 2.8 million as of October 1, 2025 and a population density of about 12,505 people per square kilometer, it is the largest component of the Keihanshin metropolitan area, the second-largest metropolitan area in Japan and the 10th-largest urban area in the world with more than 19 million inhabitants.\nOsaka was traditionally considered Japan's economic hub. By the Kofun period (300–538) it had developed into an important regional port, and in the seventh and eighth centuries it served briefly as the imperial capital. Osaka continued to flourish during the Edo period (1603–1867) and became known as a center of Japanese culture. Following the Meiji Restoration, it greatly expanded in size and underwent rapid industrialization. This  accelerated population growth throughout the following decades, and Osaka was the industrial hub in the Meiji and Taishō eras. It made contributions to redevelopment, urban planning and zoning standards in the postwar period, and developed rapidly as one of the major financial centers in the Keihanshin Metropolitan Area.\nOsaka is a major financial center of Japan and is recognized as one of its most multicultural and cosmopolitan cities. It is home to the Osaka Exchange and the headquarters of multinational electronics corporations such as Panasonic and Sharp. Osaka is an international center of research and development and is represented by several major universities, including Osaka University, Osaka Metropolitan University, and Kansai University. Landmarks include Osaka Castle, Osaka Aquarium Kaiyukan, Dōtonbori, Tsūtenkaku in Shinsekai, Tennōji Park, Abeno Harukas, Sumiyoshi Taisha Grand Shrine, and Shitennō-ji, one of the oldest Buddhist temples in Japan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 319
+    },
+    "banned_terms": [
+      {
+        "term": "osaka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 660,
+    "attempt": 653,
+    "place_id": "gn-2392087",
+    "input": {
+      "place": {
+        "place_id": "gn-2392087",
+        "name": "Porto-Novo",
+        "country": "Benin",
+        "subdivision": "Ouémé",
+        "lat": 6.49646,
+        "lon": 2.60359
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porto-Novo",
+          "url": "https://en.wikipedia.org/wiki/Porto-Novo",
+          "text": "Porto-Novo (Portuguese for 'New Port', pronounced [ˈpoɾtu ˈnovu]; French: [pɔʁtɔnɔvo]; Yoruba: Àjàṣẹ́; Fon: Xɔ̀gbónù; also known as Hogbonu and Ajashe) is the capital and second-largest city of Benin. The commune covers an area of 52 square kilometres (20 sq mi) and as of 2013 had a population of 264,320 people.\nIn 1863, following British bombardment, Porto-Novo accepted French protection, and by 1900, it became the capital of French Dahomey. After Benin's independence in 1960, Porto-Novo retained its status as the official capital, while Cotonou emerged as the economic and administrative hub.\nSituated on an inlet of the Gulf of Guinea, in the southeastern portion of the country, the city was originally developed as a port for the transatlantic slave trade led by the Portuguese Empire. It is Benin's second-largest city, and although it is the official capital, where the national legislature sits, the larger city of Cotonou is the seat of government, where most of the government buildings are situated and government departments operate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "porto novo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "novo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 661,
+    "attempt": 654,
+    "place_id": "gn-2514169",
+    "input": {
+      "place": {
+        "place_id": "gn-2514169",
+        "name": "Marbella",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.51543,
+        "lon": -4.88583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marbella",
+          "url": "https://en.wikipedia.org/wiki/Marbella",
+          "text": "Marbella (UK:  mar-BAY-yə, US:  mar-BEL-ə, Spanish: [maɾˈβeʎa]) is a city and municipality in southern Spain, belonging to the province of Málaga in the autonomous community of Andalusia. It is part of the Costa del Sol and is the headquarters of the Association of Municipalities of the region; it is also the head of the judicial district that bears its name.\nMarbella is situated on the Mediterranean Sea, between Málaga and the Strait of Gibraltar, in the foothills of the Sierra Blanca. The municipality covers an area of 117 square kilometres (45 sq mi) crossed by highways on the coast, which are its main entrances.\nIn 2023, the population of the city was 156,295 inhabitants, making it the second most populous municipality in the province of Málaga and the seventh in Andalusia. It is one of the most important tourist cities of the Costa del Sol and throughout most of the year is an international tourist attraction, due mainly to its climate and tourist infrastructure. It is also one of the fastest-growing cities in both Andalusia and Spain.\nThe city also has a significant archaeological heritage, several museums and performance spaces,  and a cultural calendar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "marbella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 662,
+    "attempt": 655,
+    "place_id": "gn-2747373",
+    "input": {
+      "place": {
+        "place_id": "gn-2747373",
+        "name": "The Hague",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.07667,
+        "lon": 4.29861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "The Hague",
+          "url": "https://en.wikipedia.org/wiki/The_Hague",
+          "text": "The Hague (Dutch: Den Haag, short for 's-Gravenhage) is the capital city of the South Holland province of the Netherlands. With a population of over half a million, it is the third-largest city in the Netherlands. Situated on the west coast facing the North Sea, The Hague is the country's administrative centre and its seat of government, and has been described as the country's de facto capital since the time of the Dutch Republic, while Amsterdam is the official capital of the Netherlands.\nThe Hague is the core municipality of the Greater The Hague urban area containing over 800,000 residents, and is also part of the Rotterdam–The Hague metropolitan area, which, with a population of approximately 2.6 million, is the largest metropolitan area of the Netherlands. The city is also part of the Randstad region, one of the largest conurbations in Europe.\nThe Hague is the seat of the Cabinet, the States General, the Supreme Court, and the Council of State of the Netherlands. King Willem-Alexander officially lives in the Huis ten Bosch and works at the Noordeinde Palace together with Queen Máxima. Most foreign embassies in the Netherlands are in the city. The Hague is also home to the headquarters of many Dutch companies, with Shell plc having major offices in the city as well. The Royal Library of the Netherlands is also located there. The Hague's coastal area includes the popular seaside resort Scheveningen.\nThe Hague is known as the global hub of international law and arbitration. The International Court of Justice, the main judicial arm of the United Nations, is based in the city, as are the International Criminal Court, the Permanent Court of Arbitration, the Organisation for the Prohibition of Chemical Weapons, Europol, and approximately 200 other international governmental organizations. The name \"The Hague\" is commonly used metonymically to refer to either of the international courts that reside in the city. The city has hosted several major international conferences, including the 2014 Nuclear Security Summit and the 2025 NATO Summit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 334
+    },
+    "banned_terms": [
+      {
+        "term": "the hague",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hague",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 663,
+    "attempt": 656,
+    "place_id": "gn-3194360",
+    "input": {
+      "place": {
+        "place_id": "gn-3194360",
+        "name": "Novi Sad",
+        "country": "Serbia",
+        "subdivision": "Vojvodina",
+        "lat": 45.25167,
+        "lon": 19.83694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Novi Sad",
+          "url": "https://en.wikipedia.org/wiki/Novi_Sad",
+          "text": "Novi Sad (Serbian Cyrillic: Нови Сад, pronounced [nôʋiː sâːd] ; see § Etymology for other names) is the second-largest city in Serbia and the administrative center of the autonomous province of Vojvodina. It is located in the southern portion of the Pannonian Plain on the border of the Bačka and Syrmia geographical regions, lying on the banks of the Danube river, and facing the northern slopes of Fruška Gora. According to the 2022 census, the population of Novi Sad city proper stands at 260,438, its contiguous urban area has 325,511 inhabitants, and the population of its administrative area totals 372,136 people.\nIt is the fifth largest city on the Danube river and the largest that is not a national capital.\nNovi Sad was founded in 1694, when Serb merchants formed a colony across the Danube from the Petrovaradin Fortress, a strategic Habsburg military post. In subsequent centuries, it became an important trading, manufacturing and cultural centre, and has historically been dubbed the Serbian Athens. The city was heavily devastated in the 1848 Revolution, but was subsequently rebuilt and restored. Today, along with the Serbian capital city of Belgrade, Novi Sad is an industrial and financial center important to the Serbian economy.\nNovi Sad was the European Youth Capital in 2019 and a European Capital of Culture in 2022. It became a UNESCO Creative City of Media Arts in 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "novi sad",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "novi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sad",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 664,
+    "attempt": 657,
+    "place_id": "gn-3452925",
+    "input": {
+      "place": {
+        "place_id": "gn-3452925",
+        "name": "Porto Alegre",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -30.03283,
+        "lon": -51.23019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porto Alegre",
+          "url": "https://en.wikipedia.org/wiki/Porto_Alegre",
+          "text": "Porto Alegre (UK: , US: ; Brazilian Portuguese: [ˈpoʁtu aˈlɛɡɾi, -tw aˈ-], locally [ˈpoɾ-] ; lit. 'Joyful Harbor') is the capital and largest city of the Brazilian state of Rio Grande do Sul. Its population of roughly 1.4 million inhabitants (2022) makes it the 11th-most populous city in the country and the centre of Brazil's fifth-largest metropolitan area, with 4.1 million inhabitants (2022). The city is the southernmost capital city of a Brazilian state.\nPorto Alegre was founded in 1769 by Manuel Jorge Gomes de Sepúlveda, who used the pseudonym José Marcelino de Figueiredo to hide his identity; the official date, though, is 1772 with the act signed by immigrants from the Azores, Portugal.\nThe city lies on the eastern bank of the Guaíba Lake, where five rivers converge to form the Lagoa dos Patos, a giant freshwater lagoon navigable by even the largest of ships. This five-river junction has become an important alluvial port and a chief industrial and commercial centre of Brazil.\nIn the late 20th and early 21st centuries, Porto Alegre hosted the World Social Forum, an initiative of several nongovernment organizations. The city became famous for being the first city that implemented participatory budgeting. The 9th Assembly of the World Council of Churches was held in Porto Alegre in 2006. Since 2000, Porto Alegre also hosts one of the world's largest free software events, called FISL. The city was one of the host cities of the 2014 FIFA World Cup, having previously been a venue for the 1950 FIFA World Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "porto alegre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alegre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 665,
+    "attempt": 658,
+    "place_id": "gn-3600949",
+    "input": {
+      "place": {
+        "place_id": "gn-3600949",
+        "name": "Tegucigalpa",
+        "country": "Honduras",
+        "subdivision": "Francisco Morazán Department",
+        "lat": 14.0818,
+        "lon": -87.20681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tegucigalpa",
+          "url": "https://en.wikipedia.org/wiki/Tegucigalpa",
+          "text": "Tegucigalpa (UK:  US:  Spanish: [teɣusiˈɣalpa])—formally Tegucigalpa, Municipality of the Central District (Spanish: Tegucigalpa, Municipio del Distrito Central or Tegucigalpa, M.D.C.), and colloquially referred to as Tegus, Teguz or Cerrocigalpa —is the capital and largest city of Honduras along with its sister city, Comayagüela.\nClaimed on 29 September 1578 by the Spaniards, Tegucigalpa became the Honduran capital on 30 October 1880, under President Marco Aurelio Soto, when he moved the seat of government from Comayagua, which had been the Honduran capital since its independence in 1841. The 1936 constitution established Tegucigalpa and Comayagüela as a Central District, and the current 1982 Honduran Constitution continues to define the sister cities as a Central District that serves as the permanent national capital.\nTegucigalpa is located in the southern-central highland region known as the department of Francisco Morazán of which it is also the departmental capital. It is situated in a valley, surrounded by mountains. Tegucigalpa and Comayagüela, being sister cities, are physically separated by the Choluteca River. The Central District is the largest of the 28 municipalities in the Francisco Morazán department.\nTegucigalpa is Honduras' largest and most populous city as well as the nation's political and administrative center. Tegucigalpa is host to 25 foreign embassies and 16 consulates. It is the home base of several state-owned entities such as ENEE and Hondutel, the national energy and telecommunications companies, respectively. The city is also home to the country's most important public university, the National Autonomous University of Honduras, as well as the national soccer team. The city is served by one international airport, Comayagua. It used to be served by two airports until Honduras ruled Toncontín airport out in late 2021.\nThe Central District Mayor's Office (Alcaldia Municipal del Distrito Central) is the city's governing body, headed by a mayor and 10 aldermen forming the Municipal Corporation (Corporación Municipal). Being the department's seat as well, the governor's office of Francisco Morazán is also located in the capital. In 2008, the city operated on an approved budget of 1.555 billion lempiras (US$82,189,029). In 2009, the city government reported a revenue of 1.955 billion lempiras (US$103,512,220), more than any other capital city in Central America except Panama City.\nTegucigalpa's infrastructure has not kept up with its population growth. Deficient urban planning, densely condensed urbanization, and poverty are ongoing problems. Road infrastructure is unable to efficiently handle over 400,000 vehicles, resulting in heavy congestions. Both national and local governments have taken steps to improve and expand infrastructure as well as to reduce poverty in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 420
+    },
+    "banned_terms": [
+      {
+        "term": "tegucigalpa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 666,
+    "attempt": 659,
+    "place_id": "gn-5110302",
+    "input": {
+      "place": {
+        "place_id": "gn-5110302",
+        "name": "Brooklyn",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.6501,
+        "lon": -73.94958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Brooklyn",
+          "text": "Brooklyn, coextensive with Kings County, is the most populous of the five boroughs and counties of New York City. Located at the westernmost end of Long Island and formerly an independent city, Brooklyn shares a land border with the borough and county of Queens. It has several bridge and tunnel connections to the borough of Manhattan, across the East River, including the architecturally significant Brooklyn Bridge, and is connected to Staten Island by the Verrazzano–Narrows Bridge.\nThe borough, as Kings County, at 37,339.9 inhabitants per square mile (14,417.0/km2), is the second most densely populated county, and New York City borough, in the U.S. after Manhattan (New York County), and the most populous county in the state, as of 2022. In the 2020 United States census, the borough had a population of 2,736,074. Had Brooklyn remained an independent city on Long Island, it would now be the fourth most populous American city after the rest of New York City, Los Angeles, and Chicago. With a land area of 69.38 square miles (179.7 km2) and a water area of 27.48 square miles (71.2 km2), Kings County, one of the twelve original counties established under British rule in 1683 in the then-province of New York, is the state of New York's fourth-smallest county by land area and third smallest by total area.\nBrooklyn, named after the Dutch town of Breukelen, was founded by the Dutch in the 17th century and grew into a busy port city on New York Harbor by the 19th century. On January 1, 1898, after a long political campaign and public-relations battle during the 1890s and despite opposition from Brooklyn residents, Brooklyn was consolidated and annexed, along with other areas, to form the current five-borough structure of New York City in accordance with the new municipal charter of Greater New York. The borough continues to maintain a distinct culture. Many Brooklyn neighborhoods are ethnic enclaves. With Jews forming around a fifth of its population, the borough has been described as one of the main global hubs for Jewish culture. Brooklyn's official motto, displayed on the borough seal and flag, is Een Draght Mackt Maght, which translates from early modern Dutch as \"In unity there is strength\".\nEducational institutions in Brooklyn include the City University of New York's Brooklyn College, Medgar Evers College, and College of Technology, as well as Pratt Institute, Long Island University, and the New York University Tandon School of Engineering. In sports, basketball's Brooklyn Nets and New York Liberty play at the Barclays Center. In the first decades of the 21st century, Brooklyn has experienced a renaissance as a destination for hipsters, with associated gentrification, dramatic house-price increases, and a decrease in housing affordability. Some new developments are now required to include affordable housing units. Since the 2010s, parts of Brooklyn have evolved into a hub for entrepreneurship, startup firms, postmodern art, and design."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 478
+    },
+    "banned_terms": [
+      {
+        "term": "brooklyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 667,
+    "attempt": 660,
+    "place_id": "gn-532096",
+    "input": {
+      "place": {
+        "place_id": "gn-532096",
+        "name": "Makhachkala",
+        "country": "Russia",
+        "subdivision": "Dagestan",
+        "lat": 42.97782,
+        "lon": 47.50027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makhachkala",
+          "url": "https://en.wikipedia.org/wiki/Makhachkala",
+          "text": "Makhachkala, previously known as Petrovskoye (1844–1857) and Port-Petrovsk (1857–1921), or by the local Kumyk name of Anji, is the capital and largest city of Dagestan, Russia. The city is located on the Caspian Sea, covering an area of 468.13 square kilometres (180.75 square miles), with a population of over 623,254 residents, while the urban agglomeration covers over 3,712 square kilometres (1,433 square miles), with a population of roughly 1 million residents. Makhachkala is the fourth-largest city in the Caucasus, the largest city in the North Caucasus and the North Caucasian Federal District, as well as the third-largest city on the Caspian Sea, after Baku and Rasht. The city is extremely ethnically diverse, with a minority ethnic Russian population.\nThe city's historic predecessor is the port town of Anji (Andzhi), which was located in Kumykia, and which was a part of the possessions of the Tarki state, the capital of Kumyks known from the 8th century.\nThe city was named Petrovskoye after Peter the Great. After gaining city status in 1857, the Petrovskoye fortress was renamed Petrovsk-Port. After the Russian Revolution, Petrovsk-Port was renamed Makhachkala on May 14, 1921, after Bolshevik revolutionary Makhach Dakhadaev. On the same day, it became capital of the newly formed Dagestan ASSR. After the dissolution of the Soviet Union, the city became the capital of the Republic of Dagestan.\nMakhachkala is an important economic, educational, scientific, and cultural centre of the North Caucasus. The city is a major Russian seaport on the Caspian Sea, and a transport hub. It is one of the fastest-growing cities in Russia, and is currently going through a construction boom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 269
+    },
+    "banned_terms": [
+      {
+        "term": "makhachkala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

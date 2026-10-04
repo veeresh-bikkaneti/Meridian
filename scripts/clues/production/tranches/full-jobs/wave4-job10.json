@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 789,
+    "attempt": 781,
+    "place_id": "gn-1735459",
+    "input": {
+      "place": {
+        "place_id": "gn-1735459",
+        "name": "Teluk Intan",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 4.02219,
+        "lon": 101.02083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teluk Intan",
+          "url": "https://en.wikipedia.org/wiki/Teluk_Intan",
+          "text": "Teluk Intan is a town in Hilir Perak District, Perak, Malaysia. It is the district capital, the largest town in the district and fourth largest town in the state of Perak with an estimated population of around 172,505, more than half of Hilir Perak district's total population (232,900).\nIn the early days, the town was known as Teluk Mak Intan, after a female Mandailing trader. It was here that the Perak rulers held court from 1528 until Kuala Kangsar became the royal town in 1877.\nDuring the British protectorate era, the name was changed to Teluk Anson (Anson Bay), in honour of a British officer and last lieutenant-governor of Penang, Major-General Sir Archibald Edward Harbord Anson, who drew the plan of the modern township in 1882.\nIn 1982 during the centenary of the town's establishment, the name was changed again to Teluk Intan (Diamond Bay) by the Sultan of Perak. The Leaning Tower of Teluk Intan is one of the town attractions. The town has a number of colonial buildings and Chinese shophouses together with modern buildings, few shopping complexes and a modern cinema."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "teluk intan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "teluk",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "intan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 790,
+    "attempt": 782,
+    "place_id": "gn-2566676",
+    "input": {
+      "place": {
+        "place_id": "gn-2566676",
+        "name": "Alimosho",
+        "country": "Nigeria",
+        "subdivision": "Lagos",
+        "lat": 6.60656,
+        "lon": 3.30235
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alimosho",
+          "url": "https://en.wikipedia.org/wiki/Alimosho",
+          "text": "Alimosho is a neighborhood of Lagos and a Local Government Area in Lagos State, Nigeria with the largest population of about 4,082,900 which is according to Population [2019] – Projection The 2006 Census says the population was 1,288,714 (but the Lagos State Government argued that the population as at 2006 within the LGA was more than 2 million residents).\nIt has now been subdivided between several Local Community Development Areas (LCDA). The LCDA restructuring kicked off after the administration of Bola Ilori, who was the last chairman of the old single Alimosho Local Government. The six sub-divisions created out of the old Alimosho are: Agbado/Oke-Odo LCDA, Ayobo/Ipaja LCDA, Alimosho LG, Egbe/Idimu LCDA, Ikotun/Igando LCDA and Mosan Okunola LCDA. The LGA contains the urban area of Egbeda/Akowonjo.\nThe Alimosho was established in 1945 and it was under the (then) western region. Alimosho's population is predominantly the Egba and Egbado Yoruba people.   The area is rich in culture, prominent amongst which are the Oro, Igunnu and Egungun annual festivals. The main religions are Islam, Christianity, and the Yoruba religion. Yoruba language is widely spoken in the community.\nThe first secretariat of Alimosho is a two-storey building located on Council street, now in the Egbe/Idimu LCDA. it is said that the LGA is the noisiest in Lagos State."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "alimosho",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 791,
+    "attempt": 783,
+    "place_id": "gn-2849483",
+    "input": {
+      "place": {
+        "place_id": "gn-2849483",
+        "name": "Regensburg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.01513,
+        "lon": 12.10161
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Regensburg",
+          "url": "https://en.wikipedia.org/wiki/Regensburg",
+          "text": "Regensburg (historically known in English as Ratisbon,  RAT-is-bon) is a city in eastern Bavaria, at the confluence of the rivers Danube, Naab and Regen, Danube's northernmost point. It is the capital of the Upper Palatinate subregion of the state. With more than 150,000 inhabitants, Regensburg is the fourth-largest city in the State of Bavaria after Munich, Nuremberg and Augsburg and the eighth-largest of all cities on the river Danube. From its foundation as an imperial Roman river fort, the city has been the political, economic, and cultural centre of the surrounding region. Later, under the rule of the Holy Roman Empire, it housed the Perpetual Diet of Regensburg.\nThe medieval centre of the city was made a UNESCO World Heritage Site in 2006 because of its well-preserved architecture, being the biggest medieval city site north of the Alps, and the city's historical importance for assemblies during the Holy Roman Empire. In 2014, Regensburg was among the top sights and travel attractions in Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "regensburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 792,
+    "attempt": 784,
+    "place_id": "gn-2873891",
+    "input": {
+      "place": {
+        "place_id": "gn-2873891",
+        "name": "Mannheim",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.4891,
+        "lon": 8.46694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mannheim",
+          "url": "https://en.wikipedia.org/wiki/Mannheim",
+          "text": "Mannheim (German pronunciation: [ˈmanhaɪm] ; Palatine German: Mannem or Monnem), officially the University City of Mannheim (German: Universitätsstadt Mannheim), is the second-largest city in Baden-Württemberg after Stuttgart, the state capital, and Germany's 21st-largest city, with a population of over 315,000. It is located at the border with Rhineland-Palatinate. The city is the cultural and economic centre of the Rhine-Neckar, Germany's seventh-largest metropolitan region, with nearly 2.4 million inhabitants.\nMannheim is located at the confluence of the Upper Rhine and the Neckar in the Kurpfalz (Electoral Palatinate) region of northwestern Baden-Württemberg. The city lies in the Upper Rhine Plain, Germany's warmest region, between the Palatine Forest and the Oden Forest. Mannheim forms a continuous urban zone of around 500,000 inhabitants with Ludwigshafen am Rhein in the Rhineland-Palatinate, while some northern suburbs lie in Hesse; Hamburg is the only other German city with a presence in two states other than its own.\nUnusually for a German city, central Mannheim's streets and avenues are laid out in a grid pattern, leading to its nickname as the Quadratestadt (Square City) and the tourism slogan \"Leben im Quadrat\" (\"Life in the Square\"). Also, most of the streets in central Mannheim do not have street names; the city blocks are instead referred to by letter and number. At the southern base of this system is Mannheim Palace. It was the former home of the Prince-elector of the Electoral Palatinate, and now houses the University of Mannheim. The civic symbol of the city is the Mannheim Water Tower, completed in 1886 and rising to 60 metres (200 feet) above the art nouveau area Friedrichsplatz. Held annually, Mannheim's May Market is the largest regional consumer exhibition of Germany.\nMannheim is well-known for its inventions, including the automobile, the bicycle, and the tractor,  leading to a nickname of the \"city of inventions\". The city is the starting and finishing point of the Bertha Benz Memorial Route, which follows the tracks of the first long-distance automobile trip in history.\nA Großstadt (major city with more than 100,000 inhabitants) since 1896, Mannheim is an important industrial and commercial city, a university town, and a major transportation hub between Frankfurt and Stuttgart, including an ICE interchange (the Mannheim Hauptbahnhof), Germany's second-largest marshalling yard (the Mannheim Rangierbahnhof), and Germany's largest inland port (the Mannheim Harbour). The city is home to factories, offices and headquarters of major corporations such as Roche, ABB, IBM, Siemens and Unilever. Mannheim's SAP Arena is home to German ice hockey record champions Adler Mannheim as well as the popular handball team Rhein-Neckar Löwen. Since 2014, Mannheim has been a member of the UNESCO Creative Cities Network and holds the title of \"UNESCO City of Music\". In 2020, Mannheim was classified as a global city with 'Sufficiency' status by the Globalization and World Cities Research Network (GaWC). Mannheim is a smart city; the city's electrical grid is installed with a power-line communication network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 483
+    },
+    "banned_terms": [
+      {
+        "term": "mannheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 793,
+    "attempt": 785,
+    "place_id": "gn-2972315",
+    "input": {
+      "place": {
+        "place_id": "gn-2972315",
+        "name": "Toulouse",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.60426,
+        "lon": 1.44367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toulouse",
+          "url": "https://en.wikipedia.org/wiki/Toulouse",
+          "text": "Toulouse ( too-LOOZ, French: [tuluz] ; Occitan: Tolosa [tuˈluzɔ] ) is a city in Southern France, the prefecture of the Haute-Garonne department and of the Occitania region. The city is on the banks of the River Garonne, 150 kilometres (93 miles) from the Mediterranean Sea, 230 km (143 mi) from the Atlantic Ocean and 680 km (420 mi) from Paris. It is the fourth-largest city in France after Paris, Marseille, and Lyon, with 514,819 inhabitants within its municipal boundaries (2023); its metropolitan area has a population of 1,529,112 inhabitants (2023). Toulouse is the central city of one of the 22 metropolitan councils of France. Between the 2014 and 2020 censuses, its metropolitan area was the third fastest growing among metropolitan areas larger than 500,000 inhabitants in France.\nToulouse is the centre of the European aerospace industry, with the headquarters of Airbus, the SPOT satellite system, ATR and the Aerospace Valley. It hosts the CNES's Toulouse Space Centre (CST) which is the largest national space centre in Europe, but also, on the military side, the newly created NATO space centre of excellence and the French Space Command and Space Academy. Safran, Thales Alenia Space, Airbus Defence and Space, Collins Aerospace and Liebherr-Aerospace also have a significant presence in Toulouse.\nThe air route between Toulouse–Blagnac and the Parisian airports is the busiest in France, transporting 3.2 million passengers in 2019. According to the rankings of L'Express and Challenges, Toulouse is the most dynamic French city.\nFounded by the Romans, the city was the capital of the Visigothic Kingdom in the 5th century and the capital of the province of Languedoc in the Late Middle Ages and early modern period (provinces were abolished during the French Revolution), making it the unofficial capital of the cultural region of Occitania (Southern France). It is now the capital of the administrative region of Occitania, the second largest region in Metropolitan France.\nThe University of Toulouse is one of the oldest in Europe (founded in 1229). Toulouse is also the home of prestigious higher education schools, notably in the field of aerospace engineering. Together with the university, they have turned Toulouse into the fourth-largest student city in France, with a university population of nearly 140,000 students.\nToulouse has three UNESCO World Heritage Sites: the Canal du Midi was designated in 1996 and shared with other cities. The Basilica of St. Sernin, the largest remaining Romanesque building in Europe, was designated in 1998 along with the former hospital Hôtel-Dieu Saint-Jacques because of their significance to the Santiago de Compostela pilgrimage route. The city's unique architecture, made of pinkish terracotta bricks, has earned Toulouse the nickname La Ville rose (\"The Pink city\"). In 2023, Toulouse was named a UNESCO City of Music, joining UNESCO's Creative Cities Network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 458
+    },
+    "banned_terms": [
+      {
+        "term": "toulouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 794,
+    "attempt": 786,
+    "place_id": "gn-3529947",
+    "input": {
+      "place": {
+        "place_id": "gn-3529947",
+        "name": "Cuernavaca",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.9261,
+        "lon": -99.23075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuernavaca",
+          "url": "https://en.wikipedia.org/wiki/Cuernavaca",
+          "text": "Cuernavaca is the capital and largest city of the state of Morelos in Mexico. Along with Chalcatzingo, it is likely one of the origins of the Mesoamerican civilization.  Olmec works of art, displayed in the Museum of Anthropology in Mexico City, were found in the Gualupita III archeological site.\nThe city is located south of Mexico City, reachable via a 90-minute drive along \nthe Federal Highway 95D.\nThe name Cuernavaca is a euphonism derived from the Nahuatl toponym Cuauhnāhuac and means 'surrounded by or close to trees'. The name was Hispanicized to Cuernavaca; Hernán Cortés called it Coadnabaced in his letters to Charles V, Holy Roman Emperor, and Bernal Díaz del Castillo used the name Cuautlavaca in his chronicles. The coat-of-arms of the municipality is based on the pre-Columbian pictograph emblem of the city that depicts a tree trunk (cuahuitl) with three branches, with foliage, and four roots colored red. There is a cut in the trunk in the form of a mouth, from which emerges a speech scroll, probably representing the language Nahuatl and by extension the locative suffix -nāhuac, meaning 'near'.\nCuernavaca has long been a favorite escape for Mexico City residents and foreign visitors because of its warm, stable climate and abundant vegetation. The municipality was designated a Forest Protection Zone by President Lázaro Cárdenas in 1937 to protect the aquifers, the vegetation, and the quality of life of residents, both in Mexico City and locally. The city was nicknamed the \"City of Eternal Spring\" by Alexander von Humboldt in the 19th century. \nAztec emperors had summer residences there, and considering its location of just a 1+1⁄2-hour drive from Mexico City, today many Mexico City residents maintain homes there. Cuernavaca is also host to a large foreign resident population, including large numbers of students who come to study the Spanish language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "cuernavaca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 795,
+    "attempt": 787,
+    "place_id": "gn-3680656",
+    "input": {
+      "place": {
+        "place_id": "gn-3680656",
+        "name": "Ibagué",
+        "country": "Colombia",
+        "subdivision": "Tolima Department",
+        "lat": 4.43573,
+        "lon": -75.20289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ibagué",
+          "url": "https://en.wikipedia.org/wiki/Ibagué",
+          "text": "Ibagué  (Spanish pronunciation: [iβaˈɣe]) (referred to as San Bonifacio de Ibagué del Valle de las Lanzas during the Spanish period) is the capital of Tolima, one of the 32 departments that make up the Republic of Colombia. The city is located in the center of the country, on the central mountain range of the Colombian Andes, near Nevado del Tolima. It is one of the most populous cities in the country, with a population of 500 thousand people approximately, making it the eleventh most populous in Colombia, and with a population of 544,132 in the municipality. It was founded on 14 October 1550, by the Spanish captain Andrés López de Galarza. The city of Ibagué is divided into 13 communes and the rural area has 17 corregimientos. As the capital of the department of Tolima the city hosts the Government of Tolima, the Departmental Assembly, and the Attorney General's Office. It is the main epicenter of political, economic, administrative, business, art, culture, and tourism activities in the area.\nIbagué was one of three cities in the country chosen by the World Trade Center Association (WTCA) to build headquarters along with Cali, adding to the one existing in Bogotá. The economy of Ibagué is based primarily on the industrial, tourism, and agricultural sectors, with its textile industry being the third largest in Colombia. According to \"Doing Business\" from the World Bank in Washington DC, Ibagué tops the ranking of the cities with ease of doing business and investment in the country after Manizales. The city is also part of the Colombian coffee growing axis.\nThe city is known as \"The Musical Capital of Colombia and America\", thanks to the Conservatory of Tolima (one of the most prestigious and important in Colombia), folklore festivities, and its many monuments referring to music. The city's main educational institutions are the University of Tolima, the University of Ibagué, and the Conservatory of Tolima."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "ibague",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 797,
+    "attempt": 788,
+    "place_id": "gn-5359488",
+    "input": {
+      "place": {
+        "place_id": "gn-5359488",
+        "name": "Inglewood",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.96168,
+        "lon": -118.35313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inglewood, California",
+          "url": "https://en.wikipedia.org/wiki/Inglewood,_California",
+          "text": "Inglewood is a city in southwestern Los Angeles County, California, United States, in the Greater Los Angeles metropolitan area. As of the 2020 U.S. census, the city had a population of 107,762. It is in the South Bay region of Los Angeles County, just east of Los Angeles International Airport. The Inglewood area was developed following the opening of the Venice–Inglewood railway in 1887 and incorporated as a city on February 14, 1908.\nThe city is a major hub for professional sports in Southern California, with several teams that have played in Inglewood's venues. The Kia Forum, an indoor arena, opened in 1967 and hosted the Los Angeles Lakers of the National Basketball Association, Los Angeles Kings of the National Hockey League, and the Los Angeles Sparks of the Women's National Basketball Association, until the opening of Staples Center in 1999, and remains in use exclusively as a concert venue. Two National Football League teams—the Los Angeles Rams and Los Angeles Chargers—have played at SoFi Stadium since it opened in 2020, which replaced the former Hollywood Park horse racing track. The stadium hosted matches during the 2026 FIFA World Cup and will host the opening ceremony of the 2028 Summer Olympics. Barring lease issues with the Rose Bowl, it will host UCLA Bruins football in the future. The Los Angeles Clippers of the National Basketball Association began play at Intuit Dome in 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "inglewood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 798,
+    "attempt": 789,
+    "place_id": "gn-5364940",
+    "input": {
+      "place": {
+        "place_id": "gn-5364940",
+        "name": "Lancaster",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.69804,
+        "lon": -118.13674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lancaster, California",
+          "url": "https://en.wikipedia.org/wiki/Lancaster,_California",
+          "text": "Lancaster  is a charter city in northern Los Angeles County, in the Antelope Valley of the western Mojave Desert in Southern California, United States. As of the 2020 census, the population was 173,516, making Lancaster the 158th-most populous city in the United States and the 31st most populous in California. Lancaster is a twin city with its southern neighbor Palmdale; together, they are the principal cities within the Antelope Valley region.\nLancaster is located approximately 70 miles (110 km) north (via I-5 and SR 14) of downtown Los Angeles, 9 miles south of the Kern County line. It is separated from the Los Angeles Basin by the San Gabriel Mountains to the south and from Bakersfield and the San Joaquin Valley by the Tehachapi Mountains to its northwest. The population of Lancaster has grown from 37,000 at the time of its incorporation in 1977 to over 173,000 as of 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "lancaster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 799,
+    "attempt": 790,
+    "place_id": "gn-1808198",
+    "input": {
+      "place": {
+        "place_id": "gn-1808198",
+        "name": "Heze",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 35.23929,
+        "lon": 115.47358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heze",
+          "url": "https://en.wikipedia.org/wiki/Heze",
+          "text": "Heze (Chinese: 菏泽; pinyin: Hézé) is the westernmost prefecture-level city in Shandong province, China. The Peony Capital of China, formerly known as Caozhou, the city borders Jining to the east, and the provinces of Henan and Anhui to the west and south respectively. The total area is 12238.62 square kilometers and the population is 10.58 million. It governs Mudan District and Dingtao District, 2 districts and 7 counties including Caoxian, Chengwu, Shanxian, Juye, Yuncheng, Juancheng and Dongming.\nHeze was originally a natural ancient Ze, where Ji River converged and He River flowed out, connecting the two major water systems of Gu Ji River and Sishui River. It was renamed Longchi in the Tang Dynasty and Xiayue Lake in the Qing Dynasty. In the 13th year of the Yongzheng reign of the Qing Dynasty (1735), Caozhou was promoted to a prefecture and a county was established under the jurisdiction of Guo. Due to the presence of \"Heshan\" in the south and \"Leize\" in the north, it was named Heze. Heze has a long history and enjoys the reputation of being \"among the best in the world\". The nine lakes of Heze, Leize, Dayezhe, and Mengzhuze in the \"Yu Gong\" are all located within its borders. The founder of humanities, Fuxi, the emperor of Dongyi, Shaohao, the wise monarch, Shun, the warlord and war god Chiyou, the reformer Wu Qi, the military strategist Sun Bin, the agricultural scientist Fan Shengzhi, the economist Liu Yan, and the literary scholar Wen Zisheng were all born here. Liu Bang ascended to the throne and proclaimed himself emperor, Cao Cao achieved hegemony, Huang Chaoqiyi, and Song Jiangjuyi all occurred in Heze.\nHeze is a place where the ancestral culture of the Chinese nation blends together, and is one of the important birthplaces of Chinese civilization. Heze is the birthplace of Fuxi's mulberry trees, the hometown of Yao and Shun, and the center of Dayu's flood control. The capital of the Shang Dynasty, Beibo (now Cao County) and Bi (now north of Yuncheng), are located within its borders. Among the ten philosophers of Confucius, Ran Geng, Ran Yong, and Ran Qiu; Among the ten philosophers of Wumiao, Sun Bin, Wu Qi, and Li Qi were all born in Heze. Heze is closely related to the historical turning point of \"Han Qi Tang Luo\". In the early Han Dynasty, Peng Yue, Chen Pi, and Lv Ze were military generals from Heze who helped the Han Dynasty to conquer the land; Emperor Gaozu Liu Bang ascended the throne and declared himself emperor on the Yang of the Fanshui River in Dingtao, opening up the source of the Great Han Dynasty; Liu Bang's original wife from Heze, Lv Zhi, was the first empress of China and the only woman listed in the \"Annals of the Grand Historian\". Her ruling position in court and commanding the world was equivalent to that of an emperor. At the end of the Tang Dynasty, the uprising of Wang Xianzhi and Huang Chao from Heze accelerated the decline of the Tang Dynasty. The last emperor of the Tang Dynasty, Li Bai, died and was buried in Jiyin (now Heze), leading to the downfall of the Tang Dynasty.\nThere are more than 100 cultural relics and historic sites in the territory, 6 national-level cultural relics protection units, and 52 provincial-level cultural relics protection units. Places of interest include Caozhou Peony Garden, Yuncheng Water Margin, Sunbin Tourist City, Dingtao Han Tomb, Shanxian Archway, Jinshan Mountain, Fangshan Mountain, Fulong Lake, the scenery of the old Yellow River route, etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 591
+    },
+    "banned_terms": [
+      {
+        "term": "heze",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 800,
+    "attempt": 791,
+    "place_id": "gn-2037860",
+    "input": {
+      "place": {
+        "place_id": "gn-2037860",
+        "name": "Daqing",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 46.58333,
+        "lon": 125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daqing",
+          "url": "https://en.wikipedia.org/wiki/Daqing",
+          "text": "Daqing (simplified Chinese: 大庆; traditional Chinese: 大慶; pinyin: Dàqìng) is a prefecture-level city in the west of Heilongjiang province, People's Republic of China. The name literally means \"Great Celebration\" and refers to the tenth anniversary of the PRC. Daqing is known as the \"Oil Capital of China\" and has experienced a phenomenal boom since oil was discovered at the Daqing Oil Field in 1959.\nIts population was 2,781,562 as of the 2020 census, of whom 1,574,389 lived in the built-up (or metro) area in four out of the total of five urban districts: Sartu, Longfeng, Ranghulu and Honggang.According to the sample survey of 5‰ population changes in 2024, the resident population of the city at the end of the year was 2.663 million, a decrease of 37,000 compared with the end of the previous year. Among them, the urban population is 1.996 million and the rural population is 667,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "daqing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 801,
+    "attempt": 792,
+    "place_id": "gn-2365267",
+    "input": {
+      "place": {
+        "place_id": "gn-2365267",
+        "name": "Lomé",
+        "country": "Togo",
+        "subdivision": "Maritime",
+        "lat": 6.12874,
+        "lon": 1.22154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lomé",
+          "url": "https://en.wikipedia.org/wiki/Lomé",
+          "text": "Lomé (UK:  LOH-may, US:  loh-MAY) is the capital and largest city of Togo. It has an urban population of 837,437 while there were 2,188,376 permanent residents in its metropolitan area as of the 2022 census. Located on the Gulf of Guinea at the southwest corner of the country, with its entire western border along the easternmost edge of Ghana's Volta Region, Lomé is the country's administrative and industrial center, which includes an oil refinery. It is also the country's chief port, from where it exports coffee, cocoa, copra, and oil palm kernels.\nIts city limits extends to the border with Ghana, located a few hundred meters west of the city center, to the Ghanaian city of Aflao and the South Ketu district where the city is situated, had 160,756 inhabitants in 2010. The cross-border agglomeration of which Lomé is the centre has about 2 million inhabitants as of 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "lome",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 802,
+    "attempt": 793,
+    "place_id": "gn-2758401",
+    "input": {
+      "place": {
+        "place_id": "gn-2758401",
+        "name": "Breda",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.58656,
+        "lon": 4.77596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Breda",
+          "url": "https://en.wikipedia.org/wiki/Breda",
+          "text": "Breda ( BRAY-də, also UK:  BREE-də, US:  bray-DAH, Dutch: [breːˈdaː] ) is a city and municipality in the southern part of the Netherlands, located in the province of North Brabant. The name derived from brede Aa ('wide Aa' or 'broad Aa') and refers to the confluence of the rivers Mark and Aa. Breda has \n185,072 inhabitants on 13 September 2022 and is part of the Brabantse Stedenrij; it is the tenth largest city/municipality in the country, and the third largest in North Brabant after Eindhoven and Tilburg. It is equidistant from Rotterdam and Antwerp.\nAs a fortified city, it was of strategic military and political significance. Although a direct fiefdom of the Holy Roman Emperor, the city obtained a municipal charter; the acquisition of Breda, through marriage, by the House of Nassau ensured that Breda would be at the center of political and social life in the Low Countries. Breda had a population of 184,126 in 2021; the metropolitan area had a population of 324,812."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "breda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 803,
+    "attempt": 794,
+    "place_id": "gn-3396016",
+    "input": {
+      "place": {
+        "place_id": "gn-3396016",
+        "name": "Macapá",
+        "country": "Brazil",
+        "subdivision": "Amapá",
+        "lat": 0.03889,
+        "lon": -51.06639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Macapá",
+          "url": "https://en.wikipedia.org/wiki/Macapá",
+          "text": "Macapá (Brazilian Portuguese pronunciation: [makaˈpa] ) is the capital of the Brazilian state of Amapá, in the country's North Region, located on the northern channel of the Amazon Delta near its mouth on the Atlantic Ocean. Its population is estimated to be 512,902 (2020). The city is on a small plateau on the Amazon in the southeast of the state of Amapá. The only access by road from outside the province is from the overseas French department of French Guiana, although there are regular ferries to Belém, Brazil. Macapá is linked by road with some other cities in Amapá. The equator runs through the middle of the city, leading residents to refer to Macapá as \"The capital of the middle of the world.\" It covers 6,407.12 square kilometres (2,473.80 mi2) and is located northwest of the large inland island of Marajó and south of the border with French Guiana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "macapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 804,
+    "attempt": 795,
+    "place_id": "gn-3430697",
+    "input": {
+      "place": {
+        "place_id": "gn-3430697",
+        "name": "Merlo",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.66536,
+        "lon": -58.72744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merlo, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Merlo,_Buenos_Aires",
+          "text": "Merlo is the head city of the eponymous partido of Merlo and seat of the municipal government, located in the Greater Buenos Aires urban area of Buenos Aires Province, Argentina.\nThe city was founded by Francisco de Merlo in 1755 and rebuilt by Juan Dillon in 1859.\nMerlo is divided in two distinctive regions: Merlo Centro, a middle class district clustered around the train station; and the working class barrios, most of them along the Reconquista River.\nThe administrative and commercial center is around the main avenue, Avenida del Libertador General San Martín. This tree-covered avenue stretches seven blocks from the railway station to the historic district and has few buildings reaching over two storeys in height.\nMerlo is bordered by Moreno and Paso del Rey—both cities in Moreno Partido—and the Reconquista River (northwest), San Antonio de Padua (north), Libertad and Parque San Martín (east) and Mariano Acosta (south)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "merlo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 805,
+    "attempt": 796,
+    "place_id": "gn-8740322",
+    "input": {
+      "place": {
+        "place_id": "gn-8740322",
+        "name": "Rudrapur",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 28.98,
+        "lon": 79.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rudrapur, Uttarakhand",
+          "url": "https://en.wikipedia.org/wiki/Rudrapur,_Uttarakhand",
+          "text": "Rudrapur is a city that serves as the headquarters of the Udham Singh Nagar district in the Indian state of Uttarakhand. Located at a distance of about 250 km (160 mi) northeast of New Delhi and 250 km (160 mi) south of Dehradun, Rudrapur is located in the fertile Terai plains in the southern part of Kumaon division over an area of 27.65 km2. With a population of 140,857 according to the 2011 census of India, it is the 5th most populous city of Uttarakhand.\nRudrapur was established in the 16th century by King Rudra Chand of Kumaon to serve as the seat of the governor of the southern Tarai plains of the kingdom. Since the establishment of the SIDCUL industrial area in its vicinity, the city has undergone rapid development, along with literacy growth and higher employment. Rudrapur is a major industrial and educational hub of the state.\nIn this area, some artesian water wells produce water under pressure and no pump is required. However, in the last two decades, this auto-flow system has drastically declined, leading Rudrapur into a groundwater crisis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "rudrapur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 806,
+    "attempt": 797,
+    "place_id": "gn-115019",
+    "input": {
+      "place": {
+        "place_id": "gn-115019",
+        "name": "Shiraz",
+        "country": "Iran",
+        "subdivision": "Fars",
+        "lat": 29.61031,
+        "lon": 52.53113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shiraz",
+          "url": "https://en.wikipedia.org/wiki/Shiraz",
+          "text": "Shiraz is the fifth-most-populous city of Iran and the capital of Fars province, which is historically known by the exonym Persia proper. As of the 2016 national census, the population of the city was 1,565,572 people, and its built-up area with Sadra was home to almost 1,800,000 inhabitants. A census in 2021 showed an increase in the city's population to 1,995,500 people. Shiraz is located in southwestern Iran on the rudkhaneye khoshk (lit. 'dry river') seasonal river. The city has a moderate climate and has been a regional trade center for over a thousand years.\nThe earliest reference to the city, as Tiraziš, is on Elamite clay tablets dated to 2000 BCE. The modern city was founded by the Sasanian dynasty and restored by the Umayyad Caliphate in 693 CE and grew prominent under the successive Iranian Saffarid and Buyid dynasties in the 9th and 10th–11th centuries, respectively. In the 13th century, Shiraz became a leading center of the arts and letters, due to the encouragement of its ruler and the presence of multiple Persian scholars and artists. Two famous poets of Iran, Hafez and Saadi, are from Shiraz, whose tombs are located on the north side of the current city boundaries.\nShiraz is one of the top tourist cities in Iran, visited by people from around the world, and is known as the city of poets, literature, and flowers. It is also considered by some Iranians to be the city of gardens due to the presence of a number of gardens and fruit trees that can be seen throughout the city, such as Eram Garden. Shiraz has historically had major Jewish and Christian communities. The crafts of Shiraz consist of inlaid mosaic work of triangular design; silverware; pile carpet-weaving and weaving of kilim, called gilim and jajim in the villages and among the tribes. Dominant industries in the city include the production of cement, sugar, fertilizers, textile products, wood products, metalwork, and rugs. Shiraz also has a major oil refinery and is a major centre for Iran's electronic industries: 53 percent of Iran's electronic investment has been centred in Shiraz. The city is home to Iran's first solar powerplant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 360
+    },
+    "banned_terms": [
+      {
+        "term": "shiraz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 807,
+    "attempt": 798,
+    "place_id": "gn-1581755",
+    "input": {
+      "place": {
+        "place_id": "gn-1581755",
+        "name": "Giá Rai",
+        "country": "Vietnam",
+        "subdivision": "Ca Mau",
+        "lat": 9.23444,
+        "lon": 105.45833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Giá Rai",
+          "url": "https://en.wikipedia.org/wiki/Giá_Rai",
+          "text": "Giá Rai is a ward of Cà Mau Province, Vietnam.\nThe ward is formerly Giá Rai township, the capital of former Giá Rai District.\nThe Standing Committee of the National Assembly issued Resolution No. 1655/NQ-UBTVQH15 on the rearrangement of commune-level administrative units of Cà Mau Province in 2025 (the resolution takes effect from June 16, 2025). Accordingly, Giá Rai Ward was established in Cà Mau Province on the basis of the entire 11.76 km² of natural area and a population of 21,974 people of Ward 1; the entire 12.08 km² of natural area and a population of 22,917 people of Hộ Phòng Ward; the entire 46.07 km² of natural area and a population of 14,090 people of Phong Thạnh Commune; and the entire 34.69 km² of natural area and a population of 12,168 people of Phong Thạnh A Commune, formerly belonging to Giá Rai Town, Bạc Liêu Province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "gia rai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 808,
+    "attempt": 799,
+    "place_id": "gn-2322794",
+    "input": {
+      "place": {
+        "place_id": "gn-2322794",
+        "name": "Suleja",
+        "country": "Nigeria",
+        "subdivision": "Niger State",
+        "lat": 9.18059,
+        "lon": 7.17939
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suleja",
+          "url": "https://en.wikipedia.org/wiki/Suleja",
+          "text": "Suleja is a city and Local Government Area in Niger State, Nigeria, just north of Abuja, capital of the country. It is sometimes confused with the nearby city of Abuja, due to its proximity and the fact that it was originally named Abuja before the Nigerian government adopted the name from the then Emir Sulayman Bal for its new federal capital in 1976.\nSuleja was established in the early 19th century by Mohammed Makau, the last Hausa emir of Zaria, and his followers, who were fleeing the Fulani jihadists engaged in the conquest of northern Nigeria. Zaria, or Zazzau, was one of the Hausa city/states of Northern Nigeria which were being conquered by the Fulani jihadists under its leader, Usman bin Fodio.\nSuleja is the location of the Ladi Kwali Pottery Centre, established by Michael Cardew in 1950. The leading exponent of this school of pottery was Dr. Ladi Kwali, whose works are displayed internationally."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "suleja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 809,
+    "attempt": 800,
+    "place_id": "gn-2886946",
+    "input": {
+      "place": {
+        "place_id": "gn-2886946",
+        "name": "Koblenz",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.35357,
+        "lon": 7.57883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Koblenz",
+          "url": "https://en.wikipedia.org/wiki/Koblenz",
+          "text": "Koblenz (UK:  koh-BLENTS, US:  KOH-blents, German: [ˈkoːblɛnts] ; Moselle Franconian: Kowelenz) is a city in the German state of Rhineland-Palatinate, on the banks of the rivers Rhine (Middle Rhine) and Moselle, a multinational tributary.\nKoblenz was established as a Roman military post by Drusus c. 8 BC. Its name originates from the Latin (ad) cōnfluentēs, meaning \"(at the) confluence\". The actual confluence is today known as the \"German Corner\", a symbol of the unification of Germany that features an equestrian statue of Emperor William I. The city celebrated its 2,000th anniversary in 1992.\nThe city ranks as the third-largest city by population in Rhineland-Palatinate, behind Mainz and Ludwigshafen am Rhein, with 115,298 residents (as of 2023). Koblenz lies in a narrow flood plain between high hill ranges, some reaching mountainous height, and is served by an express rail and autobahn network. It is part of the populous Rhineland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "koblenz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
