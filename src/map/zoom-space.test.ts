@@ -511,6 +511,7 @@ test("miss reveal: single gap-view ease to the pin+spot framing, terminal at rev
   // The gap-view ease's moveend completes the reveal: terminal, latch set.
   assert.deepEqual(c.onMoveEnd(snap(6, "mercator")), [
     { type: "reveal-done" },
+    { type: "gestures", enabled: true },
   ]);
   assert.equal(c.revealDone, true);
   assert.equal(c.beatActive, false);
@@ -529,6 +530,8 @@ test("hit: light confirmation, synchronous, no camera move", () => {
     { type: "paint-variation", variation: HIT_REQUEST.variation },
     { type: "announce", message: "Hit." },
     { type: "reveal-done" },
+    // Gestures come back with the result card so the player can inspect.
+    { type: "gestures", enabled: true },
   ]);
   // No beat ever started: the camera stays where the pin landed.
   assert.equal(c.beatActive, false);
@@ -678,6 +681,7 @@ test("big-miss reveal: release to globe, then the single gap-view ease", () => {
   // The gap-view ease's moveend completes the reveal: terminal, latch set.
   assert.deepEqual(c.onMoveEnd(snap(6, "globe")), [
     { type: "reveal-done" },
+    { type: "gestures", enabled: true },
   ]);
   assert.equal(c.revealDone, true);
   assert.equal(c.beatActive, false);
@@ -781,6 +785,7 @@ test("reduced motion: miss jumps straight to the gap framing, synchronously comp
       zoom: BIG_MISS_REQUEST.settleZoom,
     },
     { type: "reveal-done" },
+    { type: "gestures", enabled: true },
   ]);
   assert.equal(c.revealDone, true);
   assert.equal(c.beatActive, false);
@@ -797,6 +802,7 @@ test("reduced motion: hit completes synchronously with no camera intent", () => 
     { type: "paint-variation", variation: HIT_REQUEST.variation },
     { type: "announce", message: "Hit." },
     { type: "reveal-done" },
+    { type: "gestures", enabled: true },
   ]);
   assert.ok(
     !intents.some((i) => i.type === "jump-to" || i.type === "ease-to"),
@@ -894,6 +900,7 @@ test("reveal: skip during the gap-view beat jumps to the end state", () => {
       zoom: REVEAL_REQUEST.settleZoom,
     },
     { type: "reveal-done" },
+    { type: "gestures", enabled: true },
   ]);
   assert.equal(c.revealDone, true);
   assert.equal(c.beatActive, false);
@@ -929,11 +936,48 @@ test("reveal: skip is a no-op outside the reveal beat", () => {
   // A hit completes synchronously — no beat to skip.
   c.requestReveal(HIT_REQUEST);
   assert.deepEqual(c.skipChoreography(), []);
+
   // After the miss reveal completes, skipping does nothing.
   c.resetForNextPlace();
   c.requestReveal(REVEAL_REQUEST);
   c.onMoveEnd(snap(6, "mercator"));
   assert.deepEqual(c.skipChoreography(), []);
+});
+
+test("reveal terminals always hand pan/zoom back (regression: Veeresh 2026-10-03)", () => {
+  // Every reveal path disables gestures at its start; each terminal must
+  // re-enable them, or the player is trapped at the pin with the result
+  // card up and cannot zoom out to inspect the true spot.
+  const gesturesOn = (intents: { type: string }[]) =>
+    intents.some((i) => i.type === "gestures" && "enabled" in i && i.enabled === true);
+
+  // Animated miss: ease completion.
+  {
+    const c = flatController();
+    narrowToRegion(c, 4.5);
+    c.requestReveal(REVEAL_REQUEST);
+    const completed = c.onMoveEnd(snap(6, "mercator"));
+    assert.ok(gesturesOn(completed), "animated miss completion re-enables gestures");
+  }
+  // Hit: synchronous.
+  {
+    const c = flatController();
+    narrowToRegion(c, 4.5);
+    assert.ok(gesturesOn(c.requestReveal(HIT_REQUEST)), "hit re-enables gestures");
+  }
+  // Reduced-motion miss: synchronous jump cut.
+  {
+    const c = flatController(true);
+    narrowToRegion(c, 4.5);
+    assert.ok(gesturesOn(c.requestReveal(REVEAL_REQUEST)), "reduced-motion miss re-enables gestures");
+  }
+  // Tap-to-skip mid-beat.
+  {
+    const c = flatController();
+    narrowToRegion(c, 4.5);
+    c.requestReveal(REVEAL_REQUEST);
+    assert.ok(gesturesOn(c.skipChoreography()), "skip re-enables gestures");
+  }
 });
 
 test("reveal: a queued mid-beat commit flushes with no intermediate reveal-done", () => {
@@ -958,6 +1002,7 @@ test("reveal: a queued mid-beat commit flushes with no intermediate reveal-done"
   // The flushed beat completes terminally on its own moveend.
   assert.deepEqual(c.onMoveEnd(snap(7, "mercator")), [
     { type: "reveal-done" },
+    { type: "gestures", enabled: true },
   ]);
   assert.equal(c.revealDone, true);
   // Skip during the flushed beat targets the latest framing.

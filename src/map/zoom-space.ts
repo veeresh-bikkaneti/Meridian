@@ -449,6 +449,10 @@ export class ZoomSpaceController {
       intents.push({ type: "announce", message: "Hit." });
       this.revealDoneFlag = true;
       intents.push({ type: "reveal-done" });
+      // The result card is up: the player can pan/zoom to inspect the spot.
+      // (Tap handlers stay detached — the aim phase is over; only gestures
+      // come back. Thresholds are inert once revealDone latches.)
+      intents.push({ type: "gestures", enabled: true });
       return intents;
     }
     // Miss: the gap-view framing (and the skip target) for this reveal.
@@ -479,6 +483,9 @@ export class ZoomSpaceController {
       this.revealDoneFlag = true;
       this.revealFraming = null;
       intents.push({ type: "reveal-done" });
+      // Reduced-motion jump cut lands the framing; gestures come back so the
+      // player can still pan/zoom around the result.
+      intents.push({ type: "gestures", enabled: true });
       return intents;
     }
 
@@ -834,6 +841,10 @@ export class ZoomSpaceController {
     if (!hadQueued) {
       this.revealDoneFlag = true;
       intents.unshift({ type: "reveal-done" });
+      // The gap-view beat is done: hand pan/zoom back so the player can
+      // inspect both pins (and zoom out further). Thresholds are inert once
+      // revealDone latches, so this cannot start a new beat.
+      intents.push({ type: "gestures", enabled: true });
     }
     return intents;
   }
@@ -858,6 +869,8 @@ export class ZoomSpaceController {
       this.trackedCenter = framing.center;
     }
     intents.push({ type: "reveal-done" });
+    // Skip lands on the gap framing; gestures come back with it.
+    intents.push({ type: "gestures", enabled: true });
     return intents;
   }
 
