@@ -21,7 +21,7 @@ import type { Page } from "playwright/test";
  * dataset pipeline, threaded through toStarter).
  *
  * Determinism: the no-repeat seen store (localStorage
- * `meridian:seen:v2:<edition>:<regionId>`) is pre-seeded with every pool id
+ * `meridian:seen:v2:<edition>:<regionId>:<band>`) is pre-seeded with every pool id
  * EXCEPT the target, so poolForNewRun deals the target first. The pool is
  * computed from the same source files the app ships, so the seeding can
  * never silently diverge from the dealt pool.
@@ -63,7 +63,7 @@ async function seedSeenExcept(
   keepId: string,
   allIds: string[],
 ): Promise<void> {
-  const key = `${SEEN_PREFIX}${edition}:${regionId}`;
+  const key = `${SEEN_PREFIX}${edition}:${regionId}:medium`;
   const seen = allIds.filter((id) => id !== keepId);
   expect(seen.length, "seeded seen-store must not be empty").toBeGreaterThan(0);
   expect(allIds, `target ${keepId} must be in the pool`).toContain(keepId);

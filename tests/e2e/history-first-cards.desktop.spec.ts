@@ -170,7 +170,7 @@ async function startTargetedRun(page: Page, target: Target): Promise<void> {
   await page.evaluate(
     ({ key, ids }) => localStorage.setItem(key, JSON.stringify(ids)),
     {
-      key: `meridian:seen:v2:${target.edition}:${target.regionId}`,
+      key: `meridian:seen:v2:${target.edition}:${target.regionId}:medium`,
       ids: seedIds(target),
     },
   );

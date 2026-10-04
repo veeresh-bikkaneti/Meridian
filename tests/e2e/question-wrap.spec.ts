@@ -13,7 +13,7 @@ import type { Page } from "playwright/test";
  * An unreadable question is an unfair game.
  *
  * Determinism: the no-repeat seen store (localStorage
- * `meridian:seen:v2:<edition>:<regionId>`) is pre-seeded with every pool id
+ * `meridian:seen:v2:<edition>:<regionId>:<band>`) is pre-seeded with every pool id
  * EXCEPT the target, so the country run deals Fairchild Air Force Base
  * first. Pool ids are computed from the same shipped source files.
  */
@@ -68,7 +68,7 @@ async function seedSeenExcept(page: Page): Promise<void> {
   expect(seen.length, "seeded seen-store must not be empty").toBeGreaterThan(0);
   await page.evaluate(
     ([k, ids]: [string, string[]]) => localStorage.setItem(k, JSON.stringify(ids)),
-    [`${SEEN_PREFIX}country:united-states`, seen] as [string, string[]],
+    [`${SEEN_PREFIX}country:united-states:medium`, seen] as [string, string[]],
   );
 }
 
