@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 6508,
+    "attempt": 6461,
+    "place_id": "gn-2510508",
+    "input": {
+      "place": {
+        "place_id": "gn-2510508",
+        "name": "Teror",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.06062,
+        "lon": -15.54909
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teror",
+          "url": "https://en.wikipedia.org/wiki/Teror",
+          "text": "Teror is a municipality in the northern part of the island of Gran Canaria in the Province of Las Palmas in the Canary Islands. Its population is 12,671 (2013), and the town area is 25.70 km2.  Teror is situated in the mountains and borders Las Palmas to the west and is part of its urban area. September 8 is the local festivity celebrating Virgen del Pino (virgin of the pine, patron of the Gran Canaria).\nTeror has a well preserved old town centre, which is under monument protection. There is a basilica, the quiet Virgin of the Pine Square in front of it, and neatly fronted buildings along the picturesque Calle Real de la Plaza street. After shepherds witnessed a Marian apparition nearby on 8 September 1481, Teror became the most important pilgrimage destination of Gran Canaria, and, as a result, rather prosperous. White houses with wooden balconies, where many of the island’s older families congregated, are typical of the town.\nMineral water is an important product of Teror. There's a weekly market (mercadillo) on Sundays."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "teror",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6509,
+    "attempt": 6462,
+    "place_id": "gn-2616450",
+    "input": {
+      "place": {
+        "place_id": "gn-2616450",
+        "name": "Nivå",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.93405,
+        "lon": 12.50485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nivå",
+          "url": "https://en.wikipedia.org/wiki/Nivå",
+          "text": "Nivå is a town with a population of 8,816 (1 January 2026) in the municipality of Fredensborg on the island of Zealand (Sjælland) in Denmark. Nivå is a residential town on the coast of the Øresund.  It has a stop on the Copenhagen – Helsingør Kystbanen rail line.\nThe town is the site for Nivaagaard museum, a marina and a desolated shopping center by the railway station, which includes only a library and a Netto supermarket. The town possesses two schools; Nivå Skole Syd (formerly known as Nivå Centralskole) and Nivå Skole Nord (formerly known as Niverødgaardskolen), whilst a golf course lies to the West. Its landscape is varied and ranges from marshland to suburban habitations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "niva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6510,
+    "attempt": 6463,
+    "place_id": "gn-2624212",
+    "input": {
+      "place": {
+        "place_id": "gn-2624212",
+        "name": "Beder",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.06025,
+        "lon": 10.21179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beder, Denmark",
+          "url": "https://en.wikipedia.org/wiki/Beder,_Denmark",
+          "text": "Beder is a town with a population of 4,372 (9 January 2012) in Jutland in Denmark. Some consider Beder & the neighbouring town of Malling as one urban area. DST has since 2012 considered Beder and Malling as one urban area making it the 84th largest in Denmark with a total population of 9,430 in 2025.\nThe town shares a sporting complex with neighbouring town Malling called Egelund, where the team BMI (Beder Malling Idrætsforening) plays their football, handball, basketball, etc., matches.\nBeder-Malling is located in the southernmost part of Århus Municipality bordering the Kattegat. The area is divided into 2 parishes (postal codes 8330 and 8340) and comprises 7x7 square kilometres with approximately 9000 inhabitants. Both Beder and Malling supports a small train station and in the vicinity of the 2 main towns there are 9 smaller villages. Beder is the 3rd most densely populated area within the municipality (1. Aarhus, 2. Lystrup, 3. Beder).\nBeder is home to a division of Aarhus Educational Centre for Agriculture, offering gardening, floristry, forestry and nature technician programmes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "beder",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6511,
+    "attempt": 6464,
+    "place_id": "gn-2634538",
+    "input": {
+      "place": {
+        "place_id": "gn-2634538",
+        "name": "Wendover",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.76194,
+        "lon": -0.73986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wendover",
+          "url": "https://en.wikipedia.org/wiki/Wendover",
+          "text": "Wendover is a town and civil parish at the foot of the Chiltern Hills in Buckinghamshire, England. It is situated at the point where the main road across the Chilterns between London and Aylesbury intersects with the once important road along the foot of the hill. The town lies 35 miles (56 km) north-west of London and 5 miles (8 km) south-east of Aylesbury. \nThe parish has an area of 5,832 acres (2,360 ha) and had, at the time of the 2011 census, a population of 7,399. Outside Wendover, the parish is mainly arable and also contains several hamlets in the surrounding hills. Wendover has a weekly market and has had a market charter since 1464."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "wendover",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6512,
+    "attempt": 6465,
+    "place_id": "gn-2635459",
+    "input": {
+      "place": {
+        "place_id": "gn-2635459",
+        "name": "Tring",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.79471,
+        "lon": -0.65824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tring",
+          "url": "https://en.wikipedia.org/wiki/Tring",
+          "text": "Tring  is a market town and civil parish in the Borough of Dacorum, in Hertfordshire, England. It is situated in a gap passing through the Chiltern Hills, classed as an Area of Outstanding Natural Beauty, 30 miles (50 km) from Central London. Tring is linked to London by the Roman road of Akeman Street, the modern A41 road, the Grand Union Canal and the West Coast Main Line to London Euston. Settlements in Tring date back to prehistoric times and it was mentioned in the Domesday Book; the town received its market charter in 1315. Tring is now largely a commuter town within the London commuter belt.\nAs of 2021, Tring had a population of 12,427."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "tring",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6513,
+    "attempt": 6466,
+    "place_id": "gn-2635744",
+    "input": {
+      "place": {
+        "place_id": "gn-2635744",
+        "name": "Todmorden",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.71434,
+        "lon": -2.09701
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Todmorden",
+          "url": "https://en.wikipedia.org/wiki/Todmorden",
+          "text": "Todmorden ( TOD-mər-dən; locally ) is a market town and civil parish in the Upper Calder Valley in Calderdale, West Yorkshire, England. It is 17 miles (27 kilometres) north-east of Manchester, 8 miles (13 km) south-east of Burnley and 9 miles (14 km) west of Halifax. In 2011, it had a population of 15,481.\nTodmorden is at the confluence of three steep-sided Pennine valleys and is surrounded by moorlands with outcrops of sandblasted gritstone.\nThe historic boundary between Yorkshire and Lancashire is the River Calder and its tributary, Walsden Water, which run through the town. The administrative border was altered by the Local Government Act 1888 placing the whole of the town within the West Riding.\nThe town is served by Todmorden and Walsden railway stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "todmorden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6514,
+    "attempt": 6467,
+    "place_id": "gn-2643587",
+    "input": {
+      "place": {
+        "place_id": "gn-2643587",
+        "name": "Lossiemouth",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.72136,
+        "lon": -3.28341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lossiemouth",
+          "url": "https://en.wikipedia.org/wiki/Lossiemouth",
+          "text": "Lossiemouth (Scottish Gaelic: Inbhir Losaidh) is a coastal town in Moray, Scotland. Originally the port belonging to Elgin, it became an important fishing town. Although there has been over 1,000 years of settlement in the area, the present day town was formed over the past 250 years and consists of four separate communities that eventually merged into one. From 1890 to 1975, it was a police burgh as Lossiemouth and Branderburgh.\nStotfield, the first significant settlement (discounting Kinneddar which has now disappeared), lies to the north west of the town. Next was the Seatown – a small area between the river and the canal inholding of 52 houses, 51 of which are the historic fisher cottages. When the new harbour was built on the River Lossie, the 18th-century planned town of Lossiemouth, built on a grid system, was established on the low ground below the Coulard Hill. Branderburgh formed the final development during the 19th century. This part of the town developed entirely as a result of the new harbour with its two basins, and eventually covered the entire Coulard Hill; it has an impressive profile when seen from a distance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "lossiemouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6515,
+    "attempt": 6468,
+    "place_id": "gn-2646253",
+    "input": {
+      "place": {
+        "place_id": "gn-2646253",
+        "name": "Ince-in-Makerfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.53333,
+        "lon": -2.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ince-in-Makerfield",
+          "url": "https://en.wikipedia.org/wiki/Ince-in-Makerfield",
+          "text": "Ince-in-Makerfield or Ince  is a town in the Metropolitan Borough of Wigan, in Greater Manchester, England. The population of the Ince ward at the 2011 census was 13,486, but a southern part of Ince was also listed under the Abram ward (north of Warrington Road in this ward). Adding on this area brings the total in 2011 to 15,664.\nWithin the boundaries of the historic county of Lancashire, Ince is contiguous to Wigan and is a residential suburb divided by a railway line into two separate areas, Higher Ince and Lower Ince.  From 1894 Ince was an urban district of the administrative county of Lancashire and in 1974 became part of the Metropolitan Borough of Wigan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "ince in makerfield",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ince",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "makerfield",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6516,
+    "attempt": 6469,
+    "place_id": "gn-2657438",
+    "input": {
+      "place": {
+        "place_id": "gn-2657438",
+        "name": "Alnwick",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.41318,
+        "lon": -1.70563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alnwick",
+          "url": "https://en.wikipedia.org/wiki/Alnwick",
+          "text": "Alnwick (  AN-ik) is a market town in Northumberland, England, of which it is the traditional county town. The population at the 2021 Census was 8,430.\nThe town is 32 miles (51 km) south of Berwick-upon-Tweed and the Scottish border, 5 miles (8 km) inland from the North Sea at Alnmouth and 34 miles (55 km) north of Newcastle upon Tyne; it is sited on the south bank of the River Aln.\nThe town dates to about AD 600 and thrived as an agricultural centre. Alnwick Castle was the home of the most powerful medieval northern baronial family, the Earls of Northumberland. It was a staging post on the Great North Road between Edinburgh and London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "alnwick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6517,
+    "attempt": 6470,
+    "place_id": "gn-2705402",
+    "input": {
+      "place": {
+        "place_id": "gn-2705402",
+        "name": "Höllviken",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 55.40982,
+        "lon": 12.9558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Höllviken",
+          "url": "https://en.wikipedia.org/wiki/Höllviken",
+          "text": "Höllviken is a locality situated in Vellinge Municipality, Skåne County, Sweden with 15,678 inhabitants in 2019. It is located close to both Malmö and the Øresund Bridge which connects Sweden and Denmark.\nThe town is a popular summer vacation spot for northern Europeans, who are attracted to its sandy beaches and the historical sites which date back to the time of the Vikings. The peninsula on which the town is situated is unique because it is surrounded by two different seas: Öresund and the Baltic Sea.\nPrior to the 1960s, the peninsula remained mainly populated by wealthy businessmen from the Malmö region during the summers. Recently, however, it has begun to grow as a commuter town.\nThe following sports clubs are located in Höllviken:\n\nFC Höllviken"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "hollviken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6518,
+    "attempt": 6471,
+    "place_id": "gn-2795648",
+    "input": {
+      "place": {
+        "place_id": "gn-2795648",
+        "name": "Hoeselt",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.84714,
+        "lon": 5.48767
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoeselt",
+          "url": "https://en.wikipedia.org/wiki/Hoeselt",
+          "text": "Hoeselt (Dutch pronunciation: [ˈɦusəlt]) is a former municipality located in the Belgian province of Limburg. On January 1, 2018, Hoeselt had a total population of 9,685. The total area is 30.02 km2 which gives a population density of 323 inhabitants per km2. On 1 January 2025, the municipality merged with Bilzen to form the new municipality Bilzen-Hoeselt\nSituated close to the \"Roman\" Tongeren, many traces from the Roman empire were found in the fertile soil of Hoeselt. \nIn 1066, this village came under the surveillance of Hoei; it was in that time still named Housle (from hus and lo, meaning house by the forest). These forests of Hoeselt were cultivated in the 12th and 13th century.\nLater, Hoeselt was part of the Frankish Kingdom; and then its territory fell under the Bishop of Liège.\nThe old centre of Hoeselt, with its triangular shape, and the motheuvel (motte hill), both show the influence of its Frankish past."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "hoeselt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6519,
+    "attempt": 6472,
+    "place_id": "gn-2802990",
+    "input": {
+      "place": {
+        "place_id": "gn-2802990",
+        "name": "Aubange",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 49.56652,
+        "lon": 5.80492
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aubange",
+          "url": "https://en.wikipedia.org/wiki/Aubange",
+          "text": "Aubange (French pronunciation: [obɑ̃ʒ] ; German: Ibingen [ˈiːbɪŋən]; Luxembourgish: Éibeng; Walloon: Åbindje) is a municipality and city of Wallonia located in the province of Luxembourg, Belgium.\nOn 1 January 2012 the municipality, which covers 45.6 km2, had 16,042 inhabitants, giving a population density of 330.9 inhabitants per km2. It is the third municipality of the Province of Luxembourg regarding the number of inhabitants but it is also among the smallest ones in terms of area.\nThe municipality is French-speaking but most of which falls within the Luxembourgish-speaking Arelerland, adjoins the tripoint where the borders of Belgium, the Grand Duchy of Luxembourg, and France meet.\nThe municipality consists of the following districts: Athus, Aubange, Halanzy, and Rachecourt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "aubange",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6520,
+    "attempt": 6473,
+    "place_id": "gn-2814883",
+    "input": {
+      "place": {
+        "place_id": "gn-2814883",
+        "name": "Waldkirch",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.09585,
+        "lon": 7.96371
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waldkirch",
+          "url": "https://en.wikipedia.org/wiki/Waldkirch",
+          "text": "Waldkirch (German pronunciation: [ˈvaltˌkɪʁç] ) is a town in Baden-Württemberg, Germany, located 15 kilometers northeast of Freiburg im Breisgau. While the English translation of its name is Forest Church, it is known as the \"town of mechanical organs\", where fairground organs played on the streets were long manufactured by such well-known firms as Carl Frei (later of Breda, Netherlands), Andreas Ruth and Son, and Wilhelm Bruder and Sons.  The largest employers today are SICK AG, which manufactures optical sensors, Faller AG, which prints pharmaceutical packages and inserts, and Mack Rides, which exports amusement park and water park rides worldwide. Cultural events include the Klappe 11 Cinema festival, the Organ Festival and the Peter Feuchtwanger Piano Masterclass."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "waldkirch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6521,
+    "attempt": 6474,
+    "place_id": "gn-2881889",
+    "input": {
+      "place": {
+        "place_id": "gn-2881889",
+        "name": "Lahnstein",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.3,
+        "lon": 7.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lahnstein",
+          "url": "https://en.wikipedia.org/wiki/Lahnstein",
+          "text": "Lahnstein (German pronunciation: [ˈlaːnʃtaɪn] ) is a verband-free town of Rhein-Lahn-Kreis in Rhineland-Palatinate, Germany. It is situated at the confluence of the Lahn with the Rhine, approximately 6 kilometres (3.7 mi) south of Koblenz. Lahnstein was created in 1969 by the merger of the previously independent towns of Oberlahnstein (or Upper Lahnstein) on the south side of the Lahn (above the river mouth) and Niederlahnstein on the north side (below the river mouth). In 2020, it had a population of 18,030.\nSituated on the heights of the foothills of the Westerwald and the Taunus, Lahnstein is considered a fresh-air spa city with spa facilities and thermal baths. It is also the seat of a district court. In religious affairs, it is assigned to the Roman Catholic Diocese of Limburg and to the Evangelical Church in Hesse and Nassau.\nBecause of its strategic importance on the Rhine, Lahnstein was heavily fortified. Many old gates and towers still demonstrate its importance in the Middle Ages. Lahneck Castle, situated high above Oberlahnstein, was built between 1240 and 1245 and served as a residence of the Archbishop-Electors of Mainz. Other sights in Lahnstein include Martinsburg Castle on the bank of the Rhine in Oberlahnstein, the Allerheiligenbergkapelle, St. John's Abbey (Johanneskloster), and the Rheinsteig hiking trail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "lahnstein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6522,
+    "attempt": 6475,
+    "place_id": "gn-314038",
+    "input": {
+      "place": {
+        "place_id": "gn-314038",
+        "name": "Gölmarmara",
+        "country": "Türkiye",
+        "subdivision": "Manisa",
+        "lat": 38.71389,
+        "lon": 27.91417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gölmarmara",
+          "url": "https://en.wikipedia.org/wiki/Gölmarmara",
+          "text": "Gölmarmara is a municipality and district of Manisa Province, Turkey. Its area is 310 km2, and its population is 15,193 (2022). It lies at a distance of 66 km (41 mi) from the province center of Manisa. The town owes its name to the nearby Lake Marmara, called under various names throughout history. The town of Gölmarmara itself was a mere village in Ottoman times cited under such names as \"Marmaracık\" or \"Mermere\". It was made into a township with its own municipality depending the district center of Akhisar at the time of the foundation of the Turkish Republic (1923) and in 1987 a district center by its own right and under the same name, Gölmarmara. Gölmarmara lies at an elevation of 91 m (299 ft).\nAgricultural lands and forest lands each occupy roughly around 11,500 hectares in the district area, with a few thousand in the fertile plain of the Gediz River valley remaining unused. Lake Marmara, aside from being a recreational center for the province as a whole, is also an important source for fishing and agricultural irrigation. Slightly lower than the town center at 79 m (259 ft), the lake is also an Important Bird Area.\nThere are six primary schools and two high schools in Gölmarmara, with a total teacher's corpus of 117 and a student's corpus of 3,094. A small professional higher school depending Celal Bayar University is also located in Gölmarmara, its academic corpus composed of six teachers providing education higher education with a professional focus to 144 students.\nThe town's most important historical building is Halime Hatun Religious Complex built by the Ottoman sultan Mehmed III during his tenure in Manisa (1583-1595) in the name of his wet nurse and his future grand vizier Tekeli Lala Mehmed Pasha's mother-in-law Halime Hatun.\nIn 2015 an important archaeological discovery was made at Kaymakçı: a Middle and Late Bronze Age city (2000-1200 BC) whose area was approximately 4 times larger than that of Troy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 328
+    },
+    "banned_terms": [
+      {
+        "term": "golmarmara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6523,
+    "attempt": 6476,
+    "place_id": "gn-3147822",
+    "input": {
+      "place": {
+        "place_id": "gn-3147822",
+        "name": "Leirvik",
+        "country": "Norway",
+        "subdivision": "Vestland",
+        "lat": 59.77977,
+        "lon": 5.50051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leirvik",
+          "url": "https://en.wikipedia.org/wiki/Leirvik",
+          "text": "Leirvik or Stord is a town and the administrative centre of Stord Municipality in Vestland county, Norway. The town lies along the southern coast of the large island of Stord, along the Hardangerfjorden. The town gained \"town status\" in 1997. The town includes the Eldøyane peninsula where the large Kværner Stord industrial area is located.\n\nLeirvik is the regional centre of the traditional district of Sunnhordland, and has many public services and offices such as the Haugaland og Sunnhordland District Court and the Sunnhordland Museum, as well as many shops and restaurants. Stord Church and several schools such as Stord Upper Secondary School and Western Norway University of Applied Sciences are all located in the town.\nThe 10.34-square-kilometre (2,560-acre) town has a population (2025) of 14,767 and a population density of 1,428 inhabitants per square kilometre (3,700/sq mi). The entire municipality has about 18,700 residents (2019), so Leirvik has about 75% of the total population of the municipality. Leirvik is also the largest urban area that is located in a municipality where Nynorsk is the preferred language form."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "leirvik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6524,
+    "attempt": 6477,
+    "place_id": "gn-3178745",
+    "input": {
+      "place": {
+        "place_id": "gn-3178745",
+        "name": "Chivasso",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.19093,
+        "lon": 7.88981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chivasso",
+          "url": "https://en.wikipedia.org/wiki/Chivasso",
+          "text": "Chivasso (pronounced [kiˈvasso]; Piedmontese: Civass) is a comune in the Metropolitan City of Turin, in the Italian region of Piedmont, located about 20 kilometres (12 mi) northeast of Turin. Chivasso has a population of about 27,000. It is situated on the left bank of the Po river, near the influx of the Orco river.\nThe municipality of Chivasso contains the frazioni (subdivisions, mainly villages and hamlets) Montegiove, Betlemme, Torassi, Castelrosso, Pogliani, Borghetto, Mosche, Mandria, Boschetto, and Pratoregio.\nChivasso borders the following municipalities: Mazzè, Caluso, San Benigno Canavese, Montanaro, Rondissone, Verolengo, Volpiano, Brandizzo, San Sebastiano da Po, Castagneto Po, San Raffaele Cimena.\nThe name probably has a Roman origin (Clavasium, which is used nowadays by local companies)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "chivasso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6525,
+    "attempt": 6478,
+    "place_id": "gn-3435704",
+    "input": {
+      "place": {
+        "place_id": "gn-3435704",
+        "name": "Capilla del Señor",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.29169,
+        "lon": -59.10126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capilla del Señor",
+          "url": "https://en.wikipedia.org/wiki/Capilla_del_Señor",
+          "text": "Capilla del Señor (Chapel of the Lord) is a city in the northern part of Buenos Aires Province, Argentina. It is the administrative seat of Exaltación de la Cruz Partido; which is bounded by the Zárate, Campana, Pilar, Luján, San Antonio de Areco, San Andrés de Giles partidos. It has been designated by the former president Carlos Saúl Menem as the \"First National Historical Town\" in Argentina. It is located 82 kilometres (51 mi) from Buenos Aires, 24 km (15 mi) from Zárate, 27 km (17 mi) from Pilar, 30 km (19 mi)  from Campana and Luján, 47 km (29 mi) from San Antonio de Areco, and 49 km (30 mi) from San Andrés de Giles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "capilla del senor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "capilla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "senor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6526,
+    "attempt": 6479,
+    "place_id": "gn-3515600",
+    "input": {
+      "place": {
+        "place_id": "gn-3515600",
+        "name": "Tila",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 17.30032,
+        "lon": -92.42595
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tila, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/Tila,_Chiapas",
+          "text": "Tila is a town and municipality in the Mexican state of Chiapas in southern Mexico.\nAs of 2010, the municipality had a total population of 71,432, up from 58,153 in 2005. It covers an area of 705.5 km2.\nAs of 2010, the town of Tila had a population of 7,164. Other than the town of Tila, the municipality had 160 localities, the largest of which (with 2010 populations in parentheses) were Petalcingo (6,775), Nueva Esperanza (4,059), and El Limar (2,908), all classified as urban, and Chulum Juárez (2,137), Tocob Leglemal (2,067), Nuevo Limar (1,974), Shoctic (1,717), Usipa (1,450), Cantioc (1,426), Joljá (1,303), Chulum Cárdenas (1,126), Jolsibaquil (1,103), Misija (1,087), and Unión Juárez (1,012), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "tila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6527,
+    "attempt": 6480,
+    "place_id": "gn-3518649",
+    "input": {
+      "place": {
+        "place_id": "gn-3518649",
+        "name": "Ixtenco",
+        "country": "Mexico",
+        "subdivision": "Tlaxcala",
+        "lat": 19.25146,
+        "lon": -97.89412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ixtenco",
+          "url": "https://en.wikipedia.org/wiki/Ixtenco",
+          "text": "Ixtenco is located in Ixtenco Municipality in the southeast of the Mexican state of Tlaxcala. It is a traditional Otomi community, which has conserved its agricultural economic base and various traditions. However, it is one of the poorest and least populated of the state's municipalities. The town's main landmark is the San Juan Bautista Parish and the municipality contains the remains of colonial era haciendas. The municipality lies on an old lava flow from the nearby La Malinche Volcano, which provides its volcanic soil, but because of the destruction of forests and overgrazing, erosion is a significant problem.\nIn 2023, Ixtenco was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "ixtenco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
