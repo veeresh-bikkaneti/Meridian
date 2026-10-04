@@ -4,8 +4,11 @@ import {
   startGlobeRun,
   dismissTileOverlayIfPresent,
   readPhase,
-  commitMiss,
+  commitPin,
   commitHit,
+  spotViewportPoint,
+  tapHitsMap,
+  clickNextPlace,
   aimMarkerCenter,
   spotMarkerCenter,
   nextPlaceButton,
@@ -51,32 +54,69 @@ const mapEl = (page: Page) => page.locator(".satellite-map");
 const readZoom = (page: Page): Promise<number> =>
   mapEl(page).getAttribute("data-zoom").then(Number);
 
-/** Click "Zoom in" until the zoom stops increasing (hits maxZoom); returns before/deep. */
-async function zoomDeep(page: Page): Promise<{ before: number; deep: number }> {
+/**
+ * Click "Zoom in" until data-zoom reaches target or stops increasing
+ * (globe caps at 5). Polls for the zoom to settle after each click — a fixed
+ * nap was racy under software WebGL and broke the loop after one click.
+ */
+async function zoomDeep(
+  page: Page,
+  target = 10,
+): Promise<{ before: number; deep: number }> {
   const before = await readZoom(page);
   const zoomIn = page.getByRole("button", { name: "Zoom in" });
   let deep = before;
-  for (let i = 0; i < 15; i++) {
+  let stuck = 0;
+  for (let i = 0; i < 25 && stuck < 4 && deep < target; i++) {
     await zoomIn.click();
-    await page.waitForTimeout(400);
+    try {
+      await expect.poll(() => readZoom(page), { timeout: 10_000 }).not.toBe(deep);
+    } catch {
+      // Zoom didn't move (at max, or still settling).
+    }
     const z = await readZoom(page);
-    if (z <= deep) break; // maxZoom reached (globe caps at 5)
-    deep = z;
+    if (z > deep) {
+      deep = z;
+      stuck = 0;
+    } else {
+      stuck++;
+    }
   }
   return { before, deep };
 }
 
 /**
- * Real wheel burst over the map (from desktop-gestures.spec.ts): one
- * Playwright wheel() is a single event; a burst of 8 ≈ 1.5 zoom levels.
- * Uses the top-left corner so the result card never swallows the events.
+ * Commit a guaranteed FAR miss: tap the map-safe viewport point farthest
+ * from the true spot's projected position. A far miss is what forces the
+ * gap-view camera to pull back, which is exactly Veeresh's scenario.
  */
-async function wheelNotches(page: Page, deltaY: number): Promise<void> {
-  await page.mouse.move(100, 100);
-  for (let i = 0; i < 8; i++) {
-    await page.mouse.wheel(0, deltaY);
-    await page.waitForTimeout(120);
+async function commitFarMiss(page: Page): Promise<void> {
+  const candidates = [
+    { x: 200, y: 200 },
+    { x: 1240, y: 200 },
+    { x: 200, y: 700 },
+    { x: 1240, y: 700 },
+    { x: 720, y: 450 },
+  ];
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const spot = await spotViewportPoint(page);
+    let best = candidates[0];
+    let bestD = -1;
+    for (const c of candidates) {
+      if (!(await tapHitsMap(page, c.x, c.y))) continue;
+      const d = spot ? (c.x - spot.x) ** 2 + (c.y - spot.y) ** 2 : Infinity;
+      if (d > bestD) {
+        bestD = d;
+        best = c;
+      }
+    }
+    const { phase } = await commitPin(page, best.x, best.y);
+    if (phase === "done") return;
+    // Freak hit (or spot unknown and we got lucky): advance and retry.
+    await clickNextPlace(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   }
+  throw new Error("commitFarMiss: three attempts failed");
 }
 
 /**
@@ -99,6 +139,19 @@ async function ensureTilesReady(page: Page): Promise<void> {
     }
   }
   throw new Error("ensureTilesReady: tiles never reached ready");
+}
+
+/**
+ * Real wheel burst over the map (from desktop-gestures.spec.ts): one
+ * Playwright wheel() is a single event; a burst of 8 ≈ 1.5 zoom levels.
+ * Uses the top-left corner so the result card never swallows the events.
+ */
+async function wheelNotches(page: Page, deltaY: number): Promise<void> {
+  await page.mouse.move(100, 100);
+  for (let i = 0; i < 8; i++) {
+    await page.mouse.wheel(0, deltaY);
+    await page.waitForTimeout(120);
+  }
 }
 
 /** Both the guess pin and the true spot are inside the 1440x900 viewport. */
@@ -136,8 +189,9 @@ async function startStateRun(page: Page): Promise<void> {
 /** Shared miss-from-deep-zoom body: pull-back + framing + live gestures. */
 async function missFromDeepZoom(page: Page): Promise<void> {
   const { deep: deepZoom } = await zoomDeep(page);
+  expect(deepZoom).toBeGreaterThanOrEqual(5);
   await ensureTilesReady(page);
-  await commitMiss(page);
+  await commitFarMiss(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   // The gap view pulled back from the deep zoom to fit both pins.
   const revealZoom = await readZoom(page);
