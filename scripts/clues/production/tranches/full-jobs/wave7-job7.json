@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 1333,
+    "attempt": 1321,
+    "place_id": "gn-2339354",
+    "input": {
+      "place": {
+        "place_id": "gn-2339354",
+        "name": "Ibadan",
+        "country": "Nigeria",
+        "subdivision": "Oyo State",
+        "lat": 7.37756,
+        "lon": 3.90591
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ibadan",
+          "url": "https://en.wikipedia.org/wiki/Ibadan",
+          "text": "Ibadan ( UK: , US: ; Yoruba: Ìbàdàn [ì.bà.dã̀]) is the capital and most populous city of Oyo State, in Nigeria. It is   one of the largest cities by population in Nigeria with a population of 4.3 million within its metropolitan area. At 3,080 square kilometres (1,190 mi2) it is the country's largest city by land area. At the time of Nigeria's independence in 1960, Ibadan was the largest and most populous city in the country, and the second-most populous in Africa behind Cairo. Ibadan is ranked one of the fastest-growing cities in sub-Saharan Africa, according to the UN Human Settlements Program (2022). It is also ranked third in Nigeria and fifth in West Africa in the tech startups index. Ibadan joined the UNESCO Global Network of Learning Cities in 2016. During the 19th century, Ibadan was the capital of the Ibadan Republic, one of the most powerful states of contemporary Yorubaland.\n\nIbadan is located in southwestern Nigeria, 120 kilometres (75 mi) inland northeast of Lagos and 440 kilometres (270 mi) southwest of Abuja, the federal capital. It is a prominent transit point between the coastal region and areas in the hinterland of the country as well as one of Nigeria's most important commercial and research centres. Ibadan was the administrative centre of the old Western Region since the early days of British colonial rule, and parts of the city's ancient protective walls still stand to this day. The principal inhabitants of the city are the Yoruba people, as well as various communities (notably Igbo, Hausa, Edo, Ebira, Igede, Igala, Ibibio etc.) from other parts of the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "ibadan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1334,
+    "attempt": 1322,
+    "place_id": "gn-2342490",
+    "input": {
+      "place": {
+        "place_id": "gn-2342490",
+        "name": "Funtua",
+        "country": "Nigeria",
+        "subdivision": "Katsina State",
+        "lat": 11.52351,
+        "lon": 7.31174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Funtua",
+          "url": "https://en.wikipedia.org/wiki/Funtua",
+          "text": "Funtua is a town and local government area in Katsina State, Nigeria.\nIt is one of the premier local governments in Nigeria created after the local government reforms in 1976. It is the headquarters of the Katsina South senatorial district, which comprises eleven local governments: Bakori, Danja, Dandume, Faskari, Sabuwa, Kankara, Malumfashi, Kafur, Musawa, Matazu and Funtua.\nFuntua has a conducive weather condition as it lies at latitude and longitude 11°32'N, 7°19'E. The city has an average temperature of 32 °C and humidity of 44%.\nIt has an area of 448 square kilometres (173 sq mi) and a population of 225,571 at the 2006 census and 570,110 according to 2016 estimate. The chairman is the official head of local government. The inhabitants are Hausa, and their main occupations are trading and farming. However, there are other tribes such as Fulani, Yoruba, Igbo, Nupe, Bendel among others.\nFuntua is a cosmopolitan town and is located in the southern extreme end of Katsina State and is the second largest city in the state after Katsina. It borders Giwa local government of Kaduna State to the south, Bakori to the east, Danja to the southeast, Faskari to the northwest and Dandume to the west.\nThe postal code of the area is 830.\nThe source of the Sokoto River is located near Funtua."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "funtua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1335,
+    "attempt": 1323,
+    "place_id": "gn-2362344",
+    "input": {
+      "place": {
+        "place_id": "gn-2362344",
+        "name": "Bobo-Dioulasso",
+        "country": "Burkina Faso",
+        "subdivision": "Hauts-Bassins",
+        "lat": 11.18064,
+        "lon": -4.29489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bobo-Dioulasso",
+          "url": "https://en.wikipedia.org/wiki/Bobo-Dioulasso",
+          "text": "Bobo-Dioulasso (Dyula: Bɔbɔjulaso N'Ko script: ߓߐ߬ߓߐߖߎ߬ߟߊ߬ߛߏ߫, Mossi: Sɩa) (often colloquially called Bobo) is a city in Burkina Faso with a population of 1,129,000 (as of 2023); it is the second-largest city in the country, after Ouagadougou, Burkina Faso's capital. The name means \"home of the Bobo-Dioula\".\nThe local Bobo-speaking population (related to the Mande) refers to the city simply as Sia. There are two distinct dialects of Jula spoken, based on the origins of different groups of speakers. The city is situated in the southwest of the country, in the Houet Province, some 350 km (220 mi) from Ouagadougou. Bobo-Dioulasso is significant both economically (agricultural trade, textile industry) and culturally, as it is a major center of culture and music."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "bobo dioulasso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bobo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dioulasso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1336,
+    "attempt": 1324,
+    "place_id": "gn-2413876",
+    "input": {
+      "place": {
+        "place_id": "gn-2413876",
+        "name": "Banjul",
+        "country": "Gambia",
+        "subdivision": "Banjul",
+        "lat": 13.45274,
+        "lon": -16.57803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banjul",
+          "url": "https://en.wikipedia.org/wiki/Banjul",
+          "text": "Banjul (UK: , US: ), officially the City of Banjul, is the capital city of the Gambia. The city of Banjul is located on St Mary's Island (Banjul Island), which is in the Gambia River where it enters the Atlantic Ocean.\nThe population of the city proper is 26,461, with the Greater Banjul Area, which includes the City of Banjul and the Kanifing municipality, at a population of 405,809 (2024 census). The island is connected to the mainland to the west and the rest of Greater Banjul Area via bridges. There are also ferries linking Banjul to the mainland at the other side of the river.\nFrom the 19th century until 24 April 1973, the city was known as Bathurst."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "banjul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1337,
+    "attempt": 1325,
+    "place_id": "gn-2475475",
+    "input": {
+      "place": {
+        "place_id": "gn-2475475",
+        "name": "Touggourt",
+        "country": "Algeria",
+        "subdivision": "Touggourt",
+        "lat": 33.11083,
+        "lon": 6.07
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Touggourt",
+          "url": "https://en.wikipedia.org/wiki/Touggourt",
+          "text": "Touggourt (Arabic: ﺗﻗﺮت or تڤرت from Berber languages: ⵜⵓⴳⵓⵔⵜ, romanized: Tugurt, lit. 'the gateway' or 'the gate') is a city and commune, former sultanate and capital of Touggourt District, in Touggourt Province, Algeria, built next to an oasis in the Sahara. As of the 2008 census, the commune had a population of 39,409 people, up from 32,940 in 1998, and an annual growth rate of 1.8%. Touggourt's urban area includes the communes of Nezla, Tebesbest and Zaouia El Abidia, for a total population of 146,108.\nTouggourt is notable for its date trees. It was formerly surrounded by a moat, which the French filled up. Bradt Travel Guides describe it as \"largely a modern town of block architecture\" and \"largely unattractive. The centre is quiet most of the day due to the heat but is more active at night when people take to the streets.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "touggourt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1338,
+    "attempt": 1326,
+    "place_id": "gn-2514256",
+    "input": {
+      "place": {
+        "place_id": "gn-2514256",
+        "name": "Málaga",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.72016,
+        "lon": -4.42034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Málaga",
+          "url": "https://en.wikipedia.org/wiki/Málaga",
+          "text": "Málaga ( ; Spanish: [ˈmalaɣa] ) is a municipality of Spain and the capital of the province of Málaga, in the autonomous community of Andalusia. With a population of 592,346 in 2024, it is the 2nd-largest city in Andalusia and the 6th-largest in the country. It lies in Southern Iberia on the Costa del Sol ('Coast of the Sun') of the Mediterranean, primarily on the left bank of the Guadalhorce. The urban core originally developed in the space between the Gibralfaro Hill and the Guadalmedina.\nMálaga's history spans about 2,800 years, making it one of the oldest continuously inhabited cities in Western Europe. According to most scholars, it was founded about 770 BC by the Phoenicians from Tyre as Malaka. From the 6th century BC the city was under the hegemony of Ancient Carthage, and from 218 BC, it was under Roman rule, economically prospering owing to garum production. In the 8th century, after a period of Visigothic and Byzantine rule, it was placed under Islamic rule. In 1487, the Crown of Castile gained control in the midst of the Granada War. In the 19th century, the city underwent a period of industrialisation followed by a decay in all socioeconomic parameters in the last third of the century.\nThe most important business sectors in Málaga are tourism, construction and technology services, but other sectors such as transportation and logistics are beginning to expand. Málaga has consolidated as a tech hub, with companies mainly concentrated in the Málaga TechPark (Technology Park of Andalusia). It hosts the headquarters of the region's largest bank, Unicaja, and it is the fourth-ranking city in Spain in terms of economic activity. Regarding transportation, Málaga is served by the Málaga–Costa del Sol Airport and the Port of Málaga, and the city was connected to the high-speed railway network in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "malaga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1339,
+    "attempt": 1327,
+    "place_id": "gn-2516395",
+    "input": {
+      "place": {
+        "place_id": "gn-2516395",
+        "name": "Jaén",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.76922,
+        "lon": -3.79028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jaén, Spain",
+          "url": "https://en.wikipedia.org/wiki/Jaén,_Spain",
+          "text": "Jaén (Spanish: [xaˈen] ) is a municipality of Spain and the capital of the province of Jaén, in the autonomous community of Andalusia.\nThe city of Jaén is the administrative and industrial centre for the province. Industrial establishments in the city include chemical works, tanneries, distilleries, cookie factories, textile factories, as well as agricultural and olive oil processing machinery industry.\nThe layout of Jaén is determined by its position on the foothills of the Cerro de Santa Catalina, with steep, narrow streets, in the historic core.\nIts population is 112,757 (2020), about one-sixth of the population of the province. Jaén had an increase in cultural tourism in the mid-2010s, having received 604,523 tourists in 2015, 10% more than in 2014."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "jaen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1340,
+    "attempt": 1328,
+    "place_id": "gn-2800481",
+    "input": {
+      "place": {
+        "place_id": "gn-2800481",
+        "name": "Charleroi",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.41136,
+        "lon": 4.44448
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charleroi",
+          "url": "https://en.wikipedia.org/wiki/Charleroi",
+          "text": "Charleroi (UK: , US: , French: [ʃaʁləʁwa] ; Walloon: Tchålerwè [tʃɑːlɛʀwɛ]) is a city and a municipality of Wallonia, located in the province of Hainaut, Belgium. It is the largest city in both Hainaut and Wallonia. The city is situated in the valley of the Sambre, in the south-west of Belgium, not far from the border with France. By 1 January 2008, the total population of Charleroi was 201,593. The metropolitan area, including the outer commuter zone, covers an area of 1,462 square kilometres (564 sq mi) with a total population of 522,522 by 1 January 2008, ranking it as the 5th most populous in Belgium after Brussels, Antwerp, Liège, and Ghent. The inhabitants are called Carolorégiens or simply Carolos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "charleroi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1341,
+    "attempt": 1329,
+    "place_id": "gn-2962943",
+    "input": {
+      "place": {
+        "place_id": "gn-2962943",
+        "name": "Limerick",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 52.66472,
+        "lon": -8.62306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limerick",
+          "url": "https://en.wikipedia.org/wiki/Limerick",
+          "text": "Limerick (  LIM-ər-ik; Irish: Luimneach [ˈl̪ˠɪmʲ(ə)nʲəx]) is a city in western Ireland, in County Limerick. It is in the province of Munster and is in the Mid-West which comprises part of the Southern Region. With a population of 102,287 at the 2022 census, Limerick is the third-most populous urban area in Ireland, and the fourth-most populous city on the island of Ireland. It was founded by Scandinavian settlers in 812, during the Viking Age.\nThe city straddles the River Shannon, with the historic core of the city located on King's Island, which is bounded by the Shannon and Abbey Rivers. Limerick is at the head of the Shannon Estuary, where the river widens before it flows into the Atlantic Ocean. Limerick City and County Council is the local authority for the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "limerick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1342,
+    "attempt": 1330,
+    "place_id": "gn-3080985",
+    "input": {
+      "place": {
+        "place_id": "gn-3080985",
+        "name": "Zabrze",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.32492,
+        "lon": 18.78576
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zabrze",
+          "url": "https://en.wikipedia.org/wiki/Zabrze",
+          "text": "Zabrze ([ˈzabʐɛ] ; 1915–1945: Hindenburg; Silesian: Zŏbrze; Yiddish: זאַבזשע, romanized: Zabzhe) is an industrial city in Silesia in southern Poland, near Katowice. It lies in the western part of the Metropolis GZM, a metropolis with a population of around 2 million. It is in the Silesian Highlands, on the Bytomka River, a tributary of the Oder.\nZabrze is located in the Silesian Voivodeship. It is one of the cities composing the 2.7 million inhabitant conurbation referred to as the Katowice urban area, itself a major centre in the greater Katowice-Ostrava metropolitan area which is populated by just over five million people. The population of Zabrze as of December 2021 was 168,946, down from June 2009 when the population was 188,122. Zabrze is bordered by three other cities of the metropolitan area: Gliwice, Bytom and Ruda Śląska. The city is particularly known as the home of Górnik Zabrze, one of the most accomplished Polish football clubs. The local historic coal mine complex is listed as a Historic Monument of Poland as one of the most valuable of its kind in Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "zabrze",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1343,
+    "attempt": 1331,
+    "place_id": "gn-3101619",
+    "input": {
+      "place": {
+        "place_id": "gn-3101619",
+        "name": "Chorzów",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.30582,
+        "lon": 18.9742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chorzów",
+          "url": "https://en.wikipedia.org/wiki/Chorzów",
+          "text": "Chorzów ( KHOZH-oof; Polish: [ˈxɔʐuf] ; German: Königshütte [ˈkøːnɪçsˌhʏtə] ; Silesian: Chorzōw) is a city in the Silesia region of southern Poland, near Katowice. Chorzów is one of the central cities of the Metropolis GZM – a metropolis with a population of 2 million. It is located in the Silesian Highlands, on the Rawa River (a tributary of the Vistula).\nAdministratively, Chorzów is in the Silesian Voivodeship since 1999, previously Katowice Voivodeship, and before then, the Silesian Voivodeship. Chorzów is one of the cities of the 2.7 million conurbation – the Katowice urban area and within a greater Katowice-Ostrava metropolitan area with a population of about 5,294,000 people. The population within the city limits is 105,628 as of December 2021.\nChorzów is particularly known as the location of the Silesian Stadium, one of the largest and historically most important stadiums in Poland. Ruch Chorzów, one of the most accomplished Polish football clubs, is based in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "chorzow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1344,
+    "attempt": 1332,
+    "place_id": "gn-3188582",
+    "input": {
+      "place": {
+        "place_id": "gn-3188582",
+        "name": "Tuzla",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 44.53842,
+        "lon": 18.66709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tuzla",
+          "url": "https://en.wikipedia.org/wiki/Tuzla",
+          "text": "Tuzla (UK: , US: , Bosnian pronunciation: [tûzla] ) is the third-largest city of Bosnia and Herzegovina and the administrative center of Tuzla Canton of the Federation of Bosnia and Herzegovina. As of 2013, it has a population of 110,979 inhabitants.\nTuzla is the economic, cultural, educational, health, and tourist center of northeast Bosnia. It is an educational center and home to two universities. It is the main industrial machine and one of the leading economic strongholds of the country with a wide and varied industrial sector including an expanding service sector thanks to its salt lake tourism. Panonsko Lake, Europe's only salt lake and part of its central park has more than 350,000 people visiting its shores each year.\nTuzla's history is as old as the 9th century; the modern city dates back to 1510 when it became an important garrison town in the Ottoman Empire. In Bosnia and Herzegovina, Tuzla is also regarded as one of the most multicultural cities in the country and has managed to keep the pluralist character of the city throughout the Bosnian War and after, with Bosniaks, Serbs, Croats and a small minority of Bosnian Jews living in Tuzla."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "tuzla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1345,
+    "attempt": 1333,
+    "place_id": "gn-321836",
+    "input": {
+      "place": {
+        "place_id": "gn-321836",
+        "name": "Batman",
+        "country": "Türkiye",
+        "subdivision": "Batman",
+        "lat": 37.88738,
+        "lon": 41.13221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batman, Turkey",
+          "url": "https://en.wikipedia.org/wiki/Batman,_Turkey",
+          "text": "Batman (Kurdish: Êlih; Syriac: Elīḥā) is a city and capital of Batman District in Batman Province, Turkey. It lies on a plateau, 540 meters (1,772 feet) above sea level, near the confluence of the Batman River and the Tigris and had a population of 452,157 in 2021. It is populated by Kurds and considered to be part of Turkish Kurdistan.\nThe Batı Raman oil field, which is the largest oil field in Turkey, is located just outside the city. Batman has a local airport and a military airbase, which was used for transit of aircraft and helicopters in some search and rescue operations during the Gulf War.\nUntil the 1950s, Batman was a village, with a population of about 3,000. However, oil fields were discovered around it in the 1940s that resulted in a rapid development of the area and in the inflow of workforce from other parts of Turkey. In 1957, the village was renamed Batman, after the river namesake, received a city status and became a district center. Over the next 50 years, a significant amount of Batman's one-story buildings were rebuilt as multi-story buildings. As a result, its population grew to many times its previous size. A 511 km (318 mi) km long oil pipeline was built in 1967 from Batman to the port city of Dörtyol near the easternmost point of the Mediterranean coast in order to transport the crude oil from the Batman refinery. In 1990, the city became the capital of Batman Province.\nApart from oil, which is by far the dominant commodity of the region, Batman produces beverages, processed food, chemicals, furniture, footwear, machinery and transport equipment. A university was established in 2007, Batman University, and is part of the Erasmus Programme."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "batman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1346,
+    "attempt": 1334,
+    "place_id": "gn-323786",
+    "input": {
+      "place": {
+        "place_id": "gn-323786",
+        "name": "Ankara",
+        "country": "Türkiye",
+        "subdivision": "Ankara",
+        "lat": 39.91987,
+        "lon": 32.85427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ankara",
+          "url": "https://en.wikipedia.org/wiki/Ankara",
+          "text": "Ankara is the capital city of Turkey. Located in the central part of Anatolia, the city has a population of over 5.3 million residents in its urban center, out of 6 million residents in Ankara Province. Ankara is Turkey's second-largest city by population after Istanbul.\nAnkara was historically known as Ancyra and Angora. Serving as the capital of the ancient Celtic state of Galatia (280–64 BC), and later of the Roman province with the same name (25 BC–7th century), Ankara has various Hattian, Hittite, Lydian, Phrygian, Galatian, Greek, Persian, Roman, Byzantine, and Ottoman archeological sites. The Ottomans made the city the capital of the Anatolia Eyalet (1393 – late 15th century), the Angora Eyalet (1827–1864), and the Angora Vilayet (1867–1922). On 23 April 1920, the Grand National Assembly of Turkey was established in Ankara, which became the headquarters of the Turkish National Movement during the Turkish War of Independence. Ankara became the new Turkish capital upon the establishment of the Republic on 29 October 1923, succeeding the former Ottoman capital Istanbul following the fall of the Ottoman Empire.\nThe historical center of Ankara is a rocky hill rising 150 m (500 ft) over the left bank of the Ankara River, a tributary of the Sakarya River. The hill remains crowned by the ruins of Ankara Castle. Few of its outworks have survived, but there are well-preserved examples of Roman and Ottoman architecture throughout the city.\nThe government is a prominent employer, but Ankara is also an important commercial and industrial city located at the center of Turkey's road and railway networks. The city gave its name to the Angora wool shorn from Angora rabbits, the long-haired Angora goat (the source of mohair), and the Angora cat. The area is also known for its pears, honey and Muscat grapes. Although situated in one of the driest regions of Turkey and surrounded mostly by steppe vegetation (except for the forested areas on the southern periphery), Ankara can be considered a green city in terms of green areas per inhabitant, at 72 square meters (775 square feet) per head. Home to numerous universities, Ankara is among the top 100 science and technology clusters in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 363
+    },
+    "banned_terms": [
+      {
+        "term": "ankara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1347,
+    "attempt": 1335,
+    "place_id": "gn-3404545",
+    "input": {
+      "place": {
+        "place_id": "gn-3404545",
+        "name": "Cabo de Santo Agostinho",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.28773,
+        "lon": -35.02925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabo de Santo Agostinho",
+          "url": "https://en.wikipedia.org/wiki/Cabo_de_Santo_Agostinho",
+          "text": "Cabo de Santo Agostinho (Recifense portuguese pronunciation: [ˈkɐbŭ di ˈsɐ̃tu ɐɡuʃˈtĩj̃ŭ]) (English: Cape of St. Augustine) is a 448 square kilometer sized municipality located 35 kilometers south of the city of Recife, Pernambuco, Brazil. It is believed by some historians that Vicente Yáñez Pinzón had set anchor in a bay in Cabo de Santo Agostinho on January 26, 1500, however the Portuguese discovery of Brazil was by Pedro Álvares Cabral on April 21, 1500 is officially recognized instead. Cabo de Santo Agostinho was incorporated as a town in 1811.\nCabo de Santo Agostinho has both an industrial section that is centered on the Suape port and many tropical beaches and nature reserves. The best-known beaches are Chalets, Paraíso, and Gaibu. Recanto do Domingos lies at the far south end of Pedra do Xareu beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "cabo de santo agostinho",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cabo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "agostinho",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1348,
+    "attempt": 1336,
+    "place_id": "gn-3408404",
+    "input": {
+      "place": {
+        "place_id": "gn-3408404",
+        "name": "Abreu e Lima",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -7.91167,
+        "lon": -34.90278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abreu e Lima",
+          "url": "https://en.wikipedia.org/wiki/Abreu_e_Lima",
+          "text": "Abreu e Lima (Recifense portuguese pronunciation: [ɐˈbɾew i ˈlimɐ]) is a Brazilian municipality in the state of Pernambuco. It is located in the Metropolitan Region of Recife, also known as Greater Recife. Abreu e Lima covers 126.193 km2 (48.723 mi2), and has a population of 98,462 with a population density of 780 inhabitants per square kilometer (2022 Census). 75% of the area of the municipality is rural, but only 8% of the population lives outside of the urban center.\nThe city was named in honor of José Inácio de Abreu e Lima (1794-1869), also known as \"Inácio Pernambucano\". Abreu e Lima participated in battles in Pernambuco and fought alongside Simón Bolivar in the wars of independence of Venezuela and Colombia.\nFolklore is one of Abreu e Lima's main attractions. Visitors can enjoy the energetic drum rhythms of Maracatu dance performance, as well as Ciranda dance groups such as the one led by Dona Odete do Coco. The city's main festival is the Emancipation Festival, every May 14. Over 70 percent of Abreu e Lima's territory is covered by unspoilt Atlantic Forest and environmental reserves, such as those of São Bento and Caetés.\nOn March 31, 1983, the city held the first public event of Diretas Já, a popular movement against the military dictatorship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "abreu e lima",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "abreu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "e",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lima",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1349,
+    "attempt": 1337,
+    "place_id": "gn-3429886",
+    "input": {
+      "place": {
+        "place_id": "gn-3429886",
+        "name": "Posadas",
+        "country": "Argentina",
+        "subdivision": "Misiones",
+        "lat": -27.39184,
+        "lon": -55.92379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Posadas, Misiones",
+          "url": "https://en.wikipedia.org/wiki/Posadas,_Misiones",
+          "text": "Posadas (Spanish pronunciation: [poˈsaðas]) is the capital city of the Argentine province of Misiones, in its south, at the far northeast of the country on the left bank of the Paraná River, opposite Encarnación, Paraguay. The city has an area of 965 square kilometres (373 sq mi) and a population of 324,756 (2010 census [INDEC]), and the Greater Posadas area has a population of over 359,609 according to a 2017 estimate.\nPosadas is the provincial centre of the government, culture and the economy. Furniture, tobacco, food, textiles and construction are its most important industries. Other important economic activities are commerce and services.\nPosadas is connected to the Paraguayan city of Encarnación by the San Roque González de Santa Cruz Bridge. The port, once of great economical importance, is used for sport vessels, carrier of passengers and some boats for sand transport. The city is located on National Route 12, some 1,300 kilometres (810 mi) from Buenos Aires. The General José de San Martín Airport (IATA: PSS, ICAO: SARP), at coordinates 27°22′S 55°58′W, is seven kilometres from the city, and features regular flights to Buenos Aires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "posadas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1350,
+    "attempt": 1338,
+    "place_id": "gn-3455729",
+    "input": {
+      "place": {
+        "place_id": "gn-3455729",
+        "name": "Ourinhos",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.97889,
+        "lon": -49.87056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ourinhos",
+          "url": "https://en.wikipedia.org/wiki/Ourinhos",
+          "text": "Ourinhos is a Brazilian municipality in the interior of the state of São Paulo. Located west of the state capital, it is approximately 370 km away. Covering an area of 296 km2 (114 sq mi), its population according to the 2022 Brazilian census by the Brazilian Institute of Geography and Statistics (IBGE) was 103,970, making it the 76th most populous in São Paulo. It is 994 km from Brasília, the federal capital.\nThe municipality was emancipated from Salto Grande in the 1910s, and its name refers to the former municipality of Ourinho, now Jacarezinho, in the state of Paraná. Currently, it consists of the city of Ourinhos, with its seat being its only district, further subdivided into approximately 120 neighborhoods. It is also one of the main cities in the region, with commerce as its primary economic activity. In agriculture, the cultivation of sugarcane, soybean, and maize stands out.\nThe municipality also boasts a rich cultural tradition, encompassing handicrafts, theater, music, and sports. The city is notable for events often organized by the Ourinhos city hall, sometimes in partnership with local businesses. One of the main events is the Ourinhos Agricultural and Industrial Fair, held annually in June and considered one of the largest events of its kind in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "ourinhos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1351,
+    "attempt": 1339,
+    "place_id": "gn-3696183",
+    "input": {
+      "place": {
+        "place_id": "gn-3696183",
+        "name": "Iquitos",
+        "country": "Peru",
+        "subdivision": "Loreto",
+        "lat": -3.74814,
+        "lon": -73.2529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iquitos",
+          "url": "https://en.wikipedia.org/wiki/Iquitos",
+          "text": "Iquitos ( ; Spanish pronunciation: [iˈkitos]) is the capital city of Peru's Maynas Province and Loreto Region. It is the largest metropolis in the Peruvian Amazon, east of the Andes, as well as the ninth-most populous city in Peru. Iquitos is the largest city in the world that cannot be reached by road that is not on an island; it is only accessible by river and air.\nIt is known as the \"capital of the Peruvian Amazon\". The city is located in the Great Plains of the Amazon Basin, fed by the Amazon, Nanay, and Itaya rivers. Overall, it constitutes the Iquitos metropolitan area, a conurbation of 471,993 inhabitants consisting of four districts: Iquitos, Punchana, Belén, and San Juan Bautista.\nThe area has long been inhabited by indigenous peoples. According to Spanish historical documents, Iquitos was established around 1757 as a Spanish Jesuit reduction on the banks of the Nanay River. The Jesuits gathered local Napeano (Yameo) and Iquito natives to live here, and they named it San Pablo de Napeanos.\nIn the late 19th century, during the Amazon rubber boom, the city became the center of export of rubber production from the Amazon Basin and was the headquarters of the Peruvian Amazon Company (PAC). The city's economy was highly dependent on the PAC, controlled by Peruvian businessman Julio César Arana. The PAC kept indigenous workers in near slavery conditions through use of force and harsh treatment, until an investigation caused a reaction against the company. In addition, rubber seedlings had been smuggled out of the country and cultivated on plantations in Southeast Asia, undercutting prices of the Peruvian product. With the decline of the rubber industry, many workers and merchants left Iquitos.\nAs one of the leading cities, along with Manaus, during the Amazon rubber boom (1880–1914), Iquitos was influenced by the numerous Europeans who flocked to it. Architecture and cultural institutions established during this period expressed their own traditions. An opera house and Jewish cemetery were among the institutions established.\nLater in the 20th century, the city and region diversified its economy. The region exported timber, fish and its by-products, oil, minerals, and agricultural crops. It also derives revenue from tourism and related crafts. In 1999, the city consolidated its four municipalities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 374
+    },
+    "banned_terms": [
+      {
+        "term": "iquitos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1352,
+    "attempt": 1340,
+    "place_id": "gn-3903320",
+    "input": {
+      "place": {
+        "place_id": "gn-3903320",
+        "name": "Tarija",
+        "country": "Bolivia",
+        "subdivision": "Tarija Department",
+        "lat": -21.53549,
+        "lon": -64.72956
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarija",
+          "url": "https://en.wikipedia.org/wiki/Tarija",
+          "text": "Tarija or San Bernardo de la Frontera de Tarixa is a city in southern Bolivia. Founded in 1574, Tarija is the largest city and capital and municipality within the Tarija Department, with an airport offering regular service to primary Bolivian cities, like Bolivia capital La Paz, as well as a regional bus terminal with domestic and international connections. Its climate is semi-arid (BSh) with generally mild temperatures in contrast to the harsh cold of the Altiplano (e.g., La Paz) and the year-round humid heat of the Amazon Basin (e.g., Santa Cruz de la Sierra). Tarija has a population of 234,442 as of 2013.\nThe cities lies in a depression in the eastern Andes known as the Central Valley of Tarija."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "tarija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

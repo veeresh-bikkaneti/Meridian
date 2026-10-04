@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 1394,
+    "attempt": 1381,
+    "place_id": "gn-11995100",
+    "input": {
+      "place": {
+        "place_id": "gn-11995100",
+        "name": "Bazhong",
+        "country": "China",
+        "subdivision": "Sichuan",
+        "lat": 31.8694,
+        "lon": 106.74432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bazhong",
+          "url": "https://en.wikipedia.org/wiki/Bazhong",
+          "text": "Bazhong (Chinese: 巴中; pinyin: Bāzhōng; lit. 'centre of Ba') is a prefecture-level city in north-eastern Sichuan province, China. Its population was 2,712,894 at the 2020 census whom 1,064,766 lived in Bazhou and Enyang urban districts. As of the end of 2022, the resident population of Bazhong City was 2,658,800 people. At the end of 2024, the city's resident population was 2.613 million, including 1,278 million urban residents, and the urbanization rate of the resident population was 48.91%, an increase of 0.39 percentage points over the end of the previous year. At the end of the year, the registered population of the city was 3.543 million, a decrease of 23,100 compared with the end of the previous year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "bazhong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1395,
+    "attempt": 1382,
+    "place_id": "gn-1263012",
+    "input": {
+      "place": {
+        "place_id": "gn-1263012",
+        "name": "Miryalaguda",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 16.8722,
+        "lon": 79.56247
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miryalaguda",
+          "url": "https://en.wikipedia.org/wiki/Miryalaguda",
+          "text": "Miryalaguda is a city in Nalgonda district of the Indian state of Telangana. In 2015, the Government of India placed Miryalaguda under the Atal Mission for Rejuvenation and Urban Transformation scheme. Miryalaguda has received Skoch award in 2018 for its excellence in implementing \"Urban Reforms\".\n It is located about 44 kilometres (27 mi) from the district headquarters Nalgonda, 142 kilometres (88 mi) from the state capital Hyderabad. Popularly known as the \"Rice Bowl of Telangana\" due to its status as a major industrial hub with over 170 rice processing mills. It serves as a strategic gateway to the Krishna Valley stupas, providing the primary transport and commercial link to significant Buddhist heritage sites including Buddhavanam and Nandikonda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "miryalaguda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1396,
+    "attempt": 1383,
+    "place_id": "gn-1270079",
+    "input": {
+      "place": {
+        "place_id": "gn-1270079",
+        "name": "Hindupur",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 13.82807,
+        "lon": 77.49143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hindupur",
+          "url": "https://en.wikipedia.org/wiki/Hindupur",
+          "text": "Hindupur, also known as Hindupuram is the largest city in Sri Sathya Sai district of the Indian state of Andhra Pradesh. It is the headquarters of Hindupuram mandalam. Hindupuram is the Parliamentary Constituency in the newly formed Sri Sathya Sai district. It is located about 619 km from Amaravati, the capital of Andhra Pradesh, 67 km from district headquarters Puttaparthi.\nAs of 2011, Hindupuram municipality had a population of 151,835. It is an important local pilgrimage center with a number of temples in and around the city, including Sri Peta Venkata Ramana Swamy Temple, Sree Vasavi Kanyaka Parameshwari Temple, Guddam Sri Ranganath Swamy Temple, Sugur Sri Anjaneya Swamy Temple, and the historical Lepakshi Sri Veerabhadra Swamy Temple.\nHindupuram is connected to the major cities in the region by road and by train. This includes National Highway 44, Bangalore Highway [KA SH 9], Parigi Road, Lepakshi Road National Highway 544E (India), Kadiri Road National Highway 716G (India), and Penukonda Road. Hindupur Railway Station (code – 'HUP') in the Bengaluru City Railway Station KSR Bengaluru stretch of the South Western Railway zone is one of the busiest in the route. The Penukonda–Hindupur and Hindupur Industrial Area maintained by Andhra Pradesh Industrial Infrastructure Corporation and Hindupur's surrounding stretch has a number of industries involved in manufacturing, pharmaceutical, automobile and IT which makes Hindupur an industrial town in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "hindupur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1397,
+    "attempt": 1384,
+    "place_id": "gn-1271631",
+    "input": {
+      "place": {
+        "place_id": "gn-1271631",
+        "name": "Gangtok",
+        "country": "India",
+        "subdivision": "Sikkim",
+        "lat": 27.32574,
+        "lon": 88.61216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gangtok",
+          "url": "https://en.wikipedia.org/wiki/Gangtok",
+          "text": "Gangtok (Sikkimese: [ɡaŋt̪ʰòk]) is the capital and the most populous city of the Indian state of Sikkim. The seat of eponymous district, Gangtok is in the eastern Himalayan range, at an elevation of 1,650 m (5,410 ft). The city's population of 100,000 consists of the three Sikkimese ethnicities: the Bhutias, Lepchas, Indian Gorkhas as well as plainsmen from other states of India. Within the higher peaks of the Himalayas and with a year-round mild temperate climate, Gangtok is at the centre of Sikkim's tourism industry.\nGangtok rose to prominence as a popular Buddhist pilgrimage site after the construction of the Enchey Monastery in 1840. In 1894, the ruling Sikkimese Chogyal, Thutob Namgyal, transferred the capital to Gangtok. In the early 20th century, Gangtok became a major stopover on the trade route between Lhasa in Tibet and cities such as Kolkata (then Calcutta) in British India. After India won its independence from the British Empire in 1947, Sikkim chose to remain an independent monarchy, with Gangtok as its capital. After Sikkim's merger with India in 1975, Gangtok continued as the state capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "gangtok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1398,
+    "attempt": 1385,
+    "place_id": "gn-149703",
+    "input": {
+      "place": {
+        "place_id": "gn-149703",
+        "name": "Sumbawanga",
+        "country": "Tanzania",
+        "subdivision": "Rukwa",
+        "lat": -7.96667,
+        "lon": 31.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sumbawanga",
+          "url": "https://en.wikipedia.org/wiki/Sumbawanga",
+          "text": "Sumbawanga is a city located in western Tanzania. It is the capital of Rukwa Region and the municipal seat of Sumbawanga Urban District with postcode number 55100 . The district had a population of approximately 303,986 based on the 2022 census. Sumbawanga lies in the territory of the Wafipa Fipa  tribe and so many people speak Kifipa, as well as Kiswahili, the most widely used language of Tanzania.  The name of the town literally translates as \"throw away your witchcraft\", thought to be a warning from local spiritual \"healers\" to any bringing in superstitions and practices relating to spiritual healers from other areas. Until the 1980s approximately, Sumbawanga was a place where many witch doctors were located. Though fewer in numbers, there are still some healers who practice both in town and in the surrounding smaller villages on the plateau. The town has the largest hospital in the region, Rukwa General Hospital, which is government funded, as well as the smaller Dr. Atiman Hospital administrated and run by the Catholic Diocese of Sumbawanga.\nThe town acts as a supply and commercial center for the Rukwa Region and some governmental agencies are to be found there, notably the transport department for the region. Sumbawanga has both Libori and Moravian conference centres. A modest-size market is in the town centre where local produce may be found. This includes maize, rice, fruit, poultry and fish (from Lake Tanganyika and Lake Rukwa). Many imported plastic goods and electronics are available as well as bicycles and spares.  Although there are several fuel outlets, supply can be quite erratic because of the difficulties of transport from the coast.\nThe local economy is largely dependent on agriculture and small locally owned businesses. There is very limited industry or production in the town. Significant improvement has been made on the road to Mbeya as it is sealed to enable reliable all-weather access year round. This road, and its continuation north to Mpanda and Tabora or Kigoma, is now passable throughout the year.  The Tanzanian government has had contracts in place for upgrading large sections of these roads.  The town can be reached by flights operated by Auric Air or by bus from Mbeya which lies to the south with train links to the town of Kapiri Mposhi in Zambia, to Dar es Salaam. Rail is also available through Tabora from Mpanda in the north.  Mpanda also has an airport with a 2 km sealed runway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 407
+    },
+    "banned_terms": [
+      {
+        "term": "sumbawanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1399,
+    "attempt": 1386,
+    "place_id": "gn-1650217",
+    "input": {
+      "place": {
+        "place_id": "gn-1650217",
+        "name": "Banjarbaru",
+        "country": "Indonesia",
+        "subdivision": "South Kalimantan",
+        "lat": -3.4406,
+        "lon": 114.8365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banjarbaru",
+          "url": "https://en.wikipedia.org/wiki/Banjarbaru",
+          "text": "Banjarbaru is the capital city of South Kalimantan, one of the provinces in Indonesia. It is located 35 km (22 mi) southeast of Banjarmasin, the largest city of the province. The city had a population of 199,627 as of the 2010 Census, and 253,442 at the 2020 Census, and the official population estimate as at mid 2025 was 293,332 (comprising 147,053 males and 146,279 females). The large town of Martapura, with 161,290 inhabitants in 2025 (in Martapura and Martapura Timur Districts), lies immediately to the north of Banjarbaru in Banjar Regency, and in effect constitutes an extension of the city. The second largest city in the province after Banjarmasin, it is also part of Banjarbakula metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "banjarbaru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1400,
+    "attempt": 1387,
+    "place_id": "gn-1687894",
+    "input": {
+      "place": {
+        "place_id": "gn-1687894",
+        "name": "Santa Rosa",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.31222,
+        "lon": 121.11139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Rosa, Laguna",
+          "url": "https://en.wikipedia.org/wiki/Santa_Rosa,_Laguna",
+          "text": "Santa Rosa, officially the City of Santa Rosa (Filipino: Lungsod ng Santa Rosa), is a  component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 430,920 people.\nIt is the second largest local government unit in Laguna after Calamba. Located 40 kilometers (25 mi) south of Manila, it was rapidly developed into an urban area as a result of the growing congestion and conurbation of the Manila Metropolitan area. It is also the richest city in Luzon outside of Metro Manila in terms of annual income, which was recorded to be ₱4.99 billion as of 2022.\nSanta Rosa's name is derived from Saint Rose of Lima, its patron saint. The town was initially known for the Coca-Cola, RC Cola, and Toyota manufacturing plants in its industrial estates. It later became popular as the site of the Enchanted Kingdom theme park and several housing and commercial developments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "santa rosa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rosa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1401,
+    "attempt": 1388,
+    "place_id": "gn-1787227",
+    "input": {
+      "place": {
+        "place_id": "gn-1787227",
+        "name": "Yangzhou",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 32.39722,
+        "lon": 119.43583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangzhou",
+          "url": "https://en.wikipedia.org/wiki/Yangzhou",
+          "text": "Yangzhou is a prefecture-level city in central Jiangsu Province, East China. Sitting on the north bank of the Yangtze, it borders the provincial capital Nanjing to the southwest, Huai'an to the north, Yancheng to the northeast, Taizhou to the east, and Zhenjiang across the river to the south. Its population was 4,559,797 at the 2020 census and its urban area is home to 2,635,435 inhabitants, including three urban districts, currently in the agglomeration.\nHistorically, Yangzhou was one of the wealthiest cities in China, known at various periods for its great merchant families, poets, artists, and scholars. Its name (lit. \"Rising Prefecture\") refers to its former position as the capital of the ancient Yangzhou prefecture in imperial China. Yangzhou was one of the first cities to benefit from one of the earliest World Bank loans in China, used to construct Yangzhou thermal power station in 1994.\nYangzhou is also a major city for scientific research outputs, appearing among the world's top 200 cities as of 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "yangzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1402,
+    "attempt": 1389,
+    "place_id": "gn-1795565",
+    "input": {
+      "place": {
+        "place_id": "gn-1795565",
+        "name": "Shenzhen",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.54554,
+        "lon": 114.0683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shenzhen",
+          "url": "https://en.wikipedia.org/wiki/Shenzhen",
+          "text": "Shenzhen is a prefecture-level city in Guangdong, China. A special economic zone, it is located on the east bank of the Pearl River estuary on the central coast of Guangdong, bordering Hong Kong to the south, Dongguan to the north, Huizhou to the northeast, and Macau to the southwest. With a population of 18.2 million in 2025, Shenzhen is the third-most-populous city by urban population in China after Shanghai and Beijing. The Port of Shenzhen is the world's fourth-busiest container port. Shenzhen has established itself as a premier global metropolis with a GDP that has surpassed Hong Kong and Singapore in recent years.\nShenzhen was developed from a largely rural village area into a city in 1979. In the early 1980s, the reform and opening up introduced by Deng Xiaoping resulted in the city becoming the first special economic zone of China due to its close proximity to Hong Kong, attracting foreign direct investment and migrants searching for opportunities. In thirty years, the city's economy and population boomed and has since emerged as a hub for technology, international trade, and finance. As of 2026, Shenzhen has solidified its status as a premier global trading hub, though recent rankings continue to place it alongside other heavyweights like Singapore to rank as the No. 1 mainland Chinese city for foreign trade. \nShenzhen is home to the Shenzhen Stock Exchange, one of the largest stock exchanges in the world by market capitalization, and the Guangdong Free-Trade Zone. Shenzhen is ranked as an Alpha− (global first-tier) city by the GaWC. Its nominal GDP has surpassed not only Hong Kong, but another neighboring city, Guangzhou, and it is now a city with one of the ten largest economies in the world. Shenzhen also has the second-largest number of skyscrapers, fifth-highest number of billionaires, and the seventh-most Fortune Global 500 headquarters of any city in the world. It is also the eighth-most competitive and largest financial center in the world, and the world's 18th largest city by scientific research output, and has several higher education institutions, including Shenzhen University and SUSTech. Shenzhen railway station was the last stop on the mainland Chinese section of the Kowloon–Canton Railway.\nThe city is a global technology hub. In the media Shenzhen is sometimes called China's Silicon Valley. The city's entrepreneurial, innovative, and competitive-based culture has resulted in the city being home to numerous small manufacturers and software companies. Several of these firms have become large technology corporations, such as Huawei, Tencent, DJI, and Oppo. As an important international city, Shenzhen hosts numerous national and international events every year, such as the 2011 Summer Universiade and the China Hi-Tech Fair. Shenzhen is home to the main operations of BYD Company, and is the largest automobile manufacturing city in China. A large portion of Shenzhen's population are migrants from all over China, and the city's population structure skews younger than most cities in China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 483
+    },
+    "banned_terms": [
+      {
+        "term": "shenzhen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1403,
+    "attempt": 1390,
+    "place_id": "gn-2191562",
+    "input": {
+      "place": {
+        "place_id": "gn-2191562",
+        "name": "Dunedin",
+        "country": "New Zealand",
+        "subdivision": "Otago",
+        "lat": -45.87416,
+        "lon": 170.50361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunedin",
+          "url": "https://en.wikipedia.org/wiki/Dunedin",
+          "text": "Dunedin (  dun-EE-din; Māori: Ōtepoti) is the second-most populous city in the South Island of New Zealand (after Christchurch), and the principal city of the Otago region. Its name comes from Dùn Èideann (\"fort of Edin\"), the Scottish Gaelic name for Edinburgh, the capital of Scotland. With an estimated population of 132,800 as of June 2025, Dunedin is New Zealand’s seventh most populous metropolitan and urban area.\nFor cultural, geographical, and historical reasons, the city has long been considered one of New Zealand's four main centres. The urban area of Dunedin lies on the central-eastern coast of Otago, surrounding the head of Otago Harbour. The harbour and hills around Dunedin are the remnants of an extinct volcano. The city suburbs extend out into the surrounding valleys and hills, onto the isthmus of the Otago Peninsula, and along the shores of the Otago Harbour and the Pacific Ocean.\nArchaeological evidence points to the beginning of a lengthy occupation of the Dunedin area by Māori between 1250 and 1300 AD, with many pā constructed during the Classical period. Migrations by Kāi Tahu in the mid-17th century were followed by the arrival of Europeans sealers and whalers in the early 1800s. After an initial period of co-habitation and trade, the local Māori population was heavily reduced by introduced illnesses such as measles.\nSealer and ex-convict William Tucker was the first European to settle in the region, building a house at Murderers Beach in 1815. The Ōtākou whaling station established by the Weller Brothers was briefly one of the largest European settlements in New Zealand, but closed in the 1840s after whaling stocks had been hunted to near-extinction. \nA Scottish settlement was established in 1848 by the Lay Association of the Free Church of Scotland, and between 1855 and 1900 many thousands of Scots emigrated to the incorporated city. Dunedin's population and wealth boomed during the 1860s' Otago gold rush. For a brief period of time it became New Zealand's largest urban area. The Union Company, which became the biggest shipping line in the Southern Hemisphere, was founded in Dunedin in 1875. The city saw substantial migration from mainland China at the same time, predominantly from Guangdong and Guangxi. Dunedin is home to New Zealand's oldest Chinese community. \nToday, Dunedin has a diverse economy which includes manufacturing, publishing, arts, tourism and technology-based industries. The mainstay of the city's economy remains centred on tertiary education, with students from the University of Otago, New Zealand's oldest university, and the Otago Polytechnic, accounting for a large proportion of the population; 21.6 per cent of the city's population was aged between 15 and 24 at the 2006 census, compared to the New Zealand average of 14.2 per cent.  Dunedin is also noted for its vibrant music scene, as the 1980s birthplace of the Dunedin sound (which heavily influenced grunge, indie and modern alternative rock). In 2014, the city was designated as a UNESCO City of Literature."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 488
+    },
+    "banned_terms": [
+      {
+        "term": "dunedin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1404,
+    "attempt": 1391,
+    "place_id": "gn-2314705",
+    "input": {
+      "place": {
+        "place_id": "gn-2314705",
+        "name": "Kikwit",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Kwilu",
+        "lat": -5.04098,
+        "lon": 18.81619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kikwit",
+          "url": "https://en.wikipedia.org/wiki/Kikwit",
+          "text": "Kikwit is the largest city in Kwilu Province, in the southwest of the Democratic Republic of the Congo. Located at the furthest navigable point of the Kwilu River, the urban area of Kikwit is primarily on the river's left bank. With over half a million inhabitants, Kikwit is a secondary city of the country. It is divided into four communes: Kazamba, Lukemi, Lukolela, and Nzinda.\nOriginating as a small village, Kikwit was developed by Belgian colonists in the late 19th century and became a centre of ivory and rubber trade. After the establishment of the Belgian Congo, Kikwit was granted to the company Huileries du Congo Belge, which established palm oil plantations in the 1910s and 1920s. Kikwit became an administrative centre and the largest producer of palm oil in the Kwilu region. Beginning in 1959, Kikwit was a centre of political activities of the Parti Solidaire Africain. The city was impacted by the Kwilu rebellion of the 1960s, but the city centre was not a conflict zone. Kikwit's economy and infrastructure declined by the 1990s. In 1995, the city saw an outbreak of the deadly Ebola virus.\nKikwit's population includes members of the Pende and Mbala ethnic groups, and the Kongo language is widely spoken. The city has thousands of migrants, including workers from rural areas. About 60% of the population is Catholic, and the city is the headquarters of the Catholic Diocese of Kikwit. Economic activities include agriculture, commercial transport, and informal enterprises. The city has high rates of poverty and of youth unemployment, which contribute to criminal activity, including by Kuluna gangs. The city has poor infrastructure, lacking a municipal water supply system or electrical grid. Kikwit is served by a single highway, National Road 1, as well as Kikwit Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "kikwit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1405,
+    "attempt": 1392,
+    "place_id": "gn-2325590",
+    "input": {
+      "place": {
+        "place_id": "gn-2325590",
+        "name": "Osogbo",
+        "country": "Nigeria",
+        "subdivision": "Osun State",
+        "lat": 7.77104,
+        "lon": 4.55698
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osogbo",
+          "url": "https://en.wikipedia.org/wiki/Osogbo",
+          "text": "Osogbo   (also known as Oṣogbo, and seldomly as Oshogbo) is a city in Nigeria. It became the capital city of Osun State in 1991. Osogbo city seats the Headquarters of both Osogbo Local Government Area (situated at Oke-Baale Area of the city) and Olorunda Local Government Area (situated at Igbonna Area of the city). It is some 88 kilometers by road northeast of Ibadan. It is also 108 kilometres (67 mi) by road south of Ilorin (capital and largest city of Kwara State) and 108 kilometres (67 mi) northwest of Akure. Osogbo shares boundaries with Ikirun, Ilesa, Ede, Ogbomosho and Iragbiji and it is easily accessible from any part of the state because of its central nature. It is about 48 km from Ife, 32 km from Ilesa, 46 km from Iwo, 48 km from Ikire and 46 km from Ila-Orangun; the city had a population of about 200,000  people and an approximate land area of 126 km. The postal code of the area is 230. The current chairman of the council is in dispute."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "osogbo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1406,
+    "attempt": 1393,
+    "place_id": "gn-245785",
+    "input": {
+      "place": {
+        "place_id": "gn-245785",
+        "name": "Abéché",
+        "country": "Chad",
+        "subdivision": "Ouadaï",
+        "lat": 13.82916,
+        "lon": 20.8324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abéché",
+          "url": "https://en.wikipedia.org/wiki/Abéché",
+          "text": "Abéché (Arabic: أبشه, Absha) is a city in central-eastern Chad and the capital of the Ouaddaï Region. By road it is 749 kilometres (465 mi) northeast of the national capital of N'Djamena and 164 kilometres (102 mi) northwest of Adre, on the border with Sudan. Surrounded by savanna, it is one of the largest cities in the country. It has a rich Islamic heritage, situated along the trans-Saharan trade route and is an important cattle raising centre, with the principal market in the country for camel exports and rugs. As of 2012 it had a population of 76,492 people.\nThe city contains the remnants of the ancient capital, including palaces, mosques, and the tombs of former sultans. The Grand Mosque on the central square (the Place de l'Indépendance), is one of the oldest and most significant mosques in the country, built in the 19th century. The city is served by Abéché Airport and contains the Lycee Franco-Arabe school."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "abeche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1407,
+    "attempt": 1394,
+    "place_id": "gn-2989317",
+    "input": {
+      "place": {
+        "place_id": "gn-2989317",
+        "name": "Orléans",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 47.90248,
+        "lon": 1.90407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orléans",
+          "url": "https://en.wikipedia.org/wiki/Orléans",
+          "text": "Orléans (US: ; French: [ɔʁleɑ̃] ) is a city in north-central France, about 120 kilometres (74 miles) southwest of Paris. It is the prefecture of the department of Loiret, within the region of Centre-Val de Loire.\nOrléans is located on the river Loire nestled in the heart of the Loire Valley, a region classified as a World Heritage Site where the river curves west to head to the Atlantic ocean after its northward journey from the Massif Central. In 2023, the city had 116,357 inhabitants within its municipal boundaries. Orléans is the center of Orléans Métropole that has a population of 297,350 (2023). The larger metropolitan area has a population of 454,208, the 20th largest in France.\nThe city owes its development from antiquity to the commercial exchanges resulting from the river. An important river trade port, it was the headquarters of the community of merchants frequenting the Loire. It was the capital of the Kingdom of France during the Merovingian period and played an important role in the Hundred Years' War, particularly known for the role of Joan of Arc during the siege of Orléans. Every first week of May since 1432, the city pays homage to the \"Maid of Orléans\" during the Johannic Holidays which has been listed in the inventory of intangible cultural heritage in France. One of Europe's oldest universities was created in 1306 by Pope Clement V and re-founded in 1966 as the University of Orléans, hosting more than 20,000 students in 2019.\nThe Île d'Orléans in Quebec, Canada, takes its name from Orléans, as do Orléans, Ontario; Orleans, Massachusetts; and the city of New Orleans, Louisiana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "orleans",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1408,
+    "attempt": 1395,
+    "place_id": "gn-300797",
+    "input": {
+      "place": {
+        "place_id": "gn-300797",
+        "name": "Silopi",
+        "country": "Türkiye",
+        "subdivision": "Şırnak",
+        "lat": 37.24379,
+        "lon": 42.46345
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silopi",
+          "url": "https://en.wikipedia.org/wiki/Silopi",
+          "text": "Silopi (Kurdish: Silopî) is a city and seat of Silopi District in the Şırnak Province of Turkey. The city is mainly populated by Kurds of Sipêrtî and Zewkan tribes and had a population of 108,880 in 2023. It is considered to be part of Turkish Kurdistan.\nLarge sections of the city were destroyed in 2016 during clashes between the Turkish army and Kurdish youths, some of whom were allegedly affiliated with the Kurdistan Workers' Party (PKK). The predominantly Kurdish character of Silopi reflects its location in the broader Kurdish-majority region of Şırnak Province. Sociolinguistic research on language demographics in Turkey has identified Silopi's area as among the regions with the highest concentrations of Kurmanji (Northern Kurdish) speakers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "silopi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1409,
+    "attempt": 1396,
+    "place_id": "gn-325363",
+    "input": {
+      "place": {
+        "place_id": "gn-325363",
+        "name": "Adana",
+        "country": "Türkiye",
+        "subdivision": "Adana",
+        "lat": 36.98615,
+        "lon": 35.32531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adana",
+          "url": "https://en.wikipedia.org/wiki/Adana",
+          "text": "Adana is a large city in southern Turkey. The city is situated on the Seyhan River, 35 km (22 mi) inland from the northeastern shores of the Mediterranean Sea. It is the administrative seat of the Adana province, and has a metro population of 1,816,750 (Seyhan, Yuregir, Cukurova, Saricam). \nAdana lies in the heart of Cilicia, a region of around 6 million people. The region was particularly important in the classical world due to its location by a pass in the Taurus Mountains (both for military campaigns and trade routes), and its wealth in metal and agricultural assets, including the large fertile plain of Çukurova. \nAdana remains a centre for regional trade, and public and private services. Agriculture, healthcare and logistics are important parts of the economy. The city is connected to Tarsus and Mersin by TCDD train. The closest public airport is Çukurova International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "adana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1410,
+    "attempt": 1397,
+    "place_id": "gn-3428775",
+    "input": {
+      "place": {
+        "place_id": "gn-3428775",
+        "name": "San Justo",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.68107,
+        "lon": -58.56379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Justo, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/San_Justo,_Buenos_Aires",
+          "text": "San Justo is a city and the seat of government of La Matanza Partido, Buenos Aires Province, Argentina.\nSan Justo is a relatively prosperous city enjoying a variety of commercial and cultural resources.  Its strategic location on National Highway 3 and Provincial Highway 4 (the Greater Buenos Aires beltway), make it among the most active, for its size, in the partido.\nPedro Bonifacio Palacios, an Argentine poet, was born in San Justo, and one of the main streets of the city is named in his honor under his nickname Almafuerte.\nThe Plaza San Martín is the center of La Matanza and its civic center, where the main institutions of the partido are located within a four-block radius."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "san justo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "justo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1411,
+    "attempt": 1398,
+    "place_id": "gn-3456814",
+    "input": {
+      "place": {
+        "place_id": "gn-3456814",
+        "name": "Montes Claros",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -16.735,
+        "lon": -43.86167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montes Claros",
+          "url": "https://en.wikipedia.org/wiki/Montes_Claros",
+          "text": "Montes Claros is a Brazilian municipality located in the northern region of the state of Minas Gerais. Situated north of the state capital, Belo Horizonte, it lies approximately 422 km (262 mi) away. The municipality spans an area of 3,589.811 km2 (1,386.034 sq mi), with 73.51 km2 (28.38 sq mi) within its urban area. As of the 2022 census, its population was 414,240, making it the fifth most populous municipality in Minas Gerais.\nMontes Claros achieved emancipation in the 19th century and has long relied on industry and commerce as key economic drivers, establishing itself as a regional industrial hub. The municipality is currently divided into ten districts and further subdivided into approximately 200 neighborhoods and villages. It boasts a variety of natural, historical, and cultural attractions, including the Milton Prates Municipal Park, Guimarães Rosa Park, and Sapucaia Park, which are significant green spaces, as well as notable structures such as the Cathedral of Our Lady of Aparecida and the Small Church of the Little Hills, alongside numerous archaeological sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "montes claros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "montes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "claros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1412,
+    "attempt": 1399,
+    "place_id": "gn-3836277",
+    "input": {
+      "place": {
+        "place_id": "gn-3836277",
+        "name": "Santa Fe",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -31.64881,
+        "lon": -60.70868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Fe, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Santa_Fe,_Argentina",
+          "text": "Santa Fe de la Vera Cruz (Spanish pronunciation: [ˈsanta ˈfe ðe la ˈβeɾa ˈkɾus], lit. 'Holy Faith of the True Cross'), usually called just Santa Fe, is the capital city of the province of Santa Fe, Argentina.  It is situated in north-eastern Argentina, near the junction of the Paraná and Salado rivers. It lies 15 kilometres (9.3 mi) from the Hernandarias Subfluvial Tunnel that connects it to the city of Paraná. The city is also connected by canal with the port of Colastiné on the Paraná River.  Santa Fe de la Vera Cruz has about 423,212 people per the 2018 census [INDEC]. The metropolitan area has a population of 653,073, making it the eighth largest in Argentina.\nSanta Fe de la Vera Cruz is linked to Rosario (170 km (106 mi) to the south), the largest city in the province, by the Brigadier Estanislao López Highway and by National Route 11, which continues south towards Buenos Aires. Córdoba is about (340 km (211 mi) west of Santa Fe,  through the National Route 19. Santa Fe is home to the Sauce Viejo Airport with daily direct flights to Rosario and Aeroparque Jorge Newbery in Buenos Aires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "santa fe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fe",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1413,
+    "attempt": 1400,
+    "place_id": "gn-3899539",
+    "input": {
+      "place": {
+        "place_id": "gn-3899539",
+        "name": "Antofagasta",
+        "country": "Chile",
+        "subdivision": "Antofagasta",
+        "lat": -23.65094,
+        "lon": -70.39752
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antofagasta",
+          "url": "https://en.wikipedia.org/wiki/Antofagasta",
+          "text": "Antofagasta (Spanish pronunciation: [antofaˈɣasta] ) is a port city in northern Chile, about 1,100 kilometres (700 mi) north of Santiago. It is the capital of Antofagasta Province and Antofagasta Region. As of the 2024 census, with a population of 401,096, it is the 5th-largest city in Chile.\nOnce claimed by Bolivia following the Spanish American wars of independence, Antofagasta was captured by Chile on 14 February 1879, triggering the War of the Pacific (1879–83). Chilean sovereignty was officially recognised by Bolivia under the terms of the 1904 Treaty of Peace and Friendship.\nThe city of Antofagasta is closely linked to mining activity, being a port and the chief service hub for one of Chile's major mining areas. While silver and saltpeter mining have been historically important for Antofagasta, since the mid-19th century copper mining is by far the most important mining activity for Antofagasta, fueling a steady growth in the areas of construction, retail, hotel accommodations, population growth and skyline development until the end of the 2000s commodities boom in 2013. Since the 2010s Antofagasta is also a service hub for lithium mining.\nAntofagasta is the seat of one of Chile's three environmental courts and is also a university city being the home of the Catholic University of the North and the University of Antofagasta.\nIn 2012, Antofagasta has the highest GDP per capita of Chile, US$37,000 and the 3rd place for Human Development Index just after Metropolitana de Santiago Region and Magallanes and Antártica Chilena Region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "antofagasta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

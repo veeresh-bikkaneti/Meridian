@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 1313,
+    "attempt": 1301,
+    "place_id": "gn-2240449",
+    "input": {
+      "place": {
+        "place_id": "gn-2240449",
+        "name": "Luanda",
+        "country": "Angola",
+        "subdivision": "Luanda",
+        "lat": -8.83682,
+        "lon": 13.23432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luanda",
+          "url": "https://en.wikipedia.org/wiki/Luanda",
+          "text": "Luanda is the capital and largest city of Angola. It is Angola's primary port, and its major industrial, cultural and urban centre. Located on Angola's northern Atlantic coast, Luanda is Angola's administrative centre, its chief seaport, and also the capital of the Luanda Province. Luanda and its metropolitan area is the most populous Portuguese-speaking national capital in the world and the most populous Lusophone city outside Brazil. In 2024 the population reached more than 8.8 million inhabitants (a third of Angola's population).\nAmong the oldest colonial cities of Africa, Luanda was founded in January 1576 as São Paulo da Assunção de Loanda by Portuguese explorer Paulo Dias de Novais, being occasionally called \"Leonda\" or \"St Paul de Leonda\" by non-Portuguese sources. The city served as the centre of the slave trade to Brazil before the institution was prohibited.\nAt the start of the Angolan Civil War in 1975, most of the white Portuguese left as refugees, principally migrating to Portugal. Luanda's population increased greatly from internal refugees fleeing the war, but its infrastructure was inadequate to handle the increase. This also caused the exacerbation of slums, or musseques, around Luanda.\nIn the 21st century, the city has been undergoing a major reconstruction. Many new large developments are taking place that will alter its cityscape significantly.\nIndustries present in the city include the processing of agricultural products, beverage production, textile, cement, new car assembly plants, construction materials, plastics, metallurgy, cigarettes and shoes. The city is also notable as an economic centre for oil, and a refinery is located in the city.\nLuanda has been ranked as one of the most expensive cities in the world for expatriates. The inhabitants of Luanda are mostly members of the ethnic Ambundu people. In recent decades of the 21st century, the number of ethnic Bakongo and Ovimbundu have also increased. Ethnic Europeans are mainly Portuguese.\nLuanda was the main host city for the matches of the 2010 African Cup of Nations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "luanda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1314,
+    "attempt": 1302,
+    "place_id": "gn-2326899",
+    "input": {
+      "place": {
+        "place_id": "gn-2326899",
+        "name": "Okrika",
+        "country": "Nigeria",
+        "subdivision": "Rivers State",
+        "lat": 4.74215,
+        "lon": 7.08368
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Okrika",
+          "url": "https://en.wikipedia.org/wiki/Okrika",
+          "text": "Okrika   is a town and Local Government Area (LGA) in Rivers State, Nigeria, with Okrika town serving as its administrative headquarters.\nOkrika LGA is one of the 10 ijaw LGAs in Rivers State. It lies within the Rivers East Senatorial District and shares boundaries with Eleme LGA to the north and east, Ogu/Bolo LGA to the south, and Port Harcourt LGA to the west.\nAs of 2022, the Rivers State Primary Health Care Management Board estimated the population of Okrika LGA at over 379,000, distributed across 143 communities.\nOkrika's primary economic activity is fishing, while Christianity is the dominant religion, with some residents practicing African Traditional Religion. Many residents in Okirika are from neighbouring Ijaw villages, which has influenced Okirika culture.\nThe town is located at an average elevation of 452 m (1,483 ft) and lies to the north of the Bonny River on Okrika Island, approximately 56 km (35 mi) from the Bight of Bonny. It is accessible to vessels with a maximum draft of 9 m (30 ft).\nInitially established as a fishing settlement by Ijaw migrants from various central Ijaw clans and from the Wilberforce Island region, Okrika became the capital of the Okrika Kingdom in the early 17th century. During this period, the community, like others in the region, was involved in the slave trade. After the abolition of the slave trade in the 1830s, Okrika became a port for exporting palm oil, though it was less prominent than Bonny (46 kilometres or 29 miles to the south) and Opobo (81 kilometres or 50 miles to the east-southeast).\nBy 1912, Okrika had lost its significance as a trading hub, overshadowed by Port Harcourt. It regained commercial relevance in 1965 with the completion of the Port Harcourt refinery and the construction of pipelines to a jetty on Okrika Mainland. The area also hosts the Alakiri gas plant, which supplies gas to the refinery and other facilities.\nCurrently, refined petroleum products are one of Okrika's main exports. The town also engages in local trade of fish, oil palm products, processed salt, cassava, taro, plantains, and yams. However, the fishing industry has been impacted by environmental pollution linked to crude oil activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 363
+    },
+    "banned_terms": [
+      {
+        "term": "okrika",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1315,
+    "attempt": 1303,
+    "place_id": "gn-2409306",
+    "input": {
+      "place": {
+        "place_id": "gn-2409306",
+        "name": "Freetown",
+        "country": "Sierra Leone",
+        "subdivision": "Western Area",
+        "lat": 8.48714,
+        "lon": -13.2356
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Freetown",
+          "url": "https://en.wikipedia.org/wiki/Freetown",
+          "text": "Freetown (Krio: Fritɔun) is the capital and largest city of Sierra Leone. It is a major port city on the Atlantic Ocean and is located in the Western Area of the country. Freetown is Sierra Leone's major urban, economic, financial, cultural, educational and political centre, as it is the seat of the Government of Sierra Leone. The population of Freetown was 1,347,559 as of the 2024 census.\nThe city's economy revolves largely around its harbour, which occupies a part of the estuary of the Sierra Leone River in one of the world's largest natural deep water harbours.\nAlthough the city has traditionally been the homeland of the Sierra Leone Creole people, the population of Freetown is ethnically, culturally, and religiously diverse. The city is home to a significant population of all of Sierra Leone's ethnic groups, with no single ethnic group forming more than 27% of the city's population. As in virtually all parts of Sierra Leone, the Krio language of the Sierra Leone Creole people is Freetown's primary language of communication and is by far the most widely spoken language in the city.\nThe city of Freetown was founded on March 11, 1792, by 1,196 African Americans under the guidance of abolitionist Lieutenant John Clarkson at the foot of the Cotton Tree, and the city became a settlement for free and freed African American, Afro-Caribbean and Liberated African slaves. Their descendants are known as the Creole people. Before the arrival of Europeans, the local Temne and Loko people were living in villages on the land near the area that later became known as Freetown.\nFreetown is locally governed by a directly elected Freetown City Council, headed by a mayor, who also is directly elected; elections are held every four years. The mayor of Freetown is Yvonne Aki Sawyerr, who was sworn in on 11 May 2018, after her victory in the 2018 mayoral election; she was re-elected in 2022.\nThe Freetown city council has its own municipal police force."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 330
+    },
+    "banned_terms": [
+      {
+        "term": "freetown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1316,
+    "attempt": 1304,
+    "place_id": "gn-2706767",
+    "input": {
+      "place": {
+        "place_id": "gn-2706767",
+        "name": "Helsingborg",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 56.04673,
+        "lon": 12.69437
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Helsingborg",
+          "url": "https://en.wikipedia.org/wiki/Helsingborg",
+          "text": "Helsingborg (, US also ; Swedish: [hɛlsɪŋˈbɔrj] ) is a city and the seat of Helsingborg Municipality, Scania (Skåne), Sweden. It is the second-largest city in Scania (after Malmö) and ninth-largest in Sweden, with a population of 151,404 (2024). Helsingborg is the central urban area of northwestern Scania and Sweden's closest point to Denmark: the Danish city Helsingør is clearly visible about 4 km (2.5 mi) to the west on the other side of the Öresund. \nHistoric Helsingborg, with its many old buildings, is a scenic coastal city. The buildings are a blend of old-style stone-built churches and a 600-year-old medieval fortress (Kärnan) in the city centre, and more modern commercial buildings. The streets vary from wide avenues to small alley-ways. Kullagatan, the main pedestrian shopping street in the city, was the first pedestrian shopping street in Sweden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "helsingborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1317,
+    "attempt": 1305,
+    "place_id": "gn-2778067",
+    "input": {
+      "place": {
+        "place_id": "gn-2778067",
+        "name": "Graz",
+        "country": "Austria",
+        "subdivision": "Styria",
+        "lat": 47.06733,
+        "lon": 15.44197
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Graz",
+          "url": "https://en.wikipedia.org/wiki/Graz",
+          "text": "Graz (German: [ɡraːts] ) is the capital of the Austrian state of Styria and the second-largest city in Austria, after Vienna. On 1 January 2026, Graz had a population of around 307,912 to 345,391 including residents with a secondary residence. In 2023, the population of the Graz functional urban area was 660,238. The city is an important centre of higher education, with four universities and four other higher education institutions; together, they had more than 63,000 students as of 10 June 2023. Its historic centre (Altstadt) is considered one of the best-preserved urban centres in Central Europe.\nThe earliest documented mention of Graz dates from the 12th century, when it developed as a fortified settlement under the rule of the Babenbergs. During the Late Middle Ages, the city became an important commercial and administrative centre. From the 14th century onward, it served as the residence of the Inner Austrian branch of the Habsburg dynasty, a role that contributed to its political, cultural and architectural development. Many Renaissance and Baroque buildings from this period remain part of the cityscape. Graz also held strategic military importance as a stronghold against the Ottoman Empire, particularly through the fortifications on the Schlossberg. In the 19th and 20th centuries, industrialisation and urban growth helped establish Graz as a major industrial, educational and cultural centre in southern Austria.\nIn 1999, the historic centre of Graz was added to the UNESCO list of World Heritage Sites; in 2010, the designation was expanded to include Eggenberg Palace (German: Schloss Eggenberg) on the western edge of the city. Graz was designated the European Capital of Culture in 2003 and became a City of Culinary Delights in 2008. It is also recognised as a City of Design within UNESCO's Creative Cities Network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 292
+    },
+    "banned_terms": [
+      {
+        "term": "graz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1318,
+    "attempt": 1306,
+    "place_id": "gn-2790471",
+    "input": {
+      "place": {
+        "place_id": "gn-2790471",
+        "name": "Namur",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.4669,
+        "lon": 4.86746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Namur",
+          "url": "https://en.wikipedia.org/wiki/Namur",
+          "text": "Namur (French: [namyʁ] ; Walloon: Nameur; Dutch: Namen [ˈnaːmə(n)] ) is a city and municipality in Wallonia, Belgium. It is the capital both of the province of Namur and of Wallonia, hosting the Parliament of Wallonia, the Government of Wallonia and its administration.\nNamur stands at the confluence of the rivers Sambre and Meuse and straddles three different regions – Hesbaye to the north, Condroz to the south-east, and Entre-Sambre-et-Meuse to the south-west. The city of Charleroi is located to the west. The language spoken is French.\nThe municipality consists of the following sub-municipalities: Beez, Belgrade, Boninne, Bouge, Champion, Cognelée, Daussoulx, Dave, Erpent, Flawinne, Gelbressée, Jambes, Lives-sur-Meuse, Loyers, Malonne, Marche-les-Dames, Namur proper, Naninne, Saint-Servais, Saint-Marc, Suarlée, Temploux, Vedrin, Wépion, and Wierde."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "namur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1319,
+    "attempt": 1307,
+    "place_id": "gn-3114711",
+    "input": {
+      "place": {
+        "place_id": "gn-3114711",
+        "name": "Oviedo",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.36029,
+        "lon": -5.84476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oviedo",
+          "url": "https://en.wikipedia.org/wiki/Oviedo",
+          "text": "Oviedo (Spanish: [oˈβjeðo] ), officially known by the bilingual name Oviedo / Uviéu (Asturian: [uˈβjew], locally Uvieo [uˈβje.o]) is the capital city of the Principality of Asturias in northern Spain and the administrative and commercial centre of the region. With a population of 220,027, it is also the 2nd-largest city in Asturias.\nOviedo is located approximately 24 km (15 mi) southwest of Gijón and 23 km (14 mi) southeast of Avilés, both of which lie on the shoreline of the Bay of Biscay. Oviedo's proximity to the ocean of less than 30 kilometres (19 mi) in combination with its elevated position with areas of the city more than 300 metres above sea level causes the city to have a maritime climate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "oviedo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1320,
+    "attempt": 1308,
+    "place_id": "gn-3465476",
+    "input": {
+      "place": {
+        "place_id": "gn-3465476",
+        "name": "Coronel Fabriciano",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.51861,
+        "lon": -42.62889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coronel Fabriciano",
+          "url": "https://en.wikipedia.org/wiki/Coronel_Fabriciano",
+          "text": "Coronel Fabriciano is a municipality in the state of Minas Gerais in the Southeast region of Brazil. It is located in the region of Vale do Rio Doce and is situated 200 km from the state capital. The municipal population was estimated in 2022 Census by IBGE in 104,736 inhabitants. The area is 221.252 km2 (85.426 sq mi) (13.1549 km2 (5.0791 sq mi) of urban area).\nThe municipality was emancipated from Antônio Dias in 1948 and its name is a tribute to Lieutenant colonel Fabriciano Felisberto Carvalho de Brito. The town was situated in the Vale do Aço (Steel Valley) metropolitan area, between the largest steel industries of Minas Gerais state; Usiminas, in Ipatinga, and the Aperam South America, in Timóteo. These industries were situated in Fabriciano at they time they were constructed, and were essential to the development of the city.  However, these facilities are located within the area of Ipatinga and Timóteo respectively, which were emancipated from Coronel Fabricano, and incorporated proper in 1964.\nCoronel Fabriciano is located in the Serra dos Cocais, home of many natural attractions of the city like the \"Pedra Dois Irmãos\" (Two Brothers stone), the \"Pedra do Caladão\" (Silent stone), the \"Cachoeira do Escorregador\" (slide waterfalls), the \"Trilhas da Mamucha\" (Mamucha trails), and other waterfalls and trails.  Outdoor sports are popular such as hiking, trekking, mountain biking, parachute jumping, and 4x4 offroading. The city also features historical monuments like the \"Catedral de São Sebastião\" (Saint Sebastian Cathedral), the \"Colégio Angélica\" (Angélica College) and the \"Monumento Terra Mãe\" (motherland monument).\nThe Human Development Index (HDI) is 0.755, classified as high by the United Nations Development Programme (UNDP)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "coronel fabriciano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coronel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fabriciano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1321,
+    "attempt": 1309,
+    "place_id": "gn-3717588",
+    "input": {
+      "place": {
+        "place_id": "gn-3717588",
+        "name": "Saint-Marc",
+        "country": "Haiti",
+        "subdivision": "Artibonite",
+        "lat": 19.11136,
+        "lon": -72.70078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Marc",
+          "url": "https://en.wikipedia.org/wiki/Saint-Marc",
+          "text": "Saint-Marc (French pronunciation: [sɛ̃ maʁk]; Haitian Creole: Sen Mak) is a commune in western Haiti in Artibonite departement. Its geographic coordinates are 19°7′N 72°42′W. At the 2015 Census the commune had 266,642 inhabitants. It is one of the biggest cities, second to Gonaïves, between Port-au-Prince and Cap-Haïtien.\nBefore the settlement of the French, the region was known as Amani-y ad part of the Xaragua caciquat.\nThe port of Saint-Marc is currently the preferred port of entry for consumer goods coming into Haiti.  Reasons for this may include its location away from volatile and congested Port-au-Prince as well as its central location relative to a large group of Haitian cities including Cap-Haïtien, Carrefour, Delmas, Fort-Liberté, Gonaïves, Hinche, Limbe, Pétion-Ville, Port-de-Paix, and Verrettes.  These cities, together with their surrounding areas, contain nearly eight million of Haiti's ten million people (2009).\nIn 1905 the Compagnie Nationale or National Railroad built a 100 km railroad north to Saint-Marc from the national capital of Port-au-Prince. The track was later extended another 30 km east to Verrettes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "saint marc",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marc",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1322,
+    "attempt": 1310,
+    "place_id": "gn-5992996",
+    "input": {
+      "place": {
+        "place_id": "gn-5992996",
+        "name": "Kitchener",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.42537,
+        "lon": -80.5112
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kitchener, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Kitchener,_Ontario",
+          "text": "Kitchener is a city in the Canadian province of Ontario, about 100 km (62 mi) west of Toronto. It is one of three cities that make up the Regional Municipality of Waterloo and is the regional seat. Kitchener was known as Berlin until a 1916 referendum changed its name. The city covers an area of 136.86 km2, and had a population of 256,885 at the time of the 2021 Canadian census.\nThe Regional Municipality of Waterloo has 673,910 people as of year-end 2023, making it the 10th-largest census metropolitan area (CMA) in Canada and the fourth-largest CMA in Ontario. Kitchener and Waterloo are considered twin cities, which are often referred to jointly as \"Kitchener–Waterloo\" (K–W), although they have separate municipal governments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "kitchener",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1323,
+    "attempt": 1311,
+    "place_id": "gn-710719",
+    "input": {
+      "place": {
+        "place_id": "gn-710719",
+        "name": "Chernivtsi",
+        "country": "Ukraine",
+        "subdivision": "Chernivtsi",
+        "lat": 48.29045,
+        "lon": 25.93241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chernivtsi",
+          "url": "https://en.wikipedia.org/wiki/Chernivtsi",
+          "text": "Chernivtsi (Ukrainian: Чернівці, pronounced [tʃern⁽ʲ⁾iu̯ˈts⁽ʲ⁾i] ; pronounced [tʃernəˈutsʲ] ; see also other names) is a city in southwestern Ukraine on the upper course of the Prut River. Formerly the capital of the historic region of Bukovina, which is now divided between Romania and Ukraine, Chernivtsi serves as the administrative center for the Chernivtsi urban hromada, the Chernivtsi Raion, and the oblast itself. The Chernivtsi population is 264,298 (2022 estimate), and the latest census in 2001 was 240,600.\nThe first document that refers to this city dates back to 1408, when Chernivtsi was a town in the region of Moldavia. Initially a defensive fortification, it became the center of Bukovina in 1488. In 1538, the Principality of Moldavia came under Polish suzerainty. Later it came under the rule of Ottoman Empire, formally remaining under Moldavian control until 1774, when Austria took control of Bukovina in the aftermath of the Russo-Turkish War. Until 1848 Chernivtsi (known at that time as Czernowitz) was the center of Galicia's Bukovina District, and afterwards served as the capital of the Duchy of Bukovina. In the aftermath of World War I, Romania united with Bukovina in 1918, which led to the city regaining its Romanian name of Cernăuți; this lasted until the Soviets occupied Bessarabia and Northern Bukovina. Chernivtsi was under the control of the Soviet Union from 1940 to 1941, after which Romania recovered the city, and then again from 1944 until the dissolution of the Soviet Union, after which it became part of independent Ukraine.\nChernivtsi is viewed as one of Western Ukraine's main cultural centers. The city is also considered one of Ukraine's important educational and architectural sites. Historically a cosmopolitan community, Chernivtsi was once dubbed \"Little Vienna\" and \"Jerusalem upon the Prut\". The city is a major regional rail and road transportation hub, also housing an international airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "chernivtsi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1324,
+    "attempt": 1312,
+    "place_id": "gn-884979",
+    "input": {
+      "place": {
+        "place_id": "gn-884979",
+        "name": "Mutare",
+        "country": "Zimbabwe",
+        "subdivision": "Manicaland",
+        "lat": -18.9707,
+        "lon": 32.67086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mutare",
+          "url": "https://en.wikipedia.org/wiki/Mutare",
+          "text": "Mutare, known as Umtali until 1982, is the capital and largest city in the province of Manicaland. It is the third-largest city in Zimbabwe. Having surpassed Gweru in the 2012 census, with an urban population of 224,802 and approximately 260,567 in the surrounding districts, Mutare adds to the wider metropolitan area a total population of over 500,000 people. Mutare is also the capital of Manicaland Province and the largest city in eastern Zimbabwe.\nLocated near the border with Mozambique, Mutare has long been a centre of trade and a key terminus en route to the port of Beira (in Beira, Mozambique). Mutare is hub for trade with railway links, pipeline transport and highways linking the coast with Harare and Zimbabwe's interior. Other traditional industries include timber, papermaking, commerce, food processing, telecommunications and transportation. In addition the city serves as a gateway to the scenic Eastern Highlands, nearby Gorongosa National Park and the Mozambique coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "mutare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1325,
+    "attempt": 1313,
+    "place_id": "gn-95446",
+    "input": {
+      "place": {
+        "place_id": "gn-95446",
+        "name": "Erbil",
+        "country": "Iraq",
+        "subdivision": "Erbil",
+        "lat": 36.19117,
+        "lon": 44.00943
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erbil",
+          "url": "https://en.wikipedia.org/wiki/Erbil",
+          "text": "Erbil (Arabic: أربيل, romanized: ʾArbīl; Syriac: ܐܲܪܒܹܝܠ, romanized: Arbēl), also called Hawler (Kurdish: هەولێر, romanized: Hewlêr), is the capital and most populated city in the Kurdistan Region of Iraq and the capital of the Erbil Governorate. Erbil is described as the region's cultural, economic, industrial, educational and medical hub.\nErbil is one of the oldest continuously inhabited cities in the world. Human settlement at Erbil may be dated back to the 5th millennium BC. At the heart of the city is the ancient Citadel of Erbil and Mudhafaria Minaret. The earliest historical reference to the region dates to the Third Dynasty of Ur of Sumer, when King Shulgi mentioned the city of Urbilum. The city was later conquered by the Assyrians.\nIn the 3rd millennium BC, Erbil was an independent power in its area. It was conquered for a time by the Gutians. Beginning in the late 2nd millennium BC, it came under Assyrian control. Subsequent to this, it was part of the geopolitical province of Assyria under several empires in turn, including the Median Empire, the Achaemenid Empire (Achaemenid Assyria), Macedonian Empire, Seleucid Empire, Armenian Empire, Parthian Empire, Roman Assyria and Sasanian Empire, as well as being the capital of the tributary state of Adiabene between the mid-second century BC and early 2nd century AD. In ancient times the patron deity of the city was Ishtar of Arbela.\nFollowing the Muslim conquest of Persia, the region no longer remained united, and during the Middle Ages, the city came to be ruled by the Seljuk and Ottoman empires.\nErbil's archaeological museum houses a large collection of pre-Islamic artifacts, particularly the art of Mesopotamia, and is a centre for archaeological projects in the area. The city was designated as the Arab Tourism Capital 2014 by the Arab Council of Tourism. In July 2014, the Citadel of Erbil was inscribed as a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 313
+    },
+    "banned_terms": [
+      {
+        "term": "erbil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1326,
+    "attempt": 1314,
+    "place_id": "gn-973111",
+    "input": {
+      "place": {
+        "place_id": "gn-973111",
+        "name": "Mpumalanga",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.81292,
+        "lon": 30.63646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mpumalanga, KwaZulu-Natal",
+          "url": "https://en.wikipedia.org/wiki/Mpumalanga,_KwaZulu-Natal",
+          "text": "Mpumalanga, also widely known as Hammarsdale, is a township located in the eThekwini Metropolitan Municipality in the KwaZulu-Natal province of South Africa. It is situated some 10 km south-south-east of Cato Ridge and some 50 km west of Durban. Derived from Zulu, the name means 'sunrise', 'the sun comes out'.\nThe township boasts of a local library known as Mpumalanga Library and a shopping center which has become the heart of the township known as the Hammarsdale Junction. There is a local stadium and an Elangeni College campus located in the heart of Mpumalanga. Among amenities such as clinics, police stations, a SASSA and a home affairs office, the township has a variety of schools, some of which are mentioned below."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "mpumalanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1327,
+    "attempt": 1315,
+    "place_id": "gn-1151933",
+    "input": {
+      "place": {
+        "place_id": "gn-1151933",
+        "name": "Nakhon Si Thammarat",
+        "country": "Thailand",
+        "subdivision": "Nakhon Si Thammarat",
+        "lat": 8.43333,
+        "lon": 99.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nakhon Si Thammarat",
+          "url": "https://en.wikipedia.org/wiki/Nakhon_Si_Thammarat",
+          "text": "Nakhon Si Thammarat (Thai: นครศรีธรรมราช, pronounced [ná(ʔ).kʰɔ̄ːn sǐː tʰām.má.râːt]; from Sanskrit: \"Nagara Shrī Dharmarāja\") is a city municipality (thesaban nakhon) in Mueang Nakhon Si Thammarat district, the capital of Nakhon Si Thammarat province, in the south of Thailand. It is about 610 km (380 mi) south of Bangkok, on the east coast of the Malay Peninsula. The city was the administrative centre of Southern Thailand during most of its history. Originally, a coastal city, silting moved the coastline away from the city. The city has a much larger north to south extension than west to east, which dates back to its original location on a flood-safe dune. The modern city centre on the train station is north of Old Town. As of 2019, the city had a population of 102,152."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "nakhon si thammarat",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nakhon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "si",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "thammarat",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1328,
+    "attempt": 1316,
+    "place_id": "gn-1336135",
+    "input": {
+      "place": {
+        "place_id": "gn-1336135",
+        "name": "Khulna",
+        "country": "Bangladesh",
+        "subdivision": "Khulna Division",
+        "lat": 22.80979,
+        "lon": 89.56439
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khulna",
+          "url": "https://en.wikipedia.org/wiki/Khulna",
+          "text": "Khulna (Bengali: খুলনা, pronounced [ˈkʰulna] ) is the  3rd-largest city in Bangladesh after Dhaka and Chittagong.It is the divisional centre of 10 districts of  Khulna division. Khulna is also the second largest port city of Bangladesh after Chittagong, due to being adjacent to  Port of Mongla. There is also a river port within the city named Port of Khulna.Khulna's economy is mainly marine, sea port and local industry based and it is the third-largest in Bangladesh.\nKhulna is on the Rupsha and Bhairab River, a strategic industrial point in southwestern Bangladesh. It is also an important industrial hub in Bangladeshi industry, hosting many of the nation's largest companies. Khulna's economy is affected by the Port of Mongla, Bangladesh's second-largest seaport.\nA colonial steamboat service, which includes the Tern, Osrich and Lepcha, operates on the river route to the city. Khulna is considered the gateway to the Sundarbans, the world's largest mangrove forest and home of the Bengal tiger. It is north of the Mosque City of Bagerhat, a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "khulna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1329,
+    "attempt": 1317,
+    "place_id": "gn-1625929",
+    "input": {
+      "place": {
+        "place_id": "gn-1625929",
+        "name": "Sungai Penuh",
+        "country": "Indonesia",
+        "subdivision": "Jambi",
+        "lat": -2.0561,
+        "lon": 101.3913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sungai Penuh",
+          "url": "https://en.wikipedia.org/wiki/Sungai_Penuh",
+          "text": "Sungai Penuh (Indonesian: Kota Sungai Penuh) is a city in Jambi province, Indonesia, on the island of Sumatra. It is an enclave within Kerinci Regency, of which it was formerly part but from which it became administratively separate on 24 June 2008. It covers an area of 364.92 km2 and had a population of 82,293 at the 2010 Census and 96,610 at the 2020 Census; the official estimate as at mid 2025 was 102,708 (comprising 51,555 males and 51,153 females). Historically, it has been the center of administration for the whole Kerinci highlands region since the Dutch colonial era. Today, it is one of only two cities in Jambi and the largest settlement on the western part of the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "sungai penuh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sungai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "penuh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1330,
+    "attempt": 1318,
+    "place_id": "gn-1720151",
+    "input": {
+      "place": {
+        "place_id": "gn-1720151",
+        "name": "Caloocan",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.64953,
+        "lon": 120.96788
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caloocan",
+          "url": "https://en.wikipedia.org/wiki/Caloocan",
+          "text": "Caloocan, officially the City of Caloocan (Filipino: Lungsod ng Caloocan/Kalookan; IPA: [kalɔˈʔokan]), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 1,712,945 people, making it the fourth-most populous city in the Philippines.\nCaloocan is divided into two geographical locations with a total combined area of 5,333.40 hectares (13,179.1 acres), a result of the 1949 expansion of Quezon City, which absorbed much of its territory. It was formerly part of the Province of Rizal in southern Luzon. It comprises what is known as the CAMANAVA area along with the cities of Malabon, Navotas and Valenzuela.\nSouth Caloocan is bordered by Manila, Quezon City, Malabon, Navotas and Valenzuela. The presence of commercial and industrial activities combined with residential areas make it a highly urbanized central business district and a major urban center in the Northern District of Metropolitan Manila. North Caloocan shares its border with Quezon City and Valenzuela, Marilao, Meycauayan and San Jose del Monte in the province of Bulacan, and Rodriguez in the province of Rizal. It is composed of mostly residential subdivisions and extensive resettlement areas with scattered distribution of industrial estates mostly within road transit points and intersections."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "caloocan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1331,
+    "attempt": 1319,
+    "place_id": "gn-1734052",
+    "input": {
+      "place": {
+        "place_id": "gn-1734052",
+        "name": "Sandakan",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 5.8402,
+        "lon": 118.1179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandakan",
+          "url": "https://en.wikipedia.org/wiki/Sandakan",
+          "text": "Sandakan (Malaysian: [ˈsandaˈkan]) formerly known at various times as Elopura, is the capital of the Sandakan District in Sabah, Malaysia. It is the second largest city in Sabah after Kota Kinabalu. It is located on the Sandakan Peninsula and east coast of the state in the administrative centre of Sandakan Division and was the former capital of British North Borneo. In 2010, the city had an estimated population of 157,330 while the overall municipal area had a total population of 396,290. The population of the municipal area had increased to 439,050 by the 2020 Census.\nBefore the founding of Sandakan, Sulu Archipelago was the source of dispute between Spain and the Sultanate of Sulu for economic dominance in the region. By 1864, Spain had blockaded the Sultanate possessions in the Sulu Archipelago. The Sultanate of Sulu awarded a German consular service ex-member a piece of land in the Sandakan Bay to seek protection from Germany. In 1878, the Sultanate sold north-eastern Borneo to an Austro-Hungarian consul who later left the territory to a British colonial merchant. The German presence over the area raised concern among the British. As a result, a protocol was signed between the British, German and the Spanish to recognise Spanish sovereignty over the Sulu Archipelago, in return for the Spanish not intervening in British affairs in northern Borneo.\nSandakan began to prosper when the British North Borneo Company (BNBC) started to build a new settlement in 1879, developing it into an active commercial and trading centre as well as making it the main administrative centre for North Borneo. The British also encouraged the migration of the Chinese from British Hong Kong to develop the economy of Sandakan. However, the prosperity halted when the Japanese occupied the area. As the war continued and Allied bombing started in 1944, the town was totally destroyed. Unable to fund the costs of the reconstruction, the administrative powers of North Borneo were handed over to the Crown Colony government. Subsequently, the administrative capital of North Borneo was moved to Jesselton. As part of the 1948–1955 Colonial Office Reconstruction and Development Plan, the crown colony government began to develop the fishing industry in Sandakan.\nSandakan is one of the main ports for oil, tobacco, coffee, sago, and timber exports. Other economic activities include fishing, ship building, eco-tourism, and manufacturing. Among the tourist attractions in Sandakan are Sandakan Heritage Museum, Sandakan Cultural Festival, Sandakan War Memorial, Sepilok Orang Utan Sanctuary, Turtle Islands National Park, and Gomantong Caves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 414
+    },
+    "banned_terms": [
+      {
+        "term": "sandakan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1332,
+    "attempt": 1320,
+    "place_id": "gn-1791272",
+    "input": {
+      "place": {
+        "place_id": "gn-1791272",
+        "name": "Wugang",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 26.7279,
+        "lon": 110.63198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wugang, Hunan",
+          "url": "https://en.wikipedia.org/wiki/Wugang,_Hunan",
+          "text": "Wugang (simplified Chinese: 武冈; traditional Chinese: 武岡; pinyin: Wǔgāng) is a county-level city in Hunan Province, China. It is under the administration of Shaoyang prefecture-level city. Located on the southwest of the province and middle of Shaoyang's jurisdiction, the city is bordered to the north by Dongkou and Longhui Counties, to the west by Suining County, to the southwest by Chengbu County, to the southeast by Xinning County, and to the northeast by Shaoyang County. Wugang City covers an area of 1,539 km2 (594 sq mi). As of the 2010 census, the city had a registered population of 810,003 and a resident population of 734,870. In 2014, it had a registered population of 834,868 and a resident population of 759,312. The city has four subdistricts, 11 towns and three townships under its jurisdiction, and the government seat is Shuiximen Subdistrict."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "wugang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

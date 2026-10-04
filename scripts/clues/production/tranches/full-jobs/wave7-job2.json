@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 1232,
+    "attempt": 1221,
+    "place_id": "gn-1808963",
+    "input": {
+      "place": {
+        "place_id": "gn-1808963",
+        "name": "Handan",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 36.60999,
+        "lon": 114.48764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Handan",
+          "url": "https://en.wikipedia.org/wiki/Handan",
+          "text": "Handan is a prefecture-level city located in the southwest of Hebei province, China. The southernmost prefecture-level city of the province, it borders Xingtai on the north, and the provinces of Shanxi on the west, Henan on the south and Shandong on the east.  At the 2010 census, its population was 9,174,683 inhabitants of whom 2,845,790 lived in the built-up (or metro) area made of 5 urban districts. By the end of 2024, the total resident population of the city is 9,182,100, and the urbanization rate of the resident population is 62.10%. Yongnian District in Handan and Shahe City in Xingtai have largely formed into a single conurbation.\nHandan is one of the oldest cities in China, first settled around 6500 BC by the Cishan culture. Throughout the city's long history, it contributed significantly to Chinese culture, serving as the capital of State of Zhao, was northern China's political, economic and cultural center, and home to Tai chi and the first compass, made from stones collected in the nearby Mount Ci (magnet mountain). Handan is designated as one of China's National Famous Historical and Cultural Cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "handan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1233,
+    "attempt": 1222,
+    "place_id": "gn-1820906",
+    "input": {
+      "place": {
+        "place_id": "gn-1820906",
+        "name": "Bandar Seri Begawan",
+        "country": "Brunei",
+        "subdivision": "Brunei-Muara District",
+        "lat": 4.89035,
+        "lon": 114.94006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bandar Seri Begawan",
+          "url": "https://en.wikipedia.org/wiki/Bandar_Seri_Begawan",
+          "text": "Bandar Seri Begawan (BSB) is the capital and largest city of Brunei. It is officially a municipal area (kawasan bandaran) with an area of 100.36 square kilometres (38.75 sq mi) and has a population of 72,133 as of 2025 estimate. It is part of Brunei–Muara District, the smallest yet most populous district which is home to over 70 percent of the country's population. It is the country's largest urban centre and nominally the country's only city. The capital is home to Brunei's seat of government, as well as a commercial and cultural centre. It was formerly known as Brunei Town until it was renamed in 1970 in honour of Omar Ali Saifuddien III, the 28th Sultan of Brunei and the father of Sultan Hassanal Bolkiah.\nThe history of Bandar Seri Begawan can be traced back to the establishment of a Malay stilt settlement on the waters of the Brunei River which became the predecessor of Kampong Ayer today. It became the capital of the Bruneian Sultanate from the 16th century onwards, as well as in the 19th century when it became a British protectorate. The establishment of a British Residency in the 20th century saw the establishment of modern-day administration on land, as well as the gradual resettlement of the riverine dwellers to the land. During World War II, the capital was occupied by the Japanese forces from 1941 and bombed in 1945 upon liberation by Allied forces. Brunei's independence from the British was declared on 1 January 1984 on a square in the city centre.\nBandar Seri Begawan is home to Istana Nurul Iman, the largest residential palace in the world by the Guinness World Records, and Omar Ali Saifuddien Mosque, Brunei's iconic landmark. It is also home to Kampong Ayer, the largest 'water village' in the world and nicknamed Venice of the East. It was the host city of the 20th Southeast Asian Games in 1999 and 8th APEC Summit in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 324
+    },
+    "banned_terms": [
+      {
+        "term": "bandar seri begawan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bandar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "seri",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "begawan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1234,
+    "attempt": 1223,
+    "place_id": "gn-2235189",
+    "input": {
+      "place": {
+        "place_id": "gn-2235189",
+        "name": "Bafoussam",
+        "country": "Cameroon",
+        "subdivision": "West",
+        "lat": 5.47775,
+        "lon": 10.41759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bafoussam",
+          "url": "https://en.wikipedia.org/wiki/Bafoussam",
+          "text": "Bafoussam is the capital and largest city of the West Region of Cameroon, in the Bamboutos Mountains. It is the 3rd most important (financially) city in Cameroon, after Yaoundé and Douala. The communauté urbaine (Urban Community) of Bafoussam, is a decentralized territorial collectivity. Originally called Urban Commune of Bafoussam, the communauté urbaine (Urban Community) of Bafoussam, was born after the Presidential Decree N ° 2008/022 of January 17, 2008 and composed of three communes, namely: the Commune of Bafoussam I (Bafoussam proper), the Commune of Bafoussam II (Baleng) and the Commune of Bafoussam III (Bamougoum).\n\nThe city had an urban population of 347,517 inhabitants (at the 2008 Census). Bafoussam is the West Region centre of trade, and people are farming coffee, potatoes, maize and beans. The city has also a coffee processing facility and brewery. It is the main city of the Bamiléké people and is home to the Bafoussam chief's palace. Bafoussam is a group composed of 07 villages (Bamendzi, Banengo, Ndiangdam, Ndiangsouoh, Ndiangbou, Toukouop, Ngoueng, and Banengo city B) with 46 districts or sub-villages. The main neighborhoods of the city are Banengo, Djeleng, Famla (also called Akwa), Kamkop, Quartier Eveché, Quartier Haussa and Tamdja.\nBafoussam has two main markets (Marché A and Marché B), several internet cafés, restaurants and supermarkets, and a movie theater.  Most of Bafoussam nightlife centers on the area called Akwa (so-named in honor of the neighborhood in Douala).  Akwa features several bars, stores, and a live music venue, along with customary vendors of Soya (barbecue beef meat brochettes), Poisson braisé (barbecue fish) and other foods.\nThis is the birthplace of the football player Geremi and his 17 brothers and sisters, as well as the birthplace of his cousins Pierre Webó and Guy Kouemou."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "bafoussam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1235,
+    "attempt": 1224,
+    "place_id": "gn-2335953",
+    "input": {
+      "place": {
+        "place_id": "gn-2335953",
+        "name": "Jos",
+        "country": "Nigeria",
+        "subdivision": "Plateau State",
+        "lat": 9.92849,
+        "lon": 8.89212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jos",
+          "url": "https://en.wikipedia.org/wiki/Jos",
+          "text": "Jos  is a city in Plateau State of North-Central region of Nigeria with a population of about 900,000 residents based on the 2006 census. Popularly called \"J-Town\", it is the administrative capital and largest city of Plateau State. The city is situated on the Jos plateau which lies within the Guinea Savannah of North-Central Nigeria. It connects most of the North-Eastern capitals to the Federal Capital Territory Abuja, by road. Driving in and out of Jos, traffic encounters very steep and windy bends and mountainous sceneries typical of the plateau, from which the state derives its name.\nDuring the period of British colonial rule, Jos became an important centre for tin mining after large deposits of cassiterite, the main ore for the metal, were discovered. It is also the trading hub of Plateau State as commercial activities are steadily increasing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "jos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1236,
+    "attempt": 1225,
+    "place_id": "gn-2506999",
+    "input": {
+      "place": {
+        "place_id": "gn-2506999",
+        "name": "Annaba",
+        "country": "Algeria",
+        "subdivision": "Annaba",
+        "lat": 36.9,
+        "lon": 7.76667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Annaba",
+          "url": "https://en.wikipedia.org/wiki/Annaba",
+          "text": "Annaba (Tamazight: ɛⴻⵏⵏⴰⴱⴰ, romanized: Ɛenaba, Arabic: عنابة, romanized: ʕannāba, lit. 'place of the Jujubes'), formerly known as Hippone, Bona and Bône, is a seaport city in the northeastern corner of Algeria, close to the border with Tunisia. Annaba is near the small Seybouse River and is in Annaba Province. With a population of about 263,650 (2019) and 1,000,000 for the metropolitan area, Annaba is the third-largest city and the leading industrial centre in Algeria.\nAnnaba is a coastal city that underwent significant growth during the 20th century. Annaba has a metropolitan area with a higher population density than the other metropolitan areas of the Algerian coastline, such as Oran and Algiers. Much of eastern and southern Algeria uses the services, equipment and infrastructure of Annaba. Economically, it is the centre for various economic activities, such as industry, transportation, finance, and tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "annaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1237,
+    "attempt": 1226,
+    "place_id": "gn-2525473",
+    "input": {
+      "place": {
+        "place_id": "gn-2525473",
+        "name": "Cagliari",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 39.23054,
+        "lon": 9.11917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cagliari",
+          "url": "https://en.wikipedia.org/wiki/Cagliari",
+          "text": "Cagliari (, also UK: , US: ; Italian: [ˈkaʎʎari] ; Sardinian: Casteddu [kasˈteɖːu] ; Latin: Caralis [käˈɾaːlɪs]) is a municipality and the capital and largest city of the island of Sardinia, an autonomous region of Italy. It has about 145,981 inhabitants, while its metropolitan city, including 69 other nearby municipalities, has about 536,245 inhabitants. According to Eurostat, the population of the functional urban area, the commuting zone of Cagliari, rises to 476,975. Cagliari is the 27th largest city proper in Italy.\nAn ancient city with a long history, Cagliari has seen the rule of several civilisations. Under the buildings of the modern city there is a continuous stratification attesting to human settlement over the course of some five thousand years, from the Neolithic to today. Historical sites include the prehistoric Domus de Janas, partly damaged by cave activity, a large Carthaginian era necropolis, a Roman era amphitheatre, a Byzantine basilica, three Pisan-era towers and a strong system of fortification that made the town the core of Spanish Habsburg imperial power in the western Mediterranean Sea. Its natural resources have always been its sheltered harbour, the often powerfully fortified hill of Castel di Castro, the modern Casteddu, the salt from its lagoons, and, from the hinterland, wheat from the Campidano plain and silver and other ores from the Iglesiente mines.\nCagliari was the capital of the Kingdom of Sardinia from 1324 to 1848, when Turin became the formal capital of the kingdom (which in 1861 became the Kingdom of Italy). Today the city is a regional cultural, educational, political and artistic centre, known for its diverse Art Nouveau architecture and several monuments. It is also Sardinia's economic and industrial hub, having one of the biggest ports in the Mediterranean Sea, an international airport, and the 106th highest income level in Italy (among 8,092 comuni), comparable to that of several northern Italian cities.\nIt is also the seat of the University of Cagliari, founded in 1606, and of the Roman Catholic Archdiocese of Cagliari, since the 5th century AD."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "cagliari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1238,
+    "attempt": 1227,
+    "place_id": "gn-2637627",
+    "input": {
+      "place": {
+        "place_id": "gn-2637627",
+        "name": "Slough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.50949,
+        "lon": -0.59541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Slough",
+          "url": "https://en.wikipedia.org/wiki/Slough",
+          "text": "Slough () is a town in Berkshire, England, in the Thames Valley, 20 miles (32 km) west of central London and 19 miles (31 km) north-east of Reading, at the intersection of the M4, M40 and M25 motorways. It is part of the historic county of Buckinghamshire. In 2021, the population of the town was 143,184. The wider Borough of Slough had a population of 158,500.\nSlough's population is one of the most ethnically diverse in the United Kingdom, attracting people from across the country and the world for labour since the 1920s, which has helped shape it into a major trading centre. In 2021, 46.9% of the population was Asian, 35.9% White, 7.5% Black, 4% Mixed, 1.2% Arab and 4.5% of other ethnic heritage.\nOther than London, Slough has the highest concentration of global company  headquarters in the UK. Blackberry, McAfee, Burger King, DHL, Telefonica and Lego have head offices in the town. Slough Trading Estate is the largest industrial estate in single private ownership in Europe, with over 17,000 jobs in 400 businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "slough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1239,
+    "attempt": 1228,
+    "place_id": "gn-2646057",
+    "input": {
+      "place": {
+        "place_id": "gn-2646057",
+        "name": "Ipswich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.05917,
+        "lon": 1.15545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ipswich",
+          "url": "https://en.wikipedia.org/wiki/Ipswich",
+          "text": "Ipswich ( ) is a port town and borough in Suffolk, England, located on the River Orwell. It is the county town, and largest in Suffolk, followed by Lowestoft and Bury St Edmunds, and the third-largest population centre in East Anglia, after Peterborough and Norwich. It is 65 miles (105 km) northeast of London. In 2025, Ipswich had a population of 139,457, making it the fourth-largest in the East of England and the 42nd-largest in England and Wales. It includes the towns and villages of Kesgrave, Woodbridge, Bramford and Martlesham Heath.\nIpswich was first recorded during the medieval period as Gippeswic, the town has also been recorded as Gyppewicus and Yppswyche. It has been continuously inhabited since the Saxon period, and is believed to be one of the oldest towns in the United Kingdom. The settlement was of great economic importance to the Kingdom of England throughout its history, particularly in trade, with the town's historical dock, Ipswich Waterfront, known as the largest and most important dock in the Kingdom.\nIpswich is divided into various quarters, with the town centre and the waterfront drawing the most footfall. The town centre features the retail shopping district and the historic town square, known as the Cornhill. The waterfront, south of the town centre on a meander of the River Orwell, offers a picturesque setting with a marina, luxury yachts, high-rise apartment buildings, and a variety of restaurants and cafes. The waterfront is also home to the University of Suffolk campus.\nIpswich is adjacent to the Suffolk & Essex Coast & Heaths National Landscape AONB and is close to Dedham Vale AONB. The town has a tourist sector, with 3.5 million people reported to have visited the town in 2016. In 2020, Ipswich was ranked as an emerging global tourist destination by TripAdvisor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "ipswich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1240,
+    "attempt": 1229,
+    "place_id": "gn-2743856",
+    "input": {
+      "place": {
+        "place_id": "gn-2743856",
+        "name": "Zoetermeer",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.0575,
+        "lon": 4.49306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zoetermeer",
+          "url": "https://en.wikipedia.org/wiki/Zoetermeer",
+          "text": "Zoetermeer (Dutch pronunciation: [ˌzutərˈmeːr] ) is a city in the Western Netherlands, in the province of South Holland. The municipality covers an area of 37.05 km2 (14.31 sq mi) of which 2.60 km2 (1.00 sq mi) is water. A small village until the late 1960s, it had 6,392 inhabitants in 1950. By 2023 this had grown to 126,998, making it the fourth largest population centre in the province of South Holland, after Rotterdam, The Hague and Leiden. While now a city in its own right, Zoetermeer started out as a suburb of The Hague and is still a part of the Greater The Hague urban area.\nThe name Zoetermeer (Dutch for \"freshwater lake\") refers to the former lake north of the town (reclaimed in 1614). Because the name literally translates as \"sweet lake\" local residents have dubbed Zoetermeer \"Sweet Lake City\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "zoetermeer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1241,
+    "attempt": 1230,
+    "place_id": "gn-2756253",
+    "input": {
+      "place": {
+        "place_id": "gn-2756253",
+        "name": "Eindhoven",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.44083,
+        "lon": 5.47778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eindhoven",
+          "url": "https://en.wikipedia.org/wiki/Eindhoven",
+          "text": "Eindhoven (, EYENT-hoh-vən;; Dutch: [ˈɛintˌɦoːvə(n)] ) is a city and municipality in the Netherlands. It is the largest city in the southern province of North Brabant, and is located in the Dutch part of the Campine natural region. With a population of 249,054 (1 January 2025) on a territory of 88.92 km2, it is the fifth-largest city of the Netherlands and the largest outside the Randstad conurbation.\nEindhoven was originally located at the confluence of the Dommel and the Gender. A municipality since the 13th century, Eindhoven witnessed rapid growth starting in the 1900s by textile and tobacco industries. Two well-known companies, DAF Trucks and Philips, were founded in the city; Philips would go on to become a major multinational conglomerate while based in Eindhoven. Apart from Philips, Eindhoven also contains the globally famous Design Academy Eindhoven.\nNeighbouring cities and towns include Son en Breugel, Nuenen, Geldrop-Mierlo, Helmond, Heeze-Leende, Waalre, Veldhoven, Eersel, Oirschot and Best. The agglomeration has a population of 337,487. The metropolitan area consists of 780,611 inhabitants. The city region has a population of 753,426. The Brabantse Stedenrij combined metropolitan area has about two million inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "eindhoven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1242,
+    "attempt": 1231,
+    "place_id": "gn-3492914",
+    "input": {
+      "place": {
+        "place_id": "gn-3492914",
+        "name": "Santiago de los Caballeros",
+        "country": "Dominican Republic",
+        "subdivision": "Santiago Province",
+        "lat": 19.45036,
+        "lon": -70.69085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago de los Caballeros",
+          "url": "https://en.wikipedia.org/wiki/Santiago_de_los_Caballeros",
+          "text": "Santiago de los Caballeros (\"Saint James of the Knights\"), often shortened to Santiago, is the second-largest city in the Dominican Republic and the fourth-largest city in the Caribbean by population. It is the capital of Santiago Province and the largest major metropolis in the Cibao region of the country. Santiago is the largest Caribbean city that is not a capital city, and the largest non-coastal metropolis in the Caribbean islands. It is approximately 155 km (96 mi) northwest of the capital, Santo Domingo, with an average altitude of 178 m (584 ft). The city has a population of 771,748 inhabitants (2022). Santiago's metropolitan area population composed of the municipalities of Santiago-Licey Al Medio-Baitoa-Tamboril-Puñal-Villa González is 1,261,852 as of 2022, making it the Dominican Republic's second-largest.\nFounded in 1495 during the first wave of European settlement in the New World, the city is the \"first Santiago of the Americas\". Today it is one of the Dominican Republic's cultural, political, industrial and financial centers. Due to its location in the fertile Cibao Valley, it has a robust agricultural sector and is a leading exporter of rum, textiles, and cigars. Santiago is known as \"La Ciudad Corazón\" (the \"Heartland City\").\nSantiago de los Caballeros was an important strategic city in the Dominican War of Independence. The city's name, Saint James of the Knights, refers to the Hidalgos de la Isabela, a group of knights who came from La Isabela city to stay in Santiago. Sometimes, the city is called Santiago de los 30 Caballeros (English: Saint James of the 30 Knights)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "santiago de los caballeros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caballeros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1243,
+    "attempt": 1232,
+    "place_id": "gn-3514519",
+    "input": {
+      "place": {
+        "place_id": "gn-3514519",
+        "name": "Xico",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.27032,
+        "lon": -98.95088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xico, Valle de Chalco",
+          "url": "https://en.wikipedia.org/wiki/Xico,_Valle_de_Chalco",
+          "text": "Xico is a city in the State of Mexico, Mexico. It serves as the municipal seat of Valle de Chalco municipality, with which it is, for all practical purposes, coterminous. The municipality lies adjacent to the east side of the Federal District (Distrito Federal) and is part of the Mexico City metropolitan area. The city and municipality lie on the old lakebed of Lake Chalco, which was drained like much of the Basin of Mexico.\nThe city name comes from the nearby Xico hill (Cerro de Xico) and the name of the municipality comes from the old lake plus a reference to the \"Programa Nacional de Solidaridad\" (National Program of Solidarity) which was initiated here. The municipality's glyph and shield make reference to both names. It is a distinct entity from the city and municipality of Chalco, which is nearby. \"Chalco\" in both names refers to the Chalca tribe that were one of the original inhabitants of the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "xico",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1244,
+    "attempt": 1233,
+    "place_id": "gn-3536729",
+    "input": {
+      "place": {
+        "place_id": "gn-3536729",
+        "name": "Santiago de Cuba",
+        "country": "Cuba",
+        "subdivision": "Santiago de Cuba Province",
+        "lat": 20.02287,
+        "lon": -75.82171
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago de Cuba",
+          "url": "https://en.wikipedia.org/wiki/Santiago_de_Cuba",
+          "text": "Santiago de Cuba (Spanish pronunciation: [sanˈtjaɣo ðe ˈkuβa]) is the second-largest city in Cuba and the capital city of Santiago de Cuba Province. It lies in the southeastern arha of the island, some 870 km (540 mi) southeast of the Cuban capital of Havana.\nThe municipality extends over , and contains the communities of Antonio Maceo, Bravo, Castillo Duany, Daiquirí, El 1,023.8 km2 (395.3 sq mi)Caney, El Cobre, El Cristo, Guilera, Leyte Vidal, Moncada and Siboney.\nHistorically Santiago de Cuba has been the second-most important city on the island after Havana, and remains the second-largest. It lies on a bay connected to the Caribbean Sea and is an important sea port. In 2022, the city of Santiago de Cuba recorded a population of 507,167 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "santiago de cuba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cuba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1245,
+    "attempt": 1234,
+    "place_id": "gn-5367929",
+    "input": {
+      "place": {
+        "place_id": "gn-5367929",
+        "name": "Long Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.76696,
+        "lon": -118.18923
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Long_Beach,_California",
+          "text": "Long Beach is a coastal city in southeastern Los Angeles County, California, United States. It is the 44th-most populous city in the United States, with a population of 450,469 as of 2025. A charter city, Long Beach is the 7th-most populous city in California, the 2nd-most populous city in Los Angeles County, and the largest city in California that is not a county seat.\nIncorporated in 1897, Long Beach is in Southern California, in the southern part of Los Angeles County. Long Beach is approximately 20 miles (32 km) south of downtown Los Angeles, and is part of the Gateway Cities region. The Port of Long Beach is the second busiest container port in the United States and is among the world's largest shipping ports. The city is over an oilfield with minor wells both directly beneath the city as well as offshore.\nThe city is known for its waterfront attractions, including the permanently docked RMS Queen Mary and the Aquarium of the Pacific. Long Beach also hosts the Grand Prix of Long Beach, an IndyCar race and the Long Beach Pride Festival and Parade. California State University, Long Beach, one of the largest universities in California."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "long beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1246,
+    "attempt": 1235,
+    "place_id": "gn-5506956",
+    "input": {
+      "place": {
+        "place_id": "gn-5506956",
+        "name": "Las Vegas",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 36.17497,
+        "lon": -115.13722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Vegas",
+          "url": "https://en.wikipedia.org/wiki/Las_Vegas",
+          "text": "Las Vegas, colloquially shortened to Vegas, is the most populous city in the U.S. state of Nevada and the county seat of Clark County. It is the 24th-most populous city in the United States, with 641,903 residents at the 2020 census. The Las Vegas metropolitan area has an estimated 2.4 million residents and is the 29th-largest metropolitan area in the country. Las Vegas is an internationally renowned major resort city, known primarily for its gambling, shopping, fine dining, entertainment, and nightlife. Most of these venues are located in downtown Las Vegas or on the Las Vegas Strip, which is outside city limits in the unincorporated towns of Paradise and Winchester. The Las Vegas Valley serves as the leading financial, commercial, and cultural center in Nevada.\nLas Vegas was settled in 1905 and officially incorporated in 1911. At the close of the 20th century, it was the most populated North American city founded within that century. Population growth has accelerated since the 1960s and into the 21st century, and between 1990 and 2000 the population increased by 85.2%.\nThe city bills itself as the Entertainment Capital of the World, and is famous for its luxurious and large casino-hotels. As of 2023, Las Vegas attracts over 40.8 million visitors annually, making it one of the most visited cities in the United States and consistently ranking among the world's top tourist destinations. It is the third most popular U.S. destination for business conventions and a global leader in the hospitality industry. The city's tolerance for numerous forms of adult entertainment has earned it the nickname \"Sin City\", and has made it a popular setting for films, literature, television programs, commercials and music videos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "las vegas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vegas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1247,
+    "attempt": 1236,
+    "place_id": "gn-658225",
+    "input": {
+      "place": {
+        "place_id": "gn-658225",
+        "name": "Helsinki",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.16952,
+        "lon": 24.93545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Helsinki",
+          "url": "https://en.wikipedia.org/wiki/Helsinki",
+          "text": "Helsinki, until about 1930 known in English by its Swedish name of Helsingfors, is the capital and most populous city in Finland. It is on the shore of the Gulf of Finland and is the seat of southern Finland's Uusimaa region. About 694,000 people live in the municipality, with 1.3 million in the capital region and 1.6 million in the metropolitan area. As the most populous urban area in Finland, it is the country's most significant centre for politics, education, finance, culture, and research. Helsinki is 80 kilometres (50 mi) north of Tallinn, Estonia, 400 kilometres (250 mi) east of Stockholm, Sweden, and 300 kilometres (190 mi) west of Saint Petersburg, Russia. Helsinki is a bilingual municipality with Finnish and Swedish as its official languages.\nTogether with the cities of Espoo, Vantaa and Kauniainen—and surrounding commuter towns, including the neighbouring municipality of Sipoo to the east—Helsinki forms a metropolitan area. This area is often considered Finland's only metropolis and is the world's northernmost metropolitan area with over one million inhabitants. Additionally, it is the northernmost capital of an EU member state. Helsinki is the third-largest municipality in the Nordic countries, after Stockholm and Oslo. Its urban area is the third-largest in the Nordic countries, after Stockholm and Copenhagen. Helsinki Airport, in the neighbouring city of Vantaa, serves the city with frequent flights to numerous destinations in Europe, North America, and Asia.\nHelsinki has one of the highest standards of urban living in the world, and often ranks highly in various city quality of life indices. In the Condé Nast Traveler magazine's 2023 Readers' Choice Awards, Helsinki was ranked the 4th-friendliest city in Europe. It has also ranked first in the Global Destination Sustainability Index in 2024, 2025 and 2026. Helsinki, along with Rovaniemi in Lapland, is also one of Finland's most important tourist cities. Due to the large number of sea passengers, Helsinki is classified as a major port city, and in 2017 it was rated the world's busiest passenger port. Helsinki has hosted the 1952 Summer Olympics, the first CSCE/OSCE Summit in 1975, the first World Athletics Championships in 1983, and the 52nd Eurovision Song Contest in 2007 and was the 2012 World Design Capital. The city is recognized as a \"Design City\" in 2014 by UNESCO's Creative Cities Network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 381
+    },
+    "banned_terms": [
+      {
+        "term": "helsinki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1248,
+    "attempt": 1237,
+    "place_id": "gn-776029",
+    "input": {
+      "place": {
+        "place_id": "gn-776029",
+        "name": "Bielany",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.29242,
+        "lon": 20.93531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bielany",
+          "url": "https://en.wikipedia.org/wiki/Bielany",
+          "text": "Bielany (Polish pronunciation: [bjɛˈlanɨ] ) is a district in Warsaw located in the north-western part of the city.\nInitially a part of Żoliborz, Bielany has been an independent district since 1994. Bielany borders Żoliborz to the south-east, and Bemowo to the south-west. Its north-eastern border is the Vistula River, and the northern-western border is also the limits of the city of Warsaw.\nThe name Bielany, which in Polish is plural, derives from the white habits of the Camaldolese monks who have an ancient priory there. It is also known for the Józef Piłsudski University of Physical Education in Warsaw, which was established 1929 when it was known as the Central Institute for Physical Education (C.I.W.F.), as well as the newly built Cardinal Stefan Wyszyński University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "bielany",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1249,
+    "attempt": 1238,
+    "place_id": "gn-1179400",
+    "input": {
+      "place": {
+        "place_id": "gn-1179400",
+        "name": "Faisalabad",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.41554,
+        "lon": 73.08969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faisalabad",
+          "url": "https://en.wikipedia.org/wiki/Faisalabad",
+          "text": "Faisalabad, formerly known as Lyallpur, is the second-largest city and primary industrial center of the Pakistani province of Punjab. Located in the Rachna Doab of the central Punjab, it is the third-most populous city in Pakistan. Established in 1890s as a planned city, the population of the city increased six times in the decade following the partition of British India as hundreds of thousands of East Punjabi Muslim immigrants settled the city.\nHistorically one of the largest villages of Punjab, Lyallpur was one of the first planned cities within British India. It became headquarters of the lower Chenab Colony and in 1898 was incorporated as a municipality. It was restructured into city district status; a devolution promulgated by the 2001 local government ordinance (LGO). The city is the headquarters of the Faisalabad District the total area of which is around 5,856 km2 (2,261 sq mi) while the urban area controlled by the Faisalabad Development Authority (FDA) is around 1,300 km2 (500 sq mi).\nFaisalabad has become a major industrial and distribution hub due to its centrally located infrastructure including connecting roads, rails, and air transportation. It has been referred to as the Manchester of Pakistan because of its extensive textile industry.\nIn 2013, the GDP of Faisalabad was estimated at $43 billion. Faisalabad contributes over 20 percent to the GDP of the country and has an average annual GDP (nominal) of $20.5 billion. Agriculture and industry remain its hallmarks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "faisalabad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1250,
+    "attempt": 1239,
+    "place_id": "gn-1630341",
+    "input": {
+      "place": {
+        "place_id": "gn-1630341",
+        "name": "Purwakarta",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.55694,
+        "lon": 107.44333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Purwakarta",
+          "url": "https://en.wikipedia.org/wiki/Purwakarta",
+          "text": "Purwakarta (Old Spelling: Poerwakarta) is a town and an administrative district (kecamatan) in West Java, Indonesia which serves as the regency seat of the Purwakarta Regency (not to be confused with the district of the same name in Cilegon city). It covers a land area of 24.39 km2, and had a population of 165,447 at the 2010 Census, rising to 179,233 at the 2020 Census; the official estimate as of mid-2023 was 183,813 - comprising 92,178 males and 91,635 females. \nThe district centre is at Nagri Kaler, and the district is sub-divided into nine urban communities (kelurahan) and one rural village (desa) - the last being Citalang village - all listed below with their areas and populations as of mid-2023,  together with their postcodes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "purwakarta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1251,
+    "attempt": 1240,
+    "place_id": "gn-1650213",
+    "input": {
+      "place": {
+        "place_id": "gn-1650213",
+        "name": "Banjarmasin",
+        "country": "Indonesia",
+        "subdivision": "South Kalimantan",
+        "lat": -3.31987,
+        "lon": 114.59075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banjarmasin",
+          "url": "https://en.wikipedia.org/wiki/Banjarmasin",
+          "text": "Banjarmasin is the largest city in South Kalimantan, Indonesia. It was the capital of the province until 15 February 2022. The city is located on a delta island near the confluence of the Barito and Martapura rivers. Historically the centre of the Banjarese culture, and the capital of the Sultanate of Banjar, it is the biggest city in South Kalimantan and one of the main cities of Kalimantan. The city covers an area of 98.37 km2 (37.98 sq mi) and had a population of 625,481 as of the 2010 Census and 657,663 as of the 2020 Census; the official estimate as of mid 2025 was 682,360 (comprising 341,375 males and 340,985 females). It is the third most populous city on the island of Borneo.\nGreater Banjarmasin, also known as Banjarbakula (an acronym for Banjarmasin-Barito Kuala-Tanah Laut) or Banjar Raya, is an urban agglomeration of over two million people covering an area of 6,737.70 km2 (2,601.44 sq mi), which includes Banjarbaru city and parts of Banjar Regency (including Martapura town), Barito Kuala Regency, and Tanah Laut Regency, and accounts for 2,076,771 inhabitants in mid 2024, amounting to almost half of the province's population.\nBanjarmasin was the de jure seat of the South Kalimantan governor and the location of the provincial parliament, although some provincial buildings have been relocated to Banjarbaru. On 15 February 2022, the capital of South Kalimantan province was legally moved to Banjarbaru."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "banjarmasin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
