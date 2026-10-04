@@ -323,9 +323,15 @@ test("resume after reload keeps the chosen tier and its dealt question", async (
   expectCleanConsole(errors);
 });
 
-test("a Medium grind does not shrink the Easy pool (repeat-mode regression)", async ({
+test("a Medium grind does not shrink the Easy pool (band-isolation check)", async ({
   page,
 }) => {
+  // NOTE on what this test proves: it seeds the medium BAND key, which only
+  // exists post-fix, so it verifies the fixed isolation invariant rather
+  // than failing on the old shared-history code. The unit test
+  // "one band's dealt history never shrinks another band's pool" in
+  // trail.test.ts is the true regression guard (it exercises poolForNewRun
+  // against a shared store the way pre-fix production behaved).
   const errors = collectErrors(page);
   // Arkansas chunk, Easy band = tiers 1–2.
   const chunks = chunkPlaces("arkansas");

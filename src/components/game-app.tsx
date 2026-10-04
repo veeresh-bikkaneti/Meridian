@@ -1301,7 +1301,7 @@ function PlayLoaded({
         run.prevLastId,
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pool, run.seed, run.dateKey, run.edition, run.regionId, run.prevLastId],
+    [pool, run.seed, run.dateKey, run.edition, run.regionId, run.difficultyChoice, run.prevLastId],
   );
   const place = dealer.at(run.index);
   // The qualified question label ("Manhattan, Nebraska, United States" in

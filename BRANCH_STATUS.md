@@ -36,8 +36,12 @@ bands. One band's dealt places shrank the other bands' pools:
 - [ ] `npx tsc --noEmit` clean
 - [ ] `npm run build:pages` green
 - [ ] Card gate GATE PASSED
-- [ ] Playwright E2E (band-switch no-repeat)
-- [ ] Technical-architect review + tone/docs review
+- [ ] Playwright E2E (band-switch no-repeat — running)
+- [x] Technical-architect review: APPROVE WITH NOTES (2 lows applied:
+  E2E comment reworded for accuracy, run.difficultyChoice added to dealer
+  useMemo deps; prevLastId post-migration wrinkle noted as very-low,
+  transient, cosmetic — skipped)
+- [x] Tone/docs review: APPROVE WITH NOTES (2 comment nits fixed)
 - [ ] PR → merge → live verification
 
 ## Notes
