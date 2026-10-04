@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 5313,
+    "place_id": "gn-2803183",
+    "input": {
+      "place": {
+        "place_id": "gn-2803183",
+        "name": "Angleur",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.6113,
+        "lon": 5.59942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angleur",
+          "url": "https://en.wikipedia.org/wiki/Angleur",
+          "text": "Angleur (French pronunciation: [ɑ̃ɡlœʁ]; Walloon: Angleûr) is a sub-municipality of the city of Liège located in the province of Liège, Wallonia, Belgium. It was a separate municipality until 1977. On 1 January 1977, it was merged into Liège.\nIt is located at the foot and on the slope of a hill in the southern part of Liège, located between the rivers Ourthe and Meuse. The lower part involves an area known as Renory and a railway station called Gare d'Angleur and the higher part is located around the roundabout of Sart Tilman where the Liège Science Park is located. Two mansions can be found in the lower part of Angleur : the Chateau Péralta and the Chateau Nagelmackers\nOn the 24th of July 2019, during the July 2019 European heat wave, the hottest temperate ever recorded in Belgium at the time was recorded in Angleur, a temperature of 40.2 °C, however this recorded was again broken the next day in the Flemish town of Begijnendijk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "angleur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5316,
+    "place_id": "gn-6332745",
+    "input": {
+      "place": {
+        "place_id": "gn-6332745",
+        "name": "Millburn",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.72482,
+        "lon": -74.30404
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Millburn, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Millburn,_New_Jersey",
+          "text": "Millburn is a suburban township in southwestern Essex County, within the U.S. state of New Jersey, and part of the New York metropolitan area. As of the 2020 United States census, the township's population was 21,710, its highest decennial count ever and an increase of 1,561 (+7.7%) from the 20,149 recorded at the 2010 census, which in turn reflected an increase of 384 (+1.9%) from the 19,765 counted in the 2000 census. Short Hills, with a 2020 population of 14,422, is an unincorporated community and census-designated place (CDP) located within Millburn that is home to most of the township's population.\nMillburn was created as a township by an act of the New Jersey Legislature on March 20, 1857, from portions of Springfield Township, when Union County was formed. Earlier known variously as Milltown, Millville, Rum Brook, and Vauxhall, the name \"Millburn\" was adopted before the township was established. The township's name derives from the burn (Scottish for a stream) that powered mills in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "millburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5317,
+    "place_id": "gn-2154912",
+    "input": {
+      "place": {
+        "place_id": "gn-2154912",
+        "name": "North Melbourne",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.79798,
+        "lon": 144.94512
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Melbourne",
+          "url": "https://en.wikipedia.org/wiki/North_Melbourne",
+          "text": "North Melbourne is an inner-city suburb in Melbourne, Victoria, Australia, 3 km (1.9 mi) north-west of Melbourne's Central Business District, located within the local government area of City of Melbourne. North Melbourne recorded a population of 14,953 at the 2021 census.\nNorth Melbourne is bounded by the CityLink freeway to the west, Victoria Street to the south, O'Connell and Peel Streets to the east and Flemington Road to the north. Since July 2008 its local government area has been the City of Melbourne, when it took over the administration of parts of Kensington and North Melbourne that were previously under the City of Moonee Valley, resulting in an increase of approximately 4760 residents and almost 3000 workers (2006 Census).\nFormerly known as Hotham, it was essentially a working class area, with some middle class pockets, and was one of the first towns in Victoria to be granted Municipal status.\nToday it is noted for its Victorian architecture, cosmopolitan demographic, commercial and older industrial areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "north melbourne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "melbourne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5318,
+    "place_id": "gn-2644605",
+    "input": {
+      "place": {
+        "place_id": "gn-2644605",
+        "name": "Lerwick",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 60.15339,
+        "lon": -1.14427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lerwick",
+          "url": "https://en.wikipedia.org/wiki/Lerwick",
+          "text": "Lerwick (Scots: Lerook) is a port town and burgh in Shetland, Scotland. It is the main town of the Shetland archipelago, and has a population of 6,709 in 2022. It is the northernmost major settlement within the United Kingdom.\nCentred 123 miles (200 km) off the north coast of the Scottish mainland and on the east coast of the Shetland Mainland, Lerwick lies 211 miles (340 km) north-by-northeast of Aberdeen; 222 miles (357 km) west of the similarly sheltered port of Bergen in Norway; and 228 miles (367 km) south east of Tórshavn in the Faroe Islands. One of the UK's coastal weather stations is situated there, with the local climate having small seasonal variation due to the maritime influence. Being located further north than Saint Petersburg and three of the four mainland Nordic capitals, and on the same latitude as Anchorage, Alaska, Lerwick's nights in the middle of summer only get dark twilight and winters have less than six hours of complete daylight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "lerwick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5319,
+    "place_id": "gn-4170556",
+    "input": {
+      "place": {
+        "place_id": "gn-4170556",
+        "name": "Rotonda West",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.88368,
+        "lon": -82.29009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rotonda West, Florida",
+          "url": "https://en.wikipedia.org/wiki/Rotonda_West,_Florida",
+          "text": "Rotonda West is an unincorporated, deed-restricted planned community situated in Charlotte County, Florida, United States. The 2020 U.S. Census Bureau lists it as the Rotonda census-designated place, with a population of 10,114, up from 8,759 at the 2010 census. It is part of the Punta Gorda, Florida Metropolitan Statistical Area, included in the North Port-Bradenton, Florida Combined Statistical Area. It was developed and named Rotonda West by Cavanagh Communities Corporation, which purchased the land in 1969.\nThe developer also purchased land in southern Martin County and northern Palm Beach County for a second project to be named \"Rotonda East.\" The land selected for that development was swamp land, located north of West Indiantown Road, south of the Tailwinds Airport, west of Interstate 95 and east of Mack Dairy Road. It was not considered wise to drain those wetlands due to changing views on the ecological value of wetlands, and the Army Corps of Engineers refused a permit, so the Rotonda East project was abandoned."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "rotonda west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rotonda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5320,
+    "place_id": "gn-5110161",
+    "input": {
+      "place": {
+        "place_id": "gn-5110161",
+        "name": "Brighton Beach",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.57788,
+        "lon": -73.95958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brighton Beach",
+          "url": "https://en.wikipedia.org/wiki/Brighton_Beach",
+          "text": "Brighton Beach, also referred to as Little Odessa, or Little Russia, is a neighborhood in the southern portion of the New York City borough of Brooklyn, within the greater Coney Island area along the Atlantic Ocean coastline. Brighton Beach is bounded by Coney Island proper at Ocean Parkway to the west, Manhattan Beach at Corbin Place to the east, Sheepshead Bay at the Belt Parkway to the north, and the Atlantic Ocean to the south along the beach and boardwalk.\nIt is known for its high population of Russian-speaking immigrants, and as a summer destination for New York City residents due to its beaches along the Atlantic Ocean and its proximity to the amusement parks in Coney Island. It was named in the 1870s as an allusion to the English resort city of Brighton.\nBrighton Beach is part of Brooklyn Community District 13, and its primary ZIP Code is 11235. It is patrolled by the 60th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "brighton beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brighton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5322,
+    "place_id": "gn-728825",
+    "input": {
+      "place": {
+        "place_id": "gn-728825",
+        "name": "Nesebar",
+        "country": "Bulgaria",
+        "subdivision": "Burgas",
+        "lat": 42.65921,
+        "lon": 27.73602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nesebar",
+          "url": "https://en.wikipedia.org/wiki/Nesebar",
+          "text": "Nesebar (often transcribed as Nessebar and sometimes as Nesebur, Bulgarian: Несебър, pronounced [nɛˈsɛbɐr]) is an ancient city and one of the major seaside resorts on the Bulgarian Black Sea Coast, located in Burgas Province. It is the administrative centre of the homonymous Nesebar Municipality. Often referred to as the \"Pearl of the Black Sea\", Nesebar is a rich city-museum defined by more than three millennia of ever-changing history. The small city exists in two parts separated by a narrow human-made isthmus with the ancient part of the settlement on the peninsula (previously an island), and the more modern section (i.e., hotels and later development) on the mainland side. The older part bears evidence of occupation by a variety of different civilisations over the course of its existence.\nIt is one of the most prominent tourist destinations and seaports on the Black Sea, in what has become a popular area with several large resorts—the largest, Sunny Beach, is situated immediately to the north of Nesebar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "nesebar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5325,
+    "place_id": "gn-3531793",
+    "input": {
+      "place": {
+        "place_id": "gn-3531793",
+        "name": "Calkiní",
+        "country": "Mexico",
+        "subdivision": "Campeche",
+        "lat": 20.37056,
+        "lon": -90.05083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calkiní",
+          "url": "https://en.wikipedia.org/wiki/Calkiní",
+          "text": "Calkiní (Yucatec Maya: \"throat of the sun\") is a city in the Mexican state of Campeche. It is situated at the northern tip of the state, on the central western coast the Yucatán Peninsula. It serves as the municipal seat for the surrounding municipality of the same name. As of 2010, the city of Calkiní had a population of 14,934.\nCalkini's San Luis Obispo or San Luis Calkiní church was founded in 1549 by the Franciscan Fray Diego de Villalpando as a mission and constructed on the base of the main ceremonial Mayan structure located on the site, thus ensuring both handily available building materials and a natural predisposition of the soon-to-be-converted Mayan population to gravitate towards this sacred place.\nIts strategic location halfway between Campeche and Merida made it both the head mission for the Franciscans in the region by 1588 and the second-largest town in the entire province of Yucatan, which then encompassed all three current states on the Yucatan peninsula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "calkini",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5326,
+    "place_id": "gn-3699095",
+    "input": {
+      "place": {
+        "place_id": "gn-3699095",
+        "name": "Cajabamba",
+        "country": "Peru",
+        "subdivision": "Cajamarca Department",
+        "lat": -7.61667,
+        "lon": -78.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cajabamba, Peru",
+          "url": "https://en.wikipedia.org/wiki/Cajabamba,_Peru",
+          "text": "Cajabamba is a town in Northern Peru and is the capital of the province of Cajabamba, in the region of Cajamarca.\nOn the 19th of March, 1888, painter José Sabogal was born in Cajabamba. The José Sabogal Dieguez Quick Painting Contest is held annually in Cajabamba.\n\nThe Day of the Virgin of the Rosary, or the Virgen de Rosario Festival, has been held annually in Cajabamba since 1668. The festival start with a mass on the first Sunday of October, and the 10-day celebration includes fireworks, local arts, and traditional dances.The province of Cajabamba was founded by the friars of the Order of Hermits of the Great Father Saint Augustine, who, having been sent from Spain by King Charles V with the permission of Pope Paul III, arrived in this region in 1533. The \"Three Juans,\" a trio of friars named Juan de San Pedro, Juan del Canto, and Juan Ramirez settled on the right bank of the Los Ojos de Lanla spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "cajabamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5332,
+    "place_id": "gn-3109982",
+    "input": {
+      "place": {
+        "place_id": "gn-3109982",
+        "name": "Santa Coloma de Farners",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.86667,
+        "lon": 2.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Coloma de Farners",
+          "url": "https://en.wikipedia.org/wiki/Santa_Coloma_de_Farners",
+          "text": "Santa Coloma de Farners (Catalan pronunciation: [ˈsantə kuˈlomə ðə fəɾˈnes]) is a spa town and capital of the comarca of the Selva, in \nCatalonia, Spain, and of the judicial district of Santa Coloma.\nIt is situated on the edge of the Selva Depression and of the Guilleries. The local economy is mainly commercial, given the status of the town as capital of the comarca, although summer tourism, agriculture and forestry products also contribute. The urban centre is to the north and west of the main modern communication routes, although the C-253 road links the town with the main N-II route and the AP-7 autopista and to the Renfe railway station at Sils (10 km). The GE-533 runs through the northern part of the municipality, linking it with Vic to the west and with Riudellots de la Selva, Vilobí d'Onyar and Girona-Costa Brava Airport \nto the east.\nThe town dates from at least 898, when the church is mentioned for the first time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "santa coloma de farners",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "coloma",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "farners",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5334,
+    "place_id": "gn-5976783",
+    "input": {
+      "place": {
+        "place_id": "gn-5976783",
+        "name": "Hope",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.38299,
+        "lon": -121.44144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hope, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Hope,_British_Columbia",
+          "text": "Hope is a district municipality at the confluence of the Fraser and Coquihalla rivers in the province of British Columbia, Canada. Hope is at the eastern end of both the Fraser Valley and the Lower Mainland region, and is at the southern end of the Fraser Canyon. To the east, over the Cascade Mountains, is the Interior region, beginning with the Similkameen Country on the farther side of the Allison Pass in Manning Park.\nLocated 154 kilometres (96 mi) east of Vancouver, Hope is at the southern terminus of the Coquihalla Highway and the western terminus of the Crowsnest Highway, locally known as the Hope-Princeton (Highways 5 and 3, respectively), where they merge with the Trans-Canada Highway (Highway 1). Hope is at the eastern terminus of Highway 7. As it lies at the eastern end of the Fraser Valley in the windward Cascade foothills, the town gets very high amounts of rain and cloud cover – particularly throughout the autumn and winter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "hope",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5338,
+    "place_id": "gn-2644679",
+    "input": {
+      "place": {
+        "place_id": "gn-2644679",
+        "name": "Lees",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.53794,
+        "lon": -2.07302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lees, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Lees,_Greater_Manchester",
+          "text": "Lees is a town in the Metropolitan Borough of Oldham, Greater Manchester, England, amongst the Pennines east of the River Medlock, 1.8 miles (2.9 km) east of Oldham, and 8.2 miles (13.2 km) northeast of Manchester.\nIn the 14th century, when John de Leghes was a retainer of the local Lord of the manor, Lees was a conglomeration of hamlets, ecclesiastically linked with the township of Ashton-under-Lyne. Farming was the main industry of this rural area, with locals supplementing their incomes by hand-loom weaving in the domestic system. At the beginning of the 19th century, Lees had obtained a reputation for its mineral springs; ambitions to develop a spa town were thwarted by an unplanned process of urbanisation caused by the rise of textile manufacture during the Industrial Revolution.\nLees expanded into a mill town in the late 19th century, on the back of neighbouring Oldham's boom in cotton spinning. Lees Urban District had eleven cotton mills at its manufacturing zenith."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "lees",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5341,
+    "place_id": "gn-4503351",
+    "input": {
+      "place": {
+        "place_id": "gn-4503351",
+        "name": "Ocean City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.27762,
+        "lon": -74.5746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ocean_City,_New_Jersey",
+          "text": "Ocean City is a city in Cape May County, in the U.S. state of New Jersey. It is the principal city of the Ocean City metropolitan statistical area, which encompasses all of Cape May County, and is part of the Philadelphia metropolitan area. It is part of the South Jersey region of the state.\nAs of the 2020 United States census, the city's population was 11,229, a decrease of 472 (−4.0%) from the 2010 census count of 11,701, which in turn reflected a decline of 3,677 (−23.9%) from the 15,378 counted in the 2000 census. In summer months, with an influx of tourists and second homeowners, there are estimated to be 115,000 to 130,000 within the city's borders.\nOcean City originated as a borough by an act of the New Jersey Legislature on May 3, 1884, from portions of Upper Township, based on results from a referendum on April 30, 1884, and was reincorporated as a borough on March 31, 1890."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "ocean city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5347,
+    "place_id": "gn-2646355",
+    "input": {
+      "place": {
+        "place_id": "gn-2646355",
+        "name": "Hurstpierpoint",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.93388,
+        "lon": -0.18007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hurstpierpoint",
+          "url": "https://en.wikipedia.org/wiki/Hurstpierpoint",
+          "text": "Hurstpierpoint  is a village in the Mid Sussex district, in the county of West Sussex, England, 4 miles (6.4 km) southwest of Burgess Hill, 1.5 miles (2.4 km) west of Hassocks railway station, and 40 miles south of London (as the crow flies). It sits in the  civil parish of Hurstpierpoint and Sayers Common  which has an area of 2029.88 ha and a population of 7,112.\nThe village was once chiefly one long street running east and west and most of the buildings in it are of the 18th century or later. The late 20th Century and early 21st Century saw Hurstpierpoint expanding greatly with new homes built north, east and west of the village.\nHurstpierpoint hosts the Hurst Festival which takes place every summer and has an active Scouts and Guides Groups.\nEstablished in 1962, the Hurstpierpoint Society is a village organization with over 1,300 members, dedicated to enhancing and safeguarding the village surroundings and examining local planning proposals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "hurstpierpoint",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5353,
+    "place_id": "gn-5380378",
+    "input": {
+      "place": {
+        "place_id": "gn-5380378",
+        "name": "Pacific Palisades",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.04806,
+        "lon": -118.52647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pacific Palisades, Los Angeles",
+          "url": "https://en.wikipedia.org/wiki/Pacific_Palisades,_Los_Angeles",
+          "text": "Pacific Palisades is a neighborhood in the Westside region of the city of Los Angeles, California, situated about 20 miles (32 km) west of downtown. It was founded in 1921 by a Methodist organization, and is known for its seclusion, Mediterranean climate, hilly topography, abundance of parkland and hiking trails, a 3-mile (4.8 km) strip of coastline, and for being home to several architecturally significant homes.\nThe neighborhood is bounded by Brentwood to the east, the unincorporated community of Topanga to the west, Santa Monica to the southeast, the Santa Monica Bay to the southwest, and the Santa Monica Mountains to the north. Parks and beaches in the Palisades include the Santa Monica State Beach, Will Rogers State Beach, Santa Monica Mountains National Recreation Area, and Will Rogers State Historic Park.\nIn January 2025, thousands of structures were destroyed by the Palisades Fire, amounting to several billion dollars in damages, as part of the wider outbreak of Southern California wildfires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "pacific palisades",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pacific",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palisades",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5366,
+    "place_id": "gn-2173911",
+    "input": {
+      "place": {
+        "place_id": "gn-2173911",
+        "name": "Broken Hill",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.9652,
+        "lon": 141.4512
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broken Hill",
+          "url": "https://en.wikipedia.org/wiki/Broken_Hill",
+          "text": "Broken Hill is a city in the far west region of outback New South Wales, Australia. An inland mining city, it is near the border with South Australia on the crossing of the Barrier Highway (A32) and the Silver City Highway (B79), in the Barrier Range. It is 315 m (1,033 ft) above sea level, with a cold semi-arid climate, and an average rainfall of 265 mm (10.4 in). The closest major city is Mildura, 300 km (190 mi) to the south and the nearest state capital city is Adelaide, the capital of South Australia, which is more than 500 km (310 mi) to the southwest and linked via route A32, the Barrier Highway.\nThe town lies on the traditional lands of the Wilyakali people. It became prominent in Australia's mining, industrial relations, and economic history after the discovery of silver-lead-zinc ore in the Broken Hill ore deposit, in an ore body known as the Line of Lode."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "broken hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "broken",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5367,
+    "place_id": "gn-2522960",
+    "input": {
+      "place": {
+        "place_id": "gn-2522960",
+        "name": "Termini Imerese",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.98225,
+        "lon": 13.69729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Termini Imerese",
+          "url": "https://en.wikipedia.org/wiki/Termini_Imerese",
+          "text": "Termini Imerese (Italian pronunciation: [ˈtɛrmini imeˈreːze, -eːse]; Sicilian: Tèrmini [ˈtɛɾmɪnɪ]) is a town of the Metropolitan City of Palermo on the northern coast of Sicily, in Italy.\nIt is one of the most important towns of the Metropolitan City of Palermo, from which it is 33 km away. The town is easily reachable through its well developed infrastructures: there are three highway exits along the A19, its station is the meeting point between all of the Sicilian railway lines and its seaport links the town with other important maritime Italian cities. It has a judicial district. It is culturally interesting for the close Greek ruins of Himera, its numerous churches, Roman ruins, prehistorical finds and the annual celebration of the Carnival, one of the oldest in Italy. In the heart of the old town, at its lower level, there are the thermal baths of the Grand Hotel delle Terme, where precious hot waters have flowed since Roman age."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "termini imerese",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "termini",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "imerese",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5377,
+    "place_id": "gn-6143367",
+    "input": {
+      "place": {
+        "place_id": "gn-6143367",
+        "name": "Sechelt",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.47512,
+        "lon": -123.75903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sechelt",
+          "url": "https://en.wikipedia.org/wiki/Sechelt",
+          "text": "Sechelt (; Sechelt: ch'atlich) is a district municipality located on the lower Sunshine Coast of British Columbia. Approximately 50 kilometres (31 mi) northwest of Vancouver, it is accessible from mainland British Columbia by a 40-minute ferry trip between Horseshoe Bay and Langdale, and a 25-minute drive from Langdale along Highway 101, also known as the Sunshine Coast Highway. The name Sechelt is derived from the she shashishalhem word shíshálh, the name of the First Nations people who first settled the area thousands of years ago.\nThe original Village of Sechelt was incorporated on February 15, 1956. Sechelt later expanded its boundaries in 1986 with the inclusion of a number of adjacent unincorporated areas. The District of Sechelt, as it is known today, encompasses 39.71 square kilometres (15.33 sq mi) at the isthmus of the Sechelt Peninsula, between the southern tip of Sechelt Inlet (Porpoise Bay) and the Strait of Georgia that separates the provincial mainland from Vancouver Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "sechelt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5378,
+    "place_id": "gn-2166952",
+    "input": {
+      "place": {
+        "place_id": "gn-2166952",
+        "name": "Fairfield",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.86667,
+        "lon": 150.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairfield, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Fairfield,_New_South_Wales",
+          "text": "Fairfield is a suburb of  Western Sydney, in the state of New South Wales, Australia. Being in the centre of the Cumberland Plain, Fairfield is located 30 kilometres (19 mi) west of the Sydney central business district and is the administrative heart of the Fairfield City Council (local government area) – despite a very small portion of it belonging to the Cumberland Council. Fairfield supports a mixture of commercial and residential developments, mostly characterised by medium-density buildings and some new high-rise apartments.\nFairfield is one of the most multicultural and culturally diverse cities in Australia, with more than half of the residents having been born overseas, mostly in non-English speaking countries. The majority of the suburb's dwellers speak a language other than English at home, with the two most common ones being Arabic and Assyrian Neo-Aramaic. Fairfield is an ethnic enclave of Assyrian Christians (mostly from Iraq, and more recently Syria), along with newer Sunni Iraqi arrivals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "fairfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5381,
+    "place_id": "gn-2786318",
+    "input": {
+      "place": {
+        "place_id": "gn-2786318",
+        "name": "Spa",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.48375,
+        "lon": 5.86674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spa, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Spa,_Belgium",
+          "text": "Spa (French pronunciation: [spa] ; Walloon: Spå) is a municipality and city of Wallonia in the province of Liège, Belgium, whose name became an eponym for mineral baths with supposed curative properties. It is in a valley in the Ardennes mountains 35 km (22 mi) south-east of Liège and 45 km (28 mi) south-west of Aachen. In 2006, Spa had a population of 10,543 and an area of 39.85 km2 (15.39 sq mi), giving a population density of 265/km2 (690/sq mi).\nSpa is one of Belgium's most popular tourist destinations, being renowned for its natural mineral springs, and production of \"Spa\" mineral water, which is exported worldwide. The motor-racing Circuit de Spa-Francorchamps, just south of the nearby village of Francorchamps, also hosts the annual Formula One Belgian Grand Prix and various endurance races such as the 24 Hours of Spa. The world's first beauty pageant, the Concours de Beauté, was held in Spa on 19 September 1888."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "spa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

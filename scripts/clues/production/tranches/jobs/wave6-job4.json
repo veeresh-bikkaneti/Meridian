@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 5483,
+    "place_id": "gn-2809134",
+    "input": {
+      "place": {
+        "place_id": "gn-2809134",
+        "name": "Wiesmoor",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.41513,
+        "lon": 7.73642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wiesmoor",
+          "url": "https://en.wikipedia.org/wiki/Wiesmoor",
+          "text": "Wiesmoor (German pronunciation: [ˈviːsˌmoːɐ̯] ) is a town in the district of Aurich in the northwest of Lower Saxony.  It lies on the Nordgeorgsfehnkanal and is the youngest town in the East Frisia area having been bestowed town rights on 16 March 2006, two days later on 18 March 2006, Wiesmoor celebrated the Centenary of the settlement's founding. The town owes its growth to the industrialisation of the harvesting of peat from the surrounding moors. Wiesmoor holds an annual flower festival and the town is also known as the ‘Flower City’, the name originates from the large numbers of flowers which are grown in the town’s industrial greenhouse. Formerly the greenhouses were heated by waste heat from the now defunct peat burning power station which was located in the city. Wiesmoor also has the official title of a Luftkurort; tourism now plays an important role in the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "wiesmoor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5486,
+    "place_id": "gn-3116246",
+    "input": {
+      "place": {
+        "place_id": "gn-3116246",
+        "name": "Mont-roig del Camp",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.08675,
+        "lon": 0.95925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mont-roig del Camp",
+          "url": "https://en.wikipedia.org/wiki/Mont-roig_del_Camp",
+          "text": "Mont-roig del Camp (Catalan pronunciation: [munˈrɔdʒ ðəl ˈkam]) is a town and municipality in the comarca of Baix Camp in Catalonia.  It is in the middle of its comarca, between the Serra de Colldejou and the Mediterranean Sea. It includes two populated places: the historic town of Mont-roig del Camp in the interior, whose economy revolves round the cultivation of nuts and olives, and the beach resort of Miami Platja on the coast, the Costa Daurada. Overall it has a population of 14,615 (register office, 2025) .\n\nThe municipality has a long coastline, with campsites and a few hotels, informally distributed over the districts of Pins de Miramar and Miami Platja, as well as round the Platja de Rifà (Rifà beach), close to the district of Les Pobles.\nNotable buildings include the \"new\" parish church, that of Sant Miquel, built in Gothic and Renaissance style between 1574 and 1610."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "mont roig del camp",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "roig",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camp",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5504,
+    "place_id": "gn-5431740",
+    "input": {
+      "place": {
+        "place_id": "gn-5431740",
+        "name": "Monument",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.09166,
+        "lon": -104.87276
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monument, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Monument,_Colorado",
+          "text": "Monument is a home rule town situated at the base of the Rampart Range in El Paso County, Colorado, United States. Monument is one of the three communities that make up the Tri-Lakes area, along with Palmer Lake and Woodmoor. Monument is bordered by Pike National Forest on the west, Colorado Springs and the United States Air Force Academy to the south, Bald Mountain, True Mountain, and Spruce Mountain to the north, and Black Forest and rolling plains to the east. Monument was first settled as a stop along the Rio Grande Railroad in 1872, and the area was incorporated as a town called Henry's Station in 1879, but the name was later changed to Monument.  The town population was 10,399 at the 2020 United States census, a 88% increase from a population of 5,530 in 2010 and a 528% increase from a population of 1,971 in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "monument",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5524,
+    "place_id": "gn-939930",
+    "input": {
+      "place": {
+        "place_id": "gn-939930",
+        "name": "Wilderness",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.99385,
+        "lon": 22.57574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wilderness, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Wilderness,_South_Africa",
+          "text": "Wilderness is a seaside town on the Garden Route of the southern Cape in South Africa. It is situated a short distance to the east from the city of George, on the N2 down the Kaaiman's River Pass.\nThe area around Wilderness has yielded significant palaeoclimatological data on the prehistoric climate of South Africa. Sediment core data from the nearby coastal lake Eilandvlei indicate higher aridity relative to the present day during the intervals spanning ~8,900-7,900 years BP and ~6,400-3,000 years BP, whereas the interval from 7,900 to 6,400 years BP was relatively moist and similar to the present day.\nThe town is also known for having been both the retirement and death place of P. W. Botha, who served as Prime Minister of South Africa from 1978 to 1984 and as the first executive State President of South Africa from 1984 until his resignation in 1989."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "wilderness",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5528,
+    "place_id": "gn-2652819",
+    "input": {
+      "place": {
+        "place_id": "gn-2652819",
+        "name": "Clitheroe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.86667,
+        "lon": -2.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clitheroe",
+          "url": "https://en.wikipedia.org/wiki/Clitheroe",
+          "text": "Clitheroe () is a town and civil parish in the Borough of Ribble Valley, Lancashire, England; it is located 34 miles (55 km) north-west of Manchester. It is near the Forest of Bowland and is often used as a base for tourists visiting the area. In 2018, the Clitheroe built-up area had an estimated population of 16,279.\nThe town was listed in the 2017 The Sunday Times report on the best places to live in Northern England, while the wider Ribble Valley, of which Clitheroe is the most populous settlement, was listed in the 2018 and 2024 Sunday Times report on the best places to live. Clitheroe and the wider Ribble Valley have also been listed as healthiest and happiest place to live in the United Kingdom.\nThe town's most notable building is Clitheroe Castle, which is one of the smallest Norman keeps in Great Britain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "clitheroe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5535,
+    "place_id": "gn-4167583",
+    "input": {
+      "place": {
+        "place_id": "gn-4167583",
+        "name": "Palm Springs",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.6359,
+        "lon": -80.09615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Springs, Florida",
+          "url": "https://en.wikipedia.org/wiki/Palm_Springs,_Florida",
+          "text": "Palm Springs is a village in Palm Beach County, Florida, United States, situated approximately 61 mi (98 km) north of Miami. The village's name was likely derived from the resort city of Palm Springs, California. Located in the east-central part of the county, Palm Springs is situated north of Atlantis, east of Greenacres, west of Lake Clarke Shores and Lake Worth Beach, and southwest of West Palm Beach. The 2010 United States census recorded the village's population at 18,928, which increased to 26,890 in the 2020 census. Palm Springs is also located within the Miami metropolitan area of South Florida, which had a population of approximately 6,138,333 people as of 2020.\nWilliam A. Boutwell operated a dairy farm on 5 acres (2.0 ha) of land in modern-day Palm Springs beginning in 1927, which expanded to about 700 acres (280 ha) prior to his retirement in 1956."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "palm springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5538,
+    "place_id": "gn-5128266",
+    "input": {
+      "place": {
+        "place_id": "gn-5128266",
+        "name": "Nanuet",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.08871,
+        "lon": -74.01347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanuet, New York",
+          "url": "https://en.wikipedia.org/wiki/Nanuet,_New_York",
+          "text": "Nanuet (English pronunciation: /ˈnænjuɛːt/ ) is a hamlet and census-designated place in the town of Clarkstown, New York, United States. The third largest hamlet in Clarkstown, it is located north of Pearl River, south of New City, east of Spring Valley, and west of West Nyack. It is located midway between Manhattan and Bear Mountain, 19 miles (31 km) north and south of each respectively; and 2 miles (3 km) north of the New Jersey border. It has one of three Rockland County stations on New Jersey Transit's Pascack Valley Line. As of the 2020 census, Nanuet had a population of 18,886.\nThe opening of the New York State Thruway (Interstate 87/287), the Tappan Zee Bridge, and the Palisades Interstate Parkway in the mid-1950s helped usher in decades of population growth and real estate development, including the construction of the Nanuet Mall and local shopping centers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "nanuet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5539,
+    "place_id": "gn-6952201",
+    "input": {
+      "place": {
+        "place_id": "gn-6952201",
+        "name": "East Melbourne",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.81667,
+        "lon": 144.9879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Melbourne",
+          "url": "https://en.wikipedia.org/wiki/East_Melbourne",
+          "text": "East Melbourne is an inner-city suburb in Melbourne, Victoria, Australia, 2 km (1.2 mi) east of Melbourne's Central Business District, located within the City of Melbourne local government area. East Melbourne recorded a population of 4,896 at the 2021 census.\nEast Melbourne is a small area of inner Melbourne, located between Richmond and the Central Business District. Broadly, it is bounded by Spring Street, Victoria Parade, Punt Road/Hoddle Street and Brunton Avenue.\nOne of Melbourne's earliest suburbs, East Melbourne has long been home to many significant government, health and religious institutions, including the Parliament of Victoria and offices of the Victoria State Government in the Parliamentary and Cathedral precincts, which are located on a gentle hill at the edge of the Melbourne's Hoddle Grid, known as Eastern Hill. The world-famous Melbourne Cricket Ground (MCG) is located in Yarra Park, in the East Melbourne locality of Jolimont."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "east melbourne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "melbourne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5543,
+    "place_id": "gn-1634904",
+    "input": {
+      "place": {
+        "place_id": "gn-1634904",
+        "name": "Muara Bungo",
+        "country": "Indonesia",
+        "subdivision": "Jambi",
+        "lat": -1.49018,
+        "lon": 102.1149
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muara Bungo",
+          "url": "https://en.wikipedia.org/wiki/Muara_Bungo",
+          "text": "Muara Bungo is a town in the Indonesian province of Jambi, Sumatra. It is the administrative capital of Bungo Regency, a regency (kabupaten) in Sumatra. It has a land area of 9.21 km2, and\thad a population of 21,243 as of the 2020 census; the official estimate as at mid 2024 was 21,703, comprising the five kelurahan which make up the official town (Bungo Barat, Bungo Timur, Batang Bungo, Jaya Setia and Tanjung Gedang). \nOther kelurahan in the adjacent Bungo Dani District (Sungai Pinang and Sungai Kerjan) and Rimbo Tengah District (Cadika and Pasih Putih) form part of the built-up area of the town, while the three kelurahan of Bathin III District (Bungo Taman Agung, Manggis and Sungai Binjai) adjoin it on the north side of the Batang Hari River and the Benit River. Altogether this comprised 75,249 inhabitants in an area of 84.84 km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "muara bungo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "muara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bungo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5552,
+    "place_id": "gn-3583196",
+    "input": {
+      "place": {
+        "place_id": "gn-3583196",
+        "name": "Santiago Nonualco",
+        "country": "El Salvador",
+        "subdivision": "La Paz Department",
+        "lat": 13.51667,
+        "lon": -88.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago Nonualco",
+          "url": "https://en.wikipedia.org/wiki/Santiago_Nonualco",
+          "text": "Santiago Nonualco is a municipality in La Paz department of El Salvador.\n\"Nonualco\" means \"tribe of mutes\" in the native Nahuat language, referring to the Nonoalca people who settled here around 900 CE. There are three \"Nonualcos\" in the area, the other two are San Juan Nonualco and San Pedro Nonualco.\nSantiago Nonualco is a relatively poor community even by Salvadoran standards. The primary historical economic activity has been subsistence farming and the cultivation of sugar cane, providing back-breaking work for those willing to bake in the sun swinging their \"corvos,\" curved tobacco-knife like machetes, for a couple of dollars a day. Currently there are very few employers in the area. Santiago Nonualco has a small central market, a few modest stores (tiendas), diners (comedores), bars, doctor's office, pharmacy, a couple of dentists, a small bank (casa de credito), some lawyers, and not much else."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "santiago nonualco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nonualco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5556,
+    "place_id": "gn-5097459",
+    "input": {
+      "place": {
+        "place_id": "gn-5097459",
+        "name": "East Rutherford",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.83399,
+        "lon": -74.09709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Rutherford, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/East_Rutherford,_New_Jersey",
+          "text": "East Rutherford is a borough in Bergen County, in the U.S. state of New Jersey. It is an inner-ring suburb of New York City, located 7 miles (11 km) west of Midtown Manhattan. As of the 2020 United States census, the borough's population was 10,022, an increase of 1,109 (+12.4%) from the 2010 census count of 8,913, which in turn reflected an increase of 197 (+2.3%) from the 8,716 counted in the 2000 census.\nUnder the terms of an act of the New Jersey Legislature on April 17, 1889, a portion of the old Union Township was incorporated under the name of Boiling Springs Township. The new township took its name from a spring in the community. On March 28, 1894, the Borough of East Rutherford was created, based on the results of a referendum held the previous day, and Boiling Springs Township was dissolved."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "east rutherford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rutherford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5558,
+    "place_id": "gn-5847504",
+    "input": {
+      "place": {
+        "place_id": "gn-5847504",
+        "name": "Kailua-Kona",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 19.64016,
+        "lon": -155.99912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kailua-Kona, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Kailua-Kona,_Hawaii",
+          "text": "Kailua-Kona is an unincorporated community and, under the name Kailua, a census-designated place (CDP) in Hawaii County, Hawaii, United States. It is most commonly referred to simply as Kona (a name it shares with the district to which it belongs), but also as Kona Town, and occasionally as Kailua (a name it shares with a community on the windward side of Oʻahu), thus its less frequent use. Kailua-Kona is the second-largest settlement on the island of Hawaii (after Hilo) and the largest on the island's west side, where it is the center of commerce and the tourist industry. Kailua-Kona is served by Kona International Airport, just to the north in the adjacent CDP of Kaiminani. The population was 19,713 at the 2020 census, up from 11,975 at the 2010 census.\nKailua-Kona was the closest major settlement to the epicenter of the 2006 Kiholo Bay earthquake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "kailua kona",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kailua",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kona",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5561,
+    "place_id": "gn-1020592",
+    "input": {
+      "place": {
+        "place_id": "gn-1020592",
+        "name": "Bedford",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.67903,
+        "lon": 26.08686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedford, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Bedford,_South_Africa",
+          "text": "Bedford or Nyarha is a town in the centre of the Eastern Cape province of South Africa. It was established in the mid-19th century when Sir Andries Stockenstroom sold portions of land from his farm Maastroom to raise funds for the restoration of his library, which had been burnt by British soldiers mistrustful of his attempts to broker peace in one of the Cape Frontier Wars. The farm is still there and open for visitors.\nIt is located on the southern edge of the Winterberg mountain range, in the Smaldeel (a narrow strip of grassland running laterally from Fort Beaufort to Somerset East, renowned for its sweet grass). The town suffered a major decline in fortunes in the latter half of the 20th century before reviving itself around the turn of the millennium. It is regarded today as an artist's haven and retirement village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "bedford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5563,
+    "place_id": "gn-1528512",
+    "input": {
+      "place": {
+        "place_id": "gn-1528512",
+        "name": "Cholpon-Ata",
+        "country": "Kyrgyzstan",
+        "subdivision": "Issyk-Kul",
+        "lat": 42.64944,
+        "lon": 77.08225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cholpon-Ata",
+          "url": "https://en.wikipedia.org/wiki/Cholpon-Ata",
+          "text": "Cholpon-Ata is a resort town on the northern shore of Lake Issyk-Kul in Kyrgyzstan with a population of 14,237 (2021). It is the administrative center of the Issyk-Kul District of Issyk-Kul Region; this district occupies most of the lake's north shore. To the west along highway A363 is Tamchy and to the east is Bosteri.\nThe town contains numerous large and small sanatoria, hotels and guesthouses to accommodate the many visitors who descend upon the lake in summer. During the Soviet era it was much frequented by vacationers brought here in organized mass tours from other parts of the USSR. Holidaymakers now usually visit on their own or in small groups and originate mainly from Kyrgyzstan, Kazakhstan, Uzbekistan and Russia with some tourists from other countries. Attracting more demanding foreign tourists will require upgrading of the existing facilities, but the location is certainly attractive."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "cholpon ata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cholpon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5570,
+    "place_id": "gn-4179667",
+    "input": {
+      "place": {
+        "place_id": "gn-4179667",
+        "name": "Americus",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.07239,
+        "lon": -84.23269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Americus, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Americus,_Georgia",
+          "text": "Americus is the county seat of Sumter County, Georgia, United States. As of the 2020 census, the city had a population of 16,230. It is the principal city of the Americus Micropolitan Statistical Area, a micropolitan area that covers Schley and Sumter counties and had a combined population of 36,966 at the 2000 census.\nHabitat for Humanity was founded in Americus and its international headquarters is there, as well as The Fuller Center for Housing's international headquarters, Georgia Southwestern State University, the Windsor Hotel, The Rosalynn Carter Institute for Caregivers, and many other organizations. The city is notable for its rich history, including a large business and residential historic district, being one of the 29 places where Martin Luther King was jailed, the infamous Leesburg Stockade incident, and its close proximity to Jimmy Carter National Historical Park, Andersonville National Historic Site, and Koinonia Farm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "americus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5580,
+    "place_id": "gn-13192644",
+    "input": {
+      "place": {
+        "place_id": "gn-13192644",
+        "name": "Dārzciems",
+        "country": "Latvia",
+        "subdivision": "Riga",
+        "lat": 56.94563,
+        "lon": 24.17459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dārzciems",
+          "url": "https://en.wikipedia.org/wiki/Dārzciems",
+          "text": "Dārzciems (literal Latvian - 'garden village') is a neighborhood of Riga located in the Latgale Suburb in the southeastern part of the right bank of the Daugava river. With a population of about 21,000 inhabitants in 2010, Dārzciems's territory covers 4.577 km2 (1.767 sq mi) and is one of the most arid parts of Riga. The western part of Dārzciems mainly consists of one-or two-story private buildings, while the northwestern part is dominated by multi-storied housing blocks.\nThe territory of neighborhood was added to Riga in 1924 with plans to develop it as a 'garden city' with small private houses and gardens around them. During the 1970s, some of the old private houses were demolished and several 3- to 9-storey apartment blocks were built for the needs of Soviet Army officers. Later, several big industrial enterprises built apartments for their workers there (e.g."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "darzciems",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5585,
+    "place_id": "gn-2706982",
+    "input": {
+      "place": {
+        "place_id": "gn-2706982",
+        "name": "Hedemora",
+        "country": "Sweden",
+        "subdivision": "Dalarna",
+        "lat": 60.27973,
+        "lon": 15.98855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hedemora",
+          "url": "https://en.wikipedia.org/wiki/Hedemora",
+          "text": "Hedemora is a town in Dalarna County and the seat of Hedemora Municipality, Sweden, with 7,273 inhabitants in 2010.\nDespite its small population, Hedemora is for historical reasons normally still referred to as a city, and as such the oldest in the county. \nJonas Nilsson comes from Hedemora, as well as Kerstin Thorborg, Martin Matsbo, Edvin Anger, Bertil Norman and Ulf Stenlund. The diesel engines from Hedemora Diesel can be found in many ships built by Kockums, such as HSwMS Orion, the Collins class submarines in the Royal Australian Navy Submarine Service and the Archer class submarines in the Republic of Singapore Navy.\nHedemora is the home of Clifftop Games, an independent game developer whose published works include Kathy Rain and Whispers of a Machine, and also of Killmonday Games, the independent game developer that produced the games Fran Bow and Little Misfortune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "hedemora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5591,
+    "place_id": "gn-4174383",
+    "input": {
+      "place": {
+        "place_id": "gn-4174383",
+        "name": "Sunny Isles Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.95065,
+        "lon": -80.12282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunny Isles Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Sunny_Isles_Beach,_Florida",
+          "text": "Sunny Isles Beach is a city located on a barrier island in northeast Miami-Dade County, Florida, United States. The city is part of the Miami metropolitan area of South Florida, and is bounded by the Atlantic Ocean on the east and the Intracoastal Waterway on the west. As of the 2020 census, it had a population of 22,342.\nSunny Isles Beach is an area of cultural diversity with stores lining Collins Avenue, the main thoroughfare through the city. It has the 14th tallest skyline in the United States, and according to the 2020 U.S. Census it was the mostly densely populated incorporated place in the United States outside of the New York City metropolitan area.\nDevelopers like Michael Dezer have invested heavily in construction of high-rise hotels and condominiums while licensing the Donald Trump name for some of the buildings for promotional purposes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "sunny isles beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunny",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "isles",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5600,
+    "place_id": "gn-2656169",
+    "input": {
+      "place": {
+        "place_id": "gn-2656169",
+        "name": "Bathgate",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.90204,
+        "lon": -3.64398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bathgate",
+          "url": "https://en.wikipedia.org/wiki/Bathgate",
+          "text": "Bathgate (Scots: Bathket or Bathkit, Scottish Gaelic: Both Chèit) is a town in West Lothian, Scotland, 5 miles (8 km) west of Livingston and adjacent to the M8 motorway. Nearby towns are Linlithgow, Livingston, and West Calder. A number of villages fall under the umbrella of Bathgate, including Blackburn, Whitburn, Stoneyburn, Armadale, Torphichen and Fauldhouse.\nSituated 2 miles (3 km) south of the ancient Neolithic burial site at Cairnpapple Hill, Bathgate and the surrounding area show signs of habitation since about 3500 BC and the world's oldest known reptile fossil has been found in the town. By the 12th century, Bathgate was a small settlement, with a church at Kirkton and a castle north of the present day town centre. Local mines were established in the 17th century but the town remained small in size until the coming of the industrial revolution."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "bathgate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5604,
+    "place_id": "gn-5141365",
+    "input": {
+      "place": {
+        "place_id": "gn-5141365",
+        "name": "Tribeca",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71538,
+        "lon": -74.00931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tribeca",
+          "url": "https://en.wikipedia.org/wiki/Tribeca",
+          "text": "Tribeca ( try-BEK-ə), originally written as TriBeCa, is a neighborhood in Lower Manhattan in New York City.  Its name is a syllabic abbreviation of \"Triangle Below Canal\". The \"triangle\" (more accurately a quadrilateral) is bounded by Canal Street, West Street, Broadway, and Chambers Street.  By the 2010s, a common marketing tactic was to extend Tribeca's southern boundary to either Vesey or Murray Streets to increase the appeal of property listings.\nThe neighborhood began as farmland, then was a residential neighborhood in the early 19th century, before becoming a mercantile area centered on produce, dry goods, and textiles, and then transitioning to artists and then actors, models, entrepreneurs, and other celebrities. The neighborhood is home to the Tribeca Festival, which was created in response to the September 11 attacks, to reinvigorate the neighborhood and downtown after the destruction caused by the terrorist attacks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "tribeca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

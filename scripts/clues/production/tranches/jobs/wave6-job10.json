@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 6120,
+    "place_id": "gn-302986",
+    "input": {
+      "place": {
+        "place_id": "gn-302986",
+        "name": "Özdere",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.01611,
+        "lon": 27.12806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Özdere",
+          "url": "https://en.wikipedia.org/wiki/Özdere",
+          "text": "Özdere (English:  , Turkish pronunciation: [œzdeɾe]) is a neighbourhood in the municipality and district of Menderes, İzmir Province, Turkey. Its population is 1,499 (2022). It is a coastal settlement and resort town along the Aegean Sea coast. With adjacent neighbourhoods it has a permanent population of around 15,000 people, which can rise to nearly 100,000 during the summer as a result of its popularity amongst tourists.\nIt is located approximately 40 kilometres (25 mi) northwest of the nearby resort town of Kuşadası, 45 kilometres (28 mi) south of Menderes, the district seat, and 65 kilometres (40 mi) to the south of İzmir, the provincial seat. The town is situated in close proximity to numerous historical sites and is accessible via the Kuşadası-Selçuk-Seferihisar-Urla provincial road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ozdere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6121,
+    "place_id": "gn-3127035",
+    "input": {
+      "place": {
+        "place_id": "gn-3127035",
+        "name": "Caldes de Montbui",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.63333,
+        "lon": 2.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caldes de Montbui",
+          "url": "https://en.wikipedia.org/wiki/Caldes_de_Montbui",
+          "text": "Caldes de Montbui (Catalan pronunciation: [ˈkaldəz ðə mumˈbuj]) is a Spanish town and municipality in the comarca[1] of the Vallès Oriental in Catalonia. It is situated in the upper valley of the Caldes river, and the highest point of the municipality is the peak of el Farell at 816 m. It lies about 30 km from Barcelona and it part of its metropolitan area.\n\nThe hot springs have been exploited since Roman times, and the remnants of the Roman baths and other Roman buildings can still be seen. The source of la Font del Lleó (\"Lion Springs\") in the main square emerges at more than 70 °C (158 °F). The town conserves parts of its medieval fortifications and the Torre de la Presó (prison)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "caldes de montbui",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caldes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "montbui",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6124,
+    "place_id": "gn-3386024",
+    "input": {
+      "place": {
+        "place_id": "gn-3386024",
+        "name": "Triunfo",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -7.83806,
+        "lon": -38.10167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Triunfo, Pernambuco",
+          "url": "https://en.wikipedia.org/wiki/Triunfo,_Pernambuco",
+          "text": "Triunfo (Central northeastern portuguese pronunciation: [tɾiˈũfŭ]) is a municipality in the Northeastern Brazilian state of Pernambuco. The estimated population in 2020, according to the Brazilian Institute of Geography and Statistics (IBGE) was 15,243. The area of the municipality is 191.52 km2, and in 2010 the population density was 78 inhabitants/km2.\nTriunfo sits at an elevation of 1,004 metres (3,294 ft) in a forested part of the Sertão, and is the highest municipality in Pernambuco.\nFar inland and with a milder climate than the surrounding semi-arid plateau, the city has the nickname \"Oasis of the Sertão\", and tourism is a significant part of the economy. Its current mayor is Luciano Fernando de Sousa (better known as Luciano Bonfim) of the Avante party, elected in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "triunfo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6129,
+    "place_id": "gn-3523590",
+    "input": {
+      "place": {
+        "place_id": "gn-3523590",
+        "name": "Mapastepec",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 15.43358,
+        "lon": -92.90039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mapastepec",
+          "url": "https://en.wikipedia.org/wiki/Mapastepec",
+          "text": "Mapastepec is a town and municipality in the Mexican state of Chiapas in southern Mexico. Its name derives from the place name mapachtepec, \"Hill of the Raccoon\", a compound of the Nahuatl words mapachi (\"raccoon\") and tepetl (\"mountain\").\nMapestepec is on the Pacific Ocean, with roughly half of its territory on the Pacific Coastal Plain and half in the Sierra Madre de Chiapas mountain range. It is partly within two of Mexico's Biosphere Reserves, featuring a number of important species, including the horned guan (Oreophasis derbianus), Baird's tapir (Tapirus bairdii), the Jaguar (Panthera once) and rare cloud forest and mangrove habitat.\nThe primary sector makes up over half of the local economy. Key products include cheese and dairy products and the local Ataulfo mango."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mapastepec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6130,
+    "place_id": "gn-4456703",
+    "input": {
+      "place": {
+        "place_id": "gn-4456703",
+        "name": "Boone",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 36.21679,
+        "lon": -81.67455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boone, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Boone,_North_Carolina",
+          "text": "Boone is a town in and the county seat of Watauga County, North Carolina, United States. Located in the Blue Ridge Mountains of western North Carolina, Boone is the home of Appalachian State University and the headquarters of the disaster and medical relief organization Samaritan's Purse. The population was 19,092 at the 2020 census.\nThe town is named for famous American pioneer and explorer Daniel Boone, and every summer since 1952 the town has hosted an outdoor amphitheatre drama, Horn in the West, portraying the British settlement of the area during the American Revolutionary War and featuring the contributions of its namesake. It is the largest community and the economic hub of the seven-county region of Western North Carolina known as the High Country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "boone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6135,
+    "place_id": "gn-5809983",
+    "input": {
+      "place": {
+        "place_id": "gn-5809983",
+        "name": "Sequim",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.07963,
+        "lon": -123.10234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sequim, Washington",
+          "url": "https://en.wikipedia.org/wiki/Sequim,_Washington",
+          "text": "Sequim (  SKWIM) is a city in Clallam County, Washington, United States. It is located on the north side of the Olympic Peninsula between the Dungeness River and Sequim Bay. The city is south of the Strait of Juan de Fuca and north of the Olympic Mountains. The population was 8,024 as of the 2020 census; the estimated population in 2023 was 8,203. Sequim is connected to nearby Port Angeles by U.S. Route 101, which runs south of the city's downtown.\nThe city lies within the rain shadow of the Olympic Mountains and receives, on average, less than 16 inches (410 mm) of rain per year – about the same as Los Angeles – giving rise to the region's local nickname of Sunny Sequim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "sequim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6138,
+    "place_id": "gn-646798",
+    "input": {
+      "place": {
+        "place_id": "gn-646798",
+        "name": "Mankkaa",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.19424,
+        "lon": 24.76996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mankkaa",
+          "url": "https://en.wikipedia.org/wiki/Mankkaa",
+          "text": "Mankkaa (Finnish) or Mankans (Swedish) is a suburb of Espoo, located between Tapiola and Kauniainen, with a population of 8,468 (2023), of which 555 speak Swedish as a first language (2023). Most of Mankkaa falls under the postal code 02180, with 02630 being the code of the areas situated near the Helsinki-Turku freeway in the north. The area under postal code 02180 has one of the highest wage incomes in whole of Finland. [1]\nThe main thoroughfare in Mankkaa is Mankkaantie, which had been heavily congested with traffic during rush hours until Ring II was completed in 2000. The second major road is Sinimäentie, which is lined with large office buildings and stores.\nThe first Lidl in Espoo was opened in Mankkaa in 2003."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mankkaa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6147,
+    "place_id": "gn-2648120",
+    "input": {
+      "place": {
+        "place_id": "gn-2648120",
+        "name": "Driffield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.00613,
+        "lon": -0.44495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Driffield",
+          "url": "https://en.wikipedia.org/wiki/Driffield",
+          "text": "Driffield, also known as Great Driffield (neighbouring Little Driffield), is a market town and civil parish in the East Riding of Yorkshire, England. The civil parish is formed by the town of Driffield and the village of Little Driffield. By road, it is 53 miles (85 km) north-east of Leeds, 29 miles (47 km) east of York and 23 miles (37 km) north of Hull.\nDriffield, being near the centre of the Yorkshire Wolds, is named The Capital of the Wolds.\nAccording to the 2021-2022 UK census, Driffield parish had a population of 13,457, an increase on the 2001 UK census figure of 11,477.\nThe town was listed in the 2019 Sunday Times report on the Best Places to Live in northern England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "driffield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6153,
+    "place_id": "gn-2786697",
+    "input": {
+      "place": {
+        "place_id": "gn-2786697",
+        "name": "Sint-Gillis-bij-Dendermonde",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.01905,
+        "lon": 4.11146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sint-Gillis-bij-Dendermonde",
+          "url": "https://en.wikipedia.org/wiki/Sint-Gillis-bij-Dendermonde",
+          "text": "Sint-Gillis-bij-Dendermonde (French: Saint-Gilles-lez-Termonde) is a part of the municipality of Dendermonde in the Denderstreek in East Flanders in Belgium, a typical agricultural village in the Dendervallei near the junction of the railroads to Ghent, Mechelen and Brussels. It was formerly known as Zwijveke.\nSint-Gillis-bij-Dendermonde is birthplace to poet Emmanuel Hiel (1834 - 1894) and literature historian Wies Moens (1898 - 1982).\nEvery year, on the first Sunday of September, a parade of flower-covered floats, built in the different districts, is held in Sint-Gillis-bij-Dendermonde.\nOn 23 January 2009, a man attacked a children's daycare centre in the village, killing at least three people and wounding as many as twenty.  Italian singer Luciano Ligabue dedicated to the victims a song, Quando mi vieni a prendere?"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "sint gillis bij dendermonde",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gillis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bij",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dendermonde",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6163,
+    "place_id": "gn-3458507",
+    "input": {
+      "place": {
+        "place_id": "gn-3458507",
+        "name": "Lindóia",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.52306,
+        "lon": -46.65
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lindóia",
+          "url": "https://en.wikipedia.org/wiki/Lindóia",
+          "text": "Lindóia is a municipality in the state of São Paulo, Brazil.\n\nLindóia is one of 11 municipalities considered spas by the State of São Paulo, in that it fulfills certain prerequisites set by state law. That status ensures those municipalities a special budget from the state for the promotion of regional tourism. Also, the municipality acquires the right to add its name next to the title of Hidromineral, the term by which it is known by both municipal officials and the state.\nLindóia is considered the Brazilian \"National Capital of Mineral Water\", as 40% of all bottled water consumed in Brazil comes from Lindóia. Bottlers in Lindóia include Lindoya Premium, Lindoya Bioleve, Lindoya Summer, Lindoya Life, Lindoya Original, Lindoya Joia, and Lindoya Genuine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "lindoia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6164,
+    "place_id": "gn-3690431",
+    "input": {
+      "place": {
+        "place_id": "gn-3690431",
+        "name": "Aguadas",
+        "country": "Colombia",
+        "subdivision": "Caldas Department",
+        "lat": 5.61161,
+        "lon": -75.45624
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aguadas, Caldas",
+          "url": "https://en.wikipedia.org/wiki/Aguadas,_Caldas",
+          "text": "Aguadas is a town and municipality in the Colombian department of Caldas.  It is bordered to the north by Abejorral, to the east by Sonsón, to the southeast by Salamina, to the south by Pacora, to the west by Caramanta and Valparaiso, and to the northwest by La Pintada. The municipality of Aguadas, located in the northern part of the department, was founded in 1808 by José Narciso Estrada.  In addition to the fame of Aguadeño hats (sombrero aguadeño), which are very similar to palm-straw Panama hats (also known as iraca in Colombia).  Aguadas offers visitors its historic center, which was declared a national monument in 1982.  It has a temperate climate thanks to the variety of climates ranging from warm to moor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "aguadas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6166,
+    "place_id": "gn-4167102",
+    "input": {
+      "place": {
+        "place_id": "gn-4167102",
+        "name": "Orange Park",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.16607,
+        "lon": -81.70648
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orange Park, Florida",
+          "url": "https://en.wikipedia.org/wiki/Orange_Park,_Florida",
+          "text": "Orange Park is a town in Clay County, Florida, United States. As a suburb of Jacksonville in neighboring Duval County, it is formally a part of the Jacksonville, Florida Metropolitan Statistical Area. The population was 9,089 at the 2020 census, up from 8,412 from the 2010 census. while the Town of Orange Park is only 5.32 sq mi large, Orange Park is the designated city on all addresses for all homes and businesses within the zip codes 32065 and 32073, which includes Lakeside, Bellair-Meadowbrook Terrace and Oakleaf Plantation.\nThe town's name reflects the hope of its founders for a fruit-growing industry, but their crops were destroyed in the Great Freeze of 1894–1895. Despite recovery elsewhere, the crops never came back to Orange Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "orange park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "orange",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6169,
+    "place_id": "gn-4571722",
+    "input": {
+      "place": {
+        "place_id": "gn-4571722",
+        "name": "Bluffton",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 32.23715,
+        "lon": -80.86039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bluffton, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Bluffton,_South_Carolina",
+          "text": "Bluffton is a town in southern Beaufort County, South Carolina, United States. The population as of the 2020 census was 27,716, an increase of over 120% since the 2010 census, making it the 17th-most populous municipality and one of the fastest growing municipalities in South Carolina. It is primarily located around U.S. Route 278 between Hilton Head Island and Interstate 95. Bluffton is a principal town within the Hilton Head Island metropolitan area.\nThe Lowcountry town's original one square mile area, now known as Old Town, is situated on a bluff along the May River. After the Tariff of 1842, Bluffton became a hotbed of separatist sentiment, which in turn led to a protest against federal taxes called the Bluffton Movement in 1844."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "bluffton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6170,
+    "place_id": "gn-5107464",
+    "input": {
+      "place": {
+        "place_id": "gn-5107464",
+        "name": "Astoria",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.77205,
+        "lon": -73.93014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Astoria, Queens",
+          "url": "https://en.wikipedia.org/wiki/Astoria,_Queens",
+          "text": "Astoria is a neighborhood in the western portion of the New York City borough of Queens. Astoria is bounded by the East River to the west and north and is adjacent to four other Queens neighborhoods: Long Island City to the southwest, Sunnyside to the southeast, and Woodside and East Elmhurst to the east. As of 2024, Astoria has an estimated population of 198,608.\nThe Astoria area was originally inhabited by Native Americans known to Europeans as the Mespat or Maspeth tribe. European settlement began in the seventeenth century, notably by Englishman William Hallett and his wife Elizabeth Fones, leading to its original name of Hallett’s Cove. Stephen Halsey, known as the father of Astoria, expanded and improved the settlement in the 1830s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "astoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6171,
+    "place_id": "gn-5138950",
+    "input": {
+      "place": {
+        "place_id": "gn-5138950",
+        "name": "South Ozone Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.6701,
+        "lon": -73.81902
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Ozone Park",
+          "url": "https://en.wikipedia.org/wiki/South_Ozone_Park",
+          "text": "South Ozone Park is a neighborhood in the southwestern section of the New York City borough of Queens. It is just north of John F. Kennedy International Airport, between Aqueduct Racetrack to the west and the Van Wyck Expressway to the east. Adjacent neighborhoods include Ozone Park to the west; Richmond Hill to the north; Jamaica, South Jamaica, and Springfield Gardens to the east; and Howard Beach and Old Howard Beach to the southwest.\nRockaway Boulevard is South Ozone Park's main business strip. There is also a high concentration of small businesses along Liberty Avenue, which is also one of South Ozone Park's main source of revenue.\nSouth Ozone Park is located in Queens Community District 10 and its ZIP Code is 11420."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "south ozone park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ozone",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6176,
+    "place_id": "gn-6232237",
+    "input": {
+      "place": {
+        "place_id": "gn-6232237",
+        "name": "Mount Eden",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.88158,
+        "lon": 174.76204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Eden",
+          "url": "https://en.wikipedia.org/wiki/Mount_Eden",
+          "text": "Mount Eden is a suburb in Auckland, New Zealand, whose name honours George Eden, 1st Earl of Auckland. It is 4 kilometres (2.5 mi) south of the Central Business District (CBD). Mt Eden Road winds its way around the side of Mount Eden Domain and continues to weave back and forth as it descends into the valley; it runs south from Eden Terrace to Three Kings. Mt Eden village centre is located roughly between Valley Road and Grange Road. The domain is accessible on foot from many of the surrounding streets, and by vehicle from Mt Eden Road. The central focus of the suburb is Maungawhau / Mount Eden, a dormant volcano whose summit is the highest natural point on the Auckland isthmus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "mount eden",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eden",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6181,
+    "place_id": "gn-7315210",
+    "input": {
+      "place": {
+        "place_id": "gn-7315210",
+        "name": "Sun Village",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.55952,
+        "lon": -117.95676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sun Village, California",
+          "url": "https://en.wikipedia.org/wiki/Sun_Village,_California",
+          "text": "Sun Village is an unincorporated community and census-designated place (CDP) in Los Angeles County, California, United States. It is in the eastern Antelope Valley at an elevation of 2,723 feet (830 m). The center of Sun Village may be considered to be Palmdale Boulevard and 87th Street East as noted at the Los Angeles County Assessors office. As of the 2020 census the population of Sun Village was 12,345, up from 11,565 at the 2010 census.\nSun Village has been awarded federal, state, and county grants for the community based on this Avenue U boundary. There is a movement from the Sun Village Town Council to rebrand the area with the Sun Village name, which fell out of popularity in the early 1980s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "sun village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sun",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6182,
+    "place_id": "gn-732280",
+    "input": {
+      "place": {
+        "place_id": "gn-732280",
+        "name": "Devnya",
+        "country": "Bulgaria",
+        "subdivision": "Varna",
+        "lat": 43.22222,
+        "lon": 27.56944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Devnya",
+          "url": "https://en.wikipedia.org/wiki/Devnya",
+          "text": "Devnya (Bulgarian: Девня [ˈdɛvnʲɐ]) is a town in Varna Province, Northeastern Bulgaria, located about 25 km away to the west from the city of Varna and The Black Sea Coast. It is the administrative centre of the homonymous Devnya Municipality. As of December 2009, the town had a population of 8,383.\n\nIt lies at the western shore of Lake Beloslav in the northeastern end of the Devnya Valley and along the southern slopes of the Dobruja Plateau, in the close proximity to the Black Sea. Two rivers, Devnya and Provadiya, empty into the lake nearby. The landscape is mostly karst with 30 karst springs with a debit of 3700 litres per second used for water supply for Devnya, Varna and the local industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "devnya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6196,
+    "place_id": "gn-2732978",
+    "input": {
+      "place": {
+        "place_id": "gn-2732978",
+        "name": "Valongo",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.18883,
+        "lon": -8.49857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valongo",
+          "url": "https://en.wikipedia.org/wiki/Valongo",
+          "text": "Valongo (Portuguese pronunciation: [vɐˈlõɡu] ) is a Portuguese city and municipality located in the District of Porto and 10 kilometres (6.2 mi) from Porto, in the northern region of Portugal.\nThe municipality area consists of 75.12 square kilometres (29.00 mi2) and 94,672 inhabitants in 2021, and it is subdivided into four parishes: Alfena, Campo e Sobrado, Ermesinde and Valongo. The municipality is limited to the north by the municipality of Santo Tirso, to the northeast by Paços de Ferreira, to the east by Paredes, to the southwest by Gondomar and to the west by Maia.\nIn 2022, Valongo was awarded the European Green Leaf title by the European Commission for its environmental efforts, including forest conservation, climate adaptation, and circular economy initiatives."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "valongo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6200,
+    "place_id": "gn-2946821",
+    "input": {
+      "place": {
+        "place_id": "gn-2946821",
+        "name": "Boizenburg",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 53.38081,
+        "lon": 10.73758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boizenburg",
+          "url": "https://en.wikipedia.org/wiki/Boizenburg",
+          "text": "Boizenburg (German pronunciation: [ˈbɔʏtsn̩ˌbʊʁk] ) is a town in the Ludwigslust-Parchim district in Mecklenburg-Vorpommern, Germany. It is situated on the right bank of the Elbe, 53 kilometres (33 mi) west of Ludwigslust, 25 km (16 mi) northeast of Lüneburg and 50 km (31 mi) east of Hamburg. It is, via its district, a part of the Hamburg Metropolitan Region. Boizenburg's historical old town is located on the Boize, a tributary of the Elbe to which the town is connected by a harbour. With a well preserved old town, Boizenburg offers heritage baroque timberframe and brick architecture.\nDuring the Cold War, Boizenburg was part of East Germany, being located only about 7 km (4.3 mi) east of the Inner German Border (Iron Curtain)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "boizenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,727 @@
+[
+  {
+    "rank": 5775,
+    "place_id": "gn-4363124",
+    "input": {
+      "place": {
+        "place_id": "gn-4363124",
+        "name": "Mount Rainier",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.9415,
+        "lon": -76.96498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Rainier, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Mount_Rainier,_Maryland",
+          "text": "Mount Rainier () is a city in Prince George's County, Maryland, United States, bordering Washington, D.C. The population was 8,333 at the 2020 census. Mount Rainier is contained between the Northwest Branch Anacostia River, Cedar Lane Alley, and 34th Street to the north, 37th Street and 37th Place to the northeast, Upshur Street and Queens Chapel Road to the west, the CSX Capital Subdivision train tracks to the east, and Eastern Avenue NE to the south. Mount Rainier got its start as a streetcar suburb, when tracks were laid for the 82 Streetcar Line.  According to local tradition, surveyors from the Pacific Northwest named the town, giving the streets names such as Shasta and Cascade. Historic U.S. 1 runs through the center of the town and serves as the main street and central business district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "mount rainier",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rainier",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5776,
+    "place_id": "gn-4782988",
+    "input": {
+      "place": {
+        "place_id": "gn-4782988",
+        "name": "Rosslyn",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.89678,
+        "lon": -77.07248
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosslyn, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Rosslyn,_Virginia",
+          "text": "Rosslyn ( ROZ-lin) is a heavily urbanized neighborhood in northeastern Arlington County, Virginia, United States. It is in Northern Virginia, north of Arlington National Cemetery and directly across the Potomac River from Georgetown and Foggy Bottom in Washington, D.C.\nRosslyn encompasses the Arlington neighborhoods of North Rosslyn and Radnor/Ft. Myer Heights, and is located east of Court House, another urbanized Arlington neighborhood. Characterized as one of several \"urban villages\" by the county, the numerous skyscrapers in the dense business section of Rosslyn make its appearance in some ways more urban than nearby Washington. Rosslyn residents have an average household income of $105,000 and 81% are college graduates.\nEstablishments in the neighborhood include Sinclair Broadcast Group-owned ABC affiliate WJLA located in the Rosslyn Twin Towers, and Marriott International's longest operating hotel, the former Key Bridge Marriott."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "rosslyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5783,
+    "place_id": "gn-6691252",
+    "input": {
+      "place": {
+        "place_id": "gn-6691252",
+        "name": "Fallowfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.43981,
+        "lon": -2.21572
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fallowfield",
+          "url": "https://en.wikipedia.org/wiki/Fallowfield",
+          "text": "Fallowfield is an area of Manchester which had a population of 14,869 at the 2021 census. Historically in Lancashire, it lies 3 miles (5 km) south of Manchester city centre and is bisected east–west by Wilbraham Road and north–south by Wilmslow Road. The former Fallowfield Loop railway line, now a shared use path, follows a route nearly parallel with the east–west main road (Moseley Road/Wilbraham Road).\nThe area has a large student population. The University of Manchester's main accommodation complex – the Fallowfield Campus – occupies a large area in the north; this is adjacent to the university's Owens Park halls of residence and the Firs Botanical Grounds. In the northwest of the suburb is Platt Fields Park, which is formed from part of the land that once belonged to the Platts of Platt Hall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "fallowfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5784,
+    "place_id": "gn-7870898",
+    "input": {
+      "place": {
+        "place_id": "gn-7870898",
+        "name": "Springbank Hill",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.03254,
+        "lon": -114.19481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springbank Hill, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Springbank_Hill,_Calgary",
+          "text": "Springbank Hill is a large and diverse suburb near the western city limit of Calgary, Alberta in the southwest (SW) quadrant. It is bounded to the north by 17 Avenue SW, to the south by Stoney Trail, to the east by 69 Street SW and to the west by 101 Street SW.\nSpringbank Hill is sometimes confused with the much older unincorporated rural community of Springbank, located to the west of the city in Rocky View County. The Springbank Hill area was once the eastern portion of Springbank. Springbank Hill was established in 1999, on land annexed to the City of Calgary in 1994. The community association was formed in 2001.\nThe community of Springbank Hill is made up of numerous subdivisions, including Springborough, Summit of Montreux, Springbank Hill, The Slopes, Anatapi and Spring Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "springbank hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "springbank",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5790,
+    "place_id": "gn-2511180",
+    "input": {
+      "place": {
+        "place_id": "gn-2511180",
+        "name": "Santa Cruz de la Palma",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.68351,
+        "lon": -17.76421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz de La Palma",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_de_La_Palma",
+          "text": "Santa Cruz de la Palma (Spanish pronunciation: [ˈsanta ˈkɾuθ ðe la ˈpalma]; literally Holy Cross of La Palma) is a city and a municipality on the east coast of the island of La Palma in the province of Santa Cruz de Tenerife of the Canary Islands. Santa Cruz de la Palma is the second-largest city (after Los Llanos de Aridane) and is the capital of the island. It is along an old lava flow coming from the Caldereta (small caldera), a volcano just south of the city. Santa Cruz de La Palma has the privilege of having the first democratically elected town hall in Spain.\nThe population of the municipality is 16,330 (2013), its area is 43.38 km2.  Around 13,000 people live within the city limits, with the remaining population residing in other settlements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz de la palma",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palma",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5792,
+    "place_id": "gn-3189823",
+    "input": {
+      "place": {
+        "place_id": "gn-3189823",
+        "name": "Stolac",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.084,
+        "lon": 17.95995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stolac",
+          "url": "https://en.wikipedia.org/wiki/Stolac",
+          "text": "Stolac (Serbian Cyrillic: Столац) is an ancient city located in Herzegovina-Neretva Canton of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. It is located in the region of Herzegovina. Stolac is one of the oldest cities in Bosnia and Herzegovina as well as one of the oldest continuously inhabited cities in the World.\nStolac is situated in the area known as Herzegovina Humina on the tourist route crossing Herzegovina and linking the Bosnian mountainous hinterland with the coastal regions of Bosnia and Herzegovina, Dubrovnik, and Montenegro. The road, running from Sarajevo via Mostar, Stolac, Ljubinje, and Trebinje, enables one to reach Dubrovnik in less than 4 hours.\nThanks to the town's favourable natural environment, geological composition, contours, climate, hydrographic and vegetation, Stolac and its area have been settled since antiquity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "stolac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5799,
+    "place_id": "gn-652590",
+    "input": {
+      "place": {
+        "place_id": "gn-652590",
+        "name": "Kittilä",
+        "country": "Finland",
+        "subdivision": "Lapland",
+        "lat": 67.66474,
+        "lon": 24.89356
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kittilä",
+          "url": "https://en.wikipedia.org/wiki/Kittilä",
+          "text": "Kittilä (Finnish: [ˈkitːilæ]; Northern Sami: Gihttel, Inari Sami: Kittâl, Skolt Sami: Ǩiʹttel) is a municipality of Finland and a popular holiday resort. It is located in northern Finland north of the Arctic Circle within the Lapland region. The municipality has a population of 6,973 (31 December 2025) and covers an area of 8,262.97 square kilometres (3,190.35 sq mi) of which 168.71 km2 (65.14 sq mi) is water. The population density is 0.86 inhabitants per square kilometre (2.2/sq mi).\nKittilä is famous for being the location of the lowest recorded temperature in Finnish history: −51.5 °C (−60.7 °F), measured in January 1999 in Pokka. The \"midnight sun\" is above the horizon from 29 May to 16 July, and the period with continuous daylight lasts a bit longer, polar night from 14 December to 29 December."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "kittila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5804,
+    "place_id": "gn-2087894",
+    "input": {
+      "place": {
+        "place_id": "gn-2087894",
+        "name": "Rabaul",
+        "country": "Papua New Guinea",
+        "subdivision": "East New Britain Province",
+        "lat": -4.20037,
+        "lon": 152.16297
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rabaul",
+          "url": "https://en.wikipedia.org/wiki/Rabaul",
+          "text": "Rabaul () is a township in the East New Britain province of Papua New Guinea, on the island of New Britain. It lies about 600 km (370 mi) to the east of the island of New Guinea. Rabaul was the provincial capital and most important settlement in the province until it was destroyed in 1994 by falling ash from a volcanic eruption in its harbor. During the eruption, ash was sent thousands of metres into the air, and the subsequent rain of ash caused 80% of the buildings in Rabaul to collapse. After the eruption the capital was moved to Kokopo, about 20 kilometres (12 mi) away. Rabaul is continually threatened by volcanic activity, because it is on the edge of the Rabaul caldera, a flooded caldera of a large pyroclastic shield volcano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "rabaul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5810,
+    "place_id": "gn-2915067",
+    "input": {
+      "place": {
+        "place_id": "gn-2915067",
+        "name": "Großschönau",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.9,
+        "lon": 14.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Großschönau, Saxony",
+          "url": "https://en.wikipedia.org/wiki/Großschönau,_Saxony",
+          "text": "Großschönau (Upper Sorbian: Wulki Šunow, pronounced [ˈwulkʲi ˈʃunɔf]; Czech: Velký Šenov) is a municipality in the district Görlitz, in Saxony, Germany located in the cross-border region with the Czech Republic. It used to be a famous Upper Lusatian center of Damask fabric production until the end of the 1980s. Since then it has turned into an area of tourism.\nIn Großschönau is the historical sylvan lido Trixi Park, a spa which was expanded with indoor swimming pools, a sauna, camping ground and holiday flats. The town is a child-friendly starting point for hikers and cyclists alike who want to explore both sides of the Czech-German border area with its relatively attractive price level. Mount Lausche (793 m) is situated in the community of Waltersdorf and marks the highest peak of the Lusatian Mountains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "gro schonau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "schonau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5825,
+    "place_id": "gn-1718393",
+    "input": {
+      "place": {
+        "place_id": "gn-1718393",
+        "name": "Carigara",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.29811,
+        "lon": 124.67895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carigara",
+          "url": "https://en.wikipedia.org/wiki/Carigara",
+          "text": "Carigara (Tagalog: [kɐɾiˈɡaɾɐʔ]), officially the Municipality of Carigara (Waray: Bungto han Carigara; Tagalog: Bayan ng Carigara), is a First Income Class municipality in the province of Leyte, Philippines. According to the 2024 census, it has a population of 56,060 people.\nEstablished in 1571, Carigara is the first town founded in the Eastern Visayas region. A pivotal development occurred in 1735 when Leyte and Samar were separated from Cebu province, forming a unified provincial governance structure with Carigara serving as provincial capital during this era.\nCarigara is renowned for its distinct offerings, including pastillas, humba, sundang (machete), and the hubhob delicacy. Hubhob, a local delight, is crafted from grated cassava, eggs, kalamay, milk, and sugar, cooked within a bagacay (bamboo pole) over charcoal, bringing a unique and flavorful taste to this traditional specialty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "carigara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5830,
+    "place_id": "gn-2638207",
+    "input": {
+      "place": {
+        "place_id": "gn-2638207",
+        "name": "Send",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.28875,
+        "lon": -0.52666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Send, Surrey",
+          "url": "https://en.wikipedia.org/wiki/Send,_Surrey",
+          "text": "Send is a village and civil parish in the Guildford borough of the English county of Surrey. The name is thought to mean \"sandy place\" and sand was extracted at various periods until the 1990s at pits in the outskirts of the parish.\nSend is buffered by Metropolitan Green Belt from other villages and towns except for the Grove Heath neighbourhood of Ripley. A rural band of the village adjoins the River Wey including Cartbridge and Send Marsh – this land has been drained and the river tamed by sluices, the Broadmead Cut and the Wey Navigation.  The vast majority of the built-up areas are not within an area of flood risk. Between the river and the navigation, in the far north of the parish, are the Papercourt and Broad Mead SSSIs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "send",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5838,
+    "place_id": "gn-4351327",
+    "input": {
+      "place": {
+        "place_id": "gn-4351327",
+        "name": "Cheverly",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.92817,
+        "lon": -76.91581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheverly, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Cheverly,_Maryland",
+          "text": "Cheverly is a town in Prince George's County, Maryland, United States, located very close to Washington, D.C., though not bordering it directly. The town was founded in 1918 and incorporated in 1931. Per the 2020 census, the population was 6,170. Cheverly borders the communities of Tuxedo, Chapel Oaks, Landover, Landover Hills, Villa Heights, and Bladensburg.\nCheverly is home to the Mount Hope, Prince George's County Health Department, Cheverly Professional Building, PepsiCo bottling plant, Judith P Hoyer Early Childhood Center, Cheverly American Legion Post 108, Magruder Spring Historic Landmark, ABC Supply Company Inc., Washington Woodworking Company, Cheverly Sport Fair Fishing Store, and Publick Playhouse Theater.\nUntil 2021, Cheverly had been home to the University of Maryland Prince George’s Hospital Center, which was founded in 1944 and was known as a first-class trauma center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "cheverly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5842,
+    "place_id": "gn-5126208",
+    "input": {
+      "place": {
+        "place_id": "gn-5126208",
+        "name": "Mastic",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.80204,
+        "lon": -72.84094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mastic, New York",
+          "url": "https://en.wikipedia.org/wiki/Mastic,_New_York",
+          "text": "Mastic is a hamlet and a census-designated place (CDP) in the southeastern part of the town of Brookhaven in central Suffolk County, New York, United States. As of the 2020 census, Mastic had a population of 15,404.\nThe hamlet was originally called Forge until 1893, when it was changed to the current name of Mastic. The Long Island Rail Road built a station in 1882 and, on July 15, 1960, the stop was moved 7,010 feet (2,140 m) west and renamed Mastic–Shirley.\nThe Poospatuck Indian Reservation of the state-recognized Unkechaug Nation lies entirely within the community, near its southern end and along the Forge River.\n\nThe northernmost section of the hamlet is unofficially referred to as Manor Park, which stretches from Sunrise Highway to Moriches-Middle Island Road immediately east of Brookhaven Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "mastic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5848,
+    "place_id": "gn-12519445",
+    "input": {
+      "place": {
+        "place_id": "gn-12519445",
+        "name": "Beerwah",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 34.01238,
+        "lon": 74.59563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beerwah, Jammu and Kashmir",
+          "url": "https://en.wikipedia.org/wiki/Beerwah,_Jammu_and_Kashmir",
+          "text": "Beerwah  also pronounced as Beeru is a subdistrict, tourist destination and one of the oldest towns of Jammu and Kashmir and a municipal committee in Budgam district in the Indian administered union territory of Jammu and Kashmir. It is also one of the oldest tehsils of Jammu and Kashmir with one of the largest towns in Budgam district. En route on NH701A. Beerwah is 27 km (17 mi) away from the summer capital Srinagar via Bemina, 31 km (19 mi) via Magam, 33 km (21 mi) via Soibugh and 35 km (22 mi) via Budgam. Beerwah subdistrict has 4 tehsils namely Beerwah, Magam, Narbal and Khag. Beerwah is located along the banks of River Sukhnaag.\nThe name Beerwah has been derived from a Sanskrit word \"Behroop\" which means land of springs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "beerwah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5854,
+    "place_id": "gn-2388720",
+    "input": {
+      "place": {
+        "place_id": "gn-2388720",
+        "name": "Boali",
+        "country": "Central African Republic",
+        "subdivision": "Ombella-M'Poko",
+        "lat": 4.80048,
+        "lon": 18.12747
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boali",
+          "url": "https://en.wikipedia.org/wiki/Boali",
+          "text": "Boali became the capital city of Ombella-M'Poko prefecture in Central African Republic on December 10 2020 after the former capital of Bimbo was incorporated into Bangui prefecture.\nBoali is located on National Highway 1 (RN1),  about 100 km (62 mi) northwest of the national capital, Bangui. The road is paved until Bossembélé where the paved section becomes the RN3 towards Bouar and Cameroon while the RN1 continues to Bossangoa, and ultimately to Chad.\nSituated on the Mbali River, Boali is noted for its waterfalls and for the nearby hydroelectric works. The Falls of Boali are 250 m (820 ft) wide and 50 m (160 ft) high, and are a popular tourist destination.\nThe two units of the Boali Hydroelectric Power Station, Boali I and Boali II, are located below the falls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "boali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5856,
+    "place_id": "gn-2635442",
+    "input": {
+      "place": {
+        "place_id": "gn-2635442",
+        "name": "Troon",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.54359,
+        "lon": -4.66335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Troon",
+          "url": "https://en.wikipedia.org/wiki/Troon",
+          "text": "Troon (Scottish Gaelic: An Truthail) is a seaside town and sea port in South Ayrshire, situated on the west coast of Ayrshire in Scotland, about eight miles (thirteen kilometres) north of Ayr and three miles (five kilometres) northwest of Glasgow Prestwick Airport. Troon has a port with ferry and freight services, and a yacht marina. Up until January 2016, P&O operated a seasonal ferry service to Larne. In May 2006, a ferry service to Campbeltown was added, although this was withdrawn the following year. Since March 2024, Caledonian MacBrayne have operated a ferry service to Brodick on the Isle of Arran.\nIn 2022, the population of Troon, not including the nearby village of Loans but including the Barassie area, was recorded at 15,261, a increase from the 2011 population of 14,752."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "troon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5857,
+    "place_id": "gn-2636619",
+    "input": {
+      "place": {
+        "place_id": "gn-2636619",
+        "name": "Strood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.39323,
+        "lon": 0.47713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strood",
+          "url": "https://en.wikipedia.org/wiki/Strood",
+          "text": "Strood is a town  in the unitary authority of Medway in Kent, South East England. Strood forms a conurbation with neighbouring towns Rochester, Chatham, Gillingham and Rainham. It lies on the northwest bank of the River Medway at its lowest bridging point.\nStrood began as a manor then chapelry of Frindsbury until gaining its own parish status in 1193. Today Frindsbury is effectively, in all but a few associations such as in the Church of England, the northern part of Strood. The history of Strood has been dominated by the River Medway and facing port-associated towns, particularly its road and rail bridges since the Roman era to Rochester and the two other Medway Towns immediately adjoining and beyond from the north-east quarter of Kent to London and the rest of Britain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "strood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5858,
+    "place_id": "gn-2648559",
+    "input": {
+      "place": {
+        "place_id": "gn-2648559",
+        "name": "Glastonbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.14745,
+        "lon": -2.72075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glastonbury",
+          "url": "https://en.wikipedia.org/wiki/Glastonbury",
+          "text": "Glastonbury ( GLAST-ən-bər-ee, UK also  GLAHST-) is a town and civil parish in Somerset, England. It is situated at a dry point on the low-lying Somerset Levels, 23 miles (37 km) south of Bristol. At the 2021 census, the parish had a population of 8,980 and the built-up area had a population of 8,300. The town is less than 1 mile (2 km) across the River Brue from Street, a village which is now larger than Glastonbury.\nEvidence from timber trackways such as the Sweet Track show that the town has been inhabited since Neolithic times. Glastonbury Lake Village was an Iron Age village, close to the old course of the River Brue and Sharpham Park approximately 2 miles (3 km) west of Glastonbury, that dates back to the Bronze Age."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "glastonbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5882,
+    "place_id": "gn-5488598",
+    "input": {
+      "place": {
+        "place_id": "gn-5488598",
+        "name": "Ruidoso",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 33.33175,
+        "lon": -105.67304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruidoso, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Ruidoso,_New_Mexico",
+          "text": "Ruidoso (Spanish for \"noisy\") is a village in Lincoln County, New Mexico, United States, adjacent to the Lincoln National Forest. The population was  7,679 at the 2020 census. The city of Ruidoso Downs and the unincorporated area of Alto are suburbs of Ruidoso, and contribute to the Ruidoso Micropolitan Statistical Area's population of 21,223.\nA mountain resort town, Ruidoso lies in the Sierra Blanca mountain range of south-central New Mexico, where it merges with the Sacramento Mountains to the south. Ruidoso is a resort community close to the slopes of Ski Apache, the Mescalero Apache Tribe-owned ski resort on Sierra Blanca, an almost 12,000-foot (3,700 m) mountain. The tribe also operates the Inn of the Mountain Gods resort in the area, which includes a casino, hotel, arcade room and golf course."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "ruidoso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5886,
+    "place_id": "gn-6690867",
+    "input": {
+      "place": {
+        "place_id": "gn-6690867",
+        "name": "Ewell",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.34948,
+        "lon": -0.2494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ewell",
+          "url": "https://en.wikipedia.org/wiki/Ewell",
+          "text": "Ewell (  YOO-əl, inf.  YOOL) is a town in the Epsom and Ewell district, in Surrey, England, 12 miles (19 kilometres) south of central London and two miles (three kilometres) northeast of Epsom. At the 2011 census, it had a population of 34,872. The majority (73%) was in the ABC1 social class, except the Ruxley Ward that is C2DE.\nEwell was founded as a spring line settlement, where the permeable chalk of the North Downs meets the impermeable London Clay, and the Hogsmill River (a tributary of the River Thames) still rises at a spring close to Bourne Hall in the village centre. Recorded in Domesday Book as Etwelle, the settlement was granted a market charter to hold a market in 1618. The town is contiguous with the Greater London suburbs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "ewell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
