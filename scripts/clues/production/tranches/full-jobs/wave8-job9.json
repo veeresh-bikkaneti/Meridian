@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 1575,
+    "attempt": 1561,
+    "place_id": "gn-3090048",
+    "input": {
+      "place": {
+        "place_id": "gn-3090048",
+        "name": "Opole",
+        "country": "Poland",
+        "subdivision": "Opole Voivodeship",
+        "lat": 50.67119,
+        "lon": 17.92604
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Opole",
+          "url": "https://en.wikipedia.org/wiki/Opole",
+          "text": "Opole (Polish: [ɔˈpɔlɛ] ; German: Oppeln [ˈɔpl̩n] ; Silesian: Ôpole; Silesian German: Uppeln) is a city located in southern Poland on the Oder River and the historical capital of Upper Silesia. With a population of approximately 127,387 as of the 2021 census, it is the capital of Opole Voivodeship (province) and the seat of Opole County. Its metropolitan area was home to 146,522 inhabitants. It is the largest city in its province.\nOpole's history dates to the 8th century. One of the oldest urban centres in Upper Silesia, it originated as an early medieval Slavic stronghold of the Opolans tribe and later became the seat of the Piast Duchy of Opole. The present-day town developed in the early 13th century under German town law during the medieval eastward colonisation. Over the following centuries, it formed part of the Bohemian Crown, the Habsburg monarchy, Prussia, and the German Reich. After World War II, the city was incorporated into Poland. Many German Upper Silesians and Poles of ethnic German ancestry still reside in the Opole region; but, following the 1945–46 expulsions, ethnic Germans now make up less than 3% of the city's population.\nThere are four higher education establishments in the city: the Opole University, Opole University of Technology, a Medical College and the private Higher College of Management and Administration. The National Festival of Polish Song has been held here annually since 1963. Each year new regular events, fairs, shows and competitions take place.\nOpole is sometimes referred to as \"The Venice of Poland\", because of its picturesque Old Town and several canals and bridges connecting parts of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 269
+    },
+    "banned_terms": [
+      {
+        "term": "opole",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1576,
+    "attempt": 1562,
+    "place_id": "gn-3100796",
+    "input": {
+      "place": {
+        "place_id": "gn-3100796",
+        "name": "Dąbrowa Górnicza",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.33394,
+        "lon": 19.20479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dąbrowa Górnicza",
+          "url": "https://en.wikipedia.org/wiki/Dąbrowa_Górnicza",
+          "text": "Dąbrowa Górnicza (Polish pronunciation: [dɔmˈbrɔva ɡurˈɲit͡ʂa] ) is a city in southern Poland, in the eastern part of the Katowice urban area, in the Silesian Voivodeship. It is located on the Czarna Przemsza and Biała Przemsza rivers (tributaries of the Vistula, see Przemsza).\nThe city gives its name to the Dąbrowa Basin, an industrial and historical subregion of the wider historic region of Lesser Poland, and is its second largest city (after neighbouring Sosnowiec). Dąbrowa Górnicza is one of the cities of the Katowice urban area (2.7 million people), and within the greater Katowice-Ostrava metropolitan area (5.2 million people). The population of the city itself as of December 2021 is 116,971."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "dabrowa gornicza",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dabrowa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gornicza",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1577,
+    "attempt": 1563,
+    "place_id": "gn-3382160",
+    "input": {
+      "place": {
+        "place_id": "gn-3382160",
+        "name": "Cayenne",
+        "country": "French Guiana",
+        "subdivision": "Guyane",
+        "lat": 4.9381,
+        "lon": -52.33455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cayenne",
+          "url": "https://en.wikipedia.org/wiki/Cayenne",
+          "text": "Cayenne (; French pronunciation: [kajɛn] ; Guianese Creole French: Kayenn; Sranan Tongo: Kayana, [kajana]; Eastern Maroon Creole: Kayen or Kayeni) is the capital, prefecture, and largest city of French Guiana, an overseas region and department of France located in South America.  The city stands on a former island at the mouth of the Cayenne River on the Atlantic coast.  The city's motto is \"fert aurum industria\", which means \"work brings wealth\". Cayenne is the largest Francophone city of the South American continent.\nIn the 2023 census, there were 153,884 inhabitants in the metropolitan area of Cayenne (as defined by INSEE), 62,675 of whom lived in the city (commune) of Cayenne proper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "cayenne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1578,
+    "attempt": 1564,
+    "place_id": "gn-3445859",
+    "input": {
+      "place": {
+        "place_id": "gn-3445859",
+        "name": "Ubá",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.12,
+        "lon": -42.94278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ubá",
+          "url": "https://en.wikipedia.org/wiki/Ubá",
+          "text": "Ubá is a municipality in the Zona da Mata region of southeastern Minas Gerais, Brazil. It had a population of 103,365 in the 2022 census, with an estimated population of 107,423 in 2025, in an area of 407.452 km2 (157.318 sq mi). It is part of the Immediate Geographic Region of Ubá, within the Intermediate Geographic Region of Juiz de Fora.\nTobacco cultivation shaped Ubá's economy from the 1930s through the 1950s. As the crop declined, furniture manufacturing expanded and became the municipality's principal industrial activity. Ubá is the seat of the state-recognized Furniture Hub of Ubá and Region, which includes municipalities across the surrounding part of the Zona da Mata. The municipality is also closely associated with the 'Ubá' mango cultivar, which is grown throughout the Zona da Mata and used for fresh consumption and the production of juice and fruit pulp."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "uba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1579,
+    "attempt": 1565,
+    "place_id": "gn-380173",
+    "input": {
+      "place": {
+        "place_id": "gn-380173",
+        "name": "Ad-Damir",
+        "country": "Sudan",
+        "subdivision": "River Nile",
+        "lat": 17.59898,
+        "lon": 33.97205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ad-Damir",
+          "url": "https://en.wikipedia.org/wiki/Ad-Damir",
+          "text": "Ad-Damir or ad-Damar (Arabic: الدامر, romanized: ad-Dāmar) is the capital of the River Nile state in Sudan. It lies on the right (east) bank of the Nile River, at an elevation of 1,158 feet (353 metres), about 155 miles (249 km) northeast of Khartoum, with a population of about 122,944 (estimated 2012). Its famous market, Soug as-Sabit, is the most important in the area. Ad-Dāmar is an example of a Sudanese African-Islamic city founded toward the end of the fifteenth century. Since ad-Damar was located on the bank of the river, it could be expected to exhibit a linear morphology.\nBy 1814, it was a large town, containing about 500 houses. The city was clean and had many new buildings. Houses were uniform in construction and with regular streets with shady trees (Burckhardt, 1980; Crawford, 1951). Ad-Dāmar is linked by road and railway and both transport routes are almost parallel to the Nile River, with nearby ʿAṭbarah and Barbar and with Khartoum. An oil pipeline, about 530 miles (850 km) in length, between Port Sudan and Khartoum passes by the outskirts of the town. Pop. (2008 prelim.) 73,654.\nIt is mentioned in some books that Ad-Dāmar is one of the oldest cities in the country and the whole region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "ad damir",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ad",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "damir",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1580,
+    "attempt": 1566,
+    "place_id": "gn-4845193",
+    "input": {
+      "place": {
+        "place_id": "gn-4845193",
+        "name": "Waterbury",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.55815,
+        "lon": -73.0515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waterbury, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Waterbury,_Connecticut",
+          "text": "Waterbury is a city in the U.S. state of Connecticut. Waterbury had a population of 114,403 as of the 2020 Census. The city is 33 miles (53 km) southwest of Hartford and 77 miles (124 km) northeast of New York City. Waterbury is the largest city in the Naugatuck Valley Planning Region and second-largest city in New Haven County.\nThroughout the first half of the 20th century, Waterbury had large industrial interests and was the leading center in the United States for the manufacture of brassware (including castings and finishings), as reflected in the nickname the \"Brass City\" and the city's motto, Quid Aere Perennius? (\"What Is More Lasting Than Brass?\"). It was also noted for the manufacture of watches and clocks (Timex).\nThe city is alongside Interstate 84 (Yankee Expressway) and Route 8 and has a Metro-North railroad station with connections to Grand Central Terminal. Waterbury is also home to Post University and the regional campuses of the University of Connecticut, University of Bridgeport, and Western Connecticut State University, as well as Naugatuck Valley Community College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "waterbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1581,
+    "attempt": 1567,
+    "place_id": "gn-5339631",
+    "input": {
+      "place": {
+        "place_id": "gn-5339631",
+        "name": "Corona",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.87529,
+        "lon": -117.56644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corona, California",
+          "url": "https://en.wikipedia.org/wiki/Corona,_California",
+          "text": "Corona (Spanish for \"Crown\") is a city in northwestern Riverside County, California, United States, directly bordering Orange and San Bernardino counties. Its current mayor is Jacque Casillas. At the 2020 census, the city had a population of 157,136, up from 152,374 at the 2010 census. Corona is surrounded by Riverside to the east, Norco to the north and northeast, Yorba Linda to the northwest, Cleveland National Forest and the Santa Ana Mountains to the west, southwest, and south. Several unincorporated communities are along the rest of the city's borders. Downtown Corona is approximately 48 miles (77 km) southeast of Downtown Los Angeles and 95 miles (153 km) north-northwest of San Diego.\nCorona, located along the western edge of Southern California's Inland Empire region, is known as the \"Circle City\" due to Grand Boulevard's 3 mi (4.8 km) circular layout. It is one of the most residential cities in the Inland Empire, but also has a large industrial portion on the northern half, being the headquarters of companies such as Fender Musical Instruments Corporation, Monster Beverage Corporation, and sports car manufacturer Saleen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "corona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1582,
+    "attempt": 1568,
+    "place_id": "gn-6324733",
+    "input": {
+      "place": {
+        "place_id": "gn-6324733",
+        "name": "St. John's",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 47.56494,
+        "lon": -52.70931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "St. John's, Newfoundland and Labrador",
+          "url": "https://en.wikipedia.org/wiki/St._John's,_Newfoundland_and_Labrador",
+          "text": "St. John's is the capital and largest city of the Canadian province of Newfoundland and Labrador. It is located on the eastern tip of the Avalon Peninsula on the island of Newfoundland. The city spans 446.04 square kilometres (172.22 sq mi) and is the easternmost city in North America (excluding Greenland).\nIts name has been attributed to the belief that John Cabot sailed into the harbour on the Nativity of John the Baptist in 1497, although it is most likely a legend that came with British settlement. A more realistic possibility is that a fishing village with the same name existed without a permanent settlement for most of the 16th century. Indicated as São João on a Portuguese map from 1519, it is one of the oldest cities in North America. It was officially incorporated as a city in 1888. With a metropolitan population of approximately 239,316 (as of 16 January 2025), the St. John's Metropolitan Area is Canada's 22nd-largest metropolitan area and the second-largest Census Metropolitan Area (CMA) in Atlantic Canada, after Halifax, Nova Scotia.\nThe city has a rich history, having played a role in the Seven Years' War, the American Revolutionary War, and the War of 1812. Italian inventor Guglielmo Marconi received the first transatlantic wireless signal in St. John's. Its history and culture have made it into an important tourist destination. St. John's was referred to as Baile Sheáin (Johnstown), in the poetry of Donnchadh Ruadh Mac Conmara (1715–1810), and among speakers of the Irish language in Newfoundland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "st john s",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "john",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1583,
+    "attempt": 1569,
+    "place_id": "gn-6941099",
+    "input": {
+      "place": {
+        "place_id": "gn-6941099",
+        "name": "Nepalgunj",
+        "country": "Nepal",
+        "subdivision": "Lumbini Province",
+        "lat": 28.05,
+        "lon": 81.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nepalgunj",
+          "url": "https://en.wikipedia.org/wiki/Nepalgunj",
+          "text": "Nepalgunj (Nepali: नेपालगञ्ज; [neˈpalɡʌnd͡z]), also spelled Nepalganj, is a Sub-Metropolitan City in Banke District, Nepal. It lies on the Terai plains near the southern border with Bahraich district in Uttar Pradesh, India. Nepalgunj is 153 kilometers south-west of Ghorahi and 16 km south of Kohalpur. Former Village Development Committee: Udayapur, Bhawaniyapur, Piprahawa, Jaispur, Paraspur, Indrapur, Khaskarkado, Basudevpur, Manikapur and Puraina were added to territory in order to make it Sub metropolitan city on 2071 Paush 28 and later Puraini was also added in list on 2072 Paush 21. Further, while restructuring of local levels nationwide, ward no. 23 (former Indrapur VDC) was taken out to Janaki Rural Municipality and ward no. 7 of Hirminiya VDC was added to Nepalgunj."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "nepalgunj",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1584,
+    "attempt": 1570,
+    "place_id": "gn-925475",
+    "input": {
+      "place": {
+        "place_id": "gn-925475",
+        "name": "Mzuzu",
+        "country": "Malawi",
+        "subdivision": "Northern Region",
+        "lat": -11.46556,
+        "lon": 34.02071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mzuzu",
+          "url": "https://en.wikipedia.org/wiki/Mzuzu",
+          "text": "Mzuzu is the capital of Malawi's Northern Region and is the third largest city by population in Malawi. The city has 221,272 residents and 20,000 commuters (Mzuzu University students) with about  a million people in its metropolitan area. It is in the Mzimba District. Mzuzu lies in a gap in the Viphya Mountains, and the agricultural region surrounding the city specializes in tea, rubber and coffee cultivation. The Viphya Plantation south of the city is the largest man-made forest in Africa, and the Lunyangwa and Kaning'ina forest preserves are east of the city.\nSites in the city include Chibavi, Luwinga, Area 1B, Chibanja, Katoto, Zolozolo, Masasa, Mchenga-utuba, Chimaliro, Kaning'ina and Katawa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "mzuzu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1585,
+    "attempt": 1571,
+    "place_id": "gn-98463",
+    "input": {
+      "place": {
+        "place_id": "gn-98463",
+        "name": "Sulaymaniyah",
+        "country": "Iraq",
+        "subdivision": "Sulaymaniyah",
+        "lat": 35.56496,
+        "lon": 45.4329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sulaymaniyah",
+          "url": "https://en.wikipedia.org/wiki/Sulaymaniyah",
+          "text": "Sulaymaniyah (Arabic: السليمانية, romanized: as-Sulaymāniyyah) or Slemani (Kurdish: سلێمانی, romanized: Silêmanî), is a city in the east of the Kurdistan Region of Iraq and is the capital of the Sulaymaniyah Governorate. It is surrounded by the Azmar, Goizha and Qaiwan Mountains in the northeast, Baranan Mountain in the south and the Tasluja Hills in the west.\nThe modern city of Slemani was founded in 1784 by the Ottoman-Kurdish prince Ibrahim Pasha Baban in Collaboration with Azim Beg and Haji Aziz Bey Aghal Dwanze Swarey Meriwane Jawamer Agha Rangena, who named it after his father Sulayman Pasha. Slemani was the capital of the historic Kurdish principality of Baban from 1784 to 1850."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "sulaymaniyah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1586,
+    "attempt": 1572,
+    "place_id": "gn-1141269",
+    "input": {
+      "place": {
+        "place_id": "gn-1141269",
+        "name": "Ghazni",
+        "country": "Afghanistan",
+        "subdivision": "Ghazni",
+        "lat": 33.55391,
+        "lon": 68.42096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ghazni",
+          "url": "https://en.wikipedia.org/wiki/Ghazni",
+          "text": "Ghazni, historically known as Ghaznayn or Ghazna, also transliterated as Ghuznee, and anciently known as Alexandria in Opiana, is a city in southeastern Afghanistan, serving as the capital of Ghazni Province. It is within the jurisdiction of Ghazni District and has an estimated population of 205,965 people. Mawlawi Muhammad Nabi Hamzah is the current mayor of the city.\nGhazni is a thriving city with a number of factories, bazaars, business centers, banks, historical sites, public parks, hotels, restaurants, mosques, hospitals, universities, and places to play sports or just walk around. In 2015 there were 15,931 dwelling units in the city. Many tourists visit the city for leisure and pleasure purposes.\nGhazni is strategically located along the Kabul–Kandahar Highway, which follows the paths that have served as the main roads between Kabul, Kandahar and Gardez for thousands of years. Situated on a plateau at around 2,219 m (7,280 ft) above sea level, the city has a land area of 57 km2 (22 sq mi). It is about 150 km (93 mi) to the southwest of Kabul. The name Ghazni derives from the Persian word ganj, meaning \"treasure.\"\nGhazni Citadel, the Minarets of Ghazni, the Palace of Sultan Mas'ud III, and several other cultural heritage sites have brought travelers and archeologists to the city for centuries. During the pre-Islamic period, the area was inhabited by various tribes who practiced different religions including Buddhism, Hinduism and Zoroastrianism. Arab Muslims introduced Islam to Ghazni in the 7th century. The Saffarids made it the official religion in the 9th century. Sabuktigin turned Ghazni into the capital of the Ghaznavid Empire in the 10th century. The city was destroyed by one of the Ghurid rulers but later rebuilt. It fell to several regional powers, including the Timurids and the Delhi Sultanate until it became part of the Hotak dynasty, which was followed by the Durrani Empire or modern Afghanistan. During the First Anglo-Afghan War in the 19th century, the fortifications of Ghazni were partially demolished by British Indian forces."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 333
+    },
+    "banned_terms": [
+      {
+        "term": "ghazni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1587,
+    "attempt": 1573,
+    "place_id": "gn-1166933",
+    "input": {
+      "place": {
+        "place_id": "gn-1166933",
+        "name": "Renala Khurd",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 30.87878,
+        "lon": 73.59857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Renala Khurd",
+          "url": "https://en.wikipedia.org/wiki/Renala_Khurd",
+          "text": "Renala Khurd (Punjabi, Urdu: رِينالہ خُورد) is a city in the Okara District in Punjab, Pakistan. It serves as the administrative headquarters of Renala Khurd Tehsil and sits at an elevation of approximately 570 feet (170 m) above sea level. The city is located about 116 kilometres (72 mi) from Lahore, the provincial capital, and 18 kilometres (11 mi) from Okara, the district's capital. Positioned southwest of Lahore, it lies along the national highway (GT Road) and the main Karachi–Peshawar Railway Line.\nThe word Khurd is of Persian origin, meaning small, while Renala translates to \"Mother of Forests\". Renala Khurd is renowned for its lush gardens, forests, and fruit orchards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "renala khurd",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "renala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "khurd",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1588,
+    "attempt": 1574,
+    "place_id": "gn-12548253",
+    "input": {
+      "place": {
+        "place_id": "gn-12548253",
+        "name": "Hulunbuir",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 49.21141,
+        "lon": 119.75582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hulunbuir",
+          "url": "https://en.wikipedia.org/wiki/Hulunbuir",
+          "text": "Hulunbuir or Hulun Buir is a prefecture-level city in northeastern Inner Mongolia, China. Its administrative center is located at Hailar District, its largest urban area. Major scenic features are the high steppes of the Hulun Buir grasslands, the Hulun and Buir lakes (the latter partially in Mongolia), and the Khingan range. Hulun Buir borders Russia to the north and west, Mongolia to the south and west, Heilongjiang province to the east and Hinggan League to the direct south. Hulunbuir is a linguistically diverse area: next to Mandarin Chinese, Mongolian dialects such as Khorchin and Buryat, the Mongolic language Daur, and some Tungusic languages, including Oroqen and Solon, are spoken there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "hulunbuir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1589,
+    "attempt": 1575,
+    "place_id": "gn-13527315",
+    "input": {
+      "place": {
+        "place_id": "gn-13527315",
+        "name": "Santo António",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.20208,
+        "lon": 113.54394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santo António, Macau",
+          "url": "https://en.wikipedia.org/wiki/Santo_António,_Macau",
+          "text": "Santo António is a civil parish in the western portion of the Macau Peninsula of Macau. It has the highest population density in Macau (98,776 persons per km²).\nThis parish was one of five in the former Municipality of Macau, one of Macau's two municipalities that were abolished on 31 December 2001 by Law No. 17/2001, following the 1999 transfer of sovereignty over Macau from Portugal to China. While their administrative functions have since been removed, these parishes are still retained nominally.\nIt is north of the parish of Sé, south of Nossa Senhora de Fátima parish, west of São Lázaro parish, and east of the Inner Harbor (Porto Interior)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "santo antonio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1590,
+    "attempt": 1576,
+    "place_id": "gn-1682598",
+    "input": {
+      "place": {
+        "place_id": "gn-1682598",
+        "name": "Taytay",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.55883,
+        "lon": 121.13285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taytay, Rizal",
+          "url": "https://en.wikipedia.org/wiki/Taytay,_Rizal",
+          "text": "Taytay, officially the Municipality of Taytay (Filipino: Bayan ng Taytay; IPA: [taɪˈtaɪ]), is a municipality in the province of Rizal, Philippines. According to the 2024 census, it has a population of 397,111 people. It is the 2nd most populous municipality in the country, after Rodriguez, Rizal. It is also known as the Garments and Woodcrafts Capital of the Philippines.\nWhile economically, demographically and politically qualified, plans to convert it into a city was set aside, pending social and administrative reforms in the municipality.\nAccording to the 2022 Commission on Audit (COA) Annual Financial Report, Taytay is the seventh richest municipality in the Philippines with a total asset of ₱3.67 billion.\nIn 2023, the National Competitiveness Council has named Taytay as the \"2nd Most Competitive Municipality (1st & 2nd Class)\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "taytay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1591,
+    "attempt": 1577,
+    "place_id": "gn-1721168",
+    "input": {
+      "place": {
+        "place_id": "gn-1721168",
+        "name": "Cadiz",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 10.9465,
+        "lon": 123.288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cadiz, Negros Occidental",
+          "url": "https://en.wikipedia.org/wiki/Cadiz,_Negros_Occidental",
+          "text": "Cadiz, officially the City of Cadiz (Hiligaynon: Dakbanwa/Syudad sang Cadiz; Cebuano: Dakbayan sa Cadiz; Filipino: Lungsod ng Cadiz), is a  component city in the province of Negros Occidental, Philippines. It was the capital of the short-lived province of Negros del Norte, before the creation of the province was declared unconstitutional on August 18, 1986.\nAccording to the 2024 census, it has a population of 161,558 people.\nCadiz has promoted itself as the \"Gateway and Premier Center of Agro-Fishery Resources of Negros Occidental,\" citing its coastal location, agricultural land, and marine resources. A commercial port serving the city was completed and inaugurated in 2010.\nThe city is a major sugarcane-producing area. This is transported to Victorias City for further refining. Another major source of livelihood is the harvest of seafood.\nThe Dinagsa Festival, a celebration which earned Cadiz the name of the Dinagsa Country of the north, is held annually on the last week of January. Some three kilometers off the coast of Barangay Cadiz Viejo is a white sand island resort of Lakawon, a popular destination among the local population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "cadiz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1592,
+    "attempt": 1578,
+    "place_id": "gn-1734815",
+    "input": {
+      "place": {
+        "place_id": "gn-1734815",
+        "name": "Port Dickson",
+        "country": "Malaysia",
+        "subdivision": "Negeri Sembilan",
+        "lat": 2.52462,
+        "lon": 101.79651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Dickson",
+          "url": "https://en.wikipedia.org/wiki/Port_Dickson",
+          "text": "Port Dickson (Negeri Sembilan Malay: Podeksen), colloquially referred to as PD, is a beach resort in Port Dickson District, Negeri Sembilan, Malaysia. It is the second largest urban area in the state after Seremban, the state capital. The town's administration is run by the Port Dickson Municipal Council (Malay: Majlis Perbandaran Port Dickson; MPPD), formerly known as the Port Dickson Sanitary Board (Malay: Lembaga Kesihatan Port Dickson) from 29 March 1928 until 28 February 1950, Port Dickson Town Board (Malay: Lembaga Bandaran Port Dickson) from 1 March 1950 until 30 November 1979, and Port Dickson District Council (Malay: Majlis Daerah Port Dickson) from 1 December 1979 until 1 February 2002."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "port dickson",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dickson",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1593,
+    "attempt": 1579,
+    "place_id": "gn-1783873",
+    "input": {
+      "place": {
+        "place_id": "gn-1783873",
+        "name": "Zhumadian",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 32.98385,
+        "lon": 114.02586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhumadian",
+          "url": "https://en.wikipedia.org/wiki/Zhumadian",
+          "text": "Zhumadian (simplified Chinese: 驻马店; traditional Chinese: 駐馬店; pinyin: Zhùmǎdiàn; postal: Chumatien) is a prefecture-level city in southern Henan province, China. It borders Xinyang to the south, Nanyang to the west, Pingdingshan to the northwest, Luohe to the north, Zhoukou to the northeast, and the province of Anhui to the east.\nAs of the 2020 Chinese census, its total population was 7,008,427 inhabitants whom 1,466,913 lived in the built-up (or metro) area made of Yicheng District and Suiping County now conurbated.\nIt was once the center of the Cai state during the Eastern Zhou era. The state leaves its name in several of the subdivisions including Shangcai County and Xincai County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "zhumadian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1594,
+    "attempt": 1580,
+    "place_id": "gn-1792892",
+    "input": {
+      "place": {
+        "place_id": "gn-1792892",
+        "name": "Tianshui",
+        "country": "China",
+        "subdivision": "Gansu",
+        "lat": 34.57952,
+        "lon": 105.74238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tianshui",
+          "url": "https://en.wikipedia.org/wiki/Tianshui",
+          "text": "Tianshui is a prefecture-level city in Gansu province, China, and is the province's second-largest city (behind the provincial capital Lanzhou). Located in the southeast of the province, the city strides along the upper reaches of the Wei River and at the boundary of  the Loess Plateau and the Qinling Mountains. As of the 2020 census, its population was 2,984,659 inhabitants, of which 1,212,791 lived in the built-up (or metro) area made of the 2 urban districts of Qinzhou and Maiji. The city and its surroundings have played an important role in the early history of China, as still visible in the form of historic sites such as the Maijishan Grottoes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "tianshui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

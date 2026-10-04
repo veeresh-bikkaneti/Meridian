@@ -1,0 +1,837 @@
+[
+  {
+    "rank": 1515,
+    "attempt": 1501,
+    "place_id": "gn-307084",
+    "input": {
+      "place": {
+        "place_id": "gn-307084",
+        "name": "Kızıltepe",
+        "country": "Türkiye",
+        "subdivision": "Mardin",
+        "lat": 37.18836,
+        "lon": 40.57723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kızıltepe",
+          "url": "https://en.wikipedia.org/wiki/Kızıltepe",
+          "text": "Kızıltepe (Turkish pronunciation: [kɯˈzɯɫtepe]; Kurdish: Qoser; Ottoman Turkish: تال ارمين, romanized: Tell Armen, lit. 'Armenian hill') is a municipality and district of Mardin Province, Turkey. Its area is 1,236 km2, and its population is 267,151 (2022). It is mainly populated by Kurds of the Kîkan Kurdish tribe. Kızıltepe is situated in Mardin Province within the broader Kurdish-majority region of southeastern Turkey. Demographic research has identified the Mardin region as having a predominantly Kurdish-speaking population, with Kurmanji (Northern Kurdish) as the principal spoken language. Kızıltepe is predominantly inhabited by Kurds and is situated within Mardin Province, which demographic studies have consistently identified as a Kurdish-majority province with high concentrations of Kurmanji (Northern Kurdish) speakers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "k z ltepe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "k",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "z",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ltepe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1516,
+    "attempt": 1502,
+    "place_id": "gn-3111199",
+    "input": {
+      "place": {
+        "place_id": "gn-3111199",
+        "name": "Sabadell",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.54329,
+        "lon": 2.10942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sabadell",
+          "url": "https://en.wikipedia.org/wiki/Sabadell",
+          "text": "Sabadell (Catalan pronunciation: [səβəˈðeʎ]) is a city and municipality in the autonomous community of Catalonia in Spain. It is in the south of the comarca of Vallès Occidental, where it is one of the two capitals, the other being Terrassa. It is located on the River Ripoll, 20 km (12 mi) north of Barcelona, 190 m (620 ft) above sea level. With a population of 224,589, it is the 5th-largest city in Catalonia and the 23rd-largest in Spain.\nSabadell pioneered the Industrial Revolution in Catalonia with its textile mills, together with its archrival Terrassa. Thus, in the mid-19th century, it became the most important wool city in Spain, being nicknamed the \"Catalan Manchester\". Today many mills from that period can still be seen, with most of them having been refurbished as residential buildings or other services. Nowadays, Sabadell is basically a commercial and industrial city; there are no significant agricultural activities.\nSabadell is an important communications point. Two motorways run beside the city: the C-58 (from Barcelona to Manresa) and the AP-7 (from France and Girona to Tarragona, Valencia, and Andalusia), and some roads link Sabadell with nearby cities and towns: Barcelona, Terrassa, Cerdanyola del Vallès, Sant Quirze del Vallès, Barberà del Vallès, Sant Cugat del Vallès, Castellar del Vallès, Sant Llorenç Savall, Granollers, Rubí, Sentmenat, and Molins de Rei.\nA railroad line crosses the city (the Rodalies Barcelona line from Barcelona to Lleida) and another one terminates in the city (the FGC line from Barcelona to Sabadell via Sant Cugat del Vallès)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "sabadell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1517,
+    "attempt": 1503,
+    "place_id": "gn-3449701",
+    "input": {
+      "place": {
+        "place_id": "gn-3449701",
+        "name": "Santo André",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.66389,
+        "lon": -46.53833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santo André, São Paulo",
+          "url": "https://en.wikipedia.org/wiki/Santo_André,_São_Paulo",
+          "text": "Santo André (Portuguese pronunciation: [sɐ̃twɐ̃ˈdɾɛ], Saint Andrew) is a Brazilian municipality located in the Metropolitan Region of São Paulo. It is part of a group of municipalities known as the ABC Region. According to the most recent census in 2024, the population is estimated at 778,711 in an area of 175.8 km2 (67.9 sq mi). or about 43,441 Acres of landmass.\nIt is the 15th most developed Brazilian city, and the eighth most developed city in the State of São Paulo, according to the UN. The city is also known to be the fifth best city in the country to raise children on the grounds of public and private education and health care."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "santo andre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1518,
+    "attempt": 1504,
+    "place_id": "gn-3450404",
+    "input": {
+      "place": {
+        "place_id": "gn-3450404",
+        "name": "Santa Bárbara d'Oeste",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.75361,
+        "lon": -47.41361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Bárbara d'Oeste",
+          "url": "https://en.wikipedia.org/wiki/Santa_Bárbara_d'Oeste",
+          "text": "Santa Bárbara d'Oeste is a municipality in the State of São Paulo in Brazil. It is part of the Metropolitan Region of Campinas. It lies about 138 kilometres (86 mi) northwest of the State capital. It occupies an area of 272.2 square kilometres (105.1 sq mi), of which 43.1 square kilometres (16.6 sq mi) is urban. In 2020, the population was estimated at 194,390 by the Brazilian Institute of Geography and Statistics, making it the 43rd most populous city in São Paulo and the sixth largest in the metropolitan region of Campinas.\nSanta Bárbara d'Oeste has an annual average temperature of 22.2 °C (72.0 °F), and the original vegetation of the area predominates. The city has an urbanization rate of 98.73%. As of 2009, there were 44 medical institutions in the city, and its human development index (HDI) is rated as 0.819 in relation to the rest of the state.\nFounded on 4 December 1818, when the Church was built, the city was named in honor of its patron saint, Santa Barbara, it was originally part of Piracicaba. It separated from Piracicaba in 1900. Since Margaret Grace Martins donated the land for the construction of the townsite, she is considered the founder, making the city the first and only Brazilian city founded by a woman. The city is also the birthplace of Brazil's automobile industry, being where the first car was produced in Brazil. Today, Santa Bárbara d'Oeste is subdivided into slightly more than 130 districts.\nSanta Bárbara d'Oeste has an important cultural tradition, ranging from craft and theater, to music and sports.  American immigration has brought various influences on both cultural and tourist events and attractions, including the Party of Immigration, and the Fair of Nations. In the midst of the city is a cemetery, best known as the Graveyard of the Americans. Originally established for the burial of Confederados, it is administered by the Fraternity of American Descendants, who regularly hold meetings and events aimed at preserving the traditions and customs of American immigrants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 336
+    },
+    "banned_terms": [
+      {
+        "term": "santa barbara d oeste",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barbara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "oeste",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1519,
+    "attempt": 1505,
+    "place_id": "gn-3460950",
+    "input": {
+      "place": {
+        "place_id": "gn-3460950",
+        "name": "Itaboraí",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.74444,
+        "lon": -42.85944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itaboraí",
+          "url": "https://en.wikipedia.org/wiki/Itaboraí",
+          "text": "Itaboraí (pronounced [itɐboɾaˈi] it-ə-BOR-ə-EE) is a city in the state of Rio de Janeiro, Brazil, which belongs to the Rio de Janeiro metropolitan area. It was founded in 1672. In 2025, it had a population of 240,127.\nAround the year 1000, Tupi-speaking peoples from the valleys of the Madeira and Xingu rivers, on the right bank of the Amazon River, invaded most of the current Brazilian coast, expelling its previous inhabitants, speakers of languages belonging to the Macro-Jê linguistic trunk, to the interior of the continent. In the 16th century, when the Portuguese arrived in the Guanabara Bay region, it was occupied by one of these Tupi peoples: the Tupinambás, also called Tamoios."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "itaborai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1520,
+    "attempt": 1506,
+    "place_id": "gn-3583334",
+    "input": {
+      "place": {
+        "place_id": "gn-3583334",
+        "name": "Santa Ana",
+        "country": "El Salvador",
+        "subdivision": "Santa Ana Department",
+        "lat": 13.98827,
+        "lon": -89.55685
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Ana, El Salvador",
+          "url": "https://en.wikipedia.org/wiki/Santa_Ana,_El_Salvador",
+          "text": "Santa Ana (Spanish pronunciation: [ˈsanta ˈana]) is the second largest city in El Salvador, after the capital of San Salvador. It is located 64 kilometers northwest of San Salvador, the capital city. Santa Ana has approximately 250,760 (2024) inhabitants and serves both as the capital of the department of Santa Ana and as the municipal seat for the surrounding municipality of the same name.  For its administration the municipality is divided into 35 colonias (neighborhoods) and 318 small villages.\nA major processing center for El Salvador's sizable coffee bean industry is located near Santa Ana.\nSanta Ana has become a tourist destination, especially for tourists eager to learn about Salvadoran culture and traditions.\nCurrently, the mayor of Santa Ana is Gustavo Acevedo, from Nuevas Ideas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "santa ana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1521,
+    "attempt": 1507,
+    "place_id": "gn-3672486",
+    "input": {
+      "place": {
+        "place_id": "gn-3672486",
+        "name": "Pereira",
+        "country": "Colombia",
+        "subdivision": "Risaralda Department",
+        "lat": 4.81428,
+        "lon": -75.69488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pereira, Colombia",
+          "url": "https://en.wikipedia.org/wiki/Pereira,_Colombia",
+          "text": "Pereira (Spanish pronunciation: [peˈɾejɾa]) is the capital city of the Colombian department of Risaralda. It is located in the foothills of the Andes in a coffee-producing area of Colombia officially known as the \"Coffee Axis\". Pereira, alongside the rest of the Coffee Axis, form part of UNESCO World Heritage Site known as the \"Coffee Cultural Landscape of Colombia\". It is the most populated city in the Coffee Axis. Pereira is also part of the Central West Metropolitan Area, which has 735.769 residents and is composed of Pereira and the neighboring cities of Dosquebradas and La Virginia. It is considered the most important city in the \"Coffee Axis\" from a geopolitical and economic standpoint.\nAs the capital of the department of Risaralda, Pereira houses the headquarters of the Government of Risaralda, the Departmental Assembly, the Departmental Court, the Metropolitan Area Authority and the Attorney General. It also serves as the headquarters for numerous public companies and institutions of the Colombian state. Being in the center of the Golden Triangle (which consists of the cities of Bogotá, Medellín, and Cali), Pereira has become especially important in the fields of trade and commerce."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "pereira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1522,
+    "attempt": 1508,
+    "place_id": "gn-3887127",
+    "input": {
+      "place": {
+        "place_id": "gn-3887127",
+        "name": "Iquique",
+        "country": "Chile",
+        "subdivision": "Tarapacá",
+        "lat": -20.21326,
+        "lon": -70.15027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iquique",
+          "url": "https://en.wikipedia.org/wiki/Iquique",
+          "text": "Iquique (Spanish pronunciation: [iˈkike]) is a port city and commune in northern Chile, capital of both the Iquique Province and Tarapacá Region. It lies on the Pacific coast, west of the Pampa del Tamarugal, which is part of the Atacama Desert. Its name comes from the Aymara language: \"Iki Iki,\" meaning \"land of dreams.\" It has a population of 199,587 according to the 2024 census. It is also the main commune of Greater Iquique. The city developed during the heyday of the saltpetre mining in the Atacama Desert in the 19th century. Once a Peruvian city with a large Chilean population, it was conquered by Chile in the War of the Pacific (1879–1883). Today it is one of only two free ports of Chile, the other one being Punta Arenas, in the country's far south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "iquique",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1523,
+    "attempt": 1509,
+    "place_id": "gn-3985241",
+    "input": {
+      "place": {
+        "place_id": "gn-3985241",
+        "name": "San Nicolás de los Garza",
+        "country": "Mexico",
+        "subdivision": "Nuevo León",
+        "lat": 25.74167,
+        "lon": -100.30222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Nicolás de los Garza",
+          "url": "https://en.wikipedia.org/wiki/San_Nicolás_de_los_Garza",
+          "text": "San Nicolás de los Garza, sometimes known only as San Nicolás, is a city and coextensive municipality in the Mexican state of Nuevo León that is part of the Monterrey metropolitan area. It has become primarily a city for residences and family houses, although it still has several factories that tend to relocate to the periphery of the metropolitan area. It is the fifth-largest city in the state, behind Monterrey, Guadalupe, Ciudad Apodaca and General Escobedo.\nIt houses the Universidad Autónoma de Nuevo León (Autonomous University of Nuevo León), one of the most prestigious public schools in Mexico and Latin America.\nSan Nicolás, although less populated than Monterrey, has a higher population density."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "san nicolas de los garza",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nicolas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "garza",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1524,
+    "attempt": 1510,
+    "place_id": "gn-3995465",
+    "input": {
+      "place": {
+        "place_id": "gn-3995465",
+        "name": "Monterrey",
+        "country": "Mexico",
+        "subdivision": "Nuevo León",
+        "lat": 25.68435,
+        "lon": -100.31721
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monterrey",
+          "url": "https://en.wikipedia.org/wiki/Monterrey",
+          "text": "Monterrey (  MON-tə-RAY, Spanish: [monteˈrej] ) is the capital and largest city of the northeastern Mexican state of Nuevo León. The city anchors the Monterrey metropolitan area, Mexico's second largest metropolitan area with a population of 5,347,000 as of 2026, ccording to the 2020 census, Monterrey proper has a population of 1,142,194. Located at the foothills of the Sierra Madre Oriental, Monterrey is a major business and industrial hub in Mexico and the Americas. It is also the biggest industrial city in Mexico.\nMonterrey is considered one of the most livable cities of the country. It serves as a commercial center of northern Mexico and is the base of many significant international corporations. It is considered a Beta World City, cosmopolitan and competitive. Rich in history and culture, it is one of the most developed cities in the Americas.\nThe uninterrupted settlement of Monterrey began with its founding by Diego de Montemayor in 1596. Following the Mexican War of Independence, the city grew into a key business hub. The city experienced great industrial growth following the establishment of the Monterrey Foundry in 1900. It holds prominent positions in industries such as steel, cement, glass, auto parts, and brewing. The city's economic success has been partly attributed to its proximity to the United States–Mexico border and strong economic ties with the United States.\nThe city hosts important events, such as the Pa'l Norte and Machaca Fest music festivals, the former being the most important festival held outside of Mexico City.   At the educational level, it is home to the Monterrey Institute of Technology and Higher Education, the largest private university in Mexico and one of the best ranked in the world. In addition, Monterrey is home to the Mexican Professional Baseball Hall of Fame, and once hosted the Special Summit of the Americas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "monterrey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1525,
+    "attempt": 1511,
+    "place_id": "gn-4005775",
+    "input": {
+      "place": {
+        "place_id": "gn-4005775",
+        "name": "Gómez Palacio",
+        "country": "Mexico",
+        "subdivision": "Durango",
+        "lat": 25.56871,
+        "lon": -103.4996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gómez Palacio, Durango",
+          "url": "https://en.wikipedia.org/wiki/Gómez_Palacio,_Durango",
+          "text": "Gómez Palacio is a city and its surrounding municipality in northeastern Durango, Mexico, adjacent to the border of the state of Coahuila. The city is named in honor of former Durango governor, Francisco Gómez Palacio y Bravo.\nAs of 2010, the city of Gómez Palacio had a population of 327,985, up from 304,515 as of 2005, making it the state's second-largest community. The municipality (including the city) population was 327,985. The municipality's area is 990.2 square kilometres (382.3 sq mi). The municipality and city are part of a large metropolitan area called the Comarca Lagunera Metropolitan Area, which includes Torreón Municipality and Matamoros Municipality in Coahuila, as well as Lerdo Municipality in Durango. The metropolitan area had an official population of 1,215,817 persons in 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "gomez palacio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gomez",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palacio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1526,
+    "attempt": 1512,
+    "place_id": "gn-4169014",
+    "input": {
+      "place": {
+        "place_id": "gn-4169014",
+        "name": "Pompano Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.23786,
+        "lon": -80.12477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pompano Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Pompano_Beach,_Florida",
+          "text": "Pompano Beach ( POM-pə-noh) is a city in Broward County, Florida, United States. It is located along the coast of the Atlantic Ocean, just north of Fort Lauderdale and 36 miles north of Miami. The nearby Hillsboro Inlet forms part of the Atlantic Intracoastal Waterway. It is a principal city of the Miami metropolitan area, which was home to 6.14 million people in 2020. As of the 2020 census, the population was 112,046, making it the sixth-largest city in Broward County, the ninth-largest city in the South Florida metropolitan area, and the 20th-largest city in Florida.\nPompano Beach Airpark, located within the city, is the home of the Goodyear Blimp Spirit of Innovation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "pompano beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pompano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1527,
+    "attempt": 1513,
+    "place_id": "gn-5959974",
+    "input": {
+      "place": {
+        "place_id": "gn-5959974",
+        "name": "Gatineau",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.47723,
+        "lon": -75.70164
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gatineau",
+          "url": "https://en.wikipedia.org/wiki/Gatineau",
+          "text": "Gatineau ( GAT-in-oh; French: [ɡatino] ) is a city in southwestern Quebec, Canada. It is located on the northern bank of the Ottawa River, directly across from Ottawa, Ontario. Gatineau is the largest city in the Outaouais administrative region of Quebec and is also part of Canada's National Capital Region. As of 2021, Gatineau is the fourth-largest city in Quebec with a population of 291,041. Gatineau is also part of the Ottawa-Gatineau census metropolitan area with a population of 1,488,307, making it the fourth largest in Canada.\nGatineau is coextensive with a territory equivalent to a regional county municipality (TE) and census division (CD) of the same name, whose geographical code is 81. It is the seat of the judicial district of Hull.\nIt is also the most bilingual (French-English) city in Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "gatineau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1528,
+    "attempt": 1514,
+    "place_id": "gn-6693576",
+    "input": {
+      "place": {
+        "place_id": "gn-6693576",
+        "name": "San Pedro de la Paz",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -36.83897,
+        "lon": -73.10028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro de la Paz",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro_de_la_Paz",
+          "text": "San Pedro de la Paz (Spanish pronunciation: [sam ˈpeðɾo ðe la pas]) is a Chilean city and commune located in the Concepción Province, Biobío Region. It has some 80,447 inhabitants according to the 2002 national census. In 2005, the Pedro Aguirre Cerda avenue, the main avenue in the city, was completed. Most of the inhabitants of this comuna commute daily to Concepción – either by car, bus or train – over the Biobío River. It is considered to be part of Greater Concepción conurbation.\nSan Pedro was established during the Conquest of Chile first as fort la Candelaria which was destroyed following the death of Governor Martín García Óñez de Loyola in 1599.  It was rebuilt as part of La Frontera by Alonso de Ribera as fort San Pedro de la Paz in 1603.  A small settlement grew up around it.  During the Chilean War of Independence the town was burned in 1821, by the royalist Juan Manuel Picó on the order of Vicente Benavides during the Battle of San Pedro.  The fort was ruined by the 1835 Concepción earthquake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro de la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1529,
+    "attempt": 1515,
+    "place_id": "gn-692194",
+    "input": {
+      "place": {
+        "place_id": "gn-692194",
+        "name": "Sumy",
+        "country": "Ukraine",
+        "subdivision": "Sumy",
+        "lat": 50.91741,
+        "lon": 34.79906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sumy",
+          "url": "https://en.wikipedia.org/wiki/Sumy",
+          "text": "Sumy (Ukrainian: Суми, IPA: [ˈsumɪ] ) is a city in northeastern Ukraine. It serves as the administrative center of Sumy Oblast. The city is situated on the banks of the Psel River and has a population of 256,474 (2022 estimate), making it the 23rd-largest in the country.\nThe city of Sumy was founded in the 1650s by Cossacks within the historical region of Sloboda Ukraine. The city experienced rapid development starting from the second half of the 19th century and became a centre of sugar, machine building, metalworking, and textile industry, as well as an important trade fair location. Today, Sumy is one of the chief industrial and cultural centres in Northern Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "sumy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1530,
+    "attempt": 1516,
+    "place_id": "gn-713716",
+    "input": {
+      "place": {
+        "place_id": "gn-713716",
+        "name": "Alchevsk",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 48.46906,
+        "lon": 38.79744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alchevsk",
+          "url": "https://en.wikipedia.org/wiki/Alchevsk",
+          "text": "Alchevsk is a city and the nominal administrative center of Alchevsk Raion in Luhansk Oblast, Ukraine. Situated in the Donbas region of eastern Ukraine, it has an estimated population of 106,062 (2022 estimate), making it the second-most populous city in Luhansk Oblast and the 38th-most populous city in Ukraine. It is located 45 kilometres (28 miles) from the administrative center of the oblast, Luhansk.\nThe city originally started off as a workers' settlement built around the Alchevsk Metallurgical Complex in 1895 in Imperial Russia, known briefly as Yuryevka and then as Alchevsk. After the October Revolution, it was claimed by the Soviet Union. In 1931, it was renamed to Voroshylovsk after Kliment Voroshilov. After World War II, it remained a key hub for metallurgy and rapidly grew under the five-year plans implemented. It was renamed to Kommunarsk in 1961 due to the dismantling of personality cults following de-Stalinization, with the name remaining until 1991. Following the collapse of the Soviet Union, the city became part of Ukraine, and it was then renamed back to Alchevsk in 1991. In 2014, during the War in the Donbas, the city came under the control of pro-Russian separatists, who incorporated it into the self-proclaimed Luhansk People's Republic. After a highly disputed referendum, the region was annexed by Russia in 2022. As of 2026, Russia has full control of the city.\nAlchevsk remains one of the largest industrial centres in the Donbas, especially in the metallurgical and chemical sectors. The largest employer is the Alchevsk Metallurgical Complex, a ferrous metallurgy enterprise, alongside the \"Alchevsk Coke-Chemical Plant\". Cultural landmarks include the Saint Nicholas Cathedral, the Alchevsk Railway Station, and Kino Metalurh. The main museum of the city is the City Historical Museum of Alchevsk. It was also formerly home to FC Stal Alchevsk of the Ukrainian First League, which played its home games at Stal Stadium. However, the club ceased to exist in 2014 due to the war. It is also notably home to the Donbas State Technical University, although the university has remained split between Ukrainian and Russian authorities since 2014."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 346
+    },
+    "banned_terms": [
+      {
+        "term": "alchevsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1531,
+    "attempt": 1517,
+    "place_id": "gn-933773",
+    "input": {
+      "place": {
+        "place_id": "gn-933773",
+        "name": "Gaborone",
+        "country": "Botswana",
+        "subdivision": "Gaborone",
+        "lat": -24.65451,
+        "lon": 25.90859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gaborone",
+          "url": "https://en.wikipedia.org/wiki/Gaborone",
+          "text": "Gaborone (UK:  GAB-ə-ROH-nee, HAB-, US:  GAH-bə-ROH-nee, -⁠nay, Tswana: [χabʊˈrʊnɛ]) is the capital and largest city of Botswana. It was formerly spelled as Gaberones during the colonial era, a name occasionally used in older English texts and maps. With a population of 246,325 based on the 2022 census, about 10% of the total population of Botswana. Its metropolitan area is home to 534,842 inhabitants at the 2022 census.\nGaborone is situated between Kgale Hill and Oodi Hill, near the confluence of the Notwane River and Segoditshane River in the southeastern corner of Botswana, within 15 kilometres (9.3 mi) from the South African border. The city is served by the Sir Seretse Khama International Airport. It is an administrative district in its own right, but is the capital of the surrounding South-East District. Locals often refer to the city as GC or Motse-Mshate.\nThe city of Gaborone is named after Chief Gaborone of the Tlokwa people, who once controlled land nearby. Because it was not affiliated with any specific indigenous group and was close to fresh water, the city was planned to be the capital in the mid-1960s when the Bechuanaland Protectorate became an independent nation. The centre of the city comprises a long strip of commercial businesses, called \"Main Mall\", with a semi-circular area of government offices to its east. Gaborone was once one of the fastest-growing cities in the world, and this has created problems with housing and illegal settlements. The city also dealt with conflicts spilling into the country from Zimbabwe and South Africa during the 1980s.\nGaborone is the political and economic capital of Botswana, home to its largest companies and the Botswana Stock Exchange. It also serves as the headquarters of the Southern African Development Community (SADC). The main spoken languages in the city include Setswana (Tswana), English, Kalanga, and Kgalagadi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "gaborone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1532,
+    "attempt": 1518,
+    "place_id": "gn-1171123",
+    "input": {
+      "place": {
+        "place_id": "gn-1171123",
+        "name": "Mandi Bahauddin",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.58704,
+        "lon": 73.49123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandi Bahauddin",
+          "url": "https://en.wikipedia.org/wiki/Mandi_Bahauddin",
+          "text": "Mandi Bahauddin (Punjabi / Urdu: مَنْڈی بَہَاءُ الدِّین, romanized: manḍī bahā-ud-dīn Punjabi: [mɐ̃ɳˈɖiː ˈbä˥ʊ̯˩d̪ˑiːnᵊ]; Urdu: [mə̃nˈɖiː ˈbəɦɑːʊ̯d̪.d̪iːn]) is a city in Punjab, Pakistan. It is also called \"The City of Lions\" and \"The Land of Judges\". It is also the capital of Mandi Bahauddin District. It is the 43rd most populous city in Pakistan, according to the 2023 census. The city is about 220 metres above sea level and is located between the rivers Jhelum (north 12 km) and Chenab (south 39 km).\nThe name of the town originates from two sources, Mandi was a prefix because it was a grain market and Bahauddin was a 16th-century chieftain of the Gondal clan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "mandi bahauddin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mandi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bahauddin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1533,
+    "attempt": 1519,
+    "place_id": "gn-1254241",
+    "input": {
+      "place": {
+        "place_id": "gn-1254241",
+        "name": "Tonk",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.16638,
+        "lon": 75.78824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tonk, India",
+          "url": "https://en.wikipedia.org/wiki/Tonk,_India",
+          "text": "Tonk is a city in Tonk district of the Indian state of Rajasthan. The city of Tonk is situated 95 km (60 mi) by road south from Jaipur, near the right bank of the Banas River. It is the administrative headquarters of Tonk District. Tonk was also the capital of the eponymous princely state of British India from 1817 to 1947. Kamal Amrohi's movie Razia Sultan was shot in Tonk in 1981–82. Famous places in Tonk include: Shahi Jama Masjid, Bisalpur Dam, Arabic Persian Research Institute, Sunhari Kothi, Hathi Bhata, haadi rani ka kund, Annapurna Dungri Ganesh Temple, Rasiya Ki Tekri, Kidwai Park, Ghantaghar, Kamdhenu Circle, Nehru Garden, and Chaturbhuj Talab Lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "tonk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1534,
+    "attempt": 1520,
+    "place_id": "gn-1256237",
+    "input": {
+      "place": {
+        "place_id": "gn-1256237",
+        "name": "Shimla",
+        "country": "India",
+        "subdivision": "Himachal Pradesh",
+        "lat": 31.10442,
+        "lon": 77.16662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shimla",
+          "url": "https://en.wikipedia.org/wiki/Shimla",
+          "text": "Shimla, also known as Simla (the official name until 1972), (Hindi: [ʃɪmla] ) is the capital and the largest city of the northern Indian state of Himachal Pradesh. In 1864, Shimla was declared the summer capital of British India. After independence, the city became the capital of East Punjab and was later made the capital city of Himachal Pradesh. It is the largest and most developed city of Himachal Pradesh, as well as the state's principal commercial, cultural and educational centre.\nSmall hamlets were recorded before 1815 when British forces took control of the area. The climatic conditions attracted the British to establish the city in the dense forests of the Himalayas. As the summer capital, Shimla hosted many important political meetings including the Simla Deputation of 1906, the Simla Accord of 1914 and the Simla Conference of 1945. After independence, the state of Himachal Pradesh came into being in 1948 as a result of the integration of 28 princely states. Even after independence, the city remained an important political centre, hosting the Simla Agreement of 1972. After the reorganisation of the state of Himachal Pradesh, the existing Mahasu district was named Shimla.\n\nShimla is home to several buildings that are styled in the Tudorbethan and neo-Gothic architectures dating from the colonial era, as well as multiple temples and churches. The colonial architecture and churches, the temples, and the natural environment of the city attract tourists. Major city centre's attractions include the Shri Hanuman Jakhu (Statue), Jakhu Temple, Viceregal Lodge, Christ Church, Mall Road, The Ridge and Annadale. The city centre's northernmost point is Jakhoo and the southernmost location is Annadale, the easternmost point is Sanjauli and the western point is Chotta Shimla. The Kalka–Shimla Railway line built by the British, a UNESCO World Heritage Site, is also a major tourist attraction. Owing to its steep terrain, Shimla hosts the mountain biking race MTB Himalaya, which started in 2005 and is regarded as the biggest event of its kind in South Asia. Shimla also has the largest natural ice skating rink in South Asia. Apart from being a tourism centre, the city is also an educational hub with several colleges and research institutions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 363
+    },
+    "banned_terms": [
+      {
+        "term": "shimla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
