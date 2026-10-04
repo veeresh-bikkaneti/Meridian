@@ -17,6 +17,7 @@ Verify-before-merge pattern. **Do NOT merge. Do NOT open a PR.** Push nothing to
 ## Crew reports received
 - [x] Crew 1 — data integrity: ALL VERIFIED. 388 files (0–387 contiguous), manifest 388, 229+91+68 reconciled from raw records (pairwise intersections 0); prompt sha256 matches `7f19d3c5…` and is byte-identical to Veeresh's approved FINAL; validator `scripts/clues/production/validate-production.mjs` sha256 matches `22c01959…`; zero `src/` changes vs merge-base (1,614 files: scripts/ + public/loop/clues/ + BRANCH_STATUS.md only)
 - [x] Crew 5 — gates: ALL PASS. Clue suites 70/70; `npm test` 563/563 (0 fail); `tsc` clean; card gate PASSED (124,690 records: 8,797 hooked / 115,893 hook-missing / 0 legacy); `build:pages` green
+- [x] Crew 3 — quote provenance: 30/40 PASS, 10/40 FAIL on quote-coverage (c). Zero fabrication anywhere. Tier-2 quotes 40/40 verbatim in cited extract; tiers 1/3/4/5 40/40 lead-only; climate non-redundant 40/40. The 10 fails: clues paraphrase 2–3 extract sentences but quote only 1 — all claims verified present in a supplied extract EXCEPT Imphal T1 ("far northeast…" not in cited lead, only in section extract — genuine cross-extract sourcing gap). 2 whitespace-fold cases disclosed (not fabrication). Quality notes: "most + adjective" diction, 3 weak giveaways recycling earlier tiers, minor puffery (La Rioja, Enschede) — not failures.
 - [ ] Crew 2 — leak scan (running)
 - [ ] Crew 3 — quote provenance (running)
 - [ ] Crew 4 — flagged sets (running)
