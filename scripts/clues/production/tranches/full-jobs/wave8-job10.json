@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 1595,
+    "attempt": 1581,
+    "place_id": "gn-1800657",
+    "input": {
+      "place": {
+        "place_id": "gn-1800657",
+        "name": "Mentougou",
+        "country": "China",
+        "subdivision": "Beijing",
+        "lat": 39.93819,
+        "lon": 116.09307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mentougou, Beijing",
+          "url": "https://en.wikipedia.org/wiki/Mentougou,_Beijing",
+          "text": "Mentougou District (Chinese: 门头沟区; pinyin: Méntóugōu Qū) is a district of the city of Beijing. It is at the western part of the city. Spanning 1,321 square kilometres (510 sq mi), with 392,606 inhabitants (2020 Census), it is subdivided into 4 subdistricts and 9 towns. It borders the Beijing districts of Changping to the northeast, Haidian and Shijingshan to the east, Fengtai to the southeast, and Fangshan to the south, as well as Hebei province to the west and northwest.\nIt lies in the Western Hills of Beijing and is mountainous in terrain. In fact, the mountainous terrain—including a hundred or more peaks—occupy a stunning 93% of the entire area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "mentougou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1596,
+    "attempt": 1582,
+    "place_id": "gn-2130057",
+    "input": {
+      "place": {
+        "place_id": "gn-2130057",
+        "name": "Hirosaki",
+        "country": "Japan",
+        "subdivision": "Aomori",
+        "lat": 40.59306,
+        "lon": 140.4725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hirosaki",
+          "url": "https://en.wikipedia.org/wiki/Hirosaki",
+          "text": "Hirosaki (弘前市, Hirosaki-shi) is a city located in western Aomori Prefecture, Japan. As of 1 January 2026, the city had an estimated population of 157,031 in 84,998 households, and a population density of 300 per square kilometre (780/sq mi). The total area of the city is 524.20 square kilometers (202.39 sq mi).\nHirosaki developed as a castle town for the 100,000 koku Hirosaki Domain ruled by the Tsugaru clan. The city is currently a regional commercial center, and the largest producer of apples in Japan.  The city government has been promoting the slogans \"Apple Colored Town Hirosaki\" and \"Castle and Cherry Blossom and Apple Town\" to promote the city image. The town is also noted for many western-style buildings dating from the Meiji period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "hirosaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1597,
+    "attempt": 1583,
+    "place_id": "gn-2249222",
+    "input": {
+      "place": {
+        "place_id": "gn-2249222",
+        "name": "Louga",
+        "country": "Senegal",
+        "subdivision": "Louga",
+        "lat": 15.61867,
+        "lon": -16.22436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Louga",
+          "url": "https://en.wikipedia.org/wiki/Louga",
+          "text": "Louga (Arabic: لوجا; Wolof: Luga) is a city in northwestern Senegal.  Louga is a cattle market centre, and has road and rail links with the port city of Saint-Louis to the northwest and Dakar to the southwest.  The area surrounding Louga is at the northern limits of Senegal's peanut- (groundnut-) growing area and is inhabited by the Fulani, who are generally pastoral nomads, and the Wolof, who are sedentary farmers. Louga is located in what is called the Ndiambour, which used to be part of the Cayor province.\nIn 2023, according to official figures from the National Agency for Statistics and Demography (ANSD), Louga had a population of 113,365 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "louga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1598,
+    "attempt": 1584,
+    "place_id": "gn-2353151",
+    "input": {
+      "place": {
+        "place_id": "gn-2353151",
+        "name": "Aba",
+        "country": "Nigeria",
+        "subdivision": "Abia State",
+        "lat": 5.10658,
+        "lon": 7.36667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aba, Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Aba,_Nigeria",
+          "text": "Aba is a city in southeastern Nigeria. It lies along the west bank of the Aba River and is at the intersection of roads leading to cities such as Port Harcourt, Owerri, Umuahia, Ikot Ekpene, and Ikot-Abasi. \nAba was established by the Ngwa clan of the Igbo people in Nigeria as a market town. Later, a military post was placed there by the British colonial administration in 1901. The city became a collection point for agricultural products following the construction of a British-made railway running through it to Port Harcourt. Aba is a major urban settlement and commercial centre in Abia State, which is surrounded by small villages and towns. The indigenous people of Aba are the Ngwa. Aba is well known for its craftsmen, and as of 2016, Aba had an estimated population of 2,534,265, making it the biggest city in southeastern Nigeria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "aba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1599,
+    "attempt": 1585,
+    "place_id": "gn-2387495",
+    "input": {
+      "place": {
+        "place_id": "gn-2387495",
+        "name": "Carnot",
+        "country": "Central African Republic",
+        "subdivision": "Mambéré",
+        "lat": 4.94273,
+        "lon": 15.87735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carnot, Central African Republic",
+          "url": "https://en.wikipedia.org/wiki/Carnot,_Central_African_Republic",
+          "text": "Carnot is a city located in the south west of the Central African Republic (CAR), in the prefecture of Mambéré.\nIt has a population of 54,551 (2012 census), making it the fourth largest city in CAR by population.\nThe city takes its name as a tribute to the assassinated French President Sadi Carnot.\nThe city is situated on the eastern bank of the Mambéré river, and is served by Carnot Airport.\nYams, cassava, and cotton are cultivated, and cattle are reared in the area. The region lacks a functioning health service and is affected by an extremely high mortality rate and a high disease burden of malaria, HIV and tuberculosis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "carnot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1600,
+    "attempt": 1586,
+    "place_id": "gn-2644487",
+    "input": {
+      "place": {
+        "place_id": "gn-2644487",
+        "name": "Lincoln",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.22683,
+        "lon": -0.53792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lincoln, England",
+          "url": "https://en.wikipedia.org/wiki/Lincoln,_England",
+          "text": "Lincoln () is a cathedral city and district in Lincolnshire, England, of which it is the county town. In the 2021 census, the city's district had a population of 103,813. The 2021 census gave the urban area of Lincoln, including Bracebridge Heath, North Hykeham, South Hykeham and Waddington, a recorded population of 127,540.\nRoman Lindum Colonia developed from an Iron Age settlement of Britons on the River Witham, near the Fosse Way road. Over time its name was shortened to Lincoln, after successive settlements, including by Anglo-Saxons and Danes. Landmarks include Lincoln Cathedral (English Gothic architecture; for over 200 years the world's tallest building) and the 11th-century Norman Lincoln Castle. The city hosts the University of Lincoln, Lincoln Bishop University, Lincoln City F.C. and Lincoln United F.C. Lincoln is the largest settlement in Lincolnshire, with the towns Grimsby and Scunthorpe respectively second- and third-largest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "lincoln",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1601,
+    "attempt": 1587,
+    "place_id": "gn-2655459",
+    "input": {
+      "place": {
+        "place_id": "gn-2655459",
+        "name": "Blackpool",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.81667,
+        "lon": -3.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackpool",
+          "url": "https://en.wikipedia.org/wiki/Blackpool",
+          "text": "Blackpool is a seaside town in Lancashire, England. It is located on the Irish Sea coast of the Fylde peninsula, approximately 27 miles (43 km) north of Liverpool and 14 miles (23 km) west of Preston. It is the main settlement in the borough of the same name.\nBlackpool was originally a hamlet; it began to grow in the mid-eighteenth century, when sea bathing for health purposes became fashionable. Blackpool's beach was suitable for this activity and, by 1781, several hotels had been built. The opening of a railway station in 1846 allowed more visitors to reach the resort, which continued to grow for the remainder of the nineteenth century. In 1876, the town became a borough. Blackpool's development was closely tied to the Lancashire cotton-mill practice of annual factory maintenance shutdowns, known as Wakes Weeks, when many workers chose to visit the seaside. The town saw large growth during the late Victorian and Edwardian periods. By 1951, its population had reached 147,000.\nIn the late 20th century, changing holiday preferences and increased overseas travel impacted Blackpool's standing as a leading resort. Despite economic challenges, the town's urban fabric and economy remain centred around tourism. Today, the seafront continues to draw millions of visitors annually; it features landmarks such as Blackpool Tower, Illuminations, Pleasure Beach and the Winter Gardens. The town is home to football club Blackpool F.C. The population of Blackpool at the 2021 census was 141,000, a decrease of 1,100 since the 2011 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "blackpool",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1602,
+    "attempt": 1588,
+    "place_id": "gn-3083271",
+    "input": {
+      "place": {
+        "place_id": "gn-3083271",
+        "name": "Toruń",
+        "country": "Poland",
+        "subdivision": "Kujawsko-Pomorskie",
+        "lat": 53.01375,
+        "lon": 18.59814
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toruń",
+          "url": "https://en.wikipedia.org/wiki/Toruń",
+          "text": "Toruń (Polish: [ˈtɔruɲ] ; German: Thorn [ˈtoːɐ̯n] ) is a city on the Vistula River in north-central Poland and a UNESCO World Heritage Site. Its population was 196,935 as of December 2021. Previously, it was the capital of the Toruń Voivodeship (1975–1998) and the Pomeranian Voivodeship (1921–1945). Since 1999, Toruń has been a seat of the local government of the Kuyavian–Pomeranian Voivodeship and is one of its two capitals, together with Bydgoszcz. The cities and neighboring counties form the Bydgoszcz–Toruń twin city metropolitan area.\nToruń is one of the oldest cities in Poland; it was first settled in the 8th century and in 1233 was expanded by the Teutonic Knights. For centuries it was home to people of diverse backgrounds and religions. From 1264 until 1411, Toruń was part of the Hanseatic League and by the 17th century a leading trading point, which greatly affected the city's architecture, ranging from Brick Gothic to Mannerist and Baroque.\nIn the Early Modern period, Toruń was a royal city of Poland and one of Poland's four largest cities. With the partitions of Poland in the late 18th century, it became part of Prussia, then of the short-lived Duchy of Warsaw, serving as the temporary Polish capital in 1809, then again of Prussia, of the German Empire and, after World War I, of the reborn Polish Republic. During the Second World War, Toruń was spared bombing and destruction; its Old Town and iconic central marketplace have been entirely preserved.\nToruń is renowned for its gingerbread – the gingerbread-baking tradition dates back nearly a millennium – as well as for its large Cathedral. It hosts the Camerimage International Film Festival of the Art of Cinematography. Toruń is noted for its very high standard of living and quality of life. In 1997 the medieval part of the city was designated a UNESCO World Heritage Site. In 2007 the Old Town of Toruń was added to the list of Seven Wonders of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "torun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1603,
+    "attempt": 1589,
+    "place_id": "gn-3393106",
+    "input": {
+      "place": {
+        "place_id": "gn-3393106",
+        "name": "Paragominas",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -2.99565,
+        "lon": -47.35488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paragominas",
+          "url": "https://en.wikipedia.org/wiki/Paragominas",
+          "text": "Paragominas is a municipality in the state of Pará in the Northern region of Brazil. Paragominas mine, one of the largest bauxite mines in the world, is approximately 70 km away. According to an estimate dated 1 July 2020, the city has a population of 105,550 (2022 Census) and is at an altitude of 90 m above sea level. M. With a municipal area of approximately 19,342 km2, it has a population density of 5.7 inhabitants per km2, approximately the size of the state of Rhineland-Palatinate. Its distance from the capital Belém is 300 km.\nSince 2011 it has been allowed to call itself Município Verde (Green City or Eco-City).\nThe municipality has a diversified and outstanding economy, a traditional pole of grain production and beef cattle in the state, currently faces dairy cattle and fish farming emerging among medium and small producers. Being the champion of Pará in the production of fish in captivity in 2023, (20.2% of the State Production). It supplied tons of fish to municipalities in the state and even held live fish fairs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "paragominas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1604,
+    "attempt": 1590,
+    "place_id": "gn-3457381",
+    "input": {
+      "place": {
+        "place_id": "gn-3457381",
+        "name": "Mauá",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.66778,
+        "lon": -46.46139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mauá",
+          "url": "https://en.wikipedia.org/wiki/Mauá",
+          "text": "Mauá (Portuguese pronunciation: [maˈwa]) is a municipality in the state of São Paulo, in Brazil. It is part of the metropolitan region of São Paulo. The population as of 2020 is 477,552 inhabitants (11th largest city in population number of the state), the density is 7,500 per square kilometre (19,000/sq mi) and the area is 62.6 square kilometres (24.2 sq mi). The density is in fact bigger, since one third of the city is occupied by industries and 10% is countryside or forest. Its name comes from the Tupi language and means the one that is high. As it is a municipality, it can also be translated as high city. However, back when the city was a small village, its name was Pilar, then the name was changed in 1934 into Mauá as a homage to Visconde de Mauá, entrepreneur which built the Santos–Jundiaí railway that passes through the city.\nMauá has the 23rd largest GDP of São Paulo state.\nIt is the birthplace of Brazilian tableware industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "maua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1605,
+    "attempt": 1591,
+    "place_id": "gn-3662574",
+    "input": {
+      "place": {
+        "place_id": "gn-3662574",
+        "name": "Rio Branco",
+        "country": "Brazil",
+        "subdivision": "Acre",
+        "lat": -9.97472,
+        "lon": -67.81
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rio Branco, Acre",
+          "url": "https://en.wikipedia.org/wiki/Rio_Branco,_Acre",
+          "text": "Rio Branco (Portuguese pronunciation: [ˈʁi.u ˈbɾɐ̃ku]; lit. 'White River') is a Brazilian municipality, capital of the state of Acre. Located in the valley of the Acre River in northern Brazil, it is the most populous municipality in the state, with 387,852 inhabitants, according to 2024 IBGE estimates, almost half the state population. Rio Branco was one of the first settlements to develop in the region, being the westernmost major settlement in the country and the 4th-oldest state capital city in Northern Brazil, after Belém, Manaus and Macapá.\nIn 1913, it became a county. In 1920, it became the capital of the territory of Acre, and in 1962, the state capital. It is the administrative center for the economic, political and cultural region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "rio branco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "branco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1606,
+    "attempt": 1592,
+    "place_id": "gn-3836846",
+    "input": {
+      "place": {
+        "place_id": "gn-3836846",
+        "name": "San Nicolás de los Arroyos",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -33.33425,
+        "lon": -60.2108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Nicolás de los Arroyos",
+          "url": "https://en.wikipedia.org/wiki/San_Nicolás_de_los_Arroyos",
+          "text": "San Nicolás de los Arroyos (usually shortened to San Nicolás) is a city in the province of Buenos Aires, Argentina, on the western shore of the Paraná River, 61 km (38 mi) from Rosario. It has about 133,000 inhabitants (2010 census [INDEC]). It is the administrative seat of the partido of the same name. It is sometimes called Ciudad de María (City of Mary) due to a series of Marian apparitions that led to the erection of the Sanctuary in honor of Our Lady of the Rosary of San Nicolás that began during the 1980s and were approved by Bishop Cardelli of the diocese as \"worthy of belief\" in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "san nicolas de los arroyos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nicolas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arroyos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1607,
+    "attempt": 1593,
+    "place_id": "gn-3980760",
+    "input": {
+      "place": {
+        "place_id": "gn-3980760",
+        "name": "Uruapan",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.41677,
+        "lon": -102.05842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uruapan",
+          "url": "https://en.wikipedia.org/wiki/Uruapan",
+          "text": "Uruapan del Progreso, simply known as Uruapan (Spanish pronunciation: [uˈɾwa.pan]), is the second largest city in the Mexican state of Michoacán. It is located at the western edge of the Purépecha highlands, just to the east of the Tierra Caliente region. Since the colonial period, it has been an important city economically due to its location. The city was conquered by the Spanish in 1522, when the last Purépecha ruler fled the Pátzcuaro area to here. The modern city was laid out in 1534 by Friar Juan de San Miguel. It played an important role in the War of Independence, and was the capital of Michoacán during the French Intervention. Today it is the center of Mexico's avocado growing region, with most of the crop distributed from here nationally and internationally."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "uruapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1608,
+    "attempt": 1594,
+    "place_id": "gn-6317464",
+    "input": {
+      "place": {
+        "place_id": "gn-6317464",
+        "name": "Lauro de Freitas",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -12.89444,
+        "lon": -38.32722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lauro de Freitas",
+          "url": "https://en.wikipedia.org/wiki/Lauro_de_Freitas",
+          "text": "Lauro de Freitas is a municipality in Bahia, Brazil. It covers 57.66 km2 (22.26 mi2) and a population of 203,331 (2022 Census). Lauro de Freitas has a population density of 3,376 inhabitants per square kilometer. It is located 15 km (9.3 mi) from the state capital of Bahia, Salvador.\nUntil July 31, 1962 it was a district of Salvador, named Santo Amaro de Ipitanga; after acquiring city status, it changed its name as an homage to politician and engineer Lauro Farani Pedreira de Freitas (1901–1950), who lived there most of his life and died in a plane crash. Vilas do Atlântico, a wealthy neighborhood, is located in Lauro de Freitas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "lauro de freitas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lauro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "freitas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1609,
+    "attempt": 1595,
+    "place_id": "gn-702658",
+    "input": {
+      "place": {
+        "place_id": "gn-702658",
+        "name": "Luhansk",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 48.56814,
+        "lon": 39.30553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luhansk",
+          "url": "https://en.wikipedia.org/wiki/Luhansk",
+          "text": "Luhansk (Ukrainian: Луга́нськ), also known as Lugansk (Russian: Луга́нск), is a city in the Donbas in eastern Ukraine. As of 2022, the population was estimated to be 397,677 (2022 estimate), making Luhansk the 12th-largest city in Ukraine.\nLuhansk served as the administrative center of Luhansk Oblast, before pro-Russian separatists seized control of the city in 2014 and made it the capital of the self-proclaimed Luhansk People's Republic. The Ukrainian administration was located in Sievierodonetsk from 2014 to 2022 during the war in Donbas, due to Ukraine not being in control of Luhansk. Sievierodonetsk was captured by Russia in 2022 and Luhansk Oblast was later annexed by Russia in late 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "luhansk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1610,
+    "attempt": 1596,
+    "place_id": "gn-8400694",
+    "input": {
+      "place": {
+        "place_id": "gn-8400694",
+        "name": "Taizhou",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 28.66266,
+        "lon": 121.43312
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taizhou, Zhejiang",
+          "url": "https://en.wikipedia.org/wiki/Taizhou,_Zhejiang",
+          "text": "Taizhou is a city located at the middle of the East China Sea coast of Zhejiang province. It is located 300 km (190 mi) south of Shanghai and 230 km (140 mi) southeast of Hangzhou, the provincial capital. It is bordered by Ningbo to the north, Wenzhou to the south, and Shaoxing, Jinhua, and Lishui to west. In addition to the municipality itself, the prefecture-level city of Taizhou includes 3 districts, 3 county-level cities, and 3 counties.\nAs of the 2020 census, its total population was 6,662,888 inhabitants whom 3,578,660 lived in the built-up (or metro) area made of the three urban Districts and Wenling City now being largely conurbated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "taizhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1611,
+    "attempt": 1597,
+    "place_id": "gn-933778",
+    "input": {
+      "place": {
+        "place_id": "gn-933778",
+        "name": "Francistown",
+        "country": "Botswana",
+        "subdivision": "City of Francistown",
+        "lat": -21.17,
+        "lon": 27.50778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Francistown",
+          "url": "https://en.wikipedia.org/wiki/Francistown",
+          "text": "Francistown is the second-largest city in Botswana, with a population of about 103,417 inhabitants and 147,122 inhabitants in its agglomeration at the 2022 census. It is located in eastern Botswana, about 400 kilometres (250 mi) north-northeast from the capital, Gaborone. Francistown is located at the confluence of the Tati and Ntshe rivers, and near the Shashe River (tributary to the Limpopo) and 90 kilometres (56 mi) from the international border with Zimbabwe. \nFrancistown was the centre of Southern Africa's first gold rush and is still surrounded by old and abandoned mines. The City of Francistown is an administrative district, separated from North-East District. It is administered by Francistown City Council. The main language spoken and used in and around Francistown is Kalanga. Other languages used in the area are isiNdebele, ChiShona as well as SeTswana. Francistown is the only city  in Botswana with an English name. There are no English-language named towns and only a couple of villages with English names."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "francistown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1612,
+    "attempt": 1598,
+    "place_id": "gn-1242833",
+    "input": {
+      "place": {
+        "place_id": "gn-1242833",
+        "name": "Jaffna",
+        "country": "Sri Lanka",
+        "subdivision": "Northern Province",
+        "lat": 9.66845,
+        "lon": 80.00742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jaffna",
+          "url": "https://en.wikipedia.org/wiki/Jaffna",
+          "text": "Jaffna (Tamil: யாழ்ப்பாணம், romanised: Yāḻppāṇam, IPA: [jaːɻpːaːɳɐm]; Sinhala: යාපනය, romanised: Yāpanaya, IPA: [jaːpənəjə]) is the capital city of the Northern Province of Sri Lanka. It is the administrative headquarters of the Jaffna District located on a peninsula of the same name. With a population of 88,138 in 2012, Jaffna is Sri Lanka's 12th most populous city. Jaffna is approximately ten kilometres (six miles) from Kandarodai which served as an emporium in the Jaffna peninsula from classical antiquity. Jaffna's suburb Nallur served as the capital of the four-century-long medieval Tamil Jaffna Kingdom.\nPrior to the Sri Lankan Civil War, it was Sri Lanka's second most populous city after Colombo. The 1980s insurgent uprising led to extensive damage, expulsion of part of the population, and military occupation. Since the end of civil war in 2009, refugees and internally displaced people began returning to homes, while government and private sector reconstruction started taking place. Historically, Jaffna has been a contested city. It was made into a colonial port town during the Portuguese occupation of the Jaffna peninsula in 1619 who lost it to the Dutch, who would lose it to the British in 1796. During the civil war, the rebel Liberation Tigers of Tamil Eelam (LTTE) occupied Jaffna in 1986. The Indian Peace Keeping Force (IPKF) briefly occupied the city in 1987. The LTTE again occupied the city from 1989 until 1995, when the Sri Lankan Army regained control.\nThe majority of the city's population are Sri Lankan Tamils with a significant number of Sri Lankan Muslims (Moors), Indian Tamils and other ethnic groups present in the city prior to the civil war. Most Sri Lankan Tamils are Hindus followed by Christians, Muslims and a small Buddhist minority. The city is home to number of educational institutions established during the colonial and post-colonial period. It also has number of commercial institutions, minor industrial units, banks, hotels and other government institutions. It is home to many historical sites such as the popular Jaffna library that was burnt down and rebuilt and the Jaffna fort which was rebuilt during the Dutch colonial period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 348
+    },
+    "banned_terms": [
+      {
+        "term": "jaffna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1613,
+    "attempt": 1599,
+    "place_id": "gn-1253993",
+    "input": {
+      "place": {
+        "place_id": "gn-1253993",
+        "name": "Ooty",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.4134,
+        "lon": 76.69521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ooty",
+          "url": "https://en.wikipedia.org/wiki/Ooty",
+          "text": "Ooty is a town and seat of the Nilgiris district in the Indian state of Tamil Nadu. It is located at an altitude of 2,240 m (7,350 ft), in the Nilgiri Mountains, which forms part of the Western Ghats, and is known by the epithet \"Queen of hill stations\".\nThe earliest reference to the Nilgiri Mountains is found in the Tamil Sangam literature. The region was originally occupied by several hill tribes such as Badagas, Todas, Kotas, Irulas and Kurumbas. Over the centuries, it was part of the various kingdoms that ruled over South India. It came under the rule of the East India Company in the 18th century. In the early 19th century, Ooty was developed as a sanatorium around an artificial lake. It was made a municipality in 1866, and later served as the summer capital of the Madras Presidency.\nPost Indian independence, the town developed into a popular hill station and recreational area. The economy of the town is majorly based on tourism and agriculture. The town is connected to the plains by the Nilgiri ghat roads and the Nilgiri Mountain Railway. It also hosts the Ooty Radio Telescope at Muthorai, and the Defence Services Staff College of the Indian Army at nearby fisbWellingon.\nOoty forms part of the Nilgiri Biosphere Reserve, the largest protected forest area in India. The region is part of the South Western Ghats montane rain forests ecoregion and harbours thousands of plant species. The native vegetation consisted of meadows and grasslands on the hillsides with shola forets in the valleys. The Government Botanical Garden, laid out in 1842, has several species of indigenous and exotic plants. The region hosts several faunal species, including significant population of Bengal tiger and Indian elephant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "ooty",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1614,
+    "attempt": 1600,
+    "place_id": "gn-12541728",
+    "input": {
+      "place": {
+        "place_id": "gn-12541728",
+        "name": "South Fulton",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.59259,
+        "lon": -84.67294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Fulton, Georgia",
+          "url": "https://en.wikipedia.org/wiki/South_Fulton,_Georgia",
+          "text": "South Fulton is a city in Fulton County, Georgia, in the Atlanta metropolitan area of the United States. The city was incorporated in 2017 from parts of southwest Fulton County and includes the communities of Red Oak, Cooks Crossing, Stonewall, Fife, Ben Hill, Sandtown, Cliftondale, Ono, Cedar Grove, Boat Rock/Dry Pond, Maude, Lester, Enon, Welcome All, Peters Woods, and part of Campbellton. As of 2020, it had a population of 107,436, making it the state's eighth-largest city in population. According to the 2020 census, South Fulton had the highest percentage of African American residents among U.S. cities with a population over 100,000, exceeding the proportions in Detroit and Jackson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "south fulton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fulton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

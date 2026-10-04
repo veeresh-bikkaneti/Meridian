@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 1454,
+    "attempt": 1441,
+    "place_id": "gn-2346229",
+    "input": {
+      "place": {
+        "place_id": "gn-2346229",
+        "name": "Calabar",
+        "country": "Nigeria",
+        "subdivision": "Cross River State",
+        "lat": 4.95893,
+        "lon": 8.32695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calabar",
+          "url": "https://en.wikipedia.org/wiki/Calabar",
+          "text": "Calabar ()(also referred to as Callabar, Calabari, Calbari, Cali  and Kalabar) is the capital city of Cross River State, Nigeria. It was originally named Akwa Akpa, in the Efik language, as the Efik people dominate this area. The city is adjacent to the Calabar and Great Kwa rivers, and the creeks of the Cross River (from its inland delta).\nCalabar was once described as the tourism capital of Nigeria, especially due to several initiatives implemented during the administration of Donald Duke as the Governor of Cross River State (1999–2007). The city became the cleanest and most environmentally friendly city in Nigeria. \nAdministratively, the city is divided into Calabar Municipal and Calabar South Local Government Areas. It has an area of 406 square kilometres (157 sq mi) and, as of the 2006 census, a population of 371,022. Both LGAs together had an estimated population of 571,500 in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "calabar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1455,
+    "attempt": 1442,
+    "place_id": "gn-2352778",
+    "input": {
+      "place": {
+        "place_id": "gn-2352778",
+        "name": "Abuja",
+        "country": "Nigeria",
+        "subdivision": "FCT",
+        "lat": 9.05785,
+        "lon": 7.49508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abuja",
+          "url": "https://en.wikipedia.org/wiki/Abuja",
+          "text": "Abuja () is the capital city of Nigeria, strategically situated at the geographic midpoint of the country within the Federal Capital Territory (FCT). As the seat of the Federal Government of Nigeria, it hosts key national institutions, landmarks, and buildings spread across its over 50 districts. It replaced Lagos (the most populous city in Nigeria) as the capital on 12 December 1991.\nAbuja's geography is defined by Aso Rock, a 400-metre (1,300 ft) monolith left by water erosion. The Presidential Complex, National Assembly, Supreme Court, and much of the city extends to the south of the rock. Zuma Rock, a 725-metre (2,379 ft) monolith, lies just north of the city on the expressway to Kaduna.\nAt the 2006 census, the city of Abuja had a population of 776,298 and 179,674 households, making it one of the ten most populous cities in Nigeria (eighth place in 2006). According to the United Nations, Abuja grew by 139.7% between 2000 and 2010, making it the fastest-growing city in the world. As of 2015, the city is experiencing an annual growth of at least 35%, retaining its position as the fastest-growing city on the African continent and one of the fastest-growing in the world.\nMajor religious sites include the Nigerian National Mosque and the Nigerian National Christian Centre. The city is served by the Nnamdi Azikiwe International Airport. Abuja is known for being one of the few purpose-built capital cities in Africa, as well as being one of the wealthiest.\nAbuja is Nigeria's administrative and political capital. It is also a key capital on the African continent due to Nigeria's geopolitical influence in regional affairs. Abuja is also a conference centre and hosts various meetings annually, such as the 2003 Commonwealth Heads of Government meeting and the 2014 World Economic Forum (Africa) meetings. Abuja joined the UNESCO Global Network of Learning Cities in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "abuja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1456,
+    "attempt": 1443,
+    "place_id": "gn-2457163",
+    "input": {
+      "place": {
+        "place_id": "gn-2457163",
+        "name": "Gao",
+        "country": "Mali",
+        "subdivision": "Gao",
+        "lat": 16.27167,
+        "lon": -0.04472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gao",
+          "url": "https://en.wikipedia.org/wiki/Gao",
+          "text": "Gao  (or Gawgaw/Kawkaw) is a city in Mali and the capital of the Gao Region. The city is located on the River Niger, 320 km (200 mi) east-southeast of Timbuktu on the left bank at the junction with the Tilemsi valley.\nFor much of its history, Gao was an important commercial centre involved in the trans-Saharan trade. In the 9th century external Arabic writers described Gao as an important regional power, and by the end of the 10th century, the local ruler was said to be a Muslim. Towards the end of the 13th century, Gao became part of the Mali Empire.\nIn the first half of the 15th century the town regained its independence. With the conquests of Sunni Ali (ruled 1464–1492) it became the capital of the Songhai Empire. The Empire collapsed after the Moroccan invasion in 1591, and the invaders chose to make Timbuktu their capital. \nBy the time of Heinrich Barth's visit in 1854, Gao had declined to become an impoverished village with 300 huts constructed from matting. In 2009, the urban commune had a population of 86,633.\nIn 2012, Gao was captured from Malian government forces by National Movement for the Liberation of Azawad (MNLA) and Ansar Dine rebels. After additional captures of Kidal and Timbuktu, the MNLA declared the region independent of Mali as the nation of Azawad and named Gao its capital. The MNLA lost control to Islamist militias after the Battle of Gao in June 2012, with the city being recaptured by French military forces as part of Opération Serval in early 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "gao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1457,
+    "attempt": 1444,
+    "place_id": "gn-2460596",
+    "input": {
+      "place": {
+        "place_id": "gn-2460596",
+        "name": "Bamako",
+        "country": "Mali",
+        "subdivision": "Bamako",
+        "lat": 12.60915,
+        "lon": -7.97522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bamako",
+          "url": "https://en.wikipedia.org/wiki/Bamako",
+          "text": "Bamako is the capital and largest city of Mali with a 2022 population of 4,227,569. It is located on the Niger River, near the rapids that divide the upper and middle Niger valleys in the southwestern part of the country, and the city is surrounded on all sides by the Koulikoro Region. \nBamako is the nation's administrative centre. The city is administered as separate capital district (distinct from any region of Mali) equivalent to a cercle, and is divided into seven communes. Bamako's river port is located in nearby Koulikoro, along with a major regional trade and conference centre. It is the seventh-largest West African urban centre after Lagos, Abidjan, Kano, Ibadan, Dakar, and Accra. Locally manufactured goods include textiles, processed meat, and metal goods as well as mining. Commercial fishing occurs on the Niger River.\nIn recent years, Bamako has seen significant urban development, with the construction of modern buildings, shopping malls, and infrastructure projects aimed at improving the quality of life for its residents. The city is home to many notable institutions, such as the University of Bamako, the National Museum of Mali, the Mali National Zoo, and the Grand Mosque of Bamako. It is also the location for the Modibbo Keita International Airport. The buildings of Bamako have a unique architectural style."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "bamako",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1458,
+    "attempt": 1445,
+    "place_id": "gn-2637546",
+    "input": {
+      "place": {
+        "place_id": "gn-2637546",
+        "name": "Solihull",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.41426,
+        "lon": -1.78094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solihull",
+          "url": "https://en.wikipedia.org/wiki/Solihull",
+          "text": "Solihull (  SO(H)L-ee-hul, SOH-lee-HUL) is a market town in the Metropolitan Borough of Solihull in the West Midlands county, England. Solihull is situated on the River Blythe in the Forest of Arden area. The town had a population of 126,577 at the 2021 census, and the wider metropolitan borough had a population of 216,240. The town is located around 8 miles (13 km) southeast of Birmingham and 14 miles (23 km) west of Coventry.\nSolihull itself is mostly urban; however, the larger borough is rural in character, with many outlying villages, and three quarters of the borough designated as green belt. The town and its borough was part of Warwickshire for most of its history. It has roots dating back to the 1st century BC, and was further formally established during the medieval era. Today the town is famed as, amongst other things, the birthplace of the Land Rover car marque (whose cars are still manufactured at the Solihull plant), home of Solihull Moors FC and the training facilities for the British Equestrian teams. It became part of the West Midlands metropolitan county in 1974."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "solihull",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1459,
+    "attempt": 1446,
+    "place_id": "gn-3451328",
+    "input": {
+      "place": {
+        "place_id": "gn-3451328",
+        "name": "Ribeirão Preto",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -21.1775,
+        "lon": -47.81028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ribeirão Preto",
+          "url": "https://en.wikipedia.org/wiki/Ribeirão_Preto",
+          "text": "Ribeirão Preto (Portuguese pronunciation: [ʁibejˈɾɐ̃w ˈpɾetu]) is a city and a metropolitan area located in the northeastern region of São Paulo state, Brazil.\nRibeirão Preto is the eighth-largest municipality in the state, with an area of 650.9 km2 (251.3 mi2). In 2021, the municipality proper had an estimated population of 720,216 and the wider metropolitan area had an estimated population of 1,178,910. It is located 313 km (194 mi) from the city of São Paulo and 706 km (439 mi) from Brasília, the federal capital. Its mean altitude is 526.8 m (1,728 ft) high. The city's average temperature throughout the year is 23 °C (73 °F), and the original predominant vegetation is the Atlantic Forest.\nThe city of Ribeirão Preto originated around 1856 as an agricultural region. Coffee was a primary source of income until 1929, when it lost value when compared with the industrial sector. In the second half of the 20th century, investment in health, biotechnology, bioenergy, and information technology led to the city being declared a Technological Center in 2010. These activities have caused the city to have the 30th-largest gross national product (GNP) in Brazil.\nThe city is also an important cultural center. Mayor Luiz Roberto Jábali Park, Maurilio Biagi Park, Carlos Raya Park, Santa Tereza Reserve, and the Zoo are important natural conservation areas and tourist attractions. Pinguim Beerhouse, Theatro Pedro II, and projects such as Ribeirão Preto's Cinema Center are major sightseeing points, along with events such as the Agrishow Agricultural Fair, Ribeirão Rodeo Music, Joao Rock Music Festival, and the National Outdoor Book Fair."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "ribeirao preto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ribeirao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "preto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1460,
+    "attempt": 1447,
+    "place_id": "gn-3458696",
+    "input": {
+      "place": {
+        "place_id": "gn-3458696",
+        "name": "Lavras",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.24528,
+        "lon": -44.99972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lavras",
+          "url": "https://en.wikipedia.org/wiki/Lavras",
+          "text": "Lavras is a municipality in southern Minas Gerais state, Brazil. Located at an altitude of 919 m, it has a population of 104,761 inhabitants (2022 Census). The area of the municipality is 564.495 km2. The average annual temperature is 19.6 °C and the average annual rainfall is 1,511 millimetres.\nLocated in the Green Valley and Waterfalls tourist circuit, it is also near the Waters circuit – a series of spas in the state of São Paulo and Minas Gerais — and the Inconfidentes Trail circuit – a historical region of Minas. Lavras is connected by highway to the state capital, Belo Horizonte (237 km), to São Paulo (379 km), and Rio de Janeiro (423 km)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "lavras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1461,
+    "attempt": 1448,
+    "place_id": "gn-3459712",
+    "input": {
+      "place": {
+        "place_id": "gn-3459712",
+        "name": "Joinville",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.30444,
+        "lon": -48.84556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joinville",
+          "url": "https://en.wikipedia.org/wiki/Joinville",
+          "text": "Joinville (Portuguese pronunciation: [ˌʒoĩˈvili] ) is the largest city in Santa Catarina, in southern Brazil. It is the third largest municipality in the southern region of Brazil, after the much larger state capitals of Curitiba and Porto Alegre. Joinville is also a major industrial, financial and commerce center.\nThe city has a very high human development index (0.809) among Brazilian municipalities, being 21st nationally, and has one of the highest standards of living in Latin America. One study pointed to Joinville as the second best city to live in Brazil.\nIn 2020, the population of Joinville was estimated at 597,658 people, many of whom are of Portuguese, Polish, Austrian, German, Swiss, Czech, and Italian descent. The metropolitan area is home to 1,340,997 residents according to the 2010 census by IBGE, making it the most populous metropolitan region of the state of Santa Catarina.\nOwing to urban development and relatively good infrastructure, Joinville has become a major center for events and business conferences. The city is also the seat of the Roman Catholic Archdiocese of Joinville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "joinville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1462,
+    "attempt": 1449,
+    "place_id": "gn-3523349",
+    "input": {
+      "place": {
+        "place_id": "gn-3523349",
+        "name": "Mérida",
+        "country": "Mexico",
+        "subdivision": "Yucatán",
+        "lat": 20.967,
+        "lon": -89.62318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mérida, Yucatán",
+          "url": "https://en.wikipedia.org/wiki/Mérida,_Yucatán",
+          "text": "Mérida (Spanish pronunciation: [ˈmeɾiða] ; Yucatec Maya: Joꞌ) is the capital and largest city of the Mexican state of Yucatán. The city is also the seat of the eponymous municipality. It is located slightly inland from the northwest corner of the Yucatán Peninsula, about 35 km (22 mi) from the coast of the Gulf of Mexico. In 2020, it had a population of 921,770 while its metropolitan area, which also includes the cities of Kanasín and Umán, had a population of 1,316,090.\nMérida is also the cultural and financial capital of the Yucatán Peninsula. The city's rich cultural heritage is a product of the syncretism of the Maya and Spanish cultures during the colonial era. The Cathedral of Mérida, Yucatán was built in the late 16th century with stones from nearby Maya ruins and is the oldest cathedral in the mainland Americas. The city has the third largest old town district on the continent. It was the first city to be named American Capital of Culture, and the only city that has received the title twice.\nMérida is among the safest cities of Mexico as well as in the Americas. In 2015, the city was certified as an International Safe Community by the Karolinska Institute of Sweden for its high level of public security. Forbes has ranked Mérida three times as one of the three best cities in Mexico to live, invest and do business. In 2022, the UN-Habitat's City Prosperity Index recognized Mérida as the city with the highest quality of life in Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "merida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1463,
+    "attempt": 1450,
+    "place_id": "gn-3657990",
+    "input": {
+      "place": {
+        "place_id": "gn-3657990",
+        "name": "Esmeraldas",
+        "country": "Ecuador",
+        "subdivision": "Esmeraldas",
+        "lat": 0.9592,
+        "lon": -79.65397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esmeraldas, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Esmeraldas,_Ecuador",
+          "text": "Esmeraldas (Spanish pronunciation: [esmeˈɾaldas]) is a coastal city in northwestern Ecuador. It is the seat of the Esmeraldas Canton and capital of the Esmeraldas Province. It has an international sea port and a small airport (IATA location identifier: ESM). Esmeraldas is the major seaport of northwestern Ecuador, and it lies on the Pacific coast at the mouth of the Esmeraldas River. The city is the principal trading hub for the region's agricultural and lumber resources, and is the terminus of the 313-mile (504-km) Trans-Ecuadorian Pipeline from the oil fields in northeastern Ecuador.\nEsmeraldas is well known around Latin America given the large number of locals that have historically played in the Ecuador national football team. The main activities of the city are commerce, industry and agriculture. It has beaches with landscapes and a warm climate, which make it one of the most visited tourist destinations in the area.\nOn 19 December 2016, a 5.8 Richter scale earthquake shook the city of Esmeraldas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "esmeraldas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1464,
+    "attempt": 1451,
+    "place_id": "gn-3666304",
+    "input": {
+      "place": {
+        "place_id": "gn-3666304",
+        "name": "Valledupar",
+        "country": "Colombia",
+        "subdivision": "Cesar Department",
+        "lat": 10.46538,
+        "lon": -73.2531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valledupar",
+          "url": "https://en.wikipedia.org/wiki/Valledupar",
+          "text": "Valledupar (Spanish pronunciation: [baʝeðuˈpaɾ]) is a city and municipality in northeastern Colombia. It is the capital of Cesar Department. Its name, Valle de Upar (Valley of Upar), was established in honor of the Amerindian cacique who ruled the valley; Cacique Upar. The city lies between the mountains of the Sierra Nevada de Santa Marta and the Serranía del Perijá to the borders of the Guatapurí and Cesar rivers.\nValledupar is an important agricultural, cattle raising, coal mining and agro-industrial center for the region between the Departments of Cesar and southern municipalities of La Guajira Department, formerly known as the Padilla Province. Valledupar is notable as the cradle of vallenato music, representative of the Colombian culture. The city hosts the Vallenato Legend Festival.\nDuring the 1980s, 1990s and early 2000s, the city suffered during the Colombian conflict, with numerous kidnappings, thousands of people forced out and failure to control crime.\nValledupar has one of Colombia's most modern maximum security prisons."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "valledupar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1465,
+    "attempt": 1452,
+    "place_id": "gn-3670730",
+    "input": {
+      "place": {
+        "place_id": "gn-3670730",
+        "name": "Rionegro",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.15515,
+        "lon": -75.37371
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rionegro",
+          "url": "https://en.wikipedia.org/wiki/Rionegro",
+          "text": "Rionegro (Spanish pronunciation: [rioˈneɣɾo]) is a city and municipality in Antioquia Department, Colombia, located in the subregion of Eastern Antioquia. The official name of the city is Ciudad Santiago de Arma de Rionegro. Rio Negro means \"Black River\" in Spanish, as the city received its name  after a river that looks black because of the shadows cast by trees. The river  traverses the city and it is the most prominent geographical feature of the municipality. Rionegro is also sometimes called the Cuna de la democracia (Cradle of democracy) as it was one of the most important cities during the era of the Colombia's struggle for independence and the 1863 constitution was written in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "rionegro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1466,
+    "attempt": 1453,
+    "place_id": "gn-3882428",
+    "input": {
+      "place": {
+        "place_id": "gn-3882428",
+        "name": "Los Ángeles",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -37.46973,
+        "lon": -72.35366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Ángeles, Chile",
+          "url": "https://en.wikipedia.org/wiki/Los_Ángeles,_Chile",
+          "text": "Los Ángeles (Spanish pronunciation: [los ˈaŋxeles]) is the capital of the province of Bío Bío, in the commune of the same name, in Bío Bío, in the center-south of Chile. It is located between the Laja and Biobío rivers. The population is 219,441 inhabitants (census 2024). The municipality (\"comuna\") of Los Ángeles has the highest absolute rural population of any Chilean municipality.\nTo the north of the city is Salto del Laja (Laja Falls), and roughly 100 kilometers to the east is the 2,979 meters (9,774 feet) high Antuco volcano, in the Andes mountain range. The city is a gateway for tourists visiting the nearby Laguna del Laja National Park, the location of the volcano.\nLos Ángeles is served by María Dolores Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "los angeles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "angeles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1467,
+    "attempt": 1454,
+    "place_id": "gn-5349755",
+    "input": {
+      "place": {
+        "place_id": "gn-5349755",
+        "name": "Fontana",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.09223,
+        "lon": -117.43505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fontana, California",
+          "url": "https://en.wikipedia.org/wiki/Fontana,_California",
+          "text": "Fontana is a city in the Inland Empire region of San Bernardino County, California, United States. Founded by Azariel Blanchard Miller in 1913, it remained essentially rural until World War II, when entrepreneur Henry J. Kaiser built a large steel mill in the area. It is now a regional hub of the trucking industry, with the east–west Interstate 10 and State Route 210 crossing the city and Interstate 15 passing diagonally through its northwestern quadrant. The city is about 46 miles (74 km) east of Los Angeles.\nThe United States Census Bureau reported that Fontana's 2020 population was 208,393, making it the second-most-populous city in San Bernardino County and the 20th largest in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "fontana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1468,
+    "attempt": 1455,
+    "place_id": "gn-5640350",
+    "input": {
+      "place": {
+        "place_id": "gn-5640350",
+        "name": "Billings",
+        "country": "United States",
+        "subdivision": "Montana",
+        "lat": 45.78329,
+        "lon": -108.50069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Billings, Montana",
+          "url": "https://en.wikipedia.org/wiki/Billings,_Montana",
+          "text": "Billings is the most populous city in the U.S. state of Montana, and the 253rd most populous city in the United States. The population was 117,116 at the 2020 census, while the Billings metropolitan area has an estimated 193,000 people. Located in the south-central portion of the state, it is the county seat of Yellowstone County. Billings is the trade and distribution center for much of Montana east of the Continental Divide and has one of the largest trade areas in the United States. It is also the largest retail destination for much of the same area. The Billings Chamber of Commerce claims the area of commerce covers more than 125,000 square miles (320,000 km2).\nBillings was nicknamed the \"Magic City\" because of its rapid growth from its founding as a railroad town in March 1882. The nearby Crow and Cheyenne peoples call the city Ammalapáshkuua and É'êxováhtóva respectively, meaning 'where they cut wood', named as such because of a sawmill built in the area by early white settlers. The city has experienced rapid growth and maintains a strong economy. From 1969 to 2021, the Billings area population growth was 89%, compared to Montana's overall increase of 59%. With more hotel accommodations than any area within a five-state region, the city hosts a variety of conventions, concerts, sporting events, and other rallies.  It provides services to the Bakken oil development 250 to 350 miles to the east, as well as the Heath Shale oil discovery north of Billings.\nAttractions in and around Billings include ZooMontana, the Yellowstone Art Museum, Pompey's Pillar, Pictograph Cave, Chief Plenty Coups State Park, Little Bighorn Battlefield, Bighorn Canyon, Red Lodge Mountain, and the Beartooth Highway. The northeast entrance to Yellowstone National Park is a little over 100 miles (160 km) from Billings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 297
+    },
+    "banned_terms": [
+      {
+        "term": "billings",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1469,
+    "attempt": 1456,
+    "place_id": "gn-6166142",
+    "input": {
+      "place": {
+        "place_id": "gn-6166142",
+        "name": "Thunder Bay",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 48.38202,
+        "lon": -89.25018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thunder Bay",
+          "url": "https://en.wikipedia.org/wiki/Thunder_Bay",
+          "text": "Thunder Bay is a city in and the seat of Thunder Bay District, Ontario, Canada. It is the most populous municipality in Northwestern Ontario and the second most populous (after Greater Sudbury) municipality in Northern Ontario. Its population is 108,843 according to the 2021 Canadian census.\nLocated on Lake Superior, the census metropolitan area of Thunder Bay has a population of 123,258. It consists of the city of Thunder Bay, the municipalities of Oliver Paipoonge and Neebing, the townships of Shuniah, Conmee, O'Connor, and Gillies, and the Fort William First Nation.\nEuropean settlement in the region began in the late 17th century with a French fur trading outpost on the banks of the Kaministiquia River. It grew into an important transportation hub with its port forming an important link in the shipping of grain and other products from western Canada, through the Great Lakes and the Saint Lawrence Seaway, to the east coast. Forestry and manufacturing played important roles in the city's economy. They have declined in recent years, but have been replaced by a \"knowledge economy\" based on medical research and education. Thunder Bay is the site of the Thunder Bay Regional Health Research Institute.\nOn 1 January 1970, the City of Thunder Bay was formed through the merger of the cities of Fort William, Port Arthur, and the geographic townships of Neebing and McIntyre. The city takes this name from the immense Thunder Bay at the head of Lake Superior, known on 18th-century French maps as Baie du Tonnerre (Bay of Thunder). The city is often referred to as the \"Lakehead\", or \"Canadian Lakehead\", because of its location at the end of Great Lakes navigation on the Canadian side of the border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "thunder bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thunder",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1470,
+    "attempt": 1457,
+    "place_id": "gn-1241622",
+    "input": {
+      "place": {
+        "place_id": "gn-1241622",
+        "name": "Kandy",
+        "country": "Sri Lanka",
+        "subdivision": "Central Province",
+        "lat": 7.2906,
+        "lon": 80.6336
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kandy",
+          "url": "https://en.wikipedia.org/wiki/Kandy",
+          "text": "Kandy (Sinhala: මහනුවර, romanised: Mahanuwara [mahanuʋərə] ; Tamil: கண்டி, romanised: Kaṇṭi [ˈkaɳɖi] ) is a major city located in the Central Province of Sri Lanka. It was the last capital of the Sinhalese monarchy from 1469 to 1818, under the Kingdom of Kandy. The city is situated in the midst of hills in the Kandy plateau. Kandy is the administrative  capital of the Central Province, and considered as the cultural capital of Sri Lanka, due to its architectural heritage. Kandy is the home of the Temple of the Tooth Relic (Sri Dalada Maligawa), one of the most important places of the Buddhist world. It was declared a World Heritage Site by UNESCO in 1988. Historically the local Buddhist rulers resisted Portuguese, Dutch, and British colonial expansion and occupation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "kandy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1471,
+    "attempt": 1458,
+    "place_id": "gn-1261809",
+    "input": {
+      "place": {
+        "place_id": "gn-1261809",
+        "name": "Narela",
+        "country": "India",
+        "subdivision": "Delhi",
+        "lat": 28.85267,
+        "lon": 77.09288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narela",
+          "url": "https://en.wikipedia.org/wiki/Narela",
+          "text": "Narela is a Suburb and a  Tehsil of Delhi, located in the North Delhi district of Delhi, close to the border of Haryana. Narela is a part of North Delhi. It is 30 km away from the city centre of New Delhi.\nIt is situated just off the Grand Trunk Road, its location made it an important commercial location for the surrounding areas, remains of  the 19th century are still there. It was developed as the third mega sub city, which is a project of Delhi Development Authority (DDA) in the urban extension project of Delhi, other sub cities are Rohini sub city and Dwarka sub city. It covers an area of 9866 hectares. The 'Narela Industrial Area' started developing in the early 1980s and is today one of the important such complexes in Delhi.\nIt is one of 12 zones of the Municipal Corporation of Delhi (MCD) and one of the three subdistricts of the North Delhi district, along with Alipur and Model Town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "narela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1472,
+    "attempt": 1459,
+    "place_id": "gn-13608000",
+    "input": {
+      "place": {
+        "place_id": "gn-13608000",
+        "name": "Jinshan",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 30.83556,
+        "lon": 121.29373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinshan, Shanghai",
+          "url": "https://en.wikipedia.org/wiki/Jinshan,_Shanghai",
+          "text": "Jinshan District is a suburban district of southwestern Shanghai, neighboring Zhejiang province and Hangzhou Bay. It has a land area of 586.14 square kilometers (226.31 sq mi) and a population of 732,500 as of the 2010 Chinese census. Jinshan District, located in the southwest of Shanghai, is one of the biggest districts of the city. Local political administration is divided into nine towns and one subdistrict. About 6.2 kilometers (3.9 mi) off the coast of Jinshan, there are three islands named Dajinshan (\"Big Gold Mountain\"), Xiaojinshan (\"Little Gold Mountain\"), and Fushan (\"Floating Mountain\"). At 103 meters (338 ft) above sea level, the peak of Dajinshan Island is the highest point within the Shanghai municipality. There are several beaches along the 23.3-kilometer (14.5 mi) shoreline, which are popular tourism destinations.\nAs the city of Shanghai has grown, Jinshan has experienced rapid changes, evolving from a relatively rural area to a more suburban environment. With completion of the high-speed highway in 2008, a new bus line was opened between central Shanghai and Jinshan. This Shimei Line (t 石梅線, s 石梅线) travels between the bus station in Jinshan and another beside the Jinjiang Park station on Line 1 of the Shanghai Metro. Travel time is about an hour, depending on traffic and time of day, and costs 10 RMB each way.\nSince 2012, the Shanghai Suburban Railway system also offers connections to Jinshan. This service, the Jinshan Railway, connects Jinshanwei railway station to Shanghai South railway station in downtown Shanghai in about 30 minutes.\nThe district is home to the Donglin Temple, a Buddhist temple dedicated to Guanyin, the bodhisattva of compassion. Jinshan peasant painting, which originated in the town of Fengjing, has become a nationally and internationally exhibited form of folk art."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 290
+    },
+    "banned_terms": [
+      {
+        "term": "jinshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1473,
+    "attempt": 1460,
+    "place_id": "gn-1497543",
+    "input": {
+      "place": {
+        "place_id": "gn-1497543",
+        "name": "Nizhnevartovsk",
+        "country": "Russia",
+        "subdivision": "Khanty-Mansia",
+        "lat": 60.9344,
+        "lon": 76.5531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nizhnevartovsk",
+          "url": "https://en.wikipedia.org/wiki/Nizhnevartovsk",
+          "text": "Nizhnevartovsk (Russian: Нижневартовск, IPA: [nʲɪʐnʲɪˈvartəfsk]) is the second-largest city in Khanty-Mansi Autonomous Okrug–Yugra, Russia. Since the 1960s, the Western Siberian oil boom has led to Nizhnevartovsk's rapid growth from a small settlement to a city due to its location beside the Samotlor oil field along the right bank of the Ob River, 30 kilometers (19 mi) from the border with Tomsk Oblast, and the presence of the petroleum industry has made it one of the wealthiest cities in Russia.\n\nNizhnevartovsk is one of the few cities in Russia that exceeds the population of the administrative center of its federal subject. Population: 283,256 (2021 census); 251,694 (2010 census); 239,044 (2002 census); 241,457 (1989 Soviet census)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "nizhnevartovsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

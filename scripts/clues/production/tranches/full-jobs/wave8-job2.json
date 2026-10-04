@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 1434,
+    "attempt": 1421,
+    "place_id": "gn-3696378",
+    "input": {
+      "place": {
+        "place_id": "gn-3696378",
+        "name": "Huaraz",
+        "country": "Peru",
+        "subdivision": "Ancash",
+        "lat": -9.52614,
+        "lon": -77.52869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huaraz",
+          "url": "https://en.wikipedia.org/wiki/Huaraz",
+          "text": "Huaraz ([waˈɾas]) (from Quechua: Waraq or Warash, \"dawn\"), formerly designated as San Sebastián de Huaraz, is a city in Peru. It is the capital of the Ancash Region (State of Ancash) and the seat of government of Huaraz Province. The urban area's population is distributed over the districts of Huaraz and Independencia. The city is located in the middle of the Callejon de Huaylas valley and on the right side of the Santa river. The city has an elevation of approximately 3050 meters above sea level. The built-up area covers 8 square kilometers and has a population of 120,000 inhabitants, making it the second largest city in the central Peruvian Andes after the city of Huancayo. It is the 22nd largest city in Peru. Huaraz is the seat of the province's Roman Catholic Bishop and the site of the cathedral.\nHuaraz is the main financial and trade center of the Callejón de Huaylas and the main tourist destination of Ancash region. Moreover, it is one of the biggest towns in the Peruvian Andes. Huaraz is the main destinations for winter sports and adventure. Many visitors from around the world come to the city for practicing sports as climbing, hiking, mountain biking and snowboarding, and also to visit the glaciers and mountains of the Cordillera Blanca, mainly Mount Huascarán, which is considered the tallest mountain in the tropics, all of them located in Huascarán National Park which UNESCO declared a nature world heritage site in 1985.\nThe city was founded before the Inca Empire when humans settled around the valley of the Santa River and Qillqay. Its Spanish occupation occurred in 1574 as a Spanish-indigenous reducción. During the wars for the independence of Peru, the whole city supported the Liberating Army with food and guns, earning the city the title of \"Noble and Generous City\" granted by Simón Bolívar. In 1970, 95% of the city was destroyed by an earthquake that damaged much of Ancash Region. 25,000 people died. The city received much foreign assistance from many countries. For this reason the city was named a capital of International Friendship.\nThe main economic activities in the city are farming, commerce and tourism. Since Huaraz has tourist infrastructure supporting the Ancash Highlands, the city is the main point of arrival for practitioners of adventure sports and mountaineering. Along with the snowy peaks of the Cordillera Blanca, one can visit archaeological sites like Chavín de Huantar and the eastern highlands of Ancash, known as Conchucos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 412
+    },
+    "banned_terms": [
+      {
+        "term": "huaraz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1435,
+    "attempt": 1422,
+    "place_id": "gn-3937513",
+    "input": {
+      "place": {
+        "place_id": "gn-3937513",
+        "name": "Juliaca",
+        "country": "Peru",
+        "subdivision": "Puno",
+        "lat": -15.5,
+        "lon": -70.13333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juliaca",
+          "url": "https://en.wikipedia.org/wiki/Juliaca",
+          "text": "Juliaca (Spanish: [xuˈljaka]; Quechua and Aymara: Hullaqa) is the capital of San Román Province in the Puno Region of southeastern Peru. It is the region's largest city, with a population of 276,110 inhabitants (2017). On the Altiplano, Juliaca is 3,825 metres (12,549 ft) above sea level, is located on the Collao Plateau and is northwest of Lake Titicaca (45 km), near Chachas Lake, the Maravillas river, and near the ruins of Sillustani. It is the largest trade center in the Puno region.\nThe city hosts Carnaval Juliaca each year between February and March. During this very popular event participants, dressed in colorful costumes, gather on the streets to dance in the style of the Collao Plateau. Saint Sebastian's feast is celebrated on 20 January of every year.\nLike Chicago, Illinois, it is nicknamed \"The Windy City\", in its case, because of the city's location on the windy Collao Plateau. It is also called the \"Sock City\" or \"Knitting City\" because Juliaca was a major center of sock, sweater, and handicraft production. Now the production of clothes, wool and fabrics are industrial processes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "juliaca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1436,
+    "attempt": 1423,
+    "place_id": "gn-4684724",
+    "input": {
+      "place": {
+        "place_id": "gn-4684724",
+        "name": "Cypress",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.96911,
+        "lon": -95.69717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cypress, Texas",
+          "url": "https://en.wikipedia.org/wiki/Cypress,_Texas",
+          "text": "Cypress is an unincorporated community in Harris County, Texas, United States, located completely inside the extraterritorial jurisdiction of the city of Houston. The Cypress area is located along U.S. Route 290 (Northwest Freeway) twenty-four miles (35 km) northwest of Downtown Houston. The Cypress urban cluster ranks 50th in the top 100 highest-income urban areas in the United States.\nLarge scale residential and commercial development beginning in the 1980s transformed the once rural area into one of the Houston area's largest suburban communities. If it were to be incorporated as a city, it would be the second largest city in Greater Houston, the 18th largest city in Texas, and the 125th largest city in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "cypress",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1437,
+    "attempt": 1424,
+    "place_id": "gn-548408",
+    "input": {
+      "place": {
+        "place_id": "gn-548408",
+        "name": "Kirov",
+        "country": "Russia",
+        "subdivision": "Kirov Oblast",
+        "lat": 58.59809,
+        "lon": 49.65783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirov, Kirov Oblast",
+          "url": "https://en.wikipedia.org/wiki/Kirov,_Kirov_Oblast",
+          "text": "Kirov (Russian: Киров, IPA: [ˈkʲirəf] ), formerly known as Vyatka (Russian: Вя́тка, IPA: [[ˈvʲatka]] ) until 1934 and as Khlynov (Хлы́нов) from 1457 to 1780, is the largest city and administrative center of Kirov Oblast, Russia. It is situated on the Vyatka River in European Russia, 896 kilometres (557 mi) northeast of Moscow. Its population was 468,212 in 2021, up to roughly 750 thousand residents in the urban agglomeration.\nThe city was founded in 1374 (according to other sources in 1181).  It was the center of Vyatka Land, which was settled by Russians during the Middle Ages. It was renamed Kirov after the Bolshevik politician Sergei Kirov in 1934, even though he never visited the city.\nIt is an important economic, transportation, industrial, educational and cultural center in Volga-Vyatka region. It is also home to the many Russian folk crafts, such as Dymkovo toys, vyatka lace and carving on a capa-root. In the historic part of the city there are many universities, theaters, museums and churches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "kirov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1438,
+    "attempt": 1425,
+    "place_id": "gn-555312",
+    "input": {
+      "place": {
+        "place_id": "gn-555312",
+        "name": "Ivanovo",
+        "country": "Russia",
+        "subdivision": "Ivanovo Oblast",
+        "lat": 56.99988,
+        "lon": 40.97257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ivanovo",
+          "url": "https://en.wikipedia.org/wiki/Ivanovo",
+          "text": "Ivanovo (Russian: Иваново, IPA: [ɪˈvanəvə] ) is a city in Russia and the administrative center and largest city of Ivanovo Oblast, located 254 kilometers (158 mi) northeast of Moscow and approximately 100 kilometers (62 mi) from Yaroslavl, Vladimir and Kostroma. Ivanovo has a population of 361,644 as of the 2021 Census, making it the 50th largest city in Russia. Until 1932, it was previously known as Ivanovo-Voznesensk. It is the youngest city of the Golden Ring of Russia.\nThe city lies on the Uvod River, in the centre of the eponymous oblast. Ivanovo gained city status in 1871, emerged as a major center for textile production, and began to be referred to as the \"Russian Manchester\". The city is served by Ivanovo Yuzhny Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ivanovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1439,
+    "attempt": 1426,
+    "place_id": "gn-786714",
+    "input": {
+      "place": {
+        "place_id": "gn-786714",
+        "name": "Pristina",
+        "country": "Kosovo",
+        "subdivision": "Pristina",
+        "lat": 42.67272,
+        "lon": 21.16688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pristina",
+          "url": "https://en.wikipedia.org/wiki/Pristina",
+          "text": "Pristina (or Prishtina; UK:  PREE-shtin-ə, prish-TEE-nə, US:  PRISHT-in-ə) is the capital and largest city of Kosovo. It is the administrative center of the eponymous municipality and district.\nIn antiquity, the area of Pristina was part of the Dardanian Kingdom. The heritage of the classical era is represented by the settlement of Ulpiana. After the Roman Empire was divided into a western and an eastern half, the area remained within the Byzantine Empire between the 5th and 9th centuries. In the middle of the 9th century, it was ceded to the First Bulgarian Empire, before falling again under Byzantine occupation in the early 11th century and then in the late 11th century to the Second Bulgarian Empire. The growing Kingdom of Serbia annexed the area in the 13th century and it remained under the Serbian Empire in the 14th century up to the start of the Ottoman era (1389–1455). City was capital of Serbian lord family of Branković. The next centuries would be characterized by Ottoman rule. During this period, Pristina developed from a village to a major urban center of the region. Following the end of the First Balkan War in 1914, it became a part of the newly formed Kingdom of Serbia. In 1948, it was chosen as the capital of the province SAP Kosovo under the statehood of Yugoslavia. Furthermore, Pristina would continue to serve as the capital of Kosovo after its 2008 independence from Serbia.\nPristina seems to have been a small village before the late 15th century. It is first recorded in 1342 as a village during the reign of Stefan Dušan; about a century later (and the beginning of the Ottoman era), in 1455, it had a small population of 300 households. In the following century, Pristina became an important mining and trading center due to its strategic position near the rich mining town of Novo Brdo. The city was known for its trade fairs and items, such as goatskin and goat hair as well as gunpowder.\nPristina is the capital and the economic, financial, political and trade center of Kosovo, due to its location in the center of the country. It is the seat of power of the Government of Kosovo, the residences for work of the President and Prime Minister of Kosovo, and the Parliament of Kosovo. Pristina is also the most important transportation junction of Kosovo for air, rail, and roads. Pristina International Airport is the largest airport in the country and among the largest in the region. A range of expressways and motorways, such as the R 6 and R 7, radiate out the city and connect it to Albania and North Macedonia. Pristina will host the 2030 Mediterranean Games."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 449
+    },
+    "banned_terms": [
+      {
+        "term": "pristina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1440,
+    "attempt": 1427,
+    "place_id": "gn-99072",
+    "input": {
+      "place": {
+        "place_id": "gn-99072",
+        "name": "Mosul",
+        "country": "Iraq",
+        "subdivision": "Nineveh",
+        "lat": 36.335,
+        "lon": 43.11889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mosul",
+          "url": "https://en.wikipedia.org/wiki/Mosul",
+          "text": "Mosul is a major city in northern Iraq, serving as the capital of Nineveh Governorate. It is the second largest city in Iraq overall after the capital Baghdad and situated on the banks of Tigris. The ruins of the ancient Assyrian city of Nineveh, once the largest city in the world, are on the east side of the city.\nDue to its strategic and central location, the city has traditionally served as a hub of international commerce and travel in the region. It is considered as one of the historically and culturally significant cities of the Arab world. The North Mesopotamian Arabic spoken in Mosul is known as Maslawi and is widely spoken in the region. Together with the Nineveh Plains, Mosul is a historical center of the Assyrians. The surrounding region is ethnically and religiously diverse; a large majority of the city is Arabs, with Kurds, Assyrians, Turkmens, Shabaks, and other minorities comprising the population. Sunni Islam is the largest religion but there are a sizeable number of Christians and Yazidis as well as adherents of other Muslim sects such as Twelver Shi'ism and Shabakism, and in the past, Iraqi Jews.\nThe metropolitan area has grown from the old city on the western side to encompass substantial areas on both the \"Left Bank\" (east side) and the \"Right Bank\" (west side), as locals call the two respective sides of the Tigris. Historically, essential products of the area included marble and oil. The region around Mosul is rich in oil reserves. Mosul is home to the University of Mosul and its renowned Medical College, one of the Middle East's largest educational and research centers. The city is also home to historic mosques, Christian sites, synagogues and Yazidi temples."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 288
+    },
+    "banned_terms": [
+      {
+        "term": "mosul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1441,
+    "attempt": 1428,
+    "place_id": "gn-105343",
+    "input": {
+      "place": {
+        "place_id": "gn-105343",
+        "name": "Jeddah",
+        "country": "Saudi Arabia",
+        "subdivision": "Mecca Region",
+        "lat": 21.49012,
+        "lon": 39.18624
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jeddah",
+          "url": "https://en.wikipedia.org/wiki/Jeddah",
+          "text": "Jeddah is the largest city in Mecca Province, the second-largest city in Saudi Arabia after Riyadh, and the country’s main commercial center. It is in the Hejaz region on the Red Sea coast.  The city’s metropolitan area is coterminous with Jeddah Governorate. Its prominence grew in 647 CE when the Caliph Uthman of the Rashidun Caliphate designated it as the main port serving travelers to Mecca.\nJeddah is the largest city in Hejaz and the ninth-largest in the Middle East. It also serves as the administrative center of the OIC. Jeddah Islamic Port, on the Red Sea, is the thirty-sixth largest seaport in the world and the second-largest and second-busiest seaport in the Middle East.\nJeddah is the principal gateway to Mecca, the holiest city in Islam, 65 kilometers (40 mi) to the east, while Medina, the second-holiest city, is 360 kilometers (220 mi) to the north. Economically, Jeddah is focusing on further developing capital investment in scientific and engineering leadership within Saudi Arabia, and the Middle East. Jeddah was ranked fourth in the Africa, MiddIe East, and -stan countries region in the Innovation Cities Index in 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "jeddah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1442,
+    "attempt": 1429,
+    "place_id": "gn-12253704",
+    "input": {
+      "place": {
+        "place_id": "gn-12253704",
+        "name": "Phú Quốc",
+        "country": "Vietnam",
+        "subdivision": "An Giang",
+        "lat": 10.28715,
+        "lon": 104.01047
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Phú Quốc",
+          "url": "https://en.wikipedia.org/wiki/Phú_Quốc",
+          "text": "Phú Quốc (Vietnamese: [fu˧˥ kuək̚˧˦]) is a special zone in An Giang province, Vietnam. It is the largest island in Vietnam. The island has a total area of 575 km2 (222 sq mi) and a permanent population of approximately 179,480 people in 2020. \nOn June 16, 2025, Phú Quốc became one of the 13 newly established and re-organized special administrative zones of Vietnam, the only city to do so. Later on July 1, \"Secretary of the City Committee\" Lê Quốc Anh was appointed to become the first \"Secretary of the Party Committee of the special zone\".\nLocated in the Gulf of Thailand, Phú Quốc special administrative zone includes the island proper and 21 smaller islets. Dương Đông ward, located on the island's west coast, is the island's administrative centre and largest town. The other ward is An Thới on the southern tip of the island.\nIts primary industries are fishing, agriculture, and a fast-growing tourism sector. Phú Quốc has achieved fast economic growth due to its current tourism boom. Many infrastructure projects have been carried out, including several five-star hotels and resorts. Phú Quốc International Airport is the hub connecting Phú Quốc with mainland Vietnam as well as with international destinations.\nSince March 2014, Vietnam has allowed all foreign tourists to visit Phú Quốc visa-free for a period of up to 30 days. By 2017, the government of Vietnam planned to set up a Special Administrative Region which covered Phú Quốc Island and its peripheral islets and upgrade it to a provincial city with special administration.\nThe historical Phú Quốc Prison was based here and was built by the French to detain captured Viet Minh fighters. Continuing into the Vietnam War, Viet Cong and North Vietnamese Army POWs were monitored by South Vietnamese soldiers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "phu quoc",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "phu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "quoc",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1443,
+    "attempt": 1430,
+    "place_id": "gn-1262332",
+    "input": {
+      "place": {
+        "place_id": "gn-1262332",
+        "name": "Muzaffarnagar",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 29.47091,
+        "lon": 77.70332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muzaffarnagar",
+          "url": "https://en.wikipedia.org/wiki/Muzaffarnagar",
+          "text": "Muzaffarnagar (Hindi pronunciation: [mʊzəfːəɾ.nəgəɾ], also [mʊd͡ʒəp.pʰəɾ.nəgəɾ]) is a city under Muzaffarnagar district in the Indian State of Uttar Pradesh. It is situated midway on the Delhi - Haridwar/Dehradun National Highway (NH 58) and is also well connected with the national railway network. It is known as the sugarbowl of Uttar Pradesh.\nThe city previously called Sarwat and is located in the middle of the highly fertile upper Ganga-Yamuna Doab region and is very near to New Delhi and Saharanpur, making it one of the most developed and prosperous cities of Uttar Pradesh. It comes under the Saharanpur division. This city is part of Delhi Mumbai Industrial Corridor (DMIC) and Amritsar Delhi Kolkata Industrial Corridor (ADKIC). It shares its border with the state of Uttarakhand and it is the principal commercial, industrial and educational hub of Western Uttar Pradesh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "muzaffarnagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1444,
+    "attempt": 1431,
+    "place_id": "gn-1263214",
+    "input": {
+      "place": {
+        "place_id": "gn-1263214",
+        "name": "Meerut",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 28.98002,
+        "lon": 77.70636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meerut",
+          "url": "https://en.wikipedia.org/wiki/Meerut",
+          "text": "Meerut is a city that serves as the administrative headquarters of the Meerut district in the Indian state of Uttar Pradesh. The city lies in western Uttar Pradesh and is part of the Indian National Capital Region (NCR). Meerut is located 80 km (50 mi) northeast of the national capital, New Delhi, and 480 km (300 mi) northwest of the state capital, Lucknow. As of 2025, Meerut's urban (metro) population is estimated at ≈ 1.875 million. The population of Meerut Municipal Corporation is projected to be about 1.907 million, while the wider Meerut metropolitan region is estimated at approximately 2.077 million. Meerut is the second or third-most populous city in NCR, after Delhi and Ghaziabad.\nIn 1803, Meerut was as a significant location during the British colonial era, serving as the site of one of India's largest cantonments. Meerut was one of the first locations where the 1857 rebellion against British rule began. It has been called the \"Sports City of India\" due to its sports goods industry. Meerut produces large number of musical instruments in India. It is also one of Asia's largest gold markets. The city is an education hub in western Uttar Pradesh and has the third-highest per capita income after Ghaziabad and Gautam Buddha Nagar (Noida and Greater Noida).\nIndia's first Regional Rapid Transit System, Delhi Meerut RRTS, is operational in Meerut and serves as an inter-city high-speed metro corridor. Meerut is connected by three expressways, including the Delhi-Meerut Expressway, the Ganga Expressway, and the Meerut-Kanpur Expressway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "meerut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1445,
+    "attempt": 1432,
+    "place_id": "gn-1267480",
+    "input": {
+      "place": {
+        "place_id": "gn-1267480",
+        "name": "Katihar",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.53852,
+        "lon": 87.57044
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katihar",
+          "url": "https://en.wikipedia.org/wiki/Katihar",
+          "text": "Katihar (Maithili pronunciation: [kəʈɪɦaːr]; Bengali pronunciation: [kaʈihar]), is the tenth largest city in the state of Bihar in India in terms of population, Along with being one of the largest economic, educational and administrative centre in the eastern part of Bihar. The city situated in the eastern bank of Kari Kosi river. It is the  headquarters of Katihar district and Katihar railway division of Northeast Frontier Railway. Historically, it was an important metre gauge railway station in the Bengal Presidency that linked North India with the regions of North Bengal and Northeast India. The main railway station of the city is Katihar Junction, a very important railway station on the Guwahati - Barauni railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "katihar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1446,
+    "attempt": 1433,
+    "place_id": "gn-13061022",
+    "input": {
+      "place": {
+        "place_id": "gn-13061022",
+        "name": "Bandar Mahkota Cheras",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.0542,
+        "lon": 101.79844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bandar Mahkota Cheras",
+          "url": "https://en.wikipedia.org/wiki/Bandar_Mahkota_Cheras",
+          "text": "Bandar Mahkota Cheras, often referred to by its initials BMC, is a township in Cheras, Hulu Langat, Selangor, Malaysia. It was developed by Narajaya Sdn Bhd, a subsidiary of Lion Group. Construction commenced in late 1999 or early 2000 on a freehold plot of about 365 hectares. Mostly consisting of two-storey terraced houses, the population is estimated to be in excess of 50,000 in more than 10,000 households. The main township is divided into eight sections and also includes a few smaller developments by other developers in the same township, e.g., Cheras Vista and Pinggiran Mahkota Cheras. It is located in the mukim (sub-district) of Cheras, daerah (district) of Hulu Langat and state of Selangor. It borders Bandar Sungai Long to the north and west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "bandar mahkota cheras",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bandar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mahkota",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cheras",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1447,
+    "attempt": 1434,
+    "place_id": "gn-153176",
+    "input": {
+      "place": {
+        "place_id": "gn-153176",
+        "name": "Mpanda",
+        "country": "Tanzania",
+        "subdivision": "Katavi",
+        "lat": -6.34379,
+        "lon": 31.06951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mpanda",
+          "url": "https://en.wikipedia.org/wiki/Mpanda",
+          "text": "Mpanda is a city in Katavi Region of Tanzania, East Africa with a postcode number 50100. It is the administrative centre of Katavi Region, Mpanda District and is itself one of the four districts of the region.\nMpanda is a \"frontier town\" in the far west of Tanzania, roughly 500 km north of Mbeya and 380 km south-west of Tabora. It is the administrative headquarters for the Katavi Region, (created by subdivision of the Rukwa Region in 2012), and for the Mpanda District.  It is an important centre in the rural economy, especially for the marketing and transshipment of rice and maize.  The Katavi region is increasingly of interest to mineral prospectors, especially for gold.  It is also a staging point for visiting the beautiful Katavi National Park, with its headquarters just 35 km to the south at Sitalike.  The Park has a good cross-section of East African wildlife but is perhaps best known for its populations of hippopotamus.\nAs yet all roads into Mpanda (from Sumbawanga, Tabora or Kigoma) remain unsealed and may for brief periods become impassable at the height of the wet season (particularly February–March).  The Tanzanian government has in progress a project to seal a large part of the road north from Sumbawanga.  Sumry operate two daily bus services to Sumbawanga (240 km 5 hours), one of those going on to Mbeya.  Several bus lines operate to Tabora (380 km, 9 hours).  Local services include minibuses to Sitalike, and daily bus services to Usevya and to the fishing villages of Karema and Ikola on Lake Tanganyika. Mpanda is the endpoint of a rail line with passenger services from Tabora (approx 12-15 hours).  In 2012 the government completed an upgrade of Mpanda airport to a 2 km sealed runway and a commercial air service has commenced.\nMpanda was made the centre of a new Catholic Diocese in October 2000 and boasts a very fine cathedral with magnificent pictorial windows.  The town is also the centre for the Anglican Diocese of Lake Rukwa created in June 2010.  There is a fine Moravian church and other Christian services are provided by Lutheran, African Inland Church and Tanzania Assemblies of God.  Muslim people are well served by several mosques spread through the urban area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 374
+    },
+    "banned_terms": [
+      {
+        "term": "mpanda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1448,
+    "attempt": 1435,
+    "place_id": "gn-1716198",
+    "input": {
+      "place": {
+        "place_id": "gn-1716198",
+        "name": "Dagupan",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 16.04313,
+        "lon": 120.33325
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dagupan",
+          "url": "https://en.wikipedia.org/wiki/Dagupan",
+          "text": "Dagupan [dɐˈgupan], officially the City of Dagupan (Pangasinan: Siyudad na Dagupan, Ilocano: Siudad ti Dagupan, Filipino: Lungsod ng Dagupan), is an independent component city in the Ilocos Region of the Philippines. According to the 2024 census, it has a population of 174,777 people.\nLocated on Lingayen Gulf on the northwest-central part of Luzon, Dagupan is the primary commercial and financial center of Pangasinan. The city is also one of the centers of modern medical services, education, media and communication in North-Central Luzon. The NEDA-Regional Development Council officially recognized Dagupan as a regional center. The city is situated within the fertile Agno River Valley and is in turn a part of the larger Central Luzon plain.\nThe city is among the top producers of milkfish (locally known as bangus) in the province and also the bangus capital of the country. From 2001 to 2003, Dagupan's milkfish production totaled to 35,560.1 metric tons (34,998.5 long tons; 39,198.3 short tons), contributing 16.8 percent to the total provincial production. Of its total production in the past three years, 78.5 percent grew in fish pens/cages, while the rest grew in brackish water fishponds.\nDagupan is administratively and politically independent from the provincial government of Pangasinan and is only represented by the province's legislative district. It is the second most-populous city in the province and in the Ilocos Region, after San Carlos. It is the only independent city of Ilocos Region. \nDagupan is one of the proposed metropolitan areas in the Philippines. Metro Dagupan is proposed to include the independent component city of Dagupan, as well as the towns of Binmaley, Calasiao, Lingayen, Manaoag, Mangaldan, Mapandan, San Fabian, San Jacinto, and Santa Barbara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "dagupan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1449,
+    "attempt": 1436,
+    "place_id": "gn-1725115",
+    "input": {
+      "place": {
+        "place_id": "gn-1725115",
+        "name": "Biñan",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.34267,
+        "lon": 121.08071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biñan",
+          "url": "https://en.wikipedia.org/wiki/Biñan",
+          "text": "Biñan (Tagalog pronunciation: [biˈɲan] or traditionally [biˈɲaŋ]), officially the City of Biñan (Filipino: Lungsod ng Biñan), is a  component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 584,479 people, making it the most populous city in the province of Laguna.\nBiñan has become both a suburban residential community of Metro Manila and a location for some of the Philippines' largest industrial estates and export processing zones. Prior to its cityhood in 2010, Biñan was the richest municipality in the Philippines with an annual gross income of ₱677 million (US$14.383 million) and net income of ₱250 million (US$5.308 million), as of 2007 by the Commission on Audit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "binan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1450,
+    "attempt": 1437,
+    "place_id": "gn-1805753",
+    "input": {
+      "place": {
+        "place_id": "gn-1805753",
+        "name": "Jinan",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 36.66833,
+        "lon": 116.99722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinan",
+          "url": "https://en.wikipedia.org/wiki/Jinan",
+          "text": "Jinan is the capital of the Shandong province in Eastern China. With a population of 9.2 million, it is one of the largest cities in Shandong in terms of population. The area of present-day Jinan has played an important role in the history of the region from the earliest beginnings of civilization and has evolved into a major national administrative, economic, and transportation hub. The city has held sub-provincial administrative status since 1994. Jinan is often called the \"City of Springs\" for its famous 72 artesian springs.\nJinan is listed as the # 27 city in the world for scientific research as tracked by the Nature Index according to the Nature Index 2025 Science Cities. The city is home to several major universities, including Shandong, Shandong Normal, Shandong Jianzhu, University of Jinan, Qilu University of Technology, Shandong University of Traditional Chinese Medicine and Shandong University of Finance and Economics. Notably, Shandong University is one of China's most prestigious universities as a member of the Double First-Class Construction. The city is rated Beta- (Global second-tier city) by the biannual GAWC ratings in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "jinan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1451,
+    "attempt": 1438,
+    "place_id": "gn-1856367",
+    "input": {
+      "place": {
+        "place_id": "gn-1856367",
+        "name": "Musashino",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.70611,
+        "lon": 139.55944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Musashino, Tokyo",
+          "url": "https://en.wikipedia.org/wiki/Musashino,_Tokyo",
+          "text": "Musashino (武蔵野市, Musashino-shi; Japanese pronunciation: [mɯ.sa.ɕi.no, mɯ.sa.ɕi.noꜜ.ɕi]) is a city located in the western portion of the Tokyo Metropolis, Japan. As of 1 February 2024, the city had an estimated population of 147,754 in 78,614 households, and a population density of 13,000 persons per km2. The total area of the city is 10.98 square kilometres (4.24 sq mi). Based on the 2019 survey by SUUMO, the Kichijoji neighborhood of Musashino was the third most desirable place to live in central Japan.\nPopular attractions in Musashino include Kichijōji; a residential and shopping neighborhood with malls such as Atre Kichijoji, recreational areas such as Inokashira Park, Musashino Chuo Park, Musashino Municipal Athletic Stadium and Musashino Sports Complex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "musashino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1452,
+    "attempt": 1439,
+    "place_id": "gn-2246452",
+    "input": {
+      "place": {
+        "place_id": "gn-2246452",
+        "name": "Saint-Louis",
+        "country": "Senegal",
+        "subdivision": "Saint-Louis",
+        "lat": 16.01793,
+        "lon": -16.48962
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Louis, Senegal",
+          "url": "https://en.wikipedia.org/wiki/Saint-Louis,_Senegal",
+          "text": "Saint-Louis (French pronunciation: [sɛ̃ lwi] ) or Saint Louis (Wolof: Ndar), is the capital of Senegal's Saint-Louis Region. Located in the northwest of Senegal, near the mouth of the Senegal River, and 320 kilometres (200 mi) north of Senegal's capital city Dakar. It had a population of 254,171 in 2023. Saint-Louis was the capital of the French colony of Senegal from 1673 until 1902 and French West Africa from 1895 until 1902, when the capital was moved to Dakar. From 1920 to 1957, it also served as the capital of the neighboring colony of Mauritania.\nThe town was an important economic center during the period of French West Africa, but it is less important now. Nonetheless, it still has important industries, including tourism, a commercial center, sugar production, and fishing. The tourism industry is in part due to the city being listed as a UNESCO World Heritage Site in 2000. However, the city is also vulnerable to climate change—where sea level rise is expected to threaten the city center and potentially damage historical parts of the city; according to a Senegalese government study, up to 80% of the city could be at risk of flooding by 2080. Moreover, other issues such as overfishing are causing ripple effects in the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "saint louis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "louis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1453,
+    "attempt": 1440,
+    "place_id": "gn-2300379",
+    "input": {
+      "place": {
+        "place_id": "gn-2300379",
+        "name": "Ho",
+        "country": "Ghana",
+        "subdivision": "Volta",
+        "lat": 6.60084,
+        "lon": 0.4713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ho, Ghana",
+          "url": "https://en.wikipedia.org/wiki/Ho,_Ghana",
+          "text": "Ho is the capital of the Ho Municipal Assembly and in the Volta Region of Ghana. The city lies between Mount Adaklu and Mount Galenukui or Togo Atakora Range, and is home to the Volta Regional Museum, a cathedral, and a prison. The population of Ho Municipality, according to the 2021 Population and Housing Census, is 180,420, representing 10.9 percent of the region's total population. Females constitute 53 percent and males represent 47 percent. About 69.8 percent of the population resides in urban localities. The municipality shares boundaries with Adaklu and Agotime-Ziope Districts to the South, Ho West District to the North and West and the Republic of Togo to the East (see Figure 1.1). Its total land area is 2,361 square kilometers (912 sq mi) thus representing 11.5 percent of the region's total land area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "ho",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
