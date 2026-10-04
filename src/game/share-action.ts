@@ -1,5 +1,6 @@
 import { BRAND } from "./brand.ts";
 import type { SessionSummary } from "./session.ts";
+import { DIFFICULTY_LABELS, formatSuccessRate } from "./session.ts";
 import { shareText } from "./share.ts";
 
 /**
@@ -59,6 +60,14 @@ export async function shareScore(input: {
  * totals, never per-place scores, and the strip is optional in the
  * approved format. Nothing per-place (no place names, no distances) can
  * leak into the shared text through this builder.
+ *
+ * After the approved 3-line contract (kept byte-identical for identical
+ * inputs), the breakdown is appended, rendered straight from the same
+ * `SessionSummary` the end-game screen shows — never recomputed:
+ * one line per played difficulty mode (easy → medium → hard), then one
+ * line of per-region totals in first-seen order. Region names and
+ * aggregate counts are what Veeresh asked to share, so they are allowed
+ * here; per-place scores and distances still never leak.
  */
 export function sessionShareText(input: {
   summary: SessionSummary;
@@ -66,7 +75,7 @@ export function sessionShareText(input: {
   dateKey: string;
   now?: Date;
 }): string {
-  return shareText({
+  const base = shareText({
     regionName: input.regionName,
     dateKey: input.dateKey,
     totalScore: input.summary.totalScore,
@@ -75,6 +84,24 @@ export function sessionShareText(input: {
     bestStreak: input.summary.bestStreak,
     now: input.now,
   });
+  const lines = [base];
+  for (const mode of input.summary.byDifficulty) {
+    // Unplayed modes are omitted — never shown as 0%.
+    if (mode.places <= 0) continue;
+    lines.push(
+      `${DIFFICULTY_LABELS[mode.difficulty]} ${mode.hits}/${mode.places} ` +
+        `(${formatSuccessRate(mode.hits, mode.places)}) · ` +
+        `${mode.score.toLocaleString("en-US")} pts`,
+    );
+  }
+  if (input.summary.regions.length > 0) {
+    lines.push(
+      input.summary.regions
+        .map((r) => `${r.regionName} ${r.score.toLocaleString("en-US")}`)
+        .join(" · "),
+    );
+  }
+  return lines.join("\n");
 }
 
 /** The canonical share target — the text already carries it on its own line. */
