@@ -206,6 +206,7 @@ function makeRun(phase: "story" | "done"): Run {
     edition: "state",
     regionId: "nebraska",
     regionName: "Nebraska",
+    difficultyChoice: "medium",
     dateKey: "2026-10-03",
     index: 0,
     hits: 0,

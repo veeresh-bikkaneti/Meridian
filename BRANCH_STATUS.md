@@ -20,8 +20,7 @@ Base: `origin/main` at `aa69434`.
 - Harness note: the shared VM runs several crews' Playwright suites concurrently (load avg 8–13); the spec uses a local `startGlobeRunPatient` (60 s map-mount waits, helpers.ts untouched) to stay deterministic under contention. The reveal camera was not touched (sibling crew owns it).
 - Regression: `gap-view-reveal.desktop.spec.ts` re-run 2026-10-04 → 1 passed / 2 failed; both failures are camera/reveal-timing assertions (zoom level "2" vs "1"; phase timeout on tap-skip), not card content — the "hit" card test passed, so the pin-compare card changes are not the cause. Noted for the camera crew, not fixed here.
 
-## Review dispositions (both PASS, no blockers — 2026-10-04)
-- Tech-arch: lon/lat ordering verified correct at every boundary; same-admin1 branch airtight (caches are country-disjoint); fail-closed everywhere; jetsam constraint honored (no import-time JSON; ne-50m emitted as its own 1.4 MB lazy chunk). Notes: (1) loader duplication with `src/map/boundary-bands.ts` — genuine DRY note, deferred as tech debt (both lazy/post-boot, no crash risk; a shared loader would touch the sibling crew's map area); (2) inaccurate "done phase" comment — fixed; (3) card-test mock reimplements `pinCompareLine` — declined with reason: exact copy strings are asserted against the real module in `reverse-geocode.test.ts`, so drift is caught at the module boundary; component tests correctly mock at the module seam; (4) antimeridian/poles untested — guarded by try/catch, coverage note only; (5) US "Georgia" pin vs country Georgia → "Your pin: Georgia · True spot: Georgia" — odd, not incorrect, left as-is.
+## Review dispositions (both PASS, no blockers — 2026-10-04)- Tech-arch: lon/lat ordering verified correct at every boundary; same-admin1 branch airtight (caches are country-disjoint); fail-closed everywhere; jetsam constraint honored (no import-time JSON; ne-50m emitted as its own 1.4 MB lazy chunk). Notes: (1) loader duplication with `src/map/boundary-bands.ts` — genuine DRY note, deferred as tech debt (both lazy/post-boot, no crash risk; a shared loader would touch the sibling crew's map area); (2) inaccurate "done phase" comment — fixed; (3) card-test mock reimplements `pinCompareLine` — declined with reason: exact copy strings are asserted against the real module in `reverse-geocode.test.ts`, so drift is caught at the module boundary; component tests correctly mock at the module seam; (4) antimeridian/poles untested — guarded by try/catch, coverage note only; (5) US "Georgia" pin vs country Georgia → "Your pin: Georgia · True spot: Georgia" — odd, not incorrect, left as-is.
 - Tone: "Right state, wrong town!" reads as a lesson, not a taunt; "United States of America" acceptable kid-facing copy (normalization, if ever wanted, lives in `reverse-geocode.ts` only, never `territory.ts`); placement/reading order correct; no live region needed; no new contrast debt.
 
 ## API contract (workers A and B build to this)
@@ -40,3 +39,9 @@ export function pinCompareLine(player: ResolvedPin | null, truth: ResolvedPin | 
 - Do NOT touch the reveal camera / satellite-map / motion code — sibling crew `fix/wrong-answer-reveal-zoomout` owns it. Read-only.
 - New test files must be registered in the `npm test` script list in package.json.
 - Kid-friendly tone, no shaming, on every new word.
+
+## Rebase onto current main (2026-10-04)
+- Rebased onto `origin/main` `0b83c2e` (PRs #46 difficulty-tiers, #47/#48 attribution credits landed meanwhile).
+- Conflicts resolved: `package.json` (kept both `tier-filter.test.ts` and `reverse-geocode.test.ts` in the test list), `BRANCH_STATUS.md` (kept this branch's status).
+- Post-rebase fix: `result-card.test.ts` mock Run gained required `difficultyChoice: "medium"` (new required field from the difficulty merge).
+- Gates re-verified: tsc clean, 530/530 unit green.
