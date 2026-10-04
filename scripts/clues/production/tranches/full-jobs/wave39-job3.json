@@ -1,0 +1,827 @@
+[
+  {
+    "rank": 7693,
+    "attempt": 7641,
+    "place_id": "gn-4504010",
+    "input": {
+      "place": {
+        "place_id": "gn-4504010",
+        "name": "Seaside Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.94429,
+        "lon": -74.07291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seaside Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Seaside_Heights,_New_Jersey",
+          "text": "Seaside Heights is a borough situated on the Jersey Shore, within Ocean County in the U.S. state of New Jersey. As of the 2020 census, the borough's population was 2,440, a decrease of 447 (−15.5%) from the 2010 census count of 2,887, which in turn had reflected a decline of 268 (−8.5%) from the 3,155 counted in the 2000 census. Seaside Heights is located on the Barnegat Peninsula, a long, narrow barrier peninsula that separates the Barnegat Bay from the Atlantic Ocean. During the summer, the borough attracts a crowd largely under the age of 21, mainly highschoolers and young adults, drawn to a community with boardwalk entertainment and one of the few shore communities with sizable numbers of apartments, attracting as many as 65,000 people who are often out until early morning visiting bars and restaurants.\nBased on the results of a referendum held on March 25, 1913, Seaside Heights was incorporated as a borough by an act of the New Jersey Legislature on February 26, 1913, from portions of both Berkeley Township and Dover Township (now Toms River). The borough was named for its location on the Atlantic Ocean.\nAs a resort community, the beach, an amusement-oriented boardwalk, and numerous clubs and bars make it a popular destination. Seaside Heights calls itself, \"Your Home For Family Fun Since 1913!\" The beach season runs from March to October, with the peak months being July and August, when the summer population explodes to as many as 30,000 to 65,000. Route 37 in Toms River is routinely gridlocked on Friday afternoons in the summer months as vacationers travel to the barrier islands. The community is also known as the location of the hit MTV show Jersey Shore, with the director of the borough's business improvement district saying in 2010 that \"we can't even calculate the economic benefit\" to Seaside Heights from the continued presence of the show."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 191,
+      "fullExtractWords": 316
+    },
+    "banned_terms": [
+      {
+        "term": "seaside heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seaside",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7694,
+    "attempt": 7642,
+    "place_id": "gn-2122090",
+    "input": {
+      "place": {
+        "place_id": "gn-2122090",
+        "name": "Pevek",
+        "country": "Russia",
+        "subdivision": "Chukotka",
+        "lat": 69.70279,
+        "lon": 170.30708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pevek",
+          "url": "https://en.wikipedia.org/wiki/Pevek",
+          "text": "Pevek (Russian: Певе́к; Chukchi: Пээкин / Пээк, Pèèkin / Pèèk) is an Arctic port town and the administrative center of Chaunsky District in Chukotka Autonomous Okrug, Russia, located on Chaunskaya Bay (part of the East Siberian Sea) on a peninsula on the eastern side of the bay facing the Routan Islands, above the Arctic Circle, about 640 kilometers (400 mi) northwest of Anadyr, the administrative center of the autonomous okrug. Population: 4,015 (2021 census); 4,162 (2010 census); 5,206 (2002 census); 12,915 (1989 Soviet census).Pevek is a modern settlement established after World War I to provide a port for the export of minerals as part of the expanding Northern Sea Route. During the 1940s and 1950s, the area surrounding Pevek was the site of several gulags where prisoners mined uranium. In recent years, many of the mines became unprofitable and have closed, causing many residents to move to more central regions in Russia and the port infrastructure to decay.\nPevek is the present location of the Akademik Lomonosov floating nuclear power plant, which carries two marine-type KLT-40S nuclear reactors generating 35 megawatts of electricity each."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 184,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "pevek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7695,
+    "attempt": 7643,
+    "place_id": "gn-2640559",
+    "input": {
+      "place": {
+        "place_id": "gn-2640559",
+        "name": "Paulton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.30472,
+        "lon": -2.50028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paulton",
+          "url": "https://en.wikipedia.org/wiki/Paulton",
+          "text": "Paulton  (English: ) is a large village and civil parish, with a population of 5,302, located to the north of the Mendip Hills, very close to Norton Radstock in the unitary authority of Bath and North East Somerset (BANES), England.\nPaulton is a former coal mining village and the terminus of the Somerset Coal Canal is at Paulton basin, just north of the village.  Paulton was home to the now-closed Polestar Purnells printing factory and Ashman's boot factory, where 'Voidax' safety footwear was manufactured, and in particular Motorcycle speedway boots. The area has been designated as an 'area of special architectural or historic interest, the character or appearance of which it is desirable to preserve or enhance' under section 69 of the Planning (Listed Buildings and Conservation Areas) Act 1990.\nPaulton has a small hospital, doctors surgery, dentist, chemist, nursing home, library, public swimming pool, newsagent, travel agent, two convenience stores, a filling station, three takeaways, fire station, two pre-schools (Noahs Ark Preschool and Acorn Preschool), an infant school, and a junior school. The village is also served by a nearby supermarket.\nThere are two pubs in the village: The Red Lion and The Lamb.\nA licensed bar and restaurant: La Campagna was previously a public house known as The Winterfield Inn (which closed in 2015).\nUntil the mid-1980s, there was also The Queen Victoria, but this was demolished to make way for flats, and The Somerset Inn which closed in 2011, with the adjoining paddock the subject of an unsuccessful planning application since, which would have seen it turned into a 22 home housing estate. There are also two members' clubs in the village, Paulton Rovers F.C. and Greyfield's Sports and Social club.\nThe centre of the village is the location for the war memorial and a small library. There is another war memorial just outside the village, to the southwest, which commemorates the location where 23 men were killed on 17 September 1944 when the glider they were flying in crashed en route from R.A.F. Keevil to Arnhem, as part of Operation Market Garden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 182,
+      "fullExtractWords": 346
+    },
+    "banned_terms": [
+      {
+        "term": "paulton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7696,
+    "attempt": 7644,
+    "place_id": "gn-8348804",
+    "input": {
+      "place": {
+        "place_id": "gn-8348804",
+        "name": "Turvey Park",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.12849,
+        "lon": 147.36264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Turvey Park, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Turvey_Park,_New_South_Wales",
+          "text": "Turvey Park is an inner southern suburb of Wagga Wagga in southern New South Wales, Australia. Its boundaries are defined by Fernleigh Road to the south, Glenfield Road to the west, Coleman Street to the north and to the east by Willans Hill. Turvey Park is characterised by single detached dwellings, constructed in the period from the early 1900s through to the 1960s. These dwellings vary from the very substantial, as found in parts of Coleman Street and Grandview Parade, to the brick bungalows of the northern end of the suburb between Urana and Coleman Streets, to modest public housing, and a mixture of brick and fibro and weatherboard cottages at the southern end of the suburb. Another feature of Turvey Park are many corner shops, such on the corner of Heath and Urana Street, the corner of Norman and Coleman Streets, and the Corner of Bourke and Urana Streets.\nTurvey Park was named after the property \"Turvey Park\" established by Thomas Turvey (died 14 January 1889), a licensee and store owner. A large family vault on the property was moved to the Church of England proportion of the Wagga Wagga Monumental Cemetery to allow for the construction of the intersection of Mitchelmore St and Hodson Ave in 1941. A commemorative plaque now marks the vicinity of the original site.\n\nA number of Wagga Wagga facilities are located in Turvey Park including the Wagga Wagga Botanic Gardens, the Willans Hill Miniature Railway, Wagga Wagga Showground, Turvey Park Public School, Wagga Wagga High School, Kildare Catholic College, Henschke Primary School, Wagga Wagga TAFE, 2AAA FM Studios, Hopwood Park Tennis Club, Gissing Oval, a Fire and Rescue NSW Station, the Riverina Juvenile Justice Centre, the Kay Hull Veterinary Teaching Hospital of Charles Sturt University, Our Lady of Fatima Catholic Church and St Paul's Anglican Church. The Turvey Tops shopping centre, despite taking its name from the suburb, is actually located in the adjoining suburb of Mt. Austin. A number of Wagga Wagga sporting clubs have their origins in Turvey Park, and share the Turvey Park name, including the Turvey Park Bulldogs of the Riverina Football League (Australian Rules), the former Turvey Park Lions of Group 9 Rugby League (later merging with Wagga Wagga Magpies to create South City Bulls), and the Turvey Park Softball Club.\nFormer Canterbury-Bankstown, New South Wales and Australian Rugby League player Steve Mortimer is nicknamed Turvey after the Turvey Park Rugby League club for whom he played for growing up in Wagga Wagga."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 172,
+      "fullExtractWords": 415
+    },
+    "banned_terms": [
+      {
+        "term": "turvey park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "turvey",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7697,
+    "attempt": 7645,
+    "place_id": "gn-7259489",
+    "input": {
+      "place": {
+        "place_id": "gn-7259489",
+        "name": "Scott Air Force Base",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 38.5427,
+        "lon": -89.85035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scott Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Scott_Air_Force_Base",
+          "text": "Scott Air Force Base (IATA: BLV, ICAO: KBLV, FAA LID: BLV) is a United States Air Force base in St. Clair County, Illinois, near Belleville and O'Fallon, 17 miles (27 km) east-southeast of downtown St. Louis. Originally Scott Field, it was one of 32 Air Service training camps established after the United States entered World War I in April 1917. The present base serves as the headquarters of Air Mobility Command (AMC) and its showcase wing, and it is also the headquarters of the U.S. Transportation Command, a unified combatant command that coordinates transportation across all the services.\nThe base is operated by the 375th Air Mobility Wing (375 AMW) and is also home to the Air Force Reserve Command's 932d Airlift Wing (932 AW) and the Illinois Air National Guard's 126th Air Refueling Wing (126 ARW), the latter two units being operationally under AMC.\nAs of this date, the base employs 13,000 people, 5,100 civilians with 5,500 active-duty Air Force, and an additional 2,400 Air National Guard and Reserve personnel. The Air Force announced in June 2014 that two new cybersecurity squadrons will be added to the three currently on base.\nIts airfield is also used by civilian aircraft, with civilian operations at the base referring to the facility as MidAmerica St. Louis Airport. MidAmerica has operated as a Joint Use Airport since beginning operations in November 1997."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 171,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "scott air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "scott",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7698,
+    "attempt": 7646,
+    "place_id": "gn-4504919",
+    "input": {
+      "place": {
+        "place_id": "gn-4504919",
+        "name": "Woodbury Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.81706,
+        "lon": -75.15518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodbury Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Woodbury_Heights,_New_Jersey",
+          "text": "Woodbury Heights is a borough in Gloucester County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 3,098, an increase of 43 (+1.4%) from the 2010 census count of 3,055, which in turn reflected an increase of 67 (+2.2%) from the 2,988 counted in the 2000 census.\nWoodbury Heights was formed as a borough by an act of the New Jersey Legislature on April 6, 1915, from portions of Deptford Township, based on the results of a referendum held on April 27, 1915. Portions were exchanged with Woodbury in 1925, and portions of the city were annexed on March 22, 1938. Portions were exchanged with Deptford Township in 1956 and other portions were annexed from the township in 1965. The borough was named for the city of Woodbury, which in turn was named for its founder Henry Wood, who settled in the area in 1683 after arriving from Bury, England, at the age of 80 to escape religious persecution.\nAs of 2020, the borough had the 19th-highest property tax rate in New Jersey with an equalized rate of 4.442% compared to 3.212% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 168,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "woodbury heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woodbury",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7699,
+    "attempt": 7647,
+    "place_id": "gn-2181108",
+    "input": {
+      "place": {
+        "place_id": "gn-2181108",
+        "name": "Tinwald",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.91667,
+        "lon": 171.71667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tinwald, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Tinwald,_New_Zealand",
+          "text": "Tinwald is a town in Canterbury, New Zealand, located approximately 3 kilometres (1.9 miles) south of Ashburton, from which it is separated by the Ashburton River / Hakatere. The town was named after Tinwald Downs in Scotland, birthplace of an early European resident and owner of much of the land, Robert Wilkin.\nProminent former citizens of Tinwald include William Massey, who was Prime Minister of New Zealand from 1912 to 1925.\nThe Main South Line section of the South Island Main Trunk Railway runs through Tinwald, and from 1878 until 1968, the town acted as the junction for the Mount Somers Branch. The first 2.5 kilometres (1.6 miles) of the branch line at the Tinwald end are now preserved by The Plains Vintage Railway & Historical Museum, who regularly operate public open days. The Railway is particularly notable for K 88, a locomotive recovered in 19 and 20 January 1974 from where it was dumped in the Ōreti River and returned to full operating condition in 1982. It still operates services on The Plains Railway today.\nTinwald has several shops spanning its main road including several cafés, a pub and a supermarket."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "tinwald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7700,
+    "attempt": 7648,
+    "place_id": "gn-2736057",
+    "input": {
+      "place": {
+        "place_id": "gn-2736057",
+        "name": "Ponte da Barca",
+        "country": "Portugal",
+        "subdivision": "Viana do Castelo",
+        "lat": 41.80451,
+        "lon": -8.41554
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponte da Barca",
+          "url": "https://en.wikipedia.org/wiki/Ponte_da_Barca",
+          "text": "Ponte da Barca (Portuguese pronunciation: [ˈpõtɨ ðɐ ˈβaɾkɐ] ; lit. '\"Bridge of the Boat\"') is a town and a municipality in the district of Viana do Castelo in northern Portugal. It spans an area of 182.11 square kilometres (70.31 mi2) and had a population of 11,044 as of the 2021 census. The town itself is located in the parish of Ponte da Barca, Vila Nova da Muía e Paço Vedro de Magalhães, which had 4,192 residents in the same year.\nThe area has been inhabited since prehistoric times and was known in the Middle Ages as Terra da Nóbrega, a name linked to a fortified hilltop settlement in the parish of Sampriz. The town of Ponte da Barca developed between the 12th and 13th centuries around a key river crossing on pilgrimage routes to Santiago de Compostela. It was originally known as Barca, in reference to a boat used for crossing the Lima River, and later renamed after the construction of a bridge in the 14th century.\nPart of the municipality is located within the Peneda-Gerês National Park, Portugal’s only national park. This includes the historic village of Lindoso, home to a medieval castle and traditional granaries.\nThe present Mayor is Augusto Manuel Dos Reis Marinho, elected by the Social Democratic Party (PSD). The municipal holiday is August 24."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "ponte da barca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ponte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7701,
+    "attempt": 7649,
+    "place_id": "gn-4504856",
+    "input": {
+      "place": {
+        "place_id": "gn-4504856",
+        "name": "Wildwood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 38.99178,
+        "lon": -74.81489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wildwood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wildwood,_New_Jersey",
+          "text": "Wildwood is a city in Cape May County in the U.S. state of New Jersey. The city, and all of Cape May County, is part of the Ocean City metropolitan statistical area, and is part of the Philadelphia metropolitan area. As of the 2020 United States census, the city's year-round population was 5,157, a decrease of 168 (−3.2%) from the 2010 census count of 5,325, which in turn reflected a decline of 111 (−2.0%) from the 5,436 counted in the 2000 census. A popular Jersey Shore resort destination, the population can swell to 250,000 during the summer. Wildwood was the first city in New Jersey to have a female mayor, Doris W. Bradway, who was ousted in a 1938 recall election.\nThe city of Wildwood proper constitutes the center of the island communities collectively known as The Wildwoods, which is used as a collective term to describe four communities on the island with the name Wildwood attached to them: North Wildwood, West Wildwood, Wildwood, and Wildwood Crest. Also part of The Wildwoods are Diamond Beach and a portion of Lower Township on the island. The city, and the surrounding communities that share the name, derives its name from the wild flowers found in the area. Wildwood is part of the South Jersey region of the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "wildwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7702,
+    "attempt": 7650,
+    "place_id": "gn-5282550",
+    "input": {
+      "place": {
+        "place_id": "gn-5282550",
+        "name": "Blue Hills",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.81288,
+        "lon": -72.69759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blue Hills, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Blue_Hills,_Connecticut",
+          "text": "Blue Hills is a community in Hartford County, Connecticut, United States, encompassing the northwestern corner of the city of Hartford and the southeastern corner of the town of Bloomfield. The Bloomfield portion is listed by the U.S. Census Bureau as a census-designated place (CDP), with a population of 2,762 at the 2020 census.\nBlue Hills is home to many schools and homes. Including the portion in Hartford, it has roughly 10,000 residents, and has several schools and one university located there. Its main thoroughfares are Granby Street, Blue Hills Avenue (Route 187), Plainfield Street, Bloomfield Avenue (Route 189) and Albany Avenue (US 44). Connecticut Transit operates several bus routes through the neighborhood, such as the 50, 52 and 54, which run on Blue Hills Avenue, the 56 and 58, which run up on Albany Avenue and Bloomfield Avenue, the 74, which runs through Westbrook Village on its way to Copaco Shopping Center via Granby Street, and the 76, which runs on Cornwall Street towards Bowles Park.\nBlue Hills has a majority of West Indian and African American residents. Educational institutions include Annie Fisher ES, Mountain Laurel School (Annie Fisher School Annex), Sarah J. Rawson ES, Mark Twain ES, Martin Luther King Jr. ES, Weaver HS, Watkinson School, and the University of Hartford."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "blue hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "blue",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7703,
+    "attempt": 7651,
+    "place_id": "gn-2963155",
+    "input": {
+      "place": {
+        "place_id": "gn-2963155",
+        "name": "Kinsale",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 51.7075,
+        "lon": -8.53056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kinsale",
+          "url": "https://en.wikipedia.org/wiki/Kinsale",
+          "text": "Kinsale ( kin-SAYL; Irish: Cionn tSáile, meaning 'head of the brine') is a historic port and fishing town in County Cork, Ireland. Located approximately 25 km (16 mi) south of Cork City on the southeast coast near the Old Head of Kinsale, it sits at the mouth of the River Bandon, and has a population of 5,991 (as of the 2022 census) which increases in the summer when tourism peaks. The town is in a civil parish of the same name.\nKinsale is a holiday destination for both Irish and overseas tourists. The town is known for its restaurants, including the Michelin-starred Bastion restaurant, and holds a number of annual gourmet food festivals.\nAs a historically strategic port town, Kinsale's notable buildings include Desmond Castle (associated with the Earls of Desmond and also known as the French Prison) of c. 1500, the 17th-century pentagonal bastion fort of James Fort on Castlepark peninsula, and Charles Fort, a partly restored star fort of 1677 in nearby Summercove. Other historic buildings include the Church of St Multose (Church of Ireland) of 1190, St John the Baptist (Catholic) of 1839, and the Market House of c. 1600. Kinsale is in the three-seat Dáil constituency of Cork South-West."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "kinsale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7704,
+    "attempt": 7652,
+    "place_id": "gn-3583090",
+    "input": {
+      "place": {
+        "place_id": "gn-3583090",
+        "name": "Suchitoto",
+        "country": "El Salvador",
+        "subdivision": "Cuscatlan",
+        "lat": 13.93806,
+        "lon": -89.02778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suchitoto",
+          "url": "https://en.wikipedia.org/wiki/Suchitoto",
+          "text": "Suchitoto is a district in the Cuscatlán Department, El Salvador that has seen continuous human habitation long before Spanish colonization. Within its municipal territory, Suchitoto holds the site of the original founding of the Villa of San Salvador in 1528 that existed for a short time before the site was abandoned. In more recent times, the municipality has prospered even after the severe effects of civil war in El Salvador that lasted between 1980–1992 and saw the population of Suchitoto decrease from 34,101 people in 1971 to 13,850 by 1992. It has become an important tourist destination partly due to its well conserved colonial architecture and cobblestone roads that provide a sense of Spanish colonial living. This rise in tourism has attracted service sector businesses to open up in the small city including hostels, restaurants, and picturesque cafes. As a result of tourism, many arts and cultural spaces have opened up in Suchitoto that are also providing positive alternative opportunities for youth in the community. According to the 2007 Official Census, the small city has a population of 24,786 people with 7,654 people living in the urban area and 17,132 people living in the rural communities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "suchitoto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7705,
+    "attempt": 7653,
+    "place_id": "gn-5129325",
+    "input": {
+      "place": {
+        "place_id": "gn-5129325",
+        "name": "Northwest Harbor",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.00982,
+        "lon": -72.22119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northwest Harbor, New York",
+          "url": "https://en.wikipedia.org/wiki/Northwest_Harbor,_New_York",
+          "text": "Northwest Harbor is a hamlet and census-designated place (CDP) in the Town of East Hampton, Suffolk County, New York, United States. As of the 2020 census, Northwest Harbor had a population of 4,637.\nIt is named for the bay on the South Fork of Long Island connecting Sag Harbor, Shelter Island and the town of East Hampton to Gardiners Bay and the open waters of the Atlantic Ocean. The bay derives its name from being northwest of East Hampton village. The name \"Northwest Harbor\" is applied to the Northwest Woods neighborhood (sometimes shortened to simply \"Northwest\") of the town of East Hampton. It is also applied to Northwest Landing at Northwest Creek (a saltwater outlet from the inlet to the harbor) which was the first port for East Hampton and which became a major whaling port in the late 17th and early 18th centuries until it was replaced by Sag Harbor two miles to the west of the landing, where the water was deeper. Ships of Sag Harbor must pass through Northwest Harbor at the Cedar Point Lighthouse in order to reach Gardiners Bay and the open ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "northwest harbor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "northwest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7706,
+    "attempt": 7654,
+    "place_id": "gn-3028271",
+    "input": {
+      "place": {
+        "place_id": "gn-3028271",
+        "name": "Castillon-la-Bataille",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 44.85308,
+        "lon": -0.04506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castillon-la-Bataille",
+          "url": "https://en.wikipedia.org/wiki/Castillon-la-Bataille",
+          "text": "Castillon-la-Bataille (French pronunciation: [kastijɔ̃ la bataj]; Occitan: Castilhon de la Batalha) is a commune in the Gironde department in Nouvelle-Aquitaine in southwestern France. It lies on the right (northern) bank of the river Dordogne. Castillon station has rail connections to Bordeaux, Bergerac and Sarlat-la-Canéda.\nThis area was the site of the last battle of the Hundred Years' War, the Battle of Castillon, fought 17 July 1453. The battle in which John Talbot, 1st Earl of Shrewsbury, charged valiantly but foolishly at the French artillery and was slain at the age of nearly 70, along with his son, John Talbot, 1st Viscount Lisle, and most of the small English force that had gone out to prevent Bordeaux falling to the French king.\nNear La Mothe-Montraval, on the right bank of the Dordogne, a tumulus is pointed out under the name of Talbot's tomb; but it is known that his body was removed by his friends to St Alkmund's Church, Whitchurch, in Shropshire in England.\nOn 27 November 1953, the name of the town was changed from Castillon-sur-Dordogne to its current name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 163,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "castillon la bataille",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castillon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bataille",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7707,
+    "attempt": 7655,
+    "place_id": "gn-5378529",
+    "input": {
+      "place": {
+        "place_id": "gn-5378529",
+        "name": "Oakhurst",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.328,
+        "lon": -119.64932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oakhurst, California",
+          "url": "https://en.wikipedia.org/wiki/Oakhurst,_California",
+          "text": "Oakhurst (formerly Fresno Flats) is a census-designated place (CDP) in Madera County, California, United States. It lies in the Sierra Nevada foothills about 14 miles (23 km) south of the southern entrance to Yosemite National Park, at the junction of Highway 41 and Highway 49. Oakhurst is at the southern edge of California’s Gold Country and had a population of 5,945 at the 2020 United States census.\nFounded in 1858 as Fresno Flats, the community developed first as a cattle stop and later as a logging center before becoming a gateway for Yosemite-bound travel. The surrounding region had long been a gathering place for the Miwok, Yokuts, and Mono peoples and was the site of early conflicts after California statehood, including the opening battle of the Mariposa War. In the late 20th century, Oakhurst gained attention in the computer game industry as the headquarters of Sierra On-Line, publisher of influential graphic adventure titles and creator of one of the first online gaming networks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 163,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "oakhurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7708,
+    "attempt": 7656,
+    "place_id": "gn-1005342",
+    "input": {
+      "place": {
+        "place_id": "gn-1005342",
+        "name": "Enon",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -33.39608,
+        "lon": 25.54653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enon, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Enon,_South_Africa",
+          "text": "Enon is a small town in the Eastern Cape in South Africa. It is named after the biblical place mentioned in John 3:23 It lies 13 kilometres (8.1 mi) east of Kirkwood and 60 kilometres (37 mi) north-east of Uitenhage.\nEnon (formerly known as Witterivier) was formed in 1818 by the Moravian Missionary Society on request of the Area Landdrost Jacob Glen Cuyler, to serve as a buffer between the Xhosa, Tembu and Fingo tribes living outside the Cape Colony and the European farmers and towns inside the Cape Colony. The land was granted to the Missionary Society in trust, to be administrated on behalf of the Cape Colony in the interests of residents of the missionary station.\nWithin the first 35 years of its inception it was caught in the middle of three Cape Frontier Wars and the First Anglo-Boer War, and has been evacuated on three occasions.\nEnon is referred to in the 1840s by James Backhouse in his diary.\nIn 1909 control of the town was ceded back to the Union of South Africa. The governance of Enon currently falls under the Sundays River Valley Local Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "enon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7709,
+    "attempt": 7657,
+    "place_id": "gn-1275826",
+    "input": {
+      "place": {
+        "place_id": "gn-1275826",
+        "name": "Bhowali",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.38985,
+        "lon": 79.50481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhowali",
+          "url": "https://en.wikipedia.org/wiki/Bhowali",
+          "text": "Bhowali ([bʱəˈʋaːli]; Devanagari: भवाली, Kumaoni: [bʱoːˈaːli]) is a municipal town and major commercial road junction situated in the Nainital district of the northern Indian state of Uttarakhand. Administratively, the town is governed under the Nainital tehsil. Positioned in the Outer Lesser Himalayas at an average altitude of 1,706 metres (5,597 feet) above mean sea level, the town is located 11 kilometres east of Nainital, 11 kilometres northwest of Bhimtal, and 35 kilometres north of the railway terminus at Kathgodam.\nHistorically developed as a health resort and mountain sanatorium station, Bhowali is the site of the King Edward VII Sanatorium, established in 1912 across 18 hectares of pine forest for the specialized open-air treatment of tuberculosis. The town serves as the primary horticultural wholesale marketplace (fruit mandi) for the central Kumaon division, handling regional commerce in apples, peaches, plums, apricots, and strawberries. In addition, Bhowali accommodates the Uttarakhand Judicial and Legal Academy (UJALA), the state judicial training institute founded in 2004."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "bhowali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7710,
+    "attempt": 7658,
+    "place_id": "gn-2851615",
+    "input": {
+      "place": {
+        "place_id": "gn-2851615",
+        "name": "Putbus",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 54.35078,
+        "lon": 13.48171
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Putbus",
+          "url": "https://en.wikipedia.org/wiki/Putbus",
+          "text": "Putbus (German: [ˈpʊtbʊs] ) is a town on the southeastern coast of the island of Rügen, in the county of Vorpommern-Rügen in the state of Mecklenburg-Western Pomerania, close to the Baltic Sea. The town has 4,741 inhabitants and is a significant tourist destination with numerous seaside resorts. It is the oldest resort on the island and has been formally recognised by the state as a resort town since 1997.\nPutbus was founded in 1810 by Prince Wilhelm Malte zu Putbus as his town of residence and had it built in the Classicist style, so that the town formed a harmonious union with the park and palace (Schloss). Malte also introduced sea bathing to Germany at Lauterbach which is about 2 km from Putbus. The nickname of the place as the \"White Town\" (Weiße Stadt) comes from its white-painted houses, but it is also referred to as Rosenstadt (\"Rose Town\") due to the many rose bushes in front of individual buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "putbus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7711,
+    "attempt": 7659,
+    "place_id": "gn-3175833",
+    "input": {
+      "place": {
+        "place_id": "gn-3175833",
+        "name": "Greve in Chianti",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.58514,
+        "lon": 11.31712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greve in Chianti",
+          "url": "https://en.wikipedia.org/wiki/Greve_in_Chianti",
+          "text": "Greve in Chianti (the old name was Greve; in 1972 it was renamed Greve in Chianti after the inclusion of that area in the Chianti wine district) is a town and comune (municipality) in the Metropolitan City of Florence, Tuscany, Italy. It is located about 31 kilometres (19 mi) south of Florence and 42 kilometres (26 mi) north of Siena.\nSitting in the Val di Greve, it is named for the small, fast-flowing river that runs through it, is the principal town in the Chianti wine district that stretches south of Florence to just north of Siena. Until recently it has been a quiet, almost bucolic town because it was, and still is, well off the main roads.\nEven in ancient days Greve was not isolated because it was well-connected by secondary roads to the Via Volterrana and via Francigena. Nowadays, it is connected to the A1 superstrada between Florence and  Rome and the main road between Florence and Siena.  The old road network ensured easy access to Florence and to other places such as Figline where its tradesmen and farmers found ready markets for their goods and produce.\nGreve in Chianti is a member of Cittaslow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "greve in chianti",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "greve",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "chianti",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7712,
+    "attempt": 7660,
+    "place_id": "gn-4504811",
+    "input": {
+      "place": {
+        "place_id": "gn-4504811",
+        "name": "Westville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.86789,
+        "lon": -75.13156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Westville,_New_Jersey",
+          "text": "Westville is a borough in Gloucester County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 4,264, a decrease of 24 (−0.6%) from the 2010 census count of 4,288, which in turn reflected a decline of 212 (−4.7%) from the 4,500 counted in the 2000 census. Westville has been called \"The Gateway to South Jersey!\"\nWestville was formed as a borough by an act of the New Jersey Legislature on April 7, 1914, from portions of Deptford Township and West Deptford Township, based on the results of a referendum held on April 28, 1914. The borough was reincorporated on March 8, 1924. Legislation had been passed in 1900 to create Westville, but it had to have a majority vote in favor of the new municipality in both Deptford and West Deptford. The borough was named for Thomas West, who built a home in the area in 1775 that still stands.\nThe borough had the 17th-highest property tax rate in New Jersey, with an equalized rate of 4.502% in 2020, compared to 3.212% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 159,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "westville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

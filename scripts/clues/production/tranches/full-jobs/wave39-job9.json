@@ -1,0 +1,832 @@
+[
+  {
+    "rank": 7813,
+    "attempt": 7761,
+    "place_id": "gn-4604504",
+    "input": {
+      "place": {
+        "place_id": "gn-4604504",
+        "name": "Bean Station",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.3437,
+        "lon": -83.28406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bean Station, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Bean_Station,_Tennessee",
+          "text": "Bean Station is a town located mostly in Grainger County, Tennessee, with a small portion in Hawkins County. As of the 2020 census, the population was 2,967. It is part of the Kingsport and Knoxville metropolitan statistical areas. \nPioneer William Bean established Bean Station in 1776 as a frontier outpost; it is considered one of the earliest permanently settled communities in Tennessee. During  the 18th and 19th centuries, due to its strategic location at the crossroads of Daniel Boone's Wilderness Road and the Great Indian Warpath, the town grew to become an important stopover for early pioneers and settlers in the Appalachia region.\nDuring the American Civil War, the town was the site of the final battle of the Knoxville campaign before Confederate forces surrendered to a Union blockade in nearby Blaine. In the early 20th century, Bean Station experienced renewed growth with the development of Tate Springs mineral springs resort, investment from U.S. Senator John K. Shields, and the construction of the Peavine Railroad which provided passenger rail services to Knoxville. In the 1940s, the Tennessee Valley Authority inundated the town as part of the construction of Cherokee Dam, and nearly all of the town's residents were removed via eminent domain and federal court orders. Following its inundation, the town was shifted to the new junction of U.S. Route 11W and U.S. Route 25E, becoming a popular lakeside community, and a commuter town for the city of Morristown in neighboring Hamblen County. Citing annexation attempts by Morristown, Bean Station was incorporated as a town in 1996."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "bean station",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "station",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7814,
+    "attempt": 7762,
+    "place_id": "gn-6232267",
+    "input": {
+      "place": {
+        "place_id": "gn-6232267",
+        "name": "Kingsland",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.87267,
+        "lon": 174.72592
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingsland, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Kingsland,_New_Zealand",
+          "text": "Kingsland is an inner-city suburb of Auckland, the largest and most populous urban area in New Zealand. Kingsland is under the local governance of the Auckland Council. It is the home of Eden Park, New Zealand's largest stadium, which hosted the finals for the 2011 Rugby World Cup. Kingsland has a village centre that contains a series of shops, restaurants, pubs and monthly markets.\nKingsland was established in the 1880s with the sale of allotments; the buildings predominantly date from the Edwardian and the interwar periods.New North Road is the main thoroughfare in Kingsland, running northeast–southwest from the Auckland Central Business District (CBD), with the suburb running along the ridge line. Kingsland's main street is located on New North Road next to the Kingsland railway station and directly across from Eden Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "kingsland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7815,
+    "attempt": 7763,
+    "place_id": "gn-9613543",
+    "input": {
+      "place": {
+        "place_id": "gn-9613543",
+        "name": "San Bartolo Coyotepec",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.95837,
+        "lon": -96.7093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Bartolo Coyotepec",
+          "url": "https://en.wikipedia.org/wiki/San_Bartolo_Coyotepec",
+          "text": "San Bartolo Coyotepec is a town and municipality located  in the center of the Mexican state of Oaxaca. It is in the Centro District of the Valles Centrales region about fifteen km south of the capital of Oaxaca.\nThe town is best known for its Barro negro pottery - black clay pottery. For hundreds of years pottery has been made here with a gray matte finish, but in the 1950s a technique was devised to give the pieces a shiny black finish without painting. This has made the pottery far more popular and collectable.  The town is home to the Museo Estatal de Arte Popular de Oaxaca (State Museum of Popular Art of Oaxaca) which was opened here in 2004, with a large portion of its collection consisting of barro negro pottery. There is also a barro negro mural on the recently  opened Baseball Academy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "san bartolo coyotepec",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bartolo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "coyotepec",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7816,
+    "attempt": 7764,
+    "place_id": "gn-2973720",
+    "input": {
+      "place": {
+        "place_id": "gn-2973720",
+        "name": "Suippes",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.12886,
+        "lon": 4.53446
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suippes",
+          "url": "https://en.wikipedia.org/wiki/Suippes",
+          "text": "Suippes (French pronunciation: [sɥip]) is a commune in the Marne department in north-eastern France. It was part of the so-called la Champagne pouilleuse, a region battered by conflict during World War I. In the early months of the war, British soldiers were deployed here and were to march to Châlons-sur-Marne to fight the First Battle of the Marne. In October 1918, the United States also deployed a brigade in the area and was assigned as Fourth French Army reserve. The commune was pillaged and razed by the Germans in the same way they attacked Heiltz-le-Maurupt, Marfaux, Fromentieres, and Esternay.\nThe commune is home to France's 40th Artillery Regiment and was once home to 15th Artillery Regiment which operated the nuclear Pluton missile as part of France's deterrent during the Cold War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "suippes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7817,
+    "attempt": 7765,
+    "place_id": "gn-2976742",
+    "input": {
+      "place": {
+        "place_id": "gn-2976742",
+        "name": "Saint-Tropez",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.26764,
+        "lon": 6.64049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Tropez",
+          "url": "https://en.wikipedia.org/wiki/Saint-Tropez",
+          "text": "Saint-Tropez ( SAN troh-PAY, -⁠ trə-; French: [sɛ̃ tʁɔpe]; Provençal: Sant Tropetz [san(t) tʀuˈpes]) is a commune in the Var department and the region of Provence-Alpes-Côte d'Azur, Southern France. It is 68 kilometres (42 miles) west of Nice and 100 kilometres (62 miles) east of Marseille, on the French Riviera, of which it is one of the best-known towns. As of 2023, the resident population of the commune was 3,582. The adjacent narrow body of water is the Gulf of Saint-Tropez (French: Golfe de Saint-Tropez), stretching to Sainte-Maxime to the north under the Massif des Maures.\nSaint-Tropez was a military stronghold and fishing village until the beginning of the 20th century. It was the first town on its coast to be liberated during World War II as part of Operation Dragoon. In the late 1950s and early 1960s it became an internationally known seaside resort, renowned principally because of the influx of artists of the French New Wave in cinema and the Yé-yé movement in music. European and American jet setters followed, and tourists in their wake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "saint tropez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tropez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7818,
+    "attempt": 7766,
+    "place_id": "gn-3051415",
+    "input": {
+      "place": {
+        "place_id": "gn-3051415",
+        "name": "Hőgyész",
+        "country": "Hungary",
+        "subdivision": "Tolna County",
+        "lat": 46.49697,
+        "lon": 18.41841
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hőgyész",
+          "url": "https://en.wikipedia.org/wiki/H%C5%91gy%C3%A9sz",
+          "text": "Hőgyész (German: Hidjess or Hidjeß) is a village in Tolna County, Hungary. It is the birthplace of the Slovak Impressionist painter Jozef Teodor Mousson and has a large castle of the Apponyi family.\nThe Hőgyész domain in Tolna County was acquired in 1722 by Count Claude Florimond de Mercy, and purchased by Count György Apponyi (1736–1782) in 1772. It was rebuilt in the late 18th century by György's son, Count Antal György Apponyi, who spent much of his later life there. The castle later went to Antal George's grandson Károly Apponyi (1805–1890), his son Géza (1853–1927) and the latter's son Károly (1878–1959) who sold it to the Hungarian state in 1939. During and after World War II it became a center for displaced people and military hospital, and later a school. It was privatized in 1999 and renovated into a luxury hotel, but was embroiled in the troubles of controversial financier Ghaith Pharaon which led to its closing in the 2010s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "hogyesz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7819,
+    "attempt": 7767,
+    "place_id": "gn-4125181",
+    "input": {
+      "place": {
+        "place_id": "gn-4125181",
+        "name": "Ozark",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 35.48703,
+        "lon": -93.8277
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ozark, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Ozark,_Arkansas",
+          "text": "Ozark is a city in Franklin County, Arkansas, United States and one of the county's two seats of government. The community is located along the Arkansas River in the Arkansas River Valley on the southern edge of the Ozark Mountains. As of the 2020 census it had a population of 3,542.\nIncorporated in 1850, Ozark is adjacent to much of Arkansas wine country, and contains a bridge to cross the Arkansas River for travelers heading to points south. The city is also located on Arkansas Highway 23, nicknamed the Pig Trail Scenic Byway, known for its steep drops, sharp curves and scenic mountain views.\nThe name Aux Arcs, later simplified to \"Ozark\", was given to this bend of the river by the French explorers when they were mapping out this land."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "ozark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7820,
+    "attempt": 7768,
+    "place_id": "gn-6173001",
+    "input": {
+      "place": {
+        "place_id": "gn-6173001",
+        "name": "Val-David",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.03338,
+        "lon": -74.21592
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Val-David",
+          "url": "https://en.wikipedia.org/wiki/Val-David",
+          "text": "Val-David is a village of more than 5,500 inhabitants in the Laurentian Mountains about 80 kilometres (50 mi) north of Montreal, Quebec, Canada. Attracting about 100,000 tourists a year, Val-David is predominantly francophone with a small anglophone minority.\nThe village is known for its food scene and artistic and hippie character. Several renowned and amateur artists, writers and dancers live and have lived in Val-David, including Québécois poet Gaston Miron, jazz bassist Charlie Biddle, and singer-songwriter Alan Gerber.\nVal-David is also a centre for much outdoor recreational activity as its 2,000-acre (8.1 km2) Parc Dufresne is the most popular rock-climbing destination in eastern Canada. Other features include the Parc Linéaire Le P'tit Train du Nord, a 200 kilometres (120 mi) bike trail, and groomed cross-country ski and snowshoe trails in winter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "val david",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "val",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "david",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7821,
+    "attempt": 7769,
+    "place_id": "gn-666509",
+    "input": {
+      "place": {
+        "place_id": "gn-666509",
+        "name": "Solca",
+        "country": "Romania",
+        "subdivision": "Suceava",
+        "lat": 47.7,
+        "lon": 25.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solca",
+          "url": "https://en.wikipedia.org/wiki/Solca",
+          "text": "Solca (German: Solka; Polish: Solka; Hungarian: Szolka) is a town in Suceava County, northeastern Romania. It is situated in the historical regions of Bukovina and Western Moldavia. Solca is the smallest town in the county and the third-smallest town in Romania overall, with a population of 2,405 inhabitants, according to the 2021 census. Its name is derived from that of the river flowing through it, in turn derived from Slavic sol (\"salt\") – in reference to the area's salty springs. Solca is known for its high quality air, for being a former spa, and for the eponymous beer brand that was manufactured here in its own factory (which was opened in 1810) until 2004 (the brand was subsequently acquired by Bermas and since then the Solca beer is produced in Suceava)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "solca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7822,
+    "attempt": 7770,
+    "place_id": "gn-996072",
+    "input": {
+      "place": {
+        "place_id": "gn-996072",
+        "name": "Hofmeyr",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -31.65349,
+        "lon": 25.80366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hofmeyr",
+          "url": "https://en.wikipedia.org/wiki/Hofmeyr",
+          "text": "Hofmeyr is a small Karoo town in the Eastern Cape Province of South Africa, 20 km west of the Bamboesberg mountain range. It lies 64 km north-east of Cradock at an altitude of 1,252 metres. According to the 2011 census, the population of Hofmeyr proper is about 326 persons and the neighbouring township of Luxolweni is about 3,354. In former times, it lay at the centre of a flourishing sheep-farming district and managed some salt pans 10 km to its west.\nFounded in 1873, the town was initially named Maraisburg. To avoid confusion with the Gauteng area of Maraisburg it was renamed Hofmeyr in 1911 in honour of Jan Hendrik Hofmeyr (Onze Jan), a campaigner for the equal treatment of Afrikaans and English and a prominent figure in the Eerste Taalbeweging."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "hofmeyr",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7823,
+    "attempt": 7771,
+    "place_id": "gn-5790385",
+    "input": {
+      "place": {
+        "place_id": "gn-5790385",
+        "name": "Clyde Hill",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.63177,
+        "lon": -122.2179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clyde Hill, Washington",
+          "url": "https://en.wikipedia.org/wiki/Clyde_Hill,_Washington",
+          "text": "Clyde Hill is a city located in King County, Washington. It is part of the Eastside region, located to the east of Seattle, and is bordered by the cities and towns of Bellevue, Kirkland, Medina, Yarrow Point and Hunts Point. The population was 3,126 at the 2020 census.\nThe majority of Clyde Hill is zoned for single-family use with the exception of two commercially zoned areas: a gas station and a coffee shop. In addition to a small government zone, the city is home to four schools:  two public schools - Clyde Hill Elementary and Chinook Middle School; and two private schools:  Bellevue Christian School and Sacred Heart School.  The city's minimum lot size is 20,000 square feet, although many smaller lots exist that pre-date the incorporation of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "clyde hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "clyde",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7824,
+    "attempt": 7772,
+    "place_id": "gn-732145",
+    "input": {
+      "place": {
+        "place_id": "gn-732145",
+        "name": "Dolna Banya",
+        "country": "Bulgaria",
+        "subdivision": "Sofia",
+        "lat": 42.31093,
+        "lon": 23.76459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dolna Banya",
+          "url": "https://en.wikipedia.org/wiki/Dolna_Banya",
+          "text": "Dolna Banya, also Dolna Banja or Dolna Bania (Bulgarian: Долна баня) is a town located in Sofia Province in southwestern Bulgaria. 75 km from Sofia and Plovdiv, Dolna Banya is located in the Kostenets–Dolna Banya Valley by the north-eastern slopes of the Rila Mountains, 18 and 30 km respectively from the ski resorts of Borovets and Samokov. Dolna Banya is a resort town, known for its hot mineral waters, with temperatures of 56.3 C. The area surrounding the town is largely agricultural, and there are skiing and hiking trails in the nearby mountains.\nDolna Banya is a small, lively town. The square has a vegetable market, bakery, and two bars. The inside of the town's Bulgarian Orthodox church is covered in murals, and the churchyard located next to a stream. The local stadium is named Vasil Levski, a tribute to the leader of Bulgaria's liberation from the Ottoman Empire and the national stadium of the same name in Sofia.\nDolna Banya is accessible by road, and a daily bus runs from the Sofia bus depot through other villages in the area.  However, buses run more frequently from Sofia to Kostenets (8 km from Dolna Banya).  From Kostenets transportation is available every 30 minutes to Dolna Banya.  Trains also run about every hour between Sofia and Kostenets.\nIn June 2005, Ibar Golf Club announced that a 20m Euro golf course would be constructed in Dolna Banya. Construction began in the fall of 2005 and is set for completion in 2007. It is expected to be the only golf course in Eastern Europe to meet PGA standards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "dolna banya",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dolna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "banya",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7825,
+    "attempt": 7773,
+    "place_id": "gn-10055383",
+    "input": {
+      "place": {
+        "place_id": "gn-10055383",
+        "name": "Joondanna",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.90767,
+        "lon": 115.84233
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joondanna, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Joondanna,_Western_Australia",
+          "text": "Joondanna is a suburb in Perth, Western Australia. Its local government area is the City of Stirling.\nThere is a Catholic church, St Denis, and a small Catholic primary school, St Denis School, named after the church.\nJoondanna is named after a farm said to be owned by an early settler in the area.\nJoondanna Heights was the first declared township in the Perth Road District (now the City of Stirling) - the Government Gazette of 17 November 1939 described its boundaries as Balcatta Beach Road (now North Beach Drive, Tuart Hill), Main Street, Wanneroo Road, and what was then the City of Perth boundary (Green Street, now the City of Vincent boundary). Joondanna's neighbouring suburbs are Yokine, Coolbinia, North Perth, Mount Hawthorn, Glendalough, Osborne Park, and Tuart Hill.\nFootballer Chris Judd lived in Joondanna when he played for the West Coast Eagles, and Paralympian Louise Sauvage grew up in the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "joondanna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7826,
+    "attempt": 7774,
+    "place_id": "gn-2973821",
+    "input": {
+      "place": {
+        "place_id": "gn-2973821",
+        "name": "Steenwerck",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.70199,
+        "lon": 2.77829
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steenwerck",
+          "url": "https://en.wikipedia.org/wiki/Steenwerck",
+          "text": "Steenwerck (French pronunciation: [stɛ̃vɛʁk]; Dutch: Steenwerk) is a commune, in French Flanders, in the Nord department in northern France. It is located about 25 km (16 mi) north of Lille. People from Steenwerck are known as Steenwerckois.\nIt is home to Steenwerck's 100 km à pied race event, which mainly features a 100 km (62 mi) marathon, although most local residents prefer to merely walk one lap (roughly 22 kilometres (14 mi)).\nSteenwerck also has its own festival giant, as is the tradition in the Nord Department, which is named Totor and is one of the tallest, measuring 5.70 m (18.7 ft).\nOther places of interest include the Museum of Rural Life as well as three Commonwealth war cemeteries, and a German war cemetery, of the First World War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "steenwerck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7827,
+    "attempt": 7775,
+    "place_id": "gn-3172301",
+    "input": {
+      "place": {
+        "place_id": "gn-3172301",
+        "name": "Nervesa della Battaglia",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.81232,
+        "lon": 12.19837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nervesa della Battaglia",
+          "url": "https://en.wikipedia.org/wiki/Nervesa_della_Battaglia",
+          "text": "Nervesa della Battaglia is a comune (municipality) in the Province of Treviso in the Italian region Veneto, located about 45 kilometres (28 mi) north of Venice and about 20 kilometres (12 mi) north of Treviso.\nIn February 1358 Nervesa was the scene of a battle in which the Republic of Venice was defeated by the forces of King Louis I of Hungary. That defeat forced the Venetians to sign the highly unfavorable Treaty of Zadar.\n\nSites include the remains of the Abbey of Sant'Eustachio, near the Piave river, which reached its apex in the 13th century. It was abandoned in 1865, and heavily damaged during the Battle of the Piave River in World War I. Another disappeared convent is the Charterhouse of San Girolamo, located on the Montello hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "nervesa della battaglia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nervesa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "della",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "battaglia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7828,
+    "attempt": 7776,
+    "place_id": "gn-4477779",
+    "input": {
+      "place": {
+        "place_id": "gn-4477779",
+        "name": "Maiden",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.57569,
+        "lon": -81.21175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maiden, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Maiden,_North_Carolina",
+          "text": "Maiden is a town in Catawba and Lincoln counties in the U.S. state of North Carolina. The population was 3,845 at the 2023 census.\nMaiden High School was the first public high school in the state with an observatory and is currently home to an Apple iCloud Data Center, covering 500,000 square feet (46,000 m2). In May 2012, Apple announced it would generate 60 percent of the Maiden facility's power itself, through a large deployment of fuel cells at the site and a 100-acre (40 ha) solar farm, with an additional 150-acre (61 ha) site 2 miles (3 km) away.\nThe Catawba County portion of Maiden is part of the Hickory-Lenoir-Morganton, NC Metropolitan Statistical Area, while the Lincoln County portion is part of the Charlotte-Concord-Gastonia, NC-SC Metropolitan Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "maiden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7829,
+    "attempt": 7777,
+    "place_id": "gn-4502986",
+    "input": {
+      "place": {
+        "place_id": "gn-4502986",
+        "name": "Medford Lakes",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.85845,
+        "lon": -74.80294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Medford Lakes, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Medford_Lakes,_New_Jersey",
+          "text": "Medford Lakes is a borough in Burlington County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 4,264, an increase of 118 (+2.8%) from the 2010 census count of 4,146, which in turn reflected a decline of 27 (−0.6%) from the 4,173 counted in the 2000 census. The borough, and all of Burlington County, is a part of the Philadelphia metropolitan area.\nMedford Lakes was incorporated as a borough by an act of the New Jersey Legislature on May 17, 1939, from portions of Medford Township. The borough was named for Medford Township, which was named by a developer for Medford, Massachusetts.\nThe borough's 22 lakes and surrounding lake communities are within the boundaries of the New Jersey Pinelands Commission. The Medford Lakes Colony, a community association, manages the lakes and other recreational facilities. More than 10% of the borough's homes are log cabins."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "medford lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "medford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7830,
+    "attempt": 7778,
+    "place_id": "gn-5091310",
+    "input": {
+      "place": {
+        "place_id": "gn-5091310",
+        "name": "Plymouth",
+        "country": "United States",
+        "subdivision": "New Hampshire",
+        "lat": 43.75702,
+        "lon": -71.68813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plymouth, New Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Plymouth,_New_Hampshire",
+          "text": "Plymouth is a New England town in Grafton County, New Hampshire, United States, in the White Mountains Region. It has a unique role as the economic, medical, commercial, and cultural center for the predominantly rural Plymouth, NH Labor Market Area. Plymouth is located at the confluence of the Pemigewasset and Baker rivers and sits at the foot of the White Mountains. The town's population was 6,682 at the 2020 census. It is home to Plymouth State University, Speare Memorial Hospital, and Plymouth Regional High School.\nThe town's main center, where 4,730 people resided at the 2020 census (three-quarters of whom are college student age), is defined as the Plymouth census-designated place (CDP), and is located along U.S. Route 3, south of the confluence of the Baker and Pemigewasset rivers.\nPlymouth State University, in the center of town, has a total undergraduate population of 3,336 students and a total graduate population of 503 students as of the 2023/2024 academic year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "plymouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7831,
+    "attempt": 7779,
+    "place_id": "gn-7261445",
+    "input": {
+      "place": {
+        "place_id": "gn-7261445",
+        "name": "Holloman Air Force Base",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 32.84827,
+        "lon": -106.09977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holloman Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Holloman_Air_Force_Base",
+          "text": "Holloman Air Force Base (IATA: HMN, ICAO: KHMN, FAA LID: HMN) is a United States Air Force base established in 1942 located six miles (10 km) southwest of the central business district of Alamogordo, which is the county seat of Otero County, New Mexico, United States. The base was named in honor of Col. George V. Holloman, a pioneer in guided missile research. It is the home of the 49th Wing (49 WG) of the Air Combat Command (ACC).\nIn addition to hosting several combat wings, Holloman supports the nearby White Sands Missile Range and currently hosts the Royal Air Force RPAS (Remotely Piloted Aircraft System) Formal Training Unit (FTU) and the Italian Air Force RPA training courses. The base previously hosted the German Air Force Flying Training Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "holloman air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "holloman",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7832,
+    "attempt": 7780,
+    "place_id": "gn-730744",
+    "input": {
+      "place": {
+        "place_id": "gn-730744",
+        "name": "Kalofer",
+        "country": "Bulgaria",
+        "subdivision": "Plovdiv",
+        "lat": 42.61667,
+        "lon": 24.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalofer",
+          "url": "https://en.wikipedia.org/wiki/Kalofer",
+          "text": "Kalofer (Bulgarian: Калофер pronounced:[kɐˈɫɔfɛr]) is a town in central Bulgaria, located on the banks of the Tundzha between the Balkan Mountains to the north and the Sredna Gora to the south. Kalofer is part of Plovdiv Province and the Karlovo municipality. It is best known as the birthplace of Bulgarian poet and revolutionary Hristo Botev.\nThe modern settlement of Kalofer emerged in the 16th century, managing to preserve its Bulgarian character in the Ottoman Empire and to develop as a centre of craftsmanship, primarily cord production. The Kalofer monastery has been in operation since 1640 and the convent since 1700. During the Bulgarian National Revival the town became a centre of revolutionary activity, being the birthplace of figures such as Hristo Botev, Exarch Joseph, Dimitar Panichkov, and Nikola Ivanov. Today, it is best known for the imposing Hristo Botev Monument (one of many in the country)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "kalofer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

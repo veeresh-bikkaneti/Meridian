@@ -1,0 +1,827 @@
+[
+  {
+    "rank": 7713,
+    "attempt": 7661,
+    "place_id": "gn-2771682",
+    "input": {
+      "place": {
+        "place_id": "gn-2771682",
+        "name": "Melk",
+        "country": "Austria",
+        "subdivision": "Lower Austria",
+        "lat": 48.22737,
+        "lon": 15.33186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melk",
+          "url": "https://en.wikipedia.org/wiki/Melk",
+          "text": "Melk (German pronunciation: [mɛlk] ; older spelling: Mölk) is a city in the Austrian state of Lower Austria, next to the Wachau valley along the Danube. Melk has a population of 5,257 (as of 2012). It is best known as the site of a massive baroque Benedictine monastery named Melk Abbey.\nThe town is first mentioned as Medilica in 831 in a donation of Louis the German; the name is from a Slavic word for 'border.' The area around Melk was given to Leopold I, Margrave of Austria, in the year 976 to serve as a buffer between the Magyars to east and Bavaria to the west. In 996 mention was first made of an area known as Ostarrîchi, which is the origin of the word Österreich (German for Austria). The bluff which holds the current monastery held a Babenberger castle until the site was given to Benedictine monks from nearby Lambach by Leopold II, in 1089. Melk received market rights in 1227 and became a municipality in 1898. During the Holocaust, there was a Nazi concentration camp at Melk, which functioned as a subcamp of Mauthausen.\nIn a very small area, Melk presents a great deal of architectural variety from many centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "melk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7714,
+    "attempt": 7662,
+    "place_id": "gn-5100297",
+    "input": {
+      "place": {
+        "place_id": "gn-5100297",
+        "name": "Lambertville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.36594,
+        "lon": -74.94294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lambertville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Lambertville,_New_Jersey",
+          "text": "Lambertville is a city within Hunterdon County in the U.S. state of New Jersey. It is situated on the banks of the Delaware River in southwestern Hunterdon County, directly across the river from New Hope, Pennsylvania.\nIn the 18th century, the area was named after various operators of ferries across the river to Pennsylvania, ultimately becoming known as Coryell's Ferry, after its owner, Emanuel Coryell. Coryell's Ferry was the western terminus of the New Jersey portion of York Road, which became U.S. Route 202, connecting New York City and Philadelphia. The community was named Lambertville in 1810, when the post office was established, in honor of John Lambert, a resident who had served as United States senator and acting governor of New Jersey, and who was responsible for the opening of the post office. In June 2022, The New York Times described Lambertville as a gay-friendly travel destination with a quieter vibe than New York's Fire Island.\nAs of the 2020 United States census, the city's population was 4,139, an increase of 233 (+6.0%) from the 3,906 recorded at the 2010 census, which in turn reflected an increase of 38 (1.0%) from the 3,868 counted in the 2000 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "lambertville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7715,
+    "attempt": 7663,
+    "place_id": "gn-2063031",
+    "input": {
+      "place": {
+        "place_id": "gn-2063031",
+        "name": "Port Noarlunga",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -35.14802,
+        "lon": 138.47099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Noarlunga, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Port_Noarlunga,_South_Australia",
+          "text": "Port Noarlunga is a suburb in the City of Onkaparinga, South Australia. It is a small sea-side suburb, with a population of 2,918 (2016 census), about 30 kilometres (19 miles) to the south of the Adelaide city centre and was originally created as a sea port. This area is now popular as a holiday destination or for permanent residents wishing to commute to Adelaide or work locally. There is a jetty that connects to a 1.6 kilometres (0.99 miles) natural reef that is exposed at low tide.\nIt is known as Tainbarang or Tainbarilla by the traditional owners, the Kaurna people, and is of significance as being the site of a freshwater spring said to be created by the tears of Tjilbruke, the creator being. A reserve known as the Tutu Wirra Reserve, on Witton Bluff, is the location of the stone cairn commemorating the second spring created by Tjilbruke on his journey down the coast.\nThe suburb is bounded to the south by the Onkaparinga River, including a tidal estuary. It is bounded to the west by the coastline with Gulf St Vincent, by Christies Beach to the north and by Noarlunga Centre and Noarlunga Downs to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "port noarlunga",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noarlunga",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7716,
+    "attempt": 7664,
+    "place_id": "gn-4503313",
+    "input": {
+      "place": {
+        "place_id": "gn-4503313",
+        "name": "North Wildwood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.00067,
+        "lon": -74.79933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Wildwood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/North_Wildwood,_New_Jersey",
+          "text": "North Wildwood is a city located on the Jersey Shore in Cape May County, in the U.S. state of New Jersey. The city and all of Cape May County are part of the Ocean City metropolitan statistical area, which in turn is part of the Philadelphia metropolitan area. As of the 2020 United States census, the city's population was 3,621, a decrease of 420 (−10.4%) from the 2010 census count of 4,041, which in turn had reflected a decline of 894 (−18.1%) from the 4,935 counted at the 2000 census. North Wildwood is home to the Hereford Inlet Lighthouse.\nThe city's beaches were ranked the fourth-best in New Jersey in the 2008 Top 10 Beaches Contest sponsored by the New Jersey Marine Sciences Consortium. North Wildwood is one of five municipalities in the state that offer free public access to oceanfront beaches monitored by lifeguards, joining Atlantic City, Wildwood, Wildwood Crest and Upper Township's Strathmere section."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "north wildwood",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wildwood",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7717,
+    "attempt": 7665,
+    "place_id": "gn-13561911",
+    "input": {
+      "place": {
+        "place_id": "gn-13561911",
+        "name": "Highfield Park",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 44.68639,
+        "lon": -63.58893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Highfield Park",
+          "url": "https://en.wikipedia.org/wiki/Highfield_Park",
+          "text": "Highfield Park is a neighbourhood located in the north end of the community of Dartmouth in Nova Scotia's Halifax Regional Municipality.\nHighfield Park is located in the larger neighbourhood of Albro Lake (also a part of the North End) and is situated on the former site of the Royal Canadian Navy's Naval Radio Station Albro Lake.  Following the merger of Canada's military to form the unified Canadian Forces in 1968, Naval Radio Station Albro Lake was closed and the land surrounding the lake was opened for development during the 1970s and 1980s.\nHighfield Park is situated at the northern extremity of Dartmouth, immediately south of Highway 111, which separates the neighbourhood from an industrial park in Burnside further to the north.  The eastern side of Highfield Park is defined by the neighbourhood of Crystal Heights (as well as Highway 111 as it curves around Albro Lake).  Victoria Road defines the southern boundary of the neighbourhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "highfield park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "highfield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7718,
+    "attempt": 7666,
+    "place_id": "gn-2162873",
+    "input": {
+      "place": {
+        "place_id": "gn-2162873",
+        "name": "Huonville",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -43.03124,
+        "lon": 147.04813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huonville",
+          "url": "https://en.wikipedia.org/wiki/Huonville",
+          "text": "Huonville () HYOO-on-vil is a town located on the banks of the Huon River in the Huon Valley, in the south-east of Tasmania, Australia. It serves as the administrative centre of the Huon Valley Council and is the largest town in the Huon Valley region. Situated approximately 38 kilometres south of the state capital, Hobart, Huonville acts as a gateway to Tasmania’s wilderness areas and the Southwest National Park.\nThe town is historically significant for its role in Tasmania's apple-growing industry, earning the Huon Valley the nickname \"Golden Valley\" due to its production of Golden Delicious apples. While the apple industry has declined, Huonville remains an important agricultural hub, now also known for aquaculture, including salmon farming, and for tourism. As the most centrally located township in the Huon Valley, Huonville serves as a hub for visitors exploring the region’s scenic landscapes, artisanal food and drink, and outdoor activities such as hiking, kayaking, and fishing.\nHuonville has a population of 3,002 according to the 2021 census. It is known for its proximity to the Huon Highway, which connects the town to nearby communities and Hobart, making it a central regional township for transport and trade. The township has historically faced environmental challenges, including vulnerability to floods and bushfires, which have affected the town in recent years. Despite these challenges, Huonville continues to thrive as a hub for eco-tourism and sustainable agriculture, preserving its rural heritage while adapting to modern economic and environmental conditions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 155,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "huonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7719,
+    "attempt": 7667,
+    "place_id": "gn-1734639",
+    "input": {
+      "place": {
+        "place_id": "gn-1734639",
+        "name": "Menglembu",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 4.5594,
+        "lon": 101.0484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menglembu",
+          "url": "https://en.wikipedia.org/wiki/Menglembu",
+          "text": "Menglembu is a small township in Kinta District, Perak, Malaysia, lying at the foot of the Kledang Hill, which is famous for its eponymously-named groundnuts. The nuts have been commercially farmed in the area since 1945 under multiple brands including Thong Thye Groundnut Factory's Pagoda brand, Ngan Yin Groundnut Factory's Thumbs brand (originally translated into English as Hand Brand) and Mee Hiong Yuen Groundnut Factory's Fisherman brand, among others. \nHistorically, Menglembu and the surrounding areas of the Kinta Valley were settled by Chinese of the Hakka Dialect Group from South China who worked in the tin mines. These townships were so densely populated by Hakka people that even many non-Chinese residents spoke Hakka. Eventually, most of the Chinese people in the Ipoh area adopted Cantonese, the main dialect of Ipoh Town, as their lingua franca.\nMany shoplots in Menglembu were built in 1906 before the pre-World War era, but very few of these remain. Most of these shops have since been torn down and rebuilt, although some have been renovated.\nAs well as its old buildings and peanuts, nowadays Menglembu is well-known locally as a foodie destination. Popular local offerings include Chee Cheong Fun, traditional Curry Mee and Ipoh White Coffee."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "menglembu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7720,
+    "attempt": 7668,
+    "place_id": "gn-2510580",
+    "input": {
+      "place": {
+        "place_id": "gn-2510580",
+        "name": "Teba",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.98358,
+        "lon": -4.91913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teba",
+          "url": "https://en.wikipedia.org/wiki/Teba",
+          "text": "Teba is a town and municipality located in the province of Málaga in the autonomous community of Andalusia in southern Spain. It is situated in the northeast of the province, in Guadalteba comarca. As of 2018, its population is 3,818. The town is the site of the Battle of Teba, which took place in 1330 during the Reconquista.\nIn the so-called Battle of Teba, a war event that had as its main consequence the capture of the Castillo de la Estrella by Alfonso XI in August 1330, the Scottish nobleman, Sir James Douglas, died along with a group of Scots, while trying to help the Castilian king in the conquest of the fortress. The reason for his presence there is given by having been commissioned by the liberating king of Scotland, Robert I of Scotland, who had achieved independence from England before dying of leprosy, to take his embalmed heart to the Holy Land. Scottish legends tell that Sir James threw his king's heart to the Muslims who had ambushed him, thus fulfilling the king's wish to fight the infidels. In memory of this event, a monument was erected in the town, which is twinned with the Scottish town of Melrose. Likewise, and in commemoration of the events, a festive day known as Douglas' Days is celebrated annually in Teba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 154,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "teba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7721,
+    "attempt": 7669,
+    "place_id": "gn-2517298",
+    "input": {
+      "place": {
+        "place_id": "gn-2517298",
+        "name": "Gata de Gorgos",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.77443,
+        "lon": 0.08538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gata de Gorgos",
+          "url": "https://en.wikipedia.org/wiki/Gata_de_Gorgos",
+          "text": "Gata de Gorgos (Valencian: [ˈɡata ðe ˈɣoɾɣos], Spanish: [ˈɡata ðe ˈɣoɾɣos]) is a village in the Marina Alta region of the north Costa Blanca in Spain. It has a population of 5,325 (2005).\nThe village is known for its wicker industry and for having an unusually large number of bars and restaurants per capita. Boasting over 30 bars, the most popular are Ca Corder, which is located in the church square, and Ca Patrics, which is located in the Placa Nuevo.\nThe town's key fiestas take place during July to honour The Christ of the Calvary.(Fiestas en honor al Santísimo Cristo del Calvario). A key part of this event includes bull running along the street known as Paseo de Alicante - another is when the town's young men and women who are 'coming of age' form groups called 'Quintos' and march through the town accompanied by music and watched by family and friends. The highlight to many is the Paella Night, where most of the town congregate in the school to cook paella in the open air before being entertained by a local band."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "gata de gorgos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gata",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gorgos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7722,
+    "attempt": 7670,
+    "place_id": "gn-2654742",
+    "input": {
+      "place": {
+        "place_id": "gn-2654742",
+        "name": "Bridge of Earn",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.34842,
+        "lon": -3.4065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridge of Earn",
+          "url": "https://en.wikipedia.org/wiki/Bridge_of_Earn",
+          "text": "Bridge of Earn (Scottish Gaelic: Drochaid Èireann) is a village in Perth and Kinross, Scotland. Often referred to simply as 'Brig' (Scots for 'bridge'). The village grew up on the south bank of an important crossing of the River Earn, whose sandstone bridge existed from at least the early 14th century, when it is known to have been repaired by order of Robert I of Scotland (1306–1329) (site: NO 133 185). Substantial remains of the medieval bridge (rendered redundant by a replacement, still in use, slightly upstream in 1821–22) survived into the 1970s, when almost all the stonework was demolished. This ancient bridge was a major landmark on the road between Edinburgh (39 miles or 63 kilometres south) and Perth (4 miles or 6 kilometres  north) for several centuries. The village's oldest houses are to be found lining the road (Back Street/Old Edinburgh Road) leading south from the site of the demolished bridge. Among them are some with 18th-century datestones.\nThe ruined Old Bridge of Earn (and part of the village) are featured in the 1857 painting Sir Isumbras at the Ford by John Everett Millais (1829–1896), who often stayed at nearby Perth.  There is also an early 19th-century lithograph showing the structure as complete in Sketches of Scenery in Perthshire by David Octavius Hill (1802–1870)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "bridge of earn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bridge",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "earn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7723,
+    "attempt": 7671,
+    "place_id": "gn-3111855",
+    "input": {
+      "place": {
+        "place_id": "gn-3111855",
+        "name": "Ribadesella",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.46145,
+        "lon": -5.05955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ribadesella",
+          "url": "https://en.wikipedia.org/wiki/Ribadesella",
+          "text": "Ribadesella (Asturian: Ribeseya) is a small 84-square-kilometre (32 mi2) municipality in the Autonomous Community of the Principality of Asturias, Spain. Known for its location on the Cantabrian Sea, at the outlet of the River Sella, Ribadesella is located near the Picos de Europa and serves as a gateway to the region. It is bordered on the east by Llanes, on the south by Cangas de Onís and Parres, and on the west by Caravia. Queen Letizia of Spain has family ties to Ribadesella, although she was born in Oviedo.\nOn the first weekend of August, the International Sella River Descent takes place; kayakers from all over the world gather here to attempt the final 20 kilometres (12.4 miles) of the Sella River in record time. The town is also known for its prehistoric cave, known as the Cave of Tito Bustillo, which is open to visitors during scheduled seasons and with limited access. Ribadesella is often visited for its history, sport activities, scenery, natural amenities, and food."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "ribadesella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7724,
+    "attempt": 7672,
+    "place_id": "gn-3169687",
+    "input": {
+      "place": {
+        "place_id": "gn-3169687",
+        "name": "Quattro Castella",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.63496,
+        "lon": 10.47429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quattro Castella",
+          "url": "https://en.wikipedia.org/wiki/Quattro_Castella",
+          "text": "Quattro Castella (Reggiano: I Quâter Castē) is a comune (municipality) in the Province of Reggio Emilia in the Italian region Emilia-Romagna, located in the Terre di Canossa, about 70 kilometres (43 mi) west of Bologna and about 15 kilometres (9 mi) southwest of Reggio Emilia.\nQuattro Castella borders the following municipalities: Albinea, Bibbiano, Reggio Emilia, San Polo d'Enza, Vezzano sul Crostolo.\nTwo of its churches include Sant'Antonino Martire in town; and  the Oratory of the Madonna della Battaglia outside of the town.\nQuattro Castella is home to the Castello di Bianello, the only remaining intact castle of the four castles giving it its name.\nEvery year in May the town hosts the famous Corteo storico matildico, which commemorates the restoration of the feudal rights of Matilde of Canossa by Henry V, Holy Roman Emperor. The scene is reinacted by famous actors in the leading roles, along with hundreds of others in medieval costumes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "quattro castella",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "quattro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "castella",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7725,
+    "attempt": 7673,
+    "place_id": "gn-3439156",
+    "input": {
+      "place": {
+        "place_id": "gn-3439156",
+        "name": "Carmen del Paraná",
+        "country": "Paraguay",
+        "subdivision": "Itapúa",
+        "lat": -27.22232,
+        "lon": -56.15243
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carmen del Paraná",
+          "url": "https://en.wikipedia.org/wiki/Carmen_del_Paran%C3%A1",
+          "text": "Carmen del Paraná is a district in the Itapúa Department of Paraguay. It is located in the southern part of the country, about 350 kilometers south of the national capital, Asunción and 35 kilometers northwest of the department capital, Encarnación. Founded in 1843 by Carlos Antonio López and Mariano Roque Alonso, the district is historically revered as the \"Cradle of Independence of Paraguay\" due to the pivotal Battle of Tacuarí in 1811.\nCovering an area of 302.5 square kilometers, Carmen del Paraná has a predominantly urban and working age population of 6,417 inhabitants per the 2022 Paraguayan census. Economically, the district is a major agricultural hub famously known as the \"Capital of Rice,\" hosting three of Paraguay's largest rice processing mills. In recent years, infrastructure developments following the construction of the Yacyretá Dam have transformed the district into a popular summer destination, drawing thousands of tourists to its 10-kilometer waterfront and beaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "carmen del parana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carmen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "parana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7726,
+    "attempt": 7674,
+    "place_id": "gn-3454701",
+    "input": {
+      "place": {
+        "place_id": "gn-3454701",
+        "name": "Paula Freitas",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -26.20833,
+        "lon": -50.93806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paula Freitas",
+          "url": "https://en.wikipedia.org/wiki/Paula_Freitas",
+          "text": "Paula Freitas is a municipality in the state of Paraná in the Southern Region of Brazil.\nThe Brazilian town of Paula Freitas is home to a Geomagnetism Research Laboratory, called Geophysics Research Campus Major Edsel de Freitas Coutinho, whose goal is to study the South Atlantic Geomagnetic Anomaly. The Paula Freitas municipality is close to the center of the largest and most important of Earth's Magnetic Anomalies, which has an influence on all ionosphere, extending from the Andes Cordillera to South Africa, encompassing almost all South America.  \nThe town of Paula Freitas lies under the area where the Earth's inner Van Allen radiation belt comes closest to the Earth's surface. \nThis leads to an increased flux of energetic particles in this region and exposes orbiting satellites and other spacecraft to higher than usual levels of radiation. The effect is caused by the non-concentricity of the Earth and its magnetic dipole."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "paula freitas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paula",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "freitas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7727,
+    "attempt": 7675,
+    "place_id": "gn-2205846",
+    "input": {
+      "place": {
+        "place_id": "gn-2205846",
+        "name": "Invermay",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -41.42036,
+        "lon": 147.13358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Invermay, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Invermay,_Tasmania",
+          "text": "Invermay is a residential locality in the local government area (LGA) of Launceston in the Launceston LGA region of Tasmania. The locality is about 3 kilometres (1.9 mi) north of the town of Launceston. The 2021 census recorded a population of 3,498 for the state suburb of Invermay.\nIt is a suburb of Launceston, which contains the minor suburb of Inveresk, it is located on the eastern side of the Tamar River and the northern side of the North Esk River, the suburb is most notable as being home to York Park (University of Tasmania Stadium).\nInvermay is also home to many of Launceston's cultural institutions, in an area known as the \"Inveresk Precinct\" including the Tramway museum, Queen Victoria Museum and Art Gallery, The Powerhouse Gallery and ArtSpace and University of Tasmania campus. Invermay is home to Riverbend Park which was voted Tasmania’s Favourite Playground in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "invermay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7728,
+    "attempt": 7676,
+    "place_id": "gn-3182811",
+    "input": {
+      "place": {
+        "place_id": "gn-3182811",
+        "name": "Arosio",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.71933,
+        "lon": 9.20816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arosio",
+          "url": "https://en.wikipedia.org/wiki/Arosio",
+          "text": "Arosio (Brianzöö: Aroeus; locally Roeus) is a comune (municipality) in the Province of Como in the Italian region Lombardy, located about 30 kilometres (19 mi) north of Milan and about 15 kilometres (9 mi) southeast of Como. As of 31 December 2004, it had a population of 4,521 and an area of 2.7 square kilometres (1.0 mi2).\nArosio borders the following municipalities: Carugo, Giussano, Inverigo.\nArosio is a valuable town in Brianza a geographical area at the foot of the Alps, and is a part of the Parco della Valle del Lambro.\nIt is crossed by two important roads named Nuova Vallassina and Novedratese\nThe town hosted the Institute for Invalids where Don Carlo Gnocchi founded the Federation for Mutilated Children, in 1952 began the Juvenile Foundation, today known as the Don Carlo Gnocchi – ONLUS Foundation.\nThe bird observatory Osservatorio Ornitologico di Arosio was established in 1710. It has a museum.\nThe municipality also gives rise to the surname Arosio, very common in Brianza"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "arosio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7729,
+    "attempt": 7677,
+    "place_id": "gn-6065568",
+    "input": {
+      "place": {
+        "place_id": "gn-6065568",
+        "name": "Maple Bay",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.81633,
+        "lon": -123.61936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maple Bay, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Maple_Bay,_British_Columbia",
+          "text": "Maple Bay is a seaside community located in the Cowichan Valley of southern Vancouver Island, British Columbia, Canada. A narrow inlet and surrounded by smooth, pebbled beaches, Maple Bay is home to marine activity all year round. Maple Bay is a small town with a population of 2,640.\nThe sheltered haven of Maple Bay is situated halfway up Sansum Narrows, which separates Vancouver Island from Saltspring Island, the largest and nearest of the southern Gulf Islands.\nMaple Bay is serviced by floatplane, Salt Spring Air and Harbour Air Seaplanes that fly regular scheduled flights several times a day from Maple Bay Marina, to Ganges (Ganges Water Aerodrome) on Saltspring Island and then on to Vancouver (Vancouver International Water Airport/Vancouver International Airport and Vancouver Harbour Flight Centre).\nThere are three commercial marinas, a public dock, as well as the Maple Bay Yacht Club and the Maple Bay Rowing Club.\nMaple Bay Marina is replacing many older boat sheds with new style, fire resistant yacht enclosures, creating one of the safest and most environmentally responsible  marinas in British Columbia. Maple Bay Marina has also been recognised with an Eco-Rating of 5 anchors for their Environmental Best Practices by the Georgia Strait Alliance Clean Marine program."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "maple bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "maple",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7730,
+    "attempt": 7678,
+    "place_id": "gn-2699768",
+    "input": {
+      "place": {
+        "place_id": "gn-2699768",
+        "name": "Kopparberg",
+        "country": "Sweden",
+        "subdivision": "Örebro",
+        "lat": 59.87597,
+        "lon": 14.99436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kopparberg",
+          "url": "https://en.wikipedia.org/wiki/Kopparberg",
+          "text": "Kopparberg is a locality and the seat of Ljusnarsberg Municipality, Örebro County, Sweden, with 4,200 inhabitants in 2015. It is famous for one of the most valuable postage stamps in the world, the Treskilling Yellow from 13 July 1857, Kopparberg's wooden church (voted No. 1 in Sweden in 2006), and Kopparberg Cider, now one of the best selling ciders in the UK and worldwide.\nThis name is traditionally associated with Falun, some 90 km to the north, and gave its name to Kopparbergs län (Kopparberg County, now called Dalarna County) and the 700-year-old mining company Stora Kopparberg, which is now part of Stora Enso. However, the town was founded as late as 1635 with the name Nya Kopparberget. It was named after the copper mines that were, in the 18th century, a major supply of the world's copper, and a considerable contributor to the Swedish national economy. Kopparberg lies on a major north–south road, 80 km north of Sweden's sixth most populous city, Örebro.  Örebro is in the middle of Sweden, lying on the east–west 500 km/300 mile E18/E20 highway and also railway lines that directly connect Stockholm, Sweden, to Oslo, Norway. These are some of the busiest in Sweden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "kopparberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7731,
+    "attempt": 7679,
+    "place_id": "gn-3175182",
+    "input": {
+      "place": {
+        "place_id": "gn-3175182",
+        "name": "Lamporecchio",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.80742,
+        "lon": 10.87733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lamporecchio",
+          "url": "https://en.wikipedia.org/wiki/Lamporecchio",
+          "text": "Lamporecchio (Italian: [lampoˈrekkjo]) is a comune (municipality) in the province of Pistoia, in the Italian region of Tuscany, located about 30 kilometres (19 mi) west of Florence and about 13 kilometres (8 mi) south of Pistoia, 15 kilometres (9 mi) east of Montecatini Terme, and 4 kilometres (2.5 mi) west of Vinci. \nLamporecchio is the birthplace of Francesco Berni, a poet. From here started its ascent as one of the most important noble families of Tuscany, the Rospigliosi, which later moved to Pistoia and Rome, reaching the papacy with Clement IX.\nThe town is known for the invention of brigidini, which are thin anise flavored wafers, and the berlingozzo, a typical Carnival cake.\nLamporecchio borders the following municipalities: Cerreto Guidi, Larciano, Quarrata, Serravalle Pistoiese, Vinci.\nA frazione (hamlet) of Lamporecchio, called San Baronto, was chosen to be a part of 2013 UCI Road World Championships road race."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "lamporecchio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7732,
+    "attempt": 7680,
+    "place_id": "gn-672023",
+    "input": {
+      "place": {
+        "place_id": "gn-672023",
+        "name": "Ocna Sibiului",
+        "country": "Romania",
+        "subdivision": "Sibiu County",
+        "lat": 45.88333,
+        "lon": 24.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocna Sibiului",
+          "url": "https://en.wikipedia.org/wiki/Ocna_Sibiului",
+          "text": "Ocna Sibiului (German: Salzburg; Hungarian: Vízakna) is a town in the centre of Sibiu County, in southern Transylvania, central Romania, 10 km (6.2 mi) to the north-west of the county seat, Sibiu. The town administers a single village, Topârcea (Tschapertsch; Toporcsa).\nThe first spa resort was established here in 1845, and since then Ocna Sibiului has earned a reputation thanks to its heliothermal lakes formed on the site of old salt mines that had collapsed.\nThere are several salt lakes (former collapsed salt mines) on the salt massif.\nThe temperate climate, aerosol-rich air, annual temperatures above the regional average, and recent renovations of the spa infrastructure have helped restore the town’s popularity as a health resort.\nOcna Sibiului is also of archaeological interest: Bronze Age tools (dating from approximately 1900–800 BC) have been discovered in the area and are currently exhibited at the Brukenthal Museum in Sibiu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "ocna sibiului",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sibiului",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
