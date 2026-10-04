@@ -1,0 +1,887 @@
+[
+  {
+    "rank": 404,
+    "place_id": "gn-282615",
+    "input": {
+      "place": {
+        "place_id": "gn-282615",
+        "name": "Nablus",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 32.22111,
+        "lon": 35.25444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nablus",
+          "url": "https://en.wikipedia.org/wiki/Nablus",
+          "text": "Nablus ( NA(H)B-ləs) is a city in the West Bank, Palestine, and the capital of the Nablus Governorate. It is located approximately 49 kilometres (30 mi) north of Jerusalem, between Mount Ebal and Mount Gerizim with a population of 156,906. The city is a commercial and cultural centre of Palestine, home to An-Najah National University, one of the largest institutions of higher learning in Palestine, and the Palestine Stock Exchange. Nablus is under the administration of the Palestinian National Authority (PNA).\nNablus has been traditionally associated with the ancient city of Shechem. However, Shechem is now identified with the nearby site of Tell Balata in the Balata al-Balad suburb of the West Bank.\nThe modern name of the city can be traced back to the Roman period, when it was named Flavia Neapolis by Roman emperor Vespasian in 72 CE. During the Byzantine period, conflict between the city's Samaritan and newer Christian inhabitants peaked in the Samaritan revolts that were eventually suppressed by the Byzantines by 573, which greatly dwindled the Samaritan population of the city. Following the Muslim conquest of the Levant in the 7th century, the city was given its present-day Arabic name of Nablus. After the First Crusade, the Crusaders drafted the laws of the Kingdom of Jerusalem in the Council of Nablus, and its Christian, Samaritan, and Muslim inhabitants prospered. The city then came under the control of the Ayyubids and the Mamluk Sultanate. Under the Ottoman Turks, who conquered the city in 1517, Nablus served as the administrative and commercial centre for the surrounding area corresponding to the modern-day northern West Bank. Much of Nablus' history is preserved in its Old City, which contains more than 100 monumental buildings.\nAfter the city was captured by British forces during World War I, Nablus was incorporated into Mandatory Palestine in 1922. The 1948 Arab–Israeli War saw the entire West Bank, including Nablus, occupied and annexed by Transjordan. Since the 1967 Arab–Israeli War, the West Bank has been occupied by Israel; since 1995, it has been governed by the Palestinian Authority as part of Area A of the West Bank. Today, the population is predominantly Muslim, with small Christian and Samaritan minorities."
+        },
+        {
+          "article": "Nablus (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Nablus#Climate",
+          "text": "The relatively temperate Mediterranean climate brings hot, dry summers and cool, rainy winters to Nablus. Spring arrives around March–April and the hottest months in Nablus are July and August with the average high being . The coldest month is January with temperatures usually at . Rain generally falls between October and March, with annual precipitation rates being approximately ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 59,
+      "leadWords": 364,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives West Bank location between two mountains north of Jerusalem and Roman founding in 72 CE with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "nablus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 405,
+    "place_id": "gn-3557846",
+    "input": {
+      "place": {
+        "place_id": "gn-3557846",
+        "name": "Guanabacoa",
+        "country": "Cuba",
+        "subdivision": "Havana",
+        "lat": 23.12518,
+        "lon": -82.30067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guanabacoa",
+          "url": "https://en.wikipedia.org/wiki/Guanabacoa",
+          "text": "Guanabacoa is a colonial township in eastern Havana, Cuba, and one of the 15 municipalities (or boroughs) of the city. It is famous for its historical Santería and is home to the first African Cabildo in Havana. Guanabacoa was briefly the capital of Cuba in 1555 after Havana was attacked by French pirate Jacques de Sores. This gave rise to the Cuban saying \"Like putting Havana in Guanabacoa,\" which is used to describe trying to fit something too large into a space too small. Guanabacoa was the site of the Battle of Guanabacoa, a skirmish between British and Spanish troops as part of the larger Battle of Havana during the Seven Years' War."
+        },
+        {
+          "article": "Guanabacoa (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Guanabacoa#Climate",
+          "text": "This area typically has a pronounced dry season. According to the Köppen Climate Classification system, Guanabacoa has a tropical savanna climate, abbreviated \"Aw\" on climate maps."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 26,
+      "leadWords": 113,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives eastern Havana township location, Santeria fame, and brief 1555 capital history with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "guanabacoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 407,
+    "place_id": "gn-3981941",
+    "input": {
+      "place": {
+        "place_id": "gn-3981941",
+        "name": "Tepic",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 21.50733,
+        "lon": -104.89332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepic",
+          "url": "https://en.wikipedia.org/wiki/Tepic",
+          "text": "Tepic (Spanish pronunciation: [teˈpik] ) is the capital and largest city of the western Mexican state of Nayarit, as well as the seat of the Tepic Municipality.\nLocated in the central part of the state, it stands at an altitude of 915 metres (3,002 ft) above sea level, on the banks of the Río Mololoa and the Río Tepic, approximately 225 kilometres (140 mi) north-west of Guadalajara, Jalisco. Nearby are the volcanoes of San Juan, Las Navajas, and Sangangüey. Tepic is the primary urban center of this rich agricultural region; major crops include sugarcane, tobacco and citrus fruits.\nThe city was founded in 1531 as Villa del Espíritu Santo de la Mayor España."
+        },
+        {
+          "article": "Tepic (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tepic#Climate",
+          "text": "Tepic has a humid subtropical climate (Köppen climate classification Cwa), with most rain falling in the wet season from April to November, sometimes in December."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 25,
+      "leadWords": 113,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives location, altitude, rivers, volcanoes and crops with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tepic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 408,
+    "place_id": "gn-5351247",
+    "input": {
+      "place": {
+        "place_id": "gn-5351247",
+        "name": "Fullerton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.87029,
+        "lon": -117.92534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fullerton, California",
+          "url": "https://en.wikipedia.org/wiki/Fullerton,_California",
+          "text": "Fullerton ( FUUL-ər-tən) is a city in northern Orange County, California, United States. As of the 2020 census, the city had a total population of 143,617.\nFullerton was founded in 1887. Historically, it was a center of agriculture, notably groves of Valencia oranges and other citrus crops, as well as petroleum extraction; transportation; and manufacturing. It is home to numerous higher educational institutions, particularly California State University, Fullerton and Fullerton College. From the mid-1940s through the late 1990s, Fullerton was home to a large industrial base made up of aerospace contractors, canneries, paper products manufacturers, and is considered to be the birthplace of the electric guitar, due in large part to Leo Fender. The headquarters of Vons, which is owned by Albertsons, is located in Fullerton near the Fullerton–Anaheim line."
+        },
+        {
+          "article": "Fullerton, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Fullerton,_California#Climate",
+          "text": "According to the Köppen Climate Classification system, Fullerton has a hot-summer Mediterranean climate, abbreviated Csa on climate maps."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 18,
+      "leadWords": 130,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives county location, founding, agriculture and industry with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "fullerton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 409,
+    "place_id": "gn-5784549",
+    "input": {
+      "place": {
+        "place_id": "gn-5784549",
+        "name": "West Jordan",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.60967,
+        "lon": -111.9391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Jordan, Utah",
+          "url": "https://en.wikipedia.org/wiki/West_Jordan,_Utah",
+          "text": "West Jordan is a city in Salt Lake County, Utah, United States. It is a suburb of Salt Lake City. According to the 2020 Census, the city had a population of 116,961, placing it as the third most populous in the state. The city occupies the southwest end of the Salt Lake Valley at an elevation of 4,330 feet (1,320 m). Named after the nearby Jordan River, the limits of the city begin on the river's western bank and end in the eastern foothills of the Oquirrh Mountains, where Kennecott Copper Mine, the world's largest man-made excavation, is located.\nSettled in the mid-19th century, the city has developed into its own regional center. As of 2012, the city has four major retail centers; with Jordan Landing being one of the largest mixed-use planned developments in the Intermountain West. Companies headquartered in West Jordan include Mountain America Credit Union, Lynco Sales & Service, SME Steel, and Cyprus Credit Union. The city has one major hospital, Jordan Valley Medical Center, and a campus of Salt Lake Community College.\nCity landmarks include Gardner Village, established in 1850, and South Valley Regional Airport, formerly known as \"Salt Lake Airport #2\". The airport serves general aviation operations as well as a base for the 211th Aviation Regiment of the Utah Army National Guard flying Apache and Black Hawk helicopters."
+        },
+        {
+          "article": "West Jordan, Utah (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/West_Jordan,_Utah#Geography",
+          "text": "]]\nAccording to the United States Census Bureau, the city has a total area of 30.9 square miles (80.0 km 2 ), all land.\nWest Jordan is bordered on the west by the Oquirrh Mountains and on the east by the Jordan River. The western neighborhoods of Welby, Copper Hills, and Jordan Hills are rapidly growing regions located along the lower slopes of the eastern Oquirrh Mountains. The fastest development is currently taking place between 4800 West and State Route 111, a highway that traverses the slopes of the Oquirrh Mountains.\nThe city lies approximately southwest of downtown Salt Lake City. The city is bordered on the north by Taylorsville and Kearns, on the south by South Jordan, on the east by Sandy, Murray and Midvale, on the west by Copperton, and on the extreme northwestern corner by West Valley City."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 141,
+      "leadWords": 224,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives valley location, elevation, copper mine and settlement history with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "west jordan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jordan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 410,
+    "place_id": "gn-944986",
+    "input": {
+      "place": {
+        "place_id": "gn-944986",
+        "name": "Vanderbijlpark",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.71171,
+        "lon": 27.83795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vanderbijlpark",
+          "url": "https://en.wikipedia.org/wiki/Vanderbijlpark",
+          "text": "Vanderbijlpark  is an industrial city with approximately 95,000 inhabitants, situated on the Vaal River in the south of Gauteng province, South Africa. The city is named after Hendrik van der Bijl, an electrical engineer and industrialist.\nVanderbijlpark is home to Vanderbijlpark Steel, previously part of the South African Iron and Steel Corporation (ISCOR), which subsequently became a subsidiary of the global company ArcelorMittal. With neighbouring cities Vereeniging and Sasolburg, it forms the Vaal Triangle, historically a major industrial region of South Africa. It is situated in the local municipality of Emfuleni and district municipality of Sedibeng.\nThe peri-urban black townships Boipatong, Muvango, Bophelong, Sebokeng, Evaton, Tshepiso and Sharpeville are close to the city."
+        },
+        {
+          "article": "Vanderbijlpark (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Vanderbijlpark#Climate",
+          "text": "Vanderbijlpark is situated on the highveld of South Africa, at an altitude of 1,500 meters on the banks of the Vaal River. Summers in the city are warm to hot with an average high between 31 and 35°C, and an average low between 15 and 22°C. Winters in the city are cool to warm with an average high of between 18 and 23°C and an average low of between −1 and 5°C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 72,
+      "leadWords": 113,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives river location, naming and steel industry with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "vanderbijlpark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 411,
+    "place_id": "gn-1260476",
+    "input": {
+      "place": {
+        "place_id": "gn-1260476",
+        "name": "Panipat",
+        "country": "India",
+        "subdivision": "Haryana",
+        "lat": 29.38747,
+        "lon": 76.96825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panipat",
+          "url": "https://en.wikipedia.org/wiki/Panipat",
+          "text": "Panipat () is an industrial city, located 95 km north of Delhi and 169 km south of Chandigarh on NH-44 in Panipat district, Haryana, India. It is famous for three major battles fought in 1526, 1556 and 1761. The city is also known as 'city of weavers', 'textile city' and 'cast-off clothes capital' of the world. It is home to industries like wool and cotton milling, saltpetre refining and manufacture of glass, electrical appliances, and other products. The city is included in the list of critically polluted industrial areas in India. As in Dec 2009, the Comprehensive Environment Pollution Index (CEPI) of the city was 59.00, as against 88.50 of Ankaleshwar (Gujarat). The three battles fought in the fatal field of Panipat changed the course of India's history, first two resulting in creation and confirmation of the Mughal Empire. The third battle led to the decisive defeat of the Maratha Confederacy in North India, which had become a dominating power in Delhi by then and enabled the British Empire's  Company rule in India ."
+        },
+        {
+          "article": "Panipat (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Panipat#Geography",
+          "text": "Panipat is located at . It has an average elevation of 219 meters (718 feet)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 15,
+      "leadWords": 174,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives distance from Delhi, battles and textile industry with no climate mechanism, extreme or paradox; pollution index is not climate",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "panipat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 412,
+    "place_id": "gn-1784130",
+    "input": {
+      "place": {
+        "place_id": "gn-1784130",
+        "name": "Zhoukou",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 33.63333,
+        "lon": 114.63333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhoukou",
+          "url": "https://en.wikipedia.org/wiki/Zhoukou",
+          "text": "Zhoukou (Chinese: 周口; pinyin: Zhōukǒu; Wade–Giles: Chou-k’ou; postal: Chowkow) is a prefecture-level city in eastern Henan province, China. It borders Zhumadian to the southwest, Xuchang and Luohe to the west, Kaifeng to the northwest, Shangqiu to the northeast, and the province of Anhui on all other sides. As of the 2020 census, its population was 9,026,015 inhabitants. However, as of the 2018 estimation, 1,601,300 lived in the built-up (or metro) made up of Chuanhui district and the northern part of Shangshui county.\nThe history and geography of Zhoukou have made it a city. As the ancient capitals of Emperor Yao and the birthplace of Laozi, it carries a cultural heritage of China. At the same time, the remnants of the Chen and Chu cultures endow Zhoukou with historical significance. The development of the Lin'gang New City reflects the city's modernization process and economic development.\nThe convergence of the Sha Ying rivers has endowed Zhoukou with unparalleled geographical advantages, making it a hub known as the Central Plains Port City. This bestowed upon Zhoukou significant importance in ancient times, and today, with further improvements in transportation infrastructure, its advantages are even more pronounced.\nThe integrated transportation network comprising highways, railways, and waterways has provided robust support for the city's development, facilitating economic growth and connections with the outside world. This transportation advantage has not only driven the local economy of Zhoukou but has also positioned it as a vital nexus linking the Central Plains with other regions."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 246,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives province location, borders, ancient heritage and river convergence with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "zhoukou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 414,
+    "place_id": "gn-1806696",
+    "input": {
+      "place": {
+        "place_id": "gn-1806696",
+        "name": "Humen",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.81899,
+        "lon": 113.67306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Humen",
+          "url": "https://en.wikipedia.org/wiki/Humen",
+          "text": "The Humen, also known as the Bocca Tigris or the Bogue, is a narrow strait in the Pearl River Delta that separates Shiziyang in the north and Lingdingyang in the south. It is located near Humen Town in China's Guangdong Province. It is the site of the Pearl River's discharge into the South China Sea. It contains the Port of Humen at Humen Town. The strait is formed by the islands of Chuenpi (穿鼻, p Chuanbi) and Anunghoy (阿娘鞋, p Aniangxie; also called 威远, p Weiyuan) on the eastern side, and Taikoktow (大角头, p Dajiaotou) on the western side. Since 1997, the strait has been traversed by the Humen Pearl River Bridge. Bocca Tigris was the entry to China's only trading city, Canton."
+        },
+        {
+          "article": "Humen (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Humen#Geography",
+          "text": "Eastern shore: Humen Town in Dongguan City\nWestern shore: the Nansha District of Guangzhou City\nUpper and Lower Hengdang Islands (), or North and South Wangtong Islands, in the middle of the strait\nHumen Pearl River Bridge\nSeveral Qing dynasty forts, including:\nWeiyuan Fort (), near Humen Town\nShajiao Fort (), in Humen Town\nNansha Pier (), in the Nansha District, south of the Humen Bridge"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 66,
+      "leadWords": 123,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a narrow strait, its islands, port and bridge with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "humen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 415,
+    "place_id": "gn-3575635",
+    "input": {
+      "place": {
+        "place_id": "gn-3575635",
+        "name": "Roseau",
+        "country": "Dominica",
+        "subdivision": "Saint George Parish",
+        "lat": 15.30174,
+        "lon": -61.38808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roseau",
+          "url": "https://en.wikipedia.org/wiki/Roseau",
+          "text": "Roseau (locally ; Dominican Creole: Wozo) is the capital and largest city of Dominica, with a population of 14,725 as of 2011. It is a small and compact urban settlement, in the Saint George parish and surrounded by the Caribbean Sea, the Roseau River and Morne Bruce. Built on the site of the ancient Island Carib village of Sairi, it is the oldest and most important urban settlement on the island of Dominica.\nIt is on the west (leeward) coast of Dominica and has a combination of modern and colonial French architecture.\nRoseau is Dominica's most important port for foreign trade. Some exports include bananas, bay oil, vegetables, grapefruit, oranges, and cocoa. The service sector is also a large part of the local economy. There are several private institutions registered in Dominica, like American Canadian School of Medicine, International University for Graduate Studies, All Saints University, New World University, and Western Orthodox University."
+        },
+        {
+          "article": "Roseau (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Roseau#Climate_and_scenery",
+          "text": "Roseau's nearby scenery (mostly in its so-called valley) includes Boiling Lake, east, in the Morne Trois Pitons National Park, waterfalls, thermal springs, and scenic plateaus.\nMorne Bruce provides panoramic views of most of downtown Roseau and north toward Woodbridge Bay deepwater port and Fond Cole. From Morne Bruce there are views of the Botanic Gardens at its base as well as the Caribbean Sea which frequently has cruise liners present.\nRoseau's climate is a tropical monsoon climate, featuring relatively constant temperatures throughout the year with average high temperatures generally between and average low temperatures between . Rainfall is common throughout the year, with the city seeing an annual average nearly . Roseau features a noticeably drier stretch from February through April, though each of these months on average sees at least of rain."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate and scenery",
+      "sectionWords": 133,
+      "leadWords": 153,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives capital status, sea and river setting and trade exports with no climate mechanism, extreme or paradox; leeward coast label alone does not qualify",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "roseau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 416,
+    "place_id": "gn-4782167",
+    "input": {
+      "place": {
+        "place_id": "gn-4782167",
+        "name": "Roanoke",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.27097,
+        "lon": -79.94143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roanoke, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Roanoke,_Virginia",
+          "text": "Roanoke ( ROH-ə-nohk) is an independent city in Virginia, United States. It lies in Southwest Virginia along the Roanoke River, within the Blue Ridge range of the greater Appalachian Mountains. Roanoke is about 50 miles (80 km) north of the Virginia–North Carolina border and 250 miles (400 km) southwest of Washington, D.C., along Interstate 81. At the 2020 census, Roanoke's population was 100,011, making it the most populous city in Virginia west of the state capital, Richmond. It is the primary population center of the Roanoke metropolitan area, which had a population of 315,251 in 2020.\nThe Roanoke Valley was home to members of the Siouan-speaking Tutelo tribe when European settlers arrived. In the 17th and 18th centuries, Scotch-Irish and later German American farmers gradually drove those Native Americans out of the area as the American frontier pressed westward. In 1882, the Norfolk and Western Railway (N&W) chose the small town of Big Lick as the site of its corporate headquarters and railroad shops. Within two years, the town had become the City of Roanoke. In the 1880s, the population grew by 22 times and the young city experienced the advantages and disadvantages of its boomtown status. During the 20th century, Roanoke's boundaries expanded through annexations of surrounding Roanoke County, and it became Southwest Virginia's economic and cultural hub. The 1982 decision by N&W to move its headquarters out of the city, along with other manufacturing closures, led Roanoke to a primarily service economy. In the 21st century, a robust healthcare industry and the development and increased marketing of the city's outdoor amenities have helped reverse population decline.\nRoanoke is known for the Roanoke Star, an 88.5-foot-tall (27.0 m) illuminated star that sits atop a mountain within the city's limits and is the origin of its nickname, \"The Star City of the South\". Other points of interest include the Hotel Roanoke, a 330-room Tudor Revival structure built by N&W in 1882, the Taubman Museum of Art, designed by architect Randall Stout, and the city's farmer's market, the oldest continuously operating open-air market in the state. The Roanoke Valley features 26 miles (42 km) of greenways with bicycle and pedestrian trails, and the city's location in the Blue Ridge Mountains provides access to numerous outdoor recreation opportunities."
+        },
+        {
+          "article": "Roanoke, Virginia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Roanoke,_Virginia#Climate",
+          "text": "Though located along the Blue Ridge Mountains at elevations exceeding , Roanoke lies in the humid subtropical climate zone (Köppen Cfa), with four distinct, but generally mild, seasons. It is located in USDA hardiness zone 7b, with the suburbs falling in zone 7a. Extremes in temperature have ranged from (as recently as August 21, 1983) down to on December 30, 1917. However, neither nor are reached in most years, though the city experienced a three-day stretch from July 1–3, 2026, when the high temperature was each day; the most recent instance of reaching was February 20, 2015. More typically, the area records an average of 6.1 days where the temperature stays at or below freezing and 30.5 days with + highs annually. Winter snowfall has ranged from trace amounts in 1918–19 and 1919–20 to in 1959–60;\nHistorically, flooding has been the primary weather-related hazard faced by Roanoke. Heavy rains, most frequently from the remnants of a hurricane, drain from surrounding areas to the narrow Roanoke Valley. The most recent significant flood was in the fall of 2018, when the remains of Hurricane Michael dumped over five inches of rain on the area in the span of only a few hours. The most severe flooding in the city's history occurred on November 4, 1985, when heavy storms from Hurricane Juan stalled over the area. Ten people drowned in the Roanoke Valley and others were saved by rescue personnel. That incident prompted a major flood reduction effort completed in 2012 by the U.S. Army Corps of Engineers, which has limited the damage caused by subsequent storms."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 264,
+      "leadWords": 376,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives valley and mountain location, railway history and illuminated star landmark with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "roanoke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 417,
+    "place_id": "gn-625324",
+    "input": {
+      "place": {
+        "place_id": "gn-625324",
+        "name": "Mazyr",
+        "country": "Belarus",
+        "subdivision": "Homyel’ Voblasc’",
+        "lat": 52.04162,
+        "lon": 29.21631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mazyr",
+          "url": "https://en.wikipedia.org/wiki/Mazyr",
+          "text": "Mazyr or Mozyr (Belarusian: Мазыр, IPA: [maˈzɨr]; Russian: Мозырь, IPA: [ˈmozɨrʲ]; Polish: Mozyrz; Yiddish: מאזיר) is a city in Gomel Region, in southern Belarus. It serves as the administrative center of Mazyr District. It is situated on the Pripyat River about 210 kilometres (130 miles) east of Pinsk and 100 kilometres (62 miles) northwest of Chernobyl in Ukraine. As of 2025, it has a population of 104,517.\nMazyr is known as a center of oil refining, salt extraction, machine building, and food processing in Belarus.  It is home to one of the largest oil refineries in Belarus, pumping out 18 million metric tons per year, and is served by a tram line.  The Druzhba pipeline carries crude oil from Russia, splitting in two at Mazyr. One pipeline branch is directed into Poland and the other one to Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 138,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives river location, oil refining, salt extraction and pipeline split with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "mazyr",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 418,
+    "place_id": "gn-6947637",
+    "input": {
+      "place": {
+        "place_id": "gn-6947637",
+        "name": "Ataşehir",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 40.9833,
+        "lon": 29.1167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ataşehir",
+          "url": "https://en.wikipedia.org/wiki/Ata%C5%9Fehir",
+          "text": "Ataşehir (Turkish pronunciation: [ataˈʃehiɾ]) is a municipality and district of Istanbul, Turkey. Its area is 25 km2, and its population is 423,127 (2022). It is located at the junction of the O-2 and O-4 motorways on the Anatolian (Asian) side of Istanbul. Its neighbours are the districts of Ümraniye to the north, Sancaktepe to the northeast, Maltepe to the east, Kadıköy to the south and Üsküdar to the west.\nSince 2023, Ataşehir is home to the Istanbul Financial Center (IFC), where the new headquarters of the state-owned Turkish banks, such as the Turkish Central Bank, Ziraat Bank, VakıfBank and Halkbank, are located. Until 2023, the headquarters of these banks were in Ankara. As of 2024, the tallest buildings in Ataşehir are the 352 m (1,154 ft 10 in) Turkish Central Bank Tower, which is followed by Metropol Istanbul Tower A (70 floors / 301 metres including its twin spires).\nUnlike in Başakşehir, another satellite city (on the western part of the European side of Istanbul), no single-family house types were designed for Ataşehir's residential projects. Most buildings in Ataşehir are high-rise towers, while some of them (especially around the main public squares in the district) are among Istanbul's and Turkey's tallest skyscrapers.\nThe M4 line (Kozyatağı and Yenisahra stations) and the M8 line (Kozyatağı, Küçükbakkalköy, İçerenköy, Kayışdağı and Mevlana) of the Istanbul Metro serves the district."
+        },
+        {
+          "article": "Ataşehir (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ata%C5%9Fehir#Climate",
+          "text": "The district of Ataşehir has a Mediterranean climate (Csa/Cs) according to both Köppen and Trewartha climate classifications, with cool winters and warm to hot summers.\nIt is in USDA hardiness zone 9a and AHS heat zone 3."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 37,
+      "leadWords": 226,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives motorway junction, Asian-side location, financial centre and towers with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "atasehir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 419,
+    "place_id": "gn-769250",
+    "input": {
+      "place": {
+        "place_id": "gn-769250",
+        "name": "Kielce",
+        "country": "Poland",
+        "subdivision": "Świętokrzyskie",
+        "lat": 50.87033,
+        "lon": 20.62752
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kielce",
+          "url": "https://en.wikipedia.org/wiki/Kielce",
+          "text": "Kielce (Polish: [ˈkʲɛlt͡sɛ] ; Yiddish: קעלץ, romanized: Keltz) is a city in south-central Poland. It is the capital of the Świętokrzyskie Voivodeship. In 2021, it had 192,468 inhabitants. The city is in the middle of the Świętokrzyskie Mountains (Holy Cross Mountains), on the banks of the Silnica River, in the northern part of the historical Polish province of Lesser Poland.\nKielce has a history back over 900 years, and the exact date that it was founded remains unknown. Kielce was once an important centre of limestone mining, and the vicinity is famous for its natural resources like copper, lead, uranium, and iron, which, over the centuries, were exploited on a large scale.\nThere are several fairs and exhibitions held in Kielce throughout the year. One of the city's most famous food products is Kielecki Mayonnaise, a type of mayonnaise.\nThe city and its surroundings are also known for their historic architecture, green spaces, and recreational areas like the Świętokrzyski National Park. In sports, the city is known as the home of the top-tier handball club, multiple Polish Champion, and one-time EHF Champions League winner Iskra Kielce."
+        },
+        {
+          "article": "Kielce (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kielce#Climate",
+          "text": "Kielce is one of the relatively cooler cities in Poland. It experiences four distinct seasons and has a warm summer subtype humid continental climate (Dfb), typical of this part of Europe. It has cool, cloudy winters with almost daily light snowfall and generally moderate temperatures within a few degrees of the freezing point, and moderately warm and sunny summers, with frequent but brief hot spells and abundant rainfall falling mostly during numerous and occasionally severe thunderstorms. Surrounded by the Holy Cross Mountains, however, the summer night time temperatures are somewhat cooler and the thunderstorms somewhat more frequent and severe than in surrounding areas of Poland.\nBoth continental and maritime air masses can enter the area undergoing little modification, resulting in striking differences in the seasons from year to year, particularly in winter when the contrast between maritime and continental air is at its greatest. Maritime influences from the Atlantic typically bring cool, cloudy, damp and often foggy weather both in summer and in winter, whereas continental air masses often result in long periods of sunny and dry weather, hot in summer and on occasion, extremely cold in winter.\nThe highest temperature recorded in Kielce since 1971 is giving the city a temperature range of 70.3 °C (126.5 °F), the second highest in Poland. The city receives 1720 to 1829 hours of sunshine annually, depending on the source, with a notably sunny spring and summer, and a cloudy late autumn and winter. Winds are generally very light throughout the year, with an abundance of calm days, and as a result, cool temperatures often feel much milder than expected due to a relative lack of windchill, especially during sunny spells in early spring, as well as during severe winter cold snaps, which are typically dominated by calm, anticyclonic weather. Föhn winds from the Carpathian mountains do occasionally reach the city, resulting in unusually mild temperatures for a semi-continental location at this latitude, on rare occasions reaching approximately in the winter months.\nWinter conditions are highly dependent on the source region of the air mass that dominates during a particular month, resulting in tremendous variability from one year to the next. For example, in January 2006, the city experienced typically continental winter weather, resulting in an average daytime high of , recording a nighttime low of on the 24th. The very next year, in January 2007, the weather was predominantly of the Atlantic type, resulting in an average high of and occasional days above , more typical of coastal locations in Western Europe. As a result of this variability, severe cold with temperatures below can be completely absent during some winters, and in others, it can occur with regularity, even as late as March. Heavy snowfall is rare, and significant snow accumulations typically occur gradually, a few centimeters at a time over a protracted cold spell.\nSummer is warm and lasts from June to early September, and is characterized by abundant sunshine, but also severe weather, particularly early in the season. Though temperatures average in the low-to-mid 20s (70s Fahrenheit), they are rather variable with frequent hot spells reaching approximately interrupted by cold fronts, which frequently bring violent thunderstorms and several days of cool and sometimes chilly weather. Although hot weather is frequent and many summers experience a few oppressively hot days of around , summer temperatures in the city are never extreme and have not exceeded in recent decades.\nThe transitional seasons of spring and autumn are highly unpredictable and experience large temperature swings with periods of fine weather and temperatures around as early as March and late into October, alternating with much colder periods. Sharp nighttime frosts can occur as early as September and as late as May, though on calm, clear days, it often warms up rapidly to approximately , especially in April. Occasionally, significant, accumulating snow can occur in October and April, though mild weather rapidly returns.\nSources:\nClimateBase.ru, Tutiempo"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 651,
+      "leadWords": 186,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives mountain and river location, mining history and food product with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kielce",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 420,
+    "place_id": "gn-1633419",
+    "input": {
+      "place": {
+        "place_id": "gn-1633419",
+        "name": "Padang",
+        "country": "Indonesia",
+        "subdivision": "West Sumatra",
+        "lat": -0.94924,
+        "lon": 100.35427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Padang",
+          "url": "https://en.wikipedia.org/wiki/Padang",
+          "text": "Padang (Indonesian pronunciation: [ˈpadaŋ]) is the capital and largest city of the Indonesian province of West Sumatra. It had a population of 833,562 at the 2010 census and 909,040 at the 2020 census; the official estimate as of mid 2025 was 965,050. It is the 16th most populous city in Indonesia and the most populous city on the west coast of Sumatra. The Padang metropolitan area is the third most populous metropolitan area in Sumatra with a population of over 1.7 million. Padang is widely known for its Minangkabau culture, cuisine, and sunset beaches.\nThe city had historically been a trading center since the pre-colonial era, in both pepper and gold. The Dutch made contact with the city in the mid-17th century, eventually constructing a fortress and taking over control of the city from the Pagaruyung Kingdom. Save for several interruptions of British rule, Padang remained part of the Dutch East Indies as one of its major cities until Indonesian independence. In 1906, Padang, along with Palembang, became the first populated places in Sumatra to achieve city status (gemeente)."
+        },
+        {
+          "article": "Padang (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Padang#Climate",
+          "text": "Padang features a tropical rainforest climate under Köppen's climate classification. Since this tropical rainforest climate is more subject to the Intertropical Convergence Zone than the trade winds and cyclones are very rare, it is equatorial. Padang is one of Indonesia's wettest cities, with frequent rainfall throughout the course of the year. The city averages roughly of rain per year. Padang's driest month is February, where of precipitation on average is observed. The city temperatures are relatively constant throughout the year, with an average of . Padang has 21 rivers, with the longest being Batang Kandis with a length of . In 1980 two-thirds of the city was flooded because the city's drainage which primarily empties to Batang Arau could not contain the water."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 123,
+      "leadWords": 179,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives west-coast location, culture, cuisine and trading history with no climate mechanism, extreme or paradox; sunset beaches are not climate",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "padang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 421,
+    "place_id": "gn-1792260",
+    "input": {
+      "place": {
+        "place_id": "gn-1792260",
+        "name": "Wafangdian",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 39.61833,
+        "lon": 122.00806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wafangdian",
+          "url": "https://en.wikipedia.org/wiki/Wafangdian",
+          "text": "Wafangdian (Chinese: 瓦房店; pinyin: Wǎfángdiàn), formerly Fuhsien (Fuxian) or Fu County (simplified Chinese: 复县; traditional Chinese: 復縣; pinyin: Fù Xiàn), is one of the two \"northern county-level cities\", the other being Zhuanghe, under the administration of Dalian, located in the south of Liaoning province, China.  The city is famous for its ball bearing industry. Wafangdian Bearing Factory is the largest bearing manufacturer in Asia and was initially built by the Japanese during World War II. Its area is 3,576.40 square kilometres (1,380.86 sq mi) and its permanent population as of 2010 is 942,197, compared to 1,024,876 registered with hukou permits. The city borders the prefecture-level city of Yingkou to the northeast."
+        },
+        {
+          "article": "Wafangdian (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Wafangdian#Climate",
+          "text": "Wafangdian has a four-season, monsoon-influenced, humid continental climate (Köppen Dwa), with long, cold, windy but dry winters, and humid and very warm summers. The area experiences a seasonal delay due to the influence of the nearby ocean, which also helps temper the summers. In winter, as the Liaodong Bay is typically frozen north of the urban area of Dalian, the moderating effects of that body of water are minimised, as the Siberian high often causes winds to blow from the northwest: the monthly daily average temperature in January is , as compared to in downtown Dalian. For Wafangdian, the same figure in August is . The annual mean temperature is . Close to half of the annual precipitation falls in July and August alone. The frost-free period is 165−185 days per annum."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 132,
+      "leadWords": 111,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives provincial location, ball-bearing industry and factory history with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "wafangdian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 422,
+    "place_id": "gn-1800480",
+    "input": {
+      "place": {
+        "place_id": "gn-1800480",
+        "name": "Minhang",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 31.10881,
+        "lon": 121.37471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minhang, Shanghai",
+          "url": "https://en.wikipedia.org/wiki/Minhang,_Shanghai",
+          "text": "Minhang District is a suburban district of Shanghai with a land area of 371.57 km2 (143.46 sq mi) and population of 2,653,489 residents as of 2020. The original Minhang consist of present-day Jiangchuan Road Subdistrict (Former Minhang Town) and the eastern strip of Wujing along the Huangpu River in 1992, the surrounding Shanghai County merged with Minhang.\nIt is mostly a residential district, though it is also home to some of the many factories and production facilities in Shanghai. Residential housing development is the main source of local government revenue. Qizhong Forest Sports City Arena (旗忠森林体育城) is located in Maqiao Town (马桥镇). The Aerospace Museum is being constructed at Pujiang Town.\nShanghai Jiao Tong University and East China Normal University both have campuses in the southern part of Minhang District."
+        },
+        {
+          "article": "Minhang, Shanghai (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Minhang,_Shanghai#Climate",
+          "text": "Minhang has a humid subtropical climate (Köppen climate classification Cfa). The average annual temperature in Minhang is . The average annual rainfall is with July as the wettest month. The temperatures are highest on average in July, at around , and lowest in January, at around ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 47,
+      "leadWords": 130,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives suburban district area, housing, factories and university campuses with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "minhang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 423,
+    "place_id": "gn-2491191",
+    "input": {
+      "place": {
+        "place_id": "gn-2491191",
+        "name": "Laghouat",
+        "country": "Algeria",
+        "subdivision": "Laghouat",
+        "lat": 33.8,
+        "lon": 2.86514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laghouat",
+          "url": "https://en.wikipedia.org/wiki/Laghouat",
+          "text": "Laghouat (Tamazight: ⵍⴻⵖⵡⴰⵟ, romanized: Leghwaṭ, Arabic: الأغواط, romanized: al-Aghwāṭ) is the capital of the Laghouat Province, Algeria, 400 km (250 mi) south of the Algerian capital Algiers. Located in the Amour Range of the Saharan Atlas, the town is an oasis on the north edge of the Sahara Desert. It is an important administrative and military center and marketplace, and is known for rug and tapestry weaving.\nLaghouat traces its history to at least the 11th century. It was ruled by the Ottoman Turks in 1786 and annexed to Beylik of Titteri (Médéa).  The town experienced the brutal Siege of Laghouat in 1852, and came under French colonial rule until 1962.\nIt was formerly the administrative center of one of the four \"Territories of the South\" forming the region of Algeria administered under Martial Law until the reform instituted by the Statue of Algiers law of 20 September 1947.\nThe population of the town was 134,373 inhabitants in 2008. There are natural gas deposits in the region, and nearby Hassi R'Mel has the second largest natural gas reserve in Africa. The city is served by Laghouat Airport."
+        },
+        {
+          "article": "Laghouat (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Laghouat#Climate",
+          "text": "at Laghouat]]\nLaghouat has a cold desert climate (Köppen climate classification BWk). Rainfall is higher in winter than in summer. The average annual temperature in Laghouat is . About of precipitation falls annually. Rain falls irregularly, with severe droughts in some years. Sand dunes may encroach upon the town from the north in drought years, and have been countered with administrative buildings and a green belt of gardens around the city.\nThe town relies on groundwater, which is abundant due to a large underground dam in Tadjmout, which is the largest of its kind in Africa and dates to the colonial period. It is also known for its mineral water, called milok water, which has attracted investment from a Spanish bottler."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 121,
+      "leadWords": 187,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives desert-edge oasis location and history with no stated climate mechanism, extreme or paradox beyond the oasis label already implied by tier 1 geography",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "laghouat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 424,
+    "place_id": "gn-2566633",
+    "input": {
+      "place": {
+        "place_id": "gn-2566633",
+        "name": "Obalende",
+        "country": "Nigeria",
+        "subdivision": "Lagos",
+        "lat": 6.44694,
+        "lon": 3.41528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Obalende",
+          "url": "https://en.wikipedia.org/wiki/Obalende",
+          "text": "Obálendé, a contraction of the Yoruba saying Ibi ti Oba le wa de, meaning \"Where the king chased us to\", is a neighbourhood of Lagos, Nigeria, located in Eti-Osa LGA, close to Lagos Island. Eti-Osa was split by the Lagos State Government into Local Community Development Areas (LCDA) of which Ikoyi–Obalende is one. It contains many schools, including Holy Child College Obalende, St Gregory's College, Aunty Ayo International School and Girls Secondary Grammar School. It is bordered by the police barracks and Army barracks. Obalende is extremely crowded and congested. Obalende is famous for its night life, its red-light district and for its suya with a junction popularly called Suya junction."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 111,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives neighbourhood location, schools, crowding and night life with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "obalende",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 425,
+    "place_id": "gn-3530580",
+    "input": {
+      "place": {
+        "place_id": "gn-3530580",
+        "name": "Ciudad Victoria",
+        "country": "Mexico",
+        "subdivision": "Tamaulipas",
+        "lat": 23.74061,
+        "lon": -99.14364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Victoria",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Victoria",
+          "text": "Ciudad Victoria (Spanish pronunciation: [sjuˈðað βiɣˈtoɾja] ) (English: Victoria City) is the capital city of the Mexican state of Tamaulipas and the seat of the Municipality of Victoria. It is located in the northeast of Mexico at the foot of the Sierra Madre Oriental. It borders the municipality of Güémez to the north, Llera to the south, Casas Municipality to the east, and the municipality of Jaumave to the west. The city is located 246 km (153 mi) from Monterrey and 319 km (198 mi) from the US - Mexico border. Ciudad Victoria is named after the first president of Mexico, Guadalupe Victoria.\nIn 1825 Ciudad Victoria became the state capital. It is home to higher education institutions such as the Autonomous University of Tamaulipas and the Technological Institute of Ciudad Victoria. General Pedro José Méndez International Airport is located on the outskirts of the city. As a state bureaucratic centre, it is the seat of the three political powers and has sites of tourist and cultural interest."
+        },
+        {
+          "article": "Ciudad Victoria (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Victoria#Climate",
+          "text": "Ciudad Victoria has a climate on the border of humid subtropical (Köppen Cfa/Cwa) and hot semi-arid (BSh). Its weather is characterised by short warm winters and long hot to sweltering summers. Temperatures rarely drop below — the lowest recorded temperature was and the hottest was , one of the highest temperatures ever recorded in Mexico. The average annual rainfall is , of which five-sixths () falls between May and October, although there is a drying trend in the months of July and August. The moderate elevation adds to overall rainfall pattern, which is also influenced by exceptionally heavy rains brought by occasional North Atlantic tropical cyclones."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 106,
+      "leadWords": 168,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives capital status, mountain-foot location, naming and institutions with no climate mechanism, extreme or paradox; no weather description is stated",
+      "priorMissing": "Place-specific climate mechanism, extreme or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad victoria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

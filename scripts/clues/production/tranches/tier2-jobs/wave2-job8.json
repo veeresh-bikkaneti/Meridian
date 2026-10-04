@@ -1,0 +1,902 @@
+[
+  {
+    "rank": 364,
+    "place_id": "gn-750516",
+    "input": {
+      "place": {
+        "place_id": "gn-750516",
+        "name": "Bolu",
+        "country": "Türkiye",
+        "subdivision": "Bolu",
+        "lat": 40.73583,
+        "lon": 31.60611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolu",
+          "url": "https://en.wikipedia.org/wiki/Bolu",
+          "text": "Bolu is a city in northern Turkey, and administrative center of the Bolu Province and of Bolu District, located on the highway between Istanbul and Ankara. Its population as of 2021 was 184,682.\nThe city has been governed by mayor Tanju Özcan (CHP) since local elections in 2019. It was the site of Ancient Claudiopolis and has also been called Eskihisar (\"old fortress\") (and as such has several Turkish namesakes).\nThe old highway (D-100) between Ankara and Istanbul climbs over Mount Bolu, while the new motorway (E-80) passes through Mount Bolu Tunnel, a little distance from the town. It is situated at 742 m (2,434 ft) above sea level on the southern slopes of a bare hill."
+        },
+        {
+          "article": "Bolu (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bolu#Climate",
+          "text": "Bolu has a borderline oceanic climate and humid continental climate (Köppen climate classification: Cfb, or Trewartha climate classification: Dcb), with chilly, snowy winters and warm summers with cool nights. Bolu is a fairly cloudy and foggy city and annual sunshine hours are about 1,800. Unlike the low-lying, sheltered city center, many parts of the province, like Gerede, have a colder humid continental climate (Dfb/Dcb), due to cold winters.\nHighest recorded temperature: on 15 August 2023 Lowest recorded temperature: on 5 January 1942"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 82,
+      "leadWords": 117,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it describes the highway between Istanbul and Ankara, ancient Claudiopolis, and a bare hill, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bolu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 365,
+    "place_id": "gn-2309527",
+    "input": {
+      "place": {
+        "place_id": "gn-2309527",
+        "name": "Malabo",
+        "country": "Equatorial Guinea",
+        "subdivision": "Bioko Norte",
+        "lat": 3.75578,
+        "lon": 8.78166
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malabo",
+          "url": "https://en.wikipedia.org/wiki/Malabo",
+          "text": "Malabo ( mə-LAH-boh, Spanish: [maˈlaβo] ; formerly Santa Isabel [ˈsantajsaˈβel] ) is a city in Equatorial Guinea, located in the province of Bioko Norte. It is located on the north coast of the island of Bioko (Bube: Etulá, historically known as Fernando Pó by the Europeans). In 2018, the city had a population of approximately 297,000 inhabitants.\nSpanish is the official language of the city and of the country as well, but Pichinglis is also used as a language of wider communication across Bioko island, including Malabo.\nMalabo is the oldest city in Equatorial Guinea and served as its former capital. Ciudad de la Paz became the new capital of Equatorial Guinea on 2 January 2026. The institutions of governance of Equatorial Guinea began the process of locating to Ciudad de la Paz in February 2017. The designation as capital would be returned many times, finally becoming permanent on 20 June 2026."
+        },
+        {
+          "article": "Malabo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Malabo#Climate",
+          "text": "Malabo features a tropical monsoon climate (Köppen Am). Malabo receives on average of rain per year. The city has a pronounced, albeit short, sunnier (but still cloudy) dry season from December through February. January is normally its driest month with of rain falling on average. It also has a very long cloudy wet season that covers the remaining nine months from March to November. On average, the months hit hardest by the wet season are September and October, which receive of rain and showers between them.\nDaytime temperatures do not vary at all day to day, and vary only a few degrees throughout the entire year. At night, the average low temperature is in every month of the year but January to April have a slightly higher diurnal range because it is clearer. Nonetheless, with only 1,020 hours of sunshine per year, Malabo is one of the cloudiest, wettest and most lightning-prone capitals of the world, and experiences much fog and haze even when it is not raining in the driest months."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 172,
+      "leadWords": 152,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it describes the north coast of an island, languages, age, and former-capital status, with no weather mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "malabo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 366,
+    "place_id": "gn-2637433",
+    "input": {
+      "place": {
+        "place_id": "gn-2637433",
+        "name": "Southend-on-Sea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53782,
+        "lon": 0.71433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southend-on-Sea",
+          "url": "https://en.wikipedia.org/wiki/Southend-on-Sea",
+          "text": "Southend-on-Sea ( ), commonly referred to as Southend (), is a coastal city and unitary authority area in south-eastern Essex, England. It lies on the north side of the Thames Estuary, 40 miles (64 km) east of central London. It is bordered to the north by Rochford and to the west by Castle Point. The city is one of the most densely populated places in the country outside of London. It is home to the longest pleasure pier in the world, Southend Pier, while London Southend Airport is located to the north of the city centre.\nSouthend-on-Sea originally consisted of a few fishermen's huts and a farm at the southern end of the village of Prittlewell. In the 1790s, the first buildings around what was to become the High Street of Southend were completed. In the 19th century Southend's status as a seaside resort grew after a visit from the Princess of Wales, Caroline of Brunswick, and the construction of both the pier and railway, allowing easier access from London. From the 1960s onwards, the city declined as a holiday destination. After the 1960s, much of the city centre was developed for commerce and retail, and many original structures were lost to redevelopment. As part of its reinvention, Southend became the home of the Access credit card, due to it having one of the UK's first electronic telephone exchanges. An annual seafront airshow, which started in 1986 and featured a flypast by Concorde, used to take place each May until 2012.\nSouthend was granted city status in January 2022 in memorial to the Conservative Member of Parliament for Southend West, Sir David Amess, who was murdered in October 2021. On 1 March 2022, the letters patent were presented to Southend Borough Council by Charles, Prince of Wales."
+        },
+        {
+          "article": "Southend-on-Sea (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Southend-on-Sea#Climate",
+          "text": "Southend-on-Sea is one of the driest places in the UK. It has a marine climate with summer highs of around and winters highs being around . Summer temperatures are generally slightly cooler than those in London. Frosts are occasional; during the 1991–2020 period, there was an average of 29.6 days of air frost. Rainfall averaged . Weather station data is available from Shoeburyness, a suburb of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 68,
+      "leadWords": 297,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives coastal location, pier, resort history and city status, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "southend on sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "southend",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 367,
+    "place_id": "gn-3530757",
+    "input": {
+      "place": {
+        "place_id": "gn-3530757",
+        "name": "Cholula",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 19.06406,
+        "lon": -98.30352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cholula, Puebla",
+          "url": "https://en.wikipedia.org/wiki/Cholula,_Puebla",
+          "text": "Cholula (Spanish: [tʃoˈlula] , officially Cholula de Rivadavia; Mezquital Otomi: Mä'ragi), is a city and district located in the metropolitan area of Puebla, Mexico. Cholula is best known for its Great Pyramid, with the Iglesia de Nuestra Señora de los Remedios sanctuary on top, as well as its numerous churches.\nThe city and district of Cholula are divided into two: San Pedro Cholula and San Andrés Cholula. Surrounding the city proper are a number of more rural communities which belong to the municipalities of San Andrés and San Pedro. The city itself is divided into eighteen neighborhoods or barrios, each with a patron saint.\nThis division has pre-Hispanic origins as does the division into two municipalities. The city is unified by a complicated system of shared religious responsibilities, called cargas, which function mostly to support a very busy calendar of saints' days and other festivals which occur in one part or another almost all year round. The most important of these festivals is that dedicated to the Virgin of the Remedies, the patron of the city in its entirety, which occurs at the beginning of September. It is one of the oldest continuously inhabited cities on Earth. Pre-Columbian Cholula grew from a small village to a regional center during the 7th century. It is the oldest still-inhabited city in the Americas."
+        },
+        {
+          "article": "Cholula, Puebla (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cholula,_Puebla#Climate",
+          "text": "The area has a temperate subtropical highland climate typical of South-Central Mexico, with an average temperature of between . January is the coldest month with average temperatures between , and May is the warmest with averages between . The 'high-sun' rainy season lasts from May to October and provides about of rainfall per year. These conditions are what made the area important agriculturally starting in the pre-Hispanic era."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 68,
+      "leadWords": 221,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives pyramid, churches, festivals and ancient history, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cholula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 368,
+    "place_id": "gn-3682631",
+    "input": {
+      "place": {
+        "place_id": "gn-3682631",
+        "name": "Envigado",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.17591,
+        "lon": -75.59174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Envigado",
+          "url": "https://en.wikipedia.org/wiki/Envigado",
+          "text": "Envigado (Spanish pronunciation: [embiˈɣaðo]) is a city and municipality due South of Medellín, Colombia in the department of Antioquia. It is located in the Metropolitan Area of the Aburrá Valley. It borders El Poblado, Medellín to the north, Sabaneta to the south, El Retiro and Caldas to the east, and Itagüí to the west.\nEnvigado is known for maintaining the traditions of the Paisa Region and for its architecture. It also has one of the highest standards of living in Colombia, and (according to the Colombian magazine Semana), has the country's lowest rate of what the magazine calls, \"people with unmet basic needs\".\nIts recent history is closely associated with  Pablo Escobar and the Medellin cartel. Despite its connection with Escobar, the Aburrá Valley now has one of the lowest homicide rates in Colombia: 6 for every 100,000 people,\nEnvigado is the hometown of the Colombian writer and philosopher Fernando González. His house, Otraparte, today is a cultural center and museum dedicated to his memory and works."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 167,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives location, traditions, living standards and Escobar association, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "envigado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 369,
+    "place_id": "gn-1855425",
+    "input": {
+      "place": {
+        "place_id": "gn-1855425",
+        "name": "Niihama",
+        "country": "Japan",
+        "subdivision": "Ehime",
+        "lat": 33.96047,
+        "lon": 133.30522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niihama",
+          "url": "https://en.wikipedia.org/wiki/Niihama",
+          "text": "Niihama (新居浜市, Niihama-shi) is a city located in the eastern part of Ehime Prefecture, Japan.  As of 31 July 2022, the city had an estimated population of 115,824 in 57,781 households and a population density of 490 persons per km2. The total area of the city is 234.50 square kilometres (90.54 sq mi). It has the third largest population in Ehime, behind the prefectural capital of Matsuyama and the recently expanded city of Imabari. It is famous for its Besshi copper mine as well as the annual Niihama Taiko Festival (also known as \"The Man Festival\", otokomatsuri 男祭り) that is the center of annual drunken and boisterous activity and draws tourists from around the country."
+        },
+        {
+          "article": "Niihama (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Niihama#Climate",
+          "text": "Niihama has a humid subtropical climate (Köppen Cfa) characterized by warm summers and cool winters with light snowfall. The average annual temperature in Niihama is 13.2 °C. The average annual rainfall is 1839 mm with September as the wettest month. The temperatures are highest on average in August, at around 24.4 °C, and lowest in January, at around 2.0 °C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 60,
+      "leadWords": 115,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives location, population, copper mine and festival, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "niihama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 370,
+    "place_id": "gn-2856883",
+    "input": {
+      "place": {
+        "place_id": "gn-2856883",
+        "name": "Osnabrück",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.27264,
+        "lon": 8.0498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osnabrück",
+          "url": "https://en.wikipedia.org/wiki/Osnabr%C3%BCck",
+          "text": "Osnabrück (German: [ɔsnaˈbʁʏk] ; Westphalian: Ossenbrügge; archaic English: Osnaburg) is a city in Lower Saxony in western Germany. It is situated on the river Hase in a valley penned between the Wiehen Hills and the northern tip of the Teutoburg Forest. With a population of 166,057 Osnabrück is the fourth largest city in Lower Saxony.\nMore recently Osnabrück has become well known for its industry. Numerous companies in the automobile, paper, steel and grocery sectors are located in the city and its surrounding area. In spite of the massive destruction inflicted on the city during World War II, the Altstadt ('old town') was eventually reconstructed extensively with designs accurately depicting the original medieval architecture there. Osnabrück was also the home of the largest British garrison outside the United Kingdom. Osnabrück's modern, urban image is enhanced by the presence of more than 22,000 students studying at the University and the University of Applied Sciences. Although part of the state of Lower Saxony, historically, culturally and linguistically Osnabrück is considered part of the region of Westphalia."
+        },
+        {
+          "article": "Osnabrück (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Osnabr%C3%BCck#Climate",
+          "text": "The climate is Cfb (near Dfb) with warm, rainy summers and chilly to cold, dark winters."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 16,
+      "leadWords": 174,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives river and hills location, industry, old town rebuilding and students, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "osnabruck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 371,
+    "place_id": "gn-3169361",
+    "input": {
+      "place": {
+        "place_id": "gn-3169361",
+        "name": "Rimini",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.05755,
+        "lon": 12.56528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rimini",
+          "url": "https://en.wikipedia.org/wiki/Rimini",
+          "text": "Rimini ( RIM-in-ee; Italian: [ˈriːmini] ; Romagnol: Rémin or Rémne; Latin: Ariminum) is a city and municipality (comune) in the region of Emilia-Romagna in northern Italy. As of 2026, with a population of 150,774, it is the 26th-largest city in Italy.\nSprawling along the Adriatic Sea, Rimini is situated at a strategically-important north-south passage along the coast at the southern tip of the Po Valley. It is one of the most notable seaside resorts in Europe, with a significant domestic and international tourist economy. The first bathing establishment opened in 1843. The city is also the birthplace of the film director Federico Fellini, and the nearest Italian city to the independent Republic of San Marino.\nThe ancient Romans founded the colonia of Ariminum in 268 BC, constructing the Arch of Augustus and the Ponte di Tiberio at the start of strategic roads that ended in Rimini. During the Renaissance, the city benefited from the court of the House of Malatesta, hosting artists like Leonardo da Vinci and producing the Tempio Malatestiano. In the 19th century, Rimini hosted many movements campaigning for Italian unification. Much of the city was destroyed during World War II, and it earned a gold medal for civic valour for its partisan resistance. In recent years, the Rimini Fiera has become one of the largest sites for trade fairs and conferences in Italy."
+        },
+        {
+          "article": "Rimini (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Rimini#Climate",
+          "text": "Rimini has a humid subtropical climate (Köppen: Cfa) moderated by the influence of the Adriatic Sea, featuring autumn and winter mean temperatures and annual low temperatures among the very highest in Emilia-Romagna.\nPrecipitations are equally distributed during the year, with a peak in October and minimums in January and July. In spring, autumn, and winter, precipitations mainly come from oceanic fronts, while in summer, they are brought by thunderstorms, coming from the Apennines or the Po Valley.\nHumidity is high all year round, averaging a minimum of approximately 72% in June and July and a maximum of approximately 84% in November and December. Prevailing winds blow from west, south, east, and northwest. Southwesterly winds, known as libeccio or garbino, are foehn winds, which may bring warm temperatures in each season. On average, there are over 2,040 sunshine hours per year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 140,
+      "leadWords": 226,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract calls it a seaside resort and notes a first bathing establishment in 1843, but gives no climate mechanism, extreme, or paradox beyond that bare resort label",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "rimini",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 372,
+    "place_id": "gn-3369157",
+    "input": {
+      "place": {
+        "place_id": "gn-3369157",
+        "name": "Cape Town",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.92584,
+        "lon": 18.42322
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cape Town",
+          "url": "https://en.wikipedia.org/wiki/Cape_Town",
+          "text": "Cape Town is the legislative capital of South Africa. It is the country's oldest city and the seat of the Parliament of South Africa. Cape Town is the capital and largest city of the Western Cape, and the country's second-most populous city, after Johannesburg. The city is part of the City of Cape Town metropolitan municipality.\nThe city is known for its harbour, its natural setting in the Cape Floristic Region, and for landmarks such as Table Mountain and Cape Point. Located on the shore of Table Bay, the City Bowl area of Cape Town, which contains its central business district (CBD), is the oldest urban area in the Western Cape, with a significant cultural heritage. The metropolitan area has a long coastline on the Atlantic Ocean, which includes a northern section in the West Beach region, as well as the False Bay area in the south.\nThe Table Mountain National Park is within the city boundaries and there are several other nature reserves and marine-protected areas within and adjacent to the city. These include Kirstenbosch National Botanical Garden, which contains 5 of South Africa's 6 biomes, and displays many plants native to the Cape region.\nA popular global tourist destination, Cape Town has been named the best city in the world, and the world's best city for travellers numerous times, including by The New York Times in 2014, Time Out in 2025, the World Travel Awards in 2026, and The Telegraph for the past 8 years (2017 through 2025).  Cape Town has South Africa's highest household incomes, lowest rate of unemployment, highest level of infrastructure investment, strongest service delivery performance, largest tourism appeal, and most robust real estate market."
+        },
+        {
+          "article": "Cape Town (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cape_Town#Climate",
+          "text": "during a sunny day]]\nCape Town has a hot-summer Mediterranean climate (Köppen: Csa), with mild, moderately wet winters and dry, hot summers. Winter, which lasts from June to September, may see large cold fronts entering for limited periods from the Atlantic Ocean with significant precipitation and strong north-westerly winds. Winter months in the city average a maximum of and minimum of .\nWinters are snow and frost free, except on Table Mountain and on other mountain peaks, where light accumulation of snow and frost can sometimes occur.\nTotal annual rainfall in the city averages although in the Southern Suburbs, close to the mountains, rainfall is significantly higher and averages closer to .\nSummer, which lasts from December to March, is warm and dry with an average maximum of and minimum of . The region can get uncomfortably hot when the Berg Wind, meaning \"mountain wind\", blows from the Karoo interior.\nSpring and summer generally feature a strong wind from the south-east, known locally as the south- or the Cape Doctor, so called because it blows air pollution away. This wind is caused by a persistent high-pressure system over the South Atlantic to the west of Cape Town, known as the South Atlantic High, which shifts latitude seasonally, following the sun, and influencing the strength of the fronts and their northward reach. Cape Town receives about 3,100 hours of sunshine per year. According to Climate Action Tracker, the current warming trajectory appears consistent with , which closely matches RCP 4.5.\nMoreover, according to the 2022 IPCC Sixth Assessment Report, Cape Town is one of 12 major African cities (Abidjan, Alexandria, Algiers, Cape Town, Casablanca, Dakar, Dar es Salaam, Durban, Lagos, Lomé, Luanda and Maputo) which would be the most severely affected by future sea level rise. It estimates that they would collectively sustain cumulative damages of US$65 billion under RCP 4.5 and US$86.5 billion for the high-emission scenario RCP 8.5 by the year 2050.\nAdditionally, RCP 8.5 combined with the hypothetical impact from marine ice sheet instability at high levels of warming would involve up to US$137.5 billion in damages, while the additional accounting for the \"low-probability, high-damage events\" may increase aggregate risks to US$187 billion for the \"moderate\" RCP4.5, US$206 billion for RCP8.5 and US$397 billion under the high-end ice sheet instability scenario.\nSince sea level rise would continue for about 10,000 years under every scenario of climate change, future costs of sea level rise would only increase, especially without adaptation measures."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 412,
+      "leadWords": 280,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives harbour, floristic region, landmarks and tourism awards, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cape town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cape",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 373,
+    "place_id": "gn-3460132",
+    "input": {
+      "place": {
+        "place_id": "gn-3460132",
+        "name": "Japeri",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.64306,
+        "lon": -43.65333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Japeri",
+          "url": "https://en.wikipedia.org/wiki/Japeri",
+          "text": "Japeri (Portuguese pronunciation: [ʒapeˈɾi]) is a municipality in the state of Rio de Janeiro, Southeast Region of Brazil. The city was founded on June 30, 1991. It is known to be located next to the last station of the largest branch of the railroad of Brazil (Central do Brasil), whose image has been put on stamps in Brazil. The construction date of 1858 and was incorporated into the Central do Brasil in 1903. It was the first stop of compositions for São Paulo, including the famous Trem de Prata (Silver Train). In the district of Engenheiro Pedreira is the first public golf course of Brazil, sponsored by FGERJ - Golf Federation of Rio de Janeiro.\nThe territory at the foot of the Serra do Mar, is bathed by rivers Guandu, Santana, Rio dos Poços, Rio D'Ouro, Santo Antonio, Ribeirão das Lages and São Pedro."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 144,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives founding, railroad, golf course and rivers at the foot of a mountain range, but no climate mechanism, extreme, or paradox",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "japeri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 374,
+    "place_id": "gn-3474574",
+    "input": {
+      "place": {
+        "place_id": "gn-3474574",
+        "name": "Palmas",
+        "country": "Brazil",
+        "subdivision": "Tocantins",
+        "lat": -10.16745,
+        "lon": -48.32766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palmas, Tocantins",
+          "url": "https://en.wikipedia.org/wiki/Palmas,_Tocantins",
+          "text": "Palmas (Brazilian Portuguese pronunciation: [ˈpawmɐs], Palm trees; Akwẽ-Xerénte: Akwẽ krikahâzawre wam hã [akwẽ kɾikahəʐawɾɛ wam hə̃]) is the capital and largest city of the state of Tocantins, Brazil. According to IBGE estimates from 2020, the city had 306,296 inhabitants. Palmas has a metropolitan area with 471,639 inhabitants.\nPalmas was founded in 1990 and developed from the ground up in a former agricultural area as the capital of the new state of Tocantins, formed under the 1988 constitution. It was intended to develop a relatively undeveloped area of the nation to provide better jobs for people. The city has a well-designed road system, and its urban zoning is modeled on that of Brasília, the national capital. A symmetrical park lies at the city centre, and a large central avenue similar to Brasília's Monumental Axis extends north to south. The city is home to the Federal University of Tocantins.\nIn 2002, the Lajeado Hydroelectric Power Plant was completed on the Tocantins River, creating a large reservoir and giving the city new beaches. The project also included construction of a huge bridge: the Fernando Henrique Cardoso Bridge, 8 kilometers (5.0 mi) long, connects Palmas with the major highway BR-153 and the district of Luzimangues in Porto Nacional.\nThe Palmas Airport connects Palmas with many Brazilian cities."
+        },
+        {
+          "article": "Palmas, Tocantins (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Palmas,_Tocantins#Climate",
+          "text": "Most of Tocantins, including where Palmas is located, (except the extreme west and northern regions) is situated within a vast Brazilian area known as the cerrado. The cerrado region's typical climate is hot, semi-humid, with pronounced seasonality marked by a dry winter season from May through September. The annual rainfall is around 800 to 1600 mm. The soils are generally very old, deep, and naturally nutrient-poor.\nPalmas is one of the hottest capital cities in Brazil. During the May to September dry season, Palmas can be oppressively hot as temperatures climb into the high 30s (°C). During the October to April rainy season, it is not as hot. The heavy rains and cloud cover keep it much cooler. Palmas receives generous rainfall of about 1,300 mm. It is situated in a 'bow' valley of Rio Tocantins and surrounded by mountains from three sides; with its low elevation, 195 metres above sea level, these factors increase the humidity and discomfort of hot days.\nDue to the city's location at 10S, it technically celebrates Christmas and New Year in summer. However summer (December to February) is the rainiest and coldest season in the year. The heavy summer rain can cool down the maximum temperature in summer a lot. In contrast with the rainy and cloudy summer, winter (June to August) has almost no rain and most of winter days are sunny. Spring (September to November) and autumn (March to May) are the transitions between dry and wet periods. Spring is the hottest season, with September daily average temperatures soar up over 30 degrees Celsius."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 262,
+      "leadWords": 213,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives planned-capital history, road layout and a hydroelectric reservoir creating beaches, but no climate mechanism, extreme, or paradox; reservoir beaches are not climate",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "palmas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 375,
+    "place_id": "gn-3646190",
+    "input": {
+      "place": {
+        "place_id": "gn-3646190",
+        "name": "Catia La Mar",
+        "country": "Venezuela",
+        "subdivision": "Vargas",
+        "lat": 10.60545,
+        "lon": -67.03238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Catia La Mar",
+          "url": "https://en.wikipedia.org/wiki/Catia_La_Mar",
+          "text": "Catia La Mar is a city and port in the municipality of Vargas, in the Venezuelan state of La Guaira (also previously called Vargas). It is Maiquetía's neighbor to the west.\nCatia la Mar is about 10 minutes from Simón Bolívar International Airport, Venezuela's main airport.\nNamed after the 16th-century cacique Catia, contemporary of Guaicaipuro, founded in 1558 by Francisco Fajardo with the name of \"La Villa de Catia\", currently called Catia la Mar. The city hosts a naval academy and university, a fishing port called La Zorra, and several beaches (Costa Dorada, Playa La Zorra, Playa Candilejas, Puerto Viejo). Its main neighborhoods are Atlantida, Playa Grande, Páez, Ezequiel Zamora, La Lucha, and La Soublette.\nAccording to the 2011 population census, the city had 85,366 inhabitants, making it the most populous of the 11 parishes in La Guaira.\nThe city was affected by the 1999 Vargas tragedy, by 2026 United States strikes in Venezuela and 2026 Venezuela earthquakes."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 158,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives port, airport proximity, beaches, founding and the 1999 tragedy, but no climate mechanism, extreme, or paradox; a past disaster event alone is not a climate description",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "catia la mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "catia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 376,
+    "place_id": "gn-3996663",
+    "input": {
+      "place": {
+        "place_id": "gn-3996663",
+        "name": "Manzanillo",
+        "country": "Mexico",
+        "subdivision": "Colima",
+        "lat": 19.11695,
+        "lon": -104.34214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manzanillo, Colima",
+          "url": "https://en.wikipedia.org/wiki/Manzanillo,_Colima",
+          "text": "Manzanillo (, ; Spanish pronunciation: [mansaˈniʝo]) is the most populous city in the Mexican state of Colima and seat of Manzanillo Municipality. The city, located on the Pacific Ocean, contains Mexico's busiest port, responsible for handling Pacific cargo for the Mexico City area. It is the largest-producing municipality for the business sector and tourism in the small state of Colima. Recent data from DataMexico indicates that Manzanillo has relatively young workforce, with high economic participation in service, retail, and logistics industries connected to the city's port activity.\nThe city has been referred to as the \"sailfish capital of the world\". Since 1957, it has hosted national and international fishing competitions, such as the Dorsey Tournament. Manzanillo has developed as a destination for international tourism."
+        },
+        {
+          "article": "Manzanillo, Colima (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Manzanillo,_Colima#Climate",
+          "text": "Manzanillo has a tropical savanna climate (Köppen climate classification Aw). The dry season, which is from November to May, has low amounts of precipitation, and temperatures tend to be cooler than in the wet season. The average temperature in March, the coolest month, is . The wet season, which runs from June to October, has warmer temperatures, averaging in July, and humidity during this time is higher.\nIn 2012, the port of Manzanillo initiated an ecological project consisting of dredged canals and creating islands in the Lagoon of the Valle de las Garzas, a protected wildlife area. With this work, the port plans to increase the flow into the lagoon, thus increasing the viability of the enhanced ecosystem that includes the planting of 15,000 mangrove trees. Extensive use of geotextile tubes was included in the channel creation. These geotextile tubes were used to create two parallel breakwaters on either side of the dredged channels."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 154,
+      "leadWords": 124,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Pacific port, sailfish competitions and tourism, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "manzanillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 377,
+    "place_id": "gn-6058560",
+    "input": {
+      "place": {
+        "place_id": "gn-6058560",
+        "name": "London",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.98339,
+        "lon": -81.23304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "London, Ontario",
+          "url": "https://en.wikipedia.org/wiki/London,_Ontario",
+          "text": "London is a city in Southwestern Ontario, Canada, along the Quebec City–Windsor Corridor. The city had a population of 422,324 according to the 2021 Canadian census. London is at the confluence of the Thames River and North Thames River, approximately 200 kilometres (120 mi) from both Toronto and Detroit; and about 230 km (140 mi) from Buffalo. The city of London is politically separate from Middlesex County, though it remains the county seat.\nLondon and the Thames were named after the English city and river in 1793 by John Graves Simcoe, who proposed the site for the capital city of Upper Canada. The first European settlement was established between 1801 and 1804 by Peter Hagerman. The village was founded in 1826 and incorporated in 1855. Since then, London has grown to be the largest southwestern Ontario municipality and Canada's 11th largest metropolitan area with a population of 543,551 according to the 2021 Canadian census, having annexed many of the smaller communities that surround it.\nLondon is a regional centre of healthcare and education, being home to the University of Western Ontario (which brands itself \"Western University\"), Fanshawe College, and three major hospitals: Victoria Hospital, University Hospital, and St. Joseph's Hospital. The city hosts a number of musical and artistic exhibits and festivals, which contribute to its tourism industry, but its economic activity is centred on education, medical research, manufacturing, financial services, and information technology. London's university and hospitals are among its top ten employers. London lies at the junction of Highways 401 and 402, connecting it to Toronto, Windsor, and Sarnia; these highways also make the Detroit-Windsor, Port Huron-Sarnia, and Niagara Falls border crossings with the United States easily accessible. The city also has railway stations and bus stations and is home to the London International Airport."
+        },
+        {
+          "article": "London, Ontario (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/London,_Ontario#Climate",
+          "text": "London has a humid continental climate (Köppen Dfb), with modestly warm summers, and cold and cloudy winters with frequent snow.\nBecause of its location in the continent, London experiences large seasonal contrast, tempered to a point by the surrounding Great Lakes. The proximity of the lakes also ensure abundant cloud cover, particularly in late Fall and Winter. The summers are usually warm to hot and humid, with a July average of , and temperatures above occur on average 11 days per year. Some of the snow accumulation comes from lake effect snow and snow squalls originating from Lake Huron, some to the northwest, which occurs when strong, cold winds blow from that direction. From December 5, 2010, to December 9, 2010, London experienced record snowfall when up to of snow fell in parts of the city. Schools and businesses were closed for three days and bus service was cancelled after the second day of snow.\nThe highest temperature ever recorded in London was on August 6, 1918. The lowest temperature ever recorded was on February 9, 1934."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 177,
+      "leadWords": 297,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives river confluence, naming, founding, education and highways, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "london",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 378,
+    "place_id": "gn-7626690",
+    "input": {
+      "place": {
+        "place_id": "gn-7626690",
+        "name": "Pimpri-Chinchwad",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 18.61867,
+        "lon": 73.80375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pimpri-Chinchwad",
+          "url": "https://en.wikipedia.org/wiki/Pimpri-Chinchwad",
+          "text": "Pimpri-Chinchwad, also known as PCMC, is a city in the Indian state of Maharashtra. The city is about 15 km (9.3 mi) northwest of the historic city of Pune, at an altitude of 590 m (1,940 ft) above sea level. It is the fifth largest city in Maharashtra and the eighteenth largest city in India and the sixteenth largest satellite city in the world by population. The city is located 135 km (84 mi) southeast from the state's capital Mumbai. It is one of the most rapidly developing suburban areas in India and has emerged as the third fastest growing city in the country. It is well known for its automotive, IT and manufacturing industry."
+        },
+        {
+          "article": "Pimpri-Chinchwad (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Pimpri-Chinchwad#Climate",
+          "text": "The city experiences three seasons: summer, monsoon and winter. Typical summer months are February to May with maximum temperatures above 35 °C and reaching up to 42 °C on hotter days. The city receives most of its 722 mm of rainfall in the monsoon months of June to September. The temperature in the winter months of October to January ranges from 12 °C (min) to 30 °C (max), with night temperatures often falling below 10 °C. Typical summer months are from mid-March to mid-June, with maximum temperatures sometimes reaching . The warmest month in Pimpri-Chinchwad is May. The city often has heavy dusty winds in May, with humidity remaining high. Even during the hottest months, the nights are usually cool due to Pune's high altitude. The highest temperature recorded was on 30April 1897.\nThe monsoon lasts from June to October, with moderate rainfall and temperatures ranging from . Most of the of annual rainfall in the city falls between June and September, and July is the wettest month of the year. Hailstorms are not unheard of.\nFor most of December and January the daytime temperature hovers around while night temperatures are below , often dropping to . The lowest temperature recorded was on 17January 1935."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 205,
+      "leadWords": 115,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives location near Pune and Mumbai and automotive, IT and manufacturing growth, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pimpri chinchwad",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pimpri",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chinchwad",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 379,
+    "place_id": "gn-1017780",
+    "input": {
+      "place": {
+        "place_id": "gn-1017780",
+        "name": "Boksburg",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.21197,
+        "lon": 28.25958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boksburg",
+          "url": "https://en.wikipedia.org/wiki/Boksburg",
+          "text": "Boksburg is a city on the East Rand of Gauteng province of South Africa. Gold was discovered in Boksburg in 1887. Boksburg was named after the State Secretary of the South African Republic, W. Eduard Bok. The Main Reef Road linked Boksburg to all the other major mining towns on the Witwatersrand and the Angelo Hotel (1887) was used as a staging post.\nBoksburg has been part of the City of Ekurhuleni Metropolitan Municipality since 5 December 2000, which forms the local government of most of the East Rand.\nThe Mining Commissioner Montague White built a large dam which, empty for years, was dubbed White's Folly until a flash flood in 1889 silenced detractors. The 150,000-square-metre dam is now the Boksburg Lake, and is surrounded by lawns, trees, and terraces."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 130,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract's only weather is a one-off flash flood in 1889 that filled a dam, which does not qualify as climate, and it gives no seasonal mechanism, extreme, or paradox",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox beyond a one-off historical flood, verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "boksburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 380,
+    "place_id": "gn-119208",
+    "input": {
+      "place": {
+        "place_id": "gn-119208",
+        "name": "Qom",
+        "country": "Iran",
+        "subdivision": "Qom Province",
+        "lat": 34.6401,
+        "lon": 50.8764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qom",
+          "url": "https://en.wikipedia.org/wiki/Qom",
+          "text": "Qom (Persian: قم; [qom] ) is the capital of Qom province, Iran. It is also the capital of Qom County and its Central District. It is the seventh largest metropolis and the seventh largest city in Iran. The city is 140 km (87 mi) to the south of Tehran, on the banks of the Qom River. Qom is a holy city in Shia Islam, as it is the site of the Fatima Masumeh Shrine, a descendant of the Islamic prophet Muhammad. She was the granddaughter of Ja'far al-Sadiq, the daughter of Musa al-Kazim, the sister of Ali al-Rida, and the aunt of Muhammad al-Jawad, the sixth, seventh, eighth and ninth of the Twelve Imams. The city is the world's largest center for Shia Islamic scholarship and is a significant destination of pilgrimage, with around 20 million pilgrims visiting every year. Qom's economy is heavily dependent on pilgrimage, and the city is the most conservative in Iran.\nQom is also home to Jamkaran Mosque, another holy site in Shia Islam where every year, millions celebrate Mid-Sha'ban, marking the birth of Muhammad al-Mahdi. The city has developed into a lively industrial center owing, in part, to its proximity to Tehran. It is a regional center for the distribution of petroleum and petroleum products, and a natural gas pipeline from Bandar Anzali and Tehran and a crude oil pipeline from Tehran run through Qom to the Abadan refinery on the Persian Gulf. Qom gained additional prosperity when oil was discovered at Sarajeh (fa:میدان نفتی البرز قم) near the city in 1956 and a large refinery was built between Qom and Tehran. In between the Tehran-Qom highway is the Imam Khomeini International Airport, the largest airport in Iran."
+        },
+        {
+          "article": "Qom (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Qom#Climate",
+          "text": "Qom has a hot desert climate bordering a cold desert climate based on Köppen climate classification (BWh bordering on BWk) and has an arid climate based on Trewartha climate classification (BW). There is low annual rainfall due to remoteness from the sea and being situated in the vicinity of the subtropical anticyclone aloft. Summer weather is very hot and essentially rainless. Winter weather can vary from warm to – when Siberian air masses are driven south across the Alborz Mountains by blocking over Europe – frigid. An example of the latter situation was in January 2008 when minima fell to on the 15th. Earlier similar situations occurred in January 1964 and to a lesser extent January 1950, January 1972 and December 1972.\nThe highest recorded temperature was on 11 July 2010. The lowest recorded temperature was on 15 January 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 140,
+      "leadWords": 284,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives holy-city status, shrine, pilgrimage, scholarship and oil pipelines, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "qom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 381,
+    "place_id": "gn-1234633",
+    "input": {
+      "place": {
+        "place_id": "gn-1234633",
+        "name": "Moratuwa",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 6.773,
+        "lon": 79.8816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moratuwa",
+          "url": "https://en.wikipedia.org/wiki/Moratuwa",
+          "text": "Moratuwa (Sinhala: මොරටුව) is a large municipality on the southwestern coast of Sri Lanka, near Dehiwala-Mount Lavinia. It is situated on the Galle–Colombo (Galle road) main highway, 18 km (11 mi) south of the centre of Colombo. Moratuwa is surrounded on three sides by water, except in the north of the city, by the Indian Ocean on the west, the Lake Bolgoda on the east and the Moratu river on the south. According to the 2012 census, the suburb had a population of 168,280.\nMoratuwa is the birthplace of Veera Puran Appu, a resistance fighter against British rule in Matale, the philanthropist Sir Charles Henry de Soysa and the musician Pandit W. D. Amaradeva."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract says the city is surrounded on three sides by ocean, lake and river, but gives no climate mechanism, extreme, or paradox; surrounding water alone is not climate",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "moratuwa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 382,
+    "place_id": "gn-1256287",
+    "input": {
+      "place": {
+        "place_id": "gn-1256287",
+        "name": "Silchar",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 24.82733,
+        "lon": 92.79787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silchar",
+          "url": "https://en.wikipedia.org/wiki/Silchar",
+          "text": "Silchar is a city and the headquarters of the Cachar district of the state of Assam, India. It is second largest city of Assam after Guwahati in terms of population and GDP. It is located 343 kilometres (213 mi; 185 nmi) south east of Guwahati. It was founded by Captain Thomas Fisher in 1832 when he shifted the headquarters of Cachar to Janiganj in Silchar. It earned the moniker \"Island of Peace\" from Indira Gandhi, the then Prime Minister of India. Silchar is the site of the world's first polo club and the first competitive polo match. In 1985, an Air India flight from Kolkata to Silchar became the world's first all-women crew flight. Silchar was a tea town and Cachar club was the meeting point for tea planters."
+        },
+        {
+          "article": "Silchar (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Silchar#Climate",
+          "text": "Silchar has a borderline tropical monsoon climate (Köppen Am) slightly too hot in the \"winter\" or \"cool\" season to qualify as a humid subtropical climate (Cwa). During this \"cool\" season the weather is generally warm and dry with cool to mild mornings; however, the \"wet\" season begins early as the monsoon moves into the region during April, with the result that for seven months of the year Silchar has very hot and humid weather with heavy thunderstorms almost every afternoon until the middle of October, when there is usually a brief period of hot and relatively dry weather before the \"cool\" season sets in during November.\nSilchar has been ranked 30th best \"National Clean Air City\" under (Category 3 population under 3 lakhs cities) in India."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 126,
+      "leadWords": 129,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives founding in 1832, polo firsts, an all-women crew flight and tea-town history, but no climate mechanism, extreme, or paradox",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "silchar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 383,
+    "place_id": "gn-1263364",
+    "input": {
+      "place": {
+        "place_id": "gn-1263364",
+        "name": "Mathura",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 27.5035,
+        "lon": 77.67215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mathura",
+          "url": "https://en.wikipedia.org/wiki/Mathura",
+          "text": "Mathura (Braj pronunciation: [mɐ.t̪ʰʊ.ɾäː] ) is a city and the administrative headquarters of Mathura district in the Indian state of Uttar Pradesh. It is located 162 kilometres (101 mi) south-east of Delhi; and about 15 kilometres (9.3 mi) from the town of Vrindavan. In ancient times, Mathura was an economic hub, located at the junction of important caravan routes. The 2011 Census of India estimated the population of Mathura at 441,894.\nIn Hinduism, the birthplace of Krishna, one of the main deities, is believed to be located in Mathura at the Krishna Janmasthan Temple Complex. It is one of the Sapta Puri, the seven cities considered holy by Hindus, also  called the Mokshyadayni Tirth. The Kesava Deo Temple was built in ancient times on the site of Krishna's birthplace (an underground prison). Mathura was the capital of the kingdom of Surasena, ruled by Kamsa, the maternal uncle of Krishna. Mathura is part of the Krishna circuit (Mathura, Vrindavan, Barsana, Govardhan, Kurukshetra, Dwarka and Bhalka). Krishna Janmashtami is celebrated in Mathura every year.\nMathura has been chosen as one of the heritage cities for the Heritage City Development and Augmentation Yojana scheme of Government of India."
+        },
+        {
+          "article": "Mathura (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Mathura#Climate",
+          "text": "Mathura has a hot semi-arid climate (BSh), a little too dry to be an humid subtropical climate (Koppen: Cwa), under the Köppen climate classification."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 24,
+      "leadWords": 195,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives caravan-route location, Krishna birthplace tradition, temples and festival, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "mathura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
