@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 588,
+    "attempt": 581,
+    "place_id": "gn-9081327",
+    "input": {
+      "place": {
+        "place_id": "gn-9081327",
+        "name": "Hòa Thành",
+        "country": "Vietnam",
+        "subdivision": "Tay Ninh",
+        "lat": 11.28696,
+        "lon": 106.12936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hòa Thành",
+          "url": "https://en.wikipedia.org/wiki/Hòa_Thành",
+          "text": "Hòa Thành, formerly named Phú Khương, is a district-level town of Tây Ninh Province in the Southeast region of Vietnam. It is located in the centre of the province. As of 2003, it had a population of 146,400. Hòa Thành town covers an area of 82 km2 (32 sq mi), the town capital lies at ward of Long Hoa, which is located on National Route 22B vi, a branch road of National Route 22 entirely run in the province that connect to Xa Mát International Border Gate, 8 km southeast of Downtown Tây Ninh City and 82km northwest of Ho Chi Minh City.\nThe town is bordered to the north by Tây Ninh City, to the west by Châu Thành District, to the southeast by Gò Dầu and to the northeast by Dương Minh Châu District.\nThe current name of the town is the combination of the last word of two communes: Trường Hòa and Long Thành, the latter commune was later dissolved into Long Thành Nam commune and most of current wards of the town (except Hiệp Tân ward)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 180,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "hoa thanh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hoa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "thanh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 589,
+    "attempt": 582,
+    "place_id": "gn-1621177",
+    "input": {
+      "place": {
+        "place_id": "gn-1621177",
+        "name": "Yogyakarta",
+        "country": "Indonesia",
+        "subdivision": "Yogyakarta",
+        "lat": -7.80139,
+        "lon": 110.36472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yogyakarta",
+          "url": "https://en.wikipedia.org/wiki/Yogyakarta",
+          "text": "Yogyakarta is the capital city of the Special Region of Yogyakarta in Indonesia, in the south-central part of the island of Java. As the only Indonesian royal city still ruled by a monarchy, Yogyakarta is regarded as an important centre for classical Javanese fine arts and culture such as ballet, batik textiles, drama, literature, music, poetry, silversmithing, visual arts, and wayang puppetry. Renowned as a centre of Indonesian education, Yogyakarta is home to a large student population and dozens of schools and universities, including Gadjah Mada University, the country's largest institute of higher education and one of its most prestigious.\nYogyakarta is the capital of the Yogyakarta Sultanate and served as the Indonesian capital from 1946 to 1948 during the Indonesian National Revolution, with Gedung Agung as the president's office. One of the districts in southeastern Yogyakarta, Kota, was the capital of the Mataram Sultanate between 1587 and 1613.\nThe city's population was 388,627 at the 2010 census, and 373,589 at the 2020 census; the official estimate as of mid-2023 was 375,699, composed of 182,840 men and 192,859 women. The greater metropolitan area includes the city of Magelang and 65 districts across Sleman, Klaten, Bantul, Kulon Progo and Magelang regencies and was home to 4,010,436 inhabitants in 2010. Yogyakarta has the highest HDI (Human Development Index) of all Indonesian regencies and cities, with a score of 0.887."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "yogyakarta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 590,
+    "attempt": 583,
+    "place_id": "gn-2522013",
+    "input": {
+      "place": {
+        "place_id": "gn-2522013",
+        "name": "Algeciras",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.13326,
+        "lon": -5.45051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Algeciras",
+          "url": "https://en.wikipedia.org/wiki/Algeciras",
+          "text": "Algeciras (Spanish: [alxeˈθiɾas] ) is a city and a municipality of Spain belonging to the province of Cádiz, Andalusia. With a registered population as of 2020 of 123,078, it is the most populated municipality of the Campo de Gibraltar. The city is located in the western shore of the Bay of Gibraltar (Bahía de Algeciras) opposite the Rock of Gibraltar, around the mouth of the Río de la Miel, now mostly culverted in its lower course, near the southernmost end of the Iberian Peninsula and continental Europe and the Strait of Gibraltar.\nThe area was inhabited in Antiquity, including archaeological strata generally identified with the Roman city of Iulia Traducta. Founded soon after the Islamic conquest of the Iberian Peninsula on the mouth of the Río de la Miel, al-Jazira al-Khadrā became the head of a rump taifa kingdom after Umayyad state collapse in the 11th century. In 1275, the Emirate of Granada ceded the place to the Marinids, who founded the new walled precinct of al-Bunayya after 1282 on the opposite bank of the Río de la Miel. The twin medinas were conquered in 1344 by the Crown of Castile. Medieval urban continuity came to an abrupt end when the town was torn down by the Nasrids circa 1369–1385. The ruins were repopulated and the town eventually refounded upon the arrival of refugees from the 1704 Anglo-Dutch capture of Gibraltar.\nThe Port of Algeciras is one of the largest ports in Europe and the world in three categories: container, cargo and transshipment. The surrounding metropolitan area also includes the municipalities of Los Barrios, La Línea de la Concepción, Castellar de la Frontera, Jimena de la Frontera, San Roque and Tarifa, with a population of 263,739."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "algeciras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 591,
+    "attempt": 584,
+    "place_id": "gn-3448639",
+    "input": {
+      "place": {
+        "place_id": "gn-3448639",
+        "name": "São José do Rio Preto",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -20.81972,
+        "lon": -49.37944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São José do Rio Preto",
+          "url": "https://en.wikipedia.org/wiki/São_José_do_Rio_Preto",
+          "text": "São José do Rio Preto (Portuguese pronunciation: [sɐ̃w ʒuˈzɛ du ʁiw ˈpɾetu]) is a municipality in the state of São Paulo, Brazil. It is located in the north/northwest region of the state, approximately 445 km (277 mi) from the city of São Paulo and 700 km (430 mi) from Brasília. With a population of 504,166 inhabitants, by the 2025 estimative of the IBGE, it is the 10th largest city in São Paulo and the 48th largest in Brazil. It has an area of 431.30 km2; the urban area, with 124.79 km2, is the 7th largest in the state and the 30th largest in the country. By the 2022 IBGE census, the city had a population of 480,383 inhabitants, with a population density of 1,112.7 people/km2.\nThe Metropolitan Region of São José do Rio Preto, with 1,010,633 inhabitants in 2025, is the 30th largest metropolitan area in Brazil, according to the IBGE.  In 2020, the Mesoregion of São José do Rio Preto had a population of 1,569,220; the Microregion of São José do Rio Preto had a population of 763,534.\nThe city was founded in 1852 and elevated to municipality in 1894 and has an economic history closely tied to the tertiary sector and the primary sector. São José do Rio Preto celebrates its anniversary on March 19, Saint Joseph's Day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "sao jose do rio preto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "preto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 592,
+    "attempt": 585,
+    "place_id": "gn-3462089",
+    "input": {
+      "place": {
+        "place_id": "gn-3462089",
+        "name": "Gravataí",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.94218,
+        "lon": -50.99278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gravataí",
+          "url": "https://en.wikipedia.org/wiki/Gravataí",
+          "text": "Gravataí is a Brazilian municipality in the state of Rio Grande do Sul, located north of the state capital, approximately 23 km away. It is one of the 32 municipalities within the Porto Alegre Metropolitan Region (RMPA). The municipality covers an area of 463.758 square kilometres (179.058 sq mi), with 121.37 square kilometres (46.86 sq mi) designated as the urban area, and its population was recorded in 2022 as 265,070 inhabitants, making it the sixth most populous municipality in the state and the third in the RMPA.\nGravataí was initially established in 1763, with official emancipation occurring in 1880. The name is believed to derive from a combination of gravatá, a species of Apiaceae (formerly Umbelliferae) abundant in the region, and hy, meaning river in the Guarani language. Today, the municipality's primary economic driver is the industrial sector, with the Gravataí Automotive Industrial Complex of General Motors serving as a significant source of revenue, positioning the city as a hub for Brazil's metal-mechanical industry.\nThe municipality also boasts a rich cultural heritage that includes handicrafts, theater, music and sports. One of its most prominent and traditional football clubs is the Cerâmica Atlético Clube, founded in April 1950. Gravataí hosts several annual events, including the Feast of Our Lady of Navigators, the Bromeliad Festival, and the Gravataí International Cycling Tour, alongside notable tourist attractions such as the Agostinho Martha Municipal Museum, which showcases the colonial history of the Gravataí River Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 179,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "gravatai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 593,
+    "attempt": 586,
+    "place_id": "gn-4776222",
+    "input": {
+      "place": {
+        "place_id": "gn-4776222",
+        "name": "Norfolk",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 36.84681,
+        "lon": -76.28522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norfolk, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Norfolk,_Virginia",
+          "text": "Norfolk (locally   NOR-fək) is an independent city in the U.S. commonwealth of Virginia. It had a population of 238,005 at the 2020 census, making it the third-most populous city in both the Hampton Roads metropolitan area and in Virginia, after neighboring cities Virginia Beach and Chesapeake, as well as the 101st-most populous city in the United States. The city holds a strategic position as the historical, urban, financial, and cultural center of the Hampton Roads area (sometimes called \"Tidewater\"), which has more than 1.8 million inhabitants and is the 37th-largest metropolitan area in the U.S.\nNorfolk was established in 1682 as a colonial seaport. Strategically located at the confluence of the Elizabeth River and the Chesapeake Bay, it quickly developed into a major center for trade and shipbuilding. During the American Revolution and War of 1812, its port and naval facilities made it a critical military target. Norfolk's prominence grew in the 20th century with the expansion of the U.S. Navy, particularly through the establishment of Naval Station Norfolk in 1917, which remains the world's largest naval base.\nNorfolk is an important contributor to the Port of Virginia and houses one of NATO's two Strategic Command headquarters. It is home to Maersk Line, Limited, which manages the world's largest fleet of US-flag vessels. The city has numerous cultural institutions including the Nauticus maritime museum, Chrysler Museum of Art, and Virginia Zoo. Norfolk has many miles of riverfront and bayfront areas, including beaches on the Chesapeake Bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "norfolk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 594,
+    "attempt": 587,
+    "place_id": "gn-580497",
+    "input": {
+      "place": {
+        "place_id": "gn-580497",
+        "name": "Astrakhan",
+        "country": "Russia",
+        "subdivision": "Astrakhan Oblast",
+        "lat": 46.34968,
+        "lon": 48.04076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Astrakhan",
+          "url": "https://en.wikipedia.org/wiki/Astrakhan",
+          "text": "Astrakhan is the largest city and administrative centre of Astrakhan Oblast in southern Russia. The city lies on two banks of the Volga, in the upper part of the Volga Delta, on eleven islands of the Caspian Depression, 100 km (62 mi) from the Caspian Sea, with a population of 475,629 residents at the 2021 Census. At an elevation of 28 meters (92 ft) below sea level, it is the lowest city in Russia. \nAstrakhan was formerly the capital of the Khanate of Astrakhan (a remnant of the Golden Horde) of the Astrakhan Tatars, and was located on the higher right bank of the Volga, eleven kilometres (6.8 mi) from the present-day city. Situated on caravan and water routes, it developed from a village into a large trading centre, before being conquered by Timur in 1395 and captured by Ivan the Terrible in 1556 and in 1558 it was moved to its present site. \nThe oldest economic and cultural center of the Lower Volga region, it is often called the southernmost outpost of Russia, and the Caspian capital. The city is a member of the Eurasian Regional Office of the World Organization United Cities and Local Governments. The great ethnic diversity of its population gives a varied character to Astrakhan. The city is the center of the Astrakhan metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "astrakhan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 595,
+    "attempt": 588,
+    "place_id": "gn-686254",
+    "input": {
+      "place": {
+        "place_id": "gn-686254",
+        "name": "Arad",
+        "country": "Romania",
+        "subdivision": "Arad County",
+        "lat": 46.18333,
+        "lon": 21.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arad, Romania",
+          "url": "https://en.wikipedia.org/wiki/Arad,_Romania",
+          "text": "Arad (Romanian pronunciation: [aˈrad] ; Hungarian: Arad, Serbian: Арад / Arad, German: Arad) is the capital city of Arad County, at the border of Crișana and Banat. No villages are administered by the city. It is the third largest city in Western Romania, behind Timișoara and Oradea, and the 12th largest in Romania, with a population of 145,078.\nA busy transportation hub on the Mureș River and an important cultural and industrial center, Arad has hosted one of the first music conservatories in Europe, one of the earliest normal schools in Europe, and the first car factory in Hungary and present-day Romania. Today, it is the seat of a Romanian Orthodox archbishop and features a Romanian Orthodox theological seminary and two universities.\nThe city's multicultural heritage is owed to the fact that it has been part of the Kingdom of Hungary, the Eastern Hungarian Kingdom, the Ottoman Temeşvar Eyalet, Principality of Transylvania, Habsburg monarchy, Austro-Hungarian Empire, and, since 1920, Romania, having had significant populations of Hungarians, Germans, Jews, Serbs, Bulgarians and Czechs, at various points in its history. During the second half of the 19th century and the beginning of the 20th century, the city  experienced rapid development. The most impressive displays of architecture that are still the popular sights of Arad today, such as the neoclassical Ioan Slavici Theater, the eclectic Administrative Palace, and the Neo-Gothic Red Church, were built in this period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "arad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 596,
+    "attempt": 589,
+    "place_id": "gn-1273874",
+    "input": {
+      "place": {
+        "place_id": "gn-1273874",
+        "name": "Kochi",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 9.93988,
+        "lon": 76.26022
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kochi",
+          "url": "https://en.wikipedia.org/wiki/Kochi",
+          "text": "Kochi ( KOH-chee, Malayalam: [kotˈt͡ʃi] ), formerly known as Cochin ( KOH-chin), is a major port city along the Malabar Coast of India bordering the Laccadive Sea. It is part of the district of Ernakulam in the state of Kerala and is the financial, industial and commercial capital of the state. The city is also commonly referred to as Ernakulam, which is its central business district. As of 2011, the Kochi Municipal Corporation had a population of 677,381 over an area of 94.88 km2, and the larger Kochi urban agglomeration had over 2.1 million inhabitants within an area of 440 km2, making it the largest and the most populous metropolitan area in Kerala.  Kochi city is also part of the Greater Cochin development region and is classified as a Tier-II city by the Government of India. The civic body that governs the city is the Kochi Municipal Corporation, which was constituted in the year 1967, and the statutory bodies that oversee its development are the Greater Cochin Development Authority (GCDA) and the Goshree Islands Development Authority (GIDA).\nNicknamed the Queen of the Arabian Sea, Kochi was an important spice trading center on the west coast of India from antiquity.  The port of Muziris traded with the Romans, Persians, Arabs, and Chinese. From 1503 to 1663, the Portuguese established Fort Emmanuel, before it was taken over by the Dutch in 1663. The Dutch then ceded the area to the United Kingdom. Kochi remained under the control of the Kingdom of Cochin, which became a princely state of the British. The construction of the Cochin Port and the reclamation of Willingdon Island in 1928 transformed Kochi into a major seaport and trading hub on the Malabar Coast. Over the following decades, the city developed into a major industrial and commercial centre, with shipbuilding, petroleum refining, and information technology becoming important parts of its economy.\nKochi houses major government institutions including the High Court of Kerala. It is home to Cochin Shipyard, the largest shipbuilding and maintenance facility in India in terms of capacity. Kochi is the first city in India to implement a water metro system, the Kochi Water Metro, an integrated urban water transport network that is being developed in phases. It is also the only city in Kerala to have a rapid transit system. The Cochin International Airport is the first in the world to operate solely on solar energy.\nKochi's rich cultural heritage has made it a popular tourist destination among both domestic and international travellers. It has been hosting India's first art biennale, the Kochi-Muziris Biennale, since 2012, which attracts international artists and tourists. The Chinese fishing nets, introduced during the 14th century by the Chinese, are a symbol of the city and a popular tourist attraction in themselves. Other landmarks include Mattanchery Palace, Marine Drive, Venduruthy Bridge, Church of Saint Francis and Mattanchery Bridge. The city ranks first in the total number of international and domestic tourist arrivals in Kerala. The city was ranked the sixth best tourist destination in India according to a survey conducted by the Nielsen Company on behalf of the Outlook Traveller magazine. In October 2019, Kochi was ranked seventh in Lonely Planet's list of top 10 cities in the world to visit in 2020. In November 2023, the British Luxury travel magazine Condé Nast Traveller rated Kochi as one of the best places to go in Asia in 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 567
+    },
+    "banned_terms": [
+      {
+        "term": "kochi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 597,
+    "attempt": 590,
+    "place_id": "gn-248946",
+    "input": {
+      "place": {
+        "place_id": "gn-248946",
+        "name": "Irbid",
+        "country": "Jordan",
+        "subdivision": "Irbid",
+        "lat": 32.55556,
+        "lon": 35.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irbid",
+          "url": "https://en.wikipedia.org/wiki/Irbid",
+          "text": "Irbid (Arabic: إِربِد) is a city located on the northern ridge of the Gilead mountains in northern Jordan in the Irbid Governorate. The city lies approximately 20 kilometres (12 mi) south of the Syrian border, and is the largest city of the Irbid Governorate and the third most populous city of Jordan. \nIrbid was known in classical antiquity with its ancient Greek name of Arabella, close to the cities of Pella, Beit Ras, and Um Qais. Irbid was built on successive Early Bronze Age settlements and was possibly the biblical Beth Arbel and the Arbila of the Decapolis, a Hellenistic league of the 1st–2nd century BC. The population of Irbid swelled in the late 19th century, and prior to 1948 it served as a significant centre of transit trade. The greater Irbid Municipality was established in 1881 in the late Ottoman period, making it the oldest municipality in Jordan.\nIt has the second-largest metropolitan population in Jordan after the capital Amman which lies about 70 kilometres (43 mi) to its south, with a population of around 2,003,800. It also has the third largest urban population in Jordan after Amman and Zarqa. The Irbid Governorate has the second largest population, and the highest population density in the kingdom. The city is a major ground transportation hub between Amman, Syria to the north, and Mafraq to the east. The Irbid region is also home to several colleges and universities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "irbid",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 598,
+    "attempt": 591,
+    "place_id": "gn-255274",
+    "input": {
+      "place": {
+        "place_id": "gn-255274",
+        "name": "Piraeus",
+        "country": "Greece",
+        "subdivision": "Attica",
+        "lat": 37.94203,
+        "lon": 23.64619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piraeus",
+          "url": "https://en.wikipedia.org/wiki/Piraeus",
+          "text": "Piraeus ( py-REE-əs, pirr-AY-əs; Greek: Πειραιάς Peiraiás [pireˈas]; Ancient Greek and Katharevousa: Πειραιεύς Peiraieús, Ancient: [peːrai̯eús], Katharevousa: [pireˈefs]) is a port city within the Athens urban area (\"Greater Athens\"), in the Attica region of Greece. It is located eight kilometres (5 mi) southwest of Athens city centre along the east coast of the Saronic Gulf in the Athens Riviera.\nThe municipality of Piraeus and four other suburban municipalities form the regional unit of Piraeus, sometimes called the Greater Piraeus area, with a total population of 448,051. At the 2021 census, Piraeus had a population of 168,151 people, making it the fourth largest municipality in Greece and the second largest (after the municipality of Athens) within the Athens urban area.\nPiraeus has a long recorded history, dating back to ancient Greece. The city was founded in the early 5th century BC, when plans to make it the new port of Athens were implemented: A prototype harbour was constructed, which resulted in concentrating in one location all the import and transit trade of Athens, along with the navy's base. During the Golden Age of Athens, the Long Walls were constructed to fortify the route from the main settlement to the port (Piraeus). During the classical period, the naval base in Piraeus had 372 trireme shipsheds. Beginning in the 3rd century B.C., Piraeus went into a period of cumulative decline. However, it began growing once again in the 19th century, after Athens was made the capital of Greece. Today Piraeus is a large city bustling with activity. It is a huge marine and commercial-industrial centre, and home to Greece's largest harbour.\nThe port of Piraeus is the chief port in Greece, the 5th largest passenger port in Europe and the 24th largest passenger port in the world serving about 4.37 million passengers annually in 2020. With a throughput of 5.44 million TEUs, Piraeus is among the busiest ten ports in Europe in terms of container traffic, and is the busiest container port in the Eastern Mediterranean. The city hosted events in both the 1896 and 2004 Summer Olympics held in Athens. The University of Piraeus is one of the largest universities in Greece, and includes the country's second-oldest business school, as well as the oldest academic department dedicated to the study of finance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 380
+    },
+    "banned_terms": [
+      {
+        "term": "piraeus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 599,
+    "attempt": 592,
+    "place_id": "gn-3674962",
+    "input": {
+      "place": {
+        "place_id": "gn-3674962",
+        "name": "Medellín",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.245,
+        "lon": -75.57151
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Medellín",
+          "url": "https://en.wikipedia.org/wiki/Medellín",
+          "text": "Medellín ( MED-ay-(Y)EEN; Spanish: [meðeˈʝin] or [meðeˈʎin]), officially the Special District of Science, Technology and Innovation of Medellín (Spanish: Distrito Especial de Ciencia, Tecnología e Innovación de Medellín), is the capital of the department of Antioquia, and the second-largest city in Colombia after Bogotá. It is located in the Aburrá Valley, a central region of the Andes Mountains, in northwestern South America. The city's population was 2,427,129 at the 2018 census. The metro area of Medellín is the second-largest urban agglomeration in Colombia in terms of population and economy, with more than 4 million people.\nIn 1616, the Spaniard Francisco de Herrera Campuzano erected a small indigenous village (poblado) known as \"Saint Lawrence of Aburrá\" (San Lorenzo de Aburrá), located in the present-day El Poblado commune. On 2 November 1675, the queen consort Mariana of Austria founded the \"Town of Our Lady of Candelaria of Medellín\" (Villa de Nuestra Señora de la Candelaria de Medellín) in the Aná region, which today corresponds to the center of the city (east-central zone) and first describes the region as \"Medellín\". In 1826, the city was named the capital of the Department of Antioquia by the National Congress of the nascent Republic of Gran Colombia, comprising present-day Colombia, Venezuela, Ecuador, and Panama. After Colombia won its independence from Spain, Medellín became the capital of the Federal State of Antioquia until 1888, with the proclamation of the Colombian Constitution of 1886. During the 19th century, Medellín was a dynamic commercial center, first exporting gold, then producing and exporting coffee.\nTowards the end of the 20th century and into the beginning of the 21st, the city regained industrial dynamism, with the construction of the Medellín Metro commuter rail, liberalized development policies and improvement in security and education. Researchers at the Overseas Development Institute have lauded the city as a pioneer of a post-Washington Consensus \"local development state\" model of economic development. The city is promoted internationally as a tourist destination and is considered a global city type \"Gamma +\" by the Globalization and World Cities Research Network. The Medellín Metropolitan Area produces 67% of the Department of Antioquia's GDP and 11% of the economy of Colombia. Medellín is important to the region for its universities, academies, commerce, industry, science, health services, flower-growing, and festivals.\nIn February 2013, the Urban Land Institute chose Medellín as the most innovative city in the world due to its recent advances in politics, education, and social development. In the same year, Medellín won the Veronica Rudge Urbanism Award conferred by Harvard University to the Urban Development Enterprise, mainly due to the North-Western Integral Development Project in the city. Medellín hosted UN-Habitat's 7th World Urban Forum in 2014. In 2016, the city won the Lee Kuan Yew World City Prize. The award seeks to recognize and celebrate efforts in furthering innovation in urban solutions and sustainable urban development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 476
+    },
+    "banned_terms": [
+      {
+        "term": "medellin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 600,
+    "attempt": 593,
+    "place_id": "gn-109323",
+    "input": {
+      "place": {
+        "place_id": "gn-109323",
+        "name": "Khobar",
+        "country": "Saudi Arabia",
+        "subdivision": "Eastern Province",
+        "lat": 26.27944,
+        "lon": 50.20833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khobar",
+          "url": "https://en.wikipedia.org/wiki/Khobar",
+          "text": "Al Khobar (Arabic: ٱلْخُبَر, romanized: al-Khobar) is a city and governorate in the Eastern Province of the Kingdom of Saudi Arabia, situated on the coast of the Persian Gulf. With a population of 409,549 in the city core and 658,550 in the governorate, as of 2022, Khobar forms part of the Dammam metropolitan area along with Dammam and Dhahran, making up the residential core of Saudi Arabia's Persian Gulf region.\nThe city was founded alongside Dammam by the Dawasir, who moved there in 1923 fearing British persecution with the permission of King Abdulaziz Al Saud. Khobar experienced rapid growth during and after the discovery of oil in Saudi Arabia as it served as the port for the oil exports of Saudi Aramco in the company's early days. Traditionally, Khobar has also been a city of shopkeepers and merchants, and today has several shopping malls in and around it.\nThe city is the newest in the Dammam metropolitan area, facing the Persian Gulf with its 16-km long Corniche Road, which runs parallel to the city's eastern coast. Khobar is also considered a resort town as its southern suburbs of the city face the Half Moon Bay and host several beaches and beach resorts. By night, the quiet city turns into a bustling one, with some of the largest malls in the kingdom, such as the Mall of Dhahran and the al-Rashid Mall. The city is also home to the historic Suwaiket Street, officially known as Prince Bandar ibn Abdulaziz Street, which is home to some of the oldest markets in the city. The same could also be said about King Khalid Street and Prince Mohammed Street.\nThe Khobar governorate is further divided into several municipalities, with Khobar as their capital. 'Issam ibn Abdullatif al-Mulla has been serving as the mayor of the governorate since the Islamic year 1428 AH (2007 CE)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 176,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "khobar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 601,
+    "attempt": 594,
+    "place_id": "gn-1269743",
+    "input": {
+      "place": {
+        "place_id": "gn-1269743",
+        "name": "Indore",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 22.71792,
+        "lon": 75.8333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Indore",
+          "url": "https://en.wikipedia.org/wiki/Indore",
+          "text": "Indore ( ; ISO: Indaura, Hindi: [ɪn̪d̪ɔːr]) is the largest city of the Indian state of Madhya Pradesh where it serves as the capital and the administrative headquarters of the eponymous district and division. Modern-day Indore was established on the banks of the Kanh and Saraswati rivers and traces its roots to its 16th-century founding as a trading hub between the Deccan Plateau and Delhi. Following the conquest of Malwa by Peshwa Baji Rao I, the city came under the control of the Maratha Empire until its annexation by the British East India Company. Prior to Indian independence, the Kingdom of Indore was a nineteen Gun Salute Princely State of the British Raj with the Holkars as rulers.\nWith an estimated population of 5.6 million in 2025 distributed over nearly 10 thousand square kilometres, the metropolitan region encompassing Indore, Ujjain, Dewas, Pithampur and Nagda serves as the financial capital of Madhya Pradesh. One of India's main industrial hubs, the metropolitan region is a major center for pharmaceutical and automotive manufacturing with, notably, Asia’s longest test track.\nThe largest education hub in central India, it is home to an Indian Institute of Technology and an Indian Institute of Management and is one of the cities selected under the central government's flagship Smart Cities Mission and Swachh Survekshan programmes.\nConsistently ranked as India's cleanest city, Indore is regularly commended for its clean air and proper waste management."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 176,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "indore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 602,
+    "attempt": 595,
+    "place_id": "gn-3448636",
+    "input": {
+      "place": {
+        "place_id": "gn-3448636",
+        "name": "São José dos Campos",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.17944,
+        "lon": -45.88694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São José dos Campos",
+          "url": "https://en.wikipedia.org/wiki/São_José_dos_Campos",
+          "text": "São José dos Campos (Portuguese pronunciation: [sɐ̃w ʒuˈzɛ dus ˈkɐ̃pus], Portuguese for 'Saint Joseph of the Fields') is a major city and the seat of the municipality of the same name in the state of São Paulo, Brazil. One of the leading industrial and research centers with emphasis in aerospace sciences in Latin America, the city is located in the Paraíba Valley, between the two most active production and consumption regions in the country; São Paulo (80 km (50 mi) from the city) and Rio de Janeiro (320 km (200 mi)). It is the main city of the Metropolitan Region of Vale do Paraíba e Litoral Norte. A native of São José dos Campos is called a joseense (Portuguese pronunciation: [ʒozɛˈẽsi]). Being the second most populous non-capital city in Brazil – behind Campinas – São José dos Campos lies in the middle of the Expanded Metropolitan Complex (\"Complexo Metropolitano Expandido\"), the first megalopolis in the Southern Hemisphere, with over  thirty million inhabitants. The city's metro area also includes Greater São Paulo, Campinas, Santos and Sorocaba.\nThe municipality concentrates many major companies and  industries, such as Embraer, Panasonic, Johnson & Johnson, Ericsson, Philips, General Motors, Petrobras, and Monsanto among others. São José dos Campos also holds relevant education and research institutions, such as ITA, INPE, CEMADEN, IEAv, IEA, IFI, UNESP, UNIFESP, DCTA, FATEC, UNIVAP and IP&D, holding a position that puts the city as the largest aerospatial complex in Latin America. The Technological park (\"Parque Tecnológico de São José dos Campos\"), the largest one in the country, is the only research institute in the world that includes all three top global plane production companies, Embraer, Boeing and Airbus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "sao jose dos campos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "campos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 603,
+    "attempt": 596,
+    "place_id": "gn-3453643",
+    "input": {
+      "place": {
+        "place_id": "gn-3453643",
+        "name": "Piracicaba",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.72528,
+        "lon": -47.64917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piracicaba",
+          "url": "https://en.wikipedia.org/wiki/Piracicaba",
+          "text": "Piracicaba (Brazilian Portuguese: [piɾɐsiˈkabɐ] or [piˌɾasiˈkabɐ]) is a Brazilian municipality located in the interior of São Paulo state, in the Southeast Region of Brazil. It serves as the main city of the Metropolitan Region of Piracicaba (RMP) and is situated approximately 150 km (93 mi) northwest of the state capital, São Paulo. Covering an area of just over 1,378 km2 (532 sq mi), with around 169 km2 (65 sq mi) classified as urban area, Piracicaba has a population of 438,827 inhabitants, making it the 13th most populous municipality in São Paulo state.\nEstablished in 1767 along the banks of the Piracicaba River, a vital water source for the region, Piracicaba saw significant agricultural development during the 19th century, particularly in sugarcane and coffee cultivation. However, the early 20th century brought economic decline due to the collapse of the coffee cycle and falling sugar prices, a situation that persisted until the onset of industrialization.\nPiracicaba was among the first Brazilian cities to industrialize, with the establishment of factories in the metalworking and sugar production equipment sectors. This industrial activity expanded significantly in the 1970s with the Pró-Álcool program, which promoted the production of ethanol for automotive use in response to the 1973 global oil crisis. This initiative spurred substantial industrial growth in Piracicaba over subsequent decades, positioning it as the 34th largest GDP in Brazil in 2021. Today, it is a key industrial hub in the region and home to several universities.\nBeyond its economic significance, Piracicaba is a prominent cultural center in its region. The Tupi Forest Reserve and Ártemis Spa are major environmental preservation areas, while Professor Phillipe Westin Park and parks along the Piracicaba River are notable urban attractions. The International Humor Exhibition of Piracicaba, held annually at the Central Mill, is one of the world's most significant cartoon events. The Central Mill, a former sugarcane mill, is now a protected historical and cultural site, serving as a venue for cultural, artistic, and recreational activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "piracicaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 604,
+    "attempt": 597,
+    "place_id": "gn-5323810",
+    "input": {
+      "place": {
+        "place_id": "gn-5323810",
+        "name": "Anaheim",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.83529,
+        "lon": -117.9145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anaheim, California",
+          "url": "https://en.wikipedia.org/wiki/Anaheim,_California",
+          "text": "Anaheim ( AN-ə-hyme) is a city in northern Orange County, California, United States, part of the Greater Los Angeles area. As of the 2020 census, the city had a population of 346,824, making it the most populous city in Orange County, the tenth-most populous city in California, and the 57th-most populous city in the United States. The second largest city in Orange County in terms of land area, Anaheim is known for being the home of the Disneyland Resort, the Anaheim Convention Center, and two professional sports teams: the Los Angeles Angels of Major League Baseball (MLB) and the Anaheim Ducks of the National Hockey League (NHL). It also served as the home of the Los Angeles Rams of the National Football League (NFL) from 1980 through 1994.\nAnaheim was founded by fifty German families in 1857 and incorporated as the second city in Los Angeles County on March 18, 1876; Orange County was split off from Los Angeles County in 1889. Anaheim remained largely an agricultural community until Disneyland opened on July 17, 1955. This led to the construction of several hotels and motels around the area, and residential districts in Anaheim soon followed. The city also developed into an industrial center, producing electronics, aircraft parts and canned fruit. Anaheim is a charter city.\nAnaheim's city limits extend almost the full width of Orange County, from Cypress in the west, twenty miles east to the Riverside County line, encompassing a diverse range of neighborhoods. In the west, mid-20th-century tract houses predominate. Downtown Anaheim has three mixed-use historic districts, the largest of which is the Anaheim Colony. South of downtown, a center of commercial activity of regional importance begins, the Anaheim–Santa Ana edge city, which stretches east and south into the cities of Orange, Santa Ana, and Garden Grove. This edge city includes the Disneyland Resort, with two theme parks, multiple hotels, and its retail district; Disney is part of the larger Anaheim Resort district with numerous other hotels and retail complexes. The Platinum Triangle, a neo-urban redevelopment district surrounding Angel Stadium, is planned to be populated with mixed-use streets and high-rises. Further east, Anaheim Canyon is an industrial district north of the Riverside Freeway (SR 91) and east of the Orange Freeway (SR 57). The city's eastern third consists of Anaheim Hills, a community built to a master plan, and open land east of the Eastern Transportation Corridor (SR 241 toll road)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 403
+    },
+    "banned_terms": [
+      {
+        "term": "anaheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 605,
+    "attempt": 598,
+    "place_id": "gn-3461144",
+    "input": {
+      "place": {
+        "place_id": "gn-3461144",
+        "name": "Ipatinga",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.46833,
+        "lon": -42.53667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ipatinga",
+          "url": "https://en.wikipedia.org/wiki/Ipatinga",
+          "text": "Ipatinga is a Brazilian municipality located in the interior of the state of Minas Gerais, in the Southeast Region of Brazil. Situated in the Vale do Rio Doce, it is part of the Vale do Aço Metropolitan Region, approximately 210 km east of the state capital. The municipality covers an area of just over 160 km², with about 40 km² in urban area, and its population was estimated at 235,311 inhabitants in 2025, making it the eleventh most populous municipality in Minas Gerais. The municipal seat is located near the confluence of the Piracicaba River and the Doce River.\nExploration of the region where Ipatinga now stands began in the 19th century with the arrival of bandeirantes. However, significant settlement only occurred between the 1910s and 1920s with the establishment of the EFVM. In 1953, the area was designated a district under Coronel Fabriciano, and during the same decade, it was selected as the site for the industrial hub of Usiminas, leading to rapid population growth as people migrated from various parts of Brazil. At the request of the company, the first neighborhoods of Ipatinga were constructed to house its workers, culminating in the municipality's emancipation in 1964.\nAlongside the original \"Workers' Village,\" the growth of the non-industrial population spurred the development of new neighborhoods unrelated to Usiminas during the second half of the 20th century, although industry remains the primary source of municipal revenue. The sustained industrial activity in the region contributed to the formation of the Vale do Aço Metropolitan Region, one of the main urban hubs in the state's interior. Ipatinga plays a pivotal role as an employer for surrounding cities and generates over 60% of the metropolitan region's GDP.\nCultural traditions such as handicrafts and congado from rural communities are present in the municipality, alongside recreational attractions such as Ipanema Park, Shopping Vale do Aço, and Usipa. Much of Ipatinga's entertainment stems from Usiminas' community investments, notably the Usiminas Cultural Center, which hosts cultural events of regional or even national significance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 335
+    },
+    "banned_terms": [
+      {
+        "term": "ipatinga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 606,
+    "attempt": 599,
+    "place_id": "gn-5150529",
+    "input": {
+      "place": {
+        "place_id": "gn-5150529",
+        "name": "Cleveland",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.4995,
+        "lon": -81.69541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cleveland",
+          "url": "https://en.wikipedia.org/wiki/Cleveland",
+          "text": "Cleveland ( KLEEV-lənd) is a city in the U.S. state of Ohio, located along the southern shore of Lake Erie.  It is across the lake from the Canadian province of  Ontario, and is approximately 60 miles (97 kilometers) west of the Ohio–Pennsylvania state line. Cleveland is the most populous city on Lake Erie, the 2nd-most populous city in Ohio (after Columbus), and the 53rd-most populous city in the United States, with a population of 372,624 at the 2020 census. It also serves as the county seat of Cuyahoga County. The Greater Cleveland metropolitan area, with an estimated 2.17 million residents, is the 34th-largest metropolitan area in the U.S.\nCleveland was founded in 1796 near the mouth of the Cuyahoga River as part of the Connecticut Western Reserve in modern-day Northeast Ohio by General Moses Cleaveland, after whom the city was named. The city's location on the river and the lake shore allowed it to grow into a major commercial and industrial metropolis by the late 19th century, attracting large numbers of immigrants and migrants. It was among the top 10 largest U.S. cities by population for much of the 20th century, a period that saw the development of the city's cultural institutions. By the 1960s, Cleveland's economy began to slow down as manufacturing declined and suburbanization occurred.\nCleveland is a port city, connected to the Atlantic Ocean via the St. Lawrence Seaway. Its economy relies on diverse sectors that include higher education, manufacturing, financial services, healthcare, and biomedicals. The city serves as the headquarters of the Federal Reserve Bank of Cleveland, as well as several major companies. The GDP for Greater Cleveland was US$138.3 billion in 2022. Combined with the Akron metropolitan area, the eight-county Cleveland–Akron metropolitan economy was $176 billion in 2022, the largest in Ohio.\nDesignated as a global city by the Globalization and World Cities Research Network, Cleveland is home to several major cultural institutions, including the Cleveland Museum of Art, the Cleveland Museum of Natural History, the Cleveland Orchestra, the Cleveland Public Library, Playhouse Square, and the Rock and Roll Hall of Fame, as well as Case Western Reserve University. Known as \"The Forest City\" among many other nicknames, Cleveland serves as the center of the Cleveland Metroparks nature reserve system. The city's major league professional sports teams include the Cleveland Browns (football; NFL), the Cleveland Cavaliers (basketball; NBA), and the Cleveland Guardians (baseball; MLB)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 399
+    },
+    "banned_terms": [
+      {
+        "term": "cleveland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 607,
+    "attempt": 600,
+    "place_id": "gn-524305",
+    "input": {
+      "place": {
+        "place_id": "gn-524305",
+        "name": "Murmansk",
+        "country": "Russia",
+        "subdivision": "Murmansk",
+        "lat": 68.96778,
+        "lon": 33.09922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murmansk",
+          "url": "https://en.wikipedia.org/wiki/Murmansk",
+          "text": "Murmansk (Russian: Мурманск) is the administrative center and largest city of Murmansk Oblast in the far northwest part of Russia. It is a major port city that is the world's largest and most populous city north of the Arctic Circle and sits on both slopes and banks of Kola Bay, with its bulk on the east bank of the inlet. The bay, a modest fjord, is an estuarine inlet of the Barents Sea. The city is a major port of the Arctic Ocean and is about 100 kilometres (62 mi) from the border with Norway, 180 kilometres (110 mi) from the border with Finland, and 1,930 kilometres (1,200 mi) from Moscow.\nBeing a non-freezing port due to the warm North Atlantic Current, Murmansk resembles cities of its size across western Russia, with highway and railway access to the rest of Europe, and the northernmost trolleybus system on Earth. Its connectivity contrasts with the isolation of Arctic ports like the Siberian Dikson on the shores of the Kara Sea, and Iqaluit in the Canadian Arctic. Despite long, snowy winters, Murmansk's climate is moderated by the generally ice-free waters around it.\nMurmansk grew substantially throughout the twentieth century, particularly after World War II during the Cold War arms race. Murmansk's population has been in decline since the end of the Cold War, from 468,039 (1989 Soviet census); 336,137 (2002 census); 307,257 (2010 census); to 270,384 (2021 Census)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "murmansk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

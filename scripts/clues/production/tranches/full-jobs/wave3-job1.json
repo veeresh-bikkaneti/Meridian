@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 406,
+    "attempt": 401,
+    "place_id": "gn-3689169",
+    "input": {
+      "place": {
+        "place_id": "gn-3689169",
+        "name": "Barrancabermeja",
+        "country": "Colombia",
+        "subdivision": "Santander Department",
+        "lat": 7.06528,
+        "lon": -73.85472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barrancabermeja",
+          "url": "https://en.wikipedia.org/wiki/Barrancabermeja",
+          "text": "Barrancabermeja (Spanish: [baraŋkaβeɾˈmexa]) is a municipality and city in Colombia, located on the shore of the Magdalena River, in the western part of the department of Santander. It is home to the largest oil refinery in the country, under direct management of ECOPETROL. Barrancabermeja is known as the Oil Capital of Colombia.\nIt is located 114 km west of Bucaramanga, on the banks of the Magdalena River in the Middle Magdalena region, which is the largest municipality and second in the entire department.\nBarrancabermeja has high temperatures all year round. It is considered to be one of the hottest cities in Colombia. It is surrounded by water resources which make it very humid."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "barrancabermeja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 407,
+    "attempt": 402,
+    "place_id": "gn-3981941",
+    "input": {
+      "place": {
+        "place_id": "gn-3981941",
+        "name": "Tepic",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 21.50733,
+        "lon": -104.89332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepic",
+          "url": "https://en.wikipedia.org/wiki/Tepic",
+          "text": "Tepic (Spanish pronunciation: [teˈpik] ) is the capital and largest city of the western Mexican state of Nayarit, as well as the seat of the Tepic Municipality.\nLocated in the central part of the state, it stands at an altitude of 915 metres (3,002 ft) above sea level, on the banks of the Río Mololoa and the Río Tepic, approximately 225 kilometres (140 mi) north-west of Guadalajara, Jalisco. Nearby are the volcanoes of San Juan, Las Navajas, and Sangangüey. Tepic is the primary urban center of this rich agricultural region; major crops include sugarcane, tobacco and citrus fruits.\nThe city was founded in 1531 as Villa del Espíritu Santo de la Mayor España."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "tepic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 408,
+    "attempt": 403,
+    "place_id": "gn-5351247",
+    "input": {
+      "place": {
+        "place_id": "gn-5351247",
+        "name": "Fullerton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.87029,
+        "lon": -117.92534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fullerton, California",
+          "url": "https://en.wikipedia.org/wiki/Fullerton,_California",
+          "text": "Fullerton ( FUUL-ər-tən) is a city in northern Orange County, California, United States. As of the 2020 census, the city had a total population of 143,617.\nFullerton was founded in 1887. Historically, it was a center of agriculture, notably groves of Valencia oranges and other citrus crops, as well as petroleum extraction; transportation; and manufacturing. It is home to numerous higher educational institutions, particularly California State University, Fullerton and Fullerton College. From the mid-1940s through the late 1990s, Fullerton was home to a large industrial base made up of aerospace contractors, canneries, paper products manufacturers, and is considered to be the birthplace of the electric guitar, due in large part to Leo Fender. The headquarters of Vons, which is owned by Albertsons, is located in Fullerton near the Fullerton–Anaheim line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "fullerton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 409,
+    "attempt": 404,
+    "place_id": "gn-5784549",
+    "input": {
+      "place": {
+        "place_id": "gn-5784549",
+        "name": "West Jordan",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.60967,
+        "lon": -111.9391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Jordan, Utah",
+          "url": "https://en.wikipedia.org/wiki/West_Jordan,_Utah",
+          "text": "West Jordan is a city in Salt Lake County, Utah, United States. It is a suburb of Salt Lake City. According to the 2020 Census, the city had a population of 116,961, placing it as the third most populous in the state. The city occupies the southwest end of the Salt Lake Valley at an elevation of 4,330 feet (1,320 m). Named after the nearby Jordan River, the limits of the city begin on the river's western bank and end in the eastern foothills of the Oquirrh Mountains, where Kennecott Copper Mine, the world's largest man-made excavation, is located.\nSettled in the mid-19th century, the city has developed into its own regional center. As of 2012, the city has four major retail centers; with Jordan Landing being one of the largest mixed-use planned developments in the Intermountain West. Companies headquartered in West Jordan include Mountain America Credit Union, Lynco Sales & Service, SME Steel, and Cyprus Credit Union. The city has one major hospital, Jordan Valley Medical Center, and a campus of Salt Lake Community College.\nCity landmarks include Gardner Village, established in 1850, and South Valley Regional Airport, formerly known as \"Salt Lake Airport #2\". The airport serves general aviation operations as well as a base for the 211th Aviation Regiment of the Utah Army National Guard flying Apache and Black Hawk helicopters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "west jordan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jordan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 410,
+    "attempt": 405,
+    "place_id": "gn-944986",
+    "input": {
+      "place": {
+        "place_id": "gn-944986",
+        "name": "Vanderbijlpark",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.71171,
+        "lon": 27.83795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vanderbijlpark",
+          "url": "https://en.wikipedia.org/wiki/Vanderbijlpark",
+          "text": "Vanderbijlpark  is an industrial city with approximately 95,000 inhabitants, situated on the Vaal River in the south of Gauteng province, South Africa. The city is named after Hendrik van der Bijl, an electrical engineer and industrialist.\nVanderbijlpark is home to Vanderbijlpark Steel, previously part of the South African Iron and Steel Corporation (ISCOR), which subsequently became a subsidiary of the global company ArcelorMittal. With neighbouring cities Vereeniging and Sasolburg, it forms the Vaal Triangle, historically a major industrial region of South Africa. It is situated in the local municipality of Emfuleni and district municipality of Sedibeng.\nThe peri-urban black townships Boipatong, Muvango, Bophelong, Sebokeng, Evaton, Tshepiso and Sharpeville are close to the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "vanderbijlpark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 411,
+    "attempt": 406,
+    "place_id": "gn-1260476",
+    "input": {
+      "place": {
+        "place_id": "gn-1260476",
+        "name": "Panipat",
+        "country": "India",
+        "subdivision": "Haryana",
+        "lat": 29.38747,
+        "lon": 76.96825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panipat",
+          "url": "https://en.wikipedia.org/wiki/Panipat",
+          "text": "Panipat () is an industrial city, located 95 km north of Delhi and 169 km south of Chandigarh on NH-44 in Panipat district, Haryana, India. It is famous for three major battles fought in 1526, 1556 and 1761. The city is also known as 'city of weavers', 'textile city' and 'cast-off clothes capital' of the world. It is home to industries like wool and cotton milling, saltpetre refining and manufacture of glass, electrical appliances, and other products. The city is included in the list of critically polluted industrial areas in India. As in Dec 2009, the Comprehensive Environment Pollution Index (CEPI) of the city was 59.00, as against 88.50 of Ankaleshwar (Gujarat). The three battles fought in the fatal field of Panipat changed the course of India's history, first two resulting in creation and confirmation of the Mughal Empire. The third battle led to the decisive defeat of the Maratha Confederacy in North India, which had become a dominating power in Delhi by then and enabled the British Empire's  Company rule in India ."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "panipat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 412,
+    "attempt": 407,
+    "place_id": "gn-1784130",
+    "input": {
+      "place": {
+        "place_id": "gn-1784130",
+        "name": "Zhoukou",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 33.63333,
+        "lon": 114.63333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhoukou",
+          "url": "https://en.wikipedia.org/wiki/Zhoukou",
+          "text": "Zhoukou (Chinese: 周口; pinyin: Zhōukǒu; Wade–Giles: Chou-k’ou; postal: Chowkow) is a prefecture-level city in eastern Henan province, China. It borders Zhumadian to the southwest, Xuchang and Luohe to the west, Kaifeng to the northwest, Shangqiu to the northeast, and the province of Anhui on all other sides. As of the 2020 census, its population was 9,026,015 inhabitants. However, as of the 2018 estimation, 1,601,300 lived in the built-up (or metro) made up of Chuanhui district and the northern part of Shangshui county.\nThe history and geography of Zhoukou have made it a city. As the ancient capitals of Emperor Yao and the birthplace of Laozi, it carries a cultural heritage of China. At the same time, the remnants of the Chen and Chu cultures endow Zhoukou with historical significance. The development of the Lin'gang New City reflects the city's modernization process and economic development.\nThe convergence of the Sha Ying rivers has endowed Zhoukou with unparalleled geographical advantages, making it a hub known as the Central Plains Port City. This bestowed upon Zhoukou significant importance in ancient times, and today, with further improvements in transportation infrastructure, its advantages are even more pronounced.\nThe integrated transportation network comprising highways, railways, and waterways has provided robust support for the city's development, facilitating economic growth and connections with the outside world. This transportation advantage has not only driven the local economy of Zhoukou but has also positioned it as a vital nexus linking the Central Plains with other regions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "zhoukou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 414,
+    "attempt": 408,
+    "place_id": "gn-1806696",
+    "input": {
+      "place": {
+        "place_id": "gn-1806696",
+        "name": "Humen",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.81899,
+        "lon": 113.67306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Humen",
+          "url": "https://en.wikipedia.org/wiki/Humen",
+          "text": "The Humen, also known as the Bocca Tigris or the Bogue, is a narrow strait in the Pearl River Delta that separates Shiziyang in the north and Lingdingyang in the south. It is located near Humen Town in China's Guangdong Province. It is the site of the Pearl River's discharge into the South China Sea. It contains the Port of Humen at Humen Town. The strait is formed by the islands of Chuenpi (穿鼻, p Chuanbi) and Anunghoy (阿娘鞋, p Aniangxie; also called 威远, p Weiyuan) on the eastern side, and Taikoktow (大角头, p Dajiaotou) on the western side. Since 1997, the strait has been traversed by the Humen Pearl River Bridge. Bocca Tigris was the entry to China's only trading city, Canton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "humen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 415,
+    "attempt": 409,
+    "place_id": "gn-3575635",
+    "input": {
+      "place": {
+        "place_id": "gn-3575635",
+        "name": "Roseau",
+        "country": "Dominica",
+        "subdivision": "Saint George Parish",
+        "lat": 15.30174,
+        "lon": -61.38808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roseau",
+          "url": "https://en.wikipedia.org/wiki/Roseau",
+          "text": "Roseau (locally ; Dominican Creole: Wozo) is the capital and largest city of Dominica, with a population of 14,725 as of 2011. It is a small and compact urban settlement, in the Saint George parish and surrounded by the Caribbean Sea, the Roseau River and Morne Bruce. Built on the site of the ancient Island Carib village of Sairi, it is the oldest and most important urban settlement on the island of Dominica.\nIt is on the west (leeward) coast of Dominica and has a combination of modern and colonial French architecture.\nRoseau is Dominica's most important port for foreign trade. Some exports include bananas, bay oil, vegetables, grapefruit, oranges, and cocoa. The service sector is also a large part of the local economy. There are several private institutions registered in Dominica, like American Canadian School of Medicine, International University for Graduate Studies, All Saints University, New World University, and Western Orthodox University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "roseau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 416,
+    "attempt": 410,
+    "place_id": "gn-4782167",
+    "input": {
+      "place": {
+        "place_id": "gn-4782167",
+        "name": "Roanoke",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.27097,
+        "lon": -79.94143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roanoke, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Roanoke,_Virginia",
+          "text": "Roanoke ( ROH-ə-nohk) is an independent city in Virginia, United States. It lies in Southwest Virginia along the Roanoke River, within the Blue Ridge range of the greater Appalachian Mountains. Roanoke is about 50 miles (80 km) north of the Virginia–North Carolina border and 250 miles (400 km) southwest of Washington, D.C., along Interstate 81. At the 2020 census, Roanoke's population was 100,011, making it the most populous city in Virginia west of the state capital, Richmond. It is the primary population center of the Roanoke metropolitan area, which had a population of 315,251 in 2020.\nThe Roanoke Valley was home to members of the Siouan-speaking Tutelo tribe when European settlers arrived. In the 17th and 18th centuries, Scotch-Irish and later German American farmers gradually drove those Native Americans out of the area as the American frontier pressed westward. In 1882, the Norfolk and Western Railway (N&W) chose the small town of Big Lick as the site of its corporate headquarters and railroad shops. Within two years, the town had become the City of Roanoke. In the 1880s, the population grew by 22 times and the young city experienced the advantages and disadvantages of its boomtown status. During the 20th century, Roanoke's boundaries expanded through annexations of surrounding Roanoke County, and it became Southwest Virginia's economic and cultural hub. The 1982 decision by N&W to move its headquarters out of the city, along with other manufacturing closures, led Roanoke to a primarily service economy. In the 21st century, a robust healthcare industry and the development and increased marketing of the city's outdoor amenities have helped reverse population decline.\nRoanoke is known for the Roanoke Star, an 88.5-foot-tall (27.0 m) illuminated star that sits atop a mountain within the city's limits and is the origin of its nickname, \"The Star City of the South\". Other points of interest include the Hotel Roanoke, a 330-room Tudor Revival structure built by N&W in 1882, the Taubman Museum of Art, designed by architect Randall Stout, and the city's farmer's market, the oldest continuously operating open-air market in the state. The Roanoke Valley features 26 miles (42 km) of greenways with bicycle and pedestrian trails, and the city's location in the Blue Ridge Mountains provides access to numerous outdoor recreation opportunities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 376
+    },
+    "banned_terms": [
+      {
+        "term": "roanoke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 417,
+    "attempt": 411,
+    "place_id": "gn-625324",
+    "input": {
+      "place": {
+        "place_id": "gn-625324",
+        "name": "Mazyr",
+        "country": "Belarus",
+        "subdivision": "Homyel’ Voblasc’",
+        "lat": 52.04162,
+        "lon": 29.21631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mazyr",
+          "url": "https://en.wikipedia.org/wiki/Mazyr",
+          "text": "Mazyr or Mozyr (Belarusian: Мазыр, IPA: [maˈzɨr]; Russian: Мозырь, IPA: [ˈmozɨrʲ]; Polish: Mozyrz; Yiddish: מאזיר) is a city in Gomel Region, in southern Belarus. It serves as the administrative center of Mazyr District. It is situated on the Pripyat River about 210 kilometres (130 miles) east of Pinsk and 100 kilometres (62 miles) northwest of Chernobyl in Ukraine. As of 2025, it has a population of 104,517.\nMazyr is known as a center of oil refining, salt extraction, machine building, and food processing in Belarus.  It is home to one of the largest oil refineries in Belarus, pumping out 18 million metric tons per year, and is served by a tram line.  The Druzhba pipeline carries crude oil from Russia, splitting in two at Mazyr. One pipeline branch is directed into Poland and the other one to Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "mazyr",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 418,
+    "attempt": 412,
+    "place_id": "gn-6947637",
+    "input": {
+      "place": {
+        "place_id": "gn-6947637",
+        "name": "Ataşehir",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 40.9833,
+        "lon": 29.1167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ataşehir",
+          "url": "https://en.wikipedia.org/wiki/Ata%C5%9Fehir",
+          "text": "Ataşehir (Turkish pronunciation: [ataˈʃehiɾ]) is a municipality and district of Istanbul, Turkey. Its area is 25 km2, and its population is 423,127 (2022). It is located at the junction of the O-2 and O-4 motorways on the Anatolian (Asian) side of Istanbul. Its neighbours are the districts of Ümraniye to the north, Sancaktepe to the northeast, Maltepe to the east, Kadıköy to the south and Üsküdar to the west.\nSince 2023, Ataşehir is home to the Istanbul Financial Center (IFC), where the new headquarters of the state-owned Turkish banks, such as the Turkish Central Bank, Ziraat Bank, VakıfBank and Halkbank, are located. Until 2023, the headquarters of these banks were in Ankara. As of 2024, the tallest buildings in Ataşehir are the 352 m (1,154 ft 10 in) Turkish Central Bank Tower, which is followed by Metropol Istanbul Tower A (70 floors / 301 metres including its twin spires).\nUnlike in Başakşehir, another satellite city (on the western part of the European side of Istanbul), no single-family house types were designed for Ataşehir's residential projects. Most buildings in Ataşehir are high-rise towers, while some of them (especially around the main public squares in the district) are among Istanbul's and Turkey's tallest skyscrapers.\nThe M4 line (Kozyatağı and Yenisahra stations) and the M8 line (Kozyatağı, Küçükbakkalköy, İçerenköy, Kayışdağı and Mevlana) of the Istanbul Metro serves the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "atasehir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 419,
+    "attempt": 413,
+    "place_id": "gn-769250",
+    "input": {
+      "place": {
+        "place_id": "gn-769250",
+        "name": "Kielce",
+        "country": "Poland",
+        "subdivision": "Świętokrzyskie",
+        "lat": 50.87033,
+        "lon": 20.62752
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kielce",
+          "url": "https://en.wikipedia.org/wiki/Kielce",
+          "text": "Kielce (Polish: [ˈkʲɛlt͡sɛ] ; Yiddish: קעלץ, romanized: Keltz) is a city in south-central Poland. It is the capital of the Świętokrzyskie Voivodeship. In 2021, it had 192,468 inhabitants. The city is in the middle of the Świętokrzyskie Mountains (Holy Cross Mountains), on the banks of the Silnica River, in the northern part of the historical Polish province of Lesser Poland.\nKielce has a history back over 900 years, and the exact date that it was founded remains unknown. Kielce was once an important centre of limestone mining, and the vicinity is famous for its natural resources like copper, lead, uranium, and iron, which, over the centuries, were exploited on a large scale.\nThere are several fairs and exhibitions held in Kielce throughout the year. One of the city's most famous food products is Kielecki Mayonnaise, a type of mayonnaise.\nThe city and its surroundings are also known for their historic architecture, green spaces, and recreational areas like the Świętokrzyski National Park. In sports, the city is known as the home of the top-tier handball club, multiple Polish Champion, and one-time EHF Champions League winner Iskra Kielce."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "kielce",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 420,
+    "attempt": 414,
+    "place_id": "gn-1633419",
+    "input": {
+      "place": {
+        "place_id": "gn-1633419",
+        "name": "Padang",
+        "country": "Indonesia",
+        "subdivision": "West Sumatra",
+        "lat": -0.94924,
+        "lon": 100.35427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Padang",
+          "url": "https://en.wikipedia.org/wiki/Padang",
+          "text": "Padang (Indonesian pronunciation: [ˈpadaŋ]) is the capital and largest city of the Indonesian province of West Sumatra. It had a population of 833,562 at the 2010 census and 909,040 at the 2020 census; the official estimate as of mid 2025 was 965,050. It is the 16th most populous city in Indonesia and the most populous city on the west coast of Sumatra. The Padang metropolitan area is the third most populous metropolitan area in Sumatra with a population of over 1.7 million. Padang is widely known for its Minangkabau culture, cuisine, and sunset beaches.\nThe city had historically been a trading center since the pre-colonial era, in both pepper and gold. The Dutch made contact with the city in the mid-17th century, eventually constructing a fortress and taking over control of the city from the Pagaruyung Kingdom. Save for several interruptions of British rule, Padang remained part of the Dutch East Indies as one of its major cities until Indonesian independence. In 1906, Padang, along with Palembang, became the first populated places in Sumatra to achieve city status (gemeente)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "padang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 421,
+    "attempt": 415,
+    "place_id": "gn-1792260",
+    "input": {
+      "place": {
+        "place_id": "gn-1792260",
+        "name": "Wafangdian",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 39.61833,
+        "lon": 122.00806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wafangdian",
+          "url": "https://en.wikipedia.org/wiki/Wafangdian",
+          "text": "Wafangdian (Chinese: 瓦房店; pinyin: Wǎfángdiàn), formerly Fuhsien (Fuxian) or Fu County (simplified Chinese: 复县; traditional Chinese: 復縣; pinyin: Fù Xiàn), is one of the two \"northern county-level cities\", the other being Zhuanghe, under the administration of Dalian, located in the south of Liaoning province, China.  The city is famous for its ball bearing industry. Wafangdian Bearing Factory is the largest bearing manufacturer in Asia and was initially built by the Japanese during World War II. Its area is 3,576.40 square kilometres (1,380.86 sq mi) and its permanent population as of 2010 is 942,197, compared to 1,024,876 registered with hukou permits. The city borders the prefecture-level city of Yingkou to the northeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "wafangdian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 422,
+    "attempt": 416,
+    "place_id": "gn-1800480",
+    "input": {
+      "place": {
+        "place_id": "gn-1800480",
+        "name": "Minhang",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 31.10881,
+        "lon": 121.37471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minhang, Shanghai",
+          "url": "https://en.wikipedia.org/wiki/Minhang,_Shanghai",
+          "text": "Minhang District is a suburban district of Shanghai with a land area of 371.57 km2 (143.46 sq mi) and population of 2,653,489 residents as of 2020. The original Minhang consist of present-day Jiangchuan Road Subdistrict (Former Minhang Town) and the eastern strip of Wujing along the Huangpu River in 1992, the surrounding Shanghai County merged with Minhang.\nIt is mostly a residential district, though it is also home to some of the many factories and production facilities in Shanghai. Residential housing development is the main source of local government revenue. Qizhong Forest Sports City Arena (旗忠森林体育城) is located in Maqiao Town (马桥镇). The Aerospace Museum is being constructed at Pujiang Town.\nShanghai Jiao Tong University and East China Normal University both have campuses in the southern part of Minhang District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "minhang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 423,
+    "attempt": 417,
+    "place_id": "gn-2491191",
+    "input": {
+      "place": {
+        "place_id": "gn-2491191",
+        "name": "Laghouat",
+        "country": "Algeria",
+        "subdivision": "Laghouat",
+        "lat": 33.8,
+        "lon": 2.86514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laghouat",
+          "url": "https://en.wikipedia.org/wiki/Laghouat",
+          "text": "Laghouat (Tamazight: ⵍⴻⵖⵡⴰⵟ, romanized: Leghwaṭ, Arabic: الأغواط, romanized: al-Aghwāṭ) is the capital of the Laghouat Province, Algeria, 400 km (250 mi) south of the Algerian capital Algiers. Located in the Amour Range of the Saharan Atlas, the town is an oasis on the north edge of the Sahara Desert. It is an important administrative and military center and marketplace, and is known for rug and tapestry weaving.\nLaghouat traces its history to at least the 11th century. It was ruled by the Ottoman Turks in 1786 and annexed to Beylik of Titteri (Médéa).  The town experienced the brutal Siege of Laghouat in 1852, and came under French colonial rule until 1962.\nIt was formerly the administrative center of one of the four \"Territories of the South\" forming the region of Algeria administered under Martial Law until the reform instituted by the Statue of Algiers law of 20 September 1947.\nThe population of the town was 134,373 inhabitants in 2008. There are natural gas deposits in the region, and nearby Hassi R'Mel has the second largest natural gas reserve in Africa. The city is served by Laghouat Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "laghouat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 424,
+    "attempt": 418,
+    "place_id": "gn-2566633",
+    "input": {
+      "place": {
+        "place_id": "gn-2566633",
+        "name": "Obalende",
+        "country": "Nigeria",
+        "subdivision": "Lagos",
+        "lat": 6.44694,
+        "lon": 3.41528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Obalende",
+          "url": "https://en.wikipedia.org/wiki/Obalende",
+          "text": "Obálendé, a contraction of the Yoruba saying Ibi ti Oba le wa de, meaning \"Where the king chased us to\", is a neighbourhood of Lagos, Nigeria, located in Eti-Osa LGA, close to Lagos Island. Eti-Osa was split by the Lagos State Government into Local Community Development Areas (LCDA) of which Ikoyi–Obalende is one. It contains many schools, including Holy Child College Obalende, St Gregory's College, Aunty Ayo International School and Girls Secondary Grammar School. It is bordered by the police barracks and Army barracks. Obalende is extremely crowded and congested. Obalende is famous for its night life, its red-light district and for its suya with a junction popularly called Suya junction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "obalende",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 425,
+    "attempt": 419,
+    "place_id": "gn-3530580",
+    "input": {
+      "place": {
+        "place_id": "gn-3530580",
+        "name": "Ciudad Victoria",
+        "country": "Mexico",
+        "subdivision": "Tamaulipas",
+        "lat": 23.74061,
+        "lon": -99.14364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Victoria",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Victoria",
+          "text": "Ciudad Victoria (Spanish pronunciation: [sjuˈðað βiɣˈtoɾja] ) (English: Victoria City) is the capital city of the Mexican state of Tamaulipas and the seat of the Municipality of Victoria. It is located in the northeast of Mexico at the foot of the Sierra Madre Oriental. It borders the municipality of Güémez to the north, Llera to the south, Casas Municipality to the east, and the municipality of Jaumave to the west. The city is located 246 km (153 mi) from Monterrey and 319 km (198 mi) from the US - Mexico border. Ciudad Victoria is named after the first president of Mexico, Guadalupe Victoria.\nIn 1825 Ciudad Victoria became the state capital. It is home to higher education institutions such as the Autonomous University of Tamaulipas and the Technological Institute of Ciudad Victoria. General Pedro José Méndez International Airport is located on the outskirts of the city. As a state bureaucratic centre, it is the seat of the three political powers and has sites of tourist and cultural interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad victoria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 426,
+    "attempt": 420,
+    "place_id": "gn-4531405",
+    "input": {
+      "place": {
+        "place_id": "gn-4531405",
+        "name": "Broken Arrow",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 36.0526,
+        "lon": -95.79082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broken Arrow, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Broken_Arrow,_Oklahoma",
+          "text": "Broken Arrow () is a city in Tulsa and Wagoner counties in the U.S. state of Oklahoma. It is the largest suburb of Tulsa. According to the 2020 census, Broken Arrow has a population of 113,540 residents and is the 4th most populous city in the state. The city is part of the Tulsa Metropolitan Area, which has a population of 1,023,988 residents.\nThe Missouri–Kansas–Texas Railroad sold lots for the town site in 1902 and company secretary William S. Fears named it Broken Arrow. The city was named for a community settled by Creek Native Americans who had been forced to relocate from Alabama to Oklahoma along the Trail of Tears.\nAlthough Broken Arrow was originally an agricultural community, its current economy is diverse. The city has the third-largest concentration of manufacturers in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "broken arrow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "broken",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arrow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
