@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 4476,
+    "attempt": 4441,
+    "place_id": "gn-6113198",
+    "input": {
+      "place": {
+        "place_id": "gn-6113198",
+        "name": "Prévost",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.86678,
+        "lon": -74.08251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prévost, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Pr%C3%A9vost,_Quebec",
+          "text": "Prévost (French pronunciation: [pʁevo]) is a town within the La Rivière-du-Nord Regional County Municipality, Quebec, Canada, and the administrative region of Laurentides in the Laurentian Mountains, north of Montreal.  It was created in 1973 from the amalgamation of the former villages of Shawbridge and Lesage with old Prévost on the other side of the Rivière du Nord. Shawbridge was named after William Shaw (1805-1894) who settled in the township of Abercromby in 1847 and built the first bridge over the Rivière du Nord.\nIt is known for its cross-country skiing and for the Shawbridge Boys' Farm, a youth detention centre operated by Batshaw Youth Services. Route 117, also known as Curé-Labelle Boulevard, is the town's main street crossing the city from south to north. Autoroute 15, the Laurentian Autoroute, also serves the town. The city's main roads also include chemin du Lac-Écho and rue de la Station which both lead to nearby Saint-Hippolyte, Quebec.\nPrévost was formerly known as Shawbridge until 1973.\nPolice services are provided by the Sûreté du Québec, the provincial police force.\n\nShawbridge was formerly served by freight and passenger services of the Canadian Pacific Railway. The Prévost railway station is now a community centre and stop on the Parc Linéaire Le P'tit Train du Nord bicycle and hiking trail.\nShawbridge and old Prévost were traditionally linked by the Shaw bridge, built in 1923 as a replacement for William Shaw's wooden bridge, over the Rivière du Nord. The bridge was closed by the Quebec government in late June 2008 as unsafe, forcing pedestrians to walk along the highway, but local residents and the town's mayor, Claude Charbonneau, have asked that the bridge be reopened, at least for pedestrian and bicycle traffic. The Quebec Ministry of Transport reopened the bridge on August 28, 2008, but only for pedestrians and bicyclists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "prevost",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4477,
+    "attempt": 4442,
+    "place_id": "gn-681160",
+    "input": {
+      "place": {
+        "place_id": "gn-681160",
+        "name": "Cogealac",
+        "country": "Romania",
+        "subdivision": "Constanța County",
+        "lat": 44.55,
+        "lon": 28.56667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cogealac",
+          "url": "https://en.wikipedia.org/wiki/Cogealac",
+          "text": "Cogealac (Romanian pronunciation: [kod͡ʒe̯aˈlak]) is a commune in Constanța County, Northern Dobruja, Romania.\nThe commune includes six villages:\n\nCogealac (historical names: Domnești, Turkish: Kocalak)\nGura Dobrogei (historical names: Câvârgic, Turkish: Kıvırcık)\nRâmnicu de Jos\nRâmnicu de Sus\nTariverde (historical name: Dorotea)\nThe territory of the commune also includes the former village of Colelia (Turkish: Kuleli), at 44°36′10″N 28°24′39″E, disestablished by Presidential Decree in 1977. The former village was populated by Dobrujan Germans until 1942 and it is now the site of the Colilia Monastery.\nThe Fântânele-Cogealac Wind Farm (with an installed nameplate capacity of 600 MW) is partly located on the territory of the commune.\nOn 2 March 2022, while searching for a crashed MiG-21 LanceR in the area, an IAR 330 military transport helicopter crashed near Gura Dobrogei, killing 7 military personnel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "cogealac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4478,
+    "attempt": 4443,
+    "place_id": "gn-682912",
+    "input": {
+      "place": {
+        "place_id": "gn-682912",
+        "name": "Călugăreni",
+        "country": "Romania",
+        "subdivision": "Giurgiu County",
+        "lat": 44.17167,
+        "lon": 25.99556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Călugăreni, Giurgiu",
+          "url": "https://en.wikipedia.org/wiki/C%C4%83lug%C4%83reni,_Giurgiu",
+          "text": "Călugăreni is a commune located in Giurgiu County, Muntenia, Romania. It is composed of five villages: Brăniștari, Călugăreni, Crucea de Piatră, Hulubești, and Uzunu.\nThe commune is situated in the Wallachian Plain, at an altitude of 53 m (174 ft), on the banks of the Neajlov River and its right tributaries, the Câlniștea and the Iordana. It is located in the central part of the county, 33 km (21 mi) north of the county seat, Giurgiu, and 30 km (19 mi) south of the country's capital, Bucharest.\nThe commune is famous for the Battle of Călugăreni of 23 August 1595. This was one of the most important battles in the history of mediaeval Romania, in which a Wallachian army led by Michael the Brave defeated an Ottoman army led by Koca Sinan Pasha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "calugareni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4479,
+    "attempt": 4444,
+    "place_id": "gn-7870890",
+    "input": {
+      "place": {
+        "place_id": "gn-7870890",
+        "name": "Beltline",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.03951,
+        "lon": -114.07087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beltline, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Beltline,_Calgary",
+          "text": "Beltline is a community in central Calgary, Alberta, Canada. The area is located immediately to the south of Calgary's downtown (south of the Canadian Pacific Railway tracks), and is sometimes considered part of downtown. The neighbourhood's boundaries are roughly 14th St SW to the Elbow River, and 17th Ave SW to 9th Ave SW. Beltline is one of Calgary's most densely populated neighbourhoods as well as the most urban, featuring many apartments, condominiums and offices. It has the reputation of being one of Calgary's primary areas for eclectic night-life, restaurants and urban culture.\nThe first established district in the neighbourhood was Connaught in 1905, followed by Victoria Park in 1914. When the region and its redevelopment plan were formally established in 2003, it amalgamated the inner city neighbourhoods of Victoria Park and Connaught. The community is named for an early 20th-century streetcar route. As of April 2018, there were 24,887 people residing in Beltline.\nThe Calgary Fire Department serves Beltline from Fire Station No. 2 at 1010 10 Avenue S.W."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "beltline",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4480,
+    "attempt": 4445,
+    "place_id": "gn-12493784",
+    "input": {
+      "place": {
+        "place_id": "gn-12493784",
+        "name": "Shrivardhan",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 18.05318,
+        "lon": 73.0011
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shrivardhan",
+          "url": "https://en.wikipedia.org/wiki/Shrivardhan",
+          "text": "Shrivardhan (also spelled Shriwardhan) is a subdistrict/upazila/tehsil, city, and local governing body in the Raigad district of the Indian state of Maharashtra. It is renowned as the birthplace of Balaji Vishwanath, the first Peshwa (1713–1720) and father of Bajirao I, who held the position of Deshmukh in the town. It has developed into a seaside resort, along with the nearby town of Harihareshwar, which also has a Shiva temple. Located on a peninsula, the town itself boasts many beaches, in addition to proximity to numerous other beach destinations, such as Diveagar Beach and Kondivali Beach. People from across Maharashtra come to Shrivardhan and the nearby beaches all year round.\nThe taluka of Shriwardhan is an ancient place of historical importance and is mentioned as being visited by Arjuna Pandav in his pilgrimage. It was an important port in the past, well known to traders of Ahmednagar and Bijapur in the 16th and 17th centuries. It appears in the accounts of leading European travellers, for example, Ziffardan. In 1538, Dom Joao de Castro described it as having little water under the pier at low tide, but that the interior of the city was large and roomy. In 1713, Shriwardhan was one of the sixteen fortified places in the Konkan, ceded by Balaji Vishwanath Peshwa to Kanhoji Angre of Kolaba. Balaji was the first Peshwa of Maratha Empire appointed by Chhatrapati Shri Shahu Maharaj, grandson of Chhatrapati Shri Shivaji Maharaj"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "shrivardhan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4481,
+    "attempt": 4446,
+    "place_id": "gn-12718756",
+    "input": {
+      "place": {
+        "place_id": "gn-12718756",
+        "name": "Tshiame",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.33057,
+        "lon": 28.99087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tshiame",
+          "url": "https://en.wikipedia.org/wiki/Tshiame",
+          "text": "Tshiame is a settlement 12 km west of Harrismith in Maluti-a-Phofung Local Municipality, Thabo Mofutsanyana District Municipality in the Free State province of South Africa. It is named after Tshiame Kenneth Mopeli, Chief Minister of the defunct QwaQwa homeland.\nThe census area includes the QwaQwa industrial sites. The full perimeter of the industrial area is fenced in by modern technology, creating a \"see-through wall\" of wire mesh standing three metres tall. The fencing-in was done as a security measure, to keep unwanted elements out as a means to curb crime perpetrated in the area.\nThe settlement borders the N5 national road leading to Durban and the rest of KwaZulu-Natal, and is situated just north of the Sterkfontein Dam, a major water reservoir and the second largest dam by volume in South Africa. The large town of Phuthaditjhaba in the former QwaQwa lies further south of Tshiame."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "tshiame",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4482,
+    "attempt": 4447,
+    "place_id": "gn-1703101",
+    "input": {
+      "place": {
+        "place_id": "gn-1703101",
+        "name": "Malangas",
+        "country": "Philippines",
+        "subdivision": "Zamboanga Peninsula",
+        "lat": 7.63028,
+        "lon": 123.03167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malangas",
+          "url": "https://en.wikipedia.org/wiki/Malangas",
+          "text": "Malangas, officially the Municipality of Malangas (Cebuano: Lungsod sa Malangas; Filipino (Tagalog): Bayan ng Malangas; Maguindanaon: Inged nu Malangas, Jawi: ايڠد نو ملاڠس); Zamboangueño/Chavacano: Municipio de Malangas, is a municipality in the province of Zamboanga Sibugay, Philippines. According to the 2024 census, it has a population of 33,194 people.\nThe municipality is generally rolling near the shorelines and mountainous in the hinterland with some patches of flat land located within the mangroves near the shorelines. It borders Buug to the north-east; Diplahan to the north-west; Imelda to the west; Margosatubig, Zamboanga del Sur, to the east; and Alicia to the south.\nMalangas is the site of coal mining in Western Mindanao area, operated by the Philippine National Oil Company - Exploration Corporation. The coalmine is one of the largest in the country. Its town center nests in a harbor in Dumanquilas Bay, boasts of its twin ports, one for coal, the other for passengers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "malangas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4483,
+    "attempt": 4448,
+    "place_id": "gn-2063030",
+    "input": {
+      "place": {
+        "place_id": "gn-2063030",
+        "name": "Port Pirie",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -33.19176,
+        "lon": 138.01746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Pirie",
+          "url": "https://en.wikipedia.org/wiki/Port_Pirie",
+          "text": "Port Pirie is a small city on the east coast of the Spencer Gulf in South Australia, 223 km (139 mi) north of the state capital, Adelaide. Port Pirie is the largest city and the main retail centre of the Mid North region of South Australia. The city has an expansive history which dates back to 1845. Port Pirie was the first proclaimed regional city in South Australia, and is currently the second most important and second busiest port in SA.\nAt the 2021 Census, Port Pirie had a population of 13,896. Port Pirie is the eighth most populous city in South Australia after Adelaide, Mount Gambier, Gawler, Mount Barker, Whyalla, Murray Bridge and Port Lincoln.\nThe city's economy is dominated by one of the world's largest lead smelters, operated by Nyrstar. It also produces refined silver, copper, acid, gold and various other by-products. \nIn 2014, the smelter underwent a $650 million upgrade, of which $291 million was underwritten by the state government to replace some of the old existing plant and to reduce airborne lead emissions drastically. Regardless of these upgrades, blood lead levels in young children continue to rise. In 2021 a report from the South Australian Health Department found an average blood level of 7.3 μg/dL in young children, compared to a finding of 5.3 μg/dL in 2014, and an upward trend of airborne lead levels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "port pirie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pirie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4484,
+    "attempt": 4449,
+    "place_id": "gn-2164422",
+    "input": {
+      "place": {
+        "place_id": "gn-2164422",
+        "name": "Griffith",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.28853,
+        "lon": 146.05093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Griffith, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Griffith,_New_South_Wales",
+          "text": "Griffith is a major regional city in the  Riverina - Murray region of western New South Wales, known commonly as the food bowl of Australia. It is also the seat of the City of Griffith local government area.  Like the Australian capital, Canberra, and extensions to the nearby town of Leeton, Griffith was designed by Walter Burley Griffin and Marion Mahony Griffin. Griffith was named after Arthur Hill Griffith, the then New South Wales Secretary for Public Works. Griffith was proclaimed a city in 1987, and at the 2021 census had a population of 20,569.\nIt can be accessed by road from Sydney and Canberra via the Hume Highway and the Burley Griffin Way and from Melbourne, via the Newell Highway and either by using the Kidman Way or the Irrigation Way. Griffith can be accessed from other places like Adelaide, Orange, and Bathurst through the Mid-Western Highway and the Rankins Springs road from Rankins Springs and the Kidman Way from Goolgowi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "griffith",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4485,
+    "attempt": 4450,
+    "place_id": "gn-2172106",
+    "input": {
+      "place": {
+        "place_id": "gn-2172106",
+        "name": "Castlemaine",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.06709,
+        "lon": 144.21684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castlemaine, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Castlemaine,_Victoria",
+          "text": "Castlemaine ( KASS-əl-mayn, non-locally also  KAHSS-) is a town in west central Victoria, Australia, in the Goldfields region about 123 kilometres (76 miles) northwest by road from Melbourne and about 39 kilometres (24 miles) from the major provincial centre of Bendigo. It is the administrative and economic centre of the Shire of Mount Alexander. Castlemaine was named by the chief goldfield commissioner, Captain W. Wright, in honour of his Irish uncle, Viscount Castlemaine. At the 2021 census, Castlemaine had a population of 7,506.\nCastlemaine began as a gold rush boomtown in 1851 and developed into a major regional centre, being officially proclaimed a city on 4 December 1965, although since declining in population.\nIt is home to many cultural institutions including the Theatre Royal, the oldest continuously operating theatre in mainland Australia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "castlemaine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4486,
+    "attempt": 4451,
+    "place_id": "gn-2511969",
+    "input": {
+      "place": {
+        "place_id": "gn-2511969",
+        "name": "Redován",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.11619,
+        "lon": -0.90981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Redován",
+          "url": "https://en.wikipedia.org/wiki/Redov%C3%A1n",
+          "text": "Redován is a municipality in the comarca of Vega Baja del Segura in the Valencian Community, Spain.\nThis town is located at the feet of the Sierra de Callosa mountain range.\nRedovan is one of the Vega Baja (low fertile valley) villages of the southern Costa Blanca, Spain. Located in the Alicante province, on a sparsely vegetated plain at the foot of the Sierra Segura, approximately 7 km from Orihuela. \nAlthough the town was founded by the Moors during the Arab conquest (8th - 13th Centuries, there is evidence of much earlier settlements going back to pre-historic times. The town is well known for its ceramics and this tradition stretches back to the 3rd century BC from when various samples of ceramic work have been found with a very distinctive zig-zag pattern. \nThere appear to have been settlements on some small elevations of land in the surrounding areas from the Neolithic Period up until Bronze Age. In the 2nd century BC there appears to have been several different cultures in the region, among them “the culture of Argar” more commonly found in Almeria (further south down the coast of Spain). The area has always attracted settlers mostly because of its importance in agriculture due largely to the basin being irrigated by the Segura river, though there have often problems as the area is prone to flooding. \nRedovan's early history is dominated by the Arabs (Moors) and there is little doubt that the name of the village is derived from the Arabic language, despite there being some confusion as to the actual origin of the name. Some say that name derives from a famous general of the Moorish King of Granada named Farax Ben Redvan (or Reduan) who invaded and plundered the village in 1331. Others refer to the “Book of Distributions” in Orihuela which mentions the name “Aben-Redvan” (“of the children of Reduan”) relating to a time much earlier than 1331. \nA 16th-century historian attributes the name to the family of Redouanes (of Moroccan origin) who were Moorish noblemen from Granada.Redovan and the whole area suffered a great pestilence in 1347 and this lasted until 1351 this ravaged the agriculture of the area and many of its residents re-settled in the city of Orihuela. During this time the town was often plundered by bandits and renegades. The plague hit again in 1374 and in 1383. \nRedovan and its people were also greatly affected by the constant wars between the Kingdoms of Valencia and Aragon. During the 17th Century Redovan enjoyed a period of improved wealth and prosperity due to successes in agriculture, important crops at the time being grapes, vegetables, wheat, olives and the mulberry (silk became an important product of the town. Redovan was seriously damaged by the disastrous earthquake of 1829 and there a great loss of life. In 1847 Redovan had 160 houses and 1,591 inhabitants, its industry consisted of “5 mills and some looms”. \nModern day Redovan is a busy town of around 5,600 people, it is noted for the production of cotton, hemp and hemp products, espadrilles and the formerly mentioned ceramics. During the latter part of September there is an exhibition of hemp products in the town dedicated to the patron saint of the village, St Michael. It's also a popular location for potholers as there are many caves in the area suitable for this more modern pursuit. Redovan has numerous bars, restaurants and shops, centred on its village square where many celebrations, fiestas and festivities take place. \nRedovan is readily accessible via the N-340 and the A-7 motorway, it is approximately 52 km from Alicante and its international airport at El Altet (Alicante)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 610
+    },
+    "banned_terms": [
+      {
+        "term": "redovan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4487,
+    "attempt": 4452,
+    "place_id": "gn-2654269",
+    "input": {
+      "place": {
+        "place_id": "gn-2654269",
+        "name": "Burnham-on-Sea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.23862,
+        "lon": -2.9978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burnham-on-Sea",
+          "url": "https://en.wikipedia.org/wiki/Burnham-on-Sea",
+          "text": "Burnham-on-Sea is a seaside town in Somerset, England, at the mouth of the River Parrett, upon Bridgwater Bay. Burnham was a small fishing village until the late 18th century when it began to grow because of its popularity as a seaside resort.\nBurnham-on-Sea forms part of the parish of Burnham-on-Sea and Highbridge and shares a town council with the neighbouring small market town of Highbridge, with which it has become a contiguous built-up area. At the 2021 census, the population of Burnham-on-Sea (which the Office for National Statistics defines as that part of the built-up area west of Pepperall Road and Newtown Lake) was 16,320.\nBurnham-on-Sea is famous for its low lighthouse. The lighthouse was built in 1832 and is a grade II listed building with a red and white striped facade.\nThe position of the town on the edge of the Somerset Levels and moors where they meet the Bristol Channel, has resulted in a history dominated by land reclamation and sea defences since Roman times. Burnham was seriously affected by the Bristol Channel floods of 1607, with the present curved concrete wall being completed in 1988. There have been many shipwrecks on the Gore Sands, which lie just offshore and can be exposed at low tides. Lighthouses are hence prominent landmarks in the town, with the original lighthouse known as the Round Tower built to replace the light on the top of the 14th-century tower of St Andrew's Church. The 110-foot (34-metre) pillar or High Lighthouse and the low wooden pile lighthouse or lighthouse on legs on the beach were built to replace it. The town's first lifeboat was provided in 1836 by the Corporation of Bridgwater."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "burnham on sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "burnham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4488,
+    "attempt": 4453,
+    "place_id": "gn-2820692",
+    "input": {
+      "place": {
+        "place_id": "gn-2820692",
+        "name": "Tutzing",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.90938,
+        "lon": 11.2803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tutzing",
+          "url": "https://en.wikipedia.org/wiki/Tutzing",
+          "text": "Tutzing (German pronunciation: [ˈtʊtsɪŋ]) is a municipality in the district of Starnberg in Bavaria, Germany, on the west bank of the Starnberger See. Just 40 km south-west of Munich and with good views of the Alps, the town was traditionally a favourite holiday spot for those living in the city.\nIn 1873 Johannes Brahms spent four summer months in Tutzing, completing his String Quartets Opus 51 and writing the Haydn Variations. A small lakeside park is dedicated to him, and a plaque stands near the large house where he lived and worked.\nThe town of 10,000 is home to many commuters to Munich, as well as to retirees. Tutzing station is both a terminus of Munich's S-Bahn rail network and a regional train hub serving Innsbruck, Mittenwald, Garmisch-Partenkirchen, Reutte, Kochel and Oberammergau.\nTutzing has a regional hospital and various clinics. It hosts the conference centre Evangelische Akademie Tutzing, founded in 1947.\nTutzing has been home to various German celebrities, including the former president of the Federal Constitutional Court Hans-Jürgen Papier, musicians Peter Maffay, Leslie Mándoki, and Elly Ney, the late Guido Dessauer, and the military general and theorist Erich Ludendorff, who died and is buried in the town.\nDuring the Nazi period, Trutskirch-Tutzing (Dornier), a forced-labour factory for the Dornier-Werke GmbH aircraft concern, was a sub-camp of Dachau Concentration Camp. The town was also a stop on the \"trail of tears\" of inmates forcibly marched south in 1945; a plaque at the town hall commemorates them."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "tutzing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4489,
+    "attempt": 4454,
+    "place_id": "gn-2902852",
+    "input": {
+      "place": {
+        "place_id": "gn-2902852",
+        "name": "Hockenheim",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.32334,
+        "lon": 8.55194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hockenheim",
+          "url": "https://en.wikipedia.org/wiki/Hockenheim",
+          "text": "Hockenheim (German: [ˈhɔkn̩haɪm] ) is a town in northwest Baden-Württemberg, Germany, about 20 km south of Mannheim and 10 km west of Walldorf. It is located in the Upper Rhine valley on the tourist theme routes \"Baden Asparagus Route\" (Badische Spargelstraße) and Bertha Benz Memorial Route. The town is widely known for its Hockenheimring, a motor racing course, which has hosted over 30 Formula One German Grand Prix races since 1970.\nHockenheim is one of the six largest towns in the Rhein-Neckar-Kreis district; since 1999 the number of inhabitants exceeded the 20,000 threshold, thus the town received the status of a regional central town (Große Kreisstadt) in 2001. It is twinned with the French town of Commercy, the German town of Hohenstein-Ernstthal in Saxony and the American town of Mooresville, North Carolina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "hockenheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4490,
+    "attempt": 4455,
+    "place_id": "gn-3046353",
+    "input": {
+      "place": {
+        "place_id": "gn-3046353",
+        "name": "Piliscsaba",
+        "country": "Hungary",
+        "subdivision": "Pest County",
+        "lat": 47.63417,
+        "lon": 18.82886
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piliscsaba",
+          "url": "https://en.wikipedia.org/wiki/Piliscsaba",
+          "text": "Piliscsaba (Hungarian pronunciation: [ˈpiliʃt͡ʃɒbɒ]) is a town in Budapest metropolitan area, Hungary, located in northwestern Pest County, near the border of Komárom-Esztergom in a valley between the Buda and Pilis hills. It is accessible by Highway 10 and lies on the Budapest-Esztergom rail line, 24 km (15 mi) from the center of Budapest. The surrounding hills are 200–400 metres (660–1,310 ft) metres high.\nUnemployment is about 4%, and a large proportion of the population commutes to Budapest (mostly for work or school).\nThe town is surrounded by forested hills: hills of the Pilis Mountains to the north and hills of the Budai Mountains to the south. Faculty of the Pázmány Péter Catholic University (at the Eastern gate of the city) is built on the site of former Soviet barracks (previously Hungarian barracks).\nImre Makovecz, a Hungarian architect designed a famous building called the Stephaneum in the city.\nThe 11th International Congress for Finno-Ugric Studies was held in Piliscsaba during 9–14 August 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "piliscsaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4491,
+    "attempt": 4456,
+    "place_id": "gn-3518117",
+    "input": {
+      "place": {
+        "place_id": "gn-3518117",
+        "name": "San Pablo Villa de Mitla",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.92168,
+        "lon": -96.36288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pablo Villa de Mitla",
+          "url": "https://en.wikipedia.org/wiki/San_Pablo_Villa_de_Mitla",
+          "text": "San Pablo Villa de Mitla is a town and municipality in Mexico that is most famous for being the site of the Mitla archeological ruins. \nIt is part of the Tlacolula District in the east of the Valles Centrales Region.\nThe town is also known for its handcrafted textiles, especially embroidered pieces and mezcal. The town also contains a museum containing a collection of Zapotec and Mixtec cultural items. The name “San Pablo” is in honor of Saint Paul, and “Mitla” is a hispanization of the Nahuatl name “Mictlán.” This is the name the Aztecs gave the old pre-Hispanic city before the Spanish arrived and means “land of the dead.” It is located in the Central Valleys regions of Oaxaca, 46 km from the city of Oaxaca, in the District of Tlacolula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "san pablo villa de mitla",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pablo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mitla",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4492,
+    "attempt": 4457,
+    "place_id": "gn-3689325",
+    "input": {
+      "place": {
+        "place_id": "gn-3689325",
+        "name": "Bahía Solano",
+        "country": "Colombia",
+        "subdivision": "Chocó",
+        "lat": 6.22622,
+        "lon": -77.40439
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bahía Solano",
+          "url": "https://en.wikipedia.org/wiki/Bah%C3%ADa_Solano",
+          "text": "Bahía Solano is a municipality and town in the Chocó Department, Colombia.  Bahia, as it is locally known, is an economic and tourist center of coastal Choco. The municipal head is Ciudad Mutis.\nBahia is home to José Celestino Mutis Airport as well as seaport, and along with daily flights to and from Medellin, Quibdo, Cali, and Bogota, there are bi-weekly ships that take passengers and cargo from Bahia to the port of Buenaventura. The region around Bahia Solano is home to  scuba diving and sport fishing opportunities, providing a plethora of marine activities to the traveller. 18 km away from Bahia Solano is the beach town of El Valle, Choco, which is the closest community to the Ensenada de Utria National Park, located only 9 kilometres (5.6 mi) down the beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "bahia solano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bahia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "solano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4493,
+    "attempt": 4458,
+    "place_id": "gn-5187247",
+    "input": {
+      "place": {
+        "place_id": "gn-5187247",
+        "name": "Doylestown",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.31011,
+        "lon": -75.12989
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doylestown, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Doylestown,_Pennsylvania",
+          "text": "Doylestown is a borough and the county seat of Bucks County, Pennsylvania, United States. As of the 2020 census, the population was 8,300. Known for its preserved historic downtown and concentration of cultural institutions, it is a prominent part of Bucks County and a historic town within the Philadelphia metropolitan area. In 2019, Doylestown was named the Best Small-Town Cultural Scene in America by USA Today readers.\nDoylestown is home to three museums, including the James A. Michener Art Museum, which hosts exhibitions by artists such as Keith Haring (2022) and Eric Carle (2026), and houses a major collection of Pennsylvania Impressionist art. The \"Mercer Mile\", a one-mile span, comprises three early 20th-century structures built by archaeologist Henry Chapman Mercer: the Mercer Museum, Fonthill Castle, and the Moravian Pottery and Tile Works.\nDoylestown has connections to American theater, music, film, and literature. This also includes post grunge/shoegaze band superheaven/daylight and Oscar Hammerstein II wrote  The Sound of Music, Oklahoma!, and South Pacific while living in the area, where he mentored Stephen Sondheim, who wrote West Side Story. James A. Michener wrote Tales of the South Pacific nearby. The borough is home to the County Theater, a restored 1930s Art Deco cinema specializing in independent and foreign films.\nThe borough is served by the Central Bucks School District, recognized for academic performance, and by Doylestown Hospital, part of Penn Medicine. Its downtown includes independently owned restaurants and retail establishments. The area is connected to parks and multi-use trails in the surrounding region.\nDoylestown is located in southeastern Pennsylvania, approximately 25 miles (40 km) north of Philadelphia and 65 miles (105 km) southwest of New York City, within the Philadelphia metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "doylestown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4494,
+    "attempt": 4459,
+    "place_id": "gn-6691091",
+    "input": {
+      "place": {
+        "place_id": "gn-6691091",
+        "name": "Al Karama",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.24004,
+        "lon": 55.30106
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Al Karama, Dubai",
+          "url": "https://en.wikipedia.org/wiki/Al_Karama,_Dubai",
+          "text": "Al Karama, or simply Karama (الكرامة, literally meaning dignity), is a residential district of Dubai located on the western banks of the Dubai Creek and one of the older communities of the city. It is outwardly distinctive due to the regularity of its low-rise residential buildings. The area, which was planned on a tight grid system, is home to thousands of people even though it is only two square kilometers in size. Al Karama is the most populous residential area in Dubai and the most central part of Dubai. Al Karama is also one of the most accessible parts in Dubai, that makes it very easy for residents to travel to any other parts of the city from Karama with ease due to the wide range of transport available in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "al karama",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "karama",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4495,
+    "attempt": 4460,
+    "place_id": "gn-7871317",
+    "input": {
+      "place": {
+        "place_id": "gn-7871317",
+        "name": "Pleasant View",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.78609,
+        "lon": -79.33502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pleasant View, Toronto",
+          "url": "https://en.wikipedia.org/wiki/Pleasant_View,_Toronto",
+          "text": "Pleasant View is a neighbourhood in the city of Toronto, Ontario, Canada that is located in the district of North York at the northern end of the city. It is bordered by Victoria Park to the East, Sheppard Avenue to the South, Highway 404 to the west and the Finch hydro corridor to the north (north of Finch Avenue). The neighbourhood is home to several high-rise apartment and condominium buildings, such as The Clippers.\nThis has become a popular area for immigrants and many Chinese are arriving and settling in the area. The area also has a sizeable Italian and Greek population, among others. There is a huge percentage of house ownership in the area and the neighbourhood would be classified as middle income, with people on both ends of that spectrum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "pleasant view",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pleasant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "view",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

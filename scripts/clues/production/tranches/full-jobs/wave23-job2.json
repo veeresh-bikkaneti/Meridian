@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 4456,
+    "attempt": 4421,
+    "place_id": "gn-1710286",
+    "input": {
+      "place": {
+        "place_id": "gn-1710286",
+        "name": "Janiuay",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 10.9493,
+        "lon": 122.5061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Janiuay",
+          "url": "https://en.wikipedia.org/wiki/Janiuay",
+          "text": "Janiuay, officially the Municipality of Janiuay (Kinaray-a: Banwa kañg Janiuay, Hiligaynon: Banwa sañg Janiuay, Tagalog: Bayan nañg Janiuay, Spanish: Municipio de Janiuay), is a municipality in the province of Iloilo, Philippines. According to the 2024 census, it has a population of 67,509 people.\nThe town was created in 1769 and is noted for its Spanish era-built St. Julian of Cuenca church located atop the hill facing the municipal square, and the national historical landmark Janiuay Cemetery. It is also home to the West Visayas State University-Janiuay Campus and the first Protestant town in the country, Calvario.\nRecent economic developments became a catalyst in the town's progress, and establishments like banks, malls, and retail markets have sprouted in the area - Gaisano Capital Janiuay of Gaisano Group and SM Savemore Express of SM Prime Holdings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "janiuay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4457,
+    "attempt": 4422,
+    "place_id": "gn-2511106",
+    "input": {
+      "place": {
+        "place_id": "gn-2511106",
+        "name": "Santanyí",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.35461,
+        "lon": 3.12907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santanyí",
+          "url": "https://en.wikipedia.org/wiki/Santany%C3%AD",
+          "text": "Santanyí (Balearic Catalan: [səntəˈɲi]) is a municipality on the Spanish island of Mallorca, one of the Balearic Islands, situated in the westernmost part of the Mediterranean Sea.\nThis municipality in the southeast of Mallorca is home to the towns of Santanyí, Calonge, s'Alqueria Blanca and es Llombards, as well as Cala d'Or, Portopetro, Cap d'es Moro, Cala Figuera, Cala Santanyí, Cala Llombards and Cala de s'Almunia. The municipality encompasses a variety of beaches popular for their scenery. The coast covered by the municipality extends around 35 km (21.8 mi) along the southeast coast of the island. It also holds 172 archaeological sites, evidence of the existence of a productive agriculture and farming tradition since at least the Talaiotic period.\nSantanyí is also home to a protected natural area known as the Mondragó Natural Parc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "santanyi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4458,
+    "attempt": 4423,
+    "place_id": "gn-2634743",
+    "input": {
+      "place": {
+        "place_id": "gn-2634743",
+        "name": "Warrenpoint",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.10148,
+        "lon": -6.25731
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warrenpoint",
+          "url": "https://en.wikipedia.org/wiki/Warrenpoint",
+          "text": "Warrenpoint is a small port town and civil parish in County Down, Northern Ireland. It sits at the head of Carlingford Lough, south of Newry, and is separated from the Republic of Ireland by a narrow strait. The town is beside the village of Rostrevor and is overlooked by the Mournes and Cooley Mountains. Warrenpoint sprang up within the townland of Ringmackilroy (from Irish  Rinn Mhic Giolla Ruaidh 'McIlroy's point'), and is locally nicknamed \"The Point\", which also represents the town's full name in Irish, An Pointe.\nWarrenpoint is known for its scenic location, the Maiden of Mourne festival, the Blues on the Bay music festival, the passenger ferry service between Warrenpoint and Omeath and the nearby Narrow Water Castle. Warrenpoint Port is second in terms of tonnage handled by ports in Northern Ireland. It had a population of 9,091 at the 2021 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "warrenpoint",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4459,
+    "attempt": 4424,
+    "place_id": "gn-2653755",
+    "input": {
+      "place": {
+        "place_id": "gn-2653755",
+        "name": "Carmarthen",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.85552,
+        "lon": -4.30535
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carmarthen",
+          "url": "https://en.wikipedia.org/wiki/Carmarthen",
+          "text": "Carmarthen (UK:   kər-MAR-dhən, locally  kar-; Welsh: Caerfyrddin [kaːɨrˈvərðɪn], 'Merlin's fort' or possibly 'Sea-town fort') is a market town, community, and the county town of Carmarthenshire in Wales, lying on the River Towy 8 miles (13 km) north of its estuary in Carmarthen Bay. At the 2021 census the community had a population of 14,636, and the built up area had a population of 16,455. It stands on the site of a Roman town, and has a claim to be the oldest town in Wales. In the middle ages it comprised twin settlements: Old Carmarthen around Carmarthen Priory and New Carmarthen around Carmarthen Castle. The two were merged into one borough in 1546. It was the most populous borough in Wales in the 16th–18th centuries, described by William Camden as \"chief citie of the country\". It was overtaken in size by the mid-19th century, following the growth of settlements in the South Wales Coalfield."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "carmarthen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4460,
+    "attempt": 4425,
+    "place_id": "gn-3855138",
+    "input": {
+      "place": {
+        "place_id": "gn-3855138",
+        "name": "General Alvear",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -36.02174,
+        "lon": -60.0145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "General Alvear, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/General_Alvear,_Buenos_Aires",
+          "text": "General Alvear is a city in General Alvear Partido in Buenos Aires Province.\nThe settlement was founded in 1853 as Fortín Esperanza, later Pueblo Esperanza and on July 19, 1869 it was renamed after General Carlos María de Alvear (1789-1852) who fought for the liberation of Argentina during the War of Independence.\nThe city is growing faster than any other city in Buenos Aires Province, because one of the biggest prisons in the Province was built in General Alvear in 2000.\nLocated 200 km from Buenos Aires, General Alvear is currently a fertile agricultural area known mainly because of the agro activity and cattle. General Alvear Administrative Area is bordered by Tapalque to the northwest; Bolivar to the north; 25 de Mayo to the west; Saladillo to the east; Las Flores to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "general alvear",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "general",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alvear",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4461,
+    "attempt": 4426,
+    "place_id": "gn-4754966",
+    "input": {
+      "place": {
+        "place_id": "gn-4754966",
+        "name": "Culpeper",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.47318,
+        "lon": -77.99666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Culpeper, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Culpeper,_Virginia",
+          "text": "Culpeper (formerly Culpeper Courthouse, earlier Fairfax) is an incorporated town in Culpeper County, Virginia, United States. It is the county seat and part of the Washington–Baltimore combined statistical area. At the 2020 United States Census, the population was 20,062, an increase from 16,379 in 2010. Culpeper is located along U.S. Route 15, U.S. Route 29, and U.S. Route 522, and is served by intercity passenger rail at Culpeper station and by local and regional bus services operated by Virginia Regional Transit and the Virginia Breeze network.\nThe town was laid out in 1749 by a young George Washington while working as a surveyor for Lord Fairfax, and formally established in 1759 by the Virginia House of Burgesses under the name Fairfax. During the American Revolutionary War, the Culpeper Minutemen militia organized here in 1775. In the American Civil War, Culpeper was occupied by both Union and Confederate forces due to its strategic position along the Orange and Alexandria Railroad, and the surrounding county saw engagements including the Battle of Brandy Station, the largest cavalry battle of the war and the largest that had ever occurred in North America, as well as the Battle of Cedar Mountain.\nIn the late 19th and 20th centuries, Culpeper grew as a regional rail and market center. A major cultural landmark is the Packard Campus for Audio-Visual Conservation, opened by the Library of Congress in 1997 on the site of a former Federal Reserve facility. Culpeper has also been affected by modern events such as the 2011 Virginia earthquake, which damaged downtown structures, and recent technology-related investment, including data centers within the Culpeper Technology Zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "culpeper",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4462,
+    "attempt": 4427,
+    "place_id": "gn-5066001",
+    "input": {
+      "place": {
+        "place_id": "gn-5066001",
+        "name": "Columbus",
+        "country": "United States",
+        "subdivision": "Nebraska",
+        "lat": 41.42973,
+        "lon": -97.36838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Columbus, Nebraska",
+          "url": "https://en.wikipedia.org/wiki/Columbus,_Nebraska",
+          "text": "Columbus is the county seat of Platte County, Nebraska, situated at the confluence of the Loup and Platte rivers roughly 85 miles (137 km) west-northwest of Omaha and 75 miles (121 km) northwest of Lincoln by road, near the county's southern edge. With an estimated population of 24,464 as of 2024, it is the 10th-most populous city in Nebraska.\nInitially settled in May 1856 along the historic Great Platte River Road, the city was named for Columbus, Ohio; its location along the proposed transcontinental railroad made it especially attractive to early settlers. Despite the construction of a hydroelectric plant, the Great Depression hit the region especially hard. Its economy has since pivoted to one based on agriculture, manufacturing, and services such as healthcare.\nToday, Columbus is governed by a mayor and a city council. The city is located in the Omaha media market, and has 6 radio stations licensed to it; it is also home to the Columbus Telegram, a newspaper published five days per week. A campus of Central Community College is located 4 miles (6.4 km) outside Columbus; its sports teams are the Raiders."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "columbus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4463,
+    "attempt": 4428,
+    "place_id": "gn-5918118",
+    "input": {
+      "place": {
+        "place_id": "gn-5918118",
+        "name": "Castlegar",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.32317,
+        "lon": -117.65831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castlegar, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Castlegar,_British_Columbia",
+          "text": "Castlegar is a community in the West Kootenay region of British Columbia, Canada. In the Selkirk Mountains, at the confluence of the Kootenay and Columbia Rivers, it is a regional trade and transportation centre, with a local economy based on forestry, mining and tourism.\nCastlegar is home to Selkirk College, a regional airport, a pulp mill, and several sawmills. Its population of 8,338 includes many Doukhobors, who were largely responsible for much of the town's early development and growth.\nThe area which became Castlegar was an important centre for the Sinixt (Lakes) Peoples. Outside the city limits are the small surrounding communities of Ootischenia, Brilliant, Robson, Robson West, Raspberry, Tarrys, Thrums, Glade, Shoreacres, Fairview, Genelle, Pass Creek and Krestova, and the much smaller communities of Deer Park, Renata, and Syringa on Lower Arrow Lake. These outlying areas have a further population of about 8,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "castlegar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4464,
+    "attempt": 4429,
+    "place_id": "gn-5960971",
+    "input": {
+      "place": {
+        "place_id": "gn-5960971",
+        "name": "Gibsons",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.39539,
+        "lon": -123.50555
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gibsons",
+          "url": "https://en.wikipedia.org/wiki/Gibsons",
+          "text": "Gibsons is a town on the Sunshine Coast in southwestern British Columbia, Canada, on the northwest shore of Howe Sound. Located within the Pacific coastal rainforest and serving as the gateway to the rest of the Sunshine Coast, Gibsons is a regional tourist destination. \nEstablished in 1886 by George Gibson, the settlement was incorporated in 1929 as Gibson's Landing and renamed Gibsons in 1947. Historically a centre for forestry and commercial fishing, the town has since developed a more diversified economy. In 2009, it received the International Award for Liveable Communities for \"the world's most liveable community with a population under 20,000\". It is best known as the setting of the long-running CBC Television series The Beachcombers and has served as a filming location for productions including Murder in a Small Town, Charlie St. Cloud, and Needful Things.\nGibsons has increasingly become a bedroom community for workers in Greater Vancouver. Like the rest of the Sunshine Coast, Gibsons has no direct road connection to the British Columbia mainland and is primarily accessible by BC Ferries service between Horseshoe Bay in West Vancouver and Langdale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "gibsons",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4465,
+    "attempt": 4430,
+    "place_id": "gn-6145421",
+    "input": {
+      "place": {
+        "place_id": "gn-6145421",
+        "name": "Shaughnessy",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.25,
+        "lon": -123.13333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shaughnessy, Vancouver",
+          "url": "https://en.wikipedia.org/wiki/Shaughnessy,_Vancouver",
+          "text": "Shaughnessy is an almost-entirely residential neighbourhood in Vancouver, British Columbia, Canada, spanning about 447 hectares in a relatively central locale. It is bordered by 16th Avenue to the north, 41st Avenue to the south, Oak Street to the east, and East Boulevard to the west. The older section of the neighbourhood, called \"First Shaughnessy,\" is considered more prestigious and is bordered by 16th Avenue to the north, King Edward Avenue to the south, Oak Street to the east, and East Boulevard to the west. In 2016, the population was approximately 8,430. It was named after Thomas Shaughnessy, 1st Baron Shaughnessy, former president of the Canadian Pacific Railway.\nThe neighbourhood's residents have an average annual household income of $111,566 ($777,184 in Shaughnessy Heights) and the average house price is $2.89 million, the highest in Vancouver. It is also the site of many historical homes, especially in First Shaughnessy. Of the neighbourhood's homes 50.9% were built before or during World War II, compared with 23.3% for the city at large.  This is largely due to the 1981 First Shaughnessy Official Development Plan by-law, which promotes private property ownership and single-family dwelling, while limiting property subdivision and population density."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "shaughnessy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4466,
+    "attempt": 4431,
+    "place_id": "gn-690822",
+    "input": {
+      "place": {
+        "place_id": "gn-690822",
+        "name": "Vuhlehirsk",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 48.31488,
+        "lon": 38.27179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vuhlehirsk",
+          "url": "https://en.wikipedia.org/wiki/Vuhlehirsk",
+          "text": "Vuhlehirsk (Ukrainian: Вуглегірськ, pronounced [wʊɦleˈɦirsʲk] ; Russian: Углегорск, romanized: Uglegorsk) is a city in Horlivka Raion, Donetsk Oblast (province) of Ukraine. Vuhlehirsk had a population of 8,226 in 2011; more recently, its population was estimated to be 7,294 (2022 estimate).\nVuhlehirsk is a district-level city in the Donetsk region, subordinated to the Yenakiieve city council. Vuhlehirsk is located in the south-eastern part of Ukraine at the distance of 61 km from the regional centre of Donetsk and 750 km from the capital of Ukraine, Kyiv. Its official date of foundation is 1879 – the year of the opening of the Khatsepetivka railway station (Vuhlehirsk was called Khatsepetivka village until 1958). In 2015, during the Battle of Debaltseve, the city was captured by pro-Russian separatists, who annexed the city into the self-declared Donetsk People's Republic. After a highly disputed referendum, the region was annexed by Russia in 2022. As of 2026, Russia has full control of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "vuhlehirsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4467,
+    "attempt": 4432,
+    "place_id": "gn-692315",
+    "input": {
+      "place": {
+        "place_id": "gn-692315",
+        "name": "Sudak",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.84924,
+        "lon": 34.97471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sudak",
+          "url": "https://en.wikipedia.org/wiki/Sudak",
+          "text": "Sudak (Ukrainian and Russian: Судак; Crimean Tatar: Sudaq; Greek: Σουγδαία; sometimes spelled Sudac or Sudagh) is a city and a multiple former Eastern Orthodox bishopric and double Latin Catholic titular see. It is of regional significance in Crimea, a territory recognized by most countries as part of Ukraine but annexed by Russia as the Republic of Crimea. Sudak serves as the administrative center of Sudak Municipality, one of the regions Crimea is divided into. It is situated 57 km (35 mi) to the west of Feodosia (the nearest railway station) and 104 km (65 mi) to the east of Simferopol, the republic's capital. Population: 16,492 (2014 Census).\nA city of antiquity, today it is a popular resort, best known for its Genoese fortress, the best preserved on the northern shore of the Black Sea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "sudak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4468,
+    "attempt": 4433,
+    "place_id": "gn-713514",
+    "input": {
+      "place": {
+        "place_id": "gn-713514",
+        "name": "Alupka",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.41952,
+        "lon": 34.04489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alupka",
+          "url": "https://en.wikipedia.org/wiki/Alupka",
+          "text": "Alupka (Ukrainian and Russian: Алупка; Crimean Tatar: Alupka; Greek: Ἀλώπηξ, Alòpex) is a resort city located in the Crimean peninsula, a de jure territory of Ukraine that is de facto controlled by the Russian Federation since 2014 (see 2014 Crimean crisis). It is located 17 km (11 mi) to the west of Yalta. It is famous for the Vorontsov Palace, designed by English architect Edward Blore in an extravagant mixture of Scottish baronial and Neo-Moorish styles and built in 1828–1846 for prince Mikhail Semyonovich Vorontsov.\nAlupka and its surrounding area is full of resort hotels on the shore of the Black Sea, where thousands of travelers (particularly from the former Soviet Union) travel every year. Public transport to Alupka includes the bus system (bus routes #26 and #27 from Yalta) and other road vehicles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "alupka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4469,
+    "attempt": 4434,
+    "place_id": "gn-1277082",
+    "input": {
+      "place": {
+        "place_id": "gn-1277082",
+        "name": "Baranagar",
+        "country": "India",
+        "subdivision": "West Bengal",
+        "lat": 22.64132,
+        "lon": 88.37727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baranagar",
+          "url": "https://en.wikipedia.org/wiki/Baranagar",
+          "text": "Baranagar is a city and a municipality in the Kolkata Metropolitan Area of North 24 Parganas district in the Indian state of West Bengal. It is a part of the area covered by Kolkata Metropolitan Development Authority (KMDA).\nIt is home to the Indian Statistical Institute, an institution of national importance devoted to the research, teaching and application of statistics, natural sciences and social sciences. Baranagar Ramakrishna Mission Ashrama High School is one of the oldest and most renowned schools in Baranagar.\nBaranagar is a major industrial centre for the manufacture of agricultural and industrial machinery, chemicals, castor oil, and matches; Baranagar is also home to numerous cotton-processing companies, offset & digital printing companies and book publishers.\nBaranagar has many places of tourists attraction.Kolkata's khatudham ,Shree Shyam Mandir Alambazar is located in Alambazar,Baranagar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "baranagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4470,
+    "attempt": 4435,
+    "place_id": "gn-2254441",
+    "input": {
+      "place": {
+        "place_id": "gn-2254441",
+        "name": "Bakel",
+        "country": "Senegal",
+        "subdivision": "Tambacounda",
+        "lat": 14.90238,
+        "lon": -12.45935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bakel, Senegal",
+          "url": "https://en.wikipedia.org/wiki/Bakel,_Senegal",
+          "text": "Bakel is a town and urban commune, with a population of 18,939, located in the eastern part of Senegal, West Africa. The town is located on the left bank of the Sénégal River, 65 kilometers (40 mi) from the Malian border and linked by canoe ferry to the village of Gouraye in Mauritania.\nBakel is one of the four eponymous departmental capitals in the region of Tambacounda, the other three being Tambacounda, Goudiry and Koumpentoum. Bakel is known for its French fort (Fort Bakel), which René Caillié visited in 1819. It was also the area where the Mauritanian crisis occurred, a dispute over grazing rights that led to a war between Senegal and Mauritania in 1989.  As a result of this conflict, many people around the area moved abroad or emigrated to Senegal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "bakel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4471,
+    "attempt": 4436,
+    "place_id": "gn-2639896",
+    "input": {
+      "place": {
+        "place_id": "gn-2639896",
+        "name": "Prestwick",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.48333,
+        "lon": -4.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prestwick",
+          "url": "https://en.wikipedia.org/wiki/Prestwick",
+          "text": "Prestwick (Scottish Gaelic: Preastabhaig) is a town and former royal burgh in South Ayrshire on the west coast of Scotland. It adjoins the larger town of Ayr to the south on the Firth of Clyde coast, the centre of which is about two miles (three kilometres) south, and the small village of Monkton to the north. It had a population of 14,570 in 2022. The town was the first home of the Open Golf Championship, which was played on the Prestwick Old Course from 1860 to 1872.\nGlasgow Prestwick Airport is on the town's outskirts, providing passenger flights to European and, historically, transatlantic destinations as well as international cargo flights. Prestwick Academy is the towns only secondary school which, along with serving the town itself, serves the outlying villages of Symington and Monkton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "prestwick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4472,
+    "attempt": 4437,
+    "place_id": "gn-3111348",
+    "input": {
+      "place": {
+        "place_id": "gn-3111348",
+        "name": "Roses",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 42.26199,
+        "lon": 3.17689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roses, Spain",
+          "url": "https://en.wikipedia.org/wiki/Roses,_Spain",
+          "text": "Roses (Catalan pronunciation: [ˈrɔzəs]; Spanish: Rosas, [ˈrosas]) is a municipality in the comarca of the Alt Empordà, located on the Costa Brava, Catalonia, Spain. \nRoses is the site of the former bishopric of Rotdon, now a Latin Catholic titular see. It is situated on the coast at the northern end of the Gulf of Roses, and is an important fishing port and tourist centre. The C-260 road links the town with Figueres.\nThe GR 92 long distance footpath, which roughly follows the length of the Mediterranean coast of Spain, has a staging point at Roses. Stage 3 links northwards to Cadaqués, a distance of 21.7 kilometres (13.5 mi), whilst stage 4 links southwards to the El Cortalet pond in the Parc Natural dels Aiguamolls de l'Empordà, a distance of 16.3 kilometres (10.1 mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "roses",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4473,
+    "attempt": 4438,
+    "place_id": "gn-3180850",
+    "input": {
+      "place": {
+        "place_id": "gn-3180850",
+        "name": "Canelli",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.72084,
+        "lon": 8.29282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canelli",
+          "url": "https://en.wikipedia.org/wiki/Canelli",
+          "text": "Canelli (Piedmontese: Canèj) is a comune (municipality) in the Province of Asti in the Italian region of Piedmont. As of 31 January 2024 it has a population of 10,022\nCanelli is located on a bend of the river Belbo in the Alto Monferrato (High Monferrat), close to the border with the Langhe. The area around the town is rich in vineyards. The area is believed to be the birthplace of the Italian sparkling wine Asti. The village's history of the wine is still evident today with the popular synonym of Muscat Canelli that is still used for the Moscato grape used to produce the wine.\nThe neighbouring comuni are  Bubbio, Calamandrana, Calosso, Cassinasco, Loazzolo, Moasca and San Marzano Oliveto in the province of Asti, and Santo Stefano Belbo in the province of Cuneo.\nOn 22 June 2014, Canelli along with Asti Spumante was declared a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "canelli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4474,
+    "attempt": 4439,
+    "place_id": "gn-5144975",
+    "input": {
+      "place": {
+        "place_id": "gn-5144975",
+        "name": "Woodhaven",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.68927,
+        "lon": -73.85791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodhaven, Queens",
+          "url": "https://en.wikipedia.org/wiki/Woodhaven,_Queens",
+          "text": "Woodhaven is a neighborhood in the southwestern section of the New York City borough of Queens. It is bordered on the north by Park Lane South and Forest Park, on the east by Richmond Hill, on the south by Ozone Park and Atlantic Avenue, and the west by the Cypress Hills area of East New York, Brooklyn.\nWoodhaven, once known as Woodyville, has one of the greatest tree populations in the borough and is known for its proximity to the hiking trails of Forest Park. Woodhaven contains a mixture of urban and suburban land uses, with both low-density residential and commercial sections. It retains the small-town feel of bygone days and is home to people of many different ethnicities.\nWoodhaven is located in Queens Community District 9 and its ZIP Code is 11421. It is patrolled by the New York City Police Department's 102nd Precinct. Politically, Woodhaven is represented by the New York City Council's 28th, 30th, and 32nd Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "woodhaven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4475,
+    "attempt": 4440,
+    "place_id": "gn-5484874",
+    "input": {
+      "place": {
+        "place_id": "gn-5484874",
+        "name": "Portales",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 34.18619,
+        "lon": -103.3344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portales, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Portales,_New_Mexico",
+          "text": "Portales () is a city in and the county seat of Roosevelt County, New Mexico, United States. As of the 2020 census, Portales had a population of 12,137. Portales is located near the larger city of Clovis, and Cannon Air Force Base, a major contributor to the economy of the region.\nEastern New Mexico University opened in Portales in 1934 as Eastern New Mexico Junior College, and has since grown to become the third-largest university in the state. The area is one of the largest producers of Valencia peanuts in the United States and is the nation's top producer of certified organic peanut butter. Portales is home to about 40 dairies and a major US dairy solids plant, together producing and exporting hundreds of millions of dollars of local milk products each year. It is the principal city of the Portales micropolitan statistical area, which is part of the larger Clovis-Portales combined statistical area, including Clovis, 19 miles (31 km) away and Cannon Air Force Base, 13 miles (21 km) away."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "portales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
