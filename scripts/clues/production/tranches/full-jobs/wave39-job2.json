@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 7673,
+    "attempt": 7621,
+    "place_id": "gn-635696",
+    "input": {
+      "place": {
+        "place_id": "gn-635696",
+        "name": "Suomussalmi",
+        "country": "Finland",
+        "subdivision": "Kainuu",
+        "lat": 64.88685,
+        "lon": 28.90778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suomussalmi",
+          "url": "https://en.wikipedia.org/wiki/Suomussalmi",
+          "text": "Suomussalmi (Finnish: [ˈsuo̯musˌsɑlmi]) is a municipality in Finland located in the Kainuu region about 90 kilometres (56 mi) northeast of Kajaani, the capital of Kainuu and 120 kilometres (75 mi) south of Kuusamo. The municipality has a population of 6,957\n(31 December 2025) and covers an area of 5,857.60 square kilometres (2,261.63 sq mi) of which 587.03 km2 (226.65 sq mi) is water. The population density is 1.32 inhabitants per square kilometre (3.4/sq mi). The municipality is unilingually Finnish. Ämmänsaari is the biggest built-up area in the municipality.\nSuomussalmi is the second southernmost part of the reindeer-herding area in Finland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "suomussalmi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7674,
+    "attempt": 7622,
+    "place_id": "gn-645691",
+    "input": {
+      "place": {
+        "place_id": "gn-645691",
+        "name": "Munkkiniemi",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.19861,
+        "lon": 24.87772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Munkkiniemi",
+          "url": "https://en.wikipedia.org/wiki/Munkkiniemi",
+          "text": "Munkkiniemi (Finnish: [ˈmuŋkːiˌnie̯mi]; Swedish: Munksnäs, Helsinki slang: Munkka) is a neighbourhood in Helsinki. Subdivisions within the district are Vanha Munkkiniemi, Kuusisaari, Lehtisaari, Munkkivuori, Niemenmäki and Talinranta.\nThe land in Munkkiniemi was from the 17th century a part of Munksnäs manor. In the 1910s grandiose plans were made to expand all of western Helsinki with tens of thousands of new inhabitants, the so-called Munkkiniemi–Haaga Plan by Eliel Saarinen. The construction of the new areas started slowly and it wasn't until the 1930s that a more extensive construction phase began in Munkkiniemi. From 1920 to 1946 Munkkiniemi was part of Huopalahti municipality. Huopalahti including Munkkiniemi was incorporated with Helsinki in 1946.\nMunkkiniemi is one of the more affluent areas of Helsinki. Characterized by the relatively high proportion of Swedish speakers, around twelve percent, and a socioeconomic structure heavy on upper management and professionals, the district is appreciated as a particularly safe and well-serviced part of the city. This is reflected in the high prices of housing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "munkkiniemi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7675,
+    "attempt": 7623,
+    "place_id": "gn-646705",
+    "input": {
+      "place": {
+        "place_id": "gn-646705",
+        "name": "Mänttä",
+        "country": "Finland",
+        "subdivision": "Pirkanmaa",
+        "lat": 62.03014,
+        "lon": 24.62791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mänttä",
+          "url": "https://en.wikipedia.org/wiki/Mänttä",
+          "text": "Mänttä is a former town and municipality of Finland. It was merged with the municipality of Vilppula to form Mänttä-Vilppula on 1 January 2009.\nThe place name Mänttä comes from an old house which Tuomas Niilonpoika Mäntsä (1570–1618) founded in Keuruskoski in the wilderness of Sääksmäki.\nIt was located in the province of Western Finland and was part of the Pirkanmaa region. The municipality had a population of  6341 in 2008 and covered an area of 85.84 square kilometres (33.14 sq mi) of which 21.61 square kilometres (8.34 sq mi) was water. The population density was 100.0 inhabitants per km2.\nThe municipality was unilingually Finnish.\nFinnish naval officer Eero Rahola was born in Mänttä, as well as World Speed Skating Championships medalist Pekka Koskela."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mantta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7676,
+    "attempt": 7624,
+    "place_id": "gn-6692512",
+    "input": {
+      "place": {
+        "place_id": "gn-6692512",
+        "name": "El Gouna",
+        "country": "Egypt",
+        "subdivision": "Red Sea",
+        "lat": 27.39417,
+        "lon": 33.67825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Gouna",
+          "url": "https://en.wikipedia.org/wiki/El_Gouna",
+          "text": "El Gouna (Egyptian Arabic: الجونة [elˈɡuːnæ], \"the Lagoon\") is an Egyptian city located on the Red Sea in the Red Sea Governorate, Egypt. It is located 20 kilometres (12 miles) north of Hurghada. It is part of the Red Sea Riviera, and a host city of the El Gouna Film Festival. It was created in 1990, and is owned and developed by Samih Sawiris' Orascom Development.\nEl Gouna is originally known as a  tourist city, it has 10 kilometers of coastline and consists of 20 islands surrounded by lagoons. The city is 25 kilometers away from the Hurghada International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "el gouna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gouna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7677,
+    "attempt": 7625,
+    "place_id": "gn-670167",
+    "input": {
+      "place": {
+        "place_id": "gn-670167",
+        "name": "Pogoanele",
+        "country": "Romania",
+        "subdivision": "Buzău County",
+        "lat": 44.91667,
+        "lon": 27
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pogoanele",
+          "url": "https://en.wikipedia.org/wiki/Pogoanele",
+          "text": "Pogoanele (Romanian pronunciation: [poˈɡo̯anele]) is a town in the southeastern part of Buzău County, Muntenia, Romania. The town administers one village, Căldărăști.\nPogoanele was declared a town in April 1989, as a result of the Romanian rural systematization program. It is located in the south-central part of the county, in the middle of the Bărăgan Plain, at about 40 km (25 mi) from Buzău, the county seat. It is traversed by the DN2C road, which runs from Buzău to Slobozia. The railway station (3 km (1.9 mi) from the town center) is on the CFR line connecting Urziceni and Făurei."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "pogoanele",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7678,
+    "attempt": 7626,
+    "place_id": "gn-674586",
+    "input": {
+      "place": {
+        "place_id": "gn-674586",
+        "name": "Lovrin",
+        "country": "Romania",
+        "subdivision": "Timiș County",
+        "lat": 45.96806,
+        "lon": 20.77028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lovrin",
+          "url": "https://en.wikipedia.org/wiki/Lovrin",
+          "text": "Lovrin (German: Lowring, formerly Lorandhausen; Hungarian: Lovrin, formerly Lóránthalma; Serbian: Ловрин, romanized: Lovrin) is a commune in Timiș County, Romania. It is composed of a single village, Lovrin. It also included three other villages – Gottlob, Tomnatic, and Vizejdia – until 2004, when they were split off to form Gottlob and Tomnatic communes.\nThe commune itself is a significant railway junction served by local railway lines radiating in five directions. It is an agro-industrial and urban center for the surrounding region. Until the early 1990s, the majority of inhabitants were of German descent, but emigration has significantly reduced their numbers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "lovrin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7679,
+    "attempt": 7627,
+    "place_id": "gn-678290",
+    "input": {
+      "place": {
+        "place_id": "gn-678290",
+        "name": "Fieni",
+        "country": "Romania",
+        "subdivision": "Dâmbovița County",
+        "lat": 45.13333,
+        "lon": 25.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fieni",
+          "url": "https://en.wikipedia.org/wiki/Fieni",
+          "text": "Fieni is a town in Dâmbovița County, Muntenia, Romania, on the Ialomița River, having a population of 6,378 as of 2021. It administers two villages, Berevoești and Costești.\nThe town is situated in a hilly area south of the Bucegi Mountains, on the banks of the Ialomița River. It is located 29 km (18 mi) north of the county seat, Târgoviște, and is crossed by national road DN71, which starts close to Bucharest, runs through Târgoviște, and ends in Sinaia, 35 km (22 mi) north of Fieni.\nThe St. Nicholas Church of Fieni, built in 1804, is a historical monument. A cement factory in Fieni was bought in 2002 by the German company HeidelbergCement. The local football team, Cimentul Fieni, was founded in 1936 and played in Divizia C, before being dissolved in 2005. The home ground of the team was Stadionul Cimentul."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "fieni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7680,
+    "attempt": 7628,
+    "place_id": "gn-679340",
+    "input": {
+      "place": {
+        "place_id": "gn-679340",
+        "name": "Diosig",
+        "country": "Romania",
+        "subdivision": "Bihor County",
+        "lat": 47.3,
+        "lon": 22
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diosig",
+          "url": "https://en.wikipedia.org/wiki/Diosig",
+          "text": "Diosig (Hungarian: Bihardiószeg) is a commune in Bihor County, Crișana, Romania with a population of 6,816 people. It is composed of two villages, Diosig and Ianca (Jankafalva).\nThe commune is located in the northwestern part of the county, on the banks of the river Ier. Diosig lies on the border with Hungary, 35 km (22 mi) north of the county seat, Oradea. It is crossed by national road DN19, which runs from Oradea to the cities of Carei, Satu Mare, and Sighetu Marmației to the northeast. \nAt the 2002 census, 56.5% of inhabitants were Hungarians, 32.6% Romanians and 10.7% Roma. 53.4% were Reformed, 27.7% Romanian Orthodox, 8.2% Roman Catholic, 4.9% Pentecostal, 2.2% Seventh-Day Adventist and 1.5% Baptist."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "diosig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7681,
+    "attempt": 7629,
+    "place_id": "gn-6946673",
+    "input": {
+      "place": {
+        "place_id": "gn-6946673",
+        "name": "São Sebastião da Pedreira",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.7344,
+        "lon": -9.15389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Sebastião da Pedreira",
+          "url": "https://en.wikipedia.org/wiki/São_Sebastião_da_Pedreira",
+          "text": "São Sebastião da Pedreira (English: Saint Sebastian of the Quarry) was a Portuguese Catholic parish (freguesia) in the municipality of Lisbon dedicated to the early Christian martyr Saint Sebastian and named \"of the Quarry\" due to nearby stone quarries. \nWith the 2012 Administrative Reform, the former São Sebastião da Pedreira parish merged with the Nossa Senhora de Fátima parish into a new parish named Avenidas Novas.\nThe Parish Church of São Sebastião da Pedreira is one of Lisbon's most remarkable churches, built in the 17th century and inaugurated in 1652. The building is a striking example of baroque religious architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "sao sebastiao da pedreira",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sebastiao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedreira",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7682,
+    "attempt": 7630,
+    "place_id": "gn-695740",
+    "input": {
+      "place": {
+        "place_id": "gn-695740",
+        "name": "Rozdolne",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 45.77019,
+        "lon": 33.49092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rozdolne",
+          "url": "https://en.wikipedia.org/wiki/Rozdolne",
+          "text": "Rozdolne (Ukrainian: Роздольне; Russian: Раздольное; Crimean Tatar: Aqşeyh [Акъшейх]; German: Deutsch-Akscheich; until December 1944, Aksheykh (Ак-Шейх) is an urban-type settlement in the Autonomous Republic of Crimea, a territory recognized by a majority of countries as part of Ukraine and incorporated by Russia as the Republic of Crimea. The town also serves as the administrative center of the Rozdolne Raion (district), housing the district's local administration buildings.\nAs of the 2001 Ukrainian Census, its population was 8,163. Current population: 7,352 (2014 Census).\nThe village of Deutsch-Akscheich (Ак-Шеих Немецкий) was founded by Black Sea German settlers from the Berdyansk area in 1897."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "rozdolne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7683,
+    "attempt": 7631,
+    "place_id": "gn-8347858",
+    "input": {
+      "place": {
+        "place_id": "gn-8347858",
+        "name": "Macquarie Park",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.78105,
+        "lon": 151.12757
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Macquarie Park",
+          "url": "https://en.wikipedia.org/wiki/Macquarie_Park",
+          "text": "Macquarie Park () is a suburb in the Northern Sydney region of Sydney, New South Wales, Australia. Macquarie Park is located 13 kilometres north-west of the Sydney central business district in the local government area of the City of Ryde.\nMacquarie Park was part of the suburb of North Ryde until it was gazetted as a suburb in its own right on 5 February 1999, and many businesses still use North Ryde as the address. Both suburbs share the 2113 postcode, but Macquarie University, which is located at the northern part of the suburb, has its own postcode of 2109."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "macquarie park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "macquarie",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7684,
+    "attempt": 7632,
+    "place_id": "gn-8348725",
+    "input": {
+      "place": {
+        "place_id": "gn-8348725",
+        "name": "Panania",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.95366,
+        "lon": 150.99733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panania",
+          "url": "https://en.wikipedia.org/wiki/Panania",
+          "text": "Panania () is a suburb in South Western Sydney in the state of New South Wales, Australia. It is part of the local government area of City of Canterbury-Bankstown and is located 23 kilometres inner south-west of the Sydney central business district. The postcode is 2213, which it shares with adjacent suburbs East Hills and Picnic Point.\nPanania is bounded on the north by the M5 South Western Motorway and the suburb of Milperra. Picnic Point, to the south, features parklands along the Georges River. East Hills is the suburb to the west and Revesby is located to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "panania",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7685,
+    "attempt": 7633,
+    "place_id": "gn-8349178",
+    "input": {
+      "place": {
+        "place_id": "gn-8349178",
+        "name": "Gungahlin",
+        "country": "Australia",
+        "subdivision": "Australian Capital Territory",
+        "lat": -35.18674,
+        "lon": 149.13619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gungahlin",
+          "url": "https://en.wikipedia.org/wiki/Gungahlin",
+          "text": "Gungahlin () is a district in the Australian Capital Territory and one of the fastest growing regions in Australia. The district is subdivided into suburbs, sections and blocks. Gungahlin is an Aboriginal word meaning either \"white man's house\" or \"little rocky hill\".\nAs of 2022 Gungahlin comprised sixteen suburbs, including several under construction and a further suburb planned. The town of Gungahlin was part of the original 1957 plan for development in the ACT and in 1991 was officially launched as the fourth 'town' by the ACT Chief Minister. At the time, the population of Gungahlin was just 389 residents. At the 2021 census, the population of the district was 87,682.\nWithin the district is the northern-most town centre of the ACT, situated 10 kilometres (6 mi) north of Canberra City (\"Civic\" in the local parlance); one of five satellite cities of the ACT, with Woden, Tuggeranong, Weston Creek and Belconnen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "gungahlin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7686,
+    "attempt": 7634,
+    "place_id": "gn-967238",
+    "input": {
+      "place": {
+        "place_id": "gn-967238",
+        "name": "Ottosdal",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -26.80908,
+        "lon": 26.00538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ottosdal",
+          "url": "https://en.wikipedia.org/wiki/Ottosdal",
+          "text": "Ottosdal is a small town situated at an altitude of 1,479 meters (4,855 feet) on the branch railway line from Makwassie in the central North West Province of South Africa. Ottosdal is a farming community engaged in the growing of grains such as maize (mielies), sunflower and peanuts. In addition, local farmers raise cattle, sheep, pigs, dairy cows and chicken. A major pyrophyllite mine lies near it on the farm Gestoptefontein. This town originated from the establishment of a Dutch Reformed Church parish in 1913. To this was added a church building on Korannafontein, the farm of Gerhardus Petrus Otto. The town is known as the birthplace of \"Die Baas\", who was born there in 1952. Ottosdal grew around the church and was officially registered in 1917 and named after G. P. Otto (de Jager 1997)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "ottosdal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7687,
+    "attempt": 7635,
+    "place_id": "gn-9972726",
+    "input": {
+      "place": {
+        "place_id": "gn-9972726",
+        "name": "Valasaravakkam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.04394,
+        "lon": 80.17251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valasaravakkam",
+          "url": "https://en.wikipedia.org/wiki/Valasaravakkam",
+          "text": "Valasaravakkam is a neighbourhood in the Chennai district of the Indian state of Tamil Nadu and a residential suburb of the city of Chennai.  It is located in the Maduravoyal Taluk at a distance of approximately 15 kilometres from the Kilometer Zero stone. Valasaravakkam lies on the Arcot Road, one of Chennai's arterial roads. It is under the Maduravoyal election constituency. In October, 2011 Valasaravakkam Municipality ceased to exist and the area became part of Chennai Corporation as Ward Nos 149 and 152 (Zone XI), Southern Region, Corporation of Chennai. As of 2011, the town had a population of 47,378.\nFamous Sivan temple is in Kesavardhini."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "valasaravakkam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7688,
+    "attempt": 7636,
+    "place_id": "gn-3165084",
+    "input": {
+      "place": {
+        "place_id": "gn-3165084",
+        "name": "Tursi",
+        "country": "Italy",
+        "subdivision": "Basilicate",
+        "lat": 40.24651,
+        "lon": 16.4714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tursi",
+          "url": "https://en.wikipedia.org/wiki/Tursi",
+          "text": "Tursi (Turse in Tursitano dialect; Ancient Greek: Θυρσοί, romanized: Thursoí; Latin: Tursium) is an Italian comune of 4,712 inhabitants in the province of Matera in Basilicata, elevated to a city by decree of the President of the Republic Carlo Azeglio Ciampi on May 4, 2006. The municipality is home to the Basso Sinni mountain community.\nThe urban center began to develop in the 5th century around the castle, in 1561 it was among the most populous, and in 1601 it was the city in the province of the kingdom with the largest number of fires, numbering 1799, ahead of Melfi (1772), Venosa (1095), Potenza (1082) and Tricarico (1073).\nIn 968, in Byzantine times, Tursi became the capital of the theme of Lucania, and an episcopal see of the Greek rite. From the beginning of the 18th century and until the Bourbon reform of 1816 (except in 1799, when it was annexed to the department of Crati, i.e., Cosentian Calabria), Tursi was the first of the four subdivisions of the then province of Basilicata, the Royal Collector of Basilicata was based there, and its boundaries, which extended to the Ionian Sea, included the tower of Trisaja, south of the mouth of the Sinni River, one of the seven coastal towers of the Kingdom of Naples protecting the Ionian coast of Basilicata."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 220,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "tursi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7689,
+    "attempt": 7637,
+    "place_id": "gn-11980043",
+    "input": {
+      "place": {
+        "place_id": "gn-11980043",
+        "name": "Otterbein",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.28195,
+        "lon": -76.61614
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Otterbein, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Otterbein,_Baltimore",
+          "text": "Otterbein is a neighborhood of historic rowhouses in Baltimore, Maryland, United States, located immediately southwest of, and in close walking distance to the city's Inner Harbor.\nOriginally dating the 1700s, Otterbein is widely known as one of the oldest and most successful instances of urban homesteading, serving as a reminder of the significant, concerted and successful effort in the early 1970s to mediate between a concerted local advocacy and activism on behalf of the community and its neighbors — and Federal transportation initiatives which proposed fourteen lanes of traffic through historic Otterbein, Federal Hill, Highlandtown and Fell's Point — as well as a tunnel underneath the city's nearby, prominent and historic Federal Hill Park.\nOtterbein is bounded by Hanover Street to the East, Sharp Street to the West, Barre Street to North and Henrietta Street to the South — though many contemporary delineations encompass immediately adjacent streets. The neighborhood, which includes small parts of zip codes 21201 and 21230, is named after Old Otterbein Church, located immediately to the north.\nOtterbein is served two community associations: The Otterbein Community Association, representing the older historic homes, and the Harbor Walk Townhouse Association representing properties to the east, constructed after the period of urban homesteading. Both entities share the website theotterbein.org."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 209,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "otterbein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7690,
+    "attempt": 7638,
+    "place_id": "gn-2635571",
+    "input": {
+      "place": {
+        "place_id": "gn-2635571",
+        "name": "Trafford Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.46879,
+        "lon": -2.31194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trafford Park",
+          "url": "https://en.wikipedia.org/wiki/Trafford_Park",
+          "text": "Trafford Park is an area of the metropolitan borough of Trafford, Greater Manchester, England, opposite Salford Quays on the southern side of the Manchester Ship Canal, 3.4 miles (5.5 km) southwest of Manchester city centre and 1.3 miles (2.1 km) north of Stretford. Until the late 19th century it was the ancestral home of the Trafford family, who sold it to the financier Ernest Terah Hooley in 1896. Occupying an area of 4.7 square miles (12 km2), it was the first planned industrial estate in the world, and remained the largest in Europe over a century later.\nTrafford Park is almost entirely surrounded by water; the Bridgewater Canal forms its southeastern and southwestern boundaries, and the Manchester Ship Canal, which opened in 1894, its northeastern and northwestern boundaries. Hooley's plan was to develop the Ship Canal frontage, but the canal was slow to generate the predicted volume of traffic, so in the early days the park was largely used for leisure activities such as golf, polo and boating. British Westinghouse was the first major company to move in, and by 1903 it was employing about half of the 12,000 workers then employed in the park, which became one of the most important engineering facilities in Britain.\nTrafford Park was a major supplier of materiel in the First and Second World Wars, producing such equipment as the Rolls-Royce Merlin engines used to power the Spitfire and the Lancaster. At its peak in 1945, 75,000 workers were employed in the park. Employment began to decline in the 1960s as companies closed in favour of newer, more efficient plants elsewhere. By 1967 employment had fallen to 50,000, and the decline continued throughout the 1970s. The new generation of container ships was too large for the Manchester Ship Canal, which led to a further decline in Trafford Park's fortunes. The workforce had fallen to 15,000 by 1976, and by the 1980s industry had almost disappeared from the park.\nThe Trafford Park Urban Development Corporation, formed in 1987, reversed the estate's decline. In the 11 years of its existence the park attracted 1,000 companies, generating 28,299 new jobs and £1.759 billion of private-sector investment. As of 2025 there are 1,400 companies within the park, employing 40,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 206,
+      "fullExtractWords": 372
+    },
+    "banned_terms": [
+      {
+        "term": "trafford park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "trafford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7691,
+    "attempt": 7639,
+    "place_id": "gn-6207775",
+    "input": {
+      "place": {
+        "place_id": "gn-6207775",
+        "name": "Cromwell",
+        "country": "New Zealand",
+        "subdivision": "Otago",
+        "lat": -45.03837,
+        "lon": 169.20008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cromwell, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Cromwell,_New_Zealand",
+          "text": "Cromwell (Māori: Tīrau) is a town in the Central Otago region of New Zealand's South Island, located on the shore of Lake Dunstan. Established at the confluence of the Clutha / Mata-Au and Kawarau Rivers after gold was discovered nearby during the Otago Gold Rush of the 1860s, Cromwell's location saw it become a junction for travel between Dunedin and areas further inland, such as Wānaka and Queenstown. As gold mining declined, the town developed to service farms and orchards in the surrounding area, becoming known for stone fruit and as part of the Central Otago wine region. The town remains a hub for people travelling throughout the region, with State Highway 8B running through the town and acting as a main route for travellers to Queenstown.  \nThe construction of the Clyde Dam and subsequent creation of Lake Dunstan during the 1980s and 1990s saw Cromwell expand as a town, while also requiring the relocation of a third of town's buildings from areas that would be flooded, including the town centre. Remnants of the old town centre above the lake's water line have been retained and now form a historic precinct near the lake shore. Recent years have seen further development in Cromwell and the surrounding areas, including the construction of the Highlands Motorsport Park to the west in 2013 and the Lake Dunstan Trail to the south in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 195,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "cromwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7692,
+    "attempt": 7640,
+    "place_id": "gn-2657680",
+    "input": {
+      "place": {
+        "place_id": "gn-2657680",
+        "name": "Addingham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.94452,
+        "lon": -1.88424
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Addingham",
+          "url": "https://en.wikipedia.org/wiki/Addingham",
+          "text": "Addingham is a village and civil parish in the City of Bradford district of West Yorkshire, England, situated in the valley of the River Wharfe in Lower Wharfedale. It lies near the A65, 6 miles (10 km) south-east of Skipton, 3 miles (5 km) west of Ilkley and 12 miles (19 km) north-west of Bradford, and is within 1 mile (2 km) of the Yorkshire Dales National Park. Historically part of the West Riding of Yorkshire, the parish recorded a population of 3,730 at the 2011 census, rising to 3,785 at the 2021 census.\nThe village's name is recorded as Haddincham c. 972 and in variant forms in the Domesday Book of 1086, and is thought to derive from Old English, meaning \"homestead associated with a man called Adda\". The surrounding area shows evidence of activity from the Mesolithic period onward, including Bronze Age cup-and-ring-marked stones on Addingham Moor and the remains of an Iron Age settlement, known as Round Dikes, on Addingham Low Moor. St Peter's Church, a Grade I listed building incorporating reused Norman stonework, is thought to occupy the site of an early Christian centre recorded in the ninth century.\nAddingham developed as a farming settlement, with its oldest surviving houses dating from the 17th century, before the textile industry transformed it from the late 18th century onward; Low Mill, opened in 1787, was Yorkshire's first worsted-spinning mill, and by the late 19th century five mills operated in the village. The industry declined during the 20th century and had ended by 1976, after which the village became primarily a commuter and retirement settlement. Much of its historic core lies within the Addingham Conservation Area, designated on 17 January 1977, and the parish contains a substantial number of listed buildings, including three at Grade I or Grade II*."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 193,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "addingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 7793,
+    "attempt": 7741,
+    "place_id": "gn-3445938",
+    "input": {
+      "place": {
+        "place_id": "gn-3445938",
+        "name": "Tupandi",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.47639,
+        "lon": -51.42111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tupandi",
+          "url": "https://en.wikipedia.org/wiki/Tupandi",
+          "text": "Tupandi is a municipality in the state of Rio Grande do Sul, Brazil.It has a population of approximately 4,500 inhabitants and covers an area of 47.4 square kilometers (IBGE, 2021). The municipality is situated in the Metropolitan Region of Porto Alegre, and it is located approximately 80 kilometers west of the state capital.\nOne of the main economic activities in Tupandi is agriculture, with the production of fruits, vegetables, and dairy products being the most prominent. The municipality is also home to some industries, such as a shoe factory and a paper and pulp company (Prefeitura de Tupandi, n.d.).\nThe history of Tupandi dates back to the late 19th century when German immigrants began settling in the area. The name \"Tupandi\" comes from the indigenous Tupi-Guarani language and means \"place of the quails\" (IBGE, 2021).\nIn terms of tourism, Tupandi is known for its natural environment, with several parks and green areas. One of the most popular attractions in the municipality is the Morro da Cruz park, which has hiking trails and views of the surrounding landscape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "tupandi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7794,
+    "attempt": 7742,
+    "place_id": "gn-5334619",
+    "input": {
+      "place": {
+        "place_id": "gn-5334619",
+        "name": "Casa Conejo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.18362,
+        "lon": -118.94343
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casa Conejo, California",
+          "url": "https://en.wikipedia.org/wiki/Casa_Conejo,_California",
+          "text": "Casa Conejo ( ; Spanish for \"Rabbit House\") is an unincorporated county island in Newbury Park, Ventura County, California, United States. It was the first planned community in Newbury Park, with construction beginning in 1960. When the city of Thousand Oaks incorporated 4 years later, the new developments in Newbury Park were included within the city boundaries before being subdivided. The community is bordered by Old Conejo Road and US 101 to the north, Borchard Road to the south, Jenny Drive to the west, and Sequoia Middle School to the east. For statistical purposes, the United States Census Bureau defines Casa Conejo as a census-designated place (CDP), though this definition may not exactly correspond to local understanding of the area. The population was 3,267 at the 2020 census, up from 3,249 at the 2010 census. Casa Conejo occupies a roughly rectangular unincorporated area surrounded by the city of Thousand Oaks.\nThe Casa Conejo Municipal Advisory Council (MAC) serves Casa Conejo residents, by making recommendations to the Board of Supervisors. Its purpose is to provide a forum for residents to discuss local issues and propose ideas to the Board. While numerous other unincorporated islands were annexed by the City of Thousand Oaks during the 1980s, voters in Casa Conejo rejected such efforts, and it remains an unincorporated pocket within Newbury Park. Although Newbury Park is part of Thousand Oaks, Casa Conejo is in Newbury Park but is not part of Thousand Oaks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "casa conejo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "casa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "conejo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7795,
+    "attempt": 7743,
+    "place_id": "gn-5947954",
+    "input": {
+      "place": {
+        "place_id": "gn-5947954",
+        "name": "Ellison",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.93307,
+        "lon": -119.36907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ellison, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Ellison,_British_Columbia",
+          "text": "Ellison is an unincorporated community located approximately midway up the Okanagan valley within the local government jurisdiction of the Regional District of Central Okanagan. The Ellison community is founded upon a heritage of agriculture, rural acreages and scattered residential neighbourhoods within scenic valley terrain.\nThe name Ellison was adopted 1 December 1955, and is named after Price Ellison (1852-1932), a stock raiser and wheat grower that settled here in 1876, and at one time owned or controlled 80% of the property in the area. The Ellison Post Office was opened 1 May 1912, with Thomas Clinton as postmaster, and closed 15 May 1920.\nThe geography of Ellison contains many small and rare dryland ecosystems of open, arid grasslands and pine forest savannahs. Streams that support a diversity of animals and plants cross these dry ecosystems. Water is a precious resource and a focus for biodiversity and wildlife corridors.\nThere are three main streams that cross the Ellison area; Scotty Creek, Whelan Creek and Mill Creek. These streams and their tributaries are an important habitat in their own right and drain into spawning streams for kokanee, trout and other fish. Ellison also has aspen and cottonwood ecosystems that are wet islands in a dry landscape. These wetlands act as a sponge and a filter that maintain water quality and help maintain the quantity of water in aquifers and streams."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "ellison",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7796,
+    "attempt": 7744,
+    "place_id": "gn-755390",
+    "input": {
+      "place": {
+        "place_id": "gn-755390",
+        "name": "Wojnicz",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.958,
+        "lon": 20.83785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wojnicz",
+          "url": "https://en.wikipedia.org/wiki/Wojnicz",
+          "text": "Wojnicz (Polish pronunciation: [ˈvɔjɲitʂ] ) is an ancient historic town in Tarnów County, Lesser Poland Voivodeship. In the early medieval period of the Polish state, it became one of the most important centres in the province of Lesser Poland, as part of the system of Dunajec river castles. It became the seat of a Castellan and prospered from the 13th century to the first half of the 17th century, being on an international trade route bordering Hungary and the Ottoman Empire. It had town and market rights, its church was raised to collegiate status with links to the Jagiellonian University in Kraków 64 km away.\nIt was the scene of the Battle of Wojnicz on 3 October 1655, against Swedish invaders. Wojnicz was burned down around eight times in the course of its thousand-year history. In trade terms it lost out from the 17th century to its junior neighbour 12 km to the East, the city of Tarnów. It was further disadvantaged during Habsburg rule when the new Kraków–Tarnów railway was positioned 10 km to the north. It remained a backwater throughout the Second Republic of Poland in the inter-war years and was stripped of its town rights. Wojnicz regained its Town rights, after 70 years, in 2007. The Coat of arms of Wojnicz consists of an escutcheon bearing the figure of Roman martyr, St. Lawrence against a gridiron, symbolising his gruesome death by roasting."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "wojnicz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7797,
+    "attempt": 7745,
+    "place_id": "gn-2062428",
+    "input": {
+      "place": {
+        "place_id": "gn-2062428",
+        "name": "Maida Vale",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.95187,
+        "lon": 116.02764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maida Vale, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Maida_Vale,_Western_Australia",
+          "text": "Maida Vale is a suburb of Perth, Western Australia, located within the City of Kalamunda. Kalamunda Road runs through the suburb. Its first European settler was William Henry Mead, who arrived in 1873, built a home in the Ridge Hill area and established the orchard Orangedale. It was named in 1910 after a property name of another settler, WH McCormack. The name is believed to be derived from the eponymous area of West London, which is itself named after the 1806 Battle of Maida.\nWithin the suburb there is a primary school (Maida Vale Primary School), a golf course, numerous parks/ovals, a Seventh Day Adventist church ground and caravan park, two child care centres, a heated swimming pool and several small shops including a BP Petrol station, BWS and a new IGA grocery store.\nThe suburb contains a set of traffic lights at the intersection of Kalamunda Rd, Hawtin Road and Gooseberry Hill Road. This intersection is known as 'six-ways', because at one point there were six different roads at the intersection. The intersection marks the end of Gooseberry Hill Road, and the start of Hawtin Road.\nThe suburb retains areas of natural bushland and is not completely built-up with housing, although there are plans to increase housing with expansion on the Crystal Brook housing estate. Maida Vale is home to a rare flower named the Maida Vale Bell. Many older established trees in the area are a breeding ground for Carnaby's Black Cockatoo and flocks of up to 300 birds are often seen in the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "maida vale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "maida",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7798,
+    "attempt": 7746,
+    "place_id": "gn-2641815",
+    "input": {
+      "place": {
+        "place_id": "gn-2641815",
+        "name": "Neilston",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.78574,
+        "lon": -4.42637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neilston",
+          "url": "https://en.wikipedia.org/wiki/Neilston",
+          "text": "Neilston (Scots: Neilstoun, Scottish Gaelic: Baile Nèill, pronounced [paləˈnɛːʎ]) is a village and parish in East Renfrewshire in the west central Lowlands of Scotland. It is in the Levern Valley, two miles (three kilometres) southwest of Barrhead, 3+3⁄4 miles (6 kilometres) south of Paisley, and 5+3⁄4 miles (9.5 kilometres) south-southwest of Renfrew, at the southwestern fringe of the Greater Glasgow conurbation. Neilston is a dormitory village with a resident population of just over 5,000 people.\nNeilston is mentioned in documents from the 12th century, when the feudal lord Robert de Croc, endowed a chapel to Paisley Abbey to the North. Neilston Parish Church—a Category B listed building—is said to be on the site of this original chapel and has been at the centre of the community since 1163. Little remains of the original structure. Before industrialisation, Neilston was a scattered farming settlement composed of a series of single-storey houses, many of them thatched. Some domestic weaving was carried out using local flax. Water power from nearby streams ground corn and provided a suitable environment for bleaching the flax.\nThe urbanisation and development of Neilston came largely with the Industrial Revolution. Industrial scale textile processing was introduced to Neilston around the middle of the 18th century with the building of several cotton mills. Neilston became a centre for cotton and calico bleaching and printing in the 18th century, which developed into a spinning and dying industry, and continued into the early 20th century. Although Neilston is known as a former milling village, agriculture has played, and continues to play, an economic role. The annual Neilston Agricultural Show is an important trading and cultural event for farmers from southwest Scotland each spring.\nAlthough heavy industry died out in the latter half of the 20th century, as part of Scotland's densely populated Central Belt, Neilston has continued to grow as a commuter village, supported by its position between Paisley and Glasgow, from roughly 1,000 people in 1800 to 5,168 in 2001. Expansion continues due to several new housing developments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 336
+    },
+    "banned_terms": [
+      {
+        "term": "neilston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7799,
+    "attempt": 7747,
+    "place_id": "gn-2651656",
+    "input": {
+      "place": {
+        "place_id": "gn-2651656",
+        "name": "Cwmafan",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.61671,
+        "lon": -3.76205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cwmafan",
+          "url": "https://en.wikipedia.org/wiki/Cwmafan",
+          "text": "Cwmafan (), also known as Cwmavon, is a large village and community in the Afan valley in Wales, lying within Neath Port Talbot County Borough. It had a population of 5,615 at the 2011 Census. Cwmafan is known for having a high percentage of Welsh speakers. In many ways it is a suburb of the nearby town of Port Talbot which is less than 2 miles (3 km) to the south. The literal translation of Cwmafan from Welsh to English is complex, Cwm means valley with Afan as the name of the river flowing through, hence the village residing within the Afan Valley. It could be a version of Afon which means river, so literally the \"River Valley\", this is common in Wales and the UK with many rivers being called Afon or Avon. There is also a Saint Afan, which it is possible the river was named after. There have been other suggestions but none accepted locally."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "cwmafan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7800,
+    "attempt": 7748,
+    "place_id": "gn-2654416",
+    "input": {
+      "place": {
+        "place_id": "gn-2654416",
+        "name": "Buckfastleigh",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.48132,
+        "lon": -3.77913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buckfastleigh",
+          "url": "https://en.wikipedia.org/wiki/Buckfastleigh",
+          "text": "Buckfastleigh is a market town and civil parish in the Teignbridge district, in Devon, England situated beside the Devon Expressway (A38) at the edge of the Dartmoor National Park. For ecclesiastical purposes, lies within the Totnes Deanery. It is 18 miles (29 km) east-northeast of Plymouth, 20 miles (32 km) southwest of Exeter and has a population of 3,571 at the 2021 census. It is a centre of tourism and is home to Buckfast Abbey, the South Devon Railway, the Buckfastleigh Butterfly Farm and Otter Sanctuary, the Tomb of Squire Richard Cabell and The Valiant Soldier Museum Heritage & Visitor Centre. With 13 letters, Buckfastleigh is one of the longest place names in England with no repeated letters, tied with Buslingthorpe, Leeds and Buslingthorpe, Lincolnshire, but exceeded by Bricklehampton in Worcestershire with 14 letters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "buckfastleigh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7801,
+    "attempt": 7749,
+    "place_id": "gn-4786952",
+    "input": {
+      "place": {
+        "place_id": "gn-4786952",
+        "name": "Spotsylvania Courthouse",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.19791,
+        "lon": -77.58777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spotsylvania Courthouse, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Spotsylvania_Courthouse,_Virginia",
+          "text": "Spotsylvania Courthouse is a  census-designated place (CDP) and the county seat of Spotsylvania County, Virginia, United States, located 10 miles (16 km) southwest of Fredericksburg. Recognized by the U.S. Census Bureau as a census-designated place (CDP), the population was 5,610 at the 2020 census.\nDuring the American Civil War, the crossroads community became a Union objective during the Battle of Spotsylvania Courthouse, fought May 8–21, 1864. The battle, which ended in stalemate, included a brutal 20-hour struggle over a section of the Confederate defenses that became known as the \"Bloody Angle\". The site of the Bloody Angle and other portions of the battlefield are preserved as part of Fredericksburg and Spotsylvania County Battlefields Memorial National Military Park and administered by the National Park Service. The Fredericksburg and Spotsylvania National Military Park includes three cemeteries. Over 15,000 Union soldiers, many unidentified, are buried in the Fredericksburg National Cemetery. The other two cemeteries are dedicated to fallen Confederate soldiers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "spotsylvania courthouse",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spotsylvania",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "courthouse",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7802,
+    "attempt": 7750,
+    "place_id": "gn-6534499",
+    "input": {
+      "place": {
+        "place_id": "gn-6534499",
+        "name": "Pedrengo",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.69598,
+        "lon": 9.73495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pedrengo",
+          "url": "https://en.wikipedia.org/wiki/Pedrengo",
+          "text": "Pedrengo (Bergamasque: Pedrèngh) is a comune (municipality) in the Province of Bergamo in the Italian region of Lombardy, located about 50 kilometres (31 mi) northeast of Milan and about 5 kilometres (3 mi) east of Bergamo. As of 31 December 2004, it had a population of 5,321 and an area of 3.6 square kilometres (1.4 mi2).\nPedrengo borders the following municipalities: Albano Sant'Alessandro, Gorle, Scanzorosciate, Seriate, Torre de' Roveri.\nPedrengo is famous for the villas that have remained to this day, thanks to noble and wealthy families that in the past centuries have come to the city. This is thanks to the lush green of parks and gardens, as well as large spaces that characterized the city. These villas were the ideal place to spend the summer months and also served as country residences. These are \"Villa Sottocasa\", \"Villa Berizzi\" \"Villa Frizzoni\" and \"Palazzo Donadoni\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "pedrengo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7803,
+    "attempt": 7751,
+    "place_id": "gn-7259637",
+    "input": {
+      "place": {
+        "place_id": "gn-7259637",
+        "name": "Whiteman Air Force Base",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 38.73018,
+        "lon": -93.55895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whiteman Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Whiteman_Air_Force_Base",
+          "text": "Whiteman Air Force Base (IATA: SZL, ICAO: KSZL, FAA LID: SZL) is a United States Air Force base located just south of Knob Noster, Missouri, United States. It is operated by the Air Force Global Strike Command, as the base for all 19 operational B-2 Spirit nuclear-capable stealth bombers, as well as for A-10 Thunderbolt attack aircraft and others. There is also a sizable Missouri Air National Guard presence on base.\nThe base is approximately 60 miles (100 km) east-southeast of Kansas City in rural Johnson County. Originally established as the Sedalia Glider Base, it was later renamed after  2nd Lt George Whiteman, a native Missourian who was killed during the attack on Pearl Harbor. The facility covers 5,566 acres (8.7 sq mi; 22.5 km2) and is maintained by the 509th Civil Engineer Squadron. During the Cold War, Whiteman played a significant role in the American nuclear triad, with a total of 150 Minuteman intercontinental ballistic missiles (ICBMs) built in the vicinity of the base, later dismantled as part of arms reductions.\nFollowing the end of the Cold War era, the base became home to the B-2 bomber force beginning in the 1990s and continues to play a crucial role in the US nuclear deterrent. B-2 bombers have flown non-stop flights from Whiteman for bombing campaigns in Yugoslavia, Afghanistan, Iraq, Libya, and Iran."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "whiteman air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "whiteman",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7804,
+    "attempt": 7752,
+    "place_id": "gn-959172",
+    "input": {
+      "place": {
+        "place_id": "gn-959172",
+        "name": "Rosendal",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.50481,
+        "lon": 27.93293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosendal, Free State",
+          "url": "https://en.wikipedia.org/wiki/Rosendal,_Free_State",
+          "text": "Rosendal is a small farming town and arts colony 45 km north of Ficksburg in the Free State province of South Africa which was founded in 1908. It has become a popular tourist destination, known for spectacular scenery, including the surrounding Witteberg mountains, and is home to a community of artists and small business owners. The town has a number of attractive buildings and restored early-20th-century homes. The quality of architectural design for newly built homes is notable, adding to the town's attractive character. This includes a number of \"Tiny Homes\" - less than 100 square meters - and which has earned Rosendal a reputation for becoming South Africa's tiny home capital. There are several art galleries, cafes and good restaurants as well as a heritage district of restored buildings in the former downtown. Until recently live theatre was hosted here by well known Afrikaans language actor, Chris Van Niekerk.\nThere is an active town committee, drawn from residents in both Rosendal and Mautse, and which works on various local initiatives to promote the town, fix infrastructure and improve the lives of all residents. This has earned Rosendal a reputation as a town that works together and where social obligations are observed. This \"can-do\" spirit is credited with contributing to the town's relaxed and pleasant character as a peaceful and safe community. \nThe Eastern Free State was first occupied by indigenous San and Khoi people, as evidenced by the many examples of rock art in caves on the farms surrounding Rosendal.\nBy the early 1800s, a series of highly decentralised Basotho chiefdoms had emerged in the area.  Through the twin pressures of the massive Zulu kingdom's expansion from the east, known as the murderous genocidal Difaqane, and the arrival of the Voortrekkers from the south, the various chiefdoms came together under the leadership of King Moshoeshoe.  Universally praised as a skilled diplomat and strategist, he was able to wield the disparate chiefdoms and refugee groups escaping the Difaqane into a cohesive nation. There is evidence around Rosendal of sacred places and mountain fortresses used by the BaSotho during this period.\nHunters, adventurers and missionaries from the Cape had already arrived in the area in the 1820s, but Cape farmers only came in large numbers during the Great Trek, from about 1837. As the republic of the Orange Free State expanded various Boer-Basotho wars were fought and the Basotho pushed eastwards across the Caledon river, before a British protectorate, Basotholand, was declared.\nThe town came into being, like many in rural South Africa, when local farmers petitioned for a Church to be built within reasonable distance. Rosendal is 40 and 43 km from Senekal and Ficksburg, respectively, the distance that could be ridden in a day on horse back. A town was laid out in 1911 and declared a municipality in 1914, built upon a farm donated by a widow, Ms Botha, who chose the name Rosendal, \"valley of roses\".\nA church, a bank, post office, school and hotel were built and a plan laid out for what was intended to be a sizeable settlement. Lacking a railway stop, isolated by the Witteberg mountains to the east and being in an thinly populated area, Rosendal did not fulfil the early promise of becoming a city or large town. Today this accounts for its unique low density character. Visitors will notice a grid pattern of streets with a small number of homes spread out with great distance between them, creating the sensation of being in open countryside even when in the middle of town. From the late 1970s Rosendal entered a period of decline with businesses and services closing and population falling. The closure of the local Afrikaans language school in 1982 had a particularly strong effect on the town's vitality; Rosendal began to acquire some of the character of a \"ghost town\" with many abandoned or disused homes. This began to reverse from the late 1990s when a small group of writers, artists and adventurers began to call it home.\nToday there are roughly 140 people living full-time in what is the historic town area as well as weekend or recreational home owners from Johannesburg, Bloemfontein and internationally. For a place of its size it is diverse and cosmopolitan with residents who have professional careers nationally and abroad. It remains a small Free State farming town in character in which cattle are herded through the streets by cowboys and wild or untethered horses roam the town. It is also a place of farmers, farm workers, artists and weekenders in which arts festivals and music concerts are held.\nApartheid era geography is apparent and Rosendal village is physically separated from Mautse, the township, which is a vibrant community today of nearly 7000 people. Mautse may have had its origins in apartheid planning as the residence of domestic and other workers, some of whom were uprooted from homes in or on the outskirts of Rosendal itself.\nSome residents of Mautse came from Lesotho in search of a better life, but most came as a result of the Land Reform Act at the end of Apartheid, when – with intent to counteract slave labour – government brought in minimum wage, which meant white farm owners who once fed and sheltered black labourers to work their fields, could no longer do so.\nHistoric Mautse, most of which is made up of brick homes and RDP houses, is situated alongside new and growing sections of the settlement, the largest of which is Matatie where most homes are tin shacks. These are not suitable for the harsh climate of cold winters and hot summers. Firewood is a scarce resource and people walk further and further afield to gather winter fuel, as the locals typically chop down scarce trees for firewood without replanting new trees to replace them.\nMautse is a growing community with a high school and primary school, government offices, a stadium, community centre and many small businesses.\nLabour shedding by farms in recent years, caused by tight government regulation, has produced farm to town migration, as well as preference by workers to be closer to schools, services and shops. Most farm workers in the area now live in Mautse itself rather than on farms directly.\nApart from farm labour, employment opportunities are limited as the authorities have done little to stimulate economic growth and employment, and the educated ambitious and uneducated desperately depart for South Africa's larger cities in an attempt to pursue careers.\nSome Mautse residents use their small plots of land to cultivate fresh produce. Many of Rosendal's–predominately white–residents are highly educated, offering a realm of creative, practical (carpentry sewing etc) business and media skills. Most have the desire to contribute to the challenges faced by Mautse. There is a permaculture farm (Waaipoort) close by.\nRosendal-Mautse is a pleasant and relaxed place to live and people here know each other and get along well."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 1151
+    },
+    "banned_terms": [
+      {
+        "term": "rosendal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7805,
+    "attempt": 7753,
+    "place_id": "gn-2646499",
+    "input": {
+      "place": {
+        "place_id": "gn-2646499",
+        "name": "Howden",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.7463,
+        "lon": -0.86994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Howden",
+          "url": "https://en.wikipedia.org/wiki/Howden",
+          "text": "Howden () is a market town and civil parish in the East Riding of Yorkshire, England. It lies in the Vale of York to the north of the M62, on the A614 road about 16 miles (26 km) south-east of York and 3 miles (4.8 km) north of Goole, which lies across the River Ouse. It is known for Howden Minster, one of the largest churches in the East Riding. At the 2021 census, the parish had a population of 4,571.\nWilliam the Conqueror gave the town to the Bishops of Durham in 1080. The wapentake of Howdenshire was named after the town, and remained an exclave of County Durham until as late as 1846. The original boundaries of the wapentake were used for the current two government wards of Howden and Howdenshire, which had a combined population of 19,753 at the 2011 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "howden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7806,
+    "attempt": 7754,
+    "place_id": "gn-3019875",
+    "input": {
+      "place": {
+        "place_id": "gn-3019875",
+        "name": "Erquy",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.63126,
+        "lon": -2.46507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erquy",
+          "url": "https://en.wikipedia.org/wiki/Erquy",
+          "text": "Erquy (French pronunciation: [ɛʁki]; Breton: Erge-ar-Mor; Gallo: Erqi) is a commune in the Côtes-d'Armor department of Brittany in northwestern France.\nErquy is located in a cove of the Penthièvre coast bordered by cape Erquy on one side and a volcanic rock formation called pointe de la Heussaye on the other.\nIts harbour shelters a flotilla of about 80 trawlers, earning the town a reputation as the scallop \"capital\". The shellfish are collected in the Saint-Brieuc bay.\nIt is a popular summer destination, known for its ten fine sand beaches and pink sandstone houses.\nErquy claims to be the inspiration behind the village of the Asterix comics, which is situated in roughly the same place in ancient Armorica (now Brittany); this would make the villagers likely Coriosolites, a tribe who lived in that area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "erquy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7807,
+    "attempt": 7755,
+    "place_id": "gn-3673887",
+    "input": {
+      "place": {
+        "place_id": "gn-3673887",
+        "name": "Nemocón",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 5.06767,
+        "lon": -73.87769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nemocón",
+          "url": "https://en.wikipedia.org/wiki/Nemoc%C3%B3n",
+          "text": "Nemocón is a municipality and town of Colombia in the Central Savanna Province, part of the department of Cundinamarca. Nemocón, famous for its salt mine, was an important village in the Muisca Confederation, the country in the central Colombian Andes before the arrival of the Spanish. \nThe municipality is situated in the northern part of the Bogotá savanna, part of the Altiplano Cundiboyacense with its urban centre at an altitude of 2,585 metres (8,481 ft) and 65 kilometres (40 mi) from the capital Bogotá. Nemocón is the northeasternmost municipality of the Metropolitan Area of Bogotá and the Bogotá River originates close to Nemocón. The median temperature of Nemocón is 12.8 °C. The municipality borders Tausa in the north, Zipaquirá and Gachancipá in the south, Suesca  in the east, and Cogua in the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "nemocon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7808,
+    "attempt": 7756,
+    "place_id": "gn-488864",
+    "input": {
+      "place": {
+        "place_id": "gn-488864",
+        "name": "Starocherkasskaya",
+        "country": "Russia",
+        "subdivision": "Rostov",
+        "lat": 47.24077,
+        "lon": 40.04186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Starocherkasskaya",
+          "url": "https://en.wikipedia.org/wiki/Starocherkasskaya",
+          "text": "Starocherkasskaya (Russian: Старочерка́сская, lit. 'Old Cherkassk'), formerly Cherkassk (Черка́сск), is a rural locality (a stanitsa) in Aksaysky District of Rostov Oblast, Russia, with origins dating from the late 16th century. It is located on the right bank of the Don River approximately 35 kilometers (22 mi) upstream from the major Russian port city of Rostov-on-Don.\nIt is famous for having been the center of Don Cossack culture and politics for nearly two centuries as the capital of the Don Host Oblast. Due to regular spring floods that submerged the small city on several occasions, the Cossacks moved their capital to higher ground at Novocherkassk in 1805.\nIn and around Starocherkasskaya there are over forty noteworthy historical and cultural sites including the Resurrection (Voskresensky) Cathedral, completed in 1719, and its famous gilded wooden iconostasis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "starocherkasskaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7809,
+    "attempt": 7757,
+    "place_id": "gn-5829425",
+    "input": {
+      "place": {
+        "place_id": "gn-5829425",
+        "name": "Kemmerer",
+        "country": "United States",
+        "subdivision": "Wyoming",
+        "lat": 41.79245,
+        "lon": -110.53767
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kemmerer, Wyoming",
+          "url": "https://en.wikipedia.org/wiki/Kemmerer,_Wyoming",
+          "text": "Kemmerer is a city in and the county seat of Lincoln County, Wyoming, United States. The population was 2,415 at the 2020 census. Founded in 1897, the town grew up around the coal mines of the Ham's Fork field. The town was struck by one of the worst mining disasters in Wyoming history in 1923, and in the 2020s it became the site of TerraPower's Natrium reactor, the first utility-scale advanced nuclear power plant to begin construction in the United States.\nIn 1902 James Cash Penney opened his first Golden Rule Store in Kemmerer, the origin of the J. C. Penney chain; the store and Penney's house form a National Historic Landmark district. Kemmerer lies in the fossil-rich Green River Formation country about 15 miles (24 km) east of Fossil Butte National Monument."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "kemmerer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7810,
+    "attempt": 7758,
+    "place_id": "gn-2640624",
+    "input": {
+      "place": {
+        "place_id": "gn-2640624",
+        "name": "Papworth Everard",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.24893,
+        "lon": -0.11827
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Papworth Everard",
+          "url": "https://en.wikipedia.org/wiki/Papworth_Everard",
+          "text": "Papworth Everard is a village in Cambridgeshire, England. It lies ten miles west of Cambridge and six miles south of Huntingdon. Running through its centre is Ermine Street, the old North Road (now the A1198) and the Roman highway that for centuries served as a major artery from London to York. A bypass now means that most traffic can avoid Ermine Street, and it is traffic-calmed within the village itself.\nToday, Papworth Everard is a large village with a thriving community, home to substantial light industry and local business. It was also the centre for the Papworth Trust, a charity that offers housing and training to disabled people (now based in Huntingdon) and formerly the Royal Papworth Hospital, renowned in the field of cardiology and now moved to the Cambridge Biomedical Campus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "papworth everard",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "papworth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "everard",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7811,
+    "attempt": 7759,
+    "place_id": "gn-2644271",
+    "input": {
+      "place": {
+        "place_id": "gn-2644271",
+        "name": "Little Paxton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.25045,
+        "lon": -0.25801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Little Paxton",
+          "url": "https://en.wikipedia.org/wiki/Little_Paxton",
+          "text": "Little Paxton in Cambridgeshire, England is a village and civil parish that lies 5 miles (8.0 km) south of Huntingdon and 1.7 miles (2.7 km) north of St Neots. It is in the district and historic county of Huntingdonshire. Until the 1970s it was a minor village and the church was under threat of closure. The building of a housing estate and a junior school revived its fortunes and the establishment of the Paxton Pits Nature Reserve around part of the nearby gravel pits has brought visitors to the village.\nThe nature reserve features lakes, woodland and part of the Ouse floodplain and is home to large numbers of cormorants and many summer visitors such as nightingales and a large number of passerine birds. Grebes, ducks and geese have colonised the lakes.\nThe population of the village of Little Paxton is now much larger than that of Great Paxton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "little paxton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "little",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paxton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7812,
+    "attempt": 7760,
+    "place_id": "gn-3489200",
+    "input": {
+      "place": {
+        "place_id": "gn-3489200",
+        "name": "Oracabessa",
+        "country": "Jamaica",
+        "subdivision": "Saint Mary Parish",
+        "lat": 18.40319,
+        "lon": -76.94641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oracabessa",
+          "url": "https://en.wikipedia.org/wiki/Oracabessa",
+          "text": "Oracabessa is a small town in Saint Mary Parish, Jamaica\n16 kilometres (10 mi) east of Ocho Rios. Its population is nearly 7,000. Lit in the afternoons by an apricot light that may have inspired its Spanish name, Oracabeza, or \"Golden Head,\" Oracabessa's commercial district consists of a covered produce market and a few shops and bars. The main street is a narrow promenade with a number of well-maintained buildings in the early 20th-century Jamaican vernacular tradition.\nTo the east, Oracabessa merges into a residential community, which is the site of luxury villas such as Goldeneye, Golden Clouds, and Firefly Estate, the latter once the home of British playwright Noël Coward. To the immediate west of Oracabessa is the village of Boscobel, home of Ian Fleming International Airport, Jamaica's newest international airport.\nNotable residents of Oracabessa include music producer Chris Blackwell and bestselling author Colin Simpson. Blackwell owns Goldeneye villa, original home of author Ian Fleming, who wrote the James Bond novels while living in Oracabessa. Simpson owns Golden Clouds villa and is the great-great-grandson of renowned Baptist missionary and abolitionist James Phillippo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "oracabessa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
