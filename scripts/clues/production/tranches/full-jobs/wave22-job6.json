@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 4334,
+    "attempt": 4301,
+    "place_id": "gn-2205999",
+    "input": {
+      "place": {
+        "place_id": "gn-2205999",
+        "name": "Brighton-Le-Sands",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.96009,
+        "lon": 151.1511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brighton-Le-Sands, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Brighton-Le-Sands,_New_South_Wales",
+          "text": "Brighton Le Sands (formerly Brighton-le-Sands and also known simply as Brighton or Brighton Beach), is a suburb of Sydney in the state of New South Wales, Australia. Situated 13 kilometres south of the Sydney central business district & just 5 km from Sydney's international airport, it fronts the western shore of Botany Bay. B-le-S is in the local government ward of the Bayside Council and is part of the St George district.\nLady Robinsons Beach and Cook Park form the eastern boundary of B-le-S on the historic bay. The beach is known for its off-white sand and runs blade-like 6 km from the breakwaters at Kyeemagh, at the mouth of Cooks River, north, to Dolls Point at the mouth of Georges River, south. The western boundary of B-le-S is green belt comprising remnants of marshland & this is one of the natural features that makes the place unique. The urban fabric is a mixture of California bungalow type houses, medium density home units, high rise apartments, shops, cafés and restaurants. There are also some Victorian-era terrace houses & a handful of Federation-era houses (2026). The Grand Parade runs along the foreshore and is joined at the shopping centre by Bay Street to form a T. The higher density developments are located along or near these roads, the oldest dating from 1970."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "brighton le sands",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "brighton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sands",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4335,
+    "attempt": 4302,
+    "place_id": "gn-2963722",
+    "input": {
+      "place": {
+        "place_id": "gn-2963722",
+        "name": "Howth",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.38778,
+        "lon": -6.06528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Howth",
+          "url": "https://en.wikipedia.org/wiki/Howth",
+          "text": "Howth ( HOHTH; Irish: Binn Éadair, meaning 'Éadar's peak'; Old Norse: Hǫfuð) is a peninsular village and outer suburb of Dublin in Ireland. The district as a whole occupies the greater part of the peninsula of Howth Head, which forms the northern boundary of Dublin Bay, and includes the island of Ireland's Eye, which holds multiple natural protection designations.\nHowth has been settled since prehistoric times, and features in Irish mythology. A fishing village and small trading port from at least the 14th century, Howth has grown to become a busy and affluent suburb of Dublin, with a mix of suburban residential development, wild hillside and heathland, golf courses, cliff and coastal paths, a small quarry and a busy commercial fishing port. The only neighbouring district on land is Sutton. Howth is also home to one of the oldest occupied buildings in Ireland, Howth Castle, and its estate.\nHowth is also a civil parish in the ancient barony of Coolock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "howth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4336,
+    "attempt": 4303,
+    "place_id": "gn-2975349",
+    "input": {
+      "place": {
+        "place_id": "gn-2975349",
+        "name": "Sedan",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.70187,
+        "lon": 4.94028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sedan, Ardennes",
+          "url": "https://en.wikipedia.org/wiki/Sedan,_Ardennes",
+          "text": "Sedan (French pronunciation: [sədɑ̃] ) is a commune in the Ardennes department and Grand Est region of north-eastern France. It is also the chef-lieu (administrative centre) of the arrondissement of the same name.\nSedan is notable as the site of three major battles between the armed forces of France and Germany, all but one of which were won by Germany. The First Battle of Sedan in 1870 sealed the fate of the Second French Empire and paved the way to the foundation of the German Empire, leading to the subsequent annual celebration of \"Sedan Day\" in Germany. The Meuse–Argonne offensive saw France, boosted by American reinforcements, reclaim Sedan from German forces towards the end of World War I. The Second Battle of Sedan in 1940 achieved a decisive breakthrough by Wehrmacht forces in the Battle of France and ultimately led to the collapse of the French Third Republic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "sedan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4337,
+    "attempt": 4304,
+    "place_id": "gn-4018584",
+    "input": {
+      "place": {
+        "place_id": "gn-4018584",
+        "name": "Amealco de Bonfil",
+        "country": "Mexico",
+        "subdivision": "Querétaro",
+        "lat": 20.18659,
+        "lon": -100.14438
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amealco de Bonfil",
+          "url": "https://en.wikipedia.org/wiki/Amealco_de_Bonfil",
+          "text": "Amealco is a town in the Mexican state of Querétaro. Its name is thought to mean place of springs in Nahuatl. It is the seat of Amealco de Bonfil Municipality, and is located 63 kilometres (39 mi) southeast of Santiago de Querétaro. Its elevation is 2,605 metres (8,547 ft) above sea level, and the annual temperature ranges from 15 to 20 °C (59 to 68 °F). It is one of the oldest settlements of Querétaro, having been founded in 1538 by Fernando de Tapia (also known as Conín) and Nicolás de San Luis Montañez, who would also found the Querétaro state capital.\nIn the early 19th century, a group of French and Spanish entrepreneurs settled in the city and began the logging industry, which at its peak was one of the main suppliers of wood to Mexico City, and also exported wood to France and the United States. The governments of these two countries issued diplomas kept in the Palacio Municipal that certify the quality of Amealco's products.\n\nThe Hñähñu or Otomí people are concentrated in the southern and eastern parts of the municipality, in 34 settlements. The main ones are Santiago Mexquititlán and San Ildefonso Tultepec.  They number around 20,000 people, or 36% of the total population. Amealco is the municipality with the highest concentration of indigenous people, with almost 80% of the State's total."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "amealco de bonfil",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "amealco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bonfil",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4338,
+    "attempt": 4305,
+    "place_id": "gn-5214814",
+    "input": {
+      "place": {
+        "place_id": "gn-5214814",
+        "name": "Sunbury",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.86259,
+        "lon": -76.79441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunbury, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Sunbury,_Pennsylvania",
+          "text": "Sunbury ( SUN-berr-ee) is a city in and the county seat of Northumberland County, Pennsylvania, United States. It lies on the east bank of the Susquehanna River at the confluence of the river's North and West branches, about 50 miles (80 km) north of Harrisburg. As of the 2020 United States census, Sunbury had a population of 9,719. It is the principal city of the Sunbury micropolitan statistical area, which comprises Northumberland County and is part of the larger Bloomsburg–Berwick–Sunbury combined statistical area.\nThe site of Sunbury was long occupied by Shamokin, one of the largest and most important Native American settlements in colonial Pennsylvania, and later by Fort Augusta, the principal British frontier outpost on the upper Susquehanna during the French and Indian War. The town of Sunbury was laid out in 1772 as the seat of the newly created Northumberland County and named after Sunbury-on-Thames, England. In 1883, Thomas Edison's company built the world's first successful three-wire central electric lighting station in Sunbury, and the City Hotel—the first building lit by the system—was later renamed the Hotel Edison in his honor.\nSunbury is the headquarters of the supermarket chain Weis Markets, founded in the city in 1912. Much of the older city is included in the Sunbury Historic District, which is listed on the National Register of Historic Places."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "sunbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4339,
+    "attempt": 4306,
+    "place_id": "gn-5233053",
+    "input": {
+      "place": {
+        "place_id": "gn-5233053",
+        "name": "Yankton",
+        "country": "United States",
+        "subdivision": "South Dakota",
+        "lat": 42.87111,
+        "lon": -97.39728
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yankton, South Dakota",
+          "url": "https://en.wikipedia.org/wiki/Yankton,_South_Dakota",
+          "text": "Yankton is a city in and the county seat of Yankton County, South Dakota, United States. It became a city in 1889.\nThe population was 15,411 at the 2020 census, making it the 7th most populous city in South Dakota, and it is the principal city of the Yankton Micropolitan Statistical Area, which includes the entirety of Yankton County and which had an estimated population of 23,297 as of July 1, 2021. As the first capital of Dakota Territory, it was named after the Yankton tribe of Western Dakota people; Yankton is derived from the Dakota word I-hank-ton-wan (\"the end village\").\nYankton is located on the Missouri River just downstream of the Gavins Point Dam and Lewis and Clark Lake, and just upstream of the confluence with the James River. The United States National Park Service's headquarters for the Missouri National Recreational River are located in the city. The Human Services Center was established as a psychiatric hospital in 1882 and is on the National Register of Historic Places.\nYankton is commonly referred to as the \"River City\", due to its proximity to the Missouri River and the importance the river played in the city's settlement and development. Yankton has also earned the nickname \"Mother City of the Dakotas\", due to the early important role it played in the creation and development of the Dakota Territory, which later became the 39th and 40th U.S. states of North and South Dakota.\nOwing to the early exploitation of Fort Hays Limestone for cement manufacture, including shipment of cement to the construction of the Panama Canal, Yankton once also had the nickname \"Cement City\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "yankton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4340,
+    "attempt": 4307,
+    "place_id": "gn-615403",
+    "input": {
+      "place": {
+        "place_id": "gn-615403",
+        "name": "Borjomi",
+        "country": "Georgia",
+        "subdivision": "Samtskhe-Javakheti",
+        "lat": 41.84692,
+        "lon": 43.3971
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borjomi",
+          "url": "https://en.wikipedia.org/wiki/Borjomi",
+          "text": "Borjomi (Georgian: ბორჯომი [ˈbo̞ɾd͡ʒo̞mi]) is a resort town in south-central Georgia with a population of 11,173 (as of 2024). Located 165 km from Tbilisi, it is one of the six municipalities of the Samtskhe–Javakheti region and is situated in the northwestern part of the region in the picturesque Borjomi Gorge on the eastern edge of Borjomi-Kharagauli National Park. \nThe town is noted for its mineral water industry, the Romanov summer palace in Likani and the Borjomi-Kharagauli National Park. Borjomi mineral water is particularly well-known in Georgia as well as other countries that were part of the former Soviet Union; the bottling of mineral water is a major source of income for the area. Because of the supposed curative powers of the area's mineral springs, it is a frequent destination for people with health problems. Borjomi is also home to the most extensive ecologically-themed amusement park in the Caucasus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "borjomi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4341,
+    "attempt": 4308,
+    "place_id": "gn-659935",
+    "input": {
+      "place": {
+        "place_id": "gn-659935",
+        "name": "Forssa",
+        "country": "Finland",
+        "subdivision": "Kanta-Häme",
+        "lat": 60.81462,
+        "lon": 23.62146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forssa",
+          "url": "https://en.wikipedia.org/wiki/Forssa",
+          "text": "Forssa is a town and municipality of Finland. It is located almost in the centre of a triangle defined by the three largest major cities in Finland (Helsinki, Turku and Tampere), in the Kanta-Häme region, and which is crossed by Highway 2 between Pori and Helsinki and Highway 10 between Turku and Hämeenlinna. The town has a population of 16,307 (31 December 2025) and covers an area of 253.38 square kilometres (97.83 sq mi) of which 4.61 km2 (1.78 sq mi) is water. The population density is 65.53 inhabitants per square kilometre (169.7/sq mi). Only a little part of the surface area of Forssa is water, but the river Loimijoki forms an important element in the cityscape, with the city being located at its starting point. Other notable water areas in Forssa include the lake Kaukjärvi and the lake Koijärvi, known as the birthplace of the Green League.\nThe municipality is unilingually Finnish. However, the name Forssa comes from the Swedish word \"fors\", meaning rapids.\nForssa is the central locality of the Forssa sub-region. The city is bordered with Jokioinen to the west, Tammela to the east and south and Humppila and Urjala to the north. As well as Forssa, the Forssa sub-region includes Jokioinen, Tammela, Humppila and Ypäjä. Forssa is the smallest of the three cities in Kanta-Häme, with a population of about 16,500, and in terms of population Forssa is the 67th largest municipality in Finland. The population in Forssa has concentrated on the Forssa central conurbation in the southern part of the municipality, which also spreads over to the municipalities of Jokioinen and Tammela. The area of the former municipality of Koijärvi in the northern part of the city is a sparsely populated rural area.\nForssa grew and developed in the 19th century when the textile industry grew. In the 20th century the city barely grew at all between the two World wars. A new growth phase began in the 1960s, sped by construction industry. The population of Forssa was as its highest in the middle 1980s when the city had a bit over 20 thousand inhabitants for two years. The growth of the city since stopped as the industry started diminishing. By 1994 the population had decreased by a few hundred people, but after that the decrease in population grew. By late 2005 Forssa had lost over two thousand people compared to its highest point. In 2008 the population of Forssa increased for the first time since 1993. After 2010 population has again decreased, with the population in 2016 being about 17,300. Today the food industry is a notable employer.\nThe location of Forssa, in the middle of the triangle formed by the cities of Helsinki, Turku and Tampere, is sometimes seen as ideal, as commute trips to the largest cities in the country are fast. The distance to Helsinki is 110 kilometres, the distance to Tampere is 87 kilometres and the distance to Turku is 88 kilometres."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 492
+    },
+    "banned_terms": [
+      {
+        "term": "forssa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4342,
+    "attempt": 4309,
+    "place_id": "gn-2648484",
+    "input": {
+      "place": {
+        "place_id": "gn-2648484",
+        "name": "Glenfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.6466,
+        "lon": -1.19493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glenfield, Leicestershire",
+          "url": "https://en.wikipedia.org/wiki/Glenfield,_Leicestershire",
+          "text": "Glenfield is a large village and former civil parish, now in the parish of Glenfields, in the Blaby district of Leicestershire, England. At the 2011 Census, Glenfields had a population of 9,643.\nThe village is directly to the west of Leicester and is just off junction 21A of the M1. It is the site of the headquarters of Leicestershire County Council, and of Leicestershire Fire and Rescue Service. It also gives its name to Glenfield Hospital, although the hospital is actually across the city border in Leicester.\nThe heart of the community is around the Square, with St Peter's Church (CofE), the church hall, the ruins of the former church, the Methodist Church and Hall and the public library just inside Station Road, and Park House (parish council), the Memorial Hall, Scout Hut, playground, Glenfield Primary School and the nursery school all located just inside Stamford Street. The Hall County Primary School is located on Glenfield Frith Drive. Situated close to the Hall school is Faire Road commonly known for the row of shops situated there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "glenfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4343,
+    "attempt": 4310,
+    "place_id": "gn-3514189",
+    "input": {
+      "place": {
+        "place_id": "gn-3514189",
+        "name": "Villa de Zaachila",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.95048,
+        "lon": -96.74934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa de Zaachila",
+          "url": "https://en.wikipedia.org/wiki/Villa_de_Zaachila",
+          "text": "Villa de Zaachila is a town  and municipality in Oaxaca, Mexico, 6 km (3.7 mi) from Oaxaca City. \nIt is part of the Zaachila District in the west of the Valles Centrales Region.  In the pre-Hispanic era, it was the main city-state for the Valley of Oaxaca after the fall of Monte Albán, and the Zaachila Zapotecs were the prominent political force for much of the Valley of Oaxaca when the Spanish arrived.  Since then, it has been mostly quiet, but political unrest has been prominent since 2006 and the municipality has two parallel governments.\nZaachila is famous for its Thursday open air markets, which spreads over much of the center of town and has been a tradition since pre-Hispanic times. It is home to a mostly unexplored archeological site and is known for a dance called the Danza de los Zancudos, or Dance of the Stilts. \nThe official name is Villa de Zaachila (Town of Zaachila). The name Zaachila is from the Zapotec language and means \"large leaf of the purslane (Portulaca oleracea)\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "villa de zaachila",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zaachila",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4344,
+    "attempt": 4311,
+    "place_id": "gn-4139296",
+    "input": {
+      "place": {
+        "place_id": "gn-4139296",
+        "name": "Kenilworth",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.90595,
+        "lon": -76.94025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kenilworth (Washington, D.C.)",
+          "url": "https://en.wikipedia.org/wiki/Kenilworth_(Washington,_D.C.)",
+          "text": "Kenilworth is a residential neighborhood in Northeast Washington, D.C., located on the eastern bank of the Anacostia River and just inside the D.C.–Maryland border. A large public housing complex, Kenilworth Courts, dominates the area.  The neighborhood is famous for the Kenilworth Park and Aquatic Gardens, a national park whose centerpiece is a series of ponds carved out of Anacostia River marshland. Visitors come especially during June and July to see the beautiful blooming water lilies and lotus flowers. In 1895, the name \"Kenilworth\" was first applied to the area by real estate developer Allen Mallery, who named this neighborhood after Kenilworth Castle in England, the ruins of which can still be seen today in Warwickshire. Kenilworth Park, which includes the Kenilworth-Parkside Recreation Center, also carries the neighborhood name, though most of the park's area is actually located adjacent to the modern neighborhoods of Parkside and Eastland Gardens.\nThe boundaries of Kenilworth are not always agreed upon.  A broad interpretation of neighborhood area has Kenilworth bounded by Eastern Avenue to the north, Nash Street to the south, Anacostia Avenue to the west, and the tracks of the Washington Metro to the east. A stricter interpretation of neighborhood boundaries, based on present-day resident understanding, would be the DC-MD line to the north, Piney Branch or Nash Run creek to the south (on the other side of which is the Eastland Gardens neighborhood), Anacostia Avenue to the west, and Kenilworth Avenue to the east.\n\nTo meet the needs of the expanding population of Washington, D.C., in 1942 the Kenilworth Dump was created on the riverside south of the Kenilworth neighborhood, where piles of garbage were burned in the open space. The community complained about the pollution from open burning, and Lady Bird Johnson became involved in the campaign to close the dump. In February 1968 a boy was accidentally burned to death at the site. Shortly afterwards the city banned the open fires and the Dump became a sanitary landfill instead. In the early 1970s, the Dump closed and the land was converted to a park.\nKenilworth gained national attention in 1988 when its government-built housing development, Kenilworth Courts (along with a small sister development called Parkside, located about a mile southwest of Kenilworth), became the first public housing project to be sold to its residents in an initiative championed by Mayor Marion Barry, President Ronald Reagan, and U.S. Representative Jack Kemp. In the neighborhood, this effort was directed by Kenilworth Courts resident Kimi Gray, who formed the Kenilworth-Parkside Resident Management Corporation (KPRMC). Subsequent renovations of the complex did not go as planned, and in early 2000 the DC Housing Authority (DCHA) took back control of much of the neighborhood. Kimi Gray, whose leadership had driven the resident management and ownership movement, died in 2000. KPRMC still controls about a third of Kenilworth Courts' 400-plus units, but a plan for residents to actually own their own homes never came through.\nAbout 40% of Kenilworth-Parkside residents lived below the poverty level in 2016. The DC Promise Neighborhood Initiative works with local schools and provides supportive services to families. Almost half of the neighborhood's 2,000 children in attend schools in other parts of the city.\nThe Anacostia Waterfront Corporation, a city-chartered corporation charged with developing the area along the Anacostia River, has plans to revitalize the Kenilworth's sister neighborhood of Parkside as a mixed-income, mixed-use neighborhood, including 2,000 new residential units and 500,000 square feet (50,000 m2) of commercial space.\nThe neighborhood was cut off from the rest of the city when the Anacostia Freeway was built in the 1950s, and has no grocery store. AWC intends to work extensively on making the area more pedestrian-friendly, by building walkways to the Anacostia Riverwalk and Marvin Gaye Park and a pedestrian bridge to the Minnesota Avenue station, the closest Metro station to Kenilworth. AWC presented the final plan to the D.C. Council in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 648
+    },
+    "banned_terms": [
+      {
+        "term": "kenilworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4345,
+    "attempt": 4312,
+    "place_id": "gn-7292560",
+    "input": {
+      "place": {
+        "place_id": "gn-7292560",
+        "name": "Tatuapé",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.53729,
+        "lon": -46.5666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tatuapé",
+          "url": "https://en.wikipedia.org/wiki/Tatuap%C3%A9",
+          "text": "Tatuapé (Portuguese pronunciation: [tatwaˈpɛ], from Tupi Guarani \"path of the armadillo\", or \"short way\") is a district in the subprefecture of Mooca, in São Paulo, Brazil. It is divided by a railway and the eight lane Radial Leste highway cutting the district into two, northern and southern, parts.\nIt is home to Platina 220, the tallest building of São Paulo.\nSouthern Tatuapé is the most developed side, and it was one of the first regions in Brazil where viticulture was established. Vines were first planted on these north-facing slopes in 1550  and production was widespread by the end of the 19th century, with the establishment of farms owned by Italian families arriving in the district.\nIn the mid 20th century the district became heavily industrialized and polluted but the closure of clothing and ceramics factories in the 1980s left brownfield sites used for developing luxury apartment buildings. Gentrification has brought high per capita incomes. Residents of the district have a life expectancy of 80 years, the highest within the entire city, and the Human Development Index of 0.936.\nMany of the inhabitants of the district have Italian, Spanish, Portuguese ancestry as well as a number with Japanese and Polish heritage. This southern part of Tatuapé is a middle-to-upper class area of São Paulo regarded as a home for the \"new rich\" paulistanos. It has also two shopping malls, including the first in São Paulo directly connected to a metro station. It also has two international standard hotels (Meliá Tryp and Blue Tree), because the district is placed between the city center and Guarulhos International Airport. In 2007, the city government took over the\nAnalia Franco Park on the southern edge of the district, which boasts extensive sporting facilities and the largest swimming pool in Latin America with a capacity of 5.5 million litres of water.\nThe northern part of Tatuapé - Parque São Jorge - is an area of mixed light industry and middle class housing and was overtaken economically in the 1990s by the building boom in the southern part. Parque São Jorge is the home of Corinthians, one of the most popular Brazilian football teams. Nearby, next to the River Tietê, Piqueri Park is a green oasis of 10 hectares and one of the few large parks in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 382
+    },
+    "banned_terms": [
+      {
+        "term": "tatuape",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4346,
+    "attempt": 4313,
+    "place_id": "gn-1273637",
+    "input": {
+      "place": {
+        "place_id": "gn-1273637",
+        "name": "Dalmau",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.06477,
+        "lon": 81.0298
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalmau",
+          "url": "https://en.wikipedia.org/wiki/Dalmau",
+          "text": "Dalmau is a historic town and tehsil headquarters in Rae Bareli district of Uttar Pradesh, India. Situated on the banks of the Ganga, between Raebareli and Fatehpur, the town has several historical monuments including the old fort, several dargahs, and the Haji Zahid mosque. Dalmau is also home to the Ebrahim Sharki palace belonging to the Nawab Shuza-ud-daula. Visitors can also see the Baithak of Alha Udal and enjoy a stroll along the Dalmau Pump canal. Dalmau also enjoys a unique place in the literary world because it was here that the famous Hindi poet Suryakant Tripathi \"Nirala\" wrote his poems while sitting on the fort and overlooking the scene below.\nDalmau was also centre of sufism in fourteen century because Maulana Daud a Chishti saint who was attached to Dalmau royal court was living here and he wrote first awadhi masnawi world famous book Chandayan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "dalmau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4347,
+    "attempt": 4314,
+    "place_id": "gn-2989204",
+    "input": {
+      "place": {
+        "place_id": "gn-2989204",
+        "name": "Orsay",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.69572,
+        "lon": 2.18727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orsay",
+          "url": "https://en.wikipedia.org/wiki/Orsay",
+          "text": "Orsay (French pronunciation: [ɔʁsɛ] ) is a commune in the Essonne department in Île-de-France in northern France. It is located in the southwestern suburbs of Paris, France, 20.7 km (12.9 mi) from the centre of Paris.\nA fortified location of the Chevreuse valley since the 8th century and agricultural domain of wealthy and influential people, the development of Orsay is marked by the introduction of a railroad in the second half of the 18th century (today the RER B of which two stations are located in Orsay) and donations which allow the construction of a hospital still active to this day.\nOrsay is the main home to the Paris-Saclay University. The university significantly shapes Orsay's economy as it employs about 10,000 academic workers. The city's economy is also centered on high technology, with several companies drawn to the area by the Paris-Saclay's research and development infrastructure.\nSeat of the Orsay campus of Paris-Saclay University, crossed by the 118 national road, Orsay has become a residential city of the Paris metropolitan area and the Chevreuse valley, easily accessible and with a preserved environment at the heart of the Paris-Saclay scientific cluster with laboratories of the CNRS and the Curie Institute on its territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "orsay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4348,
+    "attempt": 4315,
+    "place_id": "gn-2649169",
+    "input": {
+      "place": {
+        "place_id": "gn-2649169",
+        "name": "Fort William",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.81648,
+        "lon": -5.11208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort William, Scotland",
+          "url": "https://en.wikipedia.org/wiki/Fort_William,_Scotland",
+          "text": "Fort William is a town in the Lochaber region of the Scottish Highlands, located on the eastern shore of Loch Linnhe in the Highland Council of Scotland.\nAt the 2011 census, Fort William had a population of 15,757, making it the second-largest settlement both in the Highland council area and in the whole of the Scottish Highlands; only the city of Inverness has a larger population.\nFort William is a major tourist centre with Glen Coe just to the south, Ben Nevis and Aonach Mòr to the east, and Glenfinnan to the west. It is the start and end of the Road to the Isles. It is a huge centre for hillwalking and climbing due to its proximity to Ben Nevis, the largest mountain in Scotland and the United Kingdom, and many other Munros. It is also known for its nearby downhill mountain bike track. \nIt is at one end of both the West Highland Way (a walk/cycleway, Milngavie – Fort William) and the Great Glen Way (a walk/cycleway, Fort William – Inverness).\nAround 726 people (7.33% of the population) can speak Scottish Gaelic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "fort william",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "william",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4349,
+    "attempt": 4316,
+    "place_id": "gn-2657060",
+    "input": {
+      "place": {
+        "place_id": "gn-2657060",
+        "name": "Armagh",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.35,
+        "lon": -6.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Armagh",
+          "url": "https://en.wikipedia.org/wiki/Armagh",
+          "text": "Armagh ( ar-MAH; Irish: Ard Mhacha, IPA: [ˌaːɾˠd̪ˠ ˈwaxə], \"Macha's height\") is a city and the county town of County Armagh, in Northern Ireland, as well as a civil parish. It is the ecclesiastical capital of Ireland – the seat of the Archbishops of Armagh, the Primates of All Ireland for both the Roman Catholic Church and the Church of Ireland. In ancient times, nearby Navan Fort (Eamhain Mhacha) was a pagan ceremonial site and one of the great royal capitals of Gaelic Ireland. Today, Armagh is home to two cathedrals (both named after Saint Patrick) and the Armagh Observatory, and is known for its Georgian architecture.\nStatistically classed as a medium-sized town by the Northern Ireland Statistics and Research Agency, Armagh was given city status in 1994 and Lord Mayoralty status in 2012. It had a population of 16,310 people in the 2021 Census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "armagh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4350,
+    "attempt": 4317,
+    "place_id": "gn-2659960",
+    "input": {
+      "place": {
+        "place_id": "gn-2659960",
+        "name": "Le Locle",
+        "country": "Switzerland",
+        "subdivision": "Neuchâtel",
+        "lat": 47.05619,
+        "lon": 6.74913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Locle",
+          "url": "https://en.wikipedia.org/wiki/Le_Locle",
+          "text": "Le Locle (French pronunciation: [lə lɔkl]; German: Luggli) is a municipality in the Canton of Neuchâtel in Switzerland.\nIt is situated in the Jura Mountains, a few kilometers from the city of La Chaux-de-Fonds. It is the third smallest city in Switzerland (in Switzerland a place needs more than 10,000 inhabitants to be considered a city).\nLe Locle is known as a center of Swiss watchmaking, even cited as the birthplace of the industry, with roots dating back to the 1600s. The municipality has been home to manufactures such as Favre-Leuba, Mido, Zodiac, Tissot, Ulysse Nardin, Zenith, Montblanc, Certina as well as Universal Genève, before the latter relocated to Geneva. The town's history in watchmaking is documented at one of the world's premier horological museums, the Musée d'Horlogerie du Locle, Monts Castle, located in a 19th-century country manor on a hill north of the city. Restored historic underground mills (grainmill, oilmill, sawmill) can be seen in a cave located about one kilometer (0.6 miles) west of the city center.\nThe name of the town derives from the word for lake or trou d'eau."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "le locle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "locle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4351,
+    "attempt": 4318,
+    "place_id": "gn-3122762",
+    "input": {
+      "place": {
+        "place_id": "gn-3122762",
+        "name": "Estella-Lizarra",
+        "country": "Spain",
+        "subdivision": "Navarre",
+        "lat": 42.67182,
+        "lon": -2.03226
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Estella-Lizarra",
+          "url": "https://en.wikipedia.org/wiki/Estella-Lizarra",
+          "text": "Estella (Spanish) or Lizarra (Basque) is a town located in the autonomous community of Navarre, in northern Spain. It lies south west of Pamplona, close to the border with La Rioja and Álava.\nThe town, located near a great meander of the Ega, was founded in 1090 when the place, lying by the fortified settlement of Lizarra, was granted a charter by the Pamplonese king Sancho Ramirez. The town became a landmark in the Way of St. James pilgrimage route to Santiago de Compostela, thriving on the privileged location and the melting pot of Francos called in by Navarrese kings (mainly Occitans from Auvergne and Limousin), Jews and the original Navarrese inhabitants. The wealth resulted in a development of Romanesque architecture, well represented in the town: Church of San Pedro de la Rúa, Palacio de los Reyes de Navarra, Church of San Miguel, among others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "estella lizarra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "estella",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lizarra",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4352,
+    "attempt": 4319,
+    "place_id": "gn-3461903",
+    "input": {
+      "place": {
+        "place_id": "gn-3461903",
+        "name": "Guarani",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.35222,
+        "lon": -43.04694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guarani, Minas Gerais",
+          "url": "https://en.wikipedia.org/wiki/Guarani,_Minas_Gerais",
+          "text": "Guarani is a municipality located in the Zona da Mata within the state of Minas Gerais, Brazil. The population is 8,918 (2020 est.) in an area of 264 km2. The average elevation is 440m above the sea level within the urban limits, reaching up to 1,434m in the mountainous area located in the outskirts. The town was named after the biggest native tribe which dwelt in Brazil before the Colonial Period, the Guaranis.\nGuarani's most iconic landscape is the Catholic Parish of the Divine Holy Ghost located in one of the highest points of the town. Surrounded by a small green garden and Marechal Deodoro da Fonseca Square and gathered with astonishing paintings as well as sculptures representing New Testament's passages the church is an attractive building which reminds the baroque churches of older cities, spread throughout Minas Gerais state, settled in the seventeenth century. However, the area of Guarani was only settled in the 1830s, and it became a municipality on March 25, 1914, by separation from Pomba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "guarani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4353,
+    "attempt": 4320,
+    "place_id": "gn-565289",
+    "input": {
+      "place": {
+        "place_id": "gn-565289",
+        "name": "Donskoye",
+        "country": "Russia",
+        "subdivision": "Stavropol Kray",
+        "lat": 45.45346,
+        "lon": 41.97244
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Donskoye, Stavropol Krai",
+          "url": "https://en.wikipedia.org/wiki/Donskoye,_Stavropol_Krai",
+          "text": "Donskoye (Russian: Донское) is a rural locality (a selo) and the administrative center of Trunovsky District in Stavropol Krai, Russia. Population:  14,927 (2010 census); 15,196 (2002 census); 13,529 (1989 Soviet census).\nThe village was founded in 1777 and has a population of 14,338 people as of 2021. With an area of 15.00 km2, the population density is 955.87 people per km2. The village has developed infrastructure, with a House of Culture \"Victory\", Intersettlement Central Library, Children's library, Museum of History and Local Lore, Sports Association, Central Regional Hospital, Pravoegorlyksky watering and irrigation canal, apartment buildings, house of life, house of justice, park recreation area, fire department, two cemeteries, and a well-developed street lighting system. The village is also home to several monuments, including a mass grave of civilians shot by the Nazis, a monument to Lenin, a memorial sign at the site of the St. Petersburg-Tiflis postal route, and a memorial sign on the western corner of the earthen rampart of the Don Fortress."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "donskoye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

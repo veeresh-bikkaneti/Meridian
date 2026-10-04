@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 4314,
+    "attempt": 4281,
+    "place_id": "gn-3654055",
+    "input": {
+      "place": {
+        "place_id": "gn-3654055",
+        "name": "Montecristi",
+        "country": "Ecuador",
+        "subdivision": "Manabí",
+        "lat": -1.04576,
+        "lon": -80.65889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montecristi, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Montecristi,_Ecuador",
+          "text": "Montecristi is a town in the Manabí province of Ecuador and the capital of Montecristi Canton.\nMontecristi was formed during the first years of the Spanish conquest, possibly between 1536 and 1537, with settlers from Manta who left their village fleeing pirate attacks. Among the first settlers appears a man named \"Criste\", who would have built his house on top of the mountain, so it is believed that the place acquired the name of Montecriste, which later, for idiomatic ease, ended up being called Montecristi.\nAs of the 2022 census Montecristi had a population of 71,066.\nThe town is renowned for the production of Panama hats, the best quality of which is named  montecristi superfino after it.\nMontecristi is the birthplace of Eloy Alfaro Delgado (25 June 1842 – 28 January 1912), president of Ecuador from 1895 to 1901 and from 1906 to 1911 and the leader of the Ecuadorian Liberal Revolution. Because of this, Montecristi was selected by the Ecuadorian Constituent Assembly in 2007 as the seat of covenants for the 2008 Constitution of Ecuador.\nThe town is also home to the Alfaro Civic Center, which is used for local government activities and additional Amendments to the Constitution, such as in 2015 after the necessary debates for the scheduled constitutional changes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "montecristi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4315,
+    "attempt": 4282,
+    "place_id": "gn-5117575",
+    "input": {
+      "place": {
+        "place_id": "gn-5117575",
+        "name": "Forest Hills",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71621,
+        "lon": -73.85014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forest Hills, Queens",
+          "url": "https://en.wikipedia.org/wiki/Forest_Hills,_Queens",
+          "text": "Forest Hills is a neighborhood in the central portion of the borough of Queens in New York City. It is adjacent to Corona to the north, Rego Park and Glendale to the west, Forest Park to the south, Kew Gardens to the southeast, and Flushing Meadows–Corona Park and Kew Gardens Hills to the east.\nThe area was originally referred to as \"Whitepot\". The current name comes from the Cord Meyer Development Company, which bought 660 acres (270 ha) in central Queens in 1906 and renamed it after Forest Park. Further development came in the 1920s and 1930s with the widening of Queens Boulevard through the neighborhood, as well as the opening of the New York City Subway's Queens Boulevard Line. Forest Hills has a longstanding association with tennis: the Forest Hills Stadium hosted the U.S. Open from 1915 through 1977 and the West Side Tennis Club offers grass courts for its members. The area's main commercial street, Austin Street, has many restaurants and chain stores.\nForest Hills is located in Queens Community District 6, and its ZIP Code is 11375. It is patrolled by the New York City Police Department's 112th Precinct. Politically, Forest Hills is represented by the New York City Council's 29th District. It is located within New York's 6th congressional district, represented by Grace Meng."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "forest hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4316,
+    "attempt": 4283,
+    "place_id": "gn-6232235",
+    "input": {
+      "place": {
+        "place_id": "gn-6232235",
+        "name": "Epsom",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.88745,
+        "lon": 174.77059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Epsom, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Epsom,_New_Zealand",
+          "text": "Epsom is a suburb of Auckland, New Zealand. It is located in the centre of the Auckland isthmus between Mount Eden and Greenlane, south of Newmarket, and 5 km (3.1 mi) south of the Auckland City Centre.\nA valley located between four volcanic hills, Epsom was settled by Tāmaki Māori likely in the 13th or 14th centuries, becoming an are cultivated for Māori gardens due to the fertile volcanic soil. By the 17th and 18th centuries, Epsom was close to the centre of Waiohua, an influential union of Tāmaki Māori tribes, who focused life at Maungawhau / Mount Eden and Maungakiekie / One Tree Hill. Around the year 1741, conflict between iwi led to the area becoming a part of the rohe of Ngāti Whātua.\nAfter the establishment of Auckland, Ngāti Whātua sold 8,000 acres (3,200 ha) of land to the Crown, on which the village of Epsom was established in 1841. Epsom developed into an agricultural area during the 1840s and 1850s, and by the 1860s upper class members of Auckland society began establishing large country homes at Epsom. In 1903, a tramway was established in the suburb, and commercial villages developed in Epsom. By the 1920s, most of Epsom had been converted from farmland into suburban housing. From 1930 to 1989, eastern Epsom was the One Tree Hill Borough, a local government area independent from the City of Auckland.\nMajor features of the Epsom area include Cornwall Park, Greenlane Clinical Centre and Alexandra Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "epsom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4317,
+    "attempt": 4284,
+    "place_id": "gn-916246",
+    "input": {
+      "place": {
+        "place_id": "gn-916246",
+        "name": "Kabompo",
+        "country": "Zambia",
+        "subdivision": "North-Western",
+        "lat": -13.59268,
+        "lon": 24.20081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kabompo",
+          "url": "https://en.wikipedia.org/wiki/Kabompo",
+          "text": "Kabompo is a town in north-western Zambia, lying on the Kabompo River with a population over 88,000 people. It is surrounded by teak forest and is home to a Roman Catholic mission.\nKabompo was founded in the 1900s or even earlier than that, the district centre was first situated in Nkulwashi before it was moved to its current location. The district boasts of its significance towards its contribution to the nation's food security through Food Reserve Agency (FRA). Even in the late 60's and early 70's Kabompo was very active in agricultural activities through NAMBOARD.\nThough currently the district's most significant activity is the production of honey, by the early 90's the district had active companies such as IRDP, GulF, Bee keeping and MUZAMA located in now Manyinga district. The district boasted of skills training through, Bee keeping which trained youths in harvesting of honey and production of wax from honey etc. On the other side Farmers Training College was all actively imparting young farmers with knowledge on how to produce and matain and manage agricultural products where as MUZAMA produced a lot of campeters and crafts men and women.\nWithin the district you also find a water falls called Chikata, and water rapids at Kavinde village and Chiweza dam which is situated mubang'a area.\nKabompo House, No. J11a, Kabompo Township, to which Kenneth Kaunda (first president of post independence Zambia) was restricted by the Colonial authorities from March to July 1959 is a noted national monument.\nKabompo has six main local languages these being Lunda, Luvale, Nkoya, Luchazi, Chokwe and Mbunda. The main tradition ceremonies that take place include Lukwakwa, Mbuda Liyoyelo and Chiweka.\nThe district has a few recreation facilities and it has Guesthouses and Lodges that offer accommodation with other related facilities. Some of the lodges with high standards services include Chidikumbidi Lodge and Golden Jubilee Lodge.  It has Finance bank (z) Ltd as the only Bank and it has a district hospital that caters for the local people as well as a police station.\nIt has one fuel filling station that caters for the entire district and it runs out of fuel sometimes due to high demand.\nThe major source of power is the Thermal power provided by Zesco Ltd, however, it is being connected to reliable power through the national grid.\nThe district has no established bakeries and people rely on the small scale bakeries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 152,
+      "fullExtractWords": 400
+    },
+    "banned_terms": [
+      {
+        "term": "kabompo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4318,
+    "attempt": 4285,
+    "place_id": "gn-2510426",
+    "input": {
+      "place": {
+        "place_id": "gn-2510426",
+        "name": "Tobarra",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 38.59213,
+        "lon": -1.69191
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tobarra",
+          "url": "https://en.wikipedia.org/wiki/Tobarra",
+          "text": "Tobarra is a municipality in the province of Albacete in Spain, with a population of c. 8,000 as of 2009.\nThe area is famous for its \"Moniquí\" variety of apricots, its drum processions (tamboradas) and its Holy Week observances, declared by the government to be of National Tourist Interest.  It has a \"Dolorosa\" sculpture by Francisco Salzillo and an articulated statue of Jesus that gives the blessing on Good Friday on a local hilltop designated Mount Calvary, before a congregation normally numbering some 30,000.  After the trumpet sounds, the drums are silenced and the \"Mektub\" theme is sounded, while the Christ statue makes a gesture of blessing towards the four cardinal points.  Other important events of the Tobarran Easter observances are the Descent from Paso Gordo from the Hermitage of the Incarnation on the afternoon of Good Thursday, and the \"Cierre del Tambor\" (closing drum ceremony) at midnight on Easter Sunday."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "tobarra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4319,
+    "attempt": 4286,
+    "place_id": "gn-3474823",
+    "input": {
+      "place": {
+        "place_id": "gn-3474823",
+        "name": "São Conrado",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.99708,
+        "lon": -43.26994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Conrado",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Conrado",
+          "text": "São Conrado (Portuguese: /sɐ̃w̃ kõˈʁadu/) is a neighborhood in the South Zone of the city of Rio de Janeiro, Brazil. It is nestled in between the neighborhoods of Barra da Tijuca to the southwest and Leblon to the northeast. The neighborhood takes its name from a small church, Igreja de São Conrado (Church of São Conrado), which was constructed early in the 20th century by Conrado Jacob Niemeyer (1831–1905). São Conrado, which ranks as one of the areas with the highest Human Development Index in Brazil, presents a stark contrast to Rocinha on its border, which is one of the largest and poorest favelas in Brazil.\nSão Conrado is famous for its hang gliding (popular with locals and tourists alike), Fashion Mall which houses over 150 stores carrying national and international designers, and golf course. The neighborhood, or bairro, is made up of sophisticated residential buildings, night clubs, and elegant restaurants. The famous Morro Dois Irmãos, or Two Brothers Mountain, featured in movies, television shows, and postcards from the city, separates the neighborhood from the rest of the South Zone. It is also noted for the mansions on the foot of the Pedra da Gávea, the largest seaside granite rock on Earth, which separates São Conrado from the West Zone. The House at Canoas (Casa das Canoas), the private home of Oscar Niemeyer (1907–2012), is located on Estrada das Canoas and is considered a masterpiece of Mid-century modern residential architecture.\nSão Conrado has been the most expensive and sought-after address in Rio, with celebrities such as Xuxa and even the mayor calling the area home. Real estate in the neighborhood is some of the priciest in South America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 278
+    },
+    "banned_terms": [
+      {
+        "term": "sao conrado",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "conrado",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4320,
+    "attempt": 4287,
+    "place_id": "gn-5185029",
+    "input": {
+      "place": {
+        "place_id": "gn-5185029",
+        "name": "Columbia",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.03371,
+        "lon": -76.50441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Columbia, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Columbia,_Pennsylvania",
+          "text": "Columbia, formerly Wright's Ferry, is a borough (town) in Lancaster County, Pennsylvania, United States. As of the 2020 census, it had a population of 10,222. It is 28 miles (45 km) southeast of Harrisburg, on the east (left) bank of the Susquehanna River, across from Wrightsville and York County and just south of U.S. Route 30.\nThe settlement was founded in 1726 by Colonial English Quakers from Chester County, led by entrepreneur and evangelist John Wright. Establishment of the eponymous Wright's Ferry, the first commercial Susquehanna crossing in the region, inflamed territorial conflict with neighboring Maryland but brought growth and prosperity to the small town, which was just a few votes shy of becoming the new United States' capital.\nThough besieged for a short while by Civil War destruction, Columbia remained a lively center of transport and industry throughout the 19th century, and was once the terminus of the Pennsylvania Canal. Later, however, the Great Depression and 20th-century changes in economy and technology sent the borough into economic decline. It is notable today as the site of one of the world's few museums devoted entirely to horology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 151,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "columbia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4321,
+    "attempt": 4288,
+    "place_id": "gn-2271006",
+    "input": {
+      "place": {
+        "place_id": "gn-2271006",
+        "name": "Batalha",
+        "country": "Portugal",
+        "subdivision": "Leiria",
+        "lat": 39.66025,
+        "lon": -8.82475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batalha, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Batalha,_Portugal",
+          "text": "Batalha (Portuguese pronunciation: [bɐˈtaʎɐ] ), officially Town of Batalha (Portuguese: Vila da Batalha), is a town and a municipality in historical Beira Litoral province, and Leiria district in the Centro of Portugal. The town's name means \"battle\". The municipality population in 2011 was 15,805, in an area of 103.42 km2 (39.93 sq mi). The town proper has around 8,548 inhabitants in an area of 28.42 km2 (10.97 sq mi). The municipality is limited to the North and West by the municipality of Leiria, to the East by Ourém, to the Southeast by Alcanena and to the Southwest by Porto de Mós.\nThe town was founded by King D. João I of Portugal, jointly with the Monastery of Santa Maria da Vitória na Batalha (a World Heritage Site), to pay homage to the Portuguese victory at the Battle of Aljubarrota (14 August 1385) that put an end to the 1383–1385 Crisis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "batalha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4322,
+    "attempt": 4289,
+    "place_id": "gn-2645093",
+    "input": {
+      "place": {
+        "place_id": "gn-2645093",
+        "name": "Knutsford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.30289,
+        "lon": -2.37482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Knutsford",
+          "url": "https://en.wikipedia.org/wiki/Knutsford",
+          "text": "Knutsford () is a market town and civil parish in the Cheshire East district, in Cheshire, England; it is located 14 miles (23 km) south-west of Manchester, 9 miles (14 km) north-west of Macclesfield and 12+1⁄2 miles (20 km) south-east of Warrington. The population of the parish at the 2021 census was 13,259.\nKnutsford's main town centre streets, Princess Street (also known locally as Top Street) and King Street lower down (also known as Bottom Street), form the hub of the town. At one end of the narrow King Street is an entrance to Tatton Park. The Tatton estate was home to the Egerton family and has given its name to Tatton parliamentary constituency, which includes the neighbouring communities of Alderley Edge and Wilmslow.\nKnutsford is near Cheshire's Golden Triangle and is on the Cheshire Plain, between the Peak District to the east and the Welsh mountains to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "knutsford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4323,
+    "attempt": 4290,
+    "place_id": "gn-3527768",
+    "input": {
+      "place": {
+        "place_id": "gn-3527768",
+        "name": "Escuintla",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 15.31944,
+        "lon": -92.65833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Escuintla, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/Escuintla,_Chiapas",
+          "text": "Escuintla is a town and municipality in the Mexican state of Chiapas, in southern Mexico. It covers an area of 206.2 km2.\nAs of 2010, the municipality had a total population of 30,068, up from 28,064 as of 2005.\nAs of 2010, the town of Escuintla had a population of 9,570. Other than the town of Escuintla, the municipality had 239 localities, the largest of which (with 2010 populations in parentheses) were: El Triunfo (2,719), classified as urban, and San Felipe Tizapa (1,087), classified as rural.\nJust west of it is the Chantuto Archaeological Site of Acapetahua, which is considered to be the location of the Chantuto people 3000 years BC. Voorhies Archived 2015-09-23 at the Wayback Machine\nSeveral mountain peaks are nearby, including Cerra Chackaca, Cerro Chachalaca, Cerro Chipilar, Cerro Ovandito, Cerro El Curruche, Cerro Currucho, Cerro Buenavista, Cerro Ovando, Cerro El Encinal, Cerro Buenavista and Cerro Madre Vieja."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "escuintla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4324,
+    "attempt": 4291,
+    "place_id": "gn-3649914",
+    "input": {
+      "place": {
+        "place_id": "gn-3649914",
+        "name": "Zaruma",
+        "country": "Ecuador",
+        "subdivision": "El Oro",
+        "lat": -3.69227,
+        "lon": -79.61254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zaruma",
+          "url": "https://en.wikipedia.org/wiki/Zaruma",
+          "text": "Zaruma, officially Villa Real de San Antonio del Cerro de Oro de Zaruma is a town in the south of Ecuador, El Oro Province. It is located in the south-east of this province, at an altitude of 1200 metres above sea level, on an inter-Andes route where the Vizcaya mountain range branches off from the Chilla mountain range. It is the seat of Zaruma Canton, one of the oldest cantons in the province.\nZaruma is known for its republic-era architecture, gold mines, culture and traditions, art and coffee and for having been founded by Spanish explorer Alonso de Mercadillo. These attributes have led to its receiving various titles celebrating both its tangible and intangible aspects, and in 1998 the Ecuadorian Institute for Cultural Heritage submitted it as a candidate UNESCO World Heritage Site.\nZaruma was named a Pueblo Mágico (magical town) by the Ecuadorian Ministry of Tourism (MINTUR) in 2019. It is one of five communities across the country that inaugurated the programme that year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "zaruma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4325,
+    "attempt": 4292,
+    "place_id": "gn-4502093",
+    "input": {
+      "place": {
+        "place_id": "gn-4502093",
+        "name": "Haddon Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.87734,
+        "lon": -75.06462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haddon Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Haddon_Heights,_New_Jersey",
+          "text": "Haddon Heights is a borough in Camden County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 7,495, an increase of 22 (+0.3%) from the 2010 census count of 7,473, which in turn reflected a decline of 74 (−1.0%) from the 7,547 counted in the 2000 census.\nHaddon Heights was incorporated as a borough by an act of the New Jersey Legislature on March 2, 1904, from portions of the now-defunct Centre Township and parts of Haddon Township. The borough was named for Elizabeth Haddon, an early settler of the area. Haddon Heights is a dry town where alcohol cannot be sold. A November 2024 non-binding referendum asking voters to allow liquor sales at restaurants and bars in the borough passed by a 2–1 margin; the borough council would have to approve an ordinance allowing for the sale of liquor licenses.\nNew Jersey Monthly magazine ranked Haddon Heights as the 98th best place to live in New Jersey in its 2008 rankings of the \"Best Places To Live\" in New Jersey, and the borough has also been listed among its \"Classic Towns of Greater Philadelphia\" by the Delaware Valley Regional Planning Commission. In 2011, New Jersey Monthly named Haddon Heights the second best town to live in Southern New Jersey, after Moorestown Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "haddon heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "haddon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4326,
+    "attempt": 4293,
+    "place_id": "gn-4929532",
+    "input": {
+      "place": {
+        "place_id": "gn-4929532",
+        "name": "Back Bay",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.3501,
+        "lon": -71.087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Back Bay, Boston",
+          "url": "https://en.wikipedia.org/wiki/Back_Bay,_Boston",
+          "text": "Back Bay is an officially recognized historic neighborhood of Boston, Massachusetts, built on reclaimed land in the Charles River basin. Construction began in 1859, as the demand for luxury housing exceeded the availability in the city at the time, and the area was fully built by around 1900. It is most famous for its rows of Victorian brownstone homes—considered one of the best preserved examples of 19th-century urban design in the United States—as well as numerous architecturally significant individual buildings, and cultural institutions such as the Boston Public Library, and Boston Architectural College. Initially conceived as a residential-only area, commercial buildings were permitted from around 1890, and Back Bay now features many office buildings, including the John Hancock Tower, Boston's tallest skyscraper. It is also considered a fashionable shopping destination (especially Newbury and Boylston Streets, and the adjacent Prudential Center and Copley Place malls) and home to several major hotels.\nThe Neighborhood Association of the Back Bay considers the neighborhood's bounds to be \"Charles River on the North; Arlington Street to Park Square on the East; Columbus Avenue to the New York New Haven and Hartford right-of-way (South of Stuart Street and Copley Place), Huntington Avenue, Dalton Street, and the Massachusetts Turnpike on the South; Charlesgate East on the West.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "back bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "back",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4327,
+    "attempt": 4294,
+    "place_id": "gn-5422140",
+    "input": {
+      "place": {
+        "place_id": "gn-5422140",
+        "name": "Fort Carson",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 38.73749,
+        "lon": -104.78886
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Carson",
+          "url": "https://en.wikipedia.org/wiki/Fort_Carson",
+          "text": "Fort Carson is a United States Army post located directly south of Colorado Springs in El Paso, Pueblo, Fremont, and Huerfano counties, Colorado, United States. The developed portion of Fort Carson is located near the City of Colorado Springs in El Paso County.\nFort Carson is the home of the 4th Infantry Division, the 10th Special Forces Group, the 4th Security Force Assistance Brigade (SFAB), the 440th Civil Affairs Battalion (USAR), the 71st Ordnance Group (EOD), the 4th Engineer Battalion, the 759th Military Police Battalion, the 10th Combat Support Hospital, the 43rd Sustainment Brigade, the Army Field Support Battalion-Fort Carson, the 423rd Transportation Company (USAR) and the 13th Air Support Operations Squadron of the United States Air Force. The post also hosts units of the Army Reserve, Navy Reserve and the Colorado Army National Guard. Fort Carson was also home to the 5th Infantry Division, known as the Red Devils."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "fort carson",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carson",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4328,
+    "attempt": 4295,
+    "place_id": "gn-2261639",
+    "input": {
+      "place": {
+        "place_id": "gn-2261639",
+        "name": "Vila Franca de Xira",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.95525,
+        "lon": -8.98966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vila Franca de Xira",
+          "url": "https://en.wikipedia.org/wiki/Vila_Franca_de_Xira",
+          "text": "Vila Franca de Xira (European Portuguese pronunciation: [ˈvilɐ ˈfɾɐ̃kɐ ðɨ ˈʃiɾɐ] ), officially the City of Vila Franca de Xira (Portuguese: Cidade de Vila Franca de Xira), is a city and municipality in the Lisbon District in Portugal. The population in 2021 was 137,659, in an area of 318.19 km2. \nSituated on both banks of the Tagus River, 32 km (20 mi) north-east of the Portuguese capital Lisbon, settlement in the area dates back to Neolithic times, as evidenced by findings in the Cave of Pedra Furada. Vila Franca de Xira is said to have been founded by French followers of Portugal's first king, Afonso Henriques, around 1200.\nThe town is mostly famous for its bull-running festivals in July and October. Bulls are raised in the salty marshlands of the Ribatejo, which is also a notable breeding ground for the Lusitano horse, esteemed for its quick reflexes and maneuverability. A number of brightly coloured Portuguese bullfighting costumes are on display in the ethnographic museum in the town's bullring, the Praça de Toiros (or Touros) Palha Blanco. \nNotably, the town was the stage for the eponymous Vilafrancada in May of 1823. The Vilafrancada was an insurrection led by prince Miguel I of Portugal, son of King John VI of Portugal, which sought to reestablish an absolutist monarchy in Portugal. This came in response to the Portuguese Constitution of 1822 - the Kingdom's first constitution - which turned Portugal from an absolutist monarchy to a parliamentarian monarchy. The Vilafrancada can be seen as a prelude to the Portuguese Civil War of 1828-34.\nIn 1951, the town benefited from the completion of the Marechal Carmona Bridge. Located almost equidistantly between Lisbon and Santarém, The town provided an ideal place for a road bridge. The bridge was the first to cross the Tagus in the Lisbon region, and remained its only crossing until the inauguration of the 25 de Abril Bridge fifteen years later. As a result, Vilafranca experienced greater traffic and commercial opportunities during this period. \nNearby, the town's Misericórdia church features striking 18th-century azulejos (glazed tiles). The town also has a Museum of Neo-Realism.\n3 km (1.9 mi) south of Vila Franca de Xira lies the Lezíria Grande Equestrian Centre, where visitors can watch displays of the Lusitano horses. The centre also stages typical bullfighting spectacles in its outdoor bullring. Visitors can ride Lusitano horses and take dressage lessons at the Quinta de São Sebastião, a sprawling estate at Arruda dos Vinhos, 11 km (6.8 mi) west of Vila Franca de Xira.\nThe municipality contains several forts built during the Peninsular War and forming part of the Lines of Torres Vedras. These include the Fort of Subserra on the first line of defence and the Forts of Serra da Aguieira and the Fort of Casa on the second line. \nAnother place of interest, on the left bank, is the Hermitage of Nossa Senhora de Alcamé, which was built so that farmers on the Tagus floodplain would both have somewhere to pray and also somewhere of safety during floods. An annual pilgrimage is held to the hermitage with participants going by boat from the town of Vila Franca de Xira on the right bank.\nThe current mayor is Fernando Paulo Ferreira, elected in 2021 as a member of the Socialist Party."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 149,
+      "fullExtractWords": 548
+    },
+    "banned_terms": [
+      {
+        "term": "vila franca de xira",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "franca",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "xira",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4329,
+    "attempt": 4296,
+    "place_id": "gn-5102825",
+    "input": {
+      "place": {
+        "place_id": "gn-5102825",
+        "name": "Pompton Lakes",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.00538,
+        "lon": -74.2907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pompton Lakes, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Pompton_Lakes,_New_Jersey",
+          "text": "Pompton Lakes is a borough in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 11,127, an increase of 30 (+0.3%) from the 2010 census count of 11,097, which in turn reflected an increase of 457 (+4.3%) from the 10,640 counted in the 2000 census.\nPompton Lakes was established on February 26, 1895, from portions of Pompton Township, based on the results of a referendum held three days earlier. The borough was named for the Pompton people, a sub-tribe of Native Americans who lived in the area. It was the first borough to be formed in Passaic County as part of the \"boroughitis\" that had struck the state at the time. Pompton Lakes did not acquire territory from more than one township, which would have entitled the borough to a seat on the County's Board of Chosen Freeholders.\nAn outer-ring suburb of New York City, Pompton Lakes is located approximately 20 miles (32 km) northwest of Midtown Manhattan. From the higher mountains in and around the borough one can see the New York skyline. Three rivers, the Ramapo, Pequannock and Wanaque, run through the borough, which historically provided much of the energy for various industries in the borough. In the mid-20th century, Pompton Lakes served as a local shopping destination, but lost its status as shopping malls opened in the area in the 1970s and 1980s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 149,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "pompton lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pompton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4330,
+    "attempt": 4297,
+    "place_id": "gn-5122833",
+    "input": {
+      "place": {
+        "place_id": "gn-5122833",
+        "name": "Johnstown",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.00674,
+        "lon": -74.36764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Johnstown, New York",
+          "url": "https://en.wikipedia.org/wiki/Johnstown,_New_York",
+          "text": "Johnstown is a city in and the county seat of Fulton County in the U.S. state of New York. The city was named after its colonial founder, Sir William Johnson, Superintendent of Indian Affairs for Britain in the Province of New York and a major general during the Seven Years' War in North America. It is located approximately 45 miles (72 km) northwest of Albany, about one-third of the way between Albany and the Finger Lakes region to the west, in the Mohawk Valley region, within the foothills of the Adirondack Mountains.\nThe city of Johnstown is mostly surrounded by the town of Johnstown; it separated from the town when it converted from a village to a city in 1895. Adjacent to Johnstown is the City of Gloversville. The two cities are together known as the \"Glove Cities\" due to their history of manufacturing gloves and other leather apparel. Gloversville and Johnstown constituted the center of the American glove industry for 90 years until competition from other countries drove most manufacturers out of business.\nAs of the 2020 census, Johnstown had a population of 8,204."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 149,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "johnstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4331,
+    "attempt": 4298,
+    "place_id": "gn-1696041",
+    "input": {
+      "place": {
+        "place_id": "gn-1696041",
+        "name": "Palo",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.1575,
+        "lon": 124.99083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palo, Leyte",
+          "url": "https://en.wikipedia.org/wiki/Palo,_Leyte",
+          "text": "Palo (IPA: [pɐ'loʔ]), officially the Municipality of Palo (Waray: Bungto han Palo; Tagalog: Bayan ng Palo), is a Philippine municipality in the province of Leyte. According to the 2024 census, it has a population of 80,291 people, making it the most populous municipality (non-city) in the province.\nThe municipality is the seat of most government departments, bureaus, and regional offices of Region VIII, although some are situated at the neighboring city of Tacloban. The municipality is also home to the offices of the ecclesiastical government of the Archdiocese of Palo; the archbishop's residence; as well as the secondary, tertiary, and theology seminaries of the archdiocese.\nOn March 17, 2022, the new Leyte Provincial Capitol in Palo was inaugurated by President Rodrigo Duterte, officially moving the seat of provincial government to the municipality pending an enabling law changing the provincial capital from the current highly urbanized city of Tacloban."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "palo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4332,
+    "attempt": 4299,
+    "place_id": "gn-1784074",
+    "input": {
+      "place": {
+        "place_id": "gn-1784074",
+        "name": "Zhouzhuang",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 31.11788,
+        "lon": 120.84427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhouzhuang",
+          "url": "https://en.wikipedia.org/wiki/Zhouzhuang",
+          "text": "Zhouzhuang (Chinese: 周庄; pinyin: Zhōuzhuāng; Wu: Tseu1-tsaon1) is a water town known for its canals in Jiangsu province, China. It is located within the administrative area of Kunshan, 30 km southeast of the city centre of Suzhou.\nZhouzhuang is a popular tourist destination, classified as a AAAAA scenic area by the China National Tourism Administration.  It is noted for its profound cultural background, well preserved ancient residential houses, and elegant watery views. A 2017 article in the Smithsonian Magazine described Zhouzhuang as \"the most famous and most commercialized ancient water town in China,\" noting that its architecture \"dates back more than 900 years, with about 60 original brick archways and 100 original courtyards.\" It has also been called \"Venice of the East\".\nCNN ranked Zhouzhuang the third most beautiful water town in China in 2017 and included it in its 2019 collection of Asia's 13 most picturesque towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "zhouzhuang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4333,
+    "attempt": 4300,
+    "place_id": "gn-2083653",
+    "input": {
+      "place": {
+        "place_id": "gn-2083653",
+        "name": "Wau",
+        "country": "Papua New Guinea",
+        "subdivision": "Morobe Province",
+        "lat": -7.342,
+        "lon": 146.724
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wau, Papua New Guinea",
+          "url": "https://en.wikipedia.org/wiki/Wau,_Papua_New_Guinea",
+          "text": "Wau is a town in Papua New Guinea, in the province of Morobe. It has a population of approx 5,000 and is situated at an altitude of around 1100 metres. Wau was the site of a gold rush during the 1920s and 30s when prospective gold diggers arrived at the coast at Salamaua and struggled inland along the Black Cat Track.\nAt the Battle of Wau in January 1943, the Australian Army stopped an advance by the Japanese. A road was established soon after World War II to Lae and this fostered the further development of local timber and agricultural industries that were originally established in support of the mining industry. While much of the mineral reserves have been extracted, industrial gold mining continues at Edie Creek and at the newly established Hidden Valley Gold Mine operated by Morobe Goldfields (a subsidiary of Harmony Gold - South Africa).\nThe Wau Ecology Institute is a biological research station situated near Wau."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "wau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
