@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 3791,
+    "attempt": 3761,
+    "place_id": "gn-1694075",
+    "input": {
+      "place": {
+        "place_id": "gn-1694075",
+        "name": "Peñaranda",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 15.35116,
+        "lon": 121.00393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peñaranda, Nueva Ecija",
+          "url": "https://en.wikipedia.org/wiki/Peñaranda,_Nueva_Ecija",
+          "text": "Peñaranda, officially the Municipality of Peñaranda (Tagalog: Bayan ng Peñaranda, Ilocano: Ili ti Peñaranda), is a municipality in the province of Nueva Ecija, Philippines. According to the 2024 census, it has a population of 33,043 people.\nIn 2012, the National Commission for Culture and the Arts (NCCA) and the ICHCAP of UNESCO published Pinagmulan: Enumeration from the Philippine Inventory of Intangible Cultural Heritage. The first edition of the UNESCO-backed book included Nueva Ecija's Arakyo, signifying its great importance to Philippine intangible cultural heritage. The local government of Nueva Ecija, in cooperation with the NCCA, is given the right to nominate the Arakyo in the UNESCO Intangible Cultural Heritage Lists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "penaranda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3792,
+    "attempt": 3762,
+    "place_id": "gn-1727401",
+    "input": {
+      "place": {
+        "place_id": "gn-1727401",
+        "name": "Banga",
+        "country": "Philippines",
+        "subdivision": "Soccsksargen",
+        "lat": 6.42381,
+        "lon": 124.77603
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banga, South Cotabato",
+          "url": "https://en.wikipedia.org/wiki/Banga,_South_Cotabato",
+          "text": "Banga, officially the Municipality of Banga (Hiligaynon: Banwa sang Banga; Cebuano: Lungsod sa Banga; Tagalog: Bayan ng Banga; Maguindanaon: Inged nu Banga, Jawi: ايڠد نو باڠ), is a municipality in the province of South Cotabato, Philippines. According to the 2024 census, it has a population of 91,536 people.\nBanga is situated in the northwest of the province of South Cotabato. The town derived its name from a palm tree known to the natives of the place as \"Buanga\" which during the pre-settlement time, predominantly grew in the area.\nBanga is linked by a concrete national highway road from General Santos to the east and Cotabato City in the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "banga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3793,
+    "attempt": 3763,
+    "place_id": "gn-184433",
+    "input": {
+      "place": {
+        "place_id": "gn-184433",
+        "name": "Nanyuki",
+        "country": "Kenya",
+        "subdivision": "Laikipia",
+        "lat": 0.00624,
+        "lon": 37.07398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanyuki",
+          "url": "https://en.wikipedia.org/wiki/Nanyuki",
+          "text": "Nanyuki is a market town in Laikipia County, Kenya, located northwest of Mount Kenya along the A2 road and at the terminus of the branch railway from Nairobi. The name is derived from the Maasai word \"Enyaanyukie,\" which means \"resemblance.\"\nIt lies just north of the Equator (0° 01' N). British immigrants settled in Nanyuki in 1907, and some of their descendants still live in and around the town. Nanyuki hosts the main airbase of the Kenya Air Force. The British Army Training Unit Kenya (BATUK), has a base at Nyati Barracks. It conducts infantry training in Laikipia and on the Kenyan Ministry of Defence land at Archer's Post."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "nanyuki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3794,
+    "attempt": 3764,
+    "place_id": "gn-2309528",
+    "input": {
+      "place": {
+        "place_id": "gn-2309528",
+        "name": "Luba",
+        "country": "Equatorial Guinea",
+        "subdivision": "Bioko Sur",
+        "lat": 3.45683,
+        "lon": 8.55465
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luba, Equatorial Guinea",
+          "url": "https://en.wikipedia.org/wiki/Luba,_Equatorial_Guinea",
+          "text": "Luba (formerly San Carlos) (pop. 7,000) is the second-largest town on Bioko in Equatorial Guinea, a port for the logging industry on the island's west coast beneath volcanic peaks. Attractions in Luba include several beaches and a colonial hospital.\nThe city may be reached either by sea or by a main road linking Luba to the country's capital, Malabo. The road is now accessible; it takes about an hour to drive from Malabo to Luba. In 1999, a free port opened near the town, creating deepwater access for larger and oil industry vessels, an alternative to the congested port of Malabo for re-supplying on fuel, water and other materials.\nAs of 2010 a new highway was under construction from Luba via Belebú Balachá through the Luba Crater Scientific Reserve to Ureca near the south coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "luba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3795,
+    "attempt": 3765,
+    "place_id": "gn-2458589",
+    "input": {
+      "place": {
+        "place_id": "gn-2458589",
+        "name": "Djenné",
+        "country": "Mali",
+        "subdivision": "Mopti",
+        "lat": 13.90608,
+        "lon": -4.55332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Djenné",
+          "url": "https://en.wikipedia.org/wiki/Djenné",
+          "text": "Djenné (Bambara: ߖߍ߬ߣߍ߫, romanized: Jɛ̀nɛ́; also known as Djénné, Jenné, and Jenne) is a town and urban commune in the Inland Niger Delta region of central Mali. The town is the administrative centre of the Djenné Cercle, one of the eight subdivisions of the Mopti Region. The commune includes ten of the surrounding villages and in 2009 had a population of 32,944.\nThe history of Djenné is closely linked with that of Timbuktu. Between the 15th and 17th centuries much of the trans-Saharan trade in goods such as salt, gold, and slaves that moved in and out of Timbuktu passed through Djenné. Both towns became centres of Islamic scholarship. Djenné's prosperity depended on this trade and when the Portuguese established trading posts on the African coast, the importance of the trans-Saharan trade and thus of Djenné declined.\nThe town is famous for its distinctive adobe architecture, most notably the Great Mosque which was built in 1907 on the site of an earlier mosque. To the south of the town is Djenné-Djenno, the site of one of the oldest known towns in sub-Saharan Africa. It is one of the oldest cities in Mali and West Africa as well as oldest continuously inhabited cities in the World. Djenné together with Djenné-Djenno were designated a World Heritage Site by UNESCO in 1988."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "djenne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3796,
+    "attempt": 3766,
+    "place_id": "gn-2509402",
+    "input": {
+      "place": {
+        "place_id": "gn-2509402",
+        "name": "Yecla",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 38.61365,
+        "lon": -1.11468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yecla (DO)",
+          "url": "https://en.wikipedia.org/wiki/Yecla_(DO)",
+          "text": "Yecla is a Spanish Denominación de Origen Protegida (DOP) for wines located around the town of Yecla in the northernmost corner of the region of Murcia (Spain) and is surrounded by other DOPs: Jumilla to the south and west, Almansa to the north and Alicante to the east.  The area is notable for its extensive use of the red Monastrell grape variety, and it is traditionally known as the home of Monastrell in Spain. Monastrell is the fourth most planted red grape variety in Spain. The international market makes up 92% of the DOP's wine sales, making it the Spanish wine DOP with the highest proportion of international exports."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "yecla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3797,
+    "attempt": 3767,
+    "place_id": "gn-2525655",
+    "input": {
+      "place": {
+        "place_id": "gn-2525655",
+        "name": "Assemini",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 39.29123,
+        "lon": 8.99879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Assemini",
+          "url": "https://en.wikipedia.org/wiki/Assemini",
+          "text": "Assemini (Italian: [asˈsɛːmini]; Sardinian: Assèmini [aˈsemini]) is a town and comune (municipality) in the Metropolitan City of Cagliari in the autonomous island region of Sardinia in Italy, located about 12 kilometres (7 mi) northwest of Cagliari in the plain of the Cixerri, Flumini Mannu and Sa Nuxedda rivers. It has 25,575 inhabitants.\nIt includes forest areas which are part of the Sulcis Regional Park. It also has a long tradition in the production of ceramics, starting in the Carthaginian era.\nAssemini is part of the Cagliari metropolitan area and borders the municipalities of Cagliari, Capoterra, Decimomannu, Elmas, Nuxis, San Sperate, Santadi, Sarroch, Sestu, Siliqua, Uta and Villa San Pietro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "assemini",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3798,
+    "attempt": 3768,
+    "place_id": "gn-2562816",
+    "input": {
+      "place": {
+        "place_id": "gn-2562816",
+        "name": "Kerċem",
+        "country": "Malta",
+        "subdivision": "Ta’ Kerċem",
+        "lat": 36.04162,
+        "lon": 14.22694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kerċem",
+          "url": "https://en.wikipedia.org/wiki/Kerċem",
+          "text": "Ta' Kerċem is a village in Malta, in the island of Gozo. The population of Kerċem was 1,932 in July 2024. This included 971 males and 961 females; 1,703 Maltese nationals and 229 foreign nationals.\nTa' Kerċem evolved into a village community around chapel dedicated to Pope Gregory the Great built around 1581 and replaced in 1851 by a church which was enlarged to its present state between 1906 and 1910. Ta' Kerċem became a distinct parish on 10 March 1885 and since 17 August 1885, the church was additionally co-dedicated to Our Lady of Perpetual Help.\nThe village of Ta' Kerċem has a population of around 1700 people. Ta' Kerċem is home to Kerċem Ajax Stadium, one of the biggest stadiums in Gozo, mainly used for Gozo Football League Second Division games, which is the home stadium of Kerċem Ajax F.C.\nIncorporated within Ta' Kerċem is the hamlet of Santa Luċija, Gozo.\nIn 2018, the former police station in the locality was vacated and put up for sale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "kercem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3799,
+    "attempt": 3769,
+    "place_id": "gn-2627309",
+    "input": {
+      "place": {
+        "place_id": "gn-2627309",
+        "name": "Sauðárkrókur",
+        "country": "Iceland",
+        "subdivision": "Northwest",
+        "lat": 65.74611,
+        "lon": -19.63944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sauðárkrókur",
+          "url": "https://en.wikipedia.org/wiki/Sauðárkrókur",
+          "text": "Sauðárkrókur (Icelandic pronunciation: [ˈsœyːðˌaurˌkʰrouːkʏr̥]) is a town on the Skagafjörður in northern Iceland. It is the seat of both the Sveitarfélagið Skagafjörður ('Municipality of Skagafjörður') and the Northwestern Region.\nSauðárkrókur is the largest town in Northwest Iceland and the second-largest town on the north coast of Iceland, with a population of 2,672. It is the centre for commerce and services in the district, and an important link in Iceland's food production. The population of Sauðárkrókur has grown steadily in recent years, and its economy is relatively diverse.\nEconomic mainstays are fisheries, dairy production, light industry and broad-based services such as computer and engineering operations, financials, consulting, design and printing. The natural hot pool located 15 kilometres (9+1⁄2 mi) north of Sauðárkrókur is mentioned in the Grettis saga."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "sau arkrokur",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arkrokur",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3800,
+    "attempt": 3770,
+    "place_id": "gn-2633954",
+    "input": {
+      "place": {
+        "place_id": "gn-2633954",
+        "name": "Widnes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.3618,
+        "lon": -2.73406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Widnes",
+          "url": "https://en.wikipedia.org/wiki/Widnes",
+          "text": "Widnes ( WID-nəss) is an industrial town in the Borough of Halton, Cheshire, England, which at the 2021 census had a population of 62,400.\nHistorically in Lancashire, it is on the northern bank of the River Mersey where the estuary narrows to form the Runcorn Gap. Directly to the south across the Mersey is the town of Runcorn. Upstream 8 miles (13 km) to the east is Warrington, and 4 miles downstream to the west is Speke, a suburb of Liverpool.\nBefore the Industrial Revolution, Widnes was a small settlement on marsh and moorland. In 1847, the chemist and industrialist John Hutchinson established a chemical factory at Spike Island. The town grew in population and rapidly became a major centre of the chemical industry. The demand for labour was met by large-scale immigration from Ireland, Poland, Lithuania and Wales. The town continues to be a major manufacturer of chemicals, although many of the chemical factories have closed and the economy is predominantly based upon service industries.\nWidnes and Hough Green railway stations are on the Liverpool–Manchester line. The main roads  through the town are the A557 in a north–south direction and the A562 east–west. The disused Sankey Canal terminates at Spike Island. The Silver Jubilee Bridge crosses the River Mersey west of Warrington. In 2017, the Mersey Gateway Bridge opened to relieve congestion at the older bridge. The Catalyst Science Discovery Centre is the United Kingdom's only museum dedicated solely to the Chemical Industry and is inside Hutchinson's former administrative building. The town's sport stadium hosts Widnes Vikings rugby league club.\nThe motto of Widnes is the Latin phrase Industria Ditat (\"Industry Enriches\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "widnes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3801,
+    "attempt": 3771,
+    "place_id": "gn-2634387",
+    "input": {
+      "place": {
+        "place_id": "gn-2634387",
+        "name": "Westhoughton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.54899,
+        "lon": -2.52464
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westhoughton",
+          "url": "https://en.wikipedia.org/wiki/Westhoughton",
+          "text": "Westhoughton ( west-HAW-tən) is a town and civil parish in the Metropolitan Borough of Bolton, Greater Manchester, England, 4 miles (6 km) southwest of Bolton, 5 miles (8 km) east of Wigan and 13 miles (21 km) northwest of Manchester.\nWithin the boundaries of the historic county of Lancashire, Westhoughton was once a centre for coal mining, cotton-spinning and textile manufacture. It had a population of 24,974 at the 2011 census.\nWesthoughton incorporates several former villages and hamlets which have their own distinctive character, sports traditions and amenities, including Wingates, White Horse, Over Hulton, Four Gates, Chequerbent, Hunger Hill, Snydale, Hart Common, Marsh Brook, Daisy Hill and Dobb Brow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "westhoughton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3802,
+    "attempt": 3772,
+    "place_id": "gn-2636616",
+    "input": {
+      "place": {
+        "place_id": "gn-2636616",
+        "name": "Stroud",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.75,
+        "lon": -2.2
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stroud",
+          "url": "https://en.wikipedia.org/wiki/Stroud",
+          "text": "Stroud is a market town and civil parish in Gloucestershire, England. It is the main town in Stroud District. The town's population was 13,500 in 2021.\nSited below the western escarpment of the Cotswold Hills, at the meeting point of the Five Valleys, the town is noted for its steep streets. The Cotswold Area of Outstanding Natural Beauty surrounds the town, and the Cotswold Way path passes by it to the west. It lies 10 miles (16 km) south of the city of Gloucester, 14 miles (23 km) south-southwest of Cheltenham, 13 miles (21 km) west-northwest of Cirencester and 26 miles (42 km) north-east of the city of Bristol. London is 91 miles (146 km) east-southeast of Stroud and the Welsh border at Whitebrook, Monmouthshire, is 19 miles (31 km) to the west. Though officially not part of the town itself, the contiguous civil parishes of Rodborough and Cainscross form part of Stroud's urban area and are generally recognised as suburbs.\nStroud acts as a commercial centre for surrounding villages and market towns including Amberley, Bisley, Bussage, Chalford, Dursley, Eastcombe, Eastington, King's Stanley, Leonard Stanley, Minchinhampton, Nailsworth, Oakridge, Painswick, Randwick, Selsley, Sheepscombe, Slad, Stonehouse, Brimscombe & Thrupp, Whiteshill and Woodchester.\nIn March 2021 The Sunday Times named Stroud the best place to live in the UK, citing the town's abundance of green spaces, independent spirit, and high quality of schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "stroud",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3803,
+    "attempt": 3773,
+    "place_id": "gn-2652586",
+    "input": {
+      "place": {
+        "place_id": "gn-2652586",
+        "name": "Coleraine",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 55.13333,
+        "lon": -6.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coleraine",
+          "url": "https://en.wikipedia.org/wiki/Coleraine",
+          "text": "Coleraine ( kohl-RAYN; from Irish: Cúil Raithin [ˌkuːlʲ ˈɾˠahənʲ], 'nook of the ferns') is a market town and civil parish near the mouth of the River Bann in County Londonderry, Northern Ireland, of which it is the county town. It is 55 miles (89 km) north-west of Belfast and 30 miles (48 km) east of Derry, both of which are linked by major roads and railway connections. The town had a population of 24,483 people in the 2021 census.\n\nColeraine has a large catchment area and is designated as a \"major growth area\" in the Northern Ireland Development Strategy. The town is part of Causeway Coast and Glens district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "coleraine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3804,
+    "attempt": 3774,
+    "place_id": "gn-2659836",
+    "input": {
+      "place": {
+        "place_id": "gn-2659836",
+        "name": "Lugano",
+        "country": "Switzerland",
+        "subdivision": "Ticino",
+        "lat": 46.01008,
+        "lon": 8.96004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lugano",
+          "url": "https://en.wikipedia.org/wiki/Lugano",
+          "text": "Lugano ( loo-GAH-noh, UK also  luu-GAN-oh, Italian: [luˈɡaːno]; Ticinese: Lugan [lyˈɡãː]) is a city and municipality within the Lugano District in the canton of Ticino, Switzerland. It is the largest city in both Ticino and the Italian-speaking region of southern Switzerland. Lugano is the ninth largest Swiss city proper, with a population of 63,691 as of 2025, and an urban agglomeration of over 150,000.\nThe city lies on Lake Lugano, at its largest width, and, together with the adjacent town of Paradiso, occupies the entire bay of Lugano. The territory of the municipality encompasses a much larger region on both sides of the lake, with numerous isolated villages. The region of Lugano is surrounded by the Lugano Prealps, the latter extending on most of the Sottoceneri region, the southernmost part of Ticino and Switzerland. Both western and eastern parts of the municipality share an international border with Italy.\nDescribed as a market town since 984, Lugano was the object of continuous disputes between the sovereigns of Como and Milan until it became part of the Old Swiss Confederation in 1513. In 1803, the political municipality of Lugano was created, following the establishment of the canton. Since 1882, Lugano has been an important stop on the international Gotthard Railway. The rail brought a decisive contribution to the development of tourism and more generally of the tertiary sector which are, to this day, predominant in the economy of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "lugano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3805,
+    "attempt": 3775,
+    "place_id": "gn-2661740",
+    "input": {
+      "place": {
+        "place_id": "gn-2661740",
+        "name": "Appenzell",
+        "country": "Switzerland",
+        "subdivision": "Appenzell Innerrhoden",
+        "lat": 47.33103,
+        "lon": 9.40996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Appenzell",
+          "url": "https://en.wikipedia.org/wiki/Appenzell",
+          "text": "Appenzell (German pronunciation: [ˈapn̩ˌtsɛl] ) was a canton in the northeast of Switzerland, and entirely surrounded by the canton of St. Gallen, in existence from 1403 to 1597.\nAppenzell became independent of the Abbey of Saint Gall in 1403 and entered a league with the Old Swiss Confederacy in 1411, becoming a full member in 1513. It was divided into Appenzell Innerrhoden and Appenzell Ausserrhoden in 1597 (in a process called the Landteilung) as a result of the Swiss Reformation.\nThe territory of Appenzell as a geographical entity is known as Appenzellerland. In political contexts, the two cantons (until 1999 half-cantons) are referred to as beide Appenzell ('both Appenzells')."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "appenzell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3806,
+    "attempt": 3776,
+    "place_id": "gn-295740",
+    "input": {
+      "place": {
+        "place_id": "gn-295740",
+        "name": "Afula",
+        "country": "Israel",
+        "subdivision": "Northern District",
+        "lat": 32.60907,
+        "lon": 35.2892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Afula",
+          "url": "https://en.wikipedia.org/wiki/Afula",
+          "text": "Afula (Hebrew: עפולה) is a city in the Northern District of Israel, often known as the \"Capital of the Valley\" due to its strategic location in the Jezreel Valley. In 2024 the city had a population of 64,452.\nAfula's ancient tell (settlement mound) suggests habitation from the Late Chalcolithic to the  Ayyubid period. A fortress was built at the site during the Crusader or  Mamluk period.\nA small Arab Palestinian village during the Ottoman period, it was sold in 1872 along with the entire Jezreel Valley to the Lebanese Sursock family. In 1925, the same area was acquired by the American Zionist Commonwealth as part of the Sursock Purchase. The majority Muslim and Christian population were removed by the family, and Jewish immigrants, marking the foundation of modern Afula. After the establishment of the State of Israel in 1948, Afula was settled by Jewish immigrants from Iraq,  Yemen and Romania. In 1972, it gained the status of a city. The 1990s saw Jewish immigration from  Ethiopia and the  former Soviet Union contribute to the growth of the city. Since 1995, the city has almost doubled its population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "afula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3807,
+    "attempt": 3777,
+    "place_id": "gn-2990919",
+    "input": {
+      "place": {
+        "place_id": "gn-2990919",
+        "name": "Narbonne",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.18396,
+        "lon": 3.00141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narbonne",
+          "url": "https://en.wikipedia.org/wiki/Narbonne",
+          "text": "Narbonne ( nar-BON, US also  -⁠BAWN, -⁠BUN, French: [naʁbɔn] ; Occitan: Narbona [naɾˈβunɔ]; Latin: Narbo [ˈna(ː)rboː]; Late Latin: Narbona) is a commune and subprefecture in Southern France, located in the Occitania region. It is located about 15 km (9 mi) from the shores of the Mediterranean Sea and was historically a prosperous port city. Narbonne lies 849 km (528 mi) from Paris in the Aude department, of which it is an arrondissement. From the 14th century onwards, it declined following a change in the course of the river Aude. While it is the largest commune in Aude, the capital of the Aude department is the smaller commune of Carcassonne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "narbonne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3808,
+    "attempt": 3778,
+    "place_id": "gn-3065112",
+    "input": {
+      "place": {
+        "place_id": "gn-3065112",
+        "name": "Stodůlky",
+        "country": "Czechia",
+        "subdivision": "Prague",
+        "lat": 50.05,
+        "lon": 14.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stodůlky",
+          "url": "https://en.wikipedia.org/wiki/Stodůlky",
+          "text": "Stodůlky, Czech pronunciation: [ˈstoduːlkɪ], is a cadastral area in Prague, Czech Republic. Originally a village, first written mention of which dates from 1159, later municipality (since 1849), it remained a predominantly agricultural settlement until the 1960s. Stodůlky became part of Prague in 1974 and the large housing estate of Jihozápadní Město gradually arose on fields in vicinity of the old village in the late 1970s through mid-1990s.\nNowadays, Stodůlky covers an area of 9.62 square kilometres (3.71 sq mi) and has over 60,000 inhabitants, making Stodůlky the most populated cadastral area of Prague. Západní Město, a western extension of the built-up area is currently under construction as of 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "stodulky",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3809,
+    "attempt": 3779,
+    "place_id": "gn-3110986",
+    "input": {
+      "place": {
+        "place_id": "gn-3110986",
+        "name": "Salou",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.07663,
+        "lon": 1.14163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salou",
+          "url": "https://en.wikipedia.org/wiki/Salou",
+          "text": "Salou (Catalan pronunciation: [səˈlɔw]) is a resort town and municipality of the comarca of Tarragonès, in the province of Tarragona, in Catalonia, Spain. It has a population of 31,491 (register office, 2025) . The city is approximately 10 km from Tarragona and Reus on the Costa Daurada and 112 km from Barcelona.\nFounded by the Greeks in the 6th century B.C., the coastal town was a notable commercial port during medieval and modern ages. Throughout the 20th century, Salou became an important European tourist attraction.\nAside from its string of beaches interrupted by rocky coves, and its landscaped promenade, one of its main attractions is the PortAventura World resort. The Dutch movie Costa! and the television series with the same title were both filmed in Salou."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "salou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3810,
+    "attempt": 3780,
+    "place_id": "gn-3121145",
+    "input": {
+      "place": {
+        "place_id": "gn-3121145",
+        "name": "Granollers",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.60797,
+        "lon": 2.28773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Granollers",
+          "url": "https://en.wikipedia.org/wiki/Granollers",
+          "text": "Granollers (Catalan: [ɡɾənuˈʎes], Spanish: [ɡɾanoˈʎeɾs] ) is a city in central Catalonia, about 30 kilometres north-east of Barcelona. It is the capital and most densely populated city in the comarca of Vallès Oriental.\nGranollers is now a bustling business centre, having grown from a town dominated by Catalonia's textile industry that was prominent during the 19th century. However, in the southern portion of the municipality, the Palou area retains the agricultural characteristics of the past.\nGranollers forms a conurbation with Canovelles, Les Franqueses del Vallès and the district of La Torreta in La Roca del Vallès. The city is crossed by the Congost river,  a tributary of the Besòs. It is considered to be the other jewel of the Barcelona metropolitan area. It is around 25 km north-east of the centre of Barcelona."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "granollers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
