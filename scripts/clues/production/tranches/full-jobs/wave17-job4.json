@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 3287,
+    "attempt": 3261,
+    "place_id": "gn-3584772",
+    "input": {
+      "place": {
+        "place_id": "gn-3584772",
+        "name": "La Unión",
+        "country": "El Salvador",
+        "subdivision": "La Union",
+        "lat": 13.33915,
+        "lon": -87.84328
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Unión, El Salvador",
+          "url": "https://en.wikipedia.org/wiki/La_Unión,_El_Salvador",
+          "text": "La Unión (Spanish pronunciation: [lawˈnjon]) is a municipality in La Unión Department of El Salvador.\nIt is the capital city of the department of La Unión. It is the largest city in the department with a population of approximately 34,000 inhabitants. Previously known as Puerto San Carlos, it was renamed La Unión on July 13, 1824, after El Salvador gained independence from Spain and formed the United Provinces of Central America.  La Unión became a department on June 22, 1865, and the city of La Unión became its capital.\nIn 2005 the Salvadoran government began a new port at La Unión which was to have more than double the cargo capacity of the old and exceed that of El Salvador's principal port at Acajutla. Completed in November 2012, the port has since helped increase local economic growth and stability, though competition from nearby San Miguel remains strong.\nOn November 20, 2021 Salvadoran President Nayib Bukele announced plans to construct a new city, dubbed \"Bitcoin City\", in La Unión."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "la union",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "union",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3288,
+    "attempt": 3262,
+    "place_id": "gn-3591541",
+    "input": {
+      "place": {
+        "place_id": "gn-3591541",
+        "name": "Patulul",
+        "country": "Guatemala",
+        "subdivision": "Suchitepeque",
+        "lat": 14.42321,
+        "lon": -91.16049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Patulul",
+          "url": "https://en.wikipedia.org/wiki/Patulul",
+          "text": "Patulul (Patulul: from the Kʼicheʼ language, derived from the two terms Pa, meaning \"tree,\" and Tulul, meaning \"Sapote,\" which together mean \"sapote tree\") is a town, with a population of 11,343 (2018 census), and a municipality in the Suchitepéquez department of Guatemala.\n\nIt is located north of the coastal region of Tiquisate. It is both a coastal region as well as a mountainous region. Its neighboring town, San Juan Bautista (Saint John the Baptist) is known for its fine dairy products. They both have their town festivals during the month of July.\nIn pre-Columbian times, it is known that the Kʼicheʼ had to face a war between the alliance formed by the Pipil and the Tzutujil and that a center of supplies was Patulul.\nFollowing Central American independence in 1821, Patulul was assigned to the Atitlán Circuit, in district No. 11 (Suchitepéquez) for the administration of justice. Subsequently, in April 1838 Patulul became part of the region that constituted the short-lived State of Los Altos; but this attempt at secession was crushed by General Rafael Carrera, who reintegrated it into the State of Los Altos to the State of Guatemala in 1840."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "patulul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3289,
+    "attempt": 3263,
+    "place_id": "gn-3801276",
+    "input": {
+      "place": {
+        "place_id": "gn-3801276",
+        "name": "Tierra Blanca",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.44771,
+        "lon": -96.35912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tierra Blanca, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Tierra_Blanca,_Veracruz",
+          "text": "Tierra Blanca is a city and its surrounding municipality of the same name located in the south-central part of the Mexican state of Veracruz. At the 2005 census the city had a population of 44,171 inhabitants, and 47,824 in 2015. The city serves as the municipal seat of the municipality, which has an area of 1,363.76 km2 (526.55 sq mi) and a population of 86,075 inhabitants (2005) and 106,277 (2015). Its largest other community is the town of Joachín.\nThe municipality has been torn by violence in the 2010s and 2020s. On May 30, 2020, Francisco Navarette Serna, founder of \"El Sol de Terra Blance,\" was one of seven people killed at a party held during the height of the COVID-19 pandemic in Mexico. In 2016, Navarette Serna was accused of being the local drug lord responsible for the murder of five men between 16 and 27 years old from Acayucan in February 2016. Their bodies were crushed to avoid identification."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "tierra blanca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tierra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "blanca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3290,
+    "attempt": 3264,
+    "place_id": "gn-3992986",
+    "input": {
+      "place": {
+        "place_id": "gn-3992986",
+        "name": "Pénjamo",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.43134,
+        "lon": -101.72403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pénjamo",
+          "url": "https://en.wikipedia.org/wiki/Pénjamo",
+          "text": "Pénjamo (Purepecha: Penlamu, \"place of ahuehuetes\") is a city in Guanajuato, Mexico. It is the seat of Pénjamo municipality. It was cofounded in 1549 by Guamares, Purépechas, and Otomis prior to the outbreak of the Chichimeca war.\nThe city is located in the southwest of Guanajuato, and accounts for a total of 164,261.27 hectares of land, or 5.20% of the total land in the state. It borders  the municipalities of Abasolo, Cuerámaro, and Manuel Doblado  and the states of Jalisco and Michoacán. According to the 2000 census, the total population of the municipality was 144,426; however, in the last census, conducted in 2010, the total population of the city was near 41,000, the majority of which devotes themselves to the services, trade, tourist services. The motto of the city is \"Cradle of Hidalgo\" (\"Cuna de Hidalgo\"), because in 1753, Miguel Hidalgo y Costilla, known as the Father of the Nation, was born in the Hacienda de Corralejo near the city.\nThe locality of Santa Ana Pacueco, which is part of Pénjamo, is linked to La Piedad in Michoacán by seven bridges over the Lerma River. Because of this, the two cities have common needs and problems. To address this, the Mexican Congress created the Pénjamo-La Piedad Metropolitan Area in 2010. The area had a population of 229,289 people according to the 2005 INEGI census. The locality of Santa Ana Pacueco is linked to La Piedad by seven bridges over the Lerma River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "penjamo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3291,
+    "attempt": 3265,
+    "place_id": "gn-5258393",
+    "input": {
+      "place": {
+        "place_id": "gn-5258393",
+        "name": "Kenosha",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 42.58474,
+        "lon": -87.82119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kenosha, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Kenosha,_Wisconsin",
+          "text": "Kenosha ( ) is a city in Kenosha County, Wisconsin, United States, and its county seat. Located on the southwestern shore of Lake Michigan, it is the fourth-most populous city in Wisconsin, with 99,986 residents at the 2020 census. The Kenosha metropolitan statistical area, consisting solely of Kenosha County, has roughly 169,000 residents. Kenosha is a satellite city located roughly 32 miles (51 km) south of Milwaukee and 50 miles (80 km) north of Chicago via Interstate 94 (I-94) and has significant cultural and economic connections to both cities. The U.S. Census Bureau considers Kenosha part of the Chicago–Naperville, IL–IN–WI Combined Statistical Area. Kenosha is connected to Chicago via the Metra commuter rail, with the Kenosha station being the only passenger station in Wisconsin. \nFounded in 1835 and originally called Southport, the city incorporated as Kenosha in 1850. The city developed as a port and manufacturing center; it remained a regional hub for automotive and durable goods production through the 20th century before transitioning to a diversified economy in the 21st century, to include manufacturing, logistics, retail, and healthcare, boosted by its location along I-94. \nKenosha is the headquarters of Snap-on and Jockey International and hosts several higher education institutions, including the University of Wisconsin–Parkside and Carthage College. Cultural and recreational facilities include more than 12 miles of largely public access lakefront including various waterfront parks and marinas, the Kenosha Public Museum, Civil War Museum, and a restored electric streetcar system that serves the downtown HarborPark area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "kenosha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3292,
+    "attempt": 3266,
+    "place_id": "gn-5268249",
+    "input": {
+      "place": {
+        "place_id": "gn-5268249",
+        "name": "Racine",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 42.72613,
+        "lon": -87.78285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Racine, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Racine,_Wisconsin",
+          "text": "Racine ( rə-SEEN, also   RAY-seen) is a city in Racine County, Wisconsin, United States, and its county seat. It is located on the shore of Lake Michigan at the mouth of the Root River, 22 miles (35 km) south of Milwaukee and 60 miles (97 km) north of Chicago. It is the fifth-most populous city in Wisconsin, with a population of 77,816 at the 2020 census. The Racine metropolitan statistical area, consisting solely of Racine County, has an estimated 199,000 residents.\nRacine is the headquarters of several industrial companies, namely Case IH,  Dremel, InSinkErator, Modine Manufacturing, Reliance Controls, and S. C. Johnson & Son. Historically, the Mitchell & Lewis Company began making motorcycles and automobiles in Racine at the start of the 20th century. Racine was also home to the Horlicks malt factory, where malted milk balls were first developed; the Western Publishing factory, where Little Golden Books were printed; and Twin Disc transmissions. Prominent architects in Racine's history include A. Arthur Guilbert and Edmund Bailey Funston, and the city is home to works by renowned architect Frank Lloyd Wright, most notably the Johnson Wax Headquarters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "racine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3293,
+    "attempt": 3267,
+    "place_id": "gn-5367788",
+    "input": {
+      "place": {
+        "place_id": "gn-5367788",
+        "name": "Lompoc",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.63915,
+        "lon": -120.45794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lompoc, California",
+          "url": "https://en.wikipedia.org/wiki/Lompoc,_California",
+          "text": "Lompoc ( LOM-poke; Chumashan Purisimeño: lumpo'o̥) is a city in Santa Barbara County, California, United States. Located on the Central Coast, its population was 43,834 as of July 2021.\nLompoc has been inhabited for thousands of years by the Chumash people, who called the area lumpo'o̥, meaning 'lagoon' in the local Purisimeño language. The Spanish called the area Lompoco after Fermín de Lasuén had established Misión La Purísima in 1787. In 1837, the Mexican government sold the area as the Rancho Lompoc land grant. After the U.S. conquest of California, multiple settlers acquired the Lompoc Valley, including William Welles Hollister, who sold the land around the mission to the Lompoc Valley Land Company, which established a temperance colony that incorporated in 1888 as Lompoc. Lompoc is often considered a military town because it is near Vandenberg Space Force Base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "lompoc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3294,
+    "attempt": 3268,
+    "place_id": "gn-5598538",
+    "input": {
+      "place": {
+        "place_id": "gn-5598538",
+        "name": "Lewiston",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 46.41655,
+        "lon": -117.01766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lewiston, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Lewiston,_Idaho",
+          "text": "Lewiston is a city in and the county seat of Nez Perce County, Idaho, United States, in the state's north central region. It is the third-largest city in the northern Idaho region, behind Post Falls and Coeur d'Alene, and the twelfth-largest in the state. Lewiston is the principal city of the Lewiston, ID-WA Metropolitan Statistical Area, which includes all of Nez Perce County and Asotin County, Washington. As of the 2020 census, the population of Lewiston was 34,203, up from 31,894 in 2010.\nLewiston is located at the confluence of the Snake River and Clearwater River, thirty miles (50 km) upstream and southeast of the Lower Granite Dam. Dams and locks on the Snake and Columbia Rivers make Lewiston reachable by some ocean-going vessels. The Port of Lewiston is Idaho's only seaport, and is the farthest inland port linked to the Pacific Ocean. The Lewiston–Nez Perce County Airport serves the city by air.\nLewiston was founded in 1861 in the wake of a gold rush which began the previous year near Pierce, northeast of Lewiston. The city was incorporated by the Washington Territorial Legislature in January 1863. In March 1863, Lewiston became the first capital of the newly created Idaho Territory. Its stint as seat of the new territory's government was short-lived, inasmuch as a resolution to move the capital south to Boise was passed by the Idaho Territorial Legislature on December 7, 1864.\nLewiston's main industries are agriculture, paper, and timber products, and light manufacturing. Ammunition manufacturing maintains a very important and growing presence in Lewiston, being the headquarters of ammunition makers CCI and Speer Bullet. The city is the primary regional transportation, retail, health care, and entertainment center of the surrounding area and serves as a recreation destination for the Hells Canyon National Recreation Area.\nLewiston is home to Lewis–Clark State College, a public undergraduate college. Community events in Lewiston include the Dogwood Festival, Hot August Nights, and the Lewiston Roundup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 323
+    },
+    "banned_terms": [
+      {
+        "term": "lewiston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3295,
+    "attempt": 3269,
+    "place_id": "gn-5774001",
+    "input": {
+      "place": {
+        "place_id": "gn-5774001",
+        "name": "Draper",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.52467,
+        "lon": -111.86382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Draper, Utah",
+          "url": "https://en.wikipedia.org/wiki/Draper,_Utah",
+          "text": "Draper is a city in Salt Lake and Utah counties in the U.S. state of Utah, about 20 miles (32 km) south of Salt Lake City along the Wasatch Front. As of the 2020 census, the population is 51,017, up from 7,143 in 1990.\nDraper is part of two metropolitan areas; the Salt Lake County portion is in the Salt Lake City metropolitan area, while the Utah County portion is in the Provo-Orem metropolitan area.\nThe Utah State Prison was located in Draper from 1951 to 2022, near Point of the Mountain, alongside Interstate 15. State politicians voted to condemn the facility, and prisoners were moved to the Utah State Correctional Facility.\nThe city is home of 1-800 Contacts and a large eBay campus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "draper",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3296,
+    "attempt": 3270,
+    "place_id": "gn-6138121",
+    "input": {
+      "place": {
+        "place_id": "gn-6138121",
+        "name": "Sainte-Thérèse",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.63922,
+        "lon": -73.82757
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sainte-Thérèse, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Sainte-Thérèse,_Quebec",
+          "text": "Sainte-Thérèse (French pronunciation: [sɛ̃t teʁɛz]) is an off-island suburb northwest of Montreal, in southwestern Quebec, Canada, in the Thérèse-De Blainville Regional County Municipality.\nThe town is mostly known as a home for heavy industry, but it is also a centre of recreational and tourist activities. It is near the southern limit of a web of cross-country ski trails which meander through the Laurentides. Heading north, it is possible to undertake several nature-filled days of skiing towards major resort centres such as Mont-Tremblant.\nDuring the summer, many of the ski trails are used as dedicated bicycle paths, making it possible to undertake day-long or week-long cycling excursions through unspoiled areas, from one resort area to another, without sharing the right of way with motorized vehicles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "sainte therese",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sainte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "therese",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3297,
+    "attempt": 3271,
+    "place_id": "gn-785756",
+    "input": {
+      "place": {
+        "place_id": "gn-785756",
+        "name": "Smederevo",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 44.66436,
+        "lon": 20.92763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Smederevo",
+          "url": "https://en.wikipedia.org/wiki/Smederevo",
+          "text": "Smederevo (Serbian Cyrillic: Смедерево, pronounced [smêdereʋo] ) is a city and the administrative centre of the Podunavlje District in eastern Serbia. It is situated on the right bank of the Danube, about 45 kilometres (28 miles) downstream from the capital, Belgrade. According to the 2022 census, the urban settlement had 59,261 inhabitants, while the administrative area of the city had 97,930 inhabitants.\nThe area of present-day Smederevo has been inhabited since prehistoric and ancient times. The modern city developed around Smederevo Fortress, constructed in the 15th century by Serbian despot Đurađ Branković after Belgrade was returned to the Kingdom of Hungary. Smederevo served as the capital of the Serbian Despotate from 1430 to 1439 and again from 1444 until the Ottoman conquest in 1459.\nSmederevo later developed as an important settlement on the Danube and, particularly during the 20th century, as a major industrial centre. The city is home to a large steelworks operated by Hesteel Serbia and remains an important centre of manufacturing and river transport. Smederevo also has an international freight port on the Danube."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "smederevo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3298,
+    "attempt": 3272,
+    "place_id": "gn-1699572",
+    "input": {
+      "place": {
+        "place_id": "gn-1699572",
+        "name": "Minglanilla",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 10.24498,
+        "lon": 123.7964
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minglanilla",
+          "url": "https://en.wikipedia.org/wiki/Minglanilla",
+          "text": "Minglanilla, officially the Municipality of Minglanilla (Cebuano: Lungsod sa Minglanilla; Tagalog: Bayan ng Minglanilla),  is a municipality in the province of Cebu, Philippines. According to the 2024 census, it has a population of 155,934 people.\nIt is known as the \"Sugat Capital of the South\" (where \"Sugat\" means \"meeting\" or \"welcome\" in Cebuano). A big event in Minglanilla is the Sugat, which attracts people from adjacent towns as well as from Cebu city and further afield. On Black Saturday night, a public dance is held at the church plaza to witness the re‑enactment of the \"meeting\" of the risen Christ and his mother. Their images, borne on richly decorated carrozas, meet amidst joyous songs and the presence of child angels suspended by wires. The Kabanhawan (Cebuano for \"Resurrection\") festival is held annually on Easter Sunday."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "minglanilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3299,
+    "attempt": 3273,
+    "place_id": "gn-1737185",
+    "input": {
+      "place": {
+        "place_id": "gn-1737185",
+        "name": "Kapit",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 1.99546,
+        "lon": 112.93254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kapit",
+          "url": "https://en.wikipedia.org/wiki/Kapit",
+          "text": "Kapit is a town and the capital of Kapit District in Kapit Division, Sarawak, Malaysia on the south bank of the Rajang River. The district comprises 15,595.6 square kilometres and as of 2020, it has a population of 65,800.\nKapit is accessible by boat (slightly more than 2 hours from Sibu by express boat), light aircraft, and most recently by road. Reaching Kapit by car and bus from Sibu takes about 1 hour 30 minutes or about 1 hour from Song. It is the commercial and social center for the middle Rajang River catering to the longhouse communities and timber camps. It is often used as a base for exploring nearby longhouses or for arranging trips to the Upper Rejang and Balleh Rivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "kapit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3300,
+    "attempt": 3274,
+    "place_id": "gn-2173323",
+    "input": {
+      "place": {
+        "place_id": "gn-2173323",
+        "name": "Bundaberg",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -24.86621,
+        "lon": 152.3479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bundaberg",
+          "url": "https://en.wikipedia.org/wiki/Bundaberg",
+          "text": "Bundaberg ( BUN-də-BERG) is the major regional city in the Wide Bay-Burnett region of the state of Queensland, Australia. It is the ninth largest city in the state. The Bundaberg central business district is situated along the southern bank of the Burnett River about 20 km (12 mi) from its mouth at Burnett Heads, where it flows into the Coral Sea. The city is sited on a rich coastal plain, supporting one of the nation's most productive agricultural regions. The area of Bundaberg is the home of the Taribelang-Bunda, Goreng Goreng, Gurang, and Bailai peoples. The common nickname for Bundaberg is \"Bundy\", although its history as a major sugar producing region means it is often referenced as the \"Rum City\" or \"Sugar City\". In the 2021 census, the Bundaberg urban area had a population of 73,747 people.\nThe district surveyor, John Thompson Charlton designed the city layout in 1868, which planned for uniform square blocks with wide main streets, and named it ‘Bundaberg’. An early influence on the development of Bundaberg came with the 1868 Land Act, which was a famous Queensland via media, that aimed to create a class of Australian yeoman. Large sugarcane plantations were established throughout the 1880s, with industries of sugar mills, refineries, and rum distilleries that delivered prosperity to Bundaberg. These plantations used South Sea Islanders as indentured labourers, many of whom were blackbirded, a practice considered a form of slavery. The trade was outlawed in 1904, with most South Sea Islanders deported by 1906. Major floods in 1942 and 1954 damaged the river, ending Bundaberg's role as a river port and led to a new port at the mouth of the Burnett river. In the post-war era, Bundaberg continued to grow with its wealth tied to its sugar industry. In 2013, Bundaberg experienced record flooding from Cyclone Oswald, which was the worst disaster in the city's history.\nThe economy of Bundaberg is based primarily on agriculture, forestry, fishing and tourism, with a gross regional product at about $5.62 billion as of June 2023. Bundaberg also has a major distillery and brewery industry that exports to international markets. The city is served by the Port of Bundaberg and the Bundaberg Airport.\nBundaberg has a rich history and culture, along with its humid subtropical climate it is known for its weeping fig trees, dry stone walls, and historic plantations, including the Fairymead Plantation and the Sunnyside Sugar Plantation, the latter of which is the site of a mass grave. Other sites of South Sea Islander cultural significance include Sir Anthony's Rest atop the Bundaberg Hummock and the South Sea Islander Church. Major cultural institutions include the Hinkler Hall of Aviation and the Bundaberg Regional Art Gallery. The city's culinary culture is highlighted by its annual 'Banquet on the Bridge', and an iconic rum and gin culture with Bundaberg Rum originating in the city.\nBundaberg is a popular tourism destination, the city's hinterland includes the historic towns of Childers and Gin Gin, Lake Monduran, Cania Gorge National Park and the Promisedland mountain bike trails. Bundaberg's coastal areas include Bargara and Mon Repos, Deepwater National Park, and the southernmost reaches of the Great Barrier Reef alongside the islands of Lady Musgrave and Lady Elliot."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 536
+    },
+    "banned_terms": [
+      {
+        "term": "bundaberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3301,
+    "attempt": 3275,
+    "place_id": "gn-2360620",
+    "input": {
+      "place": {
+        "place_id": "gn-2360620",
+        "name": "Gaoua",
+        "country": "Burkina Faso",
+        "subdivision": "Sud-Ouest",
+        "lat": 10.33137,
+        "lon": -3.18202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gaoua",
+          "url": "https://en.wikipedia.org/wiki/Gaoua",
+          "text": "Gaoua is a market town in southern Burkina Faso. The population was 45,284 in a 2019 census. Located in the red earth, green hills, and fast flowing streams of southwestern Burkina Faso, Gaoua is the capital of Poni Province and forms a sort of capital for the sacred rites and bush lore of the Lobi peoples. According to local myth, Gaoua was founded when the Lobi migrated across from northern Ghana where they found the Gan people occupying the territory. As a result, they named the trek across to Gaoua Gan-houo meaning \"route of the Gan people\".\n\nAttractions in the town include a sacred grove of trees, the Poni Museum (Musée des Civilisations des Peuples du Sud-Ouest or Musée du Poni) and caves. There is also a mosque on elevated ground near the centre. The Gaoua Catholic parish Church of the Sacred Heart will be the cathedral for the newly erected Catholic Diocese of Gaoua."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "gaoua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3302,
+    "attempt": 3276,
+    "place_id": "gn-2503147",
+    "input": {
+      "place": {
+        "place_id": "gn-2503147",
+        "name": "Bougara",
+        "country": "Algeria",
+        "subdivision": "Blida",
+        "lat": 36.54178,
+        "lon": 3.081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bougara",
+          "url": "https://en.wikipedia.org/wiki/Bougara",
+          "text": "Bougara is a town in the Mitidja plain in Algeria, about 20 kilometers due south of Algiers. Located on the N29, the main road between Blida and Larbaâ, it is the capital of Bougara District,  in Blida Province. In 1998 it had a population of 34,100.\nPreviously, under French rule, it was called Rovigo;  it can be found with this name on this excerpt from the 1962 Michelin map of Algeria. The French name was chosen to honour the Duc de Rovigo who was commander-in-chief of the French army in Algeria from December 1831 to April 1833, when he was recalled  due to the overtly violent nature of his repressive regime. Post cards of the town under French rule can be seen here.\nThere are the saline thermal springs at Hammam-Mélouane, eight kilometers south-west of the town. An old postcard showing the baths complex can be seen here.\nBritish Army troops were billeted on French-owned farms outside Bougara in the autumn of 1943.\nIn 1946, the Haganah, the pre-state Zionist military, had a training camp near Bougara.\nOn June 4, 1957  Someone, president of the délégation spéciale or mayor of Bougara, was arrested in the town by the DST for collusion with the FLN.\nFamous people who were born in Bougara include two liberal pied noir writers, Jules Roy (born there in 1907) and  \nJean Pélégri (born there in 1920). The grave of Roy's mother is at the village of Sidi Moussa, about eight kilometres north of Bougara, which is where Roy was reared, on his maternal grandparents' farm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 259
+    },
+    "banned_terms": [
+      {
+        "term": "bougara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3303,
+    "attempt": 3277,
+    "place_id": "gn-251833",
+    "input": {
+      "place": {
+        "place_id": "gn-251833",
+        "name": "Volos",
+        "country": "Greece",
+        "subdivision": "Thessaly",
+        "lat": 39.36923,
+        "lon": 22.94769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Volos",
+          "url": "https://en.wikipedia.org/wiki/Volos",
+          "text": "Volos (; Greek: Βόλος [ˈvolos]) is a coastal port city in Thessaly situated midway on the Greek mainland, about 170 kilometres (106 miles) north of Athens and 140 kilometres (87 miles) south of Thessaloniki. It is the capital of the Magnesia regional unit of the Thessaly Region. Volos is also the only outlet to the sea from Thessaly, the country's largest agricultural region. With a population of 85,803 (2021), the city is an important industrial centre, and its port provides a \"bridge\" between Europe and Asia.\nVolos is the newest of the Greek port cities, with a large proportion of modern buildings erected following catastrophic earthquakes in 1955. It includes the municipal units of Volos, and Iolkos, as well as smaller suburban communities. The economy of the city is based on manufacturing, trade, services and tourism. Home to the University of Thessaly, the city also offers facilities for conferences, exhibitions and major sporting, cultural and scientific events. Volos participated in the 2004 Olympic Games, and the city has since played host to other athletic events, such as the European Athletic Championships. Volos hosted the 7th International Olympiad on Astronomy and Astrophysics from 27 July to 5 August 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "volos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3304,
+    "attempt": 3278,
+    "place_id": "gn-2641224",
+    "input": {
+      "place": {
+        "place_id": "gn-2641224",
+        "name": "Northwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.25882,
+        "lon": -2.52025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northwich",
+          "url": "https://en.wikipedia.org/wiki/Northwich",
+          "text": "Northwich is a market town and civil parish in the Cheshire West and Chester borough of Cheshire, England. It lies on the Cheshire Plain, at the confluence of the rivers Weaver and Dane, 18 miles (29 km) east of Chester, 15 miles (24 km) south of Warrington, 19 miles (31 km) south of Manchester, 69 miles (111 km) north of Birmingham and 22 miles (35 km) south-east of Liverpool. The population of the parish was 22,726 at the 2021 census.\nThe area around Northwich was exploited for its salt pans by the Romans, when the settlement was known as Condate. The town had been severely affected by salt mining and subsidence was historically a significant problem. Mine stabilisation work was completed in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "northwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3305,
+    "attempt": 3279,
+    "place_id": "gn-2649312",
+    "input": {
+      "place": {
+        "place_id": "gn-2649312",
+        "name": "Fleetwood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.92527,
+        "lon": -3.01085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fleetwood",
+          "url": "https://en.wikipedia.org/wiki/Fleetwood",
+          "text": "Fleetwood is a coastal town in the Borough of Wyre in Lancashire, England, at the northwest corner of the Fylde. It had a population of 26,232 at the 2021 census.\nFleetwood acquired its modern character in the 1830s, when the principal landowner Peter Hesketh-Fleetwood, High Sheriff and MP, conceived an ambitious plan to re-develop the town to make it a busy seaport and railway spur. He commissioned the Victorian architect Decimus Burton to design a number of substantial civic buildings, including two lighthouses. Hesketh-Fleetwood's transport terminus schemes failed to materialise. The town expanded greatly in the first half of the 20th century with the growth of the fishing industry, and passenger ferries to the Isle of Man, to become a deep-sea fishing port.\nDecline of the fishing industry began in the 1960s, hastened by the Cod Wars with Iceland, though fish processing is still a major economic activity in Fleetwood. The town's most significant employer today is Lofthouse of Fleetwood, manufacturer of the lozenge Fisherman's Friend which is exported around the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "fleetwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3306,
+    "attempt": 3280,
+    "place_id": "gn-2653148",
+    "input": {
+      "place": {
+        "place_id": "gn-2653148",
+        "name": "Chingford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.63033,
+        "lon": 0.00051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chingford",
+          "url": "https://en.wikipedia.org/wiki/Chingford",
+          "text": "Chingford is a suburban town in east London, England, within the London Borough of Waltham Forest. Situated in the Lea Valley, around 9+1⁄2 miles (15 kilometres) north-east of Charing Cross, it lies between the River Lea in the west and Epping Forest in the north and east. It borders Waltham Abbey to the north; Loughton, Buckhurst Hill, and Woodford to the east; and Walthamstow to the south, with Edmonton and Enfield to the west. At the 2021 census, it had a population of approximately 70,583.\nChingford is characterised by a blend of suburban development with access to extensive green space. Its built environment is largely composed of interwar and post-war housing, particularly terraced and semi-detached housing stock, with high levels of home ownership. Areas such as Friday Hill, Chingford Hall and Yardley Lane were traditionally council or social housing. This is interspersed with local commercial centres such as Station Road and Chingford Mount. The ancient woodland of Epping Forest, maintained by the City of London Corporation, forms a natural boundary to the north and east and serves as a popular destination for walking, cycling, and outdoor recreation. Key access points include Chingford Plain, while elevated viewpoints such as Pole Hill offer panoramic views across London.\nA particularly notable landmark is Queen Elizabeth's Hunting Lodge, a well-preserved Tudor timber-framed building erected in 1543 by Henry VIII as a grandstand for viewing deer hunts in the forest; today it functions as a small museum offering insights into royal hunting traditions and panoramic views over the treetops. Other local features include the Grade II-listed Chingford War Memorial, All Saints Church (with medieval origins), the town's parish church of St Peter and St Paul, and the former Chingford Town Hall on The Ridgeway, a Baroque-style civic building completed in 1929. The arrival of the railway in 1873 acted as a catalyst for growth, transforming the parish from a collection of scattered farms and hamlets into a London suburb while preserving pockets of open space and historic sites.\nHistorically, Chingford formed an ancient parish in the Waltham hundred of Essex. The name was first recorded in 913 AD, and the area remained largely rural until rapid suburban development in the late 19th century and during the interwar period. It was included in the Metropolitan Police District in 1840, and the London postal district upon its inception in 1856. The parish was granted urban district status in 1894, and municipal borough status in 1938. Local government was based at Chingford Town Hall until 1965, when the Municipal Borough of Chingford merged with the municipal boroughs of Walthamstow and Leyton to form the present-day London Borough of Waltham Forest within Greater London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 445
+    },
+    "banned_terms": [
+      {
+        "term": "chingford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

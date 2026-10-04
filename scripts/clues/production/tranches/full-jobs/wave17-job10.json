@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 3408,
+    "attempt": 3381,
+    "place_id": "gn-5314328",
+    "input": {
+      "place": {
+        "place_id": "gn-5314328",
+        "name": "Sierra Vista",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 31.55454,
+        "lon": -110.30369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sierra Vista, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Sierra_Vista,_Arizona",
+          "text": "Sierra Vista (; Spanish: [ˈsjera ˈβista]) is a city in Cochise County, Arizona, United States. According to the 2020 Census, the population of the city is 45,308, and is the 27th most populous city in Arizona. The city is part of the Sierra Vista-Douglas Metropolitan Area, with a 2010 population of 131,346. Fort Huachuca, a U.S. Army post, has been incorporated and is located in the northwest part of the city. Sierra Vista is bordered by the cities of Huachuca City and Whetstone to the north and Sierra Vista Southeast to the South.\nSierra Vista, Spanish for 'mountain view', is 75 miles (121 km) southeast of Tucson and serves as the main commercial, cultural, and recreational hub of Cochise County. Sierra Vista is located on the southwestern side of Cochise County and is 15 miles (24 km) southwest of Tombstone, 20 miles (32 km) northwest of Bisbee, and 15 miles (24 km) from the border of Mexico. The closest port of entry to Mexico is Naco in the Mexican state of Sonora which is 24 miles (39 km) from Sierra Vista to the southeast. Sierra Vista is home to University of Arizona, College of Applied Science and Technology, a Defense Intelligence Agency (DIA) designated Intelligence Community - Center of Academic Excellence (IC-CAE) university, Cochise College, and Wick Communications, a media company operating 27 newspapers and 18 specialty publications in 11 states."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "sierra vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sierra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3409,
+    "attempt": 3382,
+    "place_id": "gn-5462393",
+    "input": {
+      "place": {
+        "place_id": "gn-5462393",
+        "name": "Clovis",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 34.4048,
+        "lon": -103.20523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clovis, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Clovis,_New_Mexico",
+          "text": "Clovis is a city in and the county seat of Curry County, New Mexico. The population was 38,567 at the 2020 census. Clovis is located in the New Mexico portion of the Llano Estacado, in the eastern part of the state.\nA largely agricultural community, close to the border with Texas, it is noted for its role in early rock music history and for nearby Cannon Air Force Base, current home to the 27th Special Operations Wing which is also known as \"The Steadfast Line\". A Paleo-Indian site was found near Clovis, where in 1929 a distinctive kind of stone spear-point was discovered. These points were called Clovis points, and the culture associated with them was named the Clovis culture. The Clovis people were early inhabitants who created a widespread culture in the New World. The Atchison, Topeka and Santa Fe Railway system helped establish Clovis over one hundred years ago, which continues to be a major hub of operations for that railroad and its successor, BNSF Railway. Also notable is the Southwest Cheese Company, the largest cheddar cheese producer in North America.\nIt is the principal city of the Clovis Micropolitan statistical area, which is part of the larger Clovis-Portales CSA."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "clovis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3410,
+    "attempt": 3383,
+    "place_id": "gn-589165",
+    "input": {
+      "place": {
+        "place_id": "gn-589165",
+        "name": "Rakvere",
+        "country": "Estonia",
+        "subdivision": "Lääne-Virumaa",
+        "lat": 59.34808,
+        "lon": 26.35784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rakvere",
+          "url": "https://en.wikipedia.org/wiki/Rakvere",
+          "text": "Rakvere is the administrative center, or county seat, of Lääne-Viru County in northern Estonia, about 100 km southeast of Tallinn and 20 km south of the Gulf of Finland and the Baltic Sea.  In 2026, like in 2023, Rakvere received a Green Destinations Gold Award after having been selected in 2021 as part of the Top 100 Destination Sustainability Stories. In 2022, Rakvere was one of 10 ACES European Towns of Sport.\nRakvere boasts a distinctive architectural feature: the Rakvere door. Reflecting German baroque cabinets of the 17th and 18th centuries and the expressionist style of the 1920s, the wooden Rakvere door has a pointed, raised rectangle in the center. In 2023, there were 15 Rakvere doors on 13 houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "rakvere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3411,
+    "attempt": 3384,
+    "place_id": "gn-6151350",
+    "input": {
+      "place": {
+        "place_id": "gn-6151350",
+        "name": "Sorel-Tracy",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.04178,
+        "lon": -73.11358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sorel-Tracy",
+          "url": "https://en.wikipedia.org/wiki/Sorel-Tracy",
+          "text": "Sorel-Tracy (; French: [sɔʁɛl tʁaˈsi]) is a city in southwestern Quebec, Canada and the geographical end point of the Champlain Valley. It is located at the confluence of the Richelieu River and the St. Lawrence River, on the western edge of Lac Saint-Pierre, downstream and northeast of Montreal. The population as of the Canada 2021 census was 35,165. Its mayor is Patrick Péloquin and it is the seat of the Pierre-De Saurel Regional County Municipality and the judicial district of Richelieu.\nThe city is the result of a voluntary merger in March 2000 between two former municipalities, Sorel and Tracy, which developed on opposite shores of the Richelieu River: Tracy on the west shore and Sorel on the east shore. Sorel itself had annexed in 1992 the municipality of Saint-Pierre-de-Sorel; today it forms the southern part of its territory.\nSorel was founded in 1642. Tracy was founded on February 10, 1954, but prior to that, it was a parish municipality known as Saint-Joseph de Sorel. (This is not to be confused with the town of Saint-Joseph-de-Sorel, an independent municipality north of Tracy).\nSorel-Tracy is known for manufacturing related to the steel industry and metallurgy. It has a ferry linking the city to the village of Saint-Ignace-de-Loyola. Its shipyard built units of three frigates for the Canadian forces, and two ships in the late 1960s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "sorel tracy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sorel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tracy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3412,
+    "attempt": 3385,
+    "place_id": "gn-7279739",
+    "input": {
+      "place": {
+        "place_id": "gn-7279739",
+        "name": "Perumbavoor",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 10.10695,
+        "lon": 76.47366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perumbavoor",
+          "url": "https://en.wikipedia.org/wiki/Perumbavoor",
+          "text": "Perumbavoor ([peɾumbaːʋuːr]) is a major town and municipality in the eastern part of the Kochi metropolitan area in the Indian state of Kerala. As per the 2011 census of India, Perumbavoor has a population of 28,110 people and is situated on the banks of the Periyar River basin. It serves as an important residential, commercial, and industrial centre in central Kerala. Perumbavoor has long been recognized as a gateway between the urban regions of Kochi and the agrarian highlands of eastern Ernakulam district. Kerala's largest centres for the timber trade and wood-based industries are located in Perumbavoor, earning a reputation as the state's plywood capital.\nThe town is also an important commercial hub serving the surrounding agricultural and plantation regions.  Perumbavoor serves as the headquarters of Perumbavoor taluk and functions as a key administrative centre in eastern Ernakulam district. In recent decades, Perumbavoor has experienced substantial industrial and commercial growth and has become one of Kerala's principal destinations for migrant workers from other Indian states, primarily West Bengal, Assam, Bihar, and Odisha contributing significantly to its economy and demographic character. Estimates for their numbers in Perumbavoor vary widely, ranging from the low thousands to over one lakh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "perumbavoor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3413,
+    "attempt": 3386,
+    "place_id": "gn-7284275",
+    "input": {
+      "place": {
+        "place_id": "gn-7284275",
+        "name": "Nungwi",
+        "country": "Tanzania",
+        "subdivision": "Zanzibar North",
+        "lat": -5.72651,
+        "lon": 39.2987
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nungwi",
+          "url": "https://en.wikipedia.org/wiki/Nungwi",
+          "text": "Nungwi, or Ras Nungwi, is a large village located in the far northern end of the island of Zanzibar. With a population of 30,762 (2022 census), Nungwi is the second largest settlement on the island.  It is situated in the Nungwi Ward in the Kaskazini A District of the Unguja North Region. It is about 35 miles (56 km) north of Zanzibar Town on the Nungwi Peninsula, about an hour drive from Stone Town. To the south Nungwi shares a border with the neighboring Matemwe and Tazari villages. Nungwi was traditionally a fishing village and dhow-building center, but is now a popular tourist destination, and for instance recognized in CNN’s list of \"100 best beaches of the world\" in 2014. West Nungwi has changed a lot since the 1990s and is now a popular tourist destination with numerous resorts, restaurants, bars, stores, etc. East Nungwi is quieter and generally more laid-back.\nNungwi can be reached by public bus, dala-dala or a hired vehicle from Zanzibar Town. From Zanzibar Town the main tarmac road goes through the villages Mtoni, Mahonda, Kinyasini and Kivunge. It costs about TSh 2,000/=. Dala-dala number 116 leaves daily from Creek Road in Zanzibar Town for Nungwi every half-hour between 5:30 AM and 9 PM. Public bus on route 14 departs also every half-hour between 7 AM and 6 PM from the Darajani Terminal, Zanzibar Town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "nungwi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3414,
+    "attempt": 3387,
+    "place_id": "gn-972803",
+    "input": {
+      "place": {
+        "place_id": "gn-972803",
+        "name": "Mtubatuba",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.41789,
+        "lon": 32.18483
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mtubatuba",
+          "url": "https://en.wikipedia.org/wiki/Mtubatuba",
+          "text": "Mtubatuba is a town north of Richards Bay close to the entrance of Ncivi and the iSimangaliso Wetland Park (previously Greater St Lucia Wetland Park) but now the iSimangaliso Wetland Park  is known to be under Mtuba town in KwaZulu-Natal, South Africa.\nTown some 55 km south-south-west of Hluhluwe and 28 km west of St Lucia. Administered by a health committee since 1950. The name, formerly spelt Matubatuba, is Zulu for ‘creator of opportunities’, referring to a chief of the Mkwanazi tribe who died here in 1955.\nThe town's early years were hampered by flooding. An additional setback occurred during World War I: a ship carrying essential parts of what was to be the town's first sugar mill was torpedoed. The mill was eventually constructed in 1916 at nearby Riverview. Its township is KwaMsane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "mtubatuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3415,
+    "attempt": 3388,
+    "place_id": "gn-1145352",
+    "input": {
+      "place": {
+        "place_id": "gn-1145352",
+        "name": "Charikar",
+        "country": "Afghanistan",
+        "subdivision": "Parwan",
+        "lat": 35.01361,
+        "lon": 69.17139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charikar",
+          "url": "https://en.wikipedia.org/wiki/Charikar",
+          "text": "Charikar, also known as Imam Abu Hanifa or Imam Azam, is a city in the northeastern area of Afghanistan, serving as the capital of Parwan Province. It is within the jurisdiction of Charikar District and has an estimated population of 222,751 people. They include various ethnic groups of Afghanistan. The mayor of the city is Hafiz Raz Mohammad Yasir.\nCharikar was officially renamed in December 2022 to honor the 8th-century Sunni Muslim theologian and jurist Abu Hanifa, who is also sometimes called Imam Azam (\"The Great Imam\") and was the founder of the Hanafi school of Islamic law. The city lies on the Afghanistan Ring Road, 69 km (43 mi) from Kabul along the route to the northern provinces. Travelers would pass the city when traveling to Mazar-i-Sharif, Kunduz or Puli Khumri. Despite the proximity to Kabul, slightly more than half of the land is not built-up. Of the built-up land, almost equal parts are residential (37%) and vacant plots (32%), with a grid network of road coverage amounting to 19% of built-up land area, as of 2015. The city is at the gateway to the Panjshir Valley, where the Shamali plains meet the foothills of the Hindu Kush, and is known for its pottery and high-quality grapes. It has four police districts (nahias) and a total land area of 3,025 ha (11.68 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "charikar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3416,
+    "attempt": 3389,
+    "place_id": "gn-1804162",
+    "input": {
+      "place": {
+        "place_id": "gn-1804162",
+        "name": "Lengshuitan",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 26.4111,
+        "lon": 111.59559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lengshuitan, Yongzhou",
+          "url": "https://en.wikipedia.org/wiki/Lengshuitan,_Yongzhou",
+          "text": "Lengshuitan District (simplified Chinese: 冷水滩区; traditional Chinese: 冷水灘區; pinyin: Lěngshuǐtān Qū; lit. 'cold water shoal') is one of two urban districts of Yongzhou City, Hunan Province, China. It is located on the north of the city proper,  and lies to the eastern border of Guangxi. In July 1997, the government seat of Yongzhou City was moved here from Lingling District.\nThe district is bordered to the northwest and the north by Dong'an County, to the northeast and the east by Qidong and Qiyang Counties, and to the south by Lingling District. The district covers an area of 1,221 km2 (471 sq mi), and as of 2015, It had a registered population of 552,600 and a resident population of 529,200. Lengshuitan District has 8 subdistricts, 8 towns, and 3 townships under its jurisdiction, and the government seat is Wutong (梧桐街道)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "lengshuitan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3417,
+    "attempt": 3390,
+    "place_id": "gn-1841149",
+    "input": {
+      "place": {
+        "place_id": "gn-1841149",
+        "name": "Miryang",
+        "country": "South Korea",
+        "subdivision": "Gyeongsangnam-do",
+        "lat": 35.49333,
+        "lon": 128.74889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miryang",
+          "url": "https://en.wikipedia.org/wiki/Miryang",
+          "text": "Miryang (Korean: 밀양) is a city in South Gyeongsang Province, South Korea. It is bordered by Changnyeong to the west, Cheongdo to the north, Ulsan to the east, and Yangsan, Gimhae, and Changwon to the south. The city's symbols include the Korean magpie, the pine tree, and the royal azalea.\nThe recorded history of Miryang dates back to the Samhan period, when it was known as Mirimidongguk. Due to its strategic location near the Nakdong River, it played an important role from the Silla period onward. It served as a key station on the Great Yeongnam Road during the later Joseon Dynasty and, in the 20th century, became a stop on the Gyeongbu Line railroad connecting Busan to Seoul. Today, Miryang remains an important stop on that line and is the only city between Busan and Daegu served by KTX express trains.\nMiryang is renowned throughout Korea for the Arirang and for the view from the Yeongnamnu Pavilion, a subject of numerous poems from the Joseon period. Other notable landmarks include Eoreumgol and the Pyochungsa. Historical figures from the city include the 15th-century Neo-Confucian scholar Kim Chong-jik and the 16th-century warrior-monk Songun Yu Jeong. The city government actively preserves the memory of these figures, as well as other local cultural traditions such as the legend of Arang."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "miryang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3418,
+    "attempt": 3391,
+    "place_id": "gn-2517816",
+    "input": {
+      "place": {
+        "place_id": "gn-2517816",
+        "name": "Estepona",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.42764,
+        "lon": -5.14589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Estepona",
+          "url": "https://en.wikipedia.org/wiki/Estepona",
+          "text": "Estepona (Spanish pronunciation: [esteˈpona]) is a town and municipality in the comarca of the Costa del Sol, southern Spain. It is located in the province of Málaga, part of the autonomous community of Andalusia. Its district covers an area of 137 square kilometers in a fertile valley crossed by small streams and a mountainous areas dominated by the Sierra Bermeja, which reaches an elevation of 1,449 m at the peak of Los Reales.\nEstepona is renowned for its beaches, which stretch along some 21 km of coastline.  It is a popular resort and holiday destination.\nDue to its natural environment, surrounded by the sea and the mountains, Estepona has a micro-climate with over 325 days of sunshine per year.\nEstepona is a popular year-round holiday destination; it has two EC Blue Flag beaches, a modern sports marina with many tapas bars and restaurants. The white-walled town centre has many shops and picturesque squares. In the early 1990s, the Walt Disney Company chose Estepona as the original site for its Eurodisney project, but Paris, France, was later awarded the installation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "estepona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3419,
+    "attempt": 3392,
+    "place_id": "gn-2530241",
+    "input": {
+      "place": {
+        "place_id": "gn-2530241",
+        "name": "Tan-Tan",
+        "country": "Morocco",
+        "subdivision": "Guelmim-Oued Noun",
+        "lat": 28.43799,
+        "lon": -11.10321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tan-Tan",
+          "url": "https://en.wikipedia.org/wiki/Tan-Tan",
+          "text": "Tan-Tan (Arabic: طانطان, romanized: Ṭānṭān; Berber languages: ⵟⴰⵏⵟⴰⵏ, romanized: Ṭanṭan) is a city in Tan-Tan Province in the region of Guelmim-Oued Noun in southwestern Morocco. It is a desert town with a population (2014 census) of 73,209. It is the largest city in the province and second largest city in the region after the capital Guelmim. It is located on the banks of the wadi Oued Ben Khelil, which flows into the Draa River 15 kilometres (9.3 mi) north of the town. The Draa River at 1,100 kilometres (684 mi) is the longest in Morocco and flows into the Atlantic Ocean soon after the confluence with the wadi. The town also has an airport, Tan Tan Plage Blanche Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "tan tan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3420,
+    "attempt": 3393,
+    "place_id": "gn-2562704",
+    "input": {
+      "place": {
+        "place_id": "gn-2562704",
+        "name": "Mosta",
+        "country": "Malta",
+        "subdivision": "Il-Mosta",
+        "lat": 35.90942,
+        "lon": 14.42566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mosta",
+          "url": "https://en.wikipedia.org/wiki/Mosta",
+          "text": "Mosta (Maltese: Il-Mosta) is a small but densely populated city in the Northern Region of Malta. The most prominent building in Mosta is the Rotunda, a large basilica built by its parishioners' volunteer labour. It features the world's third largest unsupported dome, and displays a replica of a German bombshell that famously crashed through the dome during World War II but did not detonate upon impact.\nThe Mosta parish celebrates the feast of the Assumption of Mary every 15 August. Mosta's feast day celebration is popular amongst both locals and tourists. The city is annually decorated by local parishioners and townspeople, seeking to demonstrate their affection for the city and its patron saint, weeks ahead of the public procession.\nThe population of Mosta was 25,379 in July 2024. This included 13,008 males and 12,371 females; 20,965 Maltese nationals and 4,414 foreign nationals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "mosta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3421,
+    "attempt": 3394,
+    "place_id": "gn-2643044",
+    "input": {
+      "place": {
+        "place_id": "gn-2643044",
+        "name": "Margate",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38132,
+        "lon": 1.38617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Margate",
+          "url": "https://en.wikipedia.org/wiki/Margate",
+          "text": "Margate () is a seaside town in the Thanet District of Kent, England. It is located on the north coast of Kent and covers an area of 2 miles (3 kilometres) long, 16 miles (26 kilometres) north-east of Canterbury and includes Cliftonville, Garlinge, Palm Bay and Westbrook. In 2011 it had a population of 61,223.\nThe town has been a significant maritime port since the Middle Ages, and was associated with Dover as part of the Cinque Ports in the 15th century. It became a popular place for holidaymakers in the 18th century, owing to easy access via the Thames, and later with the arrival of the railways. Popular landmarks include the sandy beaches and the Dreamland amusement park. During the late 20th century, the town went into decline along with other British seaside resorts, but attempts are being made to revitalise the economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "margate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3422,
+    "attempt": 3395,
+    "place_id": "gn-2647878",
+    "input": {
+      "place": {
+        "place_id": "gn-2647878",
+        "name": "Grimsby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.56539,
+        "lon": -0.07553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grimsby",
+          "url": "https://en.wikipedia.org/wiki/Grimsby",
+          "text": "Grimsby ( GRIMS-bee) or Great Grimsby is a port town in Lincolnshire, England with a population of 86,138 (as of 2021). It is located near the mouth on the south bank of the Humber that flows to the North Sea. Grimsby adjoins the town of Cleethorpes directly to the south-east, forming a conurbation. It is the administrative centre of the borough of North East Lincolnshire, which alongside North Lincolnshire is officially part of the Yorkshire and the Humber region. Grimsby is 45 mi (72 km) north-east of Lincoln, 33 mi (53 km) (via the Humber Bridge) south-east of Hull, and 50 mi (80 km) east of Doncaster.\nLandmarks include Grimsby Minster, Port of Grimsby and Grimsby Fishing Heritage Centre. Grimsby was once the home port for the world's largest fishing fleet around the mid-20th century, but fishing then fell sharply. The Cod Wars denied UK access to Icelandic fishing grounds and the European Union used its Common Fisheries Policy to parcel out fishing quotas to other European countries in waters within 200 nmi (370 km) of the UK coast. Grimsby suffered post-industrial decline like most other industrial towns and cities in the UK.\nFood production has been on the rise in Grimsby since the 1990s. The Grimsby–Cleethorpes conurbation acts as a cultural and economic centre for much of north and east Lincolnshire. Grimsby people are called Grimbarians. The term codhead is also used jokingly, often for football supporters. The town celebrates Great Grimsby Day on 11 March, the day its town charter was granted in 1201. Grimsby is the second largest settlement by population in Lincolnshire after Lincoln."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "grimsby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3423,
+    "attempt": 3396,
+    "place_id": "gn-2656284",
+    "input": {
+      "place": {
+        "place_id": "gn-2656284",
+        "name": "Barnsley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.55,
+        "lon": -1.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barnsley",
+          "url": "https://en.wikipedia.org/wiki/Barnsley",
+          "text": "Barnsley ( ) is a market town in South Yorkshire, England. It is the main settlement of the Metropolitan Borough of Barnsley and the fourth largest settlement in South Yorkshire. The town's population was recorded as 71,599 at the 2021 census, while the wider borough (as of 2025) has a population of 251,770.\nHistorically in the West Riding of Yorkshire, Barnsley is located on the M1 corridor between the cities of Leeds and Wakefield to the north and Sheffield to the south. Doncaster lies to the east, Huddersfield to the north-west and Manchester lies west across the Peak District, to which it is connected via the A628 road.\nBarnsley's former industries include linen, coal mining, glass making and textiles. Its culture is rooted in its industrial heritage and has a tradition of brass bands, originally created as social clubs by its mining communities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "barnsley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3424,
+    "attempt": 3397,
+    "place_id": "gn-2656915",
+    "input": {
+      "place": {
+        "place_id": "gn-2656915",
+        "name": "Ashton-under-Lyne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.48876,
+        "lon": -2.0989
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashton-under-Lyne",
+          "url": "https://en.wikipedia.org/wiki/Ashton-under-Lyne",
+          "text": "Ashton-under-Lyne, also known as Ashton, is a market town in the Metropolitan Borough of Tameside, Greater Manchester, England. Its population was 48,604 at the 2021 census. Historically a part of Lancashire, it is located on the north bank of the river Tame, in the foothills of the Pennines and 6 miles (9.7 km) east of Manchester.\nEvidence of Stone Age, Bronze Age and Viking activity has been discovered in Ashton-under-Lyne. The \"Ashton\" part of the town's name probably dates from the Anglo-Saxon period, and derives from Old English meaning \"settlement by ash trees\". The origin of the \"under-Lyne\" suffix is less clear; it possibly derives from the Brittonic-originating word lemo meaning elm or from Ashton's proximity to the Pennines. In the Middle Ages, it was a parish and township and Ashton Old Hall was held by the de Asshetons, lords of the manor. The town became a market town from 1414, when the manor was granted a royal charter.\nThe introduction of the cotton trade in 1769 transformed Ashton both economically and geographically, with the town being replanned in a grid. The factory system and textile manufacture during the Industrial Revolution triggered a process of unplanned urbanisation in the area and, by the mid-19th century, Ashton had emerged as an important mill town at a convergence of newly constructed canals and railways. Ashton-under-Lyne's transport network allowed for an economic boom in cotton spinning, weaving and coal mining, which led to the granting of municipal borough status in 1847. The population grew from 2,859 in 1775 to 34,886 in 1861, two-thirds of its modern-day size, as a direct result of this extensive industrialisation.\nThe town saw significant economic decline in the 1920s, with the majority of its mills closing due to insufficient exports. Nevertheless, the town has continued to thrive as a centre of commerce and Ashton Market is one of the largest outdoor markets in the United Kingdom. In response to high levels of unemployment and deprivation since the town's deindustrialisation, the town underwent extensive regeneration over the course of the late 1990s and early 2000s. Modelled on the nearby town of Hyde, this included both local infrastructure improvements and a focus on training and education. The bus and tram networks were integrated into a single hub which opened in 2020, with further plans to connect with the National Rail station as well. \nA second wave of local regeneration has begun in the 2020s, with the mayor of Greater Manchester, Andy Burnham, designating the area as a Mayoral Development Zone and promising investment into housing, businesses and green space. Ashton Town Centre is now home to the Ashton Arcades shopping centre (opened 1995), a large IKEA store (opened 2006) and Ashton Market (reopened 2008), which was voted the best in the country in 2014. Further development of the outdoor market is continuing with the replacement of over 100 stalls by a canopied area with cabins and stalls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 487
+    },
+    "banned_terms": [
+      {
+        "term": "ashton under lyne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ashton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "under",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lyne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3425,
+    "attempt": 3398,
+    "place_id": "gn-2660365",
+    "input": {
+      "place": {
+        "place_id": "gn-2660365",
+        "name": "Herisau",
+        "country": "Switzerland",
+        "subdivision": "Appenzell Ausserrhoden",
+        "lat": 47.38615,
+        "lon": 9.27916
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herisau",
+          "url": "https://en.wikipedia.org/wiki/Herisau",
+          "text": "Herisau (Swiss Standard German pronunciation: [ˈhɛrizaʊ] ) is a municipality and the capital of the canton of Appenzell Ausserrhoden in Switzerland. It is the seat of the canton's government and parliament; the judicial authorities are situated in Trogen.\nThe central hamlet and the houses around the central square, the Protestant church of 1580, the houses Wetter and zur Rose (both 1737), the hamlet Schwänberg and the government building with the state archive are listed as heritage sites of national significance.\nTogether with other Alpine towns Herisau engages in the Alpine Town of the Year Association for the implementation of the Alpine Convention to achieve sustainable development in the Alpine Arc. \nHerisau was awarded Alpine Town of the Year 2003."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "herisau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3426,
+    "attempt": 3399,
+    "place_id": "gn-2742611",
+    "input": {
+      "place": {
+        "place_id": "gn-2742611",
+        "name": "Aveiro",
+        "country": "Portugal",
+        "subdivision": "Aveiro",
+        "lat": 40.64575,
+        "lon": -8.64643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aveiro, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Aveiro,_Portugal",
+          "text": "Aveiro (pronounced [aˈvɐjɾu] ) is a city and a municipality in Portugal. In 2021, the population was 80,880, in an area of 197.58 square kilometres (76.29 mi2): it is the second most populous city in the Centro Region of Portugal (after Coimbra).\nAlong with the neighbouring city of Ílhavo, Aveiro is part of an urban agglomeration that includes 120,000 inhabitants, making it one of the most important populated regions by density in the North Region, and primary centre of the Intermunicipal Community of Aveiro and Baixo Vouga.\nAdministratively, the president of the municipal government is Luís Souto Miranda, elected by coalition between the Social Democratic Party and the Democratic Social Centre, who governs the ten civil parishes (Portuguese: freguesias)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "aveiro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3427,
+    "attempt": 3400,
+    "place_id": "gn-2745860",
+    "input": {
+      "place": {
+        "place_id": "gn-2745860",
+        "name": "Valkenswaard",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.35083,
+        "lon": 5.45972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valkenswaard",
+          "url": "https://en.wikipedia.org/wiki/Valkenswaard",
+          "text": "Valkenswaard (Dutch pronunciation: [ˌvɑlkə(n)sˈʋaːrt] ) is a municipality and a town in the southern Netherlands, in the Metropoolregio Eindhoven of the province of North Brabant. The municipality had a population of 31,221 in 2021, with an area of 56.50 km2 (21.81 sq mi) of which 1.58 km2 (0.61 sq mi) is water.\nThe name Valkenswaard stems from its history of falconers, who caught wild falcons there; valk is Dutch for \"falcon\". It lay on a route where falcons migrated south each year. In the 17th, 18th, and 19th centuries, Valkenswaardian falconers were active at many European courts, in which falconing was a beloved pastime. Valkenswaard's falcon-catching area has now been built over and falcons are no longer caught there.\nIn the 19th and 20th century, a number of large cigar factories were founded in Valkenswaard, the two most renowned of which being Willem II and Hofnar.\nA Second World War cemetery containing 220 British soldiers was created near Valkenswaard in October 1944. It is now maintained by the Commonwealth War Graves Commission.\nThe spoken language is Kempenlands (an East Brabantian dialect, which is very similar to colloquial Dutch).\nThe Eurocircuit Valkenswaard is a motorsport racetrack that has hosted the European Rallycross Championship and the FIM Motocross World Championship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "valkenswaard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
