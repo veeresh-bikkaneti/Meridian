@@ -85,6 +85,98 @@ Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 6. Re-run merge on the affected subset; confirm `historySentences` does not double-count (the script accumulates across runs).
 7. One-line app-wide CC BY-SA credit in `atlas-map.tsx` (Chitti's side, pre-PR).
 
+## Tone-fix + targeted re-merge — 2026-10-04 (content team, this worktree)
+
+The verification crew's tone blocker is addressed. The merge output was repaired
+in place with the same pipeline (no hand-written hooks; every hook is still a
+verbatim sentence from the place's own cached Wikipedia extract).
+
+**Final numbers**
+
+- Enrichment total: **8,420 hooks** (was 8,579). Manifest
+  `enrichment.historySentences` = 8,420 — the merge now *sets* it to the
+  counted total each run instead of accumulating (crew note 6: re-running
+  merge on the final state changes 0 records, so no double-counting).
+- Per-place diff of all 64 chunks + manifest vs the first merge (crew's
+  method): **449 records changed, only `history`/`wiki`/`hookMissing` keys;
+  0 curated (94) and 0 pre-existing (285) records touched; IDs unchanged.**
+  - **202 repaired** — truncated/fragment/census/prison/conflict/definitional
+    picks re-picked to whole, safe sentences (e.g. Blountsville now ends
+    "…the Creek War of 1813–14.", El Centro's founder sentence is whole).
+  - **44 newly enriched** — candidates the old picker lost to truncation bugs.
+  - **203 deliberately removed** (see below) — restored to the exact
+    never-enriched record shape. **Process losses: 0** — every removal is a
+    place whose candidates all fail the new rules.
+- **Tone sample re-run** (crew protocol: seed 20261003, n=100, stratified,
+  merge-output only; definitions + all 100 IDs and verdicts committed at
+  `scripts/tone-sample-seed-20261003.json`): **hard fails 0% (gate ≤5%),
+  soft fails 9% (gate ≤15%) — GATE PASSED.**
+- Gates: enrich tests 103/103 (47 new), `npm test` exit 0, `npx tsc --noEmit`
+  clean, `lint-cards` GATE PASSED (8,799 records with hook = 8,420 + 379).
+
+**What changed in `scripts/enrich-wikipedia.mjs`**
+
+1. **Splitter** — sentence fragments ending in an initial chain (any case,
+   incl. "D.", "W. F.", "(r.", "c.") are rejoined, with guards so complete
+   sentences ending in a one-letter word ("698 m.") are not glued; unclosed-
+   parenthetical fragments rejoin; a hook is exactly one sentence (a
+   paren-stripped fusion of two sentences is rejected).
+2. **Picker rejection gate** (checked before scoring; rejection falls through
+   to the next candidate, never edits text): census/statistical-area phrases
+   (incl. standalone CDP and any "census"); prison/jail/correctional/
+   detention leads; present-day conflict language (violence/violent anywhere;
+   Russian invasion of Ukraine, Russo-Ukrainian War, armed conflict, military
+   occupation, war crimes); purely definitional sentences (definitional
+   template or generic "known for its cultural heritage / scenic beauty /
+   rich history…" with no year, story keyword, or named anchor); dangling
+   references ("this designation", "Since then…"); subject-pronoun openers
+   (he/she/they/his/her/their/its); administrative-seat leads ("district
+   headquarters" as the sentence's content). `validateHistory`'s banned
+   patterns gained the census phrases as a backstop.
+3. **Targeted merge** — recomputes only cache-backed, non-notable places;
+   writes only places whose history/wiki actually change; the 379 records
+   with pre-existing history are never recomputed (provably untouchable);
+   removals restore `hookMissing: true` in the original key order.
+
+**Interpretation calls (flagged for the crew to overrule)**
+
+- **"It"/"This" openers kept.** The crew's own exemplar good hooks begin
+  "It was named for…", and on a place card the place itself is the
+  antecedent (2,323 of the original 8,579 hooks). The guard rejects
+  he/she/they/his/her/their/its openers and dangling demonstratives.
+- **Historic wars kept; present-day conflict rejected.** 243 original hooks
+  mention a war; the game's own design treats battles/war history as core
+  hook material ("battle of" is a tier-3 pattern). Rejected: reporting of
+  the current Russia–Ukraine war and violence-as-content. Retained on
+  purpose: Valletta 1565, Chashniki 1812, the 1939/1920 Polish battles, and
+  similar dated history.
+- **Definitional exemption:** 5 hooks match the bare template regex but the
+  same sentence carries a genuine hook (e.g. Jalalpur Pirwala: "…historical
+  town… named after Pir Wala, a revered saint") and are kept; the enforced
+  rule is the substantive one (no anchor → reject).
+- Warren ME, Hirske, Jadcherla, Bon Accord, Seward: **no safe candidate
+  exists in their extracts** — they are hookless by design (in the 203).
+
+**Deliberate removals (203)** — final rejection reason per place, recomputed
+under the shipped code: no qualifying candidate survives the new gates
+**173** (this is where the census / prison / present-day-conflict /
+definitional / pronoun / administrative-seat rejections land — every
+candidate in the extract is rejected or scores zero); only candidate(s)
+exceed the 240-char cap **20**; unbalanced-parenthesis fragments **6**;
+ends-in-initial after re-pick exhaustion **2**; stitched two-sentence
+candidate **1** (Frankfort); banned population pattern **1**.
+Process losses: **0**.
+
+**1-record reconciliation (crew note)** — the missing record is
+**gn-4915989, West Englewood (Illinois)**. The crawl counted it eligible
+(124,312 done cache records — replicated exactly). Between crawl and merge,
+PR #46's dataset rebuild added it as the 94th curated notable
+(`notable-notes.json["4915989"]`, a Great Chicago Fire note) and materialized
+that note as its chunk history, so at merge time the history-present check
+skipped it before any cache lookup — it is inside the 379 pre-existing, not
+the 124,311 merge-eligible (`124,690 − 379`). No record was lost; the two
+counts were taken on opposite sides of the #46 rebuild.
+
 ## Guardrails honoured
 
 - `merge` was NOT run during the crawl phase. It was run once, on 2026-10-03, only after Liz's explicit directive that the decision had been made and this push is what Chitti's review + PR start from. No PR opened by this team.
