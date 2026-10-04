@@ -1,13 +1,13 @@
 {
-  "attempted": 6720,
-  "accepted": 106,
-  "workerRejected": 6614,
+  "attempted": 6800,
+  "accepted": 108,
+  "workerRejected": 6692,
   "validatorRejected": 0,
   "malformedWorkerRejections": 0,
   "validatorReasonHistogram": {},
   "workerRejectionTierHistogram": {
-    "climate": 6550,
-    "history": 63,
+    "climate": 6626,
+    "history": 65,
     "giveaway": 1
   },
   "pipelineIssues": []
