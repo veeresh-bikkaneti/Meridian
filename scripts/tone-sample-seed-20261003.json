@@ -1,0 +1,739 @@
+{
+ "protocol": {
+  "source": "Tone sampling protocol reconstructed from the verification crew's binding description in BRANCH_STATUS.md (2026-10-04): seed 20261003, n=100, stratified by region, merge-output only. The crew's sample file lived on their VM (/tmp/tone-sample.json, unavailable here), so the draw was re-executed under the documented parameters: population = all enrichment-sourced hooks in the merged chunks (8,420), stratified across all 64 regions (every region >= 1 seat, remaining seats by largest remainder of proportional share), PRNG = mulberry32(20261003), within-region selection by seeded Fisher-Yates over id-sorted pools.",
+  "population": 8420,
+  "n": 100,
+  "gate": {
+   "hardFailMaxPct": 5,
+   "softFailMaxPct": 15
+  },
+  "result": {
+   "hardFails": 0,
+   "hardFailPct": 0,
+   "softFails": 9,
+   "softFailPct": 9,
+   "passes": 91,
+   "gatePassed": true
+  },
+  "verdictDefinitions": {
+   "hardFail": "Hook is truncated or a fragment (stops mid-name/mid-thought, or fuses pieces of two sentences); contains census/statistical-area language; leads with or centers on prison, armed conflict, or violence (incl. present-day war reporting); its first clause hinges on an unresolved pronoun/demonstrative/temporal reference; it is purely definitional with NO person, event, date, record, named work, or distinctive fact; or it is about a different place.",
+   "softFail": "Complete, safe, and understandable, but weak: generic modern-identity or scenery with no distinctive concrete feature; administrative content with a concrete anchor; adult-register diction or garbled/elliptical phrasing a 9-year-old would stumble over while still communicating.",
+   "pass": "A complete single sentence with retellable content (person, event, date with a story, record, named work, or distinctive concrete fact), kid-picturable, no hard-fail class present."
+  },
+  "notes": [
+   "Verdicts were assigned by reading every sampled hook against the definitions above; all non-pass verdicts carry an individual note.",
+   "The crew's round-1 sample (pre-fix output) scored 13% hard / 33% soft under their verdicts; this is a fresh draw from the post-fix merge output, not a re-verdict of their sample (their IDs were not available on this VM)."
+  ]
+ },
+ "entries": [
+  {
+   "id": "gn-4060791",
+   "name": "Enterprise",
+   "region": "alabama",
+   "hook": "Enterprise is famous for the Boll Weevil Monument, a large monument of a woman holding a boll weevil, in the middle of Main Street.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5877389",
+   "name": "Valdez",
+   "region": "alaska",
+   "hook": "Valdez was incorporated in 1901, and flourished after the road link to Fairbanks was constructed in 1910.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5319311",
+   "name": "Vail",
+   "region": "arizona",
+   "hook": "The area is known for the nearby Colossal Cave, a large cave system, and the Rincon Mountains District of Saguaro National Park, a top tourism spot within Arizona.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4135840",
+   "name": "West Helena",
+   "region": "arkansas",
+   "hook": "Helena is the birthplace of Arkansas' former senior United States senator, Blanche Lincoln.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-8349374",
+   "name": "Highgate",
+   "region": "australia",
+   "hook": "Highgate was named for the village of Highgate, Hawkhurst in Kent, England.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3445578",
+   "name": "Valinhos",
+   "region": "brazil",
+   "hook": "It is the birthplace of Adoniran Barbosa.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5327717",
+   "name": "Bermuda Dunes",
+   "region": "california",
+   "hook": "The community is also home to the general aviation Bermuda Dunes Airport.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5975503",
+   "name": "Hinton",
+   "region": "canada",
+   "hook": "The Town of Hinton is named after its railway station, which in turn was named after William Hinton, a manager for the Grand Trunk Pacific Railway at the time it was built, in 1911.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2036653",
+   "name": "Hunchun",
+   "region": "china",
+   "hook": "The site of the eastern capital of the Balhae Kingdom between 785 and 793, Donggyeong, was located here.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5425911",
+   "name": "Idaho Springs",
+   "region": "colorado",
+   "hook": "Founded in 1859 by prospectors during the early days of the Pike's Peak Gold Rush, the town was at the center of the region's mining district throughout the late nineteenth century.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4837466",
+   "name": "Lake Pocotopaug",
+   "region": "connecticut",
+   "hook": "It is named for the large local lake, which for years has been a popular resort area.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4145381",
+   "name": "Wilmington",
+   "region": "delaware",
+   "hook": "First settled by Swedish settlers in 1638, the modern city of Wilmington was built on the site of Fort Christina, which was the first Swedish settlement in North America, and Kristinehamn, which was planned to be the capital of New Sweden.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-350203",
+   "name": "Rosetta",
+   "region": "egypt",
+   "hook": "Founded around the 9th century on the site of the ancient town of Bolbitine, Rosetta boomed with the decline of Alexandria following the Ottoman conquest of Egypt in 1517, only to wane in importance after Alexandria's revival.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4164547",
+   "name": "Milton",
+   "region": "florida",
+   "hook": "The city was first Incorporated in 1844, however certain areas such as East Milton, Point Baker, and Bagdad remain unincorporated.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2977365",
+   "name": "Saint-Pourçain-sur-Sioule",
+   "region": "france",
+   "hook": "It is named after Saint Pourçain, a 6th century AD freed slave who was founder of a local monastery.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4190523",
+   "name": "Dacula",
+   "region": "georgia",
+   "hook": "The Dacula area is home to some of the oldest buildings in northeast Georgia, such as the Elisha Winn House, which originally acted as the courthouse for Gwinnett County.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2906837",
+   "name": "Hellerau",
+   "region": "germany",
+   "hook": "It was the first garden city in Germany.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2924656",
+   "name": "Friedrichroda",
+   "region": "germany",
+   "hook": "In the immediate neighborhood is the beautiful ducal hunting seat of Reinhardsbrunn, built out of the ruins of the famous Benedictine monastery founded in 1085.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2489987",
+   "name": "Mazouna",
+   "region": "globe",
+   "hook": "It is known for its vintage mosque, Elzawya, which played the role of a well-respected school for teaching the Quran.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-1689286",
+   "name": "San Juan",
+   "region": "globe",
+   "hook": "The city is known historically for the site of the first battle of the Katipunan, the organization which led the 1896 Philippine Revolution against the Spanish Empire.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2773110",
+   "name": "Lambach",
+   "region": "globe",
+   "hook": "A major stop on the salt trade, it is the site of the Lambach Abbey, built around 1056.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3090147",
+   "name": "Oliwa",
+   "region": "globe",
+   "hook": "It is known for its medieval monastery with the Oliwa Cathedral, the 1627 Battle of Oliwa and the 1660 Treaty of Oliva.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-616464",
+   "name": "Lukashin",
+   "region": "globe",
+   "hook": "It is named after Sargis Lukashin, President of the Armenian Council of People's Commissars.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2179474",
+   "name": "West Eyreton",
+   "region": "globe",
+   "hook": "It is west of Kaiapoi and north-west of Eyreton and is named after Edward John Eyre, a 19th-century lieutenant governor of the South Island, then known as New Munster.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-502010",
+   "name": "Revda",
+   "region": "globe",
+   "hook": "It was founded in 1950 as a loparite ore mining and processing settlement.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3058468",
+   "name": "Novoť",
+   "region": "globe",
+   "hook": "Novoť is one of the younger Zamagura municipalities, it was originally named after its founder Jurčákov.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2363490",
+   "name": "Vogan",
+   "region": "globe",
+   "hook": "It is known for its Friday market, which is one of the largest voodoo markets in West Africa.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-6220587",
+   "name": "Kaiapoi",
+   "region": "globe",
+   "hook": "The town is named after the nearby Kaiapoi Pā.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3121840",
+   "name": "Fuentes de Oñoro",
+   "region": "globe",
+   "hook": "It was the site of a significant battle in 1811, during the Peninsular War.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-998131",
+   "name": "Hamburg",
+   "region": "globe",
+   "hook": "It was established in 1857 by members of the British-German Legion after the Crimean War and named after Hamburg in Germany.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-336350",
+   "name": "Goba",
+   "region": "globe",
+   "hook": "The town is known for its Wednesday market and for honey, basketry, and cotton shawl making; Bale National Park is 10 km to the southwest.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-713749",
+   "name": "Okhtyrka",
+   "region": "globe",
+   "hook": "Okhtyrka was once home to Hussars and Cossacks.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-1737919",
+   "name": "Marudi",
+   "region": "globe",
+   "hook": "Marudi was the administrative centre of the northern region of Sarawak before Miri was established in 1910.",
+   "verdict": "soft-fail",
+   "note": "Administrative-centre succession — admin-flavored content; the 1910 date and the Miri succession keep it short of purely definitional."
+  },
+  {
+   "id": "gn-717397",
+   "name": "Nagyecsed",
+   "region": "globe",
+   "hook": "Home to the powerful Hungarian House of Bathory.",
+   "verdict": "soft-fail",
+   "note": "Elliptical fragment phrasing ('Home to the powerful Hungarian House of Bathory.') — no main verb; content itself is strong."
+  },
+  {
+   "id": "gn-301256",
+   "name": "Selçuk",
+   "region": "globe",
+   "hook": "The ruins of the 6th century Basilica of Saint John the Theologian, which, some claim, is built on the site of the Apostle's tomb, is also inside the town.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-1721297",
+   "name": "Cabusao",
+   "region": "globe",
+   "hook": "The town is known for its natural scenery, with green landscapes, clean beaches, and wide ocean views.",
+   "verdict": "soft-fail",
+   "note": "Generic scenic claim ('natural scenery, green landscapes, clean beaches') — picturable but nothing distinctive to this place."
+  },
+  {
+   "id": "gn-3879200",
+   "name": "Mulchén",
+   "region": "globe",
+   "hook": "It was first settled in 1871 by soldiers during the so-called Pacification of Araucania.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-1683319",
+   "name": "Tanay",
+   "region": "globe",
+   "hook": "It is home to the namesake Tanay–Paete dialect of Tagalog, which apart from this municipality is spoken on other towns located on the eastern shores of the Laguna Lake.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3074805",
+   "name": "Hronov",
+   "region": "globe",
+   "hook": "The town is known as the birthplace of writer Alois Jirásek and artist Josef Čapek.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3103709",
+   "name": "Bełchatów",
+   "region": "globe",
+   "hook": "The city is also known for the successful volleyball club Skra Bełchatów and local krówki.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3069381",
+   "name": "Nový Bor",
+   "region": "globe",
+   "hook": "Since the end of the 18th century, Nový Bor is known for the glass industry.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3649810",
+   "name": "Achaguas",
+   "region": "globe",
+   "hook": "The town was founded in 1774 and hosts the Nazareno de Achaguas, a wooden statue of Jesus held to be miraculous, since 1835, when it was donated by José Antonio Páez.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3194029",
+   "name": "Orebić",
+   "region": "globe",
+   "hook": "It was named after the family who restored the castle inside the fortified settlement in 1586.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2660491",
+   "name": "Grossaffoltern",
+   "region": "globe",
+   "hook": "It is known for its stork colony.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2519352",
+   "name": "Colmenar",
+   "region": "globe",
+   "hook": "After the Reconquest, the town was named after a nearby farm known as Colmenar for its great number of beehives.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2222623",
+   "name": "Penja",
+   "region": "globe",
+   "hook": "It is known for its production of Penja white pepper.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2395317",
+   "name": "Banikoara",
+   "region": "globe",
+   "hook": "Banikoara, like many areas of Benin, is home to a constituent monarchy.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-709930",
+   "name": "Dnipro",
+   "region": "globe",
+   "hook": "Archeological evidence suggests the site of the present city was settled by Cossack communities from at least 1524.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-591313",
+   "name": "Kiviõli",
+   "region": "globe",
+   "hook": "Kiviõli is an industrial town in Ida-Viru County, Estonia, established in 1922.",
+   "verdict": "soft-fail",
+   "note": "Definitional: town label + county + a bare establishment date (1922) with no story attached."
+  },
+  {
+   "id": "gn-3588043",
+   "name": "Uspantán",
+   "region": "globe",
+   "hook": "The birthplace of Nobel Peace Prize winner Rigoberta Menchú, a community named Laj Chimel, is located Uspantán not far from the municipal seat.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-620214",
+   "name": "Vyetka",
+   "region": "globe",
+   "hook": "It was established in 1685 by the Old Believer Priest Group who were known as the Theodesians and who had migrated from Central Russia.",
+   "verdict": "soft-fail",
+   "note": "Top-tier content (birthplace of Nobel Peace Prize winner Rigoberta Menchú) in garbled word order a kid would stumble over."
+  },
+  {
+   "id": "gn-664729",
+   "name": "Topoloveni",
+   "region": "globe",
+   "hook": "The town is known for the Magiun of Topoloveni, a traditional plum-based spread, which has held a Protected Geographical Status from the European Union since 2011.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2271006",
+   "name": "Batalha",
+   "region": "globe",
+   "hook": "The town was founded by King D. João I of Portugal, jointly with the Monastery of Santa Maria da Vitória na Batalha, to pay homage to the Portuguese victory at the Battle of Aljubarrota that put an end to the 1383–1385 Crisis.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2743997",
+   "name": "Zeewolde",
+   "region": "globe",
+   "hook": "Zeewolde is known for its landscape and nature art.",
+   "verdict": "soft-fail",
+   "note": "Generic modern identity ('known for its landscape and nature art') — no named work or distinctive feature as written."
+  },
+  {
+   "id": "gn-5850616",
+   "name": "Makawao",
+   "region": "hawaii",
+   "hook": "Located on the rural northwest slope of Haleakalā, the community is known for being the hub of Upcountry Maui, a part of the island dominated by mostly agriculture and ranch land.",
+   "verdict": "soft-fail",
+   "note": "Pure location/identity description (hub of Upcountry Maui, agriculture and ranch land) — no story, person, or record."
+  },
+  {
+   "id": "gn-5600363",
+   "name": "McCall",
+   "region": "idaho",
+   "hook": "Named after its founder, Tom McCall, it is situated on the southern shore of Payette Lake, near the center of the Payette National Forest.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4236879",
+   "name": "De Soto",
+   "region": "illinois",
+   "hook": "It is named for Hernando de Soto, the discoverer of the Mississippi River.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-1270824",
+   "name": "Gubbi",
+   "region": "india",
+   "hook": "Gubbi is famous for the Gosala Sri Channabasaveshwara Swamy Temple of the Veerashaiva sect and Sri Chidambarashrama.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4262425",
+   "name": "Oakland City",
+   "region": "indiana",
+   "hook": "It is the site of the main campus of Oakland City University.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4878795",
+   "name": "Traer",
+   "region": "iowa",
+   "hook": "Traer is known for the iron spiral staircase that originally led to the office of the local newspaper.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2524534",
+   "name": "Jerzu",
+   "region": "italy",
+   "hook": "Jerzu is known for the production of a particular type of wine, called Cannonau di Jerzu.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2111836",
+   "name": "Mooka",
+   "region": "japan",
+   "hook": "Moka is known for the Mooka Railway, which operates steam locomotives.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4273003",
+   "name": "Hillsboro",
+   "region": "kansas",
+   "hook": "The city was named after John Hill, who homesteaded in the area in 1871.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4311963",
+   "name": "Valley Station",
+   "region": "kentucky",
+   "hook": "It was named for its location in the valley between Muldraugh Hill and the Knobs.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4328931",
+   "name": "Jean Lafitte",
+   "region": "louisiana",
+   "hook": "Located in Jefferson Parish, it is named after the privateer Jean Lafitte.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4956462",
+   "name": "Acton",
+   "region": "maine",
+   "hook": "The town is home to the Acton Fairground, which holds the Acton Fair every late summer.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-11980043",
+   "name": "Otterbein",
+   "region": "maryland",
+   "hook": "The neighborhood, which includes small parts of zip codes 21201 and 21230, is named after Old Otterbein Church, located immediately to the north.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4937276",
+   "name": "Franklin",
+   "region": "massachusetts",
+   "hook": "It is home to the country's first public library, the Franklin Public Library, its first books having been donated by Benjamin Franklin in 1790.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-3515862",
+   "name": "Tepetlaoxtoc de Hidalgo",
+   "region": "mexico",
+   "hook": "Tepetlaoxtoc de Hidalgo is a town and the seat of the municipality of Tepetlaoxtoc, which contains the archeological site of Tepetlaoxtoc, in the State of Mexico in Mexico.",
+   "verdict": "soft-fail",
+   "note": "Definitional (town + municipal seat) whose only anchor is an archaeological site named identically to the place. Closest call in the sample vs a hard definitional fail."
+  },
+  {
+   "id": "gn-4995436",
+   "name": "Hart",
+   "region": "michigan",
+   "hook": "Hart is also home to the north end of the Hart-Montague Trail.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5037649",
+   "name": "Minneapolis",
+   "region": "minnesota",
+   "hook": "Minneapolis is built on an artesian aquifer on relatively flat terrain and is known for cold, snowy winters and hot, humid summers.",
+   "verdict": "soft-fail",
+   "note": "Geography/climate identity filler (aquifer, flat terrain, cold winters) — true and harmless, but no retellable story."
+  },
+  {
+   "id": "gn-4447545",
+   "name": "Summit",
+   "region": "mississippi",
+   "hook": "It was the birthplace of the \"Summit Trio\", a group of three women artists in the 1960s.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4390204",
+   "name": "Herculaneum",
+   "region": "missouri",
+   "hook": "The City of Herculaneum was the first county seat of Jefferson County from January 1, 1819, to 1839.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5645169",
+   "name": "Clancy",
+   "region": "montana",
+   "hook": "The town was founded in 1873 as a gold camp and named for prospector William Clancey.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5067545",
+   "name": "Elkhorn",
+   "region": "nebraska",
+   "hook": "It was named after the Elkhorn River.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5507016",
+   "name": "Laughlin",
+   "region": "nevada",
+   "hook": "As a resort town, it is known for its gaming and water recreation.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5092018",
+   "name": "Rye",
+   "region": "new-hampshire",
+   "hook": "The town is home to several state parks along the Atlantic coastline.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5097686",
+   "name": "Englishtown",
+   "region": "new-jersey",
+   "hook": "The borough was named for James English, an early settler.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5491288",
+   "name": "Shiprock",
+   "region": "new-mexico",
+   "hook": "Shiprock is named after the nearby Shiprock rock formation.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5134316",
+   "name": "Ronkonkoma",
+   "region": "new-york",
+   "hook": "The hamlet is also home to Long Island MacArthur Airport, which is owned and operated by the Town of Islip.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4489985",
+   "name": "Salisbury",
+   "region": "north-carolina",
+   "hook": "Salisbury is the oldest continually populated colonial town in the western region of North Carolina.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5692590",
+   "name": "Tioga",
+   "region": "north-dakota",
+   "hook": "Tioga was founded in 1902 and named by settlers from Tioga, New York.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5161723",
+   "name": "Mansfield",
+   "region": "ohio",
+   "hook": "The city was founded in 1808 on a fork of the Mohican River in a hilly region surrounded by fertile farmlands, and became a manufacturing center owing to its location with numerous railroad lines.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4535287",
+   "name": "Drumright",
+   "region": "oklahoma",
+   "hook": "Now Drumright is home to a festival called The Drumright Monthly Market, where hundreds of visitors come on the first Saturday of every month, seeking crafts and delicacies from all over the region.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5749333",
+   "name": "Rose Lodge",
+   "region": "oregon",
+   "hook": "Rose Lodge was named for a rose bower over the front gate of the post office established in 1908 by postmaster Julia Dodson.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5178280",
+   "name": "Ancient Oaks",
+   "region": "pennsylvania",
+   "hook": "It is named after the housing subdivision named Ancient Oaks, located off PA Route 100 just north of Macungie.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5223685",
+   "name": "North Scituate",
+   "region": "rhode-island",
+   "hook": "Since 1967, the village has been home to the Scituate Art Festival.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4588718",
+   "name": "Myrtle Beach",
+   "region": "south-carolina",
+   "hook": "Located along the historic King's Highway, the region was once home to the Waccamaw people.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5229737",
+   "name": "Milbank",
+   "region": "south-dakota",
+   "hook": "Milbank is the birthplace of American Legion Baseball.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4659005",
+   "name": "South Pittsburg",
+   "region": "tennessee",
+   "hook": "South Pittsburg is home to the National Cornbread Festival.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5516288",
+   "name": "Andrews",
+   "region": "texas",
+   "hook": "Both the city and county were named for Richard Andrews, the first Texan soldier to die in the Texas Revolution.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-2637476",
+   "name": "South Benfleet",
+   "region": "united-kingdom",
+   "hook": "The Battle of Benfleet took place here between the Vikings and Saxons in 894.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4138926",
+   "name": "Glover Park",
+   "region": "united-states",
+   "hook": "It is named after Charles Carroll Glover.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5777780",
+   "name": "Maeser",
+   "region": "utah",
+   "hook": "The village is named after Karl Maeser, an educator.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5238499",
+   "name": "Middlebury (village)",
+   "region": "vermont",
+   "hook": "Middlebury is home to Middlebury College and the Henry Sheldon Museum of Vermont History and the adjacent hardware store.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4762454",
+   "name": "Grottoes",
+   "region": "virginia",
+   "hook": "Grottoes is home to Grand Caverns which opened for tours in 1806, making it the oldest show cave in the United States.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5794761",
+   "name": "Forks",
+   "region": "washington",
+   "hook": "It is named after the forks in the nearby Bogachiel, Calawah, and Sol Duc rivers which join to form the Quillayute River.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-4813648",
+   "name": "Mallory",
+   "region": "west-virginia",
+   "hook": "The community was named after the local Mallory Coal Company.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5268570",
+   "name": "Reedsburg",
+   "region": "wisconsin",
+   "hook": "Prior to the arrival of non-indigenous people in the 19th century, the region was home to the Ho-Chunk people.",
+   "verdict": "pass"
+  },
+  {
+   "id": "gn-5835606",
+   "name": "Powell",
+   "region": "wyoming",
+   "hook": "Powell is an All-America City and home to Northwest College.",
+   "verdict": "pass"
+  }
+ ]
+}
