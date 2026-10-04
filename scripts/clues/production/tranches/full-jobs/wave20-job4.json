@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 3891,
+    "attempt": 3861,
+    "place_id": "gn-637292",
+    "input": {
+      "place": {
+        "place_id": "gn-637292",
+        "name": "Savonlinna",
+        "country": "Finland",
+        "subdivision": "South Savo",
+        "lat": 61.8699,
+        "lon": 28.87999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Savonlinna",
+          "url": "https://en.wikipedia.org/wiki/Savonlinna",
+          "text": "Savonlinna (UK: , Finnish: [ˈsɑʋonˌlinːɑ], lit. 'Castle of Savo'; Swedish: Nyslott, lit. 'New Castle') is a town in Finland, located in the eastern interior of the country. It lies in the Finnish Lakeland, the South Savo region. The population of Savonlinna is approximately 31,000, while the sub-region has a population of approximately 38,000. It is the 36th most populous municipality in Finland.\nSavonlinna is located in the heart of the Saimaa Lakeland, which is why it is also known as the \"Capital of Saimaa\". Together with Mikkeli, they are the two largest towns in the South Savo region and both are centres of the region's hospital districts. Savonlinna enclaves the municipality of Enonkoski.\nSavonlinna is internationally known for its medieval St. Olaf's Castle and the annual Savonlinna Opera Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "savonlinna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3892,
+    "attempt": 3862,
+    "place_id": "gn-7281936",
+    "input": {
+      "place": {
+        "place_id": "gn-7281936",
+        "name": "West Kelowna",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.8625,
+        "lon": -119.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Kelowna",
+          "url": "https://en.wikipedia.org/wiki/West_Kelowna",
+          "text": "West Kelowna, formerly known as Westside and colloquially known as Westbank, is a city in British Columbia's Okanagan Valley on the west shore of Okanagan Lake. The city encompasses several neighbourhoods, including Casa Loma, Gellatly, Glenrosa, Lakeview Heights, Shannon Lake, Smith Creek, Rose Valley, Westbank, and West Kelowna Estates. As of 2021, West Kelowna had an estimated population of 36,078.\nWest Kelowna incorporated in 2007 as Westside District Municipality, reflecting the name of the former Central Okanagan Regional District rural electoral area. On January 30, 2009, the municipality was officially renamed West Kelowna. The municipality was re-classified as the City of West Kelowna on June 26, 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "west kelowna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kelowna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3893,
+    "attempt": 3863,
+    "place_id": "gn-946257",
+    "input": {
+      "place": {
+        "place_id": "gn-946257",
+        "name": "Ulundi",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.33523,
+        "lon": 31.41617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulundi",
+          "url": "https://en.wikipedia.org/wiki/Ulundi",
+          "text": "Ulundi, also known as Mahlabathini, is a town which lies under the Ulundi Local Municipality in the Zululand District Municipality. At one time the capital of the Zulu Kingdom in South Africa and later the capital of the Bantustan of KwaZulu, Ulundi now lies in KwaZulu-Natal Province (of which, from 1994 to 2004, it alternated with Pietermaritzburg as the provincial capital). Ulundi's 2025 population is now estimated at 31,185. In 2001, the population of Ulundi was 23,649. Ulundi has grown by 4,647 in the last year, which represents a 1.16% annual change. The town now includes Ulundi Airport, a three-star hotel, and some museums amongst its sights."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "ulundi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3894,
+    "attempt": 3864,
+    "place_id": "gn-1271064",
+    "input": {
+      "place": {
+        "place_id": "gn-1271064",
+        "name": "Gokarna",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 14.55,
+        "lon": 74.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gokarna, Karnataka",
+          "url": "https://en.wikipedia.org/wiki/Gokarna,_Karnataka",
+          "text": "Gokarna is a historical temple town located in the Uttara Kannada district of Karnataka state in southern India, The town is famous for the 4th century Mahabaleshwar Temple, dedicated to the Hindu God Shiva, the Bhadrakali Temple dedicated to Goddess Uma and Maha Ganpati Temple dedicated to Hindu God Ganesha. Gokarna is mentioned in the Hindu epic Mahabharata and by the classical Sanskrit poet Kalidasa in his 4th-century work Raghuvamsha, where he refers to the \"Lord of Gokarna\".\nGokarna is one of the most popular beach destinations for tourists in India. It is popular with beach trekkers. Yana Caves hosts the second cleanest village in India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "gokarna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3895,
+    "attempt": 3865,
+    "place_id": "gn-1561914",
+    "input": {
+      "place": {
+        "place_id": "gn-1561914",
+        "name": "Cái Đôi Vàm",
+        "country": "Vietnam",
+        "subdivision": "Ca Mau",
+        "lat": 8.85707,
+        "lon": 104.81199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cái Đôi Vàm",
+          "url": "https://en.wikipedia.org/wiki/Cái_Đôi_Vàm",
+          "text": "Cái Đôi Vàm is a ward (phường) of Cà Mau province, in Vietnam.\nThe Standing Committee of the National Assembly issued Resolution No. 1655/NQ-UBTVQH15 on the rearrangement of commune-level administrative units of Cà Mau Province in 2025 (the resolution takes effect from 16 June 2025). Accordingly, Cái Đôi Vàm Commune was established in Cà Mau Province on the basis of the entire natural area of 24.00 km² and a population of 18,291 people of Cái Đôi Vàm Township of Phú Tân District, and the entire natural area of 107.10 km² and a population of 18,153 people of Nguyễn Việt Khái Commune, also of Phú Tân District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "cai oi vam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oi",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "vam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3896,
+    "attempt": 3866,
+    "place_id": "gn-1635984",
+    "input": {
+      "place": {
+        "place_id": "gn-1635984",
+        "name": "Masamba",
+        "country": "Indonesia",
+        "subdivision": "South Sulawesi",
+        "lat": -2.5537,
+        "lon": 120.3279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Masamba",
+          "url": "https://en.wikipedia.org/wiki/Masamba",
+          "text": "Masamba  is a small river town and district (kecamatan) in the North Luwu Regency of South Sulawesi Province of Indonesia which serves as the seat of the regency. The town lies on the Patikala River. It is served by Andi Jemma Airport. The district covers an area of 1,068.85 km2 and had a population of 38,024 at the 2020 Census; the official estimate as at mid 2023 was 39,266 (comprising 19,481 males and 19,785 females).\nMuch of the land in the region is swampy coastal plains with mangroves found in its shallow waters. \nA population of Bugis who are known to be Muslims come from Masamba. A number of these Islamic Bugis moved out of the village into Rompu in the 1940s and into the lowlands of the region into Tabalu and Saatu in the 1950s and 1960s. Rattan trading and making is said to be important to the local economy. Coconuts are also grown near the coast in this region of Sulawesi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "masamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3897,
+    "attempt": 3867,
+    "place_id": "gn-1647638",
+    "input": {
+      "place": {
+        "place_id": "gn-1647638",
+        "name": "Bungku",
+        "country": "Indonesia",
+        "subdivision": "Central Sulawesi",
+        "lat": -2.5471,
+        "lon": 121.972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bungku",
+          "url": "https://en.wikipedia.org/wiki/Bungku",
+          "text": "Bungku is a town and the administrative centre of the Regency of Morowali, in Central Sulawesi Province of Indonesia.\nBungku was originally not the capital of Morowali Regency. When Morowali Regency came into being on 4 October 1999, the capital of the new Regency was Kolonodale. In 2004, the plan to shift the Morowali capital southeast from Kolonodale to Bungku left non-Bungku residents, both Protestant and Muslim, feeling further disenfranchised. Accordingly on 12 April 2013 a separate North Morowali Regency (with its capital at Kolonodale) was established by separating the northwesterly districts from Morowali Regency.\nThe town is served by Maleo Airport, opened in March 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "bungku",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3898,
+    "attempt": 3868,
+    "place_id": "gn-1693778",
+    "input": {
+      "place": {
+        "place_id": "gn-1693778",
+        "name": "Pililla",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.4854,
+        "lon": 121.3062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pililla",
+          "url": "https://en.wikipedia.org/wiki/Pililla",
+          "text": "Pililla (), officially the Municipality of Pililla (Tagalog: Bayan ng Pililla), is a municipality in the province of Rizal, Philippines. According to the 2024 census, it has a population of 72,503 people. It is surrounded by farms, small mountains, plains, and trees. Pililla is known as the Green Field Municipality of Rizal.\nThe town has preserved some religious and non-religious traditions such as the Santa Cruzan or Flores de Mayo, wherein men and women walk all over town with their gowns. Town Fiesta during the month of July is being visited by people from the city to experience the celebrations especially the amateur shows at night. Like other towns, Pililla holds basketball league competitions for youth during summer. Pililla is also a destination for road cyclists because of its asphalted road, specifically in Sitio Bugarin in Barangay Halayhayin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "pililla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3899,
+    "attempt": 3869,
+    "place_id": "gn-1735199",
+    "input": {
+      "place": {
+        "place_id": "gn-1735199",
+        "name": "Sungai Besar",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.6746,
+        "lon": 100.9867
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sungai Besar",
+          "url": "https://en.wikipedia.org/wiki/Sungai_Besar",
+          "text": "Sungai Besar (Jawi: سوڠاي بسر) is the  principal town of Sabak Bernam District, Selangor, Malaysia.\nSungai Besar's population is estimated to be around 23,000 of which 43% are within 20 to 55 years old. From that total, around 73 percent are Malays (Banjar, Jawa, and Kampar descents), Chinese (23%) and Indian (3.5%).\nMajority of its people are working as farmers and fisherman, as well as working in coconut, paddy planting, and palm oil plantations. The town becomes the centre of administration for Sabak Bernam district as many government offices and local authority centre are located there.\n\nThe small village of Sungai Lias is within the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "sungai besar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sungai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "besar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3900,
+    "attempt": 3870,
+    "place_id": "gn-174875",
+    "input": {
+      "place": {
+        "place_id": "gn-174875",
+        "name": "Kapan",
+        "country": "Armenia",
+        "subdivision": "Syunik",
+        "lat": 39.20762,
+        "lon": 46.40678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kapan",
+          "url": "https://en.wikipedia.org/wiki/Kapan",
+          "text": "Kapan (Armenian: Կապան [kɑˈpɑn]) is a town in southeast Armenia, serving as the administrative centre of the Kapan Municipality and also as the provincial capital of Syunik Province. It is located in the valley of the Voghji River and near the border of Azerbaijan, and is on the northern slopes of Mount Khustup. Kapan is the most populous town in the Syunik Province as well as the entire region of southern Armenia. According to the 2011 census, the population of Kapan was 43,190, a slight decline from 45,711 in the 2001 census. According to the 2022 census, the current population of the town is around 32,780."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "kapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3901,
+    "attempt": 3871,
+    "place_id": "gn-2327233",
+    "input": {
+      "place": {
+        "place_id": "gn-2327233",
+        "name": "Oke Ila",
+        "country": "Nigeria",
+        "subdivision": "Ekiti State",
+        "lat": 7.95,
+        "lon": 4.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oke Ila",
+          "url": "https://en.wikipedia.org/wiki/Oke_Ila",
+          "text": "Òkè-Ìlá Òràngún () (often abbreviated as Òkè-Ìlá) is an ancient city in southwestern Nigeria that was capital of the middle-age Igbomina-Yoruba city-state of the same name.\nÒkè-Ìlá is a city in Ọṣun State, Nigeria. It is situated in the northeastern part of Yorubaland in southwestern Nigeria. Òkè-Ìlá Òràngún’s sister city (and sister kingdom) Ìlá Òràngún is located about 12 kilometres (7+1⁄2 mi) to the northeast, separated by the north-trending ridges and gorges of the Oke-Ila Quartzites.\nÒkè-Ìlá Òràngún is currently capital of the Ifedayo Local Government Area of Ọsun State. The Ifedayo LGA (Local Government Area) Secretariat is located on the northern outskirts of the town. The administration of the two major towns and the several smaller towns and villages is conducted from the Ifedayo LGA Secretariat.\nThe paramount ruler of the town is Oba (Dr.) Adedokun Abolarin, Òràngún of Òkè-Ìlá (Aroyinkeye 1). He was a lawyer before his installation as the traditional ruler of the town. Abolarin College, one of the prominent schools in the town is owned by him."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "oke ila",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oke",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ila",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3902,
+    "attempt": 3872,
+    "place_id": "gn-2615006",
+    "input": {
+      "place": {
+        "place_id": "gn-2615006",
+        "name": "Randers",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.4607,
+        "lon": 10.03639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Randers",
+          "url": "https://en.wikipedia.org/wiki/Randers",
+          "text": "Randers (Danish: [ˈʁɑnɐs] ) is a city in northeast of the Jutland peninsula. It is Denmark's 7th largest city, with a population of 64,764 (as of 1 January 2026). Randers is the main town and administration center of the Randers Municipality. By road it is 38.5 kilometres (23.9 mi) north of Aarhus, 43.8 kilometres (27.2 mi) east of Viborg, and 224 kilometres (139 mi) northwest of Copenhagen.\nRanders became a thriving market town in medieval times, and many of its 15th-century half-timbered houses remain today, as does St Martin's Church, also from that period. Trade by sea was facilitated through the Gudenå River, entering Randers Fjord. During industrialization, Randers quickly became one of the most important industrial towns in the country, but it saw itself outpaced by the cities of Aarhus and Aalborg at the beginning of the 20th century. Most of the larger historic industries in Randers are gone today. From 1970, the population saw a decline from a peak of 58,500 citizens, until a stabilization in the 1990s occurred, followed by a modest rise since then.\nThe main tourist attraction is Randers Tropical Zoo thanks to its artificial rainforest, the largest in Northern Europe, its 350 varieties of plant and over 175 species of animals. The city's football team, Randers FC, play their homes games at the AutoC Park Randers, and are in Denmark's first league, the Superligaen. The town is also home to Randers rugby union club and Jutland RLFC, a rugby league team, as well as Randers Cimbria, a Basketligaen team that took 2nd place in the 2013–2014 season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "randers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3903,
+    "attempt": 3873,
+    "place_id": "gn-2620473",
+    "input": {
+      "place": {
+        "place_id": "gn-2620473",
+        "name": "Helsingør",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 56.03606,
+        "lon": 12.6136
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Helsingør",
+          "url": "https://en.wikipedia.org/wiki/Helsingør",
+          "text": "Helsingør ( HEL-sing-UR, Danish: [helse̝ŋˈøɐ̯ˀ]; Swedish: Helsingör), classically known in English as Elsinore ( EL-sin-or, -⁠OR), is a coastal city in northeastern Denmark. Helsingør Municipality had a population of 64,446 as of 10 July 2026. Helsingør is located at the narrowest part of the Øresund strait and together with Helsingborg in Sweden, forms the northern reaches of the Øresund Region, centred on Copenhagen and Malmö. Helsingør is a ferry city, with the frequent departures on the HH Ferry route, which connects Helsingør with Helsingborg, 4 km (2.5 mi) across the Øresund.\nIts castle Kronborg was used by William Shakespeare as the setting for his play Hamlet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "helsing r",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "helsing",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "r",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3904,
+    "attempt": 3874,
+    "place_id": "gn-2657697",
+    "input": {
+      "place": {
+        "place_id": "gn-2657697",
+        "name": "Acton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.50901,
+        "lon": -0.2762
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acton, London",
+          "url": "https://en.wikipedia.org/wiki/Acton,_London",
+          "text": "Acton is a town in West London, England, within the London Borough of Ealing. It is 6.1 miles (10 km) west of Charing Cross.\nAt the 2011 census, its four wards, East Acton, Acton Central, South Acton and Southfield, had a population of 62,480, a ten-year increase of 8,791 people. North Acton, West Acton, East Acton, South Acton, Acton Green, Acton Town, Acton Vale and Acton Central are all parts of Acton.\nActon means \"oak farm\" or \"farm by oak trees\", and is derived from the Old English āc (oak) and tūn (farm). Originally an ancient village, as London expanded, Acton was absorbed into the city. Since 1965, Acton equates to the east of the London Borough of Ealing, though some of East Acton is in the London Borough of Hammersmith and Fulham and a small portion of South Acton is in the London Borough of Hounslow.\nCentral Acton is synonymous with the hub of commerce and retail on the former main road between London and Oxford (the Uxbridge Road); a reminder of its history is in its inns, which in some cases date back to the late Tudor period as stopping places for travellers. Nowadays, the principal route linking London and Oxford (the A40 dual carriageway) bypasses central Acton, but passes through East Acton and North Acton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "acton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3905,
+    "attempt": 3875,
+    "place_id": "gn-2660076",
+    "input": {
+      "place": {
+        "place_id": "gn-2660076",
+        "name": "La Chaux-de-Fonds",
+        "country": "Switzerland",
+        "subdivision": "Neuchâtel",
+        "lat": 47.09993,
+        "lon": 6.82586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Chaux-de-Fonds",
+          "url": "https://en.wikipedia.org/wiki/La_Chaux-de-Fonds",
+          "text": "La Chaux-de-Fonds (French: [la ʃodəfɔ̃]; archaic German: Schalu; Arpitan: La Châls) is a Swiss town and municipality in the canton of Neuchâtel. It is located in the Jura Mountains at an altitude of 992 metres, a few kilometres south of the French border. After Geneva, Lausanne, Biel/Bienne, and Fribourg, it is the fifth-largest city in the Romandie, the French-speaking part of the country, with a population (as of December 2020) of 36,915.\nThe city was founded in 1656. Its growth and prosperity are mainly bound up with watchmaking. It is the most important centre of the watch-making industry in the area known as the Watch Valley. Partially destroyed by a fire in 1794, La Chaux-de-Fonds was rebuilt following a grid street plan, which was and is still unique among Swiss cities, the only exception being the easternmost section of the city, which was spared by the fire. It creates an exciting and obvious transition from the old section to the newer section. The roads in the original section are very narrow and winding and open to the grid pattern near the town square. The famous architect Le Corbusier, the mathematician Armand Borel, the writer Blaise Cendrars, and the carmaker Louis Chevrolet were born there. La Chaux-de-Fonds is a renowned centre of Art Nouveau.\nIn 2009, La Chaux-de-Fonds and Le Locle, its sister city, were jointly awarded UNESCO World Heritage status for their exceptional universal value."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "la chaux de fonds",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chaux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fonds",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3906,
+    "attempt": 3876,
+    "place_id": "gn-2736041",
+    "input": {
+      "place": {
+        "place_id": "gn-2736041",
+        "name": "Ponte de Lima",
+        "country": "Portugal",
+        "subdivision": "Viana do Castelo",
+        "lat": 41.76719,
+        "lon": -8.58393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponte de Lima",
+          "url": "https://en.wikipedia.org/wiki/Ponte_de_Lima",
+          "text": "Ponte de Lima (European Portuguese pronunciation: [ˈpõtɨ ðɨ ˈlimɐ] ), the oldest vila (chartered town, head of a municipality) in Portugal, is located in the Viana do Castelo District. Situated on the southern bank of the Lima River, it takes its name from the medieval bridge (ponte) that crosses the waterway. In 2021, the municipality had a population of 41,164 within an area of 320.25 square kilometres (123.65 mi2). The town itself has approximately 2,800 inhabitants.\nThe current mayor is Vasco Ferraz, elected by the People's Party (CDS–PP). As of 2024, Ponte de Lima is one of the six municipalities in Portugal administered by this party. The municipal holiday is celebrated on the Tuesday following the Feiras Novas (New Fairs), a festivity held annually during the second weekend of September."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "ponte de lima",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ponte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lima",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3907,
+    "attempt": 3877,
+    "place_id": "gn-2748413",
+    "input": {
+      "place": {
+        "place_id": "gn-2748413",
+        "name": "Purmerend",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.505,
+        "lon": 4.95972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Purmerend",
+          "url": "https://en.wikipedia.org/wiki/Purmerend",
+          "text": "Purmerend (Dutch pronunciation: [ˌpʏrməˈrɛnt] ) is a city and municipality in the west of the Netherlands, in the province of North Holland. The city is surrounded by polders, such as the Purmer, Beemster and the Wormer. Purmerend's population grew relatively slowly until the 1960s, when it increased from around 10,000 to over 80,000 by 2020. This expansion has turned Purmerend into a commuter town; many inhabitants (14,200 in 2011) work, go to school or spend leisure time in Amsterdam. Purmerend is part of the Randstad, one of the largest conurbations in Europe.\nThe municipality of Beemster merged into the municipality of Purmerend on 1 January 2022. The extended municipality has a population of about 96,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "purmerend",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3908,
+    "attempt": 3878,
+    "place_id": "gn-2759154",
+    "input": {
+      "place": {
+        "place_id": "gn-2759154",
+        "name": "Bergen",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.66917,
+        "lon": 4.70417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergen, North Holland",
+          "url": "https://en.wikipedia.org/wiki/Bergen,_North_Holland",
+          "text": "Bergen (Dutch pronunciation: [ˈbɛrɣə(n)] ) is a municipality and town in the Netherlands, in the province of North Holland. Its North Sea beaches and forests make it a popular destination for tourists. In 2001, the municipality was formed from a merger of the former municipalities of Egmond, Schoorl, and the smaller community of Bergen proper that had existed since 1811.\nSince about 1900, Bergen has been the home of many painters, writers and architects. Some of the work of this \"Bergen School\" is on exhibit at Museum Kranenburgh. The neighbourhood of Park Meerwijk, constructed in 1915, is made up entirely of villas in Amsterdam School style. There are regular art fairs in Bergen, as well as an annual music festival (the Holland Music Sessions in August) and arts festival (the Kunsttiendaagse in October).\nNorth of the town of Bergen are the Schoorlse Duinen, a nature area with the highest and widest dunes of the Netherlands, which reach about 59m (195 ft) above sea level, and are more than 5 km (3.1 mi) wide in some places.\nOther points of interest in the municipality include the aquarium in the seaside village of Bergen aan Zee and the historical museums Het Sterkenhuis (Bergen) and Museum van Egmond (Egmond aan Zee).\nThe town of Bergen has been home to the European School, Bergen, since 1963. In July 2021, the decision was made to move the school to Alkmaar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "bergen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3909,
+    "attempt": 3879,
+    "place_id": "gn-2786743",
+    "input": {
+      "place": {
+        "place_id": "gn-2786743",
+        "name": "Sint-Amandsberg",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.05947,
+        "lon": 3.74943
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sint-Amandsberg",
+          "url": "https://en.wikipedia.org/wiki/Sint-Amandsberg",
+          "text": "Sint-Amandsberg (Dutch pronunciation: [ˌsɪnt ɑˈmɑntsbɛr(ə)x]; French: Mont-Saint-Amand) is a sub-municipality of the city of Ghent located in the province of East Flanders, Flemish Region, Belgium. The municipality of Sint-Amandsberg was formed in 1872, when it was detached from the municipality of Oostakker. In 1876 and 1900, parts of the original municipality were already annexed to Ghent. On 1 January 1977, the municipality of Sint-Amandsberg was merged into Ghent.\nIt is served by the Bus and train station of Gent Dampoort on the Ghent Antwerp NMBS/SNCB line.\nDuring the First World War, on 7 June 1915, the German airschip LZ37 crashed after being destroyed by Reginald Warneford. A street was named Reginald Warnefordstraat on the spot where the airship crashed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "sint amandsberg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amandsberg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3910,
+    "attempt": 3880,
+    "place_id": "gn-2792179",
+    "input": {
+      "place": {
+        "place_id": "gn-2792179",
+        "name": "Lommel",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.23074,
+        "lon": 5.31349
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lommel",
+          "url": "https://en.wikipedia.org/wiki/Lommel",
+          "text": "Lommel (Dutch pronunciation: [ˈlɔməl]) is a municipality and city in the Belgian province of Limburg. Lying in the Kempen, it has about 34,000 inhabitants and is part of the arrondissement of Maaseik.\nBesides the residential town, Lommel also has a number of nature reserves, such as the nature reserve De Watering, the Lommel Sahara, and numerous forests and heathlands. Lommel is the third shopping city in Belgian Limburg with a commercial and shopping center De Singel. Importantly, the silver sand that is mined here for the benefit of the glass industry. Some sand mining quarries are transformed into nature reserves and recreational areas, including Lommel Sahara.\nThe city of Lommel is in the watershed of the basins of the Scheldt, and Meuse, and within these basins Nete Dommel respectively.\nTamar, a maternity home for pregnant girls and unmarried mothers and their children run by the Congregation of Kindsheid Jesu, is located in Lommel. Despite its religious mission to help young women, Tamar was notorious for numerous scandals, including forced adoptions, unwanted sterilizations, and abuse of the women placed in its care."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "lommel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

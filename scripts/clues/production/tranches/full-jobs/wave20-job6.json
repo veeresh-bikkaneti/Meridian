@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3931,
+    "attempt": 3901,
+    "place_id": "gn-4623560",
+    "input": {
+      "place": {
+        "place_id": "gn-4623560",
+        "name": "Franklin",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 35.92506,
+        "lon": -86.86889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Franklin, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Franklin,_Tennessee",
+          "text": "Franklin is a city in and the county seat of Williamson County, Tennessee, United States. About 21 miles (34 km) south of Nashville, it is one of the principal cities of the Nashville metropolitan area and Middle Tennessee. As of 2020, its population was 83,454. It is the seventh-most populous city in Tennessee.\nThe city developed on both sides of the Harpeth River, a tributary of the Cumberland River. In the 19th century, Franklin (as the county seat) was the trading and judicial center for primarily rural Williamson County and remained so well into the 20th century as the county remained rural and agricultural in nature.\nSince 1980, areas of northern Franklin have been developed for residential and related businesses, in addition to modern service industries. The population has increased rapidly as growth moved in all directions from the core. Despite recent growth and development, Franklin is noted for its many older buildings and neighborhoods, which are protected by city ordinances."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "franklin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3932,
+    "attempt": 3902,
+    "place_id": "gn-4788158",
+    "input": {
+      "place": {
+        "place_id": "gn-4788158",
+        "name": "Suffolk",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 36.72836,
+        "lon": -76.58496
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suffolk, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Suffolk,_Virginia",
+          "text": "Suffolk (locally  SUF-uuk) is an independent city in Virginia, United States. As of 2020, the population was 94,324. It is the 10th-most populous city in Virginia, the largest city in Virginia by boundary land area as well as the 16th-largest in the country.\nSuffolk is located in the Hampton Roads metropolitan area. This also includes the independent cities of Chesapeake, Hampton, Newport News, Norfolk, Portsmouth, and Virginia Beach, and smaller cities, counties, and towns of Hampton Roads. With miles of waterfront property on the Nansemond and James rivers, present-day Suffolk was formed in 1974 after consolidating with Nansemond County and the towns of Holland and Whaleyville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "suffolk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3933,
+    "attempt": 3903,
+    "place_id": "gn-5264223",
+    "input": {
+      "place": {
+        "place_id": "gn-5264223",
+        "name": "Neenah",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 44.18582,
+        "lon": -88.46261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neenah, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Neenah,_Wisconsin",
+          "text": "Neenah ( NEE-nə) is a city in Winnebago County, Wisconsin, United States. It is situated on the banks of Lake Winnebago, Little Lake Butte des Morts, and the Fox River approximately 10 miles (16 km) northeast of Oshkosh and 40 miles (64 km) southwest of Green Bay. Neenah's population was 27,319 at the 2020 census.\nNeenah is within the geographic boundaries of the Town of Neenah, but is politically independent. The city is the southwesternmost of the Fox Cities of northeastern Wisconsin. It is a principal city of the Oshkosh–Neenah metropolitan statistical area, which consists of all of Winnebago County and had 171,730 residents in 2020. It is sometimes referred to as a twin city with Menasha, with which it shares Doty Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "neenah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3934,
+    "attempt": 3904,
+    "place_id": "gn-5368518",
+    "input": {
+      "place": {
+        "place_id": "gn-5368518",
+        "name": "Los Gatos",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.22661,
+        "lon": -121.97468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Gatos, California",
+          "url": "https://en.wikipedia.org/wiki/Los_Gatos,_California",
+          "text": "Los Gatos (US: ; Spanish: [loz ˈɣatos]; Spanish for 'The Cats') is an incorporated town in Santa Clara County, California, United States. The population was 33,529 at the 2020 census. The U.S. Census Bureau estimated the population of Los Gatos at 32,576 as of July 1, 2025.\nIt is located in the San Francisco Bay Area just southwest of San Jose in the foothills of the Santa Cruz Mountains. Los Gatos is part of Silicon Valley, with several high technology companies maintaining a presence there. Netflix, the streaming service and content creator, is headquartered in Los Gatos and has developed a large presence in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "los gatos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gatos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3935,
+    "attempt": 3905,
+    "place_id": "gn-554397",
+    "input": {
+      "place": {
+        "place_id": "gn-554397",
+        "name": "Kalach-na-Donu",
+        "country": "Russia",
+        "subdivision": "Volgograd Oblast",
+        "lat": 48.69099,
+        "lon": 43.52638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalach-na-Donu",
+          "url": "https://en.wikipedia.org/wiki/Kalach-na-Donu",
+          "text": "Kalach-na-Donu (Russian: Кала́ч-на-Дону́), or Kalach-on-the-Don, is a town and the administrative center of Kalachyovsky District in Volgograd Oblast, Russia, located on the Don River, 72 kilometers (45 mi) west of Volgograd, the administrative center of the oblast. Population: 17,624 (2021 census); 26,910 (2010 census); 26,882 (2002 census); 22,979 (1989 Soviet census).\nThe town is unofficially divided into several parts: Starii Kalach (“Old Kalach”, located in the northwest, closest to the bridge); the main part of the city (has no name, and its areas correspond to the names of bus stops), Stroyrayon (\"District of new houses\", the newest part of the town) and the village of Cherkasovo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "kalach na donu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kalach",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "na",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "donu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3936,
+    "attempt": 3906,
+    "place_id": "gn-5771826",
+    "input": {
+      "place": {
+        "place_id": "gn-5771826",
+        "name": "Bountiful",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.88939,
+        "lon": -111.88077
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bountiful, Utah",
+          "url": "https://en.wikipedia.org/wiki/Bountiful,_Utah",
+          "text": "Bountiful is a city in Davis County, Utah. As of the 2020 census, the city population was 45,762, an eight percent increase over the 2010 figure of 42,552. The city grew rapidly during the suburb growth of the late 1940s, 1950s, and 1960s and was Davis County's largest city until 1985, when it was surpassed by Layton. Bountiful is Utah's 18th-largest city.\nAlthough a part of the Ogden–Clearfield metropolitan area, it serves as a bedroom community to Salt Lake City and the surrounding area. However, due to the very narrow entrance into Salt Lake County, roads between the counties often reach near-gridlock traffic during rush hour. The FrontRunner commuter rail has been running since April 2008, and the Legacy Parkway was opened on September 13, 2008. These were built to help alleviate the traffic load on Interstate 15 through the Bountiful area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "bountiful",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3937,
+    "attempt": 3907,
+    "place_id": "gn-5955895",
+    "input": {
+      "place": {
+        "place_id": "gn-5955895",
+        "name": "Fort McMurray",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 56.72676,
+        "lon": -111.38103
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort McMurray",
+          "url": "https://en.wikipedia.org/wiki/Fort_McMurray",
+          "text": "Fort McMurray ( mək-MURR-ee) is an urban service area in the Regional Municipality of Wood Buffalo in Alberta, Canada. It is located in northeast Alberta, in the middle of the Athabasca oil sands, surrounded by boreal forest. It has played a significant role in the development of the national petroleum industry. The 2016 Fort McMurray wildfire led to the evacuation of its residents and caused widespread damage.\nFormerly a city, Fort McMurray became an urban service area when it amalgamated with Improvement District No. 143 on April 1, 1995, to create the Municipality of Wood Buffalo (renamed the RM of Wood Buffalo on August 14, 1996). Despite its current official designation of urban service area, many locals, politicians and the media still refer to Fort McMurray as a city. Fort McMurray was known simply as McMurray between 1947 and 1962."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "fort mcmurray",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mcmurray",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3938,
+    "attempt": 3908,
+    "place_id": "gn-616627",
+    "input": {
+      "place": {
+        "place_id": "gn-616627",
+        "name": "Ijevan",
+        "country": "Armenia",
+        "subdivision": "Tavush",
+        "lat": 40.88037,
+        "lon": 45.14776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ijevan",
+          "url": "https://en.wikipedia.org/wiki/Ijevan",
+          "text": "Ijevan (Armenian: Իջևան [id͡ʒɛˈvɑn]) is a city and urban municipal community in the Ijevan Municipality of the Tavush Province of Armenia, also serving as the province's administrative centre. It is located at the center of the region, at the foot of Ijevan ridge of Gugark Mountains, on the shores of Aghstev River. Ijevan is the seat of the Diocese of Tavush of the Armenian Apostolic Church.\nIjevan is located at a road distance of 137 km northeast of Yerevan. The Yerevan-Tbilisi highway passes through Ijevan. As of the 2011 census, the population of the town was 21,081, making it the most populated town in the province. Ijevan is also famous for its beautiful mountains. As of the 2022 census, the population of the town was 18,689."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "ijevan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3939,
+    "attempt": 3909,
+    "place_id": "gn-630752",
+    "input": {
+      "place": {
+        "place_id": "gn-630752",
+        "name": "Ylöjärvi",
+        "country": "Finland",
+        "subdivision": "Pirkanmaa",
+        "lat": 61.55632,
+        "lon": 23.59606
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ylöjärvi",
+          "url": "https://en.wikipedia.org/wiki/Ylöjärvi",
+          "text": "Ylöjärvi (Finnish: [ˈyløˌjærʋi]) is a town in Finland, located in the Pirkanmaa region. It lies to the west of the regional capital, Tampere. The population of Ylöjärvi is approximately 34,000, while the metropolitan area has a population of approximately 428,000. It is the 35th most populous municipality in Finland, and the fourth largest in the Pirkanmaa region after Tampere, Nokia, and Kangasala.\nYlöjärvi is located 14 kilometres (9 mi) northwest of Tampere and 189 kilometres (117 mi) north of the capital city of Helsinki in Finland. Ylöjärvi has an area of 1,324.14 square kilometres (511.25 sq mi) of which 208.62 km2 (80.55 sq mi) is water. The population density is 30.17 inhabitants per square kilometre (78.1/sq mi).\nYlöjärvi is mainly a rural town. It does not have a clear centre; the Tampere-Vaasa highway (E12) and the Tampere-Seinäjoki railway divide the centre of the municipality into two large distinct parts: the Church Village and Soppeenmäki. The railway, completed in 1971, has no passenger seats in the Ylöjärvi area, so buses provide all public transport. The population has grown in recent years. In 1990 it was about 18,000, in 2011 it was about 30,000, and now it is about 34,000.\nThe neighbouring municipalities are Hämeenkyrö, Ikaalinen, Kihniö, Nokia, Parkano, Ruovesi, Tampere and Virrat. The municipality of Viljakkala was merged with Ylöjärvi in 2007. The municipality of Kuru was merged with Ylöjärvi in 2009. The coat of arms of Ylöjärvi was designed by Gustaf von Numers and confirmed in 1954.\nThe results of the 2025 Finnish municipal elections resulted in the Social Democratic Party being the largest political party on the Ylöjärvi council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "ylojarvi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3940,
+    "attempt": 3910,
+    "place_id": "gn-637219",
+    "input": {
+      "place": {
+        "place_id": "gn-637219",
+        "name": "Seinäjoki",
+        "country": "Finland",
+        "subdivision": "South Ostrobothnia",
+        "lat": 62.79446,
+        "lon": 22.82822
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seinäjoki",
+          "url": "https://en.wikipedia.org/wiki/Seinäjoki",
+          "text": "Seinäjoki (Finnish: [ˈsei̯næˌjoki] ; lit. \"Wall River\"; Latin: Wegelia, formerly Swedish: Östermyra) is a city in Finland and the regional capital of South Ostrobothnia. Seinäjoki is located in the western interior of the country and along the River Seinäjoki. The population of Seinäjoki is approximately 67,000, while the sub-region has a population of approximately 132,000. It is the 16th most populous municipality in Finland, and the 13th most populous urban area in the country.\nSeinäjoki is located 80 kilometres (50 mi) east of Vaasa, 178 kilometres (111 mi) north of Tampere, 193 kilometres (120 mi) west of Jyväskylä and 324 kilometres (201 mi) southwest of Oulu.\nSeinäjoki originated around the Östermyra bruk iron and gunpowder factories founded in 1798. Seinäjoki became a municipality in 1868, a market town in 1931, and a town in 1960. In 2005, the municipality of Peräseinäjoki was merged into Seinäjoki, and at the start of 2009, the neighbouring municipalities of Nurmo and Ylistaro were amalgamated with Seinäjoki. The city itself is growing steadily from year to year, but the population of the surrounding municipalities is correspondingly decreasing.\nThe city hall, city library, Lakeuden Risti Church and other public buildings were designed by Alvar Aalto. Seinäjoki was historically called Östermyra in Swedish. Today, this name, which was never official, is very seldom used even among Swedish speakers. Seinäjoki Airport is located in the neighbouring municipality of Ilmajoki, 11 kilometres (10 mi) south from the Seinäjoki city centre. Seinäjoki railway station in city centre was opened in 1883 and until 1897, it carried the name Ostermyra station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "seinajoki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3941,
+    "attempt": 3911,
+    "place_id": "gn-650859",
+    "input": {
+      "place": {
+        "place_id": "gn-650859",
+        "name": "Kouvola",
+        "country": "Finland",
+        "subdivision": "Kymenlaakso",
+        "lat": 60.86667,
+        "lon": 26.7
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kouvola",
+          "url": "https://en.wikipedia.org/wiki/Kouvola",
+          "text": "Kouvola (Finnish pronunciation: [ˈkou̯ʋolɑ]) is a city in Finland and the administrative capital of Kymenlaakso. It is located in the southeastern interior of the country. The population of Kouvola is approximately 78,000. It is the 12th most populous municipality in Finland, and the 17th most populous urban area in the country. \nKouvola is located along the Kymijoki River in the region of Kymenlaakso, 62 kilometres (39 mi) kilometers east of Lahti, 87 kilometres (54 mi) west of Lappeenranta and 134 kilometres (83 mi) northeast of the capital, Helsinki. With Kotka, Kouvola is one of the capital centers and is the largest city in the Kymenlaakso region.\nThe urban area of Kouvola in the city centre itself is home to about 47,000 people. The city covers an area of 2,883.30 square kilometres (1,113.25 sq mi) of which 325.06 km2 (125.51 sq mi) is water. The population density is 30.35 inhabitants per square kilometre (78.6/sq mi). Kouvola is bordered by the municipalities of Hamina, Heinola, Iitti, Kotka, Lapinjärvi, Loviisa, Luumäki, Miehikkälä, Mäntyharju, Pyhtää and Savitaipale. Kouvola has over 450 lakes and, together with Mäntyharju, the Kouvola area includes the Repovesi National Park.\nKouvola, which had population growth as late as the 1980s, has suffered a loss of population due to migration since the 1990s. Over time, the loss has only deepened, so that at the end of the 2010s Kouvola had the highest rate of population loss by migration in Finland. Natural demographics have also trended downward; in 2017, more than 450 more people died in the city than new ones were born. Currently, the population of Kouvola is decreasing annually by about 800 inhabitants. The reasons for the emigration are thought to be largely due to job losses in the region. The city has placed expectations for economic recovery on various projects, such as the TikTok data center planned for Koria village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "kouvola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3942,
+    "attempt": 3912,
+    "place_id": "gn-660561",
+    "input": {
+      "place": {
+        "place_id": "gn-660561",
+        "name": "Porvoo",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.39233,
+        "lon": 25.66507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porvoo",
+          "url": "https://en.wikipedia.org/wiki/Porvoo",
+          "text": "Porvoo (Finnish pronunciation: [ˈporʋoː]; Swedish: Borgå [ˈborɡo] ; Latin: Borgoa) is a city in Finland.  It is located on the south coast of the country, on the Gulf of Finland. Porvoo lies in the eastern part of the Uusimaa region. The population of Porvoo is approximately 52,000, while the sub-region has a population of approximately 60,000. It is the 19th most populous municipality in Finland, and the 15th most populous urban area in the country.\nPorvoo is located on the southern coast of Finland, approximately 35 kilometres (22 mi) east of the city border of Helsinki and about 50 kilometres (30 mi) from the city centre. Porvoo was one of the six medieval towns of Finland, along with Turku, Ulvila, Rauma, Naantali and Vyborg, and is first mentioned as a city in texts from the 14th century. Porvoo is the seat of the Swedish-speaking Diocese of Borgå of the Evangelical Lutheran Church of Finland. Porvoo briefly served as the capital of the former Eastern Uusimaa region.\nPorvoo is a bilingual municipality with Finnish and Swedish as its official languages. The population consists of 63% Finnish speakers, 27% Swedish speakers, and 10% speakers of other languages. The municipalities neighbouring Porvoo are Askola, Loviisa, Myrskylä, Pornainen, and Sipoo; and the sub-region maintained by Porvoo includes Askola, Myrskylä and Pukkila.\nPorvoo Old Town (Finnish: Porvoon vanhakaupunki; Swedish: Borgå gamla stan) is a popular tourist destination, known for its well-preserved 18th- and 19th-century buildings, and the 15th-century Porvoo Cathedral. The Old Town and the Porvoonjoki River Valley are recognized as, together, one of the National landscapes of Finland. In December 2025, Radio Nostalgia voters chose Porvoo as the \"most beautiful Christmas town in Finland\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "porvoo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3943,
+    "attempt": 3913,
+    "place_id": "gn-762863",
+    "input": {
+      "place": {
+        "place_id": "gn-762863",
+        "name": "Ostrowiec Świętokrzyski",
+        "country": "Poland",
+        "subdivision": "Świętokrzyskie",
+        "lat": 50.92936,
+        "lon": 21.38525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ostrowiec Świętokrzyski",
+          "url": "https://en.wikipedia.org/wiki/Ostrowiec_Świętokrzyski",
+          "text": "Ostrowiec Świętokrzyski (Polish: [ɔˈstrɔvjɛt͡s ɕfjɛntɔˈkʂɨskʲi] ), often referred to as Ostrowiec, is a city in southeastern Poland, in the historical region of Lesser Poland, with 66,258 residents (as of 2021). The town is one of the historic centers of Polish industry and metallurgy, and was part of the Old-Polish Industrial Region, the oldest industrial basin of the country.\nOstrowiec is the capital city of Ostrowiec Świętokrzyski County, part of Świętokrzyskie Voivodeship.\nOstrowiec lies on the Kamienna river. Its northern districts are located in the Iłża Foothills, while the southern part belongs to the Opatów Upland. The Świętokrzyskie Mountains lie a few kilometers away, southwest of Ostrowiec. There are two interesting places near Ostrowiec: the archaeological reserve at Krzemionki (a UNESCO World Heritage Site and Historic Monument of Poland) and dinosaur park in Bałtów.\nOstrowiec is located at the intersection of National Road No. 9 (part of European route E371), and local roads 751, 754, 755. Furthermore, since 1884 the town has had a rail connection, along electrified rail line No. 25, which goes from Łódź Kaliska to Dębica. In the 1960s, the Polish government planned construction of a rail line from Kielce to Lublin via Ostrowiec. The area of the town is 46 km2 (18 sq mi), and it is divided into 20 osiedla."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "ostrowiec swietokrzyski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ostrowiec",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "swietokrzyski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3944,
+    "attempt": 3914,
+    "place_id": "gn-784759",
+    "input": {
+      "place": {
+        "place_id": "gn-784759",
+        "name": "Ferizaj",
+        "country": "Kosovo",
+        "subdivision": "Ferizaj",
+        "lat": 42.37056,
+        "lon": 21.15528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferizaj",
+          "url": "https://en.wikipedia.org/wiki/Ferizaj",
+          "text": "Ferizaj, or Uroševac, is a city and a municipality in Kosovo. It is the third largest city in Kosovo by population and also the seat of Ferizaj Municipality and the Ferizaj District. According to the last census of 2024, the municipality of Ferizaj has 109,255 inhabitants.\nFerizaj has been populated since the prehistoric era by the Starčevo, Vinča and Baden culture. During the Ottoman period, Ferizaj served as a trading centre on the route between Belgrade and Thessaloniki. Ferizaj has always been considered as a city where tolerance and coexistence in terms of religion and culture has been part of the society in the last centuries. During and after the Kosovo War in 1999, the US Army base Camp Bondsteel was established outside of the city, now being used by forces belonging to KFOR. It is the largest and the most expensive foreign military base built by the Americans in South Eastern Europe, since the Vietnam War.\nFerizaj is located in the south-eastern part of Kosovo, about halfway between the cities of Pristina and Skopje. It is some 230 kilometres north-east of Tirana, 55 kilometres north of Skopje, 300 kilometres west of Sofia, 35 kilometres south of Pristina and 300 kilometres east of Podgorica. Ferizaj is also known for a geographic phenomenon known as river bifurcation. The Nerodime river is divided into two branches and both flow into two different seas. This phenomenon is exclusively seen in nature in this example, and that of the river Casiquiare, Brazil.\nSince 2016, the MuralFest festival has been organised annually by the organisation with the same name MuralFest Kosova by painting murals in public spaces, it eventually spread to other cities in Kosovo, the festival has been attracting the attention of international media since last year, it is attended by famous mural artists around the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "ferizaj",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3945,
+    "attempt": 3915,
+    "place_id": "gn-786239",
+    "input": {
+      "place": {
+        "place_id": "gn-786239",
+        "name": "Rosoman",
+        "country": "North Macedonia",
+        "subdivision": "Rosoman",
+        "lat": 41.51671,
+        "lon": 21.94585
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosoman",
+          "url": "https://en.wikipedia.org/wiki/Rosoman",
+          "text": "Rosoman (Macedonian: ) is a village in North Macedonia. It is the seat of the Rosoman municipality.\nThe village boasts a small roadside market and a few restaurants also situated along the main road. These are strategically positioned so as to attract custom from outside the village, as Rosoman is one of the only villages on the route between Gradsko - to the north (from where motorists join the motorway for Greece or Skopje) - and the Pletvar mountains, which separate central North Macedonia from the important cities of Prilep and Bitola. With no straight road connecting Prilep and Veles, all traffic is diverted via Rosoman."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "rosoman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3946,
+    "attempt": 3916,
+    "place_id": "gn-8223970",
+    "input": {
+      "place": {
+        "place_id": "gn-8223970",
+        "name": "Virudhachalam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.51497,
+        "lon": 79.32824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Virudhachalam",
+          "url": "https://en.wikipedia.org/wiki/Virudhachalam",
+          "text": "Virudhachalam, also called Vriddhachalam, is a Municipality  and taluk headquarters in Cuddalore district in the Indian state of Tamil Nadu. The ancient name of this town is Thirumudhukundram. As per the 2011 census, the town had a population of 73,585  of which 37,066 are males while 36,519 are females. Population of children in the ages of 0-6 is 7735 which is 10.51% of the total population. The Virudhagiriswarar temple (or Pazhamalai Nadhar Temple) dedicated to Lord Shiva is located in the heart of town.\nVirudhachalam Railway junction is one of the most important railway junctions which connects Chennai - Madurai line to Salem, Cuddalore, and Puducherry.\nVriddhachalam is famous for its ceramic industry. The industry with an industrial estate that only consists of ceramic and refractory manufactures is exclusive in Virudhachalam. The ceramic industrial estate is situated only at Virudhachalam in the whole of Tamil Nadu. A polytechnic college, especially for ceramic technology, is also only located in Virudhachalam for the entire Tamil Nadu. A unique research center for the research of cashew and byproducts is situated in Virudhachalam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "virudhachalam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3947,
+    "attempt": 3917,
+    "place_id": "gn-981827",
+    "input": {
+      "place": {
+        "place_id": "gn-981827",
+        "name": "Louis Trichardt",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -23.04385,
+        "lon": 29.90319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Louis Trichardt",
+          "url": "https://en.wikipedia.org/wiki/Louis_Trichardt",
+          "text": "Louis Trichardt (formerly Tshirululuni and Trichardtsdorp, and Makhado from 2003 to 2014), informally shortened to LTT (), is a town in Limpopo, South Africa. It is at the foot of Hanglip, in the Soutpansberg mountain, and is the centre of the Makhado Local Municipality, which comprises 16,000 km2 with a population of 270,000 (2001). Louis Trichardt is located in a fertile region where litchis, bananas, mangoes and nuts are produced. The N1 national route runs through the town. Louis Trichardt is 437 kilometres from Johannesburg and 106 kilometres from the Zimbabwean border at Beitbridge. The town was the capital of the Rambulana Venda Kingdom until 1864. In the 21st century Louis Trichardt was known for a time as Makhado, but it was changed back to Louis Trichardt. Elim, Tshikota, and Madombidzha townships surround the town in all directions. Its common languages are Tshivenda, Xitsonga, Afrikaans and English."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "louis trichardt",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "louis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "trichardt",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3948,
+    "attempt": 3918,
+    "place_id": "gn-1177446",
+    "input": {
+      "place": {
+        "place_id": "gn-1177446",
+        "name": "Gwadar",
+        "country": "Pakistan",
+        "subdivision": "Balochistan",
+        "lat": 25.12163,
+        "lon": 62.32541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gwadar",
+          "url": "https://en.wikipedia.org/wiki/Gwadar",
+          "text": "Gwadar (Urdu: گوادر, Urdu pronunciation: [ɡəʋɑːd̪əɾ]) is a port city on the southwestern coast of the Pakistani province of Balochistan. It is on the shores of the Arabian Sea, opposite Oman, and had a population of over 90,000 in 2017 census. It was an overseas possession of the Sultanate of Muscat and Oman from 1783 to 1958, when it was purchased by Pakistan. It is about 120 km (75 mi) southwest of Turbat. The sister port city of Chabahar in Iran's Sistan and Baluchestan province is about 170 km (110 mi) to the west. In October 2011, Gwadar was declared the winter capital of Balochistan.\nFounded in the late 17th century as a fishing settlement, Gwadar became a regional trade hub within the Omani Empire in the 20th century before being ceded to Pakistan (1958). Modest investment from China helped accelerate Gwadar's development from 2013 to 2020 when the city started to develop its economy. In 2025, overall investment reached 1 billion USD.\nThe main industrial concern is a fish-processing factory.\nGwadar came in the focus of attention after the 1999 Kargil War when Pakistan felt the need of having a military naval port and the Karachi-Gwadar Road (Coastal Highway) was built for defence purposes. For most of its history, Gwadar was a small to medium-sized settlement with an economy largely based on artisanal fishing. The strategic value of its location was first recognized in 1954 when it was identified as a suitable site for a deep-water port by the United States Geological Survey at the request of Pakistan while the territory was still under Omani rule. Until 2001, the area's potential to be a major deep-water port remained untapped under successive Pakistani governments, when construction on the first phase of Gwadar Port was initiated in 2007. The first phase cost $248 million. The port initially remained underutilized after construction for a variety of reasons, including lack of investment, security concerns, and the Government of Pakistan's failure to transfer land as promised to the port operator, Port of Singapore Authority.\nIn April 2015, Pakistan and China announced their intention to develop the $46 billion China–Pakistan Economic Corridor (CPEC), which in turn forms part of China's One Belt, One Road initiative. Gwadar features heavily in CPEC, and is envisaged to be the link between the One Belt, One Road and Maritime Silk Road project. $1.153 billion worth of infrastructure projects will be invested into the city as part of CPEC, with the aim of linking northern Pakistan and western China to the deep-water seaport. The city will also be the site of a floating liquefied natural gas facility that will be built as part of the larger $2.5 billion Gwadar–Nawabshah segment of the Iran–Pakistan gas pipeline project. Despite concerns over the United States sanctions on Iran, Pakistan is going ahead with the construction of a pipeline from the Iranian border to Gwadar as of 2024. This is partly to avoid contractual penalties and partly to avoid overreliance on the Gwadar Coal–Power Plant which requires imported coal. In addition to investments directly under the aegis of CPEC in Gwadar city, the China Overseas Port Holding Company in June 2016 began construction on the $2 billion Gwadar Special Economic Zone, which is being modelled on the special economic zones of China. In September 2016, the Gwadar Development Authority published a request for tenders for the preparation of expropriation and resettlement of Old Town Gwadar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 571
+    },
+    "banned_terms": [
+      {
+        "term": "gwadar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3949,
+    "attempt": 3919,
+    "place_id": "gn-1258698",
+    "input": {
+      "place": {
+        "place_id": "gn-1258698",
+        "name": "Rameswaram",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.2885,
+        "lon": 79.31271
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rameswaram",
+          "url": "https://en.wikipedia.org/wiki/Rameswaram",
+          "text": "Rameswaram (IPA: [ɾaːmeːsʋaɾam]; also transliterated as Ramesvaram, Rameshwaram) is a town in the Ramanathapuram district of the Indian state of Tamil Nadu. It is situated on the Pamban Island, separated from mainland India by the Pamban channel and is about 40 kilometres (25 mi) from Mannar Island, Sri Lanka, across the Gulf of Mannar. Rameswaram has been administered by a municipal body since 1994. It covers 53 km² and hosts a population of 44,856 as per the 2011 Census of India. Tourism and fishing are the primary sources of employment for its residents.\nRameswaram is the terminus of the railway line from Chennai and Madurai. It is one of the significant places in Hinduism—one of the four Hindu temples in the Char Dham pilgrimage tradition.  According to the Hindu epic Ramayana, the deity Rama is believed to have built a bridge from the vicinity of Rameshwaram across the sea to Lanka to rescue his wife Sita from her abductor Ravana. The Ramanathaswamy Temple, dedicated to the Hindu deity Shiva, is at the centre of the town. The temple and the town are considered as holy pilgrimage sites for Shaiva and Vaishnava sects. Geological research suggested that the shoal chain Adam's Bridge, also known as Rama Sethu, was formerly a land connection between India and Sri Lanka.\nThe Sethusamudram Shipping Canal Project, the border disputes over Kachchatheevu, Sri Lankan Tamil refugees from the Sri Lankan Civil War and genocide, and the capturing of local fishermen for alleged cross-border activities by Sri Lankan Forces, are some of the major controversies related to Rameshwaram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "rameswaram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3950,
+    "attempt": 3920,
+    "place_id": "gn-1265911",
+    "input": {
+      "place": {
+        "place_id": "gn-1265911",
+        "name": "Kottayam",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 9.58692,
+        "lon": 76.52132
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kottayam",
+          "url": "https://en.wikipedia.org/wiki/Kottayam",
+          "text": "Kottayam (IPA: [ko:ʈ:ajam]) is a city in the Kottayam district of Kerala, India. It is the headquarters of Kottayam district, located about 66 km (41 mi) south of the commercial city of Kochi and 154 km (95.7 mi) north of the state capital Thiruvananthapuram. As per the 2011 census of India, Kottayam has a population of 136,812 people, and a population density of 2,470/km2 (6,400/sq mi). \nKottayam is also referred to as \"the City of Letters\" as many of the first Malayalam daily newspapers, such as Deepika, Malayala Manorama, and Mangalam, were started and are headquartered in Kottayam, as are a number of publishing houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "kottayam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

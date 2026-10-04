@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 3911,
+    "attempt": 3881,
+    "place_id": "gn-2971874",
+    "input": {
+      "place": {
+        "place_id": "gn-2971874",
+        "name": "Tremblay-en-France",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.94956,
+        "lon": 2.5684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tremblay-en-France",
+          "url": "https://en.wikipedia.org/wiki/Tremblay-en-France",
+          "text": "Tremblay-en-France (French pronunciation: [tʁɑ̃blɛ ɑ̃ fʁɑ̃s] , lit. 'Tremblay-in-France'; before 1989: Tremblay-lès-Gonesse, lit. 'Tremblay-near-Gonesse') or simply Tremblay is a commune in the northeastern outer suburbs of Paris, France. It is located 19.5 km (12.1 mi) from the centre of Paris, in the Pays de France.\nMore than one-quarter of Charles de Gaulle Airport lies within the territory of the commune, in particular terminals 2A, 2B, 2C and 2D (the other terminals lie in the territory of other communes). It is the largest, by area, of the so-called petite couronne (inner ring) suburbs of Paris. The corporate head office of Air France and OEMServices lie within Tremblay-en-France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "tremblay en france",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tremblay",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "en",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "france",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3912,
+    "attempt": 3882,
+    "place_id": "gn-2975446",
+    "input": {
+      "place": {
+        "place_id": "gn-2975446",
+        "name": "Schiltigheim",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.60749,
+        "lon": 7.74931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schiltigheim",
+          "url": "https://en.wikipedia.org/wiki/Schiltigheim",
+          "text": "Schiltigheim (French: Schiltigheim, pronounced [ʃiltiɡajm]; German: Schiltigheim; Alsatian: Schelige [ˈʃelikə]) is a commune located north of the city of Strasbourg in the Bas-Rhin department within the Grand Est region of north-eastern France.\nSchiltigheim is located in the historical and cultural region of Alsace which has been administratively integrated into the European Collectivity of Alsace since January 1, 2021.\nThe inhabitants are called Schilikois in French and Scheligemer in Alsatian.\nSchiltigheim is the largest suburb of the city of Strasbourg, and it borders Strasbourg to the north. In 2023, Schiltigheim was the third-most populous commune in Bas-Rhin (after Strasbourg and Haguenau), with a total population of 34,708."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "schiltigheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3913,
+    "attempt": 3883,
+    "place_id": "gn-2993002",
+    "input": {
+      "place": {
+        "place_id": "gn-2993002",
+        "name": "Montauban",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 44.01759,
+        "lon": 1.3542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montauban",
+          "url": "https://en.wikipedia.org/wiki/Montauban",
+          "text": "Montauban (US: , French: [mɔ̃tobɑ̃] ; Occitan: Montalban [muntalˈβa]) is a commune in the southern French department of Tarn-et-Garonne. It is the capital of the department and lies  50 kilometres (31 mi) north of Toulouse. Montauban is the most populated town in Tarn-et-Garonne, and the sixth most populated in Occitanie behind Toulouse, Montpellier, Nîmes, Perpignan and Béziers. In 2023, there were 62,945 inhabitants, called Montalbanais in French. The town has been classified in the French Towns and Lands of Art and History network since 2015.\nThe town, built mainly of reddish brick, stands on the right bank of the Tarn at its confluence with the Tescou."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "montauban",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3914,
+    "attempt": 3884,
+    "place_id": "gn-3020832",
+    "input": {
+      "place": {
+        "place_id": "gn-3020832",
+        "name": "Draveil",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.68466,
+        "lon": 2.41418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Draveil",
+          "url": "https://en.wikipedia.org/wiki/Draveil",
+          "text": "Draveil (French pronunciation: [dʁavɛj] ) is a commune in the Essonne department in the southern outer suburbs of Paris, France. It is located 19.1 km (11.9 mi) from the centre of Paris at Notre-Dame. As of 2023, the population of the commune was 30,098. It was formally twinned with Hove, East Sussex in the United Kingdom.\nWith a score of 7.16/10, Draveil ranks 49th among the 100 best French towns with a population of over 20,000 inhabitants. This result is a survey conducted permanently among the French population and takes into account the following factors : environment, security, medical facilities, cultural events, sports, shops and transport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "draveil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3915,
+    "attempt": 3885,
+    "place_id": "gn-3020850",
+    "input": {
+      "place": {
+        "place_id": "gn-3020850",
+        "name": "Draguignan",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.53692,
+        "lon": 6.46458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Draguignan",
+          "url": "https://en.wikipedia.org/wiki/Draguignan",
+          "text": "Draguignan (French: [dʁaɡiɲɑ̃]; Occitan: Draguinhan) is a commune in the Var department in the administrative region of Provence-Alpes-Côte d'Azur (formerly Provence), southeastern France.\nDraguignan was founded in antiquity. The city stands out because of its long history and great location, just 25 km (16 mi) from the Mediterranean Sea and nestled between the French Riviera and the Verdon Regional Natural Park. The city is  42 km (26 mi) from Saint-Tropez, and 80 km (50 mi) from Nice. Its population is approximately 40,000. Additionally, the city serves as the administrative center of the Dracénie Provence Verdon urban community, which includes twenty-three municipalities and more than 110,000 residents.\nThe city is currently home to two military schools, the Infantry School and the Artillery School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "draguignan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3916,
+    "attempt": 3886,
+    "place_id": "gn-303700",
+    "input": {
+      "place": {
+        "place_id": "gn-303700",
+        "name": "Ödemiş",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.2278,
+        "lon": 27.96955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ödemiş",
+          "url": "https://en.wikipedia.org/wiki/Ödemiş",
+          "text": "Ödemiş (Turkish: [ˈœdemiʃ]) is a municipality and district of İzmir Province, Turkey. Its area is 1,019 km2, and its population is 132,740 (2022). It is located 113 km southeast of the city of İzmir.\nAbout 4 km north of Ödemiş town are the ruins of Hypaepa. The historical importance of the region is also reflected by the small town of Birgi, east of Ödemiş, which was the capital of the Aydınids, which has examples of Seljuq and Ottoman architecture. Birgi has been on the tentative UNESCO World Cultural Heritage list since 2012, and points of interest here include Çakırağa Mansion, İmam-i Birgivi Medrese and Sultanşah Mausoleum.\nÖdemiş is famous for its potatoes, which has the best quality in Turkey, as well as its \"Ödemiş Kebab\". The city is the biggest potato grower of Turkey with its annual 350,000 tons of potato production."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "odemis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3917,
+    "attempt": 3887,
+    "place_id": "gn-3162778",
+    "input": {
+      "place": {
+        "place_id": "gn-3162778",
+        "name": "Åsane",
+        "country": "Norway",
+        "subdivision": "Vestland",
+        "lat": 60.47444,
+        "lon": 5.325
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Åsane",
+          "url": "https://en.wikipedia.org/wiki/Åsane",
+          "text": "Åsane is a borough of the city of Bergen in Vestland county, Norway.  The borough makes up the northern part of the city, north of the city centre.\nÅsane is connected to downtown Bergen by the E16/E39 highway.  The E16 highway continues on through Åsane to the southeast to the neighboring borough of Arna. The E39 highway continues north through Åsane to the Nordhordland Bridge and then on to the northern municipalities in Vestland county. There are plans to shorten the E39 highway through Åsane, including the construction of two tunnels: Eikås Tunnel (start of construction 2010) and the Nyborg Tunnel (still in the planning stages). Most buses passing through Åsane stop at the centrally located Åsane Terminal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "asane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3918,
+    "attempt": 3888,
+    "place_id": "gn-3167022",
+    "input": {
+      "place": {
+        "place_id": "gn-3167022",
+        "name": "Savona",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 44.30905,
+        "lon": 8.47715
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Savona",
+          "url": "https://en.wikipedia.org/wiki/Savona",
+          "text": "Savona (Italian: [saˈvoːna] ; Ligurian: Saña [ˈsaŋːa]) is a seaport and comune (municipality) in the west part of the northern Italian region of Liguria, and the capital of the Province of Savona. Facing the Ligurian Sea, Savona is the main city of the western section of the Italian Riviera. It has a population of 58,690.\nOne of the most celebrated former inhabitants of Savona was the navigator Christopher Columbus, who farmed land in the area while chronicling his journeys. 'Columbus's house', a cottage situated in the Savona hills, lay between vegetable crops and fruit trees. It is one of several residences in Liguria associated with Columbus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "savona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3919,
+    "attempt": 3889,
+    "place_id": "gn-3170027",
+    "input": {
+      "place": {
+        "place_id": "gn-3170027",
+        "name": "Potenza",
+        "country": "Italy",
+        "subdivision": "Basilicate",
+        "lat": 40.64175,
+        "lon": 15.80794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Potenza",
+          "url": "https://en.wikipedia.org/wiki/Potenza",
+          "text": "Potenza (, also US: ; Italian: [poˈtɛntsa] ; Neapolitan: Putenza, Potentino dialect: Putenz) is a city and comune (municipality) in the region of Basilicata in Southern Italy. Its territory is bounded by the comuni of Anzi, Avigliano, Brindisi Montagna, Picerno, Pietragalla, Pignola, Ruoti, Tito, and Vaglio Basilicata. As the capital of the province of Potenza and of Basilicata, the city is the highest regional capital and one of the highest provincial capitals in Italy, overlooking the valley of the Basento river in the Apennine Mountains of Lucania, east of Salerno. With a population of 63,403 as of 2026, it is also the largest city in Basilicata."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "potenza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3920,
+    "attempt": 3890,
+    "place_id": "gn-3178197",
+    "input": {
+      "place": {
+        "place_id": "gn-3178197",
+        "name": "Conegliano",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.88805,
+        "lon": 12.30201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Conegliano",
+          "url": "https://en.wikipedia.org/wiki/Conegliano",
+          "text": "Conegliano (Italian: [koneʎˈʎaːno]; Venetian: Conejan) is a town and comune of the Veneto region of Italy in the province of Treviso, about 30 kilometres (19 mi) north by rail from the town of Treviso. As of 30 September 2017, the population of the city is of 35,023 people. The remains of a 10th-century castle are situated on a hill that dominates the town. Formerly belonging to the Bishop of Vittorio Veneto, what remains is a bell tower, which now houses a small museum, and outer walls. On 7 July 2019, Le Colline del Prosecco di Conegliano e Valdobbiadene was inscribed as a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "conegliano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3921,
+    "attempt": 3891,
+    "place_id": "gn-3197753",
+    "input": {
+      "place": {
+        "place_id": "gn-3197753",
+        "name": "Koper",
+        "country": "Slovenia",
+        "subdivision": "Urban Municipality of Koper",
+        "lat": 45.5482,
+        "lon": 13.72963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Koper",
+          "url": "https://en.wikipedia.org/wiki/Koper",
+          "text": "Koper (Slovene: [ˈkòːpəɾ] ; Italian: Capodistria) is the fifth-largest city in Slovenia. Located in the Istrian region in the southwestern part of the country, Koper is the main urban center of the Slovene coast. The Port of Koper is the country's only container port and a major contributor to the economy of the Municipality of Koper. The city is a destination for a number of Mediterranean cruising lines.\nKoper is also one of the main road entry points into Slovenia from Italy, which lies to the north of the municipality. The main motorway crossing is at Spodnje Škofije to the north of the city of Koper. The motorway continues into Rabuiese and Trieste. Koper also has a rail connection with the capital city, Ljubljana. On the coast, there is a crossing at Lazaret into Lazzaretto in Muggia municipality in Trieste province. The Italian border crossing is known as San Bartolomeo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "koper",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3922,
+    "attempt": 3892,
+    "place_id": "gn-3460214",
+    "input": {
+      "place": {
+        "place_id": "gn-3460214",
+        "name": "Jaguariaíva",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -24.24423,
+        "lon": -49.70932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jaguariaíva",
+          "url": "https://en.wikipedia.org/wiki/Jaguariaíva",
+          "text": "Jaguariaíva is a municipality in the state of Paraná in the Southern Region of Brazil.\nThe municipality of Jaguariaíva is located at 24°15'04 S and 49°42'21 W with an area of 1,453 km² (561 mi²). The municipality began as an overnight resting point for muleteers troops in the late Seventeenth century. Since then, It has undergone a forestry and pulp industry boom throughout the Twentieth Century. Consequently, modern-day Jaguariaíva supplies the Brazilian and international markets with resin, cheap wood for construction, plywood, paper pulp, and lightweight coated and newsprint papers.\nThe municipality contains part of the 1,830 hectares (4,500 acres) Cerrado State Park, created in 1992."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "jaguariaiva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3923,
+    "attempt": 3893,
+    "place_id": "gn-3465108",
+    "input": {
+      "place": {
+        "place_id": "gn-3465108",
+        "name": "Cruz Alta",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -28.64397,
+        "lon": -53.60633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cruz Alta, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/Cruz_Alta,_Rio_Grande_do_Sul",
+          "text": "Cruz Alta is a municipality in the state of Rio Grande do Sul, Brazil. The town is the seat of the Roman Catholic Diocese of Cruz Alta. Was founded on August 18, 1821.\nThe municipality is known to have given rise to many other municipalities as Ijuí, Santa Maria, Passo Fundo, Santo Angelo and their initial territory led to more other, became known by the northwestern mother.\nThe municipality belongs to the Northwest Mesoregion Riograndense and Microregion Cruz Alta. It is located at latitude 28 º 38 '19 \"south and longitude 53 º 36' 23\" west, with an average elevation of 452 meters above sea level. Access to the city is by BR-158, in the north-south axis, the BR-377 to the east, and also by the RS-342 on the west.\nThe location of the city is logistically important, being considered as a major trunk road and rail in the north central part of the state, with the presence of a dry port in the northeast of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "cruz alta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3924,
+    "attempt": 3894,
+    "place_id": "gn-3514876",
+    "input": {
+      "place": {
+        "place_id": "gn-3514876",
+        "name": "Valladolid",
+        "country": "Mexico",
+        "subdivision": "Yucatán",
+        "lat": 20.68812,
+        "lon": -88.19936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valladolid, Yucatán",
+          "url": "https://en.wikipedia.org/wiki/Valladolid,_Yucatán",
+          "text": "Valladolid (Spanish: [ba.ʝa.ðo.ˈlið] ; Sakiʼ in Maya) is a city located in the eastern region of the Mexican state of Yucatán. It is the seat of Valladolid Municipality. As of the 2020 census the population of the city was 56,494 inhabitants (the third-largest community in the state after Kanasín), and that of the municipality was 85,460. Valladolid is located approximately 170 km (105 mi) east of the state capital Mérida, 40 km (25 mi) east of Chichén Itzá, and 150 km (93 mi) west of Cancún.\nOn August 30, 2012, Valladolid became part of the Pueblos Mágicos promotional initiative led by the federal Secretariat of Tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "valladolid",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3925,
+    "attempt": 3895,
+    "place_id": "gn-3524903",
+    "input": {
+      "place": {
+        "place_id": "gn-3524903",
+        "name": "Las Choapas",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 17.91177,
+        "lon": -94.09646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Choapas",
+          "url": "https://en.wikipedia.org/wiki/Las_Choapas",
+          "text": "Las Choapas is a city and its surrounding municipality in the southeastern extremes of the Mexican state of Veracruz. It is bordered by the municipalities of Uxpanapa, Minatitlán, Moloacán, and Agua Dulce in Veracruz, Huimanguillo in Tabasco, Cintalapa and Tecpatán in Chiapas, and Santa María Chimalapa in Oaxaca. Its major products are cattle breeding, corn, oil, fruit, sugar, and rubber. In the past it had a rice miller. It is one of the largest municipalities in Veracruz, with an area of 2,851.2 km2 (1,100.85 sq mi). At the 2005 census the city had a population of 40,773 inhabitants, while the municipality had a population of 70,092. It is a very hot place, as temperature reaches up to 40 degrees Celsius. It has had some tornadoes in the past. It is connected to the communities of Raudales-Ocozocoautla in Chiapas through the Chiapas bridge.\nTwelve bodies whose hands were tied are found along a road in Las Choapas on January 18, 2021. Witness say the men killed belonged to a family from the ejido of Aguas Frías. There are armed Grupos de Autodefensa Comunitaria (vigilantes) in Las Choapas and at least six drug cartels operate in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "las choapas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "choapas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3926,
+    "attempt": 3896,
+    "place_id": "gn-3530531",
+    "input": {
+      "place": {
+        "place_id": "gn-3530531",
+        "name": "Coatepec",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 19.45229,
+        "lon": -96.96148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coatepec, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Coatepec,_Veracruz",
+          "text": "The municipality of Coatepec (Spanish: [koateˈpek] ) is located in the central region of the Mexican state of Veracruz. Its north latitude is 19° 27′, west longitude is 96° 58′, altitude of 1,200.00 m (3,937.01 ft), and surface of 202.4 km2 (78.1 sq mi), which represents 0.338% of the current state. The municipal seat and largest community of the municipality is also called Coatepec. The 2020 INEGI census reported a population of 55,720 in the city, while the municipality had 93,911 inhabitants. The municipality also includes many smaller communities within its boundaries. The largest of these are Tuzamapan (population 8,300) Pacho Viejo (4,829), and Mahuixtlán (3,946).\nOften called The Coffee Capital of Mexico, the name Coatepec comes from the Nahuatl coatl (serpent), and tepetl (hill), or \"The Hill of the Snakes\".\nCoatepec was named a \"Pueblo Mágico\" in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "coatepec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3927,
+    "attempt": 3897,
+    "place_id": "gn-3581398",
+    "input": {
+      "place": {
+        "place_id": "gn-3581398",
+        "name": "Punta Gorda",
+        "country": "Belize",
+        "subdivision": "Toledo District",
+        "lat": 16.09835,
+        "lon": -88.8097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Punta Gorda, Belize",
+          "url": "https://en.wikipedia.org/wiki/Punta_Gorda,_Belize",
+          "text": "Punta Gorda, declared a town on Monday, 21 January 1895,\nknown locally as P.G., is the capital and largest town of Toledo District in southern Belize. Punta Gorda is the southernmost sizable town in the nation, with a population of about 5,000 people. Although the town bears a Spanish name, its inhabitants are mostly Kriol/English-speaking and are primarily of Garifuna, East Indian, Kriol, and Maya descent.\nPunta Gorda is a seaport and fishing town on the Caribbean Sea. It was a small fishing village before it was settled by a number of Garifuna emigrants from Honduras in 1823. The Garifuna refer to the town as Peini. The town is about fifteen feet above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "punta gorda",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "punta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gorda",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3928,
+    "attempt": 3898,
+    "place_id": "gn-3846915",
+    "input": {
+      "place": {
+        "place_id": "gn-3846915",
+        "name": "Libertador General San Martín",
+        "country": "Argentina",
+        "subdivision": "Jujuy",
+        "lat": -23.81305,
+        "lon": -64.79353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Libertador General San Martín, Jujuy",
+          "url": "https://en.wikipedia.org/wiki/Libertador_General_San_Martín,_Jujuy",
+          "text": "Libertador General San Martín is a town in Jujuy Province, Argentina, and capital of the Ledesma Department, located on the National Route Nº34. It is colloquially called Ledesma or Libertador.\nThe town was founded under the name of Pueblo Nuevo Ledesma in 1899, on an area donated by the owners of the Ledesma sugar refinery. Two years later, the outline and later subdivision of the eight blocks surrounding the main square was made.\nIn 1906 the railroad arrived, and the station was built halfway from the town to the industrial centre. The area was enjoyed an economic expansion strengthened by the first Lebanese and Syrian immigration. In 1950 the town was renamed after the Libertador General San Martín. Ledesma S.A.A.I. remains the town's largest employer. The firm maintains sugarcane plantations; fruit orchards, packaging and concentrate facilities; sugar, cellulose, and paper mills; and alcohol fuel facilities.\nLocated on the banks of the San Francisco River, and only 8 kilometres (5.0 mi) from the entrance to the Calilegua National Park, tourism in the area has recently started to grow. Hot springs and trekking routes are some of the other touristic attractions available to the visitors.\nThe local Guaraní community performs a traditional Yeyure ceremony called Arete guazú, \"Carnaval Grande\" or \"Pim Pim\" in the town every year. This event takes place at the foot of a tree that symbolizes the goddess Pachamama, to whom they offer basil, drinks, cigarettes and Chicha in gratitude. They then dance around in a flurry of streamers, confetti and talcum powder."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "libertador general san martin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "libertador",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "general",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "martin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3929,
+    "attempt": 3899,
+    "place_id": "gn-4018403",
+    "input": {
+      "place": {
+        "place_id": "gn-4018403",
+        "name": "Apaseo el Grande",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.54555,
+        "lon": -100.68787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Apaseo el Grande",
+          "url": "https://en.wikipedia.org/wiki/Apaseo_el_Grande",
+          "text": "Apaseo el Grande is a city and municipality located in Guanajuato, Mexico. The municipality covers 415.26 square kilometres (160 sq mi). It is bordered on the north by Comonfort and San Miguel de Allende, on the east by Querétaro  in the State of Querétaro, on the south by Apaseo el Alto, and on the west by Celaya. The municipality had a population of 85,319 inhabitants according to the 2010 census.\nIn pre-Columbian times, the region was known as Andahe (\"Close to the water\") and Atlayahualco (\"Place where water flows\") by the Otomí and Nahua inhabitants. It was eventually known as Apatzeo (\"Yellow flower\") by the Purépecha. Following the Spanish conquest c.1525, Apaseo was the first town founded in what is now the state of Guanajuato. It received its present name of Apaseo el Grande in 1957, to avoid confusion with the neighboring town of Apaseo el Alto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "apaseo el grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "apaseo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3930,
+    "attempt": 3900,
+    "place_id": "gn-461114",
+    "input": {
+      "place": {
+        "place_id": "gn-461114",
+        "name": "Bauska",
+        "country": "Latvia",
+        "subdivision": "Bauska Municipality",
+        "lat": 56.4071,
+        "lon": 24.18733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bauska",
+          "url": "https://en.wikipedia.org/wiki/Bauska",
+          "text": "Bauska () is a town in its eponymous municipality, found in the Zemgale region of southern Latvia.\nBauska is located 66 km (41 mi) from the Latvian capital Riga, 62 km (38.5 mi) from Jelgava and 20 km (12 mi) from the Lithuanian border on the busy European route E67. The town is situated at the confluence of the shallow rivers Mūsa and Mēmele, where they form the Lielupe River.\nAverage temperatures in January are −5 °C (23 °F), and 17.5 °C (63.5 °F) in July. Rainfall averages 500–650 mm (20–26 in) annually. The 80.4% of Bauska Municipality territory is agricultural land and 13% of forests.\nIn previous centuries, the city was known in German as \"Bauske\", in Yiddish as \"Boisk\", in Lithuanian as \"Bauskė\", and in Polish as \"Bowsk\".\nThe population of Bauska is estimated to be 8,200. Bauska is the centre of Bauska Municipality, a first-level national subdivision that has a population of 24,370 with an approximate density of 30 people per km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "bauska",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
