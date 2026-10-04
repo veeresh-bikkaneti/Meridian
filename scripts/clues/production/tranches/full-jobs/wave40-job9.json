@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 8015,
+    "attempt": 7961,
+    "place_id": "gn-11808388",
+    "input": {
+      "place": {
+        "place_id": "gn-11808388",
+        "name": "Zoo",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.38368,
+        "lon": 9.77168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zoo, Hanover",
+          "url": "https://en.wikipedia.org/wiki/Zoo,_Hanover",
+          "text": "Hannover-Zoo (German pronunciation: [tsoː] ; also called Zooviertel, rarely called Hindenburgviertel) is a quarter of the city of Hanover. Located within the quarter is the eponymous  Hanover Zoo, also known as the Hanover Zoological Gardens. Part of the borough Hanover-Mitte, it has 4,952 inhabitants (2020).\nThe quarter is home to the Hanover Congress Center, whose complex contains the historic Stadthalle Hannover, as well as the Stadtpark Hannover, the city park of Hanover built on the grounds of the first Bundesgartenschau of 1951. The entire northern part of the Eilenriede belongs to the district. As such, the Lister Tower is also located in the Zoo district and not in the List district. The Hochschule für Musik, Theater und Medien Hannover is headquartered at the Neues Haus plaza in the quarter.\nThere are two high schools in the district, the Sophienschule and the Kaiser Wilhelm and Ratsgymnasium. On Gellertstraße street is the Neo-Romanesque church of St. Elisabeth. The former Jewish Hospital Hannover was also located in the district.\nThe later Reich President Paul von Hindenburg lived in the Zoo district from 1919 to 1925, from which the name Hindenburgviertel was derived. The city of Hanover had appointed Hindenburg as honorary citizen and gave him a villa. The Hindenburgvilla is now the seat of the Fritz Behrens Foundation.\nThe zoo district is considered a desirable residential area containing upscale historic buildings with significantly above-average rents and real estate prices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "zoo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8016,
+    "attempt": 7962,
+    "place_id": "gn-1679815",
+    "input": {
+      "place": {
+        "place_id": "gn-1679815",
+        "name": "Vintar",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 18.2284,
+        "lon": 120.6475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vintar",
+          "url": "https://en.wikipedia.org/wiki/Vintar",
+          "text": "Vintar, officially the Municipality of Vintar (Ilocano: Ili ti Vintar; Tagalog: Bayan ng Vintar), is a municipality in the province of Ilocos Norte, Philippines. According to the 2024 census, it has a population of 35,051 people.\nVintar is the largest municipality in Ilocos Norte by land area. Its patron saint is Saint Nicholas de Tolentino. It is home to one of the biggest convents in the province, which also hosts the Saint Nicholas Academy.\nThe town is also where the Vintar Dam, the first dam funded by the World Bank in Southeast Asia and an important cultural property listed by the National Commission for Culture and the Arts (NCCA), is located. It is also the site of the Umok ni Siwawer Eco-Tourism Nature Park, the town's popular picnic resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "vintar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8017,
+    "attempt": 7963,
+    "place_id": "gn-2658864",
+    "input": {
+      "place": {
+        "place_id": "gn-2658864",
+        "name": "Saint-Maurice",
+        "country": "Switzerland",
+        "subdivision": "Valais",
+        "lat": 46.21826,
+        "lon": 7.0032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Maurice, Switzerland",
+          "url": "https://en.wikipedia.org/wiki/Saint-Maurice,_Switzerland",
+          "text": "Saint-Maurice (French pronunciation: [sɛ̃ mɔʁis] ) is a village and a municipality in the Swiss canton of Valais and the capital of the district of Saint-Maurice. On 1 January 2013, the former municipality of Mex merged into the municipality of Saint-Maurice.\nSaint-Maurice is the site of the Ancient Roman outpost of Agaunum and the 6th-century Abbey of Saint-Maurice d'Agaune. The village is located at the entrance of a pass leading to the upper part of the Rhône valley. As such, it has a strategic importance, and defence work were built from the 15th century to control this access. The Fortress Saint-Maurice was constructed in the surrounding mountainsides from 1880 through 1995."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "saint maurice",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maurice",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8018,
+    "attempt": 7964,
+    "place_id": "gn-2663540",
+    "input": {
+      "place": {
+        "place_id": "gn-2663540",
+        "name": "Vaxholm",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.40225,
+        "lon": 18.35317
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vaxholm",
+          "url": "https://en.wikipedia.org/wiki/Vaxholm",
+          "text": "Vaxholm is a city, urban area and the seat of Vaxholm Municipality, Stockholm County, Sweden. It occupies bigger amount of islands of which the most populated are Vaxön, Resarö, Rindö and Kullö which is known for its nature reserve. The name Vaxholm comes from Vaxholm Fortress, which was constructed in 1549 on the adjacent islet of Vaxholmen.\nFor historical reasons it has always been referred to as a city, despite the small number of inhabitants, which as of 2020 total was 6,151. Vaxholm Municipality prefers to use the designation Vaxholms stad (City of Vaxholm) for its whole territory, including 64 islets in the Stockholm archipelago, a usage which is somewhat confusing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "vaxholm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8019,
+    "attempt": 7965,
+    "place_id": "gn-2841611",
+    "input": {
+      "place": {
+        "place_id": "gn-2841611",
+        "name": "Sankt Goar",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.14878,
+        "lon": 7.7072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sankt Goar",
+          "url": "https://en.wikipedia.org/wiki/Sankt_Goar",
+          "text": "Sankt Goar (German pronunciation: [zaŋkt ɡoˈaːɐ̯] ) is a town on the west bank of the Middle Rhine in the Rhein-Hunsrück-Kreis (district) in Rhineland-Palatinate, Germany. It belongs to the Verbandsgemeinde Hunsrück-Mittelrhein, whose seat is in Emmelshausen.\nSankt Goar is well known for its central location in the Rhine Gorge, a UNESCO World Heritage Site since July 2002. Above the town stand the ruins of Burg Rheinfels, one of the castles for which the Middle Rhine is famous, and across the river lies the sister town of Sankt Goarshausen with its own castles, Katz and Maus (“Cat” and “Mouse”). The famous Lorelei rock is close by, slightly upstream on the opposite bank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "sankt goar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sankt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "goar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8020,
+    "attempt": 7966,
+    "place_id": "gn-2947120",
+    "input": {
+      "place": {
+        "place_id": "gn-2947120",
+        "name": "Bodenmais",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.06667,
+        "lon": 13.1
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bodenmais",
+          "url": "https://en.wikipedia.org/wiki/Bodenmais",
+          "text": "Bodenmais (German pronunciation: [ˈboːdn̩ˌmaɪs]) is a municipality in the district of Regen in Bavaria, Germany. It lies at one end of the Zeller Valley in the Bavarian Forest.\nThe tourist attractions at the Silberberg mountain, with its former silver mine, include cross-country skiing tracks as well as an alpine skiing hill (about 1,050 m (3,440 ft) above sea level) in winter, doubling in summer as a 600 m (2,000 ft) long alpine slide. There is also a mining museum, reminding of ages of ferro-oxide mining and vitriol production. Some shafts are still accessible.\nThe village itself is known for its glass shops, the most notable being Joska Glasparadies (Joska glass paradise)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "bodenmais",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8021,
+    "attempt": 7967,
+    "place_id": "gn-2953318",
+    "input": {
+      "place": {
+        "place_id": "gn-2953318",
+        "name": "Bad Wiessee",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.71667,
+        "lon": 11.71667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Wiessee",
+          "url": "https://en.wikipedia.org/wiki/Bad_Wiessee",
+          "text": "Bad Wiessee (Central Bavarian: Bad Wiessä) is a municipality in the district of Miesbach in Upper Bavaria in Germany. Since 1922, it has been a spa town and located on the western shore of the Tegernsee Lake. It had a population of around 4800 inhabitants in 2014. The word \"Bad\" means \"spa\" or \"baths\", while \"Wiessee\" derives from \"Westsee\", meaning \"western part of the lake\". Bad Wiessee was first documented in 1017 in the tax book of the Tegernsee Abbey, encouraged to pay goods to the abbey.\nBad Wiessee is known for its healing sulfur-fountain, discovered by the Dutch oil explorer Adriaan Stoop in 1909 while he was drilling for oil. He built the first iodine sulfur bath in 1912 after oil production had been exhausted. People spend their holidays in Bad Wiessee because of its quiet atmosphere and its location at the north side of the Alps.\nTourism is one of the main sources of income for the population of Bad Wiessee. Although spa tourism has declined in the last decades, Bad Wiessee is still very popular for its casino and with wealthy people, many of them buying a second home or condo to spend their holidays or retirement there. The hotels, shops and restaurants cater for the medium-price-category traveller but traditional B&B and reasonable priced accommodations are still available all year round."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "bad wiessee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wiessee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8022,
+    "attempt": 7968,
+    "place_id": "gn-3095396",
+    "input": {
+      "place": {
+        "place_id": "gn-3095396",
+        "name": "Komorniki",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 52.3387,
+        "lon": 16.81063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Komorniki",
+          "url": "https://en.wikipedia.org/wiki/Komorniki",
+          "text": "Komorniki [kɔmɔrˈniki] is a village in Poland, located in Greater Poland Voivodeship, Poznań County, Gmina Komorniki (Poznań metropolitan area), with approximately 5,500 inhabitants. The gmina (municipality) of Komorniki, including the village of Komorniki and 10 other villages, has about 18,325 inhabitants and is an agricultural and industrial region. (See Gmina Komorniki.) The village lies on the A2 Highway and National Road number 5 from Poznań to Wrocław, about 7 kilometres (4 mi) from the city of Poznań. Komorniki adjoins Poznań, Luboń, Plewiska, and the Wielkopolska National Park.\nThe village is famous for its Komorniki Festival of Organ and Chamber Music.\nThe Polish Baroque Orchestra society has its registered office in Komorniki."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "komorniki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8023,
+    "attempt": 7969,
+    "place_id": "gn-3171962",
+    "input": {
+      "place": {
+        "place_id": "gn-3171962",
+        "name": "Orgosolo",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 40.2053,
+        "lon": 9.35445
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orgosolo",
+          "url": "https://en.wikipedia.org/wiki/Orgosolo",
+          "text": "Orgosolo (Italian pronunciation: [orˈɡɔsolo], Sardinian: Orgòsolo) is a town and comune (municipality) located in the Province of Nuoro in the autonomous island region of Sardinia in Italy, at about 110 kilometres (68 mi) north of Cagliari and about 13 kilometres (8 mi) south of Nuoro. It has 3,803 inhabitants.\nOrgosolo is famous for its murals. These political paintings can be found on walls all over Orgosolo. Since about 1969, the murals reflect different aspects of Sardinia's political struggles but also deal with international issues.\nVittorio De Seta's movie Banditi a Orgosolo (1961) focuses on the past way of life in central Sardinia and on the phenomenon of \"Banditry\" in the region. At one time Orgosolo was known as the \"village of the murderers\" due to its high crime rate. Bandits of the surrounding mountains used the church door to post notices of death sentence passed on their enemies.\nOrgosolo borders the municipalities of Dorgali, Fonni, Mamoiada, Nuoro, Oliena, Talana, Urzulei, Villagrande Strisaili."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "orgosolo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8024,
+    "attempt": 7970,
+    "place_id": "gn-3670352",
+    "input": {
+      "place": {
+        "place_id": "gn-3670352",
+        "name": "Salento",
+        "country": "Colombia",
+        "subdivision": "Quindío Department",
+        "lat": 4.63758,
+        "lon": -75.56996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salento, Quindío",
+          "url": "https://en.wikipedia.org/wiki/Salento,_Quind%C3%ADo",
+          "text": "Salento is a town and municipality in the north-east of the department of Quindío, Colombia. The municipality covers an area of 377.67 km2. It was the first settlement in Quindío of the modern era, and the first municipality founded in the department. The town of Salento itself is located 24 km northeast of the departmental capital Armenia. In 2023, the municipality of Salento had an estimated population of 9,748. It has a wide variety of tourist attractions, including the Cocora Valley, where one can find a landscape full of nature, such as the Barranquero or Momotus aequatorialis, a commonly seen bird, take ecological walks and enjoy the landscapes of this town.\nThe main route from Popayán and Cali to Bogotá used to pass through Salento, but when the route was diverted, the town became isolated and did not develop as rapidly as the rest of the region. For this reason, it has retained more of its traditional colonial architecture than almost any other town in the eje cafetero, along with a quiet and relaxed way of life, and as a result, the town and nearby Cocora valley are among the most popular tourist destinations in Colombia. The historic center of town was inscribed on the UNESCO World Heritage List as part of the \"Coffee Cultural Landscape\" in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "salento",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8025,
+    "attempt": 7971,
+    "place_id": "gn-4022983",
+    "input": {
+      "place": {
+        "place_id": "gn-4022983",
+        "name": "Doctor Mora",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 21.14204,
+        "lon": -100.3211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doctor Mora",
+          "url": "https://en.wikipedia.org/wiki/Doctor_Mora",
+          "text": "Doctor Mora  is a Mexican city (and municipality) located in Northeast region of the state of Guanajuato. The municipality has an area of 233.91 square kilometres (0.77% of the surface of the state) and is bordered to the north by Victoria, to the east by Tierra Blanca, to the south by San José Iturbide, and to the west by San Luis de la Paz. The municipality consists of 74 localities within it.  The municipality has a population of 24,976 according to the 2015 census.\nDoctor Mora is named after José María Luis Mora.\nThe municipal president of Doctor Mora and its many smaller outlying communities is Edgar Javier Resendiz Jacobo (2021–2027)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "doctor mora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "doctor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8026,
+    "attempt": 7972,
+    "place_id": "gn-5350821",
+    "input": {
+      "place": {
+        "place_id": "gn-5350821",
+        "name": "French Camp",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.88409,
+        "lon": -121.27106
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "French Camp, California",
+          "url": "https://en.wikipedia.org/wiki/French_Camp,_California",
+          "text": "French Camp (from Campo de los Franceses, Spanish for \"Field of the Frenchmen\") is an unincorporated community in San Joaquin County, California, United States. The population was 3,770 as of the 2020 census. Up from 3,376 at the 2010 census, and down from 4,109 at the 2000 census. For statistical purposes, the United States Census Bureau has defined French Camp as a census-designated place (CDP). The census definition of the area may not precisely correspond to local understanding of the area with the same name.\nFrench Camp is the location of the U.S. Army Sharpe Depot and the GSA Western Distribution Center, and is the oldest settlement in San Joaquin County.  San Joaquin General Hospital is located in French Camp. It is also the location of the county jail, the county juvenile hall and the county children's shelter, which combine to form a sizable percentage of the place's population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "french camp",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "french",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camp",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8027,
+    "attempt": 7973,
+    "place_id": "gn-5690711",
+    "input": {
+      "place": {
+        "place_id": "gn-5690711",
+        "name": "New Town",
+        "country": "United States",
+        "subdivision": "North Dakota",
+        "lat": 47.98085,
+        "lon": -102.49018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Town, North Dakota",
+          "url": "https://en.wikipedia.org/wiki/New_Town,_North_Dakota",
+          "text": "New Town is a city in Mountrail County, North Dakota. The population was 2,764 at the time of the 2020 census, making it the 18th largest city in North Dakota. New Town was platted in 1950 as a replacement site for the residents of Sanish and Van Hook, as these towns were scheduled to be flooded by the creation of Lake Sakakawea, a reservoir to provide water for irrigation.\nIt is the largest city and the administrative center of the Fort Berthold Reservation. New Town is home to Nueta Hidatsa Sahnish College. New Town is located on State Highway 23 at the crossing of Lake Sakakawea by the Four Bears Bridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "new town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8028,
+    "attempt": 7974,
+    "place_id": "gn-6183858",
+    "input": {
+      "place": {
+        "place_id": "gn-6183858",
+        "name": "Wolfville",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 45.08345,
+        "lon": -64.36546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolfville",
+          "url": "https://en.wikipedia.org/wiki/Wolfville",
+          "text": "Wolfville is a Canadian town in the Annapolis Valley, Kings County, Nova Scotia, located about 100 kilometres (62 mi) northwest of the provincial capital, Halifax. The town is home to Acadia University and Landmark East School.\nThe town is a tourist destination due to its views of Cape Blomidon, the Bay of Fundy and Gaspereau Valley, as well as its wine industry. The downtown portion of Wolfville is home to pubs, bars, cafes and shops. Wolfville is also home to the Acadia Cinema Cooperative, a non-profit organization that runs the local movie/performance house. In the past few years, several Victorian houses in Wolfville have been converted to bed and breakfast establishments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "wolfville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8029,
+    "attempt": 7975,
+    "place_id": "gn-684054",
+    "input": {
+      "place": {
+        "place_id": "gn-684054",
+        "name": "Botiza",
+        "country": "Romania",
+        "subdivision": "Maramureş",
+        "lat": 47.66667,
+        "lon": 24.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Botiza",
+          "url": "https://en.wikipedia.org/wiki/Botiza",
+          "text": "Botiza (Hungarian: Batiza, Yiddish: בוטיזה) is a commune in Maramureș County, Maramureș, Romania. The commune is well known for its handmade wool carpets. It is composed of a single village, Botiza. It also included Poienile Izei until that was split off to form a separate commune in 1995.\nThe commune is located in the central part of the county, in the southwestern foothills of the Maramureș Mountains, at an altitude of 483 m (1,585 ft). It is crossed by county roads DJ171A and DJ171D; the city of  Sighetu Marmației is 40 km (25 mi) to the northwest, while the county seat, Baia Mare, is 66 km (41 mi) to the west.\n\nAt the 2021 census, Botiza had a population of 2,373; of those, 96.25% were ethnic Romanians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "botiza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8030,
+    "attempt": 7976,
+    "place_id": "gn-2206900",
+    "input": {
+      "place": {
+        "place_id": "gn-2206900",
+        "name": "Westport",
+        "country": "New Zealand",
+        "subdivision": "West Coast",
+        "lat": -41.75262,
+        "lon": 171.6037
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westport, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Westport,_New_Zealand",
+          "text": "Westport (Māori: Kawatiri) is the main town of the Buller District in the West Coast Region of the South Island of New Zealand. Established in 1861, it is the oldest European settlement on the West Coast. Originally named Buller, it is on the right bank and at the mouth of the Buller River, close to the prominent headland of Cape Foulwind. It is connected with Greymouth, 100 kilometres (62 mi) to the south, via State Highway 6, and with Nelson, 222 kilometres (138 mi) to the northeast, via the Buller Gorge. The Westport urban area has 4,600 residents, out of a Buller District population of 10,650, as of June 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "westport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8031,
+    "attempt": 7977,
+    "place_id": "gn-2646578",
+    "input": {
+      "place": {
+        "place_id": "gn-2646578",
+        "name": "Horrabridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.50843,
+        "lon": -4.10042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horrabridge",
+          "url": "https://en.wikipedia.org/wiki/Horrabridge",
+          "text": "Horrabridge is a village and civil parish in the West Devon district, in Devon, England. The village lies approximately 12 miles (19 km) north of the city of Plymouth and 4 miles (6.4 km) south of Tavistock, and is within the Dartmoor National Park. In 2021 the parish had a population of 2,199.\nThe village sits on the River Walkham, a fishing river famous for its salmon. The village's name may have been taken from the 15th-century packhorse bridge which remains the only vehicular route from one side of the village to the other, and featured in the children's television programme Bagpuss. The bridge is a Grade I listed structure.\nHorrabridge has two pubs, the London Inn and The Leaping Salmon, but has lost many of its shops over the last 20 years including a draper, television shop and a general store. The village does however retain its post office, family bakery, hairdresser, florist and newsagent.\nUntil the beginning of the 20th century, the main industry was the mining of copper and tin. This industry has completely disappeared, leaving a legacy of unmapped mineshafts in the village and the surrounding area. It is a popular starting point for walks on Dartmoor and has become a dormitory village for the adjoining towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "horrabridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8032,
+    "attempt": 7978,
+    "place_id": "gn-2651722",
+    "input": {
+      "place": {
+        "place_id": "gn-2651722",
+        "name": "Cults",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.11667,
+        "lon": -2.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cults, Aberdeen",
+          "url": "https://en.wikipedia.org/wiki/Cults,_Aberdeen",
+          "text": "Cults ( KULTS) is a suburb on the western edge of Aberdeen, Scotland. It lies on the banks of the River Dee and marks the eastern boundary of Royal Deeside.\nCults, known for its historic granite housing, sits approximately six miles from the coast of the North Sea. Cults maintains village status and many of the societal structures found in a country village, despite its proximity to the west of Aberdeen. The name is a corruption of Coilltean, the Scottish Gaelic word for \"Woods\".  There are various green spaces in Cults, the largest of these being Allan Park, a public park situated near the golf club and the River Dee. The park is also home to the Cults Cricket Club."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "cults",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8033,
+    "attempt": 7979,
+    "place_id": "gn-2658489",
+    "input": {
+      "place": {
+        "place_id": "gn-2658489",
+        "name": "Stein am Rhein",
+        "country": "Switzerland",
+        "subdivision": "Schaffhausen",
+        "lat": 47.65933,
+        "lon": 8.85964
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stein am Rhein",
+          "url": "https://en.wikipedia.org/wiki/Stein_am_Rhein",
+          "text": "Stein am Rhein (Swiss Standard German pronunciation: [ˈʃtaɪn am ˈraɪn], lit. 'Stein on the Rhine'; abbreviated as Stein a. R.) is a historic town and a municipality in the canton of Schaffhausen in Switzerland. It is located at the outfall of Lower Lake Constance on the High Rhine river, about halfway between the town of Schaffhausen and the city of Konstanz.\nThe town's medieval centre retains the ancient street plan. The site of the city wall, and the city gates are preserved, though the former city wall now consists of houses. The medieval part of the town has been pedestrianised and many of the medieval buildings are painted with frescoes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "stein am rhein",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stein",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rhein",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8034,
+    "attempt": 7980,
+    "place_id": "gn-2663432",
+    "input": {
+      "place": {
+        "place_id": "gn-2663432",
+        "name": "Vejbystrand",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 56.31778,
+        "lon": 12.76722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vejbystrand",
+          "url": "https://en.wikipedia.org/wiki/Vejbystrand",
+          "text": "For Vejby Strand in Denmark, see Vejby, Gribskov Municipality\n\nVejbystrand was previously a bimunicipal locality situated in Skåne County, Sweden with 2,721 inhabitants in 2010. The majority of its population lived in Ängelholm Municipality and a minority in Båstad Municipality. It is included in Ängelholm from 2015 on.\nThe most famous building in Vejbystrand was the kitchen/admin building of Kronprinsessan Victorias kustsanatorium, built in 1903. The building was taken down in May 2010 and will be replaced by apartments. Throughout the early and middle twentieth century Vejbystrand was a popular spot for patients with lung disease, especially tuberculosis, as Vejbystrand was known for its clean air coming from the coast.\nVejbystrand is a popular vacation area for Swedes and people visiting Sweden. There is one hotel (Vejby Strand Hotel) and one hostel and also many summer houses for rent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "vejbystrand",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

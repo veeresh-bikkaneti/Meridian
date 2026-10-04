@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 7913,
+    "attempt": 7861,
+    "place_id": "gn-963488",
+    "input": {
+      "place": {
+        "place_id": "gn-963488",
+        "name": "Qumbu",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -31.16304,
+        "lon": 28.87056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qumbu",
+          "url": "https://en.wikipedia.org/wiki/Qumbu",
+          "text": "Qumbu is a town in OR Tambo District Municipality in the Eastern Cape province of South Africa.\nThe town is 61 km north of Mthatha and was founded in 1876. Lower Kroza & Mvumelwana are the biggest rural areas in Qumbu 5180. The name is of isiXhosa origin, derived from amazimba aqumbu, ‘the corn has budded’, or ‘the corn is swollen’, referring to a tribal war which occurred at that time of the year. It is also known by its tribal fights during the  19th century, where King Mhlontlo of the AmaMpondomise was accused of killing the then Missioner Mr Hamilton Hope who helps in the foundation of the town Magistrate court. Mhlontlo was later arrested in King Williams Town.\nQumbu was the first place in the Eastern Transkei homeland to have a hospital named Nessie Knight in the nearby rural area of Sulenkama, founded by the Missioner Mr Peterson. It lies on the north-east side of the Eastern Cape provincial border alongside the N2 route between Mthatha and Mt Frere, and the R396 between Tsolo and Maclear. It is bordered by King Sabata Dalindyebo Local Municipality to the south, Nyandeni Local Municipality to the east, Umzimvubu Local Municipality to the north \nThe nearest hospital is Nessie Knight Hospital.\nIn the 1990s and early 2000s high level of stock theft in the area resulted in a low-level civil war that engulfed Qumbu and the nearby settlement of Tsolo. This conflict left an estimated 400 people dead. In 2007 the area was still ranked as having one of the highest rates of stock theft in South Africa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "qumbu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7914,
+    "attempt": 7862,
+    "place_id": "gn-2611509",
+    "input": {
+      "place": {
+        "place_id": "gn-2611509",
+        "name": "Tølløse",
+        "country": "Denmark",
+        "subdivision": "Zealand",
+        "lat": 55.6125,
+        "lon": 11.77034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tølløse",
+          "url": "https://en.wikipedia.org/wiki/T%C3%B8ll%C3%B8se",
+          "text": "Tølløse is a railway town located in the northwestern part of the island of Zealand in Denmark. It has a population of 4,028 (1 January 2026).\nThe town is located in Holbæk Municipality in Region Zealand and was the municipal seat of the former Tølløse Municipality until 1 January 2007.\nTølløse is served by Tølløse railway station located on the railway line between Roskilde and Holbæk, and is the terminus of the railway line from Tølløse to Slagelse, operated by Lokaltog A/S.\n\nTølløse is known for the many schools in town. One public school (Tølløse Skole), two private schools (Tølløse Privat- og Efterskole, Sejergaardsskolen), and three boarding schools (efterskole) (Tølløse Slots Efterskole, Sejergaardens musikefterskole og Tølløse Privat- og Efterskole)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "t ll se",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "t",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ll",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "se",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7915,
+    "attempt": 7863,
+    "place_id": "gn-3203970",
+    "input": {
+      "place": {
+        "place_id": "gn-3203970",
+        "name": "Blagaj",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.25892,
+        "lon": 17.88815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blagaj, Mostar",
+          "url": "https://en.wikipedia.org/wiki/Blagaj,_Mostar",
+          "text": "Blagaj (Serbian Cyrillic: Благај) is a historic village and protected heritage site in Bosnia and Herzegovina. It is located in the south-eastern region of the Mostar basin, in the Herzegovina-Neretva Canton. It stands at the edge of Bišće plain and is one of the most valuable mixed urban and rural built environments in Bosnia and Herzegovina, distinguished from other similar built environments in its urban layout. Blagaj was most likely named for its mild weather patterns since blaga in Bosnian means \"mild\".\nBlagaj is situated at the spring of the Buna river and a historical tekija (Dervish monastery). The Blagaj Tekija was built around 1520, with elements of Ottoman architecture and Mediterranean style and is considered a national monument. Blagaj Tekke is a monastery built for the Dervish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "blagaj",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7916,
+    "attempt": 7864,
+    "place_id": "gn-3516148",
+    "input": {
+      "place": {
+        "place_id": "gn-3516148",
+        "name": "Tecolutla",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 20.48049,
+        "lon": -97.01309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tecolutla",
+          "url": "https://en.wikipedia.org/wiki/Tecolutla",
+          "text": "Tecolutla is a town and municipality located on the Tecolutla River on the eastern coast of the state of Veracruz in Mexico. It has the closest beaches to Mexico City, and much of its economy is based on tourism, as it is only a four- or five-hour drive from the capital. It is the northern end of a tourist corridor along the Gulf of Mexico called the \"Emerald Coast,\" which extends down to the city of Veracruz.\nTecolutla's biggest attraction is its natural settings of wetlands with estuaries, canals and mangroves associated with the river. The town is known for the \"Tecolutla Monster,\"—probably a dead whale—that was washed ashore in 1969. Its remains are kept at the Marine Museum. The name Tecolutla means \"place of the tecolotes or owls.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "tecolutla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7917,
+    "attempt": 7865,
+    "place_id": "gn-3651857",
+    "input": {
+      "place": {
+        "place_id": "gn-3651857",
+        "name": "Sangolquí",
+        "country": "Ecuador",
+        "subdivision": "Pichincha",
+        "lat": -0.33405,
+        "lon": -78.45217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sangolquí",
+          "url": "https://en.wikipedia.org/wiki/Sangolqu%C3%AD",
+          "text": "Sangolquí is a suburb of Quito and the seat of Rumiñahui canton in the province of Pichincha, in northern Ecuador. It is connected to Quito by the Autopista General Rumiñahui (General Rumiñahui Highway).\nThe Armed Forces University – ESPE is located in the suburb. Other educational institutions here include Colegio Liceo del Valle, Colegio Antares, Liceo Naval Quito and Émile Jaques-Dalcroze High School. \nThe suburb is also home to the Headquarters of the Professional Football Club Independiente del Valle that reached the final of the 2016 Copa Libertadores, won the 2019 and the 2022 Copa Sudamericana.\nSangolquí, along with the rest of Rumiñahui canton, was designated as a Pueblo Mágico by the Ecuadorian Ministry of Tourism (MINTUR) in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "sangolqui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7919,
+    "attempt": 7866,
+    "place_id": "gn-3980828",
+    "input": {
+      "place": {
+        "place_id": "gn-3980828",
+        "name": "Tzintzuntzan",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.62828,
+        "lon": -101.57764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tzintzuntzan, Michoacán",
+          "url": "https://en.wikipedia.org/wiki/Tzintzuntzan,_Michoac%C3%A1n",
+          "text": "Tzintzuntzan (Spanish pronunciation: [tsin'tsuntsan]) is a town in Tzintzuntzan Municipality located in the north of Michoacán state, 53 km from the capital of Morelia and 17.5 km from Pátzcuaro, located on the northeast shore of Lake Pátzcuaro. It is best known as the former capital of the Tarascan state until it was conquered by the Spanish in the 1520s. Today, Tzintzuntzan is a small town with two major attractions, the archeological site of Tzintzuntzan and the former monastery complex of San Francisco. The municipality contains another important archeological site called Ihuatzio. It is also notable for its festivals, which include the Festival of Señor del Rescate, Day of the Dead celebrations and a cultural event related to New Year's."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "tzintzuntzan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7920,
+    "attempt": 7867,
+    "place_id": "gn-5321390",
+    "input": {
+      "place": {
+        "place_id": "gn-5321390",
+        "name": "Window Rock",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 35.68057,
+        "lon": -109.05259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Window Rock, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Window_Rock,_Arizona",
+          "text": "Window Rock, known in Navajo as Tségháhoodzání (pronounced [tsʰéɰáhòːtsání]), is a city and census-designated place that serves as the capital of the Navajo Nation, the largest Native American tribe by both land and tribal enrollment. The capital lies in Apache County, and is within the boundaries of the St. Michaels Chapter, adjacent to the Arizona and New Mexico state line. Window Rock is the site of the Navajo Nation governmental campus, which contains the Navajo Nation Council, Navajo Nation Supreme Court, the offices of the Navajo Nation President and Vice President, and many Navajo government buildings.\nWindow Rock's population was 2,500 at the 2020 census. It is estimated to reach around 20,000 during weekdays when tribal offices are open.\nWindow Rock's main natural attraction is the window formation of sandstone, after which the community is named. The Navajo Nation Museum, the Navajo Nation Zoological and Botanical Park, and the Navajo Nation Code Talkers World War II memorial are tribal attractions located in Window Rock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "window rock",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "window",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rock",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7921,
+    "attempt": 7868,
+    "place_id": "gn-5943968",
+    "input": {
+      "place": {
+        "place_id": "gn-5943968",
+        "name": "Dundalk",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.16792,
+        "lon": -80.39357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dundalk, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Dundalk,_Ontario",
+          "text": "Dundalk (named after Dundalk in Ireland), first called McDowell's Corners, was originally located on the Toronto-Sydenham Road (now Hwy.10), but moved about a mile to the west to be closer to the Toronto Grey and Bruce railway when it went through in the 1870s. Dundalk was incorporated as a village in 1887. On January 1, 2000, it was amalgamated with the Township of Proton and the Township of Egremont to form the Township of Southgate, in the southeast corner of Grey County. The mayor of Southgate is Brian Milne. Dundalk services the surrounding agricultural area and also has a few small manufacturing plants. Dundalk has the highest elevation of any populated place in southern Ontario at 526m (1,726 feet). A rail line that used to pass through Dundalk is now removed, but its roadbed has become a multi-use trail sponsored by the federal government.\nDundalk has a population of 2,803, according to Statistics Canada 2021 Census Profile."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "dundalk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7922,
+    "attempt": 7869,
+    "place_id": "gn-8349167",
+    "input": {
+      "place": {
+        "place_id": "gn-8349167",
+        "name": "Conder",
+        "country": "Australia",
+        "subdivision": "Australian Capital Territory",
+        "lat": -35.45926,
+        "lon": 149.10422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Conder, Australian Capital Territory",
+          "url": "https://en.wikipedia.org/wiki/Conder,_Australian_Capital_Territory",
+          "text": "Conder is one of three suburbs in the Lanyon Valley in Canberra, Australia. It lies in the district of Tuggeranong. The three suburbs are presently (as of 2011) the southernmost suburbs of the city, although the small settlement of Tharwa exists only a short distance further south.\nNamed after artist Charles Conder, the suburb of Conder extends from the slopes of Tuggeranong Hill to the valley floor. Conder is home to the valley's main services including the Lanyon Market Place, Lanyon High School and one of the four Vikings clubs in Canberra. Also included in the suburb are St Clare of Assisi Primary School, Charles Conder Primary School, a youth centre, child care centre and a family services centre.\nJust like the name of the suburb, the streets of Conder are named after artists, including members of the Heidelberg School and places associated with that school. Among those recognised are Russell Drysdale and Tom Roberts.\nMajor developments in Conder including \"Eastern Valley Rise\" and \"The Landscape\" have seen the Lanyon Valley's population grow rapidly. Conder has come out on top with the highest median house price growth year-on-year out of all Canberra suburbs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "conder",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7923,
+    "attempt": 7870,
+    "place_id": "gn-8349189",
+    "input": {
+      "place": {
+        "place_id": "gn-8349189",
+        "name": "Rivett",
+        "country": "Australia",
+        "subdivision": "Australian Capital Territory",
+        "lat": -35.34709,
+        "lon": 149.0379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rivett, Australian Capital Territory",
+          "url": "https://en.wikipedia.org/wiki/Rivett,_Australian_Capital_Territory",
+          "text": "Rivett () (postcode: 2611) is a residential suburb of Canberra, Australian Capital Territory, Australia, established in the late 1960s. At the 2021 census, Rivett had a population of 3,354. It is situated on the western edge of the Weston Creek district.\nRivett takes its name from Sir David Rivett, the professor of Chemistry at the University of Melbourne (1924–1927), deputy chairman and chief executive officer of the Council for Scientific and Industrial Research (CSIR, 1927–1946), chairman of the council of CSIRO (1946–1949), and president of Australian and New Zealand Association for the Advancement of Science (1937–1939).\nStreets in Rivett are named after Australian flora.\nSeveral homes in Rivett were burnt, and many residents evacuated during the 2003 Canberra bushfires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "rivett",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7924,
+    "attempt": 7871,
+    "place_id": "gn-2075462",
+    "input": {
+      "place": {
+        "place_id": "gn-2075462",
+        "name": "Bullsbrook",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.66905,
+        "lon": 115.9999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bullsbrook, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Bullsbrook,_Western_Australia",
+          "text": "Bullsbrook (formerly Bullsbrook East) is a northern suburb of Perth, Western Australia in the outer metropolitan area. It is located in the City of Swan. The original Bullsbrook townsite is located slightly west of the current town, on the 17-kilometre mark of the Midland Railway. Bullsbrook is also home to the RAAF Pearce airbase, a major training facility for the Royal Australian Air Force.\nThe suburb is situated on the Great Northern Highway, 25 kilometres north of the Midland Strategic Regional Centre. It is served by several major transport routes, including the Great Northern Highway, Railway Parade and the Brand Highway to the north, Chittering Road to the east and Tonkin Highway, and Neaves Road to the west. Bullsbrook is also adjacent to the state rail network, providing an opportunity for the development of an intermodal freight transport hub. The site is further enhanced by a link to the planned Perth-Darwin National Highway via Stock Road.\nAlthough traditionally a predominantly rural area, the release in 2008 of the Bullsbrook Commercial Centre offered scope for the expansion of commercial and light industrial land use. In addition, the City of Swan is awaiting the state government's approval of the draft Bullsbrook Townsite and Rural Strategy which would allow further industrial, commercial and residential growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "bullsbrook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7925,
+    "attempt": 7872,
+    "place_id": "gn-2513713",
+    "input": {
+      "place": {
+        "place_id": "gn-2513713",
+        "name": "Molvízar",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.78592,
+        "lon": -3.60783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Molvízar",
+          "url": "https://en.wikipedia.org/wiki/Molv%C3%ADzar",
+          "text": "Molvízar is a small town and municipality located in the province of Granada, in Spain.  Between 1905 and 2005, the population has ranged between 1500 and 3500 inhabitants.  It is located in the foothills of the mountains of southern Spain, approximately five kilometres from the Costa Tropical coast.\nAgriculture is a large part of its economy, with an increasing contribution from European tourism, with visitors attracted by its year-round temperate weather.\nLocals celebrate the patron saint, Santa Ana, on July 26, during which the town puts forth a traditional representation of \"Moros y Cristianos\" (Moors and Christians), which commemorates the Reconquista expulsion of the Moors from Spain. The city is also the birthplace of anarchist revolutionary Antonio Ramón."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "molvizar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7926,
+    "attempt": 7873,
+    "place_id": "gn-2758868",
+    "input": {
+      "place": {
+        "place_id": "gn-2758868",
+        "name": "Blaricum",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.2725,
+        "lon": 5.24167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blaricum",
+          "url": "https://en.wikipedia.org/wiki/Blaricum",
+          "text": "Blaricum (Dutch pronunciation: [ˈblaːrikʏm] ) is a municipality and village in the province of North Holland, the Netherlands. It is part of the region of Gooiland and part of the Metropolitan Region Amsterdam. It is known for its many monumental farm buildings, local cafes and restaurants, nature, several annual community events, and extensive up-market residential areas.\nAccording to statistics published by the Dutch land registry office in February 2011, Blaricum was the most expensive location to purchase a house in the Netherlands. The average home in Blaricum cost €800,000, an increase of 12% on the previous year. In 2025, this price had risen to an average of €1,100,000 and it again became the most expensive municipality, dethroning Laren. \nBlaricum is a popular residence of many Dutch celebrities, including Rene Froger, Anita Meijer, Paul de Leeuw, Dennis Bergkamp, Gordon, Jerney Kaagman, John de Mol, Anita Witzier and Marco Borsato."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "blaricum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7927,
+    "attempt": 7874,
+    "place_id": "gn-2967603",
+    "input": {
+      "place": {
+        "place_id": "gn-2967603",
+        "name": "Vouziers",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.39791,
+        "lon": 4.7012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vouziers",
+          "url": "https://en.wikipedia.org/wiki/Vouziers",
+          "text": "Vouziers (French pronunciation: [vuzje] ) is a commune of the Ardennes department, northern France.\nVouziers is the burial place of the pioneer First World War fighter pilot Roland Garros, after whom the Stade Roland Garros in Paris (the location of the French Open tennis tournament) is named. Tomáš Garrigue Masaryk (the first president of Czechoslovakia) fought at Vouziers with the Czechoslovak Legion in France; there is a monument to the legion, and the president's name given to the city lycee (high school). The cellist and conductor Jean Witkowski was born in Vouziers on 23 May 1895.\nThe town was on the path of totality for the Solar eclipse of 11 August 1999. It hosted a major observation event. Because of its proximity to the Belgian border, it was gridlocked by visiting Belgian cars on the morning of the eclipse."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "vouziers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7928,
+    "attempt": 7875,
+    "place_id": "gn-3171286",
+    "input": {
+      "place": {
+        "place_id": "gn-3171286",
+        "name": "Pellestrina",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.27716,
+        "lon": 12.30238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pellestrina",
+          "url": "https://en.wikipedia.org/wiki/Pellestrina",
+          "text": "Pellestrina is an island in northern Italy, forming a barrier between the southern Venetian Lagoon and the Adriatic Sea, lying south west of the Lido.\nThe island is 11 kilometres (7 miles) long and has since the eighteenth century been bounded to its seaward side by large embankments.  There are four main villages: San Pietro in Volta, Porto Secco, Sant' Antonio di Pellestrina, and Pellestrina, known for their colourfully-painted houses.\nThe main industries of the island are market gardening, fishing, tourism and lace making.  Like that in Chioggia but unlike that in Torcello, the local lace is made with a needle. Attractions on the island included the Lido of Ca' Roman, known for its pine trees and birdlife."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "pellestrina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7929,
+    "attempt": 7876,
+    "place_id": "gn-3575721",
+    "input": {
+      "place": {
+        "place_id": "gn-3575721",
+        "name": "Marigot",
+        "country": "Dominica",
+        "subdivision": "Saint Andrew Parish",
+        "lat": 15.53743,
+        "lon": -61.282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marigot, Dominica",
+          "url": "https://en.wikipedia.org/wiki/Marigot,_Dominica",
+          "text": "Marigot  is the largest settlement of Saint Andrew Parish in northeastern Dominica. The village has a population of 2,676 people, and is home to a Fisheries Complex as well as the island's main airport. Kokoy is the main language spoken in the village, a dialect of Antiguan and Barbudan Creole brought to the village by Antiguan and Montserratian settlers.\nIt is the birthplace of Wills Stratmore Stevens, a local Educationist and B.O Robinson, a former education officer. Along with Doctor Watts and local politician Edison James, (former Prime Minister) and cricket umpire Billy Doctrove. Marigot served as the leading community in Dominica at one point, with its people serving in all aspects of government and local community development. Former police Commissioner O N Philip and Customs Comptroller Victoria Watty are also from the village of Marigot. Marigot can boast of being the leader in job creation, agriculture and entrepreneurship. Marigot is also the home of former Government Senator Allan Jerry E Samuel, the youngest member to serve in parliament in the entire Caribbean region. It is also home to current leader of the Opposition Lennox Linton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "marigot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7930,
+    "attempt": 7877,
+    "place_id": "gn-3614218",
+    "input": {
+      "place": {
+        "place_id": "gn-3614218",
+        "name": "Cane",
+        "country": "Honduras",
+        "subdivision": "La Paz Department",
+        "lat": 14.27933,
+        "lon": -87.65794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cane, La Paz",
+          "url": "https://en.wikipedia.org/wiki/Cane,_La_Paz",
+          "text": "Cane is a municipality in the Honduran department of La Paz.\nThe population of Cane is not exact, but is estimated to be around 4,000.  The current mayor is Jose Tejeda, who is very popular among the community, as he has donated millions of US dollars to the creation of a lush central park stocked with trash cans, benches, and a taco bar.  Tejeda is also in the process of paving the roads of Cane, which were originally all dirt.\nCane is home to one early learning center, one primary school, and one secondary school.  Students who choose to attend private school have the opportunity to travel by bus about 10 minutes to the department's capital, La Paz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "cane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7931,
+    "attempt": 7878,
+    "place_id": "gn-3885682",
+    "input": {
+      "place": {
+        "place_id": "gn-3885682",
+        "name": "La Higuera",
+        "country": "Chile",
+        "subdivision": "Coquimbo Region",
+        "lat": -29.51195,
+        "lon": -71.2019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Higuera, Chile",
+          "url": "https://en.wikipedia.org/wiki/La_Higuera,_Chile",
+          "text": "La Higuera is a town and commune in Elqui Province, Coquimbo Region, Chile. It is bordered on the west by the Pacific Ocean, the east by the Atacama Region, and the south by the communes of Vicuña and La Serena.\nPunta de Choros is famous for its beaches and a colony of bottlenose dolphins, the southernmost colony of that species. Of the total commune population, 1,080 live in urban zones and 2,641 live in rural zones.\nThe islands of Choros and Damas are also part of the commune, which form the National Reserve of the Humboldt Penguin, administered by the Corporación Nacional Forestal. On the island of Damas, the beach La Tijera is found at the extreme south.\nLas Campanas Observatory and La Silla Observatory are also found in the territory of the commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "la higuera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "higuera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7932,
+    "attempt": 7879,
+    "place_id": "gn-4708016",
+    "input": {
+      "place": {
+        "place_id": "gn-4708016",
+        "name": "Lost Creek",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.29548,
+        "lon": -97.84445
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lost Creek, Texas",
+          "url": "https://en.wikipedia.org/wiki/Lost_Creek,_Texas",
+          "text": "Lost Creek is an affluent upper-middle-class neighborhood and census-designated place (CDP) in Travis County, Texas, United States. The population was 1,276 at the 2020 census. The census tract is bordered by Capital of Texas Highway to the east, Barton Creek to the south, Barton Creek Boulevard to the west, and Bee Caves Road to the north. The Lost Creek CDP encompasses several small neighborhoods—Parkstone, Woods of Westlake, Camelot, and Knollwood—as well as the largest and most populous Lost Creek neighborhood.\nThe neighborhood is named after a secluded section of Barton Creek away from more popular portions downstream that include Barton Springs and Zilker Park.\nSuburban residential development began in the late 1970s and continued for over three decades. Lost Creek is almost completely built-out. Lost Creek also encompasses a commercial area bordering Bee Caves Road and Capital of Texas Highway. Businesses occupying these buildings include Capital One Bank, Wells Fargo Bank, and Apple Inc.  Lost Creek was annexed by the City of Austin in December 2015 and was dis-annexed in May 2024 under the provisions of HB 3053 passed during the 88th Texas Legislature"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "lost creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lost",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7933,
+    "attempt": 7880,
+    "place_id": "gn-999964",
+    "input": {
+      "place": {
+        "place_id": "gn-999964",
+        "name": "Groblersdal",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.16843,
+        "lon": 29.39412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Groblersdal",
+          "url": "https://en.wikipedia.org/wiki/Groblersdal",
+          "text": "Groblersdal is a farming town situated 32 km north of the 178 million m³ Loskop Dam in the Sekhukhune District of Limpopo.\nThe town is South Africa's second largest irrigation settlement. The main crops in this man-made floodplain are cotton, tobacco, citrus fruit, table grapes, maize, wheat, vegetables, sunflower seeds, peanuts, lucerne and peaches, although not in order of importance as some previously leading crops e.g. tobacco, have made way for others such as grapes.\nGroblersdal was laid out on the farm \"Klipbank\" taking advantage of the Loskop Dam, and named after the original owner WJ Grobler.\nNotable people from Groblersdal include Roma Blecher, noted philanthropist and Shakespeare scholar, and South African Test bowler Duanne Olivier (born 1992)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "groblersdal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

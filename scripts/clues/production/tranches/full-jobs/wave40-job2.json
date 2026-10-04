@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 7873,
+    "attempt": 7821,
+    "place_id": "gn-2963444",
+    "input": {
+      "place": {
+        "place_id": "gn-2963444",
+        "name": "Kilcullen",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.13028,
+        "lon": -6.74444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kilcullen",
+          "url": "https://en.wikipedia.org/wiki/Kilcullen",
+          "text": "Kilcullen (Irish: Cill Chuilinn), formally Kilcullen Bridge, is a small town on the River Liffey in County Kildare, Ireland. Its population of 3,815 at the 2022 census made it the 13th largest settlement in County Kildare. From 2002 to 2011, it was one of the fastest-growing towns in the county, doubling its population from 1,483 to 3,473. It is situated primarily in the Barony of Kilcullen (in the Civil Parish of Kilcullen), with a part in the Barony of Naas South (Civil Parish of Carnalway). Subsidiary areas include Logstown, Harristown, Carnalway, Brannockstown, Gilltown, Nicholastown, and Castlemartin.\nKilcullen Bridge replaced the original settlement of Kilcullen, now Old Kilcullen, in the centuries following the building of the great bridge at the future site of the town. Other local historical features include Dun Ailinne, New Abbey and Castlemartin, for many years the home of media magnate Tony O'Reilly and his wife, horse-breeding shipping heiress Chryss Goulandris, and now owned by US billionaire John Malone. In the town's hinterland are a number of stud farms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "kilcullen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7874,
+    "attempt": 7822,
+    "place_id": "gn-5716833",
+    "input": {
+      "place": {
+        "place_id": "gn-5716833",
+        "name": "Burns",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 43.58626,
+        "lon": -119.0541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burns, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Burns,_Oregon",
+          "text": "Burns is a city in and the county seat of Harney County, in the U.S. state of Oregon. According to the 2020 census, the population was 2,730. Burns and the nearby city of Hines are home to about 60 percent of the people in the sparsely populated county, by area the largest in Oregon and the tenth largest in the United States.\nThe Burns–Hines region has a high-desert climate but was much wetter in the recent geologic past. The Harney Basin was the largest of many depressions in which lakes formed in southeastern Oregon during the late Pleistocene. Remnants of an ancient lake that reached as far north as Burns are at the center of the Malheur National Wildlife Refuge, south of the city.\nNorthern Paiutes or their ancestors, who were hunter-gatherers, have lived in the region for thousands of years. Since the arrival of Euro-Americans in the 19th century, cattle ranching and other forms of agriculture have dominated land use in the area. In 1930, logging in the mountains north of Burns led to the creation of Hines, a lumber company town, and the timber industry remained important to the local economy until the 1990s. In addition to ranching, a variety of private and public enterprises support the Burns–Hines economy in the 21st century. Annual events include a migratory bird festival, the county fair, and a country music jamboree."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "burns",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7875,
+    "attempt": 7823,
+    "place_id": "gn-5918021",
+    "input": {
+      "place": {
+        "place_id": "gn-5918021",
+        "name": "Casselman",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.3168,
+        "lon": -75.0826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casselman, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Casselman,_Ontario",
+          "text": "Casselman is a municipality in eastern Ontario, Canada, in the United Counties of Prescott and Russell. Situated on the South Nation River about 55 km (34 mi) southeast of downtown Ottawa, along the Trans-Canada Highway 417.\nCasselman is an enclave within the Municipality of The Nation, since Casselman citizens refused to join the fusion of municipalities in 1998. The village was named after Martin Casselman who built a sawmill near the site of the current town in 1844.\nIt is served by the Casselman railway station on the Montreal–Ottawa Via Rail train, twice a day in each direction.\nCasselman hosted L'écho d'un peuple, at Ferme Drouin, one of the biggest shows ever presented in Ontario, until the organization ran into financial trouble in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "casselman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7876,
+    "attempt": 7824,
+    "place_id": "gn-8349442",
+    "input": {
+      "place": {
+        "place_id": "gn-8349442",
+        "name": "St Peters",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.90498,
+        "lon": 138.62255
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "St Peters, South Australia",
+          "url": "https://en.wikipedia.org/wiki/St_Peters,_South_Australia",
+          "text": "St Peters is an inner-eastern suburb of Adelaide, South Australia in the City of Norwood Payneham St Peters.\nThe area was first settled in 1838, with allotments sold to investors in the South Australia Company. It was originally a separate town and was named after the Church of England's school of St Peter. The nearby school, now commonly known as St Peter's College, was relocated to its current site in 1854 on 75 acres (30 ha) of land in what is now known as Hackney.\nSt Peters Post Office opened on 1 November 1886.\nIt was formerly the seat of its own municipality, the Corporate Town of St Peters, but since 1997 has been part of the City of Norwood Payneham & St Peters. The historic St Peters Town Hall and attached 1911 banquet hall are listed on the South Australian Heritage Register.\nThe East Adelaide Primitive Methodist Church was established in 1883. It became East Adelaide Methodist church in 1901, and Spicer Memorial Church in 1906 following the death of its benefactor, pastoralist Sir Edward Spicer. It is now known as Spicer Uniting Church at St Peters. The cottages across the road were funded by the Spicer Cottages Trust to provide low rent accommodation for retired Methodist ministers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "st peters",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "peters",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7877,
+    "attempt": 7825,
+    "place_id": "gn-174884",
+    "input": {
+      "place": {
+        "place_id": "gn-174884",
+        "name": "Jermuk",
+        "country": "Armenia",
+        "subdivision": "Vayots Dzor",
+        "lat": 39.83948,
+        "lon": 45.67112
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jermuk",
+          "url": "https://en.wikipedia.org/wiki/Jermuk",
+          "text": "Jermuk (Armenian: Ջերմուկ) is a mountain spa town and the centre of the Jermuk Municipality of the Vayots Dzor Province in southern Armenia, at a road distance of 53 km (33 mi) east of the provincial capital Yeghegnadzor. It was considered one of the popular destinations for medical tourism in the Soviet Union.\nJermuk is known for its hot springs and mineral water brands bottled in the town. It is attractive for its fresh air, waterfall, artificial lakes, walking trails, the surrounding forests and mineral water pools. The town is being redeveloped to become a modern center of tourism and health services. It is also being set up to become a major chess centre, with numerous chess international tournaments scheduled in the town. As of the 2022 census, Jermuk had a population of 3,936, down from the 4,628 reported in the 2011 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "jermuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7878,
+    "attempt": 7826,
+    "place_id": "gn-2831802",
+    "input": {
+      "place": {
+        "place_id": "gn-2831802",
+        "name": "Sittensen",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.27615,
+        "lon": 9.50429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sittensen",
+          "url": "https://en.wikipedia.org/wiki/Sittensen",
+          "text": "Sittensen is a municipality in the district of Rotenburg, in Lower Saxony, Germany. It is situated approximately 20 km northeast of Rotenburg, and 45 km southwest of Hamburg.\nSittensen belonged - as to its government - to the Prince-Archbishopric of Bremen, established in 1180. In religious respect, however, Sittensen formed part of the Roman Catholic Diocese of Verden until after 1566 when its incumbent bishops lost papal recognition, except of a last Catholic bishop from 1630 to 1631, respectively. In 1648 the Prince-Archbishopric was transformed into the Duchy of Bremen, which was first ruled in personal union by the Swedish and from 1715 on by the Hanoverian Crown. In 1823, the Duchy was abolished and its territory became part of the Stade Region.\nSittensen is also the seat of the Samtgemeinde (\"collective municipality\") Sittensen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "sittensen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7879,
+    "attempt": 7827,
+    "place_id": "gn-4552280",
+    "input": {
+      "place": {
+        "place_id": "gn-4552280",
+        "name": "Stilwell",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 35.81453,
+        "lon": -94.62856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stilwell, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Stilwell,_Oklahoma",
+          "text": "Stilwell / ᏍᏗᎳᏪᎵ is a city located in the sovereign territory of the Cherokee Nation. It is the county seat of Adair County, and is home to the United Keetoowah Band of Cherokee Indians in Oklahoma. The population was 3,700 as of the 2020 U.S. census, a decline of 6.7 percent from the 3,949 population recorded in 2010. The Oklahoma governor and legislature proclaimed Stilwell as the \"Strawberry Capital of the World\" in 1949, but the role of strawberries in the local economy has diminished since then. Today, residents of Stilwell are among the poorest and most impoverished in the United States. Stilwell also serves as a gateway to Lake Tenkiller and Adair Park, formerly called Adair State Park before it was defunded."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "stilwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7880,
+    "attempt": 7828,
+    "place_id": "gn-5328808",
+    "input": {
+      "place": {
+        "place_id": "gn-5328808",
+        "name": "Bishop",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.36354,
+        "lon": -118.39511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bishop, California",
+          "url": "https://en.wikipedia.org/wiki/Bishop,_California",
+          "text": "Bishop is the only incorporated city in Inyo County, California, United States. It is located near the northern end of the Owens Valley in the Mojave Desert, at an elevation of 4,150 feet (1,260 m). The city was named after Bishop Creek, flowing out of the Sierra Nevada range; the creek was named after Samuel Addison Bishop, a settler in the Owens Valley. Bishop is a commercial and residential center, while many vacation destinations and tourist attractions in the Sierra Nevada are located nearby. The city covers approximately 1.9 square miles (4.9 km2), making it the county's largest community by population and land area.\nThe population of the city limits was 3,819 at the 2020 census, down from 3,879 at the 2010 census. Bishop is the main hub of the Bishop Micropolitan Statistical area where the population of the built-up zone around Bishop at the time of the 2020 census was 19,016. This includes the surrounding unincorporated communities of West Bishop, Dixon Lane-Meadow Creek, the Bishop Paiute Reservation, Rocking K Ranch, Mustang Mesa, Round Valley, Bishop Creek, Aspendell, Starlite and Chalfant Valley.\nA number of western films were shot in Bishop, including movies starring John Wayne, Charlton Heston, and Joel McCrea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "bishop",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7881,
+    "attempt": 7829,
+    "place_id": "gn-5920668",
+    "input": {
+      "place": {
+        "place_id": "gn-5920668",
+        "name": "Chemainus",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.91633,
+        "lon": -123.71937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chemainus",
+          "url": "https://en.wikipedia.org/wiki/Chemainus",
+          "text": "Chemainus  is a community within the municipality of North Cowichan in the Chemainus Valley on the east coast of southern Vancouver Island, British Columbia, Canada.\nFounded as an unincorporated logging town in 1858,  Chemainus is now famous for its 53 outdoor murals. This outdoor gallery has given birth to many businesses, including a theatre, antiques dealers, and eateries. The tourist industry stemming from the murals helped rejuvenate the town after its large sawmill closed in the early 1980s and was replaced by a smaller, more efficient, mill.\n\nThe name Chemainus comes from the native shaman and prophet \"Tsa-meeun-is\" meaning broken chest. Legend says that the man survived a massive wound in his chest from an arrow in battle to become a powerful chief. His people took his name to identify their community, the Stz'uminus First Nation, formerly the Chemainus Indian Band.\nThe railway arrived in the 1880s and by the early 1920s the town's population had ballooned to 600 persons. Chemainus  was eventually designated a census populated area by Statistics Canada comprising the more built-up residential and commercial neighbourhoods.  Its population had further grown to 3,035 residents by 2011.  A larger more inclusive Chemainus area is customarily regarded as comprising part of the District of North Cowichan that lies north of the Chemainus River.  This is the area covered by the Chemainus Advisory Committee set up as a consultation body by North Cowichan.\nChemainus Secondary School is located in the town, and serves as a secondary school for students living in Chemainus, Crofton, and Saltair.\nA BC Ferry terminal is located in Chemainus, which provides service to Thetis Island and Penelakut Island (previously Kuper).\nOn 13 January 2006, a Boeing 737 aircraft was sunk off the coast in order to build an artificial reef. The sinking was documented in \"Sinking Wings\", an episode of Mega Builders, a Discovery Channel series."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "chemainus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7882,
+    "attempt": 7830,
+    "place_id": "gn-7932379",
+    "input": {
+      "place": {
+        "place_id": "gn-7932379",
+        "name": "HafenCity",
+        "country": "Germany",
+        "subdivision": "Hamburg",
+        "lat": 53.54156,
+        "lon": 9.99328
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "HafenCity",
+          "url": "https://en.wikipedia.org/wiki/HafenCity",
+          "text": "HafenCity (German pronunciation: [ˈhaːfn̩ˌsɪti] ) is a quarter in the borough of Hamburg-Mitte, Hamburg, Germany. It is located on the Elbe river island Grasbrook, on the former Port of Hamburg area. It was formally established in 2008 and also includes the historical Speicherstadt area, which since 2015 is an UNESCO World Heritage Site with the adjacent Kontorhausviertel. The main landmark of the HafenCity is the Elbphilharmonie concert hall.\nIn a narrower sense, HafenCity Hamburg is a project of urban regeneration where the \"greater Grasbrook\" area of the former Hamburg free port is being revitalised with new hotels, shops, office buildings, and residential areas. The project is considered the largest urban redevelopment project in Europe by landmass, at approximately 2.2 square kilometres (220 ha). With the diminished economic importance of free ports in an era of European Union free trade, large container ships, and increased border security, the Hamburg free port was downsized, relieving the current HafenCity area of its restrictions. The ground-breaking ceremony was held on 20 June 2001, with the first quarter called \"Am Dalmannkai/Sandtorkai\", neighboring the Elbphilharmonie, completed in 2009.\nWhen completely developed, the HafenCity area is projected to be home to about 12,000 people and the workplace of 40,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "hafencity",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7883,
+    "attempt": 7831,
+    "place_id": "gn-8348260",
+    "input": {
+      "place": {
+        "place_id": "gn-8348260",
+        "name": "Safety Beach",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.31535,
+        "lon": 145.00027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Safety Beach",
+          "url": "https://en.wikipedia.org/wiki/Safety_Beach",
+          "text": "Safety Beach is a seaside suburb on the Mornington Peninsula in Melbourne, Victoria, Australia, 56 km (35 mi) south of Melbourne's city centre, located within the Shire of Mornington Peninsula local government area. Safety Beach recorded a population of 6,328 at the 2021 census.\nSafety Beach occupies slightly less than half the area of land between the foothills of Mount Martha and Arthurs Seat and borders Port Philip Bay to its west.\nMartha Cove is a large inland harbour and residential development at Safety Beach, named after its location in a cove at the foot of Mount Martha. The project, which began in 2004, initially sparked protests by residents. After experiencing considerable financial difficulties, Martha Cove  recovered and became a thriving residential community.\nGolfers play at the Mount Martha Valley Golf Club on Country Club Drive, or at the Safety Beach Golf Course nearby.\nThere used to be an abattoir nearby to slaughter local farm animals. Blood and offal from the abattoir operations were dumped into the Sheepwash and Dunns Creeks, and carried into Dromana Bay at Safety Beach. That attracted sharks and led to people calling Safety Beach “Shark Bay” for some years. Eventually, the state Health Department ordered the abattoir to clean up its operations and Safety Beach retains the name given to it by John Aitken in 1836."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "safety beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "safety",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7884,
+    "attempt": 7832,
+    "place_id": "gn-2161719",
+    "input": {
+      "place": {
+        "place_id": "gn-2161719",
+        "name": "Keilor",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.71667,
+        "lon": 144.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keilor, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Keilor,_Victoria",
+          "text": "Keilor () is a suburb in Melbourne, Victoria, Australia, 16 km (9.9 mi) north-west of Melbourne's Central Business District, located within the Cities of Brimbank and Hume local government areas. Keilor recorded a population of 5,906 at the 2021 census.\nWhilst most of the suburb is contained within the City of Brimbank, the northern section of Keilor, north of the Calder Freeway, is within the City of Hume. This section of the suburb is located on the flood plain of the Maribyrnong River, and is home to many market gardens.\nThe suburb is mainly residential with large industrial developments in adjacent suburbs. There are several shopping centres in the area including Keilor Shopping Centre and Watergardens Town Centre approximately 5 km away."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "keilor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7885,
+    "attempt": 7833,
+    "place_id": "gn-2168309",
+    "input": {
+      "place": {
+        "place_id": "gn-2168309",
+        "name": "Drysdale",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.17237,
+        "lon": 144.56988
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Drysdale, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Drysdale,_Victoria",
+          "text": "Drysdale is a rural township near Geelong, Victoria, Australia, located on the Bellarine Peninsula. The town has an approximate population of over 3,700. Drysdale forms part of an urban area, along with nearby Clifton Springs, that had an estimated population of 13,494 at June 2016.\nA popular youth music and performing arts venue, affectionately labelled 'The Potato Shed' is located in the back of Drysdale. The industrial size venue is the site of 'Battle of The Bands', a yearly music festival which has seen a number of local bands make a name for themselves in a popular setting.\nDrysdale has several primary and high schools, including Saint Ignatius College, the senior campus of Bellarine Secondary College, and a campus of Christian College. The local football club is the Drysdale Hawks, who play Australian Rules Football and compete in the Bellarine Football League. The Hawks were formed in 1879 and have won 15 premiership titles, the last in 2010. The Bellarine Rail Trail also runs through the town. The local cricket club is also named the Drysdale Hawks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "drysdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7886,
+    "attempt": 7834,
+    "place_id": "gn-2206375",
+    "input": {
+      "place": {
+        "place_id": "gn-2206375",
+        "name": "Eastbourne",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.3,
+        "lon": 174.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eastbourne, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Eastbourne,_New_Zealand",
+          "text": "Eastbourne (Māori: Ōkiwi) is a suburb of Lower Hutt, a part of Wellington, New Zealand. Lying beside the sea, it is a popular local tourist destination via car from Petone or from ferry crossings from central Wellington. An outer suburb, it lies on the eastern shore of Wellington Harbour, five kilometres south of the main Lower Hutt urban area and directly across the harbour from the Miramar Peninsula in Wellington city. A narrow exposed coastal road connects it with the rest of Lower Hutt via the Eastern Bays and the industrial suburb of Seaview. It is named for Eastbourne in England, another seaside town known as a destination for day-trips.\nIn the hills bordering Eastbourne there is mainly native bush and trees. With a locally administered possum-eradication programme, much of the native bush has regenerated, including red-flowering northern rātā trees. The bush has numerous tracks running to and from them, including a track along the entire bays hills ridge. With many settlers originating from Stromboli, an island near Sicily, the suburb has an Italian heritage similar to several other suburbs in Wellington; this is expressed particularly in its architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "eastbourne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7887,
+    "attempt": 7835,
+    "place_id": "gn-2270649",
+    "input": {
+      "place": {
+        "place_id": "gn-2270649",
+        "name": "Bucelas",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.90193,
+        "lon": -9.11885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bucelas",
+          "url": "https://en.wikipedia.org/wiki/Bucelas",
+          "text": "Bucelas is a civil parish in the municipality of Loures, Portugal. The population in 2011 was 4,663, in an area of 33.97 km2 (13.12 sq mi).\nThe town is known for its Bucelas DOC wine. A museum in the centre of the town [1] gives a good description of the history of the industry and also exhibits some of the equipment used. The museum also has a section devoted to the Lines of Torres Vedras, which were defensive lines built by Anglo-Portuguese forces in 1809–10 to protect Lisbon from invading French troops during the Peninsular War. Some of the forts close to Bucelas, such as the Fort of Arpim, the Fort of Ribas and the Fort of Ajuda Grande, have been restored."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "bucelas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7888,
+    "attempt": 7836,
+    "place_id": "gn-2639489",
+    "input": {
+      "place": {
+        "place_id": "gn-2639489",
+        "name": "Repton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.83983,
+        "lon": -1.55061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Repton",
+          "url": "https://en.wikipedia.org/wiki/Repton",
+          "text": "Repton is a village and civil parish in the South Derbyshire district of Derbyshire, England. It lies on the edge of the River Trent floodplain, approximately 5 miles (8 km) north of Swadlincote and about 5 miles (8 km) northeast of Burton upon Trent, close to the county boundary with Staffordshire.\nThe population was recorded as 2,707 in the 2001 census and 2,867 in the 2011 census, with an estimated population of around 3,000 in 2021 based on Office for National Statistics small-area modelling.\nRepton is notable for its Anglo-Saxon ecclesiastical heritage, including the site of Repton Abbey, the medieval Repton Priory, and the Anglo-Saxon St Wystan's Church. It is also the location of Repton School, one of England’s historic public schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "repton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7889,
+    "attempt": 7837,
+    "place_id": "gn-2759664",
+    "input": {
+      "place": {
+        "place_id": "gn-2759664",
+        "name": "Arnemuiden",
+        "country": "Netherlands",
+        "subdivision": "Zeeland",
+        "lat": 51.50167,
+        "lon": 3.675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arnemuiden",
+          "url": "https://en.wikipedia.org/wiki/Arnemuiden",
+          "text": "Arnemuiden is a city of around 5000 people in the municipality of Middelburg in the province of Zeeland in the Netherlands. It is located on the former island of Walcheren, about 3 km east of the city of Middelburg.\nOn 23 September 1338, at the start of the Hundred Years' War between England and France, a naval battle was held near Arnemuiden. It was the first naval battle of the Hundred Years' War and the first naval battle using artillery, as the English ship Christofer had three cannons and one handgun.\nIn 1573, Arnemuiden was destroyed by Spanish troops and more than 300 citizens were killed. Even though only a couple of hundred people were left, it received city rights in 1574.\nUntil 1997, Arnemuiden was a separate municipality. Arnemuiden has a railway station - Arnemuiden railway station.\nA substantial part of the inhabitants of Arnemuiden have been a fisherman in some part of their life. This explains the immense popularity of tattoos and fishing ship earrings in the village.\n\"De klok van Arnemuiden\" is a Dutch song about the church clock at the Arnemuiden central market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "arnemuiden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7890,
+    "attempt": 7838,
+    "place_id": "gn-5365172",
+    "input": {
+      "place": {
+        "place_id": "gn-5365172",
+        "name": "Las Flores",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.58808,
+        "lon": -117.62672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Flores, California",
+          "url": "https://en.wikipedia.org/wiki/Las_Flores,_California",
+          "text": "Las Flores (Spanish for \"The Flowers\") is an unincorporated community and census-designated place (CDP) in Orange County, California, located adjacent to the City of Rancho Santa Margarita, California. The population was 5,995 at the 2020 census, up from 5,971 at the 2010 census. Las Flores does not have its own ZIP Code and is served by the same ZIP Code as adjacent Rancho Santa Margarita, 92688.\nThe Rancho Santa Margarita dog/skate park is located in the CDP and is served by the Orange County Sheriff's Dept. and Orange County Fire Authority. Although Las Flores lies in the land grant of Rancho Mission Viejo, it is named after the land grant about twenty-five miles (40 km) south Rancho Santa Margarita y Las Flores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "las flores",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "flores",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7891,
+    "attempt": 7839,
+    "place_id": "gn-5988442",
+    "input": {
+      "place": {
+        "place_id": "gn-5988442",
+        "name": "Juniper Ridge",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.66667,
+        "lon": -120.25
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juniper Ridge",
+          "url": "https://en.wikipedia.org/wiki/Juniper_Ridge",
+          "text": "Juniper Ridge is a community located in the city of Kamloops, British Columbia. It is situated at the south-east end of the city on a hillside south of the South Thompson River. There is a convenience store at the entrance to the community, and the area is serviced by an elementary school.  It is accessible only by one road, Highland Rd.: however, a formerly washed out dirt road has been refilled allowing emergency access to the Rose Hill area.  Most of the streets in this neighbourhood are named after rivers in the province, such as:\nSkeena, Nechako, Omineca, Babine, Coldwater, etc. Tennis courts, an ice rink with bright lighting, and a dog park are located at the local community centre, Juniper Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "juniper ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "juniper",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7892,
+    "attempt": 7840,
+    "place_id": "gn-667919",
+    "input": {
+      "place": {
+        "place_id": "gn-667919",
+        "name": "Săsciori",
+        "country": "Romania",
+        "subdivision": "Alba County",
+        "lat": 45.86667,
+        "lon": 23.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Săsciori",
+          "url": "https://en.wikipedia.org/wiki/S%C4%83sciori",
+          "text": "Săsciori (German: Schweis, Sassenberg; Hungarian: Szászcsór) is a commune located in Alba County, Transylvania, Romania. It is composed of nine villages: Căpâlna (Sebeskápolna), Dumbrava (Sebeskákova), Laz (Sebesláz), Loman (Lomány), Pleși (Plesitelep), Răchita (Rekitta), Săsciori, Sebeșel (Sebeshely), and Tonea (Toneatelep).\nThe commune lies in the southwestern reaches of the Transylvanian Plateau, on the banks of the river Sebeș. It is located in the southern part of Alba County, 10 km (6.2 mi) south of Sebeș and 25 km (16 mi) south of the county seat, Alba Iulia.\nSăsciori is crossed by national road Transalpina (DN67C), which starts in Sebeș and runs due south over the Parâng Mountains to Novaci, in Gorj County.\nCăpâlna village is the site of the Dacian fortress of Căpâlna.\n\nAt the 2011 census, the commune had a population of 5,757; of those, 95.73% were ethnic Romanians. By the 2021 census, the population had increased to 5,820, of which 84.4% were Romanians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "sasciori",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
