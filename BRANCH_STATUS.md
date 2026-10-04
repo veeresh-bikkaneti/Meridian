@@ -18,7 +18,27 @@ Verify-before-merge pattern. **Do NOT merge. Do NOT open a PR.** Push nothing to
 - [x] Crew 1 — data integrity: ALL VERIFIED. 388 files (0–387 contiguous), manifest 388, 229+91+68 reconciled from raw records (pairwise intersections 0); prompt sha256 matches `7f19d3c5…` and is byte-identical to Veeresh's approved FINAL; validator `scripts/clues/production/validate-production.mjs` sha256 matches `22c01959…`; zero `src/` changes vs merge-base (1,614 files: scripts/ + public/loop/clues/ + BRANCH_STATUS.md only)
 - [x] Crew 5 — gates: ALL PASS. Clue suites 70/70; `npm test` 563/563 (0 fail); `tsc` clean; card gate PASSED (124,690 records: 8,797 hooked / 115,893 hook-missing / 0 legacy); `build:pages` green
 - [x] Crew 3 — quote provenance: 30/40 PASS, 10/40 FAIL on quote-coverage (c). Zero fabrication anywhere. Tier-2 quotes 40/40 verbatim in cited extract; tiers 1/3/4/5 40/40 lead-only; climate non-redundant 40/40. The 10 fails: clues paraphrase 2–3 extract sentences but quote only 1 — all claims verified present in a supplied extract EXCEPT Imphal T1 ("far northeast…" not in cited lead, only in section extract — genuine cross-extract sourcing gap). 2 whitespace-fold cases disclosed (not fabrication). Quality notes: "most + adjective" diction, 3 weak giveaways recycling earlier tiers, minor puffery (La Rioja, Enschede) — not failures.
-- [ ] Crew 2 — leak scan (running)
+- [x] Crew 2 — leak scan: PASS. 0 true leaks across 1,940 published texts (mapping 388/388 rebuilt independently, texts byte-identical to records). 51 distinct raw cases all adjudicated non-leak (function words, generic alias parts, over-strict sub-word hits on distinct toponyms, allowed decisive material). 4 judgment-call flags for Veeresh: Mostar 116 t5 (name-meaning ambiguity, resolves non-leak via landmark reading); Mohali 138 t5 (full eponym given, mechanically clean, most generous tier-5); stated unrecorded nicknames ("Surf City", "Oil Capital of Iran", etc. — mechanically clean); scanner residual limits.
+
+## FINAL SYNTHESIS (coordinator)
+
+**Verdict: NEEDS WORK (bounded) — 2 sets violate the locked tier-5 hard rule.**
+
+| # | Check | Result |
+|---|-------|--------|
+| 1 | Counts (388 files, manifest 388, 229+91+68 from raw records) | ✅ VERIFIED |
+| 2 | Locked prompt sha256 `7f19d3c5…`, byte-identical to Veeresh's approved FINAL | ✅ VERIFIED |
+| 3 | Locked validator sha256 `22c01959…` (`validate-production.mjs`) | ✅ VERIFIED |
+| 4 | Zero `src/` changes vs merge-base | ✅ VERIFIED |
+| 5 | Independent leak scan (1,940 texts) | ✅ PASS — 0 true leaks |
+| 6 | Quote provenance (40-set own sample) | ⚠️ 30/40 PASS — 10 quote-coverage gaps, 0 fabrication |
+| 7 | Flagged sets (12) | 4 ACCEPT / 5 FLAG / **2 REJECT** / 1 absent-confirmed |
+| 8 | Gates (clue 70/70, npm 563/563, tsc, card gate, build) | ✅ ALL PASS |
+| 9 | Integrity disclosures (Tarakan/Dumaguete/Varna repairs) | ✅ CONFIRMED clean |
+
+**Blocking:** Palestina (idx 340) and Bremerhaven (idx 149) — tier 5 reuses tier-3's byte-identical quote and recaps earlier payloads, violating the locked "giveaway, not summary" hard rule. Repair: Bremerhaven tier 5 re-composable from unused extract facts; Palestina likely fail-closed rejection → 387 sets (still ≥365). Bounded, mechanical — back to Liz's crew as a work order.
+**Disclosed, not blocking:** quote-coverage gaps (10/40 sampled; all claims extract-supported, zero fabrication, locked validator passes — stricter than the locked contract; recommend process fix + the 10 flagged for sampling review).
+**For Veeresh's sampling packet:** Puerto San José (idx 362), Karaj, Gaziantep (1966 stats), Mohali (2006 carve-out), Cavite City, Mostar 116 t5, Mohali 138 t5, the 10 quote-coverage sets, Imphal T1 cross-extract case.
 - [ ] Crew 3 — quote provenance (running)
 - [x] Crew 4 — flagged sets: 4 ACCEPT (Kawambwa, Sisimiut, Torquay, San Antonio Oeste); 5 FLAG for Veeresh's sampling review (Puerto San José tier-2 thinness; Karaj tier-2 thinness + ranking tier 5; Gaziantep 1966-vintage snow stats; Mohali 2006 carve-out as history; Cavite City tier-2 thinness); **2 REJECT — Palestina (idx 340) and Bremerhaven (idx 149): tier 5 reuses tier-3's byte-identical quote and recaps earlier payloads, violating the locked "giveaway, not summary" hard rule**; Cockermouth confirmed absent. Repair notes: Bremerhaven has unused extract facts (re-composable tier 5); Palestina's extract is thin (fail-closed rejection likely honest → 387). Tarakan/Dumaguete/Varna confirmed cleanly converted to documented rejections, absent from 388. Crew 4 also ran an independent leak scan over all 388 records: 0 hits. No fabrication in any of the 12 sets.
 - [ ] Crew 2 — leak scan (running)
