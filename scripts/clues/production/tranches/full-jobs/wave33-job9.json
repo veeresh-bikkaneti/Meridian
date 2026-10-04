@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 6608,
+    "attempt": 6561,
+    "place_id": "gn-8379100",
+    "input": {
+      "place": {
+        "place_id": "gn-8379100",
+        "name": "Pont-Rouge",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.75468,
+        "lon": -71.69566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pont-Rouge",
+          "url": "https://en.wikipedia.org/wiki/Pont-Rouge",
+          "text": "Pont-Rouge (French pronunciation: [pɔ̃ ʁuʒ], lit. 'Red Bridge') is a Canadian city along the Jacques-Cartier River in southern Quebec, Canada. In the 2021 Canadian census the population was 10,121 inhabitants.\nTransportation had considerable influence on the development of the parish, mainly the two bridges and the construction of the Canadian Pacific Railway bridge in 1874. The Royal Bridge (now called Pont Déry), was reconstructed several times because of the weakness of the centre of the bridge. This bridge served its purpose for the transportation of heavy loads and mail between Quebec and Montreal.  The bridge was a toll bridge, and the money served the construction of a second bridge le pont Rouge, which was free. It united the western part to the eastern part of Dupont Street, named in honour of Father Charles-François Dupont, who was priest there from 1917 to 1933.  A newer bridge has now replaced this bridge as of 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "pont rouge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rouge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6609,
+    "attempt": 6562,
+    "place_id": "gn-979910",
+    "input": {
+      "place": {
+        "place_id": "gn-979910",
+        "name": "Makwassie",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -27.31564,
+        "lon": 25.99497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makwassie",
+          "url": "https://en.wikipedia.org/wiki/Makwassie",
+          "text": "Makwassie is a small farming town situated in North West Province of South Africa that produces maize, sorghum, groundnuts and milk. The word makwassie is a corruption of the San word for an aromatic wild spearmint.\nIn 1822 the town was established as a mission station by Samuel Broadbent and Thomas Hodgson of the Wesleyan Missionary Society and the town was laid out in 1907.\nMakwasi is a centre for maize, groundnuts, sorghum and milk production\nMakwassie is located 14 kilometres (8.7 mi) south of Wolmaransstad and 78 kilometres (48 mi) north-west of Wesselsbron. It was laid out in 1907 and proclaimed in 1910. At first spelt Maquassi, it was standardized as Makwassie in 1937. The first white child in Transvaal was born there, and the first printing undertaken.\nThe town claims four distinctions in Transvaal history:\n\nthe first Christian mission station north of the Vaal River - built by Wesleyans Samuel Broadbent and Thomas Hogson in 1822.\nthe first White person born - July 1823\nthe first printed matter - a Tswana spelling book and religious tracts\nthe oldest town hall - built in 1910"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "makwassie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6610,
+    "attempt": 6563,
+    "place_id": "gn-1264794",
+    "input": {
+      "place": {
+        "place_id": "gn-1264794",
+        "name": "Lonar",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.98533,
+        "lon": 76.52046
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lonar",
+          "url": "https://en.wikipedia.org/wiki/Lonar",
+          "text": "Lonar is a town, just 79 km from Buldhana and municipal council in Buldhana district of Vidarbha region of the Indian state of Maharashtra. The town is the headquarter of Lonar taluka and is located near Mehkar.\nLonar is famous for Lonar crater and Lonar Lake, which is located at 19°58′N 76°30′E. It is a meteorite crater created in the Pleistocene Epoch. The crater contains salt water lake is 1.8 km in diameter and is about 137 m below the level of the crater rim. A small fresh water stream drains into the lake. Due to evaporite effects, the lake is mineral rich and salty and sodium and potassium salts are extracted from it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "lonar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6611,
+    "attempt": 6564,
+    "place_id": "gn-1275253",
+    "input": {
+      "place": {
+        "place_id": "gn-1275253",
+        "name": "Borim",
+        "country": "India",
+        "subdivision": "Goa",
+        "lat": 15.36667,
+        "lon": 74
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borim",
+          "url": "https://en.wikipedia.org/wiki/Borim",
+          "text": "Borim or Bori is a census town in Ponda taluka, North Goa district in the state of Goa,\nIndia on the banks of Zuari River. It has a land area of 1536.07 acres and has a population of 8,257. The village has a rich history dating back to the 12th century Kadamba era, when the Kamleshwar temple was built at Deulwada by the Kadamba queen, Kamaladevi.\nThe name  Bori is etymologically derived from the word  Bora (Indian berry, zizyphus). It is said that the village had many Indian berry or \"Bor\" trees at some point. Badrigram, a Sanskrit version of the village name, also alludes to the Indian berries, known as Badri in Sanskrit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "borim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6612,
+    "attempt": 6565,
+    "place_id": "gn-1278539",
+    "input": {
+      "place": {
+        "place_id": "gn-1278539",
+        "name": "Annur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.23616,
+        "lon": 77.10514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Annur",
+          "url": "https://en.wikipedia.org/wiki/Annur",
+          "text": "Annur is a town Panchayat and Taluk headquarters of Annur Taluk of the Coimbatore district. It is a suburb of Coimbatore located north-east about 30 kilometres (19 miles) from the center of the city. The nearest airport is Coimbatore International Airport, which is about 27 kilometres (17 miles) away from Annur. The nearest railway station is Mettupalayam, which is about 21 kilometres (13 miles) away. Other cities/towns near Annur are Mettupalayam, which is 21 kilometres (13 miles) away in the west, Avanashi, which is 18 kilometres (11 miles) away in the east and Punjai Puliampatti, which is about 18 kilometres (11 miles) in the north. Annur has a police station in the Karumathampatti subdivision."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "annur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6613,
+    "attempt": 6566,
+    "place_id": "gn-13513181",
+    "input": {
+      "place": {
+        "place_id": "gn-13513181",
+        "name": "Gastown",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.28513,
+        "lon": -123.11168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gastown",
+          "url": "https://en.wikipedia.org/wiki/Gastown",
+          "text": "Gastown is the original settlement that became the core of the city of Vancouver, British Columbia, Canada, and a national historic site and a neighbourhood in the northwest section of the Downtown Eastside, adjacent to Downtown Vancouver.\nIts historical boundaries – the waterfront (now Water Street and the CPR tracks), Carrall Street, Hastings Street, and Cambie Street – followed the borders of the 1870 townsite survey, the proper name and postal address of which was Granville, BI (\"Burrard Inlet\"). The official boundary does not include most of Hastings Street except for the Woodward's and Dominion Buildings, and stretches east past Columbia Street, to the laneway running parallel to the west side of Main Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "gastown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6614,
+    "attempt": 6567,
+    "place_id": "gn-2078894",
+    "input": {
+      "place": {
+        "place_id": "gn-2078894",
+        "name": "East Fremantle",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.03823,
+        "lon": 115.7676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Fremantle",
+          "url": "https://en.wikipedia.org/wiki/East_Fremantle",
+          "text": "East Fremantle (nicknamed East Freo) is a suburb of Perth, Western Australia, located 13 kilometres (8 mi) south-west of the central business district. The suburb is mainly residential, and is coterminous with the Town of East Fremantle local government area.\nPreviously serving as an outer, rural area of Fremantle, most of the present-day suburb was originally developed in the late 1890s and early 1900s as a result of the Western Australian gold rushes. Further development occurred in the late 1940s and 1950s to provide dwellings for new immigrants. Two major arterial roads – Canning Highway and Stirling Highway – pass through the suburb, which is also bounded to the north by the Swan River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "east fremantle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fremantle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6615,
+    "attempt": 6568,
+    "place_id": "gn-2144604",
+    "input": {
+      "place": {
+        "place_id": "gn-2144604",
+        "name": "Warragul",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.15912,
+        "lon": 145.93118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warragul",
+          "url": "https://en.wikipedia.org/wiki/Warragul",
+          "text": "Warragul () is a town in Victoria, Australia, 102 kilometres (63 miles) south-east of Melbourne. Warragul lies between the Strzelecki Ranges to the south and the Mount Baw Baw Plateau of the Great Dividing Range to the north. As of the 2021 census, the town had a population of 19,856 people. Warragul forms part of a larger urban area that includes nearby Drouin that had an estimated total population of 42,827 as of the 2021 census.\nWarragul is the main population and service centre of the West Gippsland region and the Shire of Baw Baw. The surrounding area is noted for dairy farming and other niche agriculture and has long been producing gourmet foods."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "warragul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6616,
+    "attempt": 6569,
+    "place_id": "gn-2145921",
+    "input": {
+      "place": {
+        "place_id": "gn-2145921",
+        "name": "Tullamarine",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.70128,
+        "lon": 144.881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tullamarine",
+          "url": "https://en.wikipedia.org/wiki/Tullamarine",
+          "text": "Tullamarine (  TUL-ə-mə-REEN) is a suburb in Melbourne, Victoria, Australia, 14 km (8.7 mi) north-west of Melbourne's Central Business District, located within the Cities of Brimbank, Hume and Merri-bek local government areas. Tullamarine recorded a population of 6,733 at the 2021 census.\nThe suburb is a collection of recent housing estates and light industry. Generally flat and exposed to the hot northerly winds of Melbourne's summer, as well as cold southerly winds in winter, its most notable feature is the nearby Melbourne Airport. Tullamarine's residential area is contained in a circular loop of the Moonee Ponds Creek, and its western boundary is the Melbourne Airport. Tullamarine contains the smaller residential area of Gladstone Park. The Albion-Jacana railway line separates Tullamarine from Airport West to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "tullamarine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6617,
+    "attempt": 6570,
+    "place_id": "gn-2156049",
+    "input": {
+      "place": {
+        "place_id": "gn-2156049",
+        "name": "Murwillumbah",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -28.32732,
+        "lon": 153.39339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murwillumbah",
+          "url": "https://en.wikipedia.org/wiki/Murwillumbah",
+          "text": "Murwillumbah ( mər-WIL-əm-bah) is a town in the Northern Rivers region of New South Wales, Australia, in the Tweed Shire, on the Tweed River. It sits on the south eastern foothills of the McPherson Range in the Tweed Volcano valley and is nearby the Mount Warning (Wollumbin). Murwillumbah is 848 kilometres (527 mi) north-east of Sydney, 13 kilometres (8.1 mi) south of the Queensland border and 132 kilometres (82 mi) south of Brisbane.\nThe town's name is often abbreviated to M'bah or Murbah. \nAt the 2021 census, Murwillumbah had a population of 9,812. Many of the buildings are art deco in style and there are cafes, clothes shops and antique shops in the town.\nThe Ngandowal and Minyungbal speaking people of the Bundjalung people are the traditional owners of Murwillumbah and its surrounding areas. The following clans Goodjinburra, Tul-gi-gin and Moorung-Moobah are recognised as being of particular significance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "murwillumbah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6618,
+    "attempt": 6571,
+    "place_id": "gn-2525567",
+    "input": {
+      "place": {
+        "place_id": "gn-2525567",
+        "name": "Belvedere Marittimo",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 39.6193,
+        "lon": 15.8622
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belvedere Marittimo",
+          "url": "https://en.wikipedia.org/wiki/Belvedere_Marittimo",
+          "text": "Belvedere Marittimo is a town and comune in the province of Cosenza in the Calabria region of southern Italy.\nThe town is made of two separate urbanized areas also called \"paese\" and \"marina\". The first is what is left of the original medieval town, the second was developed in more recent decades and it now represents the center of Belvedere Marittimo's commercial and touristic services.\nIts territory covers a stretch of the Tyrrhenian coast.\nThe origins of the ancient settlement, called Belviderium, are uncertain: the finding of a bronze axe in the 19th century shows that human presence in the area probably dates back to the pre-historic age. Other archeological findings concern Bruttian graves. The first encastellation can be ascribed to the Normans who built the castle on the cliff under Roger the Norman (1031–1101).\nBelvedere people were also involved in the Battle of Lepanto (October 7, 1571) during which the mariner and explorer Cecco Pisano distinguished himself. In 1622 the town was given to Tiberio Carafa, the first Prince of Belvedere, after whom the castle, that has always been the heart of the town history, was named.\nThe town was also the birthplace of Saint Daniel Fasanella who is also the town's patron saint."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "belvedere marittimo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belvedere",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marittimo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6619,
+    "attempt": 6572,
+    "place_id": "gn-259973",
+    "input": {
+      "place": {
+        "place_id": "gn-259973",
+        "name": "Chios",
+        "country": "Greece",
+        "subdivision": "North Aegean",
+        "lat": 38.36875,
+        "lon": 26.13718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chios",
+          "url": "https://en.wikipedia.org/wiki/Chios",
+          "text": "Chios (; Greek: Χίος, romanized: Chíos [ˈçi.os] ), also known as Scio in English, is the fifth largest Greek island, situated in the northern Aegean Sea, and the tenth largest island in the Mediterranean Sea. The island is separated from the Anatolian mainland by the Chios Strait. Chios is notable for its exports of mastic gum and its nickname is \"the Mastic Island\". Tourist attractions include its medieval villages and the 11th-century monastery of Nea Moni, a UNESCO World Heritage Site.\nAdministratively, the island forms a separate municipality within the Chios regional unit, which is part of the North Aegean region. The principal town of the island and seat of the municipality is Chios. Locals refer to Chios town as Chora (Χώρα literally means land or country, but usually refers to the capital or a settlement at the highest point of a Greek island).\nThe island was also the site of the Chios massacre, in which tens of thousands of Greeks on the island were massacred, expelled, and enslaved by Ottoman troops during the Greek War of Independence in 1822. Chios remained a part of the Ottoman Empire until 1912."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "chios",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6620,
+    "attempt": 6573,
+    "place_id": "gn-2625070",
+    "input": {
+      "place": {
+        "place_id": "gn-2625070",
+        "name": "Aabenraa",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.04434,
+        "lon": 9.41741
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aabenraa",
+          "url": "https://en.wikipedia.org/wiki/Aabenraa",
+          "text": "Aabenraa (Danish pronunciation: [ɔːpm̩ˈʁɔˀ]; German: Apenrade, pronounced [aːpn̩ˈʁaːdə] ; South Jutlandic: Affenråe; also spelled Åbenrå) is a town in Southern Denmark, at the head of the Aabenraa Fjord, an arm of the Little Belt, 26 kilometres (16 mi) north of the Denmark–Germany border and 32 kilometres (20 mi) north of German town of Flensburg. It was the seat of Sønderjyllands Amt (South Jutland County) until 1 January 2007, when the Region of Southern Denmark was created as part of the 2007 Danish Municipal Reform. With a population of 16,468 (1 January 2026), Aabenraa is the largest town and the seat of the Aabenraa Municipality.\nThe name Aabenraa originally meant \"open beach\" (Danish: åben strand)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "aabenraa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6621,
+    "attempt": 6574,
+    "place_id": "gn-2646042",
+    "input": {
+      "place": {
+        "place_id": "gn-2646042",
+        "name": "Irlam",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.44253,
+        "lon": -2.42323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irlam",
+          "url": "https://en.wikipedia.org/wiki/Irlam",
+          "text": "Irlam is a suburb in the City of Salford, Manchester, England. In 2011, it had a population of 19,933. It lies on flat ground on the south side of the M62 motorway and the north bank of the Manchester Ship Canal,  6.7 miles (10.8 km) southwest of Salford, 7.6 miles (12.2 km) southwest of Manchester and 8.3 miles (13.4 km) northeast of Warrington. Irlam forms a continuous urban area with Cadishead to the southwest, and is divided from Flixton and the Metropolitan Borough of Trafford to the southeast by the Manchester Ship Canal. The main road through Irlam, linking it to Cadishead and Eccles, is the A57. Irlam railway station also serves the district.\nIrlam was anciently known as Irwellham, an outlying area of Chat Moss, a large peat bog which straddled the River Irwell. Work was carried out in the 19th century to reclaim large areas to enable the completion of the Liverpool and Manchester Railway in 1829. In 1894, the Irwell was adjusted so that its waters were united with the Manchester Ship Canal, stimulating the growth of Irlam as an inland port. Irlam Urban District was established in the same year and was governed thereafter by its own district council until its abolition in 1974.\nIrlam's geography is varied: the northern half is still moss land, with a large farming community; the southern half is predominantly residential."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "irlam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6622,
+    "attempt": 6575,
+    "place_id": "gn-2647258",
+    "input": {
+      "place": {
+        "place_id": "gn-2647258",
+        "name": "Hayle",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.18392,
+        "lon": -5.42137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hayle",
+          "url": "https://en.wikipedia.org/wiki/Hayle",
+          "text": "Hayle (Cornish: Heyl [hɛɪl] , lit. \"estuary\") is a port town and civil parish in west Cornwall, England, United Kingdom. It is situated at the mouth of the Hayle River (which discharges into St Ives Bay) and is approximately seven miles (11 km) northeast of Penzance.\nThe parish shares boundaries with St Ives to the west, St Erth to the south, Gwinear and Gwithian in the east, and is bounded to the north by the Celtic Sea. At the 2021 census the population of the parish was 9,772 and the population of the built up area was 9,040.\nHayle was originally three separate settlements that have merged over time: Foundry, Copperhouse and the Towans. In the 19th century, it was known as an important mining port and major centre for manufacturing steam engines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "hayle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6623,
+    "attempt": 6576,
+    "place_id": "gn-2647686",
+    "input": {
+      "place": {
+        "place_id": "gn-2647686",
+        "name": "Haddington",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.95612,
+        "lon": -2.78332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haddington",
+          "url": "https://en.wikipedia.org/wiki/Haddington",
+          "text": "Haddington (Scots: Haidintoun, Scottish Gaelic: Baile Adainn) is a historic market town in East Lothian, Scotland. It lies about 17 miles (27 kilometres) east of Edinburgh. The name Haddington is Anglo-Saxon, dating from the sixth or seventh century AD when the area was incorporated into the Kingdom of Bernicia. The town, like the rest of the Lothian region, was ceded by Edgar, King of England and became part of Scotland in the tenth century. During the reign of David I (1124–1153) Haddington received burgh status, becoming the Royal Burgh of Haddington; one of the earliest settlements to receive the status. This endowed Haddington with trading rights which encouraged its growth into a market town.\nDuring the High Middle Ages, it was the fourth-biggest town in Scotland (after Aberdeen, Roxburgh and Edinburgh). In the centre of the town is the Town House, completed in 1745 based on a plan by William Adam. When first built, it contained markets on the ground floor, and an assembly hall on the first floor to which improvements were made in 1788, and a spire was added in 1831. Other notable buildings include the Corn Exchange (1854) and the County Courthouse (1833). Notable sites of interest include the Jane Welsh Carlyle House; Mitchell's Close; and a building on the High Street that was the birthplace of the author and government reformer Samuel Smiles and is marked by a commemorative plaque. John Knox was probably born in Haddington and Knox Academy, the local high school, is named after him. \nHaddington had a population of 11,354 inhabitants in 2022. It is the main administrative, cultural and geographical centre for East Lothian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "haddington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6624,
+    "attempt": 6577,
+    "place_id": "gn-2649463",
+    "input": {
+      "place": {
+        "place_id": "gn-2649463",
+        "name": "Filey",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.21,
+        "lon": -0.28917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Filey",
+          "url": "https://en.wikipedia.org/wiki/Filey",
+          "text": "Filey () is a seaside town and civil parish in North Yorkshire, England. It is located between Scarborough and Bridlington on Filey Bay. Although previously a fishing village, it has a large sandy beach and became a popular tourist resort.\nAccording to the 2011 UK census, Filey parish had a population of 6,981, in comparison to the 2001 UK census population figure of 6,819, and a population of 6,870 in 1991.\nFiley was historically mainly within the East Riding of Yorkshire, although until 1888 a small part of the town, including its parish church, was in the North Riding of Yorkshire. In 1974 the town was transferred to the new county of North Yorkshire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "filey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6625,
+    "attempt": 6578,
+    "place_id": "gn-2655532",
+    "input": {
+      "place": {
+        "place_id": "gn-2655532",
+        "name": "Blaby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.57577,
+        "lon": -1.16403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blaby",
+          "url": "https://en.wikipedia.org/wiki/Blaby",
+          "text": "Blaby () is a large village in the Blaby District in central Leicestershire, England, approximately five miles (8 km) south of Leicester city centre. At the time of the 2011 census, Blaby had a population of 6,194, falling slightly from 6,240 in 2001. Given Blaby's proximity to the city, it is part of the Leicester Urban Area.\nIts name likely came from Old Norse. Blábýr = \"farmstead or village belonging to a man named Blár\" (where the -r is a case ending). There seems to have been a dense patch of Viking settlement in Leicestershire, although some records in the Blaby Library indicate the origin of the village's name was from the first vicar. Blaby is twinned with the village of Villers-sous-Saint-Leu in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "blaby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6626,
+    "attempt": 6579,
+    "place_id": "gn-2749604",
+    "input": {
+      "place": {
+        "place_id": "gn-2749604",
+        "name": "Ommoord",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.95951,
+        "lon": 4.54533
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ommoord",
+          "url": "https://en.wikipedia.org/wiki/Ommoord",
+          "text": "Ommoord is a neighbourhood in the borough Prins Alexander, part of the municipality of Rotterdam, South Holland, the Netherlands. Ommoord is surrounded by the neighbourhoods Zevenkamp, Het Lage Land and Terbregge. It has around 25,000 inhabitants across 12,500 households. Ommoord shares postal codes 3068 (south of metro line) and 3069 (north of metro line) with Zevenkamp.\nThe river Rotte flows along the northern border of the Ommoord neighborhood and the former borough of Prins Alexander. Two recreational areas lie on the other side of Rotte river, Lage Bergsche Bos and the area around the artificial ski mountain, based on a former landfill, belonging to Bergschenhoek, now part of the combined municipal council for Lansingerland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "ommoord",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6627,
+    "attempt": 6580,
+    "place_id": "gn-2754454",
+    "input": {
+      "place": {
+        "place_id": "gn-2754454",
+        "name": "Hellevoetsluis",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.83333,
+        "lon": 4.13333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hellevoetsluis",
+          "url": "https://en.wikipedia.org/wiki/Hellevoetsluis",
+          "text": "Hellevoetsluis (Dutch pronunciation: [ˌɦɛləvutˈslœys] ) is a town and former municipality in the west of Netherlands. It is located in Voorne-Putten, South Holland. The former municipality covered an area of 61.20 km2 (23.63 sq mi) of which 20.10 km2 (7.76 sq mi) was water and it included the population centres of Nieuw-Helvoet, Nieuwenhoorn, and Oude en Nieuwe Struiten, all former municipalities.\nHellevoetsluis is located on the Haringvliet with the sea, beach, and dunes close by, on the extreme southern edge of the Rijnmond and Europoort areas, close to the broad Zeeland landscape. The name translates as \"lock at the foot of the Helle\". The Helle was a small local river that disappeared over time.\nOn 1 January 2023, the municipality of Hellevoetsluis merged with Brielle and Westvoorne into the new municipality of Voorne aan Zee."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "hellevoetsluis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

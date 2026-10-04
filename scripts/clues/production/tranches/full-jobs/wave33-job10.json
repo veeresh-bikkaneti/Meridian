@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 6628,
+    "attempt": 6581,
+    "place_id": "gn-2870310",
+    "input": {
+      "place": {
+        "place_id": "gn-2870310",
+        "name": "Moabit",
+        "country": "Germany",
+        "subdivision": "State of Berlin",
+        "lat": 52.52635,
+        "lon": 13.33903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moabit",
+          "url": "https://en.wikipedia.org/wiki/Moabit",
+          "text": "Moabit (German: [moaˈbiːt] ) is an inner city locality in the borough of Mitte, Berlin, Germany. As of 2022, about 84,000 people lived in Moabit. First inhabited in 1685 and incorporated into Berlin in 1861, the former industrial and working-class neighbourhood is fully surrounded by three watercourses, which define its present-day border. Between 1945 and 1990, Moabit was part of the British sector of West Berlin and directly bordered East Berlin.\nUntil the administrative reform in 2001, Moabit was a part of the district of Tiergarten.\nColloquially, the name Moabit also refers to the Central Criminal Court (Strafgericht) and detention centre, which deals with all criminal cases in Berlin and is based in Moabit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "moabit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6629,
+    "attempt": 6582,
+    "place_id": "gn-2890051",
+    "input": {
+      "place": {
+        "place_id": "gn-2890051",
+        "name": "Klarenthal",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.08826,
+        "lon": 8.202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Klarenthal",
+          "url": "https://en.wikipedia.org/wiki/Klarenthal",
+          "text": "Klarenthal is a borough of Wiesbaden, capital of the federal state of Hesse, Germany. The community, situated on the slopes of the Taunus Mountains, was planned by architect and urban planner Ernst May in the style of a commuter town in the early 1960s. It was built on free arable land between the railway line to Bad Schwalbach and Klarenthaler Straße, overlooking the city center of Wiesbaden proper. Klarenthal consists mainly of large multi-family homes and residential high-rise buildings, surrounded with much green space, as well as many townhouses. The ground-breaking ceremony was held on September 11, 1964, and the first residents moved in in late February 1966. Today, over 10,000 people live there.\nThe name comes from the medieval Kloster Klarenthal (Klarenthal Monastery), which was located nearby on the edge of today's settlement, in Wellritztal. The monastery was established by Count Adolf of Nassau (born before 1250; died July 2, 1298), who was elected King of Germany on May 5, 1292. The monastery was to serve as a tomb for the House of Nassau, and his wife Queen Imagina and many of his descendants were buried here. Kloster Klarenthal was the only monastery of the city of Wiesbaden. Its nuns belonged to the Order of Poor Ladies (also known as the Order of Saint Clare or the Poor Clares), which was founded by Clare of Assisi, hence the name Klarenthal. The monastery was secularized in 1559, after the Protestant Reformation. Only a few buildings are still preserved today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "klarenthal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6630,
+    "attempt": 6583,
+    "place_id": "gn-2961816",
+    "input": {
+      "place": {
+        "place_id": "gn-2961816",
+        "name": "Ringsend",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.34194,
+        "lon": -6.22639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ringsend",
+          "url": "https://en.wikipedia.org/wiki/Ringsend",
+          "text": "Ringsend (Irish: An Rinn) is a southside inner suburb of Dublin, Ireland. It is located on the south bank of the River Liffey and east of the River Dodder, about two kilometres east of the city centre. It is the southern terminus of the East Link Toll Bridge. Areas included in Ringsend are the south side of the Dublin Docklands, and at the west end is the area of South Lotts and part of the Grand Canal Dock area. Neighbouring areas include Irishtown, Sandymount and the Beggars Bush part of Ballsbridge to the south, and the city centre to the west.  A key feature of the area is the chimneys of Poolbeg power station.\nFormerly the point where ships arriving from across the Irish Sea would dock, Ringsend went into decline in the 19th and 20th centuries, when the shipping moved to other locations, although there is still some container shipping."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "ringsend",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6631,
+    "attempt": 6584,
+    "place_id": "gn-2966110",
+    "input": {
+      "place": {
+        "place_id": "gn-2966110",
+        "name": "Blanchardstown",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.38806,
+        "lon": -6.37556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blanchardstown",
+          "url": "https://en.wikipedia.org/wiki/Blanchardstown",
+          "text": "Blanchardstown (Irish: Baile Bhlainséir) is a large outer suburb of Dublin, Ireland. Located ten kilometres (6 mi) northwest of Dublin city centre. Blanchardstown is located in the modern county of Fingal, bordering the Dublin City Council administrative area to it's southeast near Ashtown. It has developed since the 1960s from a small village to a point where Greater Blanchardstown is the largest urban area in Fingal.\nIt is within the historical barony of Castleknock in the traditional County Dublin, as well as the Dublin 15 postal area and the Dublin West electoral constituency.\nOne of Ireland's largest shopping and leisure complexes — the Blanchardstown Centre and adjacent facilities — is located in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "blanchardstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6632,
+    "attempt": 6585,
+    "place_id": "gn-2986302",
+    "input": {
+      "place": {
+        "place_id": "gn-2986302",
+        "name": "Pontarlier",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 46.90347,
+        "lon": 6.35542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pontarlier",
+          "url": "https://en.wikipedia.org/wiki/Pontarlier",
+          "text": "Pontarlier (French: [pɔ̃taʁlje]; Latin: Ariolica; Arpitan: Pontarliér) is a commune and one of the two subprefectures of the Doubs department in the Bourgogne-Franche-Comté region in eastern France.\nNestled in the heart of the Jura Mountains near the Swiss border, the town lies along the Doubs River and occupies the Arlier plain at approximately 830–837 m elevation. It is overshadowed by the Grand Taureau peak, which reaches 1,323 m.\nPontarlier occupies a site that has been inhabited since Neolithic times. Known as Ariolica in antiquity, it was an important transit point between Gaul and Italy. During the Middle Ages, it flourished as a trading hub on the route linking the Mediterranean and the North Sea. The city endured significant turmoil—most notably during the Thirty Years' War, when it was besieged and largely destroyed in 1639 by troops under Bernard of Saxe‑Weimar, and suffered multiple destructive fires in the 17th and 18th centuries.\nAt the start of the 19th century, Pontarlier became known as France's \"absinthe capital\" when Henri‑Louis Pernod established the Pernod Fils distillery in 1805. By the early 20th century, around twenty distilleries employed nearly 3,000 people, thanks to booming national demand. That era abruptly ended with the French ban on absinthe in 1915. The modern revival of absinthe since 2001 has reconnected Pontarlier with this storied past. Pontarlier is also associated with a type of historical absinthe glass known as the Pontarlier glass. The reservoir-style glass takes its modern name from its appearance in a widely distributed advertising chromolithograph for Pernod Fils, based on a work by Pontarlier artist Charles Maire (1845–1919). The still life depicts a bottle of Pernod Fils absinthe, a water carafe and absinthe glasses, with a copy of the local Journal de Pontarlier in the foreground.\nToday, Pontarlier is the leading economic and commercial hub of the Haut‑Doubs area. Its diversified industrial sector includes major employers such as Schrader (Valves), Nestlé France (producing Nesquik powder locally), and Hifi Filter France (specializing in filtration). The town has over 400 retail outlets, spread across multiple commercial zones, drawing shoppers from France and neighboring Switzerland. Pontarlier also supports regional food and beverage traditions. The Badoz dairy produces Comté and Mont d’Or cheeses, while distilleries like Pierre Guy continue crafting traditional absinthe, Pontarlier aperitif (anise-flavored), and other regional liqueurs.\nPontarlier has a rich architectural and cultural heritage. The Church of Saint‑Bénigne, reconstructed between 1651 and 1666 in the Romanesque‑Gothic style typical of Franche‑Comté, features an imperial‑dome bell tower and stained‑glass windows by Alfred Manessier, and is officially listed as a historic monument. The classical triumphal arch of the Porte Saint‑Pierre, erected from 1771 to 1773 to commemorate the town's reconstruction, stands as another major symbol of the city. The Municipal Museum of Art and History, housed in a 15th‑century manor, showcases archaeological treasures, regional artifacts, decorative arts, and items connected to absinthe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 473
+    },
+    "banned_terms": [
+      {
+        "term": "pontarlier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6633,
+    "attempt": 6586,
+    "place_id": "gn-3071024",
+    "input": {
+      "place": {
+        "place_id": "gn-3071024",
+        "name": "Mariánské Lázně",
+        "country": "Czechia",
+        "subdivision": "Carlsbad Region",
+        "lat": 49.96459,
+        "lon": 12.70118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mariánské Lázně",
+          "url": "https://en.wikipedia.org/wiki/Mariánské_Lázně",
+          "text": "Mariánské Lázně (Czech pronunciation: [ˈmarɪjaːnskɛː ˈlaːzɲɛ]; German: Marienbad) is a spa town in Cheb District in the Karlovy Vary Region of the Czech Republic. It has about 14,000 inhabitants. The town proper is located on the border between the Teplá Highlands and Podčeskoleská Hills, in the Slavkovský les Protected Landscape Area. Mariánské Lázně is a railway junction and a popular holiday resort.\nMost of the town's buildings come from its Golden Era in the second half of the 19th century, when many celebrities and top European rulers came to enjoy the curative carbon dioxide springs. The town centre with the spa cultural landscape is well preserved and is protected as an urban monument reservation. In 2021, the town became part of the transnational UNESCO World Heritage Site under the name \"Great Spa Towns of Europe\" because of its springs and architectural testimony to the popularity of spa towns in Europe during the 18th through 20th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "marianske lazne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marianske",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lazne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6634,
+    "attempt": 6587,
+    "place_id": "gn-3101613",
+    "input": {
+      "place": {
+        "place_id": "gn-3101613",
+        "name": "Choszczno",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.16905,
+        "lon": 15.42054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Choszczno",
+          "url": "https://en.wikipedia.org/wiki/Choszczno",
+          "text": "Choszczno [ˈxɔʂt͡ʂnɔ]  (German: Arnswalde) is a town in the West Pomeranian Voivodeship, in north-western Poland. As of December 2021, the town has a population of 14,831. The town is in a marshy district between the river Stobnica and Klukom lake, 32 kilometres (20 mi) southeast of Stargard and on the main railway line between Szczecin and Poznań. Besides the Gothic church, there are a number of historical buildings from the 19th century industrial period namely, a gasification plant and a water pressure tower which dominates the town's skyline.\nChoszczno is the administrative centre of Choszczno County.\nThe town was badly affected by the Second World War: 80% of its buildings were damaged or destroyed. The town was rebuilt and is now a center for local government of the Choszczno commune (Polish: gmina). Due to its microclimate the town has become a rehabilitation center for convalescing patients. The close proximity of the lakes has made it a tourist destination for water sports. It has also become a popular destination for golf, as it is home to Modry Las, a top ranked European golf course. Other tourist attractions are 'Wodny Raj' aqua park and Drawieński National Park, located 20 km (12 mi) to the east near the town of Drawno.\nChoszczno has a strong military tradition and is the home base for the 2nd Artillery Regiment, which is part of the 12th Mechanised Division headquartered in Szczecin.\nThe town's industries include: machinery, and the manufacture of clothing, animal feeds and starch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "choszczno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6635,
+    "attempt": 6588,
+    "place_id": "gn-3110643",
+    "input": {
+      "place": {
+        "place_id": "gn-3110643",
+        "name": "Sant Feliu de Guíxols",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.78333,
+        "lon": 3.03333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Feliu de Guíxols",
+          "url": "https://en.wikipedia.org/wiki/Sant_Feliu_de_Guíxols",
+          "text": "Sant Feliu de Guíxols (Catalan pronunciation: [ˈsaɱ fəˈliw ðə ˈɣiʃuls]) is a municipality in the comarca of the Baix Empordà in \nCatalonia, Spain. It is situated on the Costa Brava and is an important port and tourist centre.  The district abuts to the north, the upmarket s'Agaró resort built round the Sant Pol Beach. In addition to tourism and the port the cork industry is a traditionally local industry. The town contains a large monastery which now houses the town museum and is a protected historico-artistic monument.\nThe C-253 road runs north near the coast from Sant Feliu de Guíxols to Platja d'Aro and Palamós, while the C-65 road runs inland from the town.  The GI-682 provides a dramatic cliff top drive to Tossa de Mar to the south.\nSant Feliu de Guíxols is a staging point on the GR 92 long-distance footpath, which runs the length of the Mediterranean coast of Spain. Stage 9, to the north, closely follows the coast via S'Agaró, Platja d'Aro and Sant Antoni de Calonge to the next staging point at Palamós, a distance of 16.8 kilometres (10.4 mi). Stage 10, to the south, takes a largely inland route to the next staging point at Tossa de Mar, a distance of 20.2 kilometres (12.6 mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "sant feliu de guixols",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "feliu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guixols",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6636,
+    "attempt": 6589,
+    "place_id": "gn-312531",
+    "input": {
+      "place": {
+        "place_id": "gn-312531",
+        "name": "Harran",
+        "country": "Türkiye",
+        "subdivision": "Şanlıurfa",
+        "lat": 36.86,
+        "lon": 39.03139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harran",
+          "url": "https://en.wikipedia.org/wiki/Harran",
+          "text": "Harran is a municipality and district of Şanlıurfa, Turkey. Its area is 904 km2, and its population is 96,072 (2022). It is approximately 40 kilometres (25 miles) southeast of Urfa and 20 kilometres (12 miles) from the Syrian border crossing at Akçakale.\nHarran was founded at some point between the 25th and 20th centuries BC, possibly as a merchant colony by Sumerian traders from Ur. Over the course of its early history, Harran rapidly grew into a major Mesopotamian cultural, commercial and religious center. It was made a religiously and politically influential city through its association with the moon-god Sin; many prominent Mesopotamian rulers consulted with and renovated the moon-temple of Eḫulḫul in Harran. Harran came under Assyrian rule under Adad-nirari I (r. 1305–1274 BC) and became a provincial capital often second in importance only to the Assyrian capital of Assur itself. During the collapse of the Assyrian Empire, Harran briefly served as the final capital of the Neo-Assyrian Empire (612–609 BC).\nThe city continued to be prominent after the fall of Assyria and experienced varying degrees of foreign cultural influence during its time under the Neo-Babylonian (609–539 BC), Achaemenid (539–330 BC), Macedonian (330–312 BC) and Seleucid (312–132 BC) empires. During classical antiquity Harran was often contested between the Roman and Parthian (later Sasanian) empires. In 53 BC Harran was the site of the Battle of Carrhae, one of the worst military defeats in Roman history. The Harranian moon cult of Sin proved to be enduring and lasted long into the Middle Ages, known to have existed as late as the 11th century AD. The last worshippers of Sin at that time migrated to the regions around Mardin and Mosul. Harran was captured by the Rashidun Caliphate in 640 and remained an important city in the Islamic period. It flourished as a center of science and learning and was the site of both the first Islamic university (the Harran University) and the oldest mosque in Turkey (the Harran Grand Mosque). Harran twice served as a capital city in the Middle Ages, first briefly under the Umayyad Caliphate (744–750) and later under the Numayrid Emirate (990–1081).\nThe city was conquered by the Mongol Empire in 1260 but was largely destroyed and left abandoned in 1271. Although Harran was kept as a military outpost under some later regimes, it has over the last five centuries mainly been used as a temporary settlement by local nomadic societies. Harran transitioned back into a semi-permanent village settlement in the 1840s, but has only recently grown into a permanent town through advancements in local irrigation and agriculture. Harran was a Turkish district until 1946, after when it was downgraded to a sub-district of the Akçakale district. It regained its status as a district in 1987. Today, it is a major local tourist spot. The town is particularly famous for its unique beehive houses, which are reminiscent of buildings that were already present at Harran in ancient Mesopotamian times."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 492
+    },
+    "banned_terms": [
+      {
+        "term": "harran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6637,
+    "attempt": 6590,
+    "place_id": "gn-3168463",
+    "input": {
+      "place": {
+        "place_id": "gn-3168463",
+        "name": "San Colombano al Lambro",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.18322,
+        "lon": 9.49028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Colombano al Lambro",
+          "url": "https://en.wikipedia.org/wiki/San_Colombano_al_Lambro",
+          "text": "San Colombano al Lambro (Lodigiano: San Culumban al Lamber) is a comune (municipality) in the Metropolitan City of Milan, in the Italian region of Lombardy, located about 40 kilometres (25 mi) southeast of Milan.\nSan Colombano al Lambro is an exclave of the province of Milan at the junction between the Pavia and Lodi provinces. The exclave arose when the province of Lodi was carved out of the province of Milan, but a referendum in San Colombano indicated the locals' wish to stay in Milan.\nSan Colombano al Lambro borders the following municipalities: Borghetto Lodigiano, Graffignana, Livraga, Miradolo Terme, Orio Litta, and Chignolo Po, none of which are in the Metropolitan City of Milan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "san colombano al lambro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "colombano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lambro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6638,
+    "attempt": 6591,
+    "place_id": "gn-3195890",
+    "input": {
+      "place": {
+        "place_id": "gn-3195890",
+        "name": "Makarska",
+        "country": "Croatia",
+        "subdivision": "Split-Dalmatia",
+        "lat": 43.29694,
+        "lon": 17.01778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makarska",
+          "url": "https://en.wikipedia.org/wiki/Makarska",
+          "text": "Makarska (Croatian pronunciation: [mâkarskaː]) is a town on the Adriatic coastline of Croatia, about 60 km (37 mi) southeast of Split and 140 km (87 mi) northwest of Dubrovnik, in the Split-Dalmatia County.\nMakarska is a prominent regional tourist center, located on a horseshoe-shaped bay between the Biokovo mountains and the Adriatic Sea. The city is noted for its palm-fringed promenade, where cafes, bars and boutiques overlook the harbor. Adjacent to the beach are several large capacity hotels as well as a camping grounds.\nMakarska is the centre of the Makarska Riviera, a popular tourist destination under the Biokovo mountain. It stretches for 60 km (37 mi) between the municipalities of Brela and Gradac."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "makarska",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6639,
+    "attempt": 6592,
+    "place_id": "gn-3337476",
+    "input": {
+      "place": {
+        "place_id": "gn-3337476",
+        "name": "Konjic",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.65126,
+        "lon": 17.96082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Konjic",
+          "url": "https://en.wikipedia.org/wiki/Konjic",
+          "text": "Konjic is a city located in the Herzegovina-Neretva Canton of the Federation of Bosnia and Herzegovina, one of two entities that make up Bosnia and Herzegovina. It is located in northern Herzegovina, around 60 kilometres (37 mi) southwest of Sarajevo, in a mountainous, heavily wooded area, and is 268 m (879 ft) above sea level. The municipality extends on both sides of the Neretva River. According to the 2013 census, the city of Konjic has a population of 10,732 inhabitants, whereas the municipality has 25,148.\nThe city is one of the oldest permanent settlements in Bosnia and Herzegovina, dating back almost 4,000 years; it arose in its current incarnation in the late 14th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "konjic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6640,
+    "attempt": 6593,
+    "place_id": "gn-3435356",
+    "input": {
+      "place": {
+        "place_id": "gn-3435356",
+        "name": "Colegiales",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires F.D.",
+        "lat": -34.57365,
+        "lon": -58.44924
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colegiales",
+          "url": "https://en.wikipedia.org/wiki/Colegiales",
+          "text": "Colegiales is a barrio or district in Buenos Aires, Argentina. It is located between Alvarez Thomas av., Forest av., De los Incas av., Virrey del Pino st., Cabildo av., Jorge Newbery st., Crámer st. and Dorrego av.  \nThere are large and tall buildings that go from the Crámer street to Avenida Cabildo and traditional houses up to three stories. This district has become a busy one with many pedestrians and cars on the streets. This neighborhood is mainly residential, with some non-residential areas like the classification yard in the north-east zone, the fairs in the south-west (where until the late 1960s there was another classification yard), and the UCA Colegiales campus in the south-east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "colegiales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6641,
+    "attempt": 6594,
+    "place_id": "gn-3461659",
+    "input": {
+      "place": {
+        "place_id": "gn-3461659",
+        "name": "Horizontina",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -27.62583,
+        "lon": -54.30778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horizontina",
+          "url": "https://en.wikipedia.org/wiki/Horizontina",
+          "text": "Horizontina (Portuguese pronunciation: [oɾizõˈtʃĩnɐ]) is a municipality in Rio Grande do Sul, in southern Brazil, with 19,389 inhabitants in 2020. It is located 496 km north of the state capital. The first settlers were German, Italian and Polish immigrants who arrived in the region in 1927. Nowadays, most of the inhabitants are of German-Brazilian descent.\nThe city has an average annual temperature of 20.8 °C. Horizontina's human development index is 0.783, considered high by the United Nations Development Programme, ranking 110th in Brazil, 11th in the state of Rio Grande do Sul, and 1st in its micro-region.\nThe colonization of the city occurred in 1927, when the first German colonists arrived in the region. A year later came more families from other ethnic groups, causing the place to develop. The first name of the city council was Belo Horizonte, later becoming Vila Horizonte and Horizonte before settling on the current name, Horizontina, in 1944. Before being elevated to a municipality, it was a district in the municipality of Santa Rosa. Only in December 1954 was the district emancipated.\nThe city is known as the \"Cradle of National Automotive Harvesters,\" due to the construction of the first Brazilian automotive harvester in the city in 1965. A unit of US company John Deere is installed in Horizontina, generating about 80% of the city's tax revenue.\nSupermodel Gisele Bündchen was born and raised in Horizontina. Her grandfather, Walter Bündchen (died 2010) also once served as the municipality's mayor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "horizontina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6642,
+    "attempt": 6595,
+    "place_id": "gn-3472448",
+    "input": {
+      "place": {
+        "place_id": "gn-3472448",
+        "name": "Alto Garças",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -16.94389,
+        "lon": -53.52806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alto Garças",
+          "url": "https://en.wikipedia.org/wiki/Alto_Garças",
+          "text": "Alto Garças is a municipality) in the south-east of the Brazilian State of Mato Grosso with a population of about 12,000 on an area of 3672 km2. The distance to the state capital Cuiabá is approximately 350 km. In 1933 Alto Garças became a district of the municipality of Santa Rita do Araguaia and on 10 December 1953 it was separated as an independent entity. Alto Garças is part of the micro-region Alto Araguaia.\nSettlement began in the early 20th century by adventurers looking for precious stones and other natural resources. These days mining for gemstones, notably diamonds, remains a major factor besides agriculture, where soy, cotton and grass for stock feed are prevailing.\nThe climate is tropical wet with June to August as the dry months. Precipitation reaches its peak in December and the annual average is 1950 mm. The average temperature is 22 °C. The temperature extremes hitherto have been 38 °C and 0 °C.\nFor tourists Alto Garças offers charming rivers and waterfalls. Some larger farms offer holiday accommodation. The calendar is dominated by the carnival, here called Garçafolia and the celebrations in honour to Nossa Senhora de Aparecida on 12 October.\nVanessa da Mata, a pop singer that was born here in 1976, has found international acclaim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "alto garcas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "garcas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6643,
+    "attempt": 6596,
+    "place_id": "gn-3837857",
+    "input": {
+      "place": {
+        "place_id": "gn-3837857",
+        "name": "San Carlos Centro",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -31.72864,
+        "lon": -61.09192
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Carlos Centro",
+          "url": "https://en.wikipedia.org/wiki/San_Carlos_Centro",
+          "text": "San Carlos Centro is a city in the center of the province of Santa Fe, Argentina, located 46 kilometres (29 mi) from the provincial capital Santa Fe. It has 11,055 inhabitants as per the 2010 census [INDEC].\nLike most other towns in the Las Colonias Department, San Carlos Centro was originally an agricultural colony, populated by European immigrants. It was founded in 1858 by Carlos Beck Bernard, of the Beck & Herzog Swiss Colonizing Society. The settlement received the category of comuna (village or commune) on 2 June 1886, and became a city (full-fledged municipality) on 9 October 1986. The city preserves its historical past at the Historical Museum of the San Carlos Colony."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "san carlos centro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carlos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "centro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6644,
+    "attempt": 6597,
+    "place_id": "gn-3874997",
+    "input": {
+      "place": {
+        "place_id": "gn-3874997",
+        "name": "Puerto Aysén",
+        "country": "Chile",
+        "subdivision": "Aysén",
+        "lat": -45.40303,
+        "lon": -72.69184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Aysén",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Aysén",
+          "text": "Puerto Aysén is a city of Chile located in the Aysén del General Carlos Ibáñez del Campo Region, 4 kilometres (2 mi) above the head of Aisén Fjord in the country's extreme south. Puerto Aisén, which is the capital city of both the Aysén Province and the commune of Aisén is located 65 kilometres (40 mi) from the Regional Capital of Coyhaique, and 15 kilometres (9 mi) from the port of Puerto Chacabuco, main entry point to Puerto Aisén by sea. The main tourist attraction is Lagoon San Rafael.\nOriginally settled around 1914, it was officially recognized as a city on January 28, 1928. It numbers around 27,644 inhabitants (as of the 2017 census)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "puerto aysen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aysen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6645,
+    "attempt": 6598,
+    "place_id": "gn-3881285",
+    "input": {
+      "place": {
+        "place_id": "gn-3881285",
+        "name": "Los Vilos",
+        "country": "Chile",
+        "subdivision": "Coquimbo Region",
+        "lat": -31.91292,
+        "lon": -71.50045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Vilos",
+          "url": "https://en.wikipedia.org/wiki/Los_Vilos",
+          "text": "Los Vilos (from Mapuche: Filu, ‘snake’) is both a Chilean coastal commune and a coastal city with over 9,000 inhabitants (18,275 in comuna), located in the Province of Choapa, part of the IV Region of Coquimbo. The city has a harbour called  Puerto Punta Chungo, that ships the material of Los Pelambres mine. This port stand for 1.1% of the annual tonnage of Chile's external trade as of 2024. Fishing is one of its main activities. The city also has a significant amount of tourism, mainly due to its two beaches: La Principal and Las Conchas. It is located at 246 kilometres (153 mi) from La Serena and 246 kilometres (153 mi) from Santiago.\nThe city was founded in 1830, and was declared a minor harbor in 1855."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "los vilos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vilos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6646,
+    "attempt": 6599,
+    "place_id": "gn-3980390",
+    "input": {
+      "place": {
+        "place_id": "gn-3980390",
+        "name": "San Pedro Cahro",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 20.11548,
+        "lon": -102.65328
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro Cahro",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro_Cahro",
+          "text": "San Pedro Cahro or San Pedro is a town located in North-western part of the state of Michoacan, Mexico in the region of the Chapala Lake. It is formally known as Venustiano Carranza.  The town is 170 kilometers from the state capital, Morelia. San Pedro Cahro has an elevation of 1,500 meters above sea level.\nThe name San Pedro Cahro derives from the town's patron saint and the last name of its original founders; Venustiano Carranza was a  land owner and liberal politician who served as President of Mexico from 1917 until his death in 1920. Important spots in the town near the central square include a 17th-century church which has a clock tower. La Plaza is a town square structure that was recently renovated in 2005, which is packed on Sundays and town holidays and El Arco. There is a main farmer's market next to the municipal building and also a supermarket across the street.  You can see mountains in the southeast part of  town rumored to have a huge cross on a spot were La Virgin de Gaudalupe was seen.\nSan Pedro Cahro is the hometown to many residents that are scattered all over the US  with some concentrations in cities and suburbs like New York, Hawaiian Gardens, California; Chicago, Illinois; Fresno, California; Bakersfield, California; East Los Angeles, California; and Phoenix, Arizona; this is mostly due to the high unemployment in the region, but this little town is kind and people there are friendly, welcoming people.\nIn July 2017, reports circulated that a volcano might be forming in the Pueblo Viejo community. The reports were based on earth cracks filled with ash that formed in a soccer field. Ground temperatures were measured in excess of 250 °C (482 °F). Experts from the National Autonomous University of Mexico concluded that the high temperatures were caused by composting of buried organic material, not volcanism. The purported volcano was linked with the 20th century volcano Parícutin. Venustiano Carranza is located near the edge of the Michoacán-Guanajuato volcanic field, which includes Parícutin, although Parícutin itself is about 320 kilometres (200 miles) distant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 350
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro cahro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cahro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6647,
+    "attempt": 6600,
+    "place_id": "gn-4004148",
+    "input": {
+      "place": {
+        "place_id": "gn-4004148",
+        "name": "Jalpa",
+        "country": "Mexico",
+        "subdivision": "Zacatecas",
+        "lat": 21.63241,
+        "lon": -102.97906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jalpa, Zacatecas",
+          "url": "https://en.wikipedia.org/wiki/Jalpa,_Zacatecas",
+          "text": "Jalpa is a town located in the Mexican state of Zacatecas, close to the border with Jalisco and Aguascalientes and about a two hours drive south of the capital city, Zacatecas. Jalpa is a colonial-style city, with cobble stone streets, narrow walkways, two main churches: El Señor de Jalpa and La Parroquia de San Antonio, and two plazas. Jalpa was modeled by the French in the 19th century. In the middle of the plaza is a kiosk which remains in good shape today, after hundreds of years. Most houses are painted in bright colors just as in colonial times. The houses are made of adobe and share common walls and most have flat roofs.\nThe original indigenous natives were the Caxcan, Chichimeca and Huichol people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "jalpa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
