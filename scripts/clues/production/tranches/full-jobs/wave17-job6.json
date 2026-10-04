@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 3327,
+    "attempt": 3301,
+    "place_id": "gn-5855927",
+    "input": {
+      "place": {
+        "place_id": "gn-5855927",
+        "name": "Hilo",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 19.72991,
+        "lon": -155.09073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hilo, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Hilo,_Hawaii",
+          "text": "Hilo (, HEE-low; Hawaiian pronunciation: [ˈhilo]) is the largest settlement in and the county seat of Hawaiʻi County, Hawaii, United States, which encompasses the Island of Hawaiʻi, and is a census-designated place (CDP). The population was 44,186 according to the 2020 census. It is the fourth-largest settlement in the state of Hawaiʻi, the largest settlement in the state outside of Oahu, and the largest settlement in the state outside of the Greater Honolulu Area.\nHilo is in the District of South Hilo. The city overlooks Hilo Bay and has views of two shield volcanoes – Mauna Loa, the largest active volcano on the planet, and Mauna Kea, the highest point in the Hawaiian Islands. The Hilo bayfront has been destroyed by tsunamis twice. The majority of human settlement in Hilo stretches from Hilo Bay to Waiākea-Uka, on the flanks of the volcanoes.\nHilo is home to the University of Hawaiʻi at Hilo, ʻImiloa Astronomy Center, as well as the Merrie Monarch Festival, a week-long celebration, including three nights of competition, of ancient and modern hula that takes place annually after Easter. Hilo is also home to the Mauna Loa Macadamia Nut Corporation, one of the world's leading producers of macadamia nuts. Hilo is served by Hilo International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "hilo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3328,
+    "attempt": 3302,
+    "place_id": "gn-6076211",
+    "input": {
+      "place": {
+        "place_id": "gn-6076211",
+        "name": "Moncton",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 46.09454,
+        "lon": -64.7965
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moncton",
+          "url": "https://en.wikipedia.org/wiki/Moncton",
+          "text": "Moncton (; French pronunciation: [mɔŋktœn]) is the most populous city in the Canadian province of New Brunswick. Situated in the Petitcodiac River Valley, it lies at the geographic centre of the Maritime Provinces. The city has earned the nickname \"Hub City\" because of its central inland location in the region and its history as a railway and land transportation hub for the Maritimes. As of the 2025 Statistics Canada estimates, the city had a population of 102,378, the first time that a New Brunswick city had a population of more than 100,000 people. The metropolitan population in 2025 was 196,143, making it one of the fastest growing census metropolitan areas (CMA) in Canada. Its land area is 140.67 square kilometres (54.31 sq mi).\nAlthough the Moncton area was first settled in 1733, Moncton was officially founded in 1766 with the arrival of Pennsylvania German immigrants from Philadelphia. Initially an agricultural settlement, Moncton was incorporated in 1855. It was named for Lt. Col. Robert Monckton, the British officer who had captured nearby Fort Beauséjour a century earlier. A significant wooden shipbuilding industry developed in the community by the mid-1840s, allowing for the civic incorporation of the town in 1855.\nThe shipbuilding economy collapsed in the 1860s, causing the town to lose its civic charter in 1862. Moncton regained its charter in 1875 after the community's economy rebounded, mainly due to a growing railway industry. In 1871, the Intercolonial Railway of Canada chose Moncton as its headquarters. Moncton remained a railway town for well over a century until the Canadian National Railway (CNR) locomotive shops closed in the late 1980s.\nAlthough Moncton's economy was significantly impacted by the collapse of the shipbuilding industry in the 1860s and by the closure of the CNR locomotive shops in the 1980s, the city was able to rebound strongly on both occasions. It adopted the motto Resurgo (Latin: \"I rise again\") after its rebirth as a railway town. Its economy is stable and diversified, primarily based on its traditional transportation, distribution, retailing, and commercial heritage, and supplemented by strength in the educational, health care, financial, information technology, and insurance sectors. The strength of Moncton's economy has received national recognition in part due to a local unemployment rate that is consistently lower than the national average."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 379
+    },
+    "banned_terms": [
+      {
+        "term": "moncton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3329,
+    "attempt": 3303,
+    "place_id": "gn-6362987",
+    "input": {
+      "place": {
+        "place_id": "gn-6362987",
+        "name": "Ceuta",
+        "country": "Spain",
+        "subdivision": "Ceuta",
+        "lat": 35.88919,
+        "lon": -5.32042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ceuta",
+          "url": "https://en.wikipedia.org/wiki/Ceuta",
+          "text": "Ceuta (UK: , US: ; Spanish: [ˈθewta, ˈsewta] ; Moroccan Arabic: سَبْتَة, romanized: Sabtah) is an autonomous city of Spain on the North African coast. Bordered by Morocco, it lies between the Mediterranean Sea and the Atlantic Ocean. Ceuta is one of the special territories of members of the European Economic Area: it is part of the Schengen area, but with specific provisions such as border checks between Ceuta and European Spain.\nPhoenicians founded a settlement on the La Almina Peninsula, which had continuity under Roman and Byzantine rule (Septem Fratres). It was annexed to the early caliphates upon the Islamic conquest of the Maghreb, only to be destroyed during the Berber Revolt. It was rebuilt in the ninth century by Majkasa Ghomaras. For much of the Middle Ages, regional powers north and south of the Strait of Gibraltar vied for control over Ceuta, which was a key contested port in the so-called Battle of the Strait. In 1415, it was annexed to the Kingdom of Portugal. In 1580, it was annexed by the Hispanic Monarchy, and the city chose to remain under Spanish authority after 1640. Ceuta belonged to the Spanish province of Cádiz as a regular municipality until the passage of its Statute of Autonomy in March 1995, when it became an autonomous city.\nAlong with the Canary Islands, Ceuta was classified as a free port before Spain joined the European Union. Its population is predominantly made up of Spanish Christians and Arab Muslims, with a small minority of Sephardic Jews, and Sindhi Hindus from pre-partition India. Spanish is the official language of Ceuta, while Darija Arabic (in the Ceuta Arabic dialect) is also widely spoken."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 278
+    },
+    "banned_terms": [
+      {
+        "term": "ceuta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3330,
+    "attempt": 3304,
+    "place_id": "gn-758445",
+    "input": {
+      "place": {
+        "place_id": "gn-758445",
+        "name": "Stalowa Wola",
+        "country": "Poland",
+        "subdivision": "Subcarpathia",
+        "lat": 50.58286,
+        "lon": 22.05334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stalowa Wola",
+          "url": "https://en.wikipedia.org/wiki/Stalowa_Wola",
+          "text": "Stalowa Wola ([staˈlɔva ˈvɔla]) is the largest city and capital of Stalowa Wola County with a population of 58,545 inhabitants, as of 31 December 2021. It is located in southeastern Poland in the Subcarpathian Voivodeship. The city lies in historic Lesser Poland near the confluence of the Vistula and the San rivers, and covers an area of 82.5 km2 (31.9 sq mi).\nStalowa Wola is one of the youngest cities of Poland. It was built from scratch in the late 1930s in the forests surrounding village of Pławo. The city was designed to be a settlement for workers of Huta Stalowa Wola (known in 1938 to 1939 as Zakłady Poludniowe or Southern Works), a plant built as part of the Central Industrial Region. The name \"Stalowa Wola\" translates to \"Steel Will\" in English, reflecting its origins and purpose as a city established to support the steel industry. Stalowa Wola is home to the sports club Stal Stalowa Wola."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "stalowa wola",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stalowa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wola",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3331,
+    "attempt": 3305,
+    "place_id": "gn-7799998",
+    "input": {
+      "place": {
+        "place_id": "gn-7799998",
+        "name": "El Shorouk",
+        "country": "Egypt",
+        "subdivision": "Cairo",
+        "lat": 30.13806,
+        "lon": 31.61556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Shorouk",
+          "url": "https://en.wikipedia.org/wiki/El_Shorouk",
+          "text": "El-Shorouk (Arabic: الشروق  pronounced [eʃʃʊˈɾuːʔ, eʃʃɪˈɾuːʔ], \"the Sunrise\") is a satellite city in the Eastern Area of Cairo, Egypt, also spelt Elshorouk. El Shorouk is considered as an extension for Heliopolis (Masr El Gedida). The two areas are mostly residential and are characterized by a limited number of malls and projects that would otherwise cause street congestion, unlike Nasr City and New Cairo which attracts investments and has lots of malls causing streets congestion. As a \"new city\" it is administered by the New Urban Communities Authority (NUCA).\nShorouk is one of the third-generation new cities, established by presidential decree 325/1995, allocating 11,000 acres (4,500 ha) of public land to NUCA, in addition to further allocations totalling 53,000 acres (21,000 ha) by 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "el shorouk",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "shorouk",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3332,
+    "attempt": 3306,
+    "place_id": "gn-788709",
+    "input": {
+      "place": {
+        "place_id": "gn-788709",
+        "name": "Leskovac",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 42.99806,
+        "lon": 21.94611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leskovac",
+          "url": "https://en.wikipedia.org/wiki/Leskovac",
+          "text": "Leskovac (Serbian Cyrillic: Лесковац, pronounced [lěskoʋats]) is a city and the administrative center of the Jablanica District in southern Serbia. It is situated in the Leskovac Depression (Leskovačka kotlina), by the small river of Veternica, near the confluence point with South Morava. According to the 2022 census, the city itself has a population of 58,338 while the city administrative area has 123,950 inhabitants.\nThe town, as a village, was first mentioned during the reign of emperor Stefan Dušan (r.  1331–1355). During the Ottoman period, Leskovac became an administrative centre and a notable craftsman's and merchant town. Following liberation in the late 19th century, the town became important in the textile industry and expanded to become the third largest urban area in the state. After German occupation in World War II, it was heavily bombed by the Allies in 1944, which left much of the town destroyed. Located in the southeast of Serbia, Leskovac is regarded the meat capital, with an annual six-day grill festival showcasing specialties such as Pljeskavica, Ćevapi, Mućkalica, rotisserie, and paprika."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "leskovac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3333,
+    "attempt": 3307,
+    "place_id": "gn-899825",
+    "input": {
+      "place": {
+        "place_id": "gn-899825",
+        "name": "Petauke",
+        "country": "Zambia",
+        "subdivision": "Eastern Province",
+        "lat": -14.24117,
+        "lon": 31.31975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petauke",
+          "url": "https://en.wikipedia.org/wiki/Petauke",
+          "text": "Petauke is a town and seat of Petauke District located in the Eastern Province of Zambia.\nPetauke is 400 km east of Lusaka, the capital city of Zambia, just off the Great East Road. The main spoken language of the 14,000 residents is Nsenga.\nMost telecommunication is by two local radio stations; Radio PASME, 91.3 and Radio Explorers, 88.1fm, which cover up to 120 km; mainly used by local businessmen, political leaders and traditional chiefs to disseminate their information.\nThe town is situated in an agricultural area; farmers produce maize, cotton, sunflower, groundnut, soya beans and many other crops. Industries include two cotton ginneries, one roofing industry, a number of small scale maize millers and cooking-oil refiners, three breweries, and small scale saw-mills. Government is putting up a milling plant for prisons.\nThe region around Petauke contains copper, amethyst, and gold. However, the minerals in the region are low grade and no serious mining investment has been made in the region. In the early 17th century, gold was mined and that contributed to high rate of slave trade. Mostly, the Swahili speaking peoples invaded the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "petauke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3334,
+    "attempt": 3308,
+    "place_id": "gn-1253013",
+    "input": {
+      "place": {
+        "place_id": "gn-1253013",
+        "name": "Wai",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 17.95276,
+        "lon": 73.89058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wai, Maharashtra",
+          "url": "https://en.wikipedia.org/wiki/Wai,_Maharashtra",
+          "text": "Wai (ISO: Vāī; Pronunciation: [ʋaːi] ) is a town in Satara district of Maharashtra state in India. Located on the Krishna River, Wai was a prominent town during the Peshwa era. Two important Marathi Brahmin from ruling families had their origins here: Rani Lakshmibai of Jhansi (Tambe family) and Gopikabai, wife of Nanasaheb Peshwa (Raste family).\nLocally prominent families such as the Raste, Ranade, and Phadnavis built several architecturally significant temples in Wai. The 400-year-old Mandhradevi Kalubai temple is about 12 kilometres (7.5 mi) from Wai on a hill 718 metres (2,356 ft) above sea level. In recent decades, Wai has become a popular location for filming Bollywood and Marathi movies, with over 300 films having been shot in and near Wai."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "wai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3335,
+    "attempt": 3309,
+    "place_id": "gn-1328865",
+    "input": {
+      "place": {
+        "place_id": "gn-1328865",
+        "name": "Aungban",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Shan State",
+        "lat": 20.6606,
+        "lon": 96.63488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aungban",
+          "url": "https://en.wikipedia.org/wiki/Aungban",
+          "text": "Aungban (Burmese: အောင်ပန်းမြို့) (Pa'o Karen: ဝေင်ꩻအောင်ႏဗန်း) is a major trading town in the southern Shan State of Myanmar that supplies agricultural yield to the rest of the country. It is located in Kalaw Township which is part of Kalaw District. It lies on the Thazi-Kyaingtong road at an elevation of 4,219 feet (1,286 m) above sea level.\nAs of September 2019, its recorded population was 30,515. Due to its location in agricultural villages, it is considered a junction town. The majority of agricultural products, mainly potato, garlic, ginger, cabbage, tomato, cauliflower, avocado, orange, and tea-leaves, are collected from nearby towns and villages by traders and distributed to other parts of the country, especially Yangon, Mandalay, Naypyitaw, Nyaung U, Tachileik, Kayin and Mon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "aungban",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3336,
+    "attempt": 3310,
+    "place_id": "gn-1725729",
+    "input": {
+      "place": {
+        "place_id": "gn-1725729",
+        "name": "Bayombong",
+        "country": "Philippines",
+        "subdivision": "Cagayan Valley",
+        "lat": 16.4812,
+        "lon": 121.1497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayombong",
+          "url": "https://en.wikipedia.org/wiki/Bayombong",
+          "text": "Bayombong, officially the Municipality of Bayombong (Gaddang: Ili na Bayombong; Ilocano: Ili ti Bayombong; Tagalog: Bayan ng Bayombong),  is a municipality and capital of the province of Nueva Vizcaya, Philippines. According to the 2024 census, it has a population of 72,890 people.\nBayombong is the seat of the provincial capitol and the most populous town of Nueva Vizcaya. The name Bayombong emanated from the Gaddang word “Bayongyong” which means the confluence of two or more rivers. It has been reported that a certain tribe arrived and tried to invade the place, which caused the outbreak of the first tribal war in the area. The site was renamed “Bayumbung” as a sign of the Gaddangs' first victory in fighting for their private domains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "bayombong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3337,
+    "attempt": 3311,
+    "place_id": "gn-1732746",
+    "input": {
+      "place": {
+        "place_id": "gn-1732746",
+        "name": "Kempas",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 1.5489,
+        "lon": 103.6965
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kempas",
+          "url": "https://en.wikipedia.org/wiki/Kempas",
+          "text": "Kempas is a suburb and administrative zone in Johor Bahru, Johor, Malaysia. It is bordered by six other planning zones: Tampoi to the southwest, Bandar Baru Uda to the south, Larkin to the southeast, Kangkar Tebrau to the east, Bandar Dato' Onn to the northeast and Impian Emas to the northwest. \nKempas is largely suburban but with some industrial facilities in two main areas; Kawasan Perindustrian Maju jaya near Impian Emas and Taman Perindustrian Tampoi near the border with Larkin. Since 1 August 2024, It is the location of the new headquarters of the department of social welfare(JKM) in Johor. Additionally, it hosts several medical or medical-adjacent facilities including a government psychiatric hospital, a government medical college and Johor's public health department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "kempas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3338,
+    "attempt": 3312,
+    "place_id": "gn-1804451",
+    "input": {
+      "place": {
+        "place_id": "gn-1804451",
+        "name": "Lianyuan",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.68833,
+        "lon": 111.66417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lianyuan",
+          "url": "https://en.wikipedia.org/wiki/Lianyuan",
+          "text": "Lianyuan (simplified Chinese: 涟源; traditional Chinese: 漣源; pinyin: Liányuán) is a county-level city and the 7th most populous county-level division in Hunan Province, China. It is under the administration of Loudi prefecture-level city. Located on the geographical centre of Hunan, the city is bordered to the north by Anhua and Ningxiang Counties, to the east by Louxing District, to the south by Shuangfeng, Shaodong and Xinshao Counties, to the west by Lengshuijiang City and Xinhua County. Lianyuan City covers 1,830.01 km2 (706.57 sq mi). As of the 2010 census, it has a registered population of 1,162,928 and a resident population of 995,712. The city has a subdistrict, 16 towns and two townships under its jurisdiction, the government seat is Lantian Subdistrict (蓝田街道)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "lianyuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3339,
+    "attempt": 3313,
+    "place_id": "gn-209161",
+    "input": {
+      "place": {
+        "place_id": "gn-209161",
+        "name": "Miabi",
+        "country": "Congo - Kinshasa",
+        "subdivision": "East Kasai",
+        "lat": -6.22149,
+        "lon": 23.39254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miabi",
+          "url": "https://en.wikipedia.org/wiki/Miabi",
+          "text": "Miabi is a territory of the Kasai-Oriental province of the Democratic Republic of the Congo. It is inhabited by the Bakwa Dishi and the land, which covers an area of approximately 1,900 square miles (4,900 km2), is owned by its royal family.\nMiabi is also the name of a town within the territory. Kazadi Diofua, who had been imprisoned for 10 years by the local colonial power for rebelling and demanding the autonomy of his people, founded the town in 1933 after his release from prison. Diofua was the last King of the Bakwa Dishi and uncle of the present heir to the throne André-Philippe Futa. Miabi, considered the capital of the land of the Bakwa Dishi, is Futa's place of birth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "miabi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3340,
+    "attempt": 3314,
+    "place_id": "gn-2357163",
+    "input": {
+      "place": {
+        "place_id": "gn-2357163",
+        "name": "Nouna",
+        "country": "Burkina Faso",
+        "subdivision": "Boucle du Mouhoun",
+        "lat": 12.72939,
+        "lon": -3.86305
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nouna",
+          "url": "https://en.wikipedia.org/wiki/Nouna",
+          "text": "Nouna is a town, with a population of 32,428 (2019), located in the Province of Kossi in Burkina Faso. It is the capital of the Province.  Nouna is a fairly developed town that boasts electricity, running water, land-line telephones, and cellular phones.  It also has a high school, bank, post office, mayor's office, and several hotels.\nAccording to the legend, the town of Nouna was founded by an elder of the Dafin ethnic group, who having spotted a water source in the wilderness, exclaimed \"N'nouna diara!\" (I am happy!), and that is how the place came to be called \"Nouna\".\nNouna is located on the line of separation between Samo (or Samogo) territory to the east and Dafin territory to the west. Its inhabitants are mostly Dafin, with a sizable minority of Samo, Bobo, and Fulani (French: Peul or Peulh; Fula: Fulɓe). There are also some Mossi (the majority tribe in the country) and a few other minorities. The dominant language is the Dioula language, which belongs to the same family as the Dafin.\nNouna's main street, which runs through the town from east to west, goes to the second largest city in the country, Bobo-Dioulasso, in both directions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "nouna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3341,
+    "attempt": 3315,
+    "place_id": "gn-2655138",
+    "input": {
+      "place": {
+        "place_id": "gn-2655138",
+        "name": "Boston",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.97633,
+        "lon": -0.02664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boston, Lincolnshire",
+          "url": "https://en.wikipedia.org/wiki/Boston,_Lincolnshire",
+          "text": "Boston is a market town and inland port in the borough of the same name in the county of Lincolnshire, England. It lies to the south-east of Lincoln, east of Nottingham and north-east of Peterborough. The town had a population of 45,339 at the 2021 census, while the borough had an estimated population of 66,900 at the ONS mid-2015 estimates. The Haven in Boston flows about 5 mi (8 km) to the Lincolnshire coast at The Wash, a bay between Lincolnshire and Norfolk.\nBoston's most notable landmark is St Botolph's Church, colloquially referred to as 'The Stump', the largest parish church in England, which is visible from miles away across the flat lands of Lincolnshire. Residents of Boston are known as Bostonians. Emigrants from Boston named several other settlements around the world after the town, most notably Boston, Massachusetts, then an English colony and now part of the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "boston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3342,
+    "attempt": 3316,
+    "place_id": "gn-2784604",
+    "input": {
+      "place": {
+        "place_id": "gn-2784604",
+        "name": "Vilvoorde",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.92814,
+        "lon": 4.42938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vilvoorde",
+          "url": "https://en.wikipedia.org/wiki/Vilvoorde",
+          "text": "Vilvoorde (Dutch pronunciation: [ˈvɪlvoːrdə] ; West Flemish: Vilvôorde; French: Vilvorde [vilvɔʁd]; historically known as Filford in English) is a municipality and city in the Halle-Vilvoorde district (arrondissement) of the province of Flemish Brabant, Belgium. The municipality comprises the city of Vilvoorde proper with its two outlying quarters of Koningslo and Houtem and the small town of Peutie.\nThe official language of Vilvoorde is Dutch, as in the rest of Flanders. There is a French-speaking minority of about 33.7%, concentrated especially in the Koningslo and Beauval quarters, bordering the Neder-Over-Heembeek neighbourhood of Brussels. The French-speaking minority is represented by 3 members on the 33-seat local council.\nFrom 2000 until August 1, 2007, the mayor of Vilvoorde was former Belgian prime minister Jean-Luc Dehaene. The mayor from 2013 to 2024 was Hans Bonte, also a member of the Federal House of Representatives."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "vilvoorde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3343,
+    "attempt": 3317,
+    "place_id": "gn-284899",
+    "input": {
+      "place": {
+        "place_id": "gn-284899",
+        "name": "Jericho",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 31.86667,
+        "lon": 35.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jericho",
+          "url": "https://en.wikipedia.org/wiki/Jericho",
+          "text": "Jericho ( JERR-ik-oh; Arabic: أريحا, romanized: Arīḥā, IPA: [ʔaˈriːħaː] ; Hebrew: יְרֵחוֹ, romanized: Yərīḥō) is a city in the West Bank, Palestine, and the capital of the Jericho Governorate. The city is located in the Jordan Valley, with the Jordan River to the east and Jerusalem to the west.\nJericho is among the oldest cities in the world. Archaeologists have unearthed the remains of more than 20 successive settlements in Jericho, the first of which dates back 11,000 years (to 9000 BCE), almost to the very beginning of the Holocene epoch of the Earth's history. Copious springs in and around the city have attracted human habitation for thousands of years. Jericho is described in the Bible as the \"city of palm trees\".\nFollowing the era of Mandatory Palestine, the West Bank was annexed and ruled by Jordan starting in 1950, then was occupied by Israel in 1967. Administrative control of Jericho was handed over to the Palestinian Authority in 1994.\nThe city had a population of 20,907 in 2017. In 2023, the archaeological site in the center of the city, known as Tell es-Sultan / Old Jericho, was inscribed in UNESCO's list as a World Heritage Site in the State of Palestine, and described as the \"oldest fortified city in the world\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "jericho",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3344,
+    "attempt": 3318,
+    "place_id": "gn-2918987",
+    "input": {
+      "place": {
+        "place_id": "gn-2918987",
+        "name": "Görlitz",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.15518,
+        "lon": 14.98853
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Görlitz",
+          "url": "https://en.wikipedia.org/wiki/Görlitz",
+          "text": "Görlitz ([ˈɡœʁlɪts] ; East Lusatian: Gerlz, Gerltz, Gerltsch; Upper Sorbian: Zhorjelc [ˈzhɔʁʲɛlts] ) is a town in Saxony, Germany. It is on the river Lusatian Neisse and is the largest town in Upper Lusatia, the second-largest town in the region of  Lusatia after Cottbus, and the largest town in the German part of the region of Silesia. Görlitz is the easternmost town in Germany and lies opposite the Polish town of Zgorzelec, which was the eastern part of Görlitz until 1945. The town has approximately 56,000 inhabitants, which make Görlitz the sixth-largest town in Saxony. It is the seat of the district of Görlitz. Together with Zgorzelec it forms the Euro City of Görlitz/Zgorzelec, which has a combined population of around 86,000.\nGörlitz, first mentioned in 1071, developed as a key trading town on the Via Regia route linking Western and Eastern Europe. In the Late Middle Ages, it prospered through the cloth trade and became a member of the Lusatian League, enjoying considerable autonomy. The town came under Bohemian, Austrian and Saxon rule before becoming part of Prussia in 1815 after the Congress of Vienna. During World War II, Görlitz was spared major destruction, but the new Oder–Neisse line in 1945 divided it from its eastern districts, which became Zgorzelec in Poland. In the GDR era, Görlitz was a border town with limited cross-border contact, but after German reunification and Poland’s EU accession, cooperation with Zgorzelec increased. Today, Görlitz is renowned for its well-preserved historic architecture and frequent use as a film location.\nGörlitz is culturally diverse. Immediately to the west of Görlitz lie Sorbian-speaking parts of Lusatia, and Görlitz was founded and first settled by the Sorbs, a Slavic people. This is evidenced by the name of the town and the etymology of some of its surrounding villages and geographical features being of Slavic origin. Görlitz itself speaks the East Lusatian dialect of German (Ostlausitzer Mundart), which is related to Silesian German dialects and differs from the Upper Saxon dialects spoken in most parts of Saxony. It is home to the Schlesisches Himmelreich and Liegnitzer Bombe, a Silesian Museum (Schlesisches Museum zu Görlitz), and the Silesian Christmas Market (Schlesischer Christkindelmarkt)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 362
+    },
+    "banned_terms": [
+      {
+        "term": "gorlitz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3345,
+    "attempt": 3319,
+    "place_id": "gn-2986495",
+    "input": {
+      "place": {
+        "place_id": "gn-2986495",
+        "name": "Poitiers",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 46.58261,
+        "lon": 0.34348
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poitiers",
+          "url": "https://en.wikipedia.org/wiki/Poitiers",
+          "text": "Poitiers is a university city on the river Clain in west-central France. It is a commune,  the capital of the Vienne department, part of the Nouvelle-Aquitaine region of France, and the historical center of Poitou Province. In 2022, the commune of Poitiers had a population of 89,427. Also in 2022, its conurbation had 133,833 inhabitants and its functional area 281,452 inhabitants. It is a city of art and history, still known popularly as the \"Ville aux cent clochers\" (\"City of a hundred bell towers\").\nWith more than 30,000 students, Poitiers has been a major university town since the creation of its university in 1431, having hosted world-renowned figures and thinkers such as René Descartes, Joachim du Bellay and François Rabelais, among others. The plaza of the town is picturesque; its streets including predominantly preserved historical architecture and half-timbered houses, especially religious edifices, commonly from the Romanesque period. The latter includes notably the 4th century baptistery of Saint-Jean (Baptistère Saint-Jean), the 7th century Merovingian underground chapel of the Hypogeum of the Dunes (L'Hypogée des Dunes), the Church of Notre-Dame-la-Grande (12th century), the Church of Saint-Porchaire (12th century) or Poitiers Cathedral (end of the 12th century) as well as the Palace of Poitiers, until recently a courthouse (12th century), the former palace of the Counts of Poitou, Dukes of Aquitaine, where the Dowager Queen of France and England Eleanor of Aquitaine held her \"Court of Love\".\nThe city's pedigree is associated with two major battles that took place in the area. The first, in 732, also known as the Battle of Tours (to avoid inevitable confusion with the second), saw the defending Frankish warhost commanded by Charles Martel defeat the belligerent expeditionary army of the Umayyad Caliphate led by Muslim general Abd al-Rahman al-Ghafiqi. The second battle, in 1356, a lionized military capstone was the Battle of Poitiers which was one of the focal battles of the Hundred Years' War. It saw the defeat of a larger French royal army by the English and the capture of King John II of France by the triumphant Prince of Wales Edward.\nThe Poitiers agglomeration, located halfway between Paris and Bordeaux, is home to the Futuroscope Technopole, which includes major public (CNED, Canopé, etc.) and private companies of national scope, as well as leading European research laboratories. With two million visitors annually, Futuroscope is the leading tourist site in Nouvelle-Aquitaine, and the third most popular amusement park in France after Disneyland Paris and the Puy du Fou."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 412
+    },
+    "banned_terms": [
+      {
+        "term": "poitiers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3346,
+    "attempt": 3320,
+    "place_id": "gn-2994144",
+    "input": {
+      "place": {
+        "place_id": "gn-2994144",
+        "name": "Meudon",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.81381,
+        "lon": 2.235
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meudon",
+          "url": "https://en.wikipedia.org/wiki/Meudon",
+          "text": "Meudon (French pronunciation: [mødɔ̃] ) is a French commune located in the Hauts-de-Seine department in the Île-de-France region, on the left bank of the Seine. It is located 9.1 km (5.7 mi) from the center of Paris.\nThe city is covered by the Meudon Domanial Forest that accounts for half of its surface, a rarity in the close suburbs of Paris. Also, the city presents many significant grades and contains the geographic high point of the innermost Paris suburbs.\nThe city is mainly known for its forest and its observatory, that specializes in astrophysics and observation of the sun, but has also been home to celebrities such as Auguste Rodin, Richard Wagner, Louis Ferdinand Céline, Pascal Manoukian, Ambroise Paré and Armande Béjart."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "meudon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

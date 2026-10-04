@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 3307,
+    "attempt": 3281,
+    "place_id": "gn-2677234",
+    "input": {
+      "place": {
+        "place_id": "gn-2677234",
+        "name": "Skövde",
+        "country": "Sweden",
+        "subdivision": "Västra Götaland",
+        "lat": 58.39118,
+        "lon": 13.84506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skövde",
+          "url": "https://en.wikipedia.org/wiki/Skövde",
+          "text": "Skövde (Swedish pronunciation: [ˈɧœ̂vːdɛ] ) is a locality and urban centre in Skövde Municipality and Västra Götaland County, in the Västergötland (Western Gothland region) in central southern Sweden.\nSkövde is situated around 150 km northeast of Gothenburg, between Sweden's two largest lakes, Vänern and Vättern. It lies on the eastern slope of a low mountain ridge, Billingen (304 m), which cuts through the plain between the lakes. The Western Main Railway (Västra Stambanan) was built through Skövde in the 1850s, which gave the town a dramatic industrial and population boost.\nToday, Skövde is home to the headquarters for Skaraborg's District Court and is the Västra Götaland's fourth-largest urban area as well as Sweden's 32nd biggest locality (by population) with 39,580 inhabitants in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "skovde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3308,
+    "attempt": 3282,
+    "place_id": "gn-2881885",
+    "input": {
+      "place": {
+        "place_id": "gn-2881885",
+        "name": "Lahr",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.34042,
+        "lon": 7.86886
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lahr",
+          "url": "https://en.wikipedia.org/wiki/Lahr",
+          "text": "Lahr (officially Lahr/Schwarzwald since 30 September 1978) ((German: [laːɐ̯] ); Low Alemannic: Lohr) is a city in western Baden-Württemberg, Germany, approximately 50 km north of Freiburg im Breisgau, 40 km southeast of Strasbourg, and 95 km southwest of Karlsruhe. It is the second largest city in Ortenau (district) after Offenburg, and serves as an intermediate economic centre for the cities and towns of Ettenheim, Friesenheim, Kappel-Grafenhausen, Kippenheim, Mahlberg, Meißenheim, Ringsheim, Rust, Schuttertal, Schwanau and Seelbach.\nThe population of Lahr passed the 20,000 mark in the mid-1950s. When the new body of Municipal Law for Baden-Württemberg came into effect on April 1, 1956, the city was therefore immediately accorded Große Kreisstadt status. In addition, Lahr cooperates with the town of Kippenheim in administrative matters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "lahr",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3309,
+    "attempt": 3283,
+    "place_id": "gn-2938376",
+    "input": {
+      "place": {
+        "place_id": "gn-2938376",
+        "name": "Delitzsch",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.52546,
+        "lon": 12.34284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Delitzsch",
+          "url": "https://en.wikipedia.org/wiki/Delitzsch",
+          "text": "Delitzsch (German pronunciation: [ˈdeːlɪtʃ] ; Slavic: delč or delcz for hill) is a town in Saxony in Germany, 20 km north of Leipzig and 30 km east of Halle (Saale). With 24,850 inhabitants at the end of 2015, it is the largest town in the district of Nordsachsen.\nArchaeological evidence outside the town limits points to a settlement dating from the Neolithic Age. The first documented mention of Delitzsch dates from 1166 and it later became the Elector of Saxony's residence in the 17th and 18th centuries. The old town is well preserved, with several plazas, citizens' and patrician houses, towers, a baroque castle and the town's fortifications.\nDelitzsch and its surrounding area contain water areas, hiking and cycling networks and nature reserves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "delitzsch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3310,
+    "attempt": 3284,
+    "place_id": "gn-304184",
+    "input": {
+      "place": {
+        "place_id": "gn-304184",
+        "name": "Muğla",
+        "country": "Türkiye",
+        "subdivision": "Muğla",
+        "lat": 37.21807,
+        "lon": 28.3665
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muğla",
+          "url": "https://en.wikipedia.org/wiki/Muğla",
+          "text": "Muğla (Turkish: [ˈmuːɫa]) is a city in southwestern Turkey. The city is the center of the district of Menteşe and Muğla Province, which stretches along Turkey's Aegean coast. Muğla's center is situated inland at an altitude of 660 m and lies at a distance of about 30 km (19 mi) from the nearest seacoast in the Gulf of Gökova to its south-west. Muğla (Menteşe) district area neighbors the district areas of Milas, Yatağan and Kavaklıdere to its north by north-west and those of Ula and Köyceğiz, all of whom are dependent districts. Muğla is the administrative capital of a province that incorporates internationally well-known and popular tourist resorts such as Bodrum, Marmaris, Datça, Dalyan, Fethiye, Ölüdeniz and also the smaller resort of Sarigerme."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "mugla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3311,
+    "attempt": 3285,
+    "place_id": "gn-3183089",
+    "input": {
+      "place": {
+        "place_id": "gn-3183089",
+        "name": "Ancona",
+        "country": "Italy",
+        "subdivision": "The Marches",
+        "lat": 43.60717,
+        "lon": 13.5103
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ancona",
+          "url": "https://en.wikipedia.org/wiki/Ancona",
+          "text": "Ancona (, also US: ; Italian: [aŋˈkoːna] ) is a city and a seaport in the Marche region of central Italy. The city of Ancona has an estimated population of around 99,469 as of 2025. Ancona is the capital of the homonymous province and of the region. The city is located 280 km (170 mi) northeast of Rome, on the Adriatic Sea, between the slopes of the two extremities of the promontory of Monte Conero, Monte Astagno, and Monte Guasco. The hilly nature around Ancona is a strong contrast to the flatter coastline in areas further north.\nAncona is one of the main ports on the Adriatic Sea, especially for passenger traffic, and is the main economic and demographic centre of the region.\nAs a result of Ancona's elbow shape facing the sea, Ancona is one of the few cities in the world and the only city in Italy where it is possible to see both sunrise and sunset over the sea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "ancona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3312,
+    "attempt": 3286,
+    "place_id": "gn-3398379",
+    "input": {
+      "place": {
+        "place_id": "gn-3398379",
+        "name": "Icó",
+        "country": "Brazil",
+        "subdivision": "Ceará",
+        "lat": -6.40111,
+        "lon": -38.86222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Icó",
+          "url": "https://en.wikipedia.org/wiki/Icó",
+          "text": "Icó (Portuguese pronunciation: [iˈkɔ]) is a town in Ceará, Brazil, located in the Microrregião of Salgado in the central part of the state. Icó borders the municipalities of Umari, Cedro, Iguatu, Orós, Jaguaribe, Pereiro, and the states of Rio Grande do Norte and Paraíba. The seat of the town, also called Icó, is located 375 kilometres (233 mi) from the state capital, Fortaleza. The municipality covers 1,872 km2 (723 mi2) and has a population of 68,162 with a population density of 36 inhabitants per square kilometer. It is located 1,872 km (1,163 mi) from the state capital of Sergipe, Aracaju.\nIcó sits on a flat plain on the right bank of the Salgado River, a short distance from its confluence with the Jaguaribe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "ico",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3313,
+    "attempt": 3287,
+    "place_id": "gn-3433658",
+    "input": {
+      "place": {
+        "place_id": "gn-3433658",
+        "name": "Gualeguaychú",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -33.00777,
+        "lon": -58.51836
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gualeguaychú, Entre Ríos",
+          "url": "https://en.wikipedia.org/wiki/Gualeguaychú,_Entre_Ríos",
+          "text": "Gualeguaychú is a city in the province of Entre Ríos, Argentina, on the left bank of the Gualeguaychú River (a tributary of the Uruguay River). It is located on the south-east of the province, approximately 230 km north-west of Buenos Aires. It has a population of 109,266 according to the 2010 Census.\nBeing at the opposite of Fray Bentos, at the Argentina–Uruguay border, the city is located near the National Route 14, a route that connects Argentina's capital Buenos Aires to the Northeastern end of the Argentine Mesopotamia region.\nThe city hosts an annual carnival that is regionally well-known and attended by people from many other provinces and countries around the world. It is considered one of the largest carnivals in the world. Gualeguaychú also has hot springs, beach resorts, and a casino.\nNear Gualeguaychú is Pueblo Belgrano, a municipality that belongs to the city, which is well known for its hot springs.  Gualeguaychú should not be confused with Gualeguay, another city also in Entre Ríos, located about 80 km (50 mi) west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "gualeguaychu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3314,
+    "attempt": 3288,
+    "place_id": "gn-3532899",
+    "input": {
+      "place": {
+        "place_id": "gn-3532899",
+        "name": "Amecameca",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.12384,
+        "lon": -98.76649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amecameca",
+          "url": "https://en.wikipedia.org/wiki/Amecameca",
+          "text": "Amecameca is a municipality located in the eastern panhandle of Mexico State between Mexico City and the Iztaccíhuatl and Popocatépetl volcanos of the Sierra Nevada mountain range. It is located on federal highway 115 which leads to Cuautla, which is called the Volcano Route (Ruta de los Volcanes).\nAmecameca area is a popular resort destination for visitors from Mexico City, Puebla and Morelos, owing to its mountain scenery, food scene, and other attractions. However, when Popocatépetl is active, tourism here drops dramatically. The area receives many visitors during the annual Carnival/Festival del Señor del Sacromonte, which extends over the week containing Ash Wednesday and is considered to be one of the most important festivals in Mexico State.\nThe name Amecameca comes from Nahuatl. It has been interpreted to mean “place where the papers signal or mark,” or “paper used ceremoniously.”"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "amecameca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3315,
+    "attempt": 3289,
+    "place_id": "gn-3694564",
+    "input": {
+      "place": {
+        "place_id": "gn-3694564",
+        "name": "Moyobamba",
+        "country": "Peru",
+        "subdivision": "San Martín Department",
+        "lat": -6.03441,
+        "lon": -76.97423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moyobamba",
+          "url": "https://en.wikipedia.org/wiki/Moyobamba",
+          "text": "Moyobamba (Spanish pronunciation: [moʝoˈβamba]) or Muyupampa (Quechua muyu circle, pampa large plain, \"circle plain\"), also called \"Santiago of eight valleys of Moyobamba\" or \"Maynas capital\", is the capital city of the San Martín Region in northern Peru. There are 50,073 inhabitants, according to the 2017 census. Some 3,500 species of orchids are native to the area, which has led to another of the city's nicknames , The City of Orchids. The city is the capital of both Moyobamba Province and Moyobamba District.\nThe city is linked by road with Tarapoto to the southeast, Rioja to the west and Bagua to the northwest. Roads connect Moyobamba to the Pacific coast by way of Bagua and Olmos to the north and Cajamarca to the southwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "moyobamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3316,
+    "attempt": 3290,
+    "place_id": "gn-3863379",
+    "input": {
+      "place": {
+        "place_id": "gn-3863379",
+        "name": "Caleta Olivia",
+        "country": "Argentina",
+        "subdivision": "Santa Cruz",
+        "lat": -46.44785,
+        "lon": -67.52274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caleta Olivia",
+          "url": "https://en.wikipedia.org/wiki/Caleta_Olivia",
+          "text": "Caleta Olivia is a coastal city located in the northeast of the Argentine province of Santa Cruz, on the San Jorge Gulf by the Atlantic Ocean. It had a population of 56,310 in the 2022 census [INDEC]. It is the second most important city of the province after Rio Gallegos, and the most populated in the Deseado Department.\nThe city was founded on 20 November 1901, by Navy Lieutenant Exequiel Guttero, captain of the Guardia Nacional, a ship that was transporting cables, equipment, and workers for the construction of a telegraph line south of Comodoro Rivadavia. The settlement was given the name of his wife Olivia (caleta means \"small bay\", \"inlet\").\n\nThe main economic activities around the city are petroleum, sheep and fishing. Its port serves both as a fishing centre, and as an export point for locally produced goods.\nAmong the monuments of the city, probably the most characteristic is that of \"El Gorosito,\" built to honour a petroleum industry worker."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "caleta olivia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caleta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "olivia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3317,
+    "attempt": 3291,
+    "place_id": "gn-3869716",
+    "input": {
+      "place": {
+        "place_id": "gn-3869716",
+        "name": "Tocopilla",
+        "country": "Chile",
+        "subdivision": "Antofagasta",
+        "lat": -22.09198,
+        "lon": -70.19792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tocopilla",
+          "url": "https://en.wikipedia.org/wiki/Tocopilla",
+          "text": "Tocopilla is a city and commune in the Antofagasta Region, in the north of Chile. It is the capital of the province that bears the same name.\nThe city is divided into two main parts consisting of the central city and smaller portion known as La Villa Sur (in which the more luxurious houses are located). The two parts are divided by the thermoelectric power plant and a large saltpeter processing and shipping plant, with the coastal highway connecting the two portions.\nThe northern portion of Tocopilla is home of the municipal buildings, the central square and many stores and shops. The steep gradient of the city from beach to vertical hillside is covered in houses and apartments crammed together to save space. A large artificial beach called \"Covadonga\" and a small artificial beach called \"Caleta Boy\" are the main attractions during summer months and serve as a focus away from the heat of the Atacama. On the north side of the city, there is a black sandy beach called \"El Panteón\".\nThe port of Tocopilla has three individual terminals or ports which together stand for 1.0% of the annual tonnage of Chile's external trade as of 2024. \nEvery year Tocopilla celebrates its anniversary on 29 September with a big show the day before, which includes a parade down in the main street of the city, food and a fireworks display at midnight.\nTocopilla is the birthplace of artist Alejandro Jodorowsky and footballer Alexis Sánchez."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "tocopilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3318,
+    "attempt": 3292,
+    "place_id": "gn-3875070",
+    "input": {
+      "place": {
+        "place_id": "gn-3875070",
+        "name": "Pucón",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -39.28223,
+        "lon": -71.95427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pucón",
+          "url": "https://en.wikipedia.org/wiki/Pucón",
+          "text": "Pucón (Mapudungun: \"entrance to the cordillera\") is a Chilean city and commune administered by the municipality of Pucón. It is located in the Province of Cautín, Araucanía Region, 100 km to the southeast of Temuco and 780 km to the south of Santiago. It is on the eastern shore of Lake Villarrica, and Villarrica volcano is located roughly 17 km to the south.\nPucón's location by a lake and volcano, along with its relatively stable climate, especially in summer, make it a popular destination for tourists. It offers a variety of sports and activities for tourists, including water skiing, snow skiing, backpacking, white water rafting and kayaking, horse back riding, natural hot springs, zip line rides, skydiving and guided ascents of Villarrica volcano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "pucon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3319,
+    "attempt": 3293,
+    "place_id": "gn-3983631",
+    "input": {
+      "place": {
+        "place_id": "gn-3983631",
+        "name": "Santiago Papasquiaro",
+        "country": "Mexico",
+        "subdivision": "Durango",
+        "lat": 25.04389,
+        "lon": -105.41917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago Papasquiaro",
+          "url": "https://en.wikipedia.org/wiki/Santiago_Papasquiaro",
+          "text": "Santiago Papasquiaro is a city located in a valley situated on the eastern slopes of the Sierra Madre Occidental in the Mexican state of Durango. As of 2010, the city of Santiago Papasquiaro had a population of 26,121, while the municipality has a census population of 48,482 as of 2015. It is the fourth largest community in the state in terms of population, and is the municipal seat of the municipality of the same name. The municipality has an area of 7,238.4 km2 (2,794.8 sq mi).\nDuring the past few years, the city's infrastructure has improved vastly. Agriculture is a vital part of the city's economy, preserving Northern Tepehuán (Ódami) traditions of maize and ceramics from communities like El Jaguey and El Huisache. Santiago Papasquiaro is also the home of Mexican Army's 71st Infantry Battalion barracks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "santiago papasquiaro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "papasquiaro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3320,
+    "attempt": 3294,
+    "place_id": "gn-3995343",
+    "input": {
+      "place": {
+        "place_id": "gn-3995343",
+        "name": "Moroleón",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.13027,
+        "lon": -101.1908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moroleón",
+          "url": "https://en.wikipedia.org/wiki/Moroleón",
+          "text": "Moroleón is a city and municipal seat of the municipality of Moroleón in the Mexican state of Guanajuato. It is near the cities of Yuriria, Morelia, and Uriangato, forming the metropolitan area of Uriangato-Moroleón with Uriangato. The municipality has an area of 164.97 km2 (60.606 sq mi), with an urban population of 41,909 and municipal population of 46,751 as of 2005.\nMoroleón is considered an important clothes shopping destination in Guanajuato, with clothing stores that line the streets for miles as it is one of the leading cities of the textile industry in all of Mexico. The city holds annual festivals on 16 January and 16 September to celebrate the history of the Catholic Church in Mexico and the independence of Mexico, respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "moroleon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3321,
+    "attempt": 3295,
+    "place_id": "gn-4019260",
+    "input": {
+      "place": {
+        "place_id": "gn-4019260",
+        "name": "Agua Prieta",
+        "country": "Mexico",
+        "subdivision": "Sonora",
+        "lat": 31.3224,
+        "lon": -109.54251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agua Prieta",
+          "url": "https://en.wikipedia.org/wiki/Agua_Prieta",
+          "text": "Agua Prieta (also known as \"Bachicuy\" in the native Ópata language, meaning 'Blackwater' in English) is a city in the northeastern corner of the Mexican state of Sonora. It stands on the Mexico–U.S. border, adjacent to the town of Douglas, Arizona. It serves as the municipal seat for the municipality of the same name, which covers an area of 3,631.65 km2 (1,402.2 sq mi).  In the 2010 census, the city had a population of 79,138 people, making it the seventh-largest community in the state, with a literacy rate of 96.3%.\n89% of the homes in the city have electricity, 94% have running water, and 86% are connected to the sewer system. The city is the location of the CFE Agua Prieta power plant. It is connected to the United States by the Douglas, Arizona Port of Entry, and is linked to the rest of Mexico by Federal Highways 2 and 17.\nThe town's name in Spanish literally means 'dark water', and it is known in the Opata language as Bachicuy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "agua prieta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "agua",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "prieta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3322,
+    "attempt": 3296,
+    "place_id": "gn-4362344",
+    "input": {
+      "place": {
+        "place_id": "gn-4362344",
+        "name": "Middle River",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.33427,
+        "lon": -76.43941
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middle River, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Middle_River,_Maryland",
+          "text": "Middle River is an unincorporated community and census-designated place in Baltimore County, Maryland, United States. The population was 33,203 at the 2020 census. A Middle River Train Station first appeared on the 1877 G.M. Hopkins & Co Baltimore County Map and by 1898 had a designated Post Office and modest street grid. The town expanded during the 1930s and 1940s and established the \"Aero Acres\" housing community which borders the railroad tracks and Martin Blvd. to serve as housing for people working at the Martin Aerospace Company. For this development, the architecture firm of Skidmore, Owings & Merrill designed gable-roofed Cape Cod houses with dimensions of 24 feet (7.3 m) by 28 feet (8.5 m), featuring large commercial-style windows in their principal rooms. In 1941 a total of 600 homes were built at Aero Acres using this design from Cemento (a cement/asbestos material).[2]"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "middle river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "middle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3323,
+    "attempt": 3297,
+    "place_id": "gn-460570",
+    "input": {
+      "place": {
+        "place_id": "gn-460570",
+        "name": "Cēsis",
+        "country": "Latvia",
+        "subdivision": "Cēsis Municipality",
+        "lat": 57.31188,
+        "lon": 25.27456
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cēsis",
+          "url": "https://en.wikipedia.org/wiki/Cēsis",
+          "text": "Cēsis (Latvian pronunciation: [tseːsis] ; German: Wenden, Livonian: Venden, Estonian: Võnnu, Polish: Kieś) is a town in the Vidzeme region of Latvia and the administrative centre of Cēsis Municipality. It lies in the northern part of the Vidzeme Upland, about 90 km (56 mi) north-east of Riga, on ridges above the valley of the Gauja. At the beginning of 2026, the town had 14,899 residents.\nCēsis developed around a fortified settlement of the Vends at Riekstu Hill and the nearby medieval castle of the Livonian Brothers of the Sword and later the Livonian Order. The area is first recorded in connection with events of 1206. Cēsis was documented as a town in 1323 and joined the Hanseatic League in the early 15th century.\nThe historic centre retains its medieval street plan, sections of the town wall, St. John's Church and the ruins of Cēsis Castle. The town is also a regional cultural centre, with Cēsis Concert Hall, the Cēsis Art Festival and the annual LAMPA Conversation Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "cesis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3324,
+    "attempt": 3298,
+    "place_id": "gn-461650",
+    "input": {
+      "place": {
+        "place_id": "gn-461650",
+        "name": "Ādaži",
+        "country": "Latvia",
+        "subdivision": "Ādaži",
+        "lat": 57.0708,
+        "lon": 24.33678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ādaži",
+          "url": "https://en.wikipedia.org/wiki/Ādaži",
+          "text": "Ādaži ([ˈaː.da.ʒi]) (formerly German: Aahof) is a town in Pierīga, on the left bank of the Gauja river. The town is the administrative center of Ādaži Municipality, in the Vidzeme region of Latvia, as well as the extraterritorial seat of its Ādaži Parish. It is located by the highway A1, 21.6 km from the center of Riga. Latvia's longest river, the Gauja, flows along the Ādaži River, and its tributary Vējupe divides the town into two parts.\nThe town is sometimes popularly known due to the nearby Latfood factory producing Ādažu Čipsi, the best known potato chip brand in Latvia, as well as the home of the largest military base in the country. Ādaži also has an eponymous wakeboarding club on the Gauja.\nĀdaži has administrative offices, schools (Ādaži Elementary School, Ādaži Secondary School, and Ādaži Free Waldorf School), Kindergarten Strautiņš, several shops (Maxima, Rimi, Elvi) and service companies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "adazi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3325,
+    "attempt": 3299,
+    "place_id": "gn-5601538",
+    "input": {
+      "place": {
+        "place_id": "gn-5601538",
+        "name": "Moscow",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 46.73239,
+        "lon": -117.00017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moscow, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Moscow,_Idaho",
+          "text": "Moscow ( MOSS-koh) is a city in and the county seat of Latah County, Idaho, United States. Located in the North Central region of the state along the border with Washington, it had a population of 25,435 at the 2020 United States census. Moscow is the home of the University of Idaho, the state's land-grant institution and primary research university.\nIt is the principal city in the Moscow, Idaho Micropolitan Statistical Area, which includes all of Latah County. The city contains over 60% of the county's population, and the university is Moscow's dominant employer, the city also serves as an agricultural and commercial hub for the Palouse region.\nAlong with the rest of the Idaho Panhandle, Moscow is in the Pacific Time Zone. The elevation of its city center is 2,579 feet (786 m) above sea level. Two major highways serve the city, passing through the city center: US-95 (north-south) and ID-8 (east-west). The Pullman–Moscow Regional Airport, four miles (6 km) west, provides limited commercial air service. The local newspaper is the Moscow-Pullman Daily News."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "moscow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3326,
+    "attempt": 3300,
+    "place_id": "gn-5847486",
+    "input": {
+      "place": {
+        "place_id": "gn-5847486",
+        "name": "Kailua",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 21.40241,
+        "lon": -157.74054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kailua, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Kailua,_Hawaii",
+          "text": "Kailua (English:  kye-LOO-ə, Hawaiian: [kɐjˈluwə]) is a census-designated place (CDP) in Honolulu County, Hawaii, United States. It lies in the Koʻolaupoko District of the island of Oʻahu on the windward coast at Kailua Bay. It is in the judicial district and the ahupua'a named Ko'olaupoko. It is 12 miles (19 km) northeast of Honolulu – over Nu‘uanu Pali.\nIn the Hawaiian language Kailua means \"two seas\" or \"two currents\", a contraction of the words kai (meaning \"sea\" or \"sea water\") and ʻelua (meaning \"two\"); it is so named because of the two former fishponds in the district (Kawainui and Kaʻelepulu) or the two currents that run through Kailua Bay.\nKailua is primarily a residential community, with a centralized commercial district along Kailua Road. The population was 50,000 in 1992. In the 2017 census, the population had dropped to 38,000. The population was 40,514 at the 2020 census.\nPlaces of note in Kailua include Kailua Beach Park, Kaʻōhao or Lanikai Beach, Kawainui Marsh, Maunawili Falls, and Marine Corps Base Hawaii. It was home to Barack Obama’s winter White House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "kailua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

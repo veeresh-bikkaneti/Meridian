@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 3388,
+    "attempt": 3361,
+    "place_id": "gn-2387926",
+    "input": {
+      "place": {
+        "place_id": "gn-2387926",
+        "name": "Bouar",
+        "country": "Central African Republic",
+        "subdivision": "Nana-Mambéré",
+        "lat": 5.93404,
+        "lon": 15.59599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bouar",
+          "url": "https://en.wikipedia.org/wiki/Bouar",
+          "text": "Bouar is a market town in the western Central African Republic, lying on the main road from Bangui (437 km) to the frontier with Cameroon (210 km). The city is the capital of Nana-Mambéré prefecture, has a population of 40,353, while the whole sous-préfecture has a population of 96,595 (2003 census). Bouar lies on a plateau almost 1000m above sea level and is known as the site of Camp Leclerc, a French military base.\nAbout seventy groups of megaliths lie in the town and to its north and east.  The Bouar Megaliths, dating back to the very late Neolithic Era (c. 3500–2700 BC) were added to the UNESCO World Heritage Tentative List on April 11, 2006 in the Cultural category.\nThe town's name comes from the Gbaya word for bean, hbouar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "bouar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3389,
+    "attempt": 3362,
+    "place_id": "gn-2453662",
+    "input": {
+      "place": {
+        "place_id": "gn-2453662",
+        "name": "Markala",
+        "country": "Mali",
+        "subdivision": "Ségou",
+        "lat": 13.68427,
+        "lon": -6.07352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Markala",
+          "url": "https://en.wikipedia.org/wiki/Markala",
+          "text": "Markala is a commune in Mali's Ségou Region on the Niger River 35 km down stream from the town of Ségou. The commune contains 30 villages in an area of 318 square kilometers and in 2009 had a population of 45,961. Mali's primary irrigation dam, the Markala dam, lies in the commune. The main village of the commune, Diamarabougou, is on the right bank adjacent to the dam which also serves as an important road bridge.\nThe French colonial authorities constructed the dam between 1934 and 1945 to irrigate farmland with the intention of producing cotton for the textile industry. The dam is 2450 m in length and functions as a weir in that water can flow over the top. It diverts water into a canal system that extends 135 km to the north past the small towns of Niono and Sokolo in the 'Delta Mort' region. Each year around 2.7 km3 of water is diverted from the river, which corresponds to 8.3 percent of the total flow. The water is used to irrigate about 750 square kilometers (75,000 ha) of farmland. The scheme is managed by the Office du Niger and in 1999/2000 produced 320,000 tons of rice, representing 40 percent of the total Malian production.\nAlthough the dam itself lies in the centre of the Markala commune, the farmland irrigated by the dam lies outside the commune to the north.\nUntil around 2008, the town was served by Markala Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "markala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3390,
+    "attempt": 3363,
+    "place_id": "gn-2520493",
+    "input": {
+      "place": {
+        "place_id": "gn-2520493",
+        "name": "Calvià",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.5657,
+        "lon": 2.50621
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calvià",
+          "url": "https://en.wikipedia.org/wiki/Calvià",
+          "text": "Calvià (Balearic Catalan: [kəlviˈa]) is a municipality and resort town on the island of Mallorca, part of the Spanish autonomous community of the Balearic Islands. It is located in the southwestern part of the island of Mallorca, between the Serra de Tramuntana and the Serra de Na Burguesa. The municipal seat is the town of Calvià Vila.\nCalvià has an approximate area of 145 km2 (56 sq mi). It is bordered on the north by the municipalities of Puigpunyent and Estellencs, Palma de Mallorca, the island's capital to the east, Andratx to the west and to the south by the Mediterranean Sea.\nAccording to the 2008 census, the municipality had a population of 50,777 inhabitants, of whom 18,046 were foreigners. Today, it is the second most populated area of the entire archipelago Balearic after Palma, and also an area that has the largest number of tourists in the islands. Its population is scattered around the different urban centers created as a result of tourism development and twentieth century urbanization.\nThe historical epic that marked the most important local culture and traditions regarding the rest of Mallorca is the landing in Santa Ponça on 10 September 1229 of King James I of Aragon, and the subsequent conquering of Muslims who had invaded in the year 903. Since 1248, Calvià has had its own parochial church, Sante Ihoannes Caviano. Despite the popularity and use of the official shield locally, the municipality has no flag."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "calvia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3391,
+    "attempt": 3364,
+    "place_id": "gn-2633771",
+    "input": {
+      "place": {
+        "place_id": "gn-2633771",
+        "name": "Wisbech",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.66622,
+        "lon": 0.15938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wisbech",
+          "url": "https://en.wikipedia.org/wiki/Wisbech",
+          "text": "Wisbech (  WIZ-beech) is a market town, inland port and civil parish in the Fenland district in Cambridgeshire, England. In 2011 it had a population of 31,573. The town lies in the far north-east of Cambridgeshire, bordering Norfolk and only 5 miles (8 km) south of Lincolnshire. The tidal River Nene running through the town is spanned by two road bridges. Wisbech is in the Isle of Ely (a former administrative county) and has been described as \"the Capital of The Fens\".\nWisbech is noteworthy for its fine examples of Georgian architecture, particularly the parade of houses along the North Brink, which includes the National Trust property of Peckover House and the Crescent, part of a circus surrounding Wisbech Castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "wisbech",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3392,
+    "attempt": 3365,
+    "place_id": "gn-2636713",
+    "input": {
+      "place": {
+        "place_id": "gn-2636713",
+        "name": "Stratford-upon-Avon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.19166,
+        "lon": -1.70734
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stratford-upon-Avon",
+          "url": "https://en.wikipedia.org/wiki/Stratford-upon-Avon",
+          "text": "Stratford-upon-Avon (  ... AY-vən), also known simply as Stratford, is a market town and civil parish in the Stratford-on-Avon District, in the county of Warwickshire, in the West Midlands region of England. It is situated on the River Avon, 91 miles (146 km) north-west of London, 22 miles (35 km) south-east of Birmingham and 8 miles (13 km) south-west of Warwick. The town is the southernmost point of the Arden area at the northern extremity of the Cotswolds. At the 2021 census Stratford had a population of 30,495.\nStratford was inhabited originally by Britons before Anglo-Saxons and remained a village before the lord of the manor, John of Coutances, set out plans to develop it into a town in 1196. In that same year, Stratford was granted a charter from King Richard I to hold a weekly market in the town, giving it its status as a market town. As a result, Stratford experienced an increase in trade and commerce as well as urban expansion.\nStratford is a popular tourist destination, owing to being the birthplace and burial place of the playwright and poet William Shakespeare, who is widely regarded as the national poet of England. It receives approximately 2.7 million visitors a year. The Royal Shakespeare Company resides in the Royal Shakespeare Theatre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "stratford upon avon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stratford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "upon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "avon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3393,
+    "attempt": 3366,
+    "place_id": "gn-2637802",
+    "input": {
+      "place": {
+        "place_id": "gn-2637802",
+        "name": "Sittingbourne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.34128,
+        "lon": 0.73282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sittingbourne",
+          "url": "https://en.wikipedia.org/wiki/Sittingbourne",
+          "text": "Sittingbourne is an industrial town in the Swale district of Kent, southeast England, 17 miles (27 km) from Canterbury and 45 miles (72 km) from London, beside the Roman Watling Street, an ancient trackway used by the Romans and the Anglo-Saxons. In 2021 it had a population of 54,392.\nThe town stands next to the Swale, a strip of sea separating mainland Kent from the Isle of Sheppey. The town became prominent after the death of Thomas Becket in 1170, since it provided a convenient resting point on the road from London to Canterbury and Dover.\nChatham Main Line links to London Victoria station and HS1 to St Pancras International, the journey taking about an hour from Sittingbourne railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "sittingbourne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3394,
+    "attempt": 3367,
+    "place_id": "gn-2650122",
+    "input": {
+      "place": {
+        "place_id": "gn-2650122",
+        "name": "Elgin",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.64947,
+        "lon": -3.31843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elgin, Moray",
+          "url": "https://en.wikipedia.org/wiki/Elgin,_Moray",
+          "text": "Elgin ( EL-ghin; Scots: Ailgin; Scottish Gaelic: Eilginn [ˈel(e)kʲɪɲ]) is a historic market town (former cathedral city) and formerly a royal burgh in Moray, Scotland. It is the administrative and commercial centre for Moray. The town originated to the south of the River Lossie on the higher ground above the floodplain where the town of Birnie is. There, the church of Birnie Kirk was built in 1140 and still serves the community.\nElgin is first documented in the Cartulary of Moray in AD 1190. It was created a royal burgh in the 12th century by King David I of Scotland, and by that time had a castle on top of the present-day Lady Hill to the west of the town. The origin of the name Elgin is likely to be Celtic. It may derive from 'Aille' literally signifying beauty, but in topography a beautiful place or valley. Another possibility is 'ealg', meaning both 'Ireland' and 'worthy'. The termination 'gin' or 'in' are Celtic endings signifying little or diminutive forms, hence Elgin could mean beautiful place, worthy place or little Ireland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "elgin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3395,
+    "attempt": 3368,
+    "place_id": "gn-2656065",
+    "input": {
+      "place": {
+        "place_id": "gn-2656065",
+        "name": "Beckenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.40878,
+        "lon": -0.02526
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beckenham",
+          "url": "https://en.wikipedia.org/wiki/Beckenham",
+          "text": "Beckenham () is a town in south-east London, England, within the London Borough of Bromley. Prior to 1965, it was part of Kent. It is situated north of Elmers End and Eden Park, east of Penge, south of Lower Sydenham and Bellingham, and west of Bromley and Shortlands, and 8.4 miles (13.5 km) south-east of Charing Cross. Its population in 2021 was 60,739.\nBeckenham was, until the coming of the railway in 1857, a small village, with most of its land being rural and private parkland. John Barwell Cator and his family began the leasing and selling of land for the building of villas which led to a rapid increase in population, between 1850 and 1900, from 2,000 to 26,000. Housing and population growth has continued at a lesser pace since 1900.\nBeckenham has areas of commerce and industry, principally around the curved network of streets featuring its high street, and is served in transport by three main railway stations — nine within the post town — plus towards its western periphery two Tramlink stations. In common with the rest of Bromley, the largest borough of Greater London by area, Beckenham has several pockets of recreational land which are a mixture of sports grounds, fishing ponds and parks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "beckenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3396,
+    "attempt": 3369,
+    "place_id": "gn-2656708",
+    "input": {
+      "place": {
+        "place_id": "gn-2656708",
+        "name": "Ayr",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.46273,
+        "lon": -4.63393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ayr",
+          "url": "https://en.wikipedia.org/wiki/Ayr",
+          "text": "Ayr ( AIR; Scots: Ayr; Scottish Gaelic: Inbhir Àir meaning \"confluence of the River Àir\") is a town situated on the southwest coast of Scotland. A former royal burgh, today it is the administrative centre of South Ayrshire Council, and the historic county town of Ayrshire. With a population of 46,182 in 2022, Ayr is the 15th largest settlement in Scotland and second largest town in Ayrshire by population. The town is contiguous with the smaller town of Prestwick to the north. Ayr submitted unsuccessful bids for city status in 2000 and 2002, and as part of the wider South Ayrshire area in 2022.\nAyr was established as a Royal Burgh in 1205 and is the county town of Ayrshire. It served as Ayrshire's central marketplace and harbour throughout the medieval period and was a port during the early modern period. On the southern bank of the River Ayr sit the ramparts of a citadel constructed by Oliver Cromwell's men during the mid-17th century. Towards the south of the town is the birthplace of Scottish poet Robert Burns in the suburb of Alloway. Ayr has been a popular tourist resort since the expansion of the railway in 1840 owing to the town's fine beach and its links to golfing and Robert Burns.\nAyr is one of the largest retail centres in the south of Scotland and in 2014 was recognised by the Royal Society for Public Health as the second healthiest town centre in the United Kingdom. Ayr has hosted the Scottish Grand National horseracing steeplechase annually since 1965 and the Scottish International Airshow annually since 2014. The town also accommodates the headquarters of the Ayr Advertiser and Ayrshire Post newspapers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 281
+    },
+    "banned_terms": [
+      {
+        "term": "ayr",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3397,
+    "attempt": 3370,
+    "place_id": "gn-2780190",
+    "input": {
+      "place": {
+        "place_id": "gn-2780190",
+        "name": "Eisenstadt",
+        "country": "Austria",
+        "subdivision": "Burgenland",
+        "lat": 47.84565,
+        "lon": 16.52327
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eisenstadt",
+          "url": "https://en.wikipedia.org/wiki/Eisenstadt",
+          "text": "Eisenstadt (Austrian German pronunciation: [ˈaɪzn̩ʃtat] ; Austro-Bavarian: Eisnstod; Hungarian: Kismarton; Croatian: Željezni grad or Željezno; Slovene: Železno) is the capital city of the Austrian state of Burgenland. With a population of 16,118 (as of 2025), it is the smallest state capital and the 38th-largest city in Austria overall. It lies at the foot of the Leitha Mountains.\nFrom 1648 to 1921, Kismarton/Eisenstadt was part of the Habsburg Empire's Kingdom of Hungary and the seat of the Hungarian noble family Eszterházy. During this time, the composer Joseph Haydn lived and worked in Eisenstadt as a court musician under the patronage of the Esterházy family. After the cession of Burgenland to Austria in 1921, the city became the province's capital in 1925. As the state capital of Burgenland, it functions as a center of public administration and services and is the seat of three institutes of higher education."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "eisenstadt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3398,
+    "attempt": 3371,
+    "place_id": "gn-2794055",
+    "input": {
+      "place": {
+        "place_id": "gn-2794055",
+        "name": "Kortrijk",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.82803,
+        "lon": 3.26487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kortrijk",
+          "url": "https://en.wikipedia.org/wiki/Kortrijk",
+          "text": "Kortrijk ( KORT-ryke, Dutch: [ˈkɔrtrɛik] ; West Flemish: Kortryk or Kortrik; French: Courtrai [kuʁtʁɛ]), sometimes known in English as Courtrai or Courtray ( koor-TRAY), is a Belgian city and municipality in the Flemish province of West Flanders.\nWith its 80,000 inhabitants (2024) Kortrijk is the capital and the most populous city of the judicial and administrative arrondissement of Kortrijk. The wider municipality comprises the city of Courtrai proper and the villages of Aalbeke, Bellegem, Bissegem, Heule, Kooigem, Marke, and Rollegem. Courtrai is also part of the cross-border Lille-Kortrijk-Tournai metropolitan area.\nThe city is on the river Leie, 42 km (26 mi) southwest of Ghent and 25 km (16 mi) northeast of Lille. Mouscron in Wallonia is just south of Courtrai.\n\nCourtrai originated from a Gallo-Roman town, Cortoriacum, at a crossroads near the Leie river and two Roman roads. In the Middle Ages, Courtrai grew significantly thanks to the flax and wool industry with France and England and became one of the biggest and richest cities in Flanders. The city is often referred to as City of Groeninge or City of the Golden Spurs, referring to the Battle of Courtrai or the Battle of the Golden Spurs which took place on 11 July 1302 on the Fields of Groeninge in Courtrai. In 1820 the Treaty of Kortrijk was signed, laying out the still-current borders between France and Belgium. Throughout the 19th and 20th century, the flax industry flourished and remains important within the Belgian textile industry today.\nCourtrai is the largest city in southern West Flanders, with several hospitals, colleges and a university. Courtrai was the first city in Belgium with a pedestrian shopping street, the Korte Steenstraat."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "kortrijk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3399,
+    "attempt": 3372,
+    "place_id": "gn-2803448",
+    "input": {
+      "place": {
+        "place_id": "gn-2803448",
+        "name": "Aalst",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.93604,
+        "lon": 4.0355
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aalst, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Aalst,_Belgium",
+          "text": "Aalst (Dutch pronunciation: [aːlst] ; French: Alost, pronounced [alɔst]; Brabantian: Oilsjt) is a city and municipality in the province of East Flanders in the Flemish Region of Belgium. It is located on the Dender River, about 31 kilometres (19 mi) northwest of Brussels. The municipality comprises the city of Aalst itself and the villages of Baardegem, Erembodegem, Gijzegem, Herdersem, Hofstade, Meldert, Moorsel and Nieuwerkerken; it is the country's tenth largest city by population with  92,131 inhabitants. Aalst is crossed by the Molenbeek-Ter Erpenbeek in Aalst and Hofstade. The current mayor of Aalst is Christoph D'Haese, from the New-Flemish Alliance party. The town has a long-standing folkloric feud with Dendermonde, north along the same river, which dates from the Middle Ages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "aalst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3400,
+    "attempt": 3373,
+    "place_id": "gn-2872155",
+    "input": {
+      "place": {
+        "place_id": "gn-2872155",
+        "name": "Meissen",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.16158,
+        "lon": 13.4737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meissen",
+          "url": "https://en.wikipedia.org/wiki/Meissen",
+          "text": "Meissen (German: Meißen [ˈmaɪsn̩] ; Upper Sorbian: Mišno; Latin: Misnia, Misena) is a town of approximately 30,000 inhabitants, situated about 25 km (16 mi) north‑west of Dresden and 75 km (47 mi) west of Bautzen, on both banks of the River Elbe in the Free State of Saxony, in eastern Germany. Meissen is renowned as the home of Meissen porcelain, the Albrechtsburg castle, the Gothic Meissen Cathedral, and the Meissen Church of Our Lady. The town of Meissen, designated as a Große Kreisstadt, serves as the administrative seat of the Meissen district.\nIn Germany, the name Meissen is the legally registered trademark of the State Porcelain Manufactory (Staatliche Porzellan-Manufaktur Meissen GmbH), while Meißen refers specifically to the city and municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "meissen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3401,
+    "attempt": 3374,
+    "place_id": "gn-294421",
+    "input": {
+      "place": {
+        "place_id": "gn-294421",
+        "name": "Lod",
+        "country": "Israel",
+        "subdivision": "Central District",
+        "lat": 31.9467,
+        "lon": 34.8903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lod",
+          "url": "https://en.wikipedia.org/wiki/Lod",
+          "text": "Lod (Hebrew: לוד, fully vocalized: לֹד), also known as Lydda (Ancient Greek: Λύδδα) and Lidd (Arabic: اللِّدّ, romanized: al-Lidd, or اللُّدّ, al-Ludd), is a city 15 km (9+1⁄2 mi) southeast of Tel Aviv and 40 km (25 mi) northwest of Jerusalem in the Central District of Israel. It is situated between the lower Shephelah on the east and the coastal plain on the west. The city had a population of 94,189 in 2024.\nLod has been inhabited since at least the Neolithic period. It is mentioned a few times in the Hebrew Bible and in the New Testament. Between the 5th century BCE and up until the late Roman period, it was a prominent center for Jewish scholarship and trade. Around 200 CE, the city became a Roman colony and was renamed Diospolis (Ancient Greek: Διόσπολις, lit. 'city of Zeus'). Tradition identifies Lod as the 4th century martyrdom site of Saint George; the Church of Saint George and Mosque of Al-Khadr located in the city is believed to have housed his remains.\nFollowing the Arab conquest of the Levant, Lod served as the capital of Jund Filastin; however, a few decades later, the seat of power was transferred to Ramla, and Lod slipped in importance. Under Crusader rule, the city was a Catholic diocese of the Latin Church and it remains a titular see to this day.\nLod underwent a major change in its population in the mid-20th century. Exclusively Palestinian Arab in 1947, Lod was part of the area designated for an Arab state in the United Nations Partition Plan for Palestine; however, in July 1948, the city was occupied by the Israel Defense Forces, and most of its Arab inhabitants were expelled in the Palestinian expulsion from Lydda and Ramle. The city was largely resettled by Jewish immigrants, most of them from Arab countries.\nToday, Lod is one of Israel's mixed cities, with an Arab population of 30%. Lod is one of Israel's major transportation hubs. The main international airport, Ben Gurion Airport, is located 8 km (5 miles) north of the city. The city is also a major railway and road junction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 355
+    },
+    "banned_terms": [
+      {
+        "term": "lod",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3402,
+    "attempt": 3375,
+    "place_id": "gn-2974733",
+    "input": {
+      "place": {
+        "place_id": "gn-2974733",
+        "name": "Sète",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.4028,
+        "lon": 3.69278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sète",
+          "url": "https://en.wikipedia.org/wiki/Sète",
+          "text": "Sète (French pronunciation: [sɛt]; Occitan: Seta, [ˈsetɔ]), also historically spelled Cette (official until 1928) and Sette, is a resort town and commune in the Hérault department, in the region of Occitania, southern France. Its inhabitants are called Sétois (male) and Sétoises (female) in French, \"Setòris\" and \"Setòria\" in Occitan.\nKnown as the Venice of Languedoc and the singular island (in Paul Valéry's words), it is a port and a seaside resort on the Mediterranean with its own cultural identity, traditions, cuisine and dialect. It is the hometown of such artists as Paul Valéry, Maurice-Elie Sarthou, Jean Vilar, Georges Brassens, Hervé Di Rosa, Manitas de Plata, and Robert Combas. Since May 12, 2025, Hervé Marquès is the mayor of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "sete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3403,
+    "attempt": 3376,
+    "place_id": "gn-2981206",
+    "input": {
+      "place": {
+        "place_id": "gn-2981206",
+        "name": "Saint-Chamond",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.4759,
+        "lon": 4.51294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Chamond, Loire",
+          "url": "https://en.wikipedia.org/wiki/Saint-Chamond,_Loire",
+          "text": "Saint-Chamond (French pronunciation: [sɛ̃ ʃamɔ̃] ) is a commune in the Loire department in the Auvergne-Rhône-Alpes region in central France. Situated 13 km northeast of the city of Saint-Étienne and 46 km southwest of Lyon, the town dates back to the Roman period.\nIt lies in an iron and coal region, which were the basis of industrial growth during the 19th and 20th centuries. As many of the mines and factories closed in the late 20th century due to restructuring, there was a loss of jobs and population.\nThe present city of Saint-Chamond is the result of the merger in 1964 of the communes of Saint-Martin-en-Coailleux, Saint-Julien-en-Jarez, Izieux and Saint-Chamond. The new town is the third-largest town in the department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "saint chamond",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chamond",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3404,
+    "attempt": 3377,
+    "place_id": "gn-3427687",
+    "input": {
+      "place": {
+        "place_id": "gn-3427687",
+        "name": "Tortuguitas",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.47513,
+        "lon": -58.75367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tortuguitas",
+          "url": "https://en.wikipedia.org/wiki/Tortuguitas",
+          "text": "Tortuguitas is a city in Greater Buenos Aires, Argentina, located 40 kilometres (25 mi) northwest of Buenos Aires. The city is located in Malvinas Argentinas Partido (county), and its population was 41,390 inhabitants as of the 2001 Census.\nPart of a vast estancia in colonial times owned by Alonso de Escobar, the land was bought in 1925 by the Blas País family when the Córdoba Central Railway was built though the area in 1925. The establishment of the Tortugas Country Club by Antonio Maura in 1930 was followed by a stop nearby along the line known simply as Apeadero km 40 (Km. 40 Stop).  The stop was upgraded as a station along the General Belgrano Railway on June 9, 1947.\nThe Blas País family began selling lots to developers as early as 1942, and the numerous dairy farms in the area were gradually developed into residential subdivisions that gave Tortuguitas its bedroom community character. Despite being located near the northwest end of the Greater Buenos Aires metro area, Tortuguitas benefited from direct access to the city via Route 8, which was converted into a freeway in the 1980s. This also promoted the development of a sizable manufacturing base in the eastern end of Tortuguitas, along Route 8.\nThe 88 hectares (220 acres) Tortuguitas Industrial Park, formally designated in 1999, includes the local affiliates of BASF, GE Plastics, and Unilever, as well as Molinos Río de la Plata's Lucchetti pasta plant. The contiguous El Triángulo District includes among others the SKF Argentina plant (1972) and the Tortugas Open Mall (2010).  In 2015, the DirecTV Arena, Argentina's largest, opened in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "tortuguitas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3405,
+    "attempt": 3378,
+    "place_id": "gn-3489440",
+    "input": {
+      "place": {
+        "place_id": "gn-3489440",
+        "name": "Morant Bay",
+        "country": "Jamaica",
+        "subdivision": "Saint Thomas Parish",
+        "lat": 17.88145,
+        "lon": -76.40927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morant Bay",
+          "url": "https://en.wikipedia.org/wiki/Morant_Bay",
+          "text": "Morant Bay is a town in southeastern Jamaica and the capital of the parish of St. Thomas, located about 40 kilometres east of Kingston, the capital. The parish has a population of 94,410.\n\nDuring the nineteenth century, the parish was an area of sugar cane plantations, with a majority of black enslave descendant after the abolition of slavery. The Morant Bay Rebellion started on 11 October 1865, with a march by hundreds of people from the parish to the court house to protest poor conditions in the parish. After seven men were shot and killed by volunteer militia, the people\nburned the court house and other nearby buildings; a total of 25 people died on both sides in this confrontation.\nOver the next two days, hundreds of Jamaican people took control throughout the parish. The governor ordered troops to arrest and suppress the revolutionists; they killed more than 400 persons outright and arrested more than 300, in both cases including many innocent people. Many of those arrested were executed, flogged or sentenced to long terms. This was the only major revolt (as distinguished from slave rebellions and worker uprisings), in Jamaican history. The court house was rebuilt. It stood until 2007, when it was burned down. Court functions were held in other facilities before a new court house was completed and opened in 2014.\nMorant Bay's sister cities are Uxbridge, Ontario, Canada and Hartford, Connecticut, United States.\nMorant Bay is the birthplace of Miss World 2019 Toni-Ann Singh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "morant bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "morant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3406,
+    "attempt": 3379,
+    "place_id": "gn-3618929",
+    "input": {
+      "place": {
+        "place_id": "gn-3618929",
+        "name": "Jinotega",
+        "country": "Nicaragua",
+        "subdivision": "Jinotega Department",
+        "lat": 13.09103,
+        "lon": -86.00234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinotega",
+          "url": "https://en.wikipedia.org/wiki/Jinotega",
+          "text": "Jinotega (Spanish pronunciation: [xinoˈteɣa]) (derived from Náhuatl: Xiotenko 'place next to the jiñocuajo trees') is the capital city of the Department of Jinotega in north-central Nicaragua.\nThe city is located in a long valley surrounded by the cool climate and Dariense Isabelia ridge located 142 km north of the capital Managua. In 2012, the Department of Jinotega had a total population of 417,372, of which 123,548 lived in the municipality. Of the total population, 50.5% are men and 49.5% are women, and almost 38.4% of the population lives in the urban area. Jinotega produces 80% of Nicaragua's coffee, which is exported to the United States, Russia, Canada and Europe.\nWithin the city of Jinotega are several rivers and a lake. Lake Apanas, an artificial lake of 51 square kilometers, provides hydropower to much of the country. Although there is debate as to the origin of the name, Jinotega is colloquially known as \"The City of Mists\" (Ciudad de la Brumas) for the magnificent whisks of clouds continuously feathering through the top of the valley. Other generally accepted names are \"The Eternal City of Men\", and the \"City of Eternal Men\".\nJinotega is bordered to the \n\nnorth by the municipalities of Santa María de Pantasma and Wiwili\nsouth by the municipalities of Matagalpa and Sébaco\neast by the municipalities of El Cua, Bocay, and Tuma La Dalia\nwest by the municipalities of La Trinidad, San Rafael del Norte, La Concordia, and San Sebastian de Yali"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "jinotega",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3407,
+    "attempt": 3380,
+    "place_id": "gn-3712384",
+    "input": {
+      "place": {
+        "place_id": "gn-3712384",
+        "name": "Chitré",
+        "country": "Panama",
+        "subdivision": "Herrera Province",
+        "lat": 7.96011,
+        "lon": -80.42876
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chitré",
+          "url": "https://en.wikipedia.org/wiki/Chitré",
+          "text": "Chitré is the capital of the Panamanian province of Herrera. Located in the northeast of the Azuero Peninsula, the district of Chitré has a population of 60,500 inhabitants. At present, approximately 100,000 inhabitants live in the metropolitan area of the city of Chitre, including the small towns of La Villa de Los Santos, Pesé, Parita and other towns. This city is the main commercial hub of the Azuero region and one of the most important cities in the country.\nIt is known as \"The city that grows alone\" and \"The city where no one is a stranger\". The district of the same name is divided into five townships: San Juan Bautista, Llano Bonito, Monagrillo, La Arena and Chitré (main township). Chitré is connected to the Pan-American Highway in the town of Divisa by Avenida Nacional, the main communication axis of the province of Herrera and Los Santos. It preserves a historic center composed of old houses, churches, squares, avenues and parks, along with an important museum heritage. Among the cultural events that are celebrated are the Holy Week of Chitré, the festivities of the patron saint, San Juan Bautista, the Carnival and its founding party. The city of Chitré connects the Azuero region by air with Panama City with direct flights from Alonso Valderrama Airport.\nThis small city connects with its land transport terminal to all the towns in the Azuero region as well as to the capital of the country and nearby cities. As the main city of the Azuero Peninsula, it has the main banking center of the central provinces, restaurants, fast food franchises, car sales companies, supermarkets, hotels, cinemas and shopping centers.\nThe most important sports stadiums in this city are the Rico Cedeño Stadium, home of Herrerano baseball in the youth and senior championships of Panamanian baseball with a capacity of 5,600 people, and the Los Milagros Soccer Stadium, home of Herrera FC in the first division of the Panamanian soccer league, with a capacity of 1000 fans.\nAmong its most important infrastructure works are:\n\nAzuero Convention Center, the largest in the central provinces.\nThe road interchange (Bridge, Roundabout and Tunnel) between Carmelo Spadafora and Arnulfo Escalona Avenues.\nThe Bike Path to El Agallito Beach Internal Beltway of the City of Chitre Azuero Convention Center Azuero Convention Center Gustavo Nelson Collado Hospital Specialized Clinic of Azuero."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 390
+    },
+    "banned_terms": [
+      {
+        "term": "chitre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

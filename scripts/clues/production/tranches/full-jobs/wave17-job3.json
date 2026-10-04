@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3267,
+    "attempt": 3241,
+    "place_id": "gn-2347303",
+    "input": {
+      "place": {
+        "place_id": "gn-2347303",
+        "name": "Bende",
+        "country": "Nigeria",
+        "subdivision": "Abia State",
+        "lat": 5.55874,
+        "lon": 7.63359
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bende, Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Bende,_Nigeria",
+          "text": "Bende  is a local government area in Abia State, Nigeria with headquarters located in Bende Community also known as Amaeke. Bende Local Government Area (L.G.A) of Abia state lies on 70 30I of the Greenwich Meridian and latitude 50 30I North of the Equator. It is composed of thirteen (13) communities, namely: Alayi, Bende, Ezeukwu, Igbere, Item, Itumbuzo, Nkpa, Ntalakwu, Ozuitem, Ugwueke, Umu-imenyi, Umuhu-Ezechi, and Uzuakoli.\nThe population of Bende L.G.A. according to the 2016 population census was 192,621 persons. Bende L.G.A has agriculture climatic conditions typically of the tropics. Bende is bounded in the north by Cross River State, Afikpo and Ohaozara, and in the South by Arochukwu and Ohafia, while in the East and West by Ikwuano L.G.A. and Umuahia L.G.A respectively. Agriculture is widely the occupation of the people and it is a major rice producing area in Abia state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "bende",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3268,
+    "attempt": 3242,
+    "place_id": "gn-2515692",
+    "input": {
+      "place": {
+        "place_id": "gn-2515692",
+        "name": "La Orotava",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.39076,
+        "lon": -16.52309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Orotava",
+          "url": "https://en.wikipedia.org/wiki/La_Orotava",
+          "text": "La Orotava is a town and a municipality in the northern part of Tenerife, one of the Canary Islands of Spain. The area of the municipality stretches from the north coast to the mountainous interior, and includes the summit of the Teide volcano, Canary Islands' and Spain's highest point at 3,718 m. At 207.31 km2, it is the largest municipality of the island of Tenerife. The population is 41,255 (2013).\nThe town La Orotava, which is the administrative centre of the municipality and also its largest settlement, is situated near the north coast, at about 400 m elevation in the Orotava Valley. It is 4 km southeast of Puerto de la Cruz and 28 km southwest of the island's capital, Santa Cruz de Tenerife. The TF-5 motorway passes through the north of the municipality.\nThe coat of arms of La Orotava was adopted by Alfonso XIII in 1906, the dragoons escorting the drago and the tree of golden apples refers to the mythology of the Garden of Hesperides, believed was located in La Orotava. In gastronomy, La Orotava was honored for the Denominación de Origen Valle de La Orotava or the Denomination of the Origin of the Orotava Valley (Valle de La Orotava) in wines.\nThe historic center of La Orotava was declared Conjunto histórico in 1976 and is included in the Inventory of the European Cultural Heritage Protection and Monumental. Also noteworthy is that much of the Teide National Park (a World Heritage Site in 2007) is located within the municipality. La Orotava is also the highest town of Spain and steepest, the municipality comes from sea level up to 3718 meters the Teide (the highest peak in Spain)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "la orotava",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "orotava",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3269,
+    "attempt": 3243,
+    "place_id": "gn-2520709",
+    "input": {
+      "place": {
+        "place_id": "gn-2520709",
+        "name": "Burriana",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.88901,
+        "lon": -0.08499
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burriana, Castellón",
+          "url": "https://en.wikipedia.org/wiki/Burriana,_Castellón",
+          "text": "Burriana, in Spanish, or Borriana, in Valencian (officially Borriana / Burriana), is a town and municipality in eastern Spain, in the province of Castellón, part of the Valencian Community. Its population exceeds 35,000.\nThe town is located by the Mediterranean Sea, at the lowest region of the Plana Baixa, surrounded by orange tree fields watered by the Millars River.\nIt has about 15 km of coastline, including Burriana's principal beach \"El Arenal\", one of the most attractive spots, especially during the summer. \"El Arenal\" has about 2 km of seashore, has been awarded the blue flag, which recognizes its magnificent sand and water thanks to the treatments carried out by the city council.\nThe seaside is 1.5 km from the center of the town. During the summer, the seaside population can triple due to vacationers and from locals from the center of the town moving into the seaside. The town is reachable from Castelló de la Plana through the CV-18 or the N-340 routes.\nIn literature, Burriana is briefly described by James A. Michener in the book, Iberia. As a young man, Michener landed there as a part of a ship crew. The merchant vessel was there to collect oranges for the Scottish marmalade industry. Oranges, after being loaded into metal barrels, were dragged out to sea by bulls.\nThe town displays many memorial spots dedicated to James A. Michener, such as a street and a sign that quotes one of his passages, where he expresses his first sight of Borriana as he approached land from the sea.\nThe town was once home to a Jewish community, which settled in Burriana after the Christian reconquest of the area in 1233. In 1486, the community faced a crisis when local magistrates attempted to seize the silver ornaments of their synagogue's Torah scrolls. Just a few years later, during the expulsion of the Jews in 1492, Jews left to the nearby port of Valencia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 322
+    },
+    "banned_terms": [
+      {
+        "term": "burriana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3270,
+    "attempt": 3244,
+    "place_id": "gn-2521986",
+    "input": {
+      "place": {
+        "place_id": "gn-2521986",
+        "name": "Alhaurín de la Torre",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.66401,
+        "lon": -4.56139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alhaurín de la Torre",
+          "url": "https://en.wikipedia.org/wiki/Alhaurín_de_la_Torre",
+          "text": "Alhaurín de la Torre  is a town in the  province of Málaga, Andalusia, in southern Spain. The town is part of Málaga Metropolitan Area and of the comarca of Valle del Guadalhorce. It sits at the entrance to the Guadalhorce valley on the slopes of the Sierra de Mijas mountains, some 17 km from Málaga.\nThe municipality covers an area of 82 km2 between the Sierra de Mijas and Málaga basin, and is crossed by the river Guadalhorce. It is the most populous municipality in the region of Guadalhorce and third within the province, with 33,567 inhabitants, behind Antequera and Ronda. Alhaurin de la Torre experienced a marked increase of population in the 90s due to the expansion of the metropolitan area of Málaga. The population density is 409.35 inhabitants/km2.\nThe city was founded by the Phoenicians, mostly from Libya. Since 1991 it has been the headquarters of the Málaga Provincial Prison, just outside the city, which currently is one of the most well known in Spain, housing some of the special cases of social impact, like the Malaya case amongst others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "alhaurin de la torre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alhaurin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "torre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3271,
+    "attempt": 3245,
+    "place_id": "gn-2635785",
+    "input": {
+      "place": {
+        "place_id": "gn-2635785",
+        "name": "Tipton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.52956,
+        "lon": -2.06773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tipton",
+          "url": "https://en.wikipedia.org/wiki/Tipton",
+          "text": "Tipton is an industrial Black Country town in the metropolitan borough of Sandwell, in the county of the West Midlands, England. It had a population of 38,777 at the 2011 UK census. It is located northwest of Birmingham and southeast of Wolverhampton, and is also contiguous with Darlaston, Dudley, Wednesbury and Bilston.\nIt incorporates the surrounding villages and suburbs of Tipton Green, Ocker Hill, Dudley Port, Horseley Heath and Great Bridge.\nHistorically within Staffordshire and briefly Worcestershire, Tipton was an urban district until 1938, when it became a municipal borough. Much of the borough was transferred into West Bromwich County Borough in 1966, but parts of the old borough were absorbed into an expanded Dudley borough and the newly created County Borough of Warley. Along with the rest of West Bromwich and Warley, Tipton was moved into the Sandwell Metropolitan Borough in 1974."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "tipton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3272,
+    "attempt": 3246,
+    "place_id": "gn-2637142",
+    "input": {
+      "place": {
+        "place_id": "gn-2637142",
+        "name": "Stafford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.80521,
+        "lon": -2.11636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stafford",
+          "url": "https://en.wikipedia.org/wiki/Stafford",
+          "text": "Stafford () is a market town and the county town of Staffordshire, England. It is located about 15 miles (24 km) south of Stoke-on-Trent, 15 miles (24 km) north of Wolverhampton and 24 miles (39 km) north-west of Birmingham. The town had a population of 71,673 at the 2021 census, and is the main settlement within the larger Borough of Stafford, which had a population of 136,837 in 2021.\nStafford has Anglo-Saxon roots, being founded in 913, when Æthelflæd, Lady of the Mercians, founded a defensive burh; it became the county town of Staffordshire soon after. Stafford became an important market town in the Middle Ages and later grew into an important industrial town, due to the proliferation of shoemaking, engineering and electrical industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "stafford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3273,
+    "attempt": 3247,
+    "place_id": "gn-2646004",
+    "input": {
+      "place": {
+        "place_id": "gn-2646004",
+        "name": "Isleworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.47518,
+        "lon": -0.34246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Isleworth",
+          "url": "https://en.wikipedia.org/wiki/Isleworth",
+          "text": "Isleworth (  EYE-zəl-wəth) is a suburban town in the London Borough of Hounslow, west London, England.  Its main retail street London Road becomes Hounslow High Street and adjoining Treaty Centre for shopping centre only a few hundred metres away from its westernmost point. No physical signs mark this boundary, which reflects how Isleworth contained the east of Hounslow, originally.\nIsleworth sits west of the River Thames and its tributary the River Crane and the original area of settlement, alongside the Thames, is known as Old Isleworth. The northwest corner of the town, bordering on Osterley to the north and Lampton to the west, is known as Spring Grove.  Both postally and historically Osterley is part of Isleworth, however it has its own tube station.\nIsleworth's former Thames frontage of approximately one mile, excluding that of the upmarket attractions of Syon Park, was reduced to little over half a mile in 1994 when a borough boundary realignment was effected in order to unite the district of St Margaret's wholly within London Borough of Richmond upon Thames. As a result, the riverside is those parts overlooking the 8.6-acre (3.5 ha) islet of Isleworth Ait: the short-length River Crane flows into the Thames south of the Isleworth Ait, and its artificial distributary the Duke of Northumberland's River west of the Isleworth Ait, one of two Colne distributaries constructed for aesthetic reasons between 1600 and 1750. \nThe town is the birthplace of broadcaster David Attenborough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "isleworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3274,
+    "attempt": 3248,
+    "place_id": "gn-2651984",
+    "input": {
+      "place": {
+        "place_id": "gn-2651984",
+        "name": "Cricklewood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5567,
+        "lon": -0.21549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cricklewood",
+          "url": "https://en.wikipedia.org/wiki/Cricklewood",
+          "text": "Cricklewood is a town in North West London, England, in the London Boroughs of Barnet and Brent. The Crown pub, now the Clayton Crown Hotel, is a local landmark and lies 5 miles (8 km) north-west of Charing Cross.\nCricklewood was a small rural hamlet around Edgware Road, the Roman road which was later called Watling Street and which forms the boundary of the two boroughs that share Cricklewood. The area urbanised after the arrival of the surface and underground railways in nearby Willesden Green in the 1870s. The shops on Cricklewood Broadway, as Edgware Road is known here, contrast with quieter surrounding streets of largely late-Victorian, Edwardian, and 1930s housing. The area has strong links with Ireland due to a sizeable Irish population. The 35-hectare (86-acre) Gladstone Park lies on the area's western periphery.\nCricklewood has two conservation areas, the Mapesbury Estate and the Cricklewood Railway Terraces, and in 2012 was awarded £1.65 million from the Mayor of London's office to improve the area.\nThe town is also famous due to it being where The Goodies business is based."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "cricklewood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3275,
+    "attempt": 3249,
+    "place_id": "gn-2652381",
+    "input": {
+      "place": {
+        "place_id": "gn-2652381",
+        "name": "Corby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.49637,
+        "lon": -0.68939
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corby",
+          "url": "https://en.wikipedia.org/wiki/Corby",
+          "text": "Corby is a town and civil parish in the North Northamptonshire district, in Northamptonshire, England, 23 miles (37 km) northeast of Northampton. In 2021, the parish had a population of 62,341, while the wider built-up area had a population of 68,160. From 1974 to 2021, it was the administrative headquarters of the Borough of Corby; at the 2021 census, the former borough had a population of 75,571.\nCorby was once known as \"Little Scotland\" due to the large number of Scottish workers who came to work in its steelworks. Corby has undergone regeneration with the opening of Corby railway station and Corby International Pool in 2009 and the Corby Cube in 2010. The Cube houses a 450-seat theatre, public library and other community amenities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "corby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3276,
+    "attempt": 3250,
+    "place_id": "gn-2653075",
+    "input": {
+      "place": {
+        "place_id": "gn-2653075",
+        "name": "Christchurch",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.73583,
+        "lon": -1.78129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Christchurch, Dorset",
+          "url": "https://en.wikipedia.org/wiki/Christchurch,_Dorset",
+          "text": "Christchurch () is a town and civil parish on the south coast of Dorset, England. The parish had a population of 31,372 in 2021. It adjoins Bournemouth to the west, with the New Forest to the east. Part of the historic county of Hampshire, Christchurch was a borough within the administrative county of Dorset from 1974 until 2019, when it became part of the new Bournemouth, Christchurch and Poole unitary authority.\nFounded in the 7th century at the confluence of the rivers Avon and Stour which flow into Christchurch Harbour, the town was originally named Twynham but became known as Christchurch following the construction of Christchurch Priory in 1094. The town developed into an important trading port, and was fortified in the 9th century. Further defences were added in the 12th century with the construction of Christchurch Castle, which was destroyed during the English Civil War by the Parliamentarian Army. During the 18th and 19th centuries, smuggling flourished and became one of the town's most lucrative industries. The town was heavily fortified during the Second World War as a precaution against an expected invasion, and in 1940 an Airspeed factory was established on the town's airfield to make aircraft for the Royal Air Force.\nThe town's harbour, beaches, nature reserves and historically important buildings have made Christchurch a popular tourist destination. Bournemouth Airport, an international airport which handled around 800,000 passengers in 2019, is within the former borough boundary at Hurn. The airport's industrial park contains a number of aerospace and engineering businesses and is one of the largest employment sites in Dorset."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "christchurch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3277,
+    "attempt": 3251,
+    "place_id": "gn-2653775",
+    "input": {
+      "place": {
+        "place_id": "gn-2653775",
+        "name": "Carlisle",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.8951,
+        "lon": -2.9382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carlisle",
+          "url": "https://en.wikipedia.org/wiki/Carlisle",
+          "text": "Carlisle ( kar-LYLE, locally  KAR-lyle; from the Cumbric: Caer Luel) is a city located in the Cumberland district of Cumbria, England. It is the largest settlement and only city in Cumbria. In 2021, it had a population of 77,730.\nCarlisle was founded as a Roman settlement called Luguvalium to serve forts along Hadrian's Wall, though it may have earlier origins. Nicknamed the 'Great Border City' due to its proximity to Scotland (being located eight miles or thirteen kilometres south of the current Anglo-Scottish border), the city and its castle became an important military stronghold in the Middle Ages. The castle served as a prison for Mary, Queen of Scots in 1568 and currently hosts the Duke of Lancaster's Regiment and the Border Regiment Museum. A priory was built in the early 12th century, which subsequently became Carlisle Cathedral in 1133 on the creation of the Diocese of Carlisle. As the seat of a diocese, Carlisle therefore gained city status. Carlisle also served as the county town of the historic county of Cumberland from the county's creation in the 12th century.\nIn the 19th century, the introduction of textile manufacture during the Industrial Revolution began a process of socioeconomic transformation in Carlisle, which developed into a densely populated mill town. This, combined with its strategic position, allowed for the development of Carlisle as an important railway town, with seven railway companies sharing Carlisle railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "carlisle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3278,
+    "attempt": 3252,
+    "place_id": "gn-2655729",
+    "input": {
+      "place": {
+        "place_id": "gn-2655729",
+        "name": "Bicester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.89998,
+        "lon": -1.15357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bicester",
+          "url": "https://en.wikipedia.org/wiki/Bicester",
+          "text": "Bicester (  BIST-ər) is a market town and civil parish in the Cherwell district of Oxfordshire, England, 11 miles (18 km) north-east of Oxford. The town is a notable tourist attraction due to the Bicester Village shopping centre. The historical town centre – designated as a conservation area – has a local market and numerous independent shops and restaurants. Bicester also has a town council and a mayor. \nThe town has long had good transport links, being at the intersection of two Roman roads (Akeman Street and a north–south route between Dorchester and Towcester). It has direct rail connections to Oxford, London and Birmingham, and is on the route of under-construction East West Rail which will link it directly to Milton Keynes and Cambridge. The A41 primary road runs through the town, connecting it to Aylesbury, the M40 and the A34.\nBicester experienced significant growth in the 20th century due to its strategic military role, with RAF Bicester established in 1917 and a major ordnance depot built in 1942 to support World War II operations. These installations spurred post-war urban development. RAF Bicester closed and has since been repurposed for civilian use as a heritage centre.\nBicester is one of the fastest-growing towns in Oxfordshire.. It lies within the Oxford-Cambridge Arc, a nationally designated area for growth and development, and has expanded rapidly in recent generations, and more residential development is planned to bring the population up to around 50,000. The town was awarded Garden Town status by the government in 2014, although the designation has been criticised for not having a substantive effect on the way development is carried out in the town. Nonetheless, high-quality and environmentally friendly housing stock has been constructed. Examples of new development include Elmsbrook the North West Bicester eco-town and the self-built homes at Graven Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "bicester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3279,
+    "attempt": 3253,
+    "place_id": "gn-2732544",
+    "input": {
+      "place": {
+        "place_id": "gn-2732544",
+        "name": "Vila Nova de Gaia",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.12401,
+        "lon": -8.61241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vila Nova de Gaia",
+          "url": "https://en.wikipedia.org/wiki/Vila_Nova_de_Gaia",
+          "text": "Vila Nova de Gaia (European Portuguese: [ˈvilɐ ˈnɔvɐ ðɨ ˈɣajɐ] ), or simply Gaia, is a city and a municipality in Porto District in Norte Region, Portugal. It is located south of the city of Porto on the other side of the Douro River.  The city proper had a population of 178,255 in 2001. The municipality has an area of 168.46 square kilometres (65.04 mi2) and a population of 303,824 inhabitants in 2021, making it the most populous municipality in Norte Region, and the third most populous in the country, after Lisbon and Sintra. Gaia along with Porto and 16 other municipalities make up the Porto metropolitan area.\nThe city contains many cellars (locally known as \"caves\") where port wine is stored and aged. These cellars have become a major tourist attraction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "vila nova de gaia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gaia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3280,
+    "attempt": 3254,
+    "place_id": "gn-2752923",
+    "input": {
+      "place": {
+        "place_id": "gn-2752923",
+        "name": "Kerkrade",
+        "country": "Netherlands",
+        "subdivision": "Limburg",
+        "lat": 50.86583,
+        "lon": 6.0625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kerkrade",
+          "url": "https://en.wikipedia.org/wiki/Kerkrade",
+          "text": "Kerkrade (Dutch pronunciation: [ˈkɛrkˌraːdə] ; Ripuarian: Kirchroa; Limburgish: Kirkraoj; German: Kerkrade or Kirchrath) is a town and a municipality in the southeast of Limburg, the southernmost province of the Netherlands. It forms part of the Parkstad Limburg agglomeration.\nKerkrade is the western half of a divided city; until 1795 the city was part of the Austrian Netherlands and from 1795 to 1815 it was part of the French Empire. In 1815, the Congress of Vienna created the current Dutch-German border and divided the town into the Dutch Kerkrade and the Prussian (German) Herzogenrath. This means that the eastern end of Kerkrade marks the international border.\nThe two towns, including outlying suburban settlements, have a population approaching 100,000, of which nearly 47,000 are in Kerkrade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "kerkrade",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3281,
+    "attempt": 3255,
+    "place_id": "gn-2803010",
+    "input": {
+      "place": {
+        "place_id": "gn-2803010",
+        "name": "Ath",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.62937,
+        "lon": 3.77801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ath",
+          "url": "https://en.wikipedia.org/wiki/Ath",
+          "text": "Ath (French pronunciation: [at] ; Dutch: Aat, Dutch pronunciation: [aːt] ; Picard: Ât; Walloon: Ate) is a city and municipality of Wallonia located in the province of Hainaut, Belgium.  \nThe municipality consists of the following districts: Arbre, Ath, Bouvignies, Ghislenghien, Gibecq, Houtaing, Irchonwelz, Isières, Lanquesaint, Ligne, Maffle, Mainvault, Meslin-l'Évêque, Moulbaix, Ormeignies, Ostiches, Rebaix, Villers-Notre-Dame, and Villers-Saint-Amand.\nAth is known as the \"City of Giants\" after the Ducasse d'Ath festivities which take place every year on the fourth weekend in August. Huge figures representing Goliath, Samson, and other allegoric figures are paraded through the streets, and Goliath's wedding and his famous fight with David are re-enacted.\nAth is the point of origin of the river Dender from the merger of its Eastern and Western branches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3282,
+    "attempt": 3256,
+    "place_id": "gn-289915",
+    "input": {
+      "place": {
+        "place_id": "gn-289915",
+        "name": "Al Wakrah",
+        "country": "Qatar",
+        "subdivision": "Al Wakrah",
+        "lat": 25.17151,
+        "lon": 51.60337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Al Wakrah",
+          "url": "https://en.wikipedia.org/wiki/Al_Wakrah",
+          "text": "Al Wakrah (Arabic: الوكرة, romanized: al-Wakra) is the capital city of the Al Wakrah Municipality in Qatar. Al Wakrah's eastern edge touches the shores of the Persian Gulf and Qatar's capital Doha is situated immediately north of the city. Governed by Sheikh Abdulrahman bin Jassim Al Thani, it was originally a small fishing and pearling village. Over the years, it evolved into a small city with a population of more than 80,000 and is currently one of Qatar's most populous cities.\nThe city was historically used as a pearling center during the period in which Qatar's economy was almost entirely dependent on the bustling pearling industry. According to the United States Hydrographic Office, by 1920, there were approximately 300 ships situated in the town. A following study carried out by the British in 1925 stated that there were 250 boats in Wakrah's port. Al Wakrah was thought to encompass the so-called 'Pirate Coast', as stated by a report written in 1898. Once the country began large-scale oil operations in the mid-20th century, Al Wakrah became more important due to its proximity to the Mesaieed Industrial Area, Qatar's main industrial manufacturing hub and oil terminal.\nIt has undergone extensive development and growth since the turn of the 21st century while also being steadily encroached on by rapidly expanding Doha from the north. Notable milestones in the city's modern history include the 2019 inauguration of Al Janoub Stadium, a venue for the Qatar 2022 World Cup, the opening of Souq Al Wakrah in 2014, the Al Wakrah Main Road Project, and the city's integration into the Doha Metro's Red Line in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "al wakrah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wakrah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3283,
+    "attempt": 3257,
+    "place_id": "gn-2921653",
+    "input": {
+      "place": {
+        "place_id": "gn-2921653",
+        "name": "Geislingen an der Steige",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.62423,
+        "lon": 9.82736
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Geislingen an der Steige",
+          "url": "https://en.wikipedia.org/wiki/Geislingen_an_der_Steige",
+          "text": "Geislingen an der Steige (German pronunciation: [ˈɡaɪslɪŋən ʔan deːɐ̯ ˈʃtaɪɡə], lit. 'Geislingen on the Climb') is surrounded by the heights of the Swabian Alb and embedded in 5 valleys. It is a town in the district of Göppingen in Baden-Württemberg in southern Germany. The name relates to its location \"on the climb\" (an der Steige) of a trade route over the Swabian Jura mountain range. It is in the southeast of the Stuttgart region about 50 km from Stuttgart and 27 km from Ulm. It is the second largest city in the district of Göppingen. The city is characterized by a grown industry and attractive surroundings of the Swabian Albtrauf adventure region - this creates a positive environment for regionally and internationally oriented companies. Geislingen's economic significance lies above all in the steel and metal goods processing and automotive supply sectors.\nGeislingen is also a city of students. The University of Applied Sciences for Economy and Environment is known far beyond the borders, with best rankings. A medieval town with Alemannic half-timbered houses testifies to a long history, which can also be seen during a walk through the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "geislingen an der steige",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "geislingen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "an",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "steige",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3284,
+    "attempt": 3258,
+    "place_id": "gn-2988888",
+    "input": {
+      "place": {
+        "place_id": "gn-2988888",
+        "name": "Oyonnax",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.25917,
+        "lon": 5.65727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oyonnax",
+          "url": "https://en.wikipedia.org/wiki/Oyonnax",
+          "text": "Oyonnax (French pronunciation: [ɔjɔna] ) is the second most populated commune in the Ain department in the Auvergne-Rhône-Alpes region in eastern France.\nOyonnax lies in a valley of the Jura Mountains in the far north of Ain. It is near the Parc naturel régional du Haut-Jura. The city is on the river Ange.\nIts prominence in the plastics industry has earned it the name Plastics Valley.\nOne of the outstanding achievements of the French Résistance occurred here on 11 November 1943, when the Maquis de l'Ain et du Haut-Jura defied the German occupiers to hold an 11 November parade and memorial service in honour of French soldiers from World War I.\nThe town was awarded the Médaille de la Résistance on 16 June 1947."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "oyonnax",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3285,
+    "attempt": 3259,
+    "place_id": "gn-3427213",
+    "input": {
+      "place": {
+        "place_id": "gn-3427213",
+        "name": "Zárate",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.09584,
+        "lon": -59.02423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zárate, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Zárate,_Buenos_Aires",
+          "text": "Zárate is a city and the administrative capital of the Zárate Partido, located in the northern region of the Buenos Aires Province, Argentina. Situated on the right bank of the Paraná River, approximately 60 kilometers northwest of the city of Buenos Aires, it serves as a prominent industrial hub and a critical transport link within the Greater Buenos Aires corridor. As of the 2022 census, the city has a population of 138,022.\nOriginally established on January 31, 1827, by brothers Pedro and José Antonio Anta, the settlement grew from a colonial port village into an active railway town during the late 19th-century economic modernization. The community officially celebrates its anniversary on 19 March 1854, marking its historic political separation from Exaltación de la Cruz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "zarate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3286,
+    "attempt": 3260,
+    "place_id": "gn-3526993",
+    "input": {
+      "place": {
+        "place_id": "gn-3526993",
+        "name": "Huatusco",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 19.14876,
+        "lon": -96.9676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huatusco",
+          "url": "https://en.wikipedia.org/wiki/Huatusco",
+          "text": "Huatusco de Chicuellar (commonly known as Huatusco), is a city and municipality in the Mexican state of Veracruz, on the Xalapa–Mexico City railroad that was founded by Italian immigrants. It is bordered by Calcahualco, the state of Puebla, Ixhuatlán del Café and Federal Highway 180.\nThe oldest church in Huatusco is dedicated to San Antonio de Padua with a height of approximately 20 meters. A nearby hill, called \"Cerro de Guadalupe\" has a church on top of it, where every year on December 11 and 12 Catholic people hold religious festivities. In these days, the priest celebrates with a mass, and after that, people stay around the hill to have a picnic.\nEconomic activities in Huatusco include growing coffee, sugar cane and several fruits.\nHuatusco is a small quiet town during the week. Important geographical features in the vicinity include Cerro de ecatepec, Cerro de Elotepec, and the Sierra Madre Oriental; the highest mountain in Mexico, Pico de Orizaba is also visible from the town. Huatusco is sometimes called the city of pianos (\"La Ciudad de los Pianos\"), because having a piano and playing it used to be common within the city.\nThe suffix of Huatusco, \"de Chicuellar\" allegedly comes from a story where a man wanted to buy the town to industrialize it, but a poor farmer named Chicuellar paid a large amount of money to prevent that from happening.\nFrom 1902 to 1953, Huatusco was served by the Córdoba and Huatusco Railroad narrow gauge railroad.\nManuel Chacón, commander of the municipal police department, was assassinated in May 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "huatusco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
