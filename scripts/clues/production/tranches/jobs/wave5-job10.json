@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 5159,
+    "place_id": "gn-3514278",
+    "input": {
+      "place": {
+        "place_id": "gn-3514278",
+        "name": "Yecapixtla",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.88333,
+        "lon": -98.865
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yecapixtla",
+          "url": "https://en.wikipedia.org/wiki/Yecapixtla",
+          "text": "Yecapixtla (Nahuatl languages: Yecapixtlān Nahuatl pronunciation: [jekaˈpiʃt͡ɬaːn]) is a town and municipality located in the northeast of the state of Morelos in central Mexico. Yecapixtla means, Land of men and women with sharp noses. The town is home to one of the monastery complexes associated with the Monasteries on the Slopes of Popocatépetl World Heritage Site. Yecapixtla is famously known for its beef, cecina (cured dry meat).\nThe population of the municipality is 52,651 according to the 2015 census. The town was hit hard by the September 19, 2017 Puebla earthquake, in which two people died and the church was damaged."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "yecapixtla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5164,
+    "place_id": "gn-4828890",
+    "input": {
+      "place": {
+        "place_id": "gn-4828890",
+        "name": "Chillicothe",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 39.33312,
+        "lon": -82.9824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chillicothe, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Chillicothe,_Ohio",
+          "text": "Chillicothe ( CHIL-ih-KOTH-ee) is a city in Ross County, Ohio, United States, and its county seat. The population was 22,059 at the 2020 census. The town's population peaked around 25,000 in 1960 and has held steady in the intervening decades.\nLocated along the Scioto River 45 miles (72 km) south of Columbus, Chillicothe was the first and third capital of Ohio. It is the only city in Ross County and the center of the Chillicothe micropolitan area, which is a part of the Columbus, Ohio Combined Statistical Area. Chillicothe is a designated Tree City USA by the National Arbor Day Foundation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "chillicothe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5177,
+    "place_id": "gn-1005040",
+    "input": {
+      "place": {
+        "place_id": "gn-1005040",
+        "name": "Eshowe",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.88649,
+        "lon": 31.4699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eshowe",
+          "url": "https://en.wikipedia.org/wiki/Eshowe",
+          "text": "Eshowe is the oldest town of European settlement in Zululand,  historically also known as Eziqwaqweni, Ekowe or kwaMondi. Eshowe's name is said to be inspired by the sound of wind blowing through the more than 4 km2 of the indigenous Dlinza Forest, the most important and striking feature of the town. Although the name is most likely to be derived from the Zulu word for the Xysmalobium shrubs, showe or shongwe.\nToday Eshowe is a market town, with a 100 km radius catchment area, two shopping centres, a main bus station serving the hinterland, a major hospital, and several schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "eshowe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5181,
+    "place_id": "gn-2633671",
+    "input": {
+      "place": {
+        "place_id": "gn-2633671",
+        "name": "Woodbridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.09332,
+        "lon": 1.32042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodbridge, Suffolk",
+          "url": "https://en.wikipedia.org/wiki/Woodbridge,_Suffolk",
+          "text": "Woodbridge is a port town and civil parish in the East Suffolk district of Suffolk, England. It is 8 miles (13 km) up the River Deben from the sea. It lies 7 miles (11 km) north-east of Ipswich and around 74 miles (119 km) north-east of London. In 2011 it had a population of 7,749.\nThe town is close to some major archaeological sites of the Anglo-Saxon period, including the Sutton Hoo burial ship. It is well known for its boating harbour and tide mill next to the River Deben, in the Suffolk & Essex Coast & Heaths National Landscape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "woodbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5187,
+    "place_id": "gn-4163220",
+    "input": {
+      "place": {
+        "place_id": "gn-4163220",
+        "name": "Maitland",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.62778,
+        "lon": -81.36312
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maitland, Florida",
+          "url": "https://en.wikipedia.org/wiki/Maitland,_Florida",
+          "text": "Maitland is a suburban city in Orange County, Florida, United States, part of the Greater Orlando area. The population was 19,543 at the 2020 census. The area's history is exhibited at the Maitland Historical Museum; the city also hosts the Maitland Art Center, as well as notable examples of Mayan Revival architecture and Fantasy architecture, the Maitland Telephone Museum, and the William H. Waterhouse House Museum (all museums and the Maitland Art Center are now managed by Art & History Museums of Maitland). A SunRail station is located in Maitland on Highway 17–92. The city is named for Fort Maitland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "maitland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5188,
+    "place_id": "gn-4173002",
+    "input": {
+      "place": {
+        "place_id": "gn-4173002",
+        "name": "Silver Springs",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 29.21664,
+        "lon": -82.05759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silver Springs, Florida",
+          "url": "https://en.wikipedia.org/wiki/Silver_Springs,_Florida",
+          "text": "Silver Springs is an unincorporated community and census-designated place (CDP) in Marion County of northern Florida. It is the site of the Silver Springs, a group of artesian springs and a historic tourist attraction that is now part of Silver Springs State Park. The community is part of the Ocala metropolitan area. It was first listed as a CDP for the 2020 census, when it had a population of 2,844. One of Florida's first tourist attractions, the springs drew visitors even before the U.S. Civil War. Glass-bottom boats have been a popular way to see the 242-acre (98 ha) complex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "silver springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "silver",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5196,
+    "place_id": "gn-5594956",
+    "input": {
+      "place": {
+        "place_id": "gn-5594956",
+        "name": "Hailey",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 43.51963,
+        "lon": -114.31532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hailey, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Hailey,_Idaho",
+          "text": "Hailey is a city in and the county seat of Blaine County, in the Wood River Valley of the central part of the U.S. state of Idaho. The population was 9,161 at the 2020 census, up from 7,960 in 2010. Hailey is the site of Friedman Memorial Airport (SUN), the airport for the resort area of Sun Valley/Ketchum, 12 miles (19 km) north.  The town of Bellevue is a few miles south.  From 1882 to 1895, Hailey was the county seat of now-defunct Alturas County.\nThe city is named after John Hailey, a two-time Congressional delegate from the Idaho Territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "hailey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5201,
+    "place_id": "gn-1692184",
+    "input": {
+      "place": {
+        "place_id": "gn-1692184",
+        "name": "Quiapo",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.6,
+        "lon": 120.9833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quiapo, Manila",
+          "url": "https://en.wikipedia.org/wiki/Quiapo,_Manila",
+          "text": "Quiapo ([ˈkjaːpɔʔ]) is a district of the city of Manila, in the National Capital Region of the Philippines. Known as the “Old Downtown of Manila\", the district’s most famous landmark is Quiapo Church, a minor basilica enshrining Asia's most sacred Black Nazarene image, which has been processed every January in the historic district, attracting millions of devotees from all over the country and region. The historic district is also dotted with numerous heritage sites, ranging from ancestral and heritage houses such as those in Hidalgo Street, museums, art galleries, libraries, historic places of worship such as churches and mosques, historic cinemas, as well as historic parks and streets, many of which have been run over by informal settlers and the construction of shanty houses, as well as buildings built by corporations. Many historic sites were destroyed by both the Japanese and American colonizers during World War II without compensation or aid for reconstruction, while some post-war sites were demolished by certain corporations. In recent years, various heritage organizations, experts, and lawmakers have pushed for the re-vitalization of Quiapo as a heritage zone, including the rebuilding of lost heritage structures, the revamping of modern structures to fit the historic district's original aesthetics, as well as the planting of trees and plants and the refurnishing of streets to make the district more safe, walkable, and climate-adaptive.\nGeographically located at the very center of the City of Manila, Quiapo is bounded by the Pasig River and Estero de San Miguel to the south, San Miguel district to the east, the districts of Sampaloc and Santa Cruz and Recto Avenue to the north, and the Santa Cruz district and Rizal Avenue to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "quiapo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5206,
+    "place_id": "gn-2514868",
+    "input": {
+      "place": {
+        "place_id": "gn-2514868",
+        "name": "Los Alcázares",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 37.74425,
+        "lon": -0.85041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Alcázares",
+          "url": "https://en.wikipedia.org/wiki/Los_Alcázares",
+          "text": "Los Alcázares (Spanish: [los alˈkaθaɾes]) is a municipality and a coastal spa town and former fishing village on the western side of the Mar Menor in the autonomous community and province of Murcia, southeastern Spain.\nThe Mar Menor (little sea) belongs to three other municipalities: San Javier, San Pedro del Pinatar and Cartagena and is Europe's largest saltwater lagoon. Connected to the adjacent Mediterranean sea by several channels, the Mar Menor has a surface area of almost 20 km2 and the fact that it is typically 2-4 degrees warmer than the Mediterranean, makes it a very popular destination for sailing, windsurfing, kiteboarding and other water sports enthusiasts.\nLos Alcazares has a resident population (2018) of 15,674 which rises to over 100,000 during the peak tourist summer holiday season.\nOn 13 October 1983, the town was granted municipal autonomy, in respect of which it holds an annual week-long celebration featuring live music, shows, windsurfing competitions and firework displays.\nBesides the annual celebration of municipal autonomy, like many Spanish towns and cities, Los Alcazares also plays host to numerous fiestas and festivals throughout the year, including a large medieval market at the end of every March, and during the last two weeks in August, 'La Huerta' an international folklore festival and feast in celebration of the region's status as the market garden of Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "los alcazares",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alcazares",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5207,
+    "place_id": "gn-3175960",
+    "input": {
+      "place": {
+        "place_id": "gn-3175960",
+        "name": "Grado",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.67774,
+        "lon": 13.40323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grado, Friuli Venezia Giulia",
+          "url": "https://en.wikipedia.org/wiki/Grado,_Friuli_Venezia_Giulia",
+          "text": "Grado (Venetian: Gravo; Friulian: Grau; Slovene: Gradež; Latin: Gradus) is a town and comune (municipality) of 8,064 residents in the Regional decentralization entity of Gorizia in the north-eastern Italian region of Friuli-Venezia Giulia, located on an island and adjacent peninsula of the Adriatic Sea between Venice and Trieste. \nThe territory of the municipality of Grado extends between the mouth of the Isonzo and the Adriatic Sea and the Grado Lagoon, and covers an area of about 90 square kilometers between Porto Buso and Fossalon. Characteristic of the lagoon is the presence of the casoni, which are simple houses with thatched roofs used in the past by the fishermen of Grado, who remained in the lagoon for a long time, returning to the island of Grado only during the colder period of the year. \nOnce mainly a fishing centre, today it is a popular tourist destination, known commonly as L'Isola del Sole (\"The Island of the Sun\"). It is also famous because it is a spa town; from 1873 a maritime hospice for children called Ospizio Marino wanted by the doctor Giuseppe Barellai was established on the island, because the climate and the environment of the island are a good place for the treatment of some childhood diseases. Subsequently, Grado was the chosen destination for marine thermal treatments, especially by the Austrian population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "grado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5213,
+    "place_id": "gn-4502904",
+    "input": {
+      "place": {
+        "place_id": "gn-4502904",
+        "name": "Margate City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.32789,
+        "lon": -74.50349
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Margate City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Margate_City,_New_Jersey",
+          "text": "Margate City is a city situated on the Jersey Shore on Absecon Island, within Atlantic County, in the U.S. state of New Jersey, on the Atlantic Ocean shoreline. As of the 2020 United States census, the city's population was 5,317, a decrease of 1,037 (−16.3%) from the 2010 census count of 6,354, which in turn had reflected a decline of 1,839 (−22.4%) from the 8,193 counted in the 2000 census. Geographically, the city, and all of Atlantic County, is part of the South Jersey region of the state and of the Atlantic City-Hammonton metropolitan statistical area, which in turn is included in the Philadelphia metropolitan area.\nThe city is located on Absecon Island, which stretches for 8.1 miles (13.0 km) and is also home of Atlantic City and Ventnor City to the northeast, and Longport on the southwest. The city stretches about eight blocks from the Atlantic Ocean to the bay at most points in town. Margate is a popular Jersey Shore destination, especially during the summer, and is the home of Lucy the Elephant, a 65-foot (20 m)-tall wooden and metal-clad elephant recognized as America’s Oldest Surviving Roadside Attraction and declared a National Historic Landmark in 1976, and of Marven Gardens, of Monopoly board game fame."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "margate city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "margate",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5214,
+    "place_id": "gn-5105127",
+    "input": {
+      "place": {
+        "place_id": "gn-5105127",
+        "name": "Summit",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.71562,
+        "lon": -74.36468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Summit, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Summit,_New_Jersey",
+          "text": "Summit is the northernmost city of Union County, in the U.S. state of New Jersey, located within the New York metropolitan area. Situated on a ridge in northern–central New Jersey, the city is located within the Raritan Valley and Rahway Valley regions, and also borders both Essex and Morris counties in the Passaic Valley region. Summit is a commercial hub and commuter town for New York City. As of the 2020 United States census, the city's population was 22,719, an increase of 1,262 (+5.9%) from the 2010 census count of 21,457, which in turn reflected an increase of 326 (+1.5%) from the 21,131 counted in the 2000 census.\nOriginally incorporated as Summit Township by an act of the New Jersey Legislature on March 23, 1869, from portions of New Providence Township (now Berkeley Heights) and Springfield Township, Summit was reincorporated as a city on March 8, 1899.\nPossible derivations of Summit's name include its location atop the Second Watchung Mountain; the Summit Lodge, the house to which jurist James Kent moved in 1837 and which stands today at 50 Kent Place Boulevard; and to a local sawmill owner who granted passage to the Morris and Essex Railroad for a route to \"the summit of the Short Hills\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "summit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5216,
+    "place_id": "gn-1273847",
+    "input": {
+      "place": {
+        "place_id": "gn-1273847",
+        "name": "Colva",
+        "country": "India",
+        "subdivision": "Goa",
+        "lat": 15.27976,
+        "lon": 73.92285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colva",
+          "url": "https://en.wikipedia.org/wiki/Colva",
+          "text": "Colva  (Portuguese: Colvá) is a  coastal village situated in the Salcete taluka, in South Goa district, of Goa state on the west coast of the Indian subcontinent. Colva Beach (Portuguese: Praia de Colvá) spans about 2.5 km (1.6 mi) along a sandy coastline of approximately 25 km (16 mi) extending from Bogmalo in the north to Cabo de Rama in the south.\nThe village had significant importance to the Portuguese, local (Gancars) noble chardó (Kshatriya) Feudal Lords and was the retreat for Goa's high, elite and aristocratic society, who would come to Colvá for their mudança (change of air), to enjoy the private beach of the then Roiz family. Today the Portuguese area is dotted with the past elite houses and modern villas, including many ruins from more than 300 years. On weekends, huge crowds of tourists, visitors from around the world as well as local Indians, enjoy the sunset and various activities. The beach is particularly busy in October, when hordes of religious pilgrims come and visit Colvá Church, called Igreja de Nossa Senhora das Mercês (Church of Our Lady of Mercy), that was founded in AD 1630 by the Roiz family and the crown of the statue of our Lady has their family initials."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "colva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5223,
+    "place_id": "gn-2640496",
+    "input": {
+      "place": {
+        "place_id": "gn-2640496",
+        "name": "Penarth",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.4386,
+        "lon": -3.17342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penarth",
+          "url": "https://en.wikipedia.org/wiki/Penarth",
+          "text": "Penarth ( pen-ARTH, Welsh: [pɛnˈarθ]) is a town and community in the Vale of Glamorgan, Wales, approximately three miles (five kilometres) south of Cardiff city centre on the west shore of the Severn Estuary at the southern end of Cardiff Bay.\nPenarth is a seaside resort in the Cardiff Urban Area, and the second largest town in the Vale of Glamorgan, next only to the administrative centre of Barry.\nDuring the Victorian era Penarth was a highly popular holiday destination, promoted nationally as \"The Garden by the Sea\", and was packed by visitors from the Midlands and the West Country as well as day trippers from the South Wales valleys, mostly arriving by train. Today, the town, with its traditional seafront, continues to be a regular summer holiday destination (predominantly for older visitors), but their numbers are much lower than was common from Victorian times until the 1960s, when cheap overseas package holidays were introduced.\nAlthough the number of holiday visitors has greatly declined, the town retains a substantial retired population, representing over 24% of residents, but Penarth is now predominantly a dormitory town for Cardiff commuters. The town's population was recorded as 20,396 in the 2001 United Kingdom census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "penarth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5224,
+    "place_id": "gn-6690989",
+    "input": {
+      "place": {
+        "place_id": "gn-6690989",
+        "name": "Bethnal Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.52718,
+        "lon": -0.06109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bethnal Green",
+          "url": "https://en.wikipedia.org/wiki/Bethnal_Green",
+          "text": "Bethnal Green is an area in London, England, and is located in the London Borough of Tower Hamlets. It is in east London and part of the East End. The area emerged from the small settlement which developed around the Green, much of which survives today as Bethnal Green Gardens, beside Cambridge Heath Road. By the 16th century the term applied to a wider rural area, the Hamlet of Bethnal Green, which subsequently became a Parish, then a Metropolitan Borough before merging with neighbouring areas to become the north-western part of the new Tower Hamlets.\nEconomic focus shifted from mainstream farming produce for the City of London – through highly perishable goods production (market gardening), weaving, dock and building work and light industry – to a high proportion of commuters to city businesses, public sector/care sector roles, construction, courier businesses and home-working digital and creative industries. Identifiable slums in the maps of Booth in Life and Labour of the People in London (3 editions, 1889–1903) were in large part cleared before the aerial bombardment of the Second World War which accelerated clearance of many tightly packed terraces of small houses to be replaced with green spaces and higher-rise social housing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "bethnal green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bethnal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5225,
+    "place_id": "gn-6930127",
+    "input": {
+      "place": {
+        "place_id": "gn-6930127",
+        "name": "Bairro Alto",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.7119,
+        "lon": -9.14411
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bairro Alto",
+          "url": "https://en.wikipedia.org/wiki/Bairro_Alto",
+          "text": "Bairro Alto (Portuguese pronunciation: [ˈbajʁu ˈaltu]; literally: Upper District) is a central district of the city of Lisbon, the Portuguese capital. Unlike many of the civil parishes of Lisbon, this region can be commonly explained as a loose association of neighbourhoods, with no formal local political authority but social and historical significance to the urban community of Lisbon and of Portugal as a whole.\nThe bairro or \"neighbourhood\" resulted from urban expansion in the 16th century, forming outside the walls of the historical city, and is characterized by an almost orthogonal tract (developing from two phases of distinct urbanization).\nIt is a fundamental quarter of Lisbon, organized into a hierarchical scheme of roads and lanes: the roads, the structural axis, run perpendicular to the river; and the lanes, or secondary axis, cut parallel to the river. The matrix of allotments reflects the persistent use of the medieval layout; the division and multiplication of this module had its origin in the variations of the architectural typology. The space constructed is dominated by living spaces implanted in long narrow lots, three to four storeys in height, with asymmetric facades consisting of windows along the various storeys and staircases along the lateral flanks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "bairro alto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bairro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5236,
+    "place_id": "gn-5095617",
+    "input": {
+      "place": {
+        "place_id": "gn-5095617",
+        "name": "Berkeley Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.68343,
+        "lon": -74.44265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berkeley Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Berkeley_Heights,_New_Jersey",
+          "text": "Berkeley Heights is a township in Union County, New Jersey, United States, on a ridge in north central New Jersey, Berkeley Heights is a commuter town of New York City, in the Raritan Valley region and also bordering both Morris and Somerset counties in the Passaic Valley region. As of the 2020 United States census the township's population was 13,285, an increase of 102 (+0.8%) from the 2010 census count of 13,183, which in turn reflected a decline of 224 (−1.7%) from the 13,407 counted in the 2000 census.\nThe township was originally incorporated as New Providence Township by the New Jersey Legislature on November 8, 1809, from portions of Springfield Township, while the area was still part of Essex County. New Providence Township became part of the newly formed Union County at its creation on March 19, 1857. Portions of the township were taken on March 23, 1869, to create Summit, and on March 14, 1899, to form the borough of New Providence. On November 6, 1951, the name of the township was changed to Berkeley Heights, based on the results of a referendum held that day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "berkeley heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "berkeley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5239,
+    "place_id": "gn-3446550",
+    "input": {
+      "place": {
+        "place_id": "gn-3446550",
+        "name": "Tibagi",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -24.50944,
+        "lon": -50.41361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tibagi",
+          "url": "https://en.wikipedia.org/wiki/Tibagi",
+          "text": "Tibagi is a municipality in the state of Paraná in the Southern Region of Brazil.\nSecond largest municipality of Paraná in land, Tibagi expands over an area of over 200 square kilometres (77 sq mi). With the vast territory, its economy is based on agriculture and it is considered the largest wheat producer in Brazil and also stands out as one of the largest producers in the cultivation of grains such as corn, beans and soybeans.\nTourism is among the largest economic strengths, hosting a traditional Brazilian Carnival celebration, and geographic features including the Iapó River and the Guartelá Canyon -- considered to be the 6th largest canyon in the world -- alongside rivers, waterfalls, and hills. For these features Tibagi is a preferred destination for many extreme sports fans who like rafting, mountain climbing, parasailing and others.\nTibagi has humid subtropical climate (Köppen: Cfb), in colder months, it reaches 18°C, and a cool summer with the average temperature of the hottest month below 22°C.\nThe municipality contains the 799-hectare (1,970-acre) Guartelá State Park, created in 1992 to protect the scenic Guartelá Canyon of the Iapó River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "tibagi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5246,
+    "place_id": "gn-6072350",
+    "input": {
+      "place": {
+        "place_id": "gn-6072350",
+        "name": "Merritt",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.11225,
+        "lon": -120.7942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merritt, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Merritt,_British_Columbia",
+          "text": "Merritt is a city in the Nicola Valley of the south-central Interior of British Columbia, Canada. It is 270 km (170 mi) northeast of Vancouver. Situated at the confluence of the Nicola and Coldwater rivers, it is the first major community encountered after travelling along Phase One of the Coquihalla Highway and acts as the gateway to all other major highways to the B.C. Interior. The city developed in 1893 when part of the ranches owned by William Voght, Jesus Garcia, and John Charters were surveyed for a town site.\nOnce known as Forksdale, the community adopted its current name in 1906 in honour of mining engineer and railway promoter William Hamilton Merritt III. The 24-square-kilometre (9.3 sq mi) city limits consist of the community, a number of civic parks, historical sites, an aquatic centre, a local arena, a public library (which is a branch of the Thompson-Nicola Regional District Library System) and a civic centre. Merritt has dozens of bronzed hand prints of country music stars who have been in the city for the former annual Merritt Mountain Music Festival displayed throughout town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "merritt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5250,
+    "place_id": "gn-5105433",
+    "input": {
+      "place": {
+        "place_id": "gn-5105433",
+        "name": "Tinton Falls",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.30428,
+        "lon": -74.10042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tinton Falls, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Tinton_Falls,_New_Jersey",
+          "text": "Tinton Falls is a borough in Monmouth County, in the U.S. state of New Jersey. Located within the heart of the Jersey Shore region, the borough is a commercial hub of Central Jersey (it is the site of the Jersey Shore Premium Outlets and different corporate headquarters) and is an established bedroom suburb of New York City, in the New York metropolitan area. As of the 2020 United States census, the borough's population was 19,181, an increase of 1,289 (+7.2%) from the 2010 census count of 17,892, which in turn reflected an increase of 2,839 (+18.9%) from the 15,053 counted in the 2000 census.\nThe borough was formed as New Shrewsbury by an act of the New Jersey Legislature on August 15, 1950, based on the results of a referendum held on July 18, 1950, after breaking away from Shrewsbury Township. It was renamed \"Tinton Falls\" in 1975, to avoid postal errors. The name came from Lewis Morris's plantation, Tinton Manor (which employed free white workers and slaves) as it featured a gristmill, making it one of New Jersey's earliest bustling mill towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "tinton falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tinton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

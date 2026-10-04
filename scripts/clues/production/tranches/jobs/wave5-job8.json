@@ -1,0 +1,702 @@
+[
+  {
+    "rank": 4903,
+    "place_id": "gn-2512794",
+    "input": {
+      "place": {
+        "place_id": "gn-2512794",
+        "name": "Pedro Muñoz",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.40285,
+        "lon": -2.94664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pedro Muñoz",
+          "url": "https://en.wikipedia.org/wiki/Pedro_Mu%C3%B1oz",
+          "text": "Pedro Muñoz is a municipality in the autonomous community of Castile-La Mancha, Spain. It is located in the northeast corner of the province of Ciudad Real, on the bank of the Záncara river. It is in the La Mancha region, in the \"Mancha Alta\" sub-region. It was founded in 1284 by the Archdeacon of Alcaraz, Pero Muñoz (later adjusted to \"Pedro\" Muñoz in the municipality's name), as one of a series of defensible points in the La Mancha plains. The village was abandoned in 1410, due to a severe drought, and re-established in 1525. Since the late 19th century, Pedro Muñoz had been an important economic center in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "pedro munoz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "munoz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4915,
+    "place_id": "gn-3689899",
+    "input": {
+      "place": {
+        "place_id": "gn-3689899",
+        "name": "Andes",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 5.65576,
+        "lon": -75.87959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andes, Antioquia",
+          "url": "https://en.wikipedia.org/wiki/Andes,_Antioquia",
+          "text": "Andes is a municipality and town in the Antioquia Department, Colombia. Part of the sub-region of Southwestern Antioquia, it is located on the western Colombian Andes mountain range.  Andes was founded on 13 March 1852 by Pedro Antonio Restrepo Escobar. Its elevation is 1,360 metres above sea level with an average temperature of 22 °C.  The distance reference from Medellín city, the capital of Antioquia Department, is 117 km and it has a total area of 402.5 km2.  This town is well known for being the place where Gonzalo Arango a writer, philosopher and Antioquian journalist was born.  The more significantly source of its economy is agriculture, mainly coffee cultivation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "andes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4930,
+    "place_id": "gn-986134",
+    "input": {
+      "place": {
+        "place_id": "gn-986134",
+        "name": "Kuruman",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -27.46353,
+        "lon": 23.43552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuruman",
+          "url": "https://en.wikipedia.org/wiki/Kuruman",
+          "text": "Kuruman is a small town in the Northern Cape province of South Africa. It is known for its scenery and the Eye of Kuruman, a geological feature that brings water from deep underground. The abundance of water produces an unexpected swathe of green amidst the barren plains and is known as the \"Oasis of the Kalahari\". It was at first a mission station of the London Missionary Society founded by Robert Moffat in 1821. It was also the place where David Livingstone arrived for his first position as a missionary in 1841. The Kuruman River, which is dry except for flash floods after heavy rain, is named after the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "kuruman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4932,
+    "place_id": "gn-1520885",
+    "input": {
+      "place": {
+        "place_id": "gn-1520885",
+        "name": "Kurchatov",
+        "country": "Kazakhstan",
+        "subdivision": "Abai Region",
+        "lat": 50.75617,
+        "lon": 78.54188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kurchatov, Kazakhstan",
+          "url": "https://en.wikipedia.org/wiki/Kurchatov,_Kazakhstan",
+          "text": "Kurchatov (in Kazakh and Russian: Курча́тов) is a town in Abai Region in north-east Kazakhstan.  Named after Soviet nuclear physicist Igor Kurchatov, the town was once the centre of operations for the adjoining Semipalatinsk Test Site.  With the cessation of nuclear testing and the decommissioning of the test site, Kurchatov's population has fallen from over 20,000 to around 8,000.  In its heyday, Kurchatov (which was known by its postal code Semipalatinsk-21) was a closed city, one of the most secretive and restricted places in the Soviet Union. The nuclear facilities at Kurchatov are managed by the Kazakhstan Institute of Atomic Energy, a division of the country's National Nuclear Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "kurchatov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4933,
+    "place_id": "gn-2154720",
+    "input": {
+      "place": {
+        "place_id": "gn-2154720",
+        "name": "Nunawading",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.82043,
+        "lon": 145.17308
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nunawading, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Nunawading,_Victoria",
+          "text": "Nunawading () is an eastern suburb of Melbourne, Victoria, Australia, 18 km (11 miles) east of Melbourne's Central Business District, located within the City of Whitehorse and City of Manningham local government areas. Nunawading recorded a population of 12,413 at the 2021 census.\nMost of Nunawading is located in the City of Whitehorse, although the City of Manningham governs part of it. It is centred at the intersection of Whitehorse Road and Springvale Road, in Melbourne's eastern suburbs and is the site of the main office of the City of Whitehorse, as well as large retail (e.g. furniture, auto dealerships, hardware, and electrical) and wholesale businesses, along Whitehorse Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "nunawading",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4956,
+    "place_id": "gn-939340",
+    "input": {
+      "place": {
+        "place_id": "gn-939340",
+        "name": "Winterton",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.81229,
+        "lon": 29.54123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winterton, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Winterton,_South_Africa",
+          "text": "Winterton is a small town on the banks of the Tugela River in the foothills of the Drakensberg mountains, KwaZulu-Natal, South Africa. It was founded in 1905 as Springfield when the Natal Government built a weir across the Little Tugela River. The town later changed its name to Winterton in honour of the secretary for agriculture, HD Winter. Winterton is a small town with only a primary school. It is close to the Second Boer War sites of the Battle of Vaal Krantz and the Spioenkop.\nThe town is situated on the R74 between Bergville and the N3, as well as the R600 between Ladysmith and the Central Drakensberg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "winterton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4957,
+    "place_id": "gn-1011624",
+    "input": {
+      "place": {
+        "place_id": "gn-1011624",
+        "name": "Dealesville",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.67486,
+        "lon": 25.76681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dealesville",
+          "url": "https://en.wikipedia.org/wiki/Dealesville",
+          "text": "Dealesville is a mixed farming town in the Free State province of South Africa and is surrounded by numerous salt pans. There are many natural springs in the vicinity, most notably Florisbad some 35 km from the town.\nThe town was established on the farm Klipfontein (Afrikaans for Stone fountain), which was owned by John Henry Deale.\nTown some 70 km north-west of Bloemfontein, 55 km south-east of Boshof and 111 km east of Kimberley on the R64 road. It was laid out on the farm Klipfontein and named after the owner, John Henry Deale. It was proclaimed a township in 1899 and achieved municipal status in 1914."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "dealesville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4973,
+    "place_id": "gn-3880143",
+    "input": {
+      "place": {
+        "place_id": "gn-3880143",
+        "name": "Mejillones",
+        "country": "Chile",
+        "subdivision": "Antofagasta",
+        "lat": -23.10003,
+        "lon": -70.44703
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mejillones",
+          "url": "https://en.wikipedia.org/wiki/Mejillones",
+          "text": "Mejillones is a Chilean port city and commune in Antofagasta Province in the Antofagasta Region. It is situated in the northern side of the Mejillones Peninsula, 60 km north of the city of Antofagasta. It has 14,084 inhabitants.\nTo the west, in the northern part of peninsula, is Punta Angamos, the site of the naval combat of the same name, fought during the War of the Pacific (1879-1883).\nMejillones is surrounded by the waters of the Pacific Ocean to the west and by the most arid desert in the world to the east, the Atacama Desert. It also marks the country's widest point (362 km) along a parallel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "mejillones",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4978,
+    "place_id": "gn-4844184",
+    "input": {
+      "place": {
+        "place_id": "gn-4844184",
+        "name": "Thompson",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.95871,
+        "lon": -71.86257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thompson, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Thompson,_Connecticut",
+          "text": "Thompson is a town in Windham County, Connecticut, United States. The town is part of the Northeastern Connecticut Planning Region. The town was named after Sir Robert Thompson, an English landholder. The population was 9,189 at the 2020 census. Thompson is located in the northeastern corner of the state and is bordered on the north by Webster, Massachusetts and Dudley, Massachusetts, on the east by Douglas, Massachusetts and Burrillville, Rhode Island, on the west by Woodstock, Connecticut, and on the south by Putnam, Connecticut.\nThompson has the highest-banked race track (Thompson Speedway Motorsports Park, a 5/8 mile oval and a restored 1.7 mile road course) in New England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "thompson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4981,
+    "place_id": "gn-725623",
+    "input": {
+      "place": {
+        "place_id": "gn-725623",
+        "name": "Varshets",
+        "country": "Bulgaria",
+        "subdivision": "Montana",
+        "lat": 43.19356,
+        "lon": 23.2868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Varshets",
+          "url": "https://en.wikipedia.org/wiki/Varshets",
+          "text": "Varshets (Bulgarian: Вършец, variously transliterated; pronounced [vɐrˈʃɛt͡s]) is a spa town in Montana Province, northwestern Bulgaria. It is the administrative centre of the homonymous Varshets Municipality. As of December 2019, its population was 5,444. The town is located on the northern slopes of the western part of the Balkan Mountains in the small valley of the Botunya River, at 43°12′N 23°17′E, 359 metres above sea level. It is one of the oldest resorts in northern Bulgaria, and is known for its mineral springs, mild mountain climate, and natural environment. The town's tourist infrastructure includes two spa centres, a polyclinic, several rest houses, hotels and also many private lodgings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "varshets",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4983,
+    "place_id": "gn-2147849",
+    "input": {
+      "place": {
+        "place_id": "gn-2147849",
+        "name": "Surfers Paradise",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -28.00274,
+        "lon": 153.42999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surfers Paradise",
+          "url": "https://en.wikipedia.org/wiki/Surfers_Paradise",
+          "text": "Surfers Paradise (colloquially known as Surfers) is a central suburb of the City of Gold Coast, Queensland, Australia. In the 2021 census, Surfers Paradise had a population of 55.909 people.\nThe suburb has many high-rise apartment buildings and a wide surf beach. The feature of the heart of the suburb is Cavill Mall, which runs through the shopping and entertainment  precinct. Cavill Avenue, named after Jim Cavill, an early hotel owner, is one of the busiest shopping strips in Queensland, and the centre of activity for night life.  One of the features of the area is the Surfers Paradise Meter Maids designed to build goodwill with tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "surfers paradise",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "surfers",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paradise",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4992,
+    "place_id": "gn-3876353",
+    "input": {
+      "place": {
+        "place_id": "gn-3876353",
+        "name": "Pica",
+        "country": "Chile",
+        "subdivision": "Tarapacá",
+        "lat": -20.49128,
+        "lon": -69.33118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pica, Chile",
+          "url": "https://en.wikipedia.org/wiki/Pica,_Chile",
+          "text": "Pica is a Chilean town and commune in Tamarugal Province, Tarapacá Region. Situated in the inland of the Atacama Desert on an oasis, Pica is famous for its small and unusually acidic limes known as Limón de Pica. The town has a communal hot spring with a surface temperature of 40 °C, which makes it a popular bath place in the middle of the desert. It has hotels and all basic services. The town lies four kilometers to the northeast of the oasis village of Matilla.\nPica has a mild microclimate that does not display the typical high temperature oscillations seen in many of the world's deserts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "pica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5004,
+    "place_id": "gn-1215468",
+    "input": {
+      "place": {
+        "place_id": "gn-1215468",
+        "name": "Barus",
+        "country": "Indonesia",
+        "subdivision": "North Sumatra",
+        "lat": 2.0106,
+        "lon": 98.3982
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barus",
+          "url": "https://en.wikipedia.org/wiki/Barus",
+          "text": "Barus is a town and kecamatan (district) in Central Tapanuli Regency, North Sumatra Province, Sumatra,\nIndonesia. Historically, Barus was well known as a port town or kingdom on the western coast of Sumatra where it was a regional trade center from around the 7th or earlier until the 17th century. It was also known by other names, namely Fansur and possibly Barusai. The name Fansur or Pansur means \"spring of water\" or \"a place where water flows\" in the local Batak language. Barus was well known for its production of camphor.  In the 16th century, Barus became absorbed into the rising power of the Aceh Sultanate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "barus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5007,
+    "place_id": "gn-1275692",
+    "input": {
+      "place": {
+        "place_id": "gn-1275692",
+        "name": "Bijbehara",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 33.79378,
+        "lon": 75.107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bijbehara",
+          "url": "https://en.wikipedia.org/wiki/Bijbehara",
+          "text": "Bijbehara (Urdu pronunciation: [biːd͡ʒbɪɦɑːɽɑː]), known as Vejibror (Kashmiri pronunciation: [ʋed͡ʒibroːr] or [ʋed͡ʒibʲoːr]) in Kashmiri, is a town and a municipal committee in Anantnag district of the Indian administered union territory of Jammu and Kashmir in the disputed Kashmir region. It is located on NH 44, and Jehlum bank. Bijbehara town is also known as \"Town of Chinars\" because of a number of Chinars there especially two Chinar gardens (Paadshaahi Bagh and Dara Shikoh Garden). Bijbehara is the home to oldest chinar tree in the region. The town is situated about 45 km (28 mi) from the summer capital of union territory of Jammu and Kashmir, Srinagar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "bijbehara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5017,
+    "place_id": "gn-3121238",
+    "input": {
+      "place": {
+        "place_id": "gn-3121238",
+        "name": "Grado",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.38801,
+        "lon": -6.07433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grado, Asturias",
+          "url": "https://en.wikipedia.org/wiki/Grado,_Asturias",
+          "text": "Grado (Spanish pronunciation: [ˈɡɾaðo], commonly Grao; Asturian: Grau, and officially Grau/Grado) is a municipality in the Autonomous Community of the Principality of Asturias in Spain. It is bordered on the north by Candamo and Las Regueras, on the east by Proaza, Santo Adriano and Oviedo, on the south by Teverga and Yernes y Tameza, and on the west by Belmonte de Miranda and Salas.\nThe municipality's capital town, also with the same name, is famous for its markets, celebrated every Wednesday and Sunday. These markets, the oldest in Asturias, have their origin in the Middle Ages, when King Alfonso X the Wise granted Grado's town charter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "grado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5019,
+    "place_id": "gn-4156748",
+    "input": {
+      "place": {
+        "place_id": "gn-4156748",
+        "name": "Gibsonton",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.85364,
+        "lon": -82.38259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gibsonton, Florida",
+          "url": "https://en.wikipedia.org/wiki/Gibsonton,_Florida",
+          "text": "Gibsonton, sometimes nicknamed Gibtown, is an unincorporated community and census-designated place in Hillsborough County, Florida, United States. U.S. Route 41 runs through the center of the community.  The population was 18,566 at the 2020 census, up from 14,234 at the 2010 census.\nGibsonton was famous as a sideshow wintering town, where various people in the carnival and circus businesses would spend the off season, placing it near the winter home for the Ringling Brothers Circus at Tampa, Sarasota and Venice in various times. It was home to Percilla the Monkey Girl, the Anatomical Wonder, and the Lobster Boy. Siamese twin sisters ran a fruit stand here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "gibsonton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5022,
+    "place_id": "gn-4421935",
+    "input": {
+      "place": {
+        "place_id": "gn-4421935",
+        "name": "Clarksdale",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 34.20011,
+        "lon": -90.57093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clarksdale, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Clarksdale,_Mississippi",
+          "text": "Clarksdale is a city in and the county seat of Coahoma County, Mississippi, United States. As of the 2020 census, Clarksdale had a population of 14,903. It is located along the Sunflower River and named after John Clark, a settler who founded the city in the mid-19th century when he established a timber mill and business. Clarksdale is in the Mississippi Delta region and is an agricultural and trading center. Many African American musicians developed the blues here and took this original American music with them to Chicago and other northern cities during the Great Migration.\nThe Clarksdale Micropolitan Statistical Area includes all of Coahoma County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "clarksdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5025,
+    "place_id": "gn-6696258",
+    "input": {
+      "place": {
+        "place_id": "gn-6696258",
+        "name": "Campbellton",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 48.00751,
+        "lon": -66.67272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campbellton, New Brunswick",
+          "url": "https://en.wikipedia.org/wiki/Campbellton,_New_Brunswick",
+          "text": "Campbellton is a city in Restigouche County, New Brunswick, Canada.\nSituated on the south bank of the Restigouche River opposite Pointe-à-la-Croix, Quebec, Campbellton was officially incorporated in 1889 and achieved city status in 1958.\nForestry and tourism are major industries in the regional economy, while a pulp mill in the Campbellton community of Atholville is the largest single employer in the area. As part of the tourism \"industry\", wealthy sportfishermen seeking Atlantic salmon flock to the scenic Restigouche Valley every summer. The region sees extensive annual snowfall. Alpine and Nordic ski facilities at Sugarloaf Provincial Park provide winter recreation opportunities for both visitors and local residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "campbellton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5026,
+    "place_id": "gn-8714374",
+    "input": {
+      "place": {
+        "place_id": "gn-8714374",
+        "name": "Loosdrecht",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.207,
+        "lon": 5.071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loosdrecht",
+          "url": "https://en.wikipedia.org/wiki/Loosdrecht",
+          "text": "Loosdrecht (Dutch pronunciation: [ˈloːzdrɛxt]) is a town in the municipality of Wijdemeren, North Holland, the Netherlands, with a population of about 8,600 inhabitants.\nLoosdrecht consists of two small villages: Nieuw-Loosdrecht and Oud-Loosdrecht. Nieuw Loosdrecht covers a small area densely populated; Oud-Loosdrecht consists mainly of lakeside villas. Until 2002 Loosdrecht was a separate municipality in the province of Utrecht, covering the villages of Oud-Loosdrecht and Nieuw-Loosdrecht, and the hamlets of Breukeleveen and Muyeveld.\nLoosdrecht is known for its lakes, the Loosdrechtse Plassen, which thousands of tourists visit every year. The lakes are a hotspot for the well-to-do, with several exclusive yachting clubs and restaurants lining the shores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "loosdrecht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5029,
+    "place_id": "gn-1705871",
+    "input": {
+      "place": {
+        "place_id": "gn-1705871",
+        "name": "Loboc",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.63833,
+        "lon": 124.03482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loboc",
+          "url": "https://en.wikipedia.org/wiki/Loboc",
+          "text": "Loboc, officially the Municipality of Loboc (Cebuano: Munisipalidad sa Loboc; Tagalog: Bayan ng Loboc),  is a  municipality in the province of Bohol, Philippines. According to the 2024 census, it has a population of 17,338 people.\nLocated 28 kilometres (17 mi) east of Tagbilaran, Loboc is widely known for its lunch cruises along the scenic and winding Loboc River. The Loboc Children's Choir, who perform in different floating stations located at the river's end, has won numerous competitions both domestic and international. Tourists also visit to see the tarsier, a small, nocturnal, monkey-like mammal with large, red eyes. It is one of the world's smallest primates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "loboc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
