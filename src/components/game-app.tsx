@@ -14,7 +14,7 @@ import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
-import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
+import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
 import { filterByTier, isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
 import {
   bankPlace,
@@ -656,7 +656,17 @@ export function GameApp() {
   }, []);
 
   const openRun = useCallback(
-    async (edition: Edition, regionId: string, regionName: string, choice: PickerDifficulty) => {
+    async (
+      edition: Edition,
+      regionId: string,
+      regionName: string,
+      choice: PickerDifficulty,
+      // `fresh` forces a brand-new run instead of resuming the saved one.
+      // The celebration's replay/promotion buttons always pass it: the
+      // just-finished run (phase "done") is resumable, so resumeRun would
+      // return it unchanged and the replay would never restart.
+      opts?: { fresh?: boolean },
+    ) => {
       setStarting({ regionName });
       setStartError(null);
       try {
@@ -682,12 +692,16 @@ export function GameApp() {
             setCleared({ edition, regionId, regionName, choice });
           }
         }
-        const next = resumeRun(
-          readRun(),
-          { edition, regionId, regionName, dateKey, difficultyChoice: choice },
-          poolIds,
-          prevLastId,
-        );
+        // A celebration replay/promotion starts FRESH: the just-finished
+        // run (phase "done") is resumable, so resumeRun would return it
+        // unchanged and the replay would never restart. Picker paths keep
+        // resume semantics (leave-and-return mid-run restores the
+        // in-progress run) — `fresh` is opt-in only, and isResumable's
+        // semantics are deliberately unchanged (other flows depend on them).
+        const today = { edition, regionId, regionName, dateKey, difficultyChoice: choice };
+        const next = opts?.fresh
+          ? startRun(today, poolIds, prevLastId)
+          : resumeRun(readRun(), today, poolIds, prevLastId);
         commit(next);
         // Switching editions keeps the session (and its score) alive: a new
         // session starts only when none is live.
@@ -866,17 +880,25 @@ export function GameApp() {
             replaceSession(startSession(trailDate(), Date.now()));
           }}
           onCleared={(info) => setCleared(info)}
+          celebrationOpen={cleared !== null}
         />
         {cleared ? (
           <ClearedCelebrationDialog
             info={cleared}
             onDismiss={() => setCleared(null)}
             onPlayBand={(edition, regionId, regionName, choice) => {
+              // The player's explicit band choice follows them: persist it
+              // so the picker's highlighted button matches after a
+              // promotion (the promoted band used to live on
+              // run.difficultyChoice only, leaving the picker stale).
+              setDifficultyChoice(choice);
               // Dismiss first: the new run replaces the screen (openRun's
               // loading state), and its own backstop decides whether the
               // fresh band deserves a celebration.
               setCleared(null);
-              void openRun(edition, regionId, regionName, choice);
+              // Celebration buttons always start a FRESH run in the chosen
+              // band — never resume the just-finished one.
+              void openRun(edition, regionId, regionName, choice, { fresh: true });
             }}
             onBrowseEditions={() => {
               // Back to the edition picker WITHOUT ending the game: the
@@ -1219,6 +1241,7 @@ function Play({
   onSummaryDone,
   onReplayed,
   onCleared,
+  celebrationOpen,
 }: {
   run: Run;
   session: Session | null;
@@ -1243,6 +1266,12 @@ function Play({
   onReplayed: (run: Run) => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
   onCleared: (info: ClearedInfo) => void;
+  /**
+   * Whether the cleared-mode celebration dialog is open. The M5 Escape
+   * handler yields while it is open so one Escape press dismisses only
+   * the dialog (the dialog's own handler), never the result card beneath.
+   */
+  celebrationOpen: boolean;
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
@@ -1305,6 +1334,7 @@ function Play({
       onSummaryDone={onSummaryDone}
       onReplayed={onReplayed}
       onCleared={onCleared}
+      celebrationOpen={celebrationOpen}
     />
   );
 }
@@ -1320,6 +1350,7 @@ function PlayLoaded({
   onSummaryDone: finishSummary,
   onReplayed,
   onCleared,
+  celebrationOpen,
 }: {
   run: Run;
   places: Starter[];
@@ -1341,6 +1372,8 @@ function PlayLoaded({
   onReplayed: (run: Run) => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
   onCleared: (info: ClearedInfo) => void;
+  /** Whether the cleared-mode celebration dialog is open (M5 Escape yields to it). */
+  celebrationOpen: boolean;
 }) {
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
@@ -1533,6 +1566,11 @@ function PlayLoaded({
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key !== "Escape") return;
+      // The cleared celebration owns Escape while it is open: its own
+      // handler dismisses the dialog, and falling through here would also
+      // dismiss the result card beneath it (phase "done" !== "aim"). Yield
+      // when the dialog is closed and the M5 behavior is unchanged.
+      if (celebrationOpen) return;
       if (run.phase !== "aim") {
         setCardDismissed(true);
         return;
@@ -1544,7 +1582,7 @@ function PlayLoaded({
     }
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
-  }, [run.phase, aim]);
+  }, [run.phase, aim, celebrationOpen]);
 
   useEffect(() => {
     if (place || run.phase === "done" || run.phase === "summary") return;

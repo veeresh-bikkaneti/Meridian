@@ -34,9 +34,42 @@ celebrated, player-visible promotion moment instead.
   new `cleared-mode` Playwright project); 5/7 green; 2 BLOCKED on real app
   bugs found by the spec (see "E2E findings" below) — not committable as
   green until the app crew fixes them
+- [x] Fix crew (2026-10-04): both E2E-found bugs fixed — see "Fix crew" below
 - [ ] Technical-architect review
 - [ ] Tone/docs review (all player-visible strings)
 - [ ] PR → merge → live verification
+
+## Fix crew (2026-10-04)
+
+Both E2E-blocker bugs fixed in `src/components/game-app.tsx` (+ 1 unit test
+in `src/game/run.test.ts`); `npx tsc --noEmit` clean, `npm test` 536/536
+green, `node scripts/lint-cards.mjs` GATE PASSED, `npm run build:pages` green.
+
+1. **Replay resumes instead of restarting — FIXED.** `openRun` gained an
+   opt-in `opts?: { fresh?: boolean }` param: when set it calls `startRun`
+   instead of `resumeRun`. The celebration's `onPlayBand` handler (replay
+   AND promotions) now passes `{ fresh: true }`. Picker paths keep resume
+   semantics; `isResumable` untouched (a new unit test pins that a
+   phase-"done" run IS resumable and that `startRun` is the restart path).
+   E2E "Replay → fresh Easy run, no second celebration": GREEN.
+2. **Escape falls through the celebration modal — FIXED.** `celebrationOpen`
+   (`cleared !== null`) is threaded GameApp → Play → PlayLoaded; the M5
+   capture-phase Escape handler early-returns while the dialog is open, so
+   the dialog's own bubble-phase handler dismisses only the dialog and the
+   player stays on the answered reveal. M5 behavior with the dialog closed
+   is unchanged. E2E "Escape dismiss → back on reveal, Next advances
+   normally": GREEN.
+3. **Consistency (coordinator-approved):** the celebration's
+   `onPlayBand` now also calls `setDifficultyChoice(choice)`, so a
+   promotion ("Try Medium"/"Try Hard") updates the persisted
+   `meridian.difficulty` choice and the picker's highlighted button follows
+   the player's explicit choice.
+
+REGRESSION SWEEP: full `cleared-mode` Playwright project 7/7 GREEN
+(2026-10-04, incl. the 2 formerly-blocked tests); existing-suite
+re-verification left for the review crew.
+
+---
 
 ## E2E findings (E2E crew, 2026-10-04)
 Spec: `tests/e2e/cleared-mode.spec.ts` (7 tests, Vermont for Easy/Medium,
