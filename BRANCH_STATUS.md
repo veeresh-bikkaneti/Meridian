@@ -62,3 +62,11 @@ Scoped whether adding each article's **Climate section** (Geography fallback) as
 - [x] Gates at finish: clue suites 70/70; `npm test` exit 0; `tsc --noEmit` clean; `lint-cards` GATE PASSED; `build:pages` green.
 - Pool disposition: 400 of 7,797 attempted; 7,397 remain climate-rejected in the audit records (run stopped at target, not exhaustion). **Flag for Veeresh: Puerto San José gn-3591060, published index 362** (was 203 at baseline; fame-order insertions shifted it).
 - [ ] Veeresh's human review + merge decision (unchanged).
+
+## Build Plan Phase 1 — content lock (T1 repair + T2 rebase)
+
+- [x] **T1 — 2-set repair EXECUTED + CERTIFIED 2026-10-04** (work order from Chitti's post-delivery verification; certification: `scripts/clues/production/reviews/t1-repair-certification.md`, all three items CERTIFIED by the independent reviewer):
+  - **Palestina gn-3673269 — fail-closed REJECTED.** Its tier 5 repeated its tier 3 UNESCO "Coffee Cultural Landscape" payload (identical source quote). The union record in `records-tier2.jsonl` is now a §6 rejection record (tier 5 / giveaway, reason + missing documented, work-order reference), and the set is removed from the published assembly — no reassembly can resurrect it.
+  - **Bremerhaven gn-2944368 — tier 5 recomposed** from previously unused lead-extract facts only: Wesermünde formed 1924 (Geestemünde + Lehe), Bremerhaven annexed 1939, restored 1947. Quote is a verbatim span of the lead extract (tiers 1/3/4/5 are lead-only). The work order's 20 Jul 2022 heat / 25 Feb 1956 cold records appear only in the climate-section extract, not the lead, so they were not used (reviewer verified their absence from the lead). First draft failed the shipped validator on READING_LEVEL (FK 6.66 > 6.0); rewritten plainer and validator-clean. Record carries a `repair_note`.
+  - **Assembly is now 387 sets** (`public/loop/clues/`, manifest size 387), leak scan re-run **0 hits / 1,935 clue texts**; reviewer independently regenerated the assembly in a clean copy — byte-identical. Note: removing Palestina (old idx 340) shifted later indices down one — **Puerto San José gn-3591060 is now published index 361** (was 362); the sampling flag follows the placeId.
+- [ ] **T2 — rebase onto current `origin/main`** (in progress; target `650065e` at briefing).
