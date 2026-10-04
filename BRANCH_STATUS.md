@@ -32,6 +32,59 @@ Worktree: `~/workspace/meridian-worktrees/wikipedia-crawl`
 1. ~~Seed cache absent~~ — **resolved by decision**: Liz directed a fresh start from 0 (2026-10-02); the old cache is forgone.
 2. ~~Push path~~ — **resolved**: the GitHub App API path was approval-gated and its branch creation got a 403 (app installation lacks Meridian repo selection — that selection is still outstanding for the *connector*, but no longer needed for pushing). Liz instead authenticated the `gh` CLI (device flow), which is now the working push path.
 
+## Verification crew report — 2026-10-04 (Chitti's agent, worktree `~/workspace/meridian-worktrees/wiki-verify`)
+
+**VERDICT: BLOCKED** — do not open the PR to main until the content fixes below land.
+
+### Mechanical (all first-hand)
+- HEAD `3abcd7d` on top of `e18c3cf` confirmed; tree clean; zero conflict markers repo-wide (`<<<<<<<`/`>>>>>>>` scan).
+- Diff vs `e18c3cf`: exactly 66 files — 64 chunk JSONs + `manifest.json` + this file. **No code changed.**
+- `npm test`: **515/515 pass**. `npx tsc --noEmit`: clean (exit 0, run directly, not piped).
+- `node scripts/lint-cards.mjs`: **GATE PASSED** (124,690 records; 8,958 with hook; 115,732 hook-missing; 0 violations).
+- Manifest: `meta.enrichment = {source: "Wikipedia article intros (CC BY-SA) via the MediaWiki API", historySentences: 8579, generated: "2026-10-04"}` — additive only (per-region byte counts refreshed; `chunkBytes` 31,254,020 → 32,372,251).
+- Independent per-place diff (streaming compare of all 64 chunks): **8,579 gained `history`+`wiki`, 0 lost, 0 overwritten, 0 places added/removed.** Curated-wins preserved (94 curated notes + 285 pre-existing histories untouched). 8,958 = 8,579 + 379 pre-existing ✓.
+- Spot-check: Birmingham, AL (gn-4049979) carries "Founded in 1871 during the Reconstruction era, Birmingham was formed through the merger of three smaller communities, most notably Elyton." + `wiki: "Birmingham,_Alabama"` ✓.
+
+### Reconciliation audit
+- Merge side fully verified three ways (diff, manifest, card gate): **8,579 closes.**
+- Crawl-side numbers (71,957 matched; 9,129 candidates; skips 62,712 / 339 / 325 / 1) **cannot be independently verified** — the cache and merge stdout exist only on Liz's VM.
+- Team's arithmetic does not fully close: 8,579 + 62,712 + 41,425 + 5,234 + 5,696 + 339 + 325 + 1 (too-short) = **124,311 vs 124,312 cached → 1 record unaccounted for** (same single record in the matched-only framing: 71,956 vs 71,957). Likely causes: one chunk place with no cache record (silent `continue`, uncounted), a multi-violation `invalid:` combined key (e.g. `"invalid: too-long; banned-pattern …"`) outside the 339/325 tallies, or a transcription off-by-one. Material impact: none (1 in 124,312) — flagged for the record, not a blocker.
+- Note: the crawl `report` calls `extractHookSentence(rec.extract)` **without** `place.name`, but `cmdMerge` calls it **with** `place.name` (hook scoring uses name tokens) — so "9,129 hook candidates" and the merge's accept/reject population are not directly comparable. This explains the candidate gap (550) vs validation rejections (665) mismatch.
+
+### Tone sampling (binding protocol — seed 20261003, n=100, stratified 2×10 regions, merge-output only)
+- **Hard fails: 13/100 (13%) — exceeds the 5% BLOCK threshold. Sample IDs recorded at `/tmp/tone-sample.json` (seed 20261003, reproducible).**
+- Systematic classes, population-quantified by full-corpus scan:
+  1. **Truncated on middle initial: 177 hooks (2.1%)** — e.g. "It is named after Samuel D." / "Founded in 1887 by William H." / "It was named for George M." / "industrialist Julian S." The sentence splitter breaks on initials — systematic script bug.
+  2. **Census language: 56 hooks** — "Laurel is the principal city of a micropolitan statistical area", "part of the Cleveland metropolitan area", "The CDP is home to…", "Metropolitan Statistical Area". The hook picker selects these despite the banned-pattern list.
+  3. **Boring-by-construction** — "It is a historical town and is known for its cultural heritage." (Jadcherla), "Viikki is known for its natural environment."
+  4. **Wrong-kind hooks for kids** — Warren, ME leads with the Maine State Prison; Hirske (Ukraine) leads with "protracted violence" during the invasion. UNSAFE-list gap.
+  5. Dangling reference — Bon Accord "earn this designation" (designation never named).
+- Soft fails: 33/100 (adult register / dull modern-identity hooks, e.g. "known for having a water park") — also trips the protocol's >15% soft-fail caveat.
+- 100/100 sampled `wiki` slugs resolve (HTTP 200 HEAD). No wrong-place (same-name near-miss) hooks found in the sample.
+
+### Attribution
+- Per-card: ✓ wired (`generated-places.ts`: "GeoNames · Wikipedia" → `https://en.wikipedia.org/wiki/{slug}`); covered by unit tests on the merged data.
+- App-wide map-corner credit: ✗ **NOT extended** — `atlas-map.tsx` still GeoNames-only. Needs the one-line CC BY-SA addition before the PR (Chitti's side).
+
+### E2E (temporary `wiki-merge.desktop.spec.ts`, since removed; seeded deterministic deals, Chromium)
+- ✅ Curated-wins (West Englewood gn-4915989): **PASSED** — curated note verbatim, history-first.
+- ✅ Enriched hit (Birmingham): history-lead + blurb-follow assertions **PASSED**; question shows bare "Birmingham" + "Alabama" context (PR #46 state-label rule confirmed, no regression).
+- ⚠️ Source-line href, miss card, unenriched card: **not completed** — VM satellite-tile loading flaked (`data-tile-status` stuck "loading"/"failed"); the repo's own `history-first-cards.desktop.spec.ts` fails identically on this VM, confirming environmental cause, not a merge regression. Source-label wiring is covered by unit tests on the merged data (515/515).
+- E2E plan checks 5 (chunk lazy-load) and 6 (reload resume): not run — data-only merge leaves those mechanics untouched; existing specs cover reload.
+
+### Reviews
+- **Technical-architect: PASS** — data-only merge; additive; no code/schema/dependency changes; tsc + tests + card gate green. The content bugs are script bugs in `scripts/enrich-wikipedia.mjs` (NOT modified by this commit) — fix belongs to Liz's team, then a targeted re-merge.
+- **Tone/docs: BLOCK** — binding protocol verdict (13% hard fails; systematic truncation + census-language classes).
+
+### Required fixes (owner: Liz's team — script + cache + merge are theirs)
+1. Sentence splitter: protect middle initials ("Samuel D. Sturgis" must not split after "D.").
+2. Hook picker: ban/demote census-language sentences (metropolitan/micropolitan/CDP/statistical area, distance-direction filler).
+3. UNSAFE list: war/violence/invasion/captured + prison/correctional-facility as lead hooks.
+4. Reject vague definitional hooks ("known for its natural environment" class).
+5. Pronoun guard for dangling references ("this designation").
+6. Re-run merge on the affected subset; confirm `historySentences` does not double-count (the script accumulates across runs).
+7. One-line app-wide CC BY-SA credit in `atlas-map.tsx` (Chitti's side, pre-PR).
+
 ## Guardrails honoured
 
 - `merge` was NOT run during the crawl phase. It was run once, on 2026-10-03, only after Liz's explicit directive that the decision had been made and this push is what Chitti's review + PR start from. No PR opened by this team.
