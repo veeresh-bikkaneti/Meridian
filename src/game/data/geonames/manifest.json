@@ -18,14 +18,14 @@
       "marginDeg": 0.15
     },
     "total": 124690,
-    "chunkBytes": 32362822,
+    "chunkBytes": 32359863,
     "quarantine": {},
     "duplicatesDropped": 0,
     "rawRows": 13472204,
     "keptRows": 124690,
     "enrichment": {
       "source": "Wikipedia article intros (CC BY-SA) via the MediaWiki API",
-      "historySentences": 8448,
+      "historySentences": 8420,
       "generated": "2026-10-04"
     }
   },
@@ -43,7 +43,7 @@
     "arizona": {
       "edition": "state",
       "count": 181,
-      "bytes": 51188
+      "bytes": 51231
     },
     "arkansas": {
       "edition": "state",
@@ -68,7 +68,7 @@
     "canada": {
       "edition": "country",
       "count": 2462,
-      "bytes": 673590
+      "bytes": 673678
     },
     "china": {
       "edition": "country",
@@ -103,7 +103,7 @@
     "france": {
       "edition": "country",
       "count": 6293,
-      "bytes": 1668969
+      "bytes": 1668947
     },
     "georgia": {
       "edition": "state",
@@ -113,12 +113,12 @@
     "germany": {
       "edition": "country",
       "count": 6308,
-      "bytes": 1644540
+      "bytes": 1644215
     },
     "globe": {
       "edition": "globe",
       "count": 59423,
-      "bytes": 15125763
+      "bytes": 15123234
     },
     "hawaii": {
       "edition": "state",
@@ -138,7 +138,7 @@
     "india": {
       "edition": "country",
       "count": 6990,
-      "bytes": 1737578
+      "bytes": 1737219
     },
     "indiana": {
       "edition": "state",
@@ -153,7 +153,7 @@
     "italy": {
       "edition": "country",
       "count": 5234,
-      "bytes": 1315803
+      "bytes": 1315811
     },
     "japan": {
       "edition": "country",
@@ -203,7 +203,7 @@
     "minnesota": {
       "edition": "state",
       "count": 300,
-      "bytes": 84011
+      "bytes": 83911
     },
     "mississippi": {
       "edition": "state",
@@ -238,7 +238,7 @@
     "new-jersey": {
       "edition": "state",
       "count": 520,
-      "bytes": 149548
+      "bytes": 149554
     },
     "new-mexico": {
       "edition": "state",
@@ -273,7 +273,7 @@
     "oregon": {
       "edition": "state",
       "count": 186,
-      "bytes": 52713
+      "bytes": 52949
     },
     "pennsylvania": {
       "edition": "state",
@@ -338,7 +338,7 @@
     "west-virginia": {
       "edition": "state",
       "count": 109,
-      "bytes": 34191
+      "bytes": 34186
     },
     "wisconsin": {
       "edition": "state",
