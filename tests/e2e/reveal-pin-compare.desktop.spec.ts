@@ -18,7 +18,7 @@ import {
  *
  * On a miss, the result card names BOTH locations
  * (data-testid="pin-compare-line") so the player learns where their guess
- * actually landed: "Your pin: Bahia · True spot: Colombia", "Right state,
+ * actually landed: "Your pin: Bahia · True spot: Hungary", "Right state,
  * wrong town!" when the state matches, "Right country, wrong town!" when
  * only the country matches. Fail closed: unresolvable pins (mid-ocean)
  * render no line and the card is otherwise identical; correct answers
@@ -28,7 +28,9 @@ import {
  * date freeze alone cannot pin the first place. seedDeterministicDeal
  * freezes the calendar AND the RNG streams the session seed is minted
  * from (crypto.getRandomValues with a Math.random fallback), making the
- * first globe place ("El Tambo, Colombia") identical on every run —
+ * first globe place (now a place in Hungary — the difficulty-tiers merge
+ * changed the dealer to fame-weighted, so the seeded first deal moved
+ * from "El Tambo, Colombia") identical on every run —
  * verified stable across repeated runs during development. The miss pins
  * are fixed viewport points probed end-to-end against the live camera +
  * tap path; each sits deep inside its region (neighbor taps resolve
@@ -77,8 +79,9 @@ test.beforeEach(async ({ context }) => {
  * Deterministic deal for the globe tests. The per-session shuffle seed
  * comes from trail.ts mintSeed(): crypto.getRandomValues when available,
  * Math.random otherwise. Seeding both (plus the calendar) pins the full
- * deal order — the first globe place is "El Tambo, Colombia" on every
- * run. The streams stay varying (mulberry32), just deterministic, so no
+ * deal order — the first globe place is a place in Hungary on every
+ * run (it was "El Tambo, Colombia" before the difficulty-tiers merge
+ * switched the dealer to fame-weighted). The streams stay varying (mulberry32), just deterministic, so no
  * app behavior changes — only the seed.
  */
 async function seedDeterministicDeal(page: Page): Promise<void> {
@@ -136,7 +139,7 @@ async function seedDeterministicDeal(page: Page): Promise<void> {
  * ±20px resolve identically, so it is not near a state border).
  */
 const BAHIA_PIN = { x: 580, y: 490 };
-const EXPECTED_BAHIA_LINE = "Your pin: Bahia · True spot: Colombia";
+const EXPECTED_BAHIA_LINE = "Your pin: Bahia · True spot: Hungary";
 
 /**
  * Fixed mid-ocean pin: South Atlantic. territoryAt() returns null there,
