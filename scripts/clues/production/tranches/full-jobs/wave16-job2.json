@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 3043,
+    "attempt": 3021,
+    "place_id": "gn-2649660",
+    "input": {
+      "place": {
+        "place_id": "gn-2649660",
+        "name": "Farnham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.21444,
+        "lon": -0.80054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farnham",
+          "url": "https://en.wikipedia.org/wiki/Farnham",
+          "text": "Farnham is a market town and civil parish in Surrey, England, around 36 miles (58 km) southwest of London. It is in the Borough of Waverley, close to the county border with Hampshire. The town is on the north branch of the River Wey, a tributary of the Thames, and is at the western end of the North Downs. The civil parish, which includes the villages of Badshot Lea, Hale and Wrecclesham, covers 14.1 sq mi (37 km2) and had a population of 39,488 in 2011.\nAmong the prehistoric objects from the area is a woolly mammoth tusk, excavated in Badshot Lea at the start of the 21st century. The earliest evidence of human activity is from the Neolithic and, during the Roman period, tile making took place close to the town centre. The name \"Farnham\" is of Saxon origin and is generally agreed to mean \"meadow where ferns grow\". From at least 803, the settlement was under the control of the Bishops of Winchester and the castle was built as a residence for Bishop Henry de Blois in 1138. Henry VIII is thought to have spent part of his childhood under the care of Bishop Richard Foxe and is known to have lived at Farnham Castle when he was 16.\nIn the late medieval period, the primary local industry was the production of kersey, a coarse, woollen cloth. In the early modern period, the town's weekly corn market was said to be the second largest in England after London. Between 1600 and the 1970s, the area was a centre for growing hops and for the brewing industry. The town began to expand in the early Victorian period, stimulated in part by the opening of the railway in 1849 and the arrival of the army in nearby Aldershot in 1855. Farnham became an Urban District in 1894, but under the Local Government Act 1972, it became part of the Borough of Waverley. The civil parish and town council were created in 1984.\nThe Farnham area has long been associated with the creative arts and with pottery making in particular. One of three campuses of the University for the Creative Arts is to the west of the centre and there are numerous works of public art on display in the town. Notable buildings in the civil parish include the ruins of Waverley Abbey and the 18th century Willmer House, now the location of the Museum of Farnham. Politician William Cobbett and writer George Sturt were both born in Farnham, as was Maud Gonne, the Irish republican suffragette. More recent residents have included the watercolour artist William Herbert Allen, Formula One driver Mike Hawthorn, the England cricketer Graham Thorpe, and the England rugby union captain Jonny Wilkinson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 455
+    },
+    "banned_terms": [
+      {
+        "term": "farnham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3044,
+    "attempt": 3022,
+    "place_id": "gn-2656396",
+    "input": {
+      "place": {
+        "place_id": "gn-2656396",
+        "name": "Bangor",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.66079,
+        "lon": -5.66802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bangor, County Down",
+          "url": "https://en.wikipedia.org/wiki/Bangor,_County_Down",
+          "text": "Bangor (  BANG-gər; from Irish Beannchar [ˈbʲaːn̪ˠəxəɾˠ]) is a seaside city and civil parish in County Down, Northern Ireland, on the southern side of Belfast Lough. It is within the Belfast metropolitan area and is 13 miles (22 km) east of Belfast city centre, to which it is linked by the A2 road and the Belfast–Bangor railway line. The population was 64,596 at the 2021 census. \nBangor Abbey was an important and influential monastery founded in the 6th century by Saint Comgall. Bangor grew during the 17th century Plantation of Ulster, when many Scottish settlers arrived. Today, tourism is important to the local economy, particularly in the summer months, and plans are being made for the long-delayed redevelopment of the seafront; a notable historical building in the city is Bangor Old Custom House. The largest plot of private land in the area, the Clandeboye Estate, which is a few miles from the city centre, belonged to the Marchioness of Dufferin and Ava. Bangor hosts the Royal Ulster and Ballyholme yacht clubs. Bangor Marina is one of the largest in Ireland, and holds Blue Flag status. Bangor was granted city status in 2022 as part of Elizabeth II's Platinum Jubilee, becoming Northern Ireland's sixth city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "bangor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3045,
+    "attempt": 3023,
+    "place_id": "gn-2809889",
+    "input": {
+      "place": {
+        "place_id": "gn-2809889",
+        "name": "Wetzlar",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.56109,
+        "lon": 8.50495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetzlar",
+          "url": "https://en.wikipedia.org/wiki/Wetzlar",
+          "text": "Wetzlar (German pronunciation: [ˈvɛtslaːɐ̯] ) is a city in the state of Hesse, Germany. It is the twelfth largest city in Hesse with currently 55,371 inhabitants at the beginning of 2019 (including second homes). As an important cultural, industrial and commercial centre, the university town is one of the ten regional centres in the state of Hesse.\nA former free imperial city, it gained much of its fame as the seat of the Imperial Supreme Court (Reichskammergericht) of the Holy Roman Empire. Located 51 kilometres north of Frankfurt, at 8° 30′ E, 50° 34′ N, Wetzlar straddles the river Lahn and is on the German Timber-Frame Road, which passes mile upon mile of half-timbered houses. Historically, the city has acted as the hub of the Lahn-Dill-Kreis on the north edge of the Taunus. Tourists know the city for its ancient town and its medieval Catholic/Protestant shared cathedral of St. Mary. Notable architectural features include the Eisenmarkt and the steep gradients and tightly packed street layout of a medieval town. The building of the sandstone cathedral commenced in the 12th century in Romanesque style. In the later Middle Ages the construction continued under a master plan in Gothic style. The church was never finished—one steeple still remains uncompleted. The cathedral suffered heavy damage in the Second World War from aerial bombing, but restoration took place in the 1950s. On the outskirts of town along the river stand the ruins of several stone towers.\nThe town hosted the Hessentag state festival twice (the 15th and the 52nd in 1975 and 2012 respectively)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "wetzlar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3046,
+    "attempt": 3024,
+    "place_id": "gn-2952984",
+    "input": {
+      "place": {
+        "place_id": "gn-2952984",
+        "name": "Bamberg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.89873,
+        "lon": 10.90067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bamberg",
+          "url": "https://en.wikipedia.org/wiki/Bamberg",
+          "text": "Bamberg (, US also , German: [ˈbambɛʁk] ; East Franconian: Bambärch) is a town in Upper Franconia, Bavaria, Germany, on the river Regnitz close to its confluence with the river Main. Bamberg had 79,000 inhabitants in 2022. The town dates back to the 9th century, when its name was derived from the nearby Babenberch castle. Cited as one of Germany's most beautiful towns, with medieval streets and buildings, the old town of Bamberg with around 2,400 timber houses has been a UNESCO World Heritage Site since 1993.\nFrom the 10th century onwards, Bamberg became a key link with the Western Slavic peoples, notably those of Poland and Pomerania. It experienced a period of great prosperity from the 12th century onwards, during which time it was briefly the centre of the Holy Roman Empire. Emperor Henry II was buried in the old town, alongside his wife Kunigunde. The town's architecture from this period strongly influenced that in Northern Germany and Hungary. From the middle of the 13th century onwards, the bishops were princes of the Empire and ruled Bamberg, overseeing the construction of monumental buildings. This growth was complemented by the obtaining of large portions of the estates of the Counts of Meran in 1248 and 1260 by the sea, partly through purchase and partly through the appropriation of extinguished fiefs.\nBamberg lost its independence in 1802, following the secularization of church lands, becoming part of Bavaria in 1803. The town was first connected to the German rail system in 1844, which has been an important part of its infrastructure ever since. After a communist uprising took control over Bavaria in the years following World War I, the state government fled to Bamberg and stayed there for almost two years before the Bavarian capital of Munich was retaken by Freikorps units (see Bavarian Soviet Republic). The first republican constitution of Bavaria was passed in Bamberg, becoming known as the Bamberger Verfassung (Bamberg Constitution).\nFollowing the Second World War, Bamberg was an important base for the Bavarian, German, and then American military stationed at Warner Barracks, until closing in 2014."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 348
+    },
+    "banned_terms": [
+      {
+        "term": "bamberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3047,
+    "attempt": 3025,
+    "place_id": "gn-3059101",
+    "input": {
+      "place": {
+        "place_id": "gn-3059101",
+        "name": "Levice",
+        "country": "Slovakia",
+        "subdivision": "Nitra Region",
+        "lat": 48.21563,
+        "lon": 18.60705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Levice",
+          "url": "https://en.wikipedia.org/wiki/Levice",
+          "text": "Levice (; Slovak pronunciation: [ˈleʋitse]; Hungarian: Léva, Hungarian pronunciation: [ˈleːvɒ]; German: Lewenz) is a town in western Slovakia. The town lies on the left bank of the lower Hron river. The Old Slavic name of the town was Leva, which means \"the Left One\".\nThe town is located in the north-eastern corner of the Danubian Lowland, 110 kilometres (68 miles) east of Bratislava, 40 kilometres (25 miles) south-east of Nitra, 32 kilometres (20 miles) south-west of Banská Štiavnica, 55 kilometres (34 miles) south-west of Zvolen and 25 kilometres (16 miles) from the border with Hungary.\nIt is the seat of the Levice District, which is the largest district in Slovakia at 1,551 square kilometres (599 square miles). The town's heraldic animal is lion (Slovak: lev), and the town's colours are green and yellow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "levice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3048,
+    "attempt": 3026,
+    "place_id": "gn-3080644",
+    "input": {
+      "place": {
+        "place_id": "gn-3080644",
+        "name": "Żary",
+        "country": "Poland",
+        "subdivision": "Lubusz",
+        "lat": 51.64205,
+        "lon": 15.13727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Żary",
+          "url": "https://en.wikipedia.org/wiki/Żary",
+          "text": "Żary ([ˈʐarɨ] ; Lower Sorbian: Žarow, pronounced [ˈʒarɔw]; German: Sorau, pronounced [ˈzoːʁaʊ] ) is a town in western Poland with 37,502 inhabitants (2019), situated in the Lubusz Voivodeship. It is the administrative seat of the Żary County and of the Gmina Żary within the county, though the town is not part of the gmina (commune).\nŻary is located in the east of the historic Lower Lusatia region, in the borderland with the Silesian lowlands and Greater Poland, roughly outlined by the Bóbr and Oder rivers. The city is one of the biggest economic and tourist centers in the southern Lubuskie region and the largest town in the Polish part of Lusatia, and is also referred as its unofficial capital. The city, whose history dates back more than 1000 years, features many historic sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "zary",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3049,
+    "attempt": 3027,
+    "place_id": "gn-3185082",
+    "input": {
+      "place": {
+        "place_id": "gn-3185082",
+        "name": "Krujë",
+        "country": "Albania",
+        "subdivision": "Durrës County",
+        "lat": 41.50917,
+        "lon": 19.79278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krujë",
+          "url": "https://en.wikipedia.org/wiki/Krujë",
+          "text": "Krujë (Albanian definite form: Kruja; see also the etymology section) is a town and a municipality in north-central Albania. Located between Mount Krujë and the Ishëm River, the city is 20 km north of Tirana.\nKrujë was inhabited by the ancient Illyrian tribe of the Albanoi. In 1190 Krujë became the capital of the first Albanian state in the Middle Ages, the Principality of Arbanon. Later it was the capital of the Kingdom of Albania, while in the early 15th century Krujë was conquered by the Ottoman Empire, but then recaptured in 1443 by Skanderbeg, leader of the League of Lezhë, who successfully defended it against three Ottoman sieges until his death in 1468.\nThe Ottomans took control of the town after the fourth siege in 1478, and incorporated it in their territories. A 1906 local revolt against the Ottoman Empire was followed by the 1912 Declaration of Independence of Albania. In the mid-1910s Krujë was one of the battlefields of the conflict between the short-lived Republic of Central Albania, founded by Essad Toptani, and the Principality of Albania. In 1914, Toptani managed to seize the town, but during the same year it was reincorporated by Prenk Bibë Doda in the Principality of Albania. During World War II it was the centre of the activities of resistance leader Abaz Kupi.\nThe museums of Krujë include the Skanderbeg Museum, located in the environs of the Krujë Castle, and the national ethnographic museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "kruje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3050,
+    "attempt": 3028,
+    "place_id": "gn-332288",
+    "input": {
+      "place": {
+        "place_id": "gn-332288",
+        "name": "Lalibela",
+        "country": "Ethiopia",
+        "subdivision": "Amhara",
+        "lat": 12.03219,
+        "lon": 39.04756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lalibela",
+          "url": "https://en.wikipedia.org/wiki/Lalibela",
+          "text": "Lalibela (Amharic: ላሊበላ, romanized: Lalibäla) is a town in the Amhara Region of Ethiopia. Located in the Lasta district and North Wollo Zone, it is a tourist site for its  famous rock-cut monolithic churches designed in contrast to the earlier monolithic churches in Ethiopia. The whole of Lalibela is a large and important site for the antiquity, medieval, and post-medieval civilization of Ethiopia. To some Christians, Lalibela is one of Ethiopia's holiest cities, and a center of pilgrimage.\nEthiopia was one of the earliest nations to adopt Christianity in the first half of the 4th century, and its historical roots date to the time of the Apostles. The churches themselves date from the 7th to 13th centuries, and are traditionally dated to the reign of the Zagwe (Agaw) king Gebre Meskel Lalibela (r. c. 1181–1221).\nThe layout and names of the major buildings in Lalibela are widely accepted, especially by local clergy, to be a symbolic representation of Jerusalem. This has led some experts to date the current church construction to the years following the capture of Jerusalem in 1187 by the Muslim leader Saladin.\nLalibela is roughly 2,500 metres (8,200 ft) above sea level. It is the main town in Lasta, which was formerly part of the Bugna district. The rock-hewn churches were declared a World Heritage Site in 1978.\nThe best time to visit the city is during the dry season from October to March, when weather conditions are most favorable for exploring the temple complex. During this period, the city is especially crowded during major religious festivals, particularly Genna (January 7) and Timkat (January 19), when religious services are accompanied by multi-day processions, traditional music, and rituals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "lalibela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3051,
+    "attempt": 3029,
+    "place_id": "gn-3456324",
+    "input": {
+      "place": {
+        "place_id": "gn-3456324",
+        "name": "Nepomuceno",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.23342,
+        "lon": -45.23488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nepomuceno",
+          "url": "https://en.wikipedia.org/wiki/Nepomuceno",
+          "text": "Nepomuceno is a Brazilian municipality located in the state of the state of Minas Gerais. The population in 2020 was 26,826 in a total area of 584 km2 (225 sq mi). The maximum elevation is 1,100 m (3,600 ft) and the minimum is 850 m (2,790 ft).\nThe city belongs to the IBGE statistical microregion of Varginha. It lies 12 km (7.5 mi) west of the important highway BR-381 (Fernão Dias). Distances to major and nearby cities are:\n\nBelo Horizonte – 233 km\nSão Paulo – 330 km\nRio de Janeiro – 396 km\nBrasília – 1085 km\nTrês Pontas – 54 km\nTrês Corações – 80 km\nVarginha – 81 km\nLavras – 25 km\nThe climate is humid, with mild summers, subject to sporadic periods of drought and with mild winters. The annual rainfall is 1,600 mm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "nepomuceno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3052,
+    "attempt": 3030,
+    "place_id": "gn-3833367",
+    "input": {
+      "place": {
+        "place_id": "gn-3833367",
+        "name": "Ushuaia",
+        "country": "Argentina",
+        "subdivision": "Tierra del Fuego",
+        "lat": -54.81084,
+        "lon": -68.31591
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ushuaia",
+          "url": "https://en.wikipedia.org/wiki/Ushuaia",
+          "text": "Ushuaia ( oo-SWY-ə, Spanish: [uˈswaja]) is the capital of Tierra del Fuego, Antártida e Islas del Atlántico Sur Province, Argentina. With a population of 89,606 and a location below the 54th parallel south latitude, Ushuaia claims the title of world's southernmost city.\nUshuaia is located in a wide bay on the southern coast of Isla Grande de Tierra del Fuego. It is bounded on the north by the Martial mountain range and on the south by the Beagle Channel. It is the only municipality in the Department of Ushuaia and has an area of 9,390 km2 (3,625 sq mi). It was founded on 12 October 1884 by Augusto Lasserre and is located on the shores of the Beagle Channel surrounded by the mountain range of the Martial Glacier, in the Bay of Ushuaia. In addition to being an administrative center, it is a light industrial port and tourist destination. Ushuaia is located roughly 1,100 kilometres (680 mi) from the Antarctic Peninsula and is one of five internationally recognized Antarctic gateway cities; it is one of two South American cities with that status along with Chile's Punta Arenas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "ushuaia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3053,
+    "attempt": 3031,
+    "place_id": "gn-4180531",
+    "input": {
+      "place": {
+        "place_id": "gn-4180531",
+        "name": "Augusta",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.47097,
+        "lon": -81.97484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Augusta, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Augusta,_Georgia",
+          "text": "Augusta is a city on the central eastern border of the U.S. state of Georgia and the county seat of Richmond County. The city lies directly across the Savannah River from North Augusta, South Carolina, at the head of its navigable portion. Augusta, the third-most-populous city in Georgia (following Atlanta and Columbus), is situated in the Fall Line region of the state.\nAccording to the U.S. Census Bureau, Augusta had a 2020 population of 202,071 and a 2025 estimated population of 201,999, not counting the independent cities of Blythe and Hephzibah located within the boundaries of Augusta-Richmond County. It is the 124th-most-populous city in the United States and the 92nd-largest metropolitan area. The process of consolidation between the city of Augusta and Richmond County began with a 1995 referendum in the two jurisdictions. The merger was completed on July 1, 1996, but it excluded the municipalities of Blythe and Hephzibah. Augusta is the principal city of the Augusta metropolitan area. In 2020, the metro area had a population of 611,000, making it the second-largest in the state (after Atlanta) and the ninth-most-populous urban center in the Deep South.\nAugusta was established in 1736 and is named in honor of Princess Augusta of Saxe-Gotha (1719–1772), the bride of Frederick, Prince of Wales and the mother of the British monarch George III. During the American Civil War, Augusta housed the principal Confederate Powderworks. Augusta's warm climate made it a major resort town of the Eastern United States in the early to mid-20th century. Internationally, Augusta is best known for hosting professional golfing's Masters Tournament each spring. The Masters brings over 200,000 visitors from around the world to the Augusta National Golf Club.\nAugusta lies about 148 miles from downtown Atlanta (two hours by car) via I-20. The city is home to Fort Gordon, a major U.S. Army base formerly known as Fort Eisenhower. In 2016, the new National Cyber Security Headquarters was announced to be based in Augusta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "augusta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3054,
+    "attempt": 3032,
+    "place_id": "gn-5799610",
+    "input": {
+      "place": {
+        "place_id": "gn-5799610",
+        "name": "Kennewick",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.21125,
+        "lon": -119.13723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kennewick, Washington",
+          "url": "https://en.wikipedia.org/wiki/Kennewick,_Washington",
+          "text": "Kennewick () is a city in Benton County, Washington, United States. It is located along the southwest bank of the Columbia River, just southeast of the confluence of the Columbia and Yakima rivers and across from the confluence of the Columbia and Snake rivers. It is the most populous of the three cities collectively referred to as the Tri-Cities (the others being Pasco and Richland). The population was 83,921 at the 2020 census, and was estimated at 86,728 in 2024.\nThe discovery of Kennewick Man along the banks of the Columbia River provides evidence of Native Americans' settlement of the area for at least 9,000 years. American settlers began moving into the region in the late 19th century as transportation infrastructure was built to connect Kennewick to other settlements along the Columbia River. The construction of the Hanford Site at Richland accelerated the city's growth in the 1940s as workers from around the country came to participate in the Manhattan Project. While Hanford and Pacific Northwest National Laboratory continue to be major sources of employment, the city's economy has diversified over time and Kennewick today hosts offices for Amazon and Lamb Weston."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "kennewick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3055,
+    "attempt": 3033,
+    "place_id": "gn-615860",
+    "input": {
+      "place": {
+        "place_id": "gn-615860",
+        "name": "Akhaltsikhe",
+        "country": "Georgia",
+        "subdivision": "Samtskhe-Javakheti",
+        "lat": 41.63952,
+        "lon": 42.98604
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Akhaltsikhe",
+          "url": "https://en.wikipedia.org/wiki/Akhaltsikhe",
+          "text": "Akhaltsikhe (Georgian: ახალციხე [äχäɫt̪͡s̪ʰiχe̞]), formerly known as Lomsia (Georgian: ლომსია [ɫo̞ms̪iä]), is a city in Georgia's southwestern region (mkhare) of Samtskhe–Javakheti. It is the administrative center of the Akhaltsikhe Municipality and the Samtskhe–Javakheti region. In 2024, by census reports, the city has a population of 17,287 people. The city lies at an elevation of approximately 1,000 meters (3,280 ft) in the Akhaltsikhe Basin. It is situated on both banks of the small river Potskhovi (a left tributary of the Kura), which divides the city between the old city in the north and new in the south. The Georgian translation of Akhaltsikhe is \"new fortress\"; this is significant of the city's historical use and background as a fortified settlement, as well as existing as strategic stronghold in a heavily contested region of the Caucasus.  \nStarting from the 13th century, the city served as the seat for the House of Jaqeli ruling dynasty of Georgia as well as the capital of the Samtskhe-Saatabago principality. The Ottomans captured the city during the Ottoman-Safavid War in the 16th century and maintained authority over the city for nearly 250 years. In 1828, Russian forces recaptured the city from the Turks and formally incorporated it into the Russian Empire via the Treaty of Adrianople in 1829.\nThe 9th-century Akhaltsikhe Castle (Rabati), which recently underwent restorations, is located in the old part of the city. The castle represents the city's multicultural history, as it consists of an Orthodox church, a mosque, and a madrasa within its single walled enclosure. It remains as one of the main heritage sights of the region, alongside Vardzia, Khertvisi, Vale, Okrostsikhe and Zarzma."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "akhaltsikhe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3056,
+    "attempt": 3034,
+    "place_id": "gn-639406",
+    "input": {
+      "place": {
+        "place_id": "gn-639406",
+        "name": "Riihimäki",
+        "country": "Finland",
+        "subdivision": "Kanta-Häme",
+        "lat": 60.73769,
+        "lon": 24.77726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riihimäki",
+          "url": "https://en.wikipedia.org/wiki/Riihimäki",
+          "text": "Riihimäki (Finnish pronunciation: [ˈriːhiˌmæki]; lit. 'grain drying cabin hill') is a town and municipality in the south of Finland, about 69 kilometres (43 mi) north of Helsinki and 109 kilometres (68 miles) southeast of Tampere. An important railway junction is located in Riihimäki, since railway tracks from Riihimäki lead to Helsinki, Tampere and Lahti.\nThe town is located in the province of Southern Finland and is part of the Kanta-Häme region. Its neighboring municipalities are Janakkala in the north, Hausjärvi in the east, Hyvinkää in the south and Loppi in the west. The town has a population of 28,555 (31 December 2025) and covers an area of 125.56 square kilometres (48.48 sq mi) of which 4.54 km2 (1.75 sq mi) is water. The population density is 235.97 inhabitants per square kilometre (611.2/sq mi). The municipality is unilingually Finnish.\nRiihimäki is home to the Riihimäki Prison, which is, alongside Turku Prison, one of the prisons in the country with the highest security rating (A+), and is home to the country's most dangerous prisoners. Several businesses also operate in Riihimäki. Notably, Würth Oy has its Finnish headquarters and logistics center in Riihimäki. Valio has a major dairy in the Herajoki part of Riihimäki. The famous Sako rifles are also produced in Riihimäki.\n\nIn March 2026, Minister of Defence Antti Häkkänen decided that a NATO's Deployable CIS Module (DMC) will be established in Riihimäki. The DMC is scheduled to start operations in early 2027."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "riihimaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3057,
+    "attempt": 3035,
+    "place_id": "gn-7303406",
+    "input": {
+      "place": {
+        "place_id": "gn-7303406",
+        "name": "Anna Regina",
+        "country": "Guyana",
+        "subdivision": "Pomeroon-Supenaam",
+        "lat": 7.26555,
+        "lon": -58.48265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anna Regina",
+          "url": "https://en.wikipedia.org/wiki/Anna_Regina",
+          "text": "Anna Regina is the capital city of the Pomeroon-Supenaam Region of Guyana, situated on the Atlantic coast, northwest of the mouth of the Essequibo River. Officially established as a town in 1990 under President Desmond Hoyte through the merger of 18 villages, its history traces back to an early 1800s Dutch plantation named in memory of a British planter's two daughters who tragically drowned there. The town has a notable history of labor and civil rights protests, commemorated by landmarks such as the 1972 Devonshire Castle Monument and the 1988 Damon Monument. Historically reliant on sugar production, Anna Regina's economy has since transitioned to rice manufacturing. As of the 2022 census, the town has a population of 11,846 residents, representing 21% of the region's population, and features a uniform, high-rainfall tropical rainforest climate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "anna regina",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "anna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "regina",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3058,
+    "attempt": 3036,
+    "place_id": "gn-968665",
+    "input": {
+      "place": {
+        "place_id": "gn-968665",
+        "name": "Modimolle",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -24.7,
+        "lon": 28.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Modimolle",
+          "url": "https://en.wikipedia.org/wiki/Modimolle",
+          "text": "Modimolle, also known as Nylstroom, is a town located near the southern edge of the Waterberg Massif in Limpopo province, South Africa. It is a medium-sized town that focuses primarily on agriculture and farming (citrus, grapes and cattle) as well as wildlife and tourism. Nylstroom is also located approximately 135 kilometres (84 miles) north of Pretoria, South Africa's capital city.\nThe Waterberg Biosphere spreading north, a UNESCO designated Biosphere Reserve, contains approximately 15,000 square kilometres (5,792 square miles).  Waterberg is the first region in the northern part of South Africa to be named as a Biosphere Reserve by  UNESCO. The extensive rock formation was shaped by hundreds of millions of years of riverine erosion to yield diverse bluff and butte landform.  The ecosystem can be characterised as a dry deciduous forest or Bushveld."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "modimolle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3059,
+    "attempt": 3037,
+    "place_id": "gn-11428685",
+    "input": {
+      "place": {
+        "place_id": "gn-11428685",
+        "name": "Rukban",
+        "country": "Jordan",
+        "subdivision": "Mafraq",
+        "lat": 33.31405,
+        "lon": 38.70342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rukban",
+          "url": "https://en.wikipedia.org/wiki/Rukban",
+          "text": "Rukban (Arabic: الرُّكبان, romanized: Al-Rukban) is an arid remote area in northeast Jordan adjacent to the Jordan–Syria border, and close to the tripoint with Iraq. \nThe area became in 2014 one of the crossing points for Syrian refugees fleeing the Syrian Civil War. While Jordan welcomed hundreds of thousands of refugees from Syria, the country specifically blocked the refugees at Rukban from entering, citing security concerns regarding the presence of hidden ISIS sleeper cells. This led to thousands of refugees piling up on the Syrian side of the border, creating the Rukban refugee camp.\nIn 2016, a car passing from the refugee camp in Syria managed to reach a Jordanian army outpost, exploding and killing 6 and injuring 14 Jordanian soldiers. Jordan thereafter declared its eastern and northern border closed military zones. The camp in Syria witnessed further incidents, including two car bomb attacks that killed tens of refugees in 2016 and 2017.\nIn 2024, a small US army outpost based in Rukban, known as Tower 22, was targeted by a drone attack launched by the Islamic Resistance in Iraq, which killed 3 American soldiers and injured at least 34 others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "rukban",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3060,
+    "attempt": 3038,
+    "place_id": "gn-1246294",
+    "input": {
+      "place": {
+        "place_id": "gn-1246294",
+        "name": "Galle",
+        "country": "Sri Lanka",
+        "subdivision": "Southern Province",
+        "lat": 6.0461,
+        "lon": 80.2103
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Galle",
+          "url": "https://en.wikipedia.org/wiki/Galle",
+          "text": "Galle (Sinhala: ගාල්ල, romanized: Gālla; Tamil: காலி, romanized: Kāli ) is a major city on the southwestern tip of Sri Lanka, 119 km (74 mi) south of Colombo. Galle is the provincial capital and largest city of Southern Province, Sri Lanka and is the capital of Galle District.\nGalle was known as Gimhathiththa before the arrival of the Portuguese in the 16th century, when it was the main port on the island. Ibn Batuta, a Moroccan Berber Muslim traveller in the 14th century, referred to it as Qali. Galle reached the height of its development in the 18th century, during the Dutch colonial period. Galle is the best example of a fortified city built by the Portuguese in South and Southeast Asia, showing the interaction between Portuguese architectural styles and native traditions. The city was extensively fortified by the Dutch during the 17th century from 1649 onwards. The Galle fort is a World Heritage Site and is the largest remaining fortress in Asia built by European occupiers.\nOther prominent landmarks in Galle include the city's natural harbour, the National Maritime Museum, St. Mary's Cathedral founded by Jesuit priests, one of the main Shiva temples on the island, and Amangalla, the historic luxury hotel. On 26 December 2004, the city was devastated by the massive tsunami caused by the 2004 Indian Ocean earthquake, which occurred off the coast of Indonesia a thousand miles away. Thousands were killed in the city alone. Galle is home to the Galle International Stadium, which is considered to be one of the most picturesque cricket grounds in the world. The ground, which was severely damaged by the tsunami, was rebuilt and test matches resumed there on 18 December 2007.\nImportant natural geographical features in Galle include Rumassala in Unawatuna, a large mound-like hill that forms the eastern protective barrier to Galle Harbour. Local tradition associates this hill with some events of Ramayana, one of the great Hindu epics. The major river in the area is the Gin Ganga, which begins from Gongala Kanda, passes villages such as Neluwa, Nagoda, Baddegama, Thelikada and Wakwella, and reaches the sea at Gintota. The river is bridged at Wakwella by the Wakwella Bridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 363
+    },
+    "banned_terms": [
+      {
+        "term": "galle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3061,
+    "attempt": 3039,
+    "place_id": "gn-1258895",
+    "input": {
+      "place": {
+        "place_id": "gn-1258895",
+        "name": "Rajauli",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 24.64486,
+        "lon": 85.50028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rajauli",
+          "url": "https://en.wikipedia.org/wiki/Rajauli",
+          "text": "Rajauli is a tehsil, block and subdivision (sub–district) in Nawada district of Magadh division of the Indian state of Bihar. The tehsil of Rajauli is located at a distance of about 30 kilometres (19 mi) from Nawada city on National Highway 20 (previously numbered as NH31) and is situated on the bank of Dhanarjay river. Rajauli, a Scheduled Caste (SC) reserved Assembly Constituency (AC) seat, had a total of 302900 electors during the 2015 Bihar Legislative Assembly election. Rajauli subdivision consists of 95 panchayats and 688 revenue villages while Rajauli block consists of 17 panchayats and 169 revenue villages.\nThe hills in Rajauli's neighbourhood have religious significance for Hindus and many legends are attached to them. Rishis such as Shringi, Durvasa, Gautama and Lomasa have their ashrams on eponymously named peaks here. Veer Lorik, the Ahir cowherd hero, is said to have been born in the area and was the reason for the bountiful cultivation in and around Rajauli at one time. Rajauli has a Sikh connection including a visit by Guru Nanak. The Gurudwara Rajauli Sangat, one of the largest sangats in the state, is in Rajauli and is part of Bihar Tourism's \"Guru Circuit\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "rajauli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3062,
+    "attempt": 3040,
+    "place_id": "gn-1269507",
+    "input": {
+      "place": {
+        "place_id": "gn-1269507",
+        "name": "Jaisalmer",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.91763,
+        "lon": 70.90387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jaisalmer",
+          "url": "https://en.wikipedia.org/wiki/Jaisalmer",
+          "text": "Jaisalmer (IPA: [d͡ʒɛːsəlmeːɾ] ), nicknamed The Golden City, is a city in the north-western Indian state of Rajasthan, located 575 kilometres (357 mi) west of the state capital Jaipur, in the heart of the Thar Desert. It serves as the administrative headquarters of Jaisalmer district. Jaisalmer is a former medieval trading center and the historic capital of the kingdom of Jaisalmer, founded in 1156 by Rawal Jaisal of the Bhati clan of Rajputs. Jaisalmer stands on a ridge of yellowish sandstone and is crowned by the World Heritage Site, Jaisalmer Fort, a sprawling hilltop citadel supported by 99 bastions. This fort contains a royal palace and several ornate Jain temples. Many of the houses and temples of both the fort and of the town below are built of finely sculptured yellow sandstone. The town has a population, including the residents of the fort, of about 78,000. Jaisalmer ranked 9th on Booking.com's Top 10 The Most Welcoming cities in the world. It is the only Indian city on the list."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "jaisalmer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

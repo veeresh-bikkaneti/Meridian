@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 3063,
+    "attempt": 3041,
+    "place_id": "gn-146214",
+    "input": {
+      "place": {
+        "place_id": "gn-146214",
+        "name": "Paphos",
+        "country": "Cyprus",
+        "subdivision": "Pafos",
+        "lat": 34.77679,
+        "lon": 32.42451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paphos",
+          "url": "https://en.wikipedia.org/wiki/Paphos",
+          "text": "Paphos, also spelled Pafos, is a coastal city in southwest Cyprus and the capital of the Paphos District. In classical antiquity, two locations were known as Paphos: Old Paphos in modern Kouklia and Nea Paphos, both of which were at various times the capital of the ancient city-state of Paphos. It is the fourth-largest city in the country, after Nicosia, Limassol, and Larnaca, with an urban population of 55,000.\nThe modern city of Paphos lies on the Mediterranean coast, about 50 km (30 mi) west of Limassol, the island's largest port; the two cities are connected by the A6 highway. Paphos International Airport is the country's second-largest airport, and serves as a gateway to western and southern Cyprus. The city has a subtropical-Mediterranean climate, and experiences the mildest temperatures on the island.\nPaphos was counted as one of the \"city-kingdoms of Cyprus\" in antiquity. UNESCO inscribed the ruins of ancient Paphos as a World Heritage Site in 1980 under criterion (iii) for its unique testimony to a vanished civilization and criterion (vi) for its direct association with events or traditions of outstanding universal value. The Paphos World Heritage Site is managed by the Cyprus Department of Antiquities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "paphos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3064,
+    "attempt": 3042,
+    "place_id": "gn-2316770",
+    "input": {
+      "place": {
+        "place_id": "gn-2316770",
+        "name": "Bolenge",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Équateur",
+        "lat": 0,
+        "lon": 18.21667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolenge",
+          "url": "https://en.wikipedia.org/wiki/Bolenge",
+          "text": "Bolenge is a village located in the Democratic Republic of the Congo. It is located exactly where the geographic equator intersects the Congo River, formerly the Zaire River. \nHenry Morton Stanley reputedly stopped at Bolenge during his epic voyage across central Africa during the 19th century.  In (the late 1890s) 1884 a mission station was established at nearby Wangata by the British Livingstone Inland Mission then moved to Bolenge in 1891 by the American Baptist Missionary Union Baptists.  In the 1890s the local missionaries Murphy, Sjoblom and Banks were pioneers in bringing world attention to atrocities by Belgian King Leopold's Congo Free State. (Reference \"Mission and State in the Congo\" by David Lagergren 1970.) This mission was acquired in 1899 by the American protestant church called the Christian Church (Disciples of Christ).  Eventually a network of mission stations were established throughout the Equateur province of what was at the time known as the Belgian Congo.  Each mission station had a hospital and various schools and other social and economic programs.\nIn 1960 Congo became independent and responsibility for operation of the missions was handed over to local church authorities.  Throughout the 1960s until the late 1990s Zaire (as it was then known) underwent a long period of dissolution of much of its infrastructure.  Schools, roads, hospitals and commerce in general were severely degraded.  In the 1990s Zaire underwent a period of dissolution of the existing dictatorship under Mobutu Sese Seko and endured a period of quasi anarchy and several multinational and civil wars.  In 1997 there was a massacre of Hutu refugees perpetrated by military forces at a fishing/trading village near Bolenge.  Several hundred individuals were reportedly killed with survivors of the initial attack hunted down and killed in and around Bolenge and the nearby city of Mbandaka.\nIn 1992 Bolenge was attacked by elements of the Zairian army. The hospital and schools and private homes were all pillaged, resulting in the evacuation of the several foreign missionary families who were living at Bolenge. In July 2005, Bolenge was again attacked by other military personnel in revenge for the murder of a soldier at the nearby military camp.  The hospital was again sacked with the loss of most equipment and medicines.\nNearby Bolenge (about five kilometers south) is the Catholic Mission of Iyonda.  This mission was the site of a large leprosarium and is reportedly where the British author Graham Greene spent time in gathering material for his novel A Burnt-Out Case, which is set at Iyonda in the 1950s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 420
+    },
+    "banned_terms": [
+      {
+        "term": "bolenge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3065,
+    "attempt": 3043,
+    "place_id": "gn-2338640",
+    "input": {
+      "place": {
+        "place_id": "gn-2338640",
+        "name": "Igbo-Ukwu",
+        "country": "Nigeria",
+        "subdivision": "Anambra",
+        "lat": 6.01798,
+        "lon": 7.02027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Igbo-Ukwu",
+          "url": "https://en.wikipedia.org/wiki/Igbo-Ukwu",
+          "text": "Igbo-Ukwu  (English: Great Igbo) is a town in the Nigerian state of Anambra in the south-central part of the country. The town comprises three quarters namely Obiuno, Ngo,  and Ihite (an agglomeration of 4 quarters) with several villages within each quarter and thirty-six (36) administrative wards. It is also bordered by Ora-eri, Ichida, Azigbo, Ezinifite, Amichi, Isuofia,  and Ikenga ."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 60
+    },
+    "banned_terms": [
+      {
+        "term": "igbo ukwu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "igbo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ukwu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3066,
+    "attempt": 3044,
+    "place_id": "gn-2653228",
+    "input": {
+      "place": {
+        "place_id": "gn-2653228",
+        "name": "Chester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.1905,
+        "lon": -2.89189
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chester",
+          "url": "https://en.wikipedia.org/wiki/Chester",
+          "text": "Chester is a cathedral city in Cheshire, England, on the River Dee, very close to the England–Wales border. It had a built-up area population of 92,760 in 2021, it is the most populous settlement in the borough of Cheshire West and Chester. It is the historic county town of Cheshire and the second-largest settlement in Cheshire after Warrington.\nChester was founded in the 70s AD as a \"castrum\" or Roman fort with the name Deva Victrix during the reign of Emperor Vespasian. One of the main army camps in Roman Britain, Deva later became a major civilian settlement. In 689, King Æthelred of Mercia founded the Minster Church of West Mercia, which later became Chester's first cathedral, and the Angles extended and strengthened the walls to protect the city against the Danes. Chester was one of the last cities in England to fall to the Normans, and William the Conqueror ordered the construction of a castle to dominate the town and the nearby Welsh border. Chester was granted city status in 1541.\nThe city walls of Chester are some of the best-preserved in the country and have Grade I listed status. Apart from a 100-metre (330 ft) section, the walls are almost complete. It has several medieval buildings. However, many of the black-and-white buildings within the city centre are Victorian restorations, originating from the Black-and-white Revival movement. The Industrial Revolution brought railways, canals, and new roads to the city, which saw substantial expansion and development; Chester Town Hall and the Grosvenor Museum are examples of Victorian architecture from this period. Tourism, the retail industry, public administration, and financial services are important to the modern economy. Chester signs itself as Chester International Heritage City on road signs on the main roads entering the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "chester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3067,
+    "attempt": 3045,
+    "place_id": "gn-3096053",
+    "input": {
+      "place": {
+        "place_id": "gn-3096053",
+        "name": "Kłodzko",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 50.43488,
+        "lon": 16.66145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kłodzko",
+          "url": "https://en.wikipedia.org/wiki/Kłodzko",
+          "text": "Kłodzko ([ˈkwɔt͡skɔ] ; Czech: Kladsko; German: Glatz) is a historic town in south-western Poland, in the region of Lower Silesia. It is situated in the centre of the Kłodzko Valley, on the Eastern Neisse (Nysa Kłodzka) river.\nKłodzko is the seat of Kłodzko County (and of the rural Gmina Kłodzko, although the town itself is a separate urban gmina), and is situated in Lower Silesian Voivodeship. With 25,717 inhabitants at the 2021 Census, Kłodzko is the main commercial centre as well as an important transport and tourist node for the area.\nFor its historical monuments it is sometimes referred to as \"Little Prague\" (Polish: Mała Praga). It was established as a settlement in the 10th century, and is one of the oldest towns in Poland, having been granted city rights in 1233. Culturally and traditionally a part of Bohemia, administratively it has been periodically part of Silesia in the Middle Ages and again permanently since 1763."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "k odzko",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "k",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "odzko",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3068,
+    "attempt": 3046,
+    "place_id": "gn-3866242",
+    "input": {
+      "place": {
+        "place_id": "gn-3866242",
+        "name": "Allen",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -38.97736,
+        "lon": -67.82714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Allen, Río Negro",
+          "url": "https://en.wikipedia.org/wiki/Allen,_Río_Negro",
+          "text": "Allen is a city in the province of Río Negro, Argentina. It has 26,083 inhabitants as per the 2001 census [INDEC]. It is located on the left-hand (northern) side of the Alto Valle of the Río Negro, near its beginning in the confluence of the Neuquén and Limay rivers, about 20 km (12 mi) west of General Roca and 35 km (22 mi) east of Neuquén.\nAllen was founded on 25 May 1910 by Patricio Piñeiro Sorondo. Its name was an homage to British engineer Charles Allen, a local landowner and member of the Gran Ferrocarril Sur railway company, who managed the construction of the city's train station.\nThe city is divided in half by a canal born in the Ingeniero Ballester Dam that brings water for irrigation from the Neuquén River. Its main traditional economic activity, which continues to be the most important, is the fruit industry. Allen is the National Capital of the Pear, hosting an annual National Festival of the Pear, and the seat of the Río Negro Fruit Market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "allen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3069,
+    "attempt": 3047,
+    "place_id": "gn-3899629",
+    "input": {
+      "place": {
+        "place_id": "gn-3899629",
+        "name": "Angol",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -37.79519,
+        "lon": -72.71636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angol",
+          "url": "https://en.wikipedia.org/wiki/Angol",
+          "text": "Angol is a commune and capital city of the Malleco Province in the Araucanía Region of southern Chile. It is located at the foot of the Cordillera de Nahuelbuta and next to the Vergara River, that permitted communications by small boats to the Bío-Bío River and Concepción.  This strategic position explains the successive foundations of this city during the Arauco War. It was first founded in 1553 as a \"conquistador\" fort of Confines, the fort was later destroyed and rebuilt several times and it was not until the Pacification of Araucania in the late 19th century that it was rebuilt with the name of Angol. The city has a current population of approximately 53,000. Within the electoral divisions of Chile, it belongs to the 48th electoral district and the 14th senatorial circumscription."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "angol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3070,
+    "attempt": 3048,
+    "place_id": "gn-4562778",
+    "input": {
+      "place": {
+        "place_id": "gn-4562778",
+        "name": "Barranquitas",
+        "country": "Puerto Rico",
+        "subdivision": "Barranquitas",
+        "lat": 18.18662,
+        "lon": -66.30628
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barranquitas, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Barranquitas,_Puerto_Rico",
+          "text": "Barranquitas (Spanish pronunciation: [baraŋˈkitas], locally [baraŋˈkitaʔ]) is a small mountain town and municipality located in the Cordillera Central region of Puerto Rico, south of Corozal and Naranjito; north of Coamo and Aibonito; west of Comerío and Cidra; and east of Orocovis. Barranquitas is spread over 6 barrios and Barranquitas Pueblo (the downtown area and the administrative center of the city). It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nBarranquitas is about one hour by winding roads from San Juan, the capital. It is nestled amid hills and mountains, and nearby, between Barranquitas and Aibonito, is the San Cristóbal Canyon; one of the deepest canyons in the West Indies. For years, the overlook was used as a municipal garbage; in the last decade, the refuse was removed and the site restored."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "barranquitas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3071,
+    "attempt": 3049,
+    "place_id": "gn-4949068",
+    "input": {
+      "place": {
+        "place_id": "gn-4949068",
+        "name": "Roslindale",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.29121,
+        "lon": -71.1245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roslindale",
+          "url": "https://en.wikipedia.org/wiki/Roslindale",
+          "text": "Roslindale is a primarily residential neighborhood of Boston, Massachusetts, United States, bordered by Jamaica Plain, Hyde Park, West Roxbury and Mattapan. \nIt is served by an MBTA Commuter Rail line, several MBTA bus lines and the MBTA Orange Line in nearby Jamaica Plain.  Roslindale has its own branch of the Boston Public Library, the neighborhood is covered by Boston Police District E-5 in West Roxbury, Boston EMS Ambulance 17 is stationed in Roslindale, and the Boston Fire Department has a station on Canterbury Street which houses Ladder 16, Engine 53 & District Chief 12. Roslindale's original Engine Company 45 was deactivated on April 10, 1981, due to budget cuts. Roslindale was once called the \"garden suburb\" of Boston. The portion of the Arnold Arboretum south of Bussey Street is located in Roslindale.\nSix miles south-southwest of downtown Boston, Roslindale was originally part of the town of Roxbury. In 1851, current day Jamaica Plain, Roslindale and West Roxbury seceded from Roxbury. The area voted in 1873 to be annexed to the City of Boston."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "roslindale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3072,
+    "attempt": 3050,
+    "place_id": "gn-5218270",
+    "input": {
+      "place": {
+        "place_id": "gn-5218270",
+        "name": "Wayne",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.044,
+        "lon": -75.38769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wayne, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Wayne,_Pennsylvania",
+          "text": "Wayne is an unincorporated community centered in Delaware County, Pennsylvania, United States, on the Main Line, a series of highly affluent Philadelphia suburbs located along the railroad tracks of the Pennsylvania Railroad and one of the wealthiest areas in the nation. While the center of Wayne is in Radnor Township, Wayne extends into both Tredyffrin Township in Chester County and Upper Merion Township in Montgomery County. The center of Wayne was designated the Downtown Wayne Historic District in 2012.  Considering the large area served by the Wayne post office, the community may extend slightly into Easttown Township, Chester County, as well.\nThe center of the Wayne business district is the intersection of Lancaster Avenue and Wayne Avenue, its main street. The historic Wayne station is located one block north of this intersection.  The Wayne business district also includes a post office, a hotel, a library, the new Radnor Middle School, and several banks, stores, restaurants, cafes, bars and other commercial establishments. Other institutions and attractions in Wayne include the Wayne Hotel, Chanticleer Garden, and the Valley Forge Military College.\nAs of the 2020 U.S. census, there is a Wayne census-designated place, entirely in Radnor Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "wayne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3073,
+    "attempt": 3051,
+    "place_id": "gn-713513",
+    "input": {
+      "place": {
+        "place_id": "gn-713513",
+        "name": "Alushta",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.67728,
+        "lon": 34.4097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alushta",
+          "url": "https://en.wikipedia.org/wiki/Alushta",
+          "text": "Alushta or Aluşta is a city of regional significance on the southern coast of the Crimean peninsula which is within the Autonomous Republic of Crimea, a region internationally recognised as territory of Ukraine, but occupied by the Russian Federation and incorporated as the Republic of Crimea. It is located along the Black Sea coast on the road from Gurzuf to Sudak, as well as on the Crimean Trolleybus line. According to the 2014 Census, Alushta had a population of 29,078.\nThe area is notable for its arid, rocky terrain due to its proximity to the Crimean Mountains. During Byzantine times, the town was called Alouston (Ἄλουστον) meaning \"Unwashed\". Vestiges survive of a Byzantine defensive tower from a fortress from which the town's name was derived, as well as a 15th-century Genoese fortress. During Genoese rule, the name was modified to Lusta. Adam Mickiewicz dedicated two of his Crimean Sonnets to Alushta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "alushta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3074,
+    "attempt": 3052,
+    "place_id": "gn-7279735",
+    "input": {
+      "place": {
+        "place_id": "gn-7279735",
+        "name": "Muvattupuzha",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 9.97985,
+        "lon": 76.57381
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muvattupuzha",
+          "url": "https://en.wikipedia.org/wiki/Muvattupuzha",
+          "text": "Muvattupuzha ([muʋɐːt̺ːupuɻɐ]) is a municipality in the Ernakulam district of Kerala, India. It is located 35 km (21.7 mi) east of the district headquarters in Thrikkakara and about 204 km (126.8 mi) north of the state capital Thiruvananthapuram. As per the 2011 census of India, Muvattupuzha has a population of 30,397 people, out of which 15,010 are males and 15,387 are females and a population density of 2,306/km2 (5,970/sq mi).\nMuvattupuzha is bordered by Kottayam district to the south and Idukki district to the east. The town lies at the intersection of the MC Road and National Highway 49, approximately 28 km (17 mi) from the district headquarters at Ernakulam. It is situated 20 km (12 mi) from Thodupuzha, 17 km (11 mi) from Koothattukulam, and 5 km (3.1 mi) from Arakuzha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "muvattupuzha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3075,
+    "attempt": 3053,
+    "place_id": "gn-7302847",
+    "input": {
+      "place": {
+        "place_id": "gn-7302847",
+        "name": "Palwancha",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 17.58152,
+        "lon": 80.67651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palwancha",
+          "url": "https://en.wikipedia.org/wiki/Palwancha",
+          "text": "Palvancha is a town and a major part in the Kothagudem Municipal Corporation in Bhadradri district of the Indian state of Telangana.It was a portion of large Zamindari estate known as Hasanabad Paragana of Qutub shahi dynasty and Palvancha Zamindari in the Nizam's Dominion. Estate name was given by Captain Glasfurd. The Zamindar of Bhadrachalam was Zamindar of Palvancha also. It is a twin city of Kothagudem and an industrialized area with industries including Kothagudem Thermal Power Station, NMDC, TSIIC Industrial Park, etc. \n\nKancharla Gopanna, also known as Bhakta Ramadasu, was a saint and composer who was the Tahsildar of Palwancha (Hasanabad Paragana) during the reign of Abdul Hasan Tana Shah, the Qutubshahi ruler. His metarnal uncles, Akka na and Madanna, held prominent positions in the court of the Sultans of Golconda. Gopanna's connection to Palwancha is primarily through his role as the Tahsildar, a government official responsible for land revenue collection. He is also known for his devotion to Lord Rama and his construction of the Sita Ramachandraswamy Temple in Bhadrachalam, which is in the area of Palwancha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "palwancha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3076,
+    "attempt": 3054,
+    "place_id": "gn-1278471",
+    "input": {
+      "place": {
+        "place_id": "gn-1278471",
+        "name": "Arakkonam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.08449,
+        "lon": 79.67053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arakkonam",
+          "url": "https://en.wikipedia.org/wiki/Arakkonam",
+          "text": "Arakkonam (Tamil: [aɾakkoːɳam]) is a railway town in the Ranipet district, state of Tamil Nadu. Included within the Chennai Metropolitan Area since 2022, Arakkonam is a major suburb of the state capital city Chennai, with a population of 78,395 per the census 2011. It is about 54 kilometres (34 mi) from the district headquarters Ranipet, and about 69 kilometres (43 mi) from Chennai.\nArakkonam is one of the hottest towns in India, where the temperature can exceed 43 °C (110 °F) for several peak days in summer it is famous for temples this city is developing day by day and it is one of the best city in Ranipet District The name 'Arakkonam' was derived from the word \"Arunthamizhkundram\" also later called \"Aarukonam\", meaning 'hexagon' which connects six important places around."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "arakkonam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3077,
+    "attempt": 3055,
+    "place_id": "gn-1690033",
+    "input": {
+      "place": {
+        "place_id": "gn-1690033",
+        "name": "San Fernando",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 16.61591,
+        "lon": 120.31663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Fernando, La Union",
+          "url": "https://en.wikipedia.org/wiki/San_Fernando,_La_Union",
+          "text": "San Fernando, officially the City of San Fernando (Ilocano: Siudad ti San Fernando; Filipino: Lungsod ng San Fernando), is a component city and the capital of the province of La Union, Philippines. It serves as the regional and administrative center of the Ilocos Region. The city also functions as a hub for trade and commerce in northern Luzon and as a center for the culture and heritage of Ilocandia. According to the 2024 census, it has a population of 124,809 people with 77,490 registered voters as of 2025.\nThe City of San Fernando is a coastal city facing the South China Sea to the west and bordered by the Cordillera Central mountain range to the east. It consists of 59 barangays and has a total land area of 105.26 square kilometers. The city's majority ethnolinguistic group are the Ilocano people who speak Iloco language, as the city has historically been an Ilocano stronghold. It is one of two provincial capitals in the Philippines named San Fernando, the other being San Fernando, Pampanga.\nAs the regional center of the Ilocos Region, San Fernando hosts several regional and field offices of national government agencies, regional branches of government financial institutions, and various government-owned and controlled corporations. The city is also home to key educational and medical institutions, including the Ilocos Training and Regional Medical Center, which serves as the primary public health and medical facility in the region. In addition, is it the most populous city in La Union."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "san fernando",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fernando",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3078,
+    "attempt": 3056,
+    "place_id": "gn-1716858",
+    "input": {
+      "place": {
+        "place_id": "gn-1716858",
+        "name": "Cordova",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 10.24394,
+        "lon": 123.94222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cordova, Cebu",
+          "url": "https://en.wikipedia.org/wiki/Cordova,_Cebu",
+          "text": "Cordova, officially the Municipality of Cordova (Cebuano: Lungsod sa Cordova; Filipino: Bayan ng Cordova),  is a municipality in the province of Cebu, Philippines. According to the 2024 census, it has a population of 72,915 people.\nAlso spelled Cordoba, most of the municipality lies on separate islands off the southern coast of Mactan Island. It is connected by two bridges to the main island of Mactan, which itself is connected to mainland Cebu by the two bridges between Mandaue and Lapu-Lapu City. The Cebu–Cordova Link Expressway, opened in 2022, connects it directly to mainland Cebu in Cebu City.\nCordova is bordered to the north by Lapu-Lapu City, to the west by the Mactan Channel, to the east by the Hilutangan Channel and Olango Island, and to the south by the Cebu Strait.\nCordova is a part of Metro Cebu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "cordova",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3079,
+    "attempt": 3057,
+    "place_id": "gn-2511440",
+    "input": {
+      "place": {
+        "place_id": "gn-2511440",
+        "name": "San Bartolomé de Tirajana",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 27.92481,
+        "lon": -15.57329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Bartolomé de Tirajana",
+          "url": "https://en.wikipedia.org/wiki/San_Bartolomé_de_Tirajana",
+          "text": "San Bartolomé de Tirajana is a village and a Spanish municipality in the south-western part of the island of Gran Canaria in the Las Palmas province in the Canary Islands. With an area of 333.13 km2 (128.62 sq mi), San Bartolomé de Tirajana is the largest municipality in area on the island as well as the Canary Islands. The population is 56,698 (2013).\nThe municipality contains the large beach resorts of Maspalomas, including Playa del Inglés and San Agustín, and the Pilancones natural park. The municipal capital, the village of San Bartolomé de Tirajana is situated in the mountains, 17 km (11 mi) from the coast and 27 km (17 mi) south-west of Las Palmas, at about 900 m (2,953 ft) elevation. Most of the population lives along the Atlantic coastline. The GC-1 motorway passes through the southern part of the municipality, and connects it with Las Palmas de Gran Canaria and the Gran Canaria Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "san bartolome de tirajana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bartolome",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tirajana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3080,
+    "attempt": 3058,
+    "place_id": "gn-2525628",
+    "input": {
+      "place": {
+        "place_id": "gn-2525628",
+        "name": "Bagheria",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.07892,
+        "lon": 13.51237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bagheria",
+          "url": "https://en.wikipedia.org/wiki/Bagheria",
+          "text": "Bagheria (Italian pronunciation: [baɡeˈriːa]; Sicilian: Baarìa [baːˈɾiːa]) is the second largest city and comune in the Metropolitan City of Palermo in Sicily, located approximately 13 km (8,07 miles) to the east of Palermo's city centre.\nThe first residential areas date back to the 17th century, when the Sicilian nobles chose this territory to build their holiday estates. The multitude of noble residences in Baroque and Rococo style made the newly founded town of Bagheria known as \"the city of villas\". \nDuring the 19th century the town welcomed numerous working and middle class families and expanded demographically. The autonomous municipality was established in 1820, when Bagheria had completed its evolution from a holiday resort to a small suburban town. In 1852 there were 9,832 inhabitants, 3,664 more than those recorded in 1831. Today the town has over 53,000 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "bagheria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3081,
+    "attempt": 3059,
+    "place_id": "gn-2614481",
+    "input": {
+      "place": {
+        "place_id": "gn-2614481",
+        "name": "Roskilde",
+        "country": "Denmark",
+        "subdivision": "Zealand",
+        "lat": 55.64152,
+        "lon": 12.08035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roskilde",
+          "url": "https://en.wikipedia.org/wiki/Roskilde",
+          "text": "Roskilde ( ROSK-il-ə, Danish: [ˈʁʌskilə]) is a city 30 km (19 mi) west of Copenhagen on the Danish island of Zealand. With a population of 53,897 (as of 1 January 2026), the city is a business and educational centre for the region and the 10th largest city in Denmark. It is governed by the administrative council of Roskilde Municipality.\nRoskilde has a long history, dating from the pre-Christian Viking Age. Its UNESCO-listed Gothic cathedral, now housing 39 tombs of the Danish monarchs, was completed in 1275, becoming a focus of religious influence until the Reformation.\nWith the development of the rail network in the 19th century, Roskilde became an important hub for traffic with Copenhagen, and by the end of the century, there were tobacco factories, iron foundries and machine shops. Among the largest private sector employers today are the IT firm BEC (Bankernes EDB Central) and seed company DLF. The Risø research facility is also becoming a major employer, extending interest in sustainable energy to the clean technology sphere. The local university, founded in 1972, the historic Cathedral School, and the Danish Meat Trade College, established in 1964, are educational institutions of note. Roskilde has a large local hospital which has been expanded and modernized since it was opened in 1855. It is now increasingly active in the research sphere. The Sankt Hans psychiatric hospital serves the Capital Region with specialized facilities for forensic psychiatry.\nThe cathedral and the Viking Ship Museum, which contains the well-preserved remains of five 11th-century ships, attract more than 100,000 visitors annually. In addition to its internationally recognized tourist attractions and its annual rock festival, Roskilde is popular with shoppers thanks to its two centrally located pedestrian streets complete with restaurants, cafés, and a variety of shops. The city is home to the FC Roskilde football club which play in the Danish 1st Division, the Roskilde Vikings RK rugby club, and the rowing club, Roskilde Roklub. In the 1970s, the city benefited from the opening of the university and from the completion of the Holbæk Motorway connecting it to Copenhagen. Roskilde has the oldest operational railway station in Denmark, with connections across Zealand as well as with Falster, Lolland, and Jutland. The local airport opened in 1973, mainly serving light aircraft for business use and flight instruction.\nAmong the city's notable citizens are Absalon, the bishop who founded Copenhagen in the 12th century, L. A. Ring, the symbolist painter who gained fame in the 1880s, the writer Lise Nørgaard who wrote the popular Danish TV series Matador in 1978 and the rower Thomas Ebert who became an Olympic gold medallist in 2004."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 438
+    },
+    "banned_terms": [
+      {
+        "term": "roskilde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3082,
+    "attempt": 3060,
+    "place_id": "gn-2635650",
+    "input": {
+      "place": {
+        "place_id": "gn-2635650",
+        "name": "Torquay",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.46198,
+        "lon": -3.52522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torquay",
+          "url": "https://en.wikipedia.org/wiki/Torquay",
+          "text": "Torquay (  tor-KEE) is a seaside town in Devon, England, part of the unitary authority area of Torbay. It lies 18 miles (29 km) south of the county town of Exeter and 28 miles (45 km) east-north-east of Plymouth, on the north of Tor Bay, adjoining the neighbouring town of Paignton on the west of the bay and across from the fishing port of Brixham.  At the 2021 census, the built-up area of Torquay had a population of 52,037.\nThe town's economy, like Brixham's, was initially based upon fishing and agriculture; however, in the early 19th century, it began to develop into a fashionable seaside resort. Later, as the town's fame spread, it was popular with Victorian society. Renowned for its mild climate, the town earned the nickname the English Riviera.\nThe writer Agatha Christie was born in the town and lived at Ashfield in Torquay during her early years. There is an \"Agatha Christie Mile\", a tour with plaques dedicated to her life and work.\nThe poet Elizabeth Barrett Browning lived in the town from 1837 to 1841. This was on the recommendation of her doctor in an attempt to cure her of a disease, thought likely to have been tuberculosis. Her former home now forms part of the Regina Hotel in Vaughan Parade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "torquay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
