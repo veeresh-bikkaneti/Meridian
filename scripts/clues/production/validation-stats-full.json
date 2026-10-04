@@ -1,12 +1,12 @@
 {
-  "attempted": 4200,
-  "accepted": 88,
-  "workerRejected": 4112,
+  "attempted": 4400,
+  "accepted": 89,
+  "workerRejected": 4311,
   "validatorRejected": 0,
   "malformedWorkerRejections": 0,
   "validatorReasonHistogram": {},
   "workerRejectionTierHistogram": {
-    "climate": 4067,
+    "climate": 4266,
     "history": 44,
     "giveaway": 1
   },
