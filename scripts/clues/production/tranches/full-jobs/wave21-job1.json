@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 4031,
+    "attempt": 4001,
+    "place_id": "gn-336496",
+    "input": {
+      "place": {
+        "place_id": "gn-336496",
+        "name": "Gimbi",
+        "country": "Ethiopia",
+        "subdivision": "Oromiya",
+        "lat": 9.17031,
+        "lon": 35.83491
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gimbi",
+          "url": "https://en.wikipedia.org/wiki/Gimbi",
+          "text": "Gimbi (ጊምቢ) is a town in western Oromia Region, Ethiopia. Located in the West Welega Zone, it has a latitude and longitude of 9°10′N 35°50′E with an elevation between 1845 and 1930 meters above sea level. It is the administrative center of Gimbi woreda. The area gets an average of about 1,500 millimeters of rainfall each year, with places like Gimbi receiving over 2,800 millimeters annually. This region is one of the wettest in Ethiopia, only having two to four dry months per year. The rainfall is higher in the mountains, as the terrain there traps more moisture, while the lowlands get less rain.\nGimbi has had telephone service from some point between 1954 and 1967. Iron had traditionally been produced in the area. A North Korean team of specialists investigated the deposits in the mid-1980s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "gimbi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4032,
+    "attempt": 4002,
+    "place_id": "gn-3461550",
+    "input": {
+      "place": {
+        "place_id": "gn-3461550",
+        "name": "Ibitinga",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -21.75778,
+        "lon": -48.82889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ibitinga",
+          "url": "https://en.wikipedia.org/wiki/Ibitinga",
+          "text": "Ibitinga is a municipality in the state of São Paulo in Brazil. The population is 60,600 (2020 est.) in an area of 689 km2 (266 mi2). The elevation is 491 m (1,611 ft). The name comes from the Tupi language, meaning \"White Lands\". The main rivers near Ibitinga are the Tietê River and its tributaries Jacaré-Pepira River and Jacaré-Guaçu River.\nThe town is commonly referred to as the \"Embroidery National Capital\", for its large embroidery industry, which started in the 1960s with immigrants from Madeira Island, and really developed after 1974, when the City Hall promoted the first \"Embroidery Fair\", at the City Stadium. Year after year, the town has passed from being dependent on agriculture and cattle to its current situation, where the economy mostly depends on embroidery and tourism.\nAt the Tietê river in Ibitinga, it is also located a dam (the Ibitinga Hydroelectric Power Station) and one lock. This lock, together with many others at other Tietê dams, allows the navigation of Tietê river along most of its length."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "ibitinga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4033,
+    "attempt": 4003,
+    "place_id": "gn-456202",
+    "input": {
+      "place": {
+        "place_id": "gn-456202",
+        "name": "Rēzekne",
+        "country": "Latvia",
+        "subdivision": "Rēzekne",
+        "lat": 56.51028,
+        "lon": 27.34
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rēzekne",
+          "url": "https://en.wikipedia.org/wiki/Rēzekne",
+          "text": "Rēzekne (Latvian: [ˈrɛːzekne] , Latgalian: Rēzne pronounced [rʲæːzʲnʲæ] or Rēzekne pronounced [ˈrʲæːzʲækʲnʲæ], Russian: Резекне) is a state city in the Rēzekne River valley in the Latgale region of eastern Latvia. It is called The Heart of Latgale (Latvian: Latgales sirds, Latgalian: Latgolys sirds). Built on seven hills, Rēzekne is situated 242 kilometres (150 miles) east of Riga, and 63 kilometres (39 miles) west of the Latvian-Russian border, at the intersection of the Moscow – Ventspils railway and Warsaw – Saint Petersburg Railways. It is the 7th largest city in Latvia. Rēzekne also serves as the location of the extraterritorial administrative centre of Rēzekne Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "rezekne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4034,
+    "attempt": 4004,
+    "place_id": "gn-4562529",
+    "input": {
+      "place": {
+        "place_id": "gn-4562529",
+        "name": "Aibonito",
+        "country": "Puerto Rico",
+        "subdivision": "Aibonito",
+        "lat": 18.13996,
+        "lon": -66.266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aibonito, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Aibonito,_Puerto_Rico",
+          "text": "Aibonito (Spanish pronunciation: [ajβoˈnito]) is a small mountain town and municipality in Puerto Rico located in the Sierra de Cayey mountain range, north of Salinas; south of Barranquitas and Comerío; east of Coamo; and west of Cidra, and Cayey. Aibonito is spread over 8 barrios and Aibonito Pueblo (the downtown area and the administrative center of the city). It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nAibonito is located at a relatively high elevation (its main square is the highest in the island at 732 metres (2,401 ft) above sea level), which makes its climate cooler than most of Puerto Rico's towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "aibonito",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4035,
+    "attempt": 4005,
+    "place_id": "gn-4565712",
+    "input": {
+      "place": {
+        "place_id": "gn-4565712",
+        "name": "Juana Díaz",
+        "country": "Puerto Rico",
+        "subdivision": "Juana Díaz",
+        "lat": 18.05246,
+        "lon": -66.50656
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juana Díaz, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Juana_Díaz,_Puerto_Rico",
+          "text": "Juana Díaz (Spanish pronunciation: [ˈxwana ˈði.as]) is a town and municipality of Puerto Rico located on the southern coast of the island, south of Jayuya, Ciales, Orocovis and Villalba; east of Ponce; and west of Coamo and Santa Isabel and the Caribbean Sea to the south. Juana Díaz is spread over 13 barrios and Juana Diaz Pueblo (the downtown area and the administrative center of the city). It is part of the Ponce Metropolitan Statistical Area.\nJuana Díaz is known as La Ciudad del Maví (\"Maví City\"). Mabi is a fermented Taíno beverage made out from the bark of the mavi tree Colubrina elliptica."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "juana diaz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "juana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "diaz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4036,
+    "attempt": 4006,
+    "place_id": "gn-4568917",
+    "input": {
+      "place": {
+        "place_id": "gn-4568917",
+        "name": "Yauco",
+        "country": "Puerto Rico",
+        "subdivision": "Yauco",
+        "lat": 18.03496,
+        "lon": -66.8499
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yauco, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Yauco,_Puerto_Rico",
+          "text": "Yauco (Spanish pronunciation: [ˈʝawko]) is a town and municipality in southern Puerto Rico. Although the downtown is inland, the municipality stretches to a southern coast facing the Caribbean Sea. Yauco is located south of Maricao, Lares and Adjuntas; east of Sabana Grande and Guánica; and west of Guayanilla. The municipality consists of 20 barrios and Yauco Pueblo (the downtown and administrative center of the municipality). It is both a principal town of the Yauco Metropolitan Statistical Area and the Ponce-Yauco-Coamo Combined Statistical Area.\nIt was founded by Fernando Pacheco on 29 February 1756, and developed for commodity crops of tobacco, sugar cane, and coffee. Yauco became a center for Corsican immigration to Puerto Rico in the 19th century due to its geographical similarity to their homeland. Corsicans have contributed to many areas of life in Yauco, particularly to its coffee industry. This has played a role in the town's nicknames of El Pueblo del Café (Town of Coffee), and residents of the municipality are often referred to as Los Corsos (The Corsicans)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "yauco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4037,
+    "attempt": 4007,
+    "place_id": "gn-4704108",
+    "input": {
+      "place": {
+        "place_id": "gn-4704108",
+        "name": "La Porte",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.66578,
+        "lon": -95.01937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Porte, Texas",
+          "url": "https://en.wikipedia.org/wiki/La_Porte,_Texas",
+          "text": "La Porte ( lə PORT) is a city in Harris County, Texas, United States, within the Bay Area of the Houston–Pasadena–The Woodlands metropolitan area. As of the 2020 census, the city population was 35,124. La Porte is the fourth-largest incorporated city in Harris County.\nWhen La Porte celebrated its centennial in 1992, it was the home of Barbours Cut Terminal, operated by the Port of Houston Authority since 1977. Fifteen years later, the Port of Houston's newest addition, Bayport Terminal, was established just south of La Porte. The area around La Porte has served an increasingly important role in international trade since the 1970s.\nThe area around modern La Porte gained fame early in Texas history as the location of the Battle of San Jacinto on April 21, 1836, which ended the Texas Revolution, establishing the independence of the Republic of Texas from Mexico. The San Jacinto Monument, in the unincorporated area of La Porte, commemorates the battle. During the early 20th century, particularly the 1920s and 1930s, La Porte's Sylvan Beach became a nationally known tourist destination attracting some of the nation's most well-known entertainers. As a result of changing economics in the Houston area and beach erosion, the tourist business declined while industrial development in the area grew. During World War II and afterward, La Porte's economy rapidly shifted toward petroleum/petrochemicals and shipping, which developed as the dominant industries in the Pasadena-Baytown area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "la porte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4038,
+    "attempt": 4008,
+    "place_id": "gn-4707814",
+    "input": {
+      "place": {
+        "place_id": "gn-4707814",
+        "name": "Longview",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.5007,
+        "lon": -94.74049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Longview, Texas",
+          "url": "https://en.wikipedia.org/wiki/Longview,_Texas",
+          "text": "Longview is a city in and the county seat of Gregg County, Texas, United States. Longview is located in East Texas, where Interstate 20 and U.S. highways 80 and 259 converge just north of the Sabine River. The population was 81,638 as of the 2020 census, and was estimated at 83,668 in 2024. Longview is the principal city of the Longview metropolitan statistical area, comprising Gregg, Upshur, and Rusk counties. The population of the metropolitan area as of 2025 census estimates was 297,315.\nLongview was established in 1870 in what was at the time southern Upshur County; the town incorporated on May 17, 1871. After Gregg County was created on May 7, 1873 and organized on June 28, 1873, Longview was voted the county seat. Today, Longview is considered a major hub city for the region, as is the nearby city of Tyler. Companies with significant presence in Longview include Eastman Chemical, Trinity Rail Group, AAON Coil Products, Komatsu Mining, Dollar General and Old Navy/GAP. Colleges and universities in the area include LeTourneau University, Kilgore College, and the University of Texas at Tyler's Longview University Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "longview",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4039,
+    "attempt": 4009,
+    "place_id": "gn-4838633",
+    "input": {
+      "place": {
+        "place_id": "gn-4838633",
+        "name": "Middletown",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.56232,
+        "lon": -72.65065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middletown, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Middletown,_Connecticut",
+          "text": "Middletown is a city in Middlesex County, Connecticut, United States, located along the Connecticut River, in the central part of the state, 16 miles (25.8 km) south of Hartford. Middletown is the largest city in the Lower Connecticut River Valley Planning Region. In 1650, it was incorporated by English settlers as a town under its original Native American name, Mattabeseck, after the local Wangunk village of the same name. They were among many tribes along the Atlantic coast who spoke Algonquian languages. The colonists renamed the settlement in 1653.\nWhen Hartford County was organized on May 10, 1666, Middletown was included within its boundaries. In 1784, the central settlement was incorporated as a city distinct from the town. Both were included within newly formed Middlesex County in May 1785. In 1923, the City of Middletown was consolidated with the Town, making the city limits extensive.\nOriginally developed as a sailing port and then an industrial center on the Connecticut River, it is now largely residential. Its downtown, based on Main Street, serves as a popular retail, dining, and bar district near Wesleyan University. Middletown was the county seat of Middlesex County from its creation in 1785 until the elimination of county government in 1960. As of the 2020 census, the city had a total population of 47,717. Middletown, Connecticut, is considered the southernmost city in the Hartford-Springfield Knowledge Corridor Metropolitan Region, which features a combined metro population of 1.9 million. Middletown is largely a politically progressive city, and is home to one of the largest pride events in all of Connecticut."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "middletown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4040,
+    "attempt": 4010,
+    "place_id": "gn-5352439",
+    "input": {
+      "place": {
+        "place_id": "gn-5352439",
+        "name": "Glendora",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.13612,
+        "lon": -117.86534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glendora, California",
+          "url": "https://en.wikipedia.org/wiki/Glendora,_California",
+          "text": "Glendora is a city in the San Gabriel Valley in Los Angeles County, 25 miles (40 km) northeast of Downtown Los Angeles. As of the 2020 census, the population of Glendora was 52,558. World-famous Route 66 runs through the city. Like many of its neighbors, Glendora was founded during the Southern California real estate boom of the 1880s.\nKnown as “The Pride of the Foothills\", Glendora is nestled in the foothills of the San Gabriel Mountains. Its downtown area, locally known as the Glendora Village, hosts dozens of restaurants, cafes, shops, and boutiques along Glendora Avenue with many community events scheduled throughout the year.\nNeighborhoods and residences in Glendora reflect the city's history and range from Queen Annes, to Folk Victorians, early 20th-century bungalows, to ranch style homes, to mid-rise multi-family residential complexes, to modern mansions. Glendora's most expensive neighborhoods contain many very large, secluded, estate homes with views across the San Gabriel Valley to Downtown Los Angeles and beyond.\nGlendora is bordered by Azusa and the unincorporated community of Citrus to the west, San Dimas to the east and south, Covina and the unincorporated community of Charter Oak to the south, and the San Gabriel Mountains, including protected areas within the San Gabriel Mountains National Monument, to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "glendora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4041,
+    "attempt": 4011,
+    "place_id": "gn-5368335",
+    "input": {
+      "place": {
+        "place_id": "gn-5368335",
+        "name": "Los Altos",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.38522,
+        "lon": -122.11413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Altos, California",
+          "url": "https://en.wikipedia.org/wiki/Los_Altos,_California",
+          "text": "Los Altos ( ; Spanish for \"The Heights\") is a city in Santa Clara County, California, United States, in the San Francisco Bay Area. The population was 31,625 according to the 2020 census.\nMost of the city's growth took place between 1950 and 1980. Originally an agricultural town with many summer cottages and apricot orchards, Los Altos is a bedroom community on the western edge of Silicon Valley, serving as a major source of commuters to other parts of Silicon Valley. Los Altos strictly limits commercial zones to the downtown area and small shopping and office parks lining Foothill Expressway and El Camino Real."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "los altos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "altos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4042,
+    "attempt": 4012,
+    "place_id": "gn-6101645",
+    "input": {
+      "place": {
+        "place_id": "gn-6101645",
+        "name": "Peterborough",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.30012,
+        "lon": -78.31623
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peterborough, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Peterborough,_Ontario",
+          "text": "Peterborough ( PEE-tər-burr-oh) is a city and county seat of Peterborough County,  Ontario, Canada, about 125 kilometres (78 miles) northeast of Toronto.  According to the 2021 Census, the population of the City of Peterborough was 83,651. The population of the Peterborough Census Metropolitan Area (CMA), which includes the surrounding Townships of Selwyn, Cavan Monaghan, Otonabee-South Monaghan, and Douro-Dummer, was 128,624 in 2021. In 2021, Peterborough ranked 32nd among the country's 41 census metropolitan areas according to Statistics Canada.  The current mayor of Peterborough is Jeff Leal.\nPeterborough is known as the gateway to the Kawarthas \"cottage country\", a large recreational region of the province. It is named in honour of Peter Robinson, an early Canadian politician who oversaw the first major immigration to the area. The city is the seat of Peterborough County, though it is politically independent from the county.\nPeterborough's nickname in the distant past was \"The Electric City\" as it was the first town in Canada to use electric streetlights. This nickname also underscores the historical and present-day importance of technology and manufacturing as an economic base of the city, which has operations from large multi-national companies such as Siemens, Rolls-Royce Limited, General Electric, and local businesses such as Merit Precision Ltd., Dynacast, and Bryston. Electricity was one of the reasons Quaker Oats moved to the city, and as part of PepsiCo it remains a major fixture in the downtown area. However, over the years the number of major manufacturing plants has declined, and General Electric closed its last remaining facility in 2018. As a result, employment has been shifting toward the service industries and tourism is now the leading industry in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "peterborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4043,
+    "attempt": 4013,
+    "place_id": "gn-6822207",
+    "input": {
+      "place": {
+        "place_id": "gn-6822207",
+        "name": "Towada",
+        "country": "Japan",
+        "subdivision": "Aomori",
+        "lat": 40.62049,
+        "lon": 141.21067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Towada",
+          "url": "https://en.wikipedia.org/wiki/Towada",
+          "text": "Towada (十和田市, Towada-shi) is a city in Aomori Prefecture, Japan. As of 31 October 2025, the city had an estimated population of 56,766 in 28222 households, and a population density of 78 persons per km2  The total area of the city is 725.65 square kilometers (280.18 sq mi).Towada is home to the national and prefectural agencies that administer the Kamikita region, and is the central city of the region. In October 2012, the city signed an agreement with nine surrounding municipalities to improve the living environment, and has a cooperative relationship with Misawa City, which has an airport and a U.S. Air Force base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "towada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4044,
+    "attempt": 4014,
+    "place_id": "gn-710400",
+    "input": {
+      "place": {
+        "place_id": "gn-710400",
+        "name": "Chortkiv",
+        "country": "Ukraine",
+        "subdivision": "Ternopil",
+        "lat": 49.01701,
+        "lon": 25.79808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chortkiv",
+          "url": "https://en.wikipedia.org/wiki/Chortkiv",
+          "text": "Chortkiv (Ukrainian: Чортків, IPA: [tʃortˈkiu̯] ; Polish: Czortków; Yiddish: טשארטקאוו, romanized: Tshortkov) is a city in Chortkiv Raion, Ternopil Oblast, western Ukraine. It is the administrative center of Chortkiv Raion, housing the district's local administration buildings. Chortkiv hosts the administration of Chortkiv urban hromada, one of the hromadas of Ukraine. Population: 28,279 (2022 estimate).\nChortkiv is located in the northern part of the historic region of Galician Podolia on the banks of the Seret River.\nIn the past Chortkiv was the home of many Hasidic Jews; it was a notable shtetl and had a significant number of Jews residing there prior to the Holocaust. Today, Chortkiv is a regional commercial and small-scale manufacturing center. Among its architectural monuments is a fortress built in the 16th and 17th centuries as well as historic wooden churches of the 17th and 18th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "chortkiv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4045,
+    "attempt": 4015,
+    "place_id": "gn-995202",
+    "input": {
+      "place": {
+        "place_id": "gn-995202",
+        "name": "Howick",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.47795,
+        "lon": 30.23057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Howick, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Howick,_South_Africa",
+          "text": "Howick is a town located in the UMngeni Local Municipality of KwaZulu-Natal Province, South Africa. The town is 1050 m above sea level, and about 88 kilometres from the port city of Durban. It experiences warm summers and cool, dry winters. A snappy chill descends upon Howick when snow falls on the nearby Drakensberg. The town is located on the N3 freeway, connecting it with the rest of South Africa.\nThe town is the location of Howick Falls, which is a large waterfall that occurs when the Umgeni River falls 95 metres (311 feet) over dolerite cliffs on its way to the Indian Ocean. The waterfall was known as kwaNogqaza or \"The Place of the Tall One\" by the original Zulu inhabitants. There are several other waterfalls in the vicinity and all of them have claimed human lives. Near Howick are Cascade Falls (25 m) and Shelter Falls (37 m), while Karkloof Falls (105 m) is 16 km to the east.\nThere are also a number of schools in Howick, including Howick High School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "howick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4046,
+    "attempt": 4016,
+    "place_id": "gn-1020641",
+    "input": {
+      "place": {
+        "place_id": "gn-1020641",
+        "name": "Beaufort West",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -32.35671,
+        "lon": 22.58295
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaufort West",
+          "url": "https://en.wikipedia.org/wiki/Beaufort_West",
+          "text": "Beaufort West (Afrikaans: Beaufort-Wes; Xhosa: eBhobhofolo) is a town in the Western Cape province in South Africa.  It is the largest town in the arid Great Karoo region, and is known as the \"Capital of the Karoo\". It forms part of the Beaufort West Local Municipality, with 34,085 inhabitants in 2011.\nIt is the centre of an agricultural district based mainly on sheep farming, and is a significant town and logistical support hub on the N1 national road.\nNext door to Beaufort West is the Karoo National Park. Important Permian fossils have been found in the area to the west of the town. These were initially found by David Baird, son of the local magistrate in 1827. The old Town Hall and the Dutch Reformed Church have been declared national monuments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "beaufort west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "beaufort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4047,
+    "attempt": 4017,
+    "place_id": "gn-1263898",
+    "input": {
+      "place": {
+        "place_id": "gn-1263898",
+        "name": "Mandapeta",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.86254,
+        "lon": 81.92921
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandapeta",
+          "url": "https://en.wikipedia.org/wiki/Mandapeta",
+          "text": "Mandapeta was originally called \"Mandavyapuram\", which came from Sage Mandukya. Mandapeta is a second-grade municipality established on October 1, 1958 in East Godavari district in the Indian state of Andhra Pradesh. It is located at mean elevation of about 15.48 msl at 16.520 N, 81.560 E.\nAccording to the 2011 census, the population of the town was 56,063 and total number of households was 15,444 and spread across an area of 30.65 sq. km. The current population of the town is 63,004 and total no. of households (HH) is 17,681 with population growth rate of 1.1 which is divided into 30 election wards. The municipal boundary and current population is used for preparation of SFD. As per the slum survey, there are 20 notified slums in Mandapeta with a total population of 20,153. The slum pockets are scattered in different localities of the town, mainly in the outskirt of the town.\nThe whole population in Mandapeta (100%) uses onsite sanitation systems, with all of the FS being unsafely managed. This SFD Light Report was prepared by the Centre for Science and Environment (CSE) in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "mandapeta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4048,
+    "attempt": 4018,
+    "place_id": "gn-1265989",
+    "input": {
+      "place": {
+        "place_id": "gn-1265989",
+        "name": "Kotharia",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 22.23436,
+        "lon": 70.81903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kotharia, Rajkot",
+          "url": "https://en.wikipedia.org/wiki/Kotharia,_Rajkot",
+          "text": "Kotharia is a town in Rajkot district of Gujarat, which was a small princely state offshoot of the Rajkot state in the Saurashtra region of Gujarat, part of the Bombay Presidency during British Raj.\nThe boundaries of the Taluka were conterminous with those of the States of Morvi, Rajkot and Gondal States. The area of the Taluka was 27 square miles (70 km2) with six villages. The Taluka had six villages - Kotharia, Vavdi, Vagudad, Khorana, Nagalpur and Pipalia. Two more villages were given to the Taluka as mentioned below. The population of the Taluka was 2,146 as per the census of 1921."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kotharia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4049,
+    "attempt": 4019,
+    "place_id": "gn-1565164",
+    "input": {
+      "place": {
+        "place_id": "gn-1565164",
+        "name": "Thới Bình",
+        "country": "Vietnam",
+        "subdivision": "Ca Mau",
+        "lat": 9.35584,
+        "lon": 105.09929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thới Bình, Cà Mau",
+          "url": "https://en.wikipedia.org/wiki/Thới_Bình,_Cà_Mau",
+          "text": "Thới Bình is a ward (phường) of Cà Mau province, in Vietnam.\nOn 16 June 2025, the Standing Committee of the National Assembly issued Resolution No. 1655/NQ-UBTVQH15 on the rearrangement of commune-level administrative units of Cà Mau Province in 2025 (the resolution takes effect from 16 June 2025). Accordingly, Thới Bình Commune was established in Cà Mau Province on the basis of the entire natural area of 21 km² and a population of 13,030 people of Thới Bình Township, and the entire natural area of 100 km² and a population of 25,086 people of Thới Bình Commune, both belonging to Thới Bình District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "thoi binh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thoi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "binh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4050,
+    "attempt": 4020,
+    "place_id": "gn-1636816",
+    "input": {
+      "place": {
+        "place_id": "gn-1636816",
+        "name": "Majalengka",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.83611,
+        "lon": 108.22778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Majalengka",
+          "url": "https://en.wikipedia.org/wiki/Majalengka",
+          "text": "Majalengka (Sundanese: ᮙᮏᮜᮦᮀᮊ) is a town and district in West Java, Indonesia. The district is the regency seat of Majalengka Regency. At the 2010 Census, the district had a population of 68,871, of which the town (comprising the two kelurahan of Majalengka Wetan and Majalengka Kulon) had a population of 20,906. At the 2020 Census, the town population had decreased to 20,549, while the district had 74,107 inhabitants in mid 2024. \nIn Rajaguluh, one of the villages in Majalengka, 20 km (12 mi) from the town of Majalengka, there is a traditional food called \"pedesan bebek\", which is considered a little bit spicy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "majalengka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
