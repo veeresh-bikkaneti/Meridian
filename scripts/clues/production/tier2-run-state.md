@@ -152,3 +152,20 @@ history 25, giveaway 1, hook 1), validatorRejected 0. Union accepted
 320 (229 + 91); manifest 320; leak scan 0 hits / 1,600 texts.
 (Reviewer expected 92/321 pre-watch-rulings; Negombo's conversion
 accounts for the extra -1.) Awaiting re-review certification.
+
+## WAVE 1 — re-review: NEEDS WORK again -> Savannah actually repaired
+Re-review (reviews/milestone-1-rereview.md) certified: hashes, all 3
+conversions, Sochi reshuffle, Bonn cleanup, fold accounting (91/109),
+union/manifest 320 bijection, leak spot-scan 0, diff scope. Withheld
+solely on Savannah: the coordinator's first fix attempt changed the
+tier-5 QUOTE but the text change was silently lost (the patch script's
+write-back was skipped when validation failed on the first attempt,
+and the retry patched the quote only). The re-reviewer caught the
+claim-vs-reality gap; the run-state entry above overstated the fix.
+CORRECTED NOW: Savannah tier-5 text AND narrowing rewritten to the
+historic-district / 22 parklike squares fact (population ranking gone
+from the text), validateRecord OK, and the change VERIFIED by re-reading
+the record from disk and the published file at index 73 (contains the
+new text). Re-fold unchanged: 91/109/0; union 320; manifest 320;
+leak 0/1,600. Process lesson recorded: every repair write is re-read
+from disk before being reported as done. Re-presented a third time.
