@@ -74,8 +74,9 @@ async function seedSeenExcept(
   regionId: string,
   keepId: string,
   allIds: string[],
+  band: "easy" | "medium" | "hard" = "medium",
 ): Promise<void> {
-  const key = `${SEEN_PREFIX}${edition}:${regionId}:medium`;
+  const key = `${SEEN_PREFIX}${edition}:${regionId}:${band}`;
   const seen = allIds.filter((id) => id !== keepId);
   expect(seen.length, "seeded seen-store must not be empty").toBeGreaterThan(0);
   expect(allIds, `target ${keepId} must be in the pool`).toContain(keepId);
@@ -150,7 +151,7 @@ test("country: whole-US run shows 'Austin, Texas'", async ({ page }) => {
   const errors = collectErrors(page);
 
   await page.goto(APP);
-  await seedSeenExcept(page, "country", "united-states", "gn-4671654", usCountryPoolIds());
+  await seedSeenExcept(page, "country", "united-states", "gn-4671654", usCountryPoolIds(), "easy");
   // Austin is tier 1: the Easy band (1–2) keeps it in the dealt pool.
   await page
     .getByRole("group", { name: "How do you want to grow your map today?" })
@@ -174,7 +175,7 @@ test("state: Nebraska run shows the bare name 'Omaha'", async ({ page }) => {
   const allIds = [...curatedIds("state", "nebraska"), ...chunkIds("nebraska")];
 
   await page.goto(APP);
-  await seedSeenExcept(page, "state", "nebraska", "gn-5074472", allIds);
+  await seedSeenExcept(page, "state", "nebraska", "gn-5074472", allIds, "easy");
   // Omaha is tier 1: the Easy band (1–2) keeps it in the dealt pool.
   await page
     .getByRole("group", { name: "How do you want to grow your map today?" })
