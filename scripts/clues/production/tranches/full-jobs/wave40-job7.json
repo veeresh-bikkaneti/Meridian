@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 7975,
+    "attempt": 7921,
+    "place_id": "gn-4503516",
+    "input": {
+      "place": {
+        "place_id": "gn-4503516",
+        "name": "Paulsboro",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.83039,
+        "lon": -75.24046
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paulsboro, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Paulsboro,_New_Jersey",
+          "text": "Paulsboro is a borough situated on the banks of the Delaware River in Gloucester County, in the U.S. state of New Jersey, within the Philadelphia metropolitan area. As of the 2020 United States census, the borough's population was 6,196, an increase of 99 (+1.6%) from the 6,097 recorded at the 2010 census, which in turn had reflected a decline of 63 (−1.0%) from the 6,160 counted in the 2000 census. Paulsboro and surrounding Gloucester County constitute part of South Jersey.\nPaulsboro was formed as a borough by an act of the New Jersey Legislature on March 2, 1904, from portions of Greenwich Township. It was named for Samuel Phillip Paul, son of a settler."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "paulsboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7976,
+    "attempt": 7922,
+    "place_id": "gn-5359426",
+    "input": {
+      "place": {
+        "place_id": "gn-5359426",
+        "name": "Indian Wells",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.71791,
+        "lon": -116.34311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Indian Wells, California",
+          "url": "https://en.wikipedia.org/wiki/Indian_Wells,_California",
+          "text": "Indian Wells is a city in Riverside County, California, United States, in the Coachella Valley. Incorporated in 1967, it lies in between the cities of Palm Desert and La Quinta. As of the 2020 census, the city population was 4,757.\n\nThe city hosts the sixth-largest tennis tournament in the world, the Indian Wells Masters tennis tournament, presently known as the BNP Paribas Open. The Indian Wells Masters is one of nine ATP Masters 1000 tournaments operated by the Association of Tennis Professionals, and one of the four mandatory WTA 1000 tournaments of the Women's Tennis Association. It is held at the Indian Wells Tennis Garden, which contains the second-largest tennis-specific stadium in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "indian wells",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "indian",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wells",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7977,
+    "attempt": 7923,
+    "place_id": "gn-5894164",
+    "input": {
+      "place": {
+        "place_id": "gn-5894164",
+        "name": "Barrhead",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 54.13345,
+        "lon": -114.40211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barrhead, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Barrhead,_Alberta",
+          "text": "Barrhead  is a town in central Alberta, Canada that is surrounded by the County of Barrhead No. 11. It is located along the Paddle River and at the intersection of Highway 33 (Grizzly Trail) and Highway 18, approximately 120 km (75 mi) northwest of the City of Edmonton. It is also located along the route of the Express Trail, used by the North West Company, which was originally a First Nations trail. The trail was later widened by George Simpson and John Rowand to save the North West Company over $5,000.\nThe town was named after the Scottish town Barrhead, the birthplace of one of the children of the area's early settlers, James McGuire. Barrhead's official bird is the great blue heron."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "barrhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7978,
+    "attempt": 7924,
+    "place_id": "gn-5924039",
+    "input": {
+      "place": {
+        "place_id": "gn-5924039",
+        "name": "Clinton",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.61679,
+        "lon": -81.53307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clinton, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Clinton,_Ontario",
+          "text": "Clinton is a community in the Canadian province of Ontario, located in the municipality of Central Huron. Clinton was established in 1831, when Jonas Gibbings and brothers Peter and Stephen Vanderburg cleared out a small area to start. Clinton started to grow in 1844 when William Rattenbury laid out the plans to begin making a village. In 1954, Clinton's population was 2,625 people. Today, it has an estimated population of 3,203.\nClinton is known as Canada's home of radar and there is a large radar antenna in the downtown because of its association with RCAF Station Clinton during World War II. Clinton was known as \"The Corners\" or \"Rattenbury Corner\" in its earlier days."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "clinton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7979,
+    "attempt": 7925,
+    "place_id": "gn-6100086",
+    "input": {
+      "place": {
+        "place_id": "gn-6100086",
+        "name": "Peachland",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.76862,
+        "lon": -119.74633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peachland",
+          "url": "https://en.wikipedia.org/wiki/Peachland",
+          "text": "Peachland is a district municipality in the Okanagan Valley on the west side of Okanagan Lake in British Columbia, Canada. It was founded in 1899 by John Moore Robinson, although the region had long been home to the Okanagan people. Peachland is approximately half-an-hour's drive south of the city of Kelowna and about a 20-minute drive north of Summerland. The Okanagan Valley is very narrow in the area and there are few terraces that mark former lake levels and the former lake bottom. As a result, the city is largely located on a steep sidehill. Like many other areas in the Okanagan, Peachland is rapidly growing, with new residents coming from all across Canada. Across the lake from Peachland is Rattlesnake Island, home of the legendary Ogopogo. Peachland is approximately 370 km from Vancouver, British Columbia, on the British Columbia south coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "peachland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7980,
+    "attempt": 7926,
+    "place_id": "gn-6182958",
+    "input": {
+      "place": {
+        "place_id": "gn-6182958",
+        "name": "Windsor",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 44.98345,
+        "lon": -64.13204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windsor, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/Windsor,_Nova_Scotia",
+          "text": "Windsor is a community located in Hants County, Nova Scotia, Canada.  It is a service centre for the western part of the county and is situated on Highway 101.\nThe community has a history dating back to its use by the Mi'kmaq Nation for several millennia prior to European colonization.  When the Acadians lived in the area, the town was raided by New England forces in 1704. The area was central to both Father Le Loutre's War and the Expulsion of the Acadians during the Bay of Fundy Campaign in 1755. The town promotes itself as the birthplace of ice hockey and was the home of Canada's first internationally best-selling author, Thomas Chandler Haliburton.\nOn April 1, 2020, the Town of Windsor amalgamated with the District of West Hants to become the West Hants Regional Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "windsor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7981,
+    "attempt": 7927,
+    "place_id": "gn-8348193",
+    "input": {
+      "place": {
+        "place_id": "gn-8348193",
+        "name": "Edwardstown",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.98018,
+        "lon": 138.5694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edwardstown, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Edwardstown,_South_Australia",
+          "text": "Edwardstown is an inner southern-western suburb located 6 km southwest of Adelaide in the City of Marion.\nIn 1989 the suburb of Edwardstown was split, with the portion east of South Road becoming Melrose Park. This occurred as the suburb was quite large, located on either side of South Road and was in the jurisdiction of two local government councils, with the larger western side belonging to the City of Marion.\nEdwardstown is in the South Australian House of Assembly districts of Badcoe and Elder, and the Australian House of Representatives Division of Boothby. Edwardstown is home to the Castle Plaza Shopping Centre.\nEdwardstown is served by the Woodlands Park and Edwardstown railway stations. The current suburb of Edwardstown includes localities previously known as Hammersmith, Woodlands Park, St Mary's West, Ackland Gardens and Mirreen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "edwardstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7982,
+    "attempt": 7928,
+    "place_id": "gn-2163270",
+    "input": {
+      "place": {
+        "place_id": "gn-2163270",
+        "name": "Holsworthy",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.98333,
+        "lon": 150.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holsworthy, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Holsworthy,_New_South_Wales",
+          "text": "Holsworthy, formerly spelled Holdsworthy, is a suburb in south-western Sydney, in the state of New South Wales, Australia. It is located roughly 31 kilometres south-west of the Sydney central business district. The residential part of the suburb, including the Holsworthy Barracks, is primarily in the local government area of the  City of Liverpool. However, most of the wooded area in the south is a part of City of Campbelltown, with a portion east of Heathcote in Sutherland Shire.\nHolsworthy is best known for the Holsworthy Barracks, a large Australian Army reserve where training exercises frequently occur. The reserve lies adjacent to Heathcote Road, which connects to Bankstown, Liverpool, Lucas Heights, Engadine, and Heathcote. Signs around the perimeter warn potential trespassers about the use of laser-guided and conventional gunfire.\nThe residential area lies north of the railway station. Anzac Village, situated in the northern part of the suburb and extending into the adjacent suburb of Wattle Grove, features a recent development called 'Mornington.' Additionally, a new shopping centre has been constructed in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "holsworthy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7983,
+    "attempt": 7929,
+    "place_id": "gn-2640084",
+    "input": {
+      "place": {
+        "place_id": "gn-2640084",
+        "name": "Portaferry",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.38086,
+        "lon": -5.54569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portaferry",
+          "url": "https://en.wikipedia.org/wiki/Portaferry",
+          "text": "Portaferry (from Irish  Port an Pheire 'landing place of the ferry') is a village in County Down, Northern Ireland, at the southern end of the Ards Peninsula, near the Narrows at the entrance to Strangford Lough. It is home to the Exploris aquarium and is well known for the annual Gala Week Float Parade. It hosts its own small Marina, the Portaferry Marina. The Portaferry–Strangford ferry service operates daily at 30-minute intervals (07:45  to 22:45) between the villages of Portaferry and Strangford, less than 1.5 km apart, conveying about 500,000 passengers per annum. Portaferry had a population of 2,372 people in the 2021 census. The village is in the Barony of Ards Upper.\nPot fishing, mainly for prawns and crabs and licensed shellfish farming takes place within Strangford Lough. Queen's University of Belfast have a Marine Research Laboratory on the shorefront. The village is also home to a research centre for Swedish tidal-kite developer Minesto. The lough is one of the world's most important marine sites with over 2,000 marine species.\nThere are fine Georgian buildings in the village square, including a Market House, now used as a community centre.\nPortaferry Lifeboat is an essential lifeline for local fishermen and yachtsmen. The Atlantic 75 is the fastest seagoing lifeboat in the RNLI's fleet and is capable of speeds up to 34 knots."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "portaferry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7984,
+    "attempt": 7930,
+    "place_id": "gn-2642430",
+    "input": {
+      "place": {
+        "place_id": "gn-2642430",
+        "name": "Mintlaw",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.52414,
+        "lon": -2.00099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mintlaw",
+          "url": "https://en.wikipedia.org/wiki/Mintlaw",
+          "text": "Mintlaw (literally meaning a smooth, flat place) is a large village in Aberdeenshire, Scotland. It lies at the intersection of the A950 and A952 roads, west of Peterhead. The 2001 UK census records a population of 2,647 people.\nIt supports a number of shops and local amenities such as a police station, library, dental surgery and group doctors' practice.\nAberdeenshire Museums Service is based in a new purpose-built museum building housing Aberdeenshire's large reserve collections, a conservation laboratory and the Discovery Centre. The service also runs another three museums: the nearby Aberdeenshire Farming Museum at Aden Country Park, home to the service nationally recognised agricultural collection, Arbuthnot Museum in Peterhead and Banchory Museum. Aden Country Park also contains a ruined mansion house, forest walks and a theme park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "mintlaw",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7985,
+    "attempt": 7931,
+    "place_id": "gn-2654507",
+    "input": {
+      "place": {
+        "place_id": "gn-2654507",
+        "name": "Broughton",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.16303,
+        "lon": -2.99309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broughton, Flintshire",
+          "url": "https://en.wikipedia.org/wiki/Broughton,_Flintshire",
+          "text": "Broughton (Welsh: Brychdyn ) is a village in Flintshire, Wales, close to the Wales–England border, located to the west of the city of Chester, England, in the community of Broughton and Bretton. Along with the nearby village of Bretton, the total population was 5,974 at the 2011 Census, increasing to 6,535 at the 2021 Census.\nBroughton is home to a large aircraft factory at Hawarden Airport. This was completed in 1939 for use by Vickers-Armstrongs, who built 5,786 Wellington bombers. De Havilland Aircraft took over the factory in 1948 and built 2,816 planes of several designs. Today, the plant is an Airbus factory that manufactures wings for the A320, A330 and A350 aircraft. Airbus wings produced there are flown out in Airbus Beluga and BelugaXL planes (while still in construction, larger A380 wings were transported by barge along the River Dee to the nearby Mostyn docks). The Broughton factory was featured in the 2011 BBC Television programme How to Build a Super Jumbo Wing.\nBroughton is home to Cymru Premier football team Airbus UK Broughton, who joined the highest division of the Welsh football pyramid in 2004 and remained there for 13 years, before relegation at the end of the 2016/17 season. They subsequently won promotion back to the Welsh Premier League for the 2019/20 season. The club was formed in 1946 as Vickers-Armstrongs, and several name changes took place until it adopted the current name. The club were relegated to the Cymru North after the 2019/20 season, but promoted back into the Cymru Premier for the 2022/23 season.\nBroughton United are a successful grassroots club within the village. They club were formed when Broughton Super Saints and Broughton Park amalgamated. \nBroughton has a primary school with over 500 pupils and pre-school nursery, which was created when the infant and junior schools amalgamated. The school's most recent ESTYN report rated it \"Excellent\" in all areas. Its students wear a distinctive purple uniform. The school incorporates the local library and a playgroup and toddler group was based there until closure.\nThe village has a shopping park, Broughton Shopping Park, where branches of major stores can be found. The village centre has a small collection of shops, and the Offas Dyke Hotel on Broughton Hall Road.\nBroughton Hall was a large manor house situated on the housing estate where Forest Drive is now. Between 1849 and 1964, Broughton was served by Broughton & Bretton railway station.\nThe Broughton War Memorial Institute is situated on Main Road, opposite the junction with Broughton Hall Road. The institute was built in lieu of a memorial stone to commemorate the sacrifice by residents of the village in military conflicts between 1914 and 1919, and hosts groups and events for the benefit of local people all year round.\nBroughton is twinned with Auzeville-Tolosane (population 3,035), a commune in the suburbs of Toulouse, France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 476
+    },
+    "banned_terms": [
+      {
+        "term": "broughton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7986,
+    "attempt": 7932,
+    "place_id": "gn-2945698",
+    "input": {
+      "place": {
+        "place_id": "gn-2945698",
+        "name": "Boxberg",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.40373,
+        "lon": 14.57598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boxberg, Saxony",
+          "url": "https://en.wikipedia.org/wiki/Boxberg,_Saxony",
+          "text": "Boxberg (German: [ˈbɔksˌbɛʁk]; officially Boxberg/O.L.) or Hamor (Upper Sorbian: [ˈhamɔʁ] ) is a municipality in the Görlitz district in Saxony, Germany. The place is known for its large Boxberg Power Station, that uses lignite as fuel.\nThe municipality is part of the recognized Sorbian settlement area in Saxony. Upper Sorbian has an official status next to German, all villages bear names in both languages.\nIn October 2007 it absorbed the former municipality Uhyst, and in February 2009 Klitten.\nIn 2022, Peter Fitzek's gang bought Bärwalde Castle and made it the headquarters of the right-wing extremist Reich Citizens' Movement \"Kingdom of Germany\" under the leadership of the self-proclaimed \"Supreme Sovereign\" and \"King\" Peter Fitzek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "boxberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7987,
+    "attempt": 7933,
+    "place_id": "gn-2992084",
+    "input": {
+      "place": {
+        "place_id": "gn-2992084",
+        "name": "Montreuil-Bellay",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.1312,
+        "lon": -0.15365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montreuil-Bellay",
+          "url": "https://en.wikipedia.org/wiki/Montreuil-Bellay",
+          "text": "Montreuil-Bellay (French pronunciation: [mɔ̃tʁœj bɛlɛ] ) is a commune in the Maine-et-Loire department in western France.\nIt is located approximately 15 km to the south of Saumur, and is famous for the Château de Montreuil-Bellay, which is situated in the town.\nMontreuil-Bellay is on the Thouet, and was the head of navigation until navigation ceased at the beginning of the 20th century. The navigation works were undertaken in the 15th century by the lords of Montreuil-Bellay, who in turn were granted letters patent by King Charles VII allowing them to raise a tax on wine that would pass through their land. Montreuil-Bellay station has rail connections to Tours, Saumur, Bressuire and La Roche-sur-Yon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "montreuil bellay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "montreuil",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bellay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7988,
+    "attempt": 7934,
+    "place_id": "gn-3149720",
+    "input": {
+      "place": {
+        "place_id": "gn-3149720",
+        "name": "Knarvik",
+        "country": "Norway",
+        "subdivision": "Vestland",
+        "lat": 60.5453,
+        "lon": 5.28208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Knarvik",
+          "url": "https://en.wikipedia.org/wiki/Knarvik",
+          "text": "Knarvik is the administrative centre of Alver Municipality in Vestland county, Norway. The village is located on the mainland, about 20 km (12 mi) straight north of Bergen at the confluence of four fjords: Osterfjorden (heading east), Sørfjorden (heading southeast), Salhusfjorden (heading southwest), and the Radfjorden (heading northwest). The village of Isdalstø lies immediately north of Knarvik.\nThe 3.67-square-kilometre (910-acre) village has a population (2025) of 6,594 and a population density of 1,797 inhabitants per square kilometre (4,650/sq mi). This makes it the largest settlement in the Nordhordland district of Vestland county.\n\nThe centre of the village is the site of the Knarvik Senter, the largest shopping centre in Nordhordland with 61 stores. The European route E39 highway runs straight through the village dividing it into two major parts. The northern part is where the large shopping mall is located while the southern part is still in its original state with scattered buildings and shops.\nKnarvik has several kindergartens, a junior high school, and a regional high school (Knarvik vidaregåande skule) with more than 1,000 students. The newly built Knarvik Church was completed in 2014 to serve the growing community.  Before its completion, residents had to travel up to Alversund Church in the village of Alversund, located about 4 km (2.5 mi) to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "knarvik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7989,
+    "attempt": 7935,
+    "place_id": "gn-3157679",
+    "input": {
+      "place": {
+        "place_id": "gn-3157679",
+        "name": "Fevik",
+        "country": "Norway",
+        "subdivision": "Agder",
+        "lat": 58.3782,
+        "lon": 8.67601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fevik",
+          "url": "https://en.wikipedia.org/wiki/Fevik",
+          "text": "Fevik is a coastal village and popular seaside resort in Grimstad Municipality in Agder county, Norway. Situated along the Skagerrak coast, Fevik lies approximately 7 kilometres (4.3 mi) northeast of the centre of the town of Grimstad and 15 kilometres (9.3 mi) south of the center of the town of Arendal. The neighboring village of Vik is located just southwest of Fevik.\nHistorically, Fevik was a prominent shipbuilding village. By the late 19th century, the Fevikkilen bay was home to the largest shipyard for iron hulls in Northern Europe, solidifying its place in maritime history.\nOver the years, the village of Fevik has grown together by conurbation with the nearby town of Arendal. The 4.21-square-kilometre (1,040-acre) village had a population (2021) of 6,037 and a population density of 1,434 inhabitants per square kilometre (3,710/sq mi). Since 2021, the population and area data for this village area has not been separately tracked by Statistics Norway, but it has been grouped together with the urban area of Arendal.\nFevik is well-connected by transport networks, with Norwegian County Road 420 running through the village and European Route E18 passing to the north. Public transportation in Agder County includes a commuter route linking Grimstad, Arendal, and Eydehavn. The village is also home to Fevik Church, a notable local landmark.\nIn the 1950s and 1960s, Fevik gained renown as a tourist destination, celebrated for its scenic beaches and accommodations, making it a favored getaway along Norway’s southern coast.\nIn the mid 1990s, Asle Espenes, the famous folk singer, once performed a tear inducing rendition of Tom Dooley at the Ruager Open Air festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "fevik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7990,
+    "attempt": 7936,
+    "place_id": "gn-3180916",
+    "input": {
+      "place": {
+        "place_id": "gn-3180916",
+        "name": "Camposanto",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.79009,
+        "lon": 11.14049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camposanto",
+          "url": "https://en.wikipedia.org/wiki/Camposanto",
+          "text": "Camposanto (Modenese: Campsànt; Mirandolese: Campsènt) is a comune (municipality) in the Province of Modena in the Italian region Emilia-Romagna, located about 35 kilometres (22 mi) northwest of Bologna and about 20 kilometres (12 mi) northeast of Modena on the Panaro river.   Although the name in Italian literally means \"holy field\", which normally means \"cemetery\" in Italian, its original (Latin) name, \"Campus Sanctus\", probably honoured the 14th century Ferrara family of Santi, who owned the land.\nThe Battle of Campo Santo was fought here in 1743.\nCamposanto borders the following municipalities: Bomporto, Crevalcore, Finale Emilia, Medolla, Ravarino, San Felice sul Panaro, San Prospero.\nIn May 2012 Camposanto was the epicenter of a 6.0-magnitude earthquake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "camposanto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7991,
+    "attempt": 7937,
+    "place_id": "gn-3435701",
+    "input": {
+      "place": {
+        "place_id": "gn-3435701",
+        "name": "Capioví",
+        "country": "Argentina",
+        "subdivision": "Misiones",
+        "lat": -26.92936,
+        "lon": -55.05773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capioví",
+          "url": "https://en.wikipedia.org/wiki/Capiov%C3%AD",
+          "text": "Capioví is a village and municipality in Misiones Province in north-eastern Argentina.\nLand was first acquired in the area by the Carlos Culmey Company, in 1919, and the following year, Enrique Graef and his family became the future town's first settlers. Named for the Capioví Falls, upstream, the village grew following Culmey's installation of a sawmill. The cultivation of yerba maté was followed by the 1971 opening of a Papel Misionero paper mill.\nCapioví at Christmas time:\nThe town is decorated with Christmas decorations handmade from recycled plastic bottles. A lot of the inhabitants get together all year round to make these crafts which are put up in December for visitors to admire. Capioví has become the state Christmas capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "capiovi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7992,
+    "attempt": 7938,
+    "place_id": "gn-4465106",
+    "input": {
+      "place": {
+        "place_id": "gn-4465106",
+        "name": "Elizabethtown",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 34.62934,
+        "lon": -78.60529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elizabethtown, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Elizabethtown,_North_Carolina",
+          "text": "Elizabethtown is a town in and the county seat of Bladen County, North Carolina, United States. The population was 3,296 at the 2020 census. Elizabethtown was chartered in 1773 on the west banks of the Cape Fear River, approximately halfway between Fayetteville and Wilmington, North Carolina. Tory Hole Park in downtown Elizabethtown was the site of the Battle of Elizabethtown, a pivotal victory for the Patriots in the American Revolutionary War that ended Loyalist control of the region. A former river port that primarily exported Naval stores and lumber, Elizabethtown is now a regional industrial and manufacturing hub centered around the Elizabethtown Airport Industrial Park, with many natural attractions that attract visitors year-round."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "elizabethtown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7993,
+    "attempt": 7939,
+    "place_id": "gn-461224",
+    "input": {
+      "place": {
+        "place_id": "gn-461224",
+        "name": "Baldone",
+        "country": "Latvia",
+        "subdivision": "Ķekava",
+        "lat": 56.74451,
+        "lon": 24.40078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baldone",
+          "url": "https://en.wikipedia.org/wiki/Baldone",
+          "text": "Baldone (; German: Baldohn) is a town in Ķekava Municipality, in the Semigallia region of Latvia. The town is famous for its sulfur water springs and was a spa resort. It is connected to the capital Riga by the P91 and P89 roads and the Ķekaviņa river flows through the town.\nThe town serves as the extra-territorial seat of Baldone Parish, which surrounds the town entirely. From 2008 to 2021, the town served as the seat of Baldone Municipality before its dissolution. \nIn 1991, the village of Baldone received city rights, governing also the Baldone Rural Territory until 28 January 2010, when it was split off of the town and renamed Baldone Parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "baldone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7994,
+    "attempt": 7940,
+    "place_id": "gn-4690070",
+    "input": {
+      "place": {
+        "place_id": "gn-4690070",
+        "name": "Falfurrias",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 27.22699,
+        "lon": -98.14417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falfurrias, Texas",
+          "url": "https://en.wikipedia.org/wiki/Falfurrias,_Texas",
+          "text": "Falfurrias ( fal-FURE-ee-əss) is a city in and the county seat of Brooks County, Texas, United States. Its population was 4,609 at the 2020 census, in a county that in the same census was just over 7,000. The town is named for founder Edward Cunningham Lasater's ranch, La Mota de Falfurrias. In 1893, the Falfurrias ranch was one of the largest in Texas at some 350,000 acres (140,000 ha).\nThe biggest industry in Falfurrias is the United States Border Patrol interior checkpoint south of the city on U.S. Route 281. As an indirect consequence, many migrants seeking to bypass the checkpoint by setting off across the arid land die of exposure and dehydration.\nFalfurrias and Brooks County were featured in a 2014 Latino USA radio story on illegal immigration in South Texas. The 2021 movie Missing in Brooks County deals with the same topic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 113,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "falfurrias",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

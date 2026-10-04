@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 7934,
+    "attempt": 7881,
+    "place_id": "gn-198054",
+    "input": {
+      "place": {
+        "place_id": "gn-198054",
+        "name": "Faza",
+        "country": "Kenya",
+        "subdivision": "Lamu",
+        "lat": -2.05604,
+        "lon": 41.11184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faza",
+          "url": "https://en.wikipedia.org/wiki/Faza",
+          "text": "Faza is a small town on the North coast on Pate Island, within the Lamu Archipelago in Kenya's former Coast Province.\nFaza was known by the name of Ampaza by the Portuguese and dates back at least to the 14th century. In 1587, Faza was destroyed by the Portuguese as the local Sheikh had supported Mir Ali Beg, a notorious privateer who had earlier played a key role in ousting the Portuguese from Muscat. The Portuguese arrived from Goa with some 650 men on their punitive expedition, and unleashed their fury on Faza. Everybody they could find was killed, including the local Sheikh. The Portuguese preserved his head in a barrel of salt for display in India. After four days of looting they invited Faza's arch-rivals from Pate town to take away anything that they liked from Faza.\nFaza was later resettled. The Portuguese in Faza constructed a chapel there, however, nothing remains of it. In the 18th century Faza again fell into decline due to the rise of Pate. The English Consul Holmwood visited the place in 1873 and found it \"dirty and infected with diseases\".\nOn 5 September 2009, a tragic fire took place, destroying 430 houses and leaving 2500 homeless. The Kenya Red Cross Society (KRCS) have provided housing and thousands of items of emergency needs, including blankets, sanitation equipment, tanker loads of water etc., to some of those affected.\nThe French government has funded a hospital, complete with theatre. This has removed the need for the four-hour boat trip to Lamu in emergencies. The cost was KSh.9.5 million/= for the construction and a further KSh.3.9 million/= for theatre equipment. The KRCS have spent a further KSh.23 million/= on wells and food supplies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "faza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7935,
+    "attempt": 7882,
+    "place_id": "gn-2141050",
+    "input": {
+      "place": {
+        "place_id": "gn-2141050",
+        "name": "Hienghène",
+        "country": "New Caledonia",
+        "subdivision": "North Province",
+        "lat": -20.68333,
+        "lon": 164.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hienghène",
+          "url": "https://en.wikipedia.org/wiki/Hiengh%C3%A8ne",
+          "text": "Hienghène (French pronunciation: [jɛ̃ɡɛn] ,; Fwâi: Hyehen) is a commune in the North Province of New Caledonia, an overseas territory of France in the Pacific Ocean. It is located on a bay called Hienghène Bay, known for its eroded limestone islets.\nThe islets are remnants of a limestone and silica formation that once covered the whole of the bay, some 40 million years ago. Erosion from wind and water carved away the softer limestone, leaving the harder silica behind in eye-catching formations. Several of these formations have been given fanciful names, such as the Sphinx, the Towers of Notre Dame, and the Hen (pictured).\nThe commune is home to New Caledonia Super Ligue football club Hienghène Sport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "hienghene",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7936,
+    "attempt": 7883,
+    "place_id": "gn-2629833",
+    "input": {
+      "place": {
+        "place_id": "gn-2629833",
+        "name": "Norðurþing",
+        "country": "Iceland",
+        "subdivision": "Northeast",
+        "lat": 66.04148,
+        "lon": -17.33834
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norðurþing",
+          "url": "https://en.wikipedia.org/wiki/Nor%C3%B0ur%C3%BEing",
+          "text": "Norðurþing (Icelandic pronunciation: [ˈnɔrðʏrˌθiŋk] ) is a municipality located in northern Iceland. Norðurþing was formed in 2006 when the municipalities of Húsavík, Öxarfjörður, Raufarhöfn, and Kelduneshreppur were merged after special elections in January 2006 and the region was officially declared a new municipality on 10 June 2006.\nThe biggest town in the municipality is Húsavík, with a population of 2,307 inhabitants. Other settlements include Kópasker (population 122), Raufarhöfn (population 186), and Skinnastaður.\nHúsavík is known as the whale watching capital of Europe   and is centrally located for visitors coming to the area who intend to visit Mývatn, Dettifoss, Goðafoss, or the Vatnajökull National Park.\nKópasker is home to the Earth Quake Center  and a local folk museum.\nIn Raufarhöfn, an attraction called the Arctic Henge is currently being built and is already attracting visitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "nor ur ing",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ur",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ing",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7937,
+    "attempt": 7884,
+    "place_id": "gn-2636394",
+    "input": {
+      "place": {
+        "place_id": "gn-2636394",
+        "name": "Swillington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.76846,
+        "lon": -1.4175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Swillington",
+          "url": "https://en.wikipedia.org/wiki/Swillington",
+          "text": "Swillington is a village and civil parish near Leeds, West Yorkshire, England, in the City of Leeds metropolitan borough. It is situated 5 miles (8 km) east from Leeds city centre, north of the River Aire, and is surrounded by streams including Fleakingley Beck. In 2001, Swillington had a population of about 3,530, reducing to 3,381 at the 2011 Census.\nThe village forms part of the Garforth and Swillington ward of Leeds City Council and was a coal mining village until the closure of Primrose Hill pit. A housing estate now sits on the site of the colliery.\n\nThe village is close to St Aidan's nature reserve, and the Leeds Country Way which passes through the village. The population of Swillington decreased to 3,088 in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "swillington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7938,
+    "attempt": 7885,
+    "place_id": "gn-2656051",
+    "input": {
+      "place": {
+        "place_id": "gn-2656051",
+        "name": "Bedale",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.28811,
+        "lon": -1.59181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedale",
+          "url": "https://en.wikipedia.org/wiki/Bedale",
+          "text": "Bedale ( BEE-dayl), is a market town and civil parish in North Yorkshire, England. Bedale Beck is a tributary of the River Swale, which forms one of the Yorkshire Dales. The dale has a predominant agriculture sector and its related small traditional trades, although tourism is increasingly important. Northallerton is 7 miles (11 km) north-east, Middlesbrough 26 miles (42 km) north-east and York is 31 miles (50 km) south-south-east.\nHistorically part of the North Riding of Yorkshire, the town was listed in  Domesday Book under what became the honour of Richmond. The honour had several wapentakes and Bedale was part of Hang (named after Hang Bank in Finghall or alternatively named after Catterick) and later Hang East."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "bedale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7939,
+    "attempt": 7886,
+    "place_id": "gn-2833154",
+    "input": {
+      "place": {
+        "place_id": "gn-2833154",
+        "name": "Selsingen",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.37329,
+        "lon": 9.21289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Selsingen",
+          "url": "https://en.wikipedia.org/wiki/Selsingen",
+          "text": "Selsingen is a municipality in the district of Rotenburg, in Lower Saxony, Germany. It is situated approximately 15 kilometres (9.3 mi) southeast of Bremervörde, and 45 kilometres (28 mi) northeast of Bremen, and is twinned with the English village of Sawston in Cambridgeshire.\nSelsingen was under the secular governance of the Prince-Archbishopric of Bremen, established in 1180. However, in respect to religious governance, Selsingen formed part of the Roman Catholic Diocese of Verden. In 1648 the Prince-Archbishopric was transformed into the Duchy of Bremen, which was first ruled in personal union by the Swedish and from 1715 on by the Hanoverian Crown. In 1823 the Duchy was abolished and its territory became part of the Stade Region.\nSelsingen is also the seat of the Samtgemeinde (\"collective municipality\") Selsingen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "selsingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7940,
+    "attempt": 7887,
+    "place_id": "gn-3170754",
+    "input": {
+      "place": {
+        "place_id": "gn-3170754",
+        "name": "Pieve di Cadore",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 46.42466,
+        "lon": 12.36416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pieve di Cadore",
+          "url": "https://en.wikipedia.org/wiki/Pieve_di_Cadore",
+          "text": "Pieve di Cadore is a comune (municipality) in the province of Belluno in the Italian region of Veneto, about 110 kilometres (68 miles) north of Venice and about 35 km (22 miles) northeast of Belluno. \"Pieve\" means \"Parish church\". It is the birthplace of the Italian painter Titian; the house where he was born remains largely intact, and is a small museum.\nWith its strategic location, the town was a medieval stronghold with fortifications, called the \"walled city of the Veneto.\" The main sight is the Palazzo della Magnifica Comunità (\"Palace of the Magnificent Community\"), built in 1447 by the eponymous council which then ruled the city. It has a merloned tower which was completed in 1491."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "pieve di cadore",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pieve",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cadore",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7941,
+    "attempt": 7888,
+    "place_id": "gn-3923770",
+    "input": {
+      "place": {
+        "place_id": "gn-3923770",
+        "name": "Arani",
+        "country": "Bolivia",
+        "subdivision": "Cochabamba",
+        "lat": -17.56854,
+        "lon": -65.76883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arani, Bolivia",
+          "url": "https://en.wikipedia.org/wiki/Arani,_Bolivia",
+          "text": "Arani, also known as Jarani (from Quechua: jarani or jallmani) is the capital of Arani Province and Arani Municipality located in Cochabamba Department in the center of Bolivia at an altitude of 9,400 ft (2,865 m). At the time of census 2001 it had 3,512 inhabitants.\nArani is well known for its bread due to the traditional use of multiple types of flour for making the bread. Bread is sold in various shops along the main streets leading to the main square, and along the major highway that leads to the city of Cochabamba. There is a bread festival held each year.\nDuring November through early December, the rainy season sets in and heavy rainfall is expected. Due to the geographical location in the valleys, the winds of Arani sometimes cause heavy rainfalls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "arani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7942,
+    "attempt": 7889,
+    "place_id": "gn-4139199",
+    "input": {
+      "place": {
+        "place_id": "gn-4139199",
+        "name": "Ivy City",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.91122,
+        "lon": -76.9847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ivy City",
+          "url": "https://en.wikipedia.org/wiki/Ivy_City",
+          "text": "Ivy City is a small neighborhood in Northeast Washington, D.C., in the United States. About half the neighborhood is industrial or formerly industrial, dominated by warehouses. The Ivy City Yard, a railroad coach yard and maintenance facility for the passenger railroad Amtrak, is situated northwest across New York Avenue NE. \nIvy City was laid out as a suburban development for African Americans in 1873. Development was slow. From 1879 to 1901, the neighborhood hosted the Ivy City Racetrack, a horse racing facility. Construction on the rail yard began in 1907 and was complete within a year; many of its facilities were demolished in 1953 and 1954 as railroads switched from coal-fired locomotives to diesel-fueled or electric engines. The Alexander Crummell School, a community focal point, opened in 1911. After some years of enrollment decline, it closed in 1972 but has not been demolished. \nIn the 21st century, the area has undergone some gentrification, although people living in the residential core of Ivy City remain very poor and unemployment is high."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "ivy city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ivy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7943,
+    "attempt": 7890,
+    "place_id": "gn-4893384",
+    "input": {
+      "place": {
+        "place_id": "gn-4893384",
+        "name": "Galena",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.41667,
+        "lon": -90.42902
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Galena, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Galena,_Illinois",
+          "text": "Galena is the largest city in Jo Daviess County, Illinois, United States, and its county seat. It had a population of 3,308 at the 2020 census. A 581-acre (235 ha) section of the city is listed on the National Register of Historic Places as the Galena Historic District. The city is named for the mineral galena, which was in the ore that formed the basis for the region's early lead mining economy.\nNative Americans, primarily Meskwaki, Ho-Chunk, Sauk, and Menominee had mined galena in the area for more than a thousand years before European Americans settled in the area. Owing to these deposits, Galena was the site of the first major mineral rush in the United States. By 1828, the population was estimated at 10,000, rivaling the population of Chicago at the time. Galena developed as the largest steamboat hub on the Mississippi River north of St. Louis. Galena was the home of Ulysses S. Grant and eight other Civil War generals. Today, the city is a tourist destination known for its history, architecture, and resorts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "galena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7944,
+    "attempt": 7891,
+    "place_id": "gn-5272249",
+    "input": {
+      "place": {
+        "place_id": "gn-5272249",
+        "name": "Saukville",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 43.38167,
+        "lon": -87.94065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saukville, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Saukville,_Wisconsin",
+          "text": "Saukville is a village in Ozaukee County, Wisconsin, United States. Located on the Milwaukee River with a district along Interstate 43, the community is a suburb in the Milwaukee metropolitan area. The population was 4,258 at the 2020 census.\nDowntown Saukville was the site of a Native American village at the crossroads of two trails before white settlers arrived in the mid-1840s. In its early years, the community was a stagecoach stop on the road from Milwaukee to Green Bay and also grew as a mill and market town serving the dairy farmers of northwestern Ozaukee County. The village incorporated in 1915 and later in the 20th century grew into a suburban community with a manufacturing-based economy. As of 2019, more than 40% of the village's jobs were in manufacturing, with the largest employers being a steel mill as well as several foundries and metal fabricators.\nThe village and the neighboring Town of Saukville are rich in biodiverse bogs and coniferous swamps, the largest of which is the 2,200-acre Cedarburg Bog State Natural Area. The area's bogs are a habitat for endangered species, many types of birds, and carnivorous plants. Among other landforms, the Cedarburg Bog contains a string bog—a geographic feature that seldom occurs as far south as Wisconsin—which contains many plant species rarely seen outside remote parts of Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "saukville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7945,
+    "attempt": 7892,
+    "place_id": "gn-5937522",
+    "input": {
+      "place": {
+        "place_id": "gn-5937522",
+        "name": "Delhi",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.8501,
+        "lon": -80.49968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Delhi, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Delhi,_Ontario",
+          "text": "Delhi (; DEL-hy) refers to both a former township and unincorporated community located off of the junction of Ontario Highways 59 and 3.  Delhi is known as the \"Heart of Tobacco Country.\" Prior to 1880, the community was known for its lumber industry. A community of Norfolk County, Delhi, had a population of 4,240 at the time of the 2016 Census.\nFounded by Frederick Sovereen (spelled \"Sovereign\" by a few sources), the settlement was called  Sovereen's Corners or Sovereign's Corners and was located in Middleton Township. Later, the community was renamed Fredericksburg and in 1856 to its present-day name of Delhi. The name is usually attributed locally to a postmaster honouring the major city of Delhi, India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "delhi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7946,
+    "attempt": 7893,
+    "place_id": "gn-752659",
+    "input": {
+      "place": {
+        "place_id": "gn-752659",
+        "name": "Akbaba",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.15108,
+        "lon": 29.11737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Akbaba, Istanbul",
+          "url": "https://en.wikipedia.org/wiki/Akbaba,_Istanbul",
+          "text": "Akbaba is a neighbourhood in the municipality and district of Beykoz, Istanbul Province, Turkey. Its population is 2,771 (2022). It is home to the türbe of Akbaba Sultan (Akbaba Mehmed Efendi or Akmehmet Efendi in short), a Bektashi Sufi baba who participated in the Conquest of Constantinople and was a mentor of Ottoman Sultan Mehmet the Conqueror (reigned 1444–1446, 1451–1481). Following the Conquest, he moved to this valley rich with spring waters and established a tekke with his dervish murids. The tekke was last revived by the Naqshbandi Shaykh Abdulhakim Efendi of Bukhara between 1876 and 1889.\nCanfeda Hatun, a noblewoman attendant of Sultan Murad III’s mother, completed building a mosque in 1588 which bears her name.\nIt is thought that the Sufi complex first fell into disuse, along with all other Bektashi lodges in and around Istanbul, with its closure following the Auspicious Incident of 1826. Its followers were exiled from the area. Following an inactive period of half a century, during the reign of Sultan Abdulhamid II, it was turned over to Shaykh Abdulhakim by Abdulkadir Pasha, the commander of Istanbul central command. The pasha helped rebuild the center. Upon Shaykh Abdulhakim's passing in 1889, he was buried near Akbaba Sultan behind the tekke, which came to be Akbaba Cemetery extending up the hillside. His son Ahmed Mansur Mukerrem Efendi took his place and was active until the declaration of all tekkes and zawiyas to be illegal in 1925. The law for the closure of traditional institutions was passed on 30 November 1925 as part of Mustafa Kemal's reforms and revolutions.\nReligious institutions started to appear in public life along with the multi-party system following the 1950 Turkish general election. By this time, most of the tekke buildings were destroyed and only the mosque and attached harem section remained. The harem section was turned into an imam's office. The government of President Erdogan and his AK Party supported religious institutions and restored the mosque in the 2000s. The mosque was rebuilt again in the 2010s, keeping true to its original wooden form on a stone foundation, and reclaiming the entire borders of the complex with landscaping and a stone border wall.\nA Rifai tekke also existed in the village but its one known building fell into disuse, rotted away and was demolished for safety reasons. The graveyard of the tekke is preserved and lies next to the property of Akbaba Dergah.\nThe area is famous for its greenery which attracts the filming of Turkish TV series."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 418
+    },
+    "banned_terms": [
+      {
+        "term": "akbaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7947,
+    "attempt": 7894,
+    "place_id": "gn-8348921",
+    "input": {
+      "place": {
+        "place_id": "gn-8348921",
+        "name": "Rosewater",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.852,
+        "lon": 138.52158
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosewater, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Rosewater,_South_Australia",
+          "text": "Rosewater is one of the western suburbs of Adelaide and is located 10 km north-west of Adelaide's central business district. Although mainly residential, there are many shops along Grand Junction Road and the closed Rosewater Loop railway line runs through the suburb. Rosewater is split in half by Grand Junction Road and bordered on the east by Addison Road, and on the south by Torrens Road.\nOriginally, the area was mainly used as vegetable and dairy farmland but became more and more residential as the railway lines and Grand Junction Road were completed and as Port Adelaide grew and developed. Rosewater was also the site of the AdelaideRadio (VIA) maritime radio station system from 1912 to 1963."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "rosewater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7949,
+    "attempt": 7895,
+    "place_id": "gn-2682706",
+    "input": {
+      "place": {
+        "place_id": "gn-2682706",
+        "name": "Resarö",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.4291,
+        "lon": 18.33386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Resarö",
+          "url": "https://en.wikipedia.org/wiki/Resar%C3%B6",
+          "text": "Resarö is an island in the Stockholm archipelago and a locality in Vaxholm Municipality, Stockholm County, Sweden. The island is divided into four populated areas: Överby, Ytterby, Storäng, Engarn and Ladvik, of which Ytterby notably is the most famous one because of its local mine. It had 3,212 inhabitants in 2020. Resarö includes the hamlet of Ytterby, famous for the discovery of several rare-earth elements in a local mine.\nAt its southern end, the island is crossed by county road 274, with a bridge to the south linking it to the island of Kullö and, via that, to the Vaxholm urban area. To the west, a bridge links to the mainland via the islet of Bullerholmen. Local roads connect the county road with centres of population to the north of the island. Except for the winter months, passenger ships of the Waxholmsbolaget call at a pier in Ytterby, providing a connection to Vaxholm town and Stockholm city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "resaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7950,
+    "attempt": 7896,
+    "place_id": "gn-2778455",
+    "input": {
+      "place": {
+        "place_id": "gn-2778455",
+        "name": "Gloggnitz",
+        "country": "Austria",
+        "subdivision": "Lower Austria",
+        "lat": 47.67487,
+        "lon": 15.93893
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gloggnitz",
+          "url": "https://en.wikipedia.org/wiki/Gloggnitz",
+          "text": "Gloggnitz is a mountain town in the Neunkirchen district of Lower Austria, Austria.\nGloggnitz is situated in the south-western part of the Vienna Basin in Lower Austria. It is surrounded by the highest mountains in Lower Austria, Mount Rax (2,007 m or 6,585 ft) and Mount Schneeberg (2,076 m or 6,811 ft). The town is also a major traffic junction: Gloggnitz is situated on the main Südbahn (the important rail route between Vienna and Trieste in Italy) and the S6 motorway.\nGloggnitz is famous for producing two of Austria's most distinguished Federal Presidents. Federal President Dr Michael Hainisch (1858–1940) and the Chancellor of State and later Federal President Dr Karl Renner (1870–1950) were both Gloggnitz citizens. Dr Karl Renner spent 42 years of his life in Gloggnitz (up until his death in 1950). On the occasion of the anniversary of his hundredth birthday a monument was erected in Dr Karl Renner Square. A museum in his former residence also commemorates the life of this highly respected former Gloggnitz resident."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "gloggnitz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7951,
+    "attempt": 7897,
+    "place_id": "gn-3589400",
+    "input": {
+      "place": {
+        "place_id": "gn-3589400",
+        "name": "Santa Cruz Muluá",
+        "country": "Guatemala",
+        "subdivision": "Retalhuleu",
+        "lat": 14.58153,
+        "lon": -91.62441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz Muluá",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_Mulu%C3%A1",
+          "text": "Santa Cruz Muluá is a municipality in the Retalhuleu department of Guatemala. Its name comes from the ancient mayan word \" Mulaja \" which means \" Land Between Rivers, \" because its between the Samalá River, the Rio Muluá and many other small rivers and streams. It is situated 180 km from Guatemala City.  The administrative center is bounded by the Samalá River to the west, which serves as the border with San Sebastián.  Santa Cruz Muluá borders on the north with San Martín Zapotitlán, with theme parks Xetulul and Xocomil. Also to the north lies San Felipe famous for its blood sausage (moronga locally), to the east and the south is San Andrés Villa Seca.  Santa Cruz Mulua municipality contains several villages: El Asintal (also Canton Asintal), Los Brillantes (also Finca Los Brilliantes), Boxoma further to the south and not often visited and, Lolita, which is the most distant and close the Pacific coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz mulua",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mulua",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7952,
+    "attempt": 7898,
+    "place_id": "gn-3816366",
+    "input": {
+      "place": {
+        "place_id": "gn-3816366",
+        "name": "Frontera Corozal",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.81473,
+        "lon": -90.88351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frontera Corozal",
+          "url": "https://en.wikipedia.org/wiki/Frontera_Corozal",
+          "text": "Frontera Corozal is a mostly Ch’ol community located in the Mexican state of Chiapas on the Usumacinta River, which separates it from neighboring Guatemala. The community was founded in the 1970s by families migrating from northern Chiapas. It is known for its dock with boats called lanchas which ferry people to the otherwise inaccessible Mayan ruins of Yaxchilan as well as to Bethel, Guatemala. It is also home to a regional museum, which is centered on two steles found nearby at Dos Caobas. The community is located in the Lacandon Jungle, surrounded by tropical rainforest, but this area has suffered severe damage. There have been recent efforts to promote conservation here, especially on communally owned lands. As of 2010, the town of Frontera Corozal had a population of 5,184."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "frontera corozal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "frontera",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "corozal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7953,
+    "attempt": 7899,
+    "place_id": "gn-4504221",
+    "input": {
+      "place": {
+        "place_id": "gn-4504221",
+        "name": "South Toms River",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.94206,
+        "lon": -74.20431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Toms River, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/South_Toms_River,_New_Jersey",
+          "text": "South Toms River is a borough in Ocean County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 3,643, a decrease of 41 (−1.1%) from the 2010 census count of 3,684, which in turn reflected an increase of 50 (+1.4%) from the 3,634 counted in the 2000 census.\nSouth Toms River was incorporated as a borough by an act of the New Jersey Legislature on March 28, 1927, from portions of Berkeley Township, based on the results of a referendum held on May 3, 1927. The borough was named for the Toms River and the neighboring community of Toms River, which were named for Capt. William Tom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "south toms river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "toms",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7954,
+    "attempt": 7900,
+    "place_id": "gn-5098885",
+    "input": {
+      "place": {
+        "place_id": "gn-5098885",
+        "name": "Haskell",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.02843,
+        "lon": -74.29598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haskell, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Haskell,_New_Jersey",
+          "text": "Haskell is an unincorporated community located within Wanaque Borough, in Passaic County, in the U.S. state of New Jersey. Haskell was formed in 1898 as a company town for a smokeless powder mill of the Laflin & Rand Powder Company.  The town was named for Laflin & Rand company president Jonathan Haskell.  The Haskell powder mill manufactured the W.A. .30 caliber smokeless powder used in United States Army service rifles until 1908.  Laflin & Rand was purchased by DuPont in 1902, suffered from an explosion caused by sabotage in World War I, and the powder mill ceased operations in 1926.  The area is served by the United States Postal Service as part of ZIP Code 07420. The community is located in suburban Northern New Jersey.\n\nAs of the 2010 United States census, the population for ZIP Code Tabulation Area 07420 was 4,942."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "haskell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
