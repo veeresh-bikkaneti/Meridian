@@ -41,6 +41,10 @@ Deliverables in `scripts/clues/`: `schema.mjs`, `validate-clues.mjs` (+23 tests)
 - **Published:** `public/loop/clues/0.json`–`62.json` in fame-rank order + `manifest.json` size **63**. Mechanical leak scan over published files: 315 clue texts, **0 hits**.
 - **Headline gap:** 365 is not reachable from cache extracts under the locked tier-2 rule (extracts are median-47-word lead excerpts; most carry no sourceable climate mechanism/extreme/paradox). Escalated to Liz/Veeresh mid-run; the fix is a source/target decision (fuller extracts or revised target), not a rule change. Also flagged: Karaj gn-128747's mechanically-passing but hollow climate clue (semantic review = Veeresh's sampling), and 378 crawl-excluded famous places with no extract at all.
 
+## Tier-2 source-expansion scoping (2026-10-04, at Liz's direction — scoping only, sweep still paused)
+
+Scoped whether adding each article's **Climate section** (Geography fallback) as a tier-2 source widens yield under the locked rules. Stratified sample of 200 from the 7,997 worker climate-rejections: **full-set acceptance 21.5% (43/200, validator-clean) vs 0% prior on this population and the 1.77% Option A baseline; tier-2 pass 33%** — all 43 accepts cite the section extract; places with a real Climate section converted at 45.2%, no-section places at 0%. Fetch cost is trivial (≈400 requests / ~6 min for the whole rejected population). Fame-ordered staging projects the remaining 179 sets within ≈3 generation waves. Full approach, cost table, critic/validator-gap notes, and open questions: `scripts/clues/production/tier2-source-expansion-scope.md`. No production waves run, nothing assembled; decision gate sits with Liz/Veeresh.
+
 ## Rules
 
 - Content pipeline only: clue composer/validator scripts + `public/loop/clues/*.json`. No `src/game`, no `src/components`.
