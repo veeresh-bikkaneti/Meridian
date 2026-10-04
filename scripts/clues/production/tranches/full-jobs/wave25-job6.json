@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 4938,
+    "attempt": 4901,
+    "place_id": "gn-3167030",
+    "input": {
+      "place": {
+        "place_id": "gn-3167030",
+        "name": "Savignano sul Rubicone",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.09009,
+        "lon": 12.39935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Savignano sul Rubicone",
+          "url": "https://en.wikipedia.org/wiki/Savignano_sul_Rubicone",
+          "text": "Savignano sul Rubicone (Romagnol: Savgnèn) is a comune (municipality) in the Province of Forlì-Cesena in the Italian region Emilia-Romagna, located about 90 kilometres (56 mi) southeast of Bologna and about 30 kilometres (19 mi) southeast of Forlì.\nThe comune takes its name from the Rubicon, famous for Julius Caesar's historic crossing.  A combination of natural and man-made changes caused the original Rubicon to change course repeatedly.  For centuries the exact location of the original river was unknown.  In 1991, the Fiumicino, a river which crosses Savignano sul Rubicone, was identified as the most likely location for the original Rubicon.  Prior to that the town was called Savignano di Romagna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "savignano sul rubicone",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "savignano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sul",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rubicone",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4939,
+    "attempt": 4902,
+    "place_id": "gn-3349580",
+    "input": {
+      "place": {
+        "place_id": "gn-3349580",
+        "name": "Chissamba",
+        "country": "Angola",
+        "subdivision": "Bíe",
+        "lat": -12.16667,
+        "lon": 17.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chissamba",
+          "url": "https://en.wikipedia.org/wiki/Chissamba",
+          "text": "Chissamba is the site of a Protestant mission near an ombala or capital of a local kingdom located a few kilometers southeast of the town of Catabola, (formerly Nova Sintra), in the province of Bié in Angola.  It was established in 1886 as a joint effort of the United Church of Christ Congregational and the United Church of Canada. The first physician at Chissamba was Dr Walter Currie who arrived in 1886. A Bible school was also started at the mission.\nFrom 1927 to 1967, Dr Walter Strangway and his wife Alice ran the hospital at Chissamba, providing medical care and researching local diseases. They were joined by Dr. Elizabeth Bridgeman and Edith Radley. Dr. Elizabeth Bridgeman continued until after the start of the civil war when she and Edith Radley were forced to leave. The hospital and Bible school were destroyed during the civil war but efforts to rebuild were started.\nThe Missionary Hospital of Chissamba, run by the Evangelical Congregational Church in Angola, partnered with the Angolan government to distribute free medication to the locals. In memory of Strangway's work, the Angolan government named a newly-built hospital near Chissamba after him. The Dr. Walter Strangway Provincial Hospital opened in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "chissamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4940,
+    "attempt": 4903,
+    "place_id": "gn-3529619",
+    "input": {
+      "place": {
+        "place_id": "gn-3529619",
+        "name": "Ébano",
+        "country": "Mexico",
+        "subdivision": "San Luis Potosí",
+        "lat": 22.21808,
+        "lon": -98.37706
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ébano, San Luis Potosí",
+          "url": "https://en.wikipedia.org/wiki/%C3%89bano,_San_Luis_Potos%C3%AD",
+          "text": "Ébano is a town and municipality in the central Mexican state of San Luis Potosí. It is located in the eastern corner of the state, on the border with Veracruz, in the Huasteca region. Its name comes from the Spanish word for ebony. \nThe area was the birthplace, on May 14, 1901, of the petroleum industry in Mexico, with the first strike made by the Mexican Petroleum Company of California (later part of Pan American Petroleum and Transport Company), owned by Edward L. Doheny, assisted by geologist Ezequiel Ordóñez of the Mexican Central Railway.\nIn 1914, during the Mexican Revolution, the Battle of Ébano took place in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "ebano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4941,
+    "attempt": 4904,
+    "place_id": "gn-3531798",
+    "input": {
+      "place": {
+        "place_id": "gn-3531798",
+        "name": "Calimaya",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.16324,
+        "lon": -99.6181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calimaya",
+          "url": "https://en.wikipedia.org/wiki/Calimaya",
+          "text": "Calimaya is a town and municipality located just south of Toluca, the capital of the State of Mexico in central Mexico. The settlement was probably established around 800 BCE, when the city of Teotenango was in existence. It remained an important town through the colonial period, part of the vast lands held by a family which came to be known as the Counts of Calimaya. The town is home to one of the oldest examples of an open chapel in the State of Mexico. Today, the municipality is still mostly agricultural but there has been a rapid construction of housing divisions, changing parts of it from rural to suburban."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "calimaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4942,
+    "attempt": 4905,
+    "place_id": "gn-4195701",
+    "input": {
+      "place": {
+        "place_id": "gn-4195701",
+        "name": "Forest Park",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.62205,
+        "lon": -84.36909
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forest Park, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Forest_Park,_Georgia",
+          "text": "Forest Park is a city in Clayton County, Georgia, United States. It is located approximately nine miles (14 km) south of Atlanta and is part of the Atlanta metropolitan area. As of the 2020 census, the city had a population of 19,932.\nIn the 1800s, Forest Park was named Stump Town, due to the large number of stumps left behind from trees being cut for fuel for the trains passing to and from Atlanta. After being charted and incorporated in 1908, it became known as several names, such as Quick Station, Aster, and Forrest Station. Until the 1950s, Forest Park was spelled with two \"R's\" instead of just one."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "forest park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4943,
+    "attempt": 4906,
+    "place_id": "gn-4408672",
+    "input": {
+      "place": {
+        "place_id": "gn-4408672",
+        "name": "Sikeston",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 36.87672,
+        "lon": -89.58786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sikeston, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Sikeston,_Missouri",
+          "text": "Sikeston ( SYKE-stən) is a city located both in southern Scott County and northern New Madrid County, in the state of Missouri, United States. It is situated just north of the \"Missouri Bootheel\", although many locals consider Sikeston a part of it. By way of Interstate 55, Interstate 57, and U.S. Route 60, Sikeston is close to the halfway point between St. Louis and Memphis, Tennessee and is four hours from Nashville.\nThe city is named after John Sikes, who founded it in 1860. It is the principal city of the Sikeston Micropolitan Statistical Area, which consists of all of Scott County, and has a total population of 41,143.\nAs of the 2020 census, the city population was 16,291, making it the fourth-most populous city in Missouri's 8th Congressional district behind Cape Girardeau, Rolla, and Farmington, and just ahead of Poplar Bluff which has had a similar population as Sikeston over the last few decades. Before the 2010 census, it had been the second-most populous city in the congressional district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "sikeston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4944,
+    "attempt": 4907,
+    "place_id": "gn-5073661",
+    "input": {
+      "place": {
+        "place_id": "gn-5073661",
+        "name": "Nebraska City",
+        "country": "United States",
+        "subdivision": "Nebraska",
+        "lat": 40.67667,
+        "lon": -95.85917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nebraska City, Nebraska",
+          "url": "https://en.wikipedia.org/wiki/Nebraska_City,_Nebraska",
+          "text": "Nebraska City is a city in and the county seat of Otoe County, Nebraska, United States. As of the 2020 census, the city population was 7,222.\nThe Nebraska State Legislature has credited Nebraska City as being the oldest incorporated city in the state, as it was the first approved by a special act of the Nebraska Territorial Legislature in 1855.\nNebraska City is the home of Arbor Day, the Missouri River Basin Lewis and Clark Center (which focuses on the natural history achievements of the expedition), and the Mayhew Cabin, the only site in the state recognized by the National Park Service as a station on the Underground Railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "nebraska city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nebraska",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4945,
+    "attempt": 4908,
+    "place_id": "gn-5101159",
+    "input": {
+      "place": {
+        "place_id": "gn-5101159",
+        "name": "Middlesex",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.5726,
+        "lon": -74.49265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middlesex, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Middlesex,_New_Jersey",
+          "text": "Middlesex is a borough in Middlesex County, in the U.S. state of New Jersey. It is located within the Raritan Valley region. As of the 2020 United States census, the borough's population was 14,636, its highest decennial count and an increase of 1,001 (+7.3%) from the 2010 census count of 13,635, which in turn reflected a decline of 82 (−0.6%) from the 13,717 counted in the 2000 census.\nMiddlesex was incorporated as a borough by an act of the New Jersey Legislature on April 9, 1913, from portions of Piscataway, based on the results of a referendum held on May 6, 1913. The borough was named after Middlesex, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "middlesex",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4946,
+    "attempt": 4909,
+    "place_id": "gn-5121549",
+    "input": {
+      "place": {
+        "place_id": "gn-5121549",
+        "name": "Huguenot",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.53733,
+        "lon": -74.19459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huguenot, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Huguenot,_Staten_Island",
+          "text": "Huguenot is a neighborhood on the South Shore of Staten Island, New York City.  Originally named \"Bloomingview\", it was later named for the Huguenots, led by Daniel Perrin, who settled in the area during the late 17th and early 18th centuries to escape religious persecution. Huguenot is bordered by Arden Heights to the north, Woodrow to the west, Prince's Bay to the south, and Annadale to the east.  The neighborhood is represented in the New York City Council by Joe Borelli, who was born and raised there. Huguenot is represented in the New York State Senate by Andrew Lanza and in the New York State Assembly by Michael Reilly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "huguenot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4947,
+    "attempt": 4910,
+    "place_id": "gn-5173048",
+    "input": {
+      "place": {
+        "place_id": "gn-5173048",
+        "name": "Steubenville",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.36979,
+        "lon": -80.63396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steubenville, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Steubenville,_Ohio",
+          "text": "Steubenville ( STEW-bən-vil) is a city in Jefferson County, Ohio, United States, and its county seat. The city is located on the eastern border of Ohio along the Ohio River, abutting the northern panhandle of West Virginia and 33 miles (53 km) west of Pittsburgh, Pennsylvania. Steubenville had a population of 18,161 at the 2020 census. The Weirton–Steubenville metropolitan area has an estimated 113,000 residents. The city's name is derived from Fort Steuben, a 1786 fort that sat within the city's current limits and was named for Prussian military officer Baron Friedrich Wilhelm von Steuben.\nSteubenville's nickname is the \"City of Murals\" after its more than 25 downtown murals. Historically, it was known as the hometown of Edwin Stanton, secretary of war during the American Civil War, as well as popular Rat Pack entertainer Dean Martin. It has recently attracted attention for the Steubenville Nutcracker Village, an annual Christmastime event. It is home to the campus of Franciscan University of Steubenville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "steubenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4948,
+    "attempt": 4911,
+    "place_id": "gn-5370493",
+    "input": {
+      "place": {
+        "place_id": "gn-5370493",
+        "name": "Marina",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.6844,
+        "lon": -121.80217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marina, California",
+          "url": "https://en.wikipedia.org/wiki/Marina,_California",
+          "text": "Marina is a city in Monterey County, California, United States. As of the 2020 census, the population was 22,359, up from 19,718 in 2010. The city is located along the central coast of California, 8 miles (13 km) west of Salinas and 8 miles (13 km) northeast of Monterey. It is on California State Route 1 between Monterey and Santa Cruz and sits at an elevation of 43 feet (13 m).\nMarina was incorporated in 1975 and is the newest city in the Monterey area. It includes part of the California State University, Monterey Bay campus, the UC Santa Cruz UC MBEST center, and the Veterans Transition Center (VTC). In 2012, Marina was named one of the 100 Best Communities for Young People by America's Promise Alliance. The Fort Ord Station Veterinary Hospital, built in 1941 to provide healthcare for U.S. Army horses and mules, was listed on the National Register of Historic Places in 2014."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "marina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4949,
+    "attempt": 4912,
+    "place_id": "gn-5422534",
+    "input": {
+      "place": {
+        "place_id": "gn-5422534",
+        "name": "Fruita",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.15887,
+        "lon": -108.72899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fruita, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Fruita,_Colorado",
+          "text": "Fruita () is a home rule municipality located in western Mesa County, Colorado, United States. The city population was 13,395 at the 2020 United States census. Fruita is a part of the Grand Junction, Colorado Metropolitan Statistical Area and lies within the Grand Valley. The geography is identified by the bordering Colorado River (historically known as the Grand River) on the southern edge of the town, the Uncompahgre Plateau known for its pinyon-juniper landscape, and the Book Cliffs range on the northern edge of the Grand Valley. Originally home to the Ute people, farmers settled the town after founder William Pabor in 1884. Ten years later, Fruita was incorporated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "fruita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4950,
+    "attempt": 4913,
+    "place_id": "gn-5896522",
+    "input": {
+      "place": {
+        "place_id": "gn-5896522",
+        "name": "Beaumont",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.35013,
+        "lon": -113.41871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaumont, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Beaumont,_Alberta",
+          "text": "Beaumont ( BOH-mont) is a city adjacent to Leduc County within the Edmonton Metropolitan Region of Alberta, Canada. It is at the intersection of Highway 625 and Highway 814, adjacent to the City of Edmonton and 6.0 kilometres (3.7 mi) northeast of the City of Leduc. The Nisku Industrial Park and the Edmonton International Airport are 4.0 kilometres (2.5 mi) to the west and 8.0 kilometres (5.0 mi) to the southwest respectively.\nOriginally a French-speaking farming community, Beaumont is now a city with 20,888 people. Its downtown core resembles a French village with unique architecture and red brick walkways. It is named for the \"beautiful hill\" on which St. Vital Church, built in 1919, is located within the centre of the city.  The name was selected in 1895 as part of a petition for a post office.\nBeaumont is one of four municipalities in Alberta that are officially bilingual."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "beaumont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4951,
+    "attempt": 4914,
+    "place_id": "gn-616721",
+    "input": {
+      "place": {
+        "place_id": "gn-616721",
+        "name": "Jrvezh",
+        "country": "Armenia",
+        "subdivision": "Kotayk",
+        "lat": 40.18889,
+        "lon": 44.62414
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jrvezh",
+          "url": "https://en.wikipedia.org/wiki/Jrvezh",
+          "text": "Jrvezh (Armenian: Ջրվեժ), meaning \"waterfall\", is a major village in the Kotayk Province of Armenia, located at the eastern outskirts of the capital Yerevan. The village is 45 km south of the provincial capital Hrazdan, and 9 km from the town of Abovyan.\nThe name of the village appeared for the first time in history during the 5th century by historian Ghazar Parpetsi.\nThe village is home to many historical sites including the remains of 2 chapels dating back to the 7th and 13th centuries respectively.\nThe present-day Surp Katoghike church of Jrvezh was opened in 1891.\nAs of the 2011 census, the population of the village is 7,198."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "jrvezh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4952,
+    "attempt": 4915,
+    "place_id": "gn-691037",
+    "input": {
+      "place": {
+        "place_id": "gn-691037",
+        "name": "Oleshky",
+        "country": "Ukraine",
+        "subdivision": "Kherson",
+        "lat": 46.62553,
+        "lon": 32.72426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oleshky",
+          "url": "https://en.wikipedia.org/wiki/Oleshky",
+          "text": "Oleshky (Ukrainian: Олешки, pronounced [oˈlɛʃkɪ] ), previously known as Tsiurupynsk from 1928 to 2016, is a city in Kherson Raion, Kherson Oblast, southern Ukraine, located on the left bank of the Dnieper River with the town of Solontsi to the south. It is the oldest city of the oblast and one of the oldest in southern Ukraine. It is known for its proximity to the Oleshky Sands, a large desert region. Oleshky is the site of artist Polina Rayko's home, a national cultural monument of Ukraine. It also hosts the administration of Oleshky urban hromada, one of the hromadas of Ukraine. It had a population of 24,124 (2022 estimate). \nOleshky has been occupied by Russia since 2022. The city’s population significantly declined as a result, with only around 2,000 people estimated to live in the city. It is currently suffering from a humanitarian crisis resulting in a famine from Russian administration actively blocking humanitarian aid and civilian evacuations, using the crisis to promise support to those who agree to receive Russian citizenship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "oleshky",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4953,
+    "attempt": 4916,
+    "place_id": "gn-7648891",
+    "input": {
+      "place": {
+        "place_id": "gn-7648891",
+        "name": "Kharkhorin",
+        "country": "Mongolia",
+        "subdivision": "Övörhangay",
+        "lat": 47.19245,
+        "lon": 102.81349
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kharkhorin",
+          "url": "https://en.wikipedia.org/wiki/Kharkhorin",
+          "text": "Kharkhorin (Mongolian: ᠬᠠᠷᠠᠬᠣᠷᠢᠨ) is a town and sum (district) center in Övörkhangai Province in Mongolia. It is well known for being the capital of the Mongol Empire in the 13th century covering 23 million km2. The sum population was 13,828 (1994), 13,964 (2000), and 14,765 (2017). The population of Kharkhorin town itself was 14,765 in 2017 and covered an area of 20.5 km2.\nKharkhorin is located at the lower end of the upper valley of the Orkhon River which is included within UNESCO's World Heritage Site Orkhon Valley Cultural Landscape. The location marks the easternmost foothills of the Khangai Mountains, where they meet the rolling steppe of central Mongolia.\nNearby are the ruins of the ancient town of Karakorum (also known as Kharkhorum or Qara Qorum) which, for a short time, served as the capital of the Mongol Empire under Ogedei Khan, the third son of Genghis Khan. Another Kharkhorin landmark is Erdene Zuu Monastery and its famous phallic rock.  The important Paleolithic archaeological site of Moiltyn-am is located near the bridge over the Orkhon River, just west of the settlement.  A modern resort is south of Kharkhorin at Khujirt on the river.\nKharkhorin's principal sources of income are tourism and agriculture. Water from the Orkhon River serves to irrigate crops on the large plain east of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "kharkhorin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4954,
+    "attempt": 4917,
+    "place_id": "gn-847417",
+    "input": {
+      "place": {
+        "place_id": "gn-847417",
+        "name": "Martinlaakso",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.27409,
+        "lon": 24.85065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Martinlaakso",
+          "url": "https://en.wikipedia.org/wiki/Martinlaakso",
+          "text": "Martinlaakso (Swedish: Mårtensdal) is a district in Vantaa, Finland. Located in the Myyrmäki major region, it is the second most populous district in all of Vantaa, after Myyrmäki itself. At the end of 2024 Martinlaakso had a population of 14,222, beating out Hakunila.\nMartinlaakso has two railway stations, Martinlaakso railway station and Vantaankoski railway station, as well as a medical center, several shopping areas, and a comprehensive school (lower level [6 years] and upper level [three years]) and an upper secondary school. It is the birthplace of former Formula One drivers Mika Häkkinen and Mika Salo. Former Formula One star Kimi Räikkönen also spent a part of his childhood in Martinlaakso.\n\nMartinlaakso was the home for Martinkeskus, which was the largest shopping center in the Nordic countries at the time of its completion in 1960s. Another shopping center in the area is Martinlaakson Ostari, which was completed in 2011.\n\nSome pictures of Martinlaakso."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "martinlaakso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4955,
+    "attempt": 4918,
+    "place_id": "gn-8573188",
+    "input": {
+      "place": {
+        "place_id": "gn-8573188",
+        "name": "Sugamo",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.73484,
+        "lon": 139.73326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sugamo",
+          "url": "https://en.wikipedia.org/wiki/Sugamo",
+          "text": "Sugamo (巣鴨) is a neighborhood in Toshima, Tokyo, Japan. It is home to Jizō-dōri (地蔵通り), a shopping street popular among the older generation, earning it the nickname \"Granny's Harajuku.\" It lies at the crossing point of the JR Yamanote Line and National Route 17.\nAvailable public transportation to Sugamo are JR Yamanote Line and Toei Mita Line. There is also Koshinzuka station of Toden Arakawa Line in the middle of Jizō-dōri (地蔵通り) shopping street. \nTokugawa Yoshinobu, who is the last shogun of the Tokugawa Shogunate set his residence here in 1897. He has lived for 4 years there and moved away to avoid the noise coming from Yamanote Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "sugamo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4956,
+    "attempt": 4919,
+    "place_id": "gn-939340",
+    "input": {
+      "place": {
+        "place_id": "gn-939340",
+        "name": "Winterton",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.81229,
+        "lon": 29.54123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winterton, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Winterton,_South_Africa",
+          "text": "Winterton is a small town on the banks of the Tugela River in the foothills of the Drakensberg mountains, KwaZulu-Natal, South Africa. It was founded in 1905 as Springfield when the Natal Government built a weir across the Little Tugela River. The town later changed its name to Winterton in honour of the secretary for agriculture, HD Winter. Winterton is a small town with only a primary school. It is close to the Second Boer War sites of the Battle of Vaal Krantz and the Spioenkop.\nThe town is situated on the R74 between Bergville and the N3, as well as the R600 between Ladysmith and the Central Drakensberg.\nWinterton also serves as an entry point to the Champagne Valley as well as the Cathedral area of the central Drakensberg, with well known mountain peaks of Champagne Castle and Cathedral Peak respectively - these mountains are considered to be among the most spectacular sights in Southern Africa.\nThe world-famous Drakensberg Boys' Choir School is outside the town, just about 30 kilometres (19 mi) south-southwest of Winterton. The town has also grown to become a popular tourist destination, for South Africans and foreigners alike."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "winterton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4957,
+    "attempt": 4920,
+    "place_id": "gn-1011624",
+    "input": {
+      "place": {
+        "place_id": "gn-1011624",
+        "name": "Dealesville",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.67486,
+        "lon": 25.76681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dealesville",
+          "url": "https://en.wikipedia.org/wiki/Dealesville",
+          "text": "Dealesville is a mixed farming town in the Free State province of South Africa and is surrounded by numerous salt pans. There are many natural springs in the vicinity, most notably Florisbad some 35 km from the town.\nThe town was established on the farm Klipfontein (Afrikaans for Stone fountain), which was owned by John Henry Deale.\nTown some 70 km north-west of Bloemfontein, 55 km south-east of Boshof and 111 km east of Kimberley on the R64 road. It was laid out on the farm Klipfontein and named after the owner, John Henry Deale. It was proclaimed a township in 1899 and achieved municipal status in 1914. The spas Baden-Baden and Florisbad are respectively 14 and 37 km from Dealesville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "dealesville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

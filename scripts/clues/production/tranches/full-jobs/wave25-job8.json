@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 4979,
+    "attempt": 4941,
+    "place_id": "gn-6154636",
+    "input": {
+      "place": {
+        "place_id": "gn-6154636",
+        "name": "Squamish",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.69925,
+        "lon": -123.15631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Squamish, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Squamish,_British_Columbia",
+          "text": "Squamish (; [ˈsqʷχʷuː.ʔməʃ] ; 2021 census population 23,819) is a community and a district municipality in the Canadian province of British Columbia, located at the north end of Howe Sound on the Sea to Sky Highway. The population of the Squamish census agglomeration is 24,232. This includes First Nation reserves of the Squamish Nation although they are not governed by the municipality.\nThe Indigenous Squamish people have lived in the area for thousands of years. The town of Squamish had its beginning during the construction of the Pacific Great Eastern Railway in the 1910s. It was the first southern terminus of that railway (now a part of CN). The town remains important in the operations of the line and also the port. Forestry has traditionally been the main industry in the area, and the town's largest employer was the pulp mill operated by Western Forest Products. However, Western's operations in Squamish permanently ceased on January 26, 2006. Before the pulp mill, the town's largest employer had been International Forest Products (Interfor) with its sawmill and logging operation, but it closed a few years prior to the pulp mill's closing. In recent years, Squamish has become popular with Vancouver and Whistler residents escaping the increased cost of living in those places, both less than one hour away by highway. Tourism is increasingly important in the town's economy, with an emphasis on outdoor recreation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "squamish",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4980,
+    "attempt": 4942,
+    "place_id": "gn-6232390",
+    "input": {
+      "place": {
+        "place_id": "gn-6232390",
+        "name": "Massey",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8382,
+        "lon": 174.61019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Massey, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Massey,_New_Zealand",
+          "text": "Massey is a northern suburb in West Auckland, New Zealand. It was formerly a northern suburb of Waitakere City, which existed from 1989 to 2010 before the city was amalgamated into Auckland Council. The suburb was named after former Prime Minister of New Zealand William Massey. Massey is a relatively large suburb and can be divided into three reasonably distinctive areas, Massey West, Massey East (separated by the north-western motorway) and Massey North (situated to the north of Royal Road). Parts of Massey East are also known as 'Royal Heights', which is home to the Royal Heights shopping centre.\nThe suburb features the Massey YMCA Leisure Centre, Library. The Westgate Shopping Centre on Hobsonville Road next to the north-western motorway and NorthWest Shopping Centre (which opened in October, 2015) to the north of Hobsonville Road are north of Massey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "massey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4981,
+    "attempt": 4943,
+    "place_id": "gn-725623",
+    "input": {
+      "place": {
+        "place_id": "gn-725623",
+        "name": "Varshets",
+        "country": "Bulgaria",
+        "subdivision": "Montana",
+        "lat": 43.19356,
+        "lon": 23.2868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Varshets",
+          "url": "https://en.wikipedia.org/wiki/Varshets",
+          "text": "Varshets (Bulgarian: Вършец, variously transliterated; pronounced [vɐrˈʃɛt͡s]) is a spa town in Montana Province, northwestern Bulgaria. It is the administrative centre of the homonymous Varshets Municipality. As of December 2019, its population was 5,444. The town is located on the northern slopes of the western part of the Balkan Mountains in the small valley of the Botunya River, at 43°12′N 23°17′E, 359 metres above sea level. It is one of the oldest resorts in northern Bulgaria, and is known for its mineral springs, mild mountain climate, and natural environment. The town's tourist infrastructure includes two spa centres, a polyclinic, several rest houses, hotels and also many private lodgings. Varshets has an art gallery, a municipal museum and an Eastern Orthodox church dedicated to Saint George.\nA 2nd century BC bronze sculpture of a Thracian boy found in the vicinity of the town is today a symbol of Varshets. The modern town is linked to Medeca, a Roman and Byzantine site first mentioned in the 6th century AD. Varshets' existence was also evidenced in 16th century documents. The first state baths in Varshets were built in 1910 and were run by Damyan Ivanov, a balneologist who specialized in Austria-Hungary. The New Baths were built in 1930, and the Sun Garden was arranged in 1934. In 1950, Varshets was proclaimed a national resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "varshets",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4982,
+    "attempt": 4944,
+    "place_id": "gn-988265",
+    "input": {
+      "place": {
+        "place_id": "gn-988265",
+        "name": "Komga",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.57704,
+        "lon": 27.892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Komga",
+          "url": "https://en.wikipedia.org/wiki/Komga",
+          "text": "Komga is a town in Amathole District Municipality in the Eastern Cape province of South Africa.\nIt is located 64 kilometres (40 mi) north of KuGompo City and 55 kilometres (34 mi) east of Stutterheim. It was founded as a farming centre in 1877 on the site of a military camp established in 1854, and acquired municipal status in 1904. Of Khoekhoen origin, the name probably does not mean 'brown', as has been stated, but 'lots of clay', 'clayey'.\nIt is also home to one of the oldest schools in the Eastern Cape, Komga Junior, as well as St. Paul's Anglican Church which is a national heritage site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "komga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4983,
+    "attempt": 4945,
+    "place_id": "gn-2147849",
+    "input": {
+      "place": {
+        "place_id": "gn-2147849",
+        "name": "Surfers Paradise",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -28.00274,
+        "lon": 153.42999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surfers Paradise",
+          "url": "https://en.wikipedia.org/wiki/Surfers_Paradise",
+          "text": "Surfers Paradise (colloquially known as Surfers) is a central suburb of the City of Gold Coast, Queensland, Australia. In the 2021 census, Surfers Paradise had a population of 55.909 people.\nThe suburb has many high-rise apartment buildings and a wide surf beach. The feature of the heart of the suburb is Cavill Mall, which runs through the shopping and entertainment  precinct. Cavill Avenue, named after Jim Cavill, an early hotel owner, is one of the busiest shopping strips in Queensland, and the centre of activity for night life.  One of the features of the area is the Surfers Paradise Meter Maids designed to build goodwill with tourists.\nSurfers Paradise is the Gold Coast's main entertainment and tourism centre and the suburb's many high-rise buildings are the best known feature of the city's skyline.\nIn 2009 as part of the Q150 celebrations, Surfers Paradise was announced as one of the Q150 Icons of Queensland for its role as a \"location\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "surfers paradise",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "surfers",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paradise",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4984,
+    "attempt": 4946,
+    "place_id": "gn-2655980",
+    "input": {
+      "place": {
+        "place_id": "gn-2655980",
+        "name": "Belgrave",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.65,
+        "lon": -1.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belgrave, Leicester",
+          "url": "https://en.wikipedia.org/wiki/Belgrave,_Leicester",
+          "text": "Belgrave is an area, suburb, electoral ward and administrative division of the city of Leicester, in the ceremonial county of Leicestershire, England. Belgrave is the location of and known for several notable and famous landmarks such as the National Space Centre, Space Park Leicester, Abbey Pumping Station, the Golden Mile and Belgrave Hall. It is also noted for being the location of businesses such as British United Shoe Machinery and Wolsey.\nThe Old Belgrave Village, containing the Belgrave Conservation Area, including Belgrave Hall, Belgrave House, St Peter's Church and The Talbot Pub is to the west of Loughborough Road and to the east of the River Soar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "belgrave",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4985,
+    "attempt": 4947,
+    "place_id": "gn-2802433",
+    "input": {
+      "place": {
+        "place_id": "gn-2802433",
+        "name": "Beersel",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.76589,
+        "lon": 4.3002
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beersel",
+          "url": "https://en.wikipedia.org/wiki/Beersel",
+          "text": "Beersel (Dutch: [ˈbeːrsəl] ) is a municipality in the province of Flemish Brabant, in the Flemish region of Belgium, 12 kilometres (7.5 mi) south-west of the centre of Brussels. The municipality comprises the towns of Alsemberg, Beersel proper, Dworp, Huizingen and Lot. On 1 January 2023, Beersel had a total population of 26.473. The total area is 30.01 km2 (11.59 sq mi), which gives a population density of 856/km2 (2,220/sq mi).\nBeersel is perhaps best known for Beersel Castle, built between 1300 and 1310 by Jean II, Duke of Brabant, as a defense for Brussels. Guillaume Dufay, a notable 15th-century Franco-Flemish composer, was likely born in Beersel. In terms of gastronomy, Beersel is known for its boterham met plattekaas en radijzen (sandwich with white cheese and radishes), usually served with a geuze beer, and for its mandjeskaas (literally 'basket cheese'), which is a white cheese stored in little baskets. Beersel also has two traditional, authentic geuze breweries, Oud Beersel and 3 Fonteinen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "beersel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4986,
+    "attempt": 4948,
+    "place_id": "gn-2814670",
+    "input": {
+      "place": {
+        "place_id": "gn-2814670",
+        "name": "Walldorf",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.30637,
+        "lon": 8.64236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walldorf",
+          "url": "https://en.wikipedia.org/wiki/Walldorf",
+          "text": "Walldorf (German pronunciation: [ˈvalˌdɔʁf] ; South Franconian: Walldoaf) is a town in the Rhein-Neckar-Kreis district in the state of Baden-Württemberg in Germany.\nIn the eighteenth century, Walldorf was the birthplace of John Jacob Astor, who emigrated and became a prominent fur trader in the newly independent United States, establishing a monopoly in North America. Concentrating on real estate acquisition and investment, and based in New York City, he grew even wealthier and was the patriarch of the wealthy and influential Astor family.\nWalldorf is home to the world's fifth largest software company, SAP. It is also famous for its motorway interchange for the A5 and A6 highway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "walldorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4987,
+    "attempt": 4949,
+    "place_id": "gn-3170069",
+    "input": {
+      "place": {
+        "place_id": "gn-3170069",
+        "name": "Porto Torres",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 40.83375,
+        "lon": 8.40531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porto Torres",
+          "url": "https://en.wikipedia.org/wiki/Porto_Torres",
+          "text": "Porto Torres (Sassarese: Posthudorra; Sardinian: Portu Turre) is a comune (municipality) and a city of the Metropolitan City of Sassari in north-west of Sardinia, Italy. Founded during the 1st century BC as Colonia Iulia Turris Libisonis, it was the first Roman colony of the entire island. It is situated on the coast at about 25 kilometres (16 mi) east of Falcone Cape and in the center of the Gulf of Asinara. The port of Porto Torres is the second biggest seaport of the island, followed by the port of Olbia. The town is very close to the main city of Sassari, where the local university takes office."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "porto torres",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "torres",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4988,
+    "attempt": 4950,
+    "place_id": "gn-3182965",
+    "input": {
+      "place": {
+        "place_id": "gn-3182965",
+        "name": "Appiano Gentile",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.73499,
+        "lon": 8.98103
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Appiano Gentile",
+          "url": "https://en.wikipedia.org/wiki/Appiano_Gentile",
+          "text": "Appiano Gentile (Comasco: Pian) is a comune (municipality) in the Province of Como in the Italian region Lombardy, located about 35 kilometres (22 mi) northwest of Milan and about 12 kilometres (7 mi) southwest of Como.\nThe city borders the following municipalities: Beregazzo con Figliaro, Bulgarograsso, Carbonate, Castelnuovo Bozzente, Guanzate, Lurago Marinone, Lurate Caccivio, Oltrona di San Mamette, Tradate (VA), Veniano\nAppiano received the honorary title of city with a presidential decree of February 28, 2009.\nThe main sights is the church of Santo Stefano, housing works from Nuvolone and Isidoro Bianchi. The town is also home to the training ground of Serie A side Inter Milan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "appiano gentile",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "appiano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gentile",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4989,
+    "attempt": 4951,
+    "place_id": "gn-3436674",
+    "input": {
+      "place": {
+        "place_id": "gn-3436674",
+        "name": "Yaguarón",
+        "country": "Paraguay",
+        "subdivision": "Paraguarí",
+        "lat": -25.56219,
+        "lon": -57.28662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yaguarón",
+          "url": "https://en.wikipedia.org/wiki/Yaguar%C3%B3n",
+          "text": "Yaguarón is a city in Paraguay, located at the base of Yaguarón Hill in the Yaguarón District of Paraguarí Department, 48 kilometres (30 mi) from the capital Asunción. The town began as a Franciscan reservation for the Guaraní Indians.\nIt contains a famous and visually stunning church, the building of which, led by Fray Alonso de Buenaventura, started in 1640 and took 60 years to complete.\nYaguarón is also notable as the birthplace of José Gaspar Rodríguez de Francia, dictator of Paraguay 1814–1840, whose strong authoritarianism earned him the name El Supremo. His house is now a museum, located only 200 or so meters from the church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "yaguaron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4990,
+    "attempt": 4952,
+    "place_id": "gn-3447672",
+    "input": {
+      "place": {
+        "place_id": "gn-3447672",
+        "name": "Serro",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -18.60472,
+        "lon": -43.37944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Serro",
+          "url": "https://en.wikipedia.org/wiki/Serro",
+          "text": "Serro is a Brazilian municipality located in the state of Minas Gerais. The city belongs to the metropolitan area of Belo Horizonte and to the microregion of Conceição do Mato Dentro.  As of 2020, the estimated population was 20,940.\nIn colonial times the city was known by the name Vila do Príncipe (English: Prince Town). In this city were born Emerico Lobo de Mesquita, one of the most prominent composers of the Classicism movement in Brazil, and Gomes Carneiro, a general who fought on the Paraguayan War and on the Federalist Revolution.\nSerro is well known for its traditional cheese, cultural richness, colonial influence and unique environment.\nThe municipality contains part of the 4,696-hectare (11,600-acre) Pico do Itambé State Park, created in 1998."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "serro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4991,
+    "attempt": 4953,
+    "place_id": "gn-3515477",
+    "input": {
+      "place": {
+        "place_id": "gn-3515477",
+        "name": "Tlacotepec",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 17.78918,
+        "lon": -99.97807
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlacotepec",
+          "url": "https://en.wikipedia.org/wiki/Tlacotepec",
+          "text": "Tlacotepec is a city in the southern Mexican state of Guerrero. It serves as the seat of the municipality of General Heliodoro Castillo.\nTlacotepec is home to many ranchos, such as Aguacate, El Limoncito, Huautla, Ojo de Agua, Tepehuaje, Tiquimil, Chichiltepec, Tepetlapa, Los Naranjos (El Amatito del Naranjo), Pelón Xóchitl, La Cucaracha (La Guadalupe), Las Piñas, and many more.\nIn the early 20th century, a local official by the name of Navidad Paco recorded prehispanic oral traditions describing the foundation of Tlacotepec. According to legend, the first settlers of Tlacotepec came from Tixtlancingo on the Costa Grande. They first went to Pueblo Viejo, then to El Naranjo. From El Naranjo, they sent two chiefs to explore to the north, who found a valley called Ixtlahuaca containing many springs, which they named Cupengo, Popotzonitzi Atl, Atlmolonga, and Yei Atl. The founders of Tlacotepec itself were two men named Hueytlacatl and Ixquitotzin. They first came to the hill called Totoltepec to the north of modern Tlacotepec. They slept there, but when Hueytlacatl woke he had fallen ill. Ixquitotzin returned to the tribe and brought them to the hill, where they found Hueytlacatl transformed into a winged serpent. He told the tribe that this would be their home, but confessed he was afraid of eating them, and flew toward Iguala and formed the Lake of Tuxpan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "tlacotepec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4992,
+    "attempt": 4954,
+    "place_id": "gn-3876353",
+    "input": {
+      "place": {
+        "place_id": "gn-3876353",
+        "name": "Pica",
+        "country": "Chile",
+        "subdivision": "Tarapacá",
+        "lat": -20.49128,
+        "lon": -69.33118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pica, Chile",
+          "url": "https://en.wikipedia.org/wiki/Pica,_Chile",
+          "text": "Pica is a Chilean town and commune in Tamarugal Province, Tarapacá Region. Situated in the inland of the Atacama Desert on an oasis, Pica is famous for its small and unusually acidic limes known as Limón de Pica. The town has a communal hot spring with a surface temperature of 40 °C, which makes it a popular bath place in the middle of the desert. It has hotels and all basic services. The town lies four kilometers to the northeast of the oasis village of Matilla.\nPica has a mild microclimate that does not display the typical high temperature oscillations seen in many of the world's deserts. The settlement has pre-Hispanic origins and served as an important stopover for transit between the coast and the Altiplano during the time of the Inca Empire. Bird mummies of pre-Hispanic origin have been found next to Pica. Pica gained prominence over the course of the 17th, 18th and 19th centuries when it grew in association with important mining cycles of nearby areas. The first mining cycle that benefited Pica was the silver mining of Huantajaya and San Rosa between 1718 and 1790, this was then followed by a cycle of salpeter mining using the paradas method between 1830 and 1870. The town became part of Chile following the War of the Pacific (1879–1883). The Peruvian population of the town and specifically the rich and influential Peruvian families were a major concern for Chilean authorities who wished to Chilenize the area.\nPica had once an extensive irrigation system of puquios, whose shafts are locally known as socavones. In 1918 geologist Juan Brüggen mentioned the existence of 23 socavones in the Pica oasis, yet these have since then been abandoned due to economic and social changes. The socavones transported water from the Pica Aquifer to the oasis. As in many oases one of the biggest challenges for farmers in Pica is the scarcity of water. Most of the farmers in Pica own less than five hectares, and while this size hampers commercialization of products farmers have responded by organising themselves in cooperatives. Six producers, compromising one fifth of the agricultural output of the oasis, are organised in Oasis Pica Coop. This organisation was as of 2019 working to certify products as organic and enforce the appellation control for Limón de Pica. Limón de Pica have had an appellation since 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 395
+    },
+    "banned_terms": [
+      {
+        "term": "pica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4993,
+    "attempt": 4955,
+    "place_id": "gn-4262072",
+    "input": {
+      "place": {
+        "place_id": "gn-4262072",
+        "name": "New Castle",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 39.92894,
+        "lon": -85.37025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Castle, Indiana",
+          "url": "https://en.wikipedia.org/wiki/New_Castle,_Indiana",
+          "text": "New Castle is a city in Henry County, Indiana, United States. Located 44 miles (71 km) east-northeast of Indianapolis, on the Big Blue River, the city is the county seat of Henry County. New Castle is home to New Castle Fieldhouse, the largest high school gymnasium in the world. \nThe city is surrounded by agricultural land. In the past, it was a manufacturing center for the production of sheet iron and steel, automobiles, caskets, clothing, scales, bridges, pianos, furniture, handles, shovels, lathes, bricks, and flour. Starting in the early 20th century, it was known as the Rose City, at one point having 100 florists and numerous growers.\nAccording to the 2020 census, the population was 17,396.\nNew Castle Correctional Facility, with a capacity of over 3,500 inmates, is located just north of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "new castle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "castle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4994,
+    "attempt": 4956,
+    "place_id": "gn-4462701",
+    "input": {
+      "place": {
+        "place_id": "gn-4462701",
+        "name": "Cullowhee",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.31371,
+        "lon": -83.17653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cullowhee, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Cullowhee,_North_Carolina",
+          "text": "Cullowhee () is a census-designated place (CDP) in Jackson County, North Carolina, United States. It is located on the Tuckasegee River, and the permanent population was 7,682 at the 2020 census up from 6,228 at the 2010 census.\nThe community is the home of Western Carolina University, part of the University of North Carolina System. Developing from a high school and normal school, it has 12,000 students and has become a strong influence in community life. The Jackson County Airport is located just outside the CDP limits.\nThe present community developed at the site of a historic Cherokee town, which was centered around the earthwork Cullowhee Mound. The name was long thought to mean \"Valley of the Lilies.\" In fact, it is derived from the Cherokee phrase joolth-cullah-wee, which translates as \"Judacullah's Place.\" Judacullah, a giant warrior and hunter who the Cherokee believe lived in the area, is an important figure in their religion and culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "cullowhee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4995,
+    "attempt": 4957,
+    "place_id": "gn-5098909",
+    "input": {
+      "place": {
+        "place_id": "gn-5098909",
+        "name": "Hawthorne",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.94926,
+        "lon": -74.15375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hawthorne, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hawthorne,_New_Jersey",
+          "text": "Hawthorne is a borough in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 19,637, an increase of 846 (+4.5%) from the 2010 census count of 18,791, which in turn reflected an increase of 573 (+3.1%) from the 18,218 counted in the 2000 census.\nHawthorne was established by an act of the New Jersey Legislature on March 24, 1898. The borough was created from parts of the now-defunct Manchester Township, which also consisted of present-day Haledon, North Haledon, Prospect Park, Totowa, and parts of Fair Lawn and Paterson. The borough was named for novelist Nathaniel Hawthorne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "hawthorne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4996,
+    "attempt": 4958,
+    "place_id": "gn-5116225",
+    "input": {
+      "place": {
+        "place_id": "gn-5116225",
+        "name": "Edgemere",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.59622,
+        "lon": -73.76763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edgemere, Queens",
+          "url": "https://en.wikipedia.org/wiki/Edgemere,_Queens",
+          "text": "Edgemere is a neighborhood in the New York City borough of Queens, extending from Beach 32nd to Beach 52nd Street on the Rockaway Peninsula. It contains Rockaway Community Park. Arverne is to the west, and Far Rockaway to the east.\nEdgemere was founded in 1892 by Frederick J. Lancaster, who originally called it New Venice. The area is referred to as \"Edgemer\" in the official New York State Gazetteer, maintained and published by the New York State Department of Health, which includes numerous defunct hamlets and towns, some with alternate or archaic spellings.\nEdgemere is located in Queens Community District 14 and its ZIP Code is 11691. It is patrolled by the New York City Police Department's 101st Precinct.\nMuch like neighboring Arverne, Edgemere was developed as a beachfront tourist district with easy access to Brooklyn and Manhattan by railway. After World War II, the late 19th and early 20th century resorts and cheap bungalows that lined the boardwalk were considered outdated and undesirable by city officials. East of Beach 32nd Street, the original pattern of development can still be seen: rows of very small, single-story bungalows packed close together on narrow streets. As part of an urban renewal project, nearly all structures south of Rockaway Freeway, from Beach 32nd Street to Beach 90th Street, were acquired and demolished by 1970. Despite many ambitious plans for proposed development, no construction occurred until after 1984 and the coastline of Edgemere and Arverne remained lined with hundreds of acres of vacant wasteland for decades. Arverne has since been redeveloped, but the coastal section of Edgemere remains entirely undeveloped. In April 2024, the vacant land became the 35-acre (14 ha) Arverne East Nature Preserve, a public park. In addition, as part of the Arverne East development, a welcome building for the nature preserve was built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "edgemere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4997,
+    "attempt": 4959,
+    "place_id": "gn-5785657",
+    "input": {
+      "place": {
+        "place_id": "gn-5785657",
+        "name": "Anacortes",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.5126,
+        "lon": -122.61267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anacortes, Washington",
+          "url": "https://en.wikipedia.org/wiki/Anacortes,_Washington",
+          "text": "Anacortes ( AN-ə-KOR-təs) is a city in Skagit County, Washington, United States. The name \"Anacortes\" is an adaptation of the name of Anne Curtis Bowman, who was the wife of early Fidalgo Island settler Amos Bowman. Anacortes' population was 17,637 at the time of the 2020 census. It is one of two principal cities of and included in the Mount Vernon-Anacortes Metropolitan Statistical Area.\nAnacortes is known for the Washington State Ferries dock and terminal serving Lopez Island, Shaw Island, Orcas Island, and San Juan Island. There is also a Skagit County-operated ferry that serves Guemes Island, a residential island located across Guemes Channel, north of Anacortes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "anacortes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4998,
+    "attempt": 4960,
+    "place_id": "gn-5887214",
+    "input": {
+      "place": {
+        "place_id": "gn-5887214",
+        "name": "Arnprior",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.43341,
+        "lon": -76.34939
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arnprior",
+          "url": "https://en.wikipedia.org/wiki/Arnprior",
+          "text": "Arnprior is a town in Renfrew County, Ontario, Canada.\nArnprior has experienced significant growth in populations with the widening of the Ontario Highway 417 to four lanes. The town experienced an increase in population by 8.4% from 2011 to 2016, at which time its population was 8,795. It was also during these critical 5 years that the Town of Arnprior surpassed the neighboring Town of Renfrew, Ontario, to become the county's third-largest town or city by population, behind Petawawa and Pembroke. The town is a namesake of Arnprior, Scotland, and is known for its lumber, hydro power generation, aerospace, farming, and proximity to the National Capital Region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "arnprior",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

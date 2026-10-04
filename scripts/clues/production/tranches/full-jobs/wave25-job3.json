@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 4877,
+    "attempt": 4841,
+    "place_id": "gn-5344147",
+    "input": {
+      "place": {
+        "place_id": "gn-5344147",
+        "name": "Duarte",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.13945,
+        "lon": -117.97729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duarte, California",
+          "url": "https://en.wikipedia.org/wiki/Duarte,_California",
+          "text": "Duarte () is a city in the San Gabriel Valley of Los Angeles County, California, United States. As of the 2020 census, the city population was 21,727. Duarte is located on historic U.S. Route 66, which today follows Huntington Drive through the middle of the city. It is bounded to the north by the San Gabriel Mountains, to the north and west by the cities of Bradbury and Monrovia, to the south by the city of Irwindale, and to the east by the cities of Irwindale and Azusa.  The town is named after Andrés Avelino Duarte, a Californio ranchero (rancher) who founded the community on his land grant, Rancho Azusa de Duarte."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "duarte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4878,
+    "attempt": 4842,
+    "place_id": "gn-6139045",
+    "input": {
+      "place": {
+        "place_id": "gn-6139045",
+        "name": "Saint-Sauveur",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.88686,
+        "lon": -74.17943
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Sauveur, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Saint-Sauveur,_Quebec",
+          "text": "Saint-Sauveur (French pronunciation: [sɛ̃ sovœʁ] ) is a town and municipality within the Les Pays-d'en-Haut Regional County Municipality, Quebec, Canada. It is in the administrative region of Laurentides in the Laurentian Mountains, located about 60 kilometres north of Montreal.\nSt-Sauveur is well known for its local ski areas, the biggest of which is Mont Saint-Sauveur. The ski areas market themselves jointly under the name of \"Valley of Saint-Sauveur\". Its proximity to Montreal, as well as its snow-making capability, night-time skiing, and après-ski establishments make St-Sauveur a popular destination for skiers.\nOn September 11, 2002 the city was created from the merger of the village of Saint-Sauveur-des-Monts and the parish municipality of Saint-Sauveur. The current director general is Jean Beaulieu. The city clerk is Normand Patrice."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "saint sauveur",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sauveur",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4879,
+    "attempt": 4843,
+    "place_id": "gn-703061",
+    "input": {
+      "place": {
+        "place_id": "gn-703061",
+        "name": "Lymanske",
+        "country": "Ukraine",
+        "subdivision": "Odesa",
+        "lat": 46.67952,
+        "lon": 29.97231
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lymanske, Rozdilna Raion, Odesa Oblast",
+          "url": "https://en.wikipedia.org/wiki/Lymanske,_Rozdilna_Raion,_Odesa_Oblast",
+          "text": "Lymanske (Ukrainian: Лиманське; German: Selz) is a rural settlement in Rozdilna Raion, Odesa Oblast, Ukraine. It belongs to Lymanske settlement hromada, one of the hromadas of Ukraine. Lymanske is located along the east side of the Kuchurhan Reservoir on the border with Transnistria in Moldova. Population: 7,119 (2022 estimate).\nThe villages of Selz (named after Seltz in Alsace) and Kandel were established at this location along the Kuchurhan River in 1808 by Roman Catholic German and Alsatian (French citizens) immigrants to the Kutschurhan Valley, then part of the Russian Empire.  It received its present name after the remaining German residents were driven from the area by the advancing Soviet army in 1944."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "lymanske",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4880,
+    "attempt": 4844,
+    "place_id": "gn-8224784",
+    "input": {
+      "place": {
+        "place_id": "gn-8224784",
+        "name": "Stockton Heath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.37084,
+        "lon": -2.57406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stockton Heath",
+          "url": "https://en.wikipedia.org/wiki/Stockton_Heath",
+          "text": "Stockton Heath is a civil parish and suburb of Warrington, in the Borough of Warrington, Cheshire, England. It is located to the north of the Bridgewater Canal and to the south of the Manchester Ship Canal, which divides Stockton Heath from Latchford and north Warrington. It has a total resident population of 6,396.\nVictoria Square is at the centre of Stockton Heath and is on the crossroads of the A49 and A56. Until the 1970s, the Victoria Hotel stood on this square but its location has been redeveloped. North of the square is the main shopping area which includes the Forge Shopping Centre, developed on the site of the old forge (Caldwell's). Stockton Heath is home to a number of modern bars and restaurants, as well as traditional public houses. The Red Lion Inn dates back to the early 19th century. The Mulberry Tree Inn on Victoria Square opened its present building in March 1907, replacing earlier premises from 1725.\nSince 1988, much of the centre of Stockton Heath has been designated a conservation area to preserve its character but, at the same time, there has been redevelopment work with several new bars and restaurants moving into the centre of Stockton Heath."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "stockton heath",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stockton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heath",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4881,
+    "attempt": 4845,
+    "place_id": "gn-1023790",
+    "input": {
+      "place": {
+        "place_id": "gn-1023790",
+        "name": "Aberdeen",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.47588,
+        "lon": 24.06525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aberdeen, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Aberdeen,_South_Africa",
+          "text": "Aberdeen, officially renamed Xamdeboo in February 2026, is a small town in the Sarah Baartman District Municipality of the Eastern Cape province of South Africa. With its numerous examples of Victorian architecture, it is one of the architectural conservation areas of the Karoo.\nAberdeen lies some 55 km south-west of Graaff-Reinet, 155 km east-south-east of Beaufort West and 32 km south of the Camdeboo Mountains. Laid out on the farm Brakkefontein as a settlement of the Dutch Reformed Church in 1856 (now the NGK), it became a municipality in 1858. It is named after the Scottish city of Aberdeen.\nIn 2023, it was proposed for Aberdeen to be renamed to Camdeboo. In 2024, this was rejected by the Minister of Sport, Arts and Culture, Gayton McKenzie. In 2026, a name with a slight difference in spelling (Xamdeboo) was officially approved by the minister in January, with the name change taking place in February."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "aberdeen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4882,
+    "attempt": 4846,
+    "place_id": "gn-1044995",
+    "input": {
+      "place": {
+        "place_id": "gn-1044995",
+        "name": "Inhassoro",
+        "country": "Mozambique",
+        "subdivision": "Inhambane Province",
+        "lat": -21.53472,
+        "lon": 35.20222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inhassoro",
+          "url": "https://en.wikipedia.org/wiki/Inhassoro",
+          "text": "Inhassoro is a small fishing port in Inhassoro District of Inhambane Province in Mozambique. The town has 11,297 inhabitants and is located on the Indian Ocean coast along the EN1 highway.\nInhassoro, which looks out at Bazaruto and Santa Carolina or Paradise Island is a developing tourist town. The population of Inhassoro is growing steadily as a result of the increase in tourism. Several old hotels date back to colonial times.\nThe bay off Inhassaro is popular with scuba divers with the reefs and the area is a seasonal home to many species of dolphin, turtle, the rare and endangered dugong or sea cow, whale sharks, manta rays and humpback whales."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "inhassoro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4883,
+    "attempt": 4847,
+    "place_id": "gn-11054702",
+    "input": {
+      "place": {
+        "place_id": "gn-11054702",
+        "name": "Lipótváros",
+        "country": "Hungary",
+        "subdivision": "Budapest",
+        "lat": 47.50243,
+        "lon": 19.0493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lipótváros",
+          "url": "https://en.wikipedia.org/wiki/Lip%C3%B3tv%C3%A1ros",
+          "text": "Lipótváros (German: Leopoldstadt, English: Leopold Town) is a traditional neighbourhood in the city centre of Budapest, named after King Leopold II. It is one of the two neighbourhoods of District V, the other one being Inner City (Belváros), which is the old town of Pest. Lipótváros was established in the early 19th century, and became the political and financial centre of Hungary in the early 20th century when the Parliament was built on Kossuth Square. Many ministries followed in the later decades. After the 1989 change, Lipótváros gradually again became the business centre of Budapest with many banks and office buildings. The neighbourhood is rich in listed historic buildings and landmarks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "lipotvaros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4884,
+    "attempt": 4848,
+    "place_id": "gn-12035864",
+    "input": {
+      "place": {
+        "place_id": "gn-12035864",
+        "name": "Belair",
+        "country": "Luxembourg",
+        "subdivision": "Luxembourg",
+        "lat": 49.6116,
+        "lon": 6.10682
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belair, Luxembourg",
+          "url": "https://en.wikipedia.org/wiki/Belair,_Luxembourg",
+          "text": "Belair (French pronunciation: [bɛlɛʁ]; Luxembourgish pronunciation: [bæˈlɛːɐ̯] ; known as Neumerl (Luxembourgish: Neimärel) until 1956) is a district in western Luxembourg City, in southern Luxembourg.\nFrom 1931 to 2021, Belair was the location of Luxembourg's national stadium, rebuilt in 1990, the Stade Josy Barthel, named after Luxembourg's only Olympic gold medal winner. In September 2021, it was officially replaced by the newly built Stade de Luxembourg and is due to be demolished and replaced with a new mixed use neighbourhood named \"Wunnquartier Stade\".\nLuxembourg City's main fire station and the Centre Hospitalier de Luxembourg hospital are based within Belair.\nAs of 31 December 2025, Belair has a population of 13,331 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "belair",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4885,
+    "attempt": 4849,
+    "place_id": "gn-13353869",
+    "input": {
+      "place": {
+        "place_id": "gn-13353869",
+        "name": "Warwick Parish",
+        "country": "Bermuda",
+        "subdivision": "Warwick",
+        "lat": 32.26574,
+        "lon": -64.80922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warwick Parish",
+          "url": "https://en.wikipedia.org/wiki/Warwick_Parish",
+          "text": "Warwick Parish is one of the nine parishes of Bermuda. It is named after Robert Rich, 2nd Earl of Warwick (1587-1658).\nIt is located in the central south of the island chain, occupying part of the main island to the southeast of the Great Sound, the large expanse of water which dominates the geography of western Bermuda, and also a number of islands which lie within that sound. It is joined to Southampton Parish in the southwest, and to Paget Parish in the northeast. As with most of Bermuda's parishes, it covers just over 2.3 square miles (about 6.0 km2 or 1500 acres). It had a population of 9,002 in 2016.\nNatural features in Warwick include Warwick Long Bay, Riddell's Bay, Darrell's Island, Hawkins Island, Long Island, and Marshall's Island. Hinson's Island, once part of Warwick, is now part of Paget Parish. Warwick Long Bay is also located near Jobson’s Cove, with just 0.3 miles (0.5 KM) separating them, making it easy to visit both beautiful spots in one day.\nThe parish also contains Warwick Camp, the former rifle ranges of the Imperial military garrison, which is, today, the home of the Bermuda Regiment, and most of which doubles as parkland (and the territory of which includes Warwick Long Bay, Horseshoe Bay, and the smaller beaches between).\nChrist Church on Middle Road, Warwick is one of the world's oldest Presbyterian churches outside of Europe. It was founded in 1719 and is part of the Church of Scotland.\nWarwick Pond was designated a Ramsar site on May 11, 1999."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "warwick parish",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "warwick",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "parish",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4886,
+    "attempt": 4850,
+    "place_id": "gn-1699656",
+    "input": {
+      "place": {
+        "place_id": "gn-1699656",
+        "name": "Minalin",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.9676,
+        "lon": 120.6828
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minalin",
+          "url": "https://en.wikipedia.org/wiki/Minalin",
+          "text": "Minalin, officially the Municipality of Minalin (Kapampangan: Balen ning Minalin; Filipino: Bayan ng Minalin), is a municipality in the province of Pampanga, Philippines. According to the 2024 census, it has a population of 50,126 people.\nThe name of the municipality came from the word \"Minalis\" or \"Minalis la ding dutung\". It was coined when, during the construction of the Sta. Maria Tabungao Church, a flood came and wiped out all the materials or dutung meaning woods and carried them to Santa Monica Parish Church.\nThe town is known for its 400-year-old church, the Santa Monica Parish Church, with its unique design that incorporates pre-colonial architectural motif alongside its European Catholic iconography.   Minalin is also known for its \"Aguman Sanduk\" New Year's Celebration, where in which the town's straight men dress up as beauty queens and ride through town on festive floats. The town is also referred to as the \"Egg Basket of Central Luzon\" because of its large-scale production of eggs and chickens, prompting the town to put up the Philippines' first egg festival in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "minalin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4887,
+    "attempt": 4851,
+    "place_id": "gn-1767492",
+    "input": {
+      "place": {
+        "place_id": "gn-1767492",
+        "name": "Lenggong",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 5.10633,
+        "lon": 100.96792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lenggong",
+          "url": "https://en.wikipedia.org/wiki/Lenggong",
+          "text": "Lenggong or Lenggong Valley (Malay: Lembah Lenggong) is a geographical area defined by the mountain ranges of Bintang in the west and Titiwangsa to its east. It is a rural area, with small kampongs surrounded by green vegetation and limestone hills with numerous caves.\nThe Lenggong Valley is one of Peninsular Malaysia's most important areas for archaeology, as excavations have revealed many traces of Malaysia's prehistory, with finds such as cave drawings, jewellery, pottery, weapons and stone tools. It is the site of one of the oldest known place of human activity in the Peninsula. The Lenggong Valley was listed by UNESCO as a World Heritage Site on 30 June 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "lenggong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4888,
+    "attempt": 4852,
+    "place_id": "gn-2170430",
+    "input": {
+      "place": {
+        "place_id": "gn-2170430",
+        "name": "Cootamundra",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.64095,
+        "lon": 148.02838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cootamundra",
+          "url": "https://en.wikipedia.org/wiki/Cootamundra",
+          "text": "Cootamundra, nicknamed Coota, is a town in the South West Slopes region of New South Wales, Australia and within the Riverina. It is within the Cootamundra-Gundagai Regional Council. It is located on the Olympic Highway at the point where it crosses the Muttama Creek, between Junee and Cowra. Its railway station is on the Main Southern line, part of the Melbourne-to-Sydney line.\nCootamundra is the birthplace of Sir Donald Bradman , an Australian cricketer universally regarded as the greatest batsman of all time. It is also known for being the site of Cootamundra Domestic Training Home for Aboriginal Girls, an institution housing Aboriginal girls who were forcibly taken from their families.\nIt is also the home of the Cootamundra wattle.  Every year there is a large \"Wattle Time\" Festival held at the time the wattle starts to bloom, with an art show and festivities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "cootamundra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4889,
+    "attempt": 4853,
+    "place_id": "gn-2172563",
+    "input": {
+      "place": {
+        "place_id": "gn-2172563",
+        "name": "Camperdown",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.88965,
+        "lon": 151.17642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camperdown, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Camperdown,_New_South_Wales",
+          "text": "Camperdown is an inner western suburb of Sydney, in the state of New South Wales, Australia. Camperdown is located 4 kilometres south-west of the Sydney central business district and is part of the Inner West region. Camperdown lies across the local government areas of the City of Sydney and Inner West Council.\nCamperdown is a heavily populated suburb and is home to the Royal Prince Alfred Hospital, the University of Sydney and the historic Camperdown Cemetery.  It was also once home to the Royal Alexandra Hospital for Children, which was relocated to be next to Westmead Hospital in Sydney's west.  The hospital buildings and grounds have been redeveloped into apartment complexes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "camperdown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4890,
+    "attempt": 4854,
+    "place_id": "gn-2181688",
+    "input": {
+      "place": {
+        "place_id": "gn-2181688",
+        "name": "Tawa",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.17038,
+        "lon": 174.82613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tawa, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Tawa,_New_Zealand",
+          "text": "Tawa is the northernmost suburb within the Wellington city boundary, located roughly 15 km north of Wellington's CBD between Churton Park and Porirua in the North Island of New Zealand. It takes its name from the broadleaf tree, which was once prolific throughout the area, although its most famous tree is the Bucket Tree, a large macrocarpa with the topiary of an upside-down bucket. Tawa is also known for its large number of churches, representing a wide range of Christian denominations.\nWithin Tawa, there are a number of named subdivisions: Lindenvale, Westhaven, Redwood and Southgate to the west and Linden, Greenacres and Sundale to the east of the central Tawa area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "tawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4891,
+    "attempt": 4855,
+    "place_id": "gn-2749503",
+    "input": {
+      "place": {
+        "place_id": "gn-2749503",
+        "name": "Oosterbeek",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.98583,
+        "lon": 5.84583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oosterbeek",
+          "url": "https://en.wikipedia.org/wiki/Oosterbeek",
+          "text": "Oosterbeek (Dutch pronunciation: [ˈoːstərbeːk]) is a village in the eastern part of Netherlands. It is located in the municipality of Renkum in the province of Gelderland, about 5 km (3.1 mi) west of Arnhem.\nThe oldest part of Oosterbeek is the Benedendorp (Lower Village), on the northern bank of the Lower Rhine. One landmark in the village is the Hervormde Kerk (Reformed Church), which has certain architectural sections that date back to the second half of the 10th century. It is the oldest church in the country which is still in use.\nOosterbeek was a separate municipality until 1818, when the area was divided between Doorwerth and the village of Renkum. In the 19th century, several mansions were built on the higher ground to the north of the old village. One of these mansions, called De Hemelse Berg, was destroyed in 1944. Another, called Hartenstein, is now home to the Airborne Museum. The construction of smaller buildings in the same area led to the creation of the Bovendorp (Upper Village). To the north of the built-up area lies the Arnhem Oosterbeek War Cemetery.\nThe village is known for its involvement in the September 1944 Battle of Arnhem, during which it was heavily damaged. General Roy Urquhart of Britain had his headquarters at Hotel Hartenstein. In May 1978 Urquhart opened the Airborne Museum in the hotel, which commemorates the Battle of Arnhem.\nOosterbeek is also the location of the Hotel de Bilderberg, where the Bilderberg Group first met in 1954."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "oosterbeek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4892,
+    "attempt": 4856,
+    "place_id": "gn-2903012",
+    "input": {
+      "place": {
+        "place_id": "gn-2903012",
+        "name": "Höchstädt an der Donau",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.61124,
+        "lon": 10.56816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Höchstädt an der Donau",
+          "url": "https://en.wikipedia.org/wiki/H%C3%B6chst%C3%A4dt_an_der_Donau",
+          "text": "Höchstädt an der Donau (German pronunciation: [ˈhøːçˌʃtɛt ʔan deːɐ̯ ˈdoːnaʊ] , lit. 'Höchstädt on the Danube'; Swabian: Hechstädt) is a town in the district of Dillingen, Bavaria, Germany. It is situated near the banks of the Danube.  It consists of the following suburbs: Höchstädt an der Donau, Deisenhofen, Oberglauheim, Schwennenbach and Sonderheim.  The town is the seat of the municipal association Höchstädt an der Donau, which includes the towns Blindheim, Finningen, Lutzingen and Schwenningen.\nIn the fifteenth and sixteenth century, the wealthy mercantile family Höchstetter, which came from the town, was part of the mercantile patriciate of Augsburg.\nIn the early 18th century, the town was the site of two battles. The First Battle of Höchstädt (German: Erste Schlacht von Höchstädt) on 20 September 1703 cost over 5,000 lives. A year later in 1704, the Battle of Blenheim or Second Battle of Höchstädt (German: Zweite Schlacht von Höchstädt) occurred between the British and Austrian forces (led by John Churchill, 1st Duke of Marlborough and Prince Eugene of Savoy) on one side, and Bavarian and French troops (commanded by Maximilian II Emanuel, Elector of Bavaria, and the Comte de Tallard) on the other side.\nThe carnage of the Battle of Blenheim was so horrific (over 20,000 men had died by the end of the day) that farmers are said still to dig up skulls from the fields today, as described in the poem \"After Blenheim\", written by Robert Southey, which tells about children finding the skull of one of the\n\nIn June 1800, the armies of the French First Republic, under command of Jean Victor Moreau, fought Austrian regulars and Württemberg contingents, under the general command of Pál Kray.  Kray had taken refuge in the fortress at Ulm; Moreau diverted his army to approach Ulm from the east and, after a small group of men captured a foothold on the northern bank of the Danube, his forces were able to move against the fortress on both sides of the river.  At this battle, the culmination of the Danube Campaign of 1800, Moreau forced Kray to abandon Ulm and withdraw into eastern Bavaria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 351
+    },
+    "banned_terms": [
+      {
+        "term": "hochstadt an der donau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hochstadt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "an",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "donau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4893,
+    "attempt": 4857,
+    "place_id": "gn-3047927",
+    "input": {
+      "place": {
+        "place_id": "gn-3047927",
+        "name": "Mór",
+        "country": "Hungary",
+        "subdivision": "Fejér",
+        "lat": 47.37787,
+        "lon": 18.20353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mór",
+          "url": "https://en.wikipedia.org/wiki/M%C3%B3r",
+          "text": "Mór (German: Moor) is a town in Fejér County, Hungary.  Among the smaller towns in the Central Transdanubia Region of Hungary, it lies between the Vértes and Bakony Hills, in the northwestern corner of Fejér County. The historic roots of the present town go back to the Celtic and Roman periods. The town is the economical, institutional and cultural centre of the small region of Mór including 13 settlements. The development of the town began with the arrival of ethnic German settlers and Capuchin monks in 1697.\nThe Battle of Mór on 30 December 1848 was a crucial victory for the Austrian Empire's forces in crushing the Hungarian Revolution of 1848."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "mor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4894,
+    "attempt": 4858,
+    "place_id": "gn-3064079",
+    "input": {
+      "place": {
+        "place_id": "gn-3064079",
+        "name": "Třeboň",
+        "country": "Czechia",
+        "subdivision": "South Bohemian Region",
+        "lat": 49.00364,
+        "lon": 14.77065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Třeboň",
+          "url": "https://en.wikipedia.org/wiki/T%C5%99ebo%C5%88",
+          "text": "Třeboň (Czech pronunciation: [ˈtr̝̊ɛboɲ] ; German: Wittingau) is a spa town in Jindřichův Hradec District in the South Bohemian Region of the Czech Republic. It has about 8,200 inhabitants. The town is located in the Třeboň Basin, on the shore of the fishpond Svět. The Třeboň area is known for its high concentration of fishponds, including the largest fishpond in the world, Rožmberk Pond.\nTřeboň was founded in the 12th century, and became an important and wealthy town during the rule of the Rosenberg family in the 14th century. The greatest development occurred in the 16th and early 17th centuries, when Jakub Krčín founded the system of fishponds around the town. The second notable noble owners of Třeboň were the Schwarzenberg family, who acquired the town in 1660.\nThe main landmark of the town is the Třeboň Castle. The historic town centre with the castle complex is well preserved and is protected as an urban monument reservation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "trebon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4895,
+    "attempt": 4859,
+    "place_id": "gn-4885565",
+    "input": {
+      "place": {
+        "place_id": "gn-4885565",
+        "name": "Bridgeport",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.83809,
+        "lon": -87.65116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridgeport, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Bridgeport,_Chicago",
+          "text": "Bridgeport is one of the 77 community areas in Chicago, on the city's South Side, bounded on the north by the South Branch of the Chicago River, on the west by Ashland Avenue, on the south by Pershing Road, on the east by the Union Pacific Railroad tracks, and on the northeast by the Dan Ryan Expressway. Neighboring communities are Pilsen across the river to the north, McKinley Park to the west, Canaryville to the south, and Armour Square (which includes Chinatown) to the east. Bridgeport has been the home of five Chicago mayors. Once known for its racial intolerance, Bridgeport today ranks as one of the city's most diverse neighborhoods."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "bridgeport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4896,
+    "attempt": 4860,
+    "place_id": "gn-5193342",
+    "input": {
+      "place": {
+        "place_id": "gn-5193342",
+        "name": "Hershey",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.28592,
+        "lon": -76.65025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hershey, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Hershey,_Pennsylvania",
+          "text": "Hershey is an unincorporated community and census-designated place (CDP) in Derry Township, Dauphin County, Pennsylvania, United States. It is home to the Hershey Company, which was founded by candy magnate Milton S. Hershey, and Hersheypark, an amusement park.\nThe community is located 14 miles (23 km) east of Harrisburg and is part of the Harrisburg metropolitan area. Hershey has no legal status as an incorporated municipality, and all its municipal services are provided by Derry Township. The population was 13,858 at the 2020 census.\nHershey is also located 68.8 miles (110.7 km) north of Baltimore, Maryland, 75.2 miles (121.0 km) southwest of Allentown and 94.5 miles (152.1 km) northwest of Philadelphia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "hershey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

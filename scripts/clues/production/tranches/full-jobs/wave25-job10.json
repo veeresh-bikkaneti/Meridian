@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 5019,
+    "attempt": 4981,
+    "place_id": "gn-4156748",
+    "input": {
+      "place": {
+        "place_id": "gn-4156748",
+        "name": "Gibsonton",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.85364,
+        "lon": -82.38259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gibsonton, Florida",
+          "url": "https://en.wikipedia.org/wiki/Gibsonton,_Florida",
+          "text": "Gibsonton, sometimes nicknamed Gibtown, is an unincorporated community and census-designated place in Hillsborough County, Florida, United States. U.S. Route 41 runs through the center of the community.  The population was 18,566 at the 2020 census, up from 14,234 at the 2010 census.\nGibsonton was famous as a sideshow wintering town, where various people in the carnival and circus businesses would spend the off season, placing it near the winter home for the Ringling Brothers Circus at Tampa, Sarasota and Venice in various times. It was home to Percilla the Monkey Girl, the Anatomical Wonder, and the Lobster Boy. Siamese twin sisters ran a fruit stand here. At one time, it was the only post office with a counter for dwarfs. Aside from the agreeable winter climate, Gibsonton offered unique circus zoning laws that allowed residents to keep elephants and circus trailers on their front lawns.\nGibsonton was founded by James Gibson Sr., from Greenville, Alabama, in 1884. He homesteaded 150 acres at the mouth of the Alafia River, stretching to the east for approximately a half a mile along the south bank of the river. Gibson, along with Granville Platt and F.L. Henderson, became trustees of a school erected in 1888."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "gibsonton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5020,
+    "attempt": 4982,
+    "place_id": "gn-4196688",
+    "input": {
+      "place": {
+        "place_id": "gn-4196688",
+        "name": "Garden City",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.11437,
+        "lon": -81.154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garden City, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Garden_City,_Georgia",
+          "text": "Garden City is a city in Chatham County, Georgia, United States, located just northwest of Savannah. As of the 2020 census, the city had a population of 10,289. Part industrial and part residential, the city is home to much of the heavy industry in Chatham County. It is part of the Savannah metropolitan area. It hosts the largest and busiest ocean terminal of the Port of Savannah, the flagship operation of the Georgia Ports Authority.\nGarden City was created in 1939 as Industrial City Gardens, a community intended to house the large workforce required by the new factories and chemical plants just west of downtown Savannah. Garden City is part of the Savannah metropolitan statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "garden city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "garden",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5021,
+    "attempt": 4983,
+    "place_id": "gn-4419094",
+    "input": {
+      "place": {
+        "place_id": "gn-4419094",
+        "name": "Booneville",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 34.65815,
+        "lon": -88.56672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Booneville, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Booneville,_Mississippi",
+          "text": "Booneville  is a city in the U.S. state of Mississippi and is the county seat of Prentiss County. It is located in the hilly North Mississippi region, and ecologically is part of the Southeastern Plains region.\nThe city of Booneville is nicknamed \"the City of Hospitality,\" in reference to the town's southern hospitality. The city flag, welcome sign, and city website have an image of a magnolia blossom, a symbol of hospitality as well as the state flower of Mississippi. Booneville was incorporated in 1861 and named after R.H. Boone, a relative of Daniel Boone. As of the 2020 census, Booneville had a population of 9,126. It is one of 21 certified Mississippi retirement cities.\nBooneville is home to Northeast Mississippi Community College, the tenth-largest community college by enrollment in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "booneville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5022,
+    "attempt": 4984,
+    "place_id": "gn-4421935",
+    "input": {
+      "place": {
+        "place_id": "gn-4421935",
+        "name": "Clarksdale",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 34.20011,
+        "lon": -90.57093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clarksdale, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Clarksdale,_Mississippi",
+          "text": "Clarksdale is a city in and the county seat of Coahoma County, Mississippi, United States. As of the 2020 census, Clarksdale had a population of 14,903. It is located along the Sunflower River and named after John Clark, a settler who founded the city in the mid-19th century when he established a timber mill and business. Clarksdale is in the Mississippi Delta region and is an agricultural and trading center. Many African American musicians developed the blues here and took this original American music with them to Chicago and other northern cities during the Great Migration.\nThe Clarksdale Micropolitan Statistical Area includes all of Coahoma County. It’s located in the Mississippi Delta region of Mississippi. In 2023, the Clarksdale, Mississippi Micropolitan area was added to form the new Memphis-Clarksdale-Forrest City Combined Statistical Area. The Memphis-Clarksdale-Forrest City Combined Statistical Area has around 1.4 million people. The western boundary of the county is formed by the Mississippi River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "clarksdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5023,
+    "attempt": 4985,
+    "place_id": "gn-4932957",
+    "input": {
+      "place": {
+        "place_id": "gn-4932957",
+        "name": "Chestnut Hill",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.33065,
+        "lon": -71.16616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chestnut Hill, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Chestnut_Hill,_Massachusetts",
+          "text": "Chestnut Hill is a village located six miles (10 km) west of downtown Boston, Massachusetts, United States. It is best known for being home to Boston College and a section of the Boston Marathon route. Like all Massachusetts villages, Chestnut Hill is not an incorporated municipal entity. It is located partially in Brookline in Norfolk County, partially in the city of Boston in Suffolk County, and partially in the city of Newton in Middlesex County. Chestnut Hill's borders are defined by the 02467 ZIP Code. The name refers to several small hills that overlook the 135-acre (546,000 m2) Chestnut Hill Reservoir rather than one particular hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "chestnut hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chestnut",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5024,
+    "attempt": 4986,
+    "place_id": "gn-627908",
+    "input": {
+      "place": {
+        "place_id": "gn-627908",
+        "name": "Hlybokaye",
+        "country": "Belarus",
+        "subdivision": "Vitebsk",
+        "lat": 55.13933,
+        "lon": 27.69143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hlybokaye",
+          "url": "https://en.wikipedia.org/wiki/Hlybokaye",
+          "text": "Hlybokaye or Glubokoye is a town in Vitebsk Region, Belarus. It serves as the administrative center of Hlybokaye District. As of 2025, it has a population of 17,807.\nThe town is located on the international road from Polotsk to Vilnius with the historic railway line to Woropajewo (Варапаева) completed in 1932 in the interwar Poland (the town was incorporated in 1940 by the Soviet Union after the 1939 invasion of Poland). \nWithin the city limits there are two smaller lakes: Kahalnaye (Кагальнае) and Grand (Вялікае) from which the Birchwood river originates (Бярозаўка, Brzozówka in Polish). The first written records about the settlement date back to 1514. During World War II in occupied Poland the town's district of Berezwecz was the location of a massacre of up to 2,000–3,000 Polish prisoners by the Soviet NKVD secret police, and during the Nazi occupation from July 1941 to July 1944 several thousand Jews were murdered.  As late as 2009 the remains of more than 20 victims probably shot by NKVD after the takeover of the area from Poland were again discovered in a basement of a local church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "hlybokaye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5026,
+    "attempt": 4987,
+    "place_id": "gn-8714374",
+    "input": {
+      "place": {
+        "place_id": "gn-8714374",
+        "name": "Loosdrecht",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.207,
+        "lon": 5.071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loosdrecht",
+          "url": "https://en.wikipedia.org/wiki/Loosdrecht",
+          "text": "Loosdrecht (Dutch pronunciation: [ˈloːzdrɛxt]) is a town in the municipality of Wijdemeren, North Holland, the Netherlands, with a population of about 8,600 inhabitants.\nLoosdrecht consists of two small villages: Nieuw-Loosdrecht and Oud-Loosdrecht. Nieuw Loosdrecht covers a small area densely populated; Oud-Loosdrecht consists mainly of lakeside villas. Until 2002 Loosdrecht was a separate municipality in the province of Utrecht, covering the villages of Oud-Loosdrecht and Nieuw-Loosdrecht, and the hamlets of Breukeleveen and Muyeveld.\nLoosdrecht is known for its lakes, the Loosdrechtse Plassen, which thousands of tourists visit every year. The lakes are a hotspot for the well-to-do, with several exclusive yachting clubs and restaurants lining the shores. Smaller boats can visit the Vuntus and other quieter lakes on the northern side of Loosdrecht, connected to the main lakes through a small underpass."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "loosdrecht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5027,
+    "attempt": 4988,
+    "place_id": "gn-981906",
+    "input": {
+      "place": {
+        "place_id": "gn-981906",
+        "name": "Lothair",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -26.38939,
+        "lon": 30.43526
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lothair, Mpumalanga",
+          "url": "https://en.wikipedia.org/wiki/Lothair,_Mpumalanga",
+          "text": "Lothair is a village located 65 kilometres (40 mi) northeast of Ermelo and 29 kilometres (18 mi) southeast of Chrissiesmeer, in the Msukaligwa Local Municipality in the Mpumalanga province of South Africa. Situated on the Bonny Brook in an area settled by Scottish immigrants, it was surveyed in 1878 and named after Lothair, the novel written by Benjamin Disraeli and published in 1870.\nLothair is at the end of a railway line from Ermelo; the Swazilink project aims to connect this line to the Eswatini Railways network at Sidvokodvo in Eswatini.\nIt houses a small community that depends on working on the farms for a living."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "lothair",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5028,
+    "attempt": 4989,
+    "place_id": "gn-160798",
+    "input": {
+      "place": {
+        "place_id": "gn-160798",
+        "name": "Butiama",
+        "country": "Tanzania",
+        "subdivision": "Mara",
+        "lat": -1.76667,
+        "lon": 33.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Butiama",
+          "url": "https://en.wikipedia.org/wiki/Butiama",
+          "text": "Butiama is a town and capital of Butiama District, located in Mara Region in northern Tanzania. The town of Butiama is the birthplace of Julius Nyerere, the founding father and the first president of Tanzania. Butiama is also the homeland of the Zanaki people, of which the founding father was a member. The Mwalimu Nyerere Museum Centre is located in the town and is the town's biggest attraction. \nSeveral things have been named Butiama because of its significance to Tanzanian history, including the ferry MV Butiama that operates between Mwanza and Ukerewe.\nAccording to the 2002 Tanzania National Census, the population of Butiama was 15,383."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "butiama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5029,
+    "attempt": 4990,
+    "place_id": "gn-1705871",
+    "input": {
+      "place": {
+        "place_id": "gn-1705871",
+        "name": "Loboc",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.63833,
+        "lon": 124.03482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loboc",
+          "url": "https://en.wikipedia.org/wiki/Loboc",
+          "text": "Loboc, officially the Municipality of Loboc (Cebuano: Munisipalidad sa Loboc; Tagalog: Bayan ng Loboc),  is a  municipality in the province of Bohol, Philippines. According to the 2024 census, it has a population of 17,338 people.\nLocated 28 kilometres (17 mi) east of Tagbilaran, Loboc is widely known for its lunch cruises along the scenic and winding Loboc River. The Loboc Children's Choir, who perform in different floating stations located at the river's end, has won numerous competitions both domestic and international. Tourists also visit to see the tarsier, a small, nocturnal, monkey-like mammal with large, red eyes. It is one of the world's smallest primates.\nUntil the 2013 earthquake, portions of the Loboc Church complex (specifically parts of what became the convent or priests' residence) were amongst the oldest standing religious structures in the island of Bohol. The earthquake also damaged the lunch cruise's Docking Port, and caused damage to the pedestrian river bridge and its passenger elevator.\nIn late 2014, Tropical storm Seniang passed directly over the Loboc river area. Although the winds were relatively weak, Seniang brought substantial rainfall. This caused the river to burst its banks in several places: the entire poblacion main plaza was flooded, including the town hall; many of the lunch cruise boats were damaged; and the accumulated debris of the church was disturbed and some washed away. It was fortunate that the new replacement bridge across the river had been completed just a few weeks before, allowing traffic to reach Tagbilaran via Sikatuna since the Loay interior road was damaged and impassable.\nThe Loboc Church is currently in the tentative list for UNESCO World Heritage Sites under the Baroque Churches of the Philippines (Extension). A proposal has been suggested by scholars to make a separate UNESCO inclusion for the Old Centre of Loboc which includes the Loboc Church. The same would be made for other churches listed in UNESCO's tentative sites, where each town plaza and surrounding heritage buildings would be added. At present, government agencies are still yet to take action on the proposal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 342
+    },
+    "banned_terms": [
+      {
+        "term": "loboc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5030,
+    "attempt": 4991,
+    "place_id": "gn-1854037",
+    "input": {
+      "place": {
+        "place_id": "gn-1854037",
+        "name": "Onna",
+        "country": "Japan",
+        "subdivision": "Okinawa",
+        "lat": 26.49543,
+        "lon": 127.85098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Onna, Okinawa",
+          "url": "https://en.wikipedia.org/wiki/Onna,_Okinawa",
+          "text": "Onna (Japanese: 恩納村, Hepburn: Onna-son; Kunigami and Okinawan: Unna) is a village located in Kunigami District, Okinawa Prefecture, Japan.\nAs of October 1, 2020, the village had an estimated population of 10,869 and a population density of 210 people per km². The total area is 50.77 square kilometres (19.60 mi2). Unlike other areas of Japan, Onna has had a sustained period of population growth in the post-war period. In 1965 the population of the village was 8,471, and by 2003 it had grown to over 10,000 residents.\nOnna is the site of the Okinawa Institute of Science and Technology, a research institute turned graduate university."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "onna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5031,
+    "attempt": 4992,
+    "place_id": "gn-1865103",
+    "input": {
+      "place": {
+        "place_id": "gn-1865103",
+        "name": "Arita",
+        "country": "Japan",
+        "subdivision": "Saga",
+        "lat": 33.18333,
+        "lon": 129.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arita, Saga",
+          "url": "https://en.wikipedia.org/wiki/Arita,_Saga",
+          "text": "Arita (有田町, Arita-chō) is a town located in Nishimatsuura District, Saga Prefecture, Japan.  As of 31 May 2024, the town had an estimated population of 18,634 in 7867 households, and a population density of 280 people per km2. The total area of the town is 51.92 km2 (20.05 sq mi).  It is known for producing Arita porcelain, one of the traditional handicrafts of Japan. It also holds the largest ceramic fair in Western Japan, the Arita Ceramic Fair. This event is held from April 29 to May 5 (Golden Week) every year and has thousands of stores and stalls lining the six-kilometre long main street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "arita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5032,
+    "attempt": 4993,
+    "place_id": "gn-2066981",
+    "input": {
+      "place": {
+        "place_id": "gn-2066981",
+        "name": "Margaret River",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -33.95504,
+        "lon": 115.07599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Margaret River, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Margaret_River,_Western_Australia",
+          "text": "Margaret River is a town in the South West region of Western Australia, located in the valley of the Margaret River, 277 kilometres (172 mi) south of Perth, the state capital. Its Local Government Area is the Shire of Augusta Margaret River.\nMargaret River's coast to the west of the town is a renowned surfing location with worldwide fame for its surf breaks including, but not limited to, 'Main Break' and 'The Box'. Colloquially, the area is referred to as \"Margs\".\nThe surrounding area is the Margaret River wine region and is known for its wine production and tourism, attracting an estimated 500,000 visitors annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "margaret river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "margaret",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5033,
+    "attempt": 4994,
+    "place_id": "gn-2163837",
+    "input": {
+      "place": {
+        "place_id": "gn-2163837",
+        "name": "Hastings",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.3,
+        "lon": 145.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hastings, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Hastings,_Victoria",
+          "text": "Hastings (Parre Eurruc-Eurruc in Boonwurrung) is a town on the Mornington Peninsula in Melbourne, Victoria, Australia, 58 km (36 mi) south-east of Melbourne's Central Business District, located within the Shire of Mornington Peninsula local government area. Hastings recorded a population of 10,369 at the 2021 census.\nHastings is part of an urban enclave on Western Port comprising Hastings, Bittern, Crib Point, Tyabb, and Somerville. It is served by Hastings railway station on the Stony Point greater-metropolitan line.  \nHastings is situated on an inlet on Western Port, a major port and important environmental area.  Hastings has multiple marinas and is home to many recreational boating activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "hastings",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5034,
+    "attempt": 4995,
+    "place_id": "gn-2185579",
+    "input": {
+      "place": {
+        "place_id": "gn-2185579",
+        "name": "Onerahi",
+        "country": "New Zealand",
+        "subdivision": "Northland",
+        "lat": -35.76667,
+        "lon": 174.36667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Onerahi",
+          "url": "https://en.wikipedia.org/wiki/Onerahi",
+          "text": "Onerahi is a harbourside suburb of Whangārei, New Zealand's northernmost city. It is the city's only seaside suburb. It is 9 km south-east of the centre of Whangārei and is mostly a peninsula jutting into Whangārei Harbour, which connects to the Pacific Ocean. The area was called Kaiwaka Point until Europeans bought it in the mid-1860s and renamed it Grahamtown. In 1912 it was renamed Onerahi.\nThe suburb's main feature is Whangārei Airport, located on the large flat area at the southern end of the suburb, which was built up using material from the site of a former Māori pā (fortress) just to the north. There are two concentric roads around the seaward plateau; the upper one surrounds the airport, and the lower follows the coast. The suburb is connected to Whangārei via the Onerahi Causeway.\nClose to the suburb in the harbour is Motu Matakohe or Limestone Island, now being managed to restore its ecosystems. Public transport in Onerahi solely consists of bus services, the suburb is serviced by Citylink route 2 bus via Riverside Drive to  Whangārei City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "onerahi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5035,
+    "attempt": 4996,
+    "place_id": "gn-2188371",
+    "input": {
+      "place": {
+        "place_id": "gn-2188371",
+        "name": "Lincoln",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.65,
+        "lon": 172.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lincoln, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Lincoln,_New_Zealand",
+          "text": "Lincoln (Māori: Rīkona) is a town in the Selwyn District, in the Canterbury Region of New Zealand's South Island. The town is located on the Canterbury Plains to the west of Banks Peninsula, 22 kilometres southwest of Christchurch. The town has a population of 12,100  (June 2025), making it the second largest town in the Selwyn District behind nearby Rolleston.\nLincoln is part of the Christchurch metropolitan area; at the 2006 Census, 53% of employed Lincoln residents worked in the city. The town is home to Lincoln University, the oldest agricultural tertiary institution in the Southern Hemisphere and the smallest of New Zealand's eight universities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "lincoln",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5036,
+    "attempt": 4997,
+    "place_id": "gn-2523644",
+    "input": {
+      "place": {
+        "place_id": "gn-2523644",
+        "name": "Ramacca",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.38616,
+        "lon": 14.69241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramacca",
+          "url": "https://en.wikipedia.org/wiki/Ramacca",
+          "text": "Ramacca (Italian pronunciation: [raˈmakka]) is a comune (municipality) in a mountainous area in the Metropolitan City of Catania in the Italian region of Sicily, located about 140 kilometres (87 mi) southeast of Palermo and about 35 kilometres (22 mi) southwest of Catania. It lies west of the Plain of Catania. Ramacca borders the following municipalities: Agira, Aidone, Assoro, Belpasso, Castel di Judica, Lentini, Mineo, Palagonia, Paternò, Raddusa.\n\nIts name derives from the Arabic Rahal Mohac, which means Hamlet of Mohac.\nRamacca is home to the Sagra del Carciofo, an artichoke festival held every April. The city's economy is largely based on the cultivation of artichokes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "ramacca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5037,
+    "attempt": 4998,
+    "place_id": "gn-2525513",
+    "input": {
+      "place": {
+        "place_id": "gn-2525513",
+        "name": "Bovalino",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 38.15376,
+        "lon": 16.17232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bovalino",
+          "url": "https://en.wikipedia.org/wiki/Bovalino",
+          "text": "Bovalino is a comune (municipality) in the Province of Reggio Calabria in the Italian region Calabria, located about 90 kilometres (56 mi) southwest of Catanzaro and about 46 kilometres (29 mi) east of Reggio Calabria. As of 31 December 2004, it had a population of 8,406 and an area of 18.0 square kilometres (6.9 mi2).\nThe municipality of Bovalino contains the frazioni (subdivisions, mainly villages and hamlets) Bosco S. Ippolito (Greek: Aghios Ippolytos), Belloro, Russellina, Bricà, S. Nicola, Pozzo, Bovalino Superiore, Biviera, Rosa, and Cipparello.\nBovalino borders the following municipalities: Ardore, Benestare, Casignana, San Luca.\nBovalino was also the birthplace of the Blessed Camillus Costanzo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "bovalino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5038,
+    "attempt": 4999,
+    "place_id": "gn-2634483",
+    "input": {
+      "place": {
+        "place_id": "gn-2634483",
+        "name": "Westbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.26,
+        "lon": -2.1875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westbury, Wiltshire",
+          "url": "https://en.wikipedia.org/wiki/Westbury,_Wiltshire",
+          "text": "Westbury is a market town and civil parish in west Wiltshire, England. The town lies below the northwestern edge of Salisbury Plain, about 4 miles (6 km) south of Trowbridge and a similar distance north of Warminster. \nWestbury was known for the annual Hill Fair where many sheep were sold in the 18th and 19th centuries; later growth came from the town's position at the intersection of two railway lines. The busy A350, which connects the M4 motorway with the south coast, passes through the town. The urban area has expanded to include the village of Westbury Leigh and the hamlets of Chalford and Frogmore."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "westbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5039,
+    "attempt": 5000,
+    "place_id": "gn-2655781",
+    "input": {
+      "place": {
+        "place_id": "gn-2655781",
+        "name": "Bewdley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.3757,
+        "lon": -2.31833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bewdley",
+          "url": "https://en.wikipedia.org/wiki/Bewdley",
+          "text": "Bewdley (  BEWD-lee) is a town and civil parish in the Wyre Forest District in Worcestershire, England, on the banks of the River Severn. It is in the Severn Valley, and is 3+1⁄2 miles (5.5 kilometres) west of Kidderminster, 12+1⁄2 mi (20 km) north of Worcester and 23 mi (37 km) southwest of Birmingham. It lies on the River Severn, at the gateway of the Wyre Forest national nature reserve, and at the time of the 2021 census had a population of 9,267. Bewdley is a popular tourist destination and is known for the Bewdley Bridge, designed by Thomas Telford, and the well-preserved Georgian riverside."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "bewdley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

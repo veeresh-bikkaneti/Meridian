@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 4958,
+    "attempt": 4921,
+    "place_id": "gn-1014650",
+    "input": {
+      "place": {
+        "place_id": "gn-1014650",
+        "name": "Burgersfort",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -24.67554,
+        "lon": 30.32877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burgersfort",
+          "url": "https://en.wikipedia.org/wiki/Burgersfort",
+          "text": "Burgersfort is located in the valley of the Spekboom River at the edge of the Bushveld Complex in the Fetakgomo Tubatse Local Municipality of the Limpopo province of South Africa, near the border with the Mpumalanga province. The town was named after a hexagonal fort built there during the 1876-77 Second War against the Bapedi of King Sekhukhune, and was named after President TF Burgers of the ZAR. The town serves as a meeting point for two major roads, the R37 and R555. The region is rich in platinum and platinum group metals.  The town's neighbouring towns are Mashishing (60 km), Steelpoort (16 km) and Ohrigstad (26 km)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "burgersfort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4959,
+    "attempt": 4922,
+    "place_id": "gn-12070062",
+    "input": {
+      "place": {
+        "place_id": "gn-12070062",
+        "name": "Mercato",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.84512,
+        "lon": 14.27241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mercato, Naples",
+          "url": "https://en.wikipedia.org/wiki/Mercato,_Naples",
+          "text": "Mercato (Italian and Neapolitan for \"market\") is a neighbourhood or quartiere of Naples, southern Italy. It is in the southeastern part of the city, bounded by the industrial port of Naples on the south.\nAt the centre of the area is the Piazza Mercato or \"market square\", the medieval marketplace of the city. At the apex of the half-moon of the piazza is the church of Santa Croce e Purgatorio al Mercato. Visible to the east and west respectively are the belltowers and parts of the façade of Sant'Eligio Maggiore and the church of Santa Maria del Carmine. The square was the site of the execution of Conradin.\nIt was also where Masaniello's revolt broke out and also the site of the executions after the royalist retaking of the kingdom after the fall of the Parthenopean Republic of 1799.\nThe area was somewhat cut off from the rest of the city, inland, by the urban renewal (risanamento) of the early 1900s. Also, it was severely damaged by bombings in World War II."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "mercato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4960,
+    "attempt": 4923,
+    "place_id": "gn-13156870",
+    "input": {
+      "place": {
+        "place_id": "gn-13156870",
+        "name": "Sarbhog",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 26.48932,
+        "lon": 90.88426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sarbhog",
+          "url": "https://en.wikipedia.org/wiki/Sarbhog",
+          "text": "Sarbhog {IPA:ˈsə(r)ˌbɒg} (also spelt as Sorbhog) is a town and a town area committee in Barpeta district in the Indian state of Assam. It is located on the banks of river Beki and contains a temple dedicated to Krishna known as \"Gorokhiya Gohainr Than\", which is a site of pilgrimage. Travel to Sarbhog is facilitated by train and the National Highway 31.\nSorbhog is located at 26.50°N 90.87°E﻿ / 26.50; 90.87. It has an average elevation of 50 m (160 ft).\nThe name suggests that there is abundance of milk and milk products in this town, and Sorbhog is known for the milk cream and curd produced locally.\nAs of 2001 India census, Sorbhog had a population of 7553. Males constitute 51% of the population and females 49%. Sorbhog has an average literacy rate of 78%, higher than the national average of 59.5%: male literacy is 83%, and female literacy is 72%. In Sorbhog, 10% of the population is under 6 years of age."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "sarbhog",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4961,
+    "attempt": 4924,
+    "place_id": "gn-1679360",
+    "input": {
+      "place": {
+        "place_id": "gn-1679360",
+        "name": "Zumarraga",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.6388,
+        "lon": 124.8417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zumarraga, Samar",
+          "url": "https://en.wikipedia.org/wiki/Zumarraga,_Samar",
+          "text": "Zumarraga, officially the Municipality of Zumarraga (Waray: Bungto han Zumarraga; Tagalog: Bayan ng Zumarraga), is an island municipality in the province of  Samar, Philippines. According to the 2024 census, it has a population of 16,051 people.\nIt is formerly known as Buad, Rawis, and Kawayan. The town itself, notably its downtown area, is considered by many heritage scholars as a heritage zone due to the many heritage houses within its vicinity. The local government unit is currently conserving the history and traditions of the town.\nThe town is also famous for two alcoholic beverages: kinutil (tubâ or coconut wine with egg yolk) and dubado (tubâ with melted tablea)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "zumarraga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4962,
+    "attempt": 4925,
+    "place_id": "gn-1681676",
+    "input": {
+      "place": {
+        "place_id": "gn-1681676",
+        "name": "Tiwi",
+        "country": "Philippines",
+        "subdivision": "Bicol Region",
+        "lat": 13.4585,
+        "lon": 123.6805
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiwi, Albay",
+          "url": "https://en.wikipedia.org/wiki/Tiwi,_Albay",
+          "text": "Tiwi, officially the Municipality of Tiwi (Central Bikol: Banwaan kan Tiwi; Tagalog: Bayan ng Tiwi), is a  municipality in the Province of Albay, Philippines. According to the 2024 census, it has a population of 56,871 people.\nIt is notable for its geothermal energy facilities and traditional pottery craft. It became the first water-based geothermal system in the world to generate more than 160 megawatts of power and now has an installed capacity of 289 MW. The town is also known for its coron, handcrafted pottery made in different shapes and sizes. Visitors can see the Tiwi Geothermal Power Plant from Naglagbong Geothermal People’s Park, often called Nag Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "tiwi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4963,
+    "attempt": 4926,
+    "place_id": "gn-2160706",
+    "input": {
+      "place": {
+        "place_id": "gn-2160706",
+        "name": "Lalor",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.66667,
+        "lon": 145.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lalor, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Lalor,_Victoria",
+          "text": "Lalor () is a suburb in Melbourne, Victoria, Australia, 17 km (11 mi) north of Melbourne's Central Business District, located within the City of Whittlesea local government area. Lalor recorded a population of 23,219 at the 2021 census.\nLalor was named in honour of Peter Lalor, a leader of the Eureka Stockade rebellion and later a member of the Victorian parliament. The suburb was named after the Peter Lalor Home Building Co-operative Society. In recent times, the mispronunciations  has become predominant, whilst the Federal electorate of Lalor is still predominantly pronounced .\nThe eastern and western borders of Lalor are defined by Darebin Creek and Merri Creek respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "lalor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4964,
+    "attempt": 4927,
+    "place_id": "gn-2636854",
+    "input": {
+      "place": {
+        "place_id": "gn-2636854",
+        "name": "Stoke Gifford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.51686,
+        "lon": -2.54053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stoke Gifford",
+          "url": "https://en.wikipedia.org/wiki/Stoke_Gifford",
+          "text": "Stoke Gifford is a large village and civil parish in the South Gloucestershire district, in the ceremonial county of Gloucestershire, England. It forms part of the Bristol built-up area, part of the city's North Fringe. The ward had 14,200 residents in 5,788 households at the 2021 census and the parish had 19,794.\nIt is served by Bristol Parkway railway station and is home to Stoke Gifford depot, on the London-South Wales railway line. To the south, it is served by the Bristol Ring Road.\nSeveral major employers and office parks are located in Stoke Gifford, including the Bristol offices of Aviva which took over Friends Life in 2015. The Stoke Gifford area is also home to the main campus of the University of the West of England, and offices of Hewlett-Packard and MOD Abbey Wood, although since 2023 parish boundary changes these are now in the Stoke Park and Cheswick parish.\nThe parish includes the neighbourhoods of Little Stoke and Harry Stoke. It borders Filton, to the south-west, Patchway to the north west, Bradley Stoke to the north, Winterbourne and Hambrook to the east, and Cheswick to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "stoke gifford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stoke",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gifford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4965,
+    "attempt": 4928,
+    "place_id": "gn-2641523",
+    "input": {
+      "place": {
+        "place_id": "gn-2641523",
+        "name": "Newtown",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 52.51667,
+        "lon": -3.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newtown, Powys",
+          "url": "https://en.wikipedia.org/wiki/Newtown,_Powys",
+          "text": "Newtown (Welsh: Y Drenewydd) is a town in Powys, Wales. It lies on the River Severn in the community of Newtown and Llanllwchaiarn, within the historic boundaries of Montgomeryshire. It was designated a new town in 1967 and saw population growth as firms settled, changing its market town character. Its 2001 population of 10,780 rose to 11,357 in the 2011 census, and rose again to 11,362 in the 2021 census.\nNewtown was the birthplace of Robert Owen in 1771, whose house stood on the present site of the HSBC Bank. The town has a theatre, Theatr Hafren, and a public gallery, Oriel Davies, displaying contemporary arts and crafts. It is the largest town in Powys and Mid Wales."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "newtown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4966,
+    "attempt": 4929,
+    "place_id": "gn-2656305",
+    "input": {
+      "place": {
+        "place_id": "gn-2656305",
+        "name": "Barnard Castle",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.5415,
+        "lon": -1.919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barnard Castle",
+          "url": "https://en.wikipedia.org/wiki/Barnard_Castle",
+          "text": "Barnard Castle (, BAR-nəd) is a market town on the north bank of the River Tees, in County Durham, England. The town is named after and built around a ruined medieval castle. The town's Bowes Museum has an 18th-century Silver Swan automaton exhibit and paintings by Goya and El Greco.\nBarnard Castle is on the left bank of the River Tees, opposite Startforth, and is 21 miles (34 km) south-west of the county town of Durham. Nearby towns include Bishop Auckland to the north-east, Darlington to the east and Richmond to the south-east. The largest employer is GlaxoSmithKline, with a manufacturing facility on the outskirts of the  town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "barnard castle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barnard",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "castle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4967,
+    "attempt": 4930,
+    "place_id": "gn-2658145",
+    "input": {
+      "place": {
+        "place_id": "gn-2658145",
+        "name": "Vevey",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.46299,
+        "lon": 6.84345
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vevey",
+          "url": "https://en.wikipedia.org/wiki/Vevey",
+          "text": "Vevey (; French pronunciation: [vəvɛ] ; Arpitan: Vevê; former German: Vivis) is a municipality and a town in Switzerland in the canton of Vaud, on the north shore of Lake Geneva, near Lausanne.  The German name Vivis is no longer commonly used.\nIt was the seat of the district of the same name until 2006, and is now part of the Riviera-Pays-d'Enhaut District. It is part of the French-speaking area of Switzerland.\nVevey is home to the world headquarters of the international food and beverage company Nestlé, founded here in 1867. Milk chocolate was invented in Vevey by Daniel Peter in 1875, with the aid of Henri Nestlé. The English actor and comedian Charlie Chaplin resided in Vevey from 1952 until his death in 1977."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "vevey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4968,
+    "attempt": 4931,
+    "place_id": "gn-2753201",
+    "input": {
+      "place": {
+        "place_id": "gn-2753201",
+        "name": "Jordaan",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.37439,
+        "lon": 4.88059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jordaan",
+          "url": "https://en.wikipedia.org/wiki/Jordaan",
+          "text": "The Jordaan (Dutch pronunciation: [jɔrˈdaːn]) is a neighbourhood of the city of Amsterdam, Netherlands. It is part of the borough of Amsterdam-Centrum. The area is bordered by the Singelgracht canal and the neighbourhood of Frederik Hendrikbuurt to the west; the Prinsengracht to the east; the Brouwersgracht to the north and the Leidsegracht to the south. The former canal Rozengracht (now filled in) is the main traffic artery through the neighbourhood.\nOriginally a working-class neighbourhood, the Jordaan has become one of the most expensive, upscale locations in the Netherlands. It is home to many art galleries, particularly for modern art, and is also dotted with speciality shops and restaurants. Markets are held regularly at Noordermarkt, the Westerstraat (the Lapjesmarkt textile market) and Lindengracht.\nRembrandt spent the last years of his life in the Jordaan, on the Rozengracht canal. He was buried in the Westerkerk church, at the corner of Rozengracht and Prinsengracht, just beyond the Jordaan. The Anne Frank House, where Anne Frank went into hiding during World War II, is located just beyond the neighborhood, on the east side of the Prinsengracht."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "jordaan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4969,
+    "attempt": 4932,
+    "place_id": "gn-2794510",
+    "input": {
+      "place": {
+        "place_id": "gn-2794510",
+        "name": "Kessel",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.13892,
+        "lon": 4.62962
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kessel, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Kessel,_Belgium",
+          "text": "Kessel () is a town in the municipality of Nijlen in the province of Antwerp in Belgium. In 2006, the population was 7,207 inhabitants. Kessel is known for its tourist attractions, such as \"de Kesselse Heide\" (a nature reserve) and \"Fort Kessel\" (a fortress built for World War I).\nKessel lies between two rivers: the Kleine Nete in the north and the Grote Nete in the south. It borders with Emblem, Nijlen, Bevel, Berlaar and Lier. Although Kessel is a fairly small town, it has 2 separate town centres, Kessel-Dorp, which is built up around the town square, and Kessel-station, which is built up around the train station.\nThe name Kessel comes from the Latin word Castellum (fortress), indicating that Kessel might have been the location for an old Roman camp. In 1912, another Fortress was built, in order to withstand a German invasion. During World War I, German artillery fire from Berlaar made the fort useless, though it still stands until this day and was given the status of Protected Monument by the Belgian government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "kessel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4970,
+    "attempt": 4933,
+    "place_id": "gn-2935491",
+    "input": {
+      "place": {
+        "place_id": "gn-2935491",
+        "name": "Dörverden",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.84824,
+        "lon": 9.23698
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dörverden",
+          "url": "https://en.wikipedia.org/wiki/D%C3%B6rverden",
+          "text": "Dörverden (German pronunciation: [ˈdœʁfɛʁdn̩]; Low German: Dörbern, Dörb'n or Dörveern) is a municipality in the district of Verden, in Lower Saxony, Germany. It is situated on the right bank of the Weser, approx. 8 km south of Verden, and 40 km southeast of Bremen.\nDörverden belonged to the Prince-Bishopric of Verden, established in 1180. In 1648 the Prince-Bishopric was transformed into the Principality of Verden, which was first ruled in personal union by the Swedish Crown – interrupted by a Danish occupation (1712–1715) – and from 1715 on by the Hanoverian Crown. In 1807 the short-lived Kingdom of Westphalia annexed the principality before France annexed it in 1810. In 1813 the principality was restored to the Electorate of Hanover, which – after its upgrade to the Kingdom of Hanover in 1814 – incorporated the principality in a real union and the princely territory, including Dörverden, became part of the new Stade Region, established in 1823."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "dorverden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4971,
+    "attempt": 4934,
+    "place_id": "gn-3110516",
+    "input": {
+      "place": {
+        "place_id": "gn-3110516",
+        "name": "Vilassar de Mar",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.50507,
+        "lon": 2.39227
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vilassar de Mar",
+          "url": "https://en.wikipedia.org/wiki/Vilassar_de_Mar",
+          "text": "Vilassar de Mar (Catalan pronunciation: [biləˈsa ðə ˈmaɾ]) is a municipality in the comarca of the Maresme in Catalonia, Spain. It is situated on the coast between Premià de Mar and Cabrera de Mar, to the north-east of Barcelona. The town is both a tourist centre and a dormitory town for Barcelona, and is also known for its horticulture. The main N-II road and a Renfe railway line run through the town, while a local road connects the municipality with the C-32 autopista at Vilassar de Dalt and Mataró and Barcelona. The famous canned food company DANI is based in Vilassar de Mar coming from a Vilassar family."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "vilassar de mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vilassar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4972,
+    "attempt": 4935,
+    "place_id": "gn-3517254",
+    "input": {
+      "place": {
+        "place_id": "gn-3517254",
+        "name": "Santa María del Tule",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 17.0468,
+        "lon": -96.63629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa María del Tule",
+          "url": "https://en.wikipedia.org/wiki/Santa_Mar%C3%ADa_del_Tule",
+          "text": "Santa María del Tule is a town and a municipality in the Mexican state of Oaxaca. \nIt is part of the Centro District in the Valles Centrales region.\nIt is located 11 kilometers (6.8 mi) SE of the  city of Oaxaca on Highway 190. The town and municipality are named for the patron saint of the place, the Virgin Mary and “Tule” comes from the Náhuatl word “tulle” or “tullin” which means bulrush.\nThe town's claim to fame is as the home of a 2,000-year-old Montezuma cypress tree, known as the El Árbol del Tule, which is one of the oldest, largest and widest trees in the world. Its gnarled trunk and branches are filled with shapes that have been given names such as “the elephant,” “the pineapple” and even one called “Carlos Salinas’ ears.”"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "santa maria del tule",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tule",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4974,
+    "attempt": 4936,
+    "place_id": "gn-3980152",
+    "input": {
+      "place": {
+        "place_id": "gn-3980152",
+        "name": "Villa Madero",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.39177,
+        "lon": -101.27871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa Madero",
+          "url": "https://en.wikipedia.org/wiki/Villa_Madero",
+          "text": "The town of Villa Madero is a municipal seat in the municipality of Madero in the Mexican state of Michoacán. It was established in 1868 with the name of Cruz de Caminos. According to tradition the first inhabitant of the place was a man named Armas, he is now considered the town's founder. The land where the town currently sits belonged to La Hacienda De La Concepcion. The village is the point of intersection of the paths that lead to Acuitzio, Etucuaro, Curuchancio and Tacambaro, this is why it became known as Cruz De Caminos (Cross Roads).\nCruz de Caminos, was in 1901 part of Acuitzio Del Canje. On July 27, 1914, Cruz de Caminos applied to become a municipality. On October 12, 1914, the agreement to elevate it to a municipality with the name of Madero was ratified. It was named after Francisco I. Madero.\nVilla Madero hosts an annual festival named \"La Feria del Mezcal\". This is about a traditional beverage \"mezcal\" produced in Etucuaro, a town that is part of the Madero municipality. During this festival, producers give free samples of their product. There are also traditional food stands, different sports activities, a parade and at night people gather in a ballroom to dance with live music.\nVilla Madero used to be surrounded by pine forests, but as of 2022 is battling illegal logging, deforestation, encroachment by avocado growers, and depleted water tables. An attempt to institute citizen patrols such as was successful in Cherán was foiled by the Mexican drug cartel. Local farm families are having to haul in water because the avocado growers have diverted streams to water their orchards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 275
+    },
+    "banned_terms": [
+      {
+        "term": "villa madero",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "madero",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4975,
+    "attempt": 4937,
+    "place_id": "gn-4014795",
+    "input": {
+      "place": {
+        "place_id": "gn-4014795",
+        "name": "Cerritos",
+        "country": "Mexico",
+        "subdivision": "San Luis Potosí",
+        "lat": 22.42835,
+        "lon": -100.28474
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cerritos, San Luis Potosí",
+          "url": "https://en.wikipedia.org/wiki/Cerritos,_San_Luis_Potos%C3%AD",
+          "text": "San Juan de Los Cerritos, commonly known as Cerritos, is a Town located in the central part of San Luis Potosí, a state of Mexico. It was founded in 1826 by the state's Congress.  It is within the mid-zone of the state called La Zona Media.  Within its municipality, which is the center of, it holds about 51 other small towns.  According to the 2010 census, the municipality has 21,394 people; having experienced tremendous growth.  Much of its recent growth can be credited to the construction of the cement factory, Cemento Moctezuma, An industry that was dominated by Casa Gloria During the decades of the 1960s and 1970s. Nowadays Cerritos is expanding its population and more housing is being built near the outskirts of the town due to the influx of new residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "cerritos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4976,
+    "attempt": 4938,
+    "place_id": "gn-4104182",
+    "input": {
+      "place": {
+        "place_id": "gn-4104182",
+        "name": "Camden",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 33.58456,
+        "lon": -92.83433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camden, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Camden,_Arkansas",
+          "text": "Camden is a city in and the county seat of Ouachita County in the south-central part of the U.S. state of Arkansas. The city is located about 100 miles south of Little Rock. Situated on bluffs overlooking the Ouachita River, the city developed because of the river.\nThe recorded history began in 1782 when a Spanish military post was established on the site of an old French trading post called Écore à Fabri. When Ouachita County was formed in 1842, American settlers changed the name to Camden. The city became an important port during the steamboat era when Camden became known as the “Queen City” of the Ouachita. In 1864, Camden became the unintended focus of the Red River Campaign, a major Civil War effort resulting in several significant battles.\nIn 2020, Camden had a population of 10,612, down from its 2010 population of 12,183. Camden is the principal city of the Camden Micropolitan Statistical Area, which includes all of Ouachita and Calhoun counties."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "camden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4977,
+    "attempt": 4939,
+    "place_id": "gn-4620634",
+    "input": {
+      "place": {
+        "place_id": "gn-4620634",
+        "name": "Elizabethton",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.34872,
+        "lon": -82.21069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elizabethton, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Elizabethton,_Tennessee",
+          "text": "Elizabethton  () is a city in, and the county seat of Carter County, Tennessee, United States. Elizabethton is the historical site of the first independent American government (known as the Watauga Association, created in 1772) located west of both the Eastern Continental Divide and the original Thirteen Colonies.\nThe city is also the historical site of the Transylvania Purchase (1775), a major muster site during the American Revolutionary War for both the Battle of Musgrove Mill (1780) and the Battle of Kings Mountain (1780). It was within the secessionist North Carolina \"State of Franklin\" territory (1784–1788).\nThe population of Elizabethton was enumerated at 14,546 during the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "elizabethton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4978,
+    "attempt": 4940,
+    "place_id": "gn-4844184",
+    "input": {
+      "place": {
+        "place_id": "gn-4844184",
+        "name": "Thompson",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.95871,
+        "lon": -71.86257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thompson, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Thompson,_Connecticut",
+          "text": "Thompson is a town in Windham County, Connecticut, United States. The town is part of the Northeastern Connecticut Planning Region. The town was named after Sir Robert Thompson, an English landholder. The population was 9,189 at the 2020 census. Thompson is located in the northeastern corner of the state and is bordered on the north by Webster, Massachusetts and Dudley, Massachusetts, on the east by Douglas, Massachusetts and Burrillville, Rhode Island, on the west by Woodstock, Connecticut, and on the south by Putnam, Connecticut.\nThompson has the highest-banked race track (Thompson Speedway Motorsports Park, a 5/8 mile oval and a restored 1.7 mile road course) in New England. This speedway holds one of the biggest race programs in New England, The World Series of Auto Racing, where 16 divisions and about 400 cars show up each fall. Another claim to fame is that the Tri-State Marker is located just on the border of Thompson. The term \"Swamp Yankee\" is thought to have originated in Thompson during the American Revolution in 1776. In colonial times, the town was the site of an Indian village, known as Maanexit.\nThompson was the site of the Great East Thompson Train Wreck in 1891, one of the worst train wrecks in American history and the only one to involve four trains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "thompson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

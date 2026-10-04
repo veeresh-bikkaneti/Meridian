@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 4897,
+    "attempt": 4861,
+    "place_id": "gn-5804306",
+    "input": {
+      "place": {
+        "place_id": "gn-5804306",
+        "name": "Mukilteo",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.94454,
+        "lon": -122.30458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mukilteo, Washington",
+          "url": "https://en.wikipedia.org/wiki/Mukilteo,_Washington",
+          "text": "Mukilteo ( MUK-əl-TEE-oh; Lushootseed: bək̓ʷəɬtiwʔ) is a city in Snohomish County, Washington, United States. It is located on Puget Sound between Edmonds and Everett, approximately 25 miles (40 km) north of Seattle. The city had a population of 21,538 at the 2020 census and an estimated 2024 population of 21,299.\nThe current site of downtown Mukilteo (also named Old Town) has been inhabited by the Snohomish people for at least 1,000 years before present. The Treaty of Point Elliott was signed in Mukilteo in 1855, opening the region to American settlement. A new town was founded at Mukilteo and served as the provisional county seat of Snohomish County in early 1861. The area remained a trading post for loggers and was home to other industries, but was overshadowed by Everett and grew slowly.\nMukilteo was used during World War II as an auxiliary fueling facility, due to its proximity to the newly built Snohomish County Airport (now Paine Field). Mukilteo was incorporated as a city in 1947 and saw new suburban development, which accelerated after the opening of the nearby Boeing Everett Factory in the late 1960s. The city annexed large suburban areas on the west side of Paine Field in the 1980s and 1990s, including Harbour Pointe and the State Route 525 corridor, while also revitalizing the Old Town area in the 2000s.\nToday, Mukilteo is a bedroom community with a small job base centered around manufacturing industries. It is also a major transportation hub, with connections to Whidbey Island via the Washington State Ferries system, Sounder commuter trains to Seattle, and public transit services to nearby cities. The city is recognized for its quality of life and is one of the most affluent in Washington state, with a high median income."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "mukilteo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4898,
+    "attempt": 4862,
+    "place_id": "gn-581186",
+    "input": {
+      "place": {
+        "place_id": "gn-581186",
+        "name": "Ardatov",
+        "country": "Russia",
+        "subdivision": "Nizhny Novgorod Oblast",
+        "lat": 55.23923,
+        "lon": 43.09557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ardatov, Nizhny Novgorod Oblast",
+          "url": "https://en.wikipedia.org/wiki/Ardatov,_Nizhny_Novgorod_Oblast",
+          "text": "Ardatov (Russian: Ардатов; Russian pronunciation: [ɐr'datəf]; before 1779 and between 1925 and 1959 Ardatovo, Russian: Ардатово) is an urban locality (a work settlement) in the Nizhny Novgorod Oblast, Russia. It is the administrative center of the Ardatov District. It is located 165 kilometres (103 mi) southwest of Nizhny Novgorod and 430 kilometers east of Moscow. The nearest railway station, Mukhtolovo, is about 28.5 kilometres (17.7 mi) to the north.\nArdatov stands on the site of a presumed Bulgar camp settlement that existed since the 13th century, and later a Golden Horde fortified settlement. After the territory was annexed to Russia in 1552, it became a yasak village (first mentioned in 1578). The population was initially mixed Russian-Mordovian, and by the end of the 17th to the beginning of the 18th century, it became completely Russian. From 1779 to 1923, it was a uyezd town, from 1925 it became a village, from 1929 it served as a district center, and since 1959 it has been a town. As of 2022, the population of Ardatov was 9,768 people.\nUntil the mid-20th century, agriculture formed the basis of the economy, and later there was a trend towards a greater role for industry. The town has two technical schools, two secondary schools, four kindergartens, a cultural centre, two libraries, a local history museum, a children's art school, and a hospital, as well as a sport and recreation center. Since 1930, a district newspaper has been published.\nUntil the early 20th century, Ardatov had significant religious importance, housing the Pokrovsky Nunnery, three churches, and several chapels. All of them were closed during the Soviet era. Since 1990, the restoration of some churches and the construction of new ones began, and since 2012, the town has is of the Ardatov Deanery of the Vyksa Diocese of the Russian Orthodox Church. However, as of 2024, the territory of the former monastery is occupied by a women's correctional colony. Ardatov does not have significant tourist potential, but over 20 sites are regional architectural monuments, and its central part has been officially recognised as a protected area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 348
+    },
+    "banned_terms": [
+      {
+        "term": "ardatov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4899,
+    "attempt": 4863,
+    "place_id": "gn-727921",
+    "input": {
+      "place": {
+        "place_id": "gn-727921",
+        "name": "Provadia",
+        "country": "Bulgaria",
+        "subdivision": "Varna",
+        "lat": 43.18333,
+        "lon": 27.43333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Provadia",
+          "url": "https://en.wikipedia.org/wiki/Provadia",
+          "text": "Provadia (Bulgarian: Провадия [proˈvadijɐ]) is a town in northeastern Bulgaria, part of Varna Province, located in a deep karst gorge (Provadia syncline) along the Provadiya River not far from the Bulgarian Black Sea Coast. It is the administrative centre of Provadia Municipality. As of December 2009, the town had a population of 12,901.\nProvadia served as a customs point since ancient times. It is well known for salty mineral waters, its mild climate and a total of 70 km of caves in the surrounding mountain walls. It can be reached by train from Sofia or Varna and there are also hourly buses from and to Varna, and a sophisticated road system."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "provadia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4900,
+    "attempt": 4864,
+    "place_id": "gn-1020854",
+    "input": {
+      "place": {
+        "place_id": "gn-1020854",
+        "name": "Bathurst",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -33.4998,
+        "lon": 26.8294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bathurst, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Bathurst,_South_Africa",
+          "text": "Bathurst is about 12 kilometres (7.5 mi) inland from Port Alfred, on the R67 road, in the Eastern Cape province of South Africa, and is named after Henry Bathurst, 3rd Earl Bathurst, Secretary of State for the Colonies by Sir Rufane Donkin. Its chief claim to fame is that it was the early administrative centre established by the British Government for the 1820 British Settlers who were sent to the district as a buffer between the Cape Colony and the Xhosa pastoralists who were migrating southwards and westwards along the coast. Bathurst is now part of the Ndlambe Local Municipality in the Sarah Baartman District Municipality of the Eastern Cape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "bathurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4901,
+    "attempt": 4865,
+    "place_id": "gn-11185837",
+    "input": {
+      "place": {
+        "place_id": "gn-11185837",
+        "name": "Marthandam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 8.30812,
+        "lon": 77.22144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marthandam",
+          "url": "https://en.wikipedia.org/wiki/Marthandam",
+          "text": "Marthandam  is a major trade centre in Kuzhithurai municipality across State Highway in the Kanyakumari district of Tamil Nadu, India. Marthandam comes under the kuzhithurai Municipality, also known as Thoduvetty (another name for the Marthandam market region), it was a portion of Kanyakumari district which was added to the state of Tamil Nadu on 1 November 1956.\nMarthandam is the second-largest town in the district. It derived its name from the founder and ruler of Travancore, Anizham Thirunal Marthanda Varma. Marthandam is famous for honey, cashew nut processing, rubber and hand-embroidered motifs. The area is among the most fertile lands of Tamil Nadu, with substantial vegetation and a river adjoining. It is also a major trade centre due to its location bordering Kerala.\nMarthandam Honey, a distinctive and natural product from the Kanyakumari District in Tamil Nadu, received the Geographical Indication (GI) tag in 2023. Registered under GI Application No. 800, it holds the distinction of being the GI product of India. Known for its purity, unique flavor, and medicinal properties, Marthandam Honey reflects the rich biodiversity and traditional beekeeping practices of the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "marthandam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4902,
+    "attempt": 4866,
+    "place_id": "gn-1272502",
+    "input": {
+      "place": {
+        "place_id": "gn-1272502",
+        "name": "Diu",
+        "country": "India",
+        "subdivision": "Dadra and Nagar Haveli and Daman and Diu",
+        "lat": 20.71405,
+        "lon": 70.98224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diu, India",
+          "url": "https://en.wikipedia.org/wiki/Diu,_India",
+          "text": "Diu (English: /'diːuː/,  Hindi: [d̪iːʋ]), also known as Diu Town, is a medieval fortified town in Diu district in the union territory of Dadra and Nagar Haveli and Daman and Diu, India. Diu district is the tenth least populated district of India. The town of Diu lies at the eastern end of Diu Island and is known for its fortress and old Portuguese cathedral. It is a fishing town.\nThe city is one of the hundred Indian cities competing in a national-level competition to get funds under Narendra Modi's flagship Smart Cities Mission. Diu will be competing for one of the last 10 spots against 20 cities from across India. In April 2018, it was reported that the Diu Smart City has already become India's first city to run on 100 percent renewable energy during the daytime."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "diu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4903,
+    "attempt": 4867,
+    "place_id": "gn-2512794",
+    "input": {
+      "place": {
+        "place_id": "gn-2512794",
+        "name": "Pedro Muñoz",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.40285,
+        "lon": -2.94664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pedro Muñoz",
+          "url": "https://en.wikipedia.org/wiki/Pedro_Mu%C3%B1oz",
+          "text": "Pedro Muñoz is a municipality in the autonomous community of Castile-La Mancha, Spain. It is located in the northeast corner of the province of Ciudad Real, on the bank of the Záncara river. It is in the La Mancha region, in the \"Mancha Alta\" sub-region. It was founded in 1284 by the Archdeacon of Alcaraz, Pero Muñoz (later adjusted to \"Pedro\" Muñoz in the municipality's name), as one of a series of defensible points in the La Mancha plains. The village was abandoned in 1410, due to a severe drought, and re-established in 1525. Since the late 19th century, Pedro Muñoz had been an important economic center in the region.\nThe village has an important architectural heritage of manor houses, hermitages and the Renaissance and Baroque church of St Peter the Apostle. It also has a natural and ecological heritage composed of a protected complex of wetlands, visited by many species of migratory birds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "pedro munoz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "munoz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4904,
+    "attempt": 4868,
+    "place_id": "gn-2524126",
+    "input": {
+      "place": {
+        "place_id": "gn-2524126",
+        "name": "Misilmeri",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.03183,
+        "lon": 13.44795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Misilmeri",
+          "url": "https://en.wikipedia.org/wiki/Misilmeri",
+          "text": "Misilmeri (Sicilian: Musulumeli) is a town and comune (municipality) in the Metropolitan City of Palermo, Sicily, Italy. It is approximately 15 kilometres (9 mi) from Palermo, and is located in the Eleuterio Valley on the southern slopes of Montagna Grande.\nMisilmeri dates from the Muslim emirate of Sicily: the village rose around a castle (today known as Castello dell'Emiro, or \"Castle of the Emir\") founded by emir Jafar II (998–1019). Its name derives from Arabic Manzil al-Amīr (منزل الأمير), meaning \"the resting place / messuage of the Emir\". In 1068, the Battle of Misilmeri was fought between the Normans and Arabs.\nMisilmeri is the birthplace of the magistrate Rocco Chinnici."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "misilmeri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4905,
+    "attempt": 4869,
+    "place_id": "gn-2647363",
+    "input": {
+      "place": {
+        "place_id": "gn-2647363",
+        "name": "Haslingden",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.70326,
+        "lon": -2.32382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haslingden",
+          "url": "https://en.wikipedia.org/wiki/Haslingden",
+          "text": "Haslingden  is a town in the borough of Rossendale, Lancashire, England. It lies 16 miles (26 km) north of Manchester. At the time of the 2021 census, the town (including Helmshore) had a population of 15,969. The town is surrounded by high moorland: 370 metres (1,210 ft) to the north; 396 metres (1,299 ft) Cribden to the east; and 418 metres (1,371 ft) Bull Hill to the south.\nThe town is the birthplace of the industrialist John Cockerill (1790–1840) and the composer Alan Rawsthorne (1905–1971); it \nwas the home for many years of the Irish Republican leader, Michael Davitt (1846–1906). Haslingden Cricket Club is a member of the Lancashire League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "haslingden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4906,
+    "attempt": 4870,
+    "place_id": "gn-2657067",
+    "input": {
+      "place": {
+        "place_id": "gn-2657067",
+        "name": "Armadale",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.88333,
+        "lon": -3.7
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Armadale, West Lothian",
+          "url": "https://en.wikipedia.org/wiki/Armadale,_West_Lothian",
+          "text": "Armadale (Scots: Airmadale, Scottish Gaelic: Armadal) is a town within the county of West Lothian in the Central Belt of Scotland. It lies to the west of Bathgate and to the east of Blackridge. Armadale, formerly known as Barbauchlaw, is an ex-mining town which was also known for its brick manufacturing. It is named after Armadale in Sutherland, this estate being owned by Sir William Honeyman who later acquired the land of Barbauchlaw. Primarily a residential community, the town has a number of different public places, a central Mains Street and a series of parks, green spaces and nature reserves, many of which lie atop former mines and industrial areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "armadale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4907,
+    "attempt": 4871,
+    "place_id": "gn-2797581",
+    "input": {
+      "place": {
+        "place_id": "gn-2797581",
+        "name": "Gesves",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.40146,
+        "lon": 5.07457
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gesves",
+          "url": "https://en.wikipedia.org/wiki/Gesves",
+          "text": "Gesves (French: [ʒɛv]; Walloon: Djeve) is a municipality of Wallonia located in the province of Namur, Belgium. \nThe municipality consists of the following districts: Faulx-les-Tombes, Gesves, Haltinne, Mozet, and Sorée. It also includes the hamlets of Gramptinne, Goyet (site of glacial remnants of Neanderthals), Haut-Bois, and Strud  (site where fossil of Strudiella devonica, a Late Devonian insect, was discovered).\nOn 1 January 2006 the municipality had 6,321 inhabitants. The total area is 64.92 km2, giving a population density of 97 inhabitants per km2.\nOn 1 December 2019, the population had grown to 7,246 inhabitants (3,612 men and 3,634 women), representing a growth of 14.63% over the course of 13 years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "gesves",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4908,
+    "attempt": 4872,
+    "place_id": "gn-2810188",
+    "input": {
+      "place": {
+        "place_id": "gn-2810188",
+        "name": "Westerstede",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.25682,
+        "lon": 7.92737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westerstede",
+          "url": "https://en.wikipedia.org/wiki/Westerstede",
+          "text": "Westerstede  (German pronunciation: [vɛstɐˈʃteːdə] ; Low German: Westerstäe) is the capital of the Ammerland district, in Lower Saxony, Germany. It is situated approximately 25 km northwest of Oldenburg.\nIt is known for hosting the Rhodo Festival, the biggest exhibition of rhododendrons in Europe. The festival is hosted every four years (next time in 2027).\nThe villages of Burgforde, Eggeloge, Felde, Fikensolt, Garnholt, Gießelhorst, Halsbek, Halstrup, Hollriede, Hollwege, Hollwegerfeld, Hüllstede, Ihausen, Ihorst, Karlshof, Linswege, Linswegerfeld, Mansie, Lindern, Moorburg, Neuengland, Ocholt, Ocholterfeld, Ollenharde, Petersfeld, Tarbarg, Torsholt, Westerloy, Westerloyerfeld and Westerstederfeld are part of Westerstede.\nThe railway station of Westerstede is located in the village of Ocholt, 6 km south of the town. Trains from and to Leer and Oldenburg halt there every hour.\nThe community (and the whole Ammerland region) is famous for its tree nurseries. They grow rhododendrons that are sold outside Germany as well. The slightly acid peat soil is very suitable for this type of horticulture.\n\nNear Linswege village,  7 km north-east of Westerstede, a Rhododendron Park has been established next to a beautiful wooded area. The park is open to visitors in May and June every year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "westerstede",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4909,
+    "attempt": 4873,
+    "place_id": "gn-2953312",
+    "input": {
+      "place": {
+        "place_id": "gn-2953312",
+        "name": "Bad Wurzach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.90799,
+        "lon": 9.89686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Wurzach",
+          "url": "https://en.wikipedia.org/wiki/Bad_Wurzach",
+          "text": "Bad Wurzach (German pronunciation: [baːt ˈvʊʁtsax] ; until 1950 Wurzach) is a spa town in the state of Baden-Württemberg in southern Germany. It is a well known health-resort destination, and home to the oldest bog spa (in German: Moorheilbad) in Baden-Württemberg, as well as one of the largest contiguous raised bog areas in Europe. It is situated 25 kilometres (16 mi) northeast of Ravensburg and part of Ravensburg County, located in the Upper Swabia region. Since 1950 the town has carried the predicate Bad (spa). It is the third-largest municipality by area in the state of Baden-Württemberg, second only to Stuttgart, which is the capital of the state, and Baiersbronn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "bad wurzach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wurzach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4910,
+    "attempt": 4874,
+    "place_id": "gn-2978621",
+    "input": {
+      "place": {
+        "place_id": "gn-2978621",
+        "name": "Saint-Mandé",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.83864,
+        "lon": 2.41579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Mandé",
+          "url": "https://en.wikipedia.org/wiki/Saint-Mand%C3%A9",
+          "text": "Saint-Mandé (French pronunciation: [sɛ̃ mɑ̃de] ; named for Saint Maudez) is a commune in the Val-de-Marne department in Île-de-France. It is a high-end town in eastern inner suburbs of Paris, France. It is located 5.3 km (3.3 mi) from the centre of Paris.\nSaint-Mandé is one of the smallest communes in Île-de-France by land area, but also one of the most densely populated municipalities in Europe. It is located on the edge of the 12th arrondissement of Paris, adjacent to the Bois de Vincennes, near the Porte de Vincennes and the Porte de Saint-Mandé.\nThe town motto is Cresco et Floresco, which means \"I grow and I flourish\" in Latin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "saint mande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4911,
+    "attempt": 4875,
+    "place_id": "gn-3020152",
+    "input": {
+      "place": {
+        "place_id": "gn-3020152",
+        "name": "Ensisheim",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 47.86584,
+        "lon": 7.35052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ensisheim",
+          "url": "https://en.wikipedia.org/wiki/Ensisheim",
+          "text": "Ensisheim (French pronunciation: [ɛnsisaim] ; in Alsatian Ansa (Alemannic German pronunciation: [ˈansa])) is a commune in the Haut-Rhin department in Grand Est in north-eastern France. It is also the birthplace of the composer Léon Boëllmann. The Germanic origins of the village's name reflect the area's history.\nAmong the earliest-known clear examples for the practice of trepanation was identified from a Neolithic burial site near the town. Researchers from Freiburg University reported in 1997 an analysis of the well-preserved skeletal remains of an approximately 50-year-old man, whose cranium showed clear evidence of two trepanation procedures. One had fully healed and the other partially so, indicating the subject had survived the operations. The remains were dated to between 5100 and 4900 BC.\nOn 7 November 1492, a 127 kilogram meteorite fell there, and since then it has attracted many meteorite enthusiasts. It was described in detail by the contemporary poet Sebastian Brant. The meteorite can still be seen in the town's museum, the Musée de la Régence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "ensisheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4912,
+    "attempt": 4876,
+    "place_id": "gn-3072137",
+    "input": {
+      "place": {
+        "place_id": "gn-3072137",
+        "name": "Letňany",
+        "country": "Czechia",
+        "subdivision": "Prague",
+        "lat": 50.13333,
+        "lon": 14.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Letňany",
+          "url": "https://en.wikipedia.org/wiki/Let%C5%88any",
+          "text": "Letňany is a cadastral area of Prague, Czech Republic. It was founded in 1307 and became part of Prague in 1968. It has been included in Prague 18 since 2001, having previously been in the local government district of Prague-Letňany, and it has its own cadastral area (also called \"Prague 18\").\nThere is a large shopping mall, Obchodní centrum Letňany, with an area in excess of 125,000 m2.\nLetňany was the centre of Czech aircraft production, with major aviation companies such as Avia and Letov, but as the industry gradually declined, Letňany became a mostly residential district. There are two airports: the non-public international Letňany Airport and Kbely military airport.\nNearby Letňany metro station opened in May 2008, on the new extension of Prague's Line C."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "letnany",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4913,
+    "attempt": 4877,
+    "place_id": "gn-3515195",
+    "input": {
+      "place": {
+        "place_id": "gn-3515195",
+        "name": "Totolapan",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.98487,
+        "lon": -98.92073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Totolapan",
+          "url": "https://en.wikipedia.org/wiki/Totolapan",
+          "text": "Totolapan is a municipality in the north of the Mexican state of Morelos, surrounded by the State of Mexico to the north; to the south with Tlayacapan and Atlatlahucan; to the east and southeast with Atlatlahucan; and to the west with Tlalnepantla.\nThe city serves as the municipal seat for the surrounding municipality, with which it shares a name. The municipality reported 11,992 inhabitants in the 2015 census.\nThe toponym Totolapan comes from a Nahuatl name and means \"birds on water\". The full name is Totolapan de Montes de Oca. Fernando Montes de Oca was a cadet who died at the Battle of Chapultepec during the Mexican–American War in 1847."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "totolapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4914,
+    "attempt": 4878,
+    "place_id": "gn-3590605",
+    "input": {
+      "place": {
+        "place_id": "gn-3590605",
+        "name": "Salcajá",
+        "country": "Guatemala",
+        "subdivision": "Quetzaltenango",
+        "lat": 14.87964,
+        "lon": -91.45699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salcajá",
+          "url": "https://en.wikipedia.org/wiki/Salcaj%C3%A1",
+          "text": "Salcajá is a town and municipality in Quetzaltenango department of Guatemala.\nSalcajá is best known for the Church of San Jacinto, founded in 1524, which was the first church built in Central America since it was one of the first places invaded in the Spanish conquest of Guatemala. It is also known as La Conquistadora (\"The Conqueress\", \"The Conqueror\") presumably because of the time period and its religious influence on the indigenous population. After 490 years and several earthquakes, the building still is in relatively good condition. The church is open to the public for special events and on holidays. Visitors are now welcomed at the adjoined museum most mornings.\nThis town is also known for its manufacture of corte, the traditional Mayan dress for women. tellars are found in 5 out of 10 houses. \nTechnically, local artisans specialize in the complex jaspe (ikat) resist-dyeing method, where tie-dyed cotton threads are hand-woven on foot and backstrap looms to create intricate geometric patterns for indigenous skirts across the Guatemalan highlands.\nThis little town is also known for its production of Red Liquor or Caldo de Frutas (\"Fruit Juice\").  This homemade liquor is vivid red in color due to the brewing of hibiscus flower with several native fruits. Rompopo, a yellow alcoholic beverage made from eggs,  is also manufactured in the town.\nThe Saint of the town of Salcaja is St. Louis, King of France. He is celebrated with a carnival which runs from August 15 through the 28 but [among this] during the celebration they also have many other carnivals that are either in the town or as close as 15 minutes away.\nSalcaja has a soccer team, called \"America F.C.\". The team members wear black and white striped jerseys, and they are in the second division of the Guatemalan league.  Every year around August Salcajá's team plays against one of the strongest teams in the Major league, \"Xelaju M.C.\" It is usually played at home in Salcajá in the \"Estadio Panorama\" which is in the suburbs of Salcajá."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "salcaja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4915,
+    "attempt": 4879,
+    "place_id": "gn-3689899",
+    "input": {
+      "place": {
+        "place_id": "gn-3689899",
+        "name": "Andes",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 5.65576,
+        "lon": -75.87959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andes, Antioquia",
+          "url": "https://en.wikipedia.org/wiki/Andes,_Antioquia",
+          "text": "Andes is a municipality and town in the Antioquia Department, Colombia. Part of the sub-region of Southwestern Antioquia, it is located on the western Colombian Andes mountain range.  Andes was founded on 13 March 1852 by Pedro Antonio Restrepo Escobar. Its elevation is 1,360 metres above sea level with an average temperature of 22 °C.  The distance reference from Medellín city, the capital of Antioquia Department, is 117 km and it has a total area of 402.5 km2.  This town is well known for being the place where Gonzalo Arango a writer, philosopher and Antioquian journalist was born.  The more significantly source of its economy is agriculture, mainly coffee cultivation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "andes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4916,
+    "attempt": 4880,
+    "place_id": "gn-3925158",
+    "input": {
+      "place": {
+        "place_id": "gn-3925158",
+        "name": "Costa Marques",
+        "country": "Brazil",
+        "subdivision": "Rondônia",
+        "lat": -12.445,
+        "lon": -64.22722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Costa Marques",
+          "url": "https://en.wikipedia.org/wiki/Costa_Marques",
+          "text": "Costa Marques is a municipality located in the Brazilian state of Rondônia. Its population was 18,798 (2020) and its area is 4,987 km2.\nThe city is located in the Guaporé River's right bank and the main attraction is Forte Príncipe da Beira (named after the Prince of Beira), which was built in 1786 by the Portuguese Kingdom to protect that region from the Spanish Crown.\nThe municipality contains 91% of the 36,442-hectare (90,050-acre) Serra dos Reis State Park.\nIt contains 14% of the 2,244-hectare (5,550-acre) Serra dos Reis A State Park, created in 1996.\nIt also contains 52.5% of the 146,400-hectare (362,000-acre) Rio Cautário State Extractive Reserve, created in 1995."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "costa marques",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "costa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marques",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
