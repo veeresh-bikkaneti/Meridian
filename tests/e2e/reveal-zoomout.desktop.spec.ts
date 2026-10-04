@@ -2,6 +2,7 @@ import { test, expect, type Page } from "playwright/test";
 import {
   serveBuiltArtifact,
   startGlobeRun,
+  dismissTileOverlayIfPresent,
   readPhase,
   commitMiss,
   commitHit,
@@ -62,6 +63,28 @@ async function wheelNotches(page: Page, deltaY: number): Promise<void> {
   }
 }
 
+/**
+ * The tile watchdog is flaky under software rendering (fires "failed" even
+ * with the tile stub, then Retry recovers) — pre-existing harness flake,
+ * unrelated to this fix. Retry the ready-poll a few times so the test
+ * measures the reveal camera, not tile loading.
+ */
+async function ensureTilesReady(page: Page): Promise<void> {
+  const map = page.locator(".satellite-map");
+  for (let attempt = 0; attempt < 3; attempt++) {
+    await dismissTileOverlayIfPresent(page);
+    try {
+      await expect
+        .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
+        .toBe("ready");
+      return;
+    } catch {
+      // fall through to Retry
+    }
+  }
+  throw new Error("ensureTilesReady: tiles never reached ready");
+}
+
 /** Both the guess pin and the true spot are inside the 1440x900 viewport. */
 async function expectBothMarkersFramed(page: Page): Promise<void> {
   const pin = await aimMarkerCenter(page);
@@ -97,6 +120,7 @@ async function startStateRun(page: Page): Promise<void> {
 /** Shared miss-from-deep-zoom body: pull-back + framing + live gestures. */
 async function missFromDeepZoom(page: Page): Promise<void> {
   const { deep: deepZoom } = await zoomDeep(page);
+  await ensureTilesReady(page);
   await commitMiss(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   // The gap view pulled back from the deep zoom to fit both pins.
