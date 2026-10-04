@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 2883,
+    "attempt": 2861,
+    "place_id": "gn-2347057",
+    "input": {
+      "place": {
+        "place_id": "gn-2347057",
+        "name": "Birnin Kudu",
+        "country": "Nigeria",
+        "subdivision": "Jigawa State",
+        "lat": 11.45207,
+        "lon": 9.47856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birnin Kudu",
+          "url": "https://en.wikipedia.org/wiki/Birnin_Kudu",
+          "text": "Birnin Kudu () is a town and a Local Government Area in the south of Jigawa State, Nigeria, some 120 kilometres (75 mi) south-east of Kano. As of 2006 the town of Birnin Kudu had an estimated population of 419,800 and is the most populous local government in the state.\nBirnin Kudu is an old historic city renowned for its rocks and drawings found in some of them dating to centuries before the colonisation of Northern Nigeria and establishment of Native Authority (NA). The city was an NA headquarters during the British rule and has been the capital of Birnin Kudu Local Government Area.\nBirnin Kudu is the most populous local government in Jigawa state according to 2006 census, though the city experiences slow infrastructural development. It is also a city where Gwaram and Buji local government where separated from in 1996.\nIt is home to one of the oldest schools in northern Nigeria, Government College Birnin Kudu, from where many Northern Leaders and businessmen emerged including Alhaji Aliko Dangote (Richest man in Africa).\nIn recent politics, Birnin Kudu has produced two governors of Jigawa State (Alh. Ali Sa'adu, first civilian governor of the state) and Alh. Sule Lamido, who was a Governor of jigawa state from 29 May 2007 to 29 May 2015.\nBirnin Kudu has 11 political wards, namely Kantoga, Kangire, Kwangwara, Kiyako, Sundumina, Surko, Lafiya, Unguwar ƴa, Yalwan damai, Birnin Kudu, and Wurno.\nMuhd Kabir Ibrahim is the current member representing Birnin Kudu in Jigawa state House of assembly, 2024 to 2027."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "birnin kudu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "birnin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kudu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2884,
+    "attempt": 2862,
+    "place_id": "gn-2510392",
+    "input": {
+      "place": {
+        "place_id": "gn-2510392",
+        "name": "Tomelloso",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.15759,
+        "lon": -3.02156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tomelloso",
+          "url": "https://en.wikipedia.org/wiki/Tomelloso",
+          "text": "Tomelloso (Spanish: [tomeˈʎoso] ) is a municipality located in the northeast of the province of Ciudad Real, within the autonomous community of Castile-La Mancha in Spain. Situated in the geographic center of the natural region of La Mancha and with a population of 36,304 (2023) it is the most populous municipality in the comarca and ranks as the eighth largest in Castilla-La Mancha.\nThe municipal territory is predominantly flat, except in the southeast, where the land gently rises to form the Campo de Montiel plateau. The area is characterized by extensive vineyards, with smaller areas dedicated to cereal crops, olive trees, pistachios, almond trees, and other irrigated crops. Tree coverage is sparse. The municipality is crossed only by the Córcoles and Záncara rivers (the latter forming the boundary with Pedro Muñoz), although several seasonal streambeds are evident during periods of heavy rainfall. Since the Middle Ages, the area has been traversed by a branch of the Cañada Real Conquense, an ancient drovers' road.\nTomelloso shares its northern border with Pedro Muñoz, its eastern border with Socuéllamos, its southern border with Argamasilla de Alba and Alhambra, and its western border with Campo de Criptana and Arenales de San Gregorio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "tomelloso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2885,
+    "attempt": 2863,
+    "place_id": "gn-2662689",
+    "input": {
+      "place": {
+        "place_id": "gn-2662689",
+        "name": "Visby",
+        "country": "Sweden",
+        "subdivision": "Gotland",
+        "lat": 57.64089,
+        "lon": 18.29602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Visby",
+          "url": "https://en.wikipedia.org/wiki/Visby",
+          "text": "Visby (Swedish: [ˈvǐːsbʏ] ) is an urban area in Sweden and the seat of Gotland Municipality in Gotland County on the island of Gotland with 24,330 inhabitants as of 2017. Visby is also the episcopal see for the Diocese of Visby. The Hanseatic city of Visby is one of the best-preserved medieval cities in Scandinavia, and, since 1995, it has been on the UNESCO World Heritage Site list. Among the most notable historical remains are the 3.4 km (2.1 mi) long town wall that encircles the town center, and a number of church ruins and its small decorative alleyways. The decline as a Hanseatic city in the Late Middle Ages was the cause for many stone houses being preserved in their original medieval style.\nVisby is a popular vacation destination for Scandinavians during the summer and receives thousands of tourists every year. It is by far the most populous Swedish locality outside the Swedish mainland. The Gotland University is in Visby, and since 1 July 2013, it is a department of Uppsala University under the name Uppsala University–Campus Gotland. Visby is also the sole county seat in Sweden accessible from the mainland only by boat and air.\nImportant annual events held in Visby include the annual political forum Almedalen Week."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "visby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2886,
+    "attempt": 2864,
+    "place_id": "gn-2799365",
+    "input": {
+      "place": {
+        "place_id": "gn-2799365",
+        "name": "Dilbeek",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.84799,
+        "lon": 4.25972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dilbeek",
+          "url": "https://en.wikipedia.org/wiki/Dilbeek",
+          "text": "Dilbeek (Dutch pronunciation: [ˈdɪlbeːk] ) is a municipality in the province of Flemish Brabant, in the Flemish region of Belgium. The municipality comprises the villages of Dilbeek proper, Groot-Bijgaarden, Itterbeek (with Sint-Anna-Pede), Schepdaal (with Sint-Gertrudis-Pede), Sint-Martens-Bodegem, and Sint-Ulriks-Kapelle. Dilbeek is located just outside the Brussels-Capital Region (and is part of the city's urban sprawl, contiguous with Berchem-Sainte-Agathe, Moortebeek (Anderlecht) and Molenbeek-Saint-Jean) in the Pajottenland, hence the local name Poort van het Pajottenland (Gate to the Pajottenland).\nEven though Dilbeek is located in the Dutch-language area of Belgium, there is a French-speaking minority represented by 2 members on the 35-seat local council. It is a mostly residential community with some preserved rural areas and some industrial zones. The Brussels Ring road (R0, part of E19) bisects the municipality, with a major junction with the A10 motorway (part of E40) located within its boundaries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "dilbeek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2887,
+    "attempt": 2865,
+    "place_id": "gn-2896514",
+    "input": {
+      "place": {
+        "place_id": "gn-2896514",
+        "name": "Ilmenau",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.68322,
+        "lon": 10.91858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilmenau",
+          "url": "https://en.wikipedia.org/wiki/Ilmenau",
+          "text": "Ilmenau (German pronunciation: [ˈɪlmənaʊ] ) is a town in Thuringia, central Germany. It is the largest town within the Ilm district with a population of 38,600, while the district capital is Arnstadt. Ilmenau is located approximately 33 km (21 miles) south of Erfurt and 135 km (84 miles) north of Nuremberg within the Ilm valley at the northern edge of the Thuringian Forest at an elevation of 500 metres (1,640 feet).\nThe most important institution in Ilmenau is the Technische Universität Ilmenau, a public research university and Thuringia's only \"Technical University\" with about 4,900 students and an emphasis on engineering disciplines, computer science, mathematics, natural sciences, economics, and media studies. Its precursor was founded in 1894 and developed into a university in 1992. Since 1990, many research institutes have been established in the vicinity making Ilmenau an important hub of technological research.\nIlmenau was historically a small mining town, primarily silver, copper and manganese, until the deposits were depleted. After 1800, it was one of Johann Wolfgang von Goethe's favourite resorts because of its beautiful surroundings. In 1838, the establishment of the town as a spa led to the advent of tourism, which is still an important industry. Industrialisation started after the railway arrived in 1879, but increased rapidly during the following century primarily in glass and porcelain manufacturing. The porcelain factories closed (as in many other places in western Europe) during the 1990s. The glass industry, however, remained and produces laboratory equipment and measurement devices and is leading source of economic activity together with mechanical, electrical, and software engineering. Ilmenau and the surrounding region have produced many winter Olympic champions in disciplines such as luge, bobsleigh, and biathlon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "ilmenau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2888,
+    "attempt": 2866,
+    "place_id": "gn-2973675",
+    "input": {
+      "place": {
+        "place_id": "gn-2973675",
+        "name": "Suresnes",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.87143,
+        "lon": 2.22929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suresnes",
+          "url": "https://en.wikipedia.org/wiki/Suresnes",
+          "text": "Suresnes (French pronunciation: [syʁɛn] ) is a commune in Hauts-de-Seine, in the western inner suburbs of Paris, located 9.3 km (5.8 mi) from the centre of Paris. As of 2023, the population of the commune was 48,956.\nSuresnes borders the Bois de Boulogne in the 16th arrondissement of Paris, across the Seine. Its neighbouring communes are Nanterre, Puteaux, Rueil-Malmaison and Saint-Cloud. Suresnes's landmarks include the Mémorial de la France combattante, where an annual ceremony is held on 18 June, as well as Suresnes American Cemetery and Memorial nearby, below Fort Mont-Valérien, in addition to Foch Hospital in the town centre.\nThe commune is served by Suresnes–Mont-Valérien station on the Transilien network and by two stops on Île-de-France tramway Line 2, all three giving access to the La Défense business district and its RER A, RER E and Paris Métro Line 1 services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "suresnes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2889,
+    "attempt": 2867,
+    "place_id": "gn-3037423",
+    "input": {
+      "place": {
+        "place_id": "gn-3037423",
+        "name": "Antony",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.75329,
+        "lon": 2.29668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antony, Hauts-de-Seine",
+          "url": "https://en.wikipedia.org/wiki/Antony,_Hauts-de-Seine",
+          "text": "Antony (French pronunciation: [ɑ̃tɔni]) is a commune in the southern suburbs of Paris, France, 11.3 km (7.0 mi) from the centre of Paris. Antony is a subprefecture of the Hauts-de-Seine department and the seat of the arrondissement of Antony.\nWatered by the Bièvre, a tributary of the Seine, Antony is at the crossroads of important transport routes, especially the main north–south axis, which has existed for 2,000 years. Little urbanized until the early 20th century, the city grew considerably between the two wars, under Senator-Mayor Auguste Mounié, from 4,000 to 20,000 inhabitants. In the early 1960s the population quickly increased from 25,000 to 50,000 to accommodate repatriated people from Algeria. Now incorporated in the Paris Metropolitan Area, it is particularly strong in education, with one of the largest private institutions in France, and in health, with the largest private establishment in Île-de-France.\nThe commune has been awarded \"two flowers\" by the National Council of Towns and Villages in Bloom in the Competition for Cities and Villages in Bloom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "antony",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2890,
+    "attempt": 2868,
+    "place_id": "gn-3193935",
+    "input": {
+      "place": {
+        "place_id": "gn-3193935",
+        "name": "Osijek",
+        "country": "Croatia",
+        "subdivision": "County of Osijek-Baranja",
+        "lat": 45.55066,
+        "lon": 18.6942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osijek",
+          "url": "https://en.wikipedia.org/wiki/Osijek",
+          "text": "Osijek (Croatian pronunciation: [ôsijeːk] ) is the largest city and the economic and cultural hub of the eastern Croatian region of Slavonia, as well as the administrative seat of Osijek-Baranja County. It is the fourth-largest city in Croatia, with a population of 96,313 recorded in the 2021 census. The city is situated on the southern bank of the Drava River, 25 km (16 mi) upstream from its confluence with the Danube, at an elevation of 94 m (308 ft). Osijek is located 16 km (10 mi) west of the Croatia–Serbia border.\nThe history of Osijek extends back to Roman antiquity, when the settlement of Mursa developed in the area, which became an important Roman military and urban centre in the province of Pannonia. The medieval town developed around the same general area and is first recorded under the name Osijek in 1196. During the Middle Ages it became a market and trading settlement connecting the Pannonian with the Balkans. Suleiman Bridge was built in 1566, which was used in Ottoman–Habsburg wars. In 1685, Habsburg-Croatian forces launched a successful campaign toward Osijek, defeating an Ottoman army. The medieval settlement was located approximately where the present-day Tvrđa stands. In 1786, Tvrđa, Gornji Grad and Donji Grad were united into one city, and in 1809 Osijek became a Free Royal City. Between 1922 and 1929, it was the centre of Osijek Oblast, an administrative division of the Kingdom of Serbs, Croats and Slovenes.\nDuring the Croatian War of Independence in the 1990s, Osijek was heavily attacked by the Yugoslav People's Army and Serbian forces. The Battle of Osijek and the surrounding fighting lasted mainly from 1991 to 1992, causing civilian casualties and significant damage to the city, which was later reconstructed and restored. Today, it is one of the main cultural, economic and educational centres of Slavonia, with its historic architecture reflecting Roman, Ottoman, Hasburg and modern Croatian history. Some of the cities landmarks include St. Peter and Paul Co-cathedral, Ante Starčević Square, Church of Saint Michael, Pedestrian bridge, The City Guard, County Palace, Pejačević Castle, Palace of Slavonian General Command, Osijek Archaeological Museum and City and University Library."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 356
+    },
+    "banned_terms": [
+      {
+        "term": "osijek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2891,
+    "attempt": 2869,
+    "place_id": "gn-3434509",
+    "input": {
+      "place": {
+        "place_id": "gn-3434509",
+        "name": "El Palomar",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.61771,
+        "lon": -58.60153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Palomar, Argentina",
+          "url": "https://en.wikipedia.org/wiki/El_Palomar,_Argentina",
+          "text": "El Palomar is a town in the urban agglomeration of Greater Buenos Aires in Argentina. It is located 20 km (12 mi) west of Buenos Aires.\nThe city has the peculiarity of being divided between two partidos of Buenos Aires Province: Morón, where it is called El Palomar, and Tres de Febrero, where it is called Ciudad Jardín Lomas del Palomar. Of its 74,751 inhabitants (2001 census [INDEC]), 57,146 live within the Morón jurisdiction and 17,605 live in Tres de Febrero.\nEl Palomar was established with a station by that name belonging to the Buenos Aires and Pacific Railway (Spanish: Ferrocarril Buenos Aires al Pacífico) opened in 1910. Developer Publio Massini sold the first lots on November 8 of that year, and Juan Manuel Giuffra established the El Palomar Development Council, which obtained electric lighting for the area in its early years. The city is home to the National Military College (Spanish: Colegio Militar de la Nación), the 1st Air Brigade (Spanish: Primera Brigada Aérea) of the Argentine Air Force, and El Palomar Airport.\nThe Italian Society of Tiro al Segno (Target Shooting) (S.I.T.A.S.), is located in Palomar. Horse riding, tennis, soccer, yoga, shooting, hockey, bodybuilding, and other sports can be practiced here. In an annex is the training venue for rugby and hockey.\nFrench automaker PSA Group had a manufacturing plant in the area as well, which is now owned by PSA's successor Stellantis.\nEl Palomar is served by Ferrocarril General San Martín commuter rail service at El Palomar station with easy access to Retiro Station in downtown Buenos Aires, as well as by National Route 7."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "el palomar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palomar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2892,
+    "attempt": 2870,
+    "place_id": "gn-3436061",
+    "input": {
+      "place": {
+        "place_id": "gn-3436061",
+        "name": "Bella Vista",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.5651,
+        "lon": -58.69034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bella Vista, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Bella_Vista,_Buenos_Aires",
+          "text": "Bella Vista  is a localidad (district) in San Miguel Partido which lies at the northwest part of Greater Buenos Aires, Buenos Aires Province, Argentina. Bella Vista is a prosperous residential area, with a small but dynamic commercial zone.\nBella Vista is located at 30 km from Buenos Aires city central business district.  It can be reached by car through AU Panamericana or AU del Oeste and AU del Buen Ayre or through routes: 8 (national route), 201 and 23 (both \"provinciales\").  Another way to go to Bella Vista is by train, through the ex lines \"San Martin\" and \"General Urquiza\".\nPeople from Bella Vista are called \"Bellavistenses\"\nThe Club de Regatas Bella Vista, one of the most important Rugby Clubs of the URBA (Buenos Aires Rugby Union), the Club Social Bella Vista and the Buenos Aires Golf, are located in this district.\nOne of its most popular residents is Rodolfo Zapata (popular singer) and his son Rolo Zapata, a well known soccer player and coach.\nIn 1990, Zapata's family founded Rolo Zapata Soccer Academy in Bella Vista.  Currently is one of the elites soccer program in Argentina and United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "bella vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bella",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2893,
+    "attempt": 2871,
+    "place_id": "gn-4763231",
+    "input": {
+      "place": {
+        "place_id": "gn-4763231",
+        "name": "Harrisonburg",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.44957,
+        "lon": -78.86892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harrisonburg, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Harrisonburg,_Virginia",
+          "text": "Harrisonburg is an independent city in the Shenandoah Valley region of the Commonwealth of Virginia, United States. It is also the county seat of the surrounding Rockingham County, although the two are separate jurisdictions. At the 2020 census, the population was 51,814. The Bureau of Economic Analysis combines the city of Harrisonburg with Rockingham County for statistical purposes into the Harrisonburg, Virginia Metropolitan Statistical Area, which had an estimated population of 126,562 in 2011.\nHarrisonburg is home to James Madison University (JMU), a public research university with an enrollment of over 20,000 students, and Eastern Mennonite University (EMU), a private, Mennonite-affiliated liberal arts university, with an enrollment of approximately 2,000 students. Although the city has no historical association with President James Madison, JMU was nonetheless named in his honor as Madison College in 1938 and renamed as James Madison University in 1977. EMU largely owes its existence to the sizable Mennonite population in the Shenandoah Valley, to which many Pennsylvania Dutch settlers arrived beginning in the mid-18th century in search of rich, unsettled farmland.\nThe city has become a bastion of ethnic and linguistic diversity in recent years. Over 1,900 refugees have been settled in Harrisonburg since 2002. As of 2014, Hispanics or Latinos of any race make up 19% of the city's population. Harrisonburg City Public Schools (HCPS) students speak 55 languages in addition to English, with Spanish, Arabic, and Kurdish being the most common languages spoken.  Over one-third of HCPS students are English as a second language (ESL) learners. Language learning software company Rosetta Stone was founded in Harrisonburg in 1992, and the multilingual \"Welcome Your Neighbors\" yard sign originated in Harrisonburg in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "harrisonburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2894,
+    "attempt": 2872,
+    "place_id": "gn-617702",
+    "input": {
+      "place": {
+        "place_id": "gn-617702",
+        "name": "Anenii Noi",
+        "country": "Moldova",
+        "subdivision": "Anenii Noi",
+        "lat": 46.87795,
+        "lon": 29.23503
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anenii Noi",
+          "url": "https://en.wikipedia.org/wiki/Anenii_Noi",
+          "text": "Anenii Noi (Romanian pronunciation: [aˈnenij ˈnoj]) is a city in east-central Moldova, the seat of Anenii Noi District. It is located 36 km (22 mi) SE of the capital, Chișinău.\nAccording to the 2004 census, the city administers an area inhabited by 11,463 people. This area consists of the city itself, population 8,358, and five suburb villages: Albiniţa, population 370, Beriozchi, population 647, Hîrbovăţul Nou, population 484, Ruseni, population 1,090, and Socoleni, population 514. Of the 10,872 recorded in the 2014 census, 6,756 are Moldovans, 1,894 Ukrainians, 1,427 Russians, 294 Romanians, 81 Gagauzians, 200 Bulgarians, and 33 Roma. At the 1930 census, there were two localities: Anenii Noi, population 661 (558 Bessarabian Germans, 30 Russians, 19 Romanians, and 4 Poles), and Anenii Vechi, population 990 (891 Russians, 74 Romanians, 19 Germans, 4 Jews, and 2 Bulgarians) in Plasa Bulboaca of Tighina County.\nThere are several supermarkets in the city such as Linella, Local, Cip Market, Admiral. There is also a Central market, bank branches, small shops (winemaking, confectionery, pastries, stationery). Transportation is available to Anenii Noi every half-hour from Chișinău."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "anenii noi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "anenii",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2895,
+    "attempt": 2873,
+    "place_id": "gn-783814",
+    "input": {
+      "place": {
+        "place_id": "gn-783814",
+        "name": "Zrenjanin",
+        "country": "Serbia",
+        "subdivision": "Vojvodina",
+        "lat": 45.38361,
+        "lon": 20.38194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zrenjanin",
+          "url": "https://en.wikipedia.org/wiki/Zrenjanin",
+          "text": "Zrenjanin is a city and the administrative center of the Central Banat District in the autonomous province of Vojvodina, Serbia. The city urban area has a population of 67,129 inhabitants, while the city administrative area has 105,722 inhabitants (2022 census data). The old name for Zrenjanin is Veliki Bečkerek or Nagybecskerek as it was known under Austria-Hungary up until 1918. After World War I and the liberation of Veliki Bečkerek the new name of the city was Petrovgrad, in honor of His Majesty King Peter I the Great Liberator, the King of Serbia and the King of Serbs, Croats and Slovenes.\nZrenjanin is the second largest city in the Serbian part of the Banat geographical region, the 4th largest city in Vojvodina (after Novi Sad, Subotica and Pančevo) and the nineth in Serbia. The city was designated European City of Sport 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "zrenjanin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2896,
+    "attempt": 2874,
+    "place_id": "gn-1021396",
+    "input": {
+      "place": {
+        "place_id": "gn-1021396",
+        "name": "Balfour",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -26.66331,
+        "lon": 28.59016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balfour, Mpumalanga",
+          "url": "https://en.wikipedia.org/wiki/Balfour,_Mpumalanga",
+          "text": "Balfour is a developing gold mining and maize farming town in Mpumalanga, South Africa.\nR160 Million Fine for Dipaleseng Local Municipality for Misconduct Spanning Five Years \nBalfour – The Deputy Minister of Water and Sanitation, Sello Seitlholo, has commended the Balfour Magistrate’s Court for imposing a R160 million fine on the Dipaleseng Local Municipality. \nThe municipality, based in Mpumalanga, was penalised for severe contraventions of environmental laws that harmed water resources, livestock, and community livelihoods. \nThe ruling, delivered on 15 November, found the municipality guilty under multiple statutes, including the National Environmental Management Act (NEMA) 107 of 1998 and the National Water Act 36 of 1998. \nViolations included pollution of water sources, failure to comply with remedial directives, and unauthorised disposal of wastewater. \nBetween December 2018 and August 2023, the municipality reportedly engaged in activities that devastated local ecosystems and communities. Evidence revealed the disposal of untreated sewage, including raw sludge laden with high levels of fecal coliform and E. coli, into water sources such as the Suikerbostant River and Gasteplaas Dam. Affected areas included Balfour Town, Kanini Township, Greylingstad, Grootvlei, Nthoarane, and Siyathemba Township. \nResidents endured contaminated drinking water and ongoing sewer spills, with the mismanagement of the Balfour Wastewater Treatment Works exacerbating the crisis. Complaints from affected communities about polluted water, livestock deaths, and deteriorating living conditions spurred investigations by the Departments of Water and Sanitation, and Agriculture, Rural Development, Land, and Environmental Affairs. \nDeputy Minister Seitlholo hailed the court’s decision as a pivotal moment in holding municipalities accountable for environmental negligence. \n“This court ruling is a significant milestone in our efforts to hold polluters accountable,” Seitlholo said. \n“The R160 million fine should serve as a wake-up call to other municipalities that fail to comply with environmental and water management regulations. We will not hesitate to take firm action against any entity that disregards its legal obligations.” \nThe court’s judgment also emphasised the municipality’s admission of guilt on all charges, underscoring the gravity of the violations. “Municipalities must implement corrective measures to prevent further harm to our environment and communities,” Seitlholo added. \nOf the R160 million fine, R40 million is suspended for five years, provided the municipality refrains from committing similar offenses during the suspension period. This condition aims to encourage improved compliance and discourage future violations. \nThe Department of Water and Sanitation has reaffirmed its commitment to ensuring municipalities adhere to compliance notices and prioritise sustainable environmental practices. The judgment marks a critical step in protecting South Africa’s natural resources and the well-being of its citizens. \n“Enforcing environmental laws is not just about penalties; it is about safeguarding the lives and livelihoods of our communities,”  Seitlholo concluded. \nResidents of the affected areas, who have long endured the consequences of the municipality’s negligence, have welcomed the court’s decision, expressing hope that the ruling will bring much-needed accountability and change.\nPhoto: Stock image."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 474
+    },
+    "banned_terms": [
+      {
+        "term": "balfour",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2897,
+    "attempt": 2875,
+    "place_id": "gn-1213855",
+    "input": {
+      "place": {
+        "place_id": "gn-1213855",
+        "name": "Sibolga",
+        "country": "Indonesia",
+        "subdivision": "North Sumatra",
+        "lat": 1.74016,
+        "lon": 98.78117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sibolga",
+          "url": "https://en.wikipedia.org/wiki/Sibolga",
+          "text": "Sibolga (formerly sometimes Siboga) is a city and a port located in the natural harbour of Sibolga Bay on the west coast of North Sumatra province, in Indonesia.\nThe city is located on the western side of North Sumatra facing the Indian Ocean, is a transit harbour to Nias Island, and was hard hit during the 2004 Indian Ocean earthquake. Sibolga is also a semi-enclave within Central Tapanuli Regency, as Sibolga borders Central Tapanuli Regency in the north, east, and south, while it borders the Mentawai Strait in the west.\nThe city has an area of 11.47 km2 (4.43 sq mi) — the smallest city by land area in Indonesia. It had a population of 84,444 at the 2010 census and 89,584 at the 2020 census; the official estimate as of mid 2025 was 92,244 (comprising 46,365 males and 45,879 females)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "sibolga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2898,
+    "attempt": 2876,
+    "place_id": "gn-1253437",
+    "input": {
+      "place": {
+        "place_id": "gn-1253437",
+        "name": "Vaniyambadi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.68162,
+        "lon": 78.62014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vaniyambadi",
+          "url": "https://en.wikipedia.org/wiki/Vaniyambadi",
+          "text": "Vaniyambadi (shortly known as VNB or VN) (Tamil: வாணியம்பாடி) is a prominent industrial town in the Vellore region in the South Indian state of Tamil Nadu. It is recognised as one of India's major leather manufacturing and export hubs. Along with its twin town, Ambur (16 km to the East), the Vaniyambadi Revenue district accounts for a significant share of India's finished leather, leather garments, and footwear components shipped directly to international markets, including Europe and North America. It is located about 67 km east of Vellore, 146 km west of Bengaluru, and 200 km east of the state's capital, Chennai. \nHistorically, Vaniyambadi has remained a major town in the North Arcot district of the Madras Presidency (present-day Tamil Nadu). In 1989, the North Arcot district was bifurcated into Vellore and Tiruvannamalai districts, and Vaniyambadi remained part of the Vellore district. Later in 2019, the Vellore district was further trifurcated into Ranipet, Tirupathur, and Vellore districts, with Vaniyambadi becoming a part of Tirupathur district, thereby breaking the century-old administrative ties with Vellore. \nThe Vaniyambadi Municipality was formed by the G.O. MS. No. 421 Local & Municipality Department in April 1886. In 1996, this Municipality was upgraded to Grade II Municipality by G.O. MS. NO. 118 Rural Development Local Administration Department dated 01.05.1996. In 1998, this Municipality was upgraded to 1st Grade. There has been a long-standing request to upgrade the town to a municipal corporation.\nIt is one of the hubs of Leather exports in Tamil Nadu. It is also famous throughout India for its special Vaniyambadi Biryani. The city is the home for many prestigious century-old educational institutions viz. The Vaniyambadi Muslim Educational Society (VMES) (Estd. 1901), The Hindu Higher Secondary School (Estd. 1914). The famous hill station Yelagiri is approximately 20 km away from town. Another hill station leading way through Andhra Pradesh is a short way to Kolar Gold Fields and Karnataka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 315
+    },
+    "banned_terms": [
+      {
+        "term": "vaniyambadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2899,
+    "attempt": 2877,
+    "place_id": "gn-1254354",
+    "input": {
+      "place": {
+        "place_id": "gn-1254354",
+        "name": "Tirupattur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.49239,
+        "lon": 78.56804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tirupattur",
+          "url": "https://en.wikipedia.org/wiki/Tirupattur",
+          "text": "Tirupattur (also spelt Tirupathur) is a municipality and the administrative headquarters of Tirupathur district in the Indian state of Tamil Nadu. Situated in the interior of northern Tamil Nadu near the Eastern Ghats, the town lies between the Yelagiri and Javadi Hills. Tirupattur had a population of 83,612 at the 2011 census.\nTirupattur is traditionally known as the Sandalwood City because of the occurrence of Indian sandalwood in the surrounding Javadi Hills and the town's historical association with the storage and trade of sandalwood. The settlement has a long recorded history and was known by several earlier names, including Brahmapuram, Thiruperur and Thiruvanapuram; the district administration associates the present name with the Vijayanagara period. Tirupattur Municipality was constituted in 1886, and the town became the headquarters of the newly formed Tirupathur district when it was separated from Vellore district in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "tirupattur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2900,
+    "attempt": 2878,
+    "place_id": "gn-1260546",
+    "input": {
+      "place": {
+        "place_id": "gn-1260546",
+        "name": "Pandharpur",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 17.67924,
+        "lon": 75.33098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pandharpur",
+          "url": "https://en.wikipedia.org/wiki/Pandharpur",
+          "text": "Pandharpur (Pronunciation: [pəɳɖʱəɾpuːɾ]), also Pandaripuram is a popular pilgrimage city, on the banks of Chandrabhagā River, near Solapur city in Solapur District, Maharashtra, India. Its administrative area is one of eleven tehsils in the District, and it is an electoral constituency of the state legislative assembly (vidhan sabha). The Vithoba temple attracts about a million Hindu pilgrims during the major yātrā (pilgrimage) in Ashadha (June–July).\nKasegaon is the largest village in pandharpur talukas.A small temple of Śri Vitthala-Rukmini is also located, which is as old as the main Vitthala-Rukmini Mandir, in Isbavi area of Pandharpur known as Wakhari Va Korti Devalayas and also known as Visava Mandir. The Bhakti Saint, Chaitanya Mahaprabhu, is said to have spent 7 days in the city at the Vithobha Temple. It is said that the deity Vithoba has been worshipped by many saints of Maharashtra. Sant Dnyaneshwar, Sant Tukārām, Sant Nāmdev, Sant Eknāth, Sant Nivruttināth, Sant Muktābai, Sant Chokhāmel̥ā, Sant Savatā Māli, Sant Narhari Sonār, Sant Gorā Kumbhār, Sant Meerā Bai and Sant Gajānan Mahāraj are a few of those prominent saints."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "pandharpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2901,
+    "attempt": 2879,
+    "place_id": "gn-1337388",
+    "input": {
+      "place": {
+        "place_id": "gn-1337388",
+        "name": "Samdrup Jongkhar",
+        "country": "Bhutan",
+        "subdivision": "Samdrup Jongkhar",
+        "lat": 26.80069,
+        "lon": 91.50519
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samdrup Jongkhar",
+          "url": "https://en.wikipedia.org/wiki/Samdrup_Jongkhar",
+          "text": "Samdrup Jongkhar (Dzongkha:བསམ་གྲུབ་ལྗོངས་མཁར་) is a town and seat of Samdrup Jongkhar District in Bhutan.\nThe town is located at the south-eastern part of Bhutan and borders the Indian state of Assam. Though there is no clear historical record of the development of the town, it is said to have developed as a result of the construction of the Samdrup Jongkhar-Tashigang national highway in the 1960s. In the past the Sharchops of Tashigang, Dundsan, Orong and Yangtse used to trade in an Indian border town in Assam called Gudama (current day Daranga or Darranga Mela, better known as Mela Bazar). Today it is one of the most important trading towns for the eastern districts of Bhutan. Near the border is Hanumaan Mandir in NK Darranga, a temple run by Hanumaan Mandir Charity in which there are both Bhutan and Indian people member.\nAfter 2003, due to insurgency problems, much of the business was halted, causing a ripple effect on the developmental and socio-economic life of the people of most of eastern Bhutan.\nSamdrup Jonkhar Dzongkhag has a mix of population largely dominated by the Sharchops and by Lhotshampas in Bangtar. It is also an important economic center of the country where coal mining is an important contribution to the country's economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "samdrup jongkhar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "samdrup",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jongkhar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2902,
+    "attempt": 2880,
+    "place_id": "gn-1807308",
+    "input": {
+      "place": {
+        "place_id": "gn-1807308",
+        "name": "Huangpi",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 30.88453,
+        "lon": 114.37789
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huangpi, Wuhan",
+          "url": "https://en.wikipedia.org/wiki/Huangpi,_Wuhan",
+          "text": "Huangpi District (Chinese: 黄陂区; pinyin: Huángpí Qū) is one of 13 urban districts of the prefecture-level city of Wuhan, the capital of Hubei Province, China, situated on the northern (left) bank of the Yangtze River. The Sheshui enters the Yangtze at Huangpi. The district is primarily rural, but also includes important infrastructure facilities, such as Wuhan Tianhe International Airport and Wuhan North Railway Station, which is one of the main freight stations and classification yards on the Beijing–Guangzhou Railway. It is the northernmost of Wuhan's districts as well as the most spacious. On the left bank of the Yangtze, it borders the districts of Xinzhou to the east, and Jiang'an to the south, and Dongxihu to the southwest; on the opposite bank, it borders Hongshan. It also borders the prefecture-level cities of Huanggang to the northeast and Xiaogan to the northwest. The Sheshui (She River) enters the Yangtze River at Shekou in Huangpi.\nThe use of the character pi (陂) in Huangpi is cited in the Contemporary Chinese Dictionary as an example of usage of this infrequently encountered pronunciation for the character.\nThe Wuhan–Xiaogan Intercity Railway, one of the lines of the Wuhan Metropolitan Area Intercity Railway, serves parts of Huangpi District, in particular Wuhan Tianhe Airport. The rail line opened on December 1, 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "huangpi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

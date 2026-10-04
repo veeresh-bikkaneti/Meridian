@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 2923,
+    "attempt": 2901,
+    "place_id": "gn-3922414",
+    "input": {
+      "place": {
+        "place_id": "gn-3922414",
+        "name": "Camiri",
+        "country": "Bolivia",
+        "subdivision": "Santa Cruz Department",
+        "lat": -20.04063,
+        "lon": -63.52396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camiri",
+          "url": "https://en.wikipedia.org/wiki/Camiri",
+          "text": "Camiri (Camirito, La Bomba, Choreti, Capital Petrolera de Bolivia) is  a city in Bolivia, Santa Cruz Department, Cordillera Province. It is the seat of the Camiri Municipality. The town has an estimated population of 65,897 inhabitants, also known as \"Camireños.\"  Camiri is on the banks of the Parapeti River in a small valley surrounded by rolling hills on the east, north, and south, and by the Aguarague mountain range on the west.\nCamiri's Chaco ecosystem encompasses subtropical dry forests with low canopy, and intense xerophilic overgrowth with a large diversity of wildlife.\nOn February 3, 2007, local protesters shut down a natural gas pipeline in Camiri that serves southern Bolivia. The protesters were seeking an expansion of the nationalization of the natural gas industry and a renewal of the promise of construction of facilities for YPFB, the national petroleum company."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "camiri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2924,
+    "attempt": 2902,
+    "place_id": "gn-4565718",
+    "input": {
+      "place": {
+        "place_id": "gn-4565718",
+        "name": "Juncos",
+        "country": "Puerto Rico",
+        "subdivision": "Juncos",
+        "lat": 18.22746,
+        "lon": -65.921
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juncos, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Juncos,_Puerto_Rico",
+          "text": "Juncos (Spanish pronunciation: [ˈxuŋkos]) is a town and one of the 78 municipalities of Puerto Rico. It is located in the eastern central region of the island to the west of the Caguas Valley, south of Canóvanas and Carolina; southeast of Gurabo; east of San Lorenzo; and west of Las Piedras. Juncos is spread over 9 barrios and Juncos barrio-pueblo (the downtown area and administrative center of the city). It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nJuncos was founded on the request of Tomás Pizarro on August 2, 1797, having previously been a village which evolved from a small ranch, the Hatillo de los Juncos. This ranch was part of the Hato del Valenciano, which gave its name to the Río Valenciano which bisects the city before joining the Río Gurabo to the north of the settlement.\nJuncos is Spanish for reeds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "juncos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2925,
+    "attempt": 2903,
+    "place_id": "gn-5102720",
+    "input": {
+      "place": {
+        "place_id": "gn-5102720",
+        "name": "Plainfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.63371,
+        "lon": -74.40737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plainfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Plainfield,_New_Jersey",
+          "text": "Plainfield is a city in Union County, in the U.S. state of New Jersey. Nicknamed \"The Queen City,\" it serves as both a regional hub for Central New Jersey and a bedroom suburb of the New York Metropolitan area, located in the Raritan Valley region. As of the 2020 United States census, the city's population, majority Latino for the first time, was 54,586. This was an increase of 4,778 (+9.6%) from the 2010 census count of 49,808, which in turn reflected an increase of 1,979 (+4.1%) from the 47,829 counted in the 2000 census. In 2023, the Census Bureau estimated the city's population to be 54,670.\nThe area of present-day Plainfield was originally formed as Plainfield Township, a township that was created on April 5, 1847, from portions of Westfield Township, while the area was still part of Essex County. On March 19, 1857, Plainfield Township became part of the newly created Union County.\nPlainfield was incorporated as a city by an act of the New Jersey Legislature on April 21, 1869, from portions of Plainfield Township, based on the results of a referendum held that same day. The city and township coexisted until March 6, 1878, when Plainfield Township was dissolved and parts were absorbed by Plainfield city, with the remainder becoming Fanwood Township (since renamed as Scotch Plains).\nThe name \"Plainfield\", also used in both North Plainfield and South Plainfield, is derived from a local estate or from its scenic location."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "plainfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2926,
+    "attempt": 2904,
+    "place_id": "gn-5128654",
+    "input": {
+      "place": {
+        "place_id": "gn-5128654",
+        "name": "Newburgh",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.50343,
+        "lon": -74.01042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newburgh, New York",
+          "url": "https://en.wikipedia.org/wiki/Newburgh,_New_York",
+          "text": "Newburgh is a city in Orange County, New York, United States. With a population of 28,856 as of the 2020 census, it is a principal city of the Kiryas Joel–Poughkeepsie–Newburgh metropolitan area with an estimated 712,000 residents. Located 60 miles (97 km) north of New York City, and 90 miles (140 km) south of Albany on the Hudson River within the Hudson Valley Area, the city of Newburgh is located near Stewart International Airport, one of the primary airports for Downstate New York.\nThe Newburgh area was first settled in the early 18th century by the Germans and British. During the American Revolution, Newburgh served as the headquarters of the Continental Army. Prior to its chartering in 1865, the city of Newburgh was part of the town of Newburgh; the town now borders the city to the north and west. East of the city is the Hudson River; the city of Beacon is across the river and it is connected to Newburgh via the Newburgh–Beacon Bridge. The entire southern boundary of the city is with the town of New Windsor. Most of this boundary is formed by Quassaick Creek. In May 2016, the city requested help for its PFOS contaminated water supply under Superfund.\nNewburgh is the location of numerous preserved landmarks, including Washington's Headquarters, the David Crawford House, New York State Armory, the Dutch Reformed Church, and Newburgh Colored Burial Ground. George Washington and Franklin Delano Roosevelt had ties to the city; Ulysses S. Grant, Robert F. Kennedy, and Theodore Roosevelt also visited, the latter delivering a famous speech at a nearby shipyard. The city served as a planning ground for the Gothic Revival architectural movement in America, headed by native Andrew Jackson Downing with English architects Calvert Vaux and Frederick Clarke Withers.\nMount Saint Mary College, a private liberal arts college, is located there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "newburgh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2927,
+    "attempt": 2905,
+    "place_id": "gn-5139301",
+    "input": {
+      "place": {
+        "place_id": "gn-5139301",
+        "name": "Spring Valley",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.11315,
+        "lon": -74.04375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Valley, New York",
+          "url": "https://en.wikipedia.org/wiki/Spring_Valley,_New_York",
+          "text": "Spring Valley is a  village in the town of Ramapo and Clarkstown in Rockland County, New York, United States. It is located north of Chestnut Ridge, east of Airmont and Monsey, south of Hillcrest, and west of Nanuet. The population was 33,066 at the 2020 census, making it the second most populous community in both Clarkstown and Rockland County, after New City.\nSpring Valley spans the border of two towns, occupying an eastern portion of the town of Ramapo and a small western portion of the town of Clarkstown. The village is next to the New York State Thruway (Interstate 87) and is served by a New Jersey Transit train station at the terminus of the Pascack Valley Line.\nSpring Valley is 22 miles (35 km) north of Manhattan and 5 miles (8 km) north of the New Jersey border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "spring valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2928,
+    "attempt": 2906,
+    "place_id": "gn-5294810",
+    "input": {
+      "place": {
+        "place_id": "gn-5294810",
+        "name": "Flagstaff",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 35.19807,
+        "lon": -111.65127
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flagstaff, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Flagstaff,_Arizona",
+          "text": "Flagstaff ( FLAG-staf) is a city in and the county seat of Coconino County, Arizona, United States. As of the 2020 United States census, the city's population was 76,831.\nFlagstaff is the principal city of the Flagstaff metropolitan area, which includes all of Coconino County, and has a population of 145,101. Flagstaff lies near the southwestern edge of the Colorado Plateau and within the San Francisco volcanic field, along the western side of the largest contiguous ponderosa pine forest in the continental United States. The city sits at around 7,000 feet (2,100 m) and is next to Mount Elden, just south of the San Francisco Peaks, the highest mountain range in the state of Arizona. Humphreys Peak, the highest point in Arizona at 12,637 feet (3,852 m), is about 10 miles (16 km) north of Flagstaff in Kachina Peaks Wilderness. The geology of the area includes exposed rock from the Mesozoic and Paleozoic eras, with Moenkopi Formation red sandstone having once been quarried in the city; many of the historic downtown buildings were constructed with it. The Rio de Flag river runs through the city, but only flows in response to rain or snowmelt.\nOriginally settled by the pre-Columbian native Sinagua people, the area of Flagstaff has fertile land from volcanic ash after eruptions in the 11th century. It was first settled as the present-day city in 1876. Local businessmen lobbied for Route 66 to pass through the city, which it did, turning the local industry from lumber to tourism and developing downtown Flagstaff. In 1930, Pluto was discovered from Flagstaff at its Lowell Observatory. The city developed further through to the end of the 1960s, with various observatories also used to choose Moon landing sites for the Apollo missions. Through the 1970s and 1980s, the downtown fell into disrepair, but was revitalized with a major cultural heritage project in the 1990s.\nThe city remains an important distribution hub for companies such as Nestlé Purina PetCare, and is home to the U.S. Naval Observatory Flagstaff Station, the U.S. Geological Survey, and Northern Arizona University. Flagstaff has a strong tourism sector, due to its proximity to the Grand Canyon, Oak Creek Canyon, the Arizona Snowbowl, Meteor Crater, and Historic Route 66."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 370
+    },
+    "banned_terms": [
+      {
+        "term": "flagstaff",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2929,
+    "attempt": 2907,
+    "place_id": "gn-792578",
+    "input": {
+      "place": {
+        "place_id": "gn-792578",
+        "name": "Bitola",
+        "country": "North Macedonia",
+        "subdivision": "Bitola",
+        "lat": 41.03226,
+        "lon": 21.33553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bitola",
+          "url": "https://en.wikipedia.org/wiki/Bitola",
+          "text": "Bitola (; Macedonian: Битола [ˈbitɔɫa] ) is a city in the southwestern part of North Macedonia. It is located in the southern part of the Pelagonia valley, surrounded by the Baba, Nidže, and Kajmakčalan mountain ranges, 14 kilometres (9 miles) north of the Medžitlija-Níki border crossing with Greece. The city stands at an important junction connecting the south of the Adriatic Sea region with the Aegean Sea and Central Europe, and it is an administrative, cultural, industrial, commercial, and educational centre. It has been known since the Ottoman period as the \"City of Consuls\", since many European countries had consulates in Bitola.\nBitola, known during the Ottoman Empire as Manastır or Monastir, is one of the oldest cities in North Macedonia. It was founded as Heraclea Lyncestis in the middle of the 4th century BC by Philip II of Macedon. The city was the last capital of the First Bulgarian Empire (1015–1018) and the last capital of Ottoman Rumelia, from 1836 to 1867. According to the 2002 census, Bitola is the third largest city in the country, after the capital Skopje and Kumanovo. Bitola is also the seat of the Bitola Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "bitola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2930,
+    "attempt": 2908,
+    "place_id": "gn-1278176",
+    "input": {
+      "place": {
+        "place_id": "gn-1278176",
+        "name": "Attingal",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 8.69609,
+        "lon": 76.81507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Attingal",
+          "url": "https://en.wikipedia.org/wiki/Attingal",
+          "text": "Attingal is a municipality and a northern suburb of the Thiruvananthapuram Metropolitan Area, Kerala, India. It is the maternal home and ancestral residence of the Travancore Royal Family (Venad), and was ruled by the female royals (Attingal Ranis) as Attingal Thirumoopil Swaroopam under Travancore.\nIt is the headquarters of Chirayinkeezhu Taluk, and the important government institutions of the taluk such as the Taluk office, Court Complex, Office of the Deputy Superintendent of Police, Civil Station, and treasuries are situated in Attingal. It is one of the oldest municipalities of Kerala which was constituted prior to its independence in 1924. In 1914, Attingal Town Improvement Authority (TIA) was formed which was the term used before the Travancore Municipality Regulation Act of 1922 formed the Attingal Municipality. Attingal Town is located 30 kilometres (19 mi) north of Thampanoor, the city centre. Attingal is the 3rd most densely populated municipality in the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "attingal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2931,
+    "attempt": 2909,
+    "place_id": "gn-1606147",
+    "input": {
+      "place": {
+        "place_id": "gn-1606147",
+        "name": "Songkhla",
+        "country": "Thailand",
+        "subdivision": "Songkhla",
+        "lat": 7.19882,
+        "lon": 100.5951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Songkhla",
+          "url": "https://en.wikipedia.org/wiki/Songkhla",
+          "text": "Songkhla (Thai: สงขลา, pronounced [sǒŋ.kʰlǎː]), also known as Singgora or Singora (Pattani Malay: ซิงกอรอ, Singoro), is a city (thesaban nakhon) in Songkhla Province of southern Thailand, near the border with Malaysia. Songkhla lies 968 km (601 mi) south of Bangkok and as of 2020 had a population of 61,758.\nDespite being smaller than the neighboring city Hat Yai, Songkhla is the capital of Songkhla Province as well as the Mueang Songkhla District (Songkhla town district). Together with Hat Yai, Songkhla is part of the Greater Hat Yai-Songkhla Metropolitan Area (a conurbation with a population of around 800,000), the third largest metropolitan area in Thailand.\nAt the opening of Songkhla Lake to the Gulf of Thailand, Songkhla is a fishing town and also an important harbour. It is the major seaport on the east side of the Isthmus of Kra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "songkhla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2932,
+    "attempt": 2910,
+    "place_id": "gn-2338876",
+    "input": {
+      "place": {
+        "place_id": "gn-2338876",
+        "name": "Ifo",
+        "country": "Nigeria",
+        "subdivision": "Ogun State",
+        "lat": 6.81491,
+        "lon": 3.19518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ifo, Ogun State",
+          "url": "https://en.wikipedia.org/wiki/Ifo,_Ogun_State",
+          "text": "Ifo is a town and local government area in Ogun State, Nigeria. It has an area of 521 km2 (201 sq mi) and a population of 698,837 at the 2006 census. The postal code of the area is 112.\nMajor communities in Ifo local government area include Ifo Town, Agbado, Giwa Oke Aro, Akute Ajuwon, Ibogun, Coker Ilepa, Ibaragun, Lemode, Robiyan, Ope Ilu, Itoki, Mapara town, Adiyan, Matogun village, Matogun village, Abule Ekun village, Orile ifo town. The paramount  traditional ruler and permanent Chairman Obas Council in IFO LGA is Olofin of Isheri Oba (Engr) Sulaiman Adekunle Bamgbade he is also the only king in the Chief law of  Ogun state with prescribed authority   to appoint Baale in IFO Local government Area in general as Gazetted in 1980. Also, a permanent member of the Ogun/  State Council of Obas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "ifo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2933,
+    "attempt": 2911,
+    "place_id": "gn-2513917",
+    "input": {
+      "place": {
+        "place_id": "gn-2513917",
+        "name": "Mérida",
+        "country": "Spain",
+        "subdivision": "Extremadura",
+        "lat": 38.91802,
+        "lon": -6.34292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mérida, Spain",
+          "url": "https://en.wikipedia.org/wiki/Mérida,_Spain",
+          "text": "Mérida (Spanish: [ˈmeɾiða] ) is a city and municipality of Spain, part of the Province of Badajoz, and capital of the autonomous community of Extremadura. Located in the western-central part of the Iberian Peninsula at 217 metres above sea level, the city is crossed by the Guadiana and Albarregas rivers. The population was 60,119 in 2017.\nThe primitive settlement was founded by the Roman Empire as Augusta Emerita in the 1st century BCE to allocate discharged soldiers, eventually prospering as one of the largest cities of Hispania and the capital of the province of Lusitania. Its ecclesiastical metropolitan seat was taken away by the Archdiocese of Santiago de Compostela in 1119. Conquered by the Kingdom of León in 1230, shortly before the latter's final integration into the Crown of Castile, it was handed over to the Order of Santiago. On numerous occasions over the course of the middle ages and the Modern Period, it suffered from the effects of warfare due to its location close to the border with Portugal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "merida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2934,
+    "attempt": 2912,
+    "place_id": "gn-2650732",
+    "input": {
+      "place": {
+        "place_id": "gn-2650732",
+        "name": "Dunfermline",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.07156,
+        "lon": -3.45887
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunfermline",
+          "url": "https://en.wikipedia.org/wiki/Dunfermline",
+          "text": "Dunfermline is a city, parish, and former royal burgh in Fife, Scotland, 3 miles (5 km) from the northern shore of the Firth of Forth. Dunfermline was the de facto capital of the Kingdom of Scotland between the 11th and 15th centuries.\nThe earliest known settlements around Dunfermline probably date to the Neolithic period, growing by the Bronze Age. The city was first recorded in the 11th century, with the marriage of Malcolm III of Scotland, and Saint Margaret at Dunfermline. As Queen consort, Margaret established a church dedicated to the Holy Trinity, which evolved into Dunfermline Abbey under their son David I in 1128, and became firmly established as a prosperous royal mausoleum for the Scottish Crown. A total of eighteen royals, including seven Kings, were buried here between 1093 and 1420 including Robert the Bruce in 1329.\nBy the 18th century, Dunfermline became a regional economic powerhouse with the introduction of the linen industry, and produced industrialists including Andrew Carnegie. Dunfermline was awarded city status as part of Elizabeth II's Platinum Jubilee Civic Honours in 2022. Today, the city is a major service centre, with the largest employers being Sky UK, Amazon, Best Western, TechnipFMC, Lloyds and Nationwide. Dunfermline sits on the Fife Pilgrim Way. In 2022, the locality had a population of 56,027, while the wider settlement had a population of 76,210."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "dunfermline",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2935,
+    "attempt": 2913,
+    "place_id": "gn-2653935",
+    "input": {
+      "place": {
+        "place_id": "gn-2653935",
+        "name": "Cambuslang",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.80966,
+        "lon": -4.16096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambuslang",
+          "url": "https://en.wikipedia.org/wiki/Cambuslang",
+          "text": "Cambuslang   (Scots: Cammuslang, from Scottish Gaelic: Camas Lang) is a town on the south-eastern outskirts of Greater Glasgow, Scotland. With approximately 30,000 residents, it is the 27th-largest town in Scotland by population, although, never having had a town hall, it may also be considered the largest village in Scotland. It is within the local authority area of South Lanarkshire and directly borders the town of Rutherglen to the west. Historically, it was a large civil parish incorporating the nearby hamlets of Newton, Flemington, Westburn and Halfway.\nCambuslang is located just south of the River Clyde and about six miles (ten kilometres) southeast of the centre of Glasgow. It has a long history of coal mining, from at least 1490, iron and steel making, and ancillary engineering works, most recently The Hoover Company (in the town from 1946 to 2005). The Clydebridge Steelworks and other smaller manufacturing businesses continue but most employment in the area comes from the distribution or service industries. The headquarters of the Scottish Fire and Rescue Service is in Cambuslang."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "cambuslang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2936,
+    "attempt": 2914,
+    "place_id": "gn-2661780",
+    "input": {
+      "place": {
+        "place_id": "gn-2661780",
+        "name": "Altdorf",
+        "country": "Switzerland",
+        "subdivision": "Uri",
+        "lat": 46.88042,
+        "lon": 8.64441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altdorf, Uri",
+          "url": "https://en.wikipedia.org/wiki/Altdorf,_Uri",
+          "text": "Altdorf (Swiss Standard German pronunciation: [ˈaltˌdɔrf] ) is a municipality in Switzerland. It is the capital of the Swiss canton of Uri and retains historic town privileges. It is the place where, according to the legend, William Tell shot the apple from his son's head.\nAltdorf is situated on the right (eastern) bank of the Reuss, about 2 kilometres (1.2 mi) south of where the river discharges into the Urnersee, an arm of Lake Lucerne. It is at the junction of two major Alpine passes—Saint Gotthard to the south and the Klausen Pass to the east—and is the last station on the Gotthard railway before the line enters the Gotthard Base Tunnel, the world's longest railway tunnel.\nThe official language of Altdorf is Swiss Standard German, but the main spoken language is the local variant of the Alemannic dialect."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "altdorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2937,
+    "attempt": 2915,
+    "place_id": "gn-3434674",
+    "input": {
+      "place": {
+        "place_id": "gn-3434674",
+        "name": "Eldorado",
+        "country": "Argentina",
+        "subdivision": "Misiones",
+        "lat": -26.40453,
+        "lon": -54.61847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eldorado, Misiones",
+          "url": "https://en.wikipedia.org/wiki/Eldorado,_Misiones",
+          "text": "Eldorado is a city in the center-northeast of the province of Misiones, Argentina. It has 54,189 inhabitants as per the 2001 census [INDEC], making it the third most populated city in the province. It is the head town of the Eldorado Department. It is located on the left-hand (eastern) banks of the Upper Paraná River, on National Route 12, about 100km from the Iguazú Falls and 206km from the provincial capital Posadas, on the Argentina-Paraguay border.\nEldorado was founded on 29 September 1919 as a rural settlement and a port on the Paraná by German-born Adolfo Julius Schwelm, naturalised British subject, who named it as a reference to the legend of El Dorado. The town was the center of the European immigrant colonization of the area (which included groups of people from Germany, Switzerland, Poland, Denmark, England, and others).\nThe region's economy is based on agriculture, producing tung, oranges, grapefruit and yerba mate. Tourism also plays a part, with main activities being sailing, sports fishing (golden dorado), and sports hunting (tapir, deer, wild boars). Eldorado has an airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "eldorado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2938,
+    "attempt": 2916,
+    "place_id": "gn-3717546",
+    "input": {
+      "place": {
+        "place_id": "gn-3717546",
+        "name": "Saint-Raphaël",
+        "country": "Haiti",
+        "subdivision": "Nord",
+        "lat": 19.43877,
+        "lon": -72.1991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Raphaël, Haiti",
+          "url": "https://en.wikipedia.org/wiki/Saint-Raphaël,_Haiti",
+          "text": "Saint-Raphaël (French pronunciation: [sɛ̃ ʁafaɛl] ; Haitian Creole: Sen Rafayèl) is a commune in the Saint-Raphaël Arrondissement, Nord department of Haiti. It is the seat of Saint-Raphaël Arrondissement.\nSaint-Raphaël is located at the intersection of Route 307 and National Route 3 between Cap-Haïtien and Hinche.\nIn plantations in Saint-Raphael, workers harvest green, bitter oranges, quarter them and then separate the peel from the pulp by hand. The peels are dried in the sun and then shipped to France, where they are macerated, distilled and blended with other ingredients to produce the world-famous liqueurs Grand Marnier and Cointreau manufactured by the French companies, Société des Produits Marnier-Lapostolle and Rémy Cointreau.\nIt was founded as San Rafael de La Angostura in 1761 by Canary Island colonists, mostly from Gran Canaria, although some important canaries came from the nearby town of Hinche. Its population increased somewhat significantly, reaching to take into 1783, 1,079 inhabitants.\nThe 1929 treaty and the clarifications in the 1936 revision were based partially on the idea that the county, whose citizens constituted the majority in an area, should be given jurisdiction for that area. The result of these negotiations was that the Dominican government gave up rights to a significant amount of territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "saint raphael",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "raphael",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2939,
+    "attempt": 2917,
+    "place_id": "gn-4562485",
+    "input": {
+      "place": {
+        "place_id": "gn-4562485",
+        "name": "Adjuntas",
+        "country": "Puerto Rico",
+        "subdivision": "Adjuntas",
+        "lat": 18.16274,
+        "lon": -66.72212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adjuntas, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Adjuntas,_Puerto_Rico",
+          "text": "Adjuntas (Spanish pronunciation: [aðˈxuntas]) is a small mountainside town and municipality in Puerto Rico located in the central midwestern portion of the island on the Cordillera Central, north of Yauco, Guayanilla, and Peñuelas; southeast of Utuado; east of Lares and Yauco; and northwest of Ponce. Adjuntas is spread over 16 barrios and Adjuntas Pueblo (the downtown area and the administrative center of the city). Adjuntas is about two hours by car westward from the capital, San Juan.\nAdjuntas is nicknamed \"the Switzerland of Puerto Rico\" because of its relatively chilly weather. Many Puerto Rican mountain towns have cooler weather than the rest of the island; Adjuntas is no exception: the average yearly weather is 70 °F (21 °C) (High: 83 °F/28 °C; Low: 58 °F/14 °C). Puerto Rico's lowest temperature were recorded in Adjuntas at 38 °F in 2018. Its mild climate attracts a good number of island tourists during the summer months. The town has a small hotel named Monte Rio and a good-sized parador, or country inn, called Villa Sotomayor.\nAdjuntas' ZIP Code, 00601, is the lowest standard ZIP code in the United States ZIP code system."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "adjuntas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2940,
+    "attempt": 2918,
+    "place_id": "gn-1719683",
+    "input": {
+      "place": {
+        "place_id": "gn-1719683",
+        "name": "Camiling",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 15.6866,
+        "lon": 120.4128
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camiling",
+          "url": "https://en.wikipedia.org/wiki/Camiling",
+          "text": "Camiling, officially the Municipality of Camiling, (Pangasinan: Baley na Camiling; Ilocano: Ili ti Camiling; Tagalog: Bayan ng Camiling), is a municipality in the province of Tarlac in the Philippines. According to the 2024 census, it has a population of 91,400 people.\nCamiling is one of the fastest-growing towns of Tarlac when it comes to income, economic activities, and cultural heritage. The town is also dubbed to be the \"Old Lady in the Northwestern province of Tarlac\", because it is one of the oldest municipalities created by the Spanish government under the province of Pangasinan where it previously included the former barrios of Mayantoc, San Clemente, and Santa Ignacia. The municipality's cultural heritage includes churches, ancestral houses, and ruins. However, the baroque church of Camiling has yet to be restored after 20 years since a fire burned its interior. The inside of the church, one of the only two Spanish churches left in Tarlac, has become a cesspool for human waste, while the facade (front) and buttresses (side supports) have been occupied by business establishments. One buttress has been converted by a business store into a toilet. Heritage advocates and Camiling locals have been campaigning for the restoration of the church after the reports came out in March 2018.\nCamiling is the major municipality in north-western Tarlac. It is the commercial center of an area composed of about eight towns, and borders the province of Pangasinan. It is the gateway to central and western Pangasinan through the Romulo Highway (formerly Highway 13). It is also known for its famous \"chicharon Camiling\" and its green native rice cake called nilubyan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "camiling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2941,
+    "attempt": 2919,
+    "place_id": "gn-1730398",
+    "input": {
+      "place": {
+        "place_id": "gn-1730398",
+        "name": "Aparri",
+        "country": "Philippines",
+        "subdivision": "Cagayan Valley",
+        "lat": 18.3566,
+        "lon": 121.6406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aparri",
+          "url": "https://en.wikipedia.org/wiki/Aparri",
+          "text": "Aparri, officially the Municipality of Aparri (Ibanag: Ili nat Aparri, Ilocano: Ili ti Aparri, Tagalog: Bayan ng Aparri), is a municipality in the province of Cagayan, Philippines. According to the 2024 census, it has a population of 68,368 people.\nThe town is a bustling municipality and the primary growth center of northern Cagayan. It serves as the center of education, commerce and culture in the northern part of the region, which includes towns of the first and second districts of Cagayan, as well as the towns of Apayao and some towns of Ilocos Norte. It serves as the show window of commerce and finance, economic transformation, information technology, livelihood development, fashion and culture, leisure and entertainment, agricultural modernization, and good local governance.\nThere is a meteorological station in Barangay Punta where the Cagayan River meets the Babuyan Channel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "aparri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2942,
+    "attempt": 2920,
+    "place_id": "gn-2524653",
+    "input": {
+      "place": {
+        "place_id": "gn-2524653",
+        "name": "Gela",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.07381,
+        "lon": 14.24038
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gela",
+          "url": "https://en.wikipedia.org/wiki/Gela",
+          "text": "Gela (Sicilian and Italian pronunciation: [ˈdʒɛːla]; Ancient Greek: Γέλα) is a city and comune (municipality) in the Autonomous Region of Sicily, Italy; in terms of area and population, it is the largest  municipality on the southern coast of Sicily. Gela is part of the Province of Caltanissetta and is one of the few comuni in Italy with a population and area that exceed those of the provincial capital.Gela was founded around 688 BC by Greek colonists from Rhodes and Crete; it was an influential polis of Magna Graecia in the 7th and 6th centuries BC and became one of the most powerful cities until the 5th c. BC. Aeschylus, the famous playwright, lived here and died in 456 BC. In 1943, during the Invasion of Sicily, the Allied forces made their first landing on the island at Gela."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "gela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
