@@ -48,6 +48,15 @@ export type Starter = {
    * in question-label.ts).
    */
   iso2?: string;
+  /**
+   * Resolved subdivision display name (state/province), e.g. "Nebraska" or
+   * "Madhya Pradesh". Display name only — never a code, never an id.
+   * Stamped per-record by the chunk pipeline on generated places; hand-set
+   * on curated starters only where certain (omitted, never guessed, when
+   * uncertain). The label builder (question-label.ts) treats a missing,
+   * empty, or whitespace-only value exactly as if the field were absent.
+   */
+  subdivision?: string;
 };
 
 function place(
@@ -67,6 +76,21 @@ function place(
    * resolve via regionId instead).
    */
   iso2?: string,
+  /**
+   * Resolved subdivision display name (state/province), e.g. "Nebraska".
+   * Only set where certain — omitted, never guessed, when uncertain.
+   *
+   * Unicode-canonical decision (2026-10-03): curated values use the Unicode
+   * display form ("Yucatán", "Île-de-France") to match what the pipeline
+   * stamps — scripts/build-geonames-dataset.mjs reads column 1 (the Unicode
+   * name column) of admin1CodesASCII.txt, and the shipped chunks carry
+   * "Yucatán"/"Ma’an"/etc. One invisible exception: curated "Ma'an" uses
+   * the ASCII apostrophe (U+0027) where the pipeline stamps U+2019 —
+   * display-identical, subdivision strings are never joined on. A
+   * "normalize to ASCII" pass must change BOTH sides together or the
+   * curated and generated subdivisions diverge.
+   */
+  subdivision?: string,
 ): Starter {
   return {
     id: `${regionId}-${slug}`,
@@ -81,6 +105,7 @@ function place(
     difficulty,
     curated: true,
     ...(iso2 ? { iso2 } : {}),
+    ...(subdivision ? { subdivision } : {}),
   };
 }
 
@@ -2900,6 +2925,8 @@ export const STARTERS: Starter[] = [
     "Moraine Lake is a turquoise glacial lake under the Valley of the Ten Peaks. Rock flour in the meltwater gives the lake its color.",
     "Moraine_Lake",
     2,
+    undefined,
+    "Alberta",
   ),
   place(
     "country",
@@ -2911,6 +2938,8 @@ export const STARTERS: Starter[] = [
     "The Canadian brink at Niagara carries most of the river over a curved cliff. Mist from the plunge pool rises in the gorge in every season.",
     "Horseshoe_Falls",
     4,
+    undefined,
+    "Ontario",
   ),
   place(
     "country",
@@ -2922,6 +2951,8 @@ export const STARTERS: Starter[] = [
     "The CN Tower is a concrete communications spire on the Toronto skyline. A glass-floored deck looks down on the harbor and the islands.",
     "CN_Tower",
     1,
+    undefined,
+    "Ontario",
   ),
   place(
     "country",
@@ -2933,6 +2964,8 @@ export const STARTERS: Starter[] = [
     "A lighthouse sits on bare granite at Peggy's Cove. The village is a few houses on a point that takes the full Atlantic weather.",
     "Peggy%27s_Cove",
     2,
+    undefined,
+    "Nova Scotia",
   ),
   place(
     "country",
@@ -2944,6 +2977,8 @@ export const STARTERS: Starter[] = [
     "A castle-like hotel crowns the cliff above the Saint Lawrence in Quebec City. Copper roofs make it the landmark of the old walled town.",
     "Ch%C3%A2teau_Frontenac",
     2,
+    undefined,
+    "Quebec",
   ),
   place(
     "country",
@@ -2955,6 +2990,8 @@ export const STARTERS: Starter[] = [
     "The Pyramid of the Sun anchors a planned city northeast of modern Mexico City. The avenue through it was already ancient when the Aztecs gave the ruins a name.",
     "Teotihuacan",
     2,
+    undefined,
+    "State of Mexico",
   ),
   place(
     "country",
@@ -2966,6 +3003,8 @@ export const STARTERS: Starter[] = [
     "El Castillo at Chichen Itza is a step pyramid built over an older temple. Near the equinox, shadow on the north stair resembles a serpent descending.",
     "Chichen_Itza",
     1,
+    undefined,
+    "Yucatán",
   ),
   place(
     "country",
@@ -2977,6 +3016,8 @@ export const STARTERS: Starter[] = [
     "Temples and a palace climb a ridge out of the jungle at Palenque. Carved panels and a royal tomb inside a pyramid made the city famous.",
     "Palenque",
     2,
+    undefined,
+    "Chiapas",
   ),
   place(
     "country",
@@ -2988,6 +3029,8 @@ export const STARTERS: Starter[] = [
     "A chain of canyons cuts the Sierra Tarahumara in northwestern Mexico. The viewpoint at Divisadero looks across several of those gorges at once.",
     "Copper_Canyon",
     3,
+    undefined,
+    "Chihuahua",
   ),
   place(
     "country",
@@ -2999,6 +3042,8 @@ export const STARTERS: Starter[] = [
     "A leveled hilltop above Oaxaca holds the plazas of Monte Alban. The Zapotec city overlooked the valleys around it for many centuries.",
     "Monte_Alb%C3%A1n",
     3,
+    undefined,
+    "Oaxaca",
   ),
   place(
     "country",
@@ -3010,6 +3055,8 @@ export const STARTERS: Starter[] = [
     "A concrete statue of Christ stands on Corcovado above Rio de Janeiro. The figure looks over the bay, the beaches, and the steep neighborhoods below.",
     "Christ_the_Redeemer_(statue)",
     1,
+    undefined,
+    "Rio de Janeiro",
   ),
   place(
     "country",
@@ -3021,6 +3068,8 @@ export const STARTERS: Starter[] = [
     "Hundreds of falls pour over a curved cliff on the Iguacu River. From the Brazilian side the spray hides and reveals the long lip of water.",
     "Igua%C3%A7u_Falls",
     2,
+    undefined,
+    "Paraná",
   ),
   place(
     "country",
@@ -3032,6 +3081,8 @@ export const STARTERS: Starter[] = [
     "The dark Rio Negro and the sandy Amazon run side by side for miles near Manaus. They mix slowly because their speed and temperature are different.",
     "Meeting_of_Waters",
     4,
+    undefined,
+    "Amazonas",
   ),
   place(
     "country",
@@ -3043,6 +3094,8 @@ export const STARTERS: Starter[] = [
     "A ring of curved concrete columns forms the cathedral in Brasilia. The capital around it was planned on open ground and opened in nineteen sixty.",
     "Cathedral_of_Bras%C3%ADlia",
     3,
+    undefined,
+    "Federal District",
   ),
   place(
     "country",
@@ -3054,6 +3107,8 @@ export const STARTERS: Starter[] = [
     "White dunes in Maranhao fill with freshwater lagoons during the rainy months. The pools are rain trapped in the sand, not inlets from the sea.",
     "Len%C3%A7%C3%B3is_Maranhenses_National_Park",
     3,
+    undefined,
+    "Maranhão",
   ),
   place(
     "country",
@@ -3065,6 +3120,8 @@ export const STARTERS: Starter[] = [
     "A ring of standing stones rises from Salisbury Plain. The alignment with the solstice sunrise is what people still come to see.",
     "Stonehenge",
     1,
+    undefined,
+    "England",
   ),
   place(
     "country",
@@ -3076,6 +3133,8 @@ export const STARTERS: Starter[] = [
     "A castle occupies a volcanic crag above the old town of Edinburgh. The rock has been fortified for centuries and still holds the Scottish crown jewels.",
     "Edinburgh_Castle",
     2,
+    undefined,
+    "Scotland",
   ),
   place(
     "country",
@@ -3087,6 +3146,8 @@ export const STARTERS: Starter[] = [
     "Basalt columns lock together like a pavement at the Giant's Causeway. The rocks step from the cliff into the sea on the Antrim coast.",
     "Giant%27s_Causeway",
     2,
+    undefined,
+    "Northern Ireland",
   ),
   place(
     "country",
@@ -3098,6 +3159,8 @@ export const STARTERS: Starter[] = [
     "Ben Nevis is the highest mountain in the British Isles. The usual path is a long climb, and the summit can be in cloud while the glen is clear.",
     "Ben_Nevis",
     3,
+    undefined,
+    "Scotland",
   ),
   place(
     "country",
@@ -3109,6 +3172,8 @@ export const STARTERS: Starter[] = [
     "Snowdon is the highest mountain in Wales. A rack railway and several footpaths reach a summit that can see the Irish Sea.",
     "Snowdon",
     4,
+    undefined,
+    "Wales",
   ),
   place(
     "country",
@@ -3120,6 +3185,8 @@ export const STARTERS: Starter[] = [
     "An iron lattice tower built for a world's fair became the symbol of Paris. It was meant to be temporary and stayed.",
     "Eiffel_Tower",
     1,
+    undefined,
+    "Île-de-France",
   ),
   place(
     "country",
@@ -3131,6 +3198,8 @@ export const STARTERS: Starter[] = [
     "An abbey crowns a tidal rock off the coast of Normandy. At high tide the water surrounds the causeway that reaches the mount.",
     "Mont-Saint-Michel",
     2,
+    undefined,
+    "Normandy",
   ),
   place(
     "country",
@@ -3142,6 +3211,8 @@ export const STARTERS: Starter[] = [
     "A royal hunting lodge in the Loire valley is famous for a double-spiral stair. The roof is a crowd of chimneys, lanterns, and turrets above a moat.",
     "Ch%C3%A2teau_de_Chambord",
     2,
+    undefined,
+    "Centre-Val de Loire",
   ),
   place(
     "country",
@@ -3153,6 +3224,8 @@ export const STARTERS: Starter[] = [
     "A Roman aqueduct crosses the Gardon in three stacked rows of arches. It once carried water toward Nimes and still stands as a dry stone bridge.",
     "Pont_du_Gard",
     3,
+    undefined,
+    "Occitanie",
   ),
   place(
     "country",
@@ -3164,6 +3237,8 @@ export const STARTERS: Starter[] = [
     "Mont Blanc is the highest summit in the Alps. The massif sits on the French-Italian border, and the usual climb starts from Chamonix.",
     "Mont_Blanc",
     2,
+    undefined,
+    "Auvergne-Rhône-Alpes",
   ),
   place(
     "country",
@@ -3175,6 +3250,8 @@ export const STARTERS: Starter[] = [
     "A neoclassical gate closes the east end of Unter den Linden in Berlin. It has framed parades, a divided city, and the night the wall opened.",
     "Brandenburg_Gate",
     2,
+    undefined,
+    "Berlin",
   ),
   place(
     "country",
@@ -3186,6 +3263,8 @@ export const STARTERS: Starter[] = [
     "A palace in the style of a medieval romance clings to a crag in Bavaria. Ludwig the second built it as a retreat and barely lived there.",
     "Neuschwanstein_Castle",
     1,
+    undefined,
+    "Bavaria",
   ),
   place(
     "country",
@@ -3197,6 +3276,8 @@ export const STARTERS: Starter[] = [
     "Twin Gothic spires rise over the Rhine in the center of Cologne. Work on the cathedral stretched across centuries and finished in the eighteen hundreds.",
     "Cologne_Cathedral",
     2,
+    undefined,
+    "North Rhine-Westphalia",
   ),
   place(
     "country",
@@ -3208,6 +3289,8 @@ export const STARTERS: Starter[] = [
     "Zugspitze is the highest peak in Germany, on the border with Austria. A cable car and a rack railway both reach the summit ridge.",
     "Zugspitze",
     3,
+    undefined,
+    "Bavaria",
   ),
   place(
     "country",
@@ -3219,6 +3302,8 @@ export const STARTERS: Starter[] = [
     "Red-brick warehouses on narrow canals form the Speicherstadt in Hamburg. The district was built as a free port, and the gables still stand over the water.",
     "Speicherstadt",
     4,
+    undefined,
+    "Hamburg",
   ),
   place(
     "country",
@@ -3230,6 +3315,8 @@ export const STARTERS: Starter[] = [
     "The Colosseum is a huge amphitheater in the center of Rome. Public games once filled the stands that visitors walk today.",
     "Colosseum",
     1,
+    undefined,
+    "Lazio",
   ),
   place(
     "country",
@@ -3241,6 +3328,8 @@ export const STARTERS: Starter[] = [
     "Mosaics cover the interior of Saint Mark's Basilica on Venice's main square. The church faces a plaza that floods when the tide runs high.",
     "St_Mark%27s_Basilica",
     2,
+    undefined,
+    "Veneto",
   ),
   place(
     "country",
@@ -3252,6 +3341,8 @@ export const STARTERS: Starter[] = [
     "Brunelleschi's red-tiled dome rises over the cathedral of Florence. It was the largest dome yet built when it closed, and it still defines the skyline.",
     "Florence_Cathedral",
     2,
+    undefined,
+    "Tuscany",
   ),
   place(
     "country",
@@ -3263,6 +3354,8 @@ export const STARTERS: Starter[] = [
     "Mount Etna is an active volcano above the east coast of Sicily. Lava and ash keep reshaping the slopes over the orchards.",
     "Mount_Etna",
     3,
+    undefined,
+    "Sicily",
   ),
   place(
     "country",
@@ -3274,6 +3367,8 @@ export const STARTERS: Starter[] = [
     "Three limestone towers stand in a row in the Dolomites. A circuit path around their base is one of the most walked routes in the Alps.",
     "Tre_Cime_di_Lavaredo",
     3,
+    undefined,
+    "Veneto",
   ),
   place(
     "country",
@@ -3285,6 +3380,8 @@ export const STARTERS: Starter[] = [
     "The Great Pyramid is the last of the classical wonders still standing. It rises on a desert plateau at the edge of Cairo, squared to the compass with great care.",
     "Great_Pyramid_of_Giza",
     1,
+    undefined,
+    "Giza",
   ),
   place(
     "country",
@@ -3296,6 +3393,8 @@ export const STARTERS: Starter[] = [
     "Karnak is a vast temple precinct on the east bank at Luxor. The columns of the great hypostyle hall still dwarf anyone walking between them.",
     "Karnak",
     2,
+    undefined,
+    "Luxor",
   ),
   place(
     "country",
@@ -3307,6 +3406,8 @@ export const STARTERS: Starter[] = [
     "Four seated colossi of Ramses the second guard a temple cut into the cliff. The whole monument was moved in the nineteen sixties to escape the rising Nile.",
     "Abu_Simbel",
     2,
+    undefined,
+    "Aswan",
   ),
   place(
     "country",
@@ -3318,6 +3419,8 @@ export const STARTERS: Starter[] = [
     "A monastery sits at the foot of the peak pilgrims call Mount Sinai. The night climb reaches the summit in time for sunrise over the desert ranges.",
     "Mount_Sinai",
     2,
+    undefined,
+    "South Sinai",
   ),
   place(
     "country",
@@ -3329,6 +3432,8 @@ export const STARTERS: Starter[] = [
     "Siwa is an oasis of springs and date palms deep in the western desert. Mud-brick ruins and salt lakes surround a town that was once an oracle's seat.",
     "Siwa_Oasis",
     4,
+    undefined,
+    "Matrouh",
   ),
   place(
     "country",
@@ -3340,6 +3445,8 @@ export const STARTERS: Starter[] = [
     "A white marble mausoleum on the Yamuna was built for a Mughal emperor's wife. The tomb, the gardens, and the long reflecting pool are laid out in strict symmetry.",
     "Taj_Mahal",
     1,
+    undefined,
+    "Uttar Pradesh",
   ),
   place(
     "country",
@@ -3351,6 +3458,8 @@ export const STARTERS: Starter[] = [
     "Stone steps at Dashashwamedh Ghat lead down to the Ganges in Varanasi. An evening ceremony of lamps and bells fills the riverfront.",
     "Dashashwamedh_Ghat",
     2,
+    undefined,
+    "Uttar Pradesh",
   ),
   place(
     "country",
@@ -3362,6 +3471,8 @@ export const STARTERS: Starter[] = [
     "Ruins of the Vijayanagara capital spread among boulders at Hampi. Temples and market streets of the old city still stand in the rocks.",
     "Hampi",
     3,
+    undefined,
+    "Karnataka",
   ),
   place(
     "country",
@@ -3373,6 +3484,8 @@ export const STARTERS: Starter[] = [
     "The Golden Temple stands on a platform in a sacred pool at Amritsar. The upper floors are sheathed in gold, and the kitchen feeds anyone who arrives.",
     "Golden_Temple",
     2,
+    undefined,
+    "Punjab",
   ),
   place(
     "country",
@@ -3384,6 +3497,8 @@ export const STARTERS: Starter[] = [
     "Canals and lagoons thread the coastal plain around Alappuzha. Houseboats move slowly between palms and villages built at the water's edge.",
     "Alappuzha",
     3,
+    undefined,
+    "Kerala",
   ),
   place(
     "country",
@@ -3395,6 +3510,8 @@ export const STARTERS: Starter[] = [
     "A restored stretch of the Great Wall crosses the ridges at Badaling. Watchtowers step along the crest north of Beijing.",
     "Badaling",
     1,
+    undefined,
+    "Beijing",
   ),
   place(
     "country",
@@ -3406,6 +3523,8 @@ export const STARTERS: Starter[] = [
     "The Forbidden City is a walled palace at the center of Beijing. Courtyards and halls line up on the axis that organized the imperial capital.",
     "Forbidden_City",
     2,
+    undefined,
+    "Beijing",
   ),
   place(
     "country",
@@ -3417,6 +3536,8 @@ export const STARTERS: Starter[] = [
     "Thousands of clay soldiers stand in pits east of the first Qin emperor's tomb. The faces were modeled individually, and the army was buried to guard him.",
     "Terracotta_Army",
     2,
+    undefined,
+    "Shaanxi",
   ),
   place(
     "country",
@@ -3428,6 +3549,8 @@ export const STARTERS: Starter[] = [
     "The Potala climbs a hill above Lhasa in white and red blocks. It was a winter seat of the Dalai Lamas and still dominates the city.",
     "Potala_Palace",
     2,
+    undefined,
+    "Tibet",
   ),
   place(
     "country",
@@ -3439,6 +3562,8 @@ export const STARTERS: Starter[] = [
     "Karst peaks rise straight from the plain along the Li River near Yangshuo. Boats follow the bends between those towers of rock.",
     "Yangshuo",
     3,
+    undefined,
+    "Guangxi",
   ),
   place(
     "country",
@@ -3461,6 +3586,8 @@ export const STARTERS: Starter[] = [
     "Thousands of vermilion gates climb the mountain behind Fushimi Inari in Kyoto. Worshippers donated the torii, and they form tunnels up the slope.",
     "Fushimi_Inari-taisha",
     2,
+    undefined,
+    "Kyoto",
   ),
   place(
     "country",
@@ -3472,6 +3599,8 @@ export const STARTERS: Starter[] = [
     "A great shrine gate stands in the sea off Miyajima when the tide is high. The halls on shore are built on piers so the complex seems to float.",
     "Itsukushima_Shrine",
     2,
+    undefined,
+    "Hiroshima",
   ),
   place(
     "country",
@@ -3483,6 +3612,8 @@ export const STARTERS: Starter[] = [
     "Five small lakes sit on a volcanic peninsula in northeastern Hokkaido. Brown bears are common enough here that the boardwalks come with warnings.",
     "Shiretoko_National_Park",
     5,
+    undefined,
+    "Hokkaido",
   ),
   place(
     "country",
@@ -3494,6 +3625,8 @@ export const STARTERS: Starter[] = [
     "Shuri Castle was the palace of the Ryukyu kings on a hill above Naha. The red halls have been rebuilt after war and fire and remain the symbol of Okinawa.",
     "Shuri_Castle",
     3,
+    undefined,
+    "Okinawa",
   ),
   place(
     "country",
@@ -3505,6 +3638,8 @@ export const STARTERS: Starter[] = [
     "White shell roofs cover the opera house on a point in Sydney Harbour. The building is famous both for that shape and for the long fight to finish it.",
     "Sydney_Opera_House",
     1,
+    undefined,
+    "New South Wales",
   ),
   place(
     "country",
@@ -3516,6 +3651,8 @@ export const STARTERS: Starter[] = [
     "A sandstone monolith stands alone on the desert plain at the center of the continent. The rock changes color with the light, and the base is lined with sacred sites.",
     "Uluru",
     1,
+    undefined,
+    "Northern Territory",
   ),
   place(
     "country",
@@ -3527,6 +3664,8 @@ export const STARTERS: Starter[] = [
     "Pale silica sand curves along Whitsunday Island at Whitehaven Beach. The water over that sand shifts from turquoise in the shallows to deep blue offshore.",
     "Whitehaven_Beach",
     3,
+    undefined,
+    "Queensland",
   ),
   place(
     "country",
@@ -3538,6 +3677,8 @@ export const STARTERS: Starter[] = [
     "Limestone stacks stand in the surf along the Great Ocean Road. They are leftovers of cliffs that the Southern Ocean is still cutting away.",
     "The_Twelve_Apostles_(Victoria)",
     3,
+    undefined,
+    "Victoria",
   ),
   place(
     "country",
@@ -3549,6 +3690,8 @@ export const STARTERS: Starter[] = [
     "Rock shelters at Ubirr in Kakadu hold paintings layered across thousands of years. The lookout above them faces a floodplain that turns to water in the wet season.",
     "Ubirr",
     4,
+    undefined,
+    "Northern Territory",
   ),
   place(
     "globe",
@@ -3561,6 +3704,7 @@ export const STARTERS: Starter[] = [
     "Giza_pyramid_complex",
     1,
     "EG",
+    "Giza",
   ),
   place(
     "globe",
@@ -3573,6 +3717,7 @@ export const STARTERS: Starter[] = [
     "Uluru",
     1,
     "AU",
+    "Northern Territory",
   ),
   place(
     "globe",
@@ -3585,6 +3730,7 @@ export const STARTERS: Starter[] = [
     "Machu_Picchu",
     1,
     "PE",
+    "Cusco",
   ),
   place(
     "globe",
@@ -3597,6 +3743,7 @@ export const STARTERS: Starter[] = [
     "Petra",
     1,
     "JO",
+    "Ma'an",
   ),
   place(
     "globe",
@@ -3609,6 +3756,7 @@ export const STARTERS: Starter[] = [
     "Angkor_Wat",
     1,
     "KH",
+    "Siem Reap",
   ),
   place(
     "globe",
@@ -3661,6 +3809,7 @@ export const STARTERS: Starter[] = [
     "Oia,_Greece",
     2,
     "GR",
+    "South Aegean",
   ),
   place(
     "globe",
@@ -3673,6 +3822,7 @@ export const STARTERS: Starter[] = [
     "Puerto_Ayora",
     5,
     "EC",
+    "Galápagos",
   ),
   place(
     "globe",

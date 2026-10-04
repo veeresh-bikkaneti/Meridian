@@ -10,22 +10,21 @@ import {
 import type { Page } from "playwright/test";
 
 /**
- * Question disambiguation labels (Veeresh's spec):
- * - globe:   "Oia, South Aegean, Greece"  (place + state + country;
- *            subdivision is a pin-down clue on every globe question)
- * - country: "Austin, Texas"      (place + state, whole-US run)
- * - state:   "Omaha"              (bare name, unchanged)
+ * Subdivision labels in globe edition (Veeresh's live-play call): the state
+ * is a pin-down clue on EVERY globe question, not just on same-name
+ * collisions — so the label is always "{Place}, {Subdivision}, {Country}"
+ * when subdivision data exists, and the honest "{Place}, {Country}" when
+ * it doesn't.
+ *
+ * Covers both subdivision sources: a curated starter (subdivision hand-set
+ * in starters.ts) and a generated chunk place (subdivision stamped by the
+ * dataset pipeline, threaded through toStarter).
  *
  * Determinism: the no-repeat seen store (localStorage
  * `meridian:seen:v2:<edition>:<regionId>`) is pre-seeded with every pool id
  * EXCEPT the target, so poolForNewRun deals the target first. The pool is
  * computed from the same source files the app ships, so the seeding can
  * never silently diverge from the dealt pool.
- *
- * Difficulty: the targets below (Austin, Omaha) are tier 1, so the tests
- * pick the Easy band (tiers 1–2) before starting the run — with the default
- * Medium band (2–4) the tier filter removes tier-1 places before the
- * dealer's pool is built and the seeding trick cannot force them first.
  */
 
 test.setTimeout(240_000);
@@ -54,17 +53,6 @@ function curatedIds(edition: string, regionId: string): string[] {
     if (m[1] === edition && m[2] === regionId) out.push(`${m[2]}-${m[3]}`);
   }
   return out;
-}
-
-function usCountryPoolIds(): string[] {
-  const manifest = JSON.parse(
-    readFileSync("src/game/data/geonames/manifest.json", "utf8"),
-  ) as { regions: Record<string, { edition: string }> };
-  const ids = [...curatedIds("country", "united-states")];
-  for (const [rid, r] of Object.entries(manifest.regions)) {
-    if (r.edition === "state" || rid === "united-states") ids.push(...chunkIds(rid));
-  }
-  return ids;
 }
 
 /** Mark every pool place seen except the target, so it is dealt first. */
@@ -114,7 +102,9 @@ function expectCleanConsole(errors: string[]): void {
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
-test("globe: bubble and result card show 'Oia, South Aegean, Greece'", async ({ page }) => {
+test("globe: curated starter shows '{Place}, {Subdivision}, {Country}'", async ({
+  page,
+}) => {
   const errors = collectErrors(page);
   const allIds = [...curatedIds("globe", "globe"), ...chunkIds("globe")];
 
@@ -123,11 +113,13 @@ test("globe: bubble and result card show 'Oia, South Aegean, Greece'", async ({ 
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expectAim(page);
 
-  // The question bubble (sighted) and the live region (screen reader) agree.
-  await expect(
-    page.getByRole("heading", { name: "Oia, South Aegean, Greece" }),
-  ).toBeVisible({ timeout: 15_000 });
-  expect(await readLiveQuestion(page)).toBe("Find Oia, South Aegean, Greece.");
+  // The question bubble (sighted) and the live region (screen reader)
+  // agree on the three-part label.
+  const label = "Oia, South Aegean, Greece";
+  await expect(page.getByRole("heading", { name: label })).toBeVisible({
+    timeout: 15_000,
+  });
+  expect(await readLiveQuestion(page)).toBe(`Find ${label}.`);
 
   // What you were asked matches what you're shown: drop a pin anywhere and
   // the result card title carries the same qualified label.
@@ -139,57 +131,31 @@ test("globe: bubble and result card show 'Oia, South Aegean, Greece'", async ({ 
     .poll(() => readPhase(page), { timeout: 30_000 })
     .toMatch(/^(story|done)$/);
   const card = resultCard(page);
-  await expect(card.getByRole("heading", { name: "Oia, South Aegean, Greece" })).toBeVisible({
+  await expect(card.getByRole("heading", { name: label })).toBeVisible({
     timeout: 60_000,
   });
 
   expectCleanConsole(errors);
 });
 
-test("country: whole-US run shows 'Austin, Texas'", async ({ page }) => {
+test("globe: generated chunk place shows '{Place}, {Subdivision}, {Country}'", async ({
+  page,
+}) => {
   const errors = collectErrors(page);
+  // gn-1225 "Kordlar" — globe chunk record with pipeline-stamped
+  // subdivision "East Azerbaijan", iso2 IR.
+  const allIds = [...curatedIds("globe", "globe"), ...chunkIds("globe")];
 
   await page.goto(APP);
-  await seedSeenExcept(page, "country", "united-states", "gn-4671654", usCountryPoolIds());
-  // Austin is tier 1: the Easy band (1–2) keeps it in the dealt pool.
-  await page
-    .getByRole("group", { name: "How do you want to grow your map today?" })
-    .getByRole("button", { name: "Easy" })
-    .click();
-  await page.getByRole("button", { name: "Choose a country" }).click();
-  await page.getByRole("button", { name: "United States" }).click();
-  await page.getByRole("button", { name: "Play entire United States" }).click();
+  await seedSeenExcept(page, "globe", "globe", "gn-1225", allIds);
+  await page.getByRole("button", { name: "Play the globe" }).click();
   await expectAim(page);
 
-  await expect(
-    page.getByRole("heading", { name: "Austin, Texas" }),
-  ).toBeVisible({ timeout: 15_000 });
-  expect(await readLiveQuestion(page)).toBe("Find Austin, Texas.");
-
-  expectCleanConsole(errors);
-});
-
-test("state: Nebraska run shows the bare name 'Omaha'", async ({ page }) => {
-  const errors = collectErrors(page);
-  const allIds = [...curatedIds("state", "nebraska"), ...chunkIds("nebraska")];
-
-  await page.goto(APP);
-  await seedSeenExcept(page, "state", "nebraska", "gn-5074472", allIds);
-  // Omaha is tier 1: the Easy band (1–2) keeps it in the dealt pool.
-  await page
-    .getByRole("group", { name: "How do you want to grow your map today?" })
-    .getByRole("button", { name: "Easy" })
-    .click();
-  await page.getByRole("button", { name: "Choose a country" }).click();
-  await page.getByRole("button", { name: "United States" }).click();
-  await page.getByRole("button", { name: "Nebraska" }).click();
-  await expectAim(page);
-
-  const heading = page.getByRole("heading", { name: "Omaha" });
-  await expect(heading).toBeVisible({ timeout: 15_000 });
-  // Bare name: no country/state qualifier appended.
-  expect(((await heading.textContent()) ?? "").trim()).toBe("Omaha");
-  expect(await readLiveQuestion(page)).toBe("Find Omaha.");
+  const label = "Kordlar, East Azerbaijan, Iran";
+  await expect(page.getByRole("heading", { name: label })).toBeVisible({
+    timeout: 15_000,
+  });
+  expect(await readLiveQuestion(page)).toBe(`Find ${label}.`);
 
   expectCleanConsole(errors);
 });

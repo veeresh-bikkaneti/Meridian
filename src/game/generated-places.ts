@@ -36,6 +36,7 @@
 import type { Edition } from "./run.ts";
 import { STARTERS, type Starter } from "./starters.ts";
 import { buildRegionPool } from "./pool.ts";
+import { asFameTier } from "./tier-filter.ts";
 import { ADMIN1_BY_COUNTRY } from "./regions.ts";
 import type { Difficulty } from "./scoring.ts";
 // Import attribute: required by Node's module loader (unit tests run under
@@ -86,6 +87,20 @@ interface ChunkPlaceRecord {
   hookMissing?: unknown;
   /** Optional en.wikipedia.org article slug when the blurb carries a curated notable note. */
   wiki?: unknown;
+  /**
+   * Optional build-time difficulty tier (1–5) stamped by
+   * scripts/build-geonames-dataset.mjs. Validated by the prebuild gate;
+   * toStarter backfills 3 for missing/hand-edited/bad values.
+   */
+  difficulty?: unknown;
+  /**
+   * Optional resolved subdivision display name (state/province), e.g.
+   * "Nebraska" or "Madhya Pradesh", stamped by
+   * scripts/build-geonames-dataset.mjs from the row's admin1 code.
+   * toStarter passes it through only when a non-empty string; the label
+   * builder (question-label.ts) fails closed to the bare name otherwise.
+   */
+  subdivision?: unknown;
   iso2: unknown;
   edition: unknown;
   regionId: unknown;
@@ -121,13 +136,35 @@ function toStarter(
     fact?: unknown;
     /** ISO-3166-1 alpha-2 country code — validated non-empty by assertValidRecord; threaded onto the Starter for question disambiguation labels. */
     iso2: string;
+    /**
+     * Optional build-time difficulty tier (1–5) stamped by
+     * scripts/build-geonames-dataset.mjs. Preferred when valid; toStarter
+     * backfills 3 for missing/hand-edited/bad values.
+     */
+    difficulty?: unknown;
+    /**
+     * Optional resolved subdivision display name (state/province) stamped
+     * by scripts/build-geonames-dataset.mjs. Passed through only when a
+     * non-empty string — the label builder fails closed otherwise.
+     */
+    subdivision?: unknown;
   },
   edition: Edition,
   regionId: string,
 ): Starter {
-  // The dataset carries no difficulty signal; generated places default to
-  // medium (3) so the v3 multiplier stays neutral for them.
-  const difficulty: Difficulty = 3;
+  // Difficulty: prefer the pipeline-stamped tier when it is a valid integer
+  // 1–5. Anything else — missing on legacy chunks, hand-edited, or corrupt
+  // — falls back to medium (3) so the v3 multiplier stays neutral. The
+  // guard lives in tier-filter.ts (asFameTier): one field, one semantic.
+  const difficulty: Difficulty = asFameTier(place.difficulty);
+  // Subdivision: the pipeline stamps the resolved display name ("Nebraska",
+  // "Madhya Pradesh") for the PR #38 label rules. Pass it through only when
+  // it is a non-empty string; missing/blank/hand-edited values are dropped
+  // so question-label.ts fails closed to the bare place name.
+  const subdivision =
+    typeof place.subdivision === "string" && place.subdivision.trim().length > 0
+      ? place.subdivision
+      : undefined;
   // Notable notes are curated from Wikipedia; the slug travels in the chunk
   // so the card can attribute it (GeoNames stays credited app-wide).
   const hasWiki = typeof place.wiki === "string" && place.wiki.length > 0;
@@ -154,6 +191,9 @@ function toStarter(
     sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
     sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
     difficulty,
+    // The subdivision display name travels only when the pipeline stamped a
+    // real one — absent means unknown, and the label builder fails closed.
+    ...(subdivision !== undefined ? { subdivision } : {}),
     iso2: place.iso2,
   };
 }
@@ -179,6 +219,19 @@ function assertValidRecord(
   fact?: unknown;
   hookMissing?: boolean;
   wiki?: string;
+  /**
+   * Optional build-time difficulty tier (1–5). Validated shape-wise by the
+   * prebuild gate (scripts/check-generated-places.mjs); toStarter falls
+   * back to 3 for any non-integer/out-of-range value, so this is
+   * grandfathered, never a hard error here.
+   */
+  difficulty?: unknown;
+  /**
+   * Optional resolved subdivision display name. Shape-checked by the
+   * prebuild gate; toStarter drops anything that isn't a non-empty string,
+   * so this is grandfathered, never a hard error here.
+   */
+  subdivision?: unknown;
   iso2: string;
   edition: Edition;
   regionId: string;

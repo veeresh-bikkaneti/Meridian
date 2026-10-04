@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { continueRun, dropPin, endRun, isResumable, resumeRun, startRun, summarizeRun } from "./run.ts";
+import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, summarizeRun, type Run } from "./run.ts";
 import { SCORING_VERSION, type ScoredPlace } from "./scoring.ts";
 
 function fakeScored(score: number, streak = 1): ScoredPlace {
@@ -33,6 +33,7 @@ const today = {
   regionId: "nebraska",
   regionName: "Nebraska",
   dateKey: "2026-09-28",
+  difficultyChoice: "medium" as const,
 };
 
 test("endless mode: a run continues indefinitely until the player ends it", () => {
@@ -231,6 +232,7 @@ test("poolIds persist on the run; legacy saves backfill from the fresh pool", ()
     regionId: "globe",
     regionName: "Globe",
     dateKey: "2026-09-30",
+    difficultyChoice: "medium" as const,
   };
   const pool = ["a", "b", "c", "d"];
   const run = startRun(globeDay, pool);
@@ -250,4 +252,61 @@ test("poolIds persist on the run; legacy saves backfill from the fresh pool", ()
   // Non-string entries are filtered out.
   const messy = { ...run, poolIds: ["a", 42, null, "b"] as never };
   assert.deepEqual(resumeRun(messy, globeDay, ["x"]).poolIds, ["a", "b"]);
+});
+
+test("startRun stores the picker's difficulty choice", () => {
+  const easyRun = startRun({ ...today, difficultyChoice: "easy" }, ["p1"]);
+  assert.equal(easyRun.difficultyChoice, "easy");
+  const hardRun = startRun({ ...today, difficultyChoice: "hard" }, ["p1"]);
+  assert.equal(hardRun.difficultyChoice, "hard");
+});
+
+test("isResumable fails when the difficulty choice changed — switching bands starts fresh", () => {
+  const saved = startRun({ ...today, difficultyChoice: "easy" }, ["p1", "p2"]);
+  // Same choice resumes.
+  assert.equal(isResumable(saved, { ...today, difficultyChoice: "easy" }), true);
+  // A switched choice never resumes, even though edition/region/day match.
+  assert.equal(isResumable(saved, { ...today, difficultyChoice: "medium" }), false);
+  assert.equal(isResumable(saved, { ...today, difficultyChoice: "hard" }), false);
+});
+
+test("a difficulty switch mints a fresh run via resumeRun (fresh seed, fresh pool)", () => {
+  const saved = startRun({ ...today, difficultyChoice: "easy" }, ["p1", "p2"]);
+  const fresh = resumeRun(saved, { ...today, difficultyChoice: "hard" }, ["q1"], null);
+  assert.equal(fresh.difficultyChoice, "hard");
+  assert.equal(fresh.index, 0);
+  assert.deepEqual(fresh.results, []);
+  assert.deepEqual(fresh.poolIds, ["q1"]);
+  // A fresh run gets a fresh dealing seed rather than inheriting the old one.
+  assert.equal(typeof fresh.seed, "number");
+});
+
+test("backfillDifficultyChoice defaults pre-picker runs to medium", () => {
+  assert.equal(backfillDifficultyChoice(undefined), "medium");
+  assert.equal(backfillDifficultyChoice(null), "medium");
+  assert.equal(backfillDifficultyChoice("extreme"), "medium");
+  assert.equal(backfillDifficultyChoice(3), "medium");
+  assert.equal(backfillDifficultyChoice("easy"), "easy");
+  assert.equal(backfillDifficultyChoice("medium"), "medium");
+  assert.equal(backfillDifficultyChoice("hard"), "hard");
+});
+
+test("a run saved before the picker backfills to medium and resumes at the default", () => {
+  const legacy = startRun(today, ["p1"]);
+  const { difficultyChoice: _dropped, ...withoutChoice } = legacy;
+  void _dropped;
+  // This is the path every stored run takes: readRun backfills the record
+  // before isResumable ever sees it.
+  const saved = {
+    ...withoutChoice,
+    difficultyChoice: backfillDifficultyChoice(
+      (withoutChoice as Record<string, unknown>).difficultyChoice,
+    ),
+  } as unknown as Run;
+  assert.equal(isResumable(saved, today), true);
+  const resumed = resumeRun(saved, today, ["p1"]);
+  assert.equal(resumed.difficultyChoice, "medium");
+  // And a stale stored value is sanitized rather than trusted.
+  const tampered = { ...saved, difficultyChoice: "extreme" } as unknown as Run;
+  assert.equal(resumeRun(tampered, today, ["p1"]).difficultyChoice, "medium");
 });

@@ -130,6 +130,12 @@ export default defineConfig({
       testMatch: /endgame-share\.spec\.ts/,
     },
     {
+      name: "subdivision-labels",
+      testMatch: /subdivision-labels\.spec\.ts/,
+    },
+    {
+      name: "difficulty-picker",
+      testMatch: /difficulty-picker\.spec\.ts/,
       name: "crash-loop-breaker",
       testMatch: /crash-loop-breaker\.spec\.ts/,
     },

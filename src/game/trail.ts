@@ -1,4 +1,5 @@
-import { hashString, mulberry32 } from "./daily.ts";
+import { hashString } from "./daily.ts";
+import { asFameTier } from "./tier-filter.ts";
 
 /**
  * Mint a per-session random seed. Crypto-backed when available; Math.random
@@ -18,10 +19,26 @@ export function mintSeed(): number {
   return Math.floor(Math.random() * 4294967296);
 }
 
+/**
+ * Small deterministic PRNG (mulberry32), implemented locally so the
+ * weighted dealer needs no external dependency. Pure: the same seed always
+ * yields the same sequence.
+ */
+function deterministicRandom(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 /** Deterministic Fisher-Yates shuffle driven by an explicit seed. Pure. */
 export function shufflePlaces<T>(places: T[], seed: number): T[] {
   const ordered = [...places];
-  const random = mulberry32(seed >>> 0);
+  const random = deterministicRandom(seed >>> 0);
   for (let index = ordered.length - 1; index > 0; index--) {
     const swapIndex = Math.floor(random() * (index + 1));
     const current = ordered[index]!;
@@ -37,6 +54,51 @@ export function shufflePlaces<T>(places: T[], seed: number): T[] {
  */
 export function cycleSeed(sessionSeed: number, cycle: number): number {
   return hashString(`${sessionSeed >>> 0}:${cycle}`);
+}
+
+/** Places carrying an optional fame difficulty tier (1 = most famous). */
+export type DifficultyTiered = {
+  readonly difficulty?: unknown;
+};
+
+/**
+ * Fame weight for weighted dealing: w = 6 - tier, so tier 1 (most famous)
+ * deals with weight 5 and tier 5 (most obscure) with weight 1. Places with
+ * missing or invalid difficulty count as tier 3 (w = 3), keeping pre-tier
+ * catalogs dealing uniformly. Pure.
+ *
+ * Takes a plain `object` so it can serve as a weight function over any
+ * place list; read the tier through `DifficultyTiered`.
+ */
+export function difficultyWeight(place: object): number {
+  const d = (place as DifficultyTiered).difficulty;
+  return 6 - asFameTier(d);
+}
+
+/**
+ * Weighted shuffle without replacement (Efraimidis–Spirakis): each place
+ * draws key = U^(1/w) with U ~ Uniform(0,1) from the seeded PRNG, and the
+ * places sort by descending key. Heavier places land earlier on average,
+ * but every place appears exactly once per shuffle — no repeats within a
+ * cycle, full coverage per cycle. Deterministic per seed; pure. Weights
+ * must be positive; non-positive weights deterministically sink to the end.
+ */
+export function weightedShufflePlaces<T>(
+  places: T[],
+  seed: number,
+  weightFn: (place: T) => number,
+): T[] {
+  const random = deterministicRandom(seed >>> 0);
+  const keyed = places.map((place, index) => {
+    const weight = weightFn(place);
+    const key =
+      weight > 0 ? Math.pow(random(), 1 / weight) : Number.NEGATIVE_INFINITY;
+    return { place, key, index };
+  });
+  // Index tie-break keeps the sort total and deterministic even on the
+  // (practically impossible) event of equal keys.
+  keyed.sort((a, b) => b.key - a.key || a.index - b.index);
+  return keyed.map((entry) => entry.place);
 }
 
 /** Persistence for the seen place IDs (the no-repeat history). */
@@ -277,7 +339,11 @@ export function createDealer<T extends { id: string }>(
       seen.clear();
       cyclePool = [...places];
     }
-    const cycle = shufflePlaces(cyclePool, cycleSeed(sessionSeed, cycles.length));
+    const cycle = weightedShufflePlaces(
+      cyclePool,
+      cycleSeed(sessionSeed, cycles.length),
+      (place) => difficultyWeight(place),
+    );
     if (
       cycle.length > 1 &&
       boundaryId !== null &&
