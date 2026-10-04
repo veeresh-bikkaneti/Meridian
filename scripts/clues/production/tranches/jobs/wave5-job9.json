@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 5038,
+    "place_id": "gn-2634483",
+    "input": {
+      "place": {
+        "place_id": "gn-2634483",
+        "name": "Westbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.26,
+        "lon": -2.1875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westbury, Wiltshire",
+          "url": "https://en.wikipedia.org/wiki/Westbury,_Wiltshire",
+          "text": "Westbury is a market town and civil parish in west Wiltshire, England. The town lies below the northwestern edge of Salisbury Plain, about 4 miles (6 km) south of Trowbridge and a similar distance north of Warminster. \nWestbury was known for the annual Hill Fair where many sheep were sold in the 18th and 19th centuries; later growth came from the town's position at the intersection of two railway lines. The busy A350, which connects the M4 motorway with the south coast, passes through the town. The urban area has expanded to include the village of Westbury Leigh and the hamlets of Chalford and Frogmore."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "westbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5042,
+    "place_id": "gn-2938344",
+    "input": {
+      "place": {
+        "place_id": "gn-2938344",
+        "name": "Delligsen",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 51.9412,
+        "lon": 9.80272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Delligsen",
+          "url": "https://en.wikipedia.org/wiki/Delligsen",
+          "text": "Delligsen is a municipality in Holzminden district, in Lower Saxony, Germany.\nIt consists of six localities which were independent until 1974: Delligsen itself, Grünenplan, Ammensen, Hohenbüchen, Kaierde and Varrigsen. \nThe area is dominated by the massif of the Hils hills\nDelligsen itself has been an industrial settlement dominated by the Friedrich-Carls-Hütte ironworks which closed down in 1984.\nGrünenplan further up in the Hils is an officially designated climate health resort. It has three centuries of history in glass manufacturing and still has a Schott AG glass factory. The factory was founded in 1744 by the prince of Brunswick's government in order to produce large mirrors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "delligsen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5048,
+    "place_id": "gn-3206150",
+    "input": {
+      "place": {
+        "place_id": "gn-3206150",
+        "name": "Aspach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.96667,
+        "lon": 9.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aspach, Baden-Württemberg",
+          "url": "https://en.wikipedia.org/wiki/Aspach,_Baden-W%C3%BCrttemberg",
+          "text": "Aspach (German pronunciation: [ˈaspax] ) is a community in the Rems-Murr-Kreis in Germany, near Backnang.\nAspach is made up of four, formerly independent villages: Großaspach, Kleinaspach, Allmersbach and Rietenau. In 1972, the four villages joined forces under the name Aspach. The villages were founded between 950AD and 1150AD. Rietenau is home to natural springs and used to be a popular Spa until early 1900. Water from Rietenau is still bottled today. The main village, Großaspach, is the birthplace of Hans Werner Aufrecht, co-founder of AMG Engine Production and Development, more commonly known as AMG, as well as the meaning of the \"G\" in the name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "aspach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5049,
+    "place_id": "gn-3360396",
+    "input": {
+      "place": {
+        "place_id": "gn-3360396",
+        "name": "Tulbagh",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.28596,
+        "lon": 19.14116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tulbagh",
+          "url": "https://en.wikipedia.org/wiki/Tulbagh",
+          "text": "Tulbagh (Afrikaans: [ˈtœlbaχ]), previously named Roodezand, then Land van Waveren later in 1804 named after Cape of Good Hope Governor Ryk Tulbagh, is a town located in the \"Land van Waveren\" mountain basin (also known as the Tulbagh basin), in the Winelands of the Western Cape, South Africa. The basin is fringed on three sides by mountains, and is drained by the Klein Berg River and its tributaries. The nearest towns are Ons Rust and Gouda beyond the Nuwekloof Pass, Wolseley some 15 kilometres (9.3 mi) to the south inside the basin, and Ceres and Prince Alfred Hamlet beyond Michell's Pass in the Warm Bokkeveld."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "tulbagh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5052,
+    "place_id": "gn-4205885",
+    "input": {
+      "place": {
+        "place_id": "gn-4205885",
+        "name": "Lithia Springs",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.794,
+        "lon": -84.66049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lithia Springs, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Lithia_Springs,_Georgia",
+          "text": "Lithia Springs () is an unincorporated community and census-designated place, formerly incorporated as a city, located in northeastern Douglas County, Georgia, United States. As of the 2020 census, the community had a population of 16,644. The area is named for its historic lithia mineral water springs.\nIncorporated in 1882, Lithia Springs was dissolved the first time in 1933. Lithia Springs became incorporated again in 1994, to be Douglas County's second completely internal municipality, but disincorporated again in 2000.\nIn 2000, the citizens voted (80% yea, 20% nay) on December 20 to dissolve the city charter and de-incorporate the city, transferring all assets to the county."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "lithia springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lithia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5053,
+    "place_id": "gn-4359721",
+    "input": {
+      "place": {
+        "place_id": "gn-4359721",
+        "name": "Kemp Mill",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.039,
+        "lon": -77.01914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kemp Mill, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Kemp_Mill,_Maryland",
+          "text": "Kemp Mill is a census-designated place and an unincorporated census area in Montgomery County, Maryland, United States. It is known for its creekside walkways, calm suburban atmosphere, Brookside Gardens, and numerous hiking trails. Home to the largest Orthodox Jewish community on the East Coast between Baltimore and Miami, it hosts more than half a dozen synagogues within its boundaries.  The population was 13,378 at the 2020 census.\nKemp Mill census area consists of multiple subdivisions, including Kemp Mill Estates, Kemp Mill Farms, Kemp Mill Forest, and  Springbrook Forest. The community also includes University Towers, with 523 condominium units, and the Warwick, with 393 rental units."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "kemp mill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kemp",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5054,
+    "place_id": "gn-4560691",
+    "input": {
+      "place": {
+        "place_id": "gn-4560691",
+        "name": "Port Richmond",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.99345,
+        "lon": -75.10017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Richmond, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Port_Richmond,_Philadelphia",
+          "text": "Port Richmond is a neighborhood in the River Wards section of Philadelphia, Pennsylvania, United States. It is notable for its large Polish immigrant and Polish American community, and it has been known as the Little Poland of Philadelphia. The neighborhood is also home to a large Irish American community and sizable German, Lithuanian, Italian, and Puerto Rican communities, along with a historic Jewish community, as represented in the various churches and organizations. In more recent years, a sizable Albanian community has moved in. Port Richmond's ZIP code is 19134. A small portion of the neighborhood, north of Castor Avenue, falls into the 19137 ZIP code."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "port richmond",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5064,
+    "place_id": "gn-2156927",
+    "input": {
+      "place": {
+        "place_id": "gn-2156927",
+        "name": "Moree",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -29.46278,
+        "lon": 149.84157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moree, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Moree,_New_South_Wales",
+          "text": "Moree ( MOOR-ee) is a town in Moree Plains Shire in northern New South Wales, Australia. It is located on the banks of the Mehi River, in the centre of the rich black-soil plains.  It is situated in the Moree Plains Shire. The Newell and Gwydir highways intersect at the town, which can also be  reached from Sydney by daily train and air services.\nMoree is a major agricultural centre, noted for its role in the Australian cotton-growing industry, which was established there in the early 1960s. It is also well known for artesian hot-spring baths that are renowned for their reputed healing qualities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "moree",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5076,
+    "place_id": "gn-3168075",
+    "input": {
+      "place": {
+        "place_id": "gn-3168075",
+        "name": "San Marco in Lamis",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.7121,
+        "lon": 15.63825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Marco in Lamis",
+          "url": "https://en.wikipedia.org/wiki/San_Marco_in_Lamis",
+          "text": "San Marco in Lamis (Sammarchese: Sandə Marchə [ˈsændə ˈmærkə]) is a town and comune in the province of Foggia in the Apulia region of southeast Italy. It is located in the Gargano massif area within the Parco Nazionale del Gargano and it belongs to the Comunità Montana del Gargano. Part of the Via Sacra Langobardorum runs through the town's territory. As such, the town is home to the Santuario di Santa Maria di Stignano and the Convento di San Matteo apostolo. The Santuario di Santa Maria di Stignano is linked to the Castelpagano Castle, whose ruins dominate a slope in the territory of Apricena."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "san marco in lamis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lamis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5079,
+    "place_id": "gn-4259271",
+    "input": {
+      "place": {
+        "place_id": "gn-4259271",
+        "name": "Huntingburg",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 38.29894,
+        "lon": -86.955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntingburg, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Huntingburg,_Indiana",
+          "text": "Huntingburg is a city in Patoka Township, Dubois County, in the U.S. state of Indiana. The population was 6,362 at the 2020 census.\nLocated in southwestern Indiana, the city is known for its downtown with numerous antique shops. It is part of the Jasper Micropolitan Statistical Area. The city is also known as the \"Hollywood of the Midwest.\" The movies A League of Their Own (1992), Hard Rain (1998), and the HBO film Soul of the Game (1996) were filmed in Huntingburg. Columbia Pictures renovated the grandstand at League Stadium that was to become part of the set for A League of Their Own."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "huntingburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5084,
+    "place_id": "gn-4927746",
+    "input": {
+      "place": {
+        "place_id": "gn-4927746",
+        "name": "Wabash",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 40.79782,
+        "lon": -85.82054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wabash, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Wabash,_Indiana",
+          "text": "Wabash is a city in Noble Township, Wabash County, Indiana, United States. As of the 2020 census, Wabash had a population of 10,440. The city is situated along the Wabash River and is the county seat of Wabash County.\nWabash is notable as claiming to be the first electrically lighted city in the world, which was inaugurated on March 31, 1880. However, closer inspection of the reference shows only the court house grounds were lighted. It is also home to the historic Eagles Theatre, Paradise Spring Treaty Grounds (1826), the Wabash and Erie Canal, Presbyterian Church (1880), and Disciples of Christ Christian Church (1865)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "wabash",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5088,
+    "place_id": "gn-5836898",
+    "input": {
+      "place": {
+        "place_id": "gn-5836898",
+        "name": "Rock Springs",
+        "country": "United States",
+        "subdivision": "Wyoming",
+        "lat": 41.58746,
+        "lon": -109.2029
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rock Springs, Wyoming",
+          "url": "https://en.wikipedia.org/wiki/Rock_Springs,_Wyoming",
+          "text": "Rock Springs is a city in Sweetwater County, Wyoming, United States. The population was 23,526 at the 2020 census, making it the fifth-most populous city in the U.S. state of Wyoming, and the most populous city in Sweetwater County. Rock Springs is the principal city of the Rock Springs micropolitan statistical area, which has a population of 37,975.\nRock Springs is the site of Western Wyoming Community College and Wyoming's Big Show, a yearly event with a carnival and concerts which is held at the Sweetwater County Events Complex. Rock Springs is located in an energy-rich region with many oil and natural gas wells."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "rock springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rock",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5098,
+    "place_id": "gn-2737639",
+    "input": {
+      "place": {
+        "place_id": "gn-2737639",
+        "name": "Mirandela",
+        "country": "Portugal",
+        "subdivision": "Bragança",
+        "lat": 41.48739,
+        "lon": -7.18695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mirandela",
+          "url": "https://en.wikipedia.org/wiki/Mirandela",
+          "text": "Mirandela (Portuguese pronunciation: [miɾɐ̃ˈdɛlɐ] ), officially the City of Mirandela (Portuguese: Cidade de Mirandela), is a city and a municipality in northeastern Portugal. The city itself is contained by the Mirandela parish, which had a population of 11,397. The population of the municipality in 2021 was 21,384, in an area of 658.96 km2. Mirandela is famous for its cuisine, particularly the alheiras. A round of the European Jetski Championship is held on the Tua River every Summer. The city has two campuses of higher education institutions - one belonging to the public Bragança Polytechnic Institute and one belonging to the private Instituto Piaget."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "mirandela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5107,
+    "place_id": "gn-4474274",
+    "input": {
+      "place": {
+        "place_id": "gn-4474274",
+        "name": "Kill Devil Hills",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 36.03072,
+        "lon": -75.67601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kill Devil Hills, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Kill_Devil_Hills,_North_Carolina",
+          "text": "Kill Devil Hills is a town in Dare County, North Carolina, United States. The population was 7,633 at the 2020 census. It is the most populous settlement in both Dare County and on the Outer Banks of North Carolina. The Kill Devil Hills micropolitan statistical area, consisting of all of Dare County, is part of the larger Virginia Beach–Norfolk combined statistical area.\nThe town was founded and developed on the site of the Wright brothers' first controlled, powered airplane flights on December 17, 1903, chosen for its good winds. It was commemorated by the Wright Brothers National Memorial, which was dedicated in 1932."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kill devil hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "devil",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5118,
+    "place_id": "gn-6325478",
+    "input": {
+      "place": {
+        "place_id": "gn-6325478",
+        "name": "Beauport",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.85884,
+        "lon": -71.19201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beauport, Quebec City",
+          "url": "https://en.wikipedia.org/wiki/Beauport,_Quebec_City",
+          "text": "Beauport (French pronunciation: [bopɔʁ]) is a borough of Quebec City, Quebec, Canada on the Saint Lawrence River.\nBeauport is a northeastern suburb of Quebec City. Manufacturers include paint, construction materials, printers, and hospital supplies. Food transportation is important to the economy. Attractions include Parc de la Chute-Montmorency (Montmorency Falls Park), which contains a fortification built in 1759 by James Wolfe and Manoir Montmorency, the home from 1791 to 1794 of Prince Edward, Duke of Kent and Strathearn.\nThe city's historic district contains many interesting churches and homes, including Bélanger-Girardin House, a National Historic Site of Canada where visitors can learn about Beauport's heritage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "beauport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5126,
+    "place_id": "gn-2129365",
+    "input": {
+      "place": {
+        "place_id": "gn-2129365",
+        "name": "Kutchan",
+        "country": "Japan",
+        "subdivision": "Hokkaido",
+        "lat": 42.90111,
+        "lon": 140.74056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kutchan, Hokkaido",
+          "url": "https://en.wikipedia.org/wiki/Kutchan,_Hokkaido",
+          "text": "Kutchan (倶知安町, Kutchan-chō) is a town located in Shiribeshi Subprefecture, Hokkaido, Japan. Kutchan lies slightly north of the volcano Mount Yōtei, and is approximately 50 kilometers west of Sapporo. The subprefecture government offices are located in this town, making it the capital of the subprefecture.\nAs of April 30, 2017, the town has an estimated population of 15,573 and a population density of 60 persons per km². The total area is 261.24 km2 (100.87 sq mi).\nThroughout Hokkaido, Kutchan is known for its proximity to the world famous Niseko powder snow region and for its production of quality potatoes and potato products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "kutchan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5133,
+    "place_id": "gn-3835943",
+    "input": {
+      "place": {
+        "place_id": "gn-3835943",
+        "name": "Santa Rosa de Calamuchita",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -32.06439,
+        "lon": -64.53961
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Rosa de Calamuchita",
+          "url": "https://en.wikipedia.org/wiki/Santa_Rosa_de_Calamuchita",
+          "text": "Santa Rosa de Calamuchita is a small village in the province of Córdoba, Argentina. It had about 10,000 inhabitants at the 2001 census [INDEC]. The village is located in the central part of the Calamuchita Valley, surrounded by hills (the Sierras), rivers, and lakes, which makes the area a major tourist attraction. The village has a Mediterranean climate, characterized by warm summers with considerable rainfall, where temperatures can exceed 35°C, and cold, dry winters with minimum temperatures dropping below zero. Other important nearby towns in the Valley are Villa General Belgrano and Embalse (the latter is home to a nuclear power plant)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "santa rosa de calamuchita",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "calamuchita",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5135,
+    "place_id": "gn-4877655",
+    "input": {
+      "place": {
+        "place_id": "gn-4877655",
+        "name": "Storm Lake",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 42.64109,
+        "lon": -95.20972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Storm Lake, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Storm_Lake,_Iowa",
+          "text": "Storm Lake is a city in and the county seat of Buena Vista County, Iowa, United States. The population was 11,269 in the 2020 census, an increase from 10,076 in the 2000 census. It has one of the only cities in Iowa with a non-white majority population.\nLocated along the northern shore of Storm Lake, the city is home to King's Pointe Waterpark Resort, the Living Heritage Tree Museum, the Santa's Castle holiday attraction, and Buena Vista University, a private university. Housing a large Tyson Foods meatpacking plant, the town is responsible for some 3.5% of pork production in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "storm lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "storm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5144,
+    "place_id": "gn-667091",
+    "input": {
+      "place": {
+        "place_id": "gn-667091",
+        "name": "Sinaia",
+        "country": "Romania",
+        "subdivision": "Prahova",
+        "lat": 45.35,
+        "lon": 25.55
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sinaia",
+          "url": "https://en.wikipedia.org/wiki/Sinaia",
+          "text": "Sinaia (Romanian pronunciation: [siˈnaja]) is a town and a mountain resort in Prahova County, Romania. It is situated in the historical region of Muntenia. The town was named after the Sinaia Monastery of 1695, around which it was built. The monastery, in turn, is named after the Biblical Mount Sinai. King Carol I of Romania also built his summer residence, Peleș Castle, in Sinaia in the late nineteenth century.\nSinaia is about 65 kilometres (40 miles) northwest of Ploiești and 48 kilometres (30 miles) south of Brașov, in a mountainous area on the Prahova River valley, just east of the Bucegi Mountains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "sinaia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5157,
+    "place_id": "gn-3354540",
+    "input": {
+      "place": {
+        "place_id": "gn-3354540",
+        "name": "Omaruru",
+        "country": "Namibia",
+        "subdivision": "Erongo Region",
+        "lat": -21.42403,
+        "lon": 15.94611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Omaruru, Namibia",
+          "url": "https://en.wikipedia.org/wiki/Omaruru,_Namibia",
+          "text": "Omaruru is a town in the Erongo Region of central Namibia. The town has 14,000 inhabitants and encompasses 352 square kilometres (136 sq mi) of land. It is situated near Mount Erongo, on the usually dry Omaruru River. It is located on the main paved road from Swakopmund to Otjiwarongo. The name in the Otjiherero language means 'bitter milk', as Herero cattle herds used to graze on the local bush that turned their milk bitter.\nOmaruru is known for its annual festival where the Herero people commemorate their past local chiefs, its winery, and for the dinosaur footprints at nearby Otjihaenamparero."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "omaruru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

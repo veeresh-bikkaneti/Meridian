@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 4325,
+    "place_id": "gn-4502093",
+    "input": {
+      "place": {
+        "place_id": "gn-4502093",
+        "name": "Haddon Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.87734,
+        "lon": -75.06462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haddon Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Haddon_Heights,_New_Jersey",
+          "text": "Haddon Heights is a borough in Camden County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 7,495, an increase of 22 (+0.3%) from the 2010 census count of 7,473, which in turn reflected a decline of 74 (−1.0%) from the 7,547 counted in the 2000 census.\nHaddon Heights was incorporated as a borough by an act of the New Jersey Legislature on March 2, 1904, from portions of the now-defunct Centre Township and parts of Haddon Township. The borough was named for Elizabeth Haddon, an early settler of the area. Haddon Heights is a dry town where alcohol cannot be sold. A November 2024 non-binding referendum asking voters to allow liquor sales at restaurants and bars in the borough passed by a 2–1 margin; the borough council would have to approve an ordinance allowing for the sale of liquor licenses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "haddon heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "haddon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4326,
+    "place_id": "gn-4929532",
+    "input": {
+      "place": {
+        "place_id": "gn-4929532",
+        "name": "Back Bay",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.3501,
+        "lon": -71.087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Back Bay, Boston",
+          "url": "https://en.wikipedia.org/wiki/Back_Bay,_Boston",
+          "text": "Back Bay is an officially recognized historic neighborhood of Boston, Massachusetts, built on reclaimed land in the Charles River basin. Construction began in 1859, as the demand for luxury housing exceeded the availability in the city at the time, and the area was fully built by around 1900. It is most famous for its rows of Victorian brownstone homes—considered one of the best preserved examples of 19th-century urban design in the United States—as well as numerous architecturally significant individual buildings, and cultural institutions such as the Boston Public Library, and Boston Architectural College. Initially conceived as a residential-only area, commercial buildings were permitted from around 1890, and Back Bay now features many office buildings, including the John Hancock Tower, Boston's tallest skyscraper. It is also considered a fashionable shopping destination (especially Newbury and Boylston Streets, and the adjacent Prudential Center and Copley Place malls) and home to several major hotels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "back bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "back",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4327,
+    "place_id": "gn-5422140",
+    "input": {
+      "place": {
+        "place_id": "gn-5422140",
+        "name": "Fort Carson",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 38.73749,
+        "lon": -104.78886
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Carson",
+          "url": "https://en.wikipedia.org/wiki/Fort_Carson",
+          "text": "Fort Carson is a United States Army post located directly south of Colorado Springs in El Paso, Pueblo, Fremont, and Huerfano counties, Colorado, United States. The developed portion of Fort Carson is located near the City of Colorado Springs in El Paso County.\nFort Carson is the home of the 4th Infantry Division, the 10th Special Forces Group, the 4th Security Force Assistance Brigade (SFAB), the 440th Civil Affairs Battalion (USAR), the 71st Ordnance Group (EOD), the 4th Engineer Battalion, the 759th Military Police Battalion, the 10th Combat Support Hospital, the 43rd Sustainment Brigade, the Army Field Support Battalion-Fort Carson, the 423rd Transportation Company (USAR) and the 13th Air Support Operations Squadron of the United States Air Force. The post also hosts units of the Army Reserve, Navy Reserve and the Colorado Army National Guard. Fort Carson was also home to the 5th Infantry Division, known as the Red Devils."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "fort carson",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carson",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4335,
+    "place_id": "gn-2963722",
+    "input": {
+      "place": {
+        "place_id": "gn-2963722",
+        "name": "Howth",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.38778,
+        "lon": -6.06528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Howth",
+          "url": "https://en.wikipedia.org/wiki/Howth",
+          "text": "Howth ( HOHTH; Irish: Binn Éadair, meaning 'Éadar's peak'; Old Norse: Hǫfuð) is a peninsular village and outer suburb of Dublin in Ireland. The district as a whole occupies the greater part of the peninsula of Howth Head, which forms the northern boundary of Dublin Bay, and includes the island of Ireland's Eye, which holds multiple natural protection designations.\nHowth has been settled since prehistoric times, and features in Irish mythology. A fishing village and small trading port from at least the 14th century, Howth has grown to become a busy and affluent suburb of Dublin, with a mix of suburban residential development, wild hillside and heathland, golf courses, cliff and coastal paths, a small quarry and a busy commercial fishing port. The only neighbouring district on land is Sutton. Howth is also home to one of the oldest occupied buildings in Ireland, Howth Castle, and its estate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "howth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4337,
+    "place_id": "gn-4018584",
+    "input": {
+      "place": {
+        "place_id": "gn-4018584",
+        "name": "Amealco de Bonfil",
+        "country": "Mexico",
+        "subdivision": "Querétaro",
+        "lat": 20.18659,
+        "lon": -100.14438
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amealco de Bonfil",
+          "url": "https://en.wikipedia.org/wiki/Amealco_de_Bonfil",
+          "text": "Amealco is a town in the Mexican state of Querétaro. Its name is thought to mean place of springs in Nahuatl. It is the seat of Amealco de Bonfil Municipality, and is located 63 kilometres (39 mi) southeast of Santiago de Querétaro. Its elevation is 2,605 metres (8,547 ft) above sea level, and the annual temperature ranges from 15 to 20 °C (59 to 68 °F). It is one of the oldest settlements of Querétaro, having been founded in 1538 by Fernando de Tapia (also known as Conín) and Nicolás de San Luis Montañez, who would also found the Querétaro state capital.\nIn the early 19th century, a group of French and Spanish entrepreneurs settled in the city and began the logging industry, which at its peak was one of the main suppliers of wood to Mexico City, and also exported wood to France and the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "amealco de bonfil",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "amealco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bonfil",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4338,
+    "place_id": "gn-5214814",
+    "input": {
+      "place": {
+        "place_id": "gn-5214814",
+        "name": "Sunbury",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.86259,
+        "lon": -76.79441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunbury, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Sunbury,_Pennsylvania",
+          "text": "Sunbury ( SUN-berr-ee) is a city in and the county seat of Northumberland County, Pennsylvania, United States. It lies on the east bank of the Susquehanna River at the confluence of the river's North and West branches, about 50 miles (80 km) north of Harrisburg. As of the 2020 United States census, Sunbury had a population of 9,719. It is the principal city of the Sunbury micropolitan statistical area, which comprises Northumberland County and is part of the larger Bloomsburg–Berwick–Sunbury combined statistical area.\nThe site of Sunbury was long occupied by Shamokin, one of the largest and most important Native American settlements in colonial Pennsylvania, and later by Fort Augusta, the principal British frontier outpost on the upper Susquehanna during the French and Indian War. The town of Sunbury was laid out in 1772 as the seat of the newly created Northumberland County and named after Sunbury-on-Thames, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "sunbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4340,
+    "place_id": "gn-615403",
+    "input": {
+      "place": {
+        "place_id": "gn-615403",
+        "name": "Borjomi",
+        "country": "Georgia",
+        "subdivision": "Samtskhe-Javakheti",
+        "lat": 41.84692,
+        "lon": 43.3971
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borjomi",
+          "url": "https://en.wikipedia.org/wiki/Borjomi",
+          "text": "Borjomi (Georgian: ბორჯომი [ˈbo̞ɾd͡ʒo̞mi]) is a resort town in south-central Georgia with a population of 11,173 (as of 2024). Located 165 km from Tbilisi, it is one of the six municipalities of the Samtskhe–Javakheti region and is situated in the northwestern part of the region in the picturesque Borjomi Gorge on the eastern edge of Borjomi-Kharagauli National Park. \nThe town is noted for its mineral water industry, the Romanov summer palace in Likani and the Borjomi-Kharagauli National Park. Borjomi mineral water is particularly well-known in Georgia as well as other countries that were part of the former Soviet Union; the bottling of mineral water is a major source of income for the area. Because of the supposed curative powers of the area's mineral springs, it is a frequent destination for people with health problems. Borjomi is also home to the most extensive ecologically-themed amusement park in the Caucasus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "borjomi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4343,
+    "place_id": "gn-3514189",
+    "input": {
+      "place": {
+        "place_id": "gn-3514189",
+        "name": "Villa de Zaachila",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.95048,
+        "lon": -96.74934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa de Zaachila",
+          "url": "https://en.wikipedia.org/wiki/Villa_de_Zaachila",
+          "text": "Villa de Zaachila is a town  and municipality in Oaxaca, Mexico, 6 km (3.7 mi) from Oaxaca City. \nIt is part of the Zaachila District in the west of the Valles Centrales Region.  In the pre-Hispanic era, it was the main city-state for the Valley of Oaxaca after the fall of Monte Albán, and the Zaachila Zapotecs were the prominent political force for much of the Valley of Oaxaca when the Spanish arrived.  Since then, it has been mostly quiet, but political unrest has been prominent since 2006 and the municipality has two parallel governments.\nZaachila is famous for its Thursday open air markets, which spreads over much of the center of town and has been a tradition since pre-Hispanic times. It is home to a mostly unexplored archeological site and is known for a dance called the Danza de los Zancudos, or Dance of the Stilts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "villa de zaachila",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zaachila",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4359,
+    "place_id": "gn-4167003",
+    "input": {
+      "place": {
+        "place_id": "gn-4167003",
+        "name": "Opa-locka",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.90232,
+        "lon": -80.25033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Opa-locka, Florida",
+          "url": "https://en.wikipedia.org/wiki/Opa-locka,_Florida",
+          "text": "Opa-locka is a city in Miami-Dade County, Florida, United States. Spanning roughly 4.2 square miles (11 km2), it is part of the Miami metropolitan area of South Florida. As of the 2020 Census, the population was 16,463, up from 15,219 in 2010.\nOpa-locka was founded in 1926 by American aviator and industrialist Glenn Curtiss, who was inspired by the Middle Eastern folk tales of the One Thousand and One Nights. As such, the city is noted as having one of the largest collection of Moorish Revival architecture in the Western Hemisphere, and many of its roads bear names such as Sharazad Boulevard, Sinbad Avenue, Sabur Lane, Sultan Avenue, Ali Baba Avenue, Perviz Avenue, and Sesame Street.\nThe name Opa-locka is an abbreviation of a Seminole place name, Opa-tisha-wocka-locka, meaning \"wooded hummock\", \"high, dry hummock\", or \"a big island covered with many trees and swamps\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "opa locka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "opa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "locka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4361,
+    "place_id": "gn-5909278",
+    "input": {
+      "place": {
+        "place_id": "gn-5909278",
+        "name": "Brocklehurst",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.70825,
+        "lon": -120.41337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brocklehurst, Kamloops",
+          "url": "https://en.wikipedia.org/wiki/Brocklehurst,_Kamloops",
+          "text": "Brocklehurst is a neighbourhood in the western area of Kamloops, British Columbia, Canada.  Brocklehurst is bordered by the Thompson River to the south, North Shore to the east, Tranquille to the west, and the Batchelor hills and Batchelor Heights aka Batchelor Hills to the north.  The community is named after Ernest Brocklehurst, from Liverpool, England who lived in the area between 1896 and 1907.\nBrocklehurst, which briefly existed as a district municipality in its own right from 1971 until amalgamation with Kamloops in 1973, is the largest of the city's neighbourhoods, accounting for 16% of the city's population. The Brocklehurst area (or Brock, as referred to by its residents), is the warmest and most hospitable of the micro-climates in the city of Kamloops. There can be as much as a 4 degree Celsius increase from Brock to Aberdeen, all within the city of Kamloops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "brocklehurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4368,
+    "place_id": "gn-6165406",
+    "input": {
+      "place": {
+        "place_id": "gn-6165406",
+        "name": "Thompson",
+        "country": "Canada",
+        "subdivision": "Manitoba",
+        "lat": 55.7435,
+        "lon": -97.85579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thompson, Manitoba",
+          "url": "https://en.wikipedia.org/wiki/Thompson,_Manitoba",
+          "text": "Thompson is a city in north-central Manitoba, Canada, the largest city and most populated municipality in Northern Manitoba.\nSituated along the Burntwood River, Thompson is located 210 kilometres (130 mi) north of Lake Winnipeg and 761 km (473 mi) north of the City of Winnipeg. Originally founded in 1956 as a mining town, it is one of the largest fully planned communities in Canada. It now primarily serves as the \"Hub of the North\", providing goods and services such as health care and retail trade to the surrounding communities.\nThompson has fewer than 15,000 residents, with many of the smaller communities accessible only by air or winter road. Despite its isolated location in the heart of Canada's boreal forest, the city is served by an all-weather road and Manitoba Highway 6, Thompson station (served by the Winnipeg–Churchill train), and by the Thompson Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "thompson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4369,
+    "place_id": "gn-8224859",
+    "input": {
+      "place": {
+        "place_id": "gn-8224859",
+        "name": "Marconia",
+        "country": "Italy",
+        "subdivision": "Basilicate",
+        "lat": 40.36355,
+        "lon": 16.68823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marconia",
+          "url": "https://en.wikipedia.org/wiki/Marconia",
+          "text": "Marconia is the main hamlet of the municipality of Pisticci in the Italian province of Matera. It is only 10 km from the Ionian coast of the same municipality and together with the peripheral urban agglomerations of Tinchi, Centro Agricolo, Casinello and the coastal area has approximately 13,000 inhabitants.\nMarconia is the newest and most populous town in the municipality of Pisticci and is located in a flat and central position in the Metapontino area.\nMarconia was established during the Second World War as a fascist exile colony inhabited by political dissidents. After the dissolution of the colony, which occurred with the fall of fascism in Italy in 1943, some of the internees returned to their hometowns, others moved to Pisticci, but many decided to remain there.\nMarconia is named for Guglielmo Marconi, an Italian 20th-century inventor credited with the invention of radio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "marconia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4370,
+    "place_id": "gn-942683",
+    "input": {
+      "place": {
+        "place_id": "gn-942683",
+        "name": "Vredefort",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.00805,
+        "lon": 27.3646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vredefort",
+          "url": "https://en.wikipedia.org/wiki/Vredefort",
+          "text": "Vredefort (locally , Afrikaans: [ˈfriədəfɔrt]) is a small farming town in the Free State province of South Africa with cattle, peanuts, sorghum, sunflowers and maize being farmed.  It is home to 3,000 residents.\nThe town was established in 1876 on a farm called Visgat, on the Vredefort impact structure, the largest and oldest visible bolide impact crater in the world (with a diameter of 300 kilometres (190 mi)). It was this approximately 10-kilometre (6.2 mi) wide bolide that led to the preservation of the gold-bearing reefs of the Free State some 2.02 billion years ago. The town's name, which translates to \"peace fort\" in Afrikaans and Dutch, was derived from the peaceful conclusion to a threatened war between the Transvaal and the Orange Free State. The British built a concentration camp here during the Second Boer War to house Boer women and children."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "vredefort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4376,
+    "place_id": "gn-2657125",
+    "input": {
+      "place": {
+        "place_id": "gn-2657125",
+        "name": "Ardrossan",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.65018,
+        "lon": -4.80659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ardrossan",
+          "url": "https://en.wikipedia.org/wiki/Ardrossan",
+          "text": "Ardrossan (; from Scottish Gaelic  Àird Rosain 'headland of the small promontory') is a town on the North Ayrshire coast in southwestern Scotland. The town has a population of 10,670 and forms part of a conurbation with Saltcoats and Stevenston known as the 'Three Towns'. Ardrossan is located on the east shore of the Firth of Clyde, and is the main terminal of Caledonian MacBrayne ferry services operating from mainland Scotland to the Isle of Arran. \nThe town is home to the Ardrossan Wind Farm, and is home to a number of businesses and organisations including Cunningham Housing Association. The town is served by two secondary schools – Ardrossan Academy and St Matthews Academy. A new 2–18 curriculum campus is currently under construction, and will include Ardrossan Academy and Winton Primary School & Early Years on the former Shell oil refinery site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "ardrossan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4378,
+    "place_id": "gn-5223593",
+    "input": {
+      "place": {
+        "place_id": "gn-5223593",
+        "name": "Newport",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.4901,
+        "lon": -71.31283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newport, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Newport,_Rhode_Island",
+          "text": "Newport is a seaside city on Aquidneck Island in Rhode Island, United States. It is located in Narragansett Bay, approximately 33 miles (53 km) southeast of Providence, 20 miles (32 km) south of Fall River, Massachusetts, 74 miles (119 km) south of Boston, and 180 miles (290 km) northeast of New York City. It is known as a New England summer resort and is famous for its historic mansions and its rich sailing history. As of the 2020 census, Newport had a population of 25,163.\nNewport hosted the first U.S. Open tournaments in both tennis and golf, as well as every challenge for the America's Cup between 1930 and 1983. It is also the home of Salve Regina University and Naval Station Newport, which houses the United States Naval War College, the Naval Undersea Warfare Center, and an important Navy training center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "newport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4379,
+    "place_id": "gn-5504003",
+    "input": {
+      "place": {
+        "place_id": "gn-5504003",
+        "name": "Fernley",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 39.60797,
+        "lon": -119.25183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fernley, Nevada",
+          "url": "https://en.wikipedia.org/wiki/Fernley,_Nevada",
+          "text": "Fernley is a city in Lyon County, Nevada, United States, and part of the Reno–Tahoe–Sparks metropolitan area CSA. The city was incorporated in 2001. The population of the city was 22,895 at the 2020 census, making it the 7th most populous city in Nevada.\nFernley was home to the historic and one of the first Amazon.com centers in the world, which has since relocated within the metro area. Naval Air Station (TOPGUN), the U.S. Navy's Naval Strike and Air Warfare Center & TOPGUN training program since 1996, was moved nearby, to Fallon, from Naval Air Station Miramar. The city is home to the Reno-Fernley Raceway. The world's first Tesla Gigafactory, that produces battery packs, energy storage and electric vehicle components is nearby 15 miles west at the Tahoe Reno Industrial Center, and also there as of 2024 an under-construction lithium processing plant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "fernley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4388,
+    "place_id": "gn-2890420",
+    "input": {
+      "place": {
+        "place_id": "gn-2890420",
+        "name": "Kirchlinteln",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.94236,
+        "lon": 9.31811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirchlinteln",
+          "url": "https://en.wikipedia.org/wiki/Kirchlinteln",
+          "text": "Kirchlinteln (German pronunciation: [ˈkɪʁçlɪntln̩]) is a municipality in the district of Verden, in Lower Saxony, Germany. Its central village is situated approximately 6 km east of Verden, and 40 km southeast of Bremen. It is surrounded by the Linteln Geest (also called the Verden Heath) which is dominated by woods, hills, heath and small villages. Over the last few decades many people have decided to build their homes in Kirchlinteln or to buy old cottages in this region because of its picturesque landscape and location close to the cities of Bremen and Hanover.\nKirchlinteln belonged to the Prince-Bishopric of Verden, established in 1180. In 1648 the Prince-Bishopric was transformed into the Principality of Verden, which was first ruled in personal union by the Swedish Crown - interrupted by a Danish occupation (1712–1715) - and from 1715 on by the Hanoverian Crown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "kirchlinteln",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4392,
+    "place_id": "gn-795155",
+    "input": {
+      "place": {
+        "place_id": "gn-795155",
+        "name": "Kesklinn",
+        "country": "Estonia",
+        "subdivision": "Harjumaa",
+        "lat": 59.4355,
+        "lon": 24.75748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kesklinn, Tallinn",
+          "url": "https://en.wikipedia.org/wiki/Kesklinn,_Tallinn",
+          "text": "Kesklinn (Estonian for 'city centre') is one of the 8 administrative districts (Estonian: linnaosa) of Tallinn, the capital of Estonia. It is situated on the Tallinn Bay and bordered to the northwest by the district of Põhja-Tallinn, to the west by Kristiine, to the southwest by Nõmme, to the east by Lasnamäe and Pirita, and to the south by Rae Parish, beyond Lake Ülemiste. The island of Aegna, located in the Tallinn Bay, also falls within this administrative district. Kesklinn has an area of 30.6 km2 (11.8 sq mi) and a population of 57,731 (As of 1 November 2014); population density is 1,886.6/km2 (4,886/sq mi).\nIt is home to Tallinn's UNESCO-listed Old Town. Here sits the Tallinn Passenger Port and port-related business centres, including a new complex of high-rise buildings on Liivalaia Street, as well as Tartu Road and Maakri Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "kesklinn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4395,
+    "place_id": "gn-3026827",
+    "input": {
+      "place": {
+        "place_id": "gn-3026827",
+        "name": "Chantilly",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 49.19461,
+        "lon": 2.47124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chantilly, Oise",
+          "url": "https://en.wikipedia.org/wiki/Chantilly,_Oise",
+          "text": "Chantilly ( shan-TIL-ee, French: [ʃɑ̃tiji] ; Picard: Cantily) is a commune in the Oise department in the Valley of the Nonette in the Hauts-de-France region of Northern France. Surrounded by Chantilly Forest, the town of 10,591 inhabitants (2023) falls within the metropolitan area of Paris. It lies 38.4 km (23.9 mi) north-northeast of the centre of Paris and together with six neighbouring communes forms an urban area of 37,039 inhabitants (2022).\nIntimately tied to the House of Montmorency in the 15th to 17th centuries, the Château de Chantilly was home to the Princes of Condé, cousins of the Kings of France, from the 17th to the 19th centuries. It now houses the Musée Condé. Chantilly is also known for its horse racing track, Chantilly Racecourse, where prestigious races are held for the Prix du Jockey Club and Prix de Diane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "chantilly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4404,
+    "place_id": "gn-2921355",
+    "input": {
+      "place": {
+        "place_id": "gn-2921355",
+        "name": "Gengenbach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.40476,
+        "lon": 8.01433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gengenbach",
+          "url": "https://en.wikipedia.org/wiki/Gengenbach",
+          "text": "Gengenbach (German pronunciation: [ˈɡɛŋənˌbax] ; Low Alemannic: Gängäbach) is a town in the district of Ortenau, Baden-Württemberg, Germany, and a popular tourist destination on the western edge of the Black Forest, with about 11,000 inhabitants.\nGengenbach is well known for its traditional Alemannic \"fasnacht\", (\"Fasend\"), a kind of historically influenced celebration of carnival, where tradition is followed, from wearing costumes with carved wooden masks to clapping with a \"Ratsche\" (a traditional-classic wooden \"sound-producing\" toy). Gengenbach also boasts a picturesque, traditional, medieval town centre (\"Altstadt\"). The traditional town Gengenbach is the proud owner of the world's biggest advent calendar. The 24 windows of the 18th century town hall represent the 24 \"windows\" of an Advent calendar. The town also hosts a department of The Graduate School of Offenburg University of Applied Sciences, part of the University of Applied Sciences Offenburg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "gengenbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
