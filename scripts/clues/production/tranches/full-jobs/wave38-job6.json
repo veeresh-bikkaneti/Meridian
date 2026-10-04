@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 7553,
+    "attempt": 7501,
+    "place_id": "gn-3159822",
+    "input": {
+      "place": {
+        "place_id": "gn-3159822",
+        "name": "Bryne",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 58.73536,
+        "lon": 5.64766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bryne",
+          "url": "https://en.wikipedia.org/wiki/Bryne",
+          "text": "Bryne (Norwegian pronunciation: [ˈbrỳːnə] , locally [ˈbʁỳːnə]) is a town in Time Municipality (and Klepp Municipality) in Rogaland county, Norway. The town is the administrative centre of the municipality of Time.\nBryne is located on the southern shores of the lake Frøylandsvatnet, about 30 minutes south of the city of Stavanger by train. The 5.7-square-kilometre (1,400-acre) town has a population (2025) of 13,459 and a population density of 2,361 inhabitants per square kilometre (6,110/sq mi). The town's urban area crosses over the municipal border to Klepp Municipality, with 1.21 square kilometres (300 acres) and 2,161 residents living in the neighboring municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bryne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7554,
+    "attempt": 7502,
+    "place_id": "gn-3164318",
+    "input": {
+      "place": {
+        "place_id": "gn-3164318",
+        "name": "Vigonza",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.43484,
+        "lon": 11.97465
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vigonza",
+          "url": "https://en.wikipedia.org/wiki/Vigonza",
+          "text": "Vigonza is a comune (municipality) in the Province of Padua in the Italian region Veneto, located about 25 kilometres (16 mi) west of Venice and about 10 kilometres (6 mi) northeast of Padua. As of 31 December 2004, it had a population of 20,421 and an area of 33.3 square kilometres (12.9 mi2).\nThe municipality of Vigonza contains the frazioni (subdivisions, mainly villages and hamlets) Busa, Codiverno, Peraga, Perarolo, Pionca, San Vito. Località: Codivernarolo, Battana Prati, Capriccio, Luganega, Barbariga, Carpane, Bagnoli, and Santa Maria.\nVigonza borders the following municipalities: Cadoneghe, Campodarsego, Fiesso d'Artico, Noventa Padovana, Padua, Pianiga, Stra, Villanova di Camposampiero."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "vigonza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7555,
+    "attempt": 7503,
+    "place_id": "gn-3436099",
+    "input": {
+      "place": {
+        "place_id": "gn-3436099",
+        "name": "Basavilbaso",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -32.37213,
+        "lon": -58.87858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Basavilbaso",
+          "url": "https://en.wikipedia.org/wiki/Basavilbaso",
+          "text": "Basavilbaso is a town in the center region of the province of Entre Ríos, Argentina, about 60 km (37 mi) from Concepción del Uruguay. It has about 9,700 inhabitants as per the 2010 census [INDEC]. Locals often shorten the name to Basso.\nThe town developed around the Gobernador Basavilbaso Station of the Ferrocarril Central Entrerriano railway company, which became part of Entre Ríos Railway in 1892. The first train arrived on 30 June 1887, and this is now regarded as the foundation date of Basavilbaso.\nThe town was first settled by Russian Jewish immigrants basically from Ukraine (Kherson Oblast) and Bessarabia. Basavilbaso was one of the first Jewish colonies in Argentina. These settlers formed the first agricultural cooperative in South America.\nJevel Katz, the popular Yiddish troubadour, wrote a song called Basavilbaso.\n\nAs \"Jewish gauchos\", they were recognized as the first to farm in an area where farming was non-existent. Other groups began to settle in the town: Italians, Volga Germans, and Russians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "basavilbaso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7556,
+    "attempt": 7504,
+    "place_id": "gn-3457770",
+    "input": {
+      "place": {
+        "place_id": "gn-3457770",
+        "name": "Marechal Floriano",
+        "country": "Brazil",
+        "subdivision": "Espírito Santo",
+        "lat": -20.41278,
+        "lon": -40.68306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marechal Floriano",
+          "url": "https://en.wikipedia.org/wiki/Marechal_Floriano",
+          "text": "Marechal Floriano is the capital of a municipality of the same name in the state of Espírito Santo, Brazil. Once part of the municipality of Domingos Martins, the town of Marechal Floriano separated on October 31, 1991, becoming the capital of its own municipality. Marechal Floriano is just over 60 km from Vitória, the capital of the state, and situated in the southeastern Brazilian Highlands. The surrounding municipalities are to the north, Domingos Martins, and to the south, Guarapari and Alfredo Chaves. The capital stands at 544 meters above sea level. Local average temperatures vary between 6 and 30 degrees Celsius.\nIts population was 16,920 (2020), and its area is 285 km2.\nKnown locally and promoted as the \"Town of Orchids\", it cultivates and sells many such plants. It was given its name in honor of Field Marshal (in Portuguese: \"Marechal\") Floriano Peixoto, the first vice-president of the Brazilian Republic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "marechal floriano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marechal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "floriano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7557,
+    "attempt": 7505,
+    "place_id": "gn-3457928",
+    "input": {
+      "place": {
+        "place_id": "gn-3457928",
+        "name": "Mantenópolis",
+        "country": "Brazil",
+        "subdivision": "Espírito Santo",
+        "lat": -18.8625,
+        "lon": -41.12278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mantenópolis",
+          "url": "https://en.wikipedia.org/wiki/Mantenópolis",
+          "text": "Mantenópolis is a municipality located in the Brazilian state of Espírito Santo. Its population was 15,503 (2020) and its area is 321 km2 (124 sq mi). It is a small town located in a valley with green mountains rising above it.  It has a central square with municipal offices- e.g., police, public works, and school within a short walking distance of each other.  There are many farms with livestock and crops in the neighboring countryside.  An extraordinarily large number of people from Mantenopolis who migrate to the United States reside on the Island of Martha's Vineyard in the state of Massachusetts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "mantenopolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7558,
+    "attempt": 7506,
+    "place_id": "gn-3461503",
+    "input": {
+      "place": {
+        "place_id": "gn-3461503",
+        "name": "Igaporã",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -13.77333,
+        "lon": -42.71417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Igaporã",
+          "url": "https://en.wikipedia.org/wiki/Igaporã",
+          "text": "Igaporã is a municipality in the state of Bahia in the North-East region of Brazil. It is located in the semi-arid sertão region in the interior of the state. It had an estimated 15,650 inhabitants as of 2020. It covers 836.586 square kilometres (323.008 mi2) and is 682 kilometres (424 mi) from the state capital, Salvador. It is located in the southwest region of Bahia close to the Chapada Diamantina, a mountainous region of the state. Igaporã became an independent municipality by the State Law 556 of March, 25th 1953, and its territory was dismembered from the neighboring municipality of Caetité.\nThe Festa Junina de São Pedro, held annually from June 27 to 29, is the largest cultural event in Igaporã. The municipality also retains three traditional Catholic religious festivals related to Saint Sebastian, Mary, mother of Jesus, and Our Lady of Livramento."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "igapora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7559,
+    "attempt": 7507,
+    "place_id": "gn-3532182",
+    "input": {
+      "place": {
+        "place_id": "gn-3532182",
+        "name": "Bochil",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.99618,
+        "lon": -92.8947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bochil",
+          "url": "https://en.wikipedia.org/wiki/Bochil",
+          "text": "Bochil is a city and  municipality in the Mexican state of Chiapas, in southern Mexico. It covers an area of 372.7 km2 (143.9 sq mi). Bochil serves as the head town for the Second Federal Electoral District of Chiapas.\nAs of 2010, the municipality had a total population of 30,642, up from 22,722 as of 2005. \nAs of 2010, the city of Bochil had a population of 12,404. Other than the city of Bochil, the municipality had 83 localities, the largest of which (with 2010 populations in parentheses) were: Ajiló (1,271), El Copal (1,133), and Luis Espinoza (1,107), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bochil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7560,
+    "attempt": 7508,
+    "place_id": "gn-3874943",
+    "input": {
+      "place": {
+        "place_id": "gn-3874943",
+        "name": "Quellón",
+        "country": "Chile",
+        "subdivision": "Los Lagos Region",
+        "lat": -43.11819,
+        "lon": -73.61661
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quellón",
+          "url": "https://en.wikipedia.org/wiki/Quellón",
+          "text": "Quellón is a Chilean port city and commune in Chiloé Province, in southern Chiloé Island, Los Lagos Region. It is one of the southern end-stations of the Panamerican Highway and the Pacific Coast Highway. The city is a hub for aquaculture and fisheries in southern Chiloé and the Guaitecas and Chonos archipelagoes to the south. Various ferry lanes connects Quellón with the Patagonian settlements such as Melinka, Puerto Cisnes and Puerto Chacabuco.\nIn Quellón the majority of men work on small boats called \"lanchas\" for days at a time fishing. Also many men and women work in local seafood processing plants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "quellon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7561,
+    "attempt": 7509,
+    "place_id": "gn-3876256",
+    "input": {
+      "place": {
+        "place_id": "gn-3876256",
+        "name": "Pichilemu",
+        "country": "Chile",
+        "subdivision": "O'Higgins Region",
+        "lat": -34.38333,
+        "lon": -72
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pichilemu",
+          "url": "https://en.wikipedia.org/wiki/Pichilemu",
+          "text": "Pichilemu (Mapudungun: Small forest, pronounced [pitʃiˈlemu] ), originally known as Pichilemo, is a beach resort city and commune in central Chile, and capital of Cardenal Caro Province in the O'Higgins Region. The commune comprises an urban centre and twenty-two villages, including Ciruelos, Cáhuil, and Cardonal de Panilonco. It is located southwest of Santiago. Pichilemu had nearly 20,000 residents as of 2024.\nThe Pichilemu area was long populated by the indigenous Promaucaes. European-Chilean development began in the mid-sixteenth century, as conquistador Pedro de Valdivia gave Juan Gómez de Almagro the Topocalma encomienda (which included the current territory of Pichilemu) in January 1541. Pichilemu was established as a subdelegation on 16 August 1867, and later as an \"autonomous commune\" on 22 December 1891, by decree of the President Jorge Montt and Interior Minister Manuel José Irarrázabal. Agustín Ross Edwards, a Chilean politician and member of the Ross Edwards family, planned to develop it as a beach resort on the Pacific Ocean for upper-class Chileans.\nPichilemu is home to five of the National Monuments of Chile: Agustín Ross Cultural Centre and Park; the wooden railway station, Estación Pichilemu; El Árbol tunnel; and the Caballo de Agua. Part of the city was declared a Zona Típica (\"Traditional Area\" or \"Heritage Site\") by the National Monuments Council, in 2004.\nThe city is part of District No. 16 and is in the senatorial constituency of O'Higgins Region electoral division. Pichilemu is home to the main beach in O'Higgins Region. It is a tourist destination for surfing, windsurfing and funboarding.\nTourism is the main industry of the city, but forestry and handicrafts are also important. Pichilemu has many expansive dark sand beaches. Several surf championships take place in the city each year at Punta de Lobos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "pichilemu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7562,
+    "attempt": 7510,
+    "place_id": "gn-3896774",
+    "input": {
+      "place": {
+        "place_id": "gn-3896774",
+        "name": "Carahue",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -38.71122,
+        "lon": -73.16101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carahue",
+          "url": "https://en.wikipedia.org/wiki/Carahue",
+          "text": "Carahue (Spanish pronunciation: [kaˈɾawe]) is a city and commune in southern Chile. It is located 56 km west of Temuco, on the northern bank of the Imperial River.\nThe city was founded as La Imperial on April 16, 1552 by Pedro de Valdivia.\nLa Imperial or Antigua [Old] Imperial, was abandoned and destroyed as a result of the Mapuche Uprising of 1598 during the War of Arauco in 1600, and refounded in 1882, in course of Occupation of the Araucanía, under the name Carahue.\nThe commune of Carahue hosts the southernmost natural forests of Araucaria araucana in the Chilean Coast Range."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "carahue",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7563,
+    "attempt": 7511,
+    "place_id": "gn-4150394",
+    "input": {
+      "place": {
+        "place_id": "gn-4150394",
+        "name": "Celebration",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.32529,
+        "lon": -81.53313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Celebration, Florida",
+          "url": "https://en.wikipedia.org/wiki/Celebration,_Florida",
+          "text": "Celebration is a master-planned community (MPC) and census-designated place (CDP) in Osceola County, Florida, United States. A suburb of Orlando, Celebration is located near Walt Disney World Resort and was originally developed by the Walt Disney Company. Its population was recorded as 11,178 in the 2020 United States census.\nAfter founding Celebration, Disney followed its plans to divest most of its control of the town. Several Disney business units continue to occupy the town's office buildings. The town itself is connected to the Walt Disney World resorts via one of its primary streets, World Drive, which begins near the Magic Kingdom.\nVarious New Classical architects participated in the design of buildings in Celebration. Downtown Celebration's post office was designed by Michael Graves, the adjacent Welcome Center by Philip Johnson, and the Celebration Health building by Robert A. M. Stern. \nOther well-known architects who have designed nearby buildings include Charles Moore (Preview Center), Graham Gund (Bohemian Hotel), Cesar Pelli (movie theater), and Robert Venturi and Denise Scott Brown (SunTrust Bank)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "celebration",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7564,
+    "attempt": 7512,
+    "place_id": "gn-4157634",
+    "input": {
+      "place": {
+        "place_id": "gn-4157634",
+        "name": "Gulf Breeze",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.35714,
+        "lon": -87.16386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gulf Breeze, Florida",
+          "url": "https://en.wikipedia.org/wiki/Gulf_Breeze,_Florida",
+          "text": "Gulf Breeze is a city in Santa Rosa County, Florida. It is located between Downtown Pensacola and Pensacola Beach, and is part of the Pensacola Metropolitan Area. The population was 6,340 at the 2020 census, up from 5,763 at the 2010 census.\nGulf Breeze is the nearest city to Pensacola Beach, and provides utility services to the island, and most of South Santa Rosa County covering over 33 square miles. The census designated places of Oriole Beach, Tiger Point, and Midway are considered to be a part of unincorporated Gulf Breeze by Santa Rosa County, and carry Gulf Breeze mailing addresses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "gulf breeze",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gulf",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "breeze",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7565,
+    "attempt": 7513,
+    "place_id": "gn-4502687",
+    "input": {
+      "place": {
+        "place_id": "gn-4502687",
+        "name": "Lindenwold",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.82428,
+        "lon": -74.99767
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lindenwold, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Lindenwold,_New_Jersey",
+          "text": "Lindenwold is a borough in Camden County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 21,641, an increase of 4,028 (+22.9%) from the 2010 census count of 17,613, which in turn reflected an increase of 199 (+1.1%) from the 17,414 counted in the 2000 census.\nAs of 2020, Lindenwold had the 10th-highest property tax rate in New Jersey with an equalized rate of 4.810% compared to 3.470% in the county as a whole and a statewide average of 2.279%. The borough is part of the South Jersey region of the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "lindenwold",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7566,
+    "attempt": 7514,
+    "place_id": "gn-4748993",
+    "input": {
+      "place": {
+        "place_id": "gn-4748993",
+        "name": "Bristol",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 36.59649,
+        "lon": -82.18847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bristol, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Bristol,_Virginia",
+          "text": "Bristol is an independent city in Virginia, United States. As of the 2020 census, the population was 17,219. It is the twin city of Bristol, Tennessee, just across the state line, which runs down the middle of its main street, State Street. As an independent city, Bristol is not part of any county, but it is adjacent to Washington County, Virginia. It is a principal city in the Kingsport–Bristol metropolitan area, which had a population of 307,614 in 2020. The metro area is a component of the larger Tri-Cities region of Tennessee and Virginia, with a population of 508,260 in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bristol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7567,
+    "attempt": 7515,
+    "place_id": "gn-4832745",
+    "input": {
+      "place": {
+        "place_id": "gn-4832745",
+        "name": "Derby",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.32065,
+        "lon": -73.089
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derby, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Derby,_Connecticut",
+          "text": "Derby  is a city in New Haven County, Connecticut, United States, approximately 8 miles (13 km) west-northwest of New Haven. It is located in southwest Connecticut at the confluence of the Housatonic and Naugatuck rivers. It shares borders with the cities of Ansonia to the north and Shelton to the southwest, and the towns of Orange to the south, Seymour to the northwest, and Woodbridge to the east. The city is part of the Naugatuck Valley Planning Region. The population was 12,325 at the 2020 census. It is the smallest city in Connecticut by area, at 5.3 square miles (14 km2).\nDerby was settled in 1642 as an Indian trading post under the name Paugasset. It was named after Derby, England, in 1675. It included what are now Ansonia, Seymour, Oxford, and parts of Beacon Falls.\nDerby is home to the first electric trolley system in New England, only the second in the United States. It is also home to the first electric locomotive in U.S. history to be built and successfully used commercially for hauling freight. The locomotive, built in 1888, is still kept in running condition by the Shore Line Trolley Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "derby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7568,
+    "attempt": 7516,
+    "place_id": "gn-5099738",
+    "input": {
+      "place": {
+        "place_id": "gn-5099738",
+        "name": "Iselin",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.57538,
+        "lon": -74.32237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iselin, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Iselin,_New_Jersey",
+          "text": "Iselin () is an unincorporated community and census-designated place (CDP) located within Woodbridge Township, in Middlesex County, in the U.S. state of New Jersey. As of the 2020 United States census, Iselin's population was 20,088, up from 18,695 in 2010.\nPreviously known as \"Perrytown\" and \"Unionville\", Iselin received its current name after New York City investment banker and philanthropist Adrian Iselin, who established a finishing school in the 1870s for girls from wealthy New York families there. Iselin additionally subsidized the erection of a new train station, which was later replaced by a newer station to the south known as Metropark."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "iselin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7569,
+    "attempt": 7517,
+    "place_id": "gn-5100158",
+    "input": {
+      "place": {
+        "place_id": "gn-5100158",
+        "name": "Lake Hopatcong",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.94843,
+        "lon": -74.6171
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Hopatcong",
+          "url": "https://en.wikipedia.org/wiki/Lake_Hopatcong",
+          "text": "Lake Hopatcong is the largest freshwater body in New Jersey, United States, about 4 square miles (10 km2) in area. Located 30 miles (48 km) from the Delaware River and 40 miles (64 km) from Manhattan, New York City, the lake forms part of the border between Sussex and Morris counties in the state's northern highlands region.\nLake Hopatcong was produced by damming and flooding of two ponds, known as the Great Pond and Little Pond, and the Musconetcong River, its natural outlet. Historically known as a resort lake for vacationing New Yorkers, it is now a mostly \nsuburban residential lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "lake hopatcong",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hopatcong",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7570,
+    "attempt": 7518,
+    "place_id": "gn-5108193",
+    "input": {
+      "place": {
+        "place_id": "gn-5108193",
+        "name": "Bayside",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.76844,
+        "lon": -73.77708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayside, Queens",
+          "url": "https://en.wikipedia.org/wiki/Bayside,_Queens",
+          "text": "Bayside is a neighborhood in the New York City borough of Queens. It is bounded by Whitestone to the northwest, the Long Island Sound and Little Neck Bay to the northeast, Douglaston to the east, and Fresh Meadows to the west. CNN Money ranked Bayside as one of the most expensive housing markets nationally when analyzing comparable detached homes. Despite its large housing stock of free-standing homes, it ranks high nationally in population density.\nThe first known written occurrence of the name Bayside was in a deed dated 1798, written as Bay Side. During the 19th century, Bayside was primarily farmland. Wealthy people from Manhattan visited it as a rural resort. During the 1920s and 1930s, there were several movie studios in Astoria, and many movie stars lived in Bayside, some in posh homes. After the end of World War II, residential development in Bayside increased dramatically, particularly because of its station on the Long Island Rail Road's Port Washington Branch, where a commuter could ride one train straight to Manhattan.\nBayside is in Queens Community District 11 and its ZIP Codes are 11360, 11361, and 11364. It is patrolled by the New York City Police Department's 111th Precinct. Politically, Bayside is represented by the New York City Council's 19th and 23rd Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "bayside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7571,
+    "attempt": 7519,
+    "place_id": "gn-5111405",
+    "input": {
+      "place": {
+        "place_id": "gn-5111405",
+        "name": "Canandaigua",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.87423,
+        "lon": -77.28804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canandaigua, New York",
+          "url": "https://en.wikipedia.org/wiki/Canandaigua,_New_York",
+          "text": "Canandaigua (, Seneca: Tganödä:gwëh) is a city in Ontario County, New York, United States. Its population was 10,576 at the 2020 census. This city is part of the Rochester metropolitan area. It is the county seat of Ontario County; some administrative offices are at the county complex in the adjacent town of Hopewell.\nThe city is surrounded by the Town of Canandaigua. The City of Canandaigua is on the northern end of Canandaigua Lake, one of the Finger Lakes, 24 miles (39 km) southeast of Rochester, 68 miles (109 km) west of Syracuse, and 93 miles (150 km) east of Buffalo. Canandaigua is part of the Greater Rochester area and is Rochester’s southernmost suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "canandaigua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7572,
+    "attempt": 7520,
+    "place_id": "gn-5121026",
+    "input": {
+      "place": {
+        "place_id": "gn-5121026",
+        "name": "Hollis",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71344,
+        "lon": -73.76708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hollis, Queens",
+          "url": "https://en.wikipedia.org/wiki/Hollis,_Queens",
+          "text": "Hollis is a residential middle-class neighborhood within the southeastern section of the New York City borough of Queens. Boundaries are considered to be 181st Street to the west, Hillside Avenue to the north, Francis Lewis Boulevard to the east, and Murdock Avenue to the south. Hollis is located between Jamaica to the west and Queens Village to the east.\nHollis is located in Queens Community District 12 and its ZIP Codes are 11423 and 11412. It is patrolled by the New York City Police Department's 103rd Precinct. Politically, Hollis is represented by the New York City Council's 23rd and 27th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "hollis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

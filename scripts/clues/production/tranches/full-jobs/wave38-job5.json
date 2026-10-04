@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 7533,
+    "attempt": 7481,
+    "place_id": "gn-2644497",
+    "input": {
+      "place": {
+        "place_id": "gn-2644497",
+        "name": "Limehouse",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.51412,
+        "lon": -0.03282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limehouse",
+          "url": "https://en.wikipedia.org/wiki/Limehouse",
+          "text": "Limehouse is a district in the London Borough of Tower Hamlets in East London. It is 3.9 miles (6.3 km) east of Charing Cross, on the northern bank of the River Thames. Its proximity to the river has given it a strong maritime character, which it retains through its riverside public houses and steps, such as The Grapes and Limehouse Stairs.\nThe area gives its name to Limehouse Reach, a section of the Thames which runs south to Millwall after making a right-angled bend at Cuckold's Point, Rotherhithe. The west-to-east section upstream of Cuckold's Point is properly called the Lower Pool."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "limehouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7534,
+    "attempt": 7482,
+    "place_id": "gn-2649730",
+    "input": {
+      "place": {
+        "place_id": "gn-2649730",
+        "name": "Fakenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.82996,
+        "lon": 0.8477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fakenham",
+          "url": "https://en.wikipedia.org/wiki/Fakenham",
+          "text": "Fakenham ( FAKE-un-um) is a market town and civil parish in Norfolk, England. It is situated on the River Wensum, about 25 miles (40 kilometres) north-west of Norwich. The town is at the junction of several roads, including the A148 from King's Lynn to Cromer, the A1067 to Norwich and the A1065 to Swaffham.\nThe civil parish has an area of 3.49 mi2 (9.0 km2). In the 2001 census, it had a population of 7,357 in 3,292 households; this increased to 7,617 at the 2011 census. For the purposes of local government, the parish lies within the district of North Norfolk.\nand within the County of Norfolk.\nFakenham has been a market town since 1250, known particularly for its corn, barley and wheat trading; in the 19th century, it became noted for its printing. Fakenham Racecourse is a thoroughbred horse racing venue to the south of the town.\nThe town has a long name of Fakenham Lancaster which derives from the ownership of the manor in 1377 being transferred to John of Gaunt, the Duke of Lancaster. The name continues to be used today, including on recently placed history trail plaques around the town; it is also used to name the town's two wards, for the purpose of electing councillors to North Norfolk District Council: Lancaster North and Lancaster South.\nThe town is part of the County Division of Fakenham and the Raynhams for the purpose of electing a county councillor to Norfolk County Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "fakenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7535,
+    "attempt": 7483,
+    "place_id": "gn-2651852",
+    "input": {
+      "place": {
+        "place_id": "gn-2651852",
+        "name": "Crowborough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.06098,
+        "lon": 0.16342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crowborough",
+          "url": "https://en.wikipedia.org/wiki/Crowborough",
+          "text": "Crowborough is a town and civil parish in East Sussex, England, in the Weald at the edge of Ashdown Forest and the highest town in the High Weald Area of Outstanding Natural Beauty.\nIt is located 7 miles (11 km) south-west of Royal Tunbridge Wells and 33 miles (53 km)  south of London. It had a population of 21,688 at the 2021 Census, making it the second largest town in inland East Sussex after Hailsham.\nThe highest point in the town is 242 m (794 ft) above sea level, making it the second highest point in East Sussex after Ditchling Beacon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "crowborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7536,
+    "attempt": 7484,
+    "place_id": "gn-2658606",
+    "input": {
+      "place": {
+        "place_id": "gn-2658606",
+        "name": "Sierre",
+        "country": "Switzerland",
+        "subdivision": "Valais",
+        "lat": 46.29192,
+        "lon": 7.53559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sierre",
+          "url": "https://en.wikipedia.org/wiki/Sierre",
+          "text": "Sierre (French pronunciation: [sjɛʁ] ; German: Siders [ˈzidərs]; Arpitan: Siérro [ˈʃiʁo] ) is the capital municipality of the district of Sierre, located in the Rhône valley in the canton of Valais, Switzerland. It has a population of 18,020.\nSierre is nicknamed City of the Sun (French: Cité du Soleil) for its average of 300 days of sunshine a year.\nIt is the last official French-speaking city in Valais before the French–German language border of the canton located at the forêt de Finges, a few kilometres after the town. A German-speaking minority lives in Sierre, counting for around 8% of the population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sierre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7537,
+    "attempt": 7485,
+    "place_id": "gn-2739187",
+    "input": {
+      "place": {
+        "place_id": "gn-2739187",
+        "name": "Fundão",
+        "country": "Portugal",
+        "subdivision": "Castelo Branco",
+        "lat": 40.14025,
+        "lon": -7.50135
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fundão, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Fundão,_Portugal",
+          "text": "Fundão (Portuguese pronunciation: [fũˈdɐ̃w] ), officially the City of Fundão (Portuguese: Cidade de Fundão), is a city and a municipality in the Castelo Branco District in Portugal. Fundão proper is an old city with 8,369 inhabitants in 2001, situated at the point where the slope of the Gardunha range meets the Cova da Beira plains, 500 metres above sea level. The municipality population in 2021 was 26,509. The area size is 700.20 km2. The city of Covilhã is about 20 kilometers to the north by road. The municipality of Fundão is subdivided into 23 civil parishes known as freguesias in Portuguese."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "fundao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7538,
+    "attempt": 7486,
+    "place_id": "gn-2745182",
+    "input": {
+      "place": {
+        "place_id": "gn-2745182",
+        "name": "Vriezenveen",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.40833,
+        "lon": 6.62222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vriezenveen",
+          "url": "https://en.wikipedia.org/wiki/Vriezenveen",
+          "text": "Vriezenveen (Lower Saxon: 't Vjenne, Venne, Vjenne, Vreeznven or Vreeinvenne) is a town in the municipality of Twenterand in the Dutch province of Overijssel. The population was 13,800 on January 1, 2020.\nUntil July 1, 2002, Vriezenveen formed an independent municipality together with the villages of De Pollen, Westerhaar-Vriezenveensewijk, Aadorp and the hamlets Bruinehaar, Weitemanslanden and Westerhoeven. In 2001, the municipality of Vriezenveen was merged with the municipality of Den Ham, which included the villages of Den Ham, Vroomshoop, and Geerdijk. The new municipality was called Vriezenveen and renamed Twenterand in 2003.\nThe town hall of Twenterand is located in Vriezenveen. The dependence of the town hall in Den Ham was closed on May 30, 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "vriezenveen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7539,
+    "attempt": 7487,
+    "place_id": "gn-2759850",
+    "input": {
+      "place": {
+        "place_id": "gn-2759850",
+        "name": "Amby",
+        "country": "Netherlands",
+        "subdivision": "Limburg",
+        "lat": 50.86215,
+        "lon": 5.73226
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amby, Maastricht",
+          "url": "https://en.wikipedia.org/wiki/Amby,_Maastricht",
+          "text": "A former village, Amby is now a neighborhood (part 25) of Maastricht, in the Netherlands, located about 4 km northeast of the center of the city.\nFrom January 2, 1839, to July 1, 1970, Amby existed as a separate municipality. As of 2017, it had a total population of 6,565.\nIn November 2008, an amateur archaeologist discovered in a field 2 meters out of Amby the largest ever found Celtic gold and silver treasure in the Netherlands. Archaeologists from Maastricht and the VU University Amsterdam recovered 70 silver and 39 golden coins which dates back to the 1st century before Christ."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "amby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7540,
+    "attempt": 7488,
+    "place_id": "gn-2794016",
+    "input": {
+      "place": {
+        "place_id": "gn-2794016",
+        "name": "Kraainem",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.86155,
+        "lon": 4.46946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kraainem",
+          "url": "https://en.wikipedia.org/wiki/Kraainem",
+          "text": "Kraainem (Dutch pronunciation: [ˈkraːinɛm] ) is a municipality in the province of Flemish Brabant, in the Flemish region of Belgium. The municipality only comprises the town of Kraainem proper. On January 1, 2006, Kraainem had a total population of 13,150. The total area is 5.80 km2 (2.24 sq mi), which gives a population density of 2,266/km2 (5,870/sq mi). A suburb of Brussels, it directly borders the Stockel/Stokkel and Kapelleveld neighbourhoods (Woluwe-Saint-Pierre municipality) within the city, and was a component of the short-lived Arrondissement of Brussels-Periphery.\nKraainem is a municipality with language facilities in Flanders, where the sole official language is Dutch. In 1954, however, special linguistic facilities were granted to local French speakers, who were then still a minority. They can request official documents from the local administration in French. Today, a majority of the inhabitants are French-speaking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "kraainem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7541,
+    "attempt": 7489,
+    "place_id": "gn-2802405",
+    "input": {
+      "place": {
+        "place_id": "gn-2802405",
+        "name": "Begijnendijk",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.01942,
+        "lon": 4.78377
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Begijnendijk",
+          "url": "https://en.wikipedia.org/wiki/Begijnendijk",
+          "text": "Begijnendijk (Dutch pronunciation: [bəˈɣɛinə(n)ˌdɛik] ) is a municipality located in the Belgian province of Flemish Brabant. The municipality comprises the towns of Begijnendijk proper and Betekom. On January 1, 2006, Begijnendijk had a total population of 9,400. The total area is 17.62 km² which gives a population density of 534 inhabitants per km². The official spoken language is Dutch.\nOn the 25th of July 2019, the hottest ever recorded in Belgium was recorded in Begijnendijk, the town recording a temperature of 41.8 °C (107.2 °F), beating the temperature of 40.2 °C (104.4 °F) recorded in Angleur, recorded just the previous day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "begijnendijk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7542,
+    "attempt": 7490,
+    "place_id": "gn-2802837",
+    "input": {
+      "place": {
+        "place_id": "gn-2802837",
+        "name": "Aywaille",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.47411,
+        "lon": 5.67684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aywaille",
+          "url": "https://en.wikipedia.org/wiki/Aywaille",
+          "text": "Aywaille (French pronunciation: [ɛwaj]; Walloon: Aiwêye) is a municipality of Wallonia located in the province of Liège, Belgium.\nOn 1 January 2012, Aywaille had a total population of 11,697. The total area is 80.04 km2 which gives a population density of 146 inhabitants per km2. Its area consists of 45.7% of wooded and wild country, 29.9% of agricultural areas and 24.4% of built-up areas.\nThe inhabitants of Aywaille are called the \"Aqualiens\", from the Latin version of Aywaille \"Aqualia loca\", which means \"area full of water\" or \"muddy land\".\nThe municipality consists of the following districts: Aywaille, Ernonheid, Harzé, and Sougné-Remouchamps. They include many villages as Aywaille, Awan, Chambralles, Deigné, Ernonheid, Paradis, Houssonloge, Pouhon, Harzé, Havelange, Kin, Stoqueu, Martinrive, Nonceveux, Playe, Quarreux, Sedoz, Septroux, Sougné, Remouchamps, Ville-au-Bois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "aywaille",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7543,
+    "attempt": 7491,
+    "place_id": "gn-2821517",
+    "input": {
+      "place": {
+        "place_id": "gn-2821517",
+        "name": "Traunreut",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.96269,
+        "lon": 12.59231
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Traunreut",
+          "url": "https://en.wikipedia.org/wiki/Traunreut",
+          "text": "Traunreut (German pronunciation: [tʁaʊ̯nˈʁɔɪ̯t] ; Central Bavarian: Traunreit) is a town in southeastern Bavaria, Germany in the Traunstein district. It is located at 47°58′N 12°35′E. Traunreut lies in the heart of the Chiemgau region between Munich and Salzburg, approximately 10 km east of the Chiemsee, 25 km north of the Alps, and 35 km west of Salzburg. Its population is approximately 21,000. Companies present in the area include Siteco Beleuchtungstechnik GmbH (lighting fixtures), Dr. Johannes Heidenhain GmbH (linear and rotary encoders, gaging systems, CNC controls), Bosch and Siemens Household Appliances, BSH (household equipment, high-tech stoves and microwaves), and other midsize firms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "traunreut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7544,
+    "attempt": 7492,
+    "place_id": "gn-2844654",
+    "input": {
+      "place": {
+        "place_id": "gn-2844654",
+        "name": "Roßlau",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 51.88736,
+        "lon": 12.24192
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roßlau",
+          "url": "https://en.wikipedia.org/wiki/Roßlau",
+          "text": "Rosslau (German pronunciation: [ˈʁɔslaʊ]; in German orthography: Roßlau) was until 30 June 2007 a town in Saxony-Anhalt, in eastern Germany, belonging to the district Anhalt-Zerbst. After a fusion with the town of Dessau it became eponym of the newly founded town of Dessau-Roßlau and a quarter of it. Rosslau is situated on the right bank of the Elbe, here crossed by two railway bridges, 3 mi. by rail N. of Dessau and 35 mi. S.E. of Magdeburg. It has a ducal residence, an old castle, a handsome parish church, and manufactures of machinery, paper, sealing-wax, wire goods, sugar, bricks and chemicals. Rosslau became a town in 1603."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "ro lau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ro",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7545,
+    "attempt": 7493,
+    "place_id": "gn-2950882",
+    "input": {
+      "place": {
+        "place_id": "gn-2950882",
+        "name": "Berching",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.10695,
+        "lon": 11.44138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berching",
+          "url": "https://en.wikipedia.org/wiki/Berching",
+          "text": "Berching (German pronunciation: [ˈbɛʁçɪŋ] ; Bavarian: Bacham) is a town in the district of Neumarkt in Bavaria, Germany. It is today one of only four towns in Germany that still have completely intact city walls, along with Rothenburg ob der Tauber, Nördlingen and Dinkelsbühl, all in Bavaria.\nBerching is a historical town with a fully preserved town wall and low streamlet. The first settlement was registered in 883, making it more than 1100 years old. Berching is located in the district of Neumarkt in Bavaria, Germany. It is situated on the Rhine-Main-Danube Canal, 20 km south of Neumarkt in der Oberpfalz. The old town or Altstadt is surrounded by a large wall interspaced with towers. One of the towers has been converted into a 6-story apartment. A small inn called Blaue Traube is located in the town center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "berching",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7546,
+    "attempt": 7494,
+    "place_id": "gn-3022242",
+    "input": {
+      "place": {
+        "place_id": "gn-3022242",
+        "name": "Crozon",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.24643,
+        "lon": -4.48993
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crozon",
+          "url": "https://en.wikipedia.org/wiki/Crozon",
+          "text": "Crozon (French pronunciation: [kʁɔzɔ̃], [kʁozɔ̃]; Breton: Kraozon [ˈkrɔːzõn], locally [ˈkraõn]) is a commune in the department of Finistère and the administrative region of Brittany, northwestern France. Besides the town of Crozon, the village of Morgat is part of the commune.\nCrozon is located on the Crozon Peninsula on the west coast of Finistère. It is bordered by the communes of Camaret-sur-Mer to the west, Roscanvel to the northwest, Lanvéoc to the north, Landévennec to the north-east and Telgruc-sur-Mer to the east. Crozon is the chef-lieu of the arrondissement of Châteaulin. Louis Jouvet, a French actor, was born in Crozon in 1887.\nCrozon harbours Île Longue, the base of the French strategic nuclear submarines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "crozon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7547,
+    "attempt": 7495,
+    "place_id": "gn-3062111",
+    "input": {
+      "place": {
+        "place_id": "gn-3062111",
+        "name": "Zábřeh",
+        "country": "Czechia",
+        "subdivision": "Olomouc Region",
+        "lat": 49.8826,
+        "lon": 16.87223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zábřeh",
+          "url": "https://en.wikipedia.org/wiki/Zábřeh",
+          "text": "Zábřeh  (Czech pronunciation: [ˈzaːbr̝ɛx]; German: Hohenstadt) is a town in Šumperk District in the Olomouc Region of the Czech Republic. It has about 13,000 inhabitants. The town is situated on the Moravská Sázava River, on the border between the Mohelnice Depression and Zábřeh Highlands.\nAmong the most important owners of the town in its feudal history were the Tunkl of Brníčko and Liechtenstein families. The historic character of the town was destroyed by a fire at the end of the 18th century. The town became an industrial centre in the 19th century, but today no large industrial companies are based here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "zabreh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7548,
+    "attempt": 7496,
+    "place_id": "gn-3064373",
+    "input": {
+      "place": {
+        "place_id": "gn-3064373",
+        "name": "Tachov",
+        "country": "Czechia",
+        "subdivision": "Plzeň Region",
+        "lat": 49.79528,
+        "lon": 12.63365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tachov",
+          "url": "https://en.wikipedia.org/wiki/Tachov",
+          "text": "Tachov (Czech pronunciation: [ˈtaxof]; German: Tachau) is a town in the Plzeň Region of the Czech Republic. It has about 14,000 inhabitants. The town is located on the Mže River in a hilly landscape.\nThe most notable noble owners of Tachov were the Windisch-Graetz family, which ruled the town from 1784. The historic town centre is well preserved and is protected as an urban monument zone. The main landmarks of Tachov include the riding hall in Tachov-Světce, protected as a national cultural monument, the medieval town walls, which are among the best-preserved wall systems in the country, and the Tachov Castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "tachov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7549,
+    "attempt": 7497,
+    "place_id": "gn-310044",
+    "input": {
+      "place": {
+        "place_id": "gn-310044",
+        "name": "Karacasu",
+        "country": "Türkiye",
+        "subdivision": "Aydın",
+        "lat": 37.72816,
+        "lon": 28.60569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karacasu",
+          "url": "https://en.wikipedia.org/wiki/Karacasu",
+          "text": "Karacasu is a municipality and district of Aydın Province, Turkey. Its area is 727 km2, and its population is 17,620 (2022). It is 87 km (54 mi) from the city of Aydın.\nFormerly known as \"Yenişehir\", Karacasu is reached by turning off the Aydın - Denizli road south-east at Kuyucak and following the Dandalaz River upstream into the hills. The road is windy and the surrounding countryside is planted with olives, citrus fruits and as you get higher up, pines. \nThe ruins of the ancient city of Aphrodisias are located within the boundaries of Karacasu, near the small town of Geyre. The area was first settled in the Bronze Age and reached its peak in the Roman and Byzantine eras as a centre of marble working. The ruins include a stadium, Temple of Aphrodite, theatre, agora and a bath with the heating system still visible. The city also contains the grave of archaeologist Kenan Erim of New York University who did so much to excavate the site. \nThe district is also notable for its rich emery mines. \nKaracasu itself is a small town of nearly 6,000 people, and is thought to be the site of the lost city of Gordiouteichos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "karacasu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7550,
+    "attempt": 7498,
+    "place_id": "gn-3101161",
+    "input": {
+      "place": {
+        "place_id": "gn-3101161",
+        "name": "Czarne",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 53.6842,
+        "lon": 16.93834
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Czarne",
+          "url": "https://en.wikipedia.org/wiki/Czarne",
+          "text": "Czarne [ˈt͡ʂarnɛ] (Kashubian: Czôrné; German: Hammerstein) is a town in Człuchów County of the Pomeranian Voivodeship in northern Poland. As of December 2022, the town has a population of 5,368.\nFounded in the Middle Ages and granted town rights in 1395, Czarne is a former royal town of Poland, which became most known as the place of a Polish victory over invading Swedes in 1627, and the location of German-operated prisoner-of-war camps for Allied soldiers of various nationalities during both world wars, where over 60,000 died during the Second World War. Since 1951, Czarne hosts a garrison of the Polish Army."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "czarne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7551,
+    "attempt": 7499,
+    "place_id": "gn-3109451",
+    "input": {
+      "place": {
+        "place_id": "gn-3109451",
+        "name": "Sant Vicenç de Castellet",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.66667,
+        "lon": 1.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Vicenç de Castellet",
+          "url": "https://en.wikipedia.org/wiki/Sant_Vicenç_de_Castellet",
+          "text": "Sant Vicenç de Castellet (Catalan: [sam biˈsɛnz ðə kəs.təˈʎɛt]) is a municipality in Bages county in Catalonia, Spain. It is situated near the confluence of the Llobregat river and the Cardener river. \nThe two railway stations, close to each other, serve the FGC line R5 between Barcelona and Manresa, and the Renfe line between Barcelona and Zaragoza via Manresa and Lleida, served by Rodalies lines R4 and R12. The C-1411 road links the municipality with Martorell and Manresa.\nThe ruins of both the Castellet castle and of a Roman tomb (third century, known locally as la Torre del Breny) are visible."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sant vicenc de castellet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vicenc",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "castellet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7552,
+    "attempt": 7500,
+    "place_id": "gn-3110813",
+    "input": {
+      "place": {
+        "place_id": "gn-3110813",
+        "name": "Sant Celoni",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.68921,
+        "lon": 2.48965
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Celoni",
+          "url": "https://en.wikipedia.org/wiki/Sant_Celoni",
+          "text": "Sant Celoni (Catalan pronunciation: [ˈsan səˈlɔni]) is a municipality in the comarca of the Vallès Oriental in Catalonia, Spain. It is situated in the valley of the Tordera river between the ranges of Montseny and Montnegre. The main part of the town is on the left bank of the river. The former municipalities of Montnegre and Olzinelles now form part of the municipality of sant Celoni, which has the largest area in the comarca. The municipality is served by the AP-7 Motorway and the C-251 road, as well as by a station on the Renfe railway line between Barcelona and Girona."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sant celoni",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "celoni",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
