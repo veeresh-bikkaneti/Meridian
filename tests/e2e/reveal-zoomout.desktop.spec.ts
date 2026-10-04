@@ -1,7 +1,6 @@
 import { test, expect, type Page } from "playwright/test";
 import {
   serveBuiltArtifact,
-  startGlobeRun,
   dismissTileOverlayIfPresent,
   readPhase,
   commitPin,
@@ -34,22 +33,34 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
-/**
- * Warmup: the shared startGlobeRun's 15 s map-mount timeout flakes on a cold
- * browser (first software-WebGL map init), failing whatever test runs first.
- * Navigate once and wait generously for the map so the real tests run warm.
- */
-test("warmup: first map mount", async ({ page }) => {
-  await page.goto("http://127.0.0.1:4123/Meridian/?idle-ms=3600000");
-  await page.getByRole("button", { name: "Play the globe" }).click();
-  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 120_000 });
-  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 60_000 });
-  await expect.poll(() => readPhase(page), { timeout: 60_000 }).toBe("aim");
-});
-
 const mapEl = (page: Page) => page.locator(".satellite-map");
 const readZoom = (page: Page): Promise<number> =>
   mapEl(page).getAttribute("data-zoom").then(Number);
+
+/**
+ * Local globe-run starter with generous timeouts. The shared startGlobeRun's
+ * 15 s map-mount timeout flakes on slow software WebGL; the steps are the
+ * same, only the patience differs.
+ */
+async function startGlobeRun(page: Page): Promise<void> {
+  await page.goto("http://127.0.0.1:4123/Meridian/?idle-ms=3600000");
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 120_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 120_000 });
+  await expect.poll(() => readPhase(page), { timeout: 60_000 }).toBe("aim");
+  const map = page.locator(".satellite-map");
+  await expect
+    .poll(
+      async () => {
+        const a = await map.getAttribute("data-zoom");
+        await page.waitForTimeout(800);
+        const b = await map.getAttribute("data-zoom");
+        return a === b ? a : null;
+      },
+      { timeout: 60_000 },
+    )
+    .not.toBeNull();
+}
 
 /**
  * Click "Zoom in" until data-zoom reaches target or stops increasing
