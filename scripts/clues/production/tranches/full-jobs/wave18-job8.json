@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 3570,
+    "attempt": 3541,
+    "place_id": "gn-2320829",
+    "input": {
+      "place": {
+        "place_id": "gn-2320829",
+        "name": "Ughelli",
+        "country": "Nigeria",
+        "subdivision": "Delta",
+        "lat": 5.48956,
+        "lon": 6.00407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ughelli",
+          "url": "https://en.wikipedia.org/wiki/Ughelli",
+          "text": "Ughelli is a town in Delta State, Nigeria, and one of the 24 kingdoms that make up the Urhobo Nation. It also serves as the headquarters of Ughelli North local government area of Delta State. The city is indigenous to the Urhobo ethnic nationals, but there is a mixture of several other tribes from the country and abroad. It is an industrial and agricultural spot of Delta State.\nUghelli is in a central location in Delta State and a major town for the Urhobo Tribe, also one of the oldest kingdom in Delta State tracing back to the 14th and 15th century. The city of Ughelli is ruled by a hereditary ruler, known as Ovie. The king, Oharisi III, lives in the Ovie Palace, situated at Otovwodo-Ughelli."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "ughelli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3571,
+    "attempt": 3542,
+    "place_id": "gn-2450173",
+    "input": {
+      "place": {
+        "place_id": "gn-2450173",
+        "name": "Taoudenni",
+        "country": "Mali",
+        "subdivision": "Taoudénit",
+        "lat": 22.67691,
+        "lon": -3.97922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taoudenni",
+          "url": "https://en.wikipedia.org/wiki/Taoudenni",
+          "text": "Taoudenni (also Taoudeni, Taoudénit, Taudeni, Berber languages: Tawdenni, Arabic: تودني) is a remote salt mining center in the desert region of northern Mali, 664 km (413 mi) north of Timbuktu. It is the capital of Taoudénit Region. The salt is dug by hand from the bed of an ancient salt lake, cut into slabs, and transported either by truck or by camel to Timbuktu. The camel caravans (azalai) from Taoudenni are some of the last that still operate in the Sahara Desert. In the late 1960s, during the regime of Moussa Traoré, a prison was built at the site and the inmates were forced to work in the mines. The prison was closed in 1988."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "taoudenni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3572,
+    "attempt": 3543,
+    "place_id": "gn-2518494",
+    "input": {
+      "place": {
+        "place_id": "gn-2518494",
+        "name": "El Ejido",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.77629,
+        "lon": -2.81456
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Ejido",
+          "url": "https://en.wikipedia.org/wiki/El_Ejido",
+          "text": "El Ejido (Spanish pronunciation: [el eˈxiðo]) is a municipality of Almería province, in the autonomous community of Andalusia, Spain. It is located 32 km from Almería with a surface area of 227 km2, and as reported in 2014 had 84,144 inhabitants. El Ejido is the centre of production for fruit and vegetables in the \"Comarca de El Poniente\". The work opportunities the city provides attract many foreign farmhands, who look for jobs mainly in the greenhouses there. Some greenhouses have begun using computer-controlled hydroponics systems, thus saving on labour, improving efficiency and the local economy.\nIn close proximity to the city along the coast line is situated Almerimar, a popular destination for tourism and relaxation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "el ejido",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ejido",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3573,
+    "attempt": 3544,
+    "place_id": "gn-2524155",
+    "input": {
+      "place": {
+        "place_id": "gn-2524155",
+        "name": "Milazzo",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.22008,
+        "lon": 15.24023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milazzo",
+          "url": "https://en.wikipedia.org/wiki/Milazzo",
+          "text": "Milazzo (Sicilian: Milazzu; Latin: Mylae; Ancient Greek: Μύλαι, romanized: Mýlai) is a municipality (comune) in the Metropolitan City of Messina, Sicily, southern Italy. It is the largest municipality in the Metropolitan City after Messina and Barcellona Pozzo di Gotto. The town has a population of around 31,500 inhabitants.\nFounded by the ancient Greeks around 716 BC and part of Magna Graecia and recognised as a Roman civitas since 36 BC, the city was also at the centre of history during the First Punic War (260 BC), and in July 1860 with the arrival of the red shirts in the battle of Milazzo during the Expedition of the Thousand, an event of the unification of Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "milazzo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3574,
+    "attempt": 3545,
+    "place_id": "gn-2638664",
+    "input": {
+      "place": {
+        "place_id": "gn-2638664",
+        "name": "Salisbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.06931,
+        "lon": -1.79569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salisbury",
+          "url": "https://en.wikipedia.org/wiki/Salisbury",
+          "text": "Salisbury (  SAWLZ-bər-ee, locally  SAWZ-bər-ee) is a cathedral city and civil parish in Wiltshire, England with a population of 41,820, at the confluence of the rivers Avon, Nadder and Bourne. The city is approximately 20 miles (30 kilometres) from Southampton and 30 miles (50 kilometres) from Bath.\nSalisbury is in the southeast of Wiltshire, near the edge of Salisbury Plain. An ancient cathedral was north of the present city at Old Sarum. A new cathedral was built near the meeting of the rivers and a settlement grew up around it, which received a city charter in 1227 as New Sarum. This continued to be its official name until 2009, when Salisbury City Council was established. Salisbury railway station is an interchange between the West of England Line and the Wessex Main Line.\nStonehenge, a UNESCO World Heritage Site, is 8 miles (13 kilometres) northwest of Salisbury."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "salisbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3575,
+    "attempt": 3546,
+    "place_id": "gn-2650628",
+    "input": {
+      "place": {
+        "place_id": "gn-2650628",
+        "name": "Durham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.77676,
+        "lon": -1.57566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Durham, England",
+          "url": "https://en.wikipedia.org/wiki/Durham,_England",
+          "text": "Durham ( DURR-əm, locally  ) is a cathedral city and civil parish in County Durham, England. It is the county town and contains the headquarters of Durham County Council, the unitary authority which governs the district of County Durham. The built-up area had a population of 50,510 at the 2021 Census.\nThe city was built on a meander of the River Wear, which surrounds the centre on three sides and creates a narrow neck on the fourth. The surrounding land is hilly, except along the Wear's flood plain to the north and south-east.\nDurham was founded in 995 by Anglo-Saxon monks seeking a place safe from Viking raids to house the relics of St Cuthbert. The church the monks built lasted only a century, as it was replaced by the present Durham Cathedral after the Norman Conquest; together with Durham Castle, it is a UNESCO World Heritage Site. From the 1070s until 1836, the city was part of the County Palatine of Durham, a semi-independent jurisdiction ruled by the prince bishops of Durham which acted as a geopolitical buffer between the kingdoms of England and Scotland. In 1346, the Battle of Neville's Cross was fought half a mile west of the city, resulting in an English victory. In 1650, the cathedral was used to house Scottish prisoners after their defeat at the Battle of Dunbar. During the Industrial Revolution, the Durham coalfield was heavily exploited, with dozens of collieries operating around the city and in nearby villages. Although these coal pits have now closed, the annual Durham Miners' Gala continues and is a major event for the city and region. Historically, Durham was also known for the manufacture of hosiery, carpets, and mustard.\nThe city is the home of Durham University, which was founded in 1832 and therefore has a claim to be the third-oldest university in England. The university is a significant employer in the region, alongside the local council and national government at the land registry and passport office. The University Hospital of North Durham and HM Prison Durham are also located close to the city centre. The city also has significant tourism and hospitality sectors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 358
+    },
+    "banned_terms": [
+      {
+        "term": "durham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3576,
+    "attempt": 3547,
+    "place_id": "gn-2653305",
+    "input": {
+      "place": {
+        "place_id": "gn-2653305",
+        "name": "Chatham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.37891,
+        "lon": 0.52786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chatham, Kent",
+          "url": "https://en.wikipedia.org/wiki/Chatham,_Kent",
+          "text": "Chatham ( CHAT-əm) is a town within the Medway unitary authority in the ceremonial county of Kent, England. It forms a conurbation with the neighbouring towns of Gillingham, Rochester, Strood and Rainham, and had a population of 80,596 in 2020.\nThe town developed around Chatham Dockyard, established as a Royal Naval Dockyard in 1567, along with barracks for the British Army and the Royal Navy. A chain of defensive fortifications, including Fort Amherst (begun 1756) and expanded during the Napoleonic Wars, was constructed to protect the dockyard from land-based attack. The Corps of Royal Engineers remains based at Brompton Barracks.\nThe dockyard closed on 31 March 1984 after more than four centuries of continuous operation. Part of the site was subsequently developed as a commercial port, other parts redeveloped for business and residential use, and 84 acres preserved as the Chatham Historic Dockyard museum, the most complete dockyard of the Age of Sail in the world. Its exhibits include the warships HMS Gannet, HMS Cavalier, and the submarine HMS Ocelot.\nChatham is the administrative headquarters of Medway Council and the principal retail centre of the Medway area. Chatham railway station and Chatham Waterfront bus station serve as the main transport interchanges for the wider conurbation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "chatham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3577,
+    "attempt": 3548,
+    "place_id": "gn-2654089",
+    "input": {
+      "place": {
+        "place_id": "gn-2654089",
+        "name": "Caerphilly",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.57452,
+        "lon": -3.218
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caerphilly",
+          "url": "https://en.wikipedia.org/wiki/Caerphilly",
+          "text": "Caerphilly (, ; Welsh: Caerffili, Welsh pronunciation: [ˌkairˈfɪli] ) is a town and community in Wales. It is situated at the southern end of the Rhymney Valley and separated from the Cardiff suburbs of Lisvane and Rhiwbina by Caerphilly Mountain.\nIt is 7 miles (11 km) north of Cardiff and 9.5 miles (15.3 km) west of Newport. It is the largest town in Caerphilly County Borough and lies within the historic borders of Glamorgan, on the border with Monmouthshire.  At the 2011 Census, the town had a population of 41,402 As of the 2021 census, the population of the wider Caerphilly local authority area stands at: 176,000 decreasing from the 2011 censes report of 178,000. A fall of 1.6%"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "caerphilly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3578,
+    "attempt": 3549,
+    "place_id": "gn-2656955",
+    "input": {
+      "place": {
+        "place_id": "gn-2656955",
+        "name": "Ashford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.14648,
+        "lon": 0.87376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashford, Kent",
+          "url": "https://en.wikipedia.org/wiki/Ashford,_Kent",
+          "text": "Ashford is a town in the Ashford district, in the county of Kent, England. It lies on the River Great Stour at the southern or scarp edge of the North Downs, about 61 miles (98 km) by road southeast of central London and 15 miles (24 km) northwest of Folkestone by road. At the 2021 census, it had a population of 83,213. The name comes from the Old English æscet, indicating a ford near a clump of ash trees. It has been a market town since the Middle Ages, and a regular market continues to be held.\nSt Mary's Parish Church has been a local landmark since the 13th century, and expanded in the 15th. Today, the church functions in a dual role as a centre for worship and entertainment.\nThe arrival of the railways from the mid-19th century onwards, created a significant source of employment contributing to the town's growth as a rail hub at the centre of five distinct railway lines. The high speed rail line (HS1) between London and the Channel Tunnel passes through Ashford's International Railway Station thus linking the town to Paris and other European destinations. The M20 motorway connects Ashford to the Channel Tunnel, the national motorway network (via the M25 Motorway) and to London (via the A20).\nAshford has been marked out for growth in several Government plans from the 1960s onwards. In the 1970s, the construction of a controversial four lane ring road together with the multi-storey Charter House building led to the destruction of significant parts of the old town although some areas were spared and preserved. Other changes in the last 40 years include the construction of the County Square shopping centre, the redevelopment of the Templer Barracks at Repton Park, the Finberry estate to the southeast, and the award-winning Ashford Designer Outlet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "ashford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3579,
+    "attempt": 3550,
+    "place_id": "gn-2875115",
+    "input": {
+      "place": {
+        "place_id": "gn-2875115",
+        "name": "Lüneburg",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.25122,
+        "lon": 10.41548
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lüneburg",
+          "url": "https://en.wikipedia.org/wiki/Lüneburg",
+          "text": "Lüneburg, officially the Hanseatic City of Lüneburg and also known in English as Lunenburg, is a town in the German state of Lower Saxony. It is located about 50 km (31 mi) southeast of another Hanseatic city, Hamburg, and belongs to that city's wider metropolitan region. The capital of the district which bears its name, it is home to roughly 77,000 people. Lüneburg's urban area, which includes the surrounding communities of Adendorf, Bardowick, Barendorf and Reppenstedt, has a population of around 103,000. Lüneburg has been allowed to use the title Hansestadt ('Hanseatic Town') in its name since 2007, in recognition of its membership in the former Hanseatic League. Lüneburg is also home to Leuphana University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "luneburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3580,
+    "attempt": 3551,
+    "place_id": "gn-3042286",
+    "input": {
+      "place": {
+        "place_id": "gn-3042286",
+        "name": "Saint Sampson",
+        "country": "Guernsey",
+        "subdivision": "St Sampson",
+        "lat": 49.48389,
+        "lon": -2.52333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint Sampson, Guernsey",
+          "url": "https://en.wikipedia.org/wiki/Saint_Sampson,_Guernsey",
+          "text": "St Sampson (Guernésiais: Saint Samsaon) is a parish of Guernsey, an island in the Bailiwick of Guernsey, directly north of St Peter Port. It is on the north-west and north-east coasts of the island and is split into two sections, intersected by Vale.\nThe parish has a population of 8,966. Its residents are known as roînes (the Guernésiais for frogs).\nWhat is currently the northern boundary of the parish originally ran along the south coast of Le Braye du Valle, a tidal channel that made the northern extremity of Guernsey, Le Clos du Valle, a tidal island. La Braye du Valle was drained and reclaimed in 1806 by the British Government as a defence measure. The eastern end of the former channel became the town and harbour (from 1820) of St. Sampson's, now the second biggest port in Guernsey. The western end of La Braye is now Le Grand Havre. The roadway called The Bridge across the end of the harbour at St. Sampson's recalls the bridge that formerly linked the two parts of Guernsey at high tide."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "saint sampson",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sampson",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3581,
+    "attempt": 3552,
+    "place_id": "gn-3077882",
+    "input": {
+      "place": {
+        "place_id": "gn-3077882",
+        "name": "Český Těšín",
+        "country": "Czechia",
+        "subdivision": "Moravian-Silesian Region",
+        "lat": 49.74613,
+        "lon": 18.62613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Český Těšín",
+          "url": "https://en.wikipedia.org/wiki/Český_Těšín",
+          "text": "Český Těšín (Czech pronunciation: [ˈtʃɛskiː ˈcɛʃiːn] ; Polish: Czeski Cieszyn; German: Tschechisch-Teschen) is a town in Karviná District in the Moravian-Silesian Region of the Czech Republic. It has about 23,000 inhabitants.\nČeský Těšín lies on the west bank of the Olza River, in the heart of the historical region of Cieszyn Silesia. Until the 1920 division of the region between Poland and Czechoslovakia it was just a western suburb of the town of Teschen, which after the division fell to Poland as Cieszyn. The combined population of the Czech and Polish parts of the town is around 55,000.\nThe historic centre in Český Těšín is well preserved and is protected as an urban monument zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "cesky tesin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cesky",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tesin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3582,
+    "attempt": 3553,
+    "place_id": "gn-3110983",
+    "input": {
+      "place": {
+        "place_id": "gn-3110983",
+        "name": "Salt",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.97489,
+        "lon": 2.79281
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salt, Spain",
+          "url": "https://en.wikipedia.org/wiki/Salt,_Spain",
+          "text": "Salt (Catalan pronunciation: [ˈsal]) is a municipality in the comarca of the Gironès in Catalonia. It is situated on the right bank of the Ter next to Girona, with which it was merged from 1974 to 1984. The A-7 autopista and N-141 road pass through the municipality.\nFrom 1895, Salt was the temporary Girona terminus of the narrow gauge Olot–Girona railway, until the short section to Girona railway station was opened in 1898. Initially the line ran only as far as Amer, but it was extended to Les Planes d'Hostoles in 1900, Sant Feliu de Pallerols in 1902 and Olot in 1911. The line closed in 1969 and has since been converted into a greenway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "salt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3583,
+    "attempt": 3554,
+    "place_id": "gn-3166808",
+    "input": {
+      "place": {
+        "place_id": "gn-3166808",
+        "name": "Segrate",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.49185,
+        "lon": 9.29812
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Segrate",
+          "url": "https://en.wikipedia.org/wiki/Segrate",
+          "text": "Segrate (Milanese: Segraa [seˈɡraː]) is a town and comune (municipality) located in the Metropolitan City of Milan in the Lombardy region of Northern Italy.\nAn eastern suburb of Milan, in its area lies the airport of Milan Linate, the lake Idroscalo, the fair center of Novegro and the famous residential area Milano Due. Europark Idroscalo Milano (originally Lunapark Milano) is a popular amusement park that has been in existence since 1965.\nAlthough it is a small town, Segrate hosts large structures such as the CILEA Interuniversity Consortium, among the most advanced supercomputing centers in Europe, and the San Raffaele Hospital. Segrate received the honorary title of city with a presidential decree on 23 June 1989."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "segrate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3584,
+    "attempt": 3555,
+    "place_id": "gn-330764",
+    "input": {
+      "place": {
+        "place_id": "gn-330764",
+        "name": "Metu",
+        "country": "Ethiopia",
+        "subdivision": "Oromiya",
+        "lat": 8.3,
+        "lon": 35.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Metu, Ethiopia",
+          "url": "https://en.wikipedia.org/wiki/Metu,_Ethiopia",
+          "text": "Metu (Oromo: Mattuu) is a market town and separate woreda in south-western Ethiopia. Located in the Illubabor Zone of Oromia along the Sor River, this town has a latitude and longitude of 8°18′N 35°35′E and an altitude of 1605 meters. Metu was the capital of the former Illubabor Province from 1978 until the adoption of the new constitution in 1995.\nMetu has been an important market of the coffee trade, with several foreigners residing in the town as early as the 1930s to buy the crops from local farmers. At this early date, the town was connected by telephone to Gore and Addis Ababa. The town's source of electricity is the nearby Sor Hydroelectric Station.  The city also has a high school and hospital.\nMetu is known for its local waterfalls, the best known being the Sor Falls and the surrounding forest and wildlife."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "metu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3585,
+    "attempt": 3556,
+    "place_id": "gn-3448257",
+    "input": {
+      "place": {
+        "place_id": "gn-3448257",
+        "name": "São Sebastião",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.76,
+        "lon": -45.40972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Sebastião, São Paulo",
+          "url": "https://en.wikipedia.org/wiki/São_Sebastião,_São_Paulo",
+          "text": "São Sebastião (Portuguese for Saint Sebastian) is a Brazilian municipality, located on the southeast coast of Brazil, in the state of São Paulo. The population in 2020 was 90,328, its density was 185/km2 and the area is 403 km2. The Tropic of Capricorn lies 25 km north. The municipality existed since 1636 and formed a part of the old hereditary captaincy of Santo Amaro.\nThe archipelago municipality of Ilhabela is located on the east coast of the city; the largest island of the archipelago is also called São Sebastião. Between the city and the island, there is the São Sebastião channel with 30 kilometres in length, and variable width (2 km being the shortest crossing). There is an oil terminal at the channel, owned by Transpetro, a subsidiary of Petrobrás.\nThe city is famous for its beaches, which makes it a popular tourism destination, especially for people from the state of São Paulo. Near the boundary with Bertioga, there is a small Guarani village managed by FUNAI. In 2024, it was elected by Time Out magazine as the third most underrated travel destination in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "sao sebastiao",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sebastiao",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3586,
+    "attempt": 3557,
+    "place_id": "gn-3461022",
+    "input": {
+      "place": {
+        "place_id": "gn-3461022",
+        "name": "Irará",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -12.05,
+        "lon": -38.76667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irará",
+          "url": "https://en.wikipedia.org/wiki/Irará",
+          "text": "Irará is a city in Bahia, Brazil. The municipality is the hometown of former professional footballer Dida, of A.C. Milan and Brazil national football team fame and musician Tom Zé.\nUntil the 17th century, the region was inhabited by the \nIrará was settled by the Paiaiá, a subgroup of the Quiriris peoples. The land was annexed by the Portuguese in the 16th century, and became part of the vast land holdings of Garcia d'Ávila (1528-1609) in the Captaincy of Bahia. The Jesuits explored the area from the north via their settlement in present-day Água Fria. Bandeirantes entered the city to both hunt for precious stones in the Serra de Irará and to enslave indigenous people. Two structures remain from the bandeirantes, a church in the Vila de Bento Simões and a chapel in Caroba.\nIn mid-1717, the first explorations of the lands in the center of the current municipality were registered, where \nAntônio Homem da Fonseca Correia was an early permanent Portuguese settler to the area. He built a chapel dedicated to Our Lady of the Conception in 1717, and left the land to his son. The farmhouse of the family gave rise to the village of Irará, which was also a site of a Paiaiá settlement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "irara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3587,
+    "attempt": 3558,
+    "place_id": "gn-3467530",
+    "input": {
+      "place": {
+        "place_id": "gn-3467530",
+        "name": "Canela",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.35622,
+        "lon": -50.81357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canela, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/Canela,_Rio_Grande_do_Sul",
+          "text": "Canela (Portuguese pronunciation: [kɐˈnɛlɐ]), meaning Cinnamon in Portuguese, is a town located in the Serra Gaúcha of Rio Grande do Sul, Brazil. Both Canela and neighboring Gramado are important tourist locations and they both draw many visitors each year.  Ecotourism is very popular in the area and there are many opportunities for hiking, rock climbing, horseback riding and river rafting.\nOne of the most important tourist destinations in Rio Grande do Sul, the city of Canela had its first urban center formed in 1903, when Colonel João Ferreira Corrêa da Silva settled there. On December 28, 1944, State Law No. 717 created the municipality, which was officially established four days later on January 1, 1945.\nIt is located at a latitude of 29º21'56\" south and a longitude of 50º48'56\" west, at an altitude of 837 meters. Its estimated population in 2018 was 44,489 inhabitants, according to the Brazilian Institute of Geography and Statistics. It has an area of 252.91 km², representing 0.0947 percent of the territory of Rio Grande do Sul."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "canela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3588,
+    "attempt": 3559,
+    "place_id": "gn-3471487",
+    "input": {
+      "place": {
+        "place_id": "gn-3471487",
+        "name": "Armação dos Búzios",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.74694,
+        "lon": -41.88167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Armação dos Búzios",
+          "url": "https://en.wikipedia.org/wiki/Armação_dos_Búzios",
+          "text": "Armação dos Búzios (Portuguese pronunciation: [aʁmɐˈsɐ̃w duz ˈbuzjus]), often referred to as just Búzios, is a municipality located in the state of Rio de Janeiro, Brazil. It is 173 km east of the city of Rio de Janeiro, and 24 km southwest of Cabo Frio. By 2020, its population consisted of 34,477 inhabitants and its area of 71 km2. Today, Búzios is a worldwide tourist site.\nArmação dos Búzios remained almost unknown until 1964, when the French actress Brigitte Bardot visited the small village. Since then, in Búzios became popular with the Carioca's high society, who wanted to escape from the city life of Rio de Janeiro and enjoy over 23 beaches the peninsula offers. The town eventually grew to be an international tourist destination.\nThe peninsula's west coast beaches offer calm, clear waters while the east coast ones, facing the open sea, are more wild and draw surfers and water sports enthusiasts. Azeda, Ferradura, João Fernandes and Armação are amongst the most popular beaches in town. At night, Rua das Pedras, Armação dos Búzios' main street, offers its visitors an active nightlife and a great variety of shopping and restaurants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "armacao dos buzios",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "armacao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buzios",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3589,
+    "attempt": 3560,
+    "place_id": "gn-3515042",
+    "input": {
+      "place": {
+        "place_id": "gn-3515042",
+        "name": "Tultitlán de Mariano Escobedo",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.64655,
+        "lon": -99.16787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tultitlán de Mariano Escobedo",
+          "url": "https://en.wikipedia.org/wiki/Tultitlán_de_Mariano_Escobedo",
+          "text": "Tultitlán de Mariano Escobedo is the fourth largest town in and municipal seat of the municipality of Tultitlán located in the northeastern part of the State of México in Mexico.  It lies adjacent to the northern tip of the Federal District (Distrito Federal) and is part of the Greater Mexico City urban area. Both the city and the municipality are interchangeably known as San Antonio Tultitlán or simply Tultitlán, a name which comes from Náhuatl meaning \"among the tule plants\". \"de Mariano Escobedo\" was added to the city's name in 1902 in honor of the general who fought in the Mexican–American War and for the liberals during the period of La Reforma with Benito Juárez."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "tultitlan de mariano escobedo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tultitlan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mariano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "escobedo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

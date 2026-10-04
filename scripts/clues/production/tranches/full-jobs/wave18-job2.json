@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 3448,
+    "attempt": 3421,
+    "place_id": "gn-1264976",
+    "input": {
+      "place": {
+        "place_id": "gn-1264976",
+        "name": "Leh",
+        "country": "India",
+        "subdivision": "Ladakh",
+        "lat": 34.16504,
+        "lon": 77.58402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leh",
+          "url": "https://en.wikipedia.org/wiki/Leh",
+          "text": "Leh (Ladakhi: སླེ་) is a city in Indian-administered Ladakh in the disputed Kashmir region. It is the largest city and the joint capital of Ladakh. Leh, located in the Leh district, has been the capital of Ladakh since the medieval period and was historically capital of the Kingdom of Ladakh. \nThe seat of the kingdom, Leh Palace, the former residence of the royal family of Ladakh, was built in the 17th-century and is frequently contrasted with the Potala Palace in Tibet. Leh is at an altitude of 3,524 m (11,562 ft), and is connected via National Highway 1 to Srinagar in the southwest and to Manali in the south via the Leh-Manali Highway (part of National Highway 3)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "leh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3449,
+    "attempt": 3422,
+    "place_id": "gn-1538311",
+    "input": {
+      "place": {
+        "place_id": "gn-1538311",
+        "name": "Buston",
+        "country": "Tajikistan",
+        "subdivision": "Sughd",
+        "lat": 40.23417,
+        "lon": 69.69481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buston, Sughd",
+          "url": "https://en.wikipedia.org/wiki/Buston,_Sughd",
+          "text": "Buston (Tajik: Бӯстон; Persian: بوستان; Russian: Бустон, formerly Chkalovsk or Chkalov) is a town in northern Tajikistan. It is located in Sughd Region, between the cities of Khujand and Ghafurov. Buston is a city of regional subordination, and is not part of a district.\nThe population of Buston in 2020 is estimated at 34,000 for the city proper and 36,900 for the city with the outlying communities. The city of Guliston also covers the town Palos.\nAs a result of its involvement in the processing of uranium ore mined nearby, Chkalovsk was a closed city until the collapse of the USSR. The first Soviet uranium processing plant, Leninabad Mining and Chemical Combine was founded in Chkalovsk during 1940s.\nThe Presidential National Guard of Tajikistan formed one of its new units here.\nOn February 1, 2016, the Government of Tajikistan decided to rename Chkalovsk into Buston (Бӯстон). According to TASS news agency, it was the last town in Tajikistan with a Russian name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "buston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3450,
+    "attempt": 3423,
+    "place_id": "gn-1685880",
+    "input": {
+      "place": {
+        "place_id": "gn-1685880",
+        "name": "Solana",
+        "country": "Philippines",
+        "subdivision": "Cagayan Valley",
+        "lat": 17.6528,
+        "lon": 121.691
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solana, Cagayan",
+          "url": "https://en.wikipedia.org/wiki/Solana,_Cagayan",
+          "text": "Solana, officially the Municipality of Solana (Ibanag: Ili nat Solana; Itawit: Ili/Babalay yo Solana; Ilocano: Ili ti Solana; Tagalog: Bayan ng Solana), is a municipality in the province of Cagayan, Philippines. According to the 2024 census, it has a population of 89,840 people.\nThe Awidon Mesa Formationa Paleolithic Sites of the municipality, along with the Callao Limestone Formation Paleolithic Sites in neighboring Penablanca, are included in the tentative list of the Philippines for future UNESCO World Heritage Site inscription under the name of Paleolithic Archaeological Sites in Cagayan Valley. The Awidon Mesa Formation has at least 68 Paleolithic sites in which stone tools and fossils of extinct animals that include stegodons, elephants, rhinoceros, and large tortoise were discovered."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "solana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3451,
+    "attempt": 3424,
+    "place_id": "gn-194160",
+    "input": {
+      "place": {
+        "place_id": "gn-194160",
+        "name": "Kapenguria",
+        "country": "Kenya",
+        "subdivision": "West Pokot County",
+        "lat": 1.23889,
+        "lon": 35.11194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kapenguria",
+          "url": "https://en.wikipedia.org/wiki/Kapenguria",
+          "text": "Kapenguria is a town in Kenya and the capital of West Pokot County. It lies north-east of Kitale on the A1 road along the Kitale–Lodwar corridor in north-western Kenya. In the 2019 Kenya Population and Housing Census, Kapenguria urban centre had a population of 40,751. Kapenguria also serves as the administrative and commercial hub of the wider municipality established under the Urban Areas and Cities Act.\nThe town occupies an important place in Kenya's political history because it is associated with the detention and trial of the Kapenguria Six, among them Jomo Kenyatta, during the colonial period. It is also one of the principal service centres in the county, concentrating county government offices, commerce, education, and health services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "kapenguria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3452,
+    "attempt": 3425,
+    "place_id": "gn-2157698",
+    "input": {
+      "place": {
+        "place_id": "gn-2157698",
+        "name": "Mildura",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -34.18551,
+        "lon": 142.16251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mildura",
+          "url": "https://en.wikipedia.org/wiki/Mildura",
+          "text": "Mildura ( mill-DEW-rə) is a regional city in north-west Victoria, Australia. Located on the Victorian side of the Murray River, Mildura had a population of 35,652 at the 2021 census. When nearby Wentworth, Irymple, Nichols Point, Merbein and Red Cliffs are included, the combined urban area had a population of 58,914 in 2021, having grown marginally at an average annual rate of 1.3% year-on-year over the preceding five years.\nMildura is the largest settlement in the Sunraysia region, where around 90% of Australia's table grape exports are grown. Likewise, it is a major horticultural centre notable for its overall (table, sultana and wine) grape production, supplying about 80% of Victoria's grapes. Many wineries also source grapes from Mildura. It is very close to the New South Wales border, the Murray River, from which it draws an abundant supply of irrigation water. It is known as Australia's first 'irrigation colony' and is also referred to as an 'oasis in the desert'.\nThe city's central business district is located just a short distance from the banks of the Murray. Langtree Avenue is the main shopping and dining precinct in Mildura, with the middle section of the street a pedestrian mall. The other major retail precinct is along Fifteenth Street in the Mildura South area, where a mid-sized undercover shopping mall and several big box stores are located. The city's name was taken from the Mildura homestead, an early sheep station which covered most of the area. The urban area of Mildura is surrounded by irrigated horticulture, where the original grape and citrus blocks were located with water irrigated from the Murray River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "mildura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3453,
+    "attempt": 3426,
+    "place_id": "gn-2361342",
+    "input": {
+      "place": {
+        "place_id": "gn-2361342",
+        "name": "Diébougou",
+        "country": "Burkina Faso",
+        "subdivision": "Sud-Ouest",
+        "lat": 10.96209,
+        "lon": -3.24967
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diébougou",
+          "url": "https://en.wikipedia.org/wiki/Diébougou",
+          "text": "Diébougou is the capital of the Diebougou Department, situated 136 kilometres (85 mi) south-east of Bobo-Dioulasso on the main highway to Ghana. It is located 74 kilometres north of Gaoua and 133 km west of Leo, Burkina Faso and is the capital of Bougouriba Province.\nThe town was captured by the French Colonial forces in May 1897; they established a military base there.\nThe town is an important market town and has a range of crafts, including pottery and basket work. There are caves near the town known to locals as les grottes. They were built under the French colonial command around 1900 using forced labour and form a network of tunnels to the west of the town.\nThere is also a swamp with crocodiles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "diebougou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3454,
+    "attempt": 3427,
+    "place_id": "gn-2517595",
+    "input": {
+      "place": {
+        "place_id": "gn-2517595",
+        "name": "Fuengirola",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.53998,
+        "lon": -4.62473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fuengirola",
+          "url": "https://en.wikipedia.org/wiki/Fuengirola",
+          "text": "Fuengirola (pronounced [fweŋxiˈɾola]) is a city on the Costa del Sol in the province of Málaga in the autonomous community of Andalusia in southern Spain. It is located on the central coast of the province and integrated into the region of the Costa del Sol and the Commonwealth of Municipalities of the Costa del Sol Occidental.\nIt is a major tourist resort, with  more than 8 km (5 mi) of beaches and a medieval Moorish fortress. In common with much of this coast, it has been the subject of considerable urban development.\nThe area has a subtropical Mediterranean climate, with annual average temperatures of 18 °C (65 °F) and average summer temperatures of over 30 °C (86 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "fuengirola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3455,
+    "attempt": 3428,
+    "place_id": "gn-2637329",
+    "input": {
+      "place": {
+        "place_id": "gn-2637329",
+        "name": "South Shields",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.99859,
+        "lon": -1.4323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Shields",
+          "url": "https://en.wikipedia.org/wiki/South_Shields",
+          "text": "South Shields ( SHEELZ) is a coastal port town in South Tyneside, Tyne and Wear, England; it lies on the south bank of the mouth of the River Tyne. The town was known in Roman times as Arbeia and as Caer Urfa by the Early Middle Ages. It is the fourth largest settlement in Tyne and Wear, after Newcastle upon Tyne, Sunderland and Gateshead; in 2021, it had a population of 75,337.\nSouth Shields was historically a part of County Durham, but in 1974 it became a part of the newly formed ceremonial county Tyne and Wear.\nSouth Shields is south of North Shields and Tynemouth across the River Tyne; and east of Newcastle upon Tyne and Jarrow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "south shields",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "shields",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3456,
+    "attempt": 3429,
+    "place_id": "gn-2653086",
+    "input": {
+      "place": {
+        "place_id": "gn-2653086",
+        "name": "Chorley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.65,
+        "lon": -2.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chorley",
+          "url": "https://en.wikipedia.org/wiki/Chorley",
+          "text": "Chorley is a town and the administrative centre of the wider Borough of Chorley in Lancashire, England, 8 miles (13 km) north of Wigan, 11 miles (18 km) south west of Blackburn, 11 miles (18 km) north west of Bolton, 12 miles (19 km) south of Preston and 20 miles (32 km) north west of Manchester. The town's wealth came principally from the cotton industry. In 2020 it had a population of 36,682.\nIn the 1970s, the skyline was dominated by factory chimneys, but most have now been demolished: remnants of the industrial past include Morrisons chimney and other mill buildings, and the streets of terraced houses for mill workers. Chorley is the home of the Chorley cake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "chorley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3457,
+    "attempt": 3430,
+    "place_id": "gn-2658564",
+    "input": {
+      "place": {
+        "place_id": "gn-2658564",
+        "name": "Solothurn",
+        "country": "Switzerland",
+        "subdivision": "Solothurn",
+        "lat": 47.20791,
+        "lon": 7.53714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solothurn",
+          "url": "https://en.wikipedia.org/wiki/Solothurn",
+          "text": "Solothurn ( SOH-lə-toorn, ZOH-; Swiss Standard German: [ˈzoːlotʊrn] ; French: Soleure [sɔlœʁ]; Italian: Soletta [soˈletta]; Romansh: ) is a town, a municipality, and the capital of the canton of Solothurn in Switzerland. It is located in the north-west of Switzerland on the banks of the Aare and on the foot of the Weissenstein Jura mountains.\nThe city is the only municipality of the district of the same name.\nThe city got its name from Salodurum, a Roman-era settlement. From 1530 to 1792 it was the seat of the French ambassador to Switzerland. The pedestrian-only old town was built between 1530 and 1792 and shows an impressive array of Baroque architecture, combining Italian Grandezza, French style, and Swiss ideas. The city has eighteen structures listed as heritage sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "solothurn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3458,
+    "attempt": 3431,
+    "place_id": "gn-2659601",
+    "input": {
+      "place": {
+        "place_id": "gn-2659601",
+        "name": "Montreux",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.43301,
+        "lon": 6.91143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montreux",
+          "url": "https://en.wikipedia.org/wiki/Montreux",
+          "text": "Montreux (UK: , US: ; French: [mɔ̃tʁø] ; Arpitan: Montrolx) is a Swiss municipality and town on the shoreline of Lake Geneva at the foot of the Alps. It belongs to the Riviera-Pays-d'Enhaut district in the canton of Vaud, having a population of nearly 27,000 with about 85,000 in the Vevey-Montreux agglomeration as of 2019.\nLocated in the centre of a region named the Vaud or Swiss Riviera (French: Riviera vaudoise), Montreux has been an important tourist destination since the 19th century due to its mild climate. The region includes numerous Belle Époque palaces and hotels near the shores of Lake Geneva. Montreux railway station is a stop on the Simplon Railway and is a mountain railway hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "montreux",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3459,
+    "attempt": 3432,
+    "place_id": "gn-2791343",
+    "input": {
+      "place": {
+        "place_id": "gn-2791343",
+        "name": "Menen",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.79722,
+        "lon": 3.12245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menen",
+          "url": "https://en.wikipedia.org/wiki/Menen",
+          "text": "Menen (Dutch pronunciation: [ˈmeːnə(n)] ; French: Menin [mənɛ̃]; West Flemish: Mêenn [ˈmeːnən] or Mêende [ˈmeːndə]) is a city and municipality located in the Belgian province of West Flanders. The municipality comprises the city of Menen proper and the towns of Lauwe and Rekkem. The city is situated on the French/Belgian border. On January 1, 2006, Menen had a total population of 32,413. The total area is 33.07 km2 which gives a population density of 980 inhabitants per km2.\nThe city of Menen gives its name to the Menin Gate in Ypres, which is a monument to those killed in World War I. The gate is so called as the road from that gate is the road to Menen.\nThe town hall of Menen, with its large belfry, was inscribed on the UNESCO World Heritage List in 1999 as part of the Belfries of Belgium and France site, because of its civic importance and architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "menen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3460,
+    "attempt": 3433,
+    "place_id": "gn-2898304",
+    "input": {
+      "place": {
+        "place_id": "gn-2898304",
+        "name": "Hoyerswerda",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.43787,
+        "lon": 14.23549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoyerswerda",
+          "url": "https://en.wikipedia.org/wiki/Hoyerswerda",
+          "text": "Hoyerswerda (German: [hɔʏɐsˈvɛʁda] ) or Wojerecy (Upper Sorbian: [ˈwɔjɛʁɛtsɨ] ) is a major district town in the district of Bautzen in the German state of Saxony. It is located in the Sorbian settlement area of Upper Lusatia, in which the Upper Sorbian language is spoken in addition to German.\nHoyerswerda is divided into the Old Town and the New Town, surrounded by village areas. The Old Town is the historical centre with many old houses and sight-seeing attractions, the New Town is more modern and varicoloured. Prior to the renovation of the town, prefabricated apartment blocks predominated in this area.\nThe town has many lakes, marshes and waterways in its surrounding area, because of its situation in Lusatia. This brings many tourists to spend their holidays there. It is attractive for cyclists and inline skaters who use recently created paths meandering among the lakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "hoyerswerda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3461,
+    "attempt": 3434,
+    "place_id": "gn-2902768",
+    "input": {
+      "place": {
+        "place_id": "gn-2902768",
+        "name": "Hof",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.31297,
+        "lon": 11.91261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hof, Bavaria",
+          "url": "https://en.wikipedia.org/wiki/Hof,_Bavaria",
+          "text": "Hof (German pronunciation: [hoːf] ) is a town on the banks of the Saale river in the northeastern corner of the Upper Franconia region of the German state of Bavaria. The town lies close to the Czech border and is in the forested Fichtel Mountains and Franconian Forest upland regions.\nThe town has 47,296 inhabitants, the surrounding district an additional 95,000.\nThe town of Hof is enclosed by, but does not belong to the Bavarian district of Hof; it is nonetheless the district's administrative seat. The town's most important work of art, the Hofer altar, dates from about 1465 and is exhibited in the Alte Pinakothek in Munich today. The Heidenreich organ in the parish church of St. Michaelis, completed in 1834, is considered one of Bavaria's finest.\nHof is known for two local \"delicacies\", namely Schnitz, a kind of hotpot, and sausages boiled in a portable, coal-fired brass cauldron, which are sold in the streets by the sausage man (Wärschtlamo in the local dialect). There is also a particularly strong beer (Schlappenbier), which is available only on the first Monday after Trinity Sunday (Schlappentag). This tradition dates back to the establishment of the town militia which forced all shooters to take part in a special shooting training each year. To avoid penalties, a lot of shooters rushed out to the training area in the morning of the last possible day, without even enough time to get dressed and thus still wearing their clogs (German: Schlappen).\nThe Hof Theatre (Theater Hof) is a multi-purpose theatre whose construction was completed in 1994. It serves as an opera house and drama theatre, and hosts the city's ballet company and a youth theatre. The Hofer Symphoniker, Hof's symphony orchestra, plays as opera orchestra at the theatre and gives concerts at the Freiheitshalle Hof."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "hof",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3462,
+    "attempt": 3435,
+    "place_id": "gn-2935530",
+    "input": {
+      "place": {
+        "place_id": "gn-2935530",
+        "name": "Dorsten",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.66166,
+        "lon": 6.96514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dorsten",
+          "url": "https://en.wikipedia.org/wiki/Dorsten",
+          "text": "Dorsten (German pronunciation: [ˈdɔʁstn̩] ; Westphalian: Dössen) is a town in the Recklinghausen district of the German state of North Rhine-Westphalia. Dorsten has a population of about 75,000.\nDorsten is situated on the western rim of Westphalia bordering the Rhineland. Its historical old town lies on the south bank of the river Lippe and the Wesel–Datteln Canal and was granted city rights in 1251. During the twentieth century, the town was enlarged in its north by the villages of the former Herrlichkeit Lembeck. While Dorsten's northern districts are thus shaped by the  rural Münsterland with its many historical castles, just south of the town the Ruhr region begins, Germany's largest urban agglomeration with more than seven million inhabitants.\nThe exact linguistic derivation of the word \"Dorsten\" is unknown, leaving the meaning of the town's name unclear."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "dorsten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3463,
+    "attempt": 3436,
+    "place_id": "gn-3038334",
+    "input": {
+      "place": {
+        "place_id": "gn-3038334",
+        "name": "Ajaccio",
+        "country": "France",
+        "subdivision": "Corsica",
+        "lat": 41.91886,
+        "lon": 8.73812
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ajaccio",
+          "url": "https://en.wikipedia.org/wiki/Ajaccio",
+          "text": "Ajaccio is the capital and largest city of Corsica, France. It forms a French commune, prefecture of the department of Corse-du-Sud, and head office of the Collectivité territoriale de Corse (capital city of Corsica). It is also the largest settlement on the island. Ajaccio is located on the west coast of the island of Corsica, 210 nautical miles (390 km) southeast of Marseille.\nThe original city went into decline in the Middle Ages, but began to prosper again after the Genoese built a citadel in 1492, to the south of the earlier settlement. After the Corsican Republic was declared in 1755, the Genoese continued to hold several citadels, including Ajaccio, until the French took control of the island.\nThe inhabitants of the commune are known as Ajacciens (men) or Ajacciennes (women). The most famous of these is Napoleon Bonaparte, who was born in Ajaccio in 1769, and whose ancestral home, the Maison Bonaparte, is now a museum. Other dedications to him in the city include Ajaccio Napoleon Bonaparte Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "ajaccio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3464,
+    "attempt": 3437,
+    "place_id": "gn-324172",
+    "input": {
+      "place": {
+        "place_id": "gn-324172",
+        "name": "Alaşehir",
+        "country": "Türkiye",
+        "subdivision": "Manisa",
+        "lat": 38.35083,
+        "lon": 28.51718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alaşehir",
+          "url": "https://en.wikipedia.org/wiki/Alaşehir",
+          "text": "Alaşehir (Turkish pronunciation: [aˈɫaʃehiɾ]) is a municipality and district of Manisa Province, Turkey. Its area is 971 km2, and its population is 104,717 (2022). It is situated in the valley of the Kuzuçay (Cogamus in antiquity), at the foot of the Bozdağ Mountain (Mount Tmolus in antiquity). The town is connected to İzmir by a 105 km (65 mi) railway.\nFounded in antiquity as Philadelphia (Greek: Φιλαδέλφεια, i.e., \"the city of him who loves his brother\"), the town was known as such until it was conquered by the Ottomans in 1390.\nAlaşehir stands on elevated ground commanding the extensive and fertile plain of the Gediz River (Hermus in antiquity), presenting an imposing appearance when seen from a distance. It has about 45 mosques. There are small industries and a fair trade. From one of the mineral springs comes a heavily charged water popular around Turkey.\nWithin Turkey, the city's name is synonymous with the dried Sultana raisins, although cultivation for the fresh fruit market, less labour-intensive than the dried fruit, has gained prominence in recent decades. As Philadelphia, Alaşehir was a highly important center in the Early Christian and Byzantine periods. It remained a strong center of Orthodox Christianity until the early 20th century, and remains a titular see of the Roman Catholic Church."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "alasehir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3465,
+    "attempt": 3438,
+    "place_id": "gn-3393758",
+    "input": {
+      "place": {
+        "place_id": "gn-3393758",
+        "name": "Oiapoque",
+        "country": "Brazil",
+        "subdivision": "Amapá",
+        "lat": 3.84306,
+        "lon": -51.835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oiapoque",
+          "url": "https://en.wikipedia.org/wiki/Oiapoque",
+          "text": "Oiapoque (Brazilian Portuguese pronunciation: [ojaˈpɔki]) is a municipality in the north of the state of Amapá, Brazil. Its population is 27,906 and its area is 22,625 square kilometres (8,736 mi2). Oiapoque is also a major river in the same state, forming the international border with French Guiana. The Oyapock River Bridge, connecting the village with Saint-Georges in French Guiana, was completed in 2011 but not opened to pedestrian or vehicle traffic until 2017.\nLying on the northern coast of Brazil, Oiapoque is popularly considered the northernmost point of Brazil. The phrase do Oiapoque ao Chuí (\"from Oiapoque to Chuí\") means \"all of Brazil.\" However, there are more northerly points in Roraima state such as the municipality of Uiramutã. Oiapoque remains the northernmost coastal city of Brazil, and the northernmost city of Amapá. It occupies more than half of the north border of the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "oiapoque",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3466,
+    "attempt": 3439,
+    "place_id": "gn-3531416",
+    "input": {
+      "place": {
+        "place_id": "gn-3531416",
+        "name": "Catemaco",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.42131,
+        "lon": -95.11398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Catemaco",
+          "url": "https://en.wikipedia.org/wiki/Catemaco",
+          "text": "Catemaco (Spanish: [kate'mako] ) is a city in the south of the Mexican state of Veracruz. It serves as the municipal seat for the municipality of the same name. The city is located on Lake Catemaco, with the municipality stretching north to the Gulf of Mexico. Catemaco is a tourist destination, with its main attractions being the lake, remnants of the region's rainforest and a tradition of sorcery/witchcraft that has its roots in the pre-colonial period and is mostly practiced by men. This tradition is well-known in Mexico and attracts clients from various walks of life, including businessmen and national-level politicians. Catemaco holds an annual event in March dedicated to sorcery, which can draw up to 5,000 visitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "catemaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3467,
+    "attempt": 3440,
+    "place_id": "gn-3910291",
+    "input": {
+      "place": {
+        "place_id": "gn-3910291",
+        "name": "Mizque",
+        "country": "Bolivia",
+        "subdivision": "Cochabamba",
+        "lat": -17.94101,
+        "lon": -65.34016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mizque",
+          "url": "https://en.wikipedia.org/wiki/Mizque",
+          "text": "Mizque, Misk'i (from Quechua: misk'i, meaning \"sweet\") is a town in the Cochabamba Department, Bolivia. It is the capital of the Mizque Province. Mizque is located in the valley of the Mizque River, one of the main tributaries of the Río Grande.\nHistorically, it was located in the region of Upper Peru, and was a corregimiente dependent on Santa Cruz de la Sierra until 1783, when it became an independent town of the Intendencia de Cochabamba, in the Viceroyalty of the Río de la Plata. During the Spanish American wars of independence, Mizque sent deputies to the Congress of Tucumán, which declared Argentina's independence in 1816, and to the congress that declared the independence of Bolivia in 1825."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "mizque",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

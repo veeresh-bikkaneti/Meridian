@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 3428,
+    "attempt": 3401,
+    "place_id": "gn-2785123",
+    "input": {
+      "place": {
+        "place_id": "gn-2785123",
+        "name": "Uccle",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.80225,
+        "lon": 4.33943
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uccle",
+          "url": "https://en.wikipedia.org/wiki/Uccle",
+          "text": "Uccle (French, pronounced [ykl(ə)] ) or Ukkel (Dutch, pronounced [ˈʏkəl] ) is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the southern part of the region, it is bordered by the City of Brussels, Forest, Ixelles, and Watermael-Boitsfort, as well as the Flemish municipalities of Drogenbos, Linkebeek and Sint-Genesius-Rode. Like all municipalities in Brussels, it is officially bilingual (French–Dutch).\nAs of 1 January 2022, the municipality had a population of 85,099 inhabitants. The total area is 22.87 km2 (8.83 sq mi), which gives a population density of 3,720/km2 (9,600/sq mi), half the average of Brussels. It is generally considered an affluent area of the region, and is particularly noted for its community of French immigrants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "uccle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3429,
+    "attempt": 3402,
+    "place_id": "gn-2806142",
+    "input": {
+      "place": {
+        "place_id": "gn-2806142",
+        "name": "Worms",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.63278,
+        "lon": 8.35916
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Worms, Germany",
+          "url": "https://en.wikipedia.org/wiki/Worms,_Germany",
+          "text": "Worms (; German pronunciation: [vɔʁms] ) is a city in Rhineland-Palatinate, Germany, situated on the Upper Rhine about 60 km (40 mi) south-southwest of Frankfurt am Main. It had about 84,646 inhabitants as of 2022.\nA pre-Roman foundation, Worms is one of the oldest cities in northern Europe. It was the capital of the Kingdom of the Burgundians in the early fifth century, and hence is the scene of the medieval legends referring to this period, notably the first part of the Nibelungenlied.\nWorms has been a Roman Catholic bishopric since at least 614, and was an important palatinate of Charlemagne. Worms Cathedral is one of the imperial cathedrals and among the finest examples of Romanesque architecture in Germany. Worms prospered in the High Middle Ages as an imperial free city. Among more than a hundred imperial diets held at Worms, the Diet of 1521 (commonly known as the Diet of Worms) ended with the Edict of Worms, in which Martin Luther was declared a heretic. Worms is also one of the historical ShUM-cities as a cultural center of Jewish life in Europe during the Middle Ages. Its Jewish sites (along with those in Speyer and Mainz) were inscribed on the UNESCO World Heritage List in 2021.\nToday, the city is an industrial centre and is famed as the origin of Liebfraumilch wine. Its other industries include chemicals, metal goods, and fodder."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "worms",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3430,
+    "attempt": 3403,
+    "place_id": "gn-3359638",
+    "input": {
+      "place": {
+        "place_id": "gn-3359638",
+        "name": "Walvis Bay",
+        "country": "Namibia",
+        "subdivision": "Erongo Region",
+        "lat": -22.9575,
+        "lon": 14.50528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walvis Bay",
+          "url": "https://en.wikipedia.org/wiki/Walvis_Bay",
+          "text": "Walvis Bay (Afrikaans: Walvisbaai; German: Walfischbucht or Walfischbai) is a city in Namibia and the name of the bay on which it lies. It is the second largest city in Namibia and the largest coastal city in the country. The city covers an area of 29 square kilometres (11 sq mi) of land.\nThe bay is a haven for sea vessels due to its harbour, protected by the Pelican Point sand spit, which is the only natural deep-water harbour along the country's coast. Being rich in plankton and marine life, these waters also draw large numbers of southern right whales, attracting whalers and fishing vessels.\nA succession of colonists developed the location and resources of this strategic harbour settlement. The harbour's value about the sea route around the Cape of Good Hope had caught the attention of world powers since it was discovered by the outside world in 1485. The importance of the harbour, combined with its extreme isolation by land, explains the complicated political history of the town. For much of its history, Walvis Bay was governed as an exclave separate from the rest of the territory that today is Namibia.\nThe town is situated just north of the Tropic of Capricorn in the Kuiseb River delta and lies at the end of the TransNamib Railway to Windhoek, and on B2 road.\nWalvis Bay, with its large bay and dunes, is an important centre of tourism activity in Namibia. Attractions include the artificial Bird Island, centre of a guano collection industry, the Dune 7 dune, the salt works, the abundant birdlife, and a museum. Kuisebmund Stadium, home to two clubs in the Namibia Premier League, is also located in the city. The beach resort of Langstrand lies just a few kilometres north. The Walvis Bay Export Processing Zone is an important facet of the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 307
+    },
+    "banned_terms": [
+      {
+        "term": "walvis bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "walvis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3431,
+    "attempt": 3404,
+    "place_id": "gn-3442568",
+    "input": {
+      "place": {
+        "place_id": "gn-3442568",
+        "name": "Fray Bentos",
+        "country": "Uruguay",
+        "subdivision": "Río Negro Department",
+        "lat": -33.11651,
+        "lon": -58.31067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fray Bentos",
+          "url": "https://en.wikipedia.org/wiki/Fray_Bentos",
+          "text": "Fray Bentos (Spanish pronunciation: [fɾaj ˈβentos]) is the capital city of the Río Negro Department, in south-western Uruguay, at the Argentina-Uruguay border, near the Argentine city of Gualeguaychú. Its port on the Uruguay River is one of the nation's most important harbours. The city hosts the first campus of the Technological University, beside the historically relevant industrial complex Anglo, a World Heritage Site, however, the Port is mainly famous for giving the name to the world renowned Fray Bentos pies.\nOne of the biggest pulp mills in the world is situated close to Fray Bentos and the Libertador General San Martín Bridge; it was the center of the largest political dispute between Uruguay and Argentina during the 21st century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "fray bentos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fray",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bentos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3432,
+    "attempt": 3405,
+    "place_id": "gn-3515904",
+    "input": {
+      "place": {
+        "place_id": "gn-3515904",
+        "name": "Tepeaca",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 18.96688,
+        "lon": -97.8998
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepeaca",
+          "url": "https://en.wikipedia.org/wiki/Tepeaca",
+          "text": "Tepeaca is a municipality in the Mexican state of Puebla. Tepeaca is located 35 km (21.75 mi) from the city of Puebla and is the municipal seat of the municipality of the same name. Its name comes from a Spanish variant of \"Tepeyacac\" composed of the Nahuatl words tepetl (\"hill\") and yacatl (\"nose tip, which is in the foreground\") (can be translated in various ways: \"in the top of the hill\" or \"the principle of the hills\"). It has been called Tepeaca de Negrete as it was the birthplace and hometown of General Miguel Negrete Novoa. Along with Tecali Herrera, he extracted the onyx and marble. The town was originally founded by Hernán Cortés as Segura de la Frontera.\nIn the parish of San Francisco de Asís is a Child Jesus image called the Santo Niño Doctor de los Enfemos. The image is old but devotion to it is relatively recent. The image used to belong to a nun of the Order of Josephine at Concepción Béistegui Hospital in Mexico City. When the nun was transferred to Tepeaca, she brought the image with her and had it with her as she treated the sick. This image has had its own feast day at this church since 1961 on 30 April.\nIn prehispanic times, Tepeaca was a Nahua altepetl ruled by three related tlatoque. The people were Chichimec descendants and their patron deity was Camaxtli. Acatzingo, and perhaps Tecamachalco and Quecholac were subordinate to Tepeaca. The entire region was conquered by Moctezuma I; it thereafter served as a center of tribute collection for the Aztec Empire and was obliged to make luxury goods available at its market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "tepeaca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3433,
+    "attempt": 3406,
+    "place_id": "gn-3527795",
+    "input": {
+      "place": {
+        "place_id": "gn-3527795",
+        "name": "Escárcega",
+        "country": "Mexico",
+        "subdivision": "Campeche",
+        "lat": 18.60891,
+        "lon": -90.74544
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Escárcega",
+          "url": "https://en.wikipedia.org/wiki/Escárcega",
+          "text": "Escárcega (Spanish pronunciation: [esˈkaɾseɣa]) is a small city in the Mexican state of Campeche, \nlocated at 18.62°N 90.74°W﻿ / 18.62; -90.74 in the central part of the state. As of 2010, the city of Escárcega had a population of 29,477.\nThe city serves as the administrative centre for the surrounding municipality of the same name, which includes the city and its hinterland. In 2010 the population of Escárcega municipality was 54,184. Its area is 4,569.64 km2 (1,764.35 sq mi), which includes many smaller outlying communities, the largest of which is called División del Norte.\nEscárcega is at the junction of Federal Highways 251 and 186, and is crossed by the railway that runs from Coatzacoalcos, Veracruz, to Campeche, Campeche. It is a new city that grew up in the 20th century with the arrival of the railways and roads. It is named after Francisco Escárcega, a native of Tlaxcala who fought in the Mexican Revolution and oversaw the construction of much of the rail network in the country's southeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "escarcega",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3434,
+    "attempt": 3407,
+    "place_id": "gn-3583102",
+    "input": {
+      "place": {
+        "place_id": "gn-3583102",
+        "name": "Sonsonate",
+        "country": "El Salvador",
+        "subdivision": "Sonsonate Department",
+        "lat": 13.71726,
+        "lon": -89.72304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sonsonate, El Salvador",
+          "url": "https://en.wikipedia.org/wiki/Sonsonate,_El_Salvador",
+          "text": "Sonsonate (Spanish pronunciation: [sonsoˈnate]) is a city and district of El Salvador, of which it is also its municipal seat. It has an estimated population of 71,980 inhabitants for the year 2020. Sonsonate is the second most important city in western El Salvador. The town was founded under the name of \"Villa del Espíritu Santo\" on vacant lots near the town of los Izalcos in 1552. However, this foundation would be extremely ephemeral, because the following year, in 1553, this villa would be transferred to its current location, with the name of \"Villa de la Santísima Trinidad de Sonsonate\", in a cocoa-producing area. With the passage of time, the town would be known simply by the name of Sonsonate. This name was taken from the Rio Grande or Sonsonate in the Nahuat language, which crosses it from north to south across the entire plain until it flows into the Pacific Ocean. This was the third Spanish population founded in the territories that currently constitute El Salvador, although, it is worth clarifying, during the entire period of Spanish domination of America, Sonsonate was the capital of the Mayor's Office of Sonsonate, a territory apart from the one administered by San Salvador, today the capital of El Salvador.\nOn the other hand, one of the main cultural attractions of this city is the celebration of Holy Week, which is considered part of the religious heritage of the country, thus recognized by decree of the Legislative Assembly of El Salvador since 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "sonsonate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3435,
+    "attempt": 3408,
+    "place_id": "gn-3686561",
+    "input": {
+      "place": {
+        "place_id": "gn-3686561",
+        "name": "Chinchiná",
+        "country": "Colombia",
+        "subdivision": "Caldas Department",
+        "lat": 4.9832,
+        "lon": -75.60488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinchiná, Caldas",
+          "url": "https://en.wikipedia.org/wiki/Chinchiná,_Caldas",
+          "text": "Chinchiná is a town and municipality located in the department of Caldas in Colombia, 17 kilometres (11 mi) southwest of Manizales. Founded in 1857 by Antioquian colonists, Chinchiná lies 1,360 meters (4,460 ft) above sea level in a valley surrounded by coffee plantations in the Central Cordillera of the Andes. An active volcano, Nevado del Ruiz, lies approximately 30 kilometers (19 mi) to the east.\nKnown as Colombia's \"coffee heart\", the town is home to the Buendía coffee factory and Cenicafé, a coffee research center. Because of its close association with coffee production, the municipality was named part of the \"Coffee Cultural Landscape\" UNESCO World Heritage Site in 2011.  \nChinchiná has a mean temperature of approximately 20 degrees Celsius."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "chinchina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3436,
+    "attempt": 3409,
+    "place_id": "gn-3880107",
+    "input": {
+      "place": {
+        "place_id": "gn-3880107",
+        "name": "Melipilla",
+        "country": "Chile",
+        "subdivision": "Santiago Metropolitan",
+        "lat": -33.68909,
+        "lon": -71.21528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melipilla",
+          "url": "https://en.wikipedia.org/wiki/Melipilla",
+          "text": "Melipilla (Mapudungun for \"four Pillans\") is a Chilean commune and capital city of the province of the same name. It is part of the Santiago Metropolitan Region and is a significant satellite city of the Chilean capital.\nThe Melipilla commune borders 10 other communes, María Pinto, and a portion of Curacaví to the north; San Pedro and Alhué to the south; Isla de Maipo, El Monte, Peñaflor, Padre Hurtado in the Talagante Province, and Paine in the Maipo Province to the east; and San Antonio in the Valparaíso Region. It has an area of 1,344.8 km2 (519 sq mi). According to the 2017 census, the commune alone has 123,627 residents and is projected to have 141,612 residents by 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "melipilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3437,
+    "attempt": 3410,
+    "place_id": "gn-4018582",
+    "input": {
+      "place": {
+        "place_id": "gn-4018582",
+        "name": "Ameca",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.54783,
+        "lon": -104.0461
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ameca, Jalisco",
+          "url": "https://en.wikipedia.org/wiki/Ameca,_Jalisco",
+          "text": "Ameca (Nahuatl languages: Amecatl \"string of water\") is a city and municipality, in Jalisco in central-western Mexico. The municipality covers an area of 839.1 km2. The city is bisected by the Ameca River which drains to the Pacific Ocean near Puerto Vallarta. It is located approximately 83 km (approximately 50 miles) from the state capital and one of Mexico's largest commercial centers, Guadalajara.\nThe city is also the seat and largest city of the federal sub-division Región Valles, which compromises the municipalities situated on the central valleys of Jalisco.\nAs of 2010, the municipality had a total population of 57,340, and the city a population of 36,156, making it the 15th largest city of Jalisco in terms of population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "ameca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3438,
+    "attempt": 3411,
+    "place_id": "gn-5116497",
+    "input": {
+      "place": {
+        "place_id": "gn-5116497",
+        "name": "Elmira",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.0898,
+        "lon": -76.80773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elmira, New York",
+          "url": "https://en.wikipedia.org/wiki/Elmira,_New_York",
+          "text": "Elmira () is a city in and the county seat of Chemung County, New York, United States. It is the principal city of the Elmira, New York, metropolitan statistical area, which encompasses Chemung County. The population was 26,523 at the 2020 census, down from 29,200 at the 2010 census, a decline of more than 7 percent.\nThe City of Elmira is in the south-central part of the county, surrounded on three sides by the Town of Elmira.  It is in the Southern Tier of New York, a short distance north of the Pennsylvania state line.\nThe city was the site of the Elmira Prison, a prisoner-of-war camp that held over 12,000 captured Confederate soldiers during the American Civil War. Elmira College is located within the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "elmira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3439,
+    "attempt": 3412,
+    "place_id": "gn-5393052",
+    "input": {
+      "place": {
+        "place_id": "gn-5393052",
+        "name": "Santa Cruz",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.97412,
+        "lon": -122.0308
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz,_California",
+          "text": "Santa Cruz (Spanish pronunciation: [ˌsanta ˈkɾus]; Spanish for 'Holy Cross') is the largest city in, and the county seat of, Santa Cruz County, California, United States. As of the 2020 census, the city population was 62,956. Situated on the northern edge of Monterey Bay, Santa Cruz is a popular tourist destination, owing to its beaches, surf culture, and historic landmarks.\nSanta Cruz was founded by the Spanish in 1791, when Fermín de Lasuén established Mission Santa Cruz. Soon after, a settlement grew up near the mission called Branciforte, which came to be known across Alta California for its lawlessness. With the Mexican secularization of the Californian missions in 1833, the former mission was divided and granted as rancho grants. Following the American Conquest of California and the admission of California as a U. S. state in 1850, Santa Cruz was incorporated as a town in 1866, and became a charter city in 1876. The completion of the South Pacific Coast Railroad in 1880 and the creation of the Santa Cruz Beach Boardwalk in 1904 solidified the city's status as a seaside resort community, while the establishment of the University of California, Santa Cruz, in 1965 made Santa Cruz a college town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3440,
+    "attempt": 3413,
+    "place_id": "gn-5397018",
+    "input": {
+      "place": {
+        "place_id": "gn-5397018",
+        "name": "Soledad",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.42469,
+        "lon": -121.32632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Soledad, California",
+          "url": "https://en.wikipedia.org/wiki/Soledad,_California",
+          "text": "Soledad (Spanish for \"Solitude\") is a city in Monterey County, California, United States. It is in the Salinas Valley, 21 miles (34 km) southeast of Salinas, the county seat. Soledad's population was 24,925 at the 2020 census, down from 25,738 in 2010. Soledad's origins started with Mission Nuestra Señora de la Soledad, founded by the Spanish in 1791, under the leadership of Fermín de Lasuén. Catalina Munrás began developing the town of Soledad on her Rancho San Vicente in the 1860s, which eventually incorporated as a city in 1921. Today, Soledad is a notable tourist destination, owing to the heavily restored mission, its proximity to Pinnacles National Park, and its numerous vineyards, as part of the Monterey wine region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "soledad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3441,
+    "attempt": 3414,
+    "place_id": "gn-5909483",
+    "input": {
+      "place": {
+        "place_id": "gn-5909483",
+        "name": "Brooklin",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.95833,
+        "lon": -78.95972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brooklin, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Brooklin,_Ontario",
+          "text": "Brooklin is a community in the town of Whitby, Ontario, Canada, north of central Whitby, at the south junction of Ontario Highways 12 and 7. While Brooklin proper is confined to a specific area, people in the surrounding area largely identify their location as \"Brooklin\" rather than \"Whitby\".\nBrooklin was located primarily in a rural area about two decades ago, but it is urbanising, with high population growth and infrastructure development. Brooklin is surrounded by hills covering the north and the west. The hills and the forests that dominate the north are part of the South Slope of the Oak Ridges Moraine. It is located within the Lynde Creek Watershed which retains 19 to 26% of its forest cover.  The population has grown rapidly since the early 1990s with the addition of thousands of homes, predominantly in the subdivisions that surround Brooklin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "brooklin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3442,
+    "attempt": 3415,
+    "place_id": "gn-618057",
+    "input": {
+      "place": {
+        "place_id": "gn-618057",
+        "name": "Cocieri",
+        "country": "Moldova",
+        "subdivision": "Dubăsari District",
+        "lat": 47.3017,
+        "lon": 29.11755
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cocieri",
+          "url": "https://en.wikipedia.org/wiki/Cocieri",
+          "text": "Cocieri is a commune in the Republic of Moldova, and the administrative center of Dubăsari District. It is located on the eastern bank of the Dniester River, consisting of two villages, Cocieri and Vasilievca.\nDuring 1992 War of Transnistria inhabitants of this village rebelled against the separatist authorities of Transnistria. The military unit of the 14th former Soviet Army which was located in the village was attacked by local inhabitants who armed themselves and opposed the forces of Transnistria. As result, after the war, Cocieri remained in the area controlled by the Republic of Moldova.\nThe village can only be reached directly from Moldova proper by ferry, which does not run during winter due to ice on the river. Transnistrian authorities control checkpoints on roads out of the commune and charge fees for crossing it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "cocieri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3443,
+    "attempt": 3416,
+    "place_id": "gn-781988",
+    "input": {
+      "place": {
+        "place_id": "gn-781988",
+        "name": "Pogradec",
+        "country": "Albania",
+        "subdivision": "Korçë County",
+        "lat": 40.9025,
+        "lon": 20.6525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pogradec",
+          "url": "https://en.wikipedia.org/wiki/Pogradec",
+          "text": "Pogradec (Albanian pronunciation: [pɔɡɾaˈdɛt͡s],) is the eleventh most populous city in Albania and the capital of the eponymous municipality. It is located on a narrow plain between two mountain chains along the southwestern banks of the Lake of Ohrid. Its climate is profoundly influenced by a seasonal Mediterranean and continental climate. The total municipal population is 46,070, of which 17,371 is in the municipal unit as of the 2023 census.\nPogradec and its surroundings were listed by UNESCO as a World Heritage Site as part of the natural and cultural heritage of the region of Ohrid. Nevertheless, the Illyrian Royal Tombs in the adjacent unit of Proptisht are on the Albanian tentative list for becoming a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "pogradec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3444,
+    "attempt": 3417,
+    "place_id": "gn-912072",
+    "input": {
+      "place": {
+        "place_id": "gn-912072",
+        "name": "Katete",
+        "country": "Zambia",
+        "subdivision": "Eastern Province",
+        "lat": -14.05,
+        "lon": 32.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katete",
+          "url": "https://en.wikipedia.org/wiki/Katete",
+          "text": "Katete is a medium-sized town in the Eastern Province of Zambia, and is headquarters of Katete District. The town is at the foot of rocky hills which lie to its east, including Mpangwe Hill and Kangarema Hill, which rise to 1600 m. The hills are surrounded by cultivated fields. Katete lies on the Great East Road about 90 km south-west of the provincial capital, Chipata, at an elevation of 1060 m on the watershed between the middle Luangwa River and the Zambezi. In the town is a major road junction, with a surfaced road (the T6 road) branching off and running 50 km to the Mozambique border and connecting with Tete on the Zambezi 339 km to the south-east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "katete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3445,
+    "attempt": 3418,
+    "place_id": "gn-9972727",
+    "input": {
+      "place": {
+        "place_id": "gn-9972727",
+        "name": "Maduravoyal",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.0675,
+        "lon": 80.1632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maduravoyal",
+          "url": "https://en.wikipedia.org/wiki/Maduravoyal",
+          "text": "Maduravoyal is a residential neighbourhood located in the west of Chennai, India. As of 2011, the town had a population of 86,195.\nMaduravoyal also has a name as \"ettam kal\" (8th mile), so it could be famous in British Period too, it is exactly 12.87 kilometres (8.00 mi) from Chennai Harbour, and Maduravoyal located 3 km from the west of Koyambedu area which is a major hub of activity in Chennai City. Maduravoyal became a part of Greater Chennai Corporation in 2009 city expansion order passed by the state government. Nearby areas include Nerkundram, Mogappair, Nolambur, Vanagaram, Athipet, Ayanambakkam, Valasaravakkam, Alapakkam and Porur.\nThe second phase of Chennai Bypass cuts through Maduravoyal to reach the northern borders of Chennai. Maduravoyal noticed a rapid developed and sudden increase in property prices ever since the Maduravoyal Junction with the cloverleaf interchange (flyover) became operational.\nIn January 2009, the then Prime Minister, Manmohan Singh laid the foundation stone for the Chennai Port – Maduravoyal Expressway, a 19-kilometre-long (12 mi) elevated express-way project by National Highways Authority of India (NHAI)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "maduravoyal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3446,
+    "attempt": 3419,
+    "place_id": "gn-1163582",
+    "input": {
+      "place": {
+        "place_id": "gn-1163582",
+        "name": "Thatta",
+        "country": "Pakistan",
+        "subdivision": "Sindh",
+        "lat": 24.74745,
+        "lon": 67.92353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thatta",
+          "url": "https://en.wikipedia.org/wiki/Thatta",
+          "text": "Thatta is a city in the Pakistani province of Sindh. Thatta was the medieval capital of Sindh, and served as the seat of power for three successive dynasties. Its construction was ordered by Jam Nizamuddin II in 1495. Thatta's historic significance has yielded several monuments in and around the city. Thatta's Makli Necropolis, a UNESCO World Heritage Site, is site of one of the world's largest cemeteries and has numerous monumental tombs built between the 14th and 18th centuries designed in a syncretic funerary style characteristic of lower Sindh. The city's 17th century Shah Jahan Mosque is richly embellished with decorative tiles, and is considered to have the most elaborate display of tile work in the South Asia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "thatta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3447,
+    "attempt": 3420,
+    "place_id": "gn-1167507",
+    "input": {
+      "place": {
+        "place_id": "gn-1167507",
+        "name": "Rabwah",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.75511,
+        "lon": 72.91403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rabwah",
+          "url": "https://en.wikipedia.org/wiki/Rabwah",
+          "text": "Rabwah (; Punjabi / Urdu: ربوہ; Punjabi pronunciation: [ɾə̀ʋːäː]; Urdu pronunciation: [ɾəb.wɑ]), officially known as Chenab Nagar (Urdu: چناب نگر; pronounced [t͡ʃə.nɑːb nə.ɡəɾ]), is a city in Chiniot District, Punjab, Pakistan on the bank of Chenab River.\nIt was the headquarters of the Ahmadiyya Muslim Community from September 20, 1948 when the community relocated from Qadian, India to the newly created state of Pakistan, where the community bought the area of present-day Rabwah from the government to establish its home. This continued until 1984 and the establishment of Ordinance XX. In 1984, the headquarters were moved to the United Kingdom with Mirza Tahir Ahmed, first to London and then in 2019 to the Islamabad compound in Tilford, Surrey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "rabwah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
