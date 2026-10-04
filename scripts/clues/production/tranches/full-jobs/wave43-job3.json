@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 8499,
+    "attempt": 8441,
+    "place_id": "gn-2655618",
+    "input": {
+      "place": {
+        "place_id": "gn-2655618",
+        "name": "Birdwell",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.51398,
+        "lon": -1.47929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birdwell, South Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Birdwell,_South_Yorkshire",
+          "text": "Birdwell is a village in the Metropolitan Borough of Barnsley in South Yorkshire, England and is located approximately 3.5 miles (6 km) south of Barnsley, 10.5 miles (17 km) north-east of Sheffield. Birdwell currently falls within the Rockingham Ward of the Barnsley Metropolitan Council, although plans to add most of Birdwell to the Worsbrough Ward were proposed again in 2024.\nNeighbouring areas of Birdwell include Worsbrough Village, Tankersley and Hoyland Common.\nThe A61 (Sheffield Road) passes north–south through the length of Birdwell, and at the southern end is Birdwell Roundabout which is the junction between the M1 motorway at Junction 36 and the A61. The roundabout also marks the start of the Dearne Valley Parkway, a relatively new dual carriageway which links the M1 at Junction 36 to the A1 at Marr (near Doncaster)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "birdwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8500,
+    "attempt": 8442,
+    "place_id": "gn-282489",
+    "input": {
+      "place": {
+        "place_id": "gn-282489",
+        "name": "Ofra",
+        "country": "Palestinian Territories",
+        "subdivision": "West Bank",
+        "lat": 31.95633,
+        "lon": 35.26008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ofra",
+          "url": "https://en.wikipedia.org/wiki/Ofra",
+          "text": "Ofra (Hebrew: עֹפְרָה) is an Israeli settlement located in the northern Israeli-occupied West Bank. Located on the main road between Jerusalem and Nablus (Route 60), it falls under the jurisdiction of Mateh Binyamin Regional Council. In 2024 it had a population of 3,110.\nThe international community considers Israeli settlements in the West Bank illegal under international law. According to human rights organization B'Tselem, the state of Israel itself acknowledges that much of the Ofra civilian settlement is built on privately owned Palestinian land, which is unlawful according to Israeli law.\nIn August 2016, the military governorate admitted to the Israeli High Court of Justice that a large portion of Ofra, totalling 45 dunams, was built on land privately owned by Palestinians prior to the occupation, including areas \"located in the heart of the settlement\". Following the ruling of the High Court that Israeli homes in this area were illegal, the state has undertaken steps with the goal of restituting the land back to its private Palestinian owners. Following the successful effort to demolish the settlement of Amona, Silwad mayor Abdul Rahman Saleh signaled that he would petition the High Court on behalf of Ofra landowners with the goal of evicting Israeli settlers there. Considering the Jordanian military base which existed there, he accepted the presence of Israeli soldiers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "ofra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8501,
+    "attempt": 8443,
+    "place_id": "gn-2829130",
+    "input": {
+      "place": {
+        "place_id": "gn-2829130",
+        "name": "Stegen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.98333,
+        "lon": 7.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stegen",
+          "url": "https://en.wikipedia.org/wiki/Stegen",
+          "text": "Stegen (German pronunciation: [ˈʃteːɡn̩] ) is a municipality in the Breisgau-Hochschwarzwald district, Baden-Württemberg, Germany.  It borders on the city of Freiburg, being about 8 km away as the crow flies, lying in the valley of the river Dreisam.  The municipality includes three population centres: the town of Stegen (which itself includes the villages of Weiler, Oberbirken, Unterbirken and Rechtenbach) and the villages of Eschbach and Wittental.\nEconomically, Stegen is partly an offshoot of Freiburg; for example, the Forest Zoology Institute of the University of Freiburg maintains a field station at Wittental.  It also plays a role in Black Forest tourism, with guest houses and other facilities catering to visitors.  It is the first town that a hiker on the Freiburg-Lake Constance Black Forest Trail passes through when travelling eastwards on the path from Freiburg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "stegen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8502,
+    "attempt": 8444,
+    "place_id": "gn-2950934",
+    "input": {
+      "place": {
+        "place_id": "gn-2950934",
+        "name": "Bentwisch",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 54.11503,
+        "lon": 12.20465
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bentwisch",
+          "url": "https://en.wikipedia.org/wiki/Bentwisch",
+          "text": "Bentwisch is a municipality in the Rostock district, in Mecklenburg-Vorpommern, Germany, to the east of Rostock. Since its merger with Klein Kussewitz in January 2018, the municipality has 3,174 inhabitants and covers 29.19 square kilometres. Due to its proximity to Rostock, the B 105, and the A 19, Bentwisch became a place of industry after German reunification.\nBentwisch has a substation for 220 kV/110kV and the static inverter plant of the HVDC Kontek. Both facilities are a few kilometres away from each other. In 2002 the static inverter plant Bentwisch was enlarged by a substion for 380 kV/110kV and between the static invertor plant and the 220 kV/110 kV-substation, which was built in difference to the static invertor plant at times, East Germany existed, a 110 kV powerline for 3 phase AC was built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "bentwisch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8503,
+    "attempt": 8445,
+    "place_id": "gn-2953534",
+    "input": {
+      "place": {
+        "place_id": "gn-2953534",
+        "name": "Bad Buchau",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.06231,
+        "lon": 9.61244
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Buchau",
+          "url": "https://en.wikipedia.org/wiki/Bad_Buchau",
+          "text": "Bad Buchau (German pronunciation: [ˌbaːt ˈbʊːxaʊ] ; formerly Buchau; Swabian: Buacha) is a small town in the district of Biberach, Baden-Württemberg, Germany with about 4,000 inhabitants. It is situated near Lake Federsee, which is separated from the town by a wide reed belt.\nBad Buchau incorporates the nine villages of Allmannsweiler, Dürnau, Kanzach, Betzenweiler, Moosburg, Alleshausen, Seekirch, Tiefenbach, and Oggelshausen, as well as the outlying farm settlements of Ottobeurer Hof, Bruckhof, and Henauhof. Also part of Bad Buchau is the formerly independent district of Kappel.\nThe official language is German, with day-to-day conversations by the majority of its inhabitants in the Swabian dialect.\nFrom the 13th century to the mediatisation of 1803, Buchau had the particularity of being the seat of both an Imperial Abbey and a Free Imperial City, independent of each other. In terms of area, it was one of the smallest such self-ruling cities and its island situation eliminated the necessity to erect city walls and towers. Buchau, however, lost its insular benefits after the water level of Lake Federsee had been lowered on two occasions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "bad buchau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buchau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8504,
+    "attempt": 8446,
+    "place_id": "gn-2964407",
+    "input": {
+      "place": {
+        "place_id": "gn-2964407",
+        "name": "Enfield",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.41419,
+        "lon": -6.83229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enfield, County Meath",
+          "url": "https://en.wikipedia.org/wiki/Enfield,_County_Meath",
+          "text": "Enfield (Irish: An Bóthar Buí, meaning 'the yellow road'), also known as Innfield, is a town in south County Meath, Ireland, situated between Kilcock and Kinnegad and very close to the border with County Kildare. The town is on the Dublin-Sligo railway line. It is located on the R148 regional road, formerly the N4 national primary road connecting Dublin to Connacht.\nIn the 20 years between the 1996 and 2016 census, the population of Enfield grew considerably from just 566 inhabitants to 3,239 people. This increase is due to its location on the commuter belt to Dublin. Similarly to many other dormitory towns in this vicinity, numerous housing estates have been constructed, with 2016 census numbers indicating that 80% of the town's housing stock (826 of 1,024 households) was built between 1991 and 2010. By the 2022 census, population had increased to 3,663."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "enfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8505,
+    "attempt": 8447,
+    "place_id": "gn-2999981",
+    "input": {
+      "place": {
+        "place_id": "gn-2999981",
+        "name": "Lespignan",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.27364,
+        "lon": 3.17193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lespignan",
+          "url": "https://en.wikipedia.org/wiki/Lespignan",
+          "text": "Lespignan (French pronunciation: [lɛspiɲɑ̃]; Occitan: Lespinhan) is a commune in the Hérault département in the Occitanie region in southern France.\nExperiencing a Mediterranean climate, it is drained by the Aude River and various other small streams. The commune boasts a remarkable natural heritage: three Natura 2000 sites (the \"Lower Plain of the Aude,\" the \"Lower Course of the Aude,\" and the \"Hills of Narbonnais\"), two protected areas (the \"Lower Plain of the Aude and Collines d'Enserune\" and the \"Lower Plain of the Aude\"), and eight natural areas of ecological, faunal, and floristic interest.\nLespignan is a rural commune with 3,355 inhabitants in 2022, having experienced a significant population increase since 1962. It is located within the Lespignan urban area and is part of the Béziers catchment area. Its inhabitants are called Lespignanais or Lespignanaises."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "lespignan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8506,
+    "attempt": 8448,
+    "place_id": "gn-3435679",
+    "input": {
+      "place": {
+        "place_id": "gn-3435679",
+        "name": "Caraguatay",
+        "country": "Argentina",
+        "subdivision": "Misiones",
+        "lat": -26.60587,
+        "lon": -54.78093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caraguatay, Misiones",
+          "url": "https://en.wikipedia.org/wiki/Caraguatay,_Misiones",
+          "text": "Caraguatay (Argentina) is an Argentine town and municipality located in the Montecarlo Department of the Province of Misiones.\nAlthough the town had been settled since 1909, it was not until 1940 that the first Development Commission was formed. At the beginning of the 21st century, the main sources of income are the cultivation of yerba mate, forestry, and increasingly, livestock farming.\nIn Puerto Caraguatay, the house where Ernesto Guevara Lynch and Celia de la Serna lived while she was pregnant with who would later be known as Che Guevara, still exists today. Near this town, they owned a yerba mate plantation, and thus the guerrilla fighter spent the first years of his childhood in this town. Today, a museum operates in the house that belonged to Ernesto Guevara Lynch, father of the aforementioned figure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "caraguatay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8507,
+    "attempt": 8449,
+    "place_id": "gn-5807228",
+    "input": {
+      "place": {
+        "place_id": "gn-5807228",
+        "name": "Port Ludlow",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.92537,
+        "lon": -122.68349
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Ludlow, Washington",
+          "url": "https://en.wikipedia.org/wiki/Port_Ludlow,_Washington",
+          "text": "Port Ludlow is an unincorporated community and census-designated place (CDP) in Jefferson County, Washington, United States. It is also the name of the marine inlet on which the community is located. As of the 2020 census, Port Ludlow had a population of 2,959.\nOriginally a logging and sawmill community, its economy declined during the first half of the 20th century. Following the completion of the nearby Hood Canal Bridge in 1960, Port Ludlow became the site of resorts and planned communities, attracting more affluent residents who were retired, buying vacation homes, or needing a more convenient commute to the business centers on the west side of Puget Sound. Based on per capita income, Port Ludlow ranks 16th of 522 ranked areas in the state of Washington, and achieves the highest rank in Jefferson County. Port Ludlow's location and marina facilities make it a convenient and popular port for leisure craft sailing between Puget Sound and the San Juan Islands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "port ludlow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ludlow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8508,
+    "attempt": 8450,
+    "place_id": "gn-6094665",
+    "input": {
+      "place": {
+        "place_id": "gn-6094665",
+        "name": "Osoyoos",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.032,
+        "lon": -119.468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osoyoos",
+          "url": "https://en.wikipedia.org/wiki/Osoyoos",
+          "text": "Osoyoos (, historically ) is the southernmost town in the Okanagan Valley in British Columbia between Penticton and Omak. The town is 3.6 km (2.2 mi) north of the United States border in Washington and is adjacent to the Osoyoos Indian reserve. The origin of the name Osoyoos was the word sw̓iw̓s (pronounced \"soo-yoos\") meaning \"narrowing of the waters\" in the local Okanagan language (Syilx'tsn). The \"O-\" prefix is not indigenous in origin and was attached by settler-promoters wanting to harmonize the name with other place names beginning with O in the Okanagan region (Oliver, Omak, Oroville, Okanogan). There was a local newspaper, the Osoyoos Times, but merged with the Oliver Chronicle and became the Times Chronicle in May 2020.\nThe town's population of 5,556 (2021) swells in the summer months with seasonal visitors. Seniors (age 65 and over) comprise 43% of the town population. Another 2,139 people live around the town within Electoral Area A of the Regional District of Okanagan-Similkameen, and 1,426 more in the Osoyoos 1 Indian Reserve."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "osoyoos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8509,
+    "attempt": 8451,
+    "place_id": "gn-686003",
+    "input": {
+      "place": {
+        "place_id": "gn-686003",
+        "name": "Azuga",
+        "country": "Romania",
+        "subdivision": "Prahova",
+        "lat": 45.45,
+        "lon": 25.55
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Azuga",
+          "url": "https://en.wikipedia.org/wiki/Azuga",
+          "text": "Azuga is a small resort town in the mountains of Prahova County in the historical region of Muntenia, Romania. It is located at the foot of the Baiu Mountains and contains several ski slopes, including the longest ski run in Romania, the Sorica. Once heavily industrialized, Azuga contains a bottled water factory, (a leftover from a notable beer factory that brewed Azuga Beer, now produced elsewhere in Romania under license), a sparkling wine factory, wine tasting, and lodging (Cramele Rhein, owned by Halewood International). The town offers a view over the Bucegi Mountains, from street level to the top of the Sorica mountain, where a gondola arrival station is located. Azuga is one of the most famous mountain resorts of Prahova Valley.\nUntil the winter of 2002, Azuga was known as an industrial town. After that date, the town was turned into a resort to capitalize on the mountain landscape of the Baiu Mountains. Shortly after, the Sorica slope was certified by the International Ski Federation. Today, Azuga houses many hotels and hostels that provide accommodation for tourists. Accommodation in local homes can also be found for a lower price. The town formerly had several other factories including a beer factory, a glassware factory and a wool cloth factory, but those factories were demolished. The refractory materials factory, while still standing, is closed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "azuga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8510,
+    "attempt": 8452,
+    "place_id": "gn-843449",
+    "input": {
+      "place": {
+        "place_id": "gn-843449",
+        "name": "Itäkeskus",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.21015,
+        "lon": 25.08144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itäkeskus",
+          "url": "https://en.wikipedia.org/wiki/Itäkeskus",
+          "text": "Itäkeskus (Swedish: Östra centrum, literal translation East center) is a quarter in the neighbourhood of Vartiokylä (as of the 1980s) in Helsinki, Finland. The district's main attraction is the largest covered-in shopping mall in the Nordic countries, Itis, which make Itäkeskus as the most significant commercial center of East Helsinki. The district has a station on the Helsinki Metro (Itäkeskus metro station), whose eastern entrance at the Tallinnanaukio square leads to the shopping centre. Itäkeskus has the eastern terminus of bus lines 500 and 550; the western terminus of line 500 is Munkkivuori and line 550 is Espoo's Westend bus station. Construction of the Jokeri light rail, which replaces bus line 550, began in 2019 and service began in 2023. The most important road connection to the Helsinki central from Itäkeskus runs along Itäväylä.\n\nAt the end of 2018, 38.1 per cent of Itäkeskus' residents had a foreign background. About 12 percent of the residents had an African background, which was the largest share of all areas in Helsinki. At the end of 2025, the share of foreign language speakers is 50,0 per cent in Itäkeskus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "itakeskus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8511,
+    "attempt": 8453,
+    "place_id": "gn-1716573",
+    "input": {
+      "place": {
+        "place_id": "gn-1716573",
+        "name": "Culasi",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 11.42721,
+        "lon": 122.05601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Culasi",
+          "url": "https://en.wikipedia.org/wiki/Culasi",
+          "text": "Culasi, officially the Municipality of Culasi (Kinaray-a: Banwa kang Culasi; Hiligaynon: Banwa sang Culasi; Tagalog: Bayan ng Culasi), is a 1st class municipality in the province of Antique, Philippines. According to the 2024 census, it has a population of 46,442 people, making it fourth most populous municipality in the province of Antique and third largest municipality in terms of land area, with a total area of 228.56 square kilometers.\nIt is known as the home of majestic Mount Madja-as, the highest peak in Panay. It is also famous for its mossy forest, sea of clouds and 14 waterfalls, with an elevation of 6,946 ft (2,117 m) above sea level. Madja-as is an enchanted mountain sacred to ancient Visayans as it is home to the god of death, Sidapa, and god of meteors, Bulalakaw."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "culasi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8512,
+    "attempt": 8454,
+    "place_id": "gn-173882",
+    "input": {
+      "place": {
+        "place_id": "gn-173882",
+        "name": "Ghajar",
+        "country": "Israel",
+        "subdivision": "Northern District",
+        "lat": 33.27094,
+        "lon": 35.62334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ghajar",
+          "url": "https://en.wikipedia.org/wiki/Ghajar",
+          "text": "Ghajar (Arabic: غجر; Hebrew: ע'ג'ר or רג'ר), also Rhadjar, is an Alawite-Arab village on the Hasbani River, on the border between Lebanon and the Israeli-occupied portion of the Golan Heights. The name of the village means \"gypsy\" in Arabic, and as of 2024, it had a population of 2,738. Many of the residents consider themselves Syrian, though they accepted Israeli citizenship after the area was annexed in 1981. Since then, residents of Ghajar have been integrated in Israeli society and speak fluent Hebrew, in addition to their native Arabic. The Blue Line divides Ghajar between Lebanon and the Golan Heights, although Israel has occupied the entire village since 2006. Israel considers it a part of its Northern District, in which its southern part is organized as a local council in the Golan Subdistrict."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "ghajar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8513,
+    "attempt": 8455,
+    "place_id": "gn-2158744",
+    "input": {
+      "place": {
+        "place_id": "gn-2158744",
+        "name": "Margate",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -43.02814,
+        "lon": 147.26256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Margate, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Margate,_Tasmania",
+          "text": "Margate is a coastal town and locality in southern Tasmania, Australia, located on the Channel Highway between the D'Entrecasteaux Channel and the Snug Tiers, approximately 7 km (4.3 mi) south of Kingston and 20 km (12 mi) south of the Hobart central business district. It lies mostly within the Kingborough Council local government area, with a small portion extending into the Huon Valley Council.\nMargate developed historically around orcharding and coastal shipping. It was officially gazetted as a township in 1866, and recorded a population of 4,239 at the 2021 census. Today, many residents commute to Hobart or Kingston for employment. The town also supports local industries including retail, hospitality, and aquaculture, with nearby facilities such as Tassal’s salmon processing plant and the Crisp Bros & Haywards Margate Shipyard contributing to township employment.\nMargate features a mix of suburban and semi-rural landscapes, with access to the sheltered waters of North-West Bay. Its position along the Channel Highway makes it a regular stopping point for travellers. The town is home to visitor attractions including Dru Point Bicentennial Park and the Margate Train, a roadside attraction featuring a preserved locomotive and carriages repurposed as small businesses beside a former Henry Jones IXL apple packing shed. \nThe Channel Museum in Margate features 24 distinct displays containing over 8,000 items, alongside the Norton Camera Collection, a research library, and a cafe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "margate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8514,
+    "attempt": 8456,
+    "place_id": "gn-2208327",
+    "input": {
+      "place": {
+        "place_id": "gn-2208327",
+        "name": "Paeroa",
+        "country": "New Zealand",
+        "subdivision": "Waikato Region",
+        "lat": -37.36667,
+        "lon": 175.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paeroa",
+          "url": "https://en.wikipedia.org/wiki/Paeroa",
+          "text": "Paeroa is a town in the Hauraki District of the Waikato Region in the North Island of New Zealand. Located at the base of the Coromandel Peninsula, it is close to the junction of the Waihou River and Ohinemuri River, and is approximately 20 kilometres (12.4 miles) south of the Firth of Thames.\nNew Zealanders know the town for its mineral springs, which in the past provided the water used in a local soft drink, \"Lemon & Paeroa\".\nThe town stands at the intersection of State Highways 2 and 26, and is the central service location for the Hauraki District. The town is about halfway between Auckland and Tauranga, and acts as the southern gateway to the Coromandel Peninsula, and as the western gateway to the Karangahake Gorge and the Bay of Plenty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "paeroa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8515,
+    "attempt": 8457,
+    "place_id": "gn-2266388",
+    "input": {
+      "place": {
+        "place_id": "gn-2266388",
+        "name": "Minde",
+        "country": "Portugal",
+        "subdivision": "Santarém",
+        "lat": 39.51631,
+        "lon": -8.68799
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minde, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Minde,_Portugal",
+          "text": "Minde (Ninhou in the Minderico language) is a town and freguesia (civil parish) of Alcanena Municipality, in the District of Santarém, in Portugal. The population of the entire civil parish in 2011 was 3,293, in an area of 21.14 km² (Censos 2011). Minde is known as the place of origin of the Minderico, a sociolect or argot spoken by traders. The civil parish is located in a landscape of intensive karst. People who originate from or live in Minde are informally known as Minderico (said to have been created as a variation of Mindense (which is also correct) because, as a result of the regional development of the clothing industry, the people of Minde were considered to be wealthy (rico in Portuguese, thus Minderico). The formal and ever-used form of Minderico is Mindense."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "minde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8516,
+    "attempt": 8458,
+    "place_id": "gn-2633849",
+    "input": {
+      "place": {
+        "place_id": "gn-2633849",
+        "name": "Windlesham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.36509,
+        "lon": -0.65476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windlesham",
+          "url": "https://en.wikipedia.org/wiki/Windlesham",
+          "text": "Windlesham is a geographically-large village in the Surrey Heath borough of Surrey, England, approximately 25 miles (40 km) south west of central London. Its name derives from the Windle Brook, which runs south of the village into Chobham, and the common suffix 'ham', the Old English word for 'homestead'. The village of Windlesham has a population of around 4,000, while the civil parish of Windlesham has a population of 17,000 and includes the much larger neighbouring villages of Bagshot and Lightwater.\nWindlesham Arboretum, which covers an area of approximately 1 km2 (0.39 sq mi), is on the south side of the M3 motorway. Access to the motorway is via Junction 3. The nearest railway stations are Sunningdale and Bagshot, with Sunningdale offering the most frequent services for London Waterloo on the Waterloo–Reading line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "windlesham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8517,
+    "attempt": 8459,
+    "place_id": "gn-2635748",
+    "input": {
+      "place": {
+        "place_id": "gn-2635748",
+        "name": "Toddington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.94922,
+        "lon": -0.53277
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toddington, Bedfordshire",
+          "url": "https://en.wikipedia.org/wiki/Toddington,_Bedfordshire",
+          "text": "Toddington is a town  and civil parish in the county of Bedfordshire, England. It is situated 5 miles north-north-west of Luton, 4 miles (6 km) north of Dunstable, 6 miles (10 km) south-west of Woburn, and 35 miles north-north-west of London on the B5120 and B579. It is 0.5 miles from Junction 12 of the M1 motorway and lends its name to the nearby motorway service station. The hamlet of Fancott also forms part of the Toddington civil parish.\nToddington is built around a large village green, around which sit the parish church and four of the village's six public houses. The Dunstable Northern Bypass taking heavy traffic bound for Dunstable from the M1 away from the village was delayed but a restart was announced in September 2011, and opened in May 2017. A large-scale housebuilding programme has been proposed by the government for the environs of Luton, Dunstable and Milton Keynes, and proposals to build a 20,000 seat football stadium to replace Kenilworth Road were withdrawn in 2008. \nToddington has experienced a rise in house prices due to its reputation as a quiet English village and the easy commute into London.\nFor local government purposes it is in the Central Bedfordshire unitary authority, and is in the Mid-Bedfordshire parliamentary constituency, represented since 19 October 2023 by Labour MP Alistair Strathern."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "toddington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8518,
+    "attempt": 8460,
+    "place_id": "gn-2640718",
+    "input": {
+      "place": {
+        "place_id": "gn-2640718",
+        "name": "Oxshott",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33217,
+        "lon": -0.3562
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oxshott",
+          "url": "https://en.wikipedia.org/wiki/Oxshott",
+          "text": "Oxshott is a suburban village in the borough of Elmbridge in Surrey, England. Oxshott includes hilly acidic heath which is partly wooded (see Esher Commons and Prince's Coverts) and occupies the land between the large towns of Esher and Leatherhead. The Oxshott section of the single carriageway north-south A244 runs through its middle and briefly forms its high street, centred two miles (three kilometres) from the A3 (Portsmouth Road) and the M25 (London Orbital motorway).\nBefore about 1912, there was an equally-used alternative spelling, Ockshot. Oxshott was part of Stoke D'Abernon parish until 1912, when Oxshott gained its first place of worship. The Prince's Coverts remains part of the Crown Estate, albeit decreased by some privatisation; and the public land of the village has been protected by inclusion in the Metropolitan Green Belt.\nA great many of Oxshott's residential areas are on gated private roads. This, combined with the large and desirable properties that form much of the village's housing stock, contributes to Oxshott's status as the \"most expensive village in England\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "oxshott",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

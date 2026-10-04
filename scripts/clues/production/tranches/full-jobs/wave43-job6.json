@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 8559,
+    "attempt": 8501,
+    "place_id": "gn-2142996",
+    "input": {
+      "place": {
+        "place_id": "gn-2142996",
+        "name": "Woolloomooloo",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.87042,
+        "lon": 151.21968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woolloomooloo",
+          "url": "https://en.wikipedia.org/wiki/Woolloomooloo",
+          "text": "Woolloomooloo ( wuul-ə-mə-LOO) is a harbourside, inner-city eastern suburb of Sydney, New South Wales, Australia, 1.5 km (0.93 mi) east of the central business district, in the local government area of the City of Sydney. It is in a low-lying, former docklands area at the head of Woolloomooloo Bay, on Sydney Harbour. The Domain sits to the west, the locality of East Sydney is near the south-west corner of the suburb and the locality of Kings Cross is near the south-east corner. Potts Point is immediately to the east.\nWoolloomooloo was originally a working-class district of Sydney and has only recently changed with gentrification of the inner city areas of Sydney. The redevelopment of the waterfront, particularly the construction of the housing development on the Finger Wharf, has caused major change. Areas of public housing still exist in the suburb, with 22% homes in the 2011 postcode, owned by Housing NSW, in front of Redfern, Eastlakes and Glebe.\nWoolloomooloo is home to Artspace, an independent, not-for-profit, contemporary art space which is located in the heritage-listed Gunnery building."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "woolloomooloo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8560,
+    "attempt": 8502,
+    "place_id": "gn-2152686",
+    "input": {
+      "place": {
+        "place_id": "gn-2152686",
+        "name": "Portarlington",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.11542,
+        "lon": 144.65559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portarlington, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Portarlington,_Victoria",
+          "text": "Portarlington is a town located on the Bellarine Peninsula, 28 km from the city of Geelong, in the state of Victoria, Australia. It has a diverse population which includes a wide range of ethnic backgrounds, a high proportion of retirees, and a large seasonal holiday influx. The gently rising hills behind the town feature vineyards and olive groves, and offer spectacular panoramic views across Port Phillip Bay. Portarlington is a popular family holiday destination and a centre of fishing and aquaculture (mussels). At one time the town claimed the largest caravan park in the Southern Hemisphere, although the size has reduced considerably in recent decades. With direct ferry links to the city of Melbourne Portarlington also serves as a gateway to the historic towns and surf beaches of the Bellarine Peninsula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "portarlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8561,
+    "attempt": 8503,
+    "place_id": "gn-2520724",
+    "input": {
+      "place": {
+        "place_id": "gn-2520724",
+        "name": "Bunyola",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.69634,
+        "lon": 2.69955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bunyola",
+          "url": "https://en.wikipedia.org/wiki/Bunyola",
+          "text": "Bunyola (Balearic Catalan: [buˈɲɔlə]) is a municipality of the island of Mallorca, Spain, located in the spurs of the Serra de Tramuntana, at a distance of 9 miles (14 km) from Palma. The municipality has an area of 32.67 square miles (84.6 km2) and a population of 6,636 inhabitants,INE Instituto Nacional Estadística and the Ferrocarril de Sóller passes through it on the way to Palma. (INE 2018).\nThe municipality of Bunyola is located in the Comarca of Serra de Tramuntana, the Tramuntana Range was awarded World Heritage Status by UNESCO as an area of great physical and cultural significance. Bunyola borders with other municipalities of Palma de Mallorca, Marratxí, Santa Maria del Camí, Alaró, Escorca, Sóller, Deià and Valldemossa. Palmayola, Sa Font Seca y Orient are located within the municipality boundaries. \nCelebration day of the patron saint, San Mateo, is on the 21st of September.\nThe Raixa Estate is located in Bunyola. It is a large Italian style villa surrounded by Pietro Lazzarini-designed gardens, and was used as the filming location for the 1982 film, Evil under the Sun. Once owned by the German designer Jil Sander, it was subsequently purchased by the Island Council of Mallorca. It reopened to visitors in late 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "bunyola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8562,
+    "attempt": 8504,
+    "place_id": "gn-2520760",
+    "input": {
+      "place": {
+        "place_id": "gn-2520760",
+        "name": "Buenavista del Norte",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.37458,
+        "lon": -16.86098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buenavista del Norte",
+          "url": "https://en.wikipedia.org/wiki/Buenavista_del_Norte",
+          "text": "Buenavista del Norte is a municipality and town on the north west coast of Tenerife, located on  route TF42, about 75 km west of the capital Santa Cruz de Tenerife, 65 km from Tenerife North Airport and 66 km from Tenerife South Airport.\nThe towns streets show the sober architecture of clearly Andalusian extraction. Nevertheless, apart from the influence of the Conquistadors, there is a mixture of the traditions of Portuguese inhabitants and of Guanches, as the pre-Hispanic natives were known, which have helped to make up the particular charm of this district. The people have, due to the scarcity of resources, been characterised by an unquenchable spirit of conservation, which has kept alive traditions such as craftwork in bone, wood, cane and straw from the local forests of the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "buenavista del norte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "buenavista",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "norte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8563,
+    "attempt": 8505,
+    "place_id": "gn-2636583",
+    "input": {
+      "place": {
+        "place_id": "gn-2636583",
+        "name": "Sturminster Newton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.92681,
+        "lon": -2.30515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sturminster Newton",
+          "url": "https://en.wikipedia.org/wiki/Sturminster_Newton",
+          "text": "Sturminster Newton is a town and civil parish situated on the River Stour in the north of Dorset, England. The town is at the centre of the Blackmore Vale, a large dairy agriculture region around which the town's economy is built, and is known as 'the heart of the Blackmore vale'.\nThe town has shops, a primary and secondary school – Sturminster Newton High School – and a school and college catering for children with special educational needs. A market is held in the town on Mondays. One of the largest cattle markets in England used to be held here, but it was closed in 1998.\nThe town is noted for its connections with the authors Thomas Hardy and William Barnes, and as part of the historic West Country Carnival circuit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "sturminster newton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sturminster",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8564,
+    "attempt": 8506,
+    "place_id": "gn-2746986",
+    "input": {
+      "place": {
+        "place_id": "gn-2746986",
+        "name": "Spaarndam",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.4125,
+        "lon": 4.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spaarndam",
+          "url": "https://en.wikipedia.org/wiki/Spaarndam",
+          "text": "Spaarndam (Dutch pronunciation: [ˌspaːr(ə)nˈdɑm]) is a village in the province of North Holland, the Netherlands, on the Spaarne river and the IJ lake. The oldest part of the village, on the western side of the Spaarne, belongs to the municipality of Haarlem; the newer part on the eastern side is a part of the municipality of Haarlemmermeer. The village is built around a dam in the river, which is also the division line of the two municipalities.\nSpaarndam was created around a dam where the river Spaarne flows into the IJ. This dam was built here by count Floris V of Holland in 1285. The village collected tolls at this dam, and people made their living from fishing. From 1812 to 1927, the western part of Spaarndam was an independent municipality.\nThe village has some tourism, and many people commute to Amsterdam and Haarlem.\nSpaarndam has always been strongly connected to water. Besides the river and the fishing, it is also famous because of a story within the 1865 American novel, Hans Brinker or the Silver Skates, about a Dutch boy, \"The Hero of Haarlem,\" who stuck his finger in a dike to prevent the town from flooding. The story became a popular legend in America, and in 1950 the local tourist bureau put a statue of this character in Spaarndam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "spaarndam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8565,
+    "attempt": 8507,
+    "place_id": "gn-2895751",
+    "input": {
+      "place": {
+        "place_id": "gn-2895751",
+        "name": "Irschenberg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.83333,
+        "lon": 11.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irschenberg",
+          "url": "https://en.wikipedia.org/wiki/Irschenberg",
+          "text": "Irschenberg is a municipality in the district of Miesbach in the German state of Bavaria, about 46 km (29 mi) southeast of Munich. It consists of numerous hamlets situated on the Irschenberg hill range.\n\nThe hill is a notorious ascent of the Bundesautobahn 8 motorway running from Munich to Salzburg laid out from 1934 on. A rest area and a motel were attached in 1951.\nThe name was formerly rendered as \"Irish mountain\", referring to the monk Marinus, who settled in the area in the course of the Hiberno-Scottish mission under Pope Eugene I and, according to legend, about 697 was martyred by burning at the stake (see the coat of arms). His grave is marked by the pilgrimage church of Wilparting, visible from the motorway and a popular photo scene. Actually Irschen may stem from ursus (\"bear\").\nOriginally a part of the Bishopric of Freising, the area fell into possession of the Lords of Hohenwaldeck at Miesbach until their county was incorporated into the Bavarian Electorate in 1734."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "irschenberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8566,
+    "attempt": 8508,
+    "place_id": "gn-3133402",
+    "input": {
+      "place": {
+        "place_id": "gn-3133402",
+        "name": "Ulefoss",
+        "country": "Norway",
+        "subdivision": "Telemark",
+        "lat": 59.28245,
+        "lon": 9.26548
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulefoss",
+          "url": "https://en.wikipedia.org/wiki/Ulefoss",
+          "text": "Ulefoss is the administrative centre of Nome Municipality in Telemark county, Norway. The village is located along the northwest shore of the large lake Norsjø. The village occupies both sides of Ulefoss falls on the river Eidselva, just before it flows into the lake Norsjø. The village of Helgja lies about 7 kilometres (4.3 mi) to the southeast, the village of Bjervamoen lies about 10 kilometres (6.2 mi) to the west, and the village of Gvarv lies about 13 kilometres (8.1 mi) to the northwest (in Midt-Telemark Municipality).\nThe 2.56-square-kilometre (630-acre) village has a population (2025) of 2,498 and a population density of 976 inhabitants per square kilometre (2,530/sq mi).\nUlefoss is one of Norway's oldest industrial communities, with sawmills operating from the 1400s, and mining and ironworks from the 1600s. It is still largely an industrial site, with a number of people employed in the iron foundry and mechanical industries.\nUlefoss has primary school, lower secondary, and upper secondary school. A variety of shops and restaurants, a library and culture centre are also located here. Øvre Verket is a group of old workers' dwellings; today a culture and crafts exhibition. Holla Church is located in central Ulefoss and Romnes Church is located on the north side of the village.\nThe newspaper Kanalen is published in Ulefoss."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "ulefoss",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8567,
+    "attempt": 8509,
+    "place_id": "gn-3180597",
+    "input": {
+      "place": {
+        "place_id": "gn-3180597",
+        "name": "Caraglio",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.41725,
+        "lon": 7.43281
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caraglio",
+          "url": "https://en.wikipedia.org/wiki/Caraglio",
+          "text": "Caraglio (Italian: [kaˈraʎʎo]; Piedmontese: Caraj) is a comune (municipality) in the Province of Cuneo in the Italian region of Piedmont, located about 80 kilometres (50 mi) southwest of Turin and about 10 kilometres (6 mi) northwest of Cuneo. As of 1 January 2018, it had a population of 6,782 and an area of 41.68 km2 (16.09 mi2).\nThe municipality of Caraglio contains the frazioni (subdivisions, mainly villages and hamlets) Bottonasco, Cascina Bianca, Cascina Sottana, Grassini, Monturone, Oltre Grana, Palazzasso, Paschera San Carlo (Soprana), Paschera San Defendente (Sottana), Roata Bacias, Roata Borghi, Roata Bruno, Roata Chiabò, Roata Delfino, Roata Fresia, Roata Galliano, Roata Ghio, Roata Lorenzot, Roata Muschia, Rosata Armando, San Lorenzo, Tetto Bellino, Tetto Bianco, Tetto Boscasi.\nCaraglio borders the following municipalities: Bernezzo, Busca, Cervasca, Cuneo, Dronero, Montemale di Cuneo, Valgrana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "caraglio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8568,
+    "attempt": 8510,
+    "place_id": "gn-4485655",
+    "input": {
+      "place": {
+        "place_id": "gn-4485655",
+        "name": "Pittsboro",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.72015,
+        "lon": -79.17724
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pittsboro, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Pittsboro,_North_Carolina",
+          "text": "Pittsboro is a town in and the county seat of Chatham County, North Carolina, United States. The population was 3,743 at the 2010 census and 4,537 at the 2020 census.\nThe town was established in the late 18th century, shortly after the American Revolution, as the county seat for the newly formed Chatham County. In the years leading up to the American Civil War, the economy was dominated by small-scale farms that relied heavily on enslaved labor. In the aftermath of the civil war, racial tensions were high, and the town was noted for a number of lynchings and other racial violence in the late 19th century. Industrialization came to the community in the late 19th century, as a number of rivers cross the area providing locations for mills and factories. Economic and population growth would continue into and throughout the 20th century. As industry moved away from the community, it has in the 21st century transitioned into a bedroom community for the nearby cities of the Research Triangle region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "pittsboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8569,
+    "attempt": 8511,
+    "place_id": "gn-5101701",
+    "input": {
+      "place": {
+        "place_id": "gn-5101701",
+        "name": "Netcong",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.89899,
+        "lon": -74.70655
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Netcong, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Netcong,_New_Jersey",
+          "text": "Netcong is a borough in southwestern Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 3,375, an increase of 143 (+4.4%) from the 2010 census count of 3,232, which in turn reflected an increase of 652 (+25.3%) from the 2,580 counted in the 2000 census. Netcong lies on the shores of Lake Musconetcong.\nEstablished as South Stanhope by workers employed as miners in Stanhope, the name \"Netcong\" was adopted for the community in 1889 when a post office used the name. Netcong was incorporated as a borough by an act of the New Jersey Legislature on October 23, 1894, from portions of both Mount Olive Township and Roxbury Township, based on the results of a referendum held the previous day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "netcong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8570,
+    "attempt": 8512,
+    "place_id": "gn-6220876",
+    "input": {
+      "place": {
+        "place_id": "gn-6220876",
+        "name": "Waltham",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.54824,
+        "lon": 172.65156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waltham, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Waltham,_New_Zealand",
+          "text": "Waltham is an inner suburb of Christchurch, New Zealand, located approximately 2 kilometres (1.2 miles) south-east of the city centre. State Highway 76, part of Christchurch's ring road system, and known there as Brougham Street, runs through the suburb, as does the Lyttelton Line rail corridor. Amenities include Lancaster Park, Christchurch's former sports venue, now a community park, and Waltham pool. \nApproximate boundaries of the suburb are Waltham Road, Moorhouse Avenue, Ferry Road, Ensors Road, and the Ōpāwaho / Heathcote River. Waltham was originally part of the Sydenham borough and was incorporated into the City of Christchurch in 1903 when the borough was ended. In the early 1980s local residents and the Christchurch city council tried to name the western part of the suburb, Charleston, between Ferry Road and Ensors Road. This was done to maintain the residential nature of the area against perceived industrial expansion.  The attempt was partly successful and that area today is referred to as both Waltham and Charleston.\nThe full suburb is a mixture of residential and both light and heavy industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "waltham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8571,
+    "attempt": 8513,
+    "place_id": "gn-6243776",
+    "input": {
+      "place": {
+        "place_id": "gn-6243776",
+        "name": "Picton",
+        "country": "New Zealand",
+        "subdivision": "Marlborough",
+        "lat": -41.29067,
+        "lon": 174.00801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Picton, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Picton,_New_Zealand",
+          "text": "Picton (Māori: Waitohi) is a town in the Marlborough Region of New Zealand's South Island. The town is located near the head of the Queen Charlotte Sound / Tōtaranui, 25 km (16 mi) north of Blenheim and 65 km (40 mi) west of Wellington. Waikawa lies just north-east of Picton and is considered to be a contiguous part of the Picton urban area.\nPicton is a major hub in New Zealand's transport network, connecting the South Island road and rail network with ferries across Cook Strait to Wellington and the North Island. The Picton urban area has a population of 4,850  (June 2025), making it the second-largest town in the Marlborough Region behind Blenheim. It is the easternmost town in the South Island with a population of at least 1,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "picton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8572,
+    "attempt": 8514,
+    "place_id": "gn-630779",
+    "input": {
+      "place": {
+        "place_id": "gn-630779",
+        "name": "Ylitornio",
+        "country": "Finland",
+        "subdivision": "Lapland",
+        "lat": 66.30893,
+        "lon": 23.67734
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ylitornio",
+          "url": "https://en.wikipedia.org/wiki/Ylitornio",
+          "text": "Ylitornio (Finnish: [ˈyliˌtornio]; Swedish: Övertorneå; Northern Sami: Badje-Duortnus; Inari Sami: Pajetuárnus) is a municipality of Finland. It is located in the province of Lapland along the Tornio River, opposite the Swedish town of Övertorneå about 7 kilometres (4.3 mi) by road to its northwest. The two localities are connected by an international bridge that goes between Övertorneå through an island and enters Finland in a rural portion of Ylitornio's municipality, about 5 kilometres (3.1 mi) north of town. Literally translated to English the two locations would be called Upper Tornio.\nThe municipality has a population of 3,673 (31 December 2025) and covers an area of 2,212.47 square kilometres (854.24 sq mi) of which 183.83 km2 (70.98 sq mi) is water. The population density is 1.81 inhabitants per square kilometre (4.7/sq mi). The municipality is unilingually Finnish in contrast to much of far-western Finland.  Finland is officially bilingual.\nThe motif of the coat of arms of Ylitornio Municipality refers to the Aavasaksa hill and the midnight sun. The coat of arms was designed by Jaakko Hänninen, and the Ylitornio Municipal Council approved it at its meeting on 28 September 1953. The Ministry of the Interior confirmed the coat of arms for use on 5 April 1954.\nA unique ski flying hill project has been presented. The inruns of the hills will be through a mountain inside a pipe tunnel.[1]"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "ylitornio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8573,
+    "attempt": 8515,
+    "place_id": "gn-665371",
+    "input": {
+      "place": {
+        "place_id": "gn-665371",
+        "name": "Teaca",
+        "country": "Romania",
+        "subdivision": "Bistrița-Năsăud County",
+        "lat": 46.91667,
+        "lon": 24.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teaca",
+          "url": "https://en.wikipedia.org/wiki/Teaca",
+          "text": "Teaca (German: Tekendorf, Hungarian: Teke) is a commune in Bistrița-Năsăud County, Transylvania, Romania. It is composed of six villages: Archiud (Arkeden bei Bistriz, Mezőerked), Budurleni (Budurló), Ocnița (Salzgruben, Mezőakna), Pinticu (Pintak, Szászpéntek), Teaca, and Viile Tecii (Großeidau, Kolozsnagyida).\nThe commune is situated on the Transylvanian Plateau, in the Nösnerland, a historic region of northeastern Transylvania. Teaca lies at an altitude of 349 m (1,145 ft), on the banks of the river Dipșa and its right tributary, the river Pintic. It is located in the southern part of Bistrița-Năsăud County, 32 km (20 mi) from the county seat, Bistrița, on the border with Mureș County.\nTeaca is crossed by national road DN15A (part of European route E578), which joins Reghin (28 km (17 mi) to the southeast, in Mureș County) to Bistrița. \nAt the 2021 census, Teaca had a population of 4,991; of those, 60.25% were Romanians, 26.21% Roma, and 5.95% Hungarians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "teaca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8574,
+    "attempt": 8516,
+    "place_id": "gn-679119",
+    "input": {
+      "place": {
+        "place_id": "gn-679119",
+        "name": "Domnești",
+        "country": "Romania",
+        "subdivision": "Ilfov",
+        "lat": 44.39919,
+        "lon": 25.91618
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Domnești, Ilfov",
+          "url": "https://en.wikipedia.org/wiki/Domnești,_Ilfov",
+          "text": "Domnești is a commune in the southwestern part of Ilfov County, Muntenia, Romania. Its name is derived from \"Domn\" (Lord, referring to the ruler of Wallachia) and suffix \"-ești\". It is composed of two villages, Domnești and Țegheș.\nThe commune is located west of Bucharest, on the banks of the Ciorogârla and Sabar rivers, and on the left bank of the Argeș River. It is crossed by county road DJ602, which leads east to the Ghencea Extension neighborhood of Bucharest and north-east to Ciorogârla and further into Giurgiu County to Joița and Săbăreni, then returning to Ilfov County in Chitila (where it intersects with DN7) and Buftea (where it ends in DN1A). \nThe Domneștii de Sus halt serves the CFR Line 900, which connects Bucharest with the western city of Timișoara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "domnesti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8575,
+    "attempt": 8517,
+    "place_id": "gn-682473",
+    "input": {
+      "place": {
+        "place_id": "gn-682473",
+        "name": "Ceanu Mare",
+        "country": "Romania",
+        "subdivision": "Cluj County",
+        "lat": 46.66667,
+        "lon": 23.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ceanu Mare",
+          "url": "https://en.wikipedia.org/wiki/Ceanu_Mare",
+          "text": "Ceanu Mare (Hungarian: Mezőcsán; German: Gross-Tschaan) is a commune in the north-west of Romania, in Cluj County, Transylvania. It is composed of thirteen villages: Andici (depopulated since 1985; Andics), Boian (Mezőbő), Bolduț (Boldoc), Ceanu Mare, Ciurgău (Csurgó), Dosu Napului (Oláhtóhát), Fânațe (Csániszénafű), Hodăi-Boian (Mezőbőifogadó), Iacobeni (Mezőszentjakab), Morțești (Morcest), Stârcu (Csóka), Strucut (merged with Gherea in 1968; Sztinkutdűlő), and Valea lui Cati (Sárospatakdűlő). \nThe village is known in Germany after the Schröder family discovered that the father of former Chancellor Gerhard Schröder was buried there in a common grave in 1944. Lieutenant Fritz Schröder was a soldier in the German army during World War II and he died at the age of 32 near the city of Turda (Thorenburg in German) on 4 October 1944, without ever seeing his newborn son Gerhard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "ceanu mare",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceanu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mare",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8576,
+    "attempt": 8518,
+    "place_id": "gn-685797",
+    "input": {
+      "place": {
+        "place_id": "gn-685797",
+        "name": "Băile Govora",
+        "country": "Romania",
+        "subdivision": "Vâlcea County",
+        "lat": 45.08333,
+        "lon": 24.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Băile Govora",
+          "url": "https://en.wikipedia.org/wiki/Băile_Govora",
+          "text": "Băile Govora (or just Govora) is a Romanian spa town in Vâlcea County, about 20 km (12 mi) south-west of Râmnicu Vâlcea and west of the Olt River, in the historical region of Oltenia. Notable features of the town (beside its mineral springs, recommended for a variety of ailments) include the Govora Abbey (built in the 15th century and consolidated by Matei Basarab and later by Constantin Brâncoveanu) and the nearby Dintr-un lemn Monastery (16th or 17th century; the legend of its origin was recorded by Paul of Aleppo).\nGovora Abbey was the site where Matei Basarab introduced the first printing press in Wallachia – where the first written code of laws in Romanian was published, Pravila de la Govora, in 1640.\nThe town administers three villages: Curăturile, Gătejești, and Prajila."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "baile govora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "baile",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "govora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8577,
+    "attempt": 8519,
+    "place_id": "gn-6931071",
+    "input": {
+      "place": {
+        "place_id": "gn-6931071",
+        "name": "Grange-over-Sands",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.18508,
+        "lon": -2.92488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grange-over-Sands",
+          "url": "https://en.wikipedia.org/wiki/Grange-over-Sands",
+          "text": "Grange-over-Sands is a town and civil parish on the north side of Morecambe Bay in Cumbria, England, a few miles south of the Lake District National Park. In the 2011 census the parish had a population of 4,114, increasing at the 2021 census to 4,279.\nWithin the boundaries of the historic county of Lancashire, the town became administered as an urban district in 1894. Though the town remains part of the Duchy of Lancaster, since 2023 it has been administered as part of the Westmorland and Furness Council area.\nTravelling by road, Grange-over-Sands is 13.1 miles (21.1 km) to the south of Kendal, 14.9 miles (24.0 km) to the east of Ulverston, 25 miles (40 km) to the east of Barrow-in-Furness and 28.1 miles (45.2 km) to the north of Lancaster."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "grange over sands",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grange",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "over",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sands",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8578,
+    "attempt": 8520,
+    "place_id": "gn-724080",
+    "input": {
+      "place": {
+        "place_id": "gn-724080",
+        "name": "Nálepkovo",
+        "country": "Slovakia",
+        "subdivision": "Košice Region",
+        "lat": 48.84236,
+        "lon": 20.62032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nálepkovo",
+          "url": "https://en.wikipedia.org/wiki/Nálepkovo",
+          "text": "Nálepkovo, formerly Vondrišel (German: Wagendrüssel, Hungarian: Merény) is a village and municipality in the Gelnica District in the Košice Region of eastern Slovakia. Total municipality population was in 2011 3,039 inhabitants. Previously, the village was named Vondrišel, but in 1948 after the German population was expelled it was renamed Nálepkovo, after the anti-fascist Slovak captain Ján Nálepka.\nNálepkovo is also the birthplace of the Queen's Park killer Marek Harcar who carried out the brutal murder of Moira Jones in 2008 in Glasgow, Scotland. He fled back to Nálepkovo after the incident but was linked to the crime, traced and returned to Scotland. He is now serving a life sentence after being tried and found guilty in 2009; in 2018 it was revealed that Harcar had been transferred to a Slovakian prison."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "nalepkovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

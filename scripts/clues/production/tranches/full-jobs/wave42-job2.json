@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 8278,
+    "attempt": 8221,
+    "place_id": "gn-5113775",
+    "input": {
+      "place": {
+        "place_id": "gn-5113775",
+        "name": "Cornwall",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.44482,
+        "lon": -74.0157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cornwall, New York",
+          "url": "https://en.wikipedia.org/wiki/Cornwall,_New_York",
+          "text": "Cornwall is a town in Orange County, New York, United States, approximately 50 miles (80 km) north of New York City on the western shore of the Hudson River. As of the 2020 census, the population was at 12,884. Cornwall has become a bedroom community for cities in the Hudson Valley and Greater New York metropolitan areas; commuter rail service to North Jersey and New York City is available via the Salisbury Mills–Cornwall train station, operated by NJ Transit on behalf of Metro-North Railroad, and the town is located less than an hour from the George Washington Bridge with access to major commuter routes such as the New York State Thruway and the Palisades Parkway. Cornwall also has a noteworthy connection with the United States Military, largely due to its geographic proximity to West Point and local airport infrastructure.\nCornwall's Main Street includes gift shops, taverns, restaurants, coffeehouses, yoga studios and boutiques. Government offices, churches, parks, the riverfront, and St. Luke's Cornwall Hospital, a part of the Montefiore Health System, are situated within walking distance of downtown. The town is a designated Tree City.\nCornwall was the top selection to represent New York State in \"The Best Places to Raise Kids 2013\" by Bloomberg Business Week magazine.\nThe television show Best Medicine is filmed on location in Cornwall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "cornwall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8279,
+    "attempt": 8222,
+    "place_id": "gn-8029812",
+    "input": {
+      "place": {
+        "place_id": "gn-8029812",
+        "name": "St Kilda West",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.85988,
+        "lon": 144.97108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "St Kilda West",
+          "url": "https://en.wikipedia.org/wiki/St_Kilda_West",
+          "text": "St Kilda West is an inner suburb in Melbourne, Victoria, Australia, 5 km south of Melbourne's Central Business District, located within the City of Port Phillip local government area. St Kilda West recorded a population of 2,951 at the 2021 census.\nSt Kilda West is bounded by Albert Park and Canterbury Road in the north-east and south-east, West Beach Road, Scoops Lane and Beaconsfield Parade in the south-west, Port Phillip Bay in the west, and Fraser Street in the north and north-west. Fraser Street was the western boundary of the former City of St Kilda, now part of the City of Port Phillip.\nIt is an almost exclusively residential area characterised by a mix of Victorian terraces, modest Edwardian villas, interwar and post war walk-up flats, as well as some 1960s-70s hi-rise towers facing Port Phillip bay. The suburb's community and commercial facilities (including schools and shops) are located in nearby suburbs, and it is well served by public transport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "st kilda west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "kilda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8280,
+    "attempt": 8223,
+    "place_id": "gn-11592169",
+    "input": {
+      "place": {
+        "place_id": "gn-11592169",
+        "name": "Kingswells",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.15798,
+        "lon": -2.22426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingswells",
+          "url": "https://en.wikipedia.org/wiki/Kingswells",
+          "text": "Kingswells is a village and suburb of Aberdeen, Scotland, situated west of the city and to the east of Westhill which lies on the other side of the Aberdeen Western Peripheral Route bypass (part of the A90 road).\nKingswells has a primary school, a doctor's surgery, a veterinary practice (Ardene), a community centre, a Co-op convenience store, a garage, a beauty salon, and a church. For food and leisure, the village hosts two take-away outlets, a restaurant/café and a pub at the Four Mile.\nNext to the village lies the Prime Four Business Park, which features offices of many major oil and gas companies, a hotel, gym and Starbucks coffee shop, along with a dentist's surgery.\nAlthough Kingswells does not have a secondary school, buses operate regularly, providing transport to nearby secondary schools such as Bucksburn Academy.\nThe village is served by public transport, including the McGill's service 14, which runs between Kingswells and Aberdeen City Centre on weekdays. From the park and ride facility, Stagecoach Bluebird services 5 and 6 connect Kingswells with Westhill and Aberdeen, along with service 218 to Alford and Aberdeen. The area also benefits from easy access to Bridge of Don and Dyce via the AWPR, offering convenience for those working at Aberdeen Airport and nearby industrial estates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "kingswells",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8281,
+    "attempt": 8224,
+    "place_id": "gn-11980001",
+    "input": {
+      "place": {
+        "place_id": "gn-11980001",
+        "name": "Locust Point",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.26945,
+        "lon": -76.59204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Locust Point, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Locust_Point,_Baltimore",
+          "text": "Locust Point is a peninsular neighborhood in Baltimore, Maryland. Located in South Baltimore, the neighborhood is entirely surrounded by the Locust Point Industrial Area; the traditional boundaries are Lawrence street to the west and the Patapsco River to the north, south, and east. It once served as a center of Baltimore's Polish-American, Irish-American and Italian-American communities; in more recent years Locust Point has seen gradual gentrification with the rehabilitation of Tide Point and Silo Point. The neighborhood is also noted as being the home of Fort McHenry and the western end of its namesake tunnel that carries eight lanes of Interstate 95 under the river.\nLocust Point has been called \"Baltimore's Ellis Island\" because the neighborhood was once the third largest point of entry for immigrants to the United States after Ellis Island and the Port of Philadelphia. From 1868 until the closure of the Locust Point piers in 1914, 1.2 million European immigrants entered Baltimore through Locust Point.\nIt was listed on the National Register of Historic Places in 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "locust point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "locust",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8282,
+    "attempt": 8225,
+    "place_id": "gn-3046027",
+    "input": {
+      "place": {
+        "place_id": "gn-3046027",
+        "name": "Ráckeresztúr",
+        "country": "Hungary",
+        "subdivision": "Fejér",
+        "lat": 47.2736,
+        "lon": 18.83343
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ráckeresztúr",
+          "url": "https://en.wikipedia.org/wiki/Ráckeresztúr",
+          "text": "Ráckeresztúr is a village in Fejér County, Hungary. It is situated in the Martonvásár District of Fejér County, about 30 km south-west of Budapest on the broad alluvial plain between the Vértes Hills and the Danube. The settlement occupies 35.3 km2 and had 3,581 inhabitants at the 2022 census, giving a population density just above 100 per square kilometre. It lies on the left bank of the Szent László-patak, a minor stream draining the mezzanine between Lake Velence and the Danube, and functions today as a commuter village with direct road links to the M7 motorway and suburban rail connections through nearby Martonvásár.\nThe first extant written reference to the locality—then simply \"Keresztúr\"—occurs in a 1347 boundary charter issued during the reign of Louis I, while archaeological surface finds point to earlier Avar, Celtic and Roman activity. The prefix rác-, denoting Southern-Slav (Serb) settlers, became attached after Orthodox farmers repopulated the area circa 1629 following the long Turkish wars. Baron Anselm Fleissemann purchased the estate in 1717 and soon financed a single-nave Baroque church dedicated to the Exaltation of the Holy Cross; construction stretched from the 1720s to its vaulting in 1769, and the tower was repeatedly rebuilt after fire and storm damage. Eighteenth-century tax rolls already list over ninety peasant houses and a handful of craftsmen; by 1830 the population had passed 1,300, rising steadily with new house-plots laid out on former pasture.\nViticulture has long underpinned the local economy: the village forms the south-eastern spur of the Etyek–Buda wine district, whose chalky loess over limestone favours high-acid white varieties such as Chardonnay, Irsai Olivér and Sauvignon Blanc. Mixed farming—principally maize, sunflower and livestock—remains typical across the loess plains of the Mezőföld, where cereals and oilseeds still covered about 70 percent of the arable land in 2013 and Fejér County hosted some of Hungary's largest cattle operations. A growing share of residents now commute to service-sector jobs in Budapest: the 2011 census showed that more than 15 percent of Ráckeresztúr's labour force travelled to the capital, placing the village firmly inside the Budapest agglomeration.\nThe municipal heritage register lists a free-standing late-Baroque Trinity column (1779) on the Szentlászló heath, First- and Second-World-War memorials in the Hősök park, and two nineteenth-century manor houses: the classically fronted Ivánkay residence, built for the Szüts–Ivánkay family in the 1820s, and the nearby Pázmándy–Petheő mansion, later remodelled by the Brauch family and set in an eight-hectare landscaped park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 404
+    },
+    "banned_terms": [
+      {
+        "term": "rackeresztur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8283,
+    "attempt": 8226,
+    "place_id": "gn-3174975",
+    "input": {
+      "place": {
+        "place_id": "gn-3174975",
+        "name": "Lazise",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.50499,
+        "lon": 10.73923
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lazise",
+          "url": "https://en.wikipedia.org/wiki/Lazise",
+          "text": "Lazise is a comune (municipality) and town in the Province of Verona in the Italian region Veneto, located about 120 kilometres (75 miles) west of Venice and about 20 kilometres (12 miles) northwest of Verona. It is situated on the eastern shore of Lake Garda. As of 31 December 2004, it had a population of 6,213 and an area of 65.0 square kilometres (25.1 sq mi). This geographical location empowers a position of great landscape value, but it also features elements of architectural value and of historical importance.\nLazise has many attractions: a thermal spring situated in Colà, two amusement parks (Canevaworld and Gardaland, the latter situated partly on the territory of Castelnuovo del Garda, where it is based, and partly on the territory of Lazise) and an extensive hilly agricultural landscape. Lazise records about 3.5 million tourist visits every year, figures that place it at 12th place in Italy among tourist destinations, and the first Italian lake destination.\nThe municipality of Lazise contains the frazioni (subdivisions, mainly villages and hamlets) of Colà and Pacengo.\nLazise borders the following municipalities: Bardolino, Bussolengo, Castelnuovo del Garda, Padenghe sul Garda, Pastrengo, Peschiera del Garda and Sirmione."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "lazise",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8284,
+    "attempt": 8227,
+    "place_id": "gn-4501066",
+    "input": {
+      "place": {
+        "place_id": "gn-4501066",
+        "name": "Cape May",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 38.93511,
+        "lon": -74.90601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cape May, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Cape_May,_New_Jersey",
+          "text": "Cape May, sometimes referred to as Cape May City, is a  city and seaside resort located at the southern tip of Cape May Peninsula in Cape May County in the U.S. state of New Jersey. Located on the Atlantic Ocean near the mouth of the Delaware Bay, it is one of the country's oldest vacation resort destinations. The city, and all of Cape May County, is part of the Ocean City metropolitan statistical area, and is part of the Philadelphia metropolitan area. It is the southernmost municipality in New Jersey, and is part of the South Jersey region of the state.\nAs of the 2020 United States census, the city's resident population was 2,768, a decrease of 839 (−23.3%) from the 2010 census count of 3,607, which in turn reflected a decline of 427 (−10.6%) from the 4,034 counted in the 2000 census. In the summer, Cape May's population is expanded by as many as 40,000 to 50,000 visitors. The entire city of Cape May is designated the Cape May Historic District, a National Historic Landmark due to its concentration of Victorian architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "cape may",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cape",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "may",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8285,
+    "attempt": 8228,
+    "place_id": "gn-5097224",
+    "input": {
+      "place": {
+        "place_id": "gn-5097224",
+        "name": "Demarest",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.95732,
+        "lon": -73.96347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Demarest, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Demarest,_New_Jersey",
+          "text": "Demarest is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 4,981, an increase of 100 (+2.0%) from the 2010 census count of 4,881, which in turn reflected an increase of 36 (+0.7%) from the 4,845 counted in the 2000 census. Located in the northeastern corner of New Jersey and its Gateway Region, Demarest is part of the New York City Metropolitan Area.\nDemarest was formed by an act of the New Jersey Legislature on April 8, 1903, from portions of Harrington Township and Palisades Township. The borough was named for the Demarest family and for the Demarest train station, which had in turn been named for Ralph S. Demarest, who was a director of the Northern Railroad of New Jersey that built the station and represented the area in both the New Jersey General Assembly and the New Jersey Senate in the mid-19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "demarest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8286,
+    "attempt": 8229,
+    "place_id": "gn-5099129",
+    "input": {
+      "place": {
+        "place_id": "gn-5099129",
+        "name": "Ho-Ho-Kus",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.99649,
+        "lon": -74.10125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ho-Ho-Kus, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ho-Ho-Kus,_New_Jersey",
+          "text": "Ho-Ho-Kus (English pronunciation: /hoʊˈhoʊkəs/ ) is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 4,258, an increase of 180 (+4.4%) from the 2010 census count of 4,078, which in turn reflected an increase of 18 (+0.4%) from the 4,060 counted in the 2000 census. The borough is the home of several historical landmarks, including the Ho-Ho-Kus Inn and The Hermitage.\nHo-Ho-Kus was incorporated as a borough by an act of the New Jersey Legislature on October 12, 1908, from what had originally been the borough of Orvil, which was in turn created on March 8, 1905, from portions of Orvil Township.\nAs of the 2000 census, Ho-Ho-Kus was the 15th-wealthiest community in New Jersey with a per capita money income of $63,594 as of 1999, an increase of 36.9% from the $46,451 recorded in 1989. The borough's median household income was $165,827 in 2013. In 2011, New Jersey Monthly magazine named Ho-Ho-Kus the best place to live in the state of New Jersey, citing its affluence, low crime rate and the quality of its school system, as well as its proximity to New York City and other major commercial destinations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "ho ho kus",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ho",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "kus",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8287,
+    "attempt": 8230,
+    "place_id": "gn-5921091",
+    "input": {
+      "place": {
+        "place_id": "gn-5921091",
+        "name": "Chetwynd",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 55.69988,
+        "lon": -121.63627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chetwynd, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Chetwynd,_British_Columbia",
+          "text": "Chetwynd  is a district municipality located in the eastern foothills of the Rocky Mountains, in northeastern British Columbia, Canada. Situated on an ancient floodplain, it is the first town eastbound travellers encounter after emerging from the Rockies along Highway 97, and acts as the gateway to the Peace River Country. The town developed during the construction of infrastructure through the Rocky Mountains in the 1950s; additionally, it was used as a transshipment point during the building of hydroelectric dams, in the 1960s and 1970s, and the new town of Tumbler Ridge, in the early 1980s. Home to approximately 2,600 residents, the town’s population has increased little—if at all—since the 1980s, but is significantly younger than the provincial average.\nOnce known as Little Prairie, the community adopted its name in honour of provincial politician Ralph Chetwynd, just prior to its incorporation, in 1962. The 64-square-kilometre (25 sq mi) municipality consists of the town, a community forest, and four exclave properties. Chetwynd has dozens of chainsaw carvings displayed throughout the town as public art. It is home to a Northern Lights College campus. Nearby, there are four provincial parks, two lakes, and several recreational trails.\nHighways 29 and 97 intersect in town; the east–west Highway 97 connects the town to Prince George and Dawson Creek while the north–south Highway 29 connects Tumbler Ridge and Hudson's Hope. A rail line branches-off in three directions: northward to Fort St. John, east to Dawson Creek, and west through the Rockies to Prince George. The Chetwynd economy is dominated by the primary industries of forestry, fossil fuel extraction, and transportation. Chetwynd is a member municipality in the Peace River Regional District and, as of 2021, is represented in provincial politics by BC United MLA Mike Bernier (elected in 2013)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "chetwynd",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8288,
+    "attempt": 8231,
+    "place_id": "gn-653708",
+    "input": {
+      "place": {
+        "place_id": "gn-653708",
+        "name": "Katajanokka",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.16587,
+        "lon": 24.97133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katajanokka",
+          "url": "https://en.wikipedia.org/wiki/Katajanokka",
+          "text": "Katajanokka (Finnish: [ˈkɑtɑjɑˌnokːɑ]; Swedish: Skatudden) is a neighbourhood of Helsinki, Finland, with around 5,000 inhabitants in 2023. The district is located adjacent to the immediate downtown area, though in the first major town plan for Helsinki from the mid-18th century, the area fell outside the fortifications planned to encircle the city.\nOriginally, Katajanokka was a headland of the Helsinki peninsula but is now technically an island, as a small canal was dug across the base of the headland in the 19th century. There are four bridges across the canal connecting Katajanokka with the Helsinki Market Square and Aleksanterinkatu area in mainland Helsinki.\nBuildings in Katajanokka include the former Katajanokka prison (now a Tribute Portfolio hotel by Marriott), the Uspenski Cathedral, the Katajanokka Casino, Wanha Satama, the Stora Enso head office designed by Alvar Aalto, the building of the Ministry for Foreign Affairs and the Katajanokka Terminal used by Viking Line. Katajanokka forms a central part of the South Harbour. In the 19th and 20th centuries Katajanokka was known as an important hub for goods transport and even became the largest import harbour in Finland, but since then its role as a residential area has increased. Katajanokka is served by the Helsinki tram lines 4 and 5.\nKatajanokka is one of the most distinguished neighbourhoods in Helsinki. Katajanokka's residents have included former Finnish President (from 1982 to 1994) Mauno Koivisto, composer Einojuhani Rautavaara and author-artist Tove Jansson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "katajanokka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8289,
+    "attempt": 8232,
+    "place_id": "gn-655626",
+    "input": {
+      "place": {
+        "place_id": "gn-655626",
+        "name": "Joroinen",
+        "country": "Finland",
+        "subdivision": "North Savo",
+        "lat": 62.17823,
+        "lon": 27.83165
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joroinen",
+          "url": "https://en.wikipedia.org/wiki/Joroinen",
+          "text": "Joroinen (Finnish: [ˈjoroi̯nen]; Swedish: Jorois) is a municipality in the North Savo region of Finland. The municipality has a population of approximately 4,626 people and covers an area of 982 square kilometers.\nThe bull's head on the coat of arms refers to the municipality's position in the development of agriculture in the 19th century, as Joroinen was home to a dairy and livestock school and the first livestock breeding association in Eastern Finland, and the round shots around the bull's head reminds the ancient location of the parish near the historical Swedish-Russian border and the battles fought there. The coat of arms was designed by Olof Eriksson and was adopted on June 12, 1953.\nJoroinen's signature dish is kapapaisti made from dried fish and pork, but in the 1980s, a potato casserole containing vendace was also named the traditional parish dish of Joroinen. At the Finnish Sports Gala, Joroinen was awarded as the 2021 most mobile municipality in Finland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "joroinen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8290,
+    "attempt": 8233,
+    "place_id": "gn-5102798",
+    "input": {
+      "place": {
+        "place_id": "gn-5102798",
+        "name": "Point Pleasant Beach",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.09123,
+        "lon": -74.04791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Point Pleasant Beach, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Point_Pleasant_Beach,_New_Jersey",
+          "text": "Point Pleasant Beach is a coastal borough situated on the Jersey Shore, and the northernmost community directly facing the Atlantic Ocean within Ocean County, in the U.S. state of New Jersey. It lies at the northern end of the Barnegat Peninsula, which serves as a barrier island separating Barnegat Bay from the open Atlantic Ocean. The borough's name is derived from its location.\nAs of the 2020 United States census, the borough's population was 4,766, an increase of 101 (+2.2%) from the 2010 census count of 4,665, which in turn reflected a decline of 649 (−12.2%) from the 5,314 counted in the 2000 census.\nPoint Pleasant Beach was incorporated as a borough by an act of the New Jersey Legislature on May 18, 1886, from portions of Brick Township, subject to the results of a referendum passed the previous day. Point Pleasant Beach lies immediately to the east of Point Pleasant, an entirely separate municipality within Ocean County.\nThe borough's boardwalk is approximately one mile long, spanning the coastline from the Manasquan Inlet at the north to New Jersey Avenue in the south. The central third of the boardwalk is largely amusement rides, the Jenkinson's Aquarium, the Jenkinson's Arcades, pizza joints, ice cream parlors, games-of-chance and miniature golf courses. There are fees of up to $10 per person age 12 or over to access the various beaches, as well as parking fees of up to $2.50 per hour or more.\nThe beach was ranked eighth-best in New Jersey in the \"2008 Top 10 Beaches Contest\" sponsored by the New Jersey Marine Sciences Consortium."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "point pleasant beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pleasant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8291,
+    "attempt": 8234,
+    "place_id": "gn-2641284",
+    "input": {
+      "place": {
+        "place_id": "gn-2641284",
+        "name": "North Petherton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.09243,
+        "lon": -3.01549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Petherton",
+          "url": "https://en.wikipedia.org/wiki/North_Petherton",
+          "text": "North Petherton is a town and civil parish in Somerset, England, lying on the edge of the eastern foothills of the Quantocks, about 2.5 miles (4 km) south of Bridgwater; in the east, the parish extends into the Somerset Levels. The parish includes the villages of North Newton and Huntworth, and the hamlets of Northmoor Green (also called Moorland), Shearston and Woolmersdon. The parish population at the 2021 census was 10,050, an increase from the 6,730 recorded in 2011.\nDating from at least the 10th century and an important settlement in Saxon times, North Petherton became a town only in the late 20th century, until then claiming to be the largest village in England. A former market and administrative centre, North Petherton is now largely a dormitory town for workers in Bridgwater and Taunton. The centre of the town is designated an area of archaeological potential, and a number of buildings have been given listed building status."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "north petherton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "petherton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8292,
+    "attempt": 8235,
+    "place_id": "gn-2645756",
+    "input": {
+      "place": {
+        "place_id": "gn-2645756",
+        "name": "Keswick",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.59947,
+        "lon": -3.13256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keswick, Cumbria",
+          "url": "https://en.wikipedia.org/wiki/Keswick,_Cumbria",
+          "text": "Keswick ( KEZ-ik) is a market town and civil parish in the Cumberland unitary authority area of Cumbria, England. It lies within the Lake District National Park, just north of Derwentwater and 4 mi (6.4 km) from Bassenthwaite Lake. The parish had a population of 4,658 at the 2021 census.\nThere is evidence of prehistoric occupation of the area, but the first recorded mention of the town dates from the 13th century, when Edward I of England granted a charter for Keswick's market, which has maintained a continuous 700-year existence. The town was an important mining area and has been known as a holiday centre from the 18th century; tourism has been its principal industry for more than 150 years. Its features include the Moot Hall; a modern theatre, the Theatre by the Lake; one of Britain's oldest surviving cinemas, the Alhambra; and the Keswick Museum and Art Gallery in the town's largest open space, Fitz Park. Among the town's annual events is the Keswick Convention, an Evangelical gathering attracting visitors from many countries.\nKeswick became widely known for its association with the poets Samuel Taylor Coleridge and Robert Southey. Together with their fellow Lake Poet William Wordsworth, based at Grasmere, 12 mi (19 km) away, they made the scenic beauty of the area widely known to readers in Britain and beyond. In the late 19th century and into the 20th, Keswick was the focus of several important initiatives by the growing conservation movement, often led by Hardwicke Rawnsley, vicar of the nearby Crosthwaite parish and co-founder of the National Trust, which has built up extensive holdings in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "keswick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8293,
+    "attempt": 8236,
+    "place_id": "gn-2963827",
+    "input": {
+      "place": {
+        "place_id": "gn-2963827",
+        "name": "Gweedore",
+        "country": "Ireland",
+        "subdivision": "Ulster",
+        "lat": 55.05028,
+        "lon": -8.23194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gweedore",
+          "url": "https://en.wikipedia.org/wiki/Gweedore",
+          "text": "Gweedore ( gwee-DOR), officially known by its Irish language name Gaoth Dobhair ([ˌɡiː ˈd̪ˠoːɾʲ]), is a Gaeltacht (Irish-speaking) district and parish on the northwestern coast of County Donegal, Ireland. Gweedore includes the settlements of Brinlack, Bunbeg, Derrybeg, Crolly (partially), and Dunlewey.\nGweedore is sometimes described as one of Europe's most densely populated rural areas, and is the most populous Irish-speaking district in Ireland, with about 4,065 inhabitants. It stretches some 26 kilometres (16 mi) from Glasserchoo and Bloody Foreland in the north to Crolly in the south and around 14 kilometres (9 mi) inland from the Atlantic coast to Dunlewey in the east. Gweedore is at the western end of the Barony of Kilmacrenan. Gweedore and the neighbouring districts of Cloughaneely and the Rosses are collectively known locally as 'the Three Parishes'; they form a social and cultural region distinct from the rest of the county, with Gweedore serving as the main centre for socialising and industry.\nThe district is known for being a cradle of Irish culture, with Irish customs, traditional music, Gaelic games and the Irish language playing a key role in the lives of the local people. This, along with its scenery and many beaches, has made the area a popular tourist destination, especially with visitors from Northern Ireland. Gweedore is overlooked by County Donegal's highest peak, Errigal. \nIt is the home of the northwest regional studios of the Irish-language radio service RTÉ Raidió na Gaeltachta, as well as an external campus of the University of Galway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "gweedore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8294,
+    "attempt": 8237,
+    "place_id": "gn-2991630",
+    "input": {
+      "place": {
+        "place_id": "gn-2991630",
+        "name": "Morzine",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.18149,
+        "lon": 6.70664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morzine",
+          "url": "https://en.wikipedia.org/wiki/Morzine",
+          "text": "Morzine (French pronunciation: [mɔʁzin]; Arpitan: Morzena), alternatively known as Morzine-Avoriaz (pronounced [mɔʁzin avɔʁja]), is an alpine commune on the Swiss border in the Haute-Savoie department in the Auvergne-Rhône-Alpes region in Southeastern France.\nIt is located in the French-Swiss Chablais historical area, south-southeast of Évian-les-Bains and just west of Champéry in Valais. The town of Morzine is situated in the French Alps' Vallée d'Aulps (Aulps Valley), which stretches from Morzine to La Vernaz in the northwest.\nA traditional market town in the heart of the Portes du Soleil, Morzine is dominated by chalets spread across a river gorge, bordered by partially wooded slopes which provide skiing even in poor weather conditions. Situated at an altitude of about 1,000 m, it is one of the most northerly of the French Alpine resorts, weatherwise benefiting from the Mont Blanc microclimate. The locality enjoys panoramic mountain views and modern ski facilities, as well as hotels and restaurants in the town itself. The ski resort of Avoriaz is located on the territory of the commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "morzine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8295,
+    "attempt": 8238,
+    "place_id": "gn-3179680",
+    "input": {
+      "place": {
+        "place_id": "gn-3179680",
+        "name": "Castel Gandolfo",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 41.74875,
+        "lon": 12.64975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castel Gandolfo",
+          "url": "https://en.wikipedia.org/wiki/Castel_Gandolfo",
+          "text": "Castel Gandolfo (UK: , US: , Italian: [kaˈstɛl ɡanˈdɔlfo]; Latin: Castrum Gandulphi), colloquially known as Castello in the Castelli Romani dialects, is a small town located 25 km (16 mi) southeast of Rome, in the Italian region of Lazio. Situated on a hilltop in the Alban Hills with panoramic views of Lake Albano, Castel Gandolfo is home to approximately 8,900 residents and is renowned as one of Italy's most scenic towns. It is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\").\nWithin the town's boundaries lies the Apostolic Palace of Castel Gandolfo, which has served as the summer residence and vacation retreat for most popes since 1626.  Although the palace is located within the boundaries of Castel Gandolfo, it holds an extraterritorial status as one of the properties of the Holy See and is not under Italian jurisdiction. It has been transformed into a museum and is now open to the public. Notwithstanding the main Apostolic Palace's current status as a museum, the Castel Gandolfo complex resumed its traditional status as the pope's summer residence and vacation retreat in July 2025.\nThe resort community encompasses almost the entire coastline of Lake Albano, which is surrounded by numerous summer residences, villas, and cottages that were constructed during the 17th century. It is also home to the Stadio Olimpico, which hosted the rowing events of the 1960 Rome Summer Olympics.\nCastel Gandolfo has several places of archaeological interest, including the Emissario del Lago Albano and the remains of the Villa of Domitian. The area is included within the boundaries of the Parco Regionale dei Castelli Romani (Regional Park of Castelli Romani). There are also many points of artistic interest, such as the Collegiate Church of St. Thomas of Villanova, designed by Gian Lorenzo Bernini."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 297
+    },
+    "banned_terms": [
+      {
+        "term": "castel gandolfo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gandolfo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8296,
+    "attempt": 8239,
+    "place_id": "gn-694073",
+    "input": {
+      "place": {
+        "place_id": "gn-694073",
+        "name": "Shypyntsi",
+        "country": "Ukraine",
+        "subdivision": "Chernivtsi",
+        "lat": 48.37598,
+        "lon": 25.75018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shypyntsi",
+          "url": "https://en.wikipedia.org/wiki/Shypyntsi",
+          "text": "Shypyntsi (Ukrainian: Шипинці; Romanian: Șipeniț), a village in Ukraine, is located within Chernivtsi Raion (district) of Chernivtsi Oblast (province), about 530 kilometers (330 mi) driving distance southwest of Kyiv, and about 30 kilometers (19 mi) northwest from the provincial capital of Chernivtsi. Shypyntsi is about 48 kilometers (30 mi) from the Ukrainian/Romanian border, about 64 kilometers (40 mi) from the Ukrainian/Moldovan border, and about 80 kilometers (50 mi) from the city of Suceava, Romania. Boxing champion Oleksander Usyk is from this village, which is located on the left bank of the Prut River, amid rolling hills covered with farms and forests, in the region generally known as the Dniester Hills. It belongs to Kitsman urban hromada, one of the hromadas of Ukraine.\nUntil 18 July 2020, Shypyntsi belonged to Kitsman Raion. The raion was abolished in July 2020 as part of the administrative reform of Ukraine, which reduced the number of raions of Chernivtsi Oblast to three. The area of Kitsman Raion was split between Chernivtsi Raion and Vyzhnytsia Raion, with Shypyntsi being transferred to Chernivtsi Raion.\nTo the north of the village are the ancient ruins of a Cucuteni-Trypillian culture settlement, dating back to the 5th Millennium to early 4th Millennium BC. Archaeological excavation began at this site in the late 19th century by a team of Ukrainians: J. Shombathy, R. Kindle, F. Volkov, O. Kandyba and Tatiana Sergeyevna Passek. Houses, earthenware, and ceramic shards were discovered, and in 1938 Kandyba published a collection of images from this site of beautifully decorated pottery.\nThis settlement was part of the Neolithic Cucuteni-Trypillian culture, which lasted from 5100 to 2750 BC, and which had some of the largest communities in the world at the time. The members of this society plowed their farms, raised livestock, hunted and fished, created textiles, and developed a beautiful and highly refined style of pottery with very intricate designs. Their settlements were built in oval or circular layouts, with concentric rows of houses interconnected to form rings around the center of the community, where often a sanctuary building would be found. They left behind a large number of clay figurines, many of which are regarded as Goddess fetishes. For over 2500 years their culture flourished with no evidence left behind that would indicate they experienced warfare. However, at the beginning of the Bronze Age their culture disappeared, the reasons for which are still debated, but possibly as a result of invaders coming from the Steppes to the east.\nThe artifacts taken from the Shypyntsi ruins are kept in museums in Chernivtsi and Vienna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 427
+    },
+    "banned_terms": [
+      {
+        "term": "shypyntsi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8297,
+    "attempt": 8240,
+    "place_id": "gn-8604999",
+    "input": {
+      "place": {
+        "place_id": "gn-8604999",
+        "name": "Hill Air Force Base",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 41.11118,
+        "lon": -111.97712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hill Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Hill_Air_Force_Base",
+          "text": "Hill Air Force Base (IATA: HIF, ICAO: KHIF, FAA LID: HIF) is a major U.S. Air Force (USAF) base located in Davis County, Utah, just south of the city of Ogden, and bordering the Cities of Layton, Clearfield, Riverdale, Roy, and Sunset with its largest border immediately adjacent to Clearfield and Layton. It is about 30 miles (48 km) north of Salt Lake City. The base was named in honor of Major Ployer Peter Hill of the U.S. Army Air Corps, who died in 1935 test-flying NX13372, the original Model 299 prototype of the B-17 Flying Fortress bomber. As of 2018, Hill AFB is the sixth-largest employer in the state of Utah.\nHill AFB is the home of the Air Force Materiel Command's (AFMC) Ogden Air Logistics Complex (OO-ALC) which is the worldwide manager for a wide range of aircraft, engines, missiles, software, avionics, and accessories components. The OO-ALC is part of the Air Force Sustainment Center.\nThe host unit at Hill AFB is the AFMC's 75th Air Base Wing (75 ABW), which provides services and support for the OO-ALC and its subordinate organizations. Additional tenant units at Hill AFB include operational fighter wings of Air Combat Command (ACC) and Air Force Reserve Command (AFRC)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "hill air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 8639,
+    "attempt": 8581,
+    "place_id": "gn-2793279",
+    "input": {
+      "place": {
+        "place_id": "gn-2793279",
+        "name": "La Roche-en-Ardenne",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.18361,
+        "lon": 5.57547
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Roche-en-Ardenne",
+          "url": "https://en.wikipedia.org/wiki/La_Roche-en-Ardenne",
+          "text": "La Roche-en-Ardenne (French pronunciation: [la ʁɔʃ ɑ̃.n‿aʁdɛn] ; Walloon: Li Rotche) is a city and municipality of Wallonia located in the province of Luxembourg and the arrondissement of Marche-en-Famenne, Belgium. Lying beside a bend in the River Ourthe, the small town of La Roche-en-Ardenne is one of the most popular tourist destinations in the Ardennes. Its name is derived from its position on a rock commanding the river.\nOn 1 January 2007 the municipality, which covers 147.52 km2, had 4,348 inhabitants, giving a population density of 29.5 inhabitants per km2.\nThe municipality consists of the following districts: Beausaint, Halleux, Hives, La Roche-en-Ardenne, Ortho, and Samrée. Other population centres include Bérismenil, Buisson, Cielle, Floumont, Herlinval, Hubermont, Lavaux, Maboge, Mierchamps, Mousny, Nisramont, Ronchampays, Ronchamps, Roupage, Thimont, Vecmont, and Warempage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "la roche en ardenne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "roche",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "en",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ardenne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8640,
+    "attempt": 8582,
+    "place_id": "gn-3130706",
+    "input": {
+      "place": {
+        "place_id": "gn-3130706",
+        "name": "Alba de Tormes",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 40.82664,
+        "lon": -5.51237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alba de Tormes",
+          "url": "https://en.wikipedia.org/wiki/Alba_de_Tormes",
+          "text": "Alba de Tormes is a municipality in the province of Salamanca, western Spain, part of the autonomous community of Castile and León. The town is on the River Tormes upstream from the city of Salamanca. Alba gave its name to one of Spain's most important dukedoms, who had their ancestral seat in the Castillo de los Duques de Alba. St Teresa of Ávila died at a convent she founded in the town and is buried there.\nFrom the 12th to the 19th century, the monastery of San Leonardo was located outside the walls of Alba.\nDuring medieval times, a Jewish community thrived in Alba de Tormes, with the first record of Jewish presence dating to 1140 AD. The community thrived until the 1492 expulsion of the Jews."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "alba de tormes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alba",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tormes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8641,
+    "attempt": 8583,
+    "place_id": "gn-3516642",
+    "input": {
+      "place": {
+        "place_id": "gn-3516642",
+        "name": "Singuilucan",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 19.96759,
+        "lon": -98.51858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Singuilucan",
+          "url": "https://en.wikipedia.org/wiki/Singuilucan",
+          "text": "Singuilucan is a town and one of the 84 municipalities of Hidalgo, in central-eastern Mexico. The municipality covers an area of 334.1 km2 (129.0 sq mi). As of 2005, the municipality had a total population of 13,143.\nThe name of Singuilucan has been erroneously given as \"lugar de lodo o de mucho lodo\" (place of silt or too much mud), which in Nahuatl would be Zoquilocan. But the pre-Columbian glyph for this town clearly shows a hill with quelites (quilitl means green herbs, tzintli in Nahuatl) growing at its base. It also shows a blade of a knife, alluding to the obsidian blade industry of Teotihuacan, which was based in this area, as well as there is nearby \"El Cerro de las Navajas\" (\"hill of the knives\").\nSo the correct translation of Singuilucan is tzinquilocan, \"the place at the base of the mountain of quelites\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "singuilucan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8642,
+    "attempt": 8584,
+    "place_id": "gn-3667760",
+    "input": {
+      "place": {
+        "place_id": "gn-3667760",
+        "name": "Subachoque",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 4.92614,
+        "lon": -74.17299
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Subachoque",
+          "url": "https://en.wikipedia.org/wiki/Subachoque",
+          "text": "Subachoque is a municipality and town of Colombia in the Western Savanna Province, part of the department of Cundinamarca. The municipality is situated on the Bogotá savanna with the urban centre at an altitude of 2,663 metres (8,737 ft) at a distance of 45 kilometres (28 mi) from the capital Bogotá. Subachoque is part of the Metropolitan Area of Bogotá and borders Zipaquirá, Tabio and Tenjo in the east, Zipaquirá and Pacho in the north, San Francisco and Supatá in the west and Madrid and El Rosal in the south.\nSubachoque is composed of 17 subdivisions: Altania, Canica Alta, Canica Baja, Cascajal, El Guamal, El Pantano, El Páramo, El Tobal, Galdámez, La Cuesta, La Pradera, La Unión, La Yegüera, Llanitos, Rincón Santo, Santa Rosa, Tibagota, El Valle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "subachoque",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8643,
+    "attempt": 8585,
+    "place_id": "gn-5102147",
+    "input": {
+      "place": {
+        "place_id": "gn-5102147",
+        "name": "Oceanport",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.31817,
+        "lon": -74.01514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oceanport, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Oceanport,_New_Jersey",
+          "text": "Oceanport is a borough situated in the Jersey Shore region, within Monmouth County, in the U.S. state of New Jersey, specifically Central Jersey. As of the 2020 United States census, the borough's population was 6,150, an increase of 318 (+5.5%) from the 2010 census count of 5,832, which in turn reflected an increase of 25 (+0.4%) from the 5,807 counted in the 2000 census.\nOceanport was formed as a borough by an act of the New Jersey Legislature on April 6, 1920, from portions of Eatontown Township (now Eatontown), based on the results of a referendum held on May 11, 1920.\nNew Jersey Monthly magazine ranked Oceanport as its 4th best place to live in its 2008 rankings of the \"Best Places To Live\" in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "oceanport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8644,
+    "attempt": 8586,
+    "place_id": "gn-5324249",
+    "input": {
+      "place": {
+        "place_id": "gn-5324249",
+        "name": "Anza",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.55503,
+        "lon": -116.67363
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anza, California",
+          "url": "https://en.wikipedia.org/wiki/Anza,_California",
+          "text": "Anza is a census-designated place in Riverside County, California, in the Anza Valley, a semi-arid region at a mean elevation of 3,921 feet (1,195 m) above sea level. It is located 13 miles (21 km) south of Idyllwild, 32 miles (51 km) east-northeast of Temecula, 40 miles (64 km) southwest of Palm Springs, and 90 miles (140 km) northeast of San Diego, being traversed by State Route 371.  Anza is on the Pacific Crest Trail and the Juan Bautista de Anza National Historic Trail.  The population was 3,075 at the 2020 census.\nLocally, Anza and several other mountain communities (including Garner Valley, Idyllwild, Pinyon Pines and Aguanga) are collectively referred to as \"the Hill.\"\nThe ZIP code is 92539, and the community is inside area code 951."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "anza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8645,
+    "attempt": 8587,
+    "place_id": "gn-5602909",
+    "input": {
+      "place": {
+        "place_id": "gn-5602909",
+        "name": "Orofino",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 46.47935,
+        "lon": -116.25514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orofino, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Orofino,_Idaho",
+          "text": "Orofino oro-FEE-noh; (\"fine gold\" [ore] in Spanish) is a city in and the county seat of Clearwater County, Idaho, United States, along Orofino Creek and the north bank of the Clearwater River. It is the major city within the Nez Perce Indian Reservation. The population was 2,656 at the time of the 2020 census.\nNearby is the historical \"Canoe Camp,\" where the Lewis and Clark expedition built five new dugout canoes and embarked on October 7, 1805, downstream to the Pacific Ocean. Some four miles (6 km) north is the Dworshak Dam, third-highest dam in the United States, completed in the early 1970s. Nearby is the Dworshak National Fish Hatchery, started to try to compensate for the loss of migratory fish upstream after the dam was constructed.\nOriginally the name was two words, Oro Fino, applied to a gold mining camp established in 1861 two miles (3 km) south of Pierce. When the United States government opened up the Nez Percé reservation to non-tribal settlers in 1895, thousands of European Americans rushed to lay claims to land. Clifford Fuller set up a trading post on his new homestead. The town (Orofino-on-the-Clearwater) was established the next year. The railroad, later part of the Camas Prairie Railroad, was constructed from Lewiston in 1899.\nOrofino is home to state institutions: Idaho State Hospital North and the Idaho Correctional Institution–Orofino. These two facilities are located adjacent to Orofino High School, which includes the junior high or middle school grades, and whose mascot is the Maniac.\nOrofino hosts an annual July 4 celebration, as well as the Clearwater County Fair and Lumberjack Days in late summer. Each spring, Boomershoot, an annual precision rifle event, is held nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "orofino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8646,
+    "attempt": 8588,
+    "place_id": "gn-6075491",
+    "input": {
+      "place": {
+        "place_id": "gn-6075491",
+        "name": "Mistissini",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 50.41832,
+        "lon": -73.86895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mistissini",
+          "url": "https://en.wikipedia.org/wiki/Mistissini",
+          "text": "Mistissini (Cree: ᒥᔅᑎᓯᓃ, romanized: Mistisinî meaning Big Rock) is a Cree town located in the south-east corner of the largest natural lake in Quebec, Lake Mistassini. The town is inside the boundaries of the Baie-James Municipality and is the second largest Cree community with a population of 3,731 people in 2021. The surface area of the town is 807.75 square kilometres (311.87 sq mi) (Category I land, as defined in the James Bay and Northern Quebec Agreement).\nMistissini is part of the Grand Council of the Crees (Eeyou Istchee) and the Cree Regional Authority. The Cree School Board and the Cree Construction Company have their head offices here.\nThe town is about 90 kilometres (56 mi) north-east from the town of Chibougamau, connected by a paved road. Mistissini has a fishing lodge with 20 rooms and a restaurant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "mistissini",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8647,
+    "attempt": 8589,
+    "place_id": "gn-6113027",
+    "input": {
+      "place": {
+        "place_id": "gn-6113027",
+        "name": "Prescott",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.71681,
+        "lon": -75.51604
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prescott, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Prescott,_Ontario",
+          "text": "Prescott is a town on the north shore of the Saint Lawrence River in the province of Ontario, Canada. The town is a  single-tier municipality located within the United Counties of Leeds and Grenville census division. In 2021, it had a population of 4,078. The Ogdensburg–Prescott International Bridge, 5 kilometres (3.1 mi) east of Prescott at Johnstown, crosses the Canada–United States border and connects the town with the city of Ogdensburg, New York.\nPrescott was founded in the early 19th century by Edward Jessup, a Loyalist soldier during the American Revolution, who named the village after a former Governor-in-Chief, Robert Prescott. Before 1834, the town was a part of Augusta township; however, in that year, the town became a police village and severed its ties with Augusta. The land here was ideal for settlement during the 18th and 19th centuries as it was situated between Montreal and Kingston along the St. Lawrence River at the head of the rapids."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "prescott",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8648,
+    "attempt": 8590,
+    "place_id": "gn-6690806",
+    "input": {
+      "place": {
+        "place_id": "gn-6690806",
+        "name": "Cranham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.56565,
+        "lon": 0.2659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cranham",
+          "url": "https://en.wikipedia.org/wiki/Cranham",
+          "text": "Cranham is a residential area of east London, and part of the London Borough of Havering. It is located 17.5 miles (28 km) east-northeast of Charing Cross and comprises an extensive built-up area to the north and a low density conservation area to the south surrounded by open land. It was historically a rural village in the county of Essex and formed an ancient parish. It is peripheral to London, forming the eastern edge of the urban sprawl. The economic history of Cranham is characterised by a shift from agriculture to housing development. As part of the suburban growth of London in the 20th century, Cranham significantly increased in population, becoming part of Hornchurch Urban District in 1934 and has formed part of Greater London since 1965. The 2011 Census population of Cranham was included in Upminster."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "cranham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8649,
+    "attempt": 8591,
+    "place_id": "gn-710334",
+    "input": {
+      "place": {
+        "place_id": "gn-710334",
+        "name": "Dachne",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.88448,
+        "lon": 34.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dachne, Sudak Municipality",
+          "url": "https://en.wikipedia.org/wiki/Dachne,_Sudak_Municipality",
+          "text": "Dachne (Ukrainian: Дачне; Russian: Дачное) is a village in the Sudak Municipality of the Autonomous Republic of Crimea, a territory recognized by a majority of countries as part of Ukraine and annexed by Russia as the Republic of Crimea.\nPreviously, the settlement was known as the Taraktash village (Crimean Tatar: Taraq Taş). Following the forced deportation of the Crimean Tatars in 1944, the Presidium of the Supreme Soviet of the Russian SFSR published a decree on May 18, 1948 renaming the settlement along with many others throughout Crimea from their native Crimean Tatar names to their current variants.\nDachne is located on Crimea's southern shore at an elevation of 69 metres (226 ft). Its population was 2,454 in the 2001 Ukrainian census. Current population: 2,628 (2014 Census)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "dachne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8650,
+    "attempt": 8592,
+    "place_id": "gn-8349126",
+    "input": {
+      "place": {
+        "place_id": "gn-8349126",
+        "name": "Mount Riverview",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.73074,
+        "lon": 150.63532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Riverview, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Mount_Riverview,_New_South_Wales",
+          "text": "Mount Riverview is a town off the Great Western Highway about 2 km NE of Blaxland in the Lower Blue Mountains, New South Wales, 70 kilometres west of the Sydney CBD, Australia. At the 2021 census, Mount Riverview had a population of 3,074 people.\nMount Riverview borders the townships/suburbs of Warrimoo, Blaxland, Emu Heights and Yellow Rock.\nMount Riverview has views over the Sydney area, including of Centrepoint Tower some 55 kilometres away. It has a general store, two churches, a wood turning and woodcraft centre, a public school, tennis courts, a water tank, a Chinese restaurant, two parks and a local fire brigade under the jurisdiction of the New South Wales Rural Fire Service.\nMount Riverview is part of the Federal Electoral Division of Macquarie (NSW)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "mount riverview",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "riverview",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8651,
+    "attempt": 8593,
+    "place_id": "gn-9972574",
+    "input": {
+      "place": {
+        "place_id": "gn-9972574",
+        "name": "Keilor Park",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.72025,
+        "lon": 144.85422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keilor Park",
+          "url": "https://en.wikipedia.org/wiki/Keilor_Park",
+          "text": "Keilor Park is a suburb in Melbourne, Victoria, Australia, 15 km (9.3 mi) north-west of Melbourne's Central Business District, located within the City of Brimbank local government area. Keilor Park recorded a population of 2,684 at the 2021 census.\nKeilor Park is bounded in the west by the Maribyrnong River, Tullamarine and Melbourne Airport in the north, in the east by Steele Creek and in the south by the Calder Highway.\nAccording to the 2001 ABS Census, 39% of the population is of Italian or Greek descent. The median age of the area is 37, though more of the population is below 35 or in their 50s. The most common sector of employment for men is manufacturing (25% of men) and for women retail (21% of women).\nThe suburb contains the Keilor Botanic Gardens."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "keilor park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "keilor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8652,
+    "attempt": 8594,
+    "place_id": "gn-11592280",
+    "input": {
+      "place": {
+        "place_id": "gn-11592280",
+        "name": "Faifley",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.92853,
+        "lon": -4.38509
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faifley",
+          "url": "https://en.wikipedia.org/wiki/Faifley",
+          "text": "Faifley (Scottish Gaelic: Fionn Bhealach, IPA:[ˈfjuːn̴̪ˈvɛɫ̪əx]) is a large estate forming part of the town of Clydebank, Scotland, adjoining the former village of Hardgate, with a population of approximately 5,001. Along with Duntocher and Hardgate, Faifley falls within West Dunbartonshire's Kilpatrick ward with a combined population of 12,719 in 2011.\nFaifley has in the past undergone many changes with many of the older housing removed, re-built or renovated. Faifley has two schools each with a corresponding church; Edinbarnet Primary (Non-Denominational) with the White Church and St Joseph's Primary(Roman Catholic) with St Joseph's church.\nAt the heart of the community until now, was \"Boabs\", a superstore conglomerate. The community centre also contained the Faifley Branch Library until it was closed in March 2011 by West Dunbartonshire Council. Faifley Library reopened on 6 December 2013 after a decision by West Dunbartonshire Council earlier that year. The Faifley Library is located at the rear of Edinbarnet Campus, off Craigpark Street, G81 5BS."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "faifley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8653,
+    "attempt": 8595,
+    "place_id": "gn-11979939",
+    "input": {
+      "place": {
+        "place_id": "gn-11979939",
+        "name": "Bolton Hill",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.30782,
+        "lon": -76.62573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolton Hill, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Bolton_Hill,_Baltimore",
+          "text": "Bolton Hill is a neighborhood in Baltimore, Maryland, with 20 blocks of mostly preserved buildings from the late 19th century. It is listed on the National Register of Historic Places, preserved as a Baltimore City Historic District, and included within the boundaries of Baltimore National Heritage Area. The neighborhood is bounded by North Avenue, Mount Royal Avenue, Cathedral Street, Dolphin Street, and Eutaw Place.  Bolton Hill is a largely residential neighborhood with three-story row houses with red brick, white marble steps, and high ceilings. There are also larger more ornate originally single-family houses, many houses of worship, parks, monuments, and a few large apartment buildings. Many significant residents have lived in the neighborhood, including F. Scott Fitzgerald, Woodrow Wilson, the Cone sisters, and Florence Rena Sabin.\nBolton Hill is within easy walking distance of the State Center station on the Baltimore Metro Subway and the Mt. Royal/MICA station on the Baltimore Light Rail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "bolton hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bolton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8654,
+    "attempt": 8596,
+    "place_id": "gn-12070072",
+    "input": {
+      "place": {
+        "place_id": "gn-12070072",
+        "name": "Porto",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.84395,
+        "lon": 14.25724
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porto, Naples",
+          "url": "https://en.wikipedia.org/wiki/Porto,_Naples",
+          "text": "Porto  (Italian: \"port\") is one of the thirty quarters (\"quartieri\") of the city of Naples. It covers 1.14 square kilometres (0.44 sq mi), and as of 2009, had 5738 inhabitants.\nPorto is in the 2nd municipality subdivision (which covers Avvocata, Mercato, Montecalvario, Pendino, Porto, and San Giuseppe), adjacent to the main passenger and freight terminals of the Port of Naples, in the historic part of the city.\nDuring the end of the 19th century and the beginning of the 20th, Porto was the subject of a demolition and urban renewal program.  Its strategic location near the port made it a target of Allied Forces bombings during World War II.\nProminent intact architectural landmarks in the area include the University of Naples and the Palazzo della Borsa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "porto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8655,
+    "attempt": 8597,
+    "place_id": "gn-1712832",
+    "input": {
+      "place": {
+        "place_id": "gn-1712832",
+        "name": "Gitagum",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.59667,
+        "lon": 124.40639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gitagum",
+          "url": "https://en.wikipedia.org/wiki/Gitagum",
+          "text": "Gitagum, officially the Municipality of Gitagum (Cebuano: Lungsod sa Gitagum; Tagalog: Bayan ng Gitagum), is a municipality in the province of Misamis Oriental, Philippines. The municipality is bounded on the north by Mindanao Sea, on the east by the Municipality of Laguindingan, on the south by the Municipality of Alubijid and on the west the Municipality of Libertad. It is approximately 40 km away from Cagayan de Oro. According to the 2024 census, it has a population of 19,269 people.\nThe municipality of Gitagum stretches along the shoreline of Mindanao Sea having an approximate length of 6.2 km.  It has a total land area of 4,340 hectares or 43.40 square kilometers which is only 1.18% of the total land area of the province of Misamis Oriental. There are eleven barangays of which four are urban areas due to their strategic location along the national highway and along the Iligan Bay.  Light commercial and industrial establishments are found in these barangays. Built up areas for urban uses comprise only 2. 5% of the total land area of Gitagum, which is utilized for residential uses and within the vicinity of the public market, business establishment, churches, school, municipal gymnasium, plaza and other government building of the municipality. The coastal barangays of Burnay and Pangayawan are vegetated with mangrove which remains protected.\nBarangays along the coast are traversed by the national highway, while interior barangays are accessible through provincial and barangay roads that function as farm-to-market routes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "gitagum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8656,
+    "attempt": 8598,
+    "place_id": "gn-2803343",
+    "input": {
+      "place": {
+        "place_id": "gn-2803343",
+        "name": "Adinkerke",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.07409,
+        "lon": 2.59914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adinkerke",
+          "url": "https://en.wikipedia.org/wiki/Adinkerke",
+          "text": "Adinkerke (French: Adinkerque) is a village in the municipality of De Panne in western Belgium close to the French border. It forms a conurbation with the coastal town of De Panne, which in turn is part of the west Belgian coastal conurbation.  Adinkerke railway station is also the western terminus of the Belgian coast tram line to De Panne; Nieuwpoort, Ostend and beyond. Near the city is Plopsaland, formerly Meli Park.\nThe 'kerke' suffix is common in west Flanders as an area surrounding a church (similar to kirk in Scotland and North East England). The closest French towns are Ghyvelde and Bray-Dunes, which can be accessed via the E40 (A16) motorway, N39 (N1) main road, or N386 (D 60) minor road in addition to a canal. The roads names in brackets employ French nomenclature once crossing the border.\nThere are regular NMBS trains to Brussels. Access by train to Dunkirk is via Gare de Lille Flandres which is in France. The line across the border is out of use. Dk' bus run buses from the station forecourt to Gare de Dunkerque.  A campaign group called Trekhaak-73 is seeking to re-open the railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "adinkerke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8657,
+    "attempt": 8599,
+    "place_id": "gn-2986681",
+    "input": {
+      "place": {
+        "place_id": "gn-2986681",
+        "name": "Plouézec",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.74894,
+        "lon": -2.98466
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plouézec",
+          "url": "https://en.wikipedia.org/wiki/Plouézec",
+          "text": "Plouézec (French pronunciation: [pluezɛk]; Breton: Ploueg-ar-Mor) is a commune in the Côtes-d'Armor department in Brittany in northwestern France.\nIt has 17 km of rugged coastline that makes it a tourist destination all year round, with beaches such as Bréhec and Pors Pin.\nPlouézec is twinned with the Irish town of Ballinamore and the twinning committee hosts a Fest Noz festival every August around the Moulin de Craca which regularly draws thousands of visitors. There is traditional Irish and Breton music, as well as food and drink available. Especially popular is the famous moules-frites, which is a dish of mussels and French fries.\nIt has been strongly influenced by the sea and local people often refer to themselves as enfants de la mer (children of the sea). Water-based sports such as fishing, sailing, and swimming are very popular and are practised by locals and tourists alike."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "plouezec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8658,
+    "attempt": 8600,
+    "place_id": "gn-3009436",
+    "input": {
+      "place": {
+        "place_id": "gn-3009436",
+        "name": "La Flotte",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 46.18649,
+        "lon": -1.32666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Flotte",
+          "url": "https://en.wikipedia.org/wiki/La_Flotte",
+          "text": "La Flotte (French pronunciation: [la flɔt]), also known as La Flotte-en-Ré, is a commune on the Isle of Ré off the western coast of France, administratively part of the department of Charente-Maritime within the larger Nouvelle-Aquitaine region.\nIt is the largest municipality on the Île de Ré by area, and the second largest by population, second to Sainte-Marie-de-Ré on the southern tip of the island.\nLa Flotte was declared one of the most beautiful villages in France by the eponymous independent tourism organization Les Plus Beaux Villages de France, and since 2011, the town has been a part of the departmental government's \"Stone and Water Villages\" tourism initiative to promote notable coastal and waterfront locales (i.e., where the stone (city) meets the water (sea, river etc.)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "la flotte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "flotte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

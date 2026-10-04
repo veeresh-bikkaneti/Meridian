@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 8459,
+    "attempt": 8401,
+    "place_id": "gn-2650293",
+    "input": {
+      "place": {
+        "place_id": "gn-2650293",
+        "name": "Eaton Socon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.21752,
+        "lon": -0.28925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eaton Socon",
+          "url": "https://en.wikipedia.org/wiki/Eaton_Socon",
+          "text": "Eaton Socon  is a district of St Neots, in the civil parish of St Neots, in the Huntingdonshire district, in the county of Cambridgeshire, England, 1.4 miles south-west of St Neots town centre. Eaton Socon is a component of the town of St Neots, located on its south-west margin. Eaton Socon lies on the west side of the River Great Ouse, and is bounded on the west by the A1 road and on the south by the A428 road (St Neots by-pass). On the north side Duloe Brook delineates the boundary with Eaton Ford, which is also part of St Neots.\nMuch of Eaton Socon is given over to residential use, but there is a large area dedicated to light industry and trade distribution activities. There are also several public houses and inns, and a retail park.\nIn the days of stagecoach travel, Eaton Socon was a major stop on the journey from London to the North, with inns providing refreshments and overnight accommodation for travellers, and feed and rest facilities for horses. Some stage coaches diverted through St Neots, but the majority continued on the Great North Road.\nEaton Socon was originally in Bedfordshire but it was merged with St Neots in 1965 and is now in Cambridgeshire. Its housing grew and its population more than doubled: 2,240 in 1931 to 3,264 in 1961, and now (2020) 9,042.\nThe name Eaton Socon comes from Ea-tun (waterside settlement) and soke (local government area in Norman times)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "eaton socon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eaton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "socon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8460,
+    "attempt": 8402,
+    "place_id": "gn-2756035",
+    "input": {
+      "place": {
+        "place_id": "gn-2756035",
+        "name": "Erp",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.6,
+        "lon": 5.60694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erp, Netherlands",
+          "url": "https://en.wikipedia.org/wiki/Erp,_Netherlands",
+          "text": "Erp (Dutch pronunciation: [ˈɛr(ə)p]) is a village in southern Netherlands, in the province of North Brabant between 's-Hertogenbosch and Eindhoven. Prior to 1994, Erp was a municipality consisting of the town of Erp and the villages of Boerdonk and Keldonk. In that year, the municipality was merged with the municipality of Veghel to form one municipality under the latter name. The area of the former municipality of Erp has a population of 6,663, while Veghel has a population of 37,655.\nThe municipality of Veghel, which merged into the new municipality of Meierijstad in 2017, consisted of the towns of Veghel and Erp, and the villages of Boerdonk, Keldonk, Mariaheide, Zijtaart and Eerde. Veghel is 5 km northwest of Erp and other neighboring towns, including Uden (north), Boekel (east), Gemert (southeast), Beek en Donk (south) and Sint-Oedenrode (west).\nErp's town hall dates from 1791. It lost its main function when Erp was annexed to Veghel. Both the town hall and the Saint Servatius Church are on the national list of historic preservation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "erp",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8461,
+    "attempt": 8403,
+    "place_id": "gn-3463121",
+    "input": {
+      "place": {
+        "place_id": "gn-3463121",
+        "name": "Formoso",
+        "country": "Brazil",
+        "subdivision": "Goiás",
+        "lat": -13.65361,
+        "lon": -48.88194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Formoso",
+          "url": "https://en.wikipedia.org/wiki/Formoso",
+          "text": "Formoso is a municipality in north Goiás state, Brazil. The population was 4,660 (2022) in a total area of 844 km2 (326 sq mi).\nHighway connections from Goiânia are made by GO-080 / Nerópolis / São Francisco de Goiás / BR-153 / Jaraguá / GO-080 / Goianésia / Barro Alto / GO-342 / BR-080 / BR-153 / Uruaçu / Santa Tereza de Goiás / GO-241.\nFormoso is surrounded by the following municipalities: \n\nnorth:  Santa Tereza de Goiás and Trombas\neast:  Campinorte and Minaçu\nwest:  Estrela do Norte\nsouth:  Campinorte and Mara Rosa\nThe economy is based on livestock raising, modest agriculture, small commerce, and government services.  There was one bank in 2007.  \nThe main agricultural activities were cattle raising: 50,000 head (2006) and  the growing of rice, sugarcane, manioc, corn, and banana (all fewer than 1,000 hectares).  In 2006 there were 605 farms with 2,114 hectares of planted area.  Pasture land made up 45,700 hectares.  Approximately 2,000 people were employed in agriculture.  Statistics are from IBGE\nThe literacy rate was 84.0% (2000) and the infant mortality rate was 24.07 in 1,000 live births.  There were 7 schools and 1 hospital with 18 beds.  The score on the Municipal Human Development Index was  0.737.\n\nState ranking:  119 (out of 242 municipalities in 2000)\nNational ranking:  2,250 (out of 5,507 municipalities in 2000)"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "formoso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8462,
+    "attempt": 8404,
+    "place_id": "gn-6098397",
+    "input": {
+      "place": {
+        "place_id": "gn-6098397",
+        "name": "Parkdale",
+        "country": "Canada",
+        "subdivision": "Prince Edward Island",
+        "lat": 46.25202,
+        "lon": -63.11809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parkdale, Prince Edward Island",
+          "url": "https://en.wikipedia.org/wiki/Parkdale,_Prince_Edward_Island",
+          "text": "Parkdale is a neighbourhood of the city of Charlottetown in central Queens County, Prince Edward Island, Canada.\nParkdale's location immediately northeast of Charlottetown and southeast of Sherwood saw it grow from a rural farming community in the Queens Royalty to a village on November 6, 1958.  It was incorporated as a town in 1973 and amalgamated into Charlottetown on April 1, 1995.\nPresently a neighbourhood, Parkdale has a mix of housing, commercial and light industrial districts across an area of several dozen hectares, bounded by the former railway line (now the Confederation Trail) to the south and west, Belvedere Avenue/Falconwood Drive to the north, and the Hillsborough River to the east.\nParkdale had an active volunteer fire department, which was closed after municipal amalgamation. It is also the location of the Provincial Exhibition and Charlottetown Driving Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "parkdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8463,
+    "attempt": 8405,
+    "place_id": "gn-710514",
+    "input": {
+      "place": {
+        "place_id": "gn-710514",
+        "name": "Oskil",
+        "country": "Ukraine",
+        "subdivision": "Kharkiv",
+        "lat": 49.17654,
+        "lon": 37.42412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oskil",
+          "url": "https://en.wikipedia.org/wiki/Oskil",
+          "text": "The Oskil or Oskol (Ukrainian: Оскiл; Russian: Оскол) is a south-flowing river in Russia and Ukraine. It arises roughly between Kursk and Voronezh and flows south to join the Siverskyi Donets which flows southeast to join the Don. It is 472 kilometres (293 mi) long, with a drainage basin of 14,800 square kilometres (5,700 sq mi).\nThe river has its sources on the Central Russian Upland, and flows through Kursk and Belgorod Oblasts in Russia, and through the eastern part of Kharkiv Oblast in Ukraine, where it joins the Seversky Donets river. An artificial lake, the Oskil Reservoir, was created in 1958 to help with flood protection and as a source of electricity.\nThere are several towns along the Oskil: Stary Oskol, Novy Oskol and Valuyki in Russia, and Kupiansk, Kupiansk-Vuzlovyi, Kivsharivka, Borova and Dvorichna in Ukraine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "oskil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8464,
+    "attempt": 8406,
+    "place_id": "gn-728321",
+    "input": {
+      "place": {
+        "place_id": "gn-728321",
+        "name": "Perushtitsa",
+        "country": "Bulgaria",
+        "subdivision": "Plovdiv",
+        "lat": 42.05,
+        "lon": 24.55
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perushtitsa",
+          "url": "https://en.wikipedia.org/wiki/Perushtitsa",
+          "text": "Perushtitsa (Bulgarian: Перущица [ˈpɛruʃtit͡sɐ]) or Perushtitza is a Bulgarian town located in Perushtitsa Municipality, Plovdiv Province at the foot of the Rhodopes, 22 kilometers south of Plovdiv.\nThe name Perushtitsa comes from the word Peristitsa, which in turn comes from the name of the God Perun.\nThe town is famous throughout Bulgaria for the fight that took place there in 1876 during the April Uprising against the Ottoman reign.  During the suppression of the uprising by Turkish irregulars, the majority of the residents were slaughtered. The French journalist Ivan de Woestyne, who visited the town in July 1876, reported for the newspaper Le Figaro that out of a population of about 2000 only 150 elders and children were left. Lady Strangford arrived from Britain later that year with relief for the people of Bulgaria following the massacres. She built a hospital at Batak and later other hospitals were built including at Perushtitsa.\nPerushtitsa is one of the few places in Bulgaria where Mavrud grapes are grown for a typical Bulgarian wine Mavrud.\nThe remains of the Red Church date from the 5th or 6th century and are a symbol for the city of Perushtitsa. They are located 2 km northeast of Perushtitsa.\nThere is a multi functional sports complex \"Perushtitsa\" (at coordinates 42.061396, 24.553302) which can be used for 14 sports – basketball, handball, volleyball, football, badminton, table tennis, body building, and others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "perushtitsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8465,
+    "attempt": 8407,
+    "place_id": "gn-729947",
+    "input": {
+      "place": {
+        "place_id": "gn-729947",
+        "name": "Kremikovtsi",
+        "country": "Bulgaria",
+        "subdivision": "Sofia-Capital",
+        "lat": 42.78333,
+        "lon": 23.5
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kremikovtsi",
+          "url": "https://en.wikipedia.org/wiki/Kremikovtsi",
+          "text": "Kremikovtsi (Bulgarian: Кремиковци [krɛˈmikoft͡si]) is an industrial district of Sofia, Bulgaria. It is located to the northeast of the capital. The Kremikovtsi Steel Complex which is close to the neighbourhood is one of the largest industrial enterprises in Bulgaria and the Balkans. More than 20,000 people used to work there but this has been reduced to 8,500 due to higher efficiency.\nThere has been much dispute over the future of the plant, yet no ecological sanctions have been imposed on the plant owners to bring into accord Kremikovtsi's pollution status by investing in filtering installations. Insofar, no action has been taken to either close the plant or exercise government power to control the level of harmful emissions to the air, which gave rise to concerns of corruption in the government of the Bulgarian Socialist Party's ruling coalition.\nThree kilometers outside the Kremikovtsi, overlooking the village from its surrounding hills, lies the Monastery of St. George the Victorious, notable for its older church's 16th century frescoes showing patron St. George as well as other saints.\nKremikovtsi was first mentioned in 1452 and was in continuous existence throughout the 16th–19th centuries, as evidenced by written sources. Its name is derived from the initial placename *Kremikovo or *Kremik, from the dialectal word kremik (\"flint\", from Old Bulgarian КРЄМЪІКЪ). Previously a separate village, it was merged with Sofia in 1978."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "kremikovtsi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8466,
+    "attempt": 8408,
+    "place_id": "gn-8349221",
+    "input": {
+      "place": {
+        "place_id": "gn-8349221",
+        "name": "Prospect",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.80154,
+        "lon": 150.91358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prospect, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Prospect,_New_South_Wales",
+          "text": "Prospect is a suburb of Sydney, in the state of New South Wales, Australia. Prospect is located 32 kilometres (20 mi) west of the Sydney central business district in the local government area of the City of Blacktown and a small part of Cumberland City Council, is part of the Greater Western Sydney region. One of the oldest suburbs in Sydney, Prospect takes its name from the prominent nearby landmark of Prospect Hill - from the top of which people could get a prospect of (see a great distance) the surrounding countryside.\nInitially a settlement for emancipated convicts, it later became a village. Since colonisation, settlers cleared larger areas of land to raise livestock, and to build churches, inns, schools, shops and a large reservoir. Naturalist Charles Darwin visited Prospect in January 1836, to observe the geology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "prospect",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8467,
+    "attempt": 8409,
+    "place_id": "gn-2638467",
+    "input": {
+      "place": {
+        "place_id": "gn-2638467",
+        "name": "Saxilby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.26746,
+        "lon": -0.66253
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saxilby",
+          "url": "https://en.wikipedia.org/wiki/Saxilby",
+          "text": "Saxilby is a village and civil parish in the West Lindsey district of Lincolnshire, England, about 6 miles (9.7 km) north-west from Lincoln, on the A57 road at the junction of the B1241. It is part of the civil parish of Saxilby and Ingleby, which includes the village of Ingleby. The population of the civil parish in 2001 was 3,679, increasing to 3,992 at the 2011 census.\n\nThe village lies on the north bank of the Foss Dyke.\nThe name is of Viking origin, Old Norse Saksúlfr + byr, or \"farmstead of a man called Saksulfr\" and it appears as \"Saxebi\" in the Domesday Book of 1086. In archived documents the village is often referred to as \"Saxelby\", with the current spelling of Saxilby only being found in common use from the late 19th century onwards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "saxilby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8468,
+    "attempt": 8410,
+    "place_id": "gn-2643314",
+    "input": {
+      "place": {
+        "place_id": "gn-2643314",
+        "name": "Lyme Regis",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.72654,
+        "lon": -2.93477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lyme Regis",
+          "url": "https://en.wikipedia.org/wiki/Lyme_Regis",
+          "text": "Lyme Regis ( LYME REE-jiss) is a seaside town in west Dorset, England, 25 miles (40 km) west of Dorchester and east of Exeter. Sometimes dubbed the \"Pearl of Dorset\", it lies by the English Channel at the Dorset–Devon border. It has noted fossils in cliffs and beaches on the Jurassic Coast, a World Heritage Site and heritage coast. The harbour wall, known as The Cobb, appears in Jane Austen's novel Persuasion, the John Fowles novel The French Lieutenant's Woman and the 1981 film of that name, partly shot in the town.\nA former mayor and MP was Admiral Sir George Somers, who founded the English colonial settlement of Somers Isles, now Bermuda, where Lyme Regis is twinned with St George's. In July 2015, Lyme Regis joined Jamestown, Virginia, in a Historic Atlantic Triangle with St George's. The 2021 census gave the town a population of 3,742."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "lyme regis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lyme",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "regis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8469,
+    "attempt": 8411,
+    "place_id": "gn-2648004",
+    "input": {
+      "place": {
+        "place_id": "gn-2648004",
+        "name": "Great Torrington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.95309,
+        "lon": -4.14401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Torrington",
+          "url": "https://en.wikipedia.org/wiki/Great_Torrington",
+          "text": "Great Torrington (often abbreviated to Torrington, though the villages of Little Torrington and Black Torrington are situated in the same region) is a market town in Devon, England. Parts of it are sited on high ground with steep drops down to the River Torridge below, with the lower-lying parts of the town prone to occasional flooding. Torrington is in the centre of Tarka Country, a landscape captured by Henry Williamson in his novel Tarka the Otter in 1927. Great Torrington has one of the most active volunteering communities in the United Kingdom.\nIn July 2019, Great Torrington was reported to be the healthiest place to live in Britain. Researchers from the University of Liverpool found that the area had low levels of pollution, good access to green space and health services, along with few retail outlets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "great torrington",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "torrington",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8470,
+    "attempt": 8412,
+    "place_id": "gn-2650996",
+    "input": {
+      "place": {
+        "place_id": "gn-2650996",
+        "name": "Dreghorn",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.60807,
+        "lon": -4.62226
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dreghorn",
+          "url": "https://en.wikipedia.org/wiki/Dreghorn",
+          "text": "Dreghorn is a village in North Ayrshire, Scotland, 3.5 kilometres (2+1⁄4 miles) east of Irvine town centre, on the old main road from Irvine to Kilmarnock. It is sited on a ridge between two rivers. As archaeological excavations near the village centre have found a significant neolithic settlement provisionally dated to around 3500 BC, as well as medieval structures, scholars have suggested that Dreghorn could be Britain's oldest continuously inhabited village. Both Irvine and Dreghorn have grown in size and they are now separated by the Annick Valley Park, which incorporates a footpath and National Cycle Route 73 on the route of the disused Irvine to Busby railway line. It had an estimated population of \n3,450 in 2020.\nThe Church of Scotland Dreghorn and Springside Parish Church, at the centre of the village, dates from 1780. Its octagonal plan, which is unusual in Scotland, was produced by the church's principal benefactor, Archibald Montgomerie, 11th Earl of Eglinton. The village's most famous inhabitant, John Boyd Dunlop, was born at a Dreghorn farm in 1840. When practicing as a veterinary surgeon in Belfast, in 1887 he invented pneumatic tyres for bicycles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "dreghorn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8471,
+    "attempt": 8413,
+    "place_id": "gn-2660498",
+    "input": {
+      "place": {
+        "place_id": "gn-2660498",
+        "name": "Grindelwald",
+        "country": "Switzerland",
+        "subdivision": "Bern",
+        "lat": 46.62396,
+        "lon": 8.03601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grindelwald",
+          "url": "https://en.wikipedia.org/wiki/Grindelwald",
+          "text": "Grindelwald (Swiss Standard German pronunciation: [ˈɡrɪndl̩ˌvald]) is a village and municipality in the Interlaken-Oberhasli administrative district in the canton of Berne. In addition to the village of Grindelwald, the municipality also includes the settlements of Alpiglen, Burglauenen, Grund, Itramen, Mühlebach, Schwendi, Tschingelberg and Wargistal.\nGrindelwald village is 1,034 m (3,392 ft) above sea level. Mentioned for the first time in 1146, it has become an important tourist destination of both Switzerland and the Alps since the golden age of alpinism in the 19th century. It is overlooked by a section of the Bernese Alps from the Wetterhorn to the Eiger, which creates a natural barrier. Together with the adjacent valley of Lauterbrunnen, the valley of Grindelwald forms part of the Jungfrau Region of the Bernese Oberland, between Interlaken and the main crest of the Bernese Alps.\nSimilarly to Lauterbrunnen, Grindelwald is connected to Interlaken by the Bernese Oberland Railway and is the start of the Wengernalp Railway, leading to Kleine Scheidegg. The latter resort is the start of the Jungfrau Railway, the highest railway in Europe and a gateway to the Jungfrau-Aletsch protected area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "grindelwald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8472,
+    "attempt": 8414,
+    "place_id": "gn-3099634",
+    "input": {
+      "place": {
+        "place_id": "gn-3099634",
+        "name": "Frombork",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 54.35766,
+        "lon": 19.68029
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frombork",
+          "url": "https://en.wikipedia.org/wiki/Frombork",
+          "text": "Frombork (Polish: [ˈfrɔmbɔrk] ; German: Frauenburg [ˈfʁaʊənbʊʁk] ) is a town in northern Poland, situated on the Vistula Lagoon in Braniewo County, within Warmian–Masurian Voivodeship. As of December 2021, it has a population of 2,260.\nFirst mentioned in a 13th-century document, Frombork is one of the oldest and historically most important towns of the historical region of Warmia. In the early 16th century it was the residence of the astronomer Nicolaus Copernicus, who used it as a site for several of his observations.\nThe town and its 14th-century cathedral were badly damaged in World War II. After the war the cathedral complex was meticulously reconstructed and is again a popular tourist destination, listed as a Historic Monument of Poland. It contains the grave of Copernicus and is the seat of the Roman Catholic Archdiocese of Warmia.\nFrombork is known as \"The Jewel of Warmia\" because of its many historical sites. The Museum of Copernicus in Frombork holds exhibitions related to the astronomer, as well as to astronomy in general, and includes a planetarium. One of the biggest attractions is also the annual International Festival of Organ Music, held every summer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "frombork",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8473,
+    "attempt": 8415,
+    "place_id": "gn-3388446",
+    "input": {
+      "place": {
+        "place_id": "gn-3388446",
+        "name": "São José de Espinharas",
+        "country": "Brazil",
+        "subdivision": "Paraíba",
+        "lat": -6.84722,
+        "lon": -37.32583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São José de Espinharas",
+          "url": "https://en.wikipedia.org/wiki/São_José_de_Espinharas",
+          "text": "São José de Espinharas is a town in the state of Paraíba, Northeastern Brazil.\nLocated on the banks of the lower Espinharas River, about 30 km to the North of Patos, this small town has its economy based on extensive cattle and goat raising and subsistence agriculture. Its relief is somewhat irregular, with large igneous rock outcrops and small mountains and granite inselbergs. The soil is generally poor (\"tabuleiros\") and covered by the caatinga vegetation, interspersed with small valleys (\"baixios\") with fertile soils that support agricultural activities and are propitious to the building of small and medium-sized dams that store rain-water flowing in temporary creeks. The natural vegetation on the \"tabuleiros\" is well preserved as of 2005.\nOnce a prosperous region, the lower Espinharas valley had cotton production as its main agricultural activity until about 1980. This culture was however decimated by plagues and by low prices as a result of the introduction of international competition. This caused a massive migration of the population from the rural area (\"fazendas\") to urban areas - mainly to Patos, São Jose de Espinharas itself and São Paulo. Competition with more favorable areas like Maranhão and Goiás, not subject to draughts, further lowered the value of the cattle assets. Further reduction in the size of the \"fazendas\", mostly caused by inheritance transmission, and a series of rainless years in the 1980s and 1990s contributed to the economic decline of São Jose de Espinharas - just like it did for most of the \"Sertão\" - the peculiar hinterlands of Northeastern Brazil.\nPoints of interest: casa velha (old house) of Miguel Sátyro, Serra do Tronco, Fazenda Arara, Fazenda Maria Paz, Fazenda Suécia, Fazenda Tronco, Fazenda Flores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "sao jose de espinharas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "espinharas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8474,
+    "attempt": 8416,
+    "place_id": "gn-3588308",
+    "input": {
+      "place": {
+        "place_id": "gn-3588308",
+        "name": "Todos Santos Cuchumatán",
+        "country": "Guatemala",
+        "subdivision": "Huehuetenango",
+        "lat": 15.50846,
+        "lon": -91.60382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Todos Santos Cuchumatán",
+          "url": "https://en.wikipedia.org/wiki/Todos_Santos_Cuchumatán",
+          "text": "Todos Santos Cuchumatán (Spanish pronunciation: [ˈtoðos ˈsantos kutʃumaˈtan]) is a municipality in the Guatemalan department of Huehuetenango. It is situated in the Sierra de los Cuchumatanes at an elevation of 2,500 m (about 8,000 ft). The municipality covers an area of approximately 269 km2 and is formed by the town of Todos Santos Cuchumatán, 6 villages, and 69 smaller rural communities, called caserios, parajes, and cantones.  The village of San Martin Cuchumatán is the second largest urbanized centre in the municipality of Todos Santos. San Martin is also the agricultural heart of the Cuchumateca valley which produces crops like potatoes, broccoli and large scale cultivation of coffee on the lower mountain slopes of the municipality.\nThe population of Todos Santos is predominantly indigenous, of Mayan descent, most of whom still speak the Mayan language of Mam. The town is one of few places in Guatemala where indigenous men still wear their traditional clothing, along with the women.\nAn annual festival is celebrated on October 31–November 2, and is centered on All Saints' Day on November 1 (\"Todos Santos\" translates to \"all saints\" in English). Festivities include traditional dances, marimba music and the famous horse races.  The horse races are often the scene of mayhem and bloodshed due to the riders' penchant to drink alcohol for days leading up to the races even though the mayor banned the selling of hard alcohol in May 2008.\nIn May 2000, a group of tourists from Japan and a bus driver were attacked by a large mob after members of the group took pictures of local children. The Guatemalan bus driver was doused with gasoline and burned to death, and one member of the Japanese tour group was stoned to death. Two other tourists were injured along with two police officers.\nWhile visiting the market in Todos Santos, travelers are advised to exercise discretion when taking photographs. It is important to respect the privacy and cultural sensitivities of the local Mayan community. Photography of individuals—particularly children—should only be done with explicit permission. A notable incident occurred in 2000, when a misunderstanding involving a tourist resulted in a fatality. Persistent local rumors regarding child abduction have contributed to heightened concerns, and as a result, residents are understandably protective of their families. To prevent miscommunication or unintended offense, visitors are encouraged to seek consent before taking photographs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 391
+    },
+    "banned_terms": [
+      {
+        "term": "todos santos cuchumatan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "todos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cuchumatan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8475,
+    "attempt": 8417,
+    "place_id": "gn-5805734",
+    "input": {
+      "place": {
+        "place_id": "gn-5805734",
+        "name": "Omak",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.41099,
+        "lon": -119.52755
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Omak, Washington",
+          "url": "https://en.wikipedia.org/wiki/Omak,_Washington",
+          "text": "Omak ( o-MAK) is a city located in the foothills of the Okanogan Highlands in north-central Washington, United States. With a population of 4,860 as of 2020, distributed over a land area of 3.43 square miles (8.9 km2), Omak is the largest municipality of Okanogan County and the largest municipality in Central Washington north of Wenatchee. The Greater Omak Area has around 8,229 inhabitants as of the 2010 census. This makes the largest urban cluster in the Okanogan Country region, encompassing most of its twin city of Okanogan.\nThe land that is now Omak had been inhabited by various Native American tribes before the arrival of non-indigenous settlers in the early 19th century. The city began to develop after the completion of the Okanogan Irrigation Project affecting the Grand Coulee Dam and other nearby electric facilities. The housing and municipal infrastructure, along with regional infrastructure connecting the new town to other municipalities, were built simultaneously in 1908 supported by the local agricultural industry. The name Omak comes from the Okanagan placename [umák], or the Salishan term Omache—which is said to mean \"good medicine\" or \"plenty\", referring to its favorable climate, with an annual high of around 88 °F (31 °C). Omak acts as the gateway to the Okanogan–Wenatchee National Forest and consists of a central business district and residential neighborhoods.\nOmak is a code city governed by a seven-member council and located in the state's 4th congressional district. Omak's economy is dominated by the primary sector industries of agriculture and forestry, although economic diversification has occurred with sawmills and recreational tourism. Nearby recreational destinations include walking trails, state parks and national forests, such as Conconully State Park, Bridgeport State Park and Osoyoos Lake State Park. The city is home to a weekly newspaper, the Omak–Okanogan County Chronicle, and a Wenatchee Valley College campus. Standards for education in Omak are higher than the state's average, though drugs and alcohol remain a problem among students. U.S. Route 97 passes through the town, while Washington State Route 155, as well as Washington State Route 215, connects the city to Okanogan and Nespelem, respectively. By road, Omak is located approximately 235 miles (378 km) from Seattle, Washington, 140 miles (230 km) from Spokane, Washington and 125 miles (201 km) from Kelowna, British Columbia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 379
+    },
+    "banned_terms": [
+      {
+        "term": "omak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8476,
+    "attempt": 8418,
+    "place_id": "gn-6104221",
+    "input": {
+      "place": {
+        "place_id": "gn-6104221",
+        "name": "Pictou",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 45.67875,
+        "lon": -62.70936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pictou",
+          "url": "https://en.wikipedia.org/wiki/Pictou",
+          "text": "Pictou ( PIK-toh; Canadian Gaelic: Baile Phiogto; Mi'kmaq: Piktuk) is a town in Pictou County, in the Canadian province of Nova Scotia. Located on the north shore of Pictou Harbour, the town is approximately 10 km (6 miles) north of the larger town of New Glasgow.\nOnce an active shipping port and the shire town of the county, today Pictou is a local service centre for surrounding rural communities and a tourist destination in this region of Nova Scotia.\nThe name Pictou derives from the Mi'kmaq name Piktuk, meaning 'explosive place', a reference to the river of pitch that was found in the area, or perhaps from methane bubbling up from coal seams below the harbour. The surrounding region formed one part of the Mi'kmaw district Epekwitk aq Piktuk, one of the seven districts of Mi'kma'ki."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "pictou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8477,
+    "attempt": 8419,
+    "place_id": "gn-664680",
+    "input": {
+      "place": {
+        "place_id": "gn-664680",
+        "name": "Traian",
+        "country": "Romania",
+        "subdivision": "Brăila County",
+        "lat": 45.18333,
+        "lon": 27.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Traian, Brăila",
+          "url": "https://en.wikipedia.org/wiki/Traian,_Brăila",
+          "text": "Traian is a commune located in Brăila County, Muntenia, Romania. It is composed of four villages: Căldărușa, Silistraru, Traian, and Urleasca.\nThe commune is situated at the northern edge of the Bărăgan Plain, at an altitude of 10 m (33 ft). It is located in the central part of the county, 24 km (15 mi) southwest of the county seat, Brăila.\nTraian is crossed north to south by county road DJ255A. A short distance to the south is national road DN2B, which runs from Buzău to Galați, and to the north is national road DN22, which runs from Râmnicu Sărat to Brăila and on to Constanța on the Black Sea coast. \nThe Urleasca and Traian village train stations serve the CFR Main Line 700, which connects Bucharest to Brăila, Galați, and the Moldova border at Giurgiulești."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "traian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8478,
+    "attempt": 8420,
+    "place_id": "gn-10055097",
+    "input": {
+      "place": {
+        "place_id": "gn-10055097",
+        "name": "Hilton",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.06208,
+        "lon": 115.78049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hilton, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Hilton,_Western_Australia",
+          "text": "Hilton is a suburb of Perth, Western Australia, located within the City of Fremantle.\nThe suburb has an eclectic mixture of weatherboard, fibro and brick dwellings. The suburb is undergoing extensive urban renewal and recently more three and four-bedroom, two-bathroom homes have been built.\nIts post-World War II design was under a state government initiative known as \"garden suburbs\" which meant wide verges and single homes on large blocks.\nThe northern precinct of Hilton contains a number of laneways and the village centre (on the north side of South Street) comprising a greengrocer, giftware emporium, newsagent, printers, chemist, butcher, a hair salon, squash courts, builders, veterinarian surgery and a café.\nSouth Street, Paget Street and Carrington Street contain most of the remaining retail activity in Hilton, including a public bar, pizzeria and a post office. In June of 2021 the existing IGA was demolished to make way for a new enlarged retail space with initial tenants named as Coles, a café and a liquor merchant.\nHilton is approximately five minutes drive from the central business district of Fremantle and from the Indian Ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "hilton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
