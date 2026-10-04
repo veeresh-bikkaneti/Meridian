@@ -1,0 +1,11 @@
+# Example only — copy to wrangler.toml and fill in YOUR values.
+# No real account ids are committed to this repo.
+name = "meridian-observability"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# Option A — workers.dev subdomain (no custom domain needed):
+# workers_dev = true
+#
+# Option B — custom route (uncomment and edit):
+# routes = [{ pattern = "obs.example.com", custom_domain = true }]

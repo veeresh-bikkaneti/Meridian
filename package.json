@@ -23,7 +23,8 @@
     "prebuild": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
     "prebuild:pages": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
     "prebuild:dev": "node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
-    "postbuild:pages": "node scripts/fingerprint-sw.mjs"
+    "postbuild:pages": "node scripts/fingerprint-sw.mjs",
+    "test:worker": "node --test worker/observability/worker.test.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",
