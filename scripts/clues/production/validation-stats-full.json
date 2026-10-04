@@ -1,15 +1,15 @@
 {
-  "attempted": 7400,
+  "attempted": 7600,
   "accepted": 112,
-  "workerRejected": 7287,
+  "workerRejected": 7487,
   "validatorRejected": 1,
   "malformedWorkerRejections": 0,
   "validatorReasonHistogram": {
     "CLIMATE_NO_SIGNAL": 1
   },
   "workerRejectionTierHistogram": {
-    "climate": 7211,
-    "history": 74,
+    "climate": 7409,
+    "history": 76,
     "giveaway": 1,
     "hook": 1
   },
