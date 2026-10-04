@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 7050,
+    "attempt": 7001,
+    "place_id": "gn-7315234",
+    "input": {
+      "place": {
+        "place_id": "gn-7315234",
+        "name": "Midway",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.40648,
+        "lon": -87.00553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midway, Santa Rosa County, Florida",
+          "url": "https://en.wikipedia.org/wiki/Midway,_Santa_Rosa_County,_Florida",
+          "text": "Midway is an unincorporated community and census designated place (CDP) in southern Santa Rosa County, Florida. It is part of the Pensacola–Ferry Pass–Brent, Florida Metropolitan Statistical Area. The area is located between the communities of Gulf Breeze and Navarre, on the Fairpoint Peninsula. Midway is often considered to be part of one, if not both, of these communities. Its actual boundaries vary from source to source, but unofficially include most areas from the intersection of Soundside Drive with U.S. Highway 98, eastward until Highway 98 becomes Navarre Parkway.\nMidway Water Systems, Inc., which provides water service to the communities of Gulf Breeze and Navarre, is located in Midway. The community also has a fire department, the Midway Fire Department. Midway is also home to VFW \"Bruce J Bell Memorial\" Post 4407 which is often referred to as the 'Friendliest Little Post in Florida\".\nPer the 2020 Census, the population was 19,567, up from 16,115 at the 2010 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "midway",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7051,
+    "attempt": 7002,
+    "place_id": "gn-8432847",
+    "input": {
+      "place": {
+        "place_id": "gn-8432847",
+        "name": "Dih",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.14264,
+        "lon": 81.40856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dih, Raebareli",
+          "url": "https://en.wikipedia.org/wiki/Dih,_Raebareli",
+          "text": "Dih, also spelled Deeh, is a desert and corresponding old, deserted site in Salon tehsil of Rae Bareli district, Uttar Pradesh, India. It is located 22 km from Raebareli, the district headquarters, near the point where the road to Parshadepur intersects the road leading from Jais to the Gukana ghat. The Sai river acts as the water supply for Dih. As of 2011, Dih has a population of 12,110 people, in 2,186 households. It has three primary schools and no healthcare facilities, as well as a post office, a library, and an Anganwadi centre. It is the headquarters of a nyaya panchayat, which also includes 8 other villages.\nDih hosts a large Ramlila festival on Dussehra, involving a dramatic reenactment of the Ramayana. It also hosts markets twice per week, on Tuesdays and Saturdays. Major items sold include cloth, grain, gur, ornaments, and vegetables."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "dih",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7052,
+    "attempt": 7003,
+    "place_id": "gn-863732",
+    "input": {
+      "place": {
+        "place_id": "gn-863732",
+        "name": "Ramana",
+        "country": "Azerbaijan",
+        "subdivision": "Baki",
+        "lat": 40.44222,
+        "lon": 49.98056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramana, Azerbaijan",
+          "url": "https://en.wikipedia.org/wiki/Ramana,_Azerbaijan",
+          "text": "Ramana also spelled Ramany, Romana (Azerbaijani: Ramana, Ramanı), is an urban-type settlement and municipality in Azerbaijan, within the Sabunchu raion of Baku. Population (2005): 8,800.\nThe settlement was possibly founded by the Roman troops of Lucius Julius Maximus from Legio XII Fulminata in c. 84-96 AD,  and may derive its name from the Latin Romana.\nAmong the facts that strengthen this hypothesis are the military-topographical map of Caucasus published in 1903 by the Russian administration which spells name of town as \"Romana\"; various Roman artefacts found in Absheron region, and also old inhabitants' referring to the town as Romani.\nFamous Azerbaijani jazz musician Vagif Mustafazadeh had Ramanian roots. Ramana is mentioned several times in the novels The Nodes and The Moustached Aga by the Azeri writer Suleyman Veliyev who is himself from Ramana. The second work describes another feature of the settlement, a big reservoir, which is called \"the settlement's beacon\" due to its height (18 m). The reservoir supplied water to the oil fields in Zagulba, Zabrat and Balakhany. In the Balakhany-Sabunchi-Ramana oil field, a new technology for identification of oil thin layers was originally tested. A route connects Ramana with the Heydar Aliyev International Airport.\nLocal landmarks include the four-storeyed castle of the mid-14th century and the mosque of 1323. The castle has a 1.5 m thick walls and a rectangular tower (9x7.5 m, height: 13 m).\nIn May 2007, a new district opened within Ramana for the housing of more than 50 families and 400 other internally displaced persons from other regions of Azerbaijan.  The resettlement area includes a new school for 360 pupils and other administrative buildings as well as a music school."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "ramana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7053,
+    "attempt": 7004,
+    "place_id": "gn-9610004",
+    "input": {
+      "place": {
+        "place_id": "gn-9610004",
+        "name": "Šilainiai",
+        "country": "Lithuania",
+        "subdivision": "Kaunas",
+        "lat": 54.92911,
+        "lon": 23.88599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Šilainiai",
+          "url": "https://en.wikipedia.org/wiki/Šilainiai",
+          "text": "Šilainiai is a neighborhood in the Lithuanian city of Kaunas, consisting of mostly Soviet-built microdistricts completed in the 1980s. Part of larger Šilainiai  elderate which is one of the largest elderates in the city, consisting of Milikoniai, Sargėnai, Šilainiai, Vytėnai and Romainiai neighborhoods, covering 25 km2 and housing over 55,000 people as of 2021. Eighth and Ninth Forts of the Kaunas Fortress are located in the elderate.\nThere are several shopping malls, post offices, drug stores, book shops, Šilainiai hospital, Kaunas Holy Spirit Church and Chapel of Saint John Paul II. Near the elderate of Šilainiai, remains of historical estate of Linkuva, Vytėnai and Sargėnai can be found."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "silainiai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7054,
+    "attempt": 7005,
+    "place_id": "gn-9782490",
+    "input": {
+      "place": {
+        "place_id": "gn-9782490",
+        "name": "Nambol",
+        "country": "India",
+        "subdivision": "Manipur",
+        "lat": 24.69557,
+        "lon": 93.81974
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nambol",
+          "url": "https://en.wikipedia.org/wiki/Nambol",
+          "text": "Nambol is a Town and the headquarters of an eponymous subdivision in the Bishnupur district of Manipur, India. It Stretches across one of the major heartline of Highway Known as Tiddim Road.The General functionalities are under administration of Nambol municipal council Most part of Nambol comes under Bishnupur district, While some parts of Nambol belongs to Imphal west District. Nambol as a whole is known to be a Sub- Division. Nambol is one of the educational hubs of Bishnupur district as well as of Manipur. Its market, known as Nambol Bazaar is the second most busiest market, after Khwairamband Bazaar( also known as 'IMA market' ) in Manipur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "nambol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7055,
+    "attempt": 7006,
+    "place_id": "gn-11979979",
+    "input": {
+      "place": {
+        "place_id": "gn-11979979",
+        "name": "Glen",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.35632,
+        "lon": -76.69066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glen, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Glen,_Baltimore",
+          "text": "Glen is a neighborhood in Baltimore, Maryland. It was developed in the early 1920s and 1930s, with the remaining development coming in the 1940s through the 1960s.  Glen is one of the largest communities of Northern Park Heights in Baltimore. Glen is a neighborhood of mixed housing types that include Tudor, French Norman and brick ranch houses, along with garden apartments, condominiums and semi-detached single family homes.\nThe neighborhood, and its notable coexistence of African Americans and Orthodox Jews, have at least twice been featured in The Baltimore Sun: April 29, 2001, and May 13, 2004.\nThe neighborhood's motto is \"Glen is a Great Place to Live\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "glen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7056,
+    "attempt": 7007,
+    "place_id": "gn-12491995",
+    "input": {
+      "place": {
+        "place_id": "gn-12491995",
+        "name": "Hale Barns",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.3689,
+        "lon": -2.31333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hale Barns",
+          "url": "https://en.wikipedia.org/wiki/Hale_Barns",
+          "text": "Hale Barns is a village near Altrincham in Greater Manchester, England. It lies in the historic county of Cheshire, 8 miles (13 km) south-west of Manchester city centre, 2 miles west of Manchester Airport and close to the River Bollin. At the 2011 census, the village had a population of 9,736.\nMedieval Hale Barns was an outlying area of the township of Hale, but a growth in prosperity led to it becoming a separate settlement. The village gets its name from the tithe barn that used to stand there. Before the industrial revolution, Hale Barns was an agricultural village, but since then evolved into a commuter settlement. St Ambrose College Roman Catholic boys' grammar school is in Hale Barns and the village is also home to Ringway golf club. Cotteril Clough in Hale Barns is an ancient and diverse woodland and a Site of Special Scientific Interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "hale barns",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hale",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barns",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7057,
+    "attempt": 7008,
+    "place_id": "gn-1255951",
+    "input": {
+      "place": {
+        "place_id": "gn-1255951",
+        "name": "Sivagiri",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.34461,
+        "lon": 77.42911
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sivagiri, Tenkasi",
+          "url": "https://en.wikipedia.org/wiki/Sivagiri,_Tenkasi",
+          "text": "Sivagiri is a panchayat town and a tourist place in Tenkasi district in the Indian state of Tamil Nadu. Sivagiri is located at a distance of 50 km north to Tenkasi, 20 km south to Rajapalayam, 95 km north-west to Tirunelveli, 95 km south to Madurai, 540 km south to Bangalore, 150 km north to Thiruvananthapuram and 580 km south to the state capital Chennai.\nIt was one of the Palayams in ancient Madurai. It is located in the leeward side of the Western Ghats. Many seasonal rivers originate from this Mountains. One of the rivers is Kombai river which is located in the Western Ghats, Sivagiri. Thalayanai waterfalls and Rasingaperi canal are also main tourist attractions located at the Western Ghats region in Sivagiri. Sastha Kovil waterfalls located at a distance of 6 km from Sivagiri in the reserved forest region of western ghats. Dharani Sugars is also operating in Dharani Nagar, Sivagiri. Many waterfalls, rivers flow from the Western Ghats across Sivagiri. Wild species such as elephants, leopards, wild boars, sloth bears, wild cats, and deer were found in this region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "sivagiri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7058,
+    "attempt": 7009,
+    "place_id": "gn-1262873",
+    "input": {
+      "place": {
+        "place_id": "gn-1262873",
+        "name": "Mohpa",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 21.31012,
+        "lon": 78.82969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mohpa",
+          "url": "https://en.wikipedia.org/wiki/Mohpa",
+          "text": "Mohpa is a city with a municipal council in Nagpur district in the Indian state of Maharashtra. Although physically located within Kalmeshwar ( former in saoner) taluka, it is not subject to taluka governance. It is divided in to basically three part\n1.Galbardi - this area is at the beginning and higher in height from Mohpa, so in regional language hill means 'Gal' and area means 'Bardi'\n2.Mohpa - main town which includes regular market for daily needs \n.\n3.Mhasepathar - the word comes from platue (Pathar in Marathi) of mohpa, governed by grampanchayt.\nMohpa has an old Ram mandir. The mandir is having beautiful Ram panchayatan. It also has the Samadhi of a noble saint Shri. Tukaram Maharaj. Every navratri the local people witness a well planned utsav for all 9 days. Mohpa is famous for its bull market from past 50 years, although orange farm is the main identity of this town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "mohpa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7059,
+    "attempt": 7010,
+    "place_id": "gn-1270827",
+    "input": {
+      "place": {
+        "place_id": "gn-1270827",
+        "name": "Gua",
+        "country": "India",
+        "subdivision": "Jharkhand",
+        "lat": 22.21361,
+        "lon": 85.38774
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gua, Jharkhand",
+          "url": "https://en.wikipedia.org/wiki/Gua,_Jharkhand",
+          "text": "Gua is a census town in Pashchimi Singhbhum district in the Indian state of Jharkhand. It is a mining township situated in the Chotanagpur Plateau. The mines are operated by the Steel Authority of India Limited and are linked to IISCO at Burnpur.\nDespite its small geographical area, Gua holds a dominant position in Jharkhand politics. Many private companies such as Jindal Steel, Adhunik, Rungta, Ashirwad Enterprises make huge profits from the area, but show little interest in education, healthcare, and other necessities of the general public.\nA school, DAV Senior Secondary Public School, is run by the DAV community to support the holistic development of students."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "gua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7060,
+    "attempt": 7011,
+    "place_id": "gn-168708",
+    "input": {
+      "place": {
+        "place_id": "gn-168708",
+        "name": "Kafr Buhum",
+        "country": "Syria",
+        "subdivision": "Hama",
+        "lat": 35.05965,
+        "lon": 36.69905
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kafr Buhum",
+          "url": "https://en.wikipedia.org/wiki/Kafr_Buhum",
+          "text": "Kafr Buhum (Arabic: كفر بهم, romanized: Kafr Buhum; also transliterated Kfarbuhum and Kafr Bihem), commonly referred to as Kfarbo (Arabic: كفربو), is a town in central Syria, administratively part of the Hama Governorate, located 9 kilometers (5.6 mi) southwest of Hama. Nearby localities include al-Rabiaa and Matnin to the northwest, Tayzin to the north, al-Khalidiyah to the east, Tell Qartal to the southeast, Birin to the south and al-Muah to the southwest. According to the Syria Central Bureau of Statistics (CBS), Kafr Buhum had a population of 12,194 in the 2004 census. Its inhabitants are predominantly Christian. It is 330 meters (1082 ft) above the sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "kafr buhum",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kafr",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buhum",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7061,
+    "attempt": 7012,
+    "place_id": "gn-1710612",
+    "input": {
+      "place": {
+        "place_id": "gn-1710612",
+        "name": "Ipil",
+        "country": "Philippines",
+        "subdivision": "Zamboanga Peninsula",
+        "lat": 7.78444,
+        "lon": 122.58611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ipil, Zamboanga Sibugay",
+          "url": "https://en.wikipedia.org/wiki/Ipil,_Zamboanga_Sibugay",
+          "text": "Ipil ( EE-peel), officially the Municipality of Ipil (Cebuano: Lungsod sa Ipil; Maguindanaon: Inged nu Ipil, Jawi:  ايڠد نو ايڤل;  Chavacano: Municipalidad de Ipil; Tagalog: Bayan ng Ipil), is a municipality and capital of the province of Zamboanga Sibugay, Philippines. According to the 2024 census, it has a population of 96,363 people. Ipil is the most populous municipality of Zamboanga Sibugay, and  the second most populous in Region IX after Sindangan.\nThe town hosts its only airport in the province, Ipil Airport located at Barangay Sanito, along the Pan Philippine Highway. Its large income and population makes it a major commercial and economic center in Zamboanga Sibugay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "ipil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7062,
+    "attempt": 7013,
+    "place_id": "gn-1774217",
+    "input": {
+      "place": {
+        "place_id": "gn-1774217",
+        "name": "Guar Chempedak",
+        "country": "Malaysia",
+        "subdivision": "Kedah",
+        "lat": 5.85846,
+        "lon": 100.45928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guar Chempedak",
+          "url": "https://en.wikipedia.org/wiki/Guar_Chempedak",
+          "text": "Guar Chempedak is a small town in Yan District, Kedah, Malaysia. Guar Chempedak is situated within the parliamentary constituency of Jerai. Guar Chempedak comes from two words, in which Guar means 'hilly land' and Chempedak or cempedak is a name of a fruit that is believed to be widely available here in any season.\nIt was where the tragic 1989 Taufiqiah Al-Khairiah madrasa fire occurred.\nMajority of the population here are of Malay descent, and a small number of Chinese and Indians also reside here. Although most of the town is relatively rural, in recent years more infrastructure has been developed, including shop houses and residential areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "guar chempedak",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "guar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chempedak",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7063,
+    "attempt": 7014,
+    "place_id": "gn-2146793",
+    "input": {
+      "place": {
+        "place_id": "gn-2146793",
+        "name": "Thornbury",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.75819,
+        "lon": 145.00583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thornbury, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Thornbury,_Victoria",
+          "text": "Thornbury ( ) is an inner-city suburb in Melbourne, Victoria, Australia, 7 km (4.3 mi) north-east of Melbourne's Central Business District, located within the City of Darebin local government area. Thornbury recorded a population of 19,005 at the 2021 census.\nThornbury is bordered by the Merri Creek to the west, and the Darebin Creek to the east. The heart of Thornbury is known as Thornbury Village, and is located at the centre of Thornbury, at the intersection of High Street and Normanby Avenue/Clarendon Street.\nThornbury is shaped as a thin strip of land sandwiched between Northcote and Preston. Its east–west distance is four times its north–south distance. For 111 years, Thornbury was part of the former City of Northcote local government area, which existed from 1883 until June 1994. As such, Thornbury is understood to be a former bridesmaid suburb of Northcote, similar to the commercial and demographic satellite, Westgarth, although the latter does not have its own postcode.\nIn the 2021 census, the most common ancestries were English 29.7%, Australian 24.8%, Irish 14.1%, Italian 12.6% and Greek 10.9%%. 70.5% of people were born in Australia with other common countries of birth being Greece 4.2%, England 2.9%, Italy 2.9%, and New Zealand 2.2%. Most common languages, other than English spoken at home are Greek 8.0%, Italian 4.2%, Arabic 1.7%, Mandarin 1.1% and Vietnamese 1.0%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "thornbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7064,
+    "attempt": 7015,
+    "place_id": "gn-2520940",
+    "input": {
+      "place": {
+        "place_id": "gn-2520940",
+        "name": "Blanca",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 38.1791,
+        "lon": -1.37473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blanca, Murcia",
+          "url": "https://en.wikipedia.org/wiki/Blanca,_Murcia",
+          "text": "Blanca is a Spanish municipality in the Region of Murcia, located  in the \"Vega Alta del Segura\". It belongs to one of the six municipalities of the Ricote Valley (Valle de Ricote), together with Abarán, Ojós,  Ricote, Ulea, Archena and Villanueva de Segura. Blanca limits on the north by the municipality of Abarán, on the south by those of Ulea and Ojós, on the east by the municipalities Molina de Segura and Fortuna, and on the  west by the  municipality Ricote. Blanca has an area of 87.7 km ², its  average height is 233 m and the village has 6489 inhabitants, according to the INE in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "blanca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7065,
+    "attempt": 7016,
+    "place_id": "gn-2624602",
+    "input": {
+      "place": {
+        "place_id": "gn-2624602",
+        "name": "Aars",
+        "country": "Denmark",
+        "subdivision": "North Denmark",
+        "lat": 56.80399,
+        "lon": 9.51441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aars",
+          "url": "https://en.wikipedia.org/wiki/Aars",
+          "text": "Aars or Års, (Danish pronunciation: [ˈɒˀs]) is a Danish town with a population of 8,738 (1 January 2026) in Himmerland, Denmark. Administratively, Aars is the municipal seat of Vesthimmerland Municipality and biggest town of Vesthimmerland Municipality, Region Nordjylland since 2007 and it was also the seat of the mayor in the now abolished Aars Municipality. The town was founded in the 14th century. It is one of the four principal towns of Vesthimmerland, the other ones being Farsø, Løgstør and Aalestrup. Aars is a former railway town. It is currently the 77th largest city in Denmark just behind Nivå but in front of Løgten in Aarhus Municipality. It is the 11th biggest town/city in Region Nordjylland in front of Svenstrup but just behind Nykøbing Mors. The town has the nickname Cimbri's town (Danish: Kimbrenes by)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "aars",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7066,
+    "attempt": 7017,
+    "place_id": "gn-2643776",
+    "input": {
+      "place": {
+        "place_id": "gn-2643776",
+        "name": "Lofthouse",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.72947,
+        "lon": -1.49697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lofthouse, West Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Lofthouse,_West_Yorkshire",
+          "text": "Lofthouse is a village between the cities of Wakefield and Leeds in West Yorkshire, England. The village falls within the Ardsley and Robin Hood ward of the City of Leeds Council. It is in the City of Leeds metropolitan borough but with a Wakefield postal address (WF3). It is mentioned as Locthuse, also as Loftose in the 1086 Domesday Book.\nLofthouse has good road connections to its nearby boroughs as well as to the rest of Northern England. It can be found on the main A61 Leeds-Wakefield road and off junction 29 of the M62 and junction 42 of the M1, known locally as the Lofthouse interchange. Lofthouse Gate and Outwood are neighbouring villages on the A61 towards Wakefield and are in the Wakefield Metropolitan Area. Towards Leeds there is the village of Robin Hood.\nThere are two churches, Christ Church (Church of England) and Lofthouse Methodist Church, a doctor's surgery  and the Rodillian Academy. Lofthouse Children's Centre  is located in the Rodillian Academy grounds. The old co-operative building, just off the main A61 on Co-operative Street, is now occupied by Chill Beauty. \nLofthouse is often erroneously believed to be the scene of the Lofthouse Colliery disaster, which took place in 1973. The disaster actually took place beneath a field near the village of Kirkhamgate, where a new coalface was being worked."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "lofthouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7067,
+    "attempt": 7018,
+    "place_id": "gn-2644542",
+    "input": {
+      "place": {
+        "place_id": "gn-2644542",
+        "name": "Leyton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.55956,
+        "lon": -0.00777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leyton",
+          "url": "https://en.wikipedia.org/wiki/Leyton",
+          "text": "Leyton ( LAY-tən) is a town in East London, England, within the London Borough of Waltham Forest. It borders Walthamstow to the north, Leytonstone to the east, and Stratford to the south, with Clapton, Hackney Wick and Homerton, across the River Lea, to the west. The area includes New Spitalfields Market, Leyton Orient Football Club, as well as part of the Queen Elizabeth Olympic Park. The town consists largely of terraced houses built between 1870 and 1910, interspersed with some modern housing estates.  It is 6.2 miles (10 km) north-east of Charing Cross.\nLeyton was an ancient parish, also known as Low Leyton or Leyton St Mary. It formed part of the Becontree hundred of the ancient county of Essex. The parish contained the two settlements of Low Leyton and Leytonstone and remained largely rural until the 19th century. The area saw significant development in the late 19th century, becoming part of the conurbation of London, similar to much of south-west Essex. It became part of the Metropolitan Police District in 1839 and has been part of the London postal district since its inception in 1856.\nA Leyton local government district was established in 1873, covering Leyton and Leytonstone. The district was enlarged in 1875 to also include Cann Hall. It became an urban district in 1894 and gained municipal borough status in 1926. In 1965, the Municipal Borough of Leyton merged with the neighbouring boroughs of Walthamstow and Chingford to form the London Borough of Waltham Forest, a local government district of Greater London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "leyton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7068,
+    "attempt": 7019,
+    "place_id": "gn-2654412",
+    "input": {
+      "place": {
+        "place_id": "gn-2654412",
+        "name": "Buckhurst Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.62409,
+        "lon": 0.03262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buckhurst Hill",
+          "url": "https://en.wikipedia.org/wiki/Buckhurst_Hill",
+          "text": "Buckhurst Hill is an affluent town and civil parish in the Epping Forest District of Essex, England. It is inside the M25 London orbital motorway but lies just outside the administrative boundary of Greater London. It is adjacent to the northern boundary of the London Borough of Redbridge and is 11 miles (18 km) north-east of Charing Cross in central London. The area developed following the opening of Buckhurst Hill station in 1856 on what was originally a branch of the Eastern Counties Railway but now forms part of the Central line of the London Underground. At the 2021 census the parish had a population of 11,755."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "buckhurst hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "buckhurst",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7069,
+    "attempt": 7020,
+    "place_id": "gn-2654726",
+    "input": {
+      "place": {
+        "place_id": "gn-2654726",
+        "name": "Bridport",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.7338,
+        "lon": -2.75831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridport",
+          "url": "https://en.wikipedia.org/wiki/Bridport",
+          "text": "Bridport is a market town and civil parish in Dorset, England, 1+1⁄2 miles (2.4 km) inland from the English Channel near the confluence of the River Brit and its tributary the Asker. Its origins are Saxon and it has a long history as a rope-making centre. On the coast and within the town's boundary is West Bay, a small fishing harbour also known as Bridport Harbour.\nThe town features as Port Bredy in Thomas Hardy's Wessex novels. In the 21st century, Bridport's arts scene has expanded with an arts centre, theatre, cinema and museum.\nAt the 2021 census, the Bridport built-up area had a population of 12,295. The town is twinned with Saint-Vaast-la-Hougue, France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "bridport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

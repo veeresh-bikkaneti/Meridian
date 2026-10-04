@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 7151,
+    "attempt": 7101,
+    "place_id": "gn-2655394",
+    "input": {
+      "place": {
+        "place_id": "gn-2655394",
+        "name": "Blairgowrie and Rattray",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.59157,
+        "lon": -3.34045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blairgowrie and Rattray",
+          "url": "https://en.wikipedia.org/wiki/Blairgowrie_and_Rattray",
+          "text": "Blairgowrie and Rattray ( ) is a historic market town and twin burgh in Perth and Kinross, Scotland. The town lies on the north side of Strathmore at the foot of the Grampian Mountains. It had a population of 9,433 in 2022.\nLocals refer to the town as \"Blair\". Blairgowrie is the larger of the two former burghs which were united by an Act of Parliament in 1928 and lies on the southwest side of the River Ericht while Rattray is on the northeast side. Rattray claims to be the older and certainly Old Rattray, the area round Rattray Kirk, dates back to the 12th century. New Rattray, the area along the Boat Brae and Balmoral Road dates from 1777 when the River was spanned by the Brig o' Blair. The west boundary is formed by the Knockie, a round grassy hill, and Craighall Gorge on the Ericht. Blairgowrie and Rattray developed over the centuries at the crossroads of several historic routes with links from the town to Perth, Coupar Angus, Alyth and Braemar. The roads to Coupar Angus and Braemar form part of General Wade's military road from Perth to Braemar then onto Fort George. The town's centrepiece is the Wellmeadow, a grassy triangle in the middle of town which hosts regular markets and outdoor entertainment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "blairgowrie and rattray",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "blairgowrie",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rattray",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7152,
+    "attempt": 7102,
+    "place_id": "gn-2657356",
+    "input": {
+      "place": {
+        "place_id": "gn-2657356",
+        "name": "Amersham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.66667,
+        "lon": -0.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amersham",
+          "url": "https://en.wikipedia.org/wiki/Amersham",
+          "text": "Amersham ( AM-ər-shəm) is a market town and civil parish in the Chiltern Hills of Buckinghamshire, England, 27 miles (43 km) northwest of central London, 15 miles (24 km) south-east of Aylesbury and 9 miles (14 km) north-east of High Wycombe. Amersham is part of the London commuter belt.\nThere are two distinct areas:\n\nOld Amersham, set in the valley of the River Misbourne, containing the 13th-century parish church of St. Mary's and several old pubs and coaching inns\nAmersham-on-the-Hill, which grew in the early 20th century around Amersham station, which was served by the Metropolitan Railway (now the Metropolitan line) and the Great Central Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "amersham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7153,
+    "attempt": 7103,
+    "place_id": "gn-2757347",
+    "input": {
+      "place": {
+        "place_id": "gn-2757347",
+        "name": "Delfshaven",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.90488,
+        "lon": 4.45315
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Delfshaven",
+          "url": "https://en.wikipedia.org/wiki/Delfshaven",
+          "text": "Delfshaven (Dutch pronunciation: [ˌdɛl(ə)fsˈɦaːvə(n)] ) is a borough of Rotterdam, Netherlands, on the right bank of river Nieuwe Maas. It was a separate municipality until 1886.\nThe town of Delfshaven grew around the port of the city of Delft. Delft itself was not located on a major river, so in 1389 a harbour was created about 12 km (7 mi) due south of the city, to be able to receive seafaring vessels and avoid tolls being levied by the neighbouring and competing city of Rotterdam. This settlement was named \"Delfshaven\" (lit. 'Port of Delft').\nOn 1 August 1620 the Pilgrim fathers left Delfshaven with the Speedwell. Since then, the town's Oude Kerk has also been known as the Pelgrimskerk, or in English, the \"Pilgrim Fathers Church\".\n\nFishing, shipbuilding and the distillery of jenever were the main sources of income. The Dutch East India Company had important wharves and warehouses in Delfshaven, and one of the Dutch West India Company's most famous commanders, Piet Hein, was born here.\nDelfshaven belonged to the city and municipality of Delft until 1795, when it declared itself to be an independent municipality, under protest from Delft. In 1825 it got city rights. Delfshaven was annexed by Rotterdam in 1886 at its own request. The current borough has about 73,000 inhabitants. Its small historic centre has been carefully preserved. It features modest local museums, a brewery and various dining and drinking facilities.\nDelfshaven escaped the bombing of Rotterdam by the Luftwaffe on 14 May 1940. Later during the Second World War, the area around the Visserijplein and other parts of the western city of Rotterdam were destroyed by Allied bombing on 31 March 1943."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 278
+    },
+    "banned_terms": [
+      {
+        "term": "delfshaven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7154,
+    "attempt": 7104,
+    "place_id": "gn-2759774",
+    "input": {
+      "place": {
+        "place_id": "gn-2759774",
+        "name": "Andijk",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.74667,
+        "lon": 5.22222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andijk",
+          "url": "https://en.wikipedia.org/wiki/Andijk",
+          "text": "Andijk (Dutch: [ɑnˈdɛik] ; West Frisian: Andìk) is a former municipality and a village bordering Lake IJssel in the Netherlands, in the province of North Holland and the region of West-Frisia. Since 1 January 2011 Andijk has been part of Medemblik municipality.\nThe name Andijk comes from the Dutch: aan de dijk, lit. 'at the dike'. In 1667 a small church was built. During the Napoleonic occupation, Andijk became an independent municipality on 1 January 1812 by imperial decree of 21 October 1811.\nAndijk has fertile clay soil used for agriculture and vegetable horticulture and is also an important supplier of drinking water for the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "andijk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7155,
+    "attempt": 7105,
+    "place_id": "gn-2783737",
+    "input": {
+      "place": {
+        "place_id": "gn-2783737",
+        "name": "Wezembeek-Oppem",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.8395,
+        "lon": 4.49427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wezembeek-Oppem",
+          "url": "https://en.wikipedia.org/wiki/Wezembeek-Oppem",
+          "text": "Wezembeek-Oppem (Dutch: [ˈʋeːzəmbeːk ˈɔpəm] ) is a municipality in the province of Flemish Brabant, in the Flemish region of Belgium, 10 kilometres (6.2 mi) east of the centre of Brussels. The municipality only comprises the town of Wezembeek-Oppem proper. On January 1, 2016, Wezembeek-Oppem had a total population of 14,095. The total area is 6.82 km2 (2.63 sq mi), which gives a population density of 2,066/km2 (5,350/sq mi). It is essentially a suburb of Brussels and was a component of the short-lived Arrondissement of Brussels-Periphery, although it does not directly adjoin any part of the Brussels-Capital Region. The Brussels Ring (R0) orbital motorway bisects the municipality.\nWezembeek-Oppem is home to a large community of international expatriates, in part because of the presence of the Internationale Deutsche Schule Brüssel (iDSB) in Wezembeek-Oppem itself, and the British School of Brussels in nearby Tervuren."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "wezembeek oppem",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wezembeek",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oppem",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7156,
+    "attempt": 7106,
+    "place_id": "gn-2794223",
+    "input": {
+      "place": {
+        "place_id": "gn-2794223",
+        "name": "Knesselare",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.13932,
+        "lon": 3.41282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Knesselare",
+          "url": "https://en.wikipedia.org/wiki/Knesselare",
+          "text": "Knesselare (Dutch pronunciation: [ˈknɛsəˌlaːrə]) is a village and deelgemeente in the municipality of Aalter and a former municipality located in the Belgian province of East Flanders. The municipality comprised the towns of Knesselare proper and Ursel.\nThe municipality's name is derived from the Germanic words \"klisse\" (herb) and \"laar\", (a soggy brushwood terrain), and was first attested in 1128. \nKnesselare became an independent parish in 1171. It was originally a village heerlijkheid, but during the rule of Louis II, Count of Flanders (1330–1384), the area had been split into four different administrations. Until the 19th century, large parts of the municipality still contains forests and heaths.\nOn 1 August 2015, Knesselare had a total population of 8,171. The total area was 37.27 km² which gives a population density of 219 inhabitants per km².\nEffective 1 January 2019, the municipality was merged into Aalter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "knesselare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7157,
+    "attempt": 7107,
+    "place_id": "gn-2803130",
+    "input": {
+      "place": {
+        "place_id": "gn-2803130",
+        "name": "Anzegem",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.837,
+        "lon": 3.47786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anzegem",
+          "url": "https://en.wikipedia.org/wiki/Anzegem",
+          "text": "Anzegem (Dutch pronunciation: [ˈɑnzəɣɛm] ) is a municipality located in the Belgian province of West Flanders. The municipality comprises the towns of Anzegem proper, Gijzelbrechtegem, Ingooigem, Kaster, Tiegem and Vichte. On 1 January 2018 Anzegem had a total population of 14,609. The total area is 42.35 km2 which gives a population density of 345 inhabitants per km2.\nOne of the most famous inhabitants of Anzegem was Stijn Streuvels, the Flemish writer who died in Ingooigem in 1969, aged 98.\nOn the night of 16 October 2014, Anzegem's medieval parish church of Saint John the Baptist (Sint Jan de Doperkerk in Dutch) was destroyed in a fire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "anzegem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7158,
+    "attempt": 7108,
+    "place_id": "gn-2853928",
+    "input": {
+      "place": {
+        "place_id": "gn-2853928",
+        "name": "Pfullingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.46458,
+        "lon": 9.22796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pfullingen",
+          "url": "https://en.wikipedia.org/wiki/Pfullingen",
+          "text": "Pfullingen (German pronunciation: [ˈpfʊlɪŋən] ; Swabian: Pfullenga) is a town in the district of Reutlingen, Baden-Württemberg, Germany. It is situated 3 km southeast of Reutlingen at the foot of the Swabian Alb.\nWith its almost 20,000 inhabitants it is famous for its Handball team, which in 2006 had to file for bankruptcy, the Schönbergturm and the People mover.\nPfullingen is situated in the Northern foothills of the Alb in the valley of the river Echaz. Pfullingen is surrounded by the cone-like hills Achalm and Georgenberg as well as some mountains of the Albtrauf.\nPfullingen was first mentioned in a chart by Emperor Otto I in 937. It was the main settlement in the Pfullichgau.\nAt the end of the 14th century Pfullingen lost its city privileges after having been conquered and destroyed by the forces of the Free Imperial City Reutlingen. About 1500 Pfullingen became part of Württemberg, its city privileges being restored only in 1699.\nPfullingen is home to many schools, in 2013 Wilhem-Hauff-Realschule held an exchange with East Bergholt High School. The Friedrich-Schiller-Gymnasium, which is named by a famous German poet, held an exchange with Park Ridge High School, New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "pfullingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7159,
+    "attempt": 7109,
+    "place_id": "gn-2854152",
+    "input": {
+      "place": {
+        "place_id": "gn-2854152",
+        "name": "Pfedelbach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.17806,
+        "lon": 9.505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pfedelbach",
+          "url": "https://en.wikipedia.org/wiki/Pfedelbach",
+          "text": "Pfedelbach (German pronunciation: [ˈpfeːdl̩bax]) is a municipality in the district of Hohenlohe in Baden-Württemberg in Germany.\nIn 1472 the town and castle were bought by the counts of Hohenlohe. The present castle was built from 1568 to 1572 by the count of Hohenlohe-Waldenburg. Being regionally most popular for its Fürstenfass (Prince's barrel), Pfedelbach's history dates back to the 11th century.\nNowadays most of the surrounding smaller townships have been suburbanized to Pfedelbach, including Oberohrn, Heuberg/Buchhorn/Gleichen (three small villages counting as one), Harsberg, Untersteinbach and Windischenbach to name but a few.\nA special aspect about the early culture of Pfedelbach is the affiliation to the Yenish language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "pfedelbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7160,
+    "attempt": 7110,
+    "place_id": "gn-2924788",
+    "input": {
+      "place": {
+        "place_id": "gn-2924788",
+        "name": "Friedeburg",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.45362,
+        "lon": 7.83146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Friedeburg",
+          "url": "https://en.wikipedia.org/wiki/Friedeburg",
+          "text": "Friedeburg is a municipality in the district of Wittmund, in Lower Saxony, Germany. It is situated approximately 14 km southeast of Wittmund, and 20 km west of Wilhelmshaven.\nAbout 4 kilometers east of the main village of Friedeburg, near the small village named Etzel, one of Europe's largest salt domes is located. This geological feature is part of the 240 million years old Zechstein Group formations. The salt dome, with a volume of 46 million cubic metres, houses important natural gas storages and crude oil storages. In February, 2022, the government of Lower Saxony decided to subsidize the realization of underground hydrogen storages there as well."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "friedeburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7161,
+    "attempt": 7111,
+    "place_id": "gn-2960970",
+    "input": {
+      "place": {
+        "place_id": "gn-2960970",
+        "name": "Westport",
+        "country": "Ireland",
+        "subdivision": "Connacht",
+        "lat": 53.8,
+        "lon": -9.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westport, County Mayo",
+          "url": "https://en.wikipedia.org/wiki/Westport,_County_Mayo",
+          "text": "Westport (Irish: Cathair na Mart, meaning 'the stone fort of the beeves', historically anglicised as Cahernamart) is a town in County Mayo in Ireland. It is at the south-east corner of Clew Bay, an inlet of the Atlantic Ocean on the west coast of Ireland. Westport is a tourist destination and scores highly for quality of life. It won the Irish Tidy Towns Competition three times in 2001, 2006 and 2008. In 2012 it won the Best Place to Live in Ireland competition run by The Irish Times.\nWestport is designated as a heritage town, and is one of only a few planned towns in Ireland. The town centre was laid-out in the Georgian architectural style, and incorporates the Carrow Beg river into the design composition. This provides for tree lined promenades (known as The Mall) and several stone bridges.\nThe pilgrimage mountain of Croagh Patrick, known locally as \"the Reek\", lies some 10 km west of the town near the villages of Murrisk and Lecanvey. The mountain forms the backdrop to the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "westport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7162,
+    "attempt": 7112,
+    "place_id": "gn-298326",
+    "input": {
+      "place": {
+        "place_id": "gn-298326",
+        "name": "Ürgüp",
+        "country": "Türkiye",
+        "subdivision": "Nevşehir Province",
+        "lat": 38.6296,
+        "lon": 34.91199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ürgüp",
+          "url": "https://en.wikipedia.org/wiki/Ürgüp",
+          "text": "Ürgüp (Greek: Προκόπιο Prokópio, Cappadocian Greek: Προκόπι Prokópi, Ottoman Turkish: Burgut Kalesi) is a town in Nevşehir province in the Cappadocia area of Central Anatolia, Turkey. It is the seat of Ürgüp District. Its population is 24,647 (2022). The town lies at an average elevation of 1,044 m (3,425 ft).\nAs elsewhere in Cappadocia, the centre of Ürgüp is full of old stone houses clustered around a central rock formation, in this case Temenni Tepesi (Temenni Hill, Wish Hill).\nÜrgüp got into the boutique-hotel movement early and as a result has a flourishing tourism industry, in part because it has more amenities than other Cappadocian destinations. It makes a good base for visiting all the main attractions of Cappadocia, including the rock-cut churches and the underground cities.\nAs well as tourism, Ürgüp has a thriving wine-growing industry. It also provided the setting for many episodes of the popular television series, Asmalı Konak which aired from 2002 to 2004 and was credited with kickstarting domestic tourism to Cappadocia.\nÜrgüp features briefly in Philip Glazebrook's travelogue, A Journey to Kars, when he is forced to extend his stay there due to 1980 census-taking which decreed that no one could go anywhere and no transport was operating."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "urgup",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7163,
+    "attempt": 7113,
+    "place_id": "gn-2995916",
+    "input": {
+      "place": {
+        "place_id": "gn-2995916",
+        "name": "Marcoussis",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.64026,
+        "lon": 2.23858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marcoussis",
+          "url": "https://en.wikipedia.org/wiki/Marcoussis",
+          "text": "Marcoussis (French pronunciation: [maʁkusi] ) is a commune in the southern suburbs of Paris, France. It is located 24.8 km (15.4 mi) from the center of Paris.\nMarcoussis is the location of the CNR (National Centre of Rugby) where the French national rugby union team prepare for international competitions. It is at the CNR that the Linas-Marcoussis Agreement was signed in January 2003 between belligerents in the Ivorian Civil War.\nA market village until the 1960s, Marcoussis supplied the markets of Paris with tomatoes and strawberries. A small train route, the Arpajonnais, inaugurated in 1894, took food at 4am every morning, it ceased functioning in 1937."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "marcoussis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7164,
+    "attempt": 7114,
+    "place_id": "gn-3046446",
+    "input": {
+      "place": {
+        "place_id": "gn-3046446",
+        "name": "Pest",
+        "country": "Hungary",
+        "subdivision": "Budapest",
+        "lat": 47.5,
+        "lon": 19.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pest, Hungary",
+          "url": "https://en.wikipedia.org/wiki/Pest,_Hungary",
+          "text": "Pest (Hungarian pronunciation: [ˈpɛʃt]) is the part of Budapest, the capital city of Hungary, that lies on the eastern bank of the Danube. Pest was administratively unified with Buda and Óbuda in 1873. Prior to this, it was an independent city. In colloquial Hungarian, \"Pest\" is sometimes also used pars pro toto to refer to Budapest as a whole. \nComprising about two-thirds of the Budapest city area, Pest is flatter and much more heavily urbanized than Buda. Many of Budapest's most notable sites are in Pest, including the Inner City (Hungarian: Belváros), the Parliament (Országház), the Opera, the Great Market Hall, Heroes' Square, and Andrássy Avenue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "pest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7165,
+    "attempt": 7115,
+    "place_id": "gn-3109143",
+    "input": {
+      "place": {
+        "place_id": "gn-3109143",
+        "name": "La Seu d'Urgell",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 42.35877,
+        "lon": 1.46144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Seu d'Urgell",
+          "url": "https://en.wikipedia.org/wiki/La_Seu_d'Urgell",
+          "text": "La Seu d'Urgell (Catalan: [la ˈsɛw ðuɾˈdʒeʎ] ; Spanish: Seo de Urgel [seo ðe uɾˈxel] , formerly Urgell) is a town located in Alt Urgell county in Alt Pirineu, Catalonia, Spain. The town is also the head of its judicial district and the seat of the Bishop of Urgell, one of the co-princes of Andorra. It is the most populated town of the region, with 17.4% of its population. La Seu d'Urgell and Puigcerdà together have 30% of the population of the area. It has a population of 13,009 (register office, 2025) .\nIt is located at the confluence of the Segre and the Valira rivers. The city is in the local region of Urgellet, a Pyrenean region formed by 16 municipalities of Alt Urgell. Urgellet and Andorra were originally the County of Urgell with its capital in la Seu d'Urgell before the county expansion to the south.\nAlt Urgell is the gateway to the state of Andorra and the proximity to this important population center and economic activity is one of the main reasons for the current vigour of the city of la Seu d'Urgell within Alt Pirineu.\nThe town's patron saints are Saint Ot of Urgell, Saint Sebastian, and the Virgin of Urgell. While the Virgin of Núria and Sant Ermengol are the main patrons of the diocese of Urgell, Sant Ermengol is the most prominent in the city than other patrons. Probably that is why there are various events throughout the year dedicated to Sant Ermengol, such as the Sant Ermengol Fair, one of the oldest in Catalonia, and the altarpiece of Sant Ermengol.\nThe Segre Olympic Park, built in 1992 for the Barcelona Summer Olympic Games, is a pump-driven canoe and kayak sports venue located adjacent to the historical centre of la Seu d'Urgell."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "la seu d urgell",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "urgell",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7166,
+    "attempt": 7116,
+    "place_id": "gn-3109546",
+    "input": {
+      "place": {
+        "place_id": "gn-3109546",
+        "name": "Sant Just Desvern",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.38389,
+        "lon": 2.06758
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Just Desvern",
+          "url": "https://en.wikipedia.org/wiki/Sant_Just_Desvern",
+          "text": "Sant Just Desvern (Old Catalan for 'Saint Justin of-the-Buckthorn'; Catalan pronunciation: [ˈsaɲ ˈʒuzd dəzˈβɛɾn]) is a town near Barcelona, in the comarca of the Baix Llobregat, Catalonia, Spain.\nSant Just Desvern is located in the 2,078317º of longitude and 41,381611º of latitude.\nIt is situated at 122 m (average) above sea level. The maximum height is located at 405 meters above sea level, almost in the top of Turó de Merlès (416.7 m), and the lowest spot of this town is about 40 meters, located at the park of Torreblanca.\nThe surface of the town is about 7.8 km2. The town has 35 km of streets. It has good connections to arrive to N-340, the highway A-2 and Rondes de Dalt and Litoral.\nIn the first division of comarcal, Sant Just Desvern was included in Barcelonès (1936). But in the comarcal revision in 1987, along with Esplugues de Llobregat, they became part of Baix Llobregat.\nThe municipality borders are Sant Joan Despí to the southwest, Esplugues de Llobregat to the east and Sant Feliu de Llobregat to the northeast. Barcelona is almost in the border line.\nThe first mention of the town in a document dates back to the year 965. Its coat of arms depicts a blue bell inside a golden rhombus.\nThe local city council uses the slogan pobleiciutat (Catalan for 'townandcity').\nSant Just Desvern is home to several celebrities including players for the F.C. Barcelona football club and politicians including the ex-president of the Generalitat de Catalunya, José Montilla."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "sant just desvern",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "just",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "desvern",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7167,
+    "attempt": 7117,
+    "place_id": "gn-3172890",
+    "input": {
+      "place": {
+        "place_id": "gn-3172890",
+        "name": "Montegrotto Terme",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.33119,
+        "lon": 11.78634
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montegrotto Terme",
+          "url": "https://en.wikipedia.org/wiki/Montegrotto_Terme",
+          "text": "Montegrotto Terme (Venetian: Montegròto) is a comune (municipality) in the Province of Padua in the Italian region Veneto, located about 45 kilometres (28 mi) west of Venice and about 11 kilometres (7 mi) southwest of Padua.\nMontegrotto Terme is a spa resort, part of the Terme Euganee spas.  The Euganean Hills (Colli Euganei) are located nearby.\n\nThe town's most famous landmark, visible from afar, is the Cathedral San Pietro, called Duomo, on the hill between the town hall and the railway station.\nIt is a post WW-II brickstone building and was consecrated in 1963. The two huge frescos are by a local artist, Armando Migliolaro (1915-1999).\nThe left fresco, Patrimonium Petri, has the following Latin legend: In sapientia sermonis sui (instead of: eius) mirati sunt universi. This should mean: Everyone admired the wisdom of his speech. The possessive pronoun \"\"sui\"\" being reflexive, however, the artist made a serious mistake and the legend actually means: Everyone admired the wisdom of his own sermon. The syntactical error has not been noticed by churchgoers and church officials because \"\"sui\"\" sounds normal in Italian.\n\nThe etymology of the town's name is commonly explained as Mons Aegrotorum, Hill of the sick, which is, however, unlikely because until 1934 the village or the houses in what was to become Montegrotto were not called Montegrotto until 1934 and the area belonged to Battaglia. In the Middle Ages the place was called San Pietro Montagnone, probably after the family Montagnone, so the name Montegrotto was never used by Latin speaking people.\nMontegrotto Terme borders the following municipalities: Abano Terme, Battaglia Terme, Due Carrare, Galzignano Terme, Torreglia.\nThe Hotel Terme Millepini, which is a Guinness World Record holder for containing the world's deepest pool is located in Montegrotto Terme."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 290
+    },
+    "banned_terms": [
+      {
+        "term": "montegrotto terme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "montegrotto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7168,
+    "attempt": 7118,
+    "place_id": "gn-322817",
+    "input": {
+      "place": {
+        "place_id": "gn-322817",
+        "name": "İbradı",
+        "country": "Türkiye",
+        "subdivision": "Antalya",
+        "lat": 37.09694,
+        "lon": 31.59917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "İbradı",
+          "url": "https://en.wikipedia.org/wiki/İbradı",
+          "text": "İbradı is a municipality and district of Antalya Province, Turkey. Its area is 778 km2, and its population is 2,875 (2022).\nİbradı is a high plain in the Taurus Mountains. In summer the weather is dry and cooler than the nearby Mediterranean coast with a daytime temperature of 30 degrees C and 10 degrees C at night. The mountains are covered with forests of juniper, cedar and pine, watered by mountain streams that eventually form the Manavgat River. The people of İbradı mainly live from grazing goats on the hillsides and from forestry; there is no commercial farming although people have gardens, vineyards and fruit trees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "ibrad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7169,
+    "attempt": 7119,
+    "place_id": "gn-3441074",
+    "input": {
+      "place": {
+        "place_id": "gn-3441074",
+        "name": "Piriápolis",
+        "country": "Uruguay",
+        "subdivision": "Maldonado",
+        "lat": -34.86287,
+        "lon": -55.27471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piriápolis",
+          "url": "https://en.wikipedia.org/wiki/Piriápolis",
+          "text": "Piriápolis is a city in the Maldonado Department of Uruguay. It is an important summer resort in the country, predating the larger and better known resort town of Punta del Este. Because it is mainly used as a resort, it has a relatively small permanent population for a city of its size.\nPiriápolis is also the name of the municipality to which the city belongs. It includes the following zones: Piriápolis, Playa Grande, Playa Hermosa, Playa Verde, Punta Colorada, San Francisco, Punta Negra, Sauce de Portezuelo, Ocean Park, Barra de Portezuelo, La Capuera, Puntas de la Sierra, La Falda, Miramar, Colonia V. Suárez, Sierras del Tirol."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "piriapolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7170,
+    "attempt": 7120,
+    "place_id": "gn-3455036",
+    "input": {
+      "place": {
+        "place_id": "gn-3455036",
+        "name": "Paraty",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -23.21778,
+        "lon": -44.71306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paraty",
+          "url": "https://en.wikipedia.org/wiki/Paraty",
+          "text": "Paraty (or Parati; Brazilian Portuguese pronunciation: [paɾaˈt͡ʃi]) is a Brazilian municipality on the southern coast of the state of Rio de Janeiro. It is 258 kilometres from the state capital, the city of Rio de Janeiro. Alongside the Atlantic Ocean, the municipal area has an average altitude of just five metres above sea level. It covers 924.295 square kilometres and has an estimated population of 47,668, giving a population density of 48.95 inhabitants per square kilometre. According to an estimate by the Brazilian Institute of Geography and Statistics (IBGE) from 2014, it ranks 43rd among the municipalities of the state of Rio de Janeiro by population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "paraty",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
