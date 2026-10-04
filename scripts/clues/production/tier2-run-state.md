@@ -27,6 +27,15 @@ Scratch inputs (never committed): .scratch/geodetective/
       63/123/43 disjoint, union 229, revalidation 0 invalid, own leak
       scan 0/1,145, scope regeneration byte-identical (all 200 lines).
 - [ ] Waves T2-1..n over the 7,797 until assembled >= 365 or pool exhausted
+      WAVE 1 (200 places, pool ranks 1-217): jobs built + sections fetched
+      (175/200). Worker delivery channel fault: depth-2 worker shell
+      writes land in a private overlay — outputs recovered via reply-JSONL
+      or muse.write; EVERY file id-verified position-by-position vs job
+      file before use. Two wrong-job deliveries (jobs 3, 7 — content for
+      places in no tier2 job, though internally coherent w/ real section
+      extracts) caught by id check and DISCARDED; redelivery ordered.
+      Verified on disk so far: jobs 1,2,4,6,8,10 (53 worker-accepted
+      pre-validation). Pending redelivery: 3, 5, 7, 9.
 - [ ] Finish: gates + full-run report + BRANCH_STATUS + final reviewer cert
 
 ## Standing generation-worker brief (per job: 20 places)
