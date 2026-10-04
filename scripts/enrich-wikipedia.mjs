@@ -94,17 +94,26 @@ const ABBREV_TAIL = /\b(?:U\.S|U\.K|St|Mt|Dr|Mr|Mrs|Ms|Jr|Sr|Ave|Blvd|Co|Inc|Ltd
 // period) is not rejoined by this rule — ABBREV_TAIL's "U.S."-style
 // entries cover the common multi-initial abbreviations.
 const INITIAL_TAIL = /(?:^|\s)[A-Z]\.$/;
-// Multi-initial chains ("C.A. Barker", "every B.C. Day", "Shell Colombia
-// S.A. Subsidiary…") are the same trap with more dots: the chain is an
-// abbreviation or a person's initials, and the sentence continues with a
-// name or noun. Rejoin — UNLESS the next fragment opens with a word that
-// plainly starts a fresh sentence, which keeps true boundaries like
-// "Washington, D.C. It was 1990." split. Rejoining reproduces the source
-// text exactly, so a wrong call here costs at most a longer candidate
-// (still length-capped at pick time), never invented text.
-const INITIAL_CHAIN_TAIL = /(?:^|[\s.])[A-Z](?:\.[A-Z])+\.$/;
+// Abbreviation tails of every shape: a fragment whose LAST TOKEN is
+// nothing but initials — "D.C.", "a.k.a.", "S.A.", "(ca.", "c.", "v." —
+// has not reached a sentence end, whatever the next fragment's case. The
+// token test (alternating letter/dot from the token's start) is what
+// keeps ordinary words safe: "grew." is not an abbreviation tail. The
+// rejoin is still refused when the next fragment opens with a plain
+// sentence starter, which keeps true boundaries like "Washington, D.C.
+// It was 1990." or "9 p.m. The doors open." split.
 const SENTENCE_STARTER =
   /^(?:It|He|She|They|We|The|A|An|In|On|At|By|For|After|Before|During|However|Today|Since|As|Although|Until|From|But|And|When|While|With|Under|Over)\b/;
+function endsWithAbbrevTail(fragment) {
+  const token = fragment.split(/\s+/).pop() ?? "";
+  // Pure initial chains: "D.C.", "a.k.a.", "S.A.", "c.", "v.", "(r."…
+  if (/^\(?(?:[A-Za-z]\.)+$/.test(token)) return true;
+  // A token that opens a parenthesis and ends with a period — "(ca.",
+  // "(orig." — sits inside an unclosed parenthetical, which is never a
+  // sentence end in well-formed text.
+  if (/^\([^()]*\.$/.test(token)) return true;
+  return false;
+}
 export function splitSentences(text) {
   const raw = text
     .replace(/\s+/g, " ")
@@ -119,7 +128,7 @@ export function splitSentences(text) {
       prev !== undefined &&
       (ABBREV_TAIL.test(prev) ||
         INITIAL_TAIL.test(prev) ||
-        (INITIAL_CHAIN_TAIL.test(prev) && !SENTENCE_STARTER.test(frag)))
+        (endsWithAbbrevTail(prev) && !SENTENCE_STARTER.test(frag)))
     ) {
       out[out.length - 1] = `${prev} ${frag}`;
     } else {
@@ -242,6 +251,16 @@ const CENSUS_HOOK_PATTERNS = [
   /\bCDP\b/,
   /\bcensus\b/i,
 ];
+// Administrative-seat hooks: the sentence's whole content is that an
+// office sits here ("site of the Kamwenge District headquarters"). That
+// is paperwork, not a hook — the date-anchor guard already treats admin
+// words as non-stories; this closes the same class for "site of"
+// phrasing. (Corporate "home to the headquarters of Tyson Foods" is a
+// different, retellable claim and is not matched.)
+const ADMIN_HOOK_PATTERNS = [
+  /\bsite of the headquarters\b/i,
+  /\bdistrict headquarters\b/i,
+];
 // Purely definitional openers (crew: "boring-by-construction" — Jadcherla:
 // "It is a historical town and is known for its cultural heritage."). No
 // person, event, date, record, or distinctive fact a 9-year-old could
@@ -289,10 +308,13 @@ function isDefinitional(sentence, nameTokens) {
 // named) is rejected wherever it appears.
 const PRONOUN_OPENER = /^(?:he|she|they|his|her|their|its)\b/i;
 const DANGLING_DEMONSTRATIVE = /\bthis designation\b/i;
+// Same defect in temporal form: "Since then, the island has hosted…"
+// points at an event in a sentence the card does not carry.
+const DANGLING_TEMPORAL = /^(?:Since then|After that|Following that|By then)\b/;
 
 function hasDanglingPronoun(sentence) {
   const first = sentence.trim().replace(/^[“"]+/, "");
-  return PRONOUN_OPENER.test(first) || DANGLING_DEMONSTRATIVE.test(sentence);
+  return PRONOUN_OPENER.test(first) || DANGLING_TEMPORAL.test(first) || DANGLING_DEMONSTRATIVE.test(sentence);
 }
 
 /**
@@ -312,6 +334,9 @@ export function hookRejection(sentence, nameTokens = new Set()) {
   }
   for (const re of CENSUS_HOOK_PATTERNS) {
     if (re.test(sentence)) return "census-language";
+  }
+  for (const re of ADMIN_HOOK_PATTERNS) {
+    if (re.test(sentence)) return "definitional";
   }
   if (isDefinitional(sentence, nameTokens)) return "definitional";
   if (hasDanglingPronoun(sentence)) return "dangling-pronoun";
@@ -411,8 +436,22 @@ export function extractHookSentence(extractText, placeName = "") {
       failReasons.push("too-long");
       continue;
     }
-    if (/\b[A-Z]\.$/.test(sentence)) {
+    if (/\b[A-Za-z]\.$/.test(sentence)) {
       failReasons.push("ends-in-initial");
+      continue;
+    }
+    // A parenthesis that survives stripParens was never closed inside
+    // this fragment — the "sentence" is a piece of a larger one that
+    // broke inside a parenthetical ("…named for Bylas (a.k.a."). Hooks
+    // are whole sentences or nothing.
+    if (/[()]/.test(sentence)) {
+      failReasons.push("unbalanced-parens");
+      continue;
+    }
+    // A fragment that begins mid-thought (lowercase, ")" or ",") is the
+    // tail of a sentence whose head scored elsewhere — never a hook.
+    if (/^[a-z),]/.test(sentence)) {
+      failReasons.push("fragment-start");
       continue;
     }
     return { sentence };

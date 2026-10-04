@@ -645,3 +645,61 @@ describe("splitSentences initial chains (tone-fix task 1, cont.)", () => {
     assert.deepEqual(parts, ["He moved to Washington, D.C.", "The city grew quickly."]);
   });
 });
+
+describe("abbreviation tails and broken fragments (tone-fix round 2)", () => {
+  it("keeps a circa parenthetical whole", () => {
+    const parts = splitSentences("The town is named after Saint Jerome (ca. 347). It grew slowly.");
+    assert.deepEqual(parts, ["The town is named after Saint Jerome (ca. 347).", "It grew slowly."]);
+  });
+  it("keeps 'c. 1900' whole", () => {
+    const parts = splitSentences("He built a mill here c. 1900. The town grew.");
+    assert.deepEqual(parts, ["He built a mill here c. 1900.", "The town grew."]);
+  });
+  it("still splits a true boundary after a lowercase abbreviation chain", () => {
+    const parts = splitSentences("The show starts at 9 p.m. The doors open early.");
+    assert.deepEqual(parts, ["The show starts at 9 p.m.", "The doors open early."]);
+  });
+  it("strips a rejoined parenthetical cleanly (Bylas shape)", () => {
+    const r = extractHookSentence(
+      "Bylas is a community in Arizona. It is named for Bylas (a.k.a. San Carlos Apache chief Byas).",
+      "Bylas",
+    );
+    assert.equal(r.sentence, "It is named for Bylas.");
+  });
+  it("never returns a candidate with an unbalanced parenthesis", () => {
+    const r = extractHookSentence(
+      "Faulquemont is a town in France. Chémery-lès-Faulquemont, incorporated in 1973, German: Schemmerich). " +
+        "It was founded in 1882 when the railroad arrived.",
+      "Faulquemont",
+    );
+    assert.equal(r.sentence, "It was founded in 1882 when the railroad arrived.");
+  });
+  it("rejects a candidate ending on a lowercase initial", () => {
+    const r = extractHookSentence(
+      "Eveleth is a city in Minnesota. It was the site of the famous court case Jenson v.",
+      "Eveleth",
+    );
+    assert.equal(r.rejected, "ends-in-initial");
+  });
+  it("rejects an administrative-seat hook (Kamwenge shape)", () => {
+    const r = extractHookSentence(
+      "Kamwenge is a town in Uganda. It is the site of the Kamwenge District headquarters.",
+      "Kamwenge",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+  it("keeps a corporate-headquarters hook (different claim, retellable)", () => {
+    const r = extractHookSentence(
+      "Springdale is a city in Arkansas. The city is home to the world headquarters of Tyson Foods.",
+      "Springdale",
+    );
+    assert.ok(r.sentence?.includes("Tyson Foods"), `picked: ${r.sentence ?? r.rejected}`);
+  });
+  it("rejects a 'Since then' opener (dangling temporal reference)", () => {
+    const r = extractHookSentence(
+      "Baengnyeongdo is an island. Since then, the island has hosted both defectors and festivals.",
+      "Baengnyeongdo",
+    );
+    assert.equal(r.rejected, "no-hook-pattern");
+  });
+});
