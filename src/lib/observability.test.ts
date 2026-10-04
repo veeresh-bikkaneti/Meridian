@@ -1,6 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  CLEAN_EXIT_KEY,
+  clearRunAfterUncleanShutdown,
+  handlePageHide,
+  isUncleanShutdown,
+  stampCleanExitDirty,
+} from "../game/clean-exit.ts";
+import {
   BREADCRUMB_KEY,
   MAX_HISTORY,
   MAX_PAYLOAD_BYTES,
@@ -231,4 +238,179 @@ test("storage throwing → nothing throws, milestones silently no-op", () => {
   assert.doesNotThrow(() => obs.recordMilestone("run_start"));
   assert.doesNotThrow(() => obs.emit({ type: "js_error", ts: 1, buildId: "b" }));
   assert.doesNotThrow(() => createObservability({ storage: null, transport, now: () => 1, randomId: () => "s", device: DEVICE, buildId: "b", isUnclean: () => false }).init());
+});
+
+// ---------------------------------------------------------------------------
+// D1 REAL-SEQUENCE tests (regression for the reviewer's D1 defect).
+//
+// Unlike the seeded tests above, these NEVER pass a fake `isUnclean` and
+// NEVER seed meridian.cleanExit / meridian.breadcrumb directly. Every
+// session is a createObservability instance wired to the REAL default
+// unclean check — isUncleanShutdown() from src/game/clean-exit.ts reading
+// the SAME fake storage — and the dirty flag is armed only by calling the
+// REAL stampCleanExitDirty(store), exactly what openRun now does at run
+// start BEFORE the data-chunk load. A "kill" = the instance is discarded
+// with NO handlePageHide() call, mirroring a jetsam kill (pagehide never
+// fires).
+// ---------------------------------------------------------------------------
+
+const RUN_KEY_FOR_BREAKER = "meridian.run";
+
+function realSequenceObs(
+  store: ReturnType<typeof makeStorage>,
+  transport: ObsTransport,
+  sessionId: string,
+) {
+  // NOTE: no `isUnclean` dep — the default check reads the real
+  // clean-exit flag from this same storage.
+  return createObservability({
+    storage: store,
+    transport,
+    endpoint: "https://example.com/ingest",
+    now: () => 9000,
+    randomId: () => sessionId,
+    device: DEVICE,
+    buildId: "b-d1",
+  });
+}
+
+/** Session-1 run start, exactly as openRun performs it after the D1 fix. */
+function armRunStartAtChunkLoad(
+  obs: ReturnType<typeof realSequenceObs>,
+  store: ReturnType<typeof makeStorage>,
+): void {
+  obs.recordMilestone("run_start", { edition: "globe", regionId: "globe", chunkId: "globe" });
+  obs.recordMilestone("data_chunk_load_start", { edition: "globe", regionId: "globe", chunkId: "globe" });
+  stampCleanExitDirty(store); // openRun arms BEFORE awaiting placesFor
+}
+
+function crashEvents(beacons: Array<{ url: string; body: string }>): ObservabilityEvent[] {
+  return beacons
+    .map((b) => JSON.parse(b.body) as ObservabilityEvent)
+    .filter((e) => e.type === "suspected_crash");
+}
+
+test("D1 real-sequence: kill during data-chunk load (armed at run start, no pagehide) → next boot emits exactly one suspected_crash (globe / data_chunk_load_start)", () => {
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+
+  // Session 1: fresh boot (no event), run start armed, then KILLED
+  // mid-load — instance discarded, handlePageHide never called.
+  const s1 = realSequenceObs(store, transport, "d1-session-1");
+  s1.init();
+  assert.equal(beacons.length, 0, "fresh boot emits nothing");
+  armRunStartAtChunkLoad(s1, store);
+  // (kill: no handlePageHide, s1 dropped)
+
+  // Session 2: new instance, same storage, REAL unclean check.
+  const s2 = realSequenceObs(store, transport, "d1-session-2");
+  s2.init();
+  const crashes = crashEvents(beacons);
+  assert.equal(crashes.length, 1, "exactly one suspected_crash for the load-window kill");
+  assert.equal(crashes[0].sessionId, "d1-session-1", "carries the killed session's id");
+  assert.equal(crashes[0].edition, "globe");
+  assert.equal(crashes[0].lastMilestone, "data_chunk_load_start");
+});
+
+test("D1 real-sequence: arming at run start is synchronous — cleanExit is \"0\" immediately after stampCleanExitDirty, before any load resolves", () => {
+  const store = makeStorage();
+  const { transport } = makeTransport(true);
+  const s1 = realSequenceObs(store, transport, "d1-sync-session");
+  s1.init();
+  assert.equal(store.getItem(CLEAN_EXIT_KEY), null, "flag untouched before run start");
+  armRunStartAtChunkLoad(s1, store);
+  // No await of any chunk load has happened (or resolved) at this point.
+  assert.equal(store.getItem(CLEAN_EXIT_KEY), "0", "dirty marker written synchronously at run start");
+  assert.equal(isUncleanShutdown(store), true, "real check reads the armed flag as unclean");
+});
+
+test("D1 real-sequence: clean exit after an armed run start reports nothing — real handlePageHide → next boot emits no suspected_crash", () => {
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+
+  const s1 = realSequenceObs(store, transport, "d1-clean-session-1");
+  s1.init();
+  armRunStartAtChunkLoad(s1, store);
+  handlePageHide(store); // normal unload/reload after the armed run start
+
+  const s2 = realSequenceObs(store, transport, "d1-clean-session-2");
+  s2.init();
+  assert.equal(crashEvents(beacons).length, 0, "no spurious suspected_crash after a clean exit");
+  assert.equal(beacons.length, 0, "nothing emitted at all");
+});
+
+test("D1 real-sequence: repeat kill after breaker re-arm is reportable — second armed kill emits a second suspected_crash (one per kill)", () => {
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+
+  // Session 1: armed at run start, killed during the load.
+  const s1 = realSequenceObs(store, transport, "d1-repeat-1");
+  s1.init();
+  armRunStartAtChunkLoad(s1, store);
+  // (kill #1: no pagehide)
+
+  // Session 2: emits suspected_crash #1; the crash-loop breaker then runs
+  // for real and re-arms the flag to "1" (clearRunAfterUncleanShutdown).
+  const s2 = realSequenceObs(store, transport, "d1-repeat-2");
+  s2.init();
+  assert.equal(crashEvents(beacons).length, 1, "first kill reported");
+  clearRunAfterUncleanShutdown(RUN_KEY_FOR_BREAKER, store);
+  assert.equal(store.getItem(CLEAN_EXIT_KEY), "1", "breaker re-armed the flag to clean");
+
+  // Player retries on session 2: openRun re-arms at run start, killed
+  // during the load again.
+  armRunStartAtChunkLoad(s2, store);
+  assert.equal(store.getItem(CLEAN_EXIT_KEY), "0", "retry re-armed the flag before the load");
+  // (kill #2: no pagehide)
+
+  // Session 3: must emit suspected_crash #2 — exactly 2 total.
+  const s3 = realSequenceObs(store, transport, "d1-repeat-3");
+  s3.init();
+  const crashes = crashEvents(beacons);
+  assert.equal(crashes.length, 2, "exactly one suspected_crash per kill, repeat kill included");
+  assert.equal(crashes[1].sessionId, "d1-repeat-2", "second report carries the second killed session");
+  assert.equal(crashes[1].edition, "globe");
+  assert.equal(crashes[1].lastMilestone, "data_chunk_load_start");
+});
+
+// ---------------------------------------------------------------------------
+// D3: queue eviction protects a queued suspected_crash.
+// ---------------------------------------------------------------------------
+
+test("D3 queue eviction: queued suspected_crash survives ≥20 later events and flushes first on setEndpoint", () => {
+  const store = makeStorage({ [BREADCRUMB_KEY]: prevBreadcrumbJson() });
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, transport, endpoint: null,
+    now: () => 9000, randomId: () => "d3-session", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(obs.getQueueLength(), 1, "suspected_crash queued with no endpoint");
+  for (let i = 0; i < 25; i++) {
+    obs.emit({ type: "js_error", ts: 9000 + i, buildId: "b2", error: { name: "Error", message: `burst-${i}` } });
+  }
+  assert.equal(obs.getQueueLength(), 20, "queue still capped at MAX_QUEUE");
+  obs.setEndpoint("https://example.com/ingest");
+  const flushed = beacons.map((b) => JSON.parse(b.body) as ObservabilityEvent);
+  assert.equal(flushed.length, 20, "whole queue flushed");
+  assert.equal(flushed[0].type, "suspected_crash", "suspected_crash was NOT evicted by the error burst");
+  assert.equal(flushed.filter((e) => e.type === "suspected_crash").length, 1);
+});
+
+test("D3 queue cap: a queue of only non-crash errors still caps at 20 (oldest evicted)", () => {
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: makeStorage(), transport, endpoint: null,
+    now: () => 1, randomId: () => "d3-errors", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  for (let i = 0; i < 25; i++) {
+    obs.emit({ type: "js_error", ts: i, buildId: "b", error: { name: "Error", message: `e-${i}` } });
+  }
+  assert.equal(obs.getQueueLength(), 20, "memory bound holds for ordinary events");
+  obs.setEndpoint("https://example.com/ingest");
+  const flushed = beacons.map((b) => JSON.parse(b.body) as ObservabilityEvent);
+  assert.equal(flushed.length, 20);
+  assert.equal(flushed[0].error?.message, "e-5", "oldest five errors were evicted FIFO");
+  assert.equal(flushed[19].error?.message, "e-24");
 });

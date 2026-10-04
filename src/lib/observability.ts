@@ -23,7 +23,10 @@
  * Boot ordering choice: flags load asynchronously, so boot-time events
  * (including `suspected_crash`) are QUEUED in memory and flushed once
  * `setObservabilityEndpoint()` is called after `loadFlags()` resolves.
- * A queued event is never lost just because config is async; if no
+ * Delivery is AT-MOST-ONCE: a queued event lives only in memory until
+ * that flush (bounded by the flags load/timeout); if the tab is closed
+ * or killed again in that window, the queued report is lost and will
+ * not re-fire — the previous trail was already rotated at init(). If no
  * endpoint is ever configured, the queue is simply never sent.
  *
  * Every public function is total: collection, storage and transport
@@ -196,10 +199,13 @@ function byteLength(s: string): number {
 }
 
 /**
- * Enforce the payload hard cap: serialize and, if over `cap` bytes, drop
- * the breadcrumb milestone history first, then the breadcrumb/device,
- * then truncate string fields, until the JSON fits. Always returns valid
- * JSON of at most `cap` bytes for any well-formed event input.
+ * Enforce the payload hard cap. Actual sequence: serialize; if over
+ * `cap` bytes — trim the breadcrumb milestone history to its last 4
+ * entries → drop the history entirely → drop breadcrumb + device →
+ * progressively truncate string fields (limits 120/60/24; the error
+ * name/message are also cut) → core-only fallback (type/ts/buildId).
+ * Always returns valid JSON of at most `cap` bytes for any well-formed
+ * event input.
  */
 export function truncateEventToCap(event: ObservabilityEvent, cap = MAX_PAYLOAD_BYTES): string {
   let clone: ObservabilityEvent;
@@ -329,7 +335,17 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       };
       if (!endpoint) {
         queue.push(enriched);
-        if (queue.length > MAX_QUEUE) queue.splice(0, queue.length - MAX_QUEUE);
+        // Bounded queue with suspected_crash protection (D3): evict the
+        // oldest NON-suspected_crash event first — a boot-time burst of
+        // live error events must not silently evict the queued crash
+        // report. Only a queue made up entirely of suspected_crash
+        // events may drop its oldest one. The MAX_QUEUE memory bound
+        // still holds either way.
+        while (queue.length > MAX_QUEUE) {
+          const evictIdx = queue.findIndex((ev) => ev.type !== "suspected_crash");
+          if (evictIdx >= 0) queue.splice(evictIdx, 1);
+          else queue.splice(0, 1);
+        }
         return false;
       }
       return sendNow(enriched);

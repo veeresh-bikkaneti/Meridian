@@ -696,6 +696,24 @@ export function GameApp() {
       setStarting({ regionName });
       setStartError(null);
       recordMilestone("run_start", { edition, regionId, chunkId: regionId });
+      // D1: arm the clean-exit dirty marker NOW, before the data-chunk
+      // load below — not only later in writeRun/commit. Why it must
+      // precede the load: a jetsam kill DURING the load (the Globe
+      // 13.7 MB chunk window) previously left meridian.cleanExit
+      // missing/"1" (writeRun had not run yet), so the next boot's
+      // initObservability gate (cleanExit === "0") failed and no
+      // suspected_crash was emitted — and the breadcrumb identifying
+      // the kill was silently overwritten. Interplay:
+      // (a) A kill during load leaves no saved run, so the boot
+      //     crash-loop breaker clearing the (absent) run and landing
+      //     on the menu is harmless and unchanged.
+      // (b) A normal chunk-load ERROR caught by the catch below does
+      //     NOT produce a spurious suspected_crash: any later normal
+      //     unload/reload fires pagehide → handlePageHide stamps "1".
+      // (c) Every openRun re-arms, so a repeat kill after the breaker
+      //     re-armed the flag to "1" at boot is detectable again.
+      // stampCleanExitDirty never throws (see clean-exit.ts).
+      stampCleanExitDirty();
       try {
         // The region's chunk(s) load here — never eagerly, never partial.
         recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
