@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 6989,
+    "attempt": 6941,
+    "place_id": "gn-739215",
+    "input": {
+      "place": {
+        "place_id": "gn-739215",
+        "name": "Sürmene",
+        "country": "Türkiye",
+        "subdivision": "Trabzon",
+        "lat": 40.90588,
+        "lon": 40.12792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sürmene",
+          "url": "https://en.wikipedia.org/wiki/Sürmene",
+          "text": "Sürmene (Turkish: [syɾˈmene]; Greek: Σούρμενα, Sourmena; Ottoman Turkish: ﺳﻮرﻣﻨﻪ, romanized as Sürmena[/e]) is a municipality and district of Trabzon Province, Turkey. Its area is 166 km2, and its population is 25,281 (2026). In ancient times the town of Hyssus or Hyssos (Ancient Greek: Υσσός) was nearby. The mayor is Hüseyin Azizoğlu (AK Parti).\nSürmene (Humurgan) is situated some 40 km (25 mi) east of Trabzon. Known in antiquity also as Susarmia or Augustopolis, it lies on the River Kora (Manahoz Deresi) and is best known as the place where Xenophon and his Ten Thousand fell sick after eating wild honey, an event which was confirmed by the local people. In the village of Kastil, 5 km (3.1 mi) to the west of Sürmene, stands a ruined medieval castle as well as the impressively restored 18th-century Yakupoğlu Memiş Ağa Konağı mansion. This was formerly the seat of the Yakupoğlu family, who lived here as rulers (derebeys, hence its alternative name of Derebeyli Kale, the Castle of the Derebeys) of the surrounding region relatively free of interference from the Ottoman government in faraway Constantinople/Istanbul.\nHistory\nSürmene (Gr: Surmena, Σούρμενα) is a seaside town and district situated approximately 30 km east of Trabzon. Before 1923, the number of Greeks living in the district was around 14,000. The settlements with large Greek communities were located close to the Monakos River (today Manahoz Stream). Some of the larger Greek settlements included Kelonsa (350 Greek families, 1 church), Tzita (350 Greek families, 2 churches), Assou (250 Greek families, 1 church) and Tsikoli (200 Greek families, 1 church).\nThe Greek settlements\nΧουμουρκιάντων - Houmourkianton (the regional centre)\nΑσού - Asou\nΚαρακαντζί - Karakantzi\nΚαταβόλ - Katavol\nΚελόνσα - Kelonsa\nΜεξεζί - Meksezi\nΜουλκάντων (Χοτζαράντων) - Moulkanton (Hotzaranton)\nΠετράς - Petras\nΠύργη - Pirgi\nΤσικολή - Tsikoli\nΤσίτα - Tsita\nΧαλανική - Halaniki\n\nThis list of the Greek villages of Pontus (or villages where Greeks resided) was compiled by the Center of Asia Minor Studies (Κέντρο Μικρασιατικών Σπουδών) which is based in Greece. The list may exclude some villages which weren't known at the time the study was completed. Source: The History of Pontian Hellenism, Christos Samouilidis, Thessaloniki 1992."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 361
+    },
+    "banned_terms": [
+      {
+        "term": "surmene",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6990,
+    "attempt": 6942,
+    "place_id": "gn-756280",
+    "input": {
+      "place": {
+        "place_id": "gn-756280",
+        "name": "Ustrzyki Dolne",
+        "country": "Poland",
+        "subdivision": "Subcarpathia",
+        "lat": 49.4304,
+        "lon": 22.59381
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ustrzyki Dolne",
+          "url": "https://en.wikipedia.org/wiki/Ustrzyki_Dolne",
+          "text": "Ustrzyki Dolne is a town in south-eastern Poland, situated in the Subcarpathian Voivodeship (since 1999) close to the border with Ukraine. It is the capital of Bieszczady County, with 9,383 inhabitants (02.06.2009).\nIn existence since the 15th century, Ustrzyki received its city charter around 1727. During the First Partition of Poland, in 1772 it became part of the Habsburg monarchy where it remained until 1918. After the defeat of Austria-Hungary Ustrzyki became part of the newly independent Poland. Major growth of the Ustrzyki economy began in the 19th century, when a railway connection to Przemyśl and Sanok was built in 1872, and the exploitation of local oil fields began. Temporarily in the USSR after the Vistula–Oder Offensive in 1944–45, it became part of postwar Poland following the 1951 Polish-Soviet territorial exchange.\nThe word Dolne means Lower. There exists a village Ustrzyki Górne - Upper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "ustrzyki dolne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ustrzyki",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dolne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6991,
+    "attempt": 6943,
+    "place_id": "gn-7626354",
+    "input": {
+      "place": {
+        "place_id": "gn-7626354",
+        "name": "Kleppe",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 58.77423,
+        "lon": 5.62936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kleppe",
+          "url": "https://en.wikipedia.org/wiki/Kleppe",
+          "text": "Kleppe is the administrative centre of Klepp Municipality in Rogaland county, Norway. The village is located about halfway between the lakes Orrevatnet and Frøylandsvatnet. The village of Bore lies about 3 kilometres (1.9 mi) northwest of Kleppe and the village of Klepp stasjon lies about 3 kilometres (1.9 mi) to the east. The town of Bryne lies about 5 kilometres (3.1 mi) to the south and the city of Sandnes is located about 12 kilometres (7.5 mi) to the northeast. Klepp Church is located in Kleppe.\n\nThe population around Kleppe is growing rapidly, mostly in the form of suburban single-family homes, but also in the form of apartment blocks.  The village of Kleppe and its suburb Verdalen have grown together to form one large urban area known as Kleppe or Kleppe/Verdalen. The 3.26-square-kilometre (810-acre) village has a population (2025) of 10,092 and a population density of 3,096 inhabitants per square kilometre (8,020/sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "kleppe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6992,
+    "attempt": 6944,
+    "place_id": "gn-762643",
+    "input": {
+      "place": {
+        "place_id": "gn-762643",
+        "name": "Parczew",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.64021,
+        "lon": 22.90057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parczew",
+          "url": "https://en.wikipedia.org/wiki/Parczew",
+          "text": "Parczew [ˈpart͡ʂɛf] is a town in eastern Poland, with a population of 10,281 (2006).  It is the capital of Parczew County in the Lublin Voivodeship.\nParczew is a former royal town of Poland that played an important role during the Jagiellonian dynasty as a centre for councils and parliamentary sessions, including the session of 1564, which was decisive in Poland's continued adherence to Catholicism during the Protestant Reformation.\nParczew historically belongs to Lesser Poland (Małopolska) region. The town lies 60 kilometers north of Lublin, and 70 kilometers south of Biala Podlaska. It has a rail station on the secondary-importance line from Lublin to Łuków, which was inaugurated in 1898."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "parczew",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6993,
+    "attempt": 6945,
+    "place_id": "gn-781443",
+    "input": {
+      "place": {
+        "place_id": "gn-781443",
+        "name": "Tepelenë",
+        "country": "Albania",
+        "subdivision": "Gjirokastër County",
+        "lat": 40.29583,
+        "lon": 20.01917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepelenë",
+          "url": "https://en.wikipedia.org/wiki/Tepelenë",
+          "text": "Tepelenë (Albanian definite form: Tepelena) is a city and a municipality in Gjirokastër County, in the south of Albania. The town is on the left bank of the Vjosa River, about three kilometres downstream from its union with the Drino.\nUntil the abolition of Districts in 2000, Tepelenë was the seat of the Tepelenë District. Its location is strategically important and there is a ruined citadel occupying a point 300 metres above the river. Ali Pasha of Yanina was born at the nearby village of Beçisht, and Tepelena along with Ioannina were Ali's headquarters. In 1847, the British writer Edward Lear visited the town and noted the devastated buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "tepelene",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6994,
+    "attempt": 6946,
+    "place_id": "gn-7932629",
+    "input": {
+      "place": {
+        "place_id": "gn-7932629",
+        "name": "Balwyn North",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.79086,
+        "lon": 145.09386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balwyn North",
+          "url": "https://en.wikipedia.org/wiki/Balwyn_North",
+          "text": "Balwyn North, also known as North Balwyn, is a suburb of Melbourne, Victoria, Australia, 10 km east of Melbourne's Central Business District, located within the Cities of Boroondara and Whitehorse local government areas. Balwyn North recorded a population of 21,302 at the 2021 census. It contains the localities of Greythorn and Bellevue.\nFollowing European settlement of Melbourne, development in Balwyn North was slow and largely as agricultural land. The suburban expansion after the Second World War reached the area in the 1940s and 1950s and thousands of single dwelling houses were built across the area. Today it retains its largely residential character with small areas of retail and parkland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "balwyn north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "balwyn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6995,
+    "attempt": 6947,
+    "place_id": "gn-8051091",
+    "input": {
+      "place": {
+        "place_id": "gn-8051091",
+        "name": "Fehmarn",
+        "country": "Germany",
+        "subdivision": "Schleswig-Holstein",
+        "lat": 54.4378,
+        "lon": 11.19352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fehmarn",
+          "url": "https://en.wikipedia.org/wiki/Fehmarn",
+          "text": "Fehmarn (German: [ˈfeːma⁠ʁn] ; Danish: Femern; from Old Wagrian Slavic \"Fe More\", meaning \"In the Sea\") is an island in the Baltic Sea, off the eastern coast of Germany's northernmost state of Schleswig-Holstein. It is Germany's third-largest island, after Rügen and Usedom. Fehmarn is separated from the German peninsula of Wagria in Holstein by the Fehmarn Sound, and from the southern Danish island of Lolland by the Fehmarn Belt. It is connected to the Holsatian mainland by the Fehmarn Sound Bridge. The island belongs to the district of Ostholstein (East Holstein). The closest larger towns on the mainland are Heiligenhafen (Saints’ Harbor) and Oldenburg in Holstein (founded as Starigard). Right opposite Fehmarn, on the tip of the Wagrian Peninsula, is Großenbrode.\nThe Vogelfluglinie (Danish: Fugleflugtslinjen), an important transport corridor connecting the Danish capital of Copenhagen on the island of Zealand to the second-largest German city of Hamburg via Lübeck, runs across the island. There are currently two tunnels under construction in the region: the Fehmarn Belt Tunnel between Puttgarden on Fehmarn and Rødbyhavn on Lolland, and the Fehmarn Sound Tunnel between Strukkamp (Fehmarn) and Großenbrode (Wagria). The most notable settlements on Fehmarn are Burg auf Fehmarn (Low German: Borg op Fehmarn) and Puttgarden, with the island's ferry port.\nFehmarn is allegorically represented by the \"Goldene Krone im blauen Meer\" (Golden Crown in the blue Sea), which can be seen on many flags on the island, making reference to the House of Oldenburg, the Danish royal house."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "fehmarn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6996,
+    "attempt": 6948,
+    "place_id": "gn-8348619",
+    "input": {
+      "place": {
+        "place_id": "gn-8348619",
+        "name": "Nollamara",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.88016,
+        "lon": 115.84543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nollamara",
+          "url": "https://en.wikipedia.org/wiki/Nollamara",
+          "text": "Nollamara is a suburb of Perth, Western Australia. Its local government area is the City of Stirling.\nThe name \"Nollamara\" is a Noongar word for the flowering plant Macropidia, commonly known as the black kangaroo paw.\nThe suburb is less than 10 km (6.2 mi) away from the Perth central business district and is approximately 11 km (6.8 mi) from Trigg beach. Previously known as a lower income area, Nollamara has gone through a period of gentrification over the past decade that continues on to this day. Older homes are being replaced with new townhomes and there has been a surge in young families and professionals populating the suburb. The area is characterized by extensive trees, parks and recreational facilities. The newly renovated Des Penman Reserve is a good example of this as it includes tennis, soccer, lawn-bowls, playground, shaded lunch areas and BBQ facilities. Parts of Nollamara are elevated, providing views of surrounding neighbourhoods.\nNollamara borders prominent areas such as Yokine and Dianella that are host to multimillion-dollar homes. A newly developed Flinders Street and Wanneroo Road provide easy access to Leederville, Subiaco, Northbridge and the Perth CBD."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "nollamara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6997,
+    "attempt": 6949,
+    "place_id": "gn-843430",
+    "input": {
+      "place": {
+        "place_id": "gn-843430",
+        "name": "Vallila",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.19453,
+        "lon": 24.95712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vallila",
+          "url": "https://en.wikipedia.org/wiki/Vallila",
+          "text": "Vallila (Swedish: Vallgård) is a neighbourhood in Helsinki, the capital of Finland. It is a central-northern neighbourhood, bordered by Pasila to the west and Alppiharju to the south. Like Kallio, Vallila is mostly residential and has a reputation of being a working-class neighbourhood. In the past two decades people from artistic professions have found the area. Vallila though still retains its roots from 1910s to 1980s by being one of the rare neighbourhoods which still has an industrial area and abundant amount of workshop businesses.\nBecause of gentrification Vallila is nowadays considered a trendy area in Helsinki (like Kallio) among young adults and housing is expensive, particularly in Puu-Vallila. Several major companies, such as S Group, Telia Finland, OP Financial Group and Nordea, have their headquarters in Vallila.\nVallila is famous for its many old wooden houses dating back to the 1900s–1920s, which are spread over many blocks. Many buildings by the main streets are fine examples of Nordic Classicism from the 1920s–1930s. It is located closest to the city center of all the wooden-house residential areas in Helsinki. This area is called Puu-Vallila (Wooden Vallila). Puu-Vallila was built 1910, while the rest of Vallila was built in the 1920s and 1930s. Before this Vallila was a villa area for wealthy people living in Helsinki centre.\nPerhaps the most famous scene in Vallila is the small flea market square featured in Aki Kaurismäki's film The Man Without a Past.\nVille Valo, lead singer for the Finnish band HIM, was born in Vallila.\nVallila is also the name of a basic city administrative district. It includes both Vallila and Hermanni neighbourhoods and has 16,851 inhabitants. Vallila itself has 10,462 inhabitants (31.12.2020).\nIn the 2025 Time Out's \"Coolest Neighbourhoods in the World\" list, Vallila ranked 9th out of 39 neighbourhoods on the list."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 301
+    },
+    "banned_terms": [
+      {
+        "term": "vallila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6998,
+    "attempt": 6950,
+    "place_id": "gn-8504423",
+    "input": {
+      "place": {
+        "place_id": "gn-8504423",
+        "name": "Subang Jaya",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.04384,
+        "lon": 101.58062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Subang Jaya",
+          "url": "https://en.wikipedia.org/wiki/Subang_Jaya",
+          "text": "Subang Jaya is a city in Petaling District, Selangor, Malaysia. It comprises the southern third district of Petaling. It consists of the neighbourhoods from SS12 to SS19, UEP Subang Jaya (USJ), Putra Heights, Batu Tiga as well as PJS7, PJS9 and PJS11 of Bandar Sunway, the latter of which are partially jurisdictional within Petaling Jaya under the MBPJ. The city is governed by Subang Jaya City Council (MBSJ), which also governs other areas of the Petaling district, such as Puchong and Seri Kembangan. According to Subang Jaya City Council, Subang Jaya has a population of 968,930 in 2020, which makes it the sixth largest city in Malaysia by population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "subang jaya",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "subang",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jaya",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6999,
+    "attempt": 6951,
+    "place_id": "gn-8630153",
+    "input": {
+      "place": {
+        "place_id": "gn-8630153",
+        "name": "Hakuba",
+        "country": "Japan",
+        "subdivision": "Nagano",
+        "lat": 36.69818,
+        "lon": 137.86185
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hakuba",
+          "url": "https://en.wikipedia.org/wiki/Hakuba",
+          "text": "Hakuba (白馬村, Hakuba-mura) is a village located in Nagano Prefecture, Japan. As of April 1, 2019, the village had an estimated population of 9,007 in 4267 households, and a population density of 48 persons per km2. The total area of the village is 189.36 square kilometres (73.11 sq mi). Hakuba is located in the eastern foothills of the Hida Mountains in the northern part of the Japanese Alps and is a popular ski resort. It is also the starting point for trekking Mount Shirouma and Mount Goryu, two of the One Hundred Mountains of Japan. The Hakuba Valley receives an average annual snow fall of 655 cm (258 inches). The 2024–25 winter season in Hakuba holds the record for the highest snowfall in a single winter, with a total accumulation of 782 cm. Hakuba is the central hub for 10 ski resorts with more than 200 runs. The village was the main event venue for 1998 Winter Olympics (Alpine, Ski Jump, Crosscountry)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "hakuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7000,
+    "attempt": 6952,
+    "place_id": "gn-8858140",
+    "input": {
+      "place": {
+        "place_id": "gn-8858140",
+        "name": "Córdoba (Santa Leticia)",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.90861,
+        "lon": -96.97889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Córdoba, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Córdoba,_Veracruz",
+          "text": "Córdoba, known officially as Heroica Córdoba, is a city and the seat of the municipality of the same name in the Mexican state of Veracruz. It was founded in 1618.\nThe city is composed of 15 barrios (neighborhoods) bounded to the north by Ixhuatlán del Café and Tomatlán, and to the south by Amatlán de los Reyes and Naranjal. The western area abuts Fortin de las Flores and the eastern area borders Amatlán de los Reyes and Peñuela.\nCórdoba has a municipal area of 159.9 km2. It is divided into 95 localities, of which the most important are San Román, Crucero Nacional, La Luz y Trinidad Palotal, and Colorines.\nThis city is also known as The City of the Thirty Knights since it was founded by 30 Spanish noblemen commissioned by Viceroy Fernández de Córdoba.\nThe city boasts of its historical importance, its colonial places and buildings, its cultural centers, parks and its gastronomy. Along with Fortín, Amatlán and Yanga, it forms part of a very important metropolitan area, with a population of 335,850 people as 2020, in the Altas Montañas region to form a large metropolitan area together with the City of Orizaba.\nIn 2023, Córdoba was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "cordoba santa leticia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cordoba",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "leticia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7001,
+    "attempt": 6953,
+    "place_id": "gn-11592272",
+    "input": {
+      "place": {
+        "place_id": "gn-11592272",
+        "name": "Vale of Leven",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.97132,
+        "lon": -4.57928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vale of Leven",
+          "url": "https://en.wikipedia.org/wiki/Vale_of_Leven",
+          "text": "The Vale of Leven (Scottish Gaelic: Magh Leamhna) is an area of West Dunbartonshire, Scotland, comprising the valley of the River Leven. It historically formed the core of the region of Lennox.\nGeographically, the Vale runs from Loch Lomond in the north to Dumbarton in the south, where the River Leven empties into the Clyde. However, the name is often applied specifically to the urban area towards the north of the valley, consisting of a number of communities. These were historically separate villages but have expanded into one conurbation. The largest of these communities is the town of Alexandria, which sits on the west bank of the Leven. Alexandria is connected to the village of Renton to the south and to the village of Balloch to the north. Across the river from Alexandria is Bonhill, which is connected to Jamestown to the north. The combined population of these areas in 2020 was approximately 22,000.\nThe area's name lends itself to Alexandria's local football club, Vale of Leven F.C.; the secondary school, Vale of Leven Academy; the Vale of Leven District General Hospital; and other local organisations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "vale of leven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vale",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "leven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7002,
+    "attempt": 6954,
+    "place_id": "gn-11919597",
+    "input": {
+      "place": {
+        "place_id": "gn-11919597",
+        "name": "Tunstall",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.0583,
+        "lon": -2.2114
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tunstall, Staffordshire",
+          "url": "https://en.wikipedia.org/wiki/Tunstall,_Staffordshire",
+          "text": "Tunstall is one of the six towns that, along with Burslem, Longton, Fenton, Hanley and Stoke-upon-Trent, amalgamated to form the City of Stoke-on-Trent in Staffordshire, England. It was one of the original six towns that federated to form the city. Tunstall is the most northern, and fourth largest town of the Potteries. It is situated in the very northwest of the city borough, with its north and west boundaries being the city limit. It stands on a ridge of land between Fowlea Brook to the west and Scotia Brook to the east, surrounded by old tile-making and brick-making sites, some of which date back to the Middle Ages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "tunstall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7003,
+    "attempt": 6955,
+    "place_id": "gn-1253930",
+    "input": {
+      "place": {
+        "place_id": "gn-1253930",
+        "name": "Ugu",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.79681,
+        "lon": 80.32093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ugu",
+          "url": "https://en.wikipedia.org/wiki/Ugu",
+          "text": "Ugu is a town and a nagar panchayat in Unnao district in the Indian state of Uttar Pradesh. First officially classified as a town for the 1981 census, Ugu is an old town with medieval ruins that hosts a biweekly market and an annual mela. It is located on the main Unnao-Hardoi road, a bit northwest of Safipur. Some of the main items manufactured here are shoes, slippers, furniture, and lipstick cover. As of 2011, the population is 6,318, in 1,044 households.\nThe town is known for its religious and cultural heritage and is home to several historic temples, some of which are believed to be centuries old. Among these, the Maa Kamakhya Devi Temple is the most revered and attracts devotees from the surrounding region. The Maa Shitla Devi Temple is another important place of worship in the town.\nUgu is the birthplace of Uma Shankar Dikshit, who served as India's Home Minister."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "ugu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7004,
+    "attempt": 6956,
+    "place_id": "gn-1257259",
+    "input": {
+      "place": {
+        "place_id": "gn-1257259",
+        "name": "Saraipali",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.3153,
+        "lon": 83.00629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saraipali",
+          "url": "https://en.wikipedia.org/wiki/Saraipali",
+          "text": "Saraipali is a town in Mahasamund district in the Indian state of Chhattisgarh. First chief minister of Madhya Pradesh, Ravishankar Shukla was elected from here.\nSaraipali Tahsil is Mahasamund district's third most populous subdistrict, located in Mahasamund district of the state of Chhattisgarh in India. There are 23,500 villages in the subdistrict; of them, Deogaon is the most populous, with a population of 287,865, and Kabaripali is the least populous. Pali is the largest village in the subdistrict, with an area of 10,000 square kilometres, and Sarangarh is the smallest village, with an area of under 1 square kilometre.\nThere is only one city in the subdistrict jurisdiction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "saraipali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7005,
+    "attempt": 6957,
+    "place_id": "gn-12718836",
+    "input": {
+      "place": {
+        "place_id": "gn-12718836",
+        "name": "Vaalbank",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.15226,
+        "lon": 28.85563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vaalbank",
+          "url": "https://en.wikipedia.org/wiki/Vaalbank",
+          "text": "Vaalbank (also known as Libangeni) is a small town some 102 kilometers northeast of Pretoria. The town is an important one in Mpumalanga's northwestern end where the majority of the surrounding population is rural and does not have infrastructure. It overlooks the Mkhombo Dam (formerly called the Renosterkop Dam) which is of agricultural importance in the region.\nIt is situated in the Dr JS Moroka Municipality of the Nkangala District.\n\nThe \"Main Street\" serves as a divide between the early Vaalbank that was set by the KwaNdebele government and the current multi-ethnic Vaalbank. The early Vaalbank was established to be an urban residential site for the Ndebele population. But with the demise of Apartheid, the town became multi-ethnic and services rendered were no longer of high quality. With this decline of quality services, the newer part of town became more of a shanty town with the exceptions of a few sections."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "vaalbank",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7006,
+    "attempt": 6958,
+    "place_id": "gn-1288322",
+    "input": {
+      "place": {
+        "place_id": "gn-1288322",
+        "name": "Pangkham",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Shan State",
+        "lat": 22.17924,
+        "lon": 99.16666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pangkham",
+          "url": "https://en.wikipedia.org/wiki/Pangkham",
+          "text": "Pangkham (Burmese: ပန်ခမ်းမြို့, MLCTS: pan kham: mrui.; Chinese: 邦康; pinyin: Bāngkāng; Parauk: Pang Kham), known before 1999 as Panghsang (Parauk: Pang Sang, Chinese: 邦桑; pinyin: Bāngsāng; Wade–Giles: Pang1-sang1), is a border town in Myanmar's far eastern Shan State. It is situated at a bend on the Hka River near the border with Yunnan Province, China, opposite of the town of Menglian. Pangkham is the main town of Pangsang Township of Matman District of Shan State.\nIt has hotels, shops, a supermarket, karaoke bars, a bowling alley, and a 24-hour casino. There is a thriving night life centered on the casino.  Food in Pangkham is mostly imported from China. The cars, mainly Land Rovers, Land Cruisers and foreign pick-ups, have been smuggled in from Thailand."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "pangkham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7007,
+    "attempt": 6959,
+    "place_id": "gn-13580094",
+    "input": {
+      "place": {
+        "place_id": "gn-13580094",
+        "name": "Pozniaky",
+        "country": "Ukraine",
+        "subdivision": "Kyiv City",
+        "lat": 50.40259,
+        "lon": 30.62352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pozniaky",
+          "url": "https://en.wikipedia.org/wiki/Pozniaky",
+          "text": "Pozniaky (Ukrainian: Позняки) is a historical neighbourhood, a residential area and the remains of a village on the territory of the Darnitskyi district, on the left bank of Kyiv, the capital of Ukraine. Pozniaky metro station is situated in this neighborhood.\nPozniaky is a historical area,  of Kyiv. It is located between the Dnipro, the subway, Revutsky Street and Mykola Bazhan Avenue. It is divided into Western Poznyaky (between the Dnipro embankment and Hryhorenko Avenue) and Eastern Poznyaki (between Hryhorenko Avenue and Revutsky Street). The main buildings are from the early 1990s to the present time; Poznyaky are built up with both standard housing and modern expensive houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "pozniaky",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7008,
+    "attempt": 6960,
+    "place_id": "gn-1692872",
+    "input": {
+      "place": {
+        "place_id": "gn-1692872",
+        "name": "Port Area",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.58945,
+        "lon": 120.96698
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Area, Manila",
+          "url": "https://en.wikipedia.org/wiki/Port_Area,_Manila",
+          "text": "Port Area, also known as the Manila Port District and South Port District, is a district of the city of Manila, Philippines. It is entirely a reclaimed land occupied by Manila's South Harbor and Baseco Compound (Engineer's Island). It is bounded on the north by the Pasig River, facing the districts of Tondo and San Nicolas, on the west by Manila Bay, on the east by Intramuros, separated by Radial Road 1, and on the south by Ermita. Post-war developments at the Manila South Harbor eventually paved the way for the migration of natives from the different provinces, making it one of the largest ghettos in the Philippines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "port area",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "area",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

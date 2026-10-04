@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 6909,
+    "attempt": 6861,
+    "place_id": "gn-5758052",
+    "input": {
+      "place": {
+        "place_id": "gn-5758052",
+        "name": "Umatilla",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.91735,
+        "lon": -119.34252
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Umatilla, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Umatilla,_Oregon",
+          "text": "Umatilla (, YOO-mə-TIL-ə) is a city in Umatilla County, Oregon, United States. As of the 2020 census, Umatilla had a population of 7,363. The city's population includes approximately 2,000 inmates incarcerated at Two Rivers Correctional Institution.\nUmatilla is part of the Pendleton-Hermiston micropolitan area, but has the highest poverty rate (24%) and lowest Median Household Income ($38,796) of all communities in the area, trailing neighboring Hermiston in household income by nearly 23%.\nThe city is on the south side of the Columbia River along U.S. Route 730 and I-82. The Umatilla Chemical Depot, is 6 miles (10 km) southwest of the city, northwest of the intersection of I-84 and I-82."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "umatilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6910,
+    "attempt": 6862,
+    "place_id": "gn-5884051",
+    "input": {
+      "place": {
+        "place_id": "gn-5884051",
+        "name": "Alliston",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.15011,
+        "lon": -79.86635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alliston",
+          "url": "https://en.wikipedia.org/wiki/Alliston",
+          "text": "Alliston is a settlement in Simcoe County in the Canadian province of Ontario. It has been part of the Town of New Tecumseth since the 1991 amalgamation of Alliston and nearby villages of Beeton, Tottenham, and the Township of New Tecumseth. The primary downtown area is located along Highway 89, known as Victoria Street.\nThe town grew as a commercial centre for the area farmers and was best known as a potato-growing area. It is still a major industry in the town and is celebrated by the annual Alliston Potato Festival. Honda of Canada Manufacturing operates a large auto manufacturing facility southeast of Alliston, currently consisting of three major factories."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "alliston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6911,
+    "attempt": 6863,
+    "place_id": "gn-616194",
+    "input": {
+      "place": {
+        "place_id": "gn-616194",
+        "name": "Stepanavan",
+        "country": "Armenia",
+        "subdivision": "Lori",
+        "lat": 41.00995,
+        "lon": 44.38531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stepanavan",
+          "url": "https://en.wikipedia.org/wiki/Stepanavan",
+          "text": "Stepanavan (Armenian: Ստեփանավան) is a city and municipal community in the Lori Province of Armenia. It is located 139 km (86 mi) north of the capital Yerevan and 24 km (15 mi) north of the provincial centre Vanadzor, halfway between Yerevan and Tbilisi. As of the 2011 census, the population of the town is 13,086. Currently, the town has an approximate population of 10,800 as per the 2016 official estimate. As of the 2022 census, the population of the town is 11,982.\nDue to its location on the shores of Dzoraget River among the forest of Lori plateau and Bazum mountains, Stepanavan is considered a resort town in northern Armenia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "stepanavan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6912,
+    "attempt": 6864,
+    "place_id": "gn-6232236",
+    "input": {
+      "place": {
+        "place_id": "gn-6232236",
+        "name": "Balmoral",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8882,
+        "lon": 174.74019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balmoral, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Balmoral,_New_Zealand",
+          "text": "Balmoral is a suburb of Auckland, New Zealand that is bordered by Mount Eden, Epsom, Mount Roskill and Sandringham and is located approximately 5 km from the centre of Auckland. It was named around the turn of the 20th century and derives its name from Balmoral Castle, the Scottish country residence of the Royal family. Much of the housing in the area is from the 1920s and 1930s, often in the Californian Bungalow style. Balmoral was part of Mount Eden Borough Council which became a part of Auckland City in 1989. In November 2010, the area was included into the Albert-Eden-Roskill ward (now Albert-Eden-Puketāpapa ward) of the new Auckland Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "balmoral",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6913,
+    "attempt": 6865,
+    "place_id": "gn-6621542",
+    "input": {
+      "place": {
+        "place_id": "gn-6621542",
+        "name": "Furnace Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.10742,
+        "lon": -0.16889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Furnace Green",
+          "url": "https://en.wikipedia.org/wiki/Furnace_Green",
+          "text": "Furnace Green is one of 14 neighbourhoods in Crawley in West Sussex, England, and a local government ward. Furnace Green is located to the east of the town centre. It is bordered by Tilgate to the south west, Three Bridges to the north and Maidenbower to the east (on the other side of the London-Brighton railway line and linked by two pedestrian tunnels).\nThe name Furnace Green is a reference to the iron smelting which is reputed to have taken place in Roman times - the local public house is the Charcoal Burner.\nLike much of Crawley, the street naming is themed i.e. different areas are linked by associated names. There are racecourses – including Newmarket, Fontwell and others, forests - including Arden, Savernake and Epping, references to The Broads - including Waveney, Oulton, Norwich, and Yarmouth. There are also references to the iron industry - Coltash Road, Weald Drive, and the name Feroners Close also recalls the iron smelting."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "furnace green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "furnace",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6914,
+    "attempt": 6866,
+    "place_id": "gn-6640032",
+    "input": {
+      "place": {
+        "place_id": "gn-6640032",
+        "name": "Briarwood",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.70935,
+        "lon": -73.81529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Briarwood, Queens",
+          "url": "https://en.wikipedia.org/wiki/Briarwood,_Queens",
+          "text": "Briarwood is a middle-class neighborhood in the New York City borough of Queens. The neighborhood is roughly bounded by the Van Wyck Expressway to the west, Parsons Boulevard to the east, Union Turnpike to the north, and Hillside Avenue to the south.\nBriarwood is named for the Briarwood Land Company, headed by Herbert A. O'Brien, who started around 1905 developing the heavily wooded area that gave the neighborhood its name; O'Brien's efforts ended in bankruptcy and development in the area finally started in the 1920s. Today, Briarwood contains a diverse community of Asian-American, White American, Hispanic/Latino, and African American and Afro-Caribbean residents. It is part of Queens Community Board 8."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "briarwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6915,
+    "attempt": 6867,
+    "place_id": "gn-6693242",
+    "input": {
+      "place": {
+        "place_id": "gn-6693242",
+        "name": "Bordon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.11357,
+        "lon": -0.86245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bordon",
+          "url": "https://en.wikipedia.org/wiki/Bordon",
+          "text": "Bordon is a town in the East Hampshire district of Hampshire, England. It lies in the interior of the royal Woolmer Forest, about 5 miles (8.0 km) southeast of Alton. The town forms a part of the civil parish of Whitehill which is one of two contiguous villages, the other being Lindford. The civil parish is on the A325, and near the A3 road between London and Portsmouth, from which it is buffered by the rise of the wooded Woolmer Ranges. Bordon is twinned with Condé-sur-Vire in Normandy, France.\nUnlike its nearest towns, Petersfield, Farnham and Alton, Bordon has not been a market town, having developed as a military area. Many of the facilities are near the former A325, a toll road (turnpike) that connected Farnham to the A3 to its south and passed through Bordon and Whitehill; the A325 now by-passes the built-up area. Local facilities include The Phoenix Theatre and Whitehill and Bordon Leisure Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "bordon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6916,
+    "attempt": 6868,
+    "place_id": "gn-682452",
+    "input": {
+      "place": {
+        "place_id": "gn-682452",
+        "name": "Cefa",
+        "country": "Romania",
+        "subdivision": "Bihor County",
+        "lat": 46.91667,
+        "lon": 21.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cefa",
+          "url": "https://en.wikipedia.org/wiki/Cefa",
+          "text": "Cefa (Hungarian: Cséffa, German: Tscheppensdorf) is a commune in Bihor County, Crișana, Romania, with a population of 2,200 people as of 2021. It is composed of three villages: Ateaș (Atyás), Cefa, and Inand (Inánd). It also included five other villages until 2003, when they were split off to form Gepiu and Sânnicolau Român communes.\nThe oldest attested name of Cefa is Chepha (1302).\nThe commune is located in the western part of Bihor County, 27 km (17 mi) southwest of the county seat, Oradea, on the border with Hungary. On its eastern side, Cefa is crossed by national road DN79 (part of European route E671), which connects Oradea to Arad. \nBetween the villages of Cefa and Ateaș lies part of the Cefa Natural Park, which covers an area of 5,002 ha (12,360 acres)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "cefa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6917,
+    "attempt": 6869,
+    "place_id": "gn-704525",
+    "input": {
+      "place": {
+        "place_id": "gn-704525",
+        "name": "Kozova",
+        "country": "Ukraine",
+        "subdivision": "Ternopil",
+        "lat": 49.43206,
+        "lon": 25.14547
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kozova",
+          "url": "https://en.wikipedia.org/wiki/Kozova",
+          "text": "Kozova (Ukrainian: Козова; Polish: Kozowa; Russian: Козо́ва; Yiddish: קאזעווע) is a rural settlement in Ternopil Raion, Ternopil Oblast, western Ukraine. It is located in the historical region of Galicia, 16 km (10 mi) east of Berezhany, some 30 km (19 mi) west of Ternopil, and 100 km (62 mi) southeast of Lviv. It hosts the administration of Kozova settlement hromada, one of the hromadas of Ukraine. The settlement is situated beside a lake on the Koropets River in the western part of the historical region of Podolia. There is presumption that the name Kozova comes from the Ukrainian word koza (goat), though other possible sources exist. Population: 8,750 (2022 estimate)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "kozova",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6918,
+    "attempt": 6870,
+    "place_id": "gn-725586",
+    "input": {
+      "place": {
+        "place_id": "gn-725586",
+        "name": "Yakoruda",
+        "country": "Bulgaria",
+        "subdivision": "Blagoevgrad",
+        "lat": 42.02528,
+        "lon": 23.68417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yakoruda",
+          "url": "https://en.wikipedia.org/wiki/Yakoruda",
+          "text": "Yakoruda (Bulgarian: Якоруда [jɐkoˈrudɐ]) is a Bulgarian town located in the southwestern part of the country. A part of the Blagoevgrad Province, it is the seat of Yakuroda Municipality which is the north-easternmost in the province. The town lies in the Rhodope Mountains, along the Mesta River, 26 km west of the town of Velingrad. Yakoruda was proclaimed a town on 9 September 1964, having previously been officially classified as a village.\nA plurality of the residents are Muslim Bulgarians (Pomaks), the rest being for the most part Eastern Orthodox.\nNotable natives are Survivor BG season one runner-up Ahmed Shuganov, Minister of Labour and Social Policy Emiliya Maslarova, and Dr. Anna Petrova-Mayor, Professor of Physics at California State University Chico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "yakoruda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6919,
+    "attempt": 6871,
+    "place_id": "gn-7838923",
+    "input": {
+      "place": {
+        "place_id": "gn-7838923",
+        "name": "Palmerstown",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.35019,
+        "lon": -6.37778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palmerstown",
+          "url": "https://en.wikipedia.org/wiki/Palmerstown",
+          "text": "Palmerstown (Irish: Baile Phámar; officially Palmerston, see spelling) is a civil parish and suburb in western Dublin, Ireland on the banks of the River Liffey. It forms part of the South Dublin local authority and the Dublin Mid-West parliamentary constituency. The area is bordered to the north by the River Liffey and the Strawberry Beds, to the west by Lucan, to the south-west by Clondalkin, to the south by Ballyfermot and to the east by Chapelizod. Palmerstown village is situated near the Liffey Valley Shopping Centre. The area is near the junction of the M50 motorway and the N4 road. It lies approximately 7 km west of Dublin city centre. The Old Lucan Road, once the main western route out of the city, passes through the centre of Palmerstown village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "palmerstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6920,
+    "attempt": 6872,
+    "place_id": "gn-798763",
+    "input": {
+      "place": {
+        "place_id": "gn-798763",
+        "name": "Viikki",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.22183,
+        "lon": 25.02386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viikki",
+          "url": "https://en.wikipedia.org/wiki/Viikki",
+          "text": "Viikki (Swedish: Vik) is a neighbourhood of about 15,000 inhabitants in Helsinki, Finland. It is located at the northern end of Vanhankaupunginlahti bay, some 7–10 km from the city centre.\nThe district hosts the Viikki Campus with four of the faculties of the University of Helsinki (biosciences, pharmacy, veterinary medicine, and agriculture and forestry) as well as other university units such as research centres, science library and teacher training school.\nViikki is known for its natural environment. The conservation area of Vanhankaupunginlahti is an important place of nesting and migration for birds. Large fields and farmlands are cultivated by a teaching farm that is part of the university's agricultural faculty. Southernmost part of the Latokartano residential zone is known as an \"ecological housing\" area. Many apartment buildings there have, for instance, experimental solar and wind energy systems installed.\nViikki is divided into the sub-areas of Viikki science park, Latokartano, Viikinranta and Viikinmäki. In the 2000s the population of the district has increased steadily. This is because some areas of Viikki — especially in Latokartano and Viikinmäki — have been among the most important sites in Helsinki for the construction of new apartments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "viikki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6921,
+    "attempt": 6873,
+    "place_id": "gn-9973147",
+    "input": {
+      "place": {
+        "place_id": "gn-9973147",
+        "name": "Aberfoyle Park",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -35.0768,
+        "lon": 138.59163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aberfoyle Park, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Aberfoyle_Park,_South_Australia",
+          "text": "Aberfoyle Park  is a suburb in the City of Onkaparinga in the state of South Australia. It is located in the southern suburbs of Adelaide, approximately 20 km from the city centre. Aberfoyle Park has a shopping mall called \"The Hub\", several primary schools and a public high school, one of the biggest in the state.\nAberfoyle Park is served by the Adelaide Metro bus routes G20, G21 and G22X, which connect the suburb to Adelaide's city centre. It is also served by 320, 600 and 601 routes which connect the suburb to Old Reynella, Blackwood and Marion Centre, and the 737 providing connections to Chandlers Hill and Old Reynella."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "aberfoyle park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "aberfoyle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6922,
+    "attempt": 6874,
+    "place_id": "gn-1007476",
+    "input": {
+      "place": {
+        "place_id": "gn-1007476",
+        "name": "Dullstroom",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.41672,
+        "lon": 30.10609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dullstroom",
+          "url": "https://en.wikipedia.org/wiki/Dullstroom",
+          "text": "Dullstroom, also known as Emnothweni, is a small town in Mpumalanga province, South Africa. The town lies 35 kilometres (22 miles) north of Belfast and some 53 kilometres (33 miles) south-west of Lydenburg on the R540 road.\nAlong with Barkly East and Underberg, it is one of South Africa's premier flyfishing destinations. The town features the highest railway station in South Africa at 2,077 metres (6,814 feet) above sea level as well as at the foot of De Berg, the highest point in the province at 2,332 metres (7,651 feet).  Dullstroom's location on the Highveld plateau is the reason that its climate is so different from the surrounding areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "dullstroom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6923,
+    "attempt": 6875,
+    "place_id": "gn-12718833",
+    "input": {
+      "place": {
+        "place_id": "gn-12718833",
+        "name": "Daggakraal",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -27.13246,
+        "lon": 29.97635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daggakraal",
+          "url": "https://en.wikipedia.org/wiki/Daggakraal",
+          "text": "Daggakraal is a rural area in Gert Sibande District Municipality near Volksrust in the outskirts of Mpumalanga province, South Africa. The area had about 1,450 households in 2014. The town is referred to as \"one of South Africa's most impoverished and isolated communities with plenty of unmined mineral resources.\" \nDaggakraal area code 2492 has two clinics namely Sinqobile CHC in Daggakraal no 3 and Daggakraal CHC in Sinqobile A. There are four primary schools namely Sizenzele Primary School, Hambani Primary School, Daggakraal Primary School and Ethembeni Primary School and two high schools are Nalithuba Secondary School and Seme Secondary School named after ANC founder Dr. Pixley Ka Isaka Seme."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "daggakraal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6924,
+    "attempt": 6876,
+    "place_id": "gn-13494645",
+    "input": {
+      "place": {
+        "place_id": "gn-13494645",
+        "name": "Thorapadi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.89154,
+        "lon": 79.12381
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thorapadi, Vellore",
+          "url": "https://en.wikipedia.org/wiki/Thorapadi,_Vellore",
+          "text": "Thorapadi is a part of  Vellore Corporation. It is a prominent area in the city of Vellore.\nThorapadi is well known for its Vellore Central Prison, Academy of Prisons and Correctional Administration (APCA), Warder's Training Institute, Women's Jail, Christian Medical College (ranked one of the two best Medical Colleges of India by India Today), Parade Grounds and Thanthai Periyar Govt. Engineering College and Polytechnic - a prestigious institute for technical studies run by the Government of Tamil Nadu. Thorapadi is 7 km from Katpadi Junction Railway Station, 4 km from old bus terminus (FORT), 5 km from new bus terminus (GREEN CIRCLE) and 3 km from Cantonment Railway Station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "thorapadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6925,
+    "attempt": 6877,
+    "place_id": "gn-1512372",
+    "input": {
+      "place": {
+        "place_id": "gn-1512372",
+        "name": "Yangiobod",
+        "country": "Uzbekistan",
+        "subdivision": "Tashkent Region",
+        "lat": 41.11919,
+        "lon": 70.09406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangiobod",
+          "url": "https://en.wikipedia.org/wiki/Yangiobod",
+          "text": "Yangiobod (Uzbek: Yangiobod) is a city located in the Angren municipality of Tashkent Region, Uzbekistan. Its population is 8,900 (2016).\nA secret town during the Soviet Union because of the uranium mine present, these days no uranium is mined anymore and the town is known as a summer holiday resort for locals from Tashkent. A couple of kilometers from the town there is a mineral water spring which is mainstream in the town and different urban areas.\nIn 2021 preparations for the environmental remediation at the former mine, and also at Charkesar, started with the assistance of a €2 million grant from the European Bank for Reconstruction and Development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "yangiobod",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6926,
+    "attempt": 6878,
+    "place_id": "gn-161974",
+    "input": {
+      "place": {
+        "place_id": "gn-161974",
+        "name": "Bereket",
+        "country": "Turkmenistan",
+        "subdivision": "Balkan",
+        "lat": 39.24463,
+        "lon": 55.51536
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bereket",
+          "url": "https://en.wikipedia.org/wiki/Bereket",
+          "text": "Bereket, before 1999 Gazanjyk or Kazandzhik (Russian: Казанджик or Turkmen: Газанҗык gɑˈzɑnd͡ʒik), is a city in Balkan Province in western Turkmenistan. Bereket is the administrative centre of Bereket District.\nBereket is located in an oasis in the foothills of the Kopetdag Mountains and on the edge of the Karakum Desert.\nBereket is a strategic junction of the Trans-Caspian Railway (Caspian Sea-Turkmenistan-Uzbekistan-Kazakhstan) and North-South Transnational Railway (Russia-Kazakhstan-Turkmenistan-Iran-Persian Gulf.\nThe city has a large locomotive repair depot and a modern railway station.\nThe city is located approximately 260 km (162 mi) west of the Turkmen capital of Ashgabat and 340 km (211 mi) east of the Caspian Sea port of Turkmenbashy. The  largest cities nearby are Balkanabat 120 km (75 mi) to the west, and Serdar 90 km (56 mi) to the east.\nIn 2022, it had a population of 23,697 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "bereket",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6927,
+    "attempt": 6879,
+    "place_id": "gn-1644833",
+    "input": {
+      "place": {
+        "place_id": "gn-1644833",
+        "name": "Fakfak",
+        "country": "Indonesia",
+        "subdivision": "Papua",
+        "lat": -2.92481,
+        "lon": 132.29813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fakfak",
+          "url": "https://en.wikipedia.org/wiki/Fakfak",
+          "text": "Fakfak ([ˈfaʔfaʔ]) is an administrative district (distrik) in West Papua Province of Indonesia. It includes two urban villages (kelurahan) of North Fakfak (Fakfak Utara) and South Fakfak (Fakfak Selatan); together they form the town of Fakfak, which is the seat of the Fakfak Regency. The district covers an area of 233 km2, and had a population of 12,566 at the 2010 Census, which rose to 18,900 at the 2020 Census; the official estimate as at mid 2024 was 17,718. It is served by Fakfak Airport. It is the only town in West Papua with a significant Muslim Indian and Arab Indonesian presence. There's a Mr DIY in North Fakfak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "fakfak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6928,
+    "attempt": 6880,
+    "place_id": "gn-179634",
+    "input": {
+      "place": {
+        "place_id": "gn-179634",
+        "name": "Takaungu",
+        "country": "Kenya",
+        "subdivision": "Kilifi County",
+        "lat": -3.6835,
+        "lon": 39.85687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Takaungu",
+          "url": "https://en.wikipedia.org/wiki/Takaungu",
+          "text": "Takaungu is a historic Swahili town located on the Kenyan Coast between Mombasa and Malindi, in Kilifi County.\nIt is 10 kilometres south of the town of Kilifi, in the Kikambala division. Takaungu is located at the Creek in Kilifi North Constituency of Kilifi County in Coast Province. It is 37 km from Mombasa and it is 3 km from the Mombasa - Malindi Road just after the Vipingo Sisal estate.There are eight villages found in the outskirts of Takaungu, namely: Maweni, Vuma, Kayanda,Viungani, Mashehe, Kanyumbuni, Boyani and Kibaoni.  Just behind Takaungu, there are two neighboring Mijikenda communities. The Chonyi's in the south and the Kauma's in the north. These two tribes did not settle in Takaungu as they were cultivators and were not fishermen nor sailors.\nThe town has a population of 10,800. Fishing, local coral quarry are currently the main industries. The population consists of Swahili Muslims, mostly living in or near the town center and a sizable Christian community in the shambas or countryside that surrounds it.\nTakaungu was settled in the early 19th century by members and clients of the Mazrui family. Migrating fishers from the Bajun Islands to the north probably founded a temporary fishing village there before the Mazrui arrived (as they are known to have done so at many places along the coast). Certainly, other Bajun migrated in numbers to the growing settlement (Koffsky 1977) and later Mijikenda also moved to the town. Takaungu has grown considerably in size, and where once there were shambas (farming plots), today there are houses, and the shambas have moved to the outskirts of the present town.\nThe primary languages are Kigiriama, used predominantly by the local Giriama tribe (part of the broader group of Coastal tribes called Mijikenda, meaning \"nine villages\") and Kiswahili.\nThe regional headquarters of a non-governmental development organization, the East African Center, are located in Takaungu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 313
+    },
+    "banned_terms": [
+      {
+        "term": "takaungu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

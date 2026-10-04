@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 7009,
+    "attempt": 6961,
+    "place_id": "gn-174895",
+    "input": {
+      "place": {
+        "place_id": "gn-174895",
+        "name": "Goris",
+        "country": "Armenia",
+        "subdivision": "Syunik",
+        "lat": 39.51111,
+        "lon": 46.34168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goris",
+          "url": "https://en.wikipedia.org/wiki/Goris",
+          "text": "Goris (Armenian: Գորիս [ɡɔˈɾis]) is a town and the centre of the Goris Municipality in the Syunik Province in southern Armenia. Located in the valley of the Goris (or Vararak) River, it is 254 kilometres from the Armenian capital Yerevan and 67 kilometres from the provincial capital Kapan. Goris is the second largest city in Syunik in terms of population. As of the 2022 census, it had a population of 17,113, down from the 20,591 reported in the 2011 census. Goris is the seat of the Diocese of Syunik of the Armenian Apostolic Church.\nGoris is considered one of the most important historical and cultural sites of Armenia. It is often regarded as the cultural center of Syunik. Because of this, it is a favored tourist destination for both local and foreign travelers and has a large number of hotels and inns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "goris",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7010,
+    "attempt": 6962,
+    "place_id": "gn-1851632",
+    "input": {
+      "place": {
+        "place_id": "gn-1851632",
+        "name": "Shuzenji",
+        "country": "Japan",
+        "subdivision": "Shizuoka",
+        "lat": 34.97008,
+        "lon": 138.92187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shuzenji, Shizuoka",
+          "url": "https://en.wikipedia.org/wiki/Shuzenji,_Shizuoka",
+          "text": "Shuzenji (修善寺町, Shuzenji-chō) was a town located in Tagata District, Shizuoka Prefecture, Japan, in central Izu Peninsula.\nAs of March 1, 2004, final population data before the amalgamation, the town had an estimated population of 16,328 and a density of 236.5 persons per km2. The total area was 69.04 km2.\nOn April 1, 2004 Shuzenji, along with the towns of Amagiyugashima, Nakaizu and Toi (all from Tagata District), was merged to create the city of Izu.\nShuzenji was located in an inland region of Izu Peninsula and was noted for its numerous onsen hot spring resorts. The area was also noted for its production of wasabi and shiitake.\nThe town of Shuzenji was founded on April 1, 1889 within Kimisawa District, Shizuoka. In 1896, Kimisawa District was abolished and became part of Tagata District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "shuzenji",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7011,
+    "attempt": 6963,
+    "place_id": "gn-2151697",
+    "input": {
+      "place": {
+        "place_id": "gn-2151697",
+        "name": "Revesby",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.95,
+        "lon": 151.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Revesby, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Revesby,_New_South_Wales",
+          "text": "Revesby is a suburb in South-western Sydney, in the state of New South Wales, Australia. It is part of the local government area of City of Canterbury-Bankstown and is located 22 kilometres south-west of the Sydney central business district.\nRevesby is mostly a residential suburb, which was developed as part of Sydney's post-war urban sprawl, and contains many modest freestanding bungalows built from asbestos cement sheeting (fibro). Revesby is bounded on the north by Canterbury Road and the suburbs of Bankstown and Condell Park, on the south by Revesby Heights and Picnic Point, on the Georges River, on the west by Panania, and on the east by Padstow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "revesby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7012,
+    "attempt": 6964,
+    "place_id": "gn-2163055",
+    "input": {
+      "place": {
+        "place_id": "gn-2163055",
+        "name": "Horsham",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -36.71131,
+        "lon": 142.19981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horsham, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Horsham,_Victoria",
+          "text": "Horsham () is a regional city in the Wimmera region of western Victoria, Australia. Located on a bend in the Wimmera River, Horsham is approximately 300 kilometres (190 mi) northwest of the state capital Melbourne. As of the 2021 census, Horsham and surrounds had a population of 16,985. It is the most populous city in Wimmera, and the main administrative centre for the Rural City of Horsham local government area. It is the eleventh largest city in Victoria after Melbourne, Geelong, Ballarat, Bendigo, Wodonga, Mildura, Shepparton, Warrnambool, Traralgon, and Wangaratta.\nAn early settler James Monckton Darlot named the settlement after the town of Horsham in his native England. It grew throughout the latter 19th and early 20th centuries as a centre of Western Victoria's wheat and wool industry, becoming the largest city in the Wimmera and Western Victoria by the early 1910s.  Horsham was declared a city in 1949 and was named Australia's Tidiest Town in 2001 and Victoria's Tidiest Town in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "horsham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7013,
+    "attempt": 6965,
+    "place_id": "gn-2511302",
+    "input": {
+      "place": {
+        "place_id": "gn-2511302",
+        "name": "Sant Lluís",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.84939,
+        "lon": 4.25819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Lluís",
+          "url": "https://en.wikipedia.org/wiki/Sant_Lluís",
+          "text": "Sant Lluís (Balearic Catalan: [ˈsaɲ ʎuˈis]; Spanish: San Luis) is a Spanish municipality on the tip of south-east Menorca in the Balearic Islands.\nThe main town is Sant Lluís, founded by the French in 1761 during their occupation of Menorca and dominated by Es Moli de Dalt, a fully restored, traditional windmill which is now a museum open to the public.\nThe area is noteworthy for its varied coastline, with fine sand beaches and cliffs, and the beautiful coves of Binissafúller, Biniancolla and Binibeca, with their typical whitewashed fishermen's houses. There are capes and islets, and medieval defensive towers all along the coast, very characteristic of the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "sant lluis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lluis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7014,
+    "attempt": 6966,
+    "place_id": "gn-2525041",
+    "input": {
+      "place": {
+        "place_id": "gn-2525041",
+        "name": "Cefalù",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.03856,
+        "lon": 14.02285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cefalù",
+          "url": "https://en.wikipedia.org/wiki/Cefalù",
+          "text": "Cefalù (Italian: [tʃefaˈlu]; Sicilian: Cifalù), classically known as Cephaloedium (Ancient Greek: Κεφαλοίδιον, romanized: Kephaloídion), is a city and comune in the Italian Metropolitan City of Palermo, located on the Tyrrhenian coast of Sicily about 70 km (43 mi) east of the provincial capital and 185 km (115 mi) west of Messina. The town, with its population of just under 14,000, is one of the major tourist attractions in the region. Despite its size, every year it attracts millions of tourists from all parts of Sicily, and also from all over Italy and Europe. It is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "cefalu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7015,
+    "attempt": 6967,
+    "place_id": "gn-2635836",
+    "input": {
+      "place": {
+        "place_id": "gn-2635836",
+        "name": "Tilbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.46248,
+        "lon": 0.35856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tilbury",
+          "url": "https://en.wikipedia.org/wiki/Tilbury",
+          "text": "Tilbury (or Tilbury Town) is a port town on the north bank of the Thames in the borough of Thurrock in Essex, England. The town was established as separate settlement near East and West Tilbury and Tilbury Fort in the late 19th century, on land that was mainly part of the parish of Chadwell St Mary. The Gravesend–Tilbury Ferry was an ancient and important crossing point. Tilbury is part of the Port of London with a major deep-water port which contributes to the local economy. It lies 24 miles (39 km) east of central London and adjoins the town of Grays. It is the southernmost point in Essex. At the 2021 census the Tilbury built up area had a population of 14,185."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "tilbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7016,
+    "attempt": 6968,
+    "place_id": "gn-2640351",
+    "input": {
+      "place": {
+        "place_id": "gn-2640351",
+        "name": "Peterhead",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.50517,
+        "lon": -1.78435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peterhead",
+          "url": "https://en.wikipedia.org/wiki/Peterhead",
+          "text": "Peterhead (; Scottish Gaelic: Ceann Phàdraig, Scots: Peterheid ) is a town in Aberdeenshire, Scotland.  It is the largest settlement in the council area, with a population of 19,791 at the 2022 Census. It is the busiest fishing port in the United Kingdom for total landings by UK vessels, according to a 2019 survey.\nPeterhead sits at the easternmost point in mainland Scotland. It is often referred to as The Blue Toun (locally spelled \"The Bloo Toon\") and locals are known as Bloo Touners. They are also referred to as blue mogganers (locally spelled \"bloomogganners\"), supposedly from the blue worsted moggans or stockings that the fishermen originally wore."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "peterhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7017,
+    "attempt": 6969,
+    "place_id": "gn-2645988",
+    "input": {
+      "place": {
+        "place_id": "gn-2645988",
+        "name": "Ivybridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.39039,
+        "lon": -3.91914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ivybridge",
+          "url": "https://en.wikipedia.org/wiki/Ivybridge",
+          "text": "Ivybridge   is a town and civil parish in the South Hams, in Devon, England. It lies about thirteen miles (twenty-one kilometres) east of Plymouth. It is at the southern extremity of Dartmoor, a National Park of England and Wales and lies along the A38 \"Devon Expressway\" road. There are two electoral wards in Ivybridge East and Ivybridge West with a total population of 11,851.\nMentioned in documents as early as the 13th century, Ivybridge's early history is marked by its status as an important crossing-point over the River Erme on the road from  Exeter to Plymouth. In the 16th century mills were built using the River Erme's power. The parish of Saint John was formed in 1836. Ivybridge became a civil parish in 1894 and a town in 1977.\nThe early urbanisation and development of Ivybridge largely coincided with the Industrial Revolution. Stowford Paper Mill was built in 1787 and rebuilt again in the 1860s with extensive investment. In 1848 the South Devon Railway arrived on the northern edge of the village. The paper mill closed in 2013 after 226 years in Ivybridge and the buildings are being converted to homes and shops. Ivybridge is often referred to as a commuter town, although a small proportion of people work in the town itself, and agriculture continues to play an economic role for the surrounding area. The area surrounding Ivybridge is varied and complex, including river valleys, farmland and dense woodland.\nWhile heavy industry diminished during the latter half of the 20th century, the population grew significantly from 1,574 people in 1921 to 12,056 in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "ivybridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7018,
+    "attempt": 6970,
+    "place_id": "gn-2648626",
+    "input": {
+      "place": {
+        "place_id": "gn-2648626",
+        "name": "Girvan",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.24255,
+        "lon": -4.85551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Girvan",
+          "url": "https://en.wikipedia.org/wiki/Girvan",
+          "text": "Girvan (Scottish Gaelic: Inbhir Gharbhain, \"mouth of the River Girvan\") is a harbour town and burgh in Carrick, South Ayrshire, Scotland. Girvan is situated on the east coast of the Firth of Clyde, with a population of about 6,450. It lies 21 miles (34 km) south of Ayr, and 29 miles (47 km) north of Stranraer, the main ferry port from Scotland to Northern Ireland.\nDeriving its name from the river which runs through the landscape the etymology of Girvan has possible Brythonic origins, related to the Welsh: Gearafon or Gwyrddafon, \"river flowing through the green flourishing place, from afon or avon, a river, and Gwyrdd, green, flourishing\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "girvan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7019,
+    "attempt": 6971,
+    "place_id": "gn-2651386",
+    "input": {
+      "place": {
+        "place_id": "gn-2651386",
+        "name": "Denbigh",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.18333,
+        "lon": -3.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denbigh",
+          "url": "https://en.wikipedia.org/wiki/Denbigh",
+          "text": "Denbigh (  DEN-bee; Welsh: Dinbych [ˈdɪnbɨχ]) is a market town and a community in Denbighshire, Wales. It was the original county town of the historic county of Denbighshire created in 1536. Denbigh's Welsh name (Dinbych) translates to \"Little Fortress\"; a reference to its historic castle. Denbigh lies near the Clwydian Hills.\nThe town developed around Denbigh Castle, built in 1282, and the walled settlement that followed under Edward I. Over the centuries, it became known as a stronghold, a busy market town, and an administrative hub. Although Denbigh has seen times of conflict and decline, its medieval walls, castle ruins, and historic centre still shape its character today. According to the 2021 census, the town has a population of about 8,669."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "denbigh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7020,
+    "attempt": 6972,
+    "place_id": "gn-2651570",
+    "input": {
+      "place": {
+        "place_id": "gn-2651570",
+        "name": "Dalmuir",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.91089,
+        "lon": -4.42918
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalmuir",
+          "url": "https://en.wikipedia.org/wiki/Dalmuir",
+          "text": "Dalmuir (; Scottish Gaelic: Dail Mhoire) is an area nine miles (fourteen kilometres) northwest of Glasgow, Scotland, on the western side of Clydebank, and part of West Dunbartonshire Council Area.  The name is a lowland Scots derivation of the Gaelic meaning Big Field.  The area was originally two separate villages with Dalmuir Shore joining with Clydebank in 1886 and Dalmuir Village in 1906, during a period of rapid industrialisation and expansion.    Dalmuir is bounded by the village of Old Kilpatrick to the west, the Mountblow and Parkhall housing schemes to the north, and the Clydebank town centre area to the east.  To the south is the River Clyde."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "dalmuir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7021,
+    "attempt": 6973,
+    "place_id": "gn-2654634",
+    "input": {
+      "place": {
+        "place_id": "gn-2654634",
+        "name": "Broadstone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.75717,
+        "lon": -1.99406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broadstone, Dorset",
+          "url": "https://en.wikipedia.org/wiki/Broadstone,_Dorset",
+          "text": "Broadstone  is a town and civil parish and electoral ward of the Bournemouth, Christchurch and Poole district, in the ceremonial county of Dorset, England. It is located three miles (five kilometres) from Hamworthy railway station and seven miles (eleven kilometres) from Bournemouth Airport. The ward had a population of 10,289 at the 2021 census.\nSince 1840, Broadstone has grown from a small farm to a suburb of 10,000 people. Centred on the main road (the B3074), 'The Broadway' is a busy hub of shops, churches, schools and housing. Broadstone is notable for its large recreation fields and heathland park, as well as an annual Christmas parade and lights. The 24-acre (10-hectare) Broadstone Heath possesses some of the original heathland which covered the Poole Basin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "broadstone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7022,
+    "attempt": 6974,
+    "place_id": "gn-2656924",
+    "input": {
+      "place": {
+        "place_id": "gn-2656924",
+        "name": "Ashtead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.30873,
+        "lon": -0.29972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashtead",
+          "url": "https://en.wikipedia.org/wiki/Ashtead",
+          "text": "Ashtead   is a village in the Mole Valley district of Surrey, England, approximately 16 miles (26 kilometres) south of central London. Ashtead is on the single-carriageway A24 between Epsom and Leatherhead. The village is on the northern slopes of the North Downs and is in the catchment area of The Rye, a tributary of the River Mole.\nThe earliest archaeological evidence for human activity in the village is from the Stone Age. At several points in its history, including during the early Roman period, Ashtead has been a centre for brick and tile manufacture. From medieval times until the late 19th century, Ashtead was primarily an agricultural settlement. Residential development was catalysed by the opening of the railway line between Epsom and Leatherhead in 1859 and by the breakup of the Ashtead Park estate in the 1880s. Housebuilding continued into the 20th century, reaching a peak in the 1930s. Future expansion is now constrained by the Metropolitan Green Belt, which encircles the village.\nThere are two nature reserves in the village: Ashtead Common, to the north west of the centre, forms part of a Site of Special Scientific Interest and is owned by the Corporation of London; Ashtead Park, to the east of the centre is a Local Nature Reserve owned by the District Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "ashtead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7023,
+    "attempt": 6975,
+    "place_id": "gn-2817207",
+    "input": {
+      "place": {
+        "place_id": "gn-2817207",
+        "name": "Vilseck",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.6148,
+        "lon": 11.80261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vilseck",
+          "url": "https://en.wikipedia.org/wiki/Vilseck",
+          "text": "Vilseck (German pronunciation: [ˈfɪlzɛk] ) is a town and municipality (German: Gemeinde) in the Oberpfalz region of northeastern Bavaria, Germany, situated on the river Vils, a tributary of the Naab river. As of December 31, 2022, Vilseck's population was 6,768 citizens, who live within an area of 64.71 km2 (24.98 sq mi) consisting of Vilseck town proper and 35 other hamlets and villages. The town is 402 meters (1,300 feet) above sea level.\nThe town's name comes from Vilseck castle built in 920.  Eck is the German word for corner.  The Vils river has a tight bend where the castle (German: Burg) is located: thus the name Vilseck.\nThe town is geographically separate from a nearby large American military base known as the Rose Barracks, but more commonly referred to as Vilseck. The base, built in 1937–1938, was captured during World War II from the Germans, whose name for it was Südlager."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "vilseck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7024,
+    "attempt": 6976,
+    "place_id": "gn-2819479",
+    "input": {
+      "place": {
+        "place_id": "gn-2819479",
+        "name": "Untergruppenbach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.0894,
+        "lon": 9.27516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Untergruppenbach",
+          "url": "https://en.wikipedia.org/wiki/Untergruppenbach",
+          "text": "Untergruppenbach (German: [ʊntɐˈɡʁʊpm̩bax] ) is a municipality near Heilbronn, a city in the northern half of the German state of Baden-Württemberg.\nThere are a total of 7,600 inhabitants living in six villages that form the municipality of Untergruppenbach.  Approximately 5,100 live in Untergruppenbach, Donnbronn and Obergruppenbach. An additional 2,500 live in Unterheinriet, Oberheinriet and Vorhof.\nUntergruppenbach's name roughly means \"below the 'Groppe' (a sort of small fish) stream\", referring to a small stream that cuts across the valley in which Untergruppenbach and Obergruppenbach are located. The village is distinguished by Burg Stettenfels, a 16th-century castle/manor that stands out above the valley, from its lofty position atop a hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "untergruppenbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7025,
+    "attempt": 6977,
+    "place_id": "gn-2863953",
+    "input": {
+      "place": {
+        "place_id": "gn-2863953",
+        "name": "Neutraubling",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.98737,
+        "lon": 12.201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neutraubling",
+          "url": "https://en.wikipedia.org/wiki/Neutraubling",
+          "text": "Neutraubling (German pronunciation: [nɔʏˈtʁaʊplɪŋ] ) is a town in the state of Bavaria in southern Germany, in the district of Regensburg.\nThe town has only existed since 1951. After the second world war, displaced ethnic Germans from Sudetenland (Czech Lands) or former eastern territories of Germany (Poland) settled in the ruins of the bombed military airport. Today, it is a more or less important industrial site.\nDuring the Second World War, Neutraubling was used as an airbase and factory for the Messerschmitt aircraft manufacturing company.\nBetween the end of 1940 and April 23, 1945, the factory was able to house up to 2,750 slave laborers at a time.\nBetween 20 February 1945 and 26 April 1945, inmates of Flossenbürg concentration camp were held there until forced into a 'death march' to Dachau concentration camp.\nEven today, it is possible to find relics of the early history of Neutraubling and its airbase past. For example, what is known as the \"Schlangenbau\", which is now home to people from various nations all over the world, was the command centre of the airbase. The small pond located next to the Schlangenbau was used as a water reservoir for the airbase fire brigade.\nEven the Catholic church there still harbours various signs of the past. It is said that parts of the wall of the church were taken from a destroyed hangar. The main road leading through the city itself has its roots in one of the World War II airstrips.\nDespite Neutraubling's earliest roots dating back to the stone age period, it can't compete with Regensburg's rich history.\nNeutraubling also provides a fully fledged education infrastructure starting with three kindergartens up to a grammar school. Furthermore, Neutraubling is also home to various medium-sized and internationally operating enterprises, e.g. Krones, which has its very roots in this city. Nightlife in Neutraubling is what can be expected from a city of only 13,000 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 319
+    },
+    "banned_terms": [
+      {
+        "term": "neutraubling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7026,
+    "attempt": 6978,
+    "place_id": "gn-2953549",
+    "input": {
+      "place": {
+        "place_id": "gn-2953549",
+        "name": "Bad Bergzabern",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.10245,
+        "lon": 8.00092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Bergzabern",
+          "url": "https://en.wikipedia.org/wiki/Bad_Bergzabern",
+          "text": "Bad Bergzabern (German: [baːt ˈbɛʁktsaːbɐn] ; Palatine German: Berchzawwre) is a municipality in the Südliche Weinstraße district, on the German Wine Route in Rhineland-Palatinate, Germany. It is situated near the border with France, on the south-eastern edge of the Palatinate forest, approximately 15 kilometres (9.3 mi) southwest of Landau.\nBad Bergzabern is the seat of the Verbandsgemeinde (\"collective municipality\") Bad Bergzabern.\nBad Bergzabern has a tradition as a holiday destination and contains various half-timbered houses from the seventeenth and eighteenth centuries. Of particular note from an earlier century is the Gasthaus Zum Engel (1579), which has been described as the most beautiful renaissance building in the entire region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "bad bergzabern",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bergzabern",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7027,
+    "attempt": 6979,
+    "place_id": "gn-3027767",
+    "input": {
+      "place": {
+        "place_id": "gn-3027767",
+        "name": "Cesson-Sévigné",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.1212,
+        "lon": -1.603
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cesson-Sévigné",
+          "url": "https://en.wikipedia.org/wiki/Cesson-Sévigné",
+          "text": "Cesson-Sévigné (French pronunciation: [sɛsɔ̃ seviɲe]; in Gallo: Séson or Seczon-Sevinyaé, Breton: Saozon-Sevigneg) is a commune in the Ille-et-Vilaine department in Brittany in northwestern France.\nIt is a suburb directly to the east of Rennes, bordered on its west side by the University of Rennes and the Technopole Atalante. It is primarily a residential area for the middle class. The south side is a mix of commercial and industrial areas, the largest to the east of Rennes. One of the French famous grande école Telecom Bretagne also known as ENST Bretagne has one of its campus here. This campus is renowned and reputed for its work in networking domain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "cesson sevigne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cesson",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sevigne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7028,
+    "attempt": 6980,
+    "place_id": "gn-3063736",
+    "input": {
+      "place": {
+        "place_id": "gn-3063736",
+        "name": "Uherský Brod",
+        "country": "Czechia",
+        "subdivision": "Zlín",
+        "lat": 49.02513,
+        "lon": 17.64715
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uherský Brod",
+          "url": "https://en.wikipedia.org/wiki/Uherský_Brod",
+          "text": "Uherský Brod (Czech pronunciation: [ˈuɦɛrskiː ˈbrot]; German: Ungarisch Brod) is a town in Uherské Hradiště District in the Zlín Region of the Czech Republic. It has about 16,000 inhabitants. The town is located on the Olšava River in the Vizovice Highlands.\nThe historic centre of Uherský Brod is well preserved and is protected as an urban monument zone. The main landmarks of the town centre are the Church of the Immaculate Conception and the Church of the Assumption of the Virgin Mary. Uherský Brod is known as the place where the philosopher and pedagogue John Amos Comenius lived, and the town museum and secondary school bear his name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "uhersky brod",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "uhersky",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brod",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

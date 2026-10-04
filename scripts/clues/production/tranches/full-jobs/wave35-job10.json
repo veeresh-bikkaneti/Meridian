@@ -1,0 +1,847 @@
+[
+  {
+    "rank": 7029,
+    "attempt": 6981,
+    "place_id": "gn-3081495",
+    "input": {
+      "place": {
+        "place_id": "gn-3081495",
+        "name": "Wolbrom",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 50.37957,
+        "lon": 19.75831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolbrom",
+          "url": "https://en.wikipedia.org/wiki/Wolbrom",
+          "text": "Wolbrom [ˈvɔlbrɔm] (Yiddish: וואָלבראָם, romanized: Volbrom) is a town in Olkusz County, Lesser Poland Voivodeship, in southern Poland, with 8,942 people (2010).\nWolbrom lies in the Kraków-Częstochowa Upland, which is also called the Polish Jura. South of the town there is Kamienna Mountain, with a steel cross on top, and a great view of Wolbrom. The town lies 375–380 meters (1,230–1,247 ft) above sea level, and its area, as of 1 January 2011, was 10.12 square kilometers (3.91 sq mi). In 1885, Wolbrom received a rail station, along a newly built route from Dęblin to Dąbrowa Górnicza. The town is also located along the Broad Gauge Metallurgy Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "wolbrom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7030,
+    "attempt": 6982,
+    "place_id": "gn-3096090",
+    "input": {
+      "place": {
+        "place_id": "gn-3096090",
+        "name": "Kłobuck",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.90081,
+        "lon": 18.93674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kłobuck",
+          "url": "https://en.wikipedia.org/wiki/Kłobuck",
+          "text": "Kłobuck [ˈkwɔbut͡sk] is a town in southern Poland, with 12,934 inhabitants (2019). Located in the Silesian Voivodeship, about 15 km (9 mi) northwest of Częstochowa, it is the capital of Kłobuck County. Historically, Kłobuck belongs to Lesser Poland, and is located in its extreme northwestern corner, near the border with two other Polish historical provinces – Greater Poland, and Silesia. The town lies among the hills of Lesser Poland Upland. Most of Kłobuck lies 240 to 260 metres above sea level, and the highest point within town's limits is Dębowa Góra (284 metres). Kłobuck has the area of 47 km2 (18 sq mi), with forests taking up 20%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "k obuck",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "k",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "obuck",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7032,
+    "attempt": 6983,
+    "place_id": "gn-3447830",
+    "input": {
+      "place": {
+        "place_id": "gn-3447830",
+        "name": "Sepetiba",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.97931,
+        "lon": -43.69794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sepetiba",
+          "url": "https://en.wikipedia.org/wiki/Sepetiba",
+          "text": "Sepetiba is a neighborhood in the West Zone of Rio de Janeiro, Brazil, surrounded by Santa Cruz and Guaratiba, and by the Sepetiba Bay. It occupies an area of 1,162.13 ha, and has a population of 35,892 (according to Instituto Brasileiro de Geografia e Estatística, IBGE, 2000 demographic census).\nThe origin of the name Sepetiba is the Tupi, which has the word \"Sipitiba\" as an alternative and  çape-typa or çape-tyua as a corruption of the name, meaning Campo dos Sapés (Sapé field, in English), or Sapezal.\nClose to Sepetiba is the port of Sepetiba Terminal. The port handles containers and general bulk cargo. Its maximum draft is 22.5m."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "sepetiba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7033,
+    "attempt": 6984,
+    "place_id": "gn-3467609",
+    "input": {
+      "place": {
+        "place_id": "gn-3467609",
+        "name": "Cananéia",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -25.01472,
+        "lon": -47.92667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cananéia",
+          "url": "https://en.wikipedia.org/wiki/Cananéia",
+          "text": "Cananéia is the southernmost city in the state of São Paulo, Brazil, near where the Tordesilhas Line passed. The population in 2020 was 12,541 and its area is 1,242.010 km2 (479.543 sq mi). The elevation is 8 m. The city of Cananéia is host to the Dr. João de Paiva Carvalho research base belonging to the Oceanographic Institute of the University of São Paulo.\nCananéia is considered by some Portuguese and Spanish historians to be the oldest city in Brazil, five months before the founding of São Vicente, but due to the lack of official documentation proving this fact, São Vicente is officially the oldest city in Brazil. The Historic Center of Cananéia, listed by CONDEPHAAT, still preserves the architectural styles adopted by the first houses and churches from the colonial period until the end of the 19th century. The beaches also attract thousands of people in high season, and Ilha do Cardoso has several trails and waterfalls, as well as several archaeological sites. Festivals, cuisine and handicrafts are also attractions apart from the city, whose main sources of income are fishing and tourism.\nDue to its natural beauty and rich ecosystem, it is listed as a Natural Heritage Site by UNESCO."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "cananeia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7034,
+    "attempt": 6985,
+    "place_id": "gn-3859384",
+    "input": {
+      "place": {
+        "place_id": "gn-3859384",
+        "name": "Diamante",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -32.0671,
+        "lon": -60.64267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diamante, Entre Ríos",
+          "url": "https://en.wikipedia.org/wiki/Diamante,_Entre_Ríos",
+          "text": "Diamante is a city in the west of the province of Entre Ríos, Argentina, on the eastern shore of the Paraná River. It has about 20,000 inhabitants as per the 2010 census [INDEC]. It is the head town of the Diamante Department. Its name means \"diamond\" in Spanish.\nThe town of Diamante was founded on 27 February 1836, and became a first-class municipality on 13 May 1872.\nThe city used to be called \"Punta Gorda\", but Justo José de Urquiza had the name changed to Diamante in 1852 when his army passed through the area on his way to invade the Buenos Aires Province during the Platine War. The invasion culminated in the Battle of Caseros, in which Argentina and Urquiza emerged victorious.\nThomas Jefferson Page explored the Paraná during the Rio de La Plata Expedition, which he led. The expedition's two aims were to map the Rio de La Plata estuary and the surrounding rivers of Uruguay and Parana for commerce, and to conduct various scientific studies for the Smithsonian Institution. In September 1853, the expedition began studying Diamante's coastline and surrounding areas, as it was situated at the Parana River's mouth and alongside the river's delta (Paraná Delta). It used the USS Water Witch (1851) and chartered a steamship from the United States and Paraguay Company called the La Yerba to survey the surrounding area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "diamante",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7035,
+    "attempt": 6986,
+    "place_id": "gn-4110443",
+    "input": {
+      "place": {
+        "place_id": "gn-4110443",
+        "name": "Farmington",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.04202,
+        "lon": -94.24715
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farmington, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Farmington,_Arkansas",
+          "text": "Farmington is a city in Washington County, Arkansas, United States. As of the 2020 census, Farmington had a population of 7,584. The community is nestled in a valley among the Boston Mountains, a subset of the Ozark Mountains. Although the first settlers came from the Deep South in 1828, the community did not incorporate until 1946. Located immediately west of Fayetteville in the Northwest Arkansas metropolitan statistical area, Farmington has been experiencing a population boom in recent years, as indicated by a 66% growth in population between the 2000 and 2010 censuses. It has been characterized as a bedroom community by the University of Arkansas Community Design Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "farmington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7036,
+    "attempt": 6987,
+    "place_id": "gn-4349283",
+    "input": {
+      "place": {
+        "place_id": "gn-4349283",
+        "name": "Brandywine",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.69678,
+        "lon": -76.84775
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brandywine, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Brandywine,_Maryland",
+          "text": "Brandywine is the name of an unincorporated area in Prince George's County, Maryland, United States, that refers both to a census-designated place (CDP) and a zip code area which is much larger (20613), whose areas overlap. The population of Brandywine at the 2020 U.S. census was 10,550 for the CDP, and the population of ZIP code 20613 was 11,860 in 2010.\nBrandywine is in the southernmost area of Prince George’s County, surrounded by a rural setting. It is in the Southern Maryland region. Brandywine is also a suburb of two cities: it lies within the outer suburban Washington D.C. area and is also a close suburb of Waldorf."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "brandywine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7037,
+    "attempt": 6988,
+    "place_id": "gn-4560303",
+    "input": {
+      "place": {
+        "place_id": "gn-4560303",
+        "name": "Pennsport",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.92761,
+        "lon": -75.15045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pennsport, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Pennsport,_Philadelphia",
+          "text": "Pennsport is a neighborhood in the South Philadelphia section of Philadelphia, Pennsylvania, United States.\nPennsport is home to a large working-class Irish American population, many of them descendants of immigrants from the mid to late 19th century. They maintain social organizations (also called \"clubs\"), which are located along 2nd Street (known locally as \"Two Street\"). Each year the clubs spend months preparing costumes, music and performances for Philadelphia's annual Mummers Parade on Broad Street on New Year's Day.\nAt one time, Pennsport was proposed as a location for development of casinos along the Philadelphia waterfront. Many residents opposed this, as they wanted development that would provide better jobs. The state and city had conducted some negotiations with the Mashantucket Pequot, whose reservation is based in Connecticut, to establish Foxwoods Casino Philadelphia in this neighborhood, but the proposal never gained approval."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "pennsport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7038,
+    "attempt": 6989,
+    "place_id": "gn-4951766",
+    "input": {
+      "place": {
+        "place_id": "gn-4951766",
+        "name": "Spring Hill",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.38591,
+        "lon": -71.10927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Hill, Somerville, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Spring_Hill,_Somerville,_Massachusetts",
+          "text": "Spring Hill is a ridge in the central part of the city of Somerville, Massachusetts, United States, and the residential neighborhood that sits atop it. It runs northwest to southeast, roughly bounded by Highland Avenue, Somerville Avenue, Elm Street, and Willow Avenue. Summer Street runs along the hill's crest.\nSpring Hill is a drumlin, one of many such hills in the Boston area composed of material deposited as glaciers of the Pleistocene epoch receded.\nHistorically agricultural in character, Spring Hill was sparsely developed until the mid-19th century. Present-day Central, Lowell, and Cedar Streets trace their origins to the mid-17th century, but few other roads broke the open space. Most development took place in the neighborhood between the 1840s and early 1900s. Spring Hill has a fine selection of Greek Revival houses and Victorians including Second Empires, Italianates, Gothic Revivals and Queen Annes. Large houses were built in the neighborhood as well as smaller workers' houses and attached houses. In the early 1900s, triple-deckers filled in the remaining land.\nPart of the Spring Hill neighborhood was listed on the National Register of Historic Places in 1989. The Spring Hill Historic District stretches from Summer, Central, Atherton and Spring Streets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "spring hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7039,
+    "attempt": 6990,
+    "place_id": "gn-4985521",
+    "input": {
+      "place": {
+        "place_id": "gn-4985521",
+        "name": "Beecher",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.09003,
+        "lon": -83.6944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beecher, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Beecher,_Michigan",
+          "text": "Beecher (or also, Beecher Metropolitan District) is a census-designated place (CDP) in Genesee County in the U.S. state of Michigan. It was first listed as a CDP in 2000. Per the 2020 census, the population was 8,840.\nThe CDP area is situated on the east side of Mount Morris Township where Interstate 475 turns westward between the cities of Flint and Mount Morris. The eastern one-third of the CDP is in the western part of Genesee Township.\nThe name \"Beecher\" is used for a number of institutions covering some part of the census-designated place: Beecher Community School District, Beecher Fire Department and Beecher Metropolitan Water and Sewer District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "beecher",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7040,
+    "attempt": 6991,
+    "place_id": "gn-5095860",
+    "input": {
+      "place": {
+        "place_id": "gn-5095860",
+        "name": "Bound Brook",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.56844,
+        "lon": -74.53849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bound Brook, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Bound_Brook,_New_Jersey",
+          "text": "Bound Brook is a borough in Somerset County, in the U.S. state of New Jersey, located along the Raritan River. As of the 2020 United States census, the borough's population was 11,988, an increase of 1,586 (+15.2%) from the 2010 census count of 10,402, which in turn reflected an increase of 247 (+2.4%) from the 10,155 counted in the 2000 census.\nBound Brook was originally incorporated as a town by an act of the New Jersey Legislature on March 24, 1869, within portions of Bridgewater Township. On February 11, 1891, it was reincorporated as a borough, based on the results of a referendum held on the previous day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "bound brook",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bound",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brook",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7041,
+    "attempt": 6992,
+    "place_id": "gn-5118693",
+    "input": {
+      "place": {
+        "place_id": "gn-5118693",
+        "name": "Glens Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.30952,
+        "lon": -73.64401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glens Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/Glens_Falls,_New_York",
+          "text": "Glens Falls is a city in Warren County, New York, United States, and is the central city of the Glens Falls Metropolitan Statistical Area. The population was 14,830 at the 2020 census. The name was given by Colonel Johannes Glen, the falls referring to a large waterfall in the Hudson River at the southern end of the city.\nGlens Falls is a city in the southeastern corner of Warren County, surrounded by the town of Queensbury to the north, east, and west, and by the Hudson River and Saratoga County to the south. Glens Falls is known as \"Hometown U.S.A.,\" a title Look magazine gave it in 1944. The city has also referred to itself as the \"Empire City.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "glens falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "glens",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7042,
+    "attempt": 6993,
+    "place_id": "gn-5129029",
+    "input": {
+      "place": {
+        "place_id": "gn-5129029",
+        "name": "North Elba",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 44.24338,
+        "lon": -73.95431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Elba, New York",
+          "url": "https://en.wikipedia.org/wiki/North_Elba,_New_York",
+          "text": "North Elba is a town in Essex County, New York, United States. The population was 7,480 at the 2020 census.\nNorth Elba is on the western edge of the county. It is 57 miles (92 km) by road southwest of Plattsburgh, 112 miles (180 km) south-southwest of Montreal, and 138 miles (222 km) north of Albany. While it is only 59 miles (95 km) west-southwest of Burlington, Vermont, one would have to either take a ferry across Lake Champlain, or drive around it. The entirety of the village of Lake Placid is located within the boundaries of North Elba, as is part of the village of Saranac Lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "north elba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "elba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7043,
+    "attempt": 6994,
+    "place_id": "gn-5324862",
+    "input": {
+      "place": {
+        "place_id": "gn-5324862",
+        "name": "Artesia",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.86585,
+        "lon": -118.08312
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Artesia, California",
+          "url": "https://en.wikipedia.org/wiki/Artesia,_California",
+          "text": "Artesia (Spanish for \"artesian aquifer\") is a city in southeastern Los Angeles County, California. Artesia was incorporated on May 29, 1959, and is one of Los Angeles County's Gateway Cities. The city has a 2020 census population of 16,395. Artesia is surrounded on the west, south, and east sides by Cerritos, with Norwalk to the north. Artesia is the home of the East West Ice Palace, an ice rink which is co-owned by Michelle Kwan. It was also the childhood home of former First Lady Pat Nixon, who lived there from 1914 to 1931, though the property on which she grew up is now part of neighboring Cerritos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "artesia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7044,
+    "attempt": 6995,
+    "place_id": "gn-5378408",
+    "input": {
+      "place": {
+        "place_id": "gn-5378408",
+        "name": "Oak Park",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.17917,
+        "lon": -118.76287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oak Park, California",
+          "url": "https://en.wikipedia.org/wiki/Oak_Park,_California",
+          "text": "Oak Park is an unincorporated community in southeastern Ventura County, California, United States. When developed in the Simi Hills in the late 1960s, a single road provided the only access to the community from Agoura Hills, California, in neighboring Los Angeles County. As of the 2020 census, Oak Park had a population of 13,898, up from 13,811 at the 2010 census. For statistical purposes, the United States Census Bureau has defined Oak Park as a census-designated place (CDP). The census definition of the area may not precisely correspond to local understanding of the area with the same name.\nOak Park is the biggest unincorporated community in Ventura County. Residents of the community have through votes declined to set up an independent city, and also declined to be annexed into neighboring Thousand Oaks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "oak park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oak",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7045,
+    "attempt": 6996,
+    "place_id": "gn-5493403",
+    "input": {
+      "place": {
+        "place_id": "gn-5493403",
+        "name": "Sunland Park",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 31.7965,
+        "lon": -106.57999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunland Park, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Sunland_Park,_New_Mexico",
+          "text": "Sunland Park is a city in southeastern Doña Ana County, New Mexico, United States, on the borders of Texas and the Mexican state of Chihuahua, with Ciudad Juárez adjoining it on the south and El Paso, Texas, on the east. The community of Santa Teresa adjoins it on the northwest. As of the 2020 census, Sunland Park had a population of 16,702. It was estimated at 17,978 by the United States Census Bureau in 2019. Though it lies adjacent to El Paso, being in Doña Ana County makes it a part of the Las Cruces metropolitan statistical area. Las Cruces is 42 miles (68 km) to the north.\nThe city is at the foot of Mount Cristo Rey, next to the Rio Grande, and is named for Sunland Park Racetrack & Casino, which lies within the city limits. The location was formerly called \"Anapra\", a name shared by an adjacent area of Ciudad Juárez."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "sunland park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7046,
+    "attempt": 6997,
+    "place_id": "gn-5800227",
+    "input": {
+      "place": {
+        "place_id": "gn-5800227",
+        "name": "Lake Forest Park",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.75676,
+        "lon": -122.28096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Forest Park, Washington",
+          "url": "https://en.wikipedia.org/wiki/Lake_Forest_Park,_Washington",
+          "text": "Lake Forest Park is a suburban city in King County, Washington, United States, located northeast of Seattle. It was developed in the 20th century as a bedroom community with single-family housing on medium to large-sized lots. Less than 4% of the city's land is zoned commercial, largely concentrated in one location, and there are no industrial areas.\nThe city is situated at the northwest end of Lake Washington along State Route 522, which provides connections to Seattle and Bothell. Lake Forest Park includes several parks and nature reserves, access to the Burke–Gilman Trail, and organized summer events. The population of the city was 13,630 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "lake forest park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7047,
+    "attempt": 6998,
+    "place_id": "gn-6690812",
+    "input": {
+      "place": {
+        "place_id": "gn-6690812",
+        "name": "Chadwell St Mary",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.4814,
+        "lon": 0.36343
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chadwell St Mary",
+          "url": "https://en.wikipedia.org/wiki/Chadwell_St_Mary",
+          "text": "Chadwell St Mary is an area of the unitary authority of Thurrock in Essex, England. It lies 2 miles (3 km) east of the centre of Grays, its post town, and 1 mile (1.6 km) north of Tilbury. At the 2021 census the Chadwell St Mary built up area as defined by the Office for National Statistics had a population of 10,685.\nChadwell St Mary, historically sometimes just called Chadwell, was an ancient parish. The parish included both Chadwell St Mary itself and the area to the south where the port town of Tilbury developed from the 19th century. In 1912, the parish became the Tilbury Urban District. That urban district and the civil parish of Chadwell St Mary were abolished in 1936 on the creation of the larger Thurrock Urban District, which in turn became the modern borough of Thurrock in 1974. Chadwell St Mary remains the name of one of Thurrock's Church of England parishes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "chadwell st mary",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chadwell",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "mary",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7048,
+    "attempt": 6999,
+    "place_id": "gn-6690829",
+    "input": {
+      "place": {
+        "place_id": "gn-6690829",
+        "name": "Kingston upon Thames",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41259,
+        "lon": -0.2974
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingston upon Thames",
+          "url": "https://en.wikipedia.org/wiki/Kingston_upon_Thames",
+          "text": "Kingston upon Thames, colloquially known as Kingston, is a town in the Royal Borough of Kingston upon Thames, south-west London, England. It is situated on the River Thames, 10 miles (16 km) south-west of Charing Cross. It is an ancient market town, notable as the place where some Saxon kings were crowned.\nHistorically in the county of Surrey, the ancient parish of Kingston covered both the town itself and a large surrounding area. The town was an ancient borough, having been formally incorporated in 1441, with a long history prior to that as a royal manor. From 1836 until 1965 the town formed the Municipal Borough of Kingston-upon-Thames. From 1893 to 2020 Kingston was the seat of Surrey County Council. The town became part of Greater London in 1965, when the modern borough was also created as one of the 32 London boroughs.\nKingston is identified as a metropolitan centre in the London Plan and is one of the biggest retail centres in the UK, receiving 18 million visitors a year. It is also home to Kingston University.\nThe Kingston upon Thames post town corresponds to the KT1 and KT2 postcodes. The wider borough also includes the post towns of New Malden, Surbiton, Chessington, parts of Worcester Park and peripheral parts of several other post towns based outside the borough. The Kingston upon Thames post town roughly corresponds to the six wards of Canbury Gardens, Coombe Hill, Kingston Gate, Kingston Town, Norbiton and Tudor, which had a combined population of 54,925 at the 2021 census, while the borough overall counted 168,063."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "kingston upon thames",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kingston",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "upon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "thames",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7049,
+    "attempt": 7000,
+    "place_id": "gn-6698373",
+    "input": {
+      "place": {
+        "place_id": "gn-6698373",
+        "name": "Chelmsley Wood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.4781,
+        "lon": -1.73813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chelmsley Wood",
+          "url": "https://en.wikipedia.org/wiki/Chelmsley_Wood",
+          "text": "Chelmsley Wood, sometimes called just Chelmsley, is a town, ward, and civil parish in the Metropolitan Borough of Solihull, West Midlands. It is located near Birmingham Airport and the National Exhibition Centre. It lies about eight miles east of Birmingham city centre and 5 miles to the north of Solihull. The town is also close to both Coleshill and Water Orton in Warwickshire, the county the area was historically part of. At the 2021 census, the parish had a population of 13,738.\nIn 1966 Birmingham City Council compulsorily purchased the ancient woodland and built the 15,590 dwelling council estate to rehouse families on its council house waiting list. With the rise in unemployment in the 1970s parts of the estate suffered from deprivation and anti-social behaviour. The area established a town council.\nLocal government re-organisation in 1974 transferred the town to Solihull Metropolitan Borough, though responsibility for the housing remained with Birmingham until September 1980."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "chelmsley wood",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chelmsley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wood",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
