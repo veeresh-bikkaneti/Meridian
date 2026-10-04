@@ -15,8 +15,8 @@ Base: `origin/main` at `aa69434`.
 
 ## Pending
 - [ ] E2E run green (in progress)
-- [ ] Technical-architect review (spawned)
-- [ ] Tone/docs/a11y review (spawned)
+- [x] Technical-architect review: PASS-WITH-NOTES — fix correct at right layer, no ordering hazards (revealDone latches before batch executes; batches run in one JS task under `withoutControllerEvents`). Follow-up (pre-existing, out of scope): dispatch-exception catch + watchdog-fire paths still leave gestures off — hardening item for a later pass.
+- [x] Tone/docs/a11y review: PASS-WITH-NOTES — zero user-facing copy changed; no stale docs; keyboard +/- and reduced-motion fine; no focus changes. Two informational notes only.
 - [ ] PR → merge per standing auth → live Pages verification (build-meta.json)
 
 ## Notes for parent
