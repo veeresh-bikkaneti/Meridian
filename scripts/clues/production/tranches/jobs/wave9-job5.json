@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 8876,
+    "place_id": "gn-10278190",
+    "input": {
+      "place": {
+        "place_id": "gn-10278190",
+        "name": "Rusthall",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.13643,
+        "lon": 0.22931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rusthall",
+          "url": "https://en.wikipedia.org/wiki/Rusthall",
+          "text": "Rusthall is a village located approximately 2 miles to the west of the spa town of Tunbridge Wells in Kent.  The village grew up around a large property called \"Rusthall\" located on Rusthall Common.\nRusthall is a modern village, the majority built after the trains arrived in Royal Tunbridge Wells during the mid-1800s. It was created as a tourist spot, with visitors coming up from the station in charabancs to see the 'Toad Rock', a natural rock formation which looks like a sitting toad, resting on an outcrop of sandstone. Other outcrops can be seen throughout Rusthall Common.\nRusthall F.C.is the local football club in the southern county's East league premier Division as of the 2026/2027 season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "rusthall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8880,
+    "place_id": "gn-2145059",
+    "input": {
+      "place": {
+        "place_id": "gn-2145059",
+        "name": "Walcha",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -30.98493,
+        "lon": 151.59335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walcha, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Walcha,_New_South_Wales",
+          "text": "Walcha () is a town at the south-eastern edge of the Northern Tablelands, New South Wales, Australia.\nThe town, which is the seat of Walcha Shire, is 425 kilometres (264 mi) by road from Sydney, at the intersection of the Oxley Highway and Thunderbolts Way. The Apsley River passes through the town to tumble over the Apsley Falls before joining the Macleay River further on. The river used to cause flooding in the town, but a levee bank has been constructed to alleviate the problem. At the 2021 census, Walcha had a population of 1369 people.\nThe Main North railway line runs 20.7 kilometres (12.9 mi) to the west, where there is a settlement called Walcha Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "walcha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8885,
+    "place_id": "gn-2651382",
+    "input": {
+      "place": {
+        "place_id": "gn-2651382",
+        "name": "Denby Dale",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.57228,
+        "lon": -1.65895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denby Dale",
+          "url": "https://en.wikipedia.org/wiki/Denby_Dale",
+          "text": "Denby Dale is a village and civil parish in the metropolitan borough of Kirklees in West Yorkshire, England. It is 8 miles  north-west of Barnsley and 10 miles south-east of Huddersfield.   \nThe village is the main village in the Denby Dale civil parish that also covers Lower Denby, Upper Denby, Upper Cumberworth, Lower Cumberworth, Skelmanthorpe, Emley, Emley Moor and Clayton West.  The parish had a population of 14,982 according to the 2001 census, increasing to 16,365 at the 2011 census.  The parish council gives the electorate of the village itself as 2,143. The River Dearne runs through the village; in the floods of 2007 it burst its banks on two occasions and caused damage to Springfield Mill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "denby dale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "denby",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8890,
+    "place_id": "gn-2940377",
+    "input": {
+      "place": {
+        "place_id": "gn-2940377",
+        "name": "Camburg",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 51.05524,
+        "lon": 11.70967
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camburg",
+          "url": "https://en.wikipedia.org/wiki/Camburg",
+          "text": "Camburg (German pronunciation: [ˈkambʊʁk]) is a town in the Saale-Holzland district, in Thuringia, Germany. It is situated on the river Saale, 18 km northeast of Jena, and 13 km southwest of Naumburg. Since 1 December 2008, it is part of the town Dornburg-Camburg.\nThe first mention of Camburg dates from 1088, and during the Middle Ages the Burg was a residence of the Wettiner family. Camburg castle controls a crossing of the Saale which was an important trade route for salt being carried from Bad Sulza towards the south east.\nThe valley of the Saale cuts through Muschelkalk cliffs, in which a hermit's cave, the Klausloch, can still be seen to the north east of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "camburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8891,
+    "place_id": "gn-298801",
+    "input": {
+      "place": {
+        "place_id": "gn-298801",
+        "name": "Türkbükü",
+        "country": "Türkiye",
+        "subdivision": "Muğla",
+        "lat": 37.13322,
+        "lon": 27.37364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Türkbükü",
+          "url": "https://en.wikipedia.org/wiki/Türkbükü",
+          "text": "Türkbükü is a neighbourhood of the municipality and district of Bodrum, Muğla Province, Turkey. Its population is 2,566 (2022). It is a coastal town on the Turkish Riviera on the opposite side of the Bodrum peninsula from the town of Bodrum. Türkbükü has a well protected harbor ringed with high hills containing a number of luxury hotels and holiday villas. The town is situated at the ancient Greek town, Caryanda, the birthplace of the 6th-5th c. BCE Greek explorer Skylax (Σκύλαξ ο Καρυανδεύς), and currently is a favorite vacation spot and second home residency of upper-class Turks, and although less well visited by Western European tourists compared to Bodrum, it is also increasingly popular with foreign visitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "turkbuku",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8897,
+    "place_id": "gn-4116660",
+    "input": {
+      "place": {
+        "place_id": "gn-4116660",
+        "name": "Johnson",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.13286,
+        "lon": -94.16548
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Johnson, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Johnson,_Arkansas",
+          "text": "Johnson is a city in Washington County, Arkansas, United States. The community is located in the Ozark Mountains and is surrounded by valleys and natural springs. Early settlers took advantage of these natural features and formed an economy based on mining lime, the Johnson Mill and trout. Although a post office was opened in the community in 1887, Johnson did not incorporate until it required the development of a city government to provide utility services in 1961. Located between Fayetteville and Springdale in the heart of the rapidly growing Northwest Arkansas metropolitan statistical area, Johnson has been experiencing a population and building boom in recent years. As of the 2020 census, Johnson had a population of 3,609."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "johnson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8901,
+    "place_id": "gn-5587232",
+    "input": {
+      "place": {
+        "place_id": "gn-5587232",
+        "name": "Buhl",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 42.59907,
+        "lon": -114.75949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buhl, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Buhl,_Idaho",
+          "text": "Buhl is a city located on the old Oregon Trail in the western half of Twin Falls County, Idaho, United States. As of the 2020 census, Buhl had a population of 4,558. It is part of the Twin Falls, Idaho metropolitan area.\nU.S. Route 30 passes through Buhl, along the scenic Thousand Springs Scenic Byway from Twin Falls to Bliss. Known as the \"Trout Capital of the World,\" Buhl is the location of numerous hatcheries in the immediate surrounding area, which produce a majority of the rainbow trout consumed in the United States. Clear Springs Foods, located just north of Buhl, processes over 20 million pounds of rainbow trout each year, making it the world's largest producer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "buhl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8904,
+    "place_id": "gn-686654",
+    "input": {
+      "place": {
+        "place_id": "gn-686654",
+        "name": "Adunații-Copăceni",
+        "country": "Romania",
+        "subdivision": "Giurgiu County",
+        "lat": 44.25413,
+        "lon": 26.04929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adunații-Copăceni",
+          "url": "https://en.wikipedia.org/wiki/Adunații-Copăceni",
+          "text": "Adunații-Copăceni is a commune located in Giurgiu County, Muntenia, Romania. It is composed of four villages: Adunații-Copăceni, Dărăști-Vlașca, Mogoșești, and Varlaam.\nThe commune is situated in the southern part of the Wallachian Plain, on the banks of the Argeș River, at an altitude of 79 m (259 ft). It is located in the central part of Giurgiu County, on the border with Ilfov County. \nThe national road DN5 connects Adunații-Copăceni to the county seat, Giurgiu, 41 km (25 mi) to the south, and to the capital city, Bucharest, 21 km (13 mi) to the north. The DN5A road branches off in a southeasterly direction towards Varlaam and Mogoșești villages, ending in Hotarele commune, where it reaches DN41."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "adunatii copaceni",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "adunatii",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "copaceni",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8905,
+    "place_id": "gn-726723",
+    "input": {
+      "place": {
+        "place_id": "gn-726723",
+        "name": "Strelcha",
+        "country": "Bulgaria",
+        "subdivision": "Pazardzhik",
+        "lat": 42.5,
+        "lon": 24.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strelcha",
+          "url": "https://en.wikipedia.org/wiki/Strelcha",
+          "text": "Strelcha (Bulgarian: Стрелча [ˈstrɛɫt͡ʃɐ]) is a small Bulgarian town with a population of 4,284 as of September 2013. The town lies 13 km to the east of Panagyurishte and 41 km to the north of Pazardzhik. It is a capital of homonymous municipality, part of Pazardzhik Province. It is situated in a valley in the southern skirts of the Sredna Gora mountain.\n\nThe favourable microclimate, nature and mineral water springs, combined with the rich history and natural sights, have turned Strelcha into a national spa resort all around the year. Even if the town's tourism industry has decayed somewhat in the early post-communist period, its tourist product has started to revive in the last couple of years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "strelcha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8909,
+    "place_id": "gn-1696505",
+    "input": {
+      "place": {
+        "place_id": "gn-1696505",
+        "name": "Pagsanjan",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.2732,
+        "lon": 121.4552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pagsanjan",
+          "url": "https://en.wikipedia.org/wiki/Pagsanjan",
+          "text": "Pagsanjan ( PAG-sang-han), officially the Municipality of Pagsanjan (Tagalog: Bayan ng Pagsanjan), is a municipality in the province of Laguna, Philippines. According to the 2024 census, it has a population of 45,602 people.\nIt is known as the tourist capital of Laguna and is the home of the Bangkero Festival held every March. The bangkeros are tour guides who steer boats along the river to Pagsanjan Falls (also called Magdapio Falls), for which the town is well known but is actually in neighboring Cavinti.\nThe municipality was the capital of the province of Laguna for 170 years (from 1688 to 1858), during which the town prospered as the commercial, cultural and learning center of the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "pagsanjan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8916,
+    "place_id": "gn-2638757",
+    "input": {
+      "place": {
+        "place_id": "gn-2638757",
+        "name": "St Leonards",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.83077,
+        "lon": -1.84377
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "St Leonards, Dorset",
+          "url": "https://en.wikipedia.org/wiki/St_Leonards,_Dorset",
+          "text": "St Leonards is a village in south east Dorset, England, situated on the A31 road approximately 2.5 miles (4.0 km) south-west of Ringwood, Hampshire, 8 miles (13 km) north of Bournemouth and 3 miles (4.8 km) north-east of Ferndown. With adjacent St Ives and Ashley Heath, it forms the civil parish of St Leonards and St Ives, which had a population of 6,859 in 2011. The village is part of the historic county of Hampshire (it was transferred to Dorset for administrative purposes following the Local Government Act 1972). \nThe village has a youth club for ages 10–18 on a Monday and Wednesday, situated in Braeside Park near the village hall and by the scout hut."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "st leonards",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "leonards",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8919,
+    "place_id": "gn-2652739",
+    "input": {
+      "place": {
+        "place_id": "gn-2652739",
+        "name": "Clutton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.32944,
+        "lon": -2.54306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clutton, Somerset",
+          "url": "https://en.wikipedia.org/wiki/Clutton,_Somerset",
+          "text": "Clutton is a village and civil parish on the eastern edge of the Chew Valley, close to the Cam Brook river, in the Bath and North East Somerset Council area, within the ceremonial county of Somerset, England.  The village lies east of the A37 road between Bristol and Shepton Mallet, and west of the A39 between Bath and Wells. It is 9 miles (14 km) from Bristol and Bath, and 11 miles (18 km) from Wells. Close by are the villages of Temple Cloud and High Littleton. The town of Midsomer Norton is 5 miles (8 km) away. The parish, which includes the hamlets of Clutton Hill and Northend, had a population of 1,602 in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "clutton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8921,
+    "place_id": "gn-2704008",
+    "input": {
+      "place": {
+        "place_id": "gn-2704008",
+        "name": "Hyltebruk",
+        "country": "Sweden",
+        "subdivision": "Halland",
+        "lat": 56.99892,
+        "lon": 13.23958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hyltebruk",
+          "url": "https://en.wikipedia.org/wiki/Hyltebruk",
+          "text": "Hyltebruk (Swedish: [hʏltɛˈbrʉːk]) is a locality and the seat of Hylte Municipality, Halland County, Sweden with 3,716 inhabitants in 2010.\nThe town grew up around the paper mill owned by Hylte Bruks AB, which started its operation in 1907. A railway was built in 1909 connecting it with Torup on the Halmstad-Nässjö line. The paper mill today has nearly 1,000 employees and is one of the greatest manufacturers of newsprint in the world.\nIn the 20th century the town was popular due to the farming it had produced that had led to increased tourist sites and also now has opened several different hotels in its regions to attract more tourists in the spring and summer seasons."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "hyltebruk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8938,
+    "place_id": "gn-679812",
+    "input": {
+      "place": {
+        "place_id": "gn-679812",
+        "name": "Daia Română",
+        "country": "Romania",
+        "subdivision": "Alba County",
+        "lat": 46.01667,
+        "lon": 23.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daia Română",
+          "url": "https://en.wikipedia.org/wiki/Daia_Română",
+          "text": "Daia Română (German: Dallendorf, Luprechttal; Hungarian: Oláhdálya, Dálya) is a commune located in the southeastern part of Alba County, Transylvania, Romania. As of 2021, it has a population of 3,051. It is composed of a single village, Daia Română.\nThe commune is situated on the Transylvanian Plateau, 10.5 km (6.5 mi) northeast of Sebeș, and 18 km (11 mi) southeast of the county seat, Alba Iulia. The river Daia flows through the commune.\nDaia Română borders Berghin commune to the north and northeast, Șpring commune to the east and southeast, Cut commune to the south, the city of Sebeș to the southwest, the city of Alba Iulia to the west, and Ciugud commune to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "daia romana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "daia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "romana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8942,
+    "place_id": "gn-2208328",
+    "input": {
+      "place": {
+        "place_id": "gn-2208328",
+        "name": "Waihi",
+        "country": "New Zealand",
+        "subdivision": "Waikato Region",
+        "lat": -37.38333,
+        "lon": 175.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waihi",
+          "url": "https://en.wikipedia.org/wiki/Waihi",
+          "text": "Waihi is a town in Hauraki District in the North Island of New Zealand, especially notable for its history as a gold mine town.\nThe town is at the foot of the Coromandel Peninsula, close to the western end of the Bay of Plenty. The nearby resort town of Waihi Beach, ten kilometres to the east, is often regarded as the westernmost point of the Bay of Plenty region. To the west are the hills of the Kaimai Ranges. Road access from this direction is through the winding Karangahake Gorge road. Waihi has a warm and temperate climate but unusually high rainfall for New Zealand's east coast with an average annual rainfall of 2147 mm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "waihi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8952,
+    "place_id": "gn-3582431",
+    "input": {
+      "place": {
+        "place_id": "gn-3582431",
+        "name": "Caye Caulker",
+        "country": "Belize",
+        "subdivision": "Belize District",
+        "lat": 17.73659,
+        "lon": -88.02761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caye Caulker",
+          "url": "https://en.wikipedia.org/wiki/Caye_Caulker",
+          "text": "Caye Caulker (Spanish: Cayo Caulker) is a small limestone coral island off the coast of Belize in the Caribbean Sea measuring about 5 miles (8.0 km) (north to south) by less than 1 mile (1.6 km) (east to west). The town on the island is known by the name Caye Caulker Village. The population of Caye Caulker is approximately 4,000 people.\nCaye Caulker is located approximately 20 miles (32 km) north-northeast of Belize City, and is accessible by high-speed water taxi or small plane via Caye Caulker Airport.  In recent years, the island has become a popular destination for backpackers and other tourists. There are over 50 hotels and a number of restaurants and shops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "caye caulker",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caye",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caulker",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8957,
+    "place_id": "gn-5104923",
+    "input": {
+      "place": {
+        "place_id": "gn-5104923",
+        "name": "Spring Lake",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.15345,
+        "lon": -74.02819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Lake, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Spring_Lake,_New_Jersey",
+          "text": "Spring Lake is a borough situated on the Jersey Shore in Monmouth County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 2,789, a decrease of 204 (−6.8%) from the 2010 census count of 2,993, which in turn reflected a decline of 574 (−16.1%) from the 3,567 counted in the 2000 census.\nNew Jersey Monthly magazine ranked Spring Lake as the 240th best place to live in New Jersey in its 2010 rankings of the \"Best Places To Live\" in New Jersey.\nIn 2012, Forbes.com listed Spring Lake as 187th in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $1,190,586."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "spring lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8962,
+    "place_id": "gn-631448",
+    "input": {
+      "place": {
+        "place_id": "gn-631448",
+        "name": "Vimpeli",
+        "country": "Finland",
+        "subdivision": "South Ostrobothnia",
+        "lat": 63.16187,
+        "lon": 23.81922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vimpeli",
+          "url": "https://en.wikipedia.org/wiki/Vimpeli",
+          "text": "Vimpeli (Finnish: [ˈʋimpeli]; Swedish: Vindala) is a municipality of Finland. It is located in the South Ostrobothnia region, 79 kilometres (49 mi) northeast of Seinäjoki and 166 kilometres (103 mi) northwest of Jyväskylä. The municipality has a population of 2,554 (31 December 2025) and covers an area of 328.79 square kilometres (126.95 sq mi) of which 41.52 km2 (16.03 sq mi) is water. The population density is 8.89 inhabitants per square kilometre (23.0/sq mi). The most significant road connection in the municipality is the main road 68 between towns of Virrat and Jakobstad.\nVimpeli was crucial in the Winter War due to its ski-factory that created over half of the skis used in the war."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "vimpeli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8974,
+    "place_id": "gn-2643957",
+    "input": {
+      "place": {
+        "place_id": "gn-2643957",
+        "name": "Llanrwst",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.14021,
+        "lon": -3.79527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Llanrwst",
+          "url": "https://en.wikipedia.org/wiki/Llanrwst",
+          "text": "Llanrwst (Welsh for 'church or parish of Saint Grwst'; Welsh pronunciation: [ɬanˈruːst]) is a market town and community in Conwy County Borough, Wales. It is on the east bank of the River Conwy and the A470 road, and lies within the historic county boundaries of Denbighshire. It developed around the wool trade and became known also for the making of harps and clocks. Today, less than one mile (two kilometres) from the edge of Snowdonia, its main industry is tourism. Notable buildings include almshouses, two 17th-century chapels, and the Parish Church of St Grwst, which holds the stone coffin of Llywelyn the Great. At the 2021 census, the community had a population of 3,128."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "llanrwst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8976,
+    "place_id": "gn-2653109",
+    "input": {
+      "place": {
+        "place_id": "gn-2653109",
+        "name": "Chobham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.34836,
+        "lon": -0.60639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chobham",
+          "url": "https://en.wikipedia.org/wiki/Chobham",
+          "text": "Chobham is a village and civil parish in the Borough of Surrey Heath in Surrey, England.\nThe village has a small high street area, specialising in traditional trades and motor trades.  The River Bourne and its northern tributary, the Hale, Mill Bourne or Windle Brook run through the village.\nChobham lost a large minority of its land to West End, in 1968, which has a larger population and was long associated with another parish. Chobham has a wide range of outlying businesses, particularly plant growing and selling businesses, science/technology and restaurants.\nChobham has no railway line; it is approximately midway between London-terminating services at Woking and Sunningdale, just under 5 miles (8.0 km) away."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "chobham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

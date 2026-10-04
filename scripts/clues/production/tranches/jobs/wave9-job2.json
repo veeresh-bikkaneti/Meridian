@@ -1,0 +1,727 @@
+[
+  {
+    "rank": 8555,
+    "place_id": "gn-10965202",
+    "input": {
+      "place": {
+        "place_id": "gn-10965202",
+        "name": "Kanda-jinbōchō",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.69559,
+        "lon": 139.75642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kanda-Jinbōchō",
+          "url": "https://en.wikipedia.org/wiki/Kanda-Jinbōchō",
+          "text": "Kanda-Jinbōchō (神田神保町), commonly known as Jinbōchō or Jimbōchō, is a district of Chiyoda, Tokyo, Japan. Jimbōchō Book Town is known as Tokyo's center of used-book stores and publishing houses, and as a popular antique and curio shopping area.\nThe center of Jinbōchō is at the crossing of Yasukuni-dōri and Hakusan-dōri, above Jimbōchō Station on the Tokyo Metro Hanzōmon Line, Toei Mita Line and Toei Shinjuku Line. The prestigious Tokyo Book Binding Club and Literature Preservation Society are located in Jinbōchō, and the area is within walking distance of a number of major universities, including Nihon, Senshu, Meiji, Hosei and Juntendo.\nJinbōchō is officially known (in addresses, etc.) as Kanda-Jinbōchō (神田神保町), and is part of the former ward of Kanda.\nIn 2025 Time Out named it the coolest neighborhood in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "kanda jinbocho",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kanda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jinbocho",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8560,
+    "place_id": "gn-2152686",
+    "input": {
+      "place": {
+        "place_id": "gn-2152686",
+        "name": "Portarlington",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.11542,
+        "lon": 144.65559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portarlington, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Portarlington,_Victoria",
+          "text": "Portarlington is a town located on the Bellarine Peninsula, 28 km from the city of Geelong, in the state of Victoria, Australia. It has a diverse population which includes a wide range of ethnic backgrounds, a high proportion of retirees, and a large seasonal holiday influx. The gently rising hills behind the town feature vineyards and olive groves, and offer spectacular panoramic views across Port Phillip Bay. Portarlington is a popular family holiday destination and a centre of fishing and aquaculture (mussels). At one time the town claimed the largest caravan park in the Southern Hemisphere, although the size has reduced considerably in recent decades. With direct ferry links to the city of Melbourne Portarlington also serves as a gateway to the historic towns and surf beaches of the Bellarine Peninsula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "portarlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8566,
+    "place_id": "gn-3133402",
+    "input": {
+      "place": {
+        "place_id": "gn-3133402",
+        "name": "Ulefoss",
+        "country": "Norway",
+        "subdivision": "Telemark",
+        "lat": 59.28245,
+        "lon": 9.26548
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulefoss",
+          "url": "https://en.wikipedia.org/wiki/Ulefoss",
+          "text": "Ulefoss is the administrative centre of Nome Municipality in Telemark county, Norway. The village is located along the northwest shore of the large lake Norsjø. The village occupies both sides of Ulefoss falls on the river Eidselva, just before it flows into the lake Norsjø. The village of Helgja lies about 7 kilometres (4.3 mi) to the southeast, the village of Bjervamoen lies about 10 kilometres (6.2 mi) to the west, and the village of Gvarv lies about 13 kilometres (8.1 mi) to the northwest (in Midt-Telemark Municipality).\nThe 2.56-square-kilometre (630-acre) village has a population (2025) of 2,498 and a population density of 976 inhabitants per square kilometre (2,530/sq mi).\nUlefoss is one of Norway's oldest industrial communities, with sawmills operating from the 1400s, and mining and ironworks from the 1600s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "ulefoss",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8570,
+    "place_id": "gn-6220876",
+    "input": {
+      "place": {
+        "place_id": "gn-6220876",
+        "name": "Waltham",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.54824,
+        "lon": 172.65156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waltham, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Waltham,_New_Zealand",
+          "text": "Waltham is an inner suburb of Christchurch, New Zealand, located approximately 2 kilometres (1.2 miles) south-east of the city centre. State Highway 76, part of Christchurch's ring road system, and known there as Brougham Street, runs through the suburb, as does the Lyttelton Line rail corridor. Amenities include Lancaster Park, Christchurch's former sports venue, now a community park, and Waltham pool. \nApproximate boundaries of the suburb are Waltham Road, Moorhouse Avenue, Ferry Road, Ensors Road, and the Ōpāwaho / Heathcote River. Waltham was originally part of the Sydenham borough and was incorporated into the City of Christchurch in 1903 when the borough was ended. In the early 1980s local residents and the Christchurch city council tried to name the western part of the suburb, Charleston, between Ferry Road and Ensors Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "waltham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8576,
+    "place_id": "gn-685797",
+    "input": {
+      "place": {
+        "place_id": "gn-685797",
+        "name": "Băile Govora",
+        "country": "Romania",
+        "subdivision": "Vâlcea County",
+        "lat": 45.08333,
+        "lon": 24.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Băile Govora",
+          "url": "https://en.wikipedia.org/wiki/Băile_Govora",
+          "text": "Băile Govora (or just Govora) is a Romanian spa town in Vâlcea County, about 20 km (12 mi) south-west of Râmnicu Vâlcea and west of the Olt River, in the historical region of Oltenia. Notable features of the town (beside its mineral springs, recommended for a variety of ailments) include the Govora Abbey (built in the 15th century and consolidated by Matei Basarab and later by Constantin Brâncoveanu) and the nearby Dintr-un lemn Monastery (16th or 17th century; the legend of its origin was recorded by Paul of Aleppo).\nGovora Abbey was the site where Matei Basarab introduced the first printing press in Wallachia – where the first written code of laws in Romanian was published, Pravila de la Govora, in 1640.\nThe town administers three villages: Curăturile, Gătejești, and Prajila."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "baile govora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "baile",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "govora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8580,
+    "place_id": "gn-952869",
+    "input": {
+      "place": {
+        "place_id": "gn-952869",
+        "name": "Springs",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.25837,
+        "lon": 28.47173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springs, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Springs,_South_Africa",
+          "text": "Springs is a former independent city that is now part of the City of Ekurhuleni, based in the east of Johannesburg (East Rand), in Gauteng Province, South Africa. It lies 50 km (31 mi) east of Johannesburg and 72 km (45 mi) southeast from Pretoria. Its name is probably derived  from the large number of springs in the area, and its estimated population is more than 121,610 in 2011. It is situated at 1,628 m (5,341 ft) above sea level.\nDuring the apartheid-era, the city was racially segregated under the Group Areas Act. These consisted of middle and upper-income white suburbs around the city centre and the Indian area of Bakerton east of the CBD. A community of black Africans were living in a \"black spot\" of Springs known as Payneville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8588,
+    "place_id": "gn-3192682",
+    "input": {
+      "place": {
+        "place_id": "gn-3192682",
+        "name": "Portorož",
+        "country": "Slovenia",
+        "subdivision": "Municipality of Piran",
+        "lat": 45.51429,
+        "lon": 13.59206
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portorož",
+          "url": "https://en.wikipedia.org/wiki/Portorož",
+          "text": "Portorož (pronounced [pɔɾtɔˈɾóːʃ] ; Italian: Portorose) is a Slovenian Adriatic seaside resort and spa settlement located in the Municipality of Piran in southwestern Slovenia. Its modern development began in the late 19th century with the vogue for the first health resorts. In the early 20th century Portorož became one of the grandest seaside resorts in the Adriatic, along with Opatija, Lido and Grado, then as part of the Austrian Littoral. It is now one of Slovenia's major tourist areas. Located in the centre is the Palace Hotel, once one of the most important resorts for the Austro-Hungarian monarchy, and currently one of the finest hotels between Venice and Dubrovnik.\nThe settlement and its surrounding areas are served by Portorož International Airport which is located in the nearby village of Sečovlje."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "portoroz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8590,
+    "place_id": "gn-3472868",
+    "input": {
+      "place": {
+        "place_id": "gn-3472868",
+        "name": "Águas de São Pedro",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.59944,
+        "lon": -47.87611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Águas de São Pedro",
+          "url": "https://en.wikipedia.org/wiki/Águas_de_São_Pedro",
+          "text": "Águas de São Pedro (Brazilian Portuguese pronunciation: [ˈaɡwɐz dʒi sɐ̃w ˈpedɾu] ) is a Brazilian municipality in the state of São Paulo located 184 kilometres (114 miles) from the state capital. At only 3.61 square kilometres (1.39 square miles), it is the second-smallest Brazilian municipality in terms of area, and had an estimated population of 3,521 as of 2020. Águas de São Pedro means \"Waters of Saint Peter\". Its name is derived from the mineral springs in its territory and their location, which before the city's founding were part of the municipality of São Pedro (Saint Peter).\nThe average annual temperature in the city is 22.4 degrees Celsius (72.3 degrees Fahrenheit), and most of the municipality's vegetation consists of reforested area. In 2016 there were 2,491 vehicles in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "aguas de sao pedro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "aguas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8607,
+    "place_id": "gn-5662190",
+    "input": {
+      "place": {
+        "place_id": "gn-5662190",
+        "name": "Libby",
+        "country": "United States",
+        "subdivision": "Montana",
+        "lat": 48.38829,
+        "lon": -115.556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Libby, Montana",
+          "url": "https://en.wikipedia.org/wiki/Libby,_Montana",
+          "text": "Libby is a city in northwestern Montana, United States and the county seat of Lincoln County. The population was 2,775 at the 2020 census.\nLibby suffered from the area's contamination from nearby vermiculite mines contaminated with particularly fragile asbestos, leading to the town's inclusion in the United States Environmental Protection Agency's National Priorities List status in 2002 and Public Health Emergency event in 2009. Most risk was reduced by 2015.\nLocal natural features, such as the Kootenai Falls, have attracted tourism to the area and have been featured in movies, such as Always (1989), The River Wild (1994) and The Revenant (2015). There is a public school district and a public library, and the town is in-district for Flathead Valley Community College, which operates the Lincoln County Campus there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "libby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8615,
+    "place_id": "gn-2637110",
+    "input": {
+      "place": {
+        "place_id": "gn-2637110",
+        "name": "Stalham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.77079,
+        "lon": 1.51783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stalham",
+          "url": "https://en.wikipedia.org/wiki/Stalham",
+          "text": "Stalham is a market town and civil parish on the River Ant in the English county of Norfolk, in East Anglia. It covers an area of 2.82 mi2 (7.3 km2) and had a population of 2,951 in 1,333 households at the 2001 census, the population increasing to 3,149 at the 2011 Census. It lies within the Norfolk Broads, about 15 miles (24 km) north-east of Norwich on the A149 road.\nFor the purposes of local government, it falls within the district of North Norfolk. The parts of the parish lying adjacent to the river fall into the executive area of the Broads Authority.\nThe name Stalham derives from the Old English stallhām meaning 'village with a fishing pool' or perhaps stallhamm meaning 'hemmed-in land with a fishing pool'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "stalham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8616,
+    "place_id": "gn-2640045",
+    "input": {
+      "place": {
+        "place_id": "gn-2640045",
+        "name": "Porthmadog",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 52.92924,
+        "lon": -4.13137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porthmadog",
+          "url": "https://en.wikipedia.org/wiki/Porthmadog",
+          "text": "Porthmadog (Welsh: [pɔrθˈmadɔɡ] ), originally Portmadoc until 1972 and known locally as Port, is a coastal town and community in the Eifionydd area of Gwynedd, Wales, and the historic county Caernarfonshire. It lies 5 miles (8 km) east of Criccieth, 11 miles (18 km) south-west of Blaenau Ffestiniog, 25 miles (40 km) north of Dolgellau and 20 miles (32 km) south of Caernarfon. The community population was 4,185 in the 2011 census and was put at 4,134 in 2019. It grew in the 19th century as a port for local slate, but as trade declined it continued as a shopping and tourism centre, being close to Snowdonia National Park and the Ffestiniog Railway. The 1987 National Eisteddfod was held there. It includes nearby Borth-y-Gest, Morfa Bychan and Tremadog."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "porthmadog",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8621,
+    "place_id": "gn-3362755",
+    "input": {
+      "place": {
+        "place_id": "gn-3362755",
+        "name": "Pofadder",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -29.1283,
+        "lon": 19.39492
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pofadder, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Pofadder,_South_Africa",
+          "text": "Pofadder (Afrikaans for \"puff adder\") is a small town in the Northern Cape province of South Africa. In spite of its small size, it is an important local centre in the region known in South Africa as Bushmanland. The surrounding districts are arid, sparsely populated, rugged and picturesque. There is little in the way of cropping and local farmers run sheep or goats for a living. As a tourist destination, it is not sufficiently spectacular to rival the spring flowers of the coastal regions of Namaqualand, but it has its attractions for biologists and conservationists and those with an interest in its remarkable diversity of often-tiny xerophytes and animal life. In recent years, the town economy has been boosted by the construction and operation of solar power stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "pofadder",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8623,
+    "place_id": "gn-4687151",
+    "input": {
+      "place": {
+        "place_id": "gn-4687151",
+        "name": "Dublin",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.08514,
+        "lon": -98.34199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dublin, Texas",
+          "url": "https://en.wikipedia.org/wiki/Dublin,_Texas",
+          "text": "Dublin is a city located in southwestern Erath County in Central Texas, United States. Its population was 3,359 at the  2020 census, down from 3,654 at the 2010 census.\nThe town is the former home of the world's oldest Dr Pepper bottling plant (see Dublin Dr Pepper). The plant was for many years the only U.S. source for Dr Pepper made with real cane sugar (from Texas-based Imperial Sugar), instead of less expensive high-fructose corn syrup. Contractual requirements limited the plant's distribution range to a 40-mile (64 km) radius of Dublin, an area encompassing Stephenville, Tolar, Comanche, and Hico.\nDublin was the southern terminus of the Wichita Falls and Southern Railroad, one of the properties of Frank Kell, Joseph A. Kemp, and later Orville Bullington of Wichita Falls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "dublin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8624,
+    "place_id": "gn-5321088",
+    "input": {
+      "place": {
+        "place_id": "gn-5321088",
+        "name": "Willcox",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 32.25285,
+        "lon": -109.83201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willcox, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Willcox,_Arizona",
+          "text": "Willcox is a city in Cochise County, Arizona, United States. As of the 2020 census, Willcox had a population of 3,213. The city is located in the Sulphur Springs Valley, a flat and sparsely populated drainage basin dotted with seasonal lakes. The city is surrounded by Arizona's most prominent mountain ranges, including the Pinaleño Mountains and the Chiricahua Mountains.\nSix of Arizona's ten largest mountains are located within a 70-mile radius including Mount Graham (31 miles north), which is Arizona's most prominent mountain, Chiricahua Peak (42 miles southeast), Mount Lemmon (57 miles west), Miller Peak (65 miles southwest), Mica Mountain (41 miles west), and Mount Wrightson (70 miles southwest). Scores of birds, including sandhill cranes, winter in the area, with some migrating from as far away as Siberia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "willcox",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8628,
+    "place_id": "gn-662533",
+    "input": {
+      "place": {
+        "place_id": "gn-662533",
+        "name": "Voila",
+        "country": "Romania",
+        "subdivision": "Brașov County",
+        "lat": 45.81839,
+        "lon": 24.84215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Voila, Brașov",
+          "url": "https://en.wikipedia.org/wiki/Voila,_Brașov",
+          "text": "Voila (German: Wolldorf; Hungarian: Voila) is a commune in Brașov County, Transylvania, Romania. It is composed of six villages: Cincșor (Kleinschenk; Kissink), Dridif (Dridif), Ludișor (Ludisor), Sâmbăta de Jos (Untermühlendorf; Alsószombatfalva), Voila, and Voivodeni (Nagyvajdafalva). It included Sâmbăta de Sus and Stațiunea Climaterică Sâmbăta villages until 2003, when these were split off to form Sâmbăta de Sus commune.\nThe Voila commune is located in the western part of the county, in the historic Țara Făgărașului region, on the left bank of the river Olt. The rivers Breaza and Sâmbăta discharge into the Olt at Voila. The Voila Hydropower Plant on the Olt River has a reservoir with a capacity of 10.3 million cubic metres (13.5×10^6 cu yd) of water, which covers an area of 281.5 hectares (696 acres)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "voila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8638,
+    "place_id": "gn-2673076",
+    "input": {
+      "place": {
+        "place_id": "gn-2673076",
+        "name": "Stora Höga",
+        "country": "Sweden",
+        "subdivision": "Västra Götaland",
+        "lat": 58.01667,
+        "lon": 11.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stora Höga",
+          "url": "https://en.wikipedia.org/wiki/Stora_Höga",
+          "text": "Stora Höga is a locality situated in Stenungsund Municipality, Västra Götaland County, Sweden with 2,751 inhabitants in 2010.\nStora Höga is part of the Jörlanda parish in Stenungsund, and is situated between a railroad station originally known as Vallen. The Vallen railroad station later changed its name to Stora Höga after a nearby farm by the same name. Some of the other original farms in the old Stora Höga are Lilla Höga, Anrås, and Bråland.\nOn the ocean side is an old steam boat pier known as Getskär, nowadays used as a dock for small boats and also with a small beach that is popular during the summer months.\nDuring the mid- and late 2000s, Stora Höga has expanded rapidly leading to an influx of new residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "stora hoga",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stora",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hoga",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8644,
+    "place_id": "gn-5324249",
+    "input": {
+      "place": {
+        "place_id": "gn-5324249",
+        "name": "Anza",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.55503,
+        "lon": -116.67363
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anza, California",
+          "url": "https://en.wikipedia.org/wiki/Anza,_California",
+          "text": "Anza is a census-designated place in Riverside County, California, in the Anza Valley, a semi-arid region at a mean elevation of 3,921 feet (1,195 m) above sea level. It is located 13 miles (21 km) south of Idyllwild, 32 miles (51 km) east-northeast of Temecula, 40 miles (64 km) southwest of Palm Springs, and 90 miles (140 km) northeast of San Diego, being traversed by State Route 371.  Anza is on the Pacific Crest Trail and the Juan Bautista de Anza National Historic Trail.  The population was 3,075 at the 2020 census.\nLocally, Anza and several other mountain communities (including Garner Valley, Idyllwild, Pinyon Pines and Aguanga) are collectively referred to as \"the Hill.\"\nThe ZIP code is 92539, and the community is inside area code 951."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "anza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8652,
+    "place_id": "gn-11592280",
+    "input": {
+      "place": {
+        "place_id": "gn-11592280",
+        "name": "Faifley",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.92853,
+        "lon": -4.38509
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faifley",
+          "url": "https://en.wikipedia.org/wiki/Faifley",
+          "text": "Faifley (Scottish Gaelic: Fionn Bhealach, IPA:[ˈfjuːn̴̪ˈvɛɫ̪əx]) is a large estate forming part of the town of Clydebank, Scotland, adjoining the former village of Hardgate, with a population of approximately 5,001. Along with Duntocher and Hardgate, Faifley falls within West Dunbartonshire's Kilpatrick ward with a combined population of 12,719 in 2011.\nFaifley has in the past undergone many changes with many of the older housing removed, re-built or renovated. Faifley has two schools each with a corresponding church; Edinbarnet Primary (Non-Denominational) with the White Church and St Joseph's Primary(Roman Catholic) with St Joseph's church.\nAt the heart of the community until now, was \"Boabs\", a superstore conglomerate. The community centre also contained the Faifley Branch Library until it was closed in March 2011 by West Dunbartonshire Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "faifley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8663,
+    "place_id": "gn-3892470",
+    "input": {
+      "place": {
+        "place_id": "gn-3892470",
+        "name": "Dichato",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -36.54823,
+        "lon": -72.9352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dichato",
+          "url": "https://en.wikipedia.org/wiki/Dichato",
+          "text": "Dichato is a coastal town located in the commune of Tomé in the Biobío Region, in central Chile. The town is located 37 kilometers north of the city of Concepción and has 4,486 inhabitants according to the 2017 census.\nIts geography is a very closed bay, with calm but very cold waters, suitable for water sports, frequently visited in the summer. It has numerous restaurants specializing in seafood products and diverse hotel offerings, operating all year round, but mainly occupied in the summer season. During the rest of the year, its main productive activity is artisanal fishing, with picturesque boats.\nThe earthquake and tsunami of February 27, 2010 greatly affected Dichato, mainly its flat sector, where the force of the sea destroyed everything in its path."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "dichato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8665,
+    "place_id": "gn-5300830",
+    "input": {
+      "place": {
+        "place_id": "gn-5300830",
+        "name": "Kayenta",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 36.72778,
+        "lon": -110.25458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kayenta, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Kayenta,_Arizona",
+          "text": "Kayenta (Navajo: Tó Dínéeshzheeʼ, meaning \"Fingers of Water\" because of how water runs down the local rock formations when it rains) is a U.S. town which is part of the Navajo Nation and is in Navajo County, Arizona, United States. Established November 13, 1986, the Kayenta Township is unique in currently being the only \"township\" existing under the laws of the Navajo Nation.\nThe population was 5,189 at the 2010 census. Kayenta is located at the junction of U.S. Route 160 and the southern end of U.S. Route 163. It is 25 miles (40 km) south of Monument Valley and contains a number of hotels and motels which serve visitors to Monument Valley. Like other places on the Navajo Nation, it is illegal to serve alcohol."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "kayenta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
