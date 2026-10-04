@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 527,
+    "attempt": 521,
+    "place_id": "gn-3628053",
+    "input": {
+      "place": {
+        "place_id": "gn-3628053",
+        "name": "San Juan de los Morros",
+        "country": "Venezuela",
+        "subdivision": "Guárico",
+        "lat": 9.91246,
+        "lon": -67.35398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan de los Morros",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_de_los_Morros",
+          "text": "San Juan de los Morros (Spanish pronunciation: [saŋ ˈxwan de los ˈmoros]) is the capital city of Guárico State, located in Venezuela. The city is commonly referred to as the \"Gateway to the Central Plains\" (Puerta a Los Llanos Centrales). Having a geography in which majestic mountains prevail, the capital city's population is 120,111, (taken from the 2011 census), being the second most populated city in Guárico State, after Calabozo, and is the state's first in population density.\nIt was one of the first cities founded in Guárico State, along with Calabozo, Valle de la Pascua, and Zaraza. Among the primary landmarks of the city are the Monument to the Flag, the mountain range Arístides Rojas (known as Morros de San Juan), the Monument to San Juan Bautista, El Platillón hill, the monument to the Beata Guariqueña, Madre Candelaria de San José, La Villa Olímpica, and the thermal waters (baños termales), which have great significance in the city due to the medicinal properties of its sulphuric waters (that is, because of the amount of sulphur that its waters possess): such is its effectiveness and fame, that from ancient times, once he became President of Venezuela, Antonio Guzmán Blanco, constructed the first highway to the city, which grants entry to this restoration supply that his own circle of relative physician had recommended.\nSan Juan de los Morros has a weather of 24 to 32 °C and its remedy is ruled via way of means of mountains, which evaluation with the plains of the relaxation of the state. \nGuárico is the fourth largest state in the country in terms of area, but not in population, as it has a low population density. San Juan de los Morros used to be part of Aragua State, but it was changed during the 1930s to  Guárico State, and the city was later named state capital, replacing the former capital, Ortiz.\nAmong the major features of the city are the Statue of San Juan Bautista (John the Baptist) which is 19.8 meters (62,3 ft) high, the Bandera Monument, the Bolivar Square, 'Los Morros de San Juan' monument, the historic place and monument known as \"La Puerta\" (The Gate), and the hot springs. The medicinal sulfuric content of the springs makes them a significant tourist attraction.\nSan Juan de Los Morros has a climate of 24 to 32 degrees Celsius and is dominated by surrounding mountains, which contrasts with the plains of the rest of the state. Typical dishes that originate from the Guarico area are: the cachapa, the pabellón criollo (Venezuela's typical dish), and arepas (a type of corn griddle cake).\nThe city is connected to the south with Parapara and Ortiz by a national highway. It is served by the Guarico Municipal Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 256,
+      "fullExtractWords": 458
+    },
+    "banned_terms": [
+      {
+        "term": "san juan de los morros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "morros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 528,
+    "attempt": 522,
+    "place_id": "gn-1214204",
+    "input": {
+      "place": {
+        "place_id": "gn-1214204",
+        "name": "Pematangsiantar",
+        "country": "Indonesia",
+        "subdivision": "North Sumatra",
+        "lat": 2.9595,
+        "lon": 99.0687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pematangsiantar",
+          "url": "https://en.wikipedia.org/wiki/Pematangsiantar",
+          "text": "Pematangsiantar (Simalungun Batak pronunciation: [pə.ma.taŋ.si.an.tar]) (sometimes written as Pematang Siantar, acronym PS or P. Siantar, colloquially just Siantar), and also known as the City of Pematangsiantar, is an independent city in North Sumatra Province of Indonesia, surrounded by, but not part of, the Simalungun Regency, making Pematangsiantar an enclave within Simalungun Regency. Pematangsiantar formerly had the status of a second-level district (daerah tingkat dua) and was the administrative centre of the surrounding Regency, but in 1986 it was elevated to Kota (City) and separated from the Regency.\nIts population was 229,525 in the 2005 Intermediate Census, 234,698 in the 2010 Census and 268,254 in the 2020 Census. The official estimate as of mid 2025 was 279,198 (comprising 138,049 males and 141,149 females), making it the second-largest city in the province after the provincial capital of Medan. In addition to the areas within the city limits, the neighbouring district (kecamatan) of Siantar immediately to the east and south is administratively a part of Simalungun Regency and contains the eastern suburbs of the city; it covers 73.99 km2 and had a population at the 2020 Census of 73,536, but this declined to 68,037 by mid 2025.\nPematangsiantar is 128 km from Medan and 50 km from the renowned Lake Toba tourist centre of Parapat and is often a transit city for tourists who want to travel to Lake Toba and Central Tapanuli Regency. As a city that supports tourism in the surrounding area, the city has 8 hotels, 10 budget hotels, and 268 restaurants. There are still many old (1950s) model English-manufactured Birmingham Small Arms Company (BSA)  motorcycles with a capacity of 500 cc used as Auto rickshaws which are recognized by their distinctive loud sound.\nThe city received the Adipura Cup in 1993 for its cleanliness and environmental sustainability. In 1996, because of orderly traffic control, the city also won the Wahana Tata Nugraha Cup award. The industrial sector is the backbone of the city's economy, due to its central location in Simalungun Regency, and consists of medium to large industrial sites. Of the total economic activities in 2000, Pematangsiantar reached a GDP of Rp1.69 trillion, with the industrial market share making up 38.18% or Rp646 billion. The trade, hotel, and restaurant sectors followed in second place, with a contribution of 22.77% or Rp385 billion.\nThe motto of this city is Sapangambei Manoktok Hitei which comes from the Simalungun language which means working together to achieve a noble goal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 231,
+      "fullExtractWords": 408
+    },
+    "banned_terms": [
+      {
+        "term": "pematangsiantar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 529,
+    "attempt": 523,
+    "place_id": "gn-2921232",
+    "input": {
+      "place": {
+        "place_id": "gn-2921232",
+        "name": "Gera",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.88029,
+        "lon": 12.08187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gera",
+          "url": "https://en.wikipedia.org/wiki/Gera",
+          "text": "Gera (German pronunciation: [ˈɡeːʁa] ) is a city in the German state of Thuringia. With around 93,000 inhabitants, it is the third-largest city in Thuringia after Erfurt and Jena as well as the easternmost city of the Thüringer Städtekette, an almost straight string of cities consisting of the six largest Thuringian cities from Eisenach in the west, via Gotha, Erfurt, Weimar and Jena to Gera in the east. Gera is the largest city in the Vogtland, and one of its historical capitals along with Plauen, Greiz and Weida. The city lies in the East Thuringian Hill Country, in the wide valley of the White Elster, between Greiz (upstream) and Leipzig (downstream). Gera is located in the Central German Metropolitan Region, approximately 60 kilometres (37 miles) south of Saxony's largest city of Leipzig, 80 km (50 miles) east of Thuringia's capital Erfurt, 120 km (75 miles) west of Saxony's capital Dresden and 90 km (56 miles) north of Bavaria's city of Hof (Saale).\nFirst mentioned in 995 and developing into a city during the 13th century, Gera has historical significance as being one of the main residences of the Ducal House of Reuss and subsequently the capital of the Principality of Reuss-Gera (1848–1918) and of the People's State of Reuss (1918–1920), one of the many microstates the Thuringian region consisted of, before they were unified to form Thuringia in 1920.\nOver the 19th century, Gera became a centre of the textile industry and saw a period of rapid growth. In 1952, the city also became an administrative centre in GDR as one of the capitals of Gera administrative district (Bezirk). In 1990, Gera became part of re-established Thuringia. The loss of its administrative functions as well as its industrial core (caused both by structural change among the European textile industry and the economic system change after the German reunification) precipitated the city's slide into an enduring economic crisis.\nSince 1990, many of Gera's buildings have been restored and big urban planning programmes like the Bundesgartenschau 2007 were implemented to stimulate Gera's economy. Sights include some retained buildings of the royal residence epoch and many public and private buildings from the economic heyday between 1870 and 1930. The famous painter Otto Dix was born in Gera in 1891."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 229,
+      "fullExtractWords": 376
+    },
+    "banned_terms": [
+      {
+        "term": "gera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 530,
+    "attempt": 524,
+    "place_id": "gn-1624041",
+    "input": {
+      "place": {
+        "place_id": "gn-1624041",
+        "name": "Ternate",
+        "country": "Indonesia",
+        "subdivision": "North Maluku",
+        "lat": 0.79065,
+        "lon": 127.38424
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ternate",
+          "url": "https://en.wikipedia.org/wiki/Ternate",
+          "text": "Ternate (Indonesian pronunciation: [t̪ərˈnat̪e]) is the \ncity with the largest population in the province of North Maluku and an island in the Maluku Islands, Indonesia. It was the de facto provincial capital of North Maluku before Sofifi on the nearby coast of Halmahera became the capital in 2010. It is off the west coast of Halmahera, and is composed of five islands: Ternate, the biggest and main island of the city, and Moti, Hiri, Tifure and Mayau (the latter two constitute the Batang Dua Islands, together with the small ofshore islets of Makka, Mano and Gurida). In total, the city has a land area of 162.20 square kilometres and had a total population of 185,705 according to the 2010 census, and 205,001 according to the 2020 census, with a density of 1,264 people per square kilometre; the official estimate as of mid-2024 was 210,836 (comprising 104,128 males and 100,792 females in 2023). It is the biggest and most densely populated city in the province, as well as the economic, cultural, and education center of North Maluku, and acts as a hub to neighbouring regions. It was the capital of the Sultanate of Ternate in the 15th and 16th centuries, and fought against the Sultanate of Tidore over control of the spice trade in the Moluccas before becoming a main interest to competing European powers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 224,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "ternate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 531,
+    "attempt": 525,
+    "place_id": "gn-2306104",
+    "input": {
+      "place": {
+        "place_id": "gn-2306104",
+        "name": "Accra",
+        "country": "Ghana",
+        "subdivision": "Greater Accra",
+        "lat": 5.55602,
+        "lon": -0.1969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Accra",
+          "url": "https://en.wikipedia.org/wiki/Accra",
+          "text": "Accra () is the capital and largest city of Ghana, located on the southern coast at the Gulf of Guinea, which is part of the Atlantic Ocean. As of the 2021 census, the Accra Metropolitan District, 20.4 km2 (7.9 sq mi), had a population of 284,124, and the larger Greater Accra Region, 3,245 km2 (1,253 sq mi), had a population of 5.46 million. The name \"Accra\" sometimes refers to the territory of the Accra Metropolitan District as it existed before 2008, when it covered 199.4 km2 (77.0 sq mi). This territory has since been split into 13 local government districts: 12 independent municipal districts (total area: 179.0 km2) and the reduced Accra Metropolitan District (20.4 km2), which is the only district within the capital to be granted city status. This territory of 199.4 km2 contained 1,782,150 inhabitants at the 2021 census, and serves as the capital of Ghana, while the district under the jurisdiction of the Accra Metropolitan Assembly proper (20.4 km2) is distinguished from the rest of the capital as the \"City of Accra\".\nFormed from the merger of separate settlements around British Fort James, Dutch Fort Crêvecoeur (Ussher Fort), and Danish Fort Christiansborg as Jamestown, Usshertown, and Christiansborg, respectively, Accra served as the capital of the British Gold Coast between 1877 and 1957 and has since transitioned into a more modern metropolis. The capital's architecture reflects this history, ranging from 19th-century colonial architecture to modern skyscrapers and apartment blocks.\nAccra is the Greater Accra Region's economic and administrative hub, and serves as the anchor of the larger Greater Accra Metropolitan Area (GAMA), which is inhabited by about 4 million people, making it the thirteenth-largest metropolitan area in Africa. In 2020, the Globalization and World Cities Research Network think tank designated Accra as a \"Gamma −\" level global city, indicating a growing level of international influence and connectedness."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 224,
+      "fullExtractWords": 309
+    },
+    "banned_terms": [
+      {
+        "term": "accra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 532,
+    "attempt": 526,
+    "place_id": "gn-2400555",
+    "input": {
+      "place": {
+        "place_id": "gn-2400555",
+        "name": "Franceville",
+        "country": "Gabon",
+        "subdivision": "Haut-Ogooué",
+        "lat": -1.63333,
+        "lon": 13.58357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Franceville",
+          "url": "https://en.wikipedia.org/wiki/Franceville",
+          "text": "Franceville (also historically known as Masuku) is a city in southeastern Gabon and the capital of Haut-Ogooué Province. The 2013 general population and housing census recorded the city's population at 110,568, making it the third-largest commune in the country after Libreville and Port-Gentil. The city lies on the east bank of the Ogooué River, just south of its confluence with the Mpassa, at the eastern terminus of the Trans-Gabon Railway and of the Transgabonaise road corridor running east from Libreville.\nFounded in 1880 by the Italo-French explorer Pierre Savorgnan de Brazza on the site of a pre-existing village called Masuku, Franceville grew from a refuge for formerly enslaved Africans into a colonial outpost and, after Gabon's independence in 1960, into an administrative, educational and scientific centre. The city owes much of its twentieth-century development to its proximity to the manganese mines of Moanda and the uranium deposits of Mounana, and to the political patronage of President Omar Bongo, who was born in the nearby village of Lewai (later renamed Bongoville).\nFranceville is home to the Université des Sciences et Techniques de Masuku (USTM), Gabon's principal institution for the natural sciences and engineering, and to the Centre Interdisciplinaire de Recherches Médicales de Franceville (CIRMF), a biomedical research institute internationally known for its work on Ebola virus disease and other emerging infections. The surrounding Francevillian basin is internationally significant both as the location of the Oklo natural nuclear fission reactors, discovered in 1972, and as the source of the Francevillian biota, a controversial assemblage of 2.1-billion-year-old macroscopic structures interpreted by some authors as among the earliest evidence of complex life on Earth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 220,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "franceville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 533,
+    "attempt": 527,
+    "place_id": "gn-3176746",
+    "input": {
+      "place": {
+        "place_id": "gn-3176746",
+        "name": "Forlì",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.22177,
+        "lon": 12.04144
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forlì",
+          "url": "https://en.wikipedia.org/wiki/Forlì",
+          "text": "Forlì ( for-LEE; Italian: [forˈli] ; Romagnol: Furlè [furˈlɛ]; Latin: Forum Livii) is a comune (municipality) and city in Emilia-Romagna, Northern Italy, and is, together with Cesena, the capital of the Province of Forlì-Cesena.\nSituated in the Romagna plain along the Via Emilia, east of the Montone River, Forlì is the largest city in the province and has historically occupied a strategic position on the routes crossing the Apennines towards the territories of Romagna historically ruled by Florence until the early 20th century. The city originated as the Roman settlement of Forum Livii. During the Middle Ages it developed into a free commune and, between the 13th and 14th centuries, became the principal Ghibelline stronghold in Romagna, emerging as one of the main centres of resistance to papal authority in northern and central Italy. Throughout its history, particularly from the Renaissance to the Risorgimento, Forlì was a centre of political, scientific, artistic, and cultural activity, and was home to numerous figures who contributed to Italian public and intellectual life, including the painters Melozzo da Forlì and Marco Palmezzano, the humanist historian Flavio Biondo, and the physicians Girolamo Mercuriale and Giovanni Battista Morgagni. This historical and cultural legacy is reflected in the city's historic centre, which preserves architectural evidence from successive periods of development, including medieval, Renaissance, Baroque, and fascist architecture.\nTraditionally linked to agriculture and manufacturing, Forlì remains an important agricultural, commercial, and technological centre, benefiting from the productivity of its surrounding countryside and its strategic location along the Via Emilia. The city hosts a Campus of the University of Bologna, with programmes in economics, engineering, political science, medicine, and the School of Languages and Translation (SSLMIT). It is also home to the Aerospace Technology Centre and a network of museums, including the San Domenico Civic Museum, one of the city's main cultural institutions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 220,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "forli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 534,
+    "attempt": 528,
+    "place_id": "gn-2661604",
+    "input": {
+      "place": {
+        "place_id": "gn-2661604",
+        "name": "Basel",
+        "country": "Switzerland",
+        "subdivision": "Basel-City",
+        "lat": 47.55839,
+        "lon": 7.57327
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Basel",
+          "url": "https://en.wikipedia.org/wiki/Basel",
+          "text": "Basel is a city in northwestern Switzerland on the river Rhine, at the transition from the High Rhine to the Upper Rhine. Basel is Switzerland's third most populous city (after Zurich and Geneva), with 177,595 inhabitants within the city municipality limits.\nBasel is commonly considered to be the cultural capital of Switzerland and the city's museums include the Kunstmuseum, which was the first collection of art accessible to the public in the world (1661) and the largest museum of art in Switzerland, the Fondation Beyeler (located in Riehen), the Museum Tinguely and the Museum of Contemporary Art, which was the first public museum of contemporary art in Europe. Forty museums are spread throughout the canton, making Basel one of the largest cultural centres in relation to its size and population in Europe. It is the hometown of the Art Basel international art fair, showcasing modern and contemporary works from leading galleries and attracting top collectors, artists, and enthusiasts globally.\nThe University of Basel, Switzerland's oldest university (founded in 1460), and the city's centuries-long commitment to humanism, have made Basel a safe haven at times of political unrest in other parts of Europe for such notable people as Erasmus of Rotterdam, the Holbein family, Friedrich Nietzsche, Carl Jung, and in the 20th century also Hermann Hesse and Karl Jaspers.\nBasel was the seat of a Prince-Bishopric starting in the 11th century, and joined the Swiss Confederacy in 1501. The city has been a commercial hub and an important cultural centre since the Renaissance, and has emerged as a centre for the chemical and pharmaceutical industries in the 20th century. In 1897, Basel was chosen by Theodor Herzl as the location for the first World Zionist Congress, and altogether the congress was held there ten times over a time span of 50 years, more than in any other location. The city is also home to the world headquarters of the Bank for International Settlements. \nOther notable institutions in Basel include the Basel Committee on Banking Supervision, which published banking standards such as Basel III; Art Basel; and FC Basel.\nBasel is Switzerland's main centre for the pharmaceutical industry, hosting both Novartis and Roche. In 1938, the world-renowned chemist Albert Hofmann discovered LSD in Basel, where he spent most of his life. The discovery is celebrated internationally as Bicycle Day. Other influential and renowned figures such as Roger Federer, Paracelsus, Matthäus Merian, Michel von Tell and Stephan Remmler are closely associated with the city or were born there. In 1734, the so-called \"Basel Problem\" was solved in the city, which is regarded as one of the most important achievements in mathematics.\nBasel was ranked the tenth most liveable city in the world by Mercer in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 218,
+      "fullExtractWords": 453
+    },
+    "banned_terms": [
+      {
+        "term": "basel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 535,
+    "attempt": 529,
+    "place_id": "gn-1700360",
+    "input": {
+      "place": {
+        "place_id": "gn-1700360",
+        "name": "Mati",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 6.95508,
+        "lon": 126.21655
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mati, Davao Oriental",
+          "url": "https://en.wikipedia.org/wiki/Mati,_Davao_Oriental",
+          "text": "Mati, officially the City of Mati (Cebuano: Dakbayan sa Mati; Filipino: Lungsod ng Mati / Siyudad ng Mati), is a  component city and capital of the province of Davao Oriental, Philippines, located on the southeasternmost side of Mindanao and is part of Metropolitan Davao, the second-most populous metropolitan area in the Philippines, and its managing entity, the MDDA. According to the 2024 census, it has a population of 147,547 people making it the most populous in the province.\nMati has three bays, namely Pujada, Mayo, and Balete. These bays were listed as \"one\" of the world’s most beautiful bays, a combined distinction for all three bays in the same city, by the association of the Most Beautiful Bays in the World (Les Plus Belles Baies du Monde) in 2022, hence the nickname 'The City of Beautiful Bays'.\nThe east side of Mount Hamiguitan, a UNESCO World Heritage Site, facing sunrise and the three bays of Mati, is located within Mati's territorial jurisdiction.\nIn the 2023 Cities and Municipalities Competitiveness Index (CMCI), Mati ranked 39th out of 114 overall on the competitive component cities in the Philippines. Since 2020, the city government of Mati has been a consistent recipient of the Department of the Interior and Local Government Seal of Good Local Governance, and Good Financial Housekeeping."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 216,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "mati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 536,
+    "attempt": 530,
+    "place_id": "gn-2332459",
+    "input": {
+      "place": {
+        "place_id": "gn-2332459",
+        "name": "Lagos",
+        "country": "Nigeria",
+        "subdivision": "Lagos",
+        "lat": 6.45407,
+        "lon": 3.39467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lagos",
+          "url": "https://en.wikipedia.org/wiki/Lagos",
+          "text": "Lagos (;  LAY-goss; Yoruba: Èkó [èkó]), or Lagos City, is a large metropolitan port city in southwestern Nigeria. As of November 2025, the size of the city's population has been estimated to be between 17 and 21 million residents, making Lagos the largest city in Nigeria, the most populous urban area on the African continent, and one of the fastest-growing megacities in the world.  \nThe lands are separated by creeks, fringing the southwest mouth of Lagos Lagoon, while being protected from the Atlantic Ocean by barrier islands and long sand spits such as Bar Beach, which stretch up to 100 kilometres (62 mi) east and west of the mouth. \nWith its international airport, three ports (Apapa, Tin Can Island and Lekki deep-sea port), four expressways (to Badagry, Abeokuta, Ibadan and Calabar, the latter under construction since 2023 and partially operational in 2026), and the standard-gauge rail link to Abeokuta and Ibadan, the city is well connected in terms of transport and handles 88% of Nigeria’s exports. The urban rail transit system in Lagos is regarded as one of the most modern of its kind in Africa. \nLagos is best known as the leading financial centre of West and Central Africa, with headquarters of financial institutions like Access Bank, the First Bank of Nigeria or Zenith Bank. The Nigerian Exchange Group, the main stock exchange group in Nigeria, is also located here. Other major employers include two breweries, three major shipyards and the headquarters of several African airlines. Lagos is also home to numerous pharmaceutical companies; the city is also an exhibition city: Art X Lagos is West Africa’s largest art fair, whilst Lagos Fashion Week is Africa’s largest fashion fair. It has more than 20 data centres in operation and branches of Microsoft, Equinix and Google. Five out of seven African high tech start-ups with a value above US$ 1 billion (\"unicorns\") are located in Lagos. The employer with the most staff is the Dangote Refinery, which, once expanded, will be the world’s largest oil refinery.\nLagos houses four public universities (LASU, UNILAG, LASUSTECH, and LASUED) and six private universities as well as scientific facilities like the Institute for Oceanography and the Institute of Medical Research. Lagos is also a cultural hub. The National Arts Theatre in Surulere, the National Gallery of Modern Art (in the same building), the Centre For Black And African Arts on Broad Street, the National Museum and the John Randle Centre for Yoruba Culture in Onikan and privately run galleries like Nike Art Gallery (West Africa's biggest art collection) display Nigerias culture. The conservatoire MUSON Centre, many local orchestras and choirs (like the Lagos City Chorale or the Cathedral Church of Christ Choir) as well as writers like Sefi Atta, Oyinkan Braithwaite and Ayòbámi Adébáyò and artists like Dotun Popoola, Peju Alatise, Idowu Sonaya and Collins Abinoro Akporode represent Lagos' creative scene. Furthermore, Lagos is the centre of media outlets and of Nigerian cinema, \"Nollywood\". The lagoon city also is a hot spot for West African music (\"Afrobeats\"); in its recording studios Nigerian stars like Wizkid, Tems, Davido, and Asake have started their careers. International stars like Paul McCartney, James Brown, Ed Sheeran and Beyoncé have recorded albums there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 216,
+      "fullExtractWords": 534
+    },
+    "banned_terms": [
+      {
+        "term": "lagos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 537,
+    "attempt": 531,
+    "place_id": "gn-2825297",
+    "input": {
+      "place": {
+        "place_id": "gn-2825297",
+        "name": "Stuttgart",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.78232,
+        "lon": 9.17702
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stuttgart",
+          "url": "https://en.wikipedia.org/wiki/Stuttgart",
+          "text": "Stuttgart (; German: [ˈʃtʊtɡaʁt] ; Swabian: Schduagert [ˈʃd̥ua̯ɡ̊ɛʕd̥]; Alemannic: Stuttgart; names in other languages) is the capital and largest city of the German state of Baden-Württemberg. It is located on the Neckar river in a fertile valley known as the Stuttgarter Kessel (Stuttgart Cauldron) and lies an hour from the Swabian Jura and the Black Forest. Stuttgart has a population of 613,111 as of 2023, making it the sixth largest city in Germany, while over 2.8 million people live in the city's administrative region and nearly 5.5 million people live in its metropolitan area, making it the fourth largest metropolitan area in Germany. The city's metropolitan area is consistently ranked among the top 5 European metropolitan areas by GDP. Mercer listed Stuttgart as 21st on its 2015 list of cities by quality of living; innovation agency 2thinknow ranked the city 22nd globally out of 441 cities in its Innovation Cities Index; and the Globalization and World Cities Research Network ranked the city as a Beta-status global city in their 2020 survey. Stuttgart was one of the host cities for the official tournaments of the 1974 and 2006 FIFA World Cups.\nStuttgart is spread across a variety of hills (some of them covered in vineyards), valleys (especially around the Neckar and the Stuttgart basin) and parks. The city is known as the \"cradle of the automobile\". As such, it is home to famous automobile museums like the Mercedes-Benz Museum and Porsche Museum, as well as numerous auto-enthusiast magazines, which contributes to Stuttgart's status as Germany's \"Autohauptstadt\" (\"car capital city\"/\"capital of cars\"). The city's tourism slogan is \"Stuttgart offers more\". Under current plans to improve transport links to the international infrastructure (as part of the Stuttgart 21 project), Stuttgart unveiled a new city logo and slogan in March 2008, describing itself as \"Das neue Herz Europas\" (\"The new Heart of Europe\"). For business, it describes itself as \"Where business meets the future\". In July 2010, the city unveiled a new logo, designed to entice more businesspeople to stay in the city and enjoy breaks in the area.\nSince the seventh millennium BC, the Stuttgart area has been an important agricultural area and has been host to a number of cultures seeking to utilize the rich soil of the Neckar valley. The Roman Empire conquered the area in AD 83 and built a massive castrum near Bad Cannstatt, making it the most important regional centre for several centuries. Stuttgart's roots were truly laid in the tenth century with its founding by Liudolf, Duke of Swabia, as a stud farm for his warhorses. Initially overshadowed by nearby Bad Cannstatt, the town grew steadily and was granted a charter in 1320. The fortunes of Stuttgart turned with those of the House of Württemberg, and they made it the capital of their county, duchy, and kingdom from the 15th century to 1918. Stuttgart prospered despite setbacks in the Thirty Years' War and devastating air raids by the Allies on the city and its automobile production during World War II. However, by 1952, the city had bounced back and became the major cultural, economic, industrial, financial, tourism and publishing centre it is today.\nStuttgart is known for its strong high-tech industry, especially in the automotive sector. It has the highest general standard of prosperity of any German city. In addition to many medium-sized companies, several major corporations are headquartered in Stuttgart, including Porsche, Bosch, Exyte, and Mercedes-Benz Group. Stuttgart is an important financial center; the Stuttgart Stock Exchange is the second largest in Germany (after Frankfurt), and the Landesbank Baden-Württemberg (LBBW) is Germany's largest Landesbank. Stuttgart is also a major transport junction; it is among the most congested conurbations of Europe, and its airport is the sixth-busiest in Germany (2019). Stuttgart is a city with a high number of immigrants; according to Dorling Kindersley's Eyewitness Travel Guide to Germany, \"In the city of Stuttgart, every third inhabitant is a foreigner.\" 40% of Stuttgart's residents, and 64% of the population below the age of five, are of immigrant background. In the rest of Germany, 28.7% of people are of immigrant background, with a relatively higher percentage living in cities and the former western Germany (such as Stuttgart)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 215,
+      "fullExtractWords": 699
+    },
+    "banned_terms": [
+      {
+        "term": "stuttgart",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 538,
+    "attempt": 532,
+    "place_id": "gn-2998324",
+    "input": {
+      "place": {
+        "place_id": "gn-2998324",
+        "name": "Lille",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.63391,
+        "lon": 3.05512
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lille",
+          "url": "https://en.wikipedia.org/wiki/Lille",
+          "text": "Lille (  LEEL; French: [lil] ; Dutch: Rijsel [ˈrɛisəl] ; Picard: Lile; West Flemish: Rysel) is a city in the northern part of France, within French Flanders. Positioned along the Deûle river, near France's border with Belgium, it is the capital of the Hauts-de-France region, the prefecture of the Nord department, and the main city of the European Metropolis of Lille. It is also the seat of the European Union Customs Authority.\nThe city of Lille proper had a population of 238,246 in 2023 within its small municipal territory of 35 km2 (14 sq mi), but together with its French suburbs and exurbs the Lille metropolitan area (French part only), which extends over 1,666 km2 (643 sq mi), had a population of 1,530,624 (2023), the fourth most populated in France after Paris, Lyon, and Marseille. The city of Lille and 94 suburban French municipalities have formed since 2015 the European Metropolis of Lille, an indirectly elected metropolitan authority now in charge of wider metropolitan issues, with a population of 1,195,234 (2023).\nMore broadly, Lille belongs to a vast conurbation formed with the Belgian cities of Mouscron, Kortrijk, Tournai and Menin, which gave birth in January 2008 to the Eurometropolis Lille–Kortrijk–Tournai, the first European Grouping of Territorial Cooperation (EGTC), which has more than 2.1 million inhabitants. At the national level, the European Metropolis of Lille ranks second only to the Île-de-France region for its concentration of international corporate headquarters.\nNicknamed in France the \"Capital of Flanders\", Lille and its surroundings belong to the historical region of Romance Flanders, a former territory of the county of Flanders that is not part of the linguistic area of West Flanders. A garrison town (as evidenced by its Citadel), Lille has had an eventful history from the Middle Ages to the French Revolution. Very often besieged during its history, it belonged successively to the Kingdom of France, the Burgundian State, the Holy Roman Empire of Germany and the Spanish Netherlands before being definitively attached to the France of Louis XIV following the War of Spanish Succession along with the entire territory making up the historic province of French Flanders. Lille was again under siege in 1792 during the Franco-Austrian War, and in 1914 and 1940. It was severely tested by the two world wars of the 20th century during which it was occupied and suffered destruction.\nA merchant city since its origins and a manufacturing city since the 16th century, the Industrial Revolution made it a great industrial capital, mainly around the textile and mechanical industries. Their decline, from the 1960s onwards, led to a long period of crisis and it was not until the 1990s that the conversion to the tertiary sector and the rehabilitation of the disaster-stricken districts gave the city a different face. Today, the historic center, Old Lille, is characterized by its 17th-century red brick town houses, its paved pedestrian streets and its central Grand'Place. The belfry of the Hôtel de Ville (City Hall) is one of the 23 belfries in the Nord-Pas-de-Calais and Somme regions that were classified as UNESCO World Heritage Sites in July 2005, in recognition of their architecture and importance to the rise of municipal power in Europe.\nThe construction of the brand-new Euralille business district in 1988 (now the third largest in France) and the arrival of the TGV and then the Eurostar in 1994 made the city easily accessible from major European cities. The development of its international airport, annual events such as the Braderie de Lille in early September (attracting three million visitors), the development of a student and university center (with more than 110,000 students in colleges and schools of the University of Lille and the Catholic University of Lille, the third largest in France behind Paris and Lyon), its ranking as a European Capital of Culture in 2004 and the events of Lille 2004 (European Capital of Culture) and Lille 3000 are the main symbols of this revival. The European metropolis of Lille was awarded the \"World Design Capital 2020\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 215,
+      "fullExtractWords": 668
+    },
+    "banned_terms": [
+      {
+        "term": "lille",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 539,
+    "attempt": 533,
+    "place_id": "gn-170063",
+    "input": {
+      "place": {
+        "place_id": "gn-170063",
+        "name": "Aleppo",
+        "country": "Syria",
+        "subdivision": "Aleppo",
+        "lat": 36.20124,
+        "lon": 37.16117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aleppo",
+          "url": "https://en.wikipedia.org/wiki/Aleppo",
+          "text": "Aleppo is a city in northern Syria, which serves as the capital of the Aleppo Governorate, the country's most populous governorate. With an estimated population of 2,098,000 residents as of 2021, it is Syria's largest city by urban area, and the second-largest city in the country, being the most populous until it was surpassed by Damascus, the capital of Syria. Aleppo is also the largest city in Syria's northern governorates and one of the largest cities in the Levant region.\nAleppo is one of the oldest continuously inhabited cities in the world; it may have been inhabited since the sixth millennium BC. Excavations at Tell as-Sawda and Tell al-Ansari, just south of the old city of Aleppo, show that the area was occupied by Amorites by the latter part of the third millennium BC. That is also the time at which Aleppo is first mentioned in cuneiform tablets unearthed in Ebla and Mesopotamia, which speak of it as part of the Amorite state of Yamhad, and note its commercial and military importance. Such a long history is attributed to its strategic location as a trading center between the Mediterranean Sea and Mesopotamia. For centuries, Aleppo was the largest city in the Syrian region, and the Ottoman Empire's third-largest after Constantinople (now Istanbul) and Cairo. The city's significance in history has been its location at one end of the Silk Road, which passed through Central Asia and Mesopotamia. When the Suez Canal was inaugurated in 1869, much trade was diverted to sea and Aleppo began its slow decline.\nAt the fall of the Ottoman Empire after World War I, Aleppo lost its northern hinterland to modern Turkey, as well as the important Baghdad Railway connecting it to Mosul. In 1939, it lost its main access to the sea, by Antakya and İskenderun, also to Turkey. The growth in importance of Damascus in the past few decades further exacerbated the situation. This decline may have helped to preserve the old city of Aleppo, its medieval architecture and traditional heritage. It won the title of the Islamic Capital of Culture 2006 and has had a wave of successful restorations of its historic landmarks. The battle of Aleppo occurred in the city during the Syrian civil war, and many parts of the city suffered massive destruction. Affected parts of the city are currently undergoing reconstruction. An estimated 31,000 people were killed in Aleppo during the conflict."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 214,
+      "fullExtractWords": 402
+    },
+    "banned_terms": [
+      {
+        "term": "aleppo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 540,
+    "attempt": 534,
+    "place_id": "gn-2337704",
+    "input": {
+      "place": {
+        "place_id": "gn-2337704",
+        "name": "Ilesa",
+        "country": "Nigeria",
+        "subdivision": "Osun State",
+        "lat": 7.62789,
+        "lon": 4.74161
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilesa",
+          "url": "https://en.wikipedia.org/wiki/Ilesa",
+          "text": "Ilesa or Ilesha (  il-AY-shə; Yoruba: Iléṣà [īléʃà]  or, locally, Uléṣà [ūléʃà]) is a historic city located in Osun State, southwest Nigeria; it is also the name of the capital of a historic state-kingdom (also known as Ijesha) centred around that town as the capital. The state is ruled by a monarch bearing the title of His Imperial Majesty, the Owa Obokun Adimula of Ijesaland. The city of Ilesa consists of Ilesa itself and a number of  surrounding cities.\nThe Ijesa, a term also denoting the people of the state of Ijeshaland, are part of the present Osun State of Nigeria. Although the historic state-kingdom is mainly placed within Osun State, it has towns and cities covering several south-western Nigerian states. Some of the popular towns of the Ijesa are Iwara, Odo-Ijesa, Ilaje, Igbogi, Ise-Ijesa, Ibokun, Erin Oke, Erin Odo, Ijeda-Ijesa, Ipetu Jesa, Ijebu-Jesa, Esa-Oke, Iwoye Ijesa, Esa Odo, Ipole Ijesa, Ifewara, Ipo Arakeji, Iloko Ijesa, Iperindo Ijesa, Erinmo Ijesa, Iwaraja Ijesa, Oke-Ana Ijesa, Idominasi, Ilase Ijesa, Igangan ijesa, Imo Ijesa, Alakowe Ijesa, Osu Ijesa, Eti Oni, Itaore, Itagunmodi, Iyinta, Itaapa, Epe Ijesa, Omo Ijesa, Eti-oni, Ibokun, Inila, Ijinla, Iloba Ijesa, Imogbara Ijesa, Eseun Ijesa, Iloo, Owena Ijesa, Ido Ijesa, Ido Oko, Ibala Ijesa, Ere Ijesa, Ilahun, Ibodi, Ijaaregbe, Ikinyinwa, Idominasi, Ilowa, and Ibodi.\nThe state of Ijeshaland was founded c.1300 by Ajibogun Ajaka Owa Obokun Onida Raharaha, the warlike youngest son of Yoruba progenitor Oduduwa. All kings of Ijeshaland are considered to be direct descendants of Oduduwa; who is believed to be the founder of the Yoruba people and is considered as a God-King.\nIlesa is known for its natural resources and minerals especially Gold, it is said the Ilesa and Ijeshaland at large according to geological studies . Ilesa has at the very minimum, 5 Billion US dollars' worth of Gold alongside the Ilesa Gold belt axis. However the number is expected to rise in value as significant exploration for commercially quantifiable Gold deposits only began in the last decade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 214,
+      "fullExtractWords": 332
+    },
+    "banned_terms": [
+      {
+        "term": "ilesa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 541,
+    "attempt": 535,
+    "place_id": "gn-3658666",
+    "input": {
+      "place": {
+        "place_id": "gn-3658666",
+        "name": "Cuenca",
+        "country": "Ecuador",
+        "subdivision": "Azuay",
+        "lat": -2.8953,
+        "lon": -78.9963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuenca, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Cuenca,_Ecuador",
+          "text": "Cuenca, officially Santa Ana de los Ríos de Cuenca, is an Ecuadorian city, head of the canton of the same name and capital of the province of Azuay, as well as its largest and most populated city. It is crossed by the Tomebamba, Tarqui, Yanuncay and Machángara rivers, in the south-central inter-Andean region of Ecuador, in the Paute river basin, at an altitude of 2,538 meters above sea level and with a temperate Andean climate averaging 16.3 °C.\nIt has been locally called \"Cuenca of the Andes\" or \"Athens of Ecuador\" for its architecture, its cultural diversity, its contribution to Ecuadorian arts, sciences and literature, and for being the birthplace of many illustrious figures of Ecuadorian society. At the 2022 census it had a population of 596,101 inhabitants, making it the third most populous city in the country behind Guayaquil and Quito. The city is the core of the Cuenca metropolitan area, which is also made up of nearby rural towns and parishes. The conglomerate also ranks third among Ecuador's conurbations.\nIt was founded on April 12, 1557, on the ruins of the Inca city of Tomebamba (a major administrative center) and the Cañari city of Guapondelig, by Gil Ramírez Dávalos, under orders of the viceroy of Peru Andrés Hurtado de Mendoza. During the 20th century, the city continued to grow, promoting education and culture, and in 1999 its historic center was declared a UNESCO World Heritage Site. It is one of Ecuador's most important administrative, economic, financial and commercial centers. The city's main activities are commerce and industry; in recent years, Cuenca has also established itself as an international tourist attraction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 212,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "cuenca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 542,
+    "attempt": 536,
+    "place_id": "gn-4005509",
+    "input": {
+      "place": {
+        "place_id": "gn-4005509",
+        "name": "Guadalupe",
+        "country": "Mexico",
+        "subdivision": "Zacatecas",
+        "lat": 22.74678,
+        "lon": -102.5188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guadalupe, Zacatecas",
+          "url": "https://en.wikipedia.org/wiki/Guadalupe,_Zacatecas",
+          "text": "Guadalupe is a town in the state of Zacatecas, Mexico. It is located in the central region of the state and is the head of the Municipality of Guadalupe. With a population of 170,029 inhabitants, it is the most populated city in the state and with the city of Zacatecas and surrounding towns it forms a metropolitan area. On August 1, 2010, the Camino Real de Tierra Adentro was inscribed by UNESCO on the World Heritage List, being the former Apostolic College of Propaganda Fide of Our Lady of Guadalupe, one of the sites on the cultural itinerary that reached this title, for its architectural richness and contribution to the evangelization of the north of New Spain. On June 30, 2015, the Legislative Branch of the State of Zacatecas approved that the city of Guadalupe Zacatecas be declared a Historical City, a title that came into effect on Thursday, September 3 of that same year after its promulgation in decree number 400 published in the Official Newspaper of the State of Zacatecas. On October 11, 2018 at the Fifth National Fair of Pueblos Mágicos held in the city of Morelia, Michoacán, Guadalupe received incorporation into the Pueblos Mágicos program, being the sixth to have this registration in the state of Zacatecas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 211,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "guadalupe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 544,
+    "attempt": 537,
+    "place_id": "gn-2407790",
+    "input": {
+      "place": {
+        "place_id": "gn-2407790",
+        "name": "Kenema",
+        "country": "Sierra Leone",
+        "subdivision": "Eastern Province",
+        "lat": 7.87687,
+        "lon": -11.19025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kenema",
+          "url": "https://en.wikipedia.org/wiki/Kenema",
+          "text": "Kenema is a city in the Eastern Province of Sierra Leone and the administrative capital of Kenema District. With a population of 255,110 recorded in the 2021 mid-term Population and Housing Census, it is the second most populous city in Sierra Leone, after the national capital Freetown. The city lies at approximately 173 metres above sea level within a valley at a natural gap in the Kambui Hills, at coordinates 7°52′N 11°11′W.\nKenema is the principal commercial and administrative hub of eastern Sierra Leone, serving as the regional centre for trade, banking, public services, and transport linking the interior to cross-border markets with Liberia. It is the seat of Kenema District Council and one of Sierra Leone's six designated municipalities, governed by an elected city council and a directly elected mayor.\nKenema's modern growth is rooted in the colonial period, when its position on the Sierra Leone Government Railway made it a collection point for timber, palm produce, cocoa, and coffee destined for export through Freetown. The discovery of alluvial diamonds in 1931 deepened the city's integration into Sierra Leone's extractive economy, and the Government Diamond Office, established in 1959, continues to coordinate the valuation and certification of diamonds from the Eastern Province. During the Sierra Leone Civil War (1991–2002), Kenema's proximity to the diamond fields of Kono District and Kailahun District made it a recurring theatre of conflict between the Revolutionary United Front (RUF), the Civil Defence Forces (CDF), and government troops.\nKenema Government Hospital occupies a distinctive position in global public health history. It operates one of the few dedicated Lassa fever treatment and research units in the world, and it was at this institution that Sierra Leone's first confirmed case of Ebola virus disease was diagnosed on 25 May 2014, at the onset of the West African Ebola epidemic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 203,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "kenema",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 545,
+    "attempt": 538,
+    "place_id": "gn-1799962",
+    "input": {
+      "place": {
+        "place_id": "gn-1799962",
+        "name": "Nanjing",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 32.06167,
+        "lon": 118.77778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanjing",
+          "url": "https://en.wikipedia.org/wiki/Nanjing",
+          "text": "Nanjing is the capital of Jiangsu, East China. The city, which is located in the southwestern corner of the province, has 11 districts, an administrative area of 6,600 square kilometres (2,500 sq mi), and as of 2021 a population of 9,423,400.\nSituated in the Yangtze River Delta, Nanjing has a prominent place in Chinese history and culture, having served as the capital of various Chinese dynasties, kingdoms and republican governments dating from the 3rd century to 1949, and has thus long been a major center of culture, education, research, politics, economy, transport networks and tourism, being home to one of the world's largest inland ports. The city is also one of the fifteen sub-provincial cities in the People's Republic of China's administrative structure, enjoying jurisdictional and economic autonomy only slightly less than that of a province.  It has also been awarded the title of 2008 Habitat Scroll of Honor of China, Special UN Habitat Scroll of Honor Award and National Civilized City. Nanjing is also considered a Beta (global second-tier) city classification, together with Chongqing, Hangzhou and Tianjin by the Globalization and World Cities Research Network, and ranked as one of the world's top 100 cities in the Global Financial Centres Index.\nAs of 2021, Nanjing has 68 institutions of higher learning, including 13 double-first-class universities, ten 111-plan universities, eight 211 universities, and 97 academies. Nanjing University, which has a long history, is among the world's top 10 universities ranked by the Nature Index. The ratio of college students to the total population ranks No.1 among large cities nationwide. Nanjing has the fifth-largest scientific research output of any city in the world. As of 2024, it has been ranked as the world's second most prolific scientific research center in earth and environmental sciences and the world's third most prolific scientific research center in chemistry and physical sciences, according to the Nature Index.\nNanjing, one of the nation's most important cities for over a thousand years, is recognized as one of the Four Great Ancient Capitals of China. It has been one of the world's largest cities, enjoying peace and prosperity despite various wars and disasters. Nanjing served as the capital of Eastern Wu (229–280), one of the three major states in the Three Kingdoms period; the Eastern Jin and each of the Southern dynasties (Liu Song, Southern Qi, Liang and Chen), which successively ruled southern China from 317 to 589; the Southern Tang (937–75), one of the Ten Kingdoms; the Ming dynasty (1368–1421); and the Republic of China (1927–37, 1946–49), serving as the internationally recognized capital of China and the seat of the central government of China under the Kuomintang, until the government's relocation to Taipei at the conclusion of the Chinese Civil War. The city also served as the seat of the rebel Taiping Heavenly Kingdom (1853–64) and the Japanese-installed collaborationist regime of Wang Jingwei (1940–45) during the Second Sino-Japanese War. It suffered devastating atrocities in both conflicts, most notably the Nanjing Massacre of 1937–38.\nNanjing became the capital city of Jiangsu province in 1952, after serving as a Direct-administered Municipality from 1949 to 1952 following the establishment of the People's Republic of China. It has many important heritage sites, including the Presidential Palace, Sun Yat-sen Mausoleum and Ming Xiaoling Mausoleum. Nanjing is famous for human historical landscapes, mountains and waters such as Fuzimiao, Ming Palace, Chaotian Palace, Porcelain Tower, Drum Tower, Stone City, City Wall, Qinhuai River, Xuanwu Lake and Purple Mountain. Key cultural facilities include Nanjing Library, Nanjing Museum and Jiangsu Art Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 202,
+      "fullExtractWords": 586
+    },
+    "banned_terms": [
+      {
+        "term": "nanjing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 546,
+    "attempt": 539,
+    "place_id": "gn-2732265",
+    "input": {
+      "place": {
+        "place_id": "gn-2732265",
+        "name": "Viseu",
+        "country": "Portugal",
+        "subdivision": "Viseu",
+        "lat": 40.66165,
+        "lon": -7.90905
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viseu",
+          "url": "https://en.wikipedia.org/wiki/Viseu",
+          "text": "Viseu, officially the City of Viseu, is a city and municipality in the Central Region of Portugal and the capital of the district of the same name, with a population of 109,166 inhabitants in the entire municipality, and center of the Viseu Dão Lafões intermunicipal community, with 267,633 inhabitants.\nSettled during the period of the early Iberian Castro culture, the territory of Viseu was occupied by a series of other peoples including the Romans, Suebians, Visigoths and Moors. During the Roman occupation of Iberia, Viriathus, the rebel leader of the Lusitanians, is assumed to have lived for a time in the vicinity. During the Middle Ages, the city often served as a seat for Visigothic nobles (such as King Roderic), and based in the Chronica Gothorum is one of several probable birthplaces for Afonso Henriques, first King of Portugal.\nViseu is a regional economic hub with a strong wine industry and is the seat of the international conglomerate Visabeira. The city is also a cultural center, home to the nationally acclaimed Grão Vasco Museum, the seat of the Roman Catholic Diocese of Viseu, and a center for higher learning institutions, namely the Catholic University of Portugal and the Polytechnic Institute of Viseu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 202,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "viseu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 547,
+    "attempt": 540,
+    "place_id": "gn-3118532",
+    "input": {
+      "place": {
+        "place_id": "gn-3118532",
+        "name": "León",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 42.60003,
+        "lon": -5.57032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "León, Spain",
+          "url": "https://en.wikipedia.org/wiki/León,_Spain",
+          "text": "León (Spanish: [leˈon] ; Leonese: Llión [ʎiˈoŋ]) is a city and municipality of Spain and the capital of the province of León located in the autonomous community of Castile and León. The city lies on the northwest of the Iberian Peninsula, south of the Cantabrian Mountains in between the Bernesga and the Torío rivers. The municipality has a registered population of 122,866, and is the centre of a metropolitan area (including the neighbouring San Andrés del Rabanedo) of around 0.2 million.\nFounded as the military encampment of the Legio VI Victrix around 29 BC, its standing as an encampment city was consolidated with the definitive settlement of the Legio VII Gemina from 74 AD. Following a period of political disorganization in the Duero Valley with settlements largely dislocated from emiral rule, León was populated towards 856 by the Kingdom of Asturias. After 910, the Asturian dynasty transferred their political centre from Oviedo to León, which henceforth became the head of the Kingdom of León.\nBecause of the hosting of the 1188 Cortes of León including a third estate with representatives from cities, the city has promoted the status of \"cradle of Parliamentarism\" in  Europe, backed up by UNESCO and other institutions.\nThe city's prominence began to decline in the early Middle Ages, partly due to the loss of independence after the union of the Leonese kingdom with the Crown of Castile, consolidated in 1301.\nAfter a period of stagnation during the early modern age, it was one of the first cities to hold an uprising in the Spanish War of Independence, and some years later, in 1833 acquired the status of provincial capital. The end of the 19th and the 20th century saw a significant acceleration in the rate of urban expansion, when the city became an important communications hub of the northwest due to the rise of the coal mining industry and the arrival of the railroad.\nLeón's historical and architectural heritage, as well as the numerous festivals hosted throughout the year (particularly noteworthy are the Easter processions) and its location on the French Way of the Camino de Santiago, which is ranked as a UNESCO World Heritage Site, make it a destination of both domestic and international tourism. Some of the city's most prominent historical buildings are the Cathedral, one of the finest examples of French-style classic Gothic architecture in Spain, the Basilica of San Isidoro, one of the most important Romanesque churches in Spain and resting place of León's medieval monarchs, the Monastery of San Marcos, an example of plateresque and Renaissance Spanish architecture, and the Casa Botines, a Modernist creation of the architect Antoni Gaudí. An example of modern architecture is the city's Museum of Contemporary Art or MUSAC."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 201,
+      "fullExtractWords": 453
+    },
+    "banned_terms": [
+      {
+        "term": "leon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

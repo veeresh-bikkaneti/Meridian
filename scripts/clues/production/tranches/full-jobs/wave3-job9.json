@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 568,
+    "attempt": 561,
+    "place_id": "gn-616635",
+    "input": {
+      "place": {
+        "place_id": "gn-616635",
+        "name": "Gyumri",
+        "country": "Armenia",
+        "subdivision": "Shirak",
+        "lat": 40.79305,
+        "lon": 43.84635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gyumri",
+          "url": "https://en.wikipedia.org/wiki/Gyumri",
+          "text": "Gyumri (Armenian: Գյումրի, pronounced [ɡjumˈɾi]) is an urban municipal community and the second-largest city in Armenia, serving as the administrative center of Shirak Province in the northwestern part of the country. By the end of the 19th century, when the city was known as Alexandropol, it became the largest city of Russian-ruled Eastern Armenia with a population above that of Yerevan. The city became renowned as a cultural hub, while also carrying significance as a major center of Russian troops during Russo-Turkish wars of the 19th century.\nThe city underwent a tumultuous period during and after World War I. While Russian forces withdrew from the South Caucasus due to the October Revolution, the city became host to large numbers of Armenian refugees fleeing the Armenian genocide, in particular hosting 22,000 orphaned children in around 170 orphanage buildings. It was renamed Leninakan during the Soviet period and became a major industrial and textile center in Soviet Armenia. The city's population rapidly grew to above 200,000 prior to the 1988 Spitak earthquake, when it was devastated, with the city's population being reduced to 121,976 as of the 2011 census. The city was renamed Gyumri under modern independent Armenia soon after the breakup of the Soviet Union, and post-earthquake reconstruction efforts continue. As of the 2022 census, the population of the city was 112,301.\nToday, Gyumri continues to grapple with the lasting effects of the 1988 earthquake, but remains known as the cultural hub of Armenia due to the many artists and craftsman who originated from the city. The city is also notable for the large Kumayri historic district that managed to mostly survive the 1988 earthquake, dating back mainly to the 19th century and being one of the few surviving places in the world with authentic urban Armenian architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 187,
+      "fullExtractWords": 297
+    },
+    "banned_terms": [
+      {
+        "term": "gyumri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 569,
+    "attempt": 562,
+    "place_id": "gn-2078025",
+    "input": {
+      "place": {
+        "place_id": "gn-2078025",
+        "name": "Adelaide",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.92866,
+        "lon": 138.59863
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adelaide",
+          "url": "https://en.wikipedia.org/wiki/Adelaide",
+          "text": "Adelaide (  AD-il-ayd; Kaurna: Tarndanya [ˈd̪̥aɳɖaɲa]) is the capital and most populous city of South Australia, as well as the fifth-most populous city in Australia. The name \"Adelaide\" may refer to either Greater Adelaide (including the Adelaide Hills) or the Adelaide city centre; the demonym Adelaidean is used to denote the city and the residents of Adelaide. The traditional owners of the Adelaide region are the Kaurna, with the name Tarndanya referring to the area of the city centre and surrounding Park Lands, in the Kaurna language. Adelaide is situated on the Adelaide Plains north of the Fleurieu Peninsula, between the Gulf St Vincent in the west and the Mount Lofty Ranges in the east. Its metropolitan area encompasses over 430 suburbs, extending 96 km (60 mi) from Gawler in the north to Sellicks Beach in the south and 20 km (12 mi) from the western coast to the eastern foothills of the Mount Lofty Ranges.\nNamed in honour of Adelaide of Saxe-Meiningen, wife of King William IV, the city was founded in 1836 as the planned capital for a freely settled British colony in Australia. Colonel William Light designed the city centre and chose its location close to the River Torrens. Light's design, now listed as national heritage, set out the city centre in a grid layout with wide boulevards and large public squares, surrounded by parks. Colonial Adelaide became known as the \"City of Churches\" due to its diversity of faiths. It was Australia's third-most populous city until the postwar era.\nToday, Adelaide is a popular travel destination and hosts many festivals and sporting events, such as the Adelaide 500, Tour Down Under, Gather Round, LIV Golf Adelaide, the Adelaide International, the Adelaide Fringe and the Australian MotoGP Grand Prix from 2027. The city also gave rise to Australia's automotive industry, having also hosted the first Australian Grand Prix under the Formula One banner between 1985 and 1995. Adelaide is known for its food and wine industries, its coastline and hills, and defence and manufacturing industries. Adelaide has consistently ranked within the top-ten most liveable cities globally for much of the 21st century.\nAdelaide is South Australia's government and commercial centre, with activity concentrated in the city's central business district along the boulevards of North Terrace and King William Street. Adelaide has also been classed as a Gamma + level global city as categorised by the Globalization and World Cities Research Network. Adelaide is connected by large bus, train and tram networks, operated by Adelaide Metro, with its primary railway terminus at the Adelaide railway station. The city is also served by Adelaide Airport and Port Adelaide."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 439
+    },
+    "banned_terms": [
+      {
+        "term": "adelaide",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 570,
+    "attempt": 563,
+    "place_id": "gn-3685533",
+    "input": {
+      "place": {
+        "place_id": "gn-3685533",
+        "name": "Cúcuta",
+        "country": "Colombia",
+        "subdivision": "Norte de Santander Department",
+        "lat": 7.90745,
+        "lon": -72.5049
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cúcuta",
+          "url": "https://en.wikipedia.org/wiki/Cúcuta",
+          "text": "Cúcuta (Spanish: [ˈkukuta] ), officially San José de Cúcuta, is a Colombian municipality, capital of the department of Norte de Santander and nucleus of the Metropolitan Area of Cúcuta. The city is located in the homonymous valley, beneath the Eastern Ranges of the Colombian Andes, on the border with Venezuela.\nCúcuta comprises an area of approximately 1119 km2, with an urban area of 64 km2 (divided into 10 communes) and a rural area of 1055 km2 (divided into 10 townships). The city has a population of 777,106 inhabitants, which makes it the most populous municipality in the department and the sixth most populous municipality in the country. Similarly, its metropolitan area (made up of the municipalities of Villa del Rosario, Los Patios, El Zulia, San Cayetano and Puerto Santander) has an approximate population of 1,046,347.\nThe city was founded as a parish on June 17, 1733, by Juana Rangel de Cuéllar, a resident of Pamplona, under the name San José de Guasimales, as part of an initiative of the white and mestizo locals to separate themselves from the \"Indian Village of Cúcuta\" (currently San Luis Quarter). The name was later changed to San José de Cúcuta, a Hispanicization of \"Kuku-ta\", in honor of the indigenous people of the region. From its foundation in the 18th century and throughout the Spanish viceroyalty, the parish was consolidated as one of the most important settlements of the Colombian East and Spanish America, receiving in 1792 the title of \"Very Noble, Valiant and Loyal Village\" from King Charles IV of Spain.\nThe city is the political, economic, industrial, artistic, cultural, sports and tourist center of Norte de Santander. Together with the Venezuelan city of San Cristóbal, it is the most important urban settlement on the Colombian–Venezuelan border, owing to its trade and its role in the consolidation of the modern states of Colombia and Venezuela and their diplomatic relations. It hosted the Battle of Cúcuta of 1813 and the Congress of Cúcuta of 1821 in Villa del Rosario, and in more recent times the signing of the 1941 Treaty of Limits between Colombia and Venezuela, the 1959 Treaty of Tonchalá, and the charity concerts Peace Without Borders (2008) and Venezuela Aid Live (2019). It also played a significant role during Colombian immigration to Venezuela and has more recently become one of the most important transit points of the Venezuelan migration crisis.\nAs the capital of Norte de Santander, Cúcuta houses the main governmental bodies of departmental order such as the Government of Norte de Santander, the Assembly of Norte de Santander, the Superior Court of the Judicial District of Cúcuta, the Administrative Court of Norte de Santander, the regional branches of the Superior Council of the Judiciary and the Office of the Inspector General of Colombia. Cúcuta is connected by road with Bogotá, Bucaramanga, Valledupar, and Cartagena de Indias and, by its border location, with Venezuela. It has an air terminal, the Camilo Daza International Airport, and a ground terminal, the Central de Transportes de Cúcuta.\nIts flagship university is the Francisco de Paula Santander University, one of the most important universities in eastern Colombia. It also has the presence of other universities of local and national renown, such as the University of Pamplona, the FESC, the Free University of Colombia, the Simón Bolivar University, the University of Santander, and the Saint Thomas University, among others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 562
+    },
+    "banned_terms": [
+      {
+        "term": "cucuta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 571,
+    "attempt": 564,
+    "place_id": "gn-3874960",
+    "input": {
+      "place": {
+        "place_id": "gn-3874960",
+        "name": "Puerto Montt",
+        "country": "Chile",
+        "subdivision": "Los Lagos Region",
+        "lat": -41.4693,
+        "lon": -72.94237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Montt",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Montt",
+          "text": "Puerto Montt (Mapuche: Meli Pulli) is a port city and commune in southern Chile, located at the northern end of the Reloncaví Sound in the Llanquihue Province, Los Lagos Region, 1,055 km to the south of the capital, Santiago. The commune spans an area of 1,673 km2 (646 sq mi) and has a population of 245,902 in 2017. It is bounded by the communes of Puerto Varas to the north, Cochamó to the east and southeast, Calbuco to the southwest and Maullín and Los Muermos to the west.\nFounded as late as 1853 during the German colonization of southern Chile, Puerto Montt soon outgrew older neighboring cities through its strategic position at the southern end of the Chilean Central Valley being a gateway city into the Chiloé Archipelago, the Llanquihue and Nahuel Huapi lakes and Western Patagonia.\nPuerto Montt has gained renown and grown significantly through the rise of Chile to become the second largest salmon producer of the world during the 1990s and 2000s. However, the Chilean salmon aquaculture crisis of the late 2000s resulted in severe unemployment and exposed weaknesses in the local economy. The city's cultural endowment mixes elements of Chilean-Spanish culture with a German heritage. The city has attracted a significant number of newcomers from all over Chile in the last 30 years in search of employment opportunities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "puerto montt",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "montt",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 572,
+    "attempt": 565,
+    "place_id": "gn-2331140",
+    "input": {
+      "place": {
+        "place_id": "gn-2331140",
+        "name": "Makurdi",
+        "country": "Nigeria",
+        "subdivision": "Benue State",
+        "lat": 7.73375,
+        "lon": 8.52139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makurdi",
+          "url": "https://en.wikipedia.org/wiki/Makurdi",
+          "text": "Makurdi is the capital of Benue State, located in central Nigeria, and part of the Middle Belt region of central Nigeria. The city is situated along the Benue River. In 2017, Makurdi's urban population was 517,342.\nThe town is divided by the River Benue into the north and south banks, which are connected by two bridges: the railway bridge, which was built in 1932, and the new dual carriage bridge commissioned in 1978.\nThe southern part of the town is made up of several neighborhoods or wards; the Central Ward, Old GRA, Ankpa Ward, Wadata, High Level, Wurukum (Low Level), New GRA, Nyiman layout, Achusa, etc. Important establishments and offices located here include the Government House, The State Secretariat, The Federal Secretariat, The Central Bank of Nigeria Regional headquarters, Commercial Banks, Telecommunication companies, Police Headquarters, Nigeria Prisons Service, Aper Aku Stadium, Nigeria Air Force Base, Makurdi, The Makurdi Modern Market, the Federal Medical Centre, Nigeria Railway Station, Benue Printing and Publishing Company Limited, Radio Benue, Nigerian Television Authority (NTA), Nigerian Postal Service, Benue Hotels Makurdi, Benue Plaza Hotel, Benue State University, Benue State Breweries, etc.\nThe North bank area of the town houses among other establishments, the Federal University of Agriculture, the Nigerian Army School of Military Engineering, the headquarters of the 72 Airborne Battalion, Akawe Torkula Polytechnic (ATP), and the State Headquarters of the Department of Customs and Excise.\nOwing to its location in the valley of River Benue, Makurdi experiences warm temperatures most of the year. The period from November to January, when the harmattan weather is experienced is, however, relatively cool.\nMakurdi can be reached by air, rail, road, and water. By road, the major northern route is the Makurdi – Lafia – Jos road. The southern routes are Makurdi – Otukpo – Enugu  and Makurdi – Yandev – Adikpo – Calabar roads. Traffic from the west comes through Makurdi –  Naka – Adoka - Ankpa – Okene  roads and from the east through Makurdi – Yandev – Katsina Ala – Wukari roads."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 185,
+      "fullExtractWords": 336
+    },
+    "banned_terms": [
+      {
+        "term": "makurdi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 573,
+    "attempt": 566,
+    "place_id": "gn-2987914",
+    "input": {
+      "place": {
+        "place_id": "gn-2987914",
+        "name": "Perpignan",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 42.69764,
+        "lon": 2.89541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perpignan",
+          "url": "https://en.wikipedia.org/wiki/Perpignan",
+          "text": "Perpignan (UK: , US: , French: [pɛʁpiɲɑ̃] ; Catalan: Perpinyà [pəɾpiˈɲa]; Occitan: Perpinhan [peɾpiˈɲa]) is the prefecture of the Pyrénées-Orientales department in Southern France, in the heart of the plain of Roussillon, at the foot of the Pyrenees a few kilometres from the Mediterranean Sea and the scrublands of the Corbières massif. It is the centre of the Perpignan Méditerranée Métropole metropolitan area.\nIn 2021, Perpignan had a population of 119,656 in the commune proper, and the agglomeration had a total population of 205,183, making it the last major French city before the Spanish border. Perpignan is sometimes seen as the \"entrance\" to the Iberian Peninsula.\nPerpignan was the capital of the former province and County of Roussillon (Rosselló in Catalan) and continental capital of the Kingdom of Majorca in the 13th and 14th centuries, as well as one of the most important cities of the Principality of Catalonia. It has preserved an extensive old centre with its bodegas in the historic centre, coloured houses in a series of picturesque streets and alleys stretching between the banks of the Têt and its tributary, the Basse.\nThe city is also known for its International Festival of Photojournalism, the medieval Trobades festival and its centuries-old garnet industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 185,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "perpignan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 574,
+    "attempt": 567,
+    "place_id": "gn-2318044",
+    "input": {
+      "place": {
+        "place_id": "gn-2318044",
+        "name": "Yola",
+        "country": "Nigeria",
+        "subdivision": "Adamawa",
+        "lat": 9.20839,
+        "lon": 12.48146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yola, Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Yola,_Nigeria",
+          "text": "Yola (from the Fulfulde ƴola: lit. 'Great Plain' or 'Vast Plain Land') is the capital city and administrative centre of Adamawa State, Nigeria. It is located on the Benue River, and has a population of over 392,854 (as of 2006). Yola is split into two parts. The old town of Yola where the Lamido of Adamawa resides, is the traditional city and the new city of Jimeta (about 5 km or 3 mi NW) is the administrative and commercial centre.\nTo the north are the Mandara Mountains and to the south are the Shebshi Mountains and Mount Dimlang (Vogel Peak).\nYola is an access point to the Gashaka Gumpti Nature Reserve, which is one of the largest national parks in Nigeria, the Ngel Nyaki montane forest reserve, the Mambilla Plateau, the Sukur UNESCO World Heritage Site, which is Africa's first cultural landscape to receive World Heritage List inscription, the Yadin Waterfalls, the Kiri Dam on the Gongola River, the Benue national park in nearby Cameroon, the Waza National Park, and the Cameroonian town of Garoua, which lies across the border, on the Benue river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "yola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 575,
+    "attempt": 568,
+    "place_id": "gn-3450269",
+    "input": {
+      "place": {
+        "place_id": "gn-3450269",
+        "name": "Santa Cruz do Sul",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.7175,
+        "lon": -52.42583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz do Sul",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_do_Sul",
+          "text": "Santa Cruz do Sul () is a Brazilian municipality located in the central region of the state of Rio Grande do Sul, approximately 155 kilometres (96 mi) from Porto Alegre. According to estimates by the Brazilian Institute of Geography and Statistics (IBGE), its population in 2024 was 138,104, making it the 14th most populous municipality in Rio Grande do Sul. Covering an area of 733.4 square kilometres (283.2 mi2), it is situated in the Vale do Rio Pardo region, bordering the municipalities of Vera Cruz, Rio Pardo, Sinimbu, Venâncio Aires, and Passo do Sobrado. The municipality has a temperate climate, lies in a physiographic transition zone between the Brazilian Highlands and the Central Depression, and features vegetation from both the Atlantic Forest and the Pampas, with a predominance of volcanic rocks.\nOriginally established as the Santa Cruz Colony on December 6, 1847, the city was officially founded on March 31, 1877, when it was emancipated from Rio Pardo. A significant hub of German colonization in Rio Grande do Sul, the municipality is bilingual, with residents speaking both Portuguese and German, particularly the Hunsrückisch dialect. Its economy has historically been tied to tobacco, earning it the title of the world’s tobacco capital. The city experienced substantial economic growth, verticalization, and rural exodus from the 20th century into the early 21st century. In 2018, its gross domestic product (GDP) reached 9.4 billion reais, ranking as the sixth largest in the state, while its Human Development Index (HDI) in 2010 was 0.733, classified as high.\nPredominantly Catholic and Evangelical, Santa Cruz do Sul is home to the St. John the Baptist Cathedral, the largest Gothic-style cathedral in South America, and the Evangelical Lutheran Church, the largest Evangelical temple in Rio Grande do Sul. The city is home to the University of Santa Cruz do Sul, with 11,000 students enrolled in 52 undergraduate programs, alongside three other higher education institutions, 14 high schools, 114 elementary schools, and three hospitals. It also has an airport and a regional prison.\nWith robust tourism infrastructure, Santa Cruz do Sul is renowned for hosting the largest Oktoberfest in Rio Grande do Sul, the Oktoberfest of Santa Cruz do Sul, and one of the largest amateur art festivals in Latin America, the Encontro de Arte e Tradição. The city is also home to the Santa Cruz do Sul International Raceway, as well as two professional football clubs, Esporte Clube Avenida and Futebol Clube Santa Cruz, and a professional basketball club, União Corinthians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 413
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz do sul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sul",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 576,
+    "attempt": 569,
+    "place_id": "gn-3740007",
+    "input": {
+      "place": {
+        "place_id": "gn-3740007",
+        "name": "Cité Soleil",
+        "country": "Haiti",
+        "subdivision": "Ouest",
+        "lat": 18.58028,
+        "lon": -72.33806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cité Soleil",
+          "url": "https://en.wikipedia.org/wiki/Cité_Soleil",
+          "text": "Cité Soleil (French pronunciation: [site sɔlɛj]; Haitian Creole: Site Solèy; English: Sun City) is an extremely impoverished and densely populated commune located in the Port-au-Prince metropolitan area in Haiti. Cité Soleil originally developed as a shanty town and grew to an estimated 200,000 to 400,000 residents, the majority of whom live in extreme poverty. The area is generally regarded as one of the poorest and most dangerous areas of the Western Hemisphere and it is one of the biggest slums in the Northern Hemisphere. The area has virtually no sewers and has a poorly maintained open canal system that serves as its sewage system, few formal businesses but many local commercial activities and enterprises, sporadic but largely unpaid-for electricity, a few hospitals, and two government schools, Lycée Nationale de Cité Soleil, and École Nationale de Cité Soleil. \nFor several years until 2007, the area was ruled by a number of gangs, each controlling their own sectors. Government control was reestablished after a series of operations in early 2007 by the United Nations Stabilization Mission in Haiti (MINUSTAH) with the participation of the local population. After the devastating 2010 earthquake, it took nearly two weeks for relief aid to arrive in Cité-Soleil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "cite soleil",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cite",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "soleil",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 577,
+    "attempt": 570,
+    "place_id": "gn-1282898",
+    "input": {
+      "place": {
+        "place_id": "gn-1282898",
+        "name": "Pokhara",
+        "country": "Nepal",
+        "subdivision": "Gandaki Pradesh",
+        "lat": 28.26689,
+        "lon": 83.96851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pokhara",
+          "url": "https://en.wikipedia.org/wiki/Pokhara",
+          "text": "Pokhara (Nepali: पोखरा [ˈpokʰʌɾa]) is a metropolitan city located in central Nepal, which serves as the capital of Gandaki Province. Named the country's \"capital of tourism\" it is the second largest city after Kathmandu, with 600,051 inhabitants living in 120,594 households as of 2021 census.\nPokhara is located 200 kilometres (120 miles) west of the capital, Kathmandu,  on the shore of Phewa Lake, and sits at an average elevation of approximately 822 m above sea level. The Annapurna Range, with three out of the ten highest peaks in the world—Dhaulagiri, Annapurna I and Manaslu—is within 15–35 mi (24–56 km) aerial range from the valley.\nIn 2024, Pokhara was declared as the tourism capital of Nepal, being a base for trekkers undertaking the Annapurna Circuit through the Annapurna Conservation Area region of the Annapurna ranges in the Himalayas. The city is also home to many of the elite Gurkha soldiers, soldiers native to South Asia of Nepalese nationality recruited for the British Army, Nepalese Army, Indian Army, Gurkha Contingent Singapore, Gurkha Reserve Unit Brunei, UN peacekeeping forces and in war zones around the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "pokhara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 578,
+    "attempt": 571,
+    "place_id": "gn-1673820",
+    "input": {
+      "place": {
+        "place_id": "gn-1673820",
+        "name": "Kaohsiung",
+        "country": "Taiwan",
+        "subdivision": "Takao",
+        "lat": 22.61626,
+        "lon": 120.31333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaohsiung",
+          "url": "https://en.wikipedia.org/wiki/Kaohsiung",
+          "text": "Kaohsiung, officially Kaohsiung City, is a special municipality located in southern Taiwan. With a population of approximately 2.7 million people, it is Taiwan's third most populous city and the largest city in southern Taiwan. After merging with Kaohsiung County in 2010, the city extends from the coastal urban center across inland rural areas, and stretches into the mountainous Yushan Range, making it the largest city in Taiwan by area at 2,952 km2 (1,140 mi2). \nFounded in the 17th century as a small trading village named Tancoia, a name of uncertain origins, the city has since grown into the economic center of southern Taiwan, with key industries such as manufacturing, steel-making, oil refining, freight transport and shipbuilding. It is classified as a \"Sufficiency\" level global city by the Globalization and World Cities Research Network, with some of the most prominent infrastructures in Taiwan.\nKaohsiung is of strategic importance to the nation as the main port city of Taiwan; the Port of Kaohsiung is the largest and busiest harbor in Taiwan: more than 67% of the nation's export and import container volume passes through Kaohsiung. Kaohsiung International Airport is the second busiest airport by number of passengers in Taiwan. The city is well-connected to other major cities by high speed and conventional rail, as well as several national freeways. It also hosts the Republic of China Navy (ROCN) fleet headquarters and its naval academy. More recent public works such as Pier-2 Art Center, National Kaohsiung Center for the Arts and Kaohsiung Music Center have been aimed at growing the tourism and cultural industries of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "kaohsiung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 579,
+    "attempt": 572,
+    "place_id": "gn-2033370",
+    "input": {
+      "place": {
+        "place_id": "gn-2033370",
+        "name": "Yingkou",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 40.66472,
+        "lon": 122.23176
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yingkou",
+          "url": "https://en.wikipedia.org/wiki/Yingkou",
+          "text": "Yingkou (Chinese: 营口; pinyin: Yíngkǒu) is a coastal prefecture-level city of central southern Liaoning province, People's Republic of China, on the northeastern shore of Liaodong Bay. It is the third-smallest prefecture level city in Liaoning with a total area of 5,502 square kilometres (2,124 sq mi), and the ninth most populous with a population of 2,328,582 as of the 2020 census, of whom 1,228,198 lived in the built-up (or metro) area made of three urban districts (Zhanqian, Xishi and Laobian) and one county-level city (Dashiqiao). It borders the sub-provincial city of Dalian to the south, the prefectural cities of Anshan to the north and east and Panjin to the northwest, and also shares maritime boundaries with Jinzhou and Huludao across the Liaodong Bay to its west.\nLocated on the east bank of the Daliao River mouth, Yingkou is an important port city, with the Port of Yingkou being the second-largest container port in the Bohai Sea (after the Port of Tianjin) and Northeast China (after the Port of Dalian), the tenth-largest nationwide, and the 25th-busiest worldwide. Yingkou is classified as a Medium-Port Metropolis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "yingkou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 580,
+    "attempt": 573,
+    "place_id": "gn-3728474",
+    "input": {
+      "place": {
+        "place_id": "gn-3728474",
+        "name": "Cap-Haïtien",
+        "country": "Haiti",
+        "subdivision": "Nord",
+        "lat": 19.75938,
+        "lon": -72.19815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cap-Haïtien",
+          "url": "https://en.wikipedia.org/wiki/Cap-Haïtien",
+          "text": "Cap-Haïtien (French: [kap a.isjɛ̃] ; Haitian Creole: Kap Ayisyen, lit. 'Haitian Cape' or Okap) is a commune of about 300,000 people on the north coast of Haiti and the capital of the department of Nord. Previously named Cap‑Français (Haitian Creole: Kap-Fransè; initially Cap-François Haitian Creole: Kap-Franswa) and Cap‑Henri (Haitian Creole: Kap-Anri) during the rule of Henri I, it was historically nicknamed the Paris of the Antilles, because of its wealth and sophistication, expressed through its architecture and artistic life. It was an important city during the colonial period, serving as the capital of the French Colony of Saint-Domingue from the city's formal foundation in 1711 until 1770 when the capital was moved to Port-au-Prince. After the Haitian Revolution, it became the capital of the Kingdom of Haiti under King Henri I until 1820.\nCap-Haïtien's long history of independent thought was formed in part by its relative distance from Port-au-Prince, the barrier of mountains between it and the southern part of the country, and a history of large African populations. These contributed to making it a legendary incubator of independent movements since slavery times. For instance, from February 5–29, 2004, the city was taken over by militants who opposed the rule of the Haïtian president Jean-Bertrand Aristide. They eventually created enough political pressure to force him out of office and the country.\nCap-Haïtien is near the historic Haitian town of Milot, which lies 19 kilometres (12 mi) to the southwest. Milot was Haiti's first capital under the self-proclaimed King Henri Christophe, who ascended to power in 1807, three years after Haiti had gained independence from France. He renamed Cap‑Français as Cap‑Henri. Milot is the site of his Sans-Souci Palace, wrecked by the 1842 earthquake. The Citadelle Laferrière, a massive stone fortress bristling with cannons, atop a nearby mountain is eight kilometres (5 mi) away. On clear days, its silhouette is visible from Cap‑Haïtien.\nThe small Cap-Haïtien International Airport, located on the southeast edge of the city, is served by several small domestic airlines. It was patrolled by Chilean UN troops from the \"O'Higgins Base\" after the 2010 earthquake. Several hundred UN personnel, including nearby units from Nepal and Uruguay, were assigned to the city during the 2010–2017 United Nations Stabilization Mission in Haiti (MINUSTAH). The airport was the only functioning international airport in the country after the closure of the Toussaint Louverture International Airport in Tabarre in March 2024 amidst gang violence in Haiti. Significant migration from the capital occurred during the Haitian crisis, putting strain on infrastructure and on the educational system.\nThe destruction in 2020 of Shada 2 (a slum with 1,500 homes in the southern part of the city) was credited with disrupting gang activity in the former capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 451
+    },
+    "banned_terms": [
+      {
+        "term": "cap haitien",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cap",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haitien",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 581,
+    "attempt": 574,
+    "place_id": "gn-53654",
+    "input": {
+      "place": {
+        "place_id": "gn-53654",
+        "name": "Mogadishu",
+        "country": "Somalia",
+        "subdivision": "Banaadir",
+        "lat": 2.03711,
+        "lon": 45.34375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mogadishu",
+          "url": "https://en.wikipedia.org/wiki/Mogadishu",
+          "text": "Mogadishu, locally known as Xamar or Hamar, is the capital and most populous city of Somalia. The city has served as an important port connecting traders across the Indian Ocean for millennia and has an estimated urban population of 4,126,815.\nMogadishu is located in the coastal Banaadir region on the Indian Ocean, which, unlike other Somali regions, is considered a municipality rather than a maamul goboleed (federal state).\nMogadishu has a long history, which ranges from the ancient period up until the present, serving as the capital of the Sultanate of Mogadishu in the 9th–13th century, which for many centuries controlled the Indian Ocean gold trade and eventually came under the Ajuran Sultanate in the 13th century which was an important player in the medieval Silk Road maritime trade. Mogadishu enjoyed the height of its prosperity during the 14th and 15th centuries  and was, during the early modern period, considered the wealthiest city on the East African coast, as well as the center of a thriving textile industry. In the 17th century, Mogadishu and parts of southern Somalia fell under the Hiraab Imamate. In the 19th century, it came under the sphere of influence of the Sultanate of the Geledi.\nIn 1894, the Somali chief signed a treaty of peace, friendship, and protection with Filonardi of the Commercial Company of Benadir. The onset of Italian colonial rule occurred in stages, with treaties signed in the 1880s followed by economic engagement between Somali clans and the Commercial Company of Benadir, and then direct governance by the Italian Empire after 1906, British Military Administration of Somalia after World War II and the Trust Territory of Somaliland administered by Italy in the 1950s.\nThis was followed by independence in 1960, the Somali Democratic Republic era during Siad Barre's presidency (1969–1991). The three-decade long Somali Civil War afterwards devastated the city. In the late 2010s and 2020s, a period of major reconstruction commenced."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 319
+    },
+    "banned_terms": [
+      {
+        "term": "mogadishu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 582,
+    "attempt": 575,
+    "place_id": "gn-1639500",
+    "input": {
+      "place": {
+        "place_id": "gn-1639500",
+        "name": "Kotamobagu",
+        "country": "Indonesia",
+        "subdivision": "North Sulawesi",
+        "lat": 0.74194,
+        "lon": 124.31208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kotamobagu",
+          "url": "https://en.wikipedia.org/wiki/Kotamobagu",
+          "text": "Kotamobagu is a landlocked city in North Sulawesi, Indonesia. Having previously been a town within the Bolaang Mongondow Regency, Kotamobagu was separated from that regency on 2 January 2007 to become an autonomous city. It is the principal centre of the southern part of the province, the Bolaang Mongondow region, which has been under consideration by the Indonesian government to be separated from the rest of North Sulawesi and formed into a separate province. The city covers an area of 108.89 km2, and had a population of 107,459 at the 2010 Census, rising to 123,722 at the 2020 Census; the official estimate as at mid 2025 was 121,756 (comprising 62,396 males and 59,360 females).\nUnder consideration by the Indonesian Government since 2013 (but all such new creations have been held in abeyance since then) is the formation of a new province that would re-unite those territories which were part of the original Bolaang Mongondow Regency before 2007; it was intended that once the Province of \"Bolaang Mongondow Raya\" (Greater Bolaang Mongondow) is created, Kotamobagu will be approved as the new provincial capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 182,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "kotamobagu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 583,
+    "attempt": 576,
+    "place_id": "gn-1814087",
+    "input": {
+      "place": {
+        "place_id": "gn-1814087",
+        "name": "Dalian",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 38.91222,
+        "lon": 121.60222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalian",
+          "url": "https://en.wikipedia.org/wiki/Dalian",
+          "text": "Dalian ( dah-LYEN) is a major prefecture-level, sub-provincial port city in Liaoning province, People's Republic of China, and is Liaoning's second largest city (after the provincial capital Shenyang) and the third-most populous city of Northeast China (after Shenyang and Harbin). Located on the southern tip of the Liaodong peninsula, it is the southernmost city in both Liaoning and the entire Northeast. Dalian borders the prefectural cities of Yingkou and Anshan to the north and Dandong to the northeast, and also shares maritime boundaries with Qinhuangdao and Huludao across the Liaodong Bay to the west and northwest, Yantai and Weihai on the Shandong peninsula across the Bohai Strait to the south, and North Korea across the Korea Bay to the east.\nAs of the 2020 census, its total population was 7,450,785 inhabitants of whom 5,106,719 lived in the built-up (or metro) area made of 6 out of 7 urban districts, Pulandian District not being conurbated yet.\nToday, Dalian is a financial, shipping, and logistics center for East Asia. The city has a significant history of use by foreign powers for its ports. Dalian was previously known as \"Dalniy\" (Russian: Дальний; Dal'nii), \"Dairen\" (Japanese: 大連), and \"Lüda\" or \"Luta\" (Chinese: 旅大; pinyin: Lǚdà). The city used to be better known as \"Port Arthur\" and \"Ryojun\" (Japanese: 旅順) from the original Port Arthur, now the city's Lüshunkou district.\nIn 2016, Dalian ranked 48th in the Global Financial Centres Index. In 2012, Dalian ranked 82nd in the Global City Competitiveness Index. In 2006, Dalian was named China's most livable city by China Daily. It is now a Beta-level City under the Globalization and World Cities Research Network classification. The large amount of port traffic makes Dalian a Large-Port Metropolis.\nDalian is one of the top 40 science cities in the world by scientific research as tracked by the Nature Index, ranking 37th globally in 2023. The city is home to several major universities, notably Dalian University of Technology and Dalian Maritime University, members of China's prestigious universities in the Project 211, and the Dalian Institute of Chemical Physics of the Chinese Academy of Sciences."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 350
+    },
+    "banned_terms": [
+      {
+        "term": "dalian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 584,
+    "attempt": 577,
+    "place_id": "gn-2314302",
+    "input": {
+      "place": {
+        "place_id": "gn-2314302",
+        "name": "Kinshasa",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Kinshasa",
+        "lat": -4.32758,
+        "lon": 15.31357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kinshasa",
+          "url": "https://en.wikipedia.org/wiki/Kinshasa",
+          "text": "Kinshasa (; French: [kinʃasa]; Lingala: Kinsásá), formerly named Léopoldville (Dutch: Leopoldstad) from 1881 to 1966, is the capital and largest city of the Democratic Republic of the Congo. Kinshasa is one of the world's fastest-growing megacities, with an estimated population of 18.5 million in 2026. It is the most densely populated city in the DRC, the third-most populous city and third-largest metropolitan area in Africa, the world's seventh-most populous city proper (the most populous outside of China), and the fourth-most populous capital city in the world. It is the leading economic, political, and cultural center of the DRC, housing several industries including manufacturing, telecommunications, banking, and entertainment. The city also hosts some of the DRC's significant institutional buildings, such as the People's Palace, Palace of the Nation, Constitutional Court, Court of Cassation, Council of State, African Union City, Marble Palace, Government House, Kinshasa Financial Center, and other national departments and agencies.\nThe Kinshasa site has been inhabited by Teke and Humbu people for centuries and was known as Nshasa before transforming into a commercial hub during the 19th and 20th centuries. The city was named Léopoldville by Henry Morton Stanley in honor of Leopold II of Belgium. The name was changed to Kinshasa in 1966 during Mobutu Sese Seko's Zairianisation campaign as a tribute to Nshasa village. Covering 9,965 square kilometers, Kinshasa stretches along the southern shores of the Pool Malebo on the Congo River. It forms an expansive crescent across flat, low-lying terrain at an average altitude of about 300 meters. Kinshasa borders the Mai-Ndombe, Kwilu, and Kwango Provinces to the east; the Congo River delineates its western and northern perimeters, constituting a natural border with the Republic of the Congo; to the south lies the Kongo Central Province. Across the river sits Brazzaville, the smaller capital of the neighboring Republic of the Congo, forming the world's closest pair of capital cities despite being separated by a four-kilometer-wide unbridged span of the Congo River.\nKinshasa also functions as one of the 26 provinces of the Democratic Republic of the Congo; it is administratively divided into 24 communes, which are further subdivided into 365 quarters. With an expansive administrative region, over 90 percent of the province's land remains rural, while urban growth predominantly occurs on its western side. Kinshasa is the largest nominally Francophone urban area globally, with French being the language of government, education, media, public services and high-end commerce, while Lingala is used as a lingua franca in the street. The city's inhabitants are popularly known as Kinois, with the term \"Kinshasans\" used in English terminology.\nThe National Museum of the Democratic Republic of the Congo is the DRC's most prominent and central museum. The College of Advanced Studies in Strategy and Defense is the highest military institution in the DRC. The National Pedagogical University is the DRC's first pedagogical university. N'Djili International Airport is the largest airport in the nation. In 2015, Kinshasa was designated as a City of Music by UNESCO and has been a member of the Creative Cities Network since then. Nsele Valley Park is the largest urban park in Kinshasa. According to the 2016 annual ranking, Kinshasa is Africa's most expensive city for expatriate employees, ahead of close to 200 global locations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 539
+    },
+    "banned_terms": [
+      {
+        "term": "kinshasa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 585,
+    "attempt": 578,
+    "place_id": "gn-3104324",
+    "input": {
+      "place": {
+        "place_id": "gn-3104324",
+        "name": "Zaragoza",
+        "country": "Spain",
+        "subdivision": "Aragon",
+        "lat": 41.65606,
+        "lon": -0.87734
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zaragoza",
+          "url": "https://en.wikipedia.org/wiki/Zaragoza",
+          "text": "Zaragoza (Spanish: [θaɾaˈɣoθa] ), traditionally known in English as Saragossa ( SARR-ə-GOSS-ə), is the capital city of the province of Zaragoza and of the autonomous community of Aragon, Spain. It lies by the Ebro river and its tributaries, the Huerva and the Gállego, roughly in the centre of both Aragon and the Ebro basin.\nIn the 1st century BCE, Romans founded the colony of Caesaraugusta over the Sedetani settlement of Salduie. The city was the capital of the Upper March of Al-Andalus under Umayyad rule, later thriving as a capital of a rump state ruled by the Banu Hud, the taifa of Zaragoza. It swiftly became the political and spiritual centre of the Kingdom of Aragon after the 1118 Christian conquest, and its inhabitants managed to preserve and consolidate initially granted privileges over the course of the Late Middle Ages.\nAs of 2025, Zaragoza had a population of 699,007 inhabitants, making it the fourth most populous in Spain, on a land area of 973.78 square kilometres (375.98 square miles) and is the centre of a metropolitan area of around 0.76 million. The municipality is home to more than 50 percent of the Aragonese population. The city lies at an elevation of about 208 metres (682 feet) above sea level.\nZaragoza hosted Expo 2008 in mid-2008, a world's fair on water and sustainable development. It was also a candidate for the European Capital of Culture in 2016.\nThe city is famous for its folklore, local cuisine, and landmarks such as the Basílica del Pilar, La Seo Cathedral and the Aljafería Palace. Together with La Seo and the Aljafería, several other buildings form part of the Mudéjar Architecture of Aragon which is a UNESCO World Heritage Site. The Fiestas del Pilar are among the most celebrated festivals in Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 297
+    },
+    "banned_terms": [
+      {
+        "term": "zaragoza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 586,
+    "attempt": 579,
+    "place_id": "gn-3399058",
+    "input": {
+      "place": {
+        "place_id": "gn-3399058",
+        "name": "Garanhuns",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.88202,
+        "lon": -36.50216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garanhuns",
+          "url": "https://en.wikipedia.org/wiki/Garanhuns",
+          "text": "Garanhuns (Brazilian Portuguese pronunciation: [garɐˈɲus]) is a Brazilian municipality in the Agreste region of the state of Pernambuco, located 230 kilometers from the state capital, Recife. It covers an area of 458.552 km² and belongs to the Caruaru Intermediate Geographic Region, serving as the principal and most populous municipality in the Garanhuns Immediate Geographic Region. According to the Brazilian Institute of Geography and Statistics (IBGE) in 2022 Census, Garanhuns had an estimated population of approximately 142,506 inhabitants, making it the ninth most populous municipality in Pernambuco, the third most populous in the state's interior, and the second most populous in the Pernambucan Agreste region.\nOriginally, the lands of Garanhuns were inhabited by the indigenous Cariri people. During the 17h century, white colonists and enslaved Africans escaping Dutch domination in Dutch Brazil established communities in the region's Caatinga moist-forest enclaves, establishing scattered villages. On 29 September 1658, Mestre de campo Nicolau Aranha Pacheco, Captain Cosmo de Brito Cação, Antonio Fernandes Aranha, and Ambrósio Aranha de Farias received a land grant of approximately 20 leagues from the acting governor, André Vidal de Negreiros. This grant included two plots: one in the fields of Garanhuns and another in Panema. That same year, the Garcia Farm was established in the area now encompassing the municipal seat.\nGaranhuns is a hub in the southern Agreste, serving as a center for 32 municipalities and supporting a surrounding population of over one million people. It is a regional leader in healthcare and education services. The municipality's commerce and service offerings make tourism a driver of employment, income, and development, supported by a robust network of service providers and hotels. Each July, Garanhuns hosts the Garanhuns Winter Festival, attracting thousands of tourists from around the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 181,
+      "fullExtractWords": 288
+    },
+    "banned_terms": [
+      {
+        "term": "garanhuns",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 587,
+    "attempt": 580,
+    "place_id": "gn-3447399",
+    "input": {
+      "place": {
+        "place_id": "gn-3447399",
+        "name": "Sorocaba",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.50167,
+        "lon": -47.45806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sorocaba",
+          "url": "https://en.wikipedia.org/wiki/Sorocaba",
+          "text": "Sorocaba (Portuguese pronunciation: [soɾoˈkabɐ]) is a municipality in the interior of the state of São Paulo, Brazil. With over 723,000 inhabitants, it is the seventh-largest city in the state and the second-largest outside the Greater São Paulo region, ranking behind only Campinas. It forms its own Metropolitan Region of Sorocaba, comprising 27 municipalities with a total population of 2 million inhabitants, the 15th most populous in Brazil.\nWith a surface area of 450,38 km² (or about 170 sq mi), Sorocaba is integrated with Greater São Paulo and the Metropolitan Regions of Campinas, Jundiaí, Paraíba Valley and North Coast and Baixada Santista, forming the São Paulo macrometropolis, which is home to over 30 million people, about three quarters of the state's population and the first such urban agglomeration in the Southern Hemisphere.\nThe city is highly industrialized, with its industrial production reaching over 120 countries and a GDP of over R$ 32 billion, the 19th-largest in Brazil, surpassing state capitals such as São Luís, Belém, Vitória, Natal, and Florianópolis. Over 22,000 companies operate in the city, 2,000 of which are industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 180,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "sorocaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
