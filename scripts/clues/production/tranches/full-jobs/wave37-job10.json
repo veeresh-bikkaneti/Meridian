@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 7432,
+    "attempt": 7381,
+    "place_id": "gn-1857062",
+    "input": {
+      "place": {
+        "place_id": "gn-1857062",
+        "name": "Mino",
+        "country": "Japan",
+        "subdivision": "Gifu",
+        "lat": 35.53333,
+        "lon": 136.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mino, Gifu",
+          "url": "https://en.wikipedia.org/wiki/Mino,_Gifu",
+          "text": "Mino (美濃市, Mino-shi; Japanese pronunciation: [mʲiꜜ.no, mʲi.noꜜ, mʲi.noꜜɕi]) is a city located in Gifu, Japan. As of 31 December 2018, the city had an estimated population of 20,749 in 8149 households, and a population density of 180 persons per km2. The total area of the city was 117.01 square kilometres (45.18 sq mi). The city is renowned for traditional Japanese Mino washi paper and its streets, which are in the style of the early Edo period (1603–1868). An urban area known as \"Udatsu Townscape\" (うだつのあがるまちなみ) was designated as an important traditional building group conservation area by the government on May 13, 1999."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "mino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7433,
+    "attempt": 7382,
+    "place_id": "gn-193985",
+    "input": {
+      "place": {
+        "place_id": "gn-193985",
+        "name": "Kapsowar",
+        "country": "Kenya",
+        "subdivision": "Elegeyo-Marakwet",
+        "lat": 0.9789,
+        "lon": 35.55854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kapsowar",
+          "url": "https://en.wikipedia.org/wiki/Kapsowar",
+          "text": "Kapsowar is a town in Elgeyo-Marakwet County, Kenya. Prior to March 2013, it was located in the former Rift Valley Province. In 1994, Kapsowar became the headquarters of the former Marakwet district.it also hosts the only girls national school in the county.Furthermore, Kapsowar is the proposed headquarters for the Elgeyo Marakwet County. Prior to this, the Marakwet and Keiyo people were collectively grouped into the Elgeiyo-Marakwet District. In 2010, the two districts were again merged into Elgeyo-Marakwet County. The Marakwet number approximately 300,000 and are a part of the Kalenjin family of tribes, which collectively are the second-largest ethnic group in Kenya.\nThe fast growing town is located between the Kerio Valley and the Cherangani Hills. The land surrounding Kapsowar town is fertile and the elevation creates a mild climate with a temperature range of 70-85 °F (21–29 °C). Kapsowar town has a population of 66,684 (2019/census, total population of the Kapsowar town location). AIC Kapsowar Hospital, established by Africa Inland Mission in 1933, is largely responsible for the degree of development presently seen in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "kapsowar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7434,
+    "attempt": 7383,
+    "place_id": "gn-2161311",
+    "input": {
+      "place": {
+        "place_id": "gn-2161311",
+        "name": "Kingston",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -42.97638,
+        "lon": 147.30351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingston, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Kingston,_Tasmania",
+          "text": "Kingston is a suburb on the outskirts of Hobart, Tasmania, Australia. Nestled 12 km (7.5 mi) south of the city between and around several hills, Kingston is the seat of the Kingborough Council, and today serves as the gateway between Hobart and the D'Entrecasteaux Channel region, which meets the River Derwent nearby.  It is one of the fastest-growing regions in Tasmania. The Kingston-Huntingfield statistical area had an estimated population of 13,473 in June 2021.\nAlthough the Kingston–Blackmans Bay region is statistically classed as a separate urban area to Hobart by the ABS, Kingston is also part of the Greater Hobart statistical area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "kingston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7435,
+    "attempt": 7384,
+    "place_id": "gn-2177992",
+    "input": {
+      "place": {
+        "place_id": "gn-2177992",
+        "name": "Altona",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.86964,
+        "lon": 144.83036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altona, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Altona,_Victoria",
+          "text": "Altona is a suburb in Melbourne, Victoria, Australia, 13 km (8.1 mi) south-west of Melbourne's Central Business District, located within the City of Hobsons Bay local government area. Altona recorded a population of 11,490 at the 2021 census.\nAltona is a large suburb consisting of low density residential in the south-eastern half and mixed industry in the north-western half. A feature of the suburb is Altona Beach, which is one of only two swimming beaches in the western suburbs (the other being Williamstown Beach). \nAltona takes its name from the then-independent German city of Altona which is today a borough of Hamburg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "altona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7436,
+    "attempt": 7385,
+    "place_id": "gn-2207618",
+    "input": {
+      "place": {
+        "place_id": "gn-2207618",
+        "name": "Cheltenham",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.96944,
+        "lon": 145.04806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheltenham, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Cheltenham,_Victoria",
+          "text": "Cheltenham is a suburb in Melbourne, Victoria, Australia, 18 km south-east of Melbourne's Central Business District, located within the Cities of Bayside and Kingston local government areas. Cheltenham recorded a population of 23,992 at the 2021 census.\nThe eastern side of the area's metropolitan railway line and Charman Road north is located within the City of Kingston, while the suburb's western region towards extensive golf links, parks and Port Phillip Bay falls within the City of Bayside.\nA significant feature in Cheltenham is Westfield Southland, a major shopping centre which opened in 1968.\nCheltenham is currently undergoing significant gentrification and urban development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "cheltenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7437,
+    "attempt": 7386,
+    "place_id": "gn-2217440",
+    "input": {
+      "place": {
+        "place_id": "gn-2217440",
+        "name": "Ghadames",
+        "country": "Libya",
+        "subdivision": "Nalut",
+        "lat": 30.13366,
+        "lon": 9.50072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ghadames",
+          "url": "https://en.wikipedia.org/wiki/Ghadames",
+          "text": "Ghadames or Ghadamis  (Ghadamsi:  ⵄⴰⴷⴻⵎⴻⵙ / Ɛadēməs [ʕadeːməs], Arabic: غدامس, Italian: Gadames) is an oasis town in the Nalut District of the Tripolitania region in northwestern Libya.\nGhadames, known as 'the pearl of the desert', stands in an oasis. It is one of the oldest pre-Saharan cities and an example of a traditional settlement. Its domestic architecture is characterized by a vertical division of functions: the ground floor used to store supplies; the first floor is for the family, overhanging covered alleys that create what is almost an underground network of passageways; and, at the top, open-air terraces reserved for the women."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "ghadames",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7438,
+    "attempt": 7387,
+    "place_id": "gn-2610726",
+    "input": {
+      "place": {
+        "place_id": "gn-2610726",
+        "name": "Varde",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.62112,
+        "lon": 8.48069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Varde",
+          "url": "https://en.wikipedia.org/wiki/Varde",
+          "text": "Varde is a Danish city in southwestern Jutland and is the primary city in the municipality of Varde, in Region of Southern Denmark. In 2015 municipality changed its motto to \"We in nature\" to emphasize its rural atmosphere. The town has an old market environment and is located by Varde stream/river and is a short distance away from the beaches by the North Sea. These features make it a tourist destination. The age of Varde is not known precisely, but it is mentioned in written sources from 1107 A.D. and is therefore thought have been founded sometime in the early Middle Ages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "varde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7439,
+    "attempt": 7388,
+    "place_id": "gn-2622383",
+    "input": {
+      "place": {
+        "place_id": "gn-2622383",
+        "name": "Faaborg",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.0951,
+        "lon": 10.24226
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faaborg",
+          "url": "https://en.wikipedia.org/wiki/Faaborg",
+          "text": "Faaborg or Fåborg (Danish: [ˈfʌˌpɒˀ]) is an old port town located on Faaborg Fjord in Faaborg-Midtfyn municipality on the island of Funen in Denmark. By road, Faaborg is located 42 kilometres (26 mi) southwest of Odense, 27 kilometres (17 mi) west-northwest of Svendborg, and roughly 70 kilometres (43 mi) southeast of Middelfart, depending upon the route. It has a population of 6,822 (1 January 2026). With its busy port, narrow streets and attractive old houses, the town is popular with tourists, particularly in the summer months. Faaborg was formerly the seat of Faaborg municipality. The seat of the new municipality is Ringe. Both municipalities use(d) Faaborg's medieval coat of arms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "faaborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7440,
+    "attempt": 7389,
+    "place_id": "gn-2638035",
+    "input": {
+      "place": {
+        "place_id": "gn-2638035",
+        "name": "Shepton Mallet",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.18972,
+        "lon": -2.54722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shepton Mallet",
+          "url": "https://en.wikipedia.org/wiki/Shepton_Mallet",
+          "text": "Shepton Mallet is a market town and civil parish in Somerset, England. It lies 16 miles (26 km) south-west of Bath, 18 miles (29 km) south of Bristol and 5 miles (8 km) east of Wells. At the 2021 census, the parish had a population of 10,592 and the built-up area had a population of 9,645.\nThe Mendip Hills lie to the north and the River Sheppey runs through the town, as does the route of the Fosse Way, the main Roman road between north-east and south-west England. There is evidence of Roman settlement. Its listed buildings include a medieval parish church. Shepton Mallet Prison closed in March 2013; immediately before its closure it had been England's oldest prison still in use. The medieval wool trade gave way to trades such as brewing in the 18th century. It remains noted for cider production. It is the closest town to the Glastonbury Festival and nearby the Royal Bath and West of England Society showground."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "shepton mallet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "shepton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mallet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7441,
+    "attempt": 7390,
+    "place_id": "gn-2643218",
+    "input": {
+      "place": {
+        "place_id": "gn-2643218",
+        "name": "Maesteg",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.60926,
+        "lon": -3.65823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maesteg",
+          "url": "https://en.wikipedia.org/wiki/Maesteg",
+          "text": "Maesteg (English: ; Welsh: [maisˈteːɡ] ) is a town and community in Bridgend County Borough, Wales. Maesteg lies at the northernmost end of the Llynfi Valley, close to the border with Neath Port Talbot. In 2011, Maesteg had a population of 20,612. The English translation of Maesteg is 'fair field'.\nMaesteg officially became a town in 1826 and is celebrating its bicentenary in 2026 with organised events and celebrations being organised by a committee of residents and local groups and businesses.\nHistorically a part of Glamorgan, the growth of the town started with the opening of ironworks in the 1820s and 1830s. Once a coal mining area, the last pit closed in 1985. With the decline of the coal industry and, more recently, the closure of one large factory producing cosmetics and another manufacturing vehicle components, the valley has become a residential/dormitory area for the Port Talbot, Bridgend and Cardiff journey to work areas. 11% (1,867 out of 20,702) of the town's population speak Welsh with 27.9% of 3-15 year olds speaking the language. It is one of the few areas of Wales where the traditional Mari Lwyd is still celebrated during Christmas.\nThe community of Maesteg had a population of 17,580 in the 2011 census and includes Nantyffyllon. The built-up area having a population of 21,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "maesteg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7442,
+    "attempt": 7391,
+    "place_id": "gn-2645280",
+    "input": {
+      "place": {
+        "place_id": "gn-2645280",
+        "name": "Kirkham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.78244,
+        "lon": -2.87189
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkham, Lancashire",
+          "url": "https://en.wikipedia.org/wiki/Kirkham,_Lancashire",
+          "text": "Kirkham aka Kirkam-in-Amounderness is a market town and civil parish in the Borough of Fylde in Lancashire, England, midway between Blackpool and Preston and adjacent to the town of Wesham. It owes its existence to Carr Hill upon which it was built and which was the location of a Roman fort. At the census of 2011, it had a population 3,304 (Kirkham South) plus 3,890 (Kirkham North), giving a total of 7,194. By the census of 2021 the total had risen to 3,217 (Kirkham South) plus 4,666 (Kirkham North), giving a total of 7,883. Kirkham is adjacent to the town of Wesham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "kirkham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7443,
+    "attempt": 7392,
+    "place_id": "gn-2645911",
+    "input": {
+      "place": {
+        "place_id": "gn-2645911",
+        "name": "Kearsley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.53333,
+        "lon": -2.38333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kearsley",
+          "url": "https://en.wikipedia.org/wiki/Kearsley",
+          "text": "Kearsley (  KURZ-lee) is a town in the Metropolitan Borough of Bolton, Greater Manchester, England.  The population at the 2011 census was 14,212. Within the Historic County of Lancashire, it lies 7 miles (11 km) northwest of Manchester, 5 miles (8 km) southwest of Bury and 3.5 miles (6 km) south of Bolton.\nIt is bounded to the west by Walkden, the east by Whitefield, the north by Farnworth and the south by Clifton.\nKearsley was a township in the ancient ecclesiastical parish of Deane, in the Hundred of Salford. Kearsley Urban District was a local government authority from 1894 until 1974. In 1933, part of Clifton was added to Kearsley Urban District. Part of Outwood, Radcliffe became part of Kearsley in line with the 1933 Lancashire Review."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "kearsley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7444,
+    "attempt": 7393,
+    "place_id": "gn-2646895",
+    "input": {
+      "place": {
+        "place_id": "gn-2646895",
+        "name": "Hillingdon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53291,
+        "lon": -0.45293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hillingdon",
+          "url": "https://en.wikipedia.org/wiki/Hillingdon",
+          "text": "Hillingdon is an area of Uxbridge within the London Borough of Hillingdon, centred 14.2 miles (22.8 km) west of Charing Cross. It was an ancient parish in Middlesex that included the market town of Uxbridge. During the 1920s the civil parish bore a rapid, planned increase in population and housing, and was absorbed by Uxbridge Urban District in 1929. It has formed part of Greater London since 1965.\nMuch of Hillingdon has lasting, albeit minor, administrative effect as the current Hillingdon East ward for electing councillors to Hillingdon London Borough Council. In November 2010, the ward had a recorded population of 12,403."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "hillingdon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7445,
+    "attempt": 7394,
+    "place_id": "gn-2649984",
+    "input": {
+      "place": {
+        "place_id": "gn-2649984",
+        "name": "Enniskillen",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.34615,
+        "lon": -7.64133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enniskillen",
+          "url": "https://en.wikipedia.org/wiki/Enniskillen",
+          "text": "Enniskillen ( EN-iss-KIL-ən, from Irish: Inis Ceithleann [ˈɪnʲɪʃ ˈcɛlʲən̪ˠ], 'Ceithlenn's island') is the largest town in County Fermanagh, Northern Ireland. It is in the middle of the county, between the Upper and Lower sections of Lough Erne. It had a population of 14,086 at the 2021 census. Enniskillen Castle was built in the 15th century as a stronghold of the Maguires, before coming under English control in the early 17th century. The castle and town were expanded during the Plantation of Ulster. It was the seat of local government for the former Fermanagh District Council, and is the county town of Fermanagh. The town is in a civil parish of the same name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "enniskillen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7446,
+    "attempt": 7395,
+    "place_id": "gn-2653346",
+    "input": {
+      "place": {
+        "place_id": "gn-2653346",
+        "name": "Chard",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.8727,
+        "lon": -2.96597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chard, Somerset",
+          "url": "https://en.wikipedia.org/wiki/Chard,_Somerset",
+          "text": "Chard is a town and a civil parish in the English county of Somerset. It lies on the A30 road near the Devon and Dorset borders, 15 miles (24 km) south west of Yeovil. The parish has a population of approximately 14,000 and, at an elevation of 121 metres (397 ft), Chard is the southernmost and one of the highest towns in Somerset.\nThe name of the town was Cerden in 1065 and Cerdre in the Domesday Book of 1086. After the Norman Conquest, Chard was held by the Bishop of Wells. The town's first charter was from King John in 1234. Most of the town was destroyed by fire in 1577, and it was further damaged during the English Civil War. A 1663 will by Richard Harvey of Exeter established Almshouses known as Harvey's Hospital. In 1685 during the Monmouth Rebellion, the pretender Duke of Monmouth was proclaimed King in the Town prior to his defeat on Sedgemoor. Chard subsequently witnessed the execution and traitor's death of 12 condemned rebels, who, tried by Judge Jeffreys, were hanged near the present Tesco roundabout. The Chard Canal was a tub boat canal built between 1835 and 1842. Chard Branch Line was created in 1860 to connect the two London and South Western Railway and Bristol and Exeter Railway main lines and ran through Chard until 1965.\nThe town has a very unusual feature, a stream running along either side of Fore Street. One stream eventually flows into the Bristol Channel and the other reaches the English Channel. Chard Reservoir, approximately a mile north east of the town, is a Local Nature Reserve, and Snowdon Hill Quarry a geological Site of Special Scientific Interest. Major employers in the town include Numatic International Limited. There are a range of sporting and cultural facilities, with secondary education being provided at Holyrood Academy; religious sites including the Church of St Mary the Virgin, which dates from the late 11th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 325
+    },
+    "banned_terms": [
+      {
+        "term": "chard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7447,
+    "attempt": 7396,
+    "place_id": "gn-2654502",
+    "input": {
+      "place": {
+        "place_id": "gn-2654502",
+        "name": "Broughton Astley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.52787,
+        "lon": -1.21768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broughton Astley",
+          "url": "https://en.wikipedia.org/wiki/Broughton_Astley",
+          "text": "Broughton Astley is a large village and civil parish located in the Harborough district of Leicestershire, England. It is situated in the south of Leicestershire, about 6 miles (10 km) east of Hinckley, about 9 miles (14 km) from the centre of Leicester, and about 14 miles from Coventry. The parish borders the Blaby district to the north, as well as sharing borders with the parishes of Cosby, Leire, and Dunton Bassett. The population of the civil parish (which includes Sutton in the Elms) at the time of the 2011 census was 8,940. A tributary of the River Soar runs through it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "broughton astley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "broughton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "astley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7448,
+    "attempt": 7397,
+    "place_id": "gn-2656992",
+    "input": {
+      "place": {
+        "place_id": "gn-2656992",
+        "name": "Ascot",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41082,
+        "lon": -0.6748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ascot, Berkshire",
+          "url": "https://en.wikipedia.org/wiki/Ascot,_Berkshire",
+          "text": "Ascot () is a town in the Royal Borough of Windsor and Maidenhead, in Berkshire, England. It is 6 miles (9.7 km) south of Windsor, 4 miles (6.4 km) east of Bracknell and 25 miles (40 km) west of London.\nIt is most notable as the location of Ascot Racecourse, home of the Royal Ascot meeting. Its average house price of £1,019,451, as of June 2021, makes it the 13th most expensive town in England. It is also among the ten most expensive towns in Britain to rent a property. The town comprises three areas: Ascot itself, North Ascot and South Ascot. It is in the civil parish of Sunninghill and Ascot."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "ascot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7449,
+    "attempt": 7398,
+    "place_id": "gn-2659689",
+    "input": {
+      "place": {
+        "place_id": "gn-2659689",
+        "name": "Mendrisio",
+        "country": "Switzerland",
+        "subdivision": "Ticino",
+        "lat": 45.87019,
+        "lon": 8.9816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mendrisio",
+          "url": "https://en.wikipedia.org/wiki/Mendrisio",
+          "text": "Mendrisio (Italian: [menˈdriːzjo]; Lombard: Mendrís [menˈdriːs]) is a municipality in the district of Mendrisio in the canton of Ticino in Switzerland.\nMendrisio is the seat of the Accademia di Architettura of the university of Italian-speaking Switzerland (USI).\nThe municipality was boosted in size on 4 April 2004 when it incorporated the former municipality of Salorino. On 5 April 2009 it incorporated the former municipalities of Arzo, Capolago, Genestrerio, Rancate and Tremona. On 14 April 2013 the former municipalities of Besazio, Ligornetto and Meride merged into the municipality of Mendrisio.\nMendrisio is served by Mendrisio railway station and Mendrisio San Martino railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "mendrisio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7450,
+    "attempt": 7399,
+    "place_id": "gn-2693301",
+    "input": {
+      "place": {
+        "place_id": "gn-2693301",
+        "name": "Lysekil",
+        "country": "Sweden",
+        "subdivision": "Västra Götaland",
+        "lat": 58.27429,
+        "lon": 11.43576
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lysekil",
+          "url": "https://en.wikipedia.org/wiki/Lysekil",
+          "text": "Lysekil (Swedish pronunciation: [ˈlŷːsɛˌɕiːl]) is a locality and the seat of Lysekil Municipality in Västra Götaland County, Sweden. It had about 7,600 inhabitants in 2018. Situated on the south tip of Stångenäs peninsula at the mouth of Gullmarn fjord, it has two nature reserves.\nOriginally a small fishing village, it developed into a town for fishing industries, commercial shipping and trade during the 18th and 19th centuries. Stone industry based on the red Bohus granite from quarries in the town, was also vital to Lysekil up until the 1950s. One of Sweden's largest oil refineries, Preemraff Lysekil is situated outside the town.\nDuring the 19th century, Lysekil was established as a prominent spa and bathing resort and tourism still makes up a large part of the town's economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "lysekil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7451,
+    "attempt": 7400,
+    "place_id": "gn-2699394",
+    "input": {
+      "place": {
+        "place_id": "gn-2699394",
+        "name": "Kramfors",
+        "country": "Sweden",
+        "subdivision": "Västernorrland",
+        "lat": 62.93161,
+        "lon": 17.77646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kramfors",
+          "url": "https://en.wikipedia.org/wiki/Kramfors",
+          "text": "Kramfors (Swedish: [ˈkrɑ̂ːmfɔʂ]) is a locality and the seat of Kramfors Municipality in Västernorrland County, Sweden. It had a population of 5,990 inhabitants in 2010.\nThe town grew on the western bank of the Ångerman river in the 19th century as harvested logs were floated downriver to be processed at local sawmills and pulp mills. Christopher Kramm introduced the river's first steam-driven saw, naming it after himself. The name of the town in turn derives from his name and the word fors (\"rapid\"). In the 1960s and 1970s, as the timber industry went into decline, the population of Kramfors declined as well.\nThe original settlement of Kramfors was located in Gudmundrå municipality, but in 1889 received the status of a so-called municipalsamhälle or borough, still remaining part of the original municipality. In 1947 it was awarded city status, one of the last in the country to do so. Since municipal reform in 1974, it serves as the seat of Kramfors Municipality.\nThe municipality of Kramfors has about 20,000 inhabitants, and is situated almost in the middle of Sweden's east coast in Northern Sweden. Within 100 kilometres from Kramfors there is a population of about 250,000 people, and within 200 kilometres about half a million people, and the large Norrland towns of Sundsvall and Umeå are within commuting distance.\nKramfors is probably best known for its beautiful and varied High Coast landscape, which has been given World Heritage status, and which provides the inhabitants with the opportunity of an outdoors lifestyle.\nOne of the tennis academies of Sweden is situated in Kramfors.\nKramfors also hosts the Folke Bernadotte Academy, a government agency focused on improving international conflict and crisis management, with a special interest in peace operations. It offers courses in peacekeeping intelligence and information operations that are open to all nations and to non-governmental organizations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "kramfors",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 7311,
+    "attempt": 7261,
+    "place_id": "gn-2810969",
+    "input": {
+      "place": {
+        "place_id": "gn-2810969",
+        "name": "Werdau",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.73604,
+        "lon": 12.37534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Werdau",
+          "url": "https://en.wikipedia.org/wiki/Werdau",
+          "text": "Werdau (German pronunciation: [ˈvɛʁdaʊ] ) is a town in Germany, part of the Landkreis Zwickau in Saxony. It is situated on the river Pleiße, 8 km from Zwickau.\nThe town was mentioned as early as 1304, and in 1398 it was purchased by Frederick, then margrave of Meissen, who afterwards became Elector of Saxony.\nThe textile industry was the dominant industry in Werdau since the 14th century. The industrial character of the town further increased in the 20th century with the large-scale truck production by the IFA conglomerate. Both industries were not competitive after the German reunification in 1990, leading to a sharp deindustrialisation. The character of the town changed dramatically over the last 20 years after almost all factories were demolished and the characteristic East-German residential Plattenbauten were scaled back.\nIn 1905, the city held a contest for the design of a new town hall, as the old one built in 1727 had become too small. The tower and floorplan of one design was combined with the façade of another, and ground was broken for construction on 1 August 1908. It was inaugurated on 26 April 1911, with Frederick Augustus III of Saxony in attendance.\nWerdau station is located on the Leipzig–Hof railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "werdau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7312,
+    "attempt": 7262,
+    "place_id": "gn-2953507",
+    "input": {
+      "place": {
+        "place_id": "gn-2953507",
+        "name": "Bad Ems",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.33544,
+        "lon": 7.71369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Ems",
+          "url": "https://en.wikipedia.org/wiki/Bad_Ems",
+          "text": "Bad Ems (German pronunciation: [baːt ˈʔɛms] ) is a town in Rhineland-Palatinate, Germany. It is the administrative seat of the Rhein-Lahn rural district and is well known as a spa on the river Lahn. Bad Ems was the seat of Bad Ems collective municipality, which has been merged into the Bad Ems-Nassau collective municipality. The town has around 9,000 inhabitants.\nIn 2021, the town became part of the transnational UNESCO World Heritage Site under the name \"Great Spa Towns of Europe\", because of its famous hot springs and 18-20th century architecture bearing testimony to the popularity of spa resorts in Europe during that time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "bad ems",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ems",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7313,
+    "attempt": 7263,
+    "place_id": "gn-3156980",
+    "input": {
+      "place": {
+        "place_id": "gn-3156980",
+        "name": "Florø",
+        "country": "Norway",
+        "subdivision": "Vestland",
+        "lat": 61.59957,
+        "lon": 5.0328
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Florø",
+          "url": "https://en.wikipedia.org/wiki/Florø",
+          "text": "Florø (Norwegian pronunciation: [fluːrøː] ) is a town and the administrative centre of Kinn Municipality in Vestland county, Norway. The town was founded by royal decree in 1860 as a ladested on the island of Florelandet, located between the Botnafjorden and Solheimsfjorden. Florø is Norway's (and thus the Scandinavian Peninsula's) westernmost town. It is the most western town on the mainland in the Nordic countries.\nThe 6.55-square-kilometre (1,620-acre) town has a population (2024) of 9,071 and a population density of 1,385 inhabitants per square kilometre (3,590/sq mi).\nThe town encompasses the entire island of Florelandet and the western half of the island of Brandsøya. The Norwegian national road Rv 5 is the main road connecting Florø to the rest of Norway. The nearby villages of Brandsøy and Grov lie several kilometers to the east of Florø. The islands of Reksta, Kinn, Skorpa lie several kilometers to the west of the town. Florø is also home to Florø Airport and Florø Church.\nFlorø is also a former municipality that existed as an independent town-municipality for just over 100 years (1860-1964) before being merged into Flora Municipality. On 1 January 2020, the town (and Flora Municipality) became part of the new Kinn Municipality after another municipal merger."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "flor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7315,
+    "attempt": 7264,
+    "place_id": "gn-3168302",
+    "input": {
+      "place": {
+        "place_id": "gn-3168302",
+        "name": "San Giorgio di Nogaro",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.82745,
+        "lon": 13.21088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Giorgio di Nogaro",
+          "url": "https://en.wikipedia.org/wiki/San_Giorgio_di_Nogaro",
+          "text": "San Giorgio di Nogaro (Friulian: Sant Zorç di Noiâr, locally San Zorz) is a comune (municipality) in the Regional decentralization entity of Udine in the Italian region of Friuli-Venezia Giulia, located about 50 kilometres (31 miles) northwest of Trieste and about 25 kilometres (16 mi) south of Udine. As of 31 December 2004, it had a population of 7,417 and an area of 25.8 square kilometres (10.0 mi2).\nThe municipality of San Giorgio di Nogaro contains the frazioni (boroughs) Chiarisacco, Galli, Porto Nogaro, Villanova, Zellina, and Zuccola.\nSan Giorgio di Nogaro borders the following municipalities: Carlino, Castions di Strada, Grado, Marano Lagunare, Porpetto, Torviscosa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "san giorgio di nogaro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "giorgio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nogaro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7316,
+    "attempt": 7265,
+    "place_id": "gn-3177098",
+    "input": {
+      "place": {
+        "place_id": "gn-3177098",
+        "name": "Ferno",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.61496,
+        "lon": 8.75695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferno",
+          "url": "https://en.wikipedia.org/wiki/Ferno",
+          "text": "Ferno is a comune (municipality) in the Province of Varese in the Italian region Lombardy, located about 40 km (25 mi) northwest of Milan and about 35 km (22 mi) south of Varese. As of 31 December 2017, it had a population of 6,858 and an area of 8.5 km2 (3.3 sq mi).\nThe municipality of Ferno contains the frazione (subdivision) San Macario.\nFerno borders the following municipalities: Lonate Pozzolo, Samarate, Somma Lombardo, Vizzola Ticino. It is served by Ferno-Lonate Pozzolo railway station.\nVolare Group SpA once had its head office in Area Tecnica Sud of Terminal 1 of Milan Malpensa Airport in Ferno."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "ferno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7317,
+    "attempt": 7266,
+    "place_id": "gn-3427408",
+    "input": {
+      "place": {
+        "place_id": "gn-3427408",
+        "name": "Villa Lugano",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires F.D.",
+        "lat": -34.67907,
+        "lon": -58.47263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa Lugano",
+          "url": "https://en.wikipedia.org/wiki/Villa_Lugano",
+          "text": "Villa Lugano is a barrio (neighbourhood) in Buenos Aires, Argentina, located in the south of the city. It has a population of approximately 114,000 people. It is delimited by Avenida Eva Perón, Avenida General Paz, Calle José Barros Pazos, Avenida Lisandro de la Torre, Avenida Coronel Roca and Avenida Escalada. To the south-east it limits with La Matanza Partido.\nGenerally a working-class neighbourhood, Villa Lugano is characterised by its numerous public housing complexes built in the late 20th century, such as Barrio General Manuel Savio (commonly known as Lugano 1 y 2), Barrio Cardenal Antonio Samoré, Barrio Cardenal Copello, and Barrio Comandante Luis Piedrabuena."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "villa lugano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lugano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7318,
+    "attempt": 7267,
+    "place_id": "gn-3437495",
+    "input": {
+      "place": {
+        "place_id": "gn-3437495",
+        "name": "Piribebuy",
+        "country": "Paraguay",
+        "subdivision": "Cordillera Department",
+        "lat": -25.46498,
+        "lon": -57.04183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piribebuy",
+          "url": "https://en.wikipedia.org/wiki/Piribebuy",
+          "text": "Piribebuy (Guarani: Pirĩvevúi) is a town and district in the Cordillera Department of Paraguay. It is of spontaneous origin, though some attribute its founding to Martin Ledesma de Valderrama in 1636. Since its founding documents were burned during the Paraguayan War, March 8, 1636, was later appointed as its Day of Establishment. Piribebuy is known for its Church \"Dulce Nombre de Jesus\", also known as \"Ñandejará Guasu,\" and also has a small history museum dedicated to memorabilia from the War of Triple Alliance, explaining Piribebuy's large role in the war (Battle of Piribebuy), as well as memorabilia from the Chaco War and colonial times."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "piribebuy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7319,
+    "attempt": 7268,
+    "place_id": "gn-3526681",
+    "input": {
+      "place": {
+        "place_id": "gn-3526681",
+        "name": "Ixtapan de la Sal",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 18.84369,
+        "lon": -99.67671
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ixtapan de la Sal",
+          "url": "https://en.wikipedia.org/wiki/Ixtapan_de_la_Sal",
+          "text": "Ixtapan de la Sal is a town and municipality located in the State of Mexico, Mexico.  It is 60km (37 miles) south of Toluca, the state's capital, and 120km (75 miles) south of Mexico City by the Federal Road 55. The word Ixtapan comes from Nahuatl. There are two theories as to the origin of the name. The first theory states that it is composed of iztal, which means 'salt', and pan, which means 'over' or 'in'. The second states that it comes from iztac which means 'white'; atl, which means 'water'; and pan, meaning 'over' or 'in'; giving the meaning 'in white waters'. The phrase de la Sal is Spanish for 'of salt'.\nThere are two rivers in Ixtapan de la Sal. Salado River flows from the east with a year-round current, while the Salitre River flows from the northwest with a seasonal current. An aqueduct also passes through the city. Most relevant to tourists is the carbonated water of La Laguna Verde, a spring that filters from the subsoil, sprouting naturally in the form of water eruptions.\nOn January 22, 1981, Ixtapan de la Sal officially became a city. In 1996, Ixtapan de la Sal was included in Mexico's '100 Ciudades Coloniales' program, a government initiative recognizing cities of historical significance and colonial heritage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "ixtapan de la sal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ixtapan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7320,
+    "attempt": 7269,
+    "place_id": "gn-3816173",
+    "input": {
+      "place": {
+        "place_id": "gn-3816173",
+        "name": "San Juan Cancuc",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.8928,
+        "lon": -92.36973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan Cancuc",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_Cancuc",
+          "text": "San Juan Cancuc is a town and municipality in the Mexican state of Chiapas in southern Mexico.\nAs of 2010, the municipality had a total population of 29,016, up from 20,688 as of 2005. 99.8% of the population speaks an indigenous language. It covers an area of 233.5 km2 (90.2 sq mi).\nAs of 2010, the town of San Juan Cancuc had a population of 6,327. Other than the town of San Juan Cancuc, the municipality had 36 localities, the largest of which (with 2010 populations in parentheses) were: Chiloljá (2,415), El Pozo (1,758), Nichteel San Antonio (1,726), and Chancolom (1,132), classified as rural.\nMayor José López López announced in February 2021 that only two members of the community had agreed to voluntary vaccination to combat the COVID-19 pandemic, so the town would not be participating. While Mexico has been one of the hardest-hit countries in the world (1,89 million confirmed cases, 161,000 deaths), Chiapas in general and Cancuc in particular has been largely spared with only three confirmed cases, all of whom have recovered."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "san juan cancuc",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cancuc",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7321,
+    "attempt": 7270,
+    "place_id": "gn-3839263",
+    "input": {
+      "place": {
+        "place_id": "gn-3839263",
+        "name": "Recreo",
+        "country": "Argentina",
+        "subdivision": "Catamarca",
+        "lat": -29.28184,
+        "lon": -65.06096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Recreo",
+          "url": "https://en.wikipedia.org/wiki/Recreo",
+          "text": "Recreo is a city in Catamarca Province, Argentina. It is the head town of the La Paz Department. Recreo is also referred to the name of the Carts Recreo (Recreo de las Carretas in Spanish).\nIt is located about 8 km north of the Salinas Grandes is far to 206 km from the provincial capital San Fernando del Valle de Catamarca, 283 km from Cordoba 's capital, 980 km from Buenos Aires. Its population was 10,147 inhabitants in 2001 and according to projections INDEC 2007 amounted to 14,204 inhabitants in a rectangular area of 13.5 km² to 220 meters. Its inhabitants are called recreinos.\nWas established in 1875 by the construction of a station of Ferrocarril General Manuel Belgrano in the field of seizing the then deputy provincial Pedro Cano. During the month of September 1958 according to Law No. 1755, is designated as head of the department of La Paz, the city Recreation and August 20, 1995 was issued Charter Municipal where Amusements is listed as local autonomous is now one of the cultural sites, industrial and economic important and influential in the province.\nAlthough it has a short story while simultaneously is an economic hub and industrial and commercial, is also known nationally for having a visible legacy in history and folklore, and cultural attractions. As has hosted major events such as the Turismo Carretera."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "recreo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7322,
+    "attempt": 7271,
+    "place_id": "gn-3865802",
+    "input": {
+      "place": {
+        "place_id": "gn-3865802",
+        "name": "Andalgalá",
+        "country": "Argentina",
+        "subdivision": "Catamarca",
+        "lat": -27.58185,
+        "lon": -66.31626
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andalgalá",
+          "url": "https://en.wikipedia.org/wiki/Andalgalá",
+          "text": "Andalgalá is a city in the west-center of the province of Catamarca, Argentina, located in a valley near the Sierra de Aconquija, 260 km from the provincial capital San Fernando del Valle de Catamarca. It has about 14,000 inhabitants as per the 2001 census [INDEC]. It is the head town of the department of the same name. The Andalgalá River, which flows nearby, supports a hydroelectric power plant.\nAndalgalá was founded as a fort on 12 July 1658, and only became a city in 1952. Its name is of Quechua origin and means either \"Lord of the Hare\" or \"Lord of the High Mountain\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "andalgala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7323,
+    "attempt": 7272,
+    "place_id": "gn-4062861",
+    "input": {
+      "place": {
+        "place_id": "gn-4062861",
+        "name": "Fort Payne",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 34.44425,
+        "lon": -85.71969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Payne, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Fort_Payne,_Alabama",
+          "text": "Fort Payne is a city in and county seat of DeKalb County, in northeastern Alabama, United States. It is near Lookout Mountain. At the 2020 census, the population was 14,877.\nThis city developed around a fort of the same name, built in the 1830s to intern the Cherokee tribe who were being rounded up by the military before being forcibly removed to Indian Territory in 1838 on what they called the Trail of Tears.\nEuropean-American settlers gradually developed a community around the former fort. It grew rapidly in the late 19th century based on industrial resources, and manufacturing increased in the early 20th century. At the beginning of the 21st century, it still had 7000 workers in 100 mills producing varieties of socks, nearly half the world production. The volume of production has declined because of competition from China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "fort payne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "payne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7324,
+    "attempt": 7273,
+    "place_id": "gn-4497868",
+    "input": {
+      "place": {
+        "place_id": "gn-4497868",
+        "name": "Waynesville",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.48871,
+        "lon": -82.98875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waynesville, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Waynesville,_North_Carolina",
+          "text": "Waynesville is a town in and the county seat of Haywood County, North Carolina, United States. It is the largest town in North Carolina west of Asheville. Waynesville is located about 30 miles (50 km) southwest of Asheville between the Great Smoky and Blue Ridge Mountains.\nAs of the 2020 census, Waynesville had a population of 10,140. The town is located just outside the Pisgah National Forest and is close to the Great Smoky Mountains National Park and the Blue Ridge Parkway. Waynesville and Haywood County are part of the four-county Asheville Metropolitan Statistical Area, currently the fifth largest metropolitan area in North Carolina. It is the third largest town in the MSA behind the cities of Asheville and Hendersonville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "waynesville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7325,
+    "attempt": 7274,
+    "place_id": "gn-4503204",
+    "input": {
+      "place": {
+        "place_id": "gn-4503204",
+        "name": "Mystic Island",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.54428,
+        "lon": -74.38237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mystic Island, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Mystic_Island,_New_Jersey",
+          "text": "Mystic Island (also called Mystic Islands or Mystic) is an unincorporated community and census-designated place (CDP) located within Little Egg Harbor Township, in Ocean County, in the U.S. state of New Jersey. As of the 2020 United States census, the CDP's population was 8,301.\nMystic Island is a large, mostly waterfront development originally planned as a resort community that started in the early 1960s as a waterfront community with vacation bungalows. In the past few years, however, many of the original bungalows are slowly being replaced with much larger homes on pilings that are popular in nearby beach communities such as Long Beach Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "mystic island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mystic",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7326,
+    "attempt": 7275,
+    "place_id": "gn-4542367",
+    "input": {
+      "place": {
+        "place_id": "gn-4542367",
+        "name": "McAlester",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 34.93343,
+        "lon": -95.76971
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "McAlester, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/McAlester,_Oklahoma",
+          "text": "McAlester is a city in and the county seat of Pittsburg County, Oklahoma. As of the 2020 census, McAlester had a population of 18,171. The town gets its name from James Jackson \"J. J.\" McAlester, an early settler and businessman who later became lieutenant governor of Oklahoma. McAlester married Rebecca Burney, the daughter of a full-blood Chickasaw family, which made him a citizen of the Chickasaw Nation.\nMcAlester is the home of the Oklahoma State Penitentiary, the former site of an \"inside the walls\" prison rodeo that ESPN's SportsCenter once broadcast. The prison's nickname, Big Mac, was derived from its location in the town.\nMcAlester is home to many of the employees of the McAlester Army Ammunition Plant. This facility makes the majority of the bombs used by the United States military. In 1998 McAlester became the home of the Defense Ammunition Center (DAC), which moved from Savanna, Illinois, to McAlester Army Ammunition Plant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "mcalester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7327,
+    "attempt": 7276,
+    "place_id": "gn-4877138",
+    "input": {
+      "place": {
+        "place_id": "gn-4877138",
+        "name": "Spencer",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 43.14136,
+        "lon": -95.14444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spencer, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Spencer,_Iowa",
+          "text": "Spencer is a city in the state of Iowa, United States, and the county seat of Clay County. It is located at the confluence of the Little Sioux and Ocheyedan rivers. The population was 11,325 in the 2020 census, an increase from 11,317 in 2000. Spencer hosts the Clay County Fair, held annually in September and averaging more than 300,000 visitors.\nThe town's late library cat, Dewey Readmore Books, became known throughout the world before his death in 2006. He was immortalized in the book Dewey: The Small-Town Library Cat Who Touched the World by Vicki Myron, director of the library, and Bret Witter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "spencer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7328,
+    "attempt": 7277,
+    "place_id": "gn-4938957",
+    "input": {
+      "place": {
+        "place_id": "gn-4938957",
+        "name": "Harvard",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.50009,
+        "lon": -71.58284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harvard, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Harvard,_Massachusetts",
+          "text": "Harvard is a town in Worcester County, Massachusetts, United States. The town is located 25 miles west-northwest of Boston, in eastern Massachusetts. It is mostly bounded by I-495 to the east and Route 2 to the north. A farming community settled in 1658 and incorporated in 1732, it has been home to several non-traditional communities, such as Harvard Shaker Village and the utopian transcendentalist center Fruitlands. It is also home to St. Benedict Abbey, a traditionalist Catholic monastery, and for over seventy years was home to Harvard University's Oak Ridge Observatory, at one time the most extensively equipped observatory in the Eastern United States. It is now an exurban residential town noted for its public schools. The population was 6,851 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "harvard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7329,
+    "attempt": 7278,
+    "place_id": "gn-4989432",
+    "input": {
+      "place": {
+        "place_id": "gn-4989432",
+        "name": "Comstock Park",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.03864,
+        "lon": -85.67003
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Comstock Park, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Comstock_Park,_Michigan",
+          "text": "Comstock Park is an unincorporated community and census-designated place (CDP) in Kent County in the U.S. state of Michigan.  The population was 10,500 at the 2020 census. The community is located within Alpine Township to the west and Plainfield Township to the east.\nThe community is part of the Grand Rapids metropolitan area, with the city of Walker to the south and Grand Rapids just to the southeast.  Comstock Park is the home of the West Michigan Whitecaps, an affiliate of the Detroit Tigers, who play their games at LMCU Ballpark.  The Fred Meijer White Pine Trail State Park also passes through the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "comstock park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "comstock",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7330,
+    "attempt": 7279,
+    "place_id": "gn-4996572",
+    "input": {
+      "place": {
+        "place_id": "gn-4996572",
+        "name": "Houghton",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 47.12187,
+        "lon": -88.56901
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Houghton, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Houghton,_Michigan",
+          "text": "Houghton (; HOH-tən) is the largest city in and the county seat of Houghton County in the U.S. state of Michigan.  Located on the Keweenaw Peninsula, Houghton is the largest city in the Copper Country region. It is the fifth-largest city in the Upper Peninsula, with a population of 8,386 according to the 2020 United States census. Houghton is the principal city of the Houghton micropolitan area, which includes all of Houghton and Keweenaw counties. Houghton lies upon the Keweenaw Waterway, a partly natural, partly artificial waterway connecting at both ends to Lake Superior. Across the waterway from Houghton lies the city of Hancock.\nThe city of Houghton was named for Douglass Houghton, an American geologist and physician, primarily known for his exploration of the Keweenaw Peninsula. Houghton is home to Michigan Technological University, a public research university founded in 1885. Michigan Tech hosts a yearly Winter Carnival in February, drawing thousands of visitors from around the world. Michigan Tech's athletic teams are nicknamed the Huskies, and compete primarily in the NCAA Division II Great Lakes Intercollegiate Athletic Conference (GLIAC). The Michigan Tech Huskies men's ice hockey team competes in the NCAA Division I Central Collegiate Hockey Association (CCHA), and has won three national championships, in 1962, 1965, and 1975."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "houghton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7331,
+    "attempt": 7280,
+    "place_id": "gn-5031404",
+    "input": {
+      "place": {
+        "place_id": "gn-5031404",
+        "name": "International Falls",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 48.60105,
+        "lon": -93.41098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "International Falls, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/International_Falls,_Minnesota",
+          "text": "International Falls (sometimes referred to as I-Falls) is a city in and the county seat of Koochiching County, Minnesota, United States. The population was 5,802 at the time of the 2020 census.\nInternational Falls is located on the Rainy River directly across from Fort Frances, Ontario, Canada. The two cities are connected by the Fort Frances–International Falls International Bridge. Voyageurs National Park is located 11 miles east of International Falls. There is a major U.S. Customs and Border Protection Port of Entry on the International Falls side of the toll bridge and a Canadian Customs entry point on the north side of the bridge.\nInternational Falls is nicknamed the \"Icebox of the Nation\", with an average of 109.4 days per year with a high temperature below 32 °F (0 °C)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "international falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "international",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
