@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 3631,
+    "attempt": 3601,
+    "place_id": "gn-712441",
+    "input": {
+      "place": {
+        "place_id": "gn-712441",
+        "name": "Berdychiv",
+        "country": "Ukraine",
+        "subdivision": "Zhytomyr Oblast",
+        "lat": 49.89421,
+        "lon": 28.58236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berdychiv",
+          "url": "https://en.wikipedia.org/wiki/Berdychiv",
+          "text": "Berdychiv (Ukrainian: Берди́чів, IPA: [berˈdɪtʃiu̯] ; Russian: Берди́чев; Polish: Berdyczów; Yiddish: בערדיטשעוו) is a historic city in Zhytomyr Oblast, northern Ukraine. It serves as the administrative center of Berdychiv Raion within the oblast. It is 44 km (27 mi) south of the administrative center of the oblast, Zhytomyr. Its population is approximately 73,046 (2022 estimate).\nThe area has seen various cultural influences and political changes over time, from its early settlement by the Chernyakhov culture to its position within the Polish-Lithuanian Commonwealth and later, the Russian Empire. Berdychiv was an important trading and banking center in its heyday, but the town became impoverished after the banking industry moved to Odesa in the mid-19th century. Berdychiv was also a significant center of Jewish history, with a large Jewish population and an important role in the development of Hasidism. However, during World War II, the Nazis and their collaborators brutally massacred tens of thousands of Jews in Berdychiv. Before the Holocaust, about 80 percent of the town’s population was Jewish.\nThe city has seen continued conflict, with damage sustained during the Russian invasion of Ukraine beginning in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "berdychiv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3632,
+    "attempt": 3602,
+    "place_id": "gn-723819",
+    "input": {
+      "place": {
+        "place_id": "gn-723819",
+        "name": "Prešov",
+        "country": "Slovakia",
+        "subdivision": "Prešov Region",
+        "lat": 48.99923,
+        "lon": 21.2355
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prešov",
+          "url": "https://en.wikipedia.org/wiki/Prešov",
+          "text": "Prešov is a city in eastern Slovakia. It is the seat of administrative Prešov Region (Slovak: Prešovský kraj) and Šariš. With a population of approximately 85,000 for the city, and in total more than 100,000 with the urban area, it is the second-largest city in eastern Slovakia and the third-largest city in all of Slovakia, after the nearby city of Košice. It belongs to the Košice-Prešov agglomeration and is the natural cultural, economic, transport, and administrative center of the Prešov Region. It lends its name to the Eperjes-Tokaj Hill-Chain, which was considered the geographic entity on the first map of Hungary from 1528. There are many tourist attractions in Prešov, such as castles (e.g. Šariš Castle), pools, and the old town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "presov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3633,
+    "attempt": 3603,
+    "place_id": "gn-7259780",
+    "input": {
+      "place": {
+        "place_id": "gn-7259780",
+        "name": "Four Corners",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.33287,
+        "lon": -81.64738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Four Corners, Florida",
+          "url": "https://en.wikipedia.org/wiki/Four_Corners,_Florida",
+          "text": "Four Corners is an unincorporated suburban area and census-designated place (CDP) in the U.S. state of Florida, located in the region around where Lake, Orange, Osceola, and Polk counties all meet together. Its population was 56,381 at the 2020 census, up from 26,116 at the 2010 census.\nThe Lake, Orange, and Osceola County portions of Four Corners are part of the Orlando–Kissimmee–Sanford, Florida Metropolitan Statistical Area, while the Polk County portion is part of the Lakeland–Winter Haven Metropolitan Statistical Area.\nSplendid China was a theme park in Four Corners. It opened in 1993, closed on December 31, 2003, and sat abandoned for 10 years after that. Splendid China Florida cost $100 million to build. It was a 75-acre (30 ha) miniature park with more than 60 replicas at one-tenth scale. Margaritaville Resort opened on the former Splendid China site, with resort homes, condos and timeshares in a Jimmy Buffett-themed setting. In the summer of 2019, the Sunset Walk restaurants and shops opened next to the Margaritaville Resort. Radio Margaritaville broadcasts from the Margaritaville Resort.\nChampionsGate is a community located in Four Corners. The area is known for having several golf courses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "four corners",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "four",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "corners",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3634,
+    "attempt": 3604,
+    "place_id": "gn-739634",
+    "input": {
+      "place": {
+        "place_id": "gn-739634",
+        "name": "Silivri",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.07393,
+        "lon": 28.24644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silivri",
+          "url": "https://en.wikipedia.org/wiki/Silivri",
+          "text": "Silivri, formerly Selymbria (Greek: Σηλυμβρία), is a municipality and district of Istanbul Province, Turkey. Its population is 217,163 (2022). It lies along the Sea of Marmara, outside the urban core of Istanbul, containing many holiday and weekend homes for residents of the city. The largest settlement in the district is also named Silivri.\nSilivri is located bordering Büyükçekmece to the east, Çatalca to the north, Çorlu and Marmara Ereğlisi (both districts of Tekirdağ Province) to the west, Çerkezköy to the north-west (one of Tekirdağ Province) and with the Sea of Marmara to the south. It is, with an area of 858 km2 (331 sq mi), the second largest district of Istanbul Province after Çatalca. The seat of the district is the city of Silivri.\nEstablished in 2008, Turkey's most modern (and Europe's largest) prison complex is located 9 km (5.6 mi) west of Silivri."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "silivri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3635,
+    "attempt": 3605,
+    "place_id": "gn-787050",
+    "input": {
+      "place": {
+        "place_id": "gn-787050",
+        "name": "Pirot",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 43.15306,
+        "lon": 22.58611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pirot",
+          "url": "https://en.wikipedia.org/wiki/Pirot",
+          "text": "Pirot (Serbian Cyrillic: Пирот) is a city and the administrative center of the Pirot District in southeastern Serbia. According to 2022 census, the urban area of the city has a population of 34,942, while the population of the city administrative area has 49,601 inhabitants.\nThe city has rich geographical features, including the mountains of Stara Planina, Vlaška Planina, Belava, Suva Planina; rivers which flow through the town, including Nišava, Jerma, Rasnička Reka, Temštica and the Visočica; and four lakes, the Zavoj Lake, Berovacko Lake, Krupac Lake and Sukovo Lake.\nIt also has a rich culture, with notable Orthodox church buildings, including the Church of St. Petka, and the monastery of St. Georges and St. John the Theologian from the late 14th century, both of which display an example of medieval architecture. Pirot is known for its traditional woven carpet, the Pirot carpet (Pirot ćilim)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "pirot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3636,
+    "attempt": 3606,
+    "place_id": "gn-877178",
+    "input": {
+      "place": {
+        "place_id": "gn-877178",
+        "name": "Katima Mulilo",
+        "country": "Namibia",
+        "subdivision": "Zambezi Region",
+        "lat": -17.50467,
+        "lon": 24.27574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katima Mulilo",
+          "url": "https://en.wikipedia.org/wiki/Katima_Mulilo",
+          "text": "Katima Mulilo, or simply Katima is the capital of the Zambezi Region in Namibia. It had 46,401 inhabitants in 2023 and comprises two electoral constituencies, Katima Mulilo Rural and Katima Mulilo Urban. It is located  on the B8 national road on the banks of the Zambezi River in the Caprivi Strip in lush riverine vegetation with tropical birds and monkeys. The town receives annual average rainfall of 654 millimetres (25.7 in).\nThe nearest Namibian town to Katima Mulilo is Rundu, about 500 km (310 mi) to the west. About 40 km (25 mi) east of Katima Mulilo lies the village of Bukalo, where the road to Ngoma branches off and joins Namibia to Botswana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "katima mulilo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "katima",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mulilo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3637,
+    "attempt": 3607,
+    "place_id": "gn-899274",
+    "input": {
+      "place": {
+        "place_id": "gn-899274",
+        "name": "Samfya",
+        "country": "Zambia",
+        "subdivision": "Luapula Province",
+        "lat": -11.36491,
+        "lon": 29.55652
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samfya",
+          "url": "https://en.wikipedia.org/wiki/Samfya",
+          "text": "Samfya is a town located in the Luapula Province of Zambia. It is the centre of Samfya District. The town is located on the south-western shore of Lake Bangweulu, on the longest stretch of well-defined shore of that lake (the northern, eastern and southern margins of which are marshy). Samfya has a few guesthouses and a number of white sandy beaches which are used for recreation, although the lake does have crocodiles.\nIn addition to local government offices and branches of national agencies, Samfya is a commercial and fishing centre, as well a centre for transport by boat to islands and other areas of the lake. Its hinterland includes farms and some timber plantations.\nThe Kwanga Festival of the Ngumbo people is held in Samfya in October."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "samfya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3638,
+    "attempt": 3608,
+    "place_id": "gn-9072827",
+    "input": {
+      "place": {
+        "place_id": "gn-9072827",
+        "name": "Thodupuzha",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 9.89394,
+        "lon": 76.72216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thodupuzha",
+          "url": "https://en.wikipedia.org/wiki/Thodupuzha",
+          "text": "Thodupuzha ([kaʈ:ap:ɐna]) is a municipality and taluk in the Idukki district of Kerala, India. It is located 55 km (34.2 mi) west of the district headquarters in Painavu and about 195 km (121.2 mi) north of the state capital Thiruvananthapuram. As per the 2011 Indian census, Thodupuzha has a population of 52,045 people, and a population density of 1,468/km2 (3,800/sq mi).\nThodupuzha is the largest town and main commercial centre in Idukki. It is bordered by the Kottayam district on the southern side and the Ernakulam District on the western side. It also acts as a gateway to various tourist spots in the High Range regions towards its east, including Munnar, Thekkady, and Peermade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "thodupuzha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3639,
+    "attempt": 3609,
+    "place_id": "gn-10541309",
+    "input": {
+      "place": {
+        "place_id": "gn-10541309",
+        "name": "Gotegaon",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 23.02888,
+        "lon": 79.48233
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gotegaon",
+          "url": "https://en.wikipedia.org/wiki/Gotegaon",
+          "text": "Gotegaon (Also Known Chhota Chhindwara) is a city and a municipality in Narsinghpur District of Madhya Pradesh. \nIt is the tehsil headquarters of Narsinghpur district in Jabalpur division of Madhya Pradesh state. The district panchayat headquarters of the Panchayat and Rural Development Department of the state of Madhya Pradesh are located in Gotegaon. There are 90 panchayats under this \nJanpad panchayat.\n\nGotegaon, Narsinghpur district is located almost in the central part of the state of Madhya Pradesh, The boundary of Gotegaon Tehsil touches Jabalpur district in the north-east and Seoni district in the south.\nIn the local administration unit Gotegaon ( Chhota Chhindwara ) is located municipality under which there are 15 wards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "gotegaon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3640,
+    "attempt": 3610,
+    "place_id": "gn-1228730",
+    "input": {
+      "place": {
+        "place_id": "gn-1228730",
+        "name": "Ratnapura",
+        "country": "Sri Lanka",
+        "subdivision": "Sabaragamuwa Province",
+        "lat": 6.6858,
+        "lon": 80.4036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ratnapura",
+          "url": "https://en.wikipedia.org/wiki/Ratnapura",
+          "text": "Ratnapura (Sinhala: රත්නපුර, IPA: [rət̪n̪əpurə]; Tamil: இரத்தினபுரி, IPA: [iɾɐt̪ːinɐβuɾi]) (\"City of Gems\" in Sinhala and Tamil) is a major city in Sri Lanka. It is the capital city of Sabaragamuwa Province, as well as the Ratnapura District, and is a traditional centre for the Sri Lankan gem trade. It is located on the Kalu Ganga (Black River) in south-central Sri Lanka, some 101 km (63 mi) southeast of the country's capital, Colombo. Ratnapura is also spelled as Rathnapura.\nThe name 'Ratnapura' is a Sanskrit word meaning \"city of gems\", from the Sanskrit words pura (town) and ratna (gemstone). Over 2000 years ago, the Buddhist teachings in Sanskrit and Pali influenced the local language. While candy produced from the jaggery palm is traditionally known in this region as ratnapura, it is more likely that the candy was named for the locale rather than vice versa.\nIt is the centre of a long-established industry of precious stone mining including rubies, sapphires, and other gems. Apart from gem mining, the city is known for the production of rice and fruit. Large plantations of tea and rubber surround the city. Tea grown in this region is called low-country tea. There is a well-established tourism industry in Ratnapura. Nearby Sinharaja Forest Reserve, Udawalawe National Park, Kitulgala, and Adam's Peak are especially popular among tourists.\nIn 1901, the town of Ratnapura had a population of 4,084, and by 2021, it had an estimate around 100,000 people, with Buddhists, Hindus, Christians and Muslims each constituting a significant portion of the population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "ratnapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3641,
+    "attempt": 3611,
+    "place_id": "gn-1237980",
+    "input": {
+      "place": {
+        "place_id": "gn-1237980",
+        "name": "Kurunegala",
+        "country": "Sri Lanka",
+        "subdivision": "North Western Province",
+        "lat": 7.4839,
+        "lon": 80.3683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kurunegala",
+          "url": "https://en.wikipedia.org/wiki/Kurunegala",
+          "text": "Kurunegala (Sinhala: කුරුණෑගල, IPA: [kurunæːɡələ]; Tamil: குருணாகல், IPA: [kuɾuɳaːɣɐl]) is a major city in Sri Lanka. It is the capital city of the North Western Province and the Kurunegala District. Kurunegala was an ancient royal capital for 50 years, from the end of the 13th century to the start of the 14th century. It is at the junction of several main roads linking to other important parts of the country. It is about 94 kilometres (58 mi) from Colombo, 42 kilometres (26 mi) from Kandy and  51 kilometres (32 mi) from Matale.\nLocated at an altitude of 116 metres (381 ft) above sea level, Kurunegala is surrounded by coconut plantations and rubber estates. There are eight very noticeable large rocks that encircle and dominate the city. Kurunegala's rocks rise from the plain below and have characteristic names, six of which come from the animals that they are imagined to represent. The largest among them is Ethagala or the \"Elephant Rock\" (though the translation is actually tusker), reaches 325 metres (1,066 ft). The shape of Ethagala resembles an elephant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "kurunegala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3642,
+    "attempt": 3612,
+    "place_id": "gn-1260045",
+    "input": {
+      "place": {
+        "place_id": "gn-1260045",
+        "name": "Patti",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 31.28092,
+        "lon": 74.85849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Patti, Punjab",
+          "url": "https://en.wikipedia.org/wiki/Patti,_Punjab",
+          "text": "Patti is an old city, near Tarn Taran Sahib city and a municipal council of the Tarn Taran district in the Majha region of Indian state of Punjab, located 47 Kilometres from Amritsar. Patti city is situated close to the Pakistani border. It is connected through a rail network starting from Amritsar station to Khem Karan station, with Khem Karan being its last station of India.\nPatti was a residence of Rai Duni Chand, a rich landlord, one of whose daughters, Bibi Rajni was a known devotee of Guru Ram Das Ji. Mughal Governor of Punjab during Mughal period also lived in Patti. Before independence, Patti was a Tehsil of the Lahore district. The city houses a historic Mughal Fort and remains of the city wall as well as a number of other historical and religious places. Nowadays Patti is developing rapidly but economy of the city is still largely dependent on agriculture and allied activities. There are a number of colleges and schools. Patti has become the first border town in Punjab where all eligible beneficiaries are vaccinated with the first dose of the COVID-19 vaccine and has become an example for other areas in Punjab. The vaccination drive ran under leadership of Dr. Gursimran Singh, a young medical officer working at a local government hospital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "patti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3643,
+    "attempt": 3613,
+    "place_id": "gn-1261760",
+    "input": {
+      "place": {
+        "place_id": "gn-1261760",
+        "name": "Narsampet",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 17.92786,
+        "lon": 79.89227
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narsampet",
+          "url": "https://en.wikipedia.org/wiki/Narsampet",
+          "text": "Narsampet is a largest Town in Warangal district of the Indian state of Telangana.\nHeadquarters of Narsampet Revenue Division (it is one of the 5 Revenue divisions in Erstwhile Warangal district). As part of Telangana Districts re-organisation. The town is 36 km east of District Headquarter Warangal.\nThere are many rice mills which replicates rich agricultural growth in the region and colleges in the Town Such as Government Medical College, BITS, JITS, Siddarth Degree College etc.The Town has rice mills, oil mills, Agricultural Market Committee, and all departmental offices. The Narsampet Town is a small commercial centre, for a region covering about 240 villages including some of villages from Mahabubabad and Mulugi Districts. The villages depend on Narsampet  to market their agricultural produce and to procure their consumer needs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "narsampet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3644,
+    "attempt": 3614,
+    "place_id": "gn-1528182",
+    "input": {
+      "place": {
+        "place_id": "gn-1528182",
+        "name": "Kara-Balta",
+        "country": "Kyrgyzstan",
+        "subdivision": "Chuy Region",
+        "lat": 42.81423,
+        "lon": 73.84813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kara-Balta",
+          "url": "https://en.wikipedia.org/wiki/Kara-Balta",
+          "text": "Kara-Balta (; Dungan, Russian and Kyrgyz: Кара-Балта; lit. 'Black Ax') is a city and municipality on the Kara-Balta River, in Chüy Region, in northern Kyrgyzstan, the capital of Jayyl District. Its population was 48,278 in 2021.\nKara-Balta is located on the northern slopes of the Kyrgyz Ala-Too, in the western part of Chüy Region, 62 km (39 mi) west of the capital of Bishkek. The road continues west through Kaindy toward Taraz, Kazakhstan. Another road goes south through the Töö-Ashuu Pass and then splits, one branch going west to Talas Province and the other south and then east through the Suusamyr valley to Balykchy on Lake Issyk Kul. It has a temperate climate. The terrain is flat, with a slight slope downwards from the south to the north. As one drives from Bishkek and enters Kara-Balta by the main road, a large monument of Jayil Baatir - one of the city's main attractions - greets the driver on the right-hand side."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "kara balta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "balta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3645,
+    "attempt": 3615,
+    "place_id": "gn-2504072",
+    "input": {
+      "place": {
+        "place_id": "gn-2504072",
+        "name": "Besbes",
+        "country": "Algeria",
+        "subdivision": "El Tarf",
+        "lat": 36.70222,
+        "lon": 7.84722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Besbes",
+          "url": "https://en.wikipedia.org/wiki/Besbes",
+          "text": "Besbes (Arabic: بسباس) is a city in Algeria.\nIt was founded by the French in the early 19th century 1868 as a colonial district \"Commune\". It was given the name of Randon after the French Army general Jacques Louis Randon, but the local population used to call the area \"Besbes\" which was given to the city as a formal name after Algeria's independence in 1962.\nBesbes is located in the west of El Tarf Province, 24 km to the south of Annaba. The city is surrounded by agricultural land of the Annaba plain. During the French rule, the new village was inhabited by rich Pied-Noir families who own most of the surrounding farms.\nWell before the arrival of the French, there were four big families including the Nacer, Dorbani, Doukani and Djemil families. These families are recognised as the bed rock of what Besbes is today.\nThe population of the settlement of Besbes based on the Algerian Census of 2008 is given as 14,157. The commune of Besbes, which includes the urban settlements of Besbes and Daghoussa had a population of 46,341."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "besbes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3646,
+    "attempt": 3616,
+    "place_id": "gn-2525450",
+    "input": {
+      "place": {
+        "place_id": "gn-2525450",
+        "name": "Caltagirone",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.23785,
+        "lon": 14.51551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caltagirone",
+          "url": "https://en.wikipedia.org/wiki/Caltagirone",
+          "text": "Caltagirone (Italian: [kaltadʒiˈroːne]; Sicilian: Cartaggiruni [kaɾtaddʒɪˈɾuːnɪ, katta-] or Caltaggiruni; Latin: Calata Hieronis) is an inland city and municipality (Italian: comune) in the Metropolitan City of Catania, on the island (and region) of Sicily, Southern Italy, about 70 kilometres (43 mi) southwest of Catania.\nIt is the fifth most populous municipality of the Metropolitan City, behind Catania, Acireale, Misterbianco and Paternò. Alongside Catania, it is the only town that has a tribunal seat in the former province. Since 1987, the comune has enjoyed the City title, through a presidential act. After Caltanissetta, it is the second-most populous comune in Central Sicily.\nThe town is a production center of pottery, particularly maiolica and terra-cotta wares. Contemporary production is more and more oriented to artistic production of ceramics and terra-cotta sculptures. Other activities are mainly related to agriculture (production of grapes, olives, peaches), third-sector activities, light industry and tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "caltagirone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3647,
+    "attempt": 3617,
+    "place_id": "gn-2646517",
+    "input": {
+      "place": {
+        "place_id": "gn-2646517",
+        "name": "Hounslow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.46839,
+        "lon": -0.36092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hounslow",
+          "url": "https://en.wikipedia.org/wiki/Hounslow",
+          "text": "Hounslow ( HOWNZ-loh) is a large town in West London, England, 10+3⁄4 miles (17.5 kilometres) west-southwest of Charing Cross. It is the administrative centre of the London Borough of Hounslow, and is identified in the London Plan as one of the 14 metropolitan centres in Greater London.\nIt is bounded by Isleworth to the east, Twickenham to its south, Feltham to its west and Southall to its north.\nThe Hounslow post town covers the TW3, TW4, TW5 and TW6 postcodes. Most of the post town is in the London Borough of Hounslow, but parts fall within the London Borough of Richmond upon Thames and the London Borough of Hillingdon, notably including Heathrow Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "hounslow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3648,
+    "attempt": 3618,
+    "place_id": "gn-2656490",
+    "input": {
+      "place": {
+        "place_id": "gn-2656490",
+        "name": "Ballymena",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.86357,
+        "lon": -6.27628
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballymena",
+          "url": "https://en.wikipedia.org/wiki/Ballymena",
+          "text": "Ballymena ( BAL-ee-MEE-nə; from Irish: an Baile Meánach [ənˠ ˌbˠalʲə ˈmʲaːn̪ˠəx], meaning 'the middle townland') is a town in County Antrim, Northern Ireland. It is situated on the Braid River, about 28 miles (45 km) northwest of Belfast. It had a population of 31,205 at the 2021 census, making it the seventh largest town in Northern Ireland by population. It is part of the Borough of Mid and East Antrim.\nThe town was built on the Braid River, on land given to the Adair family by King Charles I in 1626, with a right to hold two annual fairs and a Saturday market in perpetuity. Surrounding villages are Cullybackey, Ahoghill, Broughshane, and Kells-Connor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "ballymena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3649,
+    "attempt": 3619,
+    "place_id": "gn-292231",
+    "input": {
+      "place": {
+        "place_id": "gn-292231",
+        "name": "Dibba Al-Fujairah",
+        "country": "United Arab Emirates",
+        "subdivision": "Fujairah",
+        "lat": 25.59246,
+        "lon": 56.26176
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dibba Al-Fujairah",
+          "url": "https://en.wikipedia.org/wiki/Dibba_Al-Fujairah",
+          "text": "Dibba Al-Fujairah (Arabic: دبا الفجيرة) is a city in the Emirate of Fujairah, located on the northeast part of the United Arab Emirates. It is geographically part of the Dibba region. Dibba Al-Fujairah is considered to be the second largest city in the emirate of Fujairah after Fujairah City. With an area of 68 square kilometres, Dibba Al-Fujairah had an estimated population of 41,017 (estimate) in July 2019. Dibba Al-Fujairah is mostly populated by the Al Dhanhani, Al Yammahi, Al Abdouli, Al Sereidi, Al Antali, Al Hindassi, and Al Zeyoudi tribes. \n\nDibba Al-Fujairah has a number of suburbs and smaller neighborhoods, including Akamiya, Al-Rashidiya, Wasit, Al-Ghurfah, Sumbraid, Rul Dadna, Al-'Aqqah, Suwayfah, and Sharm. Akamiya features a health centre, capable of serving 2,000 patients, which opened in 2011 following delays caused by staff shortages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "dibba al fujairah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dibba",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fujairah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3650,
+    "attempt": 3620,
+    "place_id": "gn-3058531",
+    "input": {
+      "place": {
+        "place_id": "gn-3058531",
+        "name": "Nitra",
+        "country": "Slovakia",
+        "subdivision": "Nitra Region",
+        "lat": 48.30763,
+        "lon": 18.08453
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nitra",
+          "url": "https://en.wikipedia.org/wiki/Nitra",
+          "text": "Nitra (Slovak pronunciation: [ˈɲitra] ; also known by other alternative names) (Hungarian: Nyitra) is a city in southwestern Slovakia, situated at the foot of the Zobor Mountain in the Nitra River Valley about 90 km (56 mi) northeast of the country's capital, Bratislava. With a population of about 78,353, it is the fifth-largest city in Slovakia. Nitra stands on varied terrain, which features both rolling hills and vast plains, particularly to the south. Nitra is one of the oldest cities in Slovakia. It was the center of the Principality of Nitra, a duchy of great historic significance. Today, the city serves as the administrative center of Nitra Region (kraj) and Nitra District (okres). Nitra is the agricultural capital of Slovakia due to its long tradition of farming, favorable climate, and geography."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "nitra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

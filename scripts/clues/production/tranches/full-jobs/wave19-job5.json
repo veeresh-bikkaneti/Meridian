@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 3711,
+    "attempt": 3681,
+    "place_id": "gn-5335006",
+    "input": {
+      "place": {
+        "place_id": "gn-5335006",
+        "name": "Cathedral City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.77974,
+        "lon": -116.46529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cathedral City, California",
+          "url": "https://en.wikipedia.org/wiki/Cathedral_City,_California",
+          "text": "Cathedral City is a desert resort city in Riverside County, California, United States, within the Colorado Desert's Coachella Valley. Situated between Palm Springs and Rancho Mirage, the city has the second largest population, after Indio, of the nine cities in the Coachella Valley. Its population was 51,493 at the 2020 census, a slight increase from 51,200 at the 2010 census.\nPrior to the arrival of European colonists, the land was part of the territory inhabited by the Cahuilla Indians. Today every other square mile of the city is part of the Agua Caliente Band of Cahuilla Indians reservation land. Development of a town began when a housing subdivision was built in 1925. It became an incorporated municipality in 1981.\nThe city's name is derived from Cathedral Canyon located to the south of the city in the foothills of the Santa Rosa and San Jacinto Mountains National Monument. The canyon is said to have received its name because certain rock formations in the canyon were reminiscent of a cathedral. A flood in August 1946 significantly altered the cathedral-like features of the canyon.\nIn the United Kingdom a population center needs to have city status, and a cathedral, in order to be called a cathedral city. This prompted Robert Ripley to include the town of Cathedral City in his December 9, 1939, Believe It Or Not column stating, \"Believe it or not … there is no church in Cathedral City, Calif. It is named after a canyon\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "cathedral city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cathedral",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3712,
+    "attempt": 3682,
+    "place_id": "gn-5381002",
+    "input": {
+      "place": {
+        "place_id": "gn-5381002",
+        "name": "Paradise",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 39.75961,
+        "lon": -121.62192
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paradise, California",
+          "url": "https://en.wikipedia.org/wiki/Paradise,_California",
+          "text": "Paradise is an incorporated town in Butte County, California, United States, in the Sierra Nevada foothills above the northeastern Sacramento Valley. As of the 2020 census, the town population was 4,764, a decline of over 80% from the 26,218 residents recorded in the 2010 census.\nOn November 8, 2018, a major wildfire, the Camp Fire, killed 85 people and destroyed much of Paradise and Magalia, as well as most of Butte Creek Canyon and Concow. In November 2023, it was reported that there were a little over 9,000 residents living in Paradise, roughly double the number from three years prior. Over 2,500 new structures had also been built, with more construction ongoing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "paradise",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3713,
+    "attempt": 3683,
+    "place_id": "gn-757033",
+    "input": {
+      "place": {
+        "place_id": "gn-757033",
+        "name": "Tarnobrzeg",
+        "country": "Poland",
+        "subdivision": "Subcarpathia",
+        "lat": 50.57304,
+        "lon": 21.67937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarnobrzeg",
+          "url": "https://en.wikipedia.org/wiki/Tarnobrzeg",
+          "text": "Tarnobrzeg [tarˈnɔbʐɛk]  is a city in south-eastern Poland (historic Lesser Poland), on the east bank of the river Vistula, with 49,419 inhabitants, as of 31 December 2009. Situated in the Subcarpathian Voivodeship (Polish: Województwo podkarpackie) since 1999, it had previously been the capital of Tarnobrzeg Voivodeship (1975–1998). Tarnobrzeg lies in the Sandomierz Basin, and directly borders the town of Sandomierz, Świętokrzyskie Voivodeship. Its history dates back to the year 1593, when it was granted Magdeburg rights, and belonged to the Tarnowski family. For centuries Tarnobrzeg remained a small town, which did not develop until the post-World War II period, when it became center of an industrial area, based on rich sulfur deposits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "tarnobrzeg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3714,
+    "attempt": 3684,
+    "place_id": "gn-1003763",
+    "input": {
+      "place": {
+        "place_id": "gn-1003763",
+        "name": "Frankfort",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.27888,
+        "lon": 28.49696
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frankfort, Free State",
+          "url": "https://en.wikipedia.org/wiki/Frankfort,_Free_State",
+          "text": "Frankfort is a small farming town situated on the banks of the Wilge River in the Free State province of South Africa. The town was laid out in 1869 on the farm Roodepoort, and named Frankfurt (after Frankfurt-am-Main in Germany) by Albert van Gordon. The town later received municipality status in 1896.\nFrankfort is now the capital town to Villiers, Cornelia and Tweeling, called the Mafube Municipality. The main street is 'Brand Street', named after the 4th president of the Orange Free State, Sir Johannes Brand. (The name has since changed to J.J Hadebe.) Sir Johannes Brand visited the town during 1883 and laid the cornerstone of the Dutch Reformed Church. This church was burnt down by the British troops during the Second Boer War (1899–1902). After the war the church was rebuilt and inaugurated in 1918. The Second Boer War was disastrous for the town; according to one contemporary source there were ′not a house or tree′ remaining after the destruction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "frankfort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3715,
+    "attempt": 3685,
+    "place_id": "gn-1261922",
+    "input": {
+      "place": {
+        "place_id": "gn-1261922",
+        "name": "Nangal",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 31.38966,
+        "lon": 76.37574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nangal",
+          "url": "https://en.wikipedia.org/wiki/Nangal",
+          "text": "Nangal is a town, near city of Rupnagar in Rupnagar district in Punjab, India.\nIt sits at the foot of the Shiwalik Hills where it was established after plans for a dam required the movement of previously established villages. Residential areas include Modern Avenue, Shivalik Avenue, Naya Nangal Township, BBMB Township and  Nangal Basti area (Railway Road). Industrial areas include Focal Point, NFL Factory, PACL. Naya Nangal is planned town with parks like Madhuvan Park, Captain Amol Kalia Park and stadium like NFL Stadium. Naya Nangal also has Well established Recreational clubs, like Golf club, Naya Nangal NFL club Sector 4, Anand Bhawan Club, Swimming club, Race tracks and cycling tracks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "nangal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3716,
+    "attempt": 3686,
+    "place_id": "gn-1267675",
+    "input": {
+      "place": {
+        "place_id": "gn-1267675",
+        "name": "Kurseong",
+        "country": "India",
+        "subdivision": "West Bengal",
+        "lat": 26.88251,
+        "lon": 88.27729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kurseong",
+          "url": "https://en.wikipedia.org/wiki/Kurseong",
+          "text": "Kurseong (Nepali pronunciation: [ˈkʰʌrsaŋ], Bengali pronunciation: [ˈkaɾʃi̯aŋ]) is a town and a municipality in Darjeeling district in the Indian state of West Bengal. It is the headquarters of the Kurseong subdivision.\nLocated at an altitude of 1,482.55 metres (4,864.0 ft), Kurseong is 32 kilometres (20 mi) from Darjeeling and has a pleasant climate throughout the year.\nKurseong is 34 kilometres (21 mi) from Siliguri and is connected to the city by road and the Darjeeling Himalayan Railway. The nearest airport is at Bagdogra and the nearest major railway station is New Jalpaiguri, which is about 45 kilometres (28 mi) from the town. The economy is based primarily on education and tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "kurseong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3717,
+    "attempt": 3687,
+    "place_id": "gn-1626183",
+    "input": {
+      "place": {
+        "place_id": "gn-1626183",
+        "name": "Sumber",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.76028,
+        "lon": 108.48306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sumber, Cirebon",
+          "url": "https://en.wikipedia.org/wiki/Sumber,_Cirebon",
+          "text": "Sumber (Sundanese: ᮞᮥᮙ᮪ᮘᮨᮁ; Javanese: ꦯꦸꦩ꧀ꦧꦺꦂ) is a district which serves as the regency seat of the Cirebon Regency of West Java, Indonesia. It is divided into 14 villages which are listed as follows:\n\nThe first 12 of these 14 are classed as urban kelurahan (Babakan occupying 1.38 km2, Sumber 2.50 km2, Perbutulan 0.53 km2, Kaliwadas 1.76 km2, Pasalakan 1.62 km2, Watubelah 1.93 km2, Pejambon 1.44 km2, Gegunung 1.72 km2, Kemantren 0.75 km2, Sendang 0.74 km2, Tukmudal 2.30 km2 and Kenanga 1.86 km2), while the remaining 2 are classed as rural desa and are situated in the south of the district (Matangaji with an area of 2.48 km2 and Sidawangi 4.64 km2)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "sumber",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3718,
+    "attempt": 3688,
+    "place_id": "gn-1710011",
+    "input": {
+      "place": {
+        "place_id": "gn-1710011",
+        "name": "Kabacan",
+        "country": "Philippines",
+        "subdivision": "Soccsksargen",
+        "lat": 7.10667,
+        "lon": 124.82917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kabacan",
+          "url": "https://en.wikipedia.org/wiki/Kabacan",
+          "text": "Kabacan officially the Municipality of Kabacan (Maguindanaon: Inged nu Kabakan, Jawi: ايڠد نو كباكن; Ilocano: Ili ti Kabacan; Hiligaynon: Banwa sang Kabacan; Cebuano: Lungsod sa Kabacan; Tagalog: Bayan ng Kabacan), is a municipality in the province of Cotabato, Philippines. According to the 2024 census, it has a population of 77,945 people.\nThe town is predominantly composed of rice farms made possible by the influx of Ilocano-speaking people from northern Philippines. The University of Southern Mindanao is in Kabacan. It is strategically located between the cities of Cotabato and Davao from west to east and the cities of Cagayan de Oro and Iligan from the north and General Santos from the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "kabacan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3719,
+    "attempt": 3689,
+    "place_id": "gn-1721636",
+    "input": {
+      "place": {
+        "place_id": "gn-1721636",
+        "name": "Cabiao",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 15.2488,
+        "lon": 120.8548
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabiao",
+          "url": "https://en.wikipedia.org/wiki/Cabiao",
+          "text": "Cabiao, officially the Municipality of Cabiao (Tagalog: Bayan ng Cabiao, Kapampangan: Balen ning Cabiao), is a municipality in the province of Nueva Ecija, Philippines. According to the 2024 census, it has a population of 89,497 people. Cabiao is the 3rd most populous, one of the richest, and fastest growing municipality in the province, only behind Talavera and Guimba. If cities are included, the town ranks 6th.\nAccording to the National Competitiveness Council in Cities/Municipalities Competitiveness Index 2018, Cabiao is ranked 10th in Overall Municipal category with 1,400 participating municipalities and 30th place in first to second class municipal category. The town also boasts of being 2nd place in the Resiliency category.\nThe town is part of the so-called \"Rice Granary Capital of the Philippines\", and is also remarked as the \"Sweet Sorghum Capital of Nueva Ecija\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "cabiao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3720,
+    "attempt": 3690,
+    "place_id": "gn-1835447",
+    "input": {
+      "place": {
+        "place_id": "gn-1835447",
+        "name": "Boryeong",
+        "country": "South Korea",
+        "subdivision": "Chungcheongnam-do",
+        "lat": 36.34931,
+        "lon": 126.59772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boryeong",
+          "url": "https://en.wikipedia.org/wiki/Boryeong",
+          "text": "Boryeong (Korean: 보령; Korean pronunciation: [po.ɾjʌŋ]), commonly known as Daecheon, is a city in South Chungcheong Province, South Korea. Boryeong is known around Korea for its beaches, particularly Daecheon Beach, and the annual Boryeong Mud Festival around July. The city's beach-mud is widely touted for its cosmetic properties. As elsewhere along the southwest coast of the Korean Peninsula, there are numerous small islands, many of which are connected by ferry to Daecheon Port.\nBoryeong gained its present boundaries in 1995, with the merger of Boryeong-gun and Daecheon City. Previously, the two entities had been united under the name Boryeong County (Boryeong-gun) since the Joseon Dynasty and had been separated in 1986."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "boryeong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3721,
+    "attempt": 3691,
+    "place_id": "gn-2395635",
+    "input": {
+      "place": {
+        "place_id": "gn-2395635",
+        "name": "Allada",
+        "country": "Benin",
+        "subdivision": "Atlantique",
+        "lat": 6.66547,
+        "lon": 2.15138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Allada",
+          "url": "https://en.wikipedia.org/wiki/Allada",
+          "text": "Allada [a.la.da] is a town, arrondissement, and commune, located in the Atlantique Department of Benin.\nThe current town of Allada corresponds to Great Ardra (also called Grand Ardra, or Arda), which was the capital of an Adja-Eʋe kingdom also called Allada (the kingdom of Ardra or kingdom of Allada), which existed as a sovereign kingdom from around the 13th or 14th century (date of the initial settlements by Aja people, reorganized as a kingdom c. 1600) until 1724, when it fell to the armies of neighbour Kingdom of Dahomey. The present-day commune of Allada covers an area of 381 square kilometres and as of 2013 had a population of 127,512 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "allada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3722,
+    "attempt": 3692,
+    "place_id": "gn-2641557",
+    "input": {
+      "place": {
+        "place_id": "gn-2641557",
+        "name": "Newton Abbot",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.52858,
+        "lon": -3.61186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton Abbot",
+          "url": "https://en.wikipedia.org/wiki/Newton_Abbot",
+          "text": "Newton Abbot is a market town and civil parish on the River Teign in the Teignbridge District of Devon, England. It lies near the River Teign and Whitelake, approximately 26 miles (42 km) southwest of Plymouth, 13 miles (21 km) southwest of Exeter, and 40 miles (64 km) north-northeast of Taunton. It had a population of 26,746 at the 2021 census, which was previously estimated at 26,655 in 2019.\nNewton Abbot grew rapidly in the Victorian era as the home of the South Devon Railway locomotive works. This later became a major steam engine shed, retained to service British Railways diesel locomotives until 1981. It now houses the Brunel industrial estate. The town has a race course nearby, the most westerly in England, and a country park, Decoy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "newton abbot",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "abbot",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3723,
+    "attempt": 3693,
+    "place_id": "gn-2651500",
+    "input": {
+      "place": {
+        "place_id": "gn-2651500",
+        "name": "Dartford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.44657,
+        "lon": 0.21423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dartford",
+          "url": "https://en.wikipedia.org/wiki/Dartford",
+          "text": "Dartford is the principal town in the Borough of Dartford, Kent, England. It is located 18 mi (29 km) south-east of Central London and is situated adjacent to the London Borough of Bexley to its west. To its north, across the Thames Estuary, is Thurrock in Essex, which can be reached via the Dartford Crossing. To its east lies the Borough of Gravesham and to the south the district of Sevenoaks. It had a population of 51,240 in 2018.\nThe town centre lies in a valley through which the River Darent flows and where the old road from London to Dover crossed: hence the name, which derives from Darent + ford. Dartford became a market town in medieval times and, although today it is principally a commuter town for Greater London, it has a long history of religious, industrial and cultural importance. It is an important rail hub; the main through-road now by-passes the town itself."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "dartford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3724,
+    "attempt": 3694,
+    "place_id": "gn-2756987",
+    "input": {
+      "place": {
+        "place_id": "gn-2756987",
+        "name": "Deventer",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.255,
+        "lon": 6.16389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deventer",
+          "url": "https://en.wikipedia.org/wiki/Deventer",
+          "text": "Deventer (Dutch: [ˈdeːvəntər] ; Sallands: Daeventer) is a city and municipality in the Salland historical region of the province of Overijssel, Netherlands. In 2026 the municipality of Deventer had a population of 105,111. The city is largely situated on the east bank of the river IJssel, but it also has a small part of its territory on the west bank. In 2005 the municipality of Bathmen (with a population of about 5,000 people) was merged with Deventer as part of a national effort to reduce bureaucracy in the country.\nDeventer is one of the oldest cities in the Netherlands. The place is mentioned in 9th-century sources from the Diocese of Utrecht. A charter from 877 AD mentions seven farmsteads in Daventre portu (the Deventer harbor). In 952 AD, Deventer is mentioned as a city in a gift certificate from King Otto I. After the place had acquired more and more rights and privileges over time, it received the municipal lands from Emperor Henry V in 1123. This is considered by historians to be the moment of Deventer obtaining the city rights by the inhabitants. The city has the oldest stone house, the oldest walking park and with the Athenaeum library also the oldest scientific library in the Netherlands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "deventer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3725,
+    "attempt": 3695,
+    "place_id": "gn-3031133",
+    "input": {
+      "place": {
+        "place_id": "gn-3031133",
+        "name": "Boulogne-sur-Mer",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.72485,
+        "lon": 1.61373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boulogne-sur-Mer",
+          "url": "https://en.wikipedia.org/wiki/Boulogne-sur-Mer",
+          "text": "Boulogne-sur-Mer (French: [bulɔɲ syʁ mɛʁ] ; Picard: Boulonne-su-Mér; Dutch: Bonen; Latin: Gesoriacum or Bononia), often called just Boulogne (UK: , US: ), is a port city in Northern France. It is a sub-prefecture of the department of Pas-de-Calais. Boulogne lies on the Côte d'Opale, a touristic stretch of French coast on the English Channel between Calais and Normandy, and the most visited location in the region after the Lille conurbation. Boulogne is its department's third-largest city after Calais and Arras. It is also the country's largest fishing port, specialising in herring.\nBoulogne is an ancient town and was the main Roman port for trade and communication with its Province of Britain. After a period of Germanic presence following the collapse of the Empire, Boulogne was integrated into the County of Boulogne of the Kingdom of France during the Middle Ages. It was occupied by the Kingdom of England numerous times due to conflict between the two nations. In 1805 it was a staging area for Napoleon's troops for several months during his planned invasion of the United Kingdom.\nThe city's 12th-century belfry is recognised by UNESCO as a World Heritage Site (along with other belfries of Belgium and France), while another popular attraction is the marine conservation centre Nausicaa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "boulogne sur mer",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "boulogne",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mer",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3726,
+    "attempt": 3696,
+    "place_id": "gn-3038350",
+    "input": {
+      "place": {
+        "place_id": "gn-3038350",
+        "name": "Aix-les-Bains",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.69173,
+        "lon": 5.90863
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aix-les-Bains",
+          "url": "https://en.wikipedia.org/wiki/Aix-les-Bains",
+          "text": "Aix-les-Bains (US: ; French: [ɛks le bɛ̃] ; Arpitan: Èx-los-Bens; lit. 'Aix-the-Baths'), known locally simply as Aix, is a commune in the southeastern French department of Savoie.\nSituated on the shore of the largest natural lake of glacial origin in France, the Lac du Bourget, this resort is a major spa town; it has the largest freshwater marina in France. It is the second largest city in the Savoie department in terms of population, with a population of 32,406 as of 2023. It is part of the Chambéry functional urban area.\nA leading town of the Belle Époque, of international renown, Aix-les-Bains was a vacation destination for nobility and the wealthy.  Although the thermal baths are no longer the main attraction in Aix, the area continues to draw visitors for water sports and activities. The town has partially compensated for the loss of visitors coming for spa treatments by developing tourism. It hosts up to 200,000 general visitors annually, between tourists and people seeking mineral bath therapy. It is also an industrial city, with a few large companies such as General Electric, the headquarters of the Léon Grosse companies, ABB Cellier, Aixam, as well as a high-quality leather goods factory.\nIn addition to thermal baths and tourism, Aix-les-Bains is known for its national Musilac festival. It has four flowers and two golden flowers at the Concours des villes et villages fleuris, as well as the City of Art and History label."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "aix les bains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "aix",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3727,
+    "attempt": 3697,
+    "place_id": "gn-3092931",
+    "input": {
+      "place": {
+        "place_id": "gn-3092931",
+        "name": "Lubin",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.40089,
+        "lon": 16.20149
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lubin",
+          "url": "https://en.wikipedia.org/wiki/Lubin",
+          "text": "Lubin (Polish: [ˈlubin] ; German: Lüben) is a city in Lower Silesian Voivodeship in south-western Poland. It is the administrative seat of Lubin County, and also of the rural district called Gmina Lubin, although it is not part of the territory of the latter, as the town forms a separate urban gmina. As of 2021, the city had a total population of 70,815.\nLubin was a small town with medieval origins, being a castellan seat in the 12th century. Over the centuries it prospered as a center of cloth and linen making. It owed its recent great growth to the discovery of the largest copper ore deposits in Europe in 1957. The city is one of the major industrial locations in Lower Silesia, with the headquarters of the third-largest Polish corporation, the KGHM Polska Miedź mining company, one of the world's leading copper and silver producers. It is one of four cities in the Copper Belt (along with Legnica, Głogów and Polkowice). It is located on the main highway connecting the port city of Szczecin with the Czech–Polish border, part of the European route E65. Lubin has free public transport.\nThe city contains Gothic and Baroque landmarks, and is home to accomplished men's football and women's handball teams."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "lubin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3728,
+    "attempt": 3698,
+    "place_id": "gn-312114",
+    "input": {
+      "place": {
+        "place_id": "gn-312114",
+        "name": "Hınıs",
+        "country": "Türkiye",
+        "subdivision": "Erzurum",
+        "lat": 39.35766,
+        "lon": 41.69253
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hınıs",
+          "url": "https://en.wikipedia.org/wiki/Hınıs",
+          "text": "Hınıs (Kurdish: Xinûs; Armenian: Խնուս, romanized: Khnus) is a municipality and district of Erzurum Province, Turkey. Its area is 1,367 km2, and its population is 24,680 (2022). Historical monuments in the town include the castle and the Ulu Cami Mosque, said to be built in 1734 by Alaeddin, the bey of Muş. The town is populated by Kurds.\nThe district, which is 150 km away from the city of Muş, is very close to Hamurpert Lake, which has an important place in history. Hınıs district is surrounded by the Ak Dağ mountains from the north, Bingöl Mountains from the west and south, and Akdoğan mountains from the south to the east. Hınıs district is neighbors with Tekman and Karayazı districts to the north, Karaçoban district to the east, and Varto, Bulanık and Malazgirt districts of Muş to the south. In addition, the Varto city is only 40 km from Hınıs. Hınıs is a plain district and Hınıs Plain is one of the most fertile plains of the region. Therefore, agriculture and animal husbandry are the main sources of income in the district. It has the same characteristics as Erzurum in terms of climate and nature. Winters are cold and snowy, and summers are generally cool. In general, it can be said that it is 5-6 degrees warmer than Erzurum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "h n s",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "h",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "n",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3729,
+    "attempt": 3699,
+    "place_id": "gn-3153623",
+    "input": {
+      "place": {
+        "place_id": "gn-3153623",
+        "name": "Haugesund",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 59.41378,
+        "lon": 5.268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haugesund",
+          "url": "https://en.wikipedia.org/wiki/Haugesund",
+          "text": "Haugesund ([ˈhæʉɡəsʉn] ) is a town in Haugesund Municipality in Rogaland county, Norway. The town is located along the Karmsundet strait on the southwest coast of Norway. The town lies about 60 kilometres (37 mi) north of the city of Stavanger and about 120 kilometres (75 mi) south of the city of Bergen.\nThe 21.42-square-kilometre (5,290-acre) town has a population (2025) of 47,346 and a population density of 2,210 inhabitants per square kilometre (5,700/sq mi). The town of Haugesund dominates the landscape of the area. About 15.54 square kilometres (6.00 sq mi) of the municipality (about 21% of the municipality) is covered by the urban area of the town of Haugesund. The remaining area of the municipality (about 79% of the land area) is very rural. The portion of the municipality including the urban town of Haugesund has about 37,600 residents, while the rural portion of the municipality has about 1,000 residents. The town of Haugesund has grown to the south, so a portion of the urban town crosses over into Karmøy Municipality. The 5.88-square-kilometre (2.27 sq mi) area of the town located in Karmøy has about 9,700 residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "haugesund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3730,
+    "attempt": 3700,
+    "place_id": "gn-3449747",
+    "input": {
+      "place": {
+        "place_id": "gn-3449747",
+        "name": "Santa Vitória do Palmar",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -33.51889,
+        "lon": -53.36806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Vitória do Palmar",
+          "url": "https://en.wikipedia.org/wiki/Santa_Vitória_do_Palmar",
+          "text": "Santa Vitória do Palmar (lit. \"Saint Victoria of the Palms\") is a Brazilian city and municipality. It is the southernmost municipality in Brazil, located in the state of Rio Grande do Sul. To the west of the municipality is the Lagoa Mirim and beyond that is Uruguay; to the east and southeast lies the Atlantic Ocean, and to the north is the city of Rio Grande. To the south, it borders the municipality of Chuí and Uruguay.\nThe city proper is located approximately 16 km (9.9 mi) inland from the Atlantic, 8 km (5.0 mi) east of Lagoa Mirim and 20 km (12 mi) north of the Uruguayan border at Chuí. The city is traversed by the Brazilian federal highway BR-471, the most important road link between Brazil and Uruguay. It is 504 km (313 mi) by road from the state capital, Porto Alegre, and about 370 km (230 mi) from Uruguay's capital, Montevideo.\nSanta Vitória do Palmar used to be the southernmost city in Brazil, until the former village of Chuí was split from its territory and incorporated as a new city in 1997. However, while the urban seat of Chuí is more southerly, the territory of Santa Vitória do Palmar still extends slightly further south than Chuí's, and contains Brazil's southernmost geographic point, located on a bend of the Chuí River just upstream from its mouth on the Atlantic Ocean, near the village of Barra do Chuí, which also belongs to the municipality.\nThe municipality lies on a windy coastal plain which is a mosaic of sand dunes, lagoons (Lagoa Mangueira being the largest one), marshland spots and rice farms. This variety of different ecosystems side by side ensures a rich biodiversity, protected in the municipality's northern part in the Taim Ecological Station, shared with Rio Grande. The city's economy is based on rice growing, beef cattle and sheep raised for wool, in addition to being a transit point on BR-471, the main highway linking Brazil and Uruguay.\nSanta Vitória do Palmar is a large municipality, about 160 km (99 mi) long north–south. Its coast also includes the larger part of Cassino Beach, the world's longest uninterrupted stretch of sandy ocean shore, over 240 km (150 mi) from the stony breakwaters of Rio Grande in the north to the mouth of Chuí River in the south. Two small beach resort villages are located in the municipality: Praia do Hermenegildo and Barra do Chuí, which is Brazil's southernmost inhabited place.\nFour stones from the Santa Vitoria do Palmar meteorite was found near the town in 2003 and 2004."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 429
+    },
+    "banned_terms": [
+      {
+        "term": "santa vitoria do palmar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vitoria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palmar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

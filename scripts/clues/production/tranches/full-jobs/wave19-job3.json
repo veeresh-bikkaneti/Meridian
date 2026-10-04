@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 3671,
+    "attempt": 3641,
+    "place_id": "gn-6138495",
+    "input": {
+      "place": {
+        "place_id": "gn-6138495",
+        "name": "Saint-Jean-sur-Richelieu",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.30713,
+        "lon": -73.26259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Jean-sur-Richelieu",
+          "url": "https://en.wikipedia.org/wiki/Saint-Jean-sur-Richelieu",
+          "text": "Saint-Jean-sur-Richelieu (French pronunciation: [sɛ̃ ʒɑ̃ syʁ ʁiʃ(ə)ljø], lit. 'Saint-Jean on Richelieu') is a city in eastern Montérégie in the Canadian province of Quebec, about 40 kilometres (25 mi) southeast of Montreal, roughly halfway between Montreal and the Canada–United States border with the state of Vermont. It straddles the west and east banks of the Richelieu River (which is accompanied by a canal) at the northernmost navigable point of Lake Champlain. As of December 2019, the population was 98,036. The city has experienced steady growth, up from the official 2021 Census count of 97,873 residents. It hosts the annual International Balloon Festival of Saint-Jean-sur-Richelieu, a hot air balloon festival which attracts thousands of tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "saint jean sur richelieu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "richelieu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3672,
+    "attempt": 3642,
+    "place_id": "gn-688723",
+    "input": {
+      "place": {
+        "place_id": "gn-688723",
+        "name": "Vyshhorod",
+        "country": "Ukraine",
+        "subdivision": "Kyiv Oblast",
+        "lat": 50.58312,
+        "lon": 30.48566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vyshhorod",
+          "url": "https://en.wikipedia.org/wiki/Vyshhorod",
+          "text": "Vyshhorod (Ukrainian: Вишгород, IPA: [ˈwɪʒɦorod] ; Russian: Вышгород, romanized: Vyshgorod) is a city in Kyiv Oblast, central Ukraine, situated immediately north of the capital Kyiv, and part of the Kyiv metropolitan area. It is on the right (western) bank of the Dnieper river and, as the location of the Kyiv Hydroelectric Power Plant, the northern part of the city is beside the Kyiv Reservoir. It is the administrative center of Vyshhorod Raion and hosts the administration of Vyshhorod urban hromada, one of the hromadas of Ukraine.\nFirst mentioned in the 10th century, Vyshhorod is now a notable industrial center and a growing commuter town for Kyiv. Its population is approximately 33,109 (2022 estimate)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "vyshhorod",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3673,
+    "attempt": 3643,
+    "place_id": "gn-757718",
+    "input": {
+      "place": {
+        "place_id": "gn-757718",
+        "name": "Suwałki",
+        "country": "Poland",
+        "subdivision": "Podlasie",
+        "lat": 54.11175,
+        "lon": 22.93087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suwałki",
+          "url": "https://en.wikipedia.org/wiki/Suwałki",
+          "text": "Suwałki is a city in northeastern Poland with a population of 69,206 (2021). It is the capital of Suwałki County and one of the most important centers of commerce in the Podlaskie Voivodeship.\nA relatively young city, Suwałki is one of the largest cities and economic and cultural centers of north-eastern Poland, and the largest city and the capital of the historical Suwałki Region. The city owed its past growth to its administrative role and location on important trade routes. It escaped major destruction in each of the world wars preserving the historic city centre. It is a tourist destination thanks to favourable location near the Suwałki Landscape Park and Wigry National Park. Suwałki is located next to the strategically important Via Baltica road connecting Warsaw with Kaunas, Riga, Tallinn and Helsinki, about 30 km (19 mi) from the southwestern Lithuanian border. The Czarna Hańcza river flows through the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "suwa ki",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "suwa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ki",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3674,
+    "attempt": 3644,
+    "place_id": "gn-878281",
+    "input": {
+      "place": {
+        "place_id": "gn-878281",
+        "name": "Lindi",
+        "country": "Tanzania",
+        "subdivision": "Lindi",
+        "lat": -9.99709,
+        "lon": 39.71649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lindi",
+          "url": "https://en.wikipedia.org/wiki/Lindi",
+          "text": "Lindi\n is a historic coastal town in southern Tanzania and the administrative center of the Lindi Region, the least populated region in the country. Situated at the head of Lindi Bay along the Indian Ocean, the town is located approximately 105 kilometers (65 miles) north of Mtwara, the southernmost coastal town in Tanzania, and about 450 kilometers (280 miles) south of Dar es Salaam, the nation's largest city.\nThe town of Lindi is part of the larger municipality bearing the same name. Notably, Lindi Historic Town is recognized as a national historic site in Tanzania. Additionally, Lindi Airport, located 20 kilometers (12 miles) northeast of the town, providing air connectivity to the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "lindi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3675,
+    "attempt": 3645,
+    "place_id": "gn-879431",
+    "input": {
+      "place": {
+        "place_id": "gn-879431",
+        "name": "Victoria Falls",
+        "country": "Zimbabwe",
+        "subdivision": "Matabeleland North",
+        "lat": -17.93285,
+        "lon": 25.83066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victoria Falls",
+          "url": "https://en.wikipedia.org/wiki/Victoria_Falls",
+          "text": "Victoria Falls (Lozi: Mosi-oa-Tunya, \"Thundering Smoke/Smoke that Rises\"; Tonga: Shungu Namutitima, \"Boiling Water\") is a waterfall on the Zambezi River, located on the border between Zambia and Zimbabwe. It is one of the world's largest waterfalls, with a width of 1,708 m (5,604 ft). The region around it has a high degree of biodiversity in both plants and animals.\nArchaeology and oral history describe a long record of African knowledge of the site. Although known to some European geographers before the 19th century, Scottish missionary David Livingstone was introduced to the falls in 1855, naming them Victoria Falls after Queen Victoria. Since the mid-20th century, the site has been a major tourist destination. Zambia and Zimbabwe both have national parks and tourism infrastructure at the site. Research in the late 2010s found that precipitation variability due to climate change is likely to alter the character of the falls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "victoria falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3676,
+    "attempt": 3646,
+    "place_id": "gn-108435",
+    "input": {
+      "place": {
+        "place_id": "gn-108435",
+        "name": "Ar Rass",
+        "country": "Saudi Arabia",
+        "subdivision": "Al-Qassim Region",
+        "lat": 25.86944,
+        "lon": 43.4973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ar Rass",
+          "url": "https://en.wikipedia.org/wiki/Ar_Rass",
+          "text": "Rass (also spelled Ar Rass, or Al-Ras; Arabic: الرس) is a Saudi Arabian City, located in Al-Qassim Province. It lies southwest of Buraidah, the capital of the province and north of Riyadh, the national capital.\nRass is the largest city in Al-Qassim province by area and third largest by population.\nRass is Arabic for \"an old well\", and it was mentioned in a poem of Hassan Bin Thabit, the poet who was a companion (Sahaba) of the Islamic prophet, Muhammad.\nThe city is ruled by the Al Assaf family. It has 19 official sub-governorates, and is surrounded by around two hundred villages, and Bedouin settlements, mainly on its southern and western sides. and al-Rass is a historical city that was a resource for the Arab tribes in the peninsula, and most of Najd, especially Qassim, was inhabited by the tribes of Bani Asad, which were left to be replaced by other tribes. He was the first to inhabit the Al-Rass after the Asadites, the Banu Tamim, who moved to it from Ashikar, and the Banu Lam and their most tribes followed them, the Dhafir tribe and Al-Fadoul tribe, along with the Al Katheer and Al Mughayra family."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "ar rass",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ar",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rass",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3677,
+    "attempt": 3647,
+    "place_id": "gn-1175021",
+    "input": {
+      "place": {
+        "place_id": "gn-1175021",
+        "name": "Kandhkot",
+        "country": "Pakistan",
+        "subdivision": "Sindh",
+        "lat": 28.24574,
+        "lon": 69.17974
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kandhkot",
+          "url": "https://en.wikipedia.org/wiki/Kandhkot",
+          "text": "Kandhkot (Sindhi: ڪنڌڪوٽ; Urdu: كندھ كوٹ) is a city in Kashmore District in the Sindh province of Pakistan. It is the 98th largest city of Pakistan with a population of 100,698 according to the 2017 census.\nIn the last quarter of 2022, Kandhkot along with other many cities in Sindh, was struck by major flooding. Many people died in the city due to heavy rainfall resulting in urban flooding.\nThe Sindh government, under the Public Private Partnership initiative, planned to construct a bridge on the River Indus to provide better connectivity between Khairpur, Nathanshah, and Kandiaro. The Chief Minister, Syed Murad Ali Shah, presided over the meeting where the decision was made. The construction of the Ghotki-Kandhkot bridge on the Indus River is expected to be completed by July 2023. Additionally, a link road to the M-9 motorway will also be constructed. Kandhkot Tehsil comprises the following union councils:"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "kandhkot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3678,
+    "attempt": 3648,
+    "place_id": "gn-1257928",
+    "input": {
+      "place": {
+        "place_id": "gn-1257928",
+        "name": "Sabalgarh",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 26.24918,
+        "lon": 77.40786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sabalgarh",
+          "url": "https://en.wikipedia.org/wiki/Sabalgarh",
+          "text": "Sabalgarh is a municipality in Morena district in the Indian state of Madhya Pradesh.\nThe town was founded byJadoun Rajput King, living near Chambal river beside Karaoli, The town has a strong fort called Sabalgarh Fort is situated on a large rock in northeastern. \nPresently, the fortress is in ruins and is infamous for stories of hauntings and ghosts. The fort consists of a defensive structure and one main palaces and many other buildings. The fort has been controlled by a number of different rulers in its history.\nAbout 50 km from the town is Asia's largest siphon, built at the intersection of the Kuno River and the Chambal Right Main canal. \nThe Chambal River is 20 km from town and is a habitat for Indian alligator."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "sabalgarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3679,
+    "attempt": 3649,
+    "place_id": "gn-1259440",
+    "input": {
+      "place": {
+        "place_id": "gn-1259440",
+        "name": "Pollachi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.65825,
+        "lon": 77.0085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pollachi",
+          "url": "https://en.wikipedia.org/wiki/Pollachi",
+          "text": "Pollachi is a town and municipality in Coimbatore district of the Indian state of Tamil Nadu. It is the administrative headquarters of Pollachi taluk. It is situated near the center of the South Indian Peninsula, surrounded by Western Ghats. Agriculture and textile industries contribute heavily to the economy of the town and the town is a popular marketplace for jaggery, vegetables and cattle.\nThe town is a part of Pollachi constituency that elects its member to the Tamil Nadu legislative assembly and the Pollachi constituency that elects its member of parliament. The town is administered by Pollachi Municipality established in 1949 and has a population of 90,180 as per the 2011 census. The town is popular for the film shooting that takes place here and many films in Tamil and other languages have been shot here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "pollachi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3680,
+    "attempt": 3650,
+    "place_id": "gn-1260671",
+    "input": {
+      "place": {
+        "place_id": "gn-1260671",
+        "name": "Palani",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.45034,
+        "lon": 77.5209
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palani",
+          "url": "https://en.wikipedia.org/wiki/Palani",
+          "text": "Palani or Pazhani (Tamil: [paɻani]) is a town in Dindigul district of Tamil Nadu state in India. It is located about 60 kilometres (37 mi) west of Dindigul, 106 kilometres (66 mi) south-east of Coimbatore, 122 kilometres (76 mi) north-west of Madurai, 67 kilometres (42 mi) from Kodaikanal. The Palani Murugan Temple or Arulmigu Dhandayuthapani Swamy Temple (Thiru Avinankudi), dedicated to Murugan is situated on a hill overlooking the town. The temple is visited by more than 7 million pilgrims each year. As of 2011, the town had a population of 70,467 and the Taluk had a population of 292,301 which makes it the second largest town in the district after Dindigul."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "palani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3681,
+    "attempt": 3651,
+    "place_id": "gn-1262374",
+    "input": {
+      "place": {
+        "place_id": "gn-1262374",
+        "name": "Mussoorie",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 30.45498,
+        "lon": 78.07068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mussoorie",
+          "url": "https://en.wikipedia.org/wiki/Mussoorie",
+          "text": "Mussoorie (Garhwali: [məsuːɾiː]) is a hill station and a municipal board in the Dehradun district of the Indian state of Uttarakhand. It is about 26 kilometres (16 mi) from the state Winter capital Dehradun and 289 km (180 mi) north of the national capital of New Delhi. The hill station is in the foothills of the Garhwal Himalayan range. The adjoining town of Landour, which includes a military cantonment, is considered part of \"greater Mussoorie\", as are the townships Barlowganj and Jharipani.\nMussoorie is at an average altitude of 2,001 metres (6,565 ft). To the northeast are the Himalayan snow ranges, and to the south, the Doon Valley and Sivalik Hills ranges. The second highest point is the original Lal Tibba in Landour, with a height of over 2,258 m (7,408 ft). Mussoorie is popularly known as The Queen of the Hills.\nThere were 3.02 million (30.23 lac) travellers to Mussoorie in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "mussoorie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3682,
+    "attempt": 3652,
+    "place_id": "gn-1266849",
+    "input": {
+      "place": {
+        "place_id": "gn-1266849",
+        "name": "Khatauli",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 29.27844,
+        "lon": 77.73302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khatauli",
+          "url": "https://en.wikipedia.org/wiki/Khatauli",
+          "text": "Khatauli is a city and nagar palika in Muzaffarnagar district in the Indian state of Uttar Pradesh. A part of National Capital Region, the town is situated 100 km away from the national capital New Delhi.  \nKhatauli lies on the National Highway 58 which is an important route for trade and commerce and also a main route for the many Hindu pilgrim places like Haridwar, Rishikesh, Kedarnath, Badrinath and many hill stations like  Dehradun, Mussoorie, and Chopta.  Khatauli was declared as Tehsil in 2007. The town lies on Delhi - Saharanpur (via Meerut) railway route.\nKhatauli came into news because of a train accident on 19 August 2017 caused by human negligence. As many as 14 coaches of the Puri Haridwar Kalinga Utkal Express went off track."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "khatauli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3683,
+    "attempt": 3653,
+    "place_id": "gn-1308204",
+    "input": {
+      "place": {
+        "place_id": "gn-1308204",
+        "name": "Myanaung",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Ayeyarwady",
+        "lat": 18.28651,
+        "lon": 95.32014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Myanaung",
+          "url": "https://en.wikipedia.org/wiki/Myanaung",
+          "text": "Myanaung (MYAN-owng, Burmese: မြန်အောင်မြို့, [mjàɰ̃ ʔàʊɰ̃ mjo̰]) is a town in northern Ayeyarwady Region of south-west Myanmar. It is the capital of Myanaung District and the administrative seat of Myanaung Township. The town has six urban wards, numbered one through six going from the north to the south. The town is located along the western bank of the Irrawaddy River and serves as a railway and waterway stop between Lower Myanmar and Kyangin. The Light Infantry Battalion 51 is based just outside of Ward 6 next to the Industrial Zone serving the town.\nThe town of Myanaung was founded around the year 1250 by as a Mon settlement called Gu Htut (ဂူထွတ်). The area was conquered by Alaungpaya during the Konbaung–Hanthawaddy War in 1754. He renamed the town Myanaung, (lit. 'Succeed quickly') after bringing the town to prominence by winning a naval battle in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "myanaung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3684,
+    "attempt": 3654,
+    "place_id": "gn-1527719",
+    "input": {
+      "place": {
+        "place_id": "gn-1527719",
+        "name": "Kyzyl-Kyya",
+        "country": "Kyrgyzstan",
+        "subdivision": "Batken",
+        "lat": 40.25684,
+        "lon": 72.12793
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kyzyl-Kyya",
+          "url": "https://en.wikipedia.org/wiki/Kyzyl-Kyya",
+          "text": "Kyzyl-Kyya, also spelt Kyzyl-Kyia (Kyrgyz: Кызыл-Кыя, IPA: [qɯzɯ́ɫ qɯjɑ́]) and Kyzyl-Kiya (Russian: Кызыл-Кия, IPA: [kɨˈzɨɫ kʲɪˈja]), is a city in Batken Region, in southwestern Kyrgyzstan. It is a city of regional significance, not part of a district, and consists of the town proper and the villages Karavan, Ak-Bulak and Jin-Jigen. Its area is 78 square kilometres (30 sq mi), and its resident population was 56,819 in 2021 (both including the villages Karavan, Ak-Bulak and Jin-Jigen). It is situated on the southern edge of the Fergana Valley, 32 km southeast of Fergana, and 65 km southwest of Osh. The town is one of the oldest centers of the coal mining industry in Kyrgyzstan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "kyzyl kyya",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kyzyl",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kyya",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3685,
+    "attempt": 3655,
+    "place_id": "gn-1581349",
+    "input": {
+      "place": {
+        "place_id": "gn-1581349",
+        "name": "Hà Giang",
+        "country": "Vietnam",
+        "subdivision": "Tuyen Quang",
+        "lat": 22.82333,
+        "lon": 104.98357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hà Giang",
+          "url": "https://en.wikipedia.org/wiki/Hà_Giang",
+          "text": "Hà Giang (Vietnamese pronunciation: [haː2 zaːŋ1], ) is a city located on the banks of the Lô River in  Northeast Vietnam. The city has an area of 135.33 km2 and had a population of 55,559 inhabitants as of the 2019 census. The population is composed of 22 different ethnicities, of which 55.7% are Vietnamese people (Kinh) and Tày people. The area has been referred to as \"the most beautiful place in all of Vietnam\".\nThe city is a popular starting point for circumnavigating the Ha Giang Loop, a route along the QL4C commonly traversed by motorbike that includes Lũng Cú, Lung Cu Flag Tower, Đồng Văn district, Sà Phìn, and Mèo Vạc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "ha giang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ha",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "giang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3686,
+    "attempt": 3656,
+    "place_id": "gn-1937274",
+    "input": {
+      "place": {
+        "place_id": "gn-1937274",
+        "name": "Lospalos",
+        "country": "Timor-Leste",
+        "subdivision": "Lautém",
+        "lat": -8.52167,
+        "lon": 126.99833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lospalos",
+          "url": "https://en.wikipedia.org/wiki/Lospalos",
+          "text": "Lospalos (sometimes erroneously written as Los Palos, assuming a nonexistent Spanish etymology) is a city in Timor-Leste, 248 kilometres (154 mi) to the east of Dili, the national capital. Lospalos has a population of 17,186 (2006) and is the capital of Lautém Municipality and the Lospalos Administrative Post. The subdistrict has a population of 25,417 (2004).\nInternationally, \"Lospalos\" is mistakenly spelled as Los Palos, suggesting a Spanish origin of the name. In fact, it is derived from Lohoasupala, the name in Fataluku, the local Papuan language, although nowadays Fataluku speakers use the name Lospala. The preferred spelling in English, as well as Tetum and Portuguese, the official languages of Timor-Leste, is Lospalos.\nLospalos is the hometown of King Cipriano Monteiro da Costa \"Ratu-Mimiraka\" (approx.1890–1953), the King of the Souro Tribes of Watchumura Rato clan. He was a leader with a strong and firm character. During the Portuguese colonial period, King Cipriano was chosen as the representative of all the kings of Lautém in the decision to make Lospalos the capital of the Lautém municipality. The decision to select Lospalos as the capital was influenced by his belief that \"water truly flows from the mountains to the sea, rather than from the sea to the mountains,\" meaning that water, a vital resource for human survival, should be sourced from the highlands. Thus, Lospalos, located in the highlands, was chosen as the source of water for the region.\nKing Cipriano was known for his wisdom, strong leadership, and civilized nature during the Portuguese colonial era. The Portuguese colonial government recognized him as a king of great intelligence in organization, as well as a person with a noble soul.\nLospalos is also the birthplace of José dos Santos \"LOY\", a Timorese combatant and the former Regional Commander of Ponta Leste from 1975 to 1977. He was born on September 20, 1945, in Nanakuru, Souro Village.\nLospalos is the birth city of the co-founder and president of the party APODETI, Frederico Almeida Santos Costa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 330
+    },
+    "banned_terms": [
+      {
+        "term": "lospalos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3687,
+    "attempt": 3657,
+    "place_id": "gn-2359142",
+    "input": {
+      "place": {
+        "place_id": "gn-2359142",
+        "name": "Kongoussi",
+        "country": "Burkina Faso",
+        "subdivision": "Centre-Nord",
+        "lat": 13.32583,
+        "lon": -1.53472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kongoussi",
+          "url": "https://en.wikipedia.org/wiki/Kongoussi",
+          "text": "Kongoussi is a city located in Bam Province in central Burkina Faso, one of the world's poorest countries. It has a population of 53,627 (2019) and is the provincial capital. Mooré, the language of the Mossi people, is spoken along with French, common among those who have attended school or spent time further afield.\n\nKongoussi has deep roots in Mossi history and social relations - certain small Mossi chiefdoms were located in this area (for example at Sabce), although not based in the town itself. Kongoussi benefits from a lakeside location, which is rare in the African Sahel. It therefore received attention from French administrators and before that from the Catholic Church. France had little real impact on the local population but did establish an outpost, promoted cotton production, and built roads. The lake, Lac du Bam is part of the upper reaches of the southward-flowing Volta system, and its presence permits year-round lakeshore cultivation in an otherwise arid climate. Townspeople have irrigated plots close to the lake shore, but the presence of standing water means the malaria risk is high. Aside from tropical fruits, green beans are produced here, usually supplying the winter market in Paris when flights form Ouagadougou permit this. There is a major road in Kongoussi that runs north to Bourzanga and beyond, and a paved road from the center of town down to the capital city of Ouagadougou, which lies 125 kilometres (78 mi) to the south. There are dirt roads and tracks connecting to outlying villages, and on an east–west axis.\nKongoussi has lagged behind nearby towns (like Kaya) in terms of its economic development and infrastructure. While government buildings house the regional outposts of several ministries and organisations (their employees have regular salaries) the majority of the urban population run small businesses or are traders. Kongoussi is in many respects typical of provincial Burkina Faso: limited electricity and piped water supply, dusty dirt roads, and many market stalls and small businesses supplying the townspeople and the rural hinterland. It has a small hospital, a large Catholic mission on the eastern shores of the Lac du Bam, a small number of rudimentary hotels, primary and secondary schools, a cinema and a large market. Access to internet became possible in about 2000, and there is mobile phone service. A few bars, hotels and the cinema provide the nightlife.\nIn the late 1980s, after devastating droughts began to wane, the town started to attract interest from international development organisations, the largest of which was PATECORE, funded by the German aid agency GTZ and concentrating on soil conservation in 240 outlying villages. Plan International also has an office there Kongoussi is well enough connected to Ouagadougou to have a good level of contact with the aid sector."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 460
+    },
+    "banned_terms": [
+      {
+        "term": "kongoussi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3688,
+    "attempt": 3658,
+    "place_id": "gn-2507972",
+    "input": {
+      "place": {
+        "place_id": "gn-2507972",
+        "name": "Aïn Oussera",
+        "country": "Algeria",
+        "subdivision": "Djelfa",
+        "lat": 35.45139,
+        "lon": 2.90583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aïn Oussera",
+          "url": "https://en.wikipedia.org/wiki/Aïn_Oussera",
+          "text": "Aïn Oussera or Aïn Oussara (Arabic: عين وسارة) is a city in Djelfa Province, Algeria, with an estimated (2005) population of 134,174. It is the district seat of the Aïn Oussera District. This city, located 200 km south of the capital Algiers, is crossed by the Trans-Saharan Highway main road number 1. The road that runs through the whole of Algeria from north to south over 2000 km, connects Algiers on its southern border with Mali near Tamanrasset.  \nAin Oussera, has experienced, since 1990, rapid population growth due to its proximity to the 15 MW Es Salam nuclear reactor. Aïn Oussera is on the crossroads of the N1 (Trans-Saharan) and N40B highways. The nearest airport is the Algerian Air Force's Aïn Oussera airfield (DAAQ)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ain oussera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oussera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3689,
+    "attempt": 3659,
+    "place_id": "gn-2633810",
+    "input": {
+      "place": {
+        "place_id": "gn-2633810",
+        "name": "Winsford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.19146,
+        "lon": -2.52398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winsford",
+          "url": "https://en.wikipedia.org/wiki/Winsford",
+          "text": "Winsford is a town and civil parish in the unitary authority of Cheshire West and Chester and the ceremonial county of Cheshire, England. It is on the River Weaver, south of Northwich and west of Middlewich. It grew around the salt mining industry after the river was canalised in the 18th century, allowing freight to be conveyed northwards to the Port of Runcorn on the River Mersey. At the 2021 census the built up area had a population of 32,530 and the parish had a population of 33,547.\nWinsford is split into three areas: Over on the western side of the River Weaver, Wharton on the eastern side, and Swanlow and Dene."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "winsford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3690,
+    "attempt": 3660,
+    "place_id": "gn-2633858",
+    "input": {
+      "place": {
+        "place_id": "gn-2633858",
+        "name": "Winchester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.06513,
+        "lon": -1.3187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winchester",
+          "url": "https://en.wikipedia.org/wiki/Winchester",
+          "text": "Winchester (, ) is a cathedral city in Hampshire, England. The city lies at the heart of the wider City of Winchester, a local government district, at the western end of the South Downs National Park, on the River Itchen. It is 60 miles (97 km) south-west of London and 14 miles (23 km) from Southampton, its nearest major city. At the 2021 census, the built-up area of Winchester had a population of 48,478. The wider City of Winchester district includes towns such as Alresford and Bishop's Waltham and had a population of 127,439 in 2021. Winchester is the county town of Hampshire and contains the head offices of Hampshire County Council.\nWinchester developed from the Roman town of Venta Belgarum, which in turn developed from an Iron Age oppidum. Winchester was one of the most important cities in England in the Anglo-Saxon period.\nThe city's major landmark is Winchester Cathedral. The city is also home to the University of Winchester and Winchester College, the oldest public school in the United Kingdom still using its original buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "winchester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

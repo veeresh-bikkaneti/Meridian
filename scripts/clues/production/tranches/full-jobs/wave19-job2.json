@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 3651,
+    "attempt": 3621,
+    "place_id": "gn-3074967",
+    "input": {
+      "place": {
+        "place_id": "gn-3074967",
+        "name": "Hradec Králové",
+        "country": "Czechia",
+        "subdivision": "Hradec Králové Region",
+        "lat": 50.20923,
+        "lon": 15.83277
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hradec Králové",
+          "url": "https://en.wikipedia.org/wiki/Hradec_Králové",
+          "text": "Hradec Králové (Czech pronunciation: [ˈɦradɛts ˈkraːlovɛː] ; German: Königgrätz) is a city in the Czech Republic. It has about 94,000 inhabitants and is the capital of the Hradec Králové Region. The city is situated in a flat landscape, at the confluence of the Elbe and Orlice rivers.\nFrom 1306, Hradec Králové was a dowry town ruled by Bohemian queens, which helped further development of the city. In the second half of the 18th century, a large military fortress was built in the city, which changed its character. In the first third of the 20th century, after the fortress was abolished, the city was rebuilt again and became appreciated for its high architectural level.\nHradec Králové is a regional centre of culture and education, known for the Klicpera Theatre and University of Hradec Králové. The historic centre of Hradec Králové is well preserved and is protected as an urban monument reservation, and the wider centre is protected as an urban monument zone. The most important monument of Hradec Králové is the Cathedral of the Holy Spirit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "hradec kralove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hradec",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kralove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3652,
+    "attempt": 3622,
+    "place_id": "gn-3083988",
+    "input": {
+      "place": {
+        "place_id": "gn-3083988",
+        "name": "Świętochłowice",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.29636,
+        "lon": 18.91726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Świętochłowice",
+          "url": "https://en.wikipedia.org/wiki/Świętochłowice",
+          "text": "Świętochłowice (Polish: [ɕfjɛntɔxwɔˈvit͡sɛ] ; German: Schwientochlowitz; Silesian: Świyntochłowice) is a city with powiat rights in Silesia in southern Poland, near Katowice. It is also one of the central cities of the Metropolis GZM, with a population of 2 million, and is located in the Silesian Highlands, on the Rawa River (tributary of the Vistula).\nIt is situated in the Silesian Voivodeship since its formation in 1999, previously in Katowice Voivodeship, and before then, of the Autonomous Silesian Voivodeship. Świętochłowice is one of the cities of the 2.7 million conurbation – Katowice urban area and within a greater Katowice-Ostrava metropolitan area populated by about 5,294,000 people. The population of the city is 49,762 (2019)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "swietoch owice",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "swietoch",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "owice",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3653,
+    "attempt": 3623,
+    "place_id": "gn-3090170",
+    "input": {
+      "place": {
+        "place_id": "gn-3090170",
+        "name": "Oleśnica",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.21338,
+        "lon": 17.38986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oleśnica",
+          "url": "https://en.wikipedia.org/wiki/Oleśnica",
+          "text": "Oleśnica (Polish: [ɔlɛˈɕɲit͡sa]; German: Oels) is a town in Lower Silesian Voivodeship, in south-western Poland, within the Wrocław metropolitan area. It is the administrative seat of Oleśnica County and also of the rural district of Gmina Oleśnica, although it is not part of the territory of the latter, the town being an urban gmina in its own right.\nEstablished in medieval Poland, Oleśnica was the capital of a small eponymous principality from 1313 to 1884. It was a notable center of Polish printing in the early modern period. The town is famed for its large 16th-century ducal castle. The castle's inner courtyard arcades, a masterpiece of Renaissance architecture, are iconic in the region. The town also contains architecture in other styles, including Gothic, Baroque, Neoclassical and Renaissance Revival, and is home of the only surviving chained library in Central Europe. It is located on the Route of the Heroes of the Battle of Warsaw 1920, the main highway connecting Wrocław with Łódź, Warsaw and Białystok."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "olesnica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3654,
+    "attempt": 3624,
+    "place_id": "gn-3169412",
+    "input": {
+      "place": {
+        "place_id": "gn-3169412",
+        "name": "Rieti",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 42.40476,
+        "lon": 12.85735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rieti",
+          "url": "https://en.wikipedia.org/wiki/Rieti",
+          "text": "Rieti (Italian: [ˈrjɛːti]; Latin: Reate, Sabino: Riete) is a town and comune in Lazio, central Italy, with a population of 47,700. It is the administrative seat of the province of Rieti and see of the diocese of Rieti, as well as the modern capital of the Sabina region.\nThe town centre stands on a small hilltop, commanding from the southern edge the wide Rieti valley, at the bottom of the Sabine hills and of monti Reatini, including mount Terminillo. The plain was once a large lake, drained by the ancient Romans, and is now the fertile basin of the Velino River. Only the small Ripasottile and Lungo lakes remain of the larger original."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "rieti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3655,
+    "attempt": 3625,
+    "place_id": "gn-3169424",
+    "input": {
+      "place": {
+        "place_id": "gn-3169424",
+        "name": "Riccione",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 43.99942,
+        "lon": 12.65689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riccione",
+          "url": "https://en.wikipedia.org/wiki/Riccione",
+          "text": "Riccione (Italian: [ritˈtʃoːne]; Romagnol: Arciôn [arˈtsoːŋ]) is a comune (municipality) in the Province of Rimini, Emilia-Romagna, northern Italy.\nRiccione is centred on the Rio Melo, a minor river that flows into the Adriatic Sea. In the decades following the construction of the Bologna–Ancona railway in 1861, Riccione grew substantially with the development of tourism and the construction of elegant villas in the Liberty Style. It became independent from the municipality of Rimini in 1922, and was further popularised after the Mussolini family bought a seaside villa for its summer holidays. As of 2023, Riccione had an estimated population of 34,514.\nRiccione's economy is dependent on tourism, especially catering to young people and families."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "riccione",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3656,
+    "attempt": 3626,
+    "place_id": "gn-3197538",
+    "input": {
+      "place": {
+        "place_id": "gn-3197538",
+        "name": "Kotor",
+        "country": "Montenegro",
+        "subdivision": "Kotor",
+        "lat": 42.42067,
+        "lon": 18.76825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kotor",
+          "url": "https://en.wikipedia.org/wiki/Kotor",
+          "text": "Kotor (Montenegrin Cyrillic: Котор, pronounced [kɔ̌tɔr]), historically known as Cattaro (from Italian, pronounced [ˈkattaro]), is a town in Coastal region of Montenegro. It is located in a secluded part of the Bay of Kotor. The city has a population of 13,347 and is the administrative center of Kotor Municipality. \nThe old Mediterranean port of Kotor is surrounded by fortifications built during the Venetian period. It is located on the Bay of Kotor (Boka Kotorska), one of the most indented parts of the Adriatic Sea, which constitutes a ria, meaning a submerged river canyon. Together with the nearly overhanging limestone cliffs of Orjen and Lovćen, Kotor and its surrounding area form the unique landscape.\nSince the early 2000s Kotor has seen an increase in tourists, many of them coming by cruise ship. Visitors are attracted to the natural environment of the Bay of Kotor and the old town of Kotor. Kotor is part of the World Heritage Site dubbed the Natural and Culturo-Historical Region of Kotor.\nThe fortified city of Kotor was also included in UNESCO's World Heritage Site list as part of Venetian Works of Defence between 16th and 17th centuries: Stato da Terra – western Stato da Mar in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "kotor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3657,
+    "attempt": 3627,
+    "place_id": "gn-3470821",
+    "input": {
+      "place": {
+        "place_id": "gn-3470821",
+        "name": "Barra",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -11.08944,
+        "lon": -43.14167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barra, Bahia",
+          "url": "https://en.wikipedia.org/wiki/Barra,_Bahia",
+          "text": "Barra is a municipality in Bahia, Brazil. Barra covers 11,422.537 km2 (4,410.266 mi2), and has a population of 53,910 with a population density of 4.3 inhabitants per square kilometer.\nBarra was originally settled by Xakriabá people who lived along the Rio São Francisco. A corral of Casa da Torre of Dias D’Ávila was established in the ravines of the Rio Grande (Bahia) in 1670 at the junction of the Rio Grande and São Francisco. The Franciscans built a chapel in 1680 and it became locally known as São Francisco das Chagas da Barra do Rio Grande do Sul. This settlement became the Vila de São Francisco do Rio Grande do Sul in 1752. The name was simplified in 1873 to Barra do Rio Grande, and again in 1931 to Barra.\nBarra was one of the most prosperous cities in the state of Bahia due to commercial traffic along the Rio São Francisco. Roadways were built into the interior of Bahia in the 1970s and Barra lost its importance to inland water transportation. Additionally, the highway system did not extend to Barra. The municipality fell into decline and many residents left to look for work elsewhere. Barra was ultimately connected by highway to other areas of Bahia in 1998.\nThe municipality is served by Barra Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "barra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3658,
+    "attempt": 3628,
+    "place_id": "gn-3529981",
+    "input": {
+      "place": {
+        "place_id": "gn-3529981",
+        "name": "Cuautlancingo",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 19.08995,
+        "lon": -98.27319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuautlancingo",
+          "url": "https://en.wikipedia.org/wiki/Cuautlancingo",
+          "text": "Cuautlancingo is a town and municipality in the Mexican state of Puebla. It is part of the Metropolitan area of Puebla. The town is bordered on the north by the state of Tlaxcala, on the east by Tlaxcala and the city of Puebla, on the south by the municipalities of San Pedro Cholula and Puebla, and on the west by the municipality of Coronango.\nThe Main Plant of Volkswagen de México, VW's biggest plant in the world outside Germany, is located in the north of Cuautlancingo. It has a capacity of 2,500 units per day and employs around 14,000 people.\nThe Puebla-area German school, Colegio Humboldt Puebla (Deutsche Schule Puebla), is in Cuautlancingo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "cuautlancingo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3659,
+    "attempt": 3629,
+    "place_id": "gn-3610380",
+    "input": {
+      "place": {
+        "place_id": "gn-3610380",
+        "name": "El Rosario",
+        "country": "Honduras",
+        "subdivision": "Comayagua Department",
+        "lat": 14.57909,
+        "lon": -87.72677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Rosario, Comayagua",
+          "url": "https://en.wikipedia.org/wiki/El_Rosario,_Comayagua",
+          "text": "El Rosario (Spanish pronunciation: [el roˈsaɾjo]) is a municipality in the Honduran department of Comayagua.\nThe municipality consists of a main town (Casco Urbano) with approximately 7,000 residents, and a large number of aldeas or villages, which bring the municipality's entire population to 17,000.  The town is located one hour by car from the department of Comayagua and two and a half hours from Tegucigalpa.  Principal economic activities include farming, construction, and factory work.\nThe main town contains one kindergarten, an elementary school, and one middle high school, where students may study for diplomas in liberal arts or to become conters. There is a health center staffed by a doctor and two nurses.\nEl Rosario has a mine and was founded in 1530 by the Spaniards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "el rosario",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rosario",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3660,
+    "attempt": 3630,
+    "place_id": "gn-3832791",
+    "input": {
+      "place": {
+        "place_id": "gn-3832791",
+        "name": "Villa Carlos Paz",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -31.4183,
+        "lon": -64.49008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa Carlos Paz",
+          "url": "https://en.wikipedia.org/wiki/Villa_Carlos_Paz",
+          "text": "Villa Carlos Paz (locally [ˈbiʝa ˈkaɾlos ˈpas]) is a city in the center-north of the province of Córdoba, Argentina, in the south of the Punilla Valley, lying on the western slope of the Sierras Chicas. It has a population of about 56,000 as per the 2001 census [INDEC]. The area of Punilla is a major tourist destination on the national level, and Villa Carlos Paz is in turn the most important city of Punilla, favoured by its closeness (36 km (22 mi)) to the populous Córdoba City, the capital of the province. Popular tourist activities include bathing in one of the many rivers, fishing, evening shows, kite surfing, windsurfing, hiking and mountain biking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "villa carlos paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carlos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3661,
+    "attempt": 3631,
+    "place_id": "gn-4013727",
+    "input": {
+      "place": {
+        "place_id": "gn-4013727",
+        "name": "Ciudad Altamirano",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 18.35662,
+        "lon": -100.66966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Altamirano",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Altamirano",
+          "text": "Ciudad Altamirano is a city of in the Mexican state of Guerrero (and partially in Michoacán) and serves as the municipal seat for Pungarabato. It is part of the Tierra Caliente region of said entity, on the border with the state of Michoacán.\nIt stands on the Cutzamala River, one of the main tributaries of the Balsas River, at a height of 230 metres (755 ft) above sea level.\nThe 2010 population was reported to be 37,035 by the Congress of Guerrero.\nThe city's name honours Ignacio Manuel Altamirano, a 19th-century president of the Supreme Court and writer born in Tixtla, Guerrero.\nCiudad Altamirano has a paved airport named Santa Bárbara Regional Airport. The name comes from the sister town next to Altamirano. Most (if not all) people refer to it as simply Altamirano Airport, or \"Aeropuerto Altamirano\". The airport does not have any airline services, so the only ones using it are locals who own airplanes. Recently, a small military base was located at the airport.\nThe Centro de Bachillerato Tecnológico Agropecuario No. 18, a high school, is located in Ciudad Altamirano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad altamirano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "altamirano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3662,
+    "attempt": 3632,
+    "place_id": "gn-4166274",
+    "input": {
+      "place": {
+        "place_id": "gn-4166274",
+        "name": "North Port",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.04422,
+        "lon": -82.23593
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Port, Florida",
+          "url": "https://en.wikipedia.org/wiki/North_Port,_Florida",
+          "text": "North Port is a city in Sarasota County, Florida, United States. The population was 74,793 at the 2020 census. It is a principal city in the Sarasota metropolitan area.\nIt was originally developed by General Development Corporation (GDC) as the northern Sarasota County portion of its Port Charlotte development, the other portion located in the adjacent Charlotte County. GDC dubbed the city, \"North Port Charlotte\", and it was incorporated under that name through a special act of the Florida Legislature on June 18, 1959.  By referendum in 1974, the city's residents approved a change to its name as \"North Port\", dropping \"Charlotte\" from its name to proclaim the city as a separate identity. It is home to the Little Salt Spring, an archaeological and paleontological site owned by the University of Miami.\nThe North Port includes Wellen Park, a master-planned community of over 7,000 acres with shopping, restaurants, distinct neighborhoods, and a vibrant downtown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "north port",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3663,
+    "attempt": 3633,
+    "place_id": "gn-4355843",
+    "input": {
+      "place": {
+        "place_id": "gn-4355843",
+        "name": "Gaithersburg",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.14344,
+        "lon": -77.20137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gaithersburg, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Gaithersburg,_Maryland",
+          "text": "Gaithersburg (  GAY-thərz-burg) is a city in Montgomery County, Maryland, United States. At the time of the 2020 United States census, Gaithersburg had a population of 69,657, making it the third-largest incorporated city and the ninth-most populous community in the state. Gaithersburg is located to the northwest of Washington, D.C., and is considered a suburb and a primary city within the Washington metropolitan area. Gaithersburg was incorporated as a town in 1878 and as a city in 1968.\nThe National Institute of Standards and Technology (NIST) is headquartered in Gaithersburg directly west of I-270. Other major employers in the city include IBM, Lockheed Martin Information Systems and Global Services business area headquarters, AstraZeneca. Gaithersburg is also the location of the garrison of the United States Army Reserve Legal Command."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "gaithersburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3664,
+    "attempt": 3634,
+    "place_id": "gn-466990",
+    "input": {
+      "place": {
+        "place_id": "gn-466990",
+        "name": "Yessentuki",
+        "country": "Russia",
+        "subdivision": "Stavropol Kray",
+        "lat": 44.04826,
+        "lon": 42.85638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yessentuki",
+          "url": "https://en.wikipedia.org/wiki/Yessentuki",
+          "text": "Yessentuki (Russian: Ессентуки́, IPA: [jɪsɪntʊˈkʲiˑ]) is a city in Stavropol Krai, Russia, located in the shadow of Mount Elbrus at the base of the Caucasus Mountains. The city serves as a railway station in the Mineralnye Vody—Kislovodsk branch, and is located 43 kilometers (27 mi) southwest of Mineralnye Vody and 17 kilometers (11 mi) west of Pyatigorsk. The city is renowned for its mineral springs and therapeutic spas, and is part of the Caucasian Mineral Waters region.\nIt is considered the cultural capital of Russia's Greek population and close to ten percent of its population is of Greek descent. Population: 119,658 (2021 census); 100,996 (2010 census); 81,758 (2002 census); 85,082 (1989 Soviet census)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "yessentuki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3665,
+    "attempt": 3635,
+    "place_id": "gn-4693342",
+    "input": {
+      "place": {
+        "place_id": "gn-4693342",
+        "name": "Georgetown",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.63269,
+        "lon": -97.67723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Georgetown, Texas",
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Texas",
+          "text": "Georgetown is a city in Texas and the county seat of Williamson County, Texas, United States. The population was 67,176 at the 2020 census, and according to 2025 census estimates, the city is estimated to have a population of 106,907. It is 30 miles (48 km) north of Austin and is part of the Austin–Round Rock–San Marcos metropolitan statistical area.\nGeorgetown has a notable range of Victorian commercial and residential architecture. In 1976, a local historic ordinance was passed to recognize and protect the significance of the historic central business district. In 1977, the Williamson County Courthouse Historical District, containing some 46 contributing structures, was listed on the National Register of Historic Places.\nSouthwestern University is the oldest university in Texas, founded in 1840. Georgetown is known as the \"Red Poppy\" Capital of Texas for the red poppy wildflowers planted throughout the city. Georgetown's Red Poppy Festival, which attracts tens of thousands of visitors annually, is held in April each year on the historic square."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "georgetown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3666,
+    "attempt": 3636,
+    "place_id": "gn-4784112",
+    "input": {
+      "place": {
+        "place_id": "gn-4784112",
+        "name": "Salem",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.29347,
+        "lon": -80.05476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salem, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Salem,_Virginia",
+          "text": "Salem is an independent city in the Commonwealth of Virginia. As of the 2020 census, the population was 25,346. It is the county seat of Roanoke County, although the two are separate jurisdictions. The Bureau of Economic Analysis combines the city of Salem with Roanoke County, which surrounds both Salem and the neighboring City of Roanoke, for statistical purposes. Salem has its own courthouse and sheriff's office, but shares a jail with Roanoke County, which is located in the Roanoke County Courthouse complex in Salem. The Roanoke County Sheriff's Office and Roanoke County Department of Social Services are also located within Salem, though the county administrative offices are located in unincorporated Cave Spring.\nRoanoke College is located in the city. Salem is also the home to a Minor League Baseball team, the Salem RidgeYaks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "salem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3667,
+    "attempt": 3637,
+    "place_id": "gn-4832353",
+    "input": {
+      "place": {
+        "place_id": "gn-4832353",
+        "name": "Danbury",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.39482,
+        "lon": -73.45401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danbury, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Danbury,_Connecticut",
+          "text": "Danbury ( DAN-berr-ee) is a city in Fairfield County, Connecticut, United States, located approximately 50 miles (80 km) northeast of New York City. Danbury's population as of 2020 was 86,518. It is the third-largest city in Western Connecticut, and the seventh-largest city in Connecticut. The city is part of the Western Connecticut Planning Region. Located within the heart of the Housatonic Valley region, the city is a historic commercial hub of western Connecticut, home to many commuters and summer residents from the New York metropolitan area and New England.\nDanbury is nicknamed the \"Hat City\", because it was once the center of the American hat industry, during the nineteenth and early twentieth centuries. The mineral danburite is named after Danbury, while the city itself is named for Danbury in Essex, England.\nDanbury is an economically and culturally diverse city. It is considered the 7th most diverse city in the United States. Up to 35% of its population is foreign-born. Notable populations in Danbury include: Portuguese, Lebanese, Brazilian, Ecuadorian, Indian, German, Polish, Irish, Italian, and Dominican. Danbury Public Schools have students from over 43 countries who speak over 47 languages.\nDanbury is home to Danbury Hospital, Western Connecticut State University, Danbury Fair Mall, and Danbury Municipal Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "danbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3668,
+    "attempt": 3638,
+    "place_id": "gn-5007989",
+    "input": {
+      "place": {
+        "place_id": "gn-5007989",
+        "name": "Saginaw",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.41947,
+        "lon": -83.95081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saginaw, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Saginaw,_Michigan",
+          "text": "Saginaw () is a city in Saginaw County, Michigan, United States, and its county seat. It had a population of 44,202 at the 2020 census. Located along the Saginaw River, Saginaw is adjacent to Saginaw Charter Township and considered part of the Greater Tri-Cities region of Central Michigan. The Saginaw metropolitan area had a population of 190,124 in 2020, while the Tri-Cities area had 377,474 residents.\nEstablished as a fort following the 1819 Treaty of Saginaw, Saginaw was a thriving lumber town in the 19th century. It was an important industrial city and manufacturing center throughout much of the 20th century due to its automobile and automotive parts production led by General Motors. As part of the Rust Belt, its industry and strong manufacturing presence declined, leading to increased unemployment, crime, and a population decline. Modern economic development is focused on comparative advantages in innovation, clean energy, and continued manufacturing exports. However, the city continues to have a higher proportion of manufacturing jobs than the U.S. average."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "saginaw",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3669,
+    "attempt": 3639,
+    "place_id": "gn-5808276",
+    "input": {
+      "place": {
+        "place_id": "gn-5808276",
+        "name": "Richland",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.28569,
+        "lon": -119.28446
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richland, Washington",
+          "url": "https://en.wikipedia.org/wiki/Richland,_Washington",
+          "text": "Richland () is a city in Benton County, Washington, United States. It is located in southeastern Washington at the confluence of the Yakima and the Columbia Rivers. As of the 2020 census, the city's population was 60,560. Along with the nearby cities of Pasco and Kennewick, Richland forms the Tri-Cities metropolitan area.\nThe townsite was established in 1905 and incorporated as Richland in 1910. The U.S. Army acquired the city and surrounding areas in 1943 for the establishment of the Hanford nuclear site, part of the Manhattan Project during World War II. Richland was transformed into a bedroom community for Hanford workers and grew to 25,000 residents by the end of the war. The city remained under control of Hanford contractors until it was re-incorporated as a city in 1958."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "richland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3670,
+    "attempt": 3640,
+    "place_id": "gn-6075292",
+    "input": {
+      "place": {
+        "place_id": "gn-6075292",
+        "name": "Mission",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.13298,
+        "lon": -122.30258
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mission, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Mission,_British_Columbia",
+          "text": "Mission is a city in the Lower Mainland of the province of British Columbia, Canada. It was originally incorporated as a district municipality in 1892, growing to include additional villages and rural areas over the years, adding the original Town of Mission City, which had been an independent core of the region, in 1969. It is bordered by the city of Abbotsford to the south and the city of Maple Ridge to the west. To the east are the unincorporated areas of Hatzic and Dewdney.\nIt is situated on the north bank of the Fraser River, backing onto mountains and lakes overlooking the Central Fraser Valley 65 km (40 miles) southeast of Vancouver."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "mission",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
