@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 5804,
+    "attempt": 5761,
+    "place_id": "gn-2087894",
+    "input": {
+      "place": {
+        "place_id": "gn-2087894",
+        "name": "Rabaul",
+        "country": "Papua New Guinea",
+        "subdivision": "East New Britain Province",
+        "lat": -4.20037,
+        "lon": 152.16297
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rabaul",
+          "url": "https://en.wikipedia.org/wiki/Rabaul",
+          "text": "Rabaul () is a township in the East New Britain province of Papua New Guinea, on the island of New Britain. It lies about 600 km (370 mi) to the east of the island of New Guinea. Rabaul was the provincial capital and most important settlement in the province until it was destroyed in 1994 by falling ash from a volcanic eruption in its harbor. During the eruption, ash was sent thousands of metres into the air, and the subsequent rain of ash caused 80% of the buildings in Rabaul to collapse. After the eruption the capital was moved to Kokopo, about 20 kilometres (12 mi) away. Rabaul is continually threatened by volcanic activity, because it is on the edge of the Rabaul caldera, a flooded caldera of a large pyroclastic shield volcano.\nRabaul was planned and built around the harbour area known as Simpsonhafen (Simpson Harbour) during the German New Guinea administration, which controlled the region from 1884 and formally through 1919. Rabaul was selected as the capital of the German New Guinea administration in 1905, and the administrative offices were transferred there in 1910. Rabaul was captured by the British Empire during the early days of World War I. It became the capital of the Australian-mandated Territory of New Guinea until 1937, when it was first destroyed by a volcano. During World War II, it was captured by Japan in 1942 and became its main base of military and naval activity in the South Pacific. Settlements and military installations around the edge of the caldera are often collectively called Rabaul, although the old town of Rabaul was reduced to practical insignificance by the volcanic eruption in 1937.\nAs a tourist destination, Rabaul is popular for its volcanoes, scuba diving and for snorkelling sites, spectacular harbour and other scenery, World War II history, flora and fauna, and the cultural life of the Tolai people. Before the 1994 eruption, Rabaul was a popular commercial and recreational boating destination; fewer private small craft visit now, but 10 to 12 cruise ships visit Rabaul each year, including the Queen Elizabeth, carrying up to 2,000 passengers. Tourism is a major industry in Rabaul and East New Britain generally."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 365
+    },
+    "banned_terms": [
+      {
+        "term": "rabaul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5805,
+    "attempt": 5762,
+    "place_id": "gn-2204575",
+    "input": {
+      "place": {
+        "place_id": "gn-2204575",
+        "name": "Lami",
+        "country": "Fiji",
+        "subdivision": "Central",
+        "lat": -18.11094,
+        "lon": 178.40943
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lami, Fiji",
+          "url": "https://en.wikipedia.org/wiki/Lami,_Fiji",
+          "text": "Lami (Fijian pronunciation: [lami]) is an urban area in Rewa Province, Fiji, north-west of the capital Suva. It was formally incorporated as a town in 1977, and had a population of 20,529 at the most recent census in 2007. The municipal boundaries enclose an area of 683 square kilometers.\nThe original itaukei inhabitants of Suva were forced to move to Suvavou (\"New Suva\") by the British colonial powers in 1882 to make room for the new capital of Suva.\nLocated on the outskirts of Lami is the Bilo Battery, which was a key defense fortification built during World War II to help guard the main passage in the reef leading into Suva.\nLami is governed by a town council of 12 members, elected for three-year terms, who elect a mayor from among themselves. The mayor's term is one year, but may be extended indefinitely. In the last municipal election, held on 22 October 2005, the Soqosoqo Duavata ni Lewenivanua (SDL) won 11 of the 12 seats, ending 20 years of rule by the Ratepayers Association. The new council chose Tevita Vuatalevu as its mayor.\nFollowing the military coup of 2006, the dictatorial regime dismissed all local government authorities. Marica Rokovada-Hallacy was appointed Administrator of Lami, as well as the nearby capital city of Suva. In 2010, she was replaced in both capacities by Chandu Umaria, a former Mayor of Suva."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "lami",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5806,
+    "attempt": 5763,
+    "place_id": "gn-2636822",
+    "input": {
+      "place": {
+        "place_id": "gn-2636822",
+        "name": "Stone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.9059,
+        "lon": -2.15409
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stone, Staffordshire",
+          "url": "https://en.wikipedia.org/wiki/Stone,_Staffordshire",
+          "text": "Stone is a market town and civil parish in the Borough of Stafford in Staffordshire, England. It is situated approximately 7 miles (11 km) north of Stafford, 7 miles (11 km) south of Stoke-on-Trent and 15 miles (24 km) north of Rugeley. As a notable canal town, Stone is recognised for its rich history, originating from the early Bronze Age and continuing through the Industrial Revolution, with the introduction of the Trent and Mersey Canal shaping the town's development and local industry.\nOriginally governed as an urban district council and a rural district council, Stone became part of the Borough of Stafford in 1974. Over the years, the town has seen a steady growth in its population, which was recorded as 12,305 in the 1991 census, 14,555 in 2001 and 16,385 in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "stone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5807,
+    "attempt": 5764,
+    "place_id": "gn-2640377",
+    "input": {
+      "place": {
+        "place_id": "gn-2640377",
+        "name": "Penzance",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.11861,
+        "lon": -5.53715
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penzance",
+          "url": "https://en.wikipedia.org/wiki/Penzance",
+          "text": "Penzance ( pen-ZANSS; Cornish: Pennsans [pɛnːsanz] , meaning holy head) is a town, civil parish and port in Cornwall, England. It lies 64 miles (103 km) west-southwest of Plymouth, 255 miles (410 km) west-southwest of London, and 9 miles (14 km) east of Land's End. Penzance railway station is the terminus of the Cornish Main Line and is both the southernmost and westernmost station in England. Situated in the shelter of Mount's Bay, the town faces south-east onto the English Channel. As well as Penzance itself, the parish also includes the fishing port of Newlyn and the villages of Mousehole, Paul, Gulval, and Heamoor. At the 2021 census the population of the parish was 20,734 and the population of the Penzance built-up area as defined by the Office for National Statistics was 14,960.\nPenzance was granted a market charter in 1404 and was formally incorporated as a borough in 1614. Chapel Street has a number of interesting features, including the Egyptian House, The Admiral Benbow public house (home to a 19th-century smuggling gang and allegedly the inspiration for Treasure Island's \"Admiral Benbow Inn\"), the Union Hotel (including a Georgian theatre which is no longer in use), and Branwell House, where the mother and aunt of the Brontë sisters once lived. Regency and Georgian terraces and houses are common in some parts of the town. The nearby sub-tropical Morrab Gardens has a large collection of tender trees and shrubs, many of which cannot be grown outdoors anywhere else in the UK. Also of interest is the seafront with its promenade and the open-air seawater Jubilee Pool, one of the oldest surviving Art Deco swimming baths in the country.\nPenzance is the base of the pirates in Gilbert and Sullivan's comic opera The Pirates of Penzance. At the time the libretto was written in 1879, Penzance had become popular as a peaceful resort town, so the idea of it being overrun by pirates was amusing to contemporaries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 325
+    },
+    "banned_terms": [
+      {
+        "term": "penzance",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5808,
+    "attempt": 5765,
+    "place_id": "gn-2640601",
+    "input": {
+      "place": {
+        "place_id": "gn-2640601",
+        "name": "Parkstone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.72994,
+        "lon": -1.94492
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parkstone",
+          "url": "https://en.wikipedia.org/wiki/Parkstone",
+          "text": "Parkstone  is an area of Poole, in the Bournemouth, Christchurch and Poole district, in the ceremonial county of Dorset, England. It is divided into 'Lower' and 'Upper' Parkstone. Upper Parkstone – \"Up-on-'ill\" as it used to be known in local parlance – is so-called because it is largely on higher ground slightly to the north of the lower-lying area of Lower Parkstone – \"The Village\" – which includes areas adjacent to Poole Harbour.\nBecause of the proximity to the shoreline, and the more residential nature of Lower Parkstone, it is the more sought-after district, and originally included Lilliput and the Sandbanks peninsula (now part of Canford Cliffs) within its official bounds. Lower Parkstone is centred on Ashley Cross, the original location of Parkstone Grammar School, near to the parish church of St. Peter. \nUpper Parkstone includes large areas of smaller artisan housing, the shopping district along Ashley Road and the parish church of St. John's, Heatherlands. There are larger properties, however, and views from this higher part of the suburb across Poole Harbour to the Purbeck Hills. Many photographs taken over the years from the Seaview viewpoint (overlooking much of Poole centre and Harbour) exist as postcards, and can be used to chart the changes to the area.\nParkstone is just south of Alder Hills, and east of the Parkstone Bay area of Poole Harbour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "parkstone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5809,
+    "attempt": 5766,
+    "place_id": "gn-2651248",
+    "input": {
+      "place": {
+        "place_id": "gn-2651248",
+        "name": "Dinas Powys",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.43486,
+        "lon": -3.21398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dinas Powys",
+          "url": "https://en.wikipedia.org/wiki/Dinas_Powys",
+          "text": "Dinas Powys (Welsh pronunciation: [ˈdinas ˈpɔwɪs]; also spelt Dinas Powis in English) is a town and community in the Vale of Glamorgan, South Wales. It lies 5.6 miles (9.0 km) south-west of the centre of Cardiff, making it a popular dormitory village for city commuters; it neighbours the larger town of Penarth.\nAlthough several housing developments have been added since the late 20th century, the old centre of Dinas Powys maintains a traditional, almost rural character. It has a village common and small independent shops, pubs, restaurants and community facilities. Garages, small supermarkets, a pharmacy and a veterinary practice can be found in other parts of the town.\nAccording to recent electoral rolls, the population is in the region of 8,800, making Dinas Powys the fifth largest settlement in the Vale of Glamorgan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "dinas powys",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dinas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "powys",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5810,
+    "attempt": 5767,
+    "place_id": "gn-2915067",
+    "input": {
+      "place": {
+        "place_id": "gn-2915067",
+        "name": "Großschönau",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.9,
+        "lon": 14.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Großschönau, Saxony",
+          "url": "https://en.wikipedia.org/wiki/Großschönau,_Saxony",
+          "text": "Großschönau (Upper Sorbian: Wulki Šunow, pronounced [ˈwulkʲi ˈʃunɔf]; Czech: Velký Šenov) is a municipality in the district Görlitz, in Saxony, Germany located in the cross-border region with the Czech Republic. It used to be a famous Upper Lusatian center of Damask fabric production until the end of the 1980s. Since then it has turned into an area of tourism.\nIn Großschönau is the historical sylvan lido Trixi Park, a spa which was expanded with indoor swimming pools, a sauna, camping ground and holiday flats. The town is a child-friendly starting point for hikers and cyclists alike who want to explore both sides of the Czech-German border area with its relatively attractive price level. Mount Lausche (793 m) is situated in the community of Waltersdorf and marks the highest peak of the Lusatian Mountains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "gro schonau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "schonau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5811,
+    "attempt": 5768,
+    "place_id": "gn-2962961",
+    "input": {
+      "place": {
+        "place_id": "gn-2962961",
+        "name": "Letterkenny",
+        "country": "Ireland",
+        "subdivision": "Ulster",
+        "lat": 54.95,
+        "lon": -7.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Letterkenny",
+          "url": "https://en.wikipedia.org/wiki/Letterkenny",
+          "text": "Letterkenny (Irish: Leitir Ceanainn Irish pronunciation: [ˈl̠ʲɛtʲəɾʲ ˈcanˠən̠ʲ], meaning \"hillside of the O'Cannons\"), nicknamed the Cathedral Town, is a large town in County Donegal, Ireland, on the River Swilly in the north-west of the Ulster province. Along with the nearby city of Derry, Letterkenny is a regional economic gateway for the north-west of Ireland.\nLetterkenny began as a market town at the start of the 17th century, during the Plantation of Ulster. A castle once stood near where the Cathedral of St Eunan and St Columba, County Donegal's only Catholic cathedral, stands today. Letterkenny Castle, built in 1625, was located south of Mt Southwell on Castle Street. County Donegal's largest third-level institution, Atlantic Technological University (ATU) Letterkenny, is located in the town, as are St Eunan's College, Highland Radio, and a Hindu temple. Letterkenny was also the original home of Oatfield Sweet Factory, a confectionery manufacturer; the factory closed and was demolished in 2014. In 1798, Theobald Wolfe Tone was arrested at Laird's Hotel in the town. In 2015, Letterkenny was judged as the tidiest town in Ireland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "letterkenny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5812,
+    "attempt": 5769,
+    "place_id": "gn-2965715",
+    "input": {
+      "place": {
+        "place_id": "gn-2965715",
+        "name": "Carrigaline",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 51.81167,
+        "lon": -8.39861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carrigaline",
+          "url": "https://en.wikipedia.org/wiki/Carrigaline",
+          "text": "Carrigaline (; Irish: Carraig Uí Leighin, meaning 'rock of Ó Leighin') is a town and civil parish in County Cork, Ireland, situated on the River Owenabue. Located about 12 kilometres (7.5 mi) south of Cork city, and with a population of 18,239 people, it is one of the largest commuter towns in the county. The R611 regional road passes through the town, and it is just off the N28 national primary route to Ringaskiddy. Carrigaline grew rapidly in the late 20th century, from a village of a few hundred people into a thriving commuter town although some locals still refer to it as \"the village\". The town is one of the key gateways to west Cork, especially for those who arrive by ferry from France. Carrigaline is within the Cork South-Central Dáil constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "carrigaline",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5813,
+    "attempt": 5770,
+    "place_id": "gn-3110101",
+    "input": {
+      "place": {
+        "place_id": "gn-3110101",
+        "name": "Sant Quirze del Vallès",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.53333,
+        "lon": 2.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Quirze del Vallès",
+          "url": "https://en.wikipedia.org/wiki/Sant_Quirze_del_Vallès",
+          "text": "Sant Quirze del Vallès (Catalan pronunciation: [ˌsaŋ ˈkiɾzə ðəl βəˈʎɛs]) is a town located in the comarca of the Vallès Occidental, province of Barcelona, Catalonia.\nIt is located about 12 miles away from the capital city, Barcelona. Sant Quirze is a residential town populated by approximately 20,000 people with a density of 1.432,27 hab/km², and has grown since the end of the 1990s onwards. It shares borders with Sabadell, Rubí, Terrassa and Sant Cugat, among others, which are important towns within the Barcelona area, since they form Catalonia's most important industrial area and probably also Spain's.\nSant Quirze del Vallès is located near the mountain range of the Serra dels Galliners. It has direct access to C58 highway to Barcelona, among others like C58 Manresa and AP7 highway to Girona, Tarragona and Lleida."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "sant quirze del valles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "quirze",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5814,
+    "attempt": 5771,
+    "place_id": "gn-3489331",
+    "input": {
+      "place": {
+        "place_id": "gn-3489331",
+        "name": "Negril",
+        "country": "Jamaica",
+        "subdivision": "Westmoreland",
+        "lat": 18.26844,
+        "lon": -78.3481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Negril",
+          "url": "https://en.wikipedia.org/wiki/Negril",
+          "text": "Negril is a small, widely dispersed beach resort and town located in Westmoreland and Hanover parishes at the far western part of Jamaica, 80.8 kilometres (50.2 mi) southwest from Sangster International Airport in Montego Bay.\nWestmoreland is the westernmost parish in Jamaica, located on the south side of the island. Downtown Negril, the West End cliff resorts to the south of downtown, and the southern portion of the so-called seven miles (11 km) beach are in Westmoreland Parish. The northernmost resorts are along the Negril Beach and are nearer if not across the border where Westmoreland Parish meets the Hanover Parish. The nearest large town is Savanna-la-Mar, the capital of Westmoreland Parish if traveling South West. Whereas going in the opposite direction along the A1 highway is Lucea, the Capital Town of Hanover."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "negril",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5815,
+    "attempt": 5772,
+    "place_id": "gn-4905337",
+    "input": {
+      "place": {
+        "place_id": "gn-4905337",
+        "name": "Park Forest",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.49142,
+        "lon": -87.67449
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Park Forest, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Park_Forest,_Illinois",
+          "text": "Park Forest is a village and south suburb of Chicago in Cook County, Illinois, United States, with a small southern portion in Will County. The village was originally designed by Loebl Schlossman & Bennett as a planned community for veterans returning from World War II. As of the 2020 census, the village had a population of 21,687.\nPark Forest is bordered by Olympia Fields to the north, Chicago Heights to the east, University Park to the south, and Richton Park and Matteson to the west. The village has multiple public and private schools. In addition to the arts and culture scene including Tall Grass Arts Association and the Illinois Theatre Center, residents also have access to a myriad of recreational opportunities for both children and adults such as the Park Forest Aqua Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "park forest",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5816,
+    "attempt": 5773,
+    "place_id": "gn-4955993",
+    "input": {
+      "place": {
+        "place_id": "gn-4955993",
+        "name": "Winthrop",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.3751,
+        "lon": -70.98283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winthrop, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Winthrop,_Massachusetts",
+          "text": "Winthrop is a city in Suffolk County, Massachusetts, United States.  The population was 19,316 at the 2020 census. Winthrop is an ocean-side suburban town in Greater Boston situated at the north entrance to the Boston Harbor, geographically nearby to the Logan International Airport. It is located on a peninsula, 1.6 square miles (4.2 km2) in area, connected to the city of Revere, Massachusetts by a narrow isthmus and to multiple portions of Boston by a bridge over the harbor inlet to the Belle Isle Marsh Reservation in the neighborhood of East Boston, a shared line at the Boston Logan International Airport, and at Deer Island.\nSettled in 1630, Winthrop is one of the oldest communities in the United States. It is also one of the smallest and most densely populated municipalities in Massachusetts. It is one of the four municipalities that comprise Suffolk County (the others are Boston, Revere, and Chelsea). It is the southernmost part of the North Shore area, with a 7-mile (11 km) shoreline that provides views of the Atlantic Ocean to the east and of the Boston skyline to the west.\nIn 2005, the Town of Winthrop voted to change its governance from a representative town meeting adopted in 1920 to a council-manager form of government. Under Massachusetts law, as of 2006 when the new Town Charter took effect, Winthrop became de jure a city. However, it is one of thirteen cities in Massachusetts that chose to remain known as a 'town.'"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "winthrop",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5817,
+    "attempt": 5774,
+    "place_id": "gn-5095281",
+    "input": {
+      "place": {
+        "place_id": "gn-5095281",
+        "name": "Asbury Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.22039,
+        "lon": -74.01208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asbury Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Asbury_Park,_New_Jersey",
+          "text": "Asbury Park () is a beachfront city located on the Jersey Shore in Monmouth County in the U.S. state of New Jersey. It is part of the New York metropolitan area. As of the 2020 United States census, the city's population was 15,188, a decrease of 928 (−5.8%) from the 2010 census count of 16,116, which in turn reflected a decline of 814 (−4.8%) from the 16,930 counted in the 2000 census.\nIn 2022, Asbury Park's beach was named one of the best in the world by Money and one of the best in the country by Travel + Leisure.\nAsbury Park was originally incorporated as a borough by an act of the New Jersey Legislature on March 26, 1874, from portions of Ocean Township. The borough was reincorporated on February 28, 1893. Asbury Park was incorporated as a city, its current type of government, as of March 25, 1897."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "asbury park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "asbury",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5818,
+    "attempt": 5775,
+    "place_id": "gn-5144400",
+    "input": {
+      "place": {
+        "place_id": "gn-5144400",
+        "name": "Whitestone",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.79455,
+        "lon": -73.81847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitestone, Queens",
+          "url": "https://en.wikipedia.org/wiki/Whitestone,_Queens",
+          "text": "Whitestone is a residential neighborhood in the northernmost part of the New York City borough of Queens. The neighborhood proper is located between the East River to the north; College Point and Whitestone Expressway to the west; Flushing and 25th Avenue to the south; and Bayside and Francis Lewis Boulevard to the east.\nWhitestone contains the subsection of Malba, which is bounded to the north by the East River, to the east by the Whitestone Expressway, to the south by 14th Avenue, and to the west by 138th Street. Malba was cited in a New York Times article as one of the few \"elite enclaves\" of Queens.\nWhitestone is located in Queens Community District 7 and its ZIP Code is 11357. It is patrolled by the New York City Police Department's 109th Precinct. Politically, Whitestone is represented by the New York City Council's 19th District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "whitestone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5819,
+    "attempt": 5776,
+    "place_id": "gn-5895482",
+    "input": {
+      "place": {
+        "place_id": "gn-5895482",
+        "name": "Bayview Village",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.77639,
+        "lon": -79.38028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayview Village",
+          "url": "https://en.wikipedia.org/wiki/Bayview_Village",
+          "text": "Bayview Village is a neighbourhood in Toronto, Ontario, Canada. It is part of the federal Don Valley North riding and the provincial Don Valley North electoral district, and Toronto electoral Ward 17: Don Valley North. In 2006, it had a population of 15,370.\nThe area is bordered on the north by Finch Avenue East, on the west by Bayview Avenue, on the east by Leslie Street, and on the south by Highway 401, and also including the grounds of North York General Hospital, east of Leslie in the neighbourhood's southeast corner, according to the City of Toronto's definition. The Bayview Village Association regards the east boundary as the Don River (east branch) and the south boundary as Sheppard Avenue East, thereby excluding land between the Don River and Leslie, Sheppard and Highway 401."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "bayview village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bayview",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5820,
+    "attempt": 5777,
+    "place_id": "gn-6241104",
+    "input": {
+      "place": {
+        "place_id": "gn-6241104",
+        "name": "Solway",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -40.95827,
+        "lon": 175.6102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solway, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Solway,_New_Zealand",
+          "text": "Solway is an old-established residential suburb near the Waingawa River in the south-western part of Masterton, the principal town in the Wairarapa Valley of New Zealand's North Island. It was a small part of Manaia run on which Masterton is built. It takes its present name from Solway House built in 1877 for W. H. Donald.\nSolway College, a Presbyterian girls' boarding school, was established in Solway House in 1916 but Solway's central feature remains the near-moribund Masterton Agricultural & Pastoral Association's Solway Showgrounds opened in 1911. A Wairarapa Farmers Market  for artisan produce is held under the grandstand each Saturday morning. \nSolway also has several parks and reserves, including the Masterton Trust Lands Trust's Millennium Reserve built over the Acclimatisation Society's trout hatcheries and South Park, a softball field and dog-walking area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "solway",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5821,
+    "attempt": 5778,
+    "place_id": "gn-7260892",
+    "input": {
+      "place": {
+        "place_id": "gn-7260892",
+        "name": "Village of Oak Creek (Big Park)",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 34.7809,
+        "lon": -111.76227
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Village of Oak Creek, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Village_of_Oak_Creek,_Arizona",
+          "text": "Village of Oak Creek is an unincorporated community located within Big Park, a census-designated place (CDP) in Yavapai County, Arizona, United States. The population was 6,147 at the 2010 census, up from 5,245 in 2000. Big Park is the name of the CDP while the community is more commonly known as the Village of Oak Creek (VOC), and is a bedroom community for Sedona, located seven miles away. Tourism and service to retirees and second-home owners are the basis for the local economy. Big Park, the pioneers' name for the large open area that became the Village of Oak Creek in the early 1960s, is set among scenic red-rock buttes and canyons. The Bell Rock scenic area adjoins the north end of VOC, and the town is surrounded by the Coconino National Forest. A Forest Service Visitor Center is located at the south end of VOC."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "village of oak creek big park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oak",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "big",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5822,
+    "attempt": 5779,
+    "place_id": "gn-1015694",
+    "input": {
+      "place": {
+        "place_id": "gn-1015694",
+        "name": "Breyten",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -26.30176,
+        "lon": 29.98696
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Breyten",
+          "url": "https://en.wikipedia.org/wiki/Breyten",
+          "text": "Breyten is a small farming town in Mpumalanga, South Africa. It is situated at the foot of Klipstapel, the highest point on the watershed between the westward-flowing Vaal River system and the eastward-flowing Olifants and Komati River systems. The town is located 25 km (15 mi) west of Chrissiesmeer, 30 km (19 mi) north of Ermelo, 32 km (20 mi) southwest of Carolina, and 35 km (21 mi) southeast of Hendrina. The main spoken languages are Zulu, Swati and Afrikaans.\nThe town was built upon the Bothasrust farmstead, which itself was granted to one Lukas Potgieter as compensation for his losing a leg during the First Boer War. The farm was later sold to Nicolaas Breytenbach, a field cornet during the Second Boer War, after whom the town was named in 1906.\nBreyten was once a vibrant railway town. Passenger and freight trains departed and connected in Breyten to Johannesburg, Nelspruit, Witbank, Pretoria and other areas of South Africa. Common freight was agricultural produce and livestock, but most predominantly coal from the local collieries. Due to losses in the manufacturing sector, the town has since become depressed with high unemployment. Breyten is now a stopover for tourists who are headed to either the Lowveld or Highveld. Tourists can be served by a local hotel and a few guest houses.\nBreyten continues to be a mining community, with the majority of the population still employed in collieries such as Tselentis and Spitzkop of the Imbawula Group. Coal is still the most transported good out of Breyten. A leather factory named JCB Leather Works can also be found in Breyten. Breyten now features a private college called Xtensive ICT Academy, which is centered around information technology training."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "breyten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5823,
+    "attempt": 5780,
+    "place_id": "gn-1270448",
+    "input": {
+      "place": {
+        "place_id": "gn-1270448",
+        "name": "Hampi",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 15.3352,
+        "lon": 76.4603
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hampi",
+          "url": "https://en.wikipedia.org/wiki/Hampi",
+          "text": "Hampi or Hampe (Kannada: [hɐmpe]), also referred to as the Group of Monuments at Hampi, is a UNESCO World Heritage Site located in the town of Hampi in Vijayanagara district, east-central Karnataka, India. Hampi predates the Vijayanagara Empire; it is mentioned in the Ramayana and the Puranas of Hinduism as Pampa Devi Tirtha Kshetra. Hampi continues as a religious centre, with the Virupaksha Temple, an active Adi Shankara-linked monastery and various monuments belonging to the old city.\nHampi was the capital of the Vijayanagara (Karnata) Empire from 1336 to 1565 (as Vijayanagara), when it was abandoned. It was a fortified city. Chronicles left by Persian and European travellers, particularly the Portuguese, say that Hampi was a prosperous, wealthy and grand city near the Tungabhadra River, with numerous temples, farms and trading markets. Hampi-Vijayanagara is estimated to be the world's second-largest city by 1500, after Beijing, and probably India's richest at that time, attracting traders from Persia and Portugal. The Vijayanagara Empire was defeated by a coalition of Muslim sultanates; its capital was conquered, pillaged and destroyed by Muslim armies in 1565, after which Hampi remained in ruins.\nSituated in Karnataka, close to the contemporary town of Hampi with the city of Hosapete 13 kilometres (8.1 miles) away, Hampi's ruins are spread over 4,100 hectares (16 sq mi) and it has been described by UNESCO as an \"austere, grandiose site\" of more than 1,600 surviving remains of the last great Hindu kingdom in South India that includes \"forts, riverside features, royal and sacred complexes, temples, shrines, pillared halls, mandapas, memorial structures, water structures and others\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "hampi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

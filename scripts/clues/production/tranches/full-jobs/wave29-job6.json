@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 5744,
+    "attempt": 5701,
+    "place_id": "gn-5412230",
+    "input": {
+      "place": {
+        "place_id": "gn-5412230",
+        "name": "Aspen",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.1911,
+        "lon": -106.81754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aspen, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Aspen,_Colorado",
+          "text": "Aspen is the home rule city that is the county seat of, and the most populous municipality in, Pitkin County, Colorado, United States. The city population was 7,004 at the 2020 United States census. Aspen is in a remote area of the Rocky Mountains' Sawatch Range and Elk Mountains, along the Roaring Fork River at an elevation just below 8,000 feet (2,400 m) on the Western Slope, 11 miles (18 km) west of the Continental Divide. Aspen is now a part of the Rifle, CO Micropolitan Statistical Area.\nFounded as a mining camp during the Colorado Silver Boom and later named Aspen for the abundance of aspen trees in the area, the city boomed during the 1880s, its first decade. The boom ended when the Panic of 1893 led to a collapse of the silver market. For the next half-century, known as \"the quiet years\", the population steadily declined, reaching a nadir of fewer than 1000 by 1930. Aspen's fortunes recovered in the mid-20th century when neighboring Aspen Mountain was developed into a ski resort, and industrialist Walter Paepcke bought many properties in the city in the 1950s and redeveloped them. Today it is home to three institutions, two of which Paepcke helped found, having international importance: the Aspen Music Festival and School, the Aspen Institute, and the Aspen Center for Physics.\nIn the late 20th century, the town became a popular retreat for celebrities. Gonzo journalist Hunter S. Thompson worked out of a downtown hotel and ran unsuccessfully for county sheriff. Singer John Denver wrote two songs about Aspen after settling there. Both figures popularized Aspen among the counter-cultural youth of the 1970s as an ideal place to live, and the city continued to grow even as it gained notoriety for some of the era's hedonistic excesses (particularly its drug culture).\nAspen remains popular as a year-round destination for locals, multiple-home buyers and tourists. Outdoor recreation in the surrounding White River National Forest serves as a summertime counterpart to the city's four ski areas. Prime residential real estate in Aspen is the most expensive of any ski resort in the world on a per-square-foot basis, according to a study of 44 global ski resorts. Aspen is the world's second-highest-rated ski resort in terms of \"the quality and reliability of their conditions and their capacity to withstand climate change.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 389
+    },
+    "banned_terms": [
+      {
+        "term": "aspen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5745,
+    "attempt": 5702,
+    "place_id": "gn-5994839",
+    "input": {
+      "place": {
+        "place_id": "gn-5994839",
+        "name": "Labrador City",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 52.94626,
+        "lon": -66.91137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Labrador City",
+          "url": "https://en.wikipedia.org/wiki/Labrador_City",
+          "text": "Labrador City is a town in western Labrador (part of the Canadian province of Newfoundland and Labrador), near the Quebec border. With a population of 7,412 as of 2021, it is the second-largest population centre in Labrador, behind Happy Valley-Goose Bay. Neighbouring Labrador City is Wabush, a smaller town with a population of approximately 1,964 as of 2021. Together, the \"twin towns\" are known as Labrador West.\nIn the 1960s, Labrador City was founded to accommodate employees of the Iron Ore Company of Canada; iron ore mining continues to be the primary industry in the town.\nThe Labrador City town motto is Kamistiatusset, a Naskapi word meaning \"land of the hard-working people.\"  The Labrador City town crest is that of a snowy owl holding a scroll atop a black spade on a mound of red earth. The symbol represents iron ore mining. The spade is flanked by two caribou. Both snowy owls and caribou are native to the Labrador City area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "labrador city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "labrador",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5746,
+    "attempt": 5703,
+    "place_id": "gn-6240801",
+    "input": {
+      "place": {
+        "place_id": "gn-6240801",
+        "name": "Te Awamutu",
+        "country": "New Zealand",
+        "subdivision": "Waikato Region",
+        "lat": -38.00822,
+        "lon": 175.3302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Te Awamutu",
+          "url": "https://en.wikipedia.org/wiki/Te_Awamutu",
+          "text": "Te Awamutu is a town in the Waikato region in the North Island of New Zealand. It is the council seat of the Waipā District and serves as a service town for the farming communities which surround it. Te Awamutu is located some 30 kilometres (19 mi) south of Hamilton on State Highway 3, one of the two main routes south from Auckland and Hamilton.\nTe Awamutu has a population of 13,950 (June 2025), making it the fifth-largest urban area in the Waikato behind Hamilton, Taupō, Cambridge and Tokoroa.\nThe town is often referred to as \"The Rose Town of New Zealand\" because of its elaborate rose gardens in the centre of the town. Many local businesses use \"Rosetown\" in their name, and the symbol of the rose is widely used on local signs and billboards. The local paper, Te Awamutu Courier, had a symbol of a rose in the masthead on its front page."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "te awamutu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "te",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "awamutu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5747,
+    "attempt": 5704,
+    "place_id": "gn-654498",
+    "input": {
+      "place": {
+        "place_id": "gn-654498",
+        "name": "Kamppi",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.1676,
+        "lon": 24.93038
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kamppi",
+          "url": "https://en.wikipedia.org/wiki/Kamppi",
+          "text": "Kamppi (Swedish: Kampen) is a neighbourhood in the centre of Helsinki, the capital of Finland. The name originally referred to a small area known as the \"Kamppi field\" (see below), but according to the current official designation, \"Kamppi\" encompasses a much larger area with a population of 12,098 people (as of 31 December 2022) and 28,181 jobs (as of 31 December 2012).\nIn common parlance today, the name \"Kamppi\" is often used to refer only to the northernmost part of Kamppi, containing the Kamppi Center shopping centre, the Kamppi metro station and the Tennispalatsi and Sähkötalo buildings.\n\nThe heart of Kamppi is a part of the Central Business District. However, in stark contrast to the other districts of central Helsinki, development in Kamppi was sporadic and the very centre of Kamppi remained entirely undeveloped until 2002."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "kamppi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5748,
+    "attempt": 5705,
+    "place_id": "gn-6559503",
+    "input": {
+      "place": {
+        "place_id": "gn-6559503",
+        "name": "l'Alfàs del Pi",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.58055,
+        "lon": -0.10321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Alfàs del Pi",
+          "url": "https://en.wikipedia.org/wiki/L'Alfàs_del_Pi",
+          "text": "L'Alfàs del Pi (Valencian: [lalˈfaz ðel ˈpi]; Spanish: Alfaz del Pi [alˈfaθ ðel ˈpi]) is a Valencian town and municipality located in the comarca of Marina Baixa, in the province of Alicante, Spain, lying at the foot of Serra Gelada.\nL'Alfàs del Pi has an area of 19.3 km2 and, according to the 2011 census, a total population of 19,802 inhabitants; the latest official estimate (as at 2019) is 20,482. As of 2005, the town had the second largest concentration of Norwegian residents abroad, along with sizable Dutch and English communities. The economy of L'Alfàs del Pi is mainly based on tourism. The most important monument in the city is the Catholic church of Crist del Bon Encert, built in 1784. The town's symbol is a pine tree, which can be found in the church square. It is home to a nationally renowned film festival which runs each year.\nL'Alfàs del Pi has created a planned sea-side community - Platja de l'Albir - situated between Benidorm to the south and Altea to the north in fields earlier dominated by citrus and almond groves. Since 1995, Albir has grown into a village of about 5,000 inhabitants, into a municipality with over 20,000 inhabitants; the majority of whom are originally from Northern Europe.\nL'Alfàs del Pi has a high amount of foreign-born residents, having a higher percentage of foreign residents than Spanish residents. The largest foreign population are Norwegians, who have two public Norwegian schools, paid by the Norwegian government, two elder care centres for Norwegians and the only volunteering centre opened by the Norwegian government outside of Norway.\nIn 2013, the sculpture Paraboloide by Agustín Ibarrola that symbolizes peace and was made in honor of the 2011 Norway Attacks victims was revealed. The sculpture is placed in a park that will be named after Johan Galtung."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "l alfas del pi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "alfas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pi",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5749,
+    "attempt": 5706,
+    "place_id": "gn-6696260",
+    "input": {
+      "place": {
+        "place_id": "gn-6696260",
+        "name": "Matane",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 48.82857,
+        "lon": -67.52197
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matane",
+          "url": "https://en.wikipedia.org/wiki/Matane",
+          "text": "Matane (French pronunciation: [matan] ) is a town on the Gaspé Peninsula in Quebec, Canada, on the south shore of the Saint Lawrence River at the mouth of the Matane River. The town is the seat for the La Matanie Regional County Municipality.\nIn addition to Matane itself, the town's territory also includes the communities of Petit-Matane and Saint-Luc-de-Matane.\nThere is a ferry service which crosses the river to Baie-Comeau and Godbout on the north shore as well as a rail ferry service to Baie-Comeau and Sept-Îles.\nThe name Matane was first assigned to the river by Samuel de Champlain as \"Mantanne\" in 1603. Its meaning is open to different interpretations, with the most common one being that it comes from the Mi'kmaq word mtctan meaning \"beaver pond\", since the region had an abundant beaver population. It could also be a Maliseet word for \"spinal cord\", referring to the course of the Matane River; or from the word Mattawa/Matawin, meaning \"meeting of the waters\". Finally, it could be an abbreviation of the word matandipives, meaning \"shipwreck\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "matane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5750,
+    "attempt": 5707,
+    "place_id": "gn-675480",
+    "input": {
+      "place": {
+        "place_id": "gn-675480",
+        "name": "Islaz",
+        "country": "Romania",
+        "subdivision": "Teleorman County",
+        "lat": 43.72006,
+        "lon": 24.76436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Islaz",
+          "url": "https://en.wikipedia.org/wiki/Islaz",
+          "text": "Islaz (Romanian pronunciation: [isˈlaz]) is a commune in southern Romania, located in the southwestern Teleorman County, 10 km (6.2 mi) west of Turnu Măgurele. It is part of the historical province Oltenia, and is composed of two villages, Islaz and Moldoveni.\nThe commune is situated in the southern reaches of the Wallachian Plain, where the Olt River discharges into the Danube River. To the south, across the Danube, is Bulgaria; to the east, across the Olt, is Turnu Măgurele; and to the west and to the north is Olt County.\nIslaz village was first attested on July 9, 1569, and until 1950 was a part of the former Romanați County. It became notorious in 1848, as the site where the Proclamation of Islaz, listing the  goals of the Wallachian Revolution, was publicly read (June 9, 1848).\nOstrovul Mare is a nature reserve located on two (joined) islands on the Danube, Ostrovul Mare and Ostrovul Calnovăț, in the vicinity of Islaz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "islaz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5751,
+    "attempt": 5708,
+    "place_id": "gn-6930378",
+    "input": {
+      "place": {
+        "place_id": "gn-6930378",
+        "name": "Times Square",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.75636,
+        "lon": -73.98644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Times Square",
+          "url": "https://en.wikipedia.org/wiki/Times_Square",
+          "text": "Times Square is one of the world's busiest pedestrian intersections, tourist destinations, and entertainment hubs. It is formed by the junction of Broadway, Seventh Avenue, and 42nd Street in Midtown Manhattan, New York City. Together with adjacent Duffy Square, Times Square is a bowtie-shaped plaza five blocks long between 42nd and 47th Streets.  As an epicenter of the world's entertainment industry and as the physical hub of the Theater District, where most Broadway theaters are located, Times Square is constantly illuminated by numerous digital billboards and advertisements as well as businesses offering 24/7 service. \nTimes Square is one of the world's most visited tourist attractions, drawing an estimated 50 million visitors annually. Approximately 330,000 people pass through Times Square daily, many of them tourists, while over 460,000 pedestrians walk through Times Square on its busiest days. The Times Square–42nd Street and 42nd Street–Port Authority Bus Terminal stations have consistently ranked as the busiest in the New York City Subway system, transporting more than 200,000 passengers daily. The Times Square neighborhood takes its name after the intersection.\nFormerly known as Longacre Square, Times Square was renamed in 1904 after The New York Times moved its headquarters to the then newly erected Times Building, now One Times Square. It is the site of the annual New Year's Eve ball drop, which began on December 31, 1907, and continues to attract over a million visitors to Times Square every year, in addition to a worldwide audience of one billion or more on various digital media platforms.\nTimes Square, specifically the intersection of Broadway and 42nd Street, is the eastern terminus of the Lincoln Highway, the first road across the United States for motorized vehicles. Times Square is sometimes referred to as \"the Crossroads of the World\", \"the Center of the Universe\", and \"the heart of the Great White Way\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "times square",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "times",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "square",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5752,
+    "attempt": 5709,
+    "place_id": "gn-8347982",
+    "input": {
+      "place": {
+        "place_id": "gn-8347982",
+        "name": "Lynbrook",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.05588,
+        "lon": 145.25615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lynbrook, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Lynbrook,_Victoria",
+          "text": "Lynbrook is a suburb in Melbourne, Victoria, Australia, 36 km south-east of Melbourne's central business district, located within the City of Casey local government area. Lynbrook recorded a population of 9,121 at the 2021 census.\nLynbrook is positioned on the South Gippsland Highway, slightly north-west of Cranbourne, and just south of the residential suburb of Hampton Park. Lynbrook is bounded by the Western Port Highway in the west, the South Gippsland Freeway in the north, by a line north of Merinda Park railway station in the east, and the railway line in the south.\nThe suburb was developed by VicUrban, starting in 1994. A special feature of the VicUrban development is the stormwater catchment which flows into the lake and wetlands where it is purified before being released into Dandenong Creek and into Port Phillip Bay.\nPrior to 1994, the area now occupied by Lynbrook was part of Lyndhurst.\nThere are two primary schools, one State and one Catholic. There is a central shopping centre with Coles and a range of strip shops with take away food and eateries, a gym, medical centre, pharmacy, news agency, butcher, bakery, and hair and beauty. There is also a Community Centre, child care centres, vet, kindergarten and maternal child health nurse.\nLynbrook has a local residents' group, the Lynbrook Residents Association (LRA), who advocate to Local, State and Federal Government on behalf of residents with local issues. They also host community events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "lynbrook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5753,
+    "attempt": 5710,
+    "place_id": "gn-898947",
+    "input": {
+      "place": {
+        "place_id": "gn-898947",
+        "name": "Senanga",
+        "country": "Zambia",
+        "subdivision": "Western Province",
+        "lat": -16.11667,
+        "lon": 23.26667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Senanga",
+          "url": "https://en.wikipedia.org/wiki/Senanga",
+          "text": "Senanga is the capital of the Senanga District, which is located in the Western Province of Zambia. The town is situated on the eastern bank of the Zambezi River, at the southern end of the Barotse Floodplain. It lies on the main road running parallel to the river from Livingstone and Sesheke to Mongu. Recently the Kaunga Lyeti Bridge was completed to cross the Kaunga Lyeti River near the junction to Sioma, traveling from Sesheke and Katima Mulilo. On top of the bridgework, recent road projects (the roads to Mongu and Sesheke) have improved travel conditions and inspired economic confidence and growth.\nIn addition to the river and floodplain with its wildlife and fishing opportunities, Senanga is about 120 km (75 mi) from Sioma Ngwezi National Park and about 80 km (50 mi) from Ngonye Falls. It has a hotel and serves as a base for fishing tours by boat. A tall radio mast makes a prominent landmark in the town.\nSenanga's location, situated on the Zambezi River, is known for its plentiful fish populations. Each year the town holds the Zambia Sport Fishing Competition, which attracts local and international participants. However, the area is prone to  illegal fishing which is having a major impact on important breeding grounds of nembwe, tigerfish and slidejaw."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "senanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5754,
+    "attempt": 5711,
+    "place_id": "gn-2074113",
+    "input": {
+      "place": {
+        "place_id": "gn-2074113",
+        "name": "Collie",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -33.36206,
+        "lon": 116.15617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Collie, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Collie,_Western_Australia",
+          "text": "Collie is a town in the South West region of Western Australia, 213 kilometres (132 mi) south of the state capital, Perth, and 59 kilometres (37 mi) inland from the regional city and port of Bunbury. It is near the junction of the Collie and Harris Rivers, in the middle of dense jarrah forest and the only coalfields in Western Australia. At the 2021 census, Collie had a population of 7,599.\nCollie is mainly known as a coal-producing centre, but also offers industrial, agricultural and aquaculture tourism industries. Muja Power Station is located 15 kilometres (9 mi) south-east, Collie Power Station is 5 kilometres (3 mi) east, and Bluewaters Power Station is 4 kilometres (2.5 mi) northeast of the town. To its west is the Wellington Dam, a popular location for fishing, swimming and boating."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "collie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5755,
+    "attempt": 5712,
+    "place_id": "gn-2104863",
+    "input": {
+      "place": {
+        "place_id": "gn-2104863",
+        "name": "Noro",
+        "country": "Solomon Islands",
+        "subdivision": "Western Province",
+        "lat": -8.22274,
+        "lon": 157.19978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noro, Solomon Islands",
+          "url": "https://en.wikipedia.org/wiki/Noro,_Solomon_Islands",
+          "text": "Noro is a town in the Western Province of Solomon Islands. It has 7,204 inhabitants as of 2019, making it the second largest town in the country behind the Honiara Urban Area. It is located on the western shore of New Georgia island.\nIt has a cannery, which was owned by Taiyo Fisheries until 2001 and is now owned by SolTuna.\nSolTuna is majority-owned and controlled (51.5%) by Tri-Oceanic Overseas Holdings, LLC (“TOOH”), an affiliate of Tri Marine (“Tri Marine” or the “Group”), which consists of a group of 41 privately held entities that together, comprise one of the largest global tuna supply companies in the world. The other shareholders of the Company are Solomon Islands National Provident Fund (31.4%), Investment Corporation of Solomon Islands Limited (9.3%) and Provincial Executive of the Western Province (7.8%)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "noro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5756,
+    "attempt": 5713,
+    "place_id": "gn-2155783",
+    "input": {
+      "place": {
+        "place_id": "gn-2155783",
+        "name": "Narara",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.39593,
+        "lon": 151.33527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narara, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Narara,_New_South_Wales",
+          "text": "Narara ( ) is a suburb just north of Gosford on the Central Coast region of New South Wales, Australia. It is part of the Central Coast Council local government area.\nThe suburb is mostly residential but also holds Narara railway station on the Central Coast & Newcastle Line. It also contains a number of parks, sporting grounds, and a concrete public skatepark. It is the home of Narara Valley High School, a NSW government high school, and St Philips Christian College Gosford, a private school educating children from kindergarten to year twelve.\nIt is also home to the Narara Ecovillage, which aims to research, design and build a stylish, intergenerational, friendly demonstration ecovillage, blending the principles of ecological and social sustainability, good health, business, caring and other options that can evolve from our well-being. Narara also hosts the annual Ecoburbia festival, awarded Best Community Event by Gosford City Council in 2015.\nThe name 'Narara' can be traced back to the local Aboriginal term for 'black snake', which appears on the official emblem of Narara Valley High School and the scarf of 1st Narara Scout Group.\nThe Narara Music Festival was held nearby in Somersby in 1983 and 1984.  The Angels, an Australian rock band, produced a live album recorded at the festival, Live at Narara.\nNarara largely consisted of orchards and small mixed farms. Water from the small dams that used to be accessible from Narara Creek Road was piped in wooden piping across Narara Creek to the railway station to supply steam trains. The dams were also a popular swimming spot especially when the ladder and walkway still existed on the lower dam wall.\nNarara is home to the Central Coast Miniature Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "narara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5757,
+    "attempt": 5714,
+    "place_id": "gn-2264718",
+    "input": {
+      "place": {
+        "place_id": "gn-2264718",
+        "name": "Pinhal Novo",
+        "country": "Portugal",
+        "subdivision": "Setúbal",
+        "lat": 38.63106,
+        "lon": -8.91376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pinhal Novo",
+          "url": "https://en.wikipedia.org/wiki/Pinhal_Novo",
+          "text": "Pinhal Novo (Portuguese pronunciation: [piˈɲal ˈnovu]) is a town in Portugal situated in the Setúbal Peninsula halfway between Lisbon and Setúbal. It is a civil parish of the Palmela Municipality. The population in 2011 was 25,000, in an area of 54.44 km2. It is served by two highways connecting Lisbon to the South and by its new train station that has enabled residents to connect directly to Lisbon's subway network in 38 minutes since October 2004. It is located near the Arrabida Natural Park and many of facilities, such as shopping centres including Forum Montijo, the Alcochete Freeport, Pinô Shopping Centre and Mochos, two of the most popular Portuguese shopping companies.\nThe city is experiencing continuous growth and has expanded from a little village a few years ago to a planned 40, 000 resident city. It benefits from new infrastructure, and urbanisation plans do not allow large buildings, which contributes to a certain quality of life."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "pinhal novo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pinhal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "novo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5758,
+    "attempt": 5715,
+    "place_id": "gn-2558052",
+    "input": {
+      "place": {
+        "place_id": "gn-2558052",
+        "name": "Amizmiz",
+        "country": "Morocco",
+        "subdivision": "Marrakesh-Safi",
+        "lat": 31.21673,
+        "lon": -8.23184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amizmiz",
+          "url": "https://en.wikipedia.org/wiki/Amizmiz",
+          "text": "Amizmiz (Tachelhit: ⴰⵎⵥⵎⵉⵥ, romanized: amᵊẓmiẓ, pronounced [ˈæməzˁmizˁ] ; Arabic: أمزميز) is a small town in Al Haouz Province approximately 55 kilometers south of Marrakesh, Morocco.  It lies at the foot of the High Atlas.\nIts population of approximately 14,000 consists mainly of Berbers of Shilha origin who speak the Shilha language (Tashelhit), a member of the northern branch of the Berber languages. Its weekly souk every Tuesday is well-known in the area.\nGeographically and economically, Amizmiz acts as a juncture point between the many small Berber villages in the surrounding area.  The weekly souk is an important part of this economic role, as individual farmers from the hills surrounding Amizmiz bring their produce and livestock to sell and, in return, purchase packaged food items like tea and sugar—items brought in from Marrakesh by local merchants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "amizmiz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5759,
+    "attempt": 5716,
+    "place_id": "gn-2633851",
+    "input": {
+      "place": {
+        "place_id": "gn-2633851",
+        "name": "Windermere",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.38086,
+        "lon": -2.90709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windermere",
+          "url": "https://en.wikipedia.org/wiki/Windermere",
+          "text": "Windermere (historically Winder Mere) is a ribbon lake in Cumbria, England. It is within the Lake District and is the largest lake in England by length, area, and volume, although considerably smaller than the largest Scottish lochs and Northern Irish loughs.\nWindermere is about 11 miles (18 km) in length and 1 mile (1.6 km) at its widest, has a maximum depth of 64 metres (210 ft), and has an elevation of 39 metres (128 ft) above sea level. Its outflow is the River Leven, which drains into Morecambe Bay. For administrative purposes the lake is in the unitary authority area of Westmorland and Furness, and it historically formed part of the boundary between Westmorland and Lancashire. \nThe lake has been popular with tourists since the Kendal and Windermere Railway's branch line opened in 1847. The Freshwater Biological Association was established on the shore of Windermere in 1929 and much of the early work on lake ecology, freshwater biology and limnology was conducted here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "windermere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5760,
+    "attempt": 5717,
+    "place_id": "gn-2638481",
+    "input": {
+      "place": {
+        "place_id": "gn-2638481",
+        "name": "Sawbridgeworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.81667,
+        "lon": 0.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sawbridgeworth",
+          "url": "https://en.wikipedia.org/wiki/Sawbridgeworth",
+          "text": "Sawbridgeworth ( SAW-brij-wurth, historically  SAPS-wəth or  SAPS-əth) is a town and civil parish in the East Hertfordshire district of Hertfordshire, England. It lies 10 miles (16 km) east of the county town of Hertford, in between the towns of Bishop's Stortford to the north and Harlow to the south. The town is on the west bank of the River Stort, which forms the county boundary with Essex.\nAs well as the town itself, the parish also covers surrounding rural areas, particularly to the north and south of the town, including the hamlet of Spellbrook. At the 2021 census, the parish had a population of 8,742, and the Sawbridgeworth built-up area as defined by the Office for National Statistics, which extends beyond the parish boundary to include the Lower Sheering area, had a population of 10,475."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "sawbridgeworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5761,
+    "attempt": 5718,
+    "place_id": "gn-2645460",
+    "input": {
+      "place": {
+        "place_id": "gn-2645460",
+        "name": "Kings Langley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.71395,
+        "lon": -0.45044
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kings Langley",
+          "url": "https://en.wikipedia.org/wiki/Kings_Langley",
+          "text": "Kings Langley is a village, former manor and civil parish in Hertfordshire, England. It is sited 23.5 miles (37.8 kilometres) north-west of London and to the south of the Chiltern Hills; it now forms part of the London commuter belt. The village is divided between two local government districts by the River Gade with the larger western portion in the Borough of Dacorum and smaller part, to the east of the river, in Three Rivers District. It was the location of Kings Langley Palace and the associated King's Langley Priory, of which few traces survive.\nIt is situated 2 mi (3 km) south of Hemel Hempstead and 2 mi (3 km) north of Watford.\nThe manor is first mentioned in surviving records as æt Langalege (Old English æt Langeleage) in a Saxon charter dated 1042–1049. It appears as Langelai in the Domesday Book (1086) and as Langel' Regis (“Langley of the King”) in 1254. The name means “long wood or clearing”. From the 11th to the 14th centuries the settlement is often recorded as “Chilterns Langley” to distinguish it from Abbots Langley; with increased royal involvement it is attested by 1346 as “Kyngeslangley” and by 1428 as “Langele Regis”."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "kings langley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kings",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "langley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5762,
+    "attempt": 5719,
+    "place_id": "gn-2650004",
+    "input": {
+      "place": {
+        "place_id": "gn-2650004",
+        "name": "Emsworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.84779,
+        "lon": -0.93697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emsworth",
+          "url": "https://en.wikipedia.org/wiki/Emsworth",
+          "text": "Emsworth is a town in the Borough of Havant in the county of Hampshire, on the south coast of England near the border with West Sussex. It lies at the north end of an arm of Chichester Harbour, a large and shallow inlet from the English Channel, and is equidistant between Portsmouth and Chichester.\nEmsworth had a population of 10,269 at the 2021 Census. The town has a basin for yachts and fishing boats, which fills at high tide and can be emptied through a sluice at low tide. In geodemographic segmentation the town is the heart of the Emsworth (cross-county) built-up area, the remainder of which is Westbourne, Southbourne and Nutbourne. The area had a combined population of 18,777 in 2011, with a density of 30.5 people per hectare, and shares two railway stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "emsworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5763,
+    "attempt": 5720,
+    "place_id": "gn-2736883",
+    "input": {
+      "place": {
+        "place_id": "gn-2736883",
+        "name": "Paços de Ferreira",
+        "country": "Portugal",
+        "subdivision": "Porto",
+        "lat": 41.27657,
+        "lon": -8.37617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paços de Ferreira",
+          "url": "https://en.wikipedia.org/wiki/Paços_de_Ferreira",
+          "text": "Paços de Ferreira (European Portuguese pronunciation: [ˈpasuʒ ðɨ fɨˈʁɐjɾɐ] ) is a city in the Porto District, in the north of Portugal. The population of the city in 2011 was 7491, while its municipality had 56,340 inhabitants, in an area of 70.99 km².\nSometimes referred to as the Capital do Móvel (capital of furniture), owing to the predominance of this industry within its territory, the municipality has around 5000 companies producing furniture and has the biggest exhibition and selling area (estimated in 2.5 square kilometers) of furniture in Europe. It is also the location of IKEA's industrial operations within Portugal.\nIts football team, FC Paços de Ferreira, participated for three times in European Competitions (Champions League and Europa League), finished runners-up of the Portuguese cup in 2008–09 and of the Portuguese League Cup in 2010–11."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "pacos de ferreira",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pacos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ferreira",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

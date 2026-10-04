@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 5724,
+    "attempt": 5681,
+    "place_id": "gn-2518277",
+    "input": {
+      "place": {
+        "place_id": "gn-2518277",
+        "name": "El Paso",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.65007,
+        "lon": -17.88274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Paso, La Palma",
+          "url": "https://en.wikipedia.org/wiki/El_Paso,_La_Palma",
+          "text": "El Paso, also known as Ciudad de El Paso, is a Spanish municipality located on the island of La Palma, province of Santa Cruz de Tenerife, Canary Islands.\nGeographically it is located in the center of the island of La Palma, covering to the west with the Caldera de Taburiente, part of the Aridane Valley, the Cumbre Nueva and the Cumbre Vieja. It is on the surface the largest municipality of the island, being the only one of the 14 municipalities of La Palma that lacks coastal strip. In 2016 it had a population of 7457 inhabitants.\nThe nucleus of population had to have its origins in the pre-Hispanic stage of the island. Almost certainly, because of the engravings found in the area, it consisted of a first moment in a temporary settlement of Benahoarite shepherds. During the colonization and almost throughout the Modern Age the present territory of the municipality was administratively part of the Aridane Valley. In 1837, under the reign of Alfonso XII, the municipality obtained the title of City, segregating of the Los Llanos de Aridane.\nAt the summit of the municipality is the oldest canarian pine in the world, with an estimated age of more than 1000 years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "el paso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5725,
+    "attempt": 5682,
+    "place_id": "gn-2634826",
+    "input": {
+      "place": {
+        "place_id": "gn-2634826",
+        "name": "Walton-on-the-Naze",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.84819,
+        "lon": 1.26738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walton-on-the-Naze",
+          "url": "https://en.wikipedia.org/wiki/Walton-on-the-Naze",
+          "text": "Walton-on-the-Naze is a seaside town in the civil parish of Frinton and Walton in the Tendring district of Essex, England. It lies on the North Sea coast, to the north of Clacton and south of the port of Harwich; Frinton-on-Sea immediately adjoins Walton to the south. The town attracts many visitors; The Naze and the pier are the main attractions. At the 2021 census, the Walton-on-the-Naze built up area as defined by the Office for National Statistics had a population of 6,990.\nThe parish was earlier known as Eadolfenaesse and then as Walton-le-Soken. The name Walton is a common one meaning a 'farmstead or village of the Britons', while 'Soken' denotes the soke (an area of special jurisdiction) that included Thorpe, Kirby and Walton, which were under the jurisdiction of the chapter of St Paul's Cathedral.\nWalton had a HM Coastguard team and was home to the Thames MRCC (Maritime Rescue Coordination Centre), organising rescues from Southwold to Herne Bay. It closed in June 2015, as part of a Maritime and Coastguard Agency (MCA) modernisation programme, transferring its operations to a national centre in Fareham on the south coast. Walton-on-the-Naze railway station is on a branch of the Sunshine Coast Line. Along the coast there are many fossils to be found, some have been found to be up to 50 million years old. Rocks include red crag and London clay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "walton on the naze",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "walton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "naze",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5726,
+    "attempt": 5683,
+    "place_id": "gn-2638311",
+    "input": {
+      "place": {
+        "place_id": "gn-2638311",
+        "name": "Seaford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.77141,
+        "lon": 0.10268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seaford, East Sussex",
+          "url": "https://en.wikipedia.org/wiki/Seaford,_East_Sussex",
+          "text": "Seaford is a town in East Sussex, England, east of Newhaven and west of Eastbourne.\nIn the Middle Ages, Seaford was one of the main ports serving Southern England, but the town's fortunes declined due to coastal sedimentation silting up its harbour and persistent raids by French pirates. The coastal confederation of Cinque Ports in the middle ages consisted of over forty towns and villages: Seaford was treated as a \"limb\" (subordinate member) of Hastings. Between 1350 and 1550, the French burned down the town several times. In the 16th century, the people of Seaford were known as the \"cormorants\" or \"shags\" because of their enthusiasm for looting ships wrecked in the bay. Local legend has it that Seaford residents would, on occasion, cause ships to run aground by placing fake harbour lights on the cliffs.\nSeaford's fortunes revived in the 19th century with the arrival of the railway connecting the town to Lewes and London. It became a small seaside resort town, and more recently a dormitory town for the nearby larger settlements of Eastbourne and Brighton, as well as for London.\nThe traditional Sussex pronunciation of the name has a full vowel in each syllable:  \"sea-ford\". However, outside Sussex, and increasingly within, it is commonly pronounced with a reduced vowel on the second syllable:  SEE-fərd."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "seaford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5727,
+    "attempt": 5684,
+    "place_id": "gn-2640060",
+    "input": {
+      "place": {
+        "place_id": "gn-2640060",
+        "name": "Port Glasgow",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.93464,
+        "lon": -4.6895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Glasgow",
+          "url": "https://en.wikipedia.org/wiki/Port_Glasgow",
+          "text": "Port Glasgow (Scottish Gaelic: Port Ghlaschu, pronounced [pʰɔrˠʃt̪ˈɣl̪ˠas̪əxu]) is the second-largest town in the Inverclyde council area of Scotland. The population according to the 1991 census for Port Glasgow was 19,426 persons and in the 2001 census was 16,617 persons. The most recent census in 2011 states that the population has declined to 15,414. It is located immediately to the east of Greenock and was previously a burgh in the county of Renfrewshire.\nOriginally a fishing hamlet named Newark, Port Glasgow came about as a result of large ships being unable to navigate the shallow and meandering River Clyde to the centre of the city of Glasgow. Because of this, it was formed as a remote port for Glasgow in 1668 and became known as 'New Port Glasgow', which was shortened to 'Port Glasgow' in 1775. Port Glasgow was home to dry docks and shipbuilding beginning in 1780.\nThe town grew from the central area of the present town and thus many of the town's historic buildings and people are found here. Port Glasgow expanded up the steep hills inland to open fields where areas such as Park Farm, Boglestone, Slaemuir and Devol and Oronsay were founded. This area has subsequently become known as upper Port Glasgow and most of the town's population occupies these areas.\nThe town received the Carbuncle 'Plook on the Plinth' Award in September 2025 because of its reputation regarding the Clune Park Estate. Though the backlash from its residents caused the award to be officially retired in place of the new 'Heart On Your Sleeve' award, with Port Glasgow named as the first winner."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 269
+    },
+    "banned_terms": [
+      {
+        "term": "port glasgow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "glasgow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5728,
+    "attempt": 5685,
+    "place_id": "gn-2640173",
+    "input": {
+      "place": {
+        "place_id": "gn-2640173",
+        "name": "Polesworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.61962,
+        "lon": -1.61036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Polesworth",
+          "url": "https://en.wikipedia.org/wiki/Polesworth",
+          "text": "Polesworth is a large village and civil parish in the North Warwickshire district of Warwickshire, England. It is situated close to the northern tip of the county, adjacent to the border with Staffordshire. It is 3 miles (5 km) east of Tamworth, 4.5 miles (7 km) northwest of Atherstone and 15 miles (24 km) northeast of Birmingham.\nIn the 2021 census, the civil parish of Polesworth had a population of 8,727; it included the contiguous sub-villages of Birchmoor, St Helena and Hall End directly to the south, with Warton to the east. The built-up area of Polesworth, which includes the adjoining village of Dordon to the south, had a population of 9,913 in 2021. The border with Leicestershire is 3 miles (5 km) to the east, while Derbyshire is 6 miles (10 km) to the north. The River Anker runs through the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "polesworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5729,
+    "attempt": 5686,
+    "place_id": "gn-2640460",
+    "input": {
+      "place": {
+        "place_id": "gn-2640460",
+        "name": "Penkridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.72556,
+        "lon": -2.1156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penkridge",
+          "url": "https://en.wikipedia.org/wiki/Penkridge",
+          "text": "Penkridge ( PENG-krij) is a village and civil parish in South Staffordshire District in Staffordshire, England. It is to the south of Stafford, north of Wolverhampton, west of Cannock, east of Telford and south-east of Newport.\nThe wealthiest establishment in Penkridge in the Middle Ages, its collegiate church building survived the abolition of the chantries and is the tallest structure in the village centre. The parish is crossed towards its eastern border by the M6 motorway and a separate junction north of the M6 Toll between the West Midlands and Stoke-on-Trent.  Penkridge has a railway station on the West Coast Main Line railway next to the Grade I listed medieval church. Penkridge Viaduct and the Staffordshire and Worcestershire Canal are to either side of Market Street and the Old Market Square and are among its landmarks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "penkridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5730,
+    "attempt": 5687,
+    "place_id": "gn-2647365",
+    "input": {
+      "place": {
+        "place_id": "gn-2647365",
+        "name": "Haslemere",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.09015,
+        "lon": -0.70785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haslemere",
+          "url": "https://en.wikipedia.org/wiki/Haslemere",
+          "text": "The town of Haslemere () and the villages of Shottermill and Grayswood are in south-west Surrey, England, around 38 miles (62 km) south-west of London. Together with the settlements of Hindhead and Beacon Hill, they comprise the civil parish of Haslemere in the Borough of Waverley. The tripoint between the counties of Surrey, Hampshire and West Sussex is at the west end of Shottermill.\nMuch of the civil parish is in the catchment area of the south branch of the River Wey, which rises on Blackdown in West Sussex. The urban areas of Haslemere and Shottermill are concentrated along the valleys of the young river and its tributaries, and many of the local roads are narrow and steep. The National Trust is a major landowner in the civil parish and its properties include Swan Barn Farm. The Surrey Hills National Landscape is to the north of the town and the South Downs National Park is to the south.\nHaslemere is thought to have originated as a planned town in the 12th century and was awarded a market charter in 1221. By the early 16th century, it had become a Parliamentary borough and was represented by two MPs in the House of Commons until 1832. The town began to grow in the second half of the 19th century, following the opening of the London to Portsmouth railway line in 1859. In late-Victorian times, it became a centre for the Arts and Crafts movement and the International Dolmetsch Early Music Festival was founded in 1925. Haslemere became an Urban District in 1913, but under the Local Government Act 1972, its status was reduced to a civil parish with a town council.\nShottermill grew up as a hamlet near to one of the watermills on the River Wey in the 16th century. The settlement began to expand in the 1880s and joined the Haslemere Urban District in 1933. Until the end of the 19th century, Grayswood was a small farming community, but became an ecclesiastical parish in 1901."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 335
+    },
+    "banned_terms": [
+      {
+        "term": "haslemere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5731,
+    "attempt": 5688,
+    "place_id": "gn-2864695",
+    "input": {
+      "place": {
+        "place_id": "gn-2864695",
+        "name": "Neukölln",
+        "country": "Germany",
+        "subdivision": "State of Berlin",
+        "lat": 52.47719,
+        "lon": 13.43126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neukölln",
+          "url": "https://en.wikipedia.org/wiki/Neukölln",
+          "text": "Neukölln (German: [nɔʏˈkœln] ; officially abbreviated Neuk), is one of the twelve boroughs of Berlin. It is located south-east of Berlin's center and stretches from the inner city southward to the border with Brandenburg, encompassing the eponymous quarter of Neukölln in the north, and the southern quarters of Britz, Gropiusstadt, Buckow and Rudow.\nThe borough was constituted in 1920, when the Greater Berlin Act came into effect. After World War II, Neukölln was part of the American sector during the Allied occupation of the city, and of West Berlin from 1949 until German reunification in 1990. Since the late 1950s, it has been characterised by one of the highest shares of immigrant residents in Berlin, especially in its urbanized and industrialized northern regions. An influx of students and artists since the mid-2000s has led to gentrification."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "neukolln",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5732,
+    "attempt": 5689,
+    "place_id": "gn-2940381",
+    "input": {
+      "place": {
+        "place_id": "gn-2940381",
+        "name": "Bad Camberg",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.29695,
+        "lon": 8.26896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Camberg",
+          "url": "https://en.wikipedia.org/wiki/Bad_Camberg",
+          "text": "Bad Camberg (German: [baːt ˈkambɛʁk] ) is, with 14,500 inhabitants, the second largest town in Limburg-Weilburg district in Hesse, Germany, as well as the southernmost town in the Regierungsbezirk of Gießen. It is located in the eastern Taunus in the Goldener Grund (“Golden Ground”) some 30 km north of Wiesbaden, 18 km southeast of Limburg an der Lahn, and 44 km northwest of Frankfurt, as well as on the German Timber-Frame Road. Bad Camberg is the central community of the Goldener Grund with good infrastructure, and a lower centre partly with a middle centre's function.\nThe recognized Kneipp resort is Hesse's oldest and Germany's third oldest. In the outlying centre of Oberselters is found a mineral spring that gives forth the well known Selterswasser, often known in English as “seltzer”. The town's landmark is the Kreuzkapelle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "bad camberg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camberg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5733,
+    "attempt": 5690,
+    "place_id": "gn-2982343",
+    "input": {
+      "place": {
+        "place_id": "gn-2982343",
+        "name": "Royan",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.62811,
+        "lon": -1.03153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Royan",
+          "url": "https://en.wikipedia.org/wiki/Royan",
+          "text": "Royan (French pronunciation: [ʁwajɑ̃]; Roeyan [ʁwejɑ̃] in the Saintongeais dialect; Occitan: Roian) is a commune and town in the south-west of France, in the department of Charente-Maritime in the Nouvelle-Aquitaine region. Capital of the Côte de Beauté, Royan is one of the main French Atlantic coastal resort towns, and has five beaches, a marina for over 1,000 boats, and an active fishing port.\nRoyan is located on the peninsula of Arvert, at the mouth of the Gironde estuary on its eastern shore. Royan was once of strategic importance, coveted in particular by the Visigoths and the Vikings. During the Reformation the city became a Protestant stronghold, and was besieged and destroyed by King Louis XIII (ruled 1610–43). During the Bourbon Restoration (1814–1830), and especially during the Second Empire (1852–1870), Royan was celebrated for its sea baths. It attracted many artists during the Roaring Twenties.\nAllied bombing between September 1944 and April 1945 destroyed the town. Known then as the \"martyred city\", it was declared a \"Laboratory of research on urbanism\", and it is now a showcase of the Modernist architecture of the 1950s. It was classified as a Town of Art and History (Ville d'Art et d'Histoire) in 2010. Royan today is a tourist and cultural hub, with some 90,000 visitors each summer season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "royan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5734,
+    "attempt": 5691,
+    "place_id": "gn-3432079",
+    "input": {
+      "place": {
+        "place_id": "gn-3432079",
+        "name": "La Paz",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -30.74179,
+        "lon": -59.64517
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Paz, Entre Ríos",
+          "url": "https://en.wikipedia.org/wiki/La_Paz,_Entre_Ríos",
+          "text": "La Paz is a city in the province of Entre Ríos in the Argentine Mesopotamia. It has about 24,000 inhabitants as per the 2010 census [INDEC], and is the head town of the department of the same name.\nThe city lies in the north-west of the province, on the left-hand (eastern) shore of the Paraná River. It was already settled in the 18th century as a natural port, appearing in maps of the time as Cabayú Cuatiá (the name of a stream that empties into the Paraná at this point). It formally became a city on 1 January 1873.\nLike other cities in the area, La Paz has a hot springs complex and takes touristic advantage of its river beaches and the possibility of excellent sport fishing, with access to the Curuzú Chalí Provincial Fish Reserve."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5735,
+    "attempt": 5692,
+    "place_id": "gn-3433363",
+    "input": {
+      "place": {
+        "place_id": "gn-3433363",
+        "name": "Itatí",
+        "country": "Argentina",
+        "subdivision": "Corrientes",
+        "lat": -27.26915,
+        "lon": -58.24249
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itatí, Corrientes",
+          "url": "https://en.wikipedia.org/wiki/Itatí,_Corrientes",
+          "text": "Itatí is a town in the north of the province of Corrientes, Argentina. It has 7,902 inhabitants as per the 2001 census [INDEC]. It lies some 60 km east of the provincial capital Corrientes, by the Paraná River, not far upstream from its confluence with the Paraguay River, on the northern provincial border, which is also the international border with Paraguay.\n\nThe origin of Itatí was a reduction (indigenous town) established on 7 December 1615 by Franciscan friar Luis de Bolaños, with the name of Pura y Limpia Concepción de Nuestra Señora de Itatí. The proper foundation of Itatí as a town was by general Pedro Ferré, on 15 September 1825.\nDespite its small size, Itatí is renowned throughout the country due to the massive displays of devotion to the local advocation of the Virgin Mary. The physical center of these is the basilica (built in 1950), which preserves an allegedly miraculous wooden image of the Virgin of Itatí. On her feast day, 16 July, thousands of pilgrims from nearby and faraway regions, and even from neighbouring countries, come to Itatí to venerate the Virgin.\nThe name Itatí comes from Guaraní, but there is disagreement as to its exact meaning; ita- undoubtedly corresponds to the Guaraní word for \"stone\" (appearing in a number of other toponyms, such as Itaipu), while the last part could refer to (moro)ti (\"white\") or tí [tɨ] (\"nose\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "itati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5736,
+    "attempt": 5693,
+    "place_id": "gn-3858677",
+    "input": {
+      "place": {
+        "place_id": "gn-3858677",
+        "name": "El Calafate",
+        "country": "Argentina",
+        "subdivision": "Santa Cruz",
+        "lat": -50.34075,
+        "lon": -72.27682
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Calafate",
+          "url": "https://en.wikipedia.org/wiki/El_Calafate",
+          "text": "El Calafate, also called Calafate, is a city in the Argentine province of Santa Cruz, in Patagonia. It is located on the southern border of Lago Argentino, in the southwest part of the province (about 320 kilometres (200 mi) northwest of Río Gallegos). It is the seat of government for the Lago Argentino Department within the province. The name of the city is also the name of a small bush, with yellow flowers and dark-blue berries, that is very commonly seen in the region—the calafate (Berberis buxifolia). The word comes from the word calafate, which is Spanish for 'caulk'.\nEl Calafate is an important tourist destination, serving as the hub for visitors of different parts of Los Glaciares National Park, Perito Moreno Glacier, Cerro Chaltén, and Cerro Torre, in addition to the area surrounding Lago Argentino."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "el calafate",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "calafate",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5737,
+    "attempt": 5694,
+    "place_id": "gn-4557983",
+    "input": {
+      "place": {
+        "place_id": "gn-4557983",
+        "name": "Fishtown",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.96511,
+        "lon": -75.13545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fishtown, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Fishtown,_Philadelphia",
+          "text": "Fishtown is a neighborhood in the River Wards section of Philadelphia, Pennsylvania, United States. Located northeast of Center City Philadelphia, its borders are somewhat disputed today due to many factors, but are roughly defined by the triangle created by the Delaware River, Front Street, and York Street. Some newer residents expand the area to Lehigh Avenue to the northeast, while some older ones shrink the area to Norris Street.  It is served by the Market–Frankford Line rapid transit subway/elevated line of the SEPTA system, and the historic Route 15 Girard Avenue trolley line. Fishtown has long been a largely working class Irish Catholic and Irish American neighborhood, though in recent years it has seen a large influx of young urban professionals and gentrification.\nThe name Fishtown derives from one of the original occupations of its residents. Early settlers were fishermen and over time, they controlled the fishing rights to both sides of the Delaware River, from Cape May to the falls at Trenton. The apocryphal local legend traces the name of Fishtown to Charles Dickens, who purportedly visited the neighborhood in March 1842, but records show this to be false, as it was named Fishtown prior to his visit, at least as early as 1808, as evidenced in a newspaper article in The Tickler, an early 19th century Philadelphia newspaper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "fishtown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5738,
+    "attempt": 5695,
+    "place_id": "gn-464708",
+    "input": {
+      "place": {
+        "place_id": "gn-464708",
+        "name": "Zaprudnya",
+        "country": "Russia",
+        "subdivision": "Moscow Oblast",
+        "lat": 56.56667,
+        "lon": 37.43333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zaprudnya",
+          "url": "https://en.wikipedia.org/wiki/Zaprudnya",
+          "text": "Zaprudnya (Russian: Запрудня) is an urban locality (an urban-type settlement) under the administrative jurisdiction of the town of oblast significance of Taldom in Moscow Oblast, Russia. As a municipal division, Zaprudnya, together with the town of Taldom, another two urban-type settlements (Severny and Verbilki), and a number of rural localities is incorporated as Taldom Urban Okrug. Population:  12,855 (2010 census); 12,621 (2002 census); 14,457 (1989 Soviet census).\nUntil 2018, Zaprudnya belonged to Taldomsky District. As part of the reform of the administrative and municipal division of Moscow Oblast, Taldomsky District was abolished, and its territory, including Zaprudnya, was subordinated to the town of Taldom, which at the same time was elevated to the town of oblast significance. As a municipal division, Taldomsky Municipal District was abolished, and the same territory was incorporated as Taldom Urban Okrug. The formal denomination of the area is since 2018 the town of oblast significance of Taldom with added territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "zaprudnya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5739,
+    "attempt": 5696,
+    "place_id": "gn-475845",
+    "input": {
+      "place": {
+        "place_id": "gn-475845",
+        "name": "Verbilki",
+        "country": "Russia",
+        "subdivision": "Moscow Oblast",
+        "lat": 56.53333,
+        "lon": 37.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Verbilki",
+          "url": "https://en.wikipedia.org/wiki/Verbilki",
+          "text": "Verbilki (Russian: Вербилки) is an urban locality (an urban-type settlement) under the administrative jurisdiction of the town of oblast significance of Taldom in Moscow Oblast, Russia. As a municipal division, Verbilki, together with the town of Taldom, another two urban-type settlements (Severny and Zaprudnya), and a number of rural localities is incorporated as Taldom Urban Okrug. Population:  7,022 (2010 census); 6,764 (2002 census); 8,361 (1989 Soviet census).\nUntil 2018, Verbilki belonged to Taldomsky District. As part of the reform of the administrative and municipal division of Moscow Oblast, Taldomsky District was abolished, and its territory, including Verbilki, was subordinated to the town of Taldom, which at the same time was elevated to the town of oblast significance. As a municipal division, Taldomsky Municipal District was abolished, and the same territory was incorporated as Taldom Urban Okrug. The formal denomination of the area is since 2018 the town of oblast significance of Taldom with added territory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "verbilki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5740,
+    "attempt": 5697,
+    "place_id": "gn-4775660",
+    "input": {
+      "place": {
+        "place_id": "gn-4775660",
+        "name": "New Baltimore",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.76734,
+        "lon": -77.72833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Baltimore, Virginia",
+          "url": "https://en.wikipedia.org/wiki/New_Baltimore,_Virginia",
+          "text": "New Baltimore is an unincorporated community and census-designated place (CDP) in eastern Fauquier County, Virginia, United States. As of the 2020 census, New Baltimore had a population of 11,251. The community has existed since the early 19th century, but it has had its most significant growth since the 1980s. It is the portion of Fauquier County with the easiest access to Washington, D.C., and as a result, many people who live in New Baltimore commute into DC. Other major communities close to New Baltimore are Warrenton, the Gainesville/Haymarket area, and Manassas. The area officially considered to be New Baltimore expanded significantly in 2006 with Fauquier County's designation of service districts, of which New Baltimore is one. The service district designation provides added access to utilities, such as water and sewer, and targets the area for growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "new baltimore",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "baltimore",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5741,
+    "attempt": 5698,
+    "place_id": "gn-4883012",
+    "input": {
+      "place": {
+        "place_id": "gn-4883012",
+        "name": "Albany Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.96836,
+        "lon": -87.72339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albany Park, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Albany_Park,_Chicago",
+          "text": "Albany Park (  AWL-bə-nee) is one of the 77 community areas of Chicago in Illinois, United States. Located on the Northwest Side of Chicago with the North Branch of the Chicago River forming its east and north boundaries, it includes the ethnically diverse Albany Park neighborhood, with one of the highest percentages of foreign-born residents of any Chicago neighborhood.\nAlthough the majority of those foreign-born residents are from Latin America, mostly from Mexico (especially from the state of Michoacán), Guatemala, and Ecuador, substantial numbers are from the Philippines, India, Korea, Cambodia, Somalia, Serbia, Croatia, Bosnia, Romania, Pakistan and the Middle East (especially Iraq, Iran, and Lebanon). Over 40 different languages are spoken in its public schools.\nDue to the diverse population and immigrant population attraction, the population of the neighborhood increased by 16.5% during the 1990s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "albany park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "albany",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5742,
+    "attempt": 5699,
+    "place_id": "gn-5097649",
+    "input": {
+      "place": {
+        "place_id": "gn-5097649",
+        "name": "Emerson",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.97621,
+        "lon": -74.02625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emerson, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Emerson,_New_Jersey",
+          "text": "Emerson is a borough in Bergen County, in the U.S. state of New Jersey, a suburb in the New York City metropolitan area. Emerson is the southernmost municipality in an area of the county known as the Pascack Valley. As of the 2020 United States census, the borough's population was 7,290, a decrease of 111 (−1.5%) from the 2010 census count of 7,401, which in turn reflected an increase of 204 (+2.8%) from the 7,197 counted in the 2000 census.\nWhat is now Emerson was originally formed on April 8, 1903, from portions of Washington Township as the Borough of Etna, the name of a railroad station in the community. The name was changed to Emerson as of March 9, 1909.} The name came from author Ralph Waldo Emerson. The borough calls itself \"The Family Town\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "emerson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5743,
+    "attempt": 5700,
+    "place_id": "gn-5126855",
+    "input": {
+      "place": {
+        "place_id": "gn-5126855",
+        "name": "Midland Beach",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.57316,
+        "lon": -74.09459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midland Beach, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Midland_Beach,_Staten_Island",
+          "text": "Midland Beach (formerly known as Woodland Beach) is a neighborhood of Staten Island in New York City. It lies along the east-central coast of the island, in the area known locally as the \"Mid-Island, Staten Island\" or the \"East Shore\".\nTo its immediate northwest is Grant City, to the southeast is New Dorp Beach, and to the northeast are Graham Beach and South Beach.  Miller Field and Prescott Avenue form the southwest border (formerly, a lane called Maplewood Terrace paralleled New Dorp Lane); Poultney Street/Laconia Avenue is to the northwest; the Lower New York Bay is to the southeast, and Seaview Avenue is to the northeast. Father Capodanno Boulevard and Midland Avenue are Midland Beach's two main arteries.\nMidland Beach is part of Staten Island Community District 2 and its ZIP Codes are 10305 and 10306. Midland Beach is patrolled by the 122nd Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "midland beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "midland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
