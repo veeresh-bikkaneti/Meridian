@@ -21,7 +21,7 @@ import type { Page } from "playwright/test";
  *
  * Deterministic targeting without production test seams: the dealer builds
  * its pool from the catalog minus the persistent no-repeat history
- * (localStorage `meridian:seen:v2:<edition>:<regionId>`). Each test seeds
+ * (localStorage `meridian:seen:v2:<edition>:<regionId>:<band>`). Each test seeds
  * that history with every place ID except the target, so the very first
  * deal is the target place. A hit commit then renders the full story in the
  * "Place story" region, which must start with the curated history.

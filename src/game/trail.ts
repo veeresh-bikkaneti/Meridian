@@ -135,8 +135,9 @@ function seenKey(edition: string, regionId: string, choice: PickerDifficulty): s
 
 /**
  * The pre-band v2 key (`meridian:seen:v2:<edition>:<region>`), written by
- * builds before the difficulty picker. Read once by migrateLegacyBandStore,
- * then pruned. Nothing else reads it.
+ * builds before the difficulty picker. Folded into the first-touched band's
+ * key by the lazy migration inside seenStoreFor, then pruned. Nothing else
+ * reads it.
  */
 function unscopedSeenKey(edition: string, regionId: string): string {
   return `${SEEN_KEY_PREFIX}${edition}:${regionId}`;
