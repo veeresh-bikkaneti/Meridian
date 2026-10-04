@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 2239,
+    "attempt": 2221,
+    "place_id": "gn-13156931",
+    "input": {
+      "place": {
+        "place_id": "gn-13156931",
+        "name": "Phulwari Sharif",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.57765,
+        "lon": 85.07246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Phulwari Sharif",
+          "url": "https://en.wikipedia.org/wiki/Phulwari_Sharif",
+          "text": "Phulwari or Phulwari Sharif is a town and Block in Patna district in the Indian state of Bihar. It is included in the Patna Metropolitan Region and is one of the fastest growing area of urban Patna. The civilisation of the city dates back to the days of inception of the Sufi culture in India. Phulwari Sharif had been frequented by most Sufi saints of that period and is famous for its islamic spiritual dargah and old mosques which includes Khanqah Mujibia, Shahi Sangi Masjid, Imarat e sharia.\nThe All India Institute of Medical Sciences Patna (AIIMS Patna) is located in Phulwari Sharif.\nUrbanisation has taken over Phulwari Sharif and now it is the most populated area of Patna. Phulwari Sharif is one of the Muslim-majority areas within Patna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "phulwari sharif",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "phulwari",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sharif",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2240,
+    "attempt": 2222,
+    "place_id": "gn-13156960",
+    "input": {
+      "place": {
+        "place_id": "gn-13156960",
+        "name": "Tilda Newra",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.55324,
+        "lon": 81.80187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tilda Newra",
+          "url": "https://en.wikipedia.org/wiki/Tilda_Newra",
+          "text": "Tilda Neora is a city and a major industrial area located in the Indian state of Chhattisgarh.The city is known for its rice production and exports, which contribute significantly to the region’s agricultural economy. It is surrounded by numerous rice mills and several major industrial establishments, including the Ultratech Cement Factory and the Adani Power Plant.\nTilda Neora is well connected by both rail and road networks. The Tilda Neora railway station serves as an important rail junction in the region, with approximately 52 trains halting there daily. The station currently has four platforms and is undergoing redevelopment to enhance passenger amenities and infrastructure. It is recognized as the eighth-largest railway station in Chhattisgarh in terms of train halts.\nState Highway 20 (SH 20) passes through Tilda Neora, while the nearest national highway is located approximately 14 kilometres away, ensuring connectivity to other parts of the state and neighbouring regions. \nTilda Neora may become a separate district in the near future due to its rapidly growing industrial, economic, and infrastructural importance. The city has witnessed continuous development in recent years, and administrative discussions have reportedly considered its potential as a new district headquarters to improve governance and regional management."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "tilda newra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tilda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "newra",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2241,
+    "attempt": 2223,
+    "place_id": "gn-159380",
+    "input": {
+      "place": {
+        "place_id": "gn-159380",
+        "name": "Igurusi",
+        "country": "Tanzania",
+        "subdivision": "Mbeya",
+        "lat": -8.85,
+        "lon": 33.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Igurusi",
+          "url": "https://en.wikipedia.org/wiki/Igurusi",
+          "text": "Igurusi is an administrative ward in the Mbarali district of the Mbeya Region of Tanzania. In 2022 the Tanzania National Bureau of Statistics report there were more than 28,000 people in the ward, from 24,573 in 2016.\nIgurusi Ward is widely known for its thriving rice farming, which serves as the main source of livelihood for most of its residents. The ward comprises nine villages: Chamoto, Igurusi, Ilolo, Lunwa, Lusese, Maendeleo, Majenje, Rwanyo, and Uhambule.\nThe ward is home to the Ministry of Agriculture Training Institute (MATI–Igurusi), which offers two diploma programs in Land Use and Irrigation. In addition, Igurusi has eight primary schools and three secondary schools: Igurusi Secondary School, Mshikamano Secondary School, and Haroun Pirmohamed Secondary School.\nAn international rice market operates within the ward, serving as a key commercial hub for rice farmers. Within this market area, CRDB Bank provides ATM services for financial transactions. Both the TANZAM Highway (linking Dar es Salaam and Mbeya) and the TAZARA Railway pass through the ward, making it an important transport corridor.\nIgurusi is ethnically diverse, inhabited by several tribes including the Nyakyusa, Ndali, Sangu, Bena, Wanji, Kinga, Nyiha, and Safwa. Geographically, the ward lies within the fertile Usangu Plains, bordered by the Livingstone Mountains to the south, where Mbeya Rural District and Njombe Region meet.\nAs one of the fastest-growing wards in Mbarali District, Igurusi has evolved from a rural village setting into a suburban-like area. It hosts Shammah FM, an evangelical radio station broadcasting across the Mbeya Region. Health services are provided by the Igurusi Health Center and Uhambule Dispensary, which cater to residents’ medical needs.\nIn addition to agriculture and public services, Igurusi offers various lodging facilities that accommodate travelers and visitors passing through the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "igurusi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2242,
+    "attempt": 2224,
+    "place_id": "gn-1732755",
+    "input": {
+      "place": {
+        "place_id": "gn-1732755",
+        "name": "Gelang Patah",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 1.4484,
+        "lon": 103.5873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gelang Patah",
+          "url": "https://en.wikipedia.org/wiki/Gelang_Patah",
+          "text": "Gelang Patah is a town in Iskandar Puteri, Johor Bahru District, Johor, Malaysia. It was administered by ruling coalition, Barisan Nasional (BN) for over 5 decades until the 13th Malaysian General Elections. BN lost to the opposition, Pakatan Harapan in the 14th General Election as well as the 15th. \nOne of its schools, Sekolah Menengah Kebangsaan Gelang Patah is the oldest school in Iskandar Puteri and accredited as a Trust School by its government. A trust school is managed jointly by Yayasan AMIR, and civil service principals and headmasters under the umbrella of the Ministry of Education to improve student outcomes and school management capabilities.\nThe town is a home to a container port, Port of Tanjung Pelepas (PTP). PTP is situated on the eastern mouth of the Pulai River in south-western Gelang Patah, Johor, Malaysia, in close proximity to the Straits of Johor, which separates the countries of Malaysia and Singapore and the Strait of Malacca. \n3 kilometre away from PTP lies a controversial mega project, Forest City. Forest City is an integrated residential development and private town located in Iskandar Puteri, Johor, Malaysia on a land 1,370 hectares wide. First announced in 2006 as a twenty-year project, the project was pitched under China's Belt and Road Initiative.\nThe town is also well-known for its otak-otak which is steamed or grilled cake made from a paste made from fish or a wide selection of seafood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "gelang patah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gelang",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "patah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2243,
+    "attempt": 2225,
+    "place_id": "gn-2156643",
+    "input": {
+      "place": {
+        "place_id": "gn-2156643",
+        "name": "Mount Gambier",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -37.8318,
+        "lon": 140.77919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Gambier",
+          "url": "https://en.wikipedia.org/wiki/Mount_Gambier",
+          "text": "Mount Gambier (/ˈɡæmbiəɹ/ GAM-bee-ər) is the second most populated city in South Australia, with a population of 26,878 as of the 2021 census. The city is located on the slopes of Mount Gambier, a dormant volcano in the south east of the state, about 450 kilometres (280 mi) south-east of the capital Adelaide and just 17 kilometres (11 mi) from the Victorian border. Mount Gambier is the most important settlement in the Limestone Coast region and the seat of government for both the City of Mount Gambier and the District Council of Grant.\nThe city is well known for its geographical features, particularly its volcanic and limestone features, most notably Blue Lake/Waawor/Warwar, and its parks, gardens, caves and sinkholes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "mount gambier",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gambier",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2244,
+    "attempt": 2226,
+    "place_id": "gn-2562247",
+    "input": {
+      "place": {
+        "place_id": "gn-2562247",
+        "name": "Marsaxlokk",
+        "country": "Malta",
+        "subdivision": "Marsaxlokk",
+        "lat": 35.84214,
+        "lon": 14.54296
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marsaxlokk",
+          "url": "https://en.wikipedia.org/wiki/Marsaxlokk",
+          "text": "Marsaxlokk (Maltese pronunciation: [mɐrsɐʃˈlɔk]) is a small, traditional fishing village in the Southern Region of Malta. It has a harbour, and is a tourist attraction known for its views, fishing and history. The village is also known for the Marsaxlokk Market, which is mainly a large fish market which takes place along the seafront on Sundays, and a tourist market during all other days of the week. Inhabited and well-known since antiquity, Marsaxlokk was used as a port by Phoenicians, Carthaginians and also has the remains of a Roman-era harbour. Originally a part of the city of Żejtun, the fishing village became a separate parish in the late nineteenth century.\nThe population of Marsaxlokk was 4,206 in July 2024. This included 2,263 males and 1,943 females; 3,512 Maltese nationals and 694 foreign nationals. \nTraditional luzzi and other larger and more modern vessels line the sheltered inner harbour. The village is also popular among locals and tourists alike for its walks around the coast and harbour, its restaurants, as well as for its swimming zones. Marsaxlokk Bay also includes a container freeport towards Birżebbuġa, a power station complex towards Delimara, and a small ship-repair facility for fishermen.\nMarsaxlokk is sometimes referred to as Portus Herculis, due to the association of Marsaxlokk Bay with the Roman and Punic remains at Tas-Silġ."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "marsaxlokk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2245,
+    "attempt": 2227,
+    "place_id": "gn-3429980",
+    "input": {
+      "place": {
+        "place_id": "gn-3429980",
+        "name": "Pilar",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.45867,
+        "lon": -58.91398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pilar, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Pilar,_Buenos_Aires",
+          "text": "Pilar is a city in Buenos Aires Province, Argentina. It is part of the Greater Buenos Aires urban conurbation and is the seat of the administrative division of Pilar Partido. It is located about 51 km northwest of downtown Buenos Aires. As of the 2022 Census, the city had a population of nearly 52,000.\nOriginally located on the flood-prone banks of the Luján River, the small town of Pilar and its chapel were relocated to their current site in the 1800s. Pilar was the site of the signing of the Treaty of Pilar in 1820, a foundational document that is one of \"pre-existing pacts\" of the Constitution of Argentina and laid the foundation for Argentina's federal system of government.\nSince the 1990s, Pilar has undergone a demographic transformation fueled by the development of gated communities within and around the city limits. In recent decades, as the administrative center of Pilar Partido, the city has diversified its economy, supported by neighbouring industries and a growing service sector in the district. As a result, Pilar has solidified its position as a development hub on the outskirts of Greater Buenos Aires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "pilar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2246,
+    "attempt": 2228,
+    "place_id": "gn-3690654",
+    "input": {
+      "place": {
+        "place_id": "gn-3690654",
+        "name": "Yurimaguas",
+        "country": "Peru",
+        "subdivision": "Loreto",
+        "lat": -5.90181,
+        "lon": -76.12234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yurimaguas",
+          "url": "https://en.wikipedia.org/wiki/Yurimaguas",
+          "text": "Yurimaguas is a port town in the Loreto Region of the northeastern Peruvian Amazon. Historically associated with the Mainas missions, the culturally diverse town is affectionately known as the \"Pearl of the Huallaga\" (Perla del Huallaga). Yurimaguas is located at the confluence of the majestic Huallaga and Paranapura Rivers in the steamy rainforests of northeastern Peru. It is the capital of both Alto Amazonas Province and Yurimaguas District, and had a population estimated at  62,903 inhabitants (2017).\nWith a long and illustrious history, Yurimaguas is a tourist destination, especially during the August 15 annual Catholic festival of the Assumption. Long dominated by the presence of the Church, the town is  home to the Apostolic Vicariate of Yurimaguas, Loreto Region. Visited in 1855 by the famed botanist Richard Spruce, Yurimaguas remains an important commercial center for subsistence and market oriented farmers or ribereños (who cultivate sugar cane, bananas, cotton, tobacco, manioc and other comestible produce) and fishermen.\nYurimaguas is notable for being the last urban center in Loreto connected by highway with the rest of Peru: a recently paved road links Yurimaguas with Tarapoto and Moyobamba, located in the tropical Andes (high-jungle), or as it is known in the vernacular, the montaña. While the Moisés Benzaquén Rengifo Airport was first established in Yurimaguas in 1937, it is now barely functioning (the collapse of the Peruvian airline Aero Continente left only two airlines serving the airport). For the majority of the populace, transit is dominated by river travel. In the ports of Yurimaguas trade is in tropical forest produce, particularly hardwoods, petroleum, contraband, and goods (licit and otherwise) from the Andean highlands or Pacific Coast sent down-river to Iquitos and beyond (the Port Authority of Yurimaguas, ENAPU is in charge of the International Puerto de Yurimaguas, Peru). Yurimaguas boasts a magnificent Cathedral built by the Passionist Order, and modeled after the Cathedral in Burgos, Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 313
+    },
+    "banned_terms": [
+      {
+        "term": "yurimaguas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2247,
+    "attempt": 2229,
+    "place_id": "gn-4204230",
+    "input": {
+      "place": {
+        "place_id": "gn-4204230",
+        "name": "LaGrange",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.03929,
+        "lon": -85.03133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "LaGrange, Georgia",
+          "url": "https://en.wikipedia.org/wiki/LaGrange,_Georgia",
+          "text": "LaGrange is a city in and the county seat of Troup County, Georgia, United States. The population of the city was estimated to be 30,858 in 2020 by the U.S. Census Bureau. It is the principal city of the LaGrange, Georgia Micropolitan Statistical Area, which is included in the Atlanta-Sandy Springs-Gainesville, Georgia-Alabama (part) combined statistical area. It is about 60 miles (97 km) southwest of Atlanta and located in the foothills of the Georgian Piedmont.\nLaGrange is home to LaGrange College, the oldest private college in the state. Started as a girls' academy, it has been affiliated since the late 19th century with the Methodist Church, and what is now the North Georgia Conference of the United Methodist Church. The city's proximity to West Point Lake, a few miles to the west, helps attract bass fishermen and water sports enthusiasts to the city.\nThe Troup County Courthouse, Annex, and Jail, built in 1939, is one of LaGrange's properties that is listed on the National Register of Historic Places."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "lagrange",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2248,
+    "attempt": 2230,
+    "place_id": "gn-4468261",
+    "input": {
+      "place": {
+        "place_id": "gn-4468261",
+        "name": "Goldsboro",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.38488,
+        "lon": -77.99277
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goldsboro, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Goldsboro,_North_Carolina",
+          "text": "Goldsboro, originally Goldsborough, is a city in and the county seat of Wayne County, North Carolina, United States. The population was 33,657 at the 2020 census. It is the principal city of the Goldsboro, North Carolina Metropolitan Statistical Area. The nearby town of Waynesboro was founded in 1787, and Goldsboro was incorporated in 1847.\nThe city is situated in North Carolina's Coastal Plain and is bordered on the south by the Neuse River and the west by the Little River, approximately 40 miles (64 km) southwest of Greenville, 50 miles (80 km) southeast of Raleigh, the state capital, and 75 miles (121 km) north of Wilmington in Southeastern North Carolina. Seymour Johnson Air Force Base is located in Goldsboro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "goldsboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2249,
+    "attempt": 2231,
+    "place_id": "gn-4931482",
+    "input": {
+      "place": {
+        "place_id": "gn-4931482",
+        "name": "Brookline",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.33176,
+        "lon": -71.12116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brookline, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Brookline,_Massachusetts",
+          "text": "Brookline ( ) is a town in Norfolk County, Massachusetts, United States, and part of the Boston metropolitan area. An exclave of Norfolk County, Brookline borders six of the City of Boston's neighborhoods: Brighton, Allston, Fenway–Kenmore, Mission Hill, Jamaica Plain, and West Roxbury. The city of Newton borders Brookline to the west. It is known for being the birthplace of U.S. President John F. Kennedy and Conan O'Brien.\nThe land which comprises what is today Brookline was first settled in 1638 as a hamlet in Boston, known as Muddy River (as it was settled on the west side of the river of the same name). It was incorporated as a separate town with the name of Brookline in 1705.\nSeveral streets and railroads were laid out in the town in the 19th century. Today, these are Massachusetts Route 9 (locally Boylston St., which unofficially divides north and south Brookline) and the various branches of the MBTA's Green Line. To the north of Route 9, the area is fairly urban; the southern part is much less so.\nAt the time of the 2020 census, the population of the town was 63,191."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "brookline",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2250,
+    "attempt": 2232,
+    "place_id": "gn-5177568",
+    "input": {
+      "place": {
+        "place_id": "gn-5177568",
+        "name": "Youngstown",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.09978,
+        "lon": -80.64952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Youngstown, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Youngstown,_Ohio",
+          "text": "Youngstown is a city in Mahoning County, Ohio, United States, and the county seat (however, a small portion of the city is in Trumbull County). It lies along the Mahoning River in Northeast Ohio. The population was 60,068 at the 2020 census (estimated at 58,832 in 2025), making it the eleventh-most populous city in Ohio. The Mahoning Valley metropolitan area had an estimated 426,086 residents in 2024.\nYoungstown was named after pioneer John Young, who founded the city in 1797 within the Connecticut Western Reserve and established the first sawmill and gristmill along the Mahoning River. It was an early industrial city of the late 19th and early 20th centuries and became known as a center of steel production. However, Youngstown did not economically diversify like larger industrial cities, and with the movement of steelmaking jobs offshore as the industry contracted in the 1970s, the city came to exemplify the Rust Belt.\nRevitalization efforts in the 21st century include the Covelli Centre and Youngstown Foundation Amphitheatre, while other notable city institutions include the Butler Institute of American Art, Mill Creek Park, Stambaugh Auditorium, and Youngstown State University. Youngstown is about 5 miles (8.0 km) west of the Ohio–Pennsylvania border and midway between Cleveland (60 miles (97 km) northwest) and Pittsburgh (60 miles (97 km) southeast)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "youngstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2251,
+    "attempt": 2233,
+    "place_id": "gn-2517367",
+    "input": {
+      "place": {
+        "place_id": "gn-2517367",
+        "name": "Gandia",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.96667,
+        "lon": -0.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gandia",
+          "url": "https://en.wikipedia.org/wiki/Gandia",
+          "text": "Gandia, in Valencian, spelled Gandía in Spanish, is a city and municipality in the Valencian Community, eastern Spain on the Mediterranean. Gandia is located on the Costa de Valencia, 65 kilometres (40 mi) south of Valencia and 110 km (68 mi) north of Alicante. Vehicles can access the city through road N-332 and AP-7 highway.\nGandia operated as an important cultural and commercial centre in the 15th and 16th centuries: in the 15th century it had a university. It was home to several important people, including the poet Ausiàs March (1400-1459) and the novelist Joanot Martorell (1410-1465). It is perhaps best known for the Borja or Borgia, through their family title, Duke of Gandia (originally created in 1399).\nAs of 2020 Gandia is one of the largest coastal towns in Spain, with a population of over 200,000 during summer, and a centre of commerce and tourism in its region. There are two main zones, Gandia City, which has all the historical monuments, commercial activity, and shopping, and Gandia beach, which has apartments and summer residences used during the summer season. The bars and nightclubs are concentrated in the beach area. As is normal for Spain, nightlife does not begin until well after midnight. The beach and town are actually some 2 km (1 mi) apart, which succeeds in separating summer tourism from day-to-day living."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "gandia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2252,
+    "attempt": 2234,
+    "place_id": "gn-2521088",
+    "input": {
+      "place": {
+        "place_id": "gn-2521088",
+        "name": "Benidorm",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.53816,
+        "lon": -0.13098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benidorm",
+          "url": "https://en.wikipedia.org/wiki/Benidorm",
+          "text": "Benidorm is a city and municipality in the province of Alacant / Alicante, Valencian Community, on the Mediterranean coast of Spain.\nKnown as the \"New York of the Mediterranean\", Benidorm has been a tourist destination within Spain since 1925, when its port was extended and the first hotels were built, although it was only in the 1950s that it became renowned as a summer destination for people from inland Spain, especially Madrid.\nToday, Benidorm is known for its hotel industry, beaches and skyscrapers, and receives as many tourists from abroad as from Spain, chiefly from the United Kingdom. Benidorm has a permanent population of 77,211 inhabitants, making it the fifth-most populous and ninth-largest city in the Valencian Community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "benidorm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2253,
+    "attempt": 2235,
+    "place_id": "gn-2866135",
+    "input": {
+      "place": {
+        "place_id": "gn-2866135",
+        "name": "Neubrandenburg",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 53.55735,
+        "lon": 13.26105
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neubrandenburg",
+          "url": "https://en.wikipedia.org/wiki/Neubrandenburg",
+          "text": "Neubrandenburg (IPA: [nɔʏˈbʁandn̩bʊʁk] , Low German: Niegenbramborg, both lit. New Brandenburg) is a city in the southeast of Mecklenburg-Vorpommern, Germany. It is located on the shore of a lake called Tollensesee and forms the urban centre of the Mecklenburg Lakeland.\nThe city is famous for its rich medieval heritage of Brick Gothic architecture, including the world's best preserved defensive wall of this style as well as a Concert Church (Saint Mary), the home venue of the Neubrandenburg Philharmonic. It is part of the European Route of Brick Gothic, a route which leads through seven countries along the Baltic Sea coast. Neubrandenburg is nicknamed for its four medieval city gates - Stadt der Vier Tore (\"City of Four Gates\").\nSince 2011, Neubrandenburg has been the capital of the Mecklenburgische Seenplatte district. It is the third-largest city and one of the main urban centres of Mecklenburg-Vorpommern. The city is an economical node of northeastern Germany, featuring one of the highest national ranks in employment density and GDP per capita. The closest greater urban areas are the regiopolis of Rostock and the metropolises of Szczecin, Berlin and Hamburg. Since 1991, Neubrandenburg has hosted a University of Applied Sciences that offers international exchanges, guest programs and study programs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "neubrandenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2254,
+    "attempt": 2236,
+    "place_id": "gn-4219762",
+    "input": {
+      "place": {
+        "place_id": "gn-4219762",
+        "name": "Rome",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 34.25704,
+        "lon": -85.16467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rome, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Rome,_Georgia",
+          "text": "Rome is the largest city in and the county seat of Floyd County, Georgia, United States. Located in the foothills of the Appalachian Mountains, it is the principal city of the Rome, Georgia, metropolitan statistical area, which encompasses all of Floyd County. At the 2020 census, the city had a population of 37,713. It is the largest city in Northwest Georgia and the 26th-largest city in the state.\nRome was founded in 1834, after Congress passed the Indian Removal Act, and the federal government committed to removing the Cherokee and other Native Americans from the Southeast. It developed on former indigenous territory at the confluence of the Etowah and the Oostanaula rivers, which together form the Coosa River. Because of its strategic advantages, this area was long occupied by the historic Creek. Later the Cherokee people expanded into this area from their traditional homelands to the east and northeast. National leaders such as Major Ridge and John Ross resided here before Indian Removal in 1838.\nThe city has developed on seven hills with the rivers running between them, a feature that inspired the early European-American settlers to name it for Rome, that was also built on seven hills. The American Rome developed in the antebellum period as a market and trading city due to its advantageous location on the rivers. It shipped the rich regional cotton commodity crop downriver to markets on the Gulf Coast and export overseas.\nIn the late 1920s, a United States company built a rayon plant in a joint project with an Italian company. This project and the American city of Rome were honored by Italy in 1929, when Benito Mussolini sent a replica of the statue of Romulus and Remus nursing from a mother wolf, a symbol of the founding myth of the original Rome.\nIt is the largest city near the center of the triangular area defined by the Interstate highways between Atlanta, Birmingham, and Chattanooga. It has developed as a regional center for the fields of medical care and education. In addition to its public school system, it has several private schools. Higher-level institutions include private Berry College and Shorter University, and the public Georgia Northwestern Technical College and Georgia Highlands College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 369
+    },
+    "banned_terms": [
+      {
+        "term": "rome",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2255,
+    "attempt": 2237,
+    "place_id": "gn-4474040",
+    "input": {
+      "place": {
+        "place_id": "gn-4474040",
+        "name": "Kannapolis",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.48736,
+        "lon": -80.62173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kannapolis, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Kannapolis,_North_Carolina",
+          "text": "Kannapolis () is a city in Cabarrus and Rowan counties in North Carolina, northwest of Concord and northeast of Charlotte, and is a suburb in the Charlotte metropolitan area. The city of Kannapolis was incorporated in 1984. The population was 53,114 at the 2020 census, which makes Kannapolis the 19th-most populous city in North Carolina. It is the home of the Kannapolis Cannon Ballers, the Low-A baseball affiliate of the Chicago White Sox, and it is the hometown of the Earnhardt racing family. It is also the headquarters for the Haas F1 racing team. The center of the city is home to the North Carolina Research Campus, a public-private venture that focuses on food, nutrition, and biotech research."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "kannapolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2256,
+    "attempt": 2238,
+    "place_id": "gn-5370082",
+    "input": {
+      "place": {
+        "place_id": "gn-5370082",
+        "name": "Manhattan Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.88474,
+        "lon": -118.41091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manhattan Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Manhattan_Beach,_California",
+          "text": "Manhattan Beach is a city in southwestern Los Angeles County, California, United States, on the Pacific coast south of El Segundo, west of Hawthorne, and north of Redondo Beach and Hermosa Beach. As of the 2020 census, the population was 35,506.\nTogether with Hermosa Beach and Redondo Beach, it forms the three Beach Cities within the South Bay region of Los Angeles County. The community is known for a long beach stretching approximately 2.1 miles (3.4 km) and roughly 450 feet (140 m) wide. The climate is moderate because of Manhattan Beach's proximity to the Pacific Ocean, with an average year-round high temperature of 69.1 °F (20.6 °C) and an average year-round low of 56.4 °F (13.6 °C)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "manhattan beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "manhattan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2257,
+    "attempt": 2239,
+    "place_id": "gn-5806253",
+    "input": {
+      "place": {
+        "place_id": "gn-5806253",
+        "name": "Parkland",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.15538,
+        "lon": -122.43401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parkland, Washington",
+          "url": "https://en.wikipedia.org/wiki/Parkland,_Washington",
+          "text": "Parkland is a census-designated place (CDP) in Pierce County, Washington. The population was 35,803 at the time of the 2010 census and had grown to 38,623 as of the 2020 census. It is an unincorporated suburb of the city of Tacoma and is home to Pacific Lutheran University.\nParkland borders most of Tacoma's southern cutoff at 96th St, and borders with much of the northern cutoff of Spanaway, Washington, at 152nd St (or Military Rd E).\nThe most influential motorway is State Route 7/Pacific Ave, which travels north and south, and leads from Interstate 5 in Tacoma all the way to Mount Rainier. Pacific Ave is also a main commercial corridor through much of the county, including Parkland.\nIt was given its name by early white settlers for the park-like nature of the vast Garry Oak and blue camas flower prairie, and the many meandering creeks crossing it. In 1890, Norwegian-Americans from the Midwest chose this area as the site of their new college, which is now Pacific Lutheran University, home to 3,500 full-time students and the Lutes varsity sports teams."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "parkland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2258,
+    "attempt": 2240,
+    "place_id": "gn-691179",
+    "input": {
+      "place": {
+        "place_id": "gn-691179",
+        "name": "Truskavets",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.28067,
+        "lon": 23.50365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Truskavets",
+          "url": "https://en.wikipedia.org/wiki/Truskavets",
+          "text": "Truskavets (Ukrainian: Трускавець, IPA: [trʊskɐˈwɛtsʲ] ; Polish: Truskawiec) is a city in Drohobych Raion, western Ukraine's Lviv Oblast (region), near the border with Poland. It hosts the administration of Truskavets urban hromada, one of the hromadas of Ukraine. The population is approximately 28,287 (2022 estimate).\nTruskavets is famous for its mineral springs, which have made it one of Ukraine's great resorts. For most visitors the primary goal is consuming the various 'local waters.' The most famous is the naphtha and sulfur-scented, slightly saline 'Naftusia.' The town lies in a little valley in the Carpathian foothills and is easily reached from Lviv by bus or train. The vast majority of tourists who come to Truskavets are Ukrainian or Belarusian.\nThe modern coat of arms of the city depicts a goose with raised wings and a branch in its beak. According to history, it symbolizes vigilance, kindness and health.\nIn 2000, a special economic zone (SEZ) was established in Truskavets for the period of 20 years. Known as \"Kurortopolis Truskavets\", the SEZ offered various tax privileges for businesses and investors. Some 13 investment projects were approved under its framework, with the majority focusing on health and medical treatment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "truskavets",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

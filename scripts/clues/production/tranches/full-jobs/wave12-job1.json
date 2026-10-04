@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 2219,
+    "attempt": 2201,
+    "place_id": "gn-2982235",
+    "input": {
+      "place": {
+        "place_id": "gn-2982235",
+        "name": "Rueil-Malmaison",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.8765,
+        "lon": 2.18967
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rueil-Malmaison",
+          "url": "https://en.wikipedia.org/wiki/Rueil-Malmaison",
+          "text": "Rueil-Malmaison (French pronunciation: [ʁɥɛj malmɛzɔ̃] ) or simply Rueil is a commune in the western suburbs of Paris, in the Hauts-de-Seine department, Île-de-France region. It is on the departmental border with Yvelines at the Seine, 12.6 kilometres (8 miles) from the centre of Paris. It is the largest commune in Hauts-de-Seine by area, at 14.7 km2 (5.7 sq mi).\nRueil-Malmaison is one of the wealthiest suburbs of Paris. It is best known for its Château de Malmaison, which served as the headquarters of the French government from 1800 to 1802 and Napoleon's last residence in France at the end of the Hundred Days in 1815.\nIt is part of the Pays des Impressionnistes, who used to paint there along the Seine. Édouard Manet's 1882 The House at Rueil paintings depict a house where Manet and his family stayed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "rueil malmaison",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rueil",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "malmaison",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2220,
+    "attempt": 2202,
+    "place_id": "gn-3089033",
+    "input": {
+      "place": {
+        "place_id": "gn-3089033",
+        "name": "Piła",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 53.15145,
+        "lon": 16.73782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piła",
+          "url": "https://en.wikipedia.org/wiki/Pi%C5%82a",
+          "text": "Piła (Polish: [ˈpiwa] ; German: Schneidemühl) is a city in northwestern Poland and the capital of Piła County, situated in the Greater Poland Voivodeship. Its population as of 2025 was 68,762, making it the third-largest city in the voivodeship after Poznań and Kalisz and the largest city in the northern part of Greater Poland. Piła is Poland's largest city without powiat rights.\nFounded in the 14th century, Piła was a royal city of Poland, whose prosperity came from crafts and trade. The city is located on the Gwda river and is famous for its green areas, parks and dense forests nearby. It is an important road and railway hub, located at the intersection of two main lines: Poznań–Szczecin and Bydgoszcz–Krzyż Wielkopolski. Piła is the center of light industry, culture and education in northern Greater Poland, and is particularly known for motorcycle speedway racing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "pi a",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pi",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "a",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2221,
+    "attempt": 2203,
+    "place_id": "gn-3178738",
+    "input": {
+      "place": {
+        "place_id": "gn-3178738",
+        "name": "Ciampino",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 41.80064,
+        "lon": 12.60158
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciampino",
+          "url": "https://en.wikipedia.org/wiki/Ciampino",
+          "text": "Ciampino (pronounced [tʃamˈpiːno]) is a city and comune in the Metropolitan City of Rome, Lazio, Italy. It was a frazione of Marino until 1974, when it became a comune; it obtained the city (Italian: città) status (being therefore officially known as Città di Ciampino) in 2004 by a presidential decree.\nIt is best known for the local \"Giovan Battista Pastine\" International Airport, best known as Rome Ciampino, a military airport  which also hosts several civil flights, especially from low-cost companies such as Ryanair. The city is named after Giovanni Giustino Ciampini, a religious, scientist and archaeologist who lived here in the 17th century. It grew from 5,000 inhabitants in 1951 to 28,000 in 1971. Today, the city has circa 38,700 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "ciampino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2222,
+    "attempt": 2204,
+    "place_id": "gn-4922462",
+    "input": {
+      "place": {
+        "place_id": "gn-4922462",
+        "name": "Lafayette",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 40.4167,
+        "lon": -86.87529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lafayette, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Lafayette,_Indiana",
+          "text": "Lafayette ( LA(H)F-ee-ET) is a city in and the county seat of Tippecanoe County, Indiana, United States. The population was 70,783 at the 2020 census. It sits across the Wabash River from West Lafayette, home to Purdue University, which plays a major role in both communities. Together, Lafayette and West Lafayette make up the core of the Lafayette metropolitan area, home to 235,066 people in 2020.\nLafayette was founded in 1825 on the southeast bank of the Wabash River near where the river becomes impassable for riverboats upstream, though a French fort and trading post had existed since 1717 on the opposite bank and three miles downstream. It was named for the French general Marquis de Lafayette, a Revolutionary War hero. Lafayette is 63 miles (101 km) northwest of Indianapolis and 125 miles (201 km) southeast of Chicago."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "lafayette",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2223,
+    "attempt": 2205,
+    "place_id": "gn-5162097",
+    "input": {
+      "place": {
+        "place_id": "gn-5162097",
+        "name": "Massillon",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.79672,
+        "lon": -81.52151
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Massillon, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Massillon,_Ohio",
+          "text": "Massillon ( MASS-ih-lən) is a city in western Stark County, Ohio, United States, along the Tuscarawas River. The population was 32,146 at the 2020 census. Massillon is a principal city of the Canton–Massillon metropolitan area, which includes all of Stark and Carroll counties and had a population of 401,574 in 2020.\nFounded in the early 19th century and incorporated in 1853, the city developed as an industrial center due to its location on the Ohio and Erie Canal and later railroad access. Steel and machinery manufacturing played a significant role in the city's economic growth. Massillon is located approximately 8 miles (13 km) west of Canton, 20 miles (32 km) south of Akron, and 50 miles (80 km) south of Cleveland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "massillon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2224,
+    "attempt": 2206,
+    "place_id": "gn-65785",
+    "input": {
+      "place": {
+        "place_id": "gn-65785",
+        "name": "Afgooye",
+        "country": "Somalia",
+        "subdivision": "Lower Shabeelle",
+        "lat": 2.1381,
+        "lon": 45.1212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Afgooye",
+          "url": "https://en.wikipedia.org/wiki/Afgooye",
+          "text": "Afgooye (Somali: Afgooye, Arabic: أفجويى, Italian: Afgoi) is a town in the southeastern Somalia Lower Shebelle (Shabellaha Hoose) region of Somalia.The town is identified with the historical settlement of Lama Jiidle, which Lee V. Cassanelli describes as the centre of Silcis administration. It is the center of the Afgooye District. Afgooye is the third largest city of Southwest State. Afgooye is one of the oldest towns on the lower Shebelle valley, 30 kilometers north of Mogadishu. Afgooye is the site of Lafoole college, the first college of education in Somalia, built on the site of the battle of Lafoole of 1896. Afgooye is also known for the Istunka, the annual \"stick fight\" carnival commemorating the New Year in the riverine region. It was a trade center for the Silcis Dynasty in the medieval period then fell under Ajuran rule. Around the late 17th century, Afgooye became the capital of Geledi Sultanate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "afgooye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2225,
+    "attempt": 2207,
+    "place_id": "gn-1832384",
+    "input": {
+      "place": {
+        "place_id": "gn-1832384",
+        "name": "Yeongju",
+        "country": "South Korea",
+        "subdivision": "Gyeongsangbuk-do",
+        "lat": 36.82167,
+        "lon": 128.63083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yeongju",
+          "url": "https://en.wikipedia.org/wiki/Yeongju",
+          "text": "Yeongju (Korean: 영주; Korean pronunciation: [jʌŋ.dʑu]) is a city in North Gyeongsang Province, South Korea. It has an area of 668.84 square kilometres (258.24 sq mi) and a population of 113,930 people according to the 2008 census. The city borders Bonghwa county to the east, Danyang County of North Chungcheong Province to the west, Andong and Yecheon county to the south, and Yeongwol County of Gangwon Province to the north.\nBuseoksa Temple in Yeongju is outstanding as a representative temple of the Avatamsaka Sect of Silla Buddhism.  Sosu Seowon is the first Seowon (Confucian academy) to have had national financial support by way of tax exemptions.\nYeongju is also home to a large Novelis Aluminum plant, employing approximately 1000 workers.  This plant provides flat-rolled aluminum sheet products to customers throughout Asia.\nThe city is an agricultural hub, particularly known for its apples and ginseng."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "yeongju",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2226,
+    "attempt": 2208,
+    "place_id": "gn-1861207",
+    "input": {
+      "place": {
+        "place_id": "gn-1861207",
+        "name": "Iwakura",
+        "country": "Japan",
+        "subdivision": "Aichi",
+        "lat": 35.28333,
+        "lon": 136.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iwakura, Aichi",
+          "url": "https://en.wikipedia.org/wiki/Iwakura,_Aichi",
+          "text": "Iwakura (岩倉市, Iwakura-shi) is a city located in Aichi Prefecture, Japan. As of 1 October 2019, the city had an estimated population of 47,929 in 21,805 households, and a population density of 4,578 persons per km2. The total area of the city was 10.47 square kilometres (4.04 sq mi). It is the city with the smallest area in the prefecture (followed by Takahama and Chiryū), and is the 10th smallest city in Japan. Iwakura city is famous for its \"Cherry Blossom Festival\" which mostly takes place around the end of March every year. Iwakura's cherry blossom is located at the symbol of the city \"Gojo river\" and lists as one of the top 100 best cherry blossom spots in Japan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "iwakura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2227,
+    "attempt": 2209,
+    "place_id": "gn-3068582",
+    "input": {
+      "place": {
+        "place_id": "gn-3068582",
+        "name": "Pardubice",
+        "country": "Czechia",
+        "subdivision": "Pardubice Region",
+        "lat": 50.04075,
+        "lon": 15.77659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pardubice",
+          "url": "https://en.wikipedia.org/wiki/Pardubice",
+          "text": "Pardubice (Czech pronunciation: [ˈpardubɪtsɛ] ; German: Pardubitz) is a city in the Czech Republic. It has about 93,000 inhabitants. It is the capital city of the Pardubice Region and is located at the confluence of the Elbe and Chrudimka rivers.\nPardubice is known as a centre of industry, with dominant industries being the chemical industry, electrical engineering and mechanical engineering. The city is also well known for its sporting events, which include the Velká pardubická (a cross-country steeplechase), the Golden Helmet of Pardubice in motorcycle racing, and the Czech Open international chess and board games festival.\nAmong the most important owners of Pardubice were the Pernštejn family, during whose rule from 1491 to 1560 the city developed and gained importance. The historic centre is well preserved and is protected as an urban monument reservation. There are five significant monuments protected as national cultural monuments, including the Pardubice Castle and Pardubice Crematorium."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "pardubice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2228,
+    "attempt": 2210,
+    "place_id": "gn-3430988",
+    "input": {
+      "place": {
+        "place_id": "gn-3430988",
+        "name": "Luján",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.5664,
+        "lon": -59.11478
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luján, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Luj%C3%A1n,_Buenos_Aires",
+          "text": "Luján (pronounced [luˈxan]) is a city in the Buenos Aires province of Argentina, located 68 kilometres (42 miles) northwest of the city of Buenos Aires. The city was founded in 1755 and has a population of 106,899 (per the 2010 census [INDEC]).\n\nLuján is best known for its large, neo-gothic Basilica, built in honor of the Virgin of Luján, the patron saint of Argentina. Every year, more than six million people make pilgrimages to the basilica, many walking there from Buenos Aires. The city is known as La Capital de la Fe (Capital of the Faith). It is a popular day-trip for non-believers too, with abundant grill restaurants (like most places in Argentina) and souvenir shops with kitsch religious memorabilia.\nThe church was designed by the French architect Ulderico Courtois and started in 1889, completed by 1937. Its towers stand 106 m (348 ft) high, and it has a copper roof and bronze doors. The huge church towers over the surrounding flat country and houses the tiny 38 cm (15 in) high statue of the Virgin. A large and important organ by French builder Cavaille-Coll stands in the gallery in a state of deterioration, although efforts are underway to see to its restoration. The development of the city was altered by the basilica's construction, as the main commercial district in the city began to move away from the basilica, being replaced by shops for religious pilgrims. \nLuján is also home to the Enrique Udaondo museum complex, housing exhibitions of colonial life in the house of the Viceroy and old town hall, with art, uniforms, silverware and transport with many antique vehicles including Plus Ultra the first hydroplane to cross from Europe to Argentina and La Porteña, Argentina's first steam locomotive operated by Ferrocarril Oeste. Also on display are the prison cells where Colonel William Carr Beresford, commander of the 1806 British invading forces, and General Cornelio Saavedra, president of the first national government (Primera Junta) in 1810, were held.\nSince 1987, Benedictine monks of the Cono-Sur Congregation have resided at Abadía de San Benito on the outskirts of Luján. In addition to providing retreat facilities for the residents of the city, the monks support themselves by means of agriculture and publishing.\nThe nearby city of Mercedes is seat of the Bishop of Mercedes and Luján. Luján is the principal settlement of the Lujan Partido or municipality. The city has a railway and bus station and is easily reached from Buenos Aires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 411
+    },
+    "banned_terms": [
+      {
+        "term": "lujan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2229,
+    "attempt": 2211,
+    "place_id": "gn-3571971",
+    "input": {
+      "place": {
+        "place_id": "gn-3571971",
+        "name": "Lucaya",
+        "country": "Bahamas",
+        "subdivision": "Freeport",
+        "lat": 26.53333,
+        "lon": -78.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lucaya, Bahamas",
+          "url": "https://en.wikipedia.org/wiki/Lucaya,_Bahamas",
+          "text": "Lucaya is a suburb of Freeport, Bahamas, a city on the island of Grand Bahama, approximately 105 mi (160 km) east-northeast of Fort Lauderdale, Florida, together with Freeport it forms the second largest city in the Bahamas. Lucaya's primary industry is tourism.\nMajor hotels and attractions in the resort are the Our Lucaya resort, which includes both The Radisson and Reef Village properties, Pelican Bay Hotel and the UNEXSO (UNderwater EXplorers SOciety) dive charter operation.\nUNEXSO was the first destination dive charter business in the world and now features a dolphinarium as well as a variety of SCUBA diving charters including shark feeding dives.\nPort Lucaya is a popular spring break destination with the socializing centering on Count Basie Square."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "lucaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2230,
+    "attempt": 2212,
+    "place_id": "gn-3598128",
+    "input": {
+      "place": {
+        "place_id": "gn-3598128",
+        "name": "Ciudad Vieja",
+        "country": "Guatemala",
+        "subdivision": "Sacatepéquez",
+        "lat": 14.52396,
+        "lon": -90.76308
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Vieja",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Vieja",
+          "text": "Ciudad Vieja (Spanish pronunciation: [sjuˈðað ˈβjexa]) is a town and municipality in the Guatemalan department of Sacatepéquez. According to the 2018 census, the town has a population of 32,802 and the municipality a population of 33,405. Ciudad Vieja was the second site of Santiago de los Caballeros de Guatemala, the colonial capital of the country.\nSan Miguel Escobar is the modern name for the district that contains the ruins of the second colonial capital of the Guatemala region. The Spaniards founded their capital here in 1527, after their previous capital at Tecpán Guatemala became untenable. The city was destroyed by a catastrophic lahar from Volcan de Agua in 1541, and the survivors had no choice but to abandon the site. Among the casualties was the governor Beatriz de la Cueva."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad vieja",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vieja",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2231,
+    "attempt": 2213,
+    "place_id": "gn-3933024",
+    "input": {
+      "place": {
+        "place_id": "gn-3933024",
+        "name": "Paramonga",
+        "country": "Peru",
+        "subdivision": "Lima region",
+        "lat": -10.66667,
+        "lon": -77.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paramonga",
+          "url": "https://en.wikipedia.org/wiki/Paramonga",
+          "text": "Paramonga was an important city constructed at the border of the former Kingdom of Chimor in Peru during the late Intermediate Period (AD 1200 to 1400), whose capital was the metropolis of Chan Chan.\nParamonga is located on the Fortaleza River, close to the town of Pativilca to the north of Lima. It is said that it was an important religious settlement, similar to Pachacamac. It is named after the nearby modern town of Paramonga, as its original name is unknown. Paramonga is often called a fortress due to its staggered pyramid of four levels of enormous proportions constructed on a hill, which somewhat resembles a European medieval castle, though it was built prior to Spanish colonization of the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "paramonga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2232,
+    "attempt": 2214,
+    "place_id": "gn-4428667",
+    "input": {
+      "place": {
+        "place_id": "gn-4428667",
+        "name": "Gulfport",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 30.36742,
+        "lon": -89.09282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gulfport, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Gulfport,_Mississippi",
+          "text": "Gulfport ( GUHLF-port) is a port city in Harrison County, Mississippi, United States, and its co-county seat. It had a population of 72,926 at the 2020 census, making it the second-most populous city in Mississippi after Jackson. The Gulfport–Biloxi metropolitan area had a population of 416,259. Gulfport lies along the Gulf Coast of the United States in southern Mississippi, taking its name from its port on the Gulf Coast on the Mississippi Sound.\nGulfport emerged from two earlier settlements, Mississippi City and Handsboro. Founded in 1887 by William H. Hardy as a terminus for the Gulf and Ship Island Railroad, the city was further developed by Philadelphia oil tycoon Joseph T. Jones, who funded the railroad, harbor, and channel dredging. The city was officially incorporated in 1898. By the early 20th century, Gulfport had become the largest lumber export city in the United States, though this faded with the depletion of Mississippi's Piney Woods. The city transitioned into tourism through its white beaches, grand hotels, and significant casino gaming operations.\nThe largest sectors of Gulfport's economy include military operations, tourism, healthcare, and maritime commerce. The city is home to the Naval Construction Battalion Center, Gulfport Combat Readiness Training Center, and Mississippi Gulf Coast Community College. The Port of Gulfport serves as one of the busiest ports in the Gulf of Mexico, while Gulfport-Biloxi International Airport provides commercial air service to the region. Despite significant impacts from Hurricane Camille in 1969 and Hurricane Katrina in 2005, the city has consistently rebuilt and expanded its infrastructure and facilities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "gulfport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2233,
+    "attempt": 2215,
+    "place_id": "gn-4624180",
+    "input": {
+      "place": {
+        "place_id": "gn-4624180",
+        "name": "Gallatin",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.38838,
+        "lon": -86.44666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gallatin, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Gallatin,_Tennessee",
+          "text": "Gallatin is a city in and the county seat of Sumner County, Tennessee, United States. The population was 44,431 at the 2020 census and is estimated to be 52,489 as of 2024. Named for United States Secretary of the Treasury Albert Gallatin, the city was established on the Cumberland River and made the county seat of Sumner County in 1802. It is located about 30.6 miles northeast of the state capital of Nashville, Tennessee.\nSeveral national companies have facilities or headquarters in Gallatin, including Facebook, Gap, Inc.,  Beretta and Servpro Industries LLC. Gallatin was formerly the headquarters of Dot Records. The city is also the site of Volunteer State Community College, a two-year college with more than 70 degree programs. In 2017, Gallatin was ranked as \"The Nicest Place In America\" by Reader's Digest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "gallatin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2234,
+    "attempt": 2216,
+    "place_id": "gn-4951257",
+    "input": {
+      "place": {
+        "place_id": "gn-4951257",
+        "name": "Somerville",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.3876,
+        "lon": -71.0995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Somerville, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Somerville,_Massachusetts",
+          "text": "Somerville ( SUM-ər-vil) is a city located directly to the northwest of Boston, and north of Cambridge, in Middlesex County, Massachusetts, United States. As of the 2020 United States census, the city had a total population of 81,045 people. With an area of 4.12 square miles (10.7 km2), the city has a density of 19,671/sq mi (7,595/km2), making it the most densely populated municipality in New England and the 19th most densely populated incorporated municipality in the country. Somerville was established as a town in 1842, when it was separated from Charlestown. In 1972, 2009, and 2015, the city received the All-America City Award. It is home to Tufts University, which has its campus along the Somerville and Medford border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "somerville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2235,
+    "attempt": 2217,
+    "place_id": "gn-4997787",
+    "input": {
+      "place": {
+        "place_id": "gn-4997787",
+        "name": "Kalamazoo",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.29171,
+        "lon": -85.58723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalamazoo, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Kalamazoo,_Michigan",
+          "text": "Kalamazoo ( KAL-ə-mə-ZOO) is a city in Kalamazoo County, Michigan, United States, and its county seat. At the 2020 census, Kalamazoo had a population of 73,598. It is the principal city of the Kalamazoo–Portage metropolitan area in southwestern Michigan, which had a population of 261,670 in 2020.\nOne of Kalamazoo's most notable features is the Kalamazoo Mall, an outdoor pedestrian shopping mall. The city created the mall in 1959 by closing part of Burdick Street to automobile traffic, although two of the mall's four blocks have been reopened to auto traffic since 1999. Kalamazoo is home to Western Michigan University, a large public university, Kalamazoo College, a private liberal arts college, and Kalamazoo Valley Community College, a two-year community college."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "kalamazoo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2236,
+    "attempt": 2218,
+    "place_id": "gn-5234372",
+    "input": {
+      "place": {
+        "place_id": "gn-5234372",
+        "name": "Burlington",
+        "country": "United States",
+        "subdivision": "Vermont",
+        "lat": 44.47588,
+        "lon": -73.21207
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burlington, Vermont",
+          "url": "https://en.wikipedia.org/wiki/Burlington,_Vermont",
+          "text": "Burlington is the largest city in the U.S. State of Vermont and the county seat of Chittenden County. It is located 45 miles (72 km) south of the Canada–United States border and 95 miles (153 km) south of Montreal. As of the 2020 United States census, the population was 44,743, making Burlington the most populous municipality in Vermont and the least populous U.S. city to be the most populous city within a state.\nA regional college town, Burlington is home to the University of Vermont (UVM) and Champlain College. Vermont's largest hospital, the UVM Medical Center, is within the city limits. The City of Burlington owns Vermont's largest airport, the Patrick Leahy Burlington International Airport, located in neighboring South Burlington. In 2015, Burlington became the first city in the U.S. to run entirely on renewable energy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "burlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2237,
+    "attempt": 2219,
+    "place_id": "gn-5815342",
+    "input": {
+      "place": {
+        "place_id": "gn-5815342",
+        "name": "Wenatchee",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.42346,
+        "lon": -120.31035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wenatchee, Washington",
+          "url": "https://en.wikipedia.org/wiki/Wenatchee,_Washington",
+          "text": "Wenatchee ( wen-ACH-ee) is the county seat of and the most populous city in Chelan County, Washington, United States. The population was 35,508 as of the 2020 census. The city lies at the confluence of the Columbia and Wenatchee rivers near the eastern foothills of the Cascade Range in north-central Washington. Wenatchee is on the west side of the Columbia River in Chelan County, across from the city of  East Wenatchee in Douglas County.\nThe city was named for the Wenatchi, a Native American tribe that inhabited the area around the confluence at the time of European-American contact. The name is a Sahaptin word that means \"river which comes [or whose source is] from canyons\" or \"robe of the rainbow\". Awenatchela means \"people at the source [of a river]\". The city of Wenatchee shares its name with the Wenatchee River, Lake Wenatchee and the Wenatchee National Forest.\nWenatchee is the principal city of the Wenatchee–East Wenatchee, Washington Metropolitan Statistical Area, which encompasses all of Chelan and Douglas counties (total population around 110,884). However, the \"Wenatchee Valley Area\" generally refers to the land between Rocky Reach and Rock Island Dam on both banks of the Columbia River. Wenatchee is referred to as the \"Apple Capital of the World\" due to the valley's many orchards. The city is also sometimes referred to as the \"Buckle of the Power Belt of the Great Northwest\" which is a metaphor for the series of hydroelectric dams on the Columbia River. Rock Island Dam is located nearest to the middle of this \"belt\", and so was labeled the \"Buckle\". This saying is printed at the top of every issue of Wenatchee's newspaper, The Wenatchee World, but is no longer in common use elsewhere."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 287
+    },
+    "banned_terms": [
+      {
+        "term": "wenatchee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2238,
+    "attempt": 2220,
+    "place_id": "gn-1023713",
+    "input": {
+      "place": {
+        "place_id": "gn-1023713",
+        "name": "Acornhoek",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -24.5878,
+        "lon": 31.09467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acornhoek",
+          "url": "https://en.wikipedia.org/wiki/Acornhoek",
+          "text": "Acornhoek, commonly known as Khenhuk, is a semi-rural town situated in the north eastern areas of Bushbuckridge in the Mpumalanga province of South Africa.\nEstablished in the late 1950s, the town is located about 38 km south-east of Hoedspruit in Limpopo and 165 km north-west of Komatipoort near the border post of Mozambique and eSwatini. The name Acornhoek is variously explained as being an adaptation of Eekhoornhoek ('squirrel corner'); derived from the German surname Eichhorn, and named after the acorn-like fruits of the marula tree.\nThe main languages spoken in Acornhoek are Sepulana and Xitsonga. Most of Vatsonga people occupy the eastern side of this semi-rural township while the Mapulana people are settled on the western and southern areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 119,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "acornhoek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
