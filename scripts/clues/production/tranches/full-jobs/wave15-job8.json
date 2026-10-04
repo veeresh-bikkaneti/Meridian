@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 2963,
+    "attempt": 2941,
+    "place_id": "gn-2648997",
+    "input": {
+      "place": {
+        "place_id": "gn-2648997",
+        "name": "Fulham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48026,
+        "lon": -0.1993
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fulham",
+          "url": "https://en.wikipedia.org/wiki/Fulham",
+          "text": "Fulham () is an area of the London Borough of Hammersmith and Fulham in West London, England, 3.7 miles (6.0 km) southwest of Charing Cross. It lies in a loop on the north bank of the River Thames, bordering Hammersmith, Kensington and Chelsea, with which it shares the area known as West Brompton. Over the Thames, Fulham faces Wandsworth, Putney, the London Wetland Centre in Barnes in the London Borough of Richmond upon Thames.\nFirst recorded by name in 691, it was an extensive Anglo-Saxon estate, the Manor of Fulham, and then a parish. Its domain stretched from modern-day Chiswick in the west to Chelsea in the southeast; and from Harlesden in the northwest to Kensal Green in the northeast bordered by the littoral of Counter's Creek and the Manor of Kensington. It originally included today's Hammersmith. Between 1900 and 1965, it was demarcated as the Metropolitan Borough of Fulham, before its merger with the Metropolitan Borough of Hammersmith to create the London Borough of Hammersmith and Fulham (known as the London Borough of Hammersmith from 1965 to 1979). The district is split between the western and south-western postal areas.\nFulham industrial history includes pottery, tapestry-weaving, paper-making and brewing in the 17th and 18th centuries in Fulham High Street, and later the automotive industry, aviation, food production, and laundries. In the 19th century, there was glass-blowing and this resurged in the 21st century with the Aronson-Noon studio and the former Zest gallery in Rickett Street. Lillie Bridge Depot, a railway engineering depot, opened in 1872, is associated with the building and extension of the London Underground, the electrification of Tube lines from the nearby Lots Road Power Station, and for well over a century has been the maintenance hub for rolling stock and track.\nTwo Premier League football clubs, Fulham and Chelsea, play in Fulham. Two other notable sporting clubs are the Hurlingham Club, known for polo, and the Queen's tennis club, known for its annual pre-Wimbledon tennis tournament. In the 1800s, Lillie Bridge Grounds hosted the first meetings of the Amateur Athletic Association of England, the second FA Cup Final, and the first amateur boxing matches. The Lillie Bridge area was the home ground of the Middlesex County Cricket Club, before it moved to Marylebone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 376
+    },
+    "banned_terms": [
+      {
+        "term": "fulham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2964,
+    "attempt": 2942,
+    "place_id": "gn-2875881",
+    "input": {
+      "place": {
+        "place_id": "gn-2875881",
+        "name": "Lörrach",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.61497,
+        "lon": 7.66457
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lörrach",
+          "url": "https://en.wikipedia.org/wiki/Lörrach",
+          "text": "Lörrach (German pronunciation: [ˈlœʁax] ) is a city in southwest Germany, in the valley of the Wiese, close to the French and the Swiss borders. It is the district seat of the district of Lörrach in Baden-Württemberg. It is the home of a number of large employers, including the Milka chocolate factory owned by Mondelez International. The city population has grown over the last century; with only 10,794 in 1905, it has now increased its population to over 50,000.\nNearby is the castle of Rötteln on the Wiesental, whose lords became the counts of Hachberg and a residence of the Margraves of Baden; this was destroyed by the troops of Louis XIV in 1678, but was rebuilt in 1867. Lörrach received market rights in 1403, but it did not obtain the privileges of a city until 1682.\nAfter the Napoleonic epoch, the town was included in the Grand Duchy of Baden. On 21 September 1848, Gustav Struve attempted to start a revolutionary uprising in Lörrach as part of the Revolutions of 1848–49. It failed, and Struve was caught and imprisoned. Still, Lörrach was officially the capital of Germany for a day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "lorrach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2965,
+    "attempt": 2943,
+    "place_id": "gn-2964405",
+    "input": {
+      "place": {
+        "place_id": "gn-2964405",
+        "name": "Ennis",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 52.84361,
+        "lon": -8.98639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ennis",
+          "url": "https://en.wikipedia.org/wiki/Ennis",
+          "text": "Ennis (Irish: Inis [ˈɪnʲɪʃ], meaning 'island' or 'river meadow') is the county town of County Clare, in the mid-west of Ireland. The town lies on the River Fergus, north of where the river widens and enters the Shannon Estuary. Ennis is the largest town in County Clare, with a population of 27,923, making it the 6th largest town, and 11th largest urban settlement in Ireland, as of the 2022 census. Dating from the 12th century the town's Irish name is short for Irish: Inis Cluana Rámhfhada, meaning 'Island of the long rowing meadow', deriving from its location between two courses of the River Fergus.\nEnnis has had considerable success in the Irish Tidy Towns competition. In 2005 and 2021, the town was named Ireland's tidiest town, and was named Ireland's tidiest large urban centre on multiple occasions.\nThe town straddles two baronies. Most of the town, including its historic centre, is in the Barony of Islands. However, the eastern and north-eastern edges of the town are in the Barony of Bunratty Upper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "ennis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2966,
+    "attempt": 2944,
+    "place_id": "gn-2969284",
+    "input": {
+      "place": {
+        "place_id": "gn-2969284",
+        "name": "Vienne",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.52569,
+        "lon": 4.87484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vienne, Isère",
+          "url": "https://en.wikipedia.org/wiki/Vienne,_Isère",
+          "text": "Vienne (French: [vjɛn] ; Arpitan: Vièna) is a town in southeastern France, located 35 kilometres (22 mi) south of Lyon, at the confluence of the Gère and the Rhône. It is the fourth-largest commune in the Isère department, of which it is a subprefecture alongside La Tour-du-Pin. Vienne was a major centre of the Roman Empire under the Latin name Vienna.\nVienne was the capital of the Allobroges, a Gallic people, before its conquest by the Romans. Transformed into a Roman colony in 47 BC under Julius Caesar, it became a major urban centre, ideally located along the Rhône, then a major axis of communication. Emperor Augustus banished Herod the Great's son, the ethnarch Herod Archelaus to Vienne in 6 AD.\nAs Vienne was a Roman provincial capital, remains of Roman constructions are still widespread across it. The city was also an important early bishopric in Christian Gaul. Its most famous bishop was Avitus of Vienne. At the Council of Vienne, which was convened there in October 1311, Pope Clement V abolished the order of the Knights Templar. During the Middle Ages, Vienne was part of the Kingdom of Provence, part of the Holy Roman Empire; on the opposite bank of the Rhône was Kingdom of France, which made the city strategically important.\nThe town is now a regional commercial and industrial centre, known regionally for its Saturday market. A Roman temple, circus pyramid and theatre (where the annual Jazz à Vienne is held), as well as museums (archaeological, textile industry) and notable Catholic buildings, make tourism an important part of the town's economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "vienne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2967,
+    "attempt": 2945,
+    "place_id": "gn-3109442",
+    "input": {
+      "place": {
+        "place_id": "gn-3109442",
+        "name": "Sant Vicenç dels Horts",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.39317,
+        "lon": 2.00689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Vicenç dels Horts",
+          "url": "https://en.wikipedia.org/wiki/Sant_Vicenç_dels_Horts",
+          "text": "Sant Vicenç dels Horts (Catalan pronunciation: [ˌsam biˈsɛnz ðəlz ˈɔrs]) is a municipality in the Province of Barcelona in Catalonia, Spain. It is situated on the right bank of the Llobregat river, on the N-340 road from Molins de Rei to Vilafranca del Penedès. The main rail lines of the Llobregat corridor pass through the town: the station is served by the FGC services S3, S4, S8, S9, R5 and R6. The remains of an Iberic village are visible at Puig Castellar.\nThe GR 92 long-distance footpath, which roughly follows the length of the Mediterranean coast of Spain, has a staging point at Sant Vicenç dels Horts. Stage 19 links northwards to Baixador de Vallvidrera station, a distance of 13.6 kilometres (8.5 mi), whilst stage 20 links southwards to Bruguers, a distance of 16.2 kilometres (10.1 mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "sant vicenc dels horts",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vicenc",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dels",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "horts",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2968,
+    "attempt": 2946,
+    "place_id": "gn-3446065",
+    "input": {
+      "place": {
+        "place_id": "gn-3446065",
+        "name": "Três Rios",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.11667,
+        "lon": -43.20917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Três Rios",
+          "url": "https://en.wikipedia.org/wiki/Três_Rios",
+          "text": "Três Rios (Portuguese pronunciation: [ˈtɾe(j)z ˈʁi.us]) is a municipality located in the Brazilian state of Rio de Janeiro. As of 2020 its population was an estimated 82,142 inhabitants, and its area is around 322 square kilometres (124 sq mi). The current mayor of Três Rios is Joacir Barbaglio Pereira (known as Joa) of the Liberal Party, elected in 2020 to a four-year term.\nThe name Três Rios, meaning \"three rivers\" in Portuguese, is a reference to the three important rivers in the area: the Paraíba do Sul, the Piabanha, and the Paraibuna. The city itself is located on the Paraíba, and the three rivers meet downstream, to the east. The name \"Esquina do Brasil\" (lit. 'street corner of Brazil') was inspired by the words of former president Juscelino Kubitschek, referring to the major highways that pass through.\nTrês Rios hosts a campus of the Federal Rural University of Rio de Janeiro (UFRRJ), called the Instituto Três Rios, which offers four undergraduate programs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "tres rios",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tres",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rios",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2969,
+    "attempt": 2947,
+    "place_id": "gn-3613321",
+    "input": {
+      "place": {
+        "place_id": "gn-3613321",
+        "name": "Comayagua",
+        "country": "Honduras",
+        "subdivision": "Comayagua Department",
+        "lat": 14.45577,
+        "lon": -87.63968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Comayagua",
+          "url": "https://en.wikipedia.org/wiki/Comayagua",
+          "text": "Comayagua (Spanish pronunciation: [komaˈʝaɣwa]) is a city, municipality and old capital of Honduras, located 80 km (50 mi) northwest of Tegucigalpa on the highway to San Pedro Sula and 594 m (1,949 ft) above sea level.\nThe accelerated growth experienced by the city of Comayagua led the municipal authorities to structure a territorial reorganization plan. Between the years of 1945 -1975 the population of the city quadrupled due to the high rate of population growth achieved at that time (4.8%) and to migratory movements in the interior of the country. In 2023 the estimated population of the city was 120,500. It is the capital of the Comayagua department of Honduras and it is noted for its wealth of Spanish Colonial architecture.  The cathedral, at the central square of the city, has the oldest clock in the Americas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "comayagua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2970,
+    "attempt": 2948,
+    "place_id": "gn-4013712",
+    "input": {
+      "place": {
+        "place_id": "gn-4013712",
+        "name": "Ciudad Hidalgo",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.68957,
+        "lon": -100.55502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Hidalgo, Michoacán",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Hidalgo,_Michoacán",
+          "text": "Ciudad Hidalgo, or simply Hidalgo, is a city and municipal seat of the Municipality of Hidalgo in the far northeast of the state of Michoacán, Mexico. It is a city located in a rural, mountainous area. While most of the city consists of modern buildings, its principal monument is the 16th-century church and former monastery of San José. Formerly, its name was Taximaroa, and it was the part of the Purépecha Empire closest to the Aztec Empire. This prompted two unsuccessful Aztec invasions as well as the first Spanish incursion into Purépecha lands in 1522. For both the city and rural communities around it, forestry and furniture making are important parts of the economy, but deforestation is forcing the area to look into alternatives such as tourism to take advantage of its natural resources and cultural sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad hidalgo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hidalgo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2971,
+    "attempt": 2949,
+    "place_id": "gn-4699540",
+    "input": {
+      "place": {
+        "place_id": "gn-4699540",
+        "name": "Huntsville",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.72353,
+        "lon": -95.55078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntsville, Texas",
+          "url": "https://en.wikipedia.org/wiki/Huntsville,_Texas",
+          "text": "Huntsville is a city in and the county seat of Walker County, Texas, United States and is also part of the Houston-Galveston combined statistical area. Its population was 45,941 as of the 2020 census. It is the center of the Huntsville micropolitan area. Huntsville is in the East Texas Piney Woods on Interstate 45 and home to Sam Houston State University, Texas State Prison, the Texas Department of Criminal Justice, Huntsville State Park, and HEARTS Veterans Museum of Texas.\nThe city served as the residence of Sam Houston, the first and third president of the Republic of Texas, who later represented the state in the U.S. Senate and as Governor of Texas. He is recognized in Huntsville by the Sam Houston Memorial Museum, a statue on Interstate 45, and Sam Houston State University, located in central Huntsville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "huntsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2972,
+    "attempt": 2950,
+    "place_id": "gn-5188843",
+    "input": {
+      "place": {
+        "place_id": "gn-5188843",
+        "name": "Erie",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 42.12922,
+        "lon": -80.08506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erie, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Erie,_Pennsylvania",
+          "text": "Erie is a city on the south shore of Lake Erie and the county seat of Erie County, Pennsylvania, United States. It is the fifth-most populous city in Pennsylvania and the most populous in Northwestern Pennsylvania with a population of 94,831 as of the 2020 census. The Erie metropolitan area had a population of 270,876 in 2020. Erie is about 80 miles (130 km) from Buffalo, 90 miles (140 km) from Cleveland, and 120 miles (190 km) from Pittsburgh.\nThe city takes its name from the Native American Erie people, who inhabited the area until the mid-17th century. Its nicknames include \"Gem City\", a reference to its fine natural harbor, the \"Gem of the Great Lakes\"; and more recently, \"Flagship City\", from a local marketing effort to play up the homeport of Oliver Hazard Perry's flagship Niagara.\nPart of the Rust Belt, Erie has seen manufacturing decline as a share of its economy, while insurance, healthcare, higher education, technology, service industries, and tourism have grown. Like the other Great Lakes port cities, Erie is accessible to the oceans via the Lake Ontario and St. Lawrence River network in Canada. The local climate is humid, four-seasonal, and snowy, with warm summers and harsh winters, owing to its southern lakeshore location."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "erie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2973,
+    "attempt": 2951,
+    "place_id": "gn-6317166",
+    "input": {
+      "place": {
+        "place_id": "gn-6317166",
+        "name": "Fraiburgo",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.02611,
+        "lon": -50.92139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fraiburgo",
+          "url": "https://en.wikipedia.org/wiki/Fraiburgo",
+          "text": "Fraiburgo (nicknamed  Frai) is a Brazilian municipality located in the countryside of the Santa Catarina state. The city is strongly influenced by European immigrants, especially Germans and Italians. However, other nationalities also contributed to the formation of the city's character in terms of e.g.: architecture, gastronomy, religion and economy, amongst other factors. Its multiculturality is a remarkable characteristic not exclusively attributed to Fraiburgo but many other Southern Brazilian municipalities.\nThe city is famous in Brazil for the large production of apples which its plantation is favored by the low temperatures in the winter season in the Southern Hemisphere that takes place in July, August and September. Depending on the period of the year tourists can experience first-hand the whole apple production cycle as well other products made from apple such as: cider, juices, snacks and so forth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "fraiburgo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2974,
+    "attempt": 2952,
+    "place_id": "gn-1060283",
+    "input": {
+      "place": {
+        "place_id": "gn-1060283",
+        "name": "Maroantsetra",
+        "country": "Madagascar",
+        "subdivision": "Analanjirofo",
+        "lat": -15.43527,
+        "lon": 49.73794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maroantsetra",
+          "url": "https://en.wikipedia.org/wiki/Maroantsetra",
+          "text": "Maroantsetra [maronˈtseʈʂə̥], formerly Louisbourg, is a market town and port in Madagascar. Located at the northern end of the Bay of Antongil on Madagascar's east coast, it is the capital of Ambatosoa, the country's newest administrative region. In 2018, Maroantsetra counted 42,529 people. Even though it is a small city, Maroantsetra played an important role in the Betsimisaraka history as the unification of this tribe by Ratsimilaho started there. Throughout the 18th century, Maroantsetra was involved in the reccurent attacks carried by the Sakalavas and the Betsimisarakas against the islands of Comoros and some east African countries.Such attacks might have been motivated by the increasing need for commodities imposed by European imperialism in the region. A scholar argued that the first Anglo-American pirates who sailed into the Indian Ocean during the 1680s visited Madagascar for provisions. Communities on the east coast were then struggling to control and benefit from commerce with Europeans, but they likely found this task impossible without dominating the trade routes that stretched far into the interior. By 1655, the French found that frequent warfare between populations on Nosy Boraha and Antongil Bay was contributing to a strong demand for guns by populations living near the bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "maroantsetra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2975,
+    "attempt": 2953,
+    "place_id": "gn-1166073",
+    "input": {
+      "place": {
+        "place_id": "gn-1166073",
+        "name": "Sarai Alamgir",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.90495,
+        "lon": 73.75518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sarai Alamgir",
+          "url": "https://en.wikipedia.org/wiki/Sarai_Alamgir",
+          "text": "Sarai Alamgir (Punjabi: سرائے عالمگیر , Urdu: سرائے عالمگیر) is the main town of Sarai Alamgir Tehsil, located in the Gujrat district in the north of the Punjab, a province of Pakistan. Sarai Alamgir is one of four tehsils of Gujrat district. \nThe Sarai Alamgir town was mainly founded by the Mughal emperor Aurangzeb Alamgir. That's why the name of town was given Sarai Alamgir which means Sarai of Alamgir because this place was used as \"Sarai\" (rest area) by the army of Aurangzeb Alamgir. The town also gains strategic importance that time due to its position at Grand Trunk Road (GT Road) originally built by the emperor Sher Shah Suri (1472- 1545).\nSarai Alamgir covers 575 km2 (222 sq mi) on the eastern bank of the Jhelum River, across from the larger town of Jhelum. East of the town is the Upper Jhelum Canal. Sarai Alamgir was raised to the level of Municipal Committee in 1976. After the implementation of Punjab Local Government Ordinance 2001, it was given the status of Tehsil Municipal Administration (TMA)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "sarai alamgir",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sarai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alamgir",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2976,
+    "attempt": 2954,
+    "place_id": "gn-1693077",
+    "input": {
+      "place": {
+        "place_id": "gn-1693077",
+        "name": "Polomolok",
+        "country": "Philippines",
+        "subdivision": "Soccsksargen",
+        "lat": 6.22167,
+        "lon": 125.06398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Polomolok",
+          "url": "https://en.wikipedia.org/wiki/Polomolok",
+          "text": "Polomolok, officially the Municipality of Polomolok, is a municipality in the province of South Cotabato, Philippines. In the 2024 census, it has a population of 176,671 people making it both the most populated municipality in Mindanao and the most populated municipality outside Luzon.\nIt is located between General Santos and Tupi. Polomolok is seated about 41 kilometres (25 mi) south-east of the provincial capital city of Koronadal, 17 kilometres (11 mi) north of the port city of General Santos and 1,030 kilometres (640 mi) south-east of the national capital Manila. As of 2019, it is the second wealthiest Municipality in Mindanao with PHP 1.77 Billion worth of assets and in 2021, Polomolok is the 2nd Most Competitive Municipality in Mindanao (9th Nationwide). Polomolok also serves as the chief town in the 1st District of South Cotabato.\nOn March 2, 2020, former South Cotabato First District Representative Shirlyn Bañas-Nograles filed House Bill No. 6432 for the conversion of the Municipality of Polomolok into a component city of South Cotabato."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "polomolok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2977,
+    "attempt": 2955,
+    "place_id": "gn-2159045",
+    "input": {
+      "place": {
+        "place_id": "gn-2159045",
+        "name": "Maitland",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -32.73308,
+        "lon": 151.5574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maitland, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Maitland,_New_South_Wales",
+          "text": "Maitland ( MAYT-lənd) is a city in the Hunter Valley of New South Wales, Australia and the seat of Maitland City Council, situated on the Hunter River approximately 166 kilometres (103 mi) by road north of Sydney and 35 km (22 mi) north-west of Newcastle. It is on the New England Highway approximately 17 km (11 mi) from its origin at Hexham.\nAt the 2021 census it had approximately 89,597 inhabitants, spread over an area of 392 square kilometres (151 sq mi), with most of the population located in a strip along the New England Highway between the suburbs of Lochinvar and Thornton. The city centre is located on the right bank of the Hunter River, protected from moderate potential flooding by a levee.\nSurrounding areas include the cities of Cessnock and Singleton local government areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "maitland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2978,
+    "attempt": 2956,
+    "place_id": "gn-2266621",
+    "input": {
+      "place": {
+        "place_id": "gn-2266621",
+        "name": "Massamá",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.75279,
+        "lon": -9.2811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Massamá",
+          "url": "https://en.wikipedia.org/wiki/Massamá",
+          "text": "Massamá (Portuguese pronunciation: [mɐsɐˈma]) is a former civil parish in the municipality of Sintra, Lisbon District, Portugal. In 2013, the parish merged into the new parish Massamá e Monte Abraão. The population in 2011 was 28,112, in an area of 2.78 km².\nIt was separated from Queluz after a big conflict between, the at the time Massamá's president Mário Humberto Vieira and Marcelo Rebelo de Sousa Grand-Grand-Grand-father in 1807. The parish consists of three different zones. The old zone is known as the 2nd phase, a newer zone is known as the 6th phase, while the newest zone, Massamá-Norte (North Massamá, also known as 7th phase) is located outside the parish of Massamá, belonging to Belas parish, though it is usually considered as a zone from Massamá, as it is connected to the rest of Massamá. Belas town is actually several kilometers from Massamá Norte.\nThe name Massamá comes from the Mozarabic term “Mactama” which means “place with good water” or “fountain”. Due to its location between Sintra and Lisbon, this was the place where ancient warriors would take a break to rest and drink water from the local springs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "massama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2979,
+    "attempt": 2957,
+    "place_id": "gn-2636534",
+    "input": {
+      "place": {
+        "place_id": "gn-2636534",
+        "name": "Sunbury-on-Thames",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.40424,
+        "lon": -0.41817
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunbury-on-Thames",
+          "url": "https://en.wikipedia.org/wiki/Sunbury-on-Thames",
+          "text": "Sunbury-on-Thames, known locally as Sunbury, is a town on the north bank of the River Thames in the Borough of Spelthorne, Surrey, England, 13 mi (21 km) southwest of central London. Sunbury and other surrounding towns, historically part of the county of Middlesex, were in 1965 intended to form part of the newly created county of Greater London, but were instead transferred to Surrey. Sunbury adjoins Feltham to the north, Hampton to the east, Ashford to the northwest and Shepperton to the southwest. Walton-on-Thames is to the south, on the opposite bank of the Thames.\nThe town has two main focal points: Lower Sunbury (known locally as Sunbury Village), adjoining the river. Sunbury Common (known locally as Sunbury Cross) is to the north and surrounds the railway station and the London end of the M3 motorway. Lower Sunbury contains most of the town's parks, pubs and listed buildings, whereas Sunbury Common is more urban and includes offices and hotels. Lower Sunbury holds an annual fair and regatta each August.\nSunbury railway station is on the Shepperton branch line. Trains to and from London Waterloo are operated by South Western Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "sunbury on thames",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunbury",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "thames",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2980,
+    "attempt": 2958,
+    "place_id": "gn-2647317",
+    "input": {
+      "place": {
+        "place_id": "gn-2647317",
+        "name": "Havant",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.8567,
+        "lon": -0.98559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Havant",
+          "url": "https://en.wikipedia.org/wiki/Havant",
+          "text": "Havant ( HAV-ənt) is a town in the south-east corner of Hampshire, England. Nearby places include Portsmouth to the south-west, Southampton to the west, Waterlooville to north, Chichester to the east and Hayling Island to the south. The wider borough comprises the town (45,826), the resort of Hayling Island, the town of Waterlooville, and the town of Emsworth.\nHousing and population more than doubled in the 20 years following World War II, a period of major conversion of land from agriculture and woodland to housing across the region following the incendiary bombing of Portsmouth and the Blitz.\nThe old centre of the town was a small Celtic settlement before Roman times and the town's commerce, retired and commuter population swelled after World War II so as to be usually considered economically part of the Portsmouth conurbation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "havant",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2981,
+    "attempt": 2959,
+    "place_id": "gn-2696334",
+    "input": {
+      "place": {
+        "place_id": "gn-2696334",
+        "name": "Lidingö",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.36667,
+        "lon": 18.13333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lidingö",
+          "url": "https://en.wikipedia.org/wiki/Lidingö",
+          "text": "Lidingö (Swedish pronunciation: [ˈlîːdɪŋˌøː]), also known in its definite form Lidingön and as Lidingölandet, is an island in the inner Stockholm archipelago, northeast of Stockholm, Sweden. In 2023, the population of the Lidingö urban area on the island was 48,162. It is the seat of government of the Lidingö Municipality, Stockholm County.\nLidingö's qualities have attracted affluent residents such as Björn Ulvaeus, Agnetha Fältskog, Anni-Frid Lyngstad and Benny Andersson of ABBA. Exclusive regions include the coastal region between Mölna and the east tip of the island, Gåshaga, as well as the east tip of the northern part of the horse shoe, called Elfvik. Notwithstanding the fact that many middle-class Swedes have moved to the island, (due to rental apartment construction projects), the inhabitants of the municipality remains the third wealthiest in Sweden after Danderyd and Täby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "lidingo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2982,
+    "attempt": 2960,
+    "place_id": "gn-2701680",
+    "input": {
+      "place": {
+        "place_id": "gn-2701680",
+        "name": "Karlstad",
+        "country": "Sweden",
+        "subdivision": "Värmland",
+        "lat": 59.3793,
+        "lon": 13.50357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karlstad",
+          "url": "https://en.wikipedia.org/wiki/Karlstad",
+          "text": "Karlstad (US: , Swedish: [ˈkɑ̌ːɭsta(d)] ) is the 20th-largest city in Sweden, the seat of Karlstad Municipality, the capital of Värmland County, and the largest city in the province Värmland in Sweden. The city proper had 67,122 inhabitants in 2020 with 97,233 inhabitants in the wider municipality in 2023, and is the 21st largest municipality in Sweden. Karlstad has a university and a cathedral.\nIn recent years, Karlstad has started seeing big growth with many new buildings, for example the new apartment complexes around Orrholmen and Tullholmen, hosting a brand new Coop store and a 17 story high rise apartment which was finished in late 2022.\nKarlstad is built on the river delta where Sweden's longest river, Klarälven, runs into Sweden's largest lake, Vänern. It has the second largest lake port in the country after Västerås.\nKarlstad is reputed to be one of the sunniest towns in Sweden and a local waitress, known as \"Sola i Karlstad\" (the Sun in Karlstad) for her sunny disposition, is commemorated with a statue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "karlstad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

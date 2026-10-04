@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 2863,
+    "attempt": 2841,
+    "place_id": "gn-146400",
+    "input": {
+      "place": {
+        "place_id": "gn-146400",
+        "name": "Larnaca",
+        "country": "Cyprus",
+        "subdivision": "Larnaka",
+        "lat": 34.9221,
+        "lon": 33.62794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Larnaca",
+          "url": "https://en.wikipedia.org/wiki/Larnaca",
+          "text": "Larnaca, also spelled Larnaka, is a city on the southeast coast of Cyprus and the capital of the Larnaca District. With a district population of 155,000 in 2021, it is the third largest city in the country after Nicosia and Limassol.\nBuilt on the ruins of Kition, an Ancient Greek city-state and the birthplace of Stoic philosopher Zeno of Citium, Larnaca is home to the Church of Saint Lazarus, Hala Sultan Tekke, the Kamares Aqueduct, Larnaca Castle, Larnaca District Archaeological Museum, and Pierides Museum. It attracts many visitors to its beaches, as well as to Finikoudes (Φοινικούδες; Greek for \"palm trees\"), the city's signature seafront promenade lined with palm trees. It gives its name to the country's primary airport, Larnaca International Airport, which is situated in the neighbouring village of Dromolaxia rather than Larnaca proper. It also has a seaport and a marina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "larnaca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2864,
+    "attempt": 2842,
+    "place_id": "gn-1630723",
+    "input": {
+      "place": {
+        "place_id": "gn-1630723",
+        "name": "Poso",
+        "country": "Indonesia",
+        "subdivision": "Central Sulawesi",
+        "lat": -1.3959,
+        "lon": 120.7524
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poso",
+          "url": "https://en.wikipedia.org/wiki/Poso",
+          "text": "Poso (Old Spelling: Posso) is the administrative capital of Poso Regency, Indonesia. It is the main port and transportation hub for the central-southern coast of Central Sulawesi. Its urban area consists of three districts, Poso Kota, North Poso Kota, and South Poso Kota. Poso lies in the middle of the province on the shore of the Gulf of Tomini, right in the central part of Sulawesi Island. With a total population of 47,592 in mid 2024, it is one of the biggest and oldest towns in the province.\nPoso began to develop as a small port town located at the mouth of the Poso River at the end of the 19th century—making it one of the oldest towns in Central Sulawesi, its presence was considered important for the Dutch to control the southern region of Tomini in the early days of their arrival. Poso was the administrative center of Landschap Poso, Onderafdeling Poso, and later Afdeling Poso during colonial times. Amid World War II, the Japanese made Poso one of their military posts. Post-independence, Poso was chosen as the capital of the newly formed Central Sulawesi in 1948 before the capital was moved to Palu in 1951.\nPoso's central location has historically made it a strategic stopover point for travelers moving between the north and south, as well as the west and east of Sulawesi. This has contributed to a diverse population, comprising various ethnicities, religions, and cultural backgrounds. The inhabitants are dispersed from coastal areas to the mountainous regions, with trade and services serving as the primary economic activities.\nPoso is crossed by the Trans-Sulawesi National Highway and served by Kasiguncu Airport, linking it to other cities in Sulawesi such as Palu and Makassar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "poso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2865,
+    "attempt": 2843,
+    "place_id": "gn-1819091",
+    "input": {
+      "place": {
+        "place_id": "gn-1819091",
+        "name": "Pok Fu Lam",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Southern District",
+        "lat": 22.26861,
+        "lon": 114.12924
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pok Fu Lam",
+          "url": "https://en.wikipedia.org/wiki/Pok_Fu_Lam",
+          "text": "Pok Fu Lam (薄扶林) or Pokfulam is a residential area on Hong Kong Island, at the western end of the Southern District. It is a valley between Victoria Peak and Mount Kellett, around Telegraph Bay.\nPok Fu Lam can claim several firsts in the history of Hong Kong: It was the place where Hong Kong's floral emblem, Bauhinia blakeana, was first discovered; the site for Hong Kong's first reservoir, Pok Fu Lam Reservoir (1883, now part of a country park), and the site for Hong Kong's first dairy farm by five investors, including Sir Patrick Manson in 1885. The farm supplied not only milk, but cattle to Hong Kong, and later became Dairy Farm. However, it no longer exists in Pok Fu Lam.\nPok Fu Lam is connected to Lung Fu Shan, Sai Ying Pun and Aberdeen by the Pok Fu Lam Road. It's also indirectly connected to the Mid-Levels. Pok Fu Lam also overlooks Lamma Island. Pok Fu Lam is connected to Kennedy Town via Smithfield and Shek Tong Tsui via Hill Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "pok fu lam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pok",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fu",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2866,
+    "attempt": 2844,
+    "place_id": "gn-2504755",
+    "input": {
+      "place": {
+        "place_id": "gn-2504755",
+        "name": "Béni Abbès",
+        "country": "Algeria",
+        "subdivision": "Beni Abbes",
+        "lat": 30.13306,
+        "lon": -2.16611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Béni Abbès",
+          "url": "https://en.wikipedia.org/wiki/Béni_Abbès",
+          "text": "Béni Abbès (Arabic: بني عباس), also known as the Pearl of the Saoura, and also as the White Oasis, is a town and commune located in western Algeria in Béchar Province, 241 km (150 mi) from the provincial capital Béchar, and 1,200 km (746 mi) from Algiers.\nIt has been the capital of the Béni Abbès District since 1957. The commune's area is approximately 10,040 km2 (3,880 sq mi), with a population of 10,885 inhabitants as of the 2008 census, up from 8,850 in 1998, and a population growth rate of 2.1%.\nBéni Abbès lies in the Saoura valley, on the left bank of the intermittent wadi called Oued Saoura. There are seven ksars (castles) in Béni Abbès, including a particularly large one found in a palm grove in the river valley.\nThe people of Béni Abbès are often referred to as Abbabsa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "beni abbes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "beni",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "abbes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2867,
+    "attempt": 2845,
+    "place_id": "gn-2511239",
+    "input": {
+      "place": {
+        "place_id": "gn-2511239",
+        "name": "San Roque",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.20983,
+        "lon": -5.38452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Roque, Spain",
+          "url": "https://en.wikipedia.org/wiki/San_Roque,_Spain",
+          "text": "San Roque is a municipality of Spain belonging to the province of Cádiz, which in turn is part of the autonomous community of Andalusia. It is also part of the comarca of Campo de Gibraltar. Located in the southern end of the Iberian Peninsula, San Roque is a short way inland of the north side of the Bay of Gibraltar, to the north of the Gibraltar peninsula. The municipality has a total surface of 145 km2 with a population of approximately 25,500 people, as of 2005.\nThe foundation of San Roque as a city owes to the creation of a sort of Gibraltar-in-exile by refugees fleeing from the Rock in the wake of its seizure by Anglo-Dutch forces in 1704.\nIn addition of the main nucleus of San Roque, the municipality also includes settlements such as Puente Mayorga, Guadarranque, Sotogrande, Campamento, or Guadiaro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "san roque",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "roque",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2868,
+    "attempt": 2846,
+    "place_id": "gn-2634202",
+    "input": {
+      "place": {
+        "place_id": "gn-2634202",
+        "name": "Weymouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.61448,
+        "lon": -2.45991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weymouth, Dorset",
+          "url": "https://en.wikipedia.org/wiki/Weymouth,_Dorset",
+          "text": "Weymouth ( WAY-məth) is a seaside town and civil parish in the Dorset district, in the ceremonial county of Dorset, England. Situated on a sheltered bay at the mouth of the River Wey, 7 miles (11 km) south of the county town of Dorchester, Weymouth had a population of 53,416 in 2021. It is the third-largest settlement in Dorset after Bournemouth and Poole.\nThe history of the town stretches back to the 12th century and includes roles in the spread of the Black Death, the settlement of the Americas and the development of Georgian architecture. It was a major departure point for the Normandy Landings during World War II.\nA seaside resort, Weymouth and its economy depend on tourism. Visitors are attracted by its harbour and position, approximately halfway along the Jurassic Coast, a World Heritage Site, important for its geology and landforms. Once a port for cross-channel ferries, Weymouth Harbour is now home to a commercial fishing fleet, pleasure boats and private yachts, while nearby Portland Harbour is the location of the Weymouth and Portland National Sailing Academy, where the sailing events of the 2012 Olympic Games and Paralympic Games were held."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "weymouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2869,
+    "attempt": 2847,
+    "place_id": "gn-2657770",
+    "input": {
+      "place": {
+        "place_id": "gn-2657770",
+        "name": "Accrington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.75379,
+        "lon": -2.35863
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Accrington",
+          "url": "https://en.wikipedia.org/wiki/Accrington",
+          "text": "Accrington  is a town in the Hyndburn borough of Lancashire, England. It lies about 4 miles (6 km) east of Blackburn, 6 miles (10 km) west of Burnley, 13 miles (21 km) east of Preston, 20 miles (32 km) north of Manchester and is situated on the culverted River Hyndburn. Commonly abbreviated by locals to \"Accy\", the town has a population of 35,456 according to the 2011 census. Accrington is the largest settlement and the seat of the Hyndburn borough council.\nAccrington is a former centre of the cotton and textile machinery industries. The town is famed for manufacturing the hardest and densest building bricks in the world, \"The Accrington NORI\" (iron), which were used in the construction of the Empire State Building and for the foundations of Blackpool Tower and the Haworth Art Gallery which holds Europe's largest collection of Tiffany glass. The club is home to EFL club Accrington Stanley. The town played a part in the founding of the football league system, with a defunct club (Accrington F.C.) being one of the twelve original clubs of the English Football League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "accrington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2870,
+    "attempt": 2848,
+    "place_id": "gn-2801922",
+    "input": {
+      "place": {
+        "place_id": "gn-2801922",
+        "name": "Binche",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.41155,
+        "lon": 4.16469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Binche",
+          "url": "https://en.wikipedia.org/wiki/Binche",
+          "text": "Binche (French pronunciation: [bɛ̃ʃ] ; Walloon: Bince) is a city and municipality of Wallonia, in the province of Hainaut, Belgium. Since 1977, the municipality consists of Binche, Bray, Buvrinnes, Épinois, Leval-Trahegnies, Péronnes-lez-Binche, Ressaix, and Waudrez districts.\nAccording to the surveys from 2021, Binche had a total population of 33,416, approximately 550 inhabitants per km2.\nThe motto of the city is \"Plus Oultre\" (meaning \"Further beyond\" in Old French), which was the motto of Holy Roman Emperor Charles V, who in 1545 gave the medieval Castle of Binche to his sister, Queen Mary of Hungary. Her attention was spent on Binche, which she had rebuilt into Binche Palace under the direction of the architect-sculptor Jacques Du Brœucq, remembered today as the first master of Giambologna. This château, intended to rival Fontainebleau, was eventually destroyed by the soldiers of Henry II of France in 1554.\nIn 2003, the Carnival of Binche was proclaimed one of the Masterpieces of the Oral and Intangible Heritage of Humanity by UNESCO. In addition, the Belfry and City Hall were inscribed on the UNESCO World Heritage List as part of the Belfries of Belgium and France site, for its importance in civic functions, architecture, and its testimony to the power and influence of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "binche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2871,
+    "attempt": 2849,
+    "place_id": "gn-2939951",
+    "input": {
+      "place": {
+        "place_id": "gn-2939951",
+        "name": "Coburg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.25937,
+        "lon": 10.96384
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coburg",
+          "url": "https://en.wikipedia.org/wiki/Coburg",
+          "text": "Coburg ( KOH-burg, German: [ˈkoːbʊʁk] ) is a city located on the River Itz in the Upper Franconia region of Bavaria, Germany. Long part of one of the Thuringian states of the Wettin line, it joined Bavaria by popular vote only in 1920. Until the revolution of 1918, it was one of the capitals of the Duchy of Saxe-Coburg and Gotha and the Duchy of Saxe-Coburg-Saalfeld.\nThrough successful dynastic policies, the ruling princely family married into several of the royal families of Europe, most notably in the person of Prince Albert, who married Queen Victoria in 1840. As a result of these close links with the royal houses of Europe in the late 19th and early 20th centuries, Coburg was frequently visited by the crowned heads of Europe and their families.\nCoburg is the location of Veste Coburg, one of Germany's largest castles.\nToday, Coburg's population is close to 41,500. Since it was not damaged much in World War II, Coburg retains many historic buildings, making it a popular tourist destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "coburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2872,
+    "attempt": 2850,
+    "place_id": "gn-2972284",
+    "input": {
+      "place": {
+        "place_id": "gn-2972284",
+        "name": "Tourcoing",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.72391,
+        "lon": 3.16117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tourcoing",
+          "url": "https://en.wikipedia.org/wiki/Tourcoing",
+          "text": "Tourcoing (French: [tuʁkwɛ̃] ; Dutch: Toerkonje [tuːrˈkɔɲə]; West Flemish: Terkoeje; Picard: Tourco) is a city in northern France on the Belgian border. It is designated municipally as a commune within the department of Nord. Located to the north-northeast of Lille, adjacent to Roubaix, Tourcoing is the chef-lieu of two cantons and the third largest city in the French region of Hauts-de-France ranked by population with about 99,000 inhabitants.\nTogether with the cities of Lille, Roubaix, Villeneuve-d'Ascq and eighty-six other communes, Tourcoing is part of four-city-centred metropolitan area inhabited by more than 1.1 million people: the Métropole Européenne de Lille. To a greater extent, Tourcoing belongs to a vast conurbation formed with the Belgian cities of Mouscron, Kortrijk and Tournai, which gave birth to the first European Grouping of Territorial Cooperation in January 2008, Lille–Kortrijk–Tournai with an aggregate of just over 2 million inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "tourcoing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2873,
+    "attempt": 2851,
+    "place_id": "gn-3034475",
+    "input": {
+      "place": {
+        "place_id": "gn-3034475",
+        "name": "Bayonne",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 43.49316,
+        "lon": -1.473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayonne",
+          "url": "https://en.wikipedia.org/wiki/Bayonne",
+          "text": "Bayonne (French: [bajɔn] ; Basque and Gascon: Baiona) is a city in southwestern France near the Spanish border. It is a commune and one of two subprefectures in the Pyrénées-Atlantiques department, in the Nouvelle-Aquitaine region, in the area known as the French Basque Country.\nBayonne is located at the confluence of the Nive and Adour rivers, in the northern part of the cultural region of the Basque Country. It is the seat of the Communauté d'agglomération du Pays Basque which roughly encompasses the western half of Pyrénées-Atlantiques, including the coastal city of Biarritz. The area also constitutes the southern part of Gascony, where the Aquitaine Basin joins the beginning of the Pre-Pyrenees.\nTogether with nearby Anglet, Biarritz, Hendaye and 24 smaller communes, Bayonne forms an urban area with 259,017 inhabitants as of 2022, 53,312 of whom lived in the commune of Bayonne proper. It is also a part of Basque Eurocity Bayonne-San Sebastián.\nThe site on the left bank of the Nive and the Adour was probably occupied before ancient times; a fortified enclosure was attested to in the 1st century, while the Tarbelli occupied the territory. Archaeological studies have confirmed the presence of a Roman castrum in the 4th and 5th centuries.\nIn 1023, Bayonne was the capital of Labourd. In the 12th century, it extended to the confluence of the Nive River and beyond. During that time, its first bridge spanning the Adour was built. The city came under English control in 1152 through the marriage of Eleanor of Aquitaine; it became important commercially and, to a lesser degree, militarily thanks to maritime trade. In 1177, Richard the Lion Heart of England took control of the city, separating it from the Viscount of Labourd.\nIn 1451, the city was taken by the Crown of France after the Hundred Years' War. The loss of trade with the English was followed by the river gradually filling with silt and becoming impassable to ships. As the city developed to the north, its position was weakened compared to earlier times. The district of Saint-Esprit developed initially from settlement by Sephardic Jewish refugees fleeing the Spanish expulsions dictated by the Alhambra Decree. This community brought skill in chocolate making, and Bayonne gained a reputation for chocolate.\nThe course of the Adour was changed in 1578 by dredging under the direction of Louis de Foix, and the river returned to its former mouth. Bayonne flourished after regaining the maritime trade that it had lost for more than a hundred years. In the 17th century, the city was fortified by Vauban, whose works were followed as models of defense for 100 years. In 1814, Bayonne and its surroundings were the scene of fighting between the Napoleonic troops and the Spanish-Anglo-Portuguese coalition led by the Duke of Wellington. It was the last time the city was under siege.\nIn 1951, the Lacq gas field was discovered in the region; most of its extracted oil and sulphur are shipped from the port of Bayonne. During the second half of the 20th century, many housing estates were built, forming new districts on the periphery. The city developed to form a conurbation with Anglet and Biarritz; the agglomeration became the heart of a vast Basque-Landes urban area.\nBayonne is the heart of the Communauté d'agglomération du Pays Basque, which covers roughly the western half of the Pyrénées-Atlantiques department. It is an important part of the Basque Bayonne-San Sebastián Eurocity and it plays the role of economic capital of the Adour basin. Modern industries—metallurgy and chemicals—have been established to take advantage of procurement opportunities and sea shipments through the harbour. Business services today represent the largest source of employment. Bayonne is also a cultural capital, a city with strong Basque and Gascon influences, and a rich historical past. Its heritage is expressed in its architecture, the diversity of collections in museums, its gastronomic specialties, and traditional events such as the noted Fêtes de Bayonne.\nThe inhabitants of the commune are known as Bayonnais or Bayonnaises."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 665
+    },
+    "banned_terms": [
+      {
+        "term": "bayonne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2874,
+    "attempt": 2852,
+    "place_id": "gn-3083826",
+    "input": {
+      "place": {
+        "place_id": "gn-3083826",
+        "name": "Szczecinek",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.70791,
+        "lon": 16.69937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Szczecinek",
+          "url": "https://en.wikipedia.org/wiki/Szczecinek",
+          "text": "Szczecinek (Polish: [ʂt͡ʂɛˈt͡ɕinɛk] ; German: Neustettin) is a historic city in Middle Pomerania, northwestern Poland, capital of Szczecinek County in the West Pomeranian Voivodeship, with a population of more than 40,000 (2011). The town's total area is 48.63 square kilometres (18.78 square miles).\nThe turbulent history of Szczecinek reaches back to the High Middle Ages, when the area was ruled by Pomeranian dukes and princes. The majority of the city's architecture survived World War II and, subsequently, its entire Old Town was proclaimed a national heritage monument of Poland. Szczecinek is the location of one of the oldest museums and one of the oldest high schools in Pomerania and northern Poland, and one of the places of production of krówki. It is an important railroad junction, located along the main Poznań - Kołobrzeg line, which crosses less important lines to Chojnice and Słupsk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "szczecinek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2875,
+    "attempt": 2853,
+    "place_id": "gn-3083955",
+    "input": {
+      "place": {
+        "place_id": "gn-3083955",
+        "name": "Świnoujście",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.91053,
+        "lon": 14.24712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Świnoujście",
+          "url": "https://en.wikipedia.org/wiki/Świnoujście",
+          "text": "Świnoujście (Polish: [ɕfʲinɔˈujɕt͡ɕɛ] ; German: Swinemünde German pronunciation: [ˌsviːnəˈmʏndə]; Low German: Swienemünn; meaning \"Świna [river] mouth\"; Kashubian: Swina) is a city in Western Pomerania and seaport on the Baltic Sea and Szczecin Lagoon, in the extreme north-west of Poland, mainly on the islands of Usedom, Wolin, and Karsibór, the latter once part of Usedom, now separated by the Piast Canal to facilitate ship access to Szczecin.\nŚwinoujście borders the German seaside resort of Ahlbeck on Usedom, connected by a street and 12 km (7 mi) of beach promenade.\nSince 1999, Świnoujście has been a city with powiat rights, within West Pomeranian Voivodeship. The city lies in the geographic region of Pomerania and had a population of 38,728 in 2024. Świnoujście is one of the most important areas of the Szczecin metropolitan area. The Świnoujście LNG terminal, opened in 2015, is in the city. In 2023, the Świnoujście Tunnel connecting the islands of Wolin and Usedom was opened.\nDespite its relatively small population, Świnoujście is Poland's ninth-largest city by area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "swinoujscie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2876,
+    "attempt": 2854,
+    "place_id": "gn-3169984",
+    "input": {
+      "place": {
+        "place_id": "gn-3169984",
+        "name": "Pozzuoli",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.84394,
+        "lon": 14.0952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pozzuoli",
+          "url": "https://en.wikipedia.org/wiki/Pozzuoli",
+          "text": "Pozzuoli (Italian: [potˈtswɔːli]; Neapolitan: Pozzule [pətˈtsuːlə]; Latin: Puteoli) is a city and comune (municipality) in the Metropolitan City of Naples in the region of Campania in southern Italy. The main city of the Phlegrean Peninsula, it has 74,665 inhabitants.\nPozzuoli, known in antiquity as Puteoli, was established in 531 BC as the Greek colony of Dicaearchia by refugees fleeing the tyranny of Polycrates on Samos. During the Second Punic War (218–201 BC), the city's fortified harbor withstood the advances of the Carthaginian general Hannibal. Following the Romanization of Campania, Rome established a colony at Puteoli in 194 BC. The region was important for its pozzolana, a volcanic sand essential to the production of Roman concrete.\nAt its peak during the late Republic and early Empire, Puteoli was the primary commercial port of Rome, despite being located 150 mi (241.40 km) from the capital. The city played a role in the import of wheat from Egypt to Rome and became home to a mixed population that included Greeks, Jews, Nabataeans, Phoenician merchants, and early Christians. The city began to decline in the mid-1st century AD as the emperors Claudius and Trajan expanded the port of Ostia in Latium to provide a direct gateway to the Tiber. In the late 5th century AD, fall of the Western Roman Empire further weakened the city, which was then sacked by the Visigoths, Vandals, and Ostrogoths."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "pozzuoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2877,
+    "attempt": 2855,
+    "place_id": "gn-3532792",
+    "input": {
+      "place": {
+        "place_id": "gn-3532792",
+        "name": "Apizaco",
+        "country": "Mexico",
+        "subdivision": "Tlaxcala",
+        "lat": 19.41333,
+        "lon": -98.14358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Apizaco",
+          "url": "https://en.wikipedia.org/wiki/Apizaco",
+          "text": "Apizaco is a city in Apizaco Municipality located near the geographic center of the Mexican state of Tlaxcala, approximately 25 minutes by car from the state's capital city of Tlaxcala. Those seeking to reach the port of Veracruz by railroad from Mexico City must travel through Apizaco.  The city began because of its location on this railroad. \nUniversities in Apizaco include the Technological Institute of Apizaco (Instituto Tecnológico de Apizaco), and most recently, the University of the Valley of Tlaxcala (Universidad del Valle de Tlaxcala)\nThe city is the second in importance after the capital city, Tlaxcala. It is of major commercial and trade value to the state because it is halfway on the road between Mexico City and the port of Veracruz.\nThe census of 2005 reported a population of 49,459 in the city of Apizaco, while the municipality had 73,097 inhabitants. The city is the second largest in the state in population, behind only Villa Vicente Guerrero. The municipality has an area of 56.83 km² (21.94 sq mi) and includes a small number of other communities, the largest of which are Santa Anita Huiloac, Santa María Texcalac, and San Luis Apizaquito."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "apizaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2878,
+    "attempt": 2856,
+    "place_id": "gn-5109177",
+    "input": {
+      "place": {
+        "place_id": "gn-5109177",
+        "name": "Binghamton",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.09869,
+        "lon": -75.91797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Binghamton, New York",
+          "url": "https://en.wikipedia.org/wiki/Binghamton,_New_York",
+          "text": "Binghamton ( BING-əm-tən) is a city in the U.S. state of New York, and serves as the county seat of Broome County. Surrounded by rolling hills, it lies in the state's Southern Tier region near the Pennsylvania border, in a bowl-shaped valley at the confluence of the Susquehanna and Chenango rivers. The population was 47,969 at the 2020 census. Binghamton is the principal city of the Binghamton metropolitan area (also known as Greater Binghamton, or historically the Triple Cities, including Endicott and Johnson City), home to a quarter million people.\nFrom the days of the railroad, Binghamton was a transportation crossroads and a manufacturing center, and has been known at different times for the production of cigars, shoes, and computers. IBM was founded nearby, and the flight simulator was invented in the city, leading to a notable concentration of electronics- and defense-oriented firms. This sustained economic prosperity earned Binghamton the moniker of the Valley of Opportunity. However, starting with job cuts made by defense firms towards the end of the Cold War, the region lost a large part of its manufacturing industry.\nToday, while there is a continued concentration of high-tech firms, Binghamton is emerging as a healthcare- and education-focused city, with Binghamton University acting as much of the driving force behind this revitalization."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "binghamton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2879,
+    "attempt": 2857,
+    "place_id": "gn-6947041",
+    "input": {
+      "place": {
+        "place_id": "gn-6947041",
+        "name": "Blackheath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.4647,
+        "lon": 0.0079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackheath, London",
+          "url": "https://en.wikipedia.org/wiki/Blackheath,_London",
+          "text": "Blackheath is an area in Southeast London, straddling the border of the Royal Borough of Greenwich and the London Borough of Lewisham. Historically within the county of Kent, it is located 1-mile (1.6 km) northeast of Lewisham, 1.5 miles (2.4 km) south of Greenwich and 6.4 miles (10.3 km) southeast of Charing Cross, the traditional centre of London.\nThe area southwest of its station and in its ward is named Lee Park. Its northern neighbourhood of Vanbrugh Park is also known as St John's Blackheath and despite forming a projection has amenities beyond its traditional reach named after the heath. To its west is the core public green area that is the heath and Greenwich Park, in which sit major London tourist attractions including the Greenwich Observatory and the Greenwich Prime Meridian. Blackheath railway station is located in the southern part of Blackheath."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "blackheath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2880,
+    "attempt": 2858,
+    "place_id": "gn-1272847",
+    "input": {
+      "place": {
+        "place_id": "gn-1272847",
+        "name": "Dharmapuri",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.1277,
+        "lon": 78.15794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dharmapuri",
+          "url": "https://en.wikipedia.org/wiki/Dharmapuri",
+          "text": "Dharmapuri is a town in the north western part of Tamil Nadu, India. It serves as the administrative headquarters of Dharmapuri district which is the first district created in Tamil Nadu after the independence of India by splitting it from then Salem district on 2 October 1965. The town is located 57 km from Krishnagiri, 64 km from Salem, \n64 km from Tirupattur, \n101 km from Hosur, 119 km from Thiruvannamalai, 126 km from Bangalore and Erode, 180 km from Tiruppur, 200 km from Coimbatore and Tiruchirappalli, 300 km from Madurai and the state capital Chennai. It is located between latitudes N 11 47’ and 12 33’ and longitudes E 77 02’ and 78 40’. It is one of the major leading cultivators and producers of mangoes in the state along with Krishnagiri, and is often referred as Mango Capital of India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "dharmapuri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2881,
+    "attempt": 2859,
+    "place_id": "gn-1706609",
+    "input": {
+      "place": {
+        "place_id": "gn-1706609",
+        "name": "Libon",
+        "country": "Philippines",
+        "subdivision": "Bicol Region",
+        "lat": 13.2997,
+        "lon": 123.4386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Libon, Albay",
+          "url": "https://en.wikipedia.org/wiki/Libon,_Albay",
+          "text": "Libon, officially the Municipality of Libon (Central Bikol: Banwaan kan Libon; Tagalog: Bayan ng Libon), is a  municipality in the province of Albay, Philippines. According to the 2024 census, it has a population of 72,135 people.\nLibon occupies an area of 222.76 square kilometres (86.01 sq mi). It is about 37 kilometres (23 mi) west-north-west of the provincial capital of Albay Legazpi City, and about 300 kilometres (190 mi) east-south-east of Manila. It is classified as a partly urban municipality with 47 barangays subdivided into seven leagues: St. James (Poblacion), Lakeside (barangays within the vicinity of Bato Lake), Coastal (barangays located along the Albay West Coast), Big Five (barangays abundant in rice, corn, and vegetables), Interior Nine (hinterland barangays principally engaged in vegetable production and livestock raising), Palayan (barangays largely devoted to rice production), and Six Hills (barangays concentrating on coconut production).\nLibon's major economic activities are agriculture and fishing. Its 4,000 hectares (9,900 acres) of rice fields produce 30.4 million kilos or 608,000 bags of palay per year, earning the district the sobriquet \"Rice Granary of Albay\". Libon is also the seat of the Pantao Port, a regional port facility linking the Masbate island province, the Visayas and Mindanao to mainland Bicol towards Southern Luzon and the National Capital Region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "libon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2882,
+    "attempt": 2860,
+    "place_id": "gn-2075432",
+    "input": {
+      "place": {
+        "place_id": "gn-2075432",
+        "name": "Bunbury",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -33.32711,
+        "lon": 115.64137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bunbury, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Bunbury,_Western_Australia",
+          "text": "Bunbury (/ˈbʌnbəɹɪ/ BUN-bə-REE; Noongar: Goomburrup) is a coastal city in the Australian state of Western Australia, approximately 175 kilometres (109 mi) south of the state capital, Perth. It is the state's third most populous city after Perth and Mandurah, with a population of approximately 75,000.\nLocated at the south of the Leschenault Estuary, Bunbury was established in 1836 on the orders of Governor James Stirling, A port was constructed on the existing natural harbour soon after, and eventually became the main port for the wider South West region. Further economic growth was fuelled by completion of the South Western Railway in 1893, which linked Bunbury with Perth.\nGreater Bunbury includes four local government areas (the City of Bunbury and the shires of Capel, Dardanup, and Harvey), and extends between Yarloop in the north, Boyanup to the south and Capel to the southwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "bunbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

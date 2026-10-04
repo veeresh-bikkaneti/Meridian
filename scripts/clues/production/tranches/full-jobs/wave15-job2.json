@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 2843,
+    "attempt": 2821,
+    "place_id": "gn-2522876",
+    "input": {
+      "place": {
+        "place_id": "gn-2522876",
+        "name": "Trapani",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.0176,
+        "lon": 12.53617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trapani",
+          "url": "https://en.wikipedia.org/wiki/Trapani",
+          "text": "Trapani (US:  TRAH-pə-nee; Italian: [ˈtraːpani] ; Sicilian: Tràpani [ˈʈɽaːpanɪ]) is a city and comune (municipality) on the western coast of the autonomous island region of Sicily in Italy. It is the capital of the Province of Trapani. Founded by Elymians, the city is still an important fishing port and the main gateway to the nearby Egadi Islands. With a population of 54,636, it is the 11th-largest city in Sicily.\nHistorically, Trapani developed a thriving economy based on the extraction and trade of salt, benefiting from its strategic position projecting into the Mediterranean Sea, and from its port, which was once the commercial gateway for the ancient city of Eryx (modern-day Erice), situated atop the mountain that overlooks it. Today, its economy relies primarily on the service sector, fishing (historically tuna fishing using traditional methods known as mattanza), marble quarrying and exportation, commercial activities, and tourism.\nThe urban agglomeration includes approximately 80,000 residents, as it also encompasses the populous district of Casa Santa, administratively belonging to the municipality of Erice."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "trapani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2844,
+    "attempt": 2822,
+    "place_id": "gn-2826287",
+    "input": {
+      "place": {
+        "place_id": "gn-2826287",
+        "name": "Stralsund",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 54.30911,
+        "lon": 13.0818
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stralsund",
+          "url": "https://en.wikipedia.org/wiki/Stralsund",
+          "text": "Stralsund (German: [ˈʃtʁaːlzʊnt] ; Swedish: Strålsund), officially the Hanseatic City of Stralsund (German: Hansestadt Stralsund), is the fifth-largest city in the northeastern German state of Mecklenburg-Western Pomerania after Rostock, Schwerin, Neubrandenburg and Greifswald, and the second-largest city in the Pomeranian part of the state. It is located on the southern coast of the Strelasund, a sound of the Baltic Sea separating the island of Rügen from the Pomeranian mainland.\nThe Strelasund Crossing with its two bridges and several ferry services connects Stralsund with Rügen, the largest island of Germany and Pomerania. The Western Pomeranian city is the seat of the Vorpommern-Rügen district and, together with Greifswald, Stralsund forms one of four high-level urban centres of the region.\nStralsund was granted city rights in 1234 and is thus the oldest city in Pomerania. It was one of the most prosperous members of the medieval Hanseatic League. In 1628, during the Thirty Years' War, the city came under Swedish rule and remained so until the upheavals of the Napoleonic Wars. It was the capital of Swedish Pomerania (New Western Pomerania) from 1720 to 1815. From 1815 to 1945, Stralsund was part of Prussia.\nStralsund's old town is part of the UNESCO World Heritage Site \"Historic Centres of Stralsund and Wismar\" alongside the old town of Wismar in Mecklenburg because of its outstanding Brick Gothic buildings and its importance during the time of the Hanseatic League and when the city belonged to Sweden. St Mary's Church was the tallest church in the world from 1549 to 1569 and from 1573 to 1647. The city's other two large churches are St Nicholas' and St James'. Stralsund is the seat of the German Oceanographic Museum (Deutsches Meeresmuseum) with its satellites Ozeaneum (in Stralsund), Nautineum (on Dänholm Island), and Natureum (on the Fischland-Darß-Zingst Peninsula).\nThe main industries of Stralsund are shipbuilding, fishing, mechanical engineering, and, to an increasing degree, tourism, life sciences, services and high tech industries, especially information technology and biotechnology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "stralsund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2845,
+    "attempt": 2823,
+    "place_id": "gn-2899101",
+    "input": {
+      "place": {
+        "place_id": "gn-2899101",
+        "name": "Horb am Neckar",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.44423,
+        "lon": 8.6913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horb am Neckar",
+          "url": "https://en.wikipedia.org/wiki/Horb_am_Neckar",
+          "text": "Horb am Neckar (German pronunciation: [ˈhɔʁp ʔam ˈnɛkaʁ], lit. 'Horb on the Neckar') is a town in the southwest of the German state of Baden-Württemberg. It is located on the Neckar river, between Offenburg to the west (about 56 kilometres (35 mi) away) and Tübingen to the east (about 29 kilometres (18 mi) away). It has around 25,000 inhabitants, of whom about 6,000 live in the main town of Horb, and the remainder in 18 associated villages and districts which form part of the same municipality.  If the entire municipality is counted, it is the largest town in the District of Freudenstadt.\nSince 1 January 1981 Horb am Neckar has had the status of a Große Kreisstadt, serving as a mid-sized center within the Northern Black Forest Region of the Karlsruhe Administrative Region. It also belongs to the \"Cooperative Zone\" of the Stuttgart Metropolitan Region. Horb am Neckar operates a combined administration with the neighbouring communities of Empfingen and Eutingen im Gäu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "horb am neckar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "horb",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "neckar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2846,
+    "attempt": 2824,
+    "place_id": "gn-2978640",
+    "input": {
+      "place": {
+        "place_id": "gn-2978640",
+        "name": "Saint-Malo",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.64738,
+        "lon": -2.00877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Malo",
+          "url": "https://en.wikipedia.org/wiki/Saint-Malo",
+          "text": "Saint-Malo (UK: , US: , French: [sɛ̃ malo] ; Gallo: Saent-Malô; Breton: Sant-Maloù) is a historic French port commune in Ille-et-Vilaine, Brittany.\nOriginally, the walled city sat on a rocky granite island connected to the mainland only by a natural, narrow sand spit and tidal mudflats called le Sillon. Stonework and a basic road were first established along this sandbar in 1509 to protect the area and create dry access. The original structure was widened, raised, and rebuilt over the centuries — particularly in the 19th century — to form the modern dyke and thoroughfare (La Digue du Sillon) that permanently connects the old town to the rest of the coast.\nThe walled city on the English Channel coast has a long history of piracy, earning much wealth from local extortion and overseas adventures. In 1944, during World War II, the Allies heavily bombed Saint-Malo. The city became a popular tourist centre, with a ferry terminal serving the Channel Islands of Jersey and Guernsey, as well as the Southern English settlements of Portsmouth, Hampshire and Poole, Dorset.\nThe transatlantic single-handed yacht race Route du Rhum, which takes place every four years in November, is between Saint Malo and Pointe-à-Pitre in Guadeloupe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "saint malo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "malo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2847,
+    "attempt": 2825,
+    "place_id": "gn-3182043",
+    "input": {
+      "place": {
+        "place_id": "gn-3182043",
+        "name": "Biella",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.56304,
+        "lon": 8.05796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biella",
+          "url": "https://en.wikipedia.org/wiki/Biella",
+          "text": "Biella (Italian: [ˈbjɛlla] ; Piedmontese: Biela; Latin: Bugella) is a city and comune (municipality) in the region of Piedmont in northern Italy, the capital of the province of the same name. With a population of 43,356, it is the 12th-largest city in Piedmont. It is located about 80 kilometres (50 miles) northeast of Turin and at about the same distance west-northwest of Milan.\nIt lies in the foothills of the Alps, in the Bo mountain range near Mt. Mucrone and Camino, an area rich in springs and lakes fed by the glaciers, the heart of the Biellese Alps irrigated by several mountain streams: the Elvo to the west of the town, the Oropa river and the Cervo to the east. Nearby natural and notable tourist attractions include the Zegna Viewpoint, the Bielmonte Ski Resort, Burcina Natural Reserve, and the moors to the south of town. The Sanctuary of Oropa is a site of religious pilgrimages. In 2003, the Sanctuary of Oropa Sacred Mountain of Oropa became a UNESCO World Heritage Site.\nBiella is an important wool processing and textile centre. There is a small airport in the nearby comune of Cerrione."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "biella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2848,
+    "attempt": 2826,
+    "place_id": "gn-3445764",
+    "input": {
+      "place": {
+        "place_id": "gn-3445764",
+        "name": "Unaí",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -16.3575,
+        "lon": -46.90611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Unaí",
+          "url": "https://en.wikipedia.org/wiki/Unaí",
+          "text": "Unaí is a municipality in the Northern Region of Minas Gerais, in the Brazilian state of Minas Gerais, in the Southeast Region of Brazil. It is located 590 km from the capital of Minas Gerais and 164 km from the federal capital. Unaí is the main municipality of its micro-region of the same name and, together with Paracatu, the most important city of the said mesoregion of Minas Gerais. Due to its geopolitical location, because it is geographically and politically linked to Brasilia and politically to Belo Horizonte, the municipality has a strong economic dynamism for a municipality that still carries the typically mineiro custom.\nIts population is of 84,930 inhabitants according to estimates of the census of the IBGE of 2020 and is one of the less populous municipalities of the state but with one of the greater commuting migrations daily of the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "unai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2849,
+    "attempt": 2827,
+    "place_id": "gn-5610810",
+    "input": {
+      "place": {
+        "place_id": "gn-5610810",
+        "name": "Twin Falls",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 42.56297,
+        "lon": -114.46087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Twin Falls, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Twin_Falls,_Idaho",
+          "text": "Twin Falls is the county seat of and the largest city in Twin Falls County, Idaho, United States. The population was 51,807 at the 2020 census, and was estimated at 55,589 in 2024. In the Magic Valley region, Twin Falls is the largest city in a 100-mile (160 km) radius, and is the regional commercial center for south-central Idaho and northeastern Nevada. It is the principal city of the Twin Falls metropolitan statistical area, which officially includes the entirety of Twin Falls and Jerome Counties. The border town resort community of Jackpot, Nevada, 50 mi (80 km) south at the state line, is unofficially considered part of the greater Twin Falls area.\nLocated on a broad plain at the south rim of the Snake River Canyon, Twin Falls is where daredevil Evel Knievel attempted to jump across the canyon in 1974 on a steam-powered rocket. The jump site is northeast of central Twin Falls, midway between Shoshone Falls and the Perrine Bridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "twin falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "twin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2850,
+    "attempt": 2828,
+    "place_id": "gn-6087701",
+    "input": {
+      "place": {
+        "place_id": "gn-6087701",
+        "name": "Newmarket",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.05011,
+        "lon": -79.46631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newmarket, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Newmarket,_Ontario",
+          "text": "Newmarket (2021 population: 87,942) is a town and regional seat of York Region, Ontario, Canada. It is part of the Greater Toronto Area in the Golden Horseshoe region of Southern Ontario. The name stems from the fact that the settlement was a \"New Market\",  in contrast to York as the Old Market.\nThe town was formed as one of many farming communities in the area, but also developed an industrial centre on the Northern Railway of Canada's mainline, which was built in 1853 through what would become the downtown area. It also became a thriving market town with the arrival of the Metropolitan Street Railway in 1899. Over time, the town developed into a primarily residential area, and the expansion of Highway 400 to the west and the construction of Highway 404 to the east increasingly turned it into a bedroom town since the 1980s. The province's Official Plan includes growth in the business services and knowledge industries, as well as in the administrative, manufacturing and retail sectors.\nLandmarks include Upper Canada Mall, Southlake Regional Health Centre, the Main Street Heritage Conservation District, and Wesley Brooks Conservation Area (locally called \"Fairy Lake Park\" or \"Fairy Lake\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "newmarket",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2851,
+    "attempt": 2829,
+    "place_id": "gn-6690862",
+    "input": {
+      "place": {
+        "place_id": "gn-6690862",
+        "name": "South Croydon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.36217,
+        "lon": -0.09421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Croydon",
+          "url": "https://en.wikipedia.org/wiki/South_Croydon",
+          "text": "South Croydon in south London is the area surrounding the valley south of central Croydon and running as far south as the former Red Deer public house on the Brighton Road. It is bounded by Waddon to the West and Selsdon and Sanderstead to the East. It is part of the South Croydon (CR2) post town and in the London Borough of Croydon. \nThe area was developed in the 19th century out of land lying in two ancient manors, Croham and Haling. The names of these can still be seen in the area today, and the locations of the manor houses can be found in the Croham Manor Road conservation area and in Whitgift School. Much of the land of South Croydon has been associated through the years with the Whitgift Foundation whose charitable work has benefited and influenced Croydon since its foundation in 1596."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "south croydon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "croydon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2852,
+    "attempt": 2830,
+    "place_id": "gn-686578",
+    "input": {
+      "place": {
+        "place_id": "gn-686578",
+        "name": "Alba Iulia",
+        "country": "Romania",
+        "subdivision": "Alba County",
+        "lat": 46.06667,
+        "lon": 23.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alba Iulia",
+          "url": "https://en.wikipedia.org/wiki/Alba_Iulia",
+          "text": "Alba Iulia (Romanian pronunciation: [ˌalba ˈjuli.a] ; German: Karlsburg or Carlsburg, formerly Weißenburg [ˈvaɪsn̩bʊʁk] ; Hungarian: Gyulafehérvár [ˈɟulɒfɛɦeːrvaːr]; Latin: Apulum) is a city that serves as the seat of Alba County in the west-central part of Romania. Located on the river Mureș in the historical region of Transylvania, it has a population of 64,227 (as of 2021).\nDuring ancient times, the site was the location of the Roman camp Apulum. Since the High Middle Ages, the city has been the seat of Transylvania's Roman Catholic diocese. Between 1526 and 1570 it was the capital of the Eastern Hungarian Kingdom from which the Principality of Transylvania emerged by the Treaty of Speyer in 1570 and it was the capital of the Principality of Transylvania until 1711. At one point it also was a centre of the Eastern Orthodox Metropolitan of Transylvania with suffragan to Vad diocese. On 1 December 1918, the Union of Transylvania with Romania was declared in Alba Iulia, and Romania's King Ferdinand I and, in 1922 Queen Marie were crowned in the Alba Iulia Orthodox Cathedral.\nAlba Iulia is historically important for Romanians, Hungarians, and Transylvanian Saxons. In December 1918, Alba Iulia was officially declared Capital of the Great Union of Romania.\nThe city administers four villages: Bărăbanț (Borbánd), Micești (Ompolykisfalud), Oarda (Alsóváradja), and Pâclișa (Poklos)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "alba iulia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alba",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "iulia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2853,
+    "attempt": 2831,
+    "place_id": "gn-107797",
+    "input": {
+      "place": {
+        "place_id": "gn-107797",
+        "name": "Dhahran",
+        "country": "Saudi Arabia",
+        "subdivision": "Eastern Province",
+        "lat": 26.28864,
+        "lon": 50.11396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dhahran",
+          "url": "https://en.wikipedia.org/wiki/Dhahran",
+          "text": "Dhahran (Arabic: الظهران, romanized: aẓ-Ẓahrān, pronounced [ɐðˤ.ðˤɐhˈrɑːn]) is a city located in the Eastern Province, Saudi Arabia. With a total population of 143,936 as of 2022, it is a major administrative center for the Saudi oil industry. Together with the nearby cities of Dammam and Khobar, Dhahran forms part of the Dammam Metropolitan Area, which is commonly known as greater Dammam and has an estimated population of 2.2 million as of 2022.\nA Concession Agreement to search for oil was signed in Jeddah on 29 May 1933, between the Kingdom of Saudi Arabia and Standard Oil of California.  However, it was not until five years later, in 1938, that the first oil in commercial quantities was produced. Standard Oil later established a subsidiary in Saudi Arabia called the Arabian American Oil Company (ARAMCO), now owned by the Saudi government and known as Saudi Aramco. Dhahran has been the home of Saudi Aramco's headquarters for 90 years and is its first and largest gated compound. Employees and dependents of Aramco, known as Aramcons, have a tendency to use Dhahran to solely refer to the Aramco Camp while using Khobar and/or Dammam to refer to the area outside the camp.\nDhahran is unusual in that a large portion of it is made up of gated areas including Saudi Aramco's headquarters and residential camp, the King Fahd University of Petroleum and Minerals (built by Aramco) and the King Abdulaziz Air Base. Dhahran is also home to the Mall of Dhahran, one of the biggest shopping complexes in the Eastern Province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "dhahran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2854,
+    "attempt": 2832,
+    "place_id": "gn-1177682",
+    "input": {
+      "place": {
+        "place_id": "gn-1177682",
+        "name": "Gujar Khan",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 33.25411,
+        "lon": 73.30433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gujar Khan",
+          "url": "https://en.wikipedia.org/wiki/Gujar_Khan",
+          "text": "Gujar Khan or Gujjar Khan (Punjabi: گُجر خاں [ɡʊˈd͡ʒəɾ ˈxãː]; Urdu: گوجر خان [ˈɡoːdʒəɾ ˈxaːn]) is a city in Rawalpindi District, Punjab, Pakistan. It is also the headquarters of Gujar Khan Tehsil, the largest tehsil of Punjab by land area.\nGujar Khan is located approximately 57 km (35 mi)  southeast of Islamabad, the capital of Pakistan, and 220 km (140 mi) to the northwest of Lahore, the capital of Punjab. It is bounded on the north by Rawalpindi, Islamabad, and Attock, on the south by Jhelum, Lahore, and Gujrat, on the east by Azad Kashmir, and Kahuta and on the west by Chakwal and Khushab.\nSituated in the heart of the Pothohar Plateau in northern Punjab, the city and surrounding region is renowned for their martial culture and is sometimes referred to as the 'Land of Martyrs', having produced two recipients of the Nishan-i-Haider."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "gujar khan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gujar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "khan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2855,
+    "attempt": 2833,
+    "place_id": "gn-1722985",
+    "input": {
+      "place": {
+        "place_id": "gn-1722985",
+        "name": "Bulan",
+        "country": "Philippines",
+        "subdivision": "Bicol Region",
+        "lat": 12.67139,
+        "lon": 123.875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bulan, Sorsogon",
+          "url": "https://en.wikipedia.org/wiki/Bulan,_Sorsogon",
+          "text": "Bulan, officially the Municipality of Bulan (Waray Sorsogon: Bungto san Bulan; Waray: Bungto han Bulan; Tagalog: Bayan ng Bulan), is a municipality in the province of Sorsogon, Philippines. According to the 2024 census, it has a population of 106,919 people, making it the most populated town in the province.\nBulan is being groomed to be the next city of Bicol province given its first class municipality status with an estimated population of 120,000, 196 square kilometers land area and an annual regular income of not less than P200M Bulan. The town is said to propose a cityhood bill in the near future.\nIt is also one of the Top Five Municipalities with the Highest Operating Income in Bicol, ISO Accredited LGU, with Seal of Good Financial Housekeeping from DILG.\nThe year 1818 census shows that Bulan had 714 native families and 16 Spanish-Filipino families."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "bulan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2856,
+    "attempt": 2834,
+    "place_id": "gn-210379",
+    "input": {
+      "place": {
+        "place_id": "gn-210379",
+        "name": "Lusambo",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Sankuru",
+        "lat": -4.97503,
+        "lon": 23.44391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lusambo",
+          "url": "https://en.wikipedia.org/wiki/Lusambo",
+          "text": "Lusambo  (Swahili: Mji wa Lusambo) is the capital city of Sankuru province, Democratic Republic of the Congo. The town lies north of the confluence of the Sankuru River and the Lubi River. Lusambo is served by Lusambo Airport. \n\nIn 1890 Lusambo was chosen by Paul Le Marinel as the main Belgian base in the Kasai region to defend against the Arab or Swahili traders in slaves and ivory who came from the east. The station would soon become one of the most important military posts of the Congo Free State with a permanent staff of seventeen whites, six hundred native soldiers and four artillery pieces.\nIn 1999 the new Kabila government and its ally, the Zimbabwean government of Robert Mugabe, claimed that U.S. mercenaries were helping Ugandan and Rwandan-backed rebel forces who had surrounded 700 Zimbabwean troops near Lusambo during the Second Congo War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "lusambo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2857,
+    "attempt": 2835,
+    "place_id": "gn-2220853",
+    "input": {
+      "place": {
+        "place_id": "gn-2220853",
+        "name": "Yokadouma",
+        "country": "Cameroon",
+        "subdivision": "East",
+        "lat": 3.51667,
+        "lon": 15.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yokadouma",
+          "url": "https://en.wikipedia.org/wiki/Yokadouma",
+          "text": "Yokadouma is a town and  Catholic bishopric in eastern Cameroon, lying near the border with the Central African Republic. It was an early French administrative centre.\nDuring the colonial period, Yokadouma was the centre for a widespread but ill-fated immunisation campaign against sleeping sickness, known as 'lomidinisation'. The administration of the drug had little preventative benefit and in many cases the colonial doctors cut corners. In one incident on November 15, 1954, known as the \"accident of Yokadouma\", the French doctor misadministered the drug to such an extent that more than 300 people contracted gangrene and 32 more died. It has been described as \"one of the most violent medical catastrophes in African history.\"\nIts Cathédrale Marie Reine de la Paix, dedicated in 2010 to Our Lady Queen of Peace, is the cathedral episcopal see of the Roman Catholic Diocese of Yokadouma (founded 1991)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "yokadouma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2858,
+    "attempt": 2836,
+    "place_id": "gn-3102459",
+    "input": {
+      "place": {
+        "place_id": "gn-3102459",
+        "name": "Brzeg",
+        "country": "Poland",
+        "subdivision": "Opole Voivodeship",
+        "lat": 50.86079,
+        "lon": 17.4674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brzeg",
+          "url": "https://en.wikipedia.org/wiki/Brzeg",
+          "text": "Brzeg ([bʐɛk] ; Latin: Alta Ripa; German: Brieg; Silesian German: Brigg; Silesian: Brzeg, Brzyg; Czech: Břeh) is a town in southwestern Poland with 34,778 inhabitants (December 2021) and the capital of Brzeg County. It is situated in Silesia in the Opole Voivodeship on the left bank of the Oder river.\nThe town of Brzeg was first mentioned as a trading and fishing settlement within fragmented Piast-ruled Poland in 1234. In 1248, Silesian Duke Henry III the White granted the settlement Magdeburg town rights and by the late 13th century the city became fortified. Sometimes referred to as \"the garden town\", the town's size greatly expanded after the construction of dwellings which were located on the city outskirts. From the early 14th to late 17th centuries, the town was ruled by the Piast dynasty as fiefs of the Bohemian Crown within the Holy Roman Empire. Due to the result of the Silesian Wars, the town passed to Prussia and later was part of Germany between 1871 and  1945, before becaming once again part of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "brzeg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2859,
+    "attempt": 2837,
+    "place_id": "gn-3834502",
+    "input": {
+      "place": {
+        "place_id": "gn-3834502",
+        "name": "Termas de Río Hondo",
+        "country": "Argentina",
+        "subdivision": "Santiago del Estero",
+        "lat": -27.49362,
+        "lon": -64.85972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Termas de Río Hondo",
+          "url": "https://en.wikipedia.org/wiki/Termas_de_Río_Hondo",
+          "text": "Termas de Río Hondo is a spa city in Santiago del Estero Province, Argentina. It has 27,838 inhabitants as per the 2001 census [INDEC]. It is located on the banks of the Dulce River, 65 km north of the provincial capital Santiago del Estero, near the artificial Río Hondo Lake.\nThe hot springs (Spanish: termas, Quechua: yacu rupaj) of the area have a temperature of over 30 °C (86 °F), and have made the town a popular spa resort for Argentines, who enjoy the waters recommended against high blood pressure and rheumatism. Two public pools, La Olla and the Pileta Municipal, are near the town centre, along with many well-regarded hotels and restaurants.\nNew investments done in the last years were the new Las Termas Airport and Autódromo Termas de Río Hondo, totally rebuilt to host MotoGP World Championship racing starting from April 2014.\n\nThe town was on the route of the 2015 and 2016 Dakar Rally."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "termas de rio hondo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "termas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hondo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2860,
+    "attempt": 2838,
+    "place_id": "gn-4563008",
+    "input": {
+      "place": {
+        "place_id": "gn-4563008",
+        "name": "Caguas",
+        "country": "Puerto Rico",
+        "subdivision": "Caguas",
+        "lat": 18.23412,
+        "lon": -66.0485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caguas, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Caguas,_Puerto_Rico",
+          "text": "Caguas (Spanish pronunciation: [ˈkaɣwas], locally [ˈkawaʔ]) is a city and municipality in central eastern Puerto Rico. Located in the eponymous Caguas Valley between the Sierra de Cayey and Sierra de Luquillo of the Central Mountain Range, it is bordered by San Juan and Trujillo Alto to the north, Gurabo and San Lorenzo to the west, Aguas Buenas, Cidra and Cayey to the east, and Patillas to the south. With a population of 127,244 as of the 2020 census, Caguas is the fifth most populated municipality in the archipelago and island and a principal city of the San Juan metropolitan area.\nSince 2009, Caguas had the distinction of being the only municipality in Puerto Rico recognized as a Tree City USA by the Arbor Day Foundation, until 2026, when the municipality of Vega Baja was announced as the second in the island to receive it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "caguas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2861,
+    "attempt": 2839,
+    "place_id": "gn-4597200",
+    "input": {
+      "place": {
+        "place_id": "gn-4597200",
+        "name": "Spartanburg",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 34.94957,
+        "lon": -81.93205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spartanburg, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Spartanburg,_South_Carolina",
+          "text": "Spartanburg, also known as \"Sparkle City\", is a city in and the county seat of Spartanburg County, South Carolina, United States. The city had a population of 38,732 as of the 2020 census, making it the state's 11th-most populous city. The Office of Management and Budget (OMB) groups Spartanburg and Union counties together as the Spartanburg, SC Metropolitan Statistical Area.\nSpartanburg is the second-largest city in the greater Greenville–Spartanburg–Anderson, SC Combined Statistical Area, which had an estimated population of 1,590,636 in 2023. It is part of a ten-county region of northwestern South Carolina known as \"The Upstate\", and is 98 miles (158 km) northwest of Columbia, 80 miles (130 km) west of Charlotte, North Carolina, and about 190 miles (310 km) northeast of Atlanta, Georgia.\nSpartanburg is the home of Wofford College, Converse University, Spartanburg Community College, and Edward Via College of Osteopathic Medicine. The area is home to USC Upstate, Sherman College of Chiropractic, and Spartanburg Methodist College. It is also the site of Denny's corporate headquarters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "spartanburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2862,
+    "attempt": 2840,
+    "place_id": "gn-5720727",
+    "input": {
+      "place": {
+        "place_id": "gn-5720727",
+        "name": "Corvallis",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 44.56457,
+        "lon": -123.26204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corvallis, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Corvallis,_Oregon",
+          "text": "Corvallis ( kor-VAL-iss) is a city in and the county seat of Benton County in central western Oregon, United States. It is the principal city of the Corvallis, Oregon Metropolitan Statistical Area, which encompasses all of Benton County. As of the 2023 Census Population Estimates, the population was 61,087, making it the 9th most populous city in Oregon. This includes the 24,900 Oregon State University students at the main campus in Corvallis, over 5,250 of whom live in one of 16 residence halls on the main campus. Corvallis is the location of Oregon State University's 420-acre (170 ha) main campus, Samaritan Health Services, a top 10 largest non-profit employer in the state, an 84-acre (34 ha) Good Samaritan Regional Medical Center campus, and a 2,200,000-square-foot (200,000 m2), 197-acre (80 ha) Hewlett Packard research and development campus. Corvallis is a part of the Silicon Forest. Corvallis is the westernmost city in the contiguous 48 states with a population larger than 50,000.\nCorvallis is the largest principal city of the Albany–Corvallis–Lebanon CSA, a Combined Statistical Area that includes the Corvallis metropolitan area (Benton County) and the Albany–Lebanon micropolitan area (Linn County), which had a combined population of 229,209 at the 2023 U.S. Census Estimates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "corvallis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

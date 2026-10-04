@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 2903,
+    "attempt": 2881,
+    "place_id": "gn-2140466",
+    "input": {
+      "place": {
+        "place_id": "gn-2140466",
+        "name": "La Foa",
+        "country": "New Caledonia",
+        "subdivision": "South Province",
+        "lat": -21.71079,
+        "lon": 165.82764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Foa",
+          "url": "https://en.wikipedia.org/wiki/La_Foa",
+          "text": "La Foa (French: [la fwa] , Xârâcùù: Foha) is a commune in the South Province of New Caledonia, an overseas territory of France in the Pacific Ocean.\nAlthough the provincial seat of the South Province is in Nouméa, La Foa was made the chief town of the administrative subdivision of the South in order to counterbalance the overwhelming weight of Nouméa in New Caledonia. Both entities share an almost identical territory, but their status and role is quite different: the South Province, with its provincial assembly in Nouméa, is a full political division, whereas the administrative subdivision of the South is only an administrative division of the French central state, akin to an arrondissement of Metropolitan France, with a Deputy Commissioner of the Republic (commissaire délégué de la République), akin to a subprefect of metropolitan France, in residence in La Foa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "la foa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "foa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2904,
+    "attempt": 2882,
+    "place_id": "gn-2511730",
+    "input": {
+      "place": {
+        "place_id": "gn-2511730",
+        "name": "Ronda",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.74231,
+        "lon": -5.16709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ronda",
+          "url": "https://en.wikipedia.org/wiki/Ronda",
+          "text": "Ronda (Spanish pronunciation: [ˈronda]) is a municipality of Spain belonging to the province of Málaga, within the autonomous community of Andalusia.\nRonda sits on the Ronda Depression, a Miocene plateau at around 600–800 metres above mean sea level with fertile land suitable for growing the Mediterranean triad of wheat, olive and vines. The city is cut off by a deep gorge ('el Tajo'), carrying the Guadalevín river. It is traditionally identified with ancient Arunda, populated under Iberians and Romans, and one of the main urban centers of the depression in the High Imperial period along with Acinipo and Lacilbula. Head of a kūra, and then of a brief statelet, under Islamic rule, it consolidated as a regional cog in the late middle ages within the Nasrid Kingdom of Granada. It was taken by force by the Crown of Castile in 1485. Ethnic strife between Christian settlers and moriscos accrued in the late 16th century.\nAs of 2025, it has a registered population of 33,671. Ronda's principal landmarks include the El Tajo gorge and the Puente Nuevo bridge. It is one of the towns and villages that are included in the Sierra de las Nieves National Park. The railway connecting Algeciras with Inner Andalusia and the Meseta passes near Ronda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "ronda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2905,
+    "attempt": 2883,
+    "place_id": "gn-2633373",
+    "input": {
+      "place": {
+        "place_id": "gn-2633373",
+        "name": "Yeovil",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.94159,
+        "lon": -2.63211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yeovil",
+          "url": "https://en.wikipedia.org/wiki/Yeovil",
+          "text": "Yeovil (  YOH-vil) is a town and civil parish in Somerset, England. It is close to the county's southern border with Dorset, 126 miles (203 km) west of London, 42 miles (68 km) south of Bristol, 6 miles (10 km) west of Sherborne and 28 miles (45 km) east of Taunton. At the 2021 census, the parish had a population of 31,633, and the built-up area, which extends into the neighbouring parishes of Brympton, West Coker, and Yeovil Without, had a population of 50,170.\nThe aircraft and defence industries, which developed in the 20th century, made it a target for German bombing in the Second World War; they are still major employers. Yeovil Country Park, which includes Ninesprings, is one of several open spaces with educational, cultural and sporting facilities. Religious sites include the 14th-century Church of St John the Baptist. The town is on the A30 and A37 roads and has two railway stations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "yeovil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2906,
+    "attempt": 2884,
+    "place_id": "gn-2830582",
+    "input": {
+      "place": {
+        "place_id": "gn-2830582",
+        "name": "Speyer",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.32083,
+        "lon": 8.43111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Speyer",
+          "url": "https://en.wikipedia.org/wiki/Speyer",
+          "text": "Speyer (German: [ˈʃpaɪɐ] , older spelling Speier; Palatine German: Schbaija), historically known in English as Spires, is a city in Rhineland-Palatinate in the western part of the Federal Republic of Germany with approximately 50,000 inhabitants. Located on the left bank of the river Rhine, Speyer lies 25 km (16 miles) south of Ludwigshafen and Mannheim, and 21 km (13 miles) south-west of Heidelberg. Founded by the Romans as a fortified town on the northeastern frontier of their empire, it is one of Germany's oldest cities. Speyer Cathedral, a number of other churches, and the Altpörtel (\"old gate\") dominate the Speyer landscape. In the cathedral, beneath the high altar, are the tombs of eight Holy Roman Emperors and German kings.\nSpeyer is one of the ShUM cities, which formed the centre of the Jewish community in northern Europe during the Middle Ages. The city's medieval Judenhof was made a UNESCO World Heritage Site in 2021. The cathedral is also a World Heritage Site, having been listed in 1981."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "speyer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2907,
+    "attempt": 2885,
+    "place_id": "gn-3014078",
+    "input": {
+      "place": {
+        "place_id": "gn-3014078",
+        "name": "Haguenau",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.81557,
+        "lon": 7.79051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haguenau",
+          "url": "https://en.wikipedia.org/wiki/Haguenau",
+          "text": "Haguenau (French: [aɡ(ə)no] ; Alsatian: Hàwenau [ˈhaːvənau̯] or Hàjenöi [ˈhaːjənœi̯]; German: Hagenau; historical English: Hagenaw) is a commune in the Bas-Rhin department of France, of which it is a sub-prefecture.\nIt is second in size in the Bas-Rhin only to Strasbourg, some 30 km (19 mi) to the south.  To the north of the town, the Forest of Haguenau is the largest undivided forest in France.\nHaguenau was founded by German dukes and has swapped back and forth several times between Germany and France over the centuries, with its spelling altering between \"Hagenau\" and \"Haguenau\" by the turn. After the French defeat in the Franco-Prussian War, Haguenau was ceded to the new German Empire. It was part of the German Empire for 48 years from 1871 to 1918, when at the end of World War I it was returned to France. This transfer was officially ratified in 1919 with the Treaty of Versailles.\nHaguenau is a rapidly growing town, its population having increased from 22,944 inhabitants in 1968 to 36,391 inhabitants in 2023. Haguenau's functional urban area has grown from 54,415 inhabitants in 1968 to 78,898 inhabitants in 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "haguenau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2908,
+    "attempt": 2886,
+    "place_id": "gn-3027422",
+    "input": {
+      "place": {
+        "place_id": "gn-3027422",
+        "name": "Chambéry",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.56628,
+        "lon": 5.92079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chambéry",
+          "url": "https://en.wikipedia.org/wiki/Chambéry",
+          "text": "Chambéry (UK: , US: , French: [ʃɑ̃beʁi]; Arpitan: Chambèri; Italian: Ciamberì) is the prefecture and largest city of the Savoie department in the southeastern Auvergne-Rhône-Alpes region of France.\nThe population of the commune of Chambéry was 60,251 as of 2022, while the population of the Chambéry metropolitan area was 263,919. The city is located at the foot of the French Alps between Bauges and Chartreuse mountains, and is a railway and highway crossroads.\nIt was the capital of Savoy since the 13th century to the 16th century, when Amadeus V, Count of Savoy, made the city his seat of power. The annexation of Savoy merged the city to France in 1860. Together with other alpine towns Chambéry engages in the Alpine Town of the Year Association for the implementation of the Alpine Convention to achieve sustainable development in the Alpine Arc. Chambéry was awarded Alpine Town of the Year 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "chambery",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2909,
+    "attempt": 2887,
+    "place_id": "gn-308224",
+    "input": {
+      "place": {
+        "place_id": "gn-308224",
+        "name": "Kemalpaşa",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.42621,
+        "lon": 27.41731
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kemalpaşa",
+          "url": "https://en.wikipedia.org/wiki/Kemalpaşa",
+          "text": "Kemalpaşa is a municipality and district of İzmir Province, Turkey. Its area is 681 km2, and its population is 114,250 (2022). Kemalpaşa town is 29 km (18 mi) from the historical and traditional center of İzmir, (Konak) and has high levels of development in terms of industry and services. İzmir-Ankara highway crosses the district area 8 km (5.0 mi) to the north of the district center. Kemalpaşa district borders the district Bornova to the west, Yunusemre, Şehzadeler and Turgutlu (Manisa Province) in the north and east, and İzmir's districts of Torbalı and Bayındır in the south. The eastern and southern parts of Kemalpaşa district preserve their markedly rural characteristics, which results in an urbanization rate of only 25.7 for the district area as a whole, despite the presence of a strong industrial base in and to the west of Kemalpaşa town. Kemalpaşa's very large organized industrial zone (KOSBİ) brings together producers of construction materials, rubber and plastic goods, textiles and clothing, leather, paper, packaging materials, machinery and other equipment, including electrical tools and installations, dyes and other chemical substances, marble and car parts, as well as foundries and other metalworks.  Agriculture also occupies a portion with high added value in Kemalpaşa's economy, its cherries being of nationwide renown (known as Kemalpaşa kirazı in Turkish) and exported. Literacy is at a high level at 90%, and the neighboring Bornova, where Ege University is based, serves as a nearby pool in terms of trained personnel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "kemalpasa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2910,
+    "attempt": 2888,
+    "place_id": "gn-3169561",
+    "input": {
+      "place": {
+        "place_id": "gn-3169561",
+        "name": "Ravenna",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.41344,
+        "lon": 12.20121
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ravenna",
+          "url": "https://en.wikipedia.org/wiki/Ravenna",
+          "text": "Ravenna ( rə-VEN-ə; Italian: [raˈvenna], also locally [raˈvɛn(n)a] ; Romagnol: Ravèna, Ravêna) is the capital city of the Province of Ravenna, in the Emilia-Romagna region of Northern Italy. It was the capital city of the Western Roman Empire during the fifth century AD until its collapse in 476, after which it served as the capital of the Ostrogothic Kingdom and then the Byzantine Exarchate of Ravenna. With a population of 156,475 inhabitants as of 2026, it is the 24th-largest city in Italy. Ravenna is also the second largest city in Italy by area with 653.82 km2.\nInitially settled by the Umbri people, Ravenna came under Roman Republic control in 89 BC. Octavian built the military harbor of Classis at Ravenna, and the city remained an important seaport on the Adriatic until the early Middle Ages. The city prospered under imperial rule. In 401, Western Roman emperor Honorius moved his court from Mediolanum to Ravenna; it then served as capital of the empire for most of the 5th century.\nAfter the fall of the Western Roman Empire, Ravenna became the capital of Odoacer until he was defeated by the Ostrogoth king Theodoric. In 540, Belisarius conquered Ravenna for the Byzantine Empire, and the city became the capital of Byzantine Italy. After a brief Lombard control, Ravenna came under the authority of the Papacy and, save for minor interruptions, remained part of the Papal States until the mid-19th century when it was incorporated into the newly unified Kingdom of Italy.\nAlthough it is an inland city, Ravenna is connected to the Adriatic Sea by the Candiano Canal. It is known for its well-preserved late Roman and Byzantine architecture, with eight buildings comprising the UNESCO World Heritage Site \"Early Christian Monuments of Ravenna\". Because of the high concentration of mosaics, the city has been associated with workshops and schools teaching mosaics, and is often given titles like the \"capital of mosaics\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "ravenna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2911,
+    "attempt": 2889,
+    "place_id": "gn-3180172",
+    "input": {
+      "place": {
+        "place_id": "gn-3180172",
+        "name": "Casalnuovo di Napoli",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.90969,
+        "lon": 14.34205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casalnuovo di Napoli",
+          "url": "https://en.wikipedia.org/wiki/Casalnuovo_di_Napoli",
+          "text": "Casalnuovo di Napoli (Italian: [kaˌzalˈnwɔːvo di ˈnaːpoli, kaˌsal-]; Neapolitan: Casalnuovo 'e Napule) is a city and comune (municipality) in the Metropolitan City of Naples in the region of Campania in Italy, located about 13 kilometres (8 miles) northeast of Naples. It has 46,663 inhabitants.\nThe municipality of Casalnuovo di Napoli contains the frazioni (hamlets) of: Casarea, Tavernanova, Licignano and Talona.\nCasalnuovo di Napoli borders the municipalities of Acerra, Afragola, Casoria, Pollena Trocchia, Pomigliano d'Arco, Sant'Anastasia, Volla, and Somma Vesuviana.\nThe municipal capital stands on the ruins of Archora, one of the villages that had given rise to the neighboring city of Afragola, and also includes the suppressed municipality of Licignano di Napoli, corresponding to the Roman settlement of Licinianum.\nIt also includes the towns of Tavernanova and Casarea, acquired in 1929 by spin-off from the municipalities of Pomigliano d'Arco and Afragola.\nFrom an ecclesiastical point of view, instead, the parishes are divided between the archdiocese of Naples (city centre and Casarea fraction), the diocese of Acerra (Licignano and Talona fraction) and the diocese of Nola (Tavernanova fraction)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "casalnuovo di napoli",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "casalnuovo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "napoli",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2912,
+    "attempt": 2890,
+    "place_id": "gn-3670293",
+    "input": {
+      "place": {
+        "place_id": "gn-3670293",
+        "name": "Samaniego",
+        "country": "Colombia",
+        "subdivision": "Nariño",
+        "lat": 1.33849,
+        "lon": -77.5957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samaniego, Nariño",
+          "url": "https://en.wikipedia.org/wiki/Samaniego,_Nariño",
+          "text": "Samaniego (Spanish pronunciation: [samaˈnjeɣo]) is a town and municipality in the Nariño Department, Colombia.\nSamaniego is known as the landscape's city and musical of Nariño. The majority of the city's population is dedicated to coffee and sugar cane to manufacture a handcrafted product named Panela, similar to sugar. Samaniego is known for having the principal youngest musical competition in Nariño, called the Departmental Competition of Musical Bands and Meeting of Dances in Nariño, where 20 musical bands have a competition to be the best band in Nariño and represent Nariño in other band competitions like in the Vega - Cundinamarca, San Pedro - Valle and Paipa - Boyaca.\nEight people were killed in the August 2020 Massacre of Samaniego. The victims are identified as Brayan Cuaran, Bairón Patiño, Elian Benavides, Daniel Vargas, Laura Riascos, Joan Quintero, Rubén Ibarra, and Óscar Obando."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "samaniego",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2913,
+    "attempt": 2891,
+    "place_id": "gn-3832778",
+    "input": {
+      "place": {
+        "place_id": "gn-3832778",
+        "name": "Villa Constitución",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -33.22795,
+        "lon": -60.32994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa Constitución",
+          "url": "https://en.wikipedia.org/wiki/Villa_Constitución",
+          "text": "Villa Constitución is a city in the province of Santa Fe, Argentina, and the head town of the Constitución Department. It is located on the south-western banks of the Paraná River between the courses of the Arroyo Pavón and the Arroyo del Medio, about 214 km south from the provincial capital, the city of Santa Fe, and 50 km from Rosario. It has a population of more than 47,374 inhabitants as per the 2010 census [INDEC].\n\nThe initial settlement on the shore of the Paraná was called Puerto de Piedras. The town was founded by the initiative of some businessmen from nearby Rosario, after receiving authorization from the government of Santa Fe. The area was strategically important because it was adequate for a port and next to the Arroyo del Medio, which is the natural border with the Buenos Aires Province. The residents of Puerto de Piedras attended the foundation of the new town, with the presence of governor Juan Pablo López, on 14 February 1858. The name Villa Constitución was given to the town to honor the Assembly that had promulgated the Constitution of 1852.\nThe town started to grow substantially with the arrival of the railroad in 1888–1890 (the station at the junction of the line coming from the port with the Buenos Aires–Rosario railway gave rise to the town of Empalme Villa Constitución). Villa Constitución became an important agricultural center, and then (since the mid-20th century) home for many industrial enterprises.\nIn the early 60's, in the city had a plant of the Goliath Hansa cars. The Hansa 1100 Lexus are made in Argentina by Goliath Hansa Argentina in the city of Villa Constitución, Santa Fe for the 1960–1961 years in three versions: Sedán de Lujo, Combi y Súper cupé Lujo. With a capital of $3,350,000, began operations on May 2, 1960, and September 15 began work on the construction of a 19,000 m2 manufacturing plant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 319
+    },
+    "banned_terms": [
+      {
+        "term": "villa constitucion",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "constitucion",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2914,
+    "attempt": 2892,
+    "place_id": "gn-3980621",
+    "input": {
+      "place": {
+        "place_id": "gn-3980621",
+        "name": "Valle de Bravo",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.19501,
+        "lon": -100.13132
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valle de Bravo",
+          "url": "https://en.wikipedia.org/wiki/Valle_de_Bravo",
+          "text": "Valle de Bravo (Latin American Spanish: [ˈbaʝe ðe ˈβɾaβo] ) is one of 125 municipalities in the State of Mexico, Mexico.  The largest town and municipal seat is the town of Valle de Bravo. It is located on the shore of Lake Avándaro, approximately 156 km (97 miles) southwest of Mexico City and west of Toluca on highways 15, 134 or 1. It takes about two hours to drive from Mexico City to Valle de Bravo, making it a popular weekend getaway for the capital's affluent upper class.\nThe town has several names during its history including San Francisco del Valle de Temascaltepec, Temascaltepec de indios, Villa del Valle, and San Francisco del Valle. The original names including Temascaltepec caused confusion with the nearby \"Real de Minas de Temascaltepec\", now Temascaltepec, so the county was known as \"El Valle\" (The Valley). The honorific \"de Bravo\" was added later to recognize Nicolás Bravo who fought at the Castle of Chapultepec during the Mexican–American War. Its Coat of arms includes the image of a temazcal in reference to its original name.\nIn 1971, Valle de Bravo was known as typical city (ciudad típica) and magical town (pueblo mágico) in 2005. The town and the surrounding area are well known in Mexico as a tourist destination, mainly due to its relative proximity to Mexico City and for having hosted the world-famous Circuito Avandaro auto racing event and Festival de rock y Ruedas, a massive rock music festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "valle de bravo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "valle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bravo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2915,
+    "attempt": 2893,
+    "place_id": "gn-1001860",
+    "input": {
+      "place": {
+        "place_id": "gn-1001860",
+        "name": "Giyani",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -23.30246,
+        "lon": 30.71868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Giyani",
+          "url": "https://en.wikipedia.org/wiki/Giyani",
+          "text": "Giyani is a town in the north-eastern part of the province of Limpopo, South Africa, and serves as the main place in the Greater Giyani Local Municipality.\nThe town is the administrative capital of the Mopani District Municipality and a former capital of the former Gazankulu Bantustan. Giyani town is divided into seven sections: Section A, Section D1, Section D2, Section E, Section F, Kremetart, and Giyani CBD.Giyani extends to 91 villages.\nIn recent years the villages that form part of Greater Giyani have undergone significant development, which has included upgraded road networks and other public infrastructure, economic development, and private property development. These developments have demonstrated a potential city status for Giyani in the coming years, if the development rate is maintained.\nThe Giyani CBD is nicknamed Benstore, and this name is commonly used by residents of the region. Greater Giyani is rich with Tsonga culture and cultural activities. Giyani, as the main area, and the rest of the Greater Giyani region is Administered by the Greater Giyani Local Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "giyani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2916,
+    "attempt": 2894,
+    "place_id": "gn-2759798",
+    "input": {
+      "place": {
+        "place_id": "gn-2759798",
+        "name": "Amstelveen",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.30083,
+        "lon": 4.86389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amstelveen",
+          "url": "https://en.wikipedia.org/wiki/Amstelveen",
+          "text": "Amstelveen (Dutch pronunciation: [ˌɑmstəlˈveːn] ) is a municipality and city in the province of North Holland, Netherlands, with a population of 95,996 as of 2024. It is a suburban part of the Amsterdam metropolitan area.\nThe municipality of Amstelveen consists of the historical villages of Bovenkerk and Nes aan de Amstel. In addition, as well as Downtown Amstelveen (Dutch: Amstelveen stadshart), it contains the following neighbourhoods: Westwijk, Bankras-Kostverloren, Groenelaan, Waardhuizen, Middenhoven, Randwijk, Elsrijk and Keizer Karelpark. The name Amstelveen comes from the Amstel, a local river (as does the name Amsterdam) and veen, meaning fen, peat, or moor. Amstelveen houses the international headquarters of Dutch national airline KLM (although it is slated to leave for Schiphol in the future, plans to move have been delayed due to COVID and high costs) and KPMG, one of the Big Four accounting firms. The Cobra Museum is also located in Amstelveen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "amstelveen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2917,
+    "attempt": 2895,
+    "place_id": "gn-2961297",
+    "input": {
+      "place": {
+        "place_id": "gn-2961297",
+        "name": "Swords",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.45972,
+        "lon": -6.21806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Swords, County Dublin",
+          "url": "https://en.wikipedia.org/wiki/Swords,_County_Dublin",
+          "text": "Swords (Irish: Sord [sˠoːɾˠd̪ˠ] or Sord Cholmcille) in County Dublin, the county town of the local government area of Fingal, is a large suburban town on the east coast of Ireland, situated ten kilometres north of Dublin city centre. It is the eighth largest urban area in Ireland, with a population of 40,776 as of the 2022 census. The town was reputedly founded c. AD 560. Located on the Ward River, Swords features Swords Castle, a restored medieval castle, a holy well from which it takes its name, a round tower and a Norman tower. Facilities in the area include the Pavilions shopping centre, one of the largest in the Dublin region, a range of civic offices, some light industries, the main storage facility and archive of the National Museum of Ireland and several parks. Dublin Airport is located nearby.\nThe name \"Swords\" gives its name to a townland of Swords Demesne, a civil parish, and a local electoral area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "swords",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2918,
+    "attempt": 2896,
+    "place_id": "gn-2964661",
+    "input": {
+      "place": {
+        "place_id": "gn-2964661",
+        "name": "Drogheda",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.71889,
+        "lon": -6.34778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Drogheda",
+          "url": "https://en.wikipedia.org/wiki/Drogheda",
+          "text": "Drogheda ( DRO-həd-ə, DRAW-də; Irish: Droichead Átha [ˈd̪ˠɾˠɛhəd̪ˠ ˈaːhə] , meaning \"bridge at the ford\") is an industrial and port town in County Louth on the east coast of Ireland, 43 km (27 mi) north of Dublin. It is located on the Dublin–Belfast corridor on the east coast of Ireland, mostly in County Louth but with the south fringes of the town in County Meath, 40 km (25 mi) north of Dublin city centre. Drogheda had a population of 44,135 inhabitants in 2022, making it the eleventh largest settlement by population in all of Ireland, and the largest town in the Republic of Ireland, by both population and area. The area of Drogheda that is in Co. Louth has 35,990 residents, while the area of Drogheda that is in Co. Meath has 8,145 residents, which make up the 44,135 total. It is the last bridging point on the River Boyne before it enters the Irish Sea. The UNESCO World Heritage Site of Newgrange is located 8 km (5.0 mi) west of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "drogheda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2919,
+    "attempt": 2897,
+    "place_id": "gn-2994497",
+    "input": {
+      "place": {
+        "place_id": "gn-2994497",
+        "name": "Menton",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.77649,
+        "lon": 7.50435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menton",
+          "url": "https://en.wikipedia.org/wiki/Menton",
+          "text": "Menton (French: [mɑ̃tɔ̃]; Occitan: Menton in classical norm or Mentan in Mistralian norm, pronounced [menˈta], locally [mɛ(n)ˈtã]; Italian: Mentone [menˈtoːne]; Ligurian: Menton or Mentun depending on the orthography) is a resort town and commune in the Alpes-Maritimes department in the Provence-Alpes-Côte d'Azur region on the French Riviera, close to the Italian border. \nMenton has always been a frontier town. Since the end of the 14th century, it has been on the border between the County of Nice, held by the Duke of Savoy, and the Republic of Genoa. It was an exclave of the Principality of Monaco until the disputed French plebiscite of 1860 when it was added to France. It had been always a fashionable tourist centre with grand mansions and gardens. Its temperate Mediterranean climate is especially favourable to the citrus industry, with which it is strongly identified."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "menton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2920,
+    "attempt": 2898,
+    "place_id": "gn-3465671",
+    "input": {
+      "place": {
+        "place_id": "gn-3465671",
+        "name": "Congonhas",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -20.50525,
+        "lon": -43.8588
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Congonhas",
+          "url": "https://en.wikipedia.org/wiki/Congonhas",
+          "text": "Congonhas is a municipality in central Minas Gerais, Brazil. Its municipal seat grew during the gold rush of the early eighteenth century and became a regional pilgrimage center after construction of the Sanctuary of Bom Jesus de Matosinhos began in 1757. The municipality covers 304.067 km2 (117.401 sq mi) and had 52,890 residents in the 2022 census.\nAbove the older part of the town, the Sanctuary of Bom Jesus de Matosinhos brings together an eighteenth-century church, a terraced forecourt lined with twelve soapstone prophets, and chapels containing polychrome sculptural groups from the Passion of Christ. Much of the sculpture was made by Antônio Francisco Lisboa, known as Aleijadinho, with members of his workshop. UNESCO inscribed the sanctuary on the World Heritage List in 1985, recognizing the architectural and sculptural complex as an exceptional achievement of Baroque art in Latin America. Pilgrimage remains part of the town's character. The annual Jubilee of Bom Jesus de Matosinhos, held each September, brings worshippers from Minas Gerais and other states to the sanctuary.\nCongonhas later became one of the iron-mining centers of the Iron Quadrangle. Large-scale extraction expanded after the Casa de Pedra mine was incorporated into Companhia Siderúrgica Nacional in the 1940s and grew sharply again in the early twenty-first century. CSN Mineração and Vale operate mines in the municipality, and extractive industries accounted for about 40 percent of formal employment in 2021. Mining has brought high levels of industrial output and employment, while open pits, waste piles and mining structures occupy extensive areas around the town and its waterways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "congonhas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2921,
+    "attempt": 2899,
+    "place_id": "gn-3582883",
+    "input": {
+      "place": {
+        "place_id": "gn-3582883",
+        "name": "Usulután",
+        "country": "El Salvador",
+        "subdivision": "Usulutan",
+        "lat": 13.34467,
+        "lon": -88.43994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Usulután",
+          "url": "https://en.wikipedia.org/wiki/Usulután",
+          "text": "Usulután (Spanish pronunciation: [usuluˈtan]) is the fifth largest city in El Salvador, and capital of the Usulután Department in the south-east of El Salvador.\nAs of 2006, it is estimated to have population of 71,636 people. Usulután rests in a rich agricultural valley and has very high and humid temperatures most of the year as it is located close to the Pacific Ocean. The city was badly damaged by the Salvadorian earthquakes of February 2001, in addition to Hurricane Mitch in 1998.\nThe main Catholic Church of the town is located in a park area next to the Town Hall (Alcaldia) and next to the Cine Centenario (a cinema) which are roughly located at the center of the town. Recently, Usulután has modernized considerably, having more influence from brand names and eateries that were not available there in the past."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "usulutan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2922,
+    "attempt": 2900,
+    "place_id": "gn-3855065",
+    "input": {
+      "place": {
+        "place_id": "gn-3855065",
+        "name": "General Roca",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -39.03333,
+        "lon": -67.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "General Roca, Río Negro",
+          "url": "https://en.wikipedia.org/wiki/General_Roca,_Río_Negro",
+          "text": "General Roca is a city in the northeast of the Argentine province of Río Negro, northern Patagonia. It was founded on September 1, 1879, by Colonel Lorenzo Vintter, on the order of War Minister Julio A. Roca, during the Conquest of the Desert. The place of the first settlement was known by native mapuche people as Fiske Menuco, which means \"deep water\". It was destroyed in 1899 by a flooding of the Río Negro, and had to be rebuilt 5 kilometres (3.1 mi) northwest in higher lands.\nIts present population is approximately 102,750 (according to 2022 census [INDEC]), making it the second most populated city in the province after Bariloche, and the second most important in the Alto Valle after Neuquén. The main activity around the city is the intensive agriculture under irrigation, which made possible an intense agro-industrial activity. The main crops are pears and apples. The city hosts the annual National Festival of the Apple, which is held in early February.\nGeneral Roca, named after Julio A. Roca, is located 1,200 kilometres (750 mi) from Buenos Aires, 505 kilometres (314 mi) from Bahía Blanca, 513 kilometres (319 mi) from Viedma and 400 kilometres (250 mi) from the deepwater port of San Antonio Este. The city is connected to the east by Argentine National Route 22, and is also crossed by provincial routes 6 and 65, which connect it to other cities in the Alto Valle, with the south of the province, and with the La Pampa Province. Through the centre of the city drives the wide rail train lane that joins Zapala with Bahía Blanca and Buenos Aires. The local airport connects General Roca with other points of the country, mainly with Buenos Aires and Mendoza. Nonetheless, due to lack of maintenance, the airport has not been used since the year 2000.\nTogether with Villa Regina, Allen, Cinco Saltos, Cipolletti, Neuquén and many other smaller towns, they constitute the lineal urbanization of the Alto Valle of the Negro River. The city is surrounded by a patchwork of irrigated land totaling 100,000 hectares (250,000 acres). Besides apple and pear orchards, there are vineyards and other establishments producing peaches and a variety of other fruits and vegetables. Within the industrial sector, the fruit-refrigerating storehouses, fruit and vegetable packaging, and other agriculture-related industries stand out."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 384
+    },
+    "banned_terms": [
+      {
+        "term": "general roca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "general",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "roca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
