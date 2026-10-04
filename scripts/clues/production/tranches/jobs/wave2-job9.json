@@ -1,0 +1,707 @@
+[
+  {
+    "rank": 1354,
+    "place_id": "gn-5110629",
+    "input": {
+      "place": {
+        "place_id": "gn-5110629",
+        "name": "Buffalo",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.88645,
+        "lon": -78.87837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buffalo, New York",
+          "url": "https://en.wikipedia.org/wiki/Buffalo,_New_York",
+          "text": "Buffalo is a city in the U.S. state of New York. It lies in Western New York on the eastern shore of Lake Erie and at the head of the Niagara River on the Canada–United States border. It is the second-most populous city in New York, with a population of 278,349 at the 2020 census. The Buffalo–Niagara Falls metropolitan area, with over 1.23 million residents, is the 2nd-largest metropolitan area in New York State behind only the New York City metropolitan area, and the 51st-largest metropolitan area in the United States. Buffalo is the county seat of Erie County.\nBefore the 17th century, the region was inhabited by nomadic Paleo-Indians who were succeeded by the Neutral, Erie, and Iroquois nations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "buffalo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1355,
+    "place_id": "gn-6053154",
+    "input": {
+      "place": {
+        "place_id": "gn-6053154",
+        "name": "Lethbridge",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 49.69999,
+        "lon": -112.81856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lethbridge",
+          "url": "https://en.wikipedia.org/wiki/Lethbridge",
+          "text": "Lethbridge ( LETH-brij) is a city in the province of Alberta, Canada. With a population of 106,550 in the 2023 municipal census, Lethbridge became the fourth Alberta city to surpass 100,000 people. The nearby Canadian Rocky Mountains contribute to the city's warm summers, mild winters, and windy climate. Lethbridge lies approximately 215 km (134 mi) southeast of Calgary on the Oldman River, 169 km (105 mi) west of Medicine Hat, and 105 km (65 mi) northwest of the Canada–United States border at the Sweetgrass–Coutts Border Crossing.\nLethbridge is the commercial, educational, financial, industrial and transportation centre of southern Alberta. The city's economy developed from drift mining for coal in the late 19th century and agriculture in the early 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "lethbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1364,
+    "place_id": "gn-1709968",
+    "input": {
+      "place": {
+        "place_id": "gn-1709968",
+        "name": "Kabankalan",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 9.9839,
+        "lon": 122.81423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kabankalan",
+          "url": "https://en.wikipedia.org/wiki/Kabankalan",
+          "text": "Kabankalan, officially the City of Kabankalan  (Hiligaynon: Dakbanwa sang Kabankalan; Cebuano: Dakbayan sa Kabankalan; Filipino: Lungsod ng Kabankalan, Spanish: Ciudad de Cabancalán), is a  component city in the province of Negros Occidental, Philippines. According to the 2024 census, it has a population of 210,893 people, making it the second most populous city in Negros Occidental next to Bacolod.\nKabankalan is currently applying for Highly Urbanized City (HUC) status. It ranks as the second-highest city in both gross and net income in Negros Occidental, following Bacolod.\nThe city hosts three major festivals: the Kabankalan Sinulog every third Sunday of January (celebrated together with Cebu City), Udyakan sa Kabankalan and the Charter Anniversary. Notable attractions include Mag-aso Falls and Balicaocao Resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "kabankalan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1368,
+    "place_id": "gn-1882316",
+    "input": {
+      "place": {
+        "place_id": "gn-1882316",
+        "name": "Woodlands",
+        "country": "Singapore",
+        "subdivision": "Singapore",
+        "lat": 1.43801,
+        "lon": 103.78877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodlands, Singapore",
+          "url": "https://en.wikipedia.org/wiki/Woodlands,_Singapore",
+          "text": "Woodlands is the regional centre of the North Region of Singapore. As of 2019, the town had a population of 254,733. Located approximately 25 km (16 miles) north of the city-centre, it is the densest planning area for the northern parts of the country. \nThe Woodlands planning area borders Sembawang to the east, Mandai to the south and Sungei Kadut to the west. It has nine subzones; Greenwood Park, Midview, North Coast, Senoko West, Woodgrove, Woodlands East, Woodlands Regional Centre, Woodlands South and Woodlands West.  Woodlands New Town is situated within the Woodlands planning area, which was developed during the 1980s as part of Singapore's plan to decentralise the city centre and create self-contained residential areas throughout the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "woodlands",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1373,
+    "place_id": "gn-727011",
+    "input": {
+      "place": {
+        "place_id": "gn-727011",
+        "name": "Sofia",
+        "country": "Bulgaria",
+        "subdivision": "Sofia-Capital",
+        "lat": 42.69751,
+        "lon": 23.32415
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sofia",
+          "url": "https://en.wikipedia.org/wiki/Sofia",
+          "text": "Sofia is the capital and largest city of Bulgaria. It is situated in the Sofia Valley at the foot of the Vitosha mountain, in the western part of the country. The city is built west of the Iskar river and has many mineral springs, such as the Sofia Central Mineral Baths. It has a humid continental climate.\nKnown as Serdica in antiquity, Sofia has been an area of human habitation since at least 7000 BC. The recorded history of the city begins with the attestation of the conquest of Serdica by the Roman Republic in 29 BC from the Celtic tribe Serdi. During the decline of the Roman Empire, the city was raided by Huns, Visigoths, Avars, and Slavs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "sofia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1377,
+    "place_id": "gn-1798654",
+    "input": {
+      "place": {
+        "place_id": "gn-1798654",
+        "name": "Pingxiang",
+        "country": "China",
+        "subdivision": "Jiangxi",
+        "lat": 27.61672,
+        "lon": 113.85353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pingxiang",
+          "url": "https://en.wikipedia.org/wiki/Pingxiang",
+          "text": "Pingxiang (simplified Chinese: 萍乡; traditional Chinese: 萍鄉; pinyin: Píngxiāng; Wade–Giles: P'ing-hsiang) is a medium-sized prefecture-level city located in western Jiangxi province, People's Republic of China. Pingxiang City is located in the west of Jiangxi Province, bordering Yichun and Ji'an of this province to the east and south, and Zhuzhou and Changsha of Hunan to the northwest.\nPingxiang has a world-famous history and culture and various natural landscapes. There are a large number of old revolutionary sites such as Zongping Alley, the Anyuan Road Miners Club, the Anyuan Road Miners Consumer Cooperative, the Autumn Harvest Uprising military conference site, and the location of the Red Front Army Front Committee. Natural landscapes include Yilong Cave, Wugong Mountain, Yangqi Mountain, etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "pingxiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1379,
+    "place_id": "gn-2022890",
+    "input": {
+      "place": {
+        "place_id": "gn-2022890",
+        "name": "Khabarovsk",
+        "country": "Russia",
+        "subdivision": "Khabarovsk",
+        "lat": 48.46204,
+        "lon": 135.0971
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khabarovsk",
+          "url": "https://en.wikipedia.org/wiki/Khabarovsk",
+          "text": "Khabarovsk (Russian: Хабаровск [xɐˈbarəfsk] ) is the administrative centre and largest city of Khabarovsk Krai, Russia, located 30 kilometers (19 mi) from the China–Russia border, at the confluence of the Amur and Ussuri Rivers, about 800 kilometers (500 mi) north of Vladivostok. As of the 2021 Russian census, it had a population of 617,441. It was known as Khabarovka until 1893.\nThe city was the administrative center of the Far Eastern Federal District of Russia from 2002 until December 2018, when the status was given to Vladivostok. As is typical of the interior of the Russian Far East, Khabarovsk has an extreme climate with strong seasonal swings resulting in strong, cold winters and relatively hot and humid summers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "khabarovsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1382,
+    "place_id": "gn-2636486",
+    "input": {
+      "place": {
+        "place_id": "gn-2636486",
+        "name": "Sutton Coldfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.56667,
+        "lon": -1.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sutton Coldfield",
+          "url": "https://en.wikipedia.org/wiki/Sutton_Coldfield",
+          "text": "Sutton Coldfield ( SUT-ən KOHLD-feeld ) is a town and civil parish in the city of Birmingham, West Midlands, England. The town lies around 7.5 miles northeast of Birmingham city centre, 11.5 miles south of Lichfield, 10.1 miles southwest of Tamworth, and 9.2 miles east of Walsall.\nSutton Coldfield and its surrounding suburbs are governed under Birmingham City Council for local government purposes but the town has its own town council which governs the town and its surrounding areas by running local services and electing a mayor to the council. It is in the historic county of Warwickshire, and in 1974 it became part of Birmingham and the West Midlands metropolitan county under the Local Government Act 1972."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "sutton coldfield",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sutton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "coldfield",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1397,
+    "place_id": "gn-1271631",
+    "input": {
+      "place": {
+        "place_id": "gn-1271631",
+        "name": "Gangtok",
+        "country": "India",
+        "subdivision": "Sikkim",
+        "lat": 27.32574,
+        "lon": 88.61216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gangtok",
+          "url": "https://en.wikipedia.org/wiki/Gangtok",
+          "text": "Gangtok (Sikkimese: [ɡaŋt̪ʰòk]) is the capital and the most populous city of the Indian state of Sikkim. The seat of eponymous district, Gangtok is in the eastern Himalayan range, at an elevation of 1,650 m (5,410 ft). The city's population of 100,000 consists of the three Sikkimese ethnicities: the Bhutias, Lepchas, Indian Gorkhas as well as plainsmen from other states of India. Within the higher peaks of the Himalayas and with a year-round mild temperate climate, Gangtok is at the centre of Sikkim's tourism industry.\nGangtok rose to prominence as a popular Buddhist pilgrimage site after the construction of the Enchey Monastery in 1840. In 1894, the ruling Sikkimese Chogyal, Thutob Namgyal, transferred the capital to Gangtok."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "gangtok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1431,
+    "place_id": "gn-315202",
+    "input": {
+      "place": {
+        "place_id": "gn-315202",
+        "name": "Eskişehir",
+        "country": "Türkiye",
+        "subdivision": "Eskişehir",
+        "lat": 39.77667,
+        "lon": 30.52056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eskişehir",
+          "url": "https://en.wikipedia.org/wiki/Eskişehir",
+          "text": "Eskişehir (US:  ES-kish-ə-HEER, Turkish: [esˈciʃehiɾ]; from eski 'old' and şehir 'city') is a city in northwestern Turkey and the capital of the Eskişehir Province. The urban population of the city is 821,315 (Odunpazarı + Tepebaşı), with a metropolitan population of 921,630.\nThe city is located on the banks of the Porsuk River, 792 m above sea level, where it overlooks the fertile Phrygian Valley. In the nearby hills one can find hot springs. The city is 233 km (145 mi) to the west of Ankara, 330 km (205 mi) to the southeast of Istanbul and 78 km (48 mi) to the northeast of Kütahya. It is located in the vicinity of the ancient city of Dorylaeum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "eskisehir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1439,
+    "place_id": "gn-786714",
+    "input": {
+      "place": {
+        "place_id": "gn-786714",
+        "name": "Pristina",
+        "country": "Kosovo",
+        "subdivision": "Pristina",
+        "lat": 42.67272,
+        "lon": 21.16688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pristina",
+          "url": "https://en.wikipedia.org/wiki/Pristina",
+          "text": "Pristina (or Prishtina; UK:  PREE-shtin-ə, prish-TEE-nə, US:  PRISHT-in-ə) is the capital and largest city of Kosovo. It is the administrative center of the eponymous municipality and district.\nIn antiquity, the area of Pristina was part of the Dardanian Kingdom. The heritage of the classical era is represented by the settlement of Ulpiana. After the Roman Empire was divided into a western and an eastern half, the area remained within the Byzantine Empire between the 5th and 9th centuries. In the middle of the 9th century, it was ceded to the First Bulgarian Empire, before falling again under Byzantine occupation in the early 11th century and then in the late 11th century to the Second Bulgarian Empire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "pristina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1450,
+    "place_id": "gn-1805753",
+    "input": {
+      "place": {
+        "place_id": "gn-1805753",
+        "name": "Jinan",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 36.66833,
+        "lon": 116.99722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jinan",
+          "url": "https://en.wikipedia.org/wiki/Jinan",
+          "text": "Jinan is the capital of the Shandong province in Eastern China. With a population of 9.2 million, it is one of the largest cities in Shandong in terms of population. The area of present-day Jinan has played an important role in the history of the region from the earliest beginnings of civilization and has evolved into a major national administrative, economic, and transportation hub. The city has held sub-provincial administrative status since 1994. Jinan is often called the \"City of Springs\" for its famous 72 artesian springs.\nJinan is listed as the # 27 city in the world for scientific research as tracked by the Nature Index according to the Nature Index 2025 Science Cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "jinan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1459,
+    "place_id": "gn-3451328",
+    "input": {
+      "place": {
+        "place_id": "gn-3451328",
+        "name": "Ribeirão Preto",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -21.1775,
+        "lon": -47.81028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ribeirão Preto",
+          "url": "https://en.wikipedia.org/wiki/Ribeirão_Preto",
+          "text": "Ribeirão Preto (Portuguese pronunciation: [ʁibejˈɾɐ̃w ˈpɾetu]) is a city and a metropolitan area located in the northeastern region of São Paulo state, Brazil.\nRibeirão Preto is the eighth-largest municipality in the state, with an area of 650.9 km2 (251.3 mi2). In 2021, the municipality proper had an estimated population of 720,216 and the wider metropolitan area had an estimated population of 1,178,910. It is located 313 km (194 mi) from the city of São Paulo and 706 km (439 mi) from Brasília, the federal capital. Its mean altitude is 526.8 m (1,728 ft) high. The city's average temperature throughout the year is 23 °C (73 °F), and the original predominant vegetation is the Atlantic Forest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "ribeirao preto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ribeirao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "preto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1460,
+    "place_id": "gn-3458696",
+    "input": {
+      "place": {
+        "place_id": "gn-3458696",
+        "name": "Lavras",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.24528,
+        "lon": -44.99972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lavras",
+          "url": "https://en.wikipedia.org/wiki/Lavras",
+          "text": "Lavras is a municipality in southern Minas Gerais state, Brazil. Located at an altitude of 919 m, it has a population of 104,761 inhabitants (2022 Census). The area of the municipality is 564.495 km2. The average annual temperature is 19.6 °C and the average annual rainfall is 1,511 millimetres.\nLocated in the Green Valley and Waterfalls tourist circuit, it is also near the Waters circuit – a series of spas in the state of São Paulo and Minas Gerais — and the Inconfidentes Trail circuit – a historical region of Minas. Lavras is connected by highway to the state capital, Belo Horizonte (237 km), to São Paulo (379 km), and Rio de Janeiro (423 km)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "lavras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1466,
+    "place_id": "gn-3882428",
+    "input": {
+      "place": {
+        "place_id": "gn-3882428",
+        "name": "Los Ángeles",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -37.46973,
+        "lon": -72.35366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Ángeles, Chile",
+          "url": "https://en.wikipedia.org/wiki/Los_Ángeles,_Chile",
+          "text": "Los Ángeles (Spanish pronunciation: [los ˈaŋxeles]) is the capital of the province of Bío Bío, in the commune of the same name, in Bío Bío, in the center-south of Chile. It is located between the Laja and Biobío rivers. The population is 219,441 inhabitants (census 2024). The municipality (\"comuna\") of Los Ángeles has the highest absolute rural population of any Chilean municipality.\nTo the north of the city is Salto del Laja (Laja Falls), and roughly 100 kilometers to the east is the 2,979 meters (9,774 feet) high Antuco volcano, in the Andes mountain range. The city is a gateway for tourists visiting the nearby Laguna del Laja National Park, the location of the volcano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "los angeles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "angeles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1475,
+    "place_id": "gn-1675151",
+    "input": {
+      "place": {
+        "place_id": "gn-1675151",
+        "name": "Hsinchu",
+        "country": "Taiwan",
+        "subdivision": "Taiwan",
+        "lat": 24.80361,
+        "lon": 120.96861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hsinchu",
+          "url": "https://en.wikipedia.org/wiki/Hsinchu",
+          "text": "Hsinchu (Chinese: 新竹; pinyin: Xīnzhú, IPA: [ɕin˥ʈʂu˧˥]), officially Hsinchu City, is a city located in northwestern Taiwan. It is the most populous city in Taiwan that is not a special municipality, with estimated 476,273 inhabitants. Hsinchu is a coastal city bordering the Taiwan Strait to the west, Hsinchu County to the north and east, and Miaoli County to the south. Hsinchu is nicknamed the Windy City for its strong northeastern monsoon during the autumn and winter seasons.\nThe area was originally settled by the Austronesian Taiwanese indigenous peoples, with the settlement being named Tek-kham by Hokkien and Hakka immigrants. The city was founded by Han Chinese colonists in 1711, and renamed \"Hsinchu\" in 1878."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "hsinchu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1476,
+    "place_id": "gn-1720681",
+    "input": {
+      "place": {
+        "place_id": "gn-1720681",
+        "name": "Calamba",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.21167,
+        "lon": 121.16528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calamba, Laguna",
+          "url": "https://en.wikipedia.org/wiki/Calamba,_Laguna",
+          "text": "Calamba, officially the City of Calamba (Filipino: Lungsod ng Calamba), is a component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 575,046 people.\nCalamba is the regional center of the Calabarzon region. It is situated 50 kilometers (31 mi) south of Manila and 37 kilometers (23 mi) west of Santa Cruz. The city is known as the \"Spring Resort Capital of the Philippines\" because of its numerous hot spring resorts, which are mostly located in Barangays Pansol, Bucal, Bagong Kalsada, and Lingga.\nAccording to the 2024 census, Calamba has a population of 575,046 people, making it the second most populous local government unit in Laguna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "calamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1499,
+    "place_id": "gn-694423",
+    "input": {
+      "place": {
+        "place_id": "gn-694423",
+        "name": "Sevastopol",
+        "country": "Ukraine",
+        "subdivision": "Sevastopol City",
+        "lat": 44.60795,
+        "lon": 33.52134
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sevastopol",
+          "url": "https://en.wikipedia.org/wiki/Sevastopol",
+          "text": "Sevastopol ( SEV-ə-STOH-pəl, sə-VAS-tə-pohl), sometimes written Sebastopol, is the largest city in Crimea and a major port on the Black Sea. Due to its strategic location and the navigability of the city's harbours, Sevastopol has been an important port and naval base throughout its history. Since the city's founding by Catherine the Great in 1783, it has been a major base for Russia's Black Sea Fleet. During the Cold War of the 20th century, it was a closed city. The total administrative area is 864 square kilometres (334 sq mi) and includes a significant amount of rural land. The urban population, largely concentrated around Sevastopol Bay, is 479,394, and the total population is 547,820."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "sevastopol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1501,
+    "place_id": "gn-11611632",
+    "input": {
+      "place": {
+        "place_id": "gn-11611632",
+        "name": "Fuchū",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.67452,
+        "lon": 139.48216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fuchū, Tokyo",
+          "url": "https://en.wikipedia.org/wiki/Fuchū,_Tokyo",
+          "text": "Fuchū (府中市, Fuchū-shi) is a city located in the western portion of the Tokyo Metropolis, Japan. Fuchū serves as a regional commercial center and a commuter town for workers in central Tokyo. The city hosts large scale manufacturing facilities for Toshiba, NEC and Suntory, as well as the Bank of Japan's main computer operations center. Local sporting attractions include the Tokyo Racecourse and the training grounds of Top League rugby teams Toshiba Brave Lupus and Suntory Sungoliath.\nAs of 1 August 2025, the city had an estimated population of 264,534, and a population density of 8,989 persons per square kilometer. The total area of the city is 29.43 square kilometres (11.36 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "fuchu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1503,
+    "place_id": "gn-1787351",
+    "input": {
+      "place": {
+        "place_id": "gn-1787351",
+        "name": "Yangquan",
+        "country": "China",
+        "subdivision": "Shanxi",
+        "lat": 37.8575,
+        "lon": 113.56333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangquan",
+          "url": "https://en.wikipedia.org/wiki/Yangquan",
+          "text": "Yangquan (simplified Chinese: 阳泉; traditional Chinese: 陽泉; pinyin: Yángquán [jǎŋtɕʰyǎn]) is a prefecture-level city in the east of Shanxi province, China, bordering Hebei province to the east. Known as \"Rippling Spring\" in ancient times, it lies on the eastern edge of the Loess Plateau and the western side of the Taihang Mountains. Yangquan occupies a total area of 4,452 square kilometres (1,719 sq mi). According to the 2020 census, Yangquan had a population of 1,318,505, of which 1,037,456 lived in the built-up (or metro) area consists of 3 urban districts plus Pingding County. Yangquan is a new industrial city in Shanxi province. It belongs to the warm temperate semi-humid continental monsoon climate zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "yangquan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
