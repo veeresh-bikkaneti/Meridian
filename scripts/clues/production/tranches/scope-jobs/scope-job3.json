@@ -1,0 +1,927 @@
+[
+  {
+    "rank": 1698,
+    "band": 2,
+    "place_id": "gn-480060",
+    "input": {
+      "place": {
+        "place_id": "gn-480060",
+        "name": "Tver",
+        "country": "Russia",
+        "subdivision": "Tver Oblast",
+        "lat": 56.85836,
+        "lon": 35.90057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tver",
+          "url": "https://en.wikipedia.org/wiki/Tver",
+          "text": "Tver (Russian: Тверь, IPA: [tvʲerʲ]) is a city and the administrative centre of Tver Oblast, Russia. It is situated at the confluence of the Volga and Tvertsa rivers. Tver is located 180 kilometres (110 mi) northwest of Moscow. Population: 416,216 (2021 census).\nThe city is situated where three rivers meet, splitting the town into northern and southern parts by the Volga, and divided again into quarters by the Tvertsa river, which splits the left (northern) bank into east and west halves, and the Tmaka River which does the same along the southern bank. According to one hypothesis, the name of the Tvertsa is of Finnic origin, Tiheverä.\nTver was formerly the capital of a powerful medieval state and a model provincial town in the Russian Empire, with a population of 60,000 by 14 January 1913. The city was known as Kalinin (Калинин) from 1931 to 1990. \nAside from the White Trinity Church (1564), built of limestone (rather than usual brick) and located in a district of traditional log houses away from the city center, there are no pre-Petrine buildings left in Tver. The central part, featuring the Volga embankments and bridges, is graced with Catharinian and Soviet edifices."
+        },
+        {
+          "article": "Tver (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tver#Climate",
+          "text": "Tver has a humid continental climate, which is typical for Central Russia. Winters are long, snowy and cold, but extremely severe frosts (below ) are rare, less than 10 calendar days per annum. The summer is generally warm and humid, with the temperature often rising higher than . The highest temperature (+38.8°C) was recorded on August 7, 2010, the lowest temperature (−43.8°C) was recorded on December 31, 1978."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 68,
+      "leadWords": 198,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes river confluence and history with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tver",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1742,
+    "band": 2,
+    "place_id": "gn-1737486",
+    "input": {
+      "place": {
+        "place_id": "gn-1737486",
+        "name": "Bintulu",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 3.16667,
+        "lon": 113.03333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bintulu",
+          "url": "https://en.wikipedia.org/wiki/Bintulu",
+          "text": "Bintulu is a coastal town on the island of Borneo in the central region of Sarawak, Malaysia. Bintulu is located 610 kilometres (380 miles) northeast of Kuching, 216 kilometres (134 miles) northeast of Sibu, and 200 kilometres (120 miles) southwest of Miri. With a population of 114,058 as of 2010, Bintulu is the capital of the Bintulu District, Bintulu Division of Sarawak, Malaysia.\nThe name of Bintulu was derived from the local native language \"Mentu Ulau\" (picking heads). Bintulu was a small fishing village within the Bruneian Empire prior to annexation by Rajah James Brooke in 1861. Brooke later built a fort there in 1862. In 1867, the first General Council meeting (now Sarawak State Legislative Assembly) was convened in Bintulu. It is the earliest state legislature system in Malaysia. The construction of the earliest airstrip in Bintulu began in 1934 but was halted in 1938 due to financial difficulties. During World War II, the airstrip was heavily bombed by Allied forces. The British later rebuilt the airstrip, and it became fully operational in 1955. The old airport was replaced by a new airport in 2002. Bintulu remained a fishing village until 1969 when oil and gas reserves were discovered off the coast. Since then, Bintulu has become the centre of energy-intensive industries such as a Malaysia LNG plant, a Shell Middle Distillate Synthesis plant, and a Bintulu combined cycle power plant. The economy has also expanded into oil palm and forest plantations, palm oil processing, wood-waste processing, and cement manufacturing. The port of Bintulu is the busiest in Sarawak. The town is also a gateway to the Samalaju Industrial Park.\nAmong the tourist attractions in Bintulu are Similajau National Park, Tumbina Park, Tanjung Batu beach, Jepak village, Kuan Yin Tong temple, Assyakirin mosque, Council Negri monument, Tamu Bintulu, and Pasar Utama markets. The Borneo International Kite Festival is held annually in the town."
+        },
+        {
+          "article": "Bintulu (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bintulu#Climate",
+          "text": "There are two monsoon seasons in the Bintulu: the northeast monsoon (November to March) and the southwest monsoon (May to September). The calm period between these two monsoons is known as the transitional period. In the coastal region, maximum rainfall occurs in the month of January, while minimal rainfall occurs from the period June to August. Rainfall is more evenly distributed in the inland areas. The annual rainfall of the Bintulu region is about annually. The mean daily hours of sunshine at Bintulu is about 5.0 to 5.5 hours. Bintulu receives on average 14 to 15 mJ/m 2 of radiation throughout the year. Bintulu's relative humidity is 85%."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 108,
+      "leadWords": 314,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes coastal history, a fort, an airstrip and oil and gas finds only, with no climate mechanism, extreme, seasonal rhythm, or paradox; a non-redundant climate clue cannot be sourced",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bintulu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1744,
+    "band": 2,
+    "place_id": "gn-1817720",
+    "input": {
+      "place": {
+        "place_id": "gn-1817720",
+        "name": "Shangyu",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 30.01556,
+        "lon": 120.87111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shangyu, Shaoxing",
+          "url": "https://en.wikipedia.org/wiki/Shangyu,_Shaoxing",
+          "text": "Shangyu District (Chinese: 上虞区; pinyin: Shàngyú) is a district of the prefecture-level city of Shaoxing in the northeast of Zhejiang province, China.  At the 2010 census, its population in the built-up (or metro) area was 779,412, up from 722,523 in the 2000 census. Shangyu is roughly fifty kilometers from north to south and about thirty kilometers from east to west. It makes up about one-fourth of the area of Shaoxing prefecture. Shangyu District is not part of the Hangzhou-Shaoxing built-up area as some countryside still prevent the city from being conurbated until now.\nThe city is one of the largest production bases of umbrellas worldwide."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 105,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes the district size, census counts and umbrella making only, with no climate mechanism, extreme, seasonal rhythm, or paradox; a non-redundant climate clue cannot be sourced",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "shangyu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1760,
+    "band": 2,
+    "place_id": "gn-146384",
+    "input": {
+      "place": {
+        "place_id": "gn-146384",
+        "name": "Limassol",
+        "country": "Cyprus",
+        "subdivision": "Limassol",
+        "lat": 34.68406,
+        "lon": 33.03794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limassol",
+          "url": "https://en.wikipedia.org/wiki/Limassol",
+          "text": "Limassol, also known as Lemesos, is a city on the southern coast of Cyprus. Limassol is the most populated municipality in Cyprus, with a population of 108,105 and is the second-largest urban area in Cyprus, after Nicosia, with an urban population of 198,558. It is the capital of the Limassol District with a population of 262,238.\nLimassol was built between two ancient Greek cities, Amathus and Kourion. Its historical centre is located around the medieval Limassol Castle and the Old Port. The city spreads along the Mediterranean coast and extends beyond the castle and port, with its suburbs stretching along the coast to Amathus. To the west of the city is Akrotiri, part of the British Overseas Territory of Akrotiri and Dhekelia.\nIn 2014, Limassol was ranked by TripAdvisor as the third most up-and-coming destination in the world, in its Top 10 Travelers' Choice Destinations on the Rise list. In Mercer's Quality of Living Ranking, the city was ranked 90th in 2023, and 89th in 2017. In the 2022 GaWC ranking, Limassol was classified as a \"high sufficiency\" city, dropping one category from \"gamma −\" (lit. 'global city') in 2020."
+        },
+        {
+          "article": "Limassol (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Limassol#Climate",
+          "text": "Limassol has a hot-summer Mediterranean climate (Köppen climate classification: Csa), closely bordering a hot semi-arid climate (Köppen climate classification: BSh), with hot and dry summers and mild and wet winters, which are separated by short springs and autumns which are generally warm and sunny. From December to March, the weather is unsettled and can be rainy and windy. Sunshine averages around 6 hours a day. During this season there are a few days when the daytime highs might not exceed and the night time lows might be as low as but usually the temperature ranges from to in the day and from to in the night. Rain tends to be heavy this time of the year and thunderstorms occur often though they usually do not last for a long time.\nSnow in Limassol is very rare and usually falls mixed with rain every 7 to 13 years. Snow mixed with rain fell in February 2004, in January 2008 and in February 2012. In January 2022 Limassol registered a record low temperature of . In spring the weather is mild to warm and pleasant. It is sunny almost every day and the temperatures are around in the day and in the night. Rain showers and thunderstorms are common especially in late March and April. Sometimes during the spring dust comes from the Sahara desert which degrades air quality in the city. Summer for Limassol is the longest season of the year, and lasts about six months; it begins in May and ends in October. At this time of the year, the weather is sunny every day and rain is rare. The temperatures range between to in June and September and to in July and August. In June, sea mist can sometimes occur, usually resolving early in the morning. Autumn is warm and usually sunny. It begins in the end of November and in December. During this period of the year, temperatures range from as low as to as high as .\nThis season the weather differs from year to year and it can be very wet with violent thunderstorms sometimes (October 2009 rainfall was around ) or very dry (October 2007 rainfall of ). Limassol receives around of rain each year but this varies from year to year and sometimes droughts do occur (every 3–5 years). The rainy season 2009–2010 was a wet one with precipitation being as high as in some areas whilst the rainy season of 2007–2008 was dry with only of rain. Hail is rare and usually falls between October and April."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 424,
+      "leadWords": 190,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives southern coast and Mediterranean coast location and ancient-city history, but no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "limassol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1772,
+    "band": 2,
+    "place_id": "gn-3522551",
+    "input": {
+      "place": {
+        "place_id": "gn-3522551",
+        "name": "Nuevo Laredo",
+        "country": "Mexico",
+        "subdivision": "Tamaulipas",
+        "lat": 27.47629,
+        "lon": -99.51639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuevo Laredo",
+          "url": "https://en.wikipedia.org/wiki/Nuevo_Laredo",
+          "text": "Nuevo Laredo (Spanish pronunciation: [ˈnweβo laˈɾeðo]) is a city in the Municipality of Nuevo Laredo in the Mexican state of Tamaulipas. The city lies on the banks of the Rio Grande, across from Laredo, Texas, United States. The 2010 census population of the city was 373,725. Nuevo Laredo is part of the Laredo-Nuevo Laredo Metropolitan Area with a population of 636,516. The municipality has an area of 1,334.02 km2 (515.07 sq mi). Nuevo Laredo is considered the “customs capital of Latin America” because of its high volume of international trade operations in the region, and number 1 in importance for US inland commercial traffic. Both the city and the municipality rank as the third largest in the state.\nThe city is connected to Laredo, United States by three international bridges and a rail bridge. The city is larger and younger than its US counterpart. As an indication of its economic importance, one of Mexico's banderas monumentales is in the city (these banderas have been established in state capitals and cities of significance)."
+        },
+        {
+          "article": "Nuevo Laredo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Nuevo_Laredo#Climate",
+          "text": "Nuevo Laredo features a semi-arid climate. Nuevo Laredo's weather is influenced by its proximity to the Chihuahuan Desert to the west, by the Sierra Madre Oriental mountains to the south and west, and by the Gulf of Mexico to the east. Much of the moisture from the Pacific is blocked by the Sierra Madre Oriental. Therefore, most of the moisture derives from the Gulf of Mexico. Its geographic location causes Nuevo Laredo's weather to range from long periods of heat to sudden violent storms in a short period of time. Nuevo Laredo is cold for Tamaulipas standards during winter, the average daytime highs are around and overnight lows around ; although it is rare for snow to fall in Nuevo Laredo, there was actually snow on the ground for a few hours on the morning of Christmas Day 2004.\nNuevo Laredo experiences an average high temperature of about , and an average low of about during summer, and of rain per year. As Laredo sometimes undergoes drought, a water conservation ordinance was implemented in 2003."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 175,
+      "leadWords": 172,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Rio Grande border location opposite a Texas city and trade importance, but no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "nuevo laredo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nuevo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "laredo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2011,
+    "band": 2,
+    "place_id": "gn-3180792",
+    "input": {
+      "place": {
+        "place_id": "gn-3180792",
+        "name": "Canosa di Puglia",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.21954,
+        "lon": 16.06768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canosa di Puglia",
+          "url": "https://en.wikipedia.org/wiki/Canosa_di_Puglia",
+          "text": "Canosa di Puglia, generally known simply as Canosa (Canosino: Canaus), is a town and comune in the province of Barletta-Andria-Trani, Apulia, southern Italy. It is located between Bari and Foggia, not far from Barletta on the northwestern edge of the plateau of the Murgia which dominates the Ofanto valley and the extensive plains of Tavoliere delle Puglie, ranging from Mount Vulture at the Gargano, to the Adriatic coast. Canosa, the Roman Canusium, is considered the principal archaeological center of Apulia, and is one of the oldest continually inhabited cities in Italy.  A number of vases and other archaeological finds are located in local museums and private collections. It is not far from the position on the Ofanto River where the Romans found refuge after the defeat of the Battle of Cannae and is the burial place of Bohemund I of Antioch."
+        },
+        {
+          "article": "Canosa di Puglia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Canosa_di_Puglia#Climate",
+          "text": "Canosa has a typical temperate climate, mild spring and autumn, and cold winters and mild summers.\nThe monthly average temperature is strongly influenced by the Murgiano Range from in January, to in August. The average annual rainfall is of rainfall, distributed mainly in the period from September to April. Climate classification of Canosa is Climate zone C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 57,
+      "leadWords": 141,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives plateau edge, valley and plains location but states no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, record or extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "canosa di puglia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "canosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "puglia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2097,
+    "band": 2,
+    "place_id": "gn-3533389",
+    "input": {
+      "place": {
+        "place_id": "gn-3533389",
+        "name": "Actopan",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 20.26896,
+        "lon": -98.94216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Actopan, Hidalgo",
+          "url": "https://en.wikipedia.org/wiki/Actopan,_Hidalgo",
+          "text": "Actopan (from Nahuatl: Ātocpan 'thick, humid and fertile land') is a Mexican city, head of the municipality of Actopan in the state of Hidalgo. Actopan is widely known for its gastronomy, especially for ximbo and barbacoa, as well as for the Church and ex-convent of San Nicolás de Tolentino.\nThe city is located north of Mexico City, from which it is 120 km away, and only 37 km from the city of Pachuca de Soto, the capital of the state of Hidalgo. It is located within the geographical region known as Mezquital Valley. According to the results of the 2020 Population and Housing Census of INEGI, the town has a population of 32,276 inhabitants, which represents 52.91% of the municipal population.\nThe city was a settlement of the Otomi people. In 1117 it was conquered by Chichimeca groups and became a dependency of Acolhuacan in 1120. It was conquered by the Tepanecs of Azcapotzalco at the end of the 14th century. The Mexica conquest took place in 1427 during the reign of Itzcoatl. After the Conquest of Mexico, an encomienda was established in Actopan. According to the Universal Dictionary of History and Geography, the city was founded on July 16, 1546; although the date on which the anniversary of its founding is celebrated corresponds to July 8. In 1575 Actopan was elevated to the category of village.\nIt was elevated to Alcaldía Mayor in 1568; Actopan was the head and the towns around it were then República de Indios (Republic of Indigenous People). Later it became Subdelegation in the period of the Bourbon Reforms; and it acquired the character of City Hall and head of party, dependent on the district of Tula, on August 6, 1824. On April 26, 1847, by decree of the Congress of the State of Mexico, Actopan was elevated to the category of town.\nOn October 15, 1861, Actopan was declared a district of the State of Mexico. On June 7, 1862, it became part of the military canton number 3 of the Second Military District of the State of Mexico, created to confront the French intervention in Mexico. At the beginning, Actopan was temporarily the capital of the district, but it was changed to Pachuca. During the Second Mexican Empire, Actopan became part of the department of Tula. In 1869, the decree of establishment of the state of Hidalgo confirmed the character of District head of the new entity.\nThe Constitution of Hidalgo of 1870 recognized Actopan as the 1st district, category that would be confirmed in the 1st article of the electoral laws of 1880 and 1894. In the 3rd article of the Constitution of Hidalgo of 1 October 1920 it appears in the list as municipal seat, and in it is included as municipal seat of the municipality number 3 of Hidalgo. When commemorating the fourth centennial of the foundation of Actopan, on July 8, 1946, the XXXVIII Legislature of the Congress of the state of Hidalgo, gave it the category of city."
+        },
+        {
+          "article": "Actopan, Hidalgo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Actopan,_Hidalgo#Climate",
+          "text": "y morning in Actopan.]]\nThe city has a semi-dry temperate climate; the average monthly temperature ranges from 13 °C in December and January, which are the coldest months of the year, to 20 °C in May, which has the highest temperatures. The city's meteorological station has estimated that the average annual temperature is approximately 16.4 °C. In regard to rainfall, the average level observed is around 400 mm, with June and September being the months of highest rainfall and February and December the months of lowest rainfall."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 87,
+      "leadWords": 500,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives only a name meaning of thick, humid and fertile land and valley geography, with no climate mechanism, extreme, seasonal rhythm, or paradox described",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "actopan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2102,
+    "band": 2,
+    "place_id": "gn-706448",
+    "input": {
+      "place": {
+        "place_id": "gn-706448",
+        "name": "Kherson",
+        "country": "Ukraine",
+        "subdivision": "Kherson",
+        "lat": 46.63695,
+        "lon": 32.61458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kherson",
+          "url": "https://en.wikipedia.org/wiki/Kherson",
+          "text": "Kherson (Ukrainian and Russian: Херсон, Ukrainian: [xerˈsɔn] , Russian: [xʲɪrˈson]) is a port city in southern Ukraine that serves as the administrative centre of Kherson Oblast. Located by the Black Sea and on the Dnieper River, Kherson is the home to a major ship-building industry and is a regional economic centre. At the beginning of 2022, its population was estimated at 279,131.\nThe city was founded as a base for the Russian Empire's Black Sea Fleet on the site of a fortress previously established by Zaporozhian Cossacks. During the 19th and early 20th century Kherson served as the regional capital of eponymous governorate, becoming a major centre of trade and transport. Under the Soviet rule the city became a major scientific, cultural and industrial centre known for its shipbuilding industry. In modern Ukraine the city is also famous for its watermelons.\nFrom March to November 2022, the city was occupied by Russian forces during their invasion of Ukraine. Ukrainian forces recaptured the city on 11 November 2022. In June 2023, part of the city was flooded following the Russian destruction of the nearby Kakhovka Dam. Since liberation, Kherson has become a target of the human safari Russian terror campaign of deliberate drone targeting of civilians, killing about 200 people as of October 2025 per the UN report."
+        },
+        {
+          "article": "Kherson (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kherson#Climate",
+          "text": "Under the Köppen climate classification, Kherson has a humid continental climate (Dfa)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 12,
+      "leadWords": 217,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a port on a river by the Black Sea, shipbuilding, occupation and a dam flood event, but no climate mechanism, extreme, seasonal rhythm, or paradox; a one-off flood does not qualify",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kherson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2117,
+    "band": 2,
+    "place_id": "gn-5280854",
+    "input": {
+      "place": {
+        "place_id": "gn-5280854",
+        "name": "Wheeling",
+        "country": "United States",
+        "subdivision": "West Virginia",
+        "lat": 40.06396,
+        "lon": -80.72091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wheeling, West Virginia",
+          "url": "https://en.wikipedia.org/wiki/Wheeling,_West_Virginia",
+          "text": "Wheeling is a city in Ohio and Marshall counties in the U.S. state of West Virginia. The county seat of Ohio County, it lies along the Ohio River in the foothills of the Appalachian Mountains within the state's northern panhandle. It is the fifth-most populous city in West Virginia and the most populous city in the northern panhandle with a population of 27,062 at the 2020 census. The Wheeling metropolitan area had 139,513 residents in 2020.\nWheeling was settled in 1769 on land contested between the Province of Pennsylvania and Colony of Virginia, and later grew to become Virginia's largest city west of the Appalachian Mountains. During the American Civil War, it was the host of the Wheeling Conventions which led to the separation of West Virginia from Virginia. Wheeling was the state capital of West Virginia from 1861 to 1870, and again from 1875 to 1885.\nWheeling became a manufacturing center in the late nineteenth century due to its location along major transportation routes, including the Ohio River, National Road, and the Baltimore and Ohio Railroad. After the decline of heavy industry and subsequent population loss following World War II, its major industries now include healthcare, education, legal services, entertainment and tourism, and energy. The city is located about 60 miles (97 km) west of Pittsburgh and 120 miles (190 km) east of Columbus via Interstate 70."
+        },
+        {
+          "article": "Wheeling, West Virginia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Wheeling,_West_Virginia#Climate",
+          "text": "Wheeling lies at the boundary between the humid subtropical and humid continental climate zones (Köppen: Cfa/Dfa, respectively). The annual precipitation is about inches, distributed evenly throughout the year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 28,
+      "leadWords": 228,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river and foothill geography and Civil War history but states no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "wheeling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2121,
+    "band": 2,
+    "place_id": "gn-1608900",
+    "input": {
+      "place": {
+        "place_id": "gn-1608900",
+        "name": "Maha Sarakham",
+        "country": "Thailand",
+        "subdivision": "Maha Sarakham",
+        "lat": 16.18483,
+        "lon": 103.30067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maha Sarakham",
+          "url": "https://en.wikipedia.org/wiki/Maha_Sarakham",
+          "text": "Maha Sarakham (มหาสารคาม) is the capital city of Maha Sarakham province in Thailand's northeastern (Isan) region. Sarakham, as it is known to its inhabitants, is in a rice-growing area on the southern Khorat plain, straddling the Chi River. Mahasarakham is 475 km northeast of Bangkok and 73 km southeast of Khon Kaen.\nThe city has long been known as a regional education centre, the so-called \"Taxila of Isan\" (taking this name from the ancient Hindu centre of learning). It is home to six colleges, as well as Mahasarakham University (MSU) and Maha Sarakham Rajabhat University. Sarakham has the feel of a student town with the younger, more cosmopolitan population much in evidence in the downtown campus area and near MSU's second campus seven kilometres away at Kham Riang.\nFor a time Mahasarakham ranked with Sisaket as among the poorest cities in Isan. This is changing, partly under the influence of the rapidly growing student population. Today Maha Sarakham possesses two cinemas, a modern department store and market. There has been extensive building, especially on the eastern fringes of the city.\nMaha Sarakham has no railway station or airport, and the main transport links are via express bus, or by road connections to the airports in Khon Kaen and Roi Et. Recently the road link south was upgraded and is now mainly dual carriageway highway."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 224,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract calls the area rice-growing and describes a student town but states no climate mechanism, extreme, seasonal rhythm, or paradox; rice growing alone does not trace one",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "maha sarakham",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "maha",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sarakham",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2149,
+    "band": 2,
+    "place_id": "gn-759603",
+    "input": {
+      "place": {
+        "place_id": "gn-759603",
+        "name": "Sandomierz",
+        "country": "Poland",
+        "subdivision": "Świętokrzyskie",
+        "lat": 50.68265,
+        "lon": 21.74898
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandomierz",
+          "url": "https://en.wikipedia.org/wiki/Sandomierz",
+          "text": "Sandomierz (pronounced: [sanˈdɔmjɛʂ] ; Latin: Sandomiria, Yiddish: צויזמר, צוזמיר, romanized: Tsouzmer, Tsoyzmer) is a historic town in south-eastern Poland with 23,863 inhabitants (as of 2017), situated on the Vistula River near its confluence with the San, in the Sandomierz Basin. It is the capital of Sandomierz County within the Świętokrzyskie Voivodeship. Sandomierz is known for its preserved Old Town, a major cultural and tourist attraction which the President of Poland declared a National Monument of Poland in 2017.\nIn the past, Sandomierz was one of the most important urban centers not only of Lesser Poland, but also of the whole country. It was a royal city of the Polish Crown and functioned as a regional administrative centre from the High Middle Ages to the 19th century."
+        },
+        {
+          "article": "Sandomierz (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sandomierz#Climate",
+          "text": "The city experiences a humid continental climate with notably warm summers (Köppen: Dfb), much more consistently pronounced in eastern Poland. Precipitation, especially in the form of rains, is concentrated in the summer, reducing until the end of winter. Sandomierz has four well defined seasons of the year, hot summers (sometimes), usually bearable and cold winters but with slightly moderate extremes."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 60,
+      "leadWords": 126,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Vistula River location near its confluence with the San, a preserved Old Town and royal-city history with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sandomierz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2174,
+    "band": 2,
+    "place_id": "gn-3084826",
+    "input": {
+      "place": {
+        "place_id": "gn-3084826",
+        "name": "Starogard Gdański",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 53.96396,
+        "lon": 18.52638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Starogard Gdański",
+          "url": "https://en.wikipedia.org/wiki/Starogard_Gda%C5%84ski",
+          "text": "Starogard Gdański (Polish pronunciation: [staˈrɔɡard ˈɡdaj̃skʲi] ; until 1950: Starogard; formerly German: Preußisch Stargard) is a city in Pomeranian Voivodeship in northern Poland with 48,328 inhabitants (2004). Starogard is the capital of Starogard County.\nFounded in the Middle Ages, Starogard is a city with various heritage sights including medieval defensive walls and towers. It was the location of the sejmik (local parliament) of the Pomeranian Voivodeship in the early modern period. In the late modern period, it was an important center of Polish resistance against the Germanisation policies of Prussia following the Partitions of Poland. Starogard is home to one of the oldest vodka factories in Poland, one of the largest and oldest psychiatric hospitals in Poland and notable basketball club SKS Starogard Gdański. Starogard is the second biggest city of the ethnocultural region of Kociewie (after Tczew). It is considered the capital of Kociewie, and as such it hosts the Museum of Kociewie Land, devoted to the history of the region."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 162,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes northern Poland location, medieval founding and heritage sights with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "starogard gdanski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "starogard",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gdanski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2176,
+    "band": 2,
+    "place_id": "gn-4019869",
+    "input": {
+      "place": {
+        "place_id": "gn-4019869",
+        "name": "Abasolo",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.45031,
+        "lon": -101.53011
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abasolo, Guanajuato",
+          "url": "https://en.wikipedia.org/wiki/Abasolo,_Guanajuato",
+          "text": "Abasolo is a Mexican city (and municipality) located in the Southwest region of the state of Guanajuato. The municipality has an area of 601.73 square kilometres (1.98% of the surface of the state), and is bordered to the north by Pueblo Nuevo and Valle de Santiago, to the south by the state of Michoacán and Huanímaro, and to the west by Pénjamo and Cuerámaro. The municipality had 79,093 inhabitants according to the 2005 census. The city was estimated to have 28,100 inhabitants in 2020.\nIn pre-Columbian times the area was known as Cuitzeo or \"Place of skunks (Lugar de Zorrillos)\", by the mostly Purépecha inhabitants.\nAbasolo is named after José Mariano Abasolo, a Mexican patriot and leader of Mexico's war of independence against Spain.\nThe municipal president of Abasolo and its many smaller outlying communities is Job Eduardo Gallardo Santellano. \nThe archaeological site of Peralta is located near Abasolo, east of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 153,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes Guanajuato location, borders, pre-Columbian name and independence namesake with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "abasolo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2208,
+    "band": 2,
+    "place_id": "gn-5423573",
+    "input": {
+      "place": {
+        "place_id": "gn-5423573",
+        "name": "Grand Junction",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.06387,
+        "lon": -108.55065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grand Junction, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Grand_Junction,_Colorado",
+          "text": "Grand Junction is a home rule municipality that is the county seat of and the largest city in Mesa County, Colorado, United States. Grand Junction's population was 65,560 at the 2020 United States census, making it the most populous city in western Colorado and the 17th most populous Colorado municipality overall.\nAs western Colorado's largest city, Grand Junction is the economic and cultural center of the Western Slope region. The city is a transportation hub, situated at the convergence of Interstate 70, U.S. Highway 50 and U.S. Highway 6. Grand Junction is also home to Colorado Mesa University, enrolling nearly 10,000 students annually.\nThe city is the anchor of the Grand Junction metropolitan area, home to over 162,000 residents as of 2025. It is located in the heart of the Grand Valley, a large Colorado River valley stretching over 30 miles (48 km) east-to-west and 5 miles (8.0 km) north-to-south. Grand Junction comprises the largest urban center between Denver and Salt Lake City, as well as the most densely populated area and the only metropolitan area in Colorado outside of the Front Range Urban Corridor."
+        },
+        {
+          "article": "Grand Junction, Colorado (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Grand_Junction,_Colorado#Climate",
+          "text": "Grand Junction has a cold semi-arid climate (Köppen: BSk). It sits in a large area of high desert lands in Western Colorado. Winters are cold and dry, with a January mean temperature of . Due to its location west of the Rockies, Grand Junction does not receive as much influence from the Chinook winds as locations in Colorado east of the Front Range, yet it does receive protection from the Arctic air masses that can settle to the east of the Rockies. This is illustrated by the fact that from December to February, highs reach only 18 days."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 98,
+      "leadWords": 185,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives valley location and transport hub facts with no climate mechanism, extreme, seasonal rhythm, or paradox; valley size alone is not a climate fact",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "grand junction",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "junction",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2209,
+    "band": 2,
+    "place_id": "gn-5802570",
+    "input": {
+      "place": {
+        "place_id": "gn-5802570",
+        "name": "Marysville",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.05176,
+        "lon": -122.17708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marysville, Washington",
+          "url": "https://en.wikipedia.org/wiki/Marysville,_Washington",
+          "text": "Marysville is a city in Snohomish County, Washington, United States, part of the Seattle metropolitan area. The city is located 35 miles (56 km) north of Seattle, adjacent to Everett on the north side of the Snohomish River delta. It is the second-largest city in Snohomish County after Everett, with a population of 70,714 at the time of the 2020 U.S. census. As of 2015, Marysville was also the fastest-growing city in Washington state, growing at an annual rate of 2.5 percent.\nMarysville was established in 1872 as a trading post by James P. Comeford, but was not populated by other settlers until 1883. After the town was platted in 1885, a period of growth brought new buildings and industries to Marysville. In 1891, Marysville was incorporated and welcomed the completed Great Northern Railway. Historically, the area has subsisted on lumber and agrarian products; the growth of strawberry fields in Marysville led to the city being nicknamed the \"Strawberry City\" in the 1920s.\nThe city experienced its first wave of suburbanization in the 1970s and 1980s, resulting in the development of new housing and commercial areas. Between 1980 and 2000, the population of Marysville increased fivefold. In the early 2000s, annexations of unincorporated areas to the north and east expanded the city to over 20 square miles (52 km2) and brought the population over 60,000.\nMarysville is oriented north–south along Interstate 5, bordering the Tulalip Indian Reservation to the west, and State Route 9 to the east. Mount Pilchuck, whose 5,300-foot-high (1,600 m) peak can be seen from various points in the city, appears in the city's flag and seal."
+        },
+        {
+          "article": "Marysville, Washington (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Marysville,_Washington#Geography",
+          "text": "According to the United States Census Bureau's 2010 census, Marysville has a total area of — of land and of water. The city is located in the northwestern part of Snohomish County in Western Washington, approximately north of Seattle. The city's urban growth boundary includes outside of city limits, bringing the total area to .\nThe city's topography varies from the low-lying downtown, located along the banks of Ebey Slough above sea level, rising to near Smokey Point and over in the eastern highlands. Marysville sits in the watershed of two major creeks, Quilceda Creek and Allen Creek, and approximately 70 minor streams that flow into Ebey Slough and Snohomish River. During the early 20th century, repeated controlled flooding and other engineering works in the Snohomish River delta contributed to the replenishment of the area's fertile silty soil for use in farming.\nThe Marysville skyline is dominated by views of Mount Pilchuck and the Cascade Mountains to the east and the Olympic Mountains to the west. The Mount Pilchuck appears on the city's logo and flag, and is the namesake of the Marysville Pilchuck High School.\nThe City of Marysville's comprehensive plan defines 11 general neighborhoods within the city and its urban growth boundary: Downtown, Jennings Park, Sunnyside, East Sunnyside/Whiskey Ridge, Cedarcrest/Getchell Hill, North Marysville/Pinewood, Kellogg Marsh, Marshall/Kruse, Shoultes, Smokey Point, and Lakewood."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 223,
+      "leadWords": 270,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location north of Seattle and strawberry history with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "marysville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2210,
+    "band": 2,
+    "place_id": "gn-8440759",
+    "input": {
+      "place": {
+        "place_id": "gn-8440759",
+        "name": "Bagru",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.81067,
+        "lon": 75.54702
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bagru",
+          "url": "https://en.wikipedia.org/wiki/Bagru",
+          "text": "Bagru is a town and a municipality in Jaipur district (Tehsil Sanganer) in the state of Rajasthan, India. It is located approximately 32 km southwest of Jaipur, along the Jaipur-Ajmer Road.This is the city of Jugal Darbar. Where every year a huge Lakkhi fair of Jugal Darbar is organized.There is an old school named Government Senior Secondary School (that is now changed to Mahatma Gandhi Government School) established in 1933 and it has Bagru's Oldest Tree (Tamarind Tree) in it planted by its King. Here is a ground known as Baag (Dussehra Ground) (because it was a garden of Bagru's King), where Dasshera mela held every year. There is a lot to see and know here. People are very enthusiastic and helpful.\nThere is a very ancient temple of Jugal Darbar here which is even older than the establishment of Bagru. Apart from this, there are other ancient and worth seeing temples like Pal Wale Balaji Temple, Sawa Ki Bagichi Wale Balaji, Tejaji Temple, Bhomiya Ji Temple etc.Bagru is also a best example of communal harmony where Hindu and Muslim communities have been living and celebrating festivals together for many years. There are also mosques and dargahs here."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 198,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives distance from Jaipur and temple and fair facts with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bagru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2214,
+    "band": 2,
+    "place_id": "gn-2511619",
+    "input": {
+      "place": {
+        "place_id": "gn-2511619",
+        "name": "Sagunto",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.68333,
+        "lon": -0.26667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sagunto",
+          "url": "https://en.wikipedia.org/wiki/Sagunto",
+          "text": "Sagunto, in Spanish, or Sagunt, in Valencian (officially: Sagunt / Sagunto, historically: Morvedre), is a city and municipality of Spain, located in the province of Valencia, Valencian Community. It belongs to the modern fertile comarca of Camp de Morvedre. It is located approximately 30 km (19 mi) north of Valencia city center and lies on the Costa de Valencia on the Mediterranean Sea.\nIt is best known for the remains of the ancient Iberian and Roman city of Saguntum. The siege of Saguntum in 219 BC was the trigger of the Second Punic War between the Carthaginians and the Romans.\nThe municipality includes three differentiated urban nuclei: Ciutat Vella (Sagunt / Sagunto), Grau Vell and Puerto de Sagunto (Port de Sagunt). Over half of the population lives in the coastal settlement of Puerto de Sagunto."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 135,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Mediterranean coast location and ancient siege history with no climate mechanism, extreme, seasonal rhythm, or paradox; fertile comarca alone is not a climate fact",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sagunto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2228,
+    "band": 2,
+    "place_id": "gn-3430988",
+    "input": {
+      "place": {
+        "place_id": "gn-3430988",
+        "name": "Luján",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.5664,
+        "lon": -59.11478
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luján, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Luj%C3%A1n,_Buenos_Aires",
+          "text": "Luján (pronounced [luˈxan]) is a city in the Buenos Aires province of Argentina, located 68 kilometres (42 miles) northwest of the city of Buenos Aires. The city was founded in 1755 and has a population of 106,899 (per the 2010 census [INDEC]).\n\nLuján is best known for its large, neo-gothic Basilica, built in honor of the Virgin of Luján, the patron saint of Argentina. Every year, more than six million people make pilgrimages to the basilica, many walking there from Buenos Aires. The city is known as La Capital de la Fe (Capital of the Faith). It is a popular day-trip for non-believers too, with abundant grill restaurants (like most places in Argentina) and souvenir shops with kitsch religious memorabilia.\nThe church was designed by the French architect Ulderico Courtois and started in 1889, completed by 1937. Its towers stand 106 m (348 ft) high, and it has a copper roof and bronze doors. The huge church towers over the surrounding flat country and houses the tiny 38 cm (15 in) high statue of the Virgin. A large and important organ by French builder Cavaille-Coll stands in the gallery in a state of deterioration, although efforts are underway to see to its restoration. The development of the city was altered by the basilica's construction, as the main commercial district in the city began to move away from the basilica, being replaced by shops for religious pilgrims. \nLuján is also home to the Enrique Udaondo museum complex, housing exhibitions of colonial life in the house of the Viceroy and old town hall, with art, uniforms, silverware and transport with many antique vehicles including Plus Ultra the first hydroplane to cross from Europe to Argentina and La Porteña, Argentina's first steam locomotive operated by Ferrocarril Oeste. Also on display are the prison cells where Colonel William Carr Beresford, commander of the 1806 British invading forces, and General Cornelio Saavedra, president of the first national government (Primera Junta) in 1810, were held.\nSince 1987, Benedictine monks of the Cono-Sur Congregation have resided at Abadía de San Benito on the outskirts of Luján. In addition to providing retreat facilities for the residents of the city, the monks support themselves by means of agriculture and publishing.\nThe nearby city of Mercedes is seat of the Bishop of Mercedes and Luján. Luján is the principal settlement of the Lujan Partido or municipality. The city has a railway and bus station and is easily reached from Buenos Aires."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 411,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a basilica, pilgrimages, and a museum on flat country, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "lujan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2272,
+    "band": 2,
+    "place_id": "gn-3109256",
+    "input": {
+      "place": {
+        "place_id": "gn-3109256",
+        "name": "Segovia",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 40.94808,
+        "lon": -4.11839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Segovia",
+          "url": "https://en.wikipedia.org/wiki/Segovia",
+          "text": "Segovia ( sig-OH-vee-ə, US also  say-GOH-, Spanish: [seˈɣoβja] ) is a city in the autonomous community of Castile and León, Spain. It is the capital and most populated municipality of the Province of Segovia. Segovia is located in the Inner Plateau of the Iberian Peninsula, near the northern slopes of the Sistema Central mountain range. Housing is nestled on a bend of the Eresma river.\nThe city is famous for its historic buildings including three main landmarks: its midtown Roman aqueduct, its cathedral (one of the last ones to be built in Europe following a Gothic style), and the Alcázar of Segovia (a fortress). The city center was declared a World Heritage Site by UNESCO in 1985."
+        },
+        {
+          "article": "Segovia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Segovia#Climate",
+          "text": "Segovia has a hot-summer Mediterranean climate (Csa in the Köppen climate classification) bordering on a cold semi-arid climate (BSk), resulting from the high altitude and the distance from the coast. The average annual temperature is , with an average low in January of and an average high in July of . The annual precipitation ranges from 400 to 500 mm per year in the lower plains, and can reach above 1000 mm in the nearby mountainous area of the Sierra de Guadarrama, rain and snow are more frequent in the mountains. Showers from summer thunderstorms help the mountainous area of the province be wetter than the average for most of the central Spanish plateau, this gives the area lush vegetation. This makes the province a damp corner in the context of the region. The predominant forms of vegetation in the mountainous areas include pine, evergreen, oak, beech and juniper."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 149,
+      "leadWords": 117,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes plateau and mountain-slope location and famous historic buildings with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "segovia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2319,
+    "band": 2,
+    "place_id": "gn-4839416",
+    "input": {
+      "place": {
+        "place_id": "gn-4839416",
+        "name": "New London",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.35565,
+        "lon": -72.09952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New London, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/New_London,_Connecticut",
+          "text": "New London is a seaport city and a port of entry on the northeast coast of the United States, located at the outlet of the Thames River in New London County, Connecticut, which empties into Long Island Sound. The city is part of the Southeastern Connecticut Planning Region.\nNew London is home to the United States Coast Guard Academy, Connecticut College, Mitchell College, and The Williams School. The Coast Guard Station New London and New London Harbor is home port to both the Coast Guard's cutter Coho and their tall ship Eagle. The city had a population of 27,367 at the 2020 census. The Norwich–New London metropolitan area includes 21 towns and 274,055 people."
+        },
+        {
+          "article": "New London, Connecticut (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/New_London,_Connecticut#Climate",
+          "text": "Using the Köppen climate classification New London has a warm temperate climate. This zone is defined as having a monthly mean temperature above 26.4 °F (−3 C) but below 64.4 °F (18 C) in the coldest month.\nThe city experiences long, hot and humid summers, and cool to cold winters with snowfall on occasion. The city averages 2,300 hours of sunshine annually (higher than the USA average). New London lies in the broad transition zone between continental climates to the north in New England and southern Canada, and the humid subtropical climates to the south along the lower East Coast.\nFrom May to late September, the southerly flow from the Bermuda High creates hot and humid tropical weather conditions. Daytime heating produces occasional thunderstorms with heavy but brief downpours. Daytime highs in summer are normally near 80 °F, with occasional heat waves bringing high temperatures into the 90's °F. Spring and Fall are mild in New London, with daytime highs in the 55° to 70 °F range and lows in the 40° to 50 °F range. The seaside location of the city creates a long growing season compared to areas inland. The first freeze in the New London area is normally not until early November, almost two weeks later than parts of northern Connecticut. Winters are cool with a mix of rainfall and snowfall, or mixed precipitation. New London normally sees fewer than 25 days annually with snow cover. In mid-winter, there can be large differences in low temperatures between areas along the coastline and areas well inland, sometimes as much as 15 °F.\nTropical cyclones (hurricanes/tropical storms) have struck Connecticut and the New London metropolitan area, although infrequently. Hurricane landfalls have occurred along the Connecticut coast in 1903, 1938, 1944, 1954 (Carol), 1960 (Donna), 1985 (Gloria). Tropical Storm Irene (2011) also caused moderate damage along the Connecticut coast, as did Hurricane Sandy (which made landfall in New Jersey) in 2012.\nThe Connecticut shoreline (including New London) lies within the broad transition zone where so-called \"subtropical indicator\" plants and other broadleaf evergreens can successfully be cultivated. New London averages about 90 days annually with freeze, about the same as Baltimore, Maryland. As such, many varieties of southern magnolia, needle palms, loblolly and longleaf pines, crape myrtles, Aucuba japonica, Camellia, trunking yucca, hardy bananas, monkey puzzle, various types of evergreen hollies, many East Asian (non-holly) broadleaf evergreen trees and shrubs, and certain varieties of figs are grown in private and public gardens.\nThe growing season is quite long in New London. Like much of coastal Connecticut and Long Island, NY, it averages close to 210 frost free days. The new 2023 USDA Garden Zone Map has New London in zone 7a. New London falls into the same garden zone as locations like Wilmington, Delaware, or Harrisburg, Pennsylvania. By the mid-to-late 21st century, the area is expected to fall within USDA zone 8 according to some models."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 485,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes seaport location at a river outlet, colleges, and Coast Guard sites with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "new london",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "london",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
