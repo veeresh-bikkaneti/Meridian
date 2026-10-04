@@ -20,7 +20,8 @@ Verify-before-merge pattern. **Do NOT merge. Do NOT open a PR.** Push nothing to
 - [x] Crew 3 — quote provenance: 30/40 PASS, 10/40 FAIL on quote-coverage (c). Zero fabrication anywhere. Tier-2 quotes 40/40 verbatim in cited extract; tiers 1/3/4/5 40/40 lead-only; climate non-redundant 40/40. The 10 fails: clues paraphrase 2–3 extract sentences but quote only 1 — all claims verified present in a supplied extract EXCEPT Imphal T1 ("far northeast…" not in cited lead, only in section extract — genuine cross-extract sourcing gap). 2 whitespace-fold cases disclosed (not fabrication). Quality notes: "most + adjective" diction, 3 weak giveaways recycling earlier tiers, minor puffery (La Rioja, Enschede) — not failures.
 - [ ] Crew 2 — leak scan (running)
 - [ ] Crew 3 — quote provenance (running)
-- [ ] Crew 4 — flagged sets (running)
+- [x] Crew 4 — flagged sets: 4 ACCEPT (Kawambwa, Sisimiut, Torquay, San Antonio Oeste); 5 FLAG for Veeresh's sampling review (Puerto San José tier-2 thinness; Karaj tier-2 thinness + ranking tier 5; Gaziantep 1966-vintage snow stats; Mohali 2006 carve-out as history; Cavite City tier-2 thinness); **2 REJECT — Palestina (idx 340) and Bremerhaven (idx 149): tier 5 reuses tier-3's byte-identical quote and recaps earlier payloads, violating the locked "giveaway, not summary" hard rule**; Cockermouth confirmed absent. Repair notes: Bremerhaven has unused extract facts (re-composable tier 5); Palestina's extract is thin (fail-closed rejection likely honest → 387). Tarakan/Dumaguete/Varna confirmed cleanly converted to documented rejections, absent from 388. Crew 4 also ran an independent leak scan over all 388 records: 0 hits. No fabrication in any of the 12 sets.
+- [ ] Crew 2 — leak scan (running)
 - [ ] Crew 5 — gates (running)
 
 ## Pending
