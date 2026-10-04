@@ -292,7 +292,7 @@ test("flag on: the track never touches the no-repeat dealing history (observatio
         : [],
     };
   });
-  expect(seen.seenKey).toBe("meridian:seen:v2:globe:globe");
+  expect(seen.seenKey).toBe("meridian:seen:v2:globe:globe:medium");
   expect(seen.seen.length).toBeGreaterThanOrEqual(3);
   expect(seen.learningKeys).toEqual([LEARNING_KEY]);
   for (const id of seen.learnedIds) {

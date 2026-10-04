@@ -1582,6 +1582,26 @@ export function SatelliteMap(props: {
             >
               <p className="m-0">{view.attribution}</p>
               <p className="m-0 mt-2 text-white/80">{IMAGERY_NOTICE}</p>
+              <p className="m-0 mt-2 text-white/80">
+                Place data: GeoNames{" "}
+                <a
+                  href="https://creativecommons.org/licenses/by/4.0/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline"
+                >
+                  CC-BY 4.0
+                </a>
+                {" · place history: Wikipedia "}
+                <a
+                  href="https://creativecommons.org/licenses/by-sa/4.0/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline"
+                >
+                  CC BY-SA
+                </a>
+              </p>
             </div>
           )}
         </div>

@@ -140,7 +140,7 @@ test("summarizeSession: empty session summarizes to zeros", () => {
 });
 
 test("seedSessionFromRun: backfills a pre-session run's results exactly once", () => {
-  const today = { edition: "globe" as const, regionId: "globe", regionName: "Globe", dateKey: "2026-10-02" };
+  const today = { edition: "globe" as const, regionId: "globe", regionName: "Globe", dateKey: "2026-10-02", difficultyChoice: "medium" as const };
   let run = startRun(today, ["p1", "p2"]);
   run = dropPin(run, 25, 1000, fakeScored(120));
   run = { ...run, phase: "aim" as const, index: 1 };

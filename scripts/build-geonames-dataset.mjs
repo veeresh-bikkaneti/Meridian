@@ -40,7 +40,7 @@
  * ever dropped silently: every excluded row is quarantined with a reason and
  * reported.
  */
-import { createReadStream, existsSync, mkdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
+import { createReadStream, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync, statSync } from "node:fs";
 import { createInterface } from "node:readline";
 import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -438,6 +438,34 @@ export function rankRegionName({ edition, admin1Name, countryName, cc }) {
 }
 
 /**
+ * Difficulty tier (1–5) from population and feature code.
+ *
+ * Cutoffs come from measured dump quantiles (124,690 kept rows, 2026-10-03):
+ * p95 = 100,275 → T1; p80 = 22,593 → T2; p50 = 5,935 → T3; p20 = 2,478 → T4.
+ * Rounded to clean values: 100k / 25k / 6k / 2.5k. Capitals get a civic
+ * bump regardless of population: PPLC (country capital) is always T1, PPLA
+ * (admin-1 capital) always T2 — a kid has heard of a capital. The PPLX
+ * neighborhood floor then pulls "section of populated place" rows UP to at
+ * least tier 3: a Dubai district with 200k people is still a neighborhood,
+ * never Easy/Moderate. Exported for unit tests
+ * (scripts/build-geonames-difficulty.test.mjs).
+ */
+export function tierFor(pop, fcode) {
+  let tier;
+  if (pop >= 100000 || fcode === "PPLC") tier = 1;
+  else if (pop >= 25000 || fcode === "PPLA") tier = 2;
+  else if (pop >= 6000) tier = 3;
+  else if (pop >= 2500) tier = 4;
+  // Editorial edge, conscious call: pop = 0 or missing lands in tier 5.
+  // Absent population is a data gap, not proof of obscurity — but tiering
+  // it Hard (rather than guessing famous) is the fail-closed choice: a
+  // place with no population signal should never deal as Easy.
+  else tier = 5;
+  if (fcode === "PPLX") tier = Math.max(tier, 3);
+  return tier;
+}
+
+/**
  * Kid-friendly settlement words, keyed by GeoNames feature code. Each entry
  * is verified two ways: the official GeoNames definition
  * (geonames.org/export/codes.html) AND consistent usage across this dump at
@@ -550,6 +578,68 @@ export function sportsSentence(teams) {
   if (parts.length === 1) return `Home of the ${parts[0]}.`;
   if (parts.length === 2) return `Home of the ${parts[0]} and ${parts[1]}.`;
   return `Home of the ${parts.slice(0, -1).join(", ")}, and ${parts[parts.length - 1]}.`;
+}
+
+/**
+ * Optional enrichment fields that may exist on ALREADY-SHIPPED chunks
+ * because a later merge added them: the fact ladder's `fact`, Wikipedia
+ * `history` hooks, and their `wiki` attribution slugs. A rebuild must not
+ * silently drop them — the fresh pipeline has no fact ladder or enrichment
+ * of its own, so it cannot regenerate them. Carried forward by place id
+ * when the fresh record has no value for the key; fresh pipeline values
+ * (curated notable notes) win on conflict. On current main no chunk carries
+ * these, so this is a no-op — it is defense against a future
+ * rebuild-after-enrichment. Exported for unit tests
+ * (scripts/build-geonames-difficulty.test.mjs).
+ */
+export const PRESERVED_EXTRA_KEYS = ["fact", "history", "wiki"];
+
+/**
+ * Apply carry-forward: for every rebuilt record whose id exists in the
+ * previous chunks, copy preserved extra keys the fresh record lacks.
+ * Mutates `records` in place.
+ *
+ * Pairing invariant: `history` is the verbatim extract of the `wiki`
+ * article — they must travel as a unit. Never ship a history without its
+ * wiki attribution slug, and never ship a wiki slug without its extract;
+ * the build-time gate (scripts/check-generated-places.mjs) fails the
+ * dataset on either unpaired direction. The fresh build writes them
+ * together (notable notes, enrichment merge), and this carry-forward keeps
+ * them together.
+ */
+export function applyPreservedExtras(records, prevById) {
+  for (const p of records) {
+    const prev = prevById.get(p.id);
+    if (!prev) continue;
+    for (const k of PRESERVED_EXTRA_KEYS) {
+      if (prev[k] !== undefined && p[k] === undefined) p[k] = prev[k];
+    }
+  }
+}
+
+/** Scan the already-checked-in chunks for preserved extra keys, keyed by place id. */
+function readPrevChunkExtras() {
+  const map = new Map();
+  let files = [];
+  try {
+    files = readdirSync(OUT_DIR).filter((f) => f.endsWith(".json"));
+  } catch {
+    return map; // first build: no previous chunks
+  }
+  for (const f of files) {
+    let chunk;
+    try {
+      chunk = JSON.parse(readFileSync(join(OUT_DIR, f), "utf8"));
+    } catch {
+      continue; // unreadable chunk: rebuild replaces it wholesale anyway
+    }
+    for (const pl of chunk.places ?? []) {
+      const extras = {};
+      for (const k of PRESERVED_EXTRA_KEYS) if (pl[k] !== undefined) extras[k] = pl[k];
+      if (Object.keys(extras).length > 0) map.set(pl.id, extras);
+    }
+  }
+  return map;
 }
 
 // ---------------------------------------------------------------------------
@@ -690,6 +780,11 @@ async function main() {
     });
     const composed = composeCardStory({ history: notable?.note, blurb: geoBlurb });
     const hookMissing = composed.hookMissing;
+    // hookMissing is the enrichment pipeline's hook-candidate marker:
+    // scripts/enrich-wikipedia.mjs clears it when it writes a hook, and
+    // scripts/card-compose.mjs documents it. It MUST survive dataset
+    // rebuilds — stripping it here would sabotage the Wikipedia merge by
+    // hiding which records still need a hook. KEEP.
     const place = {
       id, name, lon, lat,
       blurb: geoBlurb,
@@ -702,7 +797,20 @@ async function main() {
       // re-validates every shipped place against the derived country box for
       // its own country code, so the code must travel with the record.
       iso2: cc,
+      // Resolved subdivision display name (state/province), e.g. "Nebraska"
+      // or "Madhya Pradesh" — the pin-down clue for PR #38's label rules
+      // ("Manhattan, Nebraska"; same-name collisions "{Place}, {State},
+      // {Country}"). Resolved from the row's admin1 code via
+      // admin1CodesASCII.txt; the DISPLAY NAME ships, never the code.
+      // Omitted when the code is missing or unresolvable — the label
+      // builder (question-label.ts) fails closed to the bare name.
+      ...(admin1Name ? { subdivision: admin1Name } : {}),
       edition, regionId, _pop: pop, _gid: Number(geonameid),
+      // Per-place difficulty tier (1 = most famous, 5 = deep cut) stamped
+      // at build time from population + feature code (see tierFor). The
+      // weighted dealer reads this; the runtime treats it as data, not
+      // truth — toStarter() backfills 3 for anything outside 1–5.
+      difficulty: tierFor(pop, c[7]),
       // Rank key + display name for the top-population sentence (see
       // applyTopRanks): states rank within the state, DC rows within the
       // District (they ship in the united-states chunk), globe rows within
@@ -730,6 +838,11 @@ async function main() {
   // Top-population rank sentences ("one of Texas's biggest places") — over
   // the final shipped set, so ranks are honest. See applyTopRanks.
   applyTopRanks(places);
+  // Carry forward enrichment fields (fact/history/wiki) that a later merge
+  // may have added to the shipped chunks — see applyPreservedExtras. Must
+  // run before the private-field deletion below, which only removes the
+  // underscore-prefixed pipeline fields.
+  applyPreservedExtras(places, readPrevChunkExtras());
   for (const p of places) {
     let e = perRegion.get(p.regionId);
     if (!e) { e = { edition: p.edition, count: 0 }; perRegion.set(p.regionId, e); }
@@ -770,8 +883,20 @@ async function main() {
     totalBytes += bytes;
     manifestRegions[regionId] = { edition, count, bytes };
   }
+  // Read-merge-write: the fresh build sets its fixed key set, but any
+  // meta keys the build doesn't set are carried forward from the previous
+  // manifest — a rebuild must never silently drop enrichment metadata
+  // (e.g. the Wikipedia merge's `enrichment` block). Fresh keys win.
+  const manifestPath = join(dirname(OUT_DIR), "manifest.json");
+  let prevMeta = {};
+  try {
+    prevMeta = JSON.parse(readFileSync(manifestPath, "utf8")).meta ?? {};
+  } catch {
+    // First build: no previous manifest to carry forward from.
+  }
   const manifest = {
     meta: {
+      ...prevMeta,
       source: "GeoNames (CC-BY 4.0) — attribution required (see integration step)",
       generated,
       script: "scripts/build-geonames-dataset.mjs",
@@ -800,7 +925,7 @@ async function main() {
     },
     regions: manifestRegions,
   };
-  writeFileSync(join(dirname(OUT_DIR), "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
+  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 
   // --- report
   const mins = ((Date.now() - t0) / 60000).toFixed(1);
@@ -815,6 +940,11 @@ async function main() {
     console.log(`    - ${r}: ${e.count.toLocaleString("en-US")}  samples: ${e.samples.slice(0, 5).join(", ")}`);
   }
   console.log(`  regions:         ${perRegion.size} chunks, ${(totalBytes / 1048576).toFixed(1)} MB total`);
+  const tierCounts = [0, 0, 0, 0, 0, 0];
+  for (const p of places) tierCounts[p.difficulty]++;
+  console.log(
+    `  tier dist:       ${tierCounts.slice(1).map((n, i) => `T${i + 1}=${(100 * n / places.length).toFixed(1)}%`).join(", ")}`,
+  );
   const top = [...perRegion.entries()].sort((a, b) => b[1].count - a[1].count).slice(0, 10);
   console.log(`  top regions:     ${top.map(([r, e]) => `${r}=${e.count.toLocaleString("en-US")}`).join(", ")}`);
   console.log(`wrote ${perRegion.size} chunks + manifest.json`);

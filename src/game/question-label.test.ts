@@ -149,12 +149,14 @@ test("globe edition resolves curated country starters via regionId", () => {
 });
 
 test("globe edition resolves curated state starters via reverse ADMIN1 lookup", () => {
+  // regionId "nebraska" resolves the subdivision through the id path, so
+  // the globe label is 3-part even without a stamped subdivision.
   assert.equal(
     buildQuestionLabel({
       edition: "globe",
       place: { name: "Chimney Rock", regionId: "nebraska" },
     }),
-    "Chimney Rock, United States",
+    "Chimney Rock, Nebraska, United States",
   );
 });
 
@@ -341,5 +343,262 @@ test("stateNameForPlace prefers originRegionId and honors the country scope", ()
   assert.equal(
     stateNameForPlace({ name: "Toronto", regionId: "canada" }, "canada"),
     null,
+  );
+});
+
+// ---------------------------------------------------------------------------
+// subdivision display names (chunk-pipeline stamps / curated starters)
+// ---------------------------------------------------------------------------
+
+test("country edition: {place}, {subdivision} when stamped", () => {
+  // Veeresh's live report: "Sāgar" in the India edition is ambiguous
+  // (Madhya Pradesh vs Karnataka) — the state is the pin-down clue.
+  assert.equal(
+    buildQuestionLabel({
+      edition: "country",
+      place: {
+        name: "Sāgar",
+        iso2: "IN",
+        regionId: "india",
+        subdivision: "Madhya Pradesh",
+      },
+      countryRegionId: "india",
+    }),
+    "Sāgar, Madhya Pradesh",
+  );
+});
+
+test("country edition: stamped subdivision wins, trimmed, over the id path", () => {
+  assert.equal(
+    buildQuestionLabel({
+      edition: "country",
+      place: {
+        name: "Austin",
+        regionId: "united-states",
+        originRegionId: "texas",
+        subdivision: "  Texas ",
+      },
+      countryRegionId: "united-states",
+    }),
+    "Austin, Texas",
+  );
+});
+
+test("country edition without subdivision: bare name (today's behavior)", () => {
+  assert.equal(
+    buildQuestionLabel({
+      edition: "country",
+      place: { name: "Toronto", iso2: "CA", regionId: "canada" },
+      countryRegionId: "canada",
+    }),
+    "Toronto",
+  );
+});
+
+test("globe with subdivision, no collision: 3-part label", () => {
+  // Veeresh's live-play call: the subdivision is a pin-down clue on EVERY
+  // globe question, not just on same-name collisions.
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "Madhya Pradesh" },
+    }),
+    "Sāgar, Madhya Pradesh, India",
+  );
+});
+
+test("globe without subdivision, no collision: 2-part label", () => {
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN" },
+    }),
+    "Sāgar, India",
+  );
+});
+
+test("globe collision with stamped subdivisions: 3-part label", () => {
+  const pool: LabelPlace[] = [
+    { name: "Sāgar", iso2: "IN", subdivision: "Madhya Pradesh" },
+    { name: "Sāgar", iso2: "IN", subdivision: "Karnataka" },
+  ];
+  const counts = buildCollisionCounts(pool);
+  assert.ok(hasNameCollision(pool[0], counts));
+  assert.ok(hasNameCollision(pool[1], counts));
+  assert.equal(
+    buildQuestionLabel({ edition: "globe", place: pool[0], hasCollision: true }),
+    "Sāgar, Madhya Pradesh, India",
+  );
+  assert.equal(
+    buildQuestionLabel({ edition: "globe", place: pool[1], hasCollision: true }),
+    "Sāgar, Karnataka, India",
+  );
+});
+
+test("globe collision without subdivision: today's 2-part fallback", () => {
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Manhattan", iso2: "US" },
+      hasCollision: true,
+    }),
+    "Manhattan, United States",
+  );
+});
+
+test("blank subdivisions fail closed: no dangling comma, never 'undefined'", () => {
+  const adversarial: LabelPlace[] = [
+    { name: "X", iso2: "IN", regionId: "india", subdivision: "" },
+    { name: "Y", iso2: "IN", regionId: "india", subdivision: "   " },
+    { name: "Z", iso2: "US", regionId: "united-states", subdivision: "" },
+  ];
+  for (const place of adversarial) {
+    for (const edition of ["country", "globe"] as const) {
+      const label = buildQuestionLabel({
+        edition,
+        place,
+        countryRegionId: "india",
+        hasCollision: true,
+      });
+      assert.ok(label.startsWith(place.name), `${edition}: ${label}`);
+      assert.ok(!label.includes("undefined"), `${edition}: ${label}`);
+      assert.ok(!/,\s*$/.test(label), `${edition}: trailing comma in ${label}`);
+      assert.ok(!/,\s*,/.test(label), `${edition}: empty qualifier in ${label}`);
+    }
+  }
+  // A blank stamp falls through to the id path — it doesn't suppress it.
+  assert.equal(
+    buildQuestionLabel({
+      edition: "country",
+      place: {
+        name: "Omaha",
+        iso2: "US",
+        regionId: "nebraska",
+        subdivision: "  ",
+      },
+      countryRegionId: "united-states",
+    }),
+    "Omaha, Nebraska",
+  );
+  // Blank subdivision in globe: the honest 2-part label, never a dangling
+  // comma or an "undefined" qualifier.
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "" },
+    }),
+    "Sāgar, India",
+  );
+  assert.equal(
+    buildQuestionLabel({
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "   " },
+      hasCollision: true,
+    }),
+    "Sāgar, India",
+  );
+});
+
+test("question and reveal labels agree: buildQuestionLabel is deterministic", () => {
+  // game-app.tsx computes the label ONCE per place via buildQuestionLabel
+  // and hands the same string to the question bubble and the result card
+  // (the placeLabel prop), so question/reveal agreement reduces to
+  // determinism: same input, same output, every time.
+  const cases: Array<Parameters<typeof buildQuestionLabel>[0]> = [
+    {
+      edition: "country",
+      place: {
+        name: "Sāgar",
+        iso2: "IN",
+        regionId: "india",
+        subdivision: "Madhya Pradesh",
+      },
+      countryRegionId: "india",
+    },
+    {
+      edition: "country",
+      place: { name: "Toronto", iso2: "CA", regionId: "canada" },
+      countryRegionId: "canada",
+    },
+    {
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "Madhya Pradesh" },
+      hasCollision: true,
+    },
+    {
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN", subdivision: "Madhya Pradesh" },
+    },
+    {
+      edition: "globe",
+      place: { name: "Sāgar", iso2: "IN" },
+    },
+    {
+      edition: "globe",
+      place: { name: "Manhattan", iso2: "US" },
+      hasCollision: true,
+    },
+    {
+      edition: "state",
+      place: { name: "Omaha", iso2: "US", regionId: "nebraska" },
+    },
+  ];
+  for (const input of cases) {
+    assert.equal(buildQuestionLabel(input), buildQuestionLabel(input));
+  }
+});
+
+// ---------------------------------------------------------------------------
+// curated starter data: stamped subdivisions
+// ---------------------------------------------------------------------------
+
+test("curated subdivision values are trimmed display names, never codes", () => {
+  let stamped = 0;
+  for (const s of STARTERS) {
+    if (s.subdivision === undefined) continue;
+    stamped++;
+    const v = s.subdivision;
+    assert.ok(
+      typeof v === "string" && v.trim().length > 0,
+      `${s.id}: blank subdivision`,
+    );
+    assert.equal(v, v.trim(), `${s.id}: subdivision has surrounding whitespace`);
+    assert.ok(
+      !/^[A-Z0-9-]{2,6}$/.test(v),
+      `${s.id}: subdivision looks like a code, not a display name: ${v}`,
+    );
+  }
+  assert.ok(stamped > 0, "expected some curated starters to carry subdivisions");
+});
+
+test("curated starters: stamped subdivisions produce qualified country labels", () => {
+  const byId = new Map(STARTERS.map((s) => [s.id, s]));
+  const taj = byId.get("india-taj");
+  assert.equal(taj?.subdivision, "Uttar Pradesh");
+  assert.equal(
+    buildQuestionLabel({
+      edition: "country",
+      place: taj!,
+      countryRegionId: "india",
+    }),
+    "Taj Mahal, Uttar Pradesh",
+  );
+  const opera = byId.get("australia-opera");
+  assert.equal(opera?.subdivision, "New South Wales");
+  assert.equal(
+    buildQuestionLabel({
+      edition: "country",
+      place: opera!,
+      countryRegionId: "australia",
+    }),
+    "Sydney Opera House, New South Wales",
+  );
+  // The globe E2E spec (tests/e2e/subdivision-labels.spec.ts) pins this
+  // exact label for the "Play the globe" run.
+  const oia = byId.get("globe-oia");
+  assert.equal(oia?.subdivision, "South Aegean");
+  assert.equal(
+    buildQuestionLabel({ edition: "globe", place: oia! }),
+    "Oia, South Aegean, Greece",
   );
 });

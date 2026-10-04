@@ -1,4 +1,5 @@
-import { hashString, mulberry32 } from "./daily.ts";
+import { hashString } from "./daily.ts";
+import { asFameTier, type PickerDifficulty } from "./tier-filter.ts";
 
 /**
  * Mint a per-session random seed. Crypto-backed when available; Math.random
@@ -18,10 +19,26 @@ export function mintSeed(): number {
   return Math.floor(Math.random() * 4294967296);
 }
 
+/**
+ * Small deterministic PRNG (mulberry32), implemented locally so the
+ * weighted dealer needs no external dependency. Pure: the same seed always
+ * yields the same sequence.
+ */
+function deterministicRandom(seed: number): () => number {
+  let a = seed >>> 0;
+  return () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 /** Deterministic Fisher-Yates shuffle driven by an explicit seed. Pure. */
 export function shufflePlaces<T>(places: T[], seed: number): T[] {
   const ordered = [...places];
-  const random = mulberry32(seed >>> 0);
+  const random = deterministicRandom(seed >>> 0);
   for (let index = ordered.length - 1; index > 0; index--) {
     const swapIndex = Math.floor(random() * (index + 1));
     const current = ordered[index]!;
@@ -37,6 +54,51 @@ export function shufflePlaces<T>(places: T[], seed: number): T[] {
  */
 export function cycleSeed(sessionSeed: number, cycle: number): number {
   return hashString(`${sessionSeed >>> 0}:${cycle}`);
+}
+
+/** Places carrying an optional fame difficulty tier (1 = most famous). */
+export type DifficultyTiered = {
+  readonly difficulty?: unknown;
+};
+
+/**
+ * Fame weight for weighted dealing: w = 6 - tier, so tier 1 (most famous)
+ * deals with weight 5 and tier 5 (most obscure) with weight 1. Places with
+ * missing or invalid difficulty count as tier 3 (w = 3), keeping pre-tier
+ * catalogs dealing uniformly. Pure.
+ *
+ * Takes a plain `object` so it can serve as a weight function over any
+ * place list; read the tier through `DifficultyTiered`.
+ */
+export function difficultyWeight(place: object): number {
+  const d = (place as DifficultyTiered).difficulty;
+  return 6 - asFameTier(d);
+}
+
+/**
+ * Weighted shuffle without replacement (Efraimidis–Spirakis): each place
+ * draws key = U^(1/w) with U ~ Uniform(0,1) from the seeded PRNG, and the
+ * places sort by descending key. Heavier places land earlier on average,
+ * but every place appears exactly once per shuffle — no repeats within a
+ * cycle, full coverage per cycle. Deterministic per seed; pure. Weights
+ * must be positive; non-positive weights deterministically sink to the end.
+ */
+export function weightedShufflePlaces<T>(
+  places: T[],
+  seed: number,
+  weightFn: (place: T) => number,
+): T[] {
+  const random = deterministicRandom(seed >>> 0);
+  const keyed = places.map((place, index) => {
+    const weight = weightFn(place);
+    const key =
+      weight > 0 ? Math.pow(random(), 1 / weight) : Number.NEGATIVE_INFINITY;
+    return { place, key, index };
+  });
+  // Index tie-break keeps the sort total and deterministic even on the
+  // (practically impossible) event of equal keys.
+  keyed.sort((a, b) => b.key - a.key || a.index - b.index);
+  return keyed.map((entry) => entry.place);
 }
 
 /** Persistence for the seen place IDs (the no-repeat history). */
@@ -59,7 +121,25 @@ export function memorySeenStore(): SeenStore {
 const SEEN_KEY_PREFIX = "meridian:seen:v2:";
 const LEGACY_SEEN_KEY_PREFIX = "meridian:seen:v1:";
 
-function seenKey(edition: string, regionId: string): string {
+/**
+ * Band-scoped seen key: the no-repeat history is tracked per
+ * (edition, region, difficulty band). The dealing pool is band-filtered
+ * (easy/medium/hard narrow the catalog BEFORE the pool is built), so the
+ * history must be band-scoped too — a history shared across bands lets one
+ * band's dealt places shrink another band's pool until it cycles a handful
+ * of places ("repeat mode"). Each band now cycles independently.
+ */
+function seenKey(edition: string, regionId: string, choice: PickerDifficulty): string {
+  return `${SEEN_KEY_PREFIX}${edition}:${regionId}:${choice}`;
+}
+
+/**
+ * The pre-band v2 key (`meridian:seen:v2:<edition>:<region>`), written by
+ * builds before the difficulty picker. Folded into the first-touched band's
+ * key by the lazy migration inside seenStoreFor, then pruned. Nothing else
+ * reads it.
+ */
+function unscopedSeenKey(edition: string, regionId: string): string {
   return `${SEEN_KEY_PREFIX}${edition}:${regionId}`;
 }
 
@@ -81,7 +161,9 @@ function readIdList(
 /**
  * Fold one legacy v1 day-keyed entry (`meridian:seen:v1:<day>:<edition>:<region>`)
  * into its v2 counterpart, unioning the surviving history. Malformed keys or
- * entries are skipped (the key is still pruned by the caller).
+ * entries are skipped (the key is still pruned by the caller). v1-era play
+ * predates the difficulty picker, so entries land in the medium band — the
+ * same backfill default `backfillDifficultyChoice` gives pre-picker runs.
  */
 function migrateV1Entry(
   storage: Pick<Storage, "getItem" | "setItem">,
@@ -94,7 +176,7 @@ function migrateV1Entry(
   if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !edition || !regionId) return;
   const legacyIds = readIdList(storage, v1key);
   if (legacyIds.length === 0) return;
-  const v2key = seenKey(edition, regionId);
+  const v2key = seenKey(edition, regionId, "medium");
   const merged = new Set([...readIdList(storage, v2key), ...legacyIds]);
   try {
     storage.setItem(v2key, JSON.stringify([...merged]));
@@ -116,21 +198,55 @@ function safeStorage(): Pick<
 }
 
 /**
- * localStorage-backed seen store, scoped to one edition/region and persistent
- * across days, reloads, and restarts on this device. This is the no-repeat
- * history: a place is never dealt again until every other place in the
- * region's pool has been dealt (a full cycle), no matter how many days pass.
- * Writes migrate-then-prune legacy v1 day-keyed entries (one-time migration);
- * the history itself is only cleared when a cycle completes (see
- * poolForNewRun), so storage stays bounded by the region catalog's size.
- * Falls back to memory when storage is unavailable.
+ * localStorage-backed seen store, scoped to one edition/region/difficulty
+ * band and persistent across days, reloads, and restarts on this device.
+ * This is the no-repeat history: a place is never dealt again until every
+ * other place in the band's pool has been dealt (a full cycle), no matter
+ * how many days pass. The band scope is load-bearing: the dealing pool is
+ * band-filtered, so a history shared across bands lets one band's dealt
+ * places shrink another band's pool into rapid cycling ("repeat mode").
+ * Each band now cycles independently.
+ *
+ * One-time migration: the first touch of a band's store folds the pre-band
+ * v2 key (`meridian:seen:v2:<edition>:<region>`) into the band's key and
+ * prunes it, so players keep their no-repeat history across the upgrade.
+ * Extra IDs outside the band are harmless — poolForNewRun only matches the
+ * band's catalog against the history, so they never filter anything out.
+ * Writes also migrate-then-prune legacy v1 day-keyed entries (routed to the
+ * medium band, the pre-picker backfill default). The history itself is only
+ * cleared when the band's cycle completes (see poolForNewRun), so storage
+ * stays bounded by the region catalog's size. Falls back to memory when
+ * storage is unavailable.
  */
-export function seenStoreFor(edition: string, regionId: string): SeenStore {
+export function seenStoreFor(
+  edition: string,
+  regionId: string,
+  choice: PickerDifficulty,
+): SeenStore {
   const storage = safeStorage();
   if (!storage) return memorySeenStore();
-  const key = seenKey(edition, regionId);
+  const key = seenKey(edition, regionId, choice);
+  // First touch claims the pre-band history for this band. Idempotent:
+  // after the first touch the legacy key is gone, so later touches (and
+  // other bands' stores) are a single cheap getItem. Fail-open: a storage
+  // hiccup here must never break dealing.
+  const migrateUnscopedOnce = (): void => {
+    try {
+      const legacyKey = unscopedSeenKey(edition, regionId);
+      if (storage.getItem(legacyKey) === null) return;
+      const merged = new Set([
+        ...readIdList(storage, key),
+        ...readIdList(storage, legacyKey),
+      ]);
+      storage.setItem(key, JSON.stringify([...merged]));
+      storage.removeItem(legacyKey);
+    } catch {
+      // Fail open: the run still deals from its band pool.
+    }
+  };
   return {
     read: () => {
+      migrateUnscopedOnce();
       try {
         const raw = storage.getItem(key);
         if (!raw) return [];
@@ -143,6 +259,7 @@ export function seenStoreFor(edition: string, regionId: string): SeenStore {
       }
     },
     write: (ids: string[]) => {
+      migrateUnscopedOnce();
       try {
         storage.setItem(key, JSON.stringify(ids));
         // One-time migration: fold any surviving legacy v1 day-keyed entries
@@ -180,12 +297,14 @@ export type NewRunPool = {
 };
 
 /**
- * Build the dealing pool for a new run: the region catalog minus the
- * device's persistent no-repeat history for this edition/region. When every
- * place has been dealt (the history covers the catalog), the cycle is
- * complete: the history resets and the new run deals a freshly shuffled full
- * catalog. Never returns an empty pool for a non-empty catalog (fail-closed
- * dealing is the dealer's job: an empty pool deals nothing).
+ * Build the dealing pool for a new run: the band-filtered catalog minus the
+ * device's persistent no-repeat history for this edition/region/band. When
+ * every place has been dealt (the history covers the band's catalog), the
+ * cycle is complete: the history resets and the new run deals a freshly
+ * shuffled full band catalog. Never returns an empty pool for a non-empty
+ * catalog (fail-closed dealing is the dealer's job: an empty pool deals
+ * nothing). The reset clears ONLY this band's history — other bands' cycles
+ * are untouched.
  *
  * The history outlives days, reloads, and restarts — "tomorrow" is just
  * another session over the same persistent history.
@@ -277,7 +396,11 @@ export function createDealer<T extends { id: string }>(
       seen.clear();
       cyclePool = [...places];
     }
-    const cycle = shufflePlaces(cyclePool, cycleSeed(sessionSeed, cycles.length));
+    const cycle = weightedShufflePlaces(
+      cyclePool,
+      cycleSeed(sessionSeed, cycles.length),
+      (place) => difficultyWeight(place),
+    );
     if (
       cycle.length > 1 &&
       boundaryId !== null &&

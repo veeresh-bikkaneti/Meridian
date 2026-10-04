@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { STARTERS, type Starter } from "./starters.ts";
-import { buildRegionPool } from "./pool.ts";
+import { buildRegionPool, resolveRunPool } from "./pool.ts";
 import { createDealer, memorySeenStore, mintSeed } from "./trail.ts";
 
 test("state pool holds only that state's places", () => {
@@ -79,4 +79,20 @@ test("dealing never leaves the region across full cycles", () => {
     assert.ok(place, `expected a place at position ${position}`);
     assert.equal(place.regionId, "nebraska");
   }
+});
+
+test("resolveRunPool: poolIds filter the catalog to the run's pool", () => {
+  const places = [{ id: "a" }, { id: "b" }, { id: "c" }];
+  const pool = resolveRunPool(places, ["a", "c"]);
+  assert.deepEqual(pool, [{ id: "a" }, { id: "c" }]);
+});
+
+test("resolveRunPool: empty poolIds (deliberately empty band) stays empty — never widens", () => {
+  const places = [{ id: "a" }, { id: "b" }, { id: "c" }];
+  assert.deepEqual(resolveRunPool(places, []), []);
+});
+
+test("resolveRunPool: non-empty poolIds matching nothing (legacy/tampered) fall back to the full catalog", () => {
+  const places = [{ id: "a" }, { id: "b" }, { id: "c" }];
+  assert.deepEqual(resolveRunPool(places, ["ghost-1", "ghost-2"]), places);
 });

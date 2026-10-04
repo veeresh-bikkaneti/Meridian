@@ -30,18 +30,18 @@ export const MAX_COMBO_STREAK = 20;
 export type Difficulty = 1 | 2 | 3 | 4 | 5;
 
 export const DIFFICULTY_TIERS: Record<Difficulty, { name: string; multiplier: number }> = {
-  1: { name: "Easy", multiplier: 1 },
-  2: { name: "Moderate", multiplier: 1.25 },
-  3: { name: "Challenging", multiplier: 1.5 },
-  4: { name: "Hard", multiplier: 2 },
-  5: { name: "Extreme", multiplier: 2.5 },
+  1: { name: "Famous", multiplier: 1 },
+  2: { name: "Well-known", multiplier: 1.25 },
+  3: { name: "Everyday", multiplier: 1.5 },
+  4: { name: "Lesser-known", multiplier: 2 },
+  5: { name: "Hidden", multiplier: 2.5 },
 };
 
 export function difficultyTier(difficulty: Difficulty): { name: string; multiplier: number } {
   return DIFFICULTY_TIERS[difficulty];
 }
 
-/** MapTap-style question-card chip, e.g. "Hard · 2x". */
+/** MapTap-style question-card chip, e.g. "Lesser-known · 2x". */
 export function difficultyChip(difficulty: Difficulty): string {
   const tier = difficultyTier(difficulty);
   const mult = tier.multiplier;

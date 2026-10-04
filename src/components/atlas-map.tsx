@@ -570,6 +570,15 @@ export function AtlasMap({
         >
           CC-BY 4.0
         </a>
+        {" · place history: Wikipedia "}
+        <a
+          href="https://creativecommons.org/licenses/by-sa/4.0/"
+          target="_blank"
+          rel="noreferrer"
+          className="pointer-events-auto underline"
+        >
+          CC BY-SA
+        </a>
         {engine ? ` · ${engine}` : ""}
       </p>
       <div className="absolute right-3 bottom-3 flex flex-col gap-2">

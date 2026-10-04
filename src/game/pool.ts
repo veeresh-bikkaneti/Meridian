@@ -2,6 +2,26 @@ import type { Edition } from "./run.ts";
 import type { Starter } from "./starters.ts";
 
 /**
+ * Resolve a run's dealing pool from the loaded catalog and the run's
+ * persisted poolIds. Three cases, fail-closed:
+ *
+ * 1. poolIds match places → the filtered pool (the normal path).
+ * 2. poolIds is EMPTY → the band dealt zero places (deliberately empty
+ *    band). Return [] — never widen back to the full catalog, or the
+ *    band filter is defeated.
+ * 3. poolIds is non-empty but matches nothing → legacy run (saved before
+ *    pool persistence) or a tampered pool. Fall back to the full catalog
+ *    rather than strand the player with no questions.
+ */
+export function resolveRunPool<T extends { id: string }>(places: T[], poolIds: string[]): T[] {
+  const ids = new Set(poolIds);
+  const filtered = places.filter((p) => ids.has(p.id));
+  if (filtered.length > 0) return filtered;
+  if (poolIds.length === 0) return []; // deliberately empty band: stay empty
+  return places; // legacy/tampered pool
+}
+
+/**
  * Build the dealing pool for one edition + region — the "questions come from
  * the selected subset" policy, enforced fail-closed.
  *

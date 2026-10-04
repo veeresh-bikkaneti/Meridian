@@ -57,7 +57,7 @@ test("scoring v3: chip, running SCORE, transparent breakdown, summary stats", as
   // Difficulty chip on the question card, MapTap-style.
   const chip = page.getByTestId("difficulty-chip");
   await expect(chip).toBeVisible();
-  await expect(chip).toHaveText(/^(Easy|Moderate|Challenging|Hard|Extreme) · [\d.]+x$/);
+  await expect(chip).toHaveText(/^(Famous|Well-known|Everyday|Lesser-known|Hidden) · [\d.]+x$/);
 
   // Running SCORE starts at zero and is always visible.
   await expect(page.getByTestId("score-total")).toBeVisible();

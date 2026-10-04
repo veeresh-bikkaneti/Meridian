@@ -168,6 +168,32 @@ function main() {
       });
       if (v.length > 0) violations.push(...v.map((m) => `${file}: ${m}`));
 
+      // Difficulty tier: optional on legacy records, but any present value
+      // must be an integer 1–5 — fail closed on anything else. Stamped at
+      // build time by scripts/build-geonames-dataset.mjs (tierFor).
+      if (place.difficulty !== undefined) {
+        const d = place.difficulty;
+        if (!Number.isInteger(d) || d < 1 || d > 5) {
+          violations.push(
+            `${tag}: invalid difficulty ${JSON.stringify(d)} — must be an integer 1–5`,
+          );
+        }
+      }
+
+      // Subdivision display name: optional on legacy records, but any
+      // present value must be a non-empty string — fail closed on anything
+      // else. Stamped at build time from the row's admin1 code
+      // (admin1CodesASCII.txt); the label builder fails closed to the bare
+      // place name when it is absent.
+      if (place.subdivision !== undefined) {
+        const s = place.subdivision;
+        if (typeof s !== "string" || s.trim().length === 0) {
+          violations.push(
+            `${tag}: invalid subdivision ${JSON.stringify(s)} — must be a non-empty string`,
+          );
+        }
+      }
+
       // History hook sentences: shape gate. Wikipedia-extract histories were
       // proved verbatim by the merge-time gate; curated notable notes
       // (src/game/data/notable-notes.json) are Veeresh-approved instead.
@@ -185,6 +211,16 @@ function main() {
         if (typeof h === "string" && (typeof place.wiki !== "string" || place.wiki.length === 0)) {
           violations.push(`${tag}: history present without wiki attribution slug`);
         }
+      }
+      // Pairing invariant (both directions): a wiki attribution slug with no
+      // history extract is an unpaired record — the slug must travel with
+      // the extract it attributes. history-without-wiki is gated above.
+      if (
+        typeof place.wiki === "string" &&
+        place.wiki.length > 0 &&
+        (typeof place.history !== "string" || place.history.length === 0)
+      ) {
+        violations.push(`${tag}: wiki attribution slug present without history extract`);
       }
       checked++;
     }

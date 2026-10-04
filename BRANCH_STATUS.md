@@ -4,7 +4,7 @@ Veeresh's bug report (2026-10-03): "during the play if player zooms in to drop a
 
 Approved design (2026-10-01, do not redesign): on a WRONG answer the camera pulls back to fit the player's pin AND the true location in one frame (framing scales with the error), draws the connecting line with the distance labeled, and the miss card leads with distance + small place summary.
 
-Base: `origin/main` at `aa69434`.
+Base: `origin/main` at `aa69434`; merged `origin/main` at `79c6e5a` (PRs #48 attribution popover, #49 easy-repeat band pools, difficulty tiers + subdivision labels) — clean except this file.
 
 ## Done
 - [x] Worktree + branch `fix/wrong-answer-reveal-zoomout` from origin/main; node_modules symlinked; AGENTS.md read
