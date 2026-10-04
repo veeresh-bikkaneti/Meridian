@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 8177,
+    "attempt": 8121,
+    "place_id": "gn-2177090",
+    "input": {
+      "place": {
+        "place_id": "gn-2177090",
+        "name": "Ballarat East",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.56667,
+        "lon": 143.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballarat East",
+          "url": "https://en.wikipedia.org/wiki/Ballarat_East",
+          "text": "Ballarat East is a suburb of Ballarat in Victoria, Australia. From 1857 until 1921 the suburb had its own council (see below). The suburb covers a large area east of the city centre. It is the oldest urban area in Ballarat and was the site of many goldmines, as well as of the Eureka Rebellion.\nThe population of Ballarat East at the 2021 census was 5,937, making it the fourth most populated suburb in the Ballarat area. The former town retains much of its shambolic character, particularly its winding and unplanned streets which arose organically among the many gold mines. Much of the suburb is subject to heritage protection because of its local historical significance, with many dwellings dating from the 1860s to the 1940s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "ballarat east",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ballarat",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8178,
+    "attempt": 8122,
+    "place_id": "gn-2186216",
+    "input": {
+      "place": {
+        "place_id": "gn-2186216",
+        "name": "Ngaio",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.25039,
+        "lon": 174.77394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ngaio, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Ngaio,_New_Zealand",
+          "text": "Ngaio (Māori: [ˈŋaio], colloquially  NY-oh,) is an inner suburb of Wellington, the capital city of New Zealand. It is situated on the slopes of Mount Kaukau, 3500 metres north of the city's CBD. It was settled in the 1840s and many of its streets are named after early settler families. Ngaio was originally a logging community known first as Upper Kaiwarra, then as Crofton until 1908. The area was administratively part of a separate local authority called the Onslow Borough Council which amalgamated with Wellington City in 1919.\nNgaio takes its name from a New Zealand native tree, the ngaio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ngaio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8179,
+    "attempt": 8123,
+    "place_id": "gn-2409829",
+    "input": {
+      "place": {
+        "place_id": "gn-2409829",
+        "name": "Bumbuna",
+        "country": "Sierra Leone",
+        "subdivision": "Northern Province",
+        "lat": 9.04466,
+        "lon": -11.74576
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bumbuna",
+          "url": "https://en.wikipedia.org/wiki/Bumbuna",
+          "text": "Bumbuna is a town in the central of Tonkolili District in the Northern Province of Sierra Leone. The town lies about 30 miles from the district capital of Magburaka and approximately 124 miles (by road) northeast of Freetown.\nThe areas in and around Bumbuna is extremely rich in iron ore and is home to Bumbuna Dam, the largest hydroelectric power station in the country. The population of Bumbuna was 4,051 in the 2004 census, and is made up of many different ethnic groups. Such as the Limba, Temne, Mandingo, Loko etc. However the Limba constitutes the largest population in Bumbuna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "bumbuna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8180,
+    "attempt": 8124,
+    "place_id": "gn-2562529",
+    "input": {
+      "place": {
+        "place_id": "gn-2562529",
+        "name": "Santa Luċija",
+        "country": "Malta",
+        "subdivision": "Saint Lucia",
+        "lat": 35.86278,
+        "lon": 14.5075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Luċija",
+          "url": "https://en.wikipedia.org/wiki/Santa_Lu%C4%8Bija",
+          "text": "Santa Luċija (English: Saint Lucia) is a village in the Southern Region of Malta. It is one of the modern towns developed in Malta during the 20th century. By virtue of an article which appeared in Government Gazette of 7 July 1961, its location is defined as the area between Tal-Barrani (Tarxien By-Pass) and Luqa By-Pass. Santa Luċija was named after a 16th-century chapel located in the vicinity.  The Parish Church is dedicated to Pope Pius X. It is home of the Chinese Garden of Serenity (a Chinese-built public garden). Located there is a hypogeum which was discovered in 1973.\nThe population of Santa Luċija was 2,666 in July 2024. This included 1,343 males and 1,323 females; 2,498 Maltese nationals and 168 foreign nationals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "santa lucija",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lucija",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8181,
+    "attempt": 8125,
+    "place_id": "gn-2647240",
+    "input": {
+      "place": {
+        "place_id": "gn-2647240",
+        "name": "Headcorn",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.16966,
+        "lon": 0.62433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Headcorn",
+          "url": "https://en.wikipedia.org/wiki/Headcorn",
+          "text": "Headcorn is a village and civil parish in the borough of Maidstone in Kent, England. The parish is on the floodplain of the River Beult south east of Maidstone.\nThe village is 8 mi (13 km) southeast of Maidstone, on the A274 road to Tenterden. In addition to the parish church, dedicated to saints Peter and Paul, there are Baptist and Roman Catholic churches.\nThere is a small airfield located nearby, where there is an aviation museum and a parachuting centre. Headcorn Parachute Club is the only skydiving club in Kent and is home to national champions and world-record holders.\nHeadcorn railway station is on the Kent Downs line between London and Dover. It was opened on 31 August 1842. On 1 December the same year, the South Eastern Railway opened the second section of its main line onward to Ashford. By 1844, trains were running from London to Dover.\nIn June 1865 Charles Dickens was involved in a serious railway accident to the west of the village in Staplehurst on a bridge over the River Beult."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "headcorn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8182,
+    "attempt": 8126,
+    "place_id": "gn-2649372",
+    "input": {
+      "place": {
+        "place_id": "gn-2649372",
+        "name": "Fishguard",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.99376,
+        "lon": -4.97631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fishguard",
+          "url": "https://en.wikipedia.org/wiki/Fishguard",
+          "text": "Fishguard (Welsh: Abergwaun, meaning 'Mouth of the River Gwaun') is a coastal town in Pembrokeshire, Wales, with a population of 3,400 (rounded to the nearest 100) as of the 2021 census. Modern Fishguard consists of two parts, Lower Fishguard and the \"Main Town\". Fishguard and Goodwick are twin towns with a joint Town Council.\nLower Fishguard is believed to be the site of the original hamlet from which modern Fishguard has grown. In a deep valley where the River Gwaun meets the sea, hence the Welsh name for Fishguard. It is a typical fishing village with a short tidal quay. The settlement stretches along the north slope of the valley.\nThe main town contains the parish church, the High Street and most of the modern development, and lies upon the hill to the south of Lower Fishguard, to which it is joined by a steep and winding road. The west part of the town that faces Goodwick grew in the first decade of the 20th century with the development of Fishguard Harbour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "fishguard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8183,
+    "attempt": 8127,
+    "place_id": "gn-2887290",
+    "input": {
+      "place": {
+        "place_id": "gn-2887290",
+        "name": "Klütz",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 53.96493,
+        "lon": 11.16386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Klütz",
+          "url": "https://en.wikipedia.org/wiki/Kl%C3%BCtz",
+          "text": "Klütz (German pronunciation: [ˈklyːts] ) is a town in the Nordwestmecklenburg district, in Mecklenburg-Western Pomerania, Germany. It is situated near the Baltic Sea coast, 22 km northwest of Wismar, and 33 km northeast of Lübeck. It is famous for the manor house Bothmer Castle, located just outside the village. In the centre of the village lies the medieval Brick Gothic village church, dedicated to Our Lady. There is also a centre of literature named after writer Uwe Johnson in the town.\nIt is close to the cities of Lübeck, Wismar and Schwerin and is part of the Hamburg Metropolitan Region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "klutz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8184,
+    "attempt": 8128,
+    "place_id": "gn-3121135",
+    "input": {
+      "place": {
+        "place_id": "gn-3121135",
+        "name": "Graus",
+        "country": "Spain",
+        "subdivision": "Aragon",
+        "lat": 42.18885,
+        "lon": 0.33749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Graus",
+          "url": "https://en.wikipedia.org/wiki/Graus",
+          "text": "Graus (Spanish: [ˈɡɾaws]) is a village in the Spanish province of Huesca, located in the Pyrenees at the confluence of rivers Esera and Isabena. It is the administrative capital of the region. It is one of the areas of Aragon in which is still preserved the Aragonese language.\nThe Battle of Graus took place here, and Spanish philosopher Baltasar Gracián y Morales was exiled here. During the Spanish Civil War, the village of Graus served as a fairly important local commercial center with 2,600 inhabitants around 1936. It was a libertarian stronghold and a centre of collectivization at that time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "graus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8185,
+    "attempt": 8129,
+    "place_id": "gn-3195674",
+    "input": {
+      "place": {
+        "place_id": "gn-3195674",
+        "name": "Mali Lošinj",
+        "country": "Croatia",
+        "subdivision": "Primorje-Gorski Kotar",
+        "lat": 44.53056,
+        "lon": 14.46861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mali Lošinj",
+          "url": "https://en.wikipedia.org/wiki/Mali_Lo%C5%A1inj",
+          "text": "Mali Lošinj is a town in the Primorje-Gorski Kotar County, on the island of Lošinj, in western Croatia. At the time of the 2021 census, there were 7,537 inhabitants, of whom 86% were Croats. The town of Mali Lošinj itself had an urban population of 5,561.\nThe favourable climatic conditions, the construction of hotels and resorts, foresting, and maintenance of beaches have led to the intensive development of tourism. The town is located in the most protected part of the Lošinj bay, on the eastern, sunny side of the island.\nThe asteroid 10415 Mali Lošinj is named after this town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "mali losinj",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mali",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "losinj",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8186,
+    "attempt": 8130,
+    "place_id": "gn-3581066",
+    "input": {
+      "place": {
+        "place_id": "gn-3581066",
+        "name": "Shipyard",
+        "country": "Belize",
+        "subdivision": "Orange Walk District",
+        "lat": 17.89382,
+        "lon": -88.65452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shipyard, Belize",
+          "url": "https://en.wikipedia.org/wiki/Shipyard,_Belize",
+          "text": "Shipyard, also called Shipyard Colony, is a Mennonite settlement that is also an administrative village in the Orange Walk District of Belize.\nShipyard was founded in 1958 by Old Colony Mennonites from Chihuahua and Durango states in Mexico. It consists of more than 20 camps (German: \"dörfer\"), which have German names like \"Blumenort\" or \"Hochfeld\", but outside the Mennonite community they are referred to only by numbers, e. g. \"Camp 5\" instead of \"Reinfeld\".\nMost of the population of Shipyard are Plautdietsch-speaking ethnic Mennonites, living in a very integrated community where most of them work as carpenters, farmers and mechanics. Most Mennonites of Shipyard are quite traditional in lifestyle, still using horse and buggy for transportation and tractors with steel wheels for fieldwork. Compared with other Mennonites in Belize, Shipyard is more conservative than Spanish Lookout and Blue Creek, but more modern concerning the use of technology than Upper Barton Creek, Springfield and daughter colonies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "shipyard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8187,
+    "attempt": 8131,
+    "place_id": "gn-3590788",
+    "input": {
+      "place": {
+        "place_id": "gn-3590788",
+        "name": "Río Hondo",
+        "country": "Guatemala",
+        "subdivision": "Zacapa",
+        "lat": 15.04505,
+        "lon": -89.58523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Hondo, Zacapa",
+          "url": "https://en.wikipedia.org/wiki/R%C3%ADo_Hondo,_Zacapa",
+          "text": "Río Hondo is a municipality in the Guatemalan department of Zacapa.\nRio Hondo, Which means \"Deep River\" in the English language, is known for its crystal clear river.\nRio Hondo is mainly made up of farmlands; the likes of which include mango groves, lime groves, avocado groves, cattle, and tilapia farms.  \nThe pueblo of Llano Verde is home to Esperanza de Vida, a large Christian humanitarian organization. Under the direction of Carlos Vargas, the Esperanza de Vida campus includes a retirement home, a nutrition center, an orphanage, a private K-12 school (Liberty College), a missions house, and St. Luke's Hospital. These centers are open to the community.  \nCalle 9 or Road 9 (Called \"La Ruta\" or \"The Route\" by the locals) is a major road that goes through Rio Hondo. It comes from Guatemala City and ends end Puerto Barrios."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "rio hondo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hondo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8188,
+    "attempt": 8132,
+    "place_id": "gn-3823864",
+    "input": {
+      "place": {
+        "place_id": "gn-3823864",
+        "name": "Tlilapan",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.8056,
+        "lon": -97.09867
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlilapan",
+          "url": "https://en.wikipedia.org/wiki/Tlilapan",
+          "text": "Tlilapan is a municipality located in the central zone in the Mexican state of Veracruz, about 85 kilometres (53 mi) from the state capital of Xalapa. It has an area of 23.85 square kilometres (9.21 sq mi). It is located at 18°48′N 97°06′W. The name comes from the Nahuatl language, meaning \"Black creek\". The village has existed since the 16th century and, following national independence, and was designated a municipality along with Orizaba, San Andrés Tenejapan, San Francisco Necoxtla, and San Juan del Rio. The municipal cemetery was established in 1880 and, in 1916 the first Municipal President was named."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "tlilapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8189,
+    "attempt": 8133,
+    "place_id": "gn-5152794",
+    "input": {
+      "place": {
+        "place_id": "gn-5152794",
+        "name": "East Palestine",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.83395,
+        "lon": -80.54035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Palestine, Ohio",
+          "url": "https://en.wikipedia.org/wiki/East_Palestine,_Ohio",
+          "text": "East Palestine ( PAL-ə-STYNE) is a village in Columbiana County, Ohio, United States. The population was 4,761 at the 2020 census. It is located on the Ohio–Pennsylvania border, about 20 miles (32 km) south of Youngstown and 40 miles (64 km) northwest of Pittsburgh.\nThe village was home to industries in ceramics and tire manufacturing from the 1870s until the mid-1960s. East Palestine is located along the Norfolk Southern Railway and has a freight train station. In 2023, the village was near the site of a major train derailment that spilled vinyl chloride and triggered significant evacuations in the jurisdiction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "east palestine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palestine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8190,
+    "attempt": 8134,
+    "place_id": "gn-5197842",
+    "input": {
+      "place": {
+        "place_id": "gn-5197842",
+        "name": "Lewisburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.96453,
+        "lon": -76.88441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lewisburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Lewisburg,_Pennsylvania",
+          "text": "Lewisburg is a borough in Union County, Pennsylvania, United States, 30 miles (48 km) south by southeast of Williamsport and 60 miles (97 km) north of Harrisburg. The population was 5,158 as of the 2020 census. It is the county seat of Union County. Located in central Pennsylvania's Susquehanna Valley, on the West Branch Susquehanna River, it is home to Bucknell University. Its 19th-century downtown, centered around Market Street, is listed on the National Register of Historic Places. Lewisburg is the principal city of the Lewisburg Micropolitan Statistical Area, and is also part of the larger Bloomsburg–Berwick–Sunbury Combined Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "lewisburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8191,
+    "attempt": 8135,
+    "place_id": "gn-5747420",
+    "input": {
+      "place": {
+        "place_id": "gn-5747420",
+        "name": "Raleigh Hills",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.48067,
+        "lon": -122.76204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raleigh Hills, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Raleigh_Hills,_Oregon",
+          "text": "Raleigh Hills is a census-designated place and neighborhood in Washington County, Oregon within the metropolitan area of Portland, Oregon, United States. It is located in the southwest hills in Washington County, with Beaverton to the west, West Slope to the north, and Progress and Garden Home to the south. As of the 2020 census, Raleigh Hills had a population of 6,196.\nRaleigh Hills is located at the intersection of Oregon Routes 10 and 210. Fire protection and EMS services are provided through Tualatin Valley Fire and Rescue. Raleigh Hills is also the location of the first ever New Seasons Market."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "raleigh hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "raleigh",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8192,
+    "attempt": 8136,
+    "place_id": "gn-5949493",
+    "input": {
+      "place": {
+        "place_id": "gn-5949493",
+        "name": "Espanola",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 46.25837,
+        "lon": -81.76649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Espanola, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Espanola,_Ontario",
+          "text": "Espanola (2021 population census 5,185) is a town in Northern Ontario, Canada, in the Sudbury District. It is situated on the Spanish River, approximately 70 kilometres (43 mi) west of downtown Sudbury, and just south of the junction of Highway 6 and Highway 17.\nThe town is where the first experimental rules for the sport of ringette were created in 1963 by Mirl Arthur \"Red\" McCarthy using a group of local high school girls. Today, Espanola is considered \"The Home of Ringette\" while North Bay, Ontario, is considered \"The Birthplace of Ringette\" though the title is often shared by both."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "espanola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8193,
+    "attempt": 8137,
+    "place_id": "gn-6534450",
+    "input": {
+      "place": {
+        "place_id": "gn-6534450",
+        "name": "San Fermo della Battaglia",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.80868,
+        "lon": 9.04744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Fermo della Battaglia",
+          "url": "https://en.wikipedia.org/wiki/San_Fermo_della_Battaglia",
+          "text": "San Fermo della Battaglia is a comune (municipality) in the Province of Como in the Italian region of Lombardy, located about 40 kilometres (25 mi) north of Milan and about 3 kilometres (2 mi) southwest of Como. As of 31 December 2004, it had a population of 4,255 and an area of 3.1 square kilometres (1.2 mi2).\nWith della Battaglia meaning \"of the battle\", the town is named after the battle which took place there between Garibaldi's Hunters of the Alps (Cacciatori delle Alpi) and Austrian militaries in 1859.\nSan Fermo della Battaglia borders the following municipalities: Como, Montano Lucino."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "san fermo della battaglia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fermo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "della",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "battaglia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8194,
+    "attempt": 8138,
+    "place_id": "gn-681648",
+    "input": {
+      "place": {
+        "place_id": "gn-681648",
+        "name": "Ciorogârla",
+        "country": "Romania",
+        "subdivision": "Ilfov",
+        "lat": 44.4425,
+        "lon": 25.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciorogârla",
+          "url": "https://en.wikipedia.org/wiki/Ciorog%C3%A2rla",
+          "text": "Ciorogârla is a commune in the southwestern part of Ilfov County, Muntenia, Romania. It is composed of two villages, Ciorogârla and Dârvari. The Ciorogârla River flows through this location; its name, of Slavic origin, means \"murky stream\".\nThe commune is situated in the Wallachian Plain, on the banks of the Ciorogârla River. It is located in the western part of Ilfov County, about 21 km (13 mi) from Bucharest, on the border with Giurgiu County.\nThe Samurcășești Monastery, located in Ciorogârla village, was founded in 1808 by vornic Constantin Samurcaș; the church interior was painted by Gheorghe Tattarescu in 1870. Severely affected by the 1940 Vrancea earthquake, the church was demolished and rebuild soon after, under the supervision of the Ilfov County Prefect, Tudorancea Ciurea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "ciorogarla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8195,
+    "attempt": 8139,
+    "place_id": "gn-6947636",
+    "input": {
+      "place": {
+        "place_id": "gn-6947636",
+        "name": "Heybeliada",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 40.8759,
+        "lon": 29.0894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heybeliada",
+          "url": "https://en.wikipedia.org/wiki/Heybeliada",
+          "text": "Heybeliada, or Heybeli Ada, (Greek: Χάλκη) is the second largest of the Princes' Islands (Adalar) in the Sea of Marmara, near Istanbul, Turkey. It is officially a neighbourhood in the municipality and district of Adalar, Istanbul, Turkey. Its population is 4,424 (2022). Its name, meaning 'with a saddlebag' in Turkish, is supposed to refer to the valley between two hills.\nThe island was known as Halki, Halkitis (Greek: Χαλκίτις) and Demonesos (Δημόνησος) in antiquity, the first two toponyms deriving from the Greek word halkos (Greek: χαλκός), meaning copper. The island was famous for its copper and copper ores in antiquity.\nIn winter, the island's population is approximately 4400, but in summer, when owners of summer houses return, the population swells to approximately 30,000.\nLaunched in 2008, TCG Heybeliada, used by the Turkish Navy is named after the island.\nUntil 2020, the only vehicles permitted on the island were ambulances, fire tenders, and police vehicles. The only official form of transport was by horse-drawn phaeton. However, as tourism steadily increased, animal rights activists became increasingly concerned about the horses' welfare, and so the phaetons were withdrawn in favour of electric vehicles.\nThe island is served by Şehir Hatları ferries from Kabataş and Eminönü on the European side of İstanbul and Kadıköy and Bostancı on the Asian side."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "heybeliada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8196,
+    "attempt": 8140,
+    "place_id": "gn-936953",
+    "input": {
+      "place": {
+        "place_id": "gn-936953",
+        "name": "Zoar",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.4956,
+        "lon": 21.44373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zoar, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Zoar,_South_Africa",
+          "text": "Zoar is a settlement in Garden Route District Municipality in the Western Cape province of South Africa.\nThe village and mission station is 21 km east of Ladismith. It was founded by a group of over 200 German Separatists seeking escape from religious persecution in their homeland, on the farm Elandsfontein in 1817 and named after Zoar on the Red Sea, mentioned in the Bible (Gen. 14:2-8). The name at first meant ‘insignificance’, but when Lot fled thither from Sodom, it acquired the meaning of  ‘haven’. The Seweweekspoort pass and Seweweekspoort Peak are located to the north of the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "zoar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 8075,
+    "attempt": 8021,
+    "place_id": "gn-2940430",
+    "input": {
+      "place": {
+        "place_id": "gn-2940430",
+        "name": "Cadenberge",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.76926,
+        "lon": 9.06269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cadenberge",
+          "url": "https://en.wikipedia.org/wiki/Cadenberge",
+          "text": "Cadenberge (in High German, in Low Saxon: Cumbarg) is a municipality in the district of Cuxhaven, in Lower Saxony, Germany. Since 1 November 2016, the former municipality Geversdorf is part of the municipality Cadenberge.\nCadenberge belonged to the Prince-Archbishopric of Bremen, established in 1180. In 1648 the Prince-Archbishopric was transformed into the Duchy of Bremen, which was first ruled in personal union by the Swedish Crown - interrupted by a Danish occupation (1712-1715) - and from 1715 on by the Hanoverian Crown. The Kingdom of Hanover incorporated the Duchy in a real union and the Ducal territory became part of the new Stade Region, established in 1823."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "cadenberge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8076,
+    "attempt": 8022,
+    "place_id": "gn-3130911",
+    "input": {
+      "place": {
+        "place_id": "gn-3130911",
+        "name": "Agramunt",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.78686,
+        "lon": 1.09683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agramunt",
+          "url": "https://en.wikipedia.org/wiki/Agramunt",
+          "text": "Agramunt (Catalan pronunciation: [aɣɾaˈmun]) is a municipality (municipi) in the comarca of the Urgell in Catalonia. It is situated in the north of the comarca, near the border with the Noguera. It has a population of 5,653 (register office, 2025) . The town centre is protected as a historic-artistic monument, especially the Roman church of Santa Maria which dates from the 12th-13th centuries. The town is also known for the production of torró d'Agramunt, a sort of confectionery traditionally eaten at Christmas. The town is linked to Tàrrega by the C-240 road, to Cervera by the L-303 road and to Artesa de Segre by the L-302 road. The Urgell canal passes through the municipality, crossing the Montclar range through a tunnel. The municipality includes the exclave of Montclar d'Urgell to the north-west.\nHistorically, a Jewish community existed during medieval times. In 1272, Shlomo ibn Aderet mediated a dispute between the Jewish communities of Agramunt and Lérida. The Jewish and muslim communities were expelled in the 1492 expulsion of the Jews. In the 1980s, a street in the historical Jewish quarter, also called a Call (the term is thought to have originated from the word kahal in Hebrew, meaning \"community\"), was renamed to \"carrer del Call,\" or \"Street of the Call.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "agramunt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8077,
+    "attempt": 8023,
+    "place_id": "gn-3171992",
+    "input": {
+      "place": {
+        "place_id": "gn-3171992",
+        "name": "Orani",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 40.252,
+        "lon": 9.18149
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orani, Sardinia",
+          "url": "https://en.wikipedia.org/wiki/Orani,_Sardinia",
+          "text": "Orani (Sardinian: Orane) is a town and comune (municipality) in the Province of Nuoro in the autonomous island region of Sardinia in Italy, located about 110 kilometres (68 mi) north of Cagliari and about 15 kilometres (9 mi) southwest of Nuoro. It has 2,576 inhabitants.\nOrani sits at an altitude of 526 metres (1,726 ft), at the foot of Mount Gonare, in the heart of the Barbagia region. Orani excels in handicrafts, and is famous for its stonework, carpentry, and metalwork, and for tailors specializing in the use of traditional Sardinian velvety.\nOrani borders the municipalities of Benetutti, Bolotana, Illorai, Mamoiada, Nuoro, Oniferi, Orotelli, Ottana, and Sarule."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "orani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8078,
+    "attempt": 8024,
+    "place_id": "gn-3518174",
+    "input": {
+      "place": {
+        "place_id": "gn-3518174",
+        "name": "San Pablito",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 20.30071,
+        "lon": -98.16201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pablito, Puebla",
+          "url": "https://en.wikipedia.org/wiki/San_Pablito,_Puebla",
+          "text": "San Pablito is a small town located on the side of the Guajalote Mountain in the Sierra Norte de Puebla mountain region in central east Mexico. It belongs to the Pahuatlán municipality of the state of Puebla. Culturally it is dominated by the Otomi although it is part of the La Huasteca region.\nSan Pablito is best known for the commercial production of a bark paper called amate as a handcraft. This paper is mostly sold to Nahua painters in Guerrero, but it is also sold nationally and internationally on its own. The paper is made much the way it was before the arrival of the Spanish. Originally, it was made only by the area's shamans for ritual purpose but today commercial production is mostly done by the town's women and children as many men have left to work in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "san pablito",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pablito",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8079,
+    "attempt": 8025,
+    "place_id": "gn-5100559",
+    "input": {
+      "place": {
+        "place_id": "gn-5100559",
+        "name": "Little Silver",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.33678,
+        "lon": -74.04708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Little Silver, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Little_Silver,_New_Jersey",
+          "text": "Little Silver is a borough in Monmouth County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 6,131, an increase of 181 (+3.0%) from the 2010 census count of 5,950, which in turn reflected a drop of 220 (−3.6%) from the 6,170 counted in the 2000 census.\nLittle Silver was established with a King's land grant in 1663 and settled in 1667. Little Silver was incorporated as a borough by an act of the New Jersey Legislature on March 19, 1923, from portions of Shrewsbury Township, based on the results of a referendum held on April 28, 1923."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "little silver",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "little",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "silver",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8080,
+    "attempt": 8026,
+    "place_id": "gn-5488600",
+    "input": {
+      "place": {
+        "place_id": "gn-5488600",
+        "name": "Ruidoso Downs",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 33.32897,
+        "lon": -105.60443
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruidoso Downs, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Ruidoso_Downs,_New_Mexico",
+          "text": "Ruidoso Downs is a city in Lincoln County, New Mexico, United States, located within the Lincoln National Forest. As of the 2020 census, Ruidoso Downs had a population of 2,620. Originally incorporated as a village, it became a city in May 2002. Known locally as \"the Downs\", Ruidoso Downs is a municipality separate from and adjacent to the Village of Ruidoso. The city, located along U.S. Route 70, is named after the Ruidoso Downs Race Track, which is located in the city along with the Billy the Kid Casino. The city is home to the Hubbard Museum of the American West."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "ruidoso downs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ruidoso",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "downs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8081,
+    "attempt": 8027,
+    "place_id": "gn-6159980",
+    "input": {
+      "place": {
+        "place_id": "gn-6159980",
+        "name": "Sussex",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 45.72266,
+        "lon": -65.50663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sussex, New Brunswick",
+          "url": "https://en.wikipedia.org/wiki/Sussex,_New_Brunswick",
+          "text": "Sussex is a town in Kings County, New Brunswick, Canada.  \nSussex is located in south central New Brunswick, between the province's three largest cities, Saint John, Moncton, and Fredericton.\nSussex straddles the Kennebecasis River, 70 km (43 mi) northeast of Saint John, and is a major dairy product producer in the province. It is home to Atlantic Canada's largest hot air balloon festival.\nOn 1 January 2023, Sussex amalgamated with the village of Sussex Corner and part of the local service district of the parish of Sussex. Revised census figures have not been released, although combining the 2016 census numbers the total population would be approximately 5,900."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "sussex",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8082,
+    "attempt": 8028,
+    "place_id": "gn-772915",
+    "input": {
+      "place": {
+        "place_id": "gn-772915",
+        "name": "Drzewica",
+        "country": "Poland",
+        "subdivision": "Łódź Voivodeship",
+        "lat": 51.45085,
+        "lon": 20.47701
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Drzewica",
+          "url": "https://en.wikipedia.org/wiki/Drzewica",
+          "text": "Drzewica [dʐɛˈvʲit͡sa] is a town in Opoczno County, Łódź Voivodeship, Poland, with 3,778 inhabitants as of December 2021. From 1975 to 1998 the town was a part of Radom Voivodeship. Located on the Drzewiczka river (a tributary to the Pilica), in the northwestern corner of the historic province of Lesser Poland, Drzewica is home to Gerlach, a renowned cutlery manufacturer, founded in 1760 in Warsaw (since 1886 in Drzewica). In the first half of the 16th century, the Archbishop of Gniezno and Primate of Poland Maciej Drzewicki built here a rectangular-shaped castle, surrounded by a moat. The castle burned in 1814 and now is a well-preserved ruin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "drzewica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8083,
+    "attempt": 8029,
+    "place_id": "gn-8348587",
+    "input": {
+      "place": {
+        "place_id": "gn-8348587",
+        "name": "Morphettville",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.98852,
+        "lon": 138.53979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morphettville, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Morphettville,_South_Australia",
+          "text": "Morphettville is a suburb of Adelaide, South Australia in the City of Marion.\nThe major feature of the suburb is the Morphettville Racecourse (horseracing track). The tram barn storage and maintenance facility is across Morphett Road from the racecourse, in the neighbouring suburb of Glengowrie opening in October 1986. The southern part of the suburb is predominantly residential, with the Sturt River flowing through from south to northwest. The Morphett Arms Hotel is on the western side of Morphett Road, Glengowrie. The Torrens Transit Morphettville Depot is on the corner of Morphett Road and Oaklands road, the former site of Adelaide's largest drive-in cinema, the Metro Drive-in. \nBoth the suburb and the racecourse were named after Sir John Morphett MLC, a prominent early settler. \nLocation \nMorphettville is bounded by the Glenelg tram line in the north, Morphett Road on the West, Park Terrace and Hendrie Street in the East and Oaklands Road in the South. It is home to the Morphettville Park Football Club at Kellett Reserve, Denham Avenue, the Dara School in Gordon Terrace, a school for gifted students. Gymnastics South Australia is located in Rosedale Avenue right behind the Marion Leisure and Fitness Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "morphettville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8084,
+    "attempt": 8030,
+    "place_id": "gn-12718706",
+    "input": {
+      "place": {
+        "place_id": "gn-12718706",
+        "name": "Osire",
+        "country": "Namibia",
+        "subdivision": "Otjozondjupa Region",
+        "lat": -21.07391,
+        "lon": 17.36599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osire",
+          "url": "https://en.wikipedia.org/wiki/Osire",
+          "text": "Osire is a refugee camp in central Namibia, situated 200 km north of the capital Windhoek next to the main road C30 from Gobabis to Otjiwarongo. It was established in 1992 to accommodate refugees from Angola, Burundi, the Democratic Republic of the Congo, Rwanda and Somalia. The camp grew quickly in its early years, reaching a peak of 20,000 inhabitants in 1998. Since then the refugee population of Osire decreased steadily, approaching 6,500 in 2010, and 3,000 in 2014. Camp numbers rose sharply again with the Western DR Congo clashes.\nThe camp used to be a detention centre during the South African rule over Namibian territory. Early in its existence as refugee camp maltreatment of inhabitants, retaliation, harassment and riots were reported. In 2009 a group of 41 people fled the camp with the help of a local Human Rights organisation after allegedly having received death threats. This group left Namibia via the Mamuno Border Post but was refused entry to Botswana and as a result stayed in No Man's Land between Namibia and Botswana for three months until being arrested by Botswana authorities and deported to the Democratic Republic of the Congo.\nToday, however, UNHCR regards the camp as one of the best managed in the world, due to its provisioning of formal school education, with 39.6% of refugees completing secondary schooling. The settlement further has a police station and a clinic administered by the Ministry of Health and Social Services and meeting the national standards. The Ministry of Home Affairs and Immigration oversees technical aspects of the settlement, where 60% of homes have electricity and 40% have internet access. African Humanitarian Action supports the health sector, food distribution, community services and. World Food Program supports the general food ration and the supplementary feeding program in the camp. Over 40% of all households own small kitchen gardens on which they group local vegetables for sale and own consumption. The most serious threats facing residents are from climate change and cuts to the UNHCR and USAID budgets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "osire",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8085,
+    "attempt": 8031,
+    "place_id": "gn-1694089",
+    "input": {
+      "place": {
+        "place_id": "gn-1694089",
+        "name": "Peñablanca",
+        "country": "Philippines",
+        "subdivision": "Cagayan Valley",
+        "lat": 17.63342,
+        "lon": 121.78117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peñablanca",
+          "url": "https://en.wikipedia.org/wiki/Pe%C3%B1ablanca",
+          "text": "Peñablanca, officially the Municipality of Peñablanca (Ibanag: Ili nat Peñablanca; Ilocano: Ili ti Peñablanca; Tagalog: Bayan ng Peñablanca), is a municipality in the province of Cagayan, Philippines. According to the 2024 census, it has a population of 50,856 people.\nPeñablanca is home to the charcoal-drawn Peñablanca petrographs and the Callao Limeston Formation. Both the Peñablanca Petrographs and the Callao Limestone Formation are included as tentative sites of the Philippines for future inclusion in the UNESCO World Heritage List. The Callao Limestone Formation has at least 93 archaeological sites that yielded stone tools of Paleolithic industry and bones and shells of animals still living in the vicinity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "penablanca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8086,
+    "attempt": 8032,
+    "place_id": "gn-2076923",
+    "input": {
+      "place": {
+        "place_id": "gn-2076923",
+        "name": "Bedfordale",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.17406,
+        "lon": 116.0504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedfordale, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Bedfordale,_Western_Australia",
+          "text": "Bedfordale is a semi-rural suburb in the south-east of Perth, Western Australia, located within the City of Armadale. Located approximately 40 km from Perth in the Darling Range, some of the local attractions include Churchman Brook Dam, Wungong Dam and the Elizabethan Pub.  The area is popular for hiking and cycling. Being close to Armadale railway station provides easy access to the city by train, however Bedfordale is not served by any public transport.\nIt was first named as a townsite in 1905.\nThe area is named after Admiral Sir Frederick Denham Bedford (1838–1913), Governor of Western Australia from 24 March 1903 to 22 April 1909. Governor Bedford chose some of the older street names to commemorate several famous Admirals.\nThe suburb hosts the Elizabethan Village which has full size replicas of Anne Hathaway's cottage and Shakespeare's Birthplace, built by British engineer Leo Fowler in the 1970s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "bedfordale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8087,
+    "attempt": 8033,
+    "place_id": "gn-2616504",
+    "input": {
+      "place": {
+        "place_id": "gn-2616504",
+        "name": "Nexø",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.06067,
+        "lon": 15.13058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nexø",
+          "url": "https://en.wikipedia.org/wiki/Nex%C3%B8",
+          "text": "Nexø, sometimes spelled Neksø, is a town on the east coast of the Baltic island of Bornholm, Denmark. With a population of 3,645 (as of 1 January 2026), it is the second largest town, as well as the largest fishing port on the island. Fishing was previously the mainstay of the town's economy. Nexø is also the site of a distillery (Bornholmske Spiritfabrik ApS) and a mustard factory (Bornholmersennep ApS). The town is also a port of call for the passenger ferries linking Bornholm with Kołobrzeg in Poland. Dueodde, the largest beach on Bornholm, is located south of Nexø, in the southeastern corner of the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "nex",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8088,
+    "attempt": 8034,
+    "place_id": "gn-2635101",
+    "input": {
+      "place": {
+        "place_id": "gn-2635101",
+        "name": "Uppingham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.58803,
+        "lon": -0.72272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uppingham",
+          "url": "https://en.wikipedia.org/wiki/Uppingham",
+          "text": "Uppingham is a market town and civil parish in the ceremonial county of Rutland, England, off the A47 between Leicester and Peterborough, 6 miles (10 km) south of Oakham. It had a population of 4,745 according to the 2011 census, estimated at 4,853 in 2019.\nThe town is known for its eponymous public school. With its art galleries Uppingham has become a popular destination for art lovers. Uppingham was named \"best place to live in the Midlands in 2022\" by The Times newspaper, who commented on the town by calling it \"a discerning market town with art, heart and smarts — plus the magnificent Rutland Water\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "uppingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8089,
+    "attempt": 8035,
+    "place_id": "gn-2641510",
+    "input": {
+      "place": {
+        "place_id": "gn-2641510",
+        "name": "New Tredegar",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.72051,
+        "lon": -3.2413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Tredegar",
+          "url": "https://en.wikipedia.org/wiki/New_Tredegar",
+          "text": "New Tredegar (Welsh: Tredegar Newydd) is a former mining town and community in the Rhymney Valley, Caerphilly county borough, Wales, within the historic boundaries of Monmouthshire.\nNew Tredegar is home to The Winding House, a county museum which opened in 2008. It is controlled by CCBC Museums service and the Friends of the Winding House community group.\nThe area is rich in the mining heritage of the South Wales mining industry.\nThe area is supported by two primary schools; White Rose Primary school and Phillipstown Primary school. The area also contains a number of religious buildings including; Saint Dingat's Church and the Presbyterian Church of Wales.\nAlong with other parts of Rhymney, New Tredegar has Welsh speakers in the community.\nThe Welsh-only monuments in the local cemetery testify to the strength of the language locally in the first quarter of the 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "new tredegar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tredegar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8090,
+    "attempt": 8036,
+    "place_id": "gn-2655925",
+    "input": {
+      "place": {
+        "place_id": "gn-2655925",
+        "name": "Bembridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.68634,
+        "lon": -1.08275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bembridge",
+          "url": "https://en.wikipedia.org/wiki/Bembridge",
+          "text": "Bembridge is a village and civil parish located on the easternmost point of the Isle of Wight. It had a population of 3,848 according to the 2001 census of the United Kingdom, leading to the implausible claim by some residents that Bembridge is the largest village in England. Bembridge is home to many of the Island's wealthiest residents. The population had reduced to 3,688 at the 2011 Census.\nBembridge sits at the extreme eastern point of the Isle of Wight. Prior to land reclamation the area of Bembridge and Yaverland was almost an island, separated from the remainder of the Isle of Wight by Brading Haven. On the Joan Blaeu map of 1665, Bembridge is shown as Binbridge Iſle, nearly separated from the rest of Wight by River Yar.\nPrior to the Victorian era Bembridge was a collection of wooden huts and farmhouses, which only consolidated into a true village with the building of the church in 1827 (later rebuilt in 1846)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "bembridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8091,
+    "attempt": 8037,
+    "place_id": "gn-2797552",
+    "input": {
+      "place": {
+        "place_id": "gn-2797552",
+        "name": "Gierle",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.26852,
+        "lon": 4.86733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gierle",
+          "url": "https://en.wikipedia.org/wiki/Gierle",
+          "text": "Gierle is a village of about 4,428 inhabitants in the Antwerp Province in Flanders, Belgium. It is part of the municipality of Lille.\nCharacterised by its 19th-century village centre, which has an unusual circular shape, it is more known for its recreation park called \"De Lilse Bergen\" and its festival called \"Sjock\".\nA famous inhabitant of Gierle was Louis Neefs, who was the Belgian contestant for the Eurovision Song Contest twice. He has a statue in the centre of Gierle. Another famous inhabitant is Walter Meeuws, a retired football player who played for a few clubs in the Belgian first division and also for AFC Ajax. He has 46 caps for the Belgium national team and was in the squad of UEFA Euro 1980 where they reached the final. After his playing career, he has been a coach for teams all over the world.\nThrough history, Gierle was connected to the neighbouring village Tielen because they shared both lord and priest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "gierle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8092,
+    "attempt": 8038,
+    "place_id": "gn-2975778",
+    "input": {
+      "place": {
+        "place_id": "gn-2975778",
+        "name": "Saulxures-lès-Nancy",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.68872,
+        "lon": 6.24353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saulxures-lès-Nancy",
+          "url": "https://en.wikipedia.org/wiki/Saulxures-l%C3%A8s-Nancy",
+          "text": "Saulxures-lès-Nancy (French pronunciation: [solsyʁ lɛ nɑ̃si], literally Saulxures near Nancy) is a commune in the Meurthe-et-Moselle department in north-eastern France, located 6 km (3.7 mi) east of Nancy.\nThe commune covers an area of 7.05 km2 (2.72 sq mi). Bernard Girsch is the mayor for the 2020-2026 tenure.\nThe Château de Saulxures de Nancy dates from the reign of Louis XV, and was built c1730 by Count Claude-Marcel de Rutant, an ally of the Duke of Lorraine.\nThe parish church of St Martin dates from the 18th century and was extended in the 1840s. The village has a primary school named after the author Maurice Barrès."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "saulxures les nancy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saulxures",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nancy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8093,
+    "attempt": 8039,
+    "place_id": "gn-3155913",
+    "input": {
+      "place": {
+        "place_id": "gn-3155913",
+        "name": "Geilo",
+        "country": "Norway",
+        "subdivision": "Buskerud",
+        "lat": 60.53369,
+        "lon": 8.20539
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Geilo",
+          "url": "https://en.wikipedia.org/wiki/Geilo",
+          "text": "Geilo (Norwegian pronunciation: [jæɪ̯luː] ) is a centre in the municipality of Hol in Buskerud county, Norway. Geilo is primarily a ski resort town, with around 2,500 inhabitants. It is situated in the valley of Hallingdal, 250 km from Oslo and 260 km from Bergen. The Bergen Line facilitated Geilo's development as the first skiing resort in the country, and it is still one of the largest. It is also known for having some of the most luxurious and expensive holiday cabins in Norway. The center of the town lies at 800 meters above sea level, and its highest point is 1178 meters above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "geilo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8094,
+    "attempt": 8040,
+    "place_id": "gn-4465983",
+    "input": {
+      "place": {
+        "place_id": "gn-4465983",
+        "name": "Farmville",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.57071,
+        "lon": -79.22002
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farmville, Chatham County, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Farmville,_Chatham_County,_North_Carolina",
+          "text": "Farmville is a community in southeastern Chatham County, North Carolina, United States, which was once called Coal Glen.  The area was the site of coal mining activities from the 18th century up the mid-1950s, and was the site of the 1925 Coal Glen mine disaster.\nBy the time of the 1925 disaster, the town consisted of several homes and a company store.\nThe Deep River coal field, 12 miles (19 km) long, included the Coal Glen and Egypt (Cumnock) mines.\nA historical marker noting the mine disaster was dedicated June 3, 2017 at Farmville Community Church at U.S. 15-501 and Walter Bright Road north of Sanford."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "farmville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

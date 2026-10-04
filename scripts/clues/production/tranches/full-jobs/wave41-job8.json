@@ -1,0 +1,877 @@
+[
+  {
+    "rank": 8197,
+    "attempt": 8141,
+    "place_id": "gn-952213",
+    "input": {
+      "place": {
+        "place_id": "gn-952213",
+        "name": "Steytlerville",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -33.33274,
+        "lon": 24.34539
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steytlerville",
+          "url": "https://en.wikipedia.org/wiki/Steytlerville",
+          "text": "Steytlerville is a settlement on the R329 route in Sarah Baartman District Municipality in the Eastern Cape province of South Africa. The town is situated on the right bank of the Groot River, where the river emerges from a valley in the Grootrivierberge at Noorspoort. It is 164 km north-west of Port Elizabeth and 90 km east of Willowmore. It was founded in 1876 on the farm Noorspoort and attained municipal status in 1891. It is named after Reverend Abraham Isaac Steytler (1840–1922), a minister of the Dutch Reformed Church and Moderator of the Cape synod from 1909 to 1915."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "steytlerville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8198,
+    "attempt": 8142,
+    "place_id": "gn-4352671",
+    "input": {
+      "place": {
+        "place_id": "gn-4352671",
+        "name": "Curtis Bay",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.22677,
+        "lon": -76.58802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curtis Bay, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Curtis_Bay,_Baltimore",
+          "text": "Curtis Bay is a residential, commercial, and industrial neighborhood in the southern portion of the City of Baltimore, Maryland, United States.\nThe n is on steep sloping heights, about four city blocks wide (west to east) and fifteen blocks long (north to south) and above and surrounded on three sides (northeast - east - southeast) in a highly industrialized waterfront area  in the southern part of the city, and receives its name from the body (cove) of water to the east in which it sits.  The cove of \"Curtis Bay\"  with two small branches - Stone House Cove and Cabin Branch is fed from the southwest by Curtis Creek which in turn is formed further south by Marley Creek and Furnace Branch/Creek in Anne Arundel County. Adjoining nearby to the east is Thoms Cove near Hawkins Point at the north end of the Marley Neck peninsula. Curtis Bay cove itself also has a dredged deep water channel with considerable port facilities and waterfront industries and is a branch of the main stem of the Patapsco River, which forms the extensive frontage of Baltimore Harbor and Port, northwest off of the Chesapeake Bay.\nThe residential community of Curtis Bay is along three major north–south  thoroughfares of Curtis Avenue, Pennington Avenue (Maryland Route 173 on which most commercial businesses are located) and residential Fairhaven Avenue and a partial street of Prudence Street. Running west to east are fifteen smaller residential streets named alphabetically for various types of trees. \n\"The Bay\", as it is often called colloquially,  also offers a variety of housing, townhouses, rowhouses, individual homes, (both constructed of wood-frame, brick, stone and concrete block/stuccoed) and corner stores, taverns/bars.\nCurtis Bay is also home since 1897 to the United States Coast Guard Yard \n(formerly the U.S. Revenue Cutter Service until 1915)  on Hawkins Point Road / extending south from Pennington Avenue (Maryland Route 173) on Arundel Cove off Curtis Creek on the border line with neighboring suburban Anne Arundel County to the south.\nDuring the middle and late 19th and early 20th centuries, there was a quarantine station  and lazaretto run by the United States Government agency (future U.S. Public Health Service) along Thoms Cove between Sledds Point and Hawkins Point.\nThere is a large Polish American community in Curtis Bay. The former town hall, real estate office, volunteer fire station, and meeting/assembly hall on the second floor for Curtis Bay was constructed  on the heights overlooking the new town and rapidly developing industrial waterfront along  Fairview Avenue (now Fairhaven Avenue) facing Filbert Street by a successor developing firm, the South Baltimore Harbor and Improvement Company in 1905. In 1925, the United Polish Societies purchased the building and named it Polish Home Hall and it became central to the Polish ethnic experience in Curtis Bay, functioning as a social, educational, and political center for Curtis Bay's Polish community into the 1970s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 230,
+      "fullExtractWords": 479
+    },
+    "banned_terms": [
+      {
+        "term": "curtis bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "curtis",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8199,
+    "attempt": 8143,
+    "place_id": "gn-2160063",
+    "input": {
+      "place": {
+        "place_id": "gn-2160063",
+        "name": "Lismore",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -28.81354,
+        "lon": 153.2773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lismore, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Lismore,_New_South_Wales",
+          "text": "Lismore is a city located in the Northern Rivers region of New South Wales, Australia and the main population centre in the City of Lismore local government area, it is also a regional centre in the Northern Rivers region of the state.\nLismore is 734 km (456 mi) north of Sydney and 200 km (120 mi) south of Brisbane. It is situated on a low floodplain on the banks of the Wilsons River near the latter's junction with Leycester Creek, both tributaries of the Richmond River which enters the Pacific Ocean at Ballina, 30 km (19 mi) to the east.\nLismore is on the traditional lands of the Widjabul/Wia-bal people of the Bundjalung nation who are the traditional owners of the land.\nThe original settlement initially developed as a grazing property in the 1840s, then became a timber and agricultural town and inland port based around substantial river traffic, which prior to the development of the road and rail networks was the principal means of transportation in the region. Use of the river for transport declined and then ceased around the mid-twentieth century, however by that time Lismore (which was elevated to city status in 1946) had become well established as the largest urban centre in the region, providing its surrounding area with a range of services. The city is also located on the Bruxner Highway which crosses the Wilsons River at Lismore, and was formerly a stop on the Casino-Murwillumbah railway line. It is the home of one of the three campuses of Southern Cross University.\nWith its low-lying position adjacent to the Wilsons River, which can rise rapidly following periods of high rainfall in its catchment, the centre of Lismore is susceptible to flooding, although it is partly protected by a system of levees and flood gates. Noteworthy recent floods occurred in 1974, 2017 in the aftermath of Cyclone Debbie and the worst ever in 2022. A budget was announced for additional flood mitigation works in November 2018.\nAt the 2021 census, the urban population of Lismore was 28,816."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 217,
+      "fullExtractWords": 341
+    },
+    "banned_terms": [
+      {
+        "term": "lismore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8200,
+    "attempt": 8144,
+    "place_id": "gn-8348346",
+    "input": {
+      "place": {
+        "place_id": "gn-8348346",
+        "name": "Geilston Bay",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -42.82955,
+        "lon": 147.3463
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Geilston Bay, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Geilston_Bay,_Tasmania",
+          "text": "Geilston Bay  is a largely residential suburb of Hobart between Risdon Vale, Shag Bay, and Lindisfarne, in the City of Clarence located on the Eastern Shore of the River Derwent, taking its name from an inlet of that river of the same name. The inlet and locality were sometimes known by the alternative name Limekiln Bay on account of lime kilns which operated there between approximately the 1830s and the 1920s, the remains of which remained visible  for some decades thereafter; another early name for the Bay was \"James's Bay\". The present suburb name derives from an early land holding \"Geils Town\" in the region purchased by Andrew Geils, Commandant of Van Diemen's Land (Tasmania) for a brief period in 1812-1813, who subsequently left his Australian holdings behind when he moved back to Scotland.\nThe nationally significant Late Oligocene (or early Miocene) \"Geilston Bay Local Fauna\" fossil find originates from this locality. Fossil mammal remains at this site were discovered by limestone quarrying activities in the 1860s and sent to the British Museum in London for further analysis, where they still reside. However there are no surface indications of the location of the site today, which lies buried by landfill under the playing fields of the former Geilston Bay High School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 211,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "geilston bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "geilston",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8201,
+    "attempt": 8145,
+    "place_id": "gn-3180428",
+    "input": {
+      "place": {
+        "place_id": "gn-3180428",
+        "name": "Carpino",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.8445,
+        "lon": 15.85712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carpino",
+          "url": "https://en.wikipedia.org/wiki/Carpino",
+          "text": "Carpino (Pugliese: Carpìne) is a coastal town and comune of the Italian region of Apulia, lying on the Gargano peninsula.\nThe town's name has been linked to the rebirth of the traditional folk songs of Gargano, which have artistic value and deserve to be preserved and studied. The group \"Cantori di Carpino\" (Carpino Singers), by reinterpreting ancient tarantellas, has enabled the development of a broadly articulated project regarding the traditional popular music of southern Italy.\nThe town's main square, now called the \"Piazza del Popolo\", or People's Square, is the historic home of the folk music festival and its influences. The Carpino Folk Festival is an event that includes several cultural elements, brought together under a single symbol, with the performing arts, and especially music, dance, and theater with popular roots, but also workshops, conferences, roundtables, workshops, presentations of literature and cinema, with a full program of live performances, original and energetic, showing the richness and musical diversity of an area that has many natural resources, as well as landscape and historical importance. The festival has high artistic achievements and standards, although it has not yet fully exploited its material in a structured, integrated and accessible way, to represent real strategic factors in economic and social development.\nStanding on a hill which has many well tended olive trees, Carpino has been dubbed  \"Città dell’olio\" (Oil Town) because of its business of producing olive oil. Noteworthy are the archaeological site of the \"grotte di Minutille\" (the Minutille caves), the Church of the Holy Cross, the Church of Saint George, and the Church of Saint Cyril."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 207,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "carpino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8202,
+    "attempt": 8146,
+    "place_id": "gn-8310762",
+    "input": {
+      "place": {
+        "place_id": "gn-8310762",
+        "name": "Palm Island",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -18.73565,
+        "lon": 146.57788
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Island, Queensland",
+          "url": "https://en.wikipedia.org/wiki/Palm_Island,_Queensland",
+          "text": "Palm Island is a locality consisting of an island group of 16 islands, split between the Shire of Hinchinbrook and the Aboriginal Shire of Palm Island, in Queensland, Australia. The locality coincides with the geographical entity known as the Palm Island group, also known as the Greater Palm group, originally named the Palm Isles.\nHowever, the term \"Palm Island\" is most often used to refer to the main island, Great Palm Island, the largest island in the group and the only one with a significant population of permanent residents, most of whom are Aboriginal. The island is also known by the name \"Bwgcolman\", meaning \"one people from many groups\", derived from an Aboriginal language of one of the earliest groups of Aboriginal people removed from the mainland and settled there from 1918 onwards, during its use as an Aboriginal reserve.\nThe term \"Palm Island\" is sometimes used to refer to the island group, sometimes the Aboriginal Shire, and sometimes Great Palm Island, but as most of the other islands are uninhabited, the majority of sources are actually referring to Great Palm only, or to the Aboriginal Shire Council.\nOrpheus Island has a tourist resort and research facility, and is the only one with a well-developed tourist industry.\nIn the 2021 census, the locality of Palm Island (incorporating all the island in the group) had a population of 2,138 people, of whom 1,918 (89.7%) identify as Indigenous Australians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 207,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "palm island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8203,
+    "attempt": 8147,
+    "place_id": "gn-2976090",
+    "input": {
+      "place": {
+        "place_id": "gn-2976090",
+        "name": "Sanvignes-les-Mines",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 46.66444,
+        "lon": 4.29188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanvignes-les-Mines",
+          "url": "https://en.wikipedia.org/wiki/Sanvignes-les-Mines",
+          "text": "Sanvignes-les-Mines (French pronunciation: [sɑ̃viɲ le min] ) is a commune in the Saône-et-Loire department in the region of Bourgogne-Franche-Comté in eastern France.\nThe area covered by Sanvignes-les-Mines started to be importantly settled in the 19th century, when the mining of the resources in the Saône-et-Loire coal basin took on new importance and became industrialized—notably through the founding of the neighboring commune of Montceau-les-Mines in 1856.\nDeeply linked to the fate of its mines, it saw a significant number of miners join the town to find employment. For a good part of the 19th century, the town was politically, religiously, and economically controlled by the Chagot family, owners of the Blanzy Mining Company who strongly promoted Catholicism, relying notably on the clergy to monitor the miners. It is estimated that between the 1850s and the period of the troubles, about twenty years, more than 400 adult and children miners died in the mine.\nThis situation ended during the Montceau-les-Mines troubles (1878-1885), when the miners of the town and region joined anarchism in large numbers, making the mining basin a center of anarchism in France, particularly through the Black Band, one or more secret anarchist organizations of miners operating in the region and carrying out numerous attacks.\nFollowing the closure of the mines throughout the 20th century, the town has diversified economically."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 205,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "sanvignes les mines",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sanvignes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mines",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8204,
+    "attempt": 8148,
+    "place_id": "gn-5105615",
+    "input": {
+      "place": {
+        "place_id": "gn-5105615",
+        "name": "Union Beach",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.4465,
+        "lon": -74.1782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Union Beach, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Union_Beach,_New_Jersey",
+          "text": "Union Beach is a borough on Raritan Bay and the northern Jersey Shore in Monmouth County, in the U.S. state of New Jersey. The borough is a small coastal bedroom suburb of New York City in the New York metropolitan area, with views of Manhattan visible in the distance from the bayfront beach. As of the 2020 United States census, the borough's population was 5,723, a decrease of 522 (−8.4%) from the 2010 census count of 6,245, which in turn reflected a decline of 404 (−6.1%) from the 6,649 counted in the 2000 census.\nUnion Beach was formed as a borough by an act of the New Jersey Legislature on March 16, 1925, from portions of Raritan Township (now Hazlet), based on the results of a referendum held on April 16, 1925. A 100-acre (40 ha) farm in the future borough was owned by the Poole family since the days of the American Revolutionary War. Following the development of the Central Railroad of New Jersey, the Poole Farm became the site of the Union Subdivision in 1908, while an area that had been called East Point Beach Estates was renamed Union Beach by developer Charles Carr in 1920.\nUnion Beach was part of the Bayshore Regional Strategic Plan, an effort by nine municipalities in northern Monmouth County to reinvigorate the area's economy by emphasizing the traditional downtowns, dense residential neighborhoods, maritime history, and the natural beauty of the Raritan Bayshore coastline. The plan has since been integrated into the county's 2016 master plan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 198,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "union beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "union",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8205,
+    "attempt": 8149,
+    "place_id": "gn-2864558",
+    "input": {
+      "place": {
+        "place_id": "gn-2864558",
+        "name": "Neumark",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.6601,
+        "lon": 12.35619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neumark",
+          "url": "https://en.wikipedia.org/wiki/Neumark",
+          "text": "The Neumark (German pronunciation: [ˈnɔʏmaʁk] ), also known as the New March  (Polish: Nowa Marchia) or as East Brandenburg (German: Ostbrandenburg [ˈɔstˌbʁandn̩bʊʁk] ), was a region of the Margraviate of Brandenburg and its successors located east of the Oder River.\nCalled the Lubusz Land while part of medieval Poland, the territory later known as the Neumark gradually became part of the German Margraviate of Brandenburg from the mid-13th century. As Brandenburg-Küstrin the Neumark formed an independent state of the Holy Roman Empire from 1535 to 1571; after the death of the margrave John, a younger son of Joachim I Nestor, Elector of Brandenburg, it returned to Elector John George, the margrave's nephew and Joachim I Nestor's grandson. With the rest of the Electorate of Brandenburg, it became part of the Kingdom of Prussia in 1701 and part of the German Empire in 1871 when each of those states first formed. After World War I the entirely ethnic German Neumark remained within the Free State of Prussia, itself part of the Weimar Republic (Germany).\nAfter World War II the Potsdam Conference assigned the majority of the Neumark to Polish administration, and since 1945 has remained part of Poland. Polish settlers largely replaced the expelled German population. Most of the Polish territory became part of the Lubusz Voivodeship, while the northern towns Choszczno (Arnswalde), Myślibórz (Soldin), and Chojna (Königsberg in der Neumark) belong to the West Pomeranian Voivodeship. Some territory near Cottbus, which was administratively part of the Government Region of Frankfurt (coterminous with the Neumark) after the 1815 Congress of Vienna, became part of East Germany in the 1940s, becoming part of Germany after reunification in 1990."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 197,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "neumark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8206,
+    "attempt": 8150,
+    "place_id": "gn-5101585",
+    "input": {
+      "place": {
+        "place_id": "gn-5101585",
+        "name": "Mountain Lakes",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.89482,
+        "lon": -74.43293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mountain Lakes, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Mountain_Lakes,_New_Jersey",
+          "text": "Mountain Lakes is a borough in Morris County, in the U.S. state of New Jersey, and a suburb of New York City. As of the 2020 United States census, the borough's population was 4,472, an increase of 312 (+7.5%) from the 2010 census count of 4,160, which in turn had reflected a decline of 96 (−2.3%) from the 4,256 recorded at the 2000 census.\nOriginally a planned community, the borough was named for a pair of lakes which served to distinguish Mountain Lakes as \"the first year-round residential lake community in northwestern New Jersey.\" Mountain Lakes was incorporated as a borough by an act of the New Jersey Legislature on March 3, 1924, from portions of Boonton Township and Hanover Township, subject to the results of a referendum passed on April 29, 1924.\nThe borough has been one of the state's highest-income communities. In the 2013–2017 American Community Survey, Mountain Lakes had a median household income of $175,556 (ranked 12th in the state) and included 45.6% of households earning more than $200,000 annually.\nIn 2010, Forbes.com listed Mountain Lakes as 210th in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $1,045,401.\nMountain Lakes ranked among the highest annual property tax bills in New Jersey, and was the highest in Morris County, at $20,471 in 2018, compared to a statewide average of $8,767. New Jersey Monthly magazine ranked Mountain Lakes as the 26th best place to live in New Jersey in its rankings of the \"New Jersey's Top Towns 2011–2012\" in New Jersey.\nThe Mountain Lakes station provides NJ Transit commuter train service. The station offers service on the Montclair-Boonton Line and is the first train station heading eastbound not concurrent with the nearby Morris & Essex Lines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 197,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "mountain lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mountain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8207,
+    "attempt": 8151,
+    "place_id": "gn-11204768",
+    "input": {
+      "place": {
+        "place_id": "gn-11204768",
+        "name": "Charles Hill",
+        "country": "Botswana",
+        "subdivision": "Ghanzi",
+        "lat": -22.27639,
+        "lon": 20.09278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charles Hill, Botswana",
+          "url": "https://en.wikipedia.org/wiki/Charles_Hill,_Botswana",
+          "text": "Charles Hill is a village in Ghanzi District of Botswana. It is located close to the Namibian border. Charles Hill is the second-largest village in the Ghanzi District, with a population of 3,791 according to the 2011 census.\nCharles Hill is the seat of the Charles Hill sub-District, established separately from Ghanzii District administratively in 2004. Although the limits of the sub-district have as yet to be clearly defined it generally is bordered to the north by the Trans-Kalahari Highway, the west by Namibia, to the east by Botswana Highway A2 and to the south by Kgalagadi District. The inhabitants are made up of a variety of different groups living side by side and in harmony with each other, they are:\n\nHerero\nBakgalagadi\nBasarwa\nBatlharo (a biracial tribe of the coloreds and herero whose mother-tongue is Setswana)\nColoureds\nNama\nSome of the developments in the village include a primary school, a junior secondary school, a hospital, a post office, some Rural Administration Centre offices which belong to the local government (known as the council), pre-schools, hair salons and an Engen filling station which is   conveniently located next to the main tarred road from Ghanzi to Mamuno. An estimated 200 cattle posts lie within the sub-District but outside village limits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 196,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "charles hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "charles",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8208,
+    "attempt": 8152,
+    "place_id": "gn-3126622",
+    "input": {
+      "place": {
+        "place_id": "gn-3126622",
+        "name": "Candeleda",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 40.15521,
+        "lon": -5.24045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Candeleda",
+          "url": "https://en.wikipedia.org/wiki/Candeleda",
+          "text": "Candeleda (Spanish pronunciation: [kandeˈleða]) is a town and municipality located in the province of Ávila, in the autonomous community of Castile and León, Spain. According to the 2011 INE census, the municipality has a population of 5,213 inhabitants, making it the fifth largest municipality in the province after Ávila –the capital–, Arévalo, Arenas de San Pedro and Las Navas del Marqués. The town is located on the southern hillside of the Gredos mountains, 432 m above sea level, giving it a microclimate with a thermal regime of mild winters and hot summers and average summer temperatures of 26 °C.\nCandeleda is related, economically and culturally, with the neighbouring town of Arenas de San Pedro and the Tiétar valley in Castile and León, the region of La Vera in Extremadura, as well as the Campana de Oropesa region and the city of Talavera de la Reina in Castile-La Mancha. Due to the relatively long distance between Candeleda and Ávila, links with the capital are limited to administrative and medical matters. The village festival and processions in honour of the town's patron saint, the Virgin of Chilla, are held annually on the second and third Sunday of September."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 196,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "candeleda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8209,
+    "attempt": 8153,
+    "place_id": "gn-7259396",
+    "input": {
+      "place": {
+        "place_id": "gn-7259396",
+        "name": "Minot Air Force Base",
+        "country": "United States",
+        "subdivision": "North Dakota",
+        "lat": 48.42087,
+        "lon": -101.33914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minot Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Minot_Air_Force_Base",
+          "text": "Minot Air Force Base (  MY-not; IATA: MIB, ICAO: KMIB, FAA LID: MIB) is a United States Air Force (USAF) installation in Ward County, North Dakota, thirteen miles (20 km) north of the city of Minot via U.S. Route 83. In the 2020 census, the base was counted as a CDP with a total population of 5,017, down from 5,521 in 2010. Minot AFB is the home of two major wings: the 5th Bomb Wing and 91st Missile Wing, both of the Air Force Global Strike Command (AFGSC).\nOriginally opened 69 years ago in 1957 as an Air Defense Command (ADC) base, Minot AFB became a major Strategic Air Command (SAC) base in the early 1960s, with both nuclear armed intercontinental ballistic missiles and manned bombers, supported with aerial refueling aircraft.\nWhen SAC was inactivated in 1992, the nuclear mission of the base was divided between two commands, with missiles going to the Air Force Space Command (AFSPC) and manned bombers to the Air Combat Command (ACC). With the establishment of AFGSC in 2009, missiles and manned bombers (excluding the B-1 Lancer) were transferred from AFSPC and ACC to AFGSC in late 2009 and early 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 196,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "minot air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "minot",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8210,
+    "attempt": 8154,
+    "place_id": "gn-6317136",
+    "input": {
+      "place": {
+        "place_id": "gn-6317136",
+        "name": "Fernando de Noronha (Distrito Estadual)",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -3.84028,
+        "lon": -32.41083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fernando de Noronha",
+          "url": "https://en.wikipedia.org/wiki/Fernando_de_Noronha",
+          "text": "Fernando de Noronha (Brazilian Portuguese pronunciation: [feʁˈnɐ̃du dʒi noˈɾoɲɐ]), officially the State District of Fernando de Noronha (Portuguese: Distrito Estadual de Fernando de Noronha) and formerly known as the Federal Territory of Fernando de Noronha (Território Federal de Fernando de Noronha) until 1988, is an archipelago in the Atlantic Ocean, part of the state of Pernambuco, Brazil, and located 191 nautical miles (354 km; 220 mi) off the Brazilian coast.\nFernando de Noronha consists of 21 islands and islets, extending over an area of 26 square kilometres (10 sq mi). Only the eponymous main island is inhabited; it has an area of 18.4 square kilometres (7.1 sq mi) and a population estimated at 3,101 in 2020. While most of the archipelago is relatively low-lying, there are parts reaching more than 100 meters (330 ft) in elevation, with the volcanic rock Morro do Pico standing 323 meters (about 1,060 feet) above sea level as its highest point.\nThe islands are administratively unique in Brazil. They form a \"state district\" (distrito estadual) that is administered directly by the government of the state of Pernambuco (despite being geographically closer to the state of Rio Grande do Norte). The state district's jurisdiction also includes the very remote Saint Peter and Saint Paul Archipelago, located 337 nautical miles (624 km; 388 mi) northeast of Fernando de Noronha.\nIn 1988, 70% of the area of Fernando de Noronha was established as a national marine park. In 2001, UNESCO designated the islands as a World Heritage Site because of their importance as a feeding ground for tuna, sharks, sea turtles, and marine mammals. Its time zone is UTC−02:00 all year round."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 194,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "fernando de noronha distrito estadual",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fernando",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noronha",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "distrito",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "estadual",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8211,
+    "attempt": 8155,
+    "place_id": "gn-7257935",
+    "input": {
+      "place": {
+        "place_id": "gn-7257935",
+        "name": "Andrews Air Force Base",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.80531,
+        "lon": -76.8746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andrews Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Andrews_Air_Force_Base",
+          "text": "Andrews Air Force Base (Andrews AFB, AAFB) (IATA: ADW, ICAO: KADW, FAA LID: ADW) is the airfield portion of Joint Base Andrews, which is under the jurisdiction of the United States Air Force (USAF). In 2009, Andrews Air Force Base merged with Naval Air Facility Washington to form Joint Base Andrews. Andrews, located near Morningside, Maryland, in suburban Washington, D.C., is the home base of two Boeing VC-25A aircraft with the call sign Air Force One when the president is on board, that serve the president of the United States, and the president is typically flown in and out of Andrews when travelling from Washington, D.C. by plane.\nThe host unit at Andrews is the 316th Wing, assigned to the Air Force District of Washington. It is responsible for maintaining emergency reaction rotary-wing airlift and other National Capital Region contingency response capabilities critical to national security and for organizing, training, equipping and deploying combat-ready forces for Air and Space Expeditionary Forces (AEFs). The 316th Wing also provides installation security, services and airfield management to support the president, vice president, other U.S. senior leaders and more than 50 tenant organizations and federal agencies.\nThe 316th Wing provides security, personnel, contracting, finance and infrastructure support for five wings, three headquarters, more than 80 tenant organizations, 148 geographically separated units, and 6,500 airmen in the Pentagon, as well as 60,000 airmen and families in the national capital region and around the world. The 316th Wing supports contingency operations in the capital of the United States with immediate response rotary-assets. It also provides security for the world's highest visibility flight line and is responsible for ceremonial support with the United States Air Force Band, Honor Guard and Air Force Arlington Chaplaincy.\nThe wing commander is Colonel Tyler R. Schaff, and the command chief master sergeant is Chief Master Sergeant Thomas C. Daniels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 192,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "andrews air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "andrews",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8212,
+    "attempt": 8156,
+    "place_id": "gn-2645880",
+    "input": {
+      "place": {
+        "place_id": "gn-2645880",
+        "name": "Keith",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.53633,
+        "lon": -2.94811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keith, Moray",
+          "url": "https://en.wikipedia.org/wiki/Keith,_Moray",
+          "text": "Keith (Scottish Gaelic: Baile Chèith, or Cèith Mhaol Rubha (archaic)) is a market town in the Moray council area in north east Scotland. historically in Banffshire, a name which persists in common usage and historical references, It lies on the River Isla, approximately 110 miles (177 km) north of Edinburgh, 126 miles (204 km) northeast of Glasgow, and 15 miles (24 km) southeast of Elgin. It had a population of 4,572 in 2022.\nKeith has three distinct sections: Old Town, the original settlement; Keith which is the main commercial centre; and Fife Keith which was originally a separate town built in competition by the Earl of Fife but which, having proved less economically successful, was joined to form one homogeneous settlement separated now only by the river.\nThe oldest part of Keith dates to around 1180 where the Old Town still remains, now almost indistinguishable from the rest of the town. It developed around the old bridge which was built there by two mourning parents as a permanent memorial their child who drowned in the river at that crossing point in the hope that none should suffer similar loss. The main part of the town is on higher ground above the river, laid out around 1750 by the Earl of Findlater. It is located at the crossing of the A95 and A96 roads. Local services include a health centre, dentist, optician and multiple hairdressing salons.  The town has three schools: Keith Grammar School, Keith Primary School and St Thomas RC Primary School.\nThe annual Keith Country Show, held at Seafield Park, is an event in the farming calendar of north-east Scotland. The village of Newmill is approximately two kilometres (1+1⁄4 miles) north of Keith."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 189,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "keith",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8213,
+    "attempt": 8157,
+    "place_id": "gn-5346413",
+    "input": {
+      "place": {
+        "place_id": "gn-5346413",
+        "name": "Emerald Lake Hills",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.46466,
+        "lon": -122.26802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emerald Lake Hills, California",
+          "url": "https://en.wikipedia.org/wiki/Emerald_Lake_Hills,_California",
+          "text": "Emerald Lake Hills or Emerald Hills is a census-designated place and neighborhood in unincorporated San Mateo County, in the state of California, United States. Situated among oak-studded hills between Woodside, Redwood City, and San Carlos roughly bounded by Edgewood Road, Alameda de las Pulgas, Farm Hill Boulevard, and Interstate 280.  The population was 4,406 at the 2020 census and the per-capita income was $68,966, making it the 22nd wealthiest place in California and the 82nd highest income places in the United States\nEmerald Lake Hills was originally conceived as a resort community for city-weary San Franciscans during World War I. Emerald Lake Hills actually consists of two large subdivisions created around 1920: Emerald Lake (even though there are two lakes) and Emerald Hills. Residents refer to the area by either Emerald Hills or by Emerald Lake Hills. The name Emerald Hills is now more commonly adopted due to mailing designation rules, as the U.S. Post Office would allow only a two-word name.\nAccording to an interview with Yuji Naka, Emerald Hills is the namesake for the famous Emerald Hill Zone, the first level of Sonic the Hedgehog 2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "emerald lake hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "emerald",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8214,
+    "attempt": 8158,
+    "place_id": "gn-5493811",
+    "input": {
+      "place": {
+        "place_id": "gn-5493811",
+        "name": "Taos",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 36.40725,
+        "lon": -105.57307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taos, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Taos,_New_Mexico",
+          "text": "Taos () is a town in Taos County, in the north-central region of New Mexico. Situated between the Rio Grande Gorge and the Sangre de Cristo Mountains, it is located roughly 50 miles (80 km) south of the Colorado border. Taos serves as the county seat of Taos County, of which it is the largest municipality, with an estimated population of 6,567 as of 2021.\nThe town of Taos was incorporated in 1934, although humans have lived in the adjacent Taos Pueblo—a UNESCO World Heritage Site and the town's namesake—for roughly a millennium; the town's name derives from the native Taos language meaning \"(place of) red willows\". Initially founded by Spanish colonists in 1615 as Don Fernando de Taos, it was only intermittently occupied until the late 18th century, due to recurring conflict between European and indigenous peoples, most notably the Pueblo Revolt.\nTaos was formally established as a permanent settlement in 1795 by Nuevo México Governor Fernando Chacón, serving as a fortified plaza and trading outpost for the neighboring Taos Pueblo and Hispano communities, including Ranchos de Taos, Cañon, Taos Canyon, Ranchitos, El Prado, and Arroyo Seco. During the Mexican–American War, the region was occupied by the United States, triggering a rebellion among Hispanics and American Indians known as the Taos Revolt.\nFollowing U.S. annexation of Nuevo México, Taos became a stopover for American and European settlers along the vast western frontier. During this period, the town developed its existing reputation as a cultural enclave, with the first artist colony being established in 1898 by painters Ernest Blumenschein and Bert Phillips. Taos has since developed a reputation as a \"counterculture mecca\" and \"beacon for artists\", attracting the likes of painter Georgia O'Keeffe, English poet and writer D.H. Lawrence, and actor Dennis Hopper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "taos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8216,
+    "attempt": 8159,
+    "place_id": "gn-2637063",
+    "input": {
+      "place": {
+        "place_id": "gn-2637063",
+        "name": "Stanmore",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.61667,
+        "lon": -0.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stanmore",
+          "url": "https://en.wikipedia.org/wiki/Stanmore",
+          "text": "Stanmore is part of the London Borough of Harrow in Greater London. It is centred 11 miles (18 km) northwest of Charing Cross, lies on the outskirts of the London urban area and includes Stanmore Hill, one of the highest points of London, at 152 metres (499 ft) high. The district, which developed from the ancient Middlesex parishes of Great and Little Stanmore, lies immediately west of Roman Watling Street (the A5 road) and forms the eastern part of the modern London Borough of Harrow.\nStanmore is the location of the former RAF Bentley Priory station – base of the Fighter Command during both world wars – along with its accommodating Bentley Priory mansion, notably the last residence of Queen Adelaide. Some members of the Bernays family were also based here, including Adolphus Bernays and his son and grandson who were both rectors of St John's church; the Bernays Institute and Bernays Gardens are public amenities in the centre of the old village.\nThe district increasingly developed into a London suburb during the 20th century, and in the latter half housed the Automobile Association's regional headquarters. Today it is a commuter town with a tube station that is the northern terminus of the Jubilee line, and with large green spaces including Canons Park, Stanmore Country Park, Stanmore Common and Bentley Priory, which are all in the Stanmore area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "stanmore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8217,
+    "attempt": 8160,
+    "place_id": "gn-3401751",
+    "input": {
+      "place": {
+        "place_id": "gn-3401751",
+        "name": "Coqueiro Seco",
+        "country": "Brazil",
+        "subdivision": "Alagoas",
+        "lat": -9.63833,
+        "lon": -35.80306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coqueiro Seco",
+          "url": "https://en.wikipedia.org/wiki/Coqueiro_Seco",
+          "text": "Coqueiro Seco (Central northeastern portuguese pronunciation: [koˈkeɾu ˈseːkʊ]) is a  municipality located in the Brazilian state of Alagoas. Its population is 5,864 (2020) and its area is 40.4 km2 (15.6 sq mi).\nLocated on the shores of Lake Mundaú, Coqueiro Seco is named from the frequent meetings of merchants and travelers in the shade of a coconut tree of straw burned differentiated from the others, where they were made large business and nap.\nThe history account that some years later came to the region several missionaries of the order of Franciscans, which delighted up with the topography of the place, which had plans ups and downs, changing its name to Monte Santo. Get accustomed with the old name of the city, the people ignored the Franciscans and retained the name of Coqueiro Seco.\nThe only historical record found concerns the construction of the church coated with Portuguese tile and a large courtyard, which continues today as the matrix of the patron saint, in Portuguese: Nossa Senhora Mãe dos Homens, meaning Our Lady Mother of Men, built in the 17th century by the Portuguese man José Cabral. At census conducted in 1950 by the Brazilian Institute of Geography and Statistics (IBGE), Coqueiro Seco was mentioned as district of Rio Largo, with a population of 1,667 inhabitants.\nWhen Satuba was elevated to the condition of autonomous municipality on August 20, 1960, Coqueiro Seco now belong to their territory, as a village. Only in 1962, the city was emancipated politically, officially installing its administrative autonomy on November 24, 1962 by means of the state law of August 23, 1962.\nCoqueiro Seco has Lake Mundaú or Mundaú Lagoon with area of 23 km2 (8.9 sq mi) and 4 km long, straight, until Maceió its largest geographic accident and its main tourist attraction. The stories counted by fishermen and ancient inhabitants are also aside attraction. Featured also for the traditional festival of the patron saint, held in the month of January (January 31 or the last Sunday of this month) and the folklore groups, such as Pastoril, Reisado, Chegança, Marujada, Guerreiros and Baianas of Coqueiro Seco."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 351
+    },
+    "banned_terms": [
+      {
+        "term": "coqueiro seco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coqueiro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "seco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
