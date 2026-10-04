@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 2400,
+    "attempt": 2381,
+    "place_id": "gn-1716287",
+    "input": {
+      "place": {
+        "place_id": "gn-1716287",
+        "name": "Daet",
+        "country": "Philippines",
+        "subdivision": "Bicol Region",
+        "lat": 14.1122,
+        "lon": 122.9553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daet",
+          "url": "https://en.wikipedia.org/wiki/Daet",
+          "text": "Daet (IPA: [daʔet]), officially the Municipality of Daet (Central Bikol: Banwaan kan Daet; Tagalog: Bayan ng Daet), is a municipality and capital of the province of Camarines Norte, Philippines. According to the 2024 census, it has a population of 106,465 people, making it the second most populous in the province after Labo.\nThe municipality is a popular surfing spot among surfers worldwide. It is also home to the annual Daet International Aerosports Show which was first held in 2013. It is also known for its pili nuts, used in many local snacks and treats. Popular products include pili tarts, pili rolls, pili ice cream, crispy pili, and pili candies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "daet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2401,
+    "attempt": 2382,
+    "place_id": "gn-2159220",
+    "input": {
+      "place": {
+        "place_id": "gn-2159220",
+        "name": "Mackay",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -21.15345,
+        "lon": 149.16554
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mackay, Queensland",
+          "url": "https://en.wikipedia.org/wiki/Mackay,_Queensland",
+          "text": "Mackay ( mə-KYE) is a city in the Mackay Region on the eastern or Coral Sea coast of Queensland, Australia. It is located about 803 kilometres (499 mi) north of Brisbane, on the Pioneer River.  Mackay is described as being in either Central Queensland or North Queensland, as these regions are not precisely defined. More generally, the area is known as the Mackay–Whitsunday Region. Nicknames of Mackay include the Sugar capital, Alexandra and Macktown.\nFounded in 1862 on land traditionally owned by the Yuwibara (Yuibera) Indigenous people, the settlement was originally known as Alexandra, in honour of Princess Alexandra of Denmark, and was later renamed Mackay after John Mackay. Sugar became the economic foundation of the city, with plantations using indentured or enslaved South Sea Islanders. From about 1891, Mediterranean migrants from Italy and Malta began to work the sugarcane plantations, and by the 1930s one third of Australia's Italian migrants lived in North Queensland. The city was nearly destroyed in the 1918 cyclone, and the following reconstruction used primarily Art Deco and Spanish Mission architectural styles for which the city is known.\nMackay has a rich history and culture, known for its architecture, food, and as a cultural-melting pot. It has long established cross-cultural communities that have influenced the city; including Yuwi, South Sea Islanders, Italians, Maltese, and more recently Filipinos.  Mackay is considered the capital of South Sea Islander culture, being home to the largest population in the nation. The city is noted for its seafood, tropical produce, public art and laneways, jazz scene, and festivals including the Mackay Festival of Arts and Jazz in the Park. \nMajor landmarks in Mackay include, Bluewater Quay and river markets, Mackay Harbour, the Leichhardt Tree, the Bluewater Sculpture trail and the Kommo Toera trail through the Mackay Wetlands. The city's hinterland includes, Mount Blackwood, Eungella National Park including Finch Hatton Gorge, along with the expansive mountain bike trails between Eungella and Finch Hatton. Mackay's coastal highlights include, Cape Hillsborough, the national parks of Round Top and Flat Top islands and the UNESCO World Heritage Site of the Great Barrier Reef."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 349
+    },
+    "banned_terms": [
+      {
+        "term": "mackay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2402,
+    "attempt": 2383,
+    "place_id": "gn-2286023",
+    "input": {
+      "place": {
+        "place_id": "gn-2286023",
+        "name": "Kaouara",
+        "country": "Côte d’Ivoire",
+        "subdivision": "Savanes District",
+        "lat": 10.09085,
+        "lon": -5.19482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaouara",
+          "url": "https://en.wikipedia.org/wiki/Kaouara",
+          "text": "Kaouara is a town in the far north of Ivory Coast. It is a sub-prefecture of Ouangolodougou Department in Tchologo Region, Savanes District, adjacent to the border with Burkina Faso. A border crossing with Burkina Faso is located 16 kilometres northeast of town.\nKaouara was a commune until March 2012, when it became one of 1,126 communes nationwide that were abolished.\nKaouara is known for its adobe mosque, originally built in the 16th century, which is inscribed on the UNESCO World Heritage List along with other mosques in northern Ivory Coast, as a classic example of Sudano-Sahelian architecture. \nIn 2021, the population of the sub-prefecture of Kaouara was 33,558."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "kaouara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2403,
+    "attempt": 2384,
+    "place_id": "gn-2744991",
+    "input": {
+      "place": {
+        "place_id": "gn-2744991",
+        "name": "Wassenaar",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.14583,
+        "lon": 4.40278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wassenaar",
+          "url": "https://en.wikipedia.org/wiki/Wassenaar",
+          "text": "Wassenaar (Dutch pronunciation: [ˈʋɑsənaːr] ; population: 26,949 in 2021) is a municipality and town located in the province of South Holland, on the western coast of the Netherlands.\nAn affluent suburb of The Hague, Wassenaar lies 10 km (6 mi) north of that city on the N44/A44 highway near the North Sea coast. It is part of the Haaglanden region and the Rotterdam–The Hague metropolitan area. The municipality covers an area of 62.40 km2 (24.09 sq mi), of which 11.29 km2 (4.36 sq mi) is covered by water.\nWassenaar is home to some of the Netherlands' richest residential neighborhoods as well as the country's most expensive street, the Konijnenlaan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "wassenaar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2404,
+    "attempt": 2385,
+    "place_id": "gn-2785341",
+    "input": {
+      "place": {
+        "place_id": "gn-2785341",
+        "name": "Tournai",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.60715,
+        "lon": 3.38932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tournai",
+          "url": "https://en.wikipedia.org/wiki/Tournai",
+          "text": "Tournai ( toor-NAY, French: [tuʁnɛ] ; Picard: Tornai; Walloon: Tornè [tɔʀnɛ] ; Dutch: Doornik [ˈdoːrnɪk] , sometimes anglicised in older sources as \"Tournay\") is a city and municipality of Wallonia located in the Province of Hainaut, Belgium. It lies 89 km (55 mi) by road southwest of the centre of Brussels on the river Scheldt, and is part of Eurometropolis Lille–Kortrijk–Tournai. In 2022, the municipality of Tournai had an estimated population of 68,518 people.\nTournai is one of the oldest cities in Belgium and has played an important role in the country's cultural history. It was the first capital of the Frankish Empire, and Clovis I was born here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "tournai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2405,
+    "attempt": 2386,
+    "place_id": "gn-2940512",
+    "input": {
+      "place": {
+        "place_id": "gn-2940512",
+        "name": "Butzbach",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.43395,
+        "lon": 8.67122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Butzbach",
+          "url": "https://en.wikipedia.org/wiki/Butzbach",
+          "text": "Butzbach (German pronunciation: [ˈbʊtsbax] ) is a town in the Wetteraukreis district in Hessen, Germany. It is located approximately 16 km south of Gießen and 35 km north of Frankfurt am Main.\nIn 2007, the town hosted the 47th Hessentag state festival from 1 to 10 June.\nThe \"Landgrafenschloss\" (\"landgraves' castle\"), used by the United States Army until 1990, is now utilized by the city council. The so-called \"Roman Way Housing\" of the United States Army with more than 1,000 apartments was returned to the German government in October 2007 and has since been renovated and rented out to the public. The town's marketplace is enclosed by timber framing. The \"Schrenzer\" hill (or Heidelbeerberg, 385 m) overlooks the town and the country north of Frankfurt, called Wetterau. Another much higher mountain nearby is the Hausberg (486 m) which features a lookout tower."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "butzbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2406,
+    "attempt": 2387,
+    "place_id": "gn-3429902",
+    "input": {
+      "place": {
+        "place_id": "gn-3429902",
+        "name": "Pontevedra",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.74947,
+        "lon": -58.70158
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pontevedra, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Pontevedra,_Buenos_Aires",
+          "text": "Pontevedra is a city located in Merlo Partido, Buenos Aires Province, Argentina. The town was named after the homonymous city of Pontevedra, Spain.\nPontevedra was founded in 1871 by real estate promoters, in the estates belonging to the Irish landlord Thomas Gahan, member of Merlo's first municipal government in 1865.\n\nPontevedra is a small town surrounded by small truck farms, connected to Merlo, Libertad and González Catán .\nThe city is bordered by Parque San Martín and Libertad (north), Mariano Acosta (west), González Catán (east) and Veinte de Junio (south), both in La Matanza Partido, and Marcos Paz (south).\nAccording to the 2001 census [INDEC], the population was 33,515."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "pontevedra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2407,
+    "attempt": 2388,
+    "place_id": "gn-3449116",
+    "input": {
+      "place": {
+        "place_id": "gn-3449116",
+        "name": "São Francisco do Conde",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -12.6275,
+        "lon": -38.68
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Francisco do Conde",
+          "url": "https://en.wikipedia.org/wiki/S%C3%A3o_Francisco_do_Conde",
+          "text": "São Francisco do Conde is a municipality in the state of Bahia in the North-East region of Brazil. São Francisco do Conde covers 262.856 km2 (101.489 mi2), and has a population of 40,245 with a population density of 150 inhabitants per square kilometer. It is located 67 kilometres (42 mi) from the state capital of Salvador. According to the Brazilian Institute of Geography and Statistics São Francisco do Conde has the highest concentration of Brazilians of African descent (90%) in Bahia.\nSão Francisco do Conde is home to Campus dos Malês, one of the campuses of the University of International Integration of African-Brazilian Lusophony. The campus opened in 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "sao francisco do conde",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "francisco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "conde",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2408,
+    "attempt": 2389,
+    "place_id": "gn-4866445",
+    "input": {
+      "place": {
+        "place_id": "gn-4866445",
+        "name": "Mason City",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 43.15357,
+        "lon": -93.20104
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mason City, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Mason_City,_Iowa",
+          "text": "Mason City is a city in and the county seat of Cerro Gordo County, Iowa, United States. The population was 27,338 in the 2020 census. Mason City is known for its musical theatre heritage, serving as the inspiration for the town of “River City” in The Music Man. It is also home to a significant collection of Prairie School style architecture. Along with nearby Clear Lake, the city forms a regional commercial, industrial, and cultural hub for north-central Iowa.\nThe Mason City Micropolitan Statistical Area which includes all of Cerro Gordo and Worth counties is located at the transportation junction between Interstate 35 and the Avenue of the Saints. Geographically, Des Moines is located 120 miles to the south, and the Twin Cities of Minneapolis-Saint Paul are 135 miles to the north, making the local area approximately halfway between the two metropolitan areas. \nPoints of interest include the Charles H. MacNider Art Museum, historic East Park, the Prairie Rock Trails Bike Park, and the Meredith Willson boyhood home and museum. The most significant Prairie School structures are the Frank Lloyd Wright designed Stockman House, home of the Architectural Interpretive Center and the Park Inn Hotel-City National Bank, Wright’s last remaining intact hotel. Rock Crest-Rock Glen, the world’s largest unified neighborhood made up of Prairie School homes is also in the city. Public education is provided by North Iowa Area Community College and Mason City Community School District. The Winnebago River traverses the community to the southeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "mason city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mason",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2409,
+    "attempt": 2390,
+    "place_id": "gn-5244080",
+    "input": {
+      "place": {
+        "place_id": "gn-5244080",
+        "name": "Appleton",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 44.26193,
+        "lon": -88.41538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Appleton, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Appleton,_Wisconsin",
+          "text": "Appleton (Menominee: Ahkōnemeh) is a city, and the county seat of Outagamie County, Wisconsin, United States, with small portions extending into Calumet and Winnebago counties. Located on the Fox River north of Lake Winnebago, it is 30 miles (48 km) southwest of Green Bay and 100 miles (160 km) north of Milwaukee. The city had a population of 75,644 at the 2020 census, making it the sixth-most populous city in Wisconsin. The Appleton metropolitan statistical area had 243,147 residents. Appleton is part of the broader Fox Cities region.\nAppleton was founded in the mid-19th century and developed as an industrial and educational center; Lawrence University was established in 1847. Its economy was historically based on paper manufacturing and has since expanded to include retail and healthcare sectors, with major facilities including St. Elizabeth Hospital and ThedaCare Regional Medical Center–Appleton. The city serves as a cultural center for the Fox River Valley, home to the Fox Cities Performing Arts Center and the History Museum at the Castle, which features exhibits on local history and notable residents such as magician Harry Houdini. It also hosts regional events such as Octoberfest and the Mile of Music."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "appleton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2410,
+    "attempt": 2391,
+    "place_id": "gn-721239",
+    "input": {
+      "place": {
+        "place_id": "gn-721239",
+        "name": "Eger",
+        "country": "Hungary",
+        "subdivision": "Heves County",
+        "lat": 47.90265,
+        "lon": 20.37329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eger",
+          "url": "https://en.wikipedia.org/wiki/Eger",
+          "text": "Eger (UK:  EG-ər, US:  AY-gər; Hungarian: [ˈɛɡɛr] ; also known by other alternative names) is the county seat of Heves County, and the second largest city in Northern Hungary (after Miskolc). A city with county rights, Eger is best known for its medieval castle, thermal baths, baroque buildings, the northernmost Ottoman minaret, and red wines. Its population of around 53,000 (2017) makes it the 19th largest centre of population in Hungary, according to the census. The town is located on the Eger Stream (a tributary of the Tisza river), on the hills between the Mátra and Bükk Mountains. The main campus of Eszterházy Károly Catholic University is in Eger."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "eger",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2411,
+    "attempt": 2392,
+    "place_id": "gn-8223971",
+    "input": {
+      "place": {
+        "place_id": "gn-8223971",
+        "name": "Kattumannarkoil",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.27631,
+        "lon": 79.55784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kattumannarkoil",
+          "url": "https://en.wikipedia.org/wiki/Kattumannarkoil",
+          "text": "Kattumannarkoil is a municipality town and taluk headquarters in Cuddalore district of the Indian state of Tamil Nadu. The Kattumannarkoil Town Panchayat was constituted in 1892 and falls under the administrative jurisdiction of Cuddalore District. The town covers an area of 19.425 km2. The town lies on the Chidambaram–Coimbatore Highway, 25 km southwest of Chidambaram, 25 km east of Srimushnam and 25 km northeast of Gangaikonda Cholapuram. The town is the birthplace of the Sri Vaishnava theologians (Acharya) Nathamuni and Yamunacharya. The town's derives from a local legend in which Lord Vishnu appeared as a  King (Mannan) to marry Mahalakshmi and instruct Nathamuni to propagate the Naalayira Divya Prabandham. The deity was called Kattum Mannan Aanaar (the king who guides), from which the name Kattumannarkoil evolved. The town's historical name is Veeranarayanapuram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "kattumannarkoil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2412,
+    "attempt": 2393,
+    "place_id": "gn-1897926",
+    "input": {
+      "place": {
+        "place_id": "gn-1897926",
+        "name": "Laem Chabang",
+        "country": "Thailand",
+        "subdivision": "Chon Buri",
+        "lat": 13.08775,
+        "lon": 100.88433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laem Chabang",
+          "url": "https://en.wikipedia.org/wiki/Laem_Chabang",
+          "text": "Laem Chabang (Thai: แหลมฉบัง, pronounced [lɛ̌ːm tɕʰābāŋ]) is a port city municipality (thesaban nakhon) in Si Racha and Bang Lamung districts of Chonburi Province, Thailand. It includes Thung Sukhla subdistrict (tambon) and parts of subdistricts Bueng, Nong Kham and Surasak of Si Racha District and part of Bang Lamung township of Bang Lamung District. As of 2019 it had a population of 88,271.  The city has grown up around the port, but also serves as a major stop on the coastal highway linking Pattaya and Bangkok via Sukhumvit Road (Hwy 3). The city is also known for hosting a Japanese retirement community with specialty stores geared towards them."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "laem chabang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "laem",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chabang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2413,
+    "attempt": 2394,
+    "place_id": "gn-292239",
+    "input": {
+      "place": {
+        "place_id": "gn-292239",
+        "name": "Dibba Al-Hisn",
+        "country": "United Arab Emirates",
+        "subdivision": "Fujairah",
+        "lat": 25.61955,
+        "lon": 56.27291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dibba Al-Hisn",
+          "url": "https://en.wikipedia.org/wiki/Dibba_Al-Hisn",
+          "text": "Dibba Al-Hisn (Arabic: دبا الحصن, white Dibba) is a semi-exclave of the emirate of Sharjah, one of the seven United Arab Emirates. It is bordered by the Gulf of Oman from the east, Dibba Al-Baya (a province of Oman in Musandam) from the north, and Dibba Al-Fujairah (a city in the Emirate of Fujairah) from the south. It is also geographically part of the Dibba region. It is the smallest in size among the Dibbas. It is mostly known for its fish market and the ancient fortress from which it got its name. Also, it is known for its high density of population relative to the other Dibbas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "dibba al hisn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dibba",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hisn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2414,
+    "attempt": 2395,
+    "place_id": "gn-2950344",
+    "input": {
+      "place": {
+        "place_id": "gn-2950344",
+        "name": "Bergkamen",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.61633,
+        "lon": 7.64451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergkamen",
+          "url": "https://en.wikipedia.org/wiki/Bergkamen",
+          "text": "Bergkamen (German pronunciation: [bɛʁkˈkaːmən] ; Westphalian: Biärgkoamen) is a town in the district of Unna, in North Rhine-Westphalia, Germany. It is situated south of the river Lippe, approx. 15 km (9 mi) north-east of Dortmund and 15 km (9 mi) south-west of Hamm.\nBergkamen, a fairly new town in the east part of the Ruhr Area and south of the Münsterland, was founded in 1966 by the merging of at first five smaller communities. The town's history, however, reaches back to ancient Roman times - this can be experienced by visiting the Bergkamen Municipal Museum, which has a large Roman department, and the nearby archeological site, the “Roemerlager“."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "bergkamen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2415,
+    "attempt": 2396,
+    "place_id": "gn-3603157",
+    "input": {
+      "place": {
+        "place_id": "gn-3603157",
+        "name": "Puerto Lempira",
+        "country": "Honduras",
+        "subdivision": "Gracias a Dios Department",
+        "lat": 15.26566,
+        "lon": -83.77436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Lempira",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Lempira",
+          "text": "Puerto Lempira or Auhya Yari is the Miskito capital of the Gracias a Dios department in northeastern Honduras, located on the shores of the Caratasca Lagoon.  Though it does not have paved roads, it is the largest town in the Gracias a Dios Department.\nThe town is named for the 16th century leader of the indigenous Lenca peoples, Lempira, who directed an ultimately unsuccessful resistance against the Spanish conquistador forces in the 1530s.\nPuerto Lempira became the departmental capital in 1975, prior to which it was Brus Laguna.  In the 1980s, the town became a centre for CIA operations against the Sandinistas.\nIts population is 22,860 (2023 calculation).\nPuerto Lempira is sister city to Plattsburgh, New York, US, and has been since 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "puerto lempira",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lempira",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2416,
+    "attempt": 2397,
+    "place_id": "gn-4166673",
+    "input": {
+      "place": {
+        "place_id": "gn-4166673",
+        "name": "Ocala",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 29.1872,
+        "lon": -82.14009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocala, Florida",
+          "url": "https://en.wikipedia.org/wiki/Ocala,_Florida",
+          "text": "Ocala ( oh-KAL-ə) is a city in and the county seat of Marion County, Florida, United States. Located in North Central Florida. The population was 63,591 as of the 2020 census, and was estimated at 71,753 in 2025, making it the 42nd-most populated city in Florida. It is the principal city of the Ocala metropolitan area, which had a population of 442,660 in 2025.\nHome to over 400 thoroughbred farms and training centers, Ocala has been called the \"Horse Capital of the World\". Notable attractions include the Ocala National Forest, Silver Springs State Park, Rainbow Springs State Park, the College of Central Florida, and the World Equestrian Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "ocala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2417,
+    "attempt": 2398,
+    "place_id": "gn-4203696",
+    "input": {
+      "place": {
+        "place_id": "gn-4203696",
+        "name": "Kennesaw",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 34.02343,
+        "lon": -84.61549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kennesaw, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Kennesaw,_Georgia",
+          "text": "Kennesaw is a suburban city northwest of Atlanta in Cobb County, Georgia, United States, located within the greater Atlanta metropolitan area. Known from its original settlement in the 1830s until 1887 as Big Shanty, it became Kennesaw under an 1887 charter. According to the 2020 census, Kennesaw had a population of 33,036, a 10.9% increase in population over the preceding decade. Kennesaw has an important place in railroad history. During the Civil War, Kennesaw was the staging ground for the Great Locomotive Chase on April 12, 1862. Kennesaw is home to Kennesaw State University, an R2 research institution and the third-largest public university in the state of Georgia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "kennesaw",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2418,
+    "attempt": 2399,
+    "place_id": "gn-4934500",
+    "input": {
+      "place": {
+        "place_id": "gn-4934500",
+        "name": "Danvers",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.57509,
+        "lon": -70.93005
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danvers, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Danvers,_Massachusetts",
+          "text": "Danvers is a town in Essex County, Massachusetts, United States, located on the Danvers River near the northeastern coast of Massachusetts. The suburb is a fairly short ride from Boston and is also in close proximity to the beaches of Gloucester, Ipswich and Revere. Originally known as Salem Village, the village was most widely known for its association with the 1692 Salem witch trials. It was also the site of Danvers State Hospital, one of the state's 19th-century psychiatric hospitals. Danvers is a local center of commerce, hosting many car dealerships and the Liberty Tree Mall. As of the 2020 United States Census, the town's population was 28,087."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "danvers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2419,
+    "attempt": 2400,
+    "place_id": "gn-6354895",
+    "input": {
+      "place": {
+        "place_id": "gn-6354895",
+        "name": "Rimouski",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 48.44879,
+        "lon": -68.52396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rimouski",
+          "url": "https://en.wikipedia.org/wiki/Rimouski",
+          "text": "Rimouski (  rim-OO-skee RIM-oo-SKEE; French: [ʁimuski] ) is a city in Quebec, Canada. Rimouski is located in the Bas-Saint-Laurent region, at the mouth of the Rimouski River. As of 2021, the city has a population of 48,935. Rimouski, whose motto is Legi patrum fidelis (Faithful to the law of our fathers), is located on the south shore of the Saint Lawrence Estuary, around 300 km downstream of Quebec City. It is the site of Université du Québec à Rimouski (UQAR), the Cégep de Rimouski (which includes the Institut maritime du Québec) and the Music Conservatory. It is also the home of some ocean sciences research centres (see below)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "rimouski",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

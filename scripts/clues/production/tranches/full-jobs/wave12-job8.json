@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 2360,
+    "attempt": 2341,
+    "place_id": "gn-704202",
+    "input": {
+      "place": {
+        "place_id": "gn-704202",
+        "name": "Khrustalnyi",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 48.14241,
+        "lon": 38.92369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khrustalnyi",
+          "url": "https://en.wikipedia.org/wiki/Khrustalnyi",
+          "text": "Khrustalnyi or Krasnyi Luch is a city in Luhansk Oblast, eastern Ukraine. Its population is approximately 79,533 (2022 estimate). It has historically been one of the most important coal mining locations in the Donbas region.\nThe city was founded in the 1880s after the discovery of coal deposits in the region, and grew over the following century. Until 1920, it was known as Kryndachivka, after the surname of an early settler. It was a site of fighting during World War II. Since the beginning of the Russo-Ukrainian War in 2014, it has been occupied by the widely unrecognized Luhansk People's Republic and later by Russia after its Annexation on 30 September 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "khrustalnyi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2361,
+    "attempt": 2342,
+    "place_id": "gn-776597",
+    "input": {
+      "place": {
+        "place_id": "gn-776597",
+        "name": "Augustów",
+        "country": "Poland",
+        "subdivision": "Podlasie",
+        "lat": 53.84321,
+        "lon": 22.97979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Augustów",
+          "url": "https://en.wikipedia.org/wiki/August%C3%B3w",
+          "text": "Augustów is a town in north-eastern Poland. It lies on the Netta River and the Augustów Canal. It is the seat of Augustów County and of Gmina Augustów in the Podlaskie Voivodeship. Augustów has an area of 80.90 square kilometres (31.24 square miles), and as of June 2022 it has a population of 29,305.\nSituated on the Netta River and six lakes Augustów is a popular summer resort town and an officially recognized spa town in Poland. Founded in the 16th century and named after King Sigismund II Augustus, Augustów is a former royal town and garrison town of Poland, and contains a preserved historic urban layout with a large market square. Its landmarks include the Augustów Canal, an important engineering monument, listed as a Historic Monument of Poland, the Sanctuary of Our Lady of Studzieniczna, a popular regional Christian pilgrimage destination, and several museums."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "augustow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2362,
+    "attempt": 2343,
+    "place_id": "gn-932886",
+    "input": {
+      "place": {
+        "place_id": "gn-932886",
+        "name": "Butha-Buthe",
+        "country": "Lesotho",
+        "subdivision": "Butha-Buthe",
+        "lat": -28.76659,
+        "lon": 28.24937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Butha-Buthe",
+          "url": "https://en.wikipedia.org/wiki/Butha-Buthe",
+          "text": "Butha-Buthe is the capital or camptown of the Butha-Buthe District in Lesotho. It had a population of 35,108 (2016 census). It is named for Butha-Buthe Mountain to the north of the town. Its name means \"place of lying down.\"\nButha-Buthe was founded in 1884 in order to provide the local ruler with a place where he could pay taxes, rather than forcing him to the more distant town of Hlotse.\nThe town has a high school called Bokoro High School. A Canadian organization called Help Lesotho has been assisting the school with their literary skills, helping it to become one of the highest ranked schools for literacy skills out of the schools. Bokoro is twinned with Ridgemont High School in Ottawa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "butha buthe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "butha",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buthe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2363,
+    "attempt": 2344,
+    "place_id": "gn-934631",
+    "input": {
+      "place": {
+        "place_id": "gn-934631",
+        "name": "Centre de Flacq",
+        "country": "Mauritius",
+        "subdivision": "Flacq",
+        "lat": -20.18972,
+        "lon": 57.71444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Centre de Flacq",
+          "url": "https://en.wikipedia.org/wiki/Centre_de_Flacq",
+          "text": "Centre de Flacq or Central Flacq is the metropolitan area of Flacq District, located in the center of the district. The village is one of the most developed and popular villages in Mauritius. Home to several commercial and public institutions, the village topped the list of the most developed villages in Flacq District. The village is administered by the Centre de Flacq Village Council under the aegis of the Flacq District Council. According to the census conducted by Statistics Mauritius in 2011, the population was 15,791. The main source of transportation are taxi and bus service and English was registered as its official language and is highly exercised for notifications and advertisements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "centre de flacq",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "centre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "flacq",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2364,
+    "attempt": 2345,
+    "place_id": "gn-1004109",
+    "input": {
+      "place": {
+        "place_id": "gn-1004109",
+        "name": "Fochville",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -26.48862,
+        "lon": 27.49387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fochville",
+          "url": "https://en.wikipedia.org/wiki/Fochville",
+          "text": "Fochville is a farming and mining town located in the Gauteng province of South Africa. It is part of the Merafong City Local Municipality, which also includes Kokosi, Carletonville and Khutsong.\nThe area surrounding Fochville contains Sotho or Tswana ruins. Tlokwe Ruins are the remains of Sotho-Tswana settlements on the hills surrounding Fochville that were inhabited until the 1820s. Boer War hero Danie Theron was killed 5 km north of the town. The town itself was established as an agricultural centre in 1920 (the ground was officially broken by Henning Rautenbach) and was named after the World War I commander-in-chief of the Allied forces in France, Marshal of France Ferdinand Foch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "fochville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2365,
+    "attempt": 2346,
+    "place_id": "gn-2068823",
+    "input": {
+      "place": {
+        "place_id": "gn-2068823",
+        "name": "Kalgoorlie",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -30.74614,
+        "lon": 121.4742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalgoorlie",
+          "url": "https://en.wikipedia.org/wiki/Kalgoorlie",
+          "text": "Kalgoorlie (/ˈkælˌɡʊːɹli/ kal-GOOR-LEE), also known as Kalgoorlie–Boulder, is a city in the Goldfields–Esperance region of Western Australia, located 595 km (370 mi) east-northeast of Perth at the end of the Great Eastern Highway. It is referred to as Kalgoorlie–Boulder as the surrounding urban area includes the historic townsite of Boulder and the local government area is the City of Kalgoorlie–Boulder.\nKalgoorlie–Boulder lies on the traditional lands of the Kapurn people. The city was established in 1893 during the Western Australian gold rushes. It soon replaced Coolgardie as the largest settlement on the Eastern Goldfields. Kalgoorlie is the ultimate destination of the Goldfields Water Supply Scheme and the Golden Pipeline Heritage Trail. The nearby Super Pit gold mine was Australia's largest open-cut gold mine for many years.\nDuring August 2021, Kalgoorlie–Boulder had an estimated urban population of 29,072, a slight decline from the recent peak of 32,966 in 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "kalgoorlie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2366,
+    "attempt": 2347,
+    "place_id": "gn-2654187",
+    "input": {
+      "place": {
+        "place_id": "gn-2654187",
+        "name": "Bury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.6,
+        "lon": -2.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bury, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Bury,_Greater_Manchester",
+          "text": "Bury (, ) is a market town in the Metropolitan Borough of Bury, Greater Manchester, England. It lies on the river Irwell, 5 miles (8 km) east of Bolton, 6 miles (9.7 km) south-west of Rochdale and 8 miles (12.9 km) north-west of Manchester. The town had a population of 81,101 in 2021, while the wider borough was 193,846.\nThe town is part of the historic county of Lancashire, and has been a part of the metropolitan county of Greater Manchester since 1974. Bury emerged in the Industrial Revolution as a mill town manufacturing textiles. The town is known for the open-air Bury Market and black pudding, the traditional local dish. Former prime minister, Sir Robert Peel, was born here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "bury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2367,
+    "attempt": 2348,
+    "place_id": "gn-2657941",
+    "input": {
+      "place": {
+        "place_id": "gn-2657941",
+        "name": "Yverdon-les-Bains",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.77852,
+        "lon": 6.64115
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yverdon-les-Bains",
+          "url": "https://en.wikipedia.org/wiki/Yverdon-les-Bains",
+          "text": "Yverdon-les-Bains (French pronunciation: [ivɛʁdɔ̃ le bɛ̃] ) (called Eburodunum and Ebredunum during the Roman era; Arpitan: Invèrdon) commonly known as Yverdon, is a municipality in the district of Jura-Nord vaudois of the canton of Vaud in Switzerland. It is the seat of the district. The population of Yverdon-les-Bains, as of December 2020, was 29,955.\nYverdon is located in the heart of a natural setting formed by the Jura mountains, the plains of the Orbe, the hills of the Broye and Lake Neuchâtel. It is the second most important town in the Canton of Vaud. It is known for its thermal springs and is an important regional centre for commerce and tourism.\nIt was awarded the Wakker Prize in 2009 for the way the city handled and developed the public areas and connected the old city with Lake Neuchâtel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "yverdon les bains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "yverdon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2368,
+    "attempt": 2349,
+    "place_id": "gn-3428050",
+    "input": {
+      "place": {
+        "place_id": "gn-3428050",
+        "name": "Sarandí",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.68161,
+        "lon": -58.34639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sarandí, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Sarand%C3%AD,_Buenos_Aires",
+          "text": "Sarandí (Spanish pronunciation: [saɾanˈdi]) is a city in the Avellaneda Partido of the urban agglomeration of Greater Buenos Aires, Argentina. It is located to the south of the Autonomous City of Buenos Aires.\nThe city has an area of 54 square kilometres (21 sq mi) and a population of 60,752 inhabitants (INDEC, 2001); the second most populated locality in the partido after Avellaneda, with 18.5% of the partido's population. The main economical activity in the area is the production of leather goods. The leather industry, especially the tanning process, is often criticized for its contamination of the Riachuelo River.\nThe city was named after a native bush called sarandí (Cephalanthus glabratus)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "sarandi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2369,
+    "attempt": 2350,
+    "place_id": "gn-3480908",
+    "input": {
+      "place": {
+        "place_id": "gn-3480908",
+        "name": "La Asunción",
+        "country": "Venezuela",
+        "subdivision": "Nueva Esparta",
+        "lat": 11.03333,
+        "lon": -63.86278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Asunción",
+          "url": "https://en.wikipedia.org/wiki/La_Asunci%C3%B3n",
+          "text": "La Asunción (Spanish pronunciation: [la asunˈsjon]) is a city in Venezuela. The capital of Nueva Esparta state (made up of three islands), it lies on Margarita Island in the Caribbean Sea, off the South American mainland. It is situated in a fertile valley surrounded by green hills, 6 miles (10 km) inland from the port of Porlamar, where a cooler climate exists. The city was founded in 1565 by Captain Pedro González Cervantes de Albornoz. It has an imposing backdrop of Santa Rosa Castle, also known as the Santa Rosa Fort, which was built to protect the city. The most important structures in the city are built around the Plaza Bolívar. The Catedral Nuestra Señora de La Asunción, dated to the 16th century, is one of the earliest churches in the country. According to the 2011 census, it has a population of 28,513 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "la asuncion",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "asuncion",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2370,
+    "attempt": 2351,
+    "place_id": "gn-4006194",
+    "input": {
+      "place": {
+        "place_id": "gn-4006194",
+        "name": "Francisco I. Madero",
+        "country": "Mexico",
+        "subdivision": "Coahuila",
+        "lat": 25.773,
+        "lon": -103.27127
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Francisco I. Madero, Coahuila",
+          "url": "https://en.wikipedia.org/wiki/Francisco_I._Madero,_Coahuila",
+          "text": "Francisco I. Madero is a city in the northern Mexican state of Coahuila. It is located at the southwestern part of the state near the Durango state border, in the economic region known as Laguna at 25°46′31″N 103°16′23″W, at a mean height of 1,100 m (3,600 ft) above sea level. It serves as the municipal seat for the Francisco I. Madero Municipality, Coahuila.\nIt is named for Revolutionary hero Francisco I. Madero, a native of nearby Parras de la Fuente.\nThe city is located 200 km (120 mi) from the state capital, Saltillo. It had a 2005 census population of 30,084, while its surrounding municipality had a total population of 51,528."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "francisco i madero",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "francisco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "i",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "madero",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2371,
+    "attempt": 2352,
+    "place_id": "gn-4170174",
+    "input": {
+      "place": {
+        "place_id": "gn-4170174",
+        "name": "Riviera Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.77534,
+        "lon": -80.0581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riviera Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Riviera_Beach,_Florida",
+          "text": "Riviera Beach is a city in Palm Beach County, Florida, United States, which was incorporated on September 29, 1922. Due to the location of its eastern boundary, it is also the easternmost municipality in the Miami metropolitan area. In the 2020 U.S. census, the total population of Riviera Beach residents was 37,604 people.\nRiviera Beach is predominantly an African-American city and it is on the list of U.S. cities with African American majority populations. It is home to the Port of Palm Beach and a United States Coast Guard station, and has its own marina. Riviera Beach is home to Blue Heron Bridge, one of the country's top-rated beach dive sites. In 2015, Riviera Beach renamed part of Old Dixie Highway that runs inside the city limits as President Barack Obama Highway. The city is also home to Rapids Water Park, a water park attraction for both tourists and residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "riviera beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "riviera",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2372,
+    "attempt": 2353,
+    "place_id": "gn-4562506",
+    "input": {
+      "place": {
+        "place_id": "gn-4562506",
+        "name": "Aguadilla",
+        "country": "Puerto Rico",
+        "subdivision": "Aguadilla",
+        "lat": 18.42745,
+        "lon": -67.15407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aguadilla, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Aguadilla,_Puerto_Rico",
+          "text": "Aguadilla (Spanish pronunciation: [aɣwaˈðiʝa], locally [awaˈðiʝa]), founded in 1775 by Luis de Córdova, is a city and municipality located in the northwestern tip of Puerto Rico, bordered by the Atlantic Ocean to the north and west, north of Aguada, and Moca and west of Isabela. Aguadilla is spread over 15 barrios and Aguadilla Pueblo (the downtown area and the administrative center of the city). It is a principal city and core of the Aguadilla-Isabela-San Sebastián Metropolitan Statistical Area. This region was already inhabited and known as Aguadilla before 1770. Nevertheless, according to Dr. Agustín Stahl in his Foundation of Aguadilla, it was not until 1780 that the town was officially founded. The construction of a new church and the proceedings to become an independent village began in 1775."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "aguadilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2373,
+    "attempt": 2354,
+    "place_id": "gn-459283",
+    "input": {
+      "place": {
+        "place_id": "gn-459283",
+        "name": "Jēkabpils",
+        "country": "Latvia",
+        "subdivision": "Jēkabpils Municipality",
+        "lat": 56.49903,
+        "lon": 25.85735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jēkabpils",
+          "url": "https://en.wikipedia.org/wiki/J%C4%93kabpils",
+          "text": "Jēkabpils (Latvian: [ˈjeːkapːils] ) is a state city in Jēkabpils Municipality in southeastern Latvia, located roughly halfway between the capital Riga and Daugavpils, and spanning the Daugava River. It is a state city (although without a separate municipal government), and is the seat of Jēkabpils Municipality. The name of the city literally translates into \"Castle of Jacob\". \nHistoric Jēkabpils lies on the left bank, in Selonia, while the historic Krustpils (German: Kreutzburg) lies on the right bank, in Latgale. The two cities were united during the Soviet rule in 1962 under the Jēkabpils name, but retain their distinct regional character.\nJēkabpils was also formerly home to the Soviet Jēkabpils Air Base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "jekabpils",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2374,
+    "attempt": 2355,
+    "place_id": "gn-4899184",
+    "input": {
+      "place": {
+        "place_id": "gn-4899184",
+        "name": "Lake in the Hills",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.18169,
+        "lon": -88.33036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake in the Hills, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Lake_in_the_Hills,_Illinois",
+          "text": "Lake in the Hills is a village in McHenry County, Illinois, United States. As of the 2020 census, the population was 28,982.\nThe village is most known for its very high residential growth which occurred most heavily in the 1990s. Once a sleepy lakeside village of cottages and small ranches, its population skyrocketed as developers flocked to the area in the 1990s. Its population increased by 17,000 people (a nearly 400% increase) over this period, making it one of the most rapidly growing suburbs of Chicago and in the United States at that time. At the height of its building boom, the village issued over 1,000 residential building permits in 1995."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "lake in the hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2375,
+    "attempt": 2356,
+    "place_id": "gn-5101334",
+    "input": {
+      "place": {
+        "place_id": "gn-5101334",
+        "name": "Montclair",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.82593,
+        "lon": -74.20903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montclair, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Montclair,_New_Jersey",
+          "text": "Montclair is a township in Essex County in the U.S. state of New Jersey. Situated on the cliffs of the Watchung Mountains, Montclair is a commercial and cultural hub of North Jersey and a diverse bedroom community of New York City within the New York metropolitan area. The township is home to Montclair State University, the state's second-largest university.\nAs of the 2020 United States census, the township's population was 40,921, an increase of 3,252 (+8.6%) from the 2010 census count of 37,669, which in turn reflected a decline of 1,308 (−3.4%) from the 38,977 counted in the 2000 census. As of 2010, it was the 60th-most-populous municipality in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "montclair",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2376,
+    "attempt": 2357,
+    "place_id": "gn-5138022",
+    "input": {
+      "place": {
+        "place_id": "gn-5138022",
+        "name": "Shirley",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.80149,
+        "lon": -72.8676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shirley, New York",
+          "url": "https://en.wikipedia.org/wiki/Shirley,_New_York",
+          "text": "Shirley is a hamlet (and census-designated place) in Suffolk County, New York, United States. As of the 2020 census, Shirley had a population of 26,360.  Shirley is the western terminus of Atlantic Crossing 1, a major submarine telecommunications cable linking the United States with the UK, Germany, and the Netherlands. Soon, the Emerald Express transatlantic communications cable will provide data connectivity between Europe and North America, landing in Shirley.\nShirley is a community in the Town of Brookhaven, on the South Shore of Long Island. It is named for developer Walter T. Shirley, who had the vision in the 1940s to turn the area on Mastic Bay into an affordable enclave. Shirley's company priced its 4,000 four-room homes starting at $4,700, and lots were priced at $295.\nShirley is served by the Mastic–Shirley Long Island Rail Road station. The station was a compromise when both Mastic and Shirley campaigned for it.  The Smith Point Bridge is the second of only two bridge crossings from Long Island to Fire Island, allowing beach goers easy access to the ocean without taking a ferry boat.\nThe 7th Precinct of the Suffolk County Police Department is located in Shirley.\nShirley was once known as Tangiers (named after William \"Tangier\" Smith) and was home to a few summer bungalows in the early 1900s, most of their owners were from New York City, looking an escape from a vast \"urban jungle\". Today, most of the \"Tangiers-era\" still stand, although some were destroyed by hurricanes, winter storms, or arson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "shirley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2377,
+    "attempt": 2358,
+    "place_id": "gn-5386754",
+    "input": {
+      "place": {
+        "place_id": "gn-5386754",
+        "name": "Redlands",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.05557,
+        "lon": -117.18254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Redlands, California",
+          "url": "https://en.wikipedia.org/wiki/Redlands,_California",
+          "text": "Redlands ( RED-ləndz) is a city in San Bernardino County, California, United States. As of the 2020 census, the city had a population of 73,168, up from 68,747 at the 2010 census. The city is located approximately 70 miles (110 km) northwest of Indio and 63 miles (101 km) east of Los Angeles.\nRedlands was founded in 1881 on land that encompassed native Serrano, Morongo and Cahuilla tribes. Redlands absorbed the communities of Terracina, Idlewild, Plaza, Chicago Colony, Victoria, Barton, Gladysta, and Lugonia along with portions of Mentone, Crafton and Bryn Mawr when it incorporated in 1888. Redlands is home to the Asistencia Mission founded in 1819 by early European settlers. By the early 20th century, it was a major focal point of California's citrus industry and the location of the largest producer of navel oranges in the world.\nThroughout its past, Redlands has a history of philanthropic residents establishing lasting legacies. Examples include the Smiley Library in 1898, the University of Redlands in 1907, the Redlands Bowl in 1924, the Lincoln Memorial Shrine in 1932, the Redlands Bicycle Classic in 1985 and the Garner Holt Foundation's \"Garner's Garage\" for animatronic STEM education and research in 2024.\nToday, Redlands is a strong growing community with a diverse economy and a growing population in the Inland Empire region of Southern California. Redlands is home to Esri, the Redlands Historical Glass Museum and the San Bernardino County Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "redlands",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2378,
+    "attempt": 2359,
+    "place_id": "gn-943960",
+    "input": {
+      "place": {
+        "place_id": "gn-943960",
+        "name": "Viljoenskroon",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.20841,
+        "lon": 26.94855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viljoenskroon",
+          "url": "https://en.wikipedia.org/wiki/Viljoenskroon",
+          "text": "Viljoenskroon is a maize and cattle farming town located in the Free State province of South Africa. It was named after the original farm owner J. J. Viljoen and his horse Kroon (Crown).  The town was laid out in 1921 on the farm \"Mahemskuil\" and became a municipality in 1925.\nThe Viljoenskroon municipality and neighboring township of Rammulotsi were incorporated into the greater Moqhaka Local Municipality in 1996 and forms part of the Fezile Dabi District municipality.\nThe Viljoenskroon/Rammulotsi urban unit has an estimated population of 59 202.  Viljoenskroon historically played a part in providing residential opportunities to the adjacent mining communities at Lace Diamond Mine and the Orkney gold mines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "viljoenskroon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2379,
+    "attempt": 2360,
+    "place_id": "gn-13353541",
+    "input": {
+      "place": {
+        "place_id": "gn-13353541",
+        "name": "Varappuzha",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 10.07589,
+        "lon": 76.27152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Varappuzha",
+          "url": "https://en.wikipedia.org/wiki/Varappuzha",
+          "text": "Varappuzha, IPA: [ʋɐɾɐːpːuɻɐ], (formerly known as  Verapoly) is a northern suburb of the city of Kochi. It is a census town in Paravur Taluk, Ernakulam district in the Indian state of Kerala. Situated around 15 km (9 mi) from the city centre and 8 km (5 mi) from Edapally, the areas lies in the NH 66 connecting Vytilla with North Paravur. Varappuzha has large-scale paddy cultivating area is situated at is western part which is called Devaswompadam, specialised with Pokkali paddy cultivation and interim crop as fish cultivation locally called 'Kettu'. The common work of the natives are fishing and agriculture. Varapuzha is known for its fish market (Chettibagam market).\nThe Varapuzha Bridge (near historical Verapoly Island) connects Varapuzha (Mannantturuthu) with the neighboring Cheranallur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "varappuzha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

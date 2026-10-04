@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 2300,
+    "attempt": 2281,
+    "place_id": "gn-2995908",
+    "input": {
+      "place": {
+        "place_id": "gn-2995908",
+        "name": "Marcq-en-Barœul",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.66667,
+        "lon": 3.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marcq-en-Barœul",
+          "url": "https://en.wikipedia.org/wiki/Marcq-en-Bar%C5%93ul",
+          "text": "Marcq-en-Barœul (French pronunciation: [maʁkɑ̃ baʁœl] , lit. 'Marcq in Barœul'; Picard: Marke-in-Bareul; older Dutch: Marke) is a commune in the Nord department in the Hauts-de-France region, northern France.\nIt is a suburb of the city of Lille, and is immediately adjacent to it on the northeast. It is the sixth-largest component of the Métropole Européenne de Lille. Marcq-en-Barœul is known as the most affluent suburb city of Lille, it is part of the 'Triangle d'or' (Golden triangle) of Lille. It features expensive real estate, especially alongside the Grand Boulevard and Hippodrome des Flandres racecourse. The city is also home to one of the campuses of the elite international private collège and lycée active bilingue Jeannine-Manuel. Furthermore, the city is home to the Jacques Delors European School of Metropolitan Lille (École Européenne de Lille Métropole Jacques Delors), one of the only accredited European Schools in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "marcq en bar ul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marcq",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "en",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "bar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ul",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2301,
+    "attempt": 2282,
+    "place_id": "gn-3172154",
+    "input": {
+      "place": {
+        "place_id": "gn-3172154",
+        "name": "Nuoro",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 40.31991,
+        "lon": 9.32568
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuoro",
+          "url": "https://en.wikipedia.org/wiki/Nuoro",
+          "text": "Nuoro (Italian pronunciation: [ˈnuːoro]  or less correctly [ˈnwɔːro]; Sardinian: Nùgoro [ˈnuɣɔɾɔ]) is a town and comune (municipality) in central-eastern Sardinia in Italy, situated on the slopes of Mount Ortobene. It is the capital and largest city of the province of Nuoro. With a population of 32,718, it is the sixth-largest municipality in Sardinia. Its frazione (borough) of Lollove is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\").\nAs the birthplace of several renowned artists, including writers, poets, painters and sculptors, Nuoro hosts some of the most important museums in Sardinia. It is considered an important cultural center of the region and it has been referred to as the \"Sardinian Athens\". Nuoro is the hometown of Grazia Deledda, the only Italian woman to be awarded the Nobel Prize in Literature."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "nuoro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2302,
+    "attempt": 2283,
+    "place_id": "gn-3571224",
+    "input": {
+      "place": {
+        "place_id": "gn-3571224",
+        "name": "West End",
+        "country": "Bahamas",
+        "subdivision": "West Grand Bahama",
+        "lat": 26.68711,
+        "lon": -78.97702
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West End, Bahamas",
+          "url": "https://en.wikipedia.org/wiki/West_End,_Bahamas",
+          "text": "West End (also referred to as \"Settlement Point\") is the oldest town and westernmost settlement on the Bahamian island of Grand Bahama. It is agreed by most academics and lawmakers that West End is the current capital of Grand Bahama, contrary to the popular belief that Freeport is the capital of the island. Yet however, some lawmakers continue to insist that Freeport City is the legitimate capital of Grand Bahama. It is also the third largest settlement in The Bahamas. There is one airport in West End, West End Airport, which serves mostly private aircraft. Since the 1950s, the settlement of West End has fluctuated with the rise and fall of the adjacent resort developments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "west end",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "end",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2303,
+    "attempt": 2284,
+    "place_id": "gn-3832260",
+    "input": {
+      "place": {
+        "place_id": "gn-3832260",
+        "name": "Yerba Buena",
+        "country": "Argentina",
+        "subdivision": "Tucuman",
+        "lat": -26.81298,
+        "lon": -65.29543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yerba Buena, Tucumán",
+          "url": "https://en.wikipedia.org/wiki/Yerba_Buena,_Tucum%C3%A1n",
+          "text": "Yerba Buena is the capital of the Yerba Buena Department in the province of Tucumán, Argentina. It is located at an altitude of around 466 metres (1528 feet).\nThe city of Yerba Buena is the most urbanized area of the department. It is mostly residential, although commercial activity has increased along its main road (Aconquija Avenue) with different kind of shops, shopping arcades, restaurants, bars and cafés. The main avenue has is lively, especially on weekends, when yerbabuenenses and people from its neighboring cities gather in search of fun and relaxation.\nYerba Buena is home to most of the country clubs and gated communities in the province, although there are slums scattered around the city.\nYerba Buena is a city, possibly given its name because people there may be friendly. There is a place called San Javier in the mountains nearby where there is a large cross called \"El Cristo\" (The Christ). Yerba Buena has experienced more growth than any other Argentine city since 1996 with an average of two residences per day being constructed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "yerba buena",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "yerba",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buena",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2304,
+    "attempt": 2285,
+    "place_id": "gn-4132093",
+    "input": {
+      "place": {
+        "place_id": "gn-4132093",
+        "name": "Springdale",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.18674,
+        "lon": -94.12881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springdale, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Springdale,_Arkansas",
+          "text": "Springdale is a city in Washington and Benton counties in the U.S. state of Arkansas. The population was 84,161 at the 2020 census, making it the fourth-most populous city in Arkansas. It is included in the three-county Northwest Arkansas metropolitan area, which had 546,725 residents in 2020.\nLocated on the Springfield Plateau deep in the Ozark Mountains, Springdale has long been an important industrial city for the region. In addition to several trucking companies, the city is home to the world headquarters of Tyson Foods, the world's largest meat- producing company.\nSpringdale has been experiencing a population boom in recent years, as indicated by a 133% growth in population between the 1990 and 2010 censuses. During this period of rapid growth, the city has seen the establishment of a Springdale campus of Northwest Arkansas Community College and the Northwest Arkansas Naturals minor league baseball team move into Arvest Ballpark. Tyson remains the city's top employer and is visible throughout the city. Governor Mike Beebe signed an act into law recognizing Springdale as \"The Poultry Capital of the World\" in 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "springdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2305,
+    "attempt": 2286,
+    "place_id": "gn-4557137",
+    "input": {
+      "place": {
+        "place_id": "gn-4557137",
+        "name": "Chester",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.84753,
+        "lon": -75.35785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chester, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Chester,_Pennsylvania",
+          "text": "Chester is a city in Delaware County, Pennsylvania, United States. It is part of the Philadelphia metropolitan area and located on the western bank of the Delaware River between Philadelphia and Wilmington, Delaware. The population of Chester was 32,605 at the 2020 census.\nIncorporated in 1682, Chester is the oldest city in Pennsylvania and was the location of William Penn's first arrival in the Province of Pennsylvania. It was the county seat for Chester County from 1682 to 1788 and of Delaware County from 1789 to 1851.\nFrom the second half of the 19th century through the first half of the 20th century, the city was a major center of heavy industry, manufacturing, and shipping. The city became a boomtown during World War I and World War II. The availability of employment in factories, dock work, and shipbuilding attracted immigrants from Southern and Eastern Europe as well as African-American migrants from southern states. Since the mid-20th century, it has lost most of its manufacturing base and has struggled as a post-industrial city dealing with crime, pollution, and poverty; however, certain manufacturing, industrial, energy production, waste treatment, and shipping centers on the Port of Chester remain active. Pennsylvania declared Chester a financially distressed municipality in 1995, and a fiscal emergency was declared in 2020. In 2022, Chester became the 31st city in the United States to declare bankruptcy.\nThe city is home to Widener University, Harrah's Philadelphia, the Chester Waterside Station, the William Penn Landing Site, and Subaru Park, home of the Major League Soccer team, the Philadelphia Union."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "chester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2306,
+    "attempt": 2287,
+    "place_id": "gn-4923210",
+    "input": {
+      "place": {
+        "place_id": "gn-4923210",
+        "name": "Marion",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 40.55837,
+        "lon": -85.65914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marion, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Marion,_Indiana",
+          "text": "Marion is a city in and the county seat of Grant County, Indiana, United States, along the Mississinewa River. The population was 28,310 as of the 2020 census. It is named for Francis Marion, a brigadier general from South Carolina in the American Revolutionary War.\nThe city is home to Indiana Wesleyan University, the largest evangelical Christian university in the Midwest and Indiana's largest private university, when online and regional campuses in Indiana, Kentucky, Ohio, and Illinois are included. The traditional campus enrolls about 2,800 students. Marion is the birthplace of actor James Dean and cartoonist Jim Davis, and was the location of the wedding of actress Julia Roberts and singer Lyle Lovett in 1993. Ronald Douglas Morrell Jr. is the city's first African American mayor and has been mayor since 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "marion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2307,
+    "attempt": 2288,
+    "place_id": "gn-5282835",
+    "input": {
+      "place": {
+        "place_id": "gn-5282835",
+        "name": "Bristol",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.67176,
+        "lon": -72.94927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bristol, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Bristol,_Connecticut",
+          "text": "Bristol is a suburban city located in Hartford County, Connecticut, United States. The city is part of the Naugatuck Valley Planning Region. As of the 2020 census, the population of the city was 60,833.\nBristol is the location of the general headquarters of ESPN, the location of Lake Compounce, the United States's oldest continuously operating theme park, and is facing approval in 2024 to become home to one of the largest biomedical waste incineration operations in the United States.\nBristol was known as a clock-making city in the 19th century, and is the location of American Clock & Watch Museum. Bristol is also the site of the former American Silver Company and its predecessor companies.\nBristol's nickname is the \"Mum City\", because it was once a leader in chrysanthemum production and still holds an annual Bristol Mum Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "bristol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2308,
+    "attempt": 2289,
+    "place_id": "gn-6331908",
+    "input": {
+      "place": {
+        "place_id": "gn-6331908",
+        "name": "Milton",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 34.13216,
+        "lon": -84.30067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milton, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Milton,_Georgia",
+          "text": "Milton is a city in Fulton County, Georgia, United States, located about 30 miles (48 km) north of downtown Atlanta. Incorporated on December 1, 2006, the population was 41,296 as of the 2020 census.\nThe city is named after Revolutionary War hero John Milton, who is also the namesake of the former Milton County that included modern-day Milton between 1857 and 1931. With over 39 square miles of land, much of it agriculturally zoned, Milton is characterized by its rural and equestrian heritage, spacious residential lots, and a small-town feel combined with the amenities of a metropolitan area. It is bordered by Cherokee and Forsyth counties, as well as the cities of Roswell and Alpharetta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "milton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2309,
+    "attempt": 2290,
+    "place_id": "gn-11612457",
+    "input": {
+      "place": {
+        "place_id": "gn-11612457",
+        "name": "Echizen",
+        "country": "Japan",
+        "subdivision": "Fukui",
+        "lat": 35.88571,
+        "lon": 136.17073
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Echizen, Fukui",
+          "url": "https://en.wikipedia.org/wiki/Echizen,_Fukui",
+          "text": "Echizen (越前市, Echizen-shi) is a city located in Fukui Prefecture, Japan. As of 1 July 2018,  the city had an estimated population of 83,078 in 20,341 households and a population density of 360 persons per km2. The total area of the city was 230.70 square kilometres (89.07 sq mi).  The modern city of Echizen was established on October 1, 2005, from the merger of the city of Takefu and the town of Imadate (from Imadate District); although the Echizen Basin has been an important regional center for over 1,500 years. The city is home to the largest number of cultural assets in Fukui Prefecture and has many former castle sites and prehistoric archeological sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "echizen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2310,
+    "attempt": 2291,
+    "place_id": "gn-1797333",
+    "input": {
+      "place": {
+        "place_id": "gn-1797333",
+        "name": "Qufu",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 35.59667,
+        "lon": 116.99111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qufu",
+          "url": "https://en.wikipedia.org/wiki/Qufu",
+          "text": "Qufu (pronounced [tɕʰý.fû]; Chinese: 曲阜) is a county-level city in southwestern Shandong province, East China. It is located about 130 kilometres (81 mi) south of the provincial capital Jinan and 45 km (28 mi) northeast of the prefectural seat of Jining. Qufu has an area of 815 square kilometers, and a total population of 653,000 inhabitants, of which, 188,000 live in urban areas.\nQufu is best known as the hometown of Confucius, who is traditionally believed to have been born at nearby Mount Ni. Qufu, being the capital of Lu and birthplace of Confucius, is known collectively with Zoucheng, the birthplace of Mencius, as \"Zoulu\". The city contains numerous historic palaces, temples and cemeteries. The three most famous cultural sites of the city, collectively known as San Kong (三孔; 'the Three Confucian [sites]', are the Temple of Confucius (Chinese: 孔庙; pinyin: Kǒngmiào), the Cemetery of Confucius (孔林; Kǒnglín), and the Kong Family Mansion (孔府; Kǒngfǔ). Together, these three sites have been listed as a UNESCO World Heritage Site since 1994."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "qufu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2311,
+    "attempt": 2292,
+    "place_id": "gn-2553455",
+    "input": {
+      "place": {
+        "place_id": "gn-2553455",
+        "name": "Chefchaouen",
+        "country": "Morocco",
+        "subdivision": "Tanger-Tetouan-Al Hoceima",
+        "lat": 35.16878,
+        "lon": -5.2636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chefchaouen",
+          "url": "https://en.wikipedia.org/wiki/Chefchaouen",
+          "text": "Chefchaouen is a city in northwest Morocco. It is the chief town of the province of the same name and is noted for its buildings in shades of blue, for which it is nicknamed the \"Blue City\". It is situated in a mountainous region in northern Morocco, between Tétouan and Ouazzane.\nIt was founded in 1471 by the Mulay Ali ibn Rashid, a distant descendant of the Islamic Prophet Muhammad. The original settlement consisted of just a small fortress, now referred to as Chefchaouen's Kasbah. The fortress was erected to help defend the area from potential attacks by Portuguese invaders; at the time, Portugal was launching attacks against northern cities and towns in Morocco."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "chefchaouen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2312,
+    "attempt": 2293,
+    "place_id": "gn-2654755",
+    "input": {
+      "place": {
+        "place_id": "gn-2654755",
+        "name": "Bridgend",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.50583,
+        "lon": -3.57722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridgend",
+          "url": "https://en.wikipedia.org/wiki/Bridgend",
+          "text": "Bridgend (English:   ; Welsh: Pen-y-bont ar Ogwr or just Pen-y-bont, meaning \"the end of the bridge on the Ogmore\") is a town in the Bridgend County Borough of Wales, 20 miles (32 km) west of Cardiff and 20 miles (32 km) east of Swansea.  The town is named after the medieval bridge over the River Ogmore. The River Ewenny also flows through the town. The population was 49,597 in 2021. Bridgend is within the Cardiff Capital Region which in 2019 had a population of approximately 1.54 million.\n\nHistorically a part of Glamorgan, Bridgend has greatly expanded in size since the early 1980s – the 2001 census recorded a population of 39,429 for the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "bridgend",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2313,
+    "attempt": 2294,
+    "place_id": "gn-3067542",
+    "input": {
+      "place": {
+        "place_id": "gn-3067542",
+        "name": "Příbram",
+        "country": "Czechia",
+        "subdivision": "Central Bohemia",
+        "lat": 49.68988,
+        "lon": 14.01043
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Příbram",
+          "url": "https://en.wikipedia.org/wiki/P%C5%99%C3%ADbram",
+          "text": "Příbram (Czech pronunciation: [ˈpr̝̊iːbram]; German: Pribram or Przibram) is a town in the Central Bohemian Region of the Czech Republic. It has about 33,000 inhabitants. It is located on the Litavka River in the Brdy Highlands.\nPříbram is the third-largest in the Central Bohemian Region (behind Kladno and Mladá Boleslav), and is a natural administrative and cultural centre of the southwestern part of the region, although it also tends to be largely influenced by the proximity of Prague. The town is known for its mining history, and more recently, its new venture into economic restructuring.\nThe Svatá Hora pilgrimage site above the town is the oldest and most important Marian pilgrimage site in Bohemia. Příbram is also known for the Mining Museum Příbram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "pribram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2314,
+    "attempt": 2295,
+    "place_id": "gn-3095321",
+    "input": {
+      "place": {
+        "place_id": "gn-3095321",
+        "name": "Konin",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 52.22338,
+        "lon": 18.25121
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Konin",
+          "url": "https://en.wikipedia.org/wiki/Konin",
+          "text": "Konin ([ˈkɔɲin]) is a city in central Poland, on the Warta River. It is the capital of Konin County and is located within the Greater Poland Voivodeship. In 2021 the population of the city was 71,427, making it the fourth-largest city in Greater Poland after Poznań, Kalisz and Piła.\nKonin with over a thousand years of history is one of the oldest cities in Greater Poland. A former royal city of Poland, it attributed its early prosperity to clothmaking and trade, then in the 19th century it became an industrial center, and since the 20th century it has been the main city of the Konin Coal Basin. It was the site of several battles. From 1975 to 1999, it was the capital of the Konin Voivodeship. The Old Town of Konin contains a number of structures in Gothic, Renaissance, Baroque and Neoclassical styles, and a unique medieval road post, considered the oldest preserved road sign in Central and Eastern Europe and the oldest in Europe beyond the boundaries of the former Roman Empire. It is located on the main motorway and railway connecting Warsaw with Poznań and the German-Polish border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "konin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2315,
+    "attempt": 2296,
+    "place_id": "gn-3406442",
+    "input": {
+      "place": {
+        "place_id": "gn-3406442",
+        "name": "Barbalha",
+        "country": "Brazil",
+        "subdivision": "Ceará",
+        "lat": -7.31111,
+        "lon": -39.30417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barbalha",
+          "url": "https://en.wikipedia.org/wiki/Barbalha",
+          "text": "Barbalha is a municipality in the state of Ceará in the Northeast region of Brazil. Barbalha covers 569.5 km2 (219.9 mi2), and has a population of 61,228 with a population density of 100 inhabitants per square kilometer. It is located at the south of the state, 575 km (357 mi) from the state capital of  Fortaleza. The eastern part of the Araripe-Apodi National Forest, established in 1946, is located in Barbalha. The city sits at the foot of the Chapada do Araripe, a large plateau on the border of Ceará and Pernambuco.\nThe municipality of Barbalha is located in the microregion of the Vale do Cariri, in the south of the state of Ceará. It is bordered by the municipalities of Crato, Juazeiro do Norte, Porteiras, Jardim, and Missão Velha.\nIn the Portuguese colonial period the larger region of southern Ceará belonged to Francisco Magalhães Barreto (1816–1887), a sugarcane landowner. The small settlement of Barbalha was elevated to parish (freguesia) status by Provincial Law No. 91 of August 30, 1838. On August 7, 1846, by Provincial Law no. 374, it was raised to village status and a judiciary seat was created there. Barbalha was then detached from the municipality of Crato. Barbalha was elevated to municipality status by Provincial Law no. 9740 on August 30, 1876.\nBarbalha is associated with significant events of history in Ceará in the 19th century. Residents of the town participated in the Pernambucan Revolt of 1817 and in the Confederation of the Equator, a short-lived rebellion that occurred in the Northeastern region of Brazil in 1824.\nAn important festival in Barbalha is the Festa do Pau-da-Bandeira de Santo Antonio (Feast of the Flagpole of Saint Anthony) in June. The municipality produces famous rapadura (panela) (unrefined whole cane sugar) and cassava flour. Other industries in the town produce marble, bricks, tiles, and Portland cement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "barbalha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2316,
+    "attempt": 2297,
+    "place_id": "gn-3520235",
+    "input": {
+      "place": {
+        "place_id": "gn-3520235",
+        "name": "Rioverde",
+        "country": "Mexico",
+        "subdivision": "San Luis Potosí",
+        "lat": 21.93115,
+        "lon": -99.99488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rioverde, San Luis Potosí",
+          "url": "https://en.wikipedia.org/wiki/Rioverde,_San_Luis_Potos%C3%AD",
+          "text": "Rioverde is a city and its surrounding municipality located in the south-central part of the state of San Luis Potosí, Mexico. It is the fifth-most populated city in the state, behind San Luis Potosí, Soledad de Graciano Sánchez, Ciudad Valles, and Matehuala. The city had a 2005 census population of 49,183, while the municipality, of which it serves as municipal seat, had a population of 85,945 and an area extent of 3,064 km2 (1,183 sq mi). The population of its metropolitan area, which includes the largest municipality of Ciudad Fernández, was 126,997.\nThe city is well known for its spring, called Media Luna. The city has been growing faster in the last four years.  Rioverde  lives up to its name in its rich surroundings and round the year pleasant weather.  It is the birthplace of singer Ana Bárbara, former FBI fugitive José Manuel García Guevara  and composer Amador Ramos. The town has an Institute of Higher Education, the Technical Institute of Rioverde. It is one of the higher education federal institutes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "rioverde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2317,
+    "attempt": 2298,
+    "place_id": "gn-4148677",
+    "input": {
+      "place": {
+        "place_id": "gn-4148677",
+        "name": "Boynton Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.52535,
+        "lon": -80.06643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boynton Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Boynton_Beach,_Florida",
+          "text": "Boynton Beach is a city in Palm Beach County, Florida, United States. It is situated about 57 miles (92 km) north of Miami. The 2020 census recorded a population of 80,380. Boynton Beach is located in the Miami metropolitan area, which was home to 6,138,333 people at the 2020 census. The city is named after Nathan Boynton, a Civil War major and Michigan politician who became one of the first settlers in the area in 1895. Boynton Beach is located north of Delray Beach, south of Hypoluxo and Lantana, and east of Golf, while the municipalities of Briny Breezes, Gulf Stream, Manalapan, and Ocean Ridge are located to the east across the Intracoastal Waterway.\nNative Americans inhabited what is now Boynton Beach thousands of years ago; a burial mound west of the city includes artifacts dating as far back as roughly 150 BCE. The first nonindigenous settlers, Dexter Hubel and his family, arrived in 1877. Major Boynton moved to present-day Boynton Beach in 1895, building the Boynton Hotel and bringing contingents from Michigan, many of whom practiced farming or established businesses in the vicinity of Ocean Avenue. Byrd and Fred Dewey filed the original plat for the Town of Boynton in 1898, although official incorporation did not occur until 1920. The oceanfront section of Boynton Beach split off in 1931 and became Ocean Ridge in 1939. Boynton Beach's population grew rapidly in the first few decades following World War II, with more than a three-fold increase in the 1950s, while development of the city expanded westward, particularly in the 1980s.\nToday, Boynton Beach is the third-most-populous municipality in Palm Beach County, behind only West Palm Beach and Boca Raton. The area along Congress Avenue south of Gateway Boulevard includes a large concentration of restaurants and retail stores at the Boynton Beach Mall, the Boynton Town Center, and Renaissance Commons. Boynton Beach also has several arts and culture facilities, such as the Boynton Woman's Club and Schoolhouse Children's Museum & Learning Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 331
+    },
+    "banned_terms": [
+      {
+        "term": "boynton beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "boynton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2318,
+    "attempt": 2299,
+    "place_id": "gn-4192289",
+    "input": {
+      "place": {
+        "place_id": "gn-4192289",
+        "name": "Duluth",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 34.00288,
+        "lon": -84.14464
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duluth, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Duluth,_Georgia",
+          "text": "Duluth (  də-LOOTH) is a city in Gwinnett County, Georgia, United States. Located north of Interstate 85, it is approximately 30 miles (48 km) northeast of Atlanta.\nAs of the 2020 census, Duluth had a population of 31,873, and the United States Census Bureau estimated the population to be 31,864 as of 2021.\nThis Atlanta suburb is home to Gwinnett Place Mall, the Gwinnett Civic and Cultural Center, Gas South Arena, Hudgens Center for the Arts, and the Red Clay Theater. It is also home to Northside Hospital–Duluth, an 81-bed hospital constructed in 2006, as well as GMC's Glancy Campus, a 30-bed facility located near downtown. The agricultural manufacturer AGCO is based in Duluth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "duluth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2319,
+    "attempt": 2300,
+    "place_id": "gn-4839416",
+    "input": {
+      "place": {
+        "place_id": "gn-4839416",
+        "name": "New London",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.35565,
+        "lon": -72.09952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New London, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/New_London,_Connecticut",
+          "text": "New London is a seaport city and a port of entry on the northeast coast of the United States, located at the outlet of the Thames River in New London County, Connecticut, which empties into Long Island Sound. The city is part of the Southeastern Connecticut Planning Region.\nNew London is home to the United States Coast Guard Academy, Connecticut College, Mitchell College, and The Williams School. The Coast Guard Station New London and New London Harbor is home port to both the Coast Guard's cutter Coho and their tall ship Eagle. The city had a population of 27,367 at the 2020 census. The Norwich–New London metropolitan area includes 21 towns and 274,055 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "new london",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "london",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
