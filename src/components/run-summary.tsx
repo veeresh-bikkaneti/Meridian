@@ -2,6 +2,7 @@ import type { JSX } from "react";
 import { formatDistance } from "@/game/geo";
 import { EDITION_LABELS, type SessionSummary } from "@/game/session";
 import { SHARE_URL, sessionShareText } from "@/game/share-action";
+import { LEARNING_COPY, type GrowthSummary } from "@/game/learning";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "./share-button";
 
@@ -10,16 +11,24 @@ import { ShareButton } from "./share-button";
  * the game — never auto-shown. The totals span the whole session (every
  * edition played since the game started), with a per-edition score
  * breakdown. The total is announced via the aria-live region.
+ *
+ * When the learning-outcomes flag is on, a "My growth" section renders the
+ * player's own progress (places explored/mastered, day streak, regions
+ * where their pins are landing closer) — encouragement about learning, not
+ * a leaderboard. Never names distances in a shaming way; share text is
+ * unchanged (learning records never leave the device).
  */
 export function RunSummaryCard(props: {
   summary: SessionSummary;
   regionName: string;
   /** The session's date key, for the share text's date line. */
   dateKey: string;
+  /** Growth data, flag-gated. Null when the flag is off. */
+  growth?: GrowthSummary | null;
   onDone: () => void;
   onPlayAgain: () => void;
 }): JSX.Element {
-  const { summary, regionName, dateKey, onDone, onPlayAgain } = props;
+  const { summary, regionName, dateKey, growth, onDone, onPlayAgain } = props;
   // Session totals only — no per-place emoji strip; the session banks
   // totals, never per-place scores (see sessionShareText).
   const text = sessionShareText({ summary, regionName, dateKey });
@@ -90,6 +99,38 @@ export function RunSummaryCard(props: {
             </dd>
           </div>
         </dl>
+
+        {growth ? (
+          <div
+            data-testid="growth-section"
+            className="mt-4 rounded-xl border border-white/10 bg-black/30 p-3"
+          >
+            <h3 className="text-[11px] font-normal tracking-wider text-white/60 uppercase">
+              {LEARNING_COPY.summaryHeader}
+            </h3>
+            <dl className="mt-2 space-y-1.5 text-sm">
+              <div className="flex justify-between">
+                <dt className="text-white/60">{LEARNING_COPY.placesExplored}</dt>
+                <dd className="tabular-nums">{growth.explored}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-white/60">{LEARNING_COPY.placesMastered}</dt>
+                <dd className="tabular-nums">{growth.mastered}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="text-white/60">{LEARNING_COPY.dayStreak}</dt>
+                <dd className="tabular-nums">
+                  {growth.dayStreak} — {LEARNING_COPY.dayStreakNudge}
+                </dd>
+              </div>
+            </dl>
+            {growth.improvingRegions.map((t) => (
+              <p key={t.regionId} className="mt-2 text-sm text-emerald-100/90">
+                Your pins are landing closer in {t.regionName}!
+              </p>
+            ))}
+          </div>
+        ) : null}
 
         <div className="mt-6 flex flex-col gap-2">
           <ShareButton

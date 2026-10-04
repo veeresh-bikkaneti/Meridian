@@ -3,6 +3,12 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
+import {
+  clearRunAfterUncleanShutdown,
+  handlePageHide,
+  isUncleanShutdown,
+  stampCleanExitDirty,
+} from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
 import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
@@ -32,9 +38,10 @@ import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
-import { SatelliteMap, type MapMark, type MapVariation } from "@/map/satellite-map";
+import type { MapMark, MapVariation } from "@/map/satellite-map";
+import { MapErrorBoundary } from "./map-error-boundary";
 import { Compass } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
@@ -48,6 +55,16 @@ import {
   REVEAL_WATCHDOG_MS,
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
+import { isEnabled, loadFlags } from "@/lib/flags";
+import {
+  emptyLearningStore,
+  growthLineFor,
+  growthSummary,
+  readLearningStore,
+  recordAnswer,
+  writeLearningStore,
+  type LearningStore,
+} from "@/game/learning";
 
 /**
  * Session flag marking that this tab already reloaded for a stale build.
@@ -67,6 +84,44 @@ const RUN_KEY = "meridian.run";
  * place, else fails safe by advancing (the result is already scored).
  */
 const RUN_DROP_KEY = "meridian.drop";
+
+/**
+ * The satellite map (maplibre-gl + the atlas payloads) is the heaviest
+ * module in the app and is only needed once a run starts. Loading it lazily
+ * keeps it out of the boot bundle, so the menu paints on a fraction of the
+ * JS (P0 Safari launch fix: the 2.57 MB synchronously-evaluated boot bundle
+ * is the prime iOS-jetsam suspect). The Play path wraps it in Suspense (the
+ * existing loading-spinner styling) and MapErrorBoundary (chunk-load
+ * failure → retry UI, never a blank page). The boundary's "Try again"
+ * reloads the page: re-rendering a React.lazy after a chunk failure
+ * rethrows its cached rejection, and even a fresh import() of the same
+ * failed URL is negatively cached by the browser for the life of the
+ * document — only a reload genuinely re-fetches the chunk. The run is
+ * restored from sessionStorage on boot, so the game survives the reload.
+ */
+const SatelliteMap = lazy(() => import("@/map/satellite-map"));
+
+/**
+ * Suspense fallback while the lazy satellite-map chunk downloads. Mirrors
+ * the in-map tile-loading pill's spinner styling (`.meridian-spinner`).
+ */
+function MapLoadingFallback() {
+  return (
+    <div
+      role="status"
+      data-testid="map-loading"
+      className="absolute inset-0 flex items-center justify-center bg-bg"
+    >
+      <div className="flex items-center gap-2.5 rounded-full border border-line bg-surface py-2.5 pr-5 pl-3.5 text-sm font-medium text-fg">
+        <span
+          aria-hidden="true"
+          className="meridian-spinner block h-4 w-4 rounded-full border-2 border-muted/40 border-t-fg"
+        />
+        Loading map&hellip;
+      </div>
+    </div>
+  );
+}
 
 export type Drop = {
   lon: number;
@@ -225,6 +280,10 @@ function readRun(): Run | null {
 function writeRun(run: Run) {
   try {
     sessionStorage.setItem(RUN_KEY, JSON.stringify(run));
+    // Crash-loop breaker: this page now holds unsaved-crash state. If the
+    // process is killed without unloading, the next boot must not
+    // auto-resume; `pagehide` clears this flag on every clean unload.
+    stampCleanExitDirty();
   } catch {
     // The run still lives in memory when storage is blocked.
   }
@@ -510,6 +569,27 @@ export function GameApp() {
   }, [replaceSession]);
 
   useEffect(() => {
+    // Crash-loop breaker: a normal unload (reload, tab close, navigation)
+    // fires pagehide; a jetsam/WebKit process kill never does. The flag
+    // this leaves behind tells the boot effect whether the saved run is
+    // safe to auto-resume. handlePageHide takes no event, so it is wrapped
+    // here rather than registered directly.
+    const onPageHide = () => handlePageHide();
+    window.addEventListener("pagehide", onPageHide);
+    return () => window.removeEventListener("pagehide", onPageHide);
+  }, []);
+
+  useEffect(() => {
+    // Crash-loop breaker: the previous page wrote a run but never unloaded
+    // — the process was killed mid-game. Clear the stale run and land on
+    // the menu instead of replaying the identical heavy path. A missing
+    // flag (runs saved before this fix) counts as clean and resumes as
+    // before.
+    if (isUncleanShutdown()) {
+      clearRunAfterUncleanShutdown(RUN_KEY);
+      setReady(true);
+      return;
+    }
     const saved = readRun();
     const now = Date.now();
     const dateKey = trailDate();
@@ -1258,6 +1338,26 @@ function PlayLoaded({
   // belongs to the previous run.
   const [mapKey, setMapKey] = useState(0);
   const [summary, setSummary] = useState<SessionSummary | null>(null);
+  // Learning outcomes (flag-gated, observational). The store is read once
+  // at boot after the shared flags load resolves; the boot-time flag value
+  // is authoritative for the session (no mid-game surprises). Flag off =
+  // no reads, no writes, no traces — dealing/scoring/session byte-identical.
+  const [learningEnabled, setLearningEnabled] = useState(false);
+  const [learningStore, setLearningStore] = useState<LearningStore | null>(null);
+  useEffect(() => {
+    let active = true;
+    // Kill-switch-style track (writes persistent data): await the shared
+    // load so a remote decision wins the boot-time race deterministically.
+    loadFlags().then(() => {
+      if (!active) return;
+      const on = isEnabled("learningOutcomes");
+      setLearningEnabled(on);
+      if (on) setLearningStore(readLearningStore() ?? emptyLearningStore());
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
   // Session score: the HUD total accumulates across edition switches until
   // End game. Falls back to the run's own results when no session exists
   // (defensive; openRun always ensures one).
@@ -1474,6 +1574,34 @@ function PlayLoaded({
         distanceKm: distance,
         streakAfter: nextRun.streak,
       });
+      // Learning record: observational, flag-gated, fail closed. Runs
+      // *beside* bankPlace — never inside dropPin/bankPlace — and can never
+      // throw into the pin-commit path or corrupt the session. The growth
+      // line on the reveal card is derived from the stored record at render
+      // time, so it survives a reload exactly like the drop does.
+      if (learningEnabled) {
+        try {
+          setLearningStore((prev) => {
+            const next = recordAnswer(prev ?? emptyLearningStore(), {
+              placeId: place.id,
+              edition: run.edition,
+              regionId: run.regionId,
+              regionName: run.regionName,
+              distanceKm: distance,
+              radiusKm: radius,
+              hit,
+              score: hit && scored ? scored.score : 0,
+              at: Date.now(),
+            });
+            // recordAnswer is pure (same input → same output), so even if
+            // React re-invokes this updater the write is idempotent.
+            writeLearningStore(next.store);
+            return next.store;
+          });
+        } catch {
+          // Storage failure must never break the game.
+        }
+      }
     }
   }
 
@@ -1552,20 +1680,24 @@ function PlayLoaded({
   return (
     <main className="relative h-dvh bg-bg">
       <div className="absolute inset-0">
-        <SatelliteMap
-          key={mapKey}
-          mode={mode}
-          edition={run.edition}
-          regionName={run.regionName}
-          bounds={bounds}
-          onAim={onAim}
-          onConfirm={onConfirm}
-          onClearAim={onClearAim}
-          marks={marks}
-          variation={variation}
-          spot={place ? { lon: place.lon, lat: place.lat } : null}
-          onRevealComplete={() => setRevealDone(true)}
-        />
+        <MapErrorBoundary>
+          <Suspense fallback={<MapLoadingFallback />}>
+            <SatelliteMap
+              key={mapKey}
+              mode={mode}
+              edition={run.edition}
+              regionName={run.regionName}
+              bounds={bounds}
+              onAim={onAim}
+              onConfirm={onConfirm}
+              onClearAim={onClearAim}
+              marks={marks}
+              variation={variation}
+              spot={place ? { lon: place.lon, lat: place.lat } : null}
+              onRevealComplete={() => setRevealDone(true)}
+            />
+          </Suspense>
+        </MapErrorBoundary>
         <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
           <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
             Editions
@@ -1680,6 +1812,14 @@ function PlayLoaded({
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
           onContinue={onContinue}
+          // The growth line is derived from the place's recorded attempts
+          // (including the commit that just revealed it), so it recomputes
+          // identically after a reload. Null when the flag is off.
+          growthLine={
+            learningEnabled && place
+              ? growthLineFor(learningStore?.records[place.id]?.attempts ?? [])
+              : null
+          }
         />
       ) : null}
       {run.phase === "summary" && summary ? (
@@ -1687,6 +1827,11 @@ function PlayLoaded({
           summary={summary}
           regionName={run.regionName}
           dateKey={run.dateKey}
+          growth={
+            learningEnabled
+              ? growthSummary(learningStore ?? emptyLearningStore(), Date.now())
+              : null
+          }
           onDone={onSummaryDone}
           onPlayAgain={onSummaryPlayAgain}
         />

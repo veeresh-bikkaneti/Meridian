@@ -18,11 +18,21 @@
  *   (claiming does not reload pages).
  * - fetch:
  *   - navigations → network-first, fall back to cache, then offline.html
+ *   - /Meridian/flags.json → network-first with a small versioned cache,
+ *     fall back to the cached flags only when the network fails. A remote
+ *     kill decision must propagate immediately — never serve a stale
+ *     flags.json when the network works, even for clients whose SW update
+ *     is still waiting (see note below).
  *   - same-origin static assets (JS/CSS/images/data chunks) → cache-first,
  *     populating the cache on network hits (stale-while-revalidate would
  *     also work; cache-first keeps chunk URLs — which are content-hashed —
  *     stable and fast)
  *   - everything else (map tiles, cross-origin) → pass through untouched
+ *   - same-origin non-asset, non-flags requests (build-meta.json, API-ish)
+ *     → network only. Note: service workers deployed BEFORE this rule
+ *     handle flags.json with this network-default fallback, so a remote
+ *     kill decision still reaches old clients whenever they are online —
+ *     they just lose the offline-cache fallback until their SW updates.
  * - message { type: "SKIP_WAITING" } → self.skipWaiting(), sent only from
  *   the in-app "Update available" toast after the user taps it.
  */
@@ -30,8 +40,10 @@
 const VERSION = "meridian-__BUILD_ID__";
 const SHELL_CACHE = `meridian-shell-${VERSION}`;
 const ASSET_CACHE = `meridian-assets-${VERSION}`;
+const FLAGS_CACHE = `meridian-flags-${VERSION}`;
 const OFFLINE_URL = "/Meridian/offline.html";
 const START_URL = "/Meridian/";
+const FLAGS_URL = "/Meridian/flags.json";
 
 const SHELL_URLS = [START_URL, OFFLINE_URL, "/Meridian/manifest.webmanifest"];
 
@@ -57,9 +69,13 @@ self.addEventListener("activate", (event) => {
             .filter(
               (k) =>
                 k.startsWith("meridian-shell-") ||
-                k.startsWith("meridian-assets-"),
+                k.startsWith("meridian-assets-") ||
+                k.startsWith("meridian-flags-"),
             )
-            .filter((k) => k !== SHELL_CACHE && k !== ASSET_CACHE)
+            .filter(
+              (k) =>
+                k !== SHELL_CACHE && k !== ASSET_CACHE && k !== FLAGS_CACHE,
+            )
             .map((k) => caches.delete(k)),
         ),
       )
@@ -113,6 +129,27 @@ self.addEventListener("fetch", (event) => {
             .match(START_URL)
             .then((cached) => cached || caches.match(OFFLINE_URL)),
         ),
+    );
+    return;
+  }
+
+  // Feature flags: network-first. A remote kill decision must reach
+  // clients immediately — never serve a stale cached flags.json when the
+  // network works. Fall back to the last-known flags only when the network
+  // fails (offline), and the page itself falls back to its baked-in
+  // defaults when even that is absent. The response is cached on success
+  // so the offline fallback exists.
+  if (url.pathname === FLAGS_URL) {
+    event.respondWith(
+      fetch(request)
+        .then((res) => {
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(FLAGS_CACHE).then((c) => c.put(FLAGS_URL, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(FLAGS_URL)),
     );
     return;
   }

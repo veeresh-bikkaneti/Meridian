@@ -34,6 +34,36 @@ function swUrl(baseUrl: string | undefined): string {
 }
 
 /**
+ * Kill-switch cleanup: unregister any live service-worker registration so a
+ * remotely-killed PWA feature actually stops being service-worker-driven.
+ *
+ * Resolves `true` when a registration existed and was unregistered, `false`
+ * when there was nothing to remove (or SW is unavailable / not production /
+ * the call failed — never throws). There is NO reload: the current page
+ * keeps its controller until the next navigation (per the no-forced-reload
+ * policy); subsequent boots are SW-free.
+ *
+ * `testEnv` is the same test seam as `registerServiceWorker` (under
+ * `node --test`, `import.meta.env` is undefined, so unit tests inject
+ * `{ PROD: true }` here). Production callers omit it.
+ */
+export async function unregisterServiceWorker(testEnv?: {
+  PROD?: boolean;
+}): Promise<boolean> {
+  if (typeof window === "undefined") return false;
+  const env = testEnv ?? viteEnv();
+  if (!env.PROD) return false;
+  if (!("serviceWorker" in navigator)) return false;
+  try {
+    const registration = await navigator.serviceWorker.getRegistration();
+    if (!registration) return false;
+    return await registration.unregister();
+  } catch {
+    return false; // never break the app from a kill-switch path
+  }
+}
+
+/**
  * Register the service worker and poll for updates in the background.
  * Resolves with a handle once a waiting worker exists, or null when service
  * workers are unavailable / registration is skipped (dev, insecure context).

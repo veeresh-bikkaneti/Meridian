@@ -114,6 +114,10 @@ export default defineConfig({
       testMatch: /pwa\.spec\.ts/,
     },
     {
+      name: "feature-flags",
+      testMatch: /feature-flags\.spec\.ts/,
+    },
+    {
       name: "question-labels",
       testMatch: /question-labels\.spec\.ts/,
     },
@@ -132,6 +136,12 @@ export default defineConfig({
     {
       name: "difficulty-picker",
       testMatch: /difficulty-picker\.spec\.ts/,
+      name: "crash-loop-breaker",
+      testMatch: /crash-loop-breaker\.spec\.ts/,
+    },
+    {
+      name: "safari-launch",
+      testMatch: /safari-launch\.spec\.ts/,
     },
   ],
   reporter: [
