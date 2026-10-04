@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 7452,
+    "attempt": 7401,
+    "place_id": "gn-2751729",
+    "input": {
+      "place": {
+        "place_id": "gn-2751729",
+        "name": "Lemmer",
+        "country": "Netherlands",
+        "subdivision": "Friesland",
+        "lat": 52.84618,
+        "lon": 5.70912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lemmer",
+          "url": "https://en.wikipedia.org/wiki/Lemmer",
+          "text": "Lemmer (West Frisian: De Lemmer) is a town in the municipality of De Fryske Marren, in the Dutch province of Friesland. Lemmer lies adjacent to the IJsselmeer and the Frisian Lakes and is one of Friesland's best-known surface water sports locations. Lemmer is a bustling lakeside resort in the summer months and attracts not only day-trippers from surrounding communities such as Emmeloord, Urk, and Joure, but also national and international tourists.\nIn 2017 the town had 10,225 inhabitants. Residents of Lemmer are called Lemsters. Due to its favorable location in relation to the Randstad, Lemmer attracts many new inhabitants from outside Friesland. As a result, the village has suffered little from the effects of rural flight. The hamlet of Brekkenpolder also belongs to the town, along with most of the hamlet of Tacozijl and a small part of the hamlet of Westend."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "lemmer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7453,
+    "attempt": 7402,
+    "place_id": "gn-2794072",
+    "input": {
+      "place": {
+        "place_id": "gn-2794072",
+        "name": "Kortenaken",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.90862,
+        "lon": 5.05968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kortenaken",
+          "url": "https://en.wikipedia.org/wiki/Kortenaken",
+          "text": "Kortenaken (Dutch pronunciation: [ˈkɔrtənaːkə(n)]) is a municipality located in the Belgian province of Flemish Brabant. The municipality comprises the towns of Hoeleden, Kersbeek-Miskom, Kortenaken proper, Ransberg and Waanrode. On January 1, 2014, Kortenaken had a total population of 7,881. The total area is 49.06 km² which gives a population density of 160,63 inhabitants per km².\nEvery year in August there used to be a three-day festival in Kortenaken, named Boerenrock, with electro music on Friday, rock music and a party on Saturday, and on Sunday music aimed at children and their parents. The final edition of this festival took place in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "kortenaken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7454,
+    "attempt": 7403,
+    "place_id": "gn-2799090",
+    "input": {
+      "place": {
+        "place_id": "gn-2799090",
+        "name": "Duffel",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.09554,
+        "lon": 4.50903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duffel",
+          "url": "https://en.wikipedia.org/wiki/Duffel",
+          "text": "Duffel (Dutch pronunciation: [ˈdʏfəl] ) is a municipality in the Belgian province of Antwerp.\nThe municipality comprises the town of Duffel proper. On 1 January 2020, Duffel had a total population of 17,664. The total area is 22.71 km2, which gives a population density of 778 inhabitants per km2.\nThe area is the eponym of a coarse woollen cloth, manufactured in this area from the 11th century, mainly used to make blankets, outdoor (army) coats and tote bags. Duffel became a household name during and after World War II in the meaning of a coat designed with toggle-and-loop fastening and roomy hood.\nThe etymology of Duffel is from \"dubro\" and \"locus\", from the Gaulish dubrum, dubron – \"water\".\nIn 1836, the Duffel railway station opened on the Brussels-North to Antwerp railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "duffel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7455,
+    "attempt": 7404,
+    "place_id": "gn-2809025",
+    "input": {
+      "place": {
+        "place_id": "gn-2809025",
+        "name": "Bad Wildbad",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.75071,
+        "lon": 8.5504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Wildbad",
+          "url": "https://en.wikipedia.org/wiki/Bad_Wildbad",
+          "text": "Bad Wildbad (German pronunciation: [baːt ˈvɪltbaːt] ) is a town in Germany, in the state of Baden-Württemberg. It is located in the government district (Regierungsbezirk) of Karlsruhe and in the district (Landkreis) of Calw.  The current town of Bad Wildbad is an amalgamation of several communities brought together under local government reform in 1974. The member communities are Wildbad, Calmbach, Sprollenhaus, Nonnenmiß and Aichelberg, along with the hamlets of Hünerberg und Meistern. The town was named only Wildbad until 1991, when it was given its current name. \"Bad\" is German for \"bath\", a reference to the town's status as a spa town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "bad wildbad",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wildbad",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7456,
+    "attempt": 7405,
+    "place_id": "gn-2848335",
+    "input": {
+      "place": {
+        "place_id": "gn-2848335",
+        "name": "Remagen",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.57879,
+        "lon": 7.22703
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Remagen",
+          "url": "https://en.wikipedia.org/wiki/Remagen",
+          "text": "Remagen (German pronunciation: [ˈʁeːmaːɡn̩] ) is a town in Germany in the state of Rhineland-Palatinate, and district of Ahrweiler. It is about a one-hour drive from Cologne, just south of Bonn, the former West German seat of government, on the left (western) bank of the river Rhine. There is a ferry across the Rhine from Remagen every 10–15 minutes in the summer. Remagen has many notable and well-maintained buildings, churches, castles and monuments.\nOverlooking the west bank of the Rhine just north of the city centre is the Apollinariskirche. It has an observation deck that is only open to parishioners on Sundays. Pedestrians reach the church via a dirt trail that passes a series of roadside monuments representing each of the fourteen Stations of the Cross. The church grounds contain an outdoor crypt and an abbey. Further down the river is one of the many castles along the Rhine, perched even higher than the Apollinariskirche."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "remagen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7457,
+    "attempt": 7406,
+    "place_id": "gn-2876952",
+    "input": {
+      "place": {
+        "place_id": "gn-2876952",
+        "name": "Linz am Rhein",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.56884,
+        "lon": 7.28445
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linz am Rhein",
+          "url": "https://en.wikipedia.org/wiki/Linz_am_Rhein",
+          "text": "Linz am Rhein (German pronunciation: [ˈlɪnts ʔam ˈʁaɪn] , lit. 'Linz on the Rhine') is a municipality in the district of Neuwied, in Rhineland-Palatinate, Germany. It is situated on the right bank of the river Rhine near Remagen, approx. 25 km southeast of Bonn and has about 6,000 inhabitants. It is the sister city of Marietta, Georgia in the United States, Linz in Austria and Pornic in France.\nLinz is the seat of the Verbandsgemeinde (\"collective municipality\") Linz am Rhein.\nThe town is also a destination for tourists thanks to its location next to the Rhine river and its colorful half-timbered houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "linz am rhein",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "linz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rhein",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7458,
+    "attempt": 7407,
+    "place_id": "gn-2904985",
+    "input": {
+      "place": {
+        "place_id": "gn-2904985",
+        "name": "Heusweiler",
+        "country": "Germany",
+        "subdivision": "Saarland",
+        "lat": 49.33632,
+        "lon": 6.93036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heusweiler",
+          "url": "https://en.wikipedia.org/wiki/Heusweiler",
+          "text": "Heusweiler (German pronunciation: [ˈhɔʏsvaɪlɐ] ; Palatine German: Heiswiller [ˈhaɪ̯svɪla]; older French: Hoysviller) is a municipality in the District of Saarbrücken, Saarland, Germany. It is located in the upper Köllerbach valley, 15 km north of Saarbrücken. As of 2025, it has 18,385 inhabitants.\nThe municipality of Heusweiler consists of 16 villages: Berschweiler, Dilsburg, Eiweiler, Hellenhausen, Heusweiler, Hirtel, Holz, Kirschhof, Kurhof, Lummerschied, Niedersalbach, Numborn, Obersalbach, Rittershof, and Wahlschied, as well as the hamlet of Bietschied. With approximately 3,600 inhabitants each, Heusweiler and Holz are the largest villages in the municipality.\nHeusweiler was the location of a high power medium wave transmitter, the transmitter Heusweiler. The transmitter ceased operation in 2015, and its two 120-metre masts mast were demolished in a controlled operation on September 21, 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "heusweiler",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7459,
+    "attempt": 7408,
+    "place_id": "gn-2953548",
+    "input": {
+      "place": {
+        "place_id": "gn-2953548",
+        "name": "Bad Berka",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.89982,
+        "lon": 11.28245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Berka",
+          "url": "https://en.wikipedia.org/wiki/Bad_Berka",
+          "text": "Bad Berka (German: [baːt ˈbɛʁka] ) is a German spa town, situated in the south of Weimar region in the state of Thuringia. With its almost 8,000 inhabitants Bad Berka is the second biggest city in Weimarer Land district (after Apolda, 23,000). The river flowing through the town, which is embedded in new red sandstone, is called Ilm. Since 1 December 2008, the city has incorporated the former municipality of Gutendorf.\nBad Berka is a spa town with an iron-rich spring and Kneipp facilities. In 2002 the award of \"State Recognised Spa with Mineral Spring Health Facility\" was given to the city. \nIn order to treat tuberculosis, a clinic was erected in 1952. This was the beginning of the main economic sector of the city. Bad Berka's Zentralklinik has since gained a reputation as a center of medicinal expertise far beyond the boundaries of Germany. Its foundation can be traced back to 1898. \nIn addition, there was a rehabilitation clinic built after the fall of the Berlin Wall. The \"Median-Klinik\" consists of two buildings, which were opened in 1994 and 1997.\nBecause of its proximity to the cultural capital Weimar and association with numerous historical figures, Bad Berka is also popular among tourists. Between 1812 and 1828 Goethe visited his friend Heinrich Friedrich Schütz several times. He was also involved in the plans of the spa. Therefore, Bad Barka is called \"Das Goethebad im Grünen\" (Goethe spa in greenery), as well. Bad Berka is surrounded by spruce and beech forest.\nOther bigger cities in the vicinity are Jena (20 km (12 mi) north-east), Erfurt (20 km (12 mi) north-west) and Weimar (12 km (7 mi) north)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "bad berka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "berka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7460,
+    "attempt": 7409,
+    "place_id": "gn-2955951",
+    "input": {
+      "place": {
+        "place_id": "gn-2955951",
+        "name": "Annweiler am Trifels",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 49.20613,
+        "lon": 7.97527
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Annweiler am Trifels",
+          "url": "https://en.wikipedia.org/wiki/Annweiler_am_Trifels",
+          "text": "Annweiler am Trifels (German: [ˈanvaɪlɐ ʔam ˈtʁiːfɛls] ), or Annweiler is a town in the Südliche Weinstraße district, in Rhineland-Palatinate, Germany. It is situated on the river Queich, 12 km west of Landau. Annweiler am Trifels station is on the  Landau–Saarbrücken railway.\nAnnweiler is situated in the Southern part of the Palatinate forest called the Wasgau, and is surrounded by high hills which yield a famous red sandstone.  The town's main industry is tourism.  On the Sonnenberg (493 m) lie the ruins of the castle of Trifels, in which Richard Coeur de Lion was imprisoned from 31 March to 19 April 1193.\nAnnweiler is the seat of the Verbandsgemeinde (\"collective municipality\") of Annweiler am Trifels.\nIn a 1911 edition of the Brockhaus Enzyklopädie, the area around Annweiler was referred to as \"Pfälzer Schweiz\".\nAnnweiler has a primary school and a secondary school ( Staatliche Realschule Annweiler ) which was a partner school with the William Lovell Secondary School in Stickney, Lincolnshire. There is also a school for people with learning disabilities and a vocational school and the Trifels-Gymnasium evangelical grammar school."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "annweiler am trifels",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "annweiler",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "trifels",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7461,
+    "attempt": 7410,
+    "place_id": "gn-2988657",
+    "input": {
+      "place": {
+        "place_id": "gn-2988657",
+        "name": "Panazol",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.83871,
+        "lon": 1.30995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panazol",
+          "url": "https://en.wikipedia.org/wiki/Panazol",
+          "text": "Panazol (French pronunciation: [panazɔl]; Occitan: Panasòu) is a commune in the Haute-Vienne department in the Nouvelle-Aquitaine region in west-central France. It is an eastern suburb of Limoges.\nPanazol is the third largest town in the department (by population), after Limoges and Saint-Junien. It can be considered as a commuter town.\nThéo Sarapo, the singer, actor, and second husband of Édith Piaf died at Limoges on 28 August 1970 on RD 941 at the Panazol exit, direction Saint-Léonard-de-Noblat (Haute-Vienne). His car, a blue Citroen ID19, left the road at high speed and struck a tree the approximate height of Chateau de la Rue. He was removed from the wreckage and rushed to the Limoges hospital, where he died as a result of his injuries at the age of 34. He was buried in Paris at Père-Lachaise cemetery alongside Édith Piaf."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "panazol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7462,
+    "attempt": 7411,
+    "place_id": "gn-3021351",
+    "input": {
+      "place": {
+        "place_id": "gn-3021351",
+        "name": "Dinard",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.63293,
+        "lon": -2.06274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dinard",
+          "url": "https://en.wikipedia.org/wiki/Dinard",
+          "text": "Dinard (French pronunciation: [dinaʁ]; Breton: Dinarzh, [ˈdiːnars]; Gallo: Dinard) is a commune in the Ille-et-Vilaine department, Brittany, northwestern France.\nDinard is on Brittany's Côte d'Émeraude. Its beaches and mild climate make it a holiday destination, and the town has had various famous visitors and residents. The towns of Pleurtuit and Saint-Malo are nearby and the Dinard–Pleurtuit–Saint-Malo Airport is about 4 km to the south.\nWith its international film festival, villas, sumptuous hotels and casino, Dinard is regarded as one of France's most prestigious seaside resorts.\nThe town's official name was Saint-Énogat until 1879, Dinard-Saint-Énogat from 1879 to 1921, and Dinard since 1921. Saint-Énogat is still a district of the city, close to the sea and home to many small shops.\nThe city also has a football club, FCD (Football Club Dinardais), which includes categories from U6 to Senior. The club is backed by the town hall and the city of Dinard, which helps with equipment, transport, grounds, and organization.\nDinard hosts the Jumping Internationnale in show jumping every year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "dinard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7463,
+    "attempt": 7412,
+    "place_id": "gn-3083111",
+    "input": {
+      "place": {
+        "place_id": "gn-3083111",
+        "name": "Trzebinia",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 50.15931,
+        "lon": 19.46966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trzebinia",
+          "url": "https://en.wikipedia.org/wiki/Trzebinia",
+          "text": "Trzebinia ([tʂɛˈbʲiɲa]; Yiddish: טשעבין Tchebin) is a town in Chrzanów County, Lesser Poland, Poland with an Orlen oil refinery and a major rail junction of the Kraków - Katowice line, with connections to Oświęcim and Spytkowice. The town became part of Lesser Poland Voivodeship after being part of Katowice Voivodeship (1975–1998). With population of 20,175 (Dec. 31, 2010), Trzebinia is an important industrial center. The town lies in the Kraków-Częstochowa Upland, 269 to 407 m (883 to 1,335 ft) above sea level. Trzebinia is a rail and road hub, and lies at a junction of the A4 Motorway and National Road Nr. 79. The distance to John Paul II International Airport Kraków-Balice is 30 kilometres (19 miles)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "trzebinia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7464,
+    "attempt": 7413,
+    "place_id": "gn-3098200",
+    "input": {
+      "place": {
+        "place_id": "gn-3098200",
+        "name": "Gryfino",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.25243,
+        "lon": 14.48831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gryfino",
+          "url": "https://en.wikipedia.org/wiki/Gryfino",
+          "text": "Gryfino [ɡrɨˈfʲinɔ] (German: Greifenhagen) is a town in Pomerania, northwestern Poland, with 21,393 inhabitants (2017). It is the capital of Gryfino County in West Pomeranian Voivodeship.\nThe town is located on the Odra Wschodnia, the eastern branch of the Oder river, about 20 kilometres (12 miles) south of Szczecin in Poland. The western branch of the Oder, 2 km (1 mi) away from the town center, marks the border with Germany. There is a direct road link between Gryfino and the German town of Mescherin across the river.\nThe Crooked Forest is located in the village of Nowe Czarnowo, just outside Gryfino."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "gryfino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7465,
+    "attempt": 7414,
+    "place_id": "gn-3166356",
+    "input": {
+      "place": {
+        "place_id": "gn-3166356",
+        "name": "Sorisole",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.7314,
+        "lon": 9.63715
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sorisole",
+          "url": "https://en.wikipedia.org/wiki/Sorisole",
+          "text": "Sorisole (Bergamasque: Surìsel) is a comune (municipality) in the Province of Bergamo in the Italian region of Lombardy, located about 50 kilometres (31 mi) northeast of Milan and about 4 kilometres (2 mi) north of Bergamo. As of 31 December 2004, it had a population of 8,507 and an area of 12.3 square kilometres (4.7 mi2).\nThe municipality of Sorisole contains the frazioni (subdivisions, mainly villages and hamlets) Petosino and Azzonica.\nSorisole borders the following municipalities: Almè, Bergamo, Paladina, Ponteranica, Sedrina, Villa d'Almè, Zogno. Part of Sorisole's territory is part of Parco dei Colli di Bergamo and is crossed by river Quisa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "sorisole",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7466,
+    "attempt": 7415,
+    "place_id": "gn-316746",
+    "input": {
+      "place": {
+        "place_id": "gn-316746",
+        "name": "Dicle",
+        "country": "Türkiye",
+        "subdivision": "Diyarbakır Province",
+        "lat": 38.36571,
+        "lon": 40.0645
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dicle",
+          "url": "https://en.wikipedia.org/wiki/Dicle",
+          "text": "Dicle (Kurdish: Pîran Ottoman Turkish: پيران) is a municipality and district of Diyarbakır Province, Turkey. Its area is 738 km2, and its population is 36,114 (2022). It is populated by Kurds. The mayor is Felat Aygören from the HDP.\nDicle is the Kurdish and Turkish name of the Tigris river, which runs through the district and gave its name to it. The name derives from tighri- (arrow) from Avestan and cognate with \"tîj, tîr\" (sharp, arrow) in Kurdish and tigra- (sharp, pointed) in Old Persian. Some claim that it derives from Akkadian Idiqlat through the original Sumerian name for the river, Idigna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "dicle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7467,
+    "attempt": 7416,
+    "place_id": "gn-3170220",
+    "input": {
+      "place": {
+        "place_id": "gn-3170220",
+        "name": "Ponte San Nicolò",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.36718,
+        "lon": 11.92341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponte San Nicolò",
+          "url": "https://en.wikipedia.org/wiki/Ponte_San_Nicolò",
+          "text": "Ponte San Nicolò is a comune (municipality) in the Province of Padua in the Italian region Veneto, located about 30 kilometres (19 mi) west of Venice and about 8 kilometres (5 mi) southeast of Padua. As of 31 December 2004, it had a population of 12,656 and an area of 13.5 square kilometres (5.2 mi2).\nThe municipality of Ponte San Nicolò contains the frazioni (subdivisions, mainly villages and hamlets) Roncaglia, Roncajette, and Rio.\nPonte San Nicolò borders the following municipalities: Albignasego, Casalserugo, Legnaro, Padua, Polverara.\nThe mayor is Martino Schiavon, who was elected on 2019 with a centre-left coalition as his predecessors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "ponte san nicolo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ponte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nicolo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7468,
+    "attempt": 7417,
+    "place_id": "gn-3182411",
+    "input": {
+      "place": {
+        "place_id": "gn-3182411",
+        "name": "Barano d'Ischia",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.71472,
+        "lon": 13.92522
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barano d'Ischia",
+          "url": "https://en.wikipedia.org/wiki/Barano_d'Ischia",
+          "text": "Barano d'Ischia (Neapolitan: Varàno) is a town and comune (municipality) in the Metropolitan City of Naples  in the region of Campania in southern Italy, located in the south-west area of the island of Ischia, about 30 kilometres (19 mi) southwest of Naples. It has 9,953 inhabitants.\nIt is after Forio the largest municipality in size of the island, although not one of the most populated. Its territory is composed by several villages: Buonopane, Piedimonte, Fiaiano, Testaccio (none of these villages have become a frazione); Testaccio was formerly an independent municipality.\nBarano d'Ischia borders the municipalities of Casamicciola Terme, Ischia, and Serrara Fontana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "barano d ischia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ischia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7469,
+    "attempt": 7418,
+    "place_id": "gn-3202873",
+    "input": {
+      "place": {
+        "place_id": "gn-3202873",
+        "name": "Čapljina",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.12139,
+        "lon": 17.68444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Čapljina",
+          "url": "https://en.wikipedia.org/wiki/Čapljina",
+          "text": "Čapljina (Cyrillic: Чапљина, pronounced [t͡ʃâpʎina]) is a city located in Herzegovina-Neretva Canton of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. It is located on the border with Croatia a mere 20 kilometres (12 mi) from the Adriatic Sea.\nThe river Neretva flows through the city and flows into the Adriatic just over the border. The town's landmark is a statue of King Tomislav. The Church of Saint Francis of Assisi is also a prominent facet of the city. The city coat of arms contains the Croatian checkerboard, the nearby tower in Počitelj, and Saint Francis of Assisi.\nThe city has a rich archaeological history and untouched wilderness and is starting to develop agricultural tourism. It is also home to Hutovo Blato Park, which contains one of the most diverse bird populations in all Europe. The Croatian town of Metković is located just over the border and there are significant commercial and other links between the two towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "capljina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7470,
+    "attempt": 7419,
+    "place_id": "gn-3427582",
+    "input": {
+      "place": {
+        "place_id": "gn-3427582",
+        "name": "Urdinarrain",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -32.69104,
+        "lon": -58.88842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Urdinarrain",
+          "url": "https://en.wikipedia.org/wiki/Urdinarrain",
+          "text": "Urdinarrain is a city in the center-south of the province of Entre Ríos, Argentina, 240 km southeast from the provincial capital Paraná and 40 km west from Gualeguaychú, on Provincial Route 20. It has 8,986 inhabitants as per the 2010 census [INDEC].\nThe original small settlement was populated by numerous newcomers, mostly European immigrants, after the arrival of the railway line on 23 September 1890. It was declared a first-category municipality on 21 August 1942. The current name of the city is a homage to General Manuel Antonio Urdinarrain (1801–1868), who fought alongside local caudillos Francisco Ramírez and Justo José de Urquiza."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "urdinarrain",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7471,
+    "attempt": 7420,
+    "place_id": "gn-3435364",
+    "input": {
+      "place": {
+        "place_id": "gn-3435364",
+        "name": "Clorinda",
+        "country": "Argentina",
+        "subdivision": "Formosa",
+        "lat": -25.28627,
+        "lon": -57.72168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clorinda, Formosa",
+          "url": "https://en.wikipedia.org/wiki/Clorinda,_Formosa",
+          "text": "Clorinda is a city located in the province of Formosa, Argentina and the capital of the Pilcomayo Department. Located on the right bank of the Pilcomayo River, it sits at a strategic international crossroads just 4 kilometers from the Paraguayan capital of Asunción and 118 kilometers from the city of Formosa. Founded on September 29, 1899, on land originally granted to the Hertelendy family, the city has grown  with a population of 94,383 as of the 2022 census. It serves as a major gateway between Argentina and Paraguay, connected internationally by the San Ignacio de Loyola Bridge and the pedestrian Friendship Footbridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "clorinda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

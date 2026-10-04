@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 7512,
+    "attempt": 7461,
+    "place_id": "gn-12214073",
+    "input": {
+      "place": {
+        "place_id": "gn-12214073",
+        "name": "Josefstadt",
+        "country": "Austria",
+        "subdivision": "Vienna",
+        "lat": 48.21243,
+        "lon": 16.34549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Josefstadt",
+          "url": "https://en.wikipedia.org/wiki/Josefstadt",
+          "text": "Josefstadt (German pronunciation: [ˈjoːzɛfˌʃtat] ; Viennese: Josefstod; \"Joseph-Town\") is the eighth district of Vienna (German: 8. Bezirk, Josefstadt). It is near the center of Vienna and was established as a district in 1850, but borders changed later. Josefstadt is a heavily populated urban area with many workers and residential homes.\nIt has a population of 24,279 people (2014). With an area of 1.08 km2 (.42 sq.mi.), Josefstadt is the smallest district in Vienna, and was named after the Holy Roman Emperor Joseph I.\nIt consists of the former Vorstädte of Josefstadt, Breitenfeld, Strozzigrund, and Alt-Lerchenfeld, as well as parts of St. Ulrich and Alservorstadt. The district borders are formed by Alser Straße (north), Lerchenfelderstraße (south), Hernalsergürtel and Lerchenfeldergürtel in the west, and Auerspergstraße and Landesgerichtsstraße in the east.\nJosefstadt has developed into a middle-class neighbourhood. Most mayors of Vienna have lived here, as does Austria's former president. Due to its proximity to the University of Vienna, Josefstadt is also the home of many students.\nOn the basis of the 2005 municipal elections, Josefstadt became Vienna's second district ever (after Neubau) to have a Green district director."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "josefstadt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7513,
+    "attempt": 7462,
+    "place_id": "gn-1258484",
+    "input": {
+      "place": {
+        "place_id": "gn-1258484",
+        "name": "Rangpo",
+        "country": "India",
+        "subdivision": "Sikkim",
+        "lat": 27.17733,
+        "lon": 88.53358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rangpo",
+          "url": "https://en.wikipedia.org/wiki/Rangpo",
+          "text": "Rangpo is a Municipal town in India shared by Pakyong district of the state Sikkim and Kalimpong district of the state West Bengal. The town is situated along the Teesta River and Rangpo River. It is the first town of Sikkim lying on National Highway 10 that links Siliguri to Gangtok. It is about 300 m above sea level with a sub-tropical climate. It is the 'Gateway to Sikkim' and all vehicles entering Sikkim have to stop at the Rangpo Police check-post. Foreign tourists are required to present documents to enter Sikkim state and must show them at the police checkpoint. The Rangpo River separates the Rangpo Forest Village lying on the West Bengal side from the Rangpo Municipal Town lying on the Sikkim side."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "rangpo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7514,
+    "attempt": 7463,
+    "place_id": "gn-1261330",
+    "input": {
+      "place": {
+        "place_id": "gn-1261330",
+        "name": "Neemrana",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 27.99193,
+        "lon": 76.38543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neemrana",
+          "url": "https://en.wikipedia.org/wiki/Neemrana",
+          "text": "Neemrana (/ niːmərɑːɳɑː / ) is an ancient historical town in Kotputli-Behror district in the Indian state of Rajasthan. It is 66 km (41 mi) from Alwar city, 117 km (73 mi) from New Delhi and 155 km (96 mi) from Jaipur, on the Delhi - Jaipur highway in Neemrana tehsil. It is between Behror and Shahajahanpur.\nIn May 2025, it was in news when a hotel in the town, Hotel Highway King, witnessed firing of shots and the case is being investigated by National Investigation Agency.\nThe Town has developed an industrial zone as part of the Delhi-Mumbai industrial corridor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "neemrana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7515,
+    "attempt": 7464,
+    "place_id": "gn-1273528",
+    "input": {
+      "place": {
+        "place_id": "gn-1273528",
+        "name": "Danta",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 27.29636,
+        "lon": 75.18665
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danta, Sikar",
+          "url": "https://en.wikipedia.org/wiki/Danta,_Sikar",
+          "text": "Danta is a town in Rajasthan, India.  Danta Fort is a historical site near the village. The fort, known as Danta Dera Fort, is now a heritage hotel.\nKarni Mata Temple located near the village, which is made by Thakur Madan Singh Danta, and donated to Sayar Baisa (lady who used to perform the pooja in the temple) along with 300 bega land to meet the expenses to run the temple. Originally the temple building was a hunting lodge. The village was first settled by Thakur Amar Singh Shekhawat, about 1400 AD.\nThe population consists predominantly of Hindus, Muslims and Jains.\nThis area of Shekhawati, Rajasthan, is known for the famous personalities who reformed their own as well as the lives of those they touched. The most renowned and by far the most revered is the Akhil Bharat Varshiya Sadhumargi Jain Sangh’s eighth acharya, Acharya Nana lal ji maharaj sa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "danta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7517,
+    "attempt": 7465,
+    "place_id": "gn-13286809",
+    "input": {
+      "place": {
+        "place_id": "gn-13286809",
+        "name": "Tufts University",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.40745,
+        "lon": -71.1192
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tufts University",
+          "url": "https://en.wikipedia.org/wiki/Tufts_University",
+          "text": "Tufts University is a private research university in Medford and Somerville, Massachusetts, United States, with additional facilities in Boston and Grafton, as well as Talloires, France. It was founded in 1852 as Tufts College by Christian universalists who sought to provide a nonsectarian institution of higher learning. For much of the 20th century, Jackson College for Women was the coordinate college of Tufts. Tufts remained a small liberal arts college until the 1970s, when it became a larger research university offering doctorates in several disciplines.  The corporate name of the university is \"Trustees of Tufts College\".  \nTufts enrolls over 13,000 students. It offers over 90 undergraduate and 160 graduate programs across ten schools in the greater Boston area and from a campus in France. It has the country's oldest graduate school of international relations, the Fletcher School of Law and Diplomacy. The largest school is the School of Arts and Sciences, which includes both the Graduate School of Arts and Sciences and the School of the Museum of Fine Arts at Tufts University, which is affiliated with the Museum of Fine Arts, Boston. The School of Engineering offers an entrepreneurial focus through its Gordon Institute. It is classified among \"R1: Doctoral Universities – Very high research activity\" and is a member of the Association of American Universities.\nTufts has a campus in Downtown Boston that houses the medical, dental, and nutrition schools and the Graduate School of Biomedical Sciences, affiliated with several medical centers in the area. Joint undergraduate degree programs are offered with the New England Conservatory, the College of Europe, and Sciences Po Paris."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "tufts university",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tufts",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "university",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7518,
+    "attempt": 7466,
+    "place_id": "gn-13495378",
+    "input": {
+      "place": {
+        "place_id": "gn-13495378",
+        "name": "Marpole",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.21359,
+        "lon": -123.12979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marpole",
+          "url": "https://en.wikipedia.org/wiki/Marpole",
+          "text": "Marpole is a mostly residential neighbourhood of 23,832 in 2011, located on the southern edge of the city of Vancouver, British Columbia, immediately northeast of Vancouver International Airport, and is approximately bordered by Angus Drive to the west, 57th Avenue to the north, Ontario Street to the east and the Fraser River to the south. It has undergone many changes in the 20th century, with the influx of traffic and development associated with the construction of the Oak Street Bridge (which leads to Highway 99 leading to the southern suburbs) and the Arthur Laing Bridge (which leads to Vancouver International Airport)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "marpole",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7519,
+    "attempt": 7467,
+    "place_id": "gn-1584301",
+    "input": {
+      "place": {
+        "place_id": "gn-1584301",
+        "name": "Đại Lộc",
+        "country": "Vietnam",
+        "subdivision": "Da Nang City",
+        "lat": 15.88214,
+        "lon": 108.12092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Đại Lộc",
+          "url": "https://en.wikipedia.org/wiki/Đại_Lộc",
+          "text": "Đại Lộc is a commune (xã) in Đà Nẵng, Vietnam. It is one of the 93 new wards, communes and special zones of the city following the reorganization in 2025.\nOn June 16, 2025, the Standing Committee of the National Assembly issued Resolution No. 1667/NQ-UBTVQH15 on the arrangement of commune-level administrative units in Da Nang in 2025. Accordingly, the entire natural area and population of Ái Nghĩa Township and the communes of Đại Hiệp, Đại Hòa, Đại An, and Đại Nghĩa (formerly in Đại Lộc district of Quảng Nam province) were merged to form a new commune named Đại Lộc Commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "ai loc",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ai",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "loc",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7520,
+    "attempt": 7468,
+    "place_id": "gn-1736973",
+    "input": {
+      "place": {
+        "place_id": "gn-1736973",
+        "name": "Kanowit",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 2.1,
+        "lon": 112.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kanowit",
+          "url": "https://en.wikipedia.org/wiki/Kanowit",
+          "text": "Kanowit (Malay: Pekan Kanowit) is a town and the capital of Kanowit District, Sibu Division, Sarawak, Malaysia, comprising 2,253.5 square kilometres. As of 2010, Kanowit's population is 28,985. It is built on the mouth of Kanowit River at the bank of Rajang River, approximately 174 kilometers from the coast of South China Sea. It  takes 45 minutes to reach the town by land transport and an hour by boat from Sibu. The main ethnic groups are Iban, Chinese, Malay, and Melanau.\nThe town takes its name from the Kanowit, a Melanau ethnic group called Rajang by the Ibans (ISO 639-3: kxn). The language is still spoken by the Kanowit people living in the area.\nThe village where the Kanowit people live is known as Kampung Bedil, a short trip by boat up the Rajang River from Kanowit town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "kanowit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7521,
+    "attempt": 7469,
+    "place_id": "gn-2142648",
+    "input": {
+      "place": {
+        "place_id": "gn-2142648",
+        "name": "Yamba",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -29.4375,
+        "lon": 153.35914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yamba, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Yamba,_New_South_Wales",
+          "text": "Yamba is a town in the Northern Rivers region of New South Wales, Australia, located at the mouth of the Clarence River.\nThe town economy is strongly based on fishing and tourism, but has a diverse range of influences, due to the 'Sea Change' phenomenon and the large number of baby boomers who are starting to retire to the warmer climates.\nAt the 2021 census, Yamba had a population of 6,405, but as a popular tourist destination, it can triple its population in the holiday period. In 2009 Yamba was voted the number 1 town in Australia by Australian Traveller Magazine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "yamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7522,
+    "attempt": 7470,
+    "place_id": "gn-2155742",
+    "input": {
+      "place": {
+        "place_id": "gn-2155742",
+        "name": "Narrabri",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -30.32488,
+        "lon": 149.78266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narrabri",
+          "url": "https://en.wikipedia.org/wiki/Narrabri",
+          "text": "Narrabri ( NARR-ə-bry) is a locality and seat of Narrabri Shire local government area in the North West Slopes, New South Wales, Australia on the Namoi River, 521 kilometres (324 mi) northwest of Sydney. It sits on the junction of the Kamilaroi Highway and the Newell Highway. At the 2021 census, the town of Narrabri had a population of 5,499.\nBecause of the geography of Narrabri and the surrounding areas, Narrabri township was quite prone to flooding and fire. Recently, changes have been made to the river flow to improve overall safety.\nIt is the centre of a major cotton-growing industry. Other agricultural industries in the area include wheat, beef, and lamb.  Nearby attractions are Mount Kaputar National Park, the Australia Telescope Compact Array at the Paul Wild Observatory (administered by the CSIRO), and a number of agricultural centres. Just to the south of town is the Pilliga Forest, the largest remnant temperate forest in Eastern Australia. Narrabri also has The Crossing Theatre, a 1,000-seat auditorium and cinema complex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "narrabri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7523,
+    "attempt": 7471,
+    "place_id": "gn-2158151",
+    "input": {
+      "place": {
+        "place_id": "gn-2158151",
+        "name": "Melton",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.68339,
+        "lon": 144.58543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melton, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Melton,_Victoria",
+          "text": "Melton is a suburb on the outskirts of Melbourne, Victoria. The suburb is located 37 kilometres (23 mi) west of  Melbourne's Central Business District on the city's western rural-urban fringe. It is the administrative centre of the City of Melton local government area. As of the 2021 Australian census, the suburb has a population of 7,953. \nOriginally a country town along the Ballarat — Melbourne growth corridor, Melton was designated a satellite city of Melbourne in 1974. Along with the rest of the City of Melton, it forms a part of Greater Melbourne and counts as part of its population statistic. In 2023, Melbourne's significant urban area boundary was expanded to include Melton.\nLike the overall local government area, Melton was named after Melton Mowbray in the United Kingdom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "melton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7524,
+    "attempt": 7472,
+    "place_id": "gn-2164123",
+    "input": {
+      "place": {
+        "place_id": "gn-2164123",
+        "name": "Haberfield",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.88296,
+        "lon": 151.14389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haberfield, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Haberfield,_New_South_Wales",
+          "text": "Haberfield is a suburb in the Inner West of Sydney, in the state of New South Wales, Australia. It is located 6.5 kilometres west of the Sydney central business district in the local government area of the Inner West Council.\nThe suburb sits south of Iron Cove, which is part of Sydney Harbour. It is bounded to the east by the Hawthorne Canal, to the northwest by the Iron Cove Creek canal and to the southwest by Parramatta Road. Its high street is Ramsay Street. The point of land that faces Iron Cove, Dobroyd Point, is a historical locality of Sydney. Haberfield is dubbed \"the garden suburb\" and retains its well-kept parks, tree-lined streets and fine Federation-era houses with immaculate gardens. The entire suburb is heritage-listed. It predates the creation of garden suburbs in Britain, such as present-day Letchworth and Hampstead. The suburb has also been known for its Italian diaspora."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "haberfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7525,
+    "attempt": 7473,
+    "place_id": "gn-2164771",
+    "input": {
+      "place": {
+        "place_id": "gn-2164771",
+        "name": "Grafton",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -29.68104,
+        "lon": 152.93394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grafton, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Grafton,_New_South_Wales",
+          "text": "Grafton (Bundjalung: Gumbin Gir) is a city in the Northern Rivers region of the Australian state of New South Wales. It is located on the Clarence River, on a floodplain, approximately 620 kilometres (385 mi) by road north-northeast of the state capital Sydney.\nThe closest major cities, Brisbane and the Gold Coast, are located across the border in South East Queensland. At the 2021 census, Grafton had a population of 19,255. The city is the largest settlement and, with Maclean, the shared administrative centre of the Clarence Valley Council local government area, which is home to over 50,000 people in all."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "grafton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7526,
+    "attempt": 7474,
+    "place_id": "gn-2208288",
+    "input": {
+      "place": {
+        "place_id": "gn-2208288",
+        "name": "Bronte",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.90198,
+        "lon": 151.26556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bronte, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Bronte,_New_South_Wales",
+          "text": "Bronte is a beachside Eastern Suburb of Sydney, in the state of New South Wales, Australia. Bronte Beach is located 7 kilometres east of the Sydney central business district, in the Waverley Council local government area of the Eastern Suburbs.\nBronte Beach sits on Nelson Bay, surrounded by Bronte Park. Bronte offers scenic cliff-top walking paths south to Coogee via the Waverley Cemetery and north to Bondi Beach, via Tamarama and Mackenzies Bay. The cliff-top path offers views which extend from Ben Buckler in the north to Malabar in the south. Bronte is located about 2.5 km south of Bondi Beach.\nThe suburb has previously been declared the best of 641 Sydney suburbs by the Sydney Morning Herald's Good Suburbs Guide in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "bronte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7527,
+    "attempt": 7475,
+    "place_id": "gn-2336137",
+    "input": {
+      "place": {
+        "place_id": "gn-2336137",
+        "name": "Jibia",
+        "country": "Nigeria",
+        "subdivision": "Katsina State",
+        "lat": 13.09378,
+        "lon": 7.22624
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jibia",
+          "url": "https://en.wikipedia.org/wiki/Jibia",
+          "text": "Jibia (or  Jibiya) is a town and Local Government Area (LGA) in Katsina State, northern Nigeria. The population of the LGA was approximately 125,000 as of 2003, and the area is 1037 km2.\nThe postal code of the area is 822.\nJibia sits along on the Nigerian border with Niger, and the border post was burnt down by a mob in 2005. According to the Daily Triumph newspaper, the mob was \"hired\" by smugglers angry about the Katsina Custom Command's crackdown on  contraband goods.\nThe Local Government shares borders with Batsari, Kaita, Katsina, Batagarawa and Zurmi (Zamfara State) Local Government Areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "jibia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7528,
+    "attempt": 7476,
+    "place_id": "gn-2554389",
+    "input": {
+      "place": {
+        "place_id": "gn-2554389",
+        "name": "Boulemane",
+        "country": "Morocco",
+        "subdivision": "Fes-Meknes",
+        "lat": 33.36376,
+        "lon": -4.72896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boulemane",
+          "url": "https://en.wikipedia.org/wiki/Boulemane",
+          "text": "Boulemane (Arabic: بولمان) is a scenic small town in the Middle Atlas mountains in Boulemane Province, Fès-Meknès, Morocco. It is the highest city in Morocco, sitting at an altitude of 2029 metres. \nThe town is located 102 kilometers from the city of Fes.\nAccording to the 2004 census, its population exceeded 6,910 inhabitants.\nThe town is famous for its natural beauty and tourist attractions, featuring numerous rivers, rugged mountains, oak forests, rice fields, orchards, and olive groves. The surrounding area is rich in agricultural land, with extensive fields dedicated to fruits and vegetables as well as corn and various other crops.\nThe region is home to diverse wildlife, including lizards, wild boars, and many other animal species."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "boulemane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7529,
+    "attempt": 7477,
+    "place_id": "gn-2634451",
+    "input": {
+      "place": {
+        "place_id": "gn-2634451",
+        "name": "West Drayton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5,
+        "lon": -0.46667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Drayton",
+          "url": "https://en.wikipedia.org/wiki/West_Drayton",
+          "text": "West Drayton is a suburban town in the London Borough of Hillingdon. It was an ancient parish in the county of Middlesex and from 1929 was part of the Yiewsley and West Drayton Urban District, which became part of Greater London in 1965. The settlement is near the Colne Valley Regional Park and its centre lies 1.9 miles (3 km) north of Heathrow Airport.\nTraditionally the Parish of West Drayton covers 3.4 square kilometres (1.3 sq mi). In 1901 the population of the civil parish was 984. In the 2021 Census 18,433 people were living in the West Drayton electoral ward. The ward has three councillors in the Hillingdon Borough Council. The vast majority of the housing in West Drayton is mid-20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "west drayton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "drayton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7530,
+    "attempt": 7478,
+    "place_id": "gn-2636464",
+    "input": {
+      "place": {
+        "place_id": "gn-2636464",
+        "name": "Swaffham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.6477,
+        "lon": 0.6857
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Swaffham",
+          "url": "https://en.wikipedia.org/wiki/Swaffham",
+          "text": "Swaffham (; \"swoffum\") is a market town and civil parish in the Breckland District and English county of Norfolk. It is situated 12 miles (19 kilometres) east of King's Lynn and 31 miles (50 kilometres) west of Norwich.\nThe civil parish has an area of 11.42 mi2 (29.6 km2) and in the 2001 census had a population of 6,935 in 3,130 households, which increased to 7,258, in 3,258 households, at the 2011 census. By the time the 2021 census took place, the population had jumped to 8434. For the purposes of local government, the parish falls within the district of Breckland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "swaffham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7531,
+    "attempt": 7479,
+    "place_id": "gn-2638911",
+    "input": {
+      "place": {
+        "place_id": "gn-2638911",
+        "name": "Ryde",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.72999,
+        "lon": -1.1621
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ryde",
+          "url": "https://en.wikipedia.org/wiki/Ryde",
+          "text": "Ryde is a seaside village and civil parish on the north-east coast of the Isle of Wight, England. The parish area had a population of 24,096 according to the 2021 Census. Its growth as a seaside resort came after the villages of Upper Ryde and Lower Ryde were merged in the 19th century, as can still be seen in the town's central and seafront architecture. The resort's expansive sands are revealed at low tide. Their width means the regular ferry service to the mainland requires a long listed pier – the fourth longest in the United Kingdom, and the oldest surviving."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "ryde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7532,
+    "attempt": 7480,
+    "place_id": "gn-2640593",
+    "input": {
+      "place": {
+        "place_id": "gn-2640593",
+        "name": "Partington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.41884,
+        "lon": -2.42815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Partington",
+          "url": "https://en.wikipedia.org/wiki/Partington",
+          "text": "Partington is a town and civil parish in the Metropolitan Borough of Trafford, Greater Manchester, England. It is sited ten miles (16 km) south-west of Manchester city centre. Within the boundaries of the historic county of Cheshire, it lies on the southern bank of the Manchester Ship Canal, opposite Cadishead on the northern bank. In 2001 it had a population of 7,327.\nThe completion of the Manchester Ship Canal in 1894 transformed Partington into a major coal-exporting port and attracted other industries. Until 2007, Shell Chemicals UK operated a major petrochemicals manufacturing complex in Carrington, Partington's closest neighbour to the east. The gas storage facility in the north-eastern corner of the town was once a gasworks and another significant employer.\nShortly after the Second World War, local authorities made an effort to rehouse people away from Victorian slums in inner-city Manchester. An area of Partington became an overspill estate and is now one of the most deprived parts of Greater Manchester. The Cheshire Lines Committee opened a railway line through the town in 1873, but it closed in 1964."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "partington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
