@@ -51,3 +51,14 @@ Scoped whether adding each article's **Climate section** (Geography fallback) as
 - Never invent facts; every clue traces to its source extract; fail closed (reject rather than guess).
 - Stage named files only, never `git add -A`. Push early and often.
 - No merge to main, no PR without Veeresh. Never run the Wikipedia `merge` step from this branch.
+
+## Tier-2 source-expansion run (COMPLETE 2026-10-04 — full detail in `scripts/clues/production/tier2-run-report.md`)
+
+- [x] **388 validated clue sets assembled in `public/loop/` (manifest 388) — the ≥365 production target is MET** (23-set buffer). The mode-code gate itself is unchanged and remains Veeresh's/Chitti's; assembly ≠ gate clearance.
+- [x] Milestone 0 baseline 229 (Phase 2 63 + Option A 123 + scope 43, union re-validated, scope sets folded with no regeneration) — CERTIFIED.
+- [x] Wave 1 (200 attempted, ranks 1–217): 91 accepted → cumulative 320 — CERTIFIED after two NEEDS WORK cycles (2 hollow accepts converted, 1 lost patch restored).
+- [x] Wave 2 (200 attempted, ranks 218–425): 68 accepted → cumulative **388** — CERTIFIED after one NEEDS WORK item (Varna gn-726050 tier 3 converted).
+- [x] Final leak scan: 0 hits / 1,940 published clue texts. Prompt + validator hashes byte-untouched, re-verified at every milestone.
+- [x] Gates at finish: clue suites 70/70; `npm test` exit 0; `tsc --noEmit` clean; `lint-cards` GATE PASSED; `build:pages` green.
+- Pool disposition: 400 of 7,797 attempted; 7,397 remain climate-rejected in the audit records (run stopped at target, not exhaustion). **Flag for Veeresh: Puerto San José gn-3591060, published index 362** (was 203 at baseline; fame-order insertions shifted it).
+- [ ] Veeresh's human review + merge decision (unchanged).
