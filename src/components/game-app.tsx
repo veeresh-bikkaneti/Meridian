@@ -668,8 +668,16 @@ export function GameApp() {
         ensureSession(next);
         setMenu(null);
         // Warm the admin-1 boundary cache during play so it's ready by reveal.
-        // Fire-and-forget: preloadAdmin1Boundaries is specified non-throwing.
-        void preloadAdmin1Boundaries();
+        // Deferred 10 s past run start: firing the ~2 MB JSON fetch during
+        // map mount starves the tile requests (net::ERR_ABORTED) and flips
+        // the tile-status to failed. The fixed delay moves it out of the
+        // critical tile-loading window (requestIdleCallback proved racy —
+        // "idle" fires while tiles are still in flight). resolvePin fails
+        // closed to country-only until the cache populates. Fire-and-forget:
+        // preloadAdmin1Boundaries is specified non-throwing.
+        window.setTimeout(() => {
+          void preloadAdmin1Boundaries();
+        }, 10000);
       } catch (err) {
         // Fail closed: no chunk, no run. The player stays on the menu with
         // an explanation instead of starting with a partial/missing pool.
