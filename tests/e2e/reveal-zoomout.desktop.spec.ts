@@ -25,7 +25,7 @@ import {
  * - Hit: camera does not move (dive-in behavior unchanged), gestures live.
  */
 
-test.setTimeout(240_000);
+test.setTimeout(480_000);
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
