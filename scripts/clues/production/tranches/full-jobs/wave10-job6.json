@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 1916,
+    "attempt": 1901,
+    "place_id": "gn-2500889",
+    "input": {
+      "place": {
+        "place_id": "gn-2500889",
+        "name": "Dar el Beïda",
+        "country": "Algeria",
+        "subdivision": "Algiers",
+        "lat": 36.71333,
+        "lon": 3.2125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dar El Beïda",
+          "url": "https://en.wikipedia.org/wiki/Dar_El_Be%C3%AFda",
+          "text": "Dar El Beïda (Arabic: الدار البيضاء; Berber languages: ⴷⴰⵔ ⵍⴱⴻⵢⴷⴰ) is a municipality and the seat of the eponymous district, in Algiers Province. It is located in the eastern suburbs of the capital, approximately 16 kilometers from Algiers city center, and lies at a crossroads linking the capital to the eastern and southern regions of the country.\nHistorically, the settlement dates back to the 1840s, when it served as a stagecoach relay known as \"Maison-Blanche\" (White House) named after a whitewashed wooden building. Designated as a settlement center in 1851, it became an independent municipality in 1882, and gained new importance in 1936 with the development of commercial aviation. During World War II, the town played a significant role with the Anglo-American landings of Operation Torch in November 1942, and later served as an air and logistics base for the Allied forces.\nToday, Dar El Beïda has become a major financial and commercial hub, ranking among the municipalities with the highest budgetary resources nationally. It is home to Houari Boumediene Airport, the country's main international airport, and acts as a major transport hub connecting highway networks, railways, and future extensions of the Algiers Metro. Its economy is driven by a large industrial zone housing the headquarters of several major national companies as well as the commercial activity of the El Hamiz neighborhood, thereby reinforcing its role as an economic center and eastern gateway to the capital.\nIt is bordered by Bordj El Kiffan to the north, Oued Smar and Les Eucalyptus to the south, Rouïba and Hammadi (Boumerdès Province) to the east, and Bab Ezzouar to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "dar el beida",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beida",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1917,
+    "attempt": 1902,
+    "place_id": "gn-2510281",
+    "input": {
+      "place": {
+        "place_id": "gn-2510281",
+        "name": "Torremolinos",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.62035,
+        "lon": -4.49976
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torremolinos",
+          "url": "https://en.wikipedia.org/wiki/Torremolinos",
+          "text": "Torremolinos (Spanish pronunciation: [toremoˈlinos]) is a municipality in Andalusia, southern Spain, west of Málaga. A poor fishing village before the growth in tourism began in the late 1950s, Torremolinos was the first of the Costa del Sol resorts to be developed and is still the most popular in the region.\nOn the western shore of the Bay of Málaga and in front of the Sierra de Mijas 13 km (8 miles) from Málaga, it is served by the A-7 motorway, which bypasses the city to the north, the Cercanías commuter train and Avanzabus.\nIn 2013, it had 69,389 inhabitants, making it the sixth largest city in the province. The township has an area of 20 km2 (7.7 sq mi).\nAreas of the town are dotted with older high-rise residential buildings and hotels, but height limitations on new developments and a significant number of original old town properties have kept the town centre much more open than other popular resorts such as Benidorm and Fuengirola.\nAs the name Coast of the Sun implies, Torremolinos has long, dry summers with relatively low humidity, and mild winters with occasional, though heavy, rainfall. The town benefits in the summer from cool sea breezes predominantly coming from Africa, although this does mean a fair amount of Sahara dust. Temperatures normally hover around 30 °C (86 °F) in the summer and 17–19 °C (63–66 °F) in the winter. Torremolinos sometimes experiences a sea fog that goes as quickly as it appears.\nThe beach, which extends for nearly eight kilometres (five miles), has cycle and skating lanes alongside the fully illuminated promenade and features many chiringuitos (beach bars/restaurants). The eastern end of the beach, known as Los Álamos, has live dance music events throughout the summer. The easternmost parts of the beach have kitesurfing and windsurfing except under the flight path of the airport.\nIn addition to its tourism sector, Torremolinos is known locally for its vibrant and liberal nightlife, particularly its numerous bars and clubs catering to the LGBT community. Torremolinos co-hosted World Pride in 2017 in conjunction with Madrid and holds its own Pride in June, now the third largest in Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 357
+    },
+    "banned_terms": [
+      {
+        "term": "torremolinos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1918,
+    "attempt": 1903,
+    "place_id": "gn-665850",
+    "input": {
+      "place": {
+        "place_id": "gn-665850",
+        "name": "Suceava",
+        "country": "Romania",
+        "subdivision": "Suceava",
+        "lat": 47.63333,
+        "lon": 26.25
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suceava",
+          "url": "https://en.wikipedia.org/wiki/Suceava",
+          "text": "Suceava (Romanian: [suˈtʃe̯ava] ) is a city in northeastern Romania. The seat of Suceava County, it is situated in the historical regions of Bukovina and Western Moldavia, northeastern Romania. It is the largest urban settlement and county seat of Suceava County, with a population of 84,308 inhabitants according to the 2021 Romanian census.\nDuring the Late Middle Ages, namely between 1388 and 1564 (or from the late 14th century to the late 16th century), this middle-sized town was the capital of the Principality of Moldavia. Later on, it became an important, strategically located commercial town of the Habsburg monarchy, Austrian Empire, and Austria-Hungary (formerly belonging to Cisleithania or the Austrian part of the dual monarchy) on the border with the Romanian Old Kingdom.\nNowadays, the town is known for its reconstructed medieval seat fortress (further rebuilt through the EU-funded Regio programme) and its UNESCO-recognized World Heritage Site Saint John the New Monastery (part of the Churches of Moldavia), both local and national tourist attractions. In addition, the Administrative Palace, a historic and civic building dating to imperial Austrian times and designed by Austrian architect Peter Paul Brang, is located in the historic town centre along with the Roman Catholic Saint John of Nepomuk church (one building facing the other). Suceava is also an academic centre of Romania, represented by the Ștefan cel Mare University of Suceava (USV).\nSuceava is the 22nd largest Romanian city. The city's population increased exponentially during the second half of the 20th century, from just over 10,000 people in the late 1940s to over 100,000 in the early 1990s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "suceava",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1919,
+    "attempt": 1904,
+    "place_id": "gn-727079",
+    "input": {
+      "place": {
+        "place_id": "gn-727079",
+        "name": "Sliven",
+        "country": "Bulgaria",
+        "subdivision": "Sliven",
+        "lat": 42.68607,
+        "lon": 26.32558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sliven",
+          "url": "https://en.wikipedia.org/wiki/Sliven",
+          "text": "Sliven (Bulgarian: Сливен [ˈslivɛn]) is the eighth-largest city in Bulgaria and the administrative and industrial centre of Sliven Province and municipality in Northern Thrace. It is situated in the Sliven Valley at the foothills of the Balkan Mountains.\nSliven is famous for its heroic haiduti who fought against the Ottoman Turks in the 19th century and is known as the \"City of the 100 Voyvodi\", a voyvoda being a leader of haiduti.\nThe famous rocky massif Sinite Kamani (Сините камъни, \"The Blue Rocks\") and the associated Sinite Kamani Nature Park, the fresh air and the mineral springs at Slivenski Mineralni Bani offer opportunities for leisure and tourism. Investors are exploring the opportunity to use the local wind (Bora) for the production of electricity.\nAnother point of interest and a major symbol of the city as featured on the coat of arms, is the more than 1,000-year-old Stariyat Briast (Старият Бряст, \"The Old Elm\"), a huge Smooth-leaved Elm in the center of the city. During Ottoman rule, Turkish officials used it to hang Bulgarian revolutionaries. Today the city is helping the tree to live on by frequent evaluations and reinforcing its base. It was elected Bulgarian tree of the year in 2013. On 19 March 2014 the results of an online poll were revealed at a ceremony in the European Parliament. The Old Elm was voted European Tree of the Year 2014. The city also served as an important strategic centre for the Bulgarian Army, with the headquarters of the Bulgarian Third Army located in the centre of the city, being situated relatively near to the sensitive Turkish border.\nSliven Peak on Livingston Island in the South Shetland Islands, Antarctica is named after Sliven."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 163,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "sliven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1920,
+    "attempt": 1905,
+    "place_id": "gn-728330",
+    "input": {
+      "place": {
+        "place_id": "gn-728330",
+        "name": "Pernik",
+        "country": "Bulgaria",
+        "subdivision": "Pernik",
+        "lat": 42.59671,
+        "lon": 23.03318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pernik",
+          "url": "https://en.wikipedia.org/wiki/Pernik",
+          "text": "Pernik (Bulgarian: Перник [ˈpɛrnik]) is a town in western Bulgaria (about 20 kilometres (12 miles) south-west of Sofia) with a population of 70,285 as of 2021. Pernik is the most populated town in western Bulgaria after Sofia. It is the main town of Pernik Province and lies on both banks of the Struma River in the Pernik Valley between the Golo Bardo Mountain, Vitosha Mountain, Lyulin and Viskyar mountains.\nPernik is the principal town of Pernik Province – a province in western Bulgaria, which is next to the Serbian border.\nOriginally the site of a Thracian fortress founded in the 4th century BC, and later a Roman settlement, Pernik became part of the Bulgarian Empire in the early 9th century as an important fortress.  The medieval town was a key Bulgarian stronghold during Bulgarian tsar Samuil's wars against the Byzantine Empire in the 11th century, when it was governed by the local noble Krakra of Pernik, withstanding Byzantine sieges a number of times.\nFrom 1396 until 1878 the town was under Ottoman rule. In the 20th century Pernik developed rapidly as a centre for coal mining and heavy industry. During the Communist rule of Bulgaria it was called Dimitrovo between 1949 and 1962 after Bulgarian Communist leader Georgi Dimitrov.\nThe Surva International Festival of the Masquerade Games (simply called Surva) is held in the town every January. Surva is an International Kukeri Festival in Pernik, Bulgaria and is one of the biggest masquerade festival on the Balkans and Eastern Europe. It is held in the last three days of January each year.\nEconomically Pernik is an industrial town. Industry is of vital importance for the economy of the province. Pernik is the major manufacturing centre, one of the largest in the country with the Stomana steel complex; heavy machinery (mining and industrial equipment); brown coals, building materials and textiles being the most important. Near Pernik there is an enormous plant for heavy machinery in smaller town Radomir which produces excavators and industrial equipment, but is currently not working at full capacity.\nPernik has two football teams, PFC Minyor Pernik and FC Metalurg Pernik."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 163,
+      "fullExtractWords": 353
+    },
+    "banned_terms": [
+      {
+        "term": "pernik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1921,
+    "attempt": 1906,
+    "place_id": "gn-5102387",
+    "input": {
+      "place": {
+        "place_id": "gn-5102387",
+        "name": "Paramus",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.94454,
+        "lon": -74.07542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paramus, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Paramus,_New_Jersey",
+          "text": "Paramus (English pronunciation: /pəˈɹæːməs/  ) is a borough in the central portion of Bergen County, in the U.S. state of New Jersey. A suburban bedroom community of New York City, Paramus is located 15 to 20 miles (24 to 32 km) northwest of Midtown Manhattan and approximately 8 miles (13 km) west of Upper Manhattan. The Wall Street Journal characterized Paramus as \"quintessentially suburban\". The borough is also a major commercial hub for North Jersey (home to Garden State Plaza and various corporate headquarters).\nAs of the 2020 United States census, the borough's population was 26,698, an increase of 356 (+1.4%) from the 2010 census count of 26,342, which in turn reflected an increase of 605 (+2.4%) from the 25,737 counted in the 2000 census.\nParamus was incorporated as a borough by an act of the New Jersey Legislature on March 2, 1922, and ratified by a referendum held on April 4, 1922, that passed by a vote of 238 to 10. Paramus was created from portions of Midland Township, which now exists as Rochelle Park. The borough's name is thought to have originated from the Unami language spoken by the Lenape Native Americans, derived from words meaning \"land of the turkeys\" or \"pleasant stream\".\nParamus has some of the most restrictive blue laws in the United States, dating back to the 17th century, banning nearly all white-collar and retail businesses from opening on Sundays except for gas stations, restaurants and grocery stores, and a limited number of other businesses. Despite this, the borough is one of the largest shopping destinations in the country, generating over $6 billion in annual retail sales, more than any other ZIP Code in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "paramus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1922,
+    "attempt": 1907,
+    "place_id": "gn-5804127",
+    "input": {
+      "place": {
+        "place_id": "gn-5804127",
+        "name": "Mount Vernon",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.42122,
+        "lon": -122.33405
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Vernon, Washington",
+          "url": "https://en.wikipedia.org/wiki/Mount_Vernon,_Washington",
+          "text": "Mount Vernon is the county seat of and the most populous city in Skagit County, Washington, United States. A central location in the Skagit River Valley, the city is located 51 miles (82 km) south of the Canadian border and 60 miles (97 km) north of Seattle. The population was 35,219 at the 2020 census, making it the 35th most-populous city in Washington, with 62,966 people living in its urban area. It is one of two principal cities of and included in the Mount Vernon-Anacortes Metropolitan Statistical Area, covering most of Skagit County.\nMount Vernon and its surrounding areas are known for its annual Skagit Valley Tulip Festival, which has Mount Vernon host a street fair in downtown once a year, with millions of tulips grown in the Skagit Valley every year. Between the 2000 and 2020 census, Mount Vernon grew by 34.3%, and is a prominent location in Northwestern Washington, connected to neighboring communities via I-5 and Amtrak (with Skagit Station)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "mount vernon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vernon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1923,
+    "attempt": 1908,
+    "place_id": "gn-8285452",
+    "input": {
+      "place": {
+        "place_id": "gn-8285452",
+        "name": "Ancaster",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.21806,
+        "lon": -79.98716
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ancaster, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Ancaster,_Ontario",
+          "text": "Ancaster is a community in the city of Hamilton in the Canadian province of Ontario. Founded in 1792, it immediately developed itself into one of the first significant and influential early British Upper Canada communities established during the late 18th century, eventually amalgamating with the city of Hamilton in 2001. By 1823, due to its accessible waterpower and location at the juncture of prehistoric trading routes, Ancaster had become Upper Canada's largest industrial and commercial centre. Additionally, Ancaster had at that time attracted the 2nd largest populace (1,681) in Upper Canada, trailing only Kingston (population 2,500), but surpassing the populations of nearby Toronto (1,376) and Hamilton (1,000).\nAfter this initial period of prosperity in the late 18th century, sudden significant water and rail transportation advancements of the early 19th century would soon better benefit Ancaster's neighbouring towns nearer the Lake Ontario waterfront. Stationary steam engines for industries rapidly developing in the 19th century would eventually make Ancaster's water-powered industries less vital. As a result, after the 1820s, Ancaster's influence would begin to wane during the remainder of the 19th century.\nFrom the late 19th century, Ancaster's population would remain static until 1946, when new subdivisions around the village were established. The population expanded further with the completion of the Hamilton-Ancaster section of Highway 403 in 1968 and the introduction of sewer systems in 1974. After 1970, its population has grown steadily from 15,000 residents to its present-day count of 40,557. It was a municipality until 2001, when it was amalgamated with Hamilton, Dundas, Stoney Creek,  Flamborough and Glanbrook to form the City of Hamilton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 161,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "ancaster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1924,
+    "attempt": 1909,
+    "place_id": "gn-5345609",
+    "input": {
+      "place": {
+        "place_id": "gn-5345609",
+        "name": "El Centro",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.792,
+        "lon": -115.56305
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Centro, California",
+          "url": "https://en.wikipedia.org/wiki/El_Centro,_California",
+          "text": "El Centro (Spanish for \"The Center\") is a city in and the county seat of Imperial County, California, United States. El Centro is the most populous city in the Imperial Valley, the east anchor of the Southern California Border Region, and the core urban area and principal city of the El Centro metropolitan area which encompasses all of Imperial County. El Centro is also the most populous U.S. city to lie entirely below sea level (−42 feet or −13 meters). The city, located in southeastern California, is 113 miles (182 km) from San Diego and less than 20 miles (32 km) from the Mexican city of Mexicali.\nThe city was founded in 1906 by W. F. Holt and C.A. Barker, who purchased the land on which El Centro was eventually built for about $40 per acre ($100 per hectare) and invested $100,000 ($3,600,000 in 2025 dollars) in improvements. The modern city is home to retail, transportation, wholesale, and agricultural industries. There are also two international border crossings nearby for commercial and noncommercial vehicles. El Centro's census population as of 2020 was 44,322, up from 42,598 at the 2010 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "el centro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "centro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1925,
+    "attempt": 1910,
+    "place_id": "gn-5666639",
+    "input": {
+      "place": {
+        "place_id": "gn-5666639",
+        "name": "Missoula",
+        "country": "United States",
+        "subdivision": "Montana",
+        "lat": 46.87215,
+        "lon": -113.994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Missoula, Montana",
+          "url": "https://en.wikipedia.org/wiki/Missoula,_Montana",
+          "text": "Missoula (  mih-ZOO-lə) is a city in and the county seat of Missoula County, Montana, United States. It is located along the Clark Fork River near its confluence with the Bitterroot and Blackfoot rivers in western Montana and at the convergence of five mountain ranges, and thus it is often described as the \"hub of five valleys\". It is the second-most populous city in Montana with a population of 73,489 at the 2020 census, increasing to an estimated 78,903 in 2025, while the Missoula metropolitan area has an estimated 128,698 residents. Missoula is home to the University of Montana, a public research university.\nThe Missoula area was settled by people of European descent from 1858, including William T. Hamilton, who set up a trading post along the Rattlesnake Creek; Captain Richard Grant, who settled near Grant Creek; and David Pattee, who settled near Pattee Canyon. Missoula was founded in 1860 as Hellgate Trading Post while still part of Washington Territory. By 1866, the settlement had moved east, 5 miles (8 km) upstream, and had been renamed \"Missoula Mills\", later shortened to Missoula. The mills provided supplies to western settlers traveling along the Mullan Road. The establishment of Fort Missoula in 1877 to protect settlers further stabilized the economy. The arrival of the Northern Pacific Railway in 1883 brought rapid growth and the maturation of the local lumber industry. In 1893, the Montana Legislature chose Missoula as the site for the state's first university. Along with the U.S. Forest Service headquarters founded in 1908, lumber and the university remained the basis of the local economy for the next 100 years.\nBy the 1990s, Missoula's lumber industry had gradually disappeared, and as of 2009, the city's largest employers were the University of Montana, Missoula County Public Schools, and Missoula's two hospitals. The city is governed by a mayor–council government with 12 city council members, two from each of the six wards. In and around Missoula are 400 acres (160 ha) of parkland, 22 miles (35 km) of trails, and nearly 5,000 acres (2,000 ha) of open-space conservation land, with adjacent Mount Jumbo being home to grazing elk and mule deer during the winter. The city is also home to both of Montana's largest and its oldest active breweries, as well as the Montana Grizzlies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 382
+    },
+    "banned_terms": [
+      {
+        "term": "missoula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1926,
+    "attempt": 1911,
+    "place_id": "gn-2463679",
+    "input": {
+      "place": {
+        "place_id": "gn-2463679",
+        "name": "Corfu",
+        "country": "Greece",
+        "subdivision": "Ionian Islands",
+        "lat": 39.62441,
+        "lon": 19.92016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corfu",
+          "url": "https://en.wikipedia.org/wiki/Corfu",
+          "text": "Corfu ( kor-FOO, -⁠FEW, US also  KOR-foo, -⁠few) or Kerkyra (Greek: Κέρκυρα, romanized: Kérkyra, pronounced [ˈcercira] ) is one of the Ionian Islands in western Greece, and the northernmost island on Greece's west coast except for its satellite Diapontian Islands, which are also the westernmost point of all Greece. Corfu and the Diapontian Islands mark the International Hydrographic Organization border between the Ionian Sea to the south and the Adriatic Sea to the north. Within the Ionian Islands region, the regional unit of Corfu extends as far south as the Paxoi. The capital and largest city of the regional unit is also named Corfu.\nThe island is bound up with the history of Greece from the beginnings of Greek mythology, and is marked by numerous battles and conquests. Ancient Korkyra took part in the Battle of Sybota, which was a catalyst for the Peloponnesian War, and, according to Thucydides, the largest naval battle between Greek city-states until that time. Thucydides also reports that Korkyra was one of the three great naval powers of Greece in the fifth century BCE, along with Athens and Corinth. Ruins of ancient Greek temples and other archaeological sites of the ancient city of Korkyra are located in Palaiopolis. Medieval castles, scattered across the island, are a legacy of struggles against invasions by pirates and the Ottomans. Two of these castles enclose its capital, which is the only city in Greece to be surrounded in such a way. As a result, Corfu's capital has been officially declared a kastropolis ('castle city') by the Greek government.\nFrom medieval times and into the 17th century, the island, as part of the Republic of Venice since 1204, successfully repulsed the Ottomans during several sieges, was recognised as a bulwark of the European States against the Ottoman Empire, and became one of the most fortified places in Europe. The fortifications of the island were used by the Venetians to defend against Ottoman intrusion into the Adriatic. In November 1815 Corfu came under British rule following the Napoleonic Wars, and in 1864 was ceded to modern Greece by the British government along with the remaining islands of the United States of the Ionian Islands under the Treaty of London. Corfu is the origin of the Ionian Academy, the first university of the modern Greek state, and the Nobile Teatro di San Giacomo di Corfù, the first Greek theatre and opera house of modern Greece. Ioannis Kapodistrias, the first governor of independent Greece after the revolution of 1821, founder of the modern Greek state, and a distinguished European diplomat, was born in Corfu.\nIn 2007, the city's old town was added to the UNESCO World Heritage List, following a recommendation by ICOMOS. The 1994 European Union summit was held in Corfu. The island is a popular tourist destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 159,
+      "fullExtractWords": 466
+    },
+    "banned_terms": [
+      {
+        "term": "corfu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1927,
+    "attempt": 1912,
+    "place_id": "gn-4138102",
+    "input": {
+      "place": {
+        "place_id": "gn-4138102",
+        "name": "Columbia Heights",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.92567,
+        "lon": -77.02942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Columbia Heights (Washington, D.C.)",
+          "url": "https://en.wikipedia.org/wiki/Columbia_Heights_(Washington,_D.C.)",
+          "text": "Columbia Heights is a neighborhood in Washington, D.C., located in the city’s Northwest quadrant. Bounded by 16th Street NW, W Street NW, Florida Avenue NW, Barry Place NW, Sherman Avenue NW, Spring Road NW, and New Hampshire Avenue \nNW, the neighborhood is an important retail hub for the area, as home to DC USA mall and to numerous other restaurants and stores, primarily along the highly commercialized 14th Street. Columbia Heights is home to numerous historical landmarks, including Meridian Hill (Malcolm X) Park, National Baptist Memorial Church, All Souls Church, along with a number of embassy buildings.\nDeveloped as a suburb after the U.S. Civil War, the area's growth accelerated in the early 1900s. The extension of the DC streetcar system in 1914 made the neighborhood a popular place to live among federal workers. In the 1940s, the designation of Cardozo High School as a \"colored\" school resulted in a demographic shift and the neighborhood became predominantly African-American. The 1968 Washington, D.C., riots devastated the area and turmoil in the 1970-80s followed. In light of this, Washington Metro edited the course of the Green Line in order to service riot-torn neighborhoods. In the late 1990s, the opening of the Columbia Heights station led to the redevelopment of the neighborhood. Today the neighborhood has diverse demographics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 158,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "columbia heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "columbia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1928,
+    "attempt": 1913,
+    "place_id": "gn-2642705",
+    "input": {
+      "place": {
+        "place_id": "gn-2642705",
+        "name": "Merthyr Tydfil",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.74794,
+        "lon": -3.37779
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merthyr Tydfil",
+          "url": "https://en.wikipedia.org/wiki/Merthyr_Tydfil",
+          "text": "Merthyr Tydfil (Welsh: Merthyr Tudful) is the main town in Merthyr Tydfil County Borough, Wales, administered by Merthyr Tydfil County Borough Council. It is about 23 miles (37 km) north of Cardiff. Often called just Merthyr, it is said to be named after Tydfil, daughter of King Brychan of Brycheiniog, who according to legend was slain at Merthyr by pagans about 480 CE. Merthyr generally means \"martyr\" in modern Welsh, but here closer to the Latin martyrium: a place of worship built over a martyr's relics. Similar place names in south Wales are Merthyr Cynog, Merthyr Dyfan and Merthyr Mawr.\nNoted for its industrial past, Merthyr was known as the 'Iron Capital of the World' in the early 19th century, due to the scale of its iron production. The world's first steam-powered railway journey happened in Merthyr in 1804, travelling 9 mi (14 km) from the ironworks at Penydarren to the Glamorganshire Canal on the Merthyr Tramroad. The 1851 census found Wales to be the world's first industrialised nation, as more people were employed in industry than agriculture, with Merthyr the biggest town in Wales at that time. The city of Donetsk in Ukraine (then in the Russian Empire), originally 'Hughesovka', was founded by John Hughes of Merthyr in 1870, when he took iron working to the area. Iron production declined in Merthyr from 1860 on, though Merthyr's population continued to rise due to the emergence of coal mining in the area, peaking with around 81,000 people in 1911.  \nThe area is currently known for its industrial heritage and adventure tourism. Merthyr and the surrounding areas boast the Grade-I listed Cyfarthfa Castle, the world’s fastest seated zip line, the UK's largest mountain bike park, the largest indoor climbing wall in Wales, national cycle routes and plans for the UK's longest indoor ski slope."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "merthyr tydfil",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "merthyr",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tydfil",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1929,
+    "attempt": 1914,
+    "place_id": "gn-3183299",
+    "input": {
+      "place": {
+        "place_id": "gn-3183299",
+        "name": "Alessandria",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.90924,
+        "lon": 8.61007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alessandria",
+          "url": "https://en.wikipedia.org/wiki/Alessandria",
+          "text": "Alessandria (Italian: [alesˈsandrja] ; Piedmontese: Lissandria [liˈsɑŋdrja]) is a city and comune (municipality) in the region of Piedmont in Italy, and the capital of the Province of Alessandria. With a population of 93,409, it is the 3rd-largest city in Piedmont and the 53rd-largest in Italy.\nKnown for the famous hat manufacturing company Borsalino and for its proximity to the historical site of the battle of Marengo, led by Napoleon, the town is an important agricultural, industrial and logistic hub within its region and Italy's North-West. With a surface extension that makes it Piedmont's largest municipality and a population of 92,839 inhabitants  (the third most populous city in the region), Alessandria is located in the centre of the so-called \"industrial triangle\", whose vertices are Turin, Milan and Genoa. Alessandria is also home to one of the headquarters of the University of Eastern Piedmont, which is an academic institution that has a tripolar structure shared with Vercelli and Novara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "alessandria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1930,
+    "attempt": 1915,
+    "place_id": "gn-3568312",
+    "input": {
+      "place": {
+        "place_id": "gn-3568312",
+        "name": "Artemisa",
+        "country": "Cuba",
+        "subdivision": "Artemisa",
+        "lat": 22.81366,
+        "lon": -82.75814
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Artemisa",
+          "url": "https://en.wikipedia.org/wiki/Artemisa",
+          "text": "Artemisa (Spanish pronunciation: [aɾteˈmisa]) is a municipality and city in Cuba, formerly part of La Habana Province.\nAccording to a law approved by the Cuban National Assembly in August 2010, Artemisa became the capital city of the newly formed Artemisa Province, which comprises eight municipalities of the former La Habana Province and three from Pinar del Río. It has an area of 642.0 square kilometers and a population of over 86,444 inhabitants (2022).\nDue to its coffee crops in the past and the bucolic local landscape, it has received the nickname \"Jardín de Cuba\" (Garden of Cuba) and is also known as the \"Villa Roja\" (Red Village) due to the color of its soils.\nThe municipality is home to the University of Artemisa, which trains professionals in agricultural sciences, high school and higher education teachers, business sciences, among others. There is also the Faculty of Medical Sciences of Artemisa, which trains doctors, dentists and other health professionals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "artemisa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1931,
+    "attempt": 1916,
+    "place_id": "gn-5386834",
+    "input": {
+      "place": {
+        "place_id": "gn-5386834",
+        "name": "Redwood City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.48522,
+        "lon": -122.23635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Redwood City, California",
+          "url": "https://en.wikipedia.org/wiki/Redwood_City,_California",
+          "text": "Redwood City is a city in San Mateo County, California, United States, on the San Francisco Peninsula in the Bay Area of Northern California, approximately 27 miles (43 km) south of San Francisco and 24 miles (39 km) northwest of San Jose. The city's population was 84,292 according to the 2020 census. The Port of Redwood City is the only deepwater port on San Francisco Bay south of San Francisco.\nRedwood City's history spans its earliest inhabitation by the Ohlone people to being a port for lumber and other goods. The county seat of San Mateo County in the heart of Silicon Valley, Redwood City is home to several global technology companies including Oracle, Electronic Arts, Evernote, Box, and Informatica.\nAccording to the United States Census Bureau, the city has an area of 34.7 square miles (90 km2), of which 19.4 square miles (50 km2) is land and 15.2 square miles (39 km2), comprising 44.34%, is water.  One major watercourse draining much of Redwood City is Redwood Creek, to which several significant river deltas connect, the largest of which is Westpoint Slough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "redwood city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "redwood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1932,
+    "attempt": 1917,
+    "place_id": "gn-8299616",
+    "input": {
+      "place": {
+        "place_id": "gn-8299616",
+        "name": "Deeside",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.20053,
+        "lon": -3.03841
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deeside",
+          "url": "https://en.wikipedia.org/wiki/Deeside",
+          "text": "Deeside (Welsh: Glannau Dyfrdwy) is the name given to a predominantly industrial conurbation of towns and villages in Flintshire and Cheshire on the Wales–England border lying near the canalised stretch of the River Dee that flows from neighbouring Chester into the Dee Estuary. These include Connah's Quay, Shotton, Queensferry, Aston, Garden City, Sealand, Broughton, Bretton, Hawarden, Ewloe, Mancot, Pentre, Saltney and Sandycroft. The population is around 50,000, with a plurality (17,500) living in Connah's Quay.\nDeeside is known for its industry, providing jobs for the people of Cheshire, Merseyside and North Wales. The biggest employment area in Deeside is Deeside Industrial Park, located on the north bank of the Dee on the southern edge of the Wirral peninsula, which has both historical and contemporary significance, and provides Deeside and the surrounding area with jobs in many different industries from construction to food production. Deeside is also home to steel manufacturer Tata Steel and Toyota's engine manufacturing plant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "deeside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1933,
+    "attempt": 1918,
+    "place_id": "gn-1787144",
+    "input": {
+      "place": {
+        "place_id": "gn-1787144",
+        "name": "Yanliang",
+        "country": "China",
+        "subdivision": "Shaanxi",
+        "lat": 34.65918,
+        "lon": 109.22921
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yanliang, Xi'an",
+          "url": "https://en.wikipedia.org/wiki/Yanliang,_Xi'an",
+          "text": "Yanliang District (simplified Chinese: 阎良区; traditional Chinese: 閻良區; pinyin: Yánliáng Qū) is one of nine districts of Xi'an, the capital of Shaanxi province, China. The northernmost and least-populous of Xi'an's county-level divisions, it borders the prefecture-level cities of Xianyang to the west and Weinan to the northeast and Lintong District to the south.\nYanliang District is home to the Xi'an Aircraft Industrial Corporation, a subsidiary of the Chinese state-owned aircraft manufacturing company AVIC. The company is involved in major military and civilian aircraft projects and operates an airfield on the company campus for aircraft testing and internal transportation. Entry into the campus as heavily restricted because of its heavy involvement with state and military information.\nAircraft manufacturing is the most prominent industry in Yanliang, and serves as one of its biggest, if not the biggest source of employment. \nYanliang railway station, which is served by the Houma–Xi'an railway and Xianyang–Tongchuan railway, is located in the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "yanliang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1934,
+    "attempt": 1919,
+    "place_id": "gn-2918752",
+    "input": {
+      "place": {
+        "place_id": "gn-2918752",
+        "name": "Gotha",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.94823,
+        "lon": 10.70193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gotha",
+          "url": "https://en.wikipedia.org/wiki/Gotha",
+          "text": "Gotha (German pronunciation: [ˈɡoːtaː] ) is the fifth-largest city in Thuringia, Germany, 20 kilometres (12 miles) west of Erfurt and 25 km (16 miles) east of Eisenach with a population of 46,400 (2024). The city is the capital of the district of Gotha and was also a residence of the Ernestine Wettins from 1640 until the end of monarchy in Germany in 1918. The House of Saxe-Coburg and Gotha originating here spawned many European rulers, including the royal houses of the United Kingdom, Belgium, Portugal (until 1910) and Bulgaria (until 1946).\nIn the Middle Ages, Gotha was a rich trading town on the trade route Via Regia and between 1650 and 1850, Gotha saw a cultural heyday as a centre of sciences and arts, fostered by the dukes of Saxe-Gotha. The first duke, Ernest the Pious, was famous for his wise rule. In the 18th century, the Almanach de Gotha was first published in the city. The publisher Justus Perthes and the encyclopedist Joseph Meyer made Gotha a leading centre of German publishing around 1800. In the early 19th century, Gotha was a birthplace of the German insurance business. The SPD was founded in Gotha in 1875 by merging two predecessors. In that period Gotha became an industrial centre, with companies such as the Gothaer Waggonfabrik, a producer of trams and later aeroplanes.\nThe main sights of Gotha are the early modern Friedenstein Castle, one of the largest Renaissance Baroque castles in Germany, the medieval city centre and the Gründerzeit buildings of the 19th-century commercial boom.\nGotha lies in the southern part of the Thuringian Basin in a flat and agricultural landscape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "gotha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1935,
+    "attempt": 1920,
+    "place_id": "gn-5098135",
+    "input": {
+      "place": {
+        "place_id": "gn-5098135",
+        "name": "Fort Lee",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.85093,
+        "lon": -73.97014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Lee, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Fort_Lee,_New_Jersey",
+          "text": "Fort Lee is a borough at the eastern border of Bergen County, in the U.S. state of New Jersey, situated along the Hudson River atop The Palisades.\nAs of the 2020 United States census, the borough's population was 40,191, an increase of 4,846 (+13.7%) from the 2010 census count of 35,345, which in turn reflected a decline of 116 (−0.3%) from the 35,461 counted in the 2000 census. Along with other communities in Bergen County, it is one of the largest and fastest-growing ethnic Korean enclaves outside of Korea.\nFort Lee is named for the site of an American Revolutionary War military encampment, named after controversial Continental Army general Charles Lee. At the turn of the 20th century, it became the birthplace of the American film industry. In 1931, the borough became the western terminus of the George Washington Bridge, which crosses the Hudson River and connects to the borough of Manhattan in New York City. Fort Lee's population and housing density has increased considerably since the 1960s and 1970s with the construction of highrise apartment buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 156,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "fort lee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

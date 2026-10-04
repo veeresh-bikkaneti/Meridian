@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 1977,
+    "attempt": 1961,
+    "place_id": "gn-1523741",
+    "input": {
+      "place": {
+        "place_id": "gn-1523741",
+        "name": "Esik",
+        "country": "Kazakhstan",
+        "subdivision": "Almaty Region",
+        "lat": 43.3552,
+        "lon": 77.45245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esik",
+          "url": "https://en.wikipedia.org/wiki/Esik",
+          "text": "Esik (Kazakh: Есік, pronounced [jesɪ́k]), also spelled Yesik and Issyk, is a town in Almaty Region of Kazakhstan, the administrative center of Enbekshikazakh District. It is located on the Issyk River, at the foot of the Tian Shan, 53 km east of Almaty and 112 km over the mountains from Issyk Kul Lake. Population: 34,355 (2009 census results); 31,254 (1999 census results).\nIt was founded by Cossacks in 1858 as stanitsa Nadezhdinskaya. The Issyk kurgan of the famous \"Golden Man\" is nearby.\n\nThe nearby Issyk Lake (not to be confused with the much greater Issyk Kul Lake in Kyrgyzstan) is mostly famous for the way it was created (as a result of an ancient natural landslide damming a valley), destroyed (another natural landslide destroying that dam in 1963, with a subsequent damage to the city of Esik as well), and re-created (with human help)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "esik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1978,
+    "attempt": 1962,
+    "place_id": "gn-1735148",
+    "input": {
+      "place": {
+        "place_id": "gn-1735148",
+        "name": "Serendah",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.3646,
+        "lon": 101.6041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Serendah",
+          "url": "https://en.wikipedia.org/wiki/Serendah",
+          "text": "Serendah (Chinese: 双文丹; Tamil: செரண்டா) is a city and mukim in Hulu Selangor District, Selangor, Malaysia. Located 16 miles (26 km) north of Kuala Lumpur, Serendah was originally a home to many tin mines and act as a satellite town to a bigger mining town, Rawang. The town is now growing at a steady phase and is among the largest suburb outside the skirt of Kuala Lumpur on top of being the most populated mukim (township) in Hulu Selangor District.\nSerendah is actively growing partly due to the presence of UMW Holdings and existence of Antara Gapi in the area. An industrial city, named UMW High-Value Manufacturing Park is being constructed that will then house a number of national and multinational companies focused in manufacturing. An East Coast Rail Link Station planned to open in the same proximity will also accelerate this growth further.\nSome places address in Serendah now includes the prefix 'Bandar' meaning city. Such as the address for UMW HVM Park and its contents, which displays 'Bandar Serendah' instead of the usual 'Serendah'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "serendah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1979,
+    "attempt": 1963,
+    "place_id": "gn-2649833",
+    "input": {
+      "place": {
+        "place_id": "gn-2649833",
+        "name": "Evesham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.09237,
+        "lon": -1.94887
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Evesham",
+          "url": "https://en.wikipedia.org/wiki/Evesham",
+          "text": "Evesham ( ) is a market town and civil parish in the Wychavon district of Worcestershire, in the West Midlands region of England. It is located roughly equidistant between Worcester, Cheltenham and Stratford-upon-Avon. It lies within the Vale of Evesham, an area comprising the flood plain of the River Avon, which has been renowned for market gardening.\nThe town was founded around an 8th-century abbey, one of the largest in Europe, which was destroyed during the dissolution of the monasteries in the 16th century, with only Abbot Lichfield's Bell Tower remaining. During the 13th century, one of the two main battles of the Second Barons' War took place near Evesham, marking the victory of Prince Edward, who later became Edward I of England; this was the Battle of Evesham.\nThe town centre, situated within a meander of the river, is subjected regularly to flooding. The 2007 floods were the most severe in the town's history. As at the 2021 census, Evesham has a population of 27,684."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "evesham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1980,
+    "attempt": 1964,
+    "place_id": "gn-3052236",
+    "input": {
+      "place": {
+        "place_id": "gn-3052236",
+        "name": "Gödöllő",
+        "country": "Hungary",
+        "subdivision": "Pest County",
+        "lat": 47.59657,
+        "lon": 19.35515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gödöllő",
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6d%C3%B6ll%C5%91",
+          "text": "Gödöllő, officially the City of Gödöllő, is a city in Pest County, Budapest metropolitan area, Hungary, about 30 km (20 mi) northeast from the outskirts of Budapest. Its population is 34,396 according to the 2010 census and is growing rapidly. It can be easily reached from Budapest with the suburban railway (HÉV), and national railway (MÁV-START).\nGödöllő is home to the Szent István University, the main education institute of agriculture in Hungary. The palace at Gödöllő was originally built for the aristocratic Grassalkovich family; Franz Josef, Emperor of Austria and King of Hungary and his wife Elisabeth (\"Sisi\") later had their summer residence here.\nCommunism saw much of the town's original one-storey housing levelled to make way for the blocks of flats which continue to dominate the town centre, as well as much of the Royal Forest and Elisabeth's Park levelled for industrial use."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "godollo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1981,
+    "attempt": 1965,
+    "place_id": "gn-3095795",
+    "input": {
+      "place": {
+        "place_id": "gn-3095795",
+        "name": "Kołobrzeg",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 54.17565,
+        "lon": 15.58342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kołobrzeg",
+          "url": "https://en.wikipedia.org/wiki/Ko%C5%82obrzeg",
+          "text": "Kołobrzeg (Polish: [kɔˈwɔbʐɛk] ; Kashubian: Kòlbrzég; German: Kolberg [ˈkɔlbɛʁk] ) is a port and spa city in the West Pomeranian Voivodeship in north-western Poland, with about 47,000 inhabitants (as of 2014). Kołobrzeg is located on the Parsęta River on the south coast of the Baltic Sea (in the middle of the section divided by the Oder and Vistula Rivers). It is the capital of Kołobrzeg County.\nDuring the Early Middle Ages, the Pomeranian tribes established a settlement at the site of modern-day Budzistowo. In 1000, when the city was part of Poland, it became the seat of the Diocese of Kołobrzeg, one of five oldest Polish dioceses. During the High Middle Ages, the town was expanded with an additional settlement inhabited by German settlers a few kilometers north of the stronghold and chartered with Lübeck law, which settlement eventually superseded the original Pomeranian settlement. The city later joined the Hanseatic League. Within the Duchy of Pomerania the town was the urban center of the secular reign of the prince-bishops of Kamień and their residence throughout the High and Late Middle Ages. In the modern age, it passed to Brandenburg and Prussia, and withstood a Polish-French siege in 1807. In the late 19th century it became a popular spa town at the Baltic Sea. In 1945, Polish and Soviet troops captured the town. Kołobrzeg, now part of post-war Poland and devastated in the preceding battle, was rebuilt, but lost its status as the regional center to the nearby city of Koszalin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "ko obrzeg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ko",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "obrzeg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1982,
+    "attempt": 1966,
+    "place_id": "gn-4734825",
+    "input": {
+      "place": {
+        "place_id": "gn-4734825",
+        "name": "Sugar Land",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.61968,
+        "lon": -95.63495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sugar Land, Texas",
+          "url": "https://en.wikipedia.org/wiki/Sugar_Land,_Texas",
+          "text": "Sugar Land is the largest city in Fort Bend County, Texas, United States, located in the southwestern part of the Houston–Pasadena–The Woodlands metropolitan area. Located about 19 miles (31 km) southwest of downtown Houston, Sugar Land is a populous suburban municipality centered around the junction of Texas State Highway 6 and Interstate 69/U.S. Route 59.\nBeginning in the 19th century, the present-day Sugar Land area was home to a large sugar plantation situated in the fertile floodplain of the Brazos River. Following the consolidation of local plantations into Imperial Sugar Company in 1908, Sugar Land grew steadily as a company town and incorporated as a city in 1959. Since then, Sugar Land has grown rapidly alongside other edge cities around Houston, with large-scale development of master-planned communities contributing to population swells since the 1980s.\nSugar Land is one of the fastest-growing cities in Texas. The 2020 United States Census reported that the city's population had grown more than 40% in the preceding 10 years following the annexation of the Greatwood and New Territory communities in December 2017. Over the same 10-year period, the number of employed persons living in Sugar Land increased by 61%.\nSugar Land is home to the headquarters of Imperial Sugar; the company's main sugar refinery and distribution center were once located in the city. The Imperial Sugar crown logo is featured in the city seal and logo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "sugar land",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sugar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "land",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1983,
+    "attempt": 1967,
+    "place_id": "gn-5106160",
+    "input": {
+      "place": {
+        "place_id": "gn-5106160",
+        "name": "Wayne",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.92538,
+        "lon": -74.27654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wayne, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wayne,_New_Jersey",
+          "text": "Wayne is a township in Passaic County, in the U.S. state of New Jersey. Home to William Paterson University and located less than 20 miles (32 km) from Midtown Manhattan, the township is a bedroom suburb of New York City and regional commercial hub of North Jersey. As of the 2020 United States census, the township's population was 54,838, an increase of 121 (+0.2%) from the 2010 census count of 54,717, which in turn reflected an increase of 648 (+1.2%) from the 54,069 counted in the 2000 census.\nWayne was formed as a township by an act of the New Jersey Legislature on April 12, 1847, from portions of Manchester Township. Totowa was formed from portions of Wayne and Manchester Township on March 15, 1898. Points of interest include William Paterson University, Willowbrook Mall, Wayne Towne Center, High Mountain Park Preserve, and Dey Mansion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "wayne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1984,
+    "attempt": 1968,
+    "place_id": "gn-6154383",
+    "input": {
+      "place": {
+        "place_id": "gn-6154383",
+        "name": "Spruce Grove",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.53344,
+        "lon": -113.91874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spruce Grove",
+          "url": "https://en.wikipedia.org/wiki/Spruce_Grove",
+          "text": "Spruce Grove is a city 11 km (6.8 mi) west of Edmonton, Alberta, in Canada. The city is adjacent to the Town of Stony Plain and is surrounded by Parkland County.\nWith a 2021 population of 37,645, Spruce Grove is the ninth-largest city in Alberta. The mayor of Spruce Grove is Jeff Acker.\nSpruce Grove is home to the Horizon Stage Performing Arts Centre, a local theatre, and the TransAlta Tri Leisure Centre, a recreation facility shared with Stony Plain and Parkland County.\nJennifer Heil, the freestyle skier who won the first gold medal for Canada in the 2006 Winter Olympics in Turin, Italy, and a silver medal at the 2010 Winter Olympics is from Spruce Grove, as is Carla MacLeod, a member of the 2010 Canada women's national ice hockey team, and Hockey Hall of Fame member and Stanley Cup-winning goalie Grant Fuhr. Stephanie Labbé, goalkeeper for Canada's 2020 Summer Olympic gold-medal winning women's soccer team, grew up in the Spruce Grove and Stony Plain area and played soccer at Spruce Grove Composite High School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "spruce grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spruce",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1985,
+    "attempt": 1969,
+    "place_id": "gn-1019704",
+    "input": {
+      "place": {
+        "place_id": "gn-1019704",
+        "name": "Bethlehem",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.23078,
+        "lon": 28.30707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bethlehem, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Bethlehem,_South_Africa",
+          "text": "Bethlehem is a city in the eastern Free State province of South Africa that is situated on the Liebenbergs River (also called Liebenbergs Vlei) along a fertile valley just north of the Rooiberg Mountains on the N5 road. It is the fastest growing city in the Free State province, with its target of being the third largest city after Bloemfontein and Welkom.\nIt is a wheat growing area and named after the biblical Bethlehem, from Hebrew: בֵּית לֶחֶם (\"Beit Lechem\"), meaning \"house of bread\".\nThe city lies at an altitude of 1,700 metres (5,600 ft), which contributes to its cool climate, with frosty winters and mild summers. The average annual temperature is around 14 °C (57 °F).\nBethlehem is situated approximately 240 kilometres (150 mi) north-east of Bloemfontein, 140 kilometres (87 mi) east of Kroonstad and 90 kilometres (56 mi) north-west of Harrismith. The city is strategically situated in the heart of the picturesque north-eastern Free State and originally developed as a service centre.\nBethlehem is the seat of the Dihlabeng Local Municipality, which forms part of the Thabo Mofutsanyana District Municipality.\nThe townships historically associated with Bethlehem were established under apartheid-era spatial segregation frameworks, which strictly partitioned residential zones along racial lines.\nThe largest township, Bohlokong, was proclaimed as a residential area for Black African residents, predominantly of Basotho descent. In Sesotho, the name means \"place of grass\", named after the hloko or bohloko grass (Diheteropogon filifolius) found abundantly in the area. Demographic records indicate that Bohlokong remains overwhelmingly populated by Sesotho-speaking Black Africans.\nConversely, the township of Bakenpark was established under the Group Areas Act as a segregated enclave reserved specifically for Bethlehem's Coloured community. The name is of Afrikaans linguistic origin, combining the word baken (meaning a land surveyor's beacon, property landmark, or boundary stone utilized to mark out the town's expansion from the original farm Vogelfontein No. 69) with the suffix park (denoting a structured suburban settlement). While post-apartheid municipal growth and state-led housing developments have led to increased integration, Bakenpark historically held a distinct Coloured plurality and maintains a culturally diverse, multi-racial demographic profile today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 350
+    },
+    "banned_terms": [
+      {
+        "term": "bethlehem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1986,
+    "attempt": 1970,
+    "place_id": "gn-1267336",
+    "input": {
+      "place": {
+        "place_id": "gn-1267336",
+        "name": "Kekri",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 25.97132,
+        "lon": 75.14992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kekri, Rajasthan",
+          "url": "https://en.wikipedia.org/wiki/Kekri,_Rajasthan",
+          "text": "Kekri (Hindi pronunciation: [ˈkeːkɽiː]) is a city in the Ajmer district of the Indian state of Rajasthan. It historically formed part of the Ajmer–Merwara region during British rule and developed as a municipal and administrative centre, with a municipality established in 1879.\nKekri was designated as the headquarters of the short-lived Kekri district during the 2023 administrative reorganisation of Rajasthan. The district was created by the Government of Rajasthan through a Revenue Department notification as part of the formation of 19 new districts in the state, carved out from parts of Ajmer district and Tonk district.\nHowever, following a subsequent administrative review and reorganisation process by the state government, the earlier district structure was altered and Kekri was reintegrated into Ajmer district.\nIn recent years, Kekri has emerged as a centre for higher and professional education, particularly in medical and allied health sciences. The presence of multiple educational institutions has contributed to its development as an emerging educational hub in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "kekri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1987,
+    "attempt": 1971,
+    "place_id": "gn-1623424",
+    "input": {
+      "place": {
+        "place_id": "gn-1623424",
+        "name": "Tondano",
+        "country": "Indonesia",
+        "subdivision": "North Sulawesi",
+        "lat": 1.3054,
+        "lon": 124.91261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tondano",
+          "url": "https://en.wikipedia.org/wiki/Tondano",
+          "text": "Tondano is the capital of Minahasa Regency, mainly in the district of West Tondano (Kecamatan Tondano Barat), in Sulawesi, Indonesia. The city is located in the highlands on the shores of Lake Tondano near Mount Tondano, and enjoys cool temperatures. The city can be reached from Manado around 35 km to the south via Tomohon city, through an eastern route via Kecamatan Tombulu, or through north-east via Airmadidi (the capital of North Minahasa Regency).\n\nIn Tondano city there is a Manado State University (UNIMA) campus in Tonsaru area, South Tondano. Tondano was the birthplace of Indonesian national hero Doctor Sam Ratulangi, that also the first governor of Sulawesi.\n\nTha name \"tondano\" in the Minahasa language is called toulour, which means \"water people\" (tou means people, lour means body of water).The largest lake in this province located here named after the city, Lake Tondano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "tondano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1988,
+    "attempt": 1972,
+    "place_id": "gn-2270437",
+    "input": {
+      "place": {
+        "place_id": "gn-2270437",
+        "name": "Caldas da Rainha",
+        "country": "Portugal",
+        "subdivision": "Leiria",
+        "lat": 39.40326,
+        "lon": -9.13839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caldas da Rainha",
+          "url": "https://en.wikipedia.org/wiki/Caldas_da_Rainha",
+          "text": "Caldas da Rainha is a medium-sized Portuguese city in the Oeste region, in the historical province of Estremadura, and in the district of Leiria. The city serves as the seat of the larger municipality of the same name and of the Comunidade Intermunicipal do Oeste (OesteCIM, Intermunicipal Community of the West). At the 2011 census, the municipality had a population of 51,729 in an area of 255.69 square kilometres (98.72 sq mi), with 30,343 residing in the city. Although the city itself lies about 10.5 kilometres (6.5 mi) inland, three of the municipality's civil parishes lie on the Atlantic Ocean. Caldas da Rainha is best known for its sulphurous hot springs and ceramic pottery.\nThe settlement was founded in the 15th century by Queen Leonor (Rainha Dona Leonor), who established a hospital and a church at the site of some therapeutic hot springs. The Hospital Termal Rainha D. Leonor (Queen Leonor Spring Water Hospital, or Thermal Hospital) is the oldest purpose-built institution of its kind in the world, with five centuries of history. The city's name, often shortened to simply \"Caldas\", can be translated as \"Queen's Hot Springs\", \"Queen's Spa\", or \"Queen's Baths\".\nCaldas da Rainha is a UNESCO Creative City. It is home to many cultural institutions. The city's nine museums cover art, history, and cycling. Cultural and sports venues include Centro Cultural e de Congressos (CCC, Cultural and Conference Centre), a centre for performing arts, exhibitions, and conferences; Expoeste – Centro de Exposições do Oeste (Exhibition Centre of the West), which hosts exhibitions and festivals; a bullring; several football (soccer) pitches; and a multi-sport municipal complex. Caldas hosts six professional and higher-educational institutions, including a major arts and design school and a school devoted to ceramics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 288
+    },
+    "banned_terms": [
+      {
+        "term": "caldas da rainha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caldas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rainha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1989,
+    "attempt": 1973,
+    "place_id": "gn-3671497",
+    "input": {
+      "place": {
+        "place_id": "gn-3671497",
+        "name": "Puerto Colombia",
+        "country": "Colombia",
+        "subdivision": "Atlántico",
+        "lat": 10.98778,
+        "lon": -74.95472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Colombia",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Colombia",
+          "text": "Puerto Colombia is a coastal town and municipality in Atlántico Department, Colombia founded in the mid-1800s. It is famous for its \"Pier of Puerto Colombia\", that at one time was the largest pier in the world. Duties were later transferred to the larger and modern Port of Barranquilla in Bocas de Cenizas, the mouth of the Magdalena River in the Caribbean Sea.\nThe town enjoyed a glorious post-colonial period as the main port on the Caribbean coast of Colombia, where most European and Middle Easterns immigrants entered the country. In the second half of the 20th century, Puerto Colombia faced a rapid decline, eclipsed by Barranquilla, the capital of Atlántico.\nThanks to recent free trade agreements with Canada, the United States of America and many European countries, the municipality has been included in Barranquilla's metropolitan area and its port has undergone large-scale redevelopment. The focus of important public-private partnerships, Puerto Colombia is expected to regain its prominent role as the main sea port of Colombia within a decade.\nCarlos Altahona, Puerto Colombia's Past Mayor, was recognized in December 2012 as the best municipal leader in Colombia for his efforts to eradicate extreme poverty.\nLa Ventana de Sueños, Puerto Colombia Light completed in December 2023, is the tallest lighthouse in South America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "puerto colombia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "colombia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1990,
+    "attempt": 1974,
+    "place_id": "gn-4952629",
+    "input": {
+      "place": {
+        "place_id": "gn-4952629",
+        "name": "Taunton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.9001,
+        "lon": -71.08977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taunton, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Taunton,_Massachusetts",
+          "text": "Taunton is a city in and the county seat of Bristol County, Massachusetts, United States. Taunton is situated on the Taunton River, which winds its way through the city on its way to Mount Hope Bay, 10 miles (16 km) to the south. As of the 2020 census, the city had a population of 59,408; this makes Taunton the third most populated municipality in Bristol County behind New Bedford and Fall River. Shaunna O'Connell is the mayor of Taunton.\nFounded in 1637 by members of the Plymouth Colony, Taunton is one of the oldest towns in the United States. Taunton is also known as the \"Silver City\", as it was a historic center of the silver industry beginning in the 19th century when companies such as Reed & Barton, F. B. Rogers, Poole Silver, and others produced fine-quality silver goods in the city.\nSince December 1914, the city of Taunton has provided a large annual light display each December on Taunton Green, giving it the additional nickname of the Christmas City.\nThe original boundaries of Taunton included the land now occupied by many surrounding towns, including Norton, Easton, Mansfield, Dighton, Raynham, Berkley, and Lakeville. Possession of the latter is still noted by the naming of Taunton Hill in Assonet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "taunton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1991,
+    "attempt": 1975,
+    "place_id": "gn-5011908",
+    "input": {
+      "place": {
+        "place_id": "gn-5011908",
+        "name": "Taylor",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.24087,
+        "lon": -83.26965
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taylor, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Taylor,_Michigan",
+          "text": "Taylor is a city in Wayne County in the U.S. state of Michigan. A Downriver suburb of Detroit, Taylor is located roughly 16 miles (25.7 km) southwest of downtown Detroit. As of the 2020 census, Taylor had a population of 63,409, ranking as the 17th most-populated city in Michigan.\nThe area was originally a civil township known as Taylor Township, which was organized in 1848 and later incorporated as the city of Taylor in 1968. Taylor is the most-populated municipality of the Downriver community, and it is located about 5 miles (8.0 km) west of the southern border of Detroit and about 15 miles (24.1 km) southwest of Downtown Detroit.\nTaylor is home to the Southland Center, Taylor Sportsplex,  Corewell Health Hospital – Taylor, the Downriver Campus of the Wayne County Community College District, and is the founding location of Hungry Howie's Pizza. The city was also home to the now-demolished Gibraltar Trade Center. Heritage Park is located within the city and hosts the Junior League World Series, which invites youth baseball players from all over the world for an annual tournament in August. The city is served by the Taylor School District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "taylor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1992,
+    "attempt": 1976,
+    "place_id": "gn-5779206",
+    "input": {
+      "place": {
+        "place_id": "gn-5779206",
+        "name": "Ogden",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 41.223,
+        "lon": -111.97383
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ogden, Utah",
+          "url": "https://en.wikipedia.org/wiki/Ogden,_Utah",
+          "text": "Ogden ( OG-dən) is a city in and the county seat of Weber County, Utah, United States, located approximately 10 miles (16 km) east of the Great Salt Lake and 40 miles (64 km) north of Salt Lake City. The population was 87,321 in 2020, according to the United States Census Bureau, making it Utah's eighth largest city. The city served as a major railway hub through much of its history, and still handles a great deal of freight rail traffic which makes it a convenient location for manufacturing and commerce. Ogden is also known for its many historic buildings, proximity to the Wasatch Mountains, and as the location of Weber State University.\nOgden is a principal city of the Ogden-Clearfield metropolitan area, which includes all of Weber, Morgan, Davis, and Box Elder counties. The 2010 Census placed the Metro population at 597,159. In 2010, Forbes rated the Metro as America's 6th best place to raise a family. Ogden has had a sister city relationship to Hof in Bavaria, Germany, since 1954."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "ogden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1993,
+    "attempt": 1977,
+    "place_id": "gn-1690019",
+    "input": {
+      "place": {
+        "place_id": "gn-1690019",
+        "name": "San Francisco",
+        "country": "Philippines",
+        "subdivision": "Caraga",
+        "lat": 8.53556,
+        "lon": 125.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Francisco, Agusan del Sur",
+          "url": "https://en.wikipedia.org/wiki/San_Francisco,_Agusan_del_Sur",
+          "text": "San Francisco, officially the Municipality of San Francisco (Cebuano: Lungsod sa San Francisco; Tagalog: Bayan ng San Francisco), is a  municipality in the province of Agusan del Sur, Philippines. According to the 2024 census, it has a population of 79,718 people.\nThe town serves as the center of trade and commerce in the province of Agusan del Sur. In 2013, San Francisco topped first as the \"Most Competitive Municipality in the Philippines in 2012\" according to the National Competitiveness Council (NCC) from out of the 163 first-class municipalities covered by their index.\nThe protected area of the Agusan Marsh Wildlife Sanctuary can also be reached in San Francisco thru the Barangays Caimpugan and New Visayas.\nThe town is known for the gigantic Toog Tree of Alegria, which is the most sacred tribal tree for many of the Indigenous peoples of San Francisco. The town is also popular for its Irosin stone crafts, which has been the cottage industry of many Indigenous families in the area for hundreds of years. Due to the town's commendable folk arts and crafts made in stone, many scholars have suggested for its nomination in the UNESCO Creative Cities Network.\nThe town's name is sometimes colloquially shortened to \"San France\" or alternately spelled \"San Franz\" and \"San Frans\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "san francisco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "francisco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1994,
+    "attempt": 1978,
+    "place_id": "gn-2656379",
+    "input": {
+      "place": {
+        "place_id": "gn-2656379",
+        "name": "Banstead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.32233,
+        "lon": -0.20685
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banstead",
+          "url": "https://en.wikipedia.org/wiki/Banstead",
+          "text": "Banstead is a town in the borough of Reigate and Banstead in Surrey, England. It is 3 miles (5 km) south of Sutton, 7 miles (11 km) south-west of Croydon, 7 miles (11 km) north of Reigate, 8.5 miles (14 km) south-east of Kingston-upon-Thames, and 14 miles (23 km) south of Central London.\nOn the North Downs, it is on three of the four main compass points separated from other settlements by open area buffers with Metropolitan Green Belt status. Banstead Downs, although a fragment of its larger historic area and spread between newer developments, is a Site of Special Scientific Interest (SSSI).\nOne of the Banstead wards is \"Banstead Village\". The contiguous ward of Nork, which contains Banstead station, shares in many amenities of Banstead and is included in county-level population analyses of Banstead but not the central-government-drawn Banstead Built-up Area. The latter takes in Burgh Heath and held 15,469 residents as at the 2011 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "banstead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1995,
+    "attempt": 1979,
+    "place_id": "gn-3094170",
+    "input": {
+      "place": {
+        "place_id": "gn-3094170",
+        "name": "Kutno",
+        "country": "Poland",
+        "subdivision": "Łódź Voivodeship",
+        "lat": 52.23064,
+        "lon": 19.36409
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kutno",
+          "url": "https://en.wikipedia.org/wiki/Kutno",
+          "text": "Kutno [ˈkutnɔ]  is a city in central Poland, with 42,704 inhabitants (2021) and an area of 33.6 km2 (13.0 sq mi). It is the capital of Kutno County in the Łódź Voivodeship.\nFounded in the medieval period, Kutno was a local center of crafts and trade, owing its growth to its location on the Royal Route connecting Warsaw with Poznań and Dresden in the 18th century, and the railway from Warsaw to Toruń and Bydgoszcz since the 19th century. During the invasion of Poland in 1939, Polish armies under General Tadeusz Kutrzeba conducted an offensive in and around Kutno, that was later named the Battle of the Bzura.\nBased on its central location and the intersection of multiple rail lines, Kutno is an important railroad junction in Poland. Two main lines cross there (Łódź – Toruń and Warsaw – Poznań – Berlin). Another connection also starts in Kutno, which connects the town to Płock. Kutno is the location of the European Little League Baseball Center and hosts the annual Kutno Rose Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "kutno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1996,
+    "attempt": 1980,
+    "place_id": "gn-3099828",
+    "input": {
+      "place": {
+        "place_id": "gn-3099828",
+        "name": "Dzierżoniów",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 50.7282,
+        "lon": 16.65141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dzierżoniów",
+          "url": "https://en.wikipedia.org/wiki/Dzier%C5%BConi%C3%B3w",
+          "text": "Dzierżoniów (Polish: [d͡ʑɛrˈʐɔɲuf] ; until 1946 Polish: Rychbach; German: Reichenbach im Eulengebirge [ˈʁaɪçn̩bax]) is a town located at the foot of the Owl Mountains in southwestern Poland, within the Lower Silesian Voivodeship. It is the seat of Dzierżoniów County, and of Gmina Dzierżoniów (although it is not part of the territory of the latter, since the town forms a separate urban gmina).\nEstablished in the 13th century, Dzierżoniów is a historical Lower Silesian town that covers an area of 20.1 square kilometres (7.8 sq mi), and as of December 2021 it has a population of 32,346. It is named after Polish priest and scientist Jan Dzierżon.\nUnique and architecturally rich, Dzierżoniów features a central market square with elegant tenements and a town hall as well as few museums and restaurants. The Old Town is a venue for several annual events and fairs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "dzierzoniow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
