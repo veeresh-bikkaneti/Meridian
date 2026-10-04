@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 5984,
+    "attempt": 5941,
+    "place_id": "gn-2151574",
+    "input": {
+      "place": {
+        "place_id": "gn-2151574",
+        "name": "Ringwood North",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.8,
+        "lon": 145.23333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ringwood North",
+          "url": "https://en.wikipedia.org/wiki/Ringwood_North",
+          "text": "Ringwood North is a suburb of Melbourne, Victoria, Australia, 26 kilometres (16 mi) east of Melbourne's Central Business District, located within the Cities of Manningham and Maroondah local government areas. Ringwood North recorded a population of 9,964 at the 2021 census.\nThe suburb is mostly located within the City of Maroondah, with a small part in the north west of the suburb being located within the City of Manningham.\nIt is bounded on the south by Loughnan, Warrandyte and Wonga Roads (these roads flow into one another continuously). Glenvale Road forms the westernmost boundary in the southern part of the suburb, with the Warrandyte-Ringwood Road forming the western boundary at the northern end of the suburb. The eastern and northern boundaries follow property lines, rather than roads.\nRingwood North Post Office opened on 9 August 1920, in the then rural area.\nRingwood North has its own shopping centre and also has plenty of parklands and reserves nearby without being excessively rural, like Wonga Park or Warrandyte. The style of its roads is distinct from the urban, parallel streetscapes of Ringwood and the circular, 'contour-line' style streets found in neighbouring Park Orchards.\nRingwood North is a hilly area, which is especially evident around the Loughnan's Hill area and Glenvale Road. Glenvale Road also marks the boundary between Ringwood North and Donvale and also the boundary between Maroondah and Manningham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "ringwood north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ringwood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5985,
+    "attempt": 5942,
+    "place_id": "gn-2194046",
+    "input": {
+      "place": {
+        "place_id": "gn-2194046",
+        "name": "Albany",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.71667,
+        "lon": 174.7
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albany, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Albany,_New_Zealand",
+          "text": "Albany (  AL-bə-nee) (Māori: Ōkahukura) is one of the northernmost suburbs of the contiguous Auckland metropolitan area in New Zealand. It is located on the North Shore, 15 kilometres (9 mi) northwest of the Auckland city centre. Albany is found at the headlands of Lucas Creek, and was the location of a portage used by Tāmaki Māori, where waka could be taken between the Upper Waitematā Harbour and the Okura River/Hauraki Gulf. During the 1840s, early European settlers established the village of Lucas Creek, which by the 1880s had become a major fruit growing centre in Auckland. The town voted to change the name from Lucas Creek to Albany in 1890.\nDuring the 1960s, large areas of farmland in Albany were requisitioned for a state housing project. The project was never built, and the land stayed vacant until the 1990s, when it was sold to private developers. Albany rapidly developed in the 1990s and 2000s, during which major projects were constructed, including Westfield Albany and North Harbour Stadium. Much of the land to the north of Albany is semi-rural.\nAlbany is divided into four areas: Albany, Albany Heights, Albany Village, and Albany Centre. The two former names are official."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "albany",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5986,
+    "attempt": 5943,
+    "place_id": "gn-2207740",
+    "input": {
+      "place": {
+        "place_id": "gn-2207740",
+        "name": "Takapuna",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.79167,
+        "lon": 174.77583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Takapuna",
+          "url": "https://en.wikipedia.org/wiki/Takapuna",
+          "text": "Takapuna is a suburb located on the North Shore of Auckland, New Zealand. The suburb is an isthmus between Shoal Bay, arm of the Waitematā Harbour, and the Hauraki Gulf. Lake Pupuke, a volcanic maar and one of the oldest features of the Auckland volcanic field, is a freshwater lake located in the suburb.\nTakapuna was settled by Tāmaki Māori in the 13th or 14th centuries, who utilised the resources of Lake Pupuke, and a pōhutukawa grove called Te Uru Tapu. The grove  still exists to this day and was an important location for funeral ceremonies. In 1847, the first European farmers settled at Takapuna, and the Crown gifted land at Takapuna to Ngāpuhi chief Eruera Maihi Patuone in order to create a protective barrier for Auckland. Jean-Baptiste Pompallier established St Mary's College at Takapuna in 1849.\nThe area became a popular tourist destination for wealthy families of Auckland in the 1880s, when many large summer residences were being constructed on the shores of Lake Pupuke. By the early 20th century, Takapuna Beach had grown in importance for tourists. The suburb developed in the 1910s due to a private tramway, and by the 1930s gradually became a commercial centre for the North Shore. Takapuna grew in importance after the opening of the Auckland Harbour Bridge in 1959, becoming the administrative centre for the North Shore."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "takapuna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5987,
+    "attempt": 5944,
+    "place_id": "gn-2272147",
+    "input": {
+      "place": {
+        "place_id": "gn-2272147",
+        "name": "Alcobaça",
+        "country": "Portugal",
+        "subdivision": "Leiria",
+        "lat": 39.55223,
+        "lon": -8.97749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alcobaça, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Alcobaça,_Portugal",
+          "text": "Alcobaça (Portuguese pronunciation: [alkuˈβasɐ] ) is a Portuguese city and municipality in the intermunicipal community Oeste and the region Oeste e Vale do Tejo, in the historical province of Estremadura, and in the Leiria District. The city grew along the valleys of the rivers Alcoa and Baça, from which it derives its name. The municipality population in 2011 was 56,693, in an area of 408.14 square kilometres (157.58 mi2). The city proper has a population of 15,800 inhabitants.\nThe city of Alcobaça became notable after the first king of Portugal, Afonso Henriques, decided to build a church to commemorate the Conquest of Santarém from the Moors in 1147. The church later evolved into the Monastery of Alcobaça, one of the most magnificent Gothic monuments in the country. In the church are the tombs of Pedro I of Portugal and his murdered mistress Inês de Castro. Over the centuries this monastery played an important role in shaping Portuguese culture.\nA few kilometers to the north of Alcobaça is the Monastery of Batalha, another Gothic building constructed in memory of a different important battle, that of Aljubarrota. To the west of Alcobaça is the fishing village of Nazaré, now a popular resort town. To the south is the city of Caldas da Rainha and the medieval town of Óbidos. To the northeast is the town of Porto de Mós with its rebuilt castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "alcobaca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5988,
+    "attempt": 5945,
+    "place_id": "gn-2614553",
+    "input": {
+      "place": {
+        "place_id": "gn-2614553",
+        "name": "Rønne",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.10091,
+        "lon": 14.70664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rønne",
+          "url": "https://en.wikipedia.org/wiki/Rønne",
+          "text": "Rønne (Danish pronunciation: [ˈʁɶnə]) is the largest town on the Danish island of Bornholm in the Baltic Sea. It has a population of 13,589 (1 January 2026). It was a municipality in its own right from 1970 until 2002, when Bornholm was a county (Danish: Bornholms Amt). It has an area of 29.11 square kilometres (11.24 square miles) and is the administrative centre of the Bornholm municipality. As of 2018, 11,539 inhabitants live in Rønne Parish (number 16 on the map of parishes), which is a narrow piece of land on the westernmost of the island and stretching north and southward comprising around a third of the area of the former municipality. Knudsker Parish (number 11 on the map) made up the rest of the former municipality. Not all inhabitants of either Rønne (statistikbanken.dk/(table) KM1: number 400-7552) or Knudsker (400–7553) parishes live in the city (contiguous built-up area) of Rønne.\nOwing to its natural harbour and its strategic position in the Baltic Sea, Rønne has an interesting history coming under German and Swedish influence during its development as a herring fishing port. Today, with its cobbled streets, half-timbered houses and interesting museums, it attracts visitors mainly from Denmark, Germany, Sweden and Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "r nne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "r",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "nne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5989,
+    "attempt": 5946,
+    "place_id": "gn-2643701",
+    "input": {
+      "place": {
+        "place_id": "gn-2643701",
+        "name": "Long Ditton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38432,
+        "lon": -0.32041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Ditton",
+          "url": "https://en.wikipedia.org/wiki/Long_Ditton",
+          "text": "Long Ditton is a residential suburb in the borough of Elmbridge, Surrey, England on the boundary with the Royal Borough of Kingston upon Thames, London. In medieval times it was a village, occupying a narrow strip of land. Neighbouring settlements include Hinchley Wood, Thames Ditton and Surbiton.\nIts northernmost part is 1.5 miles (2.4 km) south-west of central Kingston upon Thames, 11.3 miles from Charing Cross, and 15 miles (24 km) north-east of Guildford. It is divided in two by the South West Main Line and is bordered by a straight east–west spur road to meet the A3 in a cutting to the south. The old Portsmouth Road passes by the River Thames in the northern end of the village, and the riverbank here is privately owned.\nIn both local economy and public transport, the high street and railway stations at Hinchley Wood and Surbiton are the nearest such amenities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "long ditton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ditton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5990,
+    "attempt": 5947,
+    "place_id": "gn-2648154",
+    "input": {
+      "place": {
+        "place_id": "gn-2648154",
+        "name": "Great Bookham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.27916,
+        "lon": -0.37423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Bookham",
+          "url": "https://en.wikipedia.org/wiki/Great_Bookham",
+          "text": "Great Bookham is a village in the Mole Valley district, in Surrey, England, one of six semi-urban spring line settlements between the towns of Leatherhead and Guildford. With the narrow strip parish of Little Bookham, it forms part of the Saxon settlement of Bocham (\"the village by the beeches\"). The Bookhams are surrounded by common land, and Bookham railway station in Church Road, Great Bookham, serves both settlements.\nThe villages are astride the A246, which is the direct route between the two towns. Once two distinct villages, the Bookhams have long been interconnected with residential roads which give the impression of one large village.\nOn the southern edge of the village is Polesden Lacey, a country house surrounded by more than 1,000 acres (4.0 km2) of grounds. It is owned by the National Trust and open to the public."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "great bookham",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bookham",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5991,
+    "attempt": 5948,
+    "place_id": "gn-2652318",
+    "input": {
+      "place": {
+        "place_id": "gn-2652318",
+        "name": "Corsham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.43433,
+        "lon": -2.18437
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corsham",
+          "url": "https://en.wikipedia.org/wiki/Corsham",
+          "text": "Corsham is a historic market town and civil parish in west Wiltshire, England. It is at the southwestern edge of the Cotswolds, just off the A4 national route. It is 28 miles (45 km) southwest of Swindon, 20 miles (32 km) east of Bristol, 8 miles (13 km) north-east of Bath, and 4 miles (6 km) southwest of Chippenham.\nHistorically, Corsham was a centre for agriculture and later, the wool industry, and remains a focus for quarrying Bath Stone. It has several notable historic buildings, including the stately home of Corsham Court. During the Second World War and the Cold War, it became a major administrative and manufacturing centre for the Ministry of Defence, with numerous establishments both above ground and in disused quarry and mine tunnels.\nThe parish includes the villages of Gastard and Neston, which is at the gates of the Neston Park estate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "corsham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5992,
+    "attempt": 5949,
+    "place_id": "gn-2653974",
+    "input": {
+      "place": {
+        "place_id": "gn-2653974",
+        "name": "Calne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.43879,
+        "lon": -2.00571
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calne",
+          "url": "https://en.wikipedia.org/wiki/Calne",
+          "text": "Calne () is a town and civil parish in Wiltshire, southwestern England, at the northwestern extremity of the North Wessex Downs hill range, a designated Area of Outstanding Natural Beauty.\nCalne is on a small river, the Marden, that rises 2 miles (3 kilometres) away in the Wessex Downs, and is the only town on that river. It is on the A4 road national route 19 mi (31 km) east of Bath, 6 mi (10 km) east of Chippenham, 13 mi (21 km) west of Marlborough and 16 mi (26 km) southwest of Swindon. Wiltshire's county town of Trowbridge is 15 mi (24 km) to the southwest, with London 82 mi (132 km) due east as the crow flies. At the 2021 Census, Calne had 19,074 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "calne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5993,
+    "attempt": 5950,
+    "place_id": "gn-2745580",
+    "input": {
+      "place": {
+        "place_id": "gn-2745580",
+        "name": "Vianen",
+        "country": "Netherlands",
+        "subdivision": "Utrecht",
+        "lat": 51.9925,
+        "lon": 5.09167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vianen",
+          "url": "https://en.wikipedia.org/wiki/Vianen",
+          "text": "Vianen (Dutch pronunciation: [viˈjaːnə(n)] ) is a city and a former municipality in the central Netherlands, in the province of Utrecht. It is located south of the Lek river. Before 2002 it was part of the province of South Holland. Vianen is made up of a historic town centre that dates back to the medieval period and was once surrounded by a defensive wall (parts of which still stand today) and moat, as well as more extensive modern housing developments to the east, south and southwest and an industrial and commercial area. Vianen is intersected by two major motorways leading to the city of Utrecht: the A2 (Amsterdam-Maastricht) and the A27 (Breda-Almere).\nThe municipality was merged with the municipalities of Leerdam and Zederik on 1 January 2019. The name of the new municipality is Vijfheerenlanden which is  part of the Utrecht province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "vianen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5994,
+    "attempt": 5951,
+    "place_id": "gn-3097367",
+    "input": {
+      "place": {
+        "place_id": "gn-3097367",
+        "name": "Jawor",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.05132,
+        "lon": 16.19347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jawor",
+          "url": "https://en.wikipedia.org/wiki/Jawor",
+          "text": "Jawor [ˈjavɔr] (German: Jauer) is a town in south-western Poland with 22,890 inhabitants (2019). It is situated in the Lower Silesian Voivodeship. It is the seat of Jawor County.\nOne of the oldest towns in the region, with a history of more than a thousand years, Jawor was one of the main centers of weaving in Silesia and, in 1274–1392, the capital of an eponymous principality ruled by a local line of the Piast dynasty. It has a preserved medieval urban layout with several Gothic, Renaissance and Baroque structures, including the Church of Peace, a Historic Monument of Poland and UNESCO World Heritage Site. Jawor is the site for electrical machinery, chemical, paper and food industries, and there are numerous granite and basalt quarries near the town. Through the town flows the 31 mile long Raging Nysa river (pl: Nysa Szalona)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "jawor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5995,
+    "attempt": 5952,
+    "place_id": "gn-3117232",
+    "input": {
+      "place": {
+        "place_id": "gn-3117232",
+        "name": "El Masnou",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.47978,
+        "lon": 2.3188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Masnou",
+          "url": "https://en.wikipedia.org/wiki/El_Masnou",
+          "text": "El Masnou (Catalan for 'the new farmhouse'; pronounced [əl məzˈnɔw]) is a municipality in the province of Barcelona, Catalonia, Spain. It is situated on the coast between Montgat and Premià de Mar, to the north-east of the city of Barcelona, in the comarca (county) of el Maresme. The town is both a tourist centre and a dormitory town in the Barcelona metropolitan area.\nThe main N-II road and a Renfe railway line run through the town, while a local road links it with the A-19 autopista at \nAlella.\nThe town center has buildings in a wide range of styles: neoclassical, modernista, noucentista and simply eclectic. The municipal museum has collections of archeology and of Catalan ceramics, and there is also a private museum of pharmacy and medicine.  A Roman village called Cal Ros de les Cabres was one of the first settlements located on the site of the current town.\nThe agriculture of El Masnou is mainly of flowers, especially carnations, and the industry has a predominance of textile, with several industries about ceramics, glass and pharmaceutical products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "el masnou",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "masnou",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5996,
+    "attempt": 5953,
+    "place_id": "gn-3162651",
+    "input": {
+      "place": {
+        "place_id": "gn-3162651",
+        "name": "Askim",
+        "country": "Norway",
+        "subdivision": "Østfold",
+        "lat": 59.58326,
+        "lon": 11.16286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Askim",
+          "url": "https://en.wikipedia.org/wiki/Askim",
+          "text": "Askim () is a town and a former municipality in (from January 1, 2020) Indre Østfold municipality in the county of Østfold, Norway.\nThe administrative centre of the Askim municipality was the town of Askim. Askim was established as a municipality on 1 January 1838 (see formannskapsdistrikt).\nAskim is the largest population centre in the Indre Østfold region, with 15,315 inhabitants as of 2012, and serves as a regional center for nine municipalities in the Indre Østfold region. It lies next to the longest river in Norway, Glomma, which forms the border with the former Spydeberg municipality to the north and west, and Skiptvet municipality to the south. Askim also borders to the former Trøgstad municipality to the northeast and the former Eidsberg municipality to the southeast.\nAskim produces large amounts of hydroelectricity at three dams / hydroelectric power plants in the river Glomma. From upstream to downstream: Solbergfoss, Kykkelsrud, then Vamma.\nThere was nickel mining at Kykkelsrud at the turn of the 20th century. These mines are also one of the few places where \"Spheroidal Norite\" (\"Potato Stone\") is found.\nAskim has been an industrial city for most of the 20th century. The main employer, Viking Gummi (producing rubber products like boots and tyres etc.), shut down their rubber product production in 1991 after being taken over by the Continental Tyres owned Swedish Gislaved Tyres.\nGlava was the main employer by the 2010s, making glass cotton insulation etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "askim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5997,
+    "attempt": 5954,
+    "place_id": "gn-3175458",
+    "input": {
+      "place": {
+        "place_id": "gn-3175458",
+        "name": "Ischia",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.73793,
+        "lon": 13.94862
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ischia",
+          "url": "https://en.wikipedia.org/wiki/Ischia",
+          "text": "Ischia  ( ISK-ee-ə, Italian: [ˈiskja], Neapolitan: [ˈiʃkjə]) is a volcanic island in the Tyrrhenian Sea. It lies at the northern end of the Gulf of Naples, about 30 kilometres (19 miles) from the city of Naples. It is the largest of the Phlegrean Islands. Although inhabited since the Bronze Age, as a Greek emporium it was founded in the 8th or 9th century BCE, and known as Πιθηκοῦσαι, Pithekoūsai.\nRoughly trapezoidal in shape, it measures approximately 10 km (6 miles) east to west and 7 km (4 miles) north to south and has about 34 km (21 miles) of coastline and a surface area of 47 square kilometres (18.1 sq mi). It is almost entirely mountainous; the highest peak is Mount Epomeo, at 788 metres (2,585 feet).\nIschia is also the name of the main municipality of the island. The other municipalities of the island are Barano d'Ischia, Casamicciola Terme, Forio, Lacco Ameno and Serrara Fontana. The island is very densely populated, with 61,727 residents as of 2026, corresponding to a population density of 1,326 inhabitants per squared kilometre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "ischia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5998,
+    "attempt": 5955,
+    "place_id": "gn-3362675",
+    "input": {
+      "place": {
+        "place_id": "gn-3362675",
+        "name": "Prince Alfred Hamlet",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.30392,
+        "lon": 19.32468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prince Alfred Hamlet",
+          "url": "https://en.wikipedia.org/wiki/Prince_Alfred_Hamlet",
+          "text": "Prince Alfred Hamlet is a small town in the Western Cape province of South Africa.\nIt was founded by Johannes Cornelis Goosen, who was born in the Klein Drakenstein and came to the Warm Bokkeveld as a young farmer.\nIn March 1851 Goosen bought the farm Wagenbooms Rivier from George Sebastiaan Wolfaardt at the “fantastic” price of £6 000. Ten years later he measured out first 80 and then another 10 plots and sold them for £6 000 each.  These plots had water rights and each owner also received one morgen or 0.856 hectares (2.12 acres) of land to cultivate in the Bakoven River to grow feed for their animals.\nWhile Goosen was busy measuring out his plots, Queen Victoria's son Prince Alfred visited the  Cape Colony. Goosen decided to name the new town after the Prince and so the name Prince Alfred Hamlet was born.\nIn 1861 the first school was established with 42 pupils under the tutorship of Master Strobos. The building, a temporary construction, was known as the “House on Sticks”. In 1871 the “House on Sticks” was demolished when a permanent building became available. It was also used as the church.\nIn 1906 the Prince Alfred Hamlet members of the Ceres Dutch Reformed Church decided to build their own church. D.G. Roux laid the cornerstone on 5 May 1906. Each member had to help by donating a delivery of the stones and each family bought its own pew. In 1926 a parsonage was built so that a full-time minister could be appointed to serve this congregation. On 5 November 1954 they broke away from Ceres “Mother” Church and Rev. I.B. Fourie took up the position of minister of the independent parish. On 25 April 1964 Fourie laid the cornerstone of the new church. The new building was opened on 14 and 15 November and the old building was converted into a hall.\nA Dutch Reformed Mission Church, i.e. a separate church for Coloured people, was established in 1965 and a church was built. The first minister was J. Marais. This church, as well as many other old houses, did not survive the earthquake of 1969.\nOn 10 April 1929 Prince Alfred Hamlet got its own train station. The Minister of Railways, W.C. Malan, applied the last bolt to the line before the train, filled with school children, left Ceres for the ceremony at Hamlet.\nA Town Council was inaugurated on 8 December 1874 and on 28 December 1910 the town was given the status of Municipality under the Municipality Law of 1882. In 1926 a Town Hall was built and in 1979 the offices next to it were added.  The Hamlet Country Hotel is the oldest business still in operation. Part of the building was constructed in the 19th century and since 1940 the Kahn family has run it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 473
+    },
+    "banned_terms": [
+      {
+        "term": "prince alfred hamlet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "prince",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alfred",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hamlet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5999,
+    "attempt": 5956,
+    "place_id": "gn-3515415",
+    "input": {
+      "place": {
+        "place_id": "gn-3515415",
+        "name": "Tlaltizapán",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.6836,
+        "lon": -99.12008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlaltizapán",
+          "url": "https://en.wikipedia.org/wiki/Tlaltizapán",
+          "text": "Tlaltizapán de Zapata is a city in the Mexican state of Morelos.\nThe city serves as the municipal seat for the surrounding municipality, with which it shares a name. The toponym Tlaltizapán comes from a Nahuatl name and means tlal-tli (land), tiza-tl (white powder), pan (\"on\" or \"over\"); \"on white land\" or \"feet on white land\". The city is situated on a white hill. De Zapata pays homage to the hero of the Liberation Army of the South during the Mexican Revolution.\nThe Municipality of Tlaltizapán de Zapata borders the Municipalities of Emiliano Zapata, Morelos; Yautepec de Zaragoza; and Ciudad Ayala to the north; the Municipalities of Ayala and Tlaquiltenango to the south; Ayala to the east; and Tlaquiltenango, Jojutla, Zacatepec de Hidalgo, Puente de Ixtla, Xochitepec. and Emiliano Zapata to the west. The municipal seat is located at an altitude of 950 meters above sea level.\nThe municipality reported 52,110 inhabitants in the year 2015 census.\nIn 2023, Tlaltizapán de Zapata was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "tlaltizapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6000,
+    "attempt": 5957,
+    "place_id": "gn-3691161",
+    "input": {
+      "place": {
+        "place_id": "gn-3691161",
+        "name": "Túcume",
+        "country": "Peru",
+        "subdivision": "Lambayeque",
+        "lat": -6.50637,
+        "lon": -79.85725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Túcume",
+          "url": "https://en.wikipedia.org/wiki/Túcume",
+          "text": "Túcume is a pre-Hispanic site in Peru, south of the La Leche River on a plain around La Raya Mountain. It covers an area of over 540 acres (220 ha) and encompassing 26 major pyramids and mounds. The area is referred to as \"Pirámides de Túcume\" (en: pyramids of Túcume) or Purgatorio (purgatory) by local people.\n\nThe site was a major regional center, maybe even the capital of the successive occupations of the area by the Lambayeque/Sican (800-1350 AD), Chimú (1350–1450 AD) and Inca (1450–1532 AD). Local shaman healers (curanderos) invoke power of Tucume and La Raya Mountain in their rituals, and local people fear these sites.\nThe vast plains of Túcume are part of the Lambayeque region, the largest valley of the north coast of Peru. The Lambayeque Valley is the site of scores of natural and man-made waterways and is also a region containing the remains of about 250 decaying and heavily eroded mud-brick pyramids."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "tucume",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6001,
+    "attempt": 5958,
+    "place_id": "gn-3856436",
+    "input": {
+      "place": {
+        "place_id": "gn-3856436",
+        "name": "El Trébol",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -32.19857,
+        "lon": -61.70208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Trébol",
+          "url": "https://en.wikipedia.org/wiki/El_Trébol",
+          "text": "El Trébol is a small city in the San Martín Department, west-center of the province of Santa Fe, Argentina, 179 km from the provincial capital. It has about 11,086 inhabitants as per the 2010 census [INDEC]. Its foundation date is locally acknowledged as 15 January 1890 (the date when the first train arrived in town), though the official date in the provincial records is 17 April 1894.\nThe name of the city was a result of the British involvement in the financing of the railroad system. The Ferrocarril Central Argentino company named three consecutive train stations after symbolic plants of Great Britain: Las Rosas (literally \"The Roses\", a reference to England), Los Cardos (\"The Thistles\", referring to Scotland), and El Trébol (\"The Clover\", a symbol of Ireland)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "el trebol",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "trebol",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6002,
+    "attempt": 5959,
+    "place_id": "gn-4371635",
+    "input": {
+      "place": {
+        "place_id": "gn-4371635",
+        "name": "Travilah",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.069,
+        "lon": -77.26304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Travilah, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Travilah,_Maryland",
+          "text": "Travilah is a United States census-designated place and an unincorporated area in Montgomery County, Maryland. It is 17.28 square miles (44.8 km2) located along the north side of the Potomac River, and surrounded by the communities of Potomac, North Potomac, and Darnestown—all census-designated places. It had a population of 11,985 as of the 2020 census.\nWithin the Travilah census-designated place at the intersection of what are now Travilah Road and Glen Road, the small rural community of Travilah existed in the late 1800s and early 1900s. The community had its own post office, general store, school, town hall, church, and a few homes. The crossroads was popular with area farmers because it was close to the Chesapeake and Ohio Canal (C&O Canal) and at least two mills. The name Travilah comes from Travilah Clagett, who was the community's first postmaster in 1883.\nIn 2000, the United States Census Bureau began recognizing the area around the original Travilah crossroads community as a census designated place. Much of the area consists of large homes on large tracts of land with numerous parks and nature preserves mixed in. The community is within driving-distance of Washington, D.C., and the I-270 Technology Corridor. Travilah has a median household income of about $235,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "travilah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6003,
+    "attempt": 5960,
+    "place_id": "gn-4765553",
+    "input": {
+      "place": {
+        "place_id": "gn-4765553",
+        "name": "Idylwood",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.89511,
+        "lon": -77.21165
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Idylwood, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Idylwood,_Virginia",
+          "text": "Idylwood is a census-designated place (CDP) in Fairfax County, Virginia, United States. The population was 17,954 as of the 2020 census. It originally developed as a suburban community along the route of the Washington and Old Dominion Railroad, and later along Virginia State Route 7. The construction of the Capital Beltway in the 1960s, and I-66 and the Orange Line of the Washington Metrorail system in the 1980s, as well as the concurrent development of nearby Tysons Corner into Washington's leading suburban business district, led to the development of several apartment, townhouse, and small-lot single-family housing complexes, as well as the high-rise Idylwood Towers condominium, in the portion of Idylwood lying to the north of I-66. The area to the south of I-66 remains primarily large-lot single-family."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "idylwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

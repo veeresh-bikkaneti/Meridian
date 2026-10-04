@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 5964,
+    "attempt": 5921,
+    "place_id": "gn-2517262",
+    "input": {
+      "place": {
+        "place_id": "gn-2517262",
+        "name": "Gelves",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.33481,
+        "lon": -6.02601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gelves",
+          "url": "https://en.wikipedia.org/wiki/Gelves",
+          "text": "Gelves is a city located in the province of Seville, in Andalusia, Spain. According to the 2006 census (INE), the city has a population of 8,325 inhabitants. It lies on the west bank of the Guadalquivir river.\nThe city of Gelves is not to be confused with Los Gelves, the Spanish name for the island of Djerba off the coast of Tunisia, where the Spanish fought important battles in 1510 and 1520.\nGelves is in the metropolitan agglomeration of the regional capital, Seville, but is a separate municipality, bordering to the north with San Juan de Aznalfarache, west with Mairena del Aljarafe and southwest with Palomares del Río, which are also in the conurbation. Gelves also borders the municipality of the city of Dos Hermanas to the southwest. Across the river, Gelves faces the Sevillian district of Los Remedios on the Isla de La Cartuja."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "gelves",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5965,
+    "attempt": 5922,
+    "place_id": "gn-2641319",
+    "input": {
+      "place": {
+        "place_id": "gn-2641319",
+        "name": "Lancing",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.82882,
+        "lon": -0.32247
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lancing, West Sussex",
+          "url": "https://en.wikipedia.org/wiki/Lancing,_West_Sussex",
+          "text": "Lancing is a large coastal village and civil parish in the Adur district of West Sussex, England, on the western edge of the Adur Valley. It occupies part of the narrow central section of the Sussex coastal plain between smaller Sompting to the west, larger Shoreham-by-Sea to the east, and the parish of Coombes to the north. Excluding definitive suburbs it may have the largest undivided village cluster in Britain. However, its economy is commonly analysed as integral to the Brighton/Worthing/Littlehampton conurbation. Its settled area beneath the South Downs National Park covers 3.65 square miles (9.5 square kilometres; 2,340 acres), the majority of its land.\nThe Lancing area is characterised by mid-rise coastal urban homes, farmland, and wildlife reserves of the northern chalk downs and River Adur estuary. There are non-religious structures that date back to the early 16th century. The population in 2002 was approximately 19,000. In the 2011 census the population for Lancing and Coombes was recorded as 18,810.\nThe village was a popular seaside resort in the mid-19th century. Summer tourist hallmarks are the traditional guesthouses on the A259 coast road (Brighton Road), as well as a caravan/campsite in Old Salts Farm Road, and beach chair hire and ice cream businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "lancing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5966,
+    "attempt": 5923,
+    "place_id": "gn-2653520",
+    "input": {
+      "place": {
+        "place_id": "gn-2653520",
+        "name": "Caterham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.2823,
+        "lon": -0.07889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caterham",
+          "url": "https://en.wikipedia.org/wiki/Caterham",
+          "text": "Caterham () is a town in the Tandridge district of Surrey, England. The town is administratively divided into two: Caterham on the Hill, and Caterham Valley, which includes the main town centre in the middle of a dry valley but rises to equal heights to the south. The town lies close to the A22, 21 miles (34 kilometres) from Guildford and 6 miles (10 kilometres) south of Croydon, in an upper valley cleft into the dip slope of the North Downs. Caterham on the Hill is above the valley to the west.\nThe town is particularly associated with being the location of the original factory for the Caterham 7 and for being the location of Caterham School, the estate of which lies on the outskirts of Caterham Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "caterham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5967,
+    "attempt": 5924,
+    "place_id": "gn-2653715",
+    "input": {
+      "place": {
+        "place_id": "gn-2653715",
+        "name": "Carnforth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.13163,
+        "lon": -2.76914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carnforth",
+          "url": "https://en.wikipedia.org/wiki/Carnforth",
+          "text": "Carnforth is a market town and civil parish in the City of Lancaster in Lancashire, England, situated at the north-east end of Morecambe Bay. The parish of Carnforth had a population of 5,521 in the 2021 census and 5,560 in the 2011 census, an increase from the 5,350 recorded in the 2001 census. The town is situated around 7 miles north of Lancaster, 17 miles south of Kendal, 40 miles east (bisected by Morecambe Bay) of Barrow-in-Furness and 28 miles north-west of Settle. The town is also close to the Cumbria/Lancashire border.\nCarnforth grew in the 19th century through the presence of the railway and ironworks. Due to the closeness of the coast and the hills, Carnforth is a popular base for walkers and cyclists exploring the area. The River Keer, the West Coast Main Line (WCML), the A6 and the Lancaster Canal pass through the town. The M6 motorway passes just to the east, linked to Carnforth by the A6070 (formerly the A601(M)) which was originally part of the Lancaster bypass before the M6 was extended north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "carnforth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5968,
+    "attempt": 5925,
+    "place_id": "gn-2655689",
+    "input": {
+      "place": {
+        "place_id": "gn-2655689",
+        "name": "Biggleswade",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.08652,
+        "lon": -0.26493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biggleswade",
+          "url": "https://en.wikipedia.org/wiki/Biggleswade",
+          "text": "Biggleswade ( BIG-əlz-wayd) is a market town and civil parish in Central Bedfordshire in Bedfordshire, England. It lies on the River Ivel, 11 miles (18 km) south-east of Bedford. Its population was 22,541 at the time of the 2021 census, an increase of 36% compared to the population of 16,551 in the 2011 census.\nEvidence of settlement in the area goes back to the Neolithic period, but it is likely that the town as such was founded by Anglo-Saxons. A gold Anglo-Saxon coin was found on a footpath beside the River Ivel in 2001 (the British Museum bought the coin in 2006; at the time, it was the most expensive British coin purchased). A charter to hold a market was granted by King John in the 13th century. In 1785 a great fire devastated the town. The Great North Road passed through until a bypass was completed in 1961. Biggleswade railway station opened in 1850. From the 1930s to the late 1990s manufacturing provided a significant amount of employment. The town centre is designated a conservation area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "biggleswade",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5969,
+    "attempt": 5926,
+    "place_id": "gn-2734484",
+    "input": {
+      "place": {
+        "place_id": "gn-2734484",
+        "name": "São João da Madeira",
+        "country": "Portugal",
+        "subdivision": "Aveiro",
+        "lat": 40.9007,
+        "lon": -8.4902
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São João da Madeira",
+          "url": "https://en.wikipedia.org/wiki/São_João_da_Madeira",
+          "text": "São João da Madeira (Portuguese pronunciation: [sɐ̃w ʒuˈɐ̃w dɐ mɐˈðɐjɾɐ] ), officially the City of São João da Madeira (Portuguese: Cidade de S. João da Madeira), is a city and a municipality in northwestern region of the Portuguese Norte region. It is part of the larger Porto Metropolitan Area, located 30 km from central Porto. The population in 2011 was 21,713. With an area of 7.94 km2, it is the smallest municipality in Portugal. In 2010, the city was distinguished in Portuguese quality of life studies as the \"Best Municipality to Live In\".\nSão João da Madeira stood out also recently by introducing in 2011 the Industrial Tourism in Portugal and, in 2012, becoming the first Portuguese municipality to offer almost integral wireless coverage in its municipal area.\nSão João da Madeira is also known as the capital city of the shoes, due to the fact that there is the so-called shoe museum there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "sao joao da madeira",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "madeira",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5970,
+    "attempt": 5927,
+    "place_id": "gn-2962696",
+    "input": {
+      "place": {
+        "place_id": "gn-2962696",
+        "name": "Marino",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.37022,
+        "lon": -6.23646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marino, Dublin",
+          "url": "https://en.wikipedia.org/wiki/Marino,_Dublin",
+          "text": "Marino (Irish: An Mairíne) is an inner suburb on the Northside of Dublin, Ireland. It was built, in a planned form, on former grounds of Marino House, in an area between Drumcondra, Donnycarney, Clontarf, and what became Fairview. The initial development featured around 1,300 concrete-built houses.\nThe design of the new Marino development was heavily influenced by the Garden City Movement, which originated in the United Kingdom with Sir Ebenezer Howard. Howard's idea came from 19th-century writings which inspired him to build the opposite of the general urban conditions that existed at the time, hence building the \"Garden City\", to be \"a perfect combination of rural and urban living\". His book, To-morrow, a Peaceful Path to Real Reform (1898), was reprinted in 1902 titled Garden Cities of Tomorrow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "marino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5971,
+    "attempt": 5928,
+    "place_id": "gn-3028610",
+    "input": {
+      "place": {
+        "place_id": "gn-3028610",
+        "name": "Carentan",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.30312,
+        "lon": -1.24806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carentan",
+          "url": "https://en.wikipedia.org/wiki/Carentan",
+          "text": "Carentan (French pronunciation: [kaʁɑ̃tɑ̃]) is a small rural town near the north-eastern base of the French Cotentin Peninsula in Normandy in north-western France, with a population of about 6,000. It is a former commune in the Manche department. On 1 January 2016, it was merged into the new commune of Carentan-les-Marais. The town was a strategic early goal of the World War II landings as capturing the town was necessary to link the lodgements at Utah Beach and Omaha Beach which were divided by the Douve river estuary (nearby fields were flooded by the Germans up to the town's outskirts). The town was also needed as an intermediate staging position for the capture of the cities of Cherbourg and Octeville, with the critically important port facilities in Cherbourg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "carentan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5972,
+    "attempt": 5929,
+    "place_id": "gn-3107364",
+    "input": {
+      "place": {
+        "place_id": "gn-3107364",
+        "name": "Tui",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.04713,
+        "lon": -8.64435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tui, Pontevedra",
+          "url": "https://en.wikipedia.org/wiki/Tui,_Pontevedra",
+          "text": "Tui (Galician pronunciation: [ˈtuj]; is a town and municipality in the province of Pontevedra, in the autonomous community of Galicia, Spain. It is located in the comarca of O Baixo Miño on the right bank of the Miño River, facing the Portuguese town of Valença. The municipality of Tui is composed of 11 parishes: Randufe, Malvas, Pexegueiro, Areas, Pazos de Reis, Rebordáns, Ribadelouro, Guillarei, Paramos, Baldráns and Caldelas.\nTwo bridges connect Tuy and Valença: Tui International Bridge (known in Portugal as Valença International Bridge or \"Friendship Bridge\"), completed in 1878 under the direction of Pelayo Mancebo, and a modern one from the 1990s. Both Portugal and Spain being signatories of the Schengen Treaty, there are normally no formalities in crossing what is the busiest border-point in northern Portugal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "tui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5973,
+    "attempt": 5930,
+    "place_id": "gn-3192699",
+    "input": {
+      "place": {
+        "place_id": "gn-3192699",
+        "name": "Poreč",
+        "country": "Croatia",
+        "subdivision": "Istria",
+        "lat": 45.22567,
+        "lon": 13.59511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poreč",
+          "url": "https://en.wikipedia.org/wiki/Poreč",
+          "text": "Poreč (pronounced [ˈpɔrɛtʃ]; Italian: Parenzo; known also by several alternative names) is a town and municipality on the western coast of the Istrian peninsula, in Istria County, west Croatia. Its major landmark is the 6th-century Euphrasian Basilica, which was designated a UNESCO World Heritage Site in 1997.\nThe town is almost 2,000 years old, and is set around a harbour protected from the sea by the small island of Sveti Nikola. Its population of approximately 12,000 resides mostly on the outskirts, while the wider Poreč area has a population of approximately 16,600 inhabitants. The municipal area covers 142 square kilometres (55 sq mi), with the 37 kilometres (23 miles) long shoreline stretching from the Mirna River near Novigrad (Cittanova) to Funtana (Fontane) and Vrsar (Orsera) in the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "porec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5974,
+    "attempt": 5931,
+    "place_id": "gn-3678097",
+    "input": {
+      "place": {
+        "place_id": "gn-3678097",
+        "name": "La Plata",
+        "country": "Colombia",
+        "subdivision": "Huila Department",
+        "lat": 2.39341,
+        "lon": -75.89232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Plata, Huila",
+          "url": "https://en.wikipedia.org/wiki/La_Plata,_Huila",
+          "text": "La Plata is a town and municipality in the Huila Department, Colombia, with a municipal population of 61,026 (2018 census) including the rural area, situated at an altitude of 1,050 m. It is located 122 km away from Neiva, 147 km from the city of Popayán and 210 km from the town of San Agustín.\nThe municipality is located in the southwestern part of the department of Huila, in the foothills of the Cordillera Central, is geographically situated at coordinates 2 ° 23'00\" North Latitude and 75 ° 56'00\" West Longitude.\nThe municipality is bordered on the north by the Cauca Department, on the south by the municipality of La Argentina, on the east by the municipalities of Paicol and Pital and the west by the Cauca Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "la plata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "plata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5975,
+    "attempt": 5932,
+    "place_id": "gn-4069659",
+    "input": {
+      "place": {
+        "place_id": "gn-4069659",
+        "name": "Jasper",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 33.83122,
+        "lon": -87.27751
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jasper, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Jasper,_Alabama",
+          "text": "Jasper is a city in and the county seat of Walker County, Alabama, United States. As of the 2020 census, Jasper had a population of 14,572. Named in honor of Sergeant William Jasper, an American Revolutionary War hero, Jasper was settled around 1815 and incorporated on August 18, 1886.\nThe first significant growth of the area was in 1886 when the Kansas City, Memphis and Birmingham Railroad and the Sheffield & Birmingham Railroads were completed through Jasper. The population grew from 200 people in 1886 to more than 3,000 in 1890. In a special edition in 1891, the Mountain Eagle stated there were six coal mines, two sandstone quarries, 400 coke ovens, one foundry and machine shop, two saw mills, one brick works, four hotels, and two banks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "jasper",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5976,
+    "attempt": 5933,
+    "place_id": "gn-4178919",
+    "input": {
+      "place": {
+        "place_id": "gn-4178919",
+        "name": "Yulee",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.6319,
+        "lon": -81.60649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yulee, Florida",
+          "url": "https://en.wikipedia.org/wiki/Yulee,_Florida",
+          "text": "Yulee is a census-designated place (CDP) located within Nassau County, Florida, in the United States. Its population at the 2020 United States Census was 14,195, up from 11,491 at the 2010 census. It is part of the Jacksonville metropolitan statistical area. Yulee is a residential bedroom community for individuals commuting to Jacksonville, Naval Submarine Base Kings Bay, and various locations in Southeast Georgia.\nYulee is located within a 15-mile radius of Amelia Island, Jacksonville International Airport, Florida State College at Jacksonville's Nassau Center, White Oak Conservation, Florida Fish and Nassau Wildlife Management Area, Four Creeks State Forest, Yulee Branch Library, Nassau County Sheriff's Office Headquarters, and the Florida Welcome Center situated along Interstate 95 in Florida. The Yulee CDP is provided regional services by the Jacksonville Transportation Authority."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "yulee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5977,
+    "attempt": 5934,
+    "place_id": "gn-4790534",
+    "input": {
+      "place": {
+        "place_id": "gn-4790534",
+        "name": "Tysons",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.91872,
+        "lon": -77.23109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tysons, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Tysons,_Virginia",
+          "text": "Tysons, also known as Tysons Corner, is a census-designated place (CDP) in Fairfax County, Virginia, United States, spanning from the corner of SR 123  (Chain Bridge Road) and SR 7 (Leesburg Pike). It is part of the Washington metropolitan area and located in Northern Virginia between McLean and Vienna along I-495.\nTysons is home to two super-regional shopping malls, Tysons Corner Center and Tysons Galleria, and the corporate and administrative headquarters of Alarm.com, Appian, Booz Allen Hamilton, Capital One, Freddie Mac, Hilton Worldwide, ID.me, Intelsat, M.C. Dean, Inc., MicroStrategy, and Tegna Inc.\nAs an unincorporated community, Tysons is Fairfax County's central business district and a regional commercial center. It has been called a quintessential example of an edge city. The population was 26,374 as of the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "tysons",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5978,
+    "attempt": 5935,
+    "place_id": "gn-5392281",
+    "input": {
+      "place": {
+        "place_id": "gn-5392281",
+        "name": "San Lorenzo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.67412,
+        "lon": -122.13321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Lorenzo, California",
+          "url": "https://en.wikipedia.org/wiki/San_Lorenzo,_California",
+          "text": "San Lorenzo (Spanish for \"Saint Laurence\") is a census-designated place (CDP) located in the historic Eden Township in the East Bay of the San Francisco Bay Area in Alameda County, California, United States. The population was 29,581 at the 2020 census. It is an unincorporated community, located at the banks of San Lorenzo Creek. It was originally named Squattersville in 1851, but later renamed to San Lorenzo.\nIn 1944, under contract to the U.S. Navy, The David D. Bohannon Company began construction of San Lorenzo Village, which was one of the nation's first planned communities, with parcels designated for schools, churches, parks, and several retail centers. Bohannon's pioneering pre-cutting techniques, referred to as the \"California method,\" were used in later developments, such as the more famous Levittown, Pennsylvania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "san lorenzo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lorenzo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5979,
+    "attempt": 5936,
+    "place_id": "gn-574307",
+    "input": {
+      "place": {
+        "place_id": "gn-574307",
+        "name": "Bolshevo",
+        "country": "Russia",
+        "subdivision": "Moscow Oblast",
+        "lat": 55.93486,
+        "lon": 37.83002
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolshevo",
+          "url": "https://en.wikipedia.org/wiki/Bolshevo",
+          "text": "Bolshevo (Russian: Бо́лшево) is  the area of the city of Korolyov (an industrial city in Moscow Oblast, Russia, well known as the cradle of Soviet and Russian space exploration), the historical part of it. It was founded as an independent town in 1573. It is best known as giving the name of Bolshevo railway station which is located on Yaroslavsky suburban railway line, Moscow.\nIn 2019 the exhibition Station Bolshevo: the crossroads of fate, 1939 commemorated a notebook of the poet Marina Tsvetaeva which contains translations she made of 12 poems by Mikhail Lermontov into French whilst in Bolshevo. A second notebook belonging to Sergei Durylin was also featured. This contained chapters from his book In His Own Corner which covered his stay in Bolshevo, also in 1939."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "bolshevo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5980,
+    "attempt": 5937,
+    "place_id": "gn-672912",
+    "input": {
+      "place": {
+        "place_id": "gn-672912",
+        "name": "Moldova Nouă",
+        "country": "Romania",
+        "subdivision": "Caraș-Severin County",
+        "lat": 44.7375,
+        "lon": 21.66694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moldova Nouă",
+          "url": "https://en.wikipedia.org/wiki/Moldova_Nouă",
+          "text": "Moldova Nouă (Romanian pronunciation: [molˌdova ˈnowə] ; Hungarian: Újmoldova; German: Neumoldowa; Czech: Nová Moldava or Bošňák; Serbian: Нова Молдава or Бошњак, romanized: Nova Moldova or Bošnjak) is a town in southwestern Romania in Caraș-Severin County (the historical region of Banat), in an area known as Clisura Dunării.  The town administers three villages: Măcești (Hungarian: Macsevics, Serbian: Мачевић), Moldova Veche (Ómoldova, Стара Молдава), and Moldovița (Kiskárolyfalva, Молдавица).\nThe town lies on the shores of the river Danube, which separates it from Serbia. It is located at the southern extremity of Caraș-Severin County, 107 km (66 mi) from the county capital, Reșița. It is crossed by national road DN57, which connects it to Oravița, 53 km (33 mi) to the north, and Orșova, 103 km (64 mi) to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "moldova noua",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "moldova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noua",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5981,
+    "attempt": 5938,
+    "place_id": "gn-6943587",
+    "input": {
+      "place": {
+        "place_id": "gn-6943587",
+        "name": "Onsala",
+        "country": "Sweden",
+        "subdivision": "Halland",
+        "lat": 57.42531,
+        "lon": 12.02903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Onsala",
+          "url": "https://en.wikipedia.org/wiki/Onsala",
+          "text": "Onsala (Swedish pronunciation: [ˈʊ̂nːˌsɑːla] ) is a locality situated in Kungsbacka Municipality, Halland County, Sweden, with 11,951 inhabitants in 2010. It is also a 14 km long peninsula on the west coast of Sweden, facing Kattegat, 40 kilometres (25 mi) south of Gothenburg. It dates back to the age of the vikings and was originally an area devoted to the god Odin, the name being a corruption of the old norse Odin's Sala. In English \"The Halls of Odin\" \nThe population is around 12-14,000 with a densely inhabited east coast, mainly consisting of single-family homes. The biggest village is Gottskär, in older days a fishing village, and which today has a few restaurants and a leisure boat harbour. Lars Gathenhielm was born in the old parish of Onsala. He was a Swedish privateer commissioned by the king to raid Danish ships. His wife, Ingela, took over his business as a privateer as a widow.  They are interred in a basement crypt beneath the smaller tower of the church. Their white sarcophagi have carved \"jolly rogers\" at the foot end.\nOnsala is also home to the Onsala Space Observatory, the Swedish national radio observatory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "onsala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5982,
+    "attempt": 5939,
+    "place_id": "gn-1694631",
+    "input": {
+      "place": {
+        "place_id": "gn-1694631",
+        "name": "Pasacao",
+        "country": "Philippines",
+        "subdivision": "Bicol Region",
+        "lat": 13.5118,
+        "lon": 123.0426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pasacao",
+          "url": "https://en.wikipedia.org/wiki/Pasacao",
+          "text": "Pasacao (), officially the Municipality of Pasacao (Central Bikol: Banwaan kan Pasacao; Tagalog: Bayan ng Pasacao), is a 1st class municipality in the province of Camarines Sur, Philippines. According to the 2024 census, it has a population of 50,708 people. The area is noted for its brown sand beaches and is sometimes referred to as the \"Summer Capital of Camarines Sur.\nDuring the Spanish colonization in the 16th century, a settlement surrounded a port in what is now Pasacao, serving as a primary embarkation point in Camarines Sur and the only sea link to Manila. This strategic location supported commerce and trade across the archipelago.\nColloquially, \"Pasacao\" refers to this former settlement, which is still recognized separately as the modern town center housing government and business hubs. The settlement was designated as a town in 1854 and expanded to incorporate neighboring barrios, leading to the establishment of a municipality during the American colonial period in the early 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "pasacao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5983,
+    "attempt": 5940,
+    "place_id": "gn-2058430",
+    "input": {
+      "place": {
+        "place_id": "gn-2058430",
+        "name": "Whyalla",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -33.03268,
+        "lon": 137.56483
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whyalla",
+          "url": "https://en.wikipedia.org/wiki/Whyalla",
+          "text": "Whyalla () is a city in South Australia. It was founded as Hummock's Hill, and was known by that name until 1916. It is the fourth most populous city in the Australian state of South Australia after Adelaide, Mount Gambier, and Gawler, and along with Port Pirie and Port Augusta is one of the three towns to make up the \"Iron Triangle\".  It is a seaport located on the east coast of the Eyre Peninsula and is known as the \"Steel City\" due to its integrated steelworks and shipbuilding heritage. The Whyalla Steelworks is the major employer in the town, and has in February 2025 been put into voluntary administration by the Government of South Australia. The port of Whyalla has been exporting iron ore since 1903."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "whyalla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

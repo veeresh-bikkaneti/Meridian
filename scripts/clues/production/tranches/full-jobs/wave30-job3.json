@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 5884,
+    "attempt": 5841,
+    "place_id": "gn-612251",
+    "input": {
+      "place": {
+        "place_id": "gn-612251",
+        "name": "Sadakhlo",
+        "country": "Georgia",
+        "subdivision": "Kvemo Kartli",
+        "lat": 41.2402,
+        "lon": 44.7891
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sadakhlo",
+          "url": "https://en.wikipedia.org/wiki/Sadakhlo",
+          "text": "Sadakhlo (Georgian: სადახლო, Azerbaijani: Sadaxlı) is a village in Georgia located in the southern part of country in the administrative territory of Marneuli Municipality (Kvemo Kartli Region) at the border with Armenia. The village is about 27 kilometres (17 mi) south of the municipal center Marneuli and 50 kilometres (31 mi) south of the capital Tbilisi. It is situated along the left bank of the Debeda river. Sadakhlo is the largest village in Georgia, and is the center of the eponymous administrative community (თემი, temi) that includes four other nearby villages: Burma, Tazakendi, Molaoghli, and Khuldara.\nThe Sadakhlo market played a remarkable role in the interaction between Karapapakhs and Armenians, in light of the Nagorno-Karabakh conflict. Sadakhlo is almost entirely populated with Karapapakhs, and is an important border town with Armenia. Since Georgia took a neutral stance in the conflict, the village became a neutral territory where both peoples could freely and safely interact with each other.\nSix kilometers west of Sadakhlo, in the village of Tsopi along the national route Sh37 to Akhkerpi, the ruins of the medieval Tsopi fortress are located. This castle dates from the 5th-6th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "sadakhlo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5885,
+    "attempt": 5842,
+    "place_id": "gn-6223846",
+    "input": {
+      "place": {
+        "place_id": "gn-6223846",
+        "name": "Stratford",
+        "country": "New Zealand",
+        "subdivision": "Taranaki Region",
+        "lat": -39.33762,
+        "lon": 174.28368
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stratford, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Stratford,_New_Zealand",
+          "text": "Stratford (Māori: Whakaahurangi) is the only town in Stratford District, and the seat of the Taranaki region, in New Zealand's North Island. It lies beneath the eastern slopes of Mount Taranaki, approximately halfway between New Plymouth and Hāwera, near the geographic centre of the Taranaki Region. The town has a population of 6,430, making it the 62nd largest urban area in New Zealand (using the Statistical Standard for Geographic Areas 2018 (SSGA18)), and the fourth largest in Taranaki (behind New Plymouth, Hāwera and Waitara).\nThe Stratford District has a population of 10,500, and a land area of 2,163.35 km2 (835.27 sq mi), which is divided between the Manawatū-Whanganui region (including the settlements of Whangamōmona, Marco and Tahora, 31.87% of its land area) and the Taranaki region (68.13% of its land area)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "stratford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5886,
+    "attempt": 5843,
+    "place_id": "gn-6690867",
+    "input": {
+      "place": {
+        "place_id": "gn-6690867",
+        "name": "Ewell",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.34948,
+        "lon": -0.2494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ewell",
+          "url": "https://en.wikipedia.org/wiki/Ewell",
+          "text": "Ewell (  YOO-əl, inf.  YOOL) is a town in the Epsom and Ewell district, in Surrey, England, 12 miles (19 kilometres) south of central London and two miles (three kilometres) northeast of Epsom. At the 2011 census, it had a population of 34,872. The majority (73%) was in the ABC1 social class, except the Ruxley Ward that is C2DE.\nEwell was founded as a spring line settlement, where the permeable chalk of the North Downs meets the impermeable London Clay, and the Hogsmill River (a tributary of the River Thames) still rises at a spring close to Bourne Hall in the village centre. Recorded in Domesday Book as Etwelle, the settlement was granted a market charter to hold a market in 1618. The town is contiguous with the Greater London suburbs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "ewell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5887,
+    "attempt": 5844,
+    "place_id": "gn-6943488",
+    "input": {
+      "place": {
+        "place_id": "gn-6943488",
+        "name": "Amqui",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 48.46382,
+        "lon": -67.43134
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amqui",
+          "url": "https://en.wikipedia.org/wiki/Amqui",
+          "text": "Amqui (; French: [amkwi] ) is a town in eastern Quebec, Canada, at the base of the Gaspé peninsula in Bas-Saint-Laurent. Located at the confluence of the Humqui and Matapédia Rivers, it is the seat of La Matapédia Regional County Municipality. The main access road is Quebec Route 132.\nThe Mi'kmaq word amgoig, also written humqui, unkoui and ankwi, means \"the place to have fun\", \"half wall\" or \"place of amusement and pleasure.\"  Another Mi'kmaq name for the area is Amkooĭk or Mkooögwĭk which aptly describes the area as \"boggy.\"  One source postulates that its name comes from the swirling water at the junction of the Humqui and Matapédia rivers.  However, the most plausible explanation appears to be more pragmatic: Amqui was formerly a place where Amerindians gathered for pow wows."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "amqui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5888,
+    "attempt": 5845,
+    "place_id": "gn-727069",
+    "input": {
+      "place": {
+        "place_id": "gn-727069",
+        "name": "Slivnitsa",
+        "country": "Bulgaria",
+        "subdivision": "Sofia",
+        "lat": 42.85182,
+        "lon": 23.03792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Slivnitsa",
+          "url": "https://en.wikipedia.org/wiki/Slivnitsa",
+          "text": "Slivnitsa (Bulgarian: Сливница [ˈslivnit͡sɐ]) is a town in western Bulgaria, 22 km away from Sofia, lying on the main road connecting the capital with the Bulgarian-Serbian border. Slivnitsa is part of Sofia Province and is close to the towns of Kostinbrod and Dragoman.\nCalled by historians the \"battle of the captains vs the generals,\" referring to the young Bulgarian army, whose highest rank went up to a captain, the Battle of Slivnitsa was a decisive factor in the victory of the Bulgarian Army over the Serbs between 17 and 19 November 1885. It solidified the unification between the Kingdom of Bulgaria and Eastern Rumelia.\nThe town lies in the western reaches of the Sofia Valley. A small mountain range named Viskyar stands out to the south and the southwest of Slivnitsa. The mountain's highest peak is Mechi Kamak (Мечи камък, \"Bear's Stone\") and is 1,077 m high. Viskyar is rich in archeological and historical remains. Important strategic and commercial roads, connecting the southern end of the Balkan peninsula with the Danube River and Western Europe, have passed through these lands since Antiquity. An interesting sight is the memorial pantheon, built to the southeast of the Gurgulyat village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "slivnitsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5889,
+    "attempt": 5846,
+    "place_id": "gn-952865",
+    "input": {
+      "place": {
+        "place_id": "gn-952865",
+        "name": "Springs",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.25,
+        "lon": 28.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springs, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Springs,_South_Africa",
+          "text": "Springs is a former independent city that is now part of the City of Ekurhuleni, based in the east of Johannesburg (East Rand), in Gauteng Province, South Africa. It lies 50 km (31 mi) east of Johannesburg and 72 km (45 mi) southeast from Pretoria. Its name is probably derived  from the large number of springs in the area, and its estimated population is more than 121,610 in 2011. It is situated at 1,628 m (5,341 ft) above sea level.\nDuring the apartheid-era, the city was racially segregated under the Group Areas Act. These consisted of middle and upper-income white suburbs around the city centre and the Indian area of Bakerton east of the CBD. A community of black Africans were living in a \"black spot\" of Springs known as Payneville. The Town Council ordered the creation of a new black township to relieve overcrowding in Payneville. In the 1950s, the residents were forcibly removed and relocated to the newly created, KwaThema, southwest of the CBD.\nSprings has a high concentration of Art Deco architecture. After Miami in Florida, it has the highest number of small-scale Art Deco buildings in the world.\nNadine Gordimer (1923–2014), the first South African Nobel Laureate in Literature (1991), was born and raised in Springs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5890,
+    "attempt": 5847,
+    "place_id": "gn-12048426",
+    "input": {
+      "place": {
+        "place_id": "gn-12048426",
+        "name": "Queen's Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.52949,
+        "lon": -0.20868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Queen's Park, London",
+          "url": "https://en.wikipedia.org/wiki/Queen's_Park,_London",
+          "text": "Queen's Park is an area located mostly in the London Borough of Brent, and partially in the City of Westminster. An area within Westminster forms the civil parish of Queen's Park, the first to be created in London since the right of communities to establish civil parishes was enacted in 2007. The area is located 4 miles (6.4 km) north-west of Charing Cross, and centred around a 30 acres (12 ha) park, which opened in 1887 and was named in honour of Queen Victoria. The area gives its name to Queens Park Rangers football club.\nThe north of Queen's Park (in the London Borough of Brent) is an area of Brondesbury Park, and one of its open spaces. The south is in the London borough of the City of Westminster. Kilburn Lane delineates the boundary between the boroughs, as well as of the Queen's Park electoral wards for the two boroughs.\nArchitecturally, Queen's Park is an important historic area, with a unified urban layout with a high level of building preservation. The park is a good example of a Victorian urban green space, and the surrounding streets largely comprise original two- and three-storey Victorian buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "queen s park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "queen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5891,
+    "attempt": 5848,
+    "place_id": "gn-12156897",
+    "input": {
+      "place": {
+        "place_id": "gn-12156897",
+        "name": "Bathurst Manor",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.76481,
+        "lon": -79.45606
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bathurst Manor",
+          "url": "https://en.wikipedia.org/wiki/Bathurst_Manor",
+          "text": "Bathurst Manor is a neighbourhood of Toronto, Ontario, Canada, located in northern Toronto in the former suburb of North York. It sits on a plateau bounded on the north by Finch Avenue West, on the west by Dufferin Street, on the east by the Don River (west branch), and on the south by Sheppard Avenue West.  The area is also regarded as part of the Downsview postal area as designated by Canada Post.  It is part of the former city of North York, which merged with five other municipalities and a regional government to form the new \"City of Toronto\" in 1998.  It is part of the federal and provincial electoral district York Centre, and Toronto electoral ward 10: York Centre (East).  In 2006, it had a population of 14,615."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "bathurst manor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bathurst",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "manor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5892,
+    "attempt": 5849,
+    "place_id": "gn-1736827",
+    "input": {
+      "place": {
+        "place_id": "gn-1736827",
+        "name": "Oya",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 2.86667,
+        "lon": 111.88333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oya, Malaysia",
+          "url": "https://en.wikipedia.org/wiki/Oya,_Malaysia",
+          "text": "Oya is a town and the administrative centre of the subdistrict of the same name in Mukah Division, in the Malaysian state of Sarawak. It is located near the mouth of Oya River with the South China Sea. Oya is about 26 kilometres (16 miles) to the west of Mukah, the division's administrative town.\nThe population of the town was 6,027 in 2020.\nOya has a secondary school, namely Oya National Secondary School (Malay: Sekolah Menengah Kebangsaan Oya). It also has primary schools: Datu Pengiran Mohamad National School (Sekolah Kebangsaan Datu Pengiran Mohamad), Yak Tee (Chinese) National-Type School (Sekolah Jenis Kebangsaan (Cina) Yak Tee), KG Senau National School (Sekolah Kebangsaan KG Senau), Kampung Bakong Terus National School (Sekolah Kebangsaan Kampung Bakong Terus), KPG Teh National School (Sekolah Kebangsaan KPG Teh)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "oya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5893,
+    "attempt": 5850,
+    "place_id": "gn-1818544",
+    "input": {
+      "place": {
+        "place_id": "gn-1818544",
+        "name": "To Kwa Wan",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Kowloon City",
+        "lat": 22.31693,
+        "lon": 114.19052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "To Kwa Wan",
+          "url": "https://en.wikipedia.org/wiki/To_Kwa_Wan",
+          "text": "To Kwa Wan (Chinese: 土瓜灣; Cantonese Yale: Tóugwāwàahn) is a bay and an area of the eastern shore of Kowloon peninsula. The area is part of urban Hong Kong, and is situated between Hok Yuen, Hung Hom, Ma Tau Chung and Ma Tau Kok. Administratively, the area belongs to the Kowloon City District of Kowloon.\nTo Kwa Wan is a mixed residential and commercial area, located to the west of the old Kai Tak Airport. \nIt comprises mostly mid-20th century residential and light industrial architecture of 10 or fewer floors, built to comply with height restrictions for the former Kai Tak Airport. Since the airport closed in 1998, new buildings are taller, often with commercial space on the ground floor, especially along major roads such a Ma Tau Wai Road. Consequently, the area has a much-valued cohesive community spirit.\nTo Kwa Wan station services this area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "to kwa wan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "to",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "kwa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5894,
+    "attempt": 5851,
+    "place_id": "gn-2154618",
+    "input": {
+      "place": {
+        "place_id": "gn-2154618",
+        "name": "Oakleigh",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.89809,
+        "lon": 145.08837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oakleigh, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Oakleigh,_Victoria",
+          "text": "Oakleigh is a suburb in Melbourne, Victoria, Australia 14 km south-east of Melbourne's Central Business District, located within the City of Monash local government area on the traditional lands of the Woiwurrung and Boonwurrung Peoples. Oakleigh recorded a population of 8,442 at the 2021 census.\nOnce a large independent city, Oakleigh was absorbed into Melbourne as part of the eastward expansion of the metropolis in the 1950s. As a result, it once had its own large historic Central Business District, its municipality in the former City of Oakleigh and its suburbs.\nThe area is traditionally known to have a strong Greek cultural influence, largely due to the influx of immigrants to Australia in the mid-20th century. Thirteen per cent of those living in the suburb speak only Greek at home.\nAlthough the origin of the name of the suburb, \"Oakleigh,\" is unclear, local historians have three main theories – that it was derived from she-oaks that grew near Scotchmans Creek; from \"Oakleigh Park\" an estate near Malvern Hills in England; or from Mrs Oakley, an early settler."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "oakleigh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5895,
+    "attempt": 5852,
+    "place_id": "gn-2523693",
+    "input": {
+      "place": {
+        "place_id": "gn-2523693",
+        "name": "Pozzallo",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 36.73028,
+        "lon": 14.84672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pozzallo",
+          "url": "https://en.wikipedia.org/wiki/Pozzallo",
+          "text": "Pozzallo (Sicilian: Puzzaddu) is a town and comune in the province of Ragusa, Sicily, southern Italy.  \nPozzallo  is a major summer destination for tourists: as of July 2025, two beaches in the city hold a Blue Flag award, presented by the FEE and given to beaches which meet strict criteria dealing with water quality, environmental education and information, environmental management, and safety and other services. Very few beaches retain this award in Sicily, including the two located in Pozzallo.\nIt is also a major port, with daily routes between Sicily and Malta (about 90 minutes on high speed ferry) for passengers on a catamaran service. \nThe main monument of the city is Torre Cabrera, a 15th century watchtower built by Bernat Juan de Cabrera, son of Bernat II de Cabrera."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "pozzallo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5896,
+    "attempt": 5853,
+    "place_id": "gn-2635610",
+    "input": {
+      "place": {
+        "place_id": "gn-2635610",
+        "name": "Totnes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.43107,
+        "lon": -3.6843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Totnes",
+          "url": "https://en.wikipedia.org/wiki/Totnes",
+          "text": "Totnes ( TOT-nuhss or  tot-NESS) is a market town and civil parish at the head of the estuary of the River Dart in Devon, England. It is about 5 miles (8 km) west of Paignton, about 7 miles (11 km) west-southwest of Torquay and about 20 miles (32 km) east-northeast of Plymouth, adjacent to the South Devon National Landscape. It is the administrative centre of the South Hams District Council. At the 2021 census, the parish had a population of 8,241.\nTotnes has a long recorded history, dating back to 907, when its first castle was built. By the twelfth century it was already an important market town, and its former wealth and importance may be seen from the number of merchants' houses built in the sixteenth and seventeenth centuries. Today the town has a sizeable alternative and New Age community and is known as a place where one can live a bohemian lifestyle, though in recent times it has also gained a reputation as being a UK hotspot for conspiracy theorists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "totnes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5897,
+    "attempt": 5854,
+    "place_id": "gn-2636335",
+    "input": {
+      "place": {
+        "place_id": "gn-2636335",
+        "name": "Tadcaster",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.88322,
+        "lon": -1.26344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tadcaster",
+          "url": "https://en.wikipedia.org/wiki/Tadcaster",
+          "text": "Tadcaster is a market town and civil parish in North Yorkshire, England, 15 miles (24 km) north-east of Leeds and 10 miles (16 km) south-west of York.\nIts historical importance from Roman times onward was largely as the lowest road crossing-point on the River Wharfe until the construction of the A64 Tadcaster by-pass some 660 yards (600 m) to the south, in 1978. There are two rail crossings downstream of the town before the Wharfe joins the River Ouse near Cawood. Thanks to its position on the banks of the River Wharfe parts of the town adjacent to the bridge are prone to flooding.\nThe town was part of the West Riding of Yorkshire until 1974, but is now part of North Yorkshire. Tadcaster is twinned with Saint-Chély-d'Apcher in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "tadcaster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5898,
+    "attempt": 5855,
+    "place_id": "gn-2645198",
+    "input": {
+      "place": {
+        "place_id": "gn-2645198",
+        "name": "Kirkwall",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 58.98479,
+        "lon": -2.95873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkwall",
+          "url": "https://en.wikipedia.org/wiki/Kirkwall",
+          "text": "Kirkwall (Scots: Kirkwa, Kirkwaa, or Kirkwal; Norn: Kirkavå; Scottish Gaelic: Bàgh na h-Eaglaise) is a port town and historic royal burgh in Orkney, an archipelago to the north of mainland Scotland. It is approximately 210 miles (340 km) north of Edinburgh, 221 miles (356 km) north-northeast of Glasgow, and 124 miles (200 km) north-northwest of Aberdeen. It had a population of 7,390 in 2022, making it the largest town in Orkney.\nFirst mentioned in the Orkneyinga saga, it is today the location of the headquarters of the Orkney Islands Council and a transport hub with ferries to many locations. It is the centre of the St Magnus International Festival and is also a popular stopping off point for cruise ships. St Magnus Cathedral stands at the heart of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "kirkwall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5899,
+    "attempt": 5856,
+    "place_id": "gn-2649622",
+    "input": {
+      "place": {
+        "place_id": "gn-2649622",
+        "name": "Faversham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.3148,
+        "lon": 0.88856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faversham",
+          "url": "https://en.wikipedia.org/wiki/Faversham",
+          "text": "Faversham ( ) is a market town in Kent, England. It is located 8 miles (13 km) from Sittingbourne, 48 miles (77 km) from London and 10 miles (16 km) from Canterbury; it lies next to the Swale, a strip of sea separating mainland Kent from the Isle of Sheppey in the Thames Estuary. The town is close to the A2, used by the Romans and the Anglo-Saxons, which follows an ancient British trackway now known as Watling Street.\nThere has been a settlement at Faversham since pre-Roman times, as indicated by a Belgic Late Iron Age farmstead discovered under the playing fields of Queen Elizabeth's Grammar School. The farmstead was located in the broader region later associated by Ptolemy with the Cantii. The site later became a Roman villa. There is also evidence of Mesolithic and Neolithic human activity in and around the town. The Roman name was Durolevum. The modern name is of Old English origin, probably meaning \"the metal-worker's village\". It is mentioned in the Domesday Book of 1086 as Favreshant. The Barons of Faversham were using three lions passant guardant – the royal arms of England - as the arms for the town during the reign of the Plantagenet king Edward I. The town's medieval corporate seal bore the legend: 'Since I bear arms for the King without charge, I am a free port' (Regis ut arma rego libera portus ego). The town was favoured by King Stephen, who established Faversham Abbey, which survived until the Dissolution of the Monasteries in 1538. Subsequently, the town became an important seaport and established itself as a centre for brewing, and the Shepherd Neame Brewery, founded in 1698, remains a significant major employer.\nThe town was also the centre of the explosives industry between the 17th and early 20th century, declining after an accident in 1916 which killed over 100 workers. This coincided with a revival of the shipping industry in the town. Faversham has a number of landmarks, with several historic churches including St Mary of Charity, Faversham Parish Church, the Maison Dieu and Faversham Recreation Ground. Faversham Market has been established for over 900 years and is still based in the town centre. There are good road and rail links, including a route to the High Speed 1 line at Ebbsfleet for fast services to London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 389
+    },
+    "banned_terms": [
+      {
+        "term": "faversham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5900,
+    "attempt": 5857,
+    "place_id": "gn-2651241",
+    "input": {
+      "place": {
+        "place_id": "gn-2651241",
+        "name": "Dinnington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.36667,
+        "lon": -1.2
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dinnington, South Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Dinnington,_South_Yorkshire",
+          "text": "Dinnington is a town in the civil parish of Dinnington St John's, in the Metropolitan Borough of Rotherham, in South Yorkshire, England. It is near to the towns of Worksop and Rotherham and cities of Sheffield and Doncaster.\nHistorically part of the West Riding of Yorkshire, Dinnington is the principal settlement in the civil parish of Dinnington St John's, which also includes the small satellite hamlets of Throapham and St John's. The Dinnington St John's parish is the most populous constituent of the St John's ward, which also includes the parishes of Laughton-en-le-Morthen, Firbeck, Letwell and Gildingwells. In 2001 this ward had a population of 11,476, with Dinnington St John's itself making up 9,161 of that figure. The population of the ward at the 2011 Census had increased to 12,517. Dinnington is about 330 feet (101 m) above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "dinnington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5901,
+    "attempt": 5858,
+    "place_id": "gn-2651587",
+    "input": {
+      "place": {
+        "place_id": "gn-2651587",
+        "name": "Dalkeith",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.89317,
+        "lon": -3.06806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalkeith",
+          "url": "https://en.wikipedia.org/wiki/Dalkeith",
+          "text": "Dalkeith ( dal-KEETH; Scottish Gaelic: Dail Cheith, pronounced [t̪al ˈçe]) is a historic market town in Midlothian, Scotland, on the River Esk. It was granted a burgh of barony in 1401 and a burgh of regality in 1541. The settlement of Dalkeith grew southwestwards from its 12th-century castle (now Dalkeith Palace). It had a population of 15,146 in 2022.\nThe town is divided into four distinct areas: Dalkeith proper with its town centre and historic core; Eskbank (considered to be the well-heeled neighbourhood of Dalkeith with many large Victorian and newer houses) to its west; Woodburn (primarily a working class council estate with pockets of new housing developments) to its east; and Newbattle (a semi-rural village with its abbey) to the south.\nDalkeith is the main administrative centre for Midlothian. It is twinned with Jarnac, France. In 2004, Midlothian Council re-paved Jarnac Court in honour of Dalkeith and Jarnac's long standing link. On the north-eastern edge of Dalkeith at Woodburn is the Dalkeith Campus (completed 2003) – housing both Dalkeith High School and St David's Roman Catholic High School plus community leisure facilities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "dalkeith",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5902,
+    "attempt": 5859,
+    "place_id": "gn-2655952",
+    "input": {
+      "place": {
+        "place_id": "gn-2655952",
+        "name": "Bellshill",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.81667,
+        "lon": -4.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bellshill",
+          "url": "https://en.wikipedia.org/wiki/Bellshill",
+          "text": "Bellshill (pronounced \"Bells hill\") is a town in North Lanarkshire in Scotland, ten miles (sixteen kilometres) southeast of Glasgow city centre and 37 mi (60 km) west of Edinburgh. Other nearby localities are Motherwell 2 mi (3 km) to the south, Hamilton 3 mi (5 km) to the southwest, Viewpark 1+1⁄2 mi (2.5 km) to the west, Holytown 2 mi (3 km) to the east and Coatbridge 3 mi (5 km) to the north. \nThe town of Bellshill (including the villages of Orbiston and Mossend) has a population of about 20,650. From 1996 to 2016, it was considered to be part of the Greater Glasgow metropolitan area. Since then it has been counted as part of a continuous suburban settlement anchored by Motherwell, with a total population of around 125,000.\nBellshill includes 2 high schools and a few primary schools the 2 high schools are cardinal newman highschool and bellshill academy and the primary schools are st gerrards and holy family"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "bellshill",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5903,
+    "attempt": 5860,
+    "place_id": "gn-2656296",
+    "input": {
+      "place": {
+        "place_id": "gn-2656296",
+        "name": "Barnes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.47352,
+        "lon": -0.24839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barnes, London",
+          "url": "https://en.wikipedia.org/wiki/Barnes,_London",
+          "text": "Barnes () is a district in the London Borough of Richmond upon Thames in south-west London, England. It is centred 5.8 miles (9.3 km) west south-west of Charing Cross in a bend of the River Thames.\nIts built environment includes a wide variety of convenience and arts shopping on its high street and a high proportion of 18th- and 19th-century buildings in the streets near Barnes Pond. Together they make up the Barnes Village conservation area where, along with its west riverside, pictured, most of the mid-19th-century properties are concentrated. On the east riverside is the WWT London Wetland Centre adjoining Barn Elms playing fields.\nBarnes has retained woodland on the \"Barnes Trail\", a short circular walk taking in the riverside, commercial streets and conservation area, including the Olympic Studios. The trail is marked by silver discs set in the ground and with QR-coded information on distinctive oar signs. The Thames Path National Trail provides a public promenade along the entire bend of the river, which is on the Championship Course in rowing.\nBarnes has two railway stations (Barnes and Barnes Bridge) and is served by bus routes towards central London and Richmond."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "barnes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

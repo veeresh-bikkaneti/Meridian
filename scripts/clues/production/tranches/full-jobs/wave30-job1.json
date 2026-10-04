@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 5844,
+    "attempt": 5801,
+    "place_id": "gn-6093513",
+    "input": {
+      "place": {
+        "place_id": "gn-6093513",
+        "name": "Wîhkwêntôwin",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.54306,
+        "lon": -113.52222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wîhkwêntôwin, Edmonton",
+          "url": "https://en.wikipedia.org/wiki/Wîhkwêntôwin,_Edmonton",
+          "text": "Wîhkwêntôwin (, formerly and colloquially Oliver) is one of the oldest residential neighbourhoods in the City of Edmonton, Alberta, Canada.\n\nWîhkwêntôwin is immediately to the west of the downtown core, and overlooks the North Saskatchewan River valley south of the neighbourhood. Located in the river valley immediately below Wîhkwêntôwin is Edmonton's Royal Glenora Club, Victoria Golf Course, and Victoria Park. The High Level Bridge and Groat Bridge give residents access to the south side of the river valley, including the University of Alberta and Old Strathcona. The Victoria Promenade (part of Edmonton's Heritage Trail) offers attractive vistas of the river valley at the western end of Wîhkwêntôwin.\nWîhkwêntôwin is one of the densest neighbourhoods in Edmonton (10,570 inhabitants per square kilometre (27,400/sq mi)) and West Wîhkwêntôwin is the densest area in Alberta. The population in 2009 was 18,203, the highest of every neighbourhood in Edmonton.\nThe north edge of the neighbourhood was once a Canadian National Railway yard. This part of the neighbourhood was recently redeveloped, and includes apartment buildings, the Unity Square and Unity Square West strip shopping centres, some old warehouses converted shops, and parking for the MacEwan University downtown campus.\nThe community is represented on the Edmonton Federation of Community Leagues by the  Wîhkwêntôwin Community League, established in 1922.\nIn 1937, the city of Edmonton named the neighbourhood after early Edmonton resident, businessman, and politician, Frank Oliver.\nIn January 2024, the city's committee on names selected wîhkwêntôwin (Cree for 'circle of friends') () to replace Oliver and sent this recommendation to city council. On February 21, the city council officially approved the renaming of the neighbourhood to wîhkwêntôwin ᐄᐧᐦᑫᐧᐣᑑᐃᐧᐣ, which came into effect on January 1, 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "wihkwentowin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5845,
+    "attempt": 5802,
+    "place_id": "gn-679901",
+    "input": {
+      "place": {
+        "place_id": "gn-679901",
+        "name": "Curtici",
+        "country": "Romania",
+        "subdivision": "Arad County",
+        "lat": 46.35,
+        "lon": 21.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curtici",
+          "url": "https://en.wikipedia.org/wiki/Curtici",
+          "text": "Curtici (Hungarian: Kürtös, German: Kurtitsch) is a town located in Arad County, in western Romania. The town is situated at a 17 km (11 mi) distance from the county capital, Arad, in the western part of Arad County. It is the most important railway meeting point of Central Europe with the western part of Romania. Its administrative territory extends on a 7,970 ha (19,700 acres) area, on the Sântana Plateau, a plateau characterized in the zone of the town by the sand hills formed by the old branches of the river Mureș.\nCurtici is a border town between Hungary and Romania, on the Romanian side. It is an especially important rail border crossing, as it is the main crossing between trains going from Hungary and Romania, especially those between Budapest and Bucharest. The town administered the village of Dorobanți until 2004, when it was split off to form a separate commune.  The town borders Hungary  and Macea commune to the north, Zimandu Nou commune to the east, Șofronea commune to the south, and Dorobanți commune to the west.\nThe town's Hungarian name means \"Trumpeter\"; the German and Romanian names derive from that. The first written confirmation of the town Curtici dates back to the 16th century, specifically to 1519. In 1920, it became part of Romania. It was declared a town in 1968."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "curtici",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5846,
+    "attempt": 5803,
+    "place_id": "gn-8349083",
+    "input": {
+      "place": {
+        "place_id": "gn-8349083",
+        "name": "Morley",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.88775,
+        "lon": 115.9099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morley, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Morley,_Western_Australia",
+          "text": "Morley is a suburb of Perth, within the City of Bayswater local government area, situated approximately 10 kilometres (6 mi) northeast of the Perth central business district. It contains the Galleria Shopping Centre, one of Perth's larger shopping centres. Galleria bus station is located in the car park of the shopping centre. From the late 1950s, Morley (originally known as Morley Park) began to develop as a major shopping and commercial centre.\nThe name Morley began appearing on maps around the beginning of the twentieth century and was adopted when the Morley Park Estate was subdivided for urban development after the First World War. The most likely explanation for its use is that it commemorates Charles William Morley, who is known to have farmed in the area during the 1860s and 1870s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "morley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5847,
+    "attempt": 5804,
+    "place_id": "gn-8604543",
+    "input": {
+      "place": {
+        "place_id": "gn-8604543",
+        "name": "Rhiwbina",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.52792,
+        "lon": -3.2141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rhiwbina",
+          "url": "https://en.wikipedia.org/wiki/Rhiwbina",
+          "text": "Rhiwbina (; Welsh: Rhiwbeina [r̥ɪuˈbɛina], also Rhiwbina) is a suburb and community in the north of Cardiff, the capital of Wales. Formerly a small hamlet within the parish of Whitchurch, Rhiwbina was developed throughout the twentieth century, and is now a separate ward. It retains aspects of its former character, however, and is given a Welsh village appearance by Beulah United Reformed Church (originally Capel Beulah) at the village crossroads.\nModern Rhiwbina, which includes Rhiwbina Garden Village, Wenallt Hill, Rhiwbina Hill, Rhydwaedlyd and the Llanishen Fach and Pantmawr developments, is bordered by the suburbs of Whitchurch (Yr Eglwys Newydd) to the west, Llanishen to the east, and Birchgrove (Llwynbedw) to the south. To the north is the border with Caerphilly.  The area is served by Rhiwbina railway station on the Coryton Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "rhiwbina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5848,
+    "attempt": 5805,
+    "place_id": "gn-12519445",
+    "input": {
+      "place": {
+        "place_id": "gn-12519445",
+        "name": "Beerwah",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 34.01238,
+        "lon": 74.59563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beerwah, Jammu and Kashmir",
+          "url": "https://en.wikipedia.org/wiki/Beerwah,_Jammu_and_Kashmir",
+          "text": "Beerwah  also pronounced as Beeru is a subdistrict, tourist destination and one of the oldest towns of Jammu and Kashmir and a municipal committee in Budgam district in the Indian administered union territory of Jammu and Kashmir. It is also one of the oldest tehsils of Jammu and Kashmir with one of the largest towns in Budgam district. En route on NH701A. Beerwah is 27 km (17 mi) away from the summer capital Srinagar via Bemina, 31 km (19 mi) via Magam, 33 km (21 mi) via Soibugh and 35 km (22 mi) via Budgam. Beerwah subdistrict has 4 tehsils namely Beerwah, Magam, Narbal and Khag. Beerwah is located along the banks of River Sukhnaag.\nThe name Beerwah has been derived from a Sanskrit word \"Behroop\" which means land of springs. This is due to the abundance of natural springs in the area. Beerwah has seven springs in the town area.\nBeerwah is the major route to the snow resorts of Doodhpathri and Tosamaidan. Doodhpathri lies 19 km (12 mi) away from Beerwah via Arizal and Tosamaidan lies 23 km (14 mi) away from Beerwah via Arizal. Beerwah is known as \"The Gateway of Doodhpathri\" and also \"The Gateway of Tosamaidan\". A decade ago Beerwah was the main route to visit famous tourist spot Gulmarg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "beerwah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5849,
+    "attempt": 5806,
+    "place_id": "gn-12519447",
+    "input": {
+      "place": {
+        "place_id": "gn-12519447",
+        "name": "Shangus",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 33.69686,
+        "lon": 75.28366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shangus",
+          "url": "https://en.wikipedia.org/wiki/Shangus",
+          "text": "Shangus is an assembly constituency and a tehsil in Anantnag district of the Indian union territory of Jammu and Kashmir in the disputed Kashmir region. It is Home village of current MLA Shangus-Anantnag East Reyaz Ahmad Khan. Shangus is the biggest village in Anantnag District in terms of Population and area. Jamia Masjid Shangus popular as Masjid e Mukaram is the 2nd largest Masjid in J&K after Jamia Masjid, Srinagar.The old Jama Masjid shangus was the third-largest mosque in Kashmir, after Srinagar and Shopian built on the pattern of Srinagar and Shopian Jamia Masjids. It was  heavily influenced by Persian architecture and has a square garden in the middle. The construction of the mosque started on 9 November 1949, and was completed in 1955, taking around 6 years at that time. According to ancestors, when the fundraising began, it was around 300 rupee first time & then money for the construction of the mosque was collected from the whole area, totaling 18,000 rupees at that time during the inaugural construction. Later, it was upgraded and decorated over time to time In 2020, it was decided that reconstruction should take place by the local body of auqaf but it took some time because  of COVID that time .The reconstruction started with a stone-laying ceremony on 13 August 2021, and is continuing to this date. Its area was increased from two sides, making it the second-largest mosque in all of Kashmir after Historic Srinagar jamia masjid & taking over shopian mosque. If you want to visit, you can simply reach Shangus via Achabal or, which is just 6-7 km away or through mattan side u can also reach shangus.It is located on the road leading to Anantnag East (Islamabad) areas like Wangam, Isso, Ranipora, Brah, Telwani etc.The auqaf building is just adjacent to Jamia masjid."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 303
+    },
+    "banned_terms": [
+      {
+        "term": "shangus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5850,
+    "attempt": 5807,
+    "place_id": "gn-13645515",
+    "input": {
+      "place": {
+        "place_id": "gn-13645515",
+        "name": "Leidsche Rijn",
+        "country": "Netherlands",
+        "subdivision": "Utrecht",
+        "lat": 52.09497,
+        "lon": 5.04613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leidsche Rijn",
+          "url": "https://en.wikipedia.org/wiki/Leidsche_Rijn",
+          "text": "Leidsche Rijn (Dutch pronunciation: [ˈlɛitsə ˈrɛin], Utrecht dialect: [ˈlaitsə ˈʁain]) is a new construction site and neighborhood in Utrecht, the capital of the Dutch province of Utrecht. The area is located west of the Amsterdam–Rhine Canal and its name is derived from the Leidse Rijn canal, which runs through it. At the time of its inception in the 1990s and in the decades that followed, Leidsche Rijn was the largest Vinex location in the Netherlands. Most of this location was on the territory of the former municipality of Vleuten-De Meern, located west of the city of Utrecht. A smaller part of this location, namely the area of Hoge and Lage Weide, was located in the municipality of Utrecht. \nVleuten-De Meern was added to the municipality of Utrecht on 1 January 2001. The intended size of the Vinex location was about 30,000 houses for about 90,000 inhabitants. The Utrecht City Council decided to divide it into two districts, namely the Vleuten-De Meern district and the Leidsche Rijn district. Despite this division, the aforementioned neighborhoods are the largest in the municipality of Utrecht in terms of population with approximately 50,000 and 45,000 inhabitants, respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "leidsche rijn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "leidsche",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rijn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5851,
+    "attempt": 5808,
+    "place_id": "gn-1642069",
+    "input": {
+      "place": {
+        "place_id": "gn-1642069",
+        "name": "Kalabahi",
+        "country": "Indonesia",
+        "subdivision": "East Nusa Tenggara",
+        "lat": -8.2151,
+        "lon": 124.5458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalabahi",
+          "url": "https://en.wikipedia.org/wiki/Kalabahi",
+          "text": "Kalabahi is a town on Alor Island and it is the capital of Alor Regency in East Nusa Tenggara province of Indonesia. It is the only town on Alor Island. It lies on the north end of the narrow Kalabahi Bay, which is 16 kms long and 1 km wide, and separates the Bird's Head peninsula from the main part of the island. The town possesses the only puskesmas (health clinic) available in Teluk Mutiara District, in west Kalabahi.\nIt covers four kelurahan (villages) of the Teluk Mutiara District (Kalabahi Barat, Kalabahi Kota, Kalabahi Tengah and Kalabahi Timur), with a land area of 8.78 km2 and a population of 19,210 according to the official estimates for mid 2023.\n\nNote: The four kelurahan indicated by asterisks (*) are suburbs of Kalabahi town. Including them with Kalabahi town raises the population in mid 2023 to 33,507 and its area to 22.41 km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "kalabahi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5852,
+    "attempt": 5809,
+    "place_id": "gn-2063056",
+    "input": {
+      "place": {
+        "place_id": "gn-2063056",
+        "name": "Port Augusta",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -32.49597,
+        "lon": 137.77281
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Augusta",
+          "url": "https://en.wikipedia.org/wiki/Port_Augusta",
+          "text": "Port Augusta (Goordnada in the revived indigenous Barngarla language) is a coastal city in South Australia about 310 kilometres (190 mi) by road from the state capital, Adelaide. Most of the city is on the eastern shores of Spencer Gulf, immediately south of the gulf's head, comprising the city's centre and surrounding suburbs, Stirling North, and seaside homes at Commissariat Point, Blanche Harbor and Miranda. The suburb of Port Augusta West is on the western side of the gulf on the Eyre Peninsula. Together, these localities had a population of 13,515 in the 2021 census.\nFormerly a seaport, the city supports regional agriculture and services many mines in the South Australian interior to its north. A significant industry was electricity generation until 2019, when its coal-burning power stations were shut down. A solar farm opened in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "port augusta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "augusta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5853,
+    "attempt": 5810,
+    "place_id": "gn-2207830",
+    "input": {
+      "place": {
+        "place_id": "gn-2207830",
+        "name": "Northbridge",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.81313,
+        "lon": 151.21728
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northbridge, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Northbridge,_New_South_Wales",
+          "text": "Northbridge is a suburb on the Lower North Shore of Sydney, New South Wales, Australia. It is located 6 kilometres (3.7 mi) north of the Sydney Central Business District, and 3 kilometres (1.9 mi) north of the North Sydney CBD in the local government area of the City of Willoughby. The major transport and shopping hub of Chatswood is 3 kilometres (1.9 mi) north west of Northbridge.  \nNorthbridge is a quiet, leafy suburb with no through traffic as it occupies a peninsula that extends into Middle Harbour, and is surrounded by bush and water on three sides.  \nThe Suspension Bridge, linking the suburb to Cammeray, has become a recognised symbol of Northbridge, completed in January 1892 and purchased by the state government in 1912.\nThe suburb celebrated its centenary in 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "northbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5854,
+    "attempt": 5811,
+    "place_id": "gn-2388720",
+    "input": {
+      "place": {
+        "place_id": "gn-2388720",
+        "name": "Boali",
+        "country": "Central African Republic",
+        "subdivision": "Ombella-M'Poko",
+        "lat": 4.80048,
+        "lon": 18.12747
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boali",
+          "url": "https://en.wikipedia.org/wiki/Boali",
+          "text": "Boali became the capital city of Ombella-M'Poko prefecture in Central African Republic on December 10 2020 after the former capital of Bimbo was incorporated into Bangui prefecture.\nBoali is located on National Highway 1 (RN1),  about 100 km (62 mi) northwest of the national capital, Bangui. The road is paved until Bossembélé where the paved section becomes the RN3 towards Bouar and Cameroon while the RN1 continues to Bossangoa, and ultimately to Chad.\nSituated on the Mbali River, Boali is noted for its waterfalls and for the nearby hydroelectric works. The Falls of Boali are 250 m (820 ft) wide and 50 m (160 ft) high, and are a popular tourist destination.\nThe two units of the Boali Hydroelectric Power Station, Boali I and Boali II, are located below the falls.  They have a combined generating power of 18.65 megawatts, and are operated by the state-run Enerca.  The completion of Boali I in the 1950s spurred several other industrial developments in the town, including the country's first textile mill, which began operating in 1954.\nThe Boali hydroelectric works supply power to the capital and 13 other towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "boali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5855,
+    "attempt": 5812,
+    "place_id": "gn-2522908",
+    "input": {
+      "place": {
+        "place_id": "gn-2522908",
+        "name": "Torregrotta",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.20262,
+        "lon": 15.3501
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torregrotta",
+          "url": "https://en.wikipedia.org/wiki/Torregrotta",
+          "text": "Torregrotta (IPA: [tɔrre'grɔtta]; Turri in Sicilian) is an Italian town of 7,297 inhabitants in the metropolitan city of Messina in Sicily.\nThe town, located 44 meters above sea level in the Niceto valley, lies between the Tyrrhenian Sea and the first Peloritani hills.\nInitially built in medieval times as a hamlet of the fief of Santa Maria della Scala, after a period of abandonment, it was rebuilt starting in 1526. At the beginning of the 19th century it became a sub-municipality of Roccavaldina, from which it obtained administrative autonomy in 1923. The 16th-century center expanded mainly from the second half of the 19th century onward.\nA center historically linked to agriculture, the place of origin of the sbergia, it has lost its traditional agricultural role in favor of the tertiary sector. The clay extraction and processing industry had a certain boost in the 20th century, but almost completely ceased to exist in the 2000s. Medium and small artisan businesses predominate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "torregrotta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5856,
+    "attempt": 5813,
+    "place_id": "gn-2635442",
+    "input": {
+      "place": {
+        "place_id": "gn-2635442",
+        "name": "Troon",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.54359,
+        "lon": -4.66335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Troon",
+          "url": "https://en.wikipedia.org/wiki/Troon",
+          "text": "Troon (Scottish Gaelic: An Truthail) is a seaside town and sea port in South Ayrshire, situated on the west coast of Ayrshire in Scotland, about eight miles (thirteen kilometres) north of Ayr and three miles (five kilometres) northwest of Glasgow Prestwick Airport. Troon has a port with ferry and freight services, and a yacht marina. Up until January 2016, P&O operated a seasonal ferry service to Larne. In May 2006, a ferry service to Campbeltown was added, although this was withdrawn the following year. Since March 2024, Caledonian MacBrayne have operated a ferry service to Brodick on the Isle of Arran.\nIn 2022, the population of Troon, not including the nearby village of Loans but including the Barassie area, was recorded at 15,261, a increase from the 2011 population of 14,752. The estimate population in 2024 is just over 15,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "troon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5857,
+    "attempt": 5814,
+    "place_id": "gn-2636619",
+    "input": {
+      "place": {
+        "place_id": "gn-2636619",
+        "name": "Strood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.39323,
+        "lon": 0.47713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strood",
+          "url": "https://en.wikipedia.org/wiki/Strood",
+          "text": "Strood is a town  in the unitary authority of Medway in Kent, South East England. Strood forms a conurbation with neighbouring towns Rochester, Chatham, Gillingham and Rainham. It lies on the northwest bank of the River Medway at its lowest bridging point.\nStrood began as a manor then chapelry of Frindsbury until gaining its own parish status in 1193. Today Frindsbury is effectively, in all but a few associations such as in the Church of England, the northern part of Strood. The history of Strood has been dominated by the River Medway and facing port-associated towns, particularly its road and rail bridges since the Roman era to Rochester and the two other Medway Towns immediately adjoining and beyond from the north-east quarter of Kent to London and the rest of Britain. It has a mixed retail and leisure area at its heart."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "strood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5858,
+    "attempt": 5815,
+    "place_id": "gn-2648559",
+    "input": {
+      "place": {
+        "place_id": "gn-2648559",
+        "name": "Glastonbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.14745,
+        "lon": -2.72075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glastonbury",
+          "url": "https://en.wikipedia.org/wiki/Glastonbury",
+          "text": "Glastonbury ( GLAST-ən-bər-ee, UK also  GLAHST-) is a town and civil parish in Somerset, England. It is situated at a dry point on the low-lying Somerset Levels, 23 miles (37 km) south of Bristol. At the 2021 census, the parish had a population of 8,980 and the built-up area had a population of 8,300. The town is less than 1 mile (2 km) across the River Brue from Street, a village which is now larger than Glastonbury.\nEvidence from timber trackways such as the Sweet Track show that the town has been inhabited since Neolithic times. Glastonbury Lake Village was an Iron Age village, close to the old course of the River Brue and Sharpham Park approximately 2 miles (3 km) west of Glastonbury, that dates back to the Bronze Age. Centwine was the first Saxon patron of Glastonbury Abbey, which dominated the town for the next 700 years and was one of the most important abbeys in England. Many of the oldest surviving buildings in the town, including the Tribunal, George Hotel and Pilgrims' Inn and the Somerset Rural Life Museum, which is based at the site of a 14th-century abbey manor barn, often referred to as a tithe barn, are associated with the abbey. The Church of St John the Baptist dates from the 15th century.\nThe town became a centre for commerce, which led to the construction of the market cross, Glastonbury Canal and the Glastonbury and Street railway station, the largest station on the original Somerset and Dorset Railway. The Brue Valley Living Landscape is a conservation project managed by the Somerset Wildlife Trust and nearby is the Ham Wall National Nature Reserve.\nGlastonbury has been described as having a New Age community, and possibly being where New Age beliefs originated at the turn of the twentieth century. It is notable for myths and legends often related to Glastonbury Tor, concerning Joseph of Arimathea, the Holy Grail and King Arthur. Joseph is said to have arrived in Glastonbury and stuck his staff into the ground, when it flowered miraculously into the Glastonbury Thorn. The presence of a landscape zodiac around the town has been suggested but no evidence has been discovered. The Glastonbury Festival, held in the nearby village of Pilton, takes its name from the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 381
+    },
+    "banned_terms": [
+      {
+        "term": "glastonbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5859,
+    "attempt": 5816,
+    "place_id": "gn-2650368",
+    "input": {
+      "place": {
+        "place_id": "gn-2650368",
+        "name": "Easton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.53333,
+        "lon": -2.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Easton, Dorset",
+          "url": "https://en.wikipedia.org/wiki/Easton,_Dorset",
+          "text": "Easton is a village on the Isle of Portland in Dorset, England. The village is situated at Tophill, within the centre of the island. As with the rest of Portland's villages and settlements, Easton, including the settlements Reforne and Straits, has been designated as a conservation area, as it is a place of special architectural and historic interest. Easton, Wakeham and Reforne were designated pre-1974.\nThe village has a small square with many shops and shopping arcade, three churches, a small park, and other amenities, including various pubs, as well as the nearby Secondary school Royal Manor Arts College, (which has now been closed down, with the only secondary school on the island being Atlantic Academy Portland). Along with Fortuneswell, Easton is the main hub of the Isle of Portland's activities. St George's Centre and The George Inn lies within the Reforne area of Easton, and provides facilities for many local events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "easton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5860,
+    "attempt": 5817,
+    "place_id": "gn-2651101",
+    "input": {
+      "place": {
+        "place_id": "gn-2651101",
+        "name": "Dorchester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.71667,
+        "lon": -2.43333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dorchester, Dorset",
+          "url": "https://en.wikipedia.org/wiki/Dorchester,_Dorset",
+          "text": "Dorchester (UK:  DOR-chist-ər, also   DOR-chest-ər) is the county town of Dorset, England. It is situated between Poole and Bridport on the A35 trunk route. A historic market town, Dorchester is on the banks of the River Frome to the south of the Dorset Downs and north of the South Dorset Ridgeway that separates the area from Weymouth, 7 miles (11 km) to the south. Dorchester civil parish, which includes the experimental community of Poundbury and the suburb of Fordington, had a population of 21,358 in 2021.\nThe area around the town was first settled in prehistoric times. The Romans established a garrison there after defeating the Durotriges tribe, calling the settlement that grew up nearby Durnovaria; they built an aqueduct to supply water and an amphitheatre on an ancient British earthwork. During the medieval period Dorchester became an important commercial and political centre. It was the site of the \"Bloody Assizes\" presided over by Judge Jeffreys after the Monmouth Rebellion, and later the trial of the Tolpuddle Martyrs. As well as having many listed buildings, a number of notable people have been associated with the town. It was for many years the home and inspiration of the author Thomas Hardy, whose novel The Mayor of Casterbridge uses a fictionalised Dorchester as its setting.\nIt is a centre for employment, education, retail, leisure and healthcare for the surrounding area, with six industrial estates, the Dorset County Hospital, a weekly market, and a high school and further education college. The town has a football club and a rugby union club and several museums."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "dorchester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5861,
+    "attempt": 5818,
+    "place_id": "gn-2657471",
+    "input": {
+      "place": {
+        "place_id": "gn-2657471",
+        "name": "Alloa",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.11586,
+        "lon": -3.78997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alloa",
+          "url": "https://en.wikipedia.org/wiki/Alloa",
+          "text": "Alloa (AHL-oh-wuh, Received Pronunciation ; Scottish pronunciation /ˈaloʊa/; Scottish Gaelic: Alamhagh, possibly meaning \"rock plain\") is a town in Clackmannanshire in the Central Lowlands of Scotland. It is on the north bank of the Forth at the spot where some say it ceases to be the River Forth and becomes the Firth of Forth. Alloa is south of the Ochil Hills on the western Fife peninsula,  six miles (ten kilometres) east of Stirling and 13 miles (21 km) west of Dunfermline; by water Alloa is 25 miles (40 km) from Granton.\nThe town, formerly a burgh of barony, is the administrative centre of Clackmannanshire Council. Historically, the economy relied heavily on trade between Glasgow and mainland Europe through its port. This became increasingly uncompetitive and the port stopped operating in 1970. The local economy is now centred on retail and leisure since the closure of major industries; only one brewer and one glassmaker survive today. Parochially, Alloa was linked with Tullibody. The towns are now distinct, albeit with Lornshill in the middle, and Alloa is about twice the size of its north-western neighbour. The population of Alloa was estimated to be approximately 20,730 residents in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "alloa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5862,
+    "attempt": 5819,
+    "place_id": "gn-2851465",
+    "input": {
+      "place": {
+        "place_id": "gn-2851465",
+        "name": "Quedlinburg",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 51.78843,
+        "lon": 11.15006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quedlinburg",
+          "url": "https://en.wikipedia.org/wiki/Quedlinburg",
+          "text": "Quedlinburg (German pronunciation: [ˈkveːtlɪnbʊʁk] ) is a town situated just north of the Harz mountains, in the district of Harz in the west of Saxony-Anhalt, Germany. As an influential and prosperous trading centre during the early Middle Ages, Quedlinburg became a center of influence under the Ottonian dynasty in the 10th and 11th centuries. The castle, church and old town with around 2,100 timber houses, dating from this time of influence, were added to the UNESCO's World Heritage List in 1994 because of their exceptional preservation and outstanding Romanesque architecture.\nQuedlinburg has a population of more than 24,000. The town was the capital of the district of Quedlinburg until 2007, when the district was dissolved. Several locations in the town are designated stops along a scenic holiday route, the Romanesque Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "quedlinburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5863,
+    "attempt": 5820,
+    "place_id": "gn-3024578",
+    "input": {
+      "place": {
+        "place_id": "gn-3024578",
+        "name": "Clisson",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.0871,
+        "lon": -1.28297
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clisson",
+          "url": "https://en.wikipedia.org/wiki/Clisson",
+          "text": "Clisson (French pronunciation: [klisɔ̃] ; Gallo: Cliczon, Breton: Klison), is a commune in the Loire-Atlantique department, in the region of Pays de la Loire, western France.\nIt is situated at the confluence of the rivers Sèvre Nantaise and Moine, 27 kilometres (17 mi) southeast of Nantes.\nThe town and the celebrated family of Clisson (the most famous members are Olivier IV de Clisson and Jeanne de Clisson) take their name from their stronghold. Clisson has its imposing ruins, parts of which date from the thirteenth century.\nThe town and castle, the Château de Clisson, were destroyed in 1792 and 1793 during the War in the Vendée.\nAfterwards, the sculptor François-Frédéric Lemot bought the castle, and the town was rebuilt in the early part of the 19th century according to his plans. There are picturesque parks on the banks of the rivers. The Moine is crossed by an old gothic bridge and by a fine modern viaduct."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "clisson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
