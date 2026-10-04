@@ -86,6 +86,53 @@ export function normalizeTitle(title) {
  * keep a truncated half-sentence.
  */
 const ABBREV_TAIL = /\b(?:U\.S|U\.K|St|Mt|Dr|Mr|Mrs|Ms|Jr|Sr|Ave|Blvd|Co|Inc|Ltd|No|vs|Capt|Gen|Col|Sgt|Rep|Sen|Gov)\.$/;
+// A single capital initial is never a sentence end: "named after Samuel
+// D. Smith" must survive whole. The verification crew found 177 merged
+// hooks truncated mid-name ("It was named for Gov. Willie G.") because the
+// splitter broke after the initial. The initial must be preceded by a
+// space or the string start, so "Washington, D.C." (initial preceded by a
+// period) is not rejoined by this rule — ABBREV_TAIL's "U.S."-style
+// entries cover the common multi-initial abbreviations.
+const INITIAL_TAIL = /(?:^|\s)[A-Z]\.$/;
+// Abbreviation tails of every shape: a fragment whose LAST TOKEN is
+// nothing but initials — "D.C.", "a.k.a.", "S.A.", "(ca.", "c.", "v." —
+// has not reached a sentence end, whatever the next fragment's case. The
+// token test (alternating letter/dot from the token's start) is what
+// keeps ordinary words safe: "grew." is not an abbreviation tail. The
+// rejoin is still refused when the next fragment opens with a plain
+// sentence starter, which keeps true boundaries like "Washington, D.C.
+// It was 1990." or "9 p.m. The doors open." split.
+const SENTENCE_STARTER =
+  /^(?:It|He|She|They|We|The|A|An|In|On|At|By|For|After|Before|During|However|Today|Since|As|Although|Until|From|But|And|When|While|With|Under|Over)\b/;
+function endsWithAbbrevTail(prev, frag) {
+  const token = prev.split(/\s+/).pop() ?? "";
+  const core = token.replace(/^\(/, "");
+  if (/^(?:[A-Za-z]\.)+$/.test(core)) {
+    const pairs = core.match(/[A-Za-z]\./g).length;
+    if (pairs >= 2) {
+      // Initial chains ("C.A.", "a.k.a.", "p.m."): abbreviations, rejoin
+      // unless the next fragment plainly opens a new sentence.
+      return !SENTENCE_STARTER.test(frag);
+    }
+    // A single letter + period. Uppercase is a person's initial — the
+    // sentence continues with their name ("Samuel D. Smith").
+    if (/^[A-Z]/.test(core)) return true;
+    // Lowercase singles are abbreviations that demand a continuation of
+    // a specific shape: a date ("c. 1900", "(r. 1975–82)"), an era
+    // marker ("c. BC"), or a versus name ("Jenson v. Eveleth"). Anything
+    // else — "698 m.", "a double s." — is a complete sentence whose last
+    // word happens to be one letter, and gluing it to the next sentence
+    // would forge a two-sentence candidate.
+    if (/^\d/.test(frag)) return true;
+    if (/^(?:BC|BCE|AD|CE)\b/.test(frag)) return true;
+    if (core[0] === "v" && /^[A-Z]/.test(frag)) return true;
+    return false;
+  }
+  // A token that opens a parenthesis and ends with a period — "(ca.",
+  // "(orig." — sits inside an unclosed parenthetical, which is never a
+  // sentence end in well-formed text.
+  return /^\([^()]*\.$/.test(token);
+}
 export function splitSentences(text) {
   const raw = text
     .replace(/\s+/g, " ")
@@ -96,7 +143,12 @@ export function splitSentences(text) {
   const out = [];
   for (const frag of raw) {
     const prev = out[out.length - 1];
-    if (prev !== undefined && ABBREV_TAIL.test(prev)) {
+    if (
+      prev !== undefined &&
+      (ABBREV_TAIL.test(prev) ||
+        INITIAL_TAIL.test(prev) ||
+        endsWithAbbrevTail(prev, frag))
+    ) {
       out[out.length - 1] = `${prev} ${frag}`;
     } else {
       out.push(frag);
@@ -173,6 +225,146 @@ const UNSAFE_HOOK_PATTERNS = [
   /\btorture\b/i,
 ];
 
+// Tone-fix round (verification crew, 2026-10-04): the classes below made
+// up the systematic hard fails in the crew's tone sample (13% vs the 5%
+// gate). Each one rejects the candidate sentence outright — the picker
+// moves to the next candidate, and a place whose candidates all reject
+// gets no hook rather than a bad one.
+
+// A prison is never the lead a kid's card opens with (crew: Warren, ME led
+// with the Maine State Prison).
+const PRISON_HOOK_PATTERNS = [
+  /\bprison\b/i,
+  /\bjail\b/i,
+  /\bcorrectional\b/i,
+  /\bpenitentiary\b/i,
+  /\bdetention (?:center|centre|facility|camp)\b/i,
+];
+// Present-day conflict reporting, not history: the observed evil was
+// cards leading with an ongoing war's destruction (Hirske: "a site of
+// protracted violence… captured… during the 2022 full-scale Russian
+// invasion of Ukraine"). Historic war storytelling — Civil War naming
+// stories, "battle of" hooks, invasions of past centuries told as
+// history — stays eligible; it is this game's core content (rule 3) and
+// none of it matches these patterns. "violence/violent" is rejected
+// anywhere: it appeared in the corpus only in conflict reporting and a
+// Spanish Civil War battle scene, and a kids' game loses nothing by
+// re-picking past it.
+const CONFLICT_HOOK_PATTERNS = [
+  /\bviolence\b/i,
+  /\bviolent\b/i,
+  /\barmed conflict\b/i,
+  /\bwar crimes?\b/i,
+  /\bmilitary occupation\b/i,
+  /\bRussian invasion of Ukraine\b/i,
+  /\bRusso-Ukrainian War\b/i,
+  /\binvasion of Ukraine\b/i,
+];
+// Census-bureau language a kid cannot picture (crew: 56 hooks —
+// "micropolitan statistical area", "The CDP is home to…"). "statistical
+// area" alone covers the micropolitan/metropolitan/combined variants.
+const CENSUS_HOOK_PATTERNS = [
+  /\bstatistical area\b/i,
+  /\bmetropolitan area\b/i,
+  /\bcensus-designated place\b/i,
+  /\bCDP\b/,
+  /\bcensus\b/i,
+];
+// Administrative-seat hooks: the sentence's whole content is that a
+// government office sits here ("site of the Kamwenge District
+// headquarters"). That is paperwork, not a hook — the date-anchor guard
+// already treats admin words as non-stories; this closes the same class
+// for "site of" phrasing. Corporate seats are a different, retellable
+// claim ("site of the headquarters of Grundfos, the world's largest
+// pump manufacturer") and are deliberately not matched: every pattern
+// here requires a governmental seat (district / agency-of-district).
+const ADMIN_HOOK_PATTERNS = [
+  /\bsite of the (?:district|regional|municipal|county) headquarters\b/i,
+  /\bheadquarters of the [^.]{0,40}\bdistrict\b/i,
+  /\bdistrict headquarters\b/i,
+];
+// Purely definitional openers (crew: "boring-by-construction" — Jadcherla:
+// "It is a historical town and is known for its cultural heritage."). No
+// person, event, date, record, or distinctive fact a 9-year-old could
+// retell at dinner.
+const DEFINITIONAL_PATTERNS = [
+  /\bis a (?:historical|small) (?:town|village|city)\b/i,
+  /\bknown for its cultural heritage\b/i,
+];
+// "Known for its <generic abstract>" — the object names nothing concrete
+// (heritage, environment, beauty) and the sentence carries no anchor.
+const GENERIC_KNOWN_FOR_OBJECT =
+  /\b(cultural heritage|natural environment|natural beauty|scenic beauty|rich (?:history|culture)|historical significance)\b/i;
+
+function isDefinitional(sentence, nameTokens) {
+  for (const re of DEFINITIONAL_PATTERNS) {
+    if (re.test(sentence)) {
+      // A definitional opener followed by a real hook in the same sentence
+      // ("…is a historical city, and it was named after a famous Sufi
+      // saint…") is a hook with a dull first clause, not a definition.
+      if (HISTORICAL_HOOKS.some((h) => h.test(sentence))) return false;
+      return true;
+    }
+  }
+  const m = sentence.match(/\b(?:known|famous|noted|renowned) for (?:its|their|his|her) ([^.]{2,80})/i);
+  if (m && GENERIC_KNOWN_FOR_OBJECT.test(m[1])) {
+    if (/\b\d{4}\b/.test(sentence) || STORY_KEYWORDS.test(sentence)) return false;
+    const phrases = sentence.match(/\s([A-Z][a-z]{2,}(?:\s+[A-Z][a-z]+){0,2})/g) ?? [];
+    const hasProperAnchor = phrases.some((ph) => {
+      const p = ph.trim();
+      const w = p.split(" ")[0].toLowerCase();
+      return !ADMIN_WORDS.test(p) && !startsWithStateName(p) && !nameTokens.has(w);
+    });
+    return !hasProperAnchor;
+  }
+  return false;
+}
+
+// Pronoun guard: a hook is one sentence on a card — its subject may not
+// hinge on a pronoun whose antecedent lives in some other sentence of
+// the article ("He was the first…", "They are both named…", "Its
+// gravesite…"). "It"/"This" openers stay eligible: on a place card the
+// place itself is the antecedent (the card's subject), and "This town…"
+// names its referent in the same breath. A demonstrative that points at
+// an unnamed thing ("earn this designation" — the designation is never
+// named) is rejected wherever it appears.
+const PRONOUN_OPENER = /^(?:he|she|they|his|her|their|its)\b/i;
+const DANGLING_DEMONSTRATIVE = /\bthis designation\b/i;
+// Same defect in temporal form: "Since then, the island has hosted…"
+// points at an event in a sentence the card does not carry.
+const DANGLING_TEMPORAL = /^(?:Since then|After that|Following that|By then)\b/;
+
+function hasDanglingPronoun(sentence) {
+  const first = sentence.trim().replace(/^[“"]+/, "");
+  return PRONOUN_OPENER.test(first) || DANGLING_TEMPORAL.test(first) || DANGLING_DEMONSTRATIVE.test(sentence);
+}
+
+/**
+ * Hard rejection for hook candidates: returns a reason string or null.
+ * Checked before scoring in hookScore, so a rejected sentence can never
+ * win and the picker falls through to the next candidate.
+ */
+export function hookRejection(sentence, nameTokens = new Set()) {
+  for (const re of UNSAFE_HOOK_PATTERNS) {
+    if (re.test(sentence)) return "unsafe-content";
+  }
+  for (const re of PRISON_HOOK_PATTERNS) {
+    if (re.test(sentence)) return "unsafe-prison";
+  }
+  for (const re of CONFLICT_HOOK_PATTERNS) {
+    if (re.test(sentence)) return "unsafe-conflict";
+  }
+  for (const re of CENSUS_HOOK_PATTERNS) {
+    if (re.test(sentence)) return "census-language";
+  }
+  for (const re of ADMIN_HOOK_PATTERNS) {
+    if (re.test(sentence)) return "definitional";
+  }
+  if (isDefinitional(sentence, nameTokens)) return "definitional";
+  if (hasDanglingPronoun(sentence)) return "dangling-pronoun";
+  return null;
+}
+
 // US states/territories: a "proper noun" that is just the state name
 // ("incorporated in 1914 in Alabama") is geography, not a story.
 const US_STATE_NAMES = [
@@ -195,9 +387,7 @@ function startsWithStateName(phrase) {
 }
 
 function hookScore(sentence, nameTokens = new Set()) {
-  for (const re of UNSAFE_HOOK_PATTERNS) {
-    if (re.test(sentence)) return -1; // rejected, not just unscored
-  }
+  if (hookRejection(sentence, nameTokens)) return -1; // rejected, not just unscored
   for (const re of HISTORICAL_HOOKS) {
     if (re.test(sentence)) return 3;
   }
@@ -233,6 +423,20 @@ export const HISTORY_MAX_LEN = 240;
  * `placeName` feeds the date-anchor guard: the place's own name is
  * geography, not a story carrier.
  */
+/**
+ * True when a sentence's last token is a bare initial or initial chain
+ * ("G.", "C.A.", "c.", "v.") — i.e. the sentence stops mid-name. Token-
+ * based on purpose: a regex like /\b[A-Za-z]\.$/ also fires on complete
+ * words whose final letter follows a non-ASCII letter or an apostrophe
+ * ("…de la Mayor España.", "…Royal St George's and Prince's.",
+ * "…Padre Fermín Lasuén."), and those hooks are whole.
+ */
+export function endsWithBareInitial(sentence) {
+  const token = sentence.trim().split(/\s+/).pop() ?? "";
+  const core = token.replace(/\.$/, "").replace(/^\(/, "");
+  return /^(?:[A-Za-z]\.)*[A-Za-z]$/.test(core);
+}
+
 export function extractHookSentence(extractText, placeName = "") {
   if (typeof extractText !== "string" || extractText.trim().length === 0) {
     return { rejected: "empty-extract" };
@@ -245,17 +449,58 @@ export function extractHookSentence(extractText, placeName = "") {
   // Highest hook score wins; unsafe sentences (score -1) can never win, so a
   // card with only violent hooks keeps its plain blurb. Ties keep the
   // earlier sentence — a hook-bearing first sentence is never displaced.
-  let best = -1;
+  const scored = [];
   for (let i = 0; i < sentences.length; i++) {
     const score = hookScore(sentences[i], nameTokens);
-    if (score <= 0) continue;
-    if (best === -1 || score > hookScore(sentences[best], nameTokens)) best = i;
+    if (score > 0) scored.push({ i, score });
   }
-  if (best === -1) return { rejected: "no-hook-pattern" };
-  const sentence = stripParens(sentences[best]);
-  if (sentence.length < HISTORY_MIN_LEN) return { rejected: "too-short" };
-  if (sentence.length > HISTORY_MAX_LEN) return { rejected: "too-long" };
-  return { sentence };
+  if (scored.length === 0) return { rejected: "no-hook-pattern" };
+  scored.sort((a, b) => b.score - a.score || a.i - b.i);
+  // Walk candidates best-first: a candidate is only usable whole — within
+  // the card's length limits and not ending on a bare initial (a name the
+  // splitter could not complete: "…founded by W. F. Holt and C.A."). A
+  // candidate that fails falls through to the next one instead of
+  // rejecting the place outright, so a truncation becomes a re-pick.
+  const failReasons = [];
+  for (const { i } of scored) {
+    const sentence = stripParens(sentences[i]);
+    if (sentence.length < HISTORY_MIN_LEN) {
+      failReasons.push("too-short");
+      continue;
+    }
+    if (sentence.length > HISTORY_MAX_LEN) {
+      failReasons.push("too-long");
+      continue;
+    }
+    if (endsWithBareInitial(sentence)) {
+      failReasons.push("ends-in-initial");
+      continue;
+    }
+    // A parenthesis that survives stripParens was never closed inside
+    // this fragment — the "sentence" is a piece of a larger one that
+    // broke inside a parenthetical ("…named for Bylas (a.k.a."). Hooks
+    // are whole sentences or nothing.
+    if (/[()]/.test(sentence)) {
+      failReasons.push("unbalanced-parens");
+      continue;
+    }
+    // A fragment that begins mid-thought (lowercase, ")" or ",") is the
+    // tail of a sentence whose head scored elsewhere — never a hook.
+    if (/^[a-z),]/.test(sentence)) {
+      failReasons.push("fragment-start");
+      continue;
+    }
+    // Stripping a parenthesized SENTENCE from the middle of a fragment
+    // stitches its neighbours into a two-sentence hook ("…Sir Johannes
+    // Brand. (The name has since changed…) Sir Johannes Brand visited…"
+    // loses the parenthesis and fuses). A hook is exactly one sentence.
+    if (splitSentences(sentence).length !== 1) {
+      failReasons.push("multi-sentence");
+      continue;
+    }
+    return { sentence };
+  }
+  return { rejected: failReasons.includes("too-long") ? "too-long" : failReasons[0] };
 }
 
 const BANNED_PATTERNS = [
@@ -265,6 +510,11 @@ const BANNED_PATTERNS = [
   /\bpopulation\b/i, // "population of" and bare "population 5,000" alike
   /\b\d[\d,]*\s*(people|residents|inhabitants|households)\b/i, // bare stats teach nothing
   /\bcensus\b/i,
+  // Census-bureau geography the picker also rejects (defense in depth —
+  // a hook must never be written from a sentence a kid cannot picture).
+  /\bstatistical area\b/i,
+  /\bmetropolitan area\b/i,
+  /\bCDP\b/,
 ];
 
 /** Content words: lowercase alphanumerics longer than 3 chars. */
@@ -714,27 +964,62 @@ async function cmdMerge() {
   const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
   const notableIds = loadNotableIds();
   const skipped = {};
-  let enriched = 0;
+  const removedReasons = {};
+  let enriched = 0; // places gaining a hook they did not have
+  let repaired = 0; // enrichment hooks replaced by a new pick under current rules
+  let removed = 0; // enrichment hooks removed: every candidate now rejected
+  let enrichmentTotal = 0; // enrichment-sourced histories present after this run
   let totalBytes = 0;
   for (const regionId of Object.keys(manifest.regions).sort()) {
     const path = join(CHUNKS_DIR, `${regionId}.json`);
     const chunk = JSON.parse(readFileSync(path, "utf8"));
     let changed = false;
-    for (const p of chunk.places) {
-      if (typeof p.history === "string" && p.history.length > 0) continue;
-      // Curated notable notes win — a stale cache entry never merges a
-      // Wikipedia hook onto a curated-notable place (mirrors loadPlaces).
+    for (let i = 0; i < chunk.places.length; i++) {
+      const p = chunk.places[i];
+      // Curated notable notes win — never touched, whatever the cache says.
       if (notableIds.has(p.id)) continue;
       const rec = done.get(p.id);
+      // No cache record ⇒ this place's history (if any) did not come from
+      // this pipeline (curated / pre-existing) — never touched. This is
+      // also what makes a re-merge a targeted repair: only cache-backed
+      // places are recomputed, and only records whose recomputed outcome
+      // differs are written.
       if (!rec) continue;
       const built = buildHistoryForCacheRec(rec, p);
+      const had = typeof p.history === "string" && p.history.length > 0;
       if (built.history) {
-        p.history = built.history;
-        p.wiki = built.wiki;
-        // The card now has its hook — clear the hook-missing marker so the
-        // linter stops flagging it (card-compose.mjs contract).
-        delete p.hookMissing;
-        enriched++;
+        enrichmentTotal++;
+        if (!had) {
+          p.history = built.history;
+          p.wiki = built.wiki;
+          // The card now has its hook — clear the hook-missing marker so
+          // the linter stops flagging it (card-compose.mjs contract).
+          delete p.hookMissing;
+          enriched++;
+          changed = true;
+        } else if (p.history !== built.history || p.wiki !== built.wiki) {
+          p.history = built.history;
+          p.wiki = built.wiki;
+          delete p.hookMissing;
+          repaired++;
+          changed = true;
+        }
+      } else if (had) {
+        // Deliberate removal (tone-fix round): the place's stored hook is
+        // no longer pickable under the current rules and no other
+        // candidate qualifies. Restore the exact never-enriched record
+        // shape — history/wiki gone, hookMissing back in its slot after
+        // blurb, every other field and its order preserved.
+        const rebuilt = {};
+        for (const k of Object.keys(p)) {
+          if (k === "history" || k === "wiki" || k === "hookMissing") continue;
+          rebuilt[k] = p[k];
+          if (k === "blurb") rebuilt.hookMissing = true;
+        }
+        if (!("hookMissing" in rebuilt)) rebuilt.hookMissing = true;
+        chunk.places[i] = rebuilt;
+        removed++;
+        removedReasons[built.skipped] = (removedReasons[built.skipped] ?? 0) + 1;
         changed = true;
       } else {
         skipped[built.skipped] = (skipped[built.skipped] ?? 0) + 1;
@@ -750,16 +1035,22 @@ async function cmdMerge() {
     manifest.regions[regionId].bytes = bytes;
   }
   manifest.meta.chunkBytes = totalBytes;
-  // historySentences accumulates across merge runs (crawl → merge → crawl →
-  // merge), so the manifest never undercounts after a resumed crawl.
-  const prevEnriched = manifest.meta.enrichment?.historySentences ?? 0;
+  // historySentences is SET to the counted total of enrichment-sourced
+  // histories, never accumulated: an earlier version added each run's new
+  // enrichments onto the stored count, which double-counts repaired
+  // places the moment a re-merge recomputes an already-enriched record.
   manifest.meta.enrichment = {
     source: "Wikipedia article intros (CC BY-SA) via the MediaWiki API",
-    historySentences: prevEnriched + enriched,
+    historySentences: enrichmentTotal,
     generated: new Date().toISOString().slice(0, 10),
   };
   writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + "\n");
-  console.log(`merge done: ${enriched.toLocaleString("en-US")} places enriched`);
+  console.log(
+    `merge done: ${enriched.toLocaleString("en-US")} newly enriched, ` +
+      `${repaired.toLocaleString("en-US")} repaired, ${removed.toLocaleString("en-US")} removed ` +
+      `(enrichment total: ${enrichmentTotal.toLocaleString("en-US")})`,
+  );
+  if (removed > 0) console.log(`removed reasons: ${JSON.stringify(removedReasons)}`);
   console.log(`skipped: ${JSON.stringify(skipped)}`);
 }
 
