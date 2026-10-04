@@ -1,0 +1,692 @@
+[
+  {
+    "rank": 202,
+    "place_id": "gn-5392900",
+    "input": {
+      "place": {
+        "place_id": "gn-5392900",
+        "name": "Santa Ana",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.74557,
+        "lon": -117.86783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Ana, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Ana,_California",
+          "text": "Santa Ana (Spanish for 'Saint Anne') is a city in and the county seat of Orange County, California, United States. Located in the Greater Los Angeles region of Southern California, the city's population was 310,227 at the 2020 census. As of 2023, Santa Ana is the third most populous city in Orange County (after Anaheim and Irvine), the 14th-most populous city in California, and the 65th most populous city in the United States. Santa Ana is a major regional economic and cultural hub for the Orange Coast.\nIn 1810, the Spanish governor of California granted Rancho Santiago de Santa Ana to José Antonio Yorba. Following the Mexican War of Independence, the Yorba family rancho was enlarged, becoming one of the largest and most valuable in the region and home to a diverse Californio community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "santa ana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 203,
+    "place_id": "gn-5729485",
+    "input": {
+      "place": {
+        "place_id": "gn-5729485",
+        "name": "Gresham",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.49818,
+        "lon": -122.43148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gresham, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Gresham,_Oregon",
+          "text": "Gresham ( GRESH-əm) is a city in the Willamette Valley, Located in Multnomah County in the U.S. state of Oregon, bordered by Portland to the northwest and partially in the southwest. It was first settled in the early 1850s by the Powell brothers. It remained unincorporated until 1905; it was named after Walter Quintin Gresham, an American Civil War general and United States Secretary of State.\nThe early economy of the city was primarily supported by agriculture, and by the mid-20th century, the city saw a population boom, increasing from 4,000 residents to more than 10,000 between 1960 and 1970. The population was 114,247 at the 2020 census, making it the second most populous city in the county and the fourth-most populous city in Oregon. Gresham is an economic center for eastern Multnomah County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "gresham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 204,
+    "place_id": "gn-610611",
+    "input": {
+      "place": {
+        "place_id": "gn-610611",
+        "name": "Aktobe",
+        "country": "Kazakhstan",
+        "subdivision": "Aktobe",
+        "lat": 50.27969,
+        "lon": 57.20718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aktobe",
+          "url": "https://en.wikipedia.org/wiki/Aktobe",
+          "text": "Aktobe (Kazakh: Ақтөбе, romanized: Aqtöbe, pronounced [ɑqtɵbʲé] ; Russian: Актобе) is a major city in western Kazakhstan, located on the river Ilek. It serves as the administrative center of the Aktobe Region and is an important cultural, economic, and industrial hub. As of 2023, the city had a population of 560,820, making it the fourth-largest city in Kazakhstan, and the largest in the western part of the country. It covers an expansive area of approximately 428.469 km2 and is strategically located to serve as a regional center for trade and commerce.\nAktobe is known for its natural resources, with two significant water reservoirs, Aktobe and Sazdy, supplying the city and surrounding areas. The city's economy is driven primarily by industries such as coal mining, metallurgy, and the extraction and processing of oil and gas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "aktobe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 205,
+    "place_id": "gn-1267579",
+    "input": {
+      "place": {
+        "place_id": "gn-1267579",
+        "name": "Kashipur",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.21399,
+        "lon": 78.95693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kashipur, Uttarakhand",
+          "url": "https://en.wikipedia.org/wiki/Kashipur,_Uttarakhand",
+          "text": "Kashipur (Hindi: Kāshīpur [kaːʃiːpʊr]) is a city of Udham Singh Nagar district in the Indian state of Uttarakhand, and one of its seven subdivisions. Located in the western part of Udham Singh Nagar district, it is Kumaun's third most populous city and the sixth most populous in Uttarakhand. Its ancient name was \"Govisana\". According to the 2011 Census of India, the population is 121,623 for the city of Kashipur and 283,136 for Kashipur Tehsil. Kashipur also has IIM Kashipur, one of the thirteen Indian Institutes of Managements the government has set up during the Eleventh Five-year Plan.\nHistorically part of Kumaun, Kashipur is named after Kashinath Adhikari, the founder of the township and governor of the pargana, one of the officers of the Chand Kings of Kumaun in the 16th and 17th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "kashipur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 206,
+    "place_id": "gn-1812545",
+    "input": {
+      "place": {
+        "place_id": "gn-1812545",
+        "name": "Dongguan",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.01797,
+        "lon": 113.74866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dongguan",
+          "url": "https://en.wikipedia.org/wiki/Dongguan",
+          "text": "Dongguan  is a prefecture-level city in central Guangdong Province, China. An important industrial city in the Pearl River Delta, Dongguan borders the provincial capital of Guangzhou to the north, Huizhou to the northeast, Shenzhen to the south, and the Pearl River to the west. It is part of the Pearl River Delta built-up (or metro) area with more than 65.57 million inhabitants as of the 2020 census spread over nine municipalities across an area of 19,870 square kilometers (7,670 sq mi).\nDongguan's city administration is considered especially progressive in seeking foreign direct investment. Dongguan ranks behind only Shenzhen, Shanghai and Suzhou in exports among Chinese cities, with $65.54 billion in shipments. It is also home to one of the world's largest shopping malls, the New South China Mall, which is seeing increased activity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "dongguan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 207,
+    "place_id": "gn-2633691",
+    "input": {
+      "place": {
+        "place_id": "gn-2633691",
+        "name": "Wolverhampton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.58547,
+        "lon": -2.12296
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolverhampton",
+          "url": "https://en.wikipedia.org/wiki/Wolverhampton",
+          "text": "Wolverhampton (  WUUL-vər-HAMP-tən) is a city and metropolitan borough in the West Midlands, England. Located around 12 miles (19 km) north-west of Birmingham, it forms the north-western part of the West Midlands conurbation, with the towns of Willenhall and Walsall to the east, and the towns of Sedgley and Dudley to the south. The population in 2021 was 263,700, making it the third largest city in the county after Birmingham and Coventry.\nHistorically in Staffordshire, Wolverhampton grew as a market town specialising in the wool trade. During the Industrial Revolution, it became a major centre for coal mining, steel production, lock making, and automotive manufacturing; the economy of the city is still based on engineering, including a large aerospace industry and a service sector. The city is home to the University of Wolverhampton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "wolverhampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 208,
+    "place_id": "gn-3082914",
+    "input": {
+      "place": {
+        "place_id": "gn-3082914",
+        "name": "Tychy",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.13717,
+        "lon": 18.96641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tychy",
+          "url": "https://en.wikipedia.org/wiki/Tychy",
+          "text": "Tychy (Polish pronunciation: [ˈtɨxɨ] ; ) is a city in Silesia in southern Poland, approximately 20 kilometres (12 mi) south of Katowice. Situated on the southern edge of the Upper Silesian industrial district, the city borders Katowice to the north, Mikołów to the west, Bieruń to the east and Kobiór to the south. The Gostynia river, a tributary of the Vistula, flows through Tychy.\nSince 1999, Tychy has been located within the Silesian Voivodeship. Tychy is also one of the founding cities of the Metropolitan Association of Upper Silesia, a pan-Silesian economic and political union formed with the eventual aim of bringing the most populous Silesian areas under a single administrative body.\nTychy is well known for its brewing industry and the Tyskie brand of beer, which dates back to the 17th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "tychy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 209,
+    "place_id": "gn-3454690",
+    "input": {
+      "place": {
+        "place_id": "gn-3454690",
+        "name": "Paulínia",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.76111,
+        "lon": -47.15417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paulínia",
+          "url": "https://en.wikipedia.org/wiki/Paul%C3%ADnia",
+          "text": "Paulínia is a Brazilian municipality in the interior of the state of São Paulo. It is located in the northwest of the São Paulo Macrometropolis and is about 119 km from the state capital. It occupies an area of 139 km2 and in 2022 Census, IBGE estimated its population at 110,537. It was emancipated on 28 February 1964, but its foundation dates back to the beginning of the 20th century. The town is named after José Paulino Nogueira, a well-known farmer in the Campinas region, the municipality from which Paulínia emancipated and who lent his name to the railroad station around which the town developed. It is located in the Rio-São Paulo axis, serving as a link between Greater São Paulo and cities in the area, such as Cosmópolis, Artur Nogueira, and Conchal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "paulinia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 210,
+    "place_id": "gn-3723779",
+    "input": {
+      "place": {
+        "place_id": "gn-3723779",
+        "name": "Jacmel",
+        "country": "Haiti",
+        "subdivision": "Sud-Est",
+        "lat": 18.23569,
+        "lon": -72.53686
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jacmel",
+          "url": "https://en.wikipedia.org/wiki/Jacmel",
+          "text": "Jacmel (French pronunciation: [ʒakmɛl] ; Haitian Creole: Jakmèl) is a commune in southern Haiti previously founded by the Spanish in 1504 before the relocation of the Dominicans to the eastern side of the island after the Devastations of Osorio and repopulated by the French in 1698. It is the capital of the department of Sud-Est, 24 miles (39 km) southwest of Port-au-Prince across the Tiburon Peninsula, and had a population of 221,965 at the 2024 Census. The town's name is derived from its indigenous Taíno name of Yaquimel. In 1925, Jacmel was dubbed as the \"City of Light,\" becoming the first in the Caribbean to have electricity.\nThe city is known for its well-preserved Gingerbread houses built in the early 19th century. The town has been tentatively accepted as a World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "jacmel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 211,
+    "place_id": "gn-3868707",
+    "input": {
+      "place": {
+        "place_id": "gn-3868707",
+        "name": "Valdivia",
+        "country": "Chile",
+        "subdivision": "Los Ríos Region",
+        "lat": -39.81422,
+        "lon": -73.24589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valdivia",
+          "url": "https://en.wikipedia.org/wiki/Valdivia",
+          "text": "Valdivia (Spanish pronunciation: [balˈdiβja]; Mapuche: Ainil) is a city and commune in southern Chile, administered by the Municipality of Valdivia. The city is named after its founder, Pedro de Valdivia, and is located at the confluence of the Calle-Calle, Valdivia, and Cau-Cau Rivers, approximately 15 km (9 mi) east of the coastal towns of Corral and Niebla. Since October 2007, Valdivia has been the capital of Los Ríos Region and is also the capital of Valdivia Province. The 2024 Chilean census recorded 170,043 inhabitants (Valdivianos) in the commune of Valdivia. The main economic activities of Valdivia include tourism, wood pulp manufacturing, forestry, metallurgy, and beer production. The city is also the home of the Austral University of Chile, founded in 1954, the Centro de Estudios Científicos and one of Chile's three environmental courts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "valdivia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 212,
+    "place_id": "gn-3870011",
+    "input": {
+      "place": {
+        "place_id": "gn-3870011",
+        "name": "Temuco",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -38.73628,
+        "lon": -72.59738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Temuco",
+          "url": "https://en.wikipedia.org/wiki/Temuco",
+          "text": "Temuco (Spanish pronunciation: [teˈmuko]) is a city and commune, capital of the Cautín Province and of the Araucanía Region in southern Chile. The city is located 670 kilometres (416 miles) south of Santiago. The city grew out from a fort of the same name established in 1881 during Chile's invasion of Araucanía. Temuco lies in the middle of the historic Araucanía, a traditional land of the indigenous Mapuche.\nTemuco's central place in Araucanía with easy access to the Andean valleys, lakes and coastal areas makes it a hub for tourism, agricultural, livestock and forestry operations as well as a communication and trade centre for the numerous small towns of Araucanía. Temuco has recently been regarded as a university city as it houses two large universities: University of the Frontier and Temuco Catholic University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "temuco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 214,
+    "place_id": "gn-1270668",
+    "input": {
+      "place": {
+        "place_id": "gn-1270668",
+        "name": "Guntur",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.29974,
+        "lon": 80.45729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guntur",
+          "url": "https://en.wikipedia.org/wiki/Guntur",
+          "text": "Guntur (), natively spelt as Gunturu, is a city in the Indian state of Andhra Pradesh and the administrative headquarters of Guntur district. The city is part of the Andhra Pradesh Capital Region and is located on the Eastern Coastal Plains approximately 14 miles (23 km) south-west of the state capital Amaravati. Guntur is the second largest by area in the state with 159.46 square kilometres (61.57 square miles) of land. According to data from the 2011 Census of India, Guntur had a population of 743,354 in that year, making it the third-most-populous city in the state,. The city is the heartland of the state, located in the center of Andhra Pradesh and making it a central part connecting different regions.\nThe city is home to numerous state government offices and agencies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "guntur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 215,
+    "place_id": "gn-1275738",
+    "input": {
+      "place": {
+        "place_id": "gn-1275738",
+        "name": "Bidar",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 17.90802,
+        "lon": 77.51524
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bidar",
+          "url": "https://en.wikipedia.org/wiki/Bidar",
+          "text": "Bidar ( Kannada: [biːd̪əɾ] ) is a city and the headquarters of the Bidar district in Karnataka state of India. Bidar is a prominent place on the archaeological map of India. It is well known for architectural, historical religious and rich heritage sites. Picturesquely perched on the Deccan Plateau, the Bidar fort (Bidar Kote) is more than 500 years old and still standing strong. According to the book \"Bidar Heritage\" published by the state Department of Archaeology, Museums and Heritage, of the 61 monuments listed by the department, about 30 are tombs located in and around Bidar city., hence its nickname, \"City of Whispering Monuments\". The heritage sites in and around Bidar have become the major attraction for film shooting in recent years, with Bollywood making visits apart from Kannada film industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "bidar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 216,
+    "place_id": "gn-1807681",
+    "input": {
+      "place": {
+        "place_id": "gn-1807681",
+        "name": "Huainan",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 32.62639,
+        "lon": 116.99694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huainan",
+          "url": "https://en.wikipedia.org/wiki/Huainan",
+          "text": "Huainan (Chinese: 淮南; pinyin: Huáinán) is a prefecture-level city with 3,033,528 inhabitants as of the 2020 census in north-central Anhui province, China. It is named for the Han-era Principality of Huainan. It borders the provincial capital of Hefei to the south, Lu'an to the southwest, Fuyang to the west, Bozhou to the northwest, Bengbu to the northeast and Chuzhou to the east. Huainan is one of the core cities of Hefei Metropolitan Circle and is known for its coal industry and thermal power plants. Its built-up area made of 4 urban districts (all but Panji not yet conurbated) and Fengtai County largely being urbanized, was home to 1,868,944 inhabitants as of 2020. Its city flower is the Chinese rose (Rosa chinensis) and its city tree is the Old-World Plane Tree (Platanus orientalis)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "huainan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 217,
+    "place_id": "gn-1808770",
+    "input": {
+      "place": {
+        "place_id": "gn-1808770",
+        "name": "Hebi",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 35.73231,
+        "lon": 114.28616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hebi",
+          "url": "https://en.wikipedia.org/wiki/Hebi",
+          "text": "Hebi (simplified Chinese: 鹤壁; traditional Chinese: 鶴壁; pinyin: Hèbì [xɤ̂.pî]; postal: Hopi) is a prefecture-level city in northern Henan province, China. Situated in mountainous terrain at the edge of the Shanxi plateau, Hebi is about 25 miles (40 km) south of Anyang, 40 miles (64 km) northeast of Xinxiang and 65 miles (105 km) north of Kaifeng.\nAs of the 2020 census, its population was 1,565,973 inhabitants and in the 2018 estimate 574,000 lived in the built-up (or metro) area made of Qibin District and Qi County largely conurbated. One can notice that Shancheng District and Heshan District are for the moment, part of another built-up area of 372,600 inhabitants close to Anyang.\nHebi has several coal mines. The city is also home to the Hebi New Area, an economic development zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "hebi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 218,
+    "place_id": "gn-1845457",
+    "input": {
+      "place": {
+        "place_id": "gn-1845457",
+        "name": "Jeonju",
+        "country": "South Korea",
+        "subdivision": "Jeollabuk-do",
+        "lat": 35.82194,
+        "lon": 127.14889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jeonju",
+          "url": "https://en.wikipedia.org/wiki/Jeonju",
+          "text": "Jeonju (Korean: 전주; Korean pronunciation: [t͡ɕʌɲ.d͡ʑu], lit. 'Perfect region') is the capital and largest city of the state of Jeonbuk, South Korea. It is both urban and rural due to the closeness of Wanju County which almost entirely surrounds Jeonju (Wanju County has many residents who work in Jeonju). It is an important tourist center famous for South Korean cuisine, historic buildings, sports activities, and innovative festivals.\nIn May 2012, Jeonju was chosen as a Creative City for Gastronomy as part of UNESCO's Creative Cities Network. This honor recognizes the city's traditional home cooking handed down over thousands of years, its active public and private food research, a system of nurturing talented chefs, and its hosting of distinctive food festivals.\nJeonju is a city with over 1,300 years of history and culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "jeonju",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 219,
+    "place_id": "gn-1886760",
+    "input": {
+      "place": {
+        "place_id": "gn-1886760",
+        "name": "Suzhou",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 31.30408,
+        "lon": 120.59538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suzhou",
+          "url": "https://en.wikipedia.org/wiki/Suzhou",
+          "text": "Suzhou is a prefecture-level city in Jiangsu province, Eastern China. Suzhou is a major tourist destination and industrial hub of Eastern China, specializing in high-end manufacturing. Renowned as the cradle of Wu culture, Suzhou flourished as a hub of trade, arts, and intellectual life along the Grand Canal, helping shape China's economic and cultural development for centuries. The city is internationally famous for its classical gardens, which harmonize architecture, water, rocks, and plants into poetic expressions of nature. Long admired for its silk production, refined cuisine, and lyrical Kunqu opera, Suzhou has been praised in Chinese poetry, along with Hangzhou, as \"paradise on earth,\" a reputation that endures today as the city blends its timeless canals, whitewashed lanes, and scholarly heritage with modern industries. Suzhou is part of the Yangtze Delta megalopolis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "suzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 220,
+    "place_id": "gn-2498611",
+    "input": {
+      "place": {
+        "place_id": "gn-2498611",
+        "name": "Chlef",
+        "country": "Algeria",
+        "subdivision": "Chlef",
+        "lat": 36.16525,
+        "lon": 1.33452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chlef",
+          "url": "https://en.wikipedia.org/wiki/Chlef",
+          "text": "Chlef (Arabic: الشلف, romanized: aš-Šalif) is the capital of Chlef Province, Algeria. Located in the north of Algeria, 200 kilometres (120 mi) west of the capital, Algiers, it was founded in 1843, as Orléansville, on the ruins of Roman Castellum Tingitanum. In 1962, it was renamed al-Asnam, but after the devastating earthquake on October 10, 1980, it has borne its present name, Chlef, which is derived from the name of the Chelif River, the longest river in Algeria.\nIt is home to the soccer club ASO Chlef, the Hassiba Ben Bouali university, and the ruins of the basilica of Reparatus, who was bishop of Castellum Tingitanum from 465 to 475. A corner of the flooring of the basilica contained a mosaic labyrinth, the oldest known example of Christian use of this motif."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "chlef",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 221,
+    "place_id": "gn-3170647",
+    "input": {
+      "place": {
+        "place_id": "gn-3170647",
+        "name": "Pisa",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.70853,
+        "lon": 10.4036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pisa",
+          "url": "https://en.wikipedia.org/wiki/Pisa",
+          "text": "Pisa ( PEE-zə; Italian: [ˈpiːza]  or [ˈpiːsa]) is a city and comune (municipality) in Tuscany, Central Italy, straddling the Arno just before it empties into the Ligurian Sea. It is the capital city of the Province of Pisa. Although Pisa is known worldwide for the Leaning Tower of Pisa, the city contains more than twenty other historic churches, and several medieval and Renaissance palaces, mostly facing each other on the avenues along the Arno (\"Lungarno\"). Much of the city's architecture was financed from its history as one of the Italian maritime republics.\nThe city is also home to the University of Pisa, which has a history going back to the 12th century, the Scuola Normale Superiore di Pisa, founded by Napoleon in 1810, and its offshoot, the Sant'Anna School of Advanced Studies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "pisa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 222,
+    "place_id": "gn-5101798",
+    "input": {
+      "place": {
+        "place_id": "gn-5101798",
+        "name": "Newark",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.73566,
+        "lon": -74.17237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newark, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Newark,_New_Jersey",
+          "text": "Newark ( NEW-ərk, locally  NOORK) is the most populous city in the U.S. state of New Jersey, the county seat of Essex County, and a principal city of the New York metropolitan area. As of the 2020 census, the city's population was 311,549. The Population Estimates Program calculated a population of 323,808 for 2025, making it the 61st-most populous municipality in the nation.\nSettled in 1666 by Puritans from New Haven Colony, Newark is one of the oldest cities in the United States. Its location at the mouth of the Passaic River, where it flows into Newark Bay, has made the city's waterfront an integral part of the Port of New York and New Jersey. Port Newark–Elizabeth is the primary container shipping terminal of the busiest seaport on the U.S. East Coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "newark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
