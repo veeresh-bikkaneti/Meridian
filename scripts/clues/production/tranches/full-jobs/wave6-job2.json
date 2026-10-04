@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 1030,
+    "attempt": 1021,
+    "place_id": "gn-1790353",
+    "input": {
+      "place": {
+        "place_id": "gn-1790353",
+        "name": "Xianyang",
+        "country": "China",
+        "subdivision": "Shaanxi",
+        "lat": 34.33778,
+        "lon": 108.70261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xianyang",
+          "url": "https://en.wikipedia.org/wiki/Xianyang",
+          "text": "Xianyang (Chinese: 咸阳; pinyin: Xiányáng) is a prefecture-level city in central Shaanxi province, situated on the Wei River a few kilometers upstream (west) from the provincial capital of Xi'an. The old Xianyang city was once the capital of the Qin dynasty and thus the first imperial capital of China. It is now integrated into the Greater Xi'an Metropolitan Area, one of the main megalopolises in northwestern China, with more than 7.17 million inhabitants. Its built-up area, consisting of 2 urban districts (Qindu and Weicheng), had 945,420 inhabitants at the 2010 census. It has a total area of 10,213 square kilometers (3,943 mi2).\nXianyang is the seat of the Xi'an Xianyang International Airport, the main airport serving Xi'an and the largest airport in Northwest China, and one of the 40 busiest airports in the world.\nXianyang is one of the top 200 cities in the world by scientific research outputs, as tracked by the Nature Index. It is home to the main campus of Northwest A&F University (NWAFU), one of the world's top universities in agriculture science related fields, and a member of \"Project 985\" club which is an organization of 39 reputable universities in China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "xianyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1031,
+    "attempt": 1022,
+    "place_id": "gn-1796556",
+    "input": {
+      "place": {
+        "place_id": "gn-1796556",
+        "name": "Sanya",
+        "country": "China",
+        "subdivision": "Hainan",
+        "lat": 18.25435,
+        "lon": 109.50947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanya",
+          "url": "https://en.wikipedia.org/wiki/Sanya",
+          "text": "Sanya is a resort city and the southernmost city on Hainan Island, and one of the four prefecture-level cities of Hainan Province in South China. It is a major tourist destination with several large scale resorts and contains the Sanya coral reef, a national protected nature reserve spanning 4000 hectares. Phoenix Island, an artificial island with a seven-star resort (one of the few in the world) and a complex of five-star hotels, is in Sanya Bay. The Guanyin of Nanshan, a Buddhist statue of Guanyin, is the thirteenth tallest statue in the world and is located in Sanya.\nUntil the end of 2024, the total population of Sanya was 1,116,100 inhabitants, living in an area of 1,919.58 km2 (741.15 sq mi). Its built-up (or metro) area was home to 818,000 inhabitants as of 2024.\nThe city is renowned for its tropical climate and has emerged as a popular tourist destination, also serving as the training site of the Chinese national beach volleyball team. Sanya is home to small concentrations of Utsul people (The name 'Huíhuī' is their pronunciation in spoken Chinese. As they have not yet received official recognition as a distinct ethnic group, they are administratively classified as part of the Hui nationality in China). Sanya is also the location of Yulin Naval Base, a major military facility on the South China Sea which is home to the People's Liberation Army Navy ballistic nuclear missile fleet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "sanya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1032,
+    "attempt": 1023,
+    "place_id": "gn-1839071",
+    "input": {
+      "place": {
+        "place_id": "gn-1839071",
+        "name": "Pohang",
+        "country": "South Korea",
+        "subdivision": "Gyeongsangbuk-do",
+        "lat": 36.02917,
+        "lon": 129.36481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pohang",
+          "url": "https://en.wikipedia.org/wiki/Pohang",
+          "text": "Pohang (Korean: 포항; Korean pronunciation: [pʰo.ɦaŋ]) is the largest city in  North Gyeongsang Province, South Korea, with a population of 499,363 as of 2022, bordering the East Sea to the east, Yeongcheon to the west, Gyeongju to the south, and Cheongsong and Yeongdeok County to the north.\nThe city has food, textile, and metal industries. Agricultural products such as grapes, persimmons and garlic chives are abundant, and the city's proximity to the East Sea has led to the development of a fishing industry. Gwamegi is a local specialty.\nThe South Korean Marine Corps 1st Division is stationed in Pohang, and their Education and Training Command is located there as well.\nTourist attractions include the Jukdo Fish Market, where fresh seafood is sold, as well as the Yeongildae Beach, Wolpo Beach, and Pohang Songdo Beach. Naejangsan Mountain divides Pohang and Yeongdeok and has twelve waterfalls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "pohang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1033,
+    "attempt": 1024,
+    "place_id": "gn-2034937",
+    "input": {
+      "place": {
+        "place_id": "gn-2034937",
+        "name": "Shenyang",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.79222,
+        "lon": 123.43278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shenyang",
+          "url": "https://en.wikipedia.org/wiki/Shenyang",
+          "text": "Shenyang, formerly known by its Manchu name Mukden, is a sub-provincial city in China and the provincial capital of Liaoning province. It is the province's most populous city with a population of 9,070,093 as of the 2020 census, also making it the largest city in Manchuria by urban population, and the second-largest by metropolitan population (behind Harbin). The Shenyang metropolitan area is one of the major megalopolises in China, with a population of over 23 million. The city's administrative region includes the ten metropolitan districts, the county-level city of Xinmin, and the counties of Kangping and Faku.\nShenyang has been controlled by numerous different states and peoples during its history. In the 14th century, the city came under the control of the Ming dynasty (1368–1644), for whom it served as an important military stronghold. The 1621 Battle of Shen-Liao resulted in Shenyang briefly serving as the capital of the Jurchen Later Jin dynasty, the direct predecessor of the Qing dynasty (1644–1912). The 1905 Battle of Mukden took place south of Shenyang as part of the Russo-Japanese War. The subsequent Japanese victory allowed its annexation of the region west of the old city and the increase of Japanese influence in Shenyang. In 1931, the Mukden incident led to the Japanese invasion and occupation of the rest of Manchuria, and the establishment of the puppet state of Manchukuo. After the Japanese surrender in 1945, Shenyang remained a stronghold of the Kuomintang until its capture by the Communists in 1948 following the Liaoshen campaign.\nTogether with its surrounding cities, Shenyang is an important industrial center in China, and serves as the transportation and commercial hub of China's northeast—particularly involved in links with Japan, Russia, and Korea. A center of heavy industry in China since the 1930s, and the spearhead of the Chinese central government's Northeast Area Revitalization Plan, the city has been diversified its industry in the 21st century, including expanding into the service sector. Growing industries include software, automotive and electronics. Shenyang is also a major city for scientific research and education in Manchuria. As of 2025, it was listed among the top 100 cities by scientific output in the world, as tracked by the Nature Index. The city is home to several major universities, notably Northeastern University and Liaoning University, listed as prestigious universities in the Double First-Class Construction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 388
+    },
+    "banned_terms": [
+      {
+        "term": "shenyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1034,
+    "attempt": 1025,
+    "place_id": "gn-2193733",
+    "input": {
+      "place": {
+        "place_id": "gn-2193733",
+        "name": "Auckland",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.84853,
+        "lon": 174.76349
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Auckland",
+          "url": "https://en.wikipedia.org/wiki/Auckland",
+          "text": "Auckland is a large metropolitan city in the North Island of New Zealand. It has an urban population of approximately 1,547,200 (June 2025). It is located in the greater Auckland Region, the area governed by Auckland Council, which includes outlying rural areas and the islands of the Hauraki Gulf, and which has a total population of 1,816,000 as of June 2025. It is the most populous city of New Zealand and the fifth-most populous city in Oceania.\nThe city lies between the Hauraki Gulf to the east, the Hunua Ranges to the south-east, the Manukau Harbour to the south-west, and the Waitākere Ranges and smaller ranges to the west and north-west. The surrounding hills are covered in rainforest and the landscape is dotted with 53 volcanic centres that make up the Auckland Volcanic Field. The central part of the urban area occupies a narrow isthmus between the Manukau Harbour on the Tasman Sea and the Waitematā Harbour on the Pacific Ocean. Auckland is one of the few cities in the world to have a harbour on each of two separate major bodies of water.\nThe Auckland isthmus was first settled c. 1350 and was valued for its rich and fertile land. The Māori population in the area is estimated to have peaked at 20,000 before the arrival of Europeans. After a British colony was established in New Zealand in 1840, William Hobson, then Lieutenant-Governor of New Zealand, chose Auckland as its new capital. Ngāti Whātua Ōrākei made a strategic gift of land to Hobson for the new capital. During the New Zealand wars many fencibles and soldiers were stationed in and around Auckland. In 1865, Auckland was replaced by Wellington as the capital, but continued to grow, initially because of its port and the logging and gold-mining activities in its hinterland, and later because of pastoral farming (especially dairy farming) in the surrounding area, and manufacturing in the city itself. It has been the nation's largest city throughout most of its history. Today, Auckland's central business district is New Zealand's leading economic hub.\nWhile Europeans continue to make up the plurality of Auckland's population, the city became multicultural and cosmopolitan in the late 20th century, with Asians accounting for 34.9% of the city's population in 2023. In 2023 Auckland had the fourth largest foreign-born population in the world, with 43% of its residents born overseas. With its sizeable population of Pasifika New Zealanders, the city is also home to the largest ethnic Polynesian population in the world.\nThe University of Auckland, founded in 1883, is the largest university in New Zealand. The city's significant tourist attractions include national historic sites, festivals, performing arts, sports activities and a variety of cultural institutions, such as the Auckland War Memorial Museum, the Museum of Transport and Technology, and the Auckland Art Gallery. Its architectural landmarks include the Harbour Bridge, the Town Hall, the Ferry Building and the Sky Tower, which is the second-tallest building in the Southern Hemisphere after Thamrin Nine. The city is served by Auckland Airport, which handled 18.5 million passengers in 2024. Auckland is one of the world's most liveable cities, ranking fifth in the 2024 Mercer Quality of Living Survey and ninth in the 2024 Global Liveability Ranking by The Economist."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 542
+    },
+    "banned_terms": [
+      {
+        "term": "auckland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1035,
+    "attempt": 1026,
+    "place_id": "gn-2389853",
+    "input": {
+      "place": {
+        "place_id": "gn-2389853",
+        "name": "Bangui",
+        "country": "Central African Republic",
+        "subdivision": "Bangui",
+        "lat": 4.36122,
+        "lon": 18.55496
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bangui",
+          "url": "https://en.wikipedia.org/wiki/Bangui",
+          "text": "Bangui (French pronunciation: [bɑ̃ɡi]; or Bangî in Sango, formerly written Bangi in English) is the capital and largest city of the Central African Republic. It was established as a French outpost in 1889 and named after its location on the northern bank of the Ubangi River (French: Oubangui); the Ubangi itself was named from the Bobangi word for the \"rapids\" located beside the settlement, which marked the end of navigable water north from Brazzaville. The majority of the population of the Central African Republic lives in the western parts of the country, in Bangui and the surrounding area.\nThe city has been part of Bangui Prefecture since December 2020. As of 2020 it had an estimated population of 889,231.\nThe city consists of eight urban districts (arrondissements), 16 groups (groupements) and 205 neighbourhoods (quartiers). As the capital of the Central African Republic, Bangui acts as an administrative, trade, and commercial centre. The National Assembly, government buildings, banks, foreign enterprises and embassies, hospitals, hotels, main markets and the Ngaragba Central Prison are all located here. Bangui manufactures textiles, food products, beer, shoes and soap. Its Notre-Dame Cathedral is the seat of the Roman Catholic Archdiocese of Bangui. The city is also home to the University of Bangui, inaugurated in 1970. It is served by the Bangui M'Poko International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "bangui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1036,
+    "attempt": 1027,
+    "place_id": "gn-2544571",
+    "input": {
+      "place": {
+        "place_id": "gn-2544571",
+        "name": "Kenitra",
+        "country": "Morocco",
+        "subdivision": "Rabat-Salé-Kénitra",
+        "lat": 34.26101,
+        "lon": -6.5802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kenitra",
+          "url": "https://en.wikipedia.org/wiki/Kenitra",
+          "text": "Kenitra is a city in northwestern Morocco. It is a major urban center on the mouth of the Sebou River with a population of 507,736 as of 2024, with Mehdya counting an additional 58,558.\nIt is one of the three main cities of the Rabat-Salé-Kénitra region and serves as the primary industrial hub for the region. it is also the capital and namesake of Kénitra Province.\nDuring the Cold War, the US Naval Air Station Port Lyautey served as an important stopping point in North Africa, by 1977 the base was fully handed over to the Royal Moroccan Air Force as Kenitra Air Base.\nThe historic coastal town of Mehdya is administered as a separate urban commune within Kénitra Province, though it is functionally integrated as a coastal district of the city of Kenitra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "kenitra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1037,
+    "attempt": 1028,
+    "place_id": "gn-2654675",
+    "input": {
+      "place": {
+        "place_id": "gn-2654675",
+        "name": "Bristol",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.45523,
+        "lon": -2.59665
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bristol",
+          "url": "https://en.wikipedia.org/wiki/Bristol",
+          "text": "Bristol ( ) is a city and ceremonial county in South West England. It is on the River Avon, and bordered by Gloucestershire to the north and Somerset to the south, with a short coastline on the Bristol Channel to the west. The county includes most of the Bristol conurbation, but the urban area extends into South Gloucestershire, Bath and North East Somerset, and North Somerset.\nThe county is almost entirely urbanised and had an estimated population of 494,399 in 2024, making Bristol the most populous city in the region. For local government purposes the county is a unitary authority area governed by Bristol City Council. The council is a member of the West of England Combined Authority, which allows it to collaborate with South Gloucestershire Council and Bath and North East Somerset Council.\nIron Age hillforts and Roman villas were built near the confluence of the rivers Frome and Avon. Bristol received a royal charter in 1155, but was historically divided between Gloucestershire and Somerset until it became a county corporate in 1373. From the 13th to the 18th centuries, Bristol was among the top three English cities, after London, in tax receipts. A major port, Bristol was a starting place for early voyages of exploration to the New World. At the height of the Bristol slave trade, from 1700 to 1807, more than 2,000 slave ships carried an estimated 500,000 people from Africa to slavery in the Americas. The Port of Bristol has since moved from Bristol Harbour in the city centre to the Severn Estuary at Avonmouth and Royal Portbury Dock.\nThe city's modern economy is built on the creative media, electronics, and aerospace industries; the city-centre docks have been redeveloped as cultural and heritage centres. There are a variety of artistic and sporting organisations and venues, including the Royal West of England Academy, the Arnolfini, Ashton Gate and the Memorial Ground. The city has two universities: the University of Bristol and the University of the West of England (UWE Bristol). It is connected to the world by Bristol Airport; to the rest of Great Britain via Bristol Temple Meads and Bristol Parkway mainline rail stations; and by road by both the south-west to West Midlands M5 and the London to South Wales M4 (which connect to the city centre by the Portway and M32)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 388
+    },
+    "banned_terms": [
+      {
+        "term": "bristol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1038,
+    "attempt": 1029,
+    "place_id": "gn-2655984",
+    "input": {
+      "place": {
+        "place_id": "gn-2655984",
+        "name": "Belfast",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.59682,
+        "lon": -5.92541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belfast",
+          "url": "https://en.wikipedia.org/wiki/Belfast",
+          "text": "Belfast (  BEL-fast, , -⁠fahst; from Irish: Béal Feirste [bʲeːlˠ ˈfʲɛɾˠ(ə)ʃtʲə]) is the capital, largest city and main port of Northern Ireland. It stands on the banks of the river Lagan, and is connected to the open sea through Belfast Lough and the North Channel. The city is the most populous in Northern Ireland and the second-largest, after Dublin, on the island of Ireland, with a recorded population in 2021 of 345,418 and of 704,406 for the greater metropolitan area.\nWhile chartered as an English settlement in 1613, the town's early growth was driven by an influx of Scottish Presbyterians. Their descendants' disaffection with Ireland's Anglican establishment contributed to the rebellion of 1798 and to the 1801 union with Great Britain that followed. Access to British capital and markets were keys to industrial growth. When granted city status in 1888, Belfast was the world's largest centre of linen manufacture, and by the 1900s its shipyards were building up to a quarter of all United Kingdom tonnage.\nNew industry, which drew large numbers of Catholics from rural districts, was accompanied by growing sectarian tensions in what had been a largely Protestant town. Heightened by division over Ireland's future in the United Kingdom, these twice erupted in periods of sustained violence involving paramilitaries and security forces: in 1920–22, as Belfast became the capital of the six north-eastern counties retaining the British connection, and in the so-called Troubles, the three decades from the late 1960s during which the British Army was continually deployed on the streets. A legacy of conflict is the barrier-reinforced separation of Protestant and Catholic working-class districts. Since the Good Friday Agreement, the electoral balance in the once Unionist-controlled city has shifted, albeit with no overall majority, in favour of Irish nationalists. New immigrants are adding to the growing number of residents unwilling to identify with either of the two communal traditions.\nBelfast has seen significant services sector growth, with important contributions from financial technology, tourism and, with facilities in the redeveloped Harbour Estate, film. It retains a port with commercial and industrial docks, including a reduced Harland & Wolff shipyard and aerospace and defence contractors. Under the Windsor Framework, Belfast and Northern Ireland effectively remain, post Brexit, within both the British domestic and European Single Market trading areas for goods.\nThe city is served by two airports: Belfast City Airport, located on the Lough shore, and Belfast International Airport (also known as Aldergrove), 15 miles (24 km) west of the city. Belfast supports two universities: Ulster University in the city centre, and in the Botanic area in the south of the city, Queen's University Belfast. Since 2021, Belfast has been a UNESCO designated City of Music."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 447
+    },
+    "banned_terms": [
+      {
+        "term": "belfast",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1039,
+    "attempt": 1030,
+    "place_id": "gn-290340",
+    "input": {
+      "place": {
+        "place_id": "gn-290340",
+        "name": "Manama",
+        "country": "Bahrain",
+        "subdivision": "Manama",
+        "lat": 26.22787,
+        "lon": 50.58565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manama",
+          "url": "https://en.wikipedia.org/wiki/Manama",
+          "text": "Manama (Arabic: اَلْمَنَامَة, romanized: al-Manāma, Bahrani pronunciation: [elmɐˈnɑːmɐ]) is the capital and largest city of Bahrain, with an approximate population of 743,066 as of 2025 estimate. Long an important trading center in the Persian Gulf, Manama is home to a diverse population. After periods of Portuguese and Persian control and a short invasion from the ruling dynasty of Saudi Arabia, followed by a longer invasion by Oman, Bahrain established itself as an independent nation in 1971 following a period of British hegemony.\nManama has a history spanning several centuries. First mentioned in Islamic texts as early as the 14th century, Manama remained a small trading port until it came under Portuguese control in the early 1500s. In 1602, the Safavid Persians expelled the Portuguese, and Manama became a regional center for commerce and pearling. By the late 19th century, it had grown significantly due to trade and was declared the capital of Bahrain in 1971 when the country gained independence from British protection. Since then, Manama has evolved into a modern financial hub in the Persian Gulf region.\nManama is situated on the northeastern coast of Bahrain Island, along the Persian Gulf. The city lies on low-lying terrain, with reclaimed land extending its coastline in recent decades due to rapid urban and economic development. Manama's coastal location has historically made it a vital port and trading point in the Gulf. The city has a desert climate, characterized by extremely hot summers, mild winters, and very low annual rainfall. Urban development has spread along the coast, with modern infrastructure, financial districts, and residential areas expanding into the desert outskirts and offshore artificial islands.\nAlthough the current twin cities of Manama and Muharraq appear to have been founded simultaneously in the 1800s, Muharraq took prominence due to its defensive location and was thus the capital of Bahrain until 1923. Manama became the mercantile capital and was the gateway to the main Bahrain Island. In the 20th century, Bahrain's oil wealth helped spur fast growth and in the 1990s a concerted diversification effort led to expansion in other industries and helped transform Manama into an important financial hub in West Asia. Manama was designated as the 2012 capital of Arab culture by the Arab League, and a beta global city by the Globalization and World Cities Research Network in 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 387
+    },
+    "banned_terms": [
+      {
+        "term": "manama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1040,
+    "attempt": 1031,
+    "place_id": "gn-3037656",
+    "input": {
+      "place": {
+        "place_id": "gn-3037656",
+        "name": "Angers",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.47156,
+        "lon": -0.55202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angers",
+          "url": "https://en.wikipedia.org/wiki/Angers",
+          "text": "Angers (UK: , US: ; French: [ɑ̃ʒe] ) is a city in western France, about 300 km (190 mi) southwest of Paris. It is the prefecture of the Maine-et-Loire department and was the capital of the province of Anjou until the French Revolution. The inhabitants of both the city and the province are called Angevins or, more rarely, Angeriens.\nAngers proper covers 42.70 square kilometres (16.49 sq mi) and has a population of 157,555 inhabitants, while around 443,900 live in its metropolitan area (aire d'attraction). The Angers Loire Métropole is made up of 29 communes covering 667 square kilometres (258 sq mi) with 308,800 inhabitants (2022). Not including the broader metropolitan area, Angers is the third most populous commune in northwestern France after Nantes and Rennes and the 18th most populous commune in France.\nFor centuries, Angers was an important stronghold in northwestern France. It was the cradle of the Plantagenet dynasty and became one of the intellectual centers of Europe during the reign of René of Anjou. Angers developed at the confluence of three rivers, the Mayenne, the Sarthe, and the Loir, all coming from the north and flowing south towards the Loire. Their confluence, just north of Angers, creates the Maine, a short but wide river that flows into the Loire several kilometres south.\nToday, Angers stands out for its specialization in the plant sector: Végépolys is Europe's leading horticultural competitiveness cluster, and the city is also home to the headquarters of the Community Plant Variety Office. In addition, the Angers metropolitan area is a major economic centre in western France, particularly active in industry and tourism. Angers enjoys a rich cultural life, made possible by its universities and museums. The old medieval center is still dominated by the massive château of the Plantagenêts, home of the Apocalypse Tapestry, the biggest medieval tapestry ensemble in the world. Angers is also both at the edge of the Val de Loire, a World Heritage Site, and the Loire-Anjou-Touraine regional natural park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 331
+    },
+    "banned_terms": [
+      {
+        "term": "angers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1041,
+    "attempt": 1032,
+    "place_id": "gn-306641",
+    "input": {
+      "place": {
+        "place_id": "gn-306641",
+        "name": "Konak",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.4,
+        "lon": 27.1
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Konak, İzmir",
+          "url": "https://en.wikipedia.org/wiki/Konak,_İzmir",
+          "text": "Konak is a municipality and district of İzmir Province, Turkey. Its area is 24 km2, and its population is 332,277 (2022). It is the most densely populated of the thirty districts of İzmir, and has historically acted as the administrative and economic core of the city. Situated in an area that roughly corresponds to the geographic center of İzmir, Konak extends for 11.4 kilometres (7 miles) along the southern coastline of the Gulf of İzmir. Konak district area neighbors the district areas of Bornova to the east, Balçova to the west and Buca and Karabağlar to the south. Konak center is connected to other districts of İzmir and beyond by a dense network of roads and railroads, as well as by a subway line currently being largely extended and by ferry services to Karşıyaka. Konak is a very active hub of industry, trade, commerce and services, with the number of companies exceeding sixty thousand and its exports nearing two billion US dollars in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "konak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1042,
+    "attempt": 1033,
+    "place_id": "gn-3445679",
+    "input": {
+      "place": {
+        "place_id": "gn-3445679",
+        "name": "Uruguaiana",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.75472,
+        "lon": -57.08833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uruguaiana",
+          "url": "https://en.wikipedia.org/wiki/Uruguaiana",
+          "text": "Uruguaiana is a city and municipality in the Brazilian state of Rio Grande do Sul. It is located on the eastern shore of the Uruguay River\nbordering Argentina. Opposite to Uruguaiana, and joined to it by a road/railway bridge, lies the Argentine city of Paso de los Libres, Corrientes. North of Uruguaiana lies the Brazilian municipality of Itaqui, connected by a bridge constructed by the British in 1888 over the Ibicuí River. The municipality also borders the municipalities of Alegrete, Barra do Quaraí and Quaraí, and, also, Uruguay, making it one of the few international triple-border municipalities of Brazil.\nThe city marks the southernmost point reached by the Paraguayans in the Paraguayan War; after being taken without resistance, it was recaptured after a six-week siege that effectively ended the phase of Paraguayan offensive operations.\nNowadays, Uruguaiana represents the most populated city in western Rio Grande do Sul.\nUruguaiana is also home to the California da Canção Nativa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "uruguaiana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1043,
+    "attempt": 1034,
+    "place_id": "gn-3456166",
+    "input": {
+      "place": {
+        "place_id": "gn-3456166",
+        "name": "Nova Friburgo",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.28194,
+        "lon": -42.53111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nova Friburgo",
+          "url": "https://en.wikipedia.org/wiki/Nova_Friburgo",
+          "text": "Nova Friburgo (Portuguese: [ˈnɔvɐ fɾiˈbuʁɡu]; German: Neufreiburg [nɔʏˈfʁaɪbʊʁk]; English: \"New Fribourg\"), commonly referred to as just Friburgo, is a Brazilian municipality in the state of Rio de Janeiro located 136 kilometres (85 miles) from the state capital. It covers an area of 935.429 km², and its population was estimated at 203 417 in 2025, making it the 16th most populous in the state.\nThe city has an average annual temperature of 18.1 °C, and the Atlantic Forest is the predominant vegetation type in the municipality. In 2022 there were 133,702 vehicles in the city. Its Human Development Index (HDI) is 0,745, considering it to be very high compared to the state. \nThe main economic activities are based on: lingerie, horticulture, goat farming, and industry (textiles, apparel, and the metalworking sector), as well as tourism. It is also the coldest city in the state.\nIn 1 July 2024, the then-president of Brazil Luiz Inácio Lula da Silva, signed into law No. 14,910, which designates the city as the \"Brazilian Switzerland\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "nova friburgo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "friburgo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1044,
+    "attempt": 1035,
+    "place_id": "gn-5387288",
+    "input": {
+      "place": {
+        "place_id": "gn-5387288",
+        "name": "Rialto",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.1064,
+        "lon": -117.37032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rialto, California",
+          "url": "https://en.wikipedia.org/wiki/Rialto,_California",
+          "text": "Rialto is a city in the Inland Empire region of San Bernardino County, California, United States, 56 miles east of Los Angeles, near the Cajon Pass, Interstate 15, Interstate 10, State Route 210 and Metrolink routes.\nIts population was 104,026 as of the 2020 census, up from 99,171 at the 2010 census. Its population and economic activity have grown rapidly in recent years due to the building of major distribution centers in the region.\nRialto is home to major regional distribution centers: Staples Inc., which serves stores across the entire West Coast of the United States, Amazon, Under Armour, Medline Industries, Niagara Bottling, Monster Energy and Target in the northern region of the city, in the Las Colinas community. One of the United States' largest fireworks companies, Pyro Spectaculars, is also headquartered in Rialto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "rialto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1045,
+    "attempt": 1036,
+    "place_id": "gn-745028",
+    "input": {
+      "place": {
+        "place_id": "gn-745028",
+        "name": "İzmit",
+        "country": "Türkiye",
+        "subdivision": "Kocaeli",
+        "lat": 40.76499,
+        "lon": 29.92928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "İzmit",
+          "url": "https://en.wikipedia.org/wiki/İzmit",
+          "text": "İzmit (Turkish pronunciation: [ˈizmit]) is a municipality and the capital district of Kocaeli Province, Turkey. Its area is 480 km2, and its population is 376,056 (2022). The capital of Kocaeli Province, it is located at the Gulf of İzmit in the Sea of Marmara, about 100 km (62 mi) east of Istanbul, on the northwestern part of Anatolia. Kocaeli Province (including rural areas) had a population of 2,079,072 inhabitants in 2022, of whom approximately 1.2 million lived in the largely urban İzmit City metro area made up of Kartepe, Başiskele, Körfez, Gölcük, Derince and Sapanca (in Sakarya Province). Similar to Istanbul, the area of İzmit is coterminous with its province. It is also the most populated of any city or town in Turkey whose name isn't shared with the province it is located in.\nİzmit was known as Nicomedia and Ólbia in antiquity, and was the eastern and most senior capital city of the Roman Empire between 286 and 324, during the Tetrarchy introduced by Diocletian. Following Constantine the Great's victory over co-emperor Licinius at the Battle of Chrysopolis (modern Üsküdar) in 324, Nicomedia served as an interim capital city for Constantine until 330, when Constantinople (modern Istanbul) was officially proclaimed as the new capital of the Roman Empire. During the Ottoman Empire, İzmit was the capital of the Sanjak of Kocaeli. At present, the Istanbul-İzmit area is one of the main industrial regions in Turkey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 134,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "izmit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1046,
+    "attempt": 1037,
+    "place_id": "gn-10630449",
+    "input": {
+      "place": {
+        "place_id": "gn-10630449",
+        "name": "Sunshine Coast",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -26.65682,
+        "lon": 153.07955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunshine Coast, Queensland",
+          "url": "https://en.wikipedia.org/wiki/Sunshine_Coast,_Queensland",
+          "text": "The Sunshine Coast is a peri-urban region in South East Queensland, Australia. In 1967, it was defined as \"the area contained in the [former] Shires of Landsborough, Maroochy and Noosa, but excluding Bribie Island\". Located 100 km (62 mi) north of the centre of Brisbane in South East Queensland, on the Coral Sea coastline, its urban area spans approximately 60 km (37 mi) of coastline and hinterland from Pelican Waters to Tewantin.\nThe area has several coastal hubs at Caloundra, Kawana Waters, Maroochydore and Noosa Heads. Nambour and Maleny have developed as primary commercial centres for the hinterland.\nSince 2014, the Sunshine Coast district has been split into two local government areas, the Sunshine Coast Region and the Shire of Noosa, which administer the southern and northern parts of the Sunshine Coast respectively.\nAs of June 2021, with an estimated urban population of 398,840, the Sunshine Coast (without inclusion of Moreton Bay or Logan City; a part of Brisbane's population) is the third (5th) most populated area in Queensland and the 9th most populous in the country. The population of the area has grown steadily at an average annual rate of 2.4% year-on-year over the five years to 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "sunshine coast",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunshine",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "coast",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1047,
+    "attempt": 1038,
+    "place_id": "gn-1174042",
+    "input": {
+      "place": {
+        "place_id": "gn-1174042",
+        "name": "Kharian",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.81612,
+        "lon": 73.88697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kharian",
+          "url": "https://en.wikipedia.org/wiki/Kharian",
+          "text": "Kharian is a city in the north-central part of Punjab, Pakistan. It is regarded as the 'wealthiest' subdistrict in Pakistan, housing one of the largest cantonments in South Asia, and also being known for its significant overseas population. With a residential population of over 103,036 (as of 2023), Kharian is located at the foothills of the Sub-Himalayan Range and serves as the headquarters of its eponymous subdistrict within the Gujrat district. It is often called the Little Scandinavia of Pakistan because a majority of Pakistani Norwegians and Danish Pakistanis are originally from Kharian.\nKharian is known for its agriculture and large expatriate population. Many residents have migrated to Gulf countries and Europe in search of better financial opportunities, and the remittances they send back make up a significant portion of the tehsil's income. This influx of funds is one of the main reasons Kharian is often regarded as the wealthiest tehsil of Pakistan. Additionally, people from other regions of Pakistan move to Kharian seeking employment, filling the labour gap left by those who have moved abroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "kharian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1048,
+    "attempt": 1039,
+    "place_id": "gn-1275610",
+    "input": {
+      "place": {
+        "place_id": "gn-1275610",
+        "name": "Bilimora",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 20.76957,
+        "lon": 72.96134
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bilimora",
+          "url": "https://en.wikipedia.org/wiki/Bilimora",
+          "text": "Bilimora is a city situated on the banks of the river Ambika, in Gandevi taluka & Navsari district of Gujarat state, in India. The city comes under the purview of the Surat Metropolitan Region. The city is roughly 70 kilometres (43 mi) south of the city of Surat and is the southernmost point of the Surat Metropolitan Region and the Metropolis of Surat. It is linked to Surat by SH 6 and SH 88.\nIn the late 18th century, the Baroda State established a naval station at Bilimora, a port about 40 miles (64 km) south of Surat, known as Bunder Bilimora Suba Armor. A fleet of 50 vessels were stationed here, mostly sailboats, cargo vessels for trading and military vessels to secure the sea from the Portuguese, the Dutch and the French."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "bilimora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1049,
+    "attempt": 1040,
+    "place_id": "gn-1636722",
+    "input": {
+      "place": {
+        "place_id": "gn-1636722",
+        "name": "Malang",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -7.9797,
+        "lon": 112.6304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malang",
+          "url": "https://en.wikipedia.org/wiki/Malang",
+          "text": "Malang (; Javanese: ꦏꦸꦛꦩꦭꦁ, romanized: Kutha Malang, Indonesian: Kota Malang), historically known as Tumapel, is a landlocked city in East Java, Indonesia. It has a history dating back to the age of the Singhasari Kingdom. It is the second most populous city in the province, with a population of 820,043 at the 2010 Census and 843,810 at the 2020 Census; the official estimate as of mid 2025 was 891,859 (comprising 443,302 males and 448,557 females). The Malang Metropolitan area (Greater Malang) was home to 3,096,425 inhabitants in 2025, spread across two cities (Malang itself and Batu) and 22 other districts (21 in Malang Regency and one in Pasuruan Regency). Malang is the third largest city by economy in East Java, after Surabaya and Kediri, with an estimated 2016 GDP at Rp. 44.30 trillion.\nThe city is well known for its mild climate. During Dutch colonization, it was a popular destination for European residents. Even now, Malang still holds its position as a popular destination for international tourists. Malang keeps various historical relics. This city keeps relics of the Kingdom of Kanjuruhan period until the Dutch period. The existence of Dutch heritage in general is in the form of ancient buildings such as the Kayutangan church and Ijen Cathedral which employ Gothic architecture. Malang also holds various events to preserve its cultural heritage, one of which is Malang Tempo Doeloe Festival. There is also a lot of historical heritage which has become a landmark like Tugu Malang (Alun-alun Bundar). Additionally, Malang is well-known because of its label as an educational city. Two of the best universities in Indonesia are in Malang, namely Brawijaya University and Malang State University.\nMalang has various ethnic groups and cultures from all over Indonesia and the world. The population of Malang comprised 889,359 people in mid-2024, with a majority of Javanese, followed by the Madurese, and Chinese or Peranakan. Malang extended urban area, notable known as Malang Raya, is the second largest in East Java after Gerbangkertosusila (Surabaya Metropolitan Area). From the perspective of Javanese culture, the majority of Malang people belong to Arekan Javanese culture.\nMalang was spared many of the effects of the Asian financial crisis, and since that time, it has been marked by steady economic and population growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 376
+    },
+    "banned_terms": [
+      {
+        "term": "malang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
