@@ -202,3 +202,21 @@ mechanisms), Mostar gn-3194828 + Varna tier 3 (defining-event/origin
 details rather than dated foundings), Palmas gn-3474574 (summer =
 rainiest AND coldest paradox), Pyeongtaek gn-1838343 (tier 2 from
 province records). Pool remaining after wave 2: 7,397.
+
+## WAVE 2 — milestone-2 review: NEEDS WORK (one item) -> fixed
+Reviewer (reviews/milestone-2-review.md) certified: hashes, position
+verification 200/200, byte-identical re-fold, 69/69 validateRecord,
+345/345 quotes verbatim, tier sourcing (T2 section 69/69; T1/3/4/5
+lead-only 276/276), assembly 389/389 identical to shipped assembler
+output, leak 0/1,945, cumulative set arithmetic disjoint
+(229 + 91 + 69). Seven of eight flagged borderlines PASSED (Gaziantep
+narrow, Magnitogorsk, Guarapuava, Bishkek, Mostar, Palmas,
+Pyeongtaek); random spot-reads 12/12; false-reject checks 6/6.
+Withheld: Varna gn-726050 tier 3 — Thracian-origin detail with no
+founding year/founder, no discrete event, no temporal anchor
+(Negombo/Dumaguete class); lead offers no compliant alternative.
+FIXED: converted to tier-3 rejection (verified on disk by re-read).
+Post-fix fold: 200 / 68 / 132 (climate 87, history 42, hook 3),
+validatorRejected 0. Union accepted 388; manifest 388; leak scan
+0 hits / 1,940 texts. 388 >= 365 with a 23-set buffer.
+Re-presented for narrow re-review.
