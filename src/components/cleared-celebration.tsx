@@ -36,9 +36,9 @@ export const CLEARED_COPY = {
   hard: {
     /** `region` is the state/country name, or "world" for the Globe. */
     heading: (region: string) => `True ${region} explorer! 🏆`,
-    body: "You found every place here, even the really tricky ones. Where will you explore next?",
+    body: "You found every place on the Hard path here, even the really tricky ones. Where will you explore next?",
     bodyGlobe:
-      "You found every place on the planet, even the really tricky ones. Where will you explore next?",
+      "You found every place on the Hard path — even the really tricky ones. Where will you explore next?",
     replay: "Replay Hard",
     playGlobe: "Play the Globe",
     moreEditions: "More editions",
