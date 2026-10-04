@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 286,
+    "attempt": 281,
+    "place_id": "gn-1260341",
+    "input": {
+      "place": {
+        "place_id": "gn-1260341",
+        "name": "Parbhani",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.26855,
+        "lon": 76.77081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parbhani",
+          "url": "https://en.wikipedia.org/wiki/Parbhani",
+          "text": "Parbhani (parbhani, Marathi pronunciation: [pəɾbʰəɳiː] ) is a city in Maharashtra state of India. It is the administrative headquarters of Parbhani District. Parbhani is one of the largest cities in Marathwada region. Parbhani is around 200 kilometres (120 mi) away from regional headquarters of Aurangabad while it is 491 km (305 mi) away from the state capital Mumbai.\nAlong with the entire Marathwada region, Parbhani was a part of the erstwhile Nizam State; later a part of Hyderabad State; after reorganization of states in 1956 it became a part of the then-Bombay state; since 1960, it has been part of the present Maharashtra state.\nParbhani is home to Vasantrao Naik Marathwada Agricultural University, which is one of only four agriculture universities in Maharashtra. Moreover, Parbhani also has an annual festival at Turabul Haq Dargah, which attracts lakhs of tourists each year. Parbhani is named after Goddess Prabhavati."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "parbhani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 287,
+    "attempt": 282,
+    "place_id": "gn-1275971",
+    "input": {
+      "place": {
+        "place_id": "gn-1275971",
+        "name": "Bhilai",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.20919,
+        "lon": 81.4285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhilai",
+          "url": "https://en.wikipedia.org/wiki/Bhilai",
+          "text": "Bhilai is a city in Durg district of the Indian state of Chhattisgarh, in east-central India. Along with its twin city, Durg, the urban agglomeration of Durg-Bhilai Nagar has a population of more than a million, making it the second most populous urban area in Chhattisgarh, after Raipur. The Bhilai metropolis contains three municipal corporations: Bhilai Municipal Corporation, Bhilai Charoda Municipal Corporation and, Risali Municipal Corporation.\nBhilai is a major industrial and educational hub of central India. The city is home to several industries, including Bhilai Steel Plant, Jaypee Cement, Orient Cement, NSPCL Bhilai Power Plant, Steel Authority of India, FSNL, and ACC Cement. The city is home to the Indian Institute of Technology Bhilai, as well as the Bhilai Institute of Technology. Risali is an emerging urban hub with its own municipal corporation.\nThe city also has the state's oldest zoo, Maitri Bagh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "bhilai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 288,
+    "attempt": 283,
+    "place_id": "gn-1689286",
+    "input": {
+      "place": {
+        "place_id": "gn-1689286",
+        "name": "San Juan",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.6,
+        "lon": 121.0333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan, Metro Manila",
+          "url": "https://en.wikipedia.org/wiki/San_Juan,_Metro_Manila",
+          "text": "San Juan, officially the City of San Juan (Filipino: Lungsod ng San Juan), is a highly urbanized city in the National Capital Region of the Philippines. According to the 2024 census, it has a population of 134,312 people. It is located in Metro Manila's approximate geographical center, and is the country's smallest city by land area.\nThe city is known historically for the site of the first battle of the Katipunan, the organization which led the 1896 Philippine Revolution against the Spanish Empire. Notable landmarks today such as the Pinaglabanan Shrine and heritage homes are located in the city. Other locations include Greenhills and Santolan Town Plaza, making the city a major shopping hub with a range of upscale, boutique, and bargain retail."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "san juan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 289,
+    "attempt": 284,
+    "place_id": "gn-1689510",
+    "input": {
+      "place": {
+        "place_id": "gn-1689510",
+        "name": "San Jose",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 12.35275,
+        "lon": 121.06761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Jose, Occidental Mindoro",
+          "url": "https://en.wikipedia.org/wiki/San_Jose,_Occidental_Mindoro",
+          "text": "San Jose, officially the Municipality of San Jose (Tagalog: Bayan ng San Jose),  is a municipality in the province of Occidental Mindoro, Philippines. According to the 2024 census, it has a population of 143,495 people.\nSan Jose has the province's largest commercial port and airport, the most banking, business, dining and commercial establishments in Occidental Mindoro, and has become a center of trade in the Mimaropa region. Its major local and international exports include rice, salt and processed milkfish. It was ranked 13th in \"overall competitiveness\" among Philippine local government units in the 2017 Cities and Municipalities Competitiveness Index (CMCI).\nIn pre-colonial times, it was named Pandurucan by the indigenous Mangyans after the local river, before later renamed for its patron saint, St. Joseph, the husband of Mary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "san jose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 290,
+    "attempt": 285,
+    "place_id": "gn-1785738",
+    "input": {
+      "place": {
+        "place_id": "gn-1785738",
+        "name": "Yuncheng",
+        "country": "China",
+        "subdivision": "Shanxi",
+        "lat": 35.02306,
+        "lon": 110.99278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yuncheng",
+          "url": "https://en.wikipedia.org/wiki/Yuncheng",
+          "text": "Yuncheng (simplified Chinese: 运城; traditional Chinese: 運城) is the southernmost prefecture-level city in Shanxi province, People's Republic of China. It borders Linfen and Jincheng municipalities to the north and east, and Henan (Luoyang and Jiyuan to the east, Sanmenxia to the south) and Shaanxi (Weinan) provinces to the east, south and west, respectively. As of the 2020 census, its population was 4,774,508 inhabitants (5,134,779 in 2010), of whom 928,334 (680,036 in 2010) lived in the built-up (or metro) area made of Yanhu District. One can note than Pinglu County, 205,080 inhabitants in the south, is now part of Sanmenxia built-up (or metro) area.\nYuncheng is a city that was born and prospered from salt. It is named after the \"City of Salt Luck\". The city is historically associated with the Yuncheng Salt Lake (运城盐湖), one of the largest natural salt lakes in China, which has been exploited for thousands of years and provided a crucial economic foundation for the region. In ancient times, the salt from Yuncheng was an important source of revenue and even influenced regional trade routes, making the city a strategic economic center. Due to its geographical location, Yuncheng also serves as a gateway connecting Shanxi with Henan and Shaanxi, making it an important transportation and cultural hub in the Yellow River basin.\nThe city is served by Yuncheng Yanhu International Airport, several national highways, and high-speed railway lines, which further strengthen its role as a regional transport node."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "yuncheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 291,
+    "attempt": 286,
+    "place_id": "gn-191245",
+    "input": {
+      "place": {
+        "place_id": "gn-191245",
+        "name": "Kisumu",
+        "country": "Kenya",
+        "subdivision": "Kisumu County",
+        "lat": -0.10221,
+        "lon": 34.76171
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kisumu",
+          "url": "https://en.wikipedia.org/wiki/Kisumu",
+          "text": "Kisumu ( kee-SOO-moo) is the third-largest city in Kenya located in the Lake Victoria area in the former Nyanza Province. It is the second-largest city in the Lake Victoria Basin after Kampala. The city has a population of 438,588 according to the recent 2026 population estimates. The metro region, including Maseno and Ahero, had a population of 6,771 (Maseno) and 11,801 (Ahero) people respectively, totaling to a combined population of 457,160 people, according to the 2019 Kenya Population and Housing Census which was conducted by the Kenya National Bureau of Statistics.\nIn addition to its political importance, the city is a significant industrial and commercial centre in Kenya. It is also home to a number of higher-education institutions and a sizeable academic community. The city has been undergoing efforts to rejuvenate its downtown and Lower Town areas, including improvements to the lakefront, measures to reduce congestion on major streets, and initiatives to make streets more pedestrian-friendly.\nCulturally, Kisumu serves as the centre of the Luo people of East Africa. It was the most prominent urban centre in the pre-colonial and post-colonial period. It remains prominent in the modern era for natives of the Kavirondo region. It was briefly renamed Port Florence, before its name was reverted back.\nThe city serves as the capital of Kisumu County and was the immediate former capital of now-defunct Nyanza Province. \nIt is an important link in the trade route between Lake Victoria and Mombasa because of its water and rail connections. It is also the chief terminus for the agricultural produce of Nyanza and Western regions. Kisumu International Airport has regular flights to Nairobi and other neighbouring cities such as Mombasa.  According to the United Nations, Kisumu is now recognized as a key city and a \"Millennium City\" – the first of its kind in the world and also in East Africa.\nKisumu's elevation is 1,131 m (3,711 ft) and is about 320 km (200 mi) northwest of Nairobi, on the shores of Lake Victoria. It lies at the northeastern edge of the Winam Gulf, a long, shallow arm that protrudes from the main body of Lake Victoria. Kisumu is 24 km (15 mi) south of the equator and has, due to its elevation, moderate temperatures.\nThe metropolitan region comprises the city and its suburbs and satellite towns of Maseno, Kondele, and Ahero."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 389
+    },
+    "banned_terms": [
+      {
+        "term": "kisumu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 292,
+    "attempt": 287,
+    "place_id": "gn-2036113",
+    "input": {
+      "place": {
+        "place_id": "gn-2036113",
+        "name": "Liaoyang",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.27194,
+        "lon": 123.17306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Liaoyang",
+          "url": "https://en.wikipedia.org/wiki/Liaoyang",
+          "text": "Liaoyang (Chinese: 辽阳; pinyin: Liáoyáng) is a prefecture-level city of east-central Liaoning province, China, situated on the Taizi River. It is approximately one hour south of Shenyang, the provincial capital, by car. Liaoyang is home to Liaoning University's College of Foreign Studies and a number of vocational colleges. The city hosts a limited number of professional basketball and volleyball games in a modern sports facility. According to the latest statistics in 2020, the age distribution of the population in Liaoyang is as follows: 0–14 years old account for 9.83% of the population; 15–59 years old account for 62.26% of the population; 60 years old and above account for 27.91% of the population; 65 years old and above account for 19.46% of the population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "liaoyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 293,
+    "attempt": 288,
+    "place_id": "gn-2210554",
+    "input": {
+      "place": {
+        "place_id": "gn-2210554",
+        "name": "Sirte",
+        "country": "Libya",
+        "subdivision": "Surt",
+        "lat": 31.20892,
+        "lon": 16.58866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sirte",
+          "url": "https://en.wikipedia.org/wiki/Sirte",
+          "text": "Sirte (; Arabic: سِرْت, ), also spelled Sirt, Surt, Sert or  Syrte, is a city in Libya. It is located south of the Gulf of Sirte, almost right in the middle between Tripoli and Benghazi. It is known for its battles, ethnic groups and loyalty to former Libyan ruler Muammar Gaddafi. Due to developments in the First Libyan Civil War, it was briefly the capital of Libya from 1 September to 20 October 2011 as Tripoli's successor after the city's fall. The settlement was established in the early 20th century by the Italians, at the site of a 19th-century fortress built by the Ottomans. It grew into a city after World War II.\nContrary to popular belief, Sirte was not Muammar Gaddafi's birthplace. Gaddafi's birthplace was in a village 20 km south of Sirte, which is called Qasr Abu Hadi. The inhabitants of this village were farmers. Just a few significant people from the Gaddafi tribe, of whom some were born in Sirte, were appointed to government roles during the time of the Libyan Arab Jamahiriya until the NATO-led invasion of Libya in 2011. Sirte was favoured by the Gaddafi government. The city was the final major stronghold of Gaddafi loyalists in the civil war and Gaddafi was killed there by rebel forces on 20 October 2011 after sustaining major injury caused by French Air Force Bombs discharged as part of the NATO intervention. During the battle, Sirte was left almost completely in ruins, with many buildings destroyed or damaged. Six months after the civil war, almost 60,000 inhabitants, more than 70 percent of the pre-war population, had returned."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 269
+    },
+    "banned_terms": [
+      {
+        "term": "sirte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 294,
+    "attempt": 289,
+    "place_id": "gn-2634910",
+    "input": {
+      "place": {
+        "place_id": "gn-2634910",
+        "name": "Wakefield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.68331,
+        "lon": -1.49768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wakefield",
+          "url": "https://en.wikipedia.org/wiki/Wakefield",
+          "text": "Wakefield is a cathedral city in West Yorkshire, England, located on the River Calder. The city had a population of 109,766 in the 2021 census, up from 99,251 in the 2011 census. The city is the administrative centre of the wider Metropolitan Borough of Wakefield, which had a 2025 population of 369,450, the 26th most populous district in England. It is part of the West Yorkshire Built-up Area and the Yorkshire and the Humber region.\nIn 1888, it gained city status due to its cathedral. The city has a town hall and is home to the county hall, which was the former administrative centre of the city's county borough and metropolitan borough as well as county town for the West Riding of Yorkshire.\nThe Battle of Wakefield took place in the Wars of the Roses, and the city changed hands between the two sides in the Civil War. Wakefield became an important market town and centre for wool, exploiting its position on the navigable River Calder to become an inland port. In the 18th century, Wakefield traded in corn, coal and textiles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "wakefield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 295,
+    "attempt": 290,
+    "place_id": "gn-2991214",
+    "input": {
+      "place": {
+        "place_id": "gn-2991214",
+        "name": "Mulhouse",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 47.75205,
+        "lon": 7.32866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mulhouse",
+          "url": "https://en.wikipedia.org/wiki/Mulhouse",
+          "text": "Mulhouse is a French city of the European Collectivity of Alsace (Haut-Rhin department, in the Grand Est region of France). It is near the border with Switzerland and Germany. It is the largest city in Haut-Rhin and second largest in Alsace after Strasbourg.\nMulhouse is known for its museums, especially the Cité de l'Automobile (also known as the Musée national de l'automobile, 'National Museum of the Automobile') and the Cité du Train (also known as Musée Français du Chemin de Fer, 'French Museum of the Railway'), respectively the largest automobile and railway museums in Europe. An industrial town nicknamed \"the French Manchester\", Mulhouse is also the main seat of the Upper Alsace University, where the secretariat of the European Physical Society is found."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "mulhouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 296,
+    "attempt": 291,
+    "place_id": "gn-3451138",
+    "input": {
+      "place": {
+        "place_id": "gn-3451138",
+        "name": "Rio Grande",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -32.035,
+        "lon": -52.09861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rio Grande, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/Rio_Grande,_Rio_Grande_do_Sul",
+          "text": "Rio Grande (lit. 'Great River') is a municipality (município) and one of the oldest cities in the Brazilian state of Rio Grande do Sul. It was the state capital from 1835 to 1845. It is the most important port city in the state and has one of the most important maritime ports in Brazil.\nThe city is named after a nearby channel which indirectly connects the Lagoa dos Patos, to the northeast, and Lagoa Mirim, to the west, with the Atlantic Ocean. The municipality is bordered by Santa Vitória do Palmar on the south and Pelotas on the north, which lies across the São Gonçalo Channel.\nThe city built up its wealth over the course of its long history of strong industrial movements. Today it is still one of the richest cities in Rio Grande do Sul, mainly because of its port, the second busiest in Brazil, and its refinery, which processes Ipiranga petroleum.\nThe city is served by Rio Grande Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "rio grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 297,
+    "attempt": 292,
+    "place_id": "gn-3663517",
+    "input": {
+      "place": {
+        "place_id": "gn-3663517",
+        "name": "Manaus",
+        "country": "Brazil",
+        "subdivision": "Amazonas",
+        "lat": -3.10194,
+        "lon": -60.025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manaus",
+          "url": "https://en.wikipedia.org/wiki/Manaus",
+          "text": "Manaus (Portuguese: [maˈnaws, mɐ-] ) is the capital and largest city of the Brazilian state of Amazonas. It is the seventh-largest city in Brazil, with an estimated 2024 population of 2,279,686 distributed over a land area of about 11,401 km2 (4,402 sq mi). Located at the east centre of the state, the city is the centre of the Manaus metropolitan area and the largest metropolitan area in the North Region of Brazil by urban landmass. It is situated near the confluence of the Negro and Amazon rivers. It is one of the two cities in the Amazon rainforest with a population of over 1 million people, alongside Belém.\nThe city was founded in 1669 as the Fort of São José do Rio Negro. It was elevated to a town in 1832 with the name of \"Manaus\", an altered spelling of the indigenous Manaós peoples, and legally transformed into a city on October 24, 1848, with the name of Cidade da Barra do Rio Negro, Portuguese for \"The City of the Margins of the Black River\". On September 4, 1856, it returned to the name \"Manaus\".\nManaus is located in the center of the Amazon rainforest, and home to the National Institute of Amazonian Research, being the most important center for scientific studies in the Amazon region and for international sustainability issues. It was known at the beginning of the century as Heart of the Amazon and City of the Forest. Its main economic engine is the Industrial Park of Manaus, a Free Economic Zone. The city has a free port and an international airport. Its manufactures include electronics, chemical products, and soap; there are distilling and ship construction industries. Manaus exports Brazil nuts, rubber, jute, and rosewood oil. It has a cathedral, the Amazon Theatre opera house, zoological and botanical gardens, an eco-park, and regional and native peoples museums.\nThe Solimões and Negro rivers meet just east of Manaus and join to form the Amazon River (using the Brazilian definition of the river; elsewhere, Solimões is considered the upper part of the Amazon). Rubber made it the richest city in South America during the late 1800s. Rubber helped Manaus earn its nickname, the Paris of the Tropics. Many wealthy European families settled in Manaus and brought their love for sophisticated European art, architecture, and culture with them. Manaus was one of the twelve Brazilian host cities of the 2014 World Cup, as well as one of the six hosts of football matches at the 2016 Summer Olympics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 417
+    },
+    "banned_terms": [
+      {
+        "term": "manaus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 298,
+    "attempt": 293,
+    "place_id": "gn-379003",
+    "input": {
+      "place": {
+        "place_id": "gn-379003",
+        "name": "El Obeid",
+        "country": "Sudan",
+        "subdivision": "North Kordofan",
+        "lat": 13.18421,
+        "lon": 30.21669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Obeid",
+          "url": "https://en.wikipedia.org/wiki/El_Obeid",
+          "text": "El Obeid (Arabic: الأُبَيِّض, romanized: al-ʔubayyiḍ, lit. 'the white' ), also romanized as Al-Ubayyid, is the capital of the state of North Kordofan, in Sudan. It is located within the Sheikan locality and under the former administrative structure within Sheikan District. El Obeid is an important commercial and transport centre linking western Sudan with the eastern parts of the country. The city is known for its trade in gum arabic, millet, oilseeds and livestock, and has a railway terminus, major roads and El Obeid Airport.\nEl Obeid prospered as a caravan stop under the Musaba’at Kingdom before the Egyptians founded the modern city in 1821. It was destroyed and abandoned during the  Mahdist period, then rebuilt after Anglo-Egyptian forces took control in 1899. Its growth accelerated following the construction of a railway to Khartoum and Port Sudan between 1909 and 1912.\nSince the outbreak of the Sudanese civil war in April 2023, El Obeid has been repeatedly besieged and attacked by the Rapid Support Forces. The conflict has caused shortages of essential goods, civilian casualties and large-scale displacement. As of July 2026, an estimated 563,000 residents and 105,000 internally displaced persons were living in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "el obeid",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "obeid",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 299,
+    "attempt": 294,
+    "place_id": "gn-5505411",
+    "input": {
+      "place": {
+        "place_id": "gn-5505411",
+        "name": "Henderson",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 36.0397,
+        "lon": -114.98194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Henderson, Nevada",
+          "url": "https://en.wikipedia.org/wiki/Henderson,_Nevada",
+          "text": "Henderson is a city in Clark County, Nevada, United States, about 16 miles (26 km) southeast of  Las Vegas. It is the 2nd most populous city in Nevada, after Las Vegas, with 317,610 residents as of the 2020 census. The city is part of the Las Vegas Valley metropolitan area.\nHenderson has an extensive system of outdoor recreation facilities, including over 220 miles (350 km) of trails and 72 parks.\nIncorporated in 1953, Henderson was originally known for its role in magnesium production during World War II. Since then, it has grown rapidly through the development of master planned communities starting with the large Green Valley neighborhood, redevelopment and reinvestment after the PEPCON disaster, and the city government's historically proactive planning and management."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "henderson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 300,
+    "attempt": 295,
+    "place_id": "gn-6992326",
+    "input": {
+      "place": {
+        "place_id": "gn-6992326",
+        "name": "Mohali",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.67995,
+        "lon": 76.72211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mohali",
+          "url": "https://en.wikipedia.org/wiki/Mohali",
+          "text": "Mohali, officially Sahibzada Ajit Singh Nagar or Ajitgarh, is a planned city in the Mohali district in Punjab, India, which is an administrative and a commercial hub lying south-west of Chandigarh. It is the headquarters of the Mohali district and one of the six Municipal Corporations of the State. It is officially named after Sahibzada Ajit Singh, the eldest son of Guru Gobind Singh.  It is one of the major satellite cities of Chandigarh and is part of the Chandigarh Capital Region.\nMohali has developed rapidly as an Information technology hub of the state of Punjab, and has thus grown in importance. The Government of Punjab has initiated significant infrastructure and recreation projects in attempts to increase the standard of living in Mohali. Roads have been built to create networks between Mohali and Chandigarh International Airport to boost its international connectivity.\nMohali was earlier a part of the Rupnagar district and was carved out and made a part of a separate district in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 123,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "mohali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 301,
+    "attempt": 296,
+    "place_id": "gn-1272842",
+    "input": {
+      "place": {
+        "place_id": "gn-1272842",
+        "name": "Dharmavaram",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 14.41435,
+        "lon": 77.72035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dharmavaram, Sri Sathya Sai district",
+          "url": "https://en.wikipedia.org/wiki/Dharmavaram,_Sri_Sathya_Sai_district",
+          "text": "Dharmavaram is a town in Sri Sathya Sai District of the Andhra Pradesh state  of Indian country. It is mandal and divisional headquarters of Dharmavaram mandal and Dharmavaram revenue division respectively. The city is known for its handloom silk sarees.\nThe city is renowned for cotton, silk weaving industries and leather puppets. The city is called as Silk city of Andhra Pradesh. Dharmavaram is famous for Handloom Weavers, Saree Designs, Jacquard designs, Silk Extraction from Silkworm Cacoons, Dyeing and it is fully populated by maximum weavers and by developing technology makes changes by producing various types of machine equipment emerging for weavers to weave quickly than the past decades and quality production was happening now and the production was famous for Sarees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "dharmavaram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 302,
+    "attempt": 297,
+    "place_id": "gn-144448",
+    "input": {
+      "place": {
+        "place_id": "gn-144448",
+        "name": "Ahvaz",
+        "country": "Iran",
+        "subdivision": "Khuzestan",
+        "lat": 31.31901,
+        "lon": 48.6842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ahvaz",
+          "url": "https://en.wikipedia.org/wiki/Ahvaz",
+          "text": "Ahvaz (Persian: اهواز; [ʔæhˈvɒːz] ) is a city in the Central District of Ahvaz County, Khuzestan province, Iran, serving as capital of the province, the county, and the district.\nPositioned near the border with Iraq, along the banks of the Karun River, Ahvaz serves as a key industrial and transportation hub, with a diverse population and a history shaped by its proximity to Iraq and the Persian Gulf.\nAhvaz is home to over 1.3 million people within its metropolitan area. Census results suggest a steady increase in population. It is home to Persians, Arabs and other groups such as Qashqai and Kurds. Languages spoken in the area include Persian, Khuzestāni Arabic, Southern Kurdish, Neo-Mandaic, and dialects such as Bakhtiari, Dezfuli and Shushtari.\nThe Karun, the largest river in Iran by volume, flows through the center of the city. It is one of two navigable rivers in Iran, alongside the Arvand Rud.\nAhvaz has earned the reputation of being the City of Bridges due to its numerous big bridges built on the Karun to facilitate better communication between the east and west parts of the city, although since the beginning of the 20th century, this city has always been known as the Oil Capital of Iran, along with other cities of Khuzestan province.\nThis city has a long history, dating back to the Achaemenid period. In ancient times, the city was one of the main centers of the Academy of Gondishapur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "ahvaz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 303,
+    "attempt": 298,
+    "place_id": "gn-1710914",
+    "input": {
+      "place": {
+        "place_id": "gn-1710914",
+        "name": "Imus",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.42972,
+        "lon": 120.93667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Imus",
+          "url": "https://en.wikipedia.org/wiki/Imus",
+          "text": "Imus (Tagalog pronunciation: [ˈʔimus]), officially the City of Imus (Filipino: Lungsod ng Imus), is a component city and de jure capital of the province of Cavite, Philippines. According to the 2024 census, it has a population of 481,949 people.\nIt is the de jure capital of the province of Cavite, located 20 kilometers (12 mi) south of Metro Manila, when President Ferdinand Marcos decreed the transfer of the seat of the provincial government from Trece Martires on June 11, 1977. However, most offices of the provincial government are still located in Trece Martires. Imus was officially converted into a city following a referendum on June 30, 2012.\nImus was the site of two major Katipunero victories during the Philippine Revolution against Spain. The Battle of Imus was fought on September 3, 1896, and the Battle of Alapan, on May 28, 1898, the day when the first Philippine flag was flown making Imus the \"Flag Capital of the Philippines.\" Both events are celebrated annually in the city. The Imus Historical Museum honors the city's history with historical reenactment of scenes from the revolution."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "imus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 304,
+    "attempt": 299,
+    "place_id": "gn-1717641",
+    "input": {
+      "place": {
+        "place_id": "gn-1717641",
+        "name": "Cavite City",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.48369,
+        "lon": 120.89878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cavite City",
+          "url": "https://en.wikipedia.org/wiki/Cavite_City",
+          "text": "Cavite City, officially the City of Cavite (Filipino: Lungsod ng Kabite; Chavacano: Ciudad de Cavite) is a component city in the Philippines. According to the 2024 census, it has a population of 98,673 people.\nThe city was the capital of Cavite Province from its establishment in 1614 until the title was transferred to the newly created, more accessible city of Trece Martires in 1954. Cavite City was originally a small port town, Cavite Puerto, that prospered during the early Spanish colonial period, when it served as the main seaport of Manila. Cavite Puerto hosted the Manila-Acapulco galleon trade, along with other large sea-bound ships. Thereafter, San Roque and La Caridad, two formerly independent towns in Cavite province, were annexed by the city. Today, Cavite City includes the communities of San Antonio (Cañacao and Sangley Point), the southern districts of Santa Cruz and Dalahican, and the outlying islands of the province, such as the historic Corregidor Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "cavite city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cavite",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 305,
+    "attempt": 300,
+    "place_id": "gn-1736376",
+    "input": {
+      "place": {
+        "place_id": "gn-1736376",
+        "name": "Kota Bharu",
+        "country": "Malaysia",
+        "subdivision": "Kelantan",
+        "lat": 6.12361,
+        "lon": 102.24333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kota Bharu",
+          "url": "https://en.wikipedia.org/wiki/Kota_Bharu",
+          "text": "Kota Bharu (Kelantanese: Koto Baghu), colloquially referred to as KB, is a town in Malaysia that serves as the state capital and royal seat of Kelantan. It is situated in the northeastern part of Peninsular Malaysia and lies near the mouth of the Kelantan River.\nThe town is home to many religious buildings, various museums, the unique architecture of the old royal palaces (still occupied by the Sultan and Sultanah and off-limits to visitors but viewable from outside) and former royal buildings (which can be visited). It is served by Keretapi Tanah Melayu's East Coast Line at the nearby Wakaf Bharu Terminal Station, in the town of Wakaf Bharu across the Kelantan River and Sultan Ismail Petra Airport, located in Pengkalan Chepa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "kota bharu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kota",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bharu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

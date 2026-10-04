@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 246,
+    "attempt": 241,
+    "place_id": "gn-3566067",
+    "input": {
+      "place": {
+        "place_id": "gn-3566067",
+        "name": "Camagüey",
+        "country": "Cuba",
+        "subdivision": "Camagüey",
+        "lat": 21.38083,
+        "lon": -77.91694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camagüey",
+          "url": "https://en.wikipedia.org/wiki/Camag%C3%BCey",
+          "text": "Camagüey (Spanish pronunciation: [kamaˈ(ɣ)wej]) is a city and municipality in central Cuba and is the nation's third-largest city with more than 333,000 inhabitants. It is the capital of the Camagüey Province.\nIt was founded as Santa María del Puerto del Príncipe in 1514, by Spanish colonists on the northern coast and moved inland in 1528, to the site of a Taino village named Camagüey. It was one of the seven original settlements (villas) founded in Cuba by the Spanish. After Henry Morgan burned the city in the 17th century, it was redesigned like a maze so attackers would find it hard to move around inside the city.\nThe symbol of the city of Camagüey is the clay pot or tinajón, used to capture rain water and keep it fresh. Camagüey is also the birthplace of Ignacio Agramonte (1841), an important figure of the Ten Years' War against Spain. A monument by Italian sculptor Salvatore Buemi, erected in the center of the area to Ignacio Agramonte, was unveiled by his wife in 1912. It is composed of an equestrian statue, reliefs in bronze that reveal fragments of the life of Agramonte, and a sculpture of a woman that symbolizes the motherland.\nIn July 2008, the old town was designated a UNESCO World Heritage Site, because of its irregular, maze-like city planning, its prominent role in early Spanish colonization and agriculture, and its rich architecture showing a variety of influences."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "camaguey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 247,
+    "attempt": 242,
+    "place_id": "gn-3584257",
+    "input": {
+      "place": {
+        "place_id": "gn-3584257",
+        "name": "Santa Tecla",
+        "country": "El Salvador",
+        "subdivision": "La Libertad Department",
+        "lat": 13.67741,
+        "lon": -89.28335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Tecla, El Salvador",
+          "url": "https://en.wikipedia.org/wiki/Santa_Tecla,_El_Salvador",
+          "text": "Santa Tecla (Spanish pronunciation: [ˈsanta ˈtekla]), formerly known as Nueva San Salvador (\"New San Salvador\"), is a city and a municipality in the La Libertad department of El Salvador. It is the capital of the department of La Libertad.\nThe city was named after Saint Thecla, a saint of the early Christian Church and a reported follower of Paul of Tarsus in the 1st century AD. She is not mentioned in the New Testament, but the earliest record of her comes from the apocryphal Acts of Paul and Thecla, probably composed in the early 2nd century.\nSanta Tecla is situated at the southern foot of the San Salvador Volcano and is a part of the San Salvador metropolitan area. The municipality of Antiguo Cuscatlán sits on its eastern border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "santa tecla",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tecla",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 248,
+    "attempt": 243,
+    "place_id": "gn-3618030",
+    "input": {
+      "place": {
+        "place_id": "gn-3618030",
+        "name": "León",
+        "country": "Nicaragua",
+        "subdivision": "León Department",
+        "lat": 12.43527,
+        "lon": -86.87862
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "León, Nicaragua",
+          "url": "https://en.wikipedia.org/wiki/Le%C3%B3n,_Nicaragua",
+          "text": "León (Spanish pronunciation: [leˈon]) is the second largest city in Nicaragua, after Managua. Founded by the Spanish as Santiago de los Caballeros de León, it is the capital and largest city of León Department. As of 2022, the municipality of León has an estimated population of 213,718.\nLeón is located along the Río Chiquito (Chiquito River), some 90 kilometres (56 miles) northwest of Managua, and some 18 km (11 miles) east of the Pacific Ocean coast. León has long been the political and intellectual center of the nation and its National Autonomous University of Nicaragua (UNAN) was founded in 1812, making it the second oldest university in Central America. León is also an important industrial, agricultural, and commercial center for Nicaragua, exporting sugar cane, cattle, peanut, plantain, and sorghum. The city has been home to many of Nicaragua's most noteworthy poets including Rubén Darío, Alfonso Cortés and Salomón de la Selva."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "leon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 249,
+    "attempt": 244,
+    "place_id": "gn-5780026",
+    "input": {
+      "place": {
+        "place_id": "gn-5780026",
+        "name": "Provo",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.23384,
+        "lon": -111.65853
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Provo, Utah",
+          "url": "https://en.wikipedia.org/wiki/Provo,_Utah",
+          "text": "Provo ( PROH-voh) is a city in and the county seat of Utah County, Utah, United States. It is 43 miles (69 km) south of Salt Lake City along the Wasatch Front, and lies between the cities of Orem to the north and Springville to the south. With a population at the 2020 census of 115,162, Provo is the fourth-largest city in Utah and the principal city in the Provo-Orem-Lehi metropolitan area, which had a population of 526,810 at the 2010 census. It is Utah's second-largest metropolitan area after Salt Lake City.\nProvo is the home to Brigham Young University (BYU), a private higher education institution operated by The Church of Jesus Christ of Latter-day Saints (LDS Church). Provo also has the LDS Church's largest Missionary Training Center (MTC). The city is a focus area for technology development in Utah, with several billion-dollar startups. The city's Peaks Ice Arena was a venue for the Salt Lake City Winter Olympics in 2002."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "provo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 250,
+    "attempt": 245,
+    "place_id": "gn-593116",
+    "input": {
+      "place": {
+        "place_id": "gn-593116",
+        "name": "Vilnius",
+        "country": "Lithuania",
+        "subdivision": "Vilnius",
+        "lat": 54.68916,
+        "lon": 25.2798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vilnius",
+          "url": "https://en.wikipedia.org/wiki/Vilnius",
+          "text": "Vilnius (  VIL-nee-əs; Lithuanian: [ˈvʲɪlʲnʲʊs] ) is the capital and largest city of Lithuania and the most-populous city in the Baltic states. The city's estimated July 2026 population was 619,405, and the Vilnius urban area (which extends beyond the city limits) has an estimated population of 767,907.\nVilnius is notable for the architecture of its Old Town, considered one of Europe's largest and best-preserved old towns. The city was declared a UNESCO World Heritage Site in 1994. The architectural style known as Vilnian Baroque is named after the city, which is the easternmost Baroque city and the largest such city north of the Alps. The Renaissance and Baroque architecture of Vilnius was largely influenced by the Italian architecture as Italian descent architects, artists participated in designing and decorating it. The culture of Italy in Vilnius was significantly strengthened by the Italian princess Bona Sforza, who in 1517 married the Lithuanian Grand Duke Sigismund I the Old, and by their son Sigismund II Augustus.\nThe city has been the capital of Lithuania since at least 1323, when it was first mentioned as such in a letter of the Lithuanian Grand Duke Gediminas. Since the 13th century until the mid-17th century the Vilnius Castle Complex had served as the residence of the Lithuanian monarchs. Furthermore, the city was noted for its multicultural population during the Polish–Lithuanian Commonwealth, with contemporary sources comparing it to Babylon. Before World War II and the Holocaust, Vilnius was one of Europe's most important Jewish centres, leading Napoleon to dub it \"the Jerusalem of the North\" when he passed through in 1812. The city's current demographics are additionally marked by the population exchange between Poland and Soviet Lithuania after World War II, before which Poles made up the majority of inhabitants. As of 2021, around two thirds of Vilnius' residents were Lithuanians.\nVilnius was a 2009 European Capital of Culture with Linz in Austria. In 2021, the city was named one of fDi's 25 Global Cities of the Future. Vilnius is a financial centre, ranked 76th globally and 29th in Europe on the Global Financial Centres Index. The city is an important center for the global fintech industry. It hosted the 2023 NATO Summit. In 2025 Vilnius was the European Green Capital. Vilnius is a member of Eurocities and the Union of Capitals of the European Union (UCEU)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 390
+    },
+    "banned_terms": [
+      {
+        "term": "vilnius",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 251,
+    "attempt": 246,
+    "place_id": "gn-726050",
+    "input": {
+      "place": {
+        "place_id": "gn-726050",
+        "name": "Varna",
+        "country": "Bulgaria",
+        "subdivision": "Varna",
+        "lat": 43.21912,
+        "lon": 27.91024
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Varna, Bulgaria",
+          "url": "https://en.wikipedia.org/wiki/Varna,_Bulgaria",
+          "text": "Varna (Bulgarian: Варна, pronounced [ˈvarnɐ]) is the third-largest city in Bulgaria and the largest city and seaside resort on the Bulgarian Black Sea Coast and in the Northern Bulgaria region. Situated strategically in the Gulf of Varna, the city has been a major economic, social, and cultural centre for almost three millennia. Historically known as Odessos (Ancient Greek: Ὀδησσός), Varna developed from a Thracian seaside settlement into a major seaport on the Black Sea.\nVarna is a significant hub for business, transportation, education, tourism, entertainment, and healthcare. The city is referred to as the maritime capital of Bulgaria and is home to the headquarters of the Bulgarian Navy and merchant marine. In 2008, Varna was designated as the seat of the Black Sea Euroregion by the Council of Europe. In 2014, Varna was awarded the title of European Youth Capital 2017.\nThe oldest gold treasure in the world, belonging to the Varna culture, was discovered in the Varna Necropolis and dated to 4600–4200 BC.\nSince the discovery of the Varna Necropolis in 1974, 294 burial sites have been excavated, with over 3000 golden items inside."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "varna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 252,
+    "attempt": 247,
+    "place_id": "gn-1798097",
+    "input": {
+      "place": {
+        "place_id": "gn-1798097",
+        "name": "Qibao",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 31.15267,
+        "lon": 121.35688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qibao",
+          "url": "https://en.wikipedia.org/wiki/Qibao",
+          "text": "Qibao (simplified Chinese: 七宝镇; traditional Chinese: 七寶鎮; pinyin: Qībǎo Zhèn; Shanghainese: Tshih4pau2) is a town in Minhang District, Shanghai. Its formation can be traced back to the Five Dynasties and Ten Kingdoms period, to the Northern Song Dynasty. The name comes from the local temple, \"Qibao Temple\". Today, Qibao is a tourist attraction, in the area known as Qibao Old Town by the Puhui River with traditional Chinese architecture and a number of attractions, including museums and street food. \nThe town was also once the residence of the noted painter Zhang Chongren, a friend of the Belgian cartoonist Hergé, on whom the character Chang Chong-Chen from \"The Adventures of Tintin\" was based.\nQibao is also known for crickets (with a \"Cricket House\") in the Qibao Old Town area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "qibao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 253,
+    "attempt": 248,
+    "place_id": "gn-3465038",
+    "input": {
+      "place": {
+        "place_id": "gn-3465038",
+        "name": "Cuiabá",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -15.59611,
+        "lon": -56.09667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuiabá",
+          "url": "https://en.wikipedia.org/wiki/Cuiab%C3%A1",
+          "text": "Cuiabá (Brazilian Portuguese pronunciation: [kujaˈba]) is the capital city and the largest city of the Brazilian state of Mato Grosso. It is located near the geographical centre of South America and also  forms the metropolitan area of Mato Grosso, along with the neighbouring town of Várzea Grande. The city's name is an indigenous Bororo word meaning 'arrow-fishing', The city was founded in 1719, during the gold rush, and it has been the state capital since 1818. The city is a trading centre for an extensive cattle-raising and agricultural area. The capital is among the fastest-growing cities in Brazil, followed by the growth of agribusiness in Mato Grosso, despite the recession that is affecting Brazilian industries. Cuiabá was one of the host cities for the 2014 FIFA World Cup.\nCuiabá is the heart of an urban area that also includes the state's second largest city, Várzea Grande. The city is the seat of the Federal University of Mato Grosso and the largest football stadium of the state, Arena Pantanal.\nThe city is a rich mix of European, African and Native American influences and numerous museums reflect this. Cuiabá is also notable for its cuisine, dance, music and craftwork. Known as the \"Southern gate to the Amazon\", Cuiabá experiences a hot humid tropical climate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "cuiaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 254,
+    "attempt": 249,
+    "place_id": "gn-3571824",
+    "input": {
+      "place": {
+        "place_id": "gn-3571824",
+        "name": "Nassau",
+        "country": "Bahamas",
+        "subdivision": "New Providence",
+        "lat": 25.05823,
+        "lon": -77.34306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nassau, Bahamas",
+          "url": "https://en.wikipedia.org/wiki/Nassau,_Bahamas",
+          "text": "Nassau ( NASS-aw) is the capital and largest city of the Bahamas. It is on the island of New Providence, which has a population of 296,522, 74.26% of the country's total population. Nassau is commonly defined as a primate city, dwarfing all other towns in the country. It is the centre of commerce, education, law, administration, and media of the country.\nLynden Pindling International Airport, the major airport for the Bahamas, is located about 16 kilometres (9.9 mi) west of the city centre of Nassau, and has daily flights to and from major cities in Canada, the Caribbean, the United Kingdom and the United States. Nassau is the site of the House of Assembly and various judicial departments and was considered historically to be a stronghold of pirates. The city was named in honour of William III of England, Prince of Orange-Nassau.\nNassau's modern growth began in the late eighteenth century, with the influx of thousands of Loyalists and the people they enslaved to the Bahamas following the American War of Independence. Many of them settled in Nassau and eventually came to outnumber the original inhabitants.\nAs the population of Nassau grew, so did its populated areas. Today, the city dominates the entire island. However, until the post-Second World War era, the outer suburbs scarcely existed. Most of New Providence was uncultivated bush until Loyalists were resettled there following the American Revolutionary War; they established several plantations, such as Clifton and Tusculum. Slaves were imported as labour.\nAfter the British abolished the international slave trade in 1807, they resettled thousands of Africans liberated from slave ships by the Royal Navy on New Providence (at Adelaide Village and Gambier Village), along with other islands such as Grand Bahama, Exuma, Abaco and Inagua. In addition, slaves freed from American ships, such as the slave ship Creole in November 1841, were allowed to settle there. The largest concentration of Africans historically lived in the \"Over-the-Hill\" suburbs of Grants Town and Bain Town to the south of the city of Nassau, while most of the inhabitants of European descent lived on the island's northern coastal ridges."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 352
+    },
+    "banned_terms": [
+      {
+        "term": "nassau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 255,
+    "attempt": 250,
+    "place_id": "gn-5327684",
+    "input": {
+      "place": {
+        "place_id": "gn-5327684",
+        "name": "Berkeley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.87159,
+        "lon": -122.27275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berkeley, California",
+          "url": "https://en.wikipedia.org/wiki/Berkeley,_California",
+          "text": "Berkeley (  BURK-lee) is a city on the eastern shore of San Francisco Bay (part of the San Francisco Bay Area) in northern Alameda County, California, United States. It is named after the 18th-century Anglo-Irish bishop and philosopher George Berkeley. It borders the cities of Oakland and Emeryville to the south and the city of Albany and the unincorporated community of Kensington to the north. Its eastern border with Contra Costa County generally follows the ridge of the Berkeley Hills. The 2020 census recorded a population of 124,321. \nBerkeley is home to the oldest campus in the University of California, the University of California, Berkeley, and the Lawrence Berkeley National Laboratory, which is managed and operated by the university in coordination with the United States Department of Energy. It also has the Graduate Theological Union, one of the largest religious studies institutions in the world. Berkeley is considered one of the most socially progressive cities in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 128,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "berkeley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 256,
+    "attempt": 251,
+    "place_id": "gn-1166993",
+    "input": {
+      "place": {
+        "place_id": "gn-1166993",
+        "name": "Rawalpindi",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 33.59733,
+        "lon": 73.0479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rawalpindi",
+          "url": "https://en.wikipedia.org/wiki/Rawalpindi",
+          "text": "Rawalpindi, colloquially known as Pindi, is the third-largest city in the Pakistani province of Punjab and the fourth-most populous city in Pakistan. Located along the Soan River in north-western Punjab, Rawalpindi lies adjacent to Pakistan's capital, Islamabad, and the two are jointly known as the \"twin cities\".\nRawalpindi is located on the Pothohar Plateau and is close to the ancient city of Taxila, a UNESCO World Heritage Site. It was founded in 1493 by a Gakhar chief and remained a small town until the 18th century. Following the annexation of Punjab by the East India Company in 1849, Rawalpindi became the largest garrison town of the Northern Command of the British Indian Army with the establishment of the Rawalpindi Cantonment. It was granted municipal status in 1867. Following the independence of Pakistan on 14 August 1947, the city became home to the General Headquarters (GHQ) of the Pakistan Army.\nRawalpindi also served as the secondary capital of Pakistan, under Ayub Khan, before the new capital was established in Islamabad. Rawalpindi is linked to the national highways through the M-1 and M-2 motorways, and serves as a major logistics and transportation centre for northern Pakistan. The city is home to historic havelis and temples, and serves as a hub for tourists visiting Azad Kashmir, Taxila and Gilgit-Baltistan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "rawalpindi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 257,
+    "attempt": 252,
+    "place_id": "gn-1264527",
+    "input": {
+      "place": {
+        "place_id": "gn-1264527",
+        "name": "Chennai",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.08784,
+        "lon": 80.27847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chennai",
+          "url": "https://en.wikipedia.org/wiki/Chennai",
+          "text": "Chennai, also known as Madras, is the capital and largest city of Tamil Nadu, the southernmost state of India. It is located on the Coromandel Coast of the Bay of Bengal. As per the 2011 Indian census, Chennai is the sixth-most-populous city in India and forms the fourth-most-populous urban agglomeration. The city is coterminous with Chennai district, which together with the adjoining suburbs constitutes the Chennai Metropolitan Area, one of the largest metropolitan areas of India. It is administered by the Greater Chennai Corporation, which was incorporated in 1688, and is the second oldest municipal corporation in the world after the City of London Corporation. Being the capital of the state, it houses major government institutions including the Tamil Nadu Legislative Assembly, and the Madras High Court.\nArcheological evidence points to human settlements in the region during the Stone Age. Historically, from the 1st century CE, the region was part of the Chola, Pallava, Pandya, and Vijayanagara kingdoms during various eras. In 1639, the British East India Company obtained a grant for a strip of coastal land which then contained the fishing village of Madrasapattinam. The British developed the Madras port and built Fort St. George, the first British fortress in India. The British were engaged in conflict with the French for the control of the city in the 18th century. By the late 18th century, the British had conquered most of the region and established the Madras Presidency with Madras as the capital. After India gained independence in 1947, Madras became the capital city of the Madras State, the predecessor to the present-day state of Tamil Nadu. The city was officially renamed as Chennai in 1996.\nChennai lies on the predominantly flat Eastern Coastal Plains, and experiences a tropical climate with high humidity. It receives most of the rainfall from the Northeast monsoon with cyclones being common features during the season, resulting in water inundation and flooding in low-lying areas. As of 2024, Chennai had an estimated GDP of $196.5 billion, ranking it among the most productive metro areas in India. It has a diversified industrial base anchored by different sectors, and is amongst the top export districts in the country, with more than US$2.563 billion in exports. It is ranked as a beta-level city in the Global Cities Index, and houses a major portion of India's automobile industry. The city has a well developed infrastructure, and is a major transportation hub. It is a major centre for medical tourism and is termed \"India's health capital\". It was ranked as the second-safest city in India by the National Crime Records Bureau in 2023.\nChennai is home to a diverse population of ethno-religious communities, with a majority Hindu population (80.7%). The city houses a migrant population of nearly three million and has the third-largest expatriate population in India. Known as the gateway to South India, it is amongst the most-visited Indian cities by international tourists and was ranked 36th among the most-visited cities in the world in 2019 by Euromonitor. Tamil is the most widely spoken language, with Madras Bashai being a unique linguistic variation of Tamil spoken by people in the city. Chennai is a major centre for music, art and dance and is called the Cultural Capital of South India. The oldest buildings in the city date from the 6th to 8th centuries CE, and the city has buildings encompassing diverse styles of architecture developed during different time periods in history. It is a major film production centre and home to the Tamil-language film industry. In October 2017, Chennai was added to the UNESCO Creative Cities Network (UCCN) list."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 601
+    },
+    "banned_terms": [
+      {
+        "term": "chennai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 258,
+    "attempt": 253,
+    "place_id": "gn-1528675",
+    "input": {
+      "place": {
+        "place_id": "gn-1528675",
+        "name": "Bishkek",
+        "country": "Kyrgyzstan",
+        "subdivision": "Bishkek",
+        "lat": 42.87,
+        "lon": 74.59
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bishkek",
+          "url": "https://en.wikipedia.org/wiki/Bishkek",
+          "text": "Bishkek, formerly known as Pishpek (until 1926), and then Frunze (1926–1991), is the capital and largest city of Kyrgyzstan, and the capital of the Chüy Region. It is situated near the border with Kazakhstan and has a population of around 1,200,000 people as of 2024.\nThe Khanate of Kokand established the fortress of Pishpek in 1825 to control local caravan routes and to collect tribute from Kyrgyz tribes. On 4 September 1860, with the approval of the Kyrgyz, Russian forces led by Colonel Apollon Zimmermann destroyed the fortress. In the present day, the fortress ruins can be found just north of Jibek Jolu Street, near the new main mosque. A Russian settlement was established in 1868 on the site of the fortress under its original name, Pishpek. It lay within the General Governorship of Russian Turkestan and its Semirechye Oblast.\nThe Kara-Kirghiz Autonomous Oblast was established in 1925 in Russian Turkestan, promoting Pishpek to its capital. In 1926, the Communist Party of the Soviet Union renamed the city Frunze, after Bolshevik military leader Mikhail Frunze (1885–1925), who was born there. Frunze became the capital of the Kirghiz Soviet Socialist Republic in 1936, during the final stages of national delimitation in the Soviet Union. In 1991, the Kyrgyz parliament changed the capital's name to a modified original name of Pishpek as Bishkek.\nBishkek is situated at an altitude of about 800 metres (2,600 ft), just off the northern fringe of the Kyrgyz Ala-Too Range, an extension of the Tian Shan mountain range. These mountains rise to a height of 4,895 metres (16,060 ft). North of the city, a fertile and gently undulating steppe extends far north into neighbouring Kazakhstan. The river Chüy drains most of the area. Bishkek is connected to the Turkestan–Siberia Railway by a spur line.\nBishkek is a very large city of wide boulevards and marble-faced public buildings combined with numerous Soviet-style apartment blocks surrounding interior courtyards. There are also thousands of smaller, privately built houses, mostly outside the city centre. Streets follow a grid pattern, with most flanked on both sides by narrow irrigation channels, which provide water to trees which provide shade during the hot summers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 360
+    },
+    "banned_terms": [
+      {
+        "term": "bishkek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 259,
+    "attempt": 254,
+    "place_id": "gn-1813253",
+    "input": {
+      "place": {
+        "place_id": "gn-1813253",
+        "name": "Lijiang",
+        "country": "China",
+        "subdivision": "Yunnan",
+        "lat": 26.86879,
+        "lon": 100.22072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lijiang",
+          "url": "https://en.wikipedia.org/wiki/Lijiang",
+          "text": "Lijiang (Chinese: 丽江), formerly romanized as Likiang, is a prefecture-level city in the northwest of Yunnan Province, China. It has an area of 21,219 square kilometres (8,193 sq mi) and had a population of 1,253,878 at the 2020 census whom 288,787 lived in the built-up area (metro) made of Gucheng District. By the end of 2024, the registered population of the city was 1,243,700. Lijiang is famous for its UNESCO Heritage Site, the Old Town of Lijiang, which contains a mixture of different historical architecture styles and a complex, ancient water-supply system. It borders Liangshan Yi Autonomous Prefecture and Panzhihua City in Sichuan Province to the east and it has one municipality and four counties.\nLijiang City is located on the Yungui Plateau, abutting the Qinghai-Tibet Plateau. It is one of the key forest areas in Yunnan Province, and one of the west–east power transmission bases of China's hydropower industry. Lijiang City is a multi-ethnic settlement: apart from the Han nationality, there are a total of 22 ethnic minorities.\nLijiang is the only prefecture-level city with three World Heritage Sites. It is rich in tourism resources, with 104 widely recognised tourist attractions, including the Old Town of Lijiang, Yulong Snow Mountain, Tiger Leaping Gorge, and Laojun Mountain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "lijiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 260,
+    "attempt": 255,
+    "place_id": "gn-2561668",
+    "input": {
+      "place": {
+        "place_id": "gn-2561668",
+        "name": "Agadir",
+        "country": "Morocco",
+        "subdivision": "Souss-Massa",
+        "lat": 30.42018,
+        "lon": -9.59815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agadir",
+          "url": "https://en.wikipedia.org/wiki/Agadir",
+          "text": "Agadir (Arabic: أكادير or أڭادير, romanized: ʾagādīr, pronounced [ʔaɡaːdiːr]; Tachelhit: ⴰⴳⴰⴷⵉⵔ) is a major city in Morocco, on the shore of the Atlantic Ocean near the foot of the Atlas Mountains, just north of the point where the Souss River flows into the ocean, and 509 kilometres (316 mi) south of Casablanca. Agadir is the capital of the Agadir Ida-U-Tanan Prefecture and of the Souss-Massa economic region.\nAgadir is one of the major urban centres of Morocco. The municipality of Agadir recorded a population of 924,000 in the 2014 Moroccan census. According to the 2004 census, there were 346,106 inhabitants in that year and the population of the Prefecture of Agadir-Ida Outanane was 487,954 inhabitants.\nAgadir is known for being the capital of Amazigh culture in Morocco. It is one of the few big Moroccan cities where Tamazight, one of Morocco's two official languages, is spoken by more than half of the population. The native variety to the region, Tachelhit, is spoken by 222,000 speakers, representing 53.7% of the entire population. Agadir is also a place for many festivals related to Amazigh culture, such as The New Amazigh Year, celebrated on 13 January every year throughout the city, especially in the downtown area. The Bilmawen Festival is another old Berber tradition celebrated in the suburbs of the city. Additionally, the Issni N’Ourgh International festival is a festival for Amazigh films. Agadir is also the birthplace of many of the pillars of Shilha and Amazigh music, such as Izenzaren, Oudaden, and many others.\nIt was the site of the 1911 Agadir Crisis that exposed tensions between France and Germany, foreshadowing World War I. The city was destroyed by an earthquake in 1960; it has been completely rebuilt with mandatory seismic standards. It is now the largest seaside resort in Morocco, where foreign tourists and many residents are attracted by an unusually mild year-round climate. Since 2010 it has been well served by low-cost flights and a motorway from Tangier.\nThe mild winter climate (January average midday temperature 20.5 °C/69 °F) and good beaches have made it a major \"winter sun\" destination for northern Europeans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 353
+    },
+    "banned_terms": [
+      {
+        "term": "agadir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 261,
+    "attempt": 256,
+    "place_id": "gn-358619",
+    "input": {
+      "place": {
+        "place_id": "gn-358619",
+        "name": "Port Said",
+        "country": "Egypt",
+        "subdivision": "Port Said",
+        "lat": 31.26531,
+        "lon": 32.3019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Said",
+          "url": "https://en.wikipedia.org/wiki/Port_Said",
+          "text": "Port Said ( sah-EED, Egyptian Arabic: بورسعيد, romanized: Bōrsaʿīd, pronounced [boɾsæˈʕiːd, poɾ-]) is a port city that lies in northeast Egypt extending about 30 km (19 mi) along the coast of the Mediterranean Sea, straddling the west bank of the northern mouth of the Suez Canal. The city is the capital of the Port Said Governorate and forms the majority of the governorate, comprising seven of the governorate's eight administrative regions. In 2024, it had a population of 790,000 people.\nThe city was established in 1859 during the building of the Suez Canal. There are numerous old houses with grand balconies on all floors, giving the city a distinctive look. Port Said's twin city is Port Fuad, which lies on the eastern bank of the Suez Canal. The two cities coexist, to the extent that there is hardly any town centre in Port Fuad. The cities are connected by free ferries running all through the day, and together they form a metropolitan area with over a million residents that extends both on the African and the Asian sides of the Suez Canal.\nPort Said has acted as a global city since its establishment, flourishing particularly during the nineteenth and the first half of the twentieth century. It was inhabited by various nationalities and religions, mostly from Mediterranean countries, and they coexisted in tolerance, forming a cosmopolitan community. Referring to this fact, Rudyard Kipling once said, \"If you truly wish to find someone you have known and who travels, there are two points on the globe you have but to sit and wait, sooner or later your man will come there: the docks of London and Port Said\". Port Said is an important city in Egypt for trade and business due to its location on the Suez Canal and Mediterranean coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "port said",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "said",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 262,
+    "attempt": 257,
+    "place_id": "gn-2224827",
+    "input": {
+      "place": {
+        "place_id": "gn-2224827",
+        "name": "Ngaoundéré",
+        "country": "Cameroon",
+        "subdivision": "Adamaoua",
+        "lat": 7.32765,
+        "lon": 13.58472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ngaoundéré",
+          "url": "https://en.wikipedia.org/wiki/Ngaound%C3%A9r%C3%A9",
+          "text": "Ngaoundéré or N'Gaoundéré (Fula: N'gamdere, نغَمْدٜرٜ, 𞤲'𞤺𞤢𞤥𞤣𞤫𞥅𞤪𞤫𞥅) is the capital of the Adamawa Region of Cameroon. It had a population of 152,700 at the 2005 census. According to the film Les Mairuuwas – Maitre de l'eau produced by the University of Tromsø, the population has rapidly risen to 1,200,000 (as of October 2023) owing to mass immigration from the Central African Republic and the perceived danger from Boko Haram in northern Cameroon.\nThe city lies at the northern end of the railway to Yaoundé and is also home to Ngaoundéré Airport. Attractions in the city include the Lamido Palace and the Lamido Grand Mosque. The town is named after a nearby mountain on its eponymous plateau; the mountain's name is the Mbum word for \"navel mountain\". \"Ngaou\" mean mountain in Mbum,  and \"Ndare\" mean navel in Mbum language. Because of this some people call the navel of Adamwa. Mount Ngaoundéré is rockey. On the top of mountain, large stone lies on it. Ngaoundéré is close to Lake Tison."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "ngaoundere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 263,
+    "attempt": 258,
+    "place_id": "gn-2756669",
+    "input": {
+      "place": {
+        "place_id": "gn-2756669",
+        "name": "Dordrecht",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.81,
+        "lon": 4.67361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dordrecht",
+          "url": "https://en.wikipedia.org/wiki/Dordrecht",
+          "text": "Dordrecht (Dutch: [ˈdɔrdrɛxt] ), historically known in English as Dordt (still colloquially used in Dutch, pronounced [dɔrt] ) or Dort, is a city and municipality in the Western Netherlands, located in the province of South Holland. It is the province's fifth-largest city after Rotterdam, The Hague, Leiden, and Zoetermeer, with a population of 123,000 (2025).\nThe municipality covers the entire Dordrecht Island, also often called Het Eiland van Dordt (\"the Island of Dordt\"), bordered by the rivers Oude Maas, Beneden Merwede, Nieuwe Merwede, Hollands Diep, and Dordtsche Kil. Dordrecht is the largest and most important city in the Drechtsteden and is also part of the Randstad, the main conurbation in the Netherlands.\nDordrecht is the oldest city in Holland and has a rich history and culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "dordrecht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 264,
+    "attempt": 259,
+    "place_id": "gn-314830",
+    "input": {
+      "place": {
+        "place_id": "gn-314830",
+        "name": "Gaziantep",
+        "country": "Türkiye",
+        "subdivision": "Gaziantep",
+        "lat": 37.05944,
+        "lon": 37.3825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gaziantep",
+          "url": "https://en.wikipedia.org/wiki/Gaziantep",
+          "text": "Gaziantep, historically Aintab and still informally called Antep, is a major city in south-central Turkey. It is the capital of the Gaziantep Province, in the westernmost part of Turkey's Southeastern Anatolia Region and partially in the Mediterranean Region. It is located approximately 185 km (115 mi) east of Adana and 97 km (60 mi) north of Aleppo, Syria and situated on the Sajur River.\nThe city is thought to be located on the site of ancient Antiochia ad Taurum and is near ancient Zeugma. Sometime after the Byzantine-ruled city came under the Seljuk Empire, the region was administered by Armenian warlords. In 1098, it became part of the County of Edessa, a Crusader state, though it continued to be administered by Armenians, such as Kogh Vasil.\nAintab rose to prominence in the 14th century as the fortress became a settlement, hotly contested by the Mamluk Sultanate, Dulkadirids, and the Ilkhanate. It was besieged by Timur in 1400 and the Aq Qoyunlu in 1420. The Dulkadirid-controlled city fell to the Ottoman Empire in 1516 sometime before the Battle of Marj Dabiq.\nAt the end of 2025, Gaziantep province was home to 2,222,415 inhabitants, of whom around 1.9 million lived in the urban area. It is the fifth-most populous city in Turkey. Gaziantep is a diverse city inhabited mostly by ethnic Turks and a significant minority of Kurds and Syrian refugees. It was historically populated by Turkomans, Armenians, Jews, and a plethora of other ethnic groups.\nIn February 2023, the city was significantly damaged by the 2023 Turkey–Syria earthquake. Although three of the four most significant quakes of the earthquake occurred within the Gaziantep Province, the overall destruction to the city was reportedly less intense than that of Kahramanmaraş, Hatay, Malatya, and Adıyaman provinces, making it the fifth most affected province at 944 buildings collapsed. The destruction was reportedly much higher in the rural districts of Nurdağı and Islahiye, although a number of historic sites within the city such as mosques and Gaziantep Castle also suffered significant damages. Due to its size, location and relative intactness, the city served as a regional hub for international organizations and NGOs for earthquake relief and reconstruction after the earthquake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 364
+    },
+    "banned_terms": [
+      {
+        "term": "gaziantep",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 265,
+    "attempt": 260,
+    "place_id": "gn-4006163",
+    "input": {
+      "place": {
+        "place_id": "gn-4006163",
+        "name": "Fresnillo",
+        "country": "Mexico",
+        "subdivision": "Zacatecas",
+        "lat": 23.1749,
+        "lon": -102.86785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fresnillo",
+          "url": "https://en.wikipedia.org/wiki/Fresnillo",
+          "text": "Fresnillo (Spanish pronunciation: [fres'nijo]) is a city in north central Mexico, founded in 1554 by Francisco de Ibarra. It is the second largest city in  the state of Zacatecas and the seat of Fresnillo municipality. As a rail and highway junction, Fresnillo is the center of a rich mining area known especially for silver, and the location of one of the world's richest silver mines, the Mina Proaño or Fresnillo Mine, which belongs to the Peñoles mining company. Other important economic activities include agriculture (cereals, beans), cattle raising, and a mining school. Fresnillo is also the municipal seat of the municipality of the same name which surrounds it. The municipality had a population of 196,538 and an areal extent of 4,947 square kilometres (1,910 sq mi).\nIt is the location of religious pilgrimages to see the famous Santo Niño de Atocha (\"Holy Child of Atocha\"), a Roman Catholic devotional statue brought to Mexico from Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "fresnillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
