@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 5503,
+    "attempt": 5461,
+    "place_id": "gn-5133917",
+    "input": {
+      "place": {
+        "place_id": "gn-5133917",
+        "name": "Riverdale",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.90056,
+        "lon": -73.90639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riverdale, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Riverdale,_Bronx",
+          "text": "Riverdale is a residential neighborhood in the northwestern portion of the New York City borough of the Bronx. Riverdale, which had a population of 47,850 as of the 2000 United States census, contains the city's northernmost point at the University of Mount Saint Vincent. Riverdale's boundaries are disputed, but it is commonly agreed to be bordered by Yonkers to the north, Van Cortlandt Park and Broadway to the east, the Kingsbridge neighborhood to the southeast, either the Harlem River or the Spuyten Duyvil neighborhood to the south (Although Spuyten Duyvil is sometimes considered to be the southernmost section of Riverdale), and the Hudson River to the west. Riverdale Avenue is the primary north–south thoroughfare through Riverdale.\nThe neighborhood is part of Bronx Community District 8, and its ZIP Codes include 10463 and 10471. The area is patrolled by the 50th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "riverdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5504,
+    "attempt": 5462,
+    "place_id": "gn-5431740",
+    "input": {
+      "place": {
+        "place_id": "gn-5431740",
+        "name": "Monument",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.09166,
+        "lon": -104.87276
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monument, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Monument,_Colorado",
+          "text": "Monument is a home rule town situated at the base of the Rampart Range in El Paso County, Colorado, United States. Monument is one of the three communities that make up the Tri-Lakes area, along with Palmer Lake and Woodmoor. Monument is bordered by Pike National Forest on the west, Colorado Springs and the United States Air Force Academy to the south, Bald Mountain, True Mountain, and Spruce Mountain to the north, and Black Forest and rolling plains to the east. Monument was first settled as a stop along the Rio Grande Railroad in 1872, and the area was incorporated as a town called Henry's Station in 1879, but the name was later changed to Monument.  The town population was 10,399 at the 2020 United States census, a 88% increase from a population of 5,530 in 2010 and a 528% increase from a population of 1,971 in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "monument",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5505,
+    "attempt": 5463,
+    "place_id": "gn-680262",
+    "input": {
+      "place": {
+        "place_id": "gn-680262",
+        "name": "Crevedia",
+        "country": "Romania",
+        "subdivision": "Dâmbovița County",
+        "lat": 44.6,
+        "lon": 25.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crevedia",
+          "url": "https://en.wikipedia.org/wiki/Crevedia",
+          "text": "Crevedia is a commune in Dâmbovița County, Muntenia, Romania with a population of 8,811 people as of 2021. It is composed of five villages: Cocani, Crevedia, Dârza, Mănăstirea, and Samurcași.\nThe commune is situated in the Wallachian Plain, at an altitude of 111 m (364 ft), on the banks of the Colentina River and its tributary, the Crevedia. It is located in the southeastern extremity of Dâmbovița County, 60 km (37 mi) from the county seat, Târgoviște, on the border with Ilfov County, next to the town of Buftea; the city of Ploiești is 44 km (27 mi) to the northeast, while Bucharest is 27 km (17 mi) to the southeast. \nCrevedia is crossed by national road DN1A, which connects Bucharest and Brașov via Ploiești. The Dârza halt serves the CFR Main Line 500, which runs from Bucharest to Ploiești and on towards Moldavia and the Ukrainian border.\nThe commune mayor's illegal liquefied petroleum gas business was the cause of a series of explosions in August 2023 resulting in six deaths and numerous injured including firefighters that were responding to the blaze that caused the explosion. The mayor also attempted to build a commercial centre near a liquefied petroleum gas station, which was cancelled by the Dâmbovița Court."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "crevedia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5506,
+    "attempt": 5464,
+    "place_id": "gn-7259771",
+    "input": {
+      "place": {
+        "place_id": "gn-7259771",
+        "name": "Fort Knox",
+        "country": "United States",
+        "subdivision": "Kentucky",
+        "lat": 37.89113,
+        "lon": -85.96363
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Knox",
+          "url": "https://en.wikipedia.org/wiki/Fort_Knox",
+          "text": "Fort Knox is a United States Army installation in Kentucky, south of Louisville and north of Elizabethtown. It is adjacent to the United States Bullion Depository (also known as Fort Knox), which is used to house a large portion of the United States' official gold reserves.\nThe 109,000-acre (170 sq mi; 440 km2) base covers parts of Bullitt, Hardin and Meade counties. It currently holds the Army Human Resources Center of Excellence, including the Army Human Resources Command. It is named in honor of Henry Knox, Chief of Artillery in the American Revolutionary War and the first United States secretary of war.\nFor 60 years, Fort Knox was the home of the U.S. Army Armor Center and School, and was used by both the Army and the Marine Corps to train crews on the American tanks of the day; the last was the M1 Abrams main battle tank. The history of the U.S. Army's Cavalry and Armored forces, and of General George S. Patton's career, is shown at the General George Patton Museum on the grounds of Fort Knox.\nIn 2011, the U.S. Army Armor School moved to Fort Benning, Georgia, where the Infantry School is also based. In 2014, the U.S. Army Cadet Command relocated to Fort Knox and all summer training for ROTC cadets now takes place there.\nOn 16 October 2020, V Corps was reactivated at Fort Knox, just over seven years after the colors were last cased in Wiesbaden, Germany, in July 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "fort knox",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "knox",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5507,
+    "attempt": 5465,
+    "place_id": "gn-12032531",
+    "input": {
+      "place": {
+        "place_id": "gn-12032531",
+        "name": "Chinatown",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.27997,
+        "lon": -123.10556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinatown, Vancouver",
+          "url": "https://en.wikipedia.org/wiki/Chinatown,_Vancouver",
+          "text": "Chinatown is a neighbourhood in Vancouver, British Columbia, and is Canada's largest Chinatown. Centred around Pender Street, it is surrounded by Gastown to the north, the Downtown financial and central business districts to the west, the Georgia Viaduct and the False Creek inlet to the south, the Downtown Eastside and the remnant of old Japantown to the northeast, and the residential neighbourhood of Strathcona to the southeast.\nDue to the large ethnic Chinese presence in Vancouver—especially represented by mostly Cantonese-speaking multi-generation Chinese Canadians and first-generation immigrants from Hong Kong—the city has been referred to as \"Hongcouver\". However, most immigration in recent years has been Mandarin-speaking residents from Mainland China. Chinatown remains a popular tourist attraction and is one of the largest historic Chinatowns in North America, but it experienced a recent decline as newer members of Vancouver's Chinese community dispersed to other parts of the metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "chinatown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5508,
+    "attempt": 5466,
+    "place_id": "gn-12035865",
+    "input": {
+      "place": {
+        "place_id": "gn-12035865",
+        "name": "Gare",
+        "country": "Luxembourg",
+        "subdivision": "Luxembourg",
+        "lat": 49.60175,
+        "lon": 6.12971
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gare, Luxembourg",
+          "url": "https://en.wikipedia.org/wiki/Gare,_Luxembourg",
+          "text": "Gare (French pronunciation: [ɡaʁ] ; Luxembourgish: Garer Quartier [ˌɡaːʀɐ ˈkɑχtjeː]; German: Bahnhofsviertel [ˈbaːnhoːfsˌfɪʁtl̩] ) is a district in central Luxembourg City, in southern Luxembourg. The district has, since 1859, been the location of Luxembourg's principal railway station and terminus, Luxembourg station, around which it subsequently developed. The district's name translates into English, from the French Gare, to \"station\".\nGeographically, the district is situated on the Bourbon plateau, and is separated from the Ville Haute district, heart of Luxembourg's ancient fortifications, by a steep valley where the Pétrusse joins the Alzette river in the Grund district. The valley was first spanned by the Passerelle viaduct, opened in 1859.\nFollowing the 1867 Treaty of London, which ordered the dismantling of Luxembourg's fortifications, the district expanded rapidly, notably with the construction of the Adolphe Bridge, opened in 1903, and connected to the station by the grand Avenue de la Liberté.\nAs of 31 December 2025, the district has a population of 11,292 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "gare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5509,
+    "attempt": 5467,
+    "place_id": "gn-1264139",
+    "input": {
+      "place": {
+        "place_id": "gn-1264139",
+        "name": "Malaudh",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.63332,
+        "lon": 75.93565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malaudh",
+          "url": "https://en.wikipedia.org/wiki/Malaudh",
+          "text": "The town of Malaudh, or Maloud, is situated at a distance of about 40 kilometres from Ludhiana on the Ludhiana-Malerkotla Road and is linked by approach road kup-payal road though village Rorian which is now part of it as Nagar Panchayat.  It lies on 75°- 56' Longitude and 30° – 38' Latitude.  Malaudh is a very ancient place which was known as Malla Udey or rise of the Mallas with whom Multan or Mallustan is associated and later got corrupted to Malaudh. There was a The Loharan about 1 kilometer on the southern side which has now disappeared. Malaudh has a government high school (co-educational), middle school for girls and a primary school for boys, a post office, primary health centre and a veterinary dispensary. Malaudh became a part of the Ludhiana District when it was formed out of the territories annexed by the British in 1846.\nMalaudh was a Cis-Sutlej Phulkian princely state of India till 1846, after which it was merged into the Ludhiana District by the British when they annexed the territories around Ludhiana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "malaudh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5510,
+    "attempt": 5468,
+    "place_id": "gn-166742",
+    "input": {
+      "place": {
+        "place_id": "gn-166742",
+        "name": "Maharda",
+        "country": "Syria",
+        "subdivision": "Hama",
+        "lat": 35.2479,
+        "lon": 36.5725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maharda",
+          "url": "https://en.wikipedia.org/wiki/Maharda",
+          "text": "Maharda (Arabic: محردة, romanized: Mḥarda, IPA: [maˈħarda]; also transliterated Mhardeh, Muhardah, Mahardah or Mharda) is a Christian city in western Syria, administratively part of the Hama Governorate, located about 23 kilometers northwest of Hama. It is situated along the Orontes River, near the Ghab Plain. Nearby localities include Halfaya and Taybat al-Imam to the east, Khitab to the southeast, Maarzaf to the south, Asilah and Jubb Ramlah to the southwest, Shaizar, Safsafiyah, Tremseh and Kafr Hud to the west and Kafr Zita and al-Lataminah to the north.\nAccording to the Syria Central Bureau of Statistics (CBS), Maharda had a population of 17,578 in the 2004 census. It is the center of Mahardah District, one of the Hama Governorate's five districts, and the nahiyah (\"subdistrict\") of Maharda, which contained 21 localities with a combined population of 80,165 in 2004. Maharda's population was estimated to be 22,442 in 2010. Its inhabitants are predominantly Christians of the Greek Orthodox Church.\nThe Orontes River was dammed 3 kilometers north, and the Mahardah Dam on the Ghab Plain is used to generate hydroelectric power."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "maharda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5511,
+    "attempt": 5469,
+    "place_id": "gn-2178126",
+    "input": {
+      "place": {
+        "place_id": "gn-2178126",
+        "name": "Alfredton",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.56667,
+        "lon": 143.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alfredton, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Alfredton,_Victoria",
+          "text": "Alfredton is a suburb of Ballarat, Victoria, Australia, west of the CBD. The population at the 2021 census was 11,822, making it the most populous suburb in Ballarat's urban area.\nAlfredton is located west of Lake Wendouree along Sturt Street. The suburb has some of Ballarat's best known landmarks, including the Arch of Victory and a World War I memorial which once marked the entrance to Ballarat and the start of Ballarat's Avenue of Honour. The Avenue of Honour is the longest war memorial roadside plantation in Australia, which extends 18 km to the Western Freeway.\nOriginally part of Cardigan and known by that name, the present area was named in honour of Prince Alfred, Duke of Edinburgh following his visit to Ballarat in 1867.\nThe artists and illustrators Ambrose and Will Dyson were born and lived in Alfredton as did their brother the journalist Edward Dyson.\nThe Alfredton area is central to Western Ballarat's growth corridor, an area where suburban development is encouraged by the City of Ballarat and State Government of Victoria.  Most of urban Ballarat's subdivision for new housing estates is happening in greenfield land to the south, north and west of the Avenue of Honour.  Large estates include Balymanus, Alfredton Central, The Chase and Insignia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "alfredton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5512,
+    "attempt": 5470,
+    "place_id": "gn-2639323",
+    "input": {
+      "place": {
+        "place_id": "gn-2639323",
+        "name": "Ripon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.13579,
+        "lon": -1.52826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ripon",
+          "url": "https://en.wikipedia.org/wiki/Ripon",
+          "text": "Ripon () is a cathedral city and civil parish in North Yorkshire, England. It is located at the confluence of two tributaries of the River Ure, the Laver and Skell.\nThe city was originally known as Inhrypum. Bede records that Alhfrith, king of the Southern Northumbrian kingdom of Deira, gave land at Ripon to Eata of Hexham to build a monastery and the abbot transferred some of his monks there, including a young Saint Cuthbert who was guest-master at Ripon abbey. Both Bede in his Life of Cuthbert and Eddius Stephanus in his Life of Wilfred state that when Eata was subsequently driven out by Alhfrith, the abbey was given to Saint Wilfrid who replaced the timber church with a stone built church. This was during the time of the Anglian kingdom of Northumbria, a period during which it enjoyed prominence in religious importance in Great Britain. It was for a period under Viking control, and later suffered under the Normans. After a brief period of building projects under the Plantagenets, the city emerged with a prominent wool and cloth industry. Ripon became well known for its production of spurs during the 16th and 17th centuries, but would later remain largely unaffected by the Industrial Revolution.\nRipon is the third-smallest city in England and the smallest in Yorkshire, by population. At the 2021 United Kingdom census it had a population of 16,589, a decrease from the 2011 population of 16,702.\nIt is located 11 miles (18 km) south-west of Thirsk, 16 miles (26 km) south of Northallerton and 12 miles (19 km) north of Harrogate. As well as its racecourse and cathedral, Ripon is a tourist destination because of its proximity to the UNESCO World Heritage Site that consists of the Studley Royal Park and Fountains Abbey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 297
+    },
+    "banned_terms": [
+      {
+        "term": "ripon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5513,
+    "attempt": 5471,
+    "place_id": "gn-2653085",
+    "input": {
+      "place": {
+        "place_id": "gn-2653085",
+        "name": "Chorleywood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.65472,
+        "lon": -0.51404
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chorleywood",
+          "url": "https://en.wikipedia.org/wiki/Chorleywood",
+          "text": "Chorleywood is a village and civil parish in the Three Rivers District, Hertfordshire, on the border with Buckinghamshire, approximately 20 miles (32 km) northwest of Charing Cross. The village is adjacent to the Chiltern Hills Area of Outstanding Natural Beauty and is part of the London commuter belt included in the government-defined Greater London Urban Area. Chorleywood was historically part of the parish of Rickmansworth, becoming a separate ecclesiastical parish in 1845 and a separate civil parish in 1898. The population of the parish was 11,286 at the 2011 census.\nIn 2004, a study by The Social Disadvantage Research Centre at the University of Oxford named Chorleywood as the \"happiest place\" to live in the UK. Of the 32,482 communities surveyed, Chorleywood came out top. More recently, Chorleywood has been ranked as the \"least deprived\" area in the country by the Department of Communities and Local Government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "chorleywood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5514,
+    "attempt": 5472,
+    "place_id": "gn-3100637",
+    "input": {
+      "place": {
+        "place_id": "gn-3100637",
+        "name": "Darłowo",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 54.42095,
+        "lon": 16.4107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Darłowo",
+          "url": "https://en.wikipedia.org/wiki/Darłowo",
+          "text": "Darłowo (Polish: [darˈwɔvɔ] ; Kashubian: Dërłowò; German: Rügenwalde) is a seaside town on the Slovincian Coast of north-western Poland, south of the Baltic Sea, with 13,324 inhabitants as of December 2021. Administratively, it is located in Sławno County in West Pomeranian Voivodeship.\nThe earliest archaeological signs of a settlement in the area occurred when Roman merchants travelled along the Amber Road in the hope of trading precious metals like bronze and silver for amber. By the 11th century the location of the later town was already becoming a significant trading point. Over the years Dukes of Pomerania constructed a Ducal Castle on a nearby island and chose it as their seat. It was here that the largest artillery piece in the world, Schwerer Gustav, was constructed and tested by Nazi Germany during World War II.\nThe original medieval outline of Darłowo has been preserved to this day. The Old Town, Ducal Castle and local beaches are popular among holidaymakers. Darłowo is also an important historical centre as it is the birthplace and burial site of Eric of Pomerania, King of Denmark, Sweden and Norway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "dar owo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "owo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5515,
+    "attempt": 5473,
+    "place_id": "gn-3472245",
+    "input": {
+      "place": {
+        "place_id": "gn-3472245",
+        "name": "Andrelândia",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.73972,
+        "lon": -44.30917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andrelândia",
+          "url": "https://en.wikipedia.org/wiki/Andrelândia",
+          "text": "Andrelândia is a Brazilian municipality in the state of Minas Gerais that is located in the Mesoregion of South and Southwest of Minas and hosts the Microregion of Andrelândia. It is 300 km away from the state capital, Belo Horizonte and occupies an area of approximately 1 005 km2. In 2014 its population was estimated at 12 507 inhabitants, being the 296th most populous municipality in the state of Minas Gerais and the second of its microregion.\nIt was founded on July 20, 1868, under the name Vila Bela do Turvo and consisted of five districts: Turvo, Arantes, Bom Jardim, Madre de Deus do Rio Grande and San Vicente Ferrer. Over the years the districts turned into cities, leaving only Andrelândia only the municipal seat. Throughout its history, the municipality had several denominations but has had its current name since state law 1160, of September 19, 1930.\nThe city has a great tradition in tourism and many of its old houses are considered historical municipal patrimonies. Other highlights are the religious festivals, such as the Feast of Saint Sebastian, the Feast of Kings, the Holy Week, the Feast of San Benedict, Corpus Christi and the feast of the patron saint, Our Lady of Porto, in August.\nThe city is known for being the hometown of the internationally known professor, historian, and academic José Murilo de Carvalho."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "andrelandia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5516,
+    "attempt": 5474,
+    "place_id": "gn-3849140",
+    "input": {
+      "place": {
+        "place_id": "gn-3849140",
+        "name": "La Quiaca",
+        "country": "Argentina",
+        "subdivision": "Jujuy",
+        "lat": -22.10448,
+        "lon": -65.59646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Quiaca",
+          "url": "https://en.wikipedia.org/wiki/La_Quiaca",
+          "text": "La Quiaca is a small city in the north of the province of Jujuy, Argentina, on the southern bank of the La Quiaca River, opposite the town of Villazón, Bolivia. It lies at the end of National Route 9, 289 km (180 mi) from San Salvador de Jujuy (the provincial capital), and at an altitude of 3,442 m (11,293 ft) above mean sea level. La Quiaca is an approximate antipode to Hong Kong.\nLa Quiaca has 13,761 inhabitants as per the 2010 census [INDEC]. It is the head town of the Yaví Department, which includes also the towns of Barrios, Cangrejillos, El Cóndor, Pumahuasi, and Yaví. The area is serviced by an airport located at 22°09′02″S 65°34′39″W.\nAs one of the principal urban centers in the Puna de Atacama, La Quiaca offers the full range of basic infrastructure, including potable water, electricity, sewage systems, and internet connectivity. It plays a key role in supporting tourism and local commerce, and stands out as one of the few settlements in the Argentine high-altitude plateau region with modern amenities, making it a strategic stop for travelers exploring the Andean northwest.\n\nDomestically, this city is the classic reference to the northern end of the country, though in reality this distinction is held by the town of Salvador Mazza, or Pocitos, in the province of Salta. In 1985, after a three-year national tour, the renowned composer León Gieco released a folk album called De Ushuaia a La Quiaca (\"From Ushuaia to La Quiaca\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "la quiaca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "quiaca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5517,
+    "attempt": 5475,
+    "place_id": "gn-4176409",
+    "input": {
+      "place": {
+        "place_id": "gn-4176409",
+        "name": "Vero Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.63864,
+        "lon": -80.39727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vero Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Vero_Beach,_Florida",
+          "text": "Vero Beach is a city in and the county seat of Indian River County, Florida, United States. According to the 2020 census, the city had a population of 16,354. Nicknamed \"The Hibiscus City\", Vero is situated about 85 miles (137 km) southeast of Orlando along the Indian River Lagoon and the Atlantic Ocean on Florida's Treasure Coast. Because it is located about 65 miles (105 km) north of West Palm Beach at the northern end of the South Florida region, the city has adopted two similar mottos \"The Gateway to the Tropics\" and \"Where the Tropics Begin\".\nVero Beach was named the 7th Best Small Beach Town in Florida by Southern Living Magazine in 2023. The main roadways in the city are U.S. Route 1, Florida State Road A1A, and Florida State Road 60 (20th Street), which has its eastern terminus at Sexton Plaza in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "vero beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vero",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5518,
+    "attempt": 5476,
+    "place_id": "gn-5009717",
+    "input": {
+      "place": {
+        "place_id": "gn-5009717",
+        "name": "Shields",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.4153,
+        "lon": -84.05637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shields, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Shields,_Michigan",
+          "text": "Shields is an unincorporated community in Thomas Township, Saginaw County in the U.S. state of Michigan.  It is also a census-designated place (CDP) for statistical purposes, but with no legal status as an incorporated municipality. The population of the CDP was 7,035 at the 2020 census.\nThe community of Shields is located on M-46/Gratiot Road just west of the Tittabawassee River. In the 2000 census, the CDP included an area bounded on the east by the Tittabawassee River, north to State Street, west to N. Miller Road, south to Geddes Road, west to N. Thomas Road, south to M-46/Gratiot Road, east to Swan Creek, south to the railroad crossing on Schomaker Road, east along the rail tracks to Stroebel Road, northwest to Ronald Drive and east to the Tittabawassee River. Most of the CDP is within Thomas Township with a small portion extending into northwest James Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "shields",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5519,
+    "attempt": 5477,
+    "place_id": "gn-5110108",
+    "input": {
+      "place": {
+        "place_id": "gn-5110108",
+        "name": "Briarcliff Manor",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.14565,
+        "lon": -73.82375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Briarcliff Manor, New York",
+          "url": "https://en.wikipedia.org/wiki/Briarcliff_Manor,_New_York",
+          "text": "Briarcliff Manor () is a suburban village in Westchester County, New York, United States, 30 miles (50 km) north of New York City. It is on 5.9 square miles (15 km2) of land on the east bank of the Hudson River, geographically shared by the towns of Mount Pleasant and Ossining. Briarcliff Manor includes the communities of Scarborough and Chilmark, and is served by the Scarborough station of the Metro-North Railroad's Hudson Line. A section of the village, including buildings and homes covering 376 acres (152 ha), is part of the Scarborough Historic District and was listed on the National Register of Historic Places in 1984. The village motto is \"A village between two rivers\", reflecting Briarcliff Manor's location between the Hudson and Pocantico Rivers. Although the Pocantico is the primary boundary between Mount Pleasant and Ossining, since its incorporation the village has spread into Mount Pleasant.\nIn the precolonial era, the village's area was inhabited by a band of the Wappinger tribes of Native Americans. In the early 19th century, the area was known as Whitson's Corners. Walter William Law moved to the area and purchased lands during the 1890s. Law developed the village, establishing schools, churches, parks, and the Briarcliff Lodge. Briarcliff Manor was incorporated as a village in 1902, and celebrated its centennial on November 21, 2002. The village has grown from 331 people when established to 7,569 at the 2020 census.\nBriarcliff Manor was historically known for its wealthy estate-owning families, including the Vanderbilts, Astors, and Rockefellers. The village still remains primarily residential and its population is still considered affluent by U.S. standards. It has about 180 acres (70 ha) of recreational facilities and parks, all accessible to the public. The village has seven Christian churches for various denominations and two synagogues. The oldest church is Saint Mary's Episcopal Church, built in 1851. Briarcliff Manor has an elected local government, with departments including police, fire, recreation, and public works. It has a low crime rate: a 2012 study found it had the second-lowest in the state. In the New York State Legislature it is split between the New York State Assembly's 95th and 92nd districts, and the New York Senate's 38th and 40th districts. In Congress the village is in New York's 17th District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 378
+    },
+    "banned_terms": [
+      {
+        "term": "briarcliff manor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "briarcliff",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "manor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5520,
+    "attempt": 5478,
+    "place_id": "gn-5112540",
+    "input": {
+      "place": {
+        "place_id": "gn-5112540",
+        "name": "Chinatown",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71649,
+        "lon": -73.99625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinatown, Manhattan",
+          "url": "https://en.wikipedia.org/wiki/Chinatown,_Manhattan",
+          "text": "Manhattan's Chinatown is a neighborhood of Lower Manhattan in New York City, bounded by the Lower East Side to its east, Little Italy to its north, Civic Center to its south, and Tribeca to its west. With an estimated population of 90,000 to 100,000 people, Chinatown is home to the highest concentration of Chinese people in the Western Hemisphere. Manhattan's Chinatown is also one of the oldest Chinese ethnic enclaves. The Manhattan Chinatown is one of nine Chinatown neighborhoods in New York City, as well as one of twelve in the New York metropolitan area, which contains the largest ethnic Chinese population outside Asia, comprising an estimated 924,619 uniracial individuals in 2024.\nChinatown is also a densely populated neighborhood, with over 141,000 residents living in its vicinity encompassing 1.7 square miles, \"of which 28.1% identified as Asian\" in 2023. Historically, Chinatown was primarily populated by Cantonese speakers. However, in the 1980s and 1990s, large numbers of Fuzhounese-speaking immigrants also arrived and formed a sub-neighborhood annexed to the eastern portion of Chinatown east of The Bowery, which has become known as Little Fuzhou subdivided away from the primarily Cantonese populated original longtime established Chinatown of Manhattan from the proximity of The Bowery going west, known as Little Hong Kong/Guangdong. As many Fuzhounese and Cantonese speakers now speak Mandarin—the official language in Mainland China and Taiwan—in addition to their native languages, this has made it more important for Chinatown residents to learn and speak Mandarin. Although now overtaken in size by the rapidly growing Flushing Chinatown (located in the New York City borough of Queens) and Brooklyn Chinatown, the Manhattan Chinatown remains a dominant cultural force for the Chinese diaspora, as home to the Museum of Chinese in America and as the headquarters of numerous publications based both in the U.S. and China that are geared to overseas Chinese.\nChinatown is part of Manhattan Community District 3, and its primary ZIP Codes are 10013 and 10002. It is patrolled by the 5th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "chinatown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5521,
+    "attempt": 5479,
+    "place_id": "gn-5225631",
+    "input": {
+      "place": {
+        "place_id": "gn-5225631",
+        "name": "Westerly",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.3776,
+        "lon": -71.82729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westerly, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Westerly,_Rhode_Island",
+          "text": "Westerly is a town on the southwestern coastline of Washington County, Rhode Island, first settled by English colonists in 1661, and incorporated as a municipality in 1669. The Town of Westerly is a beachfront community on the south shore of the state with a population of 23,359 as of the 2020 census. The western and northern borders of Westerly are defined by a natural border of the Pawcatuck River, with the bordering town of Hopkinton defined by the Pawcatuck River, while holding a straight border to the east with Charlestown.\nThe Pawcatuck River flows on the western border of Westerly, and was once renowned for its own species of Westerly salmon, three of which are displayed on the town's official seal. The Pawcatuck River flows from 15 mi (24 km) inland, emptying into Little Narragansett Bay. It also serves as the boundary between Westerly and Pawcatuck, Connecticut. Three large salt ponds lie along the coast, with sand bars of white sand such as the Misquamicut State Beach. From west to east, these ponds are Maschaug Pond, Winnapaug Pond, and Quonochontaug Pond. The Town of Westerly was known historically for local important granite mining and stone-cutting industry, which ran until the quarries stopped operating in the 1950s.\nWesterly is a notable tourist destination from May through October, when the population nearly doubles. Its well-known beaches include Weekapaug Beach, Westerly Town Beach, Misquamicut State Beach, East Beach, and Watch Hill Beach. Westerly is also a popular surfing spot for those from the region. Due to its south-facing geography, large southerly swells often occur during late summer and fall as tropical storms pass off the East Coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "westerly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5522,
+    "attempt": 5480,
+    "place_id": "gn-6691246",
+    "input": {
+      "place": {
+        "place_id": "gn-6691246",
+        "name": "Old Trafford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.45756,
+        "lon": -2.28818
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Old Trafford",
+          "url": "https://en.wikipedia.org/wiki/Old_Trafford",
+          "text": "Old Trafford () is a football stadium in the Old Trafford area of Greater Manchester, England. It is the home ground of Manchester United. With a capacity of 74,158, it is the largest club football stadium in the United Kingdom, and the eleventh-largest in Europe. It is about half a mile (800 metres) from Old Trafford Cricket Ground and the adjacent tram stop.\nNicknamed the \"Theatre of Dreams\" by Bobby Charlton, Old Trafford has been United's home ground since 1910, although from 1941 to 1949 the club shared Maine Road with local rivals Manchester City due to the Blitz. Old Trafford underwent several expansions in the 1990s and 2000s, including the addition of extra tiers to the North, West and East Stands, almost returning the stadium to its original capacity of 80,000 in 2006, up from roughly 44,000 in 1993, following the conversion to an all-seater stadium. Should further expansion occur, it is likely to involve the addition of a second tier to the South Stand, which would raise the capacity to around 88,000, although alternative suggestions have been made for a new stadium in recent years. The stadium's record attendance was recorded in 1939, when 76,962 spectators watched the FA Cup semi-final between Wolverhampton Wanderers and Grimsby Town.\nOld Trafford has hosted an FA Cup Final, two final replays and was regularly used as a neutral venue for the competition's semi-finals. It has also hosted England fixtures, and matches at the 1966 FIFA World Cup, UEFA Euro 1996, the 2012 Summer Olympics and UEFA Women's Euro 2022. The stadium also hosted the 2003 Champions League Final. Outside football, the stadium is used occasionally for rugby league. It has been the venue for the Rugby Football League's annual Super League Grand Final, and previously Premiership Final, since 1987. In addition, it has been a host venue for four editions of the Rugby League World Cup - 1995, 2000, 2013, and 2021 (men's and women's)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 324
+    },
+    "banned_terms": [
+      {
+        "term": "old trafford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "old",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "trafford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
