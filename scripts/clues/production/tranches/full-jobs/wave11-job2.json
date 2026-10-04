@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 2037,
+    "attempt": 2021,
+    "place_id": "gn-293322",
+    "input": {
+      "place": {
+        "place_id": "gn-293322",
+        "name": "Tiberias",
+        "country": "Israel",
+        "subdivision": "Northern District",
+        "lat": 32.79396,
+        "lon": 35.53152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiberias",
+          "url": "https://en.wikipedia.org/wiki/Tiberias",
+          "text": "Tiberias ( ty-BEER-ee-əs; Hebrew: טְבֶרְיָה, ; Arabic: طَبَرِيَّا, romanized: Ṭabariyyā) is a city on the western shore of the Sea of Galilee in northern Israel. A major Jewish center during Late Antiquity, it has been considered since the 18th century one of Judaism's Four Holy Cities, along with Jerusalem, Hebron, and Safed. In 2024, it had a population of 52,123.\nTiberias was founded around 20 CE by Herod Antipas and was named after Roman emperor Tiberius. It became a major political and religious hub of the Jews in the Land of Israel after the destruction of Jerusalem and the desolation of Judea during the Jewish–Roman wars. From the time of the second through the tenth centuries CE, Tiberias was the largest Jewish city in Galilee, and much of the Mishna and the Jerusalem Talmud were compiled there. Tiberias flourished during the Early Muslim period (c. 7th–10th centuries CE), when it served as the capital of Jund al-Urdunn and became a multi-cultural trading center. The city's importance declined in some periods due to earthquake damage and foreign incursions. After the Galilee earthquake of 1837, the city was rebuilt and grew steadily following the First Jewish Aliyah in the 1880s.\nDuring the Ottoman period, Tiberias had a predominantly Muslim population in the early centuries, while from the late Ottoman period, the city became increasingly mixed and at times, had a Jewish majority or plurality. By the late Ottoman and early British Mandate period, it remained a mixed city with significant Jewish, Muslim, and Christian population. By the late Mandatory Palestine period, it had a majority Jewish population, but with a significant Arab community. During the 1947–1948 civil war in Mandatory Palestine, fighting broke out between the Jewish residents of Tiberias and its Palestinian Arab minority. As the Haganah took over, British troops evacuated the entire Palestinian Arab population; they were refused reentry after the war, such that today the city has an almost exclusively Jewish population. After the war ended, the new Israeli authorities destroyed the Old City of Tiberias. A large number of Jewish immigrants to Israel subsequently settled in Tiberias.\nToday, Tiberias is an important tourist center due to its proximity to the Sea of Galilee and religious sanctity to Judaism and Christianity. The city also serves as a regional industrial and commercial center. Its immediate neighbour to the south, Hammat Tiberias, which is now part of modern Tiberias, has been known for its hot springs, believed to cure skin and other ailments, for some two thousand years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 418
+    },
+    "banned_terms": [
+      {
+        "term": "tiberias",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2038,
+    "attempt": 2022,
+    "place_id": "gn-2969392",
+    "input": {
+      "place": {
+        "place_id": "gn-2969392",
+        "name": "Vichy",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.12709,
+        "lon": 3.42577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vichy",
+          "url": "https://en.wikipedia.org/wiki/Vichy",
+          "text": "Vichy (, French: [viʃi]; Occitan: Vichèi [viˈtʃɛj]) is a city in the central French department of Allier. Located on the Allier river, it is a major spa and resort town and during World War II was the de facto administrative capital of Vichy France. Its population is about 25,000.\nKnown for its mineral springs since the Roman times, Vichy had become a major destination for the French nobility and the wealthy by the late 18th century. The town developed further under the patronage of Napoleon III. Following the 1940 armistice, the pro-German collaborationist government headed by Philippe Pétain was set up at Vichy, which remained the de facto capital of the French rump state for the next four years. After the war, the city experienced a period of great prosperity but went into decline from the 1960s.\nIn 2021, the town became part of the transnational UNESCO World Heritage Site under the name \"Great Spa Towns of Europe\" because of its famous baths and its architectural testimony to the popularity of spa towns in Europe from the 18th through 20th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "vichy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2039,
+    "attempt": 2023,
+    "place_id": "gn-3455051",
+    "input": {
+      "place": {
+        "place_id": "gn-3455051",
+        "name": "Paranavaí",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -23.07306,
+        "lon": -52.46528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paranavaí",
+          "url": "https://en.wikipedia.org/wiki/Paranava%C3%AD",
+          "text": "Paranavaí is a municipality in the state of Paraná in Brazil that was founded on December 14, 1952. Paranavaí is located in the Northwest part of the state of Paraná, Paranavaí is also one of the richest cities in Paraná and has a population of 95,525 (IBGE, 2024). It constitutes a medium regional centre whose main activities include commerce, services, and agro-industries (cassava flour, chicken, orange). In addition, Paranavaí has some higher education institutions, which include the State College of Education, Science and Letters (FAFIPA-Unespar). Paranavaí is also known for its only professional soccer team, the Atlético Clube Paranavaí - ACP (Paraná State Championship runner-up in 2003 and champion in 2007), and for the Music and Poetry Festival, held every year, which attracts artistic talents from all parts of Brazil.\nParanavaí is served by Edu Chaves Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "paranavai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2040,
+    "attempt": 2024,
+    "place_id": "gn-3514148",
+    "input": {
+      "place": {
+        "place_id": "gn-3514148",
+        "name": "Zacatlán",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 19.9355,
+        "lon": -97.96125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zacatlán",
+          "url": "https://en.wikipedia.org/wiki/Zacatl%C3%A1n",
+          "text": "Zacatlán (Spanish: [sakaˈtlan] ; Nahuatl: pronounced [saˈkat͡ɬan]) is a city and municipal seat of Zacatlán Municipality located in the Sierra Norte de Puebla region of Puebla in central Mexico. The area is known for its production of apples, other fruit, cider and fruit wines, which are promoted through the annual Feria de la Manzana and Festival de la Sidra. It is also home to the Relojes Centenario company, the first clock factory in Latin America and the builder of the city's double sided flower clock in the main square. The historic center of the city is filled with traditional houses with red tile roofs and Zacatlan was designated a “Pueblo Mágico” in 2011. Outside of the city proper, there is a significant indigenous population, the Piedras Encimadas Valley with its rock formations and various waterfalls and ravines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "zacatlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2041,
+    "attempt": 2025,
+    "place_id": "gn-3832934",
+    "input": {
+      "place": {
+        "place_id": "gn-3832934",
+        "name": "Victoria",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -32.61841,
+        "lon": -60.15478
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victoria, Entre Ríos",
+          "url": "https://en.wikipedia.org/wiki/Victoria,_Entre_R%C3%ADos",
+          "text": "Victoria is a city located in the southwestern part of the province of Entre Ríos, Argentina. It is located on the eastern shore of the Paraná River, opposite Rosario, Santa Fe, to which it has been connected since 2003 by the Rosario-Victoria Bridge (which spans almost 60 km over the flood plain of the Paraná Delta).\nThe site of a 1750 defeat of a native uprising and an 1810 oratory to the Virgin of Aranzazú, a Marian apparition and the city's patron saint, Cerro La Matanza was granted Village status by the Provincial Legislature, in 1826. An 1829 edict renamed the hamlet Victoria. The church (started in 1872) is dedicated to this patron. Designated a \"city\" in 1851, Victoria also features an abbey (Abadía Los Monjes del Niño Dios), founded by Benedictine monks who arrived in 1899.\n\nThe Victoria region is at the core of the fishing industry of commercially important species like sábalo (Prochilodus lineatus) and surubí (Pseudoplatystoma spp.); it produces 95% of the annual 27,000 tonnes of sábalo captured in the province. Concerns about over-exploitation of this resource have been raised lately.\nThe city has a beach resort, and the river at this point is appropriate for the practice of sports such as kayak sailing and windsurf. The municipality claims jurisdiction over 3,700 km2 of islands and islets on the Paraná. Several fishing areas are reserved for sports purposes, while others are protected.\nEvery year Victoria hosts an extended Carnival Season; in 2005, for example, parades and dances were held on weekends from January to the beginning of March.\nVictoria has seen increased touristic affluence since the opening of the connection with Rosario and the Greater Rosario area.  A year later the high-class Casino was opened on the river front; and being one of the biggest such in the country it has brought much wealth for Victoria's tourism industry, attracting gamblers on a national scale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 317
+    },
+    "banned_terms": [
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2042,
+    "attempt": 2026,
+    "place_id": "gn-3876664",
+    "input": {
+      "place": {
+        "place_id": "gn-3876664",
+        "name": "Penco",
+        "country": "Chile",
+        "subdivision": "Biobio",
+        "lat": -36.74075,
+        "lon": -72.99528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penco",
+          "url": "https://en.wikipedia.org/wiki/Penco",
+          "text": "Penco (Mapudungun: See (Pen), Water (Ko)), is a Chilean city and commune in Concepción Province, Bío Bío Region on the Bay of Concepción. Founded as the city of Concepción del Nuevo Extremo (lit. 'Beginning of the New Extreme') on February 12, 1550, by Pedro de Valdivia, it is the third oldest city in Chile, after capital Santiago founded first in 1541 and La Serena second in 1544.\nAs there may be confusion between the demonyms of the inhabitants of Concepción and Penco, due to the previous location of Concepción, inhabitants of that city are called penquistas while inhabitants of Penco are known as pencones.\nThe commune is since 2016 the site of a project to mine rare-earth elements by Aclara Resources, a publicly traded company with a 55.9% and 10.1% ownership of Hochschild Mining and CAP respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "penco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2043,
+    "attempt": 2027,
+    "place_id": "gn-5170691",
+    "input": {
+      "place": {
+        "place_id": "gn-5170691",
+        "name": "Sandusky",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.44894,
+        "lon": -82.70796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandusky, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Sandusky,_Ohio",
+          "text": "Sandusky ( san-DUSS-kee) is a city in Erie County, Ohio, United States, and its county seat. Situated on the southern shore of Lake Erie, Sandusky is located roughly midway between Toledo (45 miles (72 km) west) and Cleveland (50 miles (80 km) east). At the 2020 census, the city had a population of 25,095, and the Sandusky metropolitan area had 115,986 residents.\nSandusky was established in the early 19th century and developed as a port city at the head of Sandusky Bay. It is home to Cedar Point, one of the most popular amusement parks in the world, as well as water parks including Cedar Point Shores, Castaway Bay, Great Wolf Lodge, and Kalahari. The owner of Cedar Point, Six Flags Entertainment Corporation, is the largest employer of Sandusky and maintains significant administrative operations within the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "sandusky",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2044,
+    "attempt": 2028,
+    "place_id": "gn-2803560",
+    "input": {
+      "place": {
+        "place_id": "gn-2803560",
+        "name": "Zwickau",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.72724,
+        "lon": 12.48839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zwickau",
+          "url": "https://en.wikipedia.org/wiki/Zwickau",
+          "text": "Zwickau (German pronunciation: [ˈtsvɪkaʊ] ) is the fourth-largest city of Saxony, Germany, after Leipzig, Dresden and Chemnitz, with around 88,000 inhabitants.\nThe West Saxon city is situated in the valley of the Zwickau Mulde and lies in a string of cities sitting in the densely populated foreland of the Elster and Ore Mountains stretching from Plauen in the southwest via Zwickau, Chemnitz and Freiberg to Dresden in the northeast. Zwickau is the seat of the Zwickau District, the most densely populated district in the new states of Germany.\nZwickau is the seat of the Westsächsische Hochschule Zwickau - University of Applied Sciences Zwickau with campuses in Zwickau, Markneukirchen, Reichenbach im Vogtland and Schneeberg (Erzgebirge). The city is the birthplace of composer Robert Schumann.\nZwickau has historically been one of the centres of the German automotive industry. It is the cradle of Audi and its forerunner Horch. Horchwerke AG Zwickau was founded there in 1904 and was renamed to Audiwerke Zwickau AG in 1909. Zwickau was also the seat of VEB Sachsenring (now Sachsenring GmbH), which produced East Germany's most popular car, the Trabant, in Zwickau. Since 1990, there has been a large Volkswagen plant in Zwickau-Mosel.\nThe 167-kilometre-long (104-mile) Zwickau Mulde River, originating in Schöneck/Vogtl. in the Western Ore Mountains, traverses the city in a south-to-north direction. It enters Zwickau between Zwickau-Cainsdorf and Zwickau-Bockwa, and leaves at Zwickau-Schlunzig near the Volkswagen plant, and is spanned by 17 bridges within the city. The Silver Road, Saxony's longest tourist route, connects Dresden with Zwickau.\nZwickau can be reached by car via the nearby Autobahns A4 and A72, the main railway station (Zwickau Hauptbahnhof), a public airfield which serves light aircraft, and by bike along the Zwickau Mulde River on the so-called Mulderadweg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 290
+    },
+    "banned_terms": [
+      {
+        "term": "zwickau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2045,
+    "attempt": 2029,
+    "place_id": "gn-3036938",
+    "input": {
+      "place": {
+        "place_id": "gn-3036938",
+        "name": "Arles",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.67681,
+        "lon": 4.63031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arles",
+          "url": "https://en.wikipedia.org/wiki/Arles",
+          "text": "Arles (French: [aʁl]; Provençal: Arle [ˈaʀle]) is a coastal city and commune in southern France, a subprefecture in the Bouches-du-Rhône department of the Provence-Alpes-Côte d'Azur region, in the former province of Provence.\nA large part of the Camargue, the largest wetlands in France, is located within the territory of the commune, which is the largest in Metropolitan France in terms of geographic territory. In non-metropolitan France, Maripasoula in French Guiana is the largest French commune in general. \nThe city has a long history, and was of considerable importance in the Roman province of Gallia Narbonensis. The Roman and Romanesque Monuments of Arles were listed as UNESCO World Heritage Sites in 1981 for their testimony to the history of the region.\nThe city is famous for being the archdiocese of Caesarius of Arles and Hilary of Arles. Additionally, many artists have lived and worked in this area, including Pablo Picasso, Paul Gauguin and Jacques Réattu. The Dutch post-Impressionist painter Vincent van Gogh lived in Arles from 1888 to 1889, and produced over 300 paintings and drawings during his time there. These are held in internationally known museums and private collections around the world. An international photography festival has been held annually in the city since 1970."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "arles",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2046,
+    "attempt": 2030,
+    "place_id": "gn-3345440",
+    "input": {
+      "place": {
+        "place_id": "gn-3345440",
+        "name": "Craigavon",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.44709,
+        "lon": -6.387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Craigavon",
+          "url": "https://en.wikipedia.org/wiki/Craigavon",
+          "text": "Craigavon ( kray-GAV-ən) is a town in north County Armagh, Northern Ireland. It was a planned settlement, begun in 1965, and named after the first Prime Minister of Northern Ireland: James Craig, 1st Viscount Craigavon. It was intended to be the heart of a new linear city incorporating Lurgan and Portadown, but this plan was mostly abandoned and later described as having been flawed. Locally, \"Craigavon\" refers to the urban area between the two towns. It is built beside a pair of artificial lakes and is made up of a large residential area (Brownlow), a second smaller one (Mandeville), plus a central area (Highfield) that includes a substantial shopping centre, a courthouse and the district council headquarters. The area around the lakes is a public park and wildlife haven made up of woodland with walking trails. There is also a watersports centre, golf course and ski slope in the area. In most of Craigavon, motor vehicles are completely separated from pedestrians, and roundabouts are used extensively. Its \"town centre\" differs from traditional town centres, as there are no traditional streets.\nCraigavon sometimes refers to the much larger Craigavon Urban Area, a name used by the Northern Ireland Statistics and Research Agency, which includes Craigavon, Lurgan, Portadown and Aghacommon. Craigavon settlement has a population of about 22,000, or about 30% of the wider urban area, which has a population of 72,300."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "craigavon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2047,
+    "attempt": 2031,
+    "place_id": "gn-4354265",
+    "input": {
+      "place": {
+        "place_id": "gn-4354265",
+        "name": "Ellicott City",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.26733,
+        "lon": -76.79831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ellicott City, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Ellicott_City,_Maryland",
+          "text": "Ellicott City ( EL-ih-kət) is an unincorporated community and census-designated place in and the county seat of Howard County, Maryland, United States. Part of the Baltimore metropolitan area, its population was 75,947 at the 2020 census, making it the most populous unincorporated county seat in the United States.\nEllicott City's historic downtown – the Ellicott City Historic District – lies in the valleys of the Tiber and Patapsco rivers. The historic district includes the Ellicott City Station; it is the oldest surviving train station in the United States, having been built in 1830 as the first terminus of the original B&O Railroad line. The historic district of the town is often called \"Historic Ellicott City\" or \"Old Ellicott City\" to distinguish it from the surrounding suburbs that extend south to Columbia and west to West Friendship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "ellicott city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ellicott",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2048,
+    "attempt": 2032,
+    "place_id": "gn-4565908",
+    "input": {
+      "place": {
+        "place_id": "gn-4565908",
+        "name": "Lares",
+        "country": "Puerto Rico",
+        "subdivision": "Lares",
+        "lat": 18.29467,
+        "lon": -66.87712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lares, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Lares,_Puerto_Rico",
+          "text": "Lares (Spanish pronunciation: [ˈlaɾes], locally [ˈlaɾeʔ]) is a mountain town and municipality of Puerto Rico's central-western area. Lares is located north of Maricao and Yauco; south of Camuy, east of San Sebastián and Las Marias; and west of Hatillo, Utuado and Adjuntas. Lares is spread over 10 barrios and Lares Pueblo (Downtown Lares). It is part of the Aguadilla-Isabela-San Sebastián Metropolitan Statistical Area.\nA city adorned with Spanish-era colonial-style churches and small downtown stores, Lares is located on a mountainous, breezy area that is about 1.5 hours from the capital San Juan by car.\nIn 1868, Lares was the site of the Grito de Lares (literally, The Cry of Lares, or Lares Revolt), an uprising brought on by pro-independence rebels and members of the Revolutionary Committee of Puerto Rico striving for Puerto Rican independence from Spain. Even though it was short-lived, it remains an iconic historical event in the history of the island. The flag of the revolt, known as the Bandera del Grito de Lares (Grito de Lares flag), is the official flag of Lares."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "lares",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2049,
+    "attempt": 2033,
+    "place_id": "gn-5930890",
+    "input": {
+      "place": {
+        "place_id": "gn-5930890",
+        "name": "Courtenay",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.68657,
+        "lon": -124.9936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Courtenay, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Courtenay,_British_Columbia",
+          "text": "Courtenay ( KORT-nee) is a city of 28,420 on the east coast of Vancouver Island, in the Canadian province of British Columbia. It is the largest community and only city in the area commonly known as the Comox Valley. Courtenay is the seat of the Comox Valley Regional District; this district replaced the Comox-Strathcona Regional District. Courtenay is 4 kilometres (2.5 mi) west of the town of Comox, 7 km (4.3 mi) northeast of the village of Cumberland, 5 kilometres (3.1 mi) northwest of the unincorporated settlement of Royston, and 108 kilometres (67 mi) northwest of Nanaimo.\nIt was named after the nearby river, Courtenay River, which in turn had been named after Rear-Admiral Courtenay.\nCourtenay and nearby Comox are served by the coast-spanning Island Highway, the Island Rail Corridor, and a local airport in Comox."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "courtenay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2050,
+    "attempt": 2034,
+    "place_id": "gn-3099112",
+    "input": {
+      "place": {
+        "place_id": "gn-3099112",
+        "name": "Gniezno",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 52.53481,
+        "lon": 17.58259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gniezno",
+          "url": "https://en.wikipedia.org/wiki/Gniezno",
+          "text": "Gniezno is a city in central-western Poland, about 50 kilometres (31 miles) east of Poznań. Its population in 2021 was 66,769, making it the sixth-largest city in the Greater Poland Voivodeship. The city is the administrative seat of Gniezno County (powiat).\nOne of the Piast dynasty's chief cities, it was the first historical capital of Poland in the 10th century and early 11th century, and afterwards remained one of the main cities of the historic region of Greater Poland. Gniezno is the seat of the Roman Catholic Archdiocese of Gniezno, the country's oldest archdiocese, founded in 1000, and its archbishop is the primate of Poland, making the city the country's ecclesiastical capital. The Gniezno Cathedral is one of the most historically important churches in Poland, and as such is a designated Historic Monument of Poland. Other sights include the Old Town and the Museum of the Origins of the Polish State."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "gniezno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2051,
+    "attempt": 2035,
+    "place_id": "gn-3574636",
+    "input": {
+      "place": {
+        "place_id": "gn-3574636",
+        "name": "Diego Martin",
+        "country": "Trinidad & Tobago",
+        "subdivision": "Diego Martin Regional Corporation",
+        "lat": 10.72081,
+        "lon": -61.56616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diego Martin",
+          "url": "https://en.wikipedia.org/wiki/Diego_Martin",
+          "text": "Diego Martin () is a town and is the urban commercial center and capital of the Diego Martin region in Trinidad and Tobago. Its location in the region is just on the south eastern border, west of the capital city of Port of Spain and east of the town of Carenage. Diego Martin town in the Northern Range was once filled with a number of small valleys but is now a densely populated area.  It was named after a Spanish explorer Don Diego Martín. The area was settled by French planters and their slaves in the 1780s.  It consists of a cluster of communities including Congo Village, Diamond Vale, Green Hill, Patna Village, Petit Valley, Blue Range, La Puerta Avenue, Four Roads, Rich Plain, River Estate, Blue Basin, Water Wheel, Westmoorings, Bagatelle and Sierra Leone.\nPetit Valley extends from the Four Roads area all the way through the hills of the Northern Range crossing over into Maraval.\nThe Maple Leaf (Canadian) International School is located in Petit Valley. Petit Valley is the birthplace of West Indian cricketer Learie Nicholas Constantine.\n\"Patna\" reflects the settlement of Indo-Trinidadian indentured labourers, while \"Congo\" and \"Sierra Leone\" refer to free African indentured labourers. Places to visit include the historical Waterwheel and the Blue Basin waterfalls, especially the magnificent Blue Basin waterfall.\nThe town area is administered by the Diego Martin Borough Corporation and is the birth home of Empress Shebah 'Ra III and the home town of  Miss Universe 1998, Wendy Fitzwilliam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "diego martin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "diego",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "martin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2052,
+    "attempt": 2036,
+    "place_id": "gn-5408211",
+    "input": {
+      "place": {
+        "place_id": "gn-5408211",
+        "name": "West Sacramento",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.58046,
+        "lon": -121.53023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Sacramento, California",
+          "url": "https://en.wikipedia.org/wiki/West_Sacramento,_California",
+          "text": "West Sacramento (also known as West Sac) is a city in Yolo County, California, United States. The city is separated from Sacramento by the Sacramento River, which also separates Sacramento and Yolo counties. The population was 53,915 at the 2020 census, up from 48,744 at the 2010 census. The traditional industrial center of the region since the California gold rush era, West Sacramento is home to a diverse economy and is one of the area's top four employment centers.\nThe United States Conference of Mayors named West Sacramento as the Most Livable City in America in 2014 in the category of cities with fewer than 100,000 residents.\nWest Sacramento is part of the Sacramento–Arden Arcade–Roseville Metropolitan Statistical Area which has a population (2000) of approximately 1,796,857 (July 1, 2016, estimate placed the population at 2,296,418). Major industries to the region include agriculture, government, and transportation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "west sacramento",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sacramento",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2053,
+    "attempt": 2037,
+    "place_id": "gn-5781061",
+    "input": {
+      "place": {
+        "place_id": "gn-5781061",
+        "name": "Sandy",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.59161,
+        "lon": -111.8841
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandy, Utah",
+          "url": "https://en.wikipedia.org/wiki/Sandy,_Utah",
+          "text": "Sandy is a city in the Salt Lake City metropolitan area, located in Salt Lake County, Utah, United States. The population was 96,904 according to the 2020 United States census.\nSandy is home to the Shops at South Town shopping mall; the Jordan Commons entertainment, office and dining complex; and the Mountain America Exposition Center. It is also the location of the soccer-specific America First Field (formerly known as Rio Tinto Stadium), which hosts Real Salt Lake and Utah Royals FC home games, and opened on October 8, 2008.\nThe city is currently developing a walkable and transit-oriented city center called The Cairns. A formal master plan was adopted in January 2017 to accommodate regional growth and outlines developments and related guidelines through the next 25 years, while dividing the city center into distinct villages. The plan emphasizes sustainable living, walkability, human-scaled architecture, environmentally-friendly design, and nature-inspired design while managing population growth and its related challenges."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "sandy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2054,
+    "attempt": 2038,
+    "place_id": "gn-11073561",
+    "input": {
+      "place": {
+        "place_id": "gn-11073561",
+        "name": "Kakkanad",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 10.01636,
+        "lon": 76.34168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kakkanad",
+          "url": "https://en.wikipedia.org/wiki/Kakkanad",
+          "text": "Kakkanad is a suburb and major urban center in the eastern part of the Kochi metropolitan area in the Indian state of Kerala. It serves as the administrative headquarters of Ernakulam district and is one of Kerala's major information technology and business hubs. Located about 10 km east of central Kochi, Kakkanad is home to major technology parks, including Infopark and SmartCity Kochi, as well as several government institutions and educational establishments. It also houses multiple industrial projects including the Cochin Special Economic Zone and KINFRA.\nHistorically a cluster of villages surrounded by paddy fields and wetlands, Kakkanad experienced rapid urbanization from the late 20th century onward. The establishment of government offices and the growth of the information technology sector transformed the area into one of the fastest-growing parts of the Kochi metropolitan region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "kakkanad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2055,
+    "attempt": 2039,
+    "place_id": "gn-1709717",
+    "input": {
+      "place": {
+        "place_id": "gn-1709717",
+        "name": "Kalamansig",
+        "country": "Philippines",
+        "subdivision": "Soccsksargen",
+        "lat": 6.55187,
+        "lon": 124.05111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalamansig",
+          "url": "https://en.wikipedia.org/wiki/Kalamansig",
+          "text": "Kalamansig, officially the Municipality of Kalamansig (Maguindanaon: Inged nu Kalamansig, Jawi: ايڠد نو كلمانسيݢ),  is a municipality in the province of Sultan Kudarat, Philippines. According to the 2024 census, it has a population of 52,257 people.\nThe main means of livelihood of the people is farming and fishing. The municipality's marine environment is home to various species of marine wildlife and plants, the most important of which is the giant tamilok, the largest shipworm species in the world. The species can only be found within the area, and nowhere else in the world, making Kalamansig an important biodiversity area. Formerly hunted by the locals, the giant tamiloks are now strictly protected by the municipality, specifically the former hunters of the species, after research confirmed the high importance of the species in the area's biodiversity.\nThe nearest point of entry is through Cotabato Airport, Cotabato City. The town can easily be reached by taking the fully cemented Upi-Lebak National Road. Convenient and safe public transport that plies directly to Kalamansig are also available at NCCC Mall Davao, General Santos Public Terminal, Cotabato City Lebak-Kalamansig Terminal and Tacurong City Public Terminal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "kalamansig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2056,
+    "attempt": 2040,
+    "place_id": "gn-3981885",
+    "input": {
+      "place": {
+        "place_id": "gn-3981885",
+        "name": "Tequila",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.88205,
+        "lon": -103.83599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tequila, Jalisco",
+          "url": "https://en.wikipedia.org/wiki/Tequila,_Jalisco",
+          "text": "Santiago de Tequila (Spanish: [teˈkila] ; Nahuatl languages: Tequillan, Tecuila \"place of tribute\") is a Mexican town and municipality located in the state of Jalisco about 60 km from the city of Guadalajara. Tequila is best known as being the birthplace of the drink that bears its name, \"tequila,\" which is made from the blue agave plant, native to this area. The heart of the plant contains natural sugars and was traditionally used to make a fermented drink. After the Spanish arrived, they took this fermented beverage and distilled it, producing the tequila known today. The popularity of the drink and the history behind it has made the town and the area surrounding it a World Heritage Site. It was also named a \"Pueblo Mágico\" (Magical Town) in 2003 by the Mexican federal government. \nThe coat of arms of the municipality was officially adopted on 31 December 1983 by the municipal council. It contains the Latin phrase ALMA LAETA NOBILIS, meaning \"cheerful and noble soul\". Its representative symbols include the tower of the main church in the town of Tequila, the chimneys of the distilleries, the agave plant and Tequila Mountain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "tequila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 2057,
+    "attempt": 2041,
+    "place_id": "gn-4274277",
+    "input": {
+      "place": {
+        "place_id": "gn-4274277",
+        "name": "Lawrence",
+        "country": "United States",
+        "subdivision": "Kansas",
+        "lat": 38.97167,
+        "lon": -95.23525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lawrence, Kansas",
+          "url": "https://en.wikipedia.org/wiki/Lawrence,_Kansas",
+          "text": "Lawrence is a city in and the county seat of Douglas County, Kansas, United States, and the sixth-largest city in the state. It is in the northeastern sector of the state, astride Interstate 70, between the Kansas and Wakarusa rivers. As of the 2020 census, the population of the city was 94,934. The city is a college town with a significant student population, because it is home to both the University of Kansas (KU) and Haskell Indian Nations University (HINU).\nLawrence was founded by the New England Emigrant Aid Company (NEEAC) and was named for Amos A. Lawrence, an abolitionist from Massachusetts, who offered financial aid and support for the settlement. Lawrence was central to the Bleeding Kansas period (1854–1861), and the site of the Wakarusa War (1855) and the Sacking of Lawrence (1856). During the American Civil War it was also the site of the Lawrence massacre (1863).\nLawrence began as a center of free-state politics. Its economy diversified into many industries, including agriculture, manufacturing, and education, beginning with the founding of the University of Kansas in 1865 and Haskell Indian Nations University in 1884."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "lawrence",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2058,
+    "attempt": 2042,
+    "place_id": "gn-6087844",
+    "input": {
+      "place": {
+        "place_id": "gn-6087844",
+        "name": "New Westminster",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.20678,
+        "lon": -122.91092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Westminster",
+          "url": "https://en.wikipedia.org/wiki/New_Westminster",
+          "text": "New Westminster (colloquially known as New West, hən̓q̓əmin̓əm̓: sӽəyəməɬ) is a city in the Lower Mainland region of British Columbia, Canada, and a member municipality of the Metro Vancouver Regional District. \nIt was founded in 1858 by Richard Clement Moody as the capital of the Colony of British Columbia, and served as such until the mainland and Vancouver Island colonies were merged to form the new Colony of British Columbia in 1866. It was the British Columbia mainland's largest city from its foundation until the first decade of the 20th century, when it was surpassed in population by Vancouver.\nIt is located on the banks of the Fraser River as it turns southwest towards its estuary, on the southwest side of the Burrard Peninsula and roughly at the centre of the Greater Vancouver region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "new westminster",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "westminster",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2059,
+    "attempt": 2043,
+    "place_id": "gn-753866",
+    "input": {
+      "place": {
+        "place_id": "gn-753866",
+        "name": "Zamość",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 50.72314,
+        "lon": 23.25196
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zamość",
+          "url": "https://en.wikipedia.org/wiki/Zamo%C5%9B%C4%87",
+          "text": "Zamość (Polish: [ˈzamɔɕt͡ɕ] ; Yiddish: זאמאשטש, romanized: Zamoshtsh; Latin: Zamoscia) is a historical city in southeastern Poland. It is situated in the southern part of Lublin Voivodeship, about 90 km (56 mi) from Lublin, 247 km (153 mi) from Warsaw. In 2021, the population of Zamość was 62,021.\nZamość was founded in 1580 by Jan Zamoyski, Grand Chancellor of Poland, who envisioned an ideal city. The historical centre of Zamość was added to the UNESCO World Heritage List in 1992, following a decision of the sixteenth ordinary session of the World Heritage Committee, held between 7 and 14 December 1992 in Santa Fe, New Mexico, United States; it was recognized for being \"a unique example of a Renaissance town in Central Europe\".\nZamość is about 20 kilometres (12 miles) from the Roztocze National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 134,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "zamosc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2060,
+    "attempt": 2044,
+    "place_id": "gn-1622167",
+    "input": {
+      "place": {
+        "place_id": "gn-1622167",
+        "name": "Wamena",
+        "country": "Indonesia",
+        "subdivision": "Highland Papua",
+        "lat": -4.09583,
+        "lon": 138.94806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wamena",
+          "url": "https://en.wikipedia.org/wiki/Wamena",
+          "text": "Wamena, also known as the District of Wamena (Distrik Wamena), is a large town in the Western New Guinea region of Indonesia. It also serves as the seat of Jayawijaya Regency. It is the largest town in the province of Highland Papua, located in the Baliem Valley and had a population of 64,967 in the 2020 Census; the official estimate in mid 2023 was 66,080.  Wamena is the urban centre of a rural area housing Highland Papua's highest concentration of population, with over 300,000 people inhabiting the Baliem Valley and surrounding areas. These people belong to several related ethnic groups, the most prominent of which are the Dani, Lani, and Yali.\nThe town is also home to the Persiwa Wamena football team, which played in the Indonesian Super League until the early 2010s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "wamena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2061,
+    "attempt": 2045,
+    "place_id": "gn-2925910",
+    "input": {
+      "place": {
+        "place_id": "gn-2925910",
+        "name": "Forchheim",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.71754,
+        "lon": 11.05877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forchheim",
+          "url": "https://en.wikipedia.org/wiki/Forchheim",
+          "text": "Forchheim (German pronunciation: [ˈfɔʁçhaɪm] ) is a town in Upper Franconia (German: Oberfranken) in northern Bavaria, and also the seat of the administrative district of Forchheim. Forchheim is a former royal city, and is sometimes called the Gateway to the Franconian Switzerland, referring to the region of outstanding natural beauty to the north east of the town. Nowadays Forchheim is most famous for its ten day long beer and music festival (Annafest) which takes place in late July in an idyllic wooded hillside, home to 24 beer gardens, on the outskirts of the town. Forchheim's population, as of December 2013, was 30,705, and its land area is 44.95 square kilometres (17.36 square miles). Its position is 49° 44' N, 11° 04' E and its elevation is 265 metres (869 feet) above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "forchheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2062,
+    "attempt": 2046,
+    "place_id": "gn-3117409",
+    "input": {
+      "place": {
+        "place_id": "gn-3117409",
+        "name": "Marín",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.39145,
+        "lon": -8.70136
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marín, Pontevedra",
+          "url": "https://en.wikipedia.org/wiki/Mar%C3%ADn,_Pontevedra",
+          "text": "Marín is a town and municipality in Galicia, Spain in the province of Pontevedra. It is located on the southern shore of the ria of Pontevedra, in the comarca of O Morrazo. This town is home to the Escuela Naval Militar de Oficiales (Naval Academy for Officers).\nFormerly named San Xiao Ancorados by ships anchored nearby, but it is a popular distortion of \"Encoirados,\" meaning leather tanneries, as they were in the Lameira river which flows into the urban center of the village. Father Sarmiento says the town’s name came from the Latin word mare, meaning sea, but it is now known to be derived from the name of a former possessor of this land named Marinus. Marín derives from Marini, \"property of Marinus.\" Both references to the sea are, therefore, pure coincidences."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "marin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2063,
+    "attempt": 2047,
+    "place_id": "gn-3171173",
+    "input": {
+      "place": {
+        "place_id": "gn-3171173",
+        "name": "Pesaro",
+        "country": "Italy",
+        "subdivision": "The Marches",
+        "lat": 43.90921,
+        "lon": 12.9164
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pesaro",
+          "url": "https://en.wikipedia.org/wiki/Pesaro",
+          "text": "Pesaro (Italian: [ˈpeːzaro] ; Romagnol: Pés're) is a comune (municipality) in the Italian region of Marche, capital of the province of Pesaro and Urbino, on the Adriatic Sea.\nAs of January 1st, 2025, its population was 95,266, making it the second most populous city in the Marche, after Ancona. Pesaro was dubbed the \"Cycling City\" (Città della bicicletta) by the Italian environmentalist association Legambiente in recognition of its extensive network of bicycle paths and promotion of cycling. It is also known as \"City of Music\" (Città della musica), for it is the birthplace of the composer Gioachino Rossini. In 2015, the Italian government applied for Pesaro to be declared a \"Creative City\" in UNESCO's World Heritage Sites. In 2017, Pesaro received the European City of Sport award, together with Aosta, Cagliari and Vicenza.\nLocal industries include fishing, furniture making and tourism. In 2020 it absorbed the former comune of Monteciccardo, now a frazione of Pesaro. Its frazione of Fiorenzuola di Focara is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "pesaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2064,
+    "attempt": 2048,
+    "place_id": "gn-321426",
+    "input": {
+      "place": {
+        "place_id": "gn-321426",
+        "name": "Bergama",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 39.12074,
+        "lon": 27.18052
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergama",
+          "url": "https://en.wikipedia.org/wiki/Bergama",
+          "text": "Bergama is a municipality and district of İzmir Province, Turkey, and home to the ancient city of Pergamon. The district has an area of 1,544 km2, and a population of 105,754 (2022). While it is not part of the metropolitan area of the capital city İzmir, it is one of the more populous districts of the province, and is 53.6% urban. Bergama center is situated at a distance of 118 km (73 mi) to the north of the traditional center of İzmir (Konak Square) and 27 km (17 mi) inland from the nearest seacoast, in Dikili.\nTo the north, Bergama shares a border with three districts of Balıkesir Province, Ayvalık, Burhaniye and İvrindi. To the east, it is bordered by the İzmir Province district of Kınık and the Manisa Province district of Soma. To the south, it is bordered by the Yunusemre district of Manisa, and the İzmir Province district of Aliağa. To the west, it is bordered by the İzmir Province district of Dikili. The district's physical features are determined by the alluvial plain of Bakırçay River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "bergama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2065,
+    "attempt": 2049,
+    "place_id": "gn-3526953",
+    "input": {
+      "place": {
+        "place_id": "gn-3526953",
+        "name": "Huejotzingo",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 19.15892,
+        "lon": -98.40824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huejotzingo",
+          "url": "https://en.wikipedia.org/wiki/Huejotzingo",
+          "text": "Huejotzingo () is a small city and municipality located just northwest of the city of Puebla, in central Mexico. In 2023, Huejotzingo was designated a Pueblo Mágico by the Mexican government, recognizing its meaningful cultural and historic importance. The settlement's history dates back to the pre-Hispanic period, when it was a dominion, with its capital a short distance from where the modern settlement is today. Modern Huejotzingo is located where a Franciscan monastery was founded in 1525, and in 1529, the monks moved the indigenous population of Huejotzingo to live around the monastery. Today, Huejotzingo is known for the production of alcoholic apple cider and fruit preserves, as well as its annual carnival. This carnival is distinct as it centers on the re-enactment of several historical and legendary events related to the area. The largest of these is related to the Battle of Puebla, with about 2,000 residents representing French and Mexican forces that engage in mock battles over four days."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "huejotzingo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2066,
+    "attempt": 2050,
+    "place_id": "gn-3531784",
+    "input": {
+      "place": {
+        "place_id": "gn-3531784",
+        "name": "Calpulalpan",
+        "country": "Mexico",
+        "subdivision": "Tlaxcala",
+        "lat": 19.58867,
+        "lon": -98.56972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calpulalpan",
+          "url": "https://en.wikipedia.org/wiki/Calpulalpan",
+          "text": "Calpulalpan, officially the Heroic City of Calpulalpan, is a Mexican city, head and main urban center of the homonymous municipality, located to the west of the state of Tlaxcala. With 33,263 inhabitants in 2010 according to the population and housing census conducted by the National Institute of Statistics and Geography (INEGI), it is the sixth most populous city in the state. It has an estimated population of 37,752 inhabitants for 2017, according to the National Population Council (CONAPO).\nThe Heroic City designation was conferred in 2015 in recognition of the action on 10 April 1867 during the Second French Intervention\nin which, according to municipal authorities, Republican forces under General Porfirio Díaz defeated a contingent of Imperialists under General Leonardo Márquez.\nThe engagement is sometimes identified as the Battle of Puente de Márquez."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "calpulalpan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2067,
+    "attempt": 2051,
+    "place_id": "gn-3674885",
+    "input": {
+      "place": {
+        "place_id": "gn-3674885",
+        "name": "Melgar",
+        "country": "Colombia",
+        "subdivision": "Tolima Department",
+        "lat": 4.20475,
+        "lon": -74.64075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melgar, Tolima",
+          "url": "https://en.wikipedia.org/wiki/Melgar,_Tolima",
+          "text": "Melgar (Spanish pronunciation: [melˈɣaɾ]) is a Colombian municipality and town in the Department of Tolima, 98 km (61 mi) southwest of Bogotá and 1 hour east of Ibagué, the capital city of Tolima.\nMelgar is located in the Sumapaz River Valley and borders the Department of Cundinamarca and Sumapaz River to the north, town of Icononzo to the east, the towns of Cunday at the south and Carmen de Apicala to the west.\nThe town is home to a major military base called Tolemaida Air Base.\nMelgar is a very popular weekend destination for Bogota residents. Temperature ranges between 28 and 35 °C (82 and 95 °F). It is known in Colombia as the \"City of the Swimming Pools\"  or the \"Sea of Swimming Pools\" because of its more than 5,000 swimming pools. It is a major inland resort, which the people of Bogotá visit on weekends to flee the capital's cold weather for the warm climate of the valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "melgar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2068,
+    "attempt": 2052,
+    "place_id": "gn-3682108",
+    "input": {
+      "place": {
+        "place_id": "gn-3682108",
+        "name": "Garzón",
+        "country": "Colombia",
+        "subdivision": "Huila Department",
+        "lat": 2.19593,
+        "lon": -75.62777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garzón, Huila",
+          "url": "https://en.wikipedia.org/wiki/Garz%C3%B3n,_Huila",
+          "text": "Garzon (Spanish pronunciation: [ɡaɾˈson]) is a town and municipality in the Huila Department, Colombia.\nGarzon is a municipality located in the center of the Colombian department of Huila, about 450 kilometers south of Bogotá and 91 kilometers south of the departmental capital, Neiva. Known as the Diocesan Capital of Huila, it is the first Catholic diocese in the region. Proud of its religious architecture and culture, Garzón is also called \"the Soul of Huila.\" It is known for being one of the cities in the world and inside Huila where the best coffee in the world is grown and processed. This has led to the actor Hugh Jackman and his partner David Steingard to buying the coffee in Garzón for his company, foundation and coffee shop in New York called Laughing Man Foundation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "garzon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2069,
+    "attempt": 2053,
+    "place_id": "gn-3874930",
+    "input": {
+      "place": {
+        "place_id": "gn-3874930",
+        "name": "Puerto Varas",
+        "country": "Chile",
+        "subdivision": "Los Lagos Region",
+        "lat": -41.31946,
+        "lon": -72.98538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Varas",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Varas",
+          "text": "Puerto Varas, also known as \"La Ciudad de Las Rosas\" or \"The City Of Roses\", is a city and commune located in the southern Chilean province of Llanquihue, in the Los Lagos Region.\nThe city is famous for its German traditions, its natural environment, and its popularity as a tourist destination. It enjoys a scenic location close to mountains, lakes, forests and national parks. It is located 20 kilometres (12 mi) from the city of Puerto Montt on the shore of Llanquihue Lake, the second largest lake in Chile.  The conical Osorno volcano and the snow capped peaks of Calbuco volcano and Mt.Tronador are clearly visible from the lakefront. Puerto Varas is the southernmost of a string of towns on the western shore of Llanquihue Lake that includes Frutillar, Llanquihue and Puerto Octay. It spans an area of 4,064.9 km2 (1,569 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "puerto varas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "varas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2070,
+    "attempt": 2054,
+    "place_id": "gn-4692883",
+    "input": {
+      "place": {
+        "place_id": "gn-4692883",
+        "name": "Galveston",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.30135,
+        "lon": -94.7977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Galveston, Texas",
+          "url": "https://en.wikipedia.org/wiki/Galveston,_Texas",
+          "text": "Galveston ( GAL-vis-tən) is a resort city and port on the Gulf Coast of the U.S. state of Texas. It encompasses 211.31 square miles (547.3 km2) on Galveston Island and Pelican Island. As of the 2020 census, the city had a population of 53,695, making it the second-largest municipality in Galveston County, where it also serves as the county seat. Located at the southern end of the Greater Houston metropolitan area, Galveston sits on the northwestern coast of the Gulf of Mexico.\nGalveston, or Galvez's town, was named after 18th-century Spanish military and political leader Bernardo de Gálvez, 1st Count of Gálvez (1746–1786). The first European settlements on Galveston Island were built around 1816 by French pirate Louis-Michel Aury to help the fledgling First Mexican Empire fight for independence from the Spanish Empire. The Port of Galveston was established in 1825 by the Congress of Mexico following its independence. The city was the main port for the fledgling Texas Navy during the Texas Revolution of 1836, and later served temporarily as the new national capital of the Republic of Texas. In 1865, General Gordon Granger arrived at Ashton Villa and announced to some of the last enslaved African Americans that slavery was no longer legal. This event is commemorated annually on June 19, the federal holiday of Juneteenth.\nDuring the 19th century, Galveston became a major U.S. commercial center and one of the largest ports in the United States. It was, for a time, Texas's largest city, known as the \"Queen City of the Gulf\". It was devastated by the unexpected Galveston Hurricane of 1900, whose effects included massive flooding and a storm surge which nearly wiped out the town. The natural disaster on the exposed barrier island is still ranked today as the deadliest in United States history, with an estimated death toll between 6,000 and 12,000 people. The city subsequently reemerged during the Prohibition era of 1919–1933 as a leading tourist hub and a center of illegal gambling, nicknamed the Free State of Galveston until this era ended in the 1950s with subsequent economic and social development.\nMuch of Galveston's economy is centered in the tourism, health care, shipping, and financial industries. The 84-acre (34 ha) University of Texas Medical Branch campus with an enrollment of more than 2,500 students is a major economic force of the city. Galveston is home to six historic districts containing one of the largest historically significant collections of 19th-century buildings in the U.S., with over 60 structures listed on the National Register of Historic Places, maintained by the National Park Service in the United States Department of the Interior."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 437
+    },
+    "banned_terms": [
+      {
+        "term": "galveston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2071,
+    "attempt": 2055,
+    "place_id": "gn-4839292",
+    "input": {
+      "place": {
+        "place_id": "gn-4839292",
+        "name": "New Britain",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.66121,
+        "lon": -72.77954
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Britain, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/New_Britain,_Connecticut",
+          "text": "New Britain is a city in Hartford County, Connecticut, United States. About 9 miles (14 km) southwest of Hartford, the city is part of the Capitol Planning Region. According to the 2020 Census, the population of the city is 74,135.\nAmong the southernmost of the communities encompassed within the Hartford-Springfield Knowledge Corridor metropolitan region, New Britain is home to Central Connecticut State University and Charter Oak State College. The city was noted for its industry during the 19th and early 20th centuries, and sites listed on the National Register of Historic Places include Walnut Hill Park, developed by the landscape architect Frederick Law Olmsted and Downtown New Britain.\nThe city's official nickname is the \"Hardware City\" because of its history as a manufacturing center and as the headquarters of Stanley Black & Decker. Because of its large Polish population, the city is often playfully referred to as \"New Britski\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "new britain",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "britain",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2072,
+    "attempt": 2056,
+    "place_id": "gn-5099967",
+    "input": {
+      "place": {
+        "place_id": "gn-5099967",
+        "name": "Kearny",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.76843,
+        "lon": -74.14542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kearny, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Kearny,_New_Jersey",
+          "text": "Kearny ( KAR-nee) is a town in the western part of Hudson County, in the U.S. state of New Jersey, and a suburb of Newark. As of the 2020 United States census, the town's population was 41,999, an increase of 1,315 (+3.2%) from the 2010 census count of 40,684, which in turn reflected an increase of 171 (+0.4%) from the 40,513 counted in the 2000 census.\nKearny is named after Civil War general Philip Kearny. It began as a township formed by an act of the New Jersey Legislature on April 8, 1867, from portions of Harrison Township. Portions of the township were taken on July 3, 1895, to form East Newark. Kearny was incorporated as a town on January 19, 1899, based on the results of a referendum held two days earlier. The Arlington section of town was named for Arlington Station on the Erie Railroad at the Arlington Mill plant, owned by Arlington Mills of Lawrence, Massachusetts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "kearny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2073,
+    "attempt": 2057,
+    "place_id": "gn-5987650",
+    "input": {
+      "place": {
+        "place_id": "gn-5987650",
+        "name": "Joliette",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.0164,
+        "lon": -73.4236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joliette, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Joliette,_Quebec",
+          "text": "Joliette (French pronunciation: [ʒɔljɛt] ) is a city in southwest Quebec, Canada. It is approximately 50 kilometres (31 mi) northeast of Montreal, on the L'Assomption River. It is also the seat of the Regional County Municipality of Joliette. Founded in 1823 by Barthélemy Joliette and his wife Marie-Charlotte de Lanaudière. Joliette named it L'Industrie to \"design [it] around economic activity, mills, land development and a desire to create a durable centre on the L’Assomption River.\" In 1863, the city incorporated, and changed its name to Joliette.\nConsidered part of the North Shore of Greater Montreal, the city is home to the Musée d'art de Joliette, which has a permanent collection of more than 8,300 works of art: paintings, sculpture, art on paper and a large collection of art from the French Middle Ages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "joliette",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2074,
+    "attempt": 2058,
+    "place_id": "gn-601594",
+    "input": {
+      "place": {
+        "place_id": "gn-601594",
+        "name": "Türkmenbaşy",
+        "country": "Turkmenistan",
+        "subdivision": "Balkan",
+        "lat": 40.02216,
+        "lon": 52.95517
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Türkmenbaşy, Turkmenistan",
+          "url": "https://en.wikipedia.org/wiki/T%C3%BCrkmenba%C5%9Fy,_Turkmenistan",
+          "text": "Türkmenbaşy, previously known as Shagadam (Turkmen: Şagadam), Krasnovodsk (Russian: Красноводск) and Kyzyl-Su, is a major port city in Balkan Province in western Turkmenistan, on the Türkmenbaşy Gulf of the Caspian Sea. It sits at an elevation of 27 metres (89 feet). The population (est 2004) was 86,800, consisting of mostly ethnic Turkmens, with the addition of Russian, Armenian and Azerbaijani minorities. As the terminus of the Trans-Caspian Railway and site of a major seaport on the Caspian, it is an important transportation center. The city is also the site of Turkmenistan's largest oil refining complex.\nThis city should not be confused with the similarly named town of Türkmenbaşy (Turkmen: Türkmenbaşy şäherçesi), formerly called Janga (Russian: Джанга, Cyrillic Turkmen: Җанга), also in Balkan Province, or the city of Saparmyrat Türkmenbaşy adyndaky in Daşoguz Province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "turkmenbasy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2075,
+    "attempt": 2059,
+    "place_id": "gn-2641544",
+    "input": {
+      "place": {
+        "place_id": "gn-2641544",
+        "name": "Newton Mearns",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.77334,
+        "lon": -4.33339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton Mearns",
+          "url": "https://en.wikipedia.org/wiki/Newton_Mearns",
+          "text": "Newton Mearns (Scottish Gaelic: Baile Ùr na Maoirne [ˈpalə ˈuːɾ nə ˈmɯːrˠɲə]) is a town and the largest settlement in East Renfrewshire, Scotland. It lies 7 miles (11 km) south-west of Glasgow City Centre on historically the main road to Ayrshire, 410 feet (125 m) above sea level. It has a population of approximately 26,993, stretching from Whitecraigs and Kirkhill in the north-east to Maidenhill in the south-east, to Westacres and Greenlaw in the west and Capelrig/Patterton in the north-west.\nIt is part of the Greater Glasgow conurbation. Its name derives from being a new town of the parish of Mearns (from Brythonic maoirne, meaning a stewartry).  It is known for being one of Greater Glasgow's wealthiest areas, and historically has been part of one of the strongest Conservative-voting constituencies in Scotland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "newton mearns",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mearns",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2076,
+    "attempt": 2060,
+    "place_id": "gn-2652002",
+    "input": {
+      "place": {
+        "place_id": "gn-2652002",
+        "name": "Crewe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.09787,
+        "lon": -2.44161
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crewe",
+          "url": "https://en.wikipedia.org/wiki/Crewe",
+          "text": "Crewe ( ) is a railway town and civil parish in the unitary authority of Cheshire East, in Cheshire, England. At the 2021 census, the parish had a population of 55,318 and the built-up area had 76,437. The town is best known as a large railway junction and home to Crewe Works; for many years, it was a major railway engineering facility for manufacturing and overhauling locomotives, but is now much reduced in size. From 1946 until 2002, it was also the home of Rolls-Royce motor car production. The Pyms Lane factory on the west of the town now exclusively produces Bentley motor cars. Crewe is 158 miles (254 km) north-west of London, 28 miles (45 km) south of Manchester city centre and 31 miles (50 km) south-east of Liverpool city centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "crewe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

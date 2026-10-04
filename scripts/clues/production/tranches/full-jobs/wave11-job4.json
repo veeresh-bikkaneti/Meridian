@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 2077,
+    "attempt": 2061,
+    "place_id": "gn-3101672",
+    "input": {
+      "place": {
+        "place_id": "gn-3101672",
+        "name": "Chojnice",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 53.69554,
+        "lon": 17.55701
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chojnice",
+          "url": "https://en.wikipedia.org/wiki/Chojnice",
+          "text": "Chojnice (Polish: [xɔjˈɲit͡sɛ] ; Kashubian: Chònice or Chòjnice; German: Konitz or Conitz) is a town in northern Poland with a population of 38,789 (as of June 2023), near the Tuchola Forest. It is the capital of Chojnice County in the Pomeranian Voivodeship.\nFounded in c. 1205, Chojnice is a former royal city of Poland and was an important center of cloth production. It is home to one of the oldest high schools in Poland, and played a significant role in Polish youth resistance against the Germanisation policies of Prussia following the Partitions of Poland. The town was also the site of several significant battles, and during World War II, German occupiers massacred approximately 2,000 Poles on its outskirts.\nChojnice is a railroad junction with connections to Brodnica, Kościerzyna, Piła, Szczecinek, and Tczew. It contains several Gothic and Baroque heritage sights, and is the largest town near the Tuchola Forest, a large forest complex in north-central Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "chojnice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2078,
+    "attempt": 2062,
+    "place_id": "gn-3438995",
+    "input": {
+      "place": {
+        "place_id": "gn-3438995",
+        "name": "Mariano Roque Alonso",
+        "country": "Paraguay",
+        "subdivision": "Central Department",
+        "lat": -25.20791,
+        "lon": -57.53202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mariano Roque Alonso, Paraguay",
+          "url": "https://en.wikipedia.org/wiki/Mariano_Roque_Alonso,_Paraguay",
+          "text": "Mariano Roque Alonso (Spanish pronunciation: [maˈɾja.no ˈro.ke aˈlon.so]) is a district and city located in the Central Department of Paraguay, in the Gran Asunción metropolitan area. The city has a population of approximately 85,000 people.\nThe city was founded in 1944 and is located between the Paraguay River and the Transchaco Road, approximately 18 kilometers away from the city of Asunción. This optimal location has allowed the city to experience rapid commercial, industrial, and social development.\nThe town is known for the fact that, on the afternoon of February 4, 1996, LAC Colombia Flight 028 crashed while taking off from Silvio Pettirossi International Airport, killing four crew members and eighteen people on the ground. With a total of 22 people dead, it is the worst air accident in the history of Paraguay.\nThe economy of Mariano Roque Alonso is primarily supported by commercial, port and fishing activities. It is also the home of the Mariano Roque Alonso International Expo Fair, Paraguay's largest annual Expo show, where companies and industries showcase their latest products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "mariano roque alonso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mariano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "roque",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alonso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2079,
+    "attempt": 2063,
+    "place_id": "gn-4876523",
+    "input": {
+      "place": {
+        "place_id": "gn-4876523",
+        "name": "Sioux City",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 42.49999,
+        "lon": -96.40031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sioux City, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Sioux_City,_Iowa",
+          "text": "Sioux City ( SOO) is a city in Woodbury and Plymouth counties in the U.S. state of Iowa. The population was 85,797 at the 2020 census, and was estimated at 86,875 in 2024, making it the fourth-most populous city in Iowa. The county seat of Woodbury County, Sioux City is the primary city of the five-county Sioux City metropolitan area, which had 144,334 residents on the 2020 census. Sioux City and the surrounding areas of northwestern Iowa, northeastern Nebraska and southeastern South Dakota are sometimes referred to collectively as Siouxland.\nSioux City is located at the navigational head of the Missouri River. The city is home to several cultural points of interest including the Sioux City Public Museum, Sioux City Art Center and Sergeant Floyd Monument, which is a National Historic Landmark. The city is also home to Chris Larsen Park, commonly referred to as \"the Riverfront\", which includes the Anderson Dance Pavilion, Sergeant Floyd River Museum & Welcome Center and Lewis and Clark Interpretive Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "sioux city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sioux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2080,
+    "attempt": 2064,
+    "place_id": "gn-5106279",
+    "input": {
+      "place": {
+        "place_id": "gn-5106279",
+        "name": "West Milford",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.13121,
+        "lon": -74.36737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Milford, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/West_Milford,_New_Jersey",
+          "text": "West Milford is a township in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 24,862, a decrease of 988 (−3.8%) from the 2010 census count of 25,850, which in turn reflected a decline of 560 (−2.1%) from the 26,410 counted in the 2000 census. It is the largest in the county by total area, covering 80.32 square miles (208.0 km2) and more than 40% of the county.\nWest Milford was home to a Warner Bros.-owned theme park from 1972 to 1976 entitled Warner Bros. Jungle Habitat.  The 800-acre (320 ha) Jungle Habitat property, with 26 miles (42 km) of paved roads, was purchased by the state in 1988 for $1.45 million and remnants of the theme park remain until today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "west milford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "milford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2081,
+    "attempt": 2065,
+    "place_id": "gn-5149222",
+    "input": {
+      "place": {
+        "place_id": "gn-5149222",
+        "name": "Canton",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.79895,
+        "lon": -81.37845
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canton, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Canton,_Ohio",
+          "text": "Canton () is a city in Stark County, Ohio, United States, and its county seat. The population was 70,872 at the 2020 census and estimated at 69,001 in 2025, making it the eighth-most populous city in Ohio. The Canton–Massillon metropolitan area had an estimated 400,551 residents in 2024. Canton is located approximately 60 miles (97 km) south of Cleveland and 20 miles (32 km) south of Akron in Northeast Ohio, on the edge of Ohio's Amish Country.\nFounded in 1805 alongside Nimishillen Creek, Canton became a center of heavy industry because of its numerous railroad lines. As shifts in the manufacturing industry led to the relocation or downsizing of many factories and workers during the late 20th century, the city's industry diversified into the service economy, including retailing, education, finance and healthcare.\nCanton is best known as the home of the Pro Football Hall of Fame and the birthplace of the National Football League. 25th U.S. president William McKinley conducted his famous front porch campaign from his home in Canton, winning the presidency in the 1896 election. The McKinley National Memorial and William McKinley Presidential Library and Museum commemorate his life and presidency. Canton was also selected as the site of the First Ladies National Historic Site largely in honor of his wife, Ida Saxton McKinley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "canton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2082,
+    "attempt": 2066,
+    "place_id": "gn-5338783",
+    "input": {
+      "place": {
+        "place_id": "gn-5338783",
+        "name": "Colton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.0739,
+        "lon": -117.31365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colton, California",
+          "url": "https://en.wikipedia.org/wiki/Colton,_California",
+          "text": "Colton is a city in San Bernardino County, California, United States. Nicknamed \"Hub City\", Colton is located in the Inland Empire region of the state and is a suburb of San Bernardino, approximately 4 miles (6.4 km) south of the city's downtown. The population of Colton is 53,909 according to the 2020 census, up from 52,154 at the 2010 census.\nColton is the site of Colton Crossing, which was one of the busiest at-grade railroad crossings in the United States. The crossing was installed in 1882 by the California Southern Railroad to cross the Southern Pacific Railroad tracks while building northward from San Diego. As a result of railroad acquisitions and mergers, this became the point at which the Burlington Northern Santa Fe's \"Southern Transcontinental Route\" crossed the Union Pacific's \"Sunset Route\". As traffic on each line began to soar in the mid-1990s, fueled largely by the vast increase in imports passing through the ports of Los Angeles and Long Beach, the primitive crossing became a serious bottleneck. On August 28, 2013, the at-grade crossing was officially replaced by a fly-over that raises the east–west UP tracks over the north–south BNSF tracks.\nDespite its status as a railroad town, Colton does not have passenger rail service. Passenger trains operated by Amtrak and Metrolink pass through Colton but do not stop there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "colton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2083,
+    "attempt": 2067,
+    "place_id": "gn-5928065",
+    "input": {
+      "place": {
+        "place_id": "gn-5928065",
+        "name": "Cornwall",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.01809,
+        "lon": -74.72815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cornwall, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Cornwall,_Ontario",
+          "text": "Cornwall is a city in Eastern Ontario, Canada, situated where the provinces of Ontario and Quebec and the U.S. state of New York converge. It is Ontario's easternmost city. Although it is the seat of the United Counties of Stormont, Dundas and Glengarry, Cornwall is administered independently from the county.\nCornwall is named after the English Duchy of Cornwall; the city's coat of arms is based on that of the duchy with its colours reversed and the addition of a \"royal tressure,\" a Scottish symbol of royalty.\nIt is the urban centre for the surrounding communities of Long Sault and Ingleside to the west; the Mohawk Territory of Akwesasne to the south; St. Andrews West and Avonmore to the north; and Glen Walter, Martintown, Apple Hill, Williamstown, and Lancaster to the east.\nThe city is located along the north shore of the St. Lawrence River and is home to the St. Lawrence Seaway Management Corporation, which oversees navigation and shipping activities for the St. Lawrence Seaway.  It lies within the Quebec City–Windsor Corridor along Ontario Highway 401, is a major port of entry from the United States into Canada, and is positioned to support some of Cornwall's largest industries, which include logistics, distribution, and call centres."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "cornwall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2084,
+    "attempt": 2068,
+    "place_id": "gn-202326",
+    "input": {
+      "place": {
+        "place_id": "gn-202326",
+        "name": "Cyangugu",
+        "country": "Rwanda",
+        "subdivision": "Western Province",
+        "lat": -2.4846,
+        "lon": 28.9075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cyangugu",
+          "url": "https://en.wikipedia.org/wiki/Cyangugu",
+          "text": "Cyangugu (formerly Shangugu) is a city and capital of the Rusizi District in Western Province, Rwanda. The city lies at the southern end of Lake Kivu, and is contiguous with Bukavu, Democratic Republic of the Congo, but separated from it by the Ruzizi River. Two bridges and a dam cross the river frontier.\nThe settlement has two main areas: Cyangugu itself is the low-density district on the lake shore, while Kamembe, the higher density industrial and transport centre is further inland and to the north. Kamembe Airport serves the city with flights 11 times a week to Kigali, operated by RwandAir.\nThe city lies near Nyungwe Forest, a popular tourist destination, being one of the last remaining forest areas of Rwanda and home to chimpanzees and many other species of primate.\nIn 2022 the city had a population of 43,866."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "cyangugu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2085,
+    "attempt": 2069,
+    "place_id": "gn-2186280",
+    "input": {
+      "place": {
+        "place_id": "gn-2186280",
+        "name": "Nelson",
+        "country": "New Zealand",
+        "subdivision": "Nelson Region",
+        "lat": -41.27078,
+        "lon": 173.28404
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nelson, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Nelson,_New_Zealand",
+          "text": "Nelson (Māori: Whakatū) is a city and unitary authority on the eastern shores of the Tasman Bay at the top of the South Island of New Zealand. It is the oldest city in the South Island and the second-oldest settled city in the country; it was established in 1841 and became a city by British royal charter in 1858.\nNelson City is bordered to the west and south-west by the Tasman District and to the north-east, east and south-east by the Marlborough District. The Nelson urban area has a population of 50,800, making it New Zealand's 15th most populous urban area.\nNelson is well known for its thriving local arts and crafts scene; each year, the city hosts events popular with locals and tourists alike, such as the Nelson Arts Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "nelson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2086,
+    "attempt": 2070,
+    "place_id": "gn-2654186",
+    "input": {
+      "place": {
+        "place_id": "gn-2654186",
+        "name": "Bury St Edmunds",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.2463,
+        "lon": 0.71111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bury St Edmunds",
+          "url": "https://en.wikipedia.org/wiki/Bury_St_Edmunds",
+          "text": "Bury St Edmunds ( ), commonly referred to locally as Bury, is a cathedral as well as market town and civil parish in the West Suffolk district, in the county of Suffolk, England. The town is best known for Bury St Edmunds Abbey and St Edmundsbury Cathedral. Bury is the seat of the Diocese of St Edmundsbury and Ipswich of the Church of England, with the episcopal see at St Edmundsbury Cathedral. The town, originally called Beodericsworth, was built on a grid pattern by Abbot Baldwin around 1080. It is known for brewing and malting (Greene King brewery) and for a British Sugar processing factory, where Silver Spoon sugar is produced. The town is the cultural and retail centre for West Suffolk and tourism is a major part of the economy. The built up area had a population of 41,280 at the 2021 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "bury st edmunds",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bury",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "edmunds",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2087,
+    "attempt": 2071,
+    "place_id": "gn-2688368",
+    "input": {
+      "place": {
+        "place_id": "gn-2688368",
+        "name": "Norrköping",
+        "country": "Sweden",
+        "subdivision": "Östergötland",
+        "lat": 58.59419,
+        "lon": 16.1826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norrköping",
+          "url": "https://en.wikipedia.org/wiki/Norrk%C3%B6ping",
+          "text": "Norrköping (  NOR-shə-ping, Swedish: [ˈnɔ̂rːˌɕøːpɪŋ] ) is a city in the province of Östergötland in eastern Sweden and the seat of Norrköping Municipality, Östergötland County, about 160 km (100 miles) southwest of the national capital Stockholm, 40 km (25 miles) east of county seat Linköping and 60 km (40 miles) west of the Södermanland capital of Nyköping. The city has a population of 98,229 inhabitants in 2023, out of a municipal total of 144,980, making it Sweden's eleventh largest city and tenth largest municipality.\nThe city is situated by the mouth of the river Motala ström, at Bråviken, an inlet of the Baltic Sea. Water power from the Motala ström and the good harbour were factors that facilitated the rapid growth of this once industrial city, known for its textile industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "norrkoping",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2088,
+    "attempt": 2072,
+    "place_id": "gn-3435486",
+    "input": {
+      "place": {
+        "place_id": "gn-3435486",
+        "name": "Chajarí",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -30.75482,
+        "lon": -57.98196
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chajarí",
+          "url": "https://en.wikipedia.org/wiki/Chajar%C3%AD",
+          "text": "Chajarí is a city in the northeast of the province of Entre Ríos, Argentina. It has 45.000 inhabitants per the 2010 census [INDEC], and it is the largest city in the Federación Department. It lies on Provincial Route 2, about 2 km east of the intersection with National Route 14 and west of the Salto Grande reservoir on the Uruguay River, 330 km from the provincial capital Paraná.\nThe settlement of Chajarí was populated after joint efforts of the provincial and national governments to encourage colonization. The original town, called Villa Libertad, was founded on 28 May 1872; colonists began arriving in 1876 from several regions of Europe. The municipal government was established in 1889, and in 1934 the town changed its name to match that of its railway station, Chajarí.\nChajarí has hot springs, like many other towns and cities in the east of Entre Ríos, and in September 2001 it opened facilities for visitors interested in the therapeutic properties of its waters. It also has a camping site by the artificial Salto Grande lake, 15–20 km from the city proper, which can be used for fishing and water sports."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "chajari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2089,
+    "attempt": 2073,
+    "place_id": "gn-4023117",
+    "input": {
+      "place": {
+        "place_id": "gn-4023117",
+        "name": "Dolores Hidalgo",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 21.15611,
+        "lon": -100.9325
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dolores Hidalgo",
+          "url": "https://en.wikipedia.org/wiki/Dolores_Hidalgo",
+          "text": "Dolores Hidalgo (Spanish: [doˈloɾes iˈðalɣo] ), in full Dolores Hidalgo Cuna de la Independencia Nacional (English: Dolores Hidalgo, Birthplace of National Independence), is the name of a city and the surrounding municipality in the north-central part of the Mexican state of Guanajuato.\nIt is located at 21.17°N 100.93°W﻿ / 21.17; -100.93, at an elevation of about 1,980 meters (6,500 feet) above sea level. In the census of 2005 the city had a population of 54,843, while the municipality had 134,641 inhabitants. The city lies directly in the center of the municipality, which is 1,656 km2 (639 sq mi) in area and includes numerous small outlying communities, the largest of which is Río Laja with a population of 2,211 (2005 census).\nDolores Hidalgo was named a Pueblo Mágico (Magic Town) in 2002."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "dolores hidalgo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dolores",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hidalgo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2090,
+    "attempt": 2074,
+    "place_id": "gn-5006166",
+    "input": {
+      "place": {
+        "place_id": "gn-5006166",
+        "name": "Pontiac",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.63892,
+        "lon": -83.29105
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pontiac, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Pontiac,_Michigan",
+          "text": "Pontiac ( PON-(t)ee-ak) is a city in and the county seat of Oakland County in the U.S. state of Michigan. Located roughly 26 miles (41.8 km) northwest of downtown Detroit, Pontiac is part of the Detroit metropolitan area, and is variously described as a satellite city or suburb of Detroit. As of the 2020 census, the city had a population of 61,606.\nFounded in 1818, Pontiac was the second European-American organized settlement in what is now Metro Detroit, after Dearborn. It was named after Obwaandi'eyaag (Pontiac), a war chief of the Odawa, who occupied the area before the European settlers. The city was known for its multiple General Motors automobile manufacturing facilities in the 20th century, which were the basis of its economy and contributed to the wealth of the region. GM's operations in Pontiac included Fisher Body, Pontiac East Assembly (a.k.a. Truck & Coach/Bus), which manufactured GMC products, the Oakland Motor Car Company, and the Pontiac Motor Division, which produced cars under the namesake Pontiac brand.\nPontiac was also home to the Pontiac Silverdome, a stadium which was home to the Detroit Lions of the National Football League from 1975 until 2001. The Silverdome hosted Super Bowl XVI in 1982, and was demolished in 2018; an Amazon fulfillment center now stands on its former site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "pontiac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2091,
+    "attempt": 2075,
+    "place_id": "gn-5380748",
+    "input": {
+      "place": {
+        "place_id": "gn-5380748",
+        "name": "Palo Alto",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.44188,
+        "lon": -122.14302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palo Alto, California",
+          "url": "https://en.wikipedia.org/wiki/Palo_Alto,_California",
+          "text": "Palo Alto ( PAL-oh AL-toh; Spanish for 'tall stick') is a charter city in northwestern Santa Clara County, California, United States. Part of the San Francisco Bay Area, it is named after a coastal redwood tree known as El Palo Alto. The population was 68,572 as of the 2020 United States census.\nPalo Alto was incorporated in 1894 by the American industrialist Leland Stanford and his wife, Jane Stanford, when they founded Stanford University in memory of their only child, Leland Stanford Jr. The city later expanded and now borders East Palo Alto, Mountain View, Los Altos, Los Altos Hills, Stanford, Portola Valley, and Menlo Park. Palo Alto has one of the highest costs of living in the United States, and its residents are among the most educated in the country. However, it has a youth suicide rate four times higher than the national average, often attributed to academic pressure.\nAs one of the principal cities of Silicon Valley, Palo Alto is home to the headquarters of multiple tech companies, including HP, Space Systems/Loral, VMware, and PARC. Palo Alto has also served as headquarters or the founding location of several other tech companies, including Apple, Google, Meta, Logitech, Tesla, Intuit, IDEO, Pinterest, 23andMe, and PayPal. Ford Motor Company and Lockheed Martin each additionally maintain major research and technology facilities within Palo Alto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "palo alto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2092,
+    "attempt": 2076,
+    "place_id": "gn-5392229",
+    "input": {
+      "place": {
+        "place_id": "gn-5392229",
+        "name": "San Juan Capistrano",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.50169,
+        "lon": -117.66255
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan Capistrano, California",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_Capistrano,_California",
+          "text": "San Juan Capistrano (san hwaan cap-ih-STRAH-noh; also known colloquially as San Juan or SJC) is a city in southern Orange County, California, United States. The population was 35,253 at the 2020 Census.\nNamed for Saint John of Capistrano, San Juan Capistrano was founded by the Spanish in 1776, when Father Junípero Serra established Mission San Juan Capistrano. Extensive damage caused by an earthquake in 1812 caused the community to decline. Following the Mexican secularization act of 1833, the mission village officially became a town and was briefly renamed as San Juan de Argüello. After the American conquest of California, San Juan remained a small, rural town until the 20th century; the restoration of the mission in the 1910s–20s transformed the town into a tourist destination and a backdrop for Hollywood films."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "san juan capistrano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "capistrano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2093,
+    "attempt": 2077,
+    "place_id": "gn-588335",
+    "input": {
+      "place": {
+        "place_id": "gn-588335",
+        "name": "Tartu",
+        "country": "Estonia",
+        "subdivision": "Tartu",
+        "lat": 58.38062,
+        "lon": 26.72509
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tartu",
+          "url": "https://en.wikipedia.org/wiki/Tartu",
+          "text": "Tartu is the second-largest city in Estonia, after the capital, Tallinn. Tartu has a population of 97,304 (as of 2025), and is the seventh most-populous city in the Baltics. It is around 186 kilometres (116 miles) southeast of Tallinn and 245 kilometres (152 miles) northeast of Riga, Latvia. Tartu lies on the Emajõgi river, which connects the two largest lakes in Estonia, Lake Võrtsjärv and Lake Peipus. From the 13th century until the end of the 19th century, Tartu was known in most of the world by variants of its historical name Dorpat.\n\nTartu, the largest urban centre of southern Estonia, is often considered the \"intellectual capital city\" of the country, especially as it is home to the nation's oldest and most renowned university, the University of Tartu (founded in 1632). Tartu also houses the Supreme Court of Estonia, the Ministry of Education and Research, the Estonian National Museum, and the oldest Estonian-language theatre, Vanemuine. It is also the birthplace of the Estonian Song Festivals.\nTartu was designated as the European Capital of Culture in 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 131,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "tartu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2094,
+    "attempt": 2078,
+    "place_id": "gn-1278094",
+    "input": {
+      "place": {
+        "place_id": "gn-1278094",
+        "name": "Ayodhya",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.79909,
+        "lon": 82.2047
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ayodhya",
+          "url": "https://en.wikipedia.org/wiki/Ayodhya",
+          "text": "Ayodhya (Hindi: Ayodhyā, pronounced [ɐˈjoːd̪ʱjɐː] ) is a city situated on the banks of the Sarayu river in the Indian state of Uttar Pradesh. It is the administrative headquarters of the Ayodhya district as well as the Ayodhya division of Uttar Pradesh, India. Ayodhya became the top tourist destination of Uttar Pradesh with 110 million visitors in the first half of 2024, surpassing Varanasi.\nThe settlement was historically known as Sāketa until it was renamed to Ayodhya during the Gupta period. The early Buddhist and Jain canonical texts mention that the religious leaders Gautama Buddha and Mahavira visited and lived in the city. The Jain texts also describe it as the birthplace of five tirthankaras namely, Rishabhanatha, Ajitanatha, Abhinandananatha, Sumatinatha and Anantanatha, and associate it with the legendary Bharata Chakravarti. From the Gupta period onwards, several sources mention Ayodhya and Saketa as the name of the same city.\nThe legendary city of Ayodhya, popularly identified as the present-day Ayodhya, is identified in the epic Ramayana and its many versions as the birthplace of the Hindu deity Rama of Kosala and is hence regarded as the first of the seven most important pilgrimage sites for Hindus.  The Ayodhya dispute was centred on the Babri mosque, built 1528–29 under the Mughal emperor Babur and said to have been built on top of a Hindu temple that stood at the birth spot of Rama. In 1992 a Hindu mob demolished the mosque, provoking riots throughout the country. In 2019, the Supreme Court of India announced the final verdict that the land belonged to the government based on tax records; It further ordered the land to be handed over to a trust to build the Ram Mandir; which was consecrated in January 2024. It also ordered the government to give an alternate five acre tract of land to the Uttar Pradesh Sunni Central Waqf Board to build the mosque."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 315
+    },
+    "banned_terms": [
+      {
+        "term": "ayodhya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2095,
+    "attempt": 2079,
+    "place_id": "gn-3036784",
+    "input": {
+      "place": {
+        "place_id": "gn-3036784",
+        "name": "Arras",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.29301,
+        "lon": 2.78186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arras",
+          "url": "https://en.wikipedia.org/wiki/Arras",
+          "text": "Arras ( ARR-əs; French: [aʁɑs] ; Picard: Aros; historical Dutch: Atrecht [ˈaːtrɛxt] ) is the prefecture of the Pas-de-Calais department, which forms part of the region of Hauts-de-France; before the reorganization of 2014 it was in Nord-Pas-de-Calais. The historic centre of the Artois region, with a Baroque town square, Arras is in northern France at the confluence of the rivers Scarpe and Crinchon.\nThe Arras plain is on a large chalk plateau bordered on the north by the Marqueffles fault, on the southwest by the Artois and Ternois hills, and on the south by the slopes of Beaufort-Blavincourt. On the east it is connected to the Scarpe valley.\nSaint Vedast (or St. Vaast) was the first Catholic bishop in the year 499 and tried to eliminate paganism among the Franks. By 843, Arras was seat of the County of Artois which became part of the Royal domain in 1191. The first mention of the name Arras appeared in the 12th century. Some hypothesize it is a contraction of Atrebates, a Belgic tribe of Gaul and Britain that used to inhabit the area. The name Atrebates could have successively evolved to become Atrades, Atradis, Aras, and finally Arras. Others believe it comes from the Celtic word Ar, meaning 'running water', as the Scarpe river flows through Arras or simply the name of Abraham's wife Sarra spelled backwards.\nArras is Pas-de-Calais' second most populous town after Calais. The town counted 42,621 residents in 2022, with the Arras metropolitan area having a population of 159,719. Arras is located 182 kilometres (113 miles) north of Paris and can be reached in 2 hours by car and in 50 minutes by TGV. It is the historic centre of the former Artois province. Its local speech is characterized as a patois. The city of Arras is well known for its architecture, culture, and history. It was once part of the Spanish Netherlands, a portion of the Low Countries controlled by Spain from 1556 to 1714. Louis XIII conquered Arras in 1640; the town officially became part of France in 1659.\nArras attracts thousands of visitors every year, who commonly explore the city's architecture and historic buildings. Some attractions include the Town Hall and its Belfry (listed as a UNESCO World Heritage Site since 15 July 2005), the \"Boves\" (a maze 10 metres (33 feet) beneath the city), the Squares (La Place des Héros and La Grand'Place), the Art District (the Theatre of Arras and the Hôtel de Guînes), the Abbey District (The Saint-Vaast Abbey and the Cathedral of Arras), the Vauban Citadel, and the Nemetacum site (the ancient town founded by the Romans 2000 years ago). The Canadian National Vimy Memorial is just outside the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 450
+    },
+    "banned_terms": [
+      {
+        "term": "arras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2096,
+    "attempt": 2080,
+    "place_id": "gn-3369129",
+    "input": {
+      "place": {
+        "place_id": "gn-3369129",
+        "name": "Ceres",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.36889,
+        "lon": 19.31095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ceres, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Ceres,_South_Africa",
+          "text": "Ceres is the administrative centre and largest town of the Witzenberg Local Municipality in the Western Cape Province of South Africa. Ceres serves as a regional centre for the surrounding towns of Wolseley, Tulbagh, Op-die-Berg and Prince Alfred Hamlet. It is situated in the Warmbokkeveld (English: \"warm antelope field\") Valley about 170 km north-east of Cape Town. Ceres is located at the north-eastern entrance to Michell's Pass and was the old route north between Cape Town and Johannesburg, which was later replaced by the N1 highway, which traverses the Breede River Valley to the south.\nNamed after the Roman goddess of agriculture, Ceres, a name which is fitting as the valley in which the town is situated is extremely fertile and is a major producer of South Africa's deciduous fruit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "ceres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
