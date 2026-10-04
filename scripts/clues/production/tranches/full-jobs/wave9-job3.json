@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 1655,
+    "attempt": 1641,
+    "place_id": "gn-2037712",
+    "input": {
+      "place": {
+        "place_id": "gn-2037712",
+        "name": "Dehui",
+        "country": "China",
+        "subdivision": "Jilin",
+        "lat": 44.53674,
+        "lon": 125.69427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dehui",
+          "url": "https://en.wikipedia.org/wiki/Dehui",
+          "text": "Dehui (Chinese: 德惠; pinyin: Déhuì) is a county-level city of Jilin Province, Northeast China. It is under the administration of the prefecture-level city of Changchun, located in the middle of the Songliao Plain. It has a total population of 906,000 and a rural population of 753,000. Composed of 10 towns, four townships and four subdistricts, under which there are 308 villages, it is around 80 kilometres (50 mi) north-northeast of central Changchun. It borders Yushu to the northeast, Jiutai to the south, Kuancheng District to the southwest, Nong'an County to the west, as well as the prefecture-level cities of Jilin to the southeast and Songyuan to the northwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "dehui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1656,
+    "attempt": 1642,
+    "place_id": "gn-2530048",
+    "input": {
+      "place": {
+        "place_id": "gn-2530048",
+        "name": "Taourirt",
+        "country": "Morocco",
+        "subdivision": "Oriental",
+        "lat": 34.40731,
+        "lon": -2.89732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taourirt, Morocco",
+          "url": "https://en.wikipedia.org/wiki/Taourirt,_Morocco",
+          "text": "Taourirt  is a town in Taourirt Province in the northern part of Morocco. It is located in the Oriental region about 100 km west to the city of Oujda.\nThe town is important as a transport link: the main east-west railway from Casablanca - Rabat - Fez in the west to Oujda in the east runs through Taourirt. Also bus lines running from several cities in the Nador province (including the city of Nador) make a stop in the town.\nThe new branch line of the Moroccan railways running from Taourirt to Nador opened in 2009. This line runs alongside the existing road, through the mountains, to Nador.\nTaourirt is also known because of its ancient Kasbah. The name of the City means hill in Tamazight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "taourirt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1657,
+    "attempt": 1643,
+    "place_id": "gn-2537763",
+    "input": {
+      "place": {
+        "place_id": "gn-2537763",
+        "name": "Salé",
+        "country": "Morocco",
+        "subdivision": "Rabat-Salé-Kénitra",
+        "lat": 34.0531,
+        "lon": -6.79846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salé",
+          "url": "https://en.wikipedia.org/wiki/Salé",
+          "text": "Salé is a city in northwestern Morocco, on the right bank of the Bou Regreg river, opposite the national capital Rabat, for which it serves as a commuter town. Along with some smaller nearby towns, Rabat and Salé together form a single metropolitan area.\nFounded in the 11th century, Sale became a medieval merchant port and entrepot. Salé became a haven for pirates in the 17th century as an independent republic before being incorporated into Alawi Morocco. It recorded a population of 1,089,554 in the 2024 Moroccan census. The city still preserves its historic medina (old town), with many major monuments dating from the Marinid period (13th–15th centuries). Salé is connected to Rabat by a tramway and also contains the Rabat–Salé Airport, the main international airport serving both cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "sale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1658,
+    "attempt": 1644,
+    "place_id": "gn-2642465",
+    "input": {
+      "place": {
+        "place_id": "gn-2642465",
+        "name": "Milton Keynes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.04172,
+        "lon": -0.75583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milton Keynes",
+          "url": "https://en.wikipedia.org/wiki/Milton_Keynes",
+          "text": "Milton Keynes (  KEENZ) is a city in Buckinghamshire, England, about 50 miles (80 km) north-west of London. At the 2021 census, the population of its urban area was 264,349. The River Great Ouse forms the northern boundary of the urban area; a tributary, the River Ouzel, meanders through its linear parks and balancing lakes. Approximately 25% of the urban area is parkland or woodland, including two Sites of Special Scientific Interest (SSSIs). By design, the city comprises many well-delineated neighbourhoods.\nIn the 1960s, the government decided that a further generation of new towns in the south east of England was needed to relieve housing congestion in London. Milton Keynes was to be the biggest yet, with a population of 250,000 and area of 22,000 acres (9,000 ha). At designation, its area incorporated the existing towns of Bletchley,  Fenny Stratford, Wolverton and Stony Stratford, along with another fifteen villages and farmland in between. These settlements had an extensive historical record since the Norman Conquest; detailed archaeological investigations before development revealed evidence of human occupation from the Neolithic period, including the Milton Keynes Hoard of Bronze Age gold jewellery. The government established Milton Keynes Development Corporation (MKDC) to design and deliver this new city. The Corporation decided on a softer, more human-scaled landscape than in the earlier English new towns but with an emphatically modernist architecture. Recognising how traditional towns and cities had become choked in traffic, they established a grid of distributor roads about 1 km (0.6 mi) between edges, leaving the spaces between to develop more organically. An extensive network of shared-use paths for leisure cyclists and pedestrians criss-crosses through and between them. Rejecting the residential tower block concept that had become unpopular, they set a height limit of three storeys outside Central Milton Keynes.\nFacilities include a 1,400-seat theatre, a municipal art gallery, two multiplex cinemas, an ecumenical central church, a 400-seat concert hall, a teaching hospital, a 30,500-seat football stadium, an indoor ski-slope and a 65,000-capacity open-air concert venue. Seven railway stations serve the Milton Keynes urban area (one inter-city). The Open University is based here and there is a small campus of the University of Bedfordshire. Most major sports are represented at amateur level; Red Bull Racing (Formula One), MK Dons (association football), and Milton Keynes Lightning (ice hockey) are its professional teams. The Peace Pagoda overlooking Willen Lake was the first such to be built in Europe. The many works of sculpture in parks and public spaces include the iconic Concrete Cows at Milton Keynes Museum.\nMilton Keynes is among the most economically productive localities in the UK, ranking highly across a number of criteria. It has the UK's fifth-highest number of business startups per capita (but equally of business failures). It is home to several major national and international companies. Despite economic success and personal wealth for some, there are pockets of nationally significant poverty. The employment profile is composed of about 90% service industries and 9% manufacturing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 494
+    },
+    "banned_terms": [
+      {
+        "term": "milton keynes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "milton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "keynes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1659,
+    "attempt": 1645,
+    "place_id": "gn-2745912",
+    "input": {
+      "place": {
+        "place_id": "gn-2745912",
+        "name": "Utrecht",
+        "country": "Netherlands",
+        "subdivision": "Utrecht",
+        "lat": 52.09083,
+        "lon": 5.12222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Utrecht",
+          "url": "https://en.wikipedia.org/wiki/Utrecht",
+          "text": "Utrecht ( YOO-trekt; Dutch: [ˈytrɛxt] ; Utrecht dialect: Ut(e)reg [ˈyt(ə)ʁɛχ]) is the fourth-largest city of the Netherlands, as well as the capital and the most populous city of the province of Utrecht. The municipality of Utrecht is located in the eastern part of the Randstad conurbation, in the very centre of mainland Netherlands, and includes Haarzuilens, Vleuten and De Meern. It has a population of 378,140 as of January 2026.\nUtrecht's ancient city centre features many buildings and structures, several dating as far back as the High Middle Ages. It has been the religious centre of the Netherlands since the 8th century. It received city rights in 1122. In 1579, the Union of Utrecht was signed in the city to lay the foundations for the Dutch Republic.\nUtrecht’s historic centre is characterised by the Dom Tower and a medieval canal system with wharves and cellars below street level. Today, Utrecht is a major national railway hub and a centre for higher education, research, healthcare and culture. The municipality contains the Rietveld Schröder House and components of the Lower German Limes and the Dutch Water Defence Lines, all of which are UNESCO World Heritage properties. In 2025, Lonely Planet selected Utrecht as one of 25 destinations featured in its Best in Travel 2026 guide."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "utrecht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1660,
+    "attempt": 1646,
+    "place_id": "gn-2746301",
+    "input": {
+      "place": {
+        "place_id": "gn-2746301",
+        "name": "Tilburg",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.55551,
+        "lon": 5.0913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tilburg",
+          "url": "https://en.wikipedia.org/wiki/Tilburg",
+          "text": "Tilburg (Dutch: [ˈtɪlbʏr(ə)x] ) is a city and municipality in the Netherlands, in the southern province of North Brabant. With a population of 229,833 (January 2, 2024), it is the second-largest city or municipality in North Brabant after Eindhoven and the seventh-largest in the Netherlands.\nTilburg University is located in Tilburg, as are Avans University of Applied Sciences and Fontys University of Applied Sciences.\nThe region is served by three railway stations: Tilburg, Tilburg Universiteit and Tilburg Reeshof. The 75-hectare (185-acre) \"Spoorzone\" area around Tilburg Central station, once a Dutch Railways train maintenance yard, has been purchased by the city and is being transformed into an urban zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "tilburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1661,
+    "attempt": 1647,
+    "place_id": "gn-3165771",
+    "input": {
+      "place": {
+        "place_id": "gn-3165771",
+        "name": "Terni",
+        "country": "Italy",
+        "subdivision": "Umbria",
+        "lat": 42.56335,
+        "lon": 12.64329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Terni",
+          "url": "https://en.wikipedia.org/wiki/Terni",
+          "text": "Terni ( TAIR-nee; Italian: [ˈtɛrni] ; Latin: Interamna (Nahars)) is a city in the southern portion of the region of Umbria in central Italy. It is near the border with Lazio. The city is the capital of the province of Terni, located in the plain of the River Nera. It is 104 kilometres (65 miles) northeast of Rome and 81 kilometres (50 mi) south of the regional capital, Perugia. With a population of 106,272, it is the 42nd-largest city in Italy.\nThe Latin name means \"between-two-rivers\", in reference to its location on the confluence of the Nera river (Ancient Umbrian Nahar, Latin: Nār, Nahar) and the Serra stream. When disambiguation was needed, it was referred to as Interamna Nahars. Its inhabitants were known in Latin as Interamnātēs Na(ha)rtēs.\nInteramna was founded as an Ancient Roman town, although there were earlier settlements in the Terni area. During the 19th century, steel mills were introduced and led the city to have a role in the Second Industrial Revolution in Italy. Because of its industrial importance, the city was heavily bombed during World War II by the Allies. It remains an industrial hub and has been nicknamed \"The Steel City\".\nTerni is also known as the \"City of Lovers\", as its patron saint, Saint Valentine, was born and became a bishop here, and his remains are preserved in the basilica-sanctuary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "terni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1662,
+    "attempt": 1648,
+    "place_id": "gn-3172189",
+    "input": {
+      "place": {
+        "place_id": "gn-3172189",
+        "name": "Novara",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.44694,
+        "lon": 8.62118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Novara",
+          "url": "https://en.wikipedia.org/wiki/Novara",
+          "text": "Novara (Italian: [noˈvaːra] ; Novarese: [nuˈ(ʋ)aːra]) is the capital city of the province of Novara in the region of Piedmont in Northern Italy, to the west of Milan. With a population of 103,238, it is the 2nd-largest city in Piedmont after Turin as of 2026.\nIt is an important crossroads for commercial traffic along the routes from Milan to Turin and from Genoa to Switzerland.\nNovara lies between the streams Agogna and Terdoppio in northeastern Piedmont, 50 km (31 mi) from Milan and 95 km (59 mi) from Turin. It is only 15 km (9.3 mi) from the river Ticino, which marks the border with the Lombardy region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "novara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1663,
+    "attempt": 1649,
+    "place_id": "gn-3393001",
+    "input": {
+      "place": {
+        "place_id": "gn-3393001",
+        "name": "Parnaíba",
+        "country": "Brazil",
+        "subdivision": "Piauí",
+        "lat": -2.90472,
+        "lon": -41.77667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parnaíba",
+          "url": "https://en.wikipedia.org/wiki/Parnaíba",
+          "text": "Parnaíba (Portuguese: [paʁnaˈibɐ]) is a city in the Brazilian state of Piauí. Having a population of over 170,491 inhabitants according to IBGE's 2025 estimates, it is the second most populous city in the state, after the capital Teresina. It is one of the four coastal municipalities in Piauí (besides Ilha Grande, Luís Correia, and Cajueiro da Praia), all of which make up the city's metropolitan area.\nBesides the natural environment, Parnaíba has historical value for Piauí; near Porto das Barcas several historic buildings reflect the importance of Parnaíba, coming at that time to be more important than the former capital Oeiras and taking up same references in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "parnaiba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1664,
+    "attempt": 1650,
+    "place_id": "gn-3399415",
+    "input": {
+      "place": {
+        "place_id": "gn-3399415",
+        "name": "Fortaleza",
+        "country": "Brazil",
+        "subdivision": "Ceará",
+        "lat": -3.71722,
+        "lon": -38.54306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fortaleza",
+          "url": "https://en.wikipedia.org/wiki/Fortaleza",
+          "text": "Fortaleza ( FOR-tə-LAY-zə ; Brazilian Portuguese: [foʁtaˈlezɐ] ; Portuguese for 'Fortress') is the state capital of Ceará, located in Northeastern Brazil. It is Brazil's 4th largest city—Fortaleza surpassed Salvador in 2024 census with a population of slightly over 2.5 million—and 12th among cities with the highest gross domestic product. It forms the core of the Fortaleza metropolitan area, which is home to almost 4 million people.\nFortaleza is an important industrial and commercial center of Northeast Brazil. According to the Ministry of Tourism, it is the fourth most visited city and tourist destination in the country. The BR-116, the most important highway in the country, starts in Fortaleza. The municipality is part of the Mercosur common market, and vital trade port which is closest to mainland Europe, being 5,608 kilometres (3,485 mi) from Lisbon, Portugal.\nTo the north of the city lies the Atlantic Ocean; to the south are the municipalities of Pacatuba, Eusébio, Maracanaú and Itaitinga; to the east is the municipality of Aquiraz and the Atlantic Ocean; and to the west is the municipality of Caucaia. Residents of the city are known as Fortalezenses. Fortaleza is one of the three leading cities in the Northeast region together with Recife and Salvador."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "fortaleza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1665,
+    "attempt": 1651,
+    "place_id": "gn-3471715",
+    "input": {
+      "place": {
+        "place_id": "gn-3471715",
+        "name": "Araruama",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.87278,
+        "lon": -42.34306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Araruama",
+          "url": "https://en.wikipedia.org/wiki/Araruama",
+          "text": "Araruama (Portuguese pronunciation: [ɐɾɐɾuˈɐmɐ]) is a municipality in the state of Rio de Janeiro, Brazil. Located at 22°52'22\" of latitude South and 42°20'35\" of longitude west, at an altitude of fifty feet. In 2020, its population was 134,293 inhabitants, which places it the second largest population in the Região dos Lagos.\nThe municipality of Araruama extends over an area of 635.4 km ², marked by plain if some lakes, including the Araruama Lagoon and the Pond Juturnaíba, situated between the municipalities Araruama and Silva Jardim. Geographically it is the largest town in the Região dos Lagos.\nIts main geographic feature is a large bay by the same name. Araruama has a large area of Atlantic Forest in between the sea shore and the Araruama Lagoon that belongs  to the Costa do Sol State Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "araruama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1666,
+    "attempt": 1652,
+    "place_id": "gn-5381396",
+    "input": {
+      "place": {
+        "place_id": "gn-5381396",
+        "name": "Pasadena",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.14778,
+        "lon": -118.14452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pasadena, California",
+          "url": "https://en.wikipedia.org/wiki/Pasadena,_California",
+          "text": "Pasadena (  PASS-ə-DEE-nə) is a city in Los Angeles County, California, United States, 10 miles (16 km) northeast of downtown Los Angeles. It is the primary cultural center of the San Gabriel Valley. Old Pasadena is the city's original commercial district.\nIts population was 138,699 at the 2020 census, making it the 45th-largest city in California and the ninth-largest in Los Angeles County. Pasadena was incorporated on June 19, 1886, 36 years after the city of Los Angeles but still one of the first in what is now Los Angeles County.\nPasadena hosts the annual Rose Bowl football game and Tournament of Roses Parade each New Year's Day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "pasadena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1667,
+    "attempt": 1653,
+    "place_id": "gn-686967",
+    "input": {
+      "place": {
+        "place_id": "gn-686967",
+        "name": "Zhytomyr",
+        "country": "Ukraine",
+        "subdivision": "Zhytomyr Oblast",
+        "lat": 50.26235,
+        "lon": 28.67913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhytomyr",
+          "url": "https://en.wikipedia.org/wiki/Zhytomyr",
+          "text": "Zhytomyr (Ukrainian: Житомир [ʒɪˈtɔmɪr] ; see below for other names) is a city in the north of the western half of Ukraine. It is the administrative center of Zhytomyr Oblast (province), as well as the administrative center of the surrounding Zhytomyr urban hromada (commune) and Zhytomyr Raion (district). Moreover, Zhytomyr consists of two urban districts: Bohunskyi District and Koroliovskyi District (named in honour of Sergey Korolyov). Zhytomyr occupies an area of 65 square kilometers (25 sq mi). Its population is 261,624 (2022 estimate).\nZhytomyr is a major Ukrainian transport hub as the city lies on a historic route linking the city of Kyiv with the west through Brest. Today it links Warsaw with Kyiv, Minsk with Izmail, and several major cities of Ukraine. Zhytomyr was also the location of Ozerne airbase, a key Cold War strategic aircraft base 11 kilometers (6.8 mi) southeast of the city.\nImportant economic activities of Zhytomyr include lumber milling, food processing, granite quarrying, metalworking, and the manufacture of musical instruments.\nZhytomyr Oblast is the main center of the Polish minority in Ukraine, and in the city itself there is a Latin Catholic cathedral and large Roman Catholic Polish cemetery, founded in 1800. It is regarded as the third biggest Polish cemetery outside Poland, after the Lychakivskiy Cemetery in Lviv and Rasos Cemetery in Vilnius."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "zhytomyr",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1668,
+    "attempt": 1654,
+    "place_id": "gn-8469289",
+    "input": {
+      "place": {
+        "place_id": "gn-8469289",
+        "name": "Ōta",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.56126,
+        "lon": 139.71605
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ōta, Tokyo",
+          "url": "https://en.wikipedia.org/wiki/Ōta,_Tokyo",
+          "text": "Ōta (大田区, Ōta-ku; Japanese pronunciation: [oːta, oːtaꜜkɯ]) is a special ward in the Tokyo Metropolis in Japan. The ward refers to itself in English as Ōta City. It was formed in 1947 as a merger of Ōmori and Kamata following Tokyo City's transformation into Tokyo Metropolis. The southernmost of the 23 special wards, Ōta borders the special wards of Shinagawa, Meguro and Setagaya to the north, and Kōtō to the east. Across the Tama River in Kanagawa Prefecture is the city of Kawasaki, forming the boundaries to the south and west.\nŌta is the largest special ward in Tokyo by area, spanning 59.46 square kilometres (22.96 sq mi). As of 2024, the ward has an estimated population of 744,849, making it the third largest special ward by population, with a population density of 12,041 inhabitants per square kilometre (31,190/sq mi). \nNotable neighborhoods and districts of Ōta include Kamata, the administrative center of the ward where the Ward Office and central Post Office is located, and Den-en-chōfu (田園調布), known for its wealthy residents and luxury homes. Haneda Airport, the busiest airport in Japan by passenger traffic is located in the ward."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "ota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1669,
+    "attempt": 1655,
+    "place_id": "gn-909863",
+    "input": {
+      "place": {
+        "place_id": "gn-909863",
+        "name": "Luanshya",
+        "country": "Zambia",
+        "subdivision": "Copperbelt",
+        "lat": -13.13667,
+        "lon": 28.41661
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luanshya",
+          "url": "https://en.wikipedia.org/wiki/Luanshya",
+          "text": "Luanshya is a town in Zambia, in the Copperbelt Province near Ndola. It has a population of 212,864 (2022 Census). The town is situated in an area which was under Chief Mushili of the Lamba people.\nLuanshya was founded in the early part of the 20th century after prospector/explorer William Collier shot and killed a roan antelope on the banks of the Luanshya River, discovering a copper deposit in the process. The antelope fell to the ground, its head resting on a rock where an exposed seam of copper ore was visible. The mining company eventually formed to exploit Collier's find was named \"Roan Antelope Copper Mines Ltd\".\nFor most of the 20th century, copper was mined in great quantities at Luanshya but towards the end of the century, mining there became increasingly uneconomic, causing a severe recession in the town. There is still a fair amount of copper underground. Whether the town sees a revival in its fortunes will depend on how efficiently the copper is extracted and sold.\nThe Roan Antelope Rugby Club in Luanshya formerly held the record for highest goal posts in the world, which were recognised by the Guinness Book of Records. They were 110 ft, 6 inches high.\nIn the 1960s, Luanshya was known as the \"Garden Town of the Copperbelt\".  This was largely due to the efforts of the late Bill and Doreen Altern, who initiated impressive public parks and gardens."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "luanshya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1670,
+    "attempt": 1656,
+    "place_id": "gn-113646",
+    "input": {
+      "place": {
+        "place_id": "gn-113646",
+        "name": "Tabriz",
+        "country": "Iran",
+        "subdivision": "East Azerbaijan",
+        "lat": 38.08,
+        "lon": 46.2919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tabriz",
+          "url": "https://en.wikipedia.org/wiki/Tabriz",
+          "text": "Tabriz (Persian: تبریز, romanized: tabriz, pronounced [tæbˈɾiːz] )  is a city in the Central District of Tabriz County, in East Azerbaijan province of northwestern Iran. It serves as capital of the province, the county, and the district. It is the sixth-most-populous city in Iran.\nThe city of Tabriz lies close to the borders of Armenia and the Republic of Azerbaijan, 130 kilometers from the Armenia-Iran and Azerbaijan-Iran border.\nTabriz is in the Quru River valley in Iran's historic Azerbaijan region between long ridges of volcanic cones in the Sahand and Eynali mountains. Tabriz's elevation ranges between 1,350 and 1,600 m (4,430 and 5,250 ft) above sea level. The valley opens up into a plain that gently slopes down to the eastern shores of Lake Urmia, 60 km (37 mi) to the west. The city was named World Carpet Weaving City by the World Crafts Council in October 2015 and Exemplary Tourist City of 2018 by the Organisation of Islamic Cooperation.\nWith a population of over 1.7 million (2016), Tabriz is the largest economic hub and metropolitan area in northwest Iran. The population is bilingual with most people speaking Iranian Azerbaijani as their native language and Persian as their second language. Tabriz is a major heavy industries hub for automobiles, machine tools, refineries, petrochemicals, textiles and cement production industries. The city is famous for its handicrafts, including hand-woven rugs and jewelry. Local confectionery, chocolate, dried nuts and traditional Tabrizi food are recognized throughout Iran as some of the best. Some of the most esteemed cultural institutions in northwest Iran are located in Tabriz, which is also a center for intellectual activity.\nTabriz contains many historical monuments. Most of Tabriz's preserved historical sites belong to Ilkhanid, Safavid and Qajar. Among these sites is the grand Bazaar of Tabriz, which is designated a World Heritage Site. From the early modern era, Tabriz was pivotal in the development of three neighboring regions - the Caucasus, Eastern Anatolia and Central Iran. As the country's closest hub to Europe, many aspects of early modernization in Iran began in Tabriz. The Qajar dynasty was forced to cede the Caucasian territories to Imperial Russia  following the two Russo-Persian Wars in the first half of the 19th century. Until 1925, the city was the traditional residence of the Qajar crown princes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 382
+    },
+    "banned_terms": [
+      {
+        "term": "tabriz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1671,
+    "attempt": 1657,
+    "place_id": "gn-1168307",
+    "input": {
+      "place": {
+        "place_id": "gn-1168307",
+        "name": "Pasrur",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.26286,
+        "lon": 74.66327
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pasrur",
+          "url": "https://en.wikipedia.org/wiki/Pasrur",
+          "text": "Pasrur (Punjabi and Urdu: پسرُور) is a historical city of Sialkot District in the Punjab province of Pakistan. It is the capital of Pasrur Tehsil and is administratively subdivided into 26 wards of the municipal committee Pasrur. Pasrur is connected to Narowal, Sialkot, Daska and Gujranwala via multiple roads. The Pasrur railway station has a railway track also passing through the city which connects Parsrur and Sialkot to Lahore via Narowal Junction.\nOther important places in Pasrur Tehsil are Badyana, Chawinda, Chaubara, Kingra, Sabz Peer, Kala Pahar, Chichharwali and Dhodha.\nIt was founded during the reign of Mughal emperor Babur by a Jatt called Chaudhry Matika Bajwa. Nearby are the remains of a bridge built by Shah Daula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "pasrur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1672,
+    "attempt": 1658,
+    "place_id": "gn-1168555",
+    "input": {
+      "place": {
+        "place_id": "gn-1168555",
+        "name": "Pakpattan",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 30.34314,
+        "lon": 73.38944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pakpattan",
+          "url": "https://en.wikipedia.org/wiki/Pakpattan",
+          "text": "Pakpattan (Punjabi and Urdu: پاکپتّن), often referred to as Pākpattan Sharīf ( پاکپتّن شریف; \"Noble Pakpattan\"), is an ancient, historic city in the Pakistani province of Punjab, serving as the headquarters of the eponymous Pakpattan district. It is among the oldest cities in Asia and ranks as the 48th largest city in Pakistan by population, according to the 2017 census. Pakpattan is the seat of the Sufi Chisti order in Pakistan, and a major pilgrimage destination on account of the Shrine of Baba Farid, a renowned Punjabi poet and Sufi saint. The annual urs fair in his honour draws an estimated 2 million visitors to the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "pakpattan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1673,
+    "attempt": 1659,
+    "place_id": "gn-1220253",
+    "input": {
+      "place": {
+        "place_id": "gn-1220253",
+        "name": "Istaravshan",
+        "country": "Tajikistan",
+        "subdivision": "Sughd",
+        "lat": 39.9142,
+        "lon": 69.00328
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Istaravshan",
+          "url": "https://en.wikipedia.org/wiki/Istaravshan",
+          "text": "Istaravshan (Tajik: Истаравшан; Russian: Истаравшан) is a city in Sughd Province in Tajikistan. In 2000, the Tajik government changed the name of the city from Uroteppa (Tajik: Ӯротеппа; Ura-Tyube, Russian: Ура-Тюбе).\nThe city lies in the northern foothills of the Turkistan mountain range, 78 kilometers southwest of Khujand, on the main road connecting Tajikistan's two largest cities, Khujand and Dushanbe. Bordered by Uzbekistan in the north and west, and Kyrgyzstan in the east, Istaravshan's administrative area encompasses 1,830 square kilometers and a population of 273,500 people. Most of them (76%) live in the outlying countryside.\nIstaravshan is one of central Asia's oldest towns of commerce and crafts. The city celebrated its 2,500th birthday in the year 2002. It was one of three proposed locations for ancient Cyropolis, which was built on the north-eastern outskirts of the Achaemenid Empire by the king Cyrus in the 6th century B.C."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "istaravshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1674,
+    "attempt": 1660,
+    "place_id": "gn-1254361",
+    "input": {
+      "place": {
+        "place_id": "gn-1254361",
+        "name": "Tirunelveli",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 8.72742,
+        "lon": 77.6838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tirunelveli",
+          "url": "https://en.wikipedia.org/wiki/Tirunelveli",
+          "text": "Tirunelveli (Tamil: [tiɾɯnelʋeːli] ), also known as Nellai, is a city and municipal corporation in the Indian state of Tamil Nadu. It is located on the southern part of the state, on the west bank of the Thamirabarani River. It is the administrative headquarters of the Tirunelveli District. As per the 2011 census, it had a population of 473,637 individuals, and was the seventh-largest city in the state by population.\nTirunelveli has a recorded history dating back to more than two thousand years. It served as a major town during the reign of the Early Pandyas in the Sangam period (3rd century BCE to 3rd century CE). It came under the rule of the Cholas in the 11th century CE. The region was ruled by the Later Pandyas, the Vijayanagara Empire, and the Madurai Nayaks in the late Middle Ages. It came under the influence of the British East India Company in the late 18th century, and the Tinnevelly district was formed on 1 September 1790. In the Polygar War, Palaiyakkarars led by Veerapandiya Kattabomman fought the forces of the Company, on the outskirts of the city from 1797 to 1801. It came under the British Raj in the 19th century, and later became part of the Madras Province of Independent India in 1947.\nTirunelveli is administered by the Tirunelveli Municipal Corporation, which was established on 1 June 1994. The city covers an area of 189.9 km2 (73.3 sq mi). It is well-connected by road and rail with the rest of the state. The economy of the city is dependent on agriculture and its allied industries, services including education, and information technology, manufacturing including tobacco products, cement, and bricks, and textiles. There are several wind power generation farms located in the outskirts of the city. The city serves an educational hub of the region, and is home to several institutions.\nTirunelveli has a number of historical monuments, with the Nellaiappar Temple being the most prominent. The city is renowned for the sweet of 'Irutu kadai halva'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 336
+    },
+    "banned_terms": [
+      {
+        "term": "tirunelveli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

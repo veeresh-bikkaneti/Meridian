@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 1695,
+    "attempt": 1681,
+    "place_id": "gn-3986172",
+    "input": {
+      "place": {
+        "place_id": "gn-3986172",
+        "name": "San José del Cabo",
+        "country": "Mexico",
+        "subdivision": "Baja California Sur",
+        "lat": 23.05406,
+        "lon": -109.70367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San José del Cabo",
+          "url": "https://en.wikipedia.org/wiki/San_José_del_Cabo",
+          "text": "San José del Cabo (Spanish pronunciation: [saŋ xoˈse ðel ˈkaβo], Saint Joseph of the Cape) is a coastal city located on the Gulf of California coast, near the southern tip of the Mexican state of Baja California Sur. San José del Cabo is situated on the edge of a shallow bay, some 32 kilometres (20 mi) northeast of Cabo San Lucas, a city with which it shares the title of Los Cabos.\nSan José del Cabo is the seat of the Los Cabos Municipality. The city had a population of 136,285 at the 2020 census. It and Cabo San Lucas are served by Los Cabos International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "san jose del cabo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cabo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1696,
+    "attempt": 1682,
+    "place_id": "gn-4151909",
+    "input": {
+      "place": {
+        "place_id": "gn-4151909",
+        "name": "Coral Springs",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.27119,
+        "lon": -80.2706
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coral Springs, Florida",
+          "url": "https://en.wikipedia.org/wiki/Coral_Springs,_Florida",
+          "text": "Coral Springs is a city in Broward County, Florida, United States. As of the 2020 census, Coral Springs had a population of 134,394. Approximately 20 miles (32 km) northwest of Fort Lauderdale, it is a principal city of the Miami metropolitan area. It has an arts center, history museum, hosts the \"Our Town\" annual festival, and has Florida's only covered bridge.\nThe city, officially chartered on July 10, 1963, was master-planned and primarily developed by Coral Ridge Properties, Inc., which was acquired by Westinghouse in 1966. The city's name is derived from the company's name, and was selected after several earlier proposals had been considered and rejected. Despite the name, there are no natural springs in the city; Florida's springs are found in the central and northern portions of the state.\nDuring the 1970s, 1980s, and 1990s the young city grew rapidly, adding over 35,000 residents each decade. Coral Springs has strict building codes designed to maintain the city's distinctive aesthetic appeal. The city government's effective fiscal management has maintained high bond ratings, and the city has won accolades for its overall livability, its low crime rate, and its family-friendly orientation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "coral springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coral",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1697,
+    "attempt": 1683,
+    "place_id": "gn-4703223",
+    "input": {
+      "place": {
+        "place_id": "gn-4703223",
+        "name": "Killeen",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.11712,
+        "lon": -97.7278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Killeen, Texas",
+          "url": "https://en.wikipedia.org/wiki/Killeen,_Texas",
+          "text": "Killeen is a city in the U.S. state of Texas, located in Bell County. According to the 2020 census, its population was 153,095, making it the 19th-most populous city in Texas and the largest of the three principal cities of Bell County. It is the principal city of the Killeen–Temple–Fort Hood Metropolitan Statistical Area. Killeen is 68 miles (109 km) north of Austin, 125 miles (201 km) southwest of Dallas, and 125 miles (201 km) northeast of San Antonio.\nKilleen is directly adjacent to the main cantonment of Fort Hood. Its economy depends on the activities of the post, and the soldiers and their families stationed there. It is known as a military \"boom town\" because of its rapid growth and high influx of soldiers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "killeen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1698,
+    "attempt": 1684,
+    "place_id": "gn-480060",
+    "input": {
+      "place": {
+        "place_id": "gn-480060",
+        "name": "Tver",
+        "country": "Russia",
+        "subdivision": "Tver Oblast",
+        "lat": 56.85836,
+        "lon": 35.90057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tver",
+          "url": "https://en.wikipedia.org/wiki/Tver",
+          "text": "Tver (Russian: Тверь, IPA: [tvʲerʲ]) is a city and the administrative centre of Tver Oblast, Russia. It is situated at the confluence of the Volga and Tvertsa rivers. Tver is located 180 kilometres (110 mi) northwest of Moscow. Population: 416,216 (2021 census).\nThe city is situated where three rivers meet, splitting the town into northern and southern parts by the Volga, and divided again into quarters by the Tvertsa river, which splits the left (northern) bank into east and west halves, and the Tmaka River which does the same along the southern bank. According to one hypothesis, the name of the Tvertsa is of Finnic origin, Tiheverä.\nTver was formerly the capital of a powerful medieval state and a model provincial town in the Russian Empire, with a population of 60,000 by 14 January 1913. The city was known as Kalinin (Калинин) from 1931 to 1990. \nAside from the White Trinity Church (1564), built of limestone (rather than usual brick) and located in a district of traditional log houses away from the city center, there are no pre-Petrine buildings left in Tver. The central part, featuring the Volga embankments and bridges, is graced with Catharinian and Soviet edifices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "tver",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1699,
+    "attempt": 1685,
+    "place_id": "gn-5313457",
+    "input": {
+      "place": {
+        "place_id": "gn-5313457",
+        "name": "Scottsdale",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 33.50921,
+        "lon": -111.89903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scottsdale, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Scottsdale,_Arizona",
+          "text": "Scottsdale is a city in eastern Maricopa County, Arizona, United States, and is part of the Phoenix metropolitan area. Named Scottsdale in 1894 after its founder Winfield Scott, a retired U.S. Army chaplain, the city was incorporated in 1951 with a population of 2,000. At the 2020 census, the population was 241,361, which had grown from 217,385 in 2010. Its slogan is \"The West's Most Western Town\". Over the past two decades, it has been one of the fastest growing cities and housing markets in the United States.\nScottsdale is 31 miles (50 km) from its northern to southernmost edge and covers 184.5 square miles (478 km2). The city is bordered by the city of Phoenix to the west, Tonto National Forest to the north, the McDowell Mountains to the east, and the Salt River to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "scottsdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1700,
+    "attempt": 1686,
+    "place_id": "gn-683123",
+    "input": {
+      "place": {
+        "place_id": "gn-683123",
+        "name": "Buzău",
+        "country": "Romania",
+        "subdivision": "Buzău County",
+        "lat": 45.15,
+        "lon": 26.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buzău",
+          "url": "https://en.wikipedia.org/wiki/Buzău",
+          "text": "Buzău (pronounced [buˈzəw] ; formerly spelled Buzeu or Buzĕu) is a city in Muntenia, Romania, and the capital of Buzău County. It lies near the right bank of the Buzău River, between the south-eastern curvature of the Carpathian Mountains and the lowlands of the Bărăgan Plain.\nThe city serves as an important economic, transport, and cultural hub in south-eastern Romania.\nBuzău is a key railway junction where routes linking Bucharest to Moldavia and Transylvania to the Black Sea intersect. DN2, part of the European route E85, crosses the city. Its favourable position on trade routes has historically contributed to its development as a commercial and industrial centre.\nDuring the Middle Ages, Buzău served as a market town and Eastern Orthodox episcopal see in Wallachia. The city endured repeated destruction in the 17th and 18th centuries, symbolised today by the phoenix bird on its coat of arms. Buzău began to recover in the 19th century, industrialising and expanding its railway network. Landmarks such as the Communal Palace and Crâng Park date from this period.\nUnder the communist regime after World War II, Buzău underwent extensive forced industrialisation and rapid population growth. Some of the factories established then continue to operate in the modern market economy.\nThe city has noted educational and cultural institutions, including the Bogdan Petriceicu Hasdeu National College—attended by George Emil Palade, Romania’s only Nobel laureate—and the Mihai Eminescu National College. The Vasile Voiculescu County Library and the Buzău County Museum are located in the city; the latter also administers the Vasile Voiculescu memorial house in Pârscov and the Amber Museum in Colți."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "buzau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1701,
+    "attempt": 1687,
+    "place_id": "gn-707471",
+    "input": {
+      "place": {
+        "place_id": "gn-707471",
+        "name": "Ivano-Frankivsk",
+        "country": "Ukraine",
+        "subdivision": "Ivano-Frankivsk",
+        "lat": 48.92312,
+        "lon": 24.71248
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ivano-Frankivsk",
+          "url": "https://en.wikipedia.org/wiki/Ivano-Frankivsk",
+          "text": "Ivano-Frankivsk (Ukrainian: Івано-Франківськ, IPA: [iˈwɑno frɐnˈkiu̯sʲk] ), formerly Stanyslaviv, Stanislav and Stanisławów, is a city in western Ukraine. It serves as the administrative centre of Ivano-Frankivsk Oblast as well as Ivano-Frankivsk Raion within the oblast. Ivano-Frankivsk also hosts the administration of the Ivano-Frankivsk urban hromada. Its population is 238,196 (2022 estimate), 227,827 (2024 estimate).\nBuilt in the mid-17th century as a fortress of the Polish Potocki family, Stanisławów was annexed to the Habsburg Empire during the First Partition of Poland in 1772, after which it became the property of the State within the Austrian Empire. Throughout  this time, it was within the Kingdom of Galicia and Lodomeria. The fortress was slowly transformed into one of the most prominent cities at the foothills of the Carpathian Mountains. After World War I, for several months, it served as a temporary capital of the West Ukrainian People's Republic. Following the Peace of Riga in 1921, Stanisławów became part of the Second Polish Republic. After the Soviet invasion of Poland at the onset of World War II, the city was annexed by the Soviet Union, only to be occupied by Nazi Germany two years later. With the liberation of Soviet Ukraine in 1944 and the shifting of borders, the city remained part of the Ukrainian SSR and was renamed in 1962 after Ivan Franko. With the fall of the Soviet Union in 1991, the city became part of newly-independent Ukraine.\nIvano-Frankivsk is one of the principal cities of the Carpathian Euroregion. There are elements of various cultures intertwined in the city's architecture, including the Polish city hall, the Austro-Hungarian city's business centre, the Soviet prefabricated apartment blocks at the city's rural–urban fringe, and others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "ivano frankivsk",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ivano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "frankivsk",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1702,
+    "attempt": 1688,
+    "place_id": "gn-747014",
+    "input": {
+      "place": {
+        "place_id": "gn-747014",
+        "name": "Gebze",
+        "country": "Türkiye",
+        "subdivision": "Kocaeli",
+        "lat": 40.80276,
+        "lon": 29.43068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gebze",
+          "url": "https://en.wikipedia.org/wiki/Gebze",
+          "text": "Gebze (Turkish pronunciation: [ˈɟebze]), formerly known as Libyssa, Λίβυσσα (in Ancient Greek), is a working-class district and one of the municipalities in Kocaeli Province, Turkey.  Its area is 418 km2, and its population is 407,019 (2022). It is situated 65 km (30 mi) southeast of Istanbul, on the Gulf of Izmit, the eastern arm of the Sea of Marmara. Gebze is the largest district by population size in the province as of 2022, exceeding İzmit, the provincial capital. Its population consists of a colossal working class, one of the largest in Turkey, as it hosts 10 industrial parks, which contain 1,384 companies and employ over 130,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "gebze",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1703,
+    "attempt": 1689,
+    "place_id": "gn-749780",
+    "input": {
+      "place": {
+        "place_id": "gn-749780",
+        "name": "Çanakkale",
+        "country": "Türkiye",
+        "subdivision": "Canakkale",
+        "lat": 40.15552,
+        "lon": 26.41271
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Çanakkale",
+          "url": "https://en.wikipedia.org/wiki/Çanakkale",
+          "text": "Çanakkale (Turkish: [tʃaˈnakkale] ), formerly known in English as Dardanelles, is a city and seaport in Turkey on the southern shore of the Dardanelles at their narrowest point. It is the seat of Çanakkale Province and Çanakkale District. Its population is 143,622 (2021).\nÇanakkale is the nearest major urban centre to the ancient city of Troy, which (together with the ancient region of the Troad) is also located inside Çanakkale Province. The wooden horse from the 2004 film Troy is exhibited on the Çanakkale waterfront.\nToday Çanakkale is the main base for visits to the ruins of Troy and to the First World War cemeteries at Gallipoli. Particularly around 18 March and 25 April (Anzac Day) when there are major celebrations of the events of the war the town is heavily visited.\nÇanakkale Airport is 3 kilometres (1.9 mi) from the city centre. AJet has daily flights from Ankara. Intercity buses run to Bursa, Istanbul and İzmir."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "canakkale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1704,
+    "attempt": 1690,
+    "place_id": "gn-98860",
+    "input": {
+      "place": {
+        "place_id": "gn-98860",
+        "name": "Najaf",
+        "country": "Iraq",
+        "subdivision": "Najaf",
+        "lat": 32.02594,
+        "lon": 44.34625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Najaf",
+          "url": "https://en.wikipedia.org/wiki/Najaf",
+          "text": "Najaf is the capital city of the eponymous Najaf Governorate in central Iraq, about 160 km (99 mi) south of Baghdad. Its estimated population in 2024 was about 1.41 million people. It is widely considered amongst the holiest cities of Shia Islam and one of its spiritual capitals, as well as the center of Shia political power in Iraq.\nIt is the burial place of Muhammad's son in law and cousin, ‘Alī ibn Abī Tālib, and thus a major pilgrimage destination for Shia Muslims. The largest cemetery in the world (Wadi-us-Salaam) and the oldest Shi'a Islamic seminary in the world (Hawza of Najaf) are located in Najaf."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "najaf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1705,
+    "attempt": 1691,
+    "place_id": "gn-10794003",
+    "input": {
+      "place": {
+        "place_id": "gn-10794003",
+        "name": "Panjin",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.121,
+        "lon": 122.0739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panjin",
+          "url": "https://en.wikipedia.org/wiki/Panjin",
+          "text": "Panjin (Chinese: 盘锦; pinyin: Pánjǐn) is a coastal prefecture-level city in central Liaoning province, People's Republic of China, situated on the northern shore of the Liaodong Bay.  It borders Anshan to the east, Yingkou to the southeast, and Jinzhou to the west and north.  It is the smallest city in both Liaoning and the entire Northeast China with an administrative area of 3,825 square kilometres (1,477 sq mi), and Liaoning's least populous city with a population of 1,389,691 people as of the 2020 census, all in the built-up (or metro) area made of the 2 urban districts and Dawa and Panshan counties now largely being conurbated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "panjin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1706,
+    "attempt": 1692,
+    "place_id": "gn-1173664",
+    "input": {
+      "place": {
+        "place_id": "gn-1173664",
+        "name": "Khuzdar",
+        "country": "Pakistan",
+        "subdivision": "Balochistan",
+        "lat": 27.81193,
+        "lon": 66.61096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khuzdar",
+          "url": "https://en.wikipedia.org/wiki/Khuzdar",
+          "text": "Khuzdar ( Balochi: هزدار, Brahui: خضدار, pronounced ['xʊzd̪ɑːɾ]) also known as Hozdar, is a city and the administrative headquarters of Khuzdar District in Balochistan province of Pakistan. Khuzdar is surrounded by the mountainous region of the southwestern portion of the country near central Balochistan. In terms of population, it is the 3rd-largest city in the province and 49th-largest in the country. As of the 2023 Pakistani census, the estimated population of the city is 228,112.\nHistorically, Khuzdar was the main city and capital of the Jhalawan province of the Khanate of Kalat. From October 1952 to 1955, it was a part of the Balochistan States Union. In 1955, Khuzdar became the capital of the newly formed Kalat Division before it became a district of its own in 1974. Gresha, a tehsil of Khuzdar District, is almost 80 km (50 mi) from Khuzdar city. As of 2023, it is the largest Brahui-speaking city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "khuzdar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1707,
+    "attempt": 1693,
+    "place_id": "gn-1271439",
+    "input": {
+      "place": {
+        "place_id": "gn-1271439",
+        "name": "Gaya",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 24.79686,
+        "lon": 85.00385
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gaya, India",
+          "url": "https://en.wikipedia.org/wiki/Gaya,_India",
+          "text": "Gaya (IAST: Gayā) is a city, municipal corporation and the administrative headquarters of Gaya district and Magadh division of the Indian state of Bihar. Gaya is 116 kilometres (72 mi) south of Patna and is the state's second-largest city, with a population of 470,839. The city is surrounded on three sides by small, rocky hills (Mangla-Gauri, Shringa-Sthan, Ram-Shila, and Brahmayoni), with the Phalgu River on its eastern side.\nIt is a city of historical significance and is one of the major tourist attractions. Gaya is sanctified in the Jain, Hindu, and Buddhist religions. Gaya district is mentioned in the great epics, the Ramayana and the Mahabharata. It is the place where Rama, with Sita and Lakshmana, came to offer piṇḍadāna for their father, Dasharatha, and continues to be a major Hindu pilgrimage site for the piṇḍadāna ritual. Bodh Gaya, where Buddha is said to have attained enlightenment, is one of the four holy sites of Buddhism.\nGaya was chosen as one of twelve heritage cities to benefit from the Government of India's four-year Heritage City Development and Augmentation Yojana (HRIDAY) scheme for urban planning, economic growth and heritage conservation projects."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "gaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1708,
+    "attempt": 1694,
+    "place_id": "gn-1280737",
+    "input": {
+      "place": {
+        "place_id": "gn-1280737",
+        "name": "Lhasa",
+        "country": "China",
+        "subdivision": "Tibet",
+        "lat": 29.65,
+        "lon": 91.1
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lhasa",
+          "url": "https://en.wikipedia.org/wiki/Lhasa",
+          "text": "Lhasa, officially the Chengguan District of Lhasa City, is the inner urban district of Lhasa City, Tibet Autonomous Region, Southwestern China.\nLhasa is the second most populous urban area on the Tibetan Plateau after Xining and, at an altitude of 3,656 metres (11,990 ft), Lhasa is one of the highest cities in the world. The city has been the religious and administrative capital of Tibet since the mid-17th century. It contains many culturally significant Tibetan Buddhist sites such as the Potala Palace, Jokhang Temple and Norbulingka Palaces. According to the census, the total resident population of the city by the end of 2024 will be 876,400."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "lhasa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1709,
+    "attempt": 1695,
+    "place_id": "gn-1609776",
+    "input": {
+      "place": {
+        "place_id": "gn-1609776",
+        "name": "Khon Kaen",
+        "country": "Thailand",
+        "subdivision": "Khon Kaen",
+        "lat": 16.44671,
+        "lon": 102.833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khon Kaen",
+          "url": "https://en.wikipedia.org/wiki/Khon_Kaen",
+          "text": "Khon Kaen (Thai: ขอนแก่น, pronounced [kʰɔ̌(ː)n kɛ̀n]) is the capital of Khon Kaen province and the fourth-largest city in Thailand. It is one of the four major cities of Isan, Northeast Thailand, also known as the \"big four of Isan\", the others being Udon Thani, Nakhon Ratchasima, and Ubon Ratchathani. \nThe city municipality of Khon Kaen (thesaban nakhon) acts as the governmental seat of the province, as well as the Mueang Khon Kaen district and lies 450 kilometres (280 mi) northeast of Bangkok. Since the late 20th century, urban development has expanded beyond the municipal boundary into neighbouring local government areas, forming a continuous urban area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "khon kaen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "khon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kaen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1710,
+    "attempt": 1696,
+    "place_id": "gn-1649541",
+    "input": {
+      "place": {
+        "place_id": "gn-1649541",
+        "name": "Baubau",
+        "country": "Indonesia",
+        "subdivision": "Southeast Sulawesi",
+        "lat": -5.4633,
+        "lon": 122.6024
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baubau",
+          "url": "https://en.wikipedia.org/wiki/Baubau",
+          "text": "Baubau is a city in Southeast Sulawesi province, Indonesia. The city is located on the southwest coast of Buton island. Baubau attained city status on 21 June 2001 after Law Number 13 of 2001 was passed. It covers an area of 293.87 square kilometres (113.46 sq mi), of which about 30 square kilometres (12 sq mi) is water. It had a population of 136,991 at the 2010 Census and 159,248 at the 2020 Census; the official estimate in mid 2025 was 165,145 (comprising 81,653 males and 83,492 females). The city is the economic center of the Buton Island region and the second-largest city in the province. It was the cultural center of the Butonese people, the former capital of the Sultanate of Buton, the seat of the colonial administration of Eastern Sulawesi (Afdeeling Ost Celebes), and briefly the capital of the entire Southeast Sulawesi regency until 1955 when the capital status shifted to neighbouring Kendari."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "baubau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1711,
+    "attempt": 1697,
+    "place_id": "gn-1785725",
+    "input": {
+      "place": {
+        "place_id": "gn-1785725",
+        "name": "Yunfu",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.92787,
+        "lon": 112.03809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yunfu",
+          "url": "https://en.wikipedia.org/wiki/Yunfu",
+          "text": "Yunfu (simplified Chinese: 云浮; traditional Chinese: 雲浮; pinyin: Yúnfú), formerly romanized as Wanfow, and historically known as Dong'an (simplified Chinese: 东安; traditional Chinese: 東安; pinyin: Dōng'ān), which was formerly romanized as Tong On, from 1578 to 1913, is a prefecture-level city in western Guangdong province, People's Republic of China. It borders Zhaoqing to the north, Foshan to the east, Jiangmen to the southeast, Yangjiang to the south, Maoming to the southwest, and the autonomous region of Guangxi to the west. The city spans an area of 7,786.64 square kilometres (3,006.44 mi2), and has a population of 2,383,400 according to a 2021 publication by the city government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "yunfu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1712,
+    "attempt": 1698,
+    "place_id": "gn-1786217",
+    "input": {
+      "place": {
+        "place_id": "gn-1786217",
+        "name": "Yongzhou",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 26.42389,
+        "lon": 111.61306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yongzhou",
+          "url": "https://en.wikipedia.org/wiki/Yongzhou",
+          "text": "Yongzhou (Chinese: 永州; pinyin: Yǒngzhōu) is a prefecture-level city in the south of Hunan province, People's Republic of China, located on the southern bank of the Xiang River, which is formed by the confluence of the Xiao and Xiang Rivers, and bordering Guangdong to the southeast and Guangxi to the southwest. With a history of 2000 years, Yongzhou is one of the four ancient counties in Hunan. Its total area is 22,255.31 square kilometres (8,592.82 sq mi), and at the 2022 Chinese census it had a total population of 5,143,700, of whom 1,146,692 lived in the built-up (or metro) area made of the 2 urban districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "yongzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1713,
+    "attempt": 1699,
+    "place_id": "gn-1808392",
+    "input": {
+      "place": {
+        "place_id": "gn-1808392",
+        "name": "Hengshui",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 37.73908,
+        "lon": 115.68348
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hengshui",
+          "url": "https://en.wikipedia.org/wiki/Hengshui",
+          "text": "Hengshui (Chinese: 衡水) is a prefecture-level city in southern Hebei province, People's Republic of China, bordering Shandong to the southeast. It borders the cities of Shijiazhuang, the capital of Hebei, to the west, Xingtai to the south, and Baoding and Cangzhou to the north. As of the 2020 census, its population was 4,212,933 inhabitants, out of whom 805,000 lived in the built-up (or metro) area made of Taocheng urban district. At the end of 2024, the city's resident population was 4.1299 million, down 27,700 from the end of the previous year. The urbanization rate of the resident population is 58.17%. It is on the Beijing–Kowloon railway.\nHengshui has a long cultural history. During the Three Kingdoms period, Yuan Shao once stationed millions of troops in Jizhou to compete with Cao Cao. Dong Zhongshu, a great philosopher of the Western Han Dynasty and a great master of the Confucian school, was born in Hengshui Jing County. Hengshui now has two national-level cultural relics protection units: the Jingxian Fengshi Tombs and the Relic Pagoda, plus the Houzhong Han Tomb, Shuangzhong Han Tomb, Xiyuantou Han Tomb in Jizhou, the Qinglin Temple Pagoda in the old city, and the Taocheng District There are 19 provincial key cultural relics protection units including Baoyun Temple Pagoda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "hengshui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1714,
+    "attempt": 1700,
+    "place_id": "gn-1816080",
+    "input": {
+      "place": {
+        "place_id": "gn-1816080",
+        "name": "Cangzhou",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 38.31124,
+        "lon": 116.85334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cangzhou",
+          "url": "https://en.wikipedia.org/wiki/Cangzhou",
+          "text": "Cangzhou is a prefecture-level city in China forming the southeastern extension of Hebei Province to the coast of the Bohai Sea between Tianjin and Shandong. At the 2020 census, Cangzhou's built-up (or metro) area made of Yunhe district, Xinhua district, and Cang County is largely conurbated with a population of 1,421,843 inhabitants, while the prefecture-level administrative unit in total has a population of 7,300,783. The resident population at the end of 2024 was 7,227,700, a decrease of 36,900 from the end of the previous year. It lies approximately 90 kilometres (56 mi) from the major port city of Tianjin, and 180 km (110 mi) from Beijing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "cangzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

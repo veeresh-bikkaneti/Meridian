@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 1735,
+    "attempt": 1721,
+    "place_id": "gn-1275778",
+    "input": {
+      "place": {
+        "place_id": "gn-1275778",
+        "name": "Bhusawal",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 21.04365,
+        "lon": 75.78506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhusawal",
+          "url": "https://en.wikipedia.org/wiki/Bhusawal",
+          "text": "Bhusawal is a city in the Jalgaon district of Maharashtra, India. Situated along the Tapti River, it lies between the Satpura Range and the Ajanta Hills of the Deccan plateau. The city is a significant hub for the Central Railway, featuring the largest railway junction in Maharashtra and the second-largest railway yard in Asia. Bhusawal also has one of the largest Municipal Councils. It serves as a vital commercial center for the surrounding cotton-growing region and is involved in the trade of bananas, millet, and peanuts (groundnuts). The city features a substantial oil-processing industry and is the second-largest city in the Jalgaon district after Jalgaon.\nThe Bhusaval Junction railway station is one of the busiest railway stations in the nation and serves as the headquarters of the Bhusawal railway division. The railway line and station were constructed in the second half of the 19th century by the British government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "bhusawal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1736,
+    "attempt": 1722,
+    "place_id": "gn-1279105",
+    "input": {
+      "place": {
+        "place_id": "gn-1279105",
+        "name": "Akola",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 20.70957,
+        "lon": 76.9981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Akola",
+          "url": "https://en.wikipedia.org/wiki/Akola",
+          "text": "Akola  () is a major city in the Vidarbha region of the Indian state of Maharashtra. With an estimated population of 600,000, Akola is a growing metropolis surrounded by forts, and has the Morna River running through the center of the city.\nAkola is an important financial city and  affiliated with Sant Gadge Baba Amravati University. It has recently become a hub of coaching classes preparing students for competitive exams like  NEET and JEE.  The city is developing into a market centre. The primary language spoken by the people of Akola is the Varhadi dialect of Marathi while English is used mostly in educational institutions. Hindi being the language of outsiders spoken mostly by the immigrants and Urdu, including large number of Native Berari, a branch of Deccani language which is formally recognized as dialect of it, is spoken by Muslims"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "akola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1737,
+    "attempt": 1723,
+    "place_id": "gn-1314759",
+    "input": {
+      "place": {
+        "place_id": "gn-1314759",
+        "name": "Lashio",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Shan State",
+        "lat": 22.9359,
+        "lon": 97.7498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lashio",
+          "url": "https://en.wikipedia.org/wiki/Lashio",
+          "text": "Lashio (Burmese: လားရှိုးမြို့, MLCTS: la: hrui: mrui. [láʃó mjo̰]; Shan: ဝဵင်းလႃႈသဵဝ်ႈ [weŋ˥ laː˧˧˨ sʰeu˧˧˨]) is the largest city and the capital of northern Shan State, Myanmar, about 200 kilometres (120 mi) north-east of Mandalay. It is situated on a low mountain spur overlooking the valley of the Yaw River. Loi Leng, the highest mountain of the Shan Hills, is located 45 km (28 mi) to the south-east of Lashio.\nLashio is the administrative center of Lashio Township and Lashio District; before April 2010, it was also the administrative center of Shan State (North). The population grew from approximately 5000 in 1960 to 88,590 in 1983. It was estimated at approximately 131,000 in 2009. The city was captured by rebel forces in early August 2024 before being retaken by the State Administration Council in April 2025 following a major earthquake which impacted much of Myanmar.\nThe population is made up of mostly Shan, Chinese and Bamars."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "lashio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1738,
+    "attempt": 1724,
+    "place_id": "gn-153209",
+    "input": {
+      "place": {
+        "place_id": "gn-153209",
+        "name": "Moshi",
+        "country": "Tanzania",
+        "subdivision": "Kilimanjaro",
+        "lat": -3.35,
+        "lon": 37.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moshi, Tanzania",
+          "url": "https://en.wikipedia.org/wiki/Moshi,_Tanzania",
+          "text": "Moshi is a municipality and the capital of Kilimanjaro Region in the Northeastern Tanzania. As of 2017, the municipality has an estimated population of 201,150 and a population density of 3,409 persons per km2 . In the last official census of 2022, the municipality had a population of 221,733. The municipality is situated on the lower slopes of Mount Kilimanjaro, a dormant volcano that is the highest mountain in Africa. The name Moshi has been reported to refer to the smoke that emanates from the nearby mountain. The municipality covers about 59 square kilometres (23 mi2) and is the smallest municipality in Tanzania by area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "moshi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1739,
+    "attempt": 1725,
+    "place_id": "gn-1607017",
+    "input": {
+      "place": {
+        "place_id": "gn-1607017",
+        "name": "Rayong",
+        "country": "Thailand",
+        "subdivision": "Rayong",
+        "lat": 12.68095,
+        "lon": 101.25798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rayong",
+          "url": "https://en.wikipedia.org/wiki/Rayong",
+          "text": "Rayong (Thai: ระยอง, pronounced [rá(ʔ).jɔ̄ːŋ]) is a city (thesaban nakhon) on the east coast of the Gulf of Thailand and the capital of Rayong province. It covers tambons Tha Pradu and Pak Nam and parts of tambons Choeng Noen and Noen Phra, all within Mueang Rayong district. As of 2016 the population was 64,256 (est.). The main industry is fishing, and it is also the main producer of Thailand's fish sauce. It is also the center of the chemical and auto industries. In 2012 Ford Motor Company opened an assembly plant in Rayong to expand Ford's presence in the ASEAN area, employing some 2,200 people.\nRayong was named an Asia-Pacific City of the Future by the Financial Times in 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "rayong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1740,
+    "attempt": 1726,
+    "place_id": "gn-1626103",
+    "input": {
+      "place": {
+        "place_id": "gn-1626103",
+        "name": "Sumedang",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.85861,
+        "lon": 107.91639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sumedang",
+          "url": "https://en.wikipedia.org/wiki/Sumedang",
+          "text": "Sumedang (former Dutch spelling: Soemedang) is a town in Western Java, Indonesia, approximately 46 km northeast of Bandung, the provincial capital. It is the capital of Sumedang Regency. The town's two administrative districts (kecamatan) have a combined area of 125.32 km2 and had a population of 184,293 as of mid-2025. The town is just south of the volcanic Mount Tampomas, which is 1,684 m (5,525 ft) high and is usually climbed from Cimalaka District, 7 km from Sumedang.\nSumedang's museum, Prabu Geusan Ulun, houses a collection of traditional Sundanese weaponry, as well as some crown jewels and other finery. It is on Geusan Ulun Road.\nThe town is famous for Sumedang tofu, a local variety of deep-fried tofu that was first made by a Chinese immigrant, Ong Kino.\nIn the area surrounding the town lies Cadas Pangeran, a section of the trans-Java postal road constructed on the order of Dutch governor Willem Daendels during the first quarter of the 19th century. The section is famous due to the difficulty during the construction, which required blasting of a mountainside. Hence \"cadas\" which means mountain rock in Sundanese. The section was finished due to cooperation between the governor, regent Kusumadinata known as \"pangeran kornel\", and the people of Sumedang, although with considerable ill-feeling on the part of the regent and the people due to forced labor practice. A statue commemorating this event is erected on the section.\nThe town housed the exiled Indonesian national heroine (female hero) named Cut Nyak Dhien from Aceh during her old age, after she was captured during the Aceh War at the beginning of the 20th century. Her tomb is near the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "sumedang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1741,
+    "attempt": 1727,
+    "place_id": "gn-1649824",
+    "input": {
+      "place": {
+        "place_id": "gn-1649824",
+        "name": "Batu",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -7.87,
+        "lon": 112.52833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batu, Indonesia",
+          "url": "https://en.wikipedia.org/wiki/Batu,_Indonesia",
+          "text": "Batu, officially the City of Batu (Indonesian: Kota Batu, Javanese: ꦏꦸꦛꦧꦠꦸ, romanized: Kutha Batu), is a city in the East Java Province of Indonesia. It is about 20 km to the northwest of Malang. Formerly, it was a part of Malang Regency; but in June 2001, Batu became an independent city (by Act No. 11 of 2001), with its own mayor and council.\nWith a population of 213,046 people at the 2020 Census, which rose to 225,408 as officially estimated as of mid 2025 (comprising 113,186 males and 112,222 females), Batu lies on the southern slopes of Mount Arjuno-Welirang. Its population largely consists of Javanese. The town used to be a recreation place for the Dutch colonial officers in the Dutch colonial area (before 1945). Batu means \"rock\" in Indonesian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "batu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1742,
+    "attempt": 1728,
+    "place_id": "gn-1737486",
+    "input": {
+      "place": {
+        "place_id": "gn-1737486",
+        "name": "Bintulu",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 3.16667,
+        "lon": 113.03333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bintulu",
+          "url": "https://en.wikipedia.org/wiki/Bintulu",
+          "text": "Bintulu is a coastal town on the island of Borneo in the central region of Sarawak, Malaysia. Bintulu is located 610 kilometres (380 miles) northeast of Kuching, 216 kilometres (134 miles) northeast of Sibu, and 200 kilometres (120 miles) southwest of Miri. With a population of 114,058 as of 2010, Bintulu is the capital of the Bintulu District, Bintulu Division of Sarawak, Malaysia.\nThe name of Bintulu was derived from the local native language \"Mentu Ulau\" (picking heads). Bintulu was a small fishing village within the Bruneian Empire prior to annexation by Rajah James Brooke in 1861. Brooke later built a fort there in 1862. In 1867, the first General Council meeting (now Sarawak State Legislative Assembly) was convened in Bintulu. It is the earliest state legislature system in Malaysia. The construction of the earliest airstrip in Bintulu began in 1934 but was halted in 1938 due to financial difficulties. During World War II, the airstrip was heavily bombed by Allied forces. The British later rebuilt the airstrip, and it became fully operational in 1955. The old airport was replaced by a new airport in 2002. Bintulu remained a fishing village until 1969 when oil and gas reserves were discovered off the coast. Since then, Bintulu has become the centre of energy-intensive industries such as a Malaysia LNG plant, a Shell Middle Distillate Synthesis plant, and a Bintulu combined cycle power plant. The economy has also expanded into oil palm and forest plantations, palm oil processing, wood-waste processing, and cement manufacturing. The port of Bintulu is the busiest in Sarawak. The town is also a gateway to the Samalaju Industrial Park.\nAmong the tourist attractions in Bintulu are Similajau National Park, Tumbina Park, Tanjung Batu beach, Jepak village, Kuan Yin Tong temple, Assyakirin mosque, Council Negri monument, Tamu Bintulu, and Pasar Utama markets. The Borneo International Kite Festival is held annually in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 314
+    },
+    "banned_terms": [
+      {
+        "term": "bintulu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1743,
+    "attempt": 1729,
+    "place_id": "gn-1793511",
+    "input": {
+      "place": {
+        "place_id": "gn-1793511",
+        "name": "Taiyuan",
+        "country": "China",
+        "subdivision": "Shanxi",
+        "lat": 37.86944,
+        "lon": 112.56028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taiyuan",
+          "url": "https://en.wikipedia.org/wiki/Taiyuan",
+          "text": "Taiyuan (Taiyuan Jin: [tʰai˦˥ ye˩˩]) is the capital of Shanxi, China. It is the political, economic, cultural, and international exchange center of the province, containing an industrial base focusing on energy and heavy chemicals. Throughout its long history, Taiyuan was the capital or provisional capital of many dynasties in China, hence the name Lóngchéng (龙城; The City of the Dragon).\nAs of 2021, the city governed six districts and three counties, with a total area of 6,988 square kilometers and a permanent population of 5,390,957.\nTaiyuan is located roughly in the centre of Shanxi, with the Fen River flowing through the centre of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "taiyuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1744,
+    "attempt": 1730,
+    "place_id": "gn-1817720",
+    "input": {
+      "place": {
+        "place_id": "gn-1817720",
+        "name": "Shangyu",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 30.01556,
+        "lon": 120.87111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shangyu, Shaoxing",
+          "url": "https://en.wikipedia.org/wiki/Shangyu,_Shaoxing",
+          "text": "Shangyu District (Chinese: 上虞区; pinyin: Shàngyú) is a district of the prefecture-level city of Shaoxing in the northeast of Zhejiang province, China.  At the 2010 census, its population in the built-up (or metro) area was 779,412, up from 722,523 in the 2000 census. Shangyu is roughly fifty kilometers from north to south and about thirty kilometers from east to west. It makes up about one-fourth of the area of Shaoxing prefecture. Shangyu District is not part of the Hangzhou-Shaoxing built-up area as some countryside still prevent the city from being conurbated until now.\nThe city is one of the largest production bases of umbrellas worldwide."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "shangyu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1745,
+    "attempt": 1731,
+    "place_id": "gn-1852225",
+    "input": {
+      "place": {
+        "place_id": "gn-1852225",
+        "name": "Shimonoseki",
+        "country": "Japan",
+        "subdivision": "Yamaguchi",
+        "lat": 33.95548,
+        "lon": 130.93713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shimonoseki",
+          "url": "https://en.wikipedia.org/wiki/Shimonoseki",
+          "text": "Shimonoseki (Japanese: 下関市, Hepburn: Shimonoseki-shi) is a city located in Yamaguchi Prefecture, Japan. The city used to be referred to as Bakan (馬関). As of 30 June 2023, the city had an estimated population of  248,193 in 128,762 households and a population density of 350 persons per km2. The total area of the city is 716.18 square kilometres (276.52 sq mi). It is the largest city in Yamaguchi Prefecture and the fifth-largest city in the Chūgoku region in terms of population. It is nicknamed the 'home of Fugu' for the locally caught and cooked pufferfish, and is the largest harvester of the pufferfish in Japan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "shimonoseki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1746,
+    "attempt": 1732,
+    "place_id": "gn-2344053",
+    "input": {
+      "place": {
+        "place_id": "gn-2344053",
+        "name": "Ede",
+        "country": "Nigeria",
+        "subdivision": "Osun State",
+        "lat": 7.73635,
+        "lon": 4.43536
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ede, Osun State",
+          "url": "https://en.wikipedia.org/wiki/Ede,_Osun_State",
+          "text": "Ẹdẹ is a town in Osun State, southwestern Nigeria. It lies along the Osun River at a point on the railroad from Lagos, 180 kilometres (110 mi) southwest, and at the intersection of roads from Oshogbo, Ogbomosho, and Ile-Ife. The two (2) local government areas in Ẹdẹ are Ẹdẹ South and Ẹdẹ North. \nThere are three (3) major tertiary institutions in Ẹdẹ, which makes the town one of the fastest growing towns in the south-west with an increasing literacy rate. The Federal Polytechnic Ẹdẹ, Adeleke University, and Redeemer's University are among the institutions.\nẸdẹ is a predominantly Muslim town with about 75% of the population. This can be traced back to 19th century during the reign of Timi Abibu Lagunju as the king of Ẹdẹ, who is the first Muslim Oba in Yorubaland given the fact that he was already on the throne for a few years when in November 1857, the Baptist missionary W. H. Clark visited Ẹdẹ. Clarke recorded thus: \"This young follower of the Prophet (Prophet Muhammad), a short time since became the ruler of this town in the place of his father (Oduniyi), the deceased, and brings with him into office, the influence of his new religion (Islam).\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "ede",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1747,
+    "attempt": 1733,
+    "place_id": "gn-2521420",
+    "input": {
+      "place": {
+        "place_id": "gn-2521420",
+        "name": "Badajoz",
+        "country": "Spain",
+        "subdivision": "Extremadura",
+        "lat": 38.87789,
+        "lon": -6.97061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Badajoz",
+          "url": "https://en.wikipedia.org/wiki/Badajoz",
+          "text": "Badajoz is the capital of the province of Badajoz in the autonomous community of Extremadura, Spain. Belonging to the traditional comarca of Tierra de Badajoz, it is situated close to the Portuguese border, on the left bank of the river Guadiana. The population in 2011 was 151,565.\nBadajoz (Baṭalyaws) was founded by Ibn Marwan towards 875. In the 11th century, it became the seat of the Taifa of Badajoz, noted as a hub for (high) cultural production under the Aftasids despite military and political unstability. Badajoz was conquered by the Kingdom of León in 1230, becoming a royal demesne and seat of an opulent diocese. Due to the spillover of civil wars and conflicts with Portugal, the city underwent many spells of calamity throughout the medieval and modern periods. Featuring an area of 1,470 km2, the extensive municipal territory of Badajoz comprises the main city and about 26 secondary settlements and pedanías.\nBadajoz lies on the A-5 road route connecting central Spain with Portugal. It is also served by Badajoz Railway Station and the Badajoz Airport. Promoted by the European Union, the initiative of the Badajoz-Elvas-Campo Maior eurocity seeks to achieve deeper cross-border cooperation with the Portuguese cities of Elvas and Campo Maior."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "badajoz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1748,
+    "attempt": 1734,
+    "place_id": "gn-2528910",
+    "input": {
+      "place": {
+        "place_id": "gn-2528910",
+        "name": "Tétouan",
+        "country": "Morocco",
+        "subdivision": "Tanger-Tetouan-Al Hoceima",
+        "lat": 35.57845,
+        "lon": -5.36837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tétouan",
+          "url": "https://en.wikipedia.org/wiki/Tétouan",
+          "text": "Tétouan is a city in northern Morocco. It lies along the Martil Valley and is one of the two major ports of Morocco on the Mediterranean Sea, a few miles south of the Strait of Gibraltar, and about 60 kilometres (37 mi) E.S.E. of Tangier. As of 2024, the city has an estimated population of 469,465 inhabitants. It is part of the administrative division Tanger-Tetouan-Al Hoceima.\nOver the span of more than 2,000 years, Tétouan has witnessed many development cycles. Dating back to the 3rd century BC, Tétouan's first settlements, discovered a few miles outside of the modern city limits, belonged to the ancient Mauretanians. In the 2nd century BC, the Phoenicians traded there and after them the site, known now as the ancient town of Tamuda, became a Roman city under Emperor Augustus.\nIn the late 13th century, the Marinids built a casbah and mosque in what is now Tétouan's old city. In 1305, the scale of the settlement was expanded by sultan Abu Thabit Amir, who fortified the place. Around the early 15th century, the Castilians destroyed the settlement in retaliation for piracy.\nThe modern history of the city starts around the late 15th century. It was re-built and fortified by Ali al-Mandri, who emigrated from the Nasrid city of Granada in the decade before it fell into the hands of the Catholic Monarchs Ferdinand II of Aragon and Isabella I of Castile as the War of Granada was completed in 1492.\nHundreds of thousands of Muslims (Moriscos) and Jews (Marranos) from Andalusia settled in northern Morocco, and on the ruins of the city of Tétouan. The city went through a prosperous period of reconstruction and growth in various fields, becoming a major center of Andalusian civilization.\nTétouan is linked to Granada, and it is nicknamed \"Granada's Daughter\" (Spanish: \"La Hija de Granada\" or \"La Paloma Blanca\"). To this day, many families keep keys belonging to their old homes in Granada. It is also nicknamed \"Pequeña Jerusalén\" (Little Jerusalem) by Sephardic Jews. Today, the majority of Tétouan's population is Muslim. Although their presence has declined during recent decades, Christian and Jewish communities also exist.\nIn 1913, Tétouan became the capital of the Spanish protectorate of Morocco (1912-1956) which was governed by the Khalifa (Moroccan princes serving as Viceroys for the Sultan) and a Spanish \"Alto Comisario\" accredited to them. The city remained the Spanish protectorate's capital until 1956, when Morocco regained its full independence.\nTétouan is a renowned multicultural center. Since 1997, the medina of Tétouan is a UNESCO World Heritage Site. Since 2017, it has also been part of the UNESCO Creative Cities Network in the area of Crafts and Folk Art."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 445
+    },
+    "banned_terms": [
+      {
+        "term": "tetouan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1749,
+    "attempt": 1735,
+    "place_id": "gn-2611396",
+    "input": {
+      "place": {
+        "place_id": "gn-2611396",
+        "name": "Tórshavn",
+        "country": "Faroe Islands",
+        "subdivision": "Streymoy",
+        "lat": 62.00973,
+        "lon": -6.77164
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tórshavn",
+          "url": "https://en.wikipedia.org/wiki/Tórshavn",
+          "text": "Tórshavn (Faroese: [ˈtʰɔu̯ʂhau̯n] ; lit. 'Thor's harbour'; Danish: Thorshavn), locally referred to as Havn, is the capital and largest city of the Faroe Islands. It is located in the southern part on the east coast of Streymoy. To the northwest of the city lies the 347-meter-high (1,138 ft) mountain Húsareyn, and to the southwest, the 350-meter-high (1,150 ft) Kirkjubøreyn. They are separated by the Sandá River. The city itself has a population of 14,223 (2024), and the greater urban area has a population of 22,444, including the suburbs of Hoyvík and Argir.\nThe Norse (Scandinavians) established their parliament on the Tinganes peninsula in AD 850. Tórshavn thus became the capital of the Faroe Islands and has remained so ever since. Early on, Tórshavn became the centre of the islands' trade monopoly, thereby being the only legal place for the islanders to sell and buy goods. In 1856, the trade monopoly was abolished and the islands were left open to free trade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "torshavn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1750,
+    "attempt": 1736,
+    "place_id": "gn-3133880",
+    "input": {
+      "place": {
+        "place_id": "gn-3133880",
+        "name": "Trondheim",
+        "country": "Norway",
+        "subdivision": "Trøndelag",
+        "lat": 63.43049,
+        "lon": 10.39506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trondheim",
+          "url": "https://en.wikipedia.org/wiki/Trondheim",
+          "text": "Trondheim ( TRON(D)-hyme; Urban East Norwegian: [ˈtrɔ̂nː(h)æɪm]; Southern Sami: Tråante), historically Kaupangen, Nidaros, and Trondhjem (locally [ˈtrɔ̂nːjæm] ), is a city and municipality in Trøndelag county, Norway. As of 1 January 2026, it had a population of 218,460. Trondheim is the third most populous municipality in Norway, and is the fourth largest urban area. Trondheim lies on the south shore of Trondheim Fjord at the mouth of the Nidelva. Among the significant technology-oriented institutions headquartered in Trondheim are the Norwegian University of Science and Technology (NTNU), the Foundation for Scientific and Industrial Research (SINTEF), the Geological Survey of Norway (NGU), and St. Olavs University Hospital.\nThe settlement was founded in 997 as a trading post and served as the capital of Norway through the Viking Age until 1217. From 1152 to 1537, the city was the seat of the Catholic Archdiocese of Nidaros; it then became, and has remained, the seat of the Lutheran Diocese of Nidaros and the site of the Nidaros Cathedral. The city was incorporated in 1838. The current municipality was formed in 1964, when Trondheim merged with Byneset Municipality, Leinstrand Municipality, Strinda Municipality, and Tiller Municipality, and further expanded on 1 January 2020, when Trondheim merged with Klæbu Municipality.\nTrondheim has a mild climate for its northerly latitude, resulting in moderate summers and winters that often remain above the freezing point in seaside areas. At higher elevations, though, the microclimate is colder and snowier.\nThe city functions as the seat of the County Mayor of Trøndelag county but not as its administrative centre (which is Steinkjer). This is designed to avoid making the county administration too centralized.\nTrondheim is home to football club Rosenborg, Norway's most successful football club, and Granåsen Ski Centre, which has hosted the World Championship in Nordic skiing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "trondheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1751,
+    "attempt": 1737,
+    "place_id": "gn-3384987",
+    "input": {
+      "place": {
+        "place_id": "gn-3384987",
+        "name": "Vitória de Santo Antão",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.11806,
+        "lon": -35.29139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vitória de Santo Antão",
+          "url": "https://en.wikipedia.org/wiki/Vitória_de_Santo_Antão",
+          "text": "Vitória de Santo Antão (Central northeastern portuguese pronunciation: [viˈtɔɾjɐ di ˈsɐ̃tŭ ɐ̃ˈtɐ̃w]) is a city in Pernambuco State, Brazil, 46 kilometers west of Recife. Its territorial area is 335,942 km², 5,717 km² of which lies within the urban perimeter. In 2021, the Brazilian Institute of Geography and Statistics (IBGE) estimated its population at approximately 140,389 inhabitants, being the tenth most populous city in Pernambuco, the fourth most populous in the interior of the state and the most populous in Zona da Mata. According to the Firjan Municipal Development Index (IFDM), Vitória de Santo Antão was elected the 8th best city of Pernambuco to live in."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "vitoria de santo antao",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vitoria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antao",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1752,
+    "attempt": 1738,
+    "place_id": "gn-3451234",
+    "input": {
+      "place": {
+        "place_id": "gn-3451234",
+        "name": "Rio Claro",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.41139,
+        "lon": -47.56139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rio Claro, São Paulo",
+          "url": "https://en.wikipedia.org/wiki/Rio_Claro,_São_Paulo",
+          "text": "Rio Claro is a city in the state of São Paulo in Brazil. The elevation is 613 m. It was incorporated as the village of São João Batista do Ribeirão Claro in 1827, and this incorporation is celebrated every year on June 24 as a municipal holiday.\nThe name was changed later to Rio Claro. Starting in the 19th century, Rio Claro attracted large numbers of immigrants from European countries, especially from Germany, Switzerland and Italy, but also from Spain, Portugal, some Eastern European countries, and a substantial community of Christian Arabs from the then Ottoman Empire (mostly Syrian and Lebanese). Japanese immigrants arrived later. There is also a large population of Afro-Brazilians. Rio Claro used to play a very important role in the railway system of São Paulo state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "rio claro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "claro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1753,
+    "attempt": 1739,
+    "place_id": "gn-3654870",
+    "input": {
+      "place": {
+        "place_id": "gn-3654870",
+        "name": "Latacunga",
+        "country": "Ecuador",
+        "subdivision": "Cotopaxi",
+        "lat": -0.93424,
+        "lon": -78.6152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Latacunga",
+          "url": "https://en.wikipedia.org/wiki/Latacunga",
+          "text": "Latacunga (Spanish pronunciation: [lataˈkuŋɡa]; Quechua: Latakunga) is a plateau city of Ecuador, capital of the Cotopaxi Province, 89 km (55 mi) south of Quito, near the confluence of the Alaquez and Cutuchi rivers to form the Patate, the headstream of the Pastaza. At the time of census 2022 Latacunga had a population of 77,267 largely mestizo and indigenous.\nLatacunga took its independence from Spain on November 11, 1820.\nLatacunga is an hour and half south from Quito on the Pan-American Highway. It was previously also on the old road from Quito to Guayaquil, and has a railway station  between those cities. It is 9, 383. 2  ft (2,860 m). above sea level. Its climate is cold and windy, due to the neighboring snowclad heights, and the barren, pumice-covered tableland on which it stands. The active volcano Cotopaxi is only 25 kilometres (16 mi) away, and the town has suffered repeatedly from eruptions. Founded in 1534, it was four times destroyed by earthquakes between 1698 and 1798. The neighboring ruins of an older native town are said to date from the Inca Empire.\nLatacunga's most noted food is chugchucaras, empanadas, plantains, popcorn, and tostado (a type of toasted corn). Often, food is mixed with ají, a type of condiment that can be mild to very spicy depending on its preparation.\nThe Latacunga economy is dependent on agriculture, floriculture and commerce. It has an international airport, the Cotopaxi International Airport, that is not used for international passenger use, but as an Air Force base and some special commercial flights.  The local volcanic activity has led to the accumulation of pumice deposits which are currently mined, as well as the presence of natural sparkling water, which is bottled under the brand name San Felipe.\nThe airplane scene in the film Maria Full of Grace was filmed out of the Latacunga airport using local extras. The landscape seen from the plane is the area surrounding Latacunga."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 322
+    },
+    "banned_terms": [
+      {
+        "term": "latacunga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1754,
+    "attempt": 1740,
+    "place_id": "gn-4683416",
+    "input": {
+      "place": {
+        "place_id": "gn-4683416",
+        "name": "Corpus Christi",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 27.80058,
+        "lon": -97.39638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corpus Christi, Texas",
+          "url": "https://en.wikipedia.org/wiki/Corpus_Christi,_Texas",
+          "text": "Corpus Christi ( KOR-pəs KRIS-tee; Latin for 'Body of Christ') is a coastal city in the U.S. state of Texas. It is the county seat and largest city of Nueces County in South Texas, with portions extending into Aransas, Kleberg, and San Patricio counties. With a population of 317,247 as of July 1, 2025, it is the eighth-most populous city in Texas.\nCorpus Christi is 130 miles (210 km) southeast of San Antonio and 208 miles (335 km) southwest of Houston. Its political boundaries encompass Nueces Bay and Corpus Christi Bay. Its zoned boundaries include small land parcels or water inlets of three neighboring counties. The Corpus Christi metropolitan area had an estimated population of 442,600. It is also the hub of the six-county Corpus Christi–Kingsville–Alice combined statistical area. \nCorpus Christi serves as an economic center in South Texas. Much of the city's economy is supported by different industries such as energy, manufacturing, healthcare, tourism, and maritime commerce. The Port of Corpus Christi is one of the largest ports in the United States by total waterborne tonnage, it plays a major role in both domestic and international trade. The region is served by the Corpus Christi International Airport. Corpus Christi is also home to Naval Air Station Corpus Christi, one of two locations training primary student pilots and advanced multiengine pilots of the US military."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "corpus christi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "corpus",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "christi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

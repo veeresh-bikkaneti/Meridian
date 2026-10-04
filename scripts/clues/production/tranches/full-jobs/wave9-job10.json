@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 1795,
+    "attempt": 1781,
+    "place_id": "gn-3448519",
+    "input": {
+      "place": {
+        "place_id": "gn-3448519",
+        "name": "São Mateus",
+        "country": "Brazil",
+        "subdivision": "Espírito Santo",
+        "lat": -18.72011,
+        "lon": -39.85891
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Mateus, Espírito Santo",
+          "url": "https://en.wikipedia.org/wiki/São_Mateus,_Espírito_Santo",
+          "text": "São Mateus is the eighth oldest municipality in Brazil and the seventh most populous in the state of Espírito Santo. Founded on September 21, 1544, it gained municipal autonomy in 1764. Originally named Povoado do Cricaré, it was renamed São Mateus in 1566 by Father Joseph of Anchieta. According to 2022 Census, its population is approximately 123,750 inhabitants. São Mateus is considered a milestone in the colonization of Espírito Santo's territory.\nIt has the largest Afro-descendant population in the state, a legacy of the Port of São Mateus, which, until the mid-19th century, was a major entry point for enslaved Africans in Brazil. The municipality also includes descendants of Italian immigrants, who contributed to the colonization of its rural hinterlands.\nIts economy is driven by service provision and the exploration and production of petroleum. Petroleum fields were discovered in the 1970s, with further expansion in the 1980s. In the 2000s, the North Capixaba Terminal was established in the Campo Grande region to handle the region's production output.\nLocated at a latitude of 18º42'58\" South and a longitude of 39º51'21\" West, São Mateus sits at an altitude of 36 meters. Its total area is 2,338.727 square kilometres (902.988 sq mi), representing 5.12% of Espírito Santo's territory. It borders Boa Esperança, Pinheiros, and Conceição da Barra to the north; São Gabriel da Palha, Vila Valério, Jaguaré, and Linhares to the south; the Atlantic Ocean to the east; and Nova Venécia to the west. It is 215 kilometres (134 mi) from the state capital, Vitória. São Mateus is also known for its strong tourism appeal, both historical and seasonal. The carnival in Guriri, the municipality's main beach resort, is one of the liveliest in the state and is nationally recognized, attracting many tourists, particularly from Minas Gerais."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "sao mateus",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mateus",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1796,
+    "attempt": 1782,
+    "place_id": "gn-3587902",
+    "input": {
+      "place": {
+        "place_id": "gn-3587902",
+        "name": "Villa Nueva",
+        "country": "Guatemala",
+        "subdivision": "Guatemala",
+        "lat": 14.52512,
+        "lon": -90.58544
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa Nueva, Guatemala",
+          "url": "https://en.wikipedia.org/wiki/Villa_Nueva,_Guatemala",
+          "text": "Villa Nueva is a city in the Guatemala department of Guatemala. The city centre of Villa Nueva at Villa Nueva Central Park is located 16 kilometres (10 mi) south of Guatemala City. The city has a population of 618,397 (2018 census), making it the second largest in Guatemala Department, after Guatemala City. It was founded on 17 April 1763, long before Guatemala declared its independence from the Spanish Empire.\nThe local economy largely depends on industry, with the municipality having some 100 factories that produce such products as textiles, metallurgical goods, and plastics. The area's agricultural products include rice, dairy, fruits, and vegetables.\nMayor Salvador Gándara, serving from 2000 to 2011, was longlisted for the 2008 World Mayor award; Sites of interest include the Naciones Unidas National Park, and several malls, including Metrocentro and Santa Clara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "villa nueva",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nueva",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1797,
+    "attempt": 1783,
+    "place_id": "gn-363885",
+    "input": {
+      "place": {
+        "place_id": "gn-363885",
+        "name": "Wau",
+        "country": "South Sudan",
+        "subdivision": "Western Bahr al Ghazal",
+        "lat": 7.70111,
+        "lon": 27.98972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wau, South Sudan",
+          "url": "https://en.wikipedia.org/wiki/Wau,_South_Sudan",
+          "text": "Wau (Arabic: واو, romanized: Wāw; also known as Wau Town Payam) is a town, locally referred to as a city, in northwestern South Sudan on the western bank of the Jur River. It is the capital of Western Bahr el Ghazal region in South Sudan. It lies approximately 650 kilometres (400 mi) northwest of the capital, Juba. It is a diverse small urban center (town) and a trading hub. The city has been a municipality since 2012 and is governed by a mayor whom the state governor usually appoints.\nThe city consists of several neighborhoods, including Nazareth, Hai Fahal, Sika Hadid, and Daraja."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "wau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1798,
+    "attempt": 1784,
+    "place_id": "gn-518659",
+    "input": {
+      "place": {
+        "place_id": "gn-518659",
+        "name": "Novokuybyshevsk",
+        "country": "Russia",
+        "subdivision": "Samara Oblast",
+        "lat": 53.09709,
+        "lon": 49.94001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Novokuybyshevsk",
+          "url": "https://en.wikipedia.org/wiki/Novokuybyshevsk",
+          "text": "Novokuybyshevsk (Russian: Новоку́йбышевск) is a city in Samara Oblast, Russia, located on the eastern bank of the Volga River, 6 kilometers (3.7 mi) away from it. Population:  108,438 (2010 census); 112,973 (2002 census); 112,987 (1989 Soviet census).\nDuring the Russian Civil War, the area where the city now stands was a place of ferocious battles with the White Russians.\nOn February 22, 1952, following the decision of the Presidium of the Supreme Soviet of the RSFSR, Novo-Kuybyshev was granted town status and renamed Novokuybyshevsk. The name means \"New Kuybyshev\", Kuybyshev being the name of the nearby city of Samara from 1935 until 1991."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "novokuybyshevsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1799,
+    "attempt": 1785,
+    "place_id": "gn-5921356",
+    "input": {
+      "place": {
+        "place_id": "gn-5921356",
+        "name": "Chilliwack",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.16638,
+        "lon": -121.95257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chilliwack",
+          "url": "https://en.wikipedia.org/wiki/Chilliwack",
+          "text": "Chilliwack ( CHIL-ə-wak) is a city in the Canadian province of British Columbia. In 2025, the city had an estimated population of 112,500 residents. Between 2020–2025, the city saw steady growth, adding approximately 11,700 residents over this period at a rate of 11.6%. It is located about 100 kilometres (62 mi) east of the City of Vancouver in the Fraser Valley. Chilliwack is 34 kilometres (21 mi) northwest of the Sumas–Huntingdon Border Crossing on the Canada–United States border. \nAbout two-thirds of city land is protected as part of the Agricultural Land Reserve, and agriculture accounts for about 30 percent of the local economy. The city is bounded on the north by the Fraser River, and on the south by the Vedder River and Canada–United States border, and is surrounded by tall mountain peaks, such as Mount Cheam and Slesse Mountain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "chilliwack",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1800,
+    "attempt": 1786,
+    "place_id": "gn-5927690",
+    "input": {
+      "place": {
+        "place_id": "gn-5927690",
+        "name": "Coquitlam",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.2846,
+        "lon": -122.78217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coquitlam",
+          "url": "https://en.wikipedia.org/wiki/Coquitlam",
+          "text": "Coquitlam (  koh-KWIT-ləm) is a suburban city in the Lower Mainland area of British Columbia, Canada. It is one of the 21 municipalities comprising Metro Vancouver, and is the largest municipality in the Tri-Cities.\nCoquitlam was first settled by First Nations people thousands of years ago, and today is home to an ethnically diverse population estimated at 178,477 in 2026, making it the sixth-largest city in the province.\nCoquitlam is governed by a mayor and city council, along with school trustees and roles, with elections held every four years on the third Saturday of October. The current mayor of Coquitlam is Richard Stewart."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "coquitlam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1801,
+    "attempt": 1787,
+    "place_id": "gn-6182962",
+    "input": {
+      "place": {
+        "place_id": "gn-6182962",
+        "name": "Windsor",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.30008,
+        "lon": -83.01654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windsor, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Windsor,_Ontario",
+          "text": "Windsor ( WIND-zər) is a city in southwestern Ontario, Canada. It is situated on the south bank of the Detroit River directly across from the U.S. city of Detroit, Michigan. Geographically located within but administratively independent of Essex County, it is the southernmost major city in Canada and marks the southwestern end of the Quebec City–Windsor Corridor. The city's population was 229,660 at the 2021 census, making it the third-most populated city in Southwestern Ontario, after London and Kitchener. This represents a 5.7 percent increase from Windsor's 2016 population census of 217,188. \nThe Detroit–Windsor urban area is North America's most populous trans-border conurbation.  Linking the Great Lakes Megalopolis, the Ambassador Bridge border crossing is the busiest commercial crossing on the Canada–United States border, carrying about one-quarter of the two countries' trade volume.\nWindsor is a major contributor to Canada's automotive industry and is culturally diverse. Known as the \"Automotive Capital of Canada\", Windsor's industrial and manufacturing heritage is responsible for how the city has developed through the years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "windsor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1802,
+    "attempt": 1788,
+    "place_id": "gn-752015",
+    "input": {
+      "place": {
+        "place_id": "gn-752015",
+        "name": "Amasya",
+        "country": "Türkiye",
+        "subdivision": "Amasya",
+        "lat": 40.65333,
+        "lon": 35.83306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amasya",
+          "url": "https://en.wikipedia.org/wiki/Amasya",
+          "text": "Amasya (Turkish pronunciation: [aˈmasja]) is a city in northern Turkey, in the Black Sea Region. It was called Amaseia or Amasia in antiquity. It is the seat of Amasya Province and Amasya District. Its population is 114,921 (2021). Amasya stands in the mountains above the Black Sea (Karadeniz) coast, set apart from the rest of Anatolia in a narrow valley along the banks of the Yeşilırmak (Iris) River. Although near the Black Sea, this area is high above the coast and has an inland climate, well-suited to growing apples, for which Amasya province, one of the provinces in north-central Anatolia Turkey, is famed. It was the home of the geographer Strabo and the birthplace of the 15th century Armenian scholar and physician Amirdovlat Amasiatsi. Located in a narrow cleft of the Yeşilırmak river, it has a history of 7,500 years with many traces still evident today.\nIn antiquity, Amaseia was a fortified city high on the cliffs above the river. It has a long history as a wealthy provincial capital, producing kings and princes, artists, scientists, poets and thinkers, from the kings of Pontus, through Strabo the geographer, to many generations of the Ottoman imperial dynasty. With its Ottoman-period wooden houses and the tombs of the Pontus kings carved into the cliffs overhead, Amasya is attractive to visitors. In recent years, there has been much investment in tourism, and therefore more foreign and Turkish tourists have visited the city.\nDuring the early Ottoman rule, it was customary for young Ottoman princes to be sent to Amasya to govern and gain experience. Amasya was also the birthplace of the Ottoman sultans Murad II and Selim I. Traditional Ottoman houses near the Yeşilırmak and the other main historical buildings have been restored; these traditional Yalıboyu houses are now used as cafes, restaurants, pubs and hotels. Behind the Ottoman wooden houses one can see the rock tombs of the Pontic kings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "amasya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1803,
+    "attempt": 1789,
+    "place_id": "gn-78754",
+    "input": {
+      "place": {
+        "place_id": "gn-78754",
+        "name": "Mukalla",
+        "country": "Yemen",
+        "subdivision": "Muhafazat Hadramaout",
+        "lat": 14.54248,
+        "lon": 49.12424
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mukalla",
+          "url": "https://en.wikipedia.org/wiki/Mukalla",
+          "text": "Mukalla, officially the Mukalla City District, is a seaport and the capital city district of Yemen's largest governorate, Hadhramaut. The city is in the southern part of the Arabian Peninsula on the Gulf of Aden, on the shores of the Arabian Sea, about 480 kilometres (300 miles) east of Aden. \nIt is the most important port city in the Hadhramaut region. Mukalla was also the capital of the Islamic Emirate of Yemen from 2015 to 2016. It is also the sixth-largest city in Yemen, with a population of approximately 595,000 as of 2023. The city is served by the nearby Riyan International Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "mukalla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1804,
+    "attempt": 1790,
+    "place_id": "gn-1272175",
+    "input": {
+      "place": {
+        "place_id": "gn-1272175",
+        "name": "Durgapur",
+        "country": "India",
+        "subdivision": "West Bengal",
+        "lat": 23.51583,
+        "lon": 87.30801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Durgapur",
+          "url": "https://en.wikipedia.org/wiki/Durgapur",
+          "text": "Durgapur (Bengali pronunciation: [durgapur]), is a major industrial hub and a planned urban agglomeration in the Indian state of West Bengal. It stands on the northern bank of the Damodar river and is located in Paschim Bardhaman district. Durgapur is a major centre for producing steel and manufacturing train wheels in India. Over the past few years, this city has also been developed as a hub for the IT industry in India. The city was planned by Bidhan Chandra Roy, Joseph Allen Stein and Benjamin Polk in 1955. Durgapur is the only city in eastern India to have an operational dry dock. Durgapur has been nicknamed the 'Steel Backbone of Industrial Bengal'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "durgapur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1805,
+    "attempt": 1791,
+    "place_id": "gn-1272979",
+    "input": {
+      "place": {
+        "place_id": "gn-1272979",
+        "name": "Dhanbad",
+        "country": "India",
+        "subdivision": "Jharkhand",
+        "lat": 23.79759,
+        "lon": 86.42992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dhanbad",
+          "url": "https://en.wikipedia.org/wiki/Dhanbad",
+          "text": "DhanbadHindi pronunciation: [dʱənˌbɐːd̪] is the second-most populated city in the Indian state of Jharkhand after Jamshedpur and a major financial hub of Jharkhand. In terms of economy, Dhanbad has the largest economy in the state of and is often referred to as the 'economic capital of Jharkhand'. Dhanbad is also an emerging center for manufacturing industries. The Dhanbad district is known for its cultural heritage and has few tourist attractions, making it a well-rounded destination. Dhanbad ranks as the 39th largest city in India and is the 33rd largest million-plus urban agglomeration in India. The Dhanbad railway division generates the highest revenue in India. Dhanbad shares its land borders with the Paschim Bardhaman district and the Purulia district of West Bengal and Bokaro, and the Giridih and Jamtara districts of Jharkhand. The city is called the 'Coal Capital of India' for housing one of the largest coal mines in the country. The prestigious institute Indian School of Mines (now IIT Dhanbad) is situated in Dhanbad. Apart from coal, it has also grown in information technology.\nDhanbad is the 96th fastest growing city in the world, according to the City Mayors Foundation. It is the 56th cleanest city of India, according to the 2019 Swachh Survekshan cleanliness survey. It showed a great change in the city which was considered the dirtiest city in the 2018 Swachh Survekshan. Dhanbad Municipal Corporation works for increasing green cover in the city.\nAmong the rail divisions of Indian Railway, Dhanbad Rail Division is the largest revenue generator. Dhanbad is ranked as the top city in India with the highest 4G mobile phone network availability in India by a survey of Opensignal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "dhanbad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1806,
+    "attempt": 1792,
+    "place_id": "gn-13118091",
+    "input": {
+      "place": {
+        "place_id": "gn-13118091",
+        "name": "Setia Alam",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.10155,
+        "lon": 101.45565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Setia Alam",
+          "url": "https://en.wikipedia.org/wiki/Setia_Alam",
+          "text": "Setia Alam is an integrated and modern township located in Shah Alam, Selangor, Malaysia. It is accessible via Setia Alam Highway from the New Klang Valley Expressway (NKVE) since the interchange opened on 14 July 2006. Setia Alam is also accessible from the Federal Highway and Klang via Jalan Meru. This township is developed by S P Setia Berhad.\nSetia Alam is an integrated development spanning over 4,000 acres (16 km2) of land. It falls under the jurisdiction of the Shah Alam City Council (MBSA), which has placed restrictions on the establishment of entertainment outlets such as pubs, discos, and lottery businesses.\nSetia Alam is represented in the Parliament by Azli Yusof, the Member of Parliament for Shah Alam, and Mohd Najwan Halimi, the State Assemblyman for Kota Anggerik."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "setia alam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "setia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1807,
+    "attempt": 1793,
+    "place_id": "gn-1725684",
+    "input": {
+      "place": {
+        "place_id": "gn-1725684",
+        "name": "Bayugan",
+        "country": "Philippines",
+        "subdivision": "Caraga",
+        "lat": 8.75611,
+        "lon": 125.7675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayugan",
+          "url": "https://en.wikipedia.org/wiki/Bayugan",
+          "text": "Bayugan, officially the City of Bayugan (Cebuano: Dakbayan sa Bayugan; Filipino: Lungsod ng Bayugan), is a  component city in the province of Agusan del Sur, Philippines. According to the 2024 census, it has a population of 110,313 people.\nHaving gained cityhood through Republic Act No. 9405, it is the only city in the province of Agusan del Sur and also the most populous.\nLocated at the northern part of Agusan del Sur, Bayugan is the \"cut-flower capital\" of the province owing to its lucrative cut flower industry. The city's climate, especially in the highland barangays, is conducive to high yield cut-flower production. The city is also one of the major producers of rice and vegetables in the province, even providing for neighboring municipalities and provinces."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "bayugan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1808,
+    "attempt": 1794,
+    "place_id": "gn-1787093",
+    "input": {
+      "place": {
+        "place_id": "gn-1787093",
+        "name": "Yantai",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 37.47649,
+        "lon": 121.44081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yantai",
+          "url": "https://en.wikipedia.org/wiki/Yantai",
+          "text": "Yantai, formerly Chefoo, is a coastal prefecture-level city on the Shandong Peninsula in China. Lying on the southern coast of the Bohai Strait, Yantai borders Qingdao on the southwest and Weihai on the east, with sea access to both the Bohai Sea (via the Laizhou Bay and the Bohai Strait) and the Yellow Sea (from both north and south sides of the Shandong Peninsula).  It is the largest fishing seaport in Shandong.  Its population was 7,102,116 during the 2020 census, of whom 3,184,299 lived in the built-up area made up of the 5 urban districts of Zhifu, Laishan, Fushan, Muping, and Penglai."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "yantai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1809,
+    "attempt": 1795,
+    "place_id": "gn-2035715",
+    "input": {
+      "place": {
+        "place_id": "gn-2035715",
+        "name": "Mudanjiang",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 44.54804,
+        "lon": 129.62594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mudanjiang",
+          "url": "https://en.wikipedia.org/wiki/Mudanjiang",
+          "text": "Mudanjiang (Chinese: 牡丹江; pinyin: Mǔdānjiāng; Manchu: Mudan bira; Russian: Муданьцзян), alternately romanized as Mutankiang, is a prefecture-level city in the southeast part of Heilongjiang province, People's Republic of China. It was called Botankou under Japanese occupation. It serves as a regional transport hub with a railway junction and an international airport connecting with several major Chinese cities as well as Incheon International Airport serving Seoul, South Korea. Mudanjiang is located 248 km (154 mi) from Vladivostok, Russia. In 2011, Mudanjiang had a GDP of RMB 93.48 billion with a 15.1% growth rate. In 2015, Mudanjiang had a GDP of RMB 118.63 billion.\nAs of the 2020 census Mudanjiang had a population of 2,290,208, of whom 930,051 lived in the 4 urban districts comprising the built-up area of the city. In 2007, the city was listed as one of China's top ten livable cities by Chinese Cities Brand Value Report, which was released at the 2007 Beijing Summit of China Cities Forum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "mudanjiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1810,
+    "attempt": 1796,
+    "place_id": "gn-2294700",
+    "input": {
+      "place": {
+        "place_id": "gn-2294700",
+        "name": "Tema",
+        "country": "Ghana",
+        "subdivision": "Greater Accra",
+        "lat": 5.6698,
+        "lon": -0.01657
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tema",
+          "url": "https://en.wikipedia.org/wiki/Tema",
+          "text": "Tema is a city on the Bight of Benin and Atlantic coast of Ghana. It is located 25 kilometres (16 mi) east of the capital city; Accra, in the region of Greater Accra, and is the capital of the Tema Metropolitan District. As of 2013, Tema is the eleventh most populous settlement in Ghana, with a population of approximately 161,612 people – a marked decrease from its 2005 figure of 209,000. The Greenwich Meridian (00 Longitude) passes directly through the city. It also had the Meridian Rock. Tema is locally nicknamed the \"Harbour City\" because of its status as Ghana's largest seaport. It consists of 25 different communities which are numbered accordingly with each of them having easy access to the basic amenities.\nTema is a city built on the site of a small fishing village. Tema was commissioned by Ghana's first president, Kwame Nkrumah, and grew rapidly after the construction of a large harbor in 1961. The Tema metropolis was designed, planned and developed by the award-winning urban planner and Ghana's first architect, Theodore S. Clerk. The design team included a number of architects trained in London at the Architectural Association. It is now a major trading center, home to an oil refinery and numerous factories, and is linked to Accra by a highway and railway. Tema is one of Ghana's two deep seaports, the other being Sekondi-Takoradi. Tema became an Autonomous Council in 1974 and was elevated to the status of a Metropolitan Assembly in December 1990. Tema metropolitan forms part of the sixteen Metropolis, Municipalities and Districts in the Greater Accra Region. The Metropolitan shares boundaries with Ashaiman Municipal, Adenta Municipal District, and Ledzokuku-Krowor Municipal District to the west respectively, to the east with Kpone Katamanso District, to the North with Dangme West District and to the South with the Gulf of Guinea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "tema",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1811,
+    "attempt": 1797,
+    "place_id": "gn-2352947",
+    "input": {
+      "place": {
+        "place_id": "gn-2352947",
+        "name": "Abeokuta",
+        "country": "Nigeria",
+        "subdivision": "Ogun State",
+        "lat": 7.15571,
+        "lon": 3.34509
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abeokuta",
+          "url": "https://en.wikipedia.org/wiki/Abeokuta",
+          "text": "Abeokuta () is the capital city of Ogun State, which is located in southwestern Nigeria. It is situated on both banks of the Ogun River, near a group of rocky outcrops in a wooded savanna; 77 kilometres (48 mi) north of Lagos by railway, or 130 kilometres (81 mi) by water. As of 2006, Abeokuta (comprising the two local government areas of Abeokuta North and South) had a combined population of 449,088. Its estimated population as at 2022 based on this definition was 735,000 inhabitants, although the city limits has sprawled into the neighbouring LGA of Odeda since the last enumeration exercise."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "abeokuta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1812,
+    "attempt": 1798,
+    "place_id": "gn-2475687",
+    "input": {
+      "place": {
+        "place_id": "gn-2475687",
+        "name": "Tlemcen",
+        "country": "Algeria",
+        "subdivision": "Tlemcen",
+        "lat": 34.87833,
+        "lon": -1.315
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlemcen",
+          "url": "https://en.wikipedia.org/wiki/Tlemcen",
+          "text": "Tlemcen (; Arabic: تِلِمْسَان, romanized: Tilimsān) is the second-largest city in northwestern Algeria after Oran and the capital of Tlemcen Province. The city has developed leather, carpet, and textile industries, which it exports through the port of Rachgoun. It had a population of 140,158, as of the 2008 census.\nA major centre of the Central Maghreb, the city is a mix of Arab, Berber, Andalusi, Ottoman, and Western influences. From this mosaic of influences, the city derives the title of capital of Andalusian art in Algeria. Various titles are attributed to the city including \"the Pearl of the Maghreb\", \"the African Granada\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "tlemcen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1813,
+    "attempt": 1799,
+    "place_id": "gn-2792482",
+    "input": {
+      "place": {
+        "place_id": "gn-2792482",
+        "name": "Leuven",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.87959,
+        "lon": 4.70093
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leuven",
+          "url": "https://en.wikipedia.org/wiki/Leuven",
+          "text": "Leuven (UK: , US: ; Dutch: [ˈløːvə(n)] ), also called Louvain (, US also , French: [luvɛ̃] ), is the capital and largest city of the province of Flemish Brabant in the Flemish Region of Belgium. A Dutch-speaking municipality, it is located about 25 kilometres (16 miles) east of Brussels. The municipality itself comprises the sub-municipalities of Heverlee, Kessel-Lo, Leuven proper, Wilsele, and Wijgmaal and parts of Haasrode and Korbeek-Lo. It is the eighth largest city in Belgium, with more than 100,244 inhabitants.\nLeuven has been a university city since 1425. This makes it the oldest university city in the Low Countries. KU Leuven, the largest Dutch-speaking university in the world and the largest university in the Low Countries (and thus also Belgium's largest university), has its flagship campus in Leuven.\nThe city is home of the headquarters of Anheuser-Busch InBev, the world's largest beer brewer and sixth-largest fast-moving consumer goods company."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "leuven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1814,
+    "attempt": 1800,
+    "place_id": "gn-2852458",
+    "input": {
+      "place": {
+        "place_id": "gn-2852458",
+        "name": "Potsdam",
+        "country": "Germany",
+        "subdivision": "Brandenburg",
+        "lat": 52.39886,
+        "lon": 13.06566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Potsdam",
+          "url": "https://en.wikipedia.org/wiki/Potsdam",
+          "text": "Potsdam (German pronunciation: [ˈpɔtsdam] ) is the capital and largest city of the German state of Brandenburg. It is part of the Berlin/Brandenburg Metropolitan Region. Potsdam sits on the River Havel, a tributary of the Elbe, downstream of Berlin, and lies embedded in a hilly morainic landscape dotted with many lakes, around 20 of which are located within Potsdam's city limits. It lies some 25 kilometres (16 miles) southwest of Berlin's city centre. The name of the city and of many of its boroughs are of Slavic origin.\nPotsdam was a residence of the Prussian kings and the German Emperor until 1918. Its planning embodied ideas of the Age of Enlightenment: through a careful balance of architecture and landscape, Potsdam was intended as \"a picturesque, pastoral dream\" which would remind its residents of their relationship with nature and reason.\nThe city, which is over  2,000 years old, is widely known for its palaces, its lakes, and its overall historical and cultural significance. Landmarks include the parks and palaces of Sanssouci, Germany's largest World Heritage Site, as well as other palaces such as the Orangery Palace, the New Palace, Cecilienhof Palace, and Charlottenhof Palace. Potsdam was also the location of the significant Potsdam Conference in 1945, the conference where the three heads of government of the USSR, the US, and the UK decided on the division of Germany following its surrender, a conference which defined Germany's history for the following 45 years.\nBabelsberg, in the south-eastern part of Potsdam, was already by the 1930s the home of a major film production studio and it has enjoyed success as an important centre of European film production since the fall of the Berlin Wall. The Filmstudio Babelsberg, founded in 1912, is the oldest large-scale film studio in the world. Potsdam was named a UNESCO City of Film in 2019, joining UNESCO's Creative Cities Network.\nPotsdam developed into a centre of science in Germany in the 19th century. Today, there are three public colleges, the University of Potsdam, and more than 30 research institutes in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 343
+    },
+    "banned_terms": [
+      {
+        "term": "potsdam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

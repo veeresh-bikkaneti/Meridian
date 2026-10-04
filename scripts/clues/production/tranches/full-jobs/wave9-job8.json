@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 1755,
+    "attempt": 1741,
+    "place_id": "gn-6137270",
+    "input": {
+      "place": {
+        "place_id": "gn-6137270",
+        "name": "Saguenay",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 48.41675,
+        "lon": -71.06573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saguenay, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Saguenay,_Quebec",
+          "text": "Saguenay ( SAG-ə-nay, -⁠NAY, French: [saɡne]) is a city in the Saguenay–Lac-Saint-Jean region of Quebec, Canada, on the Saguenay River, about 200 kilometres (120 mi) north of Quebec City by overland route. It is about 126 kilometres (78 mi) upriver and northwest of Tadoussac, located at the confluence with the St. Lawrence River. It was formed in 2002 by merging the cities of Chicoutimi and Jonquière and the town of La Baie. Chicoutimi was founded by the French as a fur trading post in 1676. As of July 2021, the city had a population of 148,000 and the metropolitan area had a population of 170,000.\nThe city of Saguenay constitutes a territory equivalent to a regional county municipality (TE); its geographical code is 941. Together with the regional county municipality of Le Fjord-du-Saguenay, it forms the census division (CD) of Le Saguenay-et-son-Fjord (94). The mayor of Saguenay since 2025 is Luc Boivin. Prior to its use as the name of the city, the term \"the Saguenay\" or (less commonly) \"Saguenay Valley\" had already been used for the entire Saguenay River region (see Saguenay–Lac-Saint-Jean). Saguenay is the seat of the judicial district of Chicoutimi.\nThe city is divided into three boroughs: Chicoutimi (which includes the former city of Chicoutimi, as well as Laterrière and Tremblay township), Jonquière (which includes the former city of Jonquière, Lac-Kénogami, and Shipshaw) and La Baie (which corresponds to the former city of La Baie).\nThe name Saguenay is possibly derived from the Innu word \"Saki-nip\", which means \"where water flows out\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "saguenay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1756,
+    "attempt": 1742,
+    "place_id": "gn-1185128",
+    "input": {
+      "place": {
+        "place_id": "gn-1185128",
+        "name": "Rajshahi",
+        "country": "Bangladesh",
+        "subdivision": "Rajshahi Division",
+        "lat": 24.374,
+        "lon": 88.60114
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rajshahi",
+          "url": "https://en.wikipedia.org/wiki/Rajshahi",
+          "text": "Rajshahi (Bengali: রাজশাহী, pronounced [radʒ.ʃaɦi] ) is a metropolitan city and a major urban, administrative, commercial and educational centre of Bangladesh. It is also the administrative seat of the eponymous division and district. It is also the largest city of North Bengal. Located on the north bank of the Padma River, near the Bangladesh–India border, the city is surrounded by the satellite towns of Nowhata and Katakhali of Paba Upazila, which together form an urban agglomeration of about 1 million population. \nRajshahi is a historic center of silk production. Varendra Research Museum, the oldest of its kind in Bangladesh, is located in the city. Sometimes the city is referred to as the City of Education, on account of being home to many renowned educational institutions of Bangladesh. The head office of Rajshahi Agricultural Development Bank and Barind Multipurpose Development Authority is situated in the city. The Shah Makhdum Airport and Rajshahi railway station serves Rajshahi.\nAccording to The Guardian, Rajshahi is the cleanest city of Bangladesh, and it is also the most environmentally friendly city in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "rajshahi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1757,
+    "attempt": 1743,
+    "place_id": "gn-1253286",
+    "input": {
+      "place": {
+        "place_id": "gn-1253286",
+        "name": "Vellore",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.9184,
+        "lon": 79.13255
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vellore",
+          "url": "https://en.wikipedia.org/wiki/Vellore",
+          "text": "Vellore (Tamil: ['ʋeːluːɾ] WAY-loor), also spelled Velur, is a city and municipal corporation in the Indian state of Tamil Nadu. It is the administrative headquarters of Vellore district. Located on the banks of the Palar River, it is surrounded by the Javadi Hills, an extension of the Eastern Ghats. The city covers an area of 76.09 km2 (29.38 sq mi), and is further sub-divided into 60 wards across four zones. It is administered by the Vellore Municipal Corporation, headed by a mayor, who is elected by the councilors of the respective wards. As of the 2011 census, the city had a population of 315,128. It is a part of the Vellore Lok Sabha constituency, which elects its Member of Parliament to the Lok Sabha, and the Vellore state assembly constituency that elects its member to the Tamil Nadu Legislative Assembly.\nThe early history of Vellore dates back to the Chola period in the 9th century CE. It was part of various empires during the Middle Ages. The Vellore Fort and the Jalakandeswarar Temple, were built during the reign of the Vijayanagara Empire in the 16th century CE. In the 18th century, Vellore was involved in the Carnatic Wars between the British and the French, and the Anglo-Mysore Wars between the British and the Mysore Kingdom. During the first half of the 19th century, it came under British rule. The Vellore Mutiny took place in 1806, and was the first large scale mutiny of the Indian sepoys against the British. The city was part of the Madras Presidency under the British Raj until 1947, after which it became part of the Indian state of Madras, which was later renamed as Tamil Nadu.\nAs of 2020, Vellore had a GDP of $4 billion. The economy is dependent on agriculture, and leather, tobacco, and other manufacturing industries. The town is known as the leather hub of India, with hundreds of tanneries located around the city. Leather exports from the region accounted for more than 37% of India's leather exports and leather-related products in the early 2010s. The city has a robust healthcare and educational infrastructure and is home to the Christian Medical College & Hospital, and the Vellore Institute of Technology.\nVellore is one of the cities chosen as a part of the Smart Cities Mission, an urban renewal programme by the Government of India. As per the Global Cities Index by Oxford Economics in 2024, the city was ranked as the 24th best city in India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 414
+    },
+    "banned_terms": [
+      {
+        "term": "vellore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1758,
+    "attempt": 1744,
+    "place_id": "gn-1259297",
+    "input": {
+      "place": {
+        "place_id": "gn-1259297",
+        "name": "Pudukkottai",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.38128,
+        "lon": 78.82141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pudukkottai",
+          "url": "https://en.wikipedia.org/wiki/Pudukkottai",
+          "text": "Pudukkottai is a City and the administrative headquarters of Pudukkottai district in the Indian state of Tamil Nadu. It is one of the oldest heritage cities located on the banks of the Vellar River. It has been ruled, at different times, by the Mutharaiyar dynasty, Cholas, Early Pandyas, and Thondaimans. It is situated about 372 kilometres (231 mi) southwest of the state capital Chennai, 50 kilometres (31 mi) southeast of Tiruchirappalli, and 108 kilometres (67 mi) northeast of Madurai.\nPudukkottai is sometimes called a cradle of archaeology. Being the district headquarters, Pudukkottai has district administrative offices, along with government educational institutes, colleges, and schools. Pudukkottai is a part of the Pudukkottai constituency and elects its member to the legislative assembly every five years. It is a part of the Lok Sabha constituency comprising Ramanathapuram, Sivaganga, Tiruchirappalli and Karur. Pudukkottai is administered by a selection-grade municipality established in 1912 as per the Municipal Corporation Act. Pudukkottai covers an area of 21.25 km2 (8.20 sq mi) and had a population of 117,745 in 2011. Roadways are the major mode of transport to the city, along with rail connectivity. The nearest airport is Tiruchirappalli International Airport, located at a distance of 45 km (28 miles) from the city.\nIt is one of the few towns and cities in the List of AMRUT Smart cities in Tamil Nadu selected by the central government. Its developmental activities are taken care of by government of Tamil Nadu. On 15 March 2024, the Government of Tamil Nadu announced that the city along with the surrounding merged panchayats will be upgraded from municipality to corporation status (Tamil: மாநகராட்சி)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "pudukkottai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1759,
+    "attempt": 1745,
+    "place_id": "gn-1271951",
+    "input": {
+      "place": {
+        "place_id": "gn-1271951",
+        "name": "Faridabad",
+        "country": "India",
+        "subdivision": "Haryana",
+        "lat": 28.41124,
+        "lon": 77.31316
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faridabad",
+          "url": "https://en.wikipedia.org/wiki/Faridabad",
+          "text": "Faridabad (Hindi: [fəˈɾiːˌd̪aːbaːd̪]) is the most populous city in the Indian state of Haryana and is a part of Delhi National Capital Region. It is one of the major satellite cities around Delhi and is located 284 kilometres south of the state capital, Chandigarh. The river Yamuna forms the eastern district boundary with Uttar Pradesh. The Government of India included it in the second list of Smart Cities Mission on 24 May 2016. As per the 2021 Delhi Regional Plan, Faridabad is a part of the Central National Capital Region or Delhi metropolitan area.\nThe newly developed residential and industrial part of Faridabad (Sec. 66 to 89) between the Agra Canal and the Yamuna River is commonly referred to as Greater Faridabad (also known as Neharpar). The area is being developed as a self-sustained sub-city with wide roads, tall buildings, malls, educational institutions, and health and commercial centers. Sectors 66 to 74 are Industrial Sectors, while Sectors 75 to 89 are Residential Sectors.\nFaridabad is a major industrial hub of Haryana. 50% of the income tax collected in Haryana is from Faridabad and Gurgaon. Faridabad is famous for henna production from the agricultural sector, while tractors, motorcycles, switch gears, refrigerators, shoes, tyres and garments constitute its primary industrial products.\nIn 2018, Faridabad was considered by the World Health Organization as the world's second most polluted city. Faridabad ranked 10th in the Swachh Survekshan Survey's top ten dirtiest cities in India in 2020.\nFaridabad has been selected as one of the hundred Indian cities to be developed as a smart city under Government of India's flagship Smart Cities Mission by Ministry of Urban Development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "faridabad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1760,
+    "attempt": 1746,
+    "place_id": "gn-146384",
+    "input": {
+      "place": {
+        "place_id": "gn-146384",
+        "name": "Limassol",
+        "country": "Cyprus",
+        "subdivision": "Limassol",
+        "lat": 34.68406,
+        "lon": 33.03794
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limassol",
+          "url": "https://en.wikipedia.org/wiki/Limassol",
+          "text": "Limassol, also known as Lemesos, is a city on the southern coast of Cyprus. Limassol is the most populated municipality in Cyprus, with a population of 108,105 and is the second-largest urban area in Cyprus, after Nicosia, with an urban population of 198,558. It is the capital of the Limassol District with a population of 262,238.\nLimassol was built between two ancient Greek cities, Amathus and Kourion. Its historical centre is located around the medieval Limassol Castle and the Old Port. The city spreads along the Mediterranean coast and extends beyond the castle and port, with its suburbs stretching along the coast to Amathus. To the west of the city is Akrotiri, part of the British Overseas Territory of Akrotiri and Dhekelia.\nIn 2014, Limassol was ranked by TripAdvisor as the third most up-and-coming destination in the world, in its Top 10 Travelers' Choice Destinations on the Rise list. In Mercer's Quality of Living Ranking, the city was ranked 90th in 2023, and 89th in 2017. In the 2022 GaWC ranking, Limassol was classified as a \"high sufficiency\" city, dropping one category from \"gamma −\" (lit. 'global city') in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "limassol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1761,
+    "attempt": 1747,
+    "place_id": "gn-1790587",
+    "input": {
+      "place": {
+        "place_id": "gn-1790587",
+        "name": "Xiangyang",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 32.0422,
+        "lon": 112.14479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xiangyang",
+          "url": "https://en.wikipedia.org/wiki/Xiangyang",
+          "text": "Xiangyang is the second-largest prefecture-level city by population in northwestern Hubei province, China. It was known as Xiangfan from 1950 to 2010. The Han River runs through Xiangyang's centre and divides the city north–south. The city itself is an agglomeration of two once separate cities: Fancheng and Xiangyang (or Xiangcheng), and was known as Xiangfan before 2010. What remains of old Xiangyang is located south of the Han River and contains one of the oldest still-intact city walls in China, while Fancheng is located to the north of the Han River. Both cities served prominent historical roles in both ancient and pre-modern Chinese history. Today, the city has been a target of government and private investment as the country seeks to urbanize and develop the interior provinces. Its built-up area made up of 3 urban districts had 2,319,640 inhabitants at the 2020 census while the whole municipality contained approximately 5,260,951 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "xiangyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1762,
+    "attempt": 1748,
+    "place_id": "gn-1796134",
+    "input": {
+      "place": {
+        "place_id": "gn-1796134",
+        "name": "Shangqiu",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.4143,
+        "lon": 115.65613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shangqiu",
+          "url": "https://en.wikipedia.org/wiki/Shangqiu",
+          "text": "Shangqiu (Chinese: 商丘), alternately romanized as Shangkiu, is a city in eastern Henan province, Central China. It borders Kaifeng to the northwest, Zhoukou to the southwest, and the provinces of Shandong and Anhui to the northeast and southeast respectively. Its population was 7,816,831 inhabitants as of the 2020 Chinese census, of whom 2,831,814 lived in the built-up (or metro) area made up of two urban districts (Liangyuan and Suiyang) and Yucheng county now being conurbated.\nShangqiu and surrounding area was an important base for the Shang dynasty (c. 1600 – c. 1046 BC), and the city itself was established more than three millennia ago. Shangqiu has grown significantly in recent years. It is located at an important location at the junction of several major railways, making it a major regional transportation hub."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "shangqiu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1763,
+    "attempt": 1749,
+    "place_id": "gn-2243940",
+    "input": {
+      "place": {
+        "place_id": "gn-2243940",
+        "name": "Ziguinchor",
+        "country": "Senegal",
+        "subdivision": "Ziguinchor",
+        "lat": 12.56801,
+        "lon": -16.27326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ziguinchor",
+          "url": "https://en.wikipedia.org/wiki/Ziguinchor",
+          "text": "Ziguinchor (French: [ziɡɛ̃ʃɔʁ]; Wolof: Siggcoor [siɡˑcɔːɾ]; Arabic: زيغينكور) is the capital of the Ziguinchor Region, and the chief town of the Casamance area of Senegal, lying at the mouth of the Casamance River. It has a population of 214,874 (2023 census). It is the eighth largest city of Senegal, but is nearly separated from the north of the country by the nation of The Gambia.\nUnlike the semi-arid to arid north of Senegal, Ziguinchor has a tropical savanna climate, as it is under the influence of the West African Monsoon. It has an average annual accumulated rainfall of approximately 1,547 millimetres or 61 inches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "ziguinchor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1764,
+    "attempt": 1750,
+    "place_id": "gn-2260535",
+    "input": {
+      "place": {
+        "place_id": "gn-2260535",
+        "name": "Brazzaville",
+        "country": "Congo - Brazzaville",
+        "subdivision": "Brazzaville",
+        "lat": -4.26613,
+        "lon": 15.28318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brazzaville",
+          "url": "https://en.wikipedia.org/wiki/Brazzaville",
+          "text": "Brazzaville (French pronunciation: [bʁazavil]) is the capital and largest city of the Republic of the Congo. Administratively, it is a department and a commune. Constituting the financial and administrative centre of the country, it is located on the north side of the Congo River, opposite Kinshasa, the capital city of the Democratic Republic of the Congo (DR Congo).\nThe population of the capital is estimated to exceed 2.1 million residents, comprising more than a third of the national populace. Some 40% are employed in non-agricultural professions. During World War II, Brazzaville served as the de facto capital of Free France between 1940 and 1942.\nIn 2013, Brazzaville was designated a City of Music by UNESCO; since then it has also been a member of the Creative Cities Network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "brazzaville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1765,
+    "attempt": 1751,
+    "place_id": "gn-2394819",
+    "input": {
+      "place": {
+        "place_id": "gn-2394819",
+        "name": "Cotonou",
+        "country": "Benin",
+        "subdivision": "Littoral",
+        "lat": 6.36536,
+        "lon": 2.41833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cotonou",
+          "url": "https://en.wikipedia.org/wiki/Cotonou",
+          "text": "Cotonou (French pronunciation: [kɔtɔnu]; Fon: Kútɔ̀nú) is the seat of government and largest city of Benin. The official city proper population was 679,012 in 2012; however, over two million people live in the larger urban area. The urban area continues to expand, notably toward the west. The city lies in the southeast of the country, between the Atlantic Ocean and Lake Nokoué.\nCotonou is the seat of government of the Republic of Benin, where most of the government buildings are situated, government departments operate and foreign embassies are located, but the official capital, where the national legislature sits, is the smaller city of Porto-Novo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "cotonou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1766,
+    "attempt": 1752,
+    "place_id": "gn-2653822",
+    "input": {
+      "place": {
+        "place_id": "gn-2653822",
+        "name": "Cardiff",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.48,
+        "lon": -3.18
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cardiff",
+          "url": "https://en.wikipedia.org/wiki/Cardiff",
+          "text": "Cardiff is the capital and largest city of Wales. Cardiff had a population of 381,516 in 2025 and forms a principal area officially known as the City and County of Cardiff (Welsh: Dinas a Sir Caerdydd). The city is the eleventh largest in the United Kingdom. Located in the southeast of Wales, the city sits within the Cardiff Capital Region, which consists of 1.5 million people, accounting for roughly half the nation's total population. Cardiff is the county town of the historic county of Glamorgan and from 1974 to 1996 of South Glamorgan. It belongs to the Eurocities network of the largest European cities. A small town until the early 19th century, its prominence as a port for coal when mining began in the region helped its expansion. In 1905, it was ranked as a city and in 1955 proclaimed capital of Wales. The Cardiff urban area covers a larger area outside the county boundary, including the towns of Dinas Powys and Penarth.\nCardiff is the main commercial centre of Wales as well as the base for the Senedd, the Welsh Parliament. At the 2021 census, the unitary authority area population was put at 362,400, an increase of 4.7% compared to the 2011 census when the population was 346,100. The population of the wider urban area in 2011 was 479,000. In 2011, it ranked sixth in the world in a National Geographic magazine list of alternative tourist destinations. It is the most popular destination in Wales with 21.3 million visitors in 2017. It was voted as the best city in the UK in the 2023 Readers' Choice Awards.  \nCardiff is a major centre for television and film production (such as the 2005 revival of Doctor Who, Torchwood and Sherlock) and is the Welsh base for the main national broadcasters.\nCardiff Bay contains the Senedd building and the Wales Millennium Centre arts complex. Work continues at Cardiff Bay and in the centre on projects such as Cardiff International Sports Village, BBC drama village, and a new business district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "cardiff",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1767,
+    "attempt": 1753,
+    "place_id": "gn-2655613",
+    "input": {
+      "place": {
+        "place_id": "gn-2655613",
+        "name": "Birkenhead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.39337,
+        "lon": -3.01479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birkenhead",
+          "url": "https://en.wikipedia.org/wiki/Birkenhead",
+          "text": "Birkenhead () is an industrial port town in the Metropolitan Borough of Wirral, Merseyside, England. The town is on the Wirral Peninsula, along the west bank of the River Mersey, opposite Liverpool. It lies within the historic county boundaries of Cheshire, and became part of Merseyside in 1974. At the 2021 census, the built up area as defined by the Office for National Statistics had a population of 109,835.\nBirkenhead Priory and the Mersey Ferry were established in the 12th century. In the 19th century, Birkenhead expanded greatly as a consequence of the Industrial Revolution, leading to a shipbuilding firm which became Cammell Laird. A seaport was established. As the town grew, Birkenhead Park and Hamilton Square were laid out. The first street tramway in Britain was built, followed by the Mersey Railway which connected Birkenhead and Liverpool through the world's first railway tunnel beneath a tidal estuary.\nIn the second half of the 20th century, the town suffered a significant period of decline, with containerisation causing a reduction in port activity. The Wirral Waters development is building offices and housing on much of the former dockland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "birkenhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1768,
+    "attempt": 1754,
+    "place_id": "gn-2759821",
+    "input": {
+      "place": {
+        "place_id": "gn-2759821",
+        "name": "Amersfoort",
+        "country": "Netherlands",
+        "subdivision": "Utrecht",
+        "lat": 52.155,
+        "lon": 5.3875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amersfoort",
+          "url": "https://en.wikipedia.org/wiki/Amersfoort",
+          "text": "Amersfoort (Dutch pronunciation: [ˈaːmərsfoːrt] ) is a city and municipality in the Utrecht province of the Netherlands. As of 31 January 2023, the municipality had a population of 160,902, making it the second-largest of the province and fifteenth-largest of the country. Amersfoort is also one of the largest Dutch railway junctions with its three stations—Amersfoort Centraal, Schothorst and Vathorst—due to its location on two of the Netherlands' main east to west and north to south railway lines. The city was used during the 1928 Summer Olympics as a venue for the modern pentathlon events. Amersfoort marked its 750th anniversary as a city in 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "amersfoort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1769,
+    "attempt": 1755,
+    "place_id": "gn-3121456",
+    "input": {
+      "place": {
+        "place_id": "gn-3121456",
+        "name": "Girona",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.98311,
+        "lon": 2.82493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Girona",
+          "url": "https://en.wikipedia.org/wiki/Girona",
+          "text": "Girona, also known in Spanish as Gerona, is the capital city of the Province of Girona in the autonomous community of Catalonia, Spain, at the confluence of the Ter, Onyar, Galligants, and Güell rivers. The city had an official population of 106,476 in 2024, but the population of the Girona–Salt urban area is estimated to be about 156,400 (2020). Girona is also capital of the comarca of the Gironès and the vegueria of Girona. Since much of the old quarter of this ancient city has been preserved, Girona is a popular tourist destination. The city is located 99 km (62 mi) northeast of Barcelona."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "girona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1770,
+    "attempt": 1756,
+    "place_id": "gn-3430863",
+    "input": {
+      "place": {
+        "place_id": "gn-3430863",
+        "name": "Mar del Plata",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -38.00042,
+        "lon": -57.5562
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mar del Plata",
+          "url": "https://en.wikipedia.org/wiki/Mar_del_Plata",
+          "text": "Mar del Plata is a city of the Atlantic Coast, in Buenos Aires Province, Argentina. It is the seat of General Pueyrredón district. Mar del Plata is the second largest city in Buenos Aires Province. The name \"Mar del Plata\"  is short for \"Mar del Río de la Plata,\" and means \"sea of the Río de la Plata basin\" or \"adjoining sea to the (River) Plate region.\" Mar del Plata is one of the major fishing ports and the biggest seaside beach resort in Argentina.\nWith a population of 682,605 as per the 2022 census [INDEC], it is the 5th largest city in Argentina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "mar del plata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1771,
+    "attempt": 1757,
+    "place_id": "gn-3460644",
+    "input": {
+      "place": {
+        "place_id": "gn-3460644",
+        "name": "Itaquaquecetuba",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.48611,
+        "lon": -46.34833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itaquaquecetuba",
+          "url": "https://en.wikipedia.org/wiki/Itaquaquecetuba",
+          "text": "Itaquaquecetuba, also simply called Itaquá, is a municipality in the state of São Paulo, Brazil. It is part of the Metropolitan Region of São Paulo. The population is 382,983 (2025 est.) in an area of 82.62 square kilometres (31.90 sq mi). It sits at an elevation of 790 metres (2,592 ft).\nThe municipality was founded between 1560 and 1563 by Jesuits led by Father Joseph of Anchieta, among native villages near the Tietê River, beginning with the Catholic chapel of Our Lady of Acute, which was established by Father Joseph. The settlement saw little development, and was almost deserted by the early twentieth century. Until 1958 the city was a district of Mogi das Cruzes. Following the emancipation of the municipality that year, the first Mayor, Victorio Eugenio Deliberato, began a campaign of industrial development that had great geographic and economic impact on Itaquaquecetuba in the decades to come.\nToday, Itaquaquecetuba is one of the 10 best Brazilian cities who had significant advances in challenges against inequality in the last 20 years, and has the second-best GDP in the region.\nIt ranked 199th on the list of cities with the highest homicide rates per 100,000 inhabitants. Itaquaquecetuba has a strong industrial vocation due to its geographic location: highways such as SP-66, SP-56, SP-88 and the Ayrton Senna Highway pass through the city, connecting the city to cities such as Mogi das Cruzes, Poá, Suzano, Ferraz de Vasconcelos and Arujá. The city also borders other large urban centers, such as the state capital and Guarulhos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "itaquaquecetuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1772,
+    "attempt": 1758,
+    "place_id": "gn-3522551",
+    "input": {
+      "place": {
+        "place_id": "gn-3522551",
+        "name": "Nuevo Laredo",
+        "country": "Mexico",
+        "subdivision": "Tamaulipas",
+        "lat": 27.47629,
+        "lon": -99.51639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuevo Laredo",
+          "url": "https://en.wikipedia.org/wiki/Nuevo_Laredo",
+          "text": "Nuevo Laredo (Spanish pronunciation: [ˈnweβo laˈɾeðo]) is a city in the Municipality of Nuevo Laredo in the Mexican state of Tamaulipas. The city lies on the banks of the Rio Grande, across from Laredo, Texas, United States. The 2010 census population of the city was 373,725. Nuevo Laredo is part of the Laredo-Nuevo Laredo Metropolitan Area with a population of 636,516. The municipality has an area of 1,334.02 km2 (515.07 sq mi). Nuevo Laredo is considered the “customs capital of Latin America” because of its high volume of international trade operations in the region, and number 1 in importance for US inland commercial traffic. Both the city and the municipality rank as the third largest in the state.\nThe city is connected to Laredo, United States by three international bridges and a rail bridge. The city is larger and younger than its US counterpart. As an indication of its economic importance, one of Mexico's banderas monumentales is in the city (these banderas have been established in state capitals and cities of significance)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "nuevo laredo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nuevo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "laredo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1773,
+    "attempt": 1759,
+    "place_id": "gn-5336269",
+    "input": {
+      "place": {
+        "place_id": "gn-5336269",
+        "name": "Chico",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 39.72849,
+        "lon": -121.83748
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chico, California",
+          "url": "https://en.wikipedia.org/wiki/Chico,_California",
+          "text": "Chico ( CHEE-koh; Spanish for \"boy\" or \"small/little\") is the most populous city in Butte County, California, United States. Located in the Sacramento Valley region of Northern California, the city had a population of 101,475 in the 2020 census, an increase from 86,187 in the 2010 census. Chico is the cultural and economic center of the northern Sacramento Valley, as well as the most populous city in California north of the capital city of Sacramento. The city is known as a college town, as the home of California State University, Chico, and for Bidwell Park, one of the largest urban parks in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "chico",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1774,
+    "attempt": 1760,
+    "place_id": "gn-8335361",
+    "input": {
+      "place": {
+        "place_id": "gn-8335361",
+        "name": "Ulanqab",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 40.993,
+        "lon": 113.133
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulanqab",
+          "url": "https://en.wikipedia.org/wiki/Ulanqab",
+          "text": "Ulanqab or Ulan Chab (Chinese: 乌兰察布; pinyin: Wūlánchábù; Mongolian: ᠤᠯᠠᠭᠠᠨᠴᠠᠪUlaɣančab qota; Mongolian Cyrillic: Улаанцав хот) is a region administered as a prefecture-level city in south-central Inner Mongolia, China. Its administrative centre is in Jining District, which was formerly a county-level city. It was established as a prefecture-level city on 1 December 2003, formed from the former Ulanqab League. The Ulanqab Stadium is located in the city.\nUlaan Chab city has an area of 54,473.6 square kilometres (21,032.4 sq mi). It borders Hohhot to the west, Mongolia to the north, Xilin Gol League to the northeast, Hebei to the east and Shanxi to the south. As of the 2020 census, its total population was, 1,706,328 inhabitants (2,143,590 in 2010) whom 550,231 inhabitants lived in the built-up (or metro) area made of Jining District and Qahar Right Front Banner largely conurbated in its northern part.\nThe western part of Ulaan Chab used to be part of the now-defunct Chinese province of Suiyuan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "ulanqab",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
