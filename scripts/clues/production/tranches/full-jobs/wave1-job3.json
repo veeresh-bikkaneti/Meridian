@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 43,
+    "attempt": 41,
+    "place_id": "gn-1486209",
+    "input": {
+      "place": {
+        "place_id": "gn-1486209",
+        "name": "Yekaterinburg",
+        "country": "Russia",
+        "subdivision": "Sverdlovsk Oblast",
+        "lat": 56.85733,
+        "lon": 60.61529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yekaterinburg",
+          "url": "https://en.wikipedia.org/wiki/Yekaterinburg",
+          "text": "Yekaterinburg, alternatively romanized as Ekaterinburg and formerly known as Sverdlovsk (1924–1991), is a city and the administrative centre of Sverdlovsk Oblast and the Ural Federal District, Russia. The city is located on the Iset River between the Volga-Ural region and Siberia, with a population of roughly 1.5 million residents, up to 2.2 million residents in the urban agglomeration. Yekaterinburg is the fourth most populous city in Russia, the largest city in the Ural Federal District, and one of Russia's main cultural and industrial centres. Yekaterinburg has been dubbed the \"third capital of Russia\", as it is ranked third by the size of its economy, culture, transportation and tourism, behind Moscow and Saint Petersburg.\nYekaterinburg was founded on 18 November 1723 and named after the Orthodox name of Catherine I – Russian: Екатерина I, romanized: Yekaterina I – , the wife of Russian Emperor Peter the Great. The city served as the mining capital of the Russian Empire as well as a strategic connection between Europe and Asia. In 1781, Catherine the Great gave Yekaterinburg the status of a district town of Perm Province, and built the historical Siberian Route through the city. Yekaterinburg became a key city to Siberia, which had rich resources. \nIn the late 19th century, Yekaterinburg became one of the centres of revolutionary movements in the Urals. During the Russian Civil War, it was the site of the murder of the Romanov family. In 1924, after the Russian SFSR founded the Soviet Union, the city was renamed Sverdlovsk after the Bolshevik leader Yakov Sverdlov. During the Soviet era, a tram network was completed in 1929 and Sverdlovsk and its surroundings were turned into a heavy industry powerhouse. The Sverdlovsk Metro opened in April 1991, and in September 1991 the city returned to its historical name.\nYekaterinburg is one of Russia's most important economic centres and was one of the host cities of the 2018 FIFA World Cup. In the 21st century, the city has experienced an economic and population boom, which resulted in some of the tallest skyscrapers of Russia being located in the city. Yekaterinburg is home to the headquarters of the Central Military District of the Russian Armed Forces, as well as the presidium of the Ural Branch of the Russian Academy of Sciences.\nYekaterinburg is famous for its constructivist architecture, and is also considered the \"Russian capital of street art\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 396
+    },
+    "banned_terms": [
+      {
+        "term": "yekaterinburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 44,
+    "attempt": 42,
+    "place_id": "gn-5811696",
+    "input": {
+      "place": {
+        "place_id": "gn-5811696",
+        "name": "Spokane",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.65966,
+        "lon": -117.42908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spokane, Washington",
+          "url": "https://en.wikipedia.org/wiki/Spokane,_Washington",
+          "text": "Spokane (  spoh-KAN; Spokane: sƛ̓x̌etkʷ) is a city in and the county seat of Spokane County in the U.S. state of Washington. It lies along the Spokane River, adjacent to the Selkirk Mountains and west of the Rocky Mountain foothills, 110 miles (180 km) south of the Canadian border, twenty miles (30 km) west of the Idaho state line, 279 miles (449 km) southwest of Calgary, and 280 miles (450 km) east of Seattle, via I-90.\nSpokane is the most populous city in eastern Washington and the second-most populous city in all of Washington (after Seattle), with a population of 228,989 at the 2020 census, while the Spokane metropolitan area has an estimated 605,000 residents.\nSpokane is the economic and cultural center of the Inland Northwest. It is known as the birthplace of Father's Day, and locally by the nickname of \"Lilac City\". Officially, Spokane goes by the nickname of Hooptown USA, due to Spokane's annual hosting of the Spokane Hoopfest, the world's largest 3-on-3 basketball tournament. The city and the wider Inland Northwest area are served by Spokane International Airport, 5 miles (8 km) west of Downtown Spokane, which is located near another airfield at Fairchild Air Force Base.\nThe first people to live in the area, the Spokane tribe (their name meaning \"children of the sun\" in Salishan), lived off plentiful game. David Thompson explored the area with the westward expansion and establishment of the North West Company's Spokane House in 1810. This trading post was the first long-term European settlement in Washington. Completion of the Northern Pacific Railway in 1881 brought many settlers from America to the Spokane area. The same year it was officially incorporated as a city under the name of Spokane Falls (it was re-incorporated under its current name ten years later). In the late 19th century, gold and silver were discovered in the Inland Northwest. The local economy depended on mining, timber, and agriculture until the 1980s. Spokane hosted the first environmentally themed World's fair at Expo '74.\nMany of the downtown area's older Romanesque Revival-style buildings were designed by architect Kirtland Cutter after the Great Spokane Fire of 1889, which damaged much of the downtown commercial district. The city is also home to the Riverfront and Manito parks, the Smithsonian-affiliated Northwest Museum of Arts and Culture, the Davenport Hotel, and the Fox and Bing Crosby theaters. The Cathedral of Our Lady of Lourdes is the seat of the Roman Catholic Diocese of Spokane, and the Cathedral of St. John the Evangelist serves as that of the Episcopal Diocese of Spokane. The Spokane Washington Temple in the east of the county serves the Church of Jesus Christ of Latter-day Saints. Gonzaga University was established in 1887 by the Jesuits, and the private Presbyterian Whitworth University was founded three years later and moved to north Spokane in 1914.\nIn sports, the region's professional and semi-professional sports teams include the Spokane Indians in Minor League Baseball, the Spokane Chiefs in the Western Hockey League, the Spokane Velocity in USL League One, and a women's first division team Spokane Zephyr FC in USL Super League. The Gonzaga Bulldogs collegiate basketball team competes at the Division I level. As of 2010, Spokane's major daily newspaper, The Spokesman-Review, had a daily circulation of over 76,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 547
+    },
+    "banned_terms": [
+      {
+        "term": "spokane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 45,
+    "attempt": 43,
+    "place_id": "gn-202061",
+    "input": {
+      "place": {
+        "place_id": "gn-202061",
+        "name": "Kigali",
+        "country": "Rwanda",
+        "subdivision": "Kigali",
+        "lat": -1.94995,
+        "lon": 30.05885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kigali",
+          "url": "https://en.wikipedia.org/wiki/Kigali",
+          "text": "Kigali (Kinyarwanda pronunciation: [ki.ɡɑ́.ɾi]), officially the City of Kigali also known as Kigali City (abbreviated as KGL), is the capital, largest city, and a province-level administrative unit of Rwanda. It is located near the country's geographic centre, in a landscape of rolling hills marked by valleys and ridges connected by steep slopes. As Rwanda's primary city, Kigali is a relatively young urban centre. Founded in 1907 as a German administrative outpost, it served as a minor administrative centre until it became the national capital at independence in 1962, shifting the main administrative focus away from Huye (formerly Astrida).\nAs of 31 August 2022, Kigali city has a population of 1,745,555 inhabitants, roughly seven times that of the nation's second most populous city, Gisenyi. Kigali's UNHCR coordinate operations for nearly 135,000 refugees and has a special facility in Gashora, to temporarily host refugees who are being resettled from crisis zones, mainly Libya, Yemen or other conflict areas, and provided with medical care, basic services and legal processing. After preparation, they are resettled to countries like the United States or Canada. Also notable, before cancellation in July 2024, the Rwanda asylum plan or \"Rwanda Plan\" was an agreement to accept deported migrants from the United Kingdom.\nIn an area controlled by the Kingdom of Rwanda from the 15th century, and then by the German Empire at the beginning of the 20th century, the city was founded in 1907 when Richard Kandt, the colonial resident, chose the site for his headquarters, citing its central location, views and security. Foreign merchants began to trade in the city during the German era, and Kandt opened some government-run schools for Tutsi Rwandan students. Belgium took control of Rwanda and Burundi during World War I, forming the mandate of Ruanda-Urundi. Kigali remained the seat of colonial administration for Rwanda but Ruanda-Urundi's capital was at Usumbura (now Bujumbura) in Burundi and Kigali remained a small city with a population of just 6,000 at the time of independence.\nKigali grew slowly during the following decades. It was not initially directly affected by the Rwandan Civil War between government forces and the rebel Rwandan Patriotic Front (RPF), which began in 1990. However, in April 1994 Rwanda's President Juvénal Habyarimana was killed when his aircraft was shot down near Kigali. His death was followed by the Rwandan genocide, which killed over 500,000 Tutsi. The RPF resumed fighting, ending a cease-fire of more than a year. They gradually took control of most of the country and seized Kigali on 4 July 1994. Post-genocide Kigali has experienced rapid population growth, with much of the city rebuilt.\nThe city of Kigali is one of the five provinces of Rwanda, with boundaries set in 2006. It is divided into three districts—Gasabo, Kicukiro, and Nyarugenge—which historically had control of significant areas of local governance. Reforms in January 2020 transferred much of the districts' power to the city-wide council. The city also hosts the main residence and offices of the president of Rwanda and most government ministries. The largest contributor to Kigali's gross domestic product is the service sector, but a significant proportion of the population works in agriculture including small-scale subsistence farming. Attracting international visitors is a priority for city authorities, including leisure tourism, conferences and exhibitions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 541
+    },
+    "banned_terms": [
+      {
+        "term": "kigali",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 46,
+    "attempt": 44,
+    "place_id": "gn-6354908",
+    "input": {
+      "place": {
+        "place_id": "gn-6354908",
+        "name": "Sydney",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 46.1351,
+        "lon": -60.1831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sydney, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/Sydney,_Nova_Scotia",
+          "text": "Sydney is a former city and urban community on the east coast of Cape Breton Island in Nova Scotia, Canada within the Cape Breton Regional Municipality. Sydney was founded in 1785 by the British, incorporated as a city in 1904, and dissolved on 1 August 1995, when it was amalgamated into the regional municipality.\nSydney served as Cape Breton Island's colonial capital until 1820, when the colony was annexed to Nova Scotia.\nA rapid population expansion occurred just after the turn of the 20th century, when Sydney became home to one of North America's main steel mills. During both the First and Second World Wars, it was a major staging area for England-bound convoys. The post-war period witnessed a major decline in the number of people employed at the Dominion Steel and Coal Corporation steel mill, and the Nova Scotia and Canadian governments had to nationalize it in 1967 to save the region's biggest employer, forming the new crown corporation called the Sydney Steel Corporation (SYSCO). The city's population has steadily decreased since the early 1970s due to the plant's fortunes, and SYSCO was finally closed in 2001. Today, the main industries are in customer support call centres and tourism. Together with Sydney Mines, North Sydney, New Waterford, and Glace Bay, Sydney forms the region traditionally referred to as Industrial Cape Breton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "sydney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 47,
+    "attempt": 45,
+    "place_id": "gn-2516326",
+    "input": {
+      "place": {
+        "place_id": "gn-2516326",
+        "name": "Jerez de la Frontera",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.68645,
+        "lon": -6.13606
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jerez de la Frontera",
+          "url": "https://en.wikipedia.org/wiki/Jerez_de_la_Frontera",
+          "text": "Jerez de la Frontera (Spanish pronunciation: [xeˈɾeθ ðe la fɾonˈteɾa]) or simply Jerez or Xeres, is a city and municipality in the province of Cádiz in the autonomous community of Andalusia, Spain. Located in southwestern Iberia, it lies on the Campiña de Jerez, an inland lowland plain crossed by the Guadalete River, midway between the Atlantic Ocean, the Guadalquivir river and the western reaches of the Subbaetic System.\nWith a population of 214,844, Jerez de la Frontera is the most populated municipality in the province of Cádiz, and the fifth in Andalusia. The municipality covers an area of 1,188.14 km2 (458.74 sq mi) and includes Los Alcornocales Natural Park.\nThe area's record of human presence includes the nearby site of Asta Regia with occupation since perhaps the Atlantic Bronze Age up to the 10th century. Information about the current settlement is scarce before the 12th century under the Almohads, when it grew into the largest urban centre in between Seville and the Strait of Gibraltar. Jerez was conquered by the Crown of Castile in 1261. Winegrowing has long been Jerez's primary economic driver, particularly with the transition to modern agro-extractivism in the mid-18th century. Jerez and its surroundings are noted for the production of local grapes into Sherry wines. For most of the 19th century, the local wine was overwhelmingly produced for foreign export, preeminently catering to the British market. In this period, the city gained a reputation as a paradigm for large landowners and high levels of social inequality, as well as its winery-related identity.\nSince 1987, Grand Prix motorcycle racing has been held at the Circuito de Jerez in early May. The circuit has also hosted several Formula One Grands Prix, including the 1997 European Grand Prix, which decided the 1997 Formula One World Championship. Other festivals in the city include the Feria de Jerez and Holy Week."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "jerez de la frontera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jerez",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "frontera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 48,
+    "attempt": 46,
+    "place_id": "gn-5391811",
+    "input": {
+      "place": {
+        "place_id": "gn-5391811",
+        "name": "San Diego",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.71571,
+        "lon": -117.16472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Diego",
+          "url": "https://en.wikipedia.org/wiki/San_Diego",
+          "text": "San Diego (  SAN dee-AY-goh; Spanish: [san ˈdjeɣo]) is a city on the Pacific coast of Southern California, next to the Mexican border. It is the eighth-most populous city in the U.S. and second-most populous city in California with a population of over 1.4 million, while the San Diego area with over 3.3 million residents is the 18th-largest metropolitan area in the country. San Diego is the county seat of San Diego County. It is known for its mild Mediterranean climate, extensive beaches and parks, long association with the United States Navy, and recent emergence as a Wireless, electronics, healthcare, and biotechnology development center.\nHistorically home to the Kumeyaay people, San Diego has been referred to as the Birthplace of California, as it was the first site visited and settled by Europeans on what is now the West Coast of the United States. In 1542, Juan Rodríguez Cabrillo claimed the area for Spain, forming the basis for the settlement of Alta California, 200 years later. The Presidio and Mission San Diego de Alcalá, founded in 1769, formed the first European settlement in what is now California. In 1821, San Diego became part of the newly declared Mexican Empire. California was ceded to the U.S. in 1848 following the Mexican–American War and was admitted as the 31st state in 1850.\nThe largest sectors of the economy of San Diego include military and defense-related activities, tourism, international trade, research, and manufacturing. The city is home to several universities, including UC San Diego, San Diego State University, and the University of San Diego. San Diego is the economic center of the San Diego–Tijuana region, the second-most populous transborder metropolitan area in the Western Hemisphere, home to an estimated five million people as of 2022. The primary border crossing between San Diego and Tijuana, the San Ysidro Port of Entry, is the busiest international land border crossing in the world outside of Asia (fourth-busiest overall). San Diego International Airport (SAN) is the busiest single-runway airport in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 165,
+      "fullExtractWords": 335
+    },
+    "banned_terms": [
+      {
+        "term": "san diego",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "diego",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 49,
+    "attempt": 47,
+    "place_id": "gn-3671916",
+    "input": {
+      "place": {
+        "place_id": "gn-3671916",
+        "name": "Popayán",
+        "country": "Colombia",
+        "subdivision": "Cauca Department",
+        "lat": 2.43823,
+        "lon": -76.61316
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Popayán",
+          "url": "https://en.wikipedia.org/wiki/Popay%C3%A1n",
+          "text": "Popayán (Spanish pronunciation: [popaˈʝan] ) is the capital of the Colombian department of Cauca. It is located in the Pubenza Valley in southwestern Colombia between the Western Mountain Range and Central Mountain Range. The municipality has a population of 318,059, an area of 483 km2, is located 1760 meters above sea level, and has an average temperature of 18 °C.\nThe town is well known for its colonial architecture and its contributions to Colombian cultural and political life. It is also known as the \"white city\" due to the color of most of the colonial buildings in the city center, where several churches are located, such as San Francisco, San José, Belén, Santo Domingo, San Agustín, and the Catedral Basílica Nuestra Señora de la Asunción, known locally as \"La Catedral\". The city's cathedral was home to the Crown of the Andes, a 16th-century Marianist devotional object featuring emeralds taken from the captured Inca Emperor Atahualpa. It was sold to finance local health care institutions.\nPopayán has been home to seventeen Colombian presidents, as well as noted poets, painters, and composers. The University of Cauca (est. 1827), one of Colombia's oldest and most distinguished institutions of higher education, is located here, so Popayán is also known as the \"University City\". Nearby is Puracé National Natural Park. The nearest large city is Cali, in the Valle del Cauca Department, north of Cauca.\nMuch of the city's original splendor was destroyed on 31 March 1983, when an earthquake toppled many buildings. Though many were rebuilt and repaired, the heart of the city still has ruins and empty lots. In 2005, Popayán was declared by the UNESCO as the first city of gastronomy because of its variety and meaning to the intangible patrimony of Colombian culture. The culinary history of the Cauca Department was chosen because it maintains traditional food preparation methods that have been passed down orally for generations. In 2009, UNESCO also declared the Semana Santa processions during Easter Week a Masterpiece of the Oral and Intangible Patrimony of Humanity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "popayan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 50,
+    "attempt": 48,
+    "place_id": "gn-4791259",
+    "input": {
+      "place": {
+        "place_id": "gn-4791259",
+        "name": "Virginia Beach",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 36.85293,
+        "lon": -75.97799
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Virginia Beach, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Virginia_Beach,_Virginia",
+          "text": "Virginia Beach (colloquially VB) is the most populous city in the U.S. commonwealth of Virginia. The city is located on the Atlantic Ocean at the mouth of the Chesapeake Bay in southeastern Virginia. It is the sixth-most populous city in the Mid-Atlantic and the Northeast, ninth-most populous in the Southeast, and the 43rd-most populous city in the U.S. with a population of 459,470 at the 2020 census. Virginia Beach is a principal city in the Hampton Roads metropolitan area, which has more than 1.8 million inhabitants and is the 37th-largest metropolitan area in the U.S.\nVirginia Beach is a resort city with miles of beaches and hundreds of hotels, motels, and restaurants along its oceanfront. Near the point where the Chesapeake Bay and the Atlantic Ocean meet, Cape Henry was the site of the first landing of the English colonists who eventually settled in Jamestown; modern Virginia Beach was established in 1906. It is home to several state parks, protected beaches, and military bases. Batten University, Regent University, Christian Broadcasting Network, the U.S. headquarters of Stihl, and the Association for Research and Enlightenment are based in Virginia Beach. It also hosts the annual East Coast Surfing Championships and Neptune Festival.\nThe city is listed in the Guinness Book of Records as having the longest pleasure beach in the world. It is located at the southern end of the Chesapeake Bay Bridge–Tunnel, which was the world's longest bridge–tunnel complex until the Hong Kong–Zhuhai–Macau Bridge opened in 2018.\nAs of 2020, the city was the most representative locality of the state's income, race, and level of educational attainment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "virginia beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "virginia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 51,
+    "attempt": 49,
+    "place_id": "gn-701822",
+    "input": {
+      "place": {
+        "place_id": "gn-701822",
+        "name": "Mariupol",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 47.09514,
+        "lon": 37.54131
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mariupol",
+          "url": "https://en.wikipedia.org/wiki/Mariupol",
+          "text": "Mariupol is a city in Donetsk Oblast, Ukraine. It is situated on the northern coast (Pryazovia) of the Sea of Azov, at the mouth of the Kalmius River. In January 2022, prior to the Russian invasion of Ukraine, it was the tenth-largest city in the country and the second-largest city in Donetsk Oblast, with an estimated population of 425,681; in August 2023, Ukrainian authorities estimated the population of Mariupol at approximately 120,000.\nHistorically, the city was a centre for trade and manufacturing, and played a key role in the development of higher education and many businesses and also served as a coastal resort on the Sea of Azov. In 1948, it was renamed Zhdanov (Russian: Жданов) after Andrei Zhdanov, a native of the city who had become a high-ranking official of the Communist Party of the Soviet Union and a close ally to Joseph Stalin. The name was part of a larger effort to rename cities after high-ranking political figures in the Soviet Union. The historic name was restored in 1989.\nMariupol was founded on the site of a former encampment for Cossacks, known as Kalmius, and was granted city rights within the Russian Empire in 1778. It played a key role in Stalin-era industrialization; it was a centre for grain trade, metallurgy, and heavy engineering – including the Illich Iron and Steel Works and the Azovstal Iron and Steel Works.\nThe city was largely destroyed during the siege of Mariupol that lasted from 24 February 2022 until the last Ukrainian troops remaining in Mariupol surrendered at the Azovstal Iron and Steel Works on 16 May 2022, for which it was named a \"Hero City of Ukraine\" by the Ukrainian government. The Russian military secured complete control over the city by 20 May.\nWithin months, local Russian-backed authorities signed into law a sweeping new bill outlining the reconstruction of Mariupol, as a Russian city, up to the year 2035."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 164,
+      "fullExtractWords": 319
+    },
+    "banned_terms": [
+      {
+        "term": "mariupol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 52,
+    "attempt": 50,
+    "place_id": "gn-320857",
+    "input": {
+      "place": {
+        "place_id": "gn-320857",
+        "name": "Bornova",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.47921,
+        "lon": 27.2399
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bornova",
+          "url": "https://en.wikipedia.org/wiki/Bornova",
+          "text": "Bornova is a municipality and district of İzmir Province, Turkey. Its area is 220 km2, and its population is 454,470 (2022). It is the third largest district in İzmir's metropolitan area and is almost fully urbanized at the rate of 98.6 percent, with correspondingly high levels of development in terms of industries and services. Bornova's center is situated at a distance of 8 km (5 mi) to the northeast of the traditional center of İzmir (Konak Square in Konak, İzmir) and 5 km (3 mi) from the coastline at the tip of the Gulf of İzmir to the west. Bornova district area is surrounded by the district areas of Yunusemre (Manisa Province) and Menemen to the north, Kemalpaşa to the east, Buca to the south, and Konak and Karşıyaka to the west, where the larger part of İzmir's urban area extends. Bornova is home to Ege University's main campus and associated hospital, one of the largest and foremost medical centers in western Turkey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 163,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "bornova",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 53,
+    "attempt": 51,
+    "place_id": "gn-2892794",
+    "input": {
+      "place": {
+        "place_id": "gn-2892794",
+        "name": "Karlsruhe",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.00937,
+        "lon": 8.40444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karlsruhe",
+          "url": "https://en.wikipedia.org/wiki/Karlsruhe",
+          "text": "Karlsruhe is the third-largest city of the German state of Baden-Württemberg, after its capital Stuttgart and Mannheim, and the 22nd-largest city in the nation, with 308,436 inhabitants. It is also a former capital of Baden, a historic region named after Hohenbaden Castle in the city of Baden-Baden. Located on the right bank of the Rhine (Upper Rhine) near the French border, between the Mannheim-Ludwigshafen conurbation to the north and Strasbourg to the south, Karlsruhe is Germany's legal center, being home to the Federal Constitutional Court, the Federal Court of Justice and the Public Prosecutor General.\nKarlsruhe was the capital of the Margraviate of Baden-Durlach (Durlach: 1565–1718; Karlsruhe: 1718–1771), the Margraviate of Baden (1771–1803), the Electorate of Baden (1803–1806), the Grand Duchy of Baden (1806–1918), and the Republic of Baden (1918–1945). Its most remarkable building is Karlsruhe Palace, which was built in 1715. It contains the Baden State Museum, the large cultural, art and regional history museum of the Baden region of Baden-Württemberg. There are nine institutions of higher education in the city, most notably the Karlsruhe Institute of Technology. Karlsruhe/Baden-Baden Airport is the second-busiest airport in Baden-Württemberg after Stuttgart Airport, and the 17th-busiest airport in Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "karlsruhe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 54,
+    "attempt": 52,
+    "place_id": "gn-3172629",
+    "input": {
+      "place": {
+        "place_id": "gn-3172629",
+        "name": "Monza",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.58005,
+        "lon": 9.27246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monza",
+          "url": "https://en.wikipedia.org/wiki/Monza",
+          "text": "Monza (English:  MON-zə; Italian: [ˈmontsa] ; Monzese: Monscia [ˈmũːʃa]; Latin: Modoetia) is a city and comune (municipality) in the Lombardy region of northern Italy. Situated on the Lambro river about 15 kilometres (9.3 mi) north-northeast of Milan, it is the capital of the Province of Monza and Brianza and the largest city in the Brianza area. With a population of 123,672, it is the third-largest city in Lombardy. \nOriginally a Roman settlement, Monza became an important political and religious centre during the Lombard period, particularly under Queen Theodelinda, who established a royal residence and founded the early basilica from which the present Monza Cathedral developed. The cathedral houses the Iron Crown of Lombardy, a medieval relic traditionally associated with the coronation of the Kings of Italy, including Charlemagne and later sovereigns of the Kingdom of Italy.\nMonza is internationally known for the Monza Circuit, one of the world's oldest permanent motor racing circuits and the long-standing host of the Italian Grand Prix. The city is also home to the Royal Villa of Monza and the adjoining Monza Park, one of the largest enclosed urban parks in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "monza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 55,
+    "attempt": 53,
+    "place_id": "gn-322830",
+    "input": {
+      "place": {
+        "place_id": "gn-322830",
+        "name": "Aydın",
+        "country": "Türkiye",
+        "subdivision": "Aydın",
+        "lat": 37.84501,
+        "lon": 27.83963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aydın",
+          "url": "https://en.wikipedia.org/wiki/Ayd%C4%B1n",
+          "text": "Aydın ( EYE-din; Turkish: [ˈajdɯn]; formerly named Güzelhisar; Greek: Τράλλεις Tralleis) is a city in and the seat of Aydın Province in Turkey's Aegean Region. The city is located at the heart of the lower valley of Büyük Menderes River (ancient Meander River) at a commanding position for the region extending from the uplands of the valley down to the seacoast. The city forms the urban part of the Efeler district, with a population of 259,027 in 2022. Aydın city is located along a region which was famous for its fertility and productivity since ancient times. Figs remain the province's best-known crop, although other agricultural products are also grown intensively and the city has some light industry.\nAt the crossroads of a busy transport network of several types, a six-lane motorway connects Aydın to İzmir, Turkey's second port, in less than an hour, and in still less time to the international Adnan Menderes Airport, located along the road between the two cities. A smaller airport, namely Aydın Airport, is located a few kilometers in the South-East of Aydın. The region of Aydın also pioneered the introduction of railways into Turkey in the 19th century and still has the densest railroad network.\nThe province of Aydın is also where a number of internationally known historic sites and centers of tourism are concentrated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "ayd n",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ayd",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "n",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 56,
+    "attempt": 54,
+    "place_id": "gn-5097529",
+    "input": {
+      "place": {
+        "place_id": "gn-5097529",
+        "name": "Edison",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.51872,
+        "lon": -74.4121
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edison, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Edison,_New_Jersey",
+          "text": "Edison is a township in Middlesex County, New Jersey, United States. Situated in Central New Jersey within the core of the state's Raritan Valley region, Edison is a commercial hub (home to Menlo Park Mall and Little India) and is a bedroom community of New York City within the New York metropolitan area.\nAs of the 2020 United States census, the township was the state's sixth-most-populous municipality, with a population of 107,588, an increase of 7,621 (+7.6%) from the 2010 census count of 99,967, which in turn reflected an increase of 2,280 (+2.3%) from the 97,687 counted in the 2000 census.\nWhat is now Edison Township was originally incorporated as Raritan Township by an act of the New Jersey Legislature on March 17, 1870, from portions of both Piscataway and Woodbridge Township. The township was originally named after the Raritan indigenous people. Portions of the township were taken to form Metuchen on March 20, 1900, and Highland Park on March 15, 1905. The name was officially changed to Edison Township on November 10, 1954, in honor of inventor Thomas Edison, who had his main laboratory in the Menlo Park section of the township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "edison",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 57,
+    "attempt": 55,
+    "place_id": "gn-993800",
+    "input": {
+      "place": {
+        "place_id": "gn-993800",
+        "name": "Johannesburg",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.20227,
+        "lon": 28.04363
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Johannesburg",
+          "url": "https://en.wikipedia.org/wiki/Johannesburg",
+          "text": "Johannesburg ( joh-HAN-iss-burg, US also  -⁠HAHN-, Afrikaans: [jʊəˈɦanəsbœrχ] ; Xhosa: eGoli [ɛˈɡɔːli]; Zulu: iGoli [îˈɡóːli]), colloquially known as Jozi, Joburg, or \"the City of Gold\", is the capital city of the province of Gauteng and the largest city in South Africa. In 2022 (the year of the most recent census), the City of Johannesburg Metropolitan Municipality had a population of 4,803,262, and the wider metropolitan area a population of 15,099,422, making it one of the 100 largest urban areas in the world.  It is also the seat of the country's highest court, the Constitutional Court. Situated on the mineral-rich Witwatersrand, the city has long been at the epicentre of the international mineral and gold trade. The richest city in Africa by GDP and private wealth, Johannesburg functions as the economic capital of South Africa and is home to the continent's largest stock exchange, the Johannesburg Stock Exchange.\nJohannesburg was established in 1886, following the discovery of gold, on what was once farmland. Within a decade, the population surged to over 100,000, driven by the large gold deposits found along the Witwatersrand. Modern Johannesburg is an amalgamation of formerly separate cities, townships and settlements, reflecting apartheid-era spatial segregation policies. Soweto (\"South-Western Townships\"), designated a \"blacks only\" city until 1994, is one of the most historically significant areas for modern South Africa. Home to key anti-apartheid leaders, including Nelson Mandela and Desmond Tutu, it became the epicenter of the 1976 Soweto Uprising, where peaceful student protests were met with brutal force. In contrast, Lenasia is predominantly populated by English-speaking Indo-South Africans (people of Indian and South Asian descent). Formerly \"white-only\" areas include Sandton, known as \"Africa's richest square-mile\", Randburg and Roodeport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 162,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "johannesburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 58,
+    "attempt": 56,
+    "place_id": "gn-8537264",
+    "input": {
+      "place": {
+        "place_id": "gn-8537264",
+        "name": "Huanggang",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 30.45143,
+        "lon": 114.87035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huanggang",
+          "url": "https://en.wikipedia.org/wiki/Huanggang",
+          "text": "Huanggang is a prefecture-level city in easternmost Hubei Province, China. It is situated to the north of the middle reaches of the Yangtze River and is bounded in the north by the Dabie Mountains and is named after Mount Huanggang. It borders Henan in the north, Anhui in the east and Jiangxi in the south.\nThe city's administrative area covers 17,453 square kilometers (6,739 sq mi) and the total population was 5,882,719 as of the 2020 census whom 456,862 resided in the Huangzhou urban district, making it the second most populous city in the province by administrative population, after Wuhan, the provincial capital. the Ezhou – Huanggang built-up (or metro) area was home to 1,152,559 inhabitants comprising (Echeng district and Huangzhou district of Huanggang), and many of its residents work in Wuhan. In 2007, the city is named China's top ten livable cities by Chinese Cities Brand Value Report, which was released at the 2007 Beijing Summit of China Cities Forum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 161,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "huanggang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 59,
+    "attempt": 57,
+    "place_id": "gn-1714956",
+    "input": {
+      "place": {
+        "place_id": "gn-1714956",
+        "name": "Digos",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 6.74972,
+        "lon": 125.35722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Digos",
+          "url": "https://en.wikipedia.org/wiki/Digos",
+          "text": "Digos, officially the City of Digos (Cebuano: Dakbayan sa Digos; Filipino: Lungsod ng Digos), is a  component city and capital of the province of Davao del Sur, Philippines. According to the 2024 census, it has a population of 192,063 people.\nThe city lies on the western shores of Davao Gulf and southern foothills of Mount Apo on the island of Mindanao, centrally located between the three major cities in Mindanao, Davao City in the north, General Santos in the south and Cotabato City in the west.\nIt is the second most populous city in Davao del Sur after the highly-urbanized city of Davao as well as the fourth most populous city in Davao Region, and it is also considered as part of Metropolitan Davao.\nIt is known for its sweet-juicy 'carabao variety mango,' sold locally and exported abroad, thus being dubbed as the Mango Capital City of the Philippines. It is also considered as The Gate City Of The South.\nOn September 8, 2000, Digos was converted into a city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "digos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 60,
+    "attempt": 58,
+    "place_id": "gn-2108502",
+    "input": {
+      "place": {
+        "place_id": "gn-2108502",
+        "name": "Honiara",
+        "country": "Solomon Islands",
+        "subdivision": "Honiara",
+        "lat": -9.43333,
+        "lon": 159.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Honiara",
+          "url": "https://en.wikipedia.org/wiki/Honiara",
+          "text": "Honiara ( HON-nee-AH-rə) is the capital and largest city of Solomon Islands, situated on the northwestern coast of Guadalcanal. As of 2019, it had a population of 129,569 people. The city is served by Honiara International Airport and the seaport of Point Cruz, and lies along the Kukum Highway. In 1983, a capital territory – comprising the 22 square-kilometre metropolitan area of Honiara – was proclaimed, with a self-governing status akin to a province, although the city also retained its older role as capital of Guadalcanal Province.\nThe airport area to the east of Honiara was the site of a battle between the United States and the Japanese during the Guadalcanal Campaign in World War II, the Battle for Henderson Field of 1942, from which the former emerged victorious. After Honiara became the new administrative centre of the British Solomon Islands Protectorate in 1952 with the addition of many administrative buildings, the town began to develop and grow in population. Since the late 1990s, Honiara has suffered a turbulent history of ethnic violence and political unrest and is scarred by rioting. A coup attempt in June 2000 resulted in violent rebellions and fighting between the ethnic Malaitans of the Malaita Eagle Force (MEF) and the Guadalcanal natives of the Isatabu Freedom Movement (IFM).\nAlthough a peace agreement was made in October 2000, violence ensued in the city streets in March 2002 when two diplomats from New Zealand and several others were murdered. In July 2003, conditions had become so bad in Honiara that the Regional Assistance Mission to Solomon Islands (RAMSI), consisting of multiple Pacific nations under Australian leadership, was invited into the country by the Solomons Government to restore order. In 2006, riots broke out following the election of Snyder Rini as Prime Minister, destroying a part of Chinatown and making more than 1,000 Chinese residents homeless. The riots devastated the town and tourism in the city and the islands was severely affected.\nHoniara contains the majority of the major government buildings and institutions of Solomon Islands. The National Parliament of Solomon Islands, Honiara Solomon Islands College of Higher Education, International School in Honiara and University of the South Pacific Solomon Islands are located in Honiara as is the national museum and Honiara Market. Politically Honiara is divided into three parliamentary constituencies, electing 3 of the 50 members of the National Parliament. These constituencies, East Honiara, Central Honiara and West Honiara, are three of only six constituencies in the country to have an electorate of over 10,000 people.\nHoniara is predominantly Christian and is served by the headquarters of the Church of the Province of Melanesia (Anglican), the Roman Catholic Archdiocese of Honiara, the South Seas Evangelical Church, the United Church, the Seventh-day Adventist Church and other Christian churches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 460
+    },
+    "banned_terms": [
+      {
+        "term": "honiara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 61,
+    "attempt": 59,
+    "place_id": "gn-2756071",
+    "input": {
+      "place": {
+        "place_id": "gn-2756071",
+        "name": "Enschede",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.21833,
+        "lon": 6.89583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enschede",
+          "url": "https://en.wikipedia.org/wiki/Enschede",
+          "text": "Enschede (Dutch: [ˈɛnsxədeː] ; local Twents: Eanske [ˈɛːnskə]) is a city and municipality in the province of Overijssel and the Twente region of the eastern Netherlands. The east of the urban area reaches the border of the German town of Gronau.\nEnschede began as a small settlement in the Middle Ages and was granted city rights in 1325. It grew as a regional centre for trade and agriculture before becoming a major hub of the textile industry in the 18th and 19th centuries. Until 1935, the municipality of Enschede consisted only of the city of Enschede, when the rural municipality of Lonneker, which surrounded the city, was annexed after the rapid industrial expansion of Enschede that began in the 1860s and involved the building of railways and the digging of the Twentekanaal.\nEnschede is home to the football club FC Twente, a one-time Dutch champion; the University of Twente; Saxion University of Applied Sciences and the last Polaroid film factory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "enschede",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 62,
+    "attempt": 60,
+    "place_id": "gn-3573890",
+    "input": {
+      "place": {
+        "place_id": "gn-3573890",
+        "name": "Port of Spain",
+        "country": "Trinidad & Tobago",
+        "subdivision": "Port of Spain",
+        "lat": 10.66668,
+        "lon": -61.51889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port of Spain",
+          "url": "https://en.wikipedia.org/wiki/Port_of_Spain",
+          "text": "Port of Spain (Trinidadian English: Port ah Spain [ˈpʊo̯t a ˈspɪe̯n] ) is the capital and chief port of Trinidad and Tobago. With a municipal population of 49,867 (2017), an urban population of 81,142 and a transient daily population of 250,000, it is Trinidad and Tobago's third largest municipality, after Chaguanas and San Fernando.\nPort of Spain is located on the Gulf of Paria, on the northwest coast of the island of Trinidad and is part of a larger conurbation stretching from Chaguaramas in the west to Arima in the east with an estimated population of 600,000.\nThe city serves primarily as a retail and administrative centre and it has been the capital of the island since 1757. It is also an important financial services centre for the Caribbean and is home to two of the largest banks in the region. The Piarco International Airport is the main airport on the island, connecting the capital to various major global destinations.\nPort of Spain was also the de facto capital of the short-lived West Indies Federation, which united the Caribbean.\nThe city is also home to the largest container port on the island and is one of several shipping hubs of the Caribbean, exporting both agricultural products and manufactured goods. Bauxite from Guyana is trans-shipped via facilities at Chaguaramas, about 8 kilometres (5 mi) west of the city. The pre-Lenten Carnival is the city's main annual cultural festival and tourist attraction.\nToday, Port of Spain is a leading city in the Caribbean region. Trinidad and Tobago hosted the Fifth Summit of the Americas in 2009, whose guests included US president Barack Obama and US secretary of state Hillary Clinton.\nPort of Spain is also home to the biggest and most successful stock exchange in the Caribbean, the Trinidad and Tobago Stock Exchange (TTSE). The Nicholas Tower, as well as other skyscrapers, are well known throughout the region. These buildings dominate the city's skyline. Some of the tallest skyscrapers in the Caribbean are located in Port of Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 160,
+      "fullExtractWords": 336
+    },
+    "banned_terms": [
+      {
+        "term": "port of spain",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spain",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

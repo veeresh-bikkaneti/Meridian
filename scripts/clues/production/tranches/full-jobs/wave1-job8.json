@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 144,
+    "attempt": 141,
+    "place_id": "gn-1688749",
+    "input": {
+      "place": {
+        "place_id": "gn-1688749",
+        "name": "San Pedro",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.3595,
+        "lon": 121.0473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pedro, Laguna",
+          "url": "https://en.wikipedia.org/wiki/San_Pedro,_Laguna",
+          "text": "San Pedro, officially the City of San Pedro (Filipino: Lungsod ng San Pedro), is a  component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 348,968 people.\nIt is named after its patron, Saint Peter.\nSan Pedro has been dubbed as “dormitory town” of Metro Manila and migrants from other provinces commuting everyday through its highly efficient road and transport system. Despite being one of the smallest political units in the entire province, with a total land area of only 24.05 square kilometers (9.29 sq mi), San Pedro is the 5th most populous city (out of 6) after the cities of Biñan, Calamba, Santa Rosa and Cabuyao. The city also has the highest population density in the province of Laguna and in the whole Calabarzon region, having 15,000 inhabitants per square kilometer (39,000/sq mi). San Pedro became a component city of Laguna by virtue of Republic Act No. 10420 dated March 27, 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "san pedro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 145,
+    "attempt": 142,
+    "place_id": "gn-1276032",
+    "input": {
+      "place": {
+        "place_id": "gn-1276032",
+        "name": "Bhavnagar",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 21.76287,
+        "lon": 72.15331
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhavnagar",
+          "url": "https://en.wikipedia.org/wiki/Bhavnagar",
+          "text": "Bhavnagar is a city and the headquarters of Bhavnagar district in the Indian state of Gujarat. Bhavnagar was founded in 1723 by Bhavsinhji Gohil. It was the capital of Bhavnagar State, which was a princely state before it was merged into the Indian Union in February 1948.Bhavnagar currently has the 5th largest population in Gujarat.\nBhavnagar is situated 190 kilometres or 120 miles away from the state capital Gandhinagar and to the west of the Gulf of Khambhat. It has always been an important city for trade with many large and small scale industries along with the world's largest ship breaking yard, Alang which is located 50 kilometres or 31 miles away. Historically, Bhavnagar holds the distinction of being the first princely state to voluntarily merge into the Union of India in January 1948, a move led by Maharaja Krishnakumarsinhji Gohil.\nThe city is a significant educational center in Gujarat; Shamaldas Arts College, founded by Maharaja Takhtsinhji in 1885, is historically prominent as the institution where Mahatma Gandhi studied in 1888. Gandhi's admission to the college is recorded as one of the earliest milestones in his academic journey before he left for London to study law. The city serves as the gateway to Blackbuck National Park, Velavadar, which is recognized as the only tropical grassland in India to be designated as a National Park along with Victoria park which is the only  urban forest  of Gujarat located at the heart of Bhavnagar \nBhavnagar is also famous for its version of the popular Gujarati snack 'Ganthiya' and 'Jalebi'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "bhavnagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 146,
+    "attempt": 143,
+    "place_id": "gn-184745",
+    "input": {
+      "place": {
+        "place_id": "gn-184745",
+        "name": "Nairobi",
+        "country": "Kenya",
+        "subdivision": "Nairobi County",
+        "lat": -1.28333,
+        "lon": 36.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nairobi",
+          "url": "https://en.wikipedia.org/wiki/Nairobi",
+          "text": "Nairobi (  ny-ROH-bee) (Jiji kuu la Nairobi, in Swahili),  is the capital and largest city of Kenya, located in the south-central part of the country. As of 2026, it has a population of 5.6 million and a metropolitan population of 15.95 million, making it the 8th most populous city in Africa and the 4th most populous metropolitan area. The city goes beyond its borders and has expanded into neighbouring counties, making it the 4th largest metropolitan area in Africa.\nNicknamed the \"Green City under the Sun\", Nairobi is uniquely notable for being the only capital city in the world that hosts a national park within its boundaries. Its name originates from the Maasai phrase Enkare Nyirobi, meaning \"place of cool waters\".\nAs the national capital, Nairobi is home to the Kenyan Parliament Buildings, the State House and the Supreme Court Building. It is the major financial and economic hub of East Africa, hosting thousands of Kenyan businesses and international companies and organisations, including the United Nations Environment Programme (UN Environment) and the United Nations Office at Nairobi (UNON). The Nairobi Securities Exchange (NSE) is one of the largest stock exchanges in Africa and the second-oldest exchange on the continent. It is Africa's fourth-largest stock exchange by trading volume, capable of processing 10 million trades a day. Nairobi is considered a global city and was ranked as a \"Beta World City\" by the Globalisation and World Cities Research Network as of 2024.\nNairobi was founded in 1898 by colonial authorities in British East Africa, as a rail depot on the Uganda–Kenya Railway. The authorities favoured it as an ideal resting place due to its high elevation, temperate climate, and adequate water supply. The town quickly grew to replace Mombasa as the capital of Kenya in 1907.\nAfter independence in 1963, Nairobi became the capital of the Republic of Kenya. During Kenya's early period, the city became a centre for the coffee, tea and sisal industries. Successive post-independence governments have built and turned Nairobi into a modern metropolitan city with a diverse population and a growing economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 345
+    },
+    "banned_terms": [
+      {
+        "term": "nairobi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 147,
+    "attempt": 144,
+    "place_id": "gn-3471039",
+    "input": {
+      "place": {
+        "place_id": "gn-3471039",
+        "name": "Balneário Camboriú",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.99056,
+        "lon": -48.63472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balneário Camboriú",
+          "url": "https://en.wikipedia.org/wiki/Balne%C3%A1rio_Cambori%C3%BA",
+          "text": "Balneário Camboriú (Portuguese pronunciation: [bawneˈaɾju kɐ̃boɾiˈu]) is a coastal city in the southern Brazilian state of Santa Catarina. The city is built on steep hills which drop down to the sea. It is a popular tourist destination for South Americans, who are drawn to its main ocean boulevard Avenida Atlântica (Atlantic Avenue), and who swell the city's population from 139,155 (2022 Census) to over one million in the summer. The city is famous for its unique beach-to-beach cable car which links its central beach with the beach of Laranjeiras. Balneário Camboriú is located 10 km (6.2 mi) south of the city of Itajaí, 96 km (60 mi) south of the city of Joinville, and 80 km (50 mi) north of the state capital, Florianópolis.\nThe city is served by Ministro Victor Konder International Airport located in the adjoining municipality of Navegantes.\nThe original meaning of the city's name is unknown. According to the city's archives, it is \"River filled with Snook (Robalo)\", which is a very common type of fish in this region. Ilha das Cabras (Goats' Island) is directly opposite the city and is too small for habitation but it is lit at night. Visitors to nearby Laranjeiras Beach can sail there aboard 17th century-style pirate ships, going around Ilha das Cabras before returning to Balneário Camboriú.  The city also has a statue similar to Rio de Janeiro's Cristo Redentor (Christ the Redeemer). Standing atop the Morro da Cruz, Cristo Luz (Christ Light) portrays Jesus holding a circular \"broad-brimmed hat\" at his left shoulder, symbolizing the sun, and which houses a spotlight that shines out over the city.  The Cristo Luz at 33 meters tall is only five meters shorter than the Redeemer and colorful lights both within and without the statue give it nighttime illumination.  Another common sight in the city are paragliders over the beach, alongside the tall buildings, from the gliderport in Praia dos Amores.  To the west the city is bordered by the Camboriú River, which joins the ocean at the southern edge of the center of the city, where the cable car (teleférico) rises from the central beach.\nThe city has been called the \"Brazilian Dubai\", due to its high number of skyscrapers and affluent tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 372
+    },
+    "banned_terms": [
+      {
+        "term": "balneario camboriu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "balneario",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camboriu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 148,
+    "attempt": 145,
+    "place_id": "gn-4905687",
+    "input": {
+      "place": {
+        "place_id": "gn-4905687",
+        "name": "Peoria",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 40.69365,
+        "lon": -89.58899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peoria, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Peoria,_Illinois",
+          "text": "Peoria ( pee-OR-ee-ə) is a city in Peoria County, Illinois, United States, and its county seat. Located on the Illinois River, the city had a population of 113,150 as of the 2020 census, making it the eighth-most populous city in Illinois. It is the principal city of the Peoria metropolitan area in Central Illinois, consisting of Fulton, Marshall, Peoria, Stark, Tazewell, and Woodford counties and had a combined population of 402,391 in 2020.\nEstablished in 1691 by the French explorer Henri de Tonti, Peoria is the oldest permanent European settlement in Illinois, according to the Illinois State Archaeological Survey. The city received its current name when the County of Peoria was organized in 1825 and was named after the Peoria people, a member of the Illinois Confederation. On October 16, 1854, Abraham Lincoln made his Peoria speech against the Kansas–Nebraska Act. Before the onset of Prohibition in 1920, Peoria was a major center of the American whiskey industry, with more than a dozen distilleries operating in the city by the late 19th century—a greater concentration than in any other U.S. city at that time.\nA major port on the Illinois River, Peoria is a trading and shipping center for a large agricultural area that produces corn, soybeans, and livestock. While Peoria’s economy is diversified, manufacturing—including heavy machinery, agricultural equipment, metal products, and chemical production—continues to play an important role. Until 2018, Peoria was the global and national headquarters for heavy equipment and engine manufacturer Caterpillar Inc., one of the 30 companies composing the Dow Jones Industrial Average, and listed on the Fortune 100; the company relocated its headquarters to Deerfield, Illinois, in 2018, and then Irving, Texas, in 2022.\nThe city is associated with the phrase \"Will it play in Peoria?\", which may have originated from the vaudeville era and is often spuriously attributed to Groucho Marx. Museums in the city include the Peoria Riverfront Museum, the Pettengill–Morron House and the John C. Flanagan House (both of which are managed by the Peoria Historical Society), and the Peoria Playhouse Children's Museum. Wheels o' Time Museum is near Peoria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 348
+    },
+    "banned_terms": [
+      {
+        "term": "peoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 149,
+    "attempt": 146,
+    "place_id": "gn-5393015",
+    "input": {
+      "place": {
+        "place_id": "gn-5393015",
+        "name": "Santa Clara",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.35411,
+        "lon": -121.95524
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Clara, California",
+          "url": "https://en.wikipedia.org/wiki/Santa_Clara,_California",
+          "text": "Santa Clara ( SAN-tə KLAR-ə; Spanish for 'Saint Clare') is a city in Santa Clara County, California, United States. Located in the southern San Francisco Bay Area, it was founded by the Spanish in 1777 with the establishment of Mission Santa Clara de Asís under the leadership of Junípero Serra. The city's population was 127,647 at the 2020 census, making it the eighth-most populous city in the Bay Area. The U.S. Census Bureau estimated Santa Clara's population at 133,446 as of July 1, 2025.\nSanta Clara is located in the center of Silicon Valley and is home to the headquarters of companies such as Intel, Advanced Micro Devices (AMD), and Nvidia. It is also home to Santa Clara University, the oldest university in California, Levi's Stadium, home of the National Football League's San Francisco 49ers, and California's Great America amusement park. Santa Clara is bordered by San Jose on almost every side, except for Sunnyvale and Cupertino to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 141,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "santa clara",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "clara",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 150,
+    "attempt": 147,
+    "place_id": "gn-1839652",
+    "input": {
+      "place": {
+        "place_id": "gn-1839652",
+        "name": "Osan",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 37.15222,
+        "lon": 127.07056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osan",
+          "url": "https://en.wikipedia.org/wiki/Osan",
+          "text": "Osan (Korean: 오산; Korean pronunciation: [o.san]) is a city in Gyeonggi Province, South Korea, approximately 35 km (22 mi) south of Seoul. The population of the city is around 200,000.  The local economy is supported by a mix of agricultural and industrial enterprises.\nIt is famous for one of the largest markets in South Korea, Osan Market, which has been in continuous operation since 1792. The city was the scene of the first battle between the US and North Korea during the Korean War in 1950; there is a statue and museum dedicated to UN forces on the outskirts of the city.\nThe United States Air Force base named after the city, Osan Air Base, is not actually located in the city, but is instead 8 km (5.0 mi) south, in the Songtan district (formerly a separate city) of Pyeongtaek.\nOsan Station is a large subway station located in the heart of Osan. It is part of the Seoul Subway Line 1 and the KTX. There is a bus terminal next to the subway station and many buses stop in front of the subway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "osan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 151,
+    "attempt": 148,
+    "place_id": "gn-2921466",
+    "input": {
+      "place": {
+        "place_id": "gn-2921466",
+        "name": "Gelsenkirchen",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.50508,
+        "lon": 7.09654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gelsenkirchen",
+          "url": "https://en.wikipedia.org/wiki/Gelsenkirchen",
+          "text": "Gelsenkirchen (; German: [ˌɡɛlzn̩ˈkɪʁçn̩] ; Westphalian: Gelsenkiärken) is the 26th-most populous city of Germany and the 12th-most populous in the state of North Rhine-Westphalia with a population of 266,199 as of 2025. On the Emscher River (a tributary of the Rhine), it lies at the centre of the Ruhr area, the largest urban area of Germany, of which it is the fifth-largest city after Dortmund, Essen, Duisburg and Bochum. The Ruhr is located in the Rhine-Ruhr metropolitan region, the second-biggest metropolitan region by GDP in the European Union. Gelsenkirchen is the fifth-largest city of Westphalia after Dortmund, Bochum, Bielefeld and Münster, and it is one of the southernmost cities in the Low German dialect area. The city is home to the football club Schalke 04, which is named after Gelsenkirchen-Schalke. The club's current stadium Veltins-Arena, however, is located in Gelsenkirchen-Erle.\nGelsenkirchen was first documented in 1150, but it remained a tiny village until the 19th century, when the Industrial Revolution led to the economic and population growth of the region. In 1840, when the mining of coal began, 6,000 inhabitants lived in Gelsenkirchen; by 1900 the population had increased to 138,000. In the early 20th century, Gelsenkirchen was the most important coal mining town in Europe. It was called the \"city of a thousand fires\" for the flames of mine gases flaring at night. In 1928, Gelsenkirchen was merged with the adjoining cities of Buer and Gelsenkirchen-Horst. The city bore the name Gelsenkirchen-Buer, until it was renamed Gelsenkirchen in 1930. The city remained a center of coal mining and oil refining during the Nazi era, which led to it being a frequent a target of Allied bombing raids during World War II: nevertheless, over a third of the city's buildings date from before 1949. There are no longer coalmines in and around Gelsenkirchen; the city is searching for a new economic basis, having been afflicted for decades with one of the country's highest unemployment rates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 325
+    },
+    "banned_terms": [
+      {
+        "term": "gelsenkirchen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 152,
+    "attempt": 149,
+    "place_id": "gn-294801",
+    "input": {
+      "place": {
+        "place_id": "gn-294801",
+        "name": "Haifa",
+        "country": "Israel",
+        "subdivision": "Haifa",
+        "lat": 32.81303,
+        "lon": 34.99928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haifa",
+          "url": "https://en.wikipedia.org/wiki/Haifa",
+          "text": "Haifa ( HY-fə; Hebrew: חיפה, romanized: Ḥayfā, IPA: [ˈχajfa]; Arabic: حيفا, romanized: Ḥayfā, IPA: [ħaj.faː]) is the third-largest city in Israel—after Jerusalem and Tel Aviv—with a population of 297,082 in 2024. The city of Haifa forms part of the Haifa metropolitan area, the third-most populous metropolitan area in Israel. It is home to the Baháʼí Faith's Baháʼí World Centre, a UNESCO World Heritage Site and destination for Baháʼí pilgrimage.\nBuilt on the slopes of Mount Carmel, the settlement has a history spanning more than 3,000 years. Over the millennia, the Haifa area has changed hands: being conquered and ruled by the Canaanites, Israelites, Phoenicians, Assyrians, Babylonians, Persians, Hasmoneans, Romans, Byzantines, Arabs, Crusaders, Ottomans, and the British. The earliest known settlement in the vicinity was Tell Abu Hawam, a small port city established in the Late Bronze Age (14th century BCE). In the 3rd century CE, Haifa was known as a dye-making center. Haifa el-Atika, 5 km northwest of Tell Abu Hawam, is the former site of Haifa as it existed between the 11th–18th centuries. In the late Ottoman period, in the 1760s, Haifa el-Atika was relocated 2.5 kilometres (1+1⁄2 miles) to the east as a new, fortified town, today known as the Old City of Haifa. \nWhilst in the late 19th century the population was almost exclusively Arab, it was a mixed city during the Mandate period, with a balanced population mix of a 55% Jewish majority alongside a 45% Arab minority by 1945. During and after the Battle of Haifa in the 1948 Palestine war, most of the city's Arab population fled or were expelled and the Old City was subsequently demolished. That year, the city became part of the then-newly established state of Israel. Today it is one of Israel's mixed cities, with an Arab-Israeli population of c.10%.\nAs of 2016, the city is a major seaport located on Israel's Mediterranean coastline in the Bay of Haifa covering 63.7 km2 (24.6 sq mi). It lies about 90 km (56 mi) north of Tel Aviv and is the major regional center of northern Israel. Two respected academic institutions, the University of Haifa and the Technion – Israel Institute of Technology the oldest and top ranked university in both Israel and the Middle East, are located in Haifa, in addition to the largest K–12 school in Israel, the Hebrew Reali School. The city plays an important role in Israel's economy. It is home to Matam, one of the oldest and largest high-tech parks in the country; and prior to the opening of Tel Aviv Light Rail, Haifa was the only Israeli city with an underground rapid transit system, known as the Carmelit. Haifa Bay is a center of heavy industry, petroleum refining and chemical processing. Haifa formerly functioned as the western terminus of an oil pipeline from Iraq via Jordan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 470
+    },
+    "banned_terms": [
+      {
+        "term": "haifa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 153,
+    "attempt": 150,
+    "place_id": "gn-3186573",
+    "input": {
+      "place": {
+        "place_id": "gn-3186573",
+        "name": "Zenica",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 44.20169,
+        "lon": 17.90397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zenica",
+          "url": "https://en.wikipedia.org/wiki/Zenica",
+          "text": "Zenica (English:  ZEN-it-sə, Bosnian: [zěnitsa] ) is a city in Bosnia and Herzegovina and an administrative and economic center of the Federation of Bosnia and Herzegovina's Zenica-Doboj Canton. It is located in the Bosna river valley, about 70 km (43 mi) north of Sarajevo. The city is known for its Ironworks Zenica factory but also as a significant university center. According to the 2013 census, the settlement of Zenica itself counts 70,553 citizens and the administrative area 110,663, making it the nation's fourth-largest city.\nThe urban part of today's city was formed in several phases, including Neolithic, Illyrian, and the Roman Municipium of Bistua Nuova (2nd–4th century; old name of the city), with an early Christian dual basilica. Traces of an ancient settlement have been found here as well; villa rustica, thermae, a temple, and other buildings were also present. The earliest findings date from the period of 3000–2000 BC; they were found in the localities of Drivuša and Gradišće. Zenica's current name was first mentioned in 1415. A medieval church has been unearthed in Zenica, as well as the Franciscan Monastery of St. Mary. The independence of Medieval Bosnia is directly connected to Zenica (Gradješa's plate and abjuration act; Kulin ban's time; Vranduk, a castle of the Bosnian kings; Janjići and 'hižas' [homes] of Bosnian Church members; stećci, stone tombstone monuments, etc.) During Ottoman rule (1463–1878), Zenica became a Muslim town; at the end of the 17th century, Zenica had 2,000 citizens, mostly Muslims; Orthodox and Catholic Christians are mentioned again from the end of the 18th century, and Jews in the 19th century. Modern Zenica was mostly built in the Austro-Hungarian and Yugoslavian periods. The population rose rapidly during the 20th century; however, from the Bosnian War until 2013, the city lost a quarter of its population. The municipality of Zenica became the City of Zenica in 2014.\nThe city is geographically located in the heart of Bosnia. The settled area is 43.01 km2 (16.61 mi2) and of the city proper covers 558.5 km2 (215.6 mi2). Elevation is 310–350 m (1,017–1,148 ft). The rivers Bosna, Lašva, Babina, and Kočeva flow through the settlement. A moderate continental climate prevails. The city has thirteen urban local settlements and it consists of a total of 81 rural settlements.\nZenica has nine national monuments. The football club Čelik is a landmark of the city, and it also has one of the tallest buildings in Bosnia and Herzegovina—Lamela. Famous Zenicans include Semir Osmanagić, Anabela Basalo, Danis Tanović, Amar Jašarspahić Gile, Mladen Krstajić, Dejan Lovren, Mervana Jugić-Salkić, and Amel Tuka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 426
+    },
+    "banned_terms": [
+      {
+        "term": "zenica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 154,
+    "attempt": 151,
+    "place_id": "gn-3421319",
+    "input": {
+      "place": {
+        "place_id": "gn-3421319",
+        "name": "Nuuk",
+        "country": "Greenland",
+        "subdivision": "Sermersooq",
+        "lat": 64.18347,
+        "lon": -51.72157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuuk",
+          "url": "https://en.wikipedia.org/wiki/Nuuk",
+          "text": "Nuuk (Greenlandic pronunciation: [nuːk] ; formerly Danish: Godthåb) is the capital and most populous city of Greenland, an autonomous territory of Denmark. It is the seat of the Sermersooq municipality and the government of Greenland and is the territory's largest cultural and economic center. In January 2025, it had a population of 20,113—more than a third of the territory's population—making it one of the smallest capital cities in the world by population.\n\nThe city was founded in 1728 by the Danish-Norwegian missionary Hans Egede when he relocated from the earlier Hope Colony (Haabets Koloni), where he had arrived in 1721; the governor Claus Paarss was part of the relocation. The new colony was placed at the Inuit settlement of Nûk and named Godthaab ('good hope'). Nuuk is the Greenlandic word for 'cape' and is commonly found in Greenlandic place names. It is so named because of its position at the end of the Nuup Kangerlua fjord on the Labrador Sea's eastern shore. Its latitude, at 64°11' N, makes it the world's northernmost capital, a few kilometres farther north than Reykjavík. When home rule was established in 1979, the authorization of place names was transferred to Greenlandic authorities, who preferred Greenlandic names to Danish ones. The name Godthåb mostly went out of use over the next two decades."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "nuuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 155,
+    "attempt": 152,
+    "place_id": "gn-3691175",
+    "input": {
+      "place": {
+        "place_id": "gn-3691175",
+        "name": "Trujillo",
+        "country": "Peru",
+        "subdivision": "La Libertad",
+        "lat": -8.11599,
+        "lon": -79.02998
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trujillo, Peru",
+          "url": "https://en.wikipedia.org/wiki/Trujillo,_Peru",
+          "text": "Trujillo (Spanish: [tɾuˈxiʝo]; Quechua: Truhillu; Mochica: Cɥimor) is a city in coastal northwestern Peru and the capital of the Department of La Libertad. It is the third most populous city and center of the third most populous metropolitan area of Peru. It is located on the banks of the Moche River, near its mouth at the Pacific Ocean, in the Moche Valley. This was a site of the great prehistoric Moche and Chimu cultures before the Inca conquest and subsequent expansion.\nThe Independence of Trujillo from Spain was proclaimed in the Historic Centre of Trujillo on December 29, 1820, and the city was honored in 1822 by the Congress of the Republic of Peru with the title \"Meritorious City and Faithful to the Fatherland\", for its role in the fight for Peruvian independence. Trujillo is the birthplace of Peru's judiciary.\nIn 1823, Riva Agüero settled in Trujillo after being deposed, but his government lacked legal recognition, while the Congress in Lima continued to function and appointed Torre Tagle as the new president. In 1824, to facilitate the campaign for independence, Trujillo was declared the provisional capital of Peru by Bolívar. It was the scene of a military revolt in 1932. Trujillo is considered the \"cradle of liberty and cradle of the judiciary in Peru\".\nTrujillo is also known as the \"City of Everlasting Spring\", is considered the \"Capital of the Marinera\", a traditional dance in Peru, \"Cradle of the Peruvian Paso horse\", as well as the \"Capital of Culture of Peru\". It has sponsored numerous national and international cultural events, and has a lively arts community. Current festivals include the \"National Marinera Festival\", the Trujillo Spring Festival and the International Book Festival, which is one of the most important cultural events in the country.\nTrujillo is close to two major archeological sites of pre-Columbian monuments: Chan Chan, the largest adobe city in the ancient world, designated a World Heritage Site by UNESCO in 1986; and the temples of the Sun and Moon (the largest adobe pyramid in Peru).\nThe city center contains many examples of colonial and religious architecture, often incorporating distinctive wrought ironwork. It includes residential areas, a central business district, and industrial supply distribution to the various districts. The Roman Catholic Archdiocese of Trujillo has its seat here. Roman Catholicism is the predominant religion and 10 colonial churches are located within the old city wall, now encircled by Avenida España; additional churches in the towns of Huamán, Huanchaco and Moche are located within 15 kilometres (9.3 miles) of Trujillo's centre.\nSince 2011, the city has been developing the pilot project Trujillo: Sustainable City, as part of the platform \"Emerging and Sustainable Cities of the Inter-American Development Bank\", in cooperation with the IDB. In 2012 Trujillo was selected by IBM to participate in a \"Smarter Cities Challenge\" project intended to improve public safety and transportation through technology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 140,
+      "fullExtractWords": 478
+    },
+    "banned_terms": [
+      {
+        "term": "trujillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 156,
+    "attempt": 153,
+    "place_id": "gn-11054399",
+    "input": {
+      "place": {
+        "place_id": "gn-11054399",
+        "name": "Bukit Bintang",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.14657,
+        "lon": 101.71023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bukit Bintang",
+          "url": "https://en.wikipedia.org/wiki/Bukit_Bintang",
+          "text": "Bukit Bintang (Malay: [ˈbu.ket̚ ˈbin.taŋ]; stylised as Bintang Walk or Starhill, the latter being a translation of the Malay name) is the shopping and entertainment district of Kuala Lumpur, Malaysia. It encompasses Jalan Bukit Bintang (Bukit Bintang Road in English) and its immediate surrounding areas. The area has long been Kuala Lumpur's most prominent retail belt that is home to many landmark shopping centres, al-fresco cafés, bars, night markets, food street, mamak stalls as well as hawker-type eateries. This area is popular among tourists and locals, especially among the youths.\nSince June 2021, the local municipal and authority, Kuala Lumpur City Hall (DBKL), has created a scramble crossing at the junction of Bukit Bintang, located in front of the McDonald's Bukit Bintang outlet, just below the KL Monorail Line. This was done to increase the walkability in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "bukit bintang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bukit",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bintang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 157,
+    "attempt": 154,
+    "place_id": "gn-11524601",
+    "input": {
+      "place": {
+        "place_id": "gn-11524601",
+        "name": "Jebel Ali",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.00255,
+        "lon": 55.10811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jebel Ali",
+          "url": "https://en.wikipedia.org/wiki/Jebel_Ali",
+          "text": "Jebel Ali (Arabic: جبل علي) is a major port city located within the Emirate of Dubai, United Arab Emirates, approximately 35 kilometres (22 mi) southwest of the city of Dubai. Situated along the southern coast of the Persian Gulf, it serves as one of the UAE's most significant industrial and logistical hubs. Off its coast lies the artificial archipelago Palm Jebel Ali, one of several palm-shaped islands developed by Nakheel as part of Dubai's coastal expansion projects. The area also encompasses Expo City Dubai, the legacy site of Expo 2020, and Dubai Investment Park, a mixed-use complex that includes industrial, commercial, and residential zones. As of 2024, it has a total population of 540,732.\nInitially a sparsely inhabited coastal area, Jebel Ali was developed in the 1970s as part of a state-directed initiative to diversify Dubai's economy beyond oil. It is the site of the Port of Jebel Ali, the largest man-made harbor in the world and the busiest port in the Middle East by container volume. The port is operated by DP World and serves as a major regional transshipment and cargo handling hub.\nAdjacent to the port is the Jebel Ali Free Zone (JAFZA), established in 1985 to attract foreign investment through regulatory and tax incentives. As of recent years, JAFZA hosts over 8,700 companies from more than 100 countries and contributes approximately 23 percent of Dubai's gross domestic product, with a particular emphasis on non-oil sectors.\nThe area includes several large-scale infrastructure installations, including the Jebel Ali Power and Desalination Complex, one of the largest combined power and water facilities in the world. It also houses Emirates Global Aluminium, a major aluminum smelter, along with oil storage and bunkering terminals, warehousing complexes, and labor accommodations. Jebel Ali is connected to regional and international transport networks via Sheikh Zayed Road (E11), the Dubai Metro Red Line, and Al Maktoum International Airport, located in the adjacent Dubai South district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 320
+    },
+    "banned_terms": [
+      {
+        "term": "jebel ali",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jebel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ali",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 158,
+    "attempt": 155,
+    "place_id": "gn-293397",
+    "input": {
+      "place": {
+        "place_id": "gn-293397",
+        "name": "Tel Aviv",
+        "country": "Israel",
+        "subdivision": "Tel Aviv",
+        "lat": 32.08088,
+        "lon": 34.78057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tel Aviv",
+          "url": "https://en.wikipedia.org/wiki/Tel_Aviv",
+          "text": "Tel Aviv, officially Tel Aviv-Yafo, and also known as Tel Aviv-Jaffa, is the most populous city in the Gush Dan metropolitan area of Israel. Located on the Israeli Mediterranean coastline and with a population of 494,900, it is the economic and technological center of the country and a global high-tech hub. If East Jerusalem is considered part of Israel, Tel Aviv is the country's second-most-populous city, after Jerusalem; if not, Tel Aviv is the most populous city, ahead of West Jerusalem.\nTel Aviv is governed by the Tel Aviv-Yafo Municipality, headed by Mayor Ron Huldai, and is home to most of Israel's foreign embassies. It is a beta+ world city and is ranked 53rd in the 2022 Global Financial Centres Index. Tel Aviv has the third- or fourth-largest economy and the largest economy per capita in the Middle East. Tel Aviv is ranked the 4th top global startup ecosystem hub. The city currently has the highest cost of living in the world. Tel Aviv receives over 2.5 million international visitors annually. Tel Aviv is home to Tel Aviv University, the largest university in the country with more than 30,000 students.\nThe city was founded in 1909 by the Yishuv (Jewish residents) and initially given the Hebrew name Ahuzat Bayit (Hebrew: אחוזת בית, lit. 'House Estate' or 'Homestead'), namesake of the Jewish association which established the neighbourhood as a modern housing estate on the outskirts of the ancient port city of Jaffa (Yafo in Hebrew), then part of the Mutasarrifate of Jerusalem within the Ottoman Empire. Its name was changed the following year to Tel Aviv, after the biblical name Tel Abib (lit. \"Tell of Spring\") adopted by Nahum Sokolow as the title for his Hebrew translation of Theodor Herzl's 1902 novel Altneuland (\"Old New Land\"). Other Jewish suburbs of Jaffa had been established before Tel Aviv, the oldest among them being Neve Tzedek. Over the following decades, Tel Aviv started rapidly developing and expanding, under the leadership of Meir Dizengoff. Tel Aviv was given township status within the Jaffa Municipality in 1921, and eventually became independent from Jaffa in 1934. Accelerating Jewish immigration, largely from Nazi Germany, caused the growth of Tel Aviv to soon outpace that of Jaffa, which had a majority Arab population at the time. In 1948, the Israeli Declaration of Independence was proclaimed in the city, and government functions were carried out there until they moved to Jerusalem over the following few years. After the 1947–1949 Palestine war, Tel Aviv began the municipal annexation of parts of Jaffa, being fully reunified with Jaffa under the name Tel Aviv in April 1950, before a renaming to Tel Aviv-Yafo in August 1950.\nTel Aviv's White City, designated a UNESCO World Heritage Site in 2003, comprises the world's largest concentration of International Style buildings, including Bauhaus and other related modernist architectural styles. Popular attractions include Old Jaffa, the Eretz Israel Museum, the Museum of Art, Yarkon Park, and the city's promenade and beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 494
+    },
+    "banned_terms": [
+      {
+        "term": "tel aviv",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aviv",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 159,
+    "attempt": 156,
+    "place_id": "gn-2934691",
+    "input": {
+      "place": {
+        "place_id": "gn-2934691",
+        "name": "Duisburg",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.43247,
+        "lon": 6.76516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Duisburg",
+          "url": "https://en.wikipedia.org/wiki/Duisburg",
+          "text": "Duisburg (German: [ˈdyːsbʊʁk] ; Low German: Duisborg [ˈdʏsbɔɐ̯χ]) is a major city in western Germany, located in the state of North Rhine-Westphalia. With around half a million inhabitants, it is one of the largest cities in the Ruhr area and part of the larger Rhine-Ruhr metropolitan region, one of the biggest population centers in Europe. Duisburg is situated at the confluence of the Ruhr and the Rhine, a geographic position that has historically made it an important center of trade, industry, and transportation. Administratively, Duisburg forms an independent city (kreisfreie Stadt).\nThe city is known for hosting Europe's largest inland port, the Port of Duisburg, which plays a key role in European logistics and international trade. The port's facilities are directly linked to major motorways, rail networks, and the Rhine waterway, connecting Duisburg to the North Sea and beyond. Today, Duisburg is a hub for the steel, chemical, and logistics industries, and it has also become an important node in trade relations with China, being a key terminus for freight trains on the Chongqing–Xinjiang–Europe railway.\nHistorically, Duisburg traces its origins back to a Frankish settlement and was first documented in the 9th century. During the Middle Ages, it developed as a trading town on the Rhine and briefly served as a member of the Hanseatic League. Although the city lost importance after the silting of its old Rhine port in the late medieval period, it gained renewed significance with the rise of heavy industry in the 19th century. The expansion of coal mining, ironworks, and steel production transformed Duisburg into one of Germany's key industrial centers during the Industrial Revolution.\nModern Duisburg combines its industrial legacy with cultural and educational institutions such as the University of Duisburg-Essen, one of the largest universities in Germany. The city is also home to theaters, museums, and sports venues, while its industrial heritage sites, such as the Landschaftspark Duisburg-Nord, have been repurposed into landmarks of cultural tourism. Like much of the Ruhr area, Duisburg has undergone structural change in recent decades, shifting from heavy industry to a more diversified economy that includes services, logistics, and research."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 352
+    },
+    "banned_terms": [
+      {
+        "term": "duisburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 161,
+    "attempt": 157,
+    "place_id": "gn-3699088",
+    "input": {
+      "place": {
+        "place_id": "gn-3699088",
+        "name": "Cajamarca",
+        "country": "Peru",
+        "subdivision": "Cajamarca Department",
+        "lat": -7.16378,
+        "lon": -78.50027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cajamarca",
+          "url": "https://en.wikipedia.org/wiki/Cajamarca",
+          "text": "Cajamarca (Spanish pronunciation: [kaxaˈmaɾka]), also known by the Quechua name, Kashamarka, is the capital and largest city of the Cajamarca Region as well as an important cultural and commercial center in the northern Andes. It is located in the northern highlands of Peru at approximately 2,750 m (8,900 ft) above sea level in the valley of the Mashcon river. Cajamarca had an estimated population of about 226,031 inhabitants in 2015, making it the 13th largest city in Peru.\nCajamarca has a mild highland climate, and the area has very fertile soil. The city is well known for its dairy products and mining activity in the surroundings.\nAmong its tourist attractions, Cajamarca has numerous examples of Spanish colonial religious architecture, beautiful landscapes, pre-Hispanic archeological sites and hot springs at the nearby town of Baños del Inca (Baths of the Inca). The history of the city is highlighted by the Battle of Cajamarca, which marked the defeat of the Inca Empire by Spanish invaders as the Incan emperor Atahualpa was captured and executed here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "cajamarca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 162,
+    "attempt": 158,
+    "place_id": "gn-4509884",
+    "input": {
+      "place": {
+        "place_id": "gn-4509884",
+        "name": "Dayton",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 39.75895,
+        "lon": -84.19161
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dayton, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Dayton,_Ohio",
+          "text": "Dayton ( ) is a city in Montgomery County, Ohio, United States, and its county seat. It is the \nsixth-most populous city in Ohio, with a population of 137,644 at the time of 2020 United States census. The Dayton metropolitan area has an estimated 822,000 residents and is the state's fourth-largest metropolitan area. Dayton is located within Ohio's Miami Valley region, 40 miles (64 km) north of Cincinnati and 55 miles (89 km) southwest of Columbus, Ohio.\nDayton was founded in 1796 along the Great Miami River and named after Jonathan Dayton, a Founding Father of the United States who owned a significant amount of land in the area. It grew in the 19th century as a canal town and was home to many patents and inventors, most notably the Wright brothers, who developed the first successful motor-operated airplane. It later developed an industrialized economy and was home to the Dayton Project, a branch of the larger Manhattan Project, to develop the polonium triggers used in early atomic bombs. \nWith the decline of heavy manufacturing in the late 20th century, Dayton shifted from a manufacturing economy to more of a service economy. Ohio's borders are within 500 miles (800 km) of roughly 60 percent of the country's population and manufacturing infrastructure, making Dayton a logistics hub. The city near Wright-Patterson Air Force Base, a significant contributor to research and development in the industrial, aeronautical, and astronautical engineering fields. Along with defense and aerospace, healthcare accounts for much of the Dayton area's economy. Significant institutions in Dayton include the Air Force Institute of Technology, Carillon Historical Park, the Dayton Art Institute, the Dayton Performing Arts Alliance, Wright State University, and the University of Dayton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "dayton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 163,
+    "attempt": 159,
+    "place_id": "gn-1253367",
+    "input": {
+      "place": {
+        "place_id": "gn-1253367",
+        "name": "Vasco da Gama",
+        "country": "India",
+        "subdivision": "Goa",
+        "lat": 15.39585,
+        "lon": 73.81568
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vasco da Gama, Goa",
+          "url": "https://en.wikipedia.org/wiki/Vasco_da_Gama,_Goa",
+          "text": "Vasco da Gama (, Portuguese: [ˈvaʃku ðɐ ˈɣɐmɐ]), often shortened to Vasco, is a city in the state of Goa on the west coast of India. It is named after the Portuguese explorer Vasco da Gama. It is the headquarters of the Mormugão taluka (subdistrict). The city lies on the western tip of the Mormugao peninsula, at the mouth of the Zuari River, about 30 kilometres (20 mi) from Panaji, Goa's capital, 28 kilometres (17 mi) from Margao, the district headquarters and about 5 kilometres (3 mi) from Dabolim Airport. The city is sometimes also referred to as Sambhaji Nagar after the Maratha king Sambhaji, a decision that has been controversial.\nThe city was developed along with the nearby Mormugao Port in 1886 and remained with the Portuguese Empire until the 1961 Indian military operation that annexed Goa. The 1888-constructed Mormugao Port remains a busy shipping route in Asia. It is one of the major ports of independent India. The shipbuilding area of Goa Shipyard Limited that builds Indian Navy and Coast Guard vessels was also built there in 1957 (during the Portuguese era). Initially built around the city's harbour as the 'Estaleiros Navais de Goa', the area has, since the end of Portuguese presence, expanded into construction for several other branches of maritime patrol and security. The Indian Navy has an obvious presence here, with its vast campuses and ports, which include the naval base INS Hansa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "vasco da gama",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vasco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gama",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 164,
+    "attempt": 160,
+    "place_id": "gn-2636882",
+    "input": {
+      "place": {
+        "place_id": "gn-2636882",
+        "name": "Stockport",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.40979,
+        "lon": -2.15761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stockport",
+          "url": "https://en.wikipedia.org/wiki/Stockport",
+          "text": "Stockport is a town in Greater Manchester, England, 6 miles (10 km) south-east of Manchester, 7 miles (11 km) south-west of Ashton-under-Lyne and 12 miles (19 km) north of Macclesfield. The rivers Goyt and Tame merge to create the River Mersey here. It is the main settlement of the wider Metropolitan Borough of Stockport. At the 2021 census, the built up area as defined by the Office for National Statistics had a population of 117,935, and the metropolitan borough had a population of 294,773.\nMost of the town is within the boundaries of the historic county of Cheshire, with the area north of the Mersey in the historic county of Lancashire. Stockport in the 16th century was a small town entirely on the south bank of the Mersey, known for the cultivation of hemp and manufacture of rope. In the 18th century, it had one of the first mechanised silk factories in the British Isles. Stockport's predominant industries of the 19th century were the cotton and allied industries. It was also at the centre of the country's hatting industry, which by 1884 was exporting more than six million hats a year; the last hat works in Stockport closed in 1997. The town's football club, Stockport County, is nicknamed The Hatters.\nDominating the western approaches to the town is Stockport Viaduct. Built in 1840, its 27 brick arches carry the main line railway through the town over the River Mersey and the M60 motorway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "stockport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
