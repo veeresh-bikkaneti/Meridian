@@ -41,8 +41,9 @@ Base: `origin/main` @ `650065e95f01` (the live build investigated).
 - [x] Transport: no endpoint → complete network no-op (returns false).
   Endpoint set → `navigator.sendBeacon` first, `fetch` POST +
   keepalive fallback, failures swallowed. Payload hard cap 4096 bytes
-  (history dropped first, then strings truncated) — implemented +
-  unit-tested.
+  (serialize → history trimmed to last 4 → history dropped → breadcrumb
+  + device dropped → string fields progressively truncated → core-only
+  fallback) — implemented + unit-tested.
 - [x] Endpoint config via flags: top-level `observabilityEndpoint` in
   flags.json, validated in `src/lib/flags.ts` (https or root-relative
   only, fail closed to null). **Shipped flags.json sets NO endpoint** —
@@ -65,31 +66,94 @@ Base: `origin/main` @ `650065e95f01` (the live build investigated).
   jetsam next-boot explanation, privacy statement, enable steps,
   how to read counts/funnel, Globe-split follow-up noted.
 
+## Reviewer follow-up fixes (2026-10-04, after REPORT-fix-review)
+
+Independent review of `ec81ff0` returned NEEDS WORK: one major defect
+(D1) + two minor (D2, D3), one minor out of scope (D4), one
+informational (D5). Disposition on this branch:
+
+- [x] **D1 (major) — FIXED.** `cleanExit` was only stamped dirty by
+  `writeRun`, which runs *after* the data-chunk load, so a first-run
+  jetsam kill during the chunk load left the flag missing/`"1"` and
+  no `suspected_crash` ever fired for the headline window.
+  `openRun` (`src/components/game-app.tsx`) now calls
+  `stampCleanExitDirty()` at run start, **before** `await placesFor(...)`
+  (comment at the call site covers breaker interplay, no spurious
+  report after a caught chunk-load error, and re-arming on every
+  retry). Breaker logic, `writeRun`, and `clean-exit.ts` semantics
+  unchanged. No other arming point was added: the game-screen
+  `placesFor` runs after commit (flag already dirty) and `onReplay`
+  uses already-loaded places.
+  Proven by REAL-SEQUENCE tests (no seeded flag, no fake unclean
+  check — the real `isUncleanShutdown` / `stampCleanExitDirty` /
+  `handlePageHide` / `clearRunAfterUncleanShutdown` against one shared
+  fake storage): 4 new unit tests in `src/lib/observability.test.ts`
+  (kill-during-load → exactly one `suspected_crash`, globe /
+  `data_chunk_load_start`; synchronous arming; clean exit after an
+  armed start → none; repeat kill after breaker re-arm → second
+  report). Plus a new E2E test in `tests/e2e/observability.spec.ts`
+  that holds the real built Globe chunk request
+  (`assets/globe-*.js`, 13,696,487 B), starts a run via the real UI,
+  polls in-page state (reads only) until `cleanExit === "0"` and the
+  breadcrumb's `lastMilestone === "data_chunk_load_start"`, then
+  opens the next boot via `window.open` (Chromium clones the armed
+  tab's sessionStorage per spec; the armed tab never fires pagehide
+  first): exactly one `suspected_crash` (globe /
+  `data_chunk_load_start`, armed session id) and the popup lands on
+  the menu. The spec comment states precisely what this does and
+  does not simulate (storage-equivalent next boot in a different
+  tab; no real process kill; desktop Chromium).
+- [x] **D2 (minor) — DOCS CORRECTED** (persistence deliberately not
+  built). Delivery is now stated as **at-most-once** in
+  `docs/observability.md` and the `observability.ts` header: a queued
+  `suspected_crash` lives only in memory until flags resolve and
+  flush it (bounded by the flags load/timeout); if the tab is closed
+  or killed again in that window, the report is lost and will not
+  re-fire (the trail was already rotated). The "never lost just
+  because config is async" wording is removed everywhere.
+- [x] **D3 (minor) — FIXED.** Queue eviction in `emit()` removes the
+  oldest **non-`suspected_crash`** event first; only an entirely
+  `suspected_crash` queue may drop its oldest. Memory bound
+  (MAX_QUEUE 20) unchanged. 2 new unit tests (burst of 25 errors
+  cannot evict a queued `suspected_crash`, which flushes first;
+  error-only queue still caps at 20 FIFO).
+- [x] **D5 (informational) — FIXED.** Cap sequence now stated exactly
+  as implemented everywhere it is described (`docs/observability.md`,
+  this file, the `truncateEventToCap` docstring): serialize → trim
+  history to last 4 → drop history → drop breadcrumb + device →
+  progressively truncate string fields (120/60/24, error name/message
+  also cut) → core-only fallback (type/ts/buildId).
+- [ ] **D4 (minor) — DEFERRED**, out of scope for this fix round:
+  Worker ingest schema is a subset of the documented schema
+  (breadcrumb internals / device numeric types / unknown fields not
+  validated). Recorded as a worker-schema follow-up for the deploy
+  step; client behavior unaffected.
+
 ## Gates (run on this branch, this VM)
 
 - `npx tsc --noEmit` — **clean**.
 - `npm test` — **exit 0**. Suite 1 (scripts): 389 tests, 382 pass,
   7 skipped (pre-existing skips in files this branch does not touch),
-  0 fail. Suite 2 (src): **582/582 pass**, including 15 new tests
-  (observability 9, map-options 3, flags-endpoint 3).
+  0 fail. Suite 2 (src): **588/588 pass**, including 21 new tests
+  (observability 15 — 9 original + 4 D1 real-sequence + 2 D3 —
+  map-options 3, flags-endpoint 3).
 - `npm run test:worker` — **9/9 pass** (separate script; main test
   script scope unchanged apart from the added src test files).
 - `node scripts/lint-cards.mjs` — **GATE PASSED**.
-- `npm run build:pages` — **green**. Boot assets vs the investigated
-  live baseline (1,463,898 B = shell 4,828 + index 435,175 + routes
-  986,165 + styles 37,730): new total **1,469,949 B, delta +6,051 B**
-  (index 435,521 +346; routes 991,870 +5,705; styles/shell unchanged).
-  Satellite chunk 1,068,203 B (+816 vs live 1,067,387). Bundle grep:
-  `suspected_crash` present in the built routes chunk — shipped.
-  Note: the build was run at HEAD `d195a72` (before the docs/E2E-only
+- `npm run build:pages` — **green**. Boot assets vs the `ec81ff0`
+  figure (1,469,949 B): new total **1,470,026 B, delta +77 B**
+  (routes 991,947 +77; index 435,521, shell 4,828, styles 37,730
+  unchanged). Satellite chunk 1,068,203 B (unchanged).
+  Note: the build was run at HEAD `e323b4f` (before the docs/status-only
   final commit); no client code changed after it.
 - Playwright E2E — **ran in this environment** (Chromium 152,
   `/opt/meta-chromium/chrome`, built artifact):
-  - `tests/e2e/observability.spec.ts` (new; project added to
-    `playwright.config.ts`): **2/2 pass** — seeded unclean boot emits
+  - `tests/e2e/observability.spec.ts` (project added to
+    `playwright.config.ts`): **3/3 pass** — seeded unclean boot emits
     exactly one `suspected_crash` with previous edition context
     (globe / `data_chunk_load_start`), reload emits none; clean boot
-    emits none.
+    emits none; **new D1 real-sequence test** (chunk held, armed via
+    the real run start, no seeding) emits exactly one on next boot.
   - Regression: `crash-loop-breaker.spec.ts` **3/3 pass**,
     `feature-flags.spec.ts` **8/8 pass**. The full E2E suite was NOT
     run end-to-end.

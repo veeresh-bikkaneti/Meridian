@@ -17,15 +17,23 @@ fetch survives. Detection is therefore by **asymmetry at next boot**:
    data_chunk_load_start → data_loaded → map_init_start → map_ready →
    game_loaded` — plus the current edition/region/chunk where known.
 2. The pre-existing clean-exit flag (`meridian.cleanExit`, see
-   `src/game/clean-exit.ts`) is `"0"` whenever a run was written but the
-   page never unloaded.
+   `src/game/clean-exit.ts`) is `"0"` whenever a run was started but
+   the page never unloaded. The flag is stamped dirty **at run start,
+   before the data-chunk load** (`openRun` calls
+   `stampCleanExitDirty()` right at `run_start`, ahead of
+   `await placesFor(...)`; `writeRun` re-stamps it at commit), so the
+   covered kill windows are the **chunk load, map init, and gameplay**
+   — including a first-run kill during the 13.7 MB Globe chunk load,
+   which leaves no saved run behind (the crash-loop breaker clearing
+   the absent run and landing on the menu is harmless there).
 3. On the next boot, **before** the trail is overwritten and before the
    crash-loop breaker consumes the flag, `initObservability()`
    (`src/lib/observability.ts`) checks: unclean flag **and** a previous
    breadcrumb → emit **one** `suspected_crash` event carrying the
    previous trail, then immediately rotate/clear the previous trail.
-   Rotation happens even if transport fails, so the event fires
-   **exactly once**.
+   Rotation happens even if transport fails, so the event can never
+   fire twice. Delivery itself is **at-most-once** — see Transport &
+   configuration below.
 
 The previous trail's `lastMilestone` is the funnel answer: if trails stop
 at `data_chunk_load_start` for Globe, sessions die loading the 13.7 MB
@@ -34,8 +42,11 @@ chunk; if they stop at `map_init_start`, they die constructing the map.
 ## Event schema
 
 Every event is one JSON object, hard-capped at **4096 bytes** on the
-client (milestone history is dropped first, then strings truncated) and
-rejected by the receiver above 8 KB.
+client (cap sequence: serialize → trim the breadcrumb history to its
+last 4 entries → drop the history entirely → drop breadcrumb + device
+→ progressively truncate string fields, limits 120/60/24 with the
+error name/message also cut → core-only fallback of type/ts/buildId)
+and rejected by the receiver above 8 KB.
 
 | Field | Type | Notes |
 |---|---|---|
@@ -78,9 +89,14 @@ explicitly configured (below).
   failures swallowed.
 - Boot ordering: flags load asynchronously, so boot events (including
   `suspected_crash`) **queue in memory** and flush when `loadFlags()`
-  resolves and the endpoint is applied. A queued event is never lost
-  just because config is async; with no endpoint configured it is never
-  sent.
+  resolves and the endpoint is applied. Delivery is **at-most-once**:
+  a queued event lives only in memory until that flush (bounded by
+  the flags load/timeout); if the tab is closed or killed again in
+  that window, the report is lost and will not re-fire — the previous
+  trail was already rotated at boot. With no endpoint configured the
+  queue is never sent. The bounded queue (20) evicts the oldest
+  non-`suspected_crash` event first, so a burst of live error events
+  cannot silently evict a queued crash report.
 - Endpoint config lives in `public/flags.json` as a **top-level**
   `observabilityEndpoint` field (validated in `src/lib/flags.ts`:
   https URL or root-relative path only; anything else fails closed to
