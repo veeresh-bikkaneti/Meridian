@@ -169,3 +169,16 @@ the record from disk and the published file at index 73 (contains the
 new text). Re-fold unchanged: 91/109/0; union 320; manifest 320;
 leak 0/1,600. Process lesson recorded: every repair write is re-read
 from disk before being reported as done. Re-presented a third time.
+
+## WAVE 1 — CERTIFIED (reviews/milestone-1-final.md)
+Third narrow review: CERTIFIED. Savannah tier-5 text verified repaired
+in all three record copies and published index 73; counts unchanged
+(91/109/0; union 320; manifest 320; leak 0/1,600). Wave 1 landed:
+229 + 91 = 320 assembled. Remaining to 365: 45. Pool remaining: 7,597.
+Wave 2 = pool ranks 218-425 (200 places, jobs committed 8dcffe2,
+174 with section extracts). Wave-2 worker brief hardened: copy
+place_ids and answer fields character-for-character from the job
+input; quotes verbatim (start after pronunciation parentheticals);
+plain short sentences from the start; SELF-VALIDATE every record with
+the shipped validateRecord against the job inputs and fix before
+delivering; deliver via muse.write + read-back, chunked reply fallback.
