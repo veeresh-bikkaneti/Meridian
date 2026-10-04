@@ -39,7 +39,7 @@ import {
 } from "@/game/session";
 import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
-import { createDealer, poolForNewRun, seenStoreFor, mintSeed } from "@/game/trail";
+import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
@@ -49,6 +49,7 @@ import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
+import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import {
   buildCollisionCounts,
   buildQuestionLabel,
@@ -369,13 +370,17 @@ function clearDrop() {
  * shrank another band's pool into rapid cycling. Each band now keeps its
  * own history; the pre-band history migrates lazily into the first band
  * touched (see seenStoreFor).
+ *
+ * Also threads through `cycleCompleted`: true when the band's persistent
+ * history covered the whole band catalog and was just reset — the
+ * cleared-mode celebration's backstop signal (see openRun).
  */
 function poolForRunStart(
   allPlaces: { id: string }[],
   edition: Edition,
   regionId: string,
   choice: PickerDifficulty,
-): { poolIds: string[]; prevLastId: string | null } {
+): { poolIds: string[]; prevLastId: string | null; cycleCompleted: boolean } {
   return poolForNewRun(allPlaces, seenStoreFor(edition, regionId, choice));
 }
 
@@ -505,6 +510,11 @@ export function GameApp() {
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  // Cleared-mode celebration: set when a difficulty band's full cycle is
+  // celebrated (primary onContinue trigger or the run-start backstop). The
+  // dialog renders over the current screen; dismissing returns the player
+  // to exactly where they were.
+  const [cleared, setCleared] = useState<ClearedInfo | null>(null);
   // Difficulty picker: one choice applies across Globe → Country → State and
   // survives edition switches. Persisted so it survives reloads too.
   const [difficultyChoice, setDifficultyChoiceState] = useState<PickerDifficulty>(readDifficultyChoice);
@@ -657,7 +667,21 @@ export function GameApp() {
         // pool is built. Fail-closed: an empty band yields an empty pool,
         // never a widened one.
         const banded = filterByTier(places, choice);
-        const { poolIds, prevLastId } = poolForRunStart(banded, edition, regionId, choice);
+        const { poolIds, prevLastId, cycleCompleted } = poolForRunStart(banded, edition, regionId, choice);
+        // Cleared-mode backstop: a completed cycle at run start means the
+        // band was fully played through. If it was already celebrated, the
+        // new cycle begins silently (retire the mark); if not — a clear
+        // from before this feature existed, or a crash before the
+        // celebration — celebrate immediately instead of silently
+        // repeating. One celebration per clear: the mark is set either way.
+        if (cycleCompleted) {
+          if (wasClearedCelebrated(edition, regionId, choice)) {
+            clearClearedMark(edition, regionId, choice);
+          } else {
+            markClearedCelebrated(edition, regionId, choice);
+            setCleared({ edition, regionId, regionName, choice });
+          }
+        }
         const next = resumeRun(
           readRun(),
           { edition, regionId, regionName, dateKey, difficultyChoice: choice },
@@ -841,7 +865,30 @@ export function GameApp() {
             // summary, so the replay starts a brand-new session.
             replaceSession(startSession(trailDate(), Date.now()));
           }}
+          onCleared={(info) => setCleared(info)}
         />
+        {cleared ? (
+          <ClearedCelebrationDialog
+            info={cleared}
+            onDismiss={() => setCleared(null)}
+            onPlayBand={(edition, regionId, regionName, choice) => {
+              // Dismiss first: the new run replaces the screen (openRun's
+              // loading state), and its own backstop decides whether the
+              // fresh band deserves a celebration.
+              setCleared(null);
+              void openRun(edition, regionId, regionName, choice);
+            }}
+            onBrowseEditions={() => {
+              // Back to the edition picker WITHOUT ending the game: the
+              // session (and its score) stays alive, like the Editions
+              // button mid-run.
+              setCleared(null);
+              clearDrop();
+              setRun(null);
+              setMenu(null);
+            }}
+          />
+        ) : null}
         {idleToast}
       </>
     );
@@ -1171,6 +1218,7 @@ function Play({
   onEditions,
   onSummaryDone,
   onReplayed,
+  onCleared,
 }: {
   run: Run;
   session: Session | null;
@@ -1193,6 +1241,8 @@ function Play({
   onSummaryDone: () => void;
   /** A fresh run started via Play again; starts a fresh session. */
   onReplayed: (run: Run) => void;
+  /** A difficulty band was just cleared: show the celebration dialog. */
+  onCleared: (info: ClearedInfo) => void;
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
@@ -1254,6 +1304,7 @@ function Play({
       onEditions={onEditions}
       onSummaryDone={onSummaryDone}
       onReplayed={onReplayed}
+      onCleared={onCleared}
     />
   );
 }
@@ -1268,6 +1319,7 @@ function PlayLoaded({
   onEditions,
   onSummaryDone: finishSummary,
   onReplayed,
+  onCleared,
 }: {
   run: Run;
   places: Starter[];
@@ -1287,6 +1339,8 @@ function PlayLoaded({
   onEditions: () => void;
   onSummaryDone: () => void;
   onReplayed: (run: Run) => void;
+  /** A difficulty band was just cleared: show the celebration dialog. */
+  onCleared: (info: ClearedInfo) => void;
 }) {
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
@@ -1645,6 +1699,44 @@ function PlayLoaded({
   }
 
   function onContinue() {
+    // Cleared-mode primary trigger, checked BEFORE advancing: if the
+    // just-answered place completes the band's catalog (persistent history
+    // plus the place just answered covers every band place), the band is
+    // cleared. Celebrate INSTEAD of advancing — the player stays on the
+    // answered reveal, and tapping "Next place" again advances normally
+    // because the mark is already set. Never fires mid-question: this is
+    // the "Next place" handler only.
+    const justAnswered = dealer.at(run.index);
+    // The mark check comes first: once celebrated, no later tap in this
+    // cycle can re-trigger, so the catalog/history scan below is skipped.
+    if (justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
+      // The band catalog is the unfiltered region catalog narrowed by the
+      // run's difficulty band — the same filter the replay path uses.
+      const bandCatalogIds = filterByTier(places, run.difficultyChoice).map(
+        (place) => place.id,
+      );
+      if (bandCatalogIds.length > 0) {
+        // The persistent history plus the place just answered covers the
+        // band's catalog: the band is cleared. Checked through the
+        // canonical isBandCleared helper over a union store (the history
+        // write for the just-answered place may not have landed yet).
+        const seenUnion = memorySeenStore();
+        seenUnion.write([
+          ...seenStoreFor(run.edition, run.regionId, run.difficultyChoice).read(),
+          justAnswered.id,
+        ]);
+        if (isBandCleared(bandCatalogIds, seenUnion)) {
+          markClearedCelebrated(run.edition, run.regionId, run.difficultyChoice);
+          onCleared({
+            edition: run.edition,
+            regionId: run.regionId,
+            regionName: run.regionName,
+            choice: run.difficultyChoice,
+          });
+          return;
+        }
+      }
+    }
     setDrop(null);
     clearDrop();
     setAimAnnouncement(null);
@@ -1690,12 +1782,29 @@ function PlayLoaded({
     // Play again replays under the SAME difficulty band the run started with:
     // the pool is re-filtered from run.difficultyChoice — never silently
     // widened back to the full catalog.
-    const { poolIds: replayPoolIds, prevLastId: replayPrevLastId } = poolForRunStart(
+    const { poolIds: replayPoolIds, prevLastId: replayPrevLastId, cycleCompleted: replayCycleCompleted } = poolForRunStart(
       filterByTier(places ?? [], run.difficultyChoice),
       run.edition,
       run.regionId,
       run.difficultyChoice,
     );
+    // Cleared-mode backstop, same as openRun: a completed cycle here means
+    // the band was fully played through (e.g. a crash before the onContinue
+    // trigger could celebrate). Already celebrated -> the new cycle begins
+    // silently; otherwise celebrate immediately, once per clear.
+    if (replayCycleCompleted) {
+      if (wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
+        clearClearedMark(run.edition, run.regionId, run.difficultyChoice);
+      } else {
+        markClearedCelebrated(run.edition, run.regionId, run.difficultyChoice);
+        onCleared({
+          edition: run.edition,
+          regionId: run.regionId,
+          regionName: run.regionName,
+          choice: run.difficultyChoice,
+        });
+      }
+    }
     const freshRun = resumeRun(
       run,
       {
