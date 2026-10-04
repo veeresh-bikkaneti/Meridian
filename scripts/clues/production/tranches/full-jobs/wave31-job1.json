@@ -1,0 +1,827 @@
+[
+  {
+    "rank": 6045,
+    "attempt": 6001,
+    "place_id": "gn-3525950",
+    "input": {
+      "place": {
+        "place_id": "gn-3525950",
+        "name": "La Concordia",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.11801,
+        "lon": -92.69089
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Concordia, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/La_Concordia,_Chiapas",
+          "text": "La Concordia is a town and municipality in the Mexican state of Chiapas in southern Mexico.  \nAs of 2010, the municipality had a total population of 44,082, up from 39,770 as of 2005. It covers an area of 1112.9 km2.\nAs of 2010, the town of La Concordia had a population of 7,641. Other than the town of La Concordia, the municipality had 800 localities, the largest of which (with 2010 populations in parentheses) were: Benito Juárez (2,715), El Ámbar (El Ámbar de Echeverría) (2,592), classified as urban, and La Tigrilla (2,346), Diamante de Echeverría (2,157), Dolores Jaltenango (2,090), Independencia (1,953), Plan de Agua Prieta (1,752), Rizo de Oro (1,434), Reforma (1,148), Ignacio Zaragoza (1,127), El Ramal (Porvenir) (1,054), and Nueva Libertad (1,005), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "la concordia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "concordia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6046,
+    "attempt": 6002,
+    "place_id": "gn-3530523",
+    "input": {
+      "place": {
+        "place_id": "gn-3530523",
+        "name": "Coatetelco",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.72963,
+        "lon": -99.32619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coatetelco, Morelos",
+          "url": "https://en.wikipedia.org/wiki/Coatetelco,_Morelos",
+          "text": "Coatetelco is an autonomous indigenous municipality created on January 1, 2019, in the Mexican state of Morelos. Located 980 meters (3,220 ft) above sea level, the municipality includes Lake Coatetelco and the Coatetelco archaeological site. It is one of the few indigenous fishing communities in central Mexico and has a population of 9,094.\nThe name Coatetelco comes from the Nahua language and means, \"place of the serpents in the stone mounds.\" Quahtetelco (Coatetelco) was ruled by Xochicalco, and later by Cuauhnáhuac. When Cuauhnáhuac was conquered by the Aztecs in 1370, the commercially important Quahtetelco became a tributary area of Tenochtitlán.\nShortly after the Spanish conquest in the 16th century, Coatetelco became part of the Marquesado del Valle de Oaxaca, land was expropriated, and sugarcane planting began. When Mexico became independent in 1821, Coatetelco became part of the Third Military District of the State of Mexico and belonged to the municipality of Mazatepec starting 1823. In 1848 the hacienda of Miacatlan was to be incorporated into Mazatepec; the owners protested, and ten years later the municipality of Miacatlan was established, including Lake Coatetelco and the town of Coatetelco.\nThe state of Morelos was created in 1869, and Coatetelco became a part of the municipality of Miacatlán. Sugarcane production reached its peak during the Porfiriato, although the haciendas of Santa Cruz, Actopan, Cocoyotla, and Miacatlan were abandoned shortly after the outbreak of the Mexican Revolution of 1910. The hacienda of Acatzingo is in ruins today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "coatetelco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6047,
+    "attempt": 6003,
+    "place_id": "gn-3690010",
+    "input": {
+      "place": {
+        "place_id": "gn-3690010",
+        "name": "Amalfi",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.91016,
+        "lon": -75.07764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amalfi, Antioquia",
+          "url": "https://en.wikipedia.org/wiki/Amalfi,_Antioquia",
+          "text": "Amalfi is a town and municipality of the Colombian Andes, located in the northern part of the Central Mountain Range in the Antioquia Department, and part of the subregion of Northeastern Antioquia. The territory of Amalfi is bordered by the municipalities of Anorí and Segovia to the north; Segovia, Remedios and Vegachí to the east; Vegachí, Yalí, Yolombó and Gómez Plata to the south and Anorí and Guadalupe to the west. The town is served by Amalfi Airport.\nIt has an area of 91 square miles, making it one of the biggest Antioquian municipalities. As of 2026, it has a population of 22,088. The county seat has a population of 16,747and is located in La Víbora Valley, a mountainous region rich in gold and water reserves.\nThese resources attracted settlers during the late 19th century. They came from other Antioquian regions, especially Copacabana, Rionegro, La Ceja, Santa Fe de Antioquia, Yarumal, and Santa Rosa de Osos, as well as migrants from countries such as Spain, Syria, Lebanon, Morocco, China, Germany, Sweden, Finland, and West African countries like Nigeria. \nThe region held the native communities of the Yamesíes, Guamocoes, and Tahamíes. None of their original culture remains, but traces survive in local expressions, geographical names, the people's connection with the jaguar, and the petroglyphs located nearby.\nThe municipality is identified with the Tiger of Amalfi. This is due to a historical event that took place in 1949 when some locals hunted what they believed to be a Bengal tiger that was eating thousands of the townspeople's cattle. The tiger was later discovered to be a jaguar; however, the legend retained the term \"tiger\", which led the inhabitants to be known as the Tigers of Amalfi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "amalfi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6048,
+    "attempt": 6004,
+    "place_id": "gn-3832711",
+    "input": {
+      "place": {
+        "place_id": "gn-3832711",
+        "name": "Villa La Angostura",
+        "country": "Argentina",
+        "subdivision": "Neuquen",
+        "lat": -40.76173,
+        "lon": -71.64631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa La Angostura",
+          "url": "https://en.wikipedia.org/wiki/Villa_La_Angostura",
+          "text": "Villa La Angostura (Spanish for Town of the Narrowing) is a town located in the Los Lagos Department in the south of the Argentine province of Neuquén, on the northwest shore of the Nahuel Huapi Lake.\nNestled in the northern part of the Nahuel Huapi National Park, and surrounded by lakes, forests and mountains, it is considered to be one of the most beautiful locations in the mountainous parts of Patagonia; earning it the nickname Garden of Patagonia (Spanish: Jardín de la Patagonia).\nJust located a couple of kilometers away from the border with Chile through the Cardenal Antonio Samoré Pass and with other nearby places such as Bariloche and San Martín de los Andes, it forms a popular tourist corridor during both summer and winter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "villa la angostura",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "angostura",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6049,
+    "attempt": 6005,
+    "place_id": "gn-3874958",
+    "input": {
+      "place": {
+        "place_id": "gn-3874958",
+        "name": "Puerto Natales",
+        "country": "Chile",
+        "subdivision": "Region of Magallanes",
+        "lat": -51.72987,
+        "lon": -72.50603
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Natales",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Natales",
+          "text": "Puerto Natales is a city in Chilean Patagonia. It is the capital of both the commune of Natales and the province of Última Esperanza, one of the four provinces that make up the Magallanes and Antartica Chilena Region in the southernmost part of Chile. Puerto Natales is the only city in the province. It is located 247 km (153 mi) northwest of Punta Arenas. It is the final passenger port of call for the Navimag ferry sailing from Puerto Montt into the Señoret Channel as well as the primary transit point for travellers to Torres del Paine National Park, Chile.\nIt is located at the opening of Última Esperanza Sound and was originally inhabited by the Kawésqar or Alacaluf people and the Aoniken or Tehuelche people. The first Europeans to visit the area where the city is located were the expeditionaries led by Juan Ladrillero, a Spanish explorer who was looking for the Strait of Magellan's western passage in 1557.\nThe city was settled in the late 19th century by European immigrants, primarily Germans, British, including English, Welsh and Scots, Croats, Greeks, Italians and Spaniards. It was then settled by Chilean people, with a substantial number coming from Chiloé Archipelago, all attracted by the sheep breeding industry.\nThe city was formally founded under the government of Ramón Barros Luco on May 31, 1911. Nowadays, one of its most important industries is tourism although the cattle and aquaculture industries are also significant. While winds, colds and thin soils limit horticulture in Puerto Natales there is still a small-scale local produce of zucchini, cherry tomatoes, strawberries, cucumbers and carrots."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "puerto natales",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "natales",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6050,
+    "attempt": 6006,
+    "place_id": "gn-4140040",
+    "input": {
+      "place": {
+        "place_id": "gn-4140040",
+        "name": "Pleasant Plains",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.927,
+        "lon": -77.023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pleasant Plains (Washington, D.C.)",
+          "url": "https://en.wikipedia.org/wiki/Pleasant_Plains_(Washington,_D.C.)",
+          "text": "Pleasant Plains is a neighborhood in central Washington, D.C. largely occupied by Howard University. For this reason it is also sometimes referred to as Howard Town or, less frequently, Howard Village.\nIt is situated in the Northwest quadrant of the city and bordered by 2nd Street, and McMillan Reservoir to the east; Florida Avenue and Barry Place to the south; Sherman Avenue to the west; and Harvard Street to the north. It is flanked on the eastern side by the Washington Veteran Affairs Medical Center and Washington Hospital Center, and by the Columbia Heights and Park View neighborhoods on the west and north sides.\nPleasant Plains, Howard University notwithstanding, is a residential neighborhood. A large portion of its residents are Howard affiliates, either students or employees. One of its major community anchors is the Banneker Recreation Center on Georgia Avenue, which reopened in July 2007 after a year of renovations. The adjacent Benjamin Banneker Academic High School has ranked among the 100 best public schools in the United States.\nPleasant Plains is in Ward 1."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "pleasant plains",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pleasant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plains",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6051,
+    "attempt": 6007,
+    "place_id": "gn-4167505",
+    "input": {
+      "place": {
+        "place_id": "gn-4167505",
+        "name": "Palm Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.70562,
+        "lon": -80.03643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Palm_Beach,_Florida",
+          "text": "Palm Beach is an incorporated town in Palm Beach County, Florida, United States. Located on a barrier island, the town is separated from West Palm Beach and Lake Worth Beach by the Intracoastal Waterway to its west and a small section of the Intracoastal Waterway and South Palm Beach to its south. It is part of the Miami metropolitan area. As of the 2020 census, Palm Beach had a year-round population of 9,245.\nWhite Americans began to live in the area as early as 1872. Elisha Newton \"Cap\" Dimick, later the town's first mayor, established Palm Beach's first hotel, the Cocoanut Grove House, in 1880, but Standard Oil tycoon Henry Flagler became instrumental in transforming the island's tropical landscape into a winter resort for the wealthy. Flagler and his workers constructed the Royal Poinciana Hotel in 1894, The Breakers in 1896, and Whitehall in 1902; extended the Florida East Coast Railway southward to the area by 1894; and developed a separate city to house the hotel workers and other laborers. This later became West Palm Beach. Addison Mizner also contributed significantly to the town's history, designing 67 structures between 1919 and 1924, including El Mirasol, the Everglades Club, La Querida, the William Gray Warden House, and Via Mizner, which is a section of Worth Avenue.\nForbes reported in 2017 that Palm Beach had at least 30 billionaires, with the town ranking as the 27th-wealthiest place in the United States in 2016, according to Bloomberg News. Many high-profile individuals have resided in the town, including United States presidents John F. Kennedy and Donald Trump. Palm Beach is known for upscale galleries and shopping districts, such as Worth Avenue, Royal Poinciana Plaza, and the Royal Poinciana Way Historic District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 287
+    },
+    "banned_terms": [
+      {
+        "term": "palm beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6052,
+    "attempt": 6008,
+    "place_id": "gn-4556286",
+    "input": {
+      "place": {
+        "place_id": "gn-4556286",
+        "name": "Angora",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.944,
+        "lon": -75.23768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angora, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Angora,_Philadelphia",
+          "text": "Angora is a neighborhood in the West Philly section of Philadelphia, Pennsylvania, United States. Although its boundaries are not precise, it is roughly bounded by the Cobbs Creek neighborhood to the north, Cobbs Creek to the west, Kingsessing to the south and east, and Cedar Park to the east. The Angora Commuter Rail Station on the Media/Wawa Line, two bus lines (routes 46 and \"G\"), and a trolley line (SEPTA Route 34) all intersect around Baltimore Avenue and 58th Street, which is unofficially the nexus of the neighborhood.\nOn May 12, 2005, a commercial block in Angora was certified as blighted by the City Planning Commission, and a redevelopment plan was proposed later that year. However, Angora Terrace and other portions of the neighborhood are well-kept."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "angora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6053,
+    "attempt": 6009,
+    "place_id": "gn-4890701",
+    "input": {
+      "place": {
+        "place_id": "gn-4890701",
+        "name": "Edgewater",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.98337,
+        "lon": -87.66395
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edgewater, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Edgewater,_Chicago",
+          "text": "Edgewater is one of the 77 community areas of Chicago in Illinois, United States, located on the North Side of Chicago. It is 6 miles (10 km) north of the Loop. The most recently established of the city's 77 official community areas in 1980, Edgewater is bounded by Foster Avenue on the south, Devon Avenue on the north, Ravenswood Avenue on the west, and Lake Michigan on the east. Edgewater contains several beaches for residents to enjoy. Chicago's largest park, Lincoln Park, stretches south from Edgewater for 7 miles (11 km) along the waterfront, almost to downtown. Until 1980, Edgewater was part of Uptown, and historically it constituted the northeastern corner of Lake View Township, an independent suburb annexed by the city of Chicago in 1889. Today, Uptown is to Edgewater's south, Lincoln Square to its west, West Ridge to its northwest and Rogers Park to its north.\nEdgewater transitioned from agriculture and small settlement to residential development around the 1880s with summer homes for Chicago's elite. Today, it provides the northern terminus of both Lincoln Park and Lake Shore Drive. With the exception of pockets acknowledged as historic districts (like the Bryn Mawr Historic District), eastern Edgewater (Edgewater Beach) has a skyline of high-rise apartment buildings, condominium complexes, and mid-rise homes. To the west, Edgewater is characterized by single-family homes; and two-, three-, or four-story flats, including the historic village and now commercial district of Andersonville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "edgewater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6054,
+    "attempt": 6010,
+    "place_id": "gn-5254739",
+    "input": {
+      "place": {
+        "place_id": "gn-5254739",
+        "name": "Grafton",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 43.31973,
+        "lon": -87.95342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grafton, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Grafton,_Wisconsin",
+          "text": "Grafton is a village in Ozaukee County, Wisconsin, United States. Located approximately 20 miles (32 km) north of Milwaukee and in close proximity to Interstate 43, it is a suburban community in the Milwaukee metropolitan area. The village incorporated in 1896, and at the time of the 2020 census the population was 12,094.\nLike many of Ozaukee County's cities and villages, the Village of Grafton has rural roots and began as a mill town. The German and Irish immigrants who settled in Grafton in the 1840s utilized the Milwaukee River as a source of hydropower for gristmills and woolen mills. Manufacturing grew and prospered in the village in the 20th century, including the Paramount Records studio and plant, which was in Grafton from 1929 to 1935. Paramount was one of the first and largest producers of blues and jazz records marketed to African-American consumers. Paramount's role in Grafton's history and Blues music history earned the village a spot on the historic Mississippi Blues Trail.\nGrafton changed significantly during the period of post-World War II suburbanization. Even though the last woolen mill closed in 1980, the village experienced rapid population growth and the development of new commercial properties and housing subdivisions. The construction of Interstate 43 in the mid-1960s eased travel to neighboring communities. In the 21st century, Grafton is home to many big-box stores as well as an Aurora hospital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "grafton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6055,
+    "attempt": 6011,
+    "place_id": "gn-5416357",
+    "input": {
+      "place": {
+        "place_id": "gn-5416357",
+        "name": "Castlewood",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.58471,
+        "lon": -104.90109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castlewood, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Castlewood,_Colorado",
+          "text": "Castlewood was a former census-designated place (CDP) in Colorado made up of several neighborhoods covering about 3.5 square miles of unincorporated Arapahoe County just west of I-25. The CDP became part of part of the City of Centennial upon the city's incorporation in 2001. Castlewood's population was 25,567 at the 2000 census.\nOn Census Bureau maps, the CDP was bordered by Greenwood Village on the north and north-east, I-25 on the east, Douglas County to south, and the Southglenn CDP to the west on the other side of South Holly Street.\nWhile the Census Bureau used the name \"Castlewood\" for the CDP, it was not used locally as the name for a specific town or neighborhood. It was, however, used for other purposes in the area. In 1890, Castlewood Dam and Lake was built east of Castle Rock about 18 miles southeast of the CDP location; it was destroyed in a major flood in 1933 and is now Castlewood Canyon State Park. The former Castlewood School was built in 1907 at Orchard and Ulster, and the former Castlewood Grange was chartered in 1907. The Castlewood Fire Protection District, which included the CDP, was founded on October 25, 1951; it changed its name to South Metro Fire Rescue on December 31, 1998, after joining with other districts. The local library, part of the Arapahoe Library District and located near the center of the CDP, is still called the Castlewood Library."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "castlewood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6056,
+    "attempt": 6012,
+    "place_id": "gn-5902353",
+    "input": {
+      "place": {
+        "place_id": "gn-5902353",
+        "name": "Blackburn Hamlet",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.43671,
+        "lon": -75.56462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackburn Hamlet",
+          "url": "https://en.wikipedia.org/wiki/Blackburn_Hamlet",
+          "text": "Blackburn Hamlet is a suburban community in Orléans West-Innes Ward, in the east end of Ottawa, Ontario, Canada. Before the 2001 amalgamation of the city of Ottawa, it was in the city of Gloucester. It is surrounded by rural areas and contains several older and newer areas of settlement. According to the Canada 2021 Census, its population was 8,173. The community took its name from Robert Blackburn, former Member of Parliament for Russell.\nOften referred to by the locals as simply \"Blackburn\" or \"The Hamlet,\" it is one of only two suburban areas (the other being Bells Corners) surrounded by National Capital Commission (NCC) Greenbelt lands as well as lands owned by the Royal Canadian Mounted Police (RCMP) which were formerly the National Defence Proving Grounds. Together, these lands form part of Ottawa's \"Greenbelt\" and provide Blackburn Hamlet residents and visitors with over 250 km of hiking and cross country skiing trails.\nBlackburn is represented at city council, but there is active community volunteer involvement as well through the Blackburn Community Association (BCA). Many activities, clubs, events and committees are run through the BCA."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "blackburn hamlet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "blackburn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hamlet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6057,
+    "attempt": 6013,
+    "place_id": "gn-6232146",
+    "input": {
+      "place": {
+        "place_id": "gn-6232146",
+        "name": "Birkenhead",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8082,
+        "lon": 174.72019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birkenhead, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Birkenhead,_New_Zealand",
+          "text": "Birkenhead is a suburb of Auckland, in northern New Zealand. It is located on the North Shore of the Waitematā Harbour, 4 kilometres (2.5 mi) northwest of the Auckland City Centre. The area has been settled by Tāmaki Māori since at least the 14th century, and was the location of Te Matarae ō Mana, a fortified pā for Te Kawerau ā Maki that overlooked an important seasonal shark fishery. European settlement in Birkenhead began in late the 1840s, and by the late 19th century the area became renowned for strawberry crops. In 1884, the Chelsea Sugar Refinery was constructed in Birkenhead, becoming a major source of income for Birkenhead. The increased population growth led to Birkenhead becoming one of the first boroughs of Auckland in 1888. Birkenhead transitioned from a semi-rural community to suburban Auckland after the opening of the Auckland Harbour Bridge in 1959, becoming a city in 1978. In 1989, Birkenhead City was amalgamated with North Shore City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "birkenhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6058,
+    "attempt": 6014,
+    "place_id": "gn-6325488",
+    "input": {
+      "place": {
+        "place_id": "gn-6325488",
+        "name": "Sainte-Foy",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.78139,
+        "lon": -71.29217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sainte-Foy, Quebec City",
+          "url": "https://en.wikipedia.org/wiki/Sainte-Foy,_Quebec_City",
+          "text": "Sainte-Foy (English: ; French: [sɛ̃t fwa]) is a former city in central Quebec, Canada alongside the Saint Lawrence River. It was amalgamated into Quebec City at the start of 2002. Most of the formerly independent municipality of Sainte-Foy is located in the borough (French: arrondissement) of Sainte-Foy–Sillery–Cap-Rouge—initially as one of the two constituent districts of the former borough of Sainte-Foy–Sillery. On 1 November 2009, Sainte-Foy was subdivided into four separate districts: Cité-Universitaire, Plateau, Saint-Louis, Pointe-de-Sainte-Foy, when the borough of Sainte-Foy–Sillery–Cap-Rouge was formed.\nSainte-Foy is a major suburban neighbourhood west of downtown Quebec City. It plays a large part in Quebec City's economic life, with the Jean Lesage International Airport, Université Laval, multiple shopping malls, and both bridges to the south shore of the Saint Lawrence River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "sainte foy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sainte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "foy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6059,
+    "attempt": 6015,
+    "place_id": "gn-6691115",
+    "input": {
+      "place": {
+        "place_id": "gn-6691115",
+        "name": "Oud Metha",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.23685,
+        "lon": 55.31419
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oud Metha",
+          "url": "https://en.wikipedia.org/wiki/Oud_Metha",
+          "text": "Oud Metha (Arabic: عود ميثاء), or Al Nasr (Arabic: النصر) is a locality in Dubai, United Arab Emirates (UAE). Although a small residential locality, has several commercial and entertainment complexes, schools and cultural clubs.\nAl Nasr is bordered by the localities of Al Karama, Umm Hurair 2 and Zabeel.  It is the home of Al-Nasr Sports Club, a football club of the UAE League based in Dubai.\nIn addition, several expatriate schools such as Dubai Gem Private School, GEMS Winchester School, The Indian High School, Dubai, Al Rashed Al Saleh Private School and St. Mary's Catholic High School as well as cultural clubs such as the India Club, the Iranian Club, the Sudanese Social Club and the Pakistani Association of Dubai are located in this area. The French international school Lycée Français International Georges Pompidou maintains a maternelle (preschool) campus in Oud Metha.\nThe Dubai Metro's Green Line also has a station at Oud Metha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "oud metha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oud",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "metha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6060,
+    "attempt": 6016,
+    "place_id": "gn-7302642",
+    "input": {
+      "place": {
+        "place_id": "gn-7302642",
+        "name": "Glenmore Park",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.79068,
+        "lon": 150.6693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glenmore Park",
+          "url": "https://en.wikipedia.org/wiki/Glenmore_Park",
+          "text": "Glenmore Park is a suburb of Sydney, in the state of New South Wales, Australia. Glenmore Park is located 54 kilometres (34 mi) west of the Sydney central business district, in the local government area of the City of Penrith and is part of the Greater Western Sydney region.\nGlenmore Park is south of Jamisontown and South Penrith with its boundary being the M4 Motorway. The suburbs of Regentville and Mulgoa are located to its west and south, while Orchard Hills runs along its eastern boundary with the Northern Road as its dividing line. Glenmore Park is one of Penrith City's largest and most rapidly developing housing estates. Its development has been carefully planned to cater for the social, economic and recreational needs of its residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "glenmore park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "glenmore",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6061,
+    "attempt": 6017,
+    "place_id": "gn-732491",
+    "input": {
+      "place": {
+        "place_id": "gn-732491",
+        "name": "Cherven Bryag",
+        "country": "Bulgaria",
+        "subdivision": "Pleven",
+        "lat": 43.27884,
+        "lon": 24.08251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cherven Bryag",
+          "url": "https://en.wikipedia.org/wiki/Cherven_Bryag",
+          "text": "Cherven Bryag (Bulgarian: Червен бряг, pronounced [t͡ʃɛrˈvɛn ˌbrʲag]) is a town in northern Bulgaria, a capital of the Cherven Bryag municipality, Pleven Province. It is situated on the right shore of the Zlatna Panega in river Iskar, 137 km northeast of Sofia, 53 km south-west of Pleven, 12 km northwest of Lukovit, 56 km east of Vratsa, and 55 km south of Oryahovo. The name means \"red shore\" and refers to the reddish clay in the vicinity of the river. As of December 2009, the town had a population of 13,856.\nCherven Bryag is a medieval settlement mentioned in 1431 in Ottoman registers as Dobrolak. Under its present name Cherven Bryag was first recorded in the 16th century as part of the Ottoman region of Nikopol. On 26 June 1929, Prime Minister Andrey Lyapchev proclaimed the former village and station a town.\nCherven Bryag is a railway station on the line Sofia-Gorna Oryahovitsa-Varna/Ruse. It first appeared as a railway station settlement in 1899 on the newly built Sofia-Varna railway line.  Cherven Bryag was a starting point of a narrow-gauge railway line to Byala Slatina and Oryahovo, as well as of a normal railway line to Lukovit and Zlatna Panega. Today those lines are no more, out of service. The railway station is in the southwestern end of the town, opposite the central area.\nAmong the local landmarks, the St. Sophronius of Vratsa Church located in the central part of the town is notable."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "cherven bryag",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cherven",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bryag",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6062,
+    "attempt": 6018,
+    "place_id": "gn-7669106",
+    "input": {
+      "place": {
+        "place_id": "gn-7669106",
+        "name": "Aksaray",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.00866,
+        "lon": 28.95018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aksaray, Fatih",
+          "url": "https://en.wikipedia.org/wiki/Aksaray,_Fatih",
+          "text": "Aksaray (literally \"White Palace\" in Turkish) is a neighbourhood in the municipality and district of Fatih, Istanbul Province, Turkey. Its population is 8,541 (2022). It is so named because it was founded by migrants from Aksaray in central Turkey, brought here in the 15th century by Mehmet II to repopulate the city after its conquest.\nAksaray is a mainly modern neighbourhood centred on a busy square. It was historically known as Bóos, (Latin: Forum Bovis, Greek: ὁ Bοῦς, romanized: o Bous), It has a large population of migrants from the southeast of the country and many restaurants serve the cuisine of Şanlıurfa, Diyarbakır and Hatay. More recently it has also acquired a large population of Syrian refugees who have introduced their own cuisine to the mix. There are many shops and hotels here.\nTo the east, Aksaray borders the textile-retailing neighbourhood of Laleli while to the west, along Millet Caddesi, lies Çapa. To the south is Yenikapı and to the north Fatih. Busy Vatan Caddesi (AKA Adnan Menderes Bulvarı) runs northwest from Aksaray towards the City Walls, following the route of the lost Lycos river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "aksaray",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6063,
+    "attempt": 6019,
+    "place_id": "gn-8349084",
+    "input": {
+      "place": {
+        "place_id": "gn-8349084",
+        "name": "Mount Hawthorn",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.92,
+        "lon": 115.83509
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Hawthorn, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Mount_Hawthorn,_Western_Australia",
+          "text": "Mount Hawthorn is a suburb of Perth, Western Australia, located within the City of Vincent.\nThe Mount Hawthorn area was first selected for urban development in 1887. In the late 1890s part of it was purchased by a syndicate of Edward Wittenoom, a politician and pastoralist; James Hicks and C. L. W. Clifton. When this group subdivided their land in 1903, Hicks called his portion of the subdivision Hawthorn Estate, as he had recently been in Melbourne and stayed at Hawthorn.\nOver recent times the area has become a desirable inner-city suburb, attracting young families with its numerous parks, cafes, bars and restaurants. Opened in 1906, Mount Hawthorn Primary School is one of Western Australia's ten largest primary schools, with close to a thousand registered students. The school recently unveiled a mural in honour of WA's first qualified female Aboriginal teacher, May O’Brien."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "mount hawthorn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hawthorn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6064,
+    "attempt": 6020,
+    "place_id": "gn-8426094",
+    "input": {
+      "place": {
+        "place_id": "gn-8426094",
+        "name": "Świerczewo",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.4273,
+        "lon": 14.51303
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Świerczewo, Szczecin",
+          "url": "https://en.wikipedia.org/wiki/Świerczewo,_Szczecin",
+          "text": "Świerczewo (Polish: [ɕfjɛrˈt͡ʂɛ.vɔ]; German until 1947: Schwarzow [ˈʃvar.tsoː]) is an administrative neighbourhood forming a subdivision of the West district in the city of Szczecin, Poland. It is a residential area consisting of mid- and high-rise apartment buildings in several housing estates. The neighbourhood has an area of 2.44 km2 (0.94 sq mi), and in 2025, it had a population of 13,986 people. Świerczewo was founded in the 14th century as a farming community. Its population drasticly increased in the early 20th century, with the development of a low-rise single-family suburb, and was incorporated into Szczecin in 1911. The area was later fatherly expanded with development of a few housing estates of apartment buildings later throughout the century, including in the 1930s, the 1980s, and the 1990s. The neighbourhood features the historic St. Catherine Church, a former Gothic Lutheran temple, dating to the 15th century, prior to 1424."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "swierczewo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

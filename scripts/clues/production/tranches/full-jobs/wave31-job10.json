@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 6225,
+    "attempt": 6181,
+    "place_id": "gn-5380437",
+    "input": {
+      "place": {
+        "place_id": "gn-5380437",
+        "name": "Pacific Grove",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.61774,
+        "lon": -121.91662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pacific Grove, California",
+          "url": "https://en.wikipedia.org/wiki/Pacific_Grove,_California",
+          "text": "Pacific Grove is a city situated on the southern edge of Monterey Bay, on the Central Coast of California. Located in Monterey County, the city had a population of 15,090 at the 2020 census. Pacific Grove is a popular tourist destination on the Central Coast, hosting notable attractions the Monarch Grove Sanctuary, Asilomar Conference Center, the Pacific Grove Marine Gardens, and Point Pinos Lighthouse, among others.\nThe region was historically inhabited by the Rumsen tribe of Ohlone people. During the Mexican era, the area was granted by Governor José Figueroa to local merchant José Abrego as part of Rancho Punta de Piños, in 1833. Following the Mexican-American War and the U.S. conquest of California, the area developed into a notable fishing village. By 1875, the Pacific Improvement Company owned most of the area and founded the modern settlement of Pacific Grove as a Methodist retreat. By the turn of the 19th and 20th centuries, Pacific Grove had come to host a notable art colony, along with the other communities of the Monterey Peninsula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "pacific grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pacific",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6226,
+    "attempt": 6182,
+    "place_id": "gn-5572400",
+    "input": {
+      "place": {
+        "place_id": "gn-5572400",
+        "name": "Susanville",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 40.41628,
+        "lon": -120.65301
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Susanville, California",
+          "url": "https://en.wikipedia.org/wiki/Susanville,_California",
+          "text": "Susanville (formerly known as Rooptown) (Northeast Maidu: Pam Sewim K'odom, bush creek country) is the only incorporated city in Lassen County, California, United States, of which it is also the county seat. Susanville is located on the Susan River in the southern part of the county, at an elevation of 4,186 feet (1,276 m). Its population is 16,728 as of the 2020 census, down from 17,947 from the 2010 census. The Susanville urban area contains 8,995 people and 4,233 households.\nSusanville, a former logging and mining town, is the site of the High Desert State Prison, California (not to be confused with High Desert State Prison, Nevada), which opened in 1995. The Federal Correctional Institution, Herlong is nearby, having opened in 2001.\nThe prisons and their effects on the community, including the addition of local jobs, were explored in the documentary Prison Town, USA (2007), aired on PBS. Nearly half the adult population of Susanville works at the three prisons in the area, where 6,000 people are incarcerated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "susanville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6227,
+    "attempt": 6183,
+    "place_id": "gn-5926526",
+    "input": {
+      "place": {
+        "place_id": "gn-5926526",
+        "name": "Concord",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.80011,
+        "lon": -79.48291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Concord, Vaughan",
+          "url": "https://en.wikipedia.org/wiki/Concord,_Vaughan",
+          "text": "Concord is a suburban industrial district in the City of Vaughan in York Region, located north of Toronto, Ontario, Canada. According to the 2001 Census, Concord has 8,255 residents.\nIt is accessed by two provincial highways: Highway 407 and Highway 400. Concord's approximate boundaries are Steeles Avenue to the south, Highway 400\nto the west, Dufferin Street to the east, and Rutherford Road to the north, though it includes the Carrville neighbourhood east to Bathurst Street between Rutherford and Highway 7. The area along Highway 7, from Highway 400 to just east of Jane Street, though still often considered by many to be part of Concord, is now officially a new district, the Vaughan Metropolitan Centre, which is Vaughan's planned urban core."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "concord",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6228,
+    "attempt": 6184,
+    "place_id": "gn-6050416",
+    "input": {
+      "place": {
+        "place_id": "gn-6050416",
+        "name": "La Tuque",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 47.43337,
+        "lon": -72.7824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Tuque, Quebec",
+          "url": "https://en.wikipedia.org/wiki/La_Tuque,_Quebec",
+          "text": "La Tuque ( lah TEWK, French: [la tyk], Canadian French: [la t͡sʏk]) is a city located in north-central Quebec, Canada, on the Saint-Maurice River, between Trois-Rivières and Chambord. The population was 11,129 at the 2021 Canadian census, most of which live within the urban area. At over 28,000 square kilometres (11,000 square miles), it is the largest city in Canada by area.\nThe Classique internationale de canots de la Mauricie canoeing race begins at La Tuque.\nThe name, which dates to the eighteenth century, originates from a nearby rock formation which resembles a French-Canadian knitted cap known as the tuque.\nIn 1823–24, the explorer François Verreault described the location as:\n\n« un Portage nommé Ushabatshuan (le courant trop fort pour le sauter). Les Voyageurs le nomment la Tuque, à cause d'une Montagne haute, dont le pic ressemble à une Tuque. Ce portage est d'une lieue, avec des fortes côtes à monter ».\n(\"a portage named Ushabatshuan ('the rapids too strong to jump'). The voyageurs call it La Tuque, due to a tall mountain whose peak resembles a \"tuque.\" The portage is a league long, and climbs steep slopes.\")\nThe hat-shaped mountain which gave its name to the town of La Tuque is located between the Saint-Maurice River (left bank) and the WestRock paper mill. The summit of this mountain is about 245 metres (804 feet). It is located 200 m (660 ft) from the river and about 400 m (1,300 ft) upstream (northeast side) of the La Tuque hydroelectric power plant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "la tuque",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tuque",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6229,
+    "attempt": 6185,
+    "place_id": "gn-610864",
+    "input": {
+      "place": {
+        "place_id": "gn-610864",
+        "name": "Zestaponi",
+        "country": "Georgia",
+        "subdivision": "Imereti",
+        "lat": 42.10752,
+        "lon": 43.03291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zestaponi",
+          "url": "https://en.wikipedia.org/wiki/Zestaponi",
+          "text": "Zestaponi (Georgian: ზესტაფონი, romanized: zest'aponi, Georgian pronunciation: [zestʼapʰoni]), also transliterated as Zestafoni, is the administrative center of Zestaponi District in Western Georgia. Zestaponi is the center of an ancient, historical part of Georgia – Margveti, which is a  part of Imereti province. Zestaponi is the center of Margveti's Eparchy of the Georgian Orthodox Church.  Zestaponi is situated in the furthest east of the Colchis Plateau, and is built on both banks of the Qvirila River.\nIt is an important industrial center, with a large ferro-alloy plant processing manganese ore from nearby Chiatura. Zestaponi is in the Kolkheti lowlands, a semi-tropical region with relatively cold winters averaging −4 °C (25 °F) in January and hot summers averaging 24 °C (75 °F) in August. The surrounding countryside is a wine-growing region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "zestaponi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6230,
+    "attempt": 6186,
+    "place_id": "gn-6125653",
+    "input": {
+      "place": {
+        "place_id": "gn-6125653",
+        "name": "Roberval",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 48.5168,
+        "lon": -72.23244
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roberval, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Roberval,_Quebec",
+          "text": "Roberval (French pronunciation: [ʁɔbɛʁval]) is a city on the south-western shore of Lac Saint-Jean in the Le Domaine-du-Roy Regional County Municipality of Quebec, Canada. With a population of 9,840 in the Canada 2021 Census, it is the fourth largest city on this lake after Alma, Dolbeau-Mistassini and Saint-Félicien.\nIt is the seat of the Domaine-du-Roy RCM and the main service centre for the region with a hospital and some government services. It is also the seat of the judicial district of Roberval.\nIt is the only Lac Saint-Jean town whose core is directly on the lakeshore.\nBenoît Bouchard, former cabinet Minister and Canadian Ambassador in France, and Michel Gauthier, former federal Leader of the Opposition, represented the area in the federal parliament. Bernard Lord the former Premier of New Brunswick was born here.\nRoberval was the 2008 winner of Kraft Hockeyville. In their newly renovated arena, Roberval hosted an NHL preseason game between the Montreal Canadiens and the Buffalo Sabres on September 23, 2008.\nRoberval is the home of the Traversée internationale du lac St-Jean, an annual swimming competition held since 1955. The major competition feature the crossing of Lake St-Jean over a distance of 32 km (20 mi). The 2010 FINA World Open Water Swimming Championships were also hosted in Roberval."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "roberval",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6231,
+    "attempt": 6187,
+    "place_id": "gn-6269321",
+    "input": {
+      "place": {
+        "place_id": "gn-6269321",
+        "name": "Wideopen",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.04514,
+        "lon": -1.62246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wideopen",
+          "url": "https://en.wikipedia.org/wiki/Wideopen",
+          "text": "Wideopen, also occasionally misspelled as Wide Open, is a village in the North Tyneside metropolitan borough of Tyne and Wear, England, around 5 miles (8.0 km) north of Newcastle.\nWideopen adjoins the settlements of Seaton Burn, Brunswick Village and Hazlerigg. The village straddles the historic Great North Road, formerly the A1 trunk road, but is now bypassed by a new alignment of the A1 immediately to the west. The village lies in an area with a strong mining history and had its own colliery. Weetslade Country Park, to the east of the village, is reclaimed from an extensive area of coal mining activity.\nIn 2012 work commenced on the building of a new housing estate by Bellway homes, called Five Mile Park. It is located to the east of the Great North Road, between Lockey Park and Weetslade Country Park. The name refers to the distance from the centre of Newcastle; similarly, there is a Three Mile Inn to the south, and a Six Mile Bridge to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "wideopen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6232,
+    "attempt": 6188,
+    "place_id": "gn-6690863",
+    "input": {
+      "place": {
+        "place_id": "gn-6690863",
+        "name": "Hornchurch",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.55685,
+        "lon": 0.21664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hornchurch",
+          "url": "https://en.wikipedia.org/wiki/Hornchurch",
+          "text": "Hornchurch is a suburban town in east London in the London Borough of Havering. It is located 15.2 miles (24.5 km) east-northeast of Charing Cross. It comprises a number of shopping streets and a large residential area. It historically formed a large ancient parish in the county of Essex that became the manor and liberty of Havering. The economic history of Hornchurch is underpinned by a shift away from agriculture to other industries with the growing significance of nearby Romford as a market town and centre of administration. As part of the suburban growth of London in the 20th century, Hornchurch significantly expanded and increased in population, becoming an urban district in 1926 and has formed part of Greater London since 1965. It is the location of Queen's Theatre, Havering Sixth Form College and Havering College of Further and Higher Education."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "hornchurch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6233,
+    "attempt": 6189,
+    "place_id": "gn-6690901",
+    "input": {
+      "place": {
+        "place_id": "gn-6690901",
+        "name": "Roosevelt Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.76403,
+        "lon": -73.9482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roosevelt Island",
+          "url": "https://en.wikipedia.org/wiki/Roosevelt_Island",
+          "text": "Roosevelt Island is an island in New York City's East River, within the borough of Manhattan. It lies between Manhattan Island to the west, and the borough of Queens, on Long Island, to the east. It is about 2 miles (3.2 km) long, with an area of 147 acres (0.59 km2), and had a population of 11,722 as of the 2020 United States census. It consists of two largely residential communities: Northtown and Southtown. Roosevelt Island is owned by the city but was leased for 99 years to the New York State Urban Development Corporation (UDC) in 1969.\nThe island was called Minnehanonck by the Lenape and Varken Eylandt (Hog Island) by the Dutch during the colonial era and later Blackwell's Island. During much of the 19th and 20th centuries, the island was used by hospitals and prisons, with very limited access. It was renamed Welfare Island in 1921. Following several proposals to redevelop Welfare Island in the 1960s, the UDC leased the island, renamed it after former U.S. president Franklin D. Roosevelt in 1973, and redeveloped it as a series of residential neighborhoods. The first phase of Northtown, the island's first community, was completed in 1974, followed by the second phase (Northtown II) in 1989. Southtown was developed in the early 21st century, along with the Cornell Tech higher-education campus.\nIn addition to residential towers, the island has several buildings that predate the residential development, including six New York City designated landmarks. The island is accessible by numerous modes of transport, including a bridge, an aerial tram, and the city's subway and ferry systems. Many government services, such as emergency services, are provided from Queens, but the island also has a post office and a pneumatic garbage-disposal system. There are several parks on Roosevelt Island as well, including a promenade around the island's perimeter and Four Freedoms Park at its southern end. In addition to Cornell Tech, the island contains an elementary school. Several houses of worship are located on Roosevelt Island, and numerous community organizations have been founded there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 341
+    },
+    "banned_terms": [
+      {
+        "term": "roosevelt island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "roosevelt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6234,
+    "attempt": 6190,
+    "place_id": "gn-680831",
+    "input": {
+      "place": {
+        "place_id": "gn-680831",
+        "name": "Cordun",
+        "country": "Romania",
+        "subdivision": "Neamț County",
+        "lat": 46.95,
+        "lon": 26.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cordun",
+          "url": "https://en.wikipedia.org/wiki/Cordun",
+          "text": "Cordun is a commune in Neamț County, Western Moldavia, Romania. It is composed of three villages: Cordun, Pildești, and Simionești.\nThe commune is situated on the Moldavian Plateau, at an altitude of 203 m (666 ft), on the banks of the Moldova River and its left tributary, the Ciurlac. It is located in the eastern part of Neamț County, 4 km (2.5 mi) northwest of Roman and 52 km (32 mi) east of the county seat, Piatra Neamț. Cordun is crossed by county road DJ207B, which connects Roman to Săbăoani, where it ends in DN2.\n\nIn 2002, the commune had a population of 7,174, of whom all but seven were ethnic Romanians; 52.8% of residents were Roman Catholic and 46.6% Romanian Orthodox. At the 2011 census, Cordun had a population of 6,333, and at the 2021 census it had a population of 6,842."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "cordun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6235,
+    "attempt": 6191,
+    "place_id": "gn-694403",
+    "input": {
+      "place": {
+        "place_id": "gn-694403",
+        "name": "Siversk",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 48.86476,
+        "lon": 38.09683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siversk",
+          "url": "https://en.wikipedia.org/wiki/Siversk",
+          "text": "Siversk (Ukrainian: Сіверськ, IPA: [ˈs⁽ʲ⁾iwersʲk] ; Russian: Северск, romanized: Seversk), formerly known as Yama (Яма) until 1973, is a city in Bakhmut Raion, Donetsk Oblast, Ukraine. Its economy has traditionally been based around the mining and processing of dolomite. In January 2022, it had an estimated population of 10,875. It is the administrative center of Siversk urban hromada, one of the hromadas of Ukraine. \nDuring the Russo-Ukrainian War, it has been a site of repeated fighting, accelerating the economic and demographic downturn the city has suffered since the 1990s. The fighting for the city during the 2022 battle of Donbas of the Russo-Ukrainian war destroyed much of the city, and only about 1,000 people remain in the city as of July 2023. It has been under Russian occupation since December 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "siversk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6236,
+    "attempt": 6192,
+    "place_id": "gn-7281805",
+    "input": {
+      "place": {
+        "place_id": "gn-7281805",
+        "name": "Caroline Springs",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.74124,
+        "lon": 144.73631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caroline Springs",
+          "url": "https://en.wikipedia.org/wiki/Caroline_Springs",
+          "text": "Caroline Springs is a suburb in Melbourne, Victoria, Australia, 21 km (13 mi) west of the Melbourne central business district, located within the City of Melton local government area. Caroline Springs recorded a population of 20,365 at the 2021 census.\nCaroline Springs has been developed on greenfield land since 1999 by Delfin, in partnership with the original landowners. Centrally located, just north of Kororoit Creek, is the town square and main shopping centre, known as CS Square, and a man-made lake known as Lake Caroline.\nAt the time of development, it was one of Melbourne's fastest growing suburbs and Delfin anticipated the population to be in excess of 25,000 people by 2015.\nThe Caroline Springs Post Office opened on 8 August 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "caroline springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caroline",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6237,
+    "attempt": 6193,
+    "place_id": "gn-11549987",
+    "input": {
+      "place": {
+        "place_id": "gn-11549987",
+        "name": "Casa de Campo",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.42363,
+        "lon": -3.75305
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casa de Campo",
+          "url": "https://en.wikipedia.org/wiki/Casa_de_Campo",
+          "text": "The Casa de Campo (Spanish pronunciation: [ˈkasa ðe ˈkampo], for Spanish: Country House) is the largest public park in Madrid. It is situated west of central Madrid, Spain. It gets its name 'Country House' because it was once a royal hunting estate, located just west of the Royal Palace of Madrid. It was created in the early 16th century for use by the royal family and nobility, and was opened to the public in 1931 when it became a public park. Today, it is a popular green space and weekend destination for Madrid residents.\nIts area is 1,722.6 hectares (4,257 acres), about five times the size of New York City's Central Park or twice the size of Paris' Bois de Boulogne. The Casa de Campo is linked to the Parque del Oeste by the Teleférico de Madrid, a gondola lift.\nThe complex was declared in 2010 an Asset of Cultural Interest by the Community of Madrid. Per the regulations of the General Urban Planning Plan of the Madrid City Council of 1997, it's classified as a historic park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "casa de campo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "casa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "campo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6238,
+    "attempt": 6194,
+    "place_id": "gn-12048035",
+    "input": {
+      "place": {
+        "place_id": "gn-12048035",
+        "name": "Emerson Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.57511,
+        "lon": 0.23177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emerson Park",
+          "url": "https://en.wikipedia.org/wiki/Emerson_Park",
+          "text": "Emerson Park is a suburban neighbourhood in the London Borough of Havering, east London. The neighbourhood developed as two large housing estates built on the 550 acres (2.2 km2) estate of Nelmes manor in the parish of Hornchurch. Emerson Park estate to the south started construction in 1895 and Great Nelmes estate to the north was begun in 1901. It is located north of the Romford–Upminster line and a station opened at Emerson Park in 1909. The mansion of Nelmes survived until it was demolished in 1967 to avoid preservation by the Civic Amenities Act and was replaced with a small housing estate called The Witherings. Emerson Park is located 15 miles (24.1 km) northeast of Charing Cross in Central London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "emerson park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "emerson",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6239,
+    "attempt": 6195,
+    "place_id": "gn-12265686",
+    "input": {
+      "place": {
+        "place_id": "gn-12265686",
+        "name": "New Mill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.57498,
+        "lon": -1.75004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Mill, West Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/New_Mill,_West_Yorkshire",
+          "text": "New Mill is a village in the civil parish of Holme Valley, in the metropolitan borough of Kirklees, in West Yorkshire, England, near the town of Holmfirth. The village had a population of 1,259 (with Fulstone) in the 2001 census. The village is 2 miles (3.2 km) east of Holmfirth and 6 miles (9.7 km) south of Huddersfield.\nThe centre of the village is now on the crossroads of the Huddersfield – Sheffield A616  and Barnsley – Manchester A635 roads. There is a Post Office, one Indian restaurant, a branch of the local Co-op and 2 pharmacies plus other amenities all centred on the crossroads. The village centre used to be sited slightly further east near the church on Sude Hill.\nThere were textile mills in the village such as Moorhouse & Brook, on Greenhill Bank Road, and Bower and Roebuck, nestling in the valley just off the A616 Sheffield Road. With the decline in traditional heavy woollen industries Moorhouse & Brook has now closed. Bower & Roebuck continues to produce textiles from the site in New Mill, while Moorhouse & Brook's mill has been demolished and a new housing development built on the site.\nThe village is also home to the New Mill Male Voice Choir, which was established in 1991.\nNew Mill was created an urban district of the West Riding of Yorkshire in 1895, and covered the parishes of Fulstone, Hepworth and Scholes.  The urban district was abolished in 1938 by a County Review Order which saw the district and parishes merged into the urban district and parish of Holmfirth, which has been since included in Kirklees, West Yorkshire and renamed Holme Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "new mill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6240,
+    "attempt": 6196,
+    "place_id": "gn-12718704",
+    "input": {
+      "place": {
+        "place_id": "gn-12718704",
+        "name": "Helao Nafidi",
+        "country": "Namibia",
+        "subdivision": "Ohangwena Region",
+        "lat": -17.39321,
+        "lon": 15.89107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Helao Nafidi",
+          "url": "https://en.wikipedia.org/wiki/Helao_Nafidi",
+          "text": "Helao Nafidi is a town in Ohangwena Region in northern Namibia at the border to Angola. It had a population of 29,119 people in 2023. \nHelao Nafidi has been established in 2004 as an amalgamation of several villages and settlements along the main road between Oshikango and Ohangwena which are both also part of the town. All the independently governed villages that have been combined to form the town (Onhuno, Ohangwena, Omafo, Engela and Oshikango) still maintained their own village councils until the 2015 local authority election.\nThe town is separated into three urban areas, Oshikango in the north, bisected by the Namibian–Angolan border, and Omafo and Ohangwena south of it, with settlements and villages in the agricultural area between them."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "helao nafidi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "helao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nafidi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6241,
+    "attempt": 6197,
+    "place_id": "gn-1732884",
+    "input": {
+      "place": {
+        "place_id": "gn-1732884",
+        "name": "Chaah",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 2.249,
+        "lon": 103.048
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chaah",
+          "url": "https://en.wikipedia.org/wiki/Chaah",
+          "text": "Chaah is a town and mukim in Segamat District, Johor, Malaysia. It is the southernmost mukim in the district, but it is administered as a suburb of Labis.\nChaah consists of Kampung and Taman Chaah Town, C-Block, Kampung Baru (residents are mostly Chinese), Kampung Java (Malay Kampung), Taman Damai Jaya I & II, Taman Sri Chaah, Taman Orkid, and is surrounded by oil palm plantations. Taman Chaah Baru (new Chaah garden) is 1 to 2 kilometres (0.6 to 1.2 mi) from Chaah Town.\nAbout 5 kilometres (3 mi) south of Chaah, there is a village named Desa Temu Jodoh. Established in the early 1970s, Desa Temu Jodoh got its name from the grand wedding ceremony among many couples of early settlers. The number of couples married during the wedding ceremony was said to be the largest at that time in Malaysia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "chaah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6242,
+    "attempt": 6198,
+    "place_id": "gn-205970",
+    "input": {
+      "place": {
+        "place_id": "gn-205970",
+        "name": "Sake",
+        "country": "Congo - Kinshasa",
+        "subdivision": "North Kivu",
+        "lat": -1.57386,
+        "lon": 29.04339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sake, Democratic Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Sake,_Democratic_Republic_of_the_Congo",
+          "text": "Sake is a capital and village of the Kamuronza groupement, within the Bahunde Chiefdom, Masisi Territory, North Kivu, Democratic Republic of the Congo. It is located at the northwestern extremity of Lake Kivu, 25 km (15 mi) west-northwest of Goma on National Road No. 2, at the edge of the volcanic lava plains in the bottom of the Western Rift Valley, at an elevation of about 1500 m. The western escarpment of the rift valley rises to 800 m above Sake.\nThe lava comes from the volcanoes Nyamuragira and Nyiragongo, 25 km northwest, and numerous smaller volcanic cones which are fed by fissures from these volcanoes. A number of cones can be seen in satellite photographs 7–8 km east of Sake. They also show that lava flows in recent years have covered parts of the road to Goma (National Road No. 2) and have reached the lake, cutting off the bay in which Sake is located, to form a small lake of less than 1 square km. The adjacent bay, which is about 40 km2 in size, has almost been cut off by the lava and only a 160 m wide channel remains to connect it to the main body of Lake Kivu.\nSake has hosted Rwandans during the Great Lakes refugee crisis of the mid-1990s and Goma residents fleeing the 2002 eruption of Mount Nyiragongo. Deadly battles between the government military and forces led by Laurent Nkunda led thousands of residents of Sake to flee in August 2006. On 25 November 2006, fifteen to twenty thousands fled battles between Nkunda forces and the DRC army in an offensive waged by the former in the area of Sake. The fighting took place nearly a day before the Supreme Court was to rule on the outcome of the highly contested 2006 presidential run-off. The fighting appear to have dissipated the following morning.\nSake has also been home to the UN Force Intervention Brigade since July 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 325
+    },
+    "banned_terms": [
+      {
+        "term": "sake",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6243,
+    "attempt": 6199,
+    "place_id": "gn-2065594",
+    "input": {
+      "place": {
+        "place_id": "gn-2065594",
+        "name": "Mount Isa",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -20.72523,
+        "lon": 139.49727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Isa",
+          "url": "https://en.wikipedia.org/wiki/Mount_Isa",
+          "text": "Mount Isa ( EYE-zə) is a city in the Gulf Country region of Queensland, Australia. It came into existence because of the vast mineral deposits found in the area. Mount Isa Mines (MIM) is one of the most productive mines in world history, based on combined production of lead, silver, copper and zinc.\nBefore European contact, the Mount Isa region was part of an expansive trade network spanning the entire Lake Eyre Basin and beyond. In particular, it was a valued source of stone for stone tools such as hand axes.\nIn the 2021 census, the town of Mount Isa had a population of 18,317 people, making Mount Isa the administrative, commercial and industrial centre for the state's vast north-western region.  Although situated in an arid area, the artificial Lake Moondarra 19 kilometres (12 mi) north of the city on the Leichhardt River provides both drinking water and an area for watersports, birdwatching and recreation. Locals often refer to Mount Isa as \"The Isa\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "mount isa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "isa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6244,
+    "attempt": 6200,
+    "place_id": "gn-2169868",
+    "input": {
+      "place": {
+        "place_id": "gn-2169868",
+        "name": "Croydon",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.88333,
+        "lon": 151.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Croydon, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Croydon,_New_South_Wales",
+          "text": "Croydon is a suburb in the Inner West of Sydney, in the state of New South Wales, Australia. It is located 9 kilometres (5.6 mi) west of the Sydney central business district. Croydon is split between the two local government areas of Municipality of Burwood and the Inner West Council.\nThe suburb is nestled between the commercial centres of Ashfield and Burwood. It is bounded by Parramatta Road to the north, Iron Cove Creek to the east, Arthur Street to the south and a number of different streets to the west. To the north are Kings and Canada Bays on the closest reach of the Parramatta River, to the northwest is Concord Hospital and the Olympic Games complex at Homebush Bay. To the south is Canterbury Racecourse. The suburb shares its name with Croydon, a large district and borough in the south of London, England.\nThe traditional owners of the land on which Croydon is situated are the Wangal people of the Eora nation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "croydon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
