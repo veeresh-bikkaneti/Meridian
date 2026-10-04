@@ -198,3 +198,9 @@ choice should follow the promotion.
   New: `src/game/state-neighbors.ts` (50-state adjacency, ≤2 neighbors,
   symmetric pairs, every key/value a real regionId) + 8 unit tests.
 - [x] Logic crew: `NewRunPool.cycleCompleted` (true exactly on the reset branch), cleared-mark helpers (`clearedMarkKey`/`wasClearedCelebrated`/`markClearedCelebrated`/`clearClearedMark`, fail-open, band-scoped `meridian:cleared:v1:` keys, never touched by poolForNewRun), pure `isBandCleared`; trail.test.ts extended with cycleCompleted assertions on existing cycle tests + 8 new tests (dedicated reset-branch test, key shape/disjointness, per-band round-trip, fail-open on throwing/unavailable storage, isBandCleared cover/partial/empty); tsc clean, npm test green
+
+## Rebase onto current main (2026-10-04)
+- [x] Rebased onto origin/main (now includes Wikipedia PR #52/#53, reveal-zoomout PR #51, cumulative-score, difficulty tiers + subdivision labels). Conflicts: BRANCH_STATUS.md (kept this branch's file) and package.json test script (merged: main's `reverse-geocode.test.ts` + ours `state-neighbors.test.ts`).
+- [x] question-labels spec bug fixed on this branch (pre-existing from PR #49: `seedSeenExcept` hardcoded the `:medium` seen key while the country/state tests play Easy): parameterized the band, country/state pass "easy" (commit 7b9be1f).
+- [x] Post-rebase gates: tsc clean, unit 563/563 green, card gate PASSED, build:pages green.
+- [ ] Post-rebase full E2E sweep (running) → then PR.
