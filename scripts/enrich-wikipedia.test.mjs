@@ -13,6 +13,7 @@ import {
   stripParens,
   extractHookSentence,
   hookRejection,
+  endsWithBareInitial,
   validateHistory,
   pickArticle,
   haversineKm,
@@ -701,5 +702,44 @@ describe("abbreviation tails and broken fragments (tone-fix round 2)", () => {
       "Baengnyeongdo",
     );
     assert.equal(r.rejected, "no-hook-pattern");
+  });
+});
+
+describe("bare-initial precision (tone-fix round 2 corrections)", () => {
+  it("endsWithBareInitial fires only on true initials", () => {
+    assert.equal(endsWithBareInitial("It was named for Gov. Willie G."), true);
+    assert.equal(endsWithBareInitial("…by W. F. Holt and C.A."), true);
+    assert.equal(endsWithBareInitial("…the court case Jenson v."), true);
+    assert.equal(endsWithBareInitial("The city was founded in 1531 as Villa del Espíritu Santo de la Mayor España."), false);
+    assert.equal(endsWithBareInitial("…two golf courses, Royal St George's and Prince's."), false);
+    assert.equal(endsWithBareInitial("…founded in 1797 by the Spanish under Padre Fermín Lasuén."), false);
+    assert.equal(endsWithBareInitial("It was founded in 1882 when the railroad arrived."), false);
+  });
+  it("keeps a hook ending in a non-ASCII name (Tepic shape)", () => {
+    const r = extractHookSentence(
+      "Tepic is a city in Mexico. The city was founded in 1531 as Villa del Espíritu Santo de la Mayor España.",
+      "Tepic",
+    );
+    assert.equal(r.sentence, "The city was founded in 1531 as Villa del Espíritu Santo de la Mayor España.");
+  });
+  it("does not glue a sentence ending in a measurement abbreviation", () => {
+    const parts = splitSentences("The elevation is 698 m. Tambaú was famous for its annual sermons.");
+    assert.deepEqual(parts, ["The elevation is 698 m.", "Tambaú was famous for its annual sermons."]);
+  });
+  it("does not glue a sentence ending in a spelled-out letter", () => {
+    const parts = splitSentences(
+      "The town name is spelled with a double s. Borssele is home to a nuclear power plant.",
+    );
+    assert.deepEqual(parts, [
+      "The town name is spelled with a double s.",
+      "Borssele is home to a nuclear power plant.",
+    ]);
+  });
+  it("keeps a corporate seat hook (Biars shape)", () => {
+    const r = extractHookSentence(
+      "Biars is a commune in France. It is the site of the headquarters of Andros, whose brands include Bonne Maman.",
+      "Biars",
+    );
+    assert.ok(r.sentence?.includes("Andros"), `picked: ${r.sentence ?? r.rejected}`);
   });
 });

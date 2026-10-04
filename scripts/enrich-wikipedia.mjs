@@ -104,15 +104,34 @@ const INITIAL_TAIL = /(?:^|\s)[A-Z]\.$/;
 // It was 1990." or "9 p.m. The doors open." split.
 const SENTENCE_STARTER =
   /^(?:It|He|She|They|We|The|A|An|In|On|At|By|For|After|Before|During|However|Today|Since|As|Although|Until|From|But|And|When|While|With|Under|Over)\b/;
-function endsWithAbbrevTail(fragment) {
-  const token = fragment.split(/\s+/).pop() ?? "";
-  // Pure initial chains: "D.C.", "a.k.a.", "S.A.", "c.", "v.", "(r."…
-  if (/^\(?(?:[A-Za-z]\.)+$/.test(token)) return true;
+function endsWithAbbrevTail(prev, frag) {
+  const token = prev.split(/\s+/).pop() ?? "";
+  const core = token.replace(/^\(/, "");
+  if (/^(?:[A-Za-z]\.)+$/.test(core)) {
+    const pairs = core.match(/[A-Za-z]\./g).length;
+    if (pairs >= 2) {
+      // Initial chains ("C.A.", "a.k.a.", "p.m."): abbreviations, rejoin
+      // unless the next fragment plainly opens a new sentence.
+      return !SENTENCE_STARTER.test(frag);
+    }
+    // A single letter + period. Uppercase is a person's initial — the
+    // sentence continues with their name ("Samuel D. Smith").
+    if (/^[A-Z]/.test(core)) return true;
+    // Lowercase singles are abbreviations that demand a continuation of
+    // a specific shape: a date ("c. 1900", "(r. 1975–82)"), an era
+    // marker ("c. BC"), or a versus name ("Jenson v. Eveleth"). Anything
+    // else — "698 m.", "a double s." — is a complete sentence whose last
+    // word happens to be one letter, and gluing it to the next sentence
+    // would forge a two-sentence candidate.
+    if (/^\d/.test(frag)) return true;
+    if (/^(?:BC|BCE|AD|CE)\b/.test(frag)) return true;
+    if (core[0] === "v" && /^[A-Z]/.test(frag)) return true;
+    return false;
+  }
   // A token that opens a parenthesis and ends with a period — "(ca.",
   // "(orig." — sits inside an unclosed parenthetical, which is never a
   // sentence end in well-formed text.
-  if (/^\([^()]*\.$/.test(token)) return true;
-  return false;
+  return /^\([^()]*\.$/.test(token);
 }
 export function splitSentences(text) {
   const raw = text
@@ -128,7 +147,7 @@ export function splitSentences(text) {
       prev !== undefined &&
       (ABBREV_TAIL.test(prev) ||
         INITIAL_TAIL.test(prev) ||
-        (endsWithAbbrevTail(prev) && !SENTENCE_STARTER.test(frag)))
+        endsWithAbbrevTail(prev, frag))
     ) {
       out[out.length - 1] = `${prev} ${frag}`;
     } else {
@@ -251,14 +270,17 @@ const CENSUS_HOOK_PATTERNS = [
   /\bCDP\b/,
   /\bcensus\b/i,
 ];
-// Administrative-seat hooks: the sentence's whole content is that an
-// office sits here ("site of the Kamwenge District headquarters"). That
-// is paperwork, not a hook — the date-anchor guard already treats admin
-// words as non-stories; this closes the same class for "site of"
-// phrasing. (Corporate "home to the headquarters of Tyson Foods" is a
-// different, retellable claim and is not matched.)
+// Administrative-seat hooks: the sentence's whole content is that a
+// government office sits here ("site of the Kamwenge District
+// headquarters"). That is paperwork, not a hook — the date-anchor guard
+// already treats admin words as non-stories; this closes the same class
+// for "site of" phrasing. Corporate seats are a different, retellable
+// claim ("site of the headquarters of Grundfos, the world's largest
+// pump manufacturer") and are deliberately not matched: every pattern
+// here requires a governmental seat (district / agency-of-district).
 const ADMIN_HOOK_PATTERNS = [
-  /\bsite of the headquarters\b/i,
+  /\bsite of the (?:district|regional|municipal|county) headquarters\b/i,
+  /\bheadquarters of the [^.]{0,40}\bdistrict\b/i,
   /\bdistrict headquarters\b/i,
 ];
 // Purely definitional openers (crew: "boring-by-construction" — Jadcherla:
@@ -401,6 +423,20 @@ export const HISTORY_MAX_LEN = 240;
  * `placeName` feeds the date-anchor guard: the place's own name is
  * geography, not a story carrier.
  */
+/**
+ * True when a sentence's last token is a bare initial or initial chain
+ * ("G.", "C.A.", "c.", "v.") — i.e. the sentence stops mid-name. Token-
+ * based on purpose: a regex like /\b[A-Za-z]\.$/ also fires on complete
+ * words whose final letter follows a non-ASCII letter or an apostrophe
+ * ("…de la Mayor España.", "…Royal St George's and Prince's.",
+ * "…Padre Fermín Lasuén."), and those hooks are whole.
+ */
+export function endsWithBareInitial(sentence) {
+  const token = sentence.trim().split(/\s+/).pop() ?? "";
+  const core = token.replace(/\.$/, "").replace(/^\(/, "");
+  return /^(?:[A-Za-z]\.)*[A-Za-z]$/.test(core);
+}
+
 export function extractHookSentence(extractText, placeName = "") {
   if (typeof extractText !== "string" || extractText.trim().length === 0) {
     return { rejected: "empty-extract" };
@@ -436,7 +472,7 @@ export function extractHookSentence(extractText, placeName = "") {
       failReasons.push("too-long");
       continue;
     }
-    if (/\b[A-Za-z]\.$/.test(sentence)) {
+    if (endsWithBareInitial(sentence)) {
       failReasons.push("ends-in-initial");
       continue;
     }
