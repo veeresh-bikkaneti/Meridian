@@ -1,0 +1,727 @@
+[
+  {
+    "rank": 1646,
+    "place_id": "gn-1309937",
+    "input": {
+      "place": {
+        "place_id": "gn-1309937",
+        "name": "Pyin Oo Lwin",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Mandalay Region",
+        "lat": 22.03501,
+        "lon": 96.45683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pyin Oo Lwin",
+          "url": "https://en.wikipedia.org/wiki/Pyin_Oo_Lwin",
+          "text": "Pyin Oo Lwin (Burmese: ပြင်ဦးလွင်မြို့, MLCTS: prang u: lwang mrui., pronounced [pjɪ̀ɰ̃ ʔú lwɪ̀ɰ̃]; Shan: ဝဵင်းပၢင်ႇဢူႈ, Weng Pang U), formerly and colloquially known as Maymyo (Burmese: မေမြို့, MLCTS: me mrui.), is a hill town in the Mandalay Region of Myanmar, located approximately 67 kilometers (42 mi) east of Mandalay at an elevation of 1,070 metres (3,510 ft). Known as the \"City of Flowers\" (Pan Myodaw), it served as the summer capital of British Burma and remains one of Myanmar's most popular resort destinations owing to its cool highland climate. The township had a population of 361,088 at the 2024 census, of which 149,439 resided in the urban area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "pyin oo lwin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pyin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oo",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lwin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1648,
+    "place_id": "gn-1645457",
+    "input": {
+      "place": {
+        "place_id": "gn-1645457",
+        "name": "Dili",
+        "country": "Timor-Leste",
+        "subdivision": "Dili Municipality",
+        "lat": -8.55861,
+        "lon": 125.57361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dili",
+          "url": "https://en.wikipedia.org/wiki/Dili",
+          "text": "Dili (Portuguese: Díli) is the capital and largest city of Timor-Leste. It lies on the northern coast of the island of Timor, in a small area of flat land hemmed in by mountains. The climate is tropical with distinct wet and dry seasons.\nThe city has served as the economic hub and chief port of what is now Timor-Leste since its designation as the capital of Portuguese Timor in 1769. It also serves as the capital of the Dili Municipality, which includes some rural subdivisions in addition to the urban ones that make up the city itself. Dili's growing population is relatively youthful, being mostly of working age."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "dili",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1678,
+    "place_id": "gn-1632276",
+    "input": {
+      "place": {
+        "place_id": "gn-1632276",
+        "name": "Parung",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.42139,
+        "lon": 106.73306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parung",
+          "url": "https://en.wikipedia.org/wiki/Parung",
+          "text": "Parung (Sundanese:ᮕᮛᮥᮀ) is a town and administrative district (kecamatan) in Indonesia located near the southwestern suburb of South Jakarta, but officially still within the area of the Bogor Regency. Parung District covers 25.86 km2, and had a population of 112,529 at the 2010 Census and 123,078 at the 2020 Census. The official estimate as at mid-2023 was 128,905, comprising 65,568 males and 63,337 females. Those who travel from Jakarta to Bogor through the western alternative road have to pass through Parung.\nParung has a traditional market, Pasar Parung, as its commercial centre. It is situated on both sides of the main road, which causes daily traffic congestion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "parung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1683,
+    "place_id": "gn-1846266",
+    "input": {
+      "place": {
+        "place_id": "gn-1846266",
+        "name": "Jeju City",
+        "country": "South Korea",
+        "subdivision": "Jeju-do",
+        "lat": 33.50972,
+        "lon": 126.52194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jeju City",
+          "url": "https://en.wikipedia.org/wiki/Jeju_City",
+          "text": "Jeju City (Korean: 제주; Korean pronunciation: [tɕe.dʑu]) is the capital of the Jeju Province in South Korea and the largest city on Jeju Island. The city is served by Jeju International Airport (IATA code CJU).\nLocated on an island off the Korean Peninsula, Jeju has mild, warm weather during much of the year. The city is a well-known resort, with prestigious hotels and public casino facilities. In 2011, 9.9 million passengers flew between the two cities of Seoul and Jeju, making the Gimpo–Jeju route the world's busiest passenger air route.\nJeju welcomes over ten million visitors every year, mainly from the South Korean mainland, Japan, and China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "jeju city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jeju",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1684,
+    "place_id": "gn-184707",
+    "input": {
+      "place": {
+        "place_id": "gn-184707",
+        "name": "Naivasha",
+        "country": "Kenya",
+        "subdivision": "Nakuru County",
+        "lat": -0.71383,
+        "lon": 36.43261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naivasha",
+          "url": "https://en.wikipedia.org/wiki/Naivasha",
+          "text": "Naivasha () is a town in Nakuru County, Kenya, 92.8 km (57.7 mi) north west of Nairobi. From 1969, the population expanded by a factor of 17 times to over 355,383 at the 2019 census. It is situated on the shores of Lake Naivasha, from which it takes its name. The name Naivasha derives from the local Maasai word ɛnaɨpɔ́sha, meaning \"that which heaves\", a common Maasai word for bodies of water larger enough to have wave action when it is windy or stormy. Naivasha arose as the British attempted to pronounce the Maasai name.  Literally, Lake Naivasha means \"Lake Lake\" and Naivasha Town means \"Lake Town\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "naivasha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1693,
+    "place_id": "gn-3665900",
+    "input": {
+      "place": {
+        "place_id": "gn-3665900",
+        "name": "Villavicencio",
+        "country": "Colombia",
+        "subdivision": "Meta Department",
+        "lat": 4.13238,
+        "lon": -73.62564
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villavicencio",
+          "url": "https://en.wikipedia.org/wiki/Villavicencio",
+          "text": "Villavicencio (Latin American Spanish pronunciation: [biʝaβiˈsensjo]) is a city and municipality in Colombia. The capital of Meta Department, it was founded on April 6, 1840. The municipality had a population of 531,275 in 2018. The city is located at 4°08'N, 73°40'W, 75 km (about 45 mi) southeast of the Colombian capital city of Bogotá (DC) by the Guatiquía River. It is the most important commercial center in the Llanos Orientales (eastern plains) of Colombia.\nVillavicencio has a hot and very wet climate, with average daily temperatures ranging from 21 to 30 °C (70 to 86 °F) and an annual rainfall of around 4,500 millimetres or 180 inches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "villavicencio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1696,
+    "place_id": "gn-4151909",
+    "input": {
+      "place": {
+        "place_id": "gn-4151909",
+        "name": "Coral Springs",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.27119,
+        "lon": -80.2706
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coral Springs, Florida",
+          "url": "https://en.wikipedia.org/wiki/Coral_Springs,_Florida",
+          "text": "Coral Springs is a city in Broward County, Florida, United States. As of the 2020 census, Coral Springs had a population of 134,394. Approximately 20 miles (32 km) northwest of Fort Lauderdale, it is a principal city of the Miami metropolitan area. It has an arts center, history museum, hosts the \"Our Town\" annual festival, and has Florida's only covered bridge.\nThe city, officially chartered on July 10, 1963, was master-planned and primarily developed by Coral Ridge Properties, Inc., which was acquired by Westinghouse in 1966. The city's name is derived from the company's name, and was selected after several earlier proposals had been considered and rejected."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "coral springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coral",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1717,
+    "place_id": "gn-2657970",
+    "input": {
+      "place": {
+        "place_id": "gn-2657970",
+        "name": "Winterthur",
+        "country": "Switzerland",
+        "subdivision": "Zurich",
+        "lat": 47.50564,
+        "lon": 8.72413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winterthur",
+          "url": "https://en.wikipedia.org/wiki/Winterthur",
+          "text": "Winterthur (Swiss Standard German pronunciation: [ˈvɪntərtuːr]; French: Winterthour [vintəʁtuʁ, vintɛʁ-]) is a city and municipality in the canton of Zurich in northern Switzerland. With over 120,000 residents, it is the country's sixth-largest city by population, as well as its ninth-largest agglomeration with about 140,000 inhabitants. Located about 20 kilometres (12 mi) northeast of Zurich, Winterthur is a service and high-tech industrial satellite city within Zurich Metropolitan Area. Winterthur is usually abbreviated as Winti in the local dialect.\nWinterthur is connected to Germany by direct trains and has links to Zurich Airport. It is also a regional transport hub: the A1 motorway from Geneva through to St."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "winterthur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1740,
+    "place_id": "gn-1626103",
+    "input": {
+      "place": {
+        "place_id": "gn-1626103",
+        "name": "Sumedang",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.85861,
+        "lon": 107.91639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sumedang",
+          "url": "https://en.wikipedia.org/wiki/Sumedang",
+          "text": "Sumedang (former Dutch spelling: Soemedang) is a town in Western Java, Indonesia, approximately 46 km northeast of Bandung, the provincial capital. It is the capital of Sumedang Regency. The town's two administrative districts (kecamatan) have a combined area of 125.32 km2 and had a population of 184,293 as of mid-2025. The town is just south of the volcanic Mount Tampomas, which is 1,684 m (5,525 ft) high and is usually climbed from Cimalaka District, 7 km from Sumedang.\nSumedang's museum, Prabu Geusan Ulun, houses a collection of traditional Sundanese weaponry, as well as some crown jewels and other finery. It is on Geusan Ulun Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "sumedang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1763,
+    "place_id": "gn-2243940",
+    "input": {
+      "place": {
+        "place_id": "gn-2243940",
+        "name": "Ziguinchor",
+        "country": "Senegal",
+        "subdivision": "Ziguinchor",
+        "lat": 12.56801,
+        "lon": -16.27326
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ziguinchor",
+          "url": "https://en.wikipedia.org/wiki/Ziguinchor",
+          "text": "Ziguinchor (French: [ziɡɛ̃ʃɔʁ]; Wolof: Siggcoor [siɡˑcɔːɾ]; Arabic: زيغينكور) is the capital of the Ziguinchor Region, and the chief town of the Casamance area of Senegal, lying at the mouth of the Casamance River. It has a population of 214,874 (2023 census). It is the eighth largest city of Senegal, but is nearly separated from the north of the country by the nation of The Gambia.\nUnlike the semi-arid to arid north of Senegal, Ziguinchor has a tropical savanna climate, as it is under the influence of the West African Monsoon. It has an average annual accumulated rainfall of approximately 1,547 millimetres or 61 inches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "ziguinchor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1768,
+    "place_id": "gn-2759821",
+    "input": {
+      "place": {
+        "place_id": "gn-2759821",
+        "name": "Amersfoort",
+        "country": "Netherlands",
+        "subdivision": "Utrecht",
+        "lat": 52.155,
+        "lon": 5.3875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amersfoort",
+          "url": "https://en.wikipedia.org/wiki/Amersfoort",
+          "text": "Amersfoort (Dutch pronunciation: [ˈaːmərsfoːrt] ) is a city and municipality in the Utrecht province of the Netherlands. As of 31 January 2023, the municipality had a population of 160,902, making it the second-largest of the province and fifteenth-largest of the country. Amersfoort is also one of the largest Dutch railway junctions with its three stations—Amersfoort Centraal, Schothorst and Vathorst—due to its location on two of the Netherlands' main east to west and north to south railway lines. The city was used during the 1928 Summer Olympics as a venue for the modern pentathlon events. Amersfoort marked its 750th anniversary as a city in 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "amersfoort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1787,
+    "place_id": "gn-1804651",
+    "input": {
+      "place": {
+        "place_id": "gn-1804651",
+        "name": "Kunming",
+        "country": "China",
+        "subdivision": "Yunnan",
+        "lat": 25.03889,
+        "lon": 102.71833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kunming",
+          "url": "https://en.wikipedia.org/wiki/Kunming",
+          "text": "Kunming is the capital and largest city of the province of Yunnan in China. The political, economic, communications and cultural centre of the province, Kunming is also a major tourism centre in China. It is nicknamed the \"City of Eternal Spring\" for its year-round mild climate. During World War II, Kunming was a Chinese military center and the location of the headquarters for the U.S. Army Forces China-Burma-British Raj. Wujiaba Airport served as the home of the First American Volunteer Group (AVG) of the Republic of China Air Force, nicknamed the Flying Tigers. Kunming was also a transport terminus for the Burma Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kunming",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1799,
+    "place_id": "gn-5921356",
+    "input": {
+      "place": {
+        "place_id": "gn-5921356",
+        "name": "Chilliwack",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.16638,
+        "lon": -121.95257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chilliwack",
+          "url": "https://en.wikipedia.org/wiki/Chilliwack",
+          "text": "Chilliwack ( CHIL-ə-wak) is a city in the Canadian province of British Columbia. In 2025, the city had an estimated population of 112,500 residents. Between 2020–2025, the city saw steady growth, adding approximately 11,700 residents over this period at a rate of 11.6%. It is located about 100 kilometres (62 mi) east of the City of Vancouver in the Fraser Valley. Chilliwack is 34 kilometres (21 mi) northwest of the Sumas–Huntingdon Border Crossing on the Canada–United States border. \nAbout two-thirds of city land is protected as part of the Agricultural Land Reserve, and agriculture accounts for about 30 percent of the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "chilliwack",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1801,
+    "place_id": "gn-6182962",
+    "input": {
+      "place": {
+        "place_id": "gn-6182962",
+        "name": "Windsor",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.30008,
+        "lon": -83.01654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windsor, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Windsor,_Ontario",
+          "text": "Windsor ( WIND-zər) is a city in southwestern Ontario, Canada. It is situated on the south bank of the Detroit River directly across from the U.S. city of Detroit, Michigan. Geographically located within but administratively independent of Essex County, it is the southernmost major city in Canada and marks the southwestern end of the Quebec City–Windsor Corridor. The city's population was 229,660 at the 2021 census, making it the third-most populated city in Southwestern Ontario, after London and Kitchener. This represents a 5.7 percent increase from Windsor's 2016 population census of 217,188. \nThe Detroit–Windsor urban area is North America's most populous trans-border conurbation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "windsor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1802,
+    "place_id": "gn-752015",
+    "input": {
+      "place": {
+        "place_id": "gn-752015",
+        "name": "Amasya",
+        "country": "Türkiye",
+        "subdivision": "Amasya",
+        "lat": 40.65333,
+        "lon": 35.83306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amasya",
+          "url": "https://en.wikipedia.org/wiki/Amasya",
+          "text": "Amasya (Turkish pronunciation: [aˈmasja]) is a city in northern Turkey, in the Black Sea Region. It was called Amaseia or Amasia in antiquity. It is the seat of Amasya Province and Amasya District. Its population is 114,921 (2021). Amasya stands in the mountains above the Black Sea (Karadeniz) coast, set apart from the rest of Anatolia in a narrow valley along the banks of the Yeşilırmak (Iris) River. Although near the Black Sea, this area is high above the coast and has an inland climate, well-suited to growing apples, for which Amasya province, one of the provinces in north-central Anatolia Turkey, is famed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "amasya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1804,
+    "place_id": "gn-1272175",
+    "input": {
+      "place": {
+        "place_id": "gn-1272175",
+        "name": "Durgapur",
+        "country": "India",
+        "subdivision": "West Bengal",
+        "lat": 23.51583,
+        "lon": 87.30801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Durgapur",
+          "url": "https://en.wikipedia.org/wiki/Durgapur",
+          "text": "Durgapur (Bengali pronunciation: [durgapur]), is a major industrial hub and a planned urban agglomeration in the Indian state of West Bengal. It stands on the northern bank of the Damodar river and is located in Paschim Bardhaman district. Durgapur is a major centre for producing steel and manufacturing train wheels in India. Over the past few years, this city has also been developed as a hub for the IT industry in India. The city was planned by Bidhan Chandra Roy, Joseph Allen Stein and Benjamin Polk in 1955. Durgapur is the only city in eastern India to have an operational dry dock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "durgapur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1806,
+    "place_id": "gn-13118091",
+    "input": {
+      "place": {
+        "place_id": "gn-13118091",
+        "name": "Setia Alam",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.10155,
+        "lon": 101.45565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Setia Alam",
+          "url": "https://en.wikipedia.org/wiki/Setia_Alam",
+          "text": "Setia Alam is an integrated and modern township located in Shah Alam, Selangor, Malaysia. It is accessible via Setia Alam Highway from the New Klang Valley Expressway (NKVE) since the interchange opened on 14 July 2006. Setia Alam is also accessible from the Federal Highway and Klang via Jalan Meru. This township is developed by S P Setia Berhad.\nSetia Alam is an integrated development spanning over 4,000 acres (16 km2) of land. It falls under the jurisdiction of the Shah Alam City Council (MBSA), which has placed restrictions on the establishment of entertainment outlets such as pubs, discos, and lottery businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "setia alam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "setia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1807,
+    "place_id": "gn-1725684",
+    "input": {
+      "place": {
+        "place_id": "gn-1725684",
+        "name": "Bayugan",
+        "country": "Philippines",
+        "subdivision": "Caraga",
+        "lat": 8.75611,
+        "lon": 125.7675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayugan",
+          "url": "https://en.wikipedia.org/wiki/Bayugan",
+          "text": "Bayugan, officially the City of Bayugan (Cebuano: Dakbayan sa Bayugan; Filipino: Lungsod ng Bayugan), is a  component city in the province of Agusan del Sur, Philippines. According to the 2024 census, it has a population of 110,313 people.\nHaving gained cityhood through Republic Act No. 9405, it is the only city in the province of Agusan del Sur and also the most populous.\nLocated at the northern part of Agusan del Sur, Bayugan is the \"cut-flower capital\" of the province owing to its lucrative cut flower industry. The city's climate, especially in the highland barangays, is conducive to high yield cut-flower production."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "bayugan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1818,
+    "place_id": "gn-3454865",
+    "input": {
+      "place": {
+        "place_id": "gn-3454865",
+        "name": "Alvorada",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -30.00018,
+        "lon": -51.07632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alvorada",
+          "url": "https://en.wikipedia.org/wiki/Alvorada",
+          "text": "Alvorada (Portuguese: [aw.voˈɾa.dɐ] , lit. 'dawn') is a municipality in the state of Rio Grande do Sul, in the south of Brazil, adjacent to the capital of the state, Porto Alegre. The city is also known as \"The Capital of Solidarity.\" Alvorada is primarily a bedroom community with most workers commuting to adjacent cities such as Porto Alegre to work. Its name means \"the awakening\" or \"the sunrise\".\nAlthough improvements have been made, the city suffers from heavy crime and squatting. The largest of these slums or favelas is the dangerous Umbu subdivision. Drug and arms trafficking are punctuated by periodic violence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "alvorada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1820,
+    "place_id": "gn-3460728",
+    "input": {
+      "place": {
+        "place_id": "gn-3460728",
+        "name": "Itapetininga",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.59167,
+        "lon": -48.05306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itapetininga",
+          "url": "https://en.wikipedia.org/wiki/Itapetininga",
+          "text": "Itapetininga is a municipality in the state of São Paulo, Brazil. The population is 157,790 (2022 Census) in an area of 1790 km2. The name comes from a Tupi-Guarani language, meaning \"dry stone\".\nThe city is the seat of the Government Region of Itapetininga, made up of twelve other municipalities: Alambari, Angatuba, Boituva, Campina do Monte Alegre, Capela do Alto, Cerquilho, Cesário Lange, Guareí, Quadra, São Miguel Arcanjo, Sarapuí and Tatuí, which together have more than 520 thousand inhabitants.\nIt is situated in the southern part of the state, and is known as cidade das escolas, meaning city of schools in Portuguese."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "itapetininga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

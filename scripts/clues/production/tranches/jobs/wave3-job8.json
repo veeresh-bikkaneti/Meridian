@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 2575,
+    "place_id": "gn-5359446",
+    "input": {
+      "place": {
+        "place_id": "gn-5359446",
+        "name": "Indio",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.7207,
+        "lon": -116.21677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Indio, California",
+          "url": "https://en.wikipedia.org/wiki/Indio,_California",
+          "text": "Indio (Spanish for \"Indian\") is a city in central Riverside County, California, United States, in the Coachella Valley of Southern California's Colorado Desert region. Indio is approximately 125 miles (201 km) east of Los Angeles, 23 miles (37 km) east of Palm Springs, and 98 miles (158 km) west of Blythe, California.\nThe population was 89,137 at the 2020 United States census, up from 76,036 at the 2010 census, an increase of 17%. Indio is the most populous city in the Coachella Valley, and was formerly referred to as the \"Hub of the Valley,\" a Chamber of Commerce slogan used in the mid-twentieth century. Indio is now nicknamed the \"City of Festivals,\" a reference to the numerous cultural events held in the city, most notably the Coachella Valley Music and Arts Festival and Stagecoach Festival.\nIndio is the principal city of an urban area defined by the United States Census Bureau that is located in the Coachella Valley: the Indio–Palm Desert–Palm Springs CA urban area had a population of 361,075 as of the 2020 census, making it the 114th-most populous urban area in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "indio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2578,
+    "place_id": "gn-4160812",
+    "input": {
+      "place": {
+        "place_id": "gn-4160812",
+        "name": "Key West",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 24.55524,
+        "lon": -81.78163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Key West",
+          "url": "https://en.wikipedia.org/wiki/Key_West",
+          "text": "Key West (Spanish: Cayo Hueso [kaʝo ˈweso]) is a coral cay island in the Straits of Florida, at the southernmost end of the U.S. state of Florida and its outlying Florida Keys archipelago. Together with all or parts of the separate islands of Dredgers Key, Fleming Key, Sunset Key, and the northern part of Stock Island, it constitutes the City of Key West.\nFor thousands of years, Key West and the surrounding islands were inhabited by various Native American tribes. The island's first recorded European contact occurred in 1513, when an expedition led by Spanish conquistador Juan Ponce de León circumnavigated the Florida Keys amid his voyage along the coast of Florida, though no permanent settlement was established. Over the following centuries, the island remained sparsely populated while passing between periods of Spanish and British control. Following the transfer of Florida to the United States in 1819, Key West rapidly developed into a major maritime center, with its strategic location along the Florida Straits and thriving wrecking industry helping make it one of the wealthiest communities in the United States during the 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "key west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "key",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2581,
+    "place_id": "gn-176555",
+    "input": {
+      "place": {
+        "place_id": "gn-176555",
+        "name": "Kawambwa",
+        "country": "Zambia",
+        "subdivision": "Luapula Province",
+        "lat": -9.7915,
+        "lon": 29.07913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kawambwa",
+          "url": "https://en.wikipedia.org/wiki/Kawambwa",
+          "text": "Kawambwa is a town in the Zambian province of Luapula located on the edge of the northern Zambian plateau above the Luapula valley at an altitude of 1300 m. It was chosen as an administrative district of the same name by the British colonial authorities who preferred the climate of the plateau rather than the hotter valley where most of the district's population live, and it continues as an administrative district today.\nKawambwa sits at the junction of tarred roads to Nchelenge, Mporokoso, Mushota and Mansa, and Mbereshi linking with the Zambia Way, the main tarred highway of the Luapula Province through Mwansabombwe and Mansa.\nZambia's largest tea plantation is situated 27 km from Kawambwa on the Mporokoso road.\nA camp for refugees of war in the eastern DR Congo was established by United Nations agencies at Kala 24 km north of Kawambwa in 1998, with a capacity for 40,000 refugees.\nNear to Kawambwa are three of Zambia's waterfalls Lumangwe Falls, Kabwelume 50 km to the north-east on the Kalungwishi River and the Ntumbachushi Falls on the Ngona River, 16 km west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "kawambwa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2593,
+    "place_id": "gn-8469295",
+    "input": {
+      "place": {
+        "place_id": "gn-8469295",
+        "name": "Randolph",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.84829,
+        "lon": -74.58148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Randolph, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Randolph,_New_Jersey",
+          "text": "Randolph is a township in southwestern Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 26,504, an increase of 770 (+3.0%) from the 2010 census count of 25,734, which in turn reflected an increase of 887 (+3.6%) from the 24,847 counted in the 2000 census.\nAccording to the 2020 Census, Randolph was the 3rd most-populous municipality in Morris County and its 21 square miles (54 km2) land area was the eighth-largest in the county. The New Jersey State Planning Commission designates Randolph as half rural, half suburban. The community maintains a diverse population of nearly 26,000 residents.\nIn 2013, in the Coldwell Banker edition of “Best Places to Live in New Jersey for Booming Suburbs,” Randolph was the number one ranked town in Morris County and fourth overall in the state citing \"job growth, high percentage of home ownership, good schools, access to local shopping and community safety.\" Niche.com ranked Randolph amongst the Top 50 in its 2019 rankings of the \"Best Places to Live\" in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "randolph",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2594,
+    "place_id": "gn-1819577",
+    "input": {
+      "place": {
+        "place_id": "gn-1819577",
+        "name": "Kwun Tong",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Kwun Tong District",
+        "lat": 22.31184,
+        "lon": 114.22176
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kwun Tong",
+          "url": "https://en.wikipedia.org/wiki/Kwun_Tong",
+          "text": "Kwun Tong is an area in the Kwun Tong District of Hong Kong, situated at the eastern part of the Kowloon Peninsula, and its boundary stretches from Lion Rock in the north to Lei Yue Mun in the south, and from the winding paths of Kowloon Peak in the east to the north coast of the former Kai Tak Airport runway in the west.\nOne of the first new towns in Hong Kong, Kwun Tong was, and remains, a major industrial area. Its population has been growing rapidly, and the demand for housing, medical and educational facilities and services has been increasing. In view of this, a number of community development projects, such as the redevelopment of old housing estates and the construction of major parks, have been implemented in recent years. These projects have incorporated a wide range of supporting facilities, like primary and secondary schools, clinics, community centres and open spaces. All these facilities have brought about a new face to the Kwun Tong District, making it a more comfortable place for the people to live."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "kwun tong",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kwun",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tong",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2597,
+    "place_id": "gn-2654308",
+    "input": {
+      "place": {
+        "place_id": "gn-2654308",
+        "name": "Burgess Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.95843,
+        "lon": -0.13287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burgess Hill",
+          "url": "https://en.wikipedia.org/wiki/Burgess_Hill",
+          "text": "Burgess Hill ( ) is a town and civil parish in West Sussex, England, close to the border with East Sussex, on the edge of the South Downs National Park, 39 mi (63 km) south of London, 10 mi (16 km) north of Brighton and Hove, and 29 mi (47 km) northeast of the county town, Chichester. It had an area of 3.7 sq mi (9.6 km2) and a population of 30,635 at the 2011 Census, making it the fourth most populous parish in the county (behind Crawley, Worthing and Horsham) and the most populous in the Mid Sussex District. Other nearby towns include Haywards Heath to the northeast and Lewes, the county town of East Sussex, to the southeast.\nBurgess Hill is just on the West Sussex side of the border dividing the two counties, although parts of the World's End district are across the county boundary in the Lewes district of East Sussex. On its northwest border lies the Bedelands Farm Nature Reserve.\nBurgess Hill is twinned with Schmallenberg in Germany and Abbeville in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "burgess hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "burgess",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2603,
+    "place_id": "gn-2540850",
+    "input": {
+      "place": {
+        "place_id": "gn-2540850",
+        "name": "Ouarzazate",
+        "country": "Morocco",
+        "subdivision": "Drâa-Tafilalet",
+        "lat": 30.91894,
+        "lon": -6.89341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ouarzazate",
+          "url": "https://en.wikipedia.org/wiki/Ouarzazate",
+          "text": "Ouarzazate (; Standard Moroccan Tamazight: ⵡⴰⵔⵣⴰⵣⴰⵜ Arabic: ورزازات, romanized: Warzāzāt, IPA: [warzaːˈzaːt]) is a city and capital of Ouarzazate Province in the region of Drâa-Tafilalet, south-central Morocco. \nOuarzazate is a primary tourist destination as well as a starting point for excursions into and across the Draa Valley and the desert. The fortified village Aït Benhaddou west of the city is a UNESCO World Heritage Site.\nThe Ouarzazate area is a noted film-making location, with Morocco's biggest studios inviting many international companies to work here. Films such as Lawrence of Arabia (1962), The Man Who Would Be King (1975), The Living Daylights (1987), The Last Temptation of Christ (1988), The Mummy (1999), Gladiator (2000), Kingdom of Heaven (2005), Kundun (1997), Legionnaire (1998), The Hills Have Eyes (2006), Salmon Fishing in the Yemen (2011), The Wages of Fear (2024) and The Odyssey (2026) were shot here, as was part of the TV series Game of Thrones. It was the filming location for the fictional city of Agapenta in the fourth season of the Netflix series Outer Banks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "ouarzazate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2615,
+    "place_id": "gn-3185672",
+    "input": {
+      "place": {
+        "place_id": "gn-3185672",
+        "name": "Fier",
+        "country": "Albania",
+        "subdivision": "Fier County",
+        "lat": 40.7251,
+        "lon": 19.55823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fier",
+          "url": "https://en.wikipedia.org/wiki/Fier",
+          "text": "Fier (pronounced [fiˈɛɾ]; Albanian definite form: Fieri, Latin: Fierum) is the seventh most populous city of the Republic of Albania and seat of Fier County and Fier Municipality. It is situated on the bank of Gjanica River in the Myzeqe Plain between the Seman in the north, the Vjosë in the south and the foothills of the Mallakastra Mountains in the southeast. Fier experiences a seasonal Mediterranean climate affected by its proximity to the Adriatic Sea in the west.\nFier was founded in the 19th century by the Vrioni family and officially in 1864 by Omer Pasha Vrioni II, the father of Kahreman Pasha Vrioni (1889-1955). It is 7 km (4 mi) from the ruins of the ancient settlement of Apollonia which was founded in 588 BCE by Ancient Greek colonists from Corfu and Corinth, on a site occupied by Illyrian tribes.\nFier is an important terminus in southwestern Albania and is served by the A2 motorway and SH 4 highway, forming a north–south corridor in Albania and part of the Adriatic–Ionian motorway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "fier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2618,
+    "place_id": "gn-2521139",
+    "input": {
+      "place": {
+        "place_id": "gn-2521139",
+        "name": "Benalmádena",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.5961,
+        "lon": -4.57267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benalmádena",
+          "url": "https://en.wikipedia.org/wiki/Benalmádena",
+          "text": "Benalmádena (Spanish pronunciation: [benalˈmaðena]) is a town in Andalusia in southern Spain, 12 km west of Málaga, on the Costa del Sol between Torremolinos and Fuengirola.\nBenalmádena is rich in attractive beaches and interesting places like the Colomares Castle, the 33-metre-tall Buddhist Benalmádena Stupa, the largest Buddhist stupa in Europe, the Benalmádena Marina and the Benalmádena Cable Car.\nBenalmádena covers an area of just over 27 km2 that extends from the summits of the Sierra de Mijas to the sea, falling in some places as a cliff. The territory is crossed from east to west on Highway A-7, which connects with the provincial capital and other centres of the Mediterranean coast.\nWith 61,383 inhabitants according to the INE census of 2010, Benalmádena is the eighth most populous municipality in the province and the third largest metropolitan area, behind Málaga and Torremolinos. The population is concentrated in three main centers: Benalmádena Pueblo, Arroyo de la Miel and Benalmádena Costa, although the high urban growth and demographic tends to unify the three cores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "benalmadena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2627,
+    "place_id": "gn-5563397",
+    "input": {
+      "place": {
+        "place_id": "gn-5563397",
+        "name": "Eureka",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 40.80207,
+        "lon": -124.16367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eureka, California",
+          "url": "https://en.wikipedia.org/wiki/Eureka,_California",
+          "text": "Eureka ( yuurr-EE-kə; Wiyot: Jaroujiji; Hupa: dahwilahłding; Karok: Uuth) is a city in and the county seat of Humboldt County, located on the North Coast of California. The city is located on U.S. Route 101 on the shores of Humboldt Bay, 270 miles (435 km) north of San Francisco and 100 miles (161 km) south of the Oregon border. At the 2020 census, the population of the city was 26,512 and the population of the greater Eureka area was 48,119.\nEureka is the largest coastal city between San Francisco and Portland, Oregon, and the westernmost city of more than 25,000 residents in the 48 contiguous states. The proximity to the sea causes the city to have a maritime climate with very small annual temperature differences and seasons mainly being defined by the rainy winters and dry summers, whereas nearby inland areas are much hotter in summer. It is the regional center for government, health care, trade, and the arts on the North Coast north of the San Francisco Bay Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "eureka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2630,
+    "place_id": "gn-4351383",
+    "input": {
+      "place": {
+        "place_id": "gn-4351383",
+        "name": "Chillum",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.96372,
+        "lon": -76.99081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chillum, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Chillum,_Maryland",
+          "text": "Chillum is an unincorporated area and census-designated place in Prince George's County, Maryland, United States, bordering Washington, D.C., and Montgomery County.\nIn addition to being its own unincorporated neighborhood, Chillum is also a census-designated place covering a larger area than the Chillum neighborhood. As of the 2010 census, the Chillum CDP included Chillum, as well as the adjacent unincorporated communities of Avondale, Carole Highlands, Green Meadows, and Lewisdale.  The population was 36,039 at the 2020 census.\nChillum, the neighborhood, is contained between the Northwest Branch Anacostia River to the east, East West Highway (MD 410) and Sligo Creek to the north, New Hampshire Avenue (MD 650) to the west, and Eastern Avenue NE to the south. Chillum borders the adjacent communities of Avondale, Green Meadows, and Carole Highlands in Prince George's County as well as the city of Takoma Park in Montgomery County, and the Riggs Park (also known as \"Lamond Riggs\"), Queens Chapel, and North Michigan Park neighborhoods of Northeast Washington D.C. Actor Jonathan Banks is from Chillum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "chillum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2637,
+    "place_id": "gn-2652696",
+    "input": {
+      "place": {
+        "place_id": "gn-2652696",
+        "name": "Coatbridge",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.86216,
+        "lon": -4.02469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coatbridge",
+          "url": "https://en.wikipedia.org/wiki/Coatbridge",
+          "text": "Coatbridge (; Scots: Cotbrig or Coatbrig) is a town in North Lanarkshire, Scotland, about 8+1⁄2 miles (14 kilometres) east of Glasgow city centre, set in the central Lowlands. It had a population of 42,264 in 2022. Along with neighbouring town Airdrie, Coatbridge forms the area known as the Monklands (population approximately 90,000 including outlying settlements), often considered to be part of the Greater Glasgow urban area – although officially they have not been included in population figures since 2016 due to small gaps between the Monklands and Glasgow built-up areas.\nIn the last years of the 18th century, the area developed from a loose collection of hamlets into the town of Coatbridge. The town's development and growth have been intimately connected with the technological advances of the Industrial Revolution, and in particular with the hot blast process. Coatbridge was a major Scottish centre for iron works and coal mining during the 19th century and was then described as 'the industrial heartland of Scotland' and the 'Iron Burgh'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "coatbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2638,
+    "place_id": "gn-2658761",
+    "input": {
+      "place": {
+        "place_id": "gn-2658761",
+        "name": "Schaffhausen",
+        "country": "Switzerland",
+        "subdivision": "Schaffhausen",
+        "lat": 47.69732,
+        "lon": 8.63493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schaffhausen",
+          "url": "https://en.wikipedia.org/wiki/Schaffhausen",
+          "text": "Schaffhausen (Swiss Standard German: [ʃafˈhaʊzn̩] ; Alemannic German: Schafuuse), historically known in English as Shaffhouse, is a town with historic roots, a municipality in northern Switzerland, and the capital of the canton of the same name; it has an estimated population of 37,000 as of December 2018. It is located on the shore of the High Rhine; it is one of four Swiss towns located entirely on the northern side of the Rhine, along with Neuhausen am Rheinfall, the historic Neunkirch, and medieval Stein am Rhein.\nThe largely pedestrianised old town has two preserved medieval gate towers and many fine Renaissance era buildings decorated with exterior frescos, sculptures and a total of 171 oriel windows (more than any other Swiss town). The old canton fortress, the Munot, overlooks the old town. Schaffhausen railway station is a junction of Swiss and German railway lines. One of the lines connects the town with the nearby Rhine Falls in Neuhausen am Rheinfall, Europe's largest waterfall and a popular tourist attraction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "schaffhausen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2646,
+    "place_id": "gn-3470597",
+    "input": {
+      "place": {
+        "place_id": "gn-3470597",
+        "name": "Barra Velha",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.63222,
+        "lon": -48.68472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barra Velha",
+          "url": "https://en.wikipedia.org/wiki/Barra_Velha",
+          "text": "Barra Velha is a resort town and county seat of about 30,000 inhabitants in the Northern region of Santa Catarina, Brazil. Its nine beaches extend from the Rio Itapocu in the North to the resort town of Piçarras on its Southern border. Additionally, it is the only resort in the area to have a freshwater lake separated from the ocean by an old sand bar, from which it derives its name.\nLocated between Joinville and Itajaí on BR-101, the principal north–south highway in Southern Brazil, it is an important resort destination for residents of the industrial region to the North and West of the State, with summer weekend population exceeding 100,000.\nSettled initially by Azorian whale fishermen in 1812, it retains its fishing village characteristics with boats drawn up onto the beach and the daily catch sold directly from them by the fishermen every morning. In the center of downtown a hill rises sharply from the beach which provides views of the lake and town center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "barra velha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "velha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2647,
+    "place_id": "gn-4581832",
+    "input": {
+      "place": {
+        "place_id": "gn-4581832",
+        "name": "Hilton Head Island",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 32.19382,
+        "lon": -80.73816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hilton Head Island, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Hilton_Head_Island,_South_Carolina",
+          "text": "Hilton Head Island (sometimes referred to as simply Hilton Head) is a resort town in Beaufort County, South Carolina, United States. It is a barrier island within the South Carolina Lowcountry, located 20 miles (32 km) northeast of Savannah, Georgia, and 95 miles (153 km) southwest of Charleston. The year-round population was 37,661 at the 2020 census, although during the peak of summer vacation season the population can swell to 150,000. It is the principal city of the Hilton Head Island metropolitan area, which had an estimated population of 232,523 in 2023.\nThe island is named after Captain William Hilton, who in 1663 identified a headland near the entrance to Port Royal Sound, which mapmakers named \"Hilton's Headland.\" The island has a rich history that started with seasonal occupation by Native Americans thousands of years ago and continued with European exploration and the sea island cotton trade. It became an important base of operations for the Union blockade of the Southern ports during the Civil War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "hilton head island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hilton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "head",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2651,
+    "place_id": "gn-455812",
+    "input": {
+      "place": {
+        "place_id": "gn-455812",
+        "name": "Saulkrasti",
+        "country": "Latvia",
+        "subdivision": "Saulkrasti Municipality",
+        "lat": 57.26224,
+        "lon": 24.41471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saulkrasti",
+          "url": "https://en.wikipedia.org/wiki/Saulkrasti",
+          "text": "Saulkrasti (; German: Neubad, literally Sun shores in Latvian) is a town and the administrative center of Saulkrasti Municipality in the Vidzeme region of Latvia, on the east coast of the Gulf of Riga. Made up of a number of historic fishing settlements, the town stretches for some 17 km from the Inčupe river in the south to the village of Skulte in the north. The town itself spans across 4.8 square kilometres (1.9 sq mi) and includes an additional 42 square kilometres (16 sq mi) of fields and forests.\nThe center of Saulkrasti is situated about 40 km from Sigulda, 45 km from Riga, 47 km from Limbaži, and 58 km from Salacgrīva. The territory of the Saulkrasti municipality is crossed by the European route E67, known locally as Via Baltica or the A1 road. There are six train stations in Saulkrasti and its suburbs - Inčupe, Pabaži, Saulkrasti, Ķīšupe, Zvejniekciems, and Skulte, the latter being the final stop on the Zemitāni-Skulte Railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "saulkrasti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2656,
+    "place_id": "gn-295277",
+    "input": {
+      "place": {
+        "place_id": "gn-295277",
+        "name": "Eilat",
+        "country": "Israel",
+        "subdivision": "Southern District",
+        "lat": 29.55805,
+        "lon": 34.94821
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eilat",
+          "url": "https://en.wikipedia.org/wiki/Eilat",
+          "text": "Eilat ( ay-LAHT, UK also  ay-LAT; Hebrew: אֵילַת [eˈlat] ; Arabic: إِيلَات, romanized: Īlāt) is Israel's southernmost city, with a population of 56,004, a port and popular resort at the northern tip of the Red Sea, on what is known in Israel as the Gulf of Eilat and in Jordan as the Gulf of Aqaba. The city is considered a tourist destination for domestic and international tourists heading to Israel.\nEilat is located at the southernmost tip of Israel, at the southern end of the Arava valley and the Negev desert, adjacent to the Egyptian resort city of Taba to the south, the Jordanian port city of Aqaba to the east, and within sight of Haql, Saudi Arabia, across the gulf to the southeast.\nEilat hosts numerous hotels, holiday resorts, and beaches. Its renowned coral reefs make it a popular destination for diving tourism, with activities such as snorkeling and scuba diving. The city's shopping centers benefit from its status as a tax-free zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "eilat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2657,
+    "place_id": "gn-3470709",
+    "input": {
+      "place": {
+        "place_id": "gn-3470709",
+        "name": "Barra do Garças",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -15.89,
+        "lon": -52.25667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barra do Garças",
+          "url": "https://en.wikipedia.org/wiki/Barra_do_Garças",
+          "text": "Barra do Garças is a city with a population of 61,135 located in the Brazilian state of Mato Grosso, around 550 km (340 mi) from the capital city of Cuiabá. It was founded on 13 June 1924, but it became politically independent on 15 September 1948. Nowadays, Barra do Garças is the 8th biggest city in Mato Grosso. The city is situated on the border between the Mato Grosso and Goiás states and due to this the area is considered a geodesic center.\nA small but developed tourist city due to high agriculture exportation and a strong military presence, Barra do Garças also has a Cristo Redentor (Christ the Redeemer) statue and is known as Rio de Janeiro do Oeste (Rio de Janeiro of the West.)\nThe municipality contains the 11,002 hectares (27,190 acres) Serra Azul State Park, created in 1994.\nBarra do Garças has many other tourist attractions: a Discoporto, (UFOport), water parks, as well as hot springs, mountains, and fresh water beaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "barra do garcas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "garcas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2661,
+    "place_id": "gn-2645418",
+    "input": {
+      "place": {
+        "place_id": "gn-2645418",
+        "name": "Kingswood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.45278,
+        "lon": -2.50833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingswood, South Gloucestershire",
+          "url": "https://en.wikipedia.org/wiki/Kingswood,_South_Gloucestershire",
+          "text": "Kingswood is a town and civil parish in the South Gloucestershire district of the ceremonial county of Gloucestershire, England. The town is in the Bristol Built-up Area, situated 3 miles (4.8 km) east-northeast of Bristol city centre. In 2023 it had a population of 48,474.\nBroadly speaking, Kingswood spans the area from John Cabot Academy in the west to the A4174 ring road in the east. Some areas which are in close proximity to Kingswood, such as Two Mile Hill and St George East (both located within the City of Bristol) and parts of Hanham and Warmley Hill are often considered to be part of Kingswood by locals. The border between South Gloucestershire and the City of Bristol is situated at the western end of Kingswood's High Street, meaning that anything west of this point is no longer Kingswood civil parish, though locals often consider the shops and residential areas that fringe Two Mile Hill to be a continuation of Kingswood neighbourhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "kingswood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2662,
+    "place_id": "gn-3124408",
+    "input": {
+      "place": {
+        "place_id": "gn-3124408",
+        "name": "Coslada",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.42378,
+        "lon": -3.56129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coslada",
+          "url": "https://en.wikipedia.org/wiki/Coslada",
+          "text": "Coslada (Spanish pronunciation: [kosˈlaða]) is a city and municipality in the autonomous community of Madrid in central Spain. It has an area of 11.7 km2.\nThe Dry Port of the Community of Madrid is located in Coslada, which has become a major logistics hub in the country. Due to the area's close proximity to the Madrid–Barajas Airport and the Dry Port, the stretch of industrial cities from Madrid to Guadalajara along the A-2 freeway (known as the Corredor del Henares and more recently the \"golden mile\" of online sales) has, since the 1990s, grown into a logistics hub, similar to East Midlands in England, with the entire area now boasting 5.7 million m2 of logistics space in total. With investment from foreign funds and socimis, the logistics sector has grown rapidly thanks to increases in internet shopping. As Coslada runs out of space, other logistics companies have started to move into nearby cities such as Marchamalo, San Fernando de Henares, and Torija."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "coslada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
