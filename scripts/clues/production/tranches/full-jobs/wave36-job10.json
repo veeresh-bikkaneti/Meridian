@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 7231,
+    "attempt": 7181,
+    "place_id": "gn-2759197",
+    "input": {
+      "place": {
+        "place_id": "gn-2759197",
+        "name": "Bennekom",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.99833,
+        "lon": 5.67639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bennekom",
+          "url": "https://en.wikipedia.org/wiki/Bennekom",
+          "text": "Bennekom is a village and parish in the Netherlands, which is part of the Municipality of Ede in the south-west of the Veluwe district of the Province of Gelderland. It adjoins the town of Wageningen on the Lower-Rhine to the south, and Ede to the north, Veenendaal to the west and Renkum to the east. The western boundary of the parish follows the canalized River Grift and is also the boundary with the Province of Utrecht.\nThe earliest forms of the name are Beringhem (1288) and Berinchem (1296), meaning the settlement of the people of Bero, who probably lived around the 6th to 10th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "bennekom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7232,
+    "attempt": 7182,
+    "place_id": "gn-2794070",
+    "input": {
+      "place": {
+        "place_id": "gn-2794070",
+        "name": "Kortenberg",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.88982,
+        "lon": 4.54353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kortenberg",
+          "url": "https://en.wikipedia.org/wiki/Kortenberg",
+          "text": "Kortenberg (Dutch pronunciation: [ˈkɔrtə(m)bɛr(ə)x]; French: Cortenbergh) is a Belgian municipality located in the province of Flemish Brabant, about halfway between the cities of Brussels and Leuven. The municipality comprises the subdivisions or deelgemeenten of Erps-Kwerps, Everberg, Kortenberg proper and Meerbeek. On 1 January 2013 Kortenberg had a total population of 19,393. The total area is 34.52 km2 which gives a population density of about 562 inhabitants per km2. In the southern part of Everberg there is also a hamlet called Vrebos, while between Erps-Kwerps and Meerbeek there is another hamlet called Schoonaarde, which can be found in the proximity of the train station of Erps-Kwerps."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "kortenberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7233,
+    "attempt": 7183,
+    "place_id": "gn-2794190",
+    "input": {
+      "place": {
+        "place_id": "gn-2794190",
+        "name": "Koekelberg",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.86117,
+        "lon": 4.33136
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Koekelberg",
+          "url": "https://en.wikipedia.org/wiki/Koekelberg",
+          "text": "Koekelberg (French: [kukœlbɛʁ(ɡ)] ; Dutch: [ˈkukəlˌbɛr(ə)x] ) is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the north-western part of the region, it is bordered by Berchem-Sainte-Agathe, Ganshoren, Jette, and Molenbeek-Saint-Jean. Like all municipalities in Brussels, it is officially bilingual (French–Dutch).\nAs of 1 January 2024, the municipality had a population of 22,648 inhabitants, the smallest in the region. The total area is 1.18 km2 (0.46 sq mi), which gives a population density of 19,162/km2 (49,630/sq mi).\nThe municipality is dominated by the National Basilica of the Sacred Heart (or Koekelberg Basilica), one of the largest Catholic churches in the world. Its main transportation hub are the interconnected Simonis and Elisabeth metro stations, served by the Brussels Intercommunal Transport Company (STIB/MIVB) system."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "koekelberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7234,
+    "attempt": 7184,
+    "place_id": "gn-2951860",
+    "input": {
+      "place": {
+        "place_id": "gn-2951860",
+        "name": "Bayenthal",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 50.91218,
+        "lon": 6.96799
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayenthal",
+          "url": "https://en.wikipedia.org/wiki/Bayenthal",
+          "text": "Bayenthal (German pronunciation: [ˈbaɪənˌtaːl]) is a neighbourhood of Cologne, Germany and part of the district of Rodenkirchen. Bayenthal lies on the left bank of the river Rhine, between the district of Innenstadt to the North and Marienburg neighbourhood to the South. The borders to these are defined by the Southern Bridge (Südbrücke) and the Bayenthalgürtel of the Cologne Belt respectively. To the West, Bayenthal borders with Raderberg.\nIt combines the residential neighbourhoods from adjacent Marienburg with former industrial areas next to the old \"Dom\" brewery. Bayenthal has 10.285 inhabitants (as of 31 December 2019) and covers an area of 1,28 km2 (pop.density of 8.015 inhabitants/km2). The neighbourhood is served by Cologne Stadtbahn lines 16 and 17."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "bayenthal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7235,
+    "attempt": 7185,
+    "place_id": "gn-2953430",
+    "input": {
+      "place": {
+        "place_id": "gn-2953430",
+        "name": "Bad Iburg",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.1549,
+        "lon": 8.04216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Iburg",
+          "url": "https://en.wikipedia.org/wiki/Bad_Iburg",
+          "text": "Bad Iburg  (German: [baːt ˈʔiːbʊʁk] ; Westphalian: Bad Ibig) is a spa town in the district of Osnabrück, in Lower Saxony, Germany. It is situated in the Teutoburg Forest, 16 km south of Osnabrück, and the Hermannsweg long-distance hiking trail passes through it.\nBad Iburg is also the name of a municipality which includes the town and four outlying centres: Glane, Ostenfelde, Sentrup and Visbeck.\nThe most important building is Schloss Iburg above the town. It is a complex of a castle which was the residence of the bishops of Osnabrück for six hundred years and a former monastery of the Order of Saint Benedict."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "bad iburg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "iburg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7236,
+    "attempt": 7186,
+    "place_id": "gn-2962785",
+    "input": {
+      "place": {
+        "place_id": "gn-2962785",
+        "name": "Lucan",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.35736,
+        "lon": -6.44859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lucan, Dublin",
+          "url": "https://en.wikipedia.org/wiki/Lucan,_Dublin",
+          "text": "Lucan ( LEW-kən; Irish: Leamhcán) is a suburban village to the west of Dublin, Ireland, located 12 km from Dublin city centre, on the River Liffey. It is near the Strawberry Beds and Lucan Weir, and at the confluence of the River Griffeen. It is mostly in the local government area of South Dublin, with the exception of the North Lucan areas of Laraghcon, Coldblow and Saint Catherine's Park, which are in Fingal. Lucan is in a townland and civil parish of the same name, in the barony of Newcastle. Road access to Lucan is from the N4, and the M50 motorway at Junction 7."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "lucan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7237,
+    "attempt": 7187,
+    "place_id": "gn-2966753",
+    "input": {
+      "place": {
+        "place_id": "gn-2966753",
+        "name": "Ballinasloe",
+        "country": "Ireland",
+        "subdivision": "Connacht",
+        "lat": 53.3275,
+        "lon": -8.21944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballinasloe",
+          "url": "https://en.wikipedia.org/wiki/Ballinasloe",
+          "text": "Ballinasloe ( bal-na-SLOH; Irish: Béal Átha na Sluaighe, meaning 'mouth of the ford of the crowds') is a town in the easternmost part of County Galway, Ireland, situated on the River Suck, which forms the boundary with County Roscommon. Located at an ancient crossing point on the river, evidence of ancient settlement in the area includes a number of Bronze Age sites. Built around a 12th-century castle, which defended the fording point, the modern town of Ballinasloe was \"founded\" in the early 13th century. As of the 2022 census, it was one of the largest towns in County Galway, with a population of 6,597 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "ballinasloe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7238,
+    "attempt": 7188,
+    "place_id": "gn-296950",
+    "input": {
+      "place": {
+        "place_id": "gn-296950",
+        "name": "Yenipazar",
+        "country": "Türkiye",
+        "subdivision": "Aydın",
+        "lat": 37.82332,
+        "lon": 28.19573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yenipazar, Aydın",
+          "url": "https://en.wikipedia.org/wiki/Yenipazar,_Aydın",
+          "text": "Yenipazar (Turkish for \"new market\") is a municipality and district of Aydın Province, Turkey. Its area is 245 km2, and its population is 11,863 (2022). It is 45 km (28 mi) from the city of Aydın on the road to Denizli.\nYenipazar itself is a quiet rural town providing university, high and elementary school education and other facilities to the surrounding districts. In the last two decades the population has declined as people move to Turkey's larger cities for higher education and careers and Yenipazar is selected as one of the Cittaslow towns in Turkey. The local cuisine includes a delicious flat-bread pizza called pide. Adnan Menderes University has a school here offering diplomas in banking and finance. The student population created new income opportunities for the residents of this small town. Social life is also impacted positively from the university, you can find many restaurants and cafes than you would expect from a town of this size."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "yenipazar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7239,
+    "attempt": 7189,
+    "place_id": "gn-3024035",
+    "input": {
+      "place": {
+        "place_id": "gn-3024035",
+        "name": "Concarneau",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 47.87536,
+        "lon": -3.91896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Concarneau",
+          "url": "https://en.wikipedia.org/wiki/Concarneau",
+          "text": "Concarneau (Breton: Konk-Kerne, meaning \"Bay of Cornouaille\") is a commune in the Finistère department of Brittany in Northwestern France. Concarneau is bordered to the west by the Baie de La Forêt.\nThe city has two distinct areas: the modern town on the mainland and the medieval Ville Close, a walled town on a long island in the centre of the harbour. Historically, the old town was a centre of shipbuilding; its ramparts date from the 14th century. The Ville Close is now devoted to tourism with many restaurants and shops aimed at tourists. However restraint has been shown in resisting the excesses of souvenir shops. Also in the Ville Close is the fishing museum. The Ville Close is connected to the town by a bridge and at the other end a ferry to the village of Lanriec on the other side of the harbour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "concarneau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7240,
+    "attempt": 7190,
+    "place_id": "gn-3053590",
+    "input": {
+      "place": {
+        "place_id": "gn-3053590",
+        "name": "Dombóvár",
+        "country": "Hungary",
+        "subdivision": "Tolna County",
+        "lat": 46.37657,
+        "lon": 18.13696
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dombóvár",
+          "url": "https://en.wikipedia.org/wiki/Dombóvár",
+          "text": "Dombóvár (Hungarian pronunciation: [ˈdomboːvaːr]; German: Dombowar; Croatian: Dombuvar) is a town in Tolna County, Hungary. It is the third largest settlement in Tolna County after Szekszárd (the county seat) and Paks. \nArcheologic excavations show that the Dombóvár area has been continuously populated since the Stone Age. During the Roman rule over Pannonia around 8 AD it was known as Pons Sociorum Mansuectina (Kapos River Crossing) because of the bridge that was built there. After the Roman withdrawal from the area, it was populated by the Slavs, who named the settlement after oak trees (dobov(o) in proto-Slavic).\nIn 1715, the settlement was granted market town status. After 1871, with the reorganization of the public administration and the establishment of civil administration, the market town status was permanently abolished, and Dombóvár officially became a large village, although the locals kept referring to it as a town. On April 1, 1970 the Hungarian government officially elevated Dombóvár to the status of a town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "dombovar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7241,
+    "attempt": 7191,
+    "place_id": "gn-3060715",
+    "input": {
+      "place": {
+        "place_id": "gn-3060715",
+        "name": "Chorvátsky Grob",
+        "country": "Slovakia",
+        "subdivision": "Bratislava Region",
+        "lat": 48.22787,
+        "lon": 17.29094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chorvátsky Grob",
+          "url": "https://en.wikipedia.org/wiki/Chorvátsky_Grob",
+          "text": "Chorvátsky Grob (Croatian: Hrvatski Grob, Hungarian: Horvátgurab, Horvát-Gurab, German: Kroatisch-Eisgrub) is a village and municipality in western Slovakia in Senec District in the Bratislava region. It has a population of around 6,000 people.\nThe village's name Chorvátsky means Croatian. This refers to the Croatian people that have lived in the area since the early 16th century. This population arrived here after escaping the area between Sisak and Kostajnica during the Ottoman Wars. The area was settled by Croatians escaping from Turkish Ottoman raids which helps explain the etymology of the present-day name from \"Horvát Gurab\" to \"Chorvátsky Grob\" (Croatian Grave) used at the present time.\nAccording to the local municipality website of Chorvátsky Grob the Slovak word for \"grob\" is \" hrob\" or, in English \"grave\". Reportedly, this place was named in memory of soldiers, though it is not clear if those soldiers were Croats, Slovaks or another ethnicity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "chorvatsky grob",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chorvatsky",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grob",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7242,
+    "attempt": 7192,
+    "place_id": "gn-3063305",
+    "input": {
+      "place": {
+        "place_id": "gn-3063305",
+        "name": "Veleslavín",
+        "country": "Czechia",
+        "subdivision": "Prague",
+        "lat": 50.09151,
+        "lon": 14.35776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Veleslavín",
+          "url": "https://en.wikipedia.org/wiki/Veleslavín",
+          "text": "Veleslavín (Czech pronunciation: [ˈvɛlɛslaviːn], German: Weleslawin) is a district of Prague, part of Prague 6, situated in the west of the city approximately 5 km from Ruzyně International Airport. It was probably founded in the 10th or 11th century, first recorded in records from the nearby Břevnov Monastery, and has been part of Prague since 1922.\nVeleslavín chateau, a single-floored baroque chateau located at the address Veleslavínská 1, is recorded as a cultural monument. The southern part of Veleslavín is part of the housing estate named Petřiny, the remainder of which is in Břevnov, and contains a number of modernist buildings designed by Vlado Milunić."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "veleslavin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7243,
+    "attempt": 7193,
+    "place_id": "gn-3104226",
+    "input": {
+      "place": {
+        "place_id": "gn-3104226",
+        "name": "Zuera",
+        "country": "Spain",
+        "subdivision": "Aragon",
+        "lat": 41.86775,
+        "lon": -0.78984
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zuera",
+          "url": "https://en.wikipedia.org/wiki/Zuera",
+          "text": "Zuera is a municipality located in the province of Zaragoza, Aragon, Spain. According to the 2010 census, the municipality has a population of 7,510 inhabitants. \nZuera's geographical location in the Zaragoza Comarca and its proximity to the city of Zaragoza have shaped the historical development of the town from its beginnings until today. Urban settlements in the municipality of Zuera are located right on the banks of the Gállego River. They follow a longitudinal axis along which (continuing the transportation and communication schemes established by the ancient Romans) the N-123 national highway, the Madrid-Barcelona and Zaragoza-France trains, as well as high-voltage power lines are located."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "zuera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7244,
+    "attempt": 7194,
+    "place_id": "gn-3105214",
+    "input": {
+      "place": {
+        "place_id": "gn-3105214",
+        "name": "Villanueva del Pardillo",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.49014,
+        "lon": -3.96383
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villanueva del Pardillo",
+          "url": "https://en.wikipedia.org/wiki/Villanueva_del_Pardillo",
+          "text": "Villanueva del Pardillo is a municipality and Spanish town of the Community of Madrid, situated 26 kilometers from the capital of Spain and nestled in the natural environment of the Cuenca del Guadarrama. It borders the municipalities of Majadahonda, Las Rozas de Madrid, Villanueva de la Cañada, Galapagar, Colmenarejo and Valdemorillo. The municipality combines a peaceful natural environment with proximity to the capital. Much of its municipal territory is integrated into this protected natural area, a protected natural space that covers more than 60% of the municipal territory. The town has cultural, sports and festive activities, as well as the preservation of its popular traditions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "villanueva del pardillo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villanueva",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pardillo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7245,
+    "attempt": 7195,
+    "place_id": "gn-3108308",
+    "input": {
+      "place": {
+        "place_id": "gn-3108308",
+        "name": "Tarazona",
+        "country": "Spain",
+        "subdivision": "Aragon",
+        "lat": 41.90475,
+        "lon": -1.72678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarazona",
+          "url": "https://en.wikipedia.org/wiki/Tarazona",
+          "text": "Tarazona (Spanish pronunciation: [taɾaˈθona]) is a town and municipality in the province of Zaragoza, in Aragon, Spain. It is the capital of the Tarazona y el Moncayo comarca. It is also the seat of the Roman Catholic Diocese of Tarazona. Located on the river Queiles, a tributary of the Ebro, Tarazona was an important regional centre of ancient Rome, known as Turiaso, located around 60 kilometres (37 mi) from Bilbilis. The city later came under the rule of the Visigoths, who called it Tirasona.\nTarazona has an area of 244.01 square kilometers and a population of 10,756 and is located 480 meters above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "tarazona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7246,
+    "attempt": 7196,
+    "place_id": "gn-3123063",
+    "input": {
+      "place": {
+        "place_id": "gn-3123063",
+        "name": "Ermua",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.18725,
+        "lon": -2.50261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ermua",
+          "url": "https://en.wikipedia.org/wiki/Ermua",
+          "text": "Ermua is a town and municipality located in the province of Biscay, in the autonomous community of Basque Country, northern Spain. In 2019, Ermua had 15,880 inhabitants.\nErmua is a town in the Durangaldea comarca of the province of Biscay in northern Spain. It is situated in a steep-sided valley beside the Río Ego, a tributary of the Deba River. Because of the steep, irregular terrain, building space is limited, and Ermua is one of the most densely populated towns in the Basque country. To the north of Ermua lies the municipality of Mallabia, to the east lies Eibar and to the south lies Zaldibar.\nEibar is a larger town which lies just across the provincial border, in the province of Gipuzkoa, the two towns forming a single urban area. Ermua has grown greatly in size during the 1960s and 1970s and acts as a dormitory town to Eibar, both of them being industrial towns. Ermua and Eibar are linked by the N-634 and share a common exit from the Autopista AP-8 (AP-8), the toll road that crosses the Basque Country, and connects Bilbao with the French border. Ermua and Eibar are also connected by the narrow gauge railway that runs from Bilbao to San Sebastián. Historic buildings in Ermua include the Church of Santiago Apóstol, an unusual Renaissance building with a fine bell tower, the Baroque Valdespina Palace, which is now the Town Hall, and the sixteenth century Lobiano Palace."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "ermua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7247,
+    "attempt": 7197,
+    "place_id": "gn-3127047",
+    "input": {
+      "place": {
+        "place_id": "gn-3127047",
+        "name": "Calatayud",
+        "country": "Spain",
+        "subdivision": "Aragon",
+        "lat": 41.35353,
+        "lon": -1.64318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calatayud",
+          "url": "https://en.wikipedia.org/wiki/Calatayud",
+          "text": "Calatayud (Spanish pronunciation: [kalataˈʝuð]; Aragonese: Calatayú; 2014 pop. 20,658) is a municipality in the Province of Zaragoza, within Aragón, Spain, lying on the river Jalón, in the midst of the Sistema Ibérico mountain range. It is the second-largest town in the province after the capital, Zaragoza, and the largest town in Aragón other than the three provincial capitals.  It is the seat of the comarca of Calatayud. Its population has been declining during the last decade due to migration.\nThe town motto is Muy noble, leal, siempre augusta y fidelísima ciudad de Calatayud (\"The very noble, loyal, always august and most faithful town of Calatayud\"). The first democratic elections after Francisco Franco's regime were called for 15 June 1977. In Calatayud they were held one day earlier than all the rest of Spain, in order to prepare for a visit there by King Juan Carlos I."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "calatayud",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7248,
+    "attempt": 7198,
+    "place_id": "gn-3178619",
+    "input": {
+      "place": {
+        "place_id": "gn-3178619",
+        "name": "Città di Castello",
+        "country": "Italy",
+        "subdivision": "Umbria",
+        "lat": 43.46556,
+        "lon": 12.2375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Città di Castello",
+          "url": "https://en.wikipedia.org/wiki/Città_di_Castello",
+          "text": "Città di Castello (Italian pronunciation: [tʃitˈta ddi kasˈtɛllo]) is a city and comune (municipality) in the province of Perugia, in the northern part of Umbria. \nIt is situated on a slope of the Apennines, on the flood plain along the upper part of the river Tiber. The city is 56 km (35 mi) north of Perugia and 104 km (65 mi) south of Cesena, Emilia-Romagna, on the highway SS 3 bis. \nIt is connected by the SS 73 with Arezzo, Tuscany, and the A1 highway, situated 38 km (23 mi) west. The comune of Città di Castello has an exclave named Monte Ruperto within Marche."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "citta di castello",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "citta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "castello",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7249,
+    "attempt": 7199,
+    "place_id": "gn-3449121",
+    "input": {
+      "place": {
+        "place_id": "gn-3449121",
+        "name": "São Francisco de Paula",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.44806,
+        "lon": -50.58361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Francisco de Paula, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/São_Francisco_de_Paula,_Rio_Grande_do_Sul",
+          "text": "São Francisco de Paula is a city  in the Serra Gaúcha of the state of Rio Grande do Sul, Brazil. The municipality covers about 3,289.7 km2 (1,270.2 sq mi) and sits about 112 km (70 mi) from Porto Alegre. As of 2020, the city's population was estimated to be 21,801. The municipality was originally created on December 23, 1902.\nThe city is a tourist destination and is a link along two official scenic tourist routes: the Região das Hortênsias and the Rota Romântica.\nThe municipality contains the São Francisco de Paula National Forest, a 1,616 hectares (3,990 acres) sustainable use conservation area created in 1968. It also contains part of the 6,655 hectares (16,440 acres) Tainhas State Park, created in 1975."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "sao francisco de paula",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "francisco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paula",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7250,
+    "attempt": 7200,
+    "place_id": "gn-3488726",
+    "input": {
+      "place": {
+        "place_id": "gn-3488726",
+        "name": "Runaway Bay",
+        "country": "Jamaica",
+        "subdivision": "Saint Ann Parish",
+        "lat": 18.45962,
+        "lon": -77.3357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Runaway Bay, Jamaica",
+          "url": "https://en.wikipedia.org/wiki/Runaway_Bay,_Jamaica",
+          "text": "Runaway Bay is a town in Saint Ann Parish on the northern coast of Jamaica and is considered one of the most naturally beautiful places on the island. It is a notable tourist destination located 16 km (9.9 mi) west of Ocho Rios, and slightly east of Discovery Bay, where Christopher Columbus landed in 1494. Ocean View Beach is a private beach situated at Runaway Bay. It consists of a series of hotel resort complexes and beaches.\nThe name derives from its having been an escape route for runaway slaves. Arawakan-speaking people were the first Indigenous inhabitants, but they were eventually overpowered by Spanish colonisers.\nThe population according to the 2011 census was 8,640, roughly eight times the population of 1,116 determined in the 1970 census.\nNotable people born in the town include Canadian actress Samantha Kaine, who appeared in the 2002 film Confessions of a Dangerous Mind. British composer and actor Noël Coward lived in nearby Port Maria and is buried there. Ian Fleming lived in nearby Oracabessa. Not far inland, in the hills south of Runaway Bay, is the village of Nine Mile, which is where Bob Marley was born and spent his childhood.\nReef areas such as the Canyon and Ricky’s Reef can be visited through organized dives offered at most hotels. Its fine offshore diving and snorkeling opportunities are said to be the best in Jamaica. Runaway Bay is a resort community with a good offshore reef, popular with snorkelers and divers. A couple of wrecked aircraft can also be seen in a dive site now known as Ganja Planes.\nRunaway Bay is home to an eighteen-hole golf course at Breezes Runaway Bay Resort & Golf Club which has hosted a variety of championship events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "runaway bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "runaway",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

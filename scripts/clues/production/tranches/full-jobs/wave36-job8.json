@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 7191,
+    "attempt": 7141,
+    "place_id": "gn-5391291",
+    "input": {
+      "place": {
+        "place_id": "gn-5391291",
+        "name": "Salida",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.70576,
+        "lon": -121.08494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salida, California",
+          "url": "https://en.wikipedia.org/wiki/Salida,_California",
+          "text": "Salida (Spanish for \"exit\") is a census-designated place (CDP) in Stanislaus County, California,  United States. As of the 2020 census, the CDP population was 13,886. It is part of the Modesto metropolitan area. Cultivation of almonds has historically been a significant activity in the vicinity, including a major Blue Diamond processing facility nearby. The plant is involved exclusively in processing whole brown almond kernels with a \"dry\" process involving no water, heat or chemicals. Salida is within the East Stanislaus Resource Conservation District, which comprises 984 square miles (2,550 km2) of land area and attends to a variety of environmental conservation and best management agricultural practices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "salida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7192,
+    "attempt": 7142,
+    "place_id": "gn-5551665",
+    "input": {
+      "place": {
+        "place_id": "gn-5551665",
+        "name": "Arizona City",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 32.75589,
+        "lon": -111.67096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arizona City, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Arizona_City,_Arizona",
+          "text": "Arizona City is an unincorporated  census-designated place (CDP) in southwestern Pinal County, Arizona, United States. It is located near the junction of Interstate 8 and Interstate 10 at the midpoint between Phoenix and Tucson, approximately 60 miles (97 km) from the downtown of both cities. The population was 9,868 as of the 2020 United States census, a decrease from 10,475 people from the 2010 United States census. \nArizona City is a rural, primarily residential community that features a 48-acre (19 ha) man-made lake. These attributes make the community a popular snowbird destination, with the population increasing by as much as 5,000 people in the winter months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "arizona city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arizona",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7193,
+    "attempt": 7143,
+    "place_id": "gn-5601615",
+    "input": {
+      "place": {
+        "place_id": "gn-5601615",
+        "name": "Mountain Home",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 43.13295,
+        "lon": -115.6912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mountain Home, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Mountain_Home,_Idaho",
+          "text": "Mountain Home is the largest city in and the county seat of Elmore County, Idaho, United States. The population was 15,979 in the 2020 census. The population in 2024 is projected to be 16,921. It is the principal city of the Mountain Home Micropolitan Statistical Area, which includes Elmore County.\nMountain Home was originally a post office at Rattlesnake Station, a stagecoach stop on the Overland Stage Line, about seven miles (11 km) east of the city, on present-day US-20 towards Fairfield. With the addition of the Oregon Short Line Railroad in 1883, the post office was moved downhill and west to the city's present site.\nMountain Home Air Force Base, an Air Combat Command installation, is located 12 miles (20 km) southwest of the city. Opened in 1943 during World War II, it was originally a bomber training base and later an operational Strategic Air Command bomber and missile base (1953–65). It switched to Tactical Air Command and fighters in January 1966, which was succeeded by Air Combat Command in 1992."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "mountain home",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mountain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "home",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7194,
+    "attempt": 7144,
+    "place_id": "gn-6089404",
+    "input": {
+      "place": {
+        "place_id": "gn-6089404",
+        "name": "North Battleford",
+        "country": "Canada",
+        "subdivision": "Saskatchewan",
+        "lat": 52.77972,
+        "lon": -108.2967
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Battleford",
+          "url": "https://en.wikipedia.org/wiki/North_Battleford",
+          "text": "North Battleford is a city in west-central Saskatchewan, Canada. It is the seventh largest city in the province and is directly across the North Saskatchewan River from the town of Battleford. Together, the two communities are known as \"The Battlefords\".\nNorth Battleford and the greater Battlefords area are a notable stop along the Yellowhead Highway, part of the Trans-Canada system, and serve as a commercial and cultural hub for west- and north-central Saskatchewan. Together, the Battlefords are served by the Yellowhead Highway as well as Highway 4, Highway 26, Highway 29, and Highway 40.\nBattlefords Provincial Park is 40 kilometres (25 mi) north on Highway 4."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "north battleford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "battleford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7195,
+    "attempt": 7145,
+    "place_id": "gn-6111696",
+    "input": {
+      "place": {
+        "place_id": "gn-6111696",
+        "name": "Port-Cartier",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 50.03339,
+        "lon": -66.86545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port-Cartier",
+          "url": "https://en.wikipedia.org/wiki/Port-Cartier",
+          "text": "Port-Cartier (French pronunciation: [pɔʁ kaʁtje]) is a city in the Côte-Nord region of Quebec, Canada. It is located on the north shore of the St. Lawrence River at the mouth of the Aux-Rochers River, 63 kilometres (39 mi) southwest of Sept-Îles, Quebec.\nPort-Cartier had a population of 6,516 at the 2021 Canadian census. It has a land area of 1,092 square kilometres (422 sq mi), ranking 27th in area among all Canadian cities and towns. Besides Port-Cartier itself, the communities of Rivière-Pentecôte (49°47′N 67°10′W), Pointe-aux-Anglais (49°40′38″N 67°10′05″W), Baie-des-Homards (49°49′58″N 67°06′41″W), and Grand-Ruisseau (49°44′03″N 67°10′26″W) are also within its municipal boundaries, all located along Quebec Route 138."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "port cartier",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cartier",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7196,
+    "attempt": 7146,
+    "place_id": "gn-614104",
+    "input": {
+      "place": {
+        "place_id": "gn-614104",
+        "name": "Kaspi",
+        "country": "Georgia",
+        "subdivision": "Shida Kartli",
+        "lat": 41.92776,
+        "lon": 44.42355
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaspi",
+          "url": "https://en.wikipedia.org/wiki/Kaspi",
+          "text": "Kaspi (Georgian: კასპი) is a town in central Georgia on the Mtkvari River. It is a center of Kaspi district, one of the four districts in Shida Kartli region. Founded in the early Middle Ages, the town turned into possession of the Amilakhvari noble family in the 15th century. Kaspi officially acquired a town's status in 1959 and, as of January 2023, had a population of 12,708.\nThe Kaspi cement plant is one of Georgia's largest industrial facilities and sources of air pollution.\nDuring the Russia-Georgia war, the cement factory, as well as the railway bridge in the city were severely damaged by the Russian raids."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "kaspi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7197,
+    "attempt": 7147,
+    "place_id": "gn-6220359",
+    "input": {
+      "place": {
+        "place_id": "gn-6220359",
+        "name": "Redwood",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.46833,
+        "lon": 172.61013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Redwood, Christchurch",
+          "url": "https://en.wikipedia.org/wiki/Redwood,_Christchurch",
+          "text": "Redwood is a northern suburb of Christchurch, New Zealand, which includes the sub-division of Redwood Springs. It is bordered by the Styx River to the north. Before the area was settled the original forest cover was tōtara and kahikatea. Like much of Christchurch, the early settlers drained the swamps and cut the bush to create farmland.\nThe area was originally part of the Waimairi County but was amalgamated into Christchurch City Council as part of the 1989 New Zealand local government reforms. The Main North Road runs through the suburb, connecting it to both the Christchurch Central City and settlements further north including Belfast and Kaiapoi. Redwood is part of the Christchurch Central parliamentary electorate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "redwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7198,
+    "attempt": 7148,
+    "place_id": "gn-636345",
+    "input": {
+      "place": {
+        "place_id": "gn-636345",
+        "name": "Somero",
+        "country": "Finland",
+        "subdivision": "Southwest Finland",
+        "lat": 60.61667,
+        "lon": 23.53333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Somero",
+          "url": "https://en.wikipedia.org/wiki/Somero",
+          "text": "Somero (Finnish pronunciation: [ˈsomero]) is a town and municipality of Finland. It is part of the Southwest Finland region in the province of Western Finland, located 36 kilometres (22 mi) northeast of Salo, 86 kilometres (53 mi) east of Turku and 105 kilometres (65 mi) northwest of Helsinki. The municipality has a population of 8,339 (31 December 2025) and covers an area of 697.67 square kilometres (269.37 sq mi) of which 29.9 km2 (11.5 sq mi) is water. The population density is 12.48 inhabitants per square kilometre (32.3/sq mi). Somero is unilingually Finnish.\nSomero's neighbouring municipalities are Jokioinen, Koski Tl, Lohja, Loimaa, Salo, Tammela and Ypäjä."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "somero",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7199,
+    "attempt": 7149,
+    "place_id": "gn-6534203",
+    "input": {
+      "place": {
+        "place_id": "gn-6534203",
+        "name": "L'Ancienne-Lorette",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.79392,
+        "lon": -71.35191
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Ancienne-Lorette",
+          "url": "https://en.wikipedia.org/wiki/L'Ancienne-Lorette",
+          "text": "L'Ancienne-Lorette (French pronunciation: [lɑ̃sjɛn lɔʁɛt]) is a city in central Quebec, Canada. It is a suburb of and an enclave within Quebec City.  It was merged with Quebec City on January 1, 2002, as part of a 2000–2006 municipal reorganization in Quebec, but, after a 2004 referendum, it was reconstituted as a separate city on January 1, 2006.\nIts history dates to 1674, when a group of Wendat (Huron) fleeing war with the Haudenosaunee settled there under the protection of the French. It was founded as a mission village by the Jesuits. The Wyandot left after a few decades, and French settlers took over the land."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "l ancienne lorette",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ancienne",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lorette",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7200,
+    "attempt": 7150,
+    "place_id": "gn-654137",
+    "input": {
+      "place": {
+        "place_id": "gn-654137",
+        "name": "Karhula",
+        "country": "Finland",
+        "subdivision": "Kymenlaakso",
+        "lat": 60.52156,
+        "lon": 26.93125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karhula",
+          "url": "https://en.wikipedia.org/wiki/Karhula",
+          "text": "Karhula is a former market town (kauppala) and a former municipality of Finland in the former Kymi Province, now in the Kymenlaakso region. It was consolidated with the town of Kotka in 1977. Its seat was in Helilä, however the municipality was named after the industrial area of Karhula (also known as Karhulanniemi).\nThe bears on the former coat of arms refer to the name of the municipality (Karhula literally means \"place of bear\"), while the hammers in their hands refer to the industrial history of Karhula. The coat of arms was designed by Ahti Hammar, and it was approved for use on 10 November 1955."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "karhula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7201,
+    "attempt": 7151,
+    "place_id": "gn-685981",
+    "input": {
+      "place": {
+        "place_id": "gn-685981",
+        "name": "Băbeni",
+        "country": "Romania",
+        "subdivision": "Vâlcea County",
+        "lat": 44.96667,
+        "lon": 24.23333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Băbeni",
+          "url": "https://en.wikipedia.org/wiki/Băbeni",
+          "text": "Băbeni is a town located in Vâlcea County, Romania. The town, elevated to that status in 2002, administers six villages: Bonciu, Capu Dealului, Pădurețu, Români, Tătărani, and Valea Mare. It is situated in the historical region of Oltenia.\nThe town is located in the central part of the county, on the right bank of the Olt River, 18 km (11 mi) southwest of the county seat, Râmnicu Vâlcea. It is crossed by national road DN64, which connects Râmnicu Vâlcea with Caracal along the Olt River. The Băbeni train station serves the CFR Line 201, which runs north–south from Podu Olt, Sibiu County, to Piatra-Olt, Olt County.\nThe Băbeni oil field is located on the administrative territory of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "babeni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7202,
+    "attempt": 7152,
+    "place_id": "gn-713163",
+    "input": {
+      "place": {
+        "place_id": "gn-713163",
+        "name": "Artsyz",
+        "country": "Ukraine",
+        "subdivision": "Odesa",
+        "lat": 45.98526,
+        "lon": 29.43286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Artsyz",
+          "url": "https://en.wikipedia.org/wiki/Artsyz",
+          "text": "Artsyz (Ukrainian: Арциз, pronounced [ɐrˈtsɪz] ; Bulgarian: Арциз, romanized: Artsiz; Romanian: Arciz; Turkish: Artsız or Arsız; German: Artzis or Arzis) is a city in Bolhrad Raion of Odesa Oblast, Ukraine. It hosts the administration of Artsyz urban hromada, one of the hromadas of Ukraine. Its population is 14,355 (2022 estimate). In 2001, the population was 16,370. In 2001, the city of Artsyz was 66.51% Russian-speaking, 22.57% Ukrainian-speaking, 7.9% Bulgarian-speaking, and 1.49% Romanian-speaking. The city had 16,268 inhabitants in 2001, of which 6,495 identified themselves as ethnic Ukrainians (39.92%),  5,258 as ethnic Russians (32.32%), 3,075 as Bulgarians (18.90%), 695 as Moldovans (4.27%) and 204 (1.25%), as Gagauz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "artsyz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7203,
+    "attempt": 7153,
+    "place_id": "gn-7315364",
+    "input": {
+      "place": {
+        "place_id": "gn-7315364",
+        "name": "Lantana",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.09073,
+        "lon": -97.12416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lantana, Texas",
+          "url": "https://en.wikipedia.org/wiki/Lantana,_Texas",
+          "text": "Lantana is an upscale census-designated place (CDP) and planned community originally developed by Republic Property Group, 8 miles (13 km) south of Denton in unincorporated Denton County, Texas, United States. As of the 2020 census, Lantana had a population of 10,785. Lantana shares the 76226 ZIP code of Argyle. Approximately one quarter of the populace have an annual household income of greater than $150,000, with 34% having incomes from $75,000-$150,000.  Almost half of the Lantana population has a bachelor's degree or higher. In 2004, 2006, 2011 and 2012, Lantana won the People's Choice Award for Community of the Year at the Dallas Homebuilders Association McSAM Awards.  Lantana hosts regular community events, such as outdoor music presentations in the parks, chili cook offs, festivals, picnics, and other similar functions for its residents.\nLantana encompasses 1,780 acres (7.2 km2). It was developed starting in 1999 on land acquired from the Rayzor family (known as Rayzor Ranch). On March 16, 2000, Republic Property broke ground on the community. Larkspur and Sandlin were the first neighborhoods developed. The first residents moved in on July 31, 2001. In the first quarter of 2014, Forestar Group, Inc, an original equity partner along with Republic Property Group, acquired the remaining partnership interest in Lantana and continued the final development of the community.\nThe homes in Lantana are built around an 18-hole golf course, designed by Jay Morrish. In October 2003, Lantana Golf Club became a semi-private facility. In October 2004, a 7,500 square-foot club house expansion was completed. The club went private in early 2009.\nThe Lantana Community Association, Lantana's HOA, is managed by Insight Association Management. HOA dues cover, security monitoring and system installation, front yard maintenance, and amenities. The Board of Directors of the Lantana Community Association are: Tara Boswell, Christi Brownlow and Darrel Amen. The Association is currently in the process of transitioning over to a Resident Board of Directors after the reaching the community size the state of Texas requires to do so. Lantana's monthly Board meetings are open to the public and take place in the Bartonville Town Square. Residents who have individual concerns  about their home or the community in general may present those items at the monthly meetings.\nLantana residents pay an annual fee, through the Lantana Community Association, to the Argyle Volunteer Fire Department (AVFD) for Fire and EMS service. The fee is based on the appraised value of each home and the rate charged by the AVFD.\nLantana is located in Development District #4, Fresh Water Supply District #6 and Fresh Water Supply District #7. A Fresh Water Supply District (FWSD) is a political subdivision of the State of Texas, authorized by the Texas Commission of Environmental Quality, to provide water, sewage, drainage and other services within the district's boundaries.\nThe publicly elected Board of Directors manages and controls all of the affairs of the district, subject to the continuing supervision of the Texas Commission of Environmental Quality. The Board establishes policies in the interest of its residents and utility customers. A district may adopt and enforce all necessary charges, fees and taxes in order to provide facilities and service.\nFour of Denton ISD's schools are located within the community: Tom Harpool Middle School and Annie Blanton Elementary School, which opened in August 2008, Eugenia Porter Rayzor Elementary, which was the first school to be built and opened in August 2002, and Dorothy Adkins Elementary School, which opened in August 2014. Blanton and EP Rayzor elementary schools are rated \"Exemplary\" and the middle school is rated \"Recognized.\" Lantana is served by John H. Guyer High School, located in southern Denton, TX, about 3 miles (4.8 km) north of the northernmost neighborhood (Madison).\nLantana is divided into subdivisions or neighborhoods listed below:\n\nLantana has a sky/weather camera overlooking the park and pool in Larkspur subdivision. It's often seen on KDFW during the weather segment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 645
+    },
+    "banned_terms": [
+      {
+        "term": "lantana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7204,
+    "attempt": 7154,
+    "place_id": "gn-8348841",
+    "input": {
+      "place": {
+        "place_id": "gn-8348841",
+        "name": "Hillvue",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.12756,
+        "lon": 150.90711
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hillvue, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Hillvue,_New_South_Wales",
+          "text": "Hillvue is a suburb of Tamworth, New South Wales, Australia. It is a largely residential suburb of Tamworth and is south of South Tamworth. It has the second highest population estimate of any area of Tamworth, with over six thousand people in 2011.\nThe longyard shopping area, the Golden Guitar, Roll of Renown, Country Music Centre and the Tamworth Regional Entertainment Centre are all located in Hillvue. The Prime TV Station and 2TM Radio Station are also located in the suburb along the New England Highway. Further along the New England Highway on the suburb's outskirts is the $28.8 million Australian Equine and Livestock Events Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "hillvue",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7205,
+    "attempt": 7155,
+    "place_id": "gn-8436244",
+    "input": {
+      "place": {
+        "place_id": "gn-8436244",
+        "name": "Dunajská Lužná",
+        "country": "Slovakia",
+        "subdivision": "Bratislava Region",
+        "lat": 48.08347,
+        "lon": 17.26072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunajská Lužná",
+          "url": "https://en.wikipedia.org/wiki/Dunajská_Lužná",
+          "text": "Dunajská Lužná (Hungarian: Dénesdtorcsmisérd) is a municipality (village) in the Bratislava Region of western Slovakia in Senec District.\nDunajská Lužná lies approximately 15 km from the capital city of Bratislava towards Dunajská Streda and Komárno. It was founded on 1 January 1974 consisting of three formerly separate villages – Nové Košariská (German: Mischdorf, Hungarian: Misérd), Jánošíková (German: Schildern, Hungarian: Dénesd) and Nová Lipnica (German: Tartschendorf, Hungarian: Torcs). Dunajská Lužná belongs to the vicinity of Bratislava. There is increasing building activity because of new inhabitants coming from Bratislava or other cities.\nNot far from the municipality towards Senec lie two lakes - Malá Voda and Piesková Jama. They are used for fishing and bathing and in summer months they are quite crowded. Near the township runs a dam, protecting the villages and townships all the way from Bratislava to Gabčíkovo from flooding of the Danube River.\nThere is a large Roman Catholic community in Dunajská Lužná with the Church, devoted to \"The Elevation of the Holy Cross\". Besides Roman Catholics there are also Lutherans and other religions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "dunajska luzna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dunajska",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "luzna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7206,
+    "attempt": 7156,
+    "place_id": "gn-8858202",
+    "input": {
+      "place": {
+        "place_id": "gn-8858202",
+        "name": "El Campanario y Oradel",
+        "country": "Mexico",
+        "subdivision": "Tamaulipas",
+        "lat": 27.47306,
+        "lon": -99.62
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Campanario y Oradel, Tamaulipas",
+          "url": "https://en.wikipedia.org/wiki/El_Campanario_y_Oradel,_Tamaulipas",
+          "text": "El Campanario y Oradel (or Campanario) is a community located in Oradel Industrial Center, Nuevo Laredo Municipality in the Mexican state of Tamaulipas. Its elevation is 140 meters above sea level. According to the INEGI Census of 2010, El Campanario y Oradel has a population of 6,951 inhabitants, 3488 of them are male and 3463 of them are female.  In this town there are 1796 family homes. The main work activity of this community is to work in the companies located within the Oradel Industrial Center. In the El Campanario and Villas Oradel is the Technological University of Nuevo Laredo, as well as an IMSS nursery. This community has 2 soccer fields, one where the Villas de Oradel league is held."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "el campanario y oradel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campanario",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "y",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "oradel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7207,
+    "attempt": 7157,
+    "place_id": "gn-933077",
+    "input": {
+      "place": {
+        "place_id": "gn-933077",
+        "name": "Shakawe",
+        "country": "Botswana",
+        "subdivision": "North-West",
+        "lat": -18.36536,
+        "lon": 21.84219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shakawe",
+          "url": "https://en.wikipedia.org/wiki/Shakawe",
+          "text": "Shakawe is a village located in the northwest corner of Botswana at the beginning of the Okavango Delta, close to Namibia and Angola. Shakawe is awakening from its former status as a sleepy little outpost on the Okavango. For travellers, Shakawe means a Botswana entry or exit stamp or a staging post for a visit to the Tsodilo Hills, a UNESCO World Heritage Site, 40 km away. For Southern African holiday-makers, it is most often the start of a fishing trip in the Okavango Panhandle. It also provides access to the Caprivi Strip. The record high temperature ever registered in Shakawe was 39.6 °C (103.3 °F). The lowest temperature registered in Shakawe was −6.1 °C (21.0 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "shakawe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7208,
+    "attempt": 7158,
+    "place_id": "gn-1023374",
+    "input": {
+      "place": {
+        "place_id": "gn-1023374",
+        "name": "Alexandra",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.10528,
+        "lon": 28.09884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alexandra, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Alexandra,_South_Africa",
+          "text": "Alexandra, informally abbreviated to Alex, is a township in the Gauteng province of South Africa. It forms part of the City of Johannesburg Metropolitan Municipality and is located next to the wealthy suburb of Sandton. Alexandra is bounded by Wynberg on the west, Marlboro and Kelvin on the north, Kew, Lombardy West and Lombardy East on the south. Alexandra is one of the poorest urban areas in the country. Alexandra is situated on the banks of the Jukskei River. In addition to its original, reasonably well-built houses, it also has a large number (estimated at more than 20,000) of informal dwellings or \"shacks\" called imikhukhu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "alexandra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7209,
+    "attempt": 7159,
+    "place_id": "gn-12382288",
+    "input": {
+      "place": {
+        "place_id": "gn-12382288",
+        "name": "Kendall Square",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.365,
+        "lon": -71.08554
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kendall Square",
+          "url": "https://en.wikipedia.org/wiki/Kendall_Square",
+          "text": "Kendall Square is a neighborhood in Cambridge, Massachusetts, United States. The square itself is located at the intersection of Main Street and Broadway. It also refers to the broad business district east of Portland Street, northwest of the Charles River, north of MIT and south of Binney Street. \n\nKendall Square has been called \"the most innovative square mile on the planet\", in reference to the high concentration of entrepreneurial start-ups and quality of innovation which have emerged in the vicinity of the square since 2010.\nThe neighborhood has approximately 50,000 people who work in the area on a daily basis and a growing residential population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "kendall square",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kendall",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "square",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7210,
+    "attempt": 7160,
+    "place_id": "gn-1254177",
+    "input": {
+      "place": {
+        "place_id": "gn-1254177",
+        "name": "Trimbak",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.93268,
+        "lon": 73.52907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trimbak",
+          "url": "https://en.wikipedia.org/wiki/Trimbak",
+          "text": "Trimbak (also known as Trimbakeshwar Trayambakēśvara) is a city and a municipal council in Nashik District in the Indian state of Maharashtra. The Trimbakeshwar Shiva Temple is located here, one of the twelve Jyotirlingas, where the Hindu genealogy registers at Trimbakeshwar, Maharashtra are kept. The origin of the sacred Godavari River is near Trimbak.\nThe Simhastha Kumbh Mela in the Nashik district was originally held at Trimbak, but after 1789 clash between Vaishnavites and Saivites over precedence of bathing, the Maratha Peshwa shifted the Vaishnavites' bathing place to Ramkund in Nashik city. The Shaivites continue to regard Trimbak as the proper location of the Mela."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "trimbak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

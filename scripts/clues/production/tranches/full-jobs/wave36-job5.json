@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 7131,
+    "attempt": 7081,
+    "place_id": "gn-1253782",
+    "input": {
+      "place": {
+        "place_id": "gn-1253782",
+        "name": "Una",
+        "country": "India",
+        "subdivision": "Himachal Pradesh",
+        "lat": 31.46493,
+        "lon": 76.26914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Una, Himachal Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Una,_Himachal_Pradesh",
+          "text": "Una is a city with Municipal Council and district headquarter in Una district, in the Indian state of Himachal Pradesh. Una sits on the border with Punjab, Una is one of the gateways to Himachal Pradesh. It lies on the bank of River Swan, a tributary of Sutlej.\nThe city's terrain is a mix of both hilly and plain areas. In fact, the low hilly terrain gradually flattens to merge with the plains, giving Una a tropical climate which gets quite hot in summer months.\nHimachal has 5 Shakti PeethsChintpurni Temple is one of them located in Chintpurni village, about 45 km north of the city.\nChintpurni Temple, Kila Baba Bedi ji and Pong Dam are major tourist attractions of this area.\nPalampur is served by the Una Himachal railway station (UNA), NH 503 and NH 503A connects Palampur, nearest airports are Chandigarh Airport and Kangra Airport (IATA: DHM, ICAO: VIGG)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "una",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7132,
+    "attempt": 7082,
+    "place_id": "gn-1255027",
+    "input": {
+      "place": {
+        "place_id": "gn-1255027",
+        "name": "Tanakpur",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.074,
+        "lon": 80.11139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tanakpur",
+          "url": "https://en.wikipedia.org/wiki/Tanakpur",
+          "text": "Tanakpur is a city and a municipal board, near Champawat town in Champawat district of Uttarakhand state of India. Located in the foothills of the Kumaon Himalayas in the northern part of India. The town is the gateway for Purnagiri Temple (around 24 km from here) as well as the  'Gateway to the Kumaon Himalayas'.\nTanakpur is located on the banks of Sarda River and adjacent to the Nepal border. It is the last plain area on the road to Kumaon zone of Uttarakhand and acts as a junction for the Kumaon District's mountainous part. It is also the first point in the Kailash Manasarovar Pilgrimage. Tanakpur is famous for the Devi Purnagiri temple which is situated approximately 24 km at the north of city. National Highway 9 which starts from Askot in Pithoragarh district and passes from Tanakpur to cities including Khatima, Rudrapur, Rampur, Moradabad, Garhmukteshwar, Hapur, Ghaziabad, Delhi, Bahadurgarh, Rohtak, Hisar, Sirsa, Fatehabad and the highway ends at the state of Punjab."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "tanakpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7133,
+    "attempt": 7083,
+    "place_id": "gn-1278515",
+    "input": {
+      "place": {
+        "place_id": "gn-1278515",
+        "name": "Antu",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.05654,
+        "lon": 81.90267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antu, India",
+          "url": "https://en.wikipedia.org/wiki/Antu,_India",
+          "text": "Antu is a town and a nagar panchayat in the Community Development Block Sandwa Chandrika, Pratapgarh tehsil, Pratapgarh district in the state of Uttar Pradesh, India, located 20.6 km northwest of the district administrative headquarters Bela Pratapgarh and 4.7 km northeast of Sandwa Chandrika. The territory of the town covers 2 square kilometers. It is divided into 10 wards. The postal Zip Code is 230501.\nAntu belongs to the Pratapgarh Lok Sabha Constituency and the Pratapgarh Vidhan Sabha (Uttar Pradesh Legislative assembly) constituency. Babu Bankatesh Prasad Singh son of Babu Shri Surya Pal Singh had talk with the english government and established railway station in Antu. King of Pratapgarh Shri Pratap Bahadur Singh was relative (Fufaji) of Babu Bankatesh Prasad Singh. He (Babu Bankatesh Prasad Singh) provided water supply by creating water tank in Antu. He made sure that road connectivity should be there with main district in Antu. He also made sure the electricity connectivity in antu.\nAfter the unfortunate death of grandfather of Babu Sahab (Shri Banktesh Prasad Singh) of Antu, his wife (grandmother of Babu Sahab) maharani followed the tradition of Sati. Since then there is a temple of Devi Sati beside Antu Railway Station.\nBabu Lalta Prasad Singh, named successor (brother in law of Babu Sahab) of Babu Sahab Shri Bankatesh Bahadur Singh inherited the authority and colonized more people in antu by giving them land. The palace of Babu Sahab is still called purana court. Gate of palace is still there in antu but the rest of palace got demolished naturally. The successor of Babu Lalta Prasad Singh are still there in purana court by building new house beside it.\nAntu has become a town now. A vegetable market operatea two days a week at Purani bazaar. Door-to-door garbage collection is made by the government.\nThe famous temple of Maa Chandika is 4.7 km away from Antu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "antu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7134,
+    "attempt": 7084,
+    "place_id": "gn-1283448",
+    "input": {
+      "place": {
+        "place_id": "gn-1283448",
+        "name": "Dhulikhel",
+        "country": "Nepal",
+        "subdivision": "Bagmati Province",
+        "lat": 27.6221,
+        "lon": 85.54281
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dhulikhel",
+          "url": "https://en.wikipedia.org/wiki/Dhulikhel",
+          "text": "Dhulikhel (Nepali: धुलिखेल), also known as Dhaukhya (Nepal Bhasa: धौख्यः), is a municipality in Kavrepalanchok District of Nepal. It is the district headquarters, from where two major highways, the B.P. Highway and the Araniko Highway passes through. Araniko Highway connects Kathmandu, Nepal's capital city with Tibet's border town of Kodari. Dhulikhel is located at the Eastern rim of Kathmandu Valley, south of the Himalayas at 1550m above sea level and is situated 30 km southeast of Kathmandu and 74 km southwest of Kodari. The majority of people in Dhulikhel are Newars, and Brahmin, Chhettri, Tamang and Dalit are also living in outer area of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "dhulikhel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7135,
+    "attempt": 7085,
+    "place_id": "gn-1704758",
+    "input": {
+      "place": {
+        "place_id": "gn-1704758",
+        "name": "Maasin",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 10.13272,
+        "lon": 124.84082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maasin",
+          "url": "https://en.wikipedia.org/wiki/Maasin",
+          "text": "Maasin (IPA: [mɐˈʔasin]), officially the City of Maasin (Cebuano: Dakbayan sa Maasin; Waray: Syudad han Maasin, Filipino: Lungsod ng Maasin), is a  component city and capital of the province of Southern Leyte, Philippines. According to the 2024 census, it has a population of 85,486 people.\nIt has 70 barangays and is located in the western part of the province with land area of 21,171 hectares (52,310 acres).\nMaasin is the largest city, commercial and religious center of Southern Leyte and the south-western part of Leyte Island. On August 10, 2000, Maasin was converted into a city. The Diocese of Maasin was founded on August 14, 1968.\nIt is known as the birthplace of Rodrigo Duterte, the 16th President of the Philippines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "maasin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7136,
+    "attempt": 7086,
+    "place_id": "gn-2144332",
+    "input": {
+      "place": {
+        "place_id": "gn-2144332",
+        "name": "Wauchope",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.45792,
+        "lon": 152.72617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wauchope, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Wauchope,_New_South_Wales",
+          "text": "Wauchope ( ) is a town in the Mid North Coast region of New South Wales, Australia. It is within the boundaries of the Port Macquarie-Hastings Council area.  Wauchope is inland on the Hastings River and the Oxley Highway 19 km (12 mi) west of Port Macquarie. The town is 383 km (238 mi) north of the state capital Sydney.\nWauchope is the location of the now closed Timbertown, a popular heritage theme park inspired by the logging industry that formed the basis for Wauchope's early economy and prosperity.  The town has a population of approximately 7,500 (as of 2006 – including King Creek and Redbank). It has also played an important role in the Hastings Valley dairy industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "wauchope",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7137,
+    "attempt": 7087,
+    "place_id": "gn-2145409",
+    "input": {
+      "place": {
+        "place_id": "gn-2145409",
+        "name": "Upwey",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.9,
+        "lon": 145.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Upwey, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Upwey,_Victoria",
+          "text": "Upwey is a suburb of Melbourne, Victoria, Australia, 33 kilometres (21 mi) east from Melbourne's central business district, located within the Shire of Yarra Ranges local government area. Upwey recorded a population of 6,818 at the 2021 census.\nUpwey South is a colloquial term for the area directly south of the township, but is not an official suburb.\nBurwood Highway and Glenfern Road are the two main roads that run through Upwey which are connected by Morris Road. These three roads form the main routes around the suburb. Glenfern Road runs along the ridge of the hill providing views across the city and the Lysterfield Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "upwey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7138,
+    "attempt": 7088,
+    "place_id": "gn-2148591",
+    "input": {
+      "place": {
+        "place_id": "gn-2148591",
+        "name": "Springvale",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.94853,
+        "lon": 145.15274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springvale, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Springvale,_Victoria",
+          "text": "Springvale (Boonwurrung: Monite)  is a suburb in Melbourne, Victoria, Australia, 22 km (14 mi) south-east of Melbourne's Central Business District, located within the City of Greater Dandenong local government area. Springvale recorded a population of 22,174 at the 2021 census.\nSpringvale is a large suburb occupying 11.2 km2 (4.3 sq mi), bounded by Westall Road to the west, Princes Highway and Police Road to the north, the Springvale Crematorium and Corrigan Road to the northeast, Heatherton Road to the south and Lawn Road to the southeast. Springvale is linked to the Melbourne CBD by Monash Freeway via the Ferntree Gully Road exit to the suburb's northwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "springvale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7139,
+    "attempt": 7089,
+    "place_id": "gn-2152593",
+    "input": {
+      "place": {
+        "place_id": "gn-2152593",
+        "name": "Prahran",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.85114,
+        "lon": 144.99318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prahran",
+          "url": "https://en.wikipedia.org/wiki/Prahran",
+          "text": "Prahran ( prə-RAN, also colloquially  pə-RAN or  PRAN) is an inner suburb in Melbourne, Victoria, Australia, 5 km south-east of Melbourne's Central Business District, located within the City of Stonnington local government area. Prahran recorded a population of 12,203 at the 2021 census.\nPrahran is a part of Greater Melbourne, with many shops, restaurants and cafes. Chapel Street is a mix of upscale fashion boutiques and cafes. Greville Street, once the centre of Melbourne's hippie community, has many cafés, bars, restaurants, bookstores, clothing shops and music shops.\nPrahran takes its name from Pur-ra-ran, a Boonwurrung word which was thought to mean \"land partially surrounded by water\". When naming began the suburbs spelling was intended to be Praharan and pronounced Pur-ra-ran, but a spelling mistake on a government form lead to the name Prahran. More recently the word Pur-ra-ran has been identified as a transcription of \"Birrarung\", the name for the Yarra River, or a specific point of it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "prahran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7140,
+    "attempt": 7090,
+    "place_id": "gn-2160493",
+    "input": {
+      "place": {
+        "place_id": "gn-2160493",
+        "name": "Lavington",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -36.03976,
+        "lon": 146.93958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lavington, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Lavington,_New_South_Wales",
+          "text": "Lavington is the largest suburb of the city of Albury, New South Wales, Australia. At the 2021 census, Lavington had a population of 13,073.\nLavington is a mostly flat area near Nail Can Hill to the west, and is bordered by Thurgoona to the east, Hamilton Valley to the west, Springdale Heights to the north, and North Albury to the south.\nLavington is mostly residential, but has significant rural areas in the north-west and a commercial area. Features include Lavington Square Shopping Centre, Lavington Swim Centre, Jelbart Park and 5 schools (Lavington East Public, Lavington Public, Hume Public, Holy Spirit School (Catholic) and Murray High School).\nLavington is the second major centre of the City of Albury, with its own commercial CBD."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "lavington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7141,
+    "attempt": 7091,
+    "place_id": "gn-2169956",
+    "input": {
+      "place": {
+        "place_id": "gn-2169956",
+        "name": "Cronulla",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.06251,
+        "lon": 151.14961
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cronulla",
+          "url": "https://en.wikipedia.org/wiki/Cronulla",
+          "text": "Cronulla is the southernmost coastal suburb of Sydney, Australia, & sits at the mouth of the Hacking River. It boasts surf beaches, safe (& unsafe!) swimming spots & reef breaks, which attract both tourists and Greater Sydney residents. Located 26 km south of the Sydney central business district, the suburb is in the local government area of the Sutherland Shire.\nCronulla is situated at the southern end of a peninsula the northern end of which frames the southern half Botany Bay. Bate Bay opens on its eastern front while Port Hacking and Gunnamatta Bay lie behind it south & west. Neighbouring suburbs include Woolooware and Burraneer. The Kurnell headland, the site of the first landfall on the eastern coastline made by Captain James Cook in 1770, lies 8 km northeast of Cronulla & is served by Captain Cook Drive."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "cronulla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7142,
+    "attempt": 7092,
+    "place_id": "gn-2634096",
+    "input": {
+      "place": {
+        "place_id": "gn-2634096",
+        "name": "Whitehaven",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.54897,
+        "lon": -3.58412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitehaven",
+          "url": "https://en.wikipedia.org/wiki/Whitehaven",
+          "text": "Whitehaven is a town and civil parish in the Cumberland district of Cumbria, England. It is a port on the north-west coast, and lies 4 miles (6 km) outside the Lake District National Park. It is 35 miles (56 km) south-west of Carlisle. The parish also includes the small village of Sandwith. At the 2021 census the parish had a population of 24,040 and the Whitehaven built up area had a population of 22,945.\nThe town's growth was largely due to the exploitation of the extensive coal measures by the Lowther family, driving a growing export of coal through the harbour from the 17th century onwards. It was also a major port for trading with the American colonies, and was, after London, the second busiest port of England by tonnage from 1750 to 1772. This prosperity led to the creation of a Georgian planned town in the 18th century which has left an architectural legacy of over 170 listed buildings.\nWhitehaven was the site of a major chemical industry after World War II, but both that and the coal industry have disappeared, and today the major industry is the nearby Sellafield nuclear complex, which is the largest local employer of labour and has a significant administrative base in the town. Whitehaven includes a number of former villages, estates and suburbs, such as Mirehouse, Woodhouse, Kells and Hensingham, and is served by the Cumbrian Coast railway line and the A595 road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "whitehaven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7143,
+    "attempt": 7093,
+    "place_id": "gn-2634782",
+    "input": {
+      "place": {
+        "place_id": "gn-2634782",
+        "name": "Wardle",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.65,
+        "lon": -2.13333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wardle, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Wardle,_Greater_Manchester",
+          "text": "Wardle (; pop. 7,092) is a village near Littleborough within the Metropolitan Borough of Rochdale, in Greater Manchester, England. It lies amongst the foothills of the South Pennines, 1.8 miles (2.9 km) east-southeast of Whitworth, 2.5 miles (4 km) north-northwest of Rochdale and 12 miles (19 km) north-northeast of the city of Manchester.\nHistorically a part of Lancashire, Wardle and its surroundings have provided archaeological evidence of Mesolithic activity in the area. The name Wardle is said to be derived from \"Ward Hill\", implying \"fortified place\". Brown Wardle Hill overlooks the village from the north, its name being derived from the Celtic word bron meaning \"round\". During the Middle Ages Wardle was a small centre of domestic flannel and woollen cloth production, and many of the original weavers' cottages survive today as listed buildings.\nWardle, the most northerly settlement in Greater Manchester, encompasses small parts of Smallbridge and Dearnley — urban areas contiguous with Rochdale — but \"retains a rural character\". Watergrove Reservoir, which is situated on the northern outskirts of Wardle, is the largest of a series of reservoirs in the Borough of Rochdale, with a storage capacity of 720 million gallons. Wardle comprises 17th- and 18th-century stone churches, farmhouses and cottages by the hills. The village square is preserved as a place of historic interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "wardle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7144,
+    "attempt": 7094,
+    "place_id": "gn-2640857",
+    "input": {
+      "place": {
+        "place_id": "gn-2640857",
+        "name": "Otley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.90553,
+        "lon": -1.69383
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Otley",
+          "url": "https://en.wikipedia.org/wiki/Otley",
+          "text": "Otley is a market town and civil parish at a bridging point on the River Wharfe, in the City of Leeds metropolitan borough in West Yorkshire, England. Historically a part of the West Riding of Yorkshire, the population was 13,668 at the 2011 census. It is in two parts: south of the river is the historic town of Otley and to the north is Newall, which was formerly a separate township. The town is in lower Wharfedale on the A660 road which connects  it to Leeds.\nThe town is in the Otley and Yeadon ward of Leeds City Council and the Leeds North West parliamentary constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "otley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7145,
+    "attempt": 7095,
+    "place_id": "gn-2647269",
+    "input": {
+      "place": {
+        "place_id": "gn-2647269",
+        "name": "Haxby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.01422,
+        "lon": -1.07121
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haxby",
+          "url": "https://en.wikipedia.org/wiki/Haxby",
+          "text": "Haxby is a town and civil parish in the City of York, a unitary authority area in the English county of North Yorkshire. According to the 2001 Census, the parish had a population of 8,754, which reduced to 8,428 at the 2011 Census.\nOpen farmland extends to the north as far as the villages of Sutton-on-the-Forest and Strensall. The River Foss and Earswick is to the east. It is outside of the York Outer Ring Road (A1237) and near the New Earswick and Huntington areas of York, to the south. It shares a continuous built-up area with the village and parish of Wigginton to the west.\nIts name is of Old Norse origin with the personal name of Hákr's settlement, in Old Norse bý. It was recorded as Haxebi in the Domesday Book of 1086. Haxby Town Centre, known as \"The Village\", has been a Conservation Area since 1976. The town's charter was granted in 1992.  \nThe Yorkshire village of Haxby was administered by the North Riding County Council and Flaxton Rural District Council until 1974. From 1974 to 1996, Haxby became part of the county of North Yorkshire and Ryedale District. Since 1996 the town of Haxby has been part of the City of York, a unitary authority."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "haxby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7146,
+    "attempt": 7096,
+    "place_id": "gn-2649029",
+    "input": {
+      "place": {
+        "place_id": "gn-2649029",
+        "name": "Frodsham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.29485,
+        "lon": -2.72745
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frodsham",
+          "url": "https://en.wikipedia.org/wiki/Frodsham",
+          "text": "Frodsham   is a market town, civil parish, and electoral ward in the unitary authority of Cheshire West and Chester and the ceremonial county of Cheshire, England. Its population in 2021 was 9,300. It is 14 miles (23 km) south east of Liverpool and 28 miles (45 km) southwest of Manchester. The River Weaver runs to its northeast and on the west it overlooks the estuary of the River Mersey. The A56 road and the Chester–Manchester railway line pass through the town, and the M56 motorway passes to the northwest.\nIn the medieval era, Frodsham was an important borough and port belonging to the Earls of Chester. Its parish church, St. Laurence's, still exhibits evidence of a building present in the 12th century in its nave and is referenced in the Domesday Book. A market is held each Thursday, and Frodsham's viability as a trading centre was emphasised by the presence of the \"big five\" clearing banks and several building societies, though the branches of HSBC and NatWest have recently closed. Development in the town's shops and premises with alcohol licences is evident through the opening or modernisation of contemporary-style bar, restaurants, take-aways, and public houses since 2002, and in the continued presence of small, specialised, businesses operating from town-centre shops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "frodsham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7147,
+    "attempt": 7097,
+    "place_id": "gn-2652676",
+    "input": {
+      "place": {
+        "place_id": "gn-2652676",
+        "name": "Cockermouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.66209,
+        "lon": -3.36086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cockermouth",
+          "url": "https://en.wikipedia.org/wiki/Cockermouth",
+          "text": "Cockermouth  is a market town and civil parish in the Cumberland unitary authority area of Cumbria, England. The name refers to the town's position by the confluence of the River Cocker into the River Derwent. At the 2021 census, the built up area had a population of 8,860.\nCockermouth is situated a short distance outside the English Lake District on its north-west fringe. Much of the architectural core of the town remains unchanged since the basic medieval layout was filled in the 18th and 19th centuries. The regenerated market place is now a central historical focus within the town and reflects events from its 800-year history. The town is prone to flooding and experienced severe floods in 2005, 2009 and 2015.\nMary, Queen of Scots, came to Cockermouth in 1568, after her defeat at the Battle of Langside. She is said to have stayed at the house of Henry Fletcher (died 1574), who gave her a velvet gown and she later sent him a letter of thanks. Fletcher's son moved from Cockermouth to Moresby Hall in Parton, Cumbria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "cockermouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7148,
+    "attempt": 7098,
+    "place_id": "gn-2653394",
+    "input": {
+      "place": {
+        "place_id": "gn-2653394",
+        "name": "Chalfont St Giles",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.63184,
+        "lon": -0.57026
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chalfont St Giles",
+          "url": "https://en.wikipedia.org/wiki/Chalfont_St_Giles",
+          "text": "Chalfont St Giles is a village and civil parish in southeast Buckinghamshire, England. It is in a group of villages called The Chalfonts, which also includes Chalfont St Peter and Little Chalfont.\nIt lies on the edge of the Chiltern Hills, 20.9 miles (33.6 km) west-northwest of Charing Cross, central London, and near Seer Green, Jordans, Chalfont St Peter, Little Chalfont and Amersham. \nThe cockney rhyming slang term \"chalfonts\", meaning haemorrhoids (piles), is derived from the name of the village. The village has a duck pond that is fed by the River Misbourne. The village sign was designed and painted by Doreen Wilcockson ARCA in 2001.  Chalfont St Giles is famous for the poet Milton’s only surviving home."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "chalfont st giles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chalfont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "giles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7149,
+    "attempt": 7099,
+    "place_id": "gn-2654229",
+    "input": {
+      "place": {
+        "place_id": "gn-2654229",
+        "name": "Burry Port",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.68435,
+        "lon": -4.24687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burry Port",
+          "url": "https://en.wikipedia.org/wiki/Burry_Port",
+          "text": "Burry Port (Welsh: Porth Tywyn) is a port town and community in Carmarthenshire, Wales, on the Loughor estuary (Moryd Llwchwr), to the west of Llanelli and south-east of Kidwelly. Its population was recorded at 5,680 in the 2001 census and 6,156 in the 2011 census, and estimated at 5,998 in 2019. The town has a harbour.\nIt is also where Amelia Earhart landed as the first woman to fly across the Atlantic Ocean. Nearby are the Pembrey Burrows sand dune and wetland system, forming a country park, and the Cefn Sidan sands. Its musical heritage includes Burry Port Opera, Male Choir and Burry Port Town Band."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "burry port",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "burry",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7150,
+    "attempt": 7100,
+    "place_id": "gn-2654270",
+    "input": {
+      "place": {
+        "place_id": "gn-2654270",
+        "name": "Burnham-on-Crouch",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.63272,
+        "lon": 0.81488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burnham-on-Crouch",
+          "url": "https://en.wikipedia.org/wiki/Burnham-on-Crouch",
+          "text": "Burnham-on-Crouch is a town and civil parish in the Maldon District of Essex, in the East of England; it lies on the north bank of the River Crouch. It is one of Britain's leading places for yachting.\nThe civil parish extends 5 miles (8 km) east of the town to the mouth of the River Crouch.  It includes the hamlets of Creeksea and Ostend west of the town; Stoneyhills to the north; and Dammer Wick, West Wick and East Wick east of the town. At the 2021 census the parish had a population of 8,852 and the Burnham-on-Crouch built up area had a population of 7,805."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "burnham on crouch",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "burnham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "crouch",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

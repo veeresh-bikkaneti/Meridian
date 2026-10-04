@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 7171,
+    "attempt": 7121,
+    "place_id": "gn-3471522",
+    "input": {
+      "place": {
+        "place_id": "gn-3471522",
+        "name": "Arinos",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -15.91694,
+        "lon": -46.10556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arinos",
+          "url": "https://en.wikipedia.org/wiki/Arinos",
+          "text": "Arinos is a municipality in northern Minas Gerais state in Brazil. Arinos is located east of the Federal District on the Urucuia River, a major tributary of the São Francisco.  The city is 333 km from Brasília.\nThe municipality belongs to the  statistical microregion of Unaí Microregion, which has 9 municipalities.  Neighboring municipalities are:\n\nNorth: Formosa\nWest: Buritis and Unaí\nEast: Urucuia and Chapada Gaúcha\nArinos has poor highway connections leading east to the Sao Francisco river and to the state capital of Belo Horizonte, but a better road leading west to the national capital of Brasília.  Few of the roads in the town are paved.  There is a fully paved road (BR-479) leading west to Cabeceiras to join the important BR-020, 22 kilometers east of Formosa.  The distance is approximately 165 kilometers.  Another paved road leads west, then southwest to Garapuava, and continues southwest to the important regional center of Unaí."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "arinos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7172,
+    "attempt": 7122,
+    "place_id": "gn-3514398",
+    "input": {
+      "place": {
+        "place_id": "gn-3514398",
+        "name": "Xoxocotla",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.6856,
+        "lon": -99.24579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xoxocotla, Morelos",
+          "url": "https://en.wikipedia.org/wiki/Xoxocotla,_Morelos",
+          "text": "Xoxocotla  () is a town located in the southern part of the state of Morelos, about 30 km south of the state capital Cuernavaca. The name comes from the Nahuatl language, Xoxo-oco-tlan: “place where there are green pines\". Formerly part of Puente de Ixtla, it became its own indigenous municipality on 1 January 2019. It recorded a population of 21,074 inhabitants in the 2010 Mexican census.\nThe new municipality is formed by the colonies: Cerrado del Venado, Hermosa, Loma Linda, Arboledas del Sur, La Toma, Palo Prieto, Campo Corbeta, Shaya Michan, Tierra Alta, Campo Xolistlán and Palo Prieto Fraccionamiento. It also includes the Xoxocotla Ejido fields. Zacatepec challenged the inclusion of the 200 hectares (490 acres) of Shaya Michan.\nAccording to the agreement, the people of the new municipality will be ruled according to traditional usos y costumbres (uses and customs), and they will be required to assume part of the public debt of Puente de Ixtla. Eight months after its formation, the municipality is still struggling to resolve its differences with Puente de Ixtla.\nOther Indigenous communities that were granted autonomy are Coatetelco and Hueyapan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "xoxocotla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7173,
+    "attempt": 7123,
+    "place_id": "gn-3670718",
+    "input": {
+      "place": {
+        "place_id": "gn-3670718",
+        "name": "Riosucio",
+        "country": "Colombia",
+        "subdivision": "Chocó",
+        "lat": 7.44348,
+        "lon": -77.11964
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riosucio, Chocó",
+          "url": "https://en.wikipedia.org/wiki/Riosucio,_Chocó",
+          "text": "Riosucio (Spanish pronunciation: [rjoˈsusjo]) is a municipality and town in the Department of Chocó, Colombia.  The municipality and town are located in the Atrato River basin, on the Chocoan side of Urabá, a region spanning the departments Chocó and Antioquia.\nRiosucio municipality is landlocked, being separated from the Pacific Ocean by the Chocoan municipalities Juradó and Bahía Solano and from the Gulf of Urabá, a large inlet of the Caribbean Sea, by the Antioquian municipality Turbo and the Chocoan municipality Unguía.  Riosucio town is mostly inaccessible by roads and has no airport; the river is the main route for access to and transportation within the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "riosucio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7174,
+    "attempt": 7124,
+    "place_id": "gn-3847836",
+    "input": {
+      "place": {
+        "place_id": "gn-3847836",
+        "name": "Las Rosas",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -32.47547,
+        "lon": -61.57737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Rosas, Santa Fe",
+          "url": "https://en.wikipedia.org/wiki/Las_Rosas,_Santa_Fe",
+          "text": "Las Rosas is a city in the southwest of the province of Santa Fe, Argentina, located 165 km (103 mi) from the provincial capital. It has about 13,689  inhabitants as per the 2010 census [INDEC], and it is the head town of the Belgrano Department, which also comprises the municipalities of Armstrong, Bouquet, Las Parejas, Montes de Oca, and Tortugas.\nLas Rosas was founded in 1889 by Guillermo Kemmis & Dickinson bros, and was officially recognized on January 1, 1882, becoming a city on August 20, 1967.\nSummers there are warm, humid, wet, and mostly clear and the winters are short, cold, dry, and partly cloudy. Over the course of the year, the temperature typically varies from 41 °F to 87 °F and is rarely below 30 °F or above 95 °F."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "las rosas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rosas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7175,
+    "attempt": 7125,
+    "place_id": "gn-3862100",
+    "input": {
+      "place": {
+        "place_id": "gn-3862100",
+        "name": "Ceres",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -29.88113,
+        "lon": -61.94521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ceres, Santa Fe",
+          "url": "https://en.wikipedia.org/wiki/Ceres,_Santa_Fe",
+          "text": "Ceres is a municipality San Cristóbal Department, in Santa Fe Province, Argentina. The town of Ceres is 266 km (165 mi) northwest of the provincial capital Santa Fe and has a population of 16,054 2001 census [INDEC]\nThe town is situated 10 km (6 mi) from the border with Santiago del Estero Province, receiving a strong cultural, social and commercial influence from them.\nCeres sits on National Route 34 and Provincial Route 17. It has a railway connection on FCA (ex-Mitre) with frequent general cargo, mining, cereals, and passenger trains, taking a good portion of the products from the Argentine Northwest to the port of Rosario."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "ceres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7176,
+    "attempt": 7126,
+    "place_id": "gn-3981345",
+    "input": {
+      "place": {
+        "place_id": "gn-3981345",
+        "name": "Topolobampo",
+        "country": "Mexico",
+        "subdivision": "Sinaloa",
+        "lat": 25.60055,
+        "lon": -109.0504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Topolobampo",
+          "url": "https://en.wikipedia.org/wiki/Topolobampo",
+          "text": "Topolobampo (Spanish pronunciation: [topoloˈβampo]) is a port town on the Gulf of California, located in the municipality of Ahome in northwest Sinaloa, Mexico. It is the fifth-largest town in Ahome, reporting a 2020 census population of 6,198.\nThe port connects the region to the rest of northern Mexico via the Ferrocarril Chihuahua al Pacífico (English: Chihuahua–Pacific Railway), which has a terminus in the nearby city of Los Mochis. Topolobampo also houses a terminal for ferry lines connecting the port to La Paz, Baja California Sur.\nThe town is the beginning of the Mexico–U.S. trade corridor La Entrada al Pacífico, which connects the port to Midland–Odessa, Texas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "topolobampo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7177,
+    "attempt": 7127,
+    "place_id": "gn-4352795",
+    "input": {
+      "place": {
+        "place_id": "gn-4352795",
+        "name": "Darnestown",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.10344,
+        "lon": -77.29082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Darnestown, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Darnestown,_Maryland",
+          "text": "Darnestown is a United States census-designated place (CDP) and an unincorporated area in Montgomery County, Maryland. The CDP is 17.70 square miles (45.8 km2) with the Potomac River as its southern border and the Muddy Branch as much of its eastern border.  Seneca Creek borders portions of its north and west sides. The Travilah, North Potomac, and Germantown census-designated places are adjacent to it, as is the city of Gaithersburg. Land area for the CDP is 16.39 square miles (42.4 km2). As of the 2020 census, the Darnestown CDP had a population of 6,723, while the village of Darnestown is considerably smaller in size and population. Downtown Washington, D.C. is about 22 miles (35 km) to the southeast.\nWithin the Darnestown census-designated place at the intersection of what is now Darnestown Road and Seneca Road, the small village of Darnestown has existed since about 1800. The community had a population of 200 in 1878. The name Darnestown comes from William Darne, who owned the most land in the area at the beginning of the 19th century when the community post office opened. Settlement in the area began around 1750, and the tiny community was called Mount Pleasant, and then Darnes, before the name Darnestown began being used. The community thrived in the 19th century during the golden years of the Chesapeake and Ohio Canal, as the improved transportation facilities offered area farmers access to more markets. In the 1880 census, the United States Census Bureau began using a Minor Civil Division (MCD) category for aggregating populations, and the new Darnestown district had about 1,500 people. Growth stopped late in the 19th century when a new railway bypassed the community.\nIn the 1960s, affluent families began buying Montgomery County farmland for new housing and equestrian purposes. Today, many Darnestown CDP residents are wealthy and live in large homes on large lots, which is reflected in their high average income and low housing density. The median household income is nearly $228,000, and 73 percent of residents aged 25 years or more have at least a bachelor's degree or higher. The community benefits from its proximity to workplaces such as the Shady Grove Hospital area and the I-270 Technology Corridor. Washington is accessible by automobile or public transportation. Beginning with the 2000 census, the Census Bureau created a Darnestown census-designated place."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 388
+    },
+    "banned_terms": [
+      {
+        "term": "darnestown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7178,
+    "attempt": 7128,
+    "place_id": "gn-4352815",
+    "input": {
+      "place": {
+        "place_id": "gn-4352815",
+        "name": "Davidsonville",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.92289,
+        "lon": -76.6283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Davidsonville, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Davidsonville,_Maryland",
+          "text": "Davidsonville is an unincorporated community in central Anne Arundel County, Maryland, United States. It is a semi-rural community composed mostly of farms and suburban-like developments and is a good example of an \"exurb.\"  Davidsonville has relatively little commercial development and no high-density housing. The community is generally not served by public water, sewer or natural gas utilities, so homes generally employ well-and-septic systems. The nominal, if not geographic, center of Davidsonville is the intersection of Maryland routes 424 (Davidsonville Rd.) and 214 (Central Ave.), located at 38.9229°N 76.6284°W﻿ / 38.9229; -76.6284. The Davidsonville Historic District was listed on the National Register of Historic Places in 1992."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "davidsonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7179,
+    "attempt": 7129,
+    "place_id": "gn-4354234",
+    "input": {
+      "place": {
+        "place_id": "gn-4354234",
+        "name": "Elkton",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.60678,
+        "lon": -75.83327
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elkton, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Elkton,_Maryland",
+          "text": "Elkton is a town in and the county seat of Cecil County, Maryland, United States. The population was 15,776 at the 2020 census, up from 15,443 in 2010. It was formerly called Head of Elk because it sits at the head of navigation on the Elk River, one of the five tributary rivers that flow into the north of the Chesapeake Bay, east of the Susquehanna River and North East River, and north of the Bohemia River, and Sassafras River. \nElkton was once known as the Gretna Green of the East of the US because of its popularity as a place for eloping couples to marry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "elkton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7180,
+    "attempt": 7130,
+    "place_id": "gn-4692355",
+    "input": {
+      "place": {
+        "place_id": "gn-4692355",
+        "name": "Freeport",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 28.95414,
+        "lon": -95.35966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Freeport, Texas",
+          "url": "https://en.wikipedia.org/wiki/Freeport,_Texas",
+          "text": "Freeport is a city in Brazoria County, Texas, United States, located on the Gulf of Mexico, founded in 1912. According to the 2020 census, the city population was 10,696, down from 12,049 in 2010.\nFreeport's economic growth began in 1939 with the construction of Dow Chemical Company facilities, which remain its largest employer and are the largest integrated chemical manufacturing facility in the United States.\nIn 2002, Freeport LNG was founded;  an LNG export terminal was developed in the early 2010s after the US shale gas revolution and came online in 2019. In June 2022 a pipeline rupture and explosion closed the terminal until February 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "freeport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7181,
+    "attempt": 7131,
+    "place_id": "gn-4692400",
+    "input": {
+      "place": {
+        "place_id": "gn-4692400",
+        "name": "Fresno",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.53885,
+        "lon": -95.44744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fresno, Texas",
+          "url": "https://en.wikipedia.org/wiki/Fresno,_Texas",
+          "text": "Fresno is a part of Houston and an unincorporated community and census-designated place (CDP) in Fort Bend County, Texas, United States. The local population was 24,486 as of the 2020 census, an increase over the figure of 19,069 tabulated in 2010 census, and 6,603 at the 2000 census.\nFresno is located in the extra-territorial jurisdiction (ETJ) of Houston, which is the fourth largest city in the nation in population.\nFresno is located south of Houston, with the suburban Fort Bend County cities of Missouri City to the west and northwest, Arcola to the south and southwest, and the Brazoria County city of Pearland to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "fresno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7182,
+    "attempt": 7132,
+    "place_id": "gn-4742170",
+    "input": {
+      "place": {
+        "place_id": "gn-4742170",
+        "name": "Willis",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.42493,
+        "lon": -95.47994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willis, Texas",
+          "url": "https://en.wikipedia.org/wiki/Willis,_Texas",
+          "text": "Willis is a city in Montgomery County, Texas, United States, located eight miles north of Conroe in north central Montgomery County. The city began to develop in 1870 after what is now the Union Pacific Railroad built track through the area. As a part of the Piney Woods, the Willis economy has historically been driven by lumber, agriculture, and the manufacture of lumber and agriculture equipment. From the late nineteenth to early twentieth century, it produced tobacco as a commodity crop. Competition from Cuba reduced its contribution to the economy.\nThe population was 6,431 at the 2020 census, and was estimated to be 6,964 in 2023. In 2008, after Willis's population passed 5,000, the city established a home rule city charter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "willis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7183,
+    "attempt": 7133,
+    "place_id": "gn-4945497",
+    "input": {
+      "place": {
+        "place_id": "gn-4945497",
+        "name": "North Amherst",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.41037,
+        "lon": -72.53092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Amherst, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/North_Amherst,_Massachusetts",
+          "text": "North Amherst is a census-designated place (CDP) in the city of Amherst in Hampshire County, Massachusetts, United States. The population was 6,819 at the 2010 census, up from 6,019 at the 2000 census. It is part of the Springfield, Massachusetts Metropolitan Statistical Area.\nNorth Amherst is located in the northern part of the city of Amherst at 42°24′22″N 72°31′16″W (42.406192, -72.521217). It is bordered to the south by the Amherst Center CDP and to the southwest by the town of Hadley. The CDP border follows the Mill River north from the Hadley town line, then east across Massachusetts Route 116 as far as Massachusetts Route 63. The border then follows Pulpit Hill Road, Mill Street, Sand Hill Road, and Pine Street east to the New England Central Railroad line, which it follows south to Tilson Farm Road. The CDP boundary then proceeds west along Tilson Farm Road and Eastman Lane to North Pleasant Street, which it follows north to a brook near the Hadley town line.\nAccording to the United States Census Bureau, the CDP has a total area of 2.1 square miles (5.5 km2), of which 1.0 acre (3,930 m2), or 0.07%, are water.\nThere are several large apartment complexes in North Amherst, housing mostly students of the University of Massachusetts Amherst along with low-income families (a plurality of whom are graduate students). Apart from these housing developments, North Amherst also sports a number of older houses, and North Amherst Center Historic District is on the National Register of Historic Places. The village is said to be an excellently-preserved example of a 19th-century farm community.\nNorth Amherst is home to a large majority of Amherst middle income families, as the main street (North Pleasant Street) has multiple housing developments built off it. This includes \"Grantwood\", which is the largest neighborhood/development in Amherst. North Amherst is also home to two cohousing communities: Pioneer Valley and Pine Street Cohousing.\nCushman Village is located just east of North Amherst. This small area is unique, as the roads turn back into each other unlike the square roads off East Pleasant Street. Cushman Village has a number of historical homes, as well as the Cushman Common and the Cushman Store.\nNorth Amhearst is also known for its amphibian tunnels. The Henry Street salamander tunnels are tunnels which run under Henry Street in North Amherst. The tunnels help spotted salamanders cross Henry Street to get to vernal pools that the salamanders use for breeding. They are the first amphibian tunnels in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 419
+    },
+    "banned_terms": [
+      {
+        "term": "north amherst",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amherst",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7184,
+    "attempt": 7134,
+    "place_id": "gn-4987304",
+    "input": {
+      "place": {
+        "place_id": "gn-4987304",
+        "name": "Buena Vista",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 43.4203,
+        "lon": -83.89858
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buena Vista, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Buena_Vista,_Michigan",
+          "text": "Buena Vista ( BEW-nə-VIS-tə) is an unincorporated community  and census-designated place (CDP) within Buena Vista Charter Township, Saginaw County in the U.S. state of Michigan. The U.S. Census Bureau has defined a census-designated place (CDP) with the same name for statistical purposes. The CDP has no official status as a municipality and the boundaries defined by the Census Bureau may not precisely correspond to local understanding of the Buena Vista area. The CDP consists of an area adjacent to the city of Saginaw on the city's east side and mostly west of Interstate 75. As of the 2020 census, Buena Vista had a population of 5,855."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "buena vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "buena",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7185,
+    "attempt": 7135,
+    "place_id": "gn-5102378",
+    "input": {
+      "place": {
+        "place_id": "gn-5102378",
+        "name": "Palmyra",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.00706,
+        "lon": -75.02823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palmyra, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Palmyra,_New_Jersey",
+          "text": "Palmyra is a borough in Burlington County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 7,438, an increase of 40 (+0.5%) from the 2010 census count of 7,398, which in turn reflected an increase of 307 (+4.3%) from the 7,091 counted in the 2000 census. The borough, and all of Burlington County, is a part of the Philadelphia metropolitan area.\nPalmyra was originally incorporated as a township by an act of the New Jersey Legislature on April 19, 1894, from portions of Cinnaminson Township and Riverton. On February 20, 1923, Palmyra was reincorporated as a borough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "palmyra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7186,
+    "attempt": 7136,
+    "place_id": "gn-5120197",
+    "input": {
+      "place": {
+        "place_id": "gn-5120197",
+        "name": "Hastings-on-Hudson",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.99454,
+        "lon": -73.87875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hastings-on-Hudson, New York",
+          "url": "https://en.wikipedia.org/wiki/Hastings-on-Hudson,_New_York",
+          "text": "Hastings-on-Hudson is a village in Westchester County located in the southwestern part of the town of Greenburgh in the state of New York, United States. It is a suburb of New York City, located approximately 20 miles (32 km) north of midtown Manhattan, and is served by a stop on the Metro-North Hudson Line. To the north of Hastings-on-Hudson is the village of Dobbs Ferry, to the south, the city of Yonkers, and to the east unincorporated parts of Greenburgh. As of the 2020 US Census, it had a population of 8,590. The town lies on U.S. Route 9, \"Broadway\" and the Saw Mill River Parkway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "hastings on hudson",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hastings",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "hudson",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7187,
+    "attempt": 7137,
+    "place_id": "gn-5133640",
+    "input": {
+      "place": {
+        "place_id": "gn-5133640",
+        "name": "Rego Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.72649,
+        "lon": -73.85264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rego Park",
+          "url": "https://en.wikipedia.org/wiki/Rego_Park",
+          "text": "Rego Park is a neighborhood in the borough of Queens in New York City. Rego Park is bordered to the north by Elmhurst and Corona, to the east and south by Forest Hills, and to the west by Middle Village. Rego Park's boundaries include Queens Boulevard, the Long Island Expressway, Woodhaven Boulevard, and Yellowstone Boulevard. There is a large Jewish population in the neighborhood, which features high-rise apartment buildings and detached houses, as well as a large commercial zone.\nRego Park is located in Queens Community District 6 and its ZIP Code is 11374. It is patrolled by the New York City Police Department's 112th Precinct. Politically, Rego Park is represented by the New York City Council's 29th District and a small part of the 24th and 25th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "rego park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rego",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7188,
+    "attempt": 7138,
+    "place_id": "gn-5204783",
+    "input": {
+      "place": {
+        "place_id": "gn-5204783",
+        "name": "Oxford Circle",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.05011,
+        "lon": -75.07184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oxford Circle, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Oxford_Circle,_Philadelphia",
+          "text": "Oxford Circle is a neighborhood in the lower Northeast section of Philadelphia, Pennsylvania, United States. Its namesake is the much used traffic circle at Roosevelt Boulevard and Oxford Avenue. \nThe Oxford Circle neighborhood has traditionally included the areas up to Rhawnhurst and Mayfair but does not have fixed boundaries, other than in publications about Philadelphia which are of public relations or informational natures.\nOxford Circle is also the colloquial name for the nearby Summerdale neighborhood, which is located west of Roosevelt Boulevard, opposite the city's Frankford section.  However, Summerdale is, for the most part, a different neighborhood than the one that is discussed in this article."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "oxford circle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oxford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "circle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7189,
+    "attempt": 7139,
+    "place_id": "gn-5261852",
+    "input": {
+      "place": {
+        "place_id": "gn-5261852",
+        "name": "Marinette",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 45.09998,
+        "lon": -87.63066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marinette, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Marinette,_Wisconsin",
+          "text": "Marinette is a city in Marinette County, Wisconsin, United States, and its county seat. The population was 11,119 at the 2020 census. It is located on the south bank of the Menominee River at its mouth on Green Bay, part of Lake Michigan; to the north is Stephenson Island, part of the city preserved as a park.\nMenominee, Michigan, is across the Menominee River to the north, and the cities are connected by three bridges. Menominee and Marinette are sometimes described as the \"twin cities\" of the Menominee River. Marinette is the principal city of the Marinette micropolitan area, which includes parts of Wisconsin and Michigan. During the lumbering boom of the late 19th century, Marinette became the tenth-largest city in Wisconsin, reaching a peak population of 16,195 in 1900."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "marinette",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7190,
+    "attempt": 7140,
+    "place_id": "gn-5386015",
+    "input": {
+      "place": {
+        "place_id": "gn-5386015",
+        "name": "Rancho Mirage",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.73974,
+        "lon": -116.41279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rancho Mirage, California",
+          "url": "https://en.wikipedia.org/wiki/Rancho_Mirage,_California",
+          "text": "Rancho Mirage is a city in Riverside County, California, United States. The city is a low-density desert community with resorts, golf courses, and country clubs within the Colorado Desert section of the Sonoran Desert. Nestled along the foothills of the Santa Rosa Mountains in the south, it is located about ten miles southeast of Palm Springs. The city is adjacent to Cathedral City, Palm Desert, and unincorporated Thousand Palms. The population was 16,999 at the 2020 census, down from 17,218 at the 2010 census, though the seasonal population can exceed 20,000. Incorporated in 1973, Rancho Mirage is one of the nine cities of the Coachella Valley.\nThe city has been nicknamed \"Playground of the Presidents\" and \"Golf Capital of the World\". The city has hosted and currently hosts a variety of golf and tennis tournaments, including the Ryder Cup, Desert Classic (PGA Tour), Davis Cup, and the LPGA Tour (Chevron Championship)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "rancho mirage",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rancho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mirage",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
