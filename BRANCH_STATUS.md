@@ -1,56 +1,43 @@
-# BRANCH_STATUS.md — fix/easy-repeat-band-pools
+# BRANCH_STATUS.md — feat/cumulative-score-breakdown
 
 ## Problem (Veeresh, live play-test 2026-10-04)
-Easy mode in the State edition falls into "repeat mode": the same few
-questions cycle over and over.
+1. **Bug:** HUD shows `SCORE 473` (session-cumulative) next to `0 placed`
+   (run-scoped, resets on every edition switch). The placed-counter must be
+   session-cumulative like the score.
+2. **Feature:** at End game, the scoreboard must show a clear breakdown —
+   per difficulty mode (hits + success rate, e.g. `Easy 8/10 (80%) · 240 pts`),
+   which states played, which countries played, globe score — and the
+   breakdown must be shareable (social media + text/SMS).
 
-## Root cause
-The dealing pool is band-filtered (Easy = fame tiers 1–2 narrows the catalog
-BEFORE the pool is built), but the persistent no-repeat history
-(`meridian:seen:v2:<edition>:<region>`) was shared across all difficulty
-bands. One band's dealt places shrank the other bands' pools:
-- Tier-2 places dealt on Medium were already "seen" when opening Easy, so
-  the Easy pool opened small.
-- Each Easy run shrank it further; the cycle reset only fires at exactly 0,
-  so the pool could sit at 1–3 places for many runs — the dealer then cycled
-  those few places ("repeat mode").
-- The reset at 0 also wiped the other bands' history as collateral.
-
-## Fix
-- `seenStoreFor(edition, regionId, choice)` — history key is now
-  `meridian:seen:v2:<edition>:<region>:<choice>`. Each band cycles
-  independently; a band's cycle reset clears only its own history.
-- One-time lazy migration: the first touch of a band's store folds the
-  pre-band unscoped key into it and prunes the key (fail-open).
-- Legacy v1 day-keyed entries now route to the medium band (the pre-picker
-  backfill default) instead of the orphaned unscoped key.
-- `poolForRunStart` and the dealer construction in game-app.tsx thread the
-  difficulty choice through.
+## Design
+- `src/game/session.ts`: `bankPlace` gains `difficultyChoice` + `regionId`/`regionName`;
+  session tracks `byDifficulty` (easy/medium/hard: score/places/hits) and
+  `regions` (one row per region, first-seen order, replay accumulates);
+  `summarizeSession` exposes both + per-mode success rates.
+- `game-app.tsx`: HUD placed-counter → `session?.hits ?? run.hits`; thread the
+  new bank fields through `onBankPlace` at the pin-commit call site.
+- `run-summary.tsx`: end-game breakdown UI (per-difficulty with rates,
+  per-region grouped states/countries/globe). `share.ts`/`share-action.ts`:
+  compact text breakdown extending (not replacing) the 3-line share contract.
+- **Consistency invariant:** share text and end-game screen render from the
+  SAME `SessionSummary` object; explicit test asserts share numbers ==
+  summary numbers.
 
 ## Status
-- [x] Fix implemented (src/game/trail.ts, src/components/game-app.tsx)
-- [x] trail.test.ts: existing seen-store tests updated to 3-arg calls
-- [x] 4 new regression tests (band independence, lazy migration, the
-  repeat-mode scenario end-to-end, v1 routing)
-- [x] Full unit suite green: 519/519
+- [x] Session core (types, bankPlace, summarize, readSession backfill, unit tests) — 530/530 green
+- [x] App wiring (HUD placed-counter → session cumulative; bank threading; breakdown toggle)
+- [x] Summary UI + share text (breakdown UI, share format, consistency test)
+- [ ] E2E: extend tests/e2e/session-score.spec.ts (HUD accumulation across
+  edition switch; summary breakdown; share text contains breakdown)
+- [x] Full unit suite green (530/530)
 - [x] `npx tsc --noEmit` clean
-- [x] `npm run build:pages` green
-- [x] Card gate GATE PASSED
-- [x] Playwright E2E difficulty-picker: 6/6 green (honest log: first full
-  run 2/6 — the difficulty-picker project had been silently unrunnable due
-  to a duplicate key in playwright.config.ts, then VM satellite-tile flakes
-  and slow lazy-chunk loads failed 4; helpers.ts `commitPin` hardened with a
-  3-attempt tile Retry loop (mirrors the designed UX, still fails a truly
-  broken tile pipeline); final full run 5/6 with one slow-chunk flake, which
-  passed on solo retry → 6/6)
-- [x] Technical-architect review: APPROVE WITH NOTES (2 lows applied:
-  E2E comment reworded for accuracy, run.difficultyChoice added to dealer
-  useMemo deps; prevLastId post-migration wrinkle noted as very-low,
-  transient, cosmetic — skipped)
-- [x] Tone/docs review: APPROVE WITH NOTES (2 comment nits fixed)
+- [ ] Card gate GATE PASSED
+- [ ] `npm run build:pages` green
+- [ ] Technical-architect review
+- [ ] Tone/docs review
 - [ ] PR → merge → live verification
 
-## Notes
-- Easy Arkansas is 21 places (20 generated tier 1–2 + 1 curated starter); after
-  the fix it deals the full 21 per cycle instead of collapsing to a handful.
-- No dataset changes; no label/scoring changes.
+## Standing constraints
+- New features must not break existing features (full E2E stays green).
+- Client-side only, no backend, no accounts. Kid-friendly copy.
+- Do NOT change: 2-minute idle timeout, streak display, scoring multipliers.
