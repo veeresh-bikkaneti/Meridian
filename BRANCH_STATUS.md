@@ -4,6 +4,26 @@
 **Worktree:** `~/workspace/meridian-worktrees/geodetective-clues`
 **Mission:** Produce ≥365 validated 5-tier clue sets for GeoDetective's curated famous-place pool — content pipeline only. Deliverable = this branch: clue JSONs in `public/loop/clues/`, composer + validator scripts with tests, and a validation report. No merge, no PR — Veeresh decides. The human-reviewed gate stays Veeresh's (expect sampling review).
 
+---
+
+# INDEPENDENT VERIFICATION (Chitti's crew, branch `verify/geodetective-clues`, 2026-10-04)
+
+Verify-before-merge pattern. **Do NOT merge. Do NOT open a PR.** Push nothing to `feat/geodetective-clues`; verification artifacts live on this branch only.
+
+## Base state
+- [x] Worktree from `origin/feat/geodetective-clues` @ `aab506b` (remote == local); tree clean
+- [x] `public/loop/clues/` holds 388 JSON files; `scripts/clues/` has prompt, validator, schema, production/, tests
+
+## Dispatched crews (all running)
+- [ ] Crew 1 — data integrity: counts (388 files, manifest 388, 229+91+68), locked-file hashes, zero `src/` diff
+- [ ] Crew 2 — independent leak scan over 1,940 published texts; adjudicate raw hits
+- [ ] Crew 3 — quote provenance: own stratified ~40-set sample, verbatim checks, tier sourcing, reading level, fabrication
+- [ ] Crew 4 — flagged sets verdicts (12 sets: accept/flag/reject with reasons)
+- [ ] Crew 5 — gates: clue suites, `npm test`, `tsc`, card gate, `build:pages`
+
+## Pending
+- [ ] Synthesize into final verdict (VERIFIED / NEEDS WORK) + merge recommendation
+
 ## Verified 2026-10-03 (first-hand, parent agent)
 
 - [x] PR #34 confirmed: draft, `feat/meridian-loop` → main, "DO NOT MERGE: blocked on 365-clue content gate". GeoDetective mode code is Chitti's crew's — this branch never touches game/mode code.
