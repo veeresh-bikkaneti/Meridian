@@ -12,7 +12,7 @@ re-running on the same dataset + cache reproduces pool.jsonl exactly).
 | Cache records matched with a non-empty extract | 71957 |
 | … joined to a dataset place | 71957 |
 | … at or above the substance floor (100 extract words) | 10645 |
-| Working pool (top 2500 by fame rank) | 2500 |
+| Working pool (all candidates above the floor, fame-ranked) | 10645 |
 
 ## Fame ranking (total order, no ties)
 
@@ -27,7 +27,10 @@ re-running on the same dataset + cache reproduces pool.jsonl exactly).
 | Dataset difficulty | Places in pool |
 |---|---|
 | 1 | 1881 |
-| 2 | 619 |
+| 2 | 2340 |
+| 3 | 3466 |
+| 4 | 1902 |
+| 5 | 1056 |
 
 ## Known gaps
 
