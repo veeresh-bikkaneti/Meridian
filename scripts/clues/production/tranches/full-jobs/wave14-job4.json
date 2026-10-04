@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 2681,
+    "attempt": 2661,
+    "place_id": "gn-2519513",
+    "input": {
+      "place": {
+        "place_id": "gn-2519513",
+        "name": "Chiclana de la Frontera",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.41976,
+        "lon": -6.14367
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chiclana de la Frontera",
+          "url": "https://en.wikipedia.org/wiki/Chiclana_de_la_Frontera",
+          "text": "Chiclana de la Frontera (Spanish pronunciation: [tʃiˈklana ðe la fɾonˈteɾa]) is a town and municipality in southwest Spain, in the province of Cádiz, Andalucía, near the Gulf of Cádiz. It belongs to the association of municipalities of the Bay of Cádiz (Bahía de Cádiz), the provincial capital of Cádiz, Jerez de la Frontera, San Fernando, El Puerto de Santa María, Puerto Real and Rota which form the third largest metropolitan area in Andalusia, behind Seville and Málaga, and the twelfth largest in Spain. It is located 20 kilometres (12 miles) south-east of Cádiz, and borders the municipalities of San Fernando and Puerto Real to the north and Conil de la Frontera to the south. In 1877, the municipality's population was 11,677; in 2012, it was 81,473. It has a surface area is 203 square kilometres (78 sq mi) and a population density of 401 inhabitants / km2. The average elevation is 11 metres (36 ft) above sea level. The economy depends largely upon modern industry, especially salt processing, and tourism, and the municipality is known for its beaches such as the 6 kilometres (3.7 mi) long Playa de la Barrosa, hotels and golf courses in the resort of Novo Sancti Petri. The municipality contains the largest number of hotel beds in the Province of Cádiz and the Costa de la Luz. The town's newspaper, Viva Chiclana is distributed on Thursday mornings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "chiclana de la frontera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chiclana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "frontera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2682,
+    "attempt": 2662,
+    "place_id": "gn-2521857",
+    "input": {
+      "place": {
+        "place_id": "gn-2521857",
+        "name": "Almonte",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.2647,
+        "lon": -6.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Almonte, Spain",
+          "url": "https://en.wikipedia.org/wiki/Almonte,_Spain",
+          "text": "Almonte is a town and municipality located in the province of Huelva, in southwestern Spain. According to the 2022 census, it had a population of 25,448 inhabitants, ranking third within its province, just after Huelva, the capital city and Lepe. With its 859.21 km2 (33174 sq mi), it is the 19th largest municipality in Spain (7th in Andalusia) with a population density of 27/km2. Its elevation is 75 m (246 ft) over sea level and it is 50 km far from Huelva.\nAlmonte is recognised worldwide thanks to the village of El Rocío, which had a great influence in the American Wild West culture and hosts one of the most popular pilgrimages in the world. Most of the Doñana National Park, which is Europe's largest natural reserve and a World Heritage Site by UNESCO and the longest beach in Spain, which includes the Matalascañas beach, along with two of the Natural Monuments in Andalusia, are also in Almonte. Moreover, it is one of Spain's top organic fruit exporters and the first blueberry exporter in Europe. Almonte is a founding member and hosts the headquarters of National Park Towns Association Amuparna, is the first town to sign the Environmental Treaty, hosts the only rocket launching platform in the country and is the only municipality in southern Spain to have a presidential residence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "almonte",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2683,
+    "attempt": 2663,
+    "place_id": "gn-2649957",
+    "input": {
+      "place": {
+        "place_id": "gn-2649957",
+        "name": "Epsom",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.3305,
+        "lon": -0.27011
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Epsom",
+          "url": "https://en.wikipedia.org/wiki/Epsom",
+          "text": "Epsom is a town in the borough of Epsom and Ewell in Surrey, England, about 14 miles (22 kilometres) south of central London. The town is first recorded as Ebesham in the 10th century and its name probably derives from that of a Saxon landowner. The earliest evidence of human activity is from the mid-Bronze Age, but the modern settlement probably grew up in the area surrounding St Martin's Church in the 6th or 7th centuries and the street pattern is thought to have become established in the Middle Ages. Today the High Street is dominated by the clock tower, which was erected in 1847–8.\nLike other nearby settlements, Epsom is located on the spring line where the permeable chalk of the North Downs meets the impermeable London Clay. Several tributaries of the Hogsmill River rise in the town and in the 17th and early 18th centuries, the spring on Epsom Common was believed to have healing qualities. The mineral waters were found to be rich in Epsom salts, which were later identified as magnesium sulphate. Charles II was among those who regularly took the waters and several prominent writers, including John Aubrey, Samuel Pepys and Celia Fiennes recorded their visits. The popularity of the spa declined rapidly in the 1720s as a result of competition from other towns, including Bath and Tunbridge Wells.\nOrganised horse racing on Epsom Downs is believed to have taken place since the early 17th century. The popularity of Epsom grew as The Oaks and The Derby were established in 1779 and 1780 respectively. The first grandstand at the racecourse was constructed in 1829 and more than 127,000 people attended Derby Day in 1843. During the 1913 Derby the suffragette Emily Davison sustained fatal injuries after being hit by King George V's horse.\nThe opening of the first railway station in Epsom in 1847, coupled with the breakup of the Epsom Court estate, stimulated the development of the town. Today Epsom station is an important railway junction, where lines to London Victoria and London Waterloo diverge. Since 1946, the town has been surrounded on three sides by the Metropolitan Green Belt, which severely limits the potential for expansion. Two local nature reserves, Epsom Common and Horton Country Park, are to the west of the centre and Epsom Downs, to the south, is a Site of Nature Conservation Importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 393
+    },
+    "banned_terms": [
+      {
+        "term": "epsom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2684,
+    "attempt": 2664,
+    "place_id": "gn-293768",
+    "input": {
+      "place": {
+        "place_id": "gn-293768",
+        "name": "Ramla",
+        "country": "Israel",
+        "subdivision": "Central District",
+        "lat": 31.92624,
+        "lon": 34.8635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramla",
+          "url": "https://en.wikipedia.org/wiki/Ramla",
+          "text": "Ramla (Hebrew: רַמְלָה, romanized: Ramla), also known as Ramle (Arabic: الرملة, romanized: ar-Ramla, Palestinian Arabic: [ɪrˈrɑmle]), is a city in the Central District of Israel. Ramle is one of Israel's mixed cities, with significant numbers of both Jews and Arab citizens of Israel.\nThe city was founded in the early 8th century by the Umayyad caliph Sulayman ibn Abd al-Malik as the capital of Jund Filastin, the district he governed in Bilad al-Sham before becoming caliph in 715. The city's strategic and economic value derived from its location at the intersection of the Via Maris, connecting Cairo with Damascus, and the road connecting the Mediterranean port of Jaffa with Jerusalem. It rapidly overshadowed the adjacent city of Lydda, whose inhabitants were relocated to the new city. Not long after its establishment, Ramla developed as the commercial centre of Palestine, serving as a hub for pottery, dyeing, weaving, and olive oil, and as the home of numerous Muslim scholars. Its prosperity was lauded by geographers in the 10th–11th centuries, when the city was ruled by the Fatimids and Seljuks.\nIt lost its role as a provincial capital shortly before the arrival of the First Crusade (c. 1099), after which it became the scene of various battles between the crusaders and Fatimids in the first years of the 12th century. Later that century, it became the centre of a lordship in the Kingdom of Jerusalem, a crusader state established by Godfrey of Bouillon. The city declined in the Ottoman period, and 19th-century visitors described it as a town of only a few thousand inhabitants in a state of decay.\nRamla had an almost exclusively Arab population before most were expelled during the 1948 Arab–Israeli War. The town was subsequently repopulated by Jewish immigrants. Today, Ramla is one of Israel's mixed cities, with a population 76% Jewish and 24% Arab."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 307
+    },
+    "banned_terms": [
+      {
+        "term": "ramla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2685,
+    "attempt": 2665,
+    "place_id": "gn-2988358",
+    "input": {
+      "place": {
+        "place_id": "gn-2988358",
+        "name": "Pau",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 43.31117,
+        "lon": -0.35583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pau, Pyrénées-Atlantiques",
+          "url": "https://en.wikipedia.org/wiki/Pau,_Pyrénées-Atlantiques",
+          "text": "Pau (; French: [po]; Occitan: [paw]; Basque: Paue) is a commune overlooking the Pyrenees, the prefecture of the Pyrénées-Atlantiques department in the Nouvelle-Aquitaine region of Southwestern France.\nThe city is located in the heart of the former sovereign principality of Béarn, of which it was the capital from 1464. Pau lies on the Gave de Pau, and is located 100 kilometres (62 mi) from the Atlantic Ocean and 50 kilometres (31 mi) from Spain. This position gives it a striking panorama across the mountain range of the Pyrenees, especially from its landmark \"Boulevard des Pyrénées\", as well as the hillsides of Jurançon. According to Alphonse de Lamartine, \"Pau has the world's most beautiful view of the earth just as Naples has the most beautiful view of the sea.\"\nThe site has been occupied since at least the Gallo-Roman era. However the first references to Pau as a settlement only occur in the first half of the 12th century. The town developed from the construction of its castle, likely from the 11th century by the Viscounts of Béarn, to protect the ford which was a strategic point providing access to the Bearn valleys and to Spain. The city takes its name from the stockade (pau in Béarnese) which surrounded the original castle.\nPau became the capital of Béarn in 1464 and the seat of the Kings of Navarre in 1512 after the capture of Pamplona by the Kingdom of Castile. Pau became a leading political and intellectual centre under the reign of Henry d'Albret. With the end of Béarnaise independence in 1620, Pau lost its influence but remained at the head of a largely autonomous province. It was home to the Parliament of Navarre and Béarn during the Revolution, when it was dismantled to create the Department of Basses-Pyrénées. The Belle Époque marked a resurgence for the Béarnaise capital with a massive influx of wealthy foreign tourists, who came to spend the winter to take advantage of the benefits of Pau's climate. It was at this time that Pau became one of the world capitals of the nascent aerospace industry under the influence of the Wright brothers.\nWith the decline of tourism during the 20th century, Pau's economy gradually shifted towards the aviation industry and then to petrochemicals with the discovery of the Lacq gas field in 1951. The Université de Pau et des Pays de l'Adour, founded in 1972, accounts for a large student population. The city plays a leading role for Béarn but also for a wide segment of the Adour area. Pau's heritage extends over several centuries, its diversity and its quality allowed it to obtain the label of City of Art and History in 2011.\nThe name of its people is Palois in French, and paulin in Occitan. The motto of Pau is in Latin: Urbis palladium et gentis (\"protective of the city and its people\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 479
+    },
+    "banned_terms": [
+      {
+        "term": "pau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2686,
+    "attempt": 2666,
+    "place_id": "gn-3006787",
+    "input": {
+      "place": {
+        "place_id": "gn-3006787",
+        "name": "La Rochelle",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 46.16308,
+        "lon": -1.15222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Rochelle",
+          "url": "https://en.wikipedia.org/wiki/La_Rochelle",
+          "text": "La Rochelle (UK: , US: , French: [la ʁɔʃɛl] ; Poitevin-Saintongeais: La Rochéle) is a city on the west coast of France and a seaport on the Bay of Biscay, a part of the Atlantic Ocean. It is the capital of the Charente-Maritime department. With 78,535 inhabitants in 2021, La Rochelle is the most populated commune in the department and ranks fourth in the Nouvelle-Aquitaine region after Bordeaux, the regional capital, Limoges and Poitiers.\nSituated on the edge of the Atlantic Ocean, the city is connected to the Île de Ré by a 2.9-kilometre-long (1+3⁄4-mile) bridge completed on 19 May 1988. Since the Middle Ages the harbour has opened onto a protected strait, the Pertuis d'Antioche, and is regarded as a \"porte océane\" or gateway to the ocean because of the presence of its three ports (fishing, trade and yachting). The city has a strong commercial tradition, having an active port from very early on in its history.\nThe city traces its origins to the Gallo-Roman period, attested by the remains of important salt marshes and villas. The Dukes of Aquitaine granted it a charter as a free port in 1130. With the opening of the English market following the second marriage of Eleanor of Aquitaine in 1152, the presence of the Knights Templar and the Knights of Saint John of Jerusalem quickly made this small town the largest port on the Atlantic.\nTo this day, the city still possesses a rich historical fabric, including the Saint-Nicholas tower, and an urban heritage. The capital of Aunis, it has become the most important coastal city between the Loire and Gironde estuaries. La Rochelle's urban activities are many in number and strongly differentiated, being a city with port and industrial functions that are still important, but also including a predominantly administrative and tertiary sector that is reinforced by the University of La Rochelle and a rapidly developing tourism industry. In the early 21st century, the city has consistently been ranked among France's most liveable cities. Until 2015, the town was part of the administrative region called Poitou-Charentes, prior to the delimitation of regions in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 353
+    },
+    "banned_terms": [
+      {
+        "term": "la rochelle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rochelle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2687,
+    "attempt": 2667,
+    "place_id": "gn-3401548",
+    "input": {
+      "place": {
+        "place_id": "gn-3401548",
+        "name": "Crateús",
+        "country": "Brazil",
+        "subdivision": "Ceará",
+        "lat": -5.17775,
+        "lon": -40.66949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crateús",
+          "url": "https://en.wikipedia.org/wiki/Crateús",
+          "text": "Crateús is a Brazilian city in the northwest of the state of Ceará in Northeastern Brazil with an estimated 75,159 inhabitants, and one of the most important and oldest cities in the county. Popularly known as the Capital of the West, it is a city with significant regional importance, standing out in the traditional function of marketing rural products, resulting from the development of family agriculture, with emphasis on the large production of corn and beans, at the foot of the rich valleys in the region, geographically cut by the Poti River and Serra Grande. It was once one of the largest biofuel producers in the Northeast, with a production capacity of 118,800 m3 (4,200,000 cu ft) of biodiesel per year according to the company. Crateús also hosts a Brazilian Army unit. It is located in a wealthy part of the state, close to the western border. Crateús is the seat of the Roman Catholic Diocese of Crateús. It was established by Portuguese explorers in the 17th century in uplands originally inhabited by indigenous peoples.\nThe municipality contains part of the 6,137 hectares (15,160 acres) Serra das Almas Private Natural Heritage Reserve, which preserves an area of the Caatinga biome.\nThe city is served by Dr. Lúcio Lima Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "crateus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2688,
+    "attempt": 2668,
+    "place_id": "gn-3419842",
+    "input": {
+      "place": {
+        "place_id": "gn-3419842",
+        "name": "Sisimiut",
+        "country": "Greenland",
+        "subdivision": "Qeqqata",
+        "lat": 66.93946,
+        "lon": -53.6735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sisimiut",
+          "url": "https://en.wikipedia.org/wiki/Sisimiut",
+          "text": "Sisimiut (Greenlandic: [sisimiut]), also known by its Danish name Holsteinsborg, is the capital and largest city of the Qeqqata municipality, and the second-largest city in Greenland. It is located in central-western Greenland, on the coast of Davis Strait, approximately 320 km (200 mi) north of Nuuk.\nSisimiut literally means \"the residents at the foxholes\" (Danish: Beboerne ved rævehulerne). The site has been inhabited for the last 4,500 years, first by peoples of the Saqqaq culture, then Dorset culture, and then the Thule people, whose Inuit descendants form the majority of the current population. Artifacts from the early settlement era can be found throughout the region, favored in the past for its plentiful fauna, particularly the marine mammals providing subsistence for the early hunting societies.\nThe population of modern Greenlanders in Sisimiut is a mix of the Inuit and Danish peoples, who first settled in the area in the 1720s, under the leadership of the Danish missionary, Hans Egede.\nToday, Sisimiut is the largest business centre north of the national capital of Nuuk and is one of the fastest growing cities in Greenland. Fishing is the principal industry in Sisimiut, although the town has a growing industrial base. KNI and its subsidiary Pilersuisoq, a state-owned chain of all-purpose general stores in Greenland, have their base in Sisimiut. Architecturally, Sisimiut is a mix of traditional, single-family houses, and communal housing, with apartment blocks raised in the 1960s during a period of town expansion in Greenland. Sisimiut is still expanding, with the area north of the port, on the shore of the small Kangerluarsunnguaq Bay reserved for a modern suburb-style housing slated for construction in the 2010s. Several professional and general schools are based in Sisimiut, providing education to the inhabitants of the city and to those from smaller settlements in the region. The new Taseralik Culture Centre is the second cultural centre to be established in Greenland, after Katuaq in Nuuk.\nThe city has its own bus line, and is the northernmost year-round ice-free port in the country, a shipping base for western and northwestern Greenland. Supply ships head from the commercial port towards smaller settlements in more remote regions of Uummannaq Fjord, Upernavik Archipelago, and as far as Qaanaaq in northern Greenland. Sisimiut Airport, the town airport is served by Air Greenland, providing connections to other towns on the western coast of Greenland, and through Nuuk Airport, to Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 398
+    },
+    "banned_terms": [
+      {
+        "term": "sisimiut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2689,
+    "attempt": 2669,
+    "place_id": "gn-3515796",
+    "input": {
+      "place": {
+        "place_id": "gn-3515796",
+        "name": "Tequisquiapan",
+        "country": "Mexico",
+        "subdivision": "Querétaro",
+        "lat": 20.5225,
+        "lon": -99.89167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tequisquiapan",
+          "url": "https://en.wikipedia.org/wiki/Tequisquiapan",
+          "text": "Tequisquiapan (Spanish pronunciation: [tekis'kjapan]; Otomi: Ntʼe) is a town and municipality located in the southeast of the state of Querétaro in central Mexico. The center of the town has cobblestone streets, traditional rustic houses with wrought iron fixtures, balconies, and wooden windowsills, which is the legacy of its 300-year heritage as a colonial town populated mostly by indigenous people. This, the climate, and the local natural water springs have made the town a popular weekend getaway for cities such as Querétaro and Mexico City, which has led to the construction of weekend homes in the town.\nTequisquiapan is part of Querétaro's Ruta de Vino (Wine Route) with La Redonda as the municipality's major producer. Grape production began in the early 1960s, but has become important enough to be featured on the municipality's seal. The town hosts the annual Feria Nacional del Queso y el Vino, (National Cheese and Wine Fair) which showcases southern Querétaro's cheese and wine production."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "tequisquiapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2690,
+    "attempt": 2670,
+    "place_id": "gn-3573738",
+    "input": {
+      "place": {
+        "place_id": "gn-3573738",
+        "name": "San Fernando",
+        "country": "Trinidad & Tobago",
+        "subdivision": "San Fernando",
+        "lat": 10.27969,
+        "lon": -61.46835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Fernando, Trinidad and Tobago",
+          "url": "https://en.wikipedia.org/wiki/San_Fernando,_Trinidad_and_Tobago",
+          "text": "San Fernando, officially the City of San Fernando, is the most populous city and second most populous municipality in Trinidad and Tobago, after Chaguanas. Sando, as it is known to many local Trinidadians, occupies 19 km2 (7.3 sq mi) and is located in the southwestern part of the island of Trinidad. It is bounded to the north by the Guaracara River, the south by the Oropouche River, the east by the Sir Solomon Hochoy Highway, and the west by the Gulf of Paria. The former borough was elevated to the status of a city corporation on 18 November 1988. The motto of San Fernando is: \"Sanitas Fortis\" - In a Healthy Environment We Will Find Strength. San Fernando is called Trinidad and Tobago's \"industrial capital\" because of its proximity to the Pointe-à-Pierre oil refinery and many other petrochemical, LNG, iron and steel and aluminium smelters in places such as Point Lisas in Couva, Point Fortin, and La Brea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "san fernando",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fernando",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2691,
+    "attempt": 2671,
+    "place_id": "gn-4364362",
+    "input": {
+      "place": {
+        "place_id": "gn-4364362",
+        "name": "Odenton",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.084,
+        "lon": -76.70025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Odenton, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Odenton,_Maryland",
+          "text": "Odenton ( OH-dən-tən) is a census-designated place (CDP) in Anne Arundel County, Maryland, United States, located approximately 10–20 minutes from the state capital, Annapolis. The population was 37,132 at the 2010 census, up from 20,534 at the 2000 census. Odenton is located west of Annapolis, south of Baltimore, and northeast of Washington, D.C.\nIn recent years, Odenton has become the fastest-growing city in the county with 2010 census numbers reporting 42% growth. This is because of its proximity to Fort George G. Meade, which contains NSA headquarters, U.S. Cyber Command (established 2009), and the Defense Information Systems Agency (moved to Fort Meade in 2011). Odenton's growth can also be attributed to it being centrally located between Annapolis, Baltimore, and Washington, D.C. The development has been fueled by the construction of the massive Piney Orchard development, progress in the ongoing development of Odenton Town Center, and construction of the NSA East Campus Integration Program scheduled for completion in 2028."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "odenton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2692,
+    "attempt": 2672,
+    "place_id": "gn-4500942",
+    "input": {
+      "place": {
+        "place_id": "gn-4500942",
+        "name": "Bridgeton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.42734,
+        "lon": -75.23408
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridgeton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Bridgeton,_New_Jersey",
+          "text": "Bridgeton is a city in Cumberland County, within the U.S. state of New Jersey. It is the county seat of Cumberland County and is located on the Cohansey River near Delaware Bay in the South Jersey region of the state.\nAs of the 2020 United States census, the city's population was 27,263, its highest decennial count ever and an increase of 1,914 (+7.6%) from the 25,349 recorded at the 2010 census, which in turn reflected an increase of 2,578 (+11.3%) from the 22,771 counted in the 2000 census. Bridgeton and Vineland are the two principal cities of the Vineland-Bridgeton metropolitan statistical area, which encompasses those cities and all of Cumberland County for statistical purposes and which constitutes a part of the Philadelphia metropolitan area.\nAs of 2020, Bridgeton had the 13th-highest property tax rate in New Jersey with an equalized rate of 4.598% compared to 3.089% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "bridgeton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2693,
+    "attempt": 2673,
+    "place_id": "gn-4564133",
+    "input": {
+      "place": {
+        "place_id": "gn-4564133",
+        "name": "Dorado",
+        "country": "Puerto Rico",
+        "subdivision": "Dorado",
+        "lat": 18.45883,
+        "lon": -66.26767
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dorado, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Dorado,_Puerto_Rico",
+          "text": "Dorado (Spanish pronunciation: [doˈɾaðo]) is a town and municipality on the northern coast of Puerto Rico, 15 miles (24 km) west of San Juan and is located in the northern region of the island, bordering the Atlantic Ocean, north of Toa Alta, east of Vega Alta, and west of Toa Baja. Dorado is subdivided into five barrios and Dorado Pueblo (the downtown area and the administrative center of the city). It is part of the San Juan–Bayamón–Caguas metropolitan area. \nDuring the early 18th century, there were already mentions of a \"Sitio de Dorado\" in some San Juan registers. Since the beginning of the Spanish colonial period and until 1831, Dorado existed as a barrio (a type of sub-municipal ward) of the municipality of Toa Baja. Over several years, the ward grew and established its own town center called the \"new town\" (pueblo nuevo) to differentiate itself from Toa Baja, which became known as the \"old town\" (pueblo viejo). Over several years, the barrios that currently make up Dorado grew and the people of the pueblo nuevo wanted to separate themselves from Toa Baja. On November 22, 1842, Jacinto López Martínez, the Sergeant at Arms for the ward of Dorado, petitioned the Spanish Governor of Puerto Rico, Santiago Méndez Vigo, to establish the municipality of Dorado. The governor authorized the founding of the town pending the construction of public works, including an administrative building and a church near the town square. In 1848, the construction of the public works were completed and López Martínez became the first mayor of Dorado. Puerto Rico was ceded by Spain in the aftermath of the Spanish–American War under the terms of the Treaty of Paris of 1898 and became a territory of the United States. In 1902, four years after the Spanish–American War, Dorado was again appended to Toa Baja. But in 1905 it regained its status as a separate town. Nowadays, Dorado has upscale neighborhoods and a small downtown area with a plaza (main town square), as other Puerto Rican municipalities. The town's patron saint is Anthony of Padua, and patron saint celebrations are held at the plaza every year on June 13."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 359
+    },
+    "banned_terms": [
+      {
+        "term": "dorado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2694,
+    "attempt": 2674,
+    "place_id": "gn-6241325",
+    "input": {
+      "place": {
+        "place_id": "gn-6241325",
+        "name": "Rotorua",
+        "country": "New Zealand",
+        "subdivision": "Bay of Plenty",
+        "lat": -38.13874,
+        "lon": 176.24516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rotorua",
+          "url": "https://en.wikipedia.org/wiki/Rotorua",
+          "text": "Rotorua (Māori pronunciation: [ɾɔtɔˈɾʉa] ) is a city in the Bay of Plenty Region of New Zealand's North Island, situated on the southern shores of Lake Rotorua, from which it takes its name. It is the seat of the Rotorua Lakes District, a territorial authority encompassing Rotorua and several other nearby towns. It has an estimated resident population of 58,500, making it the country's 13th largest urban area, and the Bay of Plenty's second-largest urban area behind Tauranga.\nTe Arawa Māori first settled in Rotorua in the 14th century, and a thriving pā was established at Ohinemutu by the people who would become Ngāti Whakaue. The city became closely associated with conflict during the Musket Wars of the 1820s. Ohinemutu was invaded by a Ngāpuhi-led coalition in 1823, commanded by Hongi Hika and Pōmare I. In the 19th century early European settlers had an interest in developing Rotorua, due to its unique geothermal activity and the surrounding area. Then, efforts by Māori and Europeans alike to establish Rotorua as a spa town led to a 99-year lease of land from Ngāti Whakaue to the Government. The city became a major site of tourism due to the Rotorua's close proximity to the Pink and White Terraces, until they were destroyed by the 1886 eruption of Mount Tarawera. Rotorua was elevated to borough status in 1922 and to city status 40 years later.\nRotorua is a major destination for both domestic and international tourists. It is known for its geothermal activity and Māori cultural tourism, and features geysers – notably the Pōhutu Geyser at Whakarewarewa – and hot mud pools. This thermal activity is sourced to the Rotorua Caldera, in which the city lies."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 158,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "rotorua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2695,
+    "attempt": 2675,
+    "place_id": "gn-1260833",
+    "input": {
+      "place": {
+        "place_id": "gn-1260833",
+        "name": "Paithan",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.47506,
+        "lon": 75.38558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paithan",
+          "url": "https://en.wikipedia.org/wiki/Paithan",
+          "text": "Paithan (['pəɪ.ʈʰəɳ] ), historically Pratiṣṭhāna [pɾə'tɪʂʈʰanə], is a town with municipal council in Chhatrapati Sambhajinagar district, Maharashtra, Maharashtra, India. Paithan is located 56 kilometres (35 mi) south of present-day Aurangabad  on the banks of the Godavari River. It was the capital of the Satavahana dynasty, which ruled from the second century BCE to the second century CE. It is one of the few inland towns mentioned in the famous first-century Greek book, the Periplus of the Erythraean Sea, where it appears in the genitive plural form, Παιθάνων.\nPaithan is associated with many spiritual leaders of all faiths since ages. To name some of them are - Changdev Maharaj, Saint Dnyaneshwar, Saint Sopandev, Saint Nivruttinath, Saint Muktabai, Saint Eknath, Saint Jaganade Maharaj, Saint Bhanudas, etc. Paithan was the home town and Samadhi sthal of the great Marathi saint Eknath; people flock yearly to his shrine during the time of the Paithan yatra, also known as the Nath Shashti. Apegaon village, the birthplace of Saint Dnyaneshwar and his three other siblings is located along the northern bank of the River Godavari, about 12 kilometers easterly to Paithan. The religious saints and philosophers enthralled the masses through their works written in simple Marathi style and popularized the bhakti movement in the wake of Islamic expansion. Therefore, Paithan eminently deserves the appellation as \"Santpura\". Paithan is also an important place for followers of Mahanubhava Sampradaya. Sarvajna Chakradhar Swami stayed in Paithan for a long period.\nPaithan is a well known ancient Digambar Jain atishay kshetra (pilgrimage place of miracles). A beautiful black sand idol of 20th Jain Tirthankar, Bhagwan Munisuvratnath is in the temple.\nPaithan is also known for its saris — the Paithani silk saris that sport, intricately embroidered gold or silver borders.\nDnyaneshwar Udyan at Paithan is developed on the lines of Brindavan Gardens, Mysore.\nThe city is home to many noted personalities of modern times like Shankarrao Chavan, Yogiraj maharaj Gosavi (Descendant of Sant Eknath), Balasaheb Patil (Historian)"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "paithan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2696,
+    "attempt": 2676,
+    "place_id": "gn-2077963",
+    "input": {
+      "place": {
+        "place_id": "gn-2077963",
+        "name": "Albany",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -35.02692,
+        "lon": 117.88369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albany, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Albany,_Western_Australia",
+          "text": "Albany ( AL-bən-ee; Menang Noongar: Kinjarling) is a port city in the Great Southern region in the Australian state of Western Australia, 418 kilometres (260 mi) southeast of Perth, the state capital. The city centre is at the northern edge of Princess Royal Harbour, which is a part of King George Sound. The central business district is bounded by Mount Clarence to the east and Mount Melville to the west. The city is in the local government area of the City of Albany. While it is the oldest colonial, although not British, settlement in Western Australia – predating Perth and Fremantle by over two years – it was a semi-exclave of the Colony of New South Wales for over four years until it was made part of the Swan River Colony.\nThe settlement was founded on 26 December 1826 as a military outpost of New South Wales for the purpose of forestalling French ambitions in the region. To that end, on 21 January 1827, the commander of the outpost, Major Edmund Lockyer, formally took possession for the British Crown of the portion of New Holland not yet claimed by the Crown; that is, the portion west of the 129th meridian east, with the portion east already being claimed collectively by the Crown as New South Wales and Van Diemen's Land. During the last decade of the 19th century, the town served as a gateway to the Eastern Goldfields. For many years, it was the colony's only deep-water port, having a place of eminence on shipping services between Britain and its Australian colonies. The opening of the Fremantle Inner Harbour in 1897, however, saw its importance as a port decline, after which the town's industries turned primarily to agriculture, timber and later, whaling.\nContemporary Albany is the southern terminus for tourism in the region, and the state's south west, which is known for its natural environment and preservation of its heritage. The town has a role in the ANZAC legend, being the last port of call for troopships departing Australia in the First World War. On 1 November 2014, the Australian and New Zealand Prime Ministers opened the National Anzac Centre in Mount Clarence, Albany, to commemorate 100 years since the first ANZAC troops departed from King George Sound. Approximately 40,000 people attended the commemoration events held between 30 October and 2 November 2014.\nAn auxiliary submarine base for the US Navy's 7th Fleet was developed during the Second World War in the event the submarine base at Fremantle was lost. Also in the harbour was a Royal Australian Navy naval installation which provided for refuelling from four 5,100-tonne (5,000-long-ton) fuel tanks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 441
+    },
+    "banned_terms": [
+      {
+        "term": "albany",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2697,
+    "attempt": 2677,
+    "place_id": "gn-2511700",
+    "input": {
+      "place": {
+        "place_id": "gn-2511700",
+        "name": "Rota",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.62364,
+        "lon": -6.35997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rota, Spain",
+          "url": "https://en.wikipedia.org/wiki/Rota,_Spain",
+          "text": "Rota is a municipality and town in the Province of Cádiz, Andalusia, Spain. Its surface area is 84 km2 and is bordered by the towns of Chipiona, Sanlúcar de Barrameda and El Puerto de Santa María. It is located near the city of Jerez de la Frontera and is 36 kilometers away from the provincial capital, Cádiz. It had in the year 2009 28,516 inhabitants, with a density of 339 inhabitants / km2. It belongs to two associations, the Association of Municipalities of Cádiz Bay along with the municipalities of Cádiz, Jerez de la Frontera, El Puerto de Santa María, San Fernando, Chiclana de la Frontera and Puerto Real; and the Association of Municipalities of the Lower Guadalquivir that comprises municipalities of Northwest Coast of Andalusia.\nLocated along the Bay of Cádiz in the Atlantic Ocean, it is halfway between Portugal and Gibraltar, is predominantly a tourist town, a vacation/holiday destination for travelers from all over Europe. During the low season, its main business activity is the fishing industry. In the municipality is located the Naval Station Rota, which is the largest source of employment to the municipality.  It also served as a transoceanic abort landing site for the Space Shuttle program."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "rota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2698,
+    "attempt": 2678,
+    "place_id": "gn-2636663",
+    "input": {
+      "place": {
+        "place_id": "gn-2636663",
+        "name": "Stretford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.45,
+        "lon": -2.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stretford",
+          "url": "https://en.wikipedia.org/wiki/Stretford",
+          "text": "Stretford is a market town in Trafford, in Greater Manchester, England, sited on flat ground between the River Mersey and the Manchester Ship Canal; the Bridgewater Canal bisects the town. The town is located 4 miles (6.4 km) south of central Manchester, 3 miles (4.8 km) south of Salford and 4 miles (6.4 km) north-east of Altrincham. Stretford borders Chorlton-cum-Hardy to the east, Moss Side and Whalley Range to the south-east, Hulme to the north-east, Urmston to the west, Salford to the north and Sale to the south. In 2011 it had a population of 46,910.\nWithin the boundaries of the historic county of Lancashire, Stretford was an agricultural village in the 19th century; it was known locally as Porkhampton, due to the large number of pigs produced for the Manchester market. It was also an extensive market-gardening area, producing more than 500 long tons (508 t) of vegetables each week for sale in Manchester by 1845. The arrival of the Manchester Ship Canal in 1894, and the subsequent development of the Trafford Park industrial estate, accelerated the industrialisation that had begun in the late 19th century. By 2001, less than one per cent of Stretford's population was employed in agriculture.\nStretford has been the home of Manchester United Football Club since 1910 and of Lancashire County Cricket Club since 1864. Notable residents have included the industrialist, philanthropist and Manchester's first multi-millionaire John Rylands, the suffragette Emmeline Pankhurst, the painter L. S. Lowry, Smiths singer Morrissey, Joy Division singer Ian Curtis, Bee Gees member Andy Gibb and Jay Kay of Jamiroquai."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "stretford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2699,
+    "attempt": 2679,
+    "place_id": "gn-2650188",
+    "input": {
+      "place": {
+        "place_id": "gn-2650188",
+        "name": "Egham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.43158,
+        "lon": -0.55239
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Egham",
+          "url": "https://en.wikipedia.org/wiki/Egham",
+          "text": "Egham ( EG-əm) is a town in the Borough of Runnymede in Surrey, England, approximately 19 miles (31 km) west of central London. First settled in the Bronze Age, the town was under the control of Chertsey Abbey for much of the Middle Ages. In 1215, Magna Carta was sealed by King John at Runnymede, to the north of Egham, having been chosen for its proximity to the King's residence at Windsor. Under the Dissolution of the Monasteries in the early 16th Century, the major, formerly ecclesiastical, manorial freehold interests in the town and various market revenues passed to the Crown.\nIn the 17th and 18th centuries, Egham became a stop on coaching routes between London and many places to the west. The importance of this shrank from the building of the Western and South Western Railways but was for many decades offset by the stark growth in the population of London and the country at large. Egham station was opened in 1856 on the line from Waterloo to Reading and services are operated today by South Western Railway. The town is west of the M25 motorway, accessible via junction 13.\nThe campus of Royal Holloway, University of London is 1 mile (2 km) to the west of Egham town centre, close to Englefield Green."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "egham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2700,
+    "attempt": 2680,
+    "place_id": "gn-5389213",
+    "input": {
+      "place": {
+        "place_id": "gn-5389213",
+        "name": "Rubidoux",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.99613,
+        "lon": -117.4056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rubidoux, California",
+          "url": "https://en.wikipedia.org/wiki/Rubidoux,_California",
+          "text": "Rubidoux ( ROO-bid-oh) was a census-designated place and unincorporated community in Riverside County, California, until July 1, 2011, when it became a neighborhood of the newly formed city of Jurupa Valley. The city is located within Southern California's Inland Empire region, which is part of the Greater Los Angeles Area. Along with the rest of Jurupa Valley, Rubidoux has transformed from a rural area of quarries and dairy farms, in mid to late 20th century, to a suburb of the two larger regions. As of the 2010 census, the population was 34,280, up from 29,180 at the 2000 census.\nThe Rubidoux neighborhood is immediately west of the city of Riverside, separated by the Santa Ana River, and Mount Rubidoux, a prominent landmark for the area, and a Riverside city park.\nKey transportation elements of Rubidoux are the Flabob Airport (IATA: RIR, ICAO: KRIR, FAA LID: RIR), with a 3,200-foot (980 m) runway, and California State Route 60."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "rubidoux",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

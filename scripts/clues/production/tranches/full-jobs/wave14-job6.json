@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 2721,
+    "attempt": 2701,
+    "place_id": "gn-5118626",
+    "input": {
+      "place": {
+        "place_id": "gn-5118626",
+        "name": "Glen Cove",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.86232,
+        "lon": -73.63374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glen Cove, New York",
+          "url": "https://en.wikipedia.org/wiki/Glen_Cove,_New_York",
+          "text": "Glen Cove is a city located in Nassau County, on the North Shore of Long Island, New York. The city's population was 28,365 at the time of the 2020 census – its highest ever decennial count. \nOf Nassau County's five municipalities, Glen Cove is one of two that are cities, rather than towns – the other being Long Beach.\nGlen Cove was considered part of the affluent, early 20th-century Gold Coast of Long Island, as the properties located along the area's waterfront were initially developed as large country estates by wealthy entrepreneurs and businessmen (such as J.P. Morgan, Phipps, Pratt, and Prybil).\nHistorically, with the onset of the Industrial Revolution, Glen Cove blossomed in the areas of manufacturing, agriculture and local retail, all of which were operated and staffed by a diverse workforce. The local opportunities—for potential business owners, entrepreneurs, and others seeking employment—attracted numerous immigrants from Europe, largely from Ireland, Italy, and Eastern Europe. Since the 20th century, Glen Cove has also become the home for new waves of immigrants seeking opportunities from Central and South America, as well as parts of Asia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "glen cove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "glen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2722,
+    "attempt": 2702,
+    "place_id": "gn-5207728",
+    "input": {
+      "place": {
+        "place_id": "gn-5207728",
+        "name": "Reading",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.33565,
+        "lon": -75.92687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reading, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Reading,_Pennsylvania",
+          "text": "Reading ( RED-ing; Pennsylvania German: Reddin) is a city in Berks County, Pennsylvania, United States, and its county seat. The city had a population of 95,112 at the 2020 census and is the fourth-most populous city in Pennsylvania after Philadelphia, Pittsburgh, and Allentown. \nReading is located in the southeastern part of the state, 38.8 miles (62.4 km) southwest of Allentown and 50 miles (80 km) northwest of Philadelphia. It is the principal city of the Greater Reading area, which had 420,152 residents in 2020.\nReading gave its name to the now-defunct Reading Company, also known as the Reading Railroad and since acquired by Conrail, that played a vital role in transporting anthracite coal from Pennsylvania's Coal Region to major East Coast markets through the Port of Philadelphia for much of the 19th and 20th centuries. The Reading Railroad is one of the four railroad properties in the classic U.S. version of the Monopoly board game. Reading was one of the first localities where outlet shopping became a tourist industry. It has been known as \"The Pretzel City\" because numerous local pretzel bakeries are based in the city and its suburbs; currently, Bachman, Dieffenbach, Tom Sturgis, and Unique Pretzel bakeries call the Reading area home. In recent years, the Reading area has become a destination for cyclists with more than 125 miles (201 km) of trails in five major preserves; the region is an International Mountain Bicycling Association ride center.\nAccording to 2010 census data, Reading had the highest share of citizens living in poverty in the nation among cities with populations exceeding 65,000. Reading's poverty rate fell over the next decade. Reading's poverty rate in the five-year American Community Survey, published in 2018, showed that 35.4% of the city's residents were below the poverty line, or less \"than the infamous 41.3% from 2011, when Reading was declared the poorest small city in the nation.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 314
+    },
+    "banned_terms": [
+      {
+        "term": "reading",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2723,
+    "attempt": 2703,
+    "place_id": "gn-5211303",
+    "input": {
+      "place": {
+        "place_id": "gn-5211303",
+        "name": "Scranton",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 41.40916,
+        "lon": -75.6649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scranton, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Scranton,_Pennsylvania",
+          "text": "Scranton is a second A class city in and the county seat of Lackawanna County, Pennsylvania, United States. With a population of 76,328 at the 2020 census (estimated at 75,514 in 2025), Scranton is the sixth-most populous city in Pennsylvania and the most populous city in Northeastern Pennsylvania. It is part of the Wyoming Valley metropolitan area, which includes five cities and more than 40 boroughs forming a contiguous urban corridor with an estimated 574,000 residents. It is located 56 miles (90 km) north of Allentown, 104 miles (167 km) north-northwest of Philadelphia, and 99 miles (159 km) west-northwest of New York City.\nScranton is located in the Lackawanna River valley and was historically the largest of several anthracite coal mining communities in the area, including Wilkes-Barre and Nanticoke. It was incorporated as a borough in 1856 and as a city in 1866, later becoming the seat of the newly formed Lackawanna County in 1878. The city contains a federal courthouse for the United States District Court for the Middle District of Pennsylvania. The city is conventionally divided into nine districts, namely North Scranton, Southside, Westside, Eastside/Hill Section, Central City, Minooka, West Mountain, East Mountain, and Green Ridge.\nScranton was a major center for industry, mining, and rail transport in the late 19th and early 20th centuries. It was one of the first cities in the United States to implement electric streetcars, earning the nickname \"Electric City\". It was the site of the Scranton general strike in 1877. The city's industrial output peaked during the 1930s and 1940s, particularly during World War II, but declined in the postwar period due to reduced demand for coal and changes in the energy sector. The 1959 Knox Mine disaster effectively ended coal mining in the region. Scranton's population fell from a peak of 143,433 in 1930 to 76,089 in 2010, with a slight increase recorded by 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 314
+    },
+    "banned_terms": [
+      {
+        "term": "scranton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2724,
+    "attempt": 2704,
+    "place_id": "gn-2136150",
+    "input": {
+      "place": {
+        "place_id": "gn-2136150",
+        "name": "Luganville",
+        "country": "Vanuatu",
+        "subdivision": "Sanma",
+        "lat": -15.51989,
+        "lon": 167.16235
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luganville",
+          "url": "https://en.wikipedia.org/wiki/Luganville",
+          "text": "Luganville is the second largest city in Vanuatu after the capital Port Vila; it is located on the island of Espiritu Santo and has a population of 17,719 as of the 2020 census. Those on Vanuatu's northern islands who regard Luganville as their big city, particularly indigenous populations, call it Santo; rural residents of Espiritu Santo call it Kanal (from the former French name \"Canal du Segond\"). Luganville served as a major base of operations for American troops during World War II.\nBoulevard Higinson, the main street that runs through Luganville, contains mainly tourist boutiques and general stores. During WWII, the Americans used the Espiritu Santo as a military base; as a result of the occupation, Boulevard Higinson is unusually wide, as a base commander insisted that four tanks should be able to drive along the road simultaneously. At one end of Higinson is the port, one of two main ports for the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "luganville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2725,
+    "attempt": 2705,
+    "place_id": "gn-2635427",
+    "input": {
+      "place": {
+        "place_id": "gn-2635427",
+        "name": "Trowbridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.31889,
+        "lon": -2.20861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trowbridge",
+          "url": "https://en.wikipedia.org/wiki/Trowbridge",
+          "text": "Trowbridge ( TROH-brij) is the county town of Wiltshire, England, situated on the River Biss in the west of the county, close to the border with Somerset. The town lies 8 miles (13 km) south-east of Bath, 31 miles (50 km) south-west of Swindon and 20 miles (32 km) south-east of Bristol. The parish had a population of 37,169 in 2021.\nLong a market town, the Kennet and Avon canal to the north of Trowbridge played an instrumental part in the town's development, as it allowed coal to be transported from the Somerset Coalfield; this marked the advent of steam-powered manufacturing in woollen cloth mills. The town was the foremost centre of woollen cloth production in south-west England in the late 18th and early 19th centuries, by which time it held the nickname \"The Manchester of the West\".\nThe parish encompasses the settlements of Longfield, Lower Studley, Upper Studley, Studley Green and Trowle Common."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "trowbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2726,
+    "attempt": 2706,
+    "place_id": "gn-2638960",
+    "input": {
+      "place": {
+        "place_id": "gn-2638960",
+        "name": "Runcorn",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.34174,
+        "lon": -2.73124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Runcorn",
+          "url": "https://en.wikipedia.org/wiki/Runcorn",
+          "text": "Runcorn is an industrial town and cargo port within the Borough of Halton in Cheshire, England meaning the town is a part of Liverpool City Region. It lies on the south bank of the River Mersey, where the estuary narrows to form the Runcorn Gap, and is located approximately 15 miles (24 km) southeast of Liverpool and 29 miles (47 km) southwest of Manchester. The Runcorn built-up area had a population of 61,145 at the 2021 census.\nRuncorn was founded by Æthelflæd of Mercia in 915 AD as a fortification against the Viking invasion at a narrowing of the River Mersey. Under Norman rule, Runcorn fell under the Barony of Halton and an Augustinian abbey was established there in 1115. It remained a small and isolated settlement until the Industrial Revolution, when the 1776 extension of the Bridgewater Canal to Runcorn established it as a port linking coastal Liverpool with inland Manchester and Staffordshire. The docks enabled the growth of industry, initially shipwrights and sandstone quarries; in the late 18th and early 19th centuries, it was a spa and health resort, but this ended with the growth of polluting industries, especially soap and chemical works. In 1964, Runcorn was designated a new town and expanded eastward, absorbing neighbouring settlements and more than doubling its population.\nThe Silver Jubilee Bridge, Mersey Gateway, and Runcorn Railway Bridge span the River Mersey and the Manchester Ship Canal in Runcorn. Its location between Liverpool and Manchester and its links to the rail, motorway, and canal networks have made it a major centre for the manufacturing, logistics, and wholesale and retail industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "runcorn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2727,
+    "attempt": 2707,
+    "place_id": "gn-2791537",
+    "input": {
+      "place": {
+        "place_id": "gn-2791537",
+        "name": "Mechelen",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.02574,
+        "lon": 4.47762
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mechelen",
+          "url": "https://en.wikipedia.org/wiki/Mechelen",
+          "text": "Mechelen (Dutch pronunciation: [ˈmɛxələ(n)] ; French: Malines [malin] ; historically known as Mechlin in English) is a city and municipality in the province of Antwerp in the Flemish Region of Belgium. The municipality comprises the city of Mechelen proper, some quarters at its outskirts, the hamlets of Nekkerspoel (adjacent) and Battel (a few kilometers away), as well as the villages of Walem, Heffen, Leest, Hombeek, and Muizen. The city is often referred to as the Dijlestad (\"City on the Dyle\") as the river Dyle (Dijle) flows through it.\nMechelen lies on the major urban and industrial axis Brussels–Antwerp, about 25 km (16 mi) from each city. Inhabitants find employment at Mechelen's southern industrial and northern office estates, as well as at offices or industry near the capital and Brussels Airport, or at industrial plants near Antwerp's seaport.\nMechelen is one of Flanders' prominent cities of historical art, with Antwerp, Bruges, Brussels, Ghent, and Leuven. It was notably a centre for artistic production during the Northern Renaissance, when painters, printmakers, illuminators and composers of polyphony were attracted by patrons such as Margaret of York, Margaret of Austria and Hieronymus van Busleyden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "mechelen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2728,
+    "attempt": 2708,
+    "place_id": "gn-3042196",
+    "input": {
+      "place": {
+        "place_id": "gn-3042196",
+        "name": "Port Erin",
+        "country": "Isle of Man",
+        "subdivision": "Port Erin",
+        "lat": 54.08487,
+        "lon": -4.75099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Erin",
+          "url": "https://en.wikipedia.org/wiki/Port_Erin",
+          "text": "Port Erin (Manx: Purt Çhiarn 'lord's port' or originally 'Irish port') is a seaside village in the south-west of the Isle of Man, in the historic parish of Rushen. It was previously a seaside resort before the decline of the tourist trade.\nAdministratively it is designated as a village district, with its own board of Commissioners. The district covers around 1 square mile, and is adjacent to: Port St Mary to the south-east; the main part of Arbory and Rushen parish district to the north and east; the sea to the west; and an exclave of Arbory and Rushen parish district (including the village of Cregneash) to the south. Following recent residential expansion, the settlement is now contiguous with that of Port St Mary, and on 18 July 2018 Tynwald authorised a public enquiry into the proposed expansion of the district boundary to include some of this expansion.\nThe village is twinned with Latour-de-France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "port erin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "erin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2730,
+    "attempt": 2709,
+    "place_id": "gn-343409",
+    "input": {
+      "place": {
+        "place_id": "gn-343409",
+        "name": "Asaita",
+        "country": "Ethiopia",
+        "subdivision": "Āfar",
+        "lat": 11.56838,
+        "lon": 41.43869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asaita",
+          "url": "https://en.wikipedia.org/wiki/Asaita",
+          "text": "Asaita (Amharic: አሳይታ, Asayəta; Afar: Aysaqiita), known historically as Aussa or Awsa, is a town in northeastern Ethiopia, and until 2007 served as the capital of the Afar Region of Ethiopia. Located in the Afambo woreda, part of the region's Awsi Rasu zone, the town has a latitude and longitude of 11°34′N 41°26′E and an elevation of 300 metres (980 ft).\nAussa was known by its full known name Aussa Gurêle which was founded upon a rock bound by the rivers Awash, Raheita and Assab. According to Huntingford's opinion the term  Gurêle represented the name of a hill 90 miles north-west of Lake Abbe.\nAsaita was briefly the capital of the Adal Sultanate and Imamate of Aussa as well as seat of the Aussa Sultanate, the chief Afar monarchy, but is 50 kilometres (31 mi) south by unpaved road from Awash–Asseb highway. A telephone line from Kombolcha to Asaita was in operation in 1964. The town of Semera, a planned settlement situated squarely on this highway, at some point before 2007 became the new capital of the region.\nTo the southeast of Asaita, located at the southern edge of the Danakil Desert, are a group of twenty salt lakes which cover the territory to the border with neighboring Djibouti. These lakes include Lake Gummare, known for its flamingos, and Lake Abbe, the final destination of the Awash River.\nBased on figures from the Central Statistical Agency in 2005, the town has an estimated total population of 22,718, of whom 12,722 were males and 9,996 were females. According to the 1994 national census, the town had a population of 15,475."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 269
+    },
+    "banned_terms": [
+      {
+        "term": "asaita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2731,
+    "attempt": 2710,
+    "place_id": "gn-3471783",
+    "input": {
+      "place": {
+        "place_id": "gn-3471783",
+        "name": "Araquari",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.37,
+        "lon": -48.72222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Araquari",
+          "url": "https://en.wikipedia.org/wiki/Araquari",
+          "text": "Araquari is a municipality in the state of Santa Catarina in the South region of Brazil.\nThe municipality of Araquari was basically colonized by Azorean immigrants, who arrived at the coast of Santa Catarina between 1748 and 1756. Since then, the Azorean culture rooted up and walked hand in hand with the most diverse cultures, as with the Indigenous peoples in Brazil and Africans, both important in this region thus creating a cultural and religious mosaic.\nLike many coastal cities Araquari has its founding myth linked to the European occupation process in America, in the first phase of the age of discoveries. According to information from the municipal Department of Culture the European foundation of Araquari is set 40 years after the discovery of Brazil in 1500.\nThe Spanish navigator Álvar Núñez Cabeza de Vaca landed what is now Barra Velha and encouraged the exploration of the northern region, until then inhabited by Indios. The expedition consisted of 250 men, 40 horses, some slaves and indoctrinated group of Indios by the Jesuits. A month later, they came what they called first Paranaguá Mirim, (\"small cove\") in Tupi-Guarani.\nIn 1658, the first Portuguese pioneers settled in the region inhabited by Carijós, but the actual foundation of the town only happened in 1848, when a Portuguese ship arrived in Paraty under the command of Manuel Vieira de Albuquerque Touvar, who founded a small colony. Another pioneer, Joaquim da Rocha Coutinho, joined him and the two decided to found a village, but failed to reach an agreement on the site. \nThe Judge of the District of São Francisco ruled in favor of Rocha Coutinho who built homes on the banks of the river Parati, surrounding pastures and crops. Both are considered to be the founders of the parish Senhor Bom Jesus do Paraty (Good Lord Jesus of Paraty) in 1854, but still part of the municipality of São Francisco do Sul."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "araquari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2732,
+    "attempt": 2711,
+    "place_id": "gn-3521476",
+    "input": {
+      "place": {
+        "place_id": "gn-3521476",
+        "name": "Pijijiapan",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 15.68618,
+        "lon": -93.20938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pijijiapan",
+          "url": "https://en.wikipedia.org/wiki/Pijijiapan",
+          "text": "Pijijiapan is a town and municipality in the Mexican state of Chiapas, on the coast of the Pacific Ocean about midway between the border with the state of Oaxaca and the international frontier with Guatemala.\nAs of 2010, the municipality had a total population of 50,079, up from 46,949 as of 2005. It has a land area of 2,223.3 km2.\nAs of 2010, the city of Pijijiapan had a population of 16,917. Other than the city of Pijijiapan, the municipality had 1,305 localities, the largest of which (with 2010 populations in parentheses) were: Las Brisas (1,718), San Isidro (1,626), Joaquín Miguel Gutiérrez (Margaritas) (1,617), Tamaulipas (Joaquín Amaro) (1,567), El Carmen (1,416), Hermenegildo Galeana (1,158), El Palmarcito (1,135), and La Esperanza (El Zapotal) (1,031), classified as rural.\nOn 7 September 2017, a powerful earthquake of magnitude 8.1 struck the coast of Pijijiapan, with the epicenter placed at 87 km (54 miles) southwest of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "pijijiapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2733,
+    "attempt": 2712,
+    "place_id": "gn-3996426",
+    "input": {
+      "place": {
+        "place_id": "gn-3996426",
+        "name": "Matamoros",
+        "country": "Mexico",
+        "subdivision": "Coahuila",
+        "lat": 25.52699,
+        "lon": -103.2285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matamoros, Coahuila",
+          "url": "https://en.wikipedia.org/wiki/Matamoros,_Coahuila",
+          "text": "Matamoros is a city located in the southwestern part of the Mexican state of Coahuila; it serves as the seat of the surrounding municipality of the same name. It lies directly east of the larger city of Torreón and is a part of the Comarca Lagunera, a larger metropolitan area that includes the municipality of  Torreón in Coahuila in addition to the municipalities of Gómez Palacio and Lerdo in the adjacent state of Durango.\nAt the 2010 census the city had a population of 52,599, while the municipality had a population of 107,007.\nAt the 2010 census the city had a population of 52,599 inhabitants, while the municipality had a population of 107,007. The municipality has an area of 1,003.7 km² (387.53 sq mi), which includes many small outlying communities, the largest of which is the town of San Antonio del Coyote.\nIt is one of the cities that make up the Lagunera Region. Together with the city of Torreón in Coahuila, and the cities of Gómez Palacio and Ciudad Lerdo in the state of Durango, they make up the metropolitan area of La Laguna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "matamoros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2734,
+    "attempt": 2713,
+    "place_id": "gn-4933002",
+    "input": {
+      "place": {
+        "place_id": "gn-4933002",
+        "name": "Chicopee",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.1487,
+        "lon": -72.60787
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chicopee, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Chicopee,_Massachusetts",
+          "text": "Chicopee ( CHIK-ə-pee) is a city located on the Connecticut River in Hampden County, Massachusetts, United States. At the 2020 census, the city had a population of 55,560, making it the second-largest city in western Massachusetts after Springfield. Chicopee is part of the Springfield, Massachusetts Metropolitan Statistical Area. The communities of Chicopee Center (Cabotville), Chicopee Falls, Willimansett, Fairview, Aldenville, Burnett Road, Smith Highlands and Westover are located within the city.\nOne of the ventures of the Boston Associates, Chicopee is a city built around several smaller former mill communities on its namesake, the Chicopee River. During the 19th century, the city was home to the first American producer of friction matches as well as a variety of other industries, including the Ames Manufacturing Company, an early pioneer in machining lathes, building upon the work of Springfield's Thomas Blanchard, and the largest producer of swords and cutlasses for the Union Army during the Civil War. By the start of the 20th century, the city was home to a number of industrial plants, including those of the Fisk Rubber Company, one of the largest tire makers of that time, and some of the earliest sporting goods factories of A. G. Spalding.\nToday the city is home to a variety of specialty manufacturers, as well as Westover Air Reserve Base, the largest Air Force Reserve Base of the United States, built in 1940 with the emergence of World War II. Chicopee today goes by the nickname the \"Crossroads of New England\" as part of a business-development marketing campaign, one that West Springfield also uses. The name reflects the city's location among a number of metropolitan areas and its transportation network. Four interstate highways run through its boundaries, including I-90, I-91, I-291, and I-391, as well as state routes such as Route 33, 116, and 141."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "chicopee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2735,
+    "attempt": 2714,
+    "place_id": "gn-5387494",
+    "input": {
+      "place": {
+        "place_id": "gn-5387494",
+        "name": "Ridgecrest",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 35.62246,
+        "lon": -117.6709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ridgecrest, California",
+          "url": "https://en.wikipedia.org/wiki/Ridgecrest,_California",
+          "text": "Ridgecrest is a city in Kern County, California, United States, along U.S. Route 395 in the Indian Wells Valley in northeastern Kern County, adjacent to the Naval Air Weapons Station China Lake (NAWS, or China Lake). It was incorporated as a city in 1963. The population was 27,959 at the 2020 census, up slightly from 27,616 at the 2010 census, making it the third-largest city in Kern County.\nRidgecrest is surrounded by four mountain ranges; the Sierra Nevada on the west, the Coso Range on the north, the Argus Range on the east, and the El Paso Mountains on the south. The most isolated community in Kern county, it is approximately 82 miles (132 km) from the Lancaster/Palmdale area, 110 miles (177 km) from Bakersfield, and 120 miles (193 km) from San Bernardino, the three nearest major urban centers. Private air travel in and out of the city is provided through the Inyokern Airport. There are currently no scheduled commercial flights.\nThe city has been near the epicenter of major earthquakes, including one in 1995 and a series of quakes in July 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "ridgecrest",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2736,
+    "attempt": 2715,
+    "place_id": "gn-1626703",
+    "input": {
+      "place": {
+        "place_id": "gn-1626703",
+        "name": "Soe",
+        "country": "Indonesia",
+        "subdivision": "East Nusa Tenggara",
+        "lat": -9.86071,
+        "lon": 124.28395
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Soe, Timor",
+          "url": "https://en.wikipedia.org/wiki/Soe,_Timor",
+          "text": "Soe (sometimes seen as SoE) is a town which serves as the administrative capital of the South Central Timor Regency, in East Nusa Tenggara province of Indonesia. Soe is located in the south of Timor Island and is bordered by two other districts of the regency, Mollo Selatan on the north side and Amanuban Barat on the south side.\nIt was heavily bombed in 1944 during the second world war \nWater supplies for the locality have been a problem for a considerable time, despite aid to assist with dams and other means of finding water \nThe town had a population of 40,190 at the 2020 Census, the official estimate as at mid 2025 was 42,657.\nSoe can be a base for tourists for trips to other locations. Oinlasi, Boti, Niki Niki and Kapan are reachable from Soe.\nIt is on the route (via Kapan) to the highest mountain in West Timor Mount Mutis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "soe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2737,
+    "attempt": 2716,
+    "place_id": "gn-2267226",
+    "input": {
+      "place": {
+        "place_id": "gn-2267226",
+        "name": "Lagos",
+        "country": "Portugal",
+        "subdivision": "Faro",
+        "lat": 37.10202,
+        "lon": -8.67422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lagos, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Lagos,_Portugal",
+          "text": "Lagos (pronounced [ˈlaɣuʃ] ; Proto-Celtic: *Lacobriga) is a city and municipality in the Barlavento region of the Algarve, southern Portugal, situated at the mouth of the Bensafrim River along the Atlantic Ocean. As of the March 2021 census, the municipality had a population of 33,494 across an area of 212.99 km². The coastal area is densely populated and oriented toward tourism and services, while the inland region is sparsely inhabited with an economy based largely on agriculture and forestry. The population increases significantly during summer months due to tourism.\nLagos is one of the most visited cities in the Algarve, attracting tourists with its beaches, rock formations such as Ponta da Piedade, and summer nightlife. The city also holds significant historical importance as a centre of the Portuguese Age of Discovery, a frequent residence of Henry the Navigator, a historical shipbuilding hub, and, at one point, a centre of the European slave trade.\nLagos, Nigeria, may derive its name from the Portuguese city, as Lagos was the principal base for Portuguese maritime expeditions along the West African coast during the 15th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "lagos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2738,
+    "attempt": 2717,
+    "place_id": "gn-2449067",
+    "input": {
+      "place": {
+        "place_id": "gn-2449067",
+        "name": "Timbuktu",
+        "country": "Mali",
+        "subdivision": "Tombouctou",
+        "lat": 16.77348,
+        "lon": -3.00742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Timbuktu",
+          "url": "https://en.wikipedia.org/wiki/Timbuktu",
+          "text": "Timbuktu (  TIM-buk-TOO; French: Tombouctou; Koyra Chiini: Tunbutu; Tuareg: ⵜⵏⵀⵗⵜ, romanized: Tin Bukt) is an ancient city in Mali, situated 20 kilometres (12 miles) north of the Niger River. It is the capital of the Tombouctou Region, one of the 19 administrative regions of Mali, with a population of around eighty-four thousand people in the 2023 census.\nArchaeological evidence suggests prehistoric settlements in the region, predating the city's Islamic scholarly and trade prominence in the medieval period. Timbuktu began as a seasonal settlement and became permanent early in the 12th century. After a shift in trading routes, particularly after the visit by Mansa Musa around 1325, Timbuktu flourished, due to its strategic location, from the trade in salt, gold, and ivory. It gradually expanded as an important Islamic city on the Saharan trade route and attracted many scholars and traders before it became part of the Mali Empire early in the 14th century. In the first half of the 15th century, the Tuareg people took control for a short period, until the expanding Songhai Empire absorbed it in 1468.\nA Moroccan army defeated the Songhai in 1591 and made Timbuktu their capital. The invaders established a new ruling class, the Arma, who after 1612 became virtually independent of Morocco. In its golden age, the town's Islamic scholars and extensive trade network supported an important book trade. Together with the campuses of the Sankoré Madrasah, an Islamic university, this established Timbuktu as a scholarly centre in Africa. Notable historical writers, such as Shabeni and Leo Africanus, wrote about the city. These stories fuelled speculation in Europe, where the city's reputation shifted from being rich to mysterious. The city's golden age as a major learning and cultural centre of the Mali Empire was followed by a long period of decline. Different tribes governed until the French took over Mali in 1893. The colonial regime lasted until the country became the Republic of Mali in 1960.\nIn recent history, Timbuktu has faced threats from extremist groups leading to the destruction of cultural sites; efforts by local and international communities have aimed to preserve its heritage. The city's population has declined as a result of the recent issues."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 364
+    },
+    "banned_terms": [
+      {
+        "term": "timbuktu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2739,
+    "attempt": 2718,
+    "place_id": "gn-2649723",
+    "input": {
+      "place": {
+        "place_id": "gn-2649723",
+        "name": "Falkirk",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.0021,
+        "lon": -3.78535
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falkirk",
+          "url": "https://en.wikipedia.org/wiki/Falkirk",
+          "text": "Falkirk ( FAWL-kurk; Scots: Fawkirk [ˈfɔːkɪrk]; Scottish Gaelic: An Eaglais Bhreac) is a town in the Central Lowlands of Scotland, historically within the county of Stirlingshire. It lies in the Forth Valley, 23+1⁄2 miles (38 kilometres) northwest of Edinburgh and 20+1⁄2 miles (33 km) northeast of Glasgow.\nFalkirk had a population of 35,590 according to a mid-2020 estimate. The population of the town had decreased slightly to 34,627 in 2022, but still makes it the 20th most populous settlement in Scotland. Falkirk is the main town and administrative centre of the Falkirk council area, which has an overall population of 156,800 and inholds the nearby towns of Grangemouth, Bo'ness, Denny, Bonnybridge, Camelon, Larbert and Stenhousemuir, and the cluster of Braes villages.\nThe town is at the junction of the Forth and Clyde and Union canals, a location which proved key to its growth as a centre of heavy industry during the Industrial Revolution. In the eighteenth and nineteenth centuries, Falkirk was at the centre of the iron and steel industry, underpinned by the Carron Company in nearby Carron. The company made very many different items, from flat irons to kitchen ranges to fireplaces to benches to railings and many other items, but also carronades for the Royal Navy and, later, manufactured pillar boxes and phone boxes. Within the last fifty years, heavy industry has waned, and the economy relies increasingly on retail and tourism. Despite this, Falkirk remains the home of many international companies like Alexander Dennis, the largest bus production company in the United Kingdom. Falkirk has a long association with the publishing industry. The company now known as Johnston Press was established in the town in 1846. The company, now based in Edinburgh, produces the Falkirk Herald.\nAttractions in and around Falkirk include the Falkirk Wheel, The Helix, The Kelpies, Callendar House and Park and remnants of the Antonine Wall. In a 2011 poll conducted by STV, it was voted as Scotland's most beautiful town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "falkirk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2740,
+    "attempt": 2719,
+    "place_id": "gn-2791018",
+    "input": {
+      "place": {
+        "place_id": "gn-2791018",
+        "name": "Molenbeek-Saint-Jean",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.8499,
+        "lon": 4.31248
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Molenbeek-Saint-Jean",
+          "url": "https://en.wikipedia.org/wiki/Molenbeek-Saint-Jean",
+          "text": "Molenbeek-Saint-Jean (French, pronounced [molœnbek sɛ̃ ʒɑ̃] ) or Sint-Jans-Molenbeek (Dutch, pronounced [sɪɲˈtɕɑns ˈmoːlə(m)ˌbeːk] ), often simply called Molenbeek, is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the western part of the region, it is bordered by the City of Brussels, from which it is separated by the Brussels–Charleroi Canal, as well as by the municipalities of Anderlecht, Berchem-Sainte-Agathe, Dilbeek, Jette, and Koekelberg. The Molenbeek brook, from which it takes its name, flows through the municipality. Like all municipalities in Brussels, it is officially bilingual (French–Dutch).\nFrom its origins in the Middle Ages until the 18th century, Molenbeek was a rural village on the edge of Brussels, but around the turn of the 19th century, it experienced major growth brought on by a boom in commerce and manufacturing during the Industrial Revolution. Its prosperity declined after the Second World War, owing to deindustrialisation, leading to extensive investment and regeneration. Experiencing a strong movement of immigration, mainly Moroccan, from the 1950s and 1960s, Molenbeek became increasingly multicultural with a minority Muslim population. In the 2010s, it gained international attention as the base for Islamist terrorists who carried out attacks in both Paris and Brussels.\nMolenbeek is a mostly residential municipality consisting of several historically and architecturally distinct districts. As of 1 January 2024, the municipality had a population of 98,365 inhabitants. The total area is 6.02 km2 (2.32 sq mi), which gives a population density of 16,352/km2 (42,350/sq mi), twice the average of Brussels. Its upper area is greener and less densely populated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "molenbeek saint jean",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "molenbeek",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jean",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2741,
+    "attempt": 2720,
+    "place_id": "gn-2929622",
+    "input": {
+      "place": {
+        "place_id": "gn-2929622",
+        "name": "Erkelenz",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.07947,
+        "lon": 6.31531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erkelenz",
+          "url": "https://en.wikipedia.org/wiki/Erkelenz",
+          "text": "Erkelenz (German pronunciation: [ˈɛʁkəlɛnts] , Limburgish: Erkelens [ˈæʀ(ə)kəlæns]) is a town in the Rhineland in western Germany that lies 15 kilometres (9 miles)  southwest of Mönchengladbach on the northern edge of the Cologne Lowland, halfway between the Lower Rhine region and the Lower Meuse. It is a medium-sized town (over 44,000) and the largest in the district of Heinsberg in North Rhine-Westphalia.\nDespite the town having more than 1,000 years of history and tradition, in 2006 the eastern part of the borough was cleared to make way for the Garzweiler II brown coal pit operated by RWE Power. This is planned to be in operation until 2045. Over five thousand people from ten villages have had to be resettled as a result. Since 2010, the inhabitants of the easternmost village of Pesch have left and most have moved to the new villages of Immerath and Borschemich in the areas of Kückhoven and Erkelenz-Nord."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "erkelenz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

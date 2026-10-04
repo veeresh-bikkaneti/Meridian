@@ -1,0 +1,837 @@
+[
+  {
+    "rank": 2803,
+    "attempt": 2781,
+    "place_id": "gn-2648063",
+    "input": {
+      "place": {
+        "place_id": "gn-2648063",
+        "name": "Great Malvern",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.11161,
+        "lon": -2.32515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Malvern",
+          "url": "https://en.wikipedia.org/wiki/Great_Malvern",
+          "text": "Great Malvern ( ) is an area of the civil parish of Malvern, in the Malvern Hills district, in the county of Worcestershire, England. It lies at the foot of the Malvern Hills, a designated Area of Outstanding Natural Beauty, on the eastern flanks of the Worcestershire Beacon and North Hill, and is the historic centre of Malvern and includes its town centre.\nIt is a designated conservation area in recognition of the special architectural and historic interest of the area. The growth of Great Malvern began with the founding of an 11th-century priory. During the 19th century, it became a popular centre for hydrotherapy and swelled to include the bordering settlements of Barnards Green, Malvern Link with Link Top, Malvern Wells (South Malvern), North Malvern, and West Malvern. This urban area, along with the hills they surround and several villages, are collectively referred to as The Malverns.\nGreat Malvern is a seat of local government, being the location of the headquarters of Malvern Town Council, the Malvern Hills Conservators and Malvern Hills AONB Partnership, and Malvern Hills District Council. It has many of the town's amenities including the Malvern Theatres complex, the Priory Park, the Splash leisure and swimming complex, the main library, the police station, the tourist information centre, and the main post office."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "great malvern",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "malvern",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2804,
+    "attempt": 2782,
+    "place_id": "gn-2655262",
+    "input": {
+      "place": {
+        "place_id": "gn-2655262",
+        "name": "Bognor Regis",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.78206,
+        "lon": -0.67978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bognor Regis",
+          "url": "https://en.wikipedia.org/wiki/Bognor_Regis",
+          "text": "Bognor Regis (), also known as Bognor, is a town, seaside resort and civil parish in the Arun district, in West Sussex on the south coast of England, 56 miles (90 km) south-west of London, 24 miles (39 km) west of Brighton, 6 miles (10 km) south-east of Chichester and 16 miles (26 km) east of Portsmouth. Other nearby towns include Littlehampton east-north-east and Selsey to the south-west. The nearby villages of Felpham, and Aldwick are now suburbs of Bognor Regis, along with those of North and South Bersted. The population of the Bognor Regis built-up area, including Felpham and Aldwick, was 63,855 at the 2011 census.\nA seaside resort was developed by Sir Richard Hotham in the late 18th century on what was a sand and gravel, undeveloped coastline. It has been claimed that Hotham and his new resort are portrayed in Jane Austen's unfinished novel Sanditon. The resort grew slowly in the first half of the 19th century but grew rapidly following the coming of the railway in 1864. In 1929 King George V spent three months in the area recuperating, and later that year the town's name was changed to \"Bognor Regis\" by royal consent. Butlin's has been present in the town since the early 1930s when an amusement park and zoo were opened. A holiday camp followed in 1960 and this has more recently moved towards hotel accommodation with modern amenities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "bognor regis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bognor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "regis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2805,
+    "attempt": 2783,
+    "place_id": "gn-2964540",
+    "input": {
+      "place": {
+        "place_id": "gn-2964540",
+        "name": "Dundalk",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 54,
+        "lon": -6.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dundalk",
+          "url": "https://en.wikipedia.org/wiki/Dundalk",
+          "text": "Dundalk ( dun-DAW(L)K; Irish: Dún Dealgan) is the county town of County Louth in the province of Leinster, Ireland. The town is situated on the Castletown River, which flows into Dundalk Bay on the east coast of Ireland, and is halfway between Dublin and Belfast, 7 km (4.3 mi) south of the border between the Republic of Ireland and Northern Ireland. It is surrounded by several townlands and villages that form the wider Dundalk Municipal District.\nIt is the seventh largest urban area in the Republic of Ireland, with a population of 43,112 as of the 2022 census, and the twelfth largest settlement on the island of Ireland, by population.\nDundalk has been inhabited since the Neolithic period. It was established as a Norman stronghold in the 12th century following the Norman invasion of Ireland, and became the northernmost outpost of The Pale in the Late Middle Ages. Located where the northernmost point of the province of Leinster meets the province of Ulster, the town came to be known as the \"Gap of the North\". The modern street layout dates from the early 18th century and owes its form to James Hamilton (later 1st Earl of Clanbrassil). The legends of the mythical warrior hero Cú Chulainn are set in this district, and the motto on the town's coat of arms is Irish: Mé do rug Cú Chulainn cróga (\"I gave birth to brave Cú Chulainn\").\nThe town developed brewing, distilling, tobacco, textile, and engineering industries during the 19th century. It became prosperous and its population grew as it became an important manufacturing and trading centre, both as a hub on the Great Northern Railway (Ireland) network and with its maritime link to Liverpool from the Port of Dundalk. It suffered from high unemployment and urban decay after these industries closed or were scaled back, both in the aftermath of the Partition of Ireland in 1921 and following the accession of Ireland to the European Economic Community in 1973. New industries were established in the early part of the 21st century, including pharmaceutical, technology, financial services, and specialist foods.\nThere is one third-level education institute, Dundalk Institute of Technology, which is a university college of Queen's University Belfast as of the 2026–27 academic year. The largest theatre in the town, An Táin Arts Centre (named after the epic of Irish mythology), is housed in Dundalk Town Hall, and the restored buildings of the nearby former Dundalk Distillery house both the County Museum Dundalk and the Louth County Library. Sporting clubs include Dundalk Football Club (who play at Oriel Park), Dundalk Rugby Club, Dundalk Golf Club, and several clubs competing in Gaelic games. Dundalk Stadium is a horse and greyhound racing venue and is Ireland's only all-weather horse racing track."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 458
+    },
+    "banned_terms": [
+      {
+        "term": "dundalk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2806,
+    "attempt": 2784,
+    "place_id": "gn-2977246",
+    "input": {
+      "place": {
+        "place_id": "gn-2977246",
+        "name": "Saint-Raphaël",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.42332,
+        "lon": 6.7735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Raphaël, Var",
+          "url": "https://en.wikipedia.org/wiki/Saint-Raphaël,_Var",
+          "text": "Saint-Raphaël (French pronunciation: [sɛ̃ ʁafaɛl] ; Occitan: Sant Rafèu Occitan pronunciation: [ˈsan raˈfɛw]) is a commune in the Var department, Provence-Alpes-Côte d'Azur region, Southeastern France.\nImmediately to the west of Saint-Raphaël lies a larger and older town, Fréjus; together they form an urban agglomeration known as Var Estérel Méditerranée, which also encompasses the smaller communes of Les Adrets-de-l'Estérel, Puget-sur-Argens and Roquebrune-sur-Argens. In the second half of the 19th century, the township came under the influence of Mayor Felix Martin and writer Jean-Baptiste Alphonse Karr; owing to their efforts and its beneficial climate the commune developed into a seaside resort popular with artists, sportsmen and politicians.\nIt is the seat of the canton of Saint-Raphaël, also encompassing Fréjus and Les Adrets-de-l'Estérel, which is the economic and cultural centre of Eastern Var, within the arrondissement of Draguignan. Its inhabitants are called Raphaëlois in French generally, or Rafelencs in Provençal Occitan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "saint raphael",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "raphael",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2807,
+    "attempt": 2785,
+    "place_id": "gn-3059436",
+    "input": {
+      "place": {
+        "place_id": "gn-3059436",
+        "name": "Komárno",
+        "country": "Slovakia",
+        "subdivision": "Nitra Region",
+        "lat": 47.76356,
+        "lon": 18.12263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Komárno",
+          "url": "https://en.wikipedia.org/wiki/Komárno",
+          "text": "Komárno (; Hungarian: Komárom, German: Komorn, Serbian: Коморан/Komoran), colloquially also called Révkomárom, Öregkomárom, Észak-Komárom in Hungarian, is a town in Slovakia at the confluence of the Danube and the Váh rivers. Historically, it was formed by the \"old town\" on the left bank of the Danube, present-day Komárno in Slovakia, and by a \"new town\" on the right bank, present-day Komárom in Hungary, which were historically one administrative unit. Following World War I and the Treaty of Trianon, the border of the newly created Czechoslovakia cut the historical, unified town in half, creating two new independent towns in two countries. Komárno and Komárom are connected by the Elisabeth Bridge, which used to be an official border crossing between Slovakia and Hungary until border checks were lifted due to the Schengen Area rules. In 2020, a new road bridge was opened.\nKomárno is Slovakia's principal port on the Danube. It is also the center of the Hungarian community in Slovakia, which makes up 56.69% (2021 census) of the town's population. The town is the historic seat of the Serbian national minority in Slovakia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "komarno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2808,
+    "attempt": 2786,
+    "place_id": "gn-3099213",
+    "input": {
+      "place": {
+        "place_id": "gn-3099213",
+        "name": "Głogów",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.66361,
+        "lon": 16.0845
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Głogów",
+          "url": "https://en.wikipedia.org/wiki/Głogów",
+          "text": "Głogów (Polish: [ˈɡwɔɡuf] ; German: Glogau, rarely Groß-Glogau, Czech: Hlohov) is a city in western Poland. It is the county seat of Głogów County, in Lower Silesian Voivodeship. Głogów is the sixth largest town in the Voivodeship; its population in 2021 was 65,400.\nAmong the oldest towns in Poland, Głogów was founded in the 10th century as a Piast defensive settlement and obtained city rights in the 13th century from Duke Konrad I. It is known for one of the most important medieval Polish defensive battles against German incursions. Due to the town's strategic location on several trade routes, the townspeople received many privileges and benefits, which brought wealth and greatly reflected on the city's architecture. From 1251 to 1506, it was the capital of a small eponymous duchy ruled by a local line of the Piast dynasty and by future Kings of Poland from the Jagiellonian dynasty. Over time, Głogów grew to be one of the largest fortified towns in Lower Silesia. The demolition of fortifications at the beginning of the 20th century improved the chances for further growth. However, towards the end of the Second World War Głogów was once again turned into a defensive fortress and as such suffered almost complete destruction.\nCurrently reconstruction works are being carried out with the aim of restoring the historic pre-war appearance of the town. The castle, which was rebuilt between 1971 and 1983, now houses the Historical and Archaeological Museum, displaying artifacts such as Lusatian burial artifacts from Wróblin Głogowski. Since 1984 the town also has been the venue for the Głogów Jazz Festival, which features local and international singers, musicians and performers.\nGłogów is one of four cities in the Copper Basin (along with Legnica, Lubin and Polkowice), a copper mining and smelting district, one of the richest regions in Poland. It is located on the main highway connecting the port city of Szczecin with the Czech–Polish border, part of the European route E65."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 325
+    },
+    "banned_terms": [
+      {
+        "term": "g ogow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "g",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ogow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2809,
+    "attempt": 2787,
+    "place_id": "gn-3489239",
+    "input": {
+      "place": {
+        "place_id": "gn-3489239",
+        "name": "Ocho Rios",
+        "country": "Jamaica",
+        "subdivision": "Saint Ann Parish",
+        "lat": 18.4076,
+        "lon": -77.10312
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocho Rios",
+          "url": "https://en.wikipedia.org/wiki/Ocho_Rios",
+          "text": "Ocho Rios (Spanish for \"Eight Rivers\") (Jamaican Patois: Ochi) is a town in the parish of Saint Ann on the north coast of Jamaica, and is more widely referred to as Ochi by locals. Beginning as a sleepy fishing village, Ocho Rios has seen explosive growth in recent decades to become a popular tourist destination featuring duty-free shopping, a cruise-ship terminal, tourist attractions and several beaches and acclaimed resorts. In addition to being a port of call for cruise ships, Ocho Rios also hosts cargo ships at the Reynolds Pier for the exportation of sugar, limestone, and in the past, bauxite. The estimated population of the town in 2011 was 16,671, which is nearly 10% of the total population of St. Ann. The town is served by both Sangster International Airport (97 km west of Ocho Rios) and Ian Fleming International Airport (17 km east of Ocho Rios). Scuba diving and other water sports are offered in the town's vicinity.\nThe name \"Ocho Rios\" is a possible misnomer, as there are not eight rivers in the area. It could be a British corruption of the original Spanish name \"Las Chorreras\" (\"the waterfalls\"), a name given to the village because of the nearby Dunn's River Falls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "ocho rios",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rios",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2810,
+    "attempt": 2788,
+    "place_id": "gn-5589173",
+    "input": {
+      "place": {
+        "place_id": "gn-5589173",
+        "name": "Coeur d'Alene",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 47.67768,
+        "lon": -116.78047
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coeur d'Alene, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Coeur_d'Alene,_Idaho",
+          "text": "Coeur d'Alene (  KOR də-LAYN) is a city in and the county seat of Kootenai County, Idaho, United States. It is the most populous city in North Idaho with a population of 54,628 at the 2020 census, and now an estimated 58,555 as of 2026. Coeur d'Alene is currently growing at a rate of 1.04% annually and its population has increased by 6.55% since the most recent census, while the Coeur d'Alene metropolitan statistical area has an estimated 188,000 people. Coeur d'Alene is located about 30 miles (50 km) east of Spokane, Washington, with which it forms the bi-state Spokane–Coeur d'Alene combined statistical area. The city is situated on the north shore of the 25-mile (40 km) long Lake Coeur d'Alene and to the west of the Coeur d'Alene Mountains. Locally, Coeur d'Alene is known as the \"Lake City\", or simply called by its initials, \"CDA\" or \"CD'A\".\nThe city is named after the Coeur d'Alene people, a federally recognized tribe of Native Americans who live along the rivers and lakes of the region, in a territory of 4,000,000 acres (16,000 km2) from eastern Washington to Montana. Historically, the native peoples were hunter-gatherers who located their villages and camps near food gathering or processing sites and followed the seasonal cycles, practicing subsistence hunting, fishing, and foraging.\nThe city began as a fort town; General William Tecumseh Sherman sited what became known as Fort Sherman on the north shore of Lake Coeur d'Alene in 1878. Peopling of the town came when miners and prospectors came to the region after gold and silver deposits were found in what would become the Silver Valley and after the Northern Pacific Railroad reached the town in 1883. In the 1890s, two significant miners' uprisings over wages took place in the Coeur d'Alene Mining District leading to the declaration of martial law, with the latter providing a motive for the assassination of a former Idaho governor and subsequently a nationally publicized trial. The late 19th century discovery of highly prized white pine in the forests of northern Idaho resulted in a timber boom that peaked in the late 1920s and was accompanied by the rapid population growth which led to the incorporation of the city on September 4, 1906. After the Great Depression, tourism started to become a major source of development in the area. By the 1980s, tourism became the major driver in the local economy, and, after decades of heavy reliance on logging, the city featured a more balanced economy with manufacturing, retail, and service sectors.\nCoeur d'Alene has grown significantly since the 1990s, in part because of a substantial increase in tourism, encouraged by resorts and recreational activities in the area and outmigration predominantly from other western states. The Coeur d'Alene Resort and its world-record 3,300-foot floating boardwalk and a 165-acre (0.67 km2) natural area called Tubbs Hill take up a prominent portion of the city's downtown. Popular parks such as City Park and Beach and McEuen Park are also fixtures of the downtown waterfront. The city has become somewhat of a destination for golfers; there are five courses in the city, including the Coeur d'Alene Resort Golf Course and its unique 14th hole floating green. The Coeur d'Alene Casino and its Circling Raven Golf Club is located approximately 27 miles (43 km) south and the largest theme park in the Northwestern United States, Silverwood Theme Park, is located approximately twenty miles (30 km) north. There are also several ski resorts and other recreation areas nearby. The city is home to the Museum of North Idaho and North Idaho College, and it has become known for having one of the largest holiday light shows in the United States and hosting a popular Ironman Triathlon event. Coeur d'Alene is located on the route of Interstate 90 and is served by the Coeur d'Alene Airport as well as the Brooks Seaplane Base by air. In print media, local issues are covered by the Coeur d'Alene Press daily newspaper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 663
+    },
+    "banned_terms": [
+      {
+        "term": "coeur d alene",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "coeur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "alene",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2811,
+    "attempt": 2789,
+    "place_id": "gn-759141",
+    "input": {
+      "place": {
+        "place_id": "gn-759141",
+        "name": "Skarżysko-Kamienna",
+        "country": "Poland",
+        "subdivision": "Świętokrzyskie",
+        "lat": 51.11311,
+        "lon": 20.87162
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skarżysko-Kamienna",
+          "url": "https://en.wikipedia.org/wiki/Skarżysko-Kamienna",
+          "text": "Skarżysko-Kamienna (pronounced [skarˈʐɨskɔ kaˈmjɛnna] ) is a city in Świętokrzyskie Voivodeship in south-central Poland by Kamienna river, to the north of Świętokrzyskie Mountains; one of the voivodship's major cities.\nSkarżysko-Kamienna is an industrial city formed in 1923 from the merger of several smaller localities dating back to the medieval and early modern periods. Mining in the area dates back to 10,000 BC, whereas iron ore mining and metallurgical production date back over 550 years. Since the 19th-century industrial revolution it became an important centre of industrial production, and since 1922 it became known as one of Poland's munition production centres, nowadays also hosting a military equipment museum. During World War II, it was the site of German Nazi atrocities with over 19,000 people killed.\nPrior to 1928, it bore the name of Kamienna; in less formal contexts usually only the first part of the name (Skarżysko) is used. It belongs to historic Polish region of Lesser Poland.\nSkarżysko-Kamienna is an important railroad junction, with two main lines (Kraków – Warsaw and Sandomierz – Koluszki) crossing there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "skarzysko kamienna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "skarzysko",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kamienna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2812,
+    "attempt": 2790,
+    "place_id": "gn-788886",
+    "input": {
+      "place": {
+        "place_id": "gn-788886",
+        "name": "Kumanovo",
+        "country": "North Macedonia",
+        "subdivision": "Kumanovo",
+        "lat": 42.13279,
+        "lon": 21.71585
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kumanovo",
+          "url": "https://en.wikipedia.org/wiki/Kumanovo",
+          "text": "Kumanovo (Macedonian: Куманово [kuˈmanɔvɔ] ; Albanian: Kumanovë, Albanian definite form: Kumanova; also known by other alternative names) is the second-largest city in North Macedonia after the capital Skopje and the seat of Kumanovo Municipality, the largest municipality in the country. Kumanovo lies 340 metres (1,115 feet) above sea level and is surrounded by the Karadag part of Skopska Crna Gora mountain on its western side, Gradištanska mountain on its southern side, and Mangovica and German mountain on the eastern side. The Skopje Airport also serves Kumanovo.\nIt has many historical sites. One of its most important is the 4,000-year-old megalithic astronomical observatory of Kokino, located 30 km (19 mi) northeast of Kumanovo and discovered in 2001. It is ranked fourth on the list of old observatories by NASA.\nIn 1912, during the First Balkan War, Serbian forces won a decisive victory over the Ottomans north of the town. The two-day Battle of Kumanovo ended Ottoman authority in Vardar Macedonia which contributed to the region's integration into Serbia, and consequently into Yugoslavia. The entire region of Macedonia was split in three between Serbia, Greece and Bulgaria after the Treaty of Bucharest in 1913.\nDuring World War II, the communist resistance in Vardar Macedonia began in Kumanovo on 11 October 1941. The rapid economic, administrative and cultural expansion of Kumanovo began in 1945. The town's metal-processing, tobacco, agriculture, footwear and textile industries made it an economic, trading and cultural center during the time of SFR Yugoslavia.\nIt was the site of the 1999 Kumanovo Agreement between FR Yugoslavia and NATO about bringing in a NATO peacekeeping contingent in Kosovo.\nIt is internationally known for a jazz festival hosting bands from all over the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "kumanovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2813,
+    "attempt": 2791,
+    "place_id": "gn-12625525",
+    "input": {
+      "place": {
+        "place_id": "gn-12625525",
+        "name": "Denai Alam",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.16027,
+        "lon": 101.51501
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denai Alam",
+          "url": "https://en.wikipedia.org/wiki/Denai_Alam",
+          "text": "Denai Alam is a affluent and upscale township located approximately 10 km north of the Shah Alam city centre alongside the Guthrie Corridor Expressway and is a part of Mukim Bukit Raja in Petaling District.\nThe township was developed by Sime Darby Property, the property development arm of the Malaysian conglomerate, Sime Darby Berhad. The 920 acres (3.7 km2) township is planned based on the “Denai” concept which is 4.8 km of landscaped footpaths for pedestrians and non-motorised vehicles. The Denai concept was inspired by traditional Malay kampong communal living and a low-density development of 8 units per acre. The Denai Alam development was awarded the 2003 Planning Innovation Award by the Malaysian Institute of Planners.\nDenai Alam is also notable for distressing traffic jam during peak hours every day due to terrible traffic planning at the exit heading towards the Petaling Jaya direction on Persiaran Elektron. This was partly due to mis-planned crossroads with prolonged traffic lights sessions and growing number of residents, which implies high traffic volume."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "denai alam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "denai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2814,
+    "attempt": 2792,
+    "place_id": "gn-2511102",
+    "input": {
+      "place": {
+        "place_id": "gn-2511102",
+        "name": "Santa Pola",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.19165,
+        "lon": -0.5658
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Pola",
+          "url": "https://en.wikipedia.org/wiki/Santa_Pola",
+          "text": "Santa Pola is a coastal town and municipality located in the comarca of Baix Vinalopó in the Valencian Community, Spain, by the Mediterranean Sea. It has an area of 58.6 km2 (23 sq mi) and has a population of 36,174 inhabitants of whom 6,000 are residents of the nearby town of Gran Alacant.\nThe town has an important salt evaporation pond known as the salines which remains in business, additionally, most of it is recognized as the Natural Park of Salines de Santa Pola, an important Ramsar site. The town was settled over the ruins of a Roman village called Portus Illicitanus (literally, \"Harbour of Elche\"); after being abandoned for decades, then a castle was constructed in the 16th century which marked the repopulation of Santa Pola. The town has an archeological museum covering these phases.\nSanta Pola is, at present, a coastal fishing and tourist town. Population more than doubles during the summer, with people coming mostly from the rest of the Alicante province, and also from the Basque Country, Madrid, France and the UK, just to mention some. The nearby island of Tabarca (part of Alicante) can be visited by ship.\nThe new town of Gran Alacant, 5 km (3 mi) north of Santa Pola along the Alicante bay, accounts for about one third of the population of the district.  Next to it is the Carabasi area, a nature reserve. Gran Alacant lies only a few kilometres from Alicante Airport and a few hundred metres from the town of Los Arenales which is located in the Elche district.\nIn June 2009, the Valencian Government announced that the Alicante Tram system will be extended southwards via Alicante Airport and El Altet, to stations in Gran Alacant and Santa Pola and then onwards to Guardamar and Torrevieja before terminating in Murcia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 301
+    },
+    "banned_terms": [
+      {
+        "term": "santa pola",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pola",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2815,
+    "attempt": 2793,
+    "place_id": "gn-2633274",
+    "input": {
+      "place": {
+        "place_id": "gn-2633274",
+        "name": "Akureyri",
+        "country": "Iceland",
+        "subdivision": "Northeast",
+        "lat": 65.68353,
+        "lon": -18.0878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Akureyri",
+          "url": "https://en.wikipedia.org/wiki/Akureyri",
+          "text": "Akureyri (Icelandic pronunciation: [ˈaːkʏrˌeiːrɪ], locally [ˈaːkʰʏrˌeiːrɪ] ) is a town in northern Iceland, the country's fifth most populous municipality (under the official name of Akureyrarbær [-ˌeiːrarˌpaiːr̥], 'town of Akureyri') and the largest outside the Capital Region. The municipality includes the town's neighbourhood at the head of Eyjafjörður and two farther islands: Hrísey at the mouth of Eyjafjörður and Grímsey off the coast.\nNicknamed the \"Capital of North Iceland\", Akureyri is an important port and fishing centre. The area where Akureyri is located was settled in the 9th century, but did not receive a municipal charter until 1786. Allied units were based in the town during World War II. Further growth occurred after the war as the Icelandic population increasingly moved to urban areas.\nThe area has a relatively mild climate because of geographical factors, and the town's ice-free harbour has played a significant role in its history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "akureyri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2816,
+    "attempt": 2794,
+    "place_id": "gn-2645313",
+    "input": {
+      "place": {
+        "place_id": "gn-2645313",
+        "name": "Kirkby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.48138,
+        "lon": -2.89215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkby",
+          "url": "https://en.wikipedia.org/wiki/Kirkby",
+          "text": "Kirkby (  KUR-bee) is a town in the Metropolitan Borough of Knowsley, Merseyside, England. The town, historically in Lancashire, has a size of 4,070 acres (16.5 km2) is 5 miles (8 km) north of Huyton and 6 miles (10 km) north-east of Liverpool. The population in 2016 was 41,495 making it the largest in Knowsley and the 9th biggest settlement in Merseyside.\nEvidence of Bronze Age activity has been noted though the first direct evidence of a settlement dates to 1086 via the Domesday Book. The town was mainly farmland until the mid-20th century until the construction of ROF Kirkby, the largest Royal Ordnance Factory filling munitions, during the Second World War; Kirkby's urban development happened in the post-war period.\nIn November 2020, Liverpool F.C. relocated its training facilities from the Melwood site in West Derby, to the town following the completion of the new training centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "kirkby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2817,
+    "attempt": 2795,
+    "place_id": "gn-3080944",
+    "input": {
+      "place": {
+        "place_id": "gn-3080944",
+        "name": "Żagań",
+        "country": "Poland",
+        "subdivision": "Lubusz",
+        "lat": 51.61759,
+        "lon": 15.31486
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Żagań",
+          "url": "https://en.wikipedia.org/wiki/Żagań",
+          "text": "Żagań [ˈʐaɡaɲ]  (French and German: Sagan, Latin: Saganum) is a town in western Poland, on the Bóbr river, with 23,136 inhabitants (2024), and the capital of Żagań County in the Lubusz Voivodeship, located in the historic region of Lower Silesia.\nFounded in the 12th century by Polish monarch Bolesław IV the Curly, Żagań was the capital of an eponymous principality from 1274 to 1935. The main sights are the former Augustinian Monastery, one of the burial sites of the Piast dynasty, listed as a Historic Monument of Poland, the Ducal Palace and Park ensemble and the POW Camps Museum, located at the site of German-operated WWII prisoner-of-war camps for over 60,000 Allied soldiers of various nationalities, where the Great Escape took place.\nThe town hosts the Polish 11th Armoured Cavalry Division. An American Armored Brigade Combat Team is constantly rotated through the town under Operation Atlantic Resolve."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "zagan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2818,
+    "attempt": 2796,
+    "place_id": "gn-3121766",
+    "input": {
+      "place": {
+        "place_id": "gn-3121766",
+        "name": "Galapagar",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.5783,
+        "lon": -4.00426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Galapagar",
+          "url": "https://en.wikipedia.org/wiki/Galapagar",
+          "text": "Galapagar is a town and municipality northwest of Madrid, Spain, situated in the autonomous community of the Community of Madrid. Of all the towns in the area, it has experienced the most growth, mostly because of immigration and the development of old livestock fields.\nGalapagar borders Collado Villalba, Colmenarejo, Torrelodones, Las Rozas de Madrid, El Escorial, San Lorenzo de El Escorial, Villanueva del Pardillo, Hoyo de Manzanares, Moralzarzal and Guadarrama.\nThe name Galapagar comes from the Spanish galápago, meaning turtle, as the town centre was sited near a lake full of turtles. \nThe town first appears as a village in the eleventh century, its importance due to the frequent hunting expeditions by the Spanish royalty, and being a main stop on the road from the capital to the Royal Monastery of San Lorenzo de El Escorial. Sights in the town include the church of The Asunción (Assumption).\nGalapagar is served by lines C-3, C-8 and C-10 of the Cercanías Madrid commuter rail service at its Galapagar-La Navata train station; and by 9 lines of the Interurban Bus Service linking it to the Moncloa district of Madrid.\nJacinto Benavente, one of the foremost Spanish dramatists of the 20th century and 1922 laurate of the Nobel Prize in Literature, is buried here. \nBullfighting, stock-breeding, pasturing and beef production are the main activities in Galapagar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "galapagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2819,
+    "attempt": 2797,
+    "place_id": "gn-3173577",
+    "input": {
+      "place": {
+        "place_id": "gn-3173577",
+        "name": "Merano",
+        "country": "Italy",
+        "subdivision": "Trentino-Alto Adige",
+        "lat": 46.66817,
+        "lon": 11.15953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merano",
+          "url": "https://en.wikipedia.org/wiki/Merano",
+          "text": "Merano or Meran is a comune (municipality) in South Tyrol, Northern Italy. The city is located within a basin, surrounded by mountains standing up to 3,335 metres (10,942 feet) above sea level, at the entrance to the Passeier Valley and the Vinschgau. It is the second-largest city in South Tyrol after Bozen/Bolzano and serves as an important cultural and economic centre. \nThe city began as a medieval Tyrolean settlement and became the capital of the County of Tyrol in the 13th century, before political power later shifted to Innsbruck. In the 19th century, its mild Alpine climate transformed Meran into a renowned spa town within the Austro-Hungarian Empire, attracting several scientists, literary people, and artists, including Franz Kafka, Paul Lazarsfeld and also Empress Elisabeth of Austria, who appreciated its mild climate. After World War I, it was annexed by the Kingdom of Italy along with South Tyrol.\nToday Merano is known for its blend of Austrian and Italian cultural heritage, spa resorts, and historical architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "merano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2820,
+    "attempt": 2798,
+    "place_id": "gn-3455029",
+    "input": {
+      "place": {
+        "place_id": "gn-3455029",
+        "name": "Paratinga",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -12.69056,
+        "lon": -43.18417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paratinga",
+          "url": "https://en.wikipedia.org/wiki/Paratinga",
+          "text": "Paratinga is a Brazilian municipality located in the interior of the state of Bahia, in the Northeast Region of the country. It is situated 710 kilometers west of the state capital, Salvador, and 749 kilometers east of the federal capital, Brasília. The municipality covers an area of approximately 2,624.118 km2 (1,013.178 sq mi) and had a population of 29,504 inhabitants according to the 2010 census by the Brazilian Institute of Geography and Statistics (IBGE), making it the 89th most populous municipality in the state and the third in its microregion.\nAs part of the effort to settle Brazil's interior, Paratinga is one of the oldest cities in Bahia. It developed from the 17th century on farms and lands owned by the landowner Antônio Guedes de Brito. The municipality became an important regional hub due to its strategic port, through which populations traveled along the São Francisco River. It was the center of economic and political power for the Guedes de Brito family, and in the 18th century, its territory was the largest in the state, extending to the border with Minas Gerais. Over time, its territory was reduced with the emancipation of several municipalities, including Bom Jesus da Lapa, Ibotirama, and Macaúbas.\nToday, Paratinga is home to significant historical heritage. Many of its old buildings feature influences of Neo-Baroque and Art Deco architectural styles. Beyond its cultural framework, the municipality is notable for tourism, particularly due to the thermal springs in the district of Águas do Paulista and one of its villages, Brejo das Moças. However, the city, like the entire São Francisco River region, faces environmental and economic challenges, influenced by neglect from national public administration since the Portuguese colonization, and during the periods of the Empire and the Republic.\nThe municipal seat has an average annual temperature of 27.9 degrees Celsius. Located in the Caatinga biome, with a semi-arid climate, Paratinga is bathed by the São Francisco River and has several watercourses within its territory. Its Human Development Index (HDI), according to 2010 data, is 0.590, considered low by the United Nations (UN). Situated at an average distance from major Brazilian capitals such as Salvador, Brasília, Goiânia, and Belo Horizonte, the municipality is served by the state highway BA-160, which connects it to various Bahian cities up to the border with Minas Gerais. Although it faces unfavorable indicators in areas such as education, socioeconomic and infrastructure indicators have shown improvements in recent years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 405
+    },
+    "banned_terms": [
+      {
+        "term": "paratinga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2821,
+    "attempt": 2799,
+    "place_id": "gn-3479329",
+    "input": {
+      "place": {
+        "place_id": "gn-3479329",
+        "name": "Paraíso do Tocantins",
+        "country": "Brazil",
+        "subdivision": "Tocantins",
+        "lat": -10.17611,
+        "lon": -48.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paraíso do Tocantins",
+          "url": "https://en.wikipedia.org/wiki/Paraíso_do_Tocantins",
+          "text": "Paraíso do Tocantins is a municipality in the state of Tocantins in the Northern region of Brazil. Situated within the intermediate geographic region of Palmas and the immediate geographic region of Paraíso do Tocantins, it is the fifth-largest city in the state with 52,360 inhabitants. \nNoted as one of the \"happiest cities in Brazil,\" Paraíso do Tocantins is also one of the main agricultural hubs of the Araguaia Valley. The main economic sectors in the city are commerce and services, which make up 46.42% of the local GDP. Paraíso do Tocantins sits at the intersection of the BR-153, also known as the Transbrasiliana, and the TO-080, which connects to Palmas 39 miles away.\nThe symbol of Paraíso do Tocantins is the yellow ipê—a native tree of the Cerrado biome. The main tourist attraction is the Serra do Estrondo, which is federally designated as an environmental protection area. The site features a lookout point with panoramic views of the city, a chapel, an outdoor gym, a walking trail, a kiosk, and a community center. \nThe municipality is also an important hub of agribusiness in the region, serving as a benchmark in both agriculture—particularly in the cultivation of soybeans, sugarcane, and corn—and livestock farming, where cattle raising is a prominent feature. Consequently, the municipality hosts meatpacking plants, distribution centers, and agro-industries, as well as dealerships for machinery and implements, and retail outlets that provide support to the sector."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "paraiso do tocantins",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paraiso",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tocantins",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2822,
+    "attempt": 2800,
+    "place_id": "gn-3664464",
+    "input": {
+      "place": {
+        "place_id": "gn-3664464",
+        "name": "Cruzeiro do Sul",
+        "country": "Brazil",
+        "subdivision": "Acre",
+        "lat": -7.62759,
+        "lon": -72.67756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cruzeiro do Sul, Acre",
+          "url": "https://en.wikipedia.org/wiki/Cruzeiro_do_Sul,_Acre",
+          "text": "Cruzeiro do Sul (Portuguese pronunciation: [kɾuˈzejɾu du ˈsuw], Southern Cross) is a municipality located on the Juruá river in the west of the Brazilian state of Acre. It is the second-largest city in Acre.\nIt is bordered to the north by the state of Amazonas, to the south by Peru, to the east by the municipality of Porto Walter, to the west by the municipality of Rodrigues Alves, to the northwest by the municipality of Tarauacá, and to the northwest by the municipality of Mâncio Lima.\nThe municipality contains 23% of the 846,633-hectare (2,092,080-acre) Serra do Divisor National Park, created in 1989.\nMarshal Thaumaturgo de Azevedo was primarily responsible for the founding of Cruzeiro do Sul on September 28, 1904. He chose that date because it coincided with the enactment of the Law of the FreeWomb, an important milestone in the gradual abolition of slavery in Brazil.\nFreemasonry played a significant role in the life of Marshal Gregório Thaumaturgo de Azevedo, particularly in his political and social activities in Acre. He was one of the founders of the Fraternidade Acreana Masonic Lodge, which was crucial to the Acrean autonomy movement and contributed to the region's development.\nIn addition to Marshal Thaumaturgo, other explorers were also instrumental in the region's development during the rubber boom:"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "cruzeiro do sul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cruzeiro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sul",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

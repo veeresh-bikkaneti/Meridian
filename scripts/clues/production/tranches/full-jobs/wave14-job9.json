@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 2783,
+    "attempt": 2761,
+    "place_id": "gn-299137",
+    "input": {
+      "place": {
+        "place_id": "gn-299137",
+        "name": "Tire",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.08877,
+        "lon": 27.73508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tire, İzmir",
+          "url": "https://en.wikipedia.org/wiki/Tire,_İzmir",
+          "text": "Tire (Ottoman Turkish: تيره; Greek: Θείρα, romanized: Theíra) is a municipality and district of İzmir Province, Turkey. Its area is 716 km2, and its population is 87,462 (2022). It is largely urbanized at the rate of 55.8%. Tire's center is situated 80 km (50 mi) to the southeast of the traditional center of İzmir (Konak Square in Konak) and 46 km (29 mi) inland from the nearest seacoast in the Gulf of Kuşadası to its west. Tire district area neighbors the district areas of Selçuk (west) Torbalı (north-west), Bayındır (north) and Ödemiş (east), all part of İzmir Province, while to the south it is bordered by Aydın Province. The district area's physical features are determined by the alluvial plain of Küçük Menderes River in its northern part and in its south by the mountains delimiting the parallel alluvial valley of Büyük Menderes River flowing between Aydın and the Aegean Sea. There is a Jewish community.\nAdvantaged by its fertile soil and suitable climate, Tire district's economy largely relies on production and processing of agricultural products, especially of figs, cotton, corn and other grains, cash crops like tobacco and sesame, fruits like watermelons, cherries, peaches and grenadines and dry fruits like walnuts and chestnuts.\nTire's town center features an attractive old quarter with many impressive examples of Islamic architecture alongside lively Tuesday and Friday markets, where the influence of the multicultural heritage of the surrounding villages can be observed. These weekly markets are widely known throughout the larger region and among visitors on excursion and tourists for their handcrafted items, attracting numerous visitors. Another major annual gathering that also draws crowds to Tire is Nevruz Day. Dating back to 1403, this is one of western Turkey's most vibrant celebrations in western Turkey, held annually on the third Sunday of March.\nA famous local speciality is Tire meatballs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "tire",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2784,
+    "attempt": 2762,
+    "place_id": "gn-3123493",
+    "input": {
+      "place": {
+        "place_id": "gn-3123493",
+        "name": "Ferrol",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 43.48451,
+        "lon": -8.23293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferrol",
+          "url": "https://en.wikipedia.org/wiki/Ferrol",
+          "text": "Ferrol (Galician: [feˈrɔl] , Spanish: [feˈrol] ) is a city in the province of A Coruña in the autonomous community of Galicia in Spain, located in the Rías Altas, in the vicinity of Strabo's Cape Nerium (modern-day Cape Prior). With a population of 64,358 as of 2024, Ferrol is the 7th-largest city in Galicia. With Eume to the south and Ortegal to the north, Ferrol forms the comarca of Ferrolterra.\nAround a hundred years ago, and earlier, the harbour, with its depth, capacity and overall safety, had few equals in Europe; its entrance was very narrow, commanded by forts, and could even be shut by a boom.\nFerrol has been a major naval shipbuilding centre for most of its history, being the capital of the Spanish Navy's Maritime Department of the North since the time of the early Bourbons. In the 17th century, Ferrol held the largest arsenal in Europe. Today, the city contains several major shipbuilding yards belonging to the state-owned Navantia Group.\nFerrol was the birthplace of the dictator Francisco Franco in 1892. The municipality was officially named after him as \"El Ferrol del Caudillo\" from September 1938 to December 1982. It was also the birthplace of the founder of the Spanish Socialist Workers' Party (PSOE), Pablo Iglesias, in 1850.\nFerrol is one of the starting points of the English Way of the Camino de Santiago. Due to the modern requirement that pilgrims must travel 100 km (approx. 62 mi) by foot in order to be officially recognised, the city is a preferential starting point for those traversing the English Way."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "ferrol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2785,
+    "attempt": 2763,
+    "place_id": "gn-3650267",
+    "input": {
+      "place": {
+        "place_id": "gn-3650267",
+        "name": "Ventanas",
+        "country": "Ecuador",
+        "subdivision": "Los Ríos",
+        "lat": -1.44285,
+        "lon": -79.46274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ventanas",
+          "url": "https://en.wikipedia.org/wiki/Ventanas",
+          "text": "Ventanas is an Ecuadorian city; head of the Ventanas Canton, in the Los Ríos Province, as well as the fourth most populated city in the Province of Los Ríos.  It is located in the center of the coastal region of Ecuador, on an extensive plain, crossed by the Zapotal River, at an altitude of 24 meters above sea level and with a rainy tropical climate of 26 °C on average. It is called \"The Corn Capital of Ecuador\" for its important production of corn.  At the 2022 census it had a population of 41,531, making it the thirty-eighth most populous city in the country.  It is part of the metropolitan area of Babahoyo, since its economic, social and commercial activity is strongly linked to Babahoyo, being a \"dormitory city\" for thousands of workers who travel to that city by land daily.  The conglomerate is home to more than 250,000 inhabitants.\nIts origins date from the end of the colonial era.  Since the middle of the 19th century, the city has presented a moderate, but constant demographic growth, due to its agricultural production, until establishing an urban town, which would later be one of the main urban centers of the province.  It is one of the most important administrative, economic, financial and commercial centers of Los Ríos.  The main activities of the city are trade, agriculture and livestock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "ventanas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2786,
+    "attempt": 2764,
+    "place_id": "gn-4691585",
+    "input": {
+      "place": {
+        "place_id": "gn-4691585",
+        "name": "Flower Mound",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.01457,
+        "lon": -97.09696
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flower Mound, Texas",
+          "url": "https://en.wikipedia.org/wiki/Flower_Mound,_Texas",
+          "text": "Flower Mound is an incorporated town located in Denton County, with a minor portion in Tarrant County, in the U.S. state of Texas. Located northwest of Dallas and northeast of Fort Worth adjacent to Grapevine Lake, the town derives its name from a prominent 12.5-acre (5.1 ha) mound located in the center of town.\nAfter settlers used the site for religious camps during the 1840s, the area around Flower Mound was first permanently inhabited in the 1850s; however, residents did not incorporate until 1961. Although an effort to create a planned community failed in the early 1970s, Flower Mound's population increased substantially when Dallas/Fort Worth International Airport opened to the south in 1974. As of the 2020 United States census, the population was 75,956, reflecting a 17% increase over the 64,669 counted in the 2010 census. Of the Texas municipalities that label themselves \"towns\", Flower Mound has the largest population.  Flower Mound was the only town with a population greater than 20,000 in the 2020 census.\nFlower Mound's municipal government, operating under a council–manager system, has invested in a public park system highlighted by an extensive network of trails. Lewisville Independent School District, which operates public schools, covers the majority of Flower Mound. With its moderately affluent population and proximity to the Dallas–Fort Worth metroplex, Flower Mound has used a smart growth system for urban planning, and has recently experienced more rapid light industrial growth to match the growing needs of the primarily residential community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "flower mound",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "flower",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mound",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2787,
+    "attempt": 2765,
+    "place_id": "gn-5142056",
+    "input": {
+      "place": {
+        "place_id": "gn-5142056",
+        "name": "Utica",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.1009,
+        "lon": -75.23266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Utica, New York",
+          "url": "https://en.wikipedia.org/wiki/Utica,_New_York",
+          "text": "Utica ( ) is a city in the state of New York, and the county seat of Oneida County. The tenth-most populous city in New York, its population was 65,283 in the 2020 census. It is located on the Mohawk River in the Mohawk Valley at the foot of the Adirondack Mountains, approximately 95 mi (153 km) west-northwest of Albany, 55 mi (89 km) east of Syracuse and 240 mi (386 km) northwest of New York City. Utica and the nearby city of Rome anchor the Utica–Rome metropolitan area comprising all of Oneida and Herkimer counties.\nFormerly a river settlement inhabited by the Mohawk Nation of the Iroquois Confederacy, Utica attracted European-American settlers from New England during and after the American Revolution. In the 19th century, immigrants strengthened its position as a layover city between Albany and Syracuse on the Erie and Chenango Canals and the New York Central Railroad. During the 19th and 20th centuries, the city's infrastructure contributed to its success as a manufacturing center and defined its role as a worldwide hub for the textile industry.\nLike other Rust Belt cities, Utica underwent an economic downturn throughout the mid-20th century. The decline consisted of industrial flight due to offshoring and the closure of textile mills, population loss caused by the relocation of jobs and businesses to suburbs and to Syracuse, and poverty associated with socioeconomic stress and a depressed tax base. With its low cost of living, the city has become a melting pot for refugees from war-torn countries around the world, encouraging growth for its colleges and universities, cultural institutions and economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "utica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2788,
+    "attempt": 2766,
+    "place_id": "gn-5909629",
+    "input": {
+      "place": {
+        "place_id": "gn-5909629",
+        "name": "Brossard",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.45008,
+        "lon": -73.46583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brossard",
+          "url": "https://en.wikipedia.org/wiki/Brossard",
+          "text": "Brossard ( bross-AR, BROSS-ard, French: [bʁɔsaʁ], locally [bʁɔsɑːʁ, bʁɔsɑɔ̯ʁ]) is a municipality in the Montérégie region of Quebec, Canada and is part of the Greater Montreal area. According to the 2021 census, Brossard's population was 91,525. It shares powers with the urban agglomeration of Longueuil and was a borough of the municipality of Longueuil from 2002 to 2006.\nAccording to the website of the city of Brossard, the municipality was named in honour of the Brossard family (the surname derives from a word meaning \"brushwood\"), a prominent settler family of the area whose presence was first attested in 1766. A member of this family, Georges-Henri Brossard, had been mayor of the predecessor parish municipality of La Prairie-de-la-Madeleine since 1944 and became the first mayor of Brossard.\nOther names that were considered included Maisonneuve (which was also considered as a possible name for the Champlain Bridge), La Vérendrye, Marquetteville, or Forgetville. The latter name, in honour of the recently deceased Mgr. Anastase Forget, bishop of Saint-Jean; however, Premier Maurice Duplessis intervened, to avoid the connotations of the English word \"forget,\" and the name Brossard was ultimately chosen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "brossard",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2789,
+    "attempt": 2767,
+    "place_id": "gn-6180176",
+    "input": {
+      "place": {
+        "place_id": "gn-6180176",
+        "name": "Whitchurch-Stouffville",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.00012,
+        "lon": -79.3163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitchurch-Stouffville",
+          "url": "https://en.wikipedia.org/wiki/Whitchurch-Stouffville",
+          "text": "Whitchurch-Stouffville  (population at the 2021 census 49,864) is a town in the Greater Toronto Area of Ontario, Canada, approximately 50 km (31 mi) north of downtown Toronto, and 55 km (34 mi) north-east of Toronto Pearson International Airport. It is 206.22 km2 (79.62 sq mi) in area, and located in the mid-eastern area of the Regional Municipality of York on the ecologically-sensitive Oak Ridges Moraine. Since 1993, its motto has been \"Country - Close to the City\".\nThe town is bounded by Davis Drive (York Regional Road 31) in the north, York-Durham Line (York Regional Road 30) in the east, and Highway 404 in the west. The southern boundary conforms with a position approximately 200 m (660 ft) north of 19th Avenue (York Regional Road 29), and is irregular due to the annexation of lands formerly part of Markham Township in 1971.\nBetween 2011 and 2021, the town grew 32.8%. The number of private dwellings jumped from 7,642 in 2001 to 16,705 in 2021, with an average of 3.0 people per private dwelling. The town projects a total population of 72,109 by 2031, and 91,654 in 2041, with most of the growth within the urban boundaries of the Community of Stouffville plus lands adjacent to Highway 48 and south of Stouffville Road. Future growth is governed provincially by the Oak Ridges Moraine Conservation Act (2001), the Greenbelt Protection Act (2005) and the Places to Grow Act (2005). The intent of these statutes is to prevent urban sprawl on environmentally sensitive land and to protect the ecological integrity of the moraine and its hydrological features."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "whitchurch stouffville",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "whitchurch",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "stouffville",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2790,
+    "attempt": 2768,
+    "place_id": "gn-702972",
+    "input": {
+      "place": {
+        "place_id": "gn-702972",
+        "name": "Lysychansk",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 48.91211,
+        "lon": 38.42088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lysychansk",
+          "url": "https://en.wikipedia.org/wiki/Lysychansk",
+          "text": "Lysychansk is a city in Sievierodonetsk Raion, Luhansk Oblast, eastern Ukraine. It is located on the high right bank of the Donets River, approximately 115 kilometres (71 mi) from the administrative center of the oblast, Luhansk. It faces Sievierodonetsk across the river, which is considered its twin city, and is also situated close by to Rubizhne and Kreminna. Its population before the Russian invasion of Ukraine was approximately 93,340 (2022 estimate)., making it the 40th-largest city in Ukraine and the fourth-largest city in Luhansk Oblast.\nLysychansk is popularly believed to have been settled permanently starting in 1710, with the founding of the Cossack settlement of Lisya Balka. In 1721, the settlement gained notoriety when the first ever coal in the entirety of the Donbas was discovered there, and in 1795, under orders by Empress Catherine II, the first ever mine in the Donbas was also set up in the area. The intended purpose of the mine was to supply the foundry in the also newly established city of Luhansk. Over the next few decades, the settlement would rapidly grow as a regional mining centre, eventually transitioning into the name Lysychansk in the 1850s–60s. After the October Revolution, it was claimed by the Soviet Union after a change of hands in late 1919. The settlement of Lysychansk was reclassified as a city in 1938, but was again devastated by World War II. After reconstruction, the city became known for its glass and coal mining industry, and eventually oil with the opening of the Lysychansk Oil Refinery. After the collapse of the Soviet Union, the city became part of a newly independent Ukraine. In 2014, during the War in the Donbas, the city was seized by pro-Russian separatists, who incorporated it into the self-proclaimed Luhansk People's Republic. Ukrainian troops regained the city in July 2014 after the separatists' defeat at the Siege of Sloviansk. After a few years of recovery, in 2022 during the Russian invasion of Ukraine, the city became the site again of the Battle of Lysychansk, which ended with the capture of the city by Russian forces and the Luhansk People's Republic on 2 July. Up to 12,000 were estimated to have remained in the city, according to Ukrainian authorities. Russia has claimed the city following its declared annexation of the region in September 2022.\nLysychansk has historically been a large industrial centre in Luhansk Oblast, known initially for its coal mining and then also its glass industry and oil. However, the city has been undergoing a major industrial collapse, especially after 2010, when most of the large industrial enterprises were closed. Cultural landmarks include the Steiger School, the two Polovtsian stone women, the monument to soldier-pilots with a L-29 aircraft, and the protected area of Congressiv Yar. The main museums of the city are the City Museum of Local Lore and the Museum of the History of Mining. The city was formerly home to many association football clubs that played at Shaktar Stadium; however, most of them have since been shut down. The city is also home to seven institutions of higher education, most notably the Mining-Industrial Professional College and the Lysychansk Medical Professional College. After the War in the Donbas, some universities also relocated to the city from occupied territory, including ones from Kadiivka and Brianka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 549
+    },
+    "banned_terms": [
+      {
+        "term": "lysychansk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2791,
+    "attempt": 2769,
+    "place_id": "gn-782756",
+    "input": {
+      "place": {
+        "place_id": "gn-782756",
+        "name": "Korçë",
+        "country": "Albania",
+        "subdivision": "Korçë County",
+        "lat": 40.61861,
+        "lon": 20.78083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Korçë",
+          "url": "https://en.wikipedia.org/wiki/Korçë",
+          "text": "Korçë (pronounced [ˈkɔɾtʃə]; Albanian definite form: Korça) is the eighth most populous city of Albania and the seat of Korçë County and Korçë Municipality. The total population of the city was 51,152 and 75,994 of Korçë municipality (2011 census), in a total area of 806 km2 (311 sq mi). It stands on a plateau some 850 m (2,789 ft) above sea level, surrounded by the Morava Mountains.\nThe area of the Old Bazaar, including Mirahori Mosque, is considered as the urban core of the city. Founded by the local Ottoman Albanian nobleman Ilias Bey Mirahori, the urban area of Korçë dates back to the late 15th century and the beginning of the 16th century, however its actual physiognomy was realized in the 19th century, during a period that corresponds with the rapid growth and development of the city. The Old Bazaar has played a dominant role in Albania's market history. Korçë is the largest city of eastern Albania and an important cultural and industrial centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "korce",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2792,
+    "attempt": 2770,
+    "place_id": "gn-1624827",
+    "input": {
+      "place": {
+        "place_id": "gn-1624827",
+        "name": "Tanjung Selor",
+        "country": "Indonesia",
+        "subdivision": "North Kalimantan",
+        "lat": 2.8375,
+        "lon": 117.36528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tanjung Selor",
+          "url": "https://en.wikipedia.org/wiki/Tanjung_Selor",
+          "text": "Tanjung Selor is a town and an administrative district (kecamatan) which serves as the capital of both the North Kalimantan province in Indonesia, and of the Bulungan Regency. It is among those provincial capitals in Indonesia that as of 2025 does not yet have city status, together with Mamuju in West Sulawesi, Sofifi in North Maluku, Nabire in Central Papua, Wamena in Highland Papua, Salor in South Papua, and Manokwari in West Papua. The district has an area of 677.77 km2 according to the regency official statistics (although the area is 1,207.13 km2 according to the district official statistics). It had a population of 39,439 at the 2010 Census  and 56,569 at the 2020 Census; the official estimate as at mid 2025 was 67,837.\nTanjung Selor District was formally established as an administrative district (kecamatan) within Bulungan Regency, after being separated from Tanjung Palas District, on 15 August 2002."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "tanjung selor",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tanjung",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "selor",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2793,
+    "attempt": 2771,
+    "place_id": "gn-1831142",
+    "input": {
+      "place": {
+        "place_id": "gn-1831142",
+        "name": "Sihanoukville",
+        "country": "Cambodia",
+        "subdivision": "Preah Sihanouk",
+        "lat": 10.60932,
+        "lon": 103.52958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sihanoukville",
+          "url": "https://en.wikipedia.org/wiki/Sihanoukville",
+          "text": "Sihanoukville (Khmer: ក្រុងព្រះសីហនុ, romanized: Krŏng Preăh Seihănŭ [kroŋ prĕəh səjhanuʔ]), also known as Kampong Saom (កំពង់សោម, Kâmpóng Saôm [kɑmpɔŋ saom]) or Preah Sihanouk (ព្រះសីហនុ, Preăh Seihănŭ [prĕəh səjhanuʔ]), is a coastal port city in Cambodia and the capital of Preah Sihanouk Province, at the tip of an elevated peninsula in the country's south-west on the Gulf of Thailand. The city has a string of beaches along its coastline and coastal marshlands bordering Ream National Park in the east. It has one navigable river, the mangrove-lined Ou Trojak Jet, running from Otres Pagoda to the sea at Otres. Several sparsely inhabited islands under Sihanoukville's administration are near the city.\nThe city was named in honor of the former king Norodom Sihanouk and as of 2008 had a population of around 89,800 and approximately 66,700 in its urban center. It encompasses the greater part of six communes (Sangkats) in Sihanoukville Province. It has evolved parallel to the construction of the Sihanoukville Autonomous Port, which commenced in 1955, as the country's gateway to direct and unrestricted international sea trade. Cambodia's only deep-water port, it includes an oil terminal and a transport logistics facility. The city has grown into Cambodia's main centre for coastal tourism and gambling, but it has also gained notoriety as a base for organized crime, including human trafficking, scams (particularly jobs, romance and pig butchering scams), among other illicit activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "sihanoukville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2794,
+    "attempt": 2772,
+    "place_id": "gn-2650405",
+    "input": {
+      "place": {
+        "place_id": "gn-2650405",
+        "name": "East Kilbride",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.76412,
+        "lon": -4.17669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Kilbride",
+          "url": "https://en.wikipedia.org/wiki/East_Kilbride",
+          "text": "East Kilbride (; Scottish Gaelic: Cille Bhrìghde an Ear [ˈkʲʰiʎə ˈvɾʲiːtʲə əɲ ˈɛɾ]), often referred to as EK, is the largest town in South Lanarkshire in Scotland, and the country's sixth-largest locality by population, with 76,607 inhabitants in 2022. Historically a small village, it was designated Scotland's first \"new town\" on 6 May 1947, and thereafter widely expanded. The area lies on a raised plateau to the south of the Cathkin Braes, about eight miles (thirteen kilometres) southeast of Glasgow and close to the boundary with East Renfrewshire.\nThe town ends close to the White Cart Water to the west and is bounded by the Rotten Calder Water to the east. Immediately to the north of the modern town centre is The Village, the part of East Kilbride that existed before its post-war development into a New Town. East Kilbride is twinned with the town of Ballerup, in Denmark."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "east kilbride",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kilbride",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2795,
+    "attempt": 2773,
+    "place_id": "gn-2783979",
+    "input": {
+      "place": {
+        "place_id": "gn-2783979",
+        "name": "Watermael-Boitsfort",
+        "country": "Belgium",
+        "subdivision": "Brussels Capital",
+        "lat": 50.80154,
+        "lon": 4.41436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Watermael-Boitsfort",
+          "url": "https://en.wikipedia.org/wiki/Watermael-Boitsfort",
+          "text": "Watermael-Boitsfort (French, pronounced [watɛʁmal bwafɔʁ] ) or Watermaal-Bosvoorde (Dutch, pronounced [ˈʋaːtərmaːl ˈbɔsfoːrdə] ; archaic spelling: Watermael-Boschvoorde), often simply called Boitsfort in French or Bosvoorde in Dutch, is one of the 19 municipalities of the Brussels-Capital Region, Belgium. Located in the south-eastern part of the region, it is bordered by Auderghem, the City of Brussels (namely the Bois de la Cambre/Ter Kamerenbos), Ixelles, and Uccle, as well as the Flemish municipalities of Hoeilaart, Overijse and Sint-Genesius-Rode. Like all municipalities in Brussels, it is officially bilingual (French–Dutch).\nAs of 1 January 2022, the municipality had a population of 25,187 inhabitants. The total area is 12.97 km2 (5.01 sq mi) of which 58% is covered by the Sonian Forest, which gives a population density of 1,942/km2 (5,030/sq mi), four times less than the average of Brussels. Its average annual income per inhabitant is also the highest in the region (€25,063 in 2020)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "watermael boitsfort",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "watermael",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "boitsfort",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2796,
+    "attempt": 2774,
+    "place_id": "gn-3174945",
+    "input": {
+      "place": {
+        "place_id": "gn-3174945",
+        "name": "Lecco",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.85589,
+        "lon": 9.39704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lecco",
+          "url": "https://en.wikipedia.org/wiki/Lecco",
+          "text": "Lecco (US:  LEK-oh, LAY-koh, Italian: [ˈlekko], locally [ˈlɛkko] ; Lecchese: Lecch [ˈlɛk]) is a city of 46,831 inhabitants in Lombardy, Northern Italy, 50 kilometres (31 mi) north of Milan. It lies at the end of the south-eastern branch of Lake Como (the branch is named Branch of Lecco / Ramo di Lecco). The Bergamo Alps rise to the north and east, cut through by the Valsassina of which Lecco marks the southern end.\nThe lake narrows to form the River Adda, so bridges were built there to improve road communications with Como and Milan. There are four bridges crossing the river Adda in Lecco: the Azzone Visconti Bridge (1336–1338), the Kennedy Bridge (1956), the Alessandro Manzoni Bridge (1985), and a railroad bridge.\nLecco obtained the title of city on 22 June 1848, and was elevated to province by decree of the President of the Republic of 6 March 1992.\nKnown for being the place where the writer Alessandro Manzoni set The Betrothed, the city is located in one of the vortices of the Larian Triangle. It overlooks the eastern branch of Lake Como and is included in the Orobic Prealps, between the Grigne mountain chain and the Resegone.\nAs a strategic crossroads for Valtellina, Lecco assumed increasing importance during the Middle Ages when it was annexed to the Duchy of Milan following the Peace of Constance. During the second half of the 19th century, under the Austrian dominion, the city went through a particularly flourishing period during which palaces and arcades in neoclassical style were constructed. After the unification of Italy, Lecco established itself as one of the most important industrial centers of the nation thanks to the development of the steel industries, which had been active since the 12th century. For this reason, Lecco is also called \"the Iron city\".\nLecco was named Alpine Town of the Year in 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "lecco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2797,
+    "attempt": 2775,
+    "place_id": "gn-3592286",
+    "input": {
+      "place": {
+        "place_id": "gn-3592286",
+        "name": "Nahualá",
+        "country": "Guatemala",
+        "subdivision": "Sololá",
+        "lat": 14.8429,
+        "lon": -91.31799
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nahualá",
+          "url": "https://en.wikipedia.org/wiki/Nahualá",
+          "text": "Nahualá (Spanish pronunciation: [nawaˈla]) is a municipality in the Sololá department of Guatemala.  The town is sometimes known as Santa Catalina Nahualá in honor of the town's patron saint, Saint Catherine of Alexandria, but the official name is just \"Nahualá\".  Formerly, the town's name was written Nagualá, and earlier transcriptions of the name in colonial documents include Nauala, Niguala, Niuala, and Navala.\nNahualá or Nawala' is also the Kʼicheʼ (Quiché) language name for the Nahualate River, which is called  Niwala' in the local Nahualá dialect.  The river has its source in the north of the township of Nahualá, and flows through the center of the town's cabecera (\"head-town\").\nNahualá is the location of radio station Nawal Estereo, the Internet-accessible modern successor to the station La Voz de Nahualá, which was founded in Nahualá with the assistance of Roman Catholic clerics from the Diocese of Helena Montana in the 1960s. Nowadays, the station broadcasts primarily in the Kʼicheʼ language, with some broadcasts also done in Kaqchikel and Spanish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "nahuala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2798,
+    "attempt": 2776,
+    "place_id": "gn-455890",
+    "input": {
+      "place": {
+        "place_id": "gn-455890",
+        "name": "Saldus",
+        "country": "Latvia",
+        "subdivision": "Saldus Rajons",
+        "lat": 56.66363,
+        "lon": 22.48807
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saldus",
+          "url": "https://en.wikipedia.org/wiki/Saldus",
+          "text": "Saldus (; German: Frauenburg, Yiddish: פֿרויענבורג, romanized: Froienburg) is a Latvian town and the center of Saldus Municipality, located in the Courland (Latvian: Kurzeme) region. The name Saldus has been noted in historical sources as far back as the mid-13th century, but the founding year for the establishment of the town is considered to be 1856, with the settlement gaining town rights in 1917.\nThe town is located in between Riga and Liepāja (slightly closer to Liepāja (100 km) than Riga (119 km). The Ciecere River flows through Saldus, and it is a tributary to one of Latvia’s biggest rivers, the Venta.\nThe city is often referred to as \"the Bowl of Courland\" because of a famous quote by Māris Čaklais: \"A drop of honey in the bowl of Courland\". The reasoning behind the quote is the fact that from a high point, the city looks like a crater.\nAs of January 2025, Saldus is the 18th-largest city in Latvia according to population data. In 2025, the town had a population of 9,553."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "saldus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2799,
+    "attempt": 2777,
+    "place_id": "gn-5102213",
+    "input": {
+      "place": {
+        "place_id": "gn-5102213",
+        "name": "Orange",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.77066,
+        "lon": -74.23265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orange, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Orange,_New_Jersey",
+          "text": "The City of Orange (known simply as Orange) is a township in Essex County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 34,447, an increase of 4,313 (+14.3%) from the 2010 census count of 30,134, which in turn reflected a decline of 2,734 (-8.3%) from the 32,868 counted in the 2000 census.\nThe New Jersey Legislature originally incorporated Orange as a township on November 27, 1806, from parts of what was then Newark Township. Parts of the township were taken on April 14, 1834, to form the now-defunct Clinton Township. On January 31, 1860, Orange was reincorporated as a town. Parts of the town were taken to form South Orange Township (April 1, 1861, now known as Maplewood), Fairmount (March 11, 1862, since a part of West Orange), East Orange (March 4, 1863) and West Orange (April 10, 1863). On April 3, 1872, Orange was reincorporated as a city. In 1982, the city was one of four Essex County municipalities to pass a referendum to become a township, joining 11 municipalities that had already made the change, of what ultimately were more than a dozen Essex County municipalities to reclassify themselves as townships to take advantage of federal revenue sharing policies that allocated townships a greater share of government aid to municipalities on a per capita basis. The city derives its name from William III of England or William IV, Prince of Orange.\nDespite the differences in the municipalities' character, Orange, East Orange, South Orange and West Orange are sometimes jointly called The Oranges.\nIn 2020, the township had New Jersey's 12th-highest property tax rate, with an equalized rate of 4.679% compared to 2.824% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "orange",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2800,
+    "attempt": 2778,
+    "place_id": "gn-5128481",
+    "input": {
+      "place": {
+        "place_id": "gn-5128481",
+        "name": "New City",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.1476,
+        "lon": -73.98931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New City, New York",
+          "url": "https://en.wikipedia.org/wiki/New_City,_New_York",
+          "text": "New City is a hamlet and census-designated place in the town of Clarkstown in Rockland County, New York, United States, part of the New York metropolitan area. A suburb of New York City, the hamlet is located 18 miles (29 km) north of the city at its closest point, Riverdale, Bronx. Within Rockland County, New City is located north of Bardonia, northeast of Nanuet, east of New Square and New Hempstead, south of West Haverstraw and the village of Haverstraw, and west of Congers (across Lake DeForest). New City's population was 35,101 at the 2020 census, making it the 14th most populous CDP/hamlet in the state of New York.\nNew City is the county seat, seat of the town of Clarkstown and the location of the Clarkstown Police Department, Rockland County Sheriff's office and corrections facility. The downtown area is one of the main business districts in the county. The ZIP code of New City is 10956."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "new city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2801,
+    "attempt": 2779,
+    "place_id": "gn-6354957",
+    "input": {
+      "place": {
+        "place_id": "gn-6354957",
+        "name": "Hervey Bay",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -25.28762,
+        "lon": 152.76936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hervey Bay",
+          "url": "https://en.wikipedia.org/wiki/Hervey_Bay",
+          "text": "Hervey Bay ( HAR-vee) is a city on the coast of the Fraser Coast Region of  Queensland, Australia. The city is situated approximately 290 kilometres (180 mi) or 3½ hours' highway drive north of the state capital, Brisbane. It is located on the bay of the same name open to the Coral Sea between the Queensland mainland and nearby K'gari (also known as Fraser Island). The local economy relies on tourism which is based primarily around whale watching in Platypus Bay to the north, ferry access to K'gari, accessible recreational fishing and boating and the natural north facing, calm beaches with wide undeveloped foreshore zones.  In October 2019, Hervey Bay was named the First Whale Heritage Site in the world by the World Cetacean Alliance, for its commitment to and practices of sustainable whale and dolphin watching.\nIn the 2021 census, Hervey Bay had a population of 57,722 people.  A 2010 study by Deakin University showed that people on the Fraser Coast area including Hervey Bay, were the happiest in Australia.\nThe area that became Hervey Bay is on the traditional lands of the Butchulla people. The city takes its name from Hervey Bay, named by James Cook in 1770 in honour of Augustus Hervey, 3rd Earl of Bristol. Several small townships developed along the bayside, the earliest being Pialba in 1863. From 1863 to 1906, the Wide Bay region became a central part of the Pacific Slave trade, with more than 12 thousand South Sea Islanders brought to the cotton and sugarcane plantations in Maryborough and Hervey Bay. During World War II, the region operated a training school for the Z Special Unit special forces. Hervey Bay boomed from the 1980s on and was proclaimed a city in 1984."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 290
+    },
+    "banned_terms": [
+      {
+        "term": "hervey bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hervey",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2802,
+    "attempt": 2780,
+    "place_id": "gn-1702934",
+    "input": {
+      "place": {
+        "place_id": "gn-1702934",
+        "name": "Malaybalay",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.1575,
+        "lon": 125.12778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malaybalay",
+          "url": "https://en.wikipedia.org/wiki/Malaybalay",
+          "text": "Malaybalay, officially the City of Malaybalay (Binukid: Bánuwa ta Malaybaláy; Cebuano: Siyudad sa Malaybalay), is a  component city and capital of the province of Bukidnon, Philippines. According to the 2024 census, it has a population of 195,046 people.\nThe city, dubbed as the \"South Summer Capital of the Philippines\", is bordered north by Impasugong; west by Lantapan; south by Valencia and San Fernando; and east by Cabanglasan and Agusan del Sur.\nIt was formerly part of the province of Misamis Oriental as a municipal district in the late 19th century. When the special province of Agusan (now Agusan del Norte and Agusan del Sur) and its sub-province (Bukidnon) were created in 1907, Malaybalay was designated as the capital of Bukidnon. It was then formally established as a municipality on October 19, 1907, and was created into a city on February 11, 1998, by virtue of Republic Act 8490.\nMalaybalay City is the venue of the Kaamulan Festival, held annually from mid-February to March 10."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "malaybalay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
