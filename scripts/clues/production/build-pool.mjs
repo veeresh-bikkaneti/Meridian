@@ -23,7 +23,11 @@
 //      then places carrying a merged Wikipedia history hook first,
 //      then longer extracts first, then place id ascending (total
 //      order — no ties survive).
-//   5. Working pool = top POOL_LIMIT of the ranking.
+//   5. Working pool = every candidate above the floor, in fame-rank
+//      order (POOL_LIMIT is a safety cap above the candidate count).
+//      Generation ATTEMPT order is a separate, documented sequencing
+//      (build-attempt-queue.mjs); assembly order is always this
+//      fame rank.
 //
 // Outputs (committed):
 //   pool.jsonl           one §9 input object per line, rank order
@@ -50,7 +54,7 @@ const CACHE_PATH =
 const OUT_DIR = HERE;
 
 export const MIN_EXTRACT_WORDS = 100;
-export const POOL_LIMIT = 2500;
+export const POOL_LIMIT = 11000; // safety cap; actual candidate count is lower
 
 const COUNTRY_NAMES = new Intl.DisplayNames(["en"], { type: "region" });
 export function countryName(iso2) {
@@ -188,7 +192,7 @@ re-running on the same dataset + cache reproduces pool.jsonl exactly).
 | Cache records matched with a non-empty extract | ${funnel.cacheMatchedWithExtract} |
 | … joined to a dataset place | ${funnel.joinedDatasetAndCache} |
 | … at or above the substance floor (${MIN_EXTRACT_WORDS} extract words) | ${funnel.aboveSubstanceFloor} |
-| Working pool (top ${POOL_LIMIT} by fame rank) | ${funnel.poolSize} |
+| Working pool (all candidates above the floor, fame-ranked) | ${funnel.poolSize} |
 
 ## Fame ranking (total order, no ties)
 
