@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 5563,
+    "attempt": 5521,
+    "place_id": "gn-1528512",
+    "input": {
+      "place": {
+        "place_id": "gn-1528512",
+        "name": "Cholpon-Ata",
+        "country": "Kyrgyzstan",
+        "subdivision": "Issyk-Kul",
+        "lat": 42.64944,
+        "lon": 77.08225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cholpon-Ata",
+          "url": "https://en.wikipedia.org/wiki/Cholpon-Ata",
+          "text": "Cholpon-Ata is a resort town on the northern shore of Lake Issyk-Kul in Kyrgyzstan with a population of 14,237 (2021). It is the administrative center of the Issyk-Kul District of Issyk-Kul Region; this district occupies most of the lake's north shore. To the west along highway A363 is Tamchy and to the east is Bosteri.\nThe town contains numerous large and small sanatoria, hotels and guesthouses to accommodate the many visitors who descend upon the lake in summer. During the Soviet era it was much frequented by vacationers brought here in organized mass tours from other parts of the USSR. Holidaymakers now usually visit on their own or in small groups and originate mainly from Kyrgyzstan, Kazakhstan, Uzbekistan and Russia with some tourists from other countries. Attracting more demanding foreign tourists will require upgrading of the existing facilities, but the location is certainly attractive. The view of the imposing alpine ranges of the Tian Shan across the lake is impressive. There is a local museum and an open-air site with about 2000 petroglyphs dating from 800 BC to 1200AD.\nThe first three World Nomad Games were held in Cholpon-Ata, in 2014, 2016, and 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "cholpon ata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cholpon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5564,
+    "attempt": 5522,
+    "place_id": "gn-1724936",
+    "input": {
+      "place": {
+        "place_id": "gn-1724936",
+        "name": "Binondo",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.603,
+        "lon": 120.974
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Binondo",
+          "url": "https://en.wikipedia.org/wiki/Binondo",
+          "text": "Binondo (Chinese: 岷倫洛; pinyin: Mínlúnluò; Pe̍h-ōe-jī: Bîn-lûn-lo̍h; Tagalog: Distrito ng Binondo) is a district in Manila and is referred to as the city's Chinatown. Its influence extends beyond to the places of Quiapo, Santa Cruz, San Nicolas and Tondo. It is the oldest Chinatown in the world, established in 1594 by the Spaniards as a settlement near Intramuros but across the Pasig River for Catholic Chinese; it was positioned so that the colonial administration could keep a close eye on their migrant subjects. It was already a hub of Chinese commerce even before the Spanish colonial period. Binondo is the center of commerce and trade of Manila, where all types of business run by Chinese Filipinos thrive.\nNoted residents include Saint Lorenzo Ruiz, the Filipino protomartyr, and Venerable Mother Ignacia del Espiritu Santo, founder of the Congregation of the Religious of the Virgin Mary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "binondo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5565,
+    "attempt": 5523,
+    "place_id": "gn-2408329",
+    "input": {
+      "place": {
+        "place_id": "gn-2408329",
+        "name": "Kabala",
+        "country": "Sierra Leone",
+        "subdivision": "Northern Province",
+        "lat": 9.58893,
+        "lon": -11.55256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kabala, Sierra Leone",
+          "url": "https://en.wikipedia.org/wiki/Kabala,_Sierra_Leone",
+          "text": "Kabala (Pular : 𞤑𞤢𞤦𞤢𞤤𞤢) is the capital and largest town of Koinadugu District in the Northern Province of Sierra Leone. Kabala is one of the main towns in Northern Sierra Leone and is set in a rural landscape, surrounded by mountains.\nKabala lies approximately 85 miles (137 km) north-east of Makeni, the largest city in the north, and approximately 200 miles (320 km) east of the capital Freetown.\nKabala had a population of 14,108 in the 2004 census, and a current estimate of 18,770 \nThe population of Kabala is predominantly Muslim, though there is a substantial Christian minority.\nKabala is an agricultural centre and lies on the far north of Sierra Leone, with close proximity to Kono District and the international border with Guinea . Kabala is one of the largest towns in Sierra Leone in total land area; but is less densely populated.\nKabala is one of the most ethnically diverse cities in Sierra Leone, with no single ethnic group forming a majority. Like the rest of Koinadugu District, the inhabitants of Kabala are largely from the Kuranko, Mandingo, Yalunka, Limba and Fula ethnic groups. As with most parts of Sierra Leone, the Krio language of the Sierra Leone Creole people is the most widely spoken language in Kabala.\nSierra Leone's former president Ernest Bai Koroma celebrated the 2012 New Year in Kabala. President Koroma held a townhall meeting at the Yogomaia Field in Kabala and attended new year church services at the Holy Martyrs Catholic Church in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "kabala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5566,
+    "attempt": 5524,
+    "place_id": "gn-2641612",
+    "input": {
+      "place": {
+        "place_id": "gn-2641612",
+        "name": "New Mills",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.36592,
+        "lon": -1.99986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Mills",
+          "url": "https://en.wikipedia.org/wiki/New_Mills",
+          "text": "New Mills is a town in the Borough of High Peak, Derbyshire, England, 8 miles (13 km) south-east of Stockport and 13 miles (21 km) from Manchester at the confluence of the River Goyt and Sett. It is close to the border with Cheshire and above the Torrs, a 70 feet (21 m) deep gorge cut through carboniferous sandstone, on the north-western edge of the Peak District National Park.\nNew Mills has a population of approximately 12,000, in a civil parish which includes the villages and hamlets of Whitle, Thornsett, Hague Bar, Rowarth, Brookbottom, Gowhole and Birch Vale.\nNew Mills was first noted for coal mining, then for cotton spinning, bleaching and calico printing. It was served by the Peak Forest Canal, three railway lines and the A6 trunk road. Redundant mills were bought up in the mid-twentieth century by sweet manufacturer Swizzels Matlow. New Mills was a stronghold of Methodism. \nNew Mills is twinned with Alsfeld, Germany, and a road is named in honour of its twin town called Alsfeld Way."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "new mills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5567,
+    "attempt": 5525,
+    "place_id": "gn-2647391",
+    "input": {
+      "place": {
+        "place_id": "gn-2647391",
+        "name": "Hartshill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.54831,
+        "lon": -1.52221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hartshill",
+          "url": "https://en.wikipedia.org/wiki/Hartshill",
+          "text": "Hartshill is a large village and civil parish in North Warwickshire, England, contiguous with the much larger town of Nuneaton, the town centre of which is 2.5 miles (4 km) to the south-east. The parish borders the district of Nuneaton and Bedworth at the south, the North Warwickshire district parishes of Ansley at the south-west, Mancetter at the north-west, and Caldecote at the east, and the parish of Witherley in Leicestershire to the north-east from which it is separated by the A5 road. The market town of Atherstone is 3.5 miles (6 km) to the north-west.\nAt the 2021 census, the civil parish of Hartshill, which also includes the hamlet of Oldbury had a population of 3,655.\nThe village stands on a hill overlooking the Leicestershire plains to the north. The county boundary is defined by the A5 road, the former Roman Watling Street. The area has been settled since at least the Iron Age, just west of Hartshill are the remains of an Iron Age hill fort. The village was mentioned in the Domesday Book as Hardreshull, derived from the old English term meaning Heardred's Hill. Near the centre of the village are the remains of Hartshill Castle, a medieval castle. \nThe village grew due to its quarrying industry, which quarried red syenite and manganese from the local hillside. At one time there were several industrial tramways serving the local quarries and connecting them to the nearby Trent Valley railway line and Coventry Canal. The Talyllyn Railway locomotive Midlander was purchased in 1957 from Jee's quarries at Hartshill.\nThe most famous person associated with Hartshill was the Elizabethan poet Michael Drayton, who was born at Chapel Cottage in Hartshill Green in 1563. The cottage in which he was born was pulled down in 1941 due to a road widening scheme. There was a memorial to him in the form of the village bus shelter, which was erected in 1972, and was made from local stone and shaped like a scroll. This was removed around 2006 due to vandalism and replaced by a plaque. Michael Drayton Junior School in Hartshill also bears his name. Other schools in the village include Hartshill Academy secondary school.\nThe village church of Holy Trinity was built as a commissioners' church between 1843 and 1848 by T. L. Walker. It is made from local stone, and is noted for its large doorway which has six orders of columns and arches. The church is grade II listed.\nThe parish has five pubs: The Stag & Pheasant, The Malt Shovel, Royal Oak, the Hartshill Club, and The Anchor which is on the Coventry Canal.\nImmediately west of the village is the Hartshill Hayes Country Park, which covers 137 acres (55 ha) of woodland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 456
+    },
+    "banned_terms": [
+      {
+        "term": "hartshill",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5568,
+    "attempt": 5526,
+    "place_id": "gn-3062257",
+    "input": {
+      "place": {
+        "place_id": "gn-3062257",
+        "name": "Vysočany",
+        "country": "Czechia",
+        "subdivision": "Prague",
+        "lat": 50.10938,
+        "lon": 14.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vysočany",
+          "url": "https://en.wikipedia.org/wiki/Vysočany",
+          "text": "Vysočany (German: Wissotschan) is a part of Prague in the Prague 9 administrative district (partly in Prague 3), Czech Republic. It lays in the eastern part of Prague around the valley with Rokytka river.History\n\nThe first recorded information about Vysočany is from 1115 when the duke Vladislav I. gave Vysočany vineyards to Kladruby monastery.\nIn 1896 - Emil Kolben - important Czech engineer and entrepreneur (former employee and friend of Thomas Edison) founded its factory which later became the famous ČKD. This strongly influenced Vysočany as a heavily industrial district of Prague.\nIn the year 1902 - the emperor Franz Joseph I of Austria awarded Vysočany with the title of city and the right to use its coat of arms.\n1911 - Vysočany Town Hall was built\nIn 1922 - Vysočany became part of Prague.\nIn 1939 - after the Nazi invasion of Prague. The majority of industrial production had to be refocused on military production to support Nazi-Germany war\nIn 1942 - several families from Vysočany were involved in the Operation Anthropoid (assassination of Reinhard Heydrich)\nIn 1945 - during the end of World War II the district was heavily damaged during the Bombing of Prague. The targets were factories which were forced to produce military material.\nIn 1968 - after the invasion of Russian armies - there was a special convention of the Czechoslovak Communist Party held in Vysočany which strongly condemned the invasion of the Soviet armies.\nSince 1990s - the new era after Velvet Revolution saw Vysočany transforming from heavily industrial district to new modern residential part of Prague. Big part of construction is focused on the \"brown-fields\" after former factories."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 275
+    },
+    "banned_terms": [
+      {
+        "term": "vysocany",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5569,
+    "attempt": 5527,
+    "place_id": "gn-3492030",
+    "input": {
+      "place": {
+        "place_id": "gn-3492030",
+        "name": "Vicente Noble",
+        "country": "Dominican Republic",
+        "subdivision": "Barahona Province",
+        "lat": 18.38443,
+        "lon": -71.18009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vicente Noble",
+          "url": "https://en.wikipedia.org/wiki/Vicente_Noble",
+          "text": "Vicente Noble is a municipality in the Barahona province in the Dominican Republic.\nIt is bordered on the north by the Padre Las Casas municipality, Azua Province and Vallejuelo in San Juan Province; to the east by the Azua de Compostela municipality; to the south by the Jaquimeyes section in Barahona Province; and to the west by Tamayo municipality, Neiba municipality, and the Yaque del Sur River that acts as a limit for both these municipalities.\nVicente Noble was founded by two families from Azua de Compostela. The town was given various names until it was called Vicente Noble by President Rafael Trujillo in commemoration of the actions of General Vicente Noble in battles against the Haitians.\nThe Vicente Noble municipality is primarily agricultural. The crops of highest productivity are plantain, banana, coconut, tomatoes, pepper, eggplant, yucca, rice, beans, maize, \"guandules\" and sweet potato.\nThousands of emigrants from Vicente Noble now live in Spain and the United Kingdom and do domestic work and construction, and many others practice nursing and teaching, and a few have become professional actors, runners, and footballers. Their remittance of money constitutes an important source of income for the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "vicente noble",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vicente",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noble",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5570,
+    "attempt": 5528,
+    "place_id": "gn-4179667",
+    "input": {
+      "place": {
+        "place_id": "gn-4179667",
+        "name": "Americus",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.07239,
+        "lon": -84.23269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Americus, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Americus,_Georgia",
+          "text": "Americus is the county seat of Sumter County, Georgia, United States. As of the 2020 census, the city had a population of 16,230. It is the principal city of the Americus Micropolitan Statistical Area, a micropolitan area that covers Schley and Sumter counties and had a combined population of 36,966 at the 2000 census.\nHabitat for Humanity was founded in Americus and its international headquarters is there, as well as The Fuller Center for Housing's international headquarters, Georgia Southwestern State University, the Windsor Hotel, The Rosalynn Carter Institute for Caregivers, and many other organizations. The city is notable for its rich history, including a large business and residential historic district, being one of the 29 places where Martin Luther King was jailed, the infamous Leesburg Stockade incident, and its close proximity to Jimmy Carter National Historical Park, Andersonville National Historic Site, and Koinonia Farm."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "americus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5571,
+    "attempt": 5529,
+    "place_id": "gn-5102190",
+    "input": {
+      "place": {
+        "place_id": "gn-5102190",
+        "name": "Old Tappan",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.01065,
+        "lon": -73.99125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Old Tappan, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Old_Tappan,_New_Jersey",
+          "text": "Old Tappan (English pronunciation: /tæˈpæːn/  ) is a borough in northern Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 5,888, an increase of 138 (+2.4%) from the 2010 census count of 5,750, which in turn reflected an increase of 268 (+4.9%) from the 5,482 counted in the 2000 census.\nOld Tappan was incorporated as a borough by an act of the New Jersey Legislature on October 18, 1894, from portions of Harrington Township, based on the results of a referendum held two days earlier. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. On April 23, 1896, additional territory was annexed from Harrington Township. The borough's name is derived from the Tappan tribe of Native Americans."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "old tappan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "old",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tappan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5572,
+    "attempt": 5530,
+    "place_id": "gn-5137849",
+    "input": {
+      "place": {
+        "place_id": "gn-5137849",
+        "name": "Sheepshead Bay",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.59122,
+        "lon": -73.94458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sheepshead Bay, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Sheepshead_Bay,_Brooklyn",
+          "text": "Sheepshead Bay is a neighborhood in southern Brooklyn, New York City. It is bounded by Ocean Parkway to the west; Kings Highway to the north; Nostrand Avenue and Gerritsen Avenue to the east; and the Atlantic Ocean to the south. Sheepshead Bay is abutted by the neighborhoods of Brighton Beach, Manhattan Beach, Coney Island and Homecrest, to the west; Midwood to the north; and Gerritsen Beach to the east.\nThe neighborhood is named after a bay that separates mainland Brooklyn from the eastern portion of Coney Island & the Southern portion of Manhattan Beach & Brighton Beach which was originally one of the Outer Barrier islands but is now a peninsula. The mouth of the bay is about 1.0 mile (1.6 km) southwest of Marine Park.\nSheepshead Bay is part of Brooklyn Community District 15, and its primary ZIP Codes are 11229 and 11235. It is patrolled by the 61st Precinct of the New York City Police Department. Politically it is represented by the New York City Council's 46th and 48th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "sheepshead bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sheepshead",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5573,
+    "attempt": 5531,
+    "place_id": "gn-5332748",
+    "input": {
+      "place": {
+        "place_id": "gn-5332748",
+        "name": "California City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 35.1258,
+        "lon": -117.9859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "California City, California",
+          "url": "https://en.wikipedia.org/wiki/California_City,_California",
+          "text": "California City is a city located in northern Antelope Valley in Kern County, California, United States. It is 100 miles (160 km) north of the city of Los Angeles, and the population was 14,973 at the 2020 census. Covering 203.63 square miles (527.4 km2), California City has the third-largest land area of any city in the state of California (behind San Diego and Los Angeles), and is the largest city in California, by land area, that is not a county seat. It is the 43rd-largest city in the United States by land area. Despite its massive size, a large portion of the city remains unfinished, with a grid of paved roads that have no houses and have yet to be completed.\nMany of the city's residents are employed at Edwards Air Force Base, which is located 18 miles (29 km) southeast of the city. Other major employers are the California City Detention Facility, Mojave Air and Space Port (and its flight test facility) and the Hyundai/Kia Proving Grounds, located in the rural southwestern part of the city. California City also has a park, a PGA golf course, and a municipal airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "california city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "california",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5574,
+    "attempt": 5532,
+    "place_id": "gn-5949247",
+    "input": {
+      "place": {
+        "place_id": "gn-5949247",
+        "name": "Erin",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.7729,
+        "lon": -80.06436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erin, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Erin,_Ontario",
+          "text": "Erin () is a town in Wellington County, approximately 80 kilometres (50 mi) northwest of Toronto, Ontario, Canada. Erin is bordered by the Town of Caledon, Ontario to the east, the Town of Halton Hills to the south, the Township of Guelph/Eramosa to the west and the Township of East Garafraxa to the north.\nThe amalgamated town is composed of the former villages of Erin and Hillsburgh, both urban centres now, as well as the former Township of Erin (which contained the hamlets of Ballinafad, Brisbane, Cedar Valley, Crewson's Corners, Ospringe and Orton). Erin's Town Council includes a Mayor and four councillors. Its upper tier government is provided by Wellington County.\nErin is primarily a rural community but, while farming is still an important activity in the town, most of its population works in the nearby cities of Brampton, Mississauga, Guelph, and even Toronto.  The town's new industrial park is attracting a number of new industries, due to its cheaper tax rate, accessibility to transportation, and its location within the \"Technology Triangle,\" a series of high-tech driven cities including nearby Kitchener, Waterloo  and Cambridge.\nThe community not for profit organization is East Wellington Community Services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "erin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5575,
+    "attempt": 5533,
+    "place_id": "gn-616250",
+    "input": {
+      "place": {
+        "place_id": "gn-616250",
+        "name": "Sevan",
+        "country": "Armenia",
+        "subdivision": "Gegharkunik",
+        "lat": 40.548,
+        "lon": 44.95314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sevan, Armenia",
+          "url": "https://en.wikipedia.org/wiki/Sevan,_Armenia",
+          "text": "Sevan (Armenian: Սևան [sɛˈvɑn]) is a city as well as one of the most popular resorts in Armenia, located in the Sevan Municipality of the Gegharkunik Province on the northwestern shores of Lake Sevan. The town is built at a height of more than 1,925 metres (6,316 feet) above sea level, 65 km (40 mi) northeast of the capital Yerevan, and 35 km (22 mi) north of the provincial centre Gavar.\nSevan is surrounded by the Sevan National Park, a natural protected area extending from the northeastern parts of the town to the southwest, while Lake Sevan forms the natural border of the city to the east.\nAs of the 2011 census, the population of the town was 19,229, and as per the 2016 official estimate, the population of Sevan is 19,200. As of the 2022 census, the population of the town was 18,705."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "sevan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5576,
+    "attempt": 5534,
+    "place_id": "gn-727987",
+    "input": {
+      "place": {
+        "place_id": "gn-727987",
+        "name": "Veliki Preslav",
+        "country": "Bulgaria",
+        "subdivision": "Shumen",
+        "lat": 43.16667,
+        "lon": 26.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Veliki Preslav",
+          "url": "https://en.wikipedia.org/wiki/Veliki_Preslav",
+          "text": "The modern Veliki Preslav or Great Preslav (Bulgarian: Велики Преслав, pronounced [vɛˈliki prɛˈsɫaf]), former Preslav (Bulgarian: Преслав; until 1993), is a city and the seat of government of the Veliki Preslav Municipality (Great Preslav Municipality, new Bulgarian: obshtina), which in turn is part of Shumen Province, Bulgaria. Veliki Preslav is situated at an altitude of 132 m (92 m above sea level).\nA former village, it assumed the name of the medieval capital in 1878 and became a town in 1883. As of December 2009, it had a population of 8,951.\nPreslav was the capital of the First Bulgarian Empire from 893 to 972 and was one of the most important cities in medieval Southeastern Europe. The ruins of the city are situated in modern northeastern Bulgaria, some 20 kilometres southwest of the regional capital of Shumen, and are currently a national archaeological reserve."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "veliki preslav",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "veliki",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "preslav",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5577,
+    "attempt": 5535,
+    "place_id": "gn-730866",
+    "input": {
+      "place": {
+        "place_id": "gn-730866",
+        "name": "Isperih",
+        "country": "Bulgaria",
+        "subdivision": "Razgrad",
+        "lat": 43.71667,
+        "lon": 26.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Isperih",
+          "url": "https://en.wikipedia.org/wiki/Isperih",
+          "text": "Isperih (Bulgarian: Исперих [ispɛˈrix]; Turkish: Kemallar) is a town in northeastern Bulgaria, part of Razgrad Province, situated in the central part of the Ludogorie region. It is the administrative centre of the eponymous Isperih Municipality. As of December 2024, the town had a population of 7,107.Isperih was called Kemallar during the Ottoman rule of Bulgaria and was later renamed in honour of Bulgarian khan Asparuh, whose name in Slavic was Isperih.\nThe town has a mixed population of Bulgarians and Turks, with an Orthodox church and a mosque being present. Isperih emerged in 1545 at the place of a medieval settlement, with the earliest known traces of human presence in the area dating from the Bronze Age. The village was first mentioned as Kemallar in an Ottoman tax register from 1573 and was renamed Isperih in 1934, becoming a town on 31 January 1960.\n\nThe Thracian Tomb of Sveshtari, a UNESCO World Heritage Site, is located nearby. Another landmark in the area is the 17th-century Bektashi Demir Baba Tekke, uniting Bektashi, Sunni, Christian and pagan traditions. The oldest active windmill in the country can also be found in Isperih municipality; it was built in the early 19th century. [1] Archived 2011-07-06 at the Wayback Machine"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "isperih",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5578,
+    "attempt": 5536,
+    "place_id": "gn-933000",
+    "input": {
+      "place": {
+        "place_id": "gn-933000",
+        "name": "Tonota",
+        "country": "Botswana",
+        "subdivision": "Central",
+        "lat": -21.44236,
+        "lon": 27.46153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tonota",
+          "url": "https://en.wikipedia.org/wiki/Tonota",
+          "text": "Tonota is a village located in the Central District of Botswana.\nThe people in Tonota are said to be Bakhurutshe who fought against some other tribes they found there and after winning the war, they owned the land and they became 'Ba bina kgama le phofu'. The name Tonota is said to be spelled THONOTHA (pronounced DONOTHA) in natural Sekhurutshe but was changed to Tonota due to the influence of the Tswana Languages. The village is located 27 kilometers south of the City of Francistown along the A1 (Francistown-Gaborone) road. It lies along the Southwest bank of Shashe River, which happens to the border between the Central and North East Districts, so Tonota is considered to be in the Central District. Tonota is a large territory divided into small segments, namely: Tonota Village in the South, Semotswane, Mandunyane, and Shashe Bridge to the north. The chief of the Tonota village is Kgosi Bokamoso Radipitse who took over the chieftainship from his father, Ramosinyi Radipitse who retired from the chieftaincy throne  in 2016 due to old age.\nIt was promoted to sub-district from under Tutume in 2003. There are 10 primary schools in Tonota:\n\nMadisakwana Memorial School\nMoutlwatsi Memorial school\nRauwe Memorial school\nTonota Primary school\nKgosi Sekoko Memorial school\nJohn Phooko Memorial Primary school\nTholodi Primary school\nSemotswane Primary school\nMandunyane Primary School\nMasedi Primary school\nThere are also 3 junior secondary schools:\n\nLetlhabile Junior School\nRutwang Junior School\nTonota Junior School\nAnd a senior school which is Shashe River School.\nThere is also a college (Tonota College of Education(TCE)).\nThe current member of parliament for Tonota is Hon. Gaefele Sedombo.\nOther great politicians and leaders to have come out of this expansive village include former cabinet ministers and MPs like: Mr Lemme Makgekgenene, Mr Patrick Balopi, former Deputy Speaker of the National Assembly and MP, Mr Pono P. Moatlhodi and the former minister of Finance and Development Planning, Kenneth Mathambo,  Michael Mzwinila, among others.\nThe first people settled between 1912 and 1914 from Selepeng/Leshongwane in the north east part of the country. They were led by Kgosi Rauwe Sekoko who originated from Lehurutshe in Dinokaneng in South Africa.\nBefore settling in the north east it is understood that Bahurutshe first settled with Bangwato in the old Palapye and when Bangwato relocated to Serowe, they herded for the north east.\nFrom the north east they were joined by some Bakalanga as they permanently settled in Tonota. The name of the tribe is originally Mohurutshe and Mokhurutshe was derived from the Kalanga name Ndikhurutshe.\n\nTonota like many other villages in Botswana, has many tribes living in it but the majority are Bakhurutshe who occupy the Tholo, Molebatsi, Maaloso, Maunya, Madisakwana and Mhakamme wards, and Bakalanga who live in the Manyanda ward. There are also Barotsi in Leomboko ward and BaShona(Zezuru) in Mandunyane. Most of the people from Tonota speak Sekhurutshe-SeNgwato (a language which is merely an inclusion of Kalanga-like words in SeNgwato) and Kalanga.\nThe economy of the village is mainly dependent on cattle rearing, horticulture and rain fed agriculture. There is a good number of people who work in both the government and the private sector.\nTonota village recently (5 - 7 September 2014) celebrated 100 years of existence amidst splendor and sharing of historical thoughts by the few who could still remember the long history of Bakhurutshe since 1914.\nTonota is not only known as the land of ‘Manyonyomane’ (fat-cakes) but it is also home to Mr Kebatlamang Morake, who was the first cabinet minister to act as President of Botswana.\nAlso to take note of; is the Soccer team which originate from Tonota by the name Tonota Football Club a.k.a. Sepondo Sea Debola. The team is in the First Division under the Botswana Football Association; and the Manager of the team is Mr. Maokaneng Bontshetse."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 144,
+      "fullExtractWords": 637
+    },
+    "banned_terms": [
+      {
+        "term": "tonota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5579,
+    "attempt": 5537,
+    "place_id": "gn-11593055",
+    "input": {
+      "place": {
+        "place_id": "gn-11593055",
+        "name": "Denton Holme",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.885,
+        "lon": -2.941
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denton Holme",
+          "url": "https://en.wikipedia.org/wiki/Denton_Holme",
+          "text": "Denton Holme is an inner city district in Carlisle, Cumbria, England. The population of this ward was 6,383, according to the 2011 census.\n\nDenton Holme is usually regarded as a \"village within the city\" and is situated to the immediate south west of the city centre on the western bank of the River Caldew.  A man-made stream or mill race known as the Little Caldew flows through and underneath the area.\n\nToday it is mostly a residential area, but in the nineteenth century and most of the twentieth century, along with the neighbouring districts of Caldewgate and Wapping, it was Carlisle's main industrial district with many textile mills, engineering works and other factories such as car seat manufacturers and confectioners.  Very few factories remain today, although the last mill, Ferguson Brothers, owned by Coats Viyella, at Holme Head, only closed in the 1990s.\n\nMost of the housing is red-brick terraced, and a few are listed buildings, such as Bridge Terrace, built in the 1850s. Many side streets are still cobbled rather than tarmacked, although some new housing has been built recently, and some former factories have been converted into flats. \nThe main street, Denton Street, has many small shops and other businesses, including a bingo hall and a branch of the Cumberland Building Society, which closed in 2024.  There was also a cinema in the suburb located in what is now the Bingo hall.\nThere is a primary school at Holme Head, built by and named after Robert Ferguson, and the former Morley Street School has been converted into a public library.\nFour churches are in Denton Holme: the Church of England Parish Church, St James, Carlisle Christian Fellowship, and The Lighthouse Baptist Church. \nAt Shaddon Mill, on the boundary of Denton Holme and Caldewgate, stands a very tall chimney which was once the tallest in the UK.  This structure, known as \"Dixon's Chimney,\" is now slightly short of its original height, has recently been restored, and is a well-known local landmark. It is named after its first owner, Peter Dixon, who built the mill in 1835–6. The architect was Richard Tattersall. \nLabour Member of Parliament Julie Minns, elected as the first female MP for Carlisle at the 2024 UK general election, was born in the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 377
+    },
+    "banned_terms": [
+      {
+        "term": "denton holme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "denton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "holme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5581,
+    "attempt": 5538,
+    "place_id": "gn-1736734",
+    "input": {
+      "place": {
+        "place_id": "gn-1736734",
+        "name": "Debak",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 1.56667,
+        "lon": 111.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Debak",
+          "url": "https://en.wikipedia.org/wiki/Debak",
+          "text": "Debak is a small city in Malaysia, which prior to 2022 was a small district. This is because Debak is a rapidly developing urbanization area which is located on a very strategic route in the middle of a busy trade route, connecting directly to the Pan Borneo Highway. Not only that, the availability of petrol stations near the same route accelerates the process of urbanization and internal and external migration in Debak, which at the same time has increased the population in Debak District.\nIn addition, the area in the direction of Sarikei, Sarawak can also shorten the travel distance to Betong with the shortcut through the Debak District. This logistical reach has attracted many offers of socio-economic activities in Debak and the surrounding areas also benefit together.\nBesides that, the socio-economic vibrancy in Debak is not only influenced by the road factor. The positive impact of income growth in the Debak District is also due to the existence of water connections, especially the Rimbas River that flows through the center of Debak and Di Tebingan. The waterfront acts as a catalytic element of Debak's economy. This is because, in addition to trade activities, and professional economic activities, Debak's progress is also driven by factors of conventional economic activities such as agriculture that involve some of the residents of Debak and the surrounding areas. Conventional agricultural activities previously labeled as the main pillar of income in Debak are now increasingly shifting to a much more modern agricultural paradigm. According to the times, almost 75% of the people in Debak District are now players in the professional sector such as in the Government sector, the Private sector and many in among them are big businessmen in major cities in Sarawak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "debak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5582,
+    "attempt": 5539,
+    "place_id": "gn-2171324",
+    "input": {
+      "place": {
+        "place_id": "gn-2171324",
+        "name": "Clifton Hill",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.792,
+        "lon": 144.995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clifton Hill, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Clifton_Hill,_Victoria",
+          "text": "Clifton Hill is an inner-city suburb in Melbourne, Victoria, Australia, 4 km (2.5 mi) north-east of Melbourne's Central Business District, located within the City of Yarra local government area. Clifton Hill recorded a population of 6,606 at the 2021 census.\nIt is located is located immediately adjacent to Fitzroy North with which it shares the same postcode. Along with Carlton North and Fitzroy North, Clifton Hill has wider streets than most of inner Melbourne, legacy of a government subdivision laid out by Clement Hodgkinson in the 1860s.\nDescribed in the 1880s as the \"Toorak of Collingwood\", Clifton Hill fell out of favour, along with much of inner Melbourne, by the mid 20th century. Later becoming a centre of Melbourne's bohemianism, the suburb has undergone rapid gentrification in recent years with renewed interest in its inner city location and Victorian and Edwardian housing stock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "clifton hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "clifton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5583,
+    "attempt": 5540,
+    "place_id": "gn-2294676",
+    "input": {
+      "place": {
+        "place_id": "gn-2294676",
+        "name": "Tepa",
+        "country": "Ghana",
+        "subdivision": "Ashanti",
+        "lat": 7.00595,
+        "lon": -2.16586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepa, Ghana",
+          "url": "https://en.wikipedia.org/wiki/Tepa,_Ghana",
+          "text": "Tepa is the capital of Ahafo Ano North, a municipality in the Ashanti Region of Ghana. The old town of Tepa is known as Kelebim. Kelebim can be found in Tepa Ward 1 (Banieh Krom) and the new town is also known as Restco. The major occupation of the people there is farming and trading\nThe Ahafo Ano North Municipal is among the 43 Metropolitan, Municipal, and District Assemblies (MMDAs) in the Ashanti region of Ghana, and it is also part of the 260 Metropolitan, Municipal, and District Assemblies (MMDAs) in Ghana as a whole. In the year 1988, a legislative instrument (LI1402) was introduced by an Act of Parliament to create the Ahafo Ano North district and now it has been upgraded to a municipal, with Tepa as the capital.\nTepa is the district's capital and is located 70 kilometers from Kumasi. Manfo, Akwasiase, Mabang, Anyinasuso, Asuhyiae, and Betiako are prominent towns in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "tepa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

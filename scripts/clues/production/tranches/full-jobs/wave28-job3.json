@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 5483,
+    "attempt": 5441,
+    "place_id": "gn-2809134",
+    "input": {
+      "place": {
+        "place_id": "gn-2809134",
+        "name": "Wiesmoor",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.41513,
+        "lon": 7.73642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wiesmoor",
+          "url": "https://en.wikipedia.org/wiki/Wiesmoor",
+          "text": "Wiesmoor (German pronunciation: [ˈviːsˌmoːɐ̯] ) is a town in the district of Aurich in the northwest of Lower Saxony.  It lies on the Nordgeorgsfehnkanal and is the youngest town in the East Frisia area having been bestowed town rights on 16 March 2006, two days later on 18 March 2006, Wiesmoor celebrated the Centenary of the settlement's founding. The town owes its growth to the industrialisation of the harvesting of peat from the surrounding moors. Wiesmoor holds an annual flower festival and the town is also known as the ‘Flower City’, the name originates from the large numbers of flowers which are grown in the town’s industrial greenhouse. Formerly the greenhouses were heated by waste heat from the now defunct peat burning power station which was located in the city. Wiesmoor also has the official title of a Luftkurort; tourism now plays an important role in the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "wiesmoor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5484,
+    "attempt": 5442,
+    "place_id": "gn-2857565",
+    "input": {
+      "place": {
+        "place_id": "gn-2857565",
+        "name": "Öhringen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.19884,
+        "lon": 9.5072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Öhringen",
+          "url": "https://en.wikipedia.org/wiki/Öhringen",
+          "text": "Öhringen (German pronunciation: [ˈøːʁɪŋən] ; East Franconian: Ähringe) is the largest town in Hohenlohe (district) in the state of Baden-Württemberg, in southwest Germany, near Heilbronn. Öhringen is on the railline to Schwäbisch Hall and Crailsheim.\nWith a population of 24,374 (2019), the town is diverse. It is a quaint medieval place, and, among its ancient buildings, boasts a fine Evangelical church (German: Stiftskirche) containing carvings in cedar-wood from the 15th century and numerous interesting tombs and monuments; a Renaissance town hall; the building, now used as a library, which formerly belonged to a monastery, was erected in 1034; and a palace, the former residence of the princes of Hohenlohe-Öhringen.\nÖhringen was known as Vicus Aurelii to the Romans. Eastwards of it runs the old limes Roman frontier wall, and numerous remains and inscriptions dating from the days of the Roman settlement have been discovered, including traces of three camps."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "ohringen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5485,
+    "attempt": 5443,
+    "place_id": "gn-2930623",
+    "input": {
+      "place": {
+        "place_id": "gn-2930623",
+        "name": "Elze",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.12263,
+        "lon": 9.73595
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elze",
+          "url": "https://en.wikipedia.org/wiki/Elze",
+          "text": "Elze (German pronunciation: [ˈɛltsə] ) is a town in the district of Hildesheim, in Lower Saxony, Germany. It is situated on the river Leine, approximately 15 km (9.3 mi) west of Hildesheim. The municipality of Elze also comprises the villages of Esbeck, Mehle, Sehlde, Sorsum, Wittenburg and Wülfingen.\n\nElze is one of the oldest settlement in the area, as its name stems from Latin: aula caesaris, a castle of Charlemagne which he had established about 800 in the Saxon estates after his victory over duke Widukind in the Saxon Wars. The emperor also founded a missionary diocese here, dedicated to Saints Peter and Paul which became the origin of the Bishopric of Hildesheim. King Louis the Pious relocated the episcopal see to Hildesheim in 815, however the Lutheran parish church is still devoted to Peter and Paul and the saints are also depicted in the town's coat of arms.\nThe village of Wittenburg is the site of a former Augustininan canons regular monastery, established in the 14th century in the place of a former castle, maybe erected by members of the Billung dynasty as early as 805. The abbey decayed in the course of the Protestant Reformation, while the Gothic monastery church is preserved.\nIn 1856 the Kingdom of Hanover opened the Hanoverian Southern Railway (Hannöversche Südbahn) from Hanover to Kassel with a station in Elze. After the annexation by Prussia in 1866, the town became an important railway junction with the building of the Elze–Löhne railway (Weserbahn) to Löhne in Westphalia by entrepreneur Bethel Henry Strousberg, finished in 1875. Elze is also the junction of the Bundesstraße 1 and Bundesstraße 3 federal highways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "elze",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5486,
+    "attempt": 5444,
+    "place_id": "gn-3116246",
+    "input": {
+      "place": {
+        "place_id": "gn-3116246",
+        "name": "Mont-roig del Camp",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.08675,
+        "lon": 0.95925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mont-roig del Camp",
+          "url": "https://en.wikipedia.org/wiki/Mont-roig_del_Camp",
+          "text": "Mont-roig del Camp (Catalan pronunciation: [munˈrɔdʒ ðəl ˈkam]) is a town and municipality in the comarca of Baix Camp in Catalonia.  It is in the middle of its comarca, between the Serra de Colldejou and the Mediterranean Sea. It includes two populated places: the historic town of Mont-roig del Camp in the interior, whose economy revolves round the cultivation of nuts and olives, and the beach resort of Miami Platja on the coast, the Costa Daurada. Overall it has a population of 14,615 (register office, 2025) .\n\nThe municipality has a long coastline, with campsites and a few hotels, informally distributed over the districts of Pins de Miramar and Miami Platja, as well as round the Platja de Rifà (Rifà beach), close to the district of Les Pobles.\nNotable buildings include the \"new\" parish church, that of Sant Miquel, built in Gothic and Renaissance style between 1574 and 1610.\nHigh above the town on a very eroded outcrop of rock stands the sanctuary of Our Lady of the Rock with the Sant Ramon chapel. The painter Joan Miró spent long periods at the family property of Mas d'en Miró, in the Les Pobles district, from 1911 onwards. It was a frequent subject in his early paintings, such as The Farm (1920–21) and The Tilled Field (1923–24)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "mont roig del camp",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "roig",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camp",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5487,
+    "attempt": 5445,
+    "place_id": "gn-3187609",
+    "input": {
+      "place": {
+        "place_id": "gn-3187609",
+        "name": "Visoko",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.98889,
+        "lon": 18.17806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Visoko",
+          "url": "https://en.wikipedia.org/wiki/Visoko",
+          "text": "Visoko (pronounced [ʋǐsɔkɔː]) is a city located in the Zenica-Doboj Canton of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. As of 2013, the municipality had a population of 39,938 inhabitants with 11,205 living in Visoko town. Located between Zenica and Sarajevo, Visoko lies where the river Fojnica joins the Bosna.\nThe Visoko region has evidence of long continuous occupation, with the first traces of life dating back to the 5th millennium BC. Archaeological excavations of Okolište have found one of the biggest Neolithic settlements of the Butmir culture in southeastern Europe.\nIt was an early political and commercial center of the Bosnian medieval state, and the site where the first Bosnian king Tvrtko I was crowned. The Old town Visoki, located on Visočica hill, was a politically important fortress, and its inner bailey Podvisoki was an early example of a Bosnian medieval urban area. After the fall of the Kingdom of Bosnia, medieval Visoko grew as an Ottoman town. A key role in its development was played by the local Bosnian Ajas-pasha.\nOttoman rule ended in 1878 when the Bosnian Vilayet was occupied by Austria-Hungary. On 11 November 1911, in the last years of Austro-Hungarian rule, it was almost completely burned down by an accidental fire. Before the Bosnian War, Visoko was the largest exporter of textile and leather in socialist Yugoslavia As of 2006, Visoko attracts tens of thousands of tourists every year, mainly because of Semir Osmanagić's claims."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "visoko",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5488,
+    "attempt": 5446,
+    "place_id": "gn-3463916",
+    "input": {
+      "place": {
+        "place_id": "gn-3463916",
+        "name": "Espumoso",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -28.72472,
+        "lon": -52.84972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Espumoso",
+          "url": "https://en.wikipedia.org/wiki/Espumoso",
+          "text": "Espumoso is a municipality in the state of Rio Grande do Sul, Brazil. It belongs to the mesoregion \"Nordeste Rio Grandense\" and the microregion of \"Cruz Alta\" along with other 13 municipalities: Alto Alegre, Boa Vista do Cadeado, Boa Vista do Incra, Campos Borges, Cruz Alta, Fortaleza dos Valos, Ibirubá, Jacuizinho, Joia, Quinze de Novembro, Saldanha Marinho, Salto do Jacuí and Santa Bárbara do Sul. The estimated population in 2020 was 15,591 inhabitants,\nand its total area was 783.065 km2.\nIn October 2016, Brazilian people voted in order to choose mayors and aldermen. In Espumoso, Douglas Fontana (PDT) was elected mayor with 42.28% of the valid votes. The municipal assembly members elected were: Joacir Carmo Sonda (PDT), Zé Carlos (PDT), Marcel Rotta Simon (PDT), Ana Mari Vogel (PP), Leo Gugel (PDT), Jadir José de Oliveira (PP),  João Valério Mocelin (PSDB), Juliano de Oliveira Fiuza (PMDB), and Roberto Iopp  (PT). The municipal political scene has been occupied by two political parties along the recent history, PP and PDT, even though there have been other minor political forces in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "espumoso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5489,
+    "attempt": 5447,
+    "place_id": "gn-5100748",
+    "input": {
+      "place": {
+        "place_id": "gn-5100748",
+        "name": "Madison",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.75982,
+        "lon": -74.4171
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Madison, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Madison,_New_Jersey",
+          "text": "Madison is a borough in Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 16,937, an increase of 1,092 (+6.9%) from the 2010 census count of 15,845, which in turn reflected a drop in population of 685 (−4.1%) from the 16,530 counted in the 2000 census.\nMadison is noted for its historic railroad station, which is located on the Morris & Essex Lines, one of the nation's first commuter railroads. Many wealthy residents of Manhattan relocated to Madison and its surrounding communities since the rail line offered direct transport to New York City. Madison is known as \"the Rose City\" and was named in honor of President James Madison.\nMadison was ranked 33rd in Money magazine's ranking of the \"Best Places to Live\" in 2011, the third-highest-ranked location in New Jersey and second-highest in Morris County behind Montville. New Jersey Monthly ranked Madison first in its 2019 rankings of the \"Best Places to Live\" in New Jersey.\nMadison is a college town, the home of both Drew University and Fairleigh Dickinson University; Saint Elizabeth University is located in neighboring Convent Station, New Jersey. Madison is also home to the Shakespeare Theatre of New Jersey, one of the largest professional Shakespeare companies in North America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "madison",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5490,
+    "attempt": 5448,
+    "place_id": "gn-5115985",
+    "input": {
+      "place": {
+        "place_id": "gn-5115985",
+        "name": "East New York",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.66677,
+        "lon": -73.88236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East New York",
+          "url": "https://en.wikipedia.org/wiki/East_New_York",
+          "text": "East New York is a residential neighborhood in the eastern section of the New York City borough of Brooklyn. Its boundaries, starting from the north and moving clockwise, are roughly the Cemetery Belt and the Queens borough line to the north; the Queens borough line to the east; Jamaica Bay to the south; the New York City Subway's BMT Canarsie Line, the Bay Ridge Branch railroad tracks, and Van Sinderen Avenue to the west. Linden Boulevard, Pennsylvania Avenue, and Atlantic Avenue are the primary thoroughfares through East New York.\nEast New York was founded as the Town of New Lots in the 1650s. It was annexed as the 26th Ward of the rapidly growing City of Brooklyn in 1886, and became part of New York City in 1898. During the latter part of the twentieth century, East New York came to be predominantly inhabited by African Americans and Hispanics.\nEast New York is part of Brooklyn Community District 5, and its primary ZIP Codes are 11207, 11208, and 11239. It is patrolled by the 75th Precinct of the New York City Police Department. New York City Housing Authority (NYCHA) property in the area is patrolled by P.S.A. 2. Coverage by the Fire Department of New York is provided by Battalions 39 & 44. Politically it is represented by the New York City Council's 37th and 42nd Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "east new york",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "york",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5491,
+    "attempt": 5449,
+    "place_id": "gn-5119167",
+    "input": {
+      "place": {
+        "place_id": "gn-5119167",
+        "name": "Gravesend",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.5976,
+        "lon": -73.96514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gravesend, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Gravesend,_Brooklyn",
+          "text": "Gravesend is a neighborhood in the south-central section of the New York City borough of Brooklyn, on the southwestern edge of Long Island in the U.S. state of New York. It is bounded by the Belt Parkway to the south, Bay Parkway to the west, Avenue P to the north, and Ocean Parkway to the east.\nGravesend was one of the original towns in the Dutch colony of New Netherland. After the English took over, it was one of the six original towns of Kings County in colonial New York. Gravesend was the only English chartered town in what became Kings County and is notable as being one of the first towns founded by a woman, Deborah, Lady Moody. The town of Gravesend encompassed 7,000 acres (2,800 ha) in southern Kings County, including the entire peninsula of Coney Island, and was annexed by the City of Brooklyn in 1894.\nThe modern-day neighborhood is part of Brooklyn Community Board 11, Brooklyn Community Board 13 and Brooklyn Community Board 15. As of 2020, Gravesend had a population of 30,587."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "gravesend",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5492,
+    "attempt": 5450,
+    "place_id": "gn-13512948",
+    "input": {
+      "place": {
+        "place_id": "gn-13512948",
+        "name": "Champlain Heights",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.20919,
+        "lon": -123.026
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Champlain Heights",
+          "url": "https://en.wikipedia.org/wiki/Champlain_Heights",
+          "text": "Champlain Heights is a neighbourhood in the city of Vancouver, British Columbia, Canada.\nIt is a family-friendly community with a mix of housing types (market, co-operative, and social) built around green spaces and walking trails, including Everett Crowley Park, the fifth-largest park in Vancouver.\nChamplain Heights was one of the last areas of Vancouver to be urbanized. Harold Kalman, an architectural historian stated, \"The showcase residential community was planned in the early 1970s, with curved roads and cul-de-sacs serving a mix of housing types and income levels.\" Located in the extreme south eastern corner of Vancouver, Champlain Heights is often closely associated with the neighbourhood of Killarney and it is officially a sub-neighborhood within Killarney. It consists mainly of various townhouse complexes and co-op housing units. The majority of the Champlain Heights area is leasehold property (pre-paid 99-year leases from the City of Vancouver, expiring in the 2080s).\nEverett Crowley Park, a 40-hectare park (the city's 5th largest) and a former city landfill, is located in the area. The park is named after Everett Crowley, former city planner and parks board commissioner. Everett Crowley Park is the home of the longest Earth Day Celebration in the City. The City has been using this celebration as part of its long term reforestation project for the Park.\nThe education in the area is serviced by Champlain Heights Elementary School, designed by one of Canada's foremost architects, Arthur Erickson. Champlain Heights Elementary School services grades from kindergarten to grade seven. The school has many different extracurricular programs such as a photography club, knitting club, volleyball team, and basketball team. There is also an annex located on Champlain Crescent which provides education to children in kindergarten to grade three. The Annex also provides program space to other community groups which include a program for children age newborn to five years old and their caregivers or parents as well as community space to the nearby public recreation centre. Those moving on to grade four from the annex usually transfer to the main school."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 338
+    },
+    "banned_terms": [
+      {
+        "term": "champlain heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "champlain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5493,
+    "attempt": 5451,
+    "place_id": "gn-2154962",
+    "input": {
+      "place": {
+        "place_id": "gn-2154962",
+        "name": "Fitzroy North",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.78862,
+        "lon": 144.97885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fitzroy North",
+          "url": "https://en.wikipedia.org/wiki/Fitzroy_North",
+          "text": "Fitzroy North is an inner-city suburb in Melbourne, Victoria, Australia, 4 km (2.5 mi) north-east of the Melbourne central business district, located within the Cities of Merri-bek and Yarra local government areas. Fitzroy North recorded a population of 12,781 at the 2021 census.\nAlso referred to as North Fitzroy in reference to its southern neighbour, Fitzroy North has a distinct character, noted for its prevalence of wide streets, intact Victorian and Edwardian era terraced housing and for the Edinburgh Gardens, a large inner-city park formerly home to the Fitzroy Football Club. Fitzroy North is adjacent to, and shares a postcode and neighbourhood character with Clifton Hill, both being government subdivisions set on elevated ground and to the same layout by Clement Hodgkinson in the 1870s, and distinct from the earlier narrow and more crowded private subdivisions in the lower lying areas of Fitzroy and Collingwood to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "fitzroy north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fitzroy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5494,
+    "attempt": 5452,
+    "place_id": "gn-2177052",
+    "input": {
+      "place": {
+        "place_id": "gn-2177052",
+        "name": "Balmain",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.85481,
+        "lon": 151.1833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balmain, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Balmain,_New_South_Wales",
+          "text": "Balmain is a suburb in the Inner West of Sydney, New South Wales, Australia. It is located two kilometres (1+1⁄4 miles) west of the Sydney central business district, in the local government area of the Inner West Council.\nIt is located on the Balmain peninsula surrounded by Port Jackson, adjacent to the suburbs of Rozelle to the south-west, Birchgrove to the north-west, and Balmain East to the east. Iron Cove sits on the western side of the peninsula, with White Bay on the south-east side and Mort Bay on the north-east side.\nTraditionally blue collar, Balmain was where the industrial roots of the trade unionist movement began. It has become established in Australian working-class culture and history, due to being the place where the Australian Labor Party formed in 1891 and its social history and status is of high cultural significance to both Sydney and New South Wales. Today, the ALP contends with the Australian Greens for political prominence in Balmain, and Kobi Shetty of the Greens holds the State seat of Balmain.\nIn the 21st century however, Balmain is often considered to be an affluent area. According to the 2021 Australian Bureau of Statistics, Balmain had a Median weekly household income of $3,039, and a 2021 article on the Domain website described Balmain as a Harbourside version and cheaper version of Eastern Suburb Paddington."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "balmain",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5495,
+    "attempt": 5453,
+    "place_id": "gn-2177756",
+    "input": {
+      "place": {
+        "place_id": "gn-2177756",
+        "name": "Ararat",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.28542,
+        "lon": 142.92728
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ararat, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Ararat,_Victoria",
+          "text": "Ararat (Djabwurrung: Tallarambooroo) is a town in the Central Highlands region in Victoria, Australia, about 198 kilometres (120 mi) west of Melbourne, on the Western Highway on the eastern slopes of the Ararat Hills and Cemetery Creek valley between Victoria's Western District and the Wimmera. \nThe source of the Hopkins River is a few kilometres to the east below Telegraph Hill.\nIts urban population according to 2021 census is 8,500 and services the region of 11,880 residents across the Rural City's boundaries. It is also the home of the 2018/19 GMGA Golf Championship Final.\nIt is the largest settlement in the Rural City of Ararat local government area and is the administrative centre.\nThe discovery of gold in 1857 during the Victorian gold rush transformed it into a boomtown which continued to prosper until the turn of the 20th century, after which it has steadily declined in population. It was proclaimed as a city on 24 May 1950. After a decline in population over the 1980s and 90s, there has been a small but steady increase in the population, and it is the site of many existing and future, large infrastructure projects, including the Hopkins Correctional Facility development project.\nIt is named after Mount Ararat 10 kilometres south-west of the town which was named by politician/pastoralist Horatio Wills in 1841.\nArarat is the only city in Australia founded by Chinese people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "ararat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5496,
+    "attempt": 5454,
+    "place_id": "gn-2634403",
+    "input": {
+      "place": {
+        "place_id": "gn-2634403",
+        "name": "West Ham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53333,
+        "lon": 0.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Ham",
+          "url": "https://en.wikipedia.org/wiki/West_Ham",
+          "text": "West Ham is a district in East London, England and is in the London Borough of Newham. It is an inner-city suburb located 6.1 mi (9.8 km) east of Charing Cross. \nThe area was originally an ancient parish formed to serve parts of the older Manor of Ham, and it later became a County Borough. The parish and borough of West Ham, situated  east of the River Lea and north of the River Thames, was an administrative unit, with largely consistent boundaries, from the 12th century to 1965, when it merged with neighbouring areas to become the western part of the new London Borough. Before 1965, the area was part of the historic county of Essex. \nWest Ham's long established boundaries take in the sub-districts of Stratford, Canning Town, Plaistow, Custom House, Silvertown, Forest Gate and the western parts of Upton Park, which is shared with East Ham.\nThe district was historically dependent on its docks and other maritime trades, while the inland industrial concentrations led to its byname as the Factory centre of the south of England. These sources of employment have largely been lost. In the 21st century, there has been some revival, in part associated with development for the 2012 Olympic Games."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "west ham",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ham",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5497,
+    "attempt": 5455,
+    "place_id": "gn-2636445",
+    "input": {
+      "place": {
+        "place_id": "gn-2636445",
+        "name": "Swanage",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.60827,
+        "lon": -1.95664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Swanage",
+          "url": "https://en.wikipedia.org/wiki/Swanage",
+          "text": "Swanage () is a coastal town and civil parish in the south-east of Dorset, England. It lies at the eastern end of the Isle of Purbeck and is one of its two towns, approximately 6+1⁄4 miles (10 km) south of Poole and 25 miles (40 km) east of Dorchester. At the 2021 census, the civil parish had a population of 9,426. Nearby are Ballard Down and Old Harry Rocks, with Studland Bay and Poole Harbour to the north; within the parish are Durlston Bay and Durlston Country Park to the south of the town. The parish also includes the areas of Herston, just to the west of the town, and Durlston, just to the south.\nThe town, originally a small port and fishing village, flourished in the Victorian era, when it first became a significant quarrying port and later a seaside resort for the rich of the day. Today, the town remains a popular tourist resort, which is the town's primary industry; many thousands of visitors come to the town during the peak summer season, drawn by the bay's sandy beaches and other attractions.\nDuring its history, the bay was listed variously as Swanawic, Swanwich and Sandwich, and only in more recent history as Swanage.\nThe town is located at the eastern end of the Jurassic Coast, a World Heritage Site. The town contains many listed buildings and two conservation areas – Swanage Conservation Area and Herston Conservation Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "swanage",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5498,
+    "attempt": 5456,
+    "place_id": "gn-2654450",
+    "input": {
+      "place": {
+        "place_id": "gn-2654450",
+        "name": "Brymbo",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.06667,
+        "lon": -3.06667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brymbo",
+          "url": "https://en.wikipedia.org/wiki/Brymbo",
+          "text": "Brymbo is a village and community in Wrexham County Borough, Wales. It lies in the hilly country to the west of Wrexham city, largely surrounded by farmland.\nAt the 2001 Census, the population of the community area (including Brymbo village, along with the villages of Tanyfron and Bwlchgwyn and a number of rural hamlets) was 3,482, increasing to 4,836 at the 2011 Census. Brymbo is also the name of an electoral ward of Wrexham County Borough, whose population (including Brymbo and Tanyfron only) was 2,653 at the 2001 census, increasing to 3,981 at the 2011 Census.\nThe area was formerly heavily dependent on coal mining and steelmaking, and the Brymbo Steelworks, which operated between 1794 and 1990, was a prominent feature of the village and much of the surrounding area. The area had a strong community spirit and at least three major railways (GWR, LNWR, LNER) were present."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "brymbo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5499,
+    "attempt": 5457,
+    "place_id": "gn-2759113",
+    "input": {
+      "place": {
+        "place_id": "gn-2759113",
+        "name": "Bergschenhoek",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.99,
+        "lon": 4.49861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergschenhoek",
+          "url": "https://en.wikipedia.org/wiki/Bergschenhoek",
+          "text": "Bergschenhoek (Dutch pronunciation: [ˌbɛr(ə)xsə(n)ˈɦuk] ) is a town and former municipality in the municipality of Lansingerland, in the province of South Holland, Netherlands. It is situated roughly 10 km to the north of Rotterdam. The town had a population of 18,475 in 2019, and covered an area of 15.52 km2 (5.99 sq mi) of which 0.63 km2 (0.24 sq mi) is water. On 1 January 2007, the town was merged with neighbouring towns Berkel en Rodenrijs and Bleiswijk to form the new municipality Lansingerland; these three towns collectively are known locally as the \"3B Hoek\".\nDue to the continuing influx of people to Bergschenhoek, it is in a constant state of expansion and is now predominantly a commuter town as most of its residents work in the neighbouring cities, such as The Hague and Rotterdam. The town had a large population increase since 1990, because of the Vinex-plans. The town grew from 7,600 inhabitants in 1990 to nearly 18,500 in 2019.\nThe name of the town is derived from a district of the nearby city of Rotterdam, Hillegersberg. There was a road leading to this municipality. On a corner of this road ('hoek' in Dutch) a settlement grew, leading to a village. This village was named after Hillegersberg, and the corner was incorporated in the name, hence the name (Hillegers)Bergschenhoek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 220
+    },
+    "banned_terms": [
+      {
+        "term": "bergschenhoek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5500,
+    "attempt": 5458,
+    "place_id": "gn-3878075",
+    "input": {
+      "place": {
+        "place_id": "gn-3878075",
+        "name": "Olmué",
+        "country": "Chile",
+        "subdivision": "Valparaiso",
+        "lat": -32.99577,
+        "lon": -71.19136
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olmué",
+          "url": "https://en.wikipedia.org/wiki/Olmué",
+          "text": "Olmué is a Chilean town and commune located in the Marga Marga Province, Valparaíso Region. The commune spans an area of 231.8 km2 (89 sq mi). Olmué is located 42.8 miles northwest of Santiago and 42 kilometers east northeast of Valparaíso.\nThe commune was created on October 14, 1893, on land that had belonged to the former Hacienda de Gulmué, owned by Mariana de Osorio, who granted part of her land to the original inhabitants who worked on the estate.\nIts economy is mainly based on tourism, driven by the presence of natural landscapes, campgrounds, inns, and countryside activities. Within its territory lies La Campana National Park, declared a World Biosphere Reserve by UNESCO.\nOlmué is recognized for the Festival del Huaso de Olmué, a televised music festival that promotes Chilean folk-root music and annually brings together national and international artists, along with a competition of original songs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "olmue",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5501,
+    "attempt": 5459,
+    "place_id": "gn-4487682",
+    "input": {
+      "place": {
+        "place_id": "gn-4487682",
+        "name": "Reidsville",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 36.35486,
+        "lon": -79.66447
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reidsville, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Reidsville,_North_Carolina",
+          "text": "Reidsville is a city in Rockingham County in the U.S. state of North Carolina. At the 2020 census, the city had a total population of 14,583. Reidsville is included in the Greensboro–High Point Metropolitan Statistical Area of the Piedmont Triad.\nReidsville was established in the early 19th century as an outpost and stop on the stage line that ran between Salisbury, North Carolina, and Danville, Virginia, and was originally known as Wright's Crossroads. The community grew from a single home and inn owned by the family of Reuben Reid – a local farmer, businessman, justice of the peace and father of David S. Reid – into a thriving farming community primarily supporting tobacco production and cigarette manufacturing.\nReidsville was officially incorporated by the North Carolina State Legislature in 1873 and became a key location of the American Tobacco Company which employed large numbers of city and county residents. The American Tobacco Company was the mainstay of Reidsville economics until its sale and closure in 1994. Many textile mills were established in Reidsville as well, with Cone Mills and Burlington Industries, located in Burlington North Carolina, consolidating most of them in the mid-20th century, although most have now closed.\nWhile Reidsville has experienced economic recession in recent years the community has enjoyed a renewal of growth as a sleeper city supplying a source of rural development for the surrounding larger cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "reidsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5502,
+    "attempt": 5460,
+    "place_id": "gn-5101178",
+    "input": {
+      "place": {
+        "place_id": "gn-5101178",
+        "name": "Midland Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.98926,
+        "lon": -74.1407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midland Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Midland_Park,_New_Jersey",
+          "text": "Midland Park is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 7,014, a decrease of 114 (−1.6%) from the 2010 census count of 7,128, which in turn reflected an increase of 181 (+2.6%) from the 6,947 counted in the 2000 census.\nMidland Park was incorporated as a borough on September 6, 1894, at the height of the \"Boroughitis\" craze then sweeping through Bergen County that led to the creation of over two dozen new municipalities in the county in that one year alone. The new borough consisted of portions of both Franklin Township and Ridgewood Township. The borough expanded in April 1920 by adding another part of Franklin Township. In a referendum held on June 9, 1931, Midland Park acquired additional land from Wyckoff (which until 1926 had been known as Franklin Township). Midland Park was named after the New Jersey Midland Railway, which operated the railroad passing through the area of the borough in the 1870s, though elsewhere the name is said to be based on being situated \"amid Bergen hills\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "midland park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "midland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

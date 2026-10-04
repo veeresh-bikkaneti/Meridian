@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 5443,
+    "attempt": 5401,
+    "place_id": "gn-5097627",
+    "input": {
+      "place": {
+        "place_id": "gn-5097627",
+        "name": "Elmwood Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.90399,
+        "lon": -74.11848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elmwood Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Elmwood_Park,_New_Jersey",
+          "text": "Elmwood Park is a borough in Bergen County, in the U.S. state of New Jersey, and is a bedroom suburb located 14 miles (23 km) from New York City. As of the 2020 United States census, the borough's population was 21,422, an increase of 2,019 (+10.4%) from the 2010 census count of 19,403, which in turn reflected an increase of 478 (+2.5%) from the 18,925 counted in the 2000 census.\nPrior to 1916, the area was known as Dundee Lake, a section of Saddle River Township. Residents of the Dundee Lake area voted on April 18, 1916, to secede from Saddle River Township to form the Borough of East Paterson.} In 1917, residents of the Rosemont section of Saddle River Township voted to be annexed to East Paterson. In November 1972, residents voted to change the name of the borough to Elmwood Park. The new name became official on January 1, 1973.\nElmwood Park, being located in Bergen County, has strict blue laws, which require most businesses to be closed on Sunday."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "elmwood park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "elmwood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5444,
+    "attempt": 5402,
+    "place_id": "gn-5101901",
+    "input": {
+      "place": {
+        "place_id": "gn-5101901",
+        "name": "North Caldwell",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.86482,
+        "lon": -74.2582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Caldwell, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/North_Caldwell,_New_Jersey",
+          "text": "North Caldwell is a borough in northwestern Essex County, in the U.S. state of New Jersey, and a suburb of New York City. As of the 2020 United States census, the borough's population was 6,694, an increase of 511 (+8.3%) from the 2010 census count of 6,183, which in turn reflected a decline of 1,192 (−16.2%) from the 7,375 counted in the 2000 census.\nNorth Caldwell was incorporated by an act of the New Jersey Legislature on March 31, 1898, from portions of Caldwell Township (now known as Fairfield Township). The borough derives its name from Presbyterian minister James Caldwell.\nNew Jersey Monthly magazine ranked North Caldwell as its 10th-best place to live in its 2010 rankings of the \"Best Places To Live\" in New Jersey, and its third-best place to live in its 2013 ranking. In 2017, a Bloomberg analysis ranked North Caldwell the 34th richest town in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "north caldwell",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caldwell",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5445,
+    "attempt": 5403,
+    "place_id": "gn-5194590",
+    "input": {
+      "place": {
+        "place_id": "gn-5194590",
+        "name": "Huntingdon",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.4848,
+        "lon": -78.01028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntingdon, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Huntingdon,_Pennsylvania",
+          "text": "Huntingdon is a borough in and county seat of Huntingdon County, Pennsylvania, United States. It lies along the Juniata River about 32 miles (51 km) east of larger Altoona and 92 miles (148 km) west of the state capital of Harrisburg on the  Susquehanna River. With a population of 6,827 in the 2020 U.S. Decennial Census, it is the largest population center near Raystown Lake, a winding, 28-mile-long (45 km) flood-control reservoir managed by the United States Army Corps of Engineers.\nThe borough is on the main line of the Norfolk Southern freight railway (formerly the longtime Pennsylvania Railroad) in an agricultural and outdoor recreational region with extensive forests and scattered deposits of ganister rock, coal, fire clay, and limestone deposits. Historically, the region surrounding Huntingdon was dotted with iron furnaces and forges, consuming limestone, iron ore and wood (for charcoal production) throughout the 19th century. Dairy farms dominate the local agriculture. The town is a regular stop for the daily east-west Amtrak passenger train service which connects Pittsburgh to the west with Philadelphia and New York City to the east and northeast. Huntingdon is also home to Juniata College (founded 1876 by the Church of the Brethren)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "huntingdon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5446,
+    "attempt": 5404,
+    "place_id": "gn-6060407",
+    "input": {
+      "place": {
+        "place_id": "gn-6060407",
+        "name": "Lorraine",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.68338,
+        "lon": -73.78249
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lorraine, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Lorraine,_Quebec",
+          "text": "Lorraine (French pronunciation: [lɔʁɛn] ) is an affluent off-island suburb of Montreal, in southwestern Quebec, Canada on the north shore of the Rivière des Mille-Îles in the Thérèse-De Blainville Regional County Municipality.  There are no industries and only a very limited commercial district (comprising one medical centre, one shopping mall, a golf course, a gym, a supermarket and arena); almost all houses are of the detached type. Furthermore, a large portion of the town territory is set aside as wild forest (Forêt du Grand Côteau); some bike/ski trails run through it. The town is divided into two areas, upper and lower (or Lorraine en haut and Lorraine en bas, colloquially, because the northern area is on higher ground). These two areas are also delimited by Quebec freeway A-640, and are only joined together by the main street (Boulevard de Gaulle) overpass.\nLorraine has earned a reputation for high-end homes with pristine lawns. Due to the heat and humidity of summers in the region, many of these properties have in ground swimming pools in backyards. The town prides itself with completely underground utility networks apart from a small older section of the town (Avenue Fraser, Mey and Bruyeres in particular). The absence of telephone and electric poles contributes to the aesthetic appeal of the municipality.\nThe town was founded February 4, 1960 and is named for the French region of the same name.\nThe town is the territory of the Roman Catholic parishal community of Charles-de-Foucault (old parish), part of the (new) Saint-Luc parish of the Terrebonne pastoral region of the Saint-Jérôme diocese. The town is now part of the Thérèse-De Blainville federal electoral district (Marc-Aurèle-Fortin federal electoral district) and Blainville provincial electoral district. It makes district 22 of the Seigneurie-des-Milles-Îles French school board and is part of district 8 of the Sir-Wilfrid-Laurier English school board. Lorraine is also a member of the Montreal Metropolitan Community.\nThe town has three elementary schools: École Le Carrefour and École Le Tournesol, which are very close to each other but separated by Parc Lorraine, as well as École du Ruisselet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 346
+    },
+    "banned_terms": [
+      {
+        "term": "lorraine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5447,
+    "attempt": 5405,
+    "place_id": "gn-7281850",
+    "input": {
+      "place": {
+        "place_id": "gn-7281850",
+        "name": "Ferntree Gully",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.88461,
+        "lon": 145.29539
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferntree Gully",
+          "url": "https://en.wikipedia.org/wiki/Ferntree_Gully",
+          "text": "Ferntree Gully is a suburb in Melbourne, Victoria, Australia, at the foothills of the Dandenong Ranges, 30 km east of Melbourne's Central Business District, located within the City of Knox local government area. Ferntree Gully recorded a population of 27,398 at the 2021 census.\nFerntree Gully, The Basin, Boronia and Upper Ferntree Gully are the only Dandenong Ranges towns or suburbs in the City of Knox (although some parts of Upper Ferntree Gully are within the Shire of Yarra Ranges). The City of Knox is one of the few cities not broken-up during the Kennett government review of councils and had its area expanded to include parts of Upper Ferntree Gully that were previously in the Shire of Sherbrooke (now part of the Yarra Ranges Shire).\nFerntree Gully and Belgrave are closely linked in many ways. Ferntree Gully is younger than Belgrave (Belgrave being established in 1851 and Ferntree Gully in 1880).\nFerntree Gully has many Eucalyptus trees (gum trees) and lies at the foothills of the Dandenong Ranges. Its boundaries meet Upper Ferntree Gully, a separate but similarly named suburb with the same postcode, Boronia to the North, Scoresby to the West and Lysterfield to the South. The eastern boundary coincides with the Ferntree Gully National Park which is a National Park administered by the Federal Government. Ferntree Gully is in a high fire risk area in the vicinity of the Ferntree Gully National Park, however the majority of the suburb is considered low risk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "ferntree gully",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ferntree",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gully",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5448,
+    "attempt": 5406,
+    "place_id": "gn-747538",
+    "input": {
+      "place": {
+        "place_id": "gn-747538",
+        "name": "Eminönü",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.01754,
+        "lon": 28.97101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eminönü",
+          "url": "https://en.wikipedia.org/wiki/Eminönü",
+          "text": "Eminönü, historically known as Pérama, is a predominantly commercial waterfront area of Istanbul within the Fatih district near the confluence of the Golden Horn with the southern entrance of the Bosphorus strait and the Sea of Marmara. It is located in the part of Istanbul known as the historical peninsula, connected to Karaköy (historic Galata) via the Galata Bridge across the Golden Horn. It was administered as part of the Sultanahmet district from 1928 to 2009 when Sultanahmet was absorbed into Fatih. Eminönü, which was a district municipality until March 7, 2008, was abolished on this date and connected to Fatih district by law. It is completely located within the city wall, the historical core of the city, and forms one of the most vibrant areas of the central area. \nEminönü's busy main square is overlooked by the New Mosque (Yeni Cami in Turkish) and the Spice Bazaar (Mısır Çarşısı in Turkish).\nEminönü is an important transport hub. Several ferries have terminals along the Eminönü waterfront and the T1 tram has a stop here. \nTo the southeast Eminönü runs into Sirkeci, while to the northwest it merges with the shopping areas of Tahtakale and Küçükpazar. Inland from Eminönü is another shopping district, Mahmutpaşa. During the period when it was a district, it was the smallest district of Istanbul after Adalar in terms of area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "eminonu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5449,
+    "attempt": 5407,
+    "place_id": "gn-2071223",
+    "input": {
+      "place": {
+        "place_id": "gn-2071223",
+        "name": "Fremantle",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.05632,
+        "lon": 115.74557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fremantle",
+          "url": "https://en.wikipedia.org/wiki/Fremantle",
+          "text": "Fremantle (; Nyungar: Walyalup; nicknamed Freo) is a port city in Western Australia located at the mouth of the Swan River in the metropolitan area of Perth, the state capital. Fremantle Harbour serves as the port of Perth.\nPrior to British settlement, the indigenous Noongar people inhabited the area for millennia, and knew it by the name of Walyalup (\"place of the woylie\"). Visited by Dutch explorers in the 1600s, Fremantle was the first area settled by the Swan River colonists in 1829, and is named after Captain Charles Fremantle, an English naval officer who claimed the west coast of New Holland as British territory. The settlement struggled in its first decades, and in 1850, with the advent of penal transportation to the colony, Fremantle became Australia's primary destination for convicts. The convict-built Fremantle Prison operated long after transportation of convicts ended in 1868, and is now a World Heritage Site.\nFremantle was charted as a municipality in 1883, and the following decade its harbour was deepened for commercial shipping, transforming the port into a bustling trade centre and gateway at the height of the Western Australian gold rushes. Declared a city in 1929, Fremantle played a key role in World War II as the largest submarine base in the Southern Hemisphere. Post-war immigration from Europe, particularly Italy, helped shape Fremantle's character, and it rapidly gentrified after hosting the 1987 America's Cup sailing competition. Today, Fremantle is recognised for its well-preserved Victorian and Edwardian streetscapes and convict-era architecture, and is known as a bohemian enclave with a thriving arts and culinary scene. It is also the traditional home of the Fremantle Football Club, one of the two Australian Football League teams based in Western Australia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "fremantle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5450,
+    "attempt": 5408,
+    "place_id": "gn-2145110",
+    "input": {
+      "place": {
+        "place_id": "gn-2145110",
+        "name": "Wagga Wagga",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.12577,
+        "lon": 147.35375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wagga Wagga",
+          "url": "https://en.wikipedia.org/wiki/Wagga_Wagga",
+          "text": "Wagga Wagga ( WOGƏ; informally called Wagga) is a major regional city in the Riverina region of New South Wales, Australia. Straddling the Murrumbidgee River, with an urban population of more than 57,003 as of 2021, it is an important agricultural, military, and transport hub of Australia. The ninth largest inland city in Australia, Wagga Wagga is located midway between the two largest cities in Australia—Sydney and Melbourne—and is the major regional centre for the Riverina and South West Slopes regions.\nThe central business district is focused around the commercial and recreational grid bounded by Best and Tarcutta Streets and the Murrumbidgee River and the Sturt Highway. The main shopping street of Wagga is Baylis Street which becomes Fitzmaurice Street at the northern end. Wagga is accessible from Sydney via the Sturt and Hume Highways, Adelaide via the Sturt Highway and Albury and Melbourne via the Olympic Highway and Hume Highway. Wagga is in an alluvial valley and much of the city has a problem with urban salinity.\nThe original inhabitants of the Wagga Wagga region were the Wiradjuri people. In 1829, Charles Sturt became the first European explorer to visit the future site of the city. Squatters arrived soon after. The town, positioned on the site of a ford across the Murrumbidgee, was surveyed and gazetted as a village in 1849 and the town grew quickly after. In 1870, the town was gazetted as a municipality.\nDuring the negotiations leading to the federation of the Australian colonies, Wagga Wagga was a contender for the site of the capital for the new nation. During World War I, the town was the starting point for the Kangaroo recruitment march. The Great Depression and the resulting hardship saw Wagga Wagga become the centre of a secession movement for the Riverina region. Wagga Wagga became a garrison town during World War II with the establishment of a military base at Kapooka and Royal Australian Air Force bases at Forest Hill and Uranquinty. After the war, Wagga Wagga was proclaimed as a city in 1946 and new suburbs were developed to the south of the city. In 1982, the city was amalgamated with the neighbouring Kyeamba and Mitchell Shires to form the City of Wagga Wagga local government area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 375
+    },
+    "banned_terms": [
+      {
+        "term": "wagga wagga",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wagga",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5451,
+    "attempt": 5409,
+    "place_id": "gn-2170089",
+    "input": {
+      "place": {
+        "place_id": "gn-2170089",
+        "name": "Craigieburn",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.6,
+        "lon": 144.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Craigieburn, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Craigieburn,_Victoria",
+          "text": "Craigieburn is a suburb in Melbourne, Victoria, Australia, 25 km (16 mi) north of Melbourne's Central Business District, located within the City of Hume local government area. Craigieburn recorded a population of 65,178 at the 2021 census.\nCraigieburn is a satellite suburb located on the urban-rural fringe of Melbourne, ranging from the lower half of Bridgewater Road to Mount Ridley. A large majority of the suburb is more than 200 metres above sea level, with Mount Ridley being the northernmost hill in northwestern metropolitan Melbourne with clear views of Melbourne's central business district 29.7km away. \nCraigieburn is bounded by Mount Ridley Road, the Hume Freeway and Donnybrook Road in the north, Merri Creek in the east, Patullos Lane, the Craigieburn/North East railway line and a line that borders Roxburgh Park and Greenvale in the south, and Mickleham Road, Craigieburn Road and a line running north–south that borders Mickleham in the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "craigieburn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5452,
+    "attempt": 5410,
+    "place_id": "gn-2519217",
+    "input": {
+      "place": {
+        "place_id": "gn-2519217",
+        "name": "Corralejo",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.73079,
+        "lon": -13.86749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corralejo",
+          "url": "https://en.wikipedia.org/wiki/Corralejo",
+          "text": "Corralejo (pronounced [koraˈlexo]) is a town and resort located on the northern tip of Fuerteventura, one of the Canary Islands, facing the smaller islet of Lobos. It is in the municipality of La Oliva. \nIt is surrounded to the north and east by the Atlantic Ocean, by dunes to the south and by arid desert land to the west that leads to the western coast and El Cotillo. Once a traditional fishing village, the town has grown significantly and today is one of the two main tourist towns on the island of Fuerteventura. Thanks to the large expat population, the town has a diverse population that varies from the local Spaniard, to the Italian, Irish, British, German and Finnish people who have settled in the resort.\nThe area has 7 miles (11 km) of fine sand starting 2 miles (3.2 km) outside of Corralejo, alongside some smaller bays across the coast. In addition, there are several miles of sand dunes located nearby, which have been designated as a nature reserve. The waters around Corralejo are clear and an intense shade of blue, but are affected by strong currents. The town's beaches are somewhat more sheltered and have a band of volcanic rock along the shoreline."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "corralejo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5453,
+    "attempt": 5411,
+    "place_id": "gn-2633561",
+    "input": {
+      "place": {
+        "place_id": "gn-2633561",
+        "name": "Worcester Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.37992,
+        "lon": -0.24445
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Worcester Park",
+          "url": "https://en.wikipedia.org/wiki/Worcester_Park",
+          "text": "Worcester Park is a suburban town in south-west London and Surrey, England. It lies partly in the London Borough of Sutton and partly in the Surrey borough of Epsom and Ewell, while its post town also covers part of the Old Malden district of the Royal Borough of Kingston upon Thames. The area is 10 miles (16 km) south-west of Charing Cross. The suburb's population was estimated to be 33,008 at the time of the 2011 UK census. The suburb comprises the Worcester Park ward, an electoral area of the London Borough of Sutton with a population in 2011 of 11,655, as well as the Cuddington ward, an electoral area of Epsom and Ewell, which had a population of 5,791 at the time of the 2001 census.\nThe Worcester Park post town, which is coterminous with the KT4 postcode district, covers all of the suburb and also extends into Old Malden. Other neighbouring localities include Kingston, Sutton, New Malden, Motspur Park, Lower Morden, Stoneleigh, Tolworth and West Ewell.    \nWorcester Park railway station (London Zone 4, South Western Railway), runs trains into London Waterloo.   \nMany maps and postal addresses refer to a significant part of North Cheam as Worcester Park, even though they have different postcodes.  \nThe Beverley Brook runs through Worcester Park, alongside Green Lane and past Green Lane Primary School, traversing up to Cuddington Recreation Ground.  The Huntsmans Hall (now The Brook) was situated on what was the far boundary of a hunting ground for Henry VIII."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "worcester park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "worcester",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5454,
+    "attempt": 5412,
+    "place_id": "gn-2634869",
+    "input": {
+      "place": {
+        "place_id": "gn-2634869",
+        "name": "Wallingford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.59982,
+        "lon": -1.1248
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wallingford, Oxfordshire",
+          "url": "https://en.wikipedia.org/wiki/Wallingford,_Oxfordshire",
+          "text": "Wallingford () is a market town and civil parish on the River Thames in South Oxfordshire, England, 12 miles (19 km) north of Reading, 13 miles (21 km) south of Oxford and 11 miles (18 km) north west of Henley-on-Thames. Although belonging to the historic county of Berkshire, it is within the ceremonial county of Oxfordshire for administrative purposes (since 1974) as a result of the Local Government Act 1972. The population was 11,600 at the 2011 census.\nThe town has played an important role in English history starting with the surrender of Stigand to William the Conqueror in 1066, which led to his taking the throne and the creation of Wallingford Castle. The castle and the town enjoyed royal status and flourished for much of the Middle Ages. The Treaty of Wallingford, which ended a civil war known as The Anarchy between King Stephen and Empress Matilda, was signed there. The town then entered a period of decline after the arrival of the Black Death and falling out of favour with the Tudor monarchs before being called on once again during the English Civil War. Wallingford held out as the last remaining Royalist stronghold in Berkshire before surrendering after a 16-week siege. Fearing that Wallingford Castle could be used in a future uprising, Oliver Cromwell ordered its destruction.\nSince then Wallingford has become a market town and centre of local commerce. At the centre of the town is a market square with the war memorial and Wallingford Town Hall to the south, the Corn Exchange theatre to the east and numerous shops around the edges. Off the square there are alleyways and streets with more shops and a number of historic inns. Although it was a small town, Wallingford once had 14 churches; now, there are three ancient churches within the Parish of St Mary-le-More and St Leonard, a modern Roman Catholic church, a Quaker Meeting House dating from 1724 and Baptist, Methodist and community churches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "wallingford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5455,
+    "attempt": 5413,
+    "place_id": "gn-2647550",
+    "input": {
+      "place": {
+        "place_id": "gn-2647550",
+        "name": "Hampton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41334,
+        "lon": -0.36701
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hampton, London",
+          "url": "https://en.wikipedia.org/wiki/Hampton,_London",
+          "text": "Hampton is a suburb of Greater London on the north bank of the River Thames, in the London Borough of Richmond upon Thames, England, and the historic county of Middlesex. Hampton is bounded by Bushy Park to the east (and to the north of St Albans Riverside facing Tagg's Island), the suburbs of Hampton Hill and Fulwell to the north, green belt to the west, and the Thames to the south.\nHistorically, the manor of Hampton included Hampton Court Palace (and Bushy Park), Hampton Hill, and Hampton Wick (which are now known collectively as \"The Hamptons\"). Originally settled in Saxon times, the manor was awarded to the Norman lord Walter of Saint-Valéry following the 1066 Norman Conquest, passed by his heirs to the Order of Knights of the Hospital of Saint John of Jerusalem in 1237, and acquired by Henry VIII following the Act of Supremacy 1534 (26 Hen. 8. c. 1). The enclosure of common land in 1811 and rapid growth of 19th-century London saw agricultural fields converted to market gardens, and later nurseries. The construction of the Hampton Water Treatment Works in the late 1850s and early 1860s, and the opening of the Shepperton Branch Line to London Waterloo in 1864, led to a steady growth in the population of Hampton, and fields in south Hampton near the station being converted to suburban housing in the late 19th century and interwar period. Refrigeration, air freight and cheaper overseas labour ultimately rendered the market gardens and nurseries uncompetitive and derelict, and after a lengthy planning process the Nurserylands estate was established in north Hampton in the 1980s.\nToday Hampton is a primarily residential suburb of Greater London. The population at the 2021 census was 27,307 (20,000 excluding Hampton Hill)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 290
+    },
+    "banned_terms": [
+      {
+        "term": "hampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5456,
+    "attempt": 5414,
+    "place_id": "gn-3458161",
+    "input": {
+      "place": {
+        "place_id": "gn-3458161",
+        "name": "Madre de Deus",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -12.74083,
+        "lon": -38.62083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Madre de Deus, Bahia",
+          "url": "https://en.wikipedia.org/wiki/Madre_de_Deus,_Bahia",
+          "text": "Madre de Deus is a municipality in the state of Bahia in the North-East region of Brazil. The municipality is located on a small archipelago in the Bay of All Saints; it both the smallest municipality by land mass in Bahia and the Northeastern region of Brazil. Madre de Deus is spread across two islands, the Ilha de Madre de Deus and the much smaller Ilha de Maria Guarda. It sits in close proximity to two others islands, the Ilha do Bom Jesus dos Passos and Ilha dos Frades, both part of the city of Salvador. The Ilha de Madre de Deus is further subdivided into the neighborhoods of Centro, Suape, Cação, Marezinha, Mirim, Alto do Paraíso, Apicum, Nova Madre de Deus e Quitéria, Alto da Matriz, Alto do Santo Antônio, Alto da Boa Vista, Cururupeba, Malvinas, and Nova Brasília.\nCarnival in Madre de Deus is noted for costumes called caretas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "madre de deus",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "madre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "deus",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5457,
+    "attempt": 5415,
+    "place_id": "gn-3530955",
+    "input": {
+      "place": {
+        "place_id": "gn-3530955",
+        "name": "Chichihualco",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 17.66015,
+        "lon": -99.67739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chichihualco",
+          "url": "https://en.wikipedia.org/wiki/Chichihualco",
+          "text": "Chichihualco is a city in the south of Mexico. It forms the administrative centre of the municipality of Leonardo Bravo\nIt is located in the centre of the state of Guerrero, about 21 kilometres northwest of the state capital, Chilpancingo.\nAccording to Mexico's Instituto Nacional para el Federalismo y el Desarrollo Municipal (National Institute for Federalism and Municipal Development, INAFED), the city was home to 5,164 men and 5,526 women, a total of 10,690 inhabitants in 2010. It is found at an altitude of 1,141 metres above mean sea level, a latitude of 17°39′28″ north and a longitude of 99°40′35″ west.\nIn the local Nahuatl language, the name literally means 'in the bosom', translated as 'place where they suckle' or 'place of the wet nurses'.\nOne source has it that Maria Fermina Rivera died in action in Chichihualco while fighting alongside Vicente Guerrero in February 1821, although another source disputes this."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "chichihualco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5458,
+    "attempt": 5416,
+    "place_id": "gn-5099961",
+    "input": {
+      "place": {
+        "place_id": "gn-5099961",
+        "name": "Keansburg",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.44177,
+        "lon": -74.12986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keansburg, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Keansburg,_New_Jersey",
+          "text": "Keansburg ( KEENZ-burg) is a borough in Monmouth County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 9,755, a decrease of 350 (−3.5%) from the 2010 census count of 10,105, which in turn reflected a decline of 627 (−5.8%) from 10,732 in the 2000 census.\nKeansburg was formed as a borough by an act of the New Jersey Legislature on March 26, 1917, from portions of both Middletown Township and Raritan Township (now Hazlet), based on the results of a referendum held on April 17, 1917.\nKeansburg was part of the Bayshore Regional Strategic Plan, an effort by nine municipalities in northern Monmouth County to reinvigorate the area's economy by emphasizing its traditional downtowns, dense residential neighborhoods, maritime history, and the natural beauty of the Raritan Bay coastline. The plan has since been integrated into the 2016 Monmouth County Master Plan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "keansburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5459,
+    "attempt": 5417,
+    "place_id": "gn-5104844",
+    "input": {
+      "place": {
+        "place_id": "gn-5104844",
+        "name": "South Plainfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.57927,
+        "lon": -74.41154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Plainfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/South_Plainfield,_New_Jersey",
+          "text": "South Plainfield is a borough in northern Middlesex County, in the U.S. state of New Jersey. South Plainfield was incorporated as a borough on March 6, 1926, from portions of Piscataway Township.The borough is situated on the border with Union County in the Raritan Valley region, within the New York metropolitan area. As of the 2020 United States census, the borough's population was 24,338, its highest decennial count ever and an increase of 953 (+4.1%) from the 23,385 recorded at the 2010 census, which in turn reflected an increase of 1,575 (+7.2%) from the 21,810 counted in the 2000 census.\nSouth Plainfield was incorporated by an act of the New Jersey Legislature on March 12, 1926, from portions of Piscataway, based on the results of a referendum passed on April 6, 1926. The borough's name derives from Plainfield, which derived its name from a local estate or from its scenic location."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "south plainfield",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plainfield",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5460,
+    "attempt": 5418,
+    "place_id": "gn-512052",
+    "input": {
+      "place": {
+        "place_id": "gn-512052",
+        "name": "Pavlovsk",
+        "country": "Russia",
+        "subdivision": "St.-Petersburg",
+        "lat": 59.68333,
+        "lon": 30.43472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pavlovsk, Saint Petersburg",
+          "url": "https://en.wikipedia.org/wiki/Pavlovsk,_Saint_Petersburg",
+          "text": "Pavlovsk (Russian: Па́вловск \"[the town] of Pavel\" after Emperor Pavel (Paul) of Russia) is a municipal town in Pushkinsky District in the suburban part of the federal city of Saint Petersburg, Russia, located 30 kilometers (19 mi) south from Saint Petersburg proper and about 4 kilometers (2.5 mi) southeast from Pushkin. Population: 16,087 (2010 census). Known since the late 18th century, when Saint Petersburg was the capital of Russian Empire, as a countryside residence of Russian royal family commissioned creation of the town's landmark -palace with a large park, now parts of its federal museum reserve.\nThe town developed around the Pavlovsk Palace, a major residence of the Russian imperial family. Between 1918 and 1944, its official name was Slutsk, after the revolutionary Vera Slutskaya, and then was changed back to Pavlovsk. Pavlovsk is part of the UNESCO World Heritage Site \"Historic Centre of Saint Petersburg and Related Groups of Monuments\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "pavlovsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5461,
+    "attempt": 5419,
+    "place_id": "gn-5951289",
+    "input": {
+      "place": {
+        "place_id": "gn-5951289",
+        "name": "Fall River",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 44.81685,
+        "lon": -63.6154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fall River, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/Fall_River,_Nova_Scotia",
+          "text": "Fall River is a suburban community located in Nova Scotia, Canada within the Halifax Regional Municipality. It is located north-northeast of the Bedford Basin, northeast of Bedford and Lower Sackville and north of Waverley.\nFall River's name is derived from a stream running between Miller Lake and Lake Thomas which had a waterfall.  These falls supplied water power for several mills during the 19th century as well as a local electrical utility during the early 20th century.  The waterfall was demolished in the late 1950s as a result of the construction of the Bicentennial Highway leading to Halifax;  the waterfall was located where the 4-lane expressway currently runs up the hill from the crossing of Lake Thomas to the interchange with Highway 118 at Miller Lake.  Hydro-electric power is now generated by a tunnel that carries the water from Miller Lake which once flowed through this stream and down the waterfall. Turbines produce electricity for the main grid, during peak periods."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "fall river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fall",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5462,
+    "attempt": 5420,
+    "place_id": "gn-12156873",
+    "input": {
+      "place": {
+        "place_id": "gn-12156873",
+        "name": "Victoria Village",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.72849,
+        "lon": -79.31487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victoria Village",
+          "url": "https://en.wikipedia.org/wiki/Victoria_Village",
+          "text": "For the settlement established by former slaves in Guyana known as Victoria Village see Victoria, Guyana\n\nVictoria Village, is a neighbourhood in the city of Toronto, Ontario, Canada bounded on the west by the Don Valley, on the north by Lawrence Avenue East, on the east by Victoria Park Avenue, and on the south by Eglinton Avenue East. It is located in the southeast of the former city of North York. Prior to amalgamation, Victoria Village sat at the boundaries of Scarborough, where the west side of Victoria Park Avenue was considered North York, the east side of Victoria Park was Scarborough and south of Eglinton seen as East York. For this reason, the three municipalities were connected at the intersection of Eglinton and Victoria Park and O'Connor and Victoria Park. Its population is diverse in ancestral backgrounds with a larger proportion of South Americans than most of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "victoria village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
