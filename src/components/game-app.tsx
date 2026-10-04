@@ -3,6 +3,7 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
+import { preloadAdmin1Boundaries } from "@/game/reverse-geocode";
 import {
   clearRunAfterUncleanShutdown,
   handlePageHide,
@@ -666,6 +667,9 @@ export function GameApp() {
         // session starts only when none is live.
         ensureSession(next);
         setMenu(null);
+        // Warm the admin-1 boundary cache during play so it's ready by reveal.
+        // Fire-and-forget: preloadAdmin1Boundaries is specified non-throwing.
+        void preloadAdmin1Boundaries();
       } catch (err) {
         // Fail closed: no chunk, no run. The player stays on the menu with
         // an explanation instead of starting with a partial/missing pool.

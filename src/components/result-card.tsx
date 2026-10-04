@@ -8,10 +8,11 @@ import type { Starter } from "@/game/starters";
 import { Button } from "@/components/ui/button";
 import type { Drop } from "./game-app";
 import { X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
+import { pinCompareLine, resolvePin } from "@/game/reverse-geocode";
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -209,6 +210,18 @@ export function ResultCard({
     }
   }, [phase, dismissed, place?.name]);
 
+  // Pin-compare line for the miss card: names BOTH locations ("Your pin:
+  // Nebraska · True spot: District of Columbia"). Fail closed — null renders
+  // exactly as today (no line). Only computed for the done phase; the hit
+  // card never shows it.
+  const pinLine = useMemo(() => {
+    if (!drop || !place) return null;
+    return pinCompareLine(
+      resolvePin(drop.lat, drop.lon),
+      resolvePin(place.lat, place.lon),
+    );
+  }, [drop, place]);
+
   if (dismissed) {
     // Dismissing the card must never strand the run: the restore pill keeps
     // company with the continue action, so hiding the card can't funnel the
@@ -342,6 +355,14 @@ export function ResultCard({
               <p className="font-display text-4xl tabular-nums">
                 {drop ? `${formatDistance(drop.distanceKm)} off` : "Miss"}
               </p>
+              {pinLine ? (
+                <p
+                  data-testid="pin-compare-line"
+                  className="text-sm leading-relaxed text-white/85"
+                >
+                  {pinLine}
+                </p>
+              ) : null}
               <p
                 data-testid="miss-subscript"
                 className="text-xs leading-relaxed text-white/70"

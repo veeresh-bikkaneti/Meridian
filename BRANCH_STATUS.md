@@ -8,7 +8,7 @@ Base: `origin/main` at `aa69434`.
 - [x] Worktree + branch `feat/reveal-pin-compare`; node_modules symlinked (never npm install); AGENTS.md read
 - [x] Exploration: ResultCard miss block (`run.phase === "done"`), `Drop` has player pin lon/lat, `place` has true spot lon/lat, `territoryAt()` exists for country lookup, admin-1 data vendored (us-atlas states-10m, src/map/data/ne-50m-admin-1.json for AU/BR/CA/CN/IN)
 - [x] Worker A: `src/game/reverse-geocode.ts` — `preloadAdmin1Boundaries()`, `resolvePin()`, `pinCompareLine()` + unit tests (11 tests green; data verified: DC present in us-atlas; world-atlas names the USA "United States of America")
-- [ ] Worker B: result-card wiring + `openRun` preload hook + card tests
+- [x] Worker B: result-card wiring + `openRun` preload hook + card tests (result-card.tsx: `pinLine` useMemo + `data-testid="pin-compare-line"` under the miss distance `<p>`, fail-closed on null; game-app.tsx: `void preloadAdmin1Boundaries()` in `openRun` after `setMenu(null)`; 4 new renderToString card tests green — Nebraska/DC line, same-state line, null fail-closed, no line on hit. Gates: tsc clean, 490/490 unit tests, build:pages green)
 - [ ] Gates: typecheck → build → tech-arch review → tone/docs/a11y review → E2E → PR → merge → live verify
 
 ## API contract (workers A and B build to this)
