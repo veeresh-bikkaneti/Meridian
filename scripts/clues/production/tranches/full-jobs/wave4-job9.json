@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 768,
+    "attempt": 761,
+    "place_id": "gn-3106672",
+    "input": {
+      "place": {
+        "place_id": "gn-3106672",
+        "name": "Valladolid",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 41.65541,
+        "lon": -4.72353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valladolid",
+          "url": "https://en.wikipedia.org/wiki/Valladolid",
+          "text": "Valladolid ( VAL-ə-də-LID; Spanish: [baʎaðoˈlið] ), also popularly known as Pucela, is a city in Spain and the primary seat of government and de facto capital of the autonomous community of Castile and León. It is also the capital of the province of Valladolid. With a population of 299,816 as of 2024, it is the most populated municipality in the region. The city is located roughly in the centre of the northern half of the Iberian Peninsula's Meseta Central, at the confluence of the Pisuerga and Esgueva rivers 15 km (9.3 mi) before they join the Duero, surrounded by winegrowing areas.\nThe area was inhabited by the Vaccaei in ancient times. The current settlement was purportedly founded after 1072, growing in prominence within the context of the Crown of Castile, being endowed with fairs and different institutions such as a collegiate church, University (1241), Royal Court and Chancellery and a royal mint. It was partially destroyed by a 1561 fire. Valladolid briefly served as the capital of Hispanic Monarchy between 1601 and 1606. Local treasury cratered with the onset of the Castilian crisis of the 17th century. Commercial dynamism in the 19th century was boosted by the creation of the Canal of Castile positioning Valladolid as the largest wheat market in the region, and the overall improvement in communications. Industrialisation followed suit, coalescing with the consolidation of an automotive industry in the mid 20th century.\nAmong the events that are held each year in the city are the famous Holy Week, the World Jigsaw Puzzle Championships, and the Valladolid International Film Festival (Seminci). In 2019, Valladolid was recognised as a City of Film as part of UNESCO's Creative Cities Network. Together with another 15 surrounding municipalities, it belongs to an urban community of around 0.4 million inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 297
+    },
+    "banned_terms": [
+      {
+        "term": "valladolid",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 769,
+    "attempt": 762,
+    "place_id": "gn-3456283",
+    "input": {
+      "place": {
+        "place_id": "gn-3456283",
+        "name": "Niterói",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.88333,
+        "lon": -43.10361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niterói",
+          "url": "https://en.wikipedia.org/wiki/Niterói",
+          "text": "Niterói (English:  NEE-tə-ROY, NIT-ə-ROY, Brazilian Portuguese: [niteˈɾɔj]) is a municipality in the state of Rio de Janeiro, in the southeast region of Brazil. It lies across Guanabara Bay, facing the city of Rio de Janeiro and forming part of the Rio de Janeiro Metropolitan Area. It was the capital of Rio de Janeiro, as marked by its golden mural crown, from 1834 to 1894 and again from 1903 to 1975. It has an estimated population of 515,317 inhabitants (2020) and an area of 129.375 km2 (49.952 sq mi), making it the fifth most populous city in the state. It has the highest Human Development Index in the state and the seventh highest among Brazil's municipalities in 2010. Individually, it is the municipality with the second highest average monthly household income per capita in Brazil and appears in 13th place among the municipalities of the country according to social indicators related to education. The city has the nicknames of Cidade Sorriso (Smile City).\nStudies by the Getulio Vargas Foundation in June 2011 classified Niterói as the richest city in Brazil, with 55.7% of the population classified as class A. Considering classes A and B, Niterói also appears in the first place, with 85.9% of the population in these classes. According to 2010 data from IBGE, Niterói's nominal gross domestic product was 11.2 billion reais, being the fifth municipality with the highest gross domestic product of the state. The city is the second-largest formal employer in the state of Rio de Janeiro, although it ranks 5th in terms of population. The city is one of the main financial, commercial and industrial centers in the state of Rio de Janeiro, being the 12th among the 100 best Brazilian cities to do business.\nNiterói was founded on 22 November 1573 by the Tupi chief Arariboia, who later was forcibly converted to Roman Catholicism and was given the Christian name of Martim Afonso, after the Portuguese explorer Martim Afonso de Sousa, making it the only Brazilian city to have been founded by a non-Christian, non-assimilated indigenous person.\nThe municipality contains part of the 2,400-hectare (5,900-acre) Serra da Tiririca State Park, created in 1991."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 358
+    },
+    "banned_terms": [
+      {
+        "term": "niteroi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 770,
+    "attempt": 763,
+    "place_id": "gn-3463030",
+    "input": {
+      "place": {
+        "place_id": "gn-3463030",
+        "name": "Foz do Iguaçu",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.54778,
+        "lon": -54.58806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Foz do Iguaçu",
+          "url": "https://en.wikipedia.org/wiki/Foz_do_Iguaçu",
+          "text": "Foz do Iguaçu (Brazilian Portuguese pronunciation: [ˈfɔz du iɡwaˈsu]; \"Mouth of the Iguazu\"), colloquially referred to as Foz, is the Brazilian city on the border of Iguaçu Falls. Foz in Portuguese means the mouth or end of a river and Iguaçu in Guarani or Tupi comes from the words y [ɨ], meaning \"river\", and guasu [waˈsu], meaning \"big\".\nThe city is the 7th largest in the state of Paraná with a population of approximately 258,000 inhabitants. It is approximately 650 km (400 mi) west of the capital of the state, Curitiba, being the westernmost city in that State.\nThe inhabitants of the city are known as iguaçuenses. The Iguaçu Falls located on the border of Argentina and Brazil and consisting of approximately 257 individual waterfalls over 2.7 km (1.7 mi) were chosen as one of the \"New Natural Seven Wonders of the World.\"\nThe city is characterized by tourism and cultural diversity. There are about 80 nationalities, being the most representative from Italy, Portugal, Lebanon, China, Paraguay and Argentina. Foz do Iguaçu is integrated into a tri-national region, bordering the Argentine city of Puerto Iguazú and the Paraguayan city of Ciudad del Este. The city's economy is based on tourism, with emphasis on trade and services.\nAccording to research conducted by the Brazilian Tourist Institute (Embratur) and the Foundation Institute of Economic Research (FIFE) in 2006, 2007 and 2008, Foz do Iguaçu was the 2nd most visited leisure destination by foreign tourists after Rio de Janeiro. In 2010, it received from the Brazilian Ministry of Tourism 10 awards for Best Practices and Competitiveness Index. Foz do Iguaçu has been noted as a destination by various national and international media: the British newspaper The Guardian considered it the best foreign destination for the UK. The U.S. TV network CNN classified it as one of the 14 most romantic destinations.\nFoz do Iguaçu is home of the Itaipu Dam, the world's second largest hydroelectric plant in power generation, after the Three Gorges Dam in China. With 20 generator units and 14,000 MW of installed capacity, it provides approximately 15% of the energy consumed in Brazil and 86% of the energy consumed in Paraguay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 361
+    },
+    "banned_terms": [
+      {
+        "term": "foz do iguacu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "foz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "iguacu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 771,
+    "attempt": 764,
+    "place_id": "gn-3516355",
+    "input": {
+      "place": {
+        "place_id": "gn-3516355",
+        "name": "Tampico",
+        "country": "Mexico",
+        "subdivision": "Tamaulipas",
+        "lat": 22.28519,
+        "lon": -97.87777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tampico",
+          "url": "https://en.wikipedia.org/wiki/Tampico",
+          "text": "Tampico is a city and port in the southeastern part of the Mexican state of Tamaulipas. It is located on the north bank of the Pánuco River, about 10 kilometers (6 mi) inland from the Gulf of Mexico, and directly north of the state of Veracruz. Tampico is the fifth-largest city in Tamaulipas, with a population of 314,418 in the city proper and 929,174 in the metropolitan area.\nDuring the period of Mexico's first oil boom in the early 20th century, the city was the \"chief oil-exporting port of the Americas\" and the second-busiest in the world, yielding great profits that were invested in the city's famous architecture, often compared to that of Venice and New Orleans. The first oil well in Mexico was drilled near Tampico in 1901 at Ébano.\nThe city is also a major exporter of silver, copper, and lumber, as well as wool, hemp, and other agricultural products. Containerized cargo is mainly handled by the neighboring ocean port of Altamira."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "tampico",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 772,
+    "attempt": 765,
+    "place_id": "gn-6122085",
+    "input": {
+      "place": {
+        "place_id": "gn-6122085",
+        "name": "Richmond",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.17003,
+        "lon": -123.13683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richmond, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Richmond,_British_Columbia",
+          "text": "Richmond is a city in British Columbia, Canada. It occupies almost the entirety of Lulu Island (excluding Queensborough), the adjacent Sea Island (where the Vancouver International Airport is located) and several other smaller islands and uninhabited islets to its north and south. Across the two estuarine distributaries of the Fraser River, it neighbours Vancouver and Burnaby on the Burrard Peninsula to the north, New Westminster and Annacis Island to the east, Delta to the south, and the Strait of Georgia to the west.\nThe indigenous Coast Salish peoples were the first people to inhabit the area of modern-day Richmond, with the Musqueam Band naming the site near Terra Nova \"spələkʷəqs\" or \"boiling point\". As of the 2021 Canadian census, East Asian Canadians make up a majority of Richmond's population at 57.1%. The broader Asian Canadian population, which includes Southeast Asian Canadians and South Asian Canadians, comprises 73.4% of the city's total population.\nThe city is a member municipality of Metro Vancouver. It is composed of sixteen areas: City Centre, Steveston, Broadmoor, Blundell, Seafair, Thompson, Shellmont, West Cambie, East Cambie, Hamilton, Bridgeport, East Richmond, Sea Island, Gilmore, Fraser Lands, and the South Arm Islands. As of 2023, the city has an estimated population of 229,781 people.\nDuring the 2010 Winter Olympics, the Richmond Olympic Oval was a venue for long track speed skating events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 773,
+    "attempt": 766,
+    "place_id": "gn-6295587",
+    "input": {
+      "place": {
+        "place_id": "gn-6295587",
+        "name": "Batam",
+        "country": "Indonesia",
+        "subdivision": "Riau",
+        "lat": 1.14937,
+        "lon": 104.02491
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batam",
+          "url": "https://en.wikipedia.org/wiki/Batam",
+          "text": "Batam, officially the City of Batam or Batam City (Indonesian: Kota Batam, not to be confused with Batam Kota, a district within this city), is the largest city in the Indonesian province of the Riau Islands.\nThe city of Batam includes Batam Island at 410 square kilometres (160 mi2), as well as other major islands such as Rempang at 165 square kilometres (64 mi2) and Galang at 80 square kilometres (31 mi2). Together, the three-interconnected islands of the Riau Archipelago are known as Barelang (an abbreviation of Batam–Rempang–Galang). The remaining hundreds of tiny islands are largely conservation areas, small fishing outposts, or uninhabited mangroves. Collectively, the land area of all these islands make up around 1,020.28 square kilometres (393.93 mi2). Batam Island is the core urban and industrial zone, while both Rempang Island and Galang Island maintain their rural character and low-density population; they are connected to Batam Island by short bridges. Bulang Island and the islands to its north lie to the west of Batam Island; while they are part of the Belakang Padang District, they are also administratively within the city. \nBatam City is an industrial boomtown, an emerging transport hub and part of a free trade zone in the Indonesia–Malaysia–Singapore Growth Triangle, located 20 km (12 mi) off Singapore's south coast. According to Statistics Indonesia's 2020 census, Batam had a municipal population of 1,196,396, making it the third largest city in the region of Sumatra, after Medan and Palembang. Islands that form part of Batam are also the closest parts of Indonesia to Singapore, at a minimum distance of 6 km (3.7 miles) across the Singapore Strait. In clear weather and good visibility, both Batam and Singapore are visible from each other with the naked eye. Batam was the fastest-growing municipality in Indonesia during the decade prior to 2010, with a population growth rate of 11% per year; however, there were setbacks during the subsequent decade. In 2017, the island suffered severe job losses; some 300,000 workers were laid off. The official estimated population as of mid 2025 was 1,296,960."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 343
+    },
+    "banned_terms": [
+      {
+        "term": "batam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 774,
+    "attempt": 767,
+    "place_id": "gn-12226438",
+    "input": {
+      "place": {
+        "place_id": "gn-12226438",
+        "name": "Ciudad de la Paz",
+        "country": "Equatorial Guinea",
+        "subdivision": "Djibloho",
+        "lat": 1.5925,
+        "lon": 10.82361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad de la Paz",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_de_la_Paz",
+          "text": "Ciudad de la Paz (Spanish: [θjuˈðað ðe la ˈpaθ], lit. 'City of Peace'), previously known as Djibloho  or Oyala, commonly known as La Paz, is the official capital city of Equatorial Guinea, though still under construction. Established as an urban district in Wele-Nzas in 2015, it is also the administrative headquarters of Djibloho, Equatorial Guinea's newest province created in 2017, and is located near the town of Mengomeyén. In 2017, the city was officially named Ciudad de la Paz (\"City of Peace\").\nThe planned city's location was chosen for its easy access, milder climate, and inland location, as the 2004 Equatorial Guinea coup attempt raised fears about maritime access to the capital. It was designed by the Portuguese Studio for Architecture and Urbanism FAT – Future Architecture Thinking. It is projected to have around 200,000 inhabitants, a new Parliament building, a number of presidential villas and an area of 8150 hectares. The construction of this new capital has been criticized by the political opposition to President Teodoro Obiang, who was the driving force behind the initiative. The government of Equatorial Guinea began to move to the city in early 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad de la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 775,
+    "attempt": 768,
+    "place_id": "gn-1272013",
+    "input": {
+      "place": {
+        "place_id": "gn-1272013",
+        "name": "Erode",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.3428,
+        "lon": 77.72741
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erode",
+          "url": "https://en.wikipedia.org/wiki/Erode",
+          "text": "Erode (Tamil: [iːɾoːɽɯ]; īrōṭu), is a city in the Indian state of Tamil Nadu. It is located on the banks of the Kaveri river and is surrounded by the Western Ghats. It is the seventh largest urban agglomeration in Tamil Nadu. It is the administrative capital of Erode district and is administered by the Erode Municipal Corporation which was established in 2008.\nErode formed part of the Kongu Nadu region ruled by the Cheras during the Sangam period between the 1st and the 4th centuries CE. The medieval Cholas conquered the region in the 10th century CE. The region was ruled by Vijayanagara Empire in the 15th century followed by the Nayaks who introduced the Polygar system. In the later part of the 18th century, the it came under the Kingdom of Mysore and following the Anglo-Mysore Wars, the British East India Company annexed it to the Madras Presidency in 1799. The region played a prominent role in the second Poligar War (1801) when it was the area of operations of Dheeran Chinnamalai.\nPost Indian Independence in 1947, Erode was part of Coimbatore district. It was established as the capital of the newly formed Erode district in 1979. It forms part of Erode Lok Sabha constituency that elects its member of parliament. The city is a major agricultural, industrial and educational hub. It is amongst the largest producers of turmeric in the state and Erode Turmeric is recognized as a Geographical Indication by the Government of India. The textile boom in the early 20th century and rapid growth due to industrialization has seen Erode becoming a major producer of handloom and knitwear."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "erode",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 776,
+    "attempt": 769,
+    "place_id": "gn-1272691",
+    "input": {
+      "place": {
+        "place_id": "gn-1272691",
+        "name": "Dhule",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 20.9013,
+        "lon": 74.77737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dhule",
+          "url": "https://en.wikipedia.org/wiki/Dhule",
+          "text": "Dhule is one of the largest cities in Maharashtra, and central region of India. The city located in the Dhule District in the northwestern part of Maharashtra state, known as West Khandesh. Situated on the banks of Panzara River, Dhule is the regional headquarters of MIDC, RTO, and MTDC.\nThe city, with industrial areas, schools, hospitals, and residential areas, has communications and transport infrastructures.  Dhule is largely emerging as one of the upcoming hubs of textile, edible oil, Information Technology, and power-loom across the state and has gained a strategic advantage for being on the junction of three National Highways viz. NH-3, NH-6, and NH-211 and on most anticipated Manmad – Indore Rail Project. Recently Ministry of Surface Transport has granted conversion of surrounding 4 state highways to National Highway, after which Dhule would be the one amongst very few cities in India being located on convergence of 7 National Highways. Conversion of NH-3 from four lanes to six lanes between Dhule and Nashik with modern facilities is under process.\nDhule city is also a part of Delhi Mumbai Industrial Corridor Project, as Node – 17, India's most ambitious infrastructure program, aiming to develop new industrial cities and converging next generation technologies across infrastructure sectors.\nAs a part of creating employment across smaller cities, Ministry of Electronics and IT has also given in-principle approval for setting BPO at Dhule."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "dhule",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 777,
+    "attempt": 770,
+    "place_id": "gn-1580240",
+    "input": {
+      "place": {
+        "place_id": "gn-1580240",
+        "name": "Huế",
+        "country": "Vietnam",
+        "subdivision": "Thừa Thiên Huế Province",
+        "lat": 16.4619,
+        "lon": 107.59546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huế",
+          "url": "https://en.wikipedia.org/wiki/Huế",
+          "text": "Huế, formerly Thừa Thiên Huế province, is a centrally-governed city in central Vietnam, located approximately at the center of the country, and an educational, medical, and cultural hub. It borders Quảng Trị to the north, Đà Nẵng to the south, Salavan and Sekong of Laos to the west and the South China Sea to the east. As one of the country's nine centrally-governed cities, it falls under the administration of the central government.\nHuế has 128 km of coastline, 22,000 ha of lagoons and over 200,000 ha of forest. The city is located in the middle of the North Central and South Central regions (including the South Central Coast and Central Highlands), and is transitional in many aspects: geology, climate, administrative division, and local culture.\nWhat is now the modern city was historically part of Thuận Hóa, a territory ceded by Champa to Đại Việt in 1306 as a wedding dowry. Huế (then known as Phú Xuân) became the provincial capital in 1687, the capital of Đàng Trong from 1738 to 1775, and the capital of Vietnam under the Nguyễn dynasty from 1802 to 1945. The city served as the Imperial Citadel and administrative capital of the Nguyễn dynasty, and later also functioned as capital of the protectorate of Annam during the colonial French Indochina period.\nHuế is a popular tourist destination with its extensive UNESCO-designated complex of imperial palaces, tombs and temples. Alongside its moat and thick stone walls, the complex encompasses the Imperial City of Huế, with palaces and shrines; the Forbidden Purple City, once the emperor's home; a replica of the Royal Theater; as well as temples and monuments in the city's outskirts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "hue",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 778,
+    "attempt": 771,
+    "place_id": "gn-1648473",
+    "input": {
+      "place": {
+        "place_id": "gn-1648473",
+        "name": "Bogor",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.59444,
+        "lon": 106.78917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bogor",
+          "url": "https://en.wikipedia.org/wiki/Bogor",
+          "text": "Bogor (Sundanese: ᮘᮧᮌᮧᮁ; Dutch: Buitenzorg) is a landlocked city in West Java, Indonesia. Located around 53 kilometers (33 mi) south of the national capital of Jakarta, it is the 6th largest city in the Jakarta metropolitan area and the 14th overall nationwide.\nThe city covers an area of 111.39 km2, and it had a population of 950,334 at the 2010 Census and 1,043,070 at the 2020 Census. The official population estimate as at 2025 was 1,281,010.\nBogor is an important center of economy, science, cultural heritage and tourism in Indonesia because this city is a mountainous area that used to be a resting place for Dutch nobles during the Dutch colonial period because of its cool climate and the many classical European-style buildings in the city. During the Middle Ages, the city served as the capital of the Sunda Kingdom (Sundanese: Karajaan Sunda) and was called Pakuan Pajajaran or Dayeuh Pakuan. During the Dutch colonial era, it was named Buitenzorg (\"without worries\" in Dutch) and served as the summer residence of the Governor-General of the Dutch East Indies.\nWith several hundred thousand people living in an area of about 20 km2 (7.7 sq mi), the central part of Bogor is one of the world's most densely populated areas. The city has a presidential palace and a botanical garden (Indonesian: Kebun Raya Bogor) – one of the oldest and largest in the world. It bears the nickname \"Rainy City\" (Kota Hujan), because of frequent rain showers, even during the dry season.\nIn the 1990s–2000s, the city regularly hosted various international events, such as ministry-level meetings of the Asia-Pacific institutions and the APEC summit of 15 November 1994."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "bogor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 779,
+    "attempt": 772,
+    "place_id": "gn-1749822",
+    "input": {
+      "place": {
+        "place_id": "gn-1749822",
+        "name": "Puchong",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3,
+        "lon": 101.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puchong",
+          "url": "https://en.wikipedia.org/wiki/Puchong",
+          "text": "Puchong is a major town and a parliamentary constituency in the Petaling District, in the state of Selangor, Malaysia. Bordering Kuala Lumpur, it is part of the Greater Kuala Lumpur area. It is bordered by Petaling Jaya in the north, Subang Jaya in the west, Cyberjaya and Putrajaya in the south, and Seri Kembangan in the east.\nOnce a small settlement consisting of the tin mining and rubber tapping communities, Puchong has evolved into one of Klang Valley's most vibrant and bustling townships. While parts of Puchong have developed with residents who commute and work in both urban and suburban areas, many pockets have yet to fully mature, allowing a greater sprawl of urban dwellers to seek inhabitancy. This demand in living space is largely driven by the commute distance to Kuala Lumpur City Centre and sharp increase in property prices across other parts of the Kuala Lumpur (KL) metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "puchong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 781,
+    "attempt": 773,
+    "place_id": "gn-1805179",
+    "input": {
+      "place": {
+        "place_id": "gn-1805179",
+        "name": "Jiujiang",
+        "country": "China",
+        "subdivision": "Jiangxi",
+        "lat": 29.70475,
+        "lon": 116.00206
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jiujiang",
+          "url": "https://en.wikipedia.org/wiki/Jiujiang",
+          "text": "Jiujiang, formerly transliterated Kiukiang and Kew-Keang, is a prefecture-level city located on the southern shores of the Yangtze River in northwest Jiangxi Province in the People's Republic of China. It is the second-largest prefecture-level city in Jiangxi and its borders include Poyang Lake, the largest freshwater lake in China. Jiujiang is the fourth largest port on the Yangtze River and was one of the first five cities that were opened to foreign trade along the Yangtze River following the implementation of Deng Xiaoping's Opening-Up Policy. It is Jiangxi's only international trade port city.\nIts population was 4,600,276 inhabitants at the 2020 census, 1,164,268 of whom resided in the built-up area (metro) made up of three urban districts (aka Xunyang, Lianxi, and Chaisang). In 2007, the city was named China's top ten livable cities by the Chinese Cities Brand Value Report, which was released at 2007 Beijing Summit of China Cities Forum. In 2022, the State Council of China granted Jiujiang the title of Famed National Historical and Cultural City for its rich history and multicultural background in the Republican era."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "jiujiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 782,
+    "attempt": 774,
+    "place_id": "gn-217695",
+    "input": {
+      "place": {
+        "place_id": "gn-217695",
+        "name": "Bunia",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Ituri",
+        "lat": 1.55941,
+        "lon": 30.25224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bunia",
+          "url": "https://en.wikipedia.org/wiki/Bunia",
+          "text": "Bunia is the capital city of Ituri Province in the Democratic Republic of the Congo (DRC). It was part of the Orientale Province until that province's dissolution.\nIt lies at an elevation of 1,275 metres or 4,180 feet on a plateau about 30 kilometres or 19 miles west of Lake Albert in the Albertine Rift, and about 25 kilometres or 16 miles east of the Ituri Rainforest.\nThe city is at the center of the Ituri conflict between the Lendu and Hema. In the Second Congo War the city and district were the scene of much fighting and many civilian deaths from this conflict, and related clashes between militias and Uganda-based forces. Consequently, the city is the base of one of the largest United Nations peace-keeping forces in Africa, and its headquarters in northeastern DRC. The area's natural resources include gold mines over which militias and foreign forces have been fighting."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "bunia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 783,
+    "attempt": 775,
+    "place_id": "gn-2842150",
+    "input": {
+      "place": {
+        "place_id": "gn-2842150",
+        "name": "Salzgitter",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.15705,
+        "lon": 10.4154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salzgitter",
+          "url": "https://en.wikipedia.org/wiki/Salzgitter",
+          "text": "Salzgitter (German pronunciation: [zaltsˈɡɪtɐ] ; Eastphalian: Soltgitter) is an independent city in southeast Lower Saxony, Germany, located between Hildesheim and Braunschweig. Together with Wolfsburg and Braunschweig, Salzgitter is one of the seven Oberzentren (metropolitan areas) of Lower Saxony. With 107,674 inhabitants and 223.92 square kilometres (86.46 sq mi) (as of 2015), it is the largest city by area in Lower Saxony and one of the largest in Germany. Salzgitter originated as a conglomeration of several small towns and villages, and is today made up of 31 boroughs, which are relatively compact conurbations with wide stretches of open country between them.\nThe city is part of two urban areas, Hildesheim and Braunschweig, because of its uneven distribution of urban quarters. Due to the uneven population distribution, the density of the areas within the Braunschweig urban area is over 1,500 people per km² with the Lebenstedt area having over 3,000 people per km². Over 70% (76,500) of the population lives within the urban area of Braunschweig, but most of the area is within the urban area of Hildesheim. 54.1% (41,000 people) of the city's population within the Braunschweig urban agglomeration area are immigrants or the children of immigrants.\nThe city's main shopping street is in the borough of Lebenstedt, and the central business district is in Salzgitter-Bad. The city is connected to the Mittellandkanal and the Elbe Lateral Canal by a distributary. The nearest metropolises are Braunschweig, about 23 kilometres (14 miles) to the northeast, and Hanover, about 51 km (32 miles) to the northwest. The population of the City of Salzgitter has exceeded 100,000 inhabitants since its foundation in 1942 (which made it a city (Großstadt) in contrast to a town (Stadt) by the German definition), when it was still called Watenstedt-Salzgitter. Beside Wolfsburg, Leverkusen and Eisenhüttenstadt, Salzgitter is one of the few cities in Germany founded during the 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "salzgitter",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 784,
+    "attempt": 776,
+    "place_id": "gn-2884509",
+    "input": {
+      "place": {
+        "place_id": "gn-2884509",
+        "name": "Krefeld",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.33645,
+        "lon": 6.55381
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krefeld",
+          "url": "https://en.wikipedia.org/wiki/Krefeld",
+          "text": "Krefeld ( KRAY-feld, -⁠felt, German: [ˈkʁeːfɛlt] ; Limburgish: Krieëvel [ˈkʀiə˦vəl]), also spelled Crefeld until 1925 (though the spelling was still being used in British papers throughout the Second World War), is a city in North Rhine-Westphalia, in western Germany. It is located northwest of Düsseldorf, its center lying just a few kilometers to the west of the river Rhine; the borough of Uerdingen is situated directly on the Rhine. Because of its economic past, Krefeld is often referred to as the \"Velvet and Silk City\". It is accessed by the autobahns A57 (Cologne–Nijmegen) and A44 (Aachen–Düsseldorf–Dortmund–Kassel).\nThe city's origins lie in a medieval settlement first documented in the 12th century. After passing to the County of Moers, Krefeld came under the rule of the House of Orange-Nassau in the early modern period, when policies of religious toleration encouraged the settlement of Mennonites, whose commercial networks contributed significantly to its economic growth. The city became part of the Kingdom of Prussia in 1702 and expanded rapidly during the Industrial Revolution. In 1929 it was enlarged through the incorporation of neighbouring municipalities, including Uerdingen, forming the modern city.\nKrefeld is known for its extensive parks and tree-lined avenues, as well as for cultural institutions including the Kunstmuseen Krefeld. Notable sights include the medieval Linn Castle and the adjoining historic old town of Linn. The city is also associated with modern architecture, particularly Haus Lange and Haus Esters, designed by Ludwig Mies van der Rohe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "krefeld",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 785,
+    "attempt": 777,
+    "place_id": "gn-3464460",
+    "input": {
+      "place": {
+        "place_id": "gn-3464460",
+        "name": "Dourados",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso do Sul",
+        "lat": -22.22111,
+        "lon": -54.80556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dourados",
+          "url": "https://en.wikipedia.org/wiki/Dourados",
+          "text": "Dourados is a city and municipality, situated in the Brazilian state of Mato Grosso do Sul, 225 km (140 mi) Southwest of Campo Grande (the state's capital). It has a population of about 266,950 inhabitants, and its economy is based mainly in arable agriculture (particularly Soya, Maize and Sugar Cane) and in cattle ranching. Dourados is also the second most populous and important city of this state.\nIts media, commerce, and services more than take care of the thirty cities of Mato Grosso do Sul, including a part of Paraguay. For its size and importance, it is an economic and social capital of a region that possesses approximately a million inhabitants (Vestibule of the Mercosul – the Common Market of the South).\nIts development was slow until the first half of the 20th century, because of transportation limitations (highways and roads), especially with Campo Grande and the State of São Paulo. From 1950, it increased its development with the construction of roads. With this, it received migrants from other parts of the country (especially Sulistas and São Paulo) and immigrants (mainly Japanese). The city has a close relationship with Paraguay its next door neighbor, which is 120 km (75 mi) away. This is a strong factor in the ethnic and cultural union between the city and the neighboring country. This explains why 30% of the inhabitants of Dourados have some Paraguayan family link."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "dourados",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 786,
+    "attempt": 778,
+    "place_id": "gn-4033936",
+    "input": {
+      "place": {
+        "place_id": "gn-4033936",
+        "name": "Papeete",
+        "country": "French Polynesia",
+        "subdivision": "Îles du Vent",
+        "lat": -17.5347,
+        "lon": -149.56843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Papeete",
+          "url": "https://en.wikipedia.org/wiki/Papeete",
+          "text": "Papeete (Tahitian: Papeʻete, pronounced [pa.pe.ʔe.te]) is the capital city of French Polynesia, an overseas collectivity of the French Republic located in the Pacific Ocean. The commune of Papeʻete is located on the island of Tahiti, in the administrative subdivision of the Windward Islands, of which Papeʻete is the administrative capital. Both the President of French Polynesia and French High Commissioner reside in Papeʻete.\nIt is the primary center of Tahitian and French Polynesian public and private governmental, commercial, industrial, and financial services, the hub of French Polynesian tourism and a commonly used port of call. The Windward Islands are themselves part of the Society Islands. The name Papeʻete, means \"water from a basket\"— this was an effect of a naming taboo during Pōmare I's reign where the Tahitian contemporary word for water vai was substituted with pape, the old name Vaiʻete is still recognised in some areas such as the Marquesas. The urban area of Papeʻete had a total population of 124,274 inhabitants at the 2022 census, 26,654 of whom lived in the commune of Papeʻete proper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "papeete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 787,
+    "attempt": 779,
+    "place_id": "gn-1273865",
+    "input": {
+      "place": {
+        "place_id": "gn-1273865",
+        "name": "Coimbatore",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.00555,
+        "lon": 76.96612
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coimbatore",
+          "url": "https://en.wikipedia.org/wiki/Coimbatore",
+          "text": "Coimbatore (Tamil: Kōyamputtūr, IPA: [koːjɐmbut̪ːuːɾ] ), also known as Kovai (IPA: [koːʋaj] ), is a metropolitan city in the Indian state of Tamil Nadu. It is located on the banks of the Noyyal River and surrounded by the Western Ghats. It is the second largest city in Tamil Nadu after Chennai in terms of population and the 16th largest urban agglomeration in India as per the census 2011. It is the administrative capital of Coimbatore District and is administered by the Coimbatore Municipal Corporation which was established in 1981.\nThe region around Coimbatore was ruled by the Cheras during the Sangam period between the 1st and the 4th centuries and it served as the eastern entrance to the Palakkad Gap, the principal trade route between the west coast and Tamil Nadu. Coimbatore was located along the ancient trade route Rajakesari Peruvazhi that extended from Muziris to Arikamedu in South India. The medieval Cholas conquered the Kongu Nadu in the 10th century. The region was ruled by the Vijayanagara Empire in the 15th century followed by the Nayaks who introduced the Palayakkarar system under which the Kongu Nadu region was divided into 24 Palayams. In the later part of the 18th century, the Coimbatore region came under the Kingdom of Mysore and following the defeat of Tipu Sultan in the Anglo-Mysore Wars, the British East India Company annexed Coimbatore to the Madras Presidency in 1799. The Coimbatore region played a prominent role in the Second Poligar War (1801) when it was the area of operations of Dheeran Chinnamalai.\nIn 1804, Coimbatore was established as the capital of the newly formed Coimbatore district and in 1866, it was accorded municipality status with Robert Stanes as its chairman. The city experienced a textile boom in the early 19th century due to the decline of the cotton industry in Mumbai. Post Independence, Coimbatore has seen a rapid growth due to industrialisation and is one of the largest exporters of jewellery, wet grinders, poultry and auto components. The Coimbatore Wet Grinder and the Kovai Cora Cotton are recognised as Geographical Indications by the Government of India. Being a hub of textile industry in South India, the city is referred to as the \"Manchester of South India\".\nCoimbatore was ranked as the best emerging city in India by India Today in the 2014 annual survey, fourth among Indian cities in investment climate by Confederation of Indian Industry and 17th among the top global outsourcing cities by Tholons. Coimbatore has been selected as one of the Indian cities to be developed as a smart city under the Smart Cities Mission and AMRUT by Government of India. Coimbatore regularly features among the top ten best cities to live in India and is amongst the top three safest cities in India according to National Crime Records Bureau report in 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 471
+    },
+    "banned_terms": [
+      {
+        "term": "coimbatore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 788,
+    "attempt": 780,
+    "place_id": "gn-1278985",
+    "input": {
+      "place": {
+        "place_id": "gn-1278985",
+        "name": "Alappuzha",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 9.49004,
+        "lon": 76.3264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alappuzha",
+          "url": "https://en.wikipedia.org/wiki/Alappuzha",
+          "text": "Alappuzha (Malayalam: [aːlɐpːuɻɐ] ) or Alleppey is a city and municipality on the Laccadive Sea in the southern Indian state of Kerala. It is the headquarters of Alappuzha district, located about 62 km (39 mi) south of the commercial city of Kochi and 152 km (94.4 mi) northwest of the state capital Thiruvananthapuram. As per the 2011 Indian census, Alappuzha has a population of 240,991 people, and a population density of 3,675/km2 (9,520/sq mi).\nAlappuzha dates back to the Sangam era, and was mentioned by Pliny the Elder as far back as the 1st century AD as Baraces. Later in the 16th and 17th centuries, the town flourished as an important hub for trading spices with various European powers including the Dutch and the Portuguese. Under the rule of Raja Kesavadas, a port was constructed and canals for transport were laid throughout the city, and the town experienced rapid development. However, by the late 18th century, the region had come under British rule and experienced a decline in its status as a centre for commerce and culture.\nToday, Alappuzha is a prominent tourist destination in Kerala. The town is famous for its waterways and backwaters. It's known as the Tarshish land of Kerala It plays a role as one of the primary access points for the annual Nehru Trophy Boat Race during the festival of Onam. Alappuzha is also a hub for coir manufacturing, and has a thriving coir industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "alappuzha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

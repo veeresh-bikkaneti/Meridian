@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 608,
+    "attempt": 601,
+    "place_id": "gn-1711084",
+    "input": {
+      "place": {
+        "place_id": "gn-1711084",
+        "name": "Iligan",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.2289,
+        "lon": 124.24344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iligan",
+          "url": "https://en.wikipedia.org/wiki/Iligan",
+          "text": "Iligan, officially the City of Iligan (Cebuano: Dakbayan sa Iligan; Bukid: Ciudad ta Iligan; Maranao: Bandar a Iligan; Filipino: Lungsod ng Iligan), is a highly urbanized city in the region of Northern Mindanao, Philippines. According to the 2024 census, it has a population of 368,132 people.\nIt is the largest city in the province of Lanao del Norte both in population and land area wherein it is geographically situated and grouped under the province by the Philippine Statistics Authority, but administered independently from the province and it is also the second largest city in Northern Mindanao after Cagayan de Oro. It was once part of Central Mindanao (Region 12) until the province was moved under Northern Mindanao (Region 10) in 2001. Iligan is approximately 90 kilometers away from the capital of the province, Tubod, and approximately 800 kilometers from the capital of the Philippines.\nIligan has a total land area of 813.37 square kilometres (314.04 sq mi), making it one of the 10 largest cities in the Philippines in terms of land area. Among the 33 highly urbanized cities of the Philippines, Iligan is the third-least dense, with a population density of 421 inhabitants per square kilometer, just behind Lucena and Puerto Princesa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "iligan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 609,
+    "attempt": 602,
+    "place_id": "gn-1735634",
+    "input": {
+      "place": {
+        "place_id": "gn-1735634",
+        "name": "Kuching",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 1.55,
+        "lon": 110.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuching",
+          "url": "https://en.wikipedia.org/wiki/Kuching",
+          "text": "Kuching ( KOO-ching, Malay pronunciation: [ˈkut͡ʃiŋ] ), officially the City of Kuching, is the capital and the most populous city in the state of Sarawak in Malaysia. It is also the capital of Kuching Division. The city is on the Sarawak River at the southwestern tip of Sarawak on the island of Borneo and covers an area of 431 km2 (166 sq mi) with a population of about 162,843 in the Kuching North administrative region and 351,815 in the Kuching South administrative region—a total of 514,658 people.\nKuching was founded by the representative of the Sultan of Brunei in 1827. It was the third capital of Sarawak in 1827 during the administration of the Bruneian Empire. In 1841, Kuching became the capital of the Kingdom of Sarawak after the territory in the area was ceded to James Brooke for helping the Bruneian Empire in crushing a rebellion particularly by the interior Borneo-dwelling Land Dayak people who later became his loyal followers after most of them were pardoned by him and joined his side. The town continued to receive attention and development during the rule of Charles Brooke such as the construction of a sanitation system, hospital, prison, fort, and a bazaar. In 1941, the Brooke administration had a Centenary Celebration in Kuching. During World War II, Kuching was occupied by Japanese forces from 1942 to 1945. The Japanese government set up a Batu Lintang camp near Kuching to hold prisoners of war and civilian internees. After the war, the town survived intact. However, the last Rajah of Sarawak, Sir Charles Vyner Brooke decided to cede Sarawak to the British government as part of British Crown Colony in 1946. Kuching remained as capital during the Crown Colony period. After the formation of Malaysia in 1963, Kuching retained its status as state capital and was granted city status in 1988. Since then, Kuching has been divided into two administrative regions managed by two separate local authorities. The administrative centre of the Sarawak Government is officially located at Satria Pertiwi Complex (Kompleks Satria Pertiwi), Petra Jaya, Kuching.\nKuching is a major food destination and is a member of UNESCO's Creative Cities Network under the field of gastronomy. Kuching is also the main gateway for travellers visiting Sarawak and Borneo. Kuching Wetlands National Park is located about 30 km (19 mi) from the city and there are many other tourist attractions in and around Kuching such as Bako National Park, Semenggoh Wildlife Centre, Rainforest World Music Festival (RWMF), state assembly building, The Astana, Fort Margherita, Kuching Cat Museum, and Sarawak State Museum / Borneo Cultures Museum. The city has become one of the major industrial and commercial centres in East Malaysia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 447
+    },
+    "banned_terms": [
+      {
+        "term": "kuching",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 610,
+    "attempt": 603,
+    "place_id": "gn-1856057",
+    "input": {
+      "place": {
+        "place_id": "gn-1856057",
+        "name": "Nagoya",
+        "country": "Japan",
+        "subdivision": "Aichi",
+        "lat": 35.18147,
+        "lon": 136.90641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagoya",
+          "url": "https://en.wikipedia.org/wiki/Nagoya",
+          "text": "Nagoya (名古屋市, Nagoya-shi; [naꜜ.ɡo.ja, -ŋo.ja, na.ɡo.jaꜜ.ɕi, -ŋo.jaꜜ.ɕi] , locally [na.ɡo.ja, -ŋo.ja]) is the capital and most populous city of Aichi Prefecture in Japan. It is the largest city in the Chūbu region, the fourth-most populous city in Japan (with a 2025 population of 2.3 million), and the principal city of the Chūkyō metropolitan area, which is itself the third-most populous metropolitan area in Japan (with a population of 10.11 million). Nagoya is located on the Pacific coast in central Honshu, and its seaport is the largest in Japan.\nIn 1610, the shogun Tokugawa Ieyasu moved the capital of Owari Province from Kiyosu to Nagoya. This period saw the renovation of Nagoya Castle. The early 1900s brought a convergence of economic factors that fueled rapid growth in the city during the Meiji Restoration, and it became a major industrial hub for the country as the area's automobile, aviation, and shipbuilding industries flourished; the traditional manufacturing of bicycles, sewing machines, and timepieces was thus followed by the production of ceramic, chemicals, oil, petrochemicals, and steel. These factors made Nagoya a target of American air raids during the Pacific War.\nNagoya's economy diversified following the war, but the city remains a significant centre of industry and transport in Japan. It is linked to Tokyo, Osaka, and Kyoto by the Tokaido Shinkansen and is home to the Nagoya Stock Exchange, as well as the headquarters of Brother Industries, Ibanez, Lexus, and Toyota Tsusho, among others. It hosts educational institutes such as Nagoya University, the Nagoya Institute of Technology, and Nagoya City University. Famous landmarks include Atsuta Shrine, Higashiyama Zoo and Botanical Gardens, Hisaya Ōdori Park, Nagoya Castle, Port of Nagoya Public Aquarium, and Nagoya TV Tower. Nagoya is hosting the 2026 Asian Games, making it the third Japanese city to do so after Tokyo in 1958 and Hiroshima in 1994."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "nagoya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 611,
+    "attempt": 604,
+    "place_id": "gn-2831580",
+    "input": {
+      "place": {
+        "place_id": "gn-2831580",
+        "name": "Solingen",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.17343,
+        "lon": 7.0845
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Solingen",
+          "url": "https://en.wikipedia.org/wiki/Solingen",
+          "text": "Solingen (German pronunciation: [ˈzoːlɪŋən] ; Limburgish: Solich) is a city in North Rhine-Westphalia, Germany, 25 km east of Düsseldorf along the northern edge of the Bergisches Land, south of the Ruhr. After Wuppertal, it is the second-largest city in the Bergisches Land, and a member of the regional authority of the Rhineland.\nSolingen is called the Klingenstadt (City of Blades), and has long been renowned for the manufacturing of fine swords, knives, scissors and razors made by firms such as WKC, P.D Rasspe Söhne, DOVO, Wüsthof, Zwilling J. A. Henckels, Böker, Güde, Hubertus, Diefenthal, Puma, Clauberg/Klauberg, Eickhorn, Linder, Carl Schmidt Sohn, Dreiturm, Herder, Martor Safety Knives, Wolfertz, Ralf Aust and numerous other manufacturers.\nThe medieval swordsmiths of Solingen designed the town's coat of arms. In the late 17th century, a group of swordsmiths from Solingen broke their guild oaths by taking their sword-making secrets with them to Shotley Bridge, County Durham, in England. In the local dialect the Solinger Platt, a variety of the Limburgish language, the city is called Solich or Zóóliech."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "solingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 612,
+    "attempt": 605,
+    "place_id": "gn-2944388",
+    "input": {
+      "place": {
+        "place_id": "gn-2944388",
+        "name": "Bremen",
+        "country": "Germany",
+        "subdivision": "Bremen",
+        "lat": 53.07582,
+        "lon": 8.80717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bremen",
+          "url": "https://en.wikipedia.org/wiki/Bremen",
+          "text": "Bremen (German pronunciation: [ˈbʁeːmən] ), officially the City Municipality of Bremen, is the capital and most populous city of the German state of the Free Hanseatic City of Bremen (Freie Hansestadt Bremen), a two-city-state consisting of the city of Bremen itself, and Bremerhaven. An important port city with about 586,000 inhabitants, this Hanseatic city is the 11th-largest city of Germany and the second-largest city in Northern Germany after Hamburg.\nBremen is the largest city on the River Weser, the longest river flowing entirely in Germany, lying some 60 km (37 mi) upstream from its mouth into the North Sea at Bremerhaven, and is completely surrounded by the state of Lower Saxony. Bremen is the centre of the Northwest Metropolitan Region, which also includes the cities of Oldenburg and Bremerhaven, and has a population of around 2.8 million people. Bremen is contiguous with the Lower Saxon towns of Delmenhorst, Stuhr, Achim, Weyhe, Schwanewede and Lilienthal. There is an exclave of Bremen in Bremerhaven, the \"City of Bremen Overseas Port Area Bremerhaven\" (Stadtbremisches Überseehafengebiet Bremerhaven). Bremen is the third-largest city in the Low German dialect area after Hamburg and Dortmund.\nThe city traces its origins to a settlement in the early Middle Ages and became the seat of a bishopric in 787. During the High Middle Ages, Bremen grew into a flourishing trading centre and joined the Hanseatic League in the 13th century, establishing commercial links across Northern Europe. Its autonomy as a free imperial city was recognised within the Holy Roman Empire, and despite periods of conflict, Bremen retained a strong civic identity. In later centuries, the city developed into a key hub for shipping and overseas trade, contributing to Germany's maritime economy.\nBremen is a major cultural and economic hub of Northern Germany. The city hosts a variety of galleries and museums, ranging from historical sculptures to major art museums, such as the Bremen Overseas Museum or the Weserburg. The Bremen City Hall and the Bremen Roland form the UNESCO World Heritage Site \"Town Hall and Roland on the Marketplace of Bremen\". In 2023, Bremen was named a UNESCO City of Literature, joining UNESCO's Creative Cities Network. The city is well-known through the Brothers Grimm's fairy tale \"Town Musicians of Bremen\", and there is a statue dedicated to it in front of the city hall. Bremen's port, together with the port of Bremerhaven at the mouth of the Weser, is the second-largest port in Germany after the Port of Hamburg. Bremen Airport lies in the southern borough of Neustadt-Neuenland and is Germany's 12th-busiest airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 424
+    },
+    "banned_terms": [
+      {
+        "term": "bremen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 613,
+    "attempt": 606,
+    "place_id": "gn-616052",
+    "input": {
+      "place": {
+        "place_id": "gn-616052",
+        "name": "Yerevan",
+        "country": "Armenia",
+        "subdivision": "Yerevan",
+        "lat": 40.17765,
+        "lon": 44.5126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yerevan",
+          "url": "https://en.wikipedia.org/wiki/Yerevan",
+          "text": "Yerevan (UK:  YERR-ə-VAN, US: , -⁠VAHN; Armenian: Երևան [jɛɾɛˈvɑn] ; sometimes spelled Erevan) is the capital and largest city of Armenia, as well as one of the world's oldest continuously inhabited cities. Situated along the Hrazdan River, Yerevan is the administrative, cultural, and industrial centre of the country, as its primate city. It has been the capital since 1918, the fourteenth in the history of Armenia and the seventh located in or around the Ararat Plain. The city also serves as the seat of the Araratian Pontifical Diocese, which is the largest diocese of the Armenian Apostolic Church and one of the oldest dioceses in the world.\nThe history of Yerevan dates back to the 8th century BC, with the founding of the fortress of Erebuni in 782 BC by King Argishti I of Urartu at the western extreme of the Ararat Plain. Erebuni was \"designed as a great administrative and religious centre, a fully royal capital.\" By the late ancient Armenian Kingdom, new capital cities were established and Yerevan declined in importance. The city was mostly depopulated by the Great Surgun of 1603–05, when the Safavid Empire forcibly deported hundreds of thousands of Armenians to Iran. In 1679, the city was mostly destroyed by an earthquake, and then rebuilt on a smaller scale. In 1828, Yerevan became part of the Russian Empire, which led to the repatriation of Armenians whose ancestors had been forcibly relocated in the 17th century. After World War I, Yerevan became the capital of the First Republic of Armenia as thousands of survivors of the Armenian genocide in the Ottoman Empire arrived in the area. The city expanded rapidly during the 20th century while Armenia was a part of the Soviet Union. In a few decades, Yerevan was transformed from a provincial town within the Russian Empire to Armenia's principal cultural, artistic, and industrial centre, as well as becoming the seat of national government.\nWith the growth of the Armenian economy, Yerevan has undergone major transformation. Much construction has been done throughout the city since the early 2000s, and retail outlets such as restaurants, shops, and street cafés, which were rare during Soviet times, have multiplied. As of 2011, the population of Yerevan was 1,060,138, just over 35% of Armenia's total population. By 2022, the population further increased to 1,086,677. Yerevan was named the 2012 World Book Capital by UNESCO. Yerevan is an associate member of Eurocities.\nOf the notable landmarks of Yerevan, Erebuni Fortress is considered to be the birthplace of the city, the Katoghike Tsiranavor church is the oldest surviving church of Yerevan, and Saint Gregory Cathedral is the largest Armenian cathedral in the world. Tsitsernakaberd is the official memorial to the victims of the Armenian genocide. The city is home to several opera houses, theatres, museums, libraries, and other cultural institutions. Yerevan Opera Theatre is the main spectacle hall of the Armenian capital, the National Gallery of Armenia is the largest art museum in Armenia and shares a building with the History Museum of Armenia, and the Matenadaran contains one of the largest depositories of ancient books and manuscripts in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 520
+    },
+    "banned_terms": [
+      {
+        "term": "yerevan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 614,
+    "attempt": 607,
+    "place_id": "gn-787657",
+    "input": {
+      "place": {
+        "place_id": "gn-787657",
+        "name": "Niš",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 43.32472,
+        "lon": 21.90333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niš",
+          "url": "https://en.wikipedia.org/wiki/Niš",
+          "text": "Niš (; Serbian Cyrillic: Ниш, Serbian pronunciation: [nîːʃ] ; names in other languages), less often spelled in English as Nish, is the third largest city in Serbia and the administrative center of the Nišava District. It is located in the southern part of Serbia. According to the 2022 census, the city proper has a population of 178,976, while its administrative area has a population of 249,501 inhabitants.\nSeveral Roman emperors were born in Niš or used it as a residence: Constantine the Great, the first Christian emperor and the founder of Constantinople, Constantius III, Constans, Vetranio, Julian, Valentinian I, Valens; and Justin I. Emperor Claudius Gothicus decisively defeated the Goths at the Battle of Naissus (present-day Niš). Later playing a prominent role in the history of the Byzantine Empire, the city's past would earn it the nickname Imperial City.\nAfter about 400 years of Ottoman rule, the city was liberated in 1878 and became part of the Principality of Serbia, though not without great bloodshed—remnants of which can be found throughout the city. Today, Niš is one of the most important economic centers in Serbia, especially in the electronics, mechanical engineering, textile, and tobacco industries. Constantine the Great Airport is Niš's international airport. The city is also the seat of the University of Niš, the Eparchy of Niš and the Command of Serbian Army.\nIn 2013, the city was host to the celebration of 1,700 years of Constantine's Edict of Milan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "nis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 615,
+    "attempt": 608,
+    "place_id": "gn-2711537",
+    "input": {
+      "place": {
+        "place_id": "gn-2711537",
+        "name": "Gothenburg",
+        "country": "Sweden",
+        "subdivision": "Västra Götaland",
+        "lat": 57.70716,
+        "lon": 11.96679
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gothenburg",
+          "url": "https://en.wikipedia.org/wiki/Gothenburg",
+          "text": "Gothenburg (  GOTH-ən-burg; Swedish: Göteborg [jœtəˈbɔrj] ) is the second-largest city in Sweden, after the capital Stockholm, and the fifth-largest in the Nordic countries. Situated by the Kattegat on the west coast of Sweden 400 km from the capital, it is the gubernatorial seat of Västra Götaland County, with a population of approximately 600,000 in the city proper and about 1.1 million inhabitants in the metropolitan area.\nKing Gustavus Adolphus founded Gothenburg by royal charter in 1621 as a heavily fortified, primarily Dutch, trading colony. In addition to the generous privileges given to his Dutch allies during the ongoing Thirty Years' War, e.g. tax relaxation, he also attracted significant numbers of his German and Scottish allies to populate his only town on the western coast; this trading status was furthered by the founding of the Swedish East India Company. At a key strategic location at the mouth of the Göta älv, where Scandinavia's largest drainage basin enters the sea, the Port of Gothenburg is now the largest port in the Nordic countries. The presence of the University of Gothenburg and Chalmers University of Technology has led Gothenburg to become home to many students. Volvo was founded in Gothenburg in 1927, with both Volvo Cars, and its original parent Volvo Group (today makers of trucks, buses and marine engines) still headquartered on the island of Hisingen in the city. Other key companies in the area are AstraZeneca, Ericsson, and SKF.\nGothenburg is served by Göteborg Landvetter Airport 25 km (16 mi) southeast of the city centre. The smaller Göteborg City Airport, 15 km (9.3 mi) from the city centre, was closed to regular airline traffic in 2015. The city hosts the Gothia Cup, the world's largest youth football tournament, and the Göteborg Basketball Festival, Europe's largest youth basketball tournament, alongside some of the largest annual events in Scandinavia. The Gothenburg Film Festival, held in January since 1979, is the leading Scandinavian film festival and attracts over 155,000 visitors each year. In summer, a wide variety of music festivals are held in the city, including the popular Way Out West Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 349
+    },
+    "banned_terms": [
+      {
+        "term": "gothenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 616,
+    "attempt": 609,
+    "place_id": "gn-3171168",
+    "input": {
+      "place": {
+        "place_id": "gn-3171168",
+        "name": "Pescara",
+        "country": "Italy",
+        "subdivision": "Abruzzo",
+        "lat": 42.4584,
+        "lon": 14.20283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pescara",
+          "url": "https://en.wikipedia.org/wiki/Pescara",
+          "text": "Pescara (Italian: [pesˈkaːra] ; Abruzzese: Pescàrë; Pescarese: Piscàrë) is the capital city of the province of Pescara, in the Abruzzo region of Italy. It is the most populated city in Abruzzo, with 118,657 (1 January 2023) residents (and approximately 350,000 including the surrounding metropolitan area). Located on the Adriatic coast at the mouth of the River Aterno-Pescara, the present-day municipality was formed in 1927 joining the municipalities of the old Pescara fortress, the part of the city to the south of the river, and Castellamare Adriatico, the part of the city to the north of the river. The surrounding area was formed into the province of Pescara.\nThe main commercial street of the city is Corso Umberto I, which runs between two squares, starting from Piazza della Repubblica and reaching the seacoast in Piazza Primo Maggio. The rectangle that it forms with Corso Vittorio Emanuele II and Via Nicola Fabrizi is home of the main shopping district, enclosed in a driving restriction zone, where several of the best fashion shops are located. Corso Manthoné, the course of the old Pescara, has, for many years, been the center of the nightlife of the city. City hall and the administration of the province are in Piazza Italia, near the river, and in the area between here and the D'Annunzio University campus to the south, a business district has grown up over the years, while the Marina is situated to the immediate south of the mouth of the river. Pescara is also served by an international airport, the Abruzzo Airport, and one of the major touristic ports of the Adriatic Sea and Italy, the Port of Pescara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "pescara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 617,
+    "attempt": 610,
+    "place_id": "gn-3467747",
+    "input": {
+      "place": {
+        "place_id": "gn-3467747",
+        "name": "Campo Grande",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso do Sul",
+        "lat": -20.44278,
+        "lon": -54.64639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campo Grande",
+          "url": "https://en.wikipedia.org/wiki/Campo_Grande",
+          "text": "Campo Grande (Brazilian Portuguese: [ˈkɐ̃pu ˈɡɾɐ̃dʒi], lit. 'Great Field') is a city in the central and western region of Brazil, capital and the largest city of the state of Mato Grosso do Sul. Historically a stronghold of separatists from the North and South, the city is planned in the middle of a vast green space, with wide streets and tree-lined avenues.\nThe region where the city is located was in the past a waypoint for travellers who wanted to go from São Paulo or Minas Gerais to northern Mato Grosso by land. In the early 1900s, a railway was completed, connecting Campo Grande to Corumbá on the Bolivian border and to Bauru, São Paulo. Also in the beginning of the 20th century, the Western Brazilian Army Headquarters was established in Campo Grande, making it an important military center.\nWith a population growth from 140,000 people in 1970 to 750,000 people in 2007, Campo Grande is the third largest urban center of the Center-West region, and the 17th largest city in the country. In 1977, the State of Mato Grosso was split into two, and Campo Grande became the capital of the new state of Mato Grosso do Sul, comprising the southern portion of the former state. By that time, Campo Grande had long surpassed the latter's capital city of Cuiabá in population, which is unusual in Brazil, where most capitals are also the states' largest cities.\nToday, the city has its own culture, which is a mixture of several ethnic groups, most notably immigrants from the Japanese prefecture of Okinawa, Middle Easterners, Armenians, Portuguese people, Germans, Italians, Spaniards, and Paraguayans, finally mixed with Asian and European Brazilians from the Brazilian Southern and Southeast regions, its native Amerindian peoples and Afro-Brazilians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 290
+    },
+    "banned_terms": [
+      {
+        "term": "campo grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 618,
+    "attempt": 611,
+    "place_id": "gn-2524170",
+    "input": {
+      "place": {
+        "place_id": "gn-2524170",
+        "name": "Messina",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.19394,
+        "lon": 15.55256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Messina",
+          "url": "https://en.wikipedia.org/wiki/Messina",
+          "text": "Messina ( meh-SEE-nə, US also  mih-; Italian: [mesˈsiːna] ) is a harbor city and the capital of the Metropolitan City of Messina in the autonomous island region of Sicily in Italy. It is the third largest city on the island of Sicily, and the 13th largest city in Italy, with a population of 216,458 inhabitants in the city proper and 594,074 in the metropolitan city as of 2026. It is located near the northeast corner of Sicily, at the Strait of Messina and it is an important access terminal to the Calabria region on the mainland, namely the town of Villa San Giovanni and the city of Reggio Calabria. \nFounded by the Sicels with the name of Zancle in 757 BC, which in their language meant sickle, it was repopulated by Greek colonists of Magna Graecia and renamed Messana. The city was renamed Messina in the Byzantine period. It was a major Roman city that contracted under the Byzantine and Arab rule to rise sharply in importance during the Norman era. It reached the height of its prosperity between the late Middle Ages and the mid-17th century, when it competed with Palermo for the role of capital of the Kingdom of Sicily. \nPut to fire and sword in 1678 after a historic anti-Spanish revolt that led to the annihilation of its ruling class, it was seriously damaged by an earthquake in 1783. In 1908, another earthquake destroyed the city almost entirely, causing the death of about half the population. Rebuilding started in 1912, largely in the Liberty style, and an orderly and regular network of wide and straight streets in a north-south direction were built. Being a strategic target, the city of the strait was heavily bombed by the Allies of World War II in 1943 during the landing in Sicily, being hit by about 6,500 tons of explosives in about 2,800 air raids and four naval bombardments. This event earned the city the Gold Medal of Military Valor. Winston Churchill visited Messina after the bombing. He came to the city in July 1943, during the time when the Allies were executing the invasion of Sicily.\nIts port, for thousands of years has been one of the main commercial crossroads of the Mediterranean and only recently becoming a port of call for ferries to the continent, is the first in Italy in terms of the number of passengers in transit. According to Eurostat the FUA of the metropolitan area of Messina has, in 2014, 277,584 inhabitants. The city has been a Roman Catholic Archdiocese and Archimandrite seat since 1548 and is home to the University of Messina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 437
+    },
+    "banned_terms": [
+      {
+        "term": "messina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 619,
+    "attempt": 612,
+    "place_id": "gn-2940132",
+    "input": {
+      "place": {
+        "place_id": "gn-2940132",
+        "name": "Chemnitz",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.8357,
+        "lon": 12.92922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chemnitz",
+          "url": "https://en.wikipedia.org/wiki/Chemnitz",
+          "text": "Chemnitz, known as Karl-Marx-Stadt from 1953 to 1990, is the third-largest city in the German state of Saxony after Leipzig and Dresden, and the fourth-largest city in the area of the former East Germany after (East) Berlin, Leipzig, and Dresden.\nThe city lies in the middle of a string of cities sitting in the densely populated northern foreland of the Elster and Ore Mountains, stretching from Plauen in the southwest via Zwickau, Chemnitz and Freiberg to Dresden in the northeast, and is part of the Central German Metropolitan Region. Located in the Ore Mountain Basin, the city is surrounded by the Ore Mountains to the south and the Central Saxon Hill Country to the north. The city stands on the Chemnitz River, which is formed through the confluence of the rivers Zwönitz and Würschnitz in the borough of Altchemnitz.\nThe name of the city as well as the names of the rivers are of Slavic origin. Chemnitz is the third-largest city in the Thuringian-Upper Saxon dialect area after Leipzig and Dresden. The city's economy is based on the service sector and manufacturing industry. Chemnitz University of Technology has around 10,000 students.\nChemnitz is known for its many industrial age buildings and monuments, and was the European Capital of Culture of 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "chemnitz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 620,
+    "attempt": 613,
+    "place_id": "gn-294071",
+    "input": {
+      "place": {
+        "place_id": "gn-294071",
+        "name": "Netanya",
+        "country": "Israel",
+        "subdivision": "Central District",
+        "lat": 32.33294,
+        "lon": 34.85917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Netanya",
+          "url": "https://en.wikipedia.org/wiki/Netanya",
+          "text": "Netanya (Hebrew: נְתַנְיָה, IPA: [netanˈja]), or Natanya (IPA: [naˈtanja]), is a city in the Central District of Israel, and is the capital of the surrounding Sharon plain. It is 30 kilometres (20 mi) north of Tel Aviv, and 56 km (35 mi) south of Haifa, between the Poleg stream and the Wingate Institute in the south and the Avihayil stream in the north. The 14 km (8+1⁄2 mi) of beaches have made the city a popular tourist resort.\nFounded in 1929 by deed of a coastal land purchase in the Arab village of Umm Khalid, Netanya was named in honor of Nathan Straus, a prominent Jewish American merchant and philanthropist in the early 20th century, who was the co-owner of the Macy's department store chain. In 1948, the remaining land of Umm Khalid was deserted by its inhabitants during the Arab-Israeli 1948 war, after which Netanya started further expanding eastwards.\nIn the 1990s, the city absorbed a large amount of immigrants from the former Soviet Union as well as from Ethiopia. As a result, 1 out of 4 inhabitants speaks Russian and the city's Ethiopian community is the largest in Israel, numbering over 12,000 citizens.\nIn 2024, Netanya had a population of 234,813, ranking it as the 7th-largest city in Israel by population. An additional 150,000 people live in the local and regional councils within ten kilometres (six miles) of Netanya, which serves as a regional center for them."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "netanya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 621,
+    "attempt": 614,
+    "place_id": "gn-3114472",
+    "input": {
+      "place": {
+        "place_id": "gn-3114472",
+        "name": "Pamplona",
+        "country": "Spain",
+        "subdivision": "Navarre",
+        "lat": 42.81687,
+        "lon": -1.64323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pamplona",
+          "url": "https://en.wikipedia.org/wiki/Pamplona",
+          "text": "Pamplona (Spanish: [pamˈplona] ; Basque: Iruña [i.ɾuɲa]; officially in its bilingual form: Pamplona-Iruña), historically also known as Pampeluna in English, is the capital city of the Chartered Community of Navarre in Spain. As of 2024, with a population of 208,243, it is the 29th largest city in Spain.\nLying at near 450 m (1,480 ft) above sea level, the city (and the wider Cuenca de Pamplona) is located on the flood plain of the Arga river, a second-order tributary of the Ebro. Precipitation-wise, it is located in a transitional location between the rainy Atlantic northern façade of the Iberian Peninsula and its drier inland. Early population in the settlement traces back to the late Bronze to early Iron Age, even if the traditional inception date refers to the foundation of Pompaelo by Pompey during the Sertorian Wars circa 75 BC. During Visigothic rule Pamplona became an episcopal see, serving as a staging ground for the Christianization of the area. It later became one of the capitals of the Kingdom of Pamplona/Navarre.\nThe city is famous worldwide for the running of the bulls during the San Fermín festival, which is held annually from 6 July to 14 July. This festival was brought to literary renown with the 1926 publication of Ernest Hemingway's novel The Sun Also Rises. It is also home to Osasuna, the only Navarrese football club to have ever played in the Spanish top division."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "pamplona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 622,
+    "attempt": 615,
+    "place_id": "gn-3407882",
+    "input": {
+      "place": {
+        "place_id": "gn-3407882",
+        "name": "Altamira",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -3.20333,
+        "lon": -52.20639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altamira, Pará",
+          "url": "https://en.wikipedia.org/wiki/Altamira,_Pará",
+          "text": "Altamira is a municipality in the state of Pará, in northern Brazil. It has an area of 159,533.73 square kilometres or 61,596.32 square miles, making it the largest municipality by area both in Pará state and Brazil, and until 2009 it was the world's largest municipal subdivision. It occupies 12.8% of the state's territory, 1.8% of Brazil's territory and 0.8% of South America. It also covers a more extensive area than 104 countries, and its size is comparable to that of the US state of Georgia.\nAltamira Municipality encompasses the Altamira city and district, the seat of local government, whose majority population lives in urban area, and nine other mostly rural districts (most of those covered by the Amazon rainforest), whose urban populations are minorities, and live in inhabited areas spaced by tens or hundreds of kilometers. According to the 2010 Brazilian National Census the municipality had 99,075 inhabitants which grew to 115,969 at the 2020 Census, making a density of only 0.73 inhabitants per square kilometer at the same year. It is home to hundreds of indigenous communities and environmental protection areas. The Belo Monte Dam, the world's fourth largest hydroelectric dam is also located in the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "altamira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 623,
+    "attempt": 616,
+    "place_id": "gn-4004330",
+    "input": {
+      "place": {
+        "place_id": "gn-4004330",
+        "name": "Irapuato",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.671,
+        "lon": -101.35577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Irapuato",
+          "url": "https://en.wikipedia.org/wiki/Irapuato",
+          "text": "Irapuato is a Mexican city and municipality located at the foot of the Arandas Hill (in Spanish: Cerro de Arandas), in the central region of the state of Guanajuato. It lies between the Silao River and the Guanajuato River, a tributary of the Lerma River, at 1,724 m (5,656 ft) above sea level. It is located at 20°40′N 101°21′W. The city is the second-largest in the state (only behind León), with a population of 342,561 according to the 2005 census, while its municipality has a population of 529,440. The municipality has an area of 851 km2 (329 sq mi) and includes numerous smaller outlying communities. Although it is now an important center for regional trade and transportation center as well the site of several automotive and chemical manufacturing plants, the city's main industry has historically been agriculture and it has long been known for its strawberries and industry of refried beans, also the raising of pigs and cattle. The fruits and flowers of Irapuato's luxurious gardens are well known throughout Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "irapuato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 624,
+    "attempt": 617,
+    "place_id": "gn-1261481",
+    "input": {
+      "place": {
+        "place_id": "gn-1261481",
+        "name": "New Delhi",
+        "country": "India",
+        "subdivision": "Delhi",
+        "lat": 28.62137,
+        "lon": 77.2148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Delhi",
+          "url": "https://en.wikipedia.org/wiki/New_Delhi",
+          "text": "New Delhi is a city and the capital city of India and a part of the National Capital Territory of Delhi (NCT). New Delhi is the seat of all three branches of the Government of India, hosting the Rashtrapati Bhavan (Presidential Palace), Sansad Bhavan (Parliament House), and the Supreme Court. New Delhi is a municipality within the NCT, administered by the New Delhi Municipal Council (NDMC), which covers mostly Lutyens' Delhi and a few adjacent areas. The municipal area is part of a larger administrative district, the New Delhi district.\nAlthough colloquially Delhi and New Delhi are used interchangeably to refer to the National Capital Territory of Delhi, both are distinct entities, with the municipality and the New Delhi district forming a relatively small part within the megacity of Delhi. The National Capital Region is an even larger entity, comprising the entire NCT along with adjoining districts in the two neighbouring states forming a continuously built-up area with it, including Ghaziabad, Noida, Greater Noida, Meerut, YEIDA City, Gurgaon, and Faridabad.\nThe foundation stone of New Delhi, south of central Delhi, was laid by George V during the Delhi Durbar of 1911. It was designed by British architects Edwin Lutyens and Herbert Baker. The new capital was inaugurated on 13 February 1931, by Viceroy and Governor-General Irwin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "new delhi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "delhi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 625,
+    "attempt": 618,
+    "place_id": "gn-1622786",
+    "input": {
+      "place": {
+        "place_id": "gn-1622786",
+        "name": "Makassar",
+        "country": "Indonesia",
+        "subdivision": "South Sulawesi",
+        "lat": -5.14861,
+        "lon": 119.43194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makassar",
+          "url": "https://en.wikipedia.org/wiki/Makassar",
+          "text": "Makassar, formerly Ujung Pandang (1971–1999), is the capital of the Indonesian province of South Sulawesi. It is the largest city in the region of Eastern Indonesia and the country's fifth-largest urban center after Jakarta, Surabaya, Medan, and Bandung. The city is located on the southwest coast of the island of Sulawesi, facing the Makassar Strait.\nThroughout its history, Makassar has been an important trading port, hosting the center of the Gowa Sultanate and a Portuguese naval base before its conquest by the Dutch East India Company in the 17th century. It remained an important port in the Dutch East Indies, serving Eastern Indonesian regions with Makassarese fishers going as far south as the Australian coast. For a brief period after the proclamation of Indonesian independence in 1946, Makassar was designated the capital of the State of East Indonesia, a Dutch puppet state; however, in 1950, only four years into its existence as an independent state, the Makassar Uprising took place, resulting in the country's integration into the Republic of Indonesia.\nThe city's area is 175.77 square kilometres (67.87 sq mi), and it had a population of approximately 1.485 million (737,239 males and 747,838 females) as of mid 2025 within Makassar City's fifteen administrative districts. Its official metropolitan area, known as Mamminasata, with the addition of thirty-three further districts of neighbouring regencies, covers an area of 2,666.63 square kilometres (1,029.59 sq mi) and had a population of around 2,795,639 according to the mid 2025 official estimates.\nAccording to the National Development Planning Agency, Makassar is one of the four main cities of Indonesia, alongside Medan, Jakarta, and Surabaya.\nAccording to Bank Indonesia, Makassar has the second-highest commercial property values in Indonesia, after Greater Jakarta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "makassar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 626,
+    "attempt": 619,
+    "place_id": "gn-1835235",
+    "input": {
+      "place": {
+        "place_id": "gn-1835235",
+        "name": "Daejeon",
+        "country": "South Korea",
+        "subdivision": "Daejeon",
+        "lat": 36.34913,
+        "lon": 127.38493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daejeon",
+          "url": "https://en.wikipedia.org/wiki/Daejeon",
+          "text": "Daejeon (Korean: 대전; Korean pronunciation: [tɛdʑʌn] ) is South Korea's fifth-largest metropolis, with a population of nearly 1.5 million. Located in a central lowland valley between the Sobaek Mountains and the Geum River, the city is known both as a technology and research center, and for its close relationship with the natural environment. Daejeon is a major transportation hub, having developed as a railway town, and is approximately 50 minutes from Seoul by KTX or SRT high speed rail.\nDaejeon (along with Seoul, Gwacheon and Sejong City) is one of South Korea's administration hubs. The city is home to 23 universities and colleges, including Korea Advanced Institute of Science and Technology (KAIST) and Chungnam National University, as well as government research institutes, and research and development centers for many chaebols such as Samsung and LG, mostly located in the city's Daedeok Innopolis.\nFrom the 1980s, multiple national administrative functions were moved from Seoul to Daejeon, most of which are now located in the Government Complex, resulting in another population increase. It was elevated to the status of metropolitan city in 1989. The city was a sub host for the 1986 Asian Games, hosted the Expo '93, and the 2000 International Mathematical Olympiad and will be the main host city of the 2027 Summer World University Games.\nDaejeon is situated in a lowland valley with three major rivers, all of them eventually flowing into the Yellow Sea by way of the Geum River. The city is surrounded by several small mountains, and is located approximately 170 km (106 mi) south of Seoul, 290 km (180 mi) north of Busan, and 70 km (43 mi) east of the Yellow Sea. It experiences a monsoon-influenced, four-season climate with wet, hot summers and drier, cold winters.\nDaejeon is bordered to the east by Boeun County and Okcheon County in North Chungcheong Province, to the west by Gongju and Gyeryong in South Chungcheong Province, to the south by Geumsan County and Nonsan in South Chungcheong Province, and to the north by Sejong City and Cheongju in North Chungcheong Province. Its geographical coordinates range from 127°14′ to 127°33′ east longitude and 36°10′ to 36°29′ north latitude. Daejeon covers an area of 539.98 square kilometers and has a population of 1,518,775 as of 2015. Administratively, the city is divided into five districts and 79 administrative neighborhoods (177 legal neighborhoods). The metropolitan city hall is located in Dunsan-dong, Seo District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 402
+    },
+    "banned_terms": [
+      {
+        "term": "daejeon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 627,
+    "attempt": 620,
+    "place_id": "gn-2038679",
+    "input": {
+      "place": {
+        "place_id": "gn-2038679",
+        "name": "Acheng",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 45.54558,
+        "lon": 126.95191
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acheng, Harbin",
+          "url": "https://en.wikipedia.org/wiki/Acheng,_Harbin",
+          "text": "Acheng District (Manchu: Alcuka Hoton) is one of nine districts of the prefecture-level city of Harbin, the capital of Heilongjiang Province, Northeast China, covering part of the southeastern suburbs. The district was approved to establish from the former Acheng City (阿城市) by the Chinese State Council on August 15, 2006. As of 2010, it had a population of 596,856 residing in an area of 2,680 km2 (1,030 sq mi), and is 29 km (18 mi) southeast of downtown Harbin, 190 km (120 mi) north of Jilin City, and around 50 km (31 mi) south of the Songhua River. It lies within the basin of and until 1909 was considered synonymous with the Ashi River which gave its name to the Jurchen Jin Dynasty. The district administers nine subdistricts, eight towns, one township, and one ethnic township. It borders Daowai District to the north, Bin County to the northeast, Shangzhi to the southeast, and Wuchang to the south, Shuangcheng District to the west, and Pingfang and Xiangfang Districts to the northwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 170,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "acheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

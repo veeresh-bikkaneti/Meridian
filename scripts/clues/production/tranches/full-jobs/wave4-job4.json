@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 668,
+    "attempt": 661,
+    "place_id": "gn-5454711",
+    "input": {
+      "place": {
+        "place_id": "gn-5454711",
+        "name": "Albuquerque",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 35.08449,
+        "lon": -106.65114
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albuquerque, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Albuquerque,_New_Mexico",
+          "text": "Albuquerque is the most populous city in the U.S. state of New Mexico. Founded in 1706 as La Villa de Alburquerque by Santa Fe de Nuevo México governor Francisco Cuervo y Valdés, and named in honor of Francisco Fernández de la Cueva, 10th Duke of Alburquerque and Viceroy of New Spain, it was an outpost on El Camino Real, linking Mexico City to the northernmost territories of New Spain. It is the county seat of Bernalillo County.\nLocated in the Albuquerque Basin, the city is flanked by the Sandia Mountains to the east and the West Mesa to the west, with the Rio Grande and its bosque flowing north-to-south through the middle. According to the 2020 census, Albuquerque had 564,559 residents, making it the 32nd most populous city in the U.S. and the fourth largest in the Southwest. The Albuquerque metropolitan area had 955,000 residents in 2023, and forms part of the Albuquerque–Santa Fe–Los Alamos combined statistical area, which had a population of 1,162,523.\nAlbuquerque is a hub for technology, fine arts, and mass media. It hosts New Mexico's primary international airport,\nAlbuquerque International Sunport, and the state's flagship and largest university, the University of New Mexico. The U.S. federal government has a strong presence through Sandia National Laboratories, one of three laboratories of the National Nuclear Security Administration, and Kirtland Air Force Base, the largest installation in the Air Force Global Strike Command.\nNicknamed ABQ, Burque, and Duke City, Albuquerque is home to several historic landmarks, including over 160 sites listed on the National Register of Historic Places. Notable annual events include the Albuquerque International Balloon Fiesta, the largest balloon festival in the world, previously the Gathering of Nations, which was the largest powwow in North America, and the New Mexico State Fair. Albuquerque is also known for its restaurant scene, which features both New Mexican and global cuisine, and as a center of New Mexican music and architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 320
+    },
+    "banned_terms": [
+      {
+        "term": "albuquerque",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 669,
+    "attempt": 662,
+    "place_id": "gn-566532",
+    "input": {
+      "place": {
+        "place_id": "gn-566532",
+        "name": "Derbent",
+        "country": "Russia",
+        "subdivision": "Dagestan",
+        "lat": 42.06622,
+        "lon": 48.28759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derbent",
+          "url": "https://en.wikipedia.org/wiki/Derbent",
+          "text": "Derbent, known until the 3rd century — Albana, until the 6th century — Chor, until the 12th century — Bab al-Abwab and also as Darband or Derbend, is a city in the Republic of Dagestan. It is the southernmost city in Russia, occupying the narrow gateway between the Caspian Sea and the Caucasus Mountains, and connecting the Eurasian Steppe to the north and the Iranian Plateau to the south. Derbent covers an area of 69.63 square kilometres (26.88 mi2) with a population of roughly 128,141 residents.\nDerbent is considered the oldest city in Russia, with historical documentation dating to the 8th century BC, making it one of the oldest continuously inhabited cities in the world. Due to its strategic location, over the course of history, the city changed ownership many times, particularly among the Persian, Arab, Mongol, Timurid, and Shirvan kingdoms. In the early 19th century, the city came under control of the Russian Empire through the Treaty of Gulistan signed with Qajar Iran."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "derbent",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 670,
+    "attempt": 663,
+    "place_id": "gn-5879400",
+    "input": {
+      "place": {
+        "place_id": "gn-5879400",
+        "name": "Anchorage",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 61.21806,
+        "lon": -149.90028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anchorage, Alaska",
+          "url": "https://en.wikipedia.org/wiki/Anchorage,_Alaska",
+          "text": "Anchorage (Denaʼina: Dgheyay Kaq'; Dgheyaytnu), officially the Municipality of Anchorage, is the most populous city in the U.S. state of Alaska. With a population of 291,247 at the 2020 census, it contains nearly 40 percent of the state's population. The Anchorage metropolitan area, which includes Anchorage and the neighboring Matanuska-Susitna Borough, had a population of 398,328 in 2020, accounting for more than half the state's population. At 1,706 sq mi (4,420 km2) of land area, the city is the fourth-largest by area in the U.S.\nAnchorage is in Southcentral Alaska, at the head of the Cook Inlet, on a peninsula formed by the Knik Arm to the north and the Turnagain Arm to the south. First settled as a tent city near the mouth of Ship Creek in 1915 when construction on the Alaska Railroad began, Anchorage was incorporated as a city in November 1920. In September 1975, the City of Anchorage merged with the Greater Anchorage Area Borough, creating the Municipality of Anchorage. The municipal city limits span 1,961.1 sq mi (5,079.2 km2), encompassing the urban core, a joint military base, several outlying communities, and almost all of Chugach State Park. Because of this, less than 10 percent of the Municipality (or Muni) is populated, with the highest concentration of people in the 100-square-mile (260 km2) area that makes up the city proper, on a promontory at the headwaters of the inlet, commonly called Anchorage, the City of Anchorage, or the Anchorage Bowl.\nAnchorage is almost equidistant from New York City, Tokyo, and Murmansk, Russia (straight over the North Pole). Anchorage lies within 10 hours by air of nearly 90 percent of the inhabited global north. For this reason, Ted Stevens Anchorage International Airport is a common refueling stop for international cargo flights and home to a major FedEx hub, which the company calls a \"critical part\" of its global network of services.\nAnchorage has won the All-America City Award four times: in 1956, 1965, 1984–85, and 2002, from the National Civic League. Kiplinger has named it the United States' most tax-friendly city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "anchorage",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 671,
+    "attempt": 664,
+    "place_id": "gn-1626381",
+    "input": {
+      "place": {
+        "place_id": "gn-1626381",
+        "name": "Sukabumi",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.91806,
+        "lon": 106.92667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sukabumi",
+          "url": "https://en.wikipedia.org/wiki/Sukabumi",
+          "text": "Sukabumi (Sundanese: ᮞᮥᮊᮘᮥᮙᮤ) is a landlocked city surrounded by the regency of the same name (within which it is an enclave) in the southern foothills of Mount Gede, in West Java, Indonesia, about 100 km (62 mi) south of the national capital, Jakarta.\nAt an altitude of approximately 584 m (1,916 ft), the city is a minor hill station resort, with a cooler climate than the surrounding lowlands. The area around Sukabumi is also a popular destination for whitewater rafting. Tea and rubber production is a major industry in the area. The suburban area surrounding Sukabumi circling the mountain has grown tremendously in population, such that northern Sukabumi Regency, hugging the volcano, and bordering Greater Jakarta, is home to the bulk of the regency's population.\nThe area of the city is 48.31 km2, and the population at the 2010 Census was 300,359, while the 2020 Census was 346,325; the official estimate as at mid 2025 was 370,680 (comprising 186,130 males and 184,550 females). However, another 1,459,342 people, as at the mid 2025 official estimates, live in the surrounding metropolitan area within Sukabumi Regency, notably in Cisaat and Gunungguruh Districts to the west of the city and Kebonpedes District to the east, all three being suburbs within the built-up area. The bulk of the metropolitan area population is unusual in that it forms a narrow southwest ring around Mount Gede. The eastern portion of the ringed population belt continues into Cianjur Regency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "sukabumi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 672,
+    "attempt": 665,
+    "place_id": "gn-1636022",
+    "input": {
+      "place": {
+        "place_id": "gn-1636022",
+        "name": "Martapura",
+        "country": "Indonesia",
+        "subdivision": "South Kalimantan",
+        "lat": -3.4109,
+        "lon": 114.8642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Martapura, South Kalimantan",
+          "url": "https://en.wikipedia.org/wiki/Martapura,_South_Kalimantan",
+          "text": "Martapura is the capital of the Banjar Regency in South Kalimantan province, Indonesia. It is located immediately to the north of the city of Banjarbaru (with which it forms a continuous built-up area) and it consists of three districts within the Regency - Martapura, West Martapura and East Martapura, with a combined population at the 2020 Census of 169,356 people; the official estimate as at mid 2025 was 181,064.\nOriginally this town was named \"Kayutangi\", which was the last capital of the former Sultanate of Banjar. The famous Banjarese ulema Sheikh Muhammad Arsyad al-Banjari, author of Sabilal Muhtadin, comes from this town. \nThis town is famous as kota santri or the \"city of santri (Muslim students)\" in Kalimantan, because of the pesantren (Islamic boarding school) of Pondok Pesantren Darussalam Martapura. Martapura is often called \"Veranda of Mecca\" because there are many santris wearing white clothes in this town who walk up and down to study Islam, similar to Mecca in the hajj season.\nThis town is often visited by tourists because of its diamond industry center and the main diamond polishing in Kalimantan and provides many jewelry handicrafts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "martapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 673,
+    "attempt": 666,
+    "place_id": "gn-1783763",
+    "input": {
+      "place": {
+        "place_id": "gn-1783763",
+        "name": "Zhuzhou",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.83333,
+        "lon": 113.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhuzhou",
+          "url": "https://en.wikipedia.org/wiki/Zhuzhou",
+          "text": "Zhuzhou (Chinese: 株洲; pinyin: Zhūzhōu, joo-joh), formerly Jianning (建宁), is a prefecture-level city of Hunan Province, China, straddling the Xiang River southeast of the provincial capital, Changsha, and bordering Jiangxi province to the east. It is part of the \"Greater Changsha Metropolitan Region, also known as Changzhutan Golden Triangle\" (comprising the cities of Changsha, Zhuzhou and Xiangtan). The city has jurisdiction over five counties (Yanling, Chaling, Youxian, Liling, Zhuzhou) and four districts (Hetang, Lusong, Shifeng and Tianyuan, a high-tech industrial development zone), and covers an area of 11,420 km2 (4,410 sq mi).\nAs of the 2022 census, Zhuzhou had 3,871,100 inhabitants, of whom 1,055,373 lived in the built-up area (4 urban districts). With Xiangtan areas adjoining Zhuzhou due to be agglomerated in a few years' time, the joint built-up area will be home to 2,933,069 inhabitants.\nZhuzhou is located in a subtropical monsoon climate zone and with its abundant mineral and organic resources has one of the highest agricultural yields in Hunan province. Zhuzhou is home to a provincial public university of Hunan University of Technology.\nZhuzhou is a key center for Xiang Opera (湘剧) and home to the traditional Xiangxiu Fire Dragon Dance (湘西火龙), performed during the Lantern Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "zhuzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 674,
+    "attempt": 667,
+    "place_id": "gn-2755251",
+    "input": {
+      "place": {
+        "place_id": "gn-2755251",
+        "name": "Groningen",
+        "country": "Netherlands",
+        "subdivision": "Groningen",
+        "lat": 53.21917,
+        "lon": 6.56667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Groningen",
+          "url": "https://en.wikipedia.org/wiki/Groningen",
+          "text": "Groningen is the capital city and main municipality of Groningen province in the Netherlands. Dubbed the \"capital of the north\", Groningen is the largest city as well as the economic and cultural centre of the northern part of the country; as of January 2025, it had 244,807 inhabitants, making it the sixth largest city/municipality in the Netherlands and the second largest outside the Randstad. As of 2025, the Groningen metro area had a population of 557,369 inhabitants.\nGroningen was established more than 980 years ago and gained city rights de facto in 1245, making it one of the oldest cities in the Netherlands, although no written records of a formal grant of city rights remain. Due to its relatively isolated location from the successive Dutch centres of power (Utrecht, The Hague, Brussels), Groningen was historically reliant on itself and nearby regions. As a Hanseatic city, it was part of the North German trade network, but later it mainly became a regional market centre. At the height of its power in the 15th century, Groningen could be considered an independent city-state and it remained autonomous until the late 18th century, when it was incorporated into the Napoleonic Batavian Republic.\nToday Groningen is a university city, home to some of the country's leading higher education institutes; University of Groningen (Rijksuniversiteit Groningen), which is the Netherlands's second oldest university, and Hanze University of Applied Sciences (Hanzehogeschool Groningen). Students comprise an estimated 25% of its total population, making it the country's demographically youngest city (although Urk is the youngest municipality overall)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "groningen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 675,
+    "attempt": 668,
+    "place_id": "gn-335035",
+    "input": {
+      "place": {
+        "place_id": "gn-335035",
+        "name": "Harar",
+        "country": "Ethiopia",
+        "subdivision": "Harari",
+        "lat": 9.31387,
+        "lon": 42.11815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harar",
+          "url": "https://en.wikipedia.org/wiki/Harar",
+          "text": "Harar (Harari: ሀረር / Old Harari: هَرَرْ; Amharic: ሐረር; Oromo: Adare Biyyo; Somali: Harar; Arabic: هرر), known historically by the indigenous as Harar-Gey or simply Gey (Harari: ጌይ, Old Harari: ݘٛىيْ, romanized: Gēy, lit. 'the city'), is a walled city in eastern Ethiopia. It is also known in Arabic as the City of Saints (Arabic: مدينة الأولياء, romanized: Madīnat al-ʾAwliyāʾ).\nHarar is the capital city of the Harari Region. The ancient city is located on a hilltop in the eastern part of the country and is about 500 kilometres (310 mi) from the Ethiopian capital Addis Ababa at an elevation of 1,885 metres (6,184 ft).\nFor centuries, Harar has been a major commercial center, linked by the trade routes with the rest of Ethiopia, the entire Horn of Africa, the Arabian Peninsula, Asia, and through its ports, the outside world. Harar Jugol, the old walled city, was listed as a World Heritage Site in 2006 by UNESCO in recognition of its cultural heritage. Because of Harar's long history of involvement during times of trade in the Arabian Peninsula, the Government of Ethiopia has made it a criminal offence to demolish or interfere with any historical sites or fixtures in the city. These include stone homes, museums and items discarded from war. According to UNESCO, it is \"considered 'the fourth holiest city' of Islam\" with 82 mosques, three of which date from the 10th century, and 102 shrines.\nYahyá Naṣrallāh's Fatḥ Madīnat Harar, an unpublished history of the city in the 13th century, records that the legendary saint Abadir Umar ar-Rida and several other religious leaders settled in the Harar plateau c. 1216 (612 AH). Harar was later made the new capital of the Adal Sultanate in 1520 by the Sultan Abu Bakr ibn Muhammad. The city saw a political decline during the ensuing Emirate of Harar, only regaining some significance in the Khedivate of Egypt period. During the Ethiopian Empire, the city decayed while maintaining a certain cultural prestige."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "harar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 676,
+    "attempt": 669,
+    "place_id": "gn-3868121",
+    "input": {
+      "place": {
+        "place_id": "gn-3868121",
+        "name": "Viña del Mar",
+        "country": "Chile",
+        "subdivision": "Valparaiso",
+        "lat": -33.02457,
+        "lon": -71.55183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viña del Mar",
+          "url": "https://en.wikipedia.org/wiki/Viña_del_Mar",
+          "text": "Viña del Mar (Spanish pronunciation: [ˈbiɲa ðel ˈmaɾ]; meaning \"Vineyard of the Sea\" or \"Vineyard-on-Sea\") is a city and commune on central Chile's Pacific coast. Often referred to as La Ciudad Jardín (\"The Garden City\"), the city is located on the central coast, on the basins of the Reñaca and Marga Marga streams and along the shores of Valparaíso Bay.\nIt was founded under its current name on 28 December 1874, by the Chilean politician and writer José Francisco Vergara, who, together with his wife Mercedes Alvares, inherited the lands where the city is now located. To this end, he decided to hire a group of engineers who laid out the street plans and formed an urban nucleus.\nWith a population of 334,871 inhabitants according to the 2024 census, it is the most populous municipality in the region and fourth-largest city in Chile. Furthermore, together with the communes of Valparaíso, Concón, Quilpué, and Villa Alemana, it forms the Greater Valparaíso metropolitan area (pop. 935,602 in the 2017 census), and it is also a twin city of Valparaíso, as it is completely conurbated with it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "vina del mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 677,
+    "attempt": 670,
+    "place_id": "gn-3895088",
+    "input": {
+      "place": {
+        "place_id": "gn-3895088",
+        "name": "Chillán",
+        "country": "Chile",
+        "subdivision": "Ñuble",
+        "lat": -36.60664,
+        "lon": -72.10344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chillán",
+          "url": "https://en.wikipedia.org/wiki/Chillán",
+          "text": "Chillán (Spanish pronunciation: [tʃiˈʝan]) is the capital city of Ñuble Region, Diguillín Province, Chile, located about 400 km (249 mi) south of the country's capital, Santiago, near the center of the country. It has been the capital of the new Ñuble Region since 6 September 2015. Within the city is a railway station, an intercity bus terminal named María Teresa, and a regimental military base. The city features a modern, enclosed shopping centre in addition to the Chillán Market, an iconic multi-block, open-air farmers' market and street fair where fruits, vegetables, crafts, clothing and other goods are sold. The nearby mountains, such as in Laguna del Laja National Park (Spanish: Parque Nacional Laguna del Laja) and the Nevados de Chillán (English: 'snowy peaks of Chillán') are popular destinations for skiing, hiking and their hot springs.\nFounded by the Spanish in 1580, the city withstood numerous early attacks by the indigenous Mapuche and Pehuenche, among other peoples, who were vehemently opposed to Spanish colonialism. Over time, Chillán became an important marketplace and settlement area for spanish colonizers and their Criollos descendants. Many goods from Patagonia and the Argentine Pampas were brought into Chillán across the mountain passes of the area. In the early 19th century, the countryside of Chillán was ravaged by the Chilean War of Independence and a subsequent banditry epidemic. In 1939, the city was devastated by a large earthquake, prompting the government to initiate an extensive reconstruction program."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "chillan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 678,
+    "attempt": 671,
+    "place_id": "gn-4566880",
+    "input": {
+      "place": {
+        "place_id": "gn-4566880",
+        "name": "Ponce",
+        "country": "Puerto Rico",
+        "subdivision": "Ponce",
+        "lat": 18.01031,
+        "lon": -66.62398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponce, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Ponce,_Puerto_Rico",
+          "text": "Ponce (US:  PAWN-say, POHN-, UK:  PON-, Spanish: [ˈponse] ) is a city and a municipality on the southern coast of Puerto Rico. The most populated city outside the San Juan metropolitan area, Ponce was founded on August 12, 1692 and is named after Juan Ponce de León y Loayza, the great-grandson of Spanish conquistador Juan Ponce de León. Ponce is often referred to as La Perla del Sur (The Pearl of the South), La Ciudad Señorial (The Manorial City), and La Ciudad de las Quenepas (Genip City).\nThe city serves as the governmental seat of the autonomous municipality as well as the regional hub for various government of Puerto Rico entities, such as the Supreme Court of Puerto Rico. It is also the regional center for various U.S. federal government agencies. Ponce is a principal city of both the Ponce Metropolitan Statistical Area and the Ponce-Yauco-Coamo Combined Statistical Area with, as of the 2020 US Census, a population of 278,477 and 333,426 respectively.\nThe municipality of Ponce, officially the Autonomous Municipality of Ponce, is located in the southern coastal plain region of the island, south of Adjuntas, Utuado, and Jayuya; east of Peñuelas; west of Juana Díaz; and bordered on the south by the Caribbean Sea. The municipality has 31 barrios, including 19 outside the city's urban area and 12 in the urban area of the city. It is the second largest in Puerto Rico by land area, and it was the first in Puerto Rico to obtain its autonomy, becoming the Autonomous Municipality of Ponce in 1992.\nThe historic Ponce Pueblo district, located in the downtown area of the city, is composed of several of the downtown barrios, and is located approximately three miles (4.8 km) inland from the Caribbean coast. The historic district is characterized by its Rococo, Neoclásico Isabelino, and Ponce Creole architectures, with the latter two styles originating in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 315
+    },
+    "banned_terms": [
+      {
+        "term": "ponce",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 679,
+    "attempt": 672,
+    "place_id": "gn-5102466",
+    "input": {
+      "place": {
+        "place_id": "gn-5102466",
+        "name": "Paterson",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.91677,
+        "lon": -74.17181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paterson, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Paterson,_New_Jersey",
+          "text": "Paterson (English pronunciation: /ˈpætɚsən/ ) is the largest city in and the county seat of Passaic County, in the North Jersey region of the U.S. state of New Jersey. As of the 2020 United States census, Paterson was the state's third-most-populous municipality, with a population of 159,732, an increase of 13,533 (+9.3%) from the 2010 census count of 146,199, which in turn reflected a decline of 3,023 (-2.0%) from the 149,222 counted in the 2000 census. The Census Bureau's Population Estimates Program calculated a population of 161,793 for 2025, making it the 165th-most populous municipality in the nation.\nA prominent mill town within the New York–New Jersey metropolitan area, Paterson has been known as Silk City for its once-dominant role in silk production during the latter half of 19th century. It has since evolved into a major destination for Hispanic immigrants as well as for immigrants from Turkey, the Arab world, and South Asia. Paterson has the nation's second-largest per capita Muslim population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "paterson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 680,
+    "attempt": 673,
+    "place_id": "gn-5520993",
+    "input": {
+      "place": {
+        "place_id": "gn-5520993",
+        "name": "El Paso",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.75872,
+        "lon": -106.48693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Paso, Texas",
+          "url": "https://en.wikipedia.org/wiki/El_Paso,_Texas",
+          "text": "El Paso (English:  ; Spanish: [el ˈpaso] , lit. 'the route' or 'the pass') is a city in and the county seat of El Paso County, Texas, United States. It is the 23rd-most populous city in the U.S., sixth-most populous city in Texas, and the most populous city in West Texas with a population of 678,815 at the 2020 census. The El Paso metropolitan area has an estimated 879,000 residents.\nEl Paso stands on the Rio Grande across the Mexico–United States border from Ciudad Juárez, the most populous city in the Mexican state of Chihuahua. On the U.S. side, the El Paso metropolitan area forms part of the larger El Paso–Las Cruces combined statistical area with Las Cruces, New Mexico with a population of 1,108,758. These three cities form a combined international metropolitan area sometimes referred to as the Paso del Norte or the Borderplex, a region of 2.7 million people which constitutes the largest bilingual and binational workforce in the Western Hemisphere.\nThe city is home to three publicly traded companies, and is also home to the Medical Center of the Americas, the only medical research and care provider complex in West Texas, and the University of Texas at El Paso, the city's primary university. The city hosts the annual Sun Bowl college football postseason game, the second-oldest bowl game in the country. El Paso has a strong federal and military presence. William Beaumont Army Medical Center, Biggs Army Airfield, and Fort Bliss are located in the area. The Drug Enforcement Administration domestic field division 7, El Paso Intelligence Center, Joint Task Force North, United States Border Patrol El Paso Sector, and the U.S. Border Patrol Special Operations Group are also headquartered in El Paso.\nEl Paso is a five-time All-America City Award winner, winning in 1969, 2010, 2018, 2020, and 2021, and Congressional Quarterly ranked it in the top-three safest large cities in the United States between 1997 and 2014, including holding the title of the safest city between 2011 and 2014. El Paso is also the second-largest absolute-majority-Hispanic city in the United States (after San Antonio), with 81% of its residents being Hispanic, and the largest city in the US with an absolute Hispanic majority throughout all of its history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 373
+    },
+    "banned_terms": [
+      {
+        "term": "el paso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 681,
+    "attempt": 674,
+    "place_id": "gn-1648580",
+    "input": {
+      "place": {
+        "place_id": "gn-1648580",
+        "name": "Blitar",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -8.0983,
+        "lon": 112.1681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blitar",
+          "url": "https://en.wikipedia.org/wiki/Blitar",
+          "text": "Blitar is a city in East Java, Indonesia, about 73 km from Malang and 167 km from Surabaya. The area lies within longitude 111° 40' – 112° 09' East and its latitude is 8° 06' South. The city of Blitar lies at an altitude on average 167 metres above sea level, and is an enclave within Blitar Regency which surrounds the city on all sides. It covers an area of 33.20 km2, and had a population of 131,968 at the 2010 Census and 149,149 at the 2020 Census; the official estimate as of mid 2025 was 161,906 (comprising 80,660 males and 81,246 females).\nThe city is notable as the location of the Grave of Sukarno the first president of Indonesia and one of the nation's founding fathers, five kilometers from the city plaza. The Istana Gebang (Gebang Palace), where Sukarno lived as a child, is nearby and has been converted into a museum containing numerous items commemorating Sukarno's place in Indonesian history.  \nBlitar city is surrounded by four of the districts (kecamatan) of Blitar Regency - Kademangan, Garum, Nglegok and Sanankulon; added to the population of the city, this combined area of seven kecamatan had a total population in mid 2025 of 438,696 within its area of 318.93 km2.> The very active Kelud volcano is located just over 20 kilometers north of Blitar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "blitar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 682,
+    "attempt": 675,
+    "place_id": "gn-1798524",
+    "input": {
+      "place": {
+        "place_id": "gn-1798524",
+        "name": "Pudong",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 31.23995,
+        "lon": 121.50094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pudong",
+          "url": "https://en.wikipedia.org/wiki/Pudong",
+          "text": "Pudong is a district of Shanghai located east of the Huangpu, the river which flows through central Shanghai. The name Pudong was originally applied to the Huangpu's east bank, directly across from the west bank or Puxi, the historic city center.  It now refers to the broader Pudong New Area, a state-level new area which extends all the way to the East China Sea.\nThe traditional area of Pudong is now home to the Lujiazui Finance and Trade Zone and the Shanghai Stock Exchange and many of Shanghai's best-known buildings, such as the Oriental Pearl Tower, the Jin Mao Tower, the Shanghai World Financial Center, and the Shanghai Tower. These modern skyscrapers directly face Puxi's historic Bund, a remnant of former foreign concessions in China. The rest of the new area includes the Port of Shanghai, the Shanghai Expo and Century Park, Zhangjiang Hi-Tech Park, Shanghai Pudong International Airport, the Jiuduansha Wetland Nature Reserve, Nanhui New City, and the Shanghai Disney Resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "pudong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 683,
+    "attempt": 676,
+    "place_id": "gn-2481700",
+    "input": {
+      "place": {
+        "place_id": "gn-2481700",
+        "name": "Sétif",
+        "country": "Algeria",
+        "subdivision": "Sétif",
+        "lat": 36.19112,
+        "lon": 5.41373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sétif",
+          "url": "https://en.wikipedia.org/wiki/Sétif",
+          "text": "Sétif (Tamazight: Sṭif, Tifinagh: ⵚⵟⵉⴼ, Arabic: سطيف, romanized: Siṭīf) is the capital city of the Sétif Province and the 5th most populous city of Algeria, with an estimated population of 1,866,845 in 2017). It is one of the most important cities of eastern Algeria and the country as a whole, since it is considered the trade capital of the country and an industrial pole with three industrial zones within the borders of the city.\nIt is an inner city, situated in the eastern side of Algeria, 270 kilometers (170 mi) east of Algiers, 131 km (81 mi) west of Constantine, in the Hautes Plaines region south of Béjaia and Jijel. The city is at an altitude of 1,100 meters (3,600 ft).\nThe city was part of the Phoenician Empire then it became part of the ancient Berber kingdom of Numidia, the capital of Mauretania Sitifensis under the rule of the Roman Empire. It was destroyed during the Arab invasion of North Africa. In 1839 when France occupied the site, they found it in ruins apart from Roman ruins of the Byzantine fortress of Setif, and the ruined civilian housing from Roman and Byzantine periods. Reconstruction of a civilian part of the city began with the construction of a Catholic Church of Setif which is the first building established by the colonial French.\nThe city was the starting point of the 8 May 1945 protests and massacre, which was a crucial factor to the start of the Algerian War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "setif",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 684,
+    "attempt": 677,
+    "place_id": "gn-3171180",
+    "input": {
+      "place": {
+        "place_id": "gn-3171180",
+        "name": "Perugia",
+        "country": "Italy",
+        "subdivision": "Umbria",
+        "lat": 43.1122,
+        "lon": 12.38878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perugia",
+          "url": "https://en.wikipedia.org/wiki/Perugia",
+          "text": "Perugia ( pə-ROO-jə, US also  -⁠jee-ə, pay-; Italian: [peˈruːdʒa] ; Latin: Perusia) is the capital city of Umbria and the province of Perugia in central Italy, crossed by the River Tiber. The city is located about 164 km (102 mi) north of Rome and 148 km (92 mi) southeast of Florence. It covers a high hilltop and part of the valleys around the area. With a population of 162,384, it is the 23rd-largest city in Italy.\nThe history of Perugia dates back to the Etruscan period, with Perugia serving as one of the main Etruscan cities.\nThe city is also known as a university town, with the University of Perugia founded in 1308, the University for Foreigners, and some smaller colleges such as the Academy of Fine Arts \"Pietro Vannucci\" (Italian: Accademia di Belle Arti \"Pietro Vannucci\") public athenaeum founded in 1573, the Perugia University Institute of Linguistic Mediation for translators and interpreters, and the Music Conservatory of Perugia founded in 1788.\nPerugia is also a well-known cultural and artistic centre of Italy. The city hosts multiple annual festivals and events, such as the Umbria Jazz Festival in July, and the International Journalism Festival in April, and is associated with multiple notable people in the arts.\nPainter Pietro Vannucci, nicknamed Perugino, was a native of Città della Pieve, near Perugia. He decorated the local Sala del Cambio with a series of frescoes, and eight of his pictures may be seen in the National Gallery of Umbria.\nPerugino may have been the teacher of Raphael, the great Renaissance artist who produced five paintings in Perugia (today no longer in the city) and one fresco. Another painter, Pinturicchio, lived in Perugia. Galeazzo Alessi is the most famous architect from Perugia.\nThe city's symbol is the griffin, which can be seen in the form of plaques and statues on buildings around the city. It is also the symbol of the local football club A.C. Perugia, who have previously played in the Serie A. Having never been Italian champions, the club went unbeaten in the 1978–79 season despite finishing second in the championship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 349
+    },
+    "banned_terms": [
+      {
+        "term": "perugia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 685,
+    "attempt": 678,
+    "place_id": "gn-2641022",
+    "input": {
+      "place": {
+        "place_id": "gn-2641022",
+        "name": "Oldham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.54051,
+        "lon": -2.1183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oldham",
+          "url": "https://en.wikipedia.org/wiki/Oldham",
+          "text": "Oldham () is a town in Greater Manchester, England. It lies amongst the Pennines on elevated ground between the rivers Irk and Medlock, 5 miles (8 km) southeast of Rochdale, and 7 miles (11 km) northeast of Manchester City Centre. It is the administrative centre of the Metropolitan Borough of Oldham, which had a population of 242,003 in 2021.\nWithin the boundaries of the historic county of Lancashire, and with little early history to speak of, Oldham rose to prominence in the 19th century as an international centre of textile manufacture. It was a boomtown of the Industrial Revolution, and among the first ever industrialised towns, rapidly becoming \"one of the most important centres of cotton and textile industries in England.\" At its zenith, it was the most productive cotton spinning mill town in the world, producing more cotton than France and Germany combined. Oldham's textile industry fell into decline in the mid-20th century; the town's last mill closed in 1998.\nThe demise of textile processing in Oldham depressed and heavily affected the local economy. The town centre is the focus of a project that aims to transform Oldham into a centre for further education and the performing arts. It is, however, still distinguished architecturally by the surviving cotton mills and other buildings associated with that industry.\nIn the 2021 United Kingdom census Oldham built-up area subdivision, as defined by the Office for National Statistics, had a population of 110,718 and an area of 1,639 hectares (6.33 sq mi), giving a population density of 67.57 inhabitants per hectare (17,500/sq mi), while the Borough of Oldham had a population of 242,003, an area of 1,424 hectares (5.50 sq mi), and a population density of 17.29 inhabitants per hectare (4,480/sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "oldham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 686,
+    "attempt": 679,
+    "place_id": "gn-266826",
+    "input": {
+      "place": {
+        "place_id": "gn-266826",
+        "name": "Tripoli",
+        "country": "Lebanon",
+        "subdivision": "North Lebanon",
+        "lat": 34.43352,
+        "lon": 35.84415
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tripoli, Lebanon",
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Lebanon",
+          "text": "Tripoli ( TRIP-əl-ee; Arabic: طَرَابُلُس, ALA-LC: Ṭarābulus, pronounced [tˤaˈraːbulus] ; Lebanese Arabic: طرابلس, romanized: Ṭrāblos, see below) is the largest city in northern Lebanon and the second-largest city in the country. Situated 81 km (50 mi) north of the capital Beirut, it is the capital of the North Governorate and the Tripoli District. Tripoli overlooks the eastern Mediterranean Sea, and it is the northernmost seaport in Lebanon. The city is predominantly inhabited by Sunni Muslims, with smaller populations of Alawites and Christians, including Maronites and Armenians among others.\nThe history of Tripoli dates back at least to the 14th century BC. It was called Athar by the Phoenicians, and later Tripolis by the Greek settlers, whence the modern Arabic name Ṭarābulus derives. In the Arab world, Tripoli has been historically known as Ṭarābulus ash-Shām (Arabic: طرابلس الشام, lit. 'Tripoli of the Levant'), to distinguish it from its Libyan counterpart, known as Ṭarābulus al-Gharb (Arabic: طرابلس الغرب‎, lit. 'Tripoli of the West').\nLandmarks of Tripoli include the Mansouri Great Mosque and the Citadel of Tripoli, which is the largest crusader castle in Lebanon. The city has the second highest concentration of Mamluk architecture after Cairo. Tripoli also holds a string of four small islands offshore, the Palm Islands, which were declared a protected area because of their status as a haven for endangered loggerhead turtles (Caretta caretta), rare monk seals and migratory birds. Tripoli borders the city of El Mina, the port of the Tripoli District, which it is geographically conjoined with to form the greater Tripoli conurbation.\nWith the formation of Lebanon and the 1948 breakup of the Syrian–Lebanese customs union, Tripoli, once on par in economic and commercial importance to Beirut, was cut off from its traditional trade relations with the Syrian hinterland and therefore declined in relative prosperity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "tripoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 687,
+    "attempt": 680,
+    "place_id": "gn-3014728",
+    "input": {
+      "place": {
+        "place_id": "gn-3014728",
+        "name": "Grenoble",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.17869,
+        "lon": 5.71479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grenoble",
+          "url": "https://en.wikipedia.org/wiki/Grenoble",
+          "text": "Grenoble ( grə-NOH-bəl; French: [ɡʁənɔbl] ) is the prefecture and largest city of the Isère department in the Auvergne-Rhône-Alpes region of southeastern France. It was the capital of the Dauphiné historical province and lies where the river Drac flows into the Isère at the foot of the French Alps.\nThe population of the commune of Grenoble was 156,140 as of 2023, while the population of the Grenoble metropolitan area (French: aire d'attraction de Grenoble) was 727,380 in 2023, which makes it the largest metropolis in the Alps, ahead of Innsbruck and Bolzano. A significant European scientific centre, the city advertises itself as the \"Capital of the Alps\", due to its size and its proximity to the mountains. The many suburban communes that make up the rest of the metropolitan area include four with populations exceeding 20,000: Saint-Martin-d'Hères, Échirolles, Fontaine and Voiron.\nGrenoble's history goes back over 2,000 years, to a time when it was a village of the Allobroges Gallic tribe. It became the capital of the Dauphiné in the 11th century. This status, consolidated by the annexation to France, allowed it to develop its economy. Grenoble then became a parliamentary and military city, close to the border with Savoy, which at the time was part of the Holy Roman Empire.  Industrial development increased the prominence of Grenoble through several periods of economic expansion over the last three centuries. This started with a booming glove industry in the 18th and 19th centuries, continued with the development of a strong hydropower industry in the late 19th to early 20th centuries, and ended with a post-World War II economic boom symbolized by the holding of the X Olympic Winter Games in 1968.\nThe city has grown to be one of Europe's most important research, technology and innovation centres, with one in five inhabitants working directly in these fields. Grenoble was classified as a global city with the ranking of \"sufficiency\" by the Globalization and World Cities Research Network until 2024. The city held the title of European Green Capital in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 339
+    },
+    "banned_terms": [
+      {
+        "term": "grenoble",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
