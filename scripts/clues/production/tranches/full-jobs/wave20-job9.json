@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 3991,
+    "attempt": 3961,
+    "place_id": "gn-6232305",
+    "input": {
+      "place": {
+        "place_id": "gn-6232305",
+        "name": "Remuera",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.88041,
+        "lon": 174.79819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Remuera",
+          "url": "https://en.wikipedia.org/wiki/Remuera",
+          "text": "Remuera  is a suburb in Auckland, New Zealand. It is located four kilometres southeast of the city centre. Remuera is characterised by many large houses, often Edwardian or mid 20th century. A prime example of a \"leafy\" suburb, Remuera is noted for its quiet tree-lined streets. The suburb has numerous green spaces, most obvious of which is Ōhinerau / Mount Hobson – a volcanic cone with views from the top overlooking Waitematā Harbour and Rangitoto.\nThe suburb extends from Hobson Bay and the Ōrākei Basin on the Waitematā Harbour to the north and east, to the main thoroughfare of State Highway 1 in the southwest. It is surrounded by the suburbs of Ōrākei, Meadowbank, Saint Johns, Mount Wellington, Ellerslie, Greenlane, Epsom, Newmarket and Parnell. Remuera has been home to many well-known New Zealanders, including the late Sir Edmund Hillary and the race car driver Bruce McLaren."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "remuera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3992,
+    "attempt": 3962,
+    "place_id": "gn-705392",
+    "input": {
+      "place": {
+        "place_id": "gn-705392",
+        "name": "Kolomyia",
+        "country": "Ukraine",
+        "subdivision": "Ivano-Frankivsk",
+        "lat": 48.52496,
+        "lon": 25.03712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kolomyia",
+          "url": "https://en.wikipedia.org/wiki/Kolomyia",
+          "text": "Kolomyia (Ukrainian: Коломия, IPA: [koloˈmɪjɐ] ; Polish: Kołomyja), formerly known as Kolomea, is a city located on the Prut River in Ivano-Frankivsk Oblast in the west of Ukraine. It serves as the administrative centre of Kolomyia Raion, hosting the administration of Kolomyia urban hromada. The population is 60,821 (2022 estimate).\nThe city rests approximately halfway between Ivano-Frankivsk and Chernivtsi, in the centre of the historical region of Pokuttia, with which it shares much of its history. Kolomyia is a notable railroad hub, as well as an industrial centre (textiles, shoes, metallurgical plant, machine works, wood and paper industry). It is a centre of Hutsul culture. Until 1925 Kolomyia was the most populous town in the region. Before the Holocaust about half the town's population was Jewish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "kolomyia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3993,
+    "attempt": 3963,
+    "place_id": "gn-730496",
+    "input": {
+      "place": {
+        "place_id": "gn-730496",
+        "name": "Kazanlak",
+        "country": "Bulgaria",
+        "subdivision": "Stara Zagora",
+        "lat": 42.61667,
+        "lon": 25.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kazanlak",
+          "url": "https://en.wikipedia.org/wiki/Kazanlak",
+          "text": "Kazanlak (Bulgarian: Казанлък [kɐzɐnˈɫɤk] is a town in Stara Zagora Province, Bulgaria. It is located in the middle of the Kazanlak Valley, at the foot of the Balkan Mountains, which forms the eastern part of the Rose Valley. It is the administrative centre of the homonymous Kazanlak Municipality. The ancient Thracian city of Seuthopolis was situated near the town.\nThe town is among the 15 biggest industrial centres in Bulgaria, with a population of 44,760 people as of Dec 2017.\nIt is the center of rose oil extraction in Bulgaria and the oil-producing rose of Kazanlak is one of the most widely recognizable national symbols."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "kazanlak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3994,
+    "attempt": 3964,
+    "place_id": "gn-739236",
+    "input": {
+      "place": {
+        "place_id": "gn-739236",
+        "name": "Sungurlu",
+        "country": "Türkiye",
+        "subdivision": "Çorum",
+        "lat": 40.1675,
+        "lon": 34.37389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sungurlu",
+          "url": "https://en.wikipedia.org/wiki/Sungurlu",
+          "text": "Sungurlu is a town in Çorum Province in the Black Sea Region of Turkey, located 72 km south-west of the city of Çorum. It is the seat of Sungurlu District. Its population is 30,275 (2022). The mayor is Muhsin Dere (MHP).\nSungurlu is on the main road from the Turkish capital Ankara to the Black Sea city of Samsun, and is a popular stop for soup or snacks, including Çorum's famous roasted chick peas (leblebi), when traveling that route by bus. The town consists of 17 quarters: Başpınar, Fevzipaşa, İsmetpaşa, Sunguroğlu, Şekerpınar, Turan, Yenidoğan, Akçay, Bahçelievler, Gürpınar, Hacettepe, Yenihayat, Cevheri, Çiftlik, Akçakent, Fatih and Örnekevler.\nMany of Turkey's leading socks manufacturers are from Sungurlu.\nThere is a clock tower in the town, built in 1891."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "sungurlu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3995,
+    "attempt": 3965,
+    "place_id": "gn-7601921",
+    "input": {
+      "place": {
+        "place_id": "gn-7601921",
+        "name": "Zhongxing New Village",
+        "country": "Taiwan",
+        "subdivision": "Taiwan",
+        "lat": 23.95908,
+        "lon": 120.68516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhongxing New Village",
+          "url": "https://en.wikipedia.org/wiki/Zhongxing_New_Village",
+          "text": "Zhongxing New Village, sometimes rendered as Chunghsing New Village is an urban village located in Nantou City, Nantou County, Taiwan (ROC) and was the seat of government of Taiwan Province until the abolition of the Taiwan Provincial Government in 2018. The term zhōngxīng is from a Chinese legend Shao Kang Resurgence (少康中興; Shàokāng Zhōngxīng), referring to the restoration of the Xia dynasty by king Shao Kang, an allusion to the ROC government taking back mainland China.\nIt is a planned town with a population of 25,549 as of February 2010. With all the buildings owned by the government, development is strictly controlled and carefully planned."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "zhongxing new village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "zhongxing",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3996,
+    "attempt": 3966,
+    "place_id": "gn-8063456",
+    "input": {
+      "place": {
+        "place_id": "gn-8063456",
+        "name": "Mandeni",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.14691,
+        "lon": 31.41403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandeni",
+          "url": "https://en.wikipedia.org/wiki/Mandeni",
+          "text": "Mandeni (also Mandini) is a town in iLembe District Municipality in the KwaZulu-Natal province of South Africa.\nThe town is roughly 22 km north-east of Stanger and 96 km north of Durban.\nThe town has four shopping centres, namely: Mandeni shopping centre, where most residents go, Sundumbili plaza, Gcaleka Shopping centre (also known as KwaGcaleka) and Mandeni Mall. It has seven township sections, all falling under Sundumbili township. These sections are Bhidla, Sikhalambazo, Thokoza, Dark City, Red Hill, Island (sometimes referred to as Ireland), Chappies and White City. There is also a suburb which accommodated only White people during the apartheid era known as eKwatasi. The town has many factories and attracts workers from near and afar. Most factories are at an industrial area known as KwaSithebe. The biggest employer is Sappi, the largest paper manufacturer in South Africa.\nThe Tugela River flows through Mandeni and the mouth of the river is 10 km from the town center.\nOn 28 and 27 December 2020, a rather high maximum temperature of 43.2 °C (109.8 °F) was registered."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "mandeni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3997,
+    "attempt": 3967,
+    "place_id": "gn-8740209",
+    "input": {
+      "place": {
+        "place_id": "gn-8740209",
+        "name": "Nasinu",
+        "country": "Fiji",
+        "subdivision": "Central",
+        "lat": -18.07051,
+        "lon": 178.51313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nasinu",
+          "url": "https://en.wikipedia.org/wiki/Nasinu",
+          "text": "Nasinu (Fijian pronunciation: [nasinu]) is an urban area on the island Viti Levu in Fiji. It is officially designated a \"Town\" and was formally incorporated as such in 1999. The population of Nasinu was 92,043 at the 2017 Census. Its land area is the largest of any municipal area in Fiji, and more than twice that of the capital Suva. It is a major residential hub in Fiji, housing a large majority of the work force in Nasinu itself and in the Fijian capital, Suva. The Nasinu property market has experienced significant growth over the last several years, leading to substantial increases in property value."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "nasinu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3998,
+    "attempt": 3968,
+    "place_id": "gn-96205",
+    "input": {
+      "place": {
+        "place_id": "gn-96205",
+        "name": "Halabja",
+        "country": "Iraq",
+        "subdivision": "Halabja",
+        "lat": 35.17778,
+        "lon": 45.98611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Halabja",
+          "url": "https://en.wikipedia.org/wiki/Halabja",
+          "text": "Halabja (هەڵەبجە) is a city in the Kurdistan Region of Iraq and the capital of Halabja Governorate, located about 240 km (150 mi) northeast of Baghdad and 14 km (9 mi) from the Iranian border.\nThe city lies at the base of what is often referred to as the greater Hewraman region stretching across the Iran–Iraq border. Halabja is surrounded by Hawraman and Shnrwe range in the northeast, Balambo range in the south and Sirwan river in the west. The Kurds in the city of Halabja generally speak only the Sorani dialect of Kurdish, but some residents of the surrounding villages speak the Hewrami dialect."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "halabja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3999,
+    "attempt": 3969,
+    "place_id": "gn-1214026",
+    "input": {
+      "place": {
+        "place_id": "gn-1214026",
+        "name": "Sabang",
+        "country": "Indonesia",
+        "subdivision": "Aceh",
+        "lat": 5.88969,
+        "lon": 95.31644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sabang, Aceh",
+          "url": "https://en.wikipedia.org/wiki/Sabang,_Aceh",
+          "text": "Sabang (Jawoe: سابڠ) is a city in Aceh province, Indonesia consisting entirely of Weh Island and several smaller islands off the northern tip of Sumatra. The administrative centre of the city is located 17 kilometres (11 mi) north of Banda Aceh. The city covers an area of 122.14 square kilometres (47.16 sq mi) and had a population of 43,391 in the 2020 census although that total was subsequently adjusted to 41,197; the official estimate as of mid 2023 was 43,527. Sabang is known as the northernmost and westernmost city of Indonesia. It also has by far the smallest population of any city in Indonesia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "sabang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4000,
+    "attempt": 3970,
+    "place_id": "gn-1266366",
+    "input": {
+      "place": {
+        "place_id": "gn-1266366",
+        "name": "Kohima",
+        "country": "India",
+        "subdivision": "Nagaland",
+        "lat": 25.67467,
+        "lon": 94.11099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kohima",
+          "url": "https://en.wikipedia.org/wiki/Kohima",
+          "text": "Kohima ( ; Tenyidie: Kewhira (IPA: [ˈkɛʍɪɻə])) is the capital of the North East Indian state of Nagaland. With a resident population of almost 100,000, it is the second largest city in the state. Kohima constitutes both a district and a municipality. The municipality covers 20 km2 (7.7 sq mi). The city lies on the foothills of Japfü section of the Barail Range located south of the district (25.67°N 94.12°E﻿ / 25.67; 94.12) and has an average elevation of 1,261 m (4,137 ft).\nOriginally known as Kewhira, the city's history goes back to a time when it was a village of the Angami Nagas. It became an urban centre in 1878 when the British Empire established its headquarters of the then Naga Hills District of Assam Province. Kohima was the site of one of the bloodiest battles of World War II during the Japanese U-Go offensive into British India in 1944. The battle is often referred to as the Stalingrad of the East. In 2013, the British National Army Museum voted the Battle of Kohima to be Britain's Greatest Battle.\nIt officially became Nagaland's capital after the state was inaugurated in 1963."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "kohima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4001,
+    "attempt": 3971,
+    "place_id": "gn-1272873",
+    "input": {
+      "place": {
+        "place_id": "gn-1272873",
+        "name": "Dharapuram",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.73828,
+        "lon": 77.53223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dharapuram",
+          "url": "https://en.wikipedia.org/wiki/Dharapuram",
+          "text": "Dharapuram is a town situated along the banks of Amaravati River in Thiruppur district in the Indian state of Tamil Nadu. Dharapuram is one of the oldest towns in South India and was the capital of Kongu Nadu under the Cheras, Western Ganga Dynasty and later Kongu Cholas, at which time it was known as Veeradapuram. Amaravathi River flows through the town. As of 2011, the town had a population of 67,007. The city houses famous temples including Agatheeswarar Temple, Kaadu Hanumanthasamy temple and many other old temples.\nDharapuram Town is a small agricultural marketing centre for a large rural hinterland in the Thiruppur. The town is 50 km towards of the District Headquarters Thiruppur, 55 km towards the Pollachi, 33 km towards the Kangeyam, 75 km towards the Erode, 75 km towards the Karur, 70 km towards the Dindigul, 35 km towards the Palani and 75 km towards the industrial town Coimbatore. The nearest airport is Coimbatore International Airport located 70 km from Dharapuram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "dharapuram",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4002,
+    "attempt": 3972,
+    "place_id": "gn-1309289",
+    "input": {
+      "place": {
+        "place_id": "gn-1309289",
+        "name": "Minbu",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Magway",
+        "lat": 20.18059,
+        "lon": 94.87595
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minbu",
+          "url": "https://en.wikipedia.org/wiki/Minbu",
+          "text": "Minbu (Burmese: မင်းဘူးမြို့) is a city in Magwe Division, Myanmar. As of 2026, the city has an urban population of 26,911. The area consists of low plain-land towards the Ayeyarwady River, and of undulating country inland rising higher and higher westwards towards the Arakan Mountains. Between the plain and the Arakan Yoma range is a distinct line of hills running north and south, and usually called the Nwa-Madaung hills. The chief streams besides the Ayeyarwady are the Mon, the Maw, and the Salin, which are largely used for irrigation. At Minbu the Ayeyarwady is 3 miles (4.8 km) wide, with many islands and sandbanks. There are considerable fisheries along the Ayeyarwady and on the Paunglin Lake, which is a lagoon fed from the Ayeyarwady. Oil has been discovered near the mud volcanoes of Minbu, but it seems to lie at too great a depth to be profitably worked.\nThere is a large area of reserved forest near Minbu. The chief crops raised are rice, gram, millet, beans, peas, sesamum and tobacco. The betel-vine is largely cultivated along the Mon River. The annual rainfall varies greatly in the area. It is very considerable on and under the Arakari Yomas, and very slight towards the Ayeyarwady. The temperature rises to over 100 °F (38 °C) in the hot months, and the mean of minimum in December is about 49 °F (9 °C)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "minbu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4003,
+    "attempt": 3973,
+    "place_id": "gn-13308373",
+    "input": {
+      "place": {
+        "place_id": "gn-13308373",
+        "name": "Dimtu",
+        "country": "Ethiopia",
+        "subdivision": "South Ethiopia Regional State",
+        "lat": 6.92969,
+        "lon": 38.12513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dimtu",
+          "url": "https://en.wikipedia.org/wiki/Dimtu",
+          "text": "Dimtu (Ge'ez: ዲምቱ) or Wolaita Dimtu (Ge'ez: ወላይታ ዲምቱ) or Bilate Tena (Ge'ez: ብላቴ ጤና) is a city administrator in Wolayita Zone, South Ethiopia Region. It has an elevation between 1,000 and 1,600 metres above sea level. It was part of the former Damot Weyde (Woreda) of Wolayita Zone, near to Sodo Zuria woreda. It was also under the Diguna Fango woreda. Some writers mention the town as Bilate Tena in their books and journals. Among them, Getahun Garedew, former Head Officer in Education Bureau of Southern Nations, Nationalities, and Peoples' Region, and State Minister of Ministry of Education since 2020, is the anterior. In the book \"Local Adaptation Practices in Response to Climate Change in the Bilate River Basin, Southern Ethiopia\", he used these two names, Dimtu and Bilate Tena, in a similar way."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "dimtu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4004,
+    "attempt": 3974,
+    "place_id": "gn-1606270",
+    "input": {
+      "place": {
+        "place_id": "gn-1606270",
+        "name": "Sing Buri",
+        "country": "Thailand",
+        "subdivision": "Sing Buri",
+        "lat": 14.88786,
+        "lon": 100.40464
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sing Buri",
+          "url": "https://en.wikipedia.org/wiki/Sing_Buri",
+          "text": "Sing Buri (Thai pronunciation: [sǐŋ būrīː]) is a town (thesaban mueang) in Thailand, capital of the Sing Buri Province. It lies 141 km north of Bangkok. The town covers the whole tambon Bang Phutsa and parts of Bang Man, Muang Mu, Ton Pho, and Bang Krabue, all within Mueang Sing Buri District. As of 2006, it had a population of 19,470.\nAccording to the Ayutthaya Testimonies, the city was founded by the Siamese monarch Anuraja in the early 12th century, who established it as the new capital of the Phraek Si Racha region, thereby superseding Chai Nat as the administrative center of the polity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "sing buri",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sing",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buri",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4005,
+    "attempt": 3975,
+    "place_id": "gn-1635815",
+    "input": {
+      "place": {
+        "place_id": "gn-1635815",
+        "name": "Maumere",
+        "country": "Indonesia",
+        "subdivision": "East Nusa Tenggara",
+        "lat": -8.6199,
+        "lon": 122.2111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maumere",
+          "url": "https://en.wikipedia.org/wiki/Maumere",
+          "text": "Maumere is the administrative seat of the Sikka Regency and the second largest town (its nominal population has recently overtaken Ende, but of these over 10,500 live in rural areas on outlying islands) on Flores Island, Indonesia. It lies on the north coast of the island and the port is in the north-west part of the town. Administratively, the town is not a single district (kecamatan) within the regency, but is divided into three districts, namely Alok Barat (West Alok), Alok, and Alok Timur (East Alok), although the latter two districts also include a number of substantial islands off the north coast of Flores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "maumere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4006,
+    "attempt": 3976,
+    "place_id": "gn-1636029",
+    "input": {
+      "place": {
+        "place_id": "gn-1636029",
+        "name": "Maros",
+        "country": "Indonesia",
+        "subdivision": "South Sulawesi",
+        "lat": -5.006,
+        "lon": 119.5727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maros",
+          "url": "https://en.wikipedia.org/wiki/Maros",
+          "text": "Maros is a town in the South Sulawesi province of Indonesia close to the provincial capital of Makassar. It is the capital of the Maros Regency.\nMaros is the location of the  Indonesian Cereals Research Institute, a branch of the  Indonesian Agency for Agricultural Research and Development.\nIn 2012, regional cement producer PT Semen Bosowa Maros began construction in Maros of a new clinker plant estimated to cost over $300 million. The clinker plant was expected to help the cement company increase production in the region in response to the growing demand for cement to support construction activities.\nMaros Water Park is in Maros."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "maros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4007,
+    "attempt": 3977,
+    "place_id": "gn-1690666",
+    "input": {
+      "place": {
+        "place_id": "gn-1690666",
+        "name": "Samal",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 7.07444,
+        "lon": 125.70833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samal, Davao del Norte",
+          "url": "https://en.wikipedia.org/wiki/Samal,_Davao_del_Norte",
+          "text": "Samal, officially the Island Garden City of Samal (IGaCOS; Cebuano: Pulong Harding Dakbayan sa Samal; Filipino: Pulong Harding Lungsod ng Samal) is a  component city in the province of Davao del Norte, Philippines. According to the 2024 census, it has a population of 119,701 people.\nIt is made up of Samal Island and the smaller Talikud Island in Davao Gulf, from the merger of former municipalities of Samal, Babak, and Kaputian.\nSamal is a part of the Metropolitan Davao area and is 2 km (1.2 mi) away from Davao City, in mainland Mindanao, the largest city and the primary economic center of that island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "samal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4008,
+    "attempt": 3978,
+    "place_id": "gn-1840886",
+    "input": {
+      "place": {
+        "place_id": "gn-1840886",
+        "name": "Mungyeong",
+        "country": "South Korea",
+        "subdivision": "Gyeongsangbuk-do",
+        "lat": 36.59458,
+        "lon": 128.19946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mungyeong",
+          "url": "https://en.wikipedia.org/wiki/Mungyeong",
+          "text": "Mungyeong (Korean: 문경; Korean pronunciation: [mun.ɡjʌŋ]) is a city in North Gyeongsang Province, South Korea.  The local government, economy, and transportation networks are all centered in Jeomchon, the principal town.  Mungyeong has a lengthy history, and is known today for its various historic and scenic tourist attractions.  The city's name means roughly \"hearing good news.\" Recently, development has been somewhat stagnant with the decline of the coal industry. Since the 1990s, the proportion of people who rely on the tourism industry through Mungyeong Saejae has gradually increased.\nThe city of Mungyeong was created after Jeomchon City and rural Mungyeong County were combined in 1995. It is now an urban-rural complex similar to 53 other small and medium-sized cities with a population under 300,000 people in South Korea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "mungyeong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4009,
+    "attempt": 3979,
+    "place_id": "gn-2290462",
+    "input": {
+      "place": {
+        "place_id": "gn-2290462",
+        "name": "Danané",
+        "country": "Côte d’Ivoire",
+        "subdivision": "Montagnes",
+        "lat": 7.25957,
+        "lon": -8.15498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danané",
+          "url": "https://en.wikipedia.org/wiki/Danané",
+          "text": "Danané is a city in the far west of Ivory Coast. It is a sub-prefecture of and the seat of Danané Department in Tonkpi Region, Montagnes District. Danané is also a commune. The city is 25 kilometres east of the border with Liberia, 30 kilometres south of the border with Guinea, and 45 kilometres southeast of the Guinea–Ivory Coast–Liberia tripoint.\nBecause Danané is close to the Guinean and Liberian borders, it became a destination for refugees during the Liberian Civil War. By the end of 1999, the town of Danané had overgrown its boundaries and swallowed up a number of small villages around it. Many Liberians who were resettled around the world resided in Danané for a period of time.\nIn 2021, the population of the sub-prefecture of Danané was 131,586."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "danane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4010,
+    "attempt": 3980,
+    "place_id": "gn-2294727",
+    "input": {
+      "place": {
+        "place_id": "gn-2294727",
+        "name": "Techiman",
+        "country": "Ghana",
+        "subdivision": "Bono East",
+        "lat": 7.59054,
+        "lon": -1.93947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Techiman",
+          "url": "https://en.wikipedia.org/wiki/Techiman",
+          "text": "Techiman (Akan: Takyiman) is a city and the capital of the Techiman Metropolitan District and the Bono East Region of Ghana. The city is located about 32 miles (51 km) from Sunyani and about 65 miles (105 km) away from Kumasi. It has a tropical savanna climate, experiencing two wet seasons and a dry season. Techiman has a population of 67,241 as of the 2010 census figures released by the Ghana Statistical Service. The majority of ethnic groups in the city included the Akan, Bono, Gonja, Dagomba, Sisala, and Mamprusi people. The mayor of the city's metropolitan, as of 2021, is Benjamin Yaw Gyarko.\nThe city was founded in 1740, and was established as the Bono-Tekyiman state in the 1940s, after the Bono state's capital Bono Manso was taken over in 1723 by the Asante Empire. After a referendum in 2018 was passed with the focus of creating new regions in Ghana, Techiman was selected to be the capital of the newly-created region of the Bono East Region.\nTechiman is the site of an outdoor agricultural market, one of the largest markets in West Africa. The market is also where most of the city's economic activity is situated. The city holds a unique ethnic heritage as the center of the Akan people. Techiman is also a commercial hub in Ghana, as it is the cross point of many different trunk roads from cities such as Sunyani, Kumasi, Wa, and Tamale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "techiman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

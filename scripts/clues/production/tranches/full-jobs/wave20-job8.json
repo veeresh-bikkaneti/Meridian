@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 3971,
+    "attempt": 3941,
+    "place_id": "gn-2939658",
+    "input": {
+      "place": {
+        "place_id": "gn-2939658",
+        "name": "Cuxhaven",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.86828,
+        "lon": 8.69902
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuxhaven",
+          "url": "https://en.wikipedia.org/wiki/Cuxhaven",
+          "text": "Cuxhaven (German: [kʊksˈhaːfn̩] ; Low German: Cuxhoben) is a port town and seat of the Cuxhaven district, in Lower Saxony, Germany. The town includes the northernmost point of Lower Saxony. The city serves as a gateway to the nearby Heligoland islands, a tax free zone off the coast of Germany. Cuxhaven is situated on the shore of the North Sea at the mouth of the Elbe River. Cuxhaven has a footprint of 14 kilometres (9 miles) (east–west) by 7 km (4 mi) (north–south). Its town quarters Duhnen, Döse and Sahlenburg are especially popular vacation spots on the North Sea and home to about 52,000 residents.\nCuxhaven is home to an important fisherman's wharf and ship registration point for Hamburg as well as the Kiel Canal until 2008. Tourism is also of great importance. The city and its precursor Ritzebüttel belonged to Hamburg from the 13th century until 1937. What remains of Ritzebüttel is Ritzebüttel Castle ('Schloss Ritzebüttel'). The island of Neuwerk, a Hamburg dependency, is located just northwest of Cuxhaven in the North Sea. The city's symbol, known as the Kugelbake, is a beacon once used as a lighthouse; the wooden landmark on the mouth of the Elbe marks the boundary between the river and the North Sea and also adorns the city's coat of arms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "cuxhaven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3972,
+    "attempt": 3942,
+    "place_id": "gn-2979783",
+    "input": {
+      "place": {
+        "place_id": "gn-2979783",
+        "name": "Saint-Germain-en-Laye",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.89643,
+        "lon": 2.0904
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Germain-en-Laye",
+          "url": "https://en.wikipedia.org/wiki/Saint-Germain-en-Laye",
+          "text": "Saint-Germain-en-Laye (French: [sɛ̃ ʒɛʁmɛ̃ ɑ̃ lɛ] ) is a commune in the Yvelines department in the Île-de-France in north-central France. It is located in the western suburbs of Paris, 19.1 km (11.9 mi) from the centre of Paris.\nInhabitants are called Saint-Germanois or Saint-Germinois. With its tree-lined streets it is one of the more affluent suburbs of Paris, combining both high-end leisure spots and exclusive residential neighborhoods (see the Golden Triangle of the Yvelines).\nSaint-Germain-en-Laye is a sub-prefecture of the department. Because it includes the National Forest of Saint-Germain-en-Laye, it covers approximately 48 km2 (19 sq mi), making it the largest commune in the Yvelines. It occupies a large loop of the Seine. Saint-Germain-en-Laye lies at one of the western termini of Line A of the RER."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "saint germain en laye",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "germain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "en",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "laye",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3973,
+    "attempt": 3943,
+    "place_id": "gn-3029162",
+    "input": {
+      "place": {
+        "place_id": "gn-3029162",
+        "name": "Calais",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.95194,
+        "lon": 1.85635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calais",
+          "url": "https://en.wikipedia.org/wiki/Calais",
+          "text": "Calais (UK:  KAL-ay, US:  kal-AY, traditionally  KAL-iss, French: [kalɛ] ) is a French major port city in the Pas-de-Calais department, of which it is a subprefecture. Calais is the largest city in Pas-de-Calais. The population of the city proper is 67,585; that of the urban area is 144,488 (2022). Calais overlooks the Strait of Dover, the narrowest point in the English Channel, which is only 34 km (21 mi) wide here, and is the closest French town to England.  The White Cliffs of Dover can easily be seen from Calais on a clear day.  Calais is a major port for ferries between France and England. The Channel Tunnel has connected Calais and Folkestone since 1994.\nBecause of its position, Calais has been a major port and an important centre for transport and trading with England since the Middle Ages. Calais came under English control after Edward III of England captured the city in 1347, followed by a treaty in 1360 that formally assigned Calais to English rule.  Calais grew into a thriving centre for wool production, and came to be called the \"brightest jewel in the English crown\" because of its importance as the gateway for the tin, lead, lace and wool trades (or \"staples\"). Calais remained under English control until its recapture by France in 1558.\nDuring World War II, the town was virtually razed to the ground. In May 1940, it was a strategic bombing target of the invading German forces, who took it during the siege of Calais.  The Germans built massive bunkers along the coast, in preparation for launching missiles at England.\nThe old part of the town, Calais-Nord, is on an artificial island surrounded by canals and harbours. The modern part of the town, St-Pierre, lies to the south and south-east. In the centre of the old town is the Place d'Armes, in which stands the Tour du Guet, or watch-tower, a structure built in the 13th century, which was used as a lighthouse until 1848 when a new lighthouse was built by the port. South east of the Place is the church of Notre-Dame, built during the English occupancy of Calais. Arguably, it is the only church built in the English perpendicular style in all of France. In this church, former French President Charles de Gaulle married Yvonne Vendroux. South of the Place and opposite the Parc St Pierre is the Hôtel-de-ville (the town hall), and the belfry from the early 20th century. Today, Calais is visited by more than 10 million annually. Aside from being a key transport hub, Calais is also a notable fishing port and a centre for fish marketing, and some 3,000 people are still employed in the lace industry for which the town is also famed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 457
+    },
+    "banned_terms": [
+      {
+        "term": "calais",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3974,
+    "attempt": 3944,
+    "place_id": "gn-3039163",
+    "input": {
+      "place": {
+        "place_id": "gn-3039163",
+        "name": "Sant Julià de Lòria",
+        "country": "Andorra",
+        "subdivision": "Sant Julià de Loria",
+        "lat": 42.46372,
+        "lon": 1.49129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Julià de Lòria",
+          "url": "https://en.wikipedia.org/wiki/Sant_Julià_de_Lòria",
+          "text": "Sant Julià de Lòria (Catalan pronunciation: [ˈsaɲ dʒuliˈa ðe ˈlɔɾia]) is one of the seven parishes of Andorra. Located in the south of the country, it is spread around the town of the same name along the banks of the Gran Valira River. Spread around an area of 60 km2 (23 sq mi), the region incorporates 11 villages. It is bordered by the capital Andorra la Vella in the north, Escaldes-Engordany in the northeast and the Spanish region of Catalonia along the other sides. With an estimated population of 9,915 individuals in 2023, it is one of the least populated amongst the parishes of Andorra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "sant julia de loria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "julia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "loria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3975,
+    "attempt": 3945,
+    "place_id": "gn-3069011",
+    "input": {
+      "place": {
+        "place_id": "gn-3069011",
+        "name": "Olomouc",
+        "country": "Czechia",
+        "subdivision": "Olomouc Region",
+        "lat": 49.59552,
+        "lon": 17.25175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olomouc",
+          "url": "https://en.wikipedia.org/wiki/Olomouc",
+          "text": "Olomouc (Czech pronunciation: [ˈolomouts] ; German: Olmütz) is a city in the Czech Republic. It has about 105,000 inhabitants, making it the sixth largest city in the country. It is the administrative centre of the Olomouc Region.\nLocated on the Morava River, the city is the ecclesiastical metropolis and was a historical co-capital city of Moravia, before having been occupied by the Swedish army during the Thirty Years' War. The historic city centre is well preserved and is protected as urban monument reservation. The Holy Trinity Column was listed as a UNESCO World Heritage Site in 2000 for its quintessential Baroque style and symbolic value."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "olomouc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3976,
+    "attempt": 3946,
+    "place_id": "gn-3129857",
+    "input": {
+      "place": {
+        "place_id": "gn-3129857",
+        "name": "Aranjuez",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.03108,
+        "lon": -3.60246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aranjuez",
+          "url": "https://en.wikipedia.org/wiki/Aranjuez",
+          "text": "Aranjuez (Spanish: [aɾaŋˈxweθ] ) is a city and municipality of Spain, part of the Community of Madrid.\nLocated in the southern end of the region, the main urban nucleus lies on the left bank of the Tagus, a bit upstream of the discharge of the Jarama. As of 2022, the municipality has a registered population of 59,762. Aranjuez became one of the Royal Estates of the Crown of Spain in 1560, during the reign of Philip II. Until 1752, only royalty and nobility were allowed to dwell in the town.\nThe cultural landscape of Aranjuez was declared a World Heritage Site by UNESCO in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "aranjuez",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3977,
+    "attempt": 3947,
+    "place_id": "gn-318755",
+    "input": {
+      "place": {
+        "place_id": "gn-318755",
+        "name": "Çeşme",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.32614,
+        "lon": 26.30574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Çeşme",
+          "url": "https://en.wikipedia.org/wiki/Çeşme",
+          "text": "Çeşme, officially the Çeşme Municipality, is a municipality and district of İzmir Province, Turkey. Its area is 285 km2, and its population is 48,924 (2022). It sits at Turkey's westernmost end, on a promontory on the tip of the peninsula that also carries the same name and that extends inland to form a whole with the wider Urla-Karaburun-Çeşme Peninsula. It is a popular holiday resort and the district center, where two thirds of the district population is concentrated. Çeşme is located 85 km west of İzmir, the largest metropolitan center in Turkey's Aegean Region. There is a six-lane highway connecting the two cities (Otoyol 32). Çeşme district has two neighboring districts, Karaburun to the north and Urla to the east, both of which are also part of İzmir Province. The name \"Çeşme\" means \"fountain\" and possibly draws reference from the many Ottoman fountains that are scattered across the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "cesme",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3978,
+    "attempt": 3948,
+    "place_id": "gn-3188516",
+    "input": {
+      "place": {
+        "place_id": "gn-3188516",
+        "name": "Ulcinj",
+        "country": "Montenegro",
+        "subdivision": "Ulcinj",
+        "lat": 41.92936,
+        "lon": 19.22436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulcinj",
+          "url": "https://en.wikipedia.org/wiki/Ulcinj",
+          "text": "Ulcinj (Albanian: Ulqin) is a town in the coastal region of Montenegro and the capital of Ulcinj Municipality. It has an urban population of 11,488.\nAs one of the oldest settlements in the Adriatic coast, it was founded in 5th century BC. It was captured by the Romans in 163 BC from the Illyrians. With the division of the Roman Empire, it was a part of the Byzantine Empire. In the Middle Ages, the Serbian Kingdom and the House of Balsha ruled Ulcinj until the Republic of Venice captured it in 1405 as part of Venetian Albania. It was known as a base for piracy. In 1571, Ulcinj was conquered by the Ottoman Empire with the aid of North African corsairs after the Battle of Lepanto. The town gradually became a Muslim-majority settlement. Under the Ottomans, numerous hammams and mosques, and a clock tower were built. Ulcinj remained a den of piracy until this was finally put to an end by Mehmed Pasha Bushati. Ulcinj remained an Ottoman town for more than 300 years until it was ceded to the Principality of Montenegro in 1878. During World War II, the coastal town was ceded to the Kingdom of Albania before later becoming part of Yugoslavia and, eventually, the modern state of Montenegro. It is a former medieval Catholic bishopric and remains a Latin titular see.\nUlcinj is a popular destination for tourists, because of its Long Beach, Lake Šas, Ada Bojana Island and for Ulcinj Castle, parts of which date back two millennia. There are 26 mosques in the town and surrounding countryside. Ulcinj is the centre of the Albanian community in Montenegro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "ulcinj",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3979,
+    "attempt": 3949,
+    "place_id": "gn-3190103",
+    "input": {
+      "place": {
+        "place_id": "gn-3190103",
+        "name": "Sremska Mitrovica",
+        "country": "Serbia",
+        "subdivision": "Vojvodina",
+        "lat": 44.97639,
+        "lon": 19.61222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sremska Mitrovica",
+          "url": "https://en.wikipedia.org/wiki/Sremska_Mitrovica",
+          "text": "Sremska Mitrovica (Serbian pronunciation: [srêːmskaː mîtroʋitsa]; Serbian Cyrillic: Сремска Митровица, Hungarian: Szávaszentdemeter, Latin: Sirmium) is a city in Serbia. It is situated on the left bank of the Sava river. As of 2022, the city has a total population of 36,764 inhabitants, while its administrative area has a population of 72,580 inhabitants.\nAs Sirmium, it was a capital of the Roman Empire during the Tetrarchy of 4th century CE. Ten Roman emperors were born in or near this city, Emperors Herennius Etruscus (251), Hostilian (251), Decius Traian (249–251), Claudius Gothicus (268–270), Quintillus (270), Aurelian (270–275), Probus (276–282), Maximian (285–310), Constantius II (337–361) and Gratian (367–383)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "sremska mitrovica",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sremska",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mitrovica",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3980,
+    "attempt": 3950,
+    "place_id": "gn-3203412",
+    "input": {
+      "place": {
+        "place_id": "gn-3203412",
+        "name": "Brežice",
+        "country": "Slovenia",
+        "subdivision": "Municipality of Brežice",
+        "lat": 45.90726,
+        "lon": 15.59319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brežice",
+          "url": "https://en.wikipedia.org/wiki/Brežice",
+          "text": "Brežice (pronounced [ˈbɾèːʒitsɛ] ; German: Rann [ʁan]) is a town in eastern Slovenia in the Lower Sava Valley, near the Croatian border. It is the seat of the Municipality of Brežice. It lies in the center of the Brežice Plain (Slovene: Brežiško polje), which is part of the larger Krka Flat (Slovene: Krška ravan). The area was traditionally divided between Lower Styria (territory on the left bank of the Sava River) and Lower Carniola (territory on the right bank of the Sava River). The entire municipality is now included in the Lower Sava Statistical Region.\nBrežice prides itself on a rich historical and cultural heritage. The Lower Sava Valley Museum (Slovene: Posavski muzej Brežice), housed in Brežice Castle, contains archaeological and ethnological exhibits, exhibits on the Croatian and Slovenian peasant revolt, and a modern history collection. It is one of the largest regional museums in the country. A more recent landmark addition to the town is its water tower, as well as the double arches of the 527 m long iron bridge, which spans the Sava and Krka rivers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "brezice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3981,
+    "attempt": 3951,
+    "place_id": "gn-336372",
+    "input": {
+      "place": {
+        "place_id": "gn-336372",
+        "name": "Waliso",
+        "country": "Ethiopia",
+        "subdivision": "Oromiya",
+        "lat": 8.53417,
+        "lon": 37.96515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waliso",
+          "url": "https://en.wikipedia.org/wiki/Waliso",
+          "text": "Waliso (Amharic: ወሊሶ) (Oromo: Walisoo) is a town in Southwest Shewa Zone of the Oromia Region in Ethiopia, 114 km southwest of Addis Ababa, it has a latitude and longitude of 8°32′N 37°58′E with an elevation of 2063 meters above sea level. Waliso is the administrative center of this Zone.\n\nWaliso town has seven administrative Kebeles. Dej. Geresu Duki Comprehensive Secondary School, Oromia Institute of Water Technology,  Ambo University – Faculty of Social Science (Waliso Campus) and other private institutes and colleges are located in Woliso. In Waliso, there is a natural hot-spring, which makes the town one of the leading tourism heritages in Ethiopia. \nThe town allows a round view of 360 degrees from Meja hill – a volcanic mountain (Tulluu Majaa in Afaan Oromoo), situated in the middle of the town. There is also a natural hot-spring, which makes the town a tourism heritage in Ethiopia. In addition, Wonchi volcano (Wancii in Afaan Oromoo), the highest volcano Ethiopias, is 32 kilometers away from Waliso. This volcano contains a crater lake which became a tourist destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "waliso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3982,
+    "attempt": 3952,
+    "place_id": "gn-3438102",
+    "input": {
+      "place": {
+        "place_id": "gn-3438102",
+        "name": "Fuerte Olimpo",
+        "country": "Paraguay",
+        "subdivision": "Alto Paraguay",
+        "lat": -21.04153,
+        "lon": -57.87377
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fuerte Olimpo",
+          "url": "https://en.wikipedia.org/wiki/Fuerte_Olimpo",
+          "text": "Fuerte Olimpo (Spanish pronunciation: [ˈfweɾte oˈlimpo]) is a city in Paraguay. It is the capital of the department of Alto Paraguay. Straddling the river Paraguay which forms the border with Brazil, Fuerte Olimpo is Paraguay's northernmost departmental capital, located over 830 km (515 mi)  north of the capital Asunción. It was originally called Fuerte Borbón. The city is also known as “la puerta de entrada al Pantanal”, or entrance to the Pantanal region.\nFuerte Olimpo is on east of Chaco Boreal on east shore of Paraguay River near the mouth of Blanco River, to the north the moist ground called humedales from the Gran Pantanal. Fuerte Olimpo is far away from the flood area. \nThe city is surrounded by a wall 4 km long."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "fuerte olimpo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fuerte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "olimpo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3983,
+    "attempt": 3953,
+    "place_id": "gn-3464891",
+    "input": {
+      "place": {
+        "place_id": "gn-3464891",
+        "name": "Curvelo",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -18.75639,
+        "lon": -44.43083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curvelo",
+          "url": "https://en.wikipedia.org/wiki/Curvelo",
+          "text": "Curvelo is a municipality in the state of Minas Gerais, Brazil. It is located in the geodesic centre of Minas Gerais, 170 km north of the capital, Belo Horizonte, and connected to the capital by highways MG 135 and BR 040. Its estimated population is 84,296 inhabitants (2025) and the total area of the municipality is 3,296 kmª. The city lies at an altitude of 633 metres. Curvelo takes its name from the Brazil-born Portuguese priest Antônio Corvelo de Ávila, when the parish of Santo Antônio da Estrada e o Padre Antônio de Ávila Curvelo was founded in the 18th century (on 16 March 1720)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "curvelo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3984,
+    "attempt": 3954,
+    "place_id": "gn-3504765",
+    "input": {
+      "place": {
+        "place_id": "gn-3504765",
+        "name": "Hato Mayor del Rey",
+        "country": "Dominican Republic",
+        "subdivision": "Hato Mayor Province",
+        "lat": 18.76575,
+        "lon": -69.25579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hato Mayor del Rey",
+          "url": "https://en.wikipedia.org/wiki/Hato_Mayor_del_Rey",
+          "text": "Hato Mayor del Rey is the capital of Hato Mayor Province, Dominican Republic. It is bordered on the North by the municipalities of El Valle and Sabana de la Mar, on the South by the San Pedro de Macorís Province, on the East by the El Seibo Province and on the West by the municipality of Bayaguana, Monte Plata. It is located 27 kilometers from the San Pedro de Macorís Province and 110 kilometers from the capital city of Santo Domingo. Hato Mayor del Rey has a population of 70,141 inhabitants, and is divided into three municipal districts: Yerba Buena, Guayabo Dulce and Mata Palacio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "hato mayor del rey",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hato",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mayor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rey",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3985,
+    "attempt": 3955,
+    "place_id": "gn-3654853",
+    "input": {
+      "place": {
+        "place_id": "gn-3654853",
+        "name": "La Troncal",
+        "country": "Ecuador",
+        "subdivision": "Canar",
+        "lat": -2.42466,
+        "lon": -79.34159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Troncal",
+          "url": "https://en.wikipedia.org/wiki/La_Troncal",
+          "text": "La Troncal, officially San Pablo de La Troncal is a town and largest city by population in the Cañar Province, Ecuador and the seat of La Troncal Canton.\nThe region that would become this significant town, was sparsely populated by farmers until the 1950s. \nThe population began to grow in the 1950s, when migrants from Azuay, and the Cañar provinces began to settle in the area in search of new and better job opportunities.\nAround the 1990s thanks to the growth of the sugar mill Aztra, migrants  from Manabi also began to move in, by which the population was gradually growing in size and importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "la troncal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "troncal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3986,
+    "attempt": 3956,
+    "place_id": "gn-3674676",
+    "input": {
+      "place": {
+        "place_id": "gn-3674676",
+        "name": "Mitú",
+        "country": "Colombia",
+        "subdivision": "Vaupés",
+        "lat": 1.25744,
+        "lon": -70.23551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mitú",
+          "url": "https://en.wikipedia.org/wiki/Mitú",
+          "text": "Mitú (Spanish pronunciation: [miˈtu]) is the capital town of the department of Vaupés in Colombia. It is a small town located in South eastern Colombia in the Amazon Basin. Founded in 1936, Mitú lies next to the Vaupés River at 180 meters above sea level. It is where the core of the services (transport and trade)  are provided to the Vaupés Department.\nThe Vaupés River serves as connecting link between Mitú and nearby hamlets on the riverbanks, but there are no roads connecting the town to rest of the country. Accessible only by airplane and the river, Mitú is the most isolated capital in Colombia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "mitu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3987,
+    "attempt": 3957,
+    "place_id": "gn-3981467",
+    "input": {
+      "place": {
+        "place_id": "gn-3981467",
+        "name": "Tlajomulco de Zúñiga",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.47421,
+        "lon": -103.44654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlajomulco de Zúñiga",
+          "url": "https://en.wikipedia.org/wiki/Tlajomulco_de_Zúñiga",
+          "text": "Tlajomulco de Zúñiga  is the municipal seat and third most populous city in the municipality of the same name, located in the state of Jalisco in central-western Mexico. It forms part of the Guadalajara metropolitan area, lying to the southeast of it. The municipality covers an area of 636.93 km2. As of 2010 it had a population of 416,626, with a total urban population of 378,965.\nIts name is interpreted from Nahuatl as \"Land in the Corner.\"\nAs it is part of the Guadalajara metropolitan area, it has an industrial base and is a large commercial area. Guadalajara International Airport is located in the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "tlajomulco de zuniga",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tlajomulco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zuniga",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3988,
+    "attempt": 3958,
+    "place_id": "gn-4634662",
+    "input": {
+      "place": {
+        "place_id": "gn-4634662",
+        "name": "Kingsport",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.54843,
+        "lon": -82.56182
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingsport, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Kingsport,_Tennessee",
+          "text": "Kingsport is a city in Sullivan and Hawkins counties in the U.S. state of Tennessee. It lies along the Holston River and had a population of 55,442 at the 2020 census. It is the largest city in the Kingsport–Bristol metropolitan area, which had 307,613 residents in 2020. The metro area is a component of the larger Tri-Cities region of Tennessee and Virginia, with a population of 508,260 in 2020.\nKingsport was chartered in 1822. The city's name is a simplification of King's Port, originally referring to the area on the Holston River known as King's Boat Yard, the head of navigation for the Tennessee Valley. Kingsport is commonly included in what is known as the \"Mountain Empire\" in southwest Virginia and northeastern Tennessee."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "kingsport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3989,
+    "attempt": 3959,
+    "place_id": "gn-5914132",
+    "input": {
+      "place": {
+        "place_id": "gn-5914132",
+        "name": "Campbell River",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.01634,
+        "lon": -125.24459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campbell River, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Campbell_River,_British_Columbia",
+          "text": "Campbell River is a city in the Strathcona District of British Columbia, Canada, on the east coast of Vancouver Island at the south end of Discovery Passage, which lies along the 50th parallel north along the important Inside Passage shipping route. Campbell River has a population (2021 census) of 35,138 and has long been touted as the \"salmon capital of the world.\" Campbell River and Region are near the communities of Quadra and the Discovery Islands, Sayward, Oyster River, Gold River, Tahsis and Zeballos.\nCampbell River is served by the coast-spanning Island Highway, the nearby but now defunct Island Rail Corridor, and Campbell River Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "campbell river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campbell",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3990,
+    "attempt": 3960,
+    "place_id": "gn-5983720",
+    "input": {
+      "place": {
+        "place_id": "gn-5983720",
+        "name": "Iqaluit",
+        "country": "Canada",
+        "subdivision": "Nunavut",
+        "lat": 63.74697,
+        "lon": -68.51727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iqaluit",
+          "url": "https://en.wikipedia.org/wiki/Iqaluit",
+          "text": "Iqaluit is the capital of the Canadian territory of Nunavut. Located on Baffin Island, it is the territory's largest community and only city, and the northernmost city in Canada. It was known as Frobisher Bay from 1942 to 1987, after the large bay on the coast on which the city is situated. Its traditional Inuktitut name was restored in 1987.\nIn 1999, Iqaluit was designated the capital of Nunavut after the division of the Northwest Territories into two separate territories. Before this event, Iqaluit was a small city and not well known outside the Canadian Arctic or Canada, with population and economic growth highly limited. This is due to Iqaluit's isolation and heavy dependence on expensive imported supplies, as the city, like the rest of Nunavut, has no road or rail connections to the rest of Canada, and has ship connections for only part of the year. Iqaluit has a polar climate, influenced by the cold deep waters of the Labrador Current just off Baffin Island, which makes the city cold, although it is well south of the Arctic Circle.\nAs of the 2021 Canadian census, the population was 7,429 (population centre: 6,991), a decrease of 4.0 per cent from the 2016 census. Iqaluit has the lowest population of any capital city in Canada. Inhabitants of Iqaluit are called Iqalummiut (singular: Iqalummiuq)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "iqaluit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3831,
+    "attempt": 3801,
+    "place_id": "gn-2644652",
+    "input": {
+      "place": {
+        "place_id": "gn-2644652",
+        "name": "Leighton Buzzard",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.91722,
+        "lon": -0.65802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leighton Buzzard",
+          "url": "https://en.wikipedia.org/wiki/Leighton_Buzzard",
+          "text": "Leighton Buzzard (  LAY-tən BUZ-ərd) is a market town in the civil parish of Leighton–Linslade, in the Central Bedfordshire district, in Bedfordshire, England, in the southwest of the county and close to the Buckinghamshire border. It lies between Aylesbury, Tring, Luton/Dunstable and Milton Keynes, near the Chiltern Hills.\nIt is 36 miles (58 km) northwest of Central London and linked to the capital by the Grand Union Canal and the West Coast Main Line. The built-up area extends on either side of the River Ouzel (here about 2 metres (6 ft 7 in) wide) to include its historically separate neighbour Linslade, and is administered by Leighton-Linslade Town Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "leighton buzzard",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "leighton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "buzzard",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3832,
+    "attempt": 3802,
+    "place_id": "gn-2754652",
+    "input": {
+      "place": {
+        "place_id": "gn-2754652",
+        "name": "Heerlen",
+        "country": "Netherlands",
+        "subdivision": "Limburg",
+        "lat": 50.88365,
+        "lon": 5.98154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heerlen",
+          "url": "https://en.wikipedia.org/wiki/Heerlen",
+          "text": "Heerlen (Dutch pronunciation: [ˈɦeːrlə(n)] ; Limburgish: Heële [ˈɦeə˦lə]) is a city and a municipality in the southeast of the Netherlands. It is the third largest settlement proper in the province of Limburg. Measured as a municipality, it is the fourth largest municipality in the province of Limburg.\nHeerlen forms part of the city-region of Parkstad Limburg, an agglomeration with about 250,000 inhabitants and encompassing eight municipalities. It is to the east of Maastricht and north of the German city of Aachen.\nAfter its early Roman beginnings and a modest medieval period, Heerlen became a centre for the coal mining industry in the Netherlands in the late 19th century. In the 20th century, architect Frits Peutz played a major role in shaping the city as we know it today. His most famous design, and a distinctive building in the city centre, is the so-called Glaspaleis (Glass Palace), listed as one of the world's thousand most architecturally important buildings of the 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "heerlen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3833,
+    "attempt": 3803,
+    "place_id": "gn-3181528",
+    "input": {
+      "place": {
+        "place_id": "gn-3181528",
+        "name": "Brindisi",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 40.63215,
+        "lon": 17.93607
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brindisi",
+          "url": "https://en.wikipedia.org/wiki/Brindisi",
+          "text": "Brindisi (US:  BRIN-diz-ee, BREEN-; Italian: [ˈbrindizi] ; Brindisino: Brìnnisi) is a city in the region of Apulia in southern Italy, the capital of the province of Brindisi, on the coast of the Adriatic Sea. Historically, the city has played an essential role in trade and culture due to its strategic position on the Italian Peninsula and its natural port on the Adriatic Sea. The city remains a major port for trade with the Balkan Peninsula, Greece and the Middle East. Its industries include agriculture, chemical works, and the generation of electricity.\nFrom September 1943 to February 1944, Brindisi was the provisional government seat of the Kingdom of Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "brindisi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3834,
+    "attempt": 3804,
+    "place_id": "gn-3183356",
+    "input": {
+      "place": {
+        "place_id": "gn-3183356",
+        "name": "Albano Laziale",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 41.72748,
+        "lon": 12.659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albano Laziale",
+          "url": "https://en.wikipedia.org/wiki/Albano_Laziale",
+          "text": "Albano Laziale (Italian: [alˈbaːno latˈtsjaːle]), sometimes known simply as Albano (Romanesco: Arbano; Latin: Albanum), is a comune (municipality) in the Metropolitan City of Rome Capital, on the Alban Hills, in the Italian region of Lazio. Rome is 25 kilometres (16 mi) distant. It is bounded by other communes of Castel Gandolfo, Rocca di Papa, Ariccia and Ardea.\nPartially included in the Roman Castles Regional Park, Albano is one of its most important municipalities, and a busy commercial centre. It has been also a suburbicarian bishopric since the 5th century, a historic principality of the Savelli family, and from 1699 to 1798 the inalienable possession of the Holy See."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "albano laziale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "albano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "laziale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3835,
+    "attempt": 3805,
+    "place_id": "gn-3197147",
+    "input": {
+      "place": {
+        "place_id": "gn-3197147",
+        "name": "Krško",
+        "country": "Slovenia",
+        "subdivision": "Urban Municipality of Krško",
+        "lat": 45.95915,
+        "lon": 15.49167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krško",
+          "url": "https://en.wikipedia.org/wiki/Krško",
+          "text": "Krško (pronounced [ˈkə́ɾʃkɔ] ; German: Gurkfeld) is a town in eastern Slovenia. It is the seat of the City Municipality of Krško. The town lies on the Sava River and on the northwest edge of the Krško Plain (Slovene: Krško polje), which is part of the larger Krka Flat (Slovene: Krška ravan). The area is divided between the traditional regions of Styria (territory on the left bank of the Sava) and Lower Carniola (territory on the right bank of the Sava). The entire municipality is now included in the Lower Sava Statistical Region.\nSlovenia's only nuclear power plant, the Krško Nuclear Power Plant, lies southeast of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "krsko",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3836,
+    "attempt": 3806,
+    "place_id": "gn-3348297",
+    "input": {
+      "place": {
+        "place_id": "gn-3348297",
+        "name": "Humbe",
+        "country": "Angola",
+        "subdivision": "Cunene",
+        "lat": -16.6864,
+        "lon": 14.90317
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Humbe",
+          "url": "https://en.wikipedia.org/wiki/Humbe",
+          "text": "Humbe is a town and commune in the municipality of Ombadja, province of Cunene, Angola.\nIt also used to be the location of a Roman Catholic mission station in southern Angola, located approx. 10 km northeast of Xangongo, in the tribal area of the Ombadja tribe of the Ovambos. It was located on a tributary of the Kunene River, flowing into this river from the north.\nHumbe was established in ca. 1882, after the Catholics had made a failed attempt to establish themselves near the Finnish mission station of Olukonda in Ondonga, Ovamboland, in 1879, and then in Omaruru, Hereroland, further south in South West Africa in 1882.\nThe attempts of the Portuguese to subjugate the Ovambos of Ombadja and Oukwanyama were initially unsuccessful, and 1904 they suffered a massive defeat at the Cunene river. In response, the Portuguese established Forte Roçadas in 1906 in what is now Xangongo, not far from Humbe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "humbe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3837,
+    "attempt": 3807,
+    "place_id": "gn-3394958",
+    "input": {
+      "place": {
+        "place_id": "gn-3394958",
+        "name": "Melgaço",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -1.80444,
+        "lon": -50.71222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melgaço, Pará",
+          "url": "https://en.wikipedia.org/wiki/Melgaço,_Pará",
+          "text": "Melgaço is a municipality in the state of Pará in the North Region of Brazil. With an area of 6,772.764 square kilometers (2,614.979 sq mi), of which 1.7177 square kilometres (0.6632 sq mi) is urban, it is located 173 km from Belém, the state capital, and 1,503 km from Brasília, the federal capital. Its population in the 2022 demographic census was 27,881 inhabitants, according to the Brazilian Institute of Geography and Statistics (IBGE), ranking as the 77th most populous municipality in the state of Pará. Melgaço ranked lowest among all Brazilian municipalities in the Human Development Index (HDI-M) published by the United Nations Development Programme (UNDP) in 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "melgaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3838,
+    "attempt": 3808,
+    "place_id": "gn-3430443",
+    "input": {
+      "place": {
+        "place_id": "gn-3430443",
+        "name": "Necochea",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -38.5545,
+        "lon": -58.73961
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Necochea",
+          "url": "https://en.wikipedia.org/wiki/Necochea",
+          "text": "Necochea is a port and beach city in the southwest of Buenos Aires Province, Argentina. The city is located on the Atlantic Coast, along the mouth of the Quequén Grande River, 528 km (328 mi) from Buenos Aires and 120 km (75 mi) southwest of Mar del Plata. The city proper has 90,000 inhabitants per the 2010 census [INDEC] and is the seat of government for Necochea Partido.\nThe neighboring Port of Quequén, located on the eastern bank of the Quequén Grande River, is one of the most important ports in Argentina, and the gateway for the agricultural production of the southeast of the Province of Buenos Aires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "necochea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3839,
+    "attempt": 3809,
+    "place_id": "gn-3449696",
+    "input": {
+      "place": {
+        "place_id": "gn-3449696",
+        "name": "Santo Ângelo",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -28.29917,
+        "lon": -54.26306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santo Ângelo",
+          "url": "https://en.wikipedia.org/wiki/Santo_Ângelo",
+          "text": "Santo Ângelo is a municipality located in northwestern Rio Grande do Sul state, Brazil. It has about 77,568 inhabitants (according to 2020 IBGE estimate) and the total area of the municipality is about 679 km2. It borders Giruá to the north, and Entre-Ijuís to the south—it is linked to Santo Ângelo by the state road RS 344. The city is located 443 km (275 mi) from the state capital, Porto Alegre.\nThe local agriculture-economy produces and deals soy, corn, wheat, swine, sheep and cattle. Tourism in the city is primarily associated with the city's Jesuit history and the Jesuit Reductions in the nearby city São Miguel das Missões. The Angelopolitan Cathedral in downtown Santo Ângelo is the seat of the Roman Catholic Diocese of Santo Ângelo.\nThe city is served by Sepé Tiaraju Airport and is home to four institutions of higher education, Universidade Regional Integrada do Alto Uruguai e das Missões (URI), Faculdade CNEC Santo Ângelo, Faculdade Santo Ângelo (FASA) and Instituto Federal Farroupilha (IFFar)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "santo angelo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "angelo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3840,
+    "attempt": 3810,
+    "place_id": "gn-3461425",
+    "input": {
+      "place": {
+        "place_id": "gn-3461425",
+        "name": "Ilhabela",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.77806,
+        "lon": -45.35806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilhabela",
+          "url": "https://en.wikipedia.org/wiki/Ilhabela",
+          "text": "Ilhabela (Portuguese for Beautiful Island) is an archipelago and city situated in the Atlantic Ocean six kilometres (4 miles) off the coast of São Paulo state in Brazil. The city is 205 km (127 mi) from the city of São Paulo and 340 km (210 mi) from the city of Rio de Janeiro. The largest island, although commonly called Ilhabela, is officially named Ilha de São Sebastião (St. Sebastian Island). It, the other islands (Búzios, Pescadores and Vitória) and the islets (Cabras, Castelhanos, Enchovas, Figueira, Lagoa and Serraria) make up the municipality of Ilhabela.\nIlhabela is part of the Metropolitan Region of Vale do Paraíba e Litoral Norte. The population is 35,591 (2020 est.). The islands in total cover 347.52 km2 (134.18 sq mi). During the holiday months, up to one hundred thousand people may be on the island, since it is a popular destination for tourists. To access the city, one must take a boat or ferry in São Sebastião, as there are no roads which reach it. During the summer, one may wait several hours to take the ferry boat. The ferry takes 15 minutes to cross the channel between the two cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "ilhabela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3841,
+    "attempt": 3811,
+    "place_id": "gn-3471846",
+    "input": {
+      "place": {
+        "place_id": "gn-3471846",
+        "name": "Araçuaí",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -16.84972,
+        "lon": -42.07028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Araçuaí",
+          "url": "https://en.wikipedia.org/wiki/Araçuaí",
+          "text": "Araçuaí (Portuguese pronunciation: [aɾɐswa'i]) is a municipality in northeastern Minas Gerais, Brazil, in the Jequitinhonha River valley. The Araçuaí River, a tributary of the Jequitinhonha, flows through the municipality. It had a population of 34,297 in the 2022 census, with an estimated population of 35,185 in 2025, in an area of 2,236.279 km2 (863.432 sq mi). It is part of the Immediate Geographic Region of Araçuaí, within the Intermediate Geographic Region of Teófilo Otoni. The city is the seat of the Roman Catholic Diocese of Araçuaí.\nBetween the municipalities of Araçuaí and Itinga is located the largest lithium mine in Brazil, explored and extracted by Sigma Lithium Resources."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "aracuai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3842,
+    "attempt": 3812,
+    "place_id": "gn-3523141",
+    "input": {
+      "place": {
+        "place_id": "gn-3523141",
+        "name": "Misantla",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 19.92992,
+        "lon": -96.85194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Misantla",
+          "url": "https://en.wikipedia.org/wiki/Misantla",
+          "text": "Misantla is a city in the Mexican state of Veracruz, the administrative seat of the municipality (municipio) of the same name. The municipality is bordered by Martínez de la Torre, Colipa and Papantla.\nMisantla is located in the valley of the Misantla River in the Sierra de Chiconquiaco.\nTravelwise, Misantla is about 35 km (22 mi) from the beaches of the Gulf of Mexico; however, the roads to the coast are not reliable. Misantla is located two hours north of Xalapa (the capital of the state) on Veracruz State Highway 65, a most scenic mountain route, well-paved. Federal Highways 180 and 129 are on either side of it. There are Mesoamerican pyramids located northwest of town.\nIt is the municipal seat of several different communities such as Morelos, Guerrero, el Pozón, Buenos Aires, Arroyo Hondo, etc. In the local Native American Totonac language it means \"place of the deer\", although there are no longer deer in the wild. Misantla is over 450 years old, it was founded by the Spanish conquistadors and the Native population. Weather in Misantla is very hot and humid. The main crops are coffee beans, oranges and corn. Misantla is not only an agricultural community but also people raise cattle for a living. In the city, vendors invaded the pretty streets with street commerce, thus street commerce is another very common activity.\nMisantla is also known as La Tierra del Cachichin (\"land of Cachichin\"). Cachichin is a very sour, unpleasant nut which used to be abundant; nowadays, however, the nut is steadily disappearing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "misantla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3843,
+    "attempt": 3813,
+    "place_id": "gn-3526952",
+    "input": {
+      "place": {
+        "place_id": "gn-3526952",
+        "name": "Huejutla de Reyes",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 21.14,
+        "lon": -98.41944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huejutla de Reyes",
+          "url": "https://en.wikipedia.org/wiki/Huejutla_de_Reyes",
+          "text": "Huejutla de Reyes is a city and one of the 84 municipalities of Hidalgo, in central-eastern Mexico. The name comes from the Nahuatl huexotl (\"willow\") and tlan (\"place\"), while \"de Reyes\" commemorates local cobbler Antonio Reyes Cabrera who died defending Huejutla from French invaders in 1866.\nThe municipality covers an area of 377.8 km2 in the northeast of Hidalgo, in the Huasteca region, on the border with the state of Veracruz. As of 2005, the municipality had a total population of 115,786. but only 36,305 live in the metropolitan area, whereas the remaining population live in various small communities. Around 73,200 people speak indigenous languages, primarily Huasteca Nahuatl.\nIt has been called \"the Heart of La Huasteca\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "huejutla de reyes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "huejutla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "reyes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3844,
+    "attempt": 3814,
+    "place_id": "gn-3575568",
+    "input": {
+      "place": {
+        "place_id": "gn-3575568",
+        "name": "Wesley",
+        "country": "Dominica",
+        "subdivision": "Saint Andrew Parish",
+        "lat": 15.56667,
+        "lon": -61.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wesley, Dominica",
+          "url": "https://en.wikipedia.org/wiki/Wesley,_Dominica",
+          "text": "Wesley (15°34′N 61°19′W) is a village in Saint Andrew Parish in north-eastern Dominica. It situated between the old estates of Eden and Londonderry and 1 1/2 miles (2.4 km) southeast of Woodford Hill. Like many other villages along the east coast, Wesley developed after Emancipation on hilly land along the boundary between the two estates as labourers sought to establish independent holdings for themselves away from the plantations where they had formerly lived and worked.\nWesley has a population of over 2,000 people. It is the home of the North Eastern Comprehensive School, better known as the NECS after the closing of the St. Andrews School in 2006.  \nKokoy is widely spoken in Wesley. It is an English-lexicon creole distinct from the French-lexicon Antillean Creole spoken elsewhere in Dominica. Kokoy reflects the linguistic heritage of the Leeward Island labourers, primarily from Antigua and Barbuda and Montserrat, who settled in the area during the post-emancipation period and whose descendants have maintained this distinct speech variety into the present day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "wesley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3845,
+    "attempt": 3815,
+    "place_id": "gn-3652584",
+    "input": {
+      "place": {
+        "place_id": "gn-3652584",
+        "name": "Puyo",
+        "country": "Ecuador",
+        "subdivision": "Pastaza Province",
+        "lat": -1.49156,
+        "lon": -78.00337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puyo, Pastaza",
+          "url": "https://en.wikipedia.org/wiki/Puyo,_Pastaza",
+          "text": "Puyo (Spanish pronunciation: [ˈpuʝo]), also known as El Puyo, is the capital of Pastaza, a province in Ecuador. Puyo is located at an altitude of approximately 950 metres above sea level by the Puyo River, a tributary of the Pastaza River, which eventually leads into the Amazon River. True to its name, derived from the Kichwa word for \"cloudy\", the local climate is a wet one and the weather is often overcast.\nPuyo was founded in 1899. Located between Baños, and the Amazonian cities of Tena and Macas, Puyo is the commercial, cultural and political capital of the region. In late 2006, the city had approximately 25,000 inhabitants. It was the fastest growing city in Ecuador in 2006. The seasonal changes in the climate are relatively small, and daytime temperature typically range between 18 and 24 °C, with sun and generally short, but heavy periods of rain daily."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "puyo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3846,
+    "attempt": 3816,
+    "place_id": "gn-367308",
+    "input": {
+      "place": {
+        "place_id": "gn-367308",
+        "name": "Shendi",
+        "country": "Sudan",
+        "subdivision": "River Nile",
+        "lat": 16.6915,
+        "lon": 33.4341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shendi",
+          "url": "https://en.wikipedia.org/wiki/Shendi",
+          "text": "Shendi or Shandi (Arabic: شندي) is a small city in northern Sudan, situated on the southeastern bank of the Nile River 150 km northeast of Khartoum. Shandi is also about 45 km southwest of the ancient city of Meroë. Located in the River Nile state, Shandi is the center of the Ja'alin tribe and an important historic trading center. Its principal suburb on the west bank is Matamma. A major traditional trade route across the Bayuda Desert connects Matamma to Merowe and Napata, 250 km to the northwest. The city is the historical capital of the powerful Sudanese Arab Ja'alin tribe whom most of its denizens belong to. The village of Hosh Bannaga, hometown of former President Omar al-Bashir, is located on the outskirts of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "shendi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3847,
+    "attempt": 3817,
+    "place_id": "gn-4562407",
+    "input": {
+      "place": {
+        "place_id": "gn-4562407",
+        "name": "York",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.9626,
+        "lon": -76.72774
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "York, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/York,_Pennsylvania",
+          "text": "York is a city in York County, Pennsylvania, United States, and its county seat. Located in South Central Pennsylvania, the city's population was 44,800 at the time of the 2020 census, making it the tenth-most populous city in Pennsylvania. The city has an urban area population of 238,549 and has a metropolitan area population of 456,449.\nFounded in 1741, York served as the temporary base for the Continental Congress from September 1777 to June 1778, during which the Articles of Confederation were drafted. It is the largest city in the York–Hanover metropolitan area, which is also included in the larger Harrisburg–York–Lebanon combined statistical area of the Susquehanna Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "york",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3848,
+    "attempt": 3818,
+    "place_id": "gn-457860",
+    "input": {
+      "place": {
+        "place_id": "gn-457860",
+        "name": "Līvāni",
+        "country": "Latvia",
+        "subdivision": "Līvāni",
+        "lat": 56.35431,
+        "lon": 26.17579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Līvāni",
+          "url": "https://en.wikipedia.org/wiki/Līvāni",
+          "text": "Līvāni ( ; Latgalian: Leivuons; German: Lievenhof) is a town (population approx. 10,000) and the center of Līvāni Municipality in the Latgale region of eastern Latvia. It is situated at the junction of the Dubna and Daugava rivers, approximately 170 kilometers east of the Latvian capital Riga.\nLīvāni Municipality is the first municipality in Latgale region coming into Līvāni from the direction of Riga. Līvāni is a city where the Dubna meets the Daugava, Zemgale meets Latgale and roads go to Riga and Daugavpils, to Russia, Belarus and Lithuania. Since 2007, Līvāni city is a regional development centre where resources of development, social and economic activities are concentrated.\nHistorical heritage of Līvāni city is being preserved in the character and structure of town planning. Spruce city public center on the Riga Street has obtained technocratic charm that expresses itself through the design of street commodities, renovated buildings and bikeways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "livani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3849,
+    "attempt": 3819,
+    "place_id": "gn-4944193",
+    "input": {
+      "place": {
+        "place_id": "gn-4944193",
+        "name": "Milton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.24954,
+        "lon": -71.06616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milton, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Milton,_Massachusetts",
+          "text": "Milton is a town in Norfolk County, Massachusetts, United States and an immediate southern suburb of Boston. The population was 28,630 at the 2020 census.\nMilton is located in the relatively hilly area between the Neponset River and Blue Hills, bounded by Brush Hill to the west, Milton Hill to the east, Blue Hills to the south and the Neponset River to the north. It is also bordered by Boston's Dorchester and Mattapan district to the north and its Hyde Park district to the west, with the neighboring Massachusetts city of Quincy to the east and the towns of Randolph to the south, and Canton to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "milton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3850,
+    "attempt": 3820,
+    "place_id": "gn-5127835",
+    "input": {
+      "place": {
+        "place_id": "gn-5127835",
+        "name": "Mount Vernon",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.9126,
+        "lon": -73.83708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Vernon, New York",
+          "url": "https://en.wikipedia.org/wiki/Mount_Vernon,_New_York",
+          "text": "Mount Vernon is a city in Westchester County, New York, United States. It is an inner suburb of New York City, immediately to the north of the borough of the Bronx. As of the 2020 census, Mount Vernon had a population of 73,893, making it the eighth-largest city in the state and largest African-American majority city in the state. \nMount Vernon has two major sections. South-side Mount Vernon is more urban, while north-side Mount Vernon is more residential. Mount Vernon's downtown business district is on the city's south side, which includes City Hall, Mount Vernon's main post office, Mount Vernon Public Library, office buildings, and other municipal establishments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "mount vernon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vernon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]
