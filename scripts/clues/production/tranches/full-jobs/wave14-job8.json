@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 2763,
+    "attempt": 2741,
+    "place_id": "gn-5095611",
+    "input": {
+      "place": {
+        "place_id": "gn-5095611",
+        "name": "Bergenfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.9276,
+        "lon": -73.99736
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergenfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Bergenfield,_New_Jersey",
+          "text": "Bergenfield is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 28,321, an increase of 1,557 (+5.8%) from the 2010 census count of 26,764, which in turn reflected an increase of 517 (+2.0%) from the 26,247 counted in the 2000 census.\nNew Jersey Monthly magazine ranked Bergenfield as its 211th best place to live in its 2010 rankings of the \"Best Places To Live\" in New Jersey. The magazine ranked Bergenfield as its 231st best place to live in its 2008 rankings of the \"Best Places To Live\".\nNeighborhoodScout named Bergenfield as the safest municipality in the nation in 2012 with more than 25,000 residents and in both 2013 and 2014 they named it as the 2nd safest town in the US only behind Franklin, Massachusetts.\nIn 2019, Bergenfield has dropped in their ratings, falling to number 4."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "bergenfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2764,
+    "attempt": 2742,
+    "place_id": "gn-5123533",
+    "input": {
+      "place": {
+        "place_id": "gn-5123533",
+        "name": "Kiryas Joel",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.34204,
+        "lon": -74.16792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kiryas Joel, New York",
+          "url": "https://en.wikipedia.org/wiki/Kiryas_Joel,_New_York",
+          "text": "Kiryas Joel (Yiddish: קרית יואל, romanized: Kiryas Yoyel, pronounced [ˈkɪrjəs ˈjɔɪ.əl] ; often locally abbreviated as KJ) is a village coterminous with the Town of Palm Tree in Orange County, New York, United States. The population was 32,954 at the 2020 census, approximately 5% of the estimated 712,000 population of the Kiryas Joel–Poughkeepsie–Newburgh metropolitan area. The vast majority of its residents are Yiddish-speaking Hasidic Jews who belong to the worldwide Satmar sect of Hasidism.\nAccording to the Census Bureau's American Community Survey, Kiryas Joel has by far the youngest median age population of any municipality in the United States, and the youngest, at 11.4 years old, of any population center of over 5,000 residents in the United States. Kiryas Joel has seen significant population growth since the 2000s. According to 2020 census figures, the village has a high poverty rate with about 40% of the residents living below the federal poverty line. It is the place in the United States with the highest percentage of people who reported Hungarian ancestry, as 18.9% of the population reported Hungarian descent in 2000.\nDaniel Presman has served as mayor of Kiryas Joel since 1997; Gedalye Szegedin has served as its administrator since 2004 or earlier."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "kiryas joel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kiryas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2765,
+    "attempt": 2743,
+    "place_id": "gn-5143396",
+    "input": {
+      "place": {
+        "place_id": "gn-5143396",
+        "name": "Watertown",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.97478,
+        "lon": -75.91076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Watertown, New York",
+          "url": "https://en.wikipedia.org/wiki/Watertown,_New_York",
+          "text": "Watertown is a city in and the county seat of Jefferson County, New York, United States. It is approximately 25 miles (40 km) south of the Thousand Islands, along the Black River, about 5 miles (8 km) east of where it flows into Lake Ontario. The city is bordered by the town of Watertown to the south, east, and west, and is served by the Watertown International Airport and the Watertown Daily Times newspaper. In the middle of Watertown lies the Public Square Historic District, which was built in 1805 and listed on the National Register of Historic Places (NRHP) in 1984. Watertown is located 13 miles (21 kilometers) southwest of the U.S. Army base at Fort Drum; it is the service and shopping destination for personnel there and their families. As of the 2020 United States census, the city has 24,685 residents, making it the largest city in the North Country.\nThe area was first surveyed in 1795, and was settled in March 1800 due to the abundant hydropower the Black River provided. The city was designated as the county seat of Jefferson County when it was split off from Oneida County in 1805. Watertown was incorporated as a village in 1816, and became a city in 1869. By then, it was booming as an industrial center for Upstate New York. During the mid-1960s, Chicago attracted many of the younger residents from the area along with their businesses, leading to the demolition of many historic buildings and a steady decline in population. By 2000, the city had lost over 7,000 residents.\nThe city serves as the commercial and financial center for the North Country. Located 30 miles (48 km) from the Canadian border, shopping by Canadian visitors is important to Watertown's economy. The city also receives numerous tourists and summer residents. Watertown, South Dakota, was named in the city's honor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "watertown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2766,
+    "attempt": 2744,
+    "place_id": "gn-785082",
+    "input": {
+      "place": {
+        "place_id": "gn-785082",
+        "name": "Tetovo",
+        "country": "North Macedonia",
+        "subdivision": "Tetovo",
+        "lat": 42.00989,
+        "lon": 20.97138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tetovo",
+          "url": "https://en.wikipedia.org/wiki/Tetovo",
+          "text": "Tetovo (Macedonian: Тетово, [ˈtɛtɔvɔ] ; Albanian: Tetovë, Albanian definite form: Tetova) is a city in the northwestern part of North Macedonia, built on the foothills of Šar Mountain and divided by the Pena River. The municipality of Tetovo covers an area of 1,080 km2 (417 sq mi) at 468 meters (1,535 ft) above sea level, with a population of 63,176, making it the country's fifth largest city. The city of Tetovo is the seat of Tetovo Municipality. \nTetovo was founded in the 14th century on the place of the ancient town of Oaeneon, Οαινέον in Greek language.\nIn the 15th century AD, Tetovo came under Ottoman rule for about five centuries. After its conquest by the Ottomans, most of the city's population converted to Islam and many Ottoman-style structures were built, such as the Šarena Džamija and the Arabati Baba Teḱe, which still stand as two of North Macedonia's most significant landmarks of its Ottoman period. During this period, the town belonged to the Vilayet of Kosovo, became a firearm and cannon foundry, and was renamed Kalkandelen (meaning \"Shield Penetrator\"); as a result, the town attracted many workers and grew into a city. Following the First and Second World Wars, Tetovo became a part of Yugoslavia and, later, the Republic of Macedonia.\nThe South East European University, North Macedonia's third biggest university after Skopje and Bitola, is located in Tetovo. Tetovo is also home to the State University of Tetovo. Tetovo is regarded as the de facto capital of North Macedonia's ethnic Albanian population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "tetovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2767,
+    "attempt": 2745,
+    "place_id": "gn-1499053",
+    "input": {
+      "place": {
+        "place_id": "gn-1499053",
+        "name": "Megion",
+        "country": "Russia",
+        "subdivision": "Khanty-Mansia",
+        "lat": 61.03429,
+        "lon": 76.10683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Megion",
+          "url": "https://en.wikipedia.org/wiki/Megion",
+          "text": "Megion (Russian: Мегион) is a town in Khanty-Mansi Autonomous Okrug–Yugra, Russia, located at the altitude of 45 meters (148 ft) above sea level, on the right bank of the Ob River, 380 kilometers (240 mi) east of Khanty-Mansiysk and 760 kilometers (470 mi) northeast of Tyumen. The area of the town is 50.51 square kilometers (19.50 sq mi) and the nearest airport is in Nizhnevartovsk (30 kilometers (19 mi) away). Population: 49,449 (2010 census); 46,566 (2002 Census); 39,783 (1989 Soviet census).\nFoundation and subsequent town development became possible with the discovery of oil in the Middle Ob Region. It was the Megion oil workers who drilled the first well in the Samotlor field, the largest oil field in the country, and initiated its industrial development. This laid the groundwork for the construction of Megion and Nizhnevartovsk, which together constitute one of the most significant centers of the Russian oil industry today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "megion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2768,
+    "attempt": 2746,
+    "place_id": "gn-216404",
+    "input": {
+      "place": {
+        "place_id": "gn-216404",
+        "name": "Gbadolite",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Nord-Ubangi",
+        "lat": 4.279,
+        "lon": 21.00284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gbadolite",
+          "url": "https://en.wikipedia.org/wiki/Gbadolite",
+          "text": "Gbadolite or Gbado-Lite (Northern Ngbandi pronunciation: [ɡ͡badɔlite]) is the capital of Nord-Ubangi Province in the Democratic Republic of the Congo. The town is located 12 kilometres (7.5 mi) south of the Ubangi River at the border to the Central African Republic and 1,150 kilometres (710 mi) northeast of the national capital Kinshasa. Gbadolite was the ancestral home and residence of Joseph-Désiré Mobutu, later self-styled as Mobutu Sese Seko where airport, colleges, malls, supermarkets and libraries were built by the President in a program of modernization. Gbadolite is where Mobutu led the summit that would produce the Gbadolite Declaration, a short-lived ceasefire in the Angolan Civil War in 1989. By 1997, Mobutu fled to Rabat in Morocco as the rebels led by Laurent Kabila as the palaces of Gbadolite have been vandalized and looted which marked the end of Mobutu's dictatorship over 32 years of brutal dictatorship and the collapse of Zaire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "gbadolite",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2769,
+    "attempt": 2747,
+    "place_id": "gn-266045",
+    "input": {
+      "place": {
+        "place_id": "gn-266045",
+        "name": "Zahlé",
+        "country": "Lebanon",
+        "subdivision": "Bekaa",
+        "lat": 33.84675,
+        "lon": 35.90203
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zahlé",
+          "url": "https://en.wikipedia.org/wiki/Zahlé",
+          "text": "Zahlé (Arabic: زَحْلة, romanized: Zaḥlah, locally: Zaḥleh) is a city in eastern Lebanon, and the capital and  largest city of Beqaa Governorate, Lebanon. With around 150,000 inhabitants, it is the third-largest city in Lebanon after Beirut and Tripoli and the fourth-largest taking the whole urban area (the Jounieh urban area is larger).\nZahlé is located 55 km (34 mi) east of the capital Beirut, close to the Beirut-Damascus road, and lies at the junction of Mount Lebanon and the Beqaa Valley, at a mean elevation of 1,000 m. Established in the 18th century by Christians, Zahlé maintains its predominantly Greek Catholic character. The city has historically enjoyed convenient accessibility via road and rail, leveraging its strategic location as a trade hub.\nZahlé is known as the \"Bride of the Beqaa\" and \"the Neighbor of the Gorge\" for its geographical location and attractiveness, but also as \"the City of Wine and Poetry\". It is famous throughout Lebanon and the region for its pleasant climate, numerous riverside restaurants and quality arak. Its inhabitants are predominantly Melkite Greek Catholic and are known in Arabic as Zahlawi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "zahle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2770,
+    "attempt": 2748,
+    "place_id": "gn-2792073",
+    "input": {
+      "place": {
+        "place_id": "gn-2792073",
+        "name": "Louvain-la-Neuve",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.66829,
+        "lon": 4.61443
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Louvain-la-Neuve",
+          "url": "https://en.wikipedia.org/wiki/Louvain-la-Neuve",
+          "text": "Louvain-la-Neuve (French: [luvɛ̃ la nœv] ; French for \"New Leuven\"; Walloon: Li Noû Lovén) is a planned town in the municipality of Ottignies-Louvain-la-Neuve, Wallonia, Belgium, situated 30 km southeast of Brussels, in the province of Walloon Brabant. The town was built to house the Université catholique de Louvain (UCLouvain) which owns the entire territory of the town; following the linguistic quarrels that took place in Belgium during the 1960s, and Flemish claims of discrimination at the Catholic University of Leuven, the institution was split into the Dutch-language Katholieke Universiteit Leuven (KU Leuven), which remained in Leuven, and the Université catholique de Louvain.\nTo a great extent, it still lives following the rhythms of the university that is its raison d'être. However, with the construction of L'Esplanade shopping complex, the Aula Magna exhibition centre and auditorium, a large cinema complex, and five museums, it is beginning to grow beyond its academic roots."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "louvain la neuve",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "louvain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "neuve",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2771,
+    "attempt": 2749,
+    "place_id": "gn-3082704",
+    "input": {
+      "place": {
+        "place_id": "gn-3082704",
+        "name": "Wałcz",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.27787,
+        "lon": 16.47122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wałcz",
+          "url": "https://en.wikipedia.org/wiki/Wałcz",
+          "text": "Wałcz (Polish pronunciation: [vau̯t͡ʂ] ; German: Deutsch Krone) is a county town in Wałcz County of the West Pomeranian Voivodeship in northwestern Poland.\nGranted city rights in 1303, Wałcz has become the administrative, industrial and cultural center of the Wałcz Lake District with the city itself situated on the banks of the Raduń and Zamkowe lakes. Wałcz is located in the southestern portion of West Pomeranian Voivodeship. The closest cities are Szczecin 130 km (81 mi), Bydgoszcz 115 km (71 mi), Piła 26 km (16 mi), Poznań 120 km (75 mi), Gorzów Wielkopolski 107 km (66 mi) and Koszalin 120 km (75 mi).\nHistorically, the town belonged to the province of Greater Poland and was a royal city of Poland until the Partitions of Poland. Afterwards, from 1772 to 1945 it was part of Prussia and, from 1871 to 1945, it was also part of Germany, before being reintegrated with Poland. It is the location of one of the oldest high schools in Poland, founded over 350 years ago, and a garrison of the Polish Army."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "wa cz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wa",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "cz",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2772,
+    "attempt": 2750,
+    "place_id": "gn-3085450",
+    "input": {
+      "place": {
+        "place_id": "gn-3085450",
+        "name": "Słupsk",
+        "country": "Poland",
+        "subdivision": "Pomerania",
+        "lat": 54.46405,
+        "lon": 17.02872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Słupsk",
+          "url": "https://en.wikipedia.org/wiki/Słupsk",
+          "text": "Słupsk (Polish: [swupsk] ; Kashubian: Stôłpsk [stɞwpsk]; German: Stolp [ʃtɔlp]) is a city with powiat rights located on the Słupia River in the Pomeranian Voivodeship in northern Poland, in the historical region of Pomerania or more specifically in its part known in contemporary Poland as Central Pomerania (Pomorze Środkowe) within the wider West Pomerania (Pomorze Zachodnie). According to Statistics Poland, it has a population of 88,835 inhabitants while occupying 43.15 square kilometres (16.66 sq mi), thus being one of the most densely populated cities in the country as of December 2021. In addition, the city is the administrative seat of Słupsk County and the rural Gmina Słupsk, despite belonging to neither.\nSłupsk had its origins as a Pomeranian settlement in the early Middle Ages. In 1265, it was given city rights. By the 14th century, the city had become a centre of local administration and trade and a Hanseatic League associate. Between 1368 and 1478, it was a residence of the Dukes of Słupsk, until 1474 vassals of the Kingdom of Poland. According to the peace treaty of 1648, Słupsk became part of Brandenburg-Prussia. In 1815, it was incorporated into the newly formed Prussian Province of Pomerania. After World War II, the city again became part of Poland, and from 1975 to 1998 it was the capital of Słupsk Voivodeship. It is a railway junction located on the main railroad between the Tricity and Szczecin.\nSłupsk contains the oldest preserved industrial structure in Poland and a Renaissance Ducal Castle, which houses the Museum of Middle Pomerania with the largest collection of paintings by popular early-20th-century artist Stanisław Ignacy Witkiewicz. It is also home to the Pomeranian University in Słupsk and notable basketball club Czarni Słupsk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "s upsk",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "upsk",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2773,
+    "attempt": 2751,
+    "place_id": "gn-3194452",
+    "input": {
+      "place": {
+        "place_id": "gn-3194452",
+        "name": "Nova Gorica",
+        "country": "Slovenia",
+        "subdivision": "Urban Municipality of Nova Gorica",
+        "lat": 45.95604,
+        "lon": 13.64837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nova Gorica",
+          "url": "https://en.wikipedia.org/wiki/Nova_Gorica",
+          "text": "Nova Gorica (pronounced [ˈnɔ̀ːʋa ɡɔˈɾìːtsa] ) is a town in western Slovenia, on the border with Italy. It is the seat of the Municipality of Nova Gorica.\nNova Gorica is a planned town, built according to the principles of modernist architecture after 1947, when the Paris Peace Treaty established a new border between Yugoslavia and Italy, leaving nearby Gorizia outside the borders of Yugoslavia and thus cutting off the Soča Valley, the Vipava Valley, the Gorizia Hills and the northwestern Karst Plateau from their traditional regional urban centre. It is the European Capital of Culture in 2025. Since 1948, Nova Gorica has replaced Gorizia as the principal urban center of the Gorizia region (Slovene: Goriška), as the northern part of the Slovenian Littoral has been traditionally called. Since May 2011, Nova Gorica has been joined with Gorizia and Šempeter-Vrtojba in a common trans-border metropolitan zone, administered by a joint administration board.\nFor 2025 Nova Gorica has won the European Capital of Culture title inviting the neighbouring Gorizia to the bid. The cultural project of two cities on the border attracted worldwide attention and was named by the BBC as Europe's first borderless Capital of Culture where two cities from two countries collaborate under one title European Capital of Culture Nova Gorica - Gorizia GO! 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "nova gorica",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gorica",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2774,
+    "attempt": 2752,
+    "place_id": "gn-4846834",
+    "input": {
+      "place": {
+        "place_id": "gn-4846834",
+        "name": "Ames",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 42.03471,
+        "lon": -93.61994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ames, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Ames,_Iowa",
+          "text": "Ames () is a city in Story County, Iowa, United States, located approximately 30 miles (48 km) north of Des Moines in central Iowa. It is the home of Iowa State University (ISU). According to the 2020 census, Ames had a population of 66,427, making it the state's ninth-most populous city. Iowa State University was home to 30,177 students as of fall 2023, which make up approximately one half of the city's population.\nA United States Department of Energy national laboratory, Ames National Laboratory, is located on the ISU campus. Ames also hosts United States Department of Agriculture (USDA) sites: the largest federal animal disease center in the United States, the USDA Agricultural Research Service's National Animal Disease Center (NADC), as well as one of two national USDA sites for the Animal and Plant Health Inspection Service (APHIS), which comprises the National Veterinary Services Laboratory and the Center for Veterinary Biologics. Ames also hosts the headquarters of the Iowa Department of Transportation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "ames",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2775,
+    "attempt": 2753,
+    "place_id": "gn-7303020",
+    "input": {
+      "place": {
+        "place_id": "gn-7303020",
+        "name": "Wittenberg",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 51.8661,
+        "lon": 12.64973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wittenberg",
+          "url": "https://en.wikipedia.org/wiki/Wittenberg",
+          "text": "Wittenberg, officially Lutherstadt Wittenberg, is the fourth-largest town in the state of Saxony-Anhalt, Germany. It is situated on the River Elbe, 60 kilometers (37 mi) north of Leipzig and 90 kilometers (56 mi) south-west of Berlin. It has a population of 46,008 (2018).\nWittenberg's honorific title Lutherstadt stems from its close connections with the theologian Martin Luther and the Reformation, usually taken to have begun in the town, marking the birth of Protestantism. Several of Wittenberg's buildings are associated with these historical and religious events, including a preserved part of the Augustinian monastery in which Luther lived, first as a celibate monk and later as property owner with his later wife Katharina von Bora and family. Wittenberg was also the seat of the prince Elector of Saxony, a dignity held by the dukes of the Duchy of Saxe-Wittenberg, making it one of the most powerful cities in the Holy Roman Empire. Following the Congress of Vienna the town was transferred to the Kingdom of Prussia. Largely spared destruction during the Second World War, it later became part of East Germany.\nToday, Wittenberg is an industrial centre and tourist destination, best known for its intact historic center and various memorial sites dedicated to Luther and his collaborator, fellow theologian Philip Melanchthon. The buildings associated with those two figures were added to the UNESCO World Heritage list in 1996, along with other sites in Eisleben, because of their religious significance and testimony to one of the most influential movements of medieval Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "wittenberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2776,
+    "attempt": 2754,
+    "place_id": "gn-932035",
+    "input": {
+      "place": {
+        "place_id": "gn-932035",
+        "name": "Teyateyaneng",
+        "country": "Lesotho",
+        "subdivision": "Berea",
+        "lat": -29.14719,
+        "lon": 27.74895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teyateyaneng",
+          "url": "https://en.wikipedia.org/wiki/Teyateyaneng",
+          "text": "Teyateyaneng is a town located in the district of Berea in Lesotho. Usually abbreviated to T.Y., Teyateyaneng takes its name from the two twin rivers which run on the north (Tebe-tebe River) and the South (Teja-tejana River). Both rivers lead to the Mohokare, or the Caledon River which forms the western boundary with South Africa. They are both named for their vast quantities of sand which means rapid dipping of feet as one crosses them, leading to both names which may well suggest that this is a 'place of quick sands'. Teyateyaneng's name therefore comes from the southern Teja-tejana River, but the name later changed to Teyateyaneng, perhaps due to British influences as the country became a Protectorate in the late 1800s.\nThe town is situated approximately 400 km south of Johannesburg, 184 km east of Bloemfontein, and 517 km west of Durban, all major metros in the neighbouring South Africa.  Teyateyaneng is also the camptown for the district of Berea. In 2005 it had a population of 75,115."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "teyateyaneng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2777,
+    "attempt": 2755,
+    "place_id": "gn-1818266",
+    "input": {
+      "place": {
+        "place_id": "gn-1818266",
+        "name": "Yau Tong",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Kwun Tong District",
+        "lat": 22.29569,
+        "lon": 114.23599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yau Tong",
+          "url": "https://en.wikipedia.org/wiki/Yau_Tong",
+          "text": "Yau Tong (Chinese: 油塘; Jyutping: jau4 tong4; pinyin: Yóutáng) is an area of Hong Kong, located in the southeastern end of Kowloon, between Lei Yue Mun and Lam Tin, at the east shore of Victoria Harbour, west of Tseung Kwan O. Administratively, it is part of Kwun Tong District, the most densely populated district in Hong Kong.\nThe northern part of Yau Tong is mainly residential, consisting of public housing, while the sea-facing location in the south is mainly used for industrial development. The southern area has been planned by the government as a private residential area, but there are still sporadic industrial buildings.\nYau Tong is served by the MTR station Yau Tong station. This station is on the eastern end of the Kwun Tong line and the Tseung Kwan O line, and therefore serves as an interchange point for travelling to and from Kowloon and Hong Kong Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "yau tong",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "yau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tong",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2778,
+    "attempt": 2756,
+    "place_id": "gn-2510693",
+    "input": {
+      "place": {
+        "place_id": "gn-2510693",
+        "name": "Talavera de la Reina",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.96348,
+        "lon": -4.83076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Talavera de la Reina",
+          "url": "https://en.wikipedia.org/wiki/Talavera_de_la_Reina",
+          "text": "Talavera de la Reina (Spanish pronunciation: [talaˈβeɾa ðe la ˈrejna]) is a city and municipality of Spain, part of the autonomous community of Castile–La Mancha. Its population of 83,303 makes it the second most populated municipality of the province of Toledo and the fourth largest in the region.\nAlthough the city straddles both banks of the Tagus, a few kilometres downstream from the junction of the former with the Alberche, most of the urbanisation concentrates on the right (northern) bank. There are two islands in the centre of the city called Isla Grande and Chamelo Island. Three bridges cross the Tagus in Talavera.\nWhile there are pre-Roman archaeological materials in the surroundings associated to the Vettones and the culture of verracos, the urban settlement is dated after Roman subjugation, with the development of a city identified with Caesarobriga by the gathering of indigenous peoples removed from their hilltop settlements (castros).\nThe city is well known for its pottery craft. The Talavera de la Reina pottery was declared intangible cultural heritage by UNESCO in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "talavera de la reina",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "talavera",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "reina",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2779,
+    "attempt": 2757,
+    "place_id": "gn-2525764",
+    "input": {
+      "place": {
+        "place_id": "gn-2525764",
+        "name": "Agrigento",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.31065,
+        "lon": 13.57661
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agrigento",
+          "url": "https://en.wikipedia.org/wiki/Agrigento",
+          "text": "Agrigento (Italian: [aɡriˈdʒɛnto] ; Sicilian: Girgenti [dʒɪɾˈdʒɛndɪ] or Giurgenti [dʒʊɾˈdʒɛndɪ]) is a city on the southern coast of the autonomous island region of Sicily in Italy, capital of the province of Agrigento. As of 2025, with a population of 55,227, it is also the largest city in the province, 10th-largest in Sicily and 115th-largest in Italy.\nFounded around 582 BC by Greek colonists from Gela, Agrigento, then known as Akragas, was one of the leading cities during the golden age of Ancient Greece. The city flourished under Theron's leadership in the 5th century BC, marked by ambitious public works and the construction of renowned temples.\nDespite periods of dormancy during the Punic Wars, Agrigento emerged as one of Sicily's largest cities in the Republican era. During the Principate, Agrigento's strategic port and diverse economic ventures, including sulfur mining, trade and agriculture, sustained its importance throughout the high and late Empire. Economic prosperity persisted from the 3rd to the 4th centuries AD, but excavations indicate a decline in activity after the 7th century.\nAgrigento is also the birthplace of several notable personalities, including Empedocles (5th century BC), the Ancient Greek pre-Socratic philosopher, who was a citizen of ancient Akragas, and Luigi Pirandello (1867–1936), dramatist and recipient of the Nobel Prize in Literature, who was born at contrada u Càvusu in Agrigento.\nParts of Agrigento were designated as a UNESCO World Heritage Site Archaeological Area of Agrigento in 1997, and the city was named Italian capital of culture for 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "agrigento",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2780,
+    "attempt": 2758,
+    "place_id": "gn-2835481",
+    "input": {
+      "place": {
+        "place_id": "gn-2835481",
+        "name": "Schwäbisch Hall",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.11127,
+        "lon": 9.73908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schwäbisch Hall",
+          "url": "https://en.wikipedia.org/wiki/Schwäbisch_Hall",
+          "text": "Schwäbisch Hall (German pronunciation: [ˌʃvɛːbɪʃ ˈhal] ; 'Swabian Hall'; from 1802 until 1934 and colloquially: Hall) is a city in the German state of Baden-Württemberg located in the valley of the Kocher river, the longest tributary (together with its headwater Lein) of the Neckar river. The closest larger city is Heilbronn, and Schwäbisch Hall lies north-east of the state capital of Stuttgart. It is the seat of the district (Landkreis) of Schwäbisch Hall.\nUnlike its name might suggest, Schwäbisch Hall lies in the region of Heilbronn-Franconia, the East Franconian-speaking northeasternmost part of Baden-Württemberg, which is culturally and linguistically more closely related to the adjoining region of Franconia in neighbouring Bavaria than to the Alemannic-speaking regions of Württemberg, Baden, Switzerland, Bavarian Swabia, Vorarlberg, Alsace and Liechtenstein.\nThe city's main landmarks are the market square with St Michael's Church (St. Michaelskirche), Comburg Castle (a former Benedictine monastery) with St Nicholas' Church (St. Nikolaus und St. Maria), and the Hallian-Franconian Museum (Hällisch-Fränkisches Museum), dedicated to the art and history of Schwäbisch Hall and surrounding Heilbronn-Franconia.\nSchwäbisch Hall was a Free Imperial City within the Holy Roman Empire for five centuries until it was annexed by Württemberg in 1802."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "schwabisch hall",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "schwabisch",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hall",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2781,
+    "attempt": 2759,
+    "place_id": "gn-2861982",
+    "input": {
+      "place": {
+        "place_id": "gn-2861982",
+        "name": "Nordhausen",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 51.5018,
+        "lon": 10.7957
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nordhausen, Thuringia",
+          "url": "https://en.wikipedia.org/wiki/Nordhausen,_Thuringia",
+          "text": "Nordhausen (German pronunciation: [ˈnɔʁtˌhaʊzn̩] ) is a city in Thuringia, Germany. It is the capital of the Nordhausen district and the urban centre of northern Thuringia and the southern Harz region; its population is 42,000. Nordhausen is located approximately 60 km (37 miles) north of Erfurt, 80 km (50 miles) west of Halle, 85 km (53 miles) south of Braunschweig and 60 km (37 miles) east of Göttingen.\nNordhausen was first mentioned in records in the year 927 and became one of the most important cities in central Germany during the later Middle Ages. The city is situated on the Zorge river, a tributary of the Helme within the fertile region of Goldene Aue (golden floodplain) at the southern edge of the Harz mountains. In the early 13th century, it became a free imperial city, so that it was an independent and republican self-ruled member of the Holy Roman Empire. Due to its long-distance trade, Nordhausen was prosperous and influential, with a population of 8,000 around 1500. It was the third-largest city in Thuringia after Erfurt, today's capital, and Mühlhausen, the other free imperial city in the land.\nNordhausen was once known for its tobacco industry and is still known for its distilled spirit, Nordhäuser Doppelkorn. Industrialization accompanied railway construction that linked the cities to major markets in the mid-19th century. In the late 19th century, narrow-gauge railways were constructed in this region through the Harz mountains. In December 1898 the Nordhausen-Wernigerode Railway Company (Nordhausen-Wernigeroder Eisenbahn-Gesellschaft) or NWE added a line, with the full network operating by 1899. The Harz Narrow Gauge Railways are maintained today by local authorities and frequented primarily by tourists.\nIn the early 20th century, this became a centre of the engineering and arms industries. During World War II, the Nazi German government established and operated the nearby KZ Mittelbau-Dora concentration camp, where 60,000 forced labourers had to work in the arms industry. They were prisoners of war and persons from occupied territories. Some 20,000 persons died because of the inhumane conditions. In April 1945, most of the city was destroyed by Royal Air Force bombings, resulting in 8,800 casualties (more than 20% of the population). Only 25% of the historic inner city survived.  Nordhausen suffered the most damage during the war of any city in Thuringia. A week later the United States troops occupied the city, followed weeks later by the Soviet Red Army. The city was within the Soviet zone of occupation, and later the territory was known as East Germany. Hundreds of German scientists and their families from Nordhausen were among thousands deported to the Soviet Union after the war to work on advanced rocket and other arms engineering projects.\nNordhausen is the birthplace of the mathematician Oswald Teichmüller, known for his groundbreaking work on the Teichmüller spaces – which were named after him. It is the site of the Nordhausen University of Applied Sciences (Fachhochschule Nordhausen), founded in 1997 after the reunification of Germany. The university has 2,500 students."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 497
+    },
+    "banned_terms": [
+      {
+        "term": "nordhausen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2782,
+    "attempt": 2760,
+    "place_id": "gn-295721",
+    "input": {
+      "place": {
+        "place_id": "gn-295721",
+        "name": "Acre",
+        "country": "Israel",
+        "subdivision": "Northern District",
+        "lat": 32.92814,
+        "lon": 35.07647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acre, Israel",
+          "url": "https://en.wikipedia.org/wiki/Acre,_Israel",
+          "text": "Acre ( AH-kər, AY-kər), known in Hebrew as Akko (Hebrew: עַכּוֹ, ʻAkkō, IPA: [ˈako]) and in Arabic as Akka (Arabic: عكّا, ʻAkkā, IPA: [ˈʕak.ka]), is a city in the coastal plain region of the Northern District of Israel.\nThe city occupies a strategic location, sitting in a natural harbour at the extremity of Haifa Bay on the coast of the Mediterranean's Levantine Sea. Aside from coastal trading, it was an important waypoint on the region's coastal road and the road cutting inland along the Jezreel Valley. The first settlement during the Early Bronze Age was abandoned after a few centuries but a large town was established during the Middle Bronze Age. Continuously inhabited since then, it is among the oldest continuously inhabited settlements on Earth. It has, however, been subject to conquest and destruction several times and survived as little more than a large village for centuries at a time.\nAcre was a hugely important city during the Crusades as a maritime foothold on the Mediterranean coast of the southern Levant and was the site of several battles, including the 1189–1191 Siege of Acre and 1291 Siege of Acre. It was the last stronghold of the Crusaders in the Holy Land prior to that final battle in 1291. At the end of Crusader rule, the city was destroyed by the Mamluks, thereafter existing as a modest fishing village until the rule of Daher al-Umar in the 18th century.\nIn 1947, Acre formed part of Mandatory Palestine and had a population of 13,665, of whom 10,930 were Muslim and 2,490 were Christian, and 105 were Jewish. As a result of the United Nations Partition Plan for Palestine and subsequent 1948 Arab–Israeli war, the population of the town dramatically changed as its Palestinian-Arab population was expelled or forced to flee; it was then resettled by Jewish immigrants. In present-day Israel, the population was 52,885 in 2024, made up of Jews, Muslims, Christians, Druze, and Baháʼís. In particular, Acre is the holiest city of the Baháʼí Faith in Israel and receives many pilgrims of that faith every year. Acre is one of Israel's mixed cities; 32% of the city's population is Arab. The Old City of Acre is a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 370
+    },
+    "banned_terms": [
+      {
+        "term": "acre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
