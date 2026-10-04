@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 6407,
+    "attempt": 6361,
+    "place_id": "gn-2647383",
+    "input": {
+      "place": {
+        "place_id": "gn-2647383",
+        "name": "Harwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.94194,
+        "lon": 1.28437
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harwich",
+          "url": "https://en.wikipedia.org/wiki/Harwich",
+          "text": "Harwich ( ) is a port town and civil parish in the Tendring district of Essex, England. It is one of the Haven ports on the North Sea coast. Nearby places include Felixstowe to the north-east, Ipswich to the north-west, Colchester to the south-west and Clacton-on-Sea to the south. It is the northernmost coastal town in Essex.\nIts position on the estuaries of the Stour and Orwell rivers, with its usefulness to mariners as one of the safest ports between the Thames and the Humber, led to a long period of civil and military maritime significance. The town became a naval base in 1657 and was heavily fortified, with Harwich Redoubt, Beacon Hill Battery, and Bath Side Battery.\nThe Mayflower, which carried English Puritans to North America, was registered with Harwich as its home port, and Harwich is the presumed birthplace of Mayflower captain Christopher Jones.\nThe historic core of the town stands at the end of a peninsula. The built up area now extends westwards from the peninsula to include Dovercourt, which has been administered as part of Harwich since at least the 17th century. There are few retail facilities in the historic core of Harwich today, and Dovercourt now has the main retail town centre for the built up area. The main port facilities of Harwich International Port are now at Parkeston, about 1 mile (1.6 km) upstream on the Stour from the old town's quays.\nAt the 2021 census, the population of the parish of Harwich (which includes Dovercourt) was 18,794, and the population of the built up area as defined by the Office for National Statistics (which extends beyond Harwich parish to also include parts of the neighbouring parishes of Little Oakley and Ramsey and Parkeston) was 20,215."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 292
+    },
+    "banned_terms": [
+      {
+        "term": "harwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6408,
+    "attempt": 6362,
+    "place_id": "gn-2647468",
+    "input": {
+      "place": {
+        "place_id": "gn-2647468",
+        "name": "Harlesden",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.53811,
+        "lon": -0.2502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harlesden",
+          "url": "https://en.wikipedia.org/wiki/Harlesden",
+          "text": "Harlesden  is a district in the London Borough of Brent, situated just north of Old Oak Common and the Grand Union Canal.\nHarlesden was historically in the Municipal Borough of Willesden before the creation of Brent; it lies within Willesden's postal district of NW10. Harlesden has been praised for its vibrant Caribbean culture and unofficially named London's reggae capital for its contributions to the musical genre. The town centre contains a large number of multicultural independent businesses, while industry exists by the canal, most notably a McVitie's biscuit factory that has been operating since 1902. The population includes people of Afro-Caribbean heritage, as well as Brazilian, Somali and smaller Latin American, and East African groups within the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "harlesden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6409,
+    "attempt": 6363,
+    "place_id": "gn-2648683",
+    "input": {
+      "place": {
+        "place_id": "gn-2648683",
+        "name": "Giffnock",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.80373,
+        "lon": -4.29488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Giffnock",
+          "url": "https://en.wikipedia.org/wiki/Giffnock",
+          "text": "Giffnock  (; Scots: Giffnock; Scottish Gaelic: Giofnag, pronounced [ˈkʲifnak]) is a town and the administrative centre of East Renfrewshire in the Central Lowlands of Scotland.\nIt lies 3.7 miles (6.0 km) east of Barrhead, 5.6 miles (9.0 km) east-southeast of Paisley and 5.3 miles (8.5 km) northwest of East Kilbride, at the southwest of the Greater Glasgow conurbation.\nGiffnock has frequently been named amongst the least deprived areas in Scotland. It had been first place but that title went to Stockbridge, Edinburgh in 2020.  Together with adjoining Newton Mearns and Clarkston it forms part of one of Glasgow's wealthiest outer suburban areas.\nGiffnock is mentioned in documents as early as the seventeenth century as a scattered agricultural settlement. In the late eighteenth century, Archibald Montgomerie, the Earl of Eglinton, was forced to partition the land into a number of smaller properties.\nThe urbanisation and development of Giffnock began in the mid to late nineteenth century with the construction of several sandstone quarries, and this prompted the development of the first railway link with nearby Glasgow. Large-scale quarrying continued in Giffnock for almost a century. However, the quarrying ceased by the 1920s, and other uses were found for the quarries. An additional railway service began at the start of the twentieth century, closely followed by the arrival of Glasgow Corporation Tramways. Giffnock's relative closeness to Glasgow coupled with the local industry and good transports links helped it to develop into a suburban town, as many wealthy merchants chose to construct villas in its smog-free environs and commute daily to the city. \nAlthough heavy industry died out in the area during the early twentieth century, as part of Scotland's densely populated Central Belt, Giffnock has continued to grow as a dormitory town, supported by its position within the Greater Glasgow area, from roughly 1,425 residents in the early twentieth century to 16,178 in 2001. Expansion continues due to several new housing developments; however, much of the land is now urbanised or designated parkland, leaving little room for further expansion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "giffnock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6410,
+    "attempt": 6364,
+    "place_id": "gn-2650729",
+    "input": {
+      "place": {
+        "place_id": "gn-2650729",
+        "name": "Dungannon",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.50344,
+        "lon": -6.76723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dungannon",
+          "url": "https://en.wikipedia.org/wiki/Dungannon",
+          "text": "Dungannon (from Irish Dún Geanainn, meaning 'Geanann's fort', pronounced [d̪ˠuːn̪ˠ ˈɟan̪ˠən̪ˠ]) is a town in County Tyrone, Northern Ireland. It is the second-largest town in the historic county (after Omagh) and had a population of 16,282 at the 2021 census. Since 2015, the town shares local government with Magherafelt and Cookstown in the Mid-Ulster District Council.\nFor centuries, Dungannon was the chief seat of the O'Neill dynasty of Tír Eoghain, who dominated most of Ulster and built a castle on the hill. After the O'Neills' defeat in the Nine Years' War, the English founded a plantation town on the site. A linen centre in the 19th century, it attracted an extensive food processing industry in the late 20th. Moy Park, a leading poultry producer, is today the town's largest employer. As a result of Moy Park and other processors sourcing immigrant labour, Dungannon currently has the highest percentage of residents born outside of the British Isles of any town in Northern Ireland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "dungannon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6411,
+    "attempt": 6365,
+    "place_id": "gn-2652544",
+    "input": {
+      "place": {
+        "place_id": "gn-2652544",
+        "name": "Colne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.85713,
+        "lon": -2.16851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colne",
+          "url": "https://en.wikipedia.org/wiki/Colne",
+          "text": "Colne () is a market town and civil parish in the Borough of Pendle in Lancashire, England. The town is 3 miles (5 km) northeast of Nelson, 6 miles (10 km) northeast of Burnley and 25 mi (40 km) east of Preston.\nThe town should not be confused with the unrelated Colne Valley around the River Colne near Huddersfield in West Yorkshire.\nColne is close to the southern entrance to the Aire Gap, the lowest crossing of the Pennine watershed. The M65 terminates west of the town and from here two main roads take traffic onwards towards the Yorkshire towns of Skipton (A56) and Keighley (A6068). Colne railway station is the terminus of the East Lancashire railway line.\nColne adjoins the Pendle parishes of Foulridge, Laneshaw Bridge, Trawden Forest, Nelson, Barrowford and Blacko."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "colne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6412,
+    "attempt": 6366,
+    "place_id": "gn-2656039",
+    "input": {
+      "place": {
+        "place_id": "gn-2656039",
+        "name": "Bedlington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.13061,
+        "lon": -1.59319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bedlington",
+          "url": "https://en.wikipedia.org/wiki/Bedlington",
+          "text": "Bedlington is a town in the civil parish of West Bedlington, in Northumberland, England, with a population of 18,470 measured at the 2011 Census.\nBedlington is an ancient market town, with a rich history of industry and innovative residents. Located roughly 10 miles (16 kilometres) northeast of Newcastle and Newcastle Airport, Bedlington is roughly 10 minutes from the A1 road, in southeast Northumberland. Other nearby places include Morpeth to the northwest, Ashington to the northeast, Blyth to the east and Cramlington to the south. In 1961 the parish had a population of 29,403.\nThe town has evidence of habitation from the Bronze Age, with a burial site being located just behind what is now the main Front Street. A cluster of Bronze Age cist burials were discovered during excavation of the site in the 1930s. St Cuthbert's Church is the longest standing building in the town, with parts of this dating back to the 11th century and recently celebrated being 1000 years old. The church is in the heart of the original sandstone conservation town centre. Most of the medieval town has disappeared with many of the historic buildings and factories being demolished over the years, but there are still nods to medieval street layouts. The main Front Street is currently made up of Georgian and Victorian buildings.\nAt key points in history, before and during the Industrial Revolution, goods made in Bedlington made it to all corners of the globe through the distribution of nails and trains that were made in Bedlington from some 250 years ago. With large industry first being attracted to Bedlington over 250 years ago, in the form of its iron works, mining became an intrinsic part of Bedlington from 1838. The coal industry remained at the heart of the town until the closure of the mines in the 1980s.  Today Bedlington's Front Street is host to a number of well-established eating and drinking venues, and there is an emergence of new establishments and retailers entering the town.\nThe parish of Bedlington constituted the historic exclave of County Durham called Bedlingtonshire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 346
+    },
+    "banned_terms": [
+      {
+        "term": "bedlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6413,
+    "attempt": 6367,
+    "place_id": "gn-2700791",
+    "input": {
+      "place": {
+        "place_id": "gn-2700791",
+        "name": "Kista",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.40316,
+        "lon": 17.94479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kista",
+          "url": "https://en.wikipedia.org/wiki/Kista",
+          "text": "Kista (Swedish pronunciation: [ˈɕǐːsta]) is a district in the borough of Rinkeby-Kista, Stockholm, Sweden. It has a strategic position located in between Sweden's main airport, the Stockholm-Arlanda International Airport and central Stockholm, and alongside the main national highway E4 economic artery. \nKista comprises residential and commercial areas, the latter in the highly technological telecommunications and information technology industry. There are large research efforts in this entire area, which therefore is dubbed Kista Science City. It is the research park of KTH Royal Institute of Technology.\nKista Science City is the location where a large portion of the research and development of the world's 4G LTE mobile telephony infrastructure is being developed, to a European ETSI standard used worldwide. A majority is done at Ericsson, with 100,000 employees worldwide, but with its research and worldwide headquarters in the Kista Science City.\nKista was named after an old farm \"Kista Gård\", still located in the area. The construction of the modern parts were started in the 1970s. Most of the streets in Kista are named after towns and places in Denmark, Iceland, Greenland, and the Faroe Islands. Before the opening of the Mall of Scandinavia, Kista Galleria was the biggest shopping center in the Stockholm region. \nBecause of its ICT industries, it became in the 1980s referred to as \"Chipsta\" and, after Sweden joined the EU in 1995, also as Europe's \"Silicon Valley\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "kista",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6414,
+    "attempt": 6368,
+    "place_id": "gn-2704613",
+    "input": {
+      "place": {
+        "place_id": "gn-2704613",
+        "name": "Hudiksvall",
+        "country": "Sweden",
+        "subdivision": "Gävleborg",
+        "lat": 61.72744,
+        "lon": 17.10558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hudiksvall",
+          "url": "https://en.wikipedia.org/wiki/Hudiksvall",
+          "text": "Hudiksvall (Swedish pronunciation: [hɵdɪksˈvalː]) is a city and the seat of Hudiksvall Municipality, in Hälsingland, Gävleborg County, Sweden with 16,792 inhabitants as of 2024. Hudiksvall is also known as Glada Hudik (English: Happy Hudik), a term that originated in the 19th century as word spread of its friendly hospitality and its lively social life. The city is located along the E4, on the east coast of Sweden deep inside the bay Hudiksvallsfjärden, about 80 km south of Sundsvall and about 130 km north of Gävle. Hudiksvall is one of Sweden's 80 largest urban area and also the largest urban area in Hälsingland. Around Hudiksvall within the municipality lay the communities of Delsbo, Iggesund, Enånger,  Njutånger, Näsviken and Sörforsa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "hudiksvall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6415,
+    "attempt": 6369,
+    "place_id": "gn-2714401",
+    "input": {
+      "place": {
+        "place_id": "gn-2714401",
+        "name": "Flen",
+        "country": "Sweden",
+        "subdivision": "Södermanland",
+        "lat": 59.05834,
+        "lon": 16.58781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flen",
+          "url": "https://en.wikipedia.org/wiki/Flen",
+          "text": "Flen (Swedish pronunciation: [fleːn]) is a locality and the seat of Flen Municipality, Södermanland County, Sweden with 6,229 inhabitants in 2010.\nFlen evolved as a railway junction and got the title of a city in 1949. Since 1971 it is the seat of the much larger Flen Municipality.\nOther things which made Flen famous is \"Violen från Flen\", a song written by Ulf Peder Olrog in the 1940s. The town also plays an important role in \"Du ringde från Flen\", a 1992 dansband song by Grönwalls. The town is also mentioned in the Kent song \"Flen/Paris\" on the 2005 EP The hjärta & smärta EP and \"Ensam lång väg hem\" on the 2010 album En plats i solen. The famous Equestrians Carl Green and Sigurd Svensson was born here.\nFlen is known as the 'city of ice cream' because it is the location of GB Glace, the biggest ice cream company in Sweden.\nFlen is also famous for having the world's northernmost vineyard, in Blacksta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "flen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6416,
+    "attempt": 6370,
+    "place_id": "gn-2953460",
+    "input": {
+      "place": {
+        "place_id": "gn-2953460",
+        "name": "Bad Feilnbach",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.77331,
+        "lon": 12.00973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Feilnbach",
+          "url": "https://en.wikipedia.org/wiki/Bad_Feilnbach",
+          "text": "Bad Feilnbach (German pronunciation: [baːt ˈfaɪlnbax]) is a municipality in the Upper Bavarian district of Rosenheim at the foot of the Wendelstein in Germany. As a famous 'Moorheilbad' (moor healing spa) the municipality was awarded in 1973 the title \"Bad\". Since the 19th century the peat deposits were the basis for a continued expansion of the spa and health facilities. The recognized healing success of \"black gold\" on a variety of diseases were the basis for the development of a well-known spa and tourist community. Due to its wooded surroundings and the mild climate Feilnbach is called the \"Bavarian Meran\". The entire municipality is recognized as a healing spa resort except for parts of the former municipality Dettendorf."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "bad feilnbach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "feilnbach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6417,
+    "attempt": 6371,
+    "place_id": "gn-2961911",
+    "input": {
+      "place": {
+        "place_id": "gn-2961911",
+        "name": "Rathfarnham",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.30056,
+        "lon": -6.28278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rathfarnham",
+          "url": "https://en.wikipedia.org/wiki/Rathfarnham",
+          "text": "Rathfarnham (Irish: Ráth Fearnáin, meaning 'Fearnán's ringfort') is a southside suburb of Dublin, Ireland. It is south of Terenure, east of Templeogue, west of Churchtown, and is in the postal districts of Dublin 14 and Dublin 16. It is between the local government areas of Dún Laoghaire–Rathdown and South Dublin.\nLocated within the historical baronies of Rathdown and Uppercross, Rathfarnham village originally developed around a fortification overlooking a ford on the River Dodder. From the medieval period, Rathfarnham was on the perimeter of the Pale (the area of Anglo-Norman influence in Ireland, centred on Dublin), and a number of defensive structures were built in the area. Rathfarnham Castle, a fortified house, was built in the late 16th century. Developed around these structures, by the 19th century there were a number of mills operating in the area, and Rathfarnham was still somewhat rural by the early 20th century. During the 20th century, with the expansion of metropolitan Dublin, Rathfarnham became a largely residential suburban area.\nThe population of all electoral divisions labelled as Rathfarnham was 23,276 as of the 2022 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "rathfarnham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6418,
+    "attempt": 6372,
+    "place_id": "gn-3101204",
+    "input": {
+      "place": {
+        "place_id": "gn-3101204",
+        "name": "Czaplinek",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.55775,
+        "lon": 16.23333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Czaplinek",
+          "url": "https://en.wikipedia.org/wiki/Czaplinek",
+          "text": "Czaplinek [t͡ʂaˈplʲinɛk] (German: Tempelburg; Kashubian: Czôplënkò) is a town in Drawsko County, West Pomeranian Voivodeship, Poland, with 7,012 inhabitants as of December 2021. It is situated between Drawsko and Czaplino lakes.\nThe former name of Tempelburg refers to the Templar Knights, who settled nearby at the orders of King Przemysł II. Until 1668, Czaplinek was a royal town of Poland. Afterwards it was part of Brandenburg, Prussia and Germany, until the end of World War II. It is one of the northernmost towns of the historical region of Greater Poland.\nCzaplinek is a local tourist destination, which has the second deepest lake in Poland and a large marina. The main market square features events, exhibitions and annual festivals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "czaplinek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6419,
+    "attempt": 6373,
+    "place_id": "gn-3101660",
+    "input": {
+      "place": {
+        "place_id": "gn-3101660",
+        "name": "Chojnów",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.27373,
+        "lon": 15.93661
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chojnów",
+          "url": "https://en.wikipedia.org/wiki/Chojnów",
+          "text": "Chojnów [ˈxɔjnuf]  (German: Haynau) is a small town in Legnica County, Lower Silesian Voivodeship, in south-western Poland. It is located on the Skora river, a tributary of the Kaczawa at an average altitude of 170 m (560 ft) above sea level. Chojnów is the administrative seat of the rural gmina called Gmina Chojnów, although the town is not part of its territory and forms a separate urban gmina. As of December 2021, the town has 13,002 inhabitants.\nChojnów is located 18 km (11 mi) west of Legnica, 26 km (16 mi) east from Bolesławiec and 18 km (11 mi) north of Złotoryja, 5 km (3.1 mi) from the A4 motorway. It has railroad connections to Bolesławiec and Legnica."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "chojnow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6420,
+    "attempt": 6374,
+    "place_id": "gn-3181284",
+    "input": {
+      "place": {
+        "place_id": "gn-3181284",
+        "name": "Caerano di San Marco",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.7816,
+        "lon": 11.99851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caerano di San Marco",
+          "url": "https://en.wikipedia.org/wiki/Caerano_di_San_Marco",
+          "text": "Caerano di San Marco (Venetian: Carean de Sanmarco), sometimes simply known as Caerano, is a town with 7,813 inhabitants in the province of Treviso.\nThe territory is largely flat, with altitudes ranging from 91 m a.s.l. at 144 m. The landscape is characterized by the presence of a small relief, a natural continuation of Montello (known as Montelletto and locally as the Rive di Caerano), located north-east of the municipality. The area is naturally poor in waterways, but the water supply has been ensured since ancient times by a system of artificial canals deriving from the Piave. This is in particular the Canale di Caerano, better known as Brentella (Venetian: Brentèa), a branch of the Brentella di Pederobba.\nCaerano San Marco borders the following municipalities: Altivole, Cornuda, Maser, Montebelluna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "caerano di san marco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caerano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6421,
+    "attempt": 6375,
+    "place_id": "gn-3435789",
+    "input": {
+      "place": {
+        "place_id": "gn-3435789",
+        "name": "Campo Grande",
+        "country": "Argentina",
+        "subdivision": "Misiones",
+        "lat": -27.2077,
+        "lon": -54.97977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campo Grande, Misiones",
+          "url": "https://en.wikipedia.org/wiki/Campo_Grande,_Misiones",
+          "text": "Campo Grande (Misiones) is an Argentine locality in the province of Misiones, the head of the Cainguás department. It borders the municipality of Aristóbulo del Valle, of the same department, and the municipalities of Ruiz de Montoya in the Libertador General San Martín department, Jardín América in the San Ignacio department, Campo Viera and Campo Ramón in the Oberá department, and those of 25 de Mayo and Alba Posse in the 25 de Mayo department.\nIn the municipality of Campo Grande, there is also the urban nucleus of Primero de Mayo, and another important place is Kilometer 17.\nDue to the significant celebrations held on Teacher's Day, Campo Grande is known as the Provincial Capital of the Teacher."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "campo grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6422,
+    "attempt": 6376,
+    "place_id": "gn-3515343",
+    "input": {
+      "place": {
+        "place_id": "gn-3515343",
+        "name": "Tlayacapan",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.95556,
+        "lon": -98.98111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlayacapan",
+          "url": "https://en.wikipedia.org/wiki/Tlayacapan",
+          "text": "Tlayacapan  (Spanish pronunciation: [tlaʝaˈkapan]) is the name of a town and a municipality located in the northeast part of Morelos state in central Mexico. It is located 60 km east from the state capital of Cuernavaca and about 1.5 hours south of Mexico City. It is a rural area, whose way of life has not changed much over the 20th century, with 90% of its population still partially or fully dependent on agriculture. The town has old mansions, houses with red tile roofs and streets paved with stones. Many ravines crisscross the area and are crossed by numerous stone bridges.\nThe main landmark is the former monastery of San Juan Bautista, which towers over all the other structures. It was built beginning the 1530s, along with 26 chapels scattered around the original town as part of the \"spiritual conquest\" of the area. Today, this monastery is part of the Monasteries on the slopes of Popocatépetl, which was made a World Heritage Site in 1994. Culturally, the town is famous for two things: being the origin of the Chinelos dance and the home of the Banda de Tlayacapan band, the most important culturally in the state and nationally recognized.\nTlayacapan was also a popular filming location for many Mexican and American films such as La Valentina, starring María Félix and Eulalio González, and Two Mules for Sister Sara, starring Shirley MacLaine and Clint Eastwood. American rock band The Killers, filmed the music video of their hit song When You Were Young, in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "tlayacapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6423,
+    "attempt": 6377,
+    "place_id": "gn-3628394",
+    "input": {
+      "place": {
+        "place_id": "gn-3628394",
+        "name": "San Fernando de Atabapo",
+        "country": "Venezuela",
+        "subdivision": "Amazonas",
+        "lat": 4.04564,
+        "lon": -67.69934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Fernando de Atabapo",
+          "url": "https://en.wikipedia.org/wiki/San_Fernando_de_Atabapo",
+          "text": "San Fernando de Atabapo is a town in southern Venezuela on the border with Colombia. It was the capital city of the Amazonas state until the early 1900s.  The population in 1997 was approximately 5,000.\nIn the early twentieth century it was ruled for a long time by Tomás Funes, a powerful caudillo who controlled the local rubber industry (derived from indigenous rubber plants) by enslaving the local native populations. His power eventually became great enough to threaten the Venezuelan authorities and he was ultimately executed in the town square in the early 1930s. The town displays a photograph of a United States military aircraft that was shot down and crashed into the Orinoco River around this time. A Venezuelan National Guard unit is stationed here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "san fernando de atabapo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fernando",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "atabapo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6424,
+    "attempt": 6378,
+    "place_id": "gn-3925590",
+    "input": {
+      "place": {
+        "place_id": "gn-3925590",
+        "name": "Yauri",
+        "country": "Peru",
+        "subdivision": "Cuzco Department",
+        "lat": -14.79083,
+        "lon": -71.40986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yauri, Peru",
+          "url": "https://en.wikipedia.org/wiki/Yauri,_Peru",
+          "text": "Yauri, or Espinar, is a town in southern Peru, the capital of Espinar Province in the Cusco Region. It is a city located at an elevation of 3,976 metres above sea level,; its district had a population of 41,587 in the 2025 national census. Average temperatures in the province range between 7.2 and 8.6 °C, and snowfall in the town is occasional.\nNearby is the archaeological site Taqrachullo (also known as “María Fortaleza”), which dates to pre-Inca and Inca periods and has been designated as part of the Cultural Heritage of the Nation. The town serves as an access point to the surrounding areas of the Cusco Department, offering a base for exploring the region’s history and culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "yauri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6425,
+    "attempt": 6379,
+    "place_id": "gn-4343103",
+    "input": {
+      "place": {
+        "place_id": "gn-4343103",
+        "name": "Tallulah",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 32.40848,
+        "lon": -91.18678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tallulah, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/Tallulah,_Louisiana",
+          "text": "Tallulah ( tə-LOO-lə) is a city in and the parish seat of Madison Parish in northeastern Louisiana, United States. As of the 2020 census, the population was 6,286, down from 7,335 in 2010.\nAs this was historically a center of agriculture since the antebellum years, producing cotton and pecans, Tallulah and the parish have long had majority-African American populations. The small city is now nearly 77 percent African American; the surrounding parish is 60 percent black. Mechanization and industrial agriculture have reduced the number of jobs, and many residents have moved since the mid-20th century to larger cities with more opportunities.\nTallulah is the principal city of the Tallulah Micropolitan Statistical Area, which includes all of Madison Parish. The Madison Parish Sheriff's office operates the Steve Hoyle Rehabilitation Center in Tallulah."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "tallulah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6426,
+    "attempt": 6380,
+    "place_id": "gn-4371334",
+    "input": {
+      "place": {
+        "place_id": "gn-4371334",
+        "name": "Thurmont",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.62371,
+        "lon": -77.41082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thurmont, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Thurmont,_Maryland",
+          "text": "Thurmont is a town in Frederick County, Maryland, United States. The population was 6,935 at the 2020 census. The town is located in the northern part of Frederick County (north of Frederick, the county seat), approximately ten miles from the Pennsylvania border, along U.S. Highway 15. It is very close to Cunningham Falls State Park and Catoctin Mountain Park, the latter of which contains the presidential retreat of Camp David. Thurmont is also home to Catoctin Colorfest, an arts and crafts festival that draws in about 125,000 people each autumn.\nIn 2005, Thurmont was designated as a Maryland Main Street Community, and in that year was designated a National Main Street under the National Trust for Historic Preservation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "thurmont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

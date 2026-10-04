@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 6427,
+    "attempt": 6381,
+    "place_id": "gn-4932819",
+    "input": {
+      "place": {
+        "place_id": "gn-4932819",
+        "name": "Charlestown",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.37787,
+        "lon": -71.062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charlestown, Boston",
+          "url": "https://en.wikipedia.org/wiki/Charlestown,_Boston",
+          "text": "Charlestown is a neighborhood in Boston, Massachusetts, United States, and the oldest settlement in modern-day Boston. Also called Mishawum by the Massachusett, it is located on a peninsula north of the Charles River, across from downtown Boston, and also adjoins the Mystic River and Boston Harbor waterways. Charlestown was laid out in 1629 by engineer Thomas Graves, one of its earliest settlers, during the reign of Charles I of England. It was originally a separate town and the first capital of the Massachusetts Bay Colony.\nCharlestown became a city in 1848 and was annexed by Boston on January 5, 1874. With that, it also switched from Middlesex County, to which it had belonged since 1643, to Suffolk County. It has had a substantial Irish-American population since the migration of Irish people during the Great Irish Famine of the 1840s. Since the late 1980s, the neighborhood has changed dramatically because of its proximity to downtown and its colonial architecture. A mix of yuppie and upper-middle-class gentrification has influenced much of the area, as it has in many of Boston's neighborhoods.\nIn the 21st century, Charlestown's diversity has expanded dramatically, along with growing rates of the very poor and very wealthy. Today Charlestown is a largely residential neighborhood, with much housing near the waterfront, overlooking the Boston skyline. Charlestown is home to many historic sites, hospitals and organizations, with access from the Orange Line Sullivan Square or Community College stops or the I-93 expressway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "charlestown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6428,
+    "attempt": 6382,
+    "place_id": "gn-4955539",
+    "input": {
+      "place": {
+        "place_id": "gn-4955539",
+        "name": "Whitinsville",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.11121,
+        "lon": -71.66618
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitinsville, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Whitinsville,_Massachusetts",
+          "text": "Whitinsville is an unincorporated village within the town of Northbridge in Worcester County, Massachusetts, United States. Whitinsville is a census-designated place (CDP) and its population was 6,750 at the 2020 census. Whitinsville is pronounced as if it were spelled \"White-ins-ville.\" It was founded by the Whitin family, after whom it is also named. It is a post office jurisdiction, with a ZIP Code of 01588. It is located on the Mumford River, a tributary of the Blackstone River.\nWhitinsville has been designated as a mill village of national historic significance to America's earliest industrialization, and is one of only four villages selected by the John H. Chaffee Blackstone River Valley National Historic Corridor Commission to receive this designation. Hopedale is the only other Massachusetts mill village to achieve this designation by the corridor commission."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "whitinsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6429,
+    "attempt": 6383,
+    "place_id": "gn-5098878",
+    "input": {
+      "place": {
+        "place_id": "gn-5098878",
+        "name": "Hasbrouck Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.85816,
+        "lon": -74.0807
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hasbrouck Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hasbrouck_Heights,_New_Jersey",
+          "text": "Hasbrouck Heights (English pronunciation: /ˈhæzbɹʊk/  ) is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 12,125, an increase of 283 (+2.4%) from the 2010 census count of 11,842, which in turn reflected an increase of 180 (+1.5%) from the 11,662 counted in the 2000 census. An inner-ring suburb of New York City, Hasbrouck Heights is located approximately 10 miles (16 km) northwest of Midtown Manhattan and 8 miles (13 km) west of Upper Manhattan.\nThe borough was listed as the third-safest place in New Jersey as well as the eighth-safest municipality in the nation according to a 2022 crime statistic compilation from Safewise.com."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "hasbrouck heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hasbrouck",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6430,
+    "attempt": 6384,
+    "place_id": "gn-5143443",
+    "input": {
+      "place": {
+        "place_id": "gn-5143443",
+        "name": "Wawarsing",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.75898,
+        "lon": -74.35738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wawarsing, New York",
+          "url": "https://en.wikipedia.org/wiki/Wawarsing,_New_York",
+          "text": "Wawarsing  is a town in Ulster County, New York, United States. The population was 12,771 at the 2020 census. The name Wawarsing was once believed to mean \"a place where the streams wind\" in the Lenape language, referring to the geography in the hamlet of Wawarsing; specifically, the joining of the Ver Nooy Kill and the Rondout Creek at Port Ben. The name Wawarsing was used by the Lenape to designate the current hamlet and the fields to the north and south of it for at least six miles in both directions. It is the only Lenape name known to refer to an exact location in Ulster County.\nThe town is in the western part of the county. The southern and easternmost portions are on the Shawangunk Ridge. Most of the hilly town is in the Appalachian foothills, while the northernmost part is in the Catskills. It has three state forests (Shawangunk Ridge, VerNooykill, and Witches Hole), as well as most of Minnewaska State Park and Sam's Point Preserve, and portions of the Catskill Preserve and Sundown State Park. US 209 crosses the town, passing through many principal communities: Spring Glen, Laurenkill, Ellenville, Napanoch, the hamlet of Wawarsing, Soccanissing, and Kerhonkson. US 44 begins at a junction with 209 near the east town line. N.Y. Route 52 runs east–west near the southern border. All three roads are part of the Shawangunk Ridge National Scenic Byway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "wawarsing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6431,
+    "attempt": 6385,
+    "place_id": "gn-5223505",
+    "input": {
+      "place": {
+        "place_id": "gn-5223505",
+        "name": "Narragansett",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.4501,
+        "lon": -71.4495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narragansett, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Narragansett,_Rhode_Island",
+          "text": "Narragansett is a town in Washington County, Rhode Island, United States. The population was 14,532 at the 2020 census. However, during the summer months the town's population more than doubles to near 34,000. The town of Narragansett occupies a narrow strip of land running along the eastern bank of the Pettaquamscutt River (aka Narrow River) to the shore of Narragansett Bay on the Atlantic Ocean. It was separated from South Kingstown in 1888 and incorporated as a town in 1901. With several ocean beaches and a walkable strip along the ocean front, Narragansett is a resort area in the summer season as well as a popular East Coast surfing spot due to frequent southerly swells from Atlantic Ocean. It is named after the Narrangansett nation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "narragansett",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6432,
+    "attempt": 6386,
+    "place_id": "gn-5923118",
+    "input": {
+      "place": {
+        "place_id": "gn-5923118",
+        "name": "Clarenville",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 48.1666,
+        "lon": -53.96482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clarenville",
+          "url": "https://en.wikipedia.org/wiki/Clarenville",
+          "text": "Clarenville is a town on the east coast of Newfoundland in the province of Newfoundland and Labrador, Canada. Clarenville was incorporated in 1951. It is located in the Shoal Harbour valley, fronting an arm of the Atlantic Ocean called Random Sound.\nThe town grew in importance after it became a junction on the Newfoundland Railway, where a branch line to the Bonavista Peninsula left the main line.  The construction of the Trans-Canada Highway through the community in the 1960s resulted in it becoming a local service centre for central-eastern Newfoundland, serving 96,000 people living in 90 communities within a 100 km radius. Clarenville is centrally located and within two hours' driving time of 70% of the province's population.\nThe town is a natural gateway to the Discovery Trail, extending down the Bonavista Peninsula to Trinity and Bonavista, reputed site of the first landing of European explorer John Cabot. The trail is a panorama of scenery, historic sites, coastal towns and villages.\nTAT-1 (the first transatlantic telephone cable) was laid between Clarenville and Gallanach Bay, Oban between 1955 and 1956 by the cable ship Monarch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "clarenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6434,
+    "attempt": 6387,
+    "place_id": "gn-6621541",
+    "input": {
+      "place": {
+        "place_id": "gn-6621541",
+        "name": "Maidenbower",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.10781,
+        "lon": -0.15286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maidenbower",
+          "url": "https://en.wikipedia.org/wiki/Maidenbower",
+          "text": "Maidenbower is one of 14 neighbourhoods within the town of Crawley in West Sussex, England. Maidenbower is located in the south east corner of the town, bordering the M23 motorway. It is bordered by Pound Hill to the north and Furnace Green to the west across the railway line.\nIn 1986 Crawley Borough Council declared the farmland between the M23 and the London-Brighton railway line to be the 13th neighbourhood, named Maidenbower after one of the farms in the area. A consortium of builders was formed to develop the site which was to include community facilities and a new junction giving access to the M23.\nBy 2000 development was almost complete, although small areas of infill development continue.\nThe original 16th-century Frogshole farm building, unlike the adjoining Maidenbower farm that gave the area its name, remains as the public house for the neighbourhood. It was refurbished and opened in 1994. On 8 February 2007 it suffered a major fire. Frogshole Farm Pub re-opened in July 2008 after a major refurbishment.\nA secondary school, the Oriel High School, has been built at Maidenbower under the Private Finance Initiative: a private company designed and built the school and is planned to provide facilities management for the next 25 years. West Sussex County Council provides all the educational services and staff. Maidenbower also has two infants schools and a large junior school.\nThere is a parade of shops and a community centre that provides daycare facilities for elderly people and people with disabilities. The Gatwick Stream runs through Maidenbower (formerly through Frogshole farm), past the back of the parade of shops and on to Three Bridges.\n\nIn September 2006, close to one of the entrance roads to Maidenbower leading from the Balcombe Road, a large piece of public art was installed. A community project, it was created in five pieces by the four schools in the neighbourhood and one piece by the community. The pieces fit together like a giant jigsaw puzzle to form an outline representing a map of the neighbourhood. The streams that run through it create the joins between each of the pieces. The overall theme of the piece is the history and development of Maidenbower."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 366
+    },
+    "banned_terms": [
+      {
+        "term": "maidenbower",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6435,
+    "attempt": 6388,
+    "place_id": "gn-672275",
+    "input": {
+      "place": {
+        "place_id": "gn-672275",
+        "name": "Nicolae Bălcescu",
+        "country": "Romania",
+        "subdivision": "Bacău County",
+        "lat": 46.46667,
+        "lon": 26.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nicolae Bălcescu, Bacău",
+          "url": "https://en.wikipedia.org/wiki/Nicolae_Bălcescu,_Bacău",
+          "text": "Nicolae Bălcescu (until 1948 Ferdinand, and previously Satu Nou, Hungarian: Ferdinándújfalu) is a commune in Bacău County, Western Moldavia, Romania. It is composed of five villages: Buchila, Galbeni, Lărguța, Nicolae Bălcescu, and Valea Seacă. It also included Bălțata and Sărata villages until 2004, when they were split off to form Sărata Commune.\nThe commune is located in the central part of the county, just south of the county seat, Bacău. It lies on the right banks of the rivers Bistrița and Siret; the two rivers meet at the Galbeni reservoir, on the east side of the commune. \nNicolae Bălcescu is crossed by the DN2 road, which connects Bacău to Focșani and forms part of the European route E85. The CFR rail line from Bacău to Mărășești, which also passes through the commune, is served by the Valea Seacă station.\nAccording to the 2011 census, the commune has 7,169 inhabitants; 90.14% of them are ethnic Romanians and 1.28% are ethnic Hungarians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "nicolae balcescu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nicolae",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "balcescu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6436,
+    "attempt": 6389,
+    "place_id": "gn-673316",
+    "input": {
+      "place": {
+        "place_id": "gn-673316",
+        "name": "Milcovul",
+        "country": "Romania",
+        "subdivision": "Vrancea",
+        "lat": 45.65,
+        "lon": 27.25
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milcovul",
+          "url": "https://en.wikipedia.org/wiki/Milcovul",
+          "text": "Milcovul (called Risipiți until 1964) is a commune in Vrancea County, Romania. It is located in the historical region of Muntenia. It is composed of two villages, Lămotești and Milcovul, and also included Gologanu and Răstoaca from 1968, until these became separate communes again in 2004.\nThe commune is situated in the northern reaches of the Wallachian Plain, on the banks of the Milcov River. It is located in the southeastern part of Vrancea County, 9 km (5.6 mi) southeast of the county seat, Focșani; its other neighbors are the following communes: Răstoaca to the northeast, Gologanu to the south, and Slobozia Ciorăști to the southwest. Milcovul is crossed by national road DN23A, which connects Focșani to Ciorăști."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "milcovul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6437,
+    "attempt": 6390,
+    "place_id": "gn-678954",
+    "input": {
+      "place": {
+        "place_id": "gn-678954",
+        "name": "Dragodana",
+        "country": "Romania",
+        "subdivision": "Dâmbovița County",
+        "lat": 44.73333,
+        "lon": 25.35
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dragodana",
+          "url": "https://en.wikipedia.org/wiki/Dragodana",
+          "text": "Dragodana is a commune in Dâmbovița County, Muntenia, Romania with a population of 6,186 people as of 2021. It is composed of seven villages: Boboci, Burduca, Cuparu, Dragodana, Pădureni, Picior de Munte, and Străoști.\nSituated in the central part of the Wallachian Plain, the commune lies on the banks of the river Sabar and is located in the central-south part of Dâmbovița County. Dragodana is crossed by national road DN72, which runs from the town of Găești, 5 km (3.1 mi) to the west, to the county seat, Târgoviște, 23 km (14 mi) to the north, and on to Ploiești. The country's capital, Bucharest, is 76 km (47 mi) to the southeast and can be reached via DN7."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "dragodana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6438,
+    "attempt": 6391,
+    "place_id": "gn-718739",
+    "input": {
+      "place": {
+        "place_id": "gn-718739",
+        "name": "Kisvárda",
+        "country": "Hungary",
+        "subdivision": "Szabolcs-Szatmár-Bereg",
+        "lat": 48.21667,
+        "lon": 22.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kisvárda",
+          "url": "https://en.wikipedia.org/wiki/Kisvárda",
+          "text": "Kisvárda (pronounced [ˈkiʃvaːrdɒ]; German: Kleinwardein, Yiddish: קליינווארדיין, romanized: Kleynvardeyn, Ukrainian: Кішварда) is a town in Szabolcs-Szatmár-Bereg County, in the Northern Great Plain region of eastern Hungary near the border of Slovakia and Ukraine. It is the 3rd largest town in Szabolcs-Szatmár-Bereg after Nyíregyháza and Mátészalka with a population of 16 669 people. The Subregion of Kisvárda lies between two large landscapes, the Nyírség and the Rétköz. Kisvárda is just 22 km (14 mi) from the border of Ukraine, 30 km (18.6 mi) from Slovakia, 43.9 km (27.3 mi) from Nyíregyháza, 50 km (31 mi) from Ungvár (Uzhorod), 52.1 km (32.4 mi) from Beregszász (Berehove), 52.9 km (32.9 mi) from Sátoraljaújhely and 80 km (50 mi) from Dorolţ, Romania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "kisvarda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6439,
+    "attempt": 6392,
+    "place_id": "gn-749456",
+    "input": {
+      "place": {
+        "place_id": "gn-749456",
+        "name": "Çaykara",
+        "country": "Türkiye",
+        "subdivision": "Trabzon",
+        "lat": 40.74267,
+        "lon": 40.23175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Çaykara",
+          "url": "https://en.wikipedia.org/wiki/Çaykara",
+          "text": "Çaykara (Romeika: Κατωχώρι, Kadahor) is a municipality and district of Trabzon Province, Turkey. Its area is 574 km2, and its population is 13,070 (2022). As of 2023, the Mayor of Çaykara is Hanefi Tok (AKP). Çaykara village lies in a V-shaped valley along the Solaklı River in the Pontic Mountains, at an elevation of around 300 metres. Çaykara district lies to the south of Dernekpazarı (Kondu) and forms the upper part of the Of-valley system ('Solaklı Vadisi' in Turkish), with peaks reaching to over 3300 meters. The western half of İkizdere district - which lies just east of Çaykara and is now part of Rize province - was historically also part of the same administrative and cultural region. Large swathes of the district are made up of  old-growth temperate broadleaf and mixed forest, gradually making way for alpine tundra at higher altitudes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "caykara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6440,
+    "attempt": 6393,
+    "place_id": "gn-8063098",
+    "input": {
+      "place": {
+        "place_id": "gn-8063098",
+        "name": "Favoriten",
+        "country": "Austria",
+        "subdivision": "Vienna",
+        "lat": 48.16116,
+        "lon": 16.38233
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Favoriten",
+          "url": "https://en.wikipedia.org/wiki/Favoriten",
+          "text": "Favoriten (German pronunciation: [fafoˈʁiːtn̩] ; Viennese: Favoritn), the 10th district of Vienna, Austria (German: 10. Bezirk, Favoriten), is located south of the central districts. It is south of Innere Stadt, Wieden and Margareten. Favoriten is a heavily populated urban area with many residential buildings, but also large recreational areas and parks.\nThe name comes from Favorita, a semi-baroque palace complex that once served as a hunting castle but today is the Theresianum, a Gymnasium (middle and high school) in the 4th district (Wieden). The customs facilities at the original southern border of Vienna were known as the Favoriten-Linie (Favoriten Line) while nearby houses were known as the Siedlung vor der Favoriten-Linie (Settlement in front of the Favoriten Line)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "favoriten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6441,
+    "attempt": 6394,
+    "place_id": "gn-909887",
+    "input": {
+      "place": {
+        "place_id": "gn-909887",
+        "name": "Luangwa",
+        "country": "Zambia",
+        "subdivision": "Lusaka Province",
+        "lat": -15.61667,
+        "lon": 30.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luangwa, Zambia",
+          "url": "https://en.wikipedia.org/wiki/Luangwa,_Zambia",
+          "text": "Luangwa is a town in Zambia, at the confluence of the Luangwa and Zambezi Rivers, which was called Feira until 1964. It is headquarters of a district of the same name in Lusaka Province.\nFeira was probably the first European settlement in Zambia, but the dates are not well documented. What is documented is that the Portuguese first settled on the opposite bank of the Luangwa at Zumbo in Mozambique in the early 18th century, and by 1720 some had settled in Feira. The town was abandoned again by 1856, when it was visited by the explorer David Livingstone and described as completely ruined. It was resettled in 1887 by John Harrison Clark, who lived there until 1895.\nAfter Zambia achieved independence the name of the town was changed to Luangwa as part of a preference for indigenous rather than colonial names, although the name was resurrected in 1973 for the Feira parliamentary constituency covering the town. It has only one road in or out which connects to the Great East Road about 100 km north. There are no bridges in the area over the Luangwa or Zambezi, nor regular ferry services, but local people will take visitors across in small boats.\nThe town's location is strategically important. The Luangwa forms Zambia's border with Mozambique and the Zambezi forms its border with Zimbabwe. In the Zimbabwe-Rhodesia War, the Mozambican War of Independence and Mozambican Civil War it was the scene of guerrilla activity. Zambia's practical support for nationalist guerrillas led to some incursions into its territory by Rhodesian and Portuguese forces in pursuit of them.\nLuangwa District is far from the famous Luangwa national parks, but includes spectacular scenery and wildlife of its own. The Lower Zambezi National Park west of the town is a rugged wilderness on the Zambezi Escarpment and the lower Luangwa valley includes unspoilt scenery and wildlife habitats."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "luangwa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6442,
+    "attempt": 6395,
+    "place_id": "gn-10104878",
+    "input": {
+      "place": {
+        "place_id": "gn-10104878",
+        "name": "Highams Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.60768,
+        "lon": -0.00579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Highams Park",
+          "url": "https://en.wikipedia.org/wiki/Highams_Park",
+          "text": "Highams Park is a district in the London Borough of Waltham Forest, England, near Epping Forest and 8.1 miles (13 km) northeast of Charing Cross.\nThe earliest recorded settlement was a small Saxon one near this location in the Great Forest of Waltham. Vikings are thought to have arrived here after sailing up the River Lea. The Saxon lord, Haldane, is noted as possessing lands stretching from the Lea marshes to the highest point in the forest. He relinquished these lands after the Norman Invasion of 1066. By the beginning of the 14th century, the renamed Manor of Higham Bensted(e) was divided into two, with the smaller manor of Salisbury Hall including Chapel End and Hale End.. Historically, it has been in the county of Essex, and part of Walthamstow parish and municipal borough. It is primarily a residential area, with mainly Victorian and 1930s terraced houses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "highams park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "highams",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6443,
+    "attempt": 6396,
+    "place_id": "gn-1699264",
+    "input": {
+      "place": {
+        "place_id": "gn-1699264",
+        "name": "Montevista",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 7.69333,
+        "lon": 125.98889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montevista",
+          "url": "https://en.wikipedia.org/wiki/Montevista",
+          "text": "Montevista, officially the Municipality of Montevista (Cebuano: Lungsod sa Montevista; Tagalog: Bayan ng Montevista), is a municipality in the province of Davao de Oro, Philippines. According to the 2024 census, it has a population of 46,581 people.\nCaumanga, the original name of Montevista, was a haven of the Mandayan Tribe. During the Japanese occupation, Caumanga became the headquarters of the Japanese Imperial Forces who to flocked to the place for protection, shelter, medicine, and food. With the increase of Christian settlers in the early part of 1950s, the name \"Caumanga\" was changed to San Jose in honor of their Patron Saint, Saint Joseph the Worker. However, it was not until June 18, 1966, when Republic Act No. 4808 was issued creating San Jose into a regular town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "montevista",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6444,
+    "attempt": 6397,
+    "place_id": "gn-1819374",
+    "input": {
+      "place": {
+        "place_id": "gn-1819374",
+        "name": "Ma Wan",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Islands",
+        "lat": 22.3523,
+        "lon": 114.06002
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ma Wan",
+          "url": "https://en.wikipedia.org/wiki/Ma_Wan",
+          "text": "Ma Wan is an island in Hong Kong, located between Lantau Island and Tsing Yi Island. Administratively, it is part of the Tsuen Wan District and has an area of 0.97 square kilometres (240 acres).\nThe Lantau Link that passes through Ma Wan was constructed in the mid-1990s as part of the Hong Kong Government's Rose Garden plan to connect the newly built Hong Kong International Airport to the city centre. Its development fostered plans to develop the island. Today, a large part of Ma Wan is occupied by the Park Island apartment complex. A theme park, named Ma Wan Park, was built to accompany the housing project, with its first phase opened on 1 July 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "ma wan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ma",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "wan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6445,
+    "attempt": 6398,
+    "place_id": "gn-2162255",
+    "input": {
+      "place": {
+        "place_id": "gn-2162255",
+        "name": "Jindabyne",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -36.41745,
+        "lon": 148.62254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jindabyne",
+          "url": "https://en.wikipedia.org/wiki/Jindabyne",
+          "text": "Jindabyne () is a town in south-east New South Wales, Australia that overlooks Lake Jindabyne near the Snowy Mountains, in Snowy Monaro Regional Council. It is a popular holiday destination year round, especially in winter. This is due to its proximity to major ski resort developments within the Kosciuszko National Park, including Thredbo, Perisher and Charlotte Pass.\nOriginally situated on land that is now under Lake Jindabyne, the township was transferred to its present location in the 1960s due to the construction of Jindabyne Dam, on the Snowy River, as part of the Snowy Mountains Scheme. At the 2021 census, Jindabyne had a population of 2,986. The town's name is derived from an Aboriginal word meaning \"valley\".\nJindabyne is one of the highest settlements of its size in Australia, at 918 metres above sea level. Snowfalls regularly occur during winter. Jindabyne is connected to the surrounding area by Kosciuszko Road East to Cooma then North to Canberra, the Alpine Way West to the Riverina and Wodonga and the Barry Way to the South and Gippsland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "jindabyne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6446,
+    "attempt": 6399,
+    "place_id": "gn-2208041",
+    "input": {
+      "place": {
+        "place_id": "gn-2208041",
+        "name": "Mount Maunganui",
+        "country": "New Zealand",
+        "subdivision": "Bay of Plenty",
+        "lat": -37.64167,
+        "lon": 176.18611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Maunganui",
+          "url": "https://en.wikipedia.org/wiki/Mount_Maunganui",
+          "text": "Mount Maunganui (Māori pronunciation: [ˈmaʉŋaˌnʉi], locally ) is a major residential, commercial and industrial suburb of Tauranga located on a peninsula to the north-east of Tauranga's city centre. It was an independent town from Tauranga until the completion of the Tauranga Harbour Bridge in 1988, which connects Mount Maunganui to Tauranga's central business district.\nMount Maunganui is also the name of the large lava dome which was formed by the upwelling of rhyolite lava about two to three million years ago. It is officially known by its Māori name Mauao, but is colloquially known in New Zealand simply as The Mount.\nThe New Zealand Ministry for Culture and Heritage gives a translation of \"large mountain\" for Maunganui."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "mount maunganui",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maunganui",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6447,
+    "attempt": 6400,
+    "place_id": "gn-2327521",
+    "input": {
+      "place": {
+        "place_id": "gn-2327521",
+        "name": "Oguta",
+        "country": "Nigeria",
+        "subdivision": "Imo State",
+        "lat": 5.71044,
+        "lon": 6.80936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oguta",
+          "url": "https://en.wikipedia.org/wiki/Oguta",
+          "text": "Oguta is a town and Local government area in Imo State. The town is located on the eastern bank of Oguta Lake in southeastern Nigeria.\nOguta is called \"Oguta-Ameshi\" or \"Ameshi\"- by its aborigines. Indigenes - consists of two parts, the old part which holds the 27 villages of Oguta, and the new part, called the \"Oguta New Layout\".\nOguta New Layout, as a rule, is strict compliance with its original master plan. Oguta Town by location is embedded between Oguta Lake on the eastern side, and Obana River that joined Okposha River, on the western side, leaving only the Egwe Gateway as the only dry land route into Oguta without passing through water or a bridge.\nOguta as a tourist destination, makes most people including natives to have the preponderance to describe Oguta Town more often - as being located on the east bank of Oguta Lake. Oguta's high-yield oil and gas fields make Oguta an important territory and geographic area, hosting many multinational oil companies like AGIP, Shell, Chevron. Some times Oguta is used as a synonym for Oguta Local Government Area, which has Oguta as its headquarters. Oguta LGA is one of the twenty seven local government areas that make up the Imo State.\n\nIn turn, Imo State is one of the five states that make up the South-East geopolitical region, which is one of the six geopolitical regions that make up The Federal Republic of Nigeria. With its Oguide Lake and Urashi River bestowing her peculiar advantages, Oguta was one of the chosen endowed territories that the British through the instrumentality of the Royal Niger Company, UAC, and then the British Colonial Government used and exploited diversely.\nDue to its strategic waterways, oil and gas, palm produce, agricultural products, natural resources, Oguta was one of the oldest trade and administrative Centres in Nigeria. Connected to River Niger, Oguta waterways were used by the British and later Nigerian government forces during the Nigeria - Biafra civil war as routes through which to access and connect to the adjoining towns, villages and other settlement types nearer and further from Oguta, that were and remain principally peopled by other ethnic Igbo people the Mgbidi, Orlu, Awo-Omamma, Nkwerre, Owerri, Okigwe, Umuahia, Aba/Ngwa people, among others, who are substantial parts of the Eastern Nigerian population in the hinterland, collectively called \"The Igbos\".\n\nAs of 2012, Oguta's population was estimated at 20,096."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 400
+    },
+    "banned_terms": [
+      {
+        "term": "oguta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
