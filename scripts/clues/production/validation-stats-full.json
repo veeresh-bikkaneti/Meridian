@@ -1,14 +1,17 @@
 {
-  "attempted": 7000,
-  "accepted": 110,
-  "workerRejected": 6890,
-  "validatorRejected": 0,
+  "attempted": 7200,
+  "accepted": 111,
+  "workerRejected": 7088,
+  "validatorRejected": 1,
   "malformedWorkerRejections": 0,
-  "validatorReasonHistogram": {},
+  "validatorReasonHistogram": {
+    "CLIMATE_NO_SIGNAL": 1
+  },
   "workerRejectionTierHistogram": {
-    "climate": 6822,
-    "history": 67,
-    "giveaway": 1
+    "climate": 7016,
+    "history": 70,
+    "giveaway": 1,
+    "hook": 1
   },
   "pipelineIssues": []
 }
