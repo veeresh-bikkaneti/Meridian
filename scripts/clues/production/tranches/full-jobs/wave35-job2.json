@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 6869,
+    "attempt": 6821,
+    "place_id": "gn-1624196",
+    "input": {
+      "place": {
+        "place_id": "gn-1624196",
+        "name": "Teminabuan",
+        "country": "Indonesia",
+        "subdivision": "Southwest Papua",
+        "lat": -1.4416,
+        "lon": 132.01428
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teminabuan",
+          "url": "https://en.wikipedia.org/wiki/Teminabuan",
+          "text": "Teminabuan is an administrative district (distrik) in South Sorong Regency, in Southwest Papua, Indonesia. The district includes the town of Kaibus (which serves as the administrative capital of South Sorong Regency) and its northern suburb of Kohoin. The district had a population of 11,627 at the 2010 Census and 19,491 at the 2020 Census; the official estimate as at mid 2024 was 20,648. The town of Kaibus is located in the southwestern-central part of the Bird's Head Peninsula, and had a population of 4,743 in mid 2022. The area was bombed between January and March 1967 by the Indonesian National Army in Papua conflict. It is served by Teminabuan Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "teminabuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6870,
+    "attempt": 6822,
+    "place_id": "gn-1630649",
+    "input": {
+      "place": {
+        "place_id": "gn-1630649",
+        "name": "Prigen",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -7.68333,
+        "lon": 112.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prigen",
+          "url": "https://en.wikipedia.org/wiki/Prigen",
+          "text": "Prigen (Javanese: Prigèn or called \"Tretes\") is an administrative district (kecamatan) in the western part of Pasuruan Regency of East Java, Indonesia. Southern and eastern portions of Prigen Regency are located between the slopes of the Arjuno volcano, Arjuno-Welirang volcanic complex and Mount Penanggungan. Taman Safari II is located in Prigen. It borders Mojokerto Regency to the west, Gempol District to the north, and Sukorejo District to the east, before forming a 400-metre border with Malang Regency at the peak of Mount Arjuna.\n\nThe 13th century Candi Jawi (originally known as Jajawa) temple is located on the eastern slope of Mount Welirang outside Candi Wates village in the Prigen district. It is a syncretic Hindu-Buddhist  temple (candi)"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "prigen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6871,
+    "attempt": 6823,
+    "place_id": "gn-1686004",
+    "input": {
+      "place": {
+        "place_id": "gn-1686004",
+        "name": "Sitangkai",
+        "country": "Philippines",
+        "subdivision": "Autonomous Region in Muslim Mindanao",
+        "lat": 4.66115,
+        "lon": 119.39647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sitangkai",
+          "url": "https://en.wikipedia.org/wiki/Sitangkai",
+          "text": "Sitangkai, officially the Municipality of Sitangkai (Tagalog: Bayan ng Sitangkai),  is a municipality in the province of Tawi-Tawi, Philippines. According to the 2024 census, it has a population of 42,172 people.\nIt is the southernmost place in the Philippines and is very close to Malaysia and Indonesia.\nIt is called the \"Venice of the South\" due to the use of boats as primary transportation, although footbridges connect one house to another. The major sources of livelihood are fishing and farming, although there is very sparse agricultural land available.\nThis town is the southernmost town in the whole archipelago, and this town is the southernmost town in the province of Tawi-Tawi.\nThe Frances Reef located in the town of Sitangkai is geographically the southernmost point of the Philippines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "sitangkai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6872,
+    "attempt": 6824,
+    "place_id": "gn-1716526",
+    "input": {
+      "place": {
+        "place_id": "gn-1716526",
+        "name": "Culion",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 11.8904,
+        "lon": 120.0222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Culion",
+          "url": "https://en.wikipedia.org/wiki/Culion",
+          "text": "Culion, officially the Municipality of Culion (Tagalog: Bayan ng Culion),  is a municipality in the province of Palawan, Philippines. According to the 2024 census, it has a population of 23,985 people.\nCulion consists primarily of Culion Island as well as 41 minor surrounding islands, as part of the Calamian group of islands.\nIt was a former leprosarium, starting in 1906 under the American colonial regime until the American commonwealth of the Philippines era. Although leprosy on the island-town was abolished in the 1980s, it was only in 2006 when it was declared a leprosy-free area by the World Health Organization. The municipality was created by virtue of Republic Act No. 7193 on February 19, 1992. In May 2017, the Philippine National Commission for UNESCO began its initiative to prepare the dossier of Culion's leprosy documentary heritage, which will be nominated in the future in the UNESCO Memory of the World Programme. In May 2018, the Culion Museum and Archives was officially nominated by the Philippines in the UNESCO Memory of the World Register – Asia and the Pacific. On June 18, 2018, Culion Leprosy Archives was officially inscribed in the Memory of the World Register – Asia and the Pacific. The government and the Asia-Pacific bloc aims to nominate the archives further to the International Memory of the World Register. If approved by UNESCO, it will be the fifth internationally recognized documentary heritage of the Philippines, increasing Culion town's feasibility to become a World Heritage Site in the future."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "culion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6873,
+    "attempt": 6825,
+    "place_id": "gn-2158626",
+    "input": {
+      "place": {
+        "place_id": "gn-2158626",
+        "name": "Marrickville",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.90741,
+        "lon": 151.15546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marrickville",
+          "url": "https://en.wikipedia.org/wiki/Marrickville",
+          "text": "Marrickville is a suburb in the Inner West of Sydney, in New South Wales, Australia. Marrickville is located 7 kilometres (4 miles) south-west of the Sydney central business district and is the largest suburb in the Inner West Council local government area.\nMarrickville sits on the northern bank of the Cooks River, opposite Earlwood and shares borders with Stanmore, Enmore, Newtown, St Peters, Sydenham, Tempe, Dulwich Hill, Hurlstone Park and Petersham. The southern part of the suburb, near the river, is known as Marrickville South and includes the historical locality called The Warren.\nMarrickville is culturally diverse, and contains both low and high density residential, commercial and light industrial areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "marrickville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6874,
+    "attempt": 6826,
+    "place_id": "gn-2208313",
+    "input": {
+      "place": {
+        "place_id": "gn-2208313",
+        "name": "Umina Beach",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.52314,
+        "lon": 151.31325
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Umina Beach",
+          "url": "https://en.wikipedia.org/wiki/Umina_Beach",
+          "text": "Umina Beach ( you-MY-nə) is a suburb within the Central Coast Council local government area on the Central Coast of New South Wales, Australia. Umina Beach is situated 85 kilometres (53 mi) north of Sydney and 111 kilometres (69 mi) south of Newcastle.\nUmina Beach is locally known on the Central Coast as being on 'The Peninsula' (or 'Woy Woy Peninsula'). A natural peninsula that includes the towns of Umina Beach, Woy Woy, Blackwall, Booker Bay and Ettalong Beach.  Moving from north to south, Umina Beach begins where Woy Woy and Blackwall end: at Veron Road and Gallipoli Avenue.\nUmina Beach is the most populated suburb on the Central Coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "umina beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "umina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6875,
+    "attempt": 6827,
+    "place_id": "gn-2346812",
+    "input": {
+      "place": {
+        "place_id": "gn-2346812",
+        "name": "Bonny",
+        "country": "Nigeria",
+        "subdivision": "Rivers State",
+        "lat": 4.4516,
+        "lon": 7.17074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bonny, Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Bonny,_Nigeria",
+          "text": "Bonny (originally Okoloama) is a traditional, coastal town and local government area (LGA) in Rivers State in Southern Nigeria, located on the eponymous island on the Bight of Bonny. It is also the capital of the Kingdom of Bonny.\nThe region produces a type of crude oil known as Bonny Light oil. Much of the oil extracted onshore in Rivers State is piped to Bonny for export. It has the biggest LNG gas plant in Nigeria, with six trains. Currently, the Federal Government of Nigeria has set plans for the construction of the seventh train of the NLNG to boost its gas production in anticipation of dominating the African market.\nBonny has a bridge being constructed from Bodo in Gokana LGA (also in Rivers State) to enable land transportation. A deep seaport is underway as a corporate social responsibility project from China Civil Engineering Construction Corporation (CCECC)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "bonny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6876,
+    "attempt": 6828,
+    "place_id": "gn-2404614",
+    "input": {
+      "place": {
+        "place_id": "gn-2404614",
+        "name": "Pendembu",
+        "country": "Sierra Leone",
+        "subdivision": "Eastern Province",
+        "lat": 8.09807,
+        "lon": -10.69429
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pendembu, Sierra Leone",
+          "url": "https://en.wikipedia.org/wiki/Pendembu,_Sierra_Leone",
+          "text": "Pendembu is a town in Kailahun District in the Eastern Province of Sierra Leone. The town population was 7,243 at the 2004 census but increased to 20,502 according to a more recent estimate. Pendembu lies approximately 36 miles from Kenema and about 235 east of Freetown. Pendembu is a trade center and is one of the main towns in Eastern Sierra Leone.\nThe vast majority of Pendembu's population are from the Mende ethnic group. As with most parts of Sierra Leone, the Krio language of the Sierra Leone Creole people is by far the most widely spoken language in Pendembu and is the primary means of communication in the city. The most widely spoken languages are Mende and Krio. The town is the birthplace of former President of Sierra Leone Ahmad Tejan Kabbah.\nPendembu was a center or hub for the buying and transporting of cacao, coffee beans and palm nuts. Old structures of huge stores remain, along with large areas owned by the government of Sierra Leone. The Sierra Leone Produce Marketing Board (SLPMB), James international, and other private owned companies in their dilapidated states. The presence of those companies established inter marriages between the Krios and the indigenous people, so was the Libanis. There are still those children in the chiefdom that have held key positions and are members of the tradition of the indigenous people. There is one Krio that has served as Councillor of the entire chiefdom from 2018 to 2023.\nA health clinic south of Pendembu is operated by the Handmaids of the Holy Child Jesus religious order and serves a wide area surrounding the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "pendembu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6877,
+    "attempt": 6829,
+    "place_id": "gn-2511447",
+    "input": {
+      "place": {
+        "place_id": "gn-2511447",
+        "name": "San Bartolomé",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 29.00093,
+        "lon": -13.613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Bartolomé, Las Palmas",
+          "url": "https://en.wikipedia.org/wiki/San_Bartolomé,_Las_Palmas",
+          "text": "San Bartolomé (Spanish meaning Saint Bartholomew) is a town and municipality in the Canary Islands (Spain) situated in the centre of the island of Lanzarote. The municipality of San Bartolomé stretches to the southeastern coast of the island.\nIt has an area of 40.89 square kilometres (15.79 sq mi) and, as of 2019, a population of 18,816, resulting in a population density of 460/km2. Its altitude is 240 metres above sea level.\nThe town is located northwest of Arrecife, the island's capital, to which it is connected by the LZ-20 road. The municipality lies southwest of Teguise, southeast of Tinajo, which includes the Timanfaya National Park, and northeast of Tías. The municipality also includes the coastal town of Playa Honda to its southeast, located between Arrecife and Lanzarote Airport.\nMost of the inhabitants work as craftsmen, farmers or in the service for tourism which is the biggest economic factor on Lanzarote."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "san bartolome",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bartolome",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6878,
+    "attempt": 6830,
+    "place_id": "gn-2512620",
+    "input": {
+      "place": {
+        "place_id": "gn-2512620",
+        "name": "Picassent",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.3635,
+        "lon": -0.45949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Picassent",
+          "url": "https://en.wikipedia.org/wiki/Picassent",
+          "text": "Picassent (Valencian pronunciation: [pikaˈsent]) is a municipality in the comarca of Horta Sud in the Valencian Community, Spain.\nPicassent is a town of close to twenty thousand people. Originally the town's main economic activity was agriculture, however during the last twenty years Picassent developed two industrial areas adjacent to the city centre. \nThe excellent communications and its distance to the main City of Valencia have converted Picassent in an ideal and cheaper location for the city workers that commute every day.\nIn the surrounding countryside, one of the largest of the county (comarca), the locals grow orange trees.\nThe municipality is composed by several neighbourhoods, some more formal than others. Traditionally these neighbourhoods were attached to the three Churches sited next to three main town squares: \"San Cristobal\" next to the townhall square, \"Milagrosa\" next to the Market square and \"l´hermita de la Vallivana\" next to \"l'hermita\" square.\nThe town celebrates two main festivals a year, one on 10 July in honour of \"San Cristobal\" and another on 8 September in honour to \"Virgen de la Vallivana\". During the July festival there is a week of \"bous al carrer\", a version of the well known \"San Fermin\" in Pamplona. Also in September the main day (the 8th) is surrounded by a week of multiple activities: from religious processions to classic and rock music concerts and fireworks.\n\nPicassent has an Underground station (Line 1) whose name is \"Picassent\". This connects the city centre of the municipality with the capital València. It takes half an hour more or less going from Picassent to Valencia city centre.\nIt hosts the two main prisons of Valencia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "picassent",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6879,
+    "attempt": 6831,
+    "place_id": "gn-2520726",
+    "input": {
+      "place": {
+        "place_id": "gn-2520726",
+        "name": "Buñol",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.41667,
+        "lon": -0.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buñol",
+          "url": "https://en.wikipedia.org/wiki/Buñol",
+          "text": "Buñol (Spanish pronunciation: [buˈɲol]) is a town and municipality in the province of Valencia, Spain. The municipality has an area of some 112 km2, and is situated approximately 38 km west of the provincial and autonomous community capital city, Valencia. It lies along the Buñol River and is surrounded by the mountain ranges La Sierra de Las Cabrillas, la Sierra de Dos Aguas and la Sierra de Malacara y Martés.\nThe local economic base is a mixture of the industrial and the agricultural (carob trees, almond trees, fruit trees, olive trees and grapes).\nBuñol's population is about 9,000.\nBuñol has regional rail passenger service to Valencia via the Renfe system.\nEvery year upwards of 40,000 people gather in the town to throw over 115,000 kilograms of tomatoes at each other in the yearly La Tomatina festival. The festival is a popular sight, and many European tourists visit the town to participate in it.\nNear the town are the training grounds and facilities of football club Levante UD."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "bunol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6880,
+    "attempt": 6832,
+    "place_id": "gn-2613887",
+    "input": {
+      "place": {
+        "place_id": "gn-2613887",
+        "name": "Skanderborg",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.03434,
+        "lon": 9.93177
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skanderborg",
+          "url": "https://en.wikipedia.org/wiki/Skanderborg",
+          "text": "Skanderborg is a town in Skanderborg Municipality, Denmark. It is situated on the north and north eastern brinks of Skanderborg Lake and there are several smaller ponds and bodies of water within the city itself, like Lillesø, Sortesø, Døj Sø and the swampy boglands of Eskebæk Mose. Just north of the town on the other side of Expressway E45, is the archaeologically important Illerup Ådal. Over time, the town has grown into a suburb of Aarhus to the north east, connected by the urban areas of Stilling, Hørning and Hasselager.\nSkanderborg is home to a population of 20,370 (1 January 2026), out of Skanderborg Municipality's total population of 66,352 (2026)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "skanderborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6881,
+    "attempt": 6833,
+    "place_id": "gn-2636782",
+    "input": {
+      "place": {
+        "place_id": "gn-2636782",
+        "name": "Stotfold",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.01632,
+        "lon": -0.23209
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stotfold",
+          "url": "https://en.wikipedia.org/wiki/Stotfold",
+          "text": "Stotfold  is a town and civil parish in the Central Bedfordshire district of Bedfordshire, England. The town covers 2,207 acres (8.93 km2) and the River Ivel passes through the town. The population of the parish at the 2021 census was 9,014. The wider built-up area, which the Office for National Statistics defines to additionally include the adjoining Fairfield Park development, had a population of 12,310 at the 2021 census. For the purposes of postal addresses, Stotfold comes under the post town of Hitchin; it was therefore in the postal county of Hertfordshire despite actually being in Bedfordshire.\nThe name Stotfold derives from the Old English stōdfald meaning a 'stud farm'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "stotfold",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6882,
+    "attempt": 6834,
+    "place_id": "gn-2643425",
+    "input": {
+      "place": {
+        "place_id": "gn-2643425",
+        "name": "Ludlow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.37431,
+        "lon": -2.71311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ludlow",
+          "url": "https://en.wikipedia.org/wiki/Ludlow",
+          "text": "Ludlow (  LUD-loh) is a market town and civil parish in south Shropshire, England. It is located 28 miles (45 km) south of Shrewsbury and 23 miles (37 km) north of Hereford, on the A49 road which bypasses the town. The town is near the confluence of the rivers Corve and Teme.\nThe oldest part is the medieval walled town, founded in the late 11th century after the Norman conquest of England. It is centred on a small hill which lies on the eastern bank of a bend of the River Teme. Situated on this hill are Ludlow Castle and the parish church, St Laurence's, the largest in the county. From there the streets slope downward to the rivers Corve and Teme, to the north and south respectively. The town is in a sheltered spot beneath Mortimer Forest and the Clee Hills, which are clearly visible from the town.\nLudlow has nearly 500 listed buildings, including examples of medieval and Tudor-style half-timbered buildings. The town was described by Sir John Betjeman as \"probably the loveliest town in England\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "ludlow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6883,
+    "attempt": 6835,
+    "place_id": "gn-2648273",
+    "input": {
+      "place": {
+        "place_id": "gn-2648273",
+        "name": "Gosforth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55,
+        "lon": -1.61667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gosforth",
+          "url": "https://en.wikipedia.org/wiki/Gosforth",
+          "text": "Gosforth is an area of Newcastle upon Tyne, in Tyne and Wear, England, situated north of the city centre. It constituted a separate urban district of Northumberland from 1895 until 1974 before officially merging with the city of Newcastle upon Tyne. In 2001, it had a population of 23,620.\nThe Ouseburn divides Gosforth from High Heaton and Longbenton to the east, while the smaller Craghall Burn forms the boundary with Jesmond and the Town Moor to the south. Kenton and Coxlodge lie to the west. There are four electoral wards on Newcastle City Council that include parts of Gosforth: Dene and South Gosforth, Fawdon and West Gosforth, Gosforth, and Parklands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "gosforth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6884,
+    "attempt": 6836,
+    "place_id": "gn-2652997",
+    "input": {
+      "place": {
+        "place_id": "gn-2652997",
+        "name": "Cinderford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.82421,
+        "lon": -2.4987
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cinderford",
+          "url": "https://en.wikipedia.org/wiki/Cinderford",
+          "text": "Cinderford is a town and civil parish on the eastern fringe of the Forest of Dean in Gloucestershire, England. The population was 8,777 at the 2021 Census.\nThe town came into existence in the 19th century, following the rapid expansion of the Forest of Dean Coalfield and the construction of Cinderford Ironworks. Its origins can be seen in the style and layout of the town, with long rows of identical terraced housing similar to those found in the mining villages of the South Wales Valleys. The decline of the coal industry in the 1950s and 1960s significantly affected the town, as most of the male population was employed in mining."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "cinderford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6885,
+    "attempt": 6837,
+    "place_id": "gn-2656836",
+    "input": {
+      "place": {
+        "place_id": "gn-2656836",
+        "name": "Attleborough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.51779,
+        "lon": 1.01572
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Attleborough",
+          "url": "https://en.wikipedia.org/wiki/Attleborough",
+          "text": "Attleborough is a market town and civil parish located on the A11 road between Norwich and Thetford in Norfolk, England. The parish is in the district of Breckland and has an area of 21.9 square kilometres (8.5 sq mi).\nThe 2001 Census recorded the town as having a population of 9,702 distributed between 4,185 households, increasing to a population of 10,482 in 4,481 households in the 2011 Census. In 2021 the population was 11,232\nAttleborough is in the Mid-Norfolk constituency of the UK Parliament, represented since the 2010 general election by the Conservative MP George Freeman.\nAttleborough railway station provides a main line rail service to both Norwich and Cambridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "attleborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6886,
+    "attempt": 6838,
+    "place_id": "gn-2723567",
+    "input": {
+      "place": {
+        "place_id": "gn-2723567",
+        "name": "Bålsta",
+        "country": "Sweden",
+        "subdivision": "Uppsala",
+        "lat": 59.5671,
+        "lon": 17.52781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bålsta",
+          "url": "https://en.wikipedia.org/wiki/Bålsta",
+          "text": "Bålsta is a locality and the seat of Håbo Municipality, Uppsala County, Sweden with 13,138 inhabitants in 2015.\nAlthough not in Stockholm County, it has Bålsta railway station, the north-western terminus of the Stockholm commuter rail system. Many inhabitants commute to Stockholm. The travel time is 40 minutes by suburban train, and less than 30 minutes by commuter-or intercity rail. Lasse Åberg, a famous Swedish actor, musician and artist, lives in Bålsta and has opened a museum there.\nEven though Bålsta's relatively small size, there are many organizations and activity-centers in the town, such as a hockey-arena hosting the team Bålsta HC. It also has a mall with several stores."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "balsta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6887,
+    "attempt": 6839,
+    "place_id": "gn-2749811",
+    "input": {
+      "place": {
+        "place_id": "gn-2749811",
+        "name": "Noordwijkerhout",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.26167,
+        "lon": 4.49306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noordwijkerhout",
+          "url": "https://en.wikipedia.org/wiki/Noordwijkerhout",
+          "text": "Noordwijkerhout (Dutch pronunciation: [ˌnoːrtʋɛikərˈɦʌut] ) is a town and former municipality in the western part of the Netherlands, in the province of South Holland. The town is currently part of the municipality of Noordwijk and lies in the bulb-growing region (the Duin- en Bollenstreek) of the Netherlands, which is famed for its tulips.\nThe former municipality of Noordwijkerhout covered an area of 23.42 km2 (9.04 sq mi), of which 0.81 km2 (0.31 sq mi) was water, and had a population of 15,415 in 2023.  It also included the village of De Zilk, which together with the town of Noordwijkerhout became part of the municipality of Noordwijk on 1 January 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "noordwijkerhout",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6888,
+    "attempt": 6840,
+    "place_id": "gn-2757232",
+    "input": {
+      "place": {
+        "place_id": "gn-2757232",
+        "name": "Denekamp",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.3775,
+        "lon": 7.00694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denekamp",
+          "url": "https://en.wikipedia.org/wiki/Denekamp",
+          "text": "Denekamp (Dutch pronunciation: [ˈdeːnəkɑmp] ) is a town in the Dutch province of Overijssel. It is a part of the region of Twente and the municipality of Dinkelland, and lies about 9 km northeast of Oldenzaal.\nThe town was first noted as early as the 10th century when it was referred to as Daginghem, and means \"settlement of the people of Dago or Dano\". The village started around the church which was built in 1275. It remained isolated and small until 1829 when the road from Deventer to Hamburg was built.\nThe location became a municipality in 1818 incorporating the settlements of Noord Deurningen, Lattrop, Breklenkamp, Tilligte, Nutter and Agelo. The municipality merged with Ootmarsum and Weerselo in 2001; the new municipality was first called \"Denekamp\", but was renamed in 2002 to Dinkelland.\nThe Town is known in the hardstyle scene, to be home of various Hardstyle DJ's."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "denekamp",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
