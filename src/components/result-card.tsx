@@ -1,4 +1,5 @@
 import { formatDistance } from "@/game/geo";
+import { bubbleHeaderText } from "@/game/question-label";
 import { summarizeRun, type Run } from "@/game/run";
 import { formatBreakdown, comboForStreak, formatFactor } from "@/game/scoring";
 import { shareText } from "@/game/share";
@@ -265,7 +266,7 @@ export function ResultCard({
               {place ? (
                 <>
                   <p className="text-[11px] tracking-wider text-white/60 uppercase">
-                    {run.regionName}
+                    {bubbleHeaderText(run.edition, run.regionName)}
                   </p>
                   <h2
                     ref={headingRef}
@@ -281,7 +282,7 @@ export function ResultCard({
                   tabIndex={-1}
                   className="font-display text-2xl leading-tight outline-none"
                 >
-                  {run.regionName}
+                  {bubbleHeaderText(run.edition, run.regionName)}
                 </h2>
               )}
             </div>
