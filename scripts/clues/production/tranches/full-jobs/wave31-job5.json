@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 6125,
+    "attempt": 6081,
+    "place_id": "gn-3429248",
+    "input": {
+      "place": {
+        "place_id": "gn-3429248",
+        "name": "San Antonio de Areco",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.25083,
+        "lon": -59.46944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonio de Areco",
+          "url": "https://en.wikipedia.org/wiki/San_Antonio_de_Areco",
+          "text": "San Antonio de Areco is a city in northern Buenos Aires Province, Argentina, and administrative seat of the partido of San Antonio de Areco. It is located on the Areco River 113 km (70 mi) away from  Buenos Aires city, the country's capital.\nSan Antonio de Areco was founded in 1730, under the protection of a chapel inaugurated by José Ruiz de Arellano. It has been declared city of historic national interest by the Argentine Government and is recognized for being the homeland of Don Segundo Sombra, the immortal character of the novel written by Ricardo Güiraldes.  The city is the home of the Museo Gauchesco Ricardo Güiraldes.  Each year in November, the city holds the Día de la Tradición (Tradition Day) gaucho celebration.\nSince 2001, San Antonio de Areco is sister city of Laredo, Texas in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "san antonio de areco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "areco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6126,
+    "attempt": 6082,
+    "place_id": "gn-3465181",
+    "input": {
+      "place": {
+        "place_id": "gn-3465181",
+        "name": "Crissiumal",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -27.49972,
+        "lon": -54.10111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crissiumal",
+          "url": "https://en.wikipedia.org/wiki/Crissiumal",
+          "text": "Crissiumal is a Brazilian municipality in the state of Rio Grande do Sul, located in the Northwest Rio Grande do Sul mesoregion and the Três Passos Microregion, at a latitude of 27°30'00\" south and a longitude of 54°06'03\" west, at an altitude of 410 meters. Its estimated population in 2016 was 14,233, covering an area of 363.106 km2. The municipality is traversed by the waters of the Uruguay River. Its main access is via the RS-207 highway, though it is also served by the RS-305.\nCrissiumal was originally founded in 1933, with official emancipation occurring in 1954. Its name is believed to originate from criciúma, a plant abundant in the region, which in the Tupi language means a smooth, flexible rod or small bamboo. The service sector currently accounts for 60% of the municipal GDP, serving as the primary source of income.\nOne of Crissiumal's most prominent and traditional football clubs is the Tupi Futebol Clube, established in May 1949. Crissiumal hosts various events, such as the Feast of Our Lady of Navigators and Expocris, and features several tourist attractions, including the Castle, the Pioneer Monument, and the Church of the Three Holy Martyrs of the Missions. It is known as the Gaucho capital of agro-industries. Crissiumal is the 122nd most populous city in the state and the 2133rd in Brazil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "crissiumal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6127,
+    "attempt": 6083,
+    "place_id": "gn-3471551",
+    "input": {
+      "place": {
+        "place_id": "gn-3471551",
+        "name": "Arenápolis",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -14.45028,
+        "lon": -56.84611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arenápolis",
+          "url": "https://en.wikipedia.org/wiki/Arenápolis",
+          "text": "Arenápolis is a Brazilian municipality in the state of Mato Grosso. It is situated at a latitude of 14°27'01\" south and a longitude of 56°50'46\" west, at an altitude of 247 meters, making it the closest city to the South American continental pole of inaccessibility. The estimated population in 2021 was 9,399 inhabitants, covering an area of 417.337 km2 (161.135 sq mi).\nThe municipality originated from diamond mining in abundant gravel, leading hundreds of people since the 18th century to settle along the banks of the Ribeirão Areias river, populating what was initially known as the village of Areias. This village later gained independence and was renamed Arenápolis for a more resonant name while still referencing its origins related to the Ribeirão Areias river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "arenapolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6128,
+    "attempt": 6084,
+    "place_id": "gn-3514785",
+    "input": {
+      "place": {
+        "place_id": "gn-3514785",
+        "name": "Venustiano Carranza",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.33851,
+        "lon": -92.56317
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Venustiano Carranza, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/Venustiano_Carranza,_Chiapas",
+          "text": "Venustiano Carranza is a city and municipality in the Mexican state of Chiapas in southern Mexico.\nAs of 2010, the municipality had a total population of 61,341, up from 52,833 as of 2005. It covers an area of 1396.1 km2.\nAs of 2010, the city of Venustiano Carranza had a population of 15,496. Other than the city of Venustiano Carranza, the municipality had 436 localities, the largest of which (with 2010 populations in parentheses) were: San Francisco Pujiltic (7,137), Soyatitán (3,904), Ricardo Flores Magón (3,483), Aguacatenango (3,413), Presidente Echeverría (Laja Tendida) (3,084), classified as urban, and San Francisco (El Calvito) (2,409), Vicente Guerrero (1,997), Paraíso del Grijalva (1,930), Guadalupe Victoria (1,767), Mariano Matamoros (1,566), Miguel Hidalgo (1,178), and El Puerto (1,092), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "venustiano carranza",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "venustiano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carranza",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6129,
+    "attempt": 6085,
+    "place_id": "gn-3523590",
+    "input": {
+      "place": {
+        "place_id": "gn-3523590",
+        "name": "Mapastepec",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 15.43358,
+        "lon": -92.90039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mapastepec",
+          "url": "https://en.wikipedia.org/wiki/Mapastepec",
+          "text": "Mapastepec is a town and municipality in the Mexican state of Chiapas in southern Mexico. Its name derives from the place name mapachtepec, \"Hill of the Raccoon\", a compound of the Nahuatl words mapachi (\"raccoon\") and tepetl (\"mountain\").\nMapestepec is on the Pacific Ocean, with roughly half of its territory on the Pacific Coastal Plain and half in the Sierra Madre de Chiapas mountain range. It is partly within two of Mexico's Biosphere Reserves, featuring a number of important species, including the horned guan (Oreophasis derbianus), Baird's tapir (Tapirus bairdii), the Jaguar (Panthera once) and rare cloud forest and mangrove habitat.\nThe primary sector makes up over half of the local economy. Key products include cheese and dairy products and the local Ataulfo mango."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "mapastepec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6130,
+    "attempt": 6086,
+    "place_id": "gn-4456703",
+    "input": {
+      "place": {
+        "place_id": "gn-4456703",
+        "name": "Boone",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 36.21679,
+        "lon": -81.67455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boone, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Boone,_North_Carolina",
+          "text": "Boone is a town in and the county seat of Watauga County, North Carolina, United States. Located in the Blue Ridge Mountains of western North Carolina, Boone is the home of Appalachian State University and the headquarters of the disaster and medical relief organization Samaritan's Purse. The population was 19,092 at the 2020 census.\nThe town is named for famous American pioneer and explorer Daniel Boone, and every summer since 1952 the town has hosted an outdoor amphitheatre drama, Horn in the West, portraying the British settlement of the area during the American Revolutionary War and featuring the contributions of its namesake. It is the largest community and the economic hub of the seven-county region of Western North Carolina known as the High Country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "boone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6131,
+    "attempt": 6087,
+    "place_id": "gn-5108815",
+    "input": {
+      "place": {
+        "place_id": "gn-5108815",
+        "name": "Bensonhurst",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.60177,
+        "lon": -73.99403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bensonhurst, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Bensonhurst,_Brooklyn",
+          "text": "Bensonhurst is a residential neighborhood in the southwestern section of the New York City borough of Brooklyn. The neighborhood is bordered on the northwest by 14th Avenue, on the northeast by 60th Street, on the southeast by Avenue P and 22nd Avenue (Bay Parkway) and on the southwest by 86th Street. It is adjacent to the neighborhoods of Dyker Heights to the northwest, Borough Park and Mapleton to the northeast, Bath Beach to the southwest, and Gravesend to the southeast.\nBensonhurst contains several major ethnic enclaves. It was traditionally known as a Little Italy of Brooklyn. Bensonhurst today is home to Brooklyn's second Chinatown and has the largest population of residents born in China and Hong Kong of any neighborhood in New York City. The neighborhood accounts for 9.5% of the 330,000 Chinese-born residents of the city, based on data from 2007 to 2011.\nBensonhurst is part of Brooklyn Community District 11, and its primary ZIP Codes are 11204 and 11214. It is patrolled by the 62nd Precinct of the New York City Police Department. Politically it is represented by the New York City Council's 38th, 43rd, and 47th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "bensonhurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6132,
+    "attempt": 6088,
+    "place_id": "gn-5127550",
+    "input": {
+      "place": {
+        "place_id": "gn-5127550",
+        "name": "Morrisania",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.82927,
+        "lon": -73.90653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morrisania, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Morrisania,_Bronx",
+          "text": "Morrisania ( MORR-ih-SAY-nee-ə) is a residential neighborhood in the southwestern Bronx, New York City, New York. Its boundaries are the Cross Bronx Expressway to the north, Crotona-Prospect Avenue to the east, East 163rd Street to the south, and Webster Avenue to the west. Third Avenue is the primary thoroughfare through Morrisania.\nThe name derives from the Manor of Morrisania, the 2,000-acre (810 ha) estate of the powerful and aristocratic Morris family, who at one time owned most of the Bronx as well as much of New Jersey. The family includes Lewis Morris, 4th Lord of the Manor and signatory to the United States Declaration of Independence, and Gouverneur Morris, the penman of the United States Constitution. Both are buried in the crypt at St. Ann's Church of Morrisania. Today the name is most commonly associated with the neighborhood of Morrisania, which is only a small corner of the original Morrisania.\nMorrisania is part of Bronx Community Board 3, and its ZIP Codes include 10456 and 10459. The area is patrolled by the NYPD's 42nd Precinct. NYCHA property in the area is patrolled by P.S.A. 7 at 737 Melrose Avenue in the Melrose section of the Bronx."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "morrisania",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6133,
+    "attempt": 6089,
+    "place_id": "gn-5325011",
+    "input": {
+      "place": {
+        "place_id": "gn-5325011",
+        "name": "Ashland",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.69465,
+        "lon": -122.11385
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashland, California",
+          "url": "https://en.wikipedia.org/wiki/Ashland,_California",
+          "text": "Ashland is a census-designated place (CDP) and unincorporated community in Alameda County, California, United States. The population was 23,823 at the 2020 census. Ashland is located in the historic Eden Township between the city of San Leandro to the north, the unincorporated community of Cherryland to the south, the unincorporated community of Castro Valley to the east, and the unincorporated community of San Lorenzo to the southwest.\nAshland shares a ZIP code with the neighboring unincorporated community of San Lorenzo to the southwest, as well as the nearby cities of Hayward to the south and San Leandro to the north.\nAshland has been informally, albeit incorrectly, known as \"unincorporated San Leandro\" or \"unincorporated Hayward\"  Because Ashland does not have its own ZIP code designation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ashland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6134,
+    "attempt": 6090,
+    "place_id": "gn-5404794",
+    "input": {
+      "place": {
+        "place_id": "gn-5404794",
+        "name": "Universal City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.1389,
+        "lon": -118.35341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Universal City, California",
+          "url": "https://en.wikipedia.org/wiki/Universal_City,_California",
+          "text": "Universal City is an unincorporated area within the San Fernando Valley in Los Angeles County, California, United States. Located 2 miles (3.2 km) north of Hollywood and 10 miles (16 km) northwest of downtown Los Angeles, it includes the film studio complex Universal Studios Lot and the theme park Universal Studios Hollywood, as well as the Universal CityWalk shopping and entertainment center. Universal City is nearly surrounded by Los Angeles, with the area's northeastern corner touching the city of Burbank. The boundaries were adjusted in January 2015 to follow historic and planned on-site land use patterns, such as having the entire theme park within the unincorporated part of Universal City.\nUniversal City's ZIP code is 91608, and the community is inside area code 818."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "universal city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "universal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6135,
+    "attempt": 6091,
+    "place_id": "gn-5809983",
+    "input": {
+      "place": {
+        "place_id": "gn-5809983",
+        "name": "Sequim",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.07963,
+        "lon": -123.10234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sequim, Washington",
+          "url": "https://en.wikipedia.org/wiki/Sequim,_Washington",
+          "text": "Sequim (  SKWIM) is a city in Clallam County, Washington, United States. It is located on the north side of the Olympic Peninsula between the Dungeness River and Sequim Bay. The city is south of the Strait of Juan de Fuca and north of the Olympic Mountains. The population was 8,024 as of the 2020 census; the estimated population in 2023 was 8,203. Sequim is connected to nearby Port Angeles by U.S. Route 101, which runs south of the city's downtown.\nThe city lies within the rain shadow of the Olympic Mountains and receives, on average, less than 16 inches (410 mm) of rain per year – about the same as Los Angeles – giving rise to the region's local nickname of Sunny Sequim. However, the city is relatively close to some of the wettest temperate rainforests of the contiguous United States. This climate anomaly is sometimes called the \"Blue Hole of Sequim\". Fogs and cool breezes from the Strait of Juan de Fuca make Sequim's climate more humid than would be expected from the low average rate of annual precipitation.\nSequim and the surrounding area are particularly known for the commercial cultivation of lavender, supported by the unique climate. The city is nicknamed the \"Lavender Capital of North America\". The area is also known for its Dungeness crab, named for the nearby Dungeness Spit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "sequim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6136,
+    "attempt": 6092,
+    "place_id": "gn-5814647",
+    "input": {
+      "place": {
+        "place_id": "gn-5814647",
+        "name": "Vashon",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.44732,
+        "lon": -122.45985
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vashon, Washington",
+          "url": "https://en.wikipedia.org/wiki/Vashon,_Washington",
+          "text": "Vashon (, VASH-on) is a census-designated place (CDP) in King County, Washington, United States. It covers an island alternately called Vashon Island or Vashon–Maury Island, the largest island in Puget Sound south of Admiralty Inlet. Before the construction of a tombolo built in 1913, Vashon Island and Maury Island were connected only during low tide; now they are considered a tied island.\nThe CDP's population was 11,055 at the 2020 census, up from 10,624 in 2010. The CDP covers an area of 36.9 square miles (95.6 km2).\nThe island is connected to West Seattle and the Kitsap Peninsula to the north and Tacoma to the south via the Washington State Ferries system, as well as to Downtown Seattle via the King County Water Taxi. The island has resisted the construction of a fixed bridge to preserve its relative isolation and rural character. Vashon Island is also known for its annual strawberry festival, sheepdog trials, and agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "vashon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6137,
+    "attempt": 6093,
+    "place_id": "gn-6232192",
+    "input": {
+      "place": {
+        "place_id": "gn-6232192",
+        "name": "New Lynn",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.90694,
+        "lon": 174.68704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Lynn",
+          "url": "https://en.wikipedia.org/wiki/New_Lynn",
+          "text": "New Lynn is a residential suburb in West Auckland, New Zealand, located 10 kilometres to the southwest of the Auckland city centre. The suburb is located along the Whau River, one of the narrowest points of the North Island, and was the location of Te Tōanga Waka, a traditional waka portage between the Waitematā and Manukau harbours.\nThe settlement developed in the early 20th century due to the brick and pottery industry, and in 1963 became a major commercial centre for Auckland with the opening of LynnMall, the first American-style shopping centre in New Zealand. Since 2010, New Lynn has been the focus of large-scale urban development, with the introduction of medium and high density housing close to the town centre and train station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "new lynn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lynn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6138,
+    "attempt": 6094,
+    "place_id": "gn-646798",
+    "input": {
+      "place": {
+        "place_id": "gn-646798",
+        "name": "Mankkaa",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.19424,
+        "lon": 24.76996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mankkaa",
+          "url": "https://en.wikipedia.org/wiki/Mankkaa",
+          "text": "Mankkaa (Finnish) or Mankans (Swedish) is a suburb of Espoo, located between Tapiola and Kauniainen, with a population of 8,468 (2023), of which 555 speak Swedish as a first language (2023). Most of Mankkaa falls under the postal code 02180, with 02630 being the code of the areas situated near the Helsinki-Turku freeway in the north. The area under postal code 02180 has one of the highest wage incomes in whole of Finland. [1]\nThe main thoroughfare in Mankkaa is Mankkaantie, which had been heavily congested with traffic during rush hours until Ring II was completed in 2000. The second major road is Sinimäentie, which is lined with large office buildings and stores.\nThe first Lidl in Espoo was opened in Mankkaa in 2003.\nTeatteri Hevosenkenkä, a theatre catering to a child and preteen audience, is located in Mankkaa. The theatre was founded in 1975 by Kristiina Aropaltio and Sara Sirén. However, the building itself dates back to 1899 and was previously used as a school. Teatteri Hevosenkenkä also houses an art gallery with changing exhibitions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "mankkaa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6139,
+    "attempt": 6095,
+    "place_id": "gn-842048",
+    "input": {
+      "place": {
+        "place_id": "gn-842048",
+        "name": "Runosmäki",
+        "country": "Finland",
+        "subdivision": "Southwest Finland",
+        "lat": 60.48919,
+        "lon": 22.25169
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Runosmäki",
+          "url": "https://en.wikipedia.org/wiki/Runosmäki",
+          "text": "Runosmäki (Swedish Runosbacken) is a district and a suburb of the city of Turku, Finland, located approximately six kilometres to the north of the city centre. It is the largest district in the city, with a population of 10,296 (as of 2004). However, the area of the district also includes the nearby suburb of Länsinummi in addition to Runosmäki proper, which has a population of about 8,200 and thus it is only the second-largest suburb of Turku, after Varissuo.\nThe district's annual population growth is 0.42%. 13.42% of its population is aged under 15, while 16.78% are over 65 years old. About ten percent of the population are aged between 50 and 54, and Runosmäki has one of the highest median ages in Turku. The district's linguistic makeup is 91.82% Finnish, 1.60% Swedish, and 6.58% other.\n\nRunosmäki is mostly composed of apartment blocks built in the 1970s. The services in the suburb include several schools, a library, a health centre, sports facilities and an old people's home.\nNotable people from Runosmäki\n\nAlbion Ademi, professional football player\nLukas Hradecky, professional football player for Bayer Leverkusen, and the captain of the Finland national football team\nKaan Kairinen, professional football player for Sparta Prague and the Finland national football team\nJoni Kauko, professional football player\nElli Pikkujämsä, professional football player for Racing Louisville, Finland women's national football team, Youth Olympic medalist in snowboarding."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "runosmaki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6140,
+    "attempt": 6096,
+    "place_id": "gn-843403",
+    "input": {
+      "place": {
+        "place_id": "gn-843403",
+        "name": "Niittykumpu",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.17093,
+        "lon": 24.76421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niittykumpu",
+          "url": "https://en.wikipedia.org/wiki/Niittykumpu",
+          "text": "Niittykumpu (Finnish) or Ängskulla (Swedish) is a district of Espoo, a city in Finland. The districts belongs to the major district of Suur-Tapiola. The district, partly located on the eastern lands of the former Gräsa manor, started developing along with the rest of southern Espoo in the 1930s when the street Jorvaksentie (now known as the Länsiväylä highway) was completed. The first significant construction phase of Niittykumpu happened during the 1960s and 1970s, when a large number of terraced houses were built in the area because of rapid growth of the city of Espoo. Construction slowed down during the early 1990s depression in Finland. Construction picked up pace again in the 2000s and increased even further during the construction of the Länsimetro transport line.\nThe oldest lower stage primary school, the Niittykumpu school, is located in Niittykumpu. The automobile dealership concentration around the street Merituulentie has been called \"the automobile street of Espoo\", even though some of the dealerships have slowly moved away from Niittykumpu because of further construction of Länsimetro.\nAt the turn from 2021 to 2022 Niittykumpu had a population of 7,085 and a population density of 3,374 people per square kilometre. Niittykumpu is served by the Länsimetro line belonging to the trunk routes of the Helsinki Regional Transport Authority, and the Niittykumpu metro station is located in connection with the metro centre located in southern part of the district and the shopping centre Niitty."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "niittykumpu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6141,
+    "attempt": 6097,
+    "place_id": "gn-972147",
+    "input": {
+      "place": {
+        "place_id": "gn-972147",
+        "name": "Namakgale",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -23.93399,
+        "lon": 31.03119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Namakgale",
+          "url": "https://en.wikipedia.org/wiki/Namakgale",
+          "text": "Namakgale is a large township lying 12 km outside Phalaborwa in Mopani District in the Limpopo province of South Africa. Its nearest neighbouring townships are Lulekani, Makhushane, Maseke and Mashishimale on the R71 road to Gravelotte (GaMaenetje). It is next to the Kruger National Park on the north eastern part of the Limpopo province previously Northern Transvaal.\nThe township enjoys the annual marula festival during February and March, when the ripe marula fruit harvest is at its peak, and the marula traditional beer is brewed. This is where the Amarula liqueur is made, and the pulp is shipped to Cape Town for further processing. The citizens of Namakgale enjoy the Mopani worms first harvest during March and April, and the second harvest in December. The Mopani tree and the Morula tree are important to the residents of the Namakgale as they bring important community subsistence farming."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "namakgale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6142,
+    "attempt": 6098,
+    "place_id": "gn-9972408",
+    "input": {
+      "place": {
+        "place_id": "gn-9972408",
+        "name": "Flemington",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.78825,
+        "lon": 144.93001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flemington, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Flemington,_Victoria",
+          "text": "Flemington is an inner-city suburb in Melbourne, Victoria, Australia, 5 km (3.1 mi) north-west of Melbourne's Central Business District, located within the Cities of Melbourne and Moonee Valley local government areas. Flemington recorded a population of 7,025 at the 2021 census.\nFlemington is located between the Maribyrnong River and the Moonee Ponds Creek and includes the locality of Newmarket, in which the main commercial area Racecourse Road is located.\nThe suburb was named by settler James Watson after Flemington Estate in Scotland. Another version of the origin of the name relates to Robert Fleming, a Brunswick resident who had owned land beside the Saltwater River and operated a butchery there.\nThe Melbourne Cup Thoroughbred horse race has been held at Flemington Racecourse since 1861."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "flemington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6143,
+    "attempt": 6099,
+    "place_id": "gn-2165200",
+    "input": {
+      "place": {
+        "place_id": "gn-2165200",
+        "name": "Glenroy",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.7,
+        "lon": 144.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glenroy, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Glenroy,_Victoria",
+          "text": "Glenroy (  glen-ROY)  is a suburb in Melbourne, Victoria, Australia, 12 km (7.5 mi) north of Melbourne's Central Business District, located within the City of Merri-bek local government area. Glenroy recorded a population of 23,792 at the 2021 census.\nGlenroy is located in the northwest of the City of Merri-bek, and is bounded by the Western Ring Road in the north, the Moonee Ponds Creek in the west, New Road, Victoria Street and Rhodes Parade in the south and West Street, Hilton Street, Box Forest Road and the Upfield railway line in the east.\nProminent features include the private Northern Golf Club, a major retail district centred on the Glenroy railway station and the Northern Memorial Park extension to the Fawkner General Cemetery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "glenroy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6144,
+    "attempt": 6100,
+    "place_id": "gn-2345498",
+    "input": {
+      "place": {
+        "place_id": "gn-2345498",
+        "name": "Damboa",
+        "country": "Nigeria",
+        "subdivision": "Borno State",
+        "lat": 11.15534,
+        "lon": 12.75638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Damboa",
+          "url": "https://en.wikipedia.org/wiki/Damboa",
+          "text": "Damboa is a city and local government area of Borno State, Nigeria. \nIt has an area of 6,219 km² and had a population of 233,200 at the 2006 census.\nThe postal code of the area is 601.\nThe original settlers of Damboa are the Marghi people, but due to the booming economy of Damboa in the Calabash farming business during this period made many Kanuri people keep travelling to and fro to Damboa in the first place and later end up settling and marrying in Damboa at a later stage. As a result, many of the Damboa people end up becoming half Kanuri and Half Marghi although there are still pure Marghi family as well as pure Kanuri family even as at today. This cultural assimilation brought a little discrepancy among the indigenous of Damboa because some people in Damboa prefers to be identified as Marghi while some other ones preferred to be identified as Kanuris, but the truth is that Damboa composed of Marghi majority and Kanuri minority in the town settle at the Local Government Area.[1]"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 123,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "damboa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

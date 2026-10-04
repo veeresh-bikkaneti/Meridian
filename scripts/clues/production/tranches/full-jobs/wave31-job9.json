@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 6205,
+    "attempt": 6161,
+    "place_id": "gn-3084062",
+    "input": {
+      "place": {
+        "place_id": "gn-3084062",
+        "name": "Świebodzin",
+        "country": "Poland",
+        "subdivision": "Lubusz",
+        "lat": 52.24751,
+        "lon": 15.53355
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Świebodzin",
+          "url": "https://en.wikipedia.org/wiki/Świebodzin",
+          "text": "Świebodzin (Polish: [ɕfjɛˈbɔd͡ʑin]; German: Schwiebus) is a town in western Poland with 20,744 inhabitants (2024). It is the capital of Świebodzin County in Lubusz Voivodeship.\nŚwiebodzin is an important transportation hub, lying at the crossroads of the Polish national roads 2 and 3. The A2 motorway and S3 expressway cross near the town. Świebodzin is located 39 km (24 mi) northeast of Zielona Góra, one of the two voivodeship's capitals, 195 km (121 mi) northwest of Wrocław and 110 km (68 mi) west of Poznań; 70 km (43 mi) east of the German border and 130 km (81 mi) east of Berlin. The crowned statue of Christ in Świebodzin, completed in November 2010, is one of the world's tallest statues of Jesus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "swiebodzin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6206,
+    "attempt": 6162,
+    "place_id": "gn-3109493",
+    "input": {
+      "place": {
+        "place_id": "gn-3109493",
+        "name": "Sants",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.37426,
+        "lon": 2.13826
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sants",
+          "url": "https://en.wikipedia.org/wiki/Sants",
+          "text": "Sants (Catalan pronunciation: [sans]) is a neighbourhood in the southern part of Barcelona. It belongs to the district of Sants-Montjuïc and is bordered by the districts of Eixample to the northeast, Les Corts to the northwest, and by the municipality of l'Hospitalet de Llobregat to the south. Although old-fashioned, its name is sometimes still written as Sans in some Spanish-language sources.\nThe main artery of the neighbourhood is Carrer de Sants, popularly known as Carretera de Sants, which runs westwards from Plaça Espanya to the neighbouring municipality of L'Hospitalet de Llobregat. It is one of the largest commercial streets in Barcelona. \nBarcelona Sants railway station, the major railway station in Barcelona, and the Parc de l'Espanya Industrial are both located in Sants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "sants",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6207,
+    "attempt": 6163,
+    "place_id": "gn-3119536",
+    "input": {
+      "place": {
+        "place_id": "gn-3119536",
+        "name": "Lalín",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.66085,
+        "lon": -8.11285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lalín",
+          "url": "https://en.wikipedia.org/wiki/Lalín",
+          "text": "Lalín is a municipality in the north of the province of Pontevedra, in the autonomous community of Galicia, Spain. It is the capital of the comarca of O Deza.\nThe town has a population of 20,158 inhabitants (2014). The surface of the municipality is 326.8 km2, being the biggest municipality in the province of Pontevedra and the fourth of Galicia, with a population density of 63.85 inhabitants/km2.\nLocated in the northeast of the province of Pontevedra; being bordered by Silleda and Vila de Cruces to the northwest, Forcarei to the west, Agolada and Rodeiro to the northeast, Dozón to the southeast and O Irixo to the south, all of them being part of the region of Deza, except Forcarei and O Irixo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "lalin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6208,
+    "attempt": 6164,
+    "place_id": "gn-3200829",
+    "input": {
+      "place": {
+        "place_id": "gn-3200829",
+        "name": "Fojnica",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.95952,
+        "lon": 17.90288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fojnica",
+          "url": "https://en.wikipedia.org/wiki/Fojnica",
+          "text": "Fojnica (Serbian Cyrillic: Фојница) is a town and municipality located in Central Bosnia Canton of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. It is located west of the capital Sarajevo, in the valley of the Fojnička River, tributary of the river Bosna. Fojnica is a small town in central Bosnia and is also a balneological resort.\nCultural sites in Fojnica include the Holy Spirit Franciscan Monastery which houses an important part of the nation's cultural heritage maintained by the Franciscan Province of Bosna Srebrena.\nThe Franciscan monastery in Fojnica has a library of philosophical and theological works printed from the 16th to the 19th centuries, with some dating back to 1481. The monastery is currently under renovation.\nQueen Catherine of Bosnia sought refuge from the Ottomans in Kozograd, royal summer-residence in the mountains near Fojnica at the time, before making her way to Rome.\nFojnica also has a spa center with thermal water, Reumal Fojnica. The Prokoško Lake is located in the west of the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "fojnica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6209,
+    "attempt": 6165,
+    "place_id": "gn-320437",
+    "input": {
+      "place": {
+        "place_id": "gn-320437",
+        "name": "Buldan",
+        "country": "Türkiye",
+        "subdivision": "Denizli",
+        "lat": 38.045,
+        "lon": 28.83056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buldan",
+          "url": "https://en.wikipedia.org/wiki/Buldan",
+          "text": "Buldan is a municipality and district of Denizli Province, Turkey. Its area is 523 km2, and its population is 26,630 (2022). Buldan district area neighbors to the east and the south three other districts of the same province, namely Güney, Pamukkale and Sarayköy, and to the west by the areas of three districts of Aydın Province, Buharkent, Kuyucak and Karacasu, and to the northwest by Sarıgöl district of Manisa Province.\nThe town of Buldan is located at a distance of 46 km (29 mi) from the province seat of Denizli and lies at an altitude of 690 meters. It extends along a pretty hilltop area, with hillsides covered with pomegranates, figs, vines and blackberries. There are lovely views from the high meadows. Kestane Deresi (Chestnut Stream) is a favourite popular excursion spot situated in the upper parts of the main town.\nBuldan's depending township of Yenicekent is the site of ancient Tripolis of Phrygia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "buldan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6210,
+    "attempt": 6166,
+    "place_id": "gn-3532964",
+    "input": {
+      "place": {
+        "place_id": "gn-3532964",
+        "name": "Alvarado",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.77143,
+        "lon": -95.76181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alvarado, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Alvarado,_Veracruz",
+          "text": "Alvarado (officially: Ilustre, Heroica y Generosa Ciudad y Puerto de Alvarado) is a city in the Mexican state of Veracruz. The city also serves as the municipal seat for the surrounding municipality of the same name. It is located 64 km (40 mi) from the city of Veracruz, Veracruz, on Federal Highways 180 and 125. Alvarado is bordered by Boca del Río, Tlalixcoyan, Medellín, Ignacio de la Llave, Ciudad Lerdo de Tejada, Tlacotalpan and Acula. It is 10 m (33 ft) above sea level. It lies in the so-called \"Region Papaloapan\" bordered on the south by the municipalities of Acula, Tlacotalpan and Lerdo de Tejada, on the east by the Gulf of Mexico and on the west by Ignacio de la Llave.\nThe geographic size of Alvarado is 840 square kilometres (320 sq mi).\nThe INEGI said that the population by 2000 was 22,608 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "alvarado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6211,
+    "attempt": 6167,
+    "place_id": "gn-3657670",
+    "input": {
+      "place": {
+        "place_id": "gn-3657670",
+        "name": "Gualaceo",
+        "country": "Ecuador",
+        "subdivision": "Azuay",
+        "lat": -2.89418,
+        "lon": -78.77907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gualaceo",
+          "url": "https://en.wikipedia.org/wiki/Gualaceo",
+          "text": "Gualaceo, nicknamed “El Jardin del Azuay” (The Garden of Azuay), is a city in the Azuay Province of Ecuador and the capital of the eponymous Gualaceo Canton. It is located 35 km east from the city of Cuenca and is one of the biggest cities in Azuay.\nGualaceo is located in the Sierra Region of Ecuador, nestled in the Santa Bárbara valley in the Hoya de Paute, at an altitude of 2,330 meters above sea level. and an Andean valley climate of 17 degrees average. It is crossed by four rivers that are part of the Santiago hydrographic demarcation: San Francisco, Santa Bárbara, Guaymincay and San José. It is nicknamed \"Jardín del Azuay\" for its natural landscapes and the diversity of flora."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "gualaceo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6212,
+    "attempt": 6168,
+    "place_id": "gn-3666719",
+    "input": {
+      "place": {
+        "place_id": "gn-3666719",
+        "name": "Trinidad",
+        "country": "Colombia",
+        "subdivision": "Casanare Department",
+        "lat": 5.40849,
+        "lon": -71.66196
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trinidad, Casanare",
+          "url": "https://en.wikipedia.org/wiki/Trinidad,_Casanare",
+          "text": "Trinidad (Spanish pronunciation: [tɾiniˈðað]) is a town and municipality in the Department of Casanare, Colombia.\nIn pre-Columbian times, the region was inhabited by the Achaguas, Guahibos and Chiricoas Indians, who were warrior and polygamous nomads, mainly engaged in deer hunting. Between 1720 and 1736, the Jesuit missionary Juan Rivero toured the region evangelizing the natives. On 12 February 1724 the town of Trinidad was founded by a group of indigenous Chiricoas, led by cacique Chacuamare, on the banks of the Meta River, on Rivero's recommendation. Subsequently, the town moved to the banks of the Pauto River. From Trinidad, the legendary llanero, true hero of the Vargas Swamp, is known from Trinidad, who contributed under his ideas to defeat the royalists in Boyacá."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "trinidad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6213,
+    "attempt": 6169,
+    "place_id": "gn-3686574",
+    "input": {
+      "place": {
+        "place_id": "gn-3686574",
+        "name": "Chinácota",
+        "country": "Colombia",
+        "subdivision": "Norte de Santander Department",
+        "lat": 7.60731,
+        "lon": -72.60108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chinácota",
+          "url": "https://en.wikipedia.org/wiki/Chinácota",
+          "text": "Chinácota is a small town and municipality located in the Norte de Santander department in Colombia. This department is located in the north-eastern region of the country, near the border with Venezuela. Chinácota has a population of approximately 19,845 people (town plus surroundings, as of June 2024) according to statistics provided by DANE (Departamento Administrativo Nacional de Estadistica / National Administrative Department of Statistics) on a July 30 2025 report.\nThe municipality of Chinácota extends over 167 square kilometers and is located at an approximate altitude of 1,175 meters over the sea level. The average temperature range is between 12 and 22 degrees Celsius.\nThe urban area of Chinácota comprises about 29 neighborhoods and includes a residential count of approximately 2,600 houses.  Chinácota was expected to grow by about 66% by 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "chinacota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6214,
+    "attempt": 6170,
+    "place_id": "gn-3901903",
+    "input": {
+      "place": {
+        "place_id": "gn-3901903",
+        "name": "Uyuni",
+        "country": "Bolivia",
+        "subdivision": "Potosí Department",
+        "lat": -20.45967,
+        "lon": -66.82503
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uyuni",
+          "url": "https://en.wikipedia.org/wiki/Uyuni",
+          "text": "Uyuni (Aymara, uyu pen, yard, cemetery, -ni a suffix to indicate ownership, \"the one that has got a pen\", \"the one with a pen\") is a city in the southwest of Bolivia.\nUyuni primarily serves as a gateway for tourists visiting the world's largest salt flats, the nearby Salar de Uyuni. Each year the city receives approximately 60,000 visitors from around the globe. The city also acts as a gateway for commerce and traffic crossing into and out of Bolivia from and to Chile, and there is a customs and immigration post downtown. Agriculture in the area is generally limited to quinoa, llamas, and sheep.\nFounded in 1890 as a trading post, the city has a population of 29,672 (2012 official census). The town has an extensive street-market. It lies at the edge of an extensive plain at an elevation of 3,700 m (12,139 ft) above sea level, with more mountainous country to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "uyuni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6215,
+    "attempt": 6171,
+    "place_id": "gn-4048662",
+    "input": {
+      "place": {
+        "place_id": "gn-4048662",
+        "name": "Paducah",
+        "country": "United States",
+        "subdivision": "Kentucky",
+        "lat": 37.08339,
+        "lon": -88.60005
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paducah, Kentucky",
+          "url": "https://en.wikipedia.org/wiki/Paducah,_Kentucky",
+          "text": "Paducah (  pə-DOO-kə) is a city in the Upland South and the county seat of McCracken County, Kentucky, United States. The most populous city in the Jackson Purchase region, it is located in the Southeastern United States at the confluence of the Tennessee and the Ohio rivers, halfway between St. Louis, Missouri, to the northwest and Nashville, Tennessee, to the southeast. As of the 2020 census, the population was 27,137, up from 25,024 in 2010. Twenty blocks of the city's downtown have been designated as a historic district and listed on the National Register of Historic Places.\nPaducah is the principal city of the Paducah metropolitan area, which includes McCracken, Ballard, Carlisle and Livingston counties in Kentucky and Massac County in Illinois. The total population of the metro area was 103,481 in 2020. The Paducah–Mayfield combined statistical area had a total population of 140,138. Paducah is a home-rule class city under Kentucky law."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "paducah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6216,
+    "attempt": 6172,
+    "place_id": "gn-4459261",
+    "input": {
+      "place": {
+        "place_id": "gn-4459261",
+        "name": "Carolina Beach",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 34.03517,
+        "lon": -77.8936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carolina Beach, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Carolina_Beach,_North_Carolina",
+          "text": "Carolina Beach is a beach town in New Hanover County, North Carolina, United States, situated about 12 miles (19 km) south of Wilmington International Airport in southeastern coastal North Carolina. As of the 2020 census, the city population was 6,564. It is part of the Wilmington metropolitan area. The community of Wilmington Beach was annexed by the town in 2000.\nCarolina Beach lies at the northern end of Pleasure Island, which it shares with the community of Kure Beach, south of the inlet that separates the island from the unincorporated community of Sea Breeze. The town has a land area of 2.45 square miles (6.3 km2), extending along the island from Freeman Park in the north to Alabama Avenue in the south. The town borders Kure Beach, which is directly to the south of Carolina Beach. During the summer months, the town of Carolina Beach has live Beach music every Friday night on the boardwalk right near town center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "carolina beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carolina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6217,
+    "attempt": 6173,
+    "place_id": "gn-4504164",
+    "input": {
+      "place": {
+        "place_id": "gn-4504164",
+        "name": "Smithville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.49401,
+        "lon": -74.45709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Smithville, Atlantic County, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Smithville,_Atlantic_County,_New_Jersey",
+          "text": "Smithville is an unincorporated community and census-designated place (CDP) located within Galloway Township, in Atlantic County, in the U.S. state of New Jersey, that was established as part of the 2010 United States census. Smithville is located 15 miles (24 km) north of and inland from Atlantic City. As of the 2010 Census, the CDP's population was 7,242.\nAlthough Smithville has existed as a community since the American Revolutionary War, most of the community remained very rural until the 1960s when the Smithville Towne Center, a tourist attraction containing over 80 shops, opened. The Towne Center was expanded to include numerous rides and other shops named \"The Village Greene\", which was the centerpiece of a large planned community developed since the 1980s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "smithville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6218,
+    "attempt": 6174,
+    "place_id": "gn-4758495",
+    "input": {
+      "place": {
+        "place_id": "gn-4758495",
+        "name": "Farmville",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.3021,
+        "lon": -78.39194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farmville, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Farmville,_Virginia",
+          "text": "Farmville is a town in Prince Edward (south of the Appomattox river) and Cumberland (north of the Appomattox river) counties in the Commonwealth of Virginia, and is the county seat of the former. The population was 7,473 at the 2020 census. Farmville was a major tobacco growing area in Virginia for over 100 years.\nFarmville developed near the headwaters of the Appomattox River in central Virginia; the waterway was long its main transportation access to other markets. In the 19th century, a railroad through Farmville was developed, operating until the early 2000s, and subsequently adapted as the High Bridge Trail State Park, a rail trail park, approximately 30-mile-in length (48 km). US 15, VA 45 and US 460 now intersect at Farmville. The town is the home of Longwood University and is the town nearest to Hampden–Sydney College, which together comprise the core of the town's modern economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "farmville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6219,
+    "attempt": 6175,
+    "place_id": "gn-4839435",
+    "input": {
+      "place": {
+        "place_id": "gn-4839435",
+        "name": "New Milford",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.57704,
+        "lon": -73.40845
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Milford, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/New_Milford,_Connecticut",
+          "text": "New Milford is a town in Litchfield County, Connecticut, United States. The town, part of Greater Danbury, as well as the New York Metropolitan Area, has a population of 28,115 as of the 2020 census. New Milford is located within the Western Connecticut Planning Region.\nNew Milford is located roughly 50 miles (80 km) west of Hartford, 63 miles (101 km) northeast of New York City proper, and 80 miles from Midtown Manhattan.\nNew Milford lies 14 miles (23 km) north of Danbury on the banks of the Housatonic River, and shares its border with the northeastern shore of Candlewood Lake. It is the largest town in the state of Connecticut in terms of land area at nearly 63.7 mi2 (164.9822 km2). The town center is listed as a census-designated place (CDP).\nNew Milford consists of a number of town sub-divisions (i.e. boroughs, districts, communities, or neighborhoods), including Chimney Point, Gaylordsville, Merryall, and Northville. The town's infrastructure largely branches off from either side of the highway routes U.S. 7 and U.S. 202, which intersect and split within the town and together form its main thoroughfare.\nThe area constituting contemporary New Milford was originally inhabited by the indigenous Wawyachtonoc people, while the town of New Milford itself was formally established by English colonists in the early 18th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "new milford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "milford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6220,
+    "attempt": 6176,
+    "place_id": "gn-4940190",
+    "input": {
+      "place": {
+        "place_id": "gn-4940190",
+        "name": "Hyannis",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.65289,
+        "lon": -70.2828
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hyannis, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Hyannis,_Massachusetts",
+          "text": "Hyannis  is the largest of the seven villages in the town of Barnstable, Massachusetts,  United States. It is the commercial and transportation hub of Cape Cod and was designated an urban area at the 1990 census. Because of this, many refer to Hyannis as the \"Capital of the Cape\". It contains a majority of the Barnstable town offices and two important shopping districts: the historic downtown Main Street and the Route 132 Commercial District, including Cape Cod Mall and Independence Park, headquarters of Cape Cod Potato Chips. Cape Cod Hospital in Hyannis is the largest medical facility on Cape Cod.\nHyannis is a major tourist destination and the primary ferry boat and general aviation link for passengers and freight to Nantucket Island. Hyannis also provides secondary passenger access to the island of Martha's Vineyard, with the primary passenger access to Martha's Vineyard being located in Woods Hole, a village in the nearby town of Falmouth. Due to its large natural harbor, Hyannis is the largest recreational boating and second largest commercial fishing port on Cape Cod, behind only Provincetown.\nThe village is the namesake of the former United States Naval ship USS Hyannis (YTB-817)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "hyannis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6221,
+    "attempt": 6177,
+    "place_id": "gn-5123280",
+    "input": {
+      "place": {
+        "place_id": "gn-5123280",
+        "name": "Kensington",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.64621,
+        "lon": -73.97069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kensington, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Kensington,_Brooklyn",
+          "text": "Kensington is a neighborhood in the central portion of the New York City borough of Brooklyn, located south of Prospect Park and Green-Wood Cemetery. Kensington and Parkville are bordered by the Prospect Park South and Ditmas Park subsections of Flatbush to the east; Windsor Terrace to the north; Borough Park to the west; and Midwood to the south.\nKensington is a predominantly residential area, with housing types that include brick rowhouses, detached one-family Victorians, and apartment buildings. Pre-war brick apartment buildings dominate the Ocean Parkway and Coney Island Avenue frontage, including many that operate as co-ops. The neighborhood has a diverse population with residents of many ethnicities. The main commercial streets are Coney Island Avenue, Church Avenue, Ditmas Avenue, and McDonald Avenue. Ocean Parkway bisects the neighborhood east–west. Kensington's ZIP Code is 11218 and it is served by the NYPD's 66th Precinct."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "kensington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6222,
+    "attempt": 6178,
+    "place_id": "gn-5123777",
+    "input": {
+      "place": {
+        "place_id": "gn-5123777",
+        "name": "Lake Carmel",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.46148,
+        "lon": -73.67096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Carmel, New York",
+          "url": "https://en.wikipedia.org/wiki/Lake_Carmel,_New_York",
+          "text": "Lake Carmel is a hamlet and census-designated place in the town of Kent in Putnam County, New York, United States. As of the 2020 census, Lake Carmel had a population of 8,069. The hamlet is centered around Lake Carmel, a 1.6 mile long manmade lake in the southeastern corner of the township and just north of hamlet of Carmel within the town of Carmel.\nThe lake and surrounding community was developed by the Smadbeck brothers, who excavated and dammed a swamp in the 1920s and sold lots through the now-defunct New York Daily Mirror. The hamlet is the seat of the volunteer Lake Carmel Fire Department; its fire district  covers the eastern half of the township, and of the Kent town government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "lake carmel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carmel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6223,
+    "attempt": 6179,
+    "place_id": "gn-5125738",
+    "input": {
+      "place": {
+        "place_id": "gn-5125738",
+        "name": "Mamaroneck",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.94871,
+        "lon": -73.73263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mamaroneck, New York",
+          "url": "https://en.wikipedia.org/wiki/Mamaroneck,_New_York",
+          "text": "Mamaroneck ( mə-MARR-ə-nek) is a town in Westchester County, New York, United States.\nThe population was 31,758 at the 2020 United States census over 29,156 at the 2010 census. There are two villages contained within the town: Larchmont and the Village of Mamaroneck (part of which is located in the adjacent town of Rye). The majority of the town's land area is not within either village, constituting an unincorporated area, although a majority of the population lives within the villages. Legally, the unincorporated section and the villages constitute the town as a political and governmental subdivision of New York State. The town is led by a town board, composed of five town board members, which includes the town supervisor, Jaine Elkind Eney.\nMuch of the unincorporated section of the town receives its mail via the Larchmont Post Office and thereby has a Larchmont address."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "mamaroneck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6224,
+    "attempt": 6180,
+    "place_id": "gn-5133926",
+    "input": {
+      "place": {
+        "place_id": "gn-5133926",
+        "name": "Riverhead",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.91704,
+        "lon": -72.66204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riverhead, New York",
+          "url": "https://en.wikipedia.org/wiki/Riverhead,_New_York",
+          "text": "Riverhead (historically spelled River Head) is a town in Suffolk County, on the North Shore and North Fork of Long Island, in New York, United States. The population was 35,902 at the time of the 2020 census.\nThe town rests on the mouth of the Peconic River, from which it derives its name. The smaller hamlet of Riverhead lies within it, and is the town's principal economic center. The town is 166 miles (267 km) southwest of Boston via the Orient Point–New London Ferry, and is 76 miles (122 km) northeast of New York City. \nThe Town of Riverhead is the agricultural apex of Long Island, with 20,000 of the 35,000 acres (14,000 ha) of the island's farmland located within the town. The town is also home to four separate beaches which are open year-round. Iron Pier, Wading River, and Reeves Beach each offer boating access for residents and visitors alike."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "riverhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

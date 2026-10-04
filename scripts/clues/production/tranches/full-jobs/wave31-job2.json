@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 6065,
+    "attempt": 6021,
+    "place_id": "gn-930629",
+    "input": {
+      "place": {
+        "place_id": "gn-930629",
+        "name": "Chipoka",
+        "country": "Malawi",
+        "subdivision": "Central Region",
+        "lat": -13.99329,
+        "lon": 34.51566
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chipoka",
+          "url": "https://en.wikipedia.org/wiki/Chipoka",
+          "text": "Chipoka is a town located in the Central Region district of Salima, in Malawi. It is one of the main ports on Lake Malawi and is the closest port to the capital city of Lilongwe.  Chipoka is located on the western shore of Kasangha Bay across from Cape Maclear.\nNearby towns and villages include Chaseta (7.8 mi (12.6 km)), Ndembo (7.7 mi (12.4 km)), Kalombola (5.6 mi (9.0 km)), Lowe (5.6 mi (9.0 km)), Mazenjele (5.6 mi (9.0 km)), Chikanda (4.9 mi (7.9 km)), Milala (4.9 mi (7.9 km)), Mkangawi (4.9 mi (7.9 km)), Mzembela (4.9 mi (7.9 km)), Pemba (4.9 mi (7.9 km)) and Kachindamoto(11.7 mi (18.8 km)).\nThe city has a railway station on the Sena railway, under concession of Central East African Railways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "chipoka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6066,
+    "attempt": 6022,
+    "place_id": "gn-948099",
+    "input": {
+      "place": {
+        "place_id": "gn-948099",
+        "name": "Trompsburg",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -30.03363,
+        "lon": 25.78041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trompsburg",
+          "url": "https://en.wikipedia.org/wiki/Trompsburg",
+          "text": "Trompsburg is a small town in the Free State province of South Africa off the N1 highway, the major road connection between Johannesburg and Cape Town.  \nIt serves as the administrative seat of the Kopanong Local Municipality within the Xhariep District. With a population of around 6000 residents in the town and associated townships of Noordmanville and Madikgetla, it remains a quiet rural center focused on farming, particularly sheep, cattle, and grain production.  \nThe outskirts of the town are adjacent to the Van Zyl Spruit. This spruit is a typical seasonal or intermittent watercourse in the semi-arid Karoo-influenced region of the southern Free State. It forms part of the local drainage system that ultimately feeds into larger basins like the Orange River (Gariep) system further south/west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "trompsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6067,
+    "attempt": 6023,
+    "place_id": "gn-11523825",
+    "input": {
+      "place": {
+        "place_id": "gn-11523825",
+        "name": "Adelaide city centre",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.92873,
+        "lon": 138.60334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adelaide city centre",
+          "url": "https://en.wikipedia.org/wiki/Adelaide_city_centre",
+          "text": "Adelaide city centre (Kaurna: Tarndanya) is the city centre of Greater Adelaide, the capital city of South Australia. It is known by locals simply as \"the City\" or \"Town\" to distinguish it from Greater Adelaide and from the City of Adelaide local government area. The residential population was 18,202 in the 2021 census, with a local worker population of 130,404.\nAdelaide city centre was planned in 1837 on a greenfield site following a grid layout, with streets running at right angles to each other. It covers an area of 4.33 square kilometres (1.67 square miles) and is surrounded by 6.68 square kilometres (2.58 square miles) of park lands. Within the city are five parks: Victoria Square in the exact centre and four other, smaller parks. \nNames for elements of the city centre are as follows:\n\nThe \"city square mile\" (in reality 1.67 square miles or 4.33 square kilometres) is the constructed area bordered by North, East, South and West Terraces.\nThe \"central business district\" (CBD) is an alternative term, but more accurately describes the intensively developed northern half of the city, which contains a multitude of commercial, cultural and entertainment premises, restaurants and high-rise apartments. The southern, lower-density half mainly contains small businesses, restaurants and, residentially, a mix of mansions, houses and conserved 19th century cottages, and (fewer) high-rise apartments.\nPrecincts such as the West End and the East End have distinctive characters. CBD shopping precincts include Rundle Mall and Adelaide Central Market.\nIn what is often described as the \"North Terrace cultural precinct\", many educational, cultural, entertainment and medical institutions lie between the northern side of North Terrace and the River Torrens – notably university campuses, the Adelaide Festival Centre, and the Parliament of South Australia. Adelaide railway station is also located there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "adelaide city centre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "adelaide",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "centre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6068,
+    "attempt": 6024,
+    "place_id": "gn-11550994",
+    "input": {
+      "place": {
+        "place_id": "gn-11550994",
+        "name": "Stakeford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.1611,
+        "lon": -1.57529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stakeford",
+          "url": "https://en.wikipedia.org/wiki/Stakeford",
+          "text": "Stakeford is a large village in south east Northumberland, England.\nIts about 17 miles (27 km) north of Newcastle upon Tyne.  It lies south of the River Wansbeck from Ashington, the nearest town.  The village takes its name from the former river crossing to the north of the village, this was a crossing through the mudflats which was marked with stakes to give an idea of the water depth, hence the name Stakeford. The river crossing has long gone, but remains of the stakes can be seen in the river bed becoming visible whenever the dam downstream is opened.  The old river crossing was replaced by a bridge in the early 20th century, which in itself was replaced by the new Stakeford Bridge in 1994. There is now no trace of the original ford due to the mudflats being used as a landfill site in the 1950s and 60s and the creation of a riverside country park in the 1970s.\nIt is a mainly residential village. There are three pubs and a Social Club. There is also a miners' institute although it never had a mine as this was located in the adjacent village of Bomarsund. Stakeford has several shops and a primary school. Today Stakeford forms one built-up area, with neighbouring Guide Post and Sheepwash."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "stakeford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6069,
+    "attempt": 6025,
+    "place_id": "gn-2142871",
+    "input": {
+      "place": {
+        "place_id": "gn-2142871",
+        "name": "Woy Woy",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.48433,
+        "lon": 151.32471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woy Woy",
+          "url": "https://en.wikipedia.org/wiki/Woy_Woy",
+          "text": "Woy Woy is a coastal town in the Central Coast region of the New South Wales state of Australia. The town is located on the southern reaches of Brisbane Water and near the mouth of Brisbane Water at the Pacific Ocean, it is a popular holiday destination. Woy Woy is located 84 km (52 mi) north of the state capital Sydney. It is a population centre within the Central Coast Council local government area.\nWoy Woy is located in the northern half of the Woy Woy Peninsula, a densely populated estuarine peninsula that also includes the districts of Umina Beach, Ettalong Beach, Booker Bay and Blackwall, in addition to several small sub-districts. The Woy Woy Peninsula is the most populous area of the Central Coast. The historical and commercial core of Woy Woy is located around the railway station at the northern tip of the peninsula while its residential districts merge imperceptibly southwards with Umina and Ettalong. (Woy Woy officially ends at Veron Road and Gallipoli Avenue; and Umina begins beyond this)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "woy woy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6070,
+    "attempt": 6026,
+    "place_id": "gn-2144095",
+    "input": {
+      "place": {
+        "place_id": "gn-2144095",
+        "name": "Werribee",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.9,
+        "lon": 144.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Werribee",
+          "url": "https://en.wikipedia.org/wiki/Werribee",
+          "text": "Werribee is a suburb in Melbourne, Victoria, Australia, 32 km (20 mi) south-west of Melbourne's Central Business District, located within the local government area of the City of Wyndham. Werribee recorded a population of 50,027 at the 2021 census.\nWerribee was established as an agricultural settlement in the 1850s, originally named Wyndham and later renamed Werribee (derived from the Aboriginal name meaning \"backbone\" or \"spine\") in 1904. The suburb is situated on its namesake the Werribee River, approximately halfway between Melbourne and Geelong, on the Princes Highway. It is the administrative centre of the City of Wyndham local government area and is the City's most populous centre. Werribee is part of the Greater Melbourne metropolitan area and is included in the capital's population statistical division.\nSince the 1990s, the suburb has experienced rapid suburban growth into surrounding greenfield land, becoming a commuter town in the Melbourne–Geelong growth corridor. Due to this urban sprawl, Wyndham and its suburbs have merged into the Melbourne conurbation. In recent years, Werribee has undergone development which has seen the growth of high-rise buildings within the city centre.\nThe suburb is best known for its major tourist attractions, which include the former estate of wealthy pastoralist Thomas Chirnside, known as Werribee Park, the Victoria State Rose Garden, the Werribee Park National Equestrian Centre, and the Werribee Open Range Zoo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "werribee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6071,
+    "attempt": 6027,
+    "place_id": "gn-2188942",
+    "input": {
+      "place": {
+        "place_id": "gn-2188942",
+        "name": "Kawerau",
+        "country": "New Zealand",
+        "subdivision": "Bay of Plenty",
+        "lat": -38.1,
+        "lon": 176.7
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kawerau",
+          "url": "https://en.wikipedia.org/wiki/Kawerau",
+          "text": "Kawerau is a town in the Bay of Plenty Region on the North Island of New Zealand. It is situated 100 km south-east of Tauranga and 58 km east of Rotorua. It is the seat of the Kawerau District Council, and the only town in Kawerau District.\nKawerau is a small community, with an economy that is largely driven by the nearby pulp and paper mill that is run by Norske Skog and OJI Fibre Solutions. It is located along State Highway 34, southwest of Onepu, and is the terminus of the East Coast Main Trunk Railway, and the commencing point of the Murupara Branch railway.\nKawerau is among the three towns in New Zealand with a majority Māori population, along with Ōpōtiki and Wairoa. Kawerau was one of the worst-affected towns in the 1987 Edgecumbe earthquake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "kawerau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6072,
+    "attempt": 6028,
+    "place_id": "gn-2614611",
+    "input": {
+      "place": {
+        "place_id": "gn-2614611",
+        "name": "Rødekro",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.07076,
+        "lon": 9.33531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rødekro",
+          "url": "https://en.wikipedia.org/wiki/Rødekro",
+          "text": "Rødekro (German: Rothenkrug) is a railway town, with a population of 6,182 (1 January 2026), in Aabenraa Municipality in Region of Southern Denmark on the Jutland peninsula in south Denmark. It is located 33 km north of the Denmark-Germany border, 37 km northeast of Tønder, 28 km southwest of Haderslev and 8 km northwest of Aabenraa.\nRødekro was the seat of the former Rødekro Municipality (Danish, kommune) until 1 January 2007.\nThe town is served by Rødekro station on the Fredericia–Padborg railway line.\n\nHotel Røde-Kro is a hotel and inn located in the centre of the town just north of the railway station. The hotels history dates back to 1649 and it was this Inn who named the town (Rødekro means Red Inn in Danish)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "r dekro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "r",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "dekro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6073,
+    "attempt": 6029,
+    "place_id": "gn-2635881",
+    "input": {
+      "place": {
+        "place_id": "gn-2635881",
+        "name": "Thurso",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 58.59271,
+        "lon": -3.52594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thurso",
+          "url": "https://en.wikipedia.org/wiki/Thurso",
+          "text": "Thurso (pronounced ; Scots: Thursa, Scottish Gaelic: Inbhir Theòrsa [ˈiɲɪɾʲ ˈhjɔːrˠs̪ə]) is a town and former burgh on the north coast of the Highland council area of Scotland. Situated in the historical County of Caithness, it is the northernmost town on the island of Great Britain. From a latitudinal standpoint, Thurso is located more than 500 miles (800 km) north of London and further north than the southernmost point of Norway. \nIt lies at the junction of the north–south A9 road and the west–east A836 road, connected to Bridge of Forss in the west and Castletown in the east. The 34-mile (55 km) River Thurso flows through the town and into Thurso Bay and the Pentland Firth. The river estuary serves as a small harbour. At the 2022 Census, Thurso had a population of 7,426. The population of the larger Thurso civil parish including the town and the surrounding countryside was estimated to be 12,057 in 2021.\nThurso functioned as an important Norse port, and later traded with ports throughout northern Europe until the 19th century.\nA thriving fishing centre, Thurso also had a reputation for its linen-cloth and tanning activities. As of 2015, the Dounreay Nuclear Research Establishment, although mostly decommissioned at the end of the 20th century, employs a significant number of the local population. The Category-A listed ruined Old St Peter's Church (St. Peter's Kirk) is one of the oldest churches in Scotland, dating to at least 1125. The current church, St Andrew's and St Peter's, was built in 1832 to a design by William Burn in the Gothic style.\nThe town contains the main campus of North Highland College and Thurso High School, the northernmost secondary school on the British mainland, which was established in 1958. Thurso Castle, built in 1872, is in ruins. Thurso is home to the football team Thurso FC, established in 1998, who play in the North Caledonian League, and the rugby teams Caithness Crushers and Caithness RFC.\nThurso railway station, opened in 1874, is the most northern station in the United Kingdom. The nearby port of Scrabster provides ferry services to the Orkney Islands; the NorthLink ferry (MV Hamnavoe) operates between Scrabster and Stromness."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 363
+    },
+    "banned_terms": [
+      {
+        "term": "thurso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6074,
+    "attempt": 6030,
+    "place_id": "gn-2641910",
+    "input": {
+      "place": {
+        "place_id": "gn-2641910",
+        "name": "Nairn",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.58094,
+        "lon": -3.87973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nairn",
+          "url": "https://en.wikipedia.org/wiki/Nairn",
+          "text": "Nairn (; Scottish Gaelic: Inbhir Narann) is a town and former royal burgh in the Highland Council area of Scotland. It is an ancient fishing port and market town around 17 miles (27 km) east of Inverness, at the point where the River Nairn enters the Moray Firth. It is the traditional county town of Nairnshire.\nAt the 2022 census, Nairn had a population of 9,582, making it the third-largest settlement in the Highland Council area, behind Inverness and Fort William. Nairn is best known as a seaside resort, with two golf courses, beaches, a community centre and arts venue, a small theatre (The Little Theatre) and a small museum, providing information on the local area and incorporating the collection of the former Fishertown museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "nairn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6075,
+    "attempt": 6031,
+    "place_id": "gn-2642557",
+    "input": {
+      "place": {
+        "place_id": "gn-2642557",
+        "name": "Midsomer Norton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.28567,
+        "lon": -2.48591
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midsomer Norton",
+          "url": "https://en.wikipedia.org/wiki/Midsomer_Norton",
+          "text": "Midsomer Norton  is a town near the Mendip Hills in Bath and North East Somerset, England. It lies 10 miles (16 km) south-west of Bath, 10 miles (16 km) north-east of Wells, 10 miles (16 km) north-west of Frome, 12 miles (19 km) west of Trowbridge and 16 miles (26 km) south-east of Bristol. At the 2021 census, the parish had a population of 12,197, and the built-up area as defined by the Office for National Statistics, which extends into the neighbouring parish of Westfield, had a population of 13,745. The town closely adjoins neighbouring Radstock. Between 1933 and 2011 they formed a single administrative area called Norton Radstock.\nMidsomer Norton is characterised by the River Somer which runs the length of the town centre. The river itself was regenerated with new plant life during the summer of 2012 in a bid to improve the aesthetics of the town centre. The Town has a long history which can be seen through a number of early churches which remain, but really started to grow and become a transport hub with the development of the Somerset coalfield.  For many years the coalmines provided employment for local men until they ceased operations in the 1960s, around the same time that the town's two railway stations also closed.  Afterwards, good employment opportunities still remained for the town with elements of the print industry. Some of these plants have also now begun to close, but overall employment levels in the area remain very high.\nMidsomer Norton provides shopping and service industries for the surrounding areas and supports several music venues and bands. The town has four primary schools and two large secondary schools. Midsomer Norton is home to a leisure centre, several sports clubs and provides youth opportunities such as Scouts and Guides. It has been the birthplace or home to several notable people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 309
+    },
+    "banned_terms": [
+      {
+        "term": "midsomer norton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "midsomer",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "norton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6076,
+    "attempt": 6032,
+    "place_id": "gn-2646306",
+    "input": {
+      "place": {
+        "place_id": "gn-2646306",
+        "name": "Ickenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.56433,
+        "lon": -0.44373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ickenham",
+          "url": "https://en.wikipedia.org/wiki/Ickenham",
+          "text": "Ickenham is an area in Greater London, forming the northern part of Uxbridge and within the London Borough of Hillingdon.\nWhile no major historical events have taken place in Ickenham, settlements dating back to the Roman occupation of Britain have been discovered during archaeological surveys, and the area appears in the Domesday Book. Buildings from the 14th, 15th and 16th centuries remain standing and have been restored in recent years.\nThe village was originally split into four manors, but later there were two: Ickenham and Swakeleys. The old manorial home of Swakeleys, a 17th-century Jacobean mansion Swakeleys House still stands, and much of the Swakeleys estate was sold for housing in the 1920s. Ickenham's manorial home, Manor Farm, now forms part of Long Lane Farm. A military station, RAF West Ruislip, was opened in 1917. Its final use was for the Navy Exchange of the U.S. Naval Activities, United Kingdom command between 1975 and 2006.\nAt the 1901 census, Ickenham had a population of 329; at the 2001 census the population had reached 9,933, although census figures show a marked population decline during the 1960s and 1970s. By the 2011 census, the population had reached 10,387. When Ickenham obtained a railway station on the Metropolitan Railway's line between Harrow and Uxbridge, a great deal of residential development started in the village, and it gradually became part of the London commuter belt. Ickenham expanded with the sale and development of much of the Swakeleys estate in 1922 and became part of what was later termed \"Metro-land\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "ickenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6077,
+    "attempt": 6033,
+    "place_id": "gn-2646686",
+    "input": {
+      "place": {
+        "place_id": "gn-2646686",
+        "name": "Holyhead",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.30621,
+        "lon": -4.63211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holyhead",
+          "url": "https://en.wikipedia.org/wiki/Holyhead",
+          "text": "Holyhead (; Welsh: Caergybi pronounced [kɑːɨrˈɡəbi] , 'Cybi's fort') is a historic port town, and is the largest town and a community in the county of the Isle of Anglesey, Wales. Holyhead is on Holy Island, bounded by the Irish Sea to the north, and is separated from Anglesey island by the narrow Cymyran Strait.\nIt was originally connected to Anglesey via the Four Mile Bridge.\nIn the mid-19th century, Lord Stanley, a local philanthropist, funded the building of a larger causeway, known locally as \"the Cobb\"; it now carries the A5 and the railway line. The A55 dual carriageway runs parallel to the Cobb on a modern causeway.\nThe town houses the Port of Holyhead, a major Irish Sea port for connections towards Ireland. The population of the town proper as of the 2021 census was 12,084, an increase on the 2011 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "holyhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6078,
+    "attempt": 6034,
+    "place_id": "gn-2656715",
+    "input": {
+      "place": {
+        "place_id": "gn-2656715",
+        "name": "Aylestone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.60422,
+        "lon": -1.14631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aylestone",
+          "url": "https://en.wikipedia.org/wiki/Aylestone",
+          "text": "Aylestone is a suburb of Leicester in Leicestershire, England, southwest of the city centre and east of the River Soar. \nSt Andrew's Church, Aylestone dates from the 13th century. The area around the church retains much of the former village character. It is largely surrounded by Victorian housing close to the city centre (Aylestone Park) and by 20th-century housing in other directions.\nThe electoral ward of Aylestone covers Old Aylestone village (including the conservation area), the Gilmorton estate, the south and west of Aylestone Park (the remainder is in Saffron ward) and the southwest side of Saffron Lane (to Grace Road). The ward borders Saffron and Eyres Monsell wards and the county parish of Glen Parva and is in the parliamentary constituency of Leicester West. The ward has two elected councillors: currently these are Councillor Scott Kennedy-Lount (Liberal Democrat, first elected 2023) and Councillor Nigel Porter (formerly Conservative, from 2011 a Liberal Democrat)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "aylestone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6079,
+    "attempt": 6035,
+    "place_id": "gn-2919717",
+    "input": {
+      "place": {
+        "place_id": "gn-2919717",
+        "name": "Gmund am Tegernsee",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.75119,
+        "lon": 11.7381
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gmund am Tegernsee",
+          "url": "https://en.wikipedia.org/wiki/Gmund_am_Tegernsee",
+          "text": "Gmund am Tegernsee is a municipality in the district of Miesbach in Bavaria in Germany. The town is located on the north shore of the Tegernsee Lake, and near the source of River Mangfall. It is 46 kilometres (29 mi) from Munich and 15 kilometres (9.3 mi) from the district capital, the town of Miesbach.\nFamous personalities who lived in Gmund were the Federal Chancellor of the Federal Republic of Germany Ludwig Erhard, who is buried in Gmund's cemetery, the architect Sep Ruf and the clockmaker Johann Mannhardt. Reichsführer-SS Heinrich Himmler and his family maintained a home there from 1934 to 1945.\nGmund is served by a station on the privately owned Tegernsee-Bahn railway, and is linked to Munich by trains of the Bayerische Oberlandbahn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "gmund am tegernsee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gmund",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tegernsee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6080,
+    "attempt": 6036,
+    "place_id": "gn-2946230",
+    "input": {
+      "place": {
+        "place_id": "gn-2946230",
+        "name": "Borken",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 51.04501,
+        "lon": 9.2844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borken, Hesse",
+          "url": "https://en.wikipedia.org/wiki/Borken,_Hesse",
+          "text": "Borken (German pronunciation: [ˈbɔʁkn̩] ) is a small town with about 13,000 inhabitants in the Schwalm-Eder district in northern Hesse, Germany.\nThe town is a former centre for brown coal mining and coal-fired electrical generation in Hesse. The coalmine, unlike those in other regions, also had underground workings. After a major disaster – namely a coal dust explosion – the mine was shut down on 1 June 1988.\nSince that time, the former coal pits have been redeveloped into recreation areas with lakes, nature areas – some actually protected by law – and sporting grounds. Among these areas are der Borkener See (Borken Lake) with its nature reserve, der Singliser See (Singlis Lake) with windsurfing, and die Stockelache (\"Stagnant Puddle\"), used as a bathing lake.\nOne particular attraction in Borken is the Hessian Brown Coal Mining Museum (Hessisches Braunkohle Bergbaumuseum) which displays the town's coal-mining tradition. Since 2003, an open-air museum, where visitors may learn about \"coal and energy\", has also been open. The museum is also affiliated with a nature conservation information centre for the Borkener See.\nBorken's best known landmark is its watertower."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "borken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6081,
+    "attempt": 6037,
+    "place_id": "gn-2974446",
+    "input": {
+      "place": {
+        "place_id": "gn-2974446",
+        "name": "Sisteron",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 44.19002,
+        "lon": 5.94643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sisteron",
+          "url": "https://en.wikipedia.org/wiki/Sisteron",
+          "text": "Sisteron (French pronunciation: [sistəʁɔ̃]; Occitan: [sisˈtɛru(n)], Mistralian norm: Sisteroun; from Old Occitan: Sestaron) is a commune in the Alpes-de-Haute-Provence department, Provence-Alpes-Côte d'Azur, southeastern France.\nSisteron is situated on the banks of the river Durance just after the confluence of the rivers Buëch and Sasse. It is sometimes called the \"Gateway to Provence\" because it is in a narrow gap between two long mountain ridges. Despite its relatively small population, it serves as a long-distance navigation reference point, routinely signed as far away as Grenoble.\nIt is  135 km (84 mi) from Marseille, also 135 km (84 mi) from Grenoble, 180 km (110 mi) from Nice and 40 km (25 mi) from Forcalquier.\nThere are 1,573 hectares (3,890 acres) of forest and wood within the commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "sisteron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6082,
+    "attempt": 6038,
+    "place_id": "gn-3007874",
+    "input": {
+      "place": {
+        "place_id": "gn-3007874",
+        "name": "Landerneau",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.4515,
+        "lon": -4.25175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Landerneau",
+          "url": "https://en.wikipedia.org/wiki/Landerneau",
+          "text": "Landerneau (French pronunciation: [lɑ̃dɛʁno]; Breton: Landerne, pronounced [lãnˈdɛrne]) is a commune in the Finistère department of Brittany in north-western France.\nIt lies at the mouth of the Elorn River which divides the Breton provinces of Cornouaille and Léon, 22 km (14 mi) east of Brest.  The name is from Lan Terneo and can mean \"(religious) enclosure of St Ténénan (Welsh: Tyrnog)\": allegedly a Welshman who also had llans in the Vale of Clwyd in North Wales and in Somerset, and who moved to Brittany in the 7th century. Lann means a religious sacred place. The town has been founded by Saint Arnoc, some times called Ternoc and confusion can occur with Saint Ténénan. Some sources point Saint Arnoc and Saint Ténénan as the same person.\nIt was an important centre of the flax and linen industries in the 16th and 17th centuries. Landerneau is also the hometown of Édouard Leclerc, a businessman and entrepreneur who founded the French supermarket chain E.Leclerc in 1948. The town is actually the heart of the agricultural market in northwest Brittany with several agribusiness companies headquarters located in the town.\nThe town is also known for its moon, La Lune de Landerneau (the Moon of Landerneau). This nickname is supposed from a noble visiting Versailles court and was not impressed by the luxury of the Château de Versailles. He was contemplating the moon with others in the Versailles gardens when he said \"the Landerneau's moon is bigger\", that made the assembly laugh. The Breton noble made reference to a big silver metal disc on top of the Saint Houardon Church, well known in the surroundings as \"the moon of Landerneau\".\nIt was at Landernau that the painter Eugène Boudin painted \"Landernau, Mouillage à l'Embouchure de la Rivière\" circa 1870-3."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "landerneau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6083,
+    "attempt": 6039,
+    "place_id": "gn-3047646",
+    "input": {
+      "place": {
+        "place_id": "gn-3047646",
+        "name": "Nagykovácsi",
+        "country": "Hungary",
+        "subdivision": "Pest County",
+        "lat": 47.5814,
+        "lon": 18.88549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagykovácsi",
+          "url": "https://en.wikipedia.org/wiki/Nagykovácsi",
+          "text": "Nagykovácsi (German: Großkowatsch) is a small town located in Budakeszi District, in the western part of Pest county, central Hungary. It is situated some 15 km (9 mi) north-west of the centre of Budapest, in a valley. According to the 2025 census, the population amounted to  8757, though this figure does not include individuals who own property as a secondary residence in the town. Nagykovácsi today attracts tourists and new residents alike, due to its proximity to Budapest, attractive and peaceful setting, surrounding by hills and forests. Some of the nearby areas have been designated conservation areas—Budai Tájvédelmi Körzet (the \"Buda Land Protection Area\")—in order to protect several of its rare species of flora. Its location has contributed to the town's development in recent decade. The American International School of Budapest chose Nagykovácsi as the site for its new campus in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "nagykovacsi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6084,
+    "attempt": 6040,
+    "place_id": "gn-3050393",
+    "input": {
+      "place": {
+        "place_id": "gn-3050393",
+        "name": "Kelenföld",
+        "country": "Hungary",
+        "subdivision": "Budapest",
+        "lat": 47.46614,
+        "lon": 19.03102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kelenföld",
+          "url": "https://en.wikipedia.org/wiki/Kelenföld",
+          "text": "Kelenföld (German: Krenfeld) is a neighborhood in Budapest, Hungary. It belongs to Újbuda, and located in the southern part of Buda. The large Kelenföld housing estate was built between 1967 and 1983 from pre-fabricated concrete blocks. The older streets around Bocskai út were mainly built in the first half of the 20th century. The Budapest-Kelenföld railway station is an important transport hub of Buda, especially since 2014, when it gained convenient access to the city center thanks to the newly opened Metro Line M4. Kelenföld Power Station, the largest electrical generation plant in the world after its construction in 1912, is now a tourist attraction and has received coverage in the English-speaking world in recent years thanks in part to its Art Deco control room."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "kelenfold",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]
