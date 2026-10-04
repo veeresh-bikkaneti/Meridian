@@ -31,6 +31,22 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
+/**
+ * Warmup: the shared startGlobeRun's 15 s map-mount timeout flakes on a cold
+ * browser (first software-WebGL map init), failing whatever test runs first.
+ * Mount the map once here with retries so the real tests run warm.
+ */
+test("warmup: first map mount", async ({ page }) => {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      await startGlobeRun(page);
+      return;
+    } catch (e) {
+      if (attempt === 2) throw e;
+    }
+  }
+});
+
 const mapEl = (page: Page) => page.locator(".satellite-map");
 const readZoom = (page: Page): Promise<number> =>
   mapEl(page).getAttribute("data-zoom").then(Number);
